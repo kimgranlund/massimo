@@ -1,5 +1,6 @@
 // Boilerplate component defaults: just enough to make every component usable and its
-// state visible. No variants, no design. Keyed on tags, [data-ui]/[data-part] hooks and
+// state visible. No variants, no design. Every length comes from styles/geometry.ts
+// (--h, --pad, --edge, --gap, --b, --radius, …); this file only says where each applies. Keyed on tags, [data-ui]/[data-part] hooks and
 // ARIA state, so web components and their React counterparts share one stylesheet and
 // tag rules already apply before an element upgrades.
 import { defineGlobalStyles } from '@pandacss/dev';
@@ -13,9 +14,10 @@ export const defaults = defineGlobalStyles({
 
   // Button
   [BUTTON]: {
-    display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '2',
-    minHeight: 'control.md', paddingInline: '3', borderWidth: 'thin', borderColor: 'border.strong',
-    borderRadius: 'control', bg: 'bg', color: 'fg', fontSize: 'sm', cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
+    display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--gap)',
+    height: 'var(--h)', paddingInline: 'calc(var(--pad) + var(--edge))', borderWidth: 'var(--b)', borderColor: 'border.strong',
+    borderRadius: 'var(--radius)', bg: 'bg', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
+    cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
   },
   [`${BUTTON}:hover`]: { bg: 'bg.muted' },
   [`${BUTTON}:is([aria-disabled=true], [aria-busy=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
@@ -26,8 +28,10 @@ export const defaults = defineGlobalStyles({
   [`${FIELD} > [data-part=description]`]: { fontSize: 'xs', color: 'fg.muted' },
   [`${FIELD} > [data-part=error]`]: { fontSize: 'xs', color: 'danger.fg' },
   [CONTROL]: {
-    display: 'flex', alignItems: 'center', gap: '2', width: '100%', minHeight: 'control.md', paddingInline: '3',
-    borderWidth: 'thin', borderColor: 'border.strong', borderRadius: 'control', bg: 'bg', color: 'fg', fontSize: 'sm',
+    // Text-field label edge: L on each exposed side, not doubled.
+    display: 'flex', alignItems: 'center', gap: 'var(--gap)', width: '100%', height: 'var(--h)',
+    paddingInline: 'calc(var(--pad) + var(--edge))', borderWidth: 'var(--b)', borderColor: 'border.strong',
+    borderRadius: 'var(--radius)', bg: 'bg', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
   },
   // aria-invalid only: native :invalid would flag untouched required fields on load.
   [`:is(${CONTROL})[aria-invalid=true]`]: { borderColor: 'danger.solid' },
@@ -40,24 +44,26 @@ export const defaults = defineGlobalStyles({
   '[data-part=control][data-secret]': { WebkitTextSecurity: 'disc' },
 
   // Select trigger and popup
-  'ui-select > [data-part=trigger]': { cursor: 'pointer', userSelect: 'none' },
+  // Trailing chevron slot: no label edge on that side.
+  'ui-select > [data-part=trigger]': { cursor: 'pointer', userSelect: 'none', paddingInlineEnd: 'var(--pad)' },
   'ui-select [data-part=value]': { flex: '1', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
   'ui-select [data-part=value][data-placeholder]': { color: 'fg.muted' },
-  'ui-select [data-part=chevron]': {
-    width: '0.45rem', height: '0.45rem', borderRightWidth: '1.5px', borderBottomWidth: '1.5px', borderColor: 'currentColor',
-    color: 'fg.muted', transform: 'translateY(-25%) rotate(45deg)',
+  'ui-select [data-part=chevron]': { display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', color: 'fg.muted' },
+  'ui-select [data-part=chevron]::before': {
+    content: '""', width: 'calc(var(--icon) * 0.35)', height: 'calc(var(--icon) * 0.35)',
+    borderRightWidth: '1.5px', borderBottomWidth: '1.5px', borderColor: 'currentColor', transform: 'translateY(-25%) rotate(45deg)',
   },
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
-    position: 'fixed', inset: 'auto', margin: 0, padding: '1', overflowY: 'auto', overscrollBehavior: 'contain',
-    bg: 'bg', color: 'fg', borderWidth: 'thin', borderColor: 'border', borderRadius: 'lg', boxShadow: 'md',
+    position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
+    bg: 'bg', color: 'fg', borderColor: 'border', boxShadow: 'md',
   },
-  'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column', gap: '0.5' },
+  'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column' },
 
   // Listbox, segmented control, options
-  'ui-listbox': { display: 'flex', flexDirection: 'column', gap: '0.5' },
-  'ui-segmented': { display: 'inline-flex', gap: '1', padding: '1', bg: 'bg.muted', borderRadius: 'control' },
-  'ui-option': { display: 'flex', alignItems: 'center', minHeight: '8', paddingInline: '2.5', borderRadius: 'sm', fontSize: 'sm', cursor: 'pointer', userSelect: 'none' },
+  'ui-listbox': { display: 'flex', flexDirection: 'column', borderColor: 'border' },
+  'ui-segmented': { display: 'inline-flex', bg: 'bg.muted', borderColor: 'transparent' },
+  'ui-option': { display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none' },
   'ui-option[data-active]': { bg: 'bg.muted' },
   'ui-option[aria-selected=true]': { bg: 'accent.subtle', color: 'accent.fg', fontWeight: 'medium' },
   'ui-segmented > ui-option': { flex: '1', justifyContent: 'center', color: 'fg.muted' },

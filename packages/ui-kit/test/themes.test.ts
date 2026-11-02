@@ -17,5 +17,11 @@ test('themeCss emits defaults on :root and one root-scoped block per theme', () 
 });
 
 test('diffFromDefaults keeps only changed params', () => {
-  assert.deepEqual(diffFromDefaults({ ...defaultParams, density: 1.2 }), { density: 1.2 });
+  assert.deepEqual(diffFromDefaults({ ...defaultParams, unit: 5 }), { unit: 5 });
+});
+
+test('preset globalCss keeps every :root theme parameter (no key collisions between style objects)', async () => {
+  const { uiKitPreset } = await import('../preset.ts');
+  const root = (uiKitPreset.globalCss as Record<string, Record<string, string>>)[':root'];
+  for (const name of ['--ui-unit', '--ui-border', '--ui-label-edge', '--ui-radius-scale', '--ui-accent-hue']) assert.ok(root?.[name], `${name} missing`);
 });

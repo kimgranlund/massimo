@@ -1,0 +1,52 @@
+<!doctype html><html><head><title>Geometry check</title></head><body><div id="root"></div><pre id="out">pending</pre>
+<script type="module">
+import './src/index.css';
+import '@massimo/ui-kit/components/button/element';
+import '@massimo/ui-kit/components/input/element';
+import '@massimo/ui-kit/components/select/element';
+import '@massimo/ui-kit/components/listbox/element';
+import { resolveControl, resolveComposite, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+const cases = [];
+for (const size of ['sm', 'md', 'lg']) for (const border of [0, 1, 2]) cases.push({ size, border, q: 0.5 });
+cases.push({ size: 'sm', border: 2, q: 1.5 }, { size: 'md', border: 0, q: 0 }, { size: 'lg', border: 1, q: 1 });
+const root = document.getElementById('root');
+const px = (v) => Math.round(parseFloat(v) * 100) / 100;
+const rows = [], fails = [];
+for (const c of cases) {
+  const box = document.createElement('div');
+  box.setAttribute('data-size', c.size);
+  box.style.setProperty('--ui-border', c.border);
+  box.innerHTML = `<ui-button>Save</ui-button><ui-input label="X"></ui-input>
+    <ui-select label="S"><ui-option>A</ui-option></ui-select>
+    <ui-segmented inset="${c.q}"><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>`;
+  root.append(box);
+  await new Promise(r => setTimeout(r, 30));
+  const g = { size: c.size, border: c.border, compositeInsetUnits: c.q };
+  const ctl = resolveControl(g), cmp = resolveComposite(g), trg = resolveSelectTrigger(g);
+  const btn = box.querySelector('ui-button'), inp = box.querySelector('ui-input [data-part=control]');
+  const tr = box.querySelector('ui-select [data-part=trigger]'), seg = box.querySelector('ui-segmented');
+  const [o1, o2] = seg.querySelectorAll('ui-option');
+  const cs = (el) => getComputedStyle(el);
+  const checks = {
+    'button.height': [btn.getBoundingClientRect().height, ctl.height],
+    'button.paddingInline': [px(cs(btn).paddingLeft), ctl.padding + ctl.labelEdge],
+    'button.border': [px(cs(btn).borderTopWidth), ctl.border],
+    'button.radius': [px(cs(btn).borderTopLeftRadius), ctl.radius],
+    'button.font': [px(cs(btn).fontSize), ctl.fontSize],
+    'input.height': [inp.getBoundingClientRect().height, ctl.height],
+    'input.paddingInline': [px(cs(inp).paddingLeft), ctl.padding + ctl.labelEdge],
+    'select.paddingStart': [px(cs(tr).paddingLeft), trg.paddingStart],
+    'select.paddingEnd': [px(cs(tr).paddingRight), trg.paddingEnd],
+    'select.height': [tr.getBoundingClientRect().height, ctl.height],
+    'segmented.height': [seg.getBoundingClientRect().height, cmp.rowHeight],
+    'segmented.padding': [px(cs(seg).paddingTop), cmp.padding],
+    'segmented.radius': [px(cs(seg).borderTopLeftRadius), cmp.radius],
+    'option.height': [o1.getBoundingClientRect().height, cmp.child.height],
+    'option.radius': [px(cs(o1).borderTopLeftRadius), cmp.child.radius],
+    'option.gap': [Math.round((o2.getBoundingClientRect().left - o1.getBoundingClientRect().right) * 100) / 100, cmp.gap],
+  };
+  for (const [k, [got, want]] of Object.entries(checks)) if (Math.abs(got - want) > 0.01) fails.push(`${c.size}/B${c.border}/Q${c.q} ${k}: got ${got}, want ${want}`);
+  rows.push(`${c.size}/B${c.border}/Q${c.q}: button ${checks['button.height'][0]} seg ${checks['segmented.height'][0]} option ${checks['option.height'][0]} r${checks['option.radius'][0]}`);
+}
+document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: cases.length * 16, fails, rows }, null, 1);
+</script></body></html>

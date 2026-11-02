@@ -154,7 +154,9 @@ export class UISelect extends UIFormElement {
   #place = () => {
     const popup = this.popup, trigger = this.trigger;
     if (!popup || !trigger) return;
-    const p = placePopup(trigger.getBoundingClientRect(), { width: window.innerWidth, height: window.innerHeight });
+    // Offset is 1u (styles/geometry.ts --u).
+    const unit = parseFloat(window.getComputedStyle(this).getPropertyValue('--u')) || 4;
+    const p = placePopup(trigger.getBoundingClientRect(), { width: window.innerWidth, height: window.innerHeight }, unit);
     Object.assign(popup.style, {
       left: `${p.left}px`, top: p.top == null ? 'auto' : `${p.top}px`, bottom: p.bottom == null ? 'auto' : `${p.bottom}px`,
       minWidth: `${p.minWidth}px`, maxHeight: `${p.maxHeight}px`,

@@ -47,6 +47,12 @@ function Canvas() {
             <ui-option value="pm" disabled>Product manager</ui-option>
             <ui-option value="research">Researcher</ui-option>
           </ui-select>
+          <div className={row}>
+            <ui-segmented name="size-sm" value="a" data-size="sm"><ui-option value="a">Small</ui-option><ui-option>B</ui-option></ui-segmented>
+            <ui-button data-size="sm">Small</ui-button>
+            <ui-button data-size="lg">Large</ui-button>
+            <ui-segmented name="size-lg" value="a" data-size="lg"><ui-option value="a">Large</ui-option><ui-option>B</ui-option></ui-segmented>
+          </div>
           <ui-segmented name="plan" value="monthly" label="Billing">
             <ui-option value="monthly">Monthly</ui-option>
             <ui-option value="yearly">Yearly</ui-option>

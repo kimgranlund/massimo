@@ -5,10 +5,11 @@ import { defineGlobalStyles, defineKeyframes } from '@pandacss/dev';
 
 export const pendingKeyframes = defineKeyframes({ 'ui-reveal': { to: { visibility: 'visible' } } });
 
-const FIELD_HEIGHT = 'calc({sizes.control.md} + 1.75rem)';
+// Control height plus an approximate label line.
+const FIELD_HEIGHT = 'calc(var(--h) + 1.75rem)';
 
 export const pending = defineGlobalStyles({
   ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
-  'ui-segmented:not(:defined)': { minHeight: 'control.md' },
+  'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
 });

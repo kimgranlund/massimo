@@ -10,7 +10,9 @@ export const PARAMS = {
   'neutral-chroma': { label: 'Neutral chroma', min: 0, max: 0.06, step: 0.001, default: 0.015 },
   'danger-hue':     { label: 'Danger hue',     min: 0, max: 360, step: 1, default: 25 },
   'radius-scale':   { label: 'Corner radius',  min: 0, max: 3, step: 0.05, default: 1 },
-  'density':        { label: 'Control size',   min: 0.75, max: 1.4, step: 0.01, default: 1 },
+  'unit':           { label: 'Unit (px)',      min: 3, max: 6, step: 0.5, default: 4 },
+  'border':         { label: 'Border (px)',    min: 0, max: 3, step: 0.5, default: 1 },
+  'label-edge':     { label: 'Label edge (u)', min: 0, max: 3, step: 0.25, default: 1.5 },
 } as const satisfies Record<string, ParamSpec>;
 
 export type ParamName = keyof typeof PARAMS;
