@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -135,6 +135,10 @@ export const rows: Row[] = [
   { id: 'btg.tag.icon.md', family: 'btg', element: 'tag', quantity: 'icon md', formula: 'min(tag font + 0.5u, tag slot)', value: (u) => resolveBtg('tag', { unit: u }).iconSize, status: 'implemented', notes: '' },
   { id: 'btg.minWidth', family: 'btg', element: 'badge, tag, chip', quantity: 'min width', formula: 'height', value: (u) => resolveBtg('badge', { unit: u }).minWidth, status: 'implemented', notes: 'value shown for badge; never narrower than tall' },
   { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min((0.5u′ + slot / 3) * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot' },
+
+  // Separator
+  { id: 'separator.thickness', family: 'separator', element: 'separator', quantity: 'thickness (height, or width when vertical)', formula: 'max(1px, B)', value: (u) => resolveSeparator({ unit: u }).thickness, status: 'implemented', notes: 'B = min(border, u/2): a hairline at B = 0 and 1; the theme border above' },
+  { id: 'separator.thicknessAtB2', family: 'separator', element: 'separator', quantity: 'thickness at B = 2', formula: 'max(1px, min(2, u/2))', value: (u) => resolveSeparator({ unit: u, border: Math.min(2, u / 2) }).thickness, status: 'implemented', notes: 'spans the other axis; no padding or margin (the container gap spaces it)' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

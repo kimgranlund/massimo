@@ -9,9 +9,10 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
+import '@massimo/ui-kit/components/separator/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack,
+  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -186,6 +187,17 @@ export function GeometryPage({ params }: PageProps) {
           return (
             <SpecRow label="swatch" values={[`size ${px(t.size)} · radius ${px(t.radius)} · palette radius ${px(t.paletteRadius)}`]}>
               <ui-swatch color="#3b82f6" /><ui-swatch color="#10b981" />
+            </SpecRow>
+          );
+        })()}
+      </Section>
+      <Divider />
+      <Section id="display" title="Display" note="A separator is as thick as the theme border, never thinner than a hairline: max(1px, B).">
+        {(() => {
+          const t = resolveSeparator(theme);
+          return (
+            <SpecRow label="separator" values={[`thickness ${px(t.thickness)} · B ${px(t.border)}`]}>
+              <ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
             </SpecRow>
           );
         })()}

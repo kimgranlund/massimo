@@ -35,6 +35,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-field` | no role; its visible label (text + `unit`) names one slotted control: `aria-labelledby` on a host-role control, `labelledby` on ui-input / ui-select (forwarded to the editor or trigger); label press focuses or toggles; optional readout and description | `label`, `unit`, `readout`, `description`, `error`, `layout` (stacked, inline) |
 | `ui-field-grid` | no role; columns label \| control \| readout shared by its ui-field rows (`subgrid`); other children (headings) span | |
 | containers | `ui-group`, `ui-collection` (wrappers), `ui-card` (container), `ui-panel`, `ui-region`, `ui-page` (areas); CSS only | `size`, `gap`; card `padding` xs…xl |
+| `ui-separator` | `role=separator` (Base UI Separator); a rule max(1px, B) thick in the border role; not focusable | `orientation` |
 
 ### Part names
 
@@ -122,6 +123,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-swiper` (Swiper) | `data-single` | dots `data-selected` (current slide); paddles `data-disabled` | `data-single` ours; Base UI has no carousel |
 | `ui-image` (Image) | | `img[data-error]` | ours |
 | `ui-field` (Field) | none; reads its control's `data-disabled` / `data-required` (`:has`) | | |
+| `ui-separator` (Separator) | `data-orientation` | | Base UI Separator |
 
 Where a React renderer keeps a native pseudo-class, and why: `:disabled` beside `data-disabled` for a native control disabled by an ancestor `<fieldset disabled>`, which React cannot see; the React Select's open state (`select:open`), its options' selection and highlight (`:checked`, `:focus`) and its popup (`::picker(select)`), because the browser owns the customizable select's picker and reports none of it to script (a native select has no placeholder either). React validity is read from the native control's constraint validation when the host sets `data-valid` / `data-invalid`, so both renderers show errors at the same moment (blur or a blocked submit), not at `:user-invalid` time. Not implemented: `data-starting-style` / `data-ending-style` (the select popup's enter and exit stay on `@starting-style` and `allow-discrete` transitions with the reveal intent).
 

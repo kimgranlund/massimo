@@ -1,0 +1,208 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "separator",
+  "primary": "component:separator",
+  "module": "./separator.element.ts",
+  "registration": "on-import",
+  "documentation": "./separator.md",
+  "examples": "./separator.examples.json",
+  "contract": "../../contracts/components.json#/components/separator",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./separator.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:separator",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-separator",
+      "class": "UISeparator",
+      "extends": "UIElement",
+      "intent": [
+        "Divide groups of content in a list, menu, toolbar or panel with a visible rule"
+      ],
+      "properties": [
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "horizontal spans the inline axis; vertical stretches across its flex or grid line and needs a row container to have a height.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "separator",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "aria-label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": false,
+        "children": "None."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Thickness is max(1px, B), the theme border capped at u/2; color is the border role. It has no margin: the parent's gap spaces it.",
+        "Not focusable and has no keyboard behavior; it is a static rule (aria-orientation for assistive technology).",
+        "A vertical separator takes its height from its flex or grid line; in block flow it has none."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Separating sections of a page with their own headings.",
+          "reason": "Headings and the container gap already separate them; a page-level divider is a page style, not a component."
+        },
+        {
+          "when": "Decorating a single surface's edge.",
+          "reason": "Use the container's border or a card; a separator divides siblings.",
+          "useInstead": "component:card"
+        }
+      ],
+      "searchTerms": [
+        "separator",
+        "divider",
+        "rule",
+        "hr",
+        "line"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:separator",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesGeometry",
+      "to": "geometry:separator"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./separator.element.ts",
+      "exports": {
+        "component:separator": "UISeparator"
+      },
+      "verification": "./verification/separator.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./separator.react.tsx",
+      "exports": {
+        "component:separator": "Separator"
+      },
+      "verification": "./verification/separator.verification.json#/renderers/react",
+      "props": {
+        "component:separator": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "orientation?: 'horizontal' | 'vertical' = 'horizontal' // horizontal (default): a full-width rule; vertical: a full-height rule in a flex or grid row.",
+            "size?: number // Unit u in px for this element (the border B is capped at u / 2)."
+          ]
+        }
+      }
+    }
+  }
+}

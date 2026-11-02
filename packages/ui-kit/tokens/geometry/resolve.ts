@@ -368,3 +368,15 @@ export function resolveImage(input: GeometryInput & { ratio?: string; width?: nu
 
 /** Popup offset from its trigger. */
 export const popupOffset = (input: GeometryInput = {}) => inputs(input).unit;
+
+// ── Display: separator ──
+// A separator is a rule as thick as the theme border, never thinner than a hairline: max(1px, B)
+// with B = min(border, u/2). It spans its container on the other axis and takes no padding.
+export type SeparatorOrientation = 'horizontal' | 'vertical';
+
+/** ui-separator: thickness max(1px, B); horizontal = full width × thickness, vertical = thickness × full height. */
+export function resolveSeparator(input: GeometryInput = {}) {
+  const x = inputs(input);
+  const b = Math.min(x.border, x.unit / 2);
+  return { unit: x.unit, border: b, thickness: Math.max(1, b) };
+}

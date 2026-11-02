@@ -292,6 +292,19 @@
         "popup select"
       ]
     },
+    "component:separator": {
+      "kind": "component",
+      "source": "components/separator/separator.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-separator",
+      "searchTerms": [
+        "separator",
+        "divider",
+        "rule",
+        "hr",
+        "line"
+      ]
+    },
     "component:swatch": {
       "kind": "component",
       "source": "components/color/color.manifest.json#/nodes/0",
@@ -653,6 +666,16 @@
         "aspect ratio",
         "image frame",
         "slideshow"
+      ]
+    },
+    "geometry:separator": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/separator",
+      "availability": "implemented",
+      "searchTerms": [
+        "separator thickness",
+        "divider",
+        "rule"
       ]
     },
     "geometry:swatch": {
@@ -3641,6 +3664,91 @@
       "from": "component:select",
       "relation": "uses",
       "to": "foundation:modality"
+    },
+    {
+      "from": "component:separator",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesGeometry",
+      "to": "geometry:separator"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:separator",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:separator",
+      "relation": "allowedIn",
+      "to": "context:inline"
     },
     {
       "from": "component:swiper",

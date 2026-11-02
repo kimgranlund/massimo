@@ -1,0 +1,23 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "separator",
+  "title": "Separator",
+  "summary": "A rule between groups of content.",
+  "defaultExample": "horizontal",
+  "examples": [
+    {
+      "id": "horizontal",
+      "label": "Between groups",
+      "subject": "component:separator",
+      "markup": "<ui-collection><span>Account</span><span>Billing</span><ui-separator></ui-separator><span>Sign out</span></ui-collection>"
+    },
+    {
+      "id": "vertical",
+      "label": "In a toolbar",
+      "subject": "component:separator",
+      "markup": "<ui-group><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation=\"vertical\"></ui-separator><ui-button>Paste</ui-button></ui-group>",
+      "note": "React: <Separator orientation=\"vertical\" />."
+    }
+  ]
+}

@@ -448,6 +448,22 @@
       "parts": [],
       "allowedParents": [],
       "behavior": "None."
+    },
+    "separator": {
+      "geometryFamily": "separator",
+      "element": "Host is the rule (role=separator, aria-orientation); not focusable; no children.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "None: a static rule. orientation sets aria-orientation and data-orientation."
     }
   }
 }

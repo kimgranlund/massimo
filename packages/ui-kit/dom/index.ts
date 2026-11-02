@@ -6,3 +6,4 @@ export * from './listbox.ts';
 export * from './range.ts';
 export * from './state.ts';
 export * from './events.ts';
+export * from './display.ts';

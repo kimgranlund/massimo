@@ -9,7 +9,7 @@ import { GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, ui-separator, [data-ui])';
 // Badge, tag and chip hosts in both renderers (the React ones are data-ui hosts).
 export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag], [data-ui=chip])';
 const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;
@@ -76,6 +76,9 @@ export const geometry = defineGlobalStyles({
     '--track': 'calc(4 * var(--u))',
     '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
   },
+
+  // Separator (resolveSeparator): as thick as the theme border, never thinner than a hairline.
+  ':is(ui-separator, [data-ui=separator])': { '--separator': 'max(1px, var(--b))' },
 });
 
 /**

@@ -4783,5 +4783,81 @@
         }
       }
     }
+  },
+  "separator": {
+    "thickness": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1,
+        "unit": "px"
+      },
+      "$description": "separator · thickness (height, or width when vertical) · B = min(border, u/2): a hairline at B = 0 and 1; the theme border above",
+      "$extensions": {
+        "com.massimo.formula": "max(1px, B)",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 1,
+          "u=2.25": 1,
+          "u=2.5": 1,
+          "u=2.75": 1,
+          "u=3": 1,
+          "u=3.5": 1,
+          "u=4": 1,
+          "u=4.5": 1,
+          "u=5": 1,
+          "u=5.5": 1,
+          "u=6": 1,
+          "u=6.5": 1,
+          "u=7": 1,
+          "u=7.5": 1,
+          "u=8": 1,
+          "u=8.5": 1,
+          "u=9": 1,
+          "u=9.5": 1,
+          "u=10": 1,
+          "u=10.5": 1,
+          "u=11": 1,
+          "u=11.5": 1,
+          "u=12": 1
+        }
+      }
+    },
+    "thicknessAtB2": {
+      "$type": "dimension",
+      "$value": {
+        "value": 2,
+        "unit": "px"
+      },
+      "$description": "separator · thickness at B = 2 · spans the other axis; no padding or margin (the container gap spaces it)",
+      "$extensions": {
+        "com.massimo.formula": "max(1px, min(2, u/2))",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 1,
+          "u=2.25": 1.125,
+          "u=2.5": 1.25,
+          "u=2.75": 1.375,
+          "u=3": 1.5,
+          "u=3.5": 1.75,
+          "u=4": 2,
+          "u=4.5": 2,
+          "u=5": 2,
+          "u=5.5": 2,
+          "u=6": 2,
+          "u=6.5": 2,
+          "u=7": 2,
+          "u=7.5": 2,
+          "u=8": 2,
+          "u=8.5": 2,
+          "u=9": 2,
+          "u=9.5": 2,
+          "u=10": 2,
+          "u=10.5": 2,
+          "u=11": 2,
+          "u=11.5": 2,
+          "u=12": 2
+        }
+      }
+    }
   }
 }

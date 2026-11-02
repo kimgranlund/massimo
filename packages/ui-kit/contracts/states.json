@@ -28,7 +28,7 @@
     "data-align": { "baseUi": true, "condition": null, "meaning": "The open popup's alignment to the trigger: start." },
     "data-selected": { "baseUi": true, "condition": "_selected", "meaning": "The selected option or swatch; the current slide's dot (swiper; Base UI has no carousel)." },
     "data-highlighted": { "baseUi": true, "condition": "_highlighted", "meaning": "The keyboard-highlighted option or swatch (aria-activedescendant); replaces data-active." },
-    "data-orientation": { "baseUi": true, "condition": null, "meaning": "horizontal or vertical: listbox, segmented, palette, range." },
+    "data-orientation": { "baseUi": true, "condition": null, "meaning": "horizontal or vertical: listbox, segmented, palette, range, separator." },
     "data-dragging": { "baseUi": true, "condition": "_dragging", "meaning": "A pointer drags the range thumb." },
     "data-progressing": { "baseUi": true, "condition": "_progressing", "meaning": "Progress with a value below the max." },
     "data-complete": { "baseUi": true, "condition": "_complete", "meaning": "Progress at the max." },
@@ -57,6 +57,7 @@
     "ui-swatch": { "host": ["data-invalid", "data-alpha"] },
     "ui-swiper": { "host": ["data-single"], "dot": ["data-selected"], "paddle": ["data-disabled"] },
     "ui-image": { "img": ["data-error"] },
+    "ui-separator": { "host": ["data-orientation"] },
     "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" }
   },
   "native": {

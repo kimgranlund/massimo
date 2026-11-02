@@ -239,6 +239,25 @@
         "composite"
       ],
       "ladder": "composite"
+    },
+    "separator": {
+      "id": "geometry:separator",
+      "resolver": [
+        "resolveSeparator"
+      ],
+      "summary": "A rule as thick as the theme border, never thinner than a hairline: max(1px, B), B = min(border, u/2). Horizontal spans the inline axis, vertical stretches across its flex or grid line; no padding or margin of its own (the container gap spaces it).",
+      "members": [
+        "component:separator"
+      ],
+      "searchTerms": [
+        "separator thickness",
+        "divider",
+        "rule"
+      ],
+      "csv": [
+        "separator"
+      ],
+      "ladder": "separator"
     }
   }
 }

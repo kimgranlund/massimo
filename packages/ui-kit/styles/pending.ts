@@ -21,4 +21,7 @@ export const pending = defineGlobalStyles({
   // Fields keep the block flow their controls reserve space in.
   ':is(ui-field, ui-field-grid):not(:defined)': { display: 'block' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
+  // A separator reserves its rule (thickness max(1px, B)) until its classes arrive.
+  'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },
+  'ui-separator[orientation=vertical]:not(:defined)': { height: 'auto', width: 'var(--separator)' },
 });

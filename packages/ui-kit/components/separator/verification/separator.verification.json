@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "separator",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/separator/separator.element.ts",
+      "sha256": "4746fad98f86a2e4bfce2916a865bd2387a3cb1f222322fdca810ae608088bd7"
+    },
+    {
+      "path": "components/separator/separator.react.tsx",
+      "sha256": "a00a835a096a0eba953d50f4820a7b10a334edc1ec5228a641047479a4179dde"
+    },
+    {
+      "path": "components/separator/separator.recipe.ts",
+      "sha256": "8571bdb3f89baac773e1fd47f09730d962a775d471be80b159321732131bee75"
+    },
+    {
+      "path": "components/separator/separator.manifest.json",
+      "sha256": "45fc5a5f76c0b0f03d10610d1b89280f2a04d95213b75c7ea4d1ab4497006c00"
+    },
+    {
+      "path": "dom/display.ts",
+      "sha256": "ed2ea85efe8af1f31223e2890018ab120118fadcfa98db5c77df9adc2f416172"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-separator|resolveSeparator\" test/separator.test.ts",
+          "covers": "role, aria-orientation, data-orientation, reflection, recipe class, no native elements; the resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-separator|resolveSeparator\" test/separator.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React Separator|state parity\" test/separator.test.ts",
+          "covers": "SSR markup, render and className function, state parity with the web component"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React Separator|state parity\" test/separator.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02): thickness max(1px, B) checked in apps/studio/geometry-check.html at every size × B 0 and 1 (horizontal height, vertical width, full span); growth: a horizontal separator spans any container width and a vertical one any row height, it has no text; RTL: nothing to mirror; focus: not focusable; light and dark screenshots of the Display family at the theme unit and the size ladder (3, 4, 6) on the Components page.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Separator with ui-separator at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

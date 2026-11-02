@@ -11,6 +11,7 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/separator/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -26,6 +27,7 @@ export const FAMILIES = [
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
+  ['display', 'Display', 'ui-separator'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -35,6 +37,8 @@ const media = css({ width: 'full', maxWidth: '[40rem]', borderRadius: 'xl', over
 const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: 'end' });
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
 const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
+const separatorDemo = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
+const separatorLadder = css({ display: 'flex', flexDirection: 'column', gap: '2', width: '[min(100%, 20rem)]' });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
 // Inline fields demo: a property panel (field grid) beside stacked fields.
 const panelCard = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderRadius: 'xl', bg: 'bg.subtle', width: '[min(100%, 22rem)]' });
@@ -101,6 +105,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
+    display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it.',
   };
   const CONTENT: Record<Family, ReactNode> = {
     actions: (
@@ -271,6 +276,19 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             {IMAGES.map((src, i) => <img key={i} src={src} alt={`Place ${i + 1}`} />)}
           </ui-image>
         </Row>
+      </>
+    ),
+    display: (
+      <>
+        <Row label="Separator">
+          <div className={separatorDemo}>
+            <ui-collection><span>Account</span><span>Billing</span><ui-separator /><span>Sign out</span></ui-collection>
+            <ui-group><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
+          </div>
+        </Row>
+        <SizeLadder family="separator" params={params}>
+          <div className={separatorLadder}><ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group><ui-separator /></div>
+        </SizeLadder>
       </>
     ),
   };

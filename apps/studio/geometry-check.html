@@ -14,7 +14,8 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/separator/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -49,6 +50,7 @@ for (const c of cases) {
     <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>
     <ui-palette id="pal"><ui-swatch color="red"></ui-swatch><ui-swatch color="blue"></ui-swatch><ui-swatch color="green"></ui-swatch></ui-palette>
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
+    <div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
     <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
@@ -219,6 +221,14 @@ for (const c of cases) {
     checks['progress.radius'] = [px(cs(ptr).borderTopLeftRadius), rp.trackRadius];
     checks['progress.fill'] = [r2(rect(pin).width), r2(trackFill('progress', 0.3, rect(ptr).width, g))];
     checks['progress.fill.radius'] = [px(cs(pin).borderTopRightRadius), rp.trackRadius];
+  }
+  // Separator: max(1px, B) thick, spanning the other axis.
+  {
+    const rsp = resolveSeparator(g), h = $('sepH'), v = $('sepV');
+    checks['separator.thickness'] = [r2(rect(h).height), rsp.thickness];
+    checks['separator.span'] = [r2(rect(h).width), 400];
+    checks['separator.vertical.thickness'] = [r2(rect(v).width), rsp.thickness];
+    checks['separator.vertical.span'] = [r2(rect(v).height), 40];
   }
   // Swiper: 8u round paddles inset 2u; 2u dots (active 4u) in 4u hit areas, u apart, 2u above the bottom.
   const swiperChecks = (name, host) => {
