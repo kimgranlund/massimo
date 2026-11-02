@@ -7,12 +7,12 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, paramVar, savedThemes, THEME_NAME, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, Scheme, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
 import { Canvas } from '../canvas/Canvas.tsx';
-import { STUDIO_ICON_SETS } from '../icons.ts';
+import { ICON_SET_NAMES } from '@massimo/ui-kit/icons';
 import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent } from './wc.tsx';
 import { buildSpectrum } from './spectrum.ts';
 
@@ -56,8 +56,6 @@ export function App() {
   const [roles, setRoles] = useState<Roles>(DEFAULT_ROLES);
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
-  const [themes, setThemes] = useState(savedThemes);
-  const [name, setName] = useState('');
   const [status, setStatus] = useState('');
 
   // Spectrum generation, debounced: it takes ~300ms, so it runs once input pauses.
@@ -103,7 +101,7 @@ export function App() {
   });
 
   const reset = () => {
-    setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setName('');
+    setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES);
     setStatus('Reset to defaults');
   };
 
@@ -118,25 +116,6 @@ export function App() {
   const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify(snapshot(), null, 2)).then(() => setStatus('Copied settings JSON'), () => setStatus('Copy failed')));
   const resetRef = useEvent('click', reset);
   const randomRef = useEvent('click', () => setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)));
-  const saveRef = useEvent('click', () => void save());
-  const nameRef = useEvent('input', (el) => setName(el.value));
-
-  const nameError = name && !THEME_NAME.test(name) ? 'Lowercase letters, digits and dashes.' : '';
-  async function save() {
-    if (!name || nameError) return;
-    const body = { name, params: { ...diffFromDefaults(params), ...(icons !== 'phosphor' ? { icons } : {}) } };
-    const res = await fetch('/__studio/themes', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
-    const out = await res.json().catch(() => ({}));
-    if (!res.ok) return setStatus(`Not saved: ${out.error ?? res.status}`);
-    setThemes((t) => ({ ...t, [out.saved]: out.params }));
-    setStatus(`Saved "${out.saved}"`);
-  }
-  const loadTheme = (key: string) => {
-    const { icons: themeIcons, ...nums } = themes[key] ?? {};
-    setParams({ ...defaultParams, ...nums });
-    setIcons(themeIcons ?? 'phosphor');
-    setName(key);
-  };
 
   const geometry = (
     <Group title="Geometry">
@@ -202,7 +181,7 @@ export function App() {
           )}
           {view === 'components' && (
             <Group title="Look">
-              <Select label="Icons" value={icons} options={STUDIO_ICON_SETS.map((n) => [n, n])} onValue={setIcons} />
+              <Select label="Icons" value={icons} options={ICON_SET_NAMES.map((n) => [n, n])} onValue={setIcons} />
             </Group>
           )}
           {view === 'colors' && (
@@ -243,11 +222,6 @@ export function App() {
               </Group>
             </>
           )}
-          <Group title="Theme">
-            <Select label="Start from" value={themes[name] ? name : 'default'} options={[['default', 'Default'], ...Object.keys(themes).map((t) => [t, t] as [string, string])]} onValue={(v) => loadTheme(v === 'default' ? '' : v)} />
-            <Field label="Name"><ui-input ref={nameRef} label="Theme name" placeholder="brand-x" value={name} error={nameError} /></Field>
-            <Field label=""><ui-button ref={saveRef} disabled={!name || !!nameError}>Save theme</ui-button></Field>
-          </Group>
         </div>
 
         <footer className={s.footer}>

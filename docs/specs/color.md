@@ -20,6 +20,7 @@ Roles alias ramp steps; an entry may name a different dark step or an alpha (`ro
 | `--colors-bg-subtle`, `--colors-bg-muted` | neutral 2, 3 |
 | `--colors-bg-muted-hover`, `--colors-bg-muted-active` (hover, press) | neutral 4, 5 |
 | `--colors-bg-overlay` (menus, popovers, dialogs, drawers; with `shadow.md`) | neutral 1 light, 2 dark |
+| `--colors-bg-raised` (an element raised on a muted track: the selected segment) | neutral 1 light, 5 dark |
 | `--colors-bg-inverse`, `--colors-fg-inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
 | `--colors-bg-backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
 | `--colors-border`, `--colors-border-strong` | neutral 6, 7 |

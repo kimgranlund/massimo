@@ -1777,6 +1777,11 @@
         "$value": "{color.spectrum.neutral.1}",
         "$description": "neutral step 1"
       },
+      "bg-raised": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.1}",
+        "$description": "neutral step 1"
+      },
       "bg-inverse": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.12}",

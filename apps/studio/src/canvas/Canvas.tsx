@@ -10,7 +10,6 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
-import '../icons.ts';
 import { Fragment, useEffect, useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';

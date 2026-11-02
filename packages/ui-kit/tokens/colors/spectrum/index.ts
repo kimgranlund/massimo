@@ -111,6 +111,9 @@ export const ROLE_STEPS = {
   // Floating layers (menus, popovers, dialogs, drawers): the page tone in light, one step up in dark,
   // where shadows barely read. Tooltips invert; the backdrop dims the page in both schemes.
   'bg-overlay': ['neutral', 1, { dark: 2 }],
+  // A raised element sitting on a muted track (segmented selection): lighter than the track in both
+  // schemes, so the page tone in light and a step above the track in dark.
+  'bg-raised': ['neutral', 1, { dark: 5 }],
   'bg-inverse': ['neutral', 12], 'fg-inverse': ['neutral', 1],
   'bg-backdrop': ['neutral', 12, { dark: 1, alpha: 0.4, darkAlpha: 0.7 }],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
