@@ -30,12 +30,12 @@ const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` 
 const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
 
-/** Surprise mapping: every role, including feedback and the neutral, from the generated families. */
-function randomRoles(accents: string[], neutrals: string[]): Roles {
+/** Surprise mapping: brand and data roles from the generated families; feedback roles keep their meaning. */
+function randomRoles(current: Roles, accents: string[], neutrals: string[]): Roles {
   const a = shuffle(accents), data = shuffle(accents);
   return {
     primary: a[0], secondary: a[1 % a.length], neutral: pick(neutrals),
-    critical: pick(accents), warning: pick(accents), success: pick(accents), info: pick(accents),
+    critical: current.critical, warning: current.warning, success: current.success, info: current.info,
     data1: data[0], data2: data[1 % data.length], data3: data[2 % data.length], data4: data[3 % data.length], data5: data[4 % data.length], data6: data[5 % data.length],
   };
 }
@@ -117,7 +117,7 @@ export function App() {
   const schemeRef = useEvent('click', () => setScheme((v) => NEXT_SCHEME[v]));
   const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify(snapshot(), null, 2)).then(() => setStatus('Copied settings JSON'), () => setStatus('Copy failed')));
   const resetRef = useEvent('click', reset);
-  const randomRef = useEvent('click', () => setRoles(randomRoles(familyNames.accents, familyNames.neutrals)));
+  const randomRef = useEvent('click', () => setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)));
   const saveRef = useEvent('click', () => void save());
   const nameRef = useEvent('input', (el) => setName(el.value));
 

@@ -37,4 +37,4 @@
 
 Browser checks: `/geometry-check.html` (rendered CSS against the resolver) and `/react-check.html` (each native React renderer against its web component at five sizes); both print `"fails": []` when they match.
 
-Colors view: role selects grouped as Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6; **Random** assigns every role, the neutral included, from the generated families. Pane labels show a trailing `(unit)` as a suffix at the label's end.
+Colors view: role selects grouped as Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6; **Random** reassigns the brand roles (the neutral included) and data 1–6 from the generated families; feedback roles keep their colors. Pane labels show a trailing `(unit)` as a suffix at the label's end.
