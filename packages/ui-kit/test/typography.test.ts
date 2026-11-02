@@ -27,6 +27,8 @@ test('line heights round up to the rhythm unit; controls keep 1.2; rhythm 0 is n
 
 test('voices: roles point at voices, voices at faces; serif display/heading drop to 400', () => {
   assert.equal(resolveType('heading-1').face, 'sans');
+  assert.equal(resolveType('control').face, 'controls', 'the ui voice uses the Controls face');
+  assert.match(resolveType('label').stack, /^system-ui/);
   assert.equal(resolveType('display').face, 'display', 'display is its own face');
   assert.equal(resolveType('code').face, 'mono');
   assert.equal(resolveType('section-kicker').voice, 'ui', 'kickers are a role on the ui voice');

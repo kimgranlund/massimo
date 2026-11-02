@@ -4,12 +4,12 @@
 // unitless 1.2. styles/typography.ts computes the same values in CSS with pow() and round().
 
 // Fonts in three layers, like colors: faces (the stacks) -> voices (what text is for) -> roles.
-export const FACES = ['sans', 'serif', 'mono', 'display'] as const;
+export const FACES = ['sans', 'serif', 'mono', 'display', 'controls'] as const;
 export type Face = (typeof FACES)[number];
 export const VOICES = ['display', 'heading', 'body', 'ui', 'numeric', 'code'] as const;
 export type Voice = (typeof VOICES)[number];
-/** Default face per voice. `numeric` follows `ui`; `display` is its own face (falls back to sans). */
-export const DEFAULT_VOICES: Record<Voice, Face> = { display: 'display', heading: 'sans', body: 'sans', ui: 'sans', numeric: 'sans', code: 'mono' };
+/** Default face per voice. `ui` (controls, labels, kickers) uses the Controls face; `numeric` follows `ui`; `display` is its own face (falls back to sans). */
+export const DEFAULT_VOICES: Record<Voice, Face> = { display: 'display', heading: 'sans', body: 'sans', ui: 'controls', numeric: 'controls', code: 'mono' };
 /** Voices whose bold weight drops to regular on a serif face (massimo-ui's serif heading style). */
 export const SERIF_REGULAR_VOICES: ReadonlySet<Voice> = new Set(['display', 'heading']);
 /** Figures for the numeric voice: aligned columns, lining digits. */
@@ -53,6 +53,8 @@ export const FONT_FAMILIES: Record<Face, string> = {
   serif: 'Baskerville, "Palatino Linotype", Palatino, serif',
   mono: 'ui-monospace, "SF Mono", Menlo, Consolas, monospace',
   display: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+  /** Controls: the platform UI font, so buttons, fields and labels match the OS. */
+  controls: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
 };
 
 /** Curated alternative stacks per face, for theme pickers. The first entry is the default. */
@@ -60,6 +62,7 @@ export const FACE_STACKS: Record<Face, [string, string][]> = {
   sans: [['Helvetica Neue', FONT_FAMILIES.sans], ['System UI', 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'], ['Avenir Next', '"Avenir Next", Avenir, "Segoe UI", sans-serif'], ['Gill Sans', '"Gill Sans", "Gill Sans MT", Calibri, sans-serif']],
   serif: [['Baskerville', FONT_FAMILIES.serif], ['Georgia', 'Georgia, "Times New Roman", serif'], ['Charter', 'Charter, "Bitstream Charter", "Sitka Text", Cambria, serif'], ['Didot', 'Didot, "Bodoni 72", "Bodoni MT", serif']],
   mono: [['UI Monospace', FONT_FAMILIES.mono], ['Menlo', 'Menlo, Monaco, Consolas, monospace'], ['Courier', '"Courier New", Courier, monospace']],
+  controls: [['System UI', FONT_FAMILIES.controls], ['Helvetica Neue', FONT_FAMILIES.sans], ['Avenir Next', '"Avenir Next", Avenir, "Segoe UI", sans-serif'], ['Gill Sans', '"Gill Sans", "Gill Sans MT", Calibri, sans-serif']],
   display: [['Same as sans', FONT_FAMILIES.display], ['Didot', 'Didot, "Bodoni 72", "Bodoni MT", serif'], ['Futura', 'Futura, "Century Gothic", "Avenir Next", sans-serif'], ['Avenir Next Condensed', '"Avenir Next Condensed", "Arial Narrow", sans-serif'], ['Baskerville', FONT_FAMILIES.serif]],
 };
 

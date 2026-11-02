@@ -1,5 +1,8 @@
 // <ui-select>: select-only combobox. Focus stays on the trigger (role="combobox");
 // the popup is a [popover] listbox holding the authored <ui-option> children.
+// The trigger follows the construction pattern (components/slots.ts):
+//   [leading] [prefix] [contents = value] [suffix] [trailing = chevron]
+// Author adornments as children with slot="leading" | "prefix" | "suffix".
 import { UIFormElement, define, html, signal, type Problem } from '../../core/index.ts';
 import {
   applyAttrs, comboboxAttrs, createTypeahead, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
@@ -8,6 +11,9 @@ import {
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
 import { ensureId, optionList } from '../listbox/options.ts';
+import { adoptAdornments } from '../slots.ts';
+
+const TRIGGER_ADORNMENTS = ['leading', 'prefix', 'suffix'] as const;
 
 export class UISelect extends UIFormElement {
   static properties = {
@@ -30,6 +36,7 @@ export class UISelect extends UIFormElement {
   #active = signal(-1);
   #typeahead = createTypeahead();
   #pending: Element[] = [];
+  #adornments: Element[] = [];
   #list = optionList(() => this.popup);
   #hostObserver?: MutationObserver;
 
@@ -43,6 +50,7 @@ export class UISelect extends UIFormElement {
     this.#default = this.getAttribute('value') ?? '';
     // Authored options (or ones already in a popup from a previous connect) move into the popup.
     this.#pending = [...this.querySelectorAll(':scope > ui-option, :scope > [data-part=popup] > ui-option')];
+    this.#adornments = [...this.querySelectorAll(TRIGGER_ADORNMENTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=trigger] > [data-part=${p}] > [slot]`).join(', '))];
     this.#hostObserver = new MutationObserver(() => this.#adopt([...this.children].filter((c) => c.localName === 'ui-option')));
     this.#hostObserver.observe(this, { childList: true });
   }
@@ -59,7 +67,9 @@ export class UISelect extends UIFormElement {
     return html`
       <span data-part="label" ?hidden=${!this.label} @click=${this.#focusTrigger}>${this.label}</span>
       <div data-part="trigger" @keydown=${this.#onKeydown} @click=${this.#onTriggerClick} @blur=${this.#onBlur}>
+        <span data-part="leading" hidden></span><span data-part="prefix" hidden></span>
         <span data-part="contents" ?data-placeholder=${!selected}>${selected?.label || this.placeholder}</span>
+        <span data-part="suffix" hidden></span>
         <span data-part="trailing" aria-hidden="true"><i name="caret-down"></i></span>
       </div>
       <div data-part="popup" popover="manual" @pointerdown=${this.#keepFocus} @mousedown=${this.#keepFocus} @click=${this.#onOptionClick}></div>
@@ -70,6 +80,7 @@ export class UISelect extends UIFormElement {
   update() {
     const [label, trigger, popup, description, error] = this.children as unknown as HTMLElement[];
     if (this.#pending.length) { this.#adopt(this.#pending); this.#pending = []; this.#list.observe(popup); }
+    if (this.#adornments.length) { adoptAdornments(trigger, this.#adornments, TRIGGER_ADORNMENTS); this.#adornments = []; }
     const opts = this.options;
     const open = this.#open.value;
     const active = open ? this.#active.value : -1;

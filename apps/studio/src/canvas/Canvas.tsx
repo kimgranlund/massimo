@@ -174,12 +174,19 @@ function Components() {
       </header>
 
       <Divider />
-      <Section id="buttons" title="Buttons" note="Leading / contents / trailing slots, each at least 6u; padding 1u; text 10px + u.">
+      <Section id="buttons" title="Buttons" note="Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u.">
         <Row label="Slots">
           <ui-button><i slot="leading" name="plus" />Add item</ui-button>
           <ui-button>Next<i slot="trailing" name="arrow-right" /></ui-button>
           <ui-button aria-label="Add"><i slot="leading" name="plus" /></ui-button>
           <ui-button icon-size="fill"><span slot="leading" className={avatar} />Kim</ui-button>
+        </Row>
+        <Row label="Prefix / suffix">
+          <ui-button><i slot="leading" name="credit-card" /><span slot="prefix">$</span>Pay 40<span slot="suffix">⌘P</span><i slot="trailing" name="caret-down" /></ui-button>
+          <ui-button>Save<span slot="suffix">⌘S</span></ui-button>
+          <ui-button><i slot="leading" name="bell" />Inbox<span slot="suffix">12</span></ui-button>
+          <ui-chip selectable>Unread<span slot="suffix">4</span></ui-chip>
+          <ui-tag><i slot="leading" name="tag" />Size<span slot="suffix">M</span></ui-tag>
         </Row>
         <Row label="Icon sizes">
           {(['sm', 'md', 'lg'] as const).map((k) => <ui-button key={k} icon-size={k}><i slot="leading" name="star" />{k}</ui-button>)}
@@ -218,6 +225,8 @@ function Components() {
           <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
           <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
           <ui-input name="team" label="Team" error="That name is taken." value="Acme" />
+          <ui-input name="price" label="Price" value="40"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
+          <ui-input name="search" label="Search" placeholder="Find a file"><i slot="leading" name="magnifying-glass" /><span slot="suffix">⌘K</span></ui-input>
           <ui-select name="role" label="Role" required>
             <ui-option value="design">Designer</ui-option>
             <ui-option value="eng">Engineer</ui-option>

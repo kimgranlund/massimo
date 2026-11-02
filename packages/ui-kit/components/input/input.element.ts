@@ -1,7 +1,11 @@
 // <ui-input>: single-line text field with zero native form elements.
 // The control is a contenteditable role="textbox"; the label is a span wired by
 // aria-labelledby; the host is form-associated through UIFormElement.
+// The control follows the construction pattern (components/slots.ts):
+//   [leading] [prefix] [contents = editor] [suffix] [trailing]
+// Author adornments as children with slot="leading" | "prefix" | "suffix" | "trailing".
 import { UIFormElement, define, html, type Problem } from '../../core/index.ts';
+import { adoptAdornments, ADORNMENT_PARTS } from '../slots.ts';
 import { applyAttrs, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, type TextType } from '../../dom/index.ts';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,11 +36,14 @@ export class UIInput extends UIFormElement {
 
   #id = '';
   #default = '';
+  #adornments: Element[] = [];
 
   connected() {
     this.#id = this.id ? `${this.id}-field` : uid('input');
     // Like a native input, the `value` attribute is the default value used on form reset.
     this.#default = this.getAttribute('value') ?? '';
+    // Authored adornments (or ones already placed on a previous connect) join the control.
+    this.#adornments = [...this.querySelectorAll(ADORNMENT_PARTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=control] > [data-part=${p}] > [slot]`).join(', '))];
   }
 
   template() {
@@ -44,8 +51,10 @@ export class UIInput extends UIFormElement {
     return html`
       <span data-part="label" ?hidden=${!this.label} @click=${this.#focusEditor}>${this.label}</span>
       <div data-part="control" @click=${this.#onControlClick}>
+        <span data-part="leading" hidden></span><span data-part="prefix" hidden></span>
         <div data-part="contents" @beforeinput=${this.#onBeforeInput} @input=${this.#onInput}
           @blur=${this.#onBlur} @copy=${this.#guardSecret} @cut=${this.#guardSecret}></div>
+        <span data-part="suffix" hidden></span><span data-part="trailing" hidden></span>
       </div>
       <span data-part="description" ?hidden=${!this.description}>${this.description}</span>
       <span data-part="error" ?hidden=${!message}>${message}</span>`;
@@ -53,7 +62,8 @@ export class UIInput extends UIFormElement {
 
   update() {
     const [label, control, description, error] = this.children as unknown as HTMLElement[];
-    const editor = control.firstElementChild as HTMLElement;
+    if (this.#adornments.length) { adoptAdornments(control, this.#adornments); this.#adornments = []; }
+    const editor = this.editor!;
     const a = fieldAttrs({
       id: this.#id, hasLabel: !!this.label, hasDescription: !!this.description, error: this.#message() || undefined,
       required: this.required, disabled: this.isDisabled, readonly: this.readonly,
@@ -82,14 +92,14 @@ export class UIInput extends UIFormElement {
   }
 
   /** The editable element, for selection APIs. */
-  get editor() { return (this.children[1]?.firstElementChild ?? undefined) as HTMLElement | undefined; }
+  get editor() { return (this.querySelector(':scope > [data-part=control] > [data-part=contents]') ?? undefined) as HTMLElement | undefined; }
   focus(options?: FocusOptions) { this.editor?.focus(options); }
 
   #message() { return this.error || (this.userInvalid ? this.problem!.message : ''); }
 
   #focusEditor = () => { if (!this.isDisabled) this.focus(); };
-  // The control's 1u padding belongs to the field: a press there focuses the text.
-  #onControlClick = (e: Event) => { if (e.target === e.currentTarget) this.#focusEditor(); };
+  // The control's padding and adornments belong to the field: a press there focuses the text.
+  #onControlClick = (e: Event) => { if (e.target !== this.editor && !this.editor?.contains(e.target as Node)) this.#focusEditor(); };
 
   #onBeforeInput = (e: InputEvent) => {
     if (onTextBeforeInput(e) === 'submit' && !this.isDisabled) this.form?.requestSubmit();

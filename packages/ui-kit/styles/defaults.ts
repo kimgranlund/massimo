@@ -83,6 +83,12 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=trigger] > [data-part=contents]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
   'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.muted' },
   'ui-select > [data-part=trigger] > [data-part=trailing]': { color: 'fg.muted' },
+  // Prefix / suffix adornments: the label's color at 65%, so they read as secondary on any fill.
+  ':is(ui-button, ui-option, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, [data-ui=button], ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
+    color: 'color-mix(in oklch, currentColor 65%, transparent)',
+  },
+  // Icons in field adornment slots are secondary too.
+  ':is(ui-input, [data-ui=input]) > [data-part=control] > :is([data-part=leading], [data-part=trailing])': { color: 'fg.muted' },
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',

@@ -31,8 +31,8 @@ Sources of truth, kept in agreement by tests:
 |---|---|---|
 | height | 8u | 32 |
 | padding | 1u − B (the border lives inside the 1u) | 4 |
-| slots | leading, contents, trailing: min 6u × 6u; empty slots are hidden | 24 |
-| contents padding | 1u inline beside a slot, 2u on a side with no leading/trailing element (buttons and options); 0.75u block; line height 4.5u | 4 or 8 / 3 / 18 |
+| parts | construction pattern `[leading] [prefix] [contents] [suffix] [trailing]`; leading/trailing are icon slots, min 6u × 6u; empty parts are hidden | 24 |
+| text run | prefix, contents (the label) and suffix: 0.5u on a side next to another text part (so they sit 1u apart), 1u beside a slot, 2u at a bare edge; 0.75u block; line height 4.5u (`resolveTextRun`) | 2, 4 or 8 / 3 / 18 |
 | font | 10px + u | 14 |
 | icon sm / md / lg | font − 0.5u / font + 0.5u / font + 1.5u, capped at 6u | 12 / 16 / 20 |
 | icon fill | the whole 6u slot, object-fit cover, centered; radius = control radius − u | 24 |
@@ -45,9 +45,11 @@ Sources of truth, kept in agreement by tests:
 
 Icons capped by the slot: `md` below u≈2.2 and `lg` below u≈2.9 (at u=2: md and lg are 12px, the slot size), so a control never grows past 8u.
 
-Usage: `<ui-button><svg slot="leading">…</svg>Save</ui-button>`. Anything with `slot="leading"`/`"trailing"` goes in that slot; everything else is contents. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} trailing={…} iconSize="lg" size={3}>`.
+Usage: `<ui-button><i slot="leading" name="credit-card"></i><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span></ui-button>`. Anything with `slot="leading" | "prefix" | "suffix" | "trailing"` goes in that part; everything else is contents. Prefix and suffix are short text adornments (a currency, a unit, a shortcut, a count) in the label color at 65%. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} prefix={…} suffix={…} trailing={…} iconSize="lg" size={3}>`.
 
-Inputs and select triggers are laid out as buttons: the host (input `[data-part=control]`, select `[data-part=trigger]`) has only 1u (padding u − B plus border), and its parts carry the rest with the button rules. The input's text is its `[data-part=contents]` (2u each side, as a slotless label). The select trigger is contents (the value, 2u | 1u) plus the chevron in a 6u `[data-part=trailing]` slot. Field states (`aria-invalid`, `aria-readonly`, `aria-disabled`) sit on the input's contents and the select's trigger; styles read both through `:has()`. Indicators (the select chevron and any `caret-*` icon in a slot) are always icon size sm, whatever `icon-size` says.
+The same pattern and text-run rule apply to every labelled component: button, option, the input control, the select trigger, tag and chip (edges 1u bare and beside a slot), and checkbox/radio/switch (the indicator is the leading slot; bare end edge 0). Badge is text only.
+
+Inputs and select triggers are laid out as buttons: the host (input `[data-part=control]`, select `[data-part=trigger]`) has only 1u (padding u − B plus border), and its parts carry the rest with the button rules. The input control is `[leading] [prefix] [contents = editor] [suffix] [trailing]`, filled from children with those `slot` values (`<ui-input label="Price"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>`); with no adornments the text has 2u each side, as a slotless label. The select trigger is `[leading] [prefix] [contents = value] [suffix] [trailing = chevron]`; authors may fill leading, prefix and suffix. Field states (`aria-invalid`, `aria-readonly`, `aria-disabled`) sit on the input's contents and the select's trigger; styles read both through `:has()`. Indicators (the select chevron and any `caret-*` icon in a slot) are always icon size sm, whatever `icon-size` says.
 
 ## Choices, tracks, swatches, swiper
 

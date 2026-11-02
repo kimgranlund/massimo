@@ -70,6 +70,33 @@ export function resolveButtonContents(leading: boolean, trailing: boolean, input
   return { start: leading ? u : 2 * u, end: trailing ? u : 2 * u };
 }
 
+export type TextPart = 'prefix' | 'contents' | 'suffix';
+export interface ControlParts { leading?: boolean; prefix?: boolean; contents?: boolean; suffix?: boolean; trailing?: boolean }
+
+/**
+ * Construction pattern for every labelled control:
+ *   [leading icon slot] [prefix] [contents (label)] [suffix] [trailing icon slot]
+ * The text parts (prefix, contents, suffix) form one run. A text part's inline edge is
+ *   0.5u beside another text part (so adjacent text parts sit 1u apart),
+ *   `slotEdge` beside a slot (1u for controls), `bareEdge` at the host edge (2u for controls).
+ * Absent parts take no space. Badge, tag and chip pass their own edges (resolveBtg).
+ */
+export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slotEdge?: number; bareEdge?: number } = {}) {
+  const u = resolveControl(input).unit;
+  const slotEdge = input.slotEdge ?? u, bareEdge = input.bareEdge ?? 2 * u;
+  const p = { contents: true, ...parts };
+  const order: TextPart[] = ['prefix', 'contents', 'suffix'];
+  const shown = order.filter((k) => p[k]);
+  const out: Partial<Record<TextPart, { start: number; end: number }>> = {};
+  shown.forEach((k, i) => {
+    out[k] = {
+      start: i > 0 ? 0.5 * u : p.leading ? slotEdge : bareEdge,
+      end: i < shown.length - 1 ? 0.5 * u : p.trailing ? slotEdge : bareEdge,
+    };
+  });
+  return out;
+}
+
 // ── Containers ──
 // Each level has a padding (units of u) and a max radius that keeps corners concentric with
 // a 3u control sitting in the corner (3u + padding). Padding and gap are theme parameters

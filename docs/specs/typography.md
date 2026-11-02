@@ -21,7 +21,7 @@ massimo-ui's type roles and font families, placed on our u ramp. Reference: `pac
 
 Fonts work in three layers, like colors (ramps → roles):
 
-1. **Faces** (the stacks): `sans`, `serif`, `mono`, `display`. Tokens `fonts.*`, CSS `--fonts-<face>`. `display` starts as the sans stack.
+1. **Faces** (the stacks): `sans`, `serif`, `mono`, `display`, `controls`. Tokens `fonts.*`, CSS `--fonts-<face>`. `display` starts as the sans stack; `controls` is the platform UI font (system-ui).
 2. **Voices** (what text is for), each pointing at a face:
 
    | Voice | Default face | Used by |
@@ -29,8 +29,8 @@ Fonts work in three layers, like colors (ramps → roles):
    | display | display | display |
    | heading | sans | heading-1–3 |
    | body | sans | body-large, body, caption |
-   | ui | sans | control, label, control-small, kickers |
-   | numeric | follows ui (sans) | `data-numeric` (stats, counters, tables), with `tabular-nums lining-nums` |
+   | ui | controls | control, label, control-small, kickers |
+   | numeric | follows ui (controls) | `data-numeric` (stats, counters, tables), with `tabular-nums lining-nums` |
    | code | mono | code |
 
 3. **Roles** (below) point at voices. Kickers are a role on the ui voice (case, tracking, weight), not a voice of their own; numerics are mostly font features, so `numeric` follows `ui` unless repointed.
@@ -63,6 +63,7 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/84
 - sans and display: `"Helvetica Neue", Helvetica, Arial, sans-serif`
 - serif: `Baskerville, "Palatino Linotype", Palatino, serif`
 - mono: `ui-monospace, "SF Mono", Menlo, Consolas, monospace`
+- controls: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`
 
 ## Using a role
 

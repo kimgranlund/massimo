@@ -11,7 +11,7 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -36,7 +36,11 @@ for (const c of cases) {
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     ${LEVELS.map((l) => `<ui-${l} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
     ${Object.keys(TYPE_ROLES).map((r) => `<span data-type="${r}" style="display:block">Ag</span>`).join('')}
-    <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>`;
+    <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>
+    <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
+    <ui-button id="adorn">Save<span slot="suffix">⌘S</span></ui-button>
+    <ui-input id="money" label="M"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
+    <ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
@@ -102,6 +106,23 @@ for (const c of cases) {
     'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
     'chip.radius': [px(cs(chip).borderTopLeftRadius), rc.radius],
   };
+  // Construction pattern: [leading] [prefix] [contents] [suffix] [trailing] (resolveTextRun).
+  const part = (el, p) => el.querySelector(`:scope > [data-part=${p}]`);
+  const runChecks = (name, host, parts, opts) => {
+    const want = resolveTextRun(parts, { ...g, ...opts });
+    for (const [p, w] of Object.entries(want)) {
+      checks[`${name}.${p}.start`] = [px(cs(part(host, p)).paddingLeft), w.start];
+      checks[`${name}.${p}.end`] = [px(cs(part(host, p)).paddingRight), w.end];
+    }
+  };
+  const $ = (id) => box.querySelector('#' + id);
+  runChecks('pattern.full', $('full'), { leading: true, prefix: true, suffix: true, trailing: true });
+  runChecks('pattern.suffix', $('adorn'), { suffix: true });
+  runChecks('pattern.input', part($('money'), 'control'), { prefix: true, suffix: true });
+  runChecks('pattern.chip', $('chipSfx'), { suffix: true }, { slotEdge: c.unit, bareEdge: c.unit });
+  runChecks('pattern.checkbox', $('chkSfx'), { leading: true, suffix: true }, { bareEdge: 0 });
+  checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
+  checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];
   const choice = (sel) => box.querySelector(`${sel} [data-part=box]`);
   const rck = resolveChoice('checkbox', g), rs = resolveChoice('switch', g), rt2 = resolveTrack('range', g), rsw = resolveSwatch(g);
   const range = box.querySelector('ui-range');

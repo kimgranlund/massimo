@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, popupOffset, resolveBtg, resolveChoice, resolveTrack, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -26,6 +26,7 @@ export const rows: Row[] = [
   { id: 'control.slot', family: 'control', element: 'button, option', quantity: 'slot (leading / contents / trailing) min size', formula: '6u', value: (u) => ctl(u).slot, status: 'implemented', notes: 'empty slots hidden; icon-only button = 8u square' },
   { id: 'control.contents.paddingInline', family: 'control', element: 'button, option', quantity: 'contents inline padding beside a slot', formula: 'u', value: (u) => ctl(u).contents.paddingInline, status: 'implemented', notes: '' },
   { id: 'button.contents.paddingInline.open', family: 'control', element: 'button, option', quantity: 'label padding on a side without leading/trailing', formula: '2u', value: (u) => resolveButtonContents(false, false, { unit: u }).start, status: 'implemented', notes: 'text-only: 2u both sides; leading only: 1u start, 2u end' },
+  { id: 'control.textRun.between', family: 'control', element: 'button, option, input control, select trigger, tag, chip, choices', quantity: 'gap between adjacent text parts (prefix | label | suffix)', formula: '0.5u + 0.5u', value: (u) => { const r = resolveTextRun({ prefix: true }, { unit: u }); return r.prefix!.end + r.contents!.start; }, status: 'implemented', notes: 'construction pattern [leading] [prefix] [contents] [suffix] [trailing]; text-run edges: 1u beside a slot, 2u bare (tag/chip 1u, choices 0)' },
   { id: 'control.contents.paddingBlock', family: 'control', element: 'button, option', quantity: 'contents block padding', formula: '0.75u', value: (u) => ctl(u).contents.paddingBlock, status: 'implemented', notes: '' },
   { id: 'control.contents.lineHeight', family: 'control', element: 'button, option', quantity: 'contents line height', formula: '4.5u', value: (u) => ctl(u).contents.lineHeight, status: 'implemented', notes: 'below font size at u < 2.86 (tight, not clipped)' },
   { id: 'control.font', family: 'control', element: 'all controls', quantity: 'font size', formula: '10 + u', value: (u) => ctl(u).fontSize, status: 'implemented', notes: '' },

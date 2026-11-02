@@ -277,29 +277,56 @@ test('ui-select: outside pointerdown closes; required; reconnect keeps options',
   sel.remove();
 });
 
-test('slots: icons sort into leading/trailing, the rest into contents; empty slots hidden', async () => {
+test('slots: construction pattern leading / prefix / contents / suffix / trailing; empty parts hidden', async () => {
+  const part = (el: Element, name: string) => el.querySelector(`:scope > [data-part=${name}]`) as HTMLElement;
   const b = document.createElement('ui-button');
-  b.innerHTML = '<svg slot="leading"></svg>Save<i slot="trailing"></i>';
+  b.innerHTML = '<svg slot="leading"></svg><span slot="prefix">$</span>Save<span slot="suffix">⌘S</span><i slot="trailing"></i>';
   document.body.append(b);
-  const parts = [...b.children].map((c) => c.getAttribute('data-part'));
-  assert.deepEqual(parts, ['leading', 'contents', 'trailing']);
-  assert.equal(b.children[1].textContent, 'Save');
-  assert.equal(b.children[0].firstElementChild!.localName, 'svg');
+  assert.deepEqual([...b.children].map((c) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
+  assert.equal(part(b, 'contents').textContent, 'Save');
+  assert.equal(part(b, 'prefix').textContent, '$');
+  assert.equal(part(b, 'suffix').textContent, '⌘S');
+  assert.equal(part(b, 'leading').firstElementChild!.localName, 'svg');
 
   const icon = document.createElement('ui-button');
   icon.innerHTML = '<svg slot="leading"></svg>';
   document.body.append(icon);
-  assert.equal((icon.children[1] as HTMLElement).hidden, true, 'icon-only: contents hidden');
-  assert.equal((icon.children[2] as HTMLElement).hidden, true);
+  for (const p of ['prefix', 'contents', 'suffix', 'trailing']) assert.equal(part(icon, p).hidden, true, `icon-only: ${p} hidden`);
 
   b.querySelector('i')!.setAttribute('slot', 'leading');
   await tick(); await tick();
-  assert.equal(b.children[0].children.length, 2, 're-sorted on slot change');
-  assert.equal((b.children[2] as HTMLElement).hidden, true);
+  assert.equal(part(b, 'leading').children.length, 2, 're-sorted on slot change');
+  assert.equal(part(b, 'trailing').hidden, true);
+  b.querySelector('[slot=suffix]')!.remove();
   b.append('!');
   await tick(); await tick();
-  assert.equal(b.children[1].textContent, 'Save!', 'late text joins contents');
+  assert.equal(part(b, 'contents').textContent, 'Save!', 'late text joins contents');
+  assert.equal(part(b, 'suffix').hidden, true, 'emptied suffix hides');
   b.remove(); icon.remove();
+});
+
+test('ui-input and ui-select: adornments join the control / trigger in pattern order', async () => {
+  const d = document.createElement('div');
+  d.innerHTML = `<ui-input label="Price"><i slot="leading" name="tag"></i><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
+    <ui-select label="Size"><span slot="prefix">Size</span><ui-option value="m">Medium</ui-option></ui-select>`;
+  document.body.append(d);
+  await tick();
+  const input = d.querySelector('ui-input') as any, select = d.querySelector('ui-select') as any;
+  const control = input.querySelector(':scope > [data-part=control]');
+  assert.deepEqual([...control.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
+  assert.equal(control.querySelector('[data-part=prefix]').textContent, '$');
+  assert.equal(control.querySelector('[data-part=suffix]').textContent, 'USD');
+  assert.equal(control.querySelector('[data-part=trailing]').hidden, true);
+  assert.equal(input.editor, control.querySelector('[data-part=contents]'));
+  const trigger = select.trigger;
+  assert.deepEqual([...trigger.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
+  assert.equal(trigger.querySelector('[data-part=prefix]').textContent, 'Size');
+  assert.equal(trigger.querySelector('[data-part=leading]').hidden, true);
+  // Reconnect keeps the adornments in place.
+  d.append(input); await tick();
+  assert.equal(input.querySelector('[data-part=prefix]').textContent, '$');
+  assert.equal(input.querySelector(NATIVE), null);
+  d.remove();
 });
 
 test('option label excludes slotted icons', async () => {
@@ -312,7 +339,7 @@ test('option label excludes slotted icons', async () => {
 test('ui-tag and ui-chip use slots; badge is text only', async () => {
   const tag = build('ui-tag', '<i slot="leading" name="star"></i>New');
   await tick();
-  assert.deepEqual([...tag.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'contents', 'trailing']);
+  assert.deepEqual([...tag.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
   const badge = build('ui-badge', '3');
   assert.equal(badge.children.length, 0);
   assert.equal(tag.querySelector(NATIVE), null);

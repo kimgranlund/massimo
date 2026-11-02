@@ -14,12 +14,32 @@ const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclu
 export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
 const TAGCHIP = ':is(ui-tag, ui-chip)';
+const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
 // Slotted hosts: buttons, options, and the input control and select trigger, which are laid out as
 // buttons (1u padding on the host; contents and slots carry the rest). :where() keeps the tag specificity.
 const FIELD_HOSTS = ':where(:is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger])';
 export const SLOTTED = `:is(ui-button, ui-option, [data-ui=button], ${FIELD_HOSTS})`;
 const SLOT = ':is([data-part=leading], [data-part=trailing])';
+const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
+const ADORN = ':is([data-part=prefix], [data-part=suffix])';
+
+/**
+ * Inline padding of the text run inside `host` (resolveTextRun): each text part gets `bare` at a
+ * host edge, `slot` beside a visible leading/trailing slot, and 0.5u beside another visible text
+ * part. Web components keep empty parts as [hidden]; React omits them; both work with ~ and :has.
+ */
+function textRun(host: string, slot: string, bare: string, base: Record<string, string> = {}) {
+  const T = `${host} > ${TEXT}`;
+  const shown = (part: string) => `${part}:not([hidden])`;
+  return {
+    [T]: { ...base, paddingInlineStart: bare, paddingInlineEnd: bare },
+    [`${host} > ${shown('[data-part=leading]')} ~ ${TEXT}`]: { paddingInlineStart: slot },
+    [`${host} > ${shown(TEXT)} ~ ${TEXT}`]: { paddingInlineStart: 'calc(0.5 * var(--u))' },
+    [`${T}:has(~ ${shown('[data-part=trailing]')})`]: { paddingInlineEnd: slot },
+    [`${T}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: 'calc(0.5 * var(--u))' },
+  };
+}
 
 export const geometry = defineGlobalStyles({
   // Not ':root': the preset spreads several globalCss objects, and a shared key would replace
@@ -55,23 +75,19 @@ export const geometry = defineGlobalStyles({
   // k = 1 (round) by default. Browsers without corner-shape keep plain round corners.
   [`${GEOMETRY_SCOPE.slice(0, -1)}, [data-part])`]: { cornerShape: 'superellipse(var(--ui-corner-shape))' },
 
-  // Slots: leading / contents / trailing, each at least 6u square.
+  // Construction pattern (resolveTextRun): [leading] [prefix] [contents] [suffix] [trailing].
+  // Slots are at least 6u square; the text parts form one run with 0.5u + 0.5u between them,
+  // 1u beside a slot and 2u at a bare host edge.
   [`${SLOTTED} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${SLOTTED} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
-  [`${SLOTTED} > [data-part=contents]`]: {
-    display: 'flex', alignItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)',
-    paddingInline: 'var(--u)', paddingBlock: 'calc(0.75 * var(--u))', lineHeight: 'var(--leading)',
-  },
+  [`${SLOTTED} > [data-part=contents]`]: { minWidth: 'var(--slot)' },
+  [`${SLOTTED} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
   // Field text (input, select value) fills the row as a block, so it can scroll or ellipsize.
   [`${FIELD_HOSTS} > [data-part=contents]`]: { display: 'block', flex: '1', minWidth: 0 },
-  // Button and option label: 1u more on a side with no leading/trailing element (2u there, 1u beside a slot).
-  // Web components keep empty parts as [hidden]; React omits them, so contents is first/last child.
-  [`${SLOTTED} > :is([data-part=leading][hidden] + [data-part=contents], [data-part=contents]:first-child)`]: {
-    paddingInlineStart: 'calc(2 * var(--u))',
-  },
-  [`${SLOTTED} > :is([data-part=contents]:has(+ [data-part=trailing][hidden]), [data-part=contents]:last-child)`]: {
-    paddingInlineEnd: 'calc(2 * var(--u))',
-  },
+  ...textRun(SLOTTED, 'var(--u)', 'calc(2 * var(--u))', {
+    display: 'flex', alignItems: 'center', minHeight: 'var(--slot)',
+    paddingBlock: 'calc(0.75 * var(--u))', lineHeight: 'var(--leading)',
+  }),
 
   // Carets and the select chevron use icon size sm regardless of icon-size.
   [`${SLOT} > i[name^="caret-"]`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
@@ -100,7 +116,8 @@ export const geometry = defineGlobalStyles({
   [TAGCHIP]: { padding: 'var(--pad)' },
   [`${TAGCHIP} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${TAGCHIP} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
-  [`${TAGCHIP} > [data-part=contents]`]: { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', paddingInline: 'var(--u)', lineHeight: 1 },
+  [`${TAGCHIP} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
+  ...textRun(TAGCHIP, 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: '1' }),
   // Fill slots nest inside the 0.5u edge.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${TAGCHIP} > ${SLOT}, ${TAGCHIP}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))',
@@ -123,7 +140,8 @@ export const geometry = defineGlobalStyles({
 
   // Choices: a 6u row; the 5u box (9u wide for switch) sits in the 6u leading slot.
   ':is(ui-checkbox, ui-radio, ui-switch)': { minHeight: 'var(--slot)', fontSize: 'var(--font)', lineHeight: 'var(--leading)' },
-  ':is(ui-checkbox, ui-radio, ui-switch) > [data-part=contents]': { paddingInlineStart: 'var(--u)', paddingBlock: 'calc(0.75 * var(--u))' },
+  [`${CHOICE} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
+  ...textRun(CHOICE, 'var(--u)', '0px', { paddingBlock: 'calc(0.75 * var(--u))' }),
   ':is(ui-checkbox, ui-radio, ui-switch) > [data-part=leading]': { display: 'grid', placeItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)', flexShrink: 0 },
   '[data-part=box]': { display: 'grid', placeItems: 'center', width: 'calc(5 * var(--u))', height: 'calc(5 * var(--u))', borderWidth: 'var(--b)' },
   'ui-checkbox [data-part=box]': { borderRadius: 'calc(var(--u) * var(--ui-radius-scale))' },

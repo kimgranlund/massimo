@@ -55,6 +55,17 @@
           "sans-serif"
         ],
         "$description": "Face display (--fonts-display)"
+      },
+      "controls": {
+        "$type": "fontFamily",
+        "$value": [
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif"
+        ],
+        "$description": "Face controls (--fonts-controls)"
       }
     },
     "voice": {
@@ -75,12 +86,12 @@
       },
       "ui": {
         "$type": "fontFamily",
-        "$value": "{font.face.sans}",
+        "$value": "{font.face.controls}",
         "$description": "Voice ui; repoint with data-font-ui=\"<face>\""
       },
       "numeric": {
         "$type": "fontFamily",
-        "$value": "{font.face.sans}",
+        "$value": "{font.face.controls}",
         "$description": "Voice numeric; repoint with data-font-numeric=\"<face>\""
       },
       "code": {

@@ -1,14 +1,18 @@
-// Slot anatomy for controls (ui-button, ui-option): authored children are sorted into
-// [data-part=leading | contents | trailing] containers. Mark an icon with slot="leading" or
-// slot="trailing"; everything else is contents. Empty containers are hidden, so an
-// icon-only button is a square. Re-sorts when children or slot attributes change.
+// Slot anatomy for labelled controls (ui-button, ui-option, ui-tag, ui-chip, choices; the input
+// control and select trigger use the same parts). Authored children are sorted into
+//   [data-part=leading] [data-part=prefix] [data-part=contents] [data-part=suffix] [data-part=trailing]
+// leading / trailing: 6u icon slots (slot="leading" | "trailing", usually one <i name>).
+// prefix / suffix: short text adornments beside the label (slot="prefix" | "suffix": "$", "USD", "⌘K").
+// Everything else is contents (the label). Empty containers are hidden, so an icon-only button
+// is a square. Re-sorts when children or slot attributes change.
 
-export const SLOT_PARTS = ['leading', 'contents', 'trailing'] as const;
+export const SLOT_PARTS = ['leading', 'prefix', 'contents', 'suffix', 'trailing'] as const;
+const NAMED = new Set<string>(['leading', 'prefix', 'suffix', 'trailing']);
 export type SlotPart = (typeof SLOT_PARTS)[number];
 
 const partOf = (node: Node): SlotPart => {
   const slot = node.nodeType === 1 ? (node as Element).getAttribute('slot') : null;
-  return slot === 'leading' || slot === 'trailing' ? slot : 'contents';
+  return slot && NAMED.has(slot) ? (slot as SlotPart) : 'contents';
 };
 const isPart = (node: Node): node is HTMLElement =>
   node.nodeType === 1 && SLOT_PARTS.includes((node as Element).getAttribute('data-part') as SlotPart) && (node as Element).localName === 'span';
@@ -45,4 +49,22 @@ export function observeSlots(host: HTMLElement, onChange?: () => void) {
   const observe = () => mo.observe(host, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['slot'] });
   observe();
   return () => mo.disconnect();
+}
+
+/** The parts an author may fill around a field's own contents (input control, select trigger). */
+export const ADORNMENT_PARTS = ['leading', 'prefix', 'suffix', 'trailing'] as const;
+
+/**
+ * Move authored adornments (elements with slot="leading" | "prefix" | "suffix" | "trailing") into
+ * the matching [data-part] containers of `control`, then hide the empty containers.
+ */
+export function adoptAdornments(control: Element, nodes: Element[], parts: readonly string[] = ADORNMENT_PARTS) {
+  for (const n of nodes) {
+    const slot = n.getAttribute('slot') ?? '';
+    if (parts.includes(slot)) control.querySelector(`:scope > [data-part=${slot}]`)?.append(n);
+  }
+  for (const p of parts) {
+    const el = control.querySelector<HTMLElement>(`:scope > [data-part=${p}]`);
+    if (el) el.hidden = !hasContent(el);
+  }
 }

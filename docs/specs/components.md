@@ -6,7 +6,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 
 - `UIElement` (`core/element.ts`): `static properties` become signal-backed properties with attribute parsing and optional reflection; one render effect per element (`template()` then `update()`); `connected()` / `disconnected()` hooks. Use `declare` for typed props.
 - `UIFormElement` (`core/form-element.ts`): form association through ElementInternals: `name`, value (`formValue()`), validity (`validate()`), `form`, `labels`, `checkValidity` / `reportValidity` / `setCustomValidity`, reset and restore, disabled by an ancestor `<fieldset>` (`isDisabled`). Errors show only after interaction or a blocked submit (`userInvalid`, `data-user-invalid`); author `error` shows at once.
-- Slots (`components/slots.ts`): button, option, tag and chip sort children into `[data-part=leading|contents|trailing]`; `slot="leading"` / `slot="trailing"` mark icons; empty slots are hidden.
+- Construction pattern (`components/slots.ts`): button, option, tag, chip and the choices sort children into `[data-part=leading|prefix|contents|suffix|trailing]`; `slot="leading"` / `"trailing"` mark icons, `slot="prefix"` / `"suffix"` mark text adornments, the rest is the label; empty parts are hidden. The input control and select trigger have the same parts, filled from slotted children (`adoptAdornments`). Spacing: [geometry](geometry.md).
 - Input modality (`core/modality.ts`): `<html data-modality="keyboard|pointer">`; focus rings show only after keyboard use.
 - FOUC: undefined elements are hidden with their size reserved; a 1.5s reveal guards against a missing script (`styles/pending.ts`).
 
@@ -15,7 +15,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | Element | Role and behavior | Key attributes |
 |---|---|---|
 | `ui-button` | `role=button`; Enter/Space activate; submit/reset through the form | `type`, `disabled`, `loading`, `icon-size` |
-| `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked | `label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |
+| `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked; adornments via `slot` children | `label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |
 | `ui-select` | select-only combobox; popover listbox; APG keys; typeahead | `label`, `value`, `placeholder`, `description`, `error`, `required`, `gap` |
 | `ui-listbox` | single-select listbox; selection follows focus; typeahead | `value`, `orientation`, `label`, `gap` |
 | `ui-segmented` | horizontal listbox | same as listbox |
@@ -56,4 +56,4 @@ Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or
 | failed image | `img[data-error]` | hidden; the frame's empty fill remains |
 | forced colors | `@media (forced-colors: active)` | 1px `CanvasText` outline (no space), `Highlight` for on states, `GrayText` disabled |
 
-React counterparts exist for `Button` and `Input` (`/components/button/react`, `/components/input/react`).
+React counterparts exist for `Button` and `Input` (`/components/button/react`, `/components/input/react`); both take `leading`, `prefix`, `suffix` and `trailing`.

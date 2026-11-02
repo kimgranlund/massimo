@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
 
 test('size is the unit: height 8u, font 10px + u (spec table)', () => {
   const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
@@ -25,6 +25,18 @@ test('button label padding: 1u beside a slot, 2u where a side has no slot', () =
   assert.deepEqual(resolveButtonContents(true, false), { start: 4, end: 8 });
   assert.deepEqual(resolveButtonContents(false, true), { start: 8, end: 4 });
   assert.deepEqual(resolveButtonContents(true, true), { start: 4, end: 4 });
+});
+
+test('text run: 0.5u between text parts, 1u beside a slot, 2u at a bare edge', () => {
+  assert.deepEqual(resolveTextRun({}), { contents: { start: 8, end: 8 } });
+  assert.deepEqual(resolveTextRun({ leading: true, prefix: true, suffix: true, trailing: true }), {
+    prefix: { start: 4, end: 2 }, contents: { start: 2, end: 2 }, suffix: { start: 2, end: 4 },
+  });
+  assert.deepEqual(resolveTextRun({ suffix: true }), { contents: { start: 8, end: 2 }, suffix: { start: 2, end: 8 } });
+  assert.deepEqual(resolveTextRun({ leading: true, prefix: true, contents: false }), { prefix: { start: 4, end: 8 } });
+  // Matches the older two-flag rule when there are no adornments.
+  for (const [l, t] of [[false, false], [true, false], [false, true], [true, true]])
+    assert.deepEqual(resolveTextRun({ leading: l, trailing: t }).contents, resolveButtonContents(l, t));
 });
 
 test('icon sizes: sm = font − 0.5u, md = font + 0.5u, lg = font + 1.5u, fill = slot', () => {
