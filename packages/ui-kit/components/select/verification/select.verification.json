@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "d5905d0070863e74458b7f196cff760329518aa7bd53e236b96e2c684119f3df"
+      "sha256": "d5f1bd85394debe67520bad2f176f50785d3c0081d6ce4f38eb1c43fccaeb5b9"
     },
     {
       "path": "components/listbox/options.ts",
@@ -22,11 +22,11 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "c350c1a92dcb39f6006f43b32bd032d4f2d1d524d72407393bc2a5a0150f3a0b"
+      "sha256": "fc6a2502e2045128e322248f6fe40186d78dc888283c7654081f352521031dc5"
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "8577e70d70d6e66383a6b80dbbd951800c3d2379b5256aa4ade86224f6d7a266"
+      "sha256": "cd673a0fda9b46380021144a88f8b67a65b97bb3a8653509730bfac73634cc63"
     },
     {
       "path": "components/parts.react.tsx",
@@ -50,11 +50,11 @@
     },
     {
       "path": "components/compound.react.tsx",
-      "sha256": ""
+      "sha256": "0c35367ffa1afa095a3df9f758af8db2f2eba40cd0a1c643cf6be5edee012292"
     },
     {
       "path": "components/slots.ts",
-      "sha256": ""
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     }
   ],
   "renderers": {
@@ -88,7 +88,8 @@
           "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
           "node --test test/listbox.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -120,7 +121,8 @@
         "commands": [
           "node --test test/react.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

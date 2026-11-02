@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/field/field.element.ts",
-      "sha256": "35ce4fd3aa3b468bf04e940d6d4f7c6c025684d2b30c5dac35f031ee41344266"
+      "sha256": "819788f3f5b0e8fc55834c2beca09088b2dfa7ba96fc619450bbb36d6494d441"
     },
     {
       "path": "components/field/field.recipe.ts",
-      "sha256": "4eea6954ef24ce02af5b89bd1265f9ac4a1902666d9005474a3eda68e5809437"
+      "sha256": "c1298a2c592d1a14c3a50b313f972e400642470b2a5a0a7335e130163e61c792"
     },
     {
       "path": "dom/field.ts",
@@ -18,19 +18,19 @@
     },
     {
       "path": "components/field/field.manifest.json",
-      "sha256": "c10363e81f803cb05bdd02055d46dcc72ad54973c16db86f3f71ebb2bb02ee8d"
+      "sha256": "0206f8865cd5dc1ecbce4204c85999cf47a6806b8c0afe6a7f6f4632358e1287"
     },
     {
       "path": "components/field/field.react.tsx",
-      "sha256": "c28e580a114608ad5e197542d6264b84a1c3bbb2fff7b5b5c567e55259c22b46"
+      "sha256": "9f20a67f25055a2f423becaf6c0ad2c035f17e5f80d9922e51b9ace0c3334565"
     },
     {
       "path": "components/compound.react.tsx",
-      "sha256": ""
+      "sha256": "0c35367ffa1afa095a3df9f758af8db2f2eba40cd0a1c643cf6be5edee012292"
     },
     {
       "path": "components/slots.ts",
-      "sha256": ""
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     }
   ],
   "renderers": {
@@ -49,7 +49,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/field.test.ts"
+          "node --test test/field.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -71,7 +72,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/field-react.test.ts"
+          "node --test test/field-react.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

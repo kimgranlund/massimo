@@ -22,11 +22,11 @@
     },
     {
       "path": "components/listbox/listbox.manifest.json",
-      "sha256": "ac15c57595ab51674b8d884c83ab46748e291af06f6bc99978c997ddb09697cc"
+      "sha256": "813af0ddaa183965d256380ec7c8d55023c8ed37c20f6cc5a37a546f64a1d3ae"
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "7b2cc6435c3e1e66fd297ecfd60ab295f342aed21381c1c669e5acbda810e19c"
+      "sha256": "85456da07141cb641b54c4bdfb496197977dc2a159a6092a328f9f4e89609a3e"
     },
     {
       "path": "components/parts.react.tsx",
@@ -50,11 +50,11 @@
     },
     {
       "path": "components/compound.react.tsx",
-      "sha256": ""
+      "sha256": "0c35367ffa1afa095a3df9f758af8db2f2eba40cd0a1c643cf6be5edee012292"
     },
     {
       "path": "components/slots.ts",
-      "sha256": ""
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     }
   ],
   "renderers": {
@@ -88,7 +88,8 @@
           "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
           "node --test test/listbox.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -120,7 +121,8 @@
         "commands": [
           "node --test test/react.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -10,7 +10,7 @@
     },
     {
       "path": "components/slots.ts",
-      "sha256": "9be14b79c470d98628140553f0b685ae8a897c5ee86cbb9cc4b91c2dba341075"
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     },
     {
       "path": "dom/button.ts",
@@ -18,11 +18,11 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "c57d845348abd01d5419af240a1f771660a599e0f663835807ce7fd336ce710b"
+      "sha256": "8feda0616a26a8a7348336d0c62947839792f23bdbcb364f496972406553106f"
     },
     {
       "path": "components/button/button.react.tsx",
-      "sha256": "bec52e2a8d9236b9af1a38dff22d6ada797c95131145b6275060b4f79af1eee2"
+      "sha256": "6b78b4e87ebb0c238f718c89fed5745b4fc231a8e9de49a03bbb895ed747933d"
     },
     {
       "path": "dom/state.ts",
@@ -30,7 +30,7 @@
     },
     {
       "path": "components/compound.react.tsx",
-      "sha256": ""
+      "sha256": "0c35367ffa1afa095a3df9f758af8db2f2eba40cd0a1c643cf6be5edee012292"
     }
   ],
   "renderers": {
@@ -54,7 +54,8 @@
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
-          "node --test test/state-parity.test.ts"
+          "node --test test/state-parity.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -81,7 +82,8 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/state-parity.test.ts"
+          "node --test test/state-parity.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

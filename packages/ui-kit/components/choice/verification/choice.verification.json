@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/choice/choice.element.ts",
-      "sha256": "1f0d4fac14ef257e321584f2221d7eded967c884c264a517bc1f1972ac566548"
+      "sha256": "a675913ca4b2f8c9588d9ace1befe012a75acfaa9ba567875851c6a5e6ef347c"
     },
     {
       "path": "components/slots.ts",
-      "sha256": "9be14b79c470d98628140553f0b685ae8a897c5ee86cbb9cc4b91c2dba341075"
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     },
     {
       "path": "core/form-element.ts",
@@ -18,11 +18,11 @@
     },
     {
       "path": "components/choice/choice.manifest.json",
-      "sha256": "d75d2b831f6f3570a64936737c400e8df2e57f9824945ef287e74cebed44d8a4"
+      "sha256": "4a8cb2b9faf9d61725d8e012c6496950779f7cda614460656cfac2494661c667"
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "6a5ac1f7b356c047461d1f1f033c3e17d2131f2c80a49ae0b57a30cc12a6877b"
+      "sha256": "4f9e8d7840285001f09f2bdcc4292c1c4a3ff04f98a1800c0dbe9423c31286ef"
     },
     {
       "path": "dom/state.ts",
@@ -38,7 +38,7 @@
     },
     {
       "path": "components/compound.react.tsx",
-      "sha256": ""
+      "sha256": "0c35367ffa1afa095a3df9f758af8db2f2eba40cd0a1c643cf6be5edee012292"
     }
   ],
   "renderers": {
@@ -67,7 +67,8 @@
         "commands": [
           "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -99,7 +100,8 @@
         "commands": [
           "node --test test/react.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
