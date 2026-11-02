@@ -23,7 +23,7 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.ok(['#fff', '#000'].includes(dark['--colors-fg-on-solid']));
   const { ramps } = await import('../tokens/colors/spectrum/index.ts');
   assert.equal(data.schemes.light[roles.neutral][0].hct[2].toFixed(1), '97.5', 'light step 1 = Light endpoint tone');
-  assert.equal(data.schemes.dark[roles.neutral][0].hct[2].toFixed(1), '2.5', 'dark step 1 = Dark endpoint tone');
+  assert.equal(data.schemes.dark[roles.neutral][0].hct[2].toFixed(1), '5.0', 'dark step 1 = Dark endpoint tone (default 5)');
   const moved = generateSpectrum({ darkTone: 10 });
   assert.notEqual(ramps(moved, 'dark')[roles.neutral][0], ramps(data, 'dark')[roles.neutral][0], 'Dark endpoint moves step 1 (the page background)');
   assert.equal(ramps(data, 'light')[roles.neutral].length, 12, 'steps 1-12');
