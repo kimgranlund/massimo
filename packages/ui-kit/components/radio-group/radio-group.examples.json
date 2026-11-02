@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "radio-group",
+  "title": "Radio group",
+  "summary": "One value chosen from a set of radios; the group owns the value, the name and the validity.",
+  "defaultExample": "in-field",
+  "examples": [
+    {
+      "id": "in-field",
+      "label": "Named by a field label",
+      "subject": "component:radio-group",
+      "markup": "<ui-field label=\"Plan\"><ui-radio-group name=\"plan\" value=\"pro\"><ui-radio value=\"free\">Free</ui-radio><ui-radio value=\"pro\">Pro</ui-radio><ui-radio value=\"team\">Team</ui-radio></ui-radio-group></ui-field>"
+    },
+    {
+      "id": "horizontal",
+      "label": "A wrapping row",
+      "subject": "component:radio-group",
+      "markup": "<ui-radio-group label=\"Quiet hours\" orientation=\"horizontal\" value=\"night\"><ui-radio value=\"off\">Off</ui-radio><ui-radio value=\"night\">Nights, 22–07</ui-radio><ui-radio value=\"weekend\">Weekends</ui-radio></ui-radio-group>"
+    },
+    {
+      "id": "required",
+      "label": "Required, with a disabled option",
+      "subject": "component:radio-group",
+      "markup": "<ui-field label=\"Size\"><ui-radio-group name=\"size\" required><ui-radio value=\"s\">Small</ui-radio><ui-radio value=\"m\">Medium</ui-radio><ui-radio value=\"l\" disabled>Large (sold out)</ui-radio></ui-radio-group></ui-field>"
+    }
+  ]
+}

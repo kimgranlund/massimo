@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "radio-group",
+  "scope": "Group value, radio sync, events, keyboard within the group, disabled / readonly propagation, required validity, form value and reset of the web component in happy-dom (node:test); the React renderer's server markup and client events; state parity of host and radios across renderers; resolver numbers. Rendered spacing is checked by apps/studio/geometry-check.html; screen-reader output is not certified.",
+  "sources": [
+    {
+      "path": "components/radio-group/radio-group.element.ts",
+      "sha256": "2915fec534656d598d7dfc067198422a784d158cb9d48e154bfa2362c48170cf"
+    },
+    {
+      "path": "components/radio-group/radio-group.recipe.ts",
+      "sha256": "13ada76943f3ceb4f5e7051139ba36d9dc2cf27e71443cae8fb044c74128d6fd"
+    },
+    {
+      "path": "components/radio-group/radio-group.react.tsx",
+      "sha256": "56e40de1ce5d6ae460757bbed8aa1a0e49e8e938c8f73c9d567a132482c9117b"
+    },
+    {
+      "path": "components/radio-group/radio-group.manifest.json",
+      "sha256": "6f4ce1c2581b75157b90cf9178d4b00994d8098cd5e09205d1463f4fc0833080"
+    },
+    {
+      "path": "components/choice/group.react.ts",
+      "sha256": "7d1e0513caaec3627f0e6f1ab3d96930773d72fdde91cdf1a755cbf5770dee66"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/radio-group.test.ts",
+          "covers": "no native elements, radiogroup role and ARIA, value checks the radios, roving tab stop, a press and arrow keys change the group value and fire { value, reason, event } from the group only, two unnamed groups stay apart, disabled and readonly reach the radios, required validity, one form value, defaults and reset, naming by a ui-field label"
+        },
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "resolveChoiceGroup: gaps, pitch and the gap attribute"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/radio-group.test.ts",
+          "node --test test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/radio-group.test.ts",
+          "covers": "server markup (role, data-ui, recipe classes, shared native name, generated name), state parity of host and radios with the web component, onValueChange(value, { reason: none, event }) and read-only on the client"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/radio-group.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency.",
+    "Gaps and pitch are compared with the resolver in the browser (geometry-check.html), not in happy-dom.",
+    "Manual geometry review (2026-11-02, studio #/components?family=choices, light and dark, u = 3, 4, theme 4.5, 6): rows stay 6u and 1u apart, horizontal 4u apart; growth: long labels wrap inside their choice and a horizontal group wraps to new lines 1u apart (geometry-check rgW), slots never shrink; RTL: flex row and column follow the inline direction, the indicator stays leading; focus: each radio keeps its own ring and the group draws no contour, so the ring never changes its size; parity: react-check.html twins rgv / rgh match (fails [])."
+  ]
+}

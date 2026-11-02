@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -108,6 +108,14 @@ export const rows: Row[] = [
   { id: 'fieldGrid.columnGap', family: 'field-row', element: 'field-grid', quantity: 'column gap', formula: '2u', value: (u) => resolveFieldGrid({ unit: u }).columnGap, status: 'implemented', notes: 'label column fit-content(40%), control 1fr, readout auto' },
   { id: 'fieldGrid.rowGap', family: 'field-row', element: 'field-grid', quantity: 'row gap', formula: '2u', value: (u) => resolveFieldGrid({ unit: u }).rowGap, status: 'implemented', notes: 'each field is a subgrid row' },
   { id: 'fieldGrid.headingSpace', family: 'field-row', element: 'field-grid', quantity: 'space above a heading', formula: '4u', value: (u) => resolveFieldGrid({ unit: u }).headingSpace, status: 'implemented', notes: 'every heading but the first' },
+  // Choice groups
+  { id: 'choiceGroup.vertical.gap', family: 'choice-group', element: 'radio-group, checkbox-group', quantity: 'gap between choices (vertical)', formula: 'g·u (gap attribute), default u', value: (u) => resolveChoiceGroup('vertical', { unit: u }).gap, status: 'implemented', notes: '6u rows 1u apart: a 7u pitch, like composite items' },
+  { id: 'choiceGroup.vertical.pitch', family: 'choice-group', element: 'radio-group, checkbox-group', quantity: 'row pitch (vertical)', formula: '6u + gap', value: (u) => resolveChoiceGroup('vertical', { unit: u }).pitch, status: 'implemented', notes: 'one-line labels; a wrapping label grows its row' },
+  { id: 'choiceGroup.horizontal.columnGap', family: 'choice-group', element: 'radio-group[orientation=horizontal], checkbox-group[orientation=horizontal]', quantity: 'gap between choices (horizontal)', formula: 'g·u (gap attribute), default 4u', value: (u) => resolveChoiceGroup('horizontal', { unit: u }).columnGap, status: 'implemented', notes: 'a choice label has no end padding' },
+  { id: 'choiceGroup.horizontal.rowGap', family: 'choice-group', element: 'radio-group[orientation=horizontal], checkbox-group[orientation=horizontal]', quantity: 'gap between wrapped lines', formula: 'u', value: (u) => resolveChoiceGroup('horizontal', { unit: u }).rowGap, status: 'implemented', notes: '' },
+  // Fieldset
+  { id: 'fieldset.gap', family: 'fieldset', element: 'fieldset', quantity: 'gap between the legend and the fields', formula: 'g·u (gap attribute), default the collection gap (2u)', value: (u) => resolveFieldset({ unit: u }).gap, status: 'implemented', notes: 'theme gap-collection' },
+  { id: 'fieldset.padding', family: 'fieldset', element: 'fieldset', quantity: 'padding, border, radius', formula: '0', value: (u) => resolveFieldset({ unit: u }).padding, status: 'implemented', notes: 'no box of its own; a card around it supplies the surface' },
 
   // Typography (ratio 1.333, rhythm 1u)
   { id: 'in.typeRatio', family: 'input', element: 'text', quantity: 'type ratio r', formula: 'r (default 1.333)', value: () => 1.333, status: 'input', notes: 'theme type-ratio, 1–1.5' },

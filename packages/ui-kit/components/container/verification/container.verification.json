@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "119e002f9543b35f3f1ace6023cd9d77d5b0d03e171f3a057ee5718550f06b08"
+      "sha256": "f62b2690d061fcbdf4870175b013bafb8efa15231768a4e8601f1724c84a5187"
     },
     {
       "path": "styles/geometry.ts",

@@ -416,3 +416,31 @@ export function resolveMeter(input: GeometryInput = {}) {
   const u = t.unit, fontSize = 10 + u;
   return { ...t, rowGap: 1.5 * u, columnGap: 2 * u, fontSize, lineHeight: Math.min(1.2 * fontSize, 6 * u) };
 }
+
+// ── Choice groups ──
+// ui-radio-group and ui-checkbox-group stack their 6u choice rows (resolveChoice) 1u apart, so the
+// pitch is the 7u of a composite item; a horizontal group puts 4u between choices (a choice label
+// has no end padding) and wraps with 1u between rows. The gap attribute (g·u) replaces the gap
+// along the group's direction.
+export type ChoiceGroupOrientation = 'vertical' | 'horizontal';
+
+export function resolveChoiceGroup(orientation: ChoiceGroupOrientation = 'vertical', input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  const row = resolveChoice('checkbox', input).rowHeight;
+  const gap = (input.gap ?? (orientation === 'vertical' ? 1 : 4)) * u;
+  return {
+    unit: u, rowHeight: row, gap,
+    rowGap: orientation === 'vertical' ? gap : u,
+    columnGap: orientation === 'horizontal' ? gap : 0,
+    pitch: orientation === 'vertical' ? row + gap : row + u,
+  };
+}
+
+// ── Fieldset ──
+// ui-fieldset stacks its legend and fields with the collection gap (2u by default, the theme's
+// gap-collection; the gap attribute wins) and draws no box: no padding, border or radius, so the
+// fields keep their own edges and a card around it supplies the surface.
+export function resolveFieldset(input: GeometryInput & { gapUnits?: number } = {}) {
+  const c = resolveContainer('collection', input);
+  return { unit: c.unit, gap: c.gap, padding: 0, border: 0, radius: 0 };
+}

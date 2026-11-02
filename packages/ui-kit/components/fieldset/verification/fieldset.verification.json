@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "fieldset",
+  "scope": "Structure (role=group, legend part, aria-labelledby, authored legend), disabled propagation to kit controls at any depth and through nested fieldsets, data-disabled on host and legend, of the web component in happy-dom (node:test); the React renderer's server markup (native fieldset, legend div, context disabled on kit hosts, composed form equal to the preset) and state parity with the web component; resolver numbers. Rendered spacing is checked by apps/studio/geometry-check.html; screen-reader output is not certified.",
+  "sources": [
+    {
+      "path": "components/fieldset/fieldset.element.ts",
+      "sha256": "c3e5b31ee420a411577ec7f5056262af72073de8914b5de8d290293f3fc645f4"
+    },
+    {
+      "path": "components/fieldset/fieldset.recipe.ts",
+      "sha256": "d74d4724a87fa275c0af862af164526034d756a69f4c235d3fb3372c0e731956"
+    },
+    {
+      "path": "components/fieldset/fieldset.react.tsx",
+      "sha256": "bbe0fb4a8206b7ee6862f2a34aef186cf523d8a8601e4e865c66c9900c3df5ba"
+    },
+    {
+      "path": "components/fieldset/fieldset.manifest.json",
+      "sha256": "baeb845c90a037e1dd58ebf81c2ee948a276335f81d7da272e68d1a1a0c7ff2d"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "949efc88e5c42cdac3acd815c8ba52dd1b74a5bea23e41f51333ac9371e672b0"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/fieldset.test.ts",
+          "covers": "no native elements, role=group named by the legend, generated and authored legends, disabled reaching inputs, fields, radio groups and radios at any depth and a nested fieldset, data-disabled on host and legend, re-enabling"
+        },
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "resolveFieldset: the collection gap, gapUnits and the gap attribute, no box"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/fieldset.test.ts",
+          "node --test test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/fieldset.test.ts",
+          "covers": "native fieldset markup and classes, legend div wired by aria-labelledby, disabled reaching kit hosts through context, Fieldset.Root + Fieldset.Legend equal to the preset, state parity with the web component"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/fieldset.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency.",
+    "React custom-ARIA hosts (Listbox, Palette) get data-disabled from a disabled Fieldset, but their own behavior follows their disabled prop only.",
+    "Manual geometry review (2026-11-02, studio #/components?family=fields, light and dark, u = 3, 4, theme 4.5, 6): legend and fields 2u apart (collection gap; geometry-check honours the gap attribute), no box; growth: a long legend wraps and fields keep their own widths; RTL: a column, the legend aligns to the inline start; focus: the fieldset draws no contour, each control keeps its ring; parity: react-check.html twins fs / fsd match (fails [])."
+  ]
+}

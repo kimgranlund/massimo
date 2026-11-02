@@ -17,6 +17,9 @@ import { separator } from './separator/separator.recipe.ts';
 import { avatar } from './avatar/avatar.recipe.ts';
 import { meter } from './meter/meter.recipe.ts';
 import { toggle } from './toggle/toggle.recipe.ts';
+import { radioGroup } from './radio-group/radio-group.recipe.ts';
+import { checkboxGroup } from './checkbox-group/checkbox-group.recipe.ts';
+import { fieldset } from './fieldset/fieldset.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset };
 

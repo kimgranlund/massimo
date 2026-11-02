@@ -12,14 +12,18 @@
 
 ```html
 <ui-checkbox name="terms" required>I accept the terms</ui-checkbox>
-<div role="radiogroup" aria-label="Plan">
-  <ui-radio name="plan" value="free" checked>Free</ui-radio>
-  <ui-radio name="plan" value="pro">Pro<span slot="suffix">$9</span></ui-radio>
-</div>
+<ui-radio-group name="plan" value="free" label="Plan">
+  <ui-radio value="free">Free</ui-radio>
+  <ui-radio value="pro">Pro<span slot="suffix">$9</span></ui-radio>
+</ui-radio-group>
 <ui-switch name="wifi">Wi-Fi</ui-switch>
 ```
 
 The indicator is the leading part; the label run follows with 1u after the slot and no padding at the end.
+
+Radios outside a group element group by `name` (within their form or the document). Inside a [ui-radio-group](../radio-group/radio-group.md) (React `RadioGroup`) they group by membership: the group owns the value, name, disabled, read-only and validity, sets each radio's checked state, and fires `change` / `input` with `{ value, reason, event }` instead of the radio.
+
+Inside a [ui-checkbox-group](../checkbox-group/checkbox-group.md) (React `CheckboxGroup`) the group owns the value list the same way; a checkbox with `parent` (React `parent`) is checked when every value is, mixed when some are, and checks or clears them all.
 
 ## Anatomy
 
@@ -38,7 +42,7 @@ Preset or parts ([components spec](../../../../docs/specs/components.md#composit
 <Switch.Root suffix="on"><Switch.Thumb />Wi-Fi</Switch.Root>
 ```
 
-Web component: an authored indicator (alone or in `leading`) is kept and filled when empty (the checkbox marks, the switch thumb); authored slot spans keep their loose children. React: `Checkbox.Indicator` and `Radio.Indicator` render the leading slot around themselves; `Switch.Thumb` renders the leading slot and the track (the indicator) around the thumb, which `render` and `className` apply to. Other children are the label (contents); `prefix` and `suffix` stay props. The native input is rendered by the Root and cannot be a separate part: the `<label>` host is what makes a press on the text toggle it. Radios group by `name` (no RadioGroup: ui-radio has none either).
+Web component: an authored indicator (alone or in `leading`) is kept and filled when empty (the checkbox marks, the switch thumb); authored slot spans keep their loose children. React: `Checkbox.Indicator` and `Radio.Indicator` render the leading slot around themselves; `Switch.Thumb` renders the leading slot and the track (the indicator) around the thumb, which `render` and `className` apply to. Other children are the label (contents); `prefix` and `suffix` stay props. The native input is rendered by the Root and cannot be a separate part: the `<label>` host is what makes a press on the text toggle it. Radios group by `name`, or by a RadioGroup (`ui-radio-group`) around them.
 
 Construction pattern (shared by every labelled component):
 

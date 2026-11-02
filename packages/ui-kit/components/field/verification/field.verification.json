@@ -18,7 +18,7 @@
     },
     {
       "path": "components/field/field.manifest.json",
-      "sha256": "0206f8865cd5dc1ecbce4204c85999cf47a6806b8c0afe6a7f6f4632358e1287"
+      "sha256": "7b51ce6a5e3c72c83fb2b291c73532086fd2350ae72005bb0eefc8ef89804142"
     },
     {
       "path": "components/field/field.react.tsx",

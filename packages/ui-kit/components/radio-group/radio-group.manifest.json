@@ -1,0 +1,407 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "radio-group",
+  "primary": "component:radio-group",
+  "module": "./radio-group.element.ts",
+  "registration": "on-import",
+  "documentation": "./radio-group.md",
+  "examples": "./radio-group.examples.json",
+  "contract": "../../contracts/components.json#/components/radio-group",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./radio-group.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveChoiceGroup"
+      ],
+      "description": "Reference numbers for the gap between choices (vertical and horizontal) and the row pitch."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:radio-group",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-radio-group",
+      "class": "UIRadioGroup",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose exactly one option from a small mutually exclusive set, with one value for the set",
+        "Group radios under one name, value and validity"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the group submits the checked radio's value under it (the radios inside need no name).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Disables every radio inside (they read the group's isDisabled) and submits nothing. An ancestor <fieldset disabled> or ui-fieldset[disabled] has the same effect.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "A radio must be checked to submit (valueMissing on the group).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The checked radio's value ('' when none). Setting it checks the radio with that value and unchecks the rest, without an event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute set it) and after form reset. Without it, the value attribute, else a radio authored checked, is the default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "description": "The radios can be focused but not changed (aria-readonly, data-readonly).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "vertical",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "description": "vertical: one radio per row, 1u apart. horizontal: a wrapping row, 4u between radios (aria-orientation).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name (aria-label) when no visible label names the group: prefer a ui-field label or a ui-fieldset legend.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between radios in u (0…8 in 0.5 steps), along the group's direction; default 1u vertical, 4u horizontal.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'none', event: Event } (Base UI onValueChange)",
+          "trigger": "the user checks a different radio (press, Space or an arrow key)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'none', event: Event }",
+          "trigger": "the user checks a different radio (same moment as input)"
+        }
+      ],
+      "methods": [
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the tab-stop radio: the checked one, else the first enabled one."
+        },
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the group touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "radiogroup",
+        "formAssociated": true,
+        "formValue": "value (the checked radio's value), nothing when empty",
+        "keyboard": [
+          {
+            "keys": "Tab",
+            "action": "into the group: the checked radio (or the first enabled one); out of it: the next control"
+          },
+          {
+            "keys": "ArrowDown, ArrowRight / ArrowUp, ArrowLeft",
+            "action": "move to and check the next / previous enabled radio of this group (wraps)"
+          },
+          {
+            "keys": "Space",
+            "action": "check the focused radio"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "a wrapping ui-field label (aria-labelledby)",
+            "a ui-fieldset legend",
+            "label (aria-label)",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "ui-radio children (each with a value); they may sit in wrappers. Other content is laid out with them."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The group owns the value: it sets its radios' checked state from value; a radio press, Space or arrow key changes the group value, and the group (not the radio) fires input and change.",
+        "Its radios are the ui-radio descendants whose nearest ui-radio-group is this one; they group by membership, not name, so two groups never share arrows or tab stops. Give the group the name; the radios submit nothing.",
+        "disabled and readonly reach every radio (a radio's isDisabled reads the group); disabled also submits nothing. The radios keep their own disabled.",
+        "required: the group is invalid (valueMissing) until a radio is checked; the error shows after the group is left or a submit is blocked.",
+        "Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "React: RadioGroup (a single part, as in Base UI) renders a div role=radiogroup; its Radio children are native radios that take the group's name (generated when omitted), checked state, disabled and required from context; onValueChange(value, { reason: 'none', event }); render and className (a string or (state) => string) apply to it."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Several options may be chosen.",
+          "reason": "A radio group holds one value.",
+          "useInstead": "component:checkbox"
+        },
+        {
+          "when": "More than about seven options.",
+          "reason": "A long radio list is hard to scan; a select collapses it.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Switching views or modes in place.",
+          "reason": "A segmented control is the compact single choice for views.",
+          "useInstead": "component:segmented"
+        }
+      ],
+      "searchTerms": [
+        "radio group",
+        "radiogroup",
+        "single choice",
+        "one of",
+        "options"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:radio-group",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesGeometry",
+      "to": "geometry:choice-group"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "establishes",
+      "to": "context:radio-group"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "acceptsChild",
+      "to": "component:radio"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./radio-group.element.ts",
+      "exports": {
+        "component:radio-group": "UIRadioGroup"
+      },
+      "verification": "./verification/radio-group.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./radio-group.react.tsx",
+      "exports": {
+        "component:radio-group": "RadioGroup"
+      },
+      "verification": "./verification/radio-group.verification.json#/renderers/react",
+      "props": {
+        "component:radio-group": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'defaultValue' | 'onChange'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "name?: string // Form name of the radios; generated when omitted (they still group).",
+            "value?: string // The checked radio's value (controlled).",
+            "defaultValue?: string // The first value when uncontrolled, and the reset value.",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // The user picked a radio (Base UI onValueChange; reason 'none').",
+            "disabled?: boolean = false",
+            "readOnly?: boolean = false // Radios can be focused but not changed.",
+            "required?: boolean = false // One radio must be checked to submit.",
+            "orientation?: 'vertical' | 'horizontal' = 'vertical' // vertical: one radio per row; horizontal: a wrapping row.",
+            "label?: string // Accessible name when no Field label or Fieldset legend names the group (aria-label).",
+            "size?: number // Unit u in px for the group and its radios.",
+            "children?: ReactNode // Radio children."
+          ]
+        }
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:radio-group": ".ui-radio-group__root"
+      }
+    }
+  }
+}

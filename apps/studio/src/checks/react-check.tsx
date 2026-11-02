@@ -19,6 +19,9 @@ import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/toggle/element';
+import '@massimo/ui-kit/components/radio-group/element';
+import '@massimo/ui-kit/components/checkbox-group/element';
+import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -39,8 +42,13 @@ import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Avatar } from '@massimo/ui-kit/components/avatar/react';
 import { Meter } from '@massimo/ui-kit/components/meter/react';
 import { Toggle } from '@massimo/ui-kit/components/toggle/react';
+import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
+import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
+import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
+/** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
+const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh', 'fs', 'fsd'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
 
 function Pair({ u }: { u: number }) {
@@ -90,6 +98,12 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-meter data-k="mtN" value={3} max={4} format='{"style":"decimal"}' /></div>
         <ui-avatar data-k="avS" avatar-size="sm" />
         <ui-avatar data-k="avX" avatar-size="xl" alt="Team">TM</ui-avatar>
+        <ui-radio-group data-k="rgv" value="b"><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
+        <ui-radio-group data-k="rgh" orientation="horizontal" disabled><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
+        <ui-checkbox-group data-k="cgv" value="a"><ui-checkbox parent>All</ui-checkbox><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
+        <ui-checkbox-group data-k="cgh" orientation="horizontal" value="a b" disabled><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
+        <div style={{ width: 300 }}><ui-fieldset data-k="fs" legend="Address"><ui-checkbox>Same</ui-checkbox><ui-switch checked>Ship</ui-switch></ui-fieldset></div>
+        <div style={{ width: 300 }}><ui-fieldset data-k="fsd" legend="Address" disabled><ui-checkbox checked>Same</ui-checkbox><ui-radio-group value="a"><ui-radio value="a">One</ui-radio></ui-radio-group></ui-fieldset></div>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -135,6 +149,12 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Meter data-k="mtN" value={3} max={4} format={{ style: 'decimal' }} /></div>
         <Avatar data-k="avS" avatarSize="sm" />
         <Avatar data-k="avX" avatarSize="xl" alt="Team">TM</Avatar>
+        <RadioGroup data-k="rgv" defaultValue="b"><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
+        <RadioGroup data-k="rgh" orientation="horizontal" disabled><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
+        <CheckboxGroup data-k="cgv" defaultValue={['a']} allValues={['a', 'b']}><Checkbox parent>All</Checkbox><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
+        <CheckboxGroup data-k="cgh" orientation="horizontal" defaultValue={['a', 'b']} disabled><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
+        <div style={{ width: 300 }}><Fieldset data-k="fs" legend="Address"><Checkbox>Same</Checkbox><Switch defaultChecked>Ship</Switch></Fieldset></div>
+        <div style={{ width: 300 }}><Fieldset data-k="fsd" legend="Address" disabled><Checkbox defaultChecked>Same</Checkbox><RadioGroup defaultValue="a"><Radio value="a">One</Radio></RadioGroup></Fieldset></div>
       </div>
     </div>
   );
@@ -284,9 +304,21 @@ setTimeout(() => {
       pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
     }
   }
+  // Groups (radio group, checkbox group, fieldset): the host and each member carry the same data-*.
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD']) {
+    for (const k of GROUP_KEYS) {
+      const a = host(wc, k), b = host(re, k);
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[data-part=legend], ui-radio-group, ui-radio, ui-checkbox, ui-switch, [data-ui=radio-group], [data-ui=radio], [data-ui=checkbox], [data-ui=switch]')];
+      const pa = parts(a), pb = parts(b);
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} members: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
+    }
+  }
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

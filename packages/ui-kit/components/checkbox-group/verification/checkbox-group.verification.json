@@ -1,0 +1,84 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "checkbox-group",
+  "scope": "Group value array, checkbox sync, events, the parent checkbox (all / mixed / none), disabled propagation, required validity, form value (name=value per value), defaults and reset of the web component in happy-dom (node:test); the React renderer's server markup and client events (registered members, parent); state parity of host and checkboxes across renderers. Rendered spacing is checked by apps/studio/geometry-check.html; screen-reader output is not certified.",
+  "sources": [
+    {
+      "path": "components/checkbox-group/checkbox-group.element.ts",
+      "sha256": "16abc05d1f9f500d75a1370f8f0c7802a73ed87fbfd113c07b19c1ffdc030694"
+    },
+    {
+      "path": "components/checkbox-group/checkbox-group.recipe.ts",
+      "sha256": "f952781662752563f4ba0939a1d8f5b5bf3c24546f2b24c887c34bbae993b419"
+    },
+    {
+      "path": "components/checkbox-group/checkbox-group.react.tsx",
+      "sha256": "4860c17f93820d4b03e4b6f68b6ff26edd4fd687c56c676ca2d3cf907dc54bf2"
+    },
+    {
+      "path": "components/checkbox-group/checkbox-group.manifest.json",
+      "sha256": "791e52406a096a05342424dafe93e8e0013ac0c3b4660045091e3e77883c1707"
+    },
+    {
+      "path": "components/radio-group/radio-group.recipe.ts",
+      "sha256": "13ada76943f3ceb4f5e7051139ba36d9dc2cf27e71443cae8fb044c74128d6fd"
+    },
+    {
+      "path": "components/choice/group.react.ts",
+      "sha256": "7d1e0513caaec3627f0e6f1ab3d96930773d72fdde91cdf1a755cbf5770dee66"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/checkbox-group.test.ts",
+          "covers": "no native elements, group role, value list from the attribute, a press adds or removes a value and the group fires { value, reason, event } (the checkboxes none), parent all / mixed / none and allValues, disabled reaches the checkboxes, name=value per value, defaults from checked checkboxes, dirty and reset, required"
+        },
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "resolveChoiceGroup: gaps, pitch and the gap attribute"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/checkbox-group.test.ts",
+          "node --test test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/checkbox-group.test.ts",
+          "covers": "server markup (role, data-ui, recipe classes, shared native name, nameless parent, mixed parent from allValues), state parity with the web component, onValueChange(values, { reason: none, event }) and the parent over registered members on the client"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/checkbox-group.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency.",
+    "Gaps and pitch are compared with the resolver in the browser (geometry-check.html), not in happy-dom.",
+    "Manual geometry review (2026-11-02, studio #/components?family=choices, light and dark, u = 3, 4, theme 4.5, 6): rows stay 6u and 1u apart, horizontal 4u apart; growth: long labels wrap inside their checkbox and a horizontal group wraps to new lines 1u apart (geometry-check cgW); RTL: flex follows the inline direction; focus: each checkbox keeps its own ring, the group draws no contour; parity: react-check.html twins cgv / cgh match (fails [])."
+  ]
+}

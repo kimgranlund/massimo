@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "checkbox-group",
+  "title": "Checkbox group",
+  "summary": "Any number of values chosen with a set of checkboxes; the group owns the value list, the name and an optional parent checkbox.",
+  "defaultExample": "parent",
+  "examples": [
+    {
+      "id": "parent",
+      "label": "A parent checkbox over the set",
+      "subject": "component:checkbox-group",
+      "markup": "<ui-field label=\"Notify by\"><ui-checkbox-group name=\"channels\" value=\"email\"><ui-checkbox parent>All channels</ui-checkbox><ui-checkbox value=\"email\">Email</ui-checkbox><ui-checkbox value=\"push\">Push</ui-checkbox><ui-checkbox value=\"sms\">SMS</ui-checkbox></ui-checkbox-group></ui-field>"
+    },
+    {
+      "id": "horizontal",
+      "label": "A wrapping row",
+      "subject": "component:checkbox-group",
+      "markup": "<ui-checkbox-group label=\"Send to\" orientation=\"horizontal\" value=\"email push\"><ui-checkbox value=\"email\">Email</ui-checkbox><ui-checkbox value=\"push\">Push</ui-checkbox><ui-checkbox value=\"sms\">SMS</ui-checkbox></ui-checkbox-group>"
+    }
+  ]
+}

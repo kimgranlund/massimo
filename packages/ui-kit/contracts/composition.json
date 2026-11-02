@@ -66,6 +66,34 @@
         "property panel"
       ]
     },
+    "radio-group": {
+      "id": "context:radio-group",
+      "host": "component:radio-group",
+      "summary": "Inside a ui-radio-group: radios whose value, name, disabled and read-only the group owns.",
+      "searchTerms": [
+        "radio group",
+        "inside radio group"
+      ]
+    },
+    "checkbox-group": {
+      "id": "context:checkbox-group",
+      "host": "component:checkbox-group",
+      "summary": "Inside a ui-checkbox-group: checkboxes whose checked state, name and disabled the group's value array owns.",
+      "searchTerms": [
+        "checkbox group",
+        "inside checkbox group"
+      ]
+    },
+    "fieldset": {
+      "id": "context:fieldset",
+      "host": "component:fieldset",
+      "summary": "Inside a ui-fieldset: fields of one named set, disabled together; stacked with the collection gap.",
+      "searchTerms": [
+        "fieldset",
+        "inside fieldset",
+        "field group"
+      ]
+    },
     "form": {
       "id": "context:form",
       "host": null,

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "fieldset",
+  "title": "Fieldset",
+  "summary": "A named set of fields (role=group with a legend) that can be disabled together.",
+  "defaultExample": "billing",
+  "examples": [
+    {
+      "id": "billing",
+      "label": "A legend over related fields",
+      "subject": "component:fieldset",
+      "markup": "<ui-fieldset legend=\"Billing address\"><ui-input name=\"street\" label=\"Street\"></ui-input><ui-input name=\"city\" label=\"City\"></ui-input><ui-field label=\"Plan\"><ui-radio-group name=\"plan\" value=\"pro\" orientation=\"horizontal\"><ui-radio value=\"free\">Free</ui-radio><ui-radio value=\"pro\">Pro</ui-radio></ui-radio-group></ui-field></ui-fieldset>"
+    },
+    {
+      "id": "disabled",
+      "label": "Disabled together",
+      "subject": "component:fieldset",
+      "markup": "<ui-fieldset legend=\"Shipping\" disabled><ui-input label=\"Street\" value=\"Storgatan 1\"></ui-input><ui-checkbox checked>Same as billing</ui-checkbox></ui-fieldset>"
+    },
+    {
+      "id": "authored-legend",
+      "label": "A heading as the legend",
+      "subject": "component:fieldset",
+      "markup": "<ui-fieldset><h3 data-part=\"legend\">Notifications</h3><ui-switch checked>Order alerts</ui-switch><ui-switch>Product news</ui-switch></ui-fieldset>"
+    }
+  ]
+}

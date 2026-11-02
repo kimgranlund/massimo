@@ -6,7 +6,7 @@
   "react": "components/state.react.ts",
   "motion": "components/recipe-parts.ts",
   "attributes": {
-    "data-disabled": { "baseUi": true, "condition": "_disabled", "meaning": "Disabled: by its own property, an ancestor <fieldset disabled>, or (an option) its list." },
+    "data-disabled": { "baseUi": true, "condition": "_disabled", "meaning": "Disabled: by its own property, an ancestor <fieldset disabled> or ui-fieldset[disabled], a disabled choice group, or (an option) its list." },
     "data-readonly": { "baseUi": true, "condition": "_readOnly", "meaning": "Read-only (input)." },
     "data-required": { "baseUi": true, "condition": "_required", "meaning": "A value is required." },
     "data-valid": { "baseUi": true, "condition": "_valid", "meaning": "Valid, once validity is shown (after the user leaves the control or a submit is blocked)." },
@@ -62,7 +62,10 @@
     "ui-separator": { "host": ["data-orientation"] },
     "ui-meter": { "host": [], "reads": "no state of its own (Base UI Meter has no data attributes); the value is ARIA (aria-valuenow, aria-valuetext) and --ui-ratio" },
     "ui-avatar": { "host": [], "image": ["data-loading", "data-error"], "fallback": [] },
-    "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" }
+    "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" },
+    "ui-radio-group": { "host": ["data-orientation", "data-disabled", "data-readonly", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
+    "ui-checkbox-group": { "host": ["data-orientation", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
+    "ui-fieldset": { "host": ["data-disabled"], "legend": ["data-disabled"] }
   },
   "native": {
     "disabled": "A React native control (input, select) disabled by an ancestor <fieldset disabled> is :disabled without React knowing: _disabled / _enabled and the select and input control rules keep :disabled beside data-disabled.",

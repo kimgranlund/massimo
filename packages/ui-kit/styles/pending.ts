@@ -30,4 +30,6 @@ export const pending = defineGlobalStyles({
   'ui-separator[orientation=vertical]:not(:defined)': { height: 'auto', width: 'var(--separator)' },
   // An avatar keeps its square; its initials stay hidden until the fallback is set up.
   'ui-avatar:not(:defined)': { display: 'inline-block', flexShrink: 0, width: 'var(--avatar)', height: 'var(--avatar)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  // Choice groups: hidden until defined, in the block flow their choices reserve.
+  ':is(ui-radio-group, ui-checkbox-group, ui-fieldset):not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });

@@ -1,0 +1,350 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "fieldset",
+  "primary": "component:fieldset",
+  "module": "./fieldset.element.ts",
+  "registration": "on-import",
+  "documentation": "./fieldset.md",
+  "examples": "./fieldset.examples.json",
+  "contract": "../../contracts/components.json#/components/fieldset",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./fieldset.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveFieldset"
+      ],
+      "description": "Reference numbers for the gap between the legend and the fields (the collection gap) and the absent box."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:fieldset",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-fieldset",
+      "class": "UIFieldset",
+      "extends": "UIElement",
+      "intent": [
+        "Name a set of related fields with a legend",
+        "Disable a set of fields together"
+      ],
+      "properties": [
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Disables every kit form control inside, at any depth, and nested fieldsets (their isDisabled reads it, as a native <fieldset disabled> would); data-disabled on the host and the legend. Disabled controls submit nothing.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "legend",
+          "type": "string",
+          "default": "",
+          "attribute": "legend",
+          "reflects": false,
+          "description": "The legend text; it names the group (aria-labelledby). An authored [data-part=legend] child takes its place and seeds it.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the legend and the fields in u (0…8 in 0.5 steps); default the collection gap (theme gap-collection, 2u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": "group",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "legend part (aria-labelledby)",
+            "aria-label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Fields (ui-field, ui-input, ui-select, choice groups, choices) and nested fieldsets; an optional authored [data-part=legend] child (any element, a heading too)."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "No native <fieldset> or <legend>: the host is role=group, named by its legend part through aria-labelledby. It is not form-associated; its controls submit their own values.",
+        "disabled reaches every kit form control inside at any depth: UIFormElement's isDisabled reads the nearest disabling container (ui-fieldset, ui-radio-group, ui-checkbox-group), and a nested fieldset is disabled with its outer one.",
+        "The legend is the title type role; a disabled fieldset fades it, and the controls fade themselves. The fieldset draws no box (padding, border, radius 0): put it in a card for a surface.",
+        "Composition: the legend may be authored as a [data-part=legend] child (a heading keeps its heading semantics); its text seeds legend, and the fieldset keeps it and gives it an id. React: Fieldset.Root (a native fieldset; disabled also reaches the kit hosts inside through context) and Fieldset.Legend (a div, as Base UI) as its direct child; the preset is Fieldset with a legend prop; both parts take render (an element or (props, state) => element) and className (a string or (state) => string)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "One control needs a label.",
+          "reason": "A field names one control; a fieldset names a set.",
+          "useInstead": "component:field"
+        },
+        {
+          "when": "A set of radios or checkboxes that hold one value.",
+          "reason": "A choice group owns the value, name and validity; name it with a ui-field label (or put it in a fieldset with other fields).",
+          "useInstead": "component:radio-group"
+        },
+        {
+          "when": "A visual surface around content.",
+          "reason": "A fieldset adds semantics and disabling, not a surface.",
+          "useInstead": "component:card"
+        }
+      ],
+      "searchTerms": [
+        "fieldset",
+        "legend",
+        "field group",
+        "form section",
+        "disable fields",
+        "group of fields"
+      ]
+    },
+    {
+      "id": "part:fieldset-legend",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=legend]",
+      "summary": "The legend (Base UI Fieldset.Legend): title type role; its id is the group's aria-labelledby; data-disabled with the fieldset. Generated from legend or authored (any element); hidden when generated and empty."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:fieldset",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesGeometry",
+      "to": "geometry:fieldset"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "ownsPart",
+      "to": "part:fieldset-legend"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "establishes",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:field"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:input"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:select"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:radio-group"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:checkbox-group"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:switch"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./fieldset.element.ts",
+      "exports": {
+        "component:fieldset": "UIFieldset"
+      },
+      "verification": "./verification/fieldset.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./fieldset.react.tsx",
+      "exports": {
+        "component:fieldset": "Fieldset"
+      },
+      "verification": "./verification/fieldset.verification.json#/renderers/react",
+      "props": {
+        "component:fieldset": {
+          "inherits": [
+            "Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "disabled?: boolean // Disables every control inside (native fieldset disabled; data-disabled on the kit hosts inside).",
+            "size?: number // Unit u in px for the fieldset and its fields.",
+            "gap?: number // Gap between the legend and the fields in u (default: the collection gap).",
+            "children?: ReactNode // Fieldset.Legend and the fields.",
+            "legend?: ReactNode // The legend text; it names the group."
+          ]
+        }
+      },
+      "parts": {
+        "component:fieldset": {
+          "Fieldset.Root": {
+            "inherits": [
+              "Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "disabled?: boolean = false // Disables every control inside (native fieldset disabled; data-disabled on the kit hosts inside).",
+              "size?: number // Unit u in px for the fieldset and its fields.",
+              "gap?: number // Gap between the legend and the fields in u (default: the collection gap).",
+              "children?: ReactNode // Fieldset.Legend and the fields."
+            ]
+          },
+          "Fieldset.Legend": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:fieldset": ".ui-fieldset__root",
+        "part:fieldset-legend": ".ui-fieldset__legend"
+      }
+    }
+  }
+}

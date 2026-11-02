@@ -25,6 +25,22 @@ export function settleDefault(el: any, initial: unknown, fallback: unknown = ini
   el[defKey] = el.hasAttribute(key) ? el[key] : fallback;
 }
 
+/**
+ * Containers that disable the form elements inside them, like a native <fieldset disabled>
+ * (ui-fieldset, ui-radio-group, ui-checkbox-group register their tags). A container exposes a
+ * reactive `isDisabled`; a form element reads the nearest one (`disablingContainer`).
+ */
+const disablers = new Set<string>();
+export function registerDisabler(tag: string) { disablers.add(tag); }
+/** The nearest registered disabling container around `el` (not `el` itself), if any. */
+export function disablingContainer(el: Element): { isDisabled?: boolean } | null {
+  return disablers.size ? (el.parentElement?.closest([...disablers].join(', ')) as { isDisabled?: boolean } | null) ?? null : null;
+}
+/** Re-read the disabling container of every form element (and nested container) inside `root` (a container connected or upgraded late). */
+export function syncDisabled(root: Element) {
+  for (const el of root.querySelectorAll('*')) if (typeof (el as { syncContainer?: unknown }).syncContainer === 'function') (el as UIFormElement).syncContainer();
+}
+
 export class UIFormElement extends UIElement {
   static formAssociated = true;
   /** Set the field state data-* on the host (false for controls without a value, such as a button). */
@@ -40,6 +56,8 @@ export class UIFormElement extends UIElement {
 
   readonly internals: ElementInternals = this.attachInternals();
   #formDisabled = signal(false);
+  /** The nearest disabling container (ui-fieldset, a choice group); its isDisabled is reactive. */
+  #container = signal<{ isDisabled?: boolean } | null>(null);
   /** Errors are shown: the user left the field, activated it, or a submit was blocked. */
   #shown = signal(false);
   /** The user left the field (or activated a choice) at least once. */
@@ -60,8 +78,10 @@ export class UIFormElement extends UIElement {
   reportValidity() { this.#shown.value = true; return this.internals.reportValidity(); }
   setCustomValidity(message: string) { this.#custom.value = message; }
 
-  /** Disabled by its own attribute or by a disabled ancestor <fieldset>. Reactive. */
-  get isDisabled() { return this.disabled || this.#formDisabled.value; }
+  /** Disabled by its own attribute, a disabled ancestor <fieldset>, or a disabled kit container (ui-fieldset, a choice group). Reactive. */
+  get isDisabled(): boolean { return this.disabled || this.#formDisabled.value || !!this.#container.value?.isDisabled; }
+  /** Find the nearest disabling container again (called on connect, and by a container that connects late). */
+  syncContainer() { this.#container.value = null; this.#container.value = disablingContainer(this); }
   /** The current validation problem, if any. Reactive. */
   get problem(): Problem | null {
     if (this.isDisabled) return null;
@@ -77,6 +97,8 @@ export class UIFormElement extends UIElement {
   /** Focus is within the host. Reactive. */
   get focused() { return this.#focused.value; }
   markTouched() { this.#touched.value = true; this.#shown.value = true; }
+  /** Take the value at the next render as the clean one (data-dirty): a group that sets a member it just adopted. */
+  markClean() { this.#initial = undefined; }
 
   // ── Subclass hooks ──
   /** Value submitted with the form; null submits nothing. */
@@ -93,10 +115,13 @@ export class UIFormElement extends UIElement {
   authorError(): string { return ''; }
   /** Read-only (input `readonly`). */
   isReadonly(): boolean { return false; }
+  /** The value data-dirty compares with the first render's: the form value as a string (a FormData value: override). */
+  valueKey(value: string | File | FormData | null): string { return typeof value === 'string' || value == null ? value ?? '' : '\u0000'; }
   /** data-filled: a non-empty form value (a choice: checked). */
   isFilled(): boolean { const v = this.formValue(); return v != null && v !== ''; }
 
   connectedCallback() {
+    this.#container.value = disablingContainer(this);
     super.connectedCallback();
     this.addEventListener('invalid', this.#onInvalid);
     const state = (this.constructor as typeof UIFormElement).fieldState;
@@ -111,7 +136,7 @@ export class UIFormElement extends UIElement {
       if (p) this.internals.setValidity(p.flags, p.message, this.validationAnchor());
       else this.internals.setValidity({});
       if (!state) return;
-      const key = typeof value === 'string' || value == null ? value ?? '' : '\u0000';
+      const key = this.valueKey(value);
       this.#initial ??= key;
       const invalid = this.invalidShown;
       applyAttrs(this, fieldDataAttrs({
@@ -123,6 +148,7 @@ export class UIFormElement extends UIElement {
   }
 
   disconnectedCallback() {
+    this.#container.value = null;
     this.#stopForm?.();
     this.removeEventListener('invalid', this.#onInvalid);
     this.removeEventListener('focusin', this.#onFocusIn);

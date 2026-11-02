@@ -12,9 +12,11 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/radio-group/element';
+import '@massimo/ui-kit/components/fieldset/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter,
+  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -162,6 +164,9 @@ export function GeometryPage({ params }: PageProps) {
               <SpecRow label="composite" values={[`row ${px(m.rowHeight)} · edge ${pu(m.edge)} · radius ${px(m.radius)}`, `option height ${px(m.child.height)} · inset ${px(m.child.inset)} · radius ${px(m.child.radius)}`]}>
                 <ui-segmented label="View" value="a"><ui-option value="a">Day</ui-option><ui-option value="b">Week</ui-option></ui-segmented>
               </SpecRow>
+              <SpecRow label="fieldset" values={[`gap ${pu(resolveFieldset(theme).gap)} (collection) · no padding, border or radius`]}>
+                <ui-fieldset legend="Address"><ui-input label="Street" hide-label="" value="Storgatan 1" /></ui-fieldset>
+              </SpecRow>
             </>
           );
         })()}
@@ -197,6 +202,14 @@ export function GeometryPage({ params }: PageProps) {
           return (
             <SpecRow label="swatch" values={[`size ${px(t.size)} · radius ${px(t.radius)} · palette radius ${px(t.paletteRadius)}`]}>
               <ui-swatch color="#3b82f6" /><ui-swatch color="#10b981" />
+            </SpecRow>
+          );
+        })()}
+        {(() => {
+          const [v, h] = [resolveChoiceGroup('vertical', theme), resolveChoiceGroup('horizontal', theme)];
+          return (
+            <SpecRow label="choice group" values={[`rows ${px(v.rowHeight)} · gap ${pu(v.gap)} · pitch ${px(v.pitch)}`, `horizontal gap ${pu(h.columnGap)} · wrapped lines ${pu(h.rowGap)}`]}>
+              <ui-radio-group label="Plan" value="a" orientation="horizontal"><ui-radio value="a">Free</ui-radio><ui-radio value="b">Pro</ui-radio></ui-radio-group>
             </SpecRow>
           );
         })()}
