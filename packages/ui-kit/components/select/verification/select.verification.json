@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "aae0ece05b08d8d769b3a8348fdd789e2478866553c6b7b12919527ab769e5cc"
+      "sha256": "e81d28b0347d485c22f89a9e4336d60aee1b96007601a12429ab930711ac3eeb"
     },
     {
       "path": "components/listbox/options.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "5713529eff157100f139aed0cb0380c9a88ce6943eb27a37b0c2b005e9b66f0e"
+      "sha256": "0abd44cae858161a92412ac6e4f9ad03ff4cdaf34c0ddc89f0a95f249510bec3"
     },
     {
       "path": "dom/field.ts",
@@ -22,15 +22,23 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "20c813cd550fc82aa8fd84278b5d74f1e46dba89f42b58a9c108252030ae39d0"
+      "sha256": "3dec2424c5426238140ab387dbf7afdb79955fee775769447db68de5f264526f"
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "d07d48f463ab4ba12f731a9eded96a49c625877a864d36fb7f5148b54f8bf122"
+      "sha256": "e20b1887dfa2e5f43910da1b4019338b1d5e4d818e94823ab659469c692b2967"
     },
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
     }
   ],
   "renderers": {
@@ -43,6 +51,10 @@
         {
           "command": "node --test test/listbox.test.ts",
           "covers": "navigate, typeahead, selectKeyIntent, placePopup"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -50,7 +62,8 @@
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
-          "node --test test/listbox.test.ts"
+          "node --test test/listbox.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -62,13 +75,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native select with button trigger, selectedcontent value, rich options, label/description/error wiring"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

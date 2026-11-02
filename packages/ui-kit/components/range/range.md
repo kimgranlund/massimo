@@ -28,6 +28,15 @@ Pair a range with a visible label element and `aria-labelledby` when the label m
 | `ui-range` | PageUp, PageDown | ±10% of the range |
 | `ui-range` | Home, End | min / max |
 
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+| Element | Attributes |
+|---|---|
+| `ui-range` / Range | `data-orientation` (horizontal), `data-dragging` while a pointer drags; field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
+| `ui-progress` / Progress | `data-indeterminate` without a value, `data-progressing` below the max, `data-complete` at the max |
+
 ## Geometry and appearance
 
 Geometry families: `track` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [range.recipe.ts](range.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

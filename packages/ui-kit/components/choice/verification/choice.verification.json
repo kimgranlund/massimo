@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/choice/choice.element.ts",
-      "sha256": "c92221804ffc840955c39d7046d77fca9dd4df5863a279a9cc6708ce83145f44"
+      "sha256": "ae5abef28822fe64e2583254ab7069c6b9fd605b42dac785923d54e792e1d622"
     },
     {
       "path": "components/slots.ts",
@@ -14,15 +14,23 @@
     },
     {
       "path": "core/form-element.ts",
-      "sha256": "77d21733f7b97e86124fe0c4384db008cc323653d809b0e53cc6236b31262bbc"
+      "sha256": "aa62e9a254f75739538f3b906b915601ad19373aec4bbfafad2734eab9563c6e"
     },
     {
       "path": "components/choice/choice.manifest.json",
-      "sha256": "1ec8c7d5deea0c251410338b14b057e26d669ff36c5079d30258aa913545ef3f"
+      "sha256": "8c166b716c1c94b5d1fabaae4bc04388d749c2ccf7880017a9f2eaae445409de"
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "d55a1ccb583df0bbdbd8151b7304729fefa2a47f8a97e83b80f7709e981ce6aa"
+      "sha256": "87b0a32fec1c1c44d89ab14dcc1ce8fc8205c2fe5b3b7e05f0ef5954e3ad040c"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
     }
   ],
   "renderers": {
@@ -31,13 +39,18 @@
         {
           "command": "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
           "covers": "roles, toggle by click and keys, mixed, form value, required, radio group movement and roving tab stop"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -49,13 +62,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native input/progress inside a data-ui host, construction-pattern parts, form names and values, no custom elements"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

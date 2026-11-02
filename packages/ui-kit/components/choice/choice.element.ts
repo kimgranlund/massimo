@@ -3,7 +3,7 @@
 // indicator sits in the leading slot. Radios group by `name` within their form (or document):
 // arrow keys move and select within the group, and only the checked radio is a tab stop.
 import { UIFormElement, define, type Problem } from '../../core/index.ts';
-import { applyAttrs } from '../../dom/index.ts';
+import { applyAttrs, checkedDataAttrs } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { checkbox } from '../../styled-system/recipes/checkbox.js';
@@ -55,11 +55,13 @@ abstract class UIChoice extends UIFormElement {
       'aria-required': this.required ? 'true' : undefined,
       'aria-invalid': this.userInvalid ? 'true' : undefined,
       tabindex: this.tabStop() ? 0 : -1,
+      ...checkedDataAttrs(this.checked, this.isIndeterminate()),
     });
     applyRecipe(this, this.recipe(), (slot) => slot === 'box' ? partOf(partOf(this, 'leading') ?? this, 'box') : partOf(this, slot));
   }
 
   protected checkedState(): string { return String(this.checked); }
+  protected isIndeterminate() { return false; }
   protected tabStop() { return !this.isDisabled; }
 
   formValue() { return this.checked ? this.value : null; }
@@ -102,6 +104,7 @@ export class UICheckbox extends UIChoice {
     return box;
   }
   protected checkedState() { return this.indeterminate ? 'mixed' : String(this.checked); }
+  protected isIndeterminate() { return this.indeterminate; }
   protected activate() { this.indeterminate = false; super.activate(); }
 }
 

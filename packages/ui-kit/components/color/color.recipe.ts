@@ -6,9 +6,10 @@ import { FORCED, FORCED_EDGE, PAINT, UI_FONT, t } from '../recipe-parts.ts';
 
 const CHECKER = 'conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)';
 const SWATCH = '& > :is(ui-swatch, [data-ui=swatch])';
-// A swatch's state in a selectable palette: ARIA on the web component, the native radio in React.
-const SELECTED = ':is([aria-selected=true], :has(> input:checked))';
-const ACTIVE = ':is([data-active], :has(> input:focus-visible))';
+// A swatch's state in a selectable palette: data-selected and data-highlighted on both renderers
+// (React: the label around the native radio).
+const SELECTED = '[data-selected]';
+const ACTIVE = '[data-highlighted]';
 
 export const swatch = defineSlotRecipe({
   className: 'ui-swatch',
@@ -48,7 +49,7 @@ export const palette = defineSlotRecipe({
       _after: { content: '""', position: 'absolute', inset: 0, borderRadius: 'inherit', boxShadow: 'inset 0 0 0 1px var(--colors-border)', pointerEvents: 'none' },
       [SWATCH]: { borderRadius: 0, flex: '1 0 var(--slot)', transition: t('feedback', ...PAINT) },
       _disabled: { opacity: 0.5, cursor: 'not-allowed', '& > *': { cursor: 'not-allowed', pointerEvents: 'none' } },
-      _userInvalid: { outline: '2px solid {colors.critical.solid}', outlineOffset: '2px' },
+      _invalid: { outline: '2px solid {colors.critical.solid}', outlineOffset: '2px' },
       [FORCED]: { _disabled: { color: 'GrayText' } },
     },
   },

@@ -1,7 +1,8 @@
 // Slot recipes for <ui-checkbox>, <ui-radio>, <ui-switch> and the React Checkbox, Radio, Switch.
 // A 6u row: the 5u box (9u wide for switch) sits in the 6u leading slot; the label starts 1u after
-// it (resolveChoice). State is ARIA on the web component's host, or the native <input> that is a
-// direct child of the React host: the conditions (_checked, _disabled, …) match both.
+// it (resolveChoice). State is the data-* contract on the host (data-checked, data-unchecked,
+// data-indeterminate, data-disabled, data-invalid, data-required, …), set by the web component and
+// by the React renderer from its native input: the conditions (_checked, _disabled, …) key on it.
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, constructionPattern, t } from '../recipe-parts.ts';
 
@@ -9,7 +10,7 @@ const SLOTS = ['root', 'leading', 'box', 'prefix', 'contents', 'suffix'] as cons
 const BOX = '& [data-part=box]';
 // The label starts 1u after the indicator slot and has no padding at the end.
 const PATTERN = constructionPattern({ slot: 'var(--u)', bare: '0px', text: { paddingBlock: 'calc(0.75 * var(--u))' }, iconSlots: false });
-const REQUIRED = '&:is([aria-required=true], :has(> input:required))::after';
+const REQUIRED = '&[data-required]::after';
 
 /** "On" box: the primary solid; its indicator uses the contrast color. */
 const on = (extra: Record<string, any> = {}) => ({
@@ -29,8 +30,8 @@ function choice(kind: 'checkbox' | 'radio' | 'switch', box: Record<string, any>,
         minHeight: 'var(--slot)', fontFamily: UI_FONT, fontSize: 'var(--font)', lineHeight: 'var(--leading)',
         _disabled: { opacity: 0.5, cursor: 'not-allowed' },
         _enabled: { _hover: { [BOX]: { bg: 'bg.mutedHover' } }, '&:active': { [BOX]: { bg: 'bg.mutedActive' } } },
-        // Invalid (the _userInvalid hooks at low specificity): hover and the checked fill win over it.
-        '&:where([aria-invalid=true], [data-invalid], :has(> input:user-invalid)) [data-part=box]': { borderColor: 'critical.solid', bg: CRITICAL_TINT(20) },
+        // Invalid (data-invalid at low specificity): hover and the checked fill win over it.
+        '&:where([data-invalid]) [data-part=box]': { borderColor: 'critical.solid', bg: CRITICAL_TINT(20) },
         // React: the native input carries state, invisible but interactive.
         '&:has(> input)': { position: 'relative' },
         '& > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },

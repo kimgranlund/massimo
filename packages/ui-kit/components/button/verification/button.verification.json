@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/button/button.element.ts",
-      "sha256": "a7a9a936cb35f74a8100086f466ebb4c0e847b38c993aebb658d08932752457e"
+      "sha256": "c52f232b9f52eab5645b50e5c1d64630f0bbf0c0d1383b02d063f17655b160ff"
     },
     {
       "path": "components/slots.ts",
@@ -14,15 +14,19 @@
     },
     {
       "path": "dom/button.ts",
-      "sha256": "1e30c8aabe28aa63b6e2eb2bc882e39ba27f4b906b21f354b6bb0bc0f7af5fcd"
+      "sha256": "640d5a4f382b7a2cafc363b94e9ec5cc543f25ca53777a31de0e1f1f8d8d3770"
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "c341563b9e457eedf58bb0f79acb6ead4a83240b24ebe6ce3b300c983110c486"
+      "sha256": "c57d845348abd01d5419af240a1f771660a599e0f663835807ce7fd336ce710b"
     },
     {
       "path": "components/button/button.react.tsx",
       "sha256": "bec52e2a8d9236b9af1a38dff22d6ada797c95131145b6275060b4f79af1eee2"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
     }
   ],
   "renderers": {
@@ -31,13 +35,18 @@
         {
           "command": "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
           "covers": "role, focus, Enter/Space activation, disabled and fieldset blocking, slot sorting"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts"
+          "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -49,13 +58,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

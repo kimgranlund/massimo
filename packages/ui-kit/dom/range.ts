@@ -47,3 +47,22 @@ export function sliderAttrs(s: RangeState & { disabled?: boolean; label?: string
     'aria-orientation': 'horizontal',
   };
 }
+
+/** Slider state (Base UI Slider): data-orientation, data-dragging while a pointer drags the thumb. */
+export function rangeDataAttrs(s: { dragging?: boolean; orientation?: 'horizontal' | 'vertical' }) {
+  return { 'data-orientation': s.orientation ?? 'horizontal', 'data-dragging': s.dragging ? '' : undefined };
+}
+
+/**
+ * Progress state (Base UI Progress): data-indeterminate without a value, data-complete at the max,
+ * data-progressing in between. Returns the clamped value too.
+ */
+export function progressState(value: number | null | undefined, max: number) {
+  const indeterminate = value == null || Number.isNaN(value);
+  const v = indeterminate ? 0 : Math.min(max, Math.max(0, value));
+  const complete = !indeterminate && v >= max;
+  return {
+    indeterminate, value: v, ratio: max ? v / max : 0,
+    attrs: { 'data-indeterminate': indeterminate ? '' : undefined, 'data-complete': complete ? '' : undefined, 'data-progressing': !indeterminate && !complete ? '' : undefined },
+  };
+}

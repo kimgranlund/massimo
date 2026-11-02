@@ -15,6 +15,15 @@
   },
   "independentLayers": [
     {
+      "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs",
+        "checkedDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
       "kind": "dom-behavior",
       "module": "../slots.ts",
       "exports": [
@@ -186,7 +195,7 @@
         "sizing": "intrinsic"
       },
       "constraints": [
-        "The host is the control: role=checkbox, aria-checked true | false | mixed, tabindex 0. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "The host is the control: role=checkbox, aria-checked true | false | mixed, tabindex 0. Styling state: data-checked / data-unchecked, data-indeterminate (instead of either) and the field state (data-disabled, data-required, data-valid / data-invalid, data-dirty, data-touched, data-filled, data-focused), on the React label host too. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "indeterminate shows mixed and clears when the user toggles.",
         "The checked attribute at connect is the reset default; checked is not reflected.",
         "Box radius is 1u."
@@ -534,7 +543,7 @@
         "sizing": "intrinsic"
       },
       "constraints": [
-        "The host is the control: role=switch, aria-checked. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "The host is the control: role=switch, aria-checked; data-checked / data-unchecked and the field state. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "The track is a capsule; the thumb moves on the snappy spring.",
         "The application applies the setting on change; a switch implies no submit step."
       ],

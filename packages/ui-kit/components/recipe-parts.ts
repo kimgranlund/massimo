@@ -1,7 +1,7 @@
 // Shared pieces for the component slot recipes (components/<name>/<name>.recipe.ts). Lengths come
 // from the geometry variables (styles/geometry.ts: --u, --h, --pad, --slot, --icon, --radius, …),
-// never literals; states use the preset conditions (styles/conditions.ts), so one rule serves the
-// web component (ARIA on the host) and the React renderer (native element, data-ui host).
+// never literals; states use the preset conditions (styles/conditions.ts), keyed on the data-* state
+// contract both renderers set (dom/state.ts), so one rule serves the web component and React.
 // Build-time only: element modules import the generated functions in styled-system/recipes.
 import type { IntentName } from '../tokens/motion/index.ts';
 import { voiceFamily } from '../styles/typography.ts';
@@ -161,7 +161,7 @@ export const fieldRoot: Style = {
     clipPath: 'inset(50%)', whiteSpace: 'nowrap', border: 0,
   },
   // Required: a marker after the label.
-  '&[required] > [data-part=label]::after': { content: '" *"', color: 'critical.fg' },
+  '&[data-required] > [data-part=label]::after': { content: '" *"', color: 'critical.fg' },
 };
 
 /** Field label, description and error slots. */

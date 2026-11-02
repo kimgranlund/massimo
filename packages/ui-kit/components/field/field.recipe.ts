@@ -30,10 +30,11 @@ export const field = defineSlotRecipe({
       display: 'grid', alignItems: 'center', columnGap: '2', fontFamily: UI_FONT, minWidth: '0',
       [CONTROL]: { minWidth: '0' },
       [`${CONTROL}${CHOICE}`]: { justifySelf: 'start' },
-      // Required control: a marker after the label text, as on ui-input and ui-select.
-      '&:has(> :is([required], [aria-required=true]), :is(input, select)[required]) > [data-part=label] > [data-part=contents]::after': { content: '" *"', color: 'critical.fg' },
-      // Disabled control: the label fades with it.
-      '&:has(> :is([disabled], [aria-disabled=true]), :is(input, select):disabled) > [data-part=label]': { opacity: 0.5 },
+      // Required control (data-required on a kit control's host; a bare native control's [required]):
+      // a marker after the label text, as on ui-input and ui-select.
+      '&:has(> [data-required], :is(input, select)[required]) > [data-part=label] > [data-part=contents]::after': { content: '" *"', color: 'critical.fg' },
+      // Disabled control (data-disabled; a bare native control's :disabled): the label fades with it.
+      '&:has(> [data-disabled], :is(input, select):disabled) > [data-part=label]': { opacity: 0.5 },
     },
     label: {
       ...fieldParts.label,

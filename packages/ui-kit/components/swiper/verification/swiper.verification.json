@@ -6,15 +6,19 @@
   "sources": [
     {
       "path": "components/swiper/swiper.element.ts",
-      "sha256": "d549bf1a04a84ce77e25a3b5416db4344115f5d29173b663ee54a73b3ac9f22e"
+      "sha256": "65c03d22142a19f3e647c1cb0c3f144d537eeaf181504e28315bc6688bd8976a"
     },
     {
       "path": "components/swiper/swiper.manifest.json",
-      "sha256": "17c2674bf65a85454da03ebbe64b142b6a2a4f8a59783f13080c16a8c4e71156"
+      "sha256": "a241c2d21e20745bdf9ac9ec3aa474ecb29cecf7e142e00e6262f1d8aaec6c1e"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
-      "sha256": "12ef727d6b887c78ae3627d24a234927a80dc3d051a05202558c4d289c87b041"
+      "sha256": "090edca44c7dcecf616617693446ff629fe9d6283ad86120573b5aa885902a49"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
     }
   ],
   "renderers": {
@@ -23,13 +27,18 @@
         {
           "command": "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
           "covers": "viewport, paddles and dots built; image presets and slideshow"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -41,13 +50,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native anatomy, roles, controls and slides"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

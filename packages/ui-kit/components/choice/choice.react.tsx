@@ -2,10 +2,13 @@
 // React <Checkbox>, <Radio>, <Switch>: a native <input> (checkbox; radio; checkbox with role=switch)
 // inside a <label data-ui="…"> host with the same anatomy as the web components:
 //   label > input, [data-part=leading] > [data-part=box], [prefix], [data-part=contents], [suffix]
-// The input owns state, focus, keyboard, form value and validity; the slot recipes (choice.recipe.ts)
-// read it with :has(), so radios in a group stay in sync without React bookkeeping.
-import { useEffect, useRef, type InputHTMLAttributes, type ReactNode } from 'react';
+// The input owns state, focus, keyboard, form value and validity; the host mirrors it as the data-*
+// state contract (data-checked / data-unchecked / data-indeterminate and the field state,
+// state.react.ts), the same attributes the web components set, which the slot recipes key on. A radio
+// rereads itself on any change in its group, so the group stays in sync.
+import type { InputHTMLAttributes, ReactNode } from 'react';
 import { Parts } from '../parts.react.tsx';
+import { useFieldState } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { checkbox, radio, switchRecipe } from '../../styled-system/recipes/index.js';
 
@@ -23,14 +26,17 @@ export interface ChoiceProps extends Native {
   children?: ReactNode;
 }
 
-function Choice({ kind, prefix, suffix, invalid, size, children, className, style, indeterminate, ...input }: ChoiceProps & { kind: 'checkbox' | 'radio' | 'switch'; indeterminate?: boolean }) {
-  const ref = useRef<HTMLInputElement>(null);
-  // indeterminate is a property, not an attribute.
-  useEffect(() => { if (ref.current) ref.current.indeterminate = !!indeterminate; }, [indeterminate]);
+function Choice({ kind, prefix, suffix, invalid, size, children, className, style, indeterminate, onInvalid, ...input }: ChoiceProps & { kind: 'checkbox' | 'radio' | 'switch'; indeterminate?: boolean }) {
+  const f = useFieldState<HTMLLabelElement>({
+    disabled: input.disabled, required: input.required, error: invalid,
+    checked: input.checked, defaultChecked: input.defaultChecked, indeterminate: kind === 'checkbox' ? indeterminate : undefined,
+    defaultFilled: !!(input.checked ?? input.defaultChecked),
+  });
   const c = RECIPES[kind]();
   return (
-    <label data-ui={kind} data-size={size} data-invalid={invalid || undefined} className={cx(c.root, className)} style={style}>
-      <input ref={ref} type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined} aria-invalid={invalid || undefined} {...input} />
+    <label ref={f.ref} data-ui={kind} data-size={size} {...f.attrs} {...f.checkedAttrs} {...f.handlers} className={cx(c.root, className)} style={style}>
+      <input type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined} aria-invalid={invalid || undefined} {...input}
+        onInvalid={(e) => { f.controlProps.onInvalid(); onInvalid?.(e); }} />
       <span data-part="leading" className={c.leading}>
         <span data-part="box" aria-hidden="true" className={c.box}>
           {kind === 'checkbox' && <><i name="check-bold" data-mark="checked" /><i name="minus-bold" data-mark="mixed" /></>}

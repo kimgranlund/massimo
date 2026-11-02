@@ -87,6 +87,8 @@ export class UIInput extends UIFormElement {
 
   // ── UIFormElement hooks ──
   formValue() { return this.value; }
+  authorError() { return this.error; }
+  isReadonly() { return this.readonly; }
   validationAnchor() { return this.editor ?? undefined; }
   resetValue() { this.value = this.#default; }
   restoreValue(state: unknown) { if (typeof state === 'string') this.value = state; }

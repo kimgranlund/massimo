@@ -68,17 +68,20 @@ export function listboxAttrs(s: { orientation?: Orientation; activeId?: string; 
     'aria-required': s.required ? 'true' : undefined,
     'aria-invalid': s.invalid ? 'true' : undefined,
     tabindex: s.focusable === false ? undefined : s.disabled ? -1 : 0,
+    'data-orientation': s.orientation,
   };
 }
 
+/** An option: ARIA, plus data-selected, data-highlighted (the active option) and data-disabled (Base UI Select.Item). */
 export function optionAttrs(s: { id: string; selected: boolean; disabled?: boolean; active?: boolean }): Attrs {
   return {
     role: 'option',
     id: s.id,
     'aria-selected': String(s.selected),
     'aria-disabled': s.disabled ? 'true' : undefined,
-    'data-selected': s.selected || undefined,
-    'data-active': s.active || undefined,
+    'data-selected': s.selected ? '' : undefined,
+    'data-highlighted': s.active ? '' : undefined,
+    'data-disabled': s.disabled ? '' : undefined,
   };
 }
 
@@ -97,6 +100,11 @@ export function comboboxAttrs(s: { open: boolean; popupId: string; activeId?: st
     'aria-required': s.required ? 'true' : undefined,
     'aria-invalid': s.invalid ? 'true' : undefined,
     tabindex: s.disabled ? -1 : 0,
+    // Base UI Select.Trigger: open (data-popup-open; the trigger holds its pressed look while open,
+    // data-pressed) and disabled.
+    'data-popup-open': s.open ? '' : undefined,
+    'data-pressed': s.open ? '' : undefined,
+    'data-disabled': s.disabled ? '' : undefined,
   };
 }
 

@@ -28,6 +28,16 @@ Slides scroll natively (momentum, touch, trackpad, arrow keys in the focused vie
 | `ui-swiper` | arrow keys in the viewport | native scroll |
 | `ui-swiper` | Enter, Space on a dot | go to that slide |
 
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+| Element | Attributes |
+|---|---|
+| `ui-swiper` / Swiper | `data-single` with one slide (ours) |
+| dot | `data-selected` on the current slide's dot (`aria-current` for semantics) |
+| paddle | `data-disabled` at either end (a button) |
+
 ## Geometry and appearance
 
 Geometry families: `swiper` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [swiper.recipe.ts](swiper.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

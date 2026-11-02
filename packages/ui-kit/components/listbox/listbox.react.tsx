@@ -3,10 +3,13 @@
 // the same headless helpers (dom/listbox.ts). The host is the single tab stop (role=listbox) and
 // tracks the highlighted option with aria-activedescendant; arrow keys, Home/End and typeahead move
 // and select (selection follows focus). A hidden input carries the form value when `name` is set.
+// The host carries the field state as data-* (state.react.ts) and options data-selected,
+// data-highlighted and data-disabled (optionAttrs), as on the web components.
 import { Children, createContext, isValidElement, useContext, useId, useRef, useState, type HTMLAttributes, type KeyboardEvent, type ReactElement, type ReactNode } from 'react';
 import { createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type OptionItem } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
+import { useFieldState } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { listbox, segmented, option } from '../../styled-system/recipes/index.js';
 
@@ -63,16 +66,19 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
   };
 
   const shown = focused ? active : -1;
+  const f = useFieldState<HTMLDivElement>({ disabled, required, error: invalid, value: current, missing: !!required && !current });
   return (
     <div
-      {...rest} className={cx((kind === 'segmented' ? segmented : listbox)().root, className)} data-ui={kind} data-size={size} {...(gap !== undefined ? { gap: String(gap) } : {})}
-      {...toReactProps(listboxAttrs({ orientation: orient, activeId: shown >= 0 ? idOf(shown) : undefined, label, disabled, required, invalid }))}
+      {...rest} ref={f.ref} className={cx((kind === 'segmented' ? segmented : listbox)().root, className)} data-ui={kind} data-size={size} {...(gap !== undefined ? { gap: String(gap) } : {})}
+      {...toReactProps(listboxAttrs({ orientation: orient, activeId: shown >= 0 ? idOf(shown) : undefined, label, disabled, required, invalid: f.attrs['data-invalid'] !== undefined }))}
+      {...f.attrs}
       onFocus={(e) => {
         setFocused(true);
+        f.handlers.onFocus();
         if (active < 0) { const sel = items.findIndex((it) => it.value === current); setActive(sel >= 0 ? sel : firstEnabled(items) ?? -1); }
         onFocus?.(e);
       }}
-      onBlur={(e) => { setFocused(false); onBlur?.(e); }}
+      onBlur={(e) => { setFocused(false); f.handlers.onBlur(e); onBlur?.(e); }}
       onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
         onKeyDown?.(e);
         if (disabled || e.defaultPrevented) return;

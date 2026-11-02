@@ -16,6 +16,14 @@
   "independentLayers": [
     {
       "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
+      "kind": "pure-behavior",
       "module": "../../dom/text-entry.ts",
       "exports": [
         "textEntryAttrs",
@@ -31,7 +39,7 @@
         "fieldIds",
         "fieldAttrs"
       ],
-      "description": "Label, description and error wiring (ids, aria-labelledby, aria-describedby, aria-invalid)."
+      "description": "Label, description and error wiring (ids, aria-labelledby, aria-describedby, aria-invalid); the host's styling state (data-invalid, data-readonly, …) comes from UIFormElement (dom/state.ts)."
     },
     {
       "kind": "geometry",

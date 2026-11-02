@@ -60,6 +60,12 @@ A required control adds ` *` after the label text; a disabled one fades the labe
 
 `ui-field-grid` defines three columns: label (content-sized up to 40% of the grid), control (fills), readout (the widest readout, at least 10u). Each `ui-field` child spans them with `grid-template-columns: subgrid`, so every label, control and readout lines up with its neighbours across groups. Any other child spans every column; headings (`h1`–`h6`, `role=heading`) take the group kicker role with 4u above all but the first, so one grid holds several groups.
 
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+`ui-field` / Field sets no state of its own: it reads its control's `data-disabled` (the label fades) and `data-required` (the marker) with `:has()`, and a bare native control's `:disabled` / `[required]`.
+
 ## Geometry and appearance
 
 Geometry family `field-row` ([geometry-families.json](../../contracts/geometry-families.json)): Panda spacing and sizes tokens in u (column and row gap 2u in the grid; stacked label gap 1.5u; readout at least 10u); the controls keep their own geometry. Styles: the slot recipes in [field.recipe.ts](field.recipe.ts), applied by the web components and the React renderers alike.

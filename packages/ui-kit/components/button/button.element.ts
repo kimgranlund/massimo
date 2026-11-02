@@ -13,6 +13,8 @@ export class UIButton extends UIFormElement {
     loading: { type: Boolean, default: false, reflect: true },
     variant: { type: String, default: 'neutral' },
   };
+  // A button has no value: data-disabled and data-busy come from buttonAttrs, not the field state.
+  static fieldState = false;
   declare type: 'button' | 'submit' | 'reset';
   declare loading: boolean;
   declare variant: 'neutral' | 'primary';

@@ -4,8 +4,8 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 import { fieldControl, fieldParts, fieldRoot, mergeStyles } from '../recipe-parts.ts';
 
-// A state on the control or on its text part (aria-* on the editor, or the native input).
-const has = (attr: string) => `:is(${attr}, :has(> ${attr}))`;
+// Control states come from the host's field state (data-invalid, data-disabled, data-readonly on
+// ui-input and the React Input host); a native input disabled by a <fieldset> is :disabled.
 
 export const input = defineSlotRecipe({
   className: 'ui-input',
@@ -15,9 +15,9 @@ export const input = defineSlotRecipe({
     root: fieldRoot,
     ...fieldParts,
     control: mergeStyles(fieldControl({
-        invalid: has('[aria-invalid=true]'),
-        disabled: `:is(${has('[aria-disabled=true]')}, :has(> :disabled))`,
-        readonly: has('[aria-readonly=true]'),
+        invalid: ':is([data-invalid] > *)',
+        disabled: ':is([data-disabled] > *, :has(> :disabled))',
+        readonly: ':is([data-readonly] > *)',
       }), {
       // Text fields always show focus, also after a pointer click (the caret target must be
       // visible). The ring sits on the control (the shape), not the text part inside it.

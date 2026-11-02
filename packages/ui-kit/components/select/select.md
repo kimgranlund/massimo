@@ -47,6 +47,19 @@ Icons sit in leading/trailing slots (6u on controls); prefix and suffix are shor
 | `ui-select` | Escape | close without committing |
 | `ui-select` | printable characters | typeahead |
 
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+| Element | Attributes |
+|---|---|
+| `ui-select` / Select (host) | field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
+| trigger (web component) | `data-popup-open` and `data-pressed` while open, `data-placeholder` with no selection, `data-disabled` |
+| popup (web component) | `data-open` / `data-closed`; while open `data-side` (bottom or top, read back after anchor positioning) and `data-align` (start) |
+| `ui-option` in the popup | `data-selected`, `data-highlighted` (the active option), `data-disabled` |
+
+The React Select is a native customizable select: its open state (`select:open`), option selection (`:checked`) and highlight (`:focus`) and the popup (`::picker(select)`) stay native, because the browser does not report them to script. Enter and exit motion is `@starting-style` (no `data-starting-style` / `data-ending-style`).
+
 ## Geometry and appearance
 
 Geometry families: `field` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [select.recipe.ts](select.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

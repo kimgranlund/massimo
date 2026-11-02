@@ -16,6 +16,14 @@
   "independentLayers": [
     {
       "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
+      "kind": "pure-behavior",
       "module": "../../dom/listbox.ts",
       "exports": [
         "listboxAttrs",
@@ -518,7 +526,7 @@
         "sizing": "fill"
       },
       "constraints": [
-        "The owning list sets role=option, id, aria-selected, aria-disabled and data-active; the option sets none itself.",
+        "The owning list sets role=option, id, aria-selected, aria-disabled and the styling state data-selected, data-highlighted (the active option) and data-disabled; the option sets none itself.",
         "optionValue is the value attribute, else the contents text (icons excluded).",
         "Only a direct child of ui-listbox, ui-segmented or ui-select (ui-select moves it into its popup)."
       ],

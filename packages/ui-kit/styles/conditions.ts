@@ -1,18 +1,47 @@
-// Panda conditions: the state vocabulary shared by both renderers. A web component carries state in
-// ARIA attributes on its host; a React renderer often keeps it in a native <input> that is a direct
-// child of a data-ui host. Each condition matches both, so one rule (css, recipes) serves both.
-// checked, indeterminate and disabled extend Panda's built-ins (their clauses are kept) with the
-// native-child form; the others are new. The scheme conditions (osDark, dark, light) live in the preset.
+// Panda conditions: the state vocabulary shared by both renderers, keyed on the data-* state contract
+// (Base UI names, dom/state.ts). Web components set the attributes in update() (UIFormElement for the
+// field state); React renderers set the same attributes on the same hosts from React state
+// (components/state.react.ts). ARIA stays on both for semantics; styles key on data-*.
+// Native pseudo-classes remain only where the browser holds state React cannot see:
+//   disabled / enabled: a native control disabled by an ancestor <fieldset disabled> (:disabled).
+// Names that Panda also defines (checked, disabled, invalid, …) are replaced, not extended: their
+// built-in clauses (:checked, [aria-checked], …) are not part of the contract. The scheme conditions
+// (osDark, dark, light) live in the preset.
+const DISABLED = '[data-disabled], :disabled, :has(> :is(input, select):disabled)';
+
 export const conditions = {
-  /** Keyboard modality (core/modality.ts): focus rings and active-descendant outlines. */
+  /** Keyboard modality (core/modality.ts): focus rings and highlighted-option outlines. */
   keyboard: ':root[data-modality=keyboard] &',
-  checked: '&:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"], :has(> input:checked))',
-  indeterminate: '&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state="indeterminate"], :has(> input:indeterminate))',
-  disabled: '&:is(:disabled, [disabled], [data-disabled], [aria-disabled=true], :has(> input:disabled))',
-  /** Not disabled in either form (the negation of disabled; Panda's own enabled is :enabled only). */
-  enabled: '&:not(:disabled, [disabled], [data-disabled], [aria-disabled=true], :has(> input:disabled))',
-  /** Busy (loading) controls: aria-busy on the host. */
-  busy: '&:is([aria-busy=true], [data-busy])',
-  /** Invalid after interaction or author error; not :invalid, which shows before the user acts. */
-  userInvalid: '&:is([aria-invalid=true], [data-invalid], :user-invalid, :has(> input:user-invalid))',
+  // ── Choices (Base UI Checkbox, Radio, Switch) ──
+  checked: '&[data-checked]',
+  unchecked: '&[data-unchecked]',
+  indeterminate: '&[data-indeterminate]',
+  // ── Field state (Base UI Field) ──
+  disabled: `&:is(${DISABLED})`,
+  /** Interactive: neither disabled nor busy (Panda's own enabled is :enabled only). */
+  enabled: `&:not(${DISABLED}, [data-busy])`,
+  readOnly: '&[data-readonly]',
+  required: '&[data-required]',
+  /** Invalid once shown: after interaction or a blocked submit, or an author error at once. */
+  invalid: '&[data-invalid]',
+  valid: '&[data-valid]',
+  dirty: '&[data-dirty]',
+  touched: '&[data-touched]',
+  filled: '&[data-filled]',
+  focused: '&[data-focused]',
+  // ── Buttons, toggles, popups and items ──
+  /** Busy (loading) controls: data-busy (ours; aria-busy for semantics). */
+  busy: '&[data-busy]',
+  /** A toggle that is on (Base UI Toggle; chip selectable). */
+  pressed: '&[data-pressed]',
+  /** A trigger whose popup is open (Base UI Select.Trigger). */
+  popupOpen: '&[data-popup-open]',
+  open: '&[data-open]',
+  closed: '&[data-closed]',
+  /** The keyboard-highlighted item (Base UI Select.Item; replaces data-active). */
+  highlighted: '&[data-highlighted]',
+  selected: '&[data-selected]',
+  dragging: '&[data-dragging]',
+  complete: '&[data-complete]',
+  progressing: '&[data-progressing]',
 } as const;

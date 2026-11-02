@@ -14,11 +14,11 @@
     },
     {
       "path": "dom/button.ts",
-      "sha256": "1e30c8aabe28aa63b6e2eb2bc882e39ba27f4b906b21f354b6bb0bc0f7af5fcd"
+      "sha256": "640d5a4f382b7a2cafc363b94e9ec5cc543f25ca53777a31de0e1f1f8d8d3770"
     },
     {
       "path": "components/btg/btg.manifest.json",
-      "sha256": "da9b0fcaae08336a49afeabb072b35ecc4806088dc77b4b7535830a292c4866b"
+      "sha256": "e5ad2b1f6ab4a60f004112a21f694cce7abaafe62f91f133372a6b1114762189"
     },
     {
       "path": "components/btg/btg.react.tsx",
@@ -27,6 +27,10 @@
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
     }
   ],
   "renderers": {
@@ -35,13 +39,18 @@
         {
           "command": "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
           "covers": "slots, badge text only, selectable toggling, removable gesture and focus move"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts"
+          "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -53,13 +62,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

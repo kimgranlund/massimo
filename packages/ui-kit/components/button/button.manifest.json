@@ -217,10 +217,10 @@
         "sizing": "intrinsic"
       },
       "constraints": [
-        "The host is the button: role=button, tabindex 0, aria-disabled and aria-busy set by script. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "The host is the button: role=button, tabindex 0, aria-disabled and aria-busy set by script, with the styling state data-disabled and data-busy (contracts/states.json). Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "Activation is click, Enter or Space. disabled or loading stops the click in the capture phase, so page listeners never see it.",
         "type=submit calls form.requestSubmit(); type=reset calls form.reset(); type=button (default) does nothing but fire click.",
-        "loading sets aria-busy; the label stays readable and activation is blocked. The application owns the async work.",
+        "loading sets aria-busy and data-busy; the label stays readable and activation is blocked. The application owns the async work.",
         "Icon-only buttons need aria-label or aria-labelledby: an icon gives no accessible name.",
         "Never nest interactive controls inside a button. Do not re-key or replace children a framework passed in: the button has moved them into slot parts; change attributes instead."
       ],

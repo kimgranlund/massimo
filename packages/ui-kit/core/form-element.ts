@@ -1,13 +1,20 @@
 // UIFormElement: base for form-associated custom elements (no native form controls inside).
 // Handles form value, validity, reset/restore, `name`, disabled-by-fieldset, and when to
 // show errors: only after the user has left the field or tried to submit, never on load.
+// The host carries the field state as data-* (Base UI Field names, dom/state.ts): data-disabled,
+// data-readonly, data-required, data-valid / data-invalid (once shown), data-dirty, data-touched,
+// data-filled, data-focused.
 import { UIElement } from './element.ts';
 import { effect, signal } from './signals.ts';
+import { applyAttrs } from '../dom/attrs.ts';
+import { fieldDataAttrs } from '../dom/state.ts';
 
 export interface Problem { flags: ValidityStateFlags; message: string }
 
 export class UIFormElement extends UIElement {
   static formAssociated = true;
+  /** Set the field state data-* on the host (false for controls without a value, such as a button). */
+  static fieldState = true;
   static properties = {
     name: { type: String, default: '', reflect: true }, // the form reads the attribute
     disabled: { type: Boolean, default: false, reflect: true },
@@ -19,8 +26,14 @@ export class UIFormElement extends UIElement {
 
   readonly internals: ElementInternals = this.attachInternals();
   #formDisabled = signal(false);
+  /** Errors are shown: the user left the field, activated it, or a submit was blocked. */
+  #shown = signal(false);
+  /** The user left the field (or activated a choice) at least once. */
   #touched = signal(false);
+  #focused = signal(false);
   #custom = signal('');
+  /** The form value at the first render, for data-dirty. */
+  #initial: string | undefined;
   #stopForm?: () => void;
 
   // ── Native-like API ──
@@ -30,7 +43,7 @@ export class UIFormElement extends UIElement {
   get validationMessage() { return this.internals.validationMessage; }
   get willValidate() { return this.internals.willValidate; }
   checkValidity() { return this.internals.checkValidity(); }
-  reportValidity() { this.#touched.value = true; return this.internals.reportValidity(); }
+  reportValidity() { this.#shown.value = true; return this.internals.reportValidity(); }
   setCustomValidity(message: string) { this.#custom.value = message; }
 
   /** Disabled by its own attribute or by a disabled ancestor <fieldset>. Reactive. */
@@ -42,8 +55,14 @@ export class UIFormElement extends UIElement {
     return custom ? { flags: { customError: true }, message: custom } : this.validate();
   }
   /** Invalid and the user has interacted or tried to submit: the moment to show an error. Reactive. */
-  get userInvalid() { return this.#touched.value && !!this.problem; }
-  markTouched() { this.#touched.value = true; }
+  get userInvalid() { return this.#shown.value && !!this.problem; }
+  /** The error to show now: the author error (subclasses with an `error` property), else a shown problem. Reactive. */
+  get invalidShown() { return !!this.authorError() || this.userInvalid; }
+  /** The user has left the field (or activated a choice) at least once. Reactive. */
+  get touched() { return this.#touched.value; }
+  /** Focus is within the host. Reactive. */
+  get focused() { return this.#focused.value; }
+  markTouched() { this.#touched.value = true; this.#shown.value = true; }
 
   // ── Subclass hooks ──
   /** Value submitted with the form; null submits nothing. */
@@ -56,29 +75,58 @@ export class UIFormElement extends UIElement {
   resetValue() {}
   /** Restore a value after navigation or autofill restore. */
   restoreValue(_state: unknown) {}
+  /** An author error shown at once (input and select `error`). Read reactive props only. */
+  authorError(): string { return ''; }
+  /** Read-only (input `readonly`). */
+  isReadonly(): boolean { return false; }
+  /** data-filled: a non-empty form value (a choice: checked). */
+  isFilled(): boolean { const v = this.formValue(); return v != null && v !== ''; }
 
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('invalid', this.#onInvalid);
+    const state = (this.constructor as typeof UIFormElement).fieldState;
+    if (state) {
+      this.addEventListener('focusin', this.#onFocusIn);
+      this.addEventListener('focusout', this.#onFocusOut);
+    }
     this.#stopForm = effect(() => {
-      this.internals.setFormValue(this.isDisabled ? null : this.formValue());
+      const value = this.formValue();
+      this.internals.setFormValue(this.isDisabled ? null : value);
       const p = this.problem;
       if (p) this.internals.setValidity(p.flags, p.message, this.validationAnchor());
       else this.internals.setValidity({});
-      this.toggleAttribute('data-user-invalid', this.userInvalid);
+      if (!state) return;
+      const key = typeof value === 'string' || value == null ? value ?? '' : '\u0000';
+      this.#initial ??= key;
+      const invalid = this.invalidShown;
+      applyAttrs(this, fieldDataAttrs({
+        disabled: this.isDisabled, readonly: this.isReadonly(), required: this.required,
+        valid: invalid ? false : this.#shown.value && !this.isDisabled ? true : null,
+        dirty: key !== this.#initial, touched: this.#touched.value, filled: this.isFilled(), focused: this.#focused.value,
+      }));
     });
   }
 
   disconnectedCallback() {
     this.#stopForm?.();
     this.removeEventListener('invalid', this.#onInvalid);
+    this.removeEventListener('focusin', this.#onFocusIn);
+    this.removeEventListener('focusout', this.#onFocusOut);
     super.disconnectedCallback();
   }
 
   formDisabledCallback(disabled: boolean) { this.#formDisabled.value = disabled; }
-  formResetCallback() { this.#touched.value = false; this.#custom.value = ''; this.resetValue(); }
+  formResetCallback() { this.#shown.value = false; this.#touched.value = false; this.#custom.value = ''; this.resetValue(); }
   formStateRestoreCallback(state: unknown) { this.restoreValue(state); }
 
   // The browser fires `invalid` on each failing control when a submit is blocked.
-  #onInvalid = () => { this.#touched.value = true; };
+  #onInvalid = () => { this.#shown.value = true; };
+  #onFocusIn = () => { this.#focused.value = true; };
+  // Leaving the host (not moving within it) is a blur: touched, and errors show from here on.
+  #onFocusOut = (e: FocusEvent) => {
+    if (e.relatedTarget instanceof Node && this.contains(e.relatedTarget)) return;
+    this.#focused.value = false;
+    this.markTouched();
+  };
 }

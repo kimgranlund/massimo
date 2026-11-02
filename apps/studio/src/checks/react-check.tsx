@@ -1,5 +1,6 @@
 // Browser parity check: every native React renderer next to its web component, at several sizes and
-// states. Compares rendered geometry and paint; "fails": [] means the twins match.
+// states. Compares rendered geometry and paint, and the data-* state attributes (contracts/states.json)
+// on each twin's host and items; "fails": [] means the twins match.
 import '../index.css';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
@@ -138,6 +139,20 @@ setTimeout(() => {
       kids: kids.filter((k) => k.localName !== 'input' && k.localName !== 'progress' && !k.hidden).map((k) => { const r = k.getBoundingClientRect(); return `${r2(r.left - er.left)}:${r2(r.top - er.top)}:${r2(r.width)}x${r2(r.height)}:${getComputedStyle(k).backgroundColor}:${getComputedStyle(k).outlineStyle}`; }).join(' '),
     };
   };
+  // State contract (contracts/states.json): the twins carry the same data-* state attributes.
+  const STRUCTURE = new Set(['data-ui', 'data-part', 'data-size', 'data-icon-size', 'data-hide-label', 'data-selectable', 'data-mark', 'data-dir', 'data-index', 'data-remove', 'data-hover-controls', 'data-no-dots', 'data-no-paddles', 'data-ratio', 'data-fit', 'data-slideshow', 'data-generated', 'data-k', 'data-case', 'data-side']);
+  const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg']) {
+      const a = host(wc, k), b = host(re, k);
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch')];
+      const pa = parts(a), pb = parts(b);
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
+    }
+  }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
     for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
@@ -180,7 +195,7 @@ setTimeout(() => {
   // Keyboard: ArrowDown on a focused listbox moves and selects (selection follows focus) in both.
   const u4 = root.querySelector('[data-case="4"]')!;
   const lbs = [u4.querySelector('[data-side=wc] [data-k=lb]') as HTMLElement, u4.querySelector('[data-side=react] [data-k=lb]') as HTMLElement];
-  const read = (lb: HTMLElement) => [...lb.querySelectorAll('[role=option]')].map((o) => `${o.getAttribute('aria-selected')}${o.hasAttribute('data-active') ? '*' : ''}`).join(',') + ` ad=${!!lb.getAttribute('aria-activedescendant')}`;
+  const read = (lb: HTMLElement) => [...lb.querySelectorAll('[role=option]')].map((o) => `${o.getAttribute('aria-selected')}${o.hasAttribute('data-highlighted') ? '*' : ''}`).join(',') + ` ad=${!!lb.getAttribute('aria-activedescendant')}`;
   const press = (lb: HTMLElement) => new Promise<string>((done) => {
     lb.focus();
     lb.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true }));

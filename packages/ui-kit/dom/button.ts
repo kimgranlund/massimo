@@ -19,8 +19,10 @@ export function buttonAttrs(s: ButtonState): Attrs {
     'aria-disabled': blocked ? 'true' : undefined,
     'aria-busy': s.loading ? 'true' : undefined,
     'aria-pressed': s.pressed === undefined ? undefined : String(s.pressed),
-    'data-disabled': s.disabled || undefined,
-    'data-loading': s.loading || undefined,
+    // Styling hooks (Base UI Button: data-disabled; ours: data-busy; Base UI Toggle: data-pressed).
+    'data-disabled': s.disabled ? '' : undefined,
+    'data-busy': s.loading ? '' : undefined,
+    'data-pressed': s.pressed ? '' : undefined,
   };
 }
 

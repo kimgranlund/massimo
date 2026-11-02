@@ -2,8 +2,8 @@
 // PageUp/Down move 10%, Home/End jump; pointer drag with capture. Form-associated.
 // <ui-progress>: progress bar (role="progressbar"); no `value` means indeterminate.
 // Both expose the fill ratio as --ui-ratio (0..1), a continuous value carried by a variable.
-import { UIElement, UIFormElement, define, html } from '../../core/index.ts';
-import { applyAttrs, rangeKey, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
+import { UIElement, UIFormElement, define, html, signal } from '../../core/index.ts';
+import { applyAttrs, progressState, rangeDataAttrs, rangeKey, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { range, progress } from '../../styled-system/recipes/index.js';
 
@@ -28,6 +28,7 @@ export class UIRange extends UIFormElement {
   declare valueText: string;
 
   #default = 50;
+  #dragging = signal(false);
   get #state() { return { value: this.value, min: this.min, max: this.max, step: this.step }; }
 
   connected() {
@@ -49,7 +50,7 @@ export class UIRange extends UIFormElement {
 
   update() {
     const s = { ...this.#state, value: snap(this.value, this.#state) };
-    applyAttrs(this, sliderAttrs({ ...s, disabled: this.isDisabled, label: this.label, valueText: this.valueText || undefined }));
+    applyAttrs(this, { ...sliderAttrs({ ...s, disabled: this.isDisabled, label: this.label, valueText: this.valueText || undefined }), ...rangeDataAttrs({ dragging: this.#dragging.value }) });
     this.style.setProperty('--ui-ratio', String(ratioOf(s)));
     applyRecipe(this, range(), trackPart(this));
   }
@@ -84,12 +85,14 @@ export class UIRange extends UIFormElement {
     e.preventDefault();
     this.focus();
     this.setPointerCapture?.(e.pointerId);
+    this.#dragging.value = true;
     this.#set(this.#fromPointer(e), false);
     const move = (ev: PointerEvent) => this.#set(this.#fromPointer(ev), false);
     const up = () => {
       this.removeEventListener('pointermove', move);
       this.removeEventListener('pointerup', up);
       this.removeEventListener('pointercancel', up);
+      this.#dragging.value = false;
       this.dispatchEvent(new Event('change', { bubbles: true }));
     };
     this.addEventListener('pointermove', move);
@@ -113,16 +116,15 @@ export class UIProgress extends UIElement {
   template() { return html`<span data-part="track"><span data-part="fill"></span></span>`; }
 
   update() {
-    const indeterminate = this.value == null || Number.isNaN(this.value);
-    const v = indeterminate ? 0 : Math.min(this.max, Math.max(0, this.value!));
+    const p = progressState(this.value, this.max);
     applyAttrs(this, {
       role: 'progressbar',
       'aria-valuemin': 0, 'aria-valuemax': this.max,
-      'aria-valuenow': indeterminate ? undefined : v,
+      'aria-valuenow': p.indeterminate ? undefined : p.value,
       'aria-label': this.label || undefined,
-      'data-indeterminate': indeterminate || undefined,
+      ...p.attrs,
     });
-    this.style.setProperty('--ui-ratio', String(this.max ? v / this.max : 0));
+    this.style.setProperty('--ui-ratio', String(p.ratio));
     applyRecipe(this, progress(), trackPart(this));
   }
 }

@@ -189,7 +189,7 @@
       "status": "implemented",
       "tag": "span",
       "selector": ":scope > [data-part=dots] > [data-part=dot]",
-      "summary": "One dot per slide (role=button, aria-current on the active one); stretches when active."
+      "summary": "One dot per slide (role=button, aria-current and data-selected on the current one); stretches when selected."
     }
   ],
   "edges": [
