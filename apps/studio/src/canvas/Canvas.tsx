@@ -11,7 +11,7 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import { Fragment, useEffect, useState } from 'react';
-import { css } from '../../styled-system/css/index.js';
+import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import type { FaceMap, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
 import { UNIQUE_HUES as UNIQUE } from '@massimo/ui-kit/spectrum';
@@ -64,6 +64,8 @@ const metrics = css({ textStyle: 'code', color: 'fg.muted' });
 const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) ${pct}%, transparent) 0)`;
 // The lines span the sample column; the text inside keeps a readable measure.
 const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}` });
+// The baseline grid pitch is rhythm × u, computed from the canvas's own theme variables.
+const rhythmGrid = css({ backgroundSize: '100% calc(4px * var(--ui-type-rhythm) * var(--ui-unit)), 100% calc(1px * var(--ui-type-rhythm) * var(--ui-unit))' });
 const rhythmText = css({ whiteSpace: 'pre-wrap', maxWidth: '60ch' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 // Same two columns as the role rows: role names in the spec column (from the medium breakpoint),
@@ -140,7 +142,47 @@ const feedbackCard = css({ [CQ_MD]: { gridColumn: 'span 2' }, [CQ_LG]: { gridCol
 const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
 const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
 // Stacked bar: data 1 at the bottom; 1px gaps separate the series, the top rounds.
-const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '1px', width: '60%', flex: '1', minHeight: 0, marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0 }, '& > span:last-child': { borderTopRadius: 'sm' } });
+// Static color classes from role tokens: the demos never set colors inline.
+const tone = {
+  solid: css({ bg: 'accent.solid', color: 'fg.onSolid' }),
+  solidHover: css({ bg: 'accent.solidHover !important' }),
+  secondaryOnSolid: css({ color: 'secondary.subtle' }),
+  secondaryDot: css({ bg: 'secondary.solid' }),
+  paper: css({ bg: 'bg.subtle', color: 'accent.fg' }),
+  muted: css({ color: 'fg.muted' }),
+  tint: css({ bg: 'accent.subtle', color: 'accent.fg' }),
+  tintStrong: css({ color: 'primary.12' }),
+  success: css({ bg: 'success.subtle', color: 'success.fg' }),
+  warning: css({ bg: 'warning.subtle', color: 'warning.fg' }),
+  danger: css({ bg: 'danger.subtle', color: 'danger.fg' }),
+  info: css({ bg: 'info.subtle', color: 'info.fg' }),
+};
+// Primary ramp steps 1–12 (primary.N tokens), with readable text: step 12 on 1–8, step 1 on 9–12.
+const RAMP_STEP = [
+  css({ bg: 'primary.1', color: 'primary.12' }), css({ bg: 'primary.2', color: 'primary.12' }), css({ bg: 'primary.3', color: 'primary.12' }),
+  css({ bg: 'primary.4', color: 'primary.12' }), css({ bg: 'primary.5', color: 'primary.12' }), css({ bg: 'primary.6', color: 'primary.12' }),
+  css({ bg: 'primary.7', color: 'primary.12' }), css({ bg: 'primary.8', color: 'primary.12' }), css({ bg: 'primary.9', color: 'primary.1' }),
+  css({ bg: 'primary.10', color: 'primary.1' }), css({ bg: 'primary.11', color: 'primary.1' }), css({ bg: 'primary.12', color: 'primary.1' }),
+];
+// Data series 1–6.
+const DATA_BG = [css({ bg: 'data.1' }), css({ bg: 'data.2' }), css({ bg: 'data.3' }), css({ bg: 'data.4' }), css({ bg: 'data.5' }), css({ bg: 'data.6' })];
+// Each role's solid (step 9).
+const ROLE_BG: Record<string, string> = {
+  primary: css({ bg: 'accent.solid' }), secondary: css({ bg: 'secondary.solid' }), neutral: css({ bg: 'neutral.solid' }),
+  critical: css({ bg: 'danger.solid' }), warning: css({ bg: 'warning.solid' }), success: css({ bg: 'success.solid' }), info: css({ bg: 'info.solid' }),
+  data1: DATA_BG[0], data2: DATA_BG[1], data3: DATA_BG[2], data4: DATA_BG[3], data5: DATA_BG[4], data6: DATA_BG[5],
+};
+// Voice samples: each voice's family (repointed voices set --font-voice-* on the canvas).
+const voiceSample = css({ fontSize: '1.5em', lineHeight: 1.3 });
+const VOICE_FONT: Record<string, string> = {
+  display: css({ fontFamily: 'var(--font-voice-display, var(--fonts-display))' }),
+  heading: css({ fontFamily: 'var(--font-voice-heading, var(--fonts-sans))' }),
+  body: css({ fontFamily: 'var(--font-voice-body, var(--fonts-sans))' }),
+  ui: css({ fontFamily: 'var(--font-voice-ui, var(--fonts-controls))' }),
+  numeric: css({ fontFamily: 'var(--font-voice-numeric, var(--font-voice-ui, var(--fonts-controls)))', fontVariantNumeric: 'tabular-nums lining-nums' }),
+  code: css({ fontFamily: 'var(--font-voice-code, var(--fonts-mono))', whiteSpace: 'pre' }),
+};
+const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '1px', width: '60%', flex: '1', minHeight: 0, marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0, height: 'calc(var(--v) * 100%)' }, '& > span:last-child': { borderTopRadius: 'sm' } });
 const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
 const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
@@ -535,46 +577,44 @@ const USED_BY: Record<keyof typeof CONTAINERS, string> = {
 };
 
 // Spectrum variables for a family step (follow the active scheme and the jig's roles).
-const sv = (family: string, step: number) => `var(--colors-spectrum-${family}-${step})`;
 // Illustrative orders per channel, Monday through Sunday; one data color per channel (data 1–6).
 const CHANNELS: [string, number[]][] = [
   ['Online', [72, 84, 68, 96, 108, 88, 80]], ['In store', [44, 49, 54, 46, 64, 82, 78]], ['Wholesale', [20, 26, 22, 30, 28, 12, 10]],
   ['Marketplace', [18, 15, 21, 19, 25, 30, 27]], ['Social', [9, 12, 10, 14, 18, 24, 22]], ['Events', [0, 0, 6, 0, 12, 20, 8]],
 ];
-const dataColor = (i: number) => `var(--colors-data-${i + 1})`;
 const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
   // Every color here is a role: brand (primary, secondary, neutral), feedback and data series.
-  const { primary, neutral, critical, secondary: accent, success: ok, warning: warn, info } = spectrum.roles;
+  const { primary, critical, info } = spectrum.roles;
   const max = Math.max(...DAYS.map((_, d) => CHANNELS.reduce((sum, [, v]) => sum + v[d], 0)));
   const [approved, setApproved] = useState(false);
   return (
     <div className={context}>
       <div className={contextHead}><h3 className={subTitle}>Brand</h3><span className={caption}>Primary as material · secondary as punctuation</span></div>
       <div className={brandGrid}>
-        <ui-panel className={campaign} style={{ background: sv(primary, 9), color: spectrum.families.find((f) => f.name === primary)?.lightText[8] }}>
+        <ui-panel className={cx(campaign, tone.solid)}>
           <span className={sectionKicker}>Studio / Collection 01</span>
           <h3 className={display}>A spectrum.<br />A shared language.</h3>
           <p className={bodyLarge}>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
-          <span className={sectionKicker} style={{ color: sv(accent, 4) }}>An exploration in color &amp; proportion</span>
+          <span className={cx(sectionKicker, tone.secondaryOnSolid)}>An exploration in color &amp; proportion</span>
         </ui-panel>
         <div data-ramp className={rampStrip} role="img" aria-label={`${primary} steps 1 to 12`}>
           {RAMP_USE.map((use, i) => (
-            <div key={i} className={rampStep} style={{ background: sv(primary, i + 1), color: sv(primary, i < 8 ? 12 : 1) }}>
+            <div key={i} className={cx(rampStep, RAMP_STEP[i])}>
               <span>{i + 1}</span><span>{use}</span>
             </div>
           ))}
         </div>
-        <ui-panel style={{ background: sv(neutral, 2), color: sv(primary, 12) }}>
-          <span className={sectionKicker} style={{ color: sv(neutral, 11) }}>Ink &amp; paper <i className={dot} style={{ background: sv(accent, 9) }} /></span>
+        <ui-panel className={tone.paper}>
+          <span className={cx(sectionKicker, tone.muted)}>Ink &amp; paper <i className={cx(dot, tone.secondaryDot)} /></span>
           <h3 className={panelTitle}>One hue.<br />Room to breathe.</h3>
-          <p style={{ color: sv(neutral, 11) }}>A quiet field, a clear voice and a single accent.</p>
+          <p className={tone.muted}>A quiet field, a clear voice and a single accent.</p>
         </ui-panel>
-        <ui-panel style={{ background: sv(primary, 3), color: sv(primary, 11) }}>
+        <ui-panel className={tone.tint}>
           <span className={sectionKicker}>Tint &amp; emphasis</span>
-          <strong className={bigFigure} style={{ color: sv(primary, 11) }}>62<span>%</span></strong>
-          <p style={{ color: sv(primary, 12) }}>Large figures and small details share the same color family.</p>
+          <strong className={bigFigure}>62<span>%</span></strong>
+          <p className={tone.tintStrong}>Large figures and small details share the same color family.</p>
         </ui-panel>
       </div>
 
@@ -583,14 +623,14 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
         <div className={workspaceHead}>
           <div><span className={kicker}>Collection workspace</span><h3 className={subTitle}>Spring catalog</h3></div>
           <ui-tag>Spring edition</ui-tag>
-          <ui-badge style={{ background: sv(ok, 9), color: spectrum.families.find((f) => f.name === ok)?.lightText[8] }}>Ready for review</ui-badge>
+          <ui-badge className={tone.success}>Ready for review</ui-badge>
         </div>
         <div className={uiGrid}>
           <ui-card>
             <span className={kicker}>Overview</span><h4 className={cardTitle}>A little color goes a long way.</h4>
             <p className={caption}>Review the collection, refine its details and prepare the next edition.</p>
             <div className={specimens}>
-              <ui-button style={{ background: sv(primary, 9), color: 'var(--colors-fg-on-solid)' }} onClick={() => setApproved(true)}>Approve collection</ui-button>
+              <ui-button variant="primary" onClick={() => setApproved(true)}>Approve collection</ui-button>
               <ui-button onClick={() => setApproved(false)}>Reset approval</ui-button>
             </div>
             <p className={caption} role="status">{approved ? 'Collection approved' : 'Demo collection · awaiting approval'}</p>
@@ -610,7 +650,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           <ui-card>
             <span className={kicker}>This week</span><strong className={bigFigure} data-numeric>1,284</strong>
             <p className={caption}>Orders across six channels.</p>
-            <ui-badge style={{ background: sv(ok, 3), color: sv(ok, 11) }}>↑ 12% this week</ui-badge>
+            <ui-badge className={tone.success}>↑ 12% this week</ui-badge>
           </ui-card>
           <ui-card>
             <span className={kicker}>Collection progress</span><strong className={bigFigure}>62<span>%</span></strong>
@@ -620,10 +660,10 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           <ui-card>
             <span className={kicker}>Action states</span>
             <div className={stateRow}>
-              {([['Rest', 9], ['Hover', 10], ['Pressed', 11]] as const).map(([label, step]) => (
-                <div key={label} className={stateCell}><span className={caption}>{label}</span><ui-button style={{ background: sv(primary, step), color: 'var(--colors-fg-on-solid)' }}>Approve</ui-button></div>
-              ))}
-              <div className={stateCell}><span className={caption}>Disabled</span><ui-button disabled>Approve</ui-button></div>
+              <div className={stateCell}><span className={caption}>Rest</span><ui-button variant="primary">Approve</ui-button></div>
+              <div className={stateCell}><span className={caption}>Hover, press</span><ui-button variant="primary" className={tone.solidHover}>Approve</ui-button></div>
+              <div className={stateCell}><span className={caption}>Busy</span><ui-button variant="primary" loading>Approve</ui-button></div>
+              <div className={stateCell}><span className={caption}>Disabled</span><ui-button variant="primary" disabled>Approve</ui-button></div>
             </div>
           </ui-card>
           <ui-card className={chartCard}>
@@ -632,20 +672,21 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
               {DAYS.map((d, i) => (
                 <div key={i} className={chartDay}>
                   <div className={barStack}>
-                    {CHANNELS.map(([n, v], c) => <span key={n} style={{ height: `${(v[i] / max) * 100}%`, background: dataColor(c) }} />)}
+                    {/* The value is the only inline style: a ratio custom property (styles: barStack). */}
+                    {CHANNELS.map(([n, v], c) => <span key={n} className={DATA_BG[c]} style={{ '--v': String(v[i] / max) } as React.CSSProperties} />)}
                   </div>
                   <span className={caption}>{d}</span>
                 </div>
               ))}
             </div>
-            <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={dot} style={{ background: dataColor(c) }} />{n}</span>)}</div>
+            <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={cx(dot, DATA_BG[c])} />{n}</span>)}</div>
           </ui-card>
           <ui-card className={feedbackCard}>
             <span className={kicker}>Feedback</span>
-            <p className={callout} role="note" style={{ background: sv(primary, 3), color: sv(primary, 11) }}>Changes to this palette appear across every preview.</p>
-            <p className={callout} role="note" style={{ background: sv(warn, 3), color: sv(warn, 11) }}>Check small text and neighboring hues before choosing a brand color.</p>
-            <p className={callout} role="note" style={{ background: sv(critical, 3), color: sv(critical, 11) }}>Critical: {critical} carries destructive actions.</p>
-            <p className={callout} role="note" style={{ background: sv(info, 3), color: sv(info, 11) }}>Info: {info} marks neutral announcements.</p>
+            <p className={cx(callout, tone.tint)} role="note">Changes to this palette appear across every preview.</p>
+            <p className={cx(callout, tone.warning)} role="note">Check small text and neighboring hues before choosing a brand color.</p>
+            <p className={cx(callout, tone.danger)} role="note">Critical: {critical} carries destructive actions.</p>
+            <p className={cx(callout, tone.info)} role="note">Info: {info} marks neutral announcements.</p>
           </ui-card>
         </div>
       </ui-panel>
@@ -688,7 +729,7 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
               <span className={metrics}>{v} → {voices[v]}</span>
               <span className={metrics}>{VOICE_USE[v]}</span>
             </div>
-            <div style={{ fontFamily: `var(--font-voice-${v}, var(--fonts-${voices[v]}))`, fontSize: '1.5em', lineHeight: 1.3, fontVariantNumeric: v === 'numeric' ? 'tabular-nums lining-nums' : undefined, whiteSpace: v === 'code' ? 'pre' : undefined }}>{VOICE_SAMPLES[v]}</div>
+            <div className={cx(voiceSample, VOICE_FONT[v])}>{VOICE_SAMPLES[v]}</div>
           </div>
         ))}
       </Section>
@@ -707,7 +748,7 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
               </div>
               {role === 'code'
                 ? <div data-type={role} className={codeSample}>{SAMPLES[role]}</div>
-                : <div className={rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${4 * grid}px, 100% ${grid}px` } : undefined}><div data-type={role} className={rhythmText}>{SAMPLES[role]}</div></div>}
+                : <div className={cx(rhythmSample, grid && !t.lineHeightRatio ? rhythmGrid : undefined)}><div data-type={role} className={rhythmText}>{SAMPLES[role]}</div></div>}
             </div>
           );
         })}
@@ -800,7 +841,7 @@ function ColorSections({ spectrum }: { spectrum: SpectrumPayload }) {
         <div className={roleGrid}>
           {(Object.keys(r) as (keyof typeof r)[]).map((role) => (
             <figure key={role} className={roleChip}>
-              <span className={roleSwatch} style={{ background: sv(r[role], 9) }} />
+              <span className={cx(roleSwatch, ROLE_BG[role])} />
               <figcaption><span className={rowLabel}>{role.startsWith('data') ? `Data ${role.slice(4)}` : role[0].toUpperCase() + role.slice(1)}</span><span className={metrics}>{r[role]}</span></figcaption>
             </figure>
           ))}

@@ -1940,6 +1940,71 @@
         "$value": "{color.spectrum.cyan.11}",
         "$description": "info step 11"
       },
+      "primary-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.1}",
+        "$description": "primary step 1"
+      },
+      "primary-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.2}",
+        "$description": "primary step 2"
+      },
+      "primary-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.3}",
+        "$description": "primary step 3"
+      },
+      "primary-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.4}",
+        "$description": "primary step 4"
+      },
+      "primary-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.5}",
+        "$description": "primary step 5"
+      },
+      "primary-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.6}",
+        "$description": "primary step 6"
+      },
+      "primary-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.7}",
+        "$description": "primary step 7"
+      },
+      "primary-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.8}",
+        "$description": "primary step 8"
+      },
+      "primary-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.9}",
+        "$description": "primary step 9"
+      },
+      "primary-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.10}",
+        "$description": "primary step 10"
+      },
+      "primary-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.11}",
+        "$description": "primary step 11"
+      },
+      "primary-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.12}",
+        "$description": "primary step 12"
+      },
+      "neutral-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.9}",
+        "$description": "neutral step 9"
+      },
       "data-1": {
         "$type": "color",
         "$value": "{color.spectrum.indigo.9}",

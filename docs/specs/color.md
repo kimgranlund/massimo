@@ -31,6 +31,7 @@ Roles alias ramp steps; an entry may name a different dark step, a different dar
 | `--colors-secondary-solid`, `-solid-hover`, `-subtle`, `-fg` | secondary 9, 10, 3, 11 |
 | `--colors-warning-*`, `--colors-success-*`, `--colors-info-*` (`-solid`, `-subtle`, `-fg`) | warning, success, info 9, 3, 11 |
 | `--colors-data-1` … `--colors-data-6` | data 1–6 at 9 |
+| `--colors-primary-1` … `--colors-primary-12`, `--colors-neutral-solid` | the primary ramp; neutral 9 (swatches, scales) |
 | `--colors-fg-on-solid` | the engine's APCA black/white choice for primary 9 |
 
 ## Schemes

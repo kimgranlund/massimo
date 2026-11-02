@@ -1,6 +1,6 @@
 // Studio jig: built entirely from ui-kit components. Tabs switch the panel and the canvas
 // between Components, Containers and Colors; Copy hands the applied settings to an agent as JSON.
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
@@ -40,6 +40,16 @@ function randomRoles(current: Roles, accents: string[], neutrals: string[]): Rol
   };
 }
 
+/** One constructed stylesheet adopted by the document, rewritten in place when its text changes. */
+function useSheet(text: string) {
+  const sheet = useMemo(() => new CSSStyleSheet(), []);
+  useEffect(() => {
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+    return () => { document.adoptedStyleSheets = document.adoptedStyleSheets.filter((x) => x !== sheet); };
+  }, [sheet]);
+  useEffect(() => { sheet.replaceSync(text); }, [sheet, text]);
+}
+
 export function App() {
   // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
   const [view, setView] = useState<View>(() => {
@@ -70,14 +80,15 @@ export function App() {
     return () => clearTimeout(t);
   }, [spectrum, roles]);
 
-  // Theme overrides are scoped to the canvas element: geometry parameters as inherited custom
-  // properties, icons as data-icons. Scheme and Spectrum colors apply to the whole jig (:root).
-  const canvasVars = {
-    ...Object.fromEntries(Object.entries(params).map(([k, v]) => [paramVar(k as ParamName), String(v)])),
-    // Faces override the stacks on the canvas; display/heading weight follows a serif stack.
-    ...Object.fromEntries(Object.entries(faces).map(([f, st]) => [`--fonts-${f}`, st])),
-    ...Object.fromEntries([...SERIF_REGULAR_VOICES].map((v) => [`--font-voice-${v}-weight`, isSerifStack(faces[voices[v]]) ? '400' : '700'])),
-  } as React.CSSProperties;
+  // Live overrides live in one constructed stylesheet (useSheet), never in style attributes: theme
+  // parameters, faces and serif weights that differ from the kit defaults, scoped to the canvas
+  // ([data-canvas]); Spectrum colors and scheme apply to the whole jig (:root, from spectrumCSS).
+  const canvasDecls = [
+    ...Object.entries(diffFromDefaults(params)).map(([k, v]) => `${paramVar(k as ParamName)}: ${v};`),
+    ...Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st).map(([f, st]) => `--fonts-${f}: ${st};`),
+    ...[...SERIF_REGULAR_VOICES].filter((v) => isSerifStack(faces[voices[v]])).map((v) => `--font-voice-${v}-weight: 400;`),
+  ];
+  useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}`);
   const voiceAttrs = Object.fromEntries(Object.entries(voices).filter(([v, f]) => DEFAULT_VOICES[v as keyof VoiceMap] !== f).map(([v, f]) => [`data-font-${v}`, f]));
 
   const setParam = (k: ParamName, v: number) => setParams((p) => ({ ...p, [k]: v }));
@@ -233,8 +244,7 @@ export function App() {
         </footer>
       </aside>
 
-      <div className={s.canvas} data-canvas="" data-icons={icons} {...voiceAttrs} style={canvasVars} aria-label="Canvas">
-        {generated && <style>{generated.css}</style>}
+      <div className={s.canvas} data-canvas="" data-icons={icons} {...voiceAttrs} aria-label="Canvas">
         <Canvas view={view} spectrum={generated} params={params} voices={voices} faces={faces} />
       </div>
     </div>

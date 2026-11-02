@@ -126,6 +126,11 @@ export const ROLE_STEPS = {
   'warning-solid': ['warning', 9], 'warning-subtle': ['warning', 3], 'warning-fg': ['warning', 11],
   'success-solid': ['success', 9], 'success-subtle': ['success', 3], 'success-fg': ['success', 11],
   'info-solid': ['info', 9], 'info-subtle': ['info', 3], 'info-fg': ['info', 11],
+  // The primary ramp as tokens (primary.1 … primary.12) and the neutral solid, for swatches and scales.
+  'primary-1': ['primary', 1], 'primary-2': ['primary', 2], 'primary-3': ['primary', 3], 'primary-4': ['primary', 4],
+  'primary-5': ['primary', 5], 'primary-6': ['primary', 6], 'primary-7': ['primary', 7], 'primary-8': ['primary', 8],
+  'primary-9': ['primary', 9], 'primary-10': ['primary', 10], 'primary-11': ['primary', 11], 'primary-12': ['primary', 12],
+  'neutral-solid': ['neutral', 9],
   // Data series: the step-9 solid of each data family.
   'data-1': ['data1', 9], 'data-2': ['data2', 9], 'data-3': ['data3', 9], 'data-4': ['data4', 9], 'data-5': ['data5', 9], 'data-6': ['data6', 9],
   'focus-ring': ['primary', 8],
