@@ -398,10 +398,10 @@
         "sizing": "intrinsic"
       },
       "constraints": [
-        "Radios group by name within their form, or the document when outside a form; there is no group element. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "Radios group by name within their form, or the document when outside a form; inside a ui-radio-group they group by membership instead, and the group owns the value, the name and the events (the radio fires none). Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "Roving tab stop: only the checked radio (or the first enabled one) is tabbable.",
         "required on any member makes the whole group required.",
-        "Wrap the group in an element with role=radiogroup and a label for an accessible group name.",
+        "Use ui-radio-group (role=radiogroup, one value, name and validity; React RadioGroup) for an accessible group, named by a ui-field label, a ui-fieldset legend or its label.",
         "Composition: [data-part] spans may be authored: indicator (alone or in leading), prefix, contents, suffix; the host keeps them, fills an empty indicator with its default content and generates what is missing. React: Radio.Root with Radio.Indicator (it renders the leading slot around itself); other children are the label (contents); the native input stays inside the Root (the label host is what toggles it); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
@@ -876,6 +876,11 @@
       "from": "component:radio",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:radio-group"
     },
     {
       "from": "component:radio",

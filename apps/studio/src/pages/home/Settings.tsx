@@ -1,5 +1,7 @@
 // Settings: a panel sidebar (area) beside cards of fields: inputs with prefix and suffix, a select,
 // choices, a segmented control and a range, an invalid field, and primary/neutral actions.
+import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/radio-group/element';
 import { useState } from 'react';
 import { css, cx } from '../../../styled-system/css/index.js';
 import { SETTINGS_NAV, TIMEZONES } from './data.ts';
@@ -87,14 +89,13 @@ export function Settings() {
               <ui-checkbox name="ch-sms">SMS</ui-checkbox>
             </ui-group>
           </div>
-          <div className={s.stack2}>
-            <span className={s.groupKicker}>Quiet hours</span>
-            <ui-group>
-              <ui-radio name="quiet" value="off">Off</ui-radio>
-              <ui-radio name="quiet" value="night" checked>Nights, 22–07</ui-radio>
-              <ui-radio name="quiet" value="weekend">Weekends</ui-radio>
-            </ui-group>
-          </div>
+          <ui-field label="Quiet hours">
+            <ui-radio-group name="quiet" value="night" orientation="horizontal">
+              <ui-radio value="off">Off</ui-radio>
+              <ui-radio value="night">Nights, 22–07</ui-radio>
+              <ui-radio value="weekend">Weekends</ui-radio>
+            </ui-radio-group>
+          </ui-field>
         </ui-card>
 
         <ui-card padding="lg">

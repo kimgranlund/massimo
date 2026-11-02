@@ -213,3 +213,12 @@ test('field rows: column gap 2u, row gap 1.5u stacked / 1u inline, readout ≥ 1
   assert.deepEqual(resolveFieldRow('inline', { unit: 4 }), { unit: 4, columnGap: 8, rowGap: 4, unitGap: 8, readoutMinWidth: 40 });
   assert.deepEqual(resolveFieldGrid({ unit: 4 }), { unit: 4, columnGap: 8, rowGap: 8, labelMaxFraction: 0.4, readoutMinWidth: 40, headingSpace: 16 });
 });
+
+// Choice groups (geometry:choice-group). Imports are hoisted; kept beside the test for merge-friendly appends.
+import { resolveChoiceGroup } from '../tokens/geometry/resolve.ts';
+test('choice groups: 6u rows 1u apart (7u pitch); horizontal 4u between choices, 1u between lines; the gap attribute wins', () => {
+  assert.deepEqual(resolveChoiceGroup('vertical', U4), { unit: 4, rowHeight: 24, gap: 4, rowGap: 4, columnGap: 0, pitch: 28 });
+  assert.deepEqual(resolveChoiceGroup('horizontal', U4), { unit: 4, rowHeight: 24, gap: 16, rowGap: 4, columnGap: 16, pitch: 28 });
+  assert.equal(resolveChoiceGroup('vertical', { unit: 4, gap: 2 }).gap, 8);
+  assert.equal(resolveChoiceGroup('horizontal', { unit: 4, gap: 2 }).columnGap, 8);
+});

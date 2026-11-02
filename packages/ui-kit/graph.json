@@ -241,6 +241,19 @@
         "single choice"
       ]
     },
+    "component:radio-group": {
+      "kind": "component",
+      "source": "components/radio-group/radio-group.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-radio-group",
+      "searchTerms": [
+        "radio group",
+        "radiogroup",
+        "single choice",
+        "one of",
+        "options"
+      ]
+    },
     "component:range": {
       "kind": "component",
       "source": "components/range/range.manifest.json#/nodes/0",
@@ -410,6 +423,15 @@
       "searchTerms": [
         "panel",
         "inside panel"
+      ]
+    },
+    "context:radio-group": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/radio-group",
+      "availability": "implemented",
+      "searchTerms": [
+        "radio group",
+        "inside radio group"
       ]
     },
     "context:region": {
@@ -596,6 +618,16 @@
         "checkbox size",
         "radio size",
         "switch size"
+      ]
+    },
+    "geometry:choice-group": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/choice-group",
+      "availability": "implemented",
+      "searchTerms": [
+        "radio group spacing",
+        "checkbox group spacing",
+        "choice list gap"
       ]
     },
     "geometry:container": {
@@ -1816,6 +1848,11 @@
       "from": "component:radio",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:radio-group"
     },
     {
       "from": "component:radio",
@@ -3281,6 +3318,91 @@
       "from": "component:option",
       "relation": "uses",
       "to": "foundation:icons"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesGeometry",
+      "to": "geometry:choice-group"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "establishes",
+      "to": "context:radio-group"
+    },
+    {
+      "from": "component:radio-group",
+      "relation": "acceptsChild",
+      "to": "component:radio"
     },
     {
       "from": "component:range",

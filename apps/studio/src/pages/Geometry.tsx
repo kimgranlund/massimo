@@ -9,9 +9,10 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
+import '@massimo/ui-kit/components/radio-group/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack,
+  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -186,6 +187,14 @@ export function GeometryPage({ params }: PageProps) {
           return (
             <SpecRow label="swatch" values={[`size ${px(t.size)} · radius ${px(t.radius)} · palette radius ${px(t.paletteRadius)}`]}>
               <ui-swatch color="#3b82f6" /><ui-swatch color="#10b981" />
+            </SpecRow>
+          );
+        })()}
+        {(() => {
+          const [v, h] = [resolveChoiceGroup('vertical', theme), resolveChoiceGroup('horizontal', theme)];
+          return (
+            <SpecRow label="choice group" values={[`rows ${px(v.rowHeight)} · gap ${pu(v.gap)} · pitch ${px(v.pitch)}`, `horizontal gap ${pu(h.columnGap)} · wrapped lines ${pu(h.rowGap)}`]}>
+              <ui-radio-group label="Plan" value="a" orientation="horizontal"><ui-radio value="a">Free</ui-radio><ui-radio value="b">Pro</ui-radio></ui-radio-group>
             </SpecRow>
           );
         })()}

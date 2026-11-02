@@ -195,9 +195,25 @@
         "card",
         "collection",
         "group",
-        "form"
+        "form",
+        "radio-group"
       ],
       "behavior": "Arrows move and select within the group; roving tab stop on the checked (or first enabled) radio; required is group-wide."
+    },
+    "radio-group": {
+      "geometryFamily": "choice-group",
+      "element": "Host is the group (role=radiogroup); its ui-radio children are the options; no parts of its own.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form"
+      ],
+      "behavior": "Owns the value: sets its radios' checked state, fires change and input with { value, reason, event } (the radios then fire none), submits one value under its name, validates required; the radios keep arrows and the roving tab stop within the group; disabled and readonly reach every radio."
     },
     "switch": {
       "geometryFamily": "choice",

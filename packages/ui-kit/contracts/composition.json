@@ -66,6 +66,15 @@
         "property panel"
       ]
     },
+    "radio-group": {
+      "id": "context:radio-group",
+      "host": "component:radio-group",
+      "summary": "Inside a ui-radio-group: radios whose value, name, disabled and read-only the group owns.",
+      "searchTerms": [
+        "radio group",
+        "inside radio group"
+      ]
+    },
     "form": {
       "id": "context:form",
       "host": null,

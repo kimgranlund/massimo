@@ -14,7 +14,8 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/radio-group/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveChoiceGroup } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -54,6 +55,9 @@ for (const c of cases) {
     <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
     <ui-field id="fInline" layout="inline" label="Radius" unit="px" readout="12" description="Corner"><ui-input></ui-input></ui-field>
     <ui-field-grid id="fGrid"><h3>One</h3><ui-field layout="inline" label="A" readout="1"><ui-input></ui-input></ui-field><ui-field layout="inline" label="Longer label" readout="2"><ui-input></ui-input></ui-field><h3>Two</h3><ui-field layout="inline" label="B" readout="3"><ui-input></ui-input></ui-field></ui-field-grid></div>
+    <ui-radio-group id="rgV" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio><ui-radio value="c">Three</ui-radio></ui-radio-group>
+    <ui-radio-group id="rgH" orientation="horizontal" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
+    <ui-radio-group id="rgW" orientation="horizontal" style="width:1px"><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -280,6 +284,22 @@ for (const c of cases) {
     checks['fieldGrid.label.max'] = [rect(fp(f2, 'label')).width <= rg.labelMaxFraction * rect(gr).width + 0.02 ? 1 : 0, 1];
     checks['fieldGrid.heading.first'] = [px(cs(h1).paddingTop), 0];
     checks['fieldGrid.heading.space'] = [px(cs(h2).paddingTop), rg.headingSpace];
+  }
+  // Choice groups: 6u rows 1u apart (7u pitch); horizontal 4u apart, wrapped lines 1u apart; gap attribute (resolveChoiceGroup).
+  {
+    const groupChecks = (name, el, orientation) => {
+      const rg = resolveChoiceGroup(orientation, g), [a, b] = el.querySelectorAll(':scope > ui-radio, :scope > ui-checkbox');
+      checks[`${name}.row`] = [r2(rect(a).height), rg.rowHeight];
+      if (orientation === 'vertical') {
+        checks[`${name}.gap`] = [r2(rect(b).top - rect(a).bottom), rg.gap];
+        checks[`${name}.pitch`] = [r2(rect(b).top - rect(a).top), rg.pitch];
+      } else checks[`${name}.columnGap`] = [r2(rect(b).left - rect(a).right), rg.columnGap];
+      checks[`${name}.padding`] = [px(cs(el).paddingTop) + px(cs(el).paddingLeft) + px(cs(el).borderTopWidth), 0];
+    };
+    groupChecks('radioGroup.vertical', $('rgV'), 'vertical');
+    groupChecks('radioGroup.horizontal', $('rgH'), 'horizontal');
+    const w = $('rgW'), [w1, w2] = w.querySelectorAll('ui-radio');
+    checks['radioGroup.wrap.rowGap'] = [r2(rect(w2).top - rect(w1).bottom), resolveChoiceGroup('horizontal', { unit: c.unit }).rowGap];
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

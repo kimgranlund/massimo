@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/choice/choice.element.ts",
-      "sha256": "a675913ca4b2f8c9588d9ace1befe012a75acfaa9ba567875851c6a5e6ef347c"
+      "sha256": "4cd42f765759b8382aa9858485464d2dc292204bf408d0a01e3e162d07e0bacc"
     },
     {
       "path": "components/slots.ts",
@@ -14,15 +14,15 @@
     },
     {
       "path": "core/form-element.ts",
-      "sha256": "1a9b478f598e231cd2799bd4ede9338af9fb67b55307d9a31d1673027ab8e053"
+      "sha256": "bb24c87702495706f43af1b60b45d6edd20c6d9f781d5bb1c026c79588bed9df"
     },
     {
       "path": "components/choice/choice.manifest.json",
-      "sha256": "4a8cb2b9faf9d61725d8e012c6496950779f7cda614460656cfac2494661c667"
+      "sha256": "19f9b9b1242fb30ff667f95a604ef70c0e7adc65a77b893195345d4bb1468574"
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "4f9e8d7840285001f09f2bdcc4292c1c4a3ff04f98a1800c0dbe9423c31286ef"
+      "sha256": "868ec5da32d2504aece0a5b7fe3b8bc3aac55dabc26d1e9a5a0bd43a17650884"
     },
     {
       "path": "dom/state.ts",

@@ -368,3 +368,22 @@ export function resolveImage(input: GeometryInput & { ratio?: string; width?: nu
 
 /** Popup offset from its trigger. */
 export const popupOffset = (input: GeometryInput = {}) => inputs(input).unit;
+
+// ── Choice groups ──
+// ui-radio-group and ui-checkbox-group stack their 6u choice rows (resolveChoice) 1u apart, so the
+// pitch is the 7u of a composite item; a horizontal group puts 4u between choices (a choice label
+// has no end padding) and wraps with 1u between rows. The gap attribute (g·u) replaces the gap
+// along the group's direction.
+export type ChoiceGroupOrientation = 'vertical' | 'horizontal';
+
+export function resolveChoiceGroup(orientation: ChoiceGroupOrientation = 'vertical', input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  const row = resolveChoice('checkbox', input).rowHeight;
+  const gap = (input.gap ?? (orientation === 'vertical' ? 1 : 4)) * u;
+  return {
+    unit: u, rowHeight: row, gap,
+    rowGap: orientation === 'vertical' ? gap : u,
+    columnGap: orientation === 'horizontal' ? gap : 0,
+    pitch: orientation === 'vertical' ? row + gap : row + u,
+  };
+}

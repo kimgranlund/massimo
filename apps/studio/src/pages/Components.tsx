@@ -11,6 +11,7 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/radio-group/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -22,7 +23,7 @@ export const FAMILIES = [
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
-  ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch'],
+  ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group'],
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
@@ -87,6 +88,54 @@ function InlineFields() {
 }
 
 
+/** Choice groups: a radio group named by a field label, a horizontal one, states, and a size ladder. */
+function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
+  const [plan, setPlan] = useState('pro');
+  const onPlan = useCallback((el: HTMLElement | null) => {
+    if (!el) return;
+    const h = (e: Event) => setPlan((e as CustomEvent<{ value: string }>).detail.value);
+    el.addEventListener('change', h);
+    return () => el.removeEventListener('change', h);
+  }, []);
+  return (
+    <>
+      <div className={stack}><h3 className={subTitle}>Groups</h3></div>
+      <div className={columns}>
+        <div className={stack}>
+          <ui-field label="Plan" description={`Value: ${plan}`}>
+            <ui-radio-group ref={onPlan} name="plan-g" value="pro">
+              <ui-radio value="free">Free</ui-radio>
+              <ui-radio value="pro">Pro<span slot="suffix">$9</span></ui-radio>
+              <ui-radio value="team">Team<span slot="suffix">$29</span></ui-radio>
+            </ui-radio-group>
+          </ui-field>
+          <ui-field label="Quiet hours">
+            <ui-radio-group orientation="horizontal" value="night">
+              <ui-radio value="off">Off</ui-radio><ui-radio value="night">Nights, 22–07</ui-radio><ui-radio value="weekend">Weekends</ui-radio>
+            </ui-radio-group>
+          </ui-field>
+        </div>
+        <div className={stack}>
+          <ui-field label="Size" description="Required; one option is sold out.">
+            <ui-radio-group required>
+              <ui-radio value="s">Small</ui-radio><ui-radio value="m">Medium</ui-radio><ui-radio value="l" disabled>Large</ui-radio>
+            </ui-radio-group>
+          </ui-field>
+          <ui-field label="Region (disabled)">
+            <ui-radio-group disabled value="eu" orientation="horizontal">
+              <ui-radio value="us">US</ui-radio><ui-radio value="eu">EU</ui-radio>
+            </ui-radio-group>
+          </ui-field>
+        </div>
+      </div>
+      <SizeLadder family="choiceGroup" params={params}>
+        <ui-radio-group label="Plan" value="pro"><ui-radio value="free">Free</ui-radio><ui-radio value="pro">Pro</ui-radio></ui-radio-group>
+        <ui-radio-group label="Quiet hours" orientation="horizontal" value="off"><ui-radio value="off">Off</ui-radio><ui-radio value="night">Nights</ui-radio></ui-radio-group>
+      </SizeLadder>
+    </>
+  );
+}
+
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
 
@@ -97,7 +146,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
-    choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot.',
+    choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot. Groups own one value: rows 1u apart (a 7u pitch), or a wrapping row 4u apart.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
@@ -225,6 +274,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         <SizeLadder family="choice" params={params}>
           <ui-checkbox checked>Checkbox</ui-checkbox><ui-radio checked>Radio</ui-radio><ui-switch checked>Switch</ui-switch>
         </SizeLadder>
+        <ChoiceGroups params={params} />
       </>
     ),
     tracks: (

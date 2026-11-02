@@ -15,6 +15,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -31,8 +32,11 @@ import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react
 import { Range, Progress } from '@massimo/ui-kit/components/range/react';
 import { Field } from '@massimo/ui-kit/components/field/react';
 import { Slider } from '@massimo/ui-kit/components/range/react';
+import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
+/** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
+const GROUP_KEYS = ['rgv', 'rgh'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
 
 function Pair({ u }: { u: number }) {
@@ -72,6 +76,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-select data-k="sel" label="Role" value="eng"><i slot="leading" name="briefcase" /><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
         <div style={{ width: 300 }}><ui-swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></ui-swiper></div>
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
+        <ui-radio-group data-k="rgv" value="b"><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
+        <ui-radio-group data-k="rgh" orientation="horizontal" disabled><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -107,6 +113,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><div data-k="sel"><Select label="Role" defaultValue="eng" leading={<i name="briefcase" />}><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div></div>
         <div style={{ width: 300 }}><Swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></Swiper></div>
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
+        <RadioGroup data-k="rgv" defaultValue="b"><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
+        <RadioGroup data-k="rgh" orientation="horizontal" disabled><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
       </div>
     </div>
   );
@@ -248,9 +256,21 @@ setTimeout(() => {
       pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
     }
   }
+  // Groups (radio group, checkbox group, fieldset): the host and each member carry the same data-*.
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
+    for (const k of GROUP_KEYS) {
+      const a = host(wc, k), b = host(re, k);
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('ui-radio, ui-checkbox, ui-switch, [data-ui=radio], [data-ui=checkbox], [data-ui=switch]')];
+      const pa = parts(a), pb = parts(b);
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} members: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
+    }
+  }
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

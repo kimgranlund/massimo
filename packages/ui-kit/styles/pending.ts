@@ -21,4 +21,6 @@ export const pending = defineGlobalStyles({
   // Fields keep the block flow their controls reserve space in.
   ':is(ui-field, ui-field-grid):not(:defined)': { display: 'block' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
+  // Choice groups: hidden until defined, in the block flow their choices reserve.
+  'ui-radio-group:not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });
