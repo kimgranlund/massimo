@@ -15,17 +15,36 @@ massimo-ui's type roles and font families, placed on our u ramp. Reference: `pac
 |---|---|---|---|
 | ratio | theme `type-ratio` | 1–1.5 (named: 1 product UI, 1.125, 1.2, 1.25, 1.333 perfect fourth, 1.5) | 1.333 |
 | rhythm | theme `type-rhythm` | 0 (natural), 0.5, 1 (× u) | 1 |
-| heading style | `data-heading="serif"` on any element | sans, serif | sans |
 | u | theme `unit`, `size` / `data-size` | see geometry | 4 |
+
+## Faces, voices, roles
+
+Fonts work in three layers, like colors (ramps → roles):
+
+1. **Faces** (the stacks): `sans`, `serif`, `mono`, `display`. Tokens `fonts.*`, CSS `--fonts-<face>`. `display` starts as the sans stack.
+2. **Voices** (what text is for), each pointing at a face:
+
+   | Voice | Default face | Used by |
+   |---|---|---|
+   | display | display | display |
+   | heading | sans | heading-1–3 |
+   | body | sans | body-large, body, caption |
+   | ui | sans | control, label, control-small, kickers |
+   | numeric | follows ui (sans) | `data-numeric` (stats, counters, tables), with `tabular-nums lining-nums` |
+   | code | mono | code |
+
+3. **Roles** (below) point at voices. Kickers are a role on the ui voice (case, tracking, weight), not a voice of their own; numerics are mostly font features, so `numeric` follows `ui` unless repointed.
+
+Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font-heading="serif"`). Display and heading voices drop to regular weight (400) on the serif face, massimo-ui's serif heading style; the jig applies the same rule to any face whose stack ends in `serif`. Change a face's stack by overriding `--fonts-<face>` (or `tokens.fonts` in a Panda preset). Curated stacks per face: `FACE_STACKS`.
 
 ## Roles
 
 | Role | Size | Line height | Weight | Tracking | Notes |
 |---|---|---|---|---|---|
-| display | step 6 | 1.05 | 700 | −0.045em | heading family |
-| heading-1 | step 4 | 1.1 | 700 | −0.025em | heading family |
-| heading-2 | step 3 | 1.15 | 700 | −0.02em | heading family |
-| heading-3 | step 2 | 1.2 | 700 | −0.01em | heading family |
+| display | step 6 | 1.05 | 700 | −0.045em | display voice |
+| heading-1 | step 4 | 1.1 | 700 | −0.025em | heading voice |
+| heading-2 | step 3 | 1.15 | 700 | −0.02em | heading voice |
+| heading-3 | step 2 | 1.2 | 700 | −0.01em | heading voice |
 | section-kicker | step 0 | 1.2 | 700 | 0.1em | uppercase |
 | group-kicker | step −1 | 1.2 | 400 | 0.08em | uppercase |
 | body-large | step 1 | 1.5 | 400 | 0 | |
@@ -38,15 +57,12 @@ massimo-ui's type roles and font families, placed on our u ramp. Reference: `pac
 
 At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/84, caption 12/20.
 
-Serif headings switch display and headings 1–3 to the serif stack at weight 400; other roles stay sans; code stays mono.
 
-## Families
+## Default stacks
 
-- sans: `"Helvetica Neue", Helvetica, Arial, sans-serif`
+- sans and display: `"Helvetica Neue", Helvetica, Arial, sans-serif`
 - serif: `Baskerville, "Palatino Linotype", Palatino, serif`
 - mono: `ui-monospace, "SF Mono", Menlo, Consolas, monospace`
-
-Tokens `fonts.sans|serif|mono` (`--fonts-*`).
 
 ## Using a role
 

@@ -14,8 +14,8 @@ import '../icons.ts';
 import { useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import type { HeadingStyle, SpectrumPayload, View } from '../protocol.ts';
-import { TYPE_ROLES, resolveType, type ThemeParams, type TypeRoleName } from '@massimo/ui-kit/tokens';
+import type { FaceMap, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
+import { TYPE_ROLES, VOICES, resolveType, type ThemeParams, type TypeRoleName } from '@massimo/ui-kit/tokens';
 
 // Specimen layout: the page container (8u padding and gap) holds titled sections split by
 // dividers. Each section is a list of labelled rows: label on the left, specimens on the right.
@@ -101,13 +101,13 @@ const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'],
 const art = (a: string, b: string, label: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="40" y="560" font-family="system-ui" font-size="48" fill="white" fill-opacity=".85">${label}</text></svg>`)}`;
 const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Dusk'), art('#16a34a', '#0ea5e9', 'Coast'), art('#1e293b', '#7c3aed', 'Night')];
 
-export function Canvas({ view, spectrum, params, heading }: { view: View; spectrum?: SpectrumPayload; params: ThemeParams; heading: HeadingStyle }) {
+export function Canvas({ view, spectrum, params, voices, faces }: { view: View; spectrum?: SpectrumPayload; params: ThemeParams; voices: VoiceMap; faces: FaceMap }) {
   return (
     <main className={shell} id="page">
       {view === 'components' && <Components />}
       {view === 'containers' && <Containers />}
       {view === 'colors' && <Colors spectrum={spectrum} />}
-      {view === 'typography' && <Typography params={params} heading={heading} />}
+      {view === 'typography' && <Typography params={params} voices={voices} faces={faces} />}
     </main>
   );
 }
@@ -379,7 +379,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
             </ui-listbox>
           </ui-card>
           <ui-card>
-            <span className={kicker}>This week</span><strong className={bigFigure}>1,284</strong>
+            <span className={kicker}>This week</span><strong className={bigFigure} data-numeric>1,284</strong>
             <p className={caption}>Orders across two channels.</p>
             <ui-badge style={{ background: sv(ok, 3), color: sv(ok, 11) }}>↑ 12% this week</ui-badge>
           </ui-card>
@@ -441,15 +441,24 @@ const SAMPLES: Record<TypeRoleName, string> = {
 };
 const fmt = (n: number) => String(Math.round(n * 100) / 100);
 
-function Typography({ params, heading }: { params: ThemeParams; heading: HeadingStyle }) {
-  const opts = { unit: params.unit, ratio: params['type-ratio'], rhythm: params['type-rhythm'], heading };
+function Typography({ params, voices, faces }: { params: ThemeParams; voices: VoiceMap; faces: FaceMap }) {
+  const opts = { unit: params.unit, ratio: params['type-ratio'], rhythm: params['type-rhythm'], voices, faces };
   const grid = params['type-rhythm'] * params.unit;
   return (
     <>
       <header className={header}>
         <h1 className={pageTitle}>Typography</h1>
-        <p className={lead}>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for caption, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'} · {heading} headings.</p>
+        <p className={lead}>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for caption, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'}.</p>
       </header>
+      <Divider />
+      <Section id="voices" title="Faces and voices" note="Faces are the stacks; voices say what text is for; roles point at voices. Repoint a voice with data-font-<voice>=&quot;<face>&quot;.">
+        {VOICES.map((v) => (
+          <Row key={v} label={v}>
+            <span className={metrics}>→ {voices[v]}</span>
+            <span style={{ fontFamily: `var(--font-voice-${v}, var(--fonts-${voices[v]}))`, fontSize: '1.5em', fontVariantNumeric: v === 'numeric' ? 'tabular-nums lining-nums' : undefined }}>{v === 'numeric' ? '1,284.07 · 62%' : v === 'code' ? 'const u = 4;' : 'Hamburgefonstiv 0123'}</span>
+          </Row>
+        ))}
+      </Section>
       <Divider />
       <Section id="roles" title="Roles" note={'Each specimen uses data-type="<role>" (or textStyle in Panda). Metrics come from the resolver for the current settings.'}>
         {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => {
@@ -461,7 +470,7 @@ function Typography({ params, heading }: { params: ThemeParams; heading: Heading
                 <span className={rowLabel}>{r.label}</span>
                 <span className={metrics}>{role}</span>
                 <span className={metrics}>{'u' in r ? `${r.u}u` : `step ${r.step}`} · {fmt(t.size)}px / {t.lineHeightRatio ?? `${fmt(t.lineHeight)}px`}</span>
-                <span className={metrics}>{t.family} {t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
+                <span className={metrics}>{t.voice} → {t.face} · {t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
               </div>
               <div data-type={role} className={role === 'code' ? codeSample : rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${grid}px` } : undefined}>{SAMPLES[role]}</div>
             </div>

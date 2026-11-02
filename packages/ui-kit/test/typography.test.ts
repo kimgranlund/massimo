@@ -25,9 +25,16 @@ test('line heights round up to the rhythm unit; controls keep 1.2; rhythm 0 is n
   }
 });
 
-test('serif heading style: display and headings switch to regular serif; others stay', () => {
-  assert.deepEqual([resolveType('heading-1', { heading: 'serif' }).family, resolveType('heading-1', { heading: 'serif' }).weight], ['serif', 400]);
-  assert.equal(resolveType('body', { heading: 'serif' }).family, 'sans');
-  assert.equal(resolveType('code').family, 'mono');
+test('voices: roles point at voices, voices at faces; serif display/heading drop to 400', () => {
+  assert.equal(resolveType('heading-1').face, 'sans');
+  assert.equal(resolveType('display').face, 'display', 'display is its own face');
+  assert.equal(resolveType('code').face, 'mono');
+  assert.equal(resolveType('section-kicker').voice, 'ui', 'kickers are a role on the ui voice');
+  const serifHeadings = resolveType('heading-1', { voices: { heading: 'serif' } });
+  assert.deepEqual([serifHeadings.face, serifHeadings.weight], ['serif', 400]);
+  assert.equal(resolveType('body', { voices: { heading: 'serif' } }).face, 'sans', 'other voices unaffected');
+  assert.equal(resolveType('label', { voices: { ui: 'serif' } }).weight, 450, 'only display/heading drop weight');
+  const didot = resolveType('display', { faces: { display: 'Didot, "Bodoni 72", serif' } });
+  assert.equal(didot.weight, 400, 'a serif stack on the display face reads as serif');
   assert.equal(resolveType('section-kicker').transform, 'uppercase');
 });

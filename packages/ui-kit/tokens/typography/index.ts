@@ -1,10 +1,12 @@
 import { FONT_FAMILIES } from './resolve.ts';
 
-// Font stacks from massimo-ui. Type roles (sizes, line heights) live in resolve.ts and styles/typography.ts.
+// Faces (font stacks, from massimo-ui; display starts as the sans stack). Voices and roles live in
+// resolve.ts and styles/typography.ts.
 export const fonts = {
   sans: { value: FONT_FAMILIES.sans },
   serif: { value: FONT_FAMILIES.serif },
   mono: { value: FONT_FAMILIES.mono },
+  display: { value: FONT_FAMILIES.display },
 };
 // Major-second scale from a 1rem base.
 export const fontSizes = {

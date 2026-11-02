@@ -90,7 +90,7 @@ export const rows: Row[] = [
   { id: 'in.typeRhythm', family: 'input', element: 'text', quantity: 'type rhythm', formula: 'rhythm × u (default 1)', value: () => 1, status: 'input', notes: 'theme type-rhythm: 0 natural, 0.5, 1' },
   ...(Object.entries(TYPE_ROLES) as [TypeRoleName, (typeof TYPE_ROLES)[TypeRoleName]][]).flatMap(([role, r]): Row[] => [
     { id: `type.${role}.size`, family: 'type', element: role, quantity: 'font size', formula: 'u' in r ? `${r.u}u` : `(10 + u) × r^${r.step}`, value: (u) => resolveType(role, { unit: u }).size, status: 'implemented', notes: '' },
-    { id: `type.${role}.lineHeight`, family: 'type', element: role, quantity: 'line height', formula: 'control' in r ? `${r.lh} (unitless)` : `ceil(size × ${r.lh} / u) × u`, value: (u) => resolveType(role, { unit: u }).lineHeight, status: 'implemented', notes: `weight ${r.weight}, tracking ${r.tracking}em${'upper' in r ? ', uppercase' : ''}${'mono' in r ? ', mono' : ''}${'heading' in r ? ', serif option' : ''}` },
+    { id: `type.${role}.lineHeight`, family: 'type', element: role, quantity: 'line height', formula: 'control' in r ? `${r.lh} (unitless)` : `ceil(size × ${r.lh} / u) × u`, value: (u) => resolveType(role, { unit: u }).lineHeight, status: 'implemented', notes: `voice ${r.voice}, weight ${r.weight}, tracking ${r.tracking}em${'upper' in r ? ', uppercase' : ''}` },
   ]),
 
   // Badge / tag / chip

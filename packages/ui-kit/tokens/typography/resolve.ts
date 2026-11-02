@@ -3,61 +3,88 @@
 // up to the rhythm unit (rhythm × u; 0 keeps the natural size × multiplier). Controls keep a
 // unitless 1.2. styles/typography.ts computes the same values in CSS with pow() and round().
 
+// Fonts in three layers, like colors: faces (the stacks) -> voices (what text is for) -> roles.
+export const FACES = ['sans', 'serif', 'mono', 'display'] as const;
+export type Face = (typeof FACES)[number];
+export const VOICES = ['display', 'heading', 'body', 'ui', 'numeric', 'code'] as const;
+export type Voice = (typeof VOICES)[number];
+/** Default face per voice. `numeric` follows `ui`; `display` is its own face (falls back to sans). */
+export const DEFAULT_VOICES: Record<Voice, Face> = { display: 'display', heading: 'sans', body: 'sans', ui: 'sans', numeric: 'sans', code: 'mono' };
+/** Voices whose bold weight drops to regular on a serif face (massimo-ui's serif heading style). */
+export const SERIF_REGULAR_VOICES: ReadonlySet<Voice> = new Set(['display', 'heading']);
+/** Figures for the numeric voice: aligned columns, lining digits. */
+export const NUMERIC_FEATURES = 'tabular-nums lining-nums';
+
 export interface TypeRole {
   label: string;
+  voice: Voice;
   step?: number;
   u?: number;
   lh: number;
   weight: number;
   tracking: number; // em
   upper?: boolean;
-  mono?: boolean;
-  heading?: boolean;
   control?: boolean; // unitless line height, no rhythm rounding
 }
 
 export const TYPE_ROLES = {
-  'display':       { label: 'Display',         step: 6,  lh: 1.05, weight: 700, tracking: -0.045, heading: true },
-  'heading-1':     { label: 'Heading 1',       step: 4,  lh: 1.1,  weight: 700, tracking: -0.025, heading: true },
-  'heading-2':     { label: 'Heading 2',       step: 3,  lh: 1.15, weight: 700, tracking: -0.02, heading: true },
-  'heading-3':     { label: 'Heading 3',       step: 2,  lh: 1.2,  weight: 700, tracking: -0.01, heading: true },
-  'section-kicker': { label: 'Kicker · Section', step: 0, lh: 1.2, weight: 700, tracking: 0.1, upper: true },
-  'group-kicker':  { label: 'Kicker · Group',  step: -1, lh: 1.2,  weight: 400, tracking: 0.08, upper: true },
-  'body-large':    { label: 'Body · Large',    step: 1,  lh: 1.5,  weight: 400, tracking: 0 },
-  'body':          { label: 'Body',            step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
-  'caption':       { label: 'Caption',         u: 3,     lh: 1.45, weight: 400, tracking: 0 },
-  'code':          { label: 'Code',            u: 3,     lh: 1.5,  weight: 400, tracking: 0, mono: true },
-  'control':       { label: 'Control',         step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
-  'label':         { label: 'Label',           step: 0,  lh: 1.4,  weight: 450, tracking: 0 },
-  'control-small': { label: 'Control · Small', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 1.05, weight: 700, tracking: -0.045 },
+  'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025 },
+  'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02 },
+  'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01 },
+  'section-kicker': { label: 'Kicker · Section', voice: 'ui', step: 0, lh: 1.2, weight: 700, tracking: 0.1, upper: true },
+  'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 400, tracking: 0.08, upper: true },
+  'body-large':    { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0 },
+  'body':          { label: 'Body',            voice: 'body', step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
+  'caption':       { label: 'Caption',         voice: 'body', u: 3,     lh: 1.45, weight: 400, tracking: 0 },
+  'code':          { label: 'Code',            voice: 'code', u: 3,     lh: 1.5,  weight: 400, tracking: 0 },
+  'control':       { label: 'Control',         voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'label':         { label: 'Label',           voice: 'ui', step: 0,  lh: 1.4,  weight: 450, tracking: 0 },
+  'control-small': { label: 'Control · Small', voice: 'ui', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
 } as const satisfies Record<string, TypeRole>;
 export type TypeRoleName = keyof typeof TYPE_ROLES;
 
 /** Named ratios from massimo-ui. */
 export const TYPE_RATIOS: [number, string][] = [[1, 'Product UI'], [1.125, 'Major second'], [1.2, 'Minor third'], [1.25, 'Major third'], [1.333, 'Perfect fourth'], [1.5, 'Perfect fifth']];
 
-export const FONT_FAMILIES = {
+/** Default face stacks (massimo-ui). The display face starts as the sans stack. */
+export const FONT_FAMILIES: Record<Face, string> = {
   sans: '"Helvetica Neue", Helvetica, Arial, sans-serif',
   serif: 'Baskerville, "Palatino Linotype", Palatino, serif',
   mono: 'ui-monospace, "SF Mono", Menlo, Consolas, monospace',
+  display: '"Helvetica Neue", Helvetica, Arial, sans-serif',
 };
 
-export const TYPE_DEFAULTS = { unit: 4, ratio: 1.333, rhythm: 1, heading: 'sans' as 'sans' | 'serif' };
+/** Curated alternative stacks per face, for theme pickers. The first entry is the default. */
+export const FACE_STACKS: Record<Face, [string, string][]> = {
+  sans: [['Helvetica Neue', FONT_FAMILIES.sans], ['System UI', 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'], ['Avenir Next', '"Avenir Next", Avenir, "Segoe UI", sans-serif'], ['Gill Sans', '"Gill Sans", "Gill Sans MT", Calibri, sans-serif']],
+  serif: [['Baskerville', FONT_FAMILIES.serif], ['Georgia', 'Georgia, "Times New Roman", serif'], ['Charter', 'Charter, "Bitstream Charter", "Sitka Text", Cambria, serif'], ['Didot', 'Didot, "Bodoni 72", "Bodoni MT", serif']],
+  mono: [['UI Monospace', FONT_FAMILIES.mono], ['Menlo', 'Menlo, Monaco, Consolas, monospace'], ['Courier', '"Courier New", Courier, monospace']],
+  display: [['Same as sans', FONT_FAMILIES.display], ['Didot', 'Didot, "Bodoni 72", "Bodoni MT", serif'], ['Futura', 'Futura, "Century Gothic", "Avenir Next", sans-serif'], ['Avenir Next Condensed', '"Avenir Next Condensed", "Arial Narrow", sans-serif'], ['Baskerville', FONT_FAMILIES.serif]],
+};
 
-export function resolveType(role: TypeRoleName, input: Partial<typeof TYPE_DEFAULTS> = {}) {
-  const x = { ...TYPE_DEFAULTS, ...input };
+export const TYPE_DEFAULTS = { unit: 4, ratio: 1.333, rhythm: 1, voices: DEFAULT_VOICES, faces: FONT_FAMILIES };
+
+/** A face counts as serif when its stack ends in the serif generic family. */
+export const isSerifStack = (stack: string) => /\bserif\s*$/.test(stack) && !/sans-serif\s*$/.test(stack);
+
+export function resolveType(role: TypeRoleName, input: { unit?: number; ratio?: number; rhythm?: number; voices?: Partial<Record<Voice, Face>>; faces?: Partial<Record<Face, string>> } = {}) {
+  const x = { ...TYPE_DEFAULTS, ...input, voices: { ...DEFAULT_VOICES, ...input.voices }, faces: { ...FONT_FAMILIES, ...input.faces } };
   const r: TypeRole = TYPE_ROLES[role];
   const base = 10 + x.unit;
   const size = r.u !== undefined ? r.u * x.unit : base * Math.pow(x.ratio, r.step!);
   const natural = size * r.lh;
   const grid = x.rhythm * x.unit;
   const lineHeight = r.control ? natural : grid > 0 ? Math.ceil(natural / grid - 1e-6) * grid : natural;
-  const serif = r.heading && x.heading === 'serif';
+  const face = x.voices[r.voice];
+  const serifRegular = SERIF_REGULAR_VOICES.has(r.voice) && isSerifStack(x.faces[face]);
   return {
     size, lineHeight, lineHeightRatio: r.control ? r.lh : undefined,
-    weight: serif ? 400 : r.weight,
+    weight: serifRegular ? 400 : r.weight,
     tracking: r.tracking,
     transform: r.upper ? 'uppercase' : 'none',
-    family: r.mono ? 'mono' : serif ? 'serif' : 'sans',
+    voice: r.voice,
+    face,
+    stack: x.faces[face],
   };
 }

@@ -65,7 +65,7 @@ export const defaults = defineGlobalStyles({
 
   // Badge, tag, chip (lengths in styles/geometry.ts)
   ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
-  'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold' },
+  'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' },
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
   'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', cursor: 'pointer', userSelect: 'none' },
   'ui-chip:hover': { bg: 'bg.subtle' },

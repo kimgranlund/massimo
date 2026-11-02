@@ -75,31 +75,31 @@ swiper.dot,swiper,swiper,dot,2u (active 4u wide),4,4.5,5,6,7,8,9,10,11,12,13,14,
 in.typeRatio,input,text,type ratio r,r (default 1.333),1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,1.333,input,"theme type-ratio, 1–1.5"
 in.typeRhythm,input,text,type rhythm,rhythm × u (default 1),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,input,"theme type-rhythm: 0 natural, 0.5, 1"
 type.display.size,type,display,font size,(10 + u) × r^6,67.323,68.725,70.128,72.933,75.738,78.543,81.348,84.153,86.959,89.764,92.569,95.374,98.179,100.984,103.789,106.594,109.4,112.205,115.01,117.815,120.62,123.425,implemented,
-type.display.lineHeight,type,display,line height,ceil(size × 1.05 / u) × u,72,74.25,75,78,80.5,84,85.5,90,93.5,96,97.5,105,105,112,110.5,117,123.5,120,126,132,138,132,implemented,"weight 700, tracking -0.045em, serif option"
+type.display.lineHeight,type,display,line height,ceil(size × 1.05 / u) × u,72,74.25,75,78,80.5,84,85.5,90,93.5,96,97.5,105,105,112,110.5,117,123.5,120,126,132,138,132,implemented,"voice display, weight 700, tracking -0.045em"
 type.heading-1.size,type,heading-1,font size,(10 + u) × r^4,37.888,38.677,39.467,41.045,42.624,44.203,45.781,47.36,48.939,50.517,52.096,53.675,55.253,56.832,58.411,59.989,61.568,63.147,64.725,66.304,67.883,69.461,implemented,
-type.heading-1.lineHeight,type,heading-1,line height,ceil(size × 1.1 / u) × u,42,42.75,45,48,49,52,54,55,55,60,58.5,63,67.5,64,68,72,76,70,73.5,77,80.5,84,implemented,"weight 700, tracking -0.025em, serif option"
+type.heading-1.lineHeight,type,heading-1,line height,ceil(size × 1.1 / u) × u,42,42.75,45,48,49,52,54,55,55,60,58.5,63,67.5,64,68,72,76,70,73.5,77,80.5,84,implemented,"voice heading, weight 700, tracking -0.025em"
 type.heading-2.size,type,heading-2,font size,(10 + u) × r^3,28.423,29.015,29.607,30.792,31.976,33.16,34.345,35.529,36.713,37.897,39.082,40.266,41.45,42.635,43.819,45.003,46.188,47.372,48.556,49.74,50.925,52.109,implemented,
-type.heading-2.lineHeight,type,heading-2,line height,ceil(size × 1.15 / u) × u,34,33.75,35,36,38.5,40,40.5,45,44,48,45.5,49,52.5,56,51,54,57,60,63,66,69,60,implemented,"weight 700, tracking -0.02em, serif option"
+type.heading-2.lineHeight,type,heading-2,line height,ceil(size × 1.15 / u) × u,34,33.75,35,36,38.5,40,40.5,45,44,48,45.5,49,52.5,56,51,54,57,60,63,66,69,60,implemented,"voice heading, weight 700, tracking -0.02em"
 type.heading-3.size,type,heading-3,font size,(10 + u) × r^2,21.323,21.767,22.211,23.1,23.988,24.876,25.765,26.653,27.542,28.43,29.319,30.207,31.096,31.984,32.872,33.761,34.649,35.538,36.426,37.315,38.203,39.092,implemented,
-type.heading-3.lineHeight,type,heading-3,line height,ceil(size × 1.2 / u) × u,26,27,27.5,30,31.5,32,31.5,35,38.5,36,39,42,37.5,40,42.5,45,47.5,50,52.5,55,46,48,implemented,"weight 700, tracking -0.01em, serif option"
+type.heading-3.lineHeight,type,heading-3,line height,ceil(size × 1.2 / u) × u,26,27,27.5,30,31.5,32,31.5,35,38.5,36,39,42,37.5,40,42.5,45,47.5,50,52.5,55,46,48,implemented,"voice heading, weight 700, tracking -0.01em"
 type.section-kicker.size,type,section-kicker,font size,(10 + u) × r^0,12,12.25,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
-type.section-kicker.lineHeight,type,section-kicker,line height,ceil(size × 1.2 / u) × u,16,15.75,15,18,17.5,20,18,20,22,24,26,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,"weight 700, tracking 0.1em, uppercase"
+type.section-kicker.lineHeight,type,section-kicker,line height,ceil(size × 1.2 / u) × u,16,15.75,15,18,17.5,20,18,20,22,24,26,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,"voice ui, weight 700, tracking 0.1em, uppercase"
 type.group-kicker.size,type,group-kicker,font size,(10 + u) × r^-1,9.002,9.19,9.377,9.752,10.128,10.503,10.878,11.253,11.628,12.003,12.378,12.753,13.128,13.503,13.878,14.254,14.629,15.004,15.379,15.754,16.129,16.504,implemented,
-type.group-kicker.lineHeight,type,group-kicker,line height,ceil(size × 1.2 / u) × u,12,11.25,12.5,12,14,16,13.5,15,16.5,18,19.5,21,22.5,24,17,18,19,20,21,22,23,24,implemented,"weight 400, tracking 0.08em, uppercase"
+type.group-kicker.lineHeight,type,group-kicker,line height,ceil(size × 1.2 / u) × u,12,11.25,12.5,12,14,16,13.5,15,16.5,18,19.5,21,22.5,24,17,18,19,20,21,22,23,24,implemented,"voice ui, weight 400, tracking 0.08em, uppercase"
 type.body-large.size,type,body-large,font size,(10 + u) × r^1,15.996,16.329,16.662,17.329,17.996,18.662,19.329,19.995,20.662,21.328,21.995,22.661,23.328,23.994,24.661,25.327,25.994,26.66,27.327,27.993,28.659,29.326,implemented,
-type.body-large.lineHeight,type,body-large,line height,ceil(size × 1.5 / u) × u,24,24.75,25,27,28,28,31.5,30,33,36,39,35,37.5,40,42.5,45,47.5,40,42,44,46,48,implemented,"weight 400, tracking 0em"
+type.body-large.lineHeight,type,body-large,line height,ceil(size × 1.5 / u) × u,24,24.75,25,27,28,28,31.5,30,33,36,39,35,37.5,40,42.5,45,47.5,40,42,44,46,48,implemented,"voice body, weight 400, tracking 0em"
 type.body.size,type,body,font size,(10 + u) × r^0,12,12.25,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
-type.body.lineHeight,type,body,line height,ceil(size × 1.5 / u) × u,18,20.25,20,21,21,24,22.5,25,27.5,24,26,28,30,32,34,36,38,30,31.5,33,34.5,36,implemented,"weight 400, tracking 0em"
+type.body.lineHeight,type,body,line height,ceil(size × 1.5 / u) × u,18,20.25,20,21,21,24,22.5,25,27.5,24,26,28,30,32,34,36,38,30,31.5,33,34.5,36,implemented,"voice body, weight 400, tracking 0em"
 type.caption.size,type,caption,font size,3u,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
-type.caption.lineHeight,type,caption,line height,ceil(size × 1.45 / u) × u,10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,"weight 400, tracking 0em"
+type.caption.lineHeight,type,caption,line height,ceil(size × 1.45 / u) × u,10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,"voice body, weight 400, tracking 0em"
 type.code.size,type,code,font size,3u,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
-type.code.lineHeight,type,code,line height,ceil(size × 1.5 / u) × u,10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,"weight 400, tracking 0em, mono"
+type.code.lineHeight,type,code,line height,ceil(size × 1.5 / u) × u,10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,"voice code, weight 400, tracking 0em"
 type.control.size,type,control,font size,(10 + u) × r^0,12,12.25,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
-type.control.lineHeight,type,control,line height,1.2 (unitless),14.4,14.7,15,15.6,16.2,16.8,17.4,18,18.6,19.2,19.8,20.4,21,21.6,22.2,22.8,23.4,24,24.6,25.2,25.8,26.4,implemented,"weight 450, tracking 0em"
+type.control.lineHeight,type,control,line height,1.2 (unitless),14.4,14.7,15,15.6,16.2,16.8,17.4,18,18.6,19.2,19.8,20.4,21,21.6,22.2,22.8,23.4,24,24.6,25.2,25.8,26.4,implemented,"voice ui, weight 450, tracking 0em"
 type.label.size,type,label,font size,(10 + u) × r^0,12,12.25,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
-type.label.lineHeight,type,label,line height,ceil(size × 1.4 / u) × u,18,18,17.5,21,21,20,22.5,25,22,24,26,28,30,32,34,27,28.5,30,31.5,33,34.5,36,implemented,"weight 450, tracking 0em"
+type.label.lineHeight,type,label,line height,ceil(size × 1.4 / u) × u,18,18,17.5,21,21,20,22.5,25,22,24,26,28,30,32,34,27,28.5,30,31.5,33,34.5,36,implemented,"voice ui, weight 450, tracking 0em"
 type.control-small.size,type,control-small,font size,3u,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
-type.control-small.lineHeight,type,control-small,line height,1.2 (unitless),7.2,8.1,9,10.8,12.6,14.4,16.2,18,19.8,21.6,23.4,25.2,27,28.8,30.6,32.4,34.2,36,37.8,39.6,41.4,43.2,implemented,"weight 450, tracking 0em"
+type.control-small.lineHeight,type,control-small,line height,1.2 (unitless),7.2,8.1,9,10.8,12.6,14.4,16.2,18,19.8,21.6,23.4,25.2,27,28.8,30.6,32.4,34.2,36,37.8,39.6,41.4,43.2,implemented,"voice ui, weight 450, tracking 0em"
 btg.chip.height,btg,chip,height,"min(12 + 3u, 8u)",16,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,37.5,39,40.5,42,43.5,45,46.5,48,implemented,cap: never taller than a control (bites below u = 2.4)
 btg.tag.height,btg,tag,height,"min(12 + 2u, chip - u)",14,15.75,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,implemented,one u below chip
 btg.badge.height,btg,badge,height,"min(12 + u, tag - u)",12,13.5,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,22.5,23,23.5,24,implemented,one u below tag

@@ -2765,7 +2765,7 @@
           "value": 84,
           "unit": "px"
         },
-        "$description": "display · line height · weight 700, tracking -0.045em, serif option",
+        "$description": "display · line height · voice display, weight 700, tracking -0.045em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.05 / u) × u",
           "com.massimo.status": "implemented",
@@ -2839,7 +2839,7 @@
           "value": 52,
           "unit": "px"
         },
-        "$description": "heading-1 · line height · weight 700, tracking -0.025em, serif option",
+        "$description": "heading-1 · line height · voice heading, weight 700, tracking -0.025em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.1 / u) × u",
           "com.massimo.status": "implemented",
@@ -2913,7 +2913,7 @@
           "value": 40,
           "unit": "px"
         },
-        "$description": "heading-2 · line height · weight 700, tracking -0.02em, serif option",
+        "$description": "heading-2 · line height · voice heading, weight 700, tracking -0.02em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.15 / u) × u",
           "com.massimo.status": "implemented",
@@ -2987,7 +2987,7 @@
           "value": 32,
           "unit": "px"
         },
-        "$description": "heading-3 · line height · weight 700, tracking -0.01em, serif option",
+        "$description": "heading-3 · line height · voice heading, weight 700, tracking -0.01em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.2 / u) × u",
           "com.massimo.status": "implemented",
@@ -3061,7 +3061,7 @@
           "value": 20,
           "unit": "px"
         },
-        "$description": "section-kicker · line height · weight 700, tracking 0.1em, uppercase",
+        "$description": "section-kicker · line height · voice ui, weight 700, tracking 0.1em, uppercase",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.2 / u) × u",
           "com.massimo.status": "implemented",
@@ -3135,7 +3135,7 @@
           "value": 16,
           "unit": "px"
         },
-        "$description": "group-kicker · line height · weight 400, tracking 0.08em, uppercase",
+        "$description": "group-kicker · line height · voice ui, weight 400, tracking 0.08em, uppercase",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.2 / u) × u",
           "com.massimo.status": "implemented",
@@ -3209,7 +3209,7 @@
           "value": 28,
           "unit": "px"
         },
-        "$description": "body-large · line height · weight 400, tracking 0em",
+        "$description": "body-large · line height · voice body, weight 400, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.5 / u) × u",
           "com.massimo.status": "implemented",
@@ -3283,7 +3283,7 @@
           "value": 24,
           "unit": "px"
         },
-        "$description": "body · line height · weight 400, tracking 0em",
+        "$description": "body · line height · voice body, weight 400, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.5 / u) × u",
           "com.massimo.status": "implemented",
@@ -3357,7 +3357,7 @@
           "value": 20,
           "unit": "px"
         },
-        "$description": "caption · line height · weight 400, tracking 0em",
+        "$description": "caption · line height · voice body, weight 400, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.45 / u) × u",
           "com.massimo.status": "implemented",
@@ -3431,7 +3431,7 @@
           "value": 20,
           "unit": "px"
         },
-        "$description": "code · line height · weight 400, tracking 0em, mono",
+        "$description": "code · line height · voice code, weight 400, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.5 / u) × u",
           "com.massimo.status": "implemented",
@@ -3505,7 +3505,7 @@
           "value": 16.8,
           "unit": "px"
         },
-        "$description": "control · line height · weight 450, tracking 0em",
+        "$description": "control · line height · voice ui, weight 450, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "1.2 (unitless)",
           "com.massimo.status": "implemented",
@@ -3579,7 +3579,7 @@
           "value": 20,
           "unit": "px"
         },
-        "$description": "label · line height · weight 450, tracking 0em",
+        "$description": "label · line height · voice ui, weight 450, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.4 / u) × u",
           "com.massimo.status": "implemented",
@@ -3653,7 +3653,7 @@
           "value": 14.4,
           "unit": "px"
         },
-        "$description": "control-small · line height · weight 450, tracking 0em",
+        "$description": "control-small · line height · voice ui, weight 450, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "1.2 (unitless)",
           "com.massimo.status": "implemented",
