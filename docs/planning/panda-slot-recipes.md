@@ -45,7 +45,7 @@ Each component gets a Panda **config slot recipe** in the preset (`theme.slotRec
 
 Each step is one component folder, shipped alone with all checks green. Order from simplest to most coupled:
 
-1. **Foundation.** Add custom conditions to the preset; add the recipe registry; keep `geometry.ts` variables; add the manifest-to-recipe test. No visual change.
+1. **Foundation.** Add custom conditions to the preset (done: `styles/conditions.ts`, `_keyboard`, `_checked`, `_indeterminate`, `_disabled`, `_busy`, `_userInvalid`, each matching the ARIA host and the native-child form); add the recipe registry; keep `geometry.ts` variables; add the manifest-to-recipe test. No visual change.
 2. **badge / tag / chip** (`btg`): first slot recipe with parts and the `selected` state; web component adds classes; React uses the recipe; remove their global rules and twins.
 3. **button**: `variant` (neutral, primary), busy, the construction pattern parts.
 4. **choice** (checkbox, radio, switch), **range / progress**, **color** (swatch, palette).

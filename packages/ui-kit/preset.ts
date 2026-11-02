@@ -5,6 +5,7 @@ import { tokens, semanticTokens, themeCss } from './tokens/index.ts';
 import { breakpoints } from './tokens/geometry/index.ts';
 import { reset, textStyles, typography, page, prose, geometry, defaults, motion, pending, pendingKeyframes } from './styles/index.ts';
 import { native, withNativeTwins } from './styles/native.ts';
+import { conditions as stateConditions } from './styles/conditions.ts';
 
 type Css = Record<string, Record<string, unknown>>;
 
@@ -25,7 +26,8 @@ export const uiKitPreset = definePreset({
   // Native twins: React renderers use native HTML with data-ui hosts (styles/native.ts).
   globalCss: withNativeTwins(mergeGlobalCss(...Object.values(globalCssParts))) as any,
   // Scheme conditions used by semantic colors: OS preference, plus explicit class overrides.
-  conditions: { osDark: '@media (prefers-color-scheme: dark)', dark: '.dark &', light: '.light &' },
+  // plus the state conditions shared by both renderers (styles/conditions.ts).
+  conditions: { osDark: '@media (prefers-color-scheme: dark)', dark: '.dark &', light: '.light &', ...stateConditions },
   theme: {
     breakpoints,
     tokens,
