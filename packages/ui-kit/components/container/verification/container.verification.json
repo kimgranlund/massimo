@@ -10,7 +10,7 @@
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "277fdb8c672d42116c15b142a185b9cdf01be5f24767dfdfd3e2b83ad56b08fc"
+      "sha256": "0e37015342b8cd3b2f2631e0d5f00687013c2d587f15936132e1e1609d5a90b2"
     },
     {
       "path": "components/container/container.manifest.json",
@@ -22,7 +22,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "8d6a9610b95e7c1ca8b9c8a2218692cd5db982e87496e3519d2767018f143942"
+      "sha256": "fa00ea3b6b3be63fafa6e911ab78925012bb47cd017825f55db595e762d02d49"
     }
   ],
   "renderers": {

@@ -90,16 +90,5 @@ export function withNativeTwins(css: Css): Css {
 
 /** Native plumbing the twins need: the input that carries state is invisible but interactive. */
 export const native = {
-  // Select: opt in to customizable select; the inner <button> is the painted trigger.
-  '[data-ui=select] > select, [data-ui=select] > select::picker(select)': { appearance: 'base-select' },
-  // The select's own box wraps the trigger exactly: no intrinsic minimum height or line box.
-  '[data-ui=select] > select': { display: 'block', width: '100%', padding: 0, border: 0, background: 'none', minWidth: 0, minBlockSize: 0, blockSize: 'auto', lineHeight: 0 },
-  '[data-ui=select] > select > [data-part=trigger], [data-ui=select] > select > option': { lineHeight: 'var(--line)' },
-  '[data-ui=select] > select::picker-icon': { display: 'none' },
-  '[data-ui=select] > select > option::checkmark': { display: 'none' },
-  '[data-ui=select] > select > [data-part=trigger]': { width: '100%' },
-  '[data-ui=select] > select::picker(select)': { border: 0, marginBlockStart: 'var(--u)' },
-  // Input: a native text input keeps a minimum line box; pin it to the slot like the web component's editor.
-  '[data-ui=input] > [data-part=control] > input[data-part=contents]': { height: 'var(--slot)' },
 } as Css;
 

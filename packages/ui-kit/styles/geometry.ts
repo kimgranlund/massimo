@@ -16,31 +16,6 @@ const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclu
 export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
-// Slotted hosts (not yet recipes): options, and the input control and select trigger, which are laid out as
-// buttons (1u padding on the host; contents and slots carry the rest). :where() keeps the tag specificity.
-const FIELD_HOSTS = ':where(:is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger])';
-// [data-ui=option] (the React option) also keeps the :is() at attribute specificity, above i[name].
-export const SLOTTED = `:is(ui-option, [data-ui=option], ${FIELD_HOSTS})`;
-const SLOT = ':is([data-part=leading], [data-part=trailing])';
-const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
-const ADORN = ':is([data-part=prefix], [data-part=suffix])';
-
-/**
- * Inline padding of the text run inside `host` (resolveTextRun): each text part gets `bare` at a
- * host edge, `slot` beside a visible leading/trailing slot, and 0.5u beside another visible text
- * part. Web components keep empty parts as [hidden]; React omits them; both work with ~ and :has.
- */
-function textRun(host: string, slot: string, bare: string, base: Record<string, string> = {}, between = 'calc(0.5 * var(--u))') {
-  const T = `${host} > ${TEXT}`;
-  const shown = (part: string) => `${part}:not([hidden])`;
-  return {
-    [T]: { ...base, paddingInlineStart: bare, paddingInlineEnd: bare },
-    [`${host} > ${shown('[data-part=leading]')} ~ ${TEXT}`]: { paddingInlineStart: slot },
-    [`${host} > ${shown(TEXT)} ~ ${TEXT}`]: { paddingInlineStart: between },
-    [`${T}:has(~ ${shown('[data-part=trailing]')})`]: { paddingInlineEnd: slot },
-    [`${T}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: between },
-  };
-}
 
 const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;
 
@@ -83,31 +58,6 @@ export const geometry = defineGlobalStyles({
   // Corner shape for every element that carries a radius: superellipse(k) from the theme,
   // k = 1 (round) by default. Browsers without corner-shape keep plain round corners.
   [`${GEOMETRY_SCOPE.slice(0, -1)}, [data-part])`]: { cornerShape: 'superellipse(var(--ui-corner-shape))' },
-
-  // Construction pattern (resolveTextRun): [leading] [prefix] [contents] [suffix] [trailing].
-  // Slots are at least 6u square; the text parts form one run with 0.5u + 0.5u between them,
-  // 1u beside a slot and 2u at a bare host edge.
-  [`${SLOTTED} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
-  [`${SLOTTED} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
-  [`${SLOTTED} > [data-part=contents]`]: { minWidth: 'var(--slot)' },
-  [`${SLOTTED} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  // Field text (input, select value) fills the row as a block, so it can scroll or ellipsize.
-  [`${FIELD_HOSTS} > [data-part=contents]`]: { display: 'block', flex: '1', minWidth: 0 },
-  ...textRun(SLOTTED, 'var(--u)', 'calc(2 * var(--u))', {
-    display: 'flex', alignItems: 'center', minHeight: 'var(--slot)',
-    paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)',
-  }),
-
-  // Indicators use icon size sm regardless of icon-size: carets, the select chevron and the x
-  // close / remove icon (chip remove, dismiss buttons).
-  [`${SLOT} > :is(i[name^="caret-"], i[name="x"])`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
-
-  // Fill: artwork covers the whole slot, with a radius nested inside the control's.
-  [`:is([icon-size=fill], [data-icon-size=fill]) ${SLOT}`]: {
-    width: 'var(--slot)', height: 'var(--slot)', overflow: 'hidden',
-    borderRadius: 'max(0px, calc(var(--radius) - var(--u)))',
-  },
-  [`:is([icon-size=fill], [data-icon-size=fill]) ${SLOT} > *`]: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' },
 
   // Badge / tag / chip: capped height ladder (see resolveBtg). Overrides the control values
   // on the same element, so --icon and --radius follow automatically. Variables only: the

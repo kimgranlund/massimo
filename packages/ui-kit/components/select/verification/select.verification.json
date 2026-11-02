@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "14482f19c13b7514bd9a6782f7d63f17c009ffb88d916e719d8aa71a77207b65"
+      "sha256": "66cfb5641fa8a2e368e2908dd409772b7a34d1e0d5f46954bade51d8111f8f19"
     },
     {
       "path": "components/listbox/options.ts",
@@ -22,19 +22,27 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "0dfb1b90c1f5174d961e3339663c7f95c36175cfda5f94fc936b7f38c81a05a9"
+      "sha256": "88b46083ce5dec3f835a68a3f5473f02fd78d360e35481a35301eb9849e43c97"
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "47524d230a2f255e02ca26a83c8b431ce912952494dda013a1e87ebf8475e794"
+      "sha256": "d07d48f463ab4ba12f731a9eded96a49c625877a864d36fb7f5148b54f8bf122"
     },
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "8d6a9610b95e7c1ca8b9c8a2218692cd5db982e87496e3519d2767018f143942"
+      "path": "components/select/select.recipe.ts",
+      "sha256": "1665b760f2ff413e1a21f54b84d4846220e7cf7d4f4619b86bb36078acae2984"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "8e61fc57a82deed61255c491c43167df744e2f7b841be63c13c82ecba084d7bd"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -47,6 +55,10 @@
         {
           "command": "node --test test/listbox.test.ts",
           "covers": "navigate, typeahead, selectKeyIntent, placePopup"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -54,7 +66,8 @@
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
-          "node --test test/listbox.test.ts"
+          "node --test test/listbox.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -68,8 +81,8 @@
           "covers": "native select with button trigger, selectedcontent value, rich options, label/description/error wiring"
         },
         {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors and state mapping"
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -77,7 +90,7 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

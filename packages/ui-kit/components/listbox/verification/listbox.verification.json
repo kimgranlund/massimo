@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/listbox/listbox.element.ts",
-      "sha256": "2e8067e7ed3d1070eb1d119f45ec06f0852a9d2b26f9890b770524f28e83f9e6"
+      "sha256": "f80e7b47b94519e553f4d6873fc8341ac644dcc4d17f274b02bf8ef7c9ac900c"
     },
     {
       "path": "components/listbox/option.element.ts",
-      "sha256": "f502007504b18bb2247c668f5139f19663e07a9b0c8305c5f5d570d88ee63cc3"
+      "sha256": "5233edf11371865a873784955fc505432cfef902277d19c8faf879d7bbdaef17"
     },
     {
       "path": "components/listbox/options.ts",
@@ -22,19 +22,27 @@
     },
     {
       "path": "components/listbox/listbox.manifest.json",
-      "sha256": "ff7ebccd28b72940cfe6357f0a05a4208ba8af1c66747032a00092413b3127a8"
+      "sha256": "de43d4735a14f0855b2d6a6e5b0c89d34687d7ad2ce3bd3a4ef47b91f3ae7378"
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "149cd5a46874ebb69ed051d1b6a38815edadfcdd5c8195174ee5b540fe731d7f"
+      "sha256": "ccbe8b0629cc03404bca176a1f0de784ef8f95670349f2b2f00c0a3ea6e764be"
     },
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "8d6a9610b95e7c1ca8b9c8a2218692cd5db982e87496e3519d2767018f143942"
+      "path": "components/listbox/listbox.recipe.ts",
+      "sha256": "cc9c43bff8c2080cf479720501350fe84ca194736d2b03836f8f60d4b8f17501"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "8e61fc57a82deed61255c491c43167df744e2f7b841be63c13c82ecba084d7bd"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -47,6 +55,10 @@
         {
           "command": "node --test test/listbox.test.ts",
           "covers": "navigate and typeahead"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -54,7 +66,8 @@
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
-          "node --test test/listbox.test.ts"
+          "node --test test/listbox.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -68,8 +81,8 @@
           "covers": "ARIA listbox and segmented (role, activedescendant, selection, disabled), options, hidden form input, parts"
         },
         {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors and state mapping"
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -77,7 +90,7 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

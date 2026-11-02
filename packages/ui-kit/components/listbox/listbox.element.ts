@@ -4,6 +4,8 @@ import { UIFormElement, define, signal, type Problem } from '../../core/index.ts
 import { applyAttrs, createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, type Orientation } from '../../dom/index.ts';
 import './option.element.ts';
 import { ensureId, optionList } from './options.ts';
+import { applyRecipe } from '../classes.ts';
+import { listbox, segmented } from '../../styled-system/recipes/index.js';
 
 export class UIListbox extends UIFormElement {
   static properties = {
@@ -51,7 +53,11 @@ export class UIListbox extends UIFormElement {
       orientation: this.orientation, activeId: opts[active]?.id, label: this.label,
       disabled: this.isDisabled, required: this.required, invalid: this.userInvalid,
     }));
+    applyRecipe(this, this.recipe());
   }
+
+  /** The slot recipe's classes (listbox.recipe.ts). */
+  protected recipe(): Record<string, string> { return listbox(); }
 
   formValue() { return this.value || null; }
   resetValue() { this.value = this.#default; }
@@ -104,6 +110,7 @@ export class UIListbox extends UIFormElement {
 
 export class UISegmented extends UIListbox {
   static properties = { ...UIListbox.properties, orientation: { type: String, default: 'horizontal', reflect: true } };
+  protected recipe() { return segmented(); }
 }
 
 define('ui-listbox', UIListbox);

@@ -10,12 +10,8 @@
   "contract": "../../contracts/components.json#/components/input",
   "stateContract": "../../contracts/states.json",
   "styleSource": {
-    "format": "panda-global",
-    "modules": [
-      "../../styles/geometry.ts",
-      "../../styles/defaults.ts",
-      "../../styles/motion.ts"
-    ]
+    "format": "panda-slot-recipe",
+    "module": "./input.recipe.ts"
   },
   "independentLayers": [
     {
@@ -526,8 +522,8 @@
     "html": {
       "status": "in_progress",
       "selectors": {
-        "component:input": "[data-ui=input]",
-        "part:input-control": "[data-ui=input] > [data-part=control]"
+        "component:input": ".ui-input__root",
+        "part:input-control": ".ui-input__control"
       }
     }
   }

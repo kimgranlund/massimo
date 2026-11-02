@@ -73,7 +73,7 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
 const { Listbox, Segmented, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));
 
 test('Listbox, Segmented, Option: ARIA listboxes like the web components, form value in a hidden input', () => {
-  const lb = html(h(Listbox, { label: 'Folder', name: 'folder', defaultValue: 'sent' }, h(Option, { value: 'inbox', suffix: '12' }, 'Inbox'), h(Option, { value: 'sent' }, 'Sent'), h(Option, { value: 'spam', disabled: true }, 'Spam')));
+  const lb = bare(h(Listbox, { label: 'Folder', name: 'folder', defaultValue: 'sent' }, h(Option, { value: 'inbox', suffix: '12' }, 'Inbox'), h(Option, { value: 'sent' }, 'Sent'), h(Option, { value: 'spam', disabled: true }, 'Spam')));
   assert.match(lb, /^<div data-ui="listbox" role="listbox" aria-label="Folder" tabindex="0">/);
   const opt = (v: string) => lb.match(new RegExp(`<div data-ui="option" role="option" id="[^"]+" aria-selected="[a-z]+"[^>]*>(?=(?:(?!</div>).)*${v === 'inbox' ? 'Inbox' : v === 'sent' ? 'Sent' : 'Spam'})`))?.[0] ?? '';
   assert.ok(opt('sent').includes('aria-selected="true"'), opt('sent'));
@@ -81,8 +81,8 @@ test('Listbox, Segmented, Option: ARIA listboxes like the web components, form v
   assert.ok(opt('spam').includes('aria-disabled="true"'));
   assert.match(lb, /<span data-part="contents">Inbox<\/span><span data-part="suffix">12<\/span>/);
   assert.match(lb, /<input type="hidden" name="folder" value="sent"\/>/);
-  assert.match(html(h(Segmented, { label: 'View' }, h(Option, { value: 'grid' }, 'Grid'))), /data-ui="segmented" role="listbox" aria-orientation="horizontal" aria-label="View"/);
-  assert.throws(() => html(h(Option, { value: 'x' }, 'x')), /inside <Listbox>/);
+  assert.match(bare(h(Segmented, { label: 'View' }, h(Option, { value: 'grid' }, 'Grid'))), /data-ui="segmented" role="listbox" aria-orientation="horizontal" aria-label="View"/);
+  assert.throws(() => bare(h(Option, { value: 'x' }, 'x')), /inside <Listbox>/);
   noCustom(lb);
 });
 
@@ -102,13 +102,13 @@ test('Swiper: carousel region, scroll-snap viewport of slides, native paddle and
 const { Select, SelectOption } = await loadTsx(new URL('../components/select/select.react.tsx', import.meta.url));
 
 test('Select: native <select> with a <button> trigger, <selectedcontent> value and rich options', () => {
-  const s = html(h(Select, { label: 'Role', name: 'role', defaultValue: 'eng', required: true, prefix: 'As' }, h(SelectOption, { value: 'design', leading: h('i', { name: 'pen' }) }, 'Designer'), h(SelectOption, { value: 'eng' }, 'Engineer')));
+  const s = bare(h(Select, { label: 'Role', name: 'role', defaultValue: 'eng', required: true, prefix: 'As' }, h(SelectOption, { value: 'design', leading: h('i', { name: 'pen' }) }, 'Designer'), h(SelectOption, { value: 'eng' }, 'Engineer')));
   assert.match(s, /^<div data-ui="select"><label data-part="label" id="[^"]+" for="[^"]+">Role<\/label><select /);
   assert.match(s, /<button data-part="trigger" type="button"><span data-part="prefix">As<\/span><selectedcontent data-part="contents"><\/selectedcontent><span data-part="trailing" aria-hidden="true"><i name="caret-down"><\/i><\/span><\/button>/);
   assert.match(s, /<option data-ui="option" value="design"><span data-part="leading"><i name="pen"><\/i><\/span><span data-part="contents">Designer<\/span><\/option><option data-ui="option" value="eng" selected="">/);
   const sel = s.match(/<select [^>]*>/)?.[0] ?? '';
   for (const a of ['name="role"', 'required=""']) assert.ok(sel.includes(a), `${a} in ${sel}`);
-  assert.match(html(h(Select, { label: 'X', error: 'Pick one' }, h(SelectOption, { value: 'a' }, 'A'))), /data-invalid="true".*<span data-part="error"[^>]*>Pick one<\/span>/);
+  assert.match(bare(h(Select, { label: 'X', error: 'Pick one' }, h(SelectOption, { value: 'a' }, 'A'))), /data-invalid="true".*<span data-part="error"[^>]*>Pick one<\/span>/);
   noCustom(s);
 });
 
@@ -121,7 +121,7 @@ test('Button and Input: native <button> and <input> with the construction patter
   assert.match(b, /aria-busy="true"/);
   assert.match(b, /<span data-part="leading" class="ui-button__leading[^"]*"><i name="plus"><\/i><\/span><span data-part="contents" class="ui-button__contents[^"]*">Add<\/span><span data-part="suffix" class="ui-button__suffix[^"]*">⌘N<\/span>/);
   assert.match(html(h(Button, { variant: 'primary' }, 'Save')), /class="ui-button__root ui-button__root--variant_primary"/);
-  const i = html(h(Input, { label: 'Price', name: 'price', defaultValue: '40', prefix: '$', suffix: 'USD', description: 'Before tax' }));
+  const i = bare(h(Input, { label: 'Price', name: 'price', defaultValue: '40', prefix: '$', suffix: 'USD', description: 'Before tax' }));
   assert.match(i, /^<div data-ui="input"><label data-part="label"/);
   assert.match(i, /<div data-part="control"><span data-part="prefix">\$<\/span><input data-part="contents"[^>]*name="price"[^>]*value="40"[^>]*\/><span data-part="suffix">USD<\/span><\/div>/);
   assert.match(i, /<p data-part="description"[^>]*>Before tax<\/p>/);
@@ -129,13 +129,26 @@ test('Button and Input: native <button> and <input> with the construction patter
 });
 
 test('hideLabel keeps the label in the markup (accessible name) and marks the host for visually hidden styling', async () => {
-  const { defaults } = await import('../styles/defaults.ts');
-  const sel = Object.keys(defaults).find((k) => k.includes('[hide-label]') && k.includes('[data-hide-label]'));
-  assert.ok(sel, 'hide-label rule exists for both renderers');
-  assert.equal((defaults as any)[sel!].clipPath, 'inset(50%)');
-  for (const out of [html(h(Input, { label: 'Search', hideLabel: true })), html(h(Select, { label: 'Role', hideLabel: true }, h(SelectOption, { value: 'a' }, 'A')))]) {
+  const { input } = await import('../components/input/input.recipe.ts');
+  const { select } = await import('../components/select/select.recipe.ts');
+  for (const recipe of [input, select]) {
+    const sel = Object.keys(recipe.base!.root!).find((k) => k.includes('[hide-label]') && k.includes('[data-hide-label]'));
+    assert.ok(sel, 'hide-label rule exists for both renderers');
+    assert.equal((recipe.base!.root as any)[sel!].clipPath, 'inset(50%)');
+  }
+  for (const out of [bare(h(Input, { label: 'Search', hideLabel: true })), bare(h(Select, { label: 'Role', hideLabel: true }, h(SelectOption, { value: 'a' }, 'A')))]) {
     assert.match(out, /data-hide-label="true"/);
     assert.match(out, /<label data-part="label"[^>]*>(Search|Role)<\/label>/);
   }
-  assert.doesNotMatch(html(h(Input, { label: 'Search' })), /data-hide-label/);
+  assert.doesNotMatch(bare(h(Input, { label: 'Search' })), /data-hide-label/);
+});
+
+test('Input, Select, Listbox and Option carry their slot recipe classes on host and parts', () => {
+  const i = html(h(Input, { label: 'Price', prefix: '$' }));
+  assert.match(i, /^<div data-ui="input" class="ui-input__root"><label data-part="label" class="ui-input__label"[^>]*>Price<\/label><div data-part="control" class="ui-input__control"><span data-part="prefix" class="ui-input__prefix">\$<\/span><input data-part="contents" class="ui-input__contents"/);
+  const s = html(h(Select, { label: 'Role' }, h(SelectOption, { value: 'a' }, 'A')));
+  assert.match(s, /class="ui-select__root".*<button data-part="trigger" type="button" class="ui-select__trigger">.*<option class="ui-option__root" data-ui="option"/);
+  const l = html(h(Listbox, { label: 'L' }, h(Option, { value: 'a' }, 'A')));
+  assert.match(l, /class="ui-listbox__root".*class="ui-option__root" data-ui="option".*<span data-part="contents" class="ui-option__contents">A<\/span>/);
+  assert.match(html(h(Segmented, { label: 'S' }, h(Option, { value: 'a' }, 'A'))), /class="ui-segmented__root"/);
 });

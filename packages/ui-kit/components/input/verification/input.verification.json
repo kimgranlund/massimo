@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/input/input.element.ts",
-      "sha256": "18bcf41eb87bcd463d38aa8adcb6a1b4dad14c192f6db78f3d73872a05f927bf"
+      "sha256": "b1822167f0251dbd58c4dc90203e5a7a48743e937304a61306d91093e2931039"
     },
     {
       "path": "dom/text-entry.ts",
@@ -22,15 +22,23 @@
     },
     {
       "path": "components/input/input.manifest.json",
-      "sha256": "0e46398c9279e0f26b33a8961e1fbf5c590c2cb217439caa5e22f13a666986a5"
+      "sha256": "a8df365b4e9109e98c4a329965b82358c9b47ef1b746f9a1818922782e2dbd94"
     },
     {
       "path": "components/input/input.react.tsx",
-      "sha256": "9c62d2d913fe1ef2cd468e4bcdbc5a434b20066516057d19156a6a7df5e25c46"
+      "sha256": "fb16f2f7315743aa839b83d0abe727305fc789934ce57535aae3a15fefe8a34e"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "8d6a9610b95e7c1ca8b9c8a2218692cd5db982e87496e3519d2767018f143942"
+      "path": "components/input/input.recipe.ts",
+      "sha256": "1134ec046764d494662f1c9a4a44a3bf337b46333d50d5a69731b952dbb6eda3"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "8e61fc57a82deed61255c491c43167df744e2f7b841be63c13c82ecba084d7bd"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -39,13 +47,18 @@
         {
           "command": "node --test --test-name-pattern=\"ui-input\" test/components.test.ts",
           "covers": "no native elements, ARIA wiring, typing and form value, error timing, email/minlength/pattern, Enter submits, reset, password"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"ui-input\" test/components.test.ts"
+          "node --test --test-name-pattern=\"ui-input\" test/components.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -57,13 +70,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -8,6 +8,8 @@ import { useId, type ReactNode, type SelectHTMLAttributes } from 'react';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { fieldAttrs, toReactProps } from '../../dom/index.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
+import { cx } from '../../styled-system/css/cx.js';
+import { select as selectRecipe, option } from '../../styled-system/recipes/index.js';
 
 export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix'> {
   label?: string;
@@ -28,21 +30,22 @@ export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement
 export function Select({ label, hideLabel, description, error, leading, prefix, suffix, gap, size, className, style, id, required, disabled, children, ...select }: SelectProps) {
   const auto = useId();
   const a = fieldAttrs({ id: id ?? auto, hasLabel: !!label, hasDescription: !!description, error, required, disabled, native: true });
+  const c = selectRecipe();
   return (
-    <div data-ui="select" data-size={size} data-hide-label={hideLabel || undefined} data-invalid={error ? true : undefined} className={className} style={style} {...(gap !== undefined ? { gap: String(gap) } : {})}>
-      {label && <label data-part="label" {...toReactProps(a.label)}>{label}</label>}
+    <div data-ui="select" data-size={size} data-hide-label={hideLabel || undefined} data-invalid={error ? true : undefined} className={cx(c.root, className)} style={style} {...(gap !== undefined ? { gap: String(gap) } : {})}>
+      {label && <label data-part="label" className={c.label} {...toReactProps(a.label)}>{label}</label>}
       <select {...toReactProps(a.control)} required={required} disabled={disabled} {...select}>
-        <button data-part="trigger" type="button">
-          {leading != null && <span data-part="leading">{leading}</span>}
-          {prefix != null && <span data-part="prefix">{prefix}</span>}
-          <selectedcontent data-part="contents" />
-          {suffix != null && <span data-part="suffix">{suffix}</span>}
-          <span data-part="trailing" aria-hidden="true"><i name="caret-down" /></span>
+        <button data-part="trigger" type="button" className={c.trigger}>
+          {leading != null && <span data-part="leading" className={c.leading}>{leading}</span>}
+          {prefix != null && <span data-part="prefix" className={c.prefix}>{prefix}</span>}
+          <selectedcontent data-part="contents" className={c.contents} />
+          {suffix != null && <span data-part="suffix" className={c.suffix}>{suffix}</span>}
+          <span data-part="trailing" aria-hidden="true" className={c.trailing}><i name="caret-down" /></span>
         </button>
         {children}
       </select>
-      {description && <span data-part="description" {...toReactProps(a.description)}>{description}</span>}
-      {error && <span data-part="error" {...toReactProps(a.error)}>{error}</span>}
+      {description && <span data-part="description" className={c.description} {...toReactProps(a.description)}>{description}</span>}
+      {error && <span data-part="error" className={c.error} {...toReactProps(a.error)}>{error}</span>}
     </div>
   );
 }
@@ -55,9 +58,10 @@ export interface SelectOptionProps extends PartProps {
 }
 
 export function SelectOption({ value, disabled, iconSize, leading, prefix, suffix, trailing, children }: SelectOptionProps) {
+  const c = option();
   return (
-    <option data-ui="option" data-icon-size={iconSize} value={value} disabled={disabled}>
-      <Parts {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
+    <option className={c.root} data-ui="option" data-icon-size={iconSize} value={value} disabled={disabled}>
+      <Parts classes={c} {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
     </option>
   );
 }
