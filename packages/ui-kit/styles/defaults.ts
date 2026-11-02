@@ -21,7 +21,8 @@ const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-ra
 const LIST = ':is(ui-listbox, ui-segmented, ui-palette)';
 // A field state on the host itself (select trigger) or on its text part (input contents).
 const HAS = (attr: string) => `${attr}, :has(> ${attr})`;
-const CRITICAL_TINT = (pct: number) => `color-mix(in oklch, var(--colors-critical-solid) ${pct}%, var(--colors-bg-muted))`;
+// oklab, not oklch: a hue mix with the blue-grey neutral would swing the red through blue.
+const CRITICAL_TINT = (pct: number) => `color-mix(in oklab, var(--colors-critical-solid) ${pct}%, var(--colors-bg-muted))`;
 
 export const defaults = defineGlobalStyles({
   '[hidden]': { display: 'none !important' },
