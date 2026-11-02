@@ -73,3 +73,22 @@ test('web components carry the recipe classes on host and parts; variant classes
   assert.ok(chip.querySelector('[data-remove]').classList.contains('ui-chip__remove'));
   chip.remove();
 });
+
+test('CSS-only container tags get their recipes as tag rules: base and default variant on the tag, other variants on [attr=value]', async () => {
+  const { card, group, containerTags } = await import('../components/container/container.recipe.ts');
+  const { tagRules } = await import('../components/recipe-parts.ts');
+  const tags = Object.keys(containerTags);
+  for (const t of ['ui-group', 'ui-collection', 'ui-card', 'ui-panel', 'ui-region', 'ui-page', 'ui-card[padding=xs]', 'ui-card[padding=sm]', 'ui-card[padding=lg]', 'ui-card[padding=xl]']) assert.ok(tags.includes(t), t);
+  assert.ok(!tags.includes('ui-card[padding=md]'), 'the default variant is on the bare tag');
+  assert.equal(containerTags['ui-card']['--cp'], 'var(--ui-pad-card-md)');
+  assert.equal(containerTags['ui-card'].padding, (card.base as any).root.padding, 'same style objects as the recipe');
+  assert.deepEqual(containerTags['ui-card[padding=sm]'], (card.variants as any).padding.sm.root);
+  assert.deepEqual(containerTags['ui-group'], (group.base as any).root);
+  // In the preset's global CSS; only root-only recipes can be aliased.
+  assert.equal((uiKitPreset as any).globalCss['ui-card[padding=xl]']['--cp'], 'var(--ui-pad-card-xl)');
+  assert.throws(() => tagRules('ui-x', { slots: ['root', 'label'] }), /root-only/);
+});
+
+test('--ui-gap does not inherit, so the gap attribute applies to its own element only', () => {
+  assert.deepEqual((uiKitPreset as any).globalVars['--ui-gap'], { syntax: '*', inherits: false });
+});

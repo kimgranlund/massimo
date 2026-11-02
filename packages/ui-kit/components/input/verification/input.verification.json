@@ -27,10 +27,6 @@
     {
       "path": "components/input/input.react.tsx",
       "sha256": "fb16f2f7315743aa839b83d0abe727305fc789934ce57535aae3a15fefe8a34e"
-    },
-    {
-      "path": "styles/native.ts",
-      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {

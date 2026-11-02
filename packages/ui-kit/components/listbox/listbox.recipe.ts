@@ -1,9 +1,9 @@
 // Slot recipes for <ui-listbox>, <ui-segmented>, <ui-option> and the React Listbox, Segmented,
-// Option (and the native <option>s of the React Select). Lists are composites: their padding, gap,
-// border and radius, and each option's height, inset and radius, are the composite geometry in
-// styles/geometry.ts, which these recipes leave alone.
+// Option (and the native <option>s of the React Select). Lists are composites (the 0.5u wrapper
+// level): their padding, gap, border and radius, and each option's height, inset and radius, are the
+// composite geometry (recipe-parts.ts `composite`, `compositeOption`).
 import { defineSlotRecipe } from '@pandacss/dev';
-import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, constructionPattern, t } from '../recipe-parts.ts';
+import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, composite, compositeOption, constructionPattern, mergeStyles, t } from '../recipe-parts.ts';
 
 // Option state: ARIA on the web component and the React option; a native <option> in the React
 // Select uses :checked, :disabled and :focus.
@@ -12,16 +12,17 @@ const ACTIVE = ':is([data-active], :focus)';
 const ENABLED = ':not([aria-disabled=true], :disabled)';
 const IN_LIST = ':is(ui-listbox, ui-segmented, [data-ui=listbox], [data-ui=segmented]) > &';
 const IN_SEGMENTED = ':is(ui-segmented, [data-ui=segmented]) > &';
+// Any composite: a list, a segmented control, the web component's select popup or the native select.
+const IN_COMPOSITE = ':is(ui-listbox, ui-segmented, [data-ui=listbox], [data-ui=segmented], ui-select > [data-part=popup], [data-ui=select] > select) > &';
 
 /** A list host: disabled fades and blocks its options; invalid tints the fill. */
 const list = (extra: Record<string, any>) => ({
-  root: {
+  root: mergeStyles(composite, {
     fontFamily: UI_FONT,
     _disabled: { opacity: 0.5, cursor: 'not-allowed', '& > *': { cursor: 'not-allowed', pointerEvents: 'none' } },
     _userInvalid: { bg: CRITICAL_TINT(14) },
     [FORCED]: { ...FORCED_EDGE, _disabled: { color: 'GrayText' } },
-    ...extra,
-  },
+  }, extra),
 });
 
 export const listbox = defineSlotRecipe({
@@ -35,7 +36,11 @@ export const segmented = defineSlotRecipe({
   className: 'ui-segmented',
   description: 'Segmented control (ui-segmented, React Segmented).',
   slots: ['root'],
-  base: list({ display: 'inline-flex', bg: 'bg.control', borderColor: 'transparent' }),
+  base: list({
+    display: 'inline-flex', bg: 'bg.control', borderColor: 'transparent',
+    // One row: the radius is capped at half the height (8u).
+    '--cr': 'min(calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))',
+  }),
 });
 
 export const option = defineSlotRecipe({
@@ -51,6 +56,7 @@ export const option = defineSlotRecipe({
         text: { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)' },
       }),
       '& > [data-part=contents]': { minWidth: 'var(--slot)' },
+      [IN_COMPOSITE]: compositeOption,
       // Hover, press and the keyboard-active option layer the translucent control fill over the list
       // or segmented track, so they read on any surface.
       [`&${ACTIVE}`]: { bg: 'bg.control' },

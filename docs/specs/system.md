@@ -25,7 +25,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `tokens/motion/` | SwiftUI-style springs → CSS `linear()` easings and settle durations | [motion](motion.md) |
 | `tokens/themes/` | theme parameters and saved themes | [theming](theming.md) |
 | `icons/` | `<i name>` runtime, icon sets, SVG sanitizer | [icons](icons.md) |
-| `styles/` | reset, geometry CSS, defaults (states), state conditions (`conditions.ts`), React native twins (`native.ts`), motion, FOUC guard, page patterns | [geometry](geometry.md), [components](components.md), [motion](motion.md), [theming](theming.md#preset) |
+| `styles/` | reset, geometry CSS, defaults (states), state conditions (`conditions.ts`), motion, FOUC guard, page patterns | [geometry](geometry.md), [components](components.md), [motion](motion.md), [theming](theming.md#preset) |
 | `preset.ts` | the PandaCSS preset assembling all of the above | [theming](theming.md) |
 | `scripts/` | generators: `geometry:csv`, `tokens:dtcg`, `spectrum:defaults`, `manifests` (mirrored manifest fields), `registry:graph`; the `registry` CLI; `verification` | below, [registry](registry.md) |
 

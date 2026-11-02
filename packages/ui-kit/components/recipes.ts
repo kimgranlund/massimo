@@ -11,6 +11,7 @@ import { input } from './input/input.recipe.ts';
 import { select } from './select/select.recipe.ts';
 import { swiper } from './swiper/swiper.recipe.ts';
 import { image } from './image/image.recipe.ts';
+import { group, collection, card, panel, region, page as pageRecipe } from './container/container.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe };
 

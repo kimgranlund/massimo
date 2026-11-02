@@ -10,19 +10,23 @@
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "1e6f6dcc80c1cc910092040bcb7b03c4b5bcad495952d2643e4e7de508c15ebf"
+      "sha256": "dde04e1a0a7de7fa2dbefedd2a7df5b2ec07cc6ec83226c7d8d97700e466f1cb"
     },
     {
       "path": "components/container/container.manifest.json",
-      "sha256": "e701b8dad3b70149228970fb5c2f8e0b18797fda79813f74ed8712999ac7369e"
+      "sha256": "9086f25bdb8643e668bd8929ed2c0a0ec5a68f56f119ea66559b52bad61898f3"
     },
     {
       "path": "components/container/container.react.tsx",
-      "sha256": "c20f12a7595caccb537ed97db89b4778ecda9114c38a9126f1d0fd48cc488f9d"
+      "sha256": "4dd71f0a9a938b8e63f552d26ffeb7e6305f19f71ee352fe286b4a3c364108f2"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
+      "path": "components/container/container.recipe.ts",
+      "sha256": "2c03ed52a4fa1cdeb20594bf37053d51ca85ddb48252d2c07e3037662b260c56"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "dfc4d582971fb137333fa67d6cc0cf9d495b8bf3e6ebe9475310f439122c0bdf"
     }
   ],
   "renderers": {
@@ -31,13 +35,18 @@
         {
           "command": "node --test test/geometry.test.ts",
           "covers": "container padding, gap and radius numbers"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts; the CSS-only tags get the recipes as tag rules; --ui-gap does not inherit"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/geometry.test.ts"
+          "node --test test/geometry.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -49,18 +58,13 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
-        },
-        {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors and state mapping"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/react.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
