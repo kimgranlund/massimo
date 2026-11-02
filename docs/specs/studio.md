@@ -18,7 +18,6 @@
 - **Tabs** (segmented, persisted in localStorage `studio:panel`): Geometry, Colors, Typography, Motion. The panel edits tokens only: switching a tab never changes the page (the page is the URL hash alone).
 - **Header:** the title, then the tabs.
 - **Geometry:** unit, border, corner radius, corner shape; icon set; a padding menu and a gap menu (in u, with px) for each container type: composite, group, collection, card-xs … card-xl, panel, region, page.
-- **Motion** (`studio/MotionPanel.tsx`): global scale and bounce, each spring's duration and bounce, and per intent the spring it runs (a select). The Motion page (`pages/Motion.tsx`) plots each spring's live curve, replays a thumb per spring, maps each intent to where components use it, and replays component demos.
 - **Colors:** Random, role groups (brand, feedback, data 1–6), hue set (Unique or Radix) and first hue, chroma (requested, base %, falloff, hue balance), tone (automatic peak, dark and light endpoints), neutral tint, scale, gamut. Generation runs on the main thread, debounced (~300ms per run). Role selects are grouped Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6, each option and the trigger led by a swatch of the family's step 9; **Random** reassigns the brand roles (the neutral included) and data 1–6 from the generated families, and feedback roles keep their colors.
 - **Typography:** unit, ratio (named ratios), rhythm (none, ½u, 1u); a stack menu per face (sans, serif, mono, display) and a face menu per voice (display, heading, body, ui, numeric, code). Copy JSON carries `typography.faces` and `typography.voices`.
 - **Motion:** `MotionPanel` (`src/studio/MotionPanel.tsx`) owns every motion control (duration scale, bounce, springs, intents); no other tab shows motion.
@@ -36,7 +35,7 @@
 - **Colors:** Roles overview, Color in context, Hue and chroma, Ramps.
   - **Color in context:** Brand (primary as material, secondary as punctuation, the primary ramp as a vertical strip, ink and paper, tint and emphasis) and Interface (a workspace of cards with actions, form, library, figures, progress, a chart, action states and feedback), all colored from the active roles and scheme. Every color there comes from role tokens (static classes); callouts and the chart are canvas markup, not kit components.
   - **Hue and chroma:** summary line (T*, C* and its limiting accent, gamut, primary Lc 11/12 light and dark, generation time), a hue-quadrature chart and a max-chroma-per-tone chart with T* and C*; then every family's light and dark ramps.
-- **Motion** (`pages/Motion.tsx`): every spring and intent the kit supports, demonstrated live.
+- **Motion** (`pages/Motion.tsx`): plots each spring's live curve over the exact spring, replays a thumb per spring, maps each intent to its current spring and where components use it, and replays component demos (switch, radio, select popup, chip, button, progress, swiper); notes when reduced motion is on.
 - Shared pieces (`Page`, `Section`, `Row`, `Divider`, common styles, sample images) are in `src/pages/shared.tsx`. Page layouts use container queries on the canvas (`[data-canvas]` is the `canvas` container; 40rem and 64rem), not viewport breakpoints, since the panel takes part of the viewport. Below the md breakpoint the panel stacks above the content column.
 
 ## Checks
