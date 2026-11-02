@@ -220,7 +220,7 @@
           "value": 10.878,
           "unit": "px"
         },
-        "fontWeight": 400,
+        "fontWeight": 500,
         "letterSpacing": {
           "value": 0.87,
           "unit": "px"
@@ -803,7 +803,7 @@
           "value": 13.5,
           "unit": "px"
         },
-        "$description": "group-kicker · line height · voice ui, weight 400, tracking 0.08em, uppercase",
+        "$description": "group-kicker · line height · voice ui, weight 500, tracking 0.08em, uppercase",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.2 / u) × u",
           "com.massimo.status": "implemented",

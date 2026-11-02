@@ -33,7 +33,7 @@ export const TYPE_ROLES = {
   'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02 },
   'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01 },
   'section-kicker': { label: 'Kicker · Section', voice: 'ui', step: 0, lh: 1.2, weight: 700, tracking: 0.1, upper: true },
-  'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 400, tracking: 0.08, upper: true },
+  'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 500, tracking: 0.08, upper: true },
   'body-large':    { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0 },
   'body':          { label: 'Body',            voice: 'body', step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
   'caption':       { label: 'Caption',         voice: 'body', u: 3,     lh: 1.45, weight: 400, tracking: 0 },
