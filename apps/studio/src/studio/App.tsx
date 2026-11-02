@@ -8,7 +8,10 @@ import { listen, post } from '../protocol.ts';
 import { STUDIO_ICON_SETS } from '../icons.ts';
 import * as s from './styles.ts';
 
-const NAMES = Object.keys(PARAMS) as ParamName[];
+// Color sliders are hidden from the panel; those parameters keep their defaults (or a loaded
+// theme's values) and still exist in the kit.
+const HIDDEN: ReadonlySet<string> = new Set(['accent-hue', 'accent-chroma', 'neutral-hue', 'neutral-chroma', 'danger-hue']);
+const NAMES = (Object.keys(PARAMS) as ParamName[]).filter((k) => !HIDDEN.has(k));
 
 export function App() {
   const frame = useRef<HTMLIFrameElement>(null);
