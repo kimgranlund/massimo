@@ -973,6 +973,16 @@
         "component:switch": "UISwitch"
       },
       "verification": "./verification/choice.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./choice.react.tsx",
+      "exports": {
+        "component:checkbox": "Checkbox",
+        "component:radio": "Radio",
+        "component:switch": "Switch"
+      },
+      "verification": "./verification/choice.verification.json#/renderers/react"
     }
   }
 }

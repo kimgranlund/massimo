@@ -14,7 +14,15 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "1370be73d422dcc5e4569b839d2a353453cd67486d45d59a97ccd62cd6e7953c"
+      "sha256": "8bbe0248ded6102e5bd09d2f9286a1fddb2f075119c1a9c88521a73fac010e80"
+    },
+    {
+      "path": "components/range/range.react.tsx",
+      "sha256": "c2c92aba7418e43a03f6cef9a50b0ed3905213611c179b0af9348808bcc32f01"
+    },
+    {
+      "path": "styles/native.ts",
+      "sha256": "cf3c4af78c1a9b4749f74c10ca7963da1d1fcdd81247788b38897b62930372a2"
     }
   ],
   "renderers": {
@@ -35,9 +43,33 @@
           "node": "v26.13.0"
         }
       }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native input/progress inside a data-ui host, construction-pattern parts, form names and values, no custom elements"
+        },
+        {
+          "command": "node --test test/native.test.ts",
+          "covers": "twin selectors map ui-* rules and ARIA state hooks to the native input"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts",
+          "node --test test/native.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
     }
   },
   "limitations": [
-    "The source list is the direct sources, not every transitive dependency."
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": [])."
   ]
 }

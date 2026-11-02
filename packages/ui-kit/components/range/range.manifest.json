@@ -588,6 +588,15 @@
         "component:progress": "UIProgress"
       },
       "verification": "./verification/range.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./range.react.tsx",
+      "exports": {
+        "component:range": "Range",
+        "component:progress": "Progress"
+      },
+      "verification": "./verification/range.verification.json#/renderers/react"
     }
   }
 }

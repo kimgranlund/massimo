@@ -34,3 +34,5 @@
 ## Checks
 
 `/geometry-check.html` renders 44 configurations and compares 102 measured lengths each with the resolver (4488 in total), including every type role's size and line height; `"fails": []` means CSS and resolver agree.
+
+Browser checks: `/geometry-check.html` (rendered CSS against the resolver) and `/react-check.html` (each native React renderer against its web component at five sizes); both print `"fails": []` when they match.

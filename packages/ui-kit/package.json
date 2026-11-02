@@ -26,7 +26,9 @@
     "./components/swiper/element": "./components/swiper/swiper.element.ts",
     "./components/image/element": "./components/image/image.element.ts",
     "./spectrum": "./tokens/colors/spectrum/index.ts",
-    "./dtcg/*": "./tokens/dtcg/*"
+    "./dtcg/*": "./tokens/dtcg/*",
+    "./components/choice/react": "./components/choice/choice.react.tsx",
+    "./components/range/react": "./components/range/range.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",
@@ -53,6 +55,9 @@
   "devDependencies": {
     "acorn": "^8.19.0",
     "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1"
+    "ajv-formats": "^3.0.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "vite": "^8.3.5"
   }
 }
