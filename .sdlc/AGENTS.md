@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:73a3539ad8e8 -->
+<!-- sdlc:managed:start v1 sha256:df543e87f482 -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -31,8 +31,7 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
   - T-0029 W5 · Slider: two-thumb range (slider-range-pair)
   - T-0030 W5 · Toggle Group: multiple selection (toggle-group-multiple)
 - ready: 0
-- claimed: 11
-  - T-0001 W1 · Floating layer foundation: positioner, dismiss layer, focus scope (floating-layer-foundation), claimed by claude-live 2026-11-02
+- claimed: 10
   - T-0002 W1 · Separator (separator), claimed by claude-live 2026-11-02
   - T-0003 W1 · Avatar (avatar), claimed by claude-live 2026-11-02
   - T-0004 W1 · Meter (meter), claimed by claude-live 2026-11-02
@@ -45,7 +44,7 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
   - T-0022 W4 · Tabs (tabs), claimed by claude-live 2026-11-02
 - paused: 0
 - blocked: 0
-- done: 0
+- done: 1
 - dropped: 0
 
 ## Procedures
