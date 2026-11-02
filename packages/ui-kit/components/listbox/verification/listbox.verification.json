@@ -31,6 +31,14 @@
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
     }
   ],
   "renderers": {
@@ -43,6 +51,10 @@
         {
           "command": "node --test test/listbox.test.ts",
           "covers": "navigate and typeahead"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -62,6 +74,10 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "ARIA listbox and segmented (role, activedescendant, selection, disabled), options, hidden form input, parts"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {

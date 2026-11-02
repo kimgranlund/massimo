@@ -556,7 +556,12 @@
         "disabled",
         "invalid",
         "selected",
-        "aria states"
+        "aria states",
+        "data attributes",
+        "base ui",
+        "highlighted",
+        "dirty",
+        "touched"
       ]
     },
     "foundation:typography": {
@@ -942,7 +947,9 @@
         "states",
         "keyboard",
         "checked",
-        "disabled"
+        "disabled",
+        "data attributes",
+        "base ui"
       ]
     },
     "tokens:container-ladder": {

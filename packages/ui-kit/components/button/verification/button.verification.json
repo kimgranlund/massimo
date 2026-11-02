@@ -23,6 +23,10 @@
     {
       "path": "components/button/button.react.tsx",
       "sha256": "bec52e2a8d9236b9af1a38dff22d6ada797c95131145b6275060b4f79af1eee2"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
     }
   ],
   "renderers": {
@@ -31,6 +35,10 @@
         {
           "command": "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
           "covers": "role, focus, Enter/Space activation, disabled and fieldset blocking, slot sorting"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -49,6 +57,10 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {

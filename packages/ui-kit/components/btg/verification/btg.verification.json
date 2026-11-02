@@ -27,6 +27,10 @@
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
     }
   ],
   "renderers": {
@@ -35,6 +39,10 @@
         {
           "command": "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
           "covers": "slots, badge text only, selectable toggling, removable gesture and focus move"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -53,6 +61,10 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {

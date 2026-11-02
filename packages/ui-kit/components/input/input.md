@@ -19,7 +19,7 @@ React: `<Input label="Price" prefix="$" suffix="USD" />` renders a native `<inpu
 
 ## Validation timing
 
-Built-in problems (required, email, minlength, pattern) set validity at once but show only after blur or a blocked submit (`data-user-invalid`). `error` is shown immediately. `reportValidity()` reveals the current problem.
+Built-in problems (required, email, minlength, pattern) set validity at once but show only after blur or a blocked submit (`data-invalid`, with `data-touched` after a blur). `error` is shown immediately. `reportValidity()` reveals the current problem.
 
 ## Anatomy
 
@@ -39,6 +39,16 @@ Icons sit in leading/trailing slots (6u on controls); prefix and suffix are shor
 | Element | Keys | Action |
 |---|---|---|
 | `ui-input` | Enter | request submit of the owning form |
+
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+| Element | Attributes |
+|---|---|
+| `ui-input` / Input (host) | field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused`; `data-readonly` |
+
+The editor's own `data-placeholder` is its placeholder text (drawn with `attr()`), not a state.
 
 ## Geometry and appearance
 

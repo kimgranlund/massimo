@@ -267,7 +267,7 @@
     "states": {
       "id": "foundation:states",
       "title": "States",
-      "summary": "Every interaction and data state keyed on ARIA or data-* attributes; the Panda conditions (styles/conditions.ts) match both renderers and each component recipe styles its states.",
+      "summary": "Every interaction and data state as a data-* attribute with a Base UI name, set on the same hosts by both renderers (ARIA stays for semantics); the Panda conditions (styles/conditions.ts) key on them and each component recipe styles its states.",
       "documentation": "../../docs/specs/components.md#states",
       "authority": [
         {
@@ -286,7 +286,12 @@
         "disabled",
         "invalid",
         "selected",
-        "aria states"
+        "aria states",
+        "data attributes",
+        "base ui",
+        "highlighted",
+        "dirty",
+        "touched"
       ]
     }
   }

@@ -5,7 +5,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 ## Foundations
 
 - `UIElement` (`core/element.ts`): `static properties` become signal-backed properties with attribute parsing and optional reflection; one render effect per element (`template()` then `update()`); `connected()` / `disconnected()` hooks. Use `declare` for typed props.
-- `UIFormElement` (`core/form-element.ts`): form association through ElementInternals: `name`, value (`formValue()`), validity (`validate()`), `form`, `labels`, `checkValidity` / `reportValidity` / `setCustomValidity`, reset and restore, disabled by an ancestor `<fieldset>` (`isDisabled`). Errors show only after interaction or a blocked submit (`userInvalid`, `data-user-invalid`); author `error` shows at once.
+- `UIFormElement` (`core/form-element.ts`): form association through ElementInternals: `name`, value (`formValue()`), validity (`validate()`), `form`, `labels`, `checkValidity` / `reportValidity` / `setCustomValidity`, reset and restore, disabled by an ancestor `<fieldset>` (`isDisabled`). Errors show only after interaction or a blocked submit (`userInvalid`); author `error` shows at once. The host carries the field state as data-* ([state attributes](#state-attributes)): `data-disabled`, `data-readonly`, `data-required`, `data-valid` / `data-invalid` (once shown), `data-dirty` (value differs from the first render), `data-touched` (left once; a choice also on activation), `data-filled` (non-empty value; a choice: checked), `data-focused` (focus within). `static fieldState = false` opts out (ui-button).
 - Construction pattern (`components/slots.ts`): button, option, badge, tag, chip and the choices sort children into `[data-part=leading|prefix|contents|suffix|trailing]`; `slot="leading"` / `"trailing"` mark icons, `slot="prefix"` / `"suffix"` mark text adornments, the rest is the label; empty parts are hidden. The input control and select trigger have the same parts, filled from slotted children (`adoptAdornments`). Spacing: [geometry](geometry.md).
 - Input modality (`core/modality.ts`): `<html data-modality="keyboard|pointer">`; focus rings show only after keyboard use.
 - FOUC: undefined elements are hidden with their size reserved; a 1.5s reveal guards against a missing script (`styles/pending.ts`).
@@ -42,27 +42,51 @@ Buttons, form controls (input, select, listbox, segmented, option, checkbox, rad
 
 ## States
 
-Every state a component sets is keyed on ARIA or `data-*` (never on a class) and styled in that component's slot recipe ([styles](#styles)) through the state conditions in `styles/conditions.ts` (`_checked`, `_indeterminate`, `_disabled`, `_enabled`, `_busy`, `_userInvalid`, `_keyboard`, plus Panda's `_pressed`, `_hover`, …). Each condition matches the web component's ARIA host and the React renderer's native element (`:has(> input:checked)`, `:disabled`, …), so one rule serves both. Transitions: [motion](motion.md).
+Every state a component sets is a `data-*` presence attribute with a [Base UI](https://base-ui.com) name (never a class), set on the same host or part by both renderers and styled in that component's slot recipe ([styles](#styles)) through the state conditions in `styles/conditions.ts` (`_checked`, `_unchecked`, `_indeterminate`, `_disabled`, `_enabled`, `_readOnly`, `_required`, `_invalid`, `_valid`, `_dirty`, `_touched`, `_filled`, `_focused`, `_busy`, `_pressed`, `_popupOpen`, `_open`, `_closed`, `_highlighted`, `_selected`, `_dragging`, `_complete`, `_progressing`, `_keyboard`, plus Panda's `_hover`, …). ARIA stays on both renderers for semantics; styles key on data-*. Web components set the attributes in `update()` (`UIFormElement` the field state); React renderers set them as props from React state (`components/state.react.ts`: the host listens to focus, blur, input, change, invalid and form reset on its native control; a radio rereads itself on any change in its group). The shared maps are in `dom/state.ts` (`fieldDataAttrs`, `checkedDataAttrs`, `popupDataAttrs`) and the headless helpers (`optionAttrs`, `comboboxAttrs`, `buttonAttrs`, `listboxAttrs`, `rangeDataAttrs`, `progressState`). The contract is `contracts/states.json`; `test/state-parity.test.ts` checks that both renderers set the same names for the same state, and `react-check.html` compares them in the browser. Transitions: [motion](motion.md).
+
+### State attributes
+
+Base UI = the same name for the same state in Base UI; **ours** = a name Base UI does not have. Field state = `data-disabled`, `data-required`, `data-valid` / `data-invalid`, `data-dirty`, `data-touched`, `data-filled`, `data-focused` (Base UI Field; all Base UI names).
+
+| Element (React) | Host | Parts | Base UI? |
+|---|---|---|---|
+| `ui-button` (Button) | `data-disabled`, `data-busy` | | `data-busy` ours |
+| `ui-chip` (Chip) | `data-disabled`, `data-pressed` (selected) | | Base UI Toggle |
+| `ui-checkbox` (Checkbox) | `data-checked` / `data-unchecked` / `data-indeterminate` (instead of either), field state | | Base UI Checkbox |
+| `ui-radio`, `ui-switch` (Radio, Switch) | `data-checked` / `data-unchecked`, field state | | Base UI Radio, Switch |
+| `ui-input` (Input) | field state, `data-readonly` | | Base UI Field / Input |
+| `ui-select` (Select) | field state | trigger `data-popup-open`, `data-pressed` (while open), `data-placeholder`, `data-disabled`; popup `data-open` / `data-closed`, `data-side` (bottom, top), `data-align` (start); options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select; the parts are web component only (React: native, below) |
+| `ui-listbox`, `ui-segmented` (Listbox, Segmented) | field state, `data-orientation` | options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select.Item and Radio Group names (Base UI has no listbox) |
+| `ui-range` (Range) | field state, `data-orientation`, `data-dragging` | | Base UI Slider |
+| `ui-progress` (Progress) | `data-indeterminate` / `data-progressing` / `data-complete` | | Base UI Progress |
+| `ui-palette` (Palette) | field state, `data-orientation` | swatches `data-selected`, `data-highlighted` (while the palette has focus) | Base UI names on a component of ours |
+| `ui-swatch` (Swatch) | `data-alpha` (translucent), `data-invalid` (unparsable color) | | `data-alpha` ours |
+| `ui-swiper` (Swiper) | `data-single` | dots `data-selected` (current slide); paddles `data-disabled` | `data-single` ours; Base UI has no carousel |
+| `ui-image` (Image) | | `img[data-error]` | ours |
+| `ui-field` (Field) | none; reads its control's `data-disabled` / `data-required` (`:has`) | | |
+
+Where a React renderer keeps a native pseudo-class, and why: `:disabled` beside `data-disabled` for a native control disabled by an ancestor `<fieldset disabled>`, which React cannot see; the React Select's open state (`select:open`), its options' selection and highlight (`:checked`, `:focus`) and its popup (`::picker(select)`), because the browser owns the customizable select's picker and reports none of it to script (a native select has no placeholder either). React validity is read from the native control's constraint validation when the host sets `data-valid` / `data-invalid`, so both renderers show errors at the same moment (blur or a blocked submit), not at `:user-invalid` time. Not implemented: `data-starting-style` / `data-ending-style` (the select popup's enter and exit stay on `@starting-style` and `allow-discrete` transitions with the reveal intent).
 
 | State | Hook | Look |
 |---|---|---|
-| hover / press | `:hover` / `:active` on enabled controls | neutral fill steps 3 → 4 → 5; on solids `primary.solidHover`; selected options `primary.subtleHover` |
+| hover / press | `:hover` / `:active` on `_enabled` controls (not `data-disabled`, not `data-busy`) | neutral fill steps 3 → 4 → 5; on solids `primary.solidHover`; selected options `primary.subtleHover` |
 | keyboard focus | `:focus-visible` after key use (`data-modality`) | 2px focus-ring outline; text fields keep it after a pointer click |
-| highlighted option | `data-active` | neutral fill |
-| selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | primary solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or primary subtle (select popup options); listbox and segmented: `bg.selected` / `fg.selected` (neutral 1 with neutral 12 text in light, the primary solid with its contrast text in dark) |
-| open | trigger `aria-expanded=true` | pressed fill, chevron turned 180° |
-| disabled | `aria-disabled=true` (host or control) | 50% opacity, `not-allowed` |
-| busy | `aria-busy=true` (button) | readable (no disabled fade), `progress` cursor, indeterminate sweep on the bottom edge (contrast color on primary) |
-| read-only | `aria-readonly=true` | subtle fill, default cursor |
-| required | `[required]` field, `aria-required` checkbox/switch | ` *` in `critical.fg` after the label |
-| invalid | `aria-invalid=true` | critical-tinted fill (palette: critical outline) |
+| highlighted option | `data-highlighted` | neutral fill (swatch: focus-ring outline under keyboard modality) |
+| selected / checked / mixed | `data-checked`, `data-indeterminate`, `data-selected`, `data-pressed` | primary solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or primary subtle (select popup options); listbox and segmented: `bg.selected` / `fg.selected` (neutral 1 with neutral 12 text in light, the primary solid with its contrast text in dark) |
+| open | trigger `data-popup-open` (React: `select:open`) | pressed fill, chevron turned 180° |
+| disabled | `data-disabled` (host, option or paddle) | 50% opacity, `not-allowed` |
+| busy | `data-busy` (button) | readable (no disabled fade), `progress` cursor, indeterminate sweep on the bottom edge (contrast color on primary) |
+| read-only | `data-readonly` | subtle fill, default cursor |
+| required | `data-required` | ` *` in `critical.fg` after the label |
+| invalid | `data-invalid` (after blur or a blocked submit; an author error at once) | critical-tinted fill (palette: critical outline) |
+| dragging | `data-dragging` (range) | grabbing cursor, raised thumb; thumb and fill follow the pointer 1:1 |
 | placeholder | `data-placeholder` | `fg.subtle` (neutral 8) |
 | indeterminate | `data-indeterminate` (progress) | sweep; a faint full fill under reduced motion |
 | unparsable color | `data-invalid` (swatch) | critical strike |
 | failed image | `img[data-error]` | hidden; the frame's empty fill remains |
 | forced colors | `@media (forced-colors: active)` | 1px `CanvasText` outline (no space), `Highlight` for on states, `GrayText` disabled |
 
-React renderers are native HTML with the same anatomy and `data-ui="<name>"` on the host (`@massimo/ui-kit/components/<name>/react`): Button (`<button>`), Input (`<input>` in the control), Checkbox, Radio and Switch (`<input type=checkbox|radio>`, switch with `role=switch`, inside a `<label>`), Range (`<input type=range>` over the painted track), Progress (`<progress>`), Badge and Tag (`<span>`), Chip (`<button>`, `aria-pressed` when selectable), Swatch (`<span role=img>`), Palette (a radio group of native radios when selectable), Image (`<div>` + `<img>`; `slideshow` uses the React Swiper), Swiper (scroll-snap viewport with native `<button>` paddles and dots), Select (a native `<select>` with customizable-select styling: the trigger is its `<button>`, the value `<selectedcontent>`, the popup `::picker(select)`, options rich `<option>`s; browsers without `appearance: base-select` show the platform select), the containers and Field / FieldGrid (`<div>`; Field's label is a `<label htmlFor>` and a render function hands the control its ids), and Listbox, Segmented and Option (ARIA listboxes on the shared `dom/listbox` helpers, the same semantics, keys and typeahead as the web components; a hidden input carries the form value). The native element owns state, focus, keys and form value. Both renderers call the same generated recipe function and put the same classes on host and parts; `data-ui` names the host and carries the geometry variables, but is not a styling hook. `apps/studio/react-check.html` compares each React renderer with its web component in the browser.
+React renderers are native HTML with the same anatomy and `data-ui="<name>"` on the host (`@massimo/ui-kit/components/<name>/react`): Button (`<button>`), Input (`<input>` in the control), Checkbox, Radio and Switch (`<input type=checkbox|radio>`, switch with `role=switch`, inside a `<label>`), Range (`<input type=range>` over the painted track), Progress (`<progress>`), Badge and Tag (`<span>`), Chip (`<button>`, `aria-pressed` when selectable), Swatch (`<span role=img>`), Palette (a radio group of native radios when selectable), Image (`<div>` + `<img>`; `slideshow` uses the React Swiper), Swiper (scroll-snap viewport with native `<button>` paddles and dots), Select (a native `<select>` with customizable-select styling: the trigger is its `<button>`, the value `<selectedcontent>`, the popup `::picker(select)`, options rich `<option>`s; browsers without `appearance: base-select` show the platform select), the containers and Field / FieldGrid (`<div>`; Field's label is a `<label htmlFor>` and a render function hands the control its ids), and Listbox, Segmented and Option (ARIA listboxes on the shared `dom/listbox` helpers, the same semantics, keys and typeahead as the web components; a hidden input carries the form value). The native element owns state, focus, keys and form value; the host mirrors it as the data-* state attributes above. Both renderers call the same generated recipe function and put the same classes on host and parts; `data-ui` names the host and carries the geometry variables, but is not a styling hook. `apps/studio/react-check.html` compares each React renderer with its web component in the browser.
 
 ## Styles
 

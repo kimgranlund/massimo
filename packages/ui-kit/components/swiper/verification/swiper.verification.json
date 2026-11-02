@@ -15,6 +15,10 @@
     {
       "path": "components/swiper/swiper.react.tsx",
       "sha256": "12ef727d6b887c78ae3627d24a234927a80dc3d051a05202558c4d289c87b041"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
     }
   ],
   "renderers": {
@@ -23,6 +27,10 @@
         {
           "command": "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
           "covers": "viewport, paddles and dots built; image presets and slideshow"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -41,6 +49,10 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native anatomy, roles, controls and slides"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {

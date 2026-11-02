@@ -23,6 +23,16 @@ The swatch color reaches CSS only as `--ui-swatch-color`, set by script.
 |---|---|---|
 | `ui-palette` | arrows by orientation, Home, End | move and select (selectable) |
 
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+| Element | Attributes |
+|---|---|
+| `ui-palette` / Palette | `data-orientation`; field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
+| swatch in a selectable palette | `data-selected`; `data-highlighted` while the palette has focus (the keyboard outline) |
+| `ui-swatch` / Swatch | `data-alpha` (translucent or missing color; ours), `data-invalid` (the color does not parse) |
+
 ## Geometry and appearance
 
 Geometry families: `swatch` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [color.recipe.ts](color.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

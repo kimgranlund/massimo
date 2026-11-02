@@ -23,6 +23,14 @@
     {
       "path": "components/color/color.ts",
       "sha256": "2b4978cea86b0d35a3706bd4b3b984084cc18d66242e4e0472457354b8c44799"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
     }
   ],
   "renderers": {
@@ -31,6 +39,10 @@
         {
           "command": "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
           "covers": "swatch color variable, invalid and alpha marking, selectable palette keys and value"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -49,6 +61,10 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {

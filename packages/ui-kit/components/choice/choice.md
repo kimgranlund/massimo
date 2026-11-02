@@ -42,6 +42,17 @@ Icons sit in leading/trailing slots (6u on controls); prefix and suffix are shor
 | `ui-radio` | ArrowDown, ArrowRight / ArrowUp, ArrowLeft | move to and select the next / previous radio (wraps) |
 | `ui-switch` | Space, Enter | toggle |
 
+## State attributes
+
+Contract: [states.json](../../contracts/states.json); names follow [Base UI](https://base-ui.com); ARIA stays for semantics. Both renderers set the same attributes on the same elements; style with the conditions (`_checked`, `_invalid`, …), not ARIA.
+
+| Element | Attributes |
+|---|---|
+| `ui-checkbox` / Checkbox | `data-checked` or `data-unchecked`; `data-indeterminate` instead of either while mixed; field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
+| `ui-radio` / Radio, `ui-switch` / Switch | `data-checked` or `data-unchecked`; field state |
+
+`data-filled` means checked. `data-touched` is set when the user leaves the control or activates it. The React host mirrors its native input (a radio rereads itself on any change in its group).
+
 ## Geometry and appearance
 
 Geometry families: `choice` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [choice.recipe.ts](choice.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

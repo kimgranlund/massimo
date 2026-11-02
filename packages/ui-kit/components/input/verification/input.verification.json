@@ -27,6 +27,14 @@
     {
       "path": "components/input/input.react.tsx",
       "sha256": "fb16f2f7315743aa839b83d0abe727305fc789934ce57535aae3a15fefe8a34e"
+    },
+    {
+      "path": "dom/state.ts",
+      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
     }
   ],
   "renderers": {
@@ -35,6 +43,10 @@
         {
           "command": "node --test --test-name-pattern=\"ui-input\" test/components.test.ts",
           "covers": "no native elements, ARIA wiring, typing and form value, error timing, email/minlength/pattern, Enter submits, reset, password"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {
@@ -53,6 +65,10 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        },
+        {
+          "command": "node --test test/state-parity.test.ts",
+          "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
         }
       ],
       "latestRun": {

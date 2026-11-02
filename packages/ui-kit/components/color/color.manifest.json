@@ -16,6 +16,14 @@
   "independentLayers": [
     {
       "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
+      "kind": "pure-behavior",
       "module": "./color.ts",
       "exports": [
         "isTranslucent",
