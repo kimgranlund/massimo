@@ -22,7 +22,7 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "0dfb1b90c1f5174d961e3339663c7f95c36175cfda5f94fc936b7f38c81a05a9"
+      "sha256": "d46319d5a62df976bc1b2a657f5416ae0ca50d4175924bbc4dc16dfdad785e20"
     },
     {
       "path": "components/select/select.react.tsx",
@@ -34,7 +34,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
+      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
     }
   ],
   "renderers": {

@@ -14,7 +14,7 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "cab485eeae07e4f1e841f94895b99a8cc408d6b303668b5d6815844dbf36be99"
+      "sha256": "cf3066139fa7b9d884b4f7adffb4287ced2e83476dc001a93da05e8a2fcd84c8"
     },
     {
       "path": "components/range/range.react.tsx",
@@ -22,7 +22,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
+      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
     }
   ],
   "renderers": {

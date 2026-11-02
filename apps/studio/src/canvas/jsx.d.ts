@@ -16,8 +16,7 @@ declare module 'react' {
       'ui-chip': El<{ selectable?: boolean; selected?: boolean; removable?: boolean; disabled?: boolean; 'icon-size'?: string }>;
       'ui-group': El<{ gap?: string }>;
       'ui-collection': El<{ gap?: string }>;
-      'ui-tile': El<{ gap?: string }>;
-      'ui-card': El<{ gap?: string }>;
+      'ui-card': El<{ gap?: string; padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' }>;
       'ui-panel': El<{ gap?: string }>;
       'ui-region': El<{ gap?: string }>;
       'ui-page': El<{ gap?: string }>;

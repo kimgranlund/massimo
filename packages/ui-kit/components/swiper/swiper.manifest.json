@@ -295,11 +295,6 @@
     {
       "from": "component:swiper",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:swiper",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {

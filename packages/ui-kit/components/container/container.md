@@ -1,16 +1,20 @@
 # Containers
 
-`ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`. API, defaults and avoidance guidance: [container.manifest.json](container.manifest.json) (`npm run registry -- component:card`). Examples: [container.examples.json](container.examples.json). Contract: [components.json](../../contracts/components.json).
+`ui-group`, `ui-collection`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`. API, defaults and avoidance guidance: [container.manifest.json](container.manifest.json) (`npm run registry -- component:card`). Examples: [container.examples.json](container.examples.json). Contract: [components.json](../../contracts/components.json).
 
 ## Intent
 
-- `ui-group`: group closely related controls.
-- `ui-collection`: hold a list or set of like items.
-- `ui-tile`: present one small item in a grid.
-- `ui-card`: present a self-contained piece of content.
-- `ui-panel`: hold a side or tool panel.
-- `ui-region`: mark a major area of a page.
-- `ui-page`: hold a whole page.
+Three families, each with one radius rule:
+
+- Wrappers hug their children; radius concentric with them (3u + padding).
+  - `ui-group`: closely related controls (toolbars, button and chip sets).
+  - `ui-collection`: a list or set of like items (tables, data lists).
+- Containers are self-contained surfaces; radius = padding.
+  - `ui-card`: `padding="xs | sm | md | lg | xl"` (2u…6u, md default), from thumbnails (xs) and small items in a grid (sm) to hero or dialog surfaces (xl). A card may hold a smaller card.
+- Areas meet the viewport or other areas; square.
+  - `ui-panel`: a side or tool panel.
+  - `ui-region`: a major area of a page.
+  - `ui-page`: a whole page.
 
 ## Usage
 
@@ -21,7 +25,7 @@
 </ui-card>
 ```
 
-Levels nest outer to inner: page › region › panel › card › tile › collection › group (a level may be skipped). Padding, gap and radius per level: [geometry](../../../../docs/specs/geometry.md#containers). Containers set no role.
+Areas hold containers, containers hold wrappers: page › region › panel › card › collection › group (a level may be skipped). React: `<Card padding="sm">`. Padding, gap and radius per level: [geometry](../../../../docs/specs/geometry.md#containers). Containers set no role.
 
 ## Geometry and appearance
 

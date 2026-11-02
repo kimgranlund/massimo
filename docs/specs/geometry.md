@@ -68,22 +68,31 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 
 ## Containers
 
-Every container has a padding level p and a max radius. Padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults); the max radius equals the padding: a container's corner is never rounder than its padding is deep. The `gap` attribute overrides the gap on one element. The border lives inside the padding. Radius = min(p × min(1, corner scale), height/2): the corner scale can lower it but never raise it past the padding. Children keep their own radii (a control stays 3u), so they are not concentric with the container. The composite level (listbox, segmented, select popup) is exempt: it wraps controls, so its radius stays concentric with them, 3u + p (3.5u), and its options keep the 3u control radius. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
+Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.
+
+- **Wrapper** (composite, group, collection): hugs its children (options, controls, rows), so its radius is concentric with them: (3u + p) × corner scale. Composite options keep the 3u control radius.
+- **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface whose radius equals its padding, p × min(1, corner scale): never rounder than it is deep; the corner scale can lower it, not raise it. Children keep their own radii, so they are not concentric with it. A card may hold a smaller card (it takes the base fill).
+- **Area** (panel, region, page): meets the viewport or other areas, so it is square.
+
+Nesting: areas hold containers, containers hold wrappers (page › region › panel › card › collection › group; a level may be skipped). Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
 ### Panda tokens in u
 
-Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p: '8'` is 8u, `gap: '0.5'` is 0.5u; keys 0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24), and `radii` are u × corner scale (`sm` 1u, `md` 1.5u, `lg` 2u, `xl` 3u; `full` is a pill). The container ladder is named: `pad.<level>` and `gap.<level>` are the theme's `pad-<level>` / `gap-<level>` in u, and `inset.<level>` is the padding inside a border, max(0, pad − B), the way containers use it. `page()` is `p: inset.page`, `gap: gap.page`. Panda declares token variables on `:root`, where they resolve with the root unit, so every element with `size` / `data-size` redeclares the u-based ones (`unitTokenVars()`), and a theme scope that sets `--ui-unit` or a ladder parameter on its own element includes `unitTokenCss()` (the jig canvas does). There is no fixed rem grid. `sizes` also has keywords: `full` (100%), `min`, `max`, `fit` and `prose` (65ch). A length that is not one of these tokens is a type error ([theming](theming.md#panda-configs)).
+Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p: '8'` is 8u, `gap: '0.5'` is 0.5u; keys 0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24), and `radii` are u × corner scale (`sm` 1u, `md` 1.5u, `lg` 2u, `xl` 3u; `full` is a pill). The container ladder is named (`<level>` as in the table: `group`, `card-md`, `page`…): `pad.<level>` and `gap.<level>` are the theme's `pad-<level>` / `gap-<level>` in u, and `inset.<level>` is the padding inside a border, max(0, pad − B), the way containers use it. `page()` is `p: inset.page`, `gap: gap.page`. Panda declares token variables on `:root`, where they resolve with the root unit, so every element with `size` / `data-size` redeclares the u-based ones (`unitTokenVars()`), and a theme scope that sets `--ui-unit` or a ladder parameter on its own element includes `unitTokenCss()` (the jig canvas does). There is no fixed rem grid. `sizes` also has keywords: `full` (100%), `min`, `max`, `fit` and `prose` (65ch). A length that is not one of these tokens is a type error ([theming](theming.md#panda-configs)).
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
-| composite | ui-listbox, ui-segmented, select popup | 0.5u | 0.5u | 3.5u (exempt) | 2 / 2 / 14 |
-| group | ui-group | 1u | 1u | 1u | 4 / 4 / 4 |
-| collection | ui-collection | 2u | 2u | 2u | 8 / 8 / 8 |
-| tile | ui-tile | 3u | 3u | 3u | 12 / 12 / 12 |
-| card | ui-card | 4u | 4u | 4u | 16 / 16 / 16 |
-| panel | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
-| region | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
-| page | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
+| composite (wrapper) | ui-listbox, ui-segmented, select popup | 0.5u | 0.5u | 3.5u | 2 / 2 / 14 |
+| group (wrapper) | ui-group | 1u | 1u | 4u | 4 / 4 / 16 |
+| collection (wrapper) | ui-collection | 2u | 2u | 5u | 8 / 8 / 20 |
+| card-xs (container) | ui-card padding="xs" | 2u | 2u | 2u | 8 / 8 / 8 |
+| card-sm (container) | ui-card padding="sm" | 3u | 3u | 3u | 12 / 12 / 12 |
+| card-md (container) | ui-card (padding="md") | 4u | 4u | 4u | 16 / 16 / 16 |
+| card-lg (container) | ui-card padding="lg" | 5u | 5u | 5u | 20 / 20 / 20 |
+| card-xl (container) | ui-card padding="xl" | 6u | 6u | 6u | 24 / 24 / 24 |
+| panel (area) | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
+| region (area) | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
+| page (area) | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
 
 Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script.
 

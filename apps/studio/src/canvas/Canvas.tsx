@@ -460,7 +460,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
   const u = params.unit;
   return (
     <>
-      <Section id="containers" title="Container tokens" note="Live values for every level: padding and gap (pad-<level>, gap-<level>, in u), the radius they imply (at most the padding, up to card; panel, region and page are square), and where each level appears.">
+      <Section id="containers" title="Container tokens" note="Three families. Wrappers (composite, group, collection) hug their children: radius 3u + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Live padding and gap per level (pad-<level>, gap-<level>, in u).">
         <div className={tokenTable} role="table" aria-label="Container tokens">
           <div role="row" className={tokenHead}><span role="columnheader">Level</span><span role="columnheader">Padding</span><span role="columnheader">Gap</span><span role="columnheader">Radius</span><span role="columnheader">Used by</span></div>
           {LEVELS.map((l) => {
@@ -468,7 +468,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
             const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap });
             return (
               <div role="row" key={l} className={tokenRow}>
-                <span role="cell">{l}</span>
+                <span role="cell">{l}<span className={caption}> · {CONTAINERS[l].family}</span></span>
                 <span role="cell" data-numeric>{fmtU(pad)} · {fmt(c.padding)}px</span>
                 <span role="cell" data-numeric>{fmtU(gap)} · {fmt(c.gap)}px</span>
                 <span role="cell" data-numeric>{fmt(c.radius)}px</span>
@@ -481,10 +481,11 @@ function ContainerSections({ params }: { params: ThemeParams }) {
       <Divider />
       <Section id="levels" title="Levels" note="Each box tints its padding; the two children show its gap.">
         {LEVELS.filter((l) => l !== 'composite').map((l) => {
-          const Tag = `ui-${l}` as any;
+          const Tag = (l.startsWith('card-') ? 'ui-card' : `ui-${l}`) as any;
+          const padding = l.startsWith('card-') && l !== 'card-md' ? l.slice(5) : undefined;
           return (
-            <Row key={l} label={l}>
-              <Tag className={levelBox}><span className={levelChild}>a</span><span className={levelChild}>b</span></Tag>
+            <Row key={l} label={l.startsWith('card-') ? `card · padding ${l.slice(5)}` : l}>
+              <Tag className={levelBox} padding={padding}><span className={levelChild}>a</span><span className={levelChild}>b</span></Tag>
             </Row>
           );
         })}
@@ -494,7 +495,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
         </Row>
       </Section>
       <Divider />
-      <Section id="nesting" title="Nesting" note="page › region › panel › card › tile › collection › group: each level pads its children; a container's radius is at most its padding.">
+      <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). A container's radius equals its padding; wrappers stay concentric with their children.">
         <ui-page className={miniPage} aria-label="Page example">
           <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
           <ui-region aria-label="Region example" className={tinted}>
@@ -505,8 +506,8 @@ function ContainerSections({ params }: { params: ThemeParams }) {
                 <ui-card>
                   <span className={kicker}>Card · Team</span>
                   {[['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]].map(([team, people]) => (
-                    <ui-tile key={team as string}>
-                      <span className={kicker}>Tile · {team}</span>
+                    <ui-card padding="sm" key={team as string}>
+                      <span className={kicker}>Card sm · {team}</span>
                       <ui-collection>
                         {(people as string[]).map((n) => (
                           <div key={n} className={tileRow}>
@@ -515,7 +516,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
                           </div>
                         ))}
                       </ui-collection>
-                    </ui-tile>
+                    </ui-card>
                   ))}
                 </ui-card>
                 <ui-card>
@@ -530,21 +531,21 @@ function ContainerSections({ params }: { params: ThemeParams }) {
         </ui-page>
       </Section>
       <Divider />
-      <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack like items at the collection gap, inside a tile or card (the ladder: card › tile › collection › group).">
+      <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack like items at the collection gap, inside a card (card › collection › group).">
         <Row label="buttons"><ui-group><ui-button>Bold</ui-button><ui-button>Italic</ui-button><ui-button>Underline</ui-button></ui-group></Row>
         <Row label="chips"><ui-group>{['Design', 'Engineering', 'Research', 'Ops'].map((t, i) => <ui-chip key={t} selectable selected={i === 0 || undefined}>{t}</ui-chip>)}</ui-group></Row>
         <Row label="tags"><ui-group>{['Spring', 'Draft', 'Shared'].map((t) => <ui-tag key={t}>{t}</ui-tag>)}</ui-group></Row>
-        <Row label="collection in a tile">
-          <ui-tile className={wideCol}>
+        <Row label="collection in a card">
+          <ui-card padding="sm" className={wideCol}>
             <ui-collection>
               {['Inbox · 12', 'Drafts · 3', 'Archive'].map((t) => <span key={t}>{t}</span>)}
             </ui-collection>
-          </ui-tile>
+          </ui-card>
         </Row>
-        <Row label="tile grid">
+        <Row label="card grid">
           <ui-card className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
-              <ui-tile key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-tile>
+              <ui-card padding="xs" key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-card>
             ))}
           </ui-card>
         </Row>
@@ -575,9 +576,12 @@ function ContainerSections({ params }: { params: ThemeParams }) {
 const USED_BY: Record<keyof typeof CONTAINERS, string> = {
   composite: 'listbox, segmented, select popup',
   group: 'inline sets: buttons, chips, tags',
-  collection: 'lists of like items, inside a tile or card',
-  tile: 'thumbnails, grouped lists',
-  card: 'self-contained content',
+  collection: 'tables, data lists: like items inside a card',
+  'card-xs': 'thumbnails, compact items',
+  'card-sm': 'grouped lists, small items in a grid',
+  'card-md': 'self-contained content (default card)',
+  'card-lg': 'feature content',
+  'card-xl': 'hero or dialog surfaces',
   panel: 'sidebars, workspaces',
   region: 'page areas',
   page: 'the outer frame (max width)',

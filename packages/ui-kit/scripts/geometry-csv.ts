@@ -56,12 +56,13 @@ export const rows: Row[] = [
   { id: 'composite.option.radius', family: 'composite', element: 'option', quantity: 'option radius', formula: 'min(option / 2, max(0, parent radius - D))', value: (u) => cmp(u).child.radius, status: 'implemented', notes: '= 3u control radius (concentric)' },
 
   // Layout containers
-  ...(['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as ContainerLevel[]).flatMap((level): Row[] => {
+  ...((Object.keys(CONTAINERS) as ContainerLevel[]).filter((l) => l !== 'composite')).flatMap((level): Row[] => {
     const spec = CONTAINERS[level];
+    const element = level.startsWith('card-') ? `ui-card${level === 'card-md' ? '' : `[padding=${level.slice(5)}]`}` : `ui-${level}`;
     return [
-      { id: `container.${level}.padding`, family: 'container', element: `ui-${level}`, quantity: 'padding', formula: `pad-${level} (default ${spec.padding})u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
-      { id: `container.${level}.gap`, family: 'container', element: `ui-${level}`, quantity: 'gap', formula: `gap-${level} (default ${spec.padding})u; the gap attribute wins`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
-      { id: `container.${level}.radius`, family: 'container', element: `ui-${level}`, quantity: 'max radius', formula: !spec.maxRadius ? '0' : level === 'composite' ? `(3 + pad-${level})u * s (default ${spec.maxRadius}u)` : `pad-${level}u * min(1, s) (default ${spec.maxRadius}u)`, value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: !spec.maxRadius ? 'square: meets the viewport edge' : level === 'composite' ? 'concentric with its 3u-radius options (exempt from radius ≤ padding); capped at half height' : 'at most the padding; capped at half height' },
+      { id: `container.${level}.padding`, family: 'container', element, quantity: 'padding', formula: `pad-${level} (default ${spec.padding})u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
+      { id: `container.${level}.gap`, family: 'container', element, quantity: 'gap', formula: `gap-${level} (default ${spec.padding})u; the gap attribute wins`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
+      { id: `container.${level}.radius`, family: 'container', element, quantity: 'max radius', formula: spec.family === 'area' ? '0' : spec.family === 'wrapper' ? `(3 + pad-${level})u * s (default ${spec.maxRadius}u)` : `pad-${level}u * min(1, s) (default ${spec.maxRadius}u)`, value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.family === 'area' ? 'area: square, meets the viewport or other areas' : spec.family === 'wrapper' ? 'wrapper: concentric with 3u children; capped at half height' : 'container: at most the padding; capped at half height' },
     ];
   }),
   { id: 'container.page.maxWidth', family: 'container', element: 'ui-page', quantity: 'max width', formula: `${PAGE_MAX_WIDTH_REM}rem (fixed)`, value: () => PAGE_MAX_WIDTH_REM * 16, status: 'implemented', notes: 'px at a 16px root; centered; page({ width }) overrides' },

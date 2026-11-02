@@ -232,12 +232,13 @@ export const defaults = defineGlobalStyles({
 
   // Layout containers (lengths in styles/geometry.ts)
   'ui-group': { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', borderColor: 'transparent' },
-  ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
+  ':is(ui-collection, ui-card, ui-panel, ui-region, ui-page)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
   'ui-page': { width: '100%', maxWidth: `${PAGE_MAX_WIDTH_REM}rem`, marginInline: 'auto' },
-  // Fills alternate by depth so each level reads without borders: panel 3, card 2, tile 1.
+  // Fills alternate by depth so each level reads without borders: panel 3, card 2, a card nested
+  // in a card 1.
   'ui-panel': { bg: 'bg.muted' },
   'ui-card': { bg: 'bg.subtle', borderColor: 'border' },
-  'ui-tile': { bg: 'bg' },
+  'ui-card ui-card': { bg: 'bg' },
 
   // Listbox, segmented control, options
   'ui-listbox': { display: 'flex', flexDirection: 'column', borderColor: 'border', bg: 'bg.subtle' },

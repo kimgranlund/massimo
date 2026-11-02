@@ -470,11 +470,6 @@
     {
       "from": "component:select",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:select",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {

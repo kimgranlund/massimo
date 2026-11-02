@@ -142,11 +142,10 @@
         "resolveContainer",
         "resolveComposite"
       ],
-      "summary": "Levels composite 0.5u, group 1u, collection 2u, tile 3u, card 4u, panel 6u, region 8u, page 8u (+72rem max width). Gap defaults to the level padding; radius steps up per level and is 0 for panel, region and page.",
+      "summary": "Three families. Wrapper: composite 0.5u, group 1u, collection 2u; radius concentric with 3u children (3u + padding). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius = padding (corner scale lowers, never raises). Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding.",
       "members": [
         "component:group",
         "component:collection",
-        "component:tile",
         "component:card",
         "component:panel",
         "component:region",

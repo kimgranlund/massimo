@@ -670,11 +670,6 @@
     {
       "from": "component:checkbox",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:checkbox",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -805,11 +800,6 @@
     {
       "from": "component:radio",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:radio",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -926,11 +916,6 @@
       "from": "component:switch",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:switch",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:switch",

@@ -624,11 +624,6 @@
     {
       "from": "component:listbox",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:listbox",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -720,11 +715,6 @@
       "from": "component:segmented",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:segmented",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:segmented",

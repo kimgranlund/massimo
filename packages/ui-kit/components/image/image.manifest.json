@@ -268,11 +268,6 @@
     {
       "from": "component:image",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:image",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {

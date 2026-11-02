@@ -14,7 +14,7 @@
     },
     {
       "path": "components/color/color.manifest.json",
-      "sha256": "3b791d9bca6f1fc68c3c038e2cd7ed81ebc88a39970ba57cd6d7f29403fc59f3"
+      "sha256": "959ad9eda845eaf98b0fc19afca410baea17880405317c3b10724ddf10d5d18e"
     },
     {
       "path": "components/color/color.react.tsx",
@@ -26,7 +26,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
+      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
     }
   ],
   "renderers": {

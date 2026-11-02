@@ -52,7 +52,7 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
     [/\[fit=/g, '[data-fit='],
     [/\[slideshow\]/g, '[data-slideshow]'],
   ],
-  group: [], collection: [], tile: [], card: [], panel: [], region: [], page: [],
+  group: [], collection: [], card: [], panel: [], region: [], page: [],
   // Listbox and segmented are ARIA listboxes with the web components' attributes (dom/listbox.ts).
   listbox: [],
   segmented: [],

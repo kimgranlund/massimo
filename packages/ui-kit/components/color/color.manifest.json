@@ -384,11 +384,6 @@
     {
       "from": "component:swatch",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:swatch",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -475,11 +470,6 @@
       "from": "component:palette",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:palette",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:palette",

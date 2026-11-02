@@ -17,7 +17,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form",
@@ -44,7 +43,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -71,7 +69,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -87,7 +84,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -103,7 +99,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -137,7 +132,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form",
@@ -159,7 +153,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -180,7 +173,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form",
@@ -201,7 +193,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -220,7 +211,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group"
       ],
@@ -241,7 +231,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "inline"
@@ -263,7 +252,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "inline"
@@ -286,7 +274,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group"
       ],
@@ -301,7 +288,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "inline"
@@ -317,7 +303,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "form"
@@ -338,7 +323,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection"
       ],
       "behavior": "Native scrolling; paddles and dots go to slides; fires slidechange."
@@ -354,7 +338,6 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection",
         "group",
         "inline"
@@ -370,25 +353,11 @@
         "region",
         "panel",
         "card",
-        "tile",
         "collection"
       ],
       "behavior": "None."
     },
     "collection": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag.",
-      "parts": [],
-      "allowedParents": [
-        "page",
-        "region",
-        "panel",
-        "card",
-        "tile"
-      ],
-      "behavior": "None."
-    },
-    "tile": {
       "geometryFamily": "container",
       "element": "CSS-only container tag.",
       "parts": [],
@@ -402,12 +371,13 @@
     },
     "card": {
       "geometryFamily": "container",
-      "element": "CSS-only container tag.",
+      "element": "CSS-only container tag; padding=\"xs | sm | md | lg | xl\" (2u…6u, md default) sets its level; radius equals its padding.",
       "parts": [],
       "allowedParents": [
         "page",
         "region",
-        "panel"
+        "panel",
+        "card"
       ],
       "behavior": "None."
     },

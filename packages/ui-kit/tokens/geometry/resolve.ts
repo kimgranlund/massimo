@@ -105,29 +105,43 @@ export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slo
 }
 
 // ── Containers ──
-// Each level has a padding (units of u) and a max radius equal to that padding: a container's
-// corner is never rounder than its padding is deep (corner scale can lower it, not raise it).
-// Composite is exempt: it wraps controls, so its radius stays concentric with them (3u + padding).
-// Padding and gap are theme parameters (pad-<level>, gap-<level>); these are their defaults. Panel, region and page are square: they usually
-// meet the viewport edge. Gap = padding unless the gap attribute overrides it.
+// Three families, one radius rule each:
+// - wrapper (composite, group, collection): hugs its children, so its radius is concentric with
+//   them: the 3u control radius + its padding, capped at half its height.
+// - container (card, padding xs | sm | md | lg | xl): a self-contained surface; its radius equals its
+//   padding, never rounder than it is deep (the corner scale can lower it, not raise it).
+// - area (panel, region, page): meets the viewport or other areas, so it is square.
+// Padding and gap are theme parameters per level (pad-<level>, gap-<level>, in u); these are their
+// defaults. Gap = padding unless the gap attribute overrides it.
+export type ContainerFamily = 'wrapper' | 'container' | 'area';
 export const CONTAINERS = {
-  composite:  { padding: 0.5, maxRadius: 3.5 },
-  group:      { padding: 1,   maxRadius: 1 },
-  collection: { padding: 2,   maxRadius: 2 },
-  tile:       { padding: 3,   maxRadius: 3 },
-  card:       { padding: 4,   maxRadius: 4 },
-  panel:      { padding: 6,   maxRadius: 0 },
-  region:     { padding: 8,   maxRadius: 0 },
+  composite:  { family: 'wrapper',   padding: 0.5, maxRadius: 3.5 },
+  group:      { family: 'wrapper',   padding: 1,   maxRadius: 4 },
+  collection: { family: 'wrapper',   padding: 2,   maxRadius: 5 },
+  'card-xs':  { family: 'container', padding: 2,   maxRadius: 2 },
+  'card-sm':  { family: 'container', padding: 3,   maxRadius: 3 },
+  'card-md':  { family: 'container', padding: 4,   maxRadius: 4 },
+  'card-lg':  { family: 'container', padding: 5,   maxRadius: 5 },
+  'card-xl':  { family: 'container', padding: 6,   maxRadius: 6 },
+  panel:      { family: 'area',      padding: 6,   maxRadius: 0 },
+  region:     { family: 'area',      padding: 8,   maxRadius: 0 },
   // Same spacing as region, plus a centered max width (styles/defaults.ts, page() pattern).
-  page:       { padding: 8,   maxRadius: 0 },
-} as const;
+  page:       { family: 'area',      padding: 8,   maxRadius: 0 },
+} as const satisfies Record<string, { family: ContainerFamily; padding: number; maxRadius: number }>;
 export type ContainerLevel = keyof typeof CONTAINERS;
+
+/** Card padding variants: <ui-card padding="xs | sm | md | lg | xl"> (md is the default). */
+export const CARD_PADDINGS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export type CardPadding = (typeof CARD_PADDINGS)[number];
+
+/** The element (and attribute) that establishes a level. */
+export const levelTag = (level: ContainerLevel) => level.startsWith('card-') ? 'ui-card' : `ui-${level}`;
 
 /** Page max width: 72rem (1152px at a 16px root). Fixed, not u-scaled. */
 export const PAGE_MAX_WIDTH_REM = 72;
 
-/** Square levels: they usually meet the viewport edge, so they get no radius. */
-export const SQUARE_LEVELS: ReadonlySet<ContainerLevel> = new Set(['panel', 'region', 'page']);
+/** Square levels (the area family): they meet the viewport or other areas, so they get no radius. */
+export const SQUARE_LEVELS: ReadonlySet<ContainerLevel> = new Set((Object.keys(CONTAINERS) as ContainerLevel[]).filter((l) => CONTAINERS[l].family === 'area'));
 
 /**
  * Container padding, gap and radius. `padUnits` / `gapUnits` override the level's theme
@@ -138,10 +152,10 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
   const x = inputs(input);
   const u = x.unit;
   const pad = input.padUnits ?? CONTAINERS[level].padding;
-  // Radius ≤ padding: the corner scale can lower it but never raise it past the padding.
-  const radius = SQUARE_LEVELS.has(level) ? 0
-    : level === 'composite' ? (3 + pad) * u * x.radiusScale
-    : pad * u * Math.min(1, x.radiusScale);
+  const family = CONTAINERS[level].family;
+  const radius = family === 'area' ? 0
+    : family === 'wrapper' ? (3 + pad) * u * x.radiusScale // concentric with 3u children
+    : pad * u * Math.min(1, x.radiusScale);                // container: at most the padding
   return {
     unit: u, border: x.border,
     padding: Math.max(0, pad * u - x.border),
@@ -155,7 +169,7 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
  * Composite: ui-listbox, ui-segmented, select popup. Padding is the composite level (0.5u);
  * options use the control anatomy with their inset reduced by that edge, so a one-row
  * segmented control is exactly 8u and its options keep the 3u control radius (concentric: the
- * composite is exempt from the radius ≤ padding rule).
+ * composite is a wrapper).
  */
 export function resolveComposite(input: GeometryInput & { container?: boolean } = {}) {
   const c = resolveControl(input);

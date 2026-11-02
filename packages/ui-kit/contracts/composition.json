@@ -5,7 +5,7 @@
     "page": {
       "id": "context:page",
       "host": "component:page",
-      "summary": "Top level: region padding plus a centered 72rem max width.",
+      "summary": "Top level: region padding plus a centered 72rem max width (area family: square).",
       "searchTerms": [
         "page",
         "inside page"
@@ -14,7 +14,7 @@
     "region": {
       "id": "context:region",
       "host": "component:region",
-      "summary": "A major area of a page (8u padding, square).",
+      "summary": "A major area of a page (8u padding, square) (area family: square).",
       "searchTerms": [
         "region",
         "inside region"
@@ -23,7 +23,7 @@
     "panel": {
       "id": "context:panel",
       "host": "component:panel",
-      "summary": "A side or tool panel (6u padding, square).",
+      "summary": "A side or tool panel (6u padding, square) (area family: square).",
       "searchTerms": [
         "panel",
         "inside panel"
@@ -32,25 +32,16 @@
     "card": {
       "id": "context:card",
       "host": "component:card",
-      "summary": "A self-contained surface (4u padding).",
+      "summary": "A self-contained surface (container family): padding xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; radius equals the padding. A card may hold a smaller card.",
       "searchTerms": [
         "card",
         "inside card"
       ]
     },
-    "tile": {
-      "id": "context:tile",
-      "host": "component:tile",
-      "summary": "A small card in a grid (3u padding).",
-      "searchTerms": [
-        "tile",
-        "inside tile"
-      ]
-    },
     "collection": {
       "id": "context:collection",
       "host": "component:collection",
-      "summary": "A list or set of like items (2u padding).",
+      "summary": "A list or set of like items (wrapper family, 2u padding): tables, data lists.",
       "searchTerms": [
         "collection",
         "inside collection"
@@ -59,7 +50,7 @@
     "group": {
       "id": "context:group",
       "host": "component:group",
-      "summary": "Closely related controls (1u padding).",
+      "summary": "Closely related controls (wrapper family, 1u padding): toolbars, button and chip sets.",
       "searchTerms": [
         "group",
         "inside group"
@@ -90,11 +81,25 @@
       "region",
       "panel",
       "card",
-      "tile",
       "collection",
       "group"
     ],
-    "rule": "Nest outer to inner in this order; a level may be skipped. Inner radius never exceeds the outer level's (resolveContainer caps it)."
+    "families": {
+      "area": [
+        "page",
+        "region",
+        "panel"
+      ],
+      "container": [
+        "card"
+      ],
+      "wrapper": [
+        "collection",
+        "group",
+        "composite"
+      ]
+    },
+    "rule": "Areas hold containers, containers hold wrappers; a level may be skipped and a card may hold a smaller card (padding xs…xl). Radius by family: area square, container = its padding, wrapper concentric with its children (3u + padding)."
   },
   "forbidden": [
     {

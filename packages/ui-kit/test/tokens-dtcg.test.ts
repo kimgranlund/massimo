@@ -52,7 +52,7 @@ test('every alias resolves within its file set (geometry + typography + one sche
 test('types cover the system: ratios are numbers, roles are typography, ramps are oklch', () => {
   const g = JSON.parse(files['geometry.dtcg.json']), t = JSON.parse(files['typography.dtcg.json']), c = JSON.parse(files['color.dark.dtcg.json']);
   assert.equal(t.input['type-ratio'].$type, 'number');
-  assert.equal(g.input.container.card.pad.$value, 4);
+  assert.equal(g.input.container['card-md'].pad.$value, 4);
   assert.equal(c.shadow.md.$type, 'shadow');
   assert.equal(c.shadow.md.$value.length, 2);
   assert.equal(t.typography['heading-1'].$type, 'typography');

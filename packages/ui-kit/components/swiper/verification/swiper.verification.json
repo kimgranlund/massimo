@@ -10,7 +10,7 @@
     },
     {
       "path": "components/swiper/swiper.manifest.json",
-      "sha256": "a00da4f0f5bfba8487db543ddfb67c3491cd6cd015230ff3751cca43fddd3143"
+      "sha256": "748e455b8f63ba1907b528acb59370f2682e768eb68a69e2854152b450ab1bb1"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
@@ -18,7 +18,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
+      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
     }
   ],
   "renderers": {

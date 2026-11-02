@@ -13,10 +13,16 @@
       "markup": "<ui-card><span>Title</span><ui-group gap=\"1\"><ui-button>Open</ui-button><ui-button>Share</ui-button></ui-group></ui-card>"
     },
     {
+      "id": "card-padding",
+      "label": "Card padding xs…xl",
+      "subject": "component:card",
+      "markup": "<ui-card padding=\"xs\"><span>xs · 2u</span></ui-card><ui-card padding=\"sm\"><span>sm · 3u</span></ui-card><ui-card><span>md · 4u</span></ui-card><ui-card padding=\"lg\"><span>lg · 5u</span></ui-card><ui-card padding=\"xl\"><span>xl · 6u</span></ui-card>"
+    },
+    {
       "id": "nesting",
       "label": "Nesting",
       "subject": "component:page",
-      "markup": "<ui-page><ui-region><ui-panel><ui-card><ui-tile><ui-collection><ui-group><ui-badge>1</ui-badge></ui-group></ui-collection></ui-tile></ui-card></ui-panel></ui-region></ui-page>"
+      "markup": "<ui-page><ui-region><ui-panel><ui-card><ui-card padding=\"sm\"><ui-collection><ui-group><ui-badge>1</ui-badge></ui-group></ui-collection></ui-card></ui-card></ui-panel></ui-region></ui-page>"
     }
   ]
 }

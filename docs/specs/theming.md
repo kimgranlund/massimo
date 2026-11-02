@@ -16,7 +16,7 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 | `type-rhythm` | 0, 0.5, 1 (× u) | 1 |
 | `motion-scale` | 0–2 (× every duration; 0 instant) | 1 |
 | `motion-bounce` | 0–1 (overshoot: 0 critically damped, 1 as designed) | 1 |
-| `pad-<level>`, `gap-<level>` | container padding and gap in u, 0.5 steps (composite padding 0–1.5, others 0–12) | composite 0.5, group 1, collection 2, tile 3, card 4, panel 6, region 8, page 8 |
+| `pad-<level>`, `gap-<level>` | container padding and gap in u, 0.5 steps (composite padding 0–1.5, others 0–12) | composite 0.5, group 1, collection 2, card-xs 2, card-sm 3, card-md 4, card-lg 5, card-xl 6, panel 6, region 8, page 8 |
 
 Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` accepts only known parameters in range, plus `icons`), emitted as `:root[data-ui-theme="name"]`. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does.
 

@@ -16,7 +16,10 @@ import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack,
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
-const LEVELS = ['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'];
+const LEVELS = ['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'];
+// card-<p> is <ui-card padding="<p>"> (md is the plain card).
+const levelTag = (l) => l.startsWith('card-') ? 'ui-card' : `ui-${l}`;
+const levelAttr = (l) => l.startsWith('card-') && l !== 'card-md' ? ` padding="${l.slice(5)}"` : '';
 const root = document.getElementById('root');
 const r2 = (v) => Math.round(v * 100) / 100;
 const px = (v) => r2(parseFloat(v));
@@ -35,7 +38,7 @@ for (const c of cases) {
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
-    ${LEVELS.map((l) => `<ui-${l} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
+    ${LEVELS.map((l) => `<${levelTag(l)} data-level="${l}"${levelAttr(l)} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></${levelTag(l)}>`).join('')}
     ${Object.keys(TYPE_ROLES).map((r) => `<span data-type="${r}" style="display:block">Ag</span>`).join('')}
     <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
@@ -177,7 +180,7 @@ for (const c of cases) {
     checks[`type.${role}.lineHeight`] = [px(cs(el).lineHeight), r2(t.lineHeightRatio ? t.lineHeightRatio * t.size : t.lineHeight)];
   }
   for (const l of LEVELS) {
-    const el = box.querySelector(`ui-${l}`), [a, b] = el.children, h = rect(el).height;
+    const el = box.querySelector(`[data-level="${l}"]`), [a, b] = el.children, h = rect(el).height;
     const want = resolveContainer(l, { ...g, height: h });
     const between = l === 'group' ? rect(b).left - rect(a).right : rect(b).top - rect(a).bottom;
     checks[`${l}.padding`] = [px(cs(el).paddingTop), want.padding];
@@ -186,7 +189,7 @@ for (const c of cases) {
     checks[`${l}.radius`] = [r2(Math.min(px(cs(el).borderTopLeftRadius), h / 2)), r2(want.radius)];
   }
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > 0.02) fails.push(`u${c.unit}/B${c.border}/g${c.gap ?? '-'}/${c.icon} ${k}: got ${got}, want ${want}`); }
-  rows.push(`u${c.unit} B${c.border} g${c.gap ?? '-'} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]} card ${checks['card.padding'][0]}+${c.border}/${checks['card.gap'][0]}/${checks['card.radius'][0]}`);
+  rows.push(`u${c.unit} B${c.border} g${c.gap ?? '-'} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]} card ${checks['card-md.padding'][0]}+${c.border}/${checks['card-md.gap'][0]}/${checks['card-md.radius'][0]}`);
 }
 document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: total, fails, rows }, null, 1);
 </script></body></html>

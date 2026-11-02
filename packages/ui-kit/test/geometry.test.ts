@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -81,7 +81,7 @@ test('composite: 0.5u padding level, concentric radius; one-row segmented is alw
   assert.equal(c.edge, 2);
   assert.equal(c.padding, 1);
   assert.equal(c.child.height, 28);
-  assert.equal(c.radius, 14, 'composite is exempt: 3u + padding');
+  assert.equal(c.radius, 14, 'composite is a wrapper: 3u + padding');
   assert.equal(c.child.radius, 12, 'concentric: 14 - 2 = control radius');
   for (const unit of SIZES) for (const border of [0, 1]) {
     if (border > unit / 2) continue;
@@ -90,21 +90,27 @@ test('composite: 0.5u padding level, concentric radius; one-row segmented is alw
   assert.equal(resolveComposite({ unit: 4, gap: 0 }).gap, 0, 'gap override the gap');
 });
 
-test('containers: padding, gap = padding, radius at most the padding, square panel and region', () => {
-  const at4 = Object.fromEntries((['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as const).map((l) => {
+test('containers: three families: wrapper concentric, container radius = padding, area square', () => {
+  const at4 = Object.fromEntries((['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const).map((l) => {
     const c = resolveContainer(l, { unit: 4, border: 0 });
     return [l, [c.padding, c.gap, c.radius]];
   }));
-  assert.deepEqual(at4, { group: [4, 4, 4], collection: [8, 8, 8], tile: [12, 12, 12], card: [16, 16, 16], panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0] });
-  for (const l of ['group', 'collection', 'tile', 'card'] as const) assert.equal(CONTAINERS[l].maxRadius, CONTAINERS[l].padding, `${l} radius = padding`);
-  assert.equal(CONTAINERS.composite.maxRadius, 3 + CONTAINERS.composite.padding, 'composite is exempt: concentric with its controls');
-  assert.equal(resolveContainer('card', { unit: 4, radiusScale: 3 }).radius, 16, 'corner scale cannot raise the radius past the padding');
-  assert.equal(resolveContainer('card', { unit: 4, radiusScale: 0.5 }).radius, 8, 'corner scale lowers it');
-  const card = resolveContainer('card', { unit: 5, gap: 2 });
+  assert.deepEqual(at4, {
+    group: [4, 4, 16], collection: [8, 8, 20],
+    'card-xs': [8, 8, 8], 'card-sm': [12, 12, 12], 'card-md': [16, 16, 16], 'card-lg': [20, 20, 20], 'card-xl': [24, 24, 24],
+    panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0],
+  });
+  for (const [l, c] of Object.entries(CONTAINERS)) {
+    const want = c.family === 'area' ? 0 : c.family === 'wrapper' ? 3 + c.padding : c.padding;
+    assert.equal(c.maxRadius, want, `${l} (${c.family}) max radius`);
+  }
+  assert.deepEqual(CARD_PADDINGS.map((p) => CONTAINERS[`card-${p}`].padding), [2, 3, 4, 5, 6], 'card xs…xl = 2…6u');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3 }).radius, 16, 'corner scale cannot raise a container past its padding');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 8, 'corner scale lowers it');
+  assert.equal(resolveContainer('group', { unit: 4, radiusScale: 2 }).radius, 32, 'wrappers follow the corner scale (concentric)');
+  const card = resolveContainer('card-md', { unit: 5, gap: 2 });
   assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gap="2">');
-  assert.equal(resolveContainer('card', { unit: 4, height: 20 }).radius, 10, 'half-height cap');
-  assert.equal(resolveContainer('card', { unit: 4, border: 1 }).padding, 15, 'border lives inside the padding');
-  assert.equal(resolveContainer('card', U4).padding, 16, 'default border is 0');
+  assert.equal(resolveContainer('group', { unit: 4, height: 20 }).radius, 10, 'half-height cap');
 });
 
 test('sizes run to 12', () => {
@@ -184,6 +190,6 @@ test('Panda spacing, sizes and radii are in u and recompute in sized subtrees', 
   assert.match((spacing as any).inset.page.value, /var\(--ui-pad-page\).*var\(--ui-border\)/);
   assert.match((radii as any).md.value, /1\.5 \* var\(--ui-unit\) \* var\(--ui-radius-scale\)/);
   const vars = unitTokenVars();
-  for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card', '--sizes-6', '--radii-lg', '--font-sizes-sm']) assert.ok(name in vars, name);
+  for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card-md', '--sizes-6', '--radii-lg', '--font-sizes-sm']) assert.ok(name in vars, name);
   assert.deepEqual((geometry as any)[':where([size], [data-size])'], vars);
 });

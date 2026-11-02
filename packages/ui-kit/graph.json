@@ -31,14 +31,19 @@
     },
     "component:card": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/3",
+      "source": "components/container/container.manifest.json#/nodes/2",
       "availability": "css-only",
       "tag": "ui-card",
       "searchTerms": [
         "card",
         "card container",
+        "card padding",
         "container",
-        "layout"
+        "layout",
+        "small card",
+        "surface",
+        "thumbnail",
+        "tile"
       ]
     },
     "component:checkbox": {
@@ -145,7 +150,7 @@
     },
     "component:page": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/6",
+      "source": "components/container/container.manifest.json#/nodes/5",
       "availability": "css-only",
       "tag": "ui-page",
       "searchTerms": [
@@ -170,7 +175,7 @@
     },
     "component:panel": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/4",
+      "source": "components/container/container.manifest.json#/nodes/3",
       "availability": "css-only",
       "tag": "ui-panel",
       "searchTerms": [
@@ -219,7 +224,7 @@
     },
     "component:region": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/5",
+      "source": "components/container/container.manifest.json#/nodes/4",
       "availability": "css-only",
       "tag": "ui-region",
       "searchTerms": [
@@ -303,18 +308,6 @@
         "token"
       ]
     },
-    "component:tile": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/2",
-      "availability": "css-only",
-      "tag": "ui-tile",
-      "searchTerms": [
-        "tile",
-        "tile container",
-        "container",
-        "layout"
-      ]
-    },
     "context:card": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/card",
@@ -385,15 +378,6 @@
       "searchTerms": [
         "region",
         "inside region"
-      ]
-    },
-    "context:tile": {
-      "kind": "context",
-      "source": "contracts/composition.json#/contexts/tile",
-      "availability": "implemented",
-      "searchTerms": [
-        "tile",
-        "inside tile"
       ]
     },
     "foundation:colors": {
@@ -1038,11 +1022,6 @@
     {
       "from": "component:badge",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:badge",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -1179,11 +1158,6 @@
       "from": "component:tag",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:tag",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:tag",
@@ -1318,11 +1292,6 @@
     {
       "from": "component:chip",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:chip",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -1448,11 +1417,6 @@
     {
       "from": "component:button",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:button",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -1579,11 +1543,6 @@
       "from": "component:checkbox",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:checkbox",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:checkbox",
@@ -1718,11 +1677,6 @@
     {
       "from": "component:radio",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:radio",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -1839,11 +1793,6 @@
       "from": "component:switch",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:switch",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:switch",
@@ -1948,11 +1897,6 @@
     {
       "from": "component:swatch",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:swatch",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -2043,11 +1987,6 @@
     {
       "from": "component:palette",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:palette",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -2128,11 +2067,6 @@
     {
       "from": "component:group",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -2202,133 +2136,68 @@
     },
     {
       "from": "component:collection",
-      "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:collection",
       "relation": "establishes",
       "to": "context:collection"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:colors"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:typography"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:geometry"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:motion"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:states"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesGeometry",
       "to": "geometry:container"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesTokens",
       "to": "tokens:color-roles"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesTokens",
       "to": "tokens:geometry"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:page"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:region"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:panel"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:tile",
-      "relation": "establishes",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:region"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:panel"
     },
     {
       "from": "component:card",
@@ -2558,11 +2427,6 @@
     {
       "from": "component:image",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:image",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -2703,11 +2567,6 @@
     {
       "from": "component:input",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:input",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -2813,11 +2672,6 @@
     {
       "from": "component:listbox",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:listbox",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -2909,11 +2763,6 @@
       "from": "component:segmented",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:segmented",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:segmented",
@@ -3128,11 +2977,6 @@
     {
       "from": "component:range",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:range",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -3229,11 +3073,6 @@
       "from": "component:progress",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:progress",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:progress",
@@ -3378,11 +3217,6 @@
     {
       "from": "component:select",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:select",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -3504,11 +3338,6 @@
       "from": "component:swiper",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:swiper",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:swiper",

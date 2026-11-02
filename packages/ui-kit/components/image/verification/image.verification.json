@@ -14,7 +14,7 @@
     },
     {
       "path": "components/image/image.manifest.json",
-      "sha256": "0ce4e0e148c92662c60ed48247b5823469782813149087bf5ce09af2172720c2"
+      "sha256": "ae38eb049f54616c9a75c7371c57555656b529376d50e13e48e8af17de5cb8fc"
     },
     {
       "path": "components/image/image.react.tsx",
@@ -22,7 +22,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
+      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
     },
     {
       "path": "components/swiper/swiper.react.tsx",

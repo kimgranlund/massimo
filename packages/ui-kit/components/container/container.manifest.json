@@ -160,78 +160,32 @@
       ]
     },
     {
-      "id": "component:tile",
-      "kind": "component",
-      "status": "implemented",
-      "tag": "ui-tile",
-      "contract": "../../contracts/components.json#/components/tile",
-      "intent": [
-        "Present one small item in a grid"
-      ],
-      "properties": [],
-      "attributes": [
-        {
-          "name": "gap",
-          "type": "number",
-          "readBy": "css",
-          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
-          "inspector": {
-            "control": "number",
-            "min": 0,
-            "max": 8,
-            "step": 0.5
-          }
-        },
-        {
-          "name": "size",
-          "type": "number",
-          "readBy": "css",
-          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
-          "inspector": {
-            "control": "number",
-            "min": 2,
-            "max": 12,
-            "step": 0.5
-          }
-        }
-      ],
-      "events": [],
-      "semantics": {
-        "role": null,
-        "formAssociated": false
-      },
-      "content": {
-        "ownership": "consumer",
-        "acceptsChildren": true,
-        "children": "Any flow content."
-      },
-      "layout": {
-        "display": "flex",
-        "sizing": "fill"
-      },
-      "constraints": [
-        "CSS-only tag: no script, nothing to register. 3u padding, radius up to 6u.",
-        "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
-      ],
-      "avoidWhen": [],
-      "searchTerms": [
-        "tile",
-        "tile container",
-        "container",
-        "layout"
-      ]
-    },
-    {
       "id": "component:card",
       "kind": "component",
       "status": "implemented",
       "tag": "ui-card",
       "contract": "../../contracts/components.json#/components/card",
       "intent": [
-        "Present a self-contained piece of content"
+        "Present a self-contained piece of content on a rounded surface; padding xs…xl sizes it, from thumbnails (xs) to hero or dialog surfaces (xl)"
       ],
       "properties": [],
       "attributes": [
+        {
+          "name": "padding",
+          "type": "string",
+          "readBy": "css",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "description": "Padding level of the card: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u, from the theme parameters pad-card-<level>. The radius equals the padding (a container is never rounder than it is deep). A card inside a card takes the base fill.",
+          "inspector": {
+            "control": "select"
+          }
+        },
         {
           "name": "gap",
           "type": "number",
@@ -279,8 +233,13 @@
       "searchTerms": [
         "card",
         "card container",
+        "card padding",
         "container",
-        "layout"
+        "layout",
+        "small card",
+        "surface",
+        "thumbnail",
+        "tile"
       ]
     },
     {
@@ -540,11 +499,6 @@
     {
       "from": "component:group",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -614,133 +568,68 @@
     },
     {
       "from": "component:collection",
-      "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:collection",
       "relation": "establishes",
       "to": "context:collection"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:colors"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:typography"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:geometry"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:motion"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesFoundation",
       "to": "foundation:states"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesGeometry",
       "to": "geometry:container"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesTokens",
       "to": "tokens:color-roles"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "usesTokens",
       "to": "tokens:geometry"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:page"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:region"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:panel"
     },
     {
-      "from": "component:tile",
+      "from": "component:card",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:tile",
-      "relation": "establishes",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:region"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:panel"
     },
     {
       "from": "component:card",
@@ -910,7 +799,6 @@
       "exports": {
         "component:group": "Group",
         "component:collection": "Collection",
-        "component:tile": "Tile",
         "component:card": "Card",
         "component:panel": "Panel",
         "component:region": "Region",
@@ -936,22 +824,14 @@
             "size?: number"
           ]
         },
-        "component:tile": {
-          "inherits": [
-            "HTMLAttributes<HTMLDivElement>"
-          ],
-          "props": [
-            "gap?: number",
-            "size?: number"
-          ]
-        },
         "component:card": {
           "inherits": [
             "HTMLAttributes<HTMLDivElement>"
           ],
           "props": [
             "gap?: number",
-            "size?: number"
+            "size?: number",
+            "padding?: CardPadding // Padding level: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; the radius equals the padding."
           ]
         },
         "component:panel": {

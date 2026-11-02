@@ -18,7 +18,7 @@
     },
     {
       "path": "components/btg/btg.manifest.json",
-      "sha256": "73e0a73975a789f43629e94d1f8a38e7fa563705cddd6c7793e9d78d0b8eab42"
+      "sha256": "c7a116c57c8a604094118bee5467107c3232c25d5fc30371f2278452053085cc"
     },
     {
       "path": "components/btg/btg.react.tsx",
@@ -30,7 +30,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
+      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
     }
   ],
   "renderers": {

@@ -449,11 +449,6 @@
     {
       "from": "component:badge",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:badge",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -590,11 +585,6 @@
       "from": "component:tag",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:tag",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:tag",
@@ -725,11 +715,6 @@
       "from": "component:chip",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:chip",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:chip",

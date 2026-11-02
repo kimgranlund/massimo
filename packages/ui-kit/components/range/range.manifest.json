@@ -461,11 +461,6 @@
     {
       "from": "component:range",
       "relation": "allowedIn",
-      "to": "context:tile"
-    },
-    {
-      "from": "component:range",
-      "relation": "allowedIn",
       "to": "context:collection"
     },
     {
@@ -562,11 +557,6 @@
       "from": "component:progress",
       "relation": "allowedIn",
       "to": "context:card"
-    },
-    {
-      "from": "component:progress",
-      "relation": "allowedIn",
-      "to": "context:tile"
     },
     {
       "from": "component:progress",

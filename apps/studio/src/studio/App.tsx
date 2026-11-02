@@ -24,7 +24,7 @@ import * as s from './styles.ts';
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
 const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
 const MOTION: ParamName[] = ['motion-scale', 'motion-bounce'];
-const LEVELS = ['composite', 'group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as const;
+const LEVELS = ['composite', 'group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const;
 const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
 
 const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` : r[0].toUpperCase() + r.slice(1);

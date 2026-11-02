@@ -5,15 +5,18 @@
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
 import { unitTokenVars } from '../tokens/geometry/index.ts';
-import { CONTAINERS, GAPS, ICON_STEPS, SIZES, SQUARE_LEVELS } from '../tokens/geometry/resolve.ts';
+import { CONTAINERS, GAPS, ICON_STEPS, SIZES, levelTag } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
 export const BTG = ':is(ui-badge, ui-tag, ui-chip)';
 const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
-export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
-const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
+// Selector per level: card-md is the plain ui-card; the other card levels add [padding=xs|sm|lg|xl].
+const levelSelector = (k: (typeof LAYOUT)[number]) => k === 'card-md' ? 'ui-card' : k.startsWith('card-') ? `ui-card[padding=${k.slice(5)}]` : `ui-${k}`;
+const LAYOUT_TAGS = [...new Set(LAYOUT.map(levelTag))];
+export const LAYOUT_CONTAINERS = `:is(${LAYOUT_TAGS.join(', ')})`;
+const CONTAINER_TAGS = `:where(${LAYOUT_TAGS.join(', ')}, ui-listbox, ui-segmented, ui-select)`;
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
 // Slotted hosts: buttons, options, and the input control and select trigger, which are laid out as
@@ -143,19 +146,25 @@ export const geometry = defineGlobalStyles({
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--lu)))',
   },
 
-  // Layout containers: padding level p and max radius r (units of u), see CONTAINERS.
-  // Padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the radius
-  // is at most the padding (corner scale lowers it, never raises it). The gap attribute wins.
-  ...Object.fromEntries(LAYOUT.map((k) => [`ui-${k}`, {
-    '--cp': `var(--ui-pad-${k})`,
-    '--cg': `var(--ui-gap-${k})`,
-    '--cm': SQUARE_LEVELS.has(k) ? '0' : `var(--ui-pad-${k})`,
-  }])),
+  // Layout containers, three families (tokens/geometry/resolve.ts CONTAINERS). Padding and gap come
+  // from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the gap attribute wins. Radius:
+  // wrapper (group, collection) concentric with 3u children, (3 + p)u × s; container (card) at most
+  // its padding, p·u × min(1, s); area (panel, region, page) square.
+  ...Object.fromEntries(LAYOUT.map((k) => {
+    const family = CONTAINERS[k].family;
+    return [levelSelector(k), {
+      '--cp': `var(--ui-pad-${k})`,
+      '--cg': `var(--ui-gap-${k})`,
+      '--cr': family === 'area' ? '0px'
+        : family === 'wrapper' ? `calc((3 + var(--ui-pad-${k})) * var(--u) * var(--ui-radius-scale))`
+        : `calc(var(--ui-pad-${k}) * var(--u) * min(1, var(--ui-radius-scale)))`,
+    }];
+  })),
   [LAYOUT_CONTAINERS]: {
     padding: 'max(0px, calc(var(--cp) * var(--u) - var(--b)))',
     gap: 'calc(var(--ui-gap, var(--cg)) * var(--u))',
     borderWidth: 'var(--b)',
-    borderRadius: 'calc(var(--cm) * var(--u) * min(1, var(--ui-radius-scale)))',
+    borderRadius: 'var(--cr)',
   },
 
   // Choices: a 6u row; the 5u box (9u wide for switch) sits in the 6u leading slot.
