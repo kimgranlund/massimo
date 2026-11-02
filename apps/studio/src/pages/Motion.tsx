@@ -12,29 +12,14 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
-import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import { INTENTS, SPRING_NAMES, intentSpring, liveMotion, spanFactor, springAt, type IntentName, type SpringName } from '@massimo/ui-kit/tokens';
 import { useEvent } from '../studio/wc.tsx';
 import type { PageProps } from './types.ts';
-import { dataTable, nameCell, noteCell, tableScroller } from './shared.tsx';
+import { CQ_LG, CQ_MD, Divider, Page, Section, caption, dataTable, nameCell, noteCell, tableScroller } from './shared.tsx';
 
 // The demo column holds a replayable thumb track.
 const thumbCell = css({ width: '[14rem]', minWidth: '[10rem]' });
 
-const shell = pageLayout({ width: '[80rem]' });
-const canvasQuery = css({ containerType: 'inline-size', containerName: 'motion' });
-const CQ_MD = '@container motion (min-width: 40rem)';
-const CQ_LG = '@container motion (min-width: 64rem)';
-const header = css({ display: 'flex', flexDirection: 'column', gap: '4' });
-const pageTitle = css({ textStyle: 'display' });
-const lead = css({ textStyle: 'body-large', color: 'fg.muted', maxWidth: 'prose' });
-const note = css({ textStyle: 'body', color: 'fg', bg: 'bg.muted', borderRadius: 'md', padding: '3', maxWidth: 'prose' });
-const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: 'full' });
-const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
-const sectionHead = css({ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '4', flexWrap: 'wrap' });
-const sectionText = css({ display: 'flex', flexDirection: 'column', gap: '1' });
-const sectionTitle = css({ textStyle: 'heading-2' });
-const caption = css({ textStyle: 'caption', color: 'fg.muted' });
 const grid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' }, [CQ_LG]: { gridTemplateColumns: 'repeat(4, 1fr)' } });
 const cardHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '2' });
 const cardTitle = css({ textStyle: 'heading-3' });
@@ -137,17 +122,6 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-function Section({ title, note: text, action, children }: { title: string; note: string; action?: ReactNode; children: ReactNode }) {
-  return (
-    <section className={section}>
-      <div className={sectionHead}>
-        <div className={sectionText}><h2 className={sectionTitle}>{title}</h2><p className={caption}>{text}</p></div>
-        {action}
-      </div>
-      {children}
-    </section>
-  );
-}
 
 // Sample slides as inline SVG gradients (no network).
 const art = (a: string, b: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="450" fill="url(#g)"/></svg>`)}`;
@@ -171,7 +145,7 @@ function ComponentDemos() {
     </ui-card>
   );
   return (
-    <Section title="In components" note="Replay flips every demo at once; each transition runs on its intent. All of them are live controls too." action={<ReplayButton onReplay={flip} primary />}>
+    <Section id="in-components" title="In components" note="Replay flips every demo at once; each transition runs on its intent. All of them are live controls too." action={<ReplayButton onReplay={flip} primary />}>
       <div className={demos}>
         {demo('Switch', 'toggle', <div className={row}><ui-switch checked={on}>Wi-Fi</ui-switch><ui-switch checked={!on}>Bluetooth</ui-switch></div>)}
         {demo('Radio', 'toggle', <div className={row}><ui-radio name="motion-plan" value="free" checked={!on}>Free</ui-radio><ui-radio name="motion-plan" value="pro" checked={on}>Pro</ui-radio></div>)}
@@ -203,24 +177,18 @@ export function MotionPage({ params }: PageProps) {
   const scale = params['motion-scale'];
 
   return (
-    <div className={canvasQuery}>
-      <div className={shell}>
-        <header className={header}>
-          <h1 className={pageTitle}>Motion</h1>
-          <p className={lead}>
-            Four springs, each a perceptual duration and a bounce, solved in CSS into a linear() easing that spans the time the spring takes to settle.
-            Components never name a spring: they name an intent, and each intent runs one spring. Tune all of it in the Motion tab.
-          </p>
-          {reduced && (
-            <p className={note} role="status">
-              Reduced motion is on: the kit collapses every transition to an instant change, so the thumbs and demos below jump. The plots still show each curve as tuned.
-            </p>
-          )}
-          {scale === 0 && !reduced && <p className={note} role="status">Duration scale is 0: every transition is instant.</p>}
-        </header>
+    <Page
+      title="Motion"
+      lead="Four springs, each a perceptual duration and a bounce, solved in CSS into a linear() easing that spans the time the spring takes to settle. Components never name a spring: they name an intent, and each intent runs one spring. Tune all of it in the Motion tab."
+      notices={[
+        reduced && 'Reduced motion is on: the kit collapses every transition to an instant change, so the thumbs and demos below jump. The plots still show each curve as tuned.',
+        scale === 0 && !reduced && 'Duration scale is 0: every transition is instant.',
+      ]}
+    >
 
-        <hr className={divider} />
+        <Divider />
         <Section
+          id="springs"
           title="Springs"
           note={`Plot: the linear() samples the CSS computes (dots) over the continuously solved spring (wide line); the dashed line is rest, the tick the perceptual duration. Spans include the ${scale}× duration scale.`}
           action={<ReplayButton onReplay={() => replay(springsRef.current)} label="Replay all" />}
@@ -247,8 +215,9 @@ export function MotionPage({ params }: PageProps) {
           </div>
         </Section>
 
-        <hr className={divider} />
+        <Divider />
         <Section
+          id="intents"
           title="Intents"
           note="What a transition is for. Each intent runs the spring the Motion tab picks for it; the thumb runs on the intent's own tokens."
           action={<ReplayButton onReplay={() => replay(intentsRef.current)} label="Replay all" />}
@@ -274,9 +243,8 @@ export function MotionPage({ params }: PageProps) {
           </div>
         </Section>
 
-        <hr className={divider} />
+        <Divider />
         <ComponentDemos />
-      </div>
-    </div>
+    </Page>
   );
 }

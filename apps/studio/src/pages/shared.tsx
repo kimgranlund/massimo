@@ -19,6 +19,10 @@ export const lead = css({ textStyle: 'body-large', color: 'fg.muted', maxWidth: 
 const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: 'full' });
 const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const sectionHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
+// A section header with an action (e.g. Replay): text on the start, the action at the end.
+const sectionHeadRow = css({ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '4', flexWrap: 'wrap' });
+/** A status note under a page lead (e.g. reduced motion is on). */
+const notice = css({ textStyle: 'body', color: 'fg', bg: 'bg.muted', borderRadius: 'md', padding: '3', maxWidth: 'prose' });
 const sectionTitle = css({ textStyle: 'heading-2' });
 const sectionTags = css({ textStyle: 'code', color: 'fg.muted' });
 export const caption = css({ textStyle: 'caption', color: 'fg.muted' });
@@ -32,26 +36,30 @@ export const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', a
 export const metrics = css({ textStyle: 'code', color: 'fg.muted' });
 
 /** A content page: the page frame with a title and lead, then its sections. */
-export function Page({ title, lead: text, children }: { title: string; lead: ReactNode; children: ReactNode }) {
+export function Page({ title, lead: text, notices, children }: { title: string; lead: ReactNode; notices?: ReactNode[]; children: ReactNode }) {
   return (
     <main className={shell}>
       <header className={header}>
         <h1 className={pageTitle}>{title}</h1>
         <p className={lead}>{text}</p>
+        {notices?.filter(Boolean).map((n, i) => <p key={i} className={notice} role="status">{n}</p>)}
       </header>
       {children}
     </main>
   );
 }
 
-export function Section({ id, title, tags, children, note, className }: { id: string; title: string; tags?: string; note: string; children: ReactNode; className?: string }) {
+export function Section({ id, title, tags, children, note, action, className }: { id: string; title: string; tags?: string; note: string; action?: ReactNode; children: ReactNode; className?: string }) {
+  const text = (
+    <div className={sectionHead}>
+      <h2 id={id} className={sectionTitle}>{title}</h2>
+      {tags && <span className={sectionTags}>{tags}</span>}
+      <p className={caption}>{note}</p>
+    </div>
+  );
   return (
     <section className={cx(section, className)} aria-labelledby={id}>
-      <header className={sectionHead}>
-        <h2 id={id} className={sectionTitle}>{title}</h2>
-        {tags && <span className={sectionTags}>{tags}</span>}
-        <p className={caption}>{note}</p>
-      </header>
+      {action ? <header className={sectionHeadRow}>{text}{action}</header> : <header>{text}</header>}
       {children}
     </section>
   );
