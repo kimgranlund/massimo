@@ -102,6 +102,10 @@ const campaign = css({ justifyContent: 'space-between', minHeight: '[20rem]' });
 // Type roles only: kickers, display, headings and figures come from the typography system.
 const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
 const sectionKicker = css({ textStyle: 'section-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
+// Section kickers on neutral surfaces sit one step weaker than body text (neutral 11); on colored
+// surfaces their tone sets the color.
+const kickerInk = css({ color: 'fg.muted' });
+const roleInk = (role: string) => role === 'section-kicker' ? kickerInk : undefined;
 // Display needs the width: below the medium canvas the campaign title steps down to heading-1.
 const display = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
 const bodyLarge = css({ textStyle: 'body-large' });
@@ -759,7 +763,7 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
               </div>
               {role === 'code'
                 ? <div data-type={role} className={codeSample}>{SAMPLES[role]}</div>
-                : <div className={cx(rhythmSample, grid && !t.lineHeightRatio ? rhythmGrid : undefined)}><div data-type={role} className={rhythmText}>{SAMPLES[role]}</div></div>}
+                : <div className={cx(rhythmSample, grid && !t.lineHeightRatio ? rhythmGrid : undefined)}><div data-type={role} className={cx(rhythmText, roleInk(role))}>{SAMPLES[role]}</div></div>}
             </div>
           );
         })}
@@ -770,7 +774,7 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
           {ARTICLE.map(([role, Tag, text]) => (
             <Fragment key={role}>
               <span className={articleRole} aria-hidden="true">{role}</span>
-              <Tag data-type={role}>{text}</Tag>
+              <Tag data-type={role} className={roleInk(role)}>{text}</Tag>
             </Fragment>
           ))}
         </article>
