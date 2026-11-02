@@ -51,8 +51,8 @@ const tokenRow = css({ '& > :first-child': { textStyle: 'label', fontWeight: 'se
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const tileRow = css({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
-const wideCol = css({ minWidth: '[16rem]', bg: 'bg.muted', borderRadius: 'lg' });
-const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1', bg: 'bg.muted', borderRadius: 'lg' });
+const wideCol = css({ minWidth: '[16rem]', bg: 'bg.muted' });
+const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
 const ramp = css({ width: 'full' });
@@ -494,7 +494,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
         </Row>
       </Section>
       <Divider />
-      <Section id="nesting" title="Nesting" note="page › region › panel › card › collection › tile › group: each level pads its children and radii stay concentric down to the control.">
+      <Section id="nesting" title="Nesting" note="page › region › panel › card › tile › collection › group: each level pads its children and radii stay concentric down to the control.">
         <ui-page className={miniPage} aria-label="Page example">
           <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
           <ui-region aria-label="Region example" className={tinted}>
@@ -504,14 +504,19 @@ function ContainerSections({ params }: { params: ThemeParams }) {
               <div className={columns}>
                 <ui-card>
                   <span className={kicker}>Card · Team</span>
-                  <ui-collection>
-                    {['Ada', 'Grace', 'Linus'].map((n) => (
-                      <ui-tile key={n} className={tileRow}>
-                        <span>{n}</span>
-                        <ui-group><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-group>
-                      </ui-tile>
-                    ))}
-                  </ui-collection>
+                  {[['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]].map(([team, people]) => (
+                    <ui-tile key={team as string}>
+                      <span className={kicker}>Tile · {team}</span>
+                      <ui-collection>
+                        {(people as string[]).map((n) => (
+                          <div key={n} className={tileRow}>
+                            <span>{n}</span>
+                            <ui-group><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-group>
+                          </div>
+                        ))}
+                      </ui-collection>
+                    </ui-tile>
+                  ))}
                 </ui-card>
                 <ui-card>
                   <span className={kicker}>Card · Details</span>
@@ -525,21 +530,23 @@ function ContainerSections({ params }: { params: ThemeParams }) {
         </ui-page>
       </Section>
       <Divider />
-      <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack tiles at the collection gap.">
+      <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack like items at the collection gap, inside a tile or card (the ladder: card › tile › collection › group).">
         <Row label="buttons"><ui-group><ui-button>Bold</ui-button><ui-button>Italic</ui-button><ui-button>Underline</ui-button></ui-group></Row>
         <Row label="chips"><ui-group>{['Design', 'Engineering', 'Research', 'Ops'].map((t, i) => <ui-chip key={t} selectable selected={i === 0 || undefined}>{t}</ui-chip>)}</ui-group></Row>
         <Row label="tags"><ui-group>{['Spring', 'Draft', 'Shared'].map((t) => <ui-tag key={t}>{t}</ui-tag>)}</ui-group></Row>
-        <Row label="tiles">
-          <ui-collection className={wideCol}>
-            {['Inbox · 12', 'Drafts · 3', 'Archive'].map((t) => <ui-tile key={t}>{t}</ui-tile>)}
-          </ui-collection>
+        <Row label="collection in a tile">
+          <ui-tile className={wideCol}>
+            <ui-collection>
+              {['Inbox · 12', 'Drafts · 3', 'Archive'].map((t) => <span key={t}>{t}</span>)}
+            </ui-collection>
+          </ui-tile>
         </Row>
         <Row label="tile grid">
-          <ui-collection className={tileGrid}>
+          <ui-card className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
               <ui-tile key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-tile>
             ))}
-          </ui-collection>
+          </ui-card>
         </Row>
       </Section>
       <Divider />
@@ -568,8 +575,8 @@ function ContainerSections({ params }: { params: ThemeParams }) {
 const USED_BY: Record<keyof typeof CONTAINERS, string> = {
   composite: 'listbox, segmented, select popup',
   group: 'inline sets: buttons, chips, tags',
-  collection: 'stacks and grids of tiles',
-  tile: 'list rows, thumbnails',
+  collection: 'lists of like items, inside a tile or card',
+  tile: 'thumbnails, grouped lists',
   card: 'self-contained content',
   panel: 'sidebars, workspaces',
   region: 'page areas',
