@@ -57,9 +57,10 @@
       "id": "geometry:btg",
       "resolver": [
         "resolveBtg",
-        "btgHeights"
+        "btgHeights",
+        "resolveTextRun"
       ],
-      "summary": "Badge, tag and chip heights on the 12px + k·u ladder; slots one u below the element. Label-wrapper padding: the host keeps 0.5u − B; badge, tag and chip labels 1u on both sides; text parts 0.5u apart.",
+      "summary": "Badge, tag and chip heights on the 12px + k·u ladder. Spacing uses a local unit u′ = height / 8: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides, text parts 0.5u′ apart.",
       "members": [
         "component:badge",
         "component:tag",

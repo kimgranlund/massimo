@@ -25,7 +25,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-switch` | `role=switch`; Space/Enter toggle | `checked` |
 | `ui-range` | `role=slider`; arrows, Page Up/Down (10%), Home/End, drag; exposes `--ui-ratio` | `value`, `min`, `max`, `step`, `label`, `value-text` |
 | `ui-progress` | `role=progressbar`; indeterminate without `value` | `value`, `max`, `label` |
-| `ui-badge` | static label with the construction pattern; never narrower than tall | `icon-size` |
+| `ui-badge` | static label with the construction pattern; never narrower than tall; spacing in u′ = height / 8 | `icon-size` |
 | `ui-tag` | static label with slots | `icon-size` |
 | `ui-chip` | `role=button`; `selectable` toggles `aria-pressed`; `removable` adds ✕, Delete/Backspace fire cancelable `remove` | `selectable`, `selected`, `removable`, `disabled` |
 | `ui-swatch` | a color chip over a checkerboard; `role=img` | `color`, `label` |

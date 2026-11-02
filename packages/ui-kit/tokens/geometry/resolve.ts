@@ -205,13 +205,15 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
   const u = x.unit, b = x.border;
   const height = btgHeights(u)[kind];
   const fontSize = { chip: 10 + u, tag: 10 + 0.5 * u, badge: 10 }[kind];
-  // Slots are one u below the element (the next level's height; badge: badge − u).
-  const slot = height - u;
-  // Label wrapper padding: 1u on both sides (beside a slot too). Text parts 0.5u apart.
-  const pad = Math.max(0, 0.5 * u - b);
-  const edges = { bareEdge: u, slotEdge: u, between: 0.25 * u };
+  // Spacing uses the local unit u′ = height / 8 (a control is 8u tall), so each element is spaced
+  // like a scaled-down control: host 0.5u′ − B, slot = height − u′, labels 1u′ on both sides
+  // (beside a slot too), text parts 0.5u′ apart.
+  const lu = height / 8;
+  const slot = height - lu;
+  const pad = Math.max(0, 0.5 * lu - b);
+  const edges = { bareEdge: lu, slotEdge: lu, between: 0.25 * lu };
   return {
-    unit: u, border: b, height, fontSize, slot,
+    unit: u, localUnit: lu, border: b, height, fontSize, slot,
     minWidth: height,
     padding: pad,
     ...edges,

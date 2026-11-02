@@ -109,26 +109,28 @@ export const geometry = defineGlobalStyles({
     '--chip-h': 'min(calc(12px + 3 * var(--u)), calc(8 * var(--u)))',
     '--tag-h': 'min(calc(12px + 2 * var(--u)), calc(var(--chip-h) - var(--u)))',
     '--badge-h': 'min(calc(12px + var(--u)), calc(var(--tag-h) - var(--u)))',
-    '--pad': 'max(0px, calc(0.5 * var(--u) - var(--b)))',
-    '--slot': 'calc(var(--h) - var(--u))',
+    // Local unit u′ = height / 8 (a control is 8u tall): spacing is relative to each element's size.
+    '--lu': 'calc(var(--h) / 8)',
+    '--pad': 'max(0px, calc(0.5 * var(--lu) - var(--b)))',
+    '--slot': 'calc(var(--h) - var(--lu))',
     height: 'var(--h)', minWidth: 'var(--h)', borderWidth: 'var(--b)', borderRadius: 'var(--radius)',
     fontSize: 'var(--font)', padding: 'var(--pad)',
   },
   'ui-chip': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
   'ui-tag': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
   'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', justifyContent: 'center' },
-  // Label wrapper padding (resolveBtg): the host keeps 0.5u − B; badge, tag and chip labels carry
-  // 1u on both sides (beside a slot too). Text parts sit 0.5u apart.
+  // Label wrapper padding (resolveBtg), in the local unit u′: the host keeps 0.5u′ − B; labels carry
+  // 1u′ on both sides (beside a slot too). Text parts sit 0.5u′ apart.
   [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
   // Chip centers its text with block padding; tag and badge need none, the row centers it.
-  ...textRun('ui-chip', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--u))'),
-  ...textRun('ui-tag', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
-  ...textRun('ui-badge', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
-  // Fill slots nest inside the 0.5u edge.
+  ...textRun('ui-chip', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--lu))'),
+  ...textRun('ui-tag', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
+  ...textRun('ui-badge', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
+  // Fill slots nest inside the 0.5u′ edge.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${BTG} > ${SLOT}, ${BTG}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
-    borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))',
+    borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--lu)))',
   },
 
   // Layout containers: padding level p and max radius r (units of u), see CONTAINERS.

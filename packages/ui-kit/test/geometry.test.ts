@@ -125,21 +125,22 @@ test('badge / tag / chip: 12 + k·u with the cap; your u=3, 4, 5 values hold', (
 test('badge / tag / chip: text, slots, padding', () => {
   const chip = resolveBtg('chip', { border: 1 }), tag = resolveBtg('tag', { border: 1 }), badge = resolveBtg('badge', { border: 1 });
   assert.deepEqual([chip.fontSize, tag.fontSize, badge.fontSize], [14, 12, 10]);
-  assert.equal(chip.slot, tag.height, 'chip slot holds a tag');
-  assert.equal(tag.slot, badge.height, 'tag slot holds a badge');
-  assert.equal(chip.padding, 1, '0.5u minus the 1px border');
+  // Local unit u′ = height / 8: chip 24 → 3, tag 20 → 2.5, badge 16 → 2 (u = 4).
+  assert.deepEqual([chip.localUnit, tag.localUnit, badge.localUnit], [3, 2.5, 2]);
+  assert.deepEqual([chip.slot, tag.slot, badge.slot], [21, 17.5, 14], 'slot = height − u′');
+  assert.equal(chip.padding, 0.5, '0.5u′ minus the 1px border');
   assert.equal(chip.slot + 2 * chip.padding + 2 * chip.border, chip.height, 'border + padding + slot = height');
   assert.equal(chip.iconSize, 16);
   assert.equal(tag.iconSize, 14);
+  for (const k of [chip, tag, badge]) assert.equal(k.slot + 2 * k.padding + 2 * k.border, k.height, 'border + padding + slot = height');
   assert.equal(badge.radius, 8, 'pill');
-  assert.equal(badge.slot, badge.height - 4, 'badge slot is one u below the badge');
 });
 
-test('badge / tag / chip label wrapper: 1u on both sides', () => {
-  const u = 4, tag = resolveBtg('tag'), badge = resolveBtg('badge'), chip = resolveBtg('chip');
-  assert.deepEqual([tag.bareEdge, tag.slotEdge, tag.between], [u, u, u / 4]);
-  assert.deepEqual([badge.bareEdge, badge.slotEdge, badge.between], [u, u, u / 4]);
-  assert.deepEqual([chip.bareEdge, chip.slotEdge, chip.between], [u, u, u / 4]);
-  assert.deepEqual(resolveTextRun({ leading: true }, { bareEdge: tag.bareEdge, slotEdge: tag.slotEdge, between: tag.between }).contents, { start: u, end: u });
+test('badge / tag / chip label wrapper: 1u′ on both sides, u′ = height / 8', () => {
+  for (const kind of ['chip', 'tag', 'badge'] as const) for (const u of [2, 3, 4, 6]) {
+    const k = resolveBtg(kind, { unit: u }), lu = k.height / 8;
+    assert.deepEqual([k.localUnit, k.bareEdge, k.slotEdge, k.between], [lu, lu, lu, lu / 4], `${kind} u=${u}`);
+    assert.equal(k.padding, Math.max(0, lu / 2));
+  }
 });
 

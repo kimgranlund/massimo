@@ -47,7 +47,7 @@ Icons capped by the slot: `md` below u≈2.2 and `lg` below u≈2.9 (at u=2: md 
 
 Usage: `<ui-button><i slot="leading" name="credit-card"></i><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span></ui-button>`. Anything with `slot="leading" | "prefix" | "suffix" | "trailing"` goes in that part; everything else is contents. Prefix and suffix are short text adornments (a currency, a unit, a shortcut, a count) in the label color at 65%. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} prefix={…} suffix={…} trailing={…} iconSize="lg" size={3}>`.
 
-The same pattern and text-run rule apply to every labelled component: button, option, the input control, the select trigger, badge, tag and chip (1u label edges on both sides, see below), and checkbox/radio/switch (the indicator is the leading slot; bare end edge 0).
+The same pattern and text-run rule apply to every labelled component: button, option, the input control, the select trigger, badge, tag and chip (label edges of their own local unit, see below), and checkbox/radio/switch (the indicator is the leading slot; bare end edge 0).
 
 Inputs and select triggers are laid out as buttons: the host (input `[data-part=control]`, select `[data-part=trigger]`) has only 1u (padding u − B plus border), and its parts carry the rest with the button rules. The input control is `[leading] [prefix] [contents = editor] [suffix] [trailing]`, filled from children with those `slot` values (`<ui-input label="Price"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>`); with no adornments the text has 2u each side, as a slotless label. The select trigger is `[leading] [prefix] [contents = value] [suffix] [trailing = chevron]`; authors may fill leading, prefix and suffix. Field states (`aria-invalid`, `aria-readonly`, `aria-disabled`) sit on the input's contents and the select's trigger; styles read both through `:has()`. Indicators (the select chevron, any `caret-*` icon and the `x` close icon in a slot) are always icon size sm, whatever `icon-size` says.
 
@@ -87,13 +87,13 @@ Options use the control anatomy with their inset reduced by the composite edge D
 
 Heights sit on a 12px base plus k·u, capped so a chip is never taller than a control and each level stays one u below the next.
 
-| | Height | Text | Slots | at u = 3 / 4 / 5 |
+| | Height | Text | Slots (u′ = height / 8) | at u = 3 / 4 / 5 |
 |---|---|---|---|---|
-| chip | min(12 + 3u, 8u) | 10 + u | chip − u (= tag) | 21 / 24 / 27 |
-| tag | min(12 + 2u, chip − u) | 10 + 0.5u | tag − u (= badge) | 18 / 20 / 22 |
-| badge | min(12 + u, tag − u) | 10 | badge − u | 15 / 16 / 17 |
+| chip | min(12 + 3u, 8u) | 10 + u | chip − u′ | 21 / 24 / 27 |
+| tag | min(12 + 2u, chip − u) | 10 + 0.5u | tag − u′ | 18 / 20 / 22 |
+| badge | min(12 + u, tag − u) | 10 | badge − u′ | 15 / 16 / 17 |
 
-The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). All three use the construction pattern with the label-wrapper padding system: the host has max(0, 0.5u − B); badge, tag and chip labels carry 1u on both sides, beside a slot too; text parts sit 0.5u apart. Text is single-line at line height 1.2 × font (capped at the slot); chip centers it with block padding (slot − line) / 2, tag and badge have no block padding; min width = height (a badge is never narrower than tall; with 1u label edges a one-digit badge is a circle up to u = 4 and a short pill above); radius min(3u × s, h/2), so all three are pills at default. Icons use the control icon formulas against the element's own font and slot.
+The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). All three use the construction pattern with the label-wrapper padding system, measured in a local unit u′ = height / 8 (a control is 8u tall), so spacing is relative to each element's size: the host has max(0, 0.5u′ − B), slots are height − u′, labels carry 1u′ on both sides (beside a slot too) and text parts sit 0.5u′ apart. At u = 4: chip u′ = 3px, tag 2.5px, badge 2px. Text is single-line at line height 1.2 × font (capped at the slot); chip centers it with block padding (slot − line) / 2, tag and badge have no block padding; min width = height (a badge is never narrower than tall; a one-digit badge is a circle at default sizes); radius min(3u × s, h/2), so all three are pills at default. Icons use the control icon formulas against the element's own font and slot.
 
 `<ui-badge>` and `<ui-tag>` are static labels. `<ui-chip>` is interactive: `selectable` toggles `aria-pressed`; `removable` adds a trailing ✕, and clicking it, Delete or Backspace fires a cancelable `remove` event (the chip then removes itself and focus moves to a neighbouring chip).
 
