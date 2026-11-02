@@ -49,5 +49,8 @@ Geometry families: `choice` ([geometry-families.json](../../contracts/geometry-f
 ## Renderers and verification
 
 - webComponent: completed (`./choice.element.ts`)
+- react: completed (`./choice.react.tsx`)
+
+React props: `npm run registry -- --assembly component:checkbox` (under `react`).
 
 Checks and their latest run: [verification/choice.verification.json](verification/choice.verification.json).

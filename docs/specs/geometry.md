@@ -1,5 +1,7 @@
 # Component geometry
 
+Every length in the kit: the unit u, controls, choices and tracks, badges/tags/chips, the container ladder and the Panda spacing, sizes and radii tokens, and how they are verified. Neighbors: [typography](typography.md) (text sizes on the same u), [theming](theming.md) (the parameters), [components](components.md) (where lengths apply).
+
 Based on Differential Forms v0.2.2 (`mathematical-design-system` skill), adapted:
 - **Size is the unit.** `size` (or `data-size`) sets u for an element and its subtree: 2, 2.25, 2.5, 3, 3.5, 4, 4.5, then every 0.5 up to 12. A control is 8u tall (16 to 96px). Default u comes from the theme `unit` (4.5 → 36px controls, 14.5px control text).
 - **Slots.** Controls have `leading`, `contents` and `trailing` slots, each at least 6u square, inside 1u of padding.
@@ -18,7 +20,7 @@ Sources of truth, kept in agreement by tests:
 
 | Input | Where | Values | Default |
 |---|---|---|---|
-| u | theme `--ui-unit`; `size` / `data-size` per subtree | 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5 … 12 (0.5 steps) | 4 |
+| u | theme `--ui-unit`; `size` / `data-size` per subtree | 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5 … 12 (0.5 steps) | 4.5 (tables below show u = 4) |
 | B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 0 |
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
 | corner shape k | theme `--ui-corner-shape`: `corner-shape: superellipse(k)` on every element with a radius | −1..4 (1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
@@ -70,7 +72,7 @@ Every container has a padding level p and a max radius. Padding and gap are them
 
 ### Panda tokens in u
 
-Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p: '8'` is 8u, `gap: '0.5'` is 0.5u; keys 0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24), and `radii` are u × corner scale (`sm` 1u, `md` 1.5u, `lg` 2u, `xl` 3u; `full` is a pill). The container ladder is named: `pad.<level>` and `gap.<level>` are the theme's `pad-<level>` / `gap-<level>` in u, and `inset.<level>` is the padding inside a border, max(0, pad − B), the way containers use it. `page()` is `p: inset.page`, `gap: gap.page`. Panda declares token variables on `:root`, where they resolve with the root unit, so every element with `size` / `data-size` redeclares the u-based ones (`unitTokenVars()`), and a theme scope that sets `--ui-unit` or a ladder parameter on its own element includes `unitTokenCss()` (the jig canvas does). There is no fixed rem grid. `sizes` also has keywords: `full` (100%), `min`, `max`, `fit` and `prose` (65ch). Both Panda configs set `strictTokens` and `strictPropertyValues`: a value that is not a token is a type error, and a deliberate one-off uses Panda's escape hatch (`'[80rem]'`), which keeps exceptions visible and greppable. The studio hashes class names in production builds only (`hash.className`); token variables stay readable because the kit and the jig set them by name.
+Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p: '8'` is 8u, `gap: '0.5'` is 0.5u; keys 0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24), and `radii` are u × corner scale (`sm` 1u, `md` 1.5u, `lg` 2u, `xl` 3u; `full` is a pill). The container ladder is named: `pad.<level>` and `gap.<level>` are the theme's `pad-<level>` / `gap-<level>` in u, and `inset.<level>` is the padding inside a border, max(0, pad − B), the way containers use it. `page()` is `p: inset.page`, `gap: gap.page`. Panda declares token variables on `:root`, where they resolve with the root unit, so every element with `size` / `data-size` redeclares the u-based ones (`unitTokenVars()`), and a theme scope that sets `--ui-unit` or a ladder parameter on its own element includes `unitTokenCss()` (the jig canvas does). There is no fixed rem grid. `sizes` also has keywords: `full` (100%), `min`, `max`, `fit` and `prose` (65ch). A length that is not one of these tokens is a type error ([theming](theming.md#panda-configs)).
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
@@ -105,7 +107,7 @@ The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). All three use the constr
 
 ## Verification
 
-- `npm test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
-- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 102 measured lengths each (4488 in total), including type roles with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
+- `npm run ui-kit:test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
+- Browser: `npm run studio`, open `/geometry-check.html`. It renders every size × 2 borders (rotating icon sizes, a gap override on every third) and compares each measured length, type roles included, with the resolver; radii are compared as painted (min(declared, height/2)). It prints the `cases` and `checks` counts; `"fails": []` means CSS and resolver agree.
 
 Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: multiline fields, chips inside inputs, table cells.

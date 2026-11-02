@@ -30,5 +30,8 @@ Geometry families: `container` ([geometry-families.json](../../contracts/geometr
 ## Renderers and verification
 
 - webComponent: completed
+- react: completed (`./container.react.tsx`)
+
+React props: `npm run registry -- --assembly component:card` (under `react`).
 
 Checks and their latest run: [verification/container.verification.json](verification/container.verification.json).

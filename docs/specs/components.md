@@ -15,8 +15,8 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | Element | Role and behavior | Key attributes |
 |---|---|---|
 | `ui-button` | `role=button`; Enter/Space activate; submit/reset through the form; `variant="primary"` paints the primary solid with contrast text | `type`, `variant`, `disabled`, `loading`, `icon-size` |
-| `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked; adornments via `slot` children | `label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |
-| `ui-select` | select-only combobox; popover listbox placed by CSS anchor positioning (script fallback); APG keys; typeahead | `label`, `value`, `placeholder`, `description`, `error`, `required`, `gap` |
+| `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked; adornments via `slot` children | `label`, `hide-label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |
+| `ui-select` | select-only combobox; popover listbox placed by CSS anchor positioning (script fallback); APG keys; typeahead | `label`, `hide-label`, `value`, `placeholder`, `description`, `error`, `required`, `gap` |
 | `ui-listbox` | single-select listbox; selection follows focus; typeahead | `value`, `orientation`, `label`, `gap` |
 | `ui-segmented` | horizontal listbox | same as listbox |
 | `ui-option` | option for listbox/segmented/select, with slots | `value`, `disabled` |

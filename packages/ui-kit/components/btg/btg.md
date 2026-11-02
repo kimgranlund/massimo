@@ -46,5 +46,8 @@ Geometry families: `btg` ([geometry-families.json](../../contracts/geometry-fami
 ## Renderers and verification
 
 - webComponent: completed (`./btg.element.ts`)
+- react: completed (`./btg.react.tsx`)
+
+React props: `npm run registry -- --assembly component:chip` (under `react`).
 
 Checks and their latest run: [verification/btg.verification.json](verification/btg.verification.json).

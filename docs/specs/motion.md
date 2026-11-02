@@ -1,6 +1,6 @@
 # Motion
 
-Apple-style springs, parameterized as SwiftUI does: a perceptual `duration` and a `bounce` (0 = critically damped). `tokens/motion/index.ts` solves each spring exactly and samples it into a CSS `linear()` easing over its settle time, names the intents that use them, and takes two theme inputs; `styles/motion.ts` says which properties animate for which intent.
+Apple-style springs, parameterized as SwiftUI does: a perceptual `duration` and a `bounce` (0 = critically damped). `tokens/motion/index.ts` solves each spring exactly and samples it into a CSS `linear()` easing over its settle time, names the intents that use them, and takes two theme inputs; `styles/motion.ts` says which properties animate for which intent. Neighbors: [theming](theming.md) (the parameters), [components](components.md#states) (the states that transition).
 
 ## Springs
 

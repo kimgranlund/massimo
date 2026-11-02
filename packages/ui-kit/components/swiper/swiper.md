@@ -35,5 +35,8 @@ Geometry families: `swiper` ([geometry-families.json](../../contracts/geometry-f
 ## Renderers and verification
 
 - webComponent: completed (`./swiper.element.ts`)
+- react: completed (`./swiper.react.tsx`)
+
+React props: `npm run registry -- --assembly component:swiper` (under `react`).
 
 Checks and their latest run: [verification/swiper.verification.json](verification/swiper.verification.json).

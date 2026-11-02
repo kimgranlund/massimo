@@ -47,7 +47,9 @@ Geometry families: `field` ([geometry-families.json](../../contracts/geometry-fa
 ## Renderers and verification
 
 - webComponent: completed (`./input.element.ts`)
-- react: in_progress (`./input.react.tsx`)
+- react: completed (`./input.react.tsx`)
 - html: in_progress
+
+React props: `npm run registry -- --assembly component:input` (under `react`).
 
 Checks and their latest run: [verification/input.verification.json](verification/input.verification.json).

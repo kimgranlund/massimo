@@ -39,6 +39,8 @@ A new component also needs: `define('ui-<tag>', …)` in its module, a `package.
 
 ## Verify
 
+Run the ui-kit commands in `packages/ui-kit` (from the root, add `-w @massimo/ui-kit`; `ui-kit:*` scripts and `registry` also exist at the root).
+
 1. `npm run manifests` (rewrites the manifest fields mirrored from source: properties, class, form association, dispatched events, contract edges, React props; then write any new property's description or inspector and a new event's `trigger`), then `npm run registry:graph` (rewrites `graph.json`).
 2. `npm run verification -- run <name>`: runs the record's checks and stamps the bound source hashes only when every check runs at least one test and passes. Never edit hashes by hand; add a check when the change has a risk no existing test covers.
 3. `npm run ui-kit:test`, `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio`, `npm run ui-kit:build`.

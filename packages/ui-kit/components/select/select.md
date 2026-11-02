@@ -54,5 +54,8 @@ Geometry families: `field` ([geometry-families.json](../../contracts/geometry-fa
 ## Renderers and verification
 
 - webComponent: completed (`./select.element.ts`)
+- react: completed (`./select.react.tsx`)
+
+React props: `npm run registry -- --assembly component:select` (under `react`).
 
 Checks and their latest run: [verification/select.verification.json](verification/select.verification.json).

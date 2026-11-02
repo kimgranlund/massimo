@@ -25,5 +25,8 @@ Geometry families: `container` ([geometry-families.json](../../contracts/geometr
 ## Renderers and verification
 
 - webComponent: completed (`./image.element.ts`)
+- react: completed (`./image.react.tsx`)
+
+React props: `npm run registry -- --assembly component:image` (under `react`).
 
 Checks and their latest run: [verification/image.verification.json](verification/image.verification.json).

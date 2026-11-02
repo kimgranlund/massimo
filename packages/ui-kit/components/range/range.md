@@ -18,7 +18,7 @@ Pair a range with a visible label element and `aria-labelledby` when the label m
 
 ## Anatomy
 
-- `part:range-thumb` `:scope > [data-part=thumb]`: The 4u thumb, positioned from --ui-ratio.
+- `part:range-thumb` `:scope > [data-part=thumb]`: The thumb, inside the track like a switch thumb (track − u, inset 0.5u); offset 0.5u + ratio × (width − track). The fill wraps it with a concentric cap.
 
 ## Keyboard
 
@@ -35,5 +35,8 @@ Geometry families: `track` ([geometry-families.json](../../contracts/geometry-fa
 ## Renderers and verification
 
 - webComponent: completed (`./range.element.ts`)
+- react: completed (`./range.react.tsx`)
+
+React props: `npm run registry -- --assembly component:range` (under `react`).
 
 Checks and their latest run: [verification/range.verification.json](verification/range.verification.json).

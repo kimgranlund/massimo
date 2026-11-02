@@ -1,6 +1,6 @@
 # Studio (jig)
 
-`apps/studio`: a panel of controls beside a canvas that renders every ui-kit web component. Run `npm run studio`.
+`apps/studio`: a panel of controls beside a canvas that renders every ui-kit web component. Run `npm run studio`. This spec covers the panel, canvas scoping, Copy JSON and the browser checks; the parameters it tunes are in [theming](theming.md) and [color](color.md); the hand-off steps are in the [jig guide](../guides/tune-and-hand-off.md).
 
 ## Rules
 
@@ -14,12 +14,12 @@
 
 ## Panel
 
-- **Pane grid** (Figma-style): each group is a 5-column grid; a row is a label spanning 2 columns and a control spanning 3 (ranges show a tabular value readout, Containers rows pair a padding and a gap menu). Group titles span the row. Built from `Field`, `Range`, `Segmented`, `Select`, `Switch` and `Group` in `src/studio/wc.tsx`.
+- **Pane grid** (Figma-style): each group is a 5-column grid; a row is a label spanning 2 columns and a control spanning 3 (ranges show a tabular value readout, Containers rows pair a padding and a gap menu). Group titles span the row. Built from `Field`, `Range`, `Segmented`, `Select`, `Switch` and `Group` in `src/studio/wc.tsx`. Pane labels show a trailing `(unit)` as a suffix at the label's end.
 - **Tabs** (segmented, persisted in localStorage): Components, Containers, Colors, Typography; each switches panel and canvas.
 - **Header:** title, then a single icon button at the trailing end that cycles the canvas scheme Auto (circle-half) → Light (sun) → Dark (moon); its `aria-label` names the current and next scheme.
 - **Components:** unit, border, corner radius, corner shape; motion (duration scale, bounce); icon set. The canvas switches, radios, select, range and swiper show the motion.
 - **Containers:** the same geometry, plus a padding menu and a gap menu (in u, with px) for each container type: composite, group, collection, tile, card, panel, region, page.
-- **Colors:** Random, role groups (brand, feedback, data 1–6), hue set (Unique or Radix) and first hue, chroma (requested, base %, falloff, hue balance), tone (automatic peak, dark and light endpoints), neutral tint, scale, gamut. Generation runs on the main thread, debounced (~300ms per run).
+- **Colors:** Random, role groups (brand, feedback, data 1–6), hue set (Unique or Radix) and first hue, chroma (requested, base %, falloff, hue balance), tone (automatic peak, dark and light endpoints), neutral tint, scale, gamut. Generation runs on the main thread, debounced (~300ms per run). Role selects are grouped Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6, each option and the trigger led by a swatch of the family's step 9; **Random** reassigns the brand roles (the neutral included) and data 1–6 from the generated families, and feedback roles keep their colors.
 - **Typography:** unit, ratio (named ratios), rhythm (none, ½u, 1u); a stack menu per face (sans, serif, mono, display) and a face menu per voice (display, heading, body, ui, numeric, code). Copy JSON carries `typography.faces` and `typography.voices`. The canvas shows the voice map, then every role with live metrics over a rhythm grid, then a short article set in the roles.
 - **Copy:** JSON of every applied setting minus defaults (`theme`, `scheme`, `spectrum.settings`, `spectrum.roles`) plus `howToApply`, for an agent. **Reset:** all defaults.
 
@@ -32,10 +32,8 @@
 
 ## Checks
 
-`/geometry-check.html` renders 44 configurations and compares 102 measured lengths each with the resolver (4488 in total), including every type role's size and line height; `"fails": []` means CSS and resolver agree.
+Browser checks: `/geometry-check.html` (rendered CSS, every type role included, against the resolver; see [geometry](geometry.md#verification)) and `/react-check.html` (each native React renderer against its web component at five sizes); both print `"fails": []` when they match.
 
-Browser checks: `/geometry-check.html` (rendered CSS against the resolver) and `/react-check.html` (each native React renderer against its web component at five sizes); both print `"fails": []` when they match.
+## Styling
 
-Colors view: role selects grouped as Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6; **Random** reassigns the brand roles (the neutral included) and data 1–6 from the generated families; feedback roles keep their colors. Role selects lead each option and the trigger with a swatch of the family's step 9 (`swatch` prop of the jig `Select`). Pane labels show a trailing `(unit)` as a suffix at the label's end.
-
-Styling: the jig sets no style attributes for theming. Live overrides (theme parameters, faces and serif weights that differ from the kit defaults, scoped to `[data-canvas]`, plus the generated Spectrum CSS on `:root`) live in one constructed stylesheet adopted by the document (`useSheet`). Canvas demos color everything through role tokens as static `css()` classes; the only inline style left is the chart's data ratio (`--v`).
+ the jig sets no style attributes for theming. Live overrides (theme parameters, faces and serif weights that differ from the kit defaults, scoped to `[data-canvas]`, plus the generated Spectrum CSS on `:root`) live in one constructed stylesheet adopted by the document (`useSheet`). Canvas demos color everything through role tokens as static `css()` classes; the only inline style left is the chart's data ratio (`--v`).

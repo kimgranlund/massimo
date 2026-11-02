@@ -45,5 +45,8 @@ Geometry families: `container`, `control` ([geometry-families.json](../../contra
 ## Renderers and verification
 
 - webComponent: completed (`./listbox.element.ts`)
+- react: completed (`./listbox.react.tsx`)
+
+React props: `npm run registry -- --assembly component:listbox` (under `react`).
 
 Checks and their latest run: [verification/listbox.verification.json](verification/listbox.verification.json).

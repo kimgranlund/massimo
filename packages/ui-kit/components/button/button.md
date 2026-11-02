@@ -45,7 +45,9 @@ Geometry families: `control` ([geometry-families.json](../../contracts/geometry-
 ## Renderers and verification
 
 - webComponent: completed (`./button.element.ts`)
-- react: in_progress (`./button.react.tsx`)
+- react: completed (`./button.react.tsx`)
 - html: in_progress
+
+React props: `npm run registry -- --assembly component:button` (under `react`).
 
 Checks and their latest run: [verification/button.verification.json](verification/button.verification.json).

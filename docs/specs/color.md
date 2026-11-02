@@ -1,5 +1,7 @@
 # Color: Spectrum
 
+Every color in the kit: ramps, roles, schemes, shadows, the snapshot and runtime overrides. Neighbors: [components](components.md#states) (which state uses which role), [studio](studio.md) (the Colors tab), [system](system.md#design-tokens-dtcg) (DTCG export).
+
 The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generated separately for light and dark. The engine is ported unchanged from massimo-ui (`packages/ui-kit/tokens/colors/spectrum/runtime.json`; provenance and embedded licenses in its `NOTICE.md`).
 
 ## Ramps

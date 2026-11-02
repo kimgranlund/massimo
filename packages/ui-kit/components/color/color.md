@@ -30,5 +30,8 @@ Geometry families: `swatch` ([geometry-families.json](../../contracts/geometry-f
 ## Renderers and verification
 
 - webComponent: completed (`./color.element.ts`)
+- react: completed (`./color.react.tsx`)
+
+React props: `npm run registry -- --assembly component:palette` (under `react`).
 
 Checks and their latest run: [verification/color.verification.json](verification/color.verification.json).

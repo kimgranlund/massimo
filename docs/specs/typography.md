@@ -1,6 +1,6 @@
 # Typography
 
-massimo-ui's type roles and font families, placed on our u ramp. Reference: `packages/ui-kit/tokens/typography/resolve.ts`; CSS: `styles/typography.ts`.
+massimo-ui's type roles and font families, placed on our u ramp. Reference: `packages/ui-kit/tokens/typography/resolve.ts`; CSS: `styles/typography.ts`. Neighbors: [geometry](geometry.md) (the unit u), [theming](theming.md) (ratio and rhythm parameters, voice attributes).
 
 ## The rule
 
