@@ -154,6 +154,20 @@ const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'],
 const art = (a: string, b: string, label: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="40" y="560" font-family="system-ui" font-size="48" fill="white" fill-opacity=".85">${label}</text></svg>`)}`;
 const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Dusk'), art('#16a34a', '#0ea5e9', 'Coast'), art('#1e293b', '#7c3aed', 'Night')];
 
+// Specimen text per voice: what that voice is actually for, not a pangram.
+const VOICE_SAMPLES: Record<string, string> = {
+  display: 'Spring, in proportion',
+  heading: 'Quarterly results by region',
+  body: 'Every length follows from one unit, so a change of size reads as one decision.',
+  ui: 'Save changes · Cancel · 3 selected',
+  numeric: '$1,284.07 · +12.5% · 08:45 · 3 of 12',
+  code: 'padding: calc(2 * var(--u));',
+};
+const VOICE_USE: Record<string, string> = {
+  display: 'display', heading: 'heading 1–3', body: 'body, caption', ui: 'controls, labels, kickers',
+  numeric: 'stats, tables', code: 'code',
+};
+
 export function Canvas({ view, spectrum, params, voices, faces }: { view: View; spectrum?: SpectrumPayload; params: ThemeParams; voices: VoiceMap; faces: FaceMap }) {
   return (
     <main className={`${shell} ${canvasQuery}`} id="page">
@@ -625,8 +639,8 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
       <Section id="voices" title="Faces and voices" note="Faces are the stacks; voices say what text is for; roles point at voices. Repoint a voice with data-font-<voice>=&quot;<face>&quot;.">
         {VOICES.map((v) => (
           <Row key={v} label={v}>
-            <span className={metrics}>→ {voices[v]}</span>
-            <span style={{ fontFamily: `var(--font-voice-${v}, var(--fonts-${voices[v]}))`, fontSize: '1.5em', fontVariantNumeric: v === 'numeric' ? 'tabular-nums lining-nums' : undefined }}>{v === 'numeric' ? '1,284.07 · 62%' : v === 'code' ? 'const u = 4;' : 'Hamburgefonstiv 0123'}</span>
+            <span className={metrics}>→ {voices[v]} · {VOICE_USE[v]}</span>
+            <span style={{ fontFamily: `var(--font-voice-${v}, var(--fonts-${voices[v]}))`, fontSize: '1.5em', fontVariantNumeric: v === 'numeric' ? 'tabular-nums lining-nums' : undefined }}>{VOICE_SAMPLES[v]}</span>
           </Row>
         ))}
       </Section>
