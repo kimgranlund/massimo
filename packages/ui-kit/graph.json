@@ -681,13 +681,13 @@
         "chip remove"
       ]
     },
-    "part:choice-box": {
+    "part:choice-indicator": {
       "kind": "part",
       "source": "components/choice/choice.manifest.json#/nodes/3",
       "availability": "implemented",
       "tag": "span",
       "searchTerms": [
-        "choice box"
+        "choice indicator"
       ]
     },
     "part:field-description": {
@@ -778,13 +778,22 @@
         "range thumb"
       ]
     },
-    "part:select-chevron": {
+    "part:select-icon": {
       "kind": "part",
       "source": "components/select/select.manifest.json#/nodes/3",
       "availability": "implemented",
       "tag": "span",
       "searchTerms": [
-        "select chevron"
+        "select icon"
+      ]
+    },
+    "part:select-list": {
+      "kind": "part",
+      "source": "components/select/select.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "select list"
       ]
     },
     "part:select-popup": {
@@ -898,6 +907,15 @@
         "swiper viewport"
       ]
     },
+    "part:switch-thumb": {
+      "kind": "part",
+      "source": "components/choice/choice.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "switch thumb"
+      ]
+    },
     "part:track": {
       "kind": "part",
       "source": "contracts/parts.json#/parts/track",
@@ -906,12 +924,13 @@
         "track"
       ]
     },
-    "part:track-fill": {
+    "part:track-indicator": {
       "kind": "part",
-      "source": "contracts/parts.json#/parts/track-fill",
+      "source": "contracts/parts.json#/parts/track-indicator",
       "availability": "implemented",
       "searchTerms": [
-        "fill"
+        "fill",
+        "indicator"
       ]
     },
     "tokens:borders-shadows": {
@@ -1600,7 +1619,7 @@
     {
       "from": "component:checkbox",
       "relation": "ownsPart",
-      "to": "part:choice-box"
+      "to": "part:choice-indicator"
     },
     {
       "from": "component:checkbox",
@@ -1735,7 +1754,7 @@
     {
       "from": "component:radio",
       "relation": "ownsPart",
-      "to": "part:choice-box"
+      "to": "part:choice-indicator"
     },
     {
       "from": "component:radio",
@@ -1860,7 +1879,12 @@
     {
       "from": "component:switch",
       "relation": "ownsPart",
-      "to": "part:choice-box"
+      "to": "part:choice-indicator"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:switch-thumb"
     },
     {
       "from": "component:switch",
@@ -3300,7 +3324,7 @@
     {
       "from": "component:range",
       "relation": "ownsPart",
-      "to": "part:track-fill"
+      "to": "part:track-indicator"
     },
     {
       "from": "component:range",
@@ -3405,7 +3429,7 @@
     {
       "from": "component:progress",
       "relation": "ownsPart",
-      "to": "part:track-fill"
+      "to": "part:track-indicator"
     },
     {
       "from": "component:progress",
@@ -3525,12 +3549,17 @@
     {
       "from": "component:select",
       "relation": "ownsPart",
-      "to": "part:select-chevron"
+      "to": "part:select-icon"
     },
     {
       "from": "component:select",
       "relation": "ownsPart",
       "to": "part:select-popup"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-list"
     },
     {
       "from": "component:select",

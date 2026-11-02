@@ -30,10 +30,11 @@ Construction pattern (shared by every labelled component):
 
 Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip 1u′ on both sides (u′ = their height / 8); choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
-- `part:select-trigger` `:scope > [data-part=trigger]`: The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [chevron]; keeps focus while the popup is open.
-- `part:select-value` `:scope > [data-part=trigger] > [data-part=contents]`: The selected option label, or the placeholder (data-placeholder).
-- `part:select-chevron` `:scope > [data-part=trigger] > [data-part=trailing]`: The caret-down icon (icon size sm); turns 180° when open.
-- `part:select-popup` `:scope > [data-part=popup]`: The [popover=manual] listbox on bg.overlay holding the ui-option children; placed 1u from the trigger.
+- `part:select-trigger` `:scope > [data-part=trigger]`: The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [icon] (Base UI Select.Trigger); keeps focus while the popup is open.
+- `part:select-value` `:scope > [data-part=trigger] > [data-part=value]`: The selected option label, or the placeholder (data-placeholder); Base UI Select.Value, in the construction pattern's contents place.
+- `part:select-icon` `:scope > [data-part=trigger] > [data-part=icon]`: The caret-down icon (Base UI Select.Icon, in the construction pattern's trailing place; icon size sm); turns 180° when open.
+- `part:select-popup` `:scope > [data-part=popup]`: The [popover=manual] listbox on bg.overlay (Base UI Select.Popup) holding the list; placed 1u from the trigger.
+- `part:select-list` `:scope > [data-part=popup] > [data-part=list]`: The ui-option children's parent (Base UI Select.List; the options are its items), display: contents so the options lay out in the popup. Web component only: the native select has none.
 
 ## Keyboard
 
@@ -59,6 +60,28 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | `ui-option` in the popup | `data-selected`, `data-highlighted` (the active option), `data-disabled` |
 
 The React Select is a native customizable select: its open state (`select:open`), option selection (`:checked`) and highlight (`:focus`) and the popup (`::picker(select)`) stay native, because the browser does not report them to script. Enter and exit motion is `@starting-style` (no `data-starting-style` / `data-ending-style`).
+
+## Popup variables
+
+The popup carries Base UI's positioner variables (Select.Positioner), and the recipe sizes it from them: `min-width: var(--anchor-width)`, `max-height: var(--available-height)`, `transform-origin: var(--transform-origin)`.
+
+| Variable | Anchor positioning (CSS) | Script fallback (`placePopup`, `popupVars`) | React (`::picker(select)`) |
+|---|---|---|---|
+| `--anchor-width`, `--anchor-height` | `anchor-size(width)`, `anchor-size(height)` | trigger size in px | as CSS |
+| `--available-width` | `100%` of the position-area cell (trigger start to viewport end) | viewport width − left − 8px, px | as CSS |
+| `--available-height` | `calc(100% - var(--u))`: the cell on the open side, less the 1u offset | the space on the chosen side, px | as CSS |
+| `--transform-origin` | `top center`, `bottom center` with `data-side="top"` | the same, inline | `top center` only: the browser does not report a flip |
+
+The CSS values are anchor functions and percentages of the anchored containing block, so they resolve where they are used (sizing, inset and margin properties); `getComputedStyle` returns them unresolved. The script values are px, written inline when the element places the popup itself. The React picker has no `data-side` / `data-align`: it is a pseudo-element the browser places.
+
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Open | Events / callbacks |
+|---|---|---|---|
+| `ui-select` | `value`, `defaultValue` (`default-value`) | `open`, `defaultOpen` (`default-open`) | `change` and `input`: `detail { value, reason, event }`, reason `item-press` (pointer, Enter, Space) or `focus-out` (Tab commits); `openchange` (cancelable): `detail { open, reason, event }`, reason `trigger-press`, `list-navigation`, `item-press`, `outside-press`, `escape-key` or `focus-out`. Setting `open` fires none. |
+| React Select | native `value` / `defaultValue` | `open`, `defaultOpen` (both through `showPicker`, which needs user activation; a native picker cannot be closed from script) | `onValueChange(value, { reason: 'item-press', event })`; `onOpenChange(open, { reason, event })` from `select:open` reread after each pointer, key, change and blur; native `onChange` still fires |
 
 ## Geometry and appearance
 

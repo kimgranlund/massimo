@@ -31,7 +31,8 @@ Construction pattern (shared by every labelled component):
 
 Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip 1u′ on both sides (u′ = their height / 8); choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
-- `part:choice-box` `:scope > [data-part=leading] > [data-part=box]`: The indicator (aria-hidden): checkbox box with check and minus marks, radio dot, or switch track and thumb. Created at connect unless authored.
+- `part:choice-indicator` `:scope > [data-part=leading] > [data-part=indicator]`: The indicator (aria-hidden; Base UI Checkbox.Indicator, Radio.Indicator): checkbox box with check and minus marks, radio circle with its dot, or switch track holding the thumb. Created at connect unless authored.
+- `part:switch-thumb` `:scope > [data-part=leading] > [data-part=indicator] > [data-part=thumb]`: The switch knob (Base UI Switch.Thumb) inside the indicator track; slides 4u when checked.
 
 ## Keyboard
 
@@ -52,6 +53,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | `ui-radio` / Radio, `ui-switch` / Switch | `data-checked` or `data-unchecked`; field state |
 
 `data-filled` means checked. `data-touched` is set when the user leaves the control or activates it. The React host mirrors its native input (a radio rereads itself on any change in its group).
+
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Events / callbacks |
+|---|---|---|
+| `ui-checkbox`, `ui-radio`, `ui-switch` | `checked`, `defaultChecked` (`default-checked`); `value` is the submitted string | `change` and `input`: `detail { checked, value, reason: 'none', event }` (Base UI's only reason for these) |
+| React Checkbox, Radio, Switch | native `checked` / `defaultChecked` | `onCheckedChange(checked, { reason: 'none', event })`; native `onChange` still fires |
 
 ## Geometry and appearance
 

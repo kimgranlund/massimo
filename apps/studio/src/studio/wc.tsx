@@ -8,12 +8,13 @@ import * as s from './styles.ts';
  * Listen for a DOM event on an element. Returns a callback ref, so the listener follows the element:
  * a keyed component that remounts (a select whose options change) gets its listener again.
  */
-export function useEvent(type: string, fn: (el: any) => void) {
+export function useEvent(type: string, fn: (el: any, detail: any) => void) {
   const fnRef = useRef(fn);
   fnRef.current = fn;
   return useCallback((el: any) => {
     if (!el) return;
-    const h = () => fnRef.current(el);
+    // ui-kit events carry Base UI's details: { value | checked | open, reason, event } (dom/events.ts).
+    const h = (e: Event) => fnRef.current(el, (e as CustomEvent).detail);
     el.addEventListener(type, h);
     return () => el.removeEventListener(type, h);
   }, [type]);
@@ -30,7 +31,7 @@ export function Field({ label, readout, id, children }: { label: string; readout
 }
 
 export function Range({ label, value, min, max, step, onValue, format }: { label: string; value: number; min: number; max: number; step: number; onValue: (v: number) => void; format?: (v: number) => string }) {
-  const ref = useEvent('input', (el) => onValue(Number(el.value)));
+  const ref = useEvent('input', (_el, d) => onValue(d.value));
   return (
     <Field label={label} readout={format ? format(value) : String(value)}>
       <ui-range ref={ref} min={min} max={max} step={step} value={value} />
@@ -39,7 +40,7 @@ export function Range({ label, value, min, max, step, onValue, format }: { label
 }
 
 export function Segmented<T extends string>({ label, value, options, onValue }: { label?: string; value: T; options: [T, string][]; onValue: (v: T) => void }) {
-  const ref = useEvent('change', (el) => onValue(el.value));
+  const ref = useEvent('change', (_el, d) => onValue(d.value));
   const control = (
     <ui-segmented ref={ref} value={value}>
       {options.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}
@@ -56,7 +57,7 @@ type ControlProps = Omit<SelectProps, 'label'> & { label?: string; labelledby?: 
 
 /** `swatch` maps an option value to a CSS color: each option and the trigger lead with a ui-swatch. */
 export function SelectControl({ label, labelledby, value, options, onValue, swatch }: ControlProps) {
-  const ref = useEvent('change', (el) => onValue(el.value));
+  const ref = useEvent('change', (_el, d) => onValue(d.value));
   const name = label ? { label, 'hide-label': '' } : labelledby ? { labelledby } : {};
   return <ui-select key={options.map((o) => o[0]).join('|')} ref={ref} {...name} value={value}>
     {/* The select moves this into its trigger once; React then only updates its color attribute. */}
@@ -70,7 +71,7 @@ export function Select({ label, ...props }: SelectProps) {
 }
 
 export function Switch({ label, checked, onValue }: { label: string; checked: boolean; onValue: (v: boolean) => void }) {
-  const ref = useEvent('change', (el) => onValue(el.checked));
+  const ref = useEvent('change', (_el, d) => onValue(d.checked));
   return <Field label={label}><ui-switch ref={ref} checked={checked} /></Field>;
 }
 

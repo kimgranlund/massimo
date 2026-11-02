@@ -37,6 +37,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | `ui-range` / Range | `data-orientation` (horizontal), `data-dragging` while a pointer drags; field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
 | `ui-progress` / Progress | `data-indeterminate` without a value, `data-progressing` below the max, `data-complete` at the max |
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Events / callbacks |
+|---|---|---|
+| `ui-range` | `value`, `defaultValue` (`default-value`) | `input` on every change and `change` when an interaction ends with a new value: `detail { value, reason, event }`, reason `keyboard`, `track-press` (the press) or `drag` (after it) |
+| React Range | `value`, `defaultValue` | `onValueChange(value, { reason, event })` and `onValueCommitted(value, { reason, event })` (the native change event), the same reasons; native `onChange` still fires |
+
 ## Geometry and appearance
 
 Geometry families: `track` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [range.recipe.ts](range.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

@@ -104,6 +104,39 @@
           }
         },
         {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": false,
+          "description": "Base UI open: whether the popup is shown. Setting it opens or closes the popup without an openchange event; user interaction updates it after openchange.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Base UI defaultOpen: open the popup when the element connects.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "label",
           "type": "string",
           "default": "",
@@ -206,17 +239,27 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ value: string, reason: 'item-press' | 'focus-out', event: Event }",
+          "trigger": "an option is committed with a new value (same moment as change)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ value: string, reason: 'item-press' | 'focus-out', event: Event } (Base UI onValueChange)",
+          "trigger": "an option is committed with a new value: pressed, Enter / Space on the highlighted one, or Tab"
+        },
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'list-navigation' | 'item-press' | 'outside-press' | 'escape-key' | 'focus-out', event: Event } (Base UI onOpenChange)",
+          "trigger": "the user opens or closes the popup; preventDefault keeps it as it is. Setting open does not fire it"
         }
       ],
       "methods": [
@@ -338,23 +381,23 @@
       "status": "implemented",
       "tag": "div",
       "selector": ":scope > [data-part=trigger]",
-      "summary": "The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [chevron]; keeps focus while the popup is open."
+      "summary": "The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [icon] (Base UI Select.Trigger); keeps focus while the popup is open."
     },
     {
       "id": "part:select-value",
       "kind": "part",
       "status": "implemented",
       "tag": "span",
-      "selector": ":scope > [data-part=trigger] > [data-part=contents]",
-      "summary": "The selected option label, or the placeholder (data-placeholder)."
+      "selector": ":scope > [data-part=trigger] > [data-part=value]",
+      "summary": "The selected option label, or the placeholder (data-placeholder); Base UI Select.Value, in the construction pattern's contents place."
     },
     {
-      "id": "part:select-chevron",
+      "id": "part:select-icon",
       "kind": "part",
       "status": "implemented",
       "tag": "span",
-      "selector": ":scope > [data-part=trigger] > [data-part=trailing]",
-      "summary": "The caret-down icon (icon size sm); turns 180° when open."
+      "selector": ":scope > [data-part=trigger] > [data-part=icon]",
+      "summary": "The caret-down icon (Base UI Select.Icon, in the construction pattern's trailing place; icon size sm); turns 180° when open."
     },
     {
       "id": "part:select-popup",
@@ -362,7 +405,15 @@
       "status": "implemented",
       "tag": "div",
       "selector": ":scope > [data-part=popup]",
-      "summary": "The [popover=manual] listbox on bg.overlay holding the ui-option children; placed 1u from the trigger."
+      "summary": "The [popover=manual] listbox on bg.overlay (Base UI Select.Popup) holding the list; placed 1u from the trigger."
+    },
+    {
+      "id": "part:select-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list]",
+      "summary": "The ui-option children's parent (Base UI Select.List; the options are its items), display: contents so the options lay out in the popup. Web component only: the native select has none."
     }
   ],
   "edges": [
@@ -454,12 +505,17 @@
     {
       "from": "component:select",
       "relation": "ownsPart",
-      "to": "part:select-chevron"
+      "to": "part:select-icon"
     },
     {
       "from": "component:select",
       "relation": "ownsPart",
       "to": "part:select-popup"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-list"
     },
     {
       "from": "component:select",
@@ -558,7 +614,11 @@
             "suffix?: ReactNode",
             "gap?: number",
             "size?: number",
-            "children?: ReactNode // <SelectOption> children."
+            "children?: ReactNode // <SelectOption> children.",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // An option was chosen (Base UI onValueChange; reason 'item-press'). The native onChange still fires.",
+            "open?: boolean // Open the picker (Base UI open). Opening needs user activation (showPicker); a native picker cannot be closed from script.",
+            "defaultOpen?: boolean // Open the picker on mount (Base UI defaultOpen); with the same user-activation limit.",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // The picker opened or closed (Base UI onOpenChange), read from select:open after each interaction."
           ]
         }
       }

@@ -33,6 +33,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | swatch in a selectable palette | `data-selected`; `data-highlighted` while the palette has focus (the keyboard outline) |
 | `ui-swatch` / Swatch | `data-alpha` (translucent or missing color; ours), `data-invalid` (the color does not parse) |
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Events / callbacks |
+|---|---|---|
+| `ui-palette` (selectable) | `value`, `defaultValue` (`default-value`) | `change` and `input`: `detail { value, reason, event }`, reason `item-press` or `keyboard` |
+| React Palette | `value`, `defaultValue` | `onValueChange(value, { reason, event })`, the reason from the last pointer or key on the palette (its native radios report none) |
+
 ## Geometry and appearance
 
 Geometry families: `swatch` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [color.recipe.ts](color.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

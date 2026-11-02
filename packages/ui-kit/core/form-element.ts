@@ -11,6 +11,20 @@ import { fieldDataAttrs } from '../dom/state.ts';
 
 export interface Problem { flags: ValidityStateFlags; message: string }
 
+/**
+ * Base UI's value / defaultValue (checked / defaultChecked) at connect. A default given as an
+ * attribute (`default-value`, `default-checked`) or property sets the value unless the value
+ * was set too (its attribute, or a property differing from `initial`); without one, the value
+ * attribute is the default, like a native input's, else `fallback`. Reset returns to the default.
+ */
+export function settleDefault(el: any, initial: unknown, fallback: unknown = initial, key = 'value', defKey = key === 'checked' ? 'defaultChecked' : 'defaultValue') {
+  if (el[defKey] != null) {
+    if (!el.hasAttribute(key) && Object.is(el[key], initial)) el[key] = el[defKey];
+    return;
+  }
+  el[defKey] = el.hasAttribute(key) ? el[key] : fallback;
+}
+
 export class UIFormElement extends UIElement {
   static formAssociated = true;
   /** Set the field state data-* on the host (false for controls without a value, such as a button). */

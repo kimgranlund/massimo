@@ -97,13 +97,14 @@
         "track"
       ]
     },
-    "track-fill": {
-      "id": "part:track-fill",
-      "selector": ":scope > [data-part=track] > [data-part=fill]",
-      "summary": "The filled portion of the track, sized by --ui-ratio.",
+    "track-indicator": {
+      "id": "part:track-indicator",
+      "selector": ":scope > [data-part=track] > [data-part=indicator]",
+      "summary": "The filled portion of the track (Base UI Slider.Indicator / Progress.Indicator), sized by --ui-ratio.",
       "createdBy": "template",
       "searchTerms": [
-        "fill"
+        "fill",
+        "indicator"
       ]
     }
   }

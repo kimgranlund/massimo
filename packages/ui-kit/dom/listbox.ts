@@ -127,14 +127,28 @@ export function selectKeyIntent(open: boolean, e: { key: string; altKey?: boolea
 
 /**
  * Place a popup under its anchor (or above when there is more room there), within the viewport.
- * Pure: pass rects and viewport size; apply the result as fixed-position styles.
+ * Pure: pass rects and viewport size; apply the result as fixed-position styles and, through
+ * popupVars, as Base UI's positioner variables.
  */
-export function placePopup(anchor: { top: number; bottom: number; left: number; width: number }, viewport: { width: number; height: number }, gap = 4, margin = 8) {
+export function placePopup(anchor: { top: number; bottom: number; left: number; width: number; height?: number }, viewport: { width: number; height: number }, gap = 4, margin = 8) {
   const below = viewport.height - anchor.bottom - gap - margin;
   const above = anchor.top - gap - margin;
   const flip = below < 160 && above > below;
   const left = Math.max(margin, Math.min(anchor.left, viewport.width - margin - anchor.width));
+  const shared = { left, minWidth: anchor.width, anchorWidth: anchor.width, anchorHeight: anchor.height ?? anchor.bottom - anchor.top, availableWidth: viewport.width - left - margin };
   return flip
-    ? { left, bottom: viewport.height - anchor.top + gap, top: undefined, minWidth: anchor.width, maxHeight: above, side: 'top' as const }
-    : { left, top: anchor.bottom + gap, bottom: undefined, minWidth: anchor.width, maxHeight: below, side: 'bottom' as const };
+    ? { ...shared, bottom: viewport.height - anchor.top + gap, top: undefined, maxHeight: above, availableHeight: above, side: 'top' as const, transformOrigin: 'bottom center' }
+    : { ...shared, top: anchor.bottom + gap, bottom: undefined, maxHeight: below, availableHeight: below, side: 'bottom' as const, transformOrigin: 'top center' };
+}
+
+/**
+ * Base UI's positioner variables (Select.Positioner: --anchor-width, --anchor-height,
+ * --available-width, --available-height, --transform-origin) for a placePopup result, in px.
+ */
+export function popupVars(p: ReturnType<typeof placePopup>): Record<string, string> {
+  return {
+    '--anchor-width': `${p.anchorWidth}px`, '--anchor-height': `${p.anchorHeight}px`,
+    '--available-width': `${p.availableWidth}px`, '--available-height': `${p.availableHeight}px`,
+    '--transform-origin': p.transformOrigin,
+  };
 }

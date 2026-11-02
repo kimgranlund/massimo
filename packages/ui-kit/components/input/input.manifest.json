@@ -120,6 +120,17 @@
           }
         },
         {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
           "key": "type",
           "type": "string",
           "default": "text",
@@ -251,10 +262,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "native input event from the editor while typing"
+          "detail": "{ value: string, reason: 'none', event: InputEvent } (Base UI onValueChange)",
+          "trigger": "the text changes while typing (the editor's native input event stops at the editor; it is detail.event)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'none', event: FocusEvent }",
+          "trigger": "focus leaves the editor with a value different from the one it had on focus, like a native input"
         }
       ],
       "methods": [
@@ -540,7 +560,8 @@
             "suffix?: ReactNode",
             "trailing?: ReactNode",
             "description?: string",
-            "error?: string"
+            "error?: string",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // The text changed (Base UI onValueChange; reason 'none'). The native onChange still fires."
           ]
         }
       }

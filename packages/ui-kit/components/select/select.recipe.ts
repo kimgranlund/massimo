@@ -1,9 +1,11 @@
-// Slot recipe for <ui-select> and the React Select. The trigger is a button with a trailing chevron
-// slot (resolveSelectTrigger); the popup a composite list of options (recipe-parts.ts `composite`;
+// Slot recipe for <ui-select> and the React Select, in Base UI Select's anatomy: the trigger (a button
+// with a value and a chevron icon in the construction pattern's contents and trailing places,
+// resolveSelectTrigger), the popup and its list (display: contents, so the options lay out in the
+// popup), the items being <ui-option>s. The popup is a composite list of options (recipe-parts.ts `composite`;
 // the options read its values, listbox.recipe.ts).
 // React renders a native <select> with customizable-select styling (appearance: base-select): the
-// trigger is its <button>, the value its <selectedcontent>, the popup ::picker(select) (a
-// pseudo-element, so styled from the root), the options native <option>s. Browsers without
+// trigger is its <button>, the value its <selectedcontent>, the icon the chevron, the popup ::picker(select) (a
+// pseudo-element, so styled from the root; no list part), the options native <option>s. Browsers without
 // base-select show the platform select.
 import { defineSlotRecipe } from '@pandacss/dev';
 import { FORCED, FORCED_EDGE, composite, fieldControl, fieldParts, fieldRoot, mergeStyles, t } from '../recipe-parts.ts';
@@ -19,18 +21,31 @@ const ANCHORED = '@supports (position-area: block-end) and (anchor-scope: all)';
 const popup = {
   flexDirection: 'column', position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
   bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
-  // Fades and grows from its trigger edge.
-  transformOrigin: 'top center', opacity: 0, scale: 0.97,
+  // Base UI's positioner variables (Select.Positioner): computed in CSS where anchor positioning
+  // runs (`anchored` below), set in px by the element's script placement elsewhere; the React
+  // picker gets the CSS ones. The popup is sized from them.
+  minWidth: 'var(--anchor-width)', maxHeight: 'var(--available-height)',
+  // Fades and grows from its trigger edge: the top edge below the trigger, the bottom edge above it.
+  // (The web component's popup flips the origin by data-side, `side` below; the browser reports no
+  // side for the React picker.)
+  '--transform-origin': 'top center',
+  transformOrigin: 'var(--transform-origin)', opacity: 0, scale: 0.97,
   transition: `${t('reveal', 'opacity', 'scale')}, display {durations.reveal} allow-discrete, overlay {durations.reveal} allow-discrete`,
   [FORCED]: FORCED_EDGE,
 };
 // Anchor positioning (browsers with position-area and anchor-scope): each select scopes one shared
 // anchor name, so the popup sits 1u below its own trigger (above when there is no room), at least as
 // wide, as tall as the space allows. Elsewhere the element places it from script.
+// The variables hold anchor functions and percentages of the position-area cell (the space beside
+// the trigger), so they resolve where they are used: in sizing, inset and margin properties.
 const anchored = {
   positionAnchor: '--ui-select-trigger', positionArea: 'block-end span-inline-end', positionTryFallbacks: 'flip-block', positionTryOrder: 'most-block-size',
+  '--anchor-width': 'anchor-size(width)', '--anchor-height': 'anchor-size(height)',
+  // The cell spans from the trigger's start edge to the viewport's end, and from the trigger to the
+  // viewport edge on the open side; the popup's 1u margin toward the trigger is not available.
+  '--available-width': '100%', '--available-height': 'calc(100% - var(--u))',
   // One margin toward the trigger; flip-block mirrors it when the popup opens upward.
-  marginBlockStart: 'var(--u)', minWidth: 'anchor-size(width)', maxHeight: 'calc(100% - var(--u))',
+  marginBlockStart: 'var(--u)',
 };
 const open = { opacity: 1, scale: 1, '@starting-style': { opacity: 0, scale: 0.97 } };
 // The composite variables alone (the native select holds them for its options, which inherit from it).
@@ -41,7 +56,7 @@ const hostGap = { '--ui-gap': 'inherit' };
 export const select = defineSlotRecipe({
   className: 'ui-select',
   description: 'Single-choice dropdown (ui-select, React Select).',
-  slots: ['root', 'label', 'trigger', 'leading', 'prefix', 'contents', 'suffix', 'trailing', 'popup', 'description', 'error'],
+  slots: ['root', 'label', 'trigger', 'leading', 'prefix', 'value', 'suffix', 'icon', 'popup', 'list', 'description', 'error'],
   base: {
     root: {
       ...fieldRoot,
@@ -68,10 +83,10 @@ export const select = defineSlotRecipe({
       }), {
       cursor: 'pointer', userSelect: 'none',
       // Open: the trigger holds the pressed fill and the chevron turns.
-      [`&${OPEN}`]: { bg: 'bg.mutedActive', '& > [data-part=trailing]': { rotate: '180deg' } },
-      '& > [data-part=contents]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
-      '& > [data-part=contents][data-placeholder]': { color: 'fg.subtle' },
-      '& > [data-part=trailing]': { color: 'fg.muted', transition: t('toggle', 'rotate') },
+      [`&${OPEN}`]: { bg: 'bg.mutedActive', '& > [data-part=icon]': { rotate: '180deg' } },
+      '& > [data-part=value]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
+      '& > [data-part=value][data-placeholder]': { color: 'fg.subtle' },
+      '& > [data-part=icon]': { color: 'fg.muted', transition: t('toggle', 'rotate') },
       [ANCHORED]: { anchorName: '--ui-select-trigger' },
       '&:is(select > *)': { width: '100%' },
     }),
@@ -79,8 +94,12 @@ export const select = defineSlotRecipe({
     // the popup stays displayed for its fade (display transitions discretely), so a direction set
     // only on :popover-open would flip it to a row.
     popup: mergeStyles(popup, composite, hostGap, {
+      // Base UI data-side: opening upward, the popup grows from its bottom edge.
+      '&[data-side=top]': { '--transform-origin': 'bottom center' },
       '&:popover-open': { display: 'flex', ...open },
       [ANCHORED]: anchored,
     }),
+    // Base UI Select.List: the options' parent, transparent to layout (the popup is the composite).
+    list: { display: 'contents' },
   },
 });

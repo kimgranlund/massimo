@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { navigate, createTypeahead, selectKeyIntent, placePopup } from '../dom/listbox.ts';
+import { navigate, createTypeahead, selectKeyIntent, placePopup, popupVars } from '../dom/listbox.ts';
 
 const items = [{ value: 'a', label: 'Apple' }, { value: 'b', label: 'Banana', disabled: true }, { value: 'c', label: 'Cherry' }, { value: 'd', label: 'Cranberry' }];
 
@@ -34,4 +34,7 @@ test('selectKeyIntent and placePopup', () => {
   const above = placePopup({ top: 520, bottom: 560, left: 700, width: 200 }, { width: 800, height: 600 });
   assert.equal(above.side, 'top');
   assert.equal(above.left, 592, 'clamped inside the viewport');
+  // Base UI positioner variables from the placement.
+  assert.deepEqual(popupVars(below), { '--anchor-width': '200px', '--anchor-height': '40px', '--available-width': '772px', '--available-height': '448px', '--transform-origin': 'top center' });
+  assert.deepEqual(popupVars(above), { '--anchor-width': '200px', '--anchor-height': '40px', '--available-width': '200px', '--available-height': '508px', '--transform-origin': 'bottom center' });
 });

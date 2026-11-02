@@ -4,7 +4,7 @@
 // Badge and Tag are <span>s; Chip is a native <button> (aria-pressed when selectable). A removable
 // chip's x is a click target inside it, not a nested button; Delete or Backspace also remove it.
 import { useState, type ButtonHTMLAttributes, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react';
-import { buttonAttrs, isInactive, toReactProps } from '../../dom/index.ts';
+import { buttonAttrs, eventDetails, isInactive, toReactProps, type ChangeDetails } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { cx } from '../../styled-system/css/cx.js';
@@ -27,7 +27,7 @@ export interface ChipProps extends Common, Omit<ButtonHTMLAttributes<HTMLButtonE
   selectable?: boolean;
   selected?: boolean;
   defaultSelected?: boolean;
-  onSelectedChange?: (selected: boolean) => void;
+  onSelectedChange?: (selected: boolean, details: ChangeDetails) => void;
   /** Adds the trailing x and the Delete / Backspace gesture; calls onRemove. */
   removable?: boolean;
   onRemove?: () => void;
@@ -38,7 +38,7 @@ export function Chip({ leading, prefix, suffix, trailing, iconSize, size, childr
   const [inner, setInner] = useState(defaultSelected);
   const pressed = selectable ? (selected ?? inner) : undefined;
   const state = { disabled, pressed, native: true };
-  const toggle = () => { const next = !pressed; if (selected === undefined) setInner(next); onSelectedChange?.(next); };
+  const toggle = (event: Event) => { const next = !pressed; if (selected === undefined) setInner(next); onSelectedChange?.(next, eventDetails('none', event)); };
   return (
     <button
       type="button" {...rest} className={cx(c.root, className)} data-ui="chip" data-size={size} data-icon-size={iconSize} data-selectable={selectable || undefined}
@@ -46,7 +46,7 @@ export function Chip({ leading, prefix, suffix, trailing, iconSize, size, childr
       onClick={(e: MouseEvent<HTMLButtonElement>) => {
         if (isInactive(state)) { e.preventDefault(); return; }
         if ((e.target as Element).closest?.('[data-remove]')) { onRemove?.(); return; }
-        if (selectable) toggle();
+        if (selectable) toggle(e.nativeEvent);
         onClick?.(e);
       }}
       onKeyDown={(e: KeyboardEvent<HTMLButtonElement>) => {

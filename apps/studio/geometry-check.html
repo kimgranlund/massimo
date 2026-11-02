@@ -50,7 +50,7 @@ for (const c of cases) {
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
   const ctl = resolveControl(g), cmp = resolveComposite(g), fld = resolveField(g), trg = resolveSelectTrigger(g);
   const [btn, iconBtn, caretBtn, textBtn] = box.querySelectorAll('ui-button');
-  const pc = (b) => b.querySelector('[data-part=contents]');
+  const pc = (b) => b.querySelector('[data-part=contents]'), pv = (b) => b.querySelector('[data-part=value]');
   const lead = btn.querySelector('[data-part=leading]'), contents = btn.querySelector('[data-part=contents]');
   const inp = box.querySelector('ui-input [data-part=control]'), tr = box.querySelector('ui-select [data-part=trigger]');
   const seg = box.querySelector('ui-segmented'), [o1, o2] = seg.querySelectorAll('ui-option');
@@ -79,7 +79,7 @@ for (const c of cases) {
     'contents.paddingBlock': [px(cs(contents).paddingTop), ctl.contents.paddingBlock],
     'contents.lineHeight': [px(cs(contents).lineHeight), r2(ctl.contents.lineHeight)],
     'input.editor.lineHeight': [px(cs(pc(inp)).lineHeight), r2(ctl.contents.lineHeight)],
-    'select.value.lineHeight': [px(cs(pc(tr)).lineHeight), r2(ctl.contents.lineHeight)],
+    'select.value.lineHeight': [px(cs(pv(tr)).lineHeight), r2(ctl.contents.lineHeight)],
     'iconOnly.square': [r2(rect(iconBtn).width), ctl.height],
     'input.height': [r2(rect(inp).height), fld.height],
     'input.padding': [px(cs(inp).paddingLeft) + px(cs(inp).borderLeftWidth), ctl.padding + ctl.border],
@@ -89,10 +89,10 @@ for (const c of cases) {
     'select.height': [r2(rect(tr).height), trg.height],
     'select.padding': [px(cs(tr).paddingLeft) + px(cs(tr).borderLeftWidth), ctl.padding + ctl.border],
     'select.paddingEnd': [px(cs(tr).paddingRight), trg.paddingEnd],
-    'select.contents.start': [px(cs(pc(tr)).paddingLeft), trg.contentsStart],
-    'select.contents.end': [px(cs(pc(tr)).paddingRight), trg.contentsEnd],
-    'select.chevron.slot': [r2(rect(tr.querySelector('[data-part=trailing]')).width), trg.chevronSlot],
-    'select.chevron.icon': [r2(rect(tr.querySelector('[data-part=trailing] > i')).width), trg.chevronIcon],
+    'select.contents.start': [px(cs(pv(tr)).paddingLeft), trg.contentsStart],
+    'select.contents.end': [px(cs(pv(tr)).paddingRight), trg.contentsEnd],
+    'select.chevron.slot': [r2(rect(tr.querySelector('[data-part=icon]')).width), trg.chevronSlot],
+    'select.chevron.icon': [r2(rect(tr.querySelector('[data-part=icon] > i')).width), trg.chevronIcon],
     'button.caret.icon': [r2(rect(caretBtn.querySelector('i[name=caret-down]')).width), trg.chevronIcon],
     'segmented.height': [r2(rect(seg).height), cmp.rowHeight],
     'option.height': [r2(rect(o1).height), cmp.child.height],
@@ -147,12 +147,12 @@ for (const c of cases) {
   checks['image.ratio.noInline'] = [[$('imgWide'), $('imgCustom')].filter((el) => el.style.aspectRatio).length, 0];
   // Buttons, form controls, badges, tags and chips use the UI voice: same family as the control role.
   const uiFamily = cs(box.querySelector('[data-type="control"]')).fontFamily;
-  const uiVoiced = [['badge', badge], ['tag', tag], ['chip', chip], ['button', btn], ['input', pc(inp)], ['select', pc(tr)], ['option', box.querySelector('ui-listbox ui-option')], ['segmented', o1], ['checkbox', box.querySelector('ui-checkbox')], ['radio', box.querySelector('ui-radio')], ['switch', box.querySelector('ui-switch')]];
+  const uiVoiced = [['badge', badge], ['tag', tag], ['chip', chip], ['button', btn], ['input', pc(inp)], ['select', pv(tr)], ['option', box.querySelector('ui-listbox ui-option')], ['segmented', o1], ['checkbox', box.querySelector('ui-checkbox')], ['radio', box.querySelector('ui-radio')], ['switch', box.querySelector('ui-switch')]];
   for (const [k, el] of uiVoiced) checks[`${k}.font.uiVoice`] = [cs(el).fontFamily === uiFamily && /system-ui/.test(uiFamily) ? 1 : 0, 1];
   checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];
-  const choice = (sel) => box.querySelector(`${sel} [data-part=box]`);
+  const choice = (sel) => box.querySelector(`${sel} [data-part=indicator]`);
   const rck = resolveChoice('checkbox', g), rs = resolveChoice('switch', g), rt2 = resolveTrack('range', g), rsw = resolveSwatch(g);
   const range = box.querySelector('ui-range');
   checks['checkbox.box'] = [r2(rect(choice('ui-checkbox')).height), rck.box];
@@ -163,9 +163,9 @@ for (const c of cases) {
   checks['range.height'] = [r2(rect(range).height), rt2.height];
   checks['range.track'] = [r2(rect(range.querySelector('[data-part=track]')).height), rt2.track];
   checks['range.thumb'] = [r2(rect(range.querySelector('[data-part=thumb]')).width), rt2.thumb];
-  checks['range.fill'] = [r2(rect(range.querySelector('[data-part=fill]')).width), r2(trackFill('range', 0.25, rect(range.querySelector('[data-part=track]')).width, g))];
+  checks['range.fill'] = [r2(rect(range.querySelector('[data-part=track] > [data-part=indicator]')).width), r2(trackFill('range', 0.25, rect(range.querySelector('[data-part=track]')).width, g))];
   {
-    const tw = rect(range.querySelector('[data-part=track]')).width, th = range.querySelector('[data-part=thumb]'), fl = range.querySelector('[data-part=fill]');
+    const tw = rect(range.querySelector('[data-part=track]')).width, th = range.querySelector('[data-part=thumb]'), fl = range.querySelector('[data-part=track] > [data-part=indicator]');
     checks['range.thumb.offset'] = [r2(rect(th).left - rect(range).left), r2(thumbOffset(0.25, tw, g))];
     checks['range.thumb.radius'] = [px(cs(th).borderTopLeftRadius), r2(rt2.thumbRadius)];
     checks['range.fill.radius'] = [px(cs(fl).borderTopRightRadius), r2(rt2.trackRadius)];

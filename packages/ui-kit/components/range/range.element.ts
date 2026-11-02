@@ -2,18 +2,20 @@
 // PageUp/Down move 10%, Home/End jump; pointer drag with capture. Form-associated.
 // <ui-progress>: progress bar (role="progressbar"); no `value` means indeterminate.
 // Both expose the fill ratio as --ui-ratio (0..1), a continuous value carried by a variable.
-import { UIElement, UIFormElement, define, html, signal } from '../../core/index.ts';
-import { applyAttrs, progressState, rangeDataAttrs, rangeKey, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
+import { UIElement, UIFormElement, define, html, settleDefault, signal } from '../../core/index.ts';
+import { applyAttrs, eventDetails, progressState, rangeDataAttrs, rangeKey, type ChangeReason, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { range, progress } from '../../styled-system/recipes/index.js';
 
-/** Track and fill parts of a range or progress host. */
-const trackPart = (host: Element) => (slot: string) => slot === 'fill' ? partOf(partOf(host, 'track') ?? host, 'fill') : partOf(host, slot);
+/** Track and indicator (Base UI Slider.Indicator / Progress.Indicator) parts of a range or progress host. */
+const trackPart = (host: Element) => (slot: string) => slot === 'indicator' ? partOf(partOf(host, 'track') ?? host, 'indicator') : partOf(host, slot);
 
 export class UIRange extends UIFormElement {
   static properties = {
     ...UIFormElement.properties,
     value: { type: Number, default: 50 },
+    /** The value at first render and on form reset; without it, the value attribute, else the value at connect (Base UI defaultValue). */
+    defaultValue: { type: Number, default: null },
     min: { type: Number, default: 0 },
     max: { type: Number, default: 100 },
     step: { type: Number, default: 1 },
@@ -21,18 +23,18 @@ export class UIRange extends UIFormElement {
     valueText: { type: String, default: '', attribute: 'value-text' },
   };
   declare value: number;
+  declare defaultValue: number | null;
   declare min: number;
   declare max: number;
   declare step: number;
   declare label: string;
   declare valueText: string;
 
-  #default = 50;
   #dragging = signal(false);
   get #state() { return { value: this.value, min: this.min, max: this.max, step: this.step }; }
 
   connected() {
-    this.#default = this.hasAttribute('value') ? Number(this.getAttribute('value')) : this.value;
+    settleDefault(this, 50, this.value);
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('pointerdown', this.#onPointerDown);
     this.addEventListener('blur', this.#onBlur);
@@ -45,7 +47,7 @@ export class UIRange extends UIFormElement {
   }
 
   template() {
-    return html`<span data-part="track"><span data-part="fill"></span></span><span data-part="thumb"></span>`;
+    return html`<span data-part="track"><span data-part="indicator"></span></span><span data-part="thumb"></span>`;
   }
 
   update() {
@@ -56,14 +58,22 @@ export class UIRange extends UIFormElement {
   }
 
   formValue() { return String(this.value); }
-  resetValue() { this.value = this.#default; }
+  resetValue() { this.value = this.defaultValue ?? 50; }
   restoreValue(state: unknown) { if (state != null) this.value = Number(state); }
 
   #rtl() { return getComputedStyle(this).direction === 'rtl'; }
 
-  #set(v: number, commit: boolean) {
-    if (v !== this.value) { this.value = v; this.dispatchEvent(new Event('input', { bubbles: true })); }
-    if (commit) this.dispatchEvent(new Event('change', { bubbles: true }));
+  /** Set the value from an interaction: input on every change (Base UI onValueChange). */
+  #set(v: number, reason: ChangeReason, event: Event) {
+    if (v === this.value) return false;
+    this.value = v;
+    this.dispatchEvent(new CustomEvent('input', { bubbles: true, detail: { value: v, ...eventDetails(reason, event) } }));
+    return true;
+  }
+
+  /** change once the interaction ends with a new value (Base UI onValueCommitted). */
+  #commit(reason: ChangeReason, event: Event) {
+    this.dispatchEvent(new CustomEvent('change', { bubbles: true, detail: { value: this.value, ...eventDetails(reason, event) } }));
   }
 
   #onKeydown = (e: KeyboardEvent) => {
@@ -71,7 +81,7 @@ export class UIRange extends UIFormElement {
     const v = rangeKey(e.key, this.#state, this.#rtl());
     if (v === undefined) return;
     e.preventDefault();
-    this.#set(v, true);
+    if (this.#set(v, 'keyboard', e)) this.#commit('keyboard', e);
   };
 
   #fromPointer(e: PointerEvent) {
@@ -86,14 +96,16 @@ export class UIRange extends UIFormElement {
     this.focus();
     this.setPointerCapture?.(e.pointerId);
     this.#dragging.value = true;
-    this.#set(this.#fromPointer(e), false);
-    const move = (ev: PointerEvent) => this.#set(this.#fromPointer(ev), false);
-    const up = () => {
+    const start = this.value;
+    let dragged = false;
+    this.#set(this.#fromPointer(e), 'track-press', e);
+    const move = (ev: PointerEvent) => { if (this.#set(this.#fromPointer(ev), 'drag', ev)) dragged = true; };
+    const up = (ev: PointerEvent) => {
       this.removeEventListener('pointermove', move);
       this.removeEventListener('pointerup', up);
       this.removeEventListener('pointercancel', up);
       this.#dragging.value = false;
-      this.dispatchEvent(new Event('change', { bubbles: true }));
+      if (this.value !== start) this.#commit(dragged ? 'drag' : 'track-press', ev);
     };
     this.addEventListener('pointermove', move);
     this.addEventListener('pointerup', up);
@@ -113,7 +125,7 @@ export class UIProgress extends UIElement {
   declare max: number;
   declare label: string;
 
-  template() { return html`<span data-part="track"><span data-part="fill"></span></span>`; }
+  template() { return html`<span data-part="track"><span data-part="indicator"></span></span>`; }
 
   update() {
     const p = progressState(this.value, this.max);

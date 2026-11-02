@@ -185,6 +185,17 @@
           }
         },
         {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
           "key": "label",
           "type": "string",
           "default": "",
@@ -237,17 +248,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ value: string, reason: 'item-press' | 'keyboard', event: Event }",
+          "trigger": "a swatch is chosen by pointer or arrow keys"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ value: string, reason: 'item-press' | 'keyboard', event: Event }",
+          "trigger": "a swatch is chosen (same moment as input)"
         }
       ],
       "methods": [
@@ -534,7 +547,7 @@
             "selectable?: boolean",
             "value?: string",
             "defaultValue?: string = ''",
-            "onValueChange?: (value: string) => void",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // A swatch was chosen (Base UI onValueChange): reason 'item-press' (pointer) or 'keyboard'.",
             "label?: string",
             "orientation?: 'horizontal' | 'vertical'",
             "disabled?: boolean",

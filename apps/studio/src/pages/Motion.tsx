@@ -135,7 +135,8 @@ function ComponentDemos() {
   const flip = () => setOn((v) => !v);
   useEffect(() => {
     const sel = selectRef.current;
-    if (sel && Boolean(sel.open) !== on) sel.trigger?.click();
+    // Base UI open: the property opens and closes the popup.
+    if (sel) sel.open = on;
     swiperRef.current?.go?.(on ? 1 : 0);
   }, [on]);
   const demo = (title: string, intent: string, body: ReactNode) => (

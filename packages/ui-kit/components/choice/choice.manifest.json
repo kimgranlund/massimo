@@ -98,6 +98,17 @@
           }
         },
         {
+          "key": "defaultChecked",
+          "type": "boolean",
+          "default": null,
+          "attribute": "default-checked",
+          "reflects": false,
+          "description": "Base UI defaultChecked: checked at first render (when no checked attribute set it) and after form reset. Without it, the checked attribute is the default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "value",
           "type": "string",
           "default": "on",
@@ -137,17 +148,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event } (Base UI onCheckedChange)",
+          "trigger": "the user toggles it (radio: selects it)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event }",
+          "trigger": "the user toggles it (radio: selects it; same moment as input)"
         }
       ],
       "methods": [
@@ -276,6 +289,17 @@
           }
         },
         {
+          "key": "defaultChecked",
+          "type": "boolean",
+          "default": null,
+          "attribute": "default-checked",
+          "reflects": false,
+          "description": "Base UI defaultChecked: checked at first render (when no checked attribute set it) and after form reset. Without it, the checked attribute is the default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "value",
           "type": "string",
           "default": "on",
@@ -304,17 +328,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event } (Base UI onCheckedChange)",
+          "trigger": "the user toggles it (radio: selects it)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event }",
+          "trigger": "the user toggles it (radio: selects it; same moment as input)"
         }
       ],
       "methods": [
@@ -457,6 +483,17 @@
           }
         },
         {
+          "key": "defaultChecked",
+          "type": "boolean",
+          "default": null,
+          "attribute": "default-checked",
+          "reflects": false,
+          "description": "Base UI defaultChecked: checked at first render (when no checked attribute set it) and after form reset. Without it, the checked attribute is the default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "value",
           "type": "string",
           "default": "on",
@@ -485,17 +522,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event } (Base UI onCheckedChange)",
+          "trigger": "the user toggles it (radio: selects it)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event }",
+          "trigger": "the user toggles it (radio: selects it; same moment as input)"
         }
       ],
       "methods": [
@@ -568,12 +607,20 @@
       "contract": "../../contracts/components.json#/components/switch"
     },
     {
-      "id": "part:choice-box",
+      "id": "part:choice-indicator",
       "kind": "part",
       "status": "implemented",
       "tag": "span",
-      "selector": ":scope > [data-part=leading] > [data-part=box]",
-      "summary": "The indicator (aria-hidden): checkbox box with check and minus marks, radio dot, or switch track and thumb. Created at connect unless authored."
+      "selector": ":scope > [data-part=leading] > [data-part=indicator]",
+      "summary": "The indicator (aria-hidden; Base UI Checkbox.Indicator, Radio.Indicator): checkbox box with check and minus marks, radio circle with its dot, or switch track holding the thumb. Created at connect unless authored."
+    },
+    {
+      "id": "part:switch-thumb",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=leading] > [data-part=indicator] > [data-part=thumb]",
+      "summary": "The switch knob (Base UI Switch.Thumb) inside the indicator track; slides 4u when checked."
     }
   ],
   "edges": [
@@ -640,7 +687,7 @@
     {
       "from": "component:checkbox",
       "relation": "ownsPart",
-      "to": "part:choice-box"
+      "to": "part:choice-indicator"
     },
     {
       "from": "component:checkbox",
@@ -775,7 +822,7 @@
     {
       "from": "component:radio",
       "relation": "ownsPart",
-      "to": "part:choice-box"
+      "to": "part:choice-indicator"
     },
     {
       "from": "component:radio",
@@ -900,7 +947,12 @@
     {
       "from": "component:switch",
       "relation": "ownsPart",
-      "to": "part:choice-box"
+      "to": "part:choice-indicator"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:switch-thumb"
     },
     {
       "from": "component:switch",
@@ -997,6 +1049,7 @@
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode",
             "indeterminate?: boolean"
@@ -1010,6 +1063,7 @@
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode"
           ]
@@ -1022,6 +1076,7 @@
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode"
           ]

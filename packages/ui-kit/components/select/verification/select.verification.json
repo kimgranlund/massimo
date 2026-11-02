@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "e81d28b0347d485c22f89a9e4336d60aee1b96007601a12429ab930711ac3eeb"
+      "sha256": "d5905d0070863e74458b7f196cff760329518aa7bd53e236b96e2c684119f3df"
     },
     {
       "path": "components/listbox/options.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "0abd44cae858161a92412ac6e4f9ad03ff4cdaf34c0ddc89f0a95f249510bec3"
+      "sha256": "4fbe3d0a731ae58377ede4fe18a3bcdc1ffdab949ff8d1273b92541725436cd9"
     },
     {
       "path": "dom/field.ts",
@@ -22,11 +22,11 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "3dec2424c5426238140ab387dbf7afdb79955fee775769447db68de5f264526f"
+      "sha256": "c350c1a92dcb39f6006f43b32bd032d4f2d1d524d72407393bc2a5a0150f3a0b"
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "e20b1887dfa2e5f43910da1b4019338b1d5e4d818e94823ab659469c692b2967"
+      "sha256": "8577e70d70d6e66383a6b80dbbd951800c3d2379b5256aa4ade86224f6d7a266"
     },
     {
       "path": "components/parts.react.tsx",
@@ -39,6 +39,14 @@
     {
       "path": "components/state.react.ts",
       "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
+    },
+    {
+      "path": "dom/events.ts",
+      "sha256": "76db980a6af8bce8d8f3ce38a5543d5c12e65a4729657fd13551e7643e663ea9"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "1a9b478f598e231cd2799bd4ede9338af9fb67b55307d9a31d1673027ab8e053"
     }
   ],
   "renderers": {
@@ -55,6 +63,10 @@
         {
           "command": "node --test test/state-parity.test.ts",
           "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
+        },
+        {
+          "command": "node --test test/events.test.ts",
+          "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
         }
       ],
       "latestRun": {
@@ -63,7 +75,8 @@
         "commands": [
           "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
           "node --test test/listbox.test.ts",
-          "node --test test/state-parity.test.ts"
+          "node --test test/state-parity.test.ts",
+          "node --test test/events.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -79,6 +92,10 @@
         {
           "command": "node --test test/state-parity.test.ts",
           "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
+        },
+        {
+          "command": "node --test test/events.test.ts",
+          "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
         }
       ],
       "latestRun": {
@@ -86,7 +103,8 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/state-parity.test.ts"
+          "node --test test/state-parity.test.ts",
+          "node --test test/events.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

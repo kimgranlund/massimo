@@ -1,13 +1,14 @@
 // Slot recipes for <ui-checkbox>, <ui-radio>, <ui-switch> and the React Checkbox, Radio, Switch.
-// A 6u row: the 5u box (9u wide for switch) sits in the 6u leading slot; the label starts 1u after
+// A 6u row: the 5u indicator (Base UI Checkbox.Indicator / Radio.Indicator; the switch's is its 9u wide
+// track, holding the Switch.Thumb) sits in the 6u leading slot; the label starts 1u after
 // it (resolveChoice). State is the data-* contract on the host (data-checked, data-unchecked,
 // data-indeterminate, data-disabled, data-invalid, data-required, …), set by the web component and
 // by the React renderer from its native input: the conditions (_checked, _disabled, …) key on it.
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, constructionPattern, t } from '../recipe-parts.ts';
 
-const SLOTS = ['root', 'leading', 'box', 'prefix', 'contents', 'suffix'] as const;
-const BOX = '& [data-part=box]';
+const SLOTS = ['root', 'leading', 'indicator', 'prefix', 'contents', 'suffix'] as const;
+const BOX = '& [data-part=indicator]';
 // The label starts 1u after the indicator slot and has no padding at the end.
 const PATTERN = constructionPattern({ slot: 'var(--u)', bare: '0px', text: { paddingBlock: 'calc(0.75 * var(--u))' }, iconSlots: false });
 const REQUIRED = '&[data-required]::after';
@@ -19,11 +20,11 @@ const on = (extra: Record<string, any> = {}) => ({
   ...extra,
 });
 
-function choice(kind: 'checkbox' | 'radio' | 'switch', box: Record<string, any>, root: Record<string, any>) {
+function choice(kind: 'checkbox' | 'radio' | 'switch', box: Record<string, any>, root: Record<string, any>, extra: Record<string, any> = {}) {
   return defineSlotRecipe({
     className: `ui-${kind}`,
     description: `${kind[0].toUpperCase()}${kind.slice(1)} (ui-${kind}, React ${kind[0].toUpperCase()}${kind.slice(1)}).`,
-    slots: SLOTS,
+    slots: [...SLOTS, ...Object.keys(extra)],
     base: {
       root: {
         display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle',
@@ -31,7 +32,7 @@ function choice(kind: 'checkbox' | 'radio' | 'switch', box: Record<string, any>,
         _disabled: { opacity: 0.5, cursor: 'not-allowed' },
         _enabled: { _hover: { [BOX]: { bg: 'bg.mutedHover' } }, '&:active': { [BOX]: { bg: 'bg.mutedActive' } } },
         // Invalid (data-invalid at low specificity): hover and the checked fill win over it.
-        '&:where([data-invalid]) [data-part=box]': { borderColor: 'critical.solid', bg: CRITICAL_TINT(20) },
+        '&:where([data-invalid]) [data-part=indicator]': { borderColor: 'critical.solid', bg: CRITICAL_TINT(20) },
         // React: the native input carries state, invisible but interactive.
         '&:has(> input)': { position: 'relative' },
         '& > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
@@ -40,13 +41,14 @@ function choice(kind: 'checkbox' | 'radio' | 'switch', box: Record<string, any>,
         ...root,
       },
       leading: { display: 'grid', placeItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)', flexShrink: 0 },
-      box: {
+      indicator: {
         display: 'grid', placeItems: 'center', width: 'calc(5 * var(--u))', height: 'calc(5 * var(--u))', borderWidth: 'var(--b)',
         borderColor: 'border.strong', bg: 'bg.muted', color: 'fg.onSolid',
         transition: t('feedback', ...PAINT),
         [FORCED]: FORCED_EDGE,
         ...box,
       },
+      ...extra,
     },
   });
 }
@@ -75,14 +77,16 @@ export const radio = choice('radio', {
 
 const switchRecipe = choice('switch', {
   width: 'calc(9 * var(--u))', borderRadius: 'calc(2.5 * var(--u))', justifyItems: 'start', paddingInline: 'calc(0.5 * var(--u) - var(--b))',
-  _after: {
-    content: '""', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%', bg: 'white', boxShadow: 'sm',
+}, {
+  ...requiredMarker,
+  _checked: on({ [`${BOX} > [data-part=thumb]`]: { translate: 'calc(4 * var(--u)) 0' } }),
+}, {
+  // Base UI Switch.Thumb.
+  thumb: {
+    display: 'block', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%', bg: 'white', boxShadow: 'sm',
     transition: `${t('toggle', 'translate')}, ${t('feedback', 'background-color')}`,
     [FORCED]: { forcedColorAdjust: 'none', bg: 'CanvasText' },
   },
-}, {
-  ...requiredMarker,
-  _checked: on({ [`${BOX}::after`]: { translate: 'calc(4 * var(--u)) 0' } }),
 });
 // `switch` is a reserved word: exported by name for the manifest, registered as switchRecipe.
 export { switchRecipe as switch, switchRecipe };

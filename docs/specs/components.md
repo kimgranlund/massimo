@@ -16,7 +16,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 |---|---|---|
 | `ui-button` | `role=button`; Enter/Space activate; submit/reset through the form; `variant="primary"` paints the primary solid with contrast text | `type`, `variant`, `disabled`, `loading`, `icon-size` |
 | `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked; adornments via `slot` children | `label`, `hide-label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |
-| `ui-select` | select-only combobox; popover listbox placed by CSS anchor positioning (script fallback); APG keys; typeahead | `label`, `hide-label`, `value`, `placeholder`, `description`, `error`, `required`, `gap` |
+| `ui-select` | select-only combobox; popover listbox placed by CSS anchor positioning (script fallback) with Base UI's positioner variables (`--anchor-width`, `--anchor-height`, `--available-width`, `--available-height`, `--transform-origin`; CSS where anchored, px from script otherwise, CSS only on the React picker: [select guide](../../packages/ui-kit/components/select/select.md#popup-variables)); APG keys; typeahead | `label`, `hide-label`, `value`, `placeholder`, `description`, `error`, `required`, `gap` |
 | `ui-listbox` | single-select listbox; selection follows focus; typeahead | `value`, `orientation`, `label`, `gap` |
 | `ui-segmented` | horizontal listbox | same as listbox |
 | `ui-option` | option for listbox/segmented/select, with slots | `value`, `disabled` |
@@ -35,6 +35,30 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-field` | no role; its visible label (text + `unit`) names one slotted control: `aria-labelledby` on a host-role control, `labelledby` on ui-input / ui-select (forwarded to the editor or trigger); label press focuses or toggles; optional readout and description | `label`, `unit`, `readout`, `description`, `layout` (stacked, inline) |
 | `ui-field-grid` | no role; columns label \| control \| readout shared by its ui-field rows (`subgrid`); other children (headings) span | |
 | containers | `ui-group`, `ui-collection` (wrappers), `ui-card` (container), `ui-panel`, `ui-region`, `ui-page` (areas); CSS only | `size`, `gap`; card `padding` xs…xl |
+
+### Part names
+
+`data-part` values (and the slot recipe's slot names) follow [Base UI](https://base-ui.com) anatomy where Base UI has an equivalent part; the construction-pattern parts (`leading`, `prefix`, `contents`, `suffix`, `trailing`) keep their names inside them, except where a Base UI part takes their place (the select trigger's value and icon). Renamed parts:
+
+| Component | Old `data-part` | New `data-part` (Base UI part) | Graph ID |
+|---|---|---|---|
+| `ui-select` / Select | trigger › `contents` | trigger › `value` (Select.Value) | `part:select-value` |
+| `ui-select` / Select | trigger › `trailing` (chevron) | trigger › `icon` (Select.Icon) | `part:select-icon` (was `part:select-chevron`) |
+| `ui-select` | popup › `ui-option` | popup › `list` › `ui-option` (Select.Popup › List › Item); web component only, the native select has no list | `part:select-list` (new) |
+| `ui-checkbox`, `ui-radio` / Checkbox, Radio | leading › `box` | leading › `indicator` (Checkbox.Indicator, Radio.Indicator; the radio dot stays its `::after`) | `part:choice-indicator` (was `part:choice-box`) |
+| `ui-switch` / Switch | leading › `box` (track) with the knob as `::after` | leading › `indicator` › `thumb` (Switch.Thumb, now an element) | `part:choice-indicator`, `part:switch-thumb` (new) |
+| `ui-range`, `ui-progress` / Range, Progress | track › `fill` | track › `indicator` (Slider.Indicator, Progress.Indicator) | `part:track-indicator` (was `part:track-fill`) |
+
+Unchanged because they already carry the Base UI name: `label`, `description`, `error` (Field.Label, Description, Error), select `trigger` and `popup`, range `track` and `thumb`. Kept because Base UI has no equivalent: the input `control`, field `readout`, swiper `viewport`, `paddle`, `dots`, `dot`, image `slide`, chip `remove`. Base UI's `Select.ItemText` and `Select.ItemIndicator` have no counterpart: an option's label is its construction pattern's `contents`, and options draw no check indicator.
+
+## Events and values
+
+Value-bearing components take [Base UI](https://base-ui.com)'s props and report changes with Base UI's event details (`dom/events.ts`: `{ reason, event }`, `ChangeReason`):
+
+- **Values**: `value` and `defaultValue` (attribute `default-value`) on `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented`, `ui-palette` and `ui-range`; `checked` and `defaultChecked` (`default-checked`) on the choices. The default sets the first value when no value attribute or property did, and is the value form reset returns to; without it the value attribute is the default, like a native input's (`settleDefault`, `core/form-element.ts`). `ui-select` also has `open` and `defaultOpen` (`default-open`); setting `open` shows or hides the popup without an event.
+- **Web component events**: `change` (and `input`, which ui-range and ui-input fire on every change and the others with `change`) are `CustomEvent`s whose `detail` is `{ value, reason, event }`: choices `{ checked, value, reason, event }`, a selectable chip's `change` `{ pressed, reason, event }`. `ui-select` fires `openchange` (cancelable: `preventDefault` keeps the popup as it is) with `{ open, reason, event }`. `event` is the DOM event that caused the change.
+- **React**: Checkbox, Radio, Switch `onCheckedChange(checked, details)`; Input, Listbox, Segmented, Palette, Select `onValueChange(value, details)`; Range `onValueChange` and `onValueCommitted` (the native change event); Chip `onSelectedChange(selected, details)`; Select `open`, `defaultOpen` and `onOpenChange(open, details)` within what the native select allows (`showPicker` needs user activation and cannot close; the open state is reread from `select:open`). The native `onChange` still fires.
+- **Reasons** (Base UI's names): `item-press` (an option or swatch pressed, or Enter / Space on the highlighted option), `keyboard` (arrow, Home / End, Page or typeahead keys in a listbox, palette or range), `list-navigation` (a navigation key opened the select), `trigger-press`, `outside-press`, `escape-key`, `focus-out` (blur; Tab commits the highlighted option), `track-press` and `drag` (range), `none` (checkbox, radio, switch, chip, input: Base UI's only reason for them). Both renderers report the same reason for the same interaction (`test/events.test.ts`).
 
 ## Type
 
@@ -55,7 +79,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-checkbox` (Checkbox) | `data-checked` / `data-unchecked` / `data-indeterminate` (instead of either), field state | | Base UI Checkbox |
 | `ui-radio`, `ui-switch` (Radio, Switch) | `data-checked` / `data-unchecked`, field state | | Base UI Radio, Switch |
 | `ui-input` (Input) | field state, `data-readonly` | | Base UI Field / Input |
-| `ui-select` (Select) | field state | trigger `data-popup-open`, `data-pressed` (while open), `data-placeholder`, `data-disabled`; popup `data-open` / `data-closed`, `data-side` (bottom, top), `data-align` (start); options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select; the parts are web component only (React: native, below) |
+| `ui-select` (Select) | field state | trigger `data-popup-open`, `data-pressed` (while open), `data-placeholder` (also on its `value`), `data-disabled`; popup `data-open` / `data-closed`, `data-side` (bottom, top), `data-align` (start); options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select; the parts are web component only (React: native, below) |
 | `ui-listbox`, `ui-segmented` (Listbox, Segmented) | field state, `data-orientation` | options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select.Item and Radio Group names (Base UI has no listbox) |
 | `ui-range` (Range) | field state, `data-orientation`, `data-dragging` | | Base UI Slider |
 | `ui-progress` (Progress) | `data-indeterminate` / `data-progressing` / `data-complete` | | Base UI Progress |

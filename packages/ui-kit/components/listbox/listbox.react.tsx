@@ -6,21 +6,22 @@
 // The host carries the field state as data-* (state.react.ts) and options data-selected,
 // data-highlighted and data-disabled (optionAttrs), as on the web components.
 import { Children, createContext, isValidElement, useContext, useId, useRef, useState, type HTMLAttributes, type KeyboardEvent, type ReactElement, type ReactNode } from 'react';
-import { createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type OptionItem } from '../../dom/index.ts';
+import { createTypeahead, eventDetails, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type ChangeDetails, type ChangeReason, type OptionItem } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { useFieldState } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { listbox, segmented, option } from '../../styled-system/recipes/index.js';
 
-interface OptionState { id: string; selected: boolean; disabled: boolean; active: boolean; select: () => void }
+interface OptionState { id: string; selected: boolean; disabled: boolean; active: boolean; select: (event: Event) => void }
 const OptionContext = createContext<OptionState | null>(null);
 
 export interface ListboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   name?: string;
   value?: string;
   defaultValue?: string;
-  onValueChange?: (value: string) => void;
+  /** An option was chosen (Base UI onValueChange): reason 'item-press' (pointer) or 'keyboard' (arrows, Home / End, typeahead). */
+  onValueChange?: (value: string, details: ChangeDetails) => void;
   /** Accessible name (aria-label). */
   label?: string;
   orientation?: 'vertical' | 'horizontal';
@@ -56,13 +57,13 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
   const items: OptionItem[] = options.map((o) => ({ value: o.props.value, label: textOf(o.props.children) || o.props.value, disabled: !!o.props.disabled || !!disabled }));
   const idOf = (i: number) => `${base}-opt-${i}`;
 
-  const select = (i: number) => {
+  const select = (i: number, reason: ChangeReason, event: Event) => {
     const it = items[i];
     if (!it || it.disabled) return;
     setActive(i);
     if (it.value === current) return;
     if (value === undefined) setInner(it.value);
-    onValueChange?.(it.value);
+    onValueChange?.(it.value, eventDetails(reason, event));
   };
 
   const shown = focused ? active : -1;
@@ -89,12 +90,12 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
         if (i === undefined && isPrintableKey(e.nativeEvent)) i = typeahead(items, from, e.key);
         if (i === undefined) return;
         e.preventDefault();
-        select(i); // selection follows focus
+        select(i, 'keyboard', e.nativeEvent); // selection follows focus
         document.getElementById(idOf(i))?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
       }}
     >
       {options.map((o, i) => (
-        <OptionContext.Provider key={o.key ?? i} value={{ id: idOf(i), selected: o.props.value === current, disabled: items[i].disabled ?? false, active: i === shown, select: () => select(i) }}>
+        <OptionContext.Provider key={o.key ?? i} value={{ id: idOf(i), selected: o.props.value === current, disabled: items[i].disabled ?? false, active: i === shown, select: (event) => select(i, 'item-press', event) }}>
           {o}
         </OptionContext.Provider>
       ))}
@@ -113,7 +114,7 @@ export function Option({ value: _value, disabled: _disabled, leading, prefix, su
   return (
     <div {...rest} className={cx(c.root, className)} data-ui="option" data-icon-size={iconSize}
       {...toReactProps(optionAttrs({ id: o.id, selected: o.selected, disabled: o.disabled, active: o.active }))}
-      onClick={(e) => { o.select(); onClick?.(e); }}>
+      onClick={(e) => { o.select(e.nativeEvent); onClick?.(e); }}>
       <Parts classes={c} {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
     </div>
   );

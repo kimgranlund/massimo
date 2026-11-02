@@ -23,21 +23,21 @@ const fill = {
 
 export const range = defineSlotRecipe({
   className: 'ui-range',
-  description: 'Slider (ui-range, React Range): track, fill and thumb.',
-  slots: ['root', 'track', 'fill', 'thumb'],
+  description: 'Slider (ui-range, React Range): track, indicator (Base UI Slider.Indicator) and thumb.',
+  slots: ['root', 'track', 'indicator', 'thumb'],
   base: {
     root: {
       ...host, fontFamily: UI_FONT, cursor: 'pointer', touchAction: 'none', userSelect: 'none',
       _disabled: { opacity: 0.5, cursor: 'not-allowed' },
       _enabled: {
-        '&:hover': { '& > [data-part=track]': { bg: 'bg.mutedHover' }, '& > [data-part=track] > [data-part=fill]': { bg: 'primary.solidHover' } },
+        '&:hover': { '& > [data-part=track]': { bg: 'bg.mutedHover' }, '& > [data-part=track] > [data-part=indicator]': { bg: 'primary.solidHover' } },
         // Dragging (data-dragging, from pointer down to up).
         _dragging: { cursor: 'grabbing', '& > [data-part=thumb]': { boxShadow: 'md' } },
       },
       // The thumb and fill glide on keyboard steps; while dragging they track 1:1.
       '&:not([data-dragging])': {
         '& > [data-part=thumb]': { transition: `${t('toggle', 'margin-inline-start')}, ${t('feedback', 'box-shadow')}` },
-        '& > [data-part=track] > [data-part=fill]': { transition: `${t('toggle', 'width')}, ${t('feedback', 'background-color')}` },
+        '& > [data-part=track] > [data-part=indicator]': { transition: `${t('toggle', 'width')}, ${t('feedback', 'background-color')}` },
       },
       // React: the native input covers the track, transparent, so pointer and keys are native. Its
       // thumb is as wide as the track, so native travel (width − thumb) equals the painted thumb's
@@ -50,7 +50,7 @@ export const range = defineSlotRecipe({
       '& > input::-moz-range-thumb': { width: 'var(--track)', height: 'var(--track)', border: 0 },
     },
     track,
-    fill: { ...fill, width: 'calc(var(--track) + var(--ui-ratio, 0) * (100% - var(--track)))' },
+    indicator: { ...fill, width: 'calc(var(--track) + var(--ui-ratio, 0) * (100% - var(--track)))' },
     thumb: {
       display: 'block', gridArea: '1 / 1', width: 'calc(var(--track) - var(--u))', height: 'calc(var(--track) - var(--u))',
       borderRadius: 'max(0px, calc(var(--track-r) - 0.5 * var(--u)))',
@@ -64,18 +64,18 @@ export const range = defineSlotRecipe({
 export const progress = defineSlotRecipe({
   className: 'ui-progress',
   description: 'Progress bar (ui-progress, React Progress): determinate or indeterminate.',
-  slots: ['root', 'track', 'fill'],
+  slots: ['root', 'track', 'indicator'],
   base: {
     root: {
       ...host,
-      '&:not([data-indeterminate]) > [data-part=track] > [data-part=fill]': { transition: t('reveal', 'width') },
-      '&[data-indeterminate] > [data-part=track] > [data-part=fill]': { width: '30%', animation: 'ui-indeterminate 1.2s ease-in-out infinite' },
+      '&:not([data-indeterminate]) > [data-part=track] > [data-part=indicator]': { transition: t('reveal', 'width') },
+      '&[data-indeterminate] > [data-part=track] > [data-part=indicator]': { width: '30%', animation: 'ui-indeterminate 1.2s ease-in-out infinite' },
       // Reduced motion: no sweep; a full, faint fill still says "working".
-      [REDUCED]: { '&[data-indeterminate] > [data-part=track] > [data-part=fill]': { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 } },
+      [REDUCED]: { '&[data-indeterminate] > [data-part=track] > [data-part=indicator]': { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 } },
       // React: the native element stays in the accessibility tree; the track paints it.
       '& > progress': { position: 'absolute', width: '1px', height: '1px', opacity: 0, overflow: 'hidden' },
     },
     track,
-    fill,
+    indicator: fill,
   },
 });

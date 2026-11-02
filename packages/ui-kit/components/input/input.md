@@ -50,6 +50,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 
 The editor's own `data-placeholder` is its placeholder text (drawn with `attr()`), not a state.
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Events / callbacks |
+|---|---|---|
+| `ui-input` | `value`, `defaultValue` (`default-value`; without it the `value` attribute) | `input` while typing: `detail { value, reason: 'none', event }` (the editor's native input event stops at the editor and is `detail.event`); `change` on blur when the value changed since focus, like a native input |
+| React Input | native `value` / `defaultValue` | `onValueChange(value, { reason: 'none', event })`; native `onChange` still fires |
+
 ## Geometry and appearance
 
 Geometry families: `field` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [input.recipe.ts](input.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

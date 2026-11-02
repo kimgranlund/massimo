@@ -26,7 +26,7 @@
     },
     {
       "path": "components/recipe-parts.ts",
-      "sha256": "350c2836d8c241ef6385d7ca5d5630a5b1f7b5047110b5cf8f885c363405c2a2"
+      "sha256": "4aa077c5967a43c19790559fdf83953cd88e7329e73dc8f312cf07ee38499538"
     }
   ],
   "renderers": {
