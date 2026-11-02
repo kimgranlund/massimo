@@ -48,7 +48,7 @@ Text fields put their text where button contents sit (padding + 1u each side). T
 
 ## Containers
 
-Every container has a padding level p and a max radius. Gap = padding unless `gap` overrides it. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel and region are square because they usually meet the viewport edge.
+Every container has a padding level p and a max radius. Gap = padding unless `gap` overrides it. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
@@ -59,6 +59,7 @@ Every container has a padding level p and a max radius. Gap = padding unless `ga
 | card | ui-card | 4u | 4u | 7u | 16 / 16 / 28 |
 | panel | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
 | region | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
+| page | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
 
 Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script.
 

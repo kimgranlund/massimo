@@ -63,11 +63,11 @@ test('composite: 0.5u padding level; one-row segmented is always 8u; options kee
 });
 
 test('containers: padding, gap = padding, concentric max radius, square panel and region', () => {
-  const at4 = Object.fromEntries((['group', 'collection', 'tile', 'card', 'panel', 'region'] as const).map((l) => {
+  const at4 = Object.fromEntries((['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as const).map((l) => {
     const c = resolveContainer(l, { border: 0 });
     return [l, [c.padding, c.gap, c.radius]];
   }));
-  assert.deepEqual(at4, { group: [4, 4, 16], collection: [8, 8, 20], tile: [12, 12, 24], card: [16, 16, 28], panel: [24, 24, 0], region: [32, 32, 0] });
+  assert.deepEqual(at4, { group: [4, 4, 16], collection: [8, 8, 20], tile: [12, 12, 24], card: [16, 16, 28], panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0] });
   for (const l of ['group', 'collection', 'tile', 'card'] as const) assert.equal(CONTAINERS[l].maxRadius, 3 + CONTAINERS[l].padding, `${l} radius = 3u + padding`);
   const card = resolveContainer('card', { unit: 5, gap: 2 });
   assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gap="2">');

@@ -12,7 +12,7 @@ import { SIZES, resolveContainer, resolveBtg, resolveControl, resolveComposite, 
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
-const LEVELS = ['group', 'collection', 'tile', 'card', 'panel', 'region'];
+const LEVELS = ['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'];
 const root = document.getElementById('root');
 const r2 = (v) => Math.round(v * 100) / 100;
 const px = (v) => r2(parseFloat(v));

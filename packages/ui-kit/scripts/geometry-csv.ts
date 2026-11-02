@@ -51,7 +51,7 @@ const rows: Row[] = [
   { id: 'composite.option.radius', family: 'composite', element: 'option', quantity: 'option radius', formula: 'min(option / 2, max(0, parent radius - D))', value: (u) => cmp(u).child.radius, status: 'implemented', notes: '= 3u control radius (concentric)' },
 
   // Layout containers
-  ...(['group', 'collection', 'tile', 'card', 'panel', 'region'] as ContainerLevel[]).flatMap((level): Row[] => {
+  ...(['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as ContainerLevel[]).flatMap((level): Row[] => {
     const spec = CONTAINERS[level];
     return [
       { id: `container.${level}.padding`, family: 'container', element: `ui-${level}`, quantity: 'padding', formula: `${spec.padding}u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },

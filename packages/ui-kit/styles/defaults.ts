@@ -75,7 +75,8 @@ export const defaults = defineGlobalStyles({
 
   // Layout containers (lengths in styles/geometry.ts)
   'ui-group': { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', borderColor: 'transparent' },
-  ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
+  ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
+  'ui-page': { width: '100%', maxWidth: '72rem', marginInline: 'auto' },
   'ui-tile': { bg: 'bg.subtle' },
   'ui-card': { bg: 'bg', borderColor: 'border' },
   'ui-panel': { bg: 'bg.subtle' },

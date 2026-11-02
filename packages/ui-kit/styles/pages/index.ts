@@ -1,11 +1,22 @@
 // Page-level building blocks as Panda patterns: `page()` and `prose()` from styled-system/patterns.
 import { definePattern } from '@pandacss/dev';
 
+// page(): the page container level for Panda/React code, same lengths as <ui-page>:
+// padding and gap 8u (border inside the padding), square, centered at a max width.
+// `gap` takes units of u like the gap attribute; `width` sets the max width.
 export const page = definePattern({
-  description: 'Centered page column with gutters',
-  properties: { width: { type: 'property', value: 'maxWidth' } },
+  description: 'Page container: 8u padding and gap, centered max width',
+  properties: { width: { type: 'property', value: 'maxWidth' }, gap: { type: 'number' } },
   defaultValues: { width: '72rem' },
-  transform: ({ width, ...rest }) => ({ maxWidth: width, marginInline: 'auto', paddingInline: '6', paddingBlock: '10', ...rest }),
+  transform: ({ width, gap, ...rest }) => ({
+    '--u': 'calc(var(--ui-unit) * 1px)',
+    '--b': 'min(calc(var(--ui-border) * 1px), calc(var(--u) / 2))',
+    display: 'flex', flexDirection: 'column', width: '100%', maxWidth: width, marginInline: 'auto',
+    padding: 'max(0px, calc(8 * var(--u) - var(--b)))',
+    gap: `calc(${gap ?? 8} * var(--u))`,
+    borderWidth: 'var(--b)', borderColor: 'transparent',
+    ...rest,
+  }),
 });
 
 export const prose = definePattern({

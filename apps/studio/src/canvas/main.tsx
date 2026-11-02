@@ -14,6 +14,7 @@ import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
 import { paramVar, validateTheme, type ParamName } from '@massimo/ui-kit/tokens';
 import { css } from '../../styled-system/css/index.js';
+import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import { listen, post } from '../protocol.ts';
 
 const root = document.documentElement;
@@ -29,7 +30,9 @@ listen(() => parent, (m) => {
 });
 post(parent, { type: 'studio/ready' });
 
-const page = css({ minHeight: '100dvh', bg: 'bg.subtle', padding: '10', display: 'grid', gap: '8', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, alignContent: 'start' });
+// The page container level (8u padding and gap) via the page() pattern; the grid sits inside it.
+const shell = pageLayout({ width: '80rem' });
+const page = css({ display: 'grid', gap: 'inherit', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, alignContent: 'start' });
 const card = css({ bg: 'bg', borderWidth: 'thin', borderColor: 'border', borderRadius: 'xl', padding: '6', display: 'flex', flexDirection: 'column', gap: '4' });
 const eyebrow = css({ textStyle: 'caption', color: 'fg.muted', textTransform: 'uppercase', letterSpacing: 'wide' });
 const title = css({ textStyle: 'heading' });
@@ -41,7 +44,8 @@ const row = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'cent
 function Canvas() {
   const [status, setStatus] = useState('');
   return (
-    <main className={page}>
+    <main className={shell} id="page">
+      <div className={page}>
       <section className={card} aria-labelledby="wc-title">
         <p className={eyebrow}>Web components</p>
         <h1 id="wc-title" className={title}>Create your account</h1>
@@ -119,6 +123,7 @@ function Canvas() {
           <Button loading>Saving</Button>
         </div>
       </section>
+      </div>
     </main>
   );
 }

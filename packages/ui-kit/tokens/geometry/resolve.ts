@@ -66,7 +66,7 @@ export function resolveControl(input: GeometryInput = {}) {
 
 // ── Containers ──
 // Each level has a padding (units of u) and a max radius that keeps corners concentric with
-// a 3u control sitting in the corner (3u + padding). Panel and region are square: they usually
+// a 3u control sitting in the corner (3u + padding). Panel, region and page are square: they usually
 // meet the viewport edge. Gap = padding unless the gap attribute overrides it.
 export const CONTAINERS = {
   composite:  { padding: 0.5, maxRadius: 3.5 },
@@ -76,6 +76,8 @@ export const CONTAINERS = {
   card:       { padding: 4,   maxRadius: 7 },
   panel:      { padding: 6,   maxRadius: 0 },
   region:     { padding: 8,   maxRadius: 0 },
+  // Same spacing as region, plus a centered max width (styles/defaults.ts, page() pattern).
+  page:       { padding: 8,   maxRadius: 0 },
 } as const;
 export type ContainerLevel = keyof typeof CONTAINERS;
 
