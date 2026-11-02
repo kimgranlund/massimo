@@ -20,6 +20,7 @@ declare module 'react' {
       'ui-card': El<{ gap?: string }>;
       'ui-panel': El<{ gap?: string }>;
       'ui-region': El<{ gap?: string }>;
+      'ui-page': El<{ gap?: string }>;
       'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-radio': El<{ name?: string; value?: string; checked?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-switch': El<{ name?: string; value?: string; checked?: boolean; disabled?: boolean }>;

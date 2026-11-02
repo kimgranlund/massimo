@@ -11,16 +11,20 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '../icons.ts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import type { FaceMap, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
 import { UNIQUE_HUES as UNIQUE } from '@massimo/ui-kit/spectrum';
-import { TYPE_ROLES, VOICES, resolveType, type ThemeParams, type TypeRoleName } from '@massimo/ui-kit/tokens';
+import { CONTAINERS, PAGE_MAX_WIDTH_REM, TYPE_ROLES, VOICES, resolveContainer, resolveType, type ThemeParams, type TypeRoleName } from '@massimo/ui-kit/tokens';
 
 // Specimen layout: the page container (8u padding and gap) holds titled sections split by
 // dividers. Each section is a list of labelled rows: label on the left, specimens on the right.
 const shell = pageLayout({ width: '80rem' });
+// Layout responds to the canvas width (the jig panel takes part of the viewport), not the viewport.
+const canvasQuery = css({ containerType: 'inline-size', containerName: 'canvas' });
+const CQ_MD = '@container canvas (min-width: 40rem)';
+const CQ_LG = '@container canvas (min-width: 64rem)';
 const header = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const pageTitle = css({ textStyle: 'display' });
 const lead = css({ color: 'fg.muted', maxWidth: '60ch' });
@@ -29,11 +33,11 @@ const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const sectionHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const sectionTitle = css({ textStyle: 'heading-2' });
 const caption = css({ textStyle: 'caption', color: 'fg.muted' });
-const rowGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '11rem 1fr' }, gap: { base: '2', md: '6' }, alignItems: 'center' });
+const rowGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '11rem 1fr', gap: '6' } });
 const rowLabel = css({ textStyle: 'label', color: 'fg.muted' });
 const specimens = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
-const formGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, gap: '4', alignItems: 'start' });
-const columns = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, gap: '8', alignItems: 'start' });
+const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
+const columns = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '8', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
 const subTitle = css({ textStyle: 'heading-3' });
 const stack = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const avatar = css({ display: 'block', bg: 'accent.solid' });
@@ -41,10 +45,19 @@ const media = css({ width: '100%', maxWidth: '40rem', borderRadius: 'xl', overfl
 const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: 'end' });
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '8rem' });
 const levelBox = css({ bg: 'accent.subtle', alignSelf: 'start' });
+const levelList = css({ minWidth: '40' });
+const tokenTable = css({ display: 'grid', gridTemplateColumns: 'auto auto auto auto 1fr', columnGap: '6', rowGap: '2', alignItems: 'baseline', '& > [role=row]': { display: 'contents' } });
+const tokenHead = css({ '& > *': { textStyle: 'group-kicker', color: 'fg.muted' } });
+const tokenRow = css({ '& > :first-child': { textStyle: 'label', fontWeight: 'semibold' } });
+const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
+const tinted = css({ bg: 'bg' });
+const tileRow = css({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
+const wideCol = css({ minWidth: '64', bg: 'bg.muted', borderRadius: 'lg' });
+const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1', bg: 'bg.muted', borderRadius: 'lg' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
-const rampRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '7rem 1fr 1fr' }, gap: '3', alignItems: 'center' });
+const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
 const ramp = css({ width: '100%' });
-const typeRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '14rem 1fr' }, gap: { base: '2', md: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
+const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
 const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
 const metrics = css({ textStyle: 'code', color: 'fg.muted' });
 // Faint baseline grid behind each specimen: one line per rhythm unit.
@@ -52,7 +65,7 @@ const rhythmSample = css({ backgroundImage: 'linear-gradient(to bottom, transpar
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
 const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
-const chartGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', lg: '1fr 1fr' }, gap: '4' });
+const chartGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_LG]: { gridTemplateColumns: '1fr 1fr' } });
 const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
 const chartSvg = css({ width: '100%', height: 'auto', color: 'fg', overflow: 'visible' });
 const chartLabel = css({ fontFamily: 'mono', fontSize: '11px', fill: 'fg.muted' });
@@ -63,21 +76,29 @@ const dashed = css({ stroke: 'fg.muted', strokeWidth: 1, strokeDasharray: '3 3',
 const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
 // Campaign, the primary ramp as a vertical strip (step 1 at the top), then ink and tint panels.
-const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: 'minmax(0, 2fr) auto minmax(0, 1fr) minmax(0, 1fr)' }, gap: '4' });
+// Narrow: stacked, ramp flat. Medium: campaign on its own row, then ramp | ink | tint.
+// Wide: campaign | ramp | ink | tint in one row.
+const brandGrid = css({
+  display: 'grid', gridTemplateColumns: '1fr', gap: '4',
+  [CQ_MD]: { gridTemplateColumns: 'auto minmax(0, 1fr) minmax(0, 1fr)', '& > :first-child': { gridColumn: '1 / -1' } },
+  [CQ_LG]: { gridTemplateColumns: 'minmax(0, 2fr) auto minmax(0, 1fr) minmax(0, 1fr)', '& > :first-child': { gridColumn: 'auto' } },
+});
 const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
 // Type roles only: kickers, display, headings and figures come from the typography system.
 const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
 const sectionKicker = css({ textStyle: 'section-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
-const display = css({ textStyle: 'display' });
+// Display needs the width: below the medium canvas the campaign title steps down to heading-1.
+const display = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
 const bodyLarge = css({ textStyle: 'body-large' });
-const panelTitle = css({ textStyle: 'heading-1' });
+const panelTitle = css({ textStyle: 'heading-2', [CQ_LG]: { textStyle: 'heading-1' } });
 const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', '& span': { textStyle: 'heading-3' } });
-const rampStrip = css({ width: { base: '100%', md: '12' }, alignSelf: 'stretch' });
+// The strip lies flat when stacked and stands up beside the panels.
+const rampStrip = css({ width: '100%', flexDirection: 'row', '& > ui-swatch': { height: '12' }, [CQ_MD]: { width: '12', flexDirection: 'column', alignSelf: 'stretch', '& > ui-swatch': { height: 'auto' } } });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
-const uiGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
+const uiGrid = css({ display: 'grid', gridTemplateColumns: '1fr', [CQ_MD]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }, [CQ_LG]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
 const cardTitle = css({ textStyle: 'heading-3' });
-const chartCard = css({ gridColumn: { md: 'span 2' } });
+const chartCard = css({ [CQ_MD]: { gridColumn: 'span 2' } });
 const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
 const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
 const bars = css({ flex: '1', width: '100%', display: 'flex', gap: '1', alignItems: 'end', justifyContent: 'center' });
@@ -118,10 +139,9 @@ const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Du
 
 export function Canvas({ view, spectrum, params, voices, faces }: { view: View; spectrum?: SpectrumPayload; params: ThemeParams; voices: VoiceMap; faces: FaceMap }) {
   return (
-    <main className={shell} id="page">
+    <main className={`${shell} ${canvasQuery}`} id="page">
       {view === 'components' && <Components />}
-      {view === 'containers' && <Containers />}
-      {view === 'colors' && <Colors spectrum={spectrum} />}
+      {(view === 'containers' || view === 'colors') && <Surfaces view={view} spectrum={spectrum} params={params} />}
       {view === 'typography' && <Typography params={params} voices={voices} faces={faces} />}
     </main>
   );
@@ -284,34 +304,61 @@ function Components() {
   );
 }
 
-function Containers() {
+// Containers and colors share one page: the Containers tab opens it at the container sections,
+// the Colors tab at Color in context. Every container token has a live example.
+function Surfaces({ view, spectrum, params }: { view: View; spectrum?: SpectrumPayload; params: ThemeParams }) {
+  useEffect(() => {
+    document.getElementById(view === 'containers' ? 'containers' : 'context')?.scrollIntoView({ block: 'start' });
+  }, [view]);
+  const r = spectrum?.roles;
   return (
     <>
       <header className={header}>
-        <h1 className={pageTitle}>Containers</h1>
-        <p className={lead}>Padding = gap per level; radius 3u + padding up to card, square from panel up. Override any gap with gap="n".</p>
+        <h1 className={pageTitle}>Containers and colors</h1>
+        <p className={lead}>Surfaces, their spacing and their color on one page.{r ? ` Roles: primary ${r.primary}, neutral ${r.neutral}, critical ${r.critical}.` : ''}</p>
       </header>
-      <Section id="containers" title="Containers" note="Padding and gap per level (group 1u, collection 2u, tile 3u, card 4u, panel 6u); radius 3u + padding up to card.">
-        <ui-panel aria-label="Panel">
-          <span className={caption}>Panel · 6u</span>
-          <div className={columns}>
-            <ui-card>
-              <h3 className={subTitle}>Team</h3>
-              <ui-collection gap="1">
-                {['Ada', 'Grace', 'Linus'].map((n) => <ui-tile key={n}>{n}<ui-group><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-group></ui-tile>)}
-              </ui-collection>
-            </ui-card>
-            <ui-card data-size="3" gap="2">
-              <h3 className={subTitle}>Compact card</h3>
-              <span className={caption}>size 3, gap 2</span>
-              <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
-            </ui-card>
-          </div>
-        </ui-panel>
+      <Divider />
+      {spectrum ? (
+        <Section id="context" title="Color in context" note="Two synthetic settings for reviewing the active palette: primary as material and accent as punctuation, then neutral surfaces with primary actions and semantic feedback. Content and figures are illustrative.">
+          <ColorInContext spectrum={spectrum} />
+        </Section>
+      ) : <p className={lead}>Generating colors…</p>}
+      <Divider />
+      <ContainerSections params={params} />
+      {spectrum && <><Divider /><ColorSections spectrum={spectrum} /></>}
+    </>
+  );
+}
+
+const LEVELS = Object.keys(CONTAINERS) as (keyof typeof CONTAINERS)[];
+const fmtU = (n: number) => `${Math.round(n * 100) / 100}u`;
+
+function ContainerSections({ params }: { params: ThemeParams }) {
+  const p = params as unknown as Record<string, number>;
+  const u = params.unit;
+  return (
+    <>
+      <Section id="containers" title="Container tokens" note="Live values for every level: padding and gap (pad-<level>, gap-<level>, in u), the radius they imply (3u + padding up to card; panel, region and page are square), and where each level appears.">
+        <div className={tokenTable} role="table" aria-label="Container tokens">
+          <div role="row" className={tokenHead}><span role="columnheader">Level</span><span role="columnheader">Padding</span><span role="columnheader">Gap</span><span role="columnheader">Radius</span><span role="columnheader">Used by</span></div>
+          {LEVELS.map((l) => {
+            const pad = p[`pad-${l}`] ?? CONTAINERS[l].padding, gap = p[`gap-${l}`] ?? pad;
+            const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap });
+            return (
+              <div role="row" key={l} className={tokenRow}>
+                <span role="cell">{l}</span>
+                <span role="cell" data-numeric>{fmtU(pad)} · {fmt(c.padding)}px</span>
+                <span role="cell" data-numeric>{fmtU(gap)} · {fmt(c.gap)}px</span>
+                <span role="cell" data-numeric>{fmt(c.radius)}px</span>
+                <span role="cell" className={caption}>{USED_BY[l]}</span>
+              </div>
+            );
+          })}
+        </div>
       </Section>
       <Divider />
-      <Section id="levels" title="Levels" note="Each box shows its padding (inner tint) and the gap between two children.">
-        {(['group', 'collection', 'tile', 'card', 'panel', 'region'] as const).map((l) => {
+      <Section id="levels" title="Levels" note="Each box tints its padding; the two children show its gap.">
+        {LEVELS.filter((l) => l !== 'composite').map((l) => {
           const Tag = `ui-${l}` as any;
           return (
             <Row key={l} label={l}>
@@ -319,10 +366,93 @@ function Containers() {
             </Row>
           );
         })}
+        <Row label="composite">
+          <ui-segmented label="Composite level" value="a"><ui-option value="a">One</ui-option><ui-option value="b">Two</ui-option><ui-option value="c">Three</ui-option></ui-segmented>
+          <ui-listbox label="Composite list" value="a" className={levelList}><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option></ui-listbox>
+        </Row>
+      </Section>
+      <Divider />
+      <Section id="nesting" title="Nesting" note="page › region › panel › card › collection › tile › group: each level pads its children and radii stay concentric down to the control.">
+        <ui-page className={miniPage} aria-label="Page example">
+          <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
+          <ui-region aria-label="Region example" className={tinted}>
+            <span className={kicker}>Region</span>
+            <ui-panel aria-label="Panel example">
+              <span className={kicker}>Panel</span>
+              <div className={columns}>
+                <ui-card>
+                  <span className={kicker}>Card · Team</span>
+                  <ui-collection>
+                    {['Ada', 'Grace', 'Linus'].map((n) => (
+                      <ui-tile key={n} className={tileRow}>
+                        <span>{n}</span>
+                        <ui-group><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-group>
+                      </ui-tile>
+                    ))}
+                  </ui-collection>
+                </ui-card>
+                <ui-card>
+                  <span className={kicker}>Card · Details</span>
+                  <ui-input label="Name" value="Spring catalog" />
+                  <ui-select label="Edition" value="spring"><ui-option value="spring">Spring</ui-option><ui-option value="autumn">Autumn</ui-option></ui-select>
+                  <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
+                </ui-card>
+              </div>
+            </ui-panel>
+          </ui-region>
+        </ui-page>
+      </Section>
+      <Divider />
+      <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack tiles at the collection gap.">
+        <Row label="buttons"><ui-group><ui-button>Bold</ui-button><ui-button>Italic</ui-button><ui-button>Underline</ui-button></ui-group></Row>
+        <Row label="chips"><ui-group>{['Design', 'Engineering', 'Research', 'Ops'].map((t, i) => <ui-chip key={t} selectable selected={i === 0 || undefined}>{t}</ui-chip>)}</ui-group></Row>
+        <Row label="tags"><ui-group>{['Spring', 'Draft', 'Shared'].map((t) => <ui-tag key={t}>{t}</ui-tag>)}</ui-group></Row>
+        <Row label="tiles">
+          <ui-collection className={wideCol}>
+            {['Inbox · 12', 'Drafts · 3', 'Archive'].map((t) => <ui-tile key={t}>{t}</ui-tile>)}
+          </ui-collection>
+        </Row>
+        <Row label="tile grid">
+          <ui-collection className={tileGrid}>
+            {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
+              <ui-tile key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-tile>
+            ))}
+          </ui-collection>
+        </Row>
+      </Section>
+      <Divider />
+      <Section id="overrides" title="Overrides" note='gap="n" overrides one element’s gap (0–8u); data-size sets the unit for a whole subtree.'>
+        <Row label="gap">
+          {[0, 1, 4].map((g) => (
+            <ui-card key={g} gap={String(g)} className={levelBox}>
+              <span className={caption}>card gap="{g}"</span><span className={levelChild} /><span className={levelChild} />
+            </ui-card>
+          ))}
+        </Row>
+        <Row label="size">
+          {(['3', '4', '5'] as const).map((z) => (
+            <ui-card key={z} data-size={z}>
+              <span className={kicker}>data-size="{z}"</span>
+              <h3 className={subTitle}>Card</h3>
+              <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
+            </ui-card>
+          ))}
+        </Row>
       </Section>
     </>
   );
 }
+
+const USED_BY: Record<keyof typeof CONTAINERS, string> = {
+  composite: 'listbox, segmented, select popup',
+  group: 'inline sets: buttons, chips, tags',
+  collection: 'stacks and grids of tiles',
+  tile: 'list rows, thumbnails',
+  card: 'self-contained content',
+  panel: 'sidebars, workspaces',
+  region: 'page areas',
+  page: 'the outer frame (max width)',
+};
 
 // Spectrum variables for a family step (follow the active scheme and the jig's roles).
 const sv = (family: string, step: number) => `var(--colors-spectrum-${family}-${step})`;
@@ -573,20 +703,10 @@ function ChromaChart({ d }: { d: SpectrumPayload['diagnostics'] }) {
   );
 }
 
-function Colors({ spectrum }: { spectrum?: SpectrumPayload }) {
-  if (!spectrum) return <p className={lead}>Generating colors…</p>;
+function ColorSections({ spectrum }: { spectrum: SpectrumPayload }) {
   const r = spectrum.roles;
   return (
     <>
-      <header className={header}>
-        <h1 className={pageTitle}>Colors</h1>
-        <p className={lead}>Spectrum: HCT-generated 12-step ramps, separate for light and dark. Roles map onto the kit: primary {r.primary}, neutral {r.neutral}, critical {r.critical}.</p>
-      </header>
-      <Divider />
-      <Section id="context" title="Color in context" note="Two synthetic settings for reviewing the active palette: primary as material and accent as punctuation, then neutral surfaces with primary actions and semantic feedback. Content and figures are illustrative.">
-        <ColorInContext spectrum={spectrum} />
-      </Section>
-      <Divider />
       <Section id="engine" title="Hue and chroma" note="What shaped this generation: where each accent sits in hue quadrature, and how much chroma each hue can hold at each tone in the target gamut.">
         <EngineSummary spectrum={spectrum} />
         <div className={chartGrid}>
