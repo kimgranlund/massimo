@@ -30,6 +30,13 @@
       "label": "Hidden label",
       "subject": "component:select",
       "markup": "<ui-select label=\"Icon set\" hide-label value=\"phosphor\"><ui-option value=\"phosphor\">Phosphor</ui-option><ui-option value=\"lucide\">Lucide</ui-option></ui-select>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:select",
+      "markup": "<ui-select name=\"sort\"><span data-part=\"label\">Sort</span><div data-part=\"trigger\"><span data-part=\"leading\"><i name=\"sort-ascending\"></i></span><span data-part=\"value\">Choose…</span><span data-part=\"icon\"><i name=\"caret-up-down\"></i></span></div><div data-part=\"popup\"><div data-part=\"list\"><ui-option value=\"name\">Name</ui-option><ui-option value=\"date\">Date</ui-option></div></div><span data-part=\"description\">Applies to the list below.</span></ui-select>",
+      "note": "The parts written out (Base UI Select anatomy): the label, description and value text seed label, description and placeholder; the authored icon replaces the chevron. React: Select.Root › Select.Label, Select.Trigger › Select.Value, Select.Icon, Select.Popup › Select.List › Select.Item."
     }
   ]
 }

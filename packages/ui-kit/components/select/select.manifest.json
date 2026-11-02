@@ -331,7 +331,7 @@
       "content": {
         "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "ui-option elements (they move into the popup) and optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" (they move into the trigger)."
+        "children": "ui-option elements (they move into the popup) and optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" (they move into the trigger); or the parts themselves as [data-part] children (composition)."
       },
       "layout": {
         "display": "flex",
@@ -343,7 +343,8 @@
         "The value attribute at connect is the reset default. Option value falls back to its label text.",
         "Outside pointerdown and blur close the popup; selection commits on Enter, Space, Tab or click.",
         "Styling state (contracts/states.json, Base UI Select names): the host carries the field state (data-disabled, data-required, data-valid / data-invalid, data-dirty, data-touched, data-filled, data-focused); the trigger data-popup-open, data-pressed (while open), data-placeholder and data-disabled; the popup data-open / data-closed, data-side and data-align; options data-selected, data-highlighted and data-disabled. The React Select keeps the open state, option selection and highlight native (select:open, :checked, :focus).",
-        "The popup is placed with CSS anchor positioning (anchor-scope per select, position-area below the trigger, flip-block to the side with more room, min-width = trigger width, 1u gap). Where anchor positioning is unavailable, placePopup measures the trigger and writes the position inline as a fallback."
+        "The popup is placed with CSS anchor positioning (anchor-scope per select, position-area below the trigger, flip-block to the side with more room, min-width = trigger width, 1u gap). Where anchor positioning is unavailable, placePopup measures the trigger and writes the position inline as a fallback.",
+        "Composition: the parts may be authored as [data-part] children (label, trigger › leading · prefix · value · suffix · icon, popup › list › ui-option, description, error); the host adopts each onto its generated part (the author attributes and classes; slot and icon content; label, description, error and the value text seed those properties and the placeholder) and generates the rest, so the DOM, classes and data-* match the generated anatomy. React: Select.Root with Select.Label, Select.Trigger (Select.Value, Select.Icon), Select.Popup › Select.List › Select.Item (Select.ItemText, Select.ItemIndicator), Select.Description and Select.Error as direct children; the Root puts Trigger and Popup inside the native <select>; Popup and List render no element (::picker(select)); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -602,9 +603,11 @@
       "props": {
         "component:select": {
           "inherits": [
-            "Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix'>"
+            "Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "label?: string",
             "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
             "description?: string",
@@ -614,12 +617,132 @@
             "suffix?: ReactNode",
             "gap?: number",
             "size?: number",
-            "children?: ReactNode // <SelectOption> children.",
+            "children?: ReactNode // <SelectOption> children (Select.Root: the parts).",
             "onValueChange?: (value: string, details: ChangeDetails) => void // An option was chosen (Base UI onValueChange; reason 'item-press'). The native onChange still fires.",
             "open?: boolean // Open the picker (Base UI open). Opening needs user activation (showPicker); a native picker cannot be closed from script.",
             "defaultOpen?: boolean // Open the picker on mount (Base UI defaultOpen); with the same user-activation limit.",
             "onOpenChange?: (open: boolean, details: ChangeDetails) => void // The picker opened or closed (Base UI onOpenChange), read from select:open after each interaction."
           ]
+        }
+      },
+      "parts": {
+        "component:select": {
+          "Select.Root": {
+            "inherits": [
+              "Omit<SelectProps, 'label' | 'description' | 'leading' | 'prefix' | 'suffix'>"
+            ],
+            "props": []
+          },
+          "Select.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Select.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // Select.Value and Select.Icon; both when omitted."
+            ]
+          },
+          "Select.Value": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Select.Icon": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Select.Popup": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode // Select.Popup: a Select.List; Select.List: the Select.Item children."
+            ]
+          },
+          "Select.List": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode // Select.Popup: a Select.List; Select.List: the Select.Item children."
+            ]
+          },
+          "Select.Item": {
+            "inherits": [],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: string",
+              "disabled?: boolean",
+              "iconSize?: IconSize",
+              "children?: ReactNode // The label (contents), or Select.ItemText / Select.ItemIndicator parts."
+            ]
+          },
+          "Select.ItemText": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Select.ItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Select.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Select.Error": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
         }
       }
     }

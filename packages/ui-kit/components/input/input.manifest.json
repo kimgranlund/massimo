@@ -322,7 +322,7 @@
       "content": {
         "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "Optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" | \"trailing\"; they move into the control. Other children are discarded by the template."
+        "children": "Optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" | \"trailing\"; they move into the control. Authored [data-part] parts (label, control and its slots, description, error) are adopted (composition). Other children are discarded by the template."
       },
       "layout": {
         "display": "flex",
@@ -334,7 +334,8 @@
         "Built-in validation (required, email, minlength, pattern) shows only after blur or a blocked submit; error shows at once.",
         "pattern is anchored (^(?:…)$) and compiled with the v flag.",
         "type=password masks the text and blocks copy and cut. Paste is flattened to one line.",
-        "focus() moves focus to the editor."
+        "focus() moves focus to the editor.",
+        "Composition: the parts may be authored as [data-part] children (label, control › leading · prefix · contents · suffix · trailing, description, error); the host adopts each onto its generated part (attributes, classes, slot content; label, description and error text seed those properties). React: Input.Root with Input.Label, Input.Control (its adornment props; the native <input> inside it is not a separate part, since its props come from the Root), Input.Description and Input.Error as direct children; every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -550,9 +551,11 @@
       "props": {
         "component:input": {
           "inherits": [
-            "Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix'>"
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix' | 'className' | 'children'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "label?: string",
             "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
             "leading?: ReactNode",
@@ -561,8 +564,62 @@
             "trailing?: ReactNode",
             "description?: string",
             "error?: string",
-            "onValueChange?: (value: string, details: ChangeDetails) => void // The text changed (Base UI onValueChange; reason 'none'). The native onChange still fires."
+            "onValueChange?: (value: string, details: ChangeDetails) => void // The text changed (Base UI onValueChange; reason 'none'). The native onChange still fires.",
+            "children?: ReactNode // Input.Root: the parts (Input.Label, Input.Control, Input.Description, Input.Error). Ignored by the preset."
           ]
+        }
+      },
+      "parts": {
+        "component:input": {
+          "Input.Root": {
+            "inherits": [
+              "Omit<InputProps, 'label' | 'description' | 'leading' | 'prefix' | 'suffix' | 'trailing'>"
+            ],
+            "props": []
+          },
+          "Input.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Input.Control": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix' | 'children'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Input.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Input.Error": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
         }
       }
     },

@@ -86,6 +86,8 @@ export const select = defineSlotRecipe({
       [`&${OPEN}`]: { bg: 'bg.mutedActive', '& > [data-part=icon]': { rotate: '180deg' } },
       '& > [data-part=value]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
       '& > [data-part=value][data-placeholder]': { color: 'fg.subtle' },
+      // React: <selectedcontent> copies the selected option, Select.ItemIndicator included; the trigger shows no check.
+      '& > [data-part=value] [data-mark=selected]': { display: 'none' },
       '& > [data-part=icon]': { color: 'fg.muted', transition: t('toggle', 'rotate') },
       [ANCHORED]: { anchorName: '--ui-select-trigger' },
       '&:is(select > *)': { width: '100%' },

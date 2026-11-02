@@ -2558,6 +2558,11 @@
     },
     {
       "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:field",
       "relation": "allowedIn",
       "to": "context:page"
     },

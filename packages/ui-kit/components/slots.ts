@@ -37,8 +37,25 @@ export function arrangeSlots(host: HTMLElement): Record<SlotPart, HTMLElement> {
   return parts;
 }
 
+/**
+ * Authored part containers (composition: `<span data-part="suffix">(2)</span>`): their loose
+ * children belong to them, so each gets the container's slot (text is wrapped in a slotted span,
+ * as an author would write it with the slot attribute). Contents needs no slot.
+ */
+export function claimSlots(host: HTMLElement) {
+  for (const el of [...host.children]) {
+    const name = el.getAttribute('data-part') as SlotPart;
+    if (!isPart(el) || name === 'contents') continue;
+    for (const n of [...el.childNodes]) {
+      if (n.nodeType === 1 && !(n as Element).hasAttribute('slot')) (n as Element).setAttribute('slot', name);
+      else if (n.nodeType === 3 && (n.textContent ?? '').trim()) { const s = document.createElement('span'); s.setAttribute('slot', name); n.replaceWith(s); s.append(n); }
+    }
+  }
+}
+
 /** Keep a host arranged as its children change. Returns a disconnect function. */
 export function observeSlots(host: HTMLElement, onChange?: () => void) {
+  claimSlots(host);
   arrangeSlots(host);
   const mo = new MutationObserver(() => {
     mo.disconnect();
@@ -49,6 +66,42 @@ export function observeSlots(host: HTMLElement, onChange?: () => void) {
   const observe = () => mo.observe(host, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['slot'] });
   observe();
   return () => mo.disconnect();
+}
+
+// ── Authored parts (optional composition) ──
+// An author may write a host's parts as [data-part] children (Base UI style anatomy in markup):
+//   <ui-select><div data-part="trigger"><span data-part="icon"><i name="caret-up-down"></i></span></div>…</ui-select>
+// The host keeps generating its anatomy, and adopts each authored part onto the generated one with
+// the same data-part: the author's attributes and classes, the text that seeds a property (label,
+// description, placeholder), and, for content parts (slots, icon, thumb), its child nodes. Absent
+// parts are generated as before, so a host with no authored parts renders exactly as it did.
+
+/** Kit recipe classes (`ui-select__trigger`): applyRecipe sets them; an adopted part never copies them. */
+const KIT_CLASS = /^ui-[a-z-]+__/;
+
+/** Authored parts by path ("trigger", "trigger > icon"): [data-part] children of the host, nested as the path says. */
+export function authoredParts(host: Element, paths: readonly string[]): Map<string, Element> {
+  const out = new Map<string, Element>();
+  for (const path of paths) {
+    const el = host.querySelector(`:scope > ${path.split('>').map((p) => `[data-part=${p.trim()}]`).join(' > ')}`);
+    if (el) out.set(path, el);
+  }
+  return out;
+}
+
+/** An authored part's text (trimmed), for a property it seeds. */
+export const partText = (el: Element | undefined) => (el?.textContent ?? '').trim();
+
+/**
+ * Adopt an authored part onto the generated one: its attributes (not data-part or hidden; the host's
+ * own state attributes are rewritten by its next update), its author classes, and with `content` its
+ * child nodes ('replace' the generated ones, or 'append' to them, as adornments do).
+ */
+export function adoptPart(from: Element | undefined, to: Element | null | undefined, content: 'replace' | 'append' | false = false) {
+  if (!from || !to || from === to) return;
+  for (const a of [...from.attributes]) if (a.name !== 'data-part' && a.name !== 'hidden' && a.name !== 'class') to.setAttribute(a.name, a.value);
+  for (const c of from.classList) if (!KIT_CLASS.test(c)) to.classList.add(c);
+  if (content && hasContent(from)) content === 'replace' ? to.replaceChildren(...from.childNodes) : to.append(...from.childNodes);
 }
 
 /** The parts an author may fill around a field's own contents (input control, select trigger). */

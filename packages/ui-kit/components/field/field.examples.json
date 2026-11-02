@@ -29,6 +29,13 @@
       "label": "Readout as a child",
       "subject": "component:field",
       "markup": "<ui-field layout=\"inline\" label=\"First hue\"><ui-range min=\"0\" max=\"359\" value=\"225\"></ui-range><span slot=\"readout\">225°</span></ui-field>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:field",
+      "markup": "<ui-field layout=\"inline\"><span data-part=\"label\"><span data-part=\"contents\">Unit</span><span data-part=\"suffix\">px</span></span><ui-range value=\"25\"></ui-range><span data-part=\"readout\">4.5</span><span data-part=\"description\">Sets u.</span><span data-part=\"error\">Use 2 to 12.</span></ui-field>",
+      "note": "The authored text seeds label, unit, readout, description and error. React: Field.Root › Field.Label (unit), Field.Control, Field.Readout, Field.Description, Field.Error."
     }
   ]
 }

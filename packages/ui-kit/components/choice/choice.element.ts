@@ -3,6 +3,10 @@
 // indicator (Base UI Checkbox.Indicator / Radio.Indicator; the switch's holds its Switch.Thumb) sits
 // in the leading slot. Radios group by `name` within their form (or document):
 // arrow keys move and select within the group, and only the checked radio is a tab stop.
+// Composition (optional): the parts may be authored as [data-part] spans: [data-part=indicator]
+// (alone or inside [data-part=leading]; the switch's holding [data-part=thumb]), prefix, contents,
+// suffix. The host keeps an authored indicator, fills it when empty (the checkbox marks, the switch
+// thumb) and generates it when absent; the construction pattern sorts the rest (slots.ts).
 import { UIFormElement, define, settleDefault, type Problem } from '../../core/index.ts';
 import { applyAttrs, checkedDataAttrs, eventDetails } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
@@ -26,19 +30,19 @@ abstract class UIChoice extends UIFormElement {
 
   #unslot?: () => void;
   protected abstract choiceRole: 'checkbox' | 'radio' | 'switch';
-  protected abstract indicator(): HTMLElement;
+  /** Fill an indicator with its default content when it has none (checkbox marks, switch thumb). */
+  protected abstract fill(indicator: HTMLElement): void;
   /** The slot recipe's classes (choice.recipe.ts). */
   protected abstract recipe(): Record<string, string>;
 
   connected() {
     settleDefault(this, false, false, 'checked');
-    if (!this.querySelector(':scope > [data-part=leading] > [data-part=indicator], :scope > [slot=leading][data-part=indicator]')) {
-      const indicator = this.indicator();
-      indicator.setAttribute('slot', 'leading');
-      indicator.setAttribute('data-part', 'indicator');
-      indicator.setAttribute('aria-hidden', 'true');
-      this.prepend(indicator);
-    }
+    // An authored indicator (in the leading part or loose) is kept; otherwise one is generated.
+    let indicator = this.querySelector<HTMLElement>(':scope > [data-part=leading] > [data-part=indicator], :scope > [data-part=indicator]');
+    if (!indicator) { indicator = document.createElement('span'); indicator.setAttribute('slot', 'leading'); indicator.setAttribute('data-part', 'indicator'); this.prepend(indicator); }
+    else if (indicator.parentElement === this) indicator.setAttribute('slot', 'leading');
+    indicator.setAttribute('aria-hidden', 'true');
+    this.fill(indicator);
     this.#unslot = observeSlots(this);
     this.addEventListener('click', this.#onClick);
     this.addEventListener('keydown', this.onKeydown);
@@ -104,10 +108,8 @@ export class UICheckbox extends UIChoice {
   declare indeterminate: boolean;
   protected choiceRole = 'checkbox' as const;
   protected recipe() { return checkbox(); }
-  protected indicator() {
-    const indicator = document.createElement('span');
-    indicator.innerHTML = '<i name="check-bold" data-mark="checked"></i><i name="minus-bold" data-mark="mixed"></i>';
-    return indicator;
+  protected fill(indicator: HTMLElement) {
+    if (!indicator.children.length) indicator.innerHTML = '<i name="check-bold" data-mark="checked"></i><i name="minus-bold" data-mark="mixed"></i>';
   }
   protected checkedState() { return this.indeterminate ? 'mixed' : String(this.checked); }
   protected isIndeterminate() { return this.indeterminate; }
@@ -117,10 +119,8 @@ export class UICheckbox extends UIChoice {
 export class UISwitch extends UIChoice {
   protected choiceRole = 'switch' as const;
   protected recipe() { return switchRecipe(); }
-  protected indicator() {
-    const indicator = document.createElement('span');
-    indicator.innerHTML = '<span data-part="thumb"></span>';
-    return indicator;
+  protected fill(indicator: HTMLElement) {
+    if (!indicator.querySelector(':scope > [data-part=thumb]')) indicator.insertAdjacentHTML('beforeend', '<span data-part="thumb"></span>');
   }
   // Switches also toggle on Enter.
   protected onKeydown = (e: KeyboardEvent) => {
@@ -131,7 +131,7 @@ export class UISwitch extends UIChoice {
 export class UIRadio extends UIChoice {
   protected choiceRole = 'radio' as const;
   protected recipe() { return radio(); }
-  protected indicator() { return document.createElement('span'); }
+  protected fill() {}
 
   /** Radios sharing this one's name in the same form (or document when outside a form). */
   get group(): UIRadio[] {

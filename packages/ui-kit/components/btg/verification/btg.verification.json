@@ -10,7 +10,7 @@
     },
     {
       "path": "components/slots.ts",
-      "sha256": "9be14b79c470d98628140553f0b685ae8a897c5ee86cbb9cc4b91c2dba341075"
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     },
     {
       "path": "dom/button.ts",

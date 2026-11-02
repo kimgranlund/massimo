@@ -41,11 +41,38 @@ A press on the label toggles a checkbox, switch or radio and focuses any other c
 
 ## Anatomy
 
+### Both forms
+
+Preset or parts ([components spec](../../../../docs/specs/components.md#composition)); the same DOM, classes and data-*:
+
+```html
+<ui-field layout="inline">
+  <span data-part="label"><span data-part="contents">Unit</span><span data-part="suffix">px</span></span>
+  <ui-range value="25"></ui-range>
+  <span data-part="readout">4.5</span>
+  <span data-part="description">Sets u.</span>
+  <span data-part="error">Use 2 to 12.</span>
+</ui-field>
+```
+
+```tsx
+<Field.Root layout="inline">
+  <Field.Label unit="px">Unit</Field.Label>
+  <Field.Control render={(ids) => <Slider {...ids} defaultValue={25} />} />
+  <Field.Readout>4.5</Field.Readout>
+  <Field.Description>Sets u.</Field.Description>
+  <Field.Error>Use 2 to 12.</Field.Error>
+</Field.Root>
+```
+
+Web component: the authored text (a plain label, or its contents and suffix spans) seeds `label`, `unit`, `readout`, `description` and `error` at the first connect; the field keeps and fills the parts. React: `Field.Control` renders no element: it hands `id`, `aria-labelledby` and `aria-describedby` to its `render` element or function, or to its single child element; `Field.Root` wires them from the Label, Description and Error among its direct children. `Field.Readout` is ours (Base UI has none).
+
 The authored control stays a direct child (React keeps owning it); the field adds its parts as siblings and the recipe places every child by part, so DOM order does not matter:
 
 ```
 [label: [contents] [suffix = unit]] [control] [readout]
                                     [description]
+                                    [error]
 ```
 
 - `part:field-label` `:scope > [data-part=label]`: the label row; text and unit, unit at the end.
@@ -53,6 +80,7 @@ The authored control stays a direct child (React keeps owning it); the field add
 - `part:field-unit` `:scope > [data-part=label] > [data-part=suffix]`: unit suffix, fg.subtle, never truncated.
 - `part:field-readout` `:scope > [data-part=readout]`: tabular figures in the numeric voice, fg.muted, end-aligned.
 - `part:field-description` `:scope > [data-part=description]`: caption role.
+- `part:field-error` `:scope > [data-part=error]`: the `error` text (Base UI Field.Error), caption role in critical.fg, after the description and in its aria-describedby; created once an error is set.
 
 A required control adds ` *` after the label text; a disabled one fades the label.
 

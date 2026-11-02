@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "b3996f0b3654f643b775468eaabbced4e3f915b597435169b7e2bd48e0f98941"
+      "sha256": "f77e53c0fc807137e236e7ac371430cc25ad7e47247a521d49f4571c94cb207c"
     },
     {
       "path": "dom/range.ts",
@@ -14,11 +14,11 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "1e14e729d219e925ee6eb3f2feddbe433418eb309b3f88f7129f5b458bedb359"
+      "sha256": "5aadad75e71c78889963e3bf487ddc6c362176e62b01508b670be10a26af6e6e"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "b3257bb57a31558981ab3a8c0564d03a34381c52faf6745df429e3953da056c1"
+      "sha256": "43247f0e8583d4e665dd7e7fb84faea771a90112f6c7fa921ef4cb4d623b8b1b"
     },
     {
       "path": "dom/state.ts",
@@ -35,6 +35,14 @@
     {
       "path": "core/form-element.ts",
       "sha256": "1a9b478f598e231cd2799bd4ede9338af9fb67b55307d9a31d1673027ab8e053"
+    },
+    {
+      "path": "components/compound.react.tsx",
+      "sha256": "0c35367ffa1afa095a3df9f758af8db2f2eba40cd0a1c643cf6be5edee012292"
+    },
+    {
+      "path": "components/slots.ts",
+      "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
     }
   ],
   "renderers": {
@@ -51,6 +59,10 @@
         {
           "command": "node --test test/events.test.ts",
           "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: authored [data-part] parts render the same parts, recipe classes, data-* and hidden flags as the generated anatomy; authored attributes, classes and content are adopted, text seeds properties, a reconnect keeps them"
         }
       ],
       "latestRun": {
@@ -59,7 +71,8 @@
         "commands": [
           "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -79,6 +92,10 @@
         {
           "command": "node --test test/events.test.ts",
           "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: each compound-part form renders the server markup of its preset; render (element or function) and className functions of the part state"
         }
       ],
       "latestRun": {
@@ -87,7 +104,8 @@
         "commands": [
           "node --test test/react.test.ts",
           "node --test test/state-parity.test.ts",
-          "node --test test/events.test.ts"
+          "node --test test/events.test.ts",
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

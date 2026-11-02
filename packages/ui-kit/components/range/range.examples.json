@@ -17,6 +17,13 @@
       "label": "Progress",
       "subject": "component:progress",
       "markup": "<ui-progress label=\"Upload\" value=\"60\"></ui-progress><ui-progress label=\"Loading\"></ui-progress>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:range",
+      "markup": "<ui-range value=\"25\" label=\"Volume\"><span data-part=\"track\"><span data-part=\"indicator\"></span></span><span data-part=\"thumb\"></span></ui-range>",
+      "note": "React: Slider.Root › Slider.Track › Slider.Indicator, Slider.Thumb (which also renders the native range input)."
     }
   ]
 }

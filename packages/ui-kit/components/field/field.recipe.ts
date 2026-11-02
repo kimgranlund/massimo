@@ -23,8 +23,8 @@ const CHOICE = ':is([role=checkbox], [role=switch], [role=radio], :has(> input:i
 
 export const field = defineSlotRecipe({
   className: 'ui-field',
-  description: 'Labelled field row (ui-field, React Field): label with unit, control, readout, description.',
-  slots: ['root', 'label', 'contents', 'suffix', 'readout', 'description'],
+  description: 'Labelled field row (ui-field, React Field): label with unit, control, readout, description, error.',
+  slots: ['root', 'label', 'contents', 'suffix', 'readout', 'description', 'error'],
   base: {
     root: {
       display: 'grid', alignItems: 'center', columnGap: '2', fontFamily: UI_FONT, minWidth: '0',
@@ -49,6 +49,8 @@ export const field = defineSlotRecipe({
       color: 'fg.muted', textAlign: 'end', whiteSpace: 'nowrap', minWidth: '10',
     },
     description: { ...fieldParts.description, gridColumn: '1 / -1' },
+    // The error message (Base UI Field.Error) takes the description's place, after it.
+    error: { ...fieldParts.error, gridColumn: '1 / -1' },
   },
   variants: {
     layout: {
@@ -72,7 +74,7 @@ export const field = defineSlotRecipe({
           [CONTROL]: { gridColumn: '2 / -1' },
           [`${WITH_READOUT} > :not([data-part])`]: { gridColumn: '2 / -2' },
           '& > [data-part=readout]': { gridColumn: '-2 / -1' },
-          '& > [data-part=description]': { gridColumn: '2 / -1' },
+          '& > :is([data-part=description], [data-part=error])': { gridColumn: '2 / -1' },
           ...IN_GRID,
         },
       },

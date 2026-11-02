@@ -84,7 +84,8 @@
         "field-text",
         "field-unit?",
         "field-readout?",
-        "field-description?"
+        "field-description?",
+        "field-error?"
       ],
       "allowedParents": [
         "page",

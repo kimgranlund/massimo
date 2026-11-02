@@ -23,6 +23,13 @@
       "label": "Switch",
       "subject": "component:switch",
       "markup": "<ui-switch name=\"wifi\" checked>Wi-Fi</ui-switch>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:switch",
+      "markup": "<ui-checkbox checked><span data-part=\"leading\"><span data-part=\"indicator\"></span></span><span data-part=\"contents\">Accept</span></ui-checkbox><ui-switch><span data-part=\"indicator\"><span data-part=\"thumb\"></span></span>Wi-Fi<span data-part=\"suffix\">on</span></ui-switch>",
+      "note": "Empty indicators are filled (checkbox marks); the rest is generated as usual. React: Checkbox.Root › Checkbox.Indicator, Switch.Root › Switch.Thumb."
     }
   ]
 }

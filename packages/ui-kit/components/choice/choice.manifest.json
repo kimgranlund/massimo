@@ -201,7 +201,7 @@
       "content": {
         "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the indicator is added to the leading slot."
+        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the indicator is added to the leading slot; an authored [data-part=indicator] (or [data-part=leading] › indicator) is kept and filled, and authored [data-part] slot spans are kept (composition)."
       },
       "layout": {
         "display": "inline-flex",
@@ -211,7 +211,8 @@
         "The host is the control: role=checkbox, aria-checked true | false | mixed, tabindex 0. Styling state: data-checked / data-unchecked, data-indeterminate (instead of either) and the field state (data-disabled, data-required, data-valid / data-invalid, data-dirty, data-touched, data-filled, data-focused), on the React label host too. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "indeterminate shows mixed and clears when the user toggles.",
         "The checked attribute at connect is the reset default; checked is not reflected.",
-        "Box radius is 1u."
+        "Box radius is 1u.",
+        "Composition: [data-part] spans may be authored: indicator (alone or in leading), prefix, contents, suffix; the host keeps them, fills an empty indicator with its default content and generates what is missing. React: Checkbox.Root with Checkbox.Indicator (it renders the leading slot around itself); other children are the label (contents); the native input stays inside the Root (the label host is what toggles it); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -390,7 +391,7 @@
       "content": {
         "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the indicator is added to the leading slot."
+        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the indicator is added to the leading slot; an authored [data-part=indicator] (or [data-part=leading] › indicator) is kept and filled, and authored [data-part] slot spans are kept (composition)."
       },
       "layout": {
         "display": "inline-flex",
@@ -400,7 +401,8 @@
         "Radios group by name within their form, or the document when outside a form; there is no group element. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "Roving tab stop: only the checked radio (or the first enabled one) is tabbable.",
         "required on any member makes the whole group required.",
-        "Wrap the group in an element with role=radiogroup and a label for an accessible group name."
+        "Wrap the group in an element with role=radiogroup and a label for an accessible group name.",
+        "Composition: [data-part] spans may be authored: indicator (alone or in leading), prefix, contents, suffix; the host keeps them, fills an empty indicator with its default content and generates what is missing. React: Radio.Root with Radio.Indicator (it renders the leading slot around itself); other children are the label (contents); the native input stays inside the Root (the label host is what toggles it); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -575,7 +577,7 @@
       "content": {
         "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the track is added to the leading slot."
+        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the track is added to the leading slot; an authored [data-part=indicator] (or [data-part=leading] › indicator) is kept and filled, and authored [data-part] slot spans are kept (composition)."
       },
       "layout": {
         "display": "inline-flex",
@@ -584,7 +586,8 @@
       "constraints": [
         "The host is the control: role=switch, aria-checked; data-checked / data-unchecked and the field state. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "The track is a capsule; the thumb moves on the snappy spring.",
-        "The application applies the setting on change; a switch implies no submit step."
+        "The application applies the setting on change; a switch implies no submit step.",
+        "Composition: [data-part] spans may be authored: indicator (alone or in leading; holding thumb), prefix, contents, suffix; the host keeps them, fills an empty indicator with its default content and generates what is missing. React: Switch.Root with Switch.Thumb (it renders the leading slot and the track around the thumb); other children are the label (contents); the native input stays inside the Root (the label host is what toggles it); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -1043,43 +1046,127 @@
       "props": {
         "component:checkbox": {
           "inherits": [
-            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix'>"
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
             "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
-            "children?: ReactNode",
-            "indeterminate?: boolean"
+            "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot.",
+            "indeterminate?: boolean // Mixed state (aria-checked=\"mixed\", data-indeterminate)."
           ]
         },
         "component:radio": {
           "inherits": [
-            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix'>"
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
             "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
-            "children?: ReactNode"
+            "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot."
           ]
         },
         "component:switch": {
           "inherits": [
-            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix'>"
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
             "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
-            "children?: ReactNode"
+            "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot."
           ]
+        }
+      },
+      "parts": {
+        "component:checkbox": {
+          "Checkbox.Root": {
+            "inherits": [
+              "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
+              "suffix?: ReactNode",
+              "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+              "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
+              "size?: number // Unit u in px for this control.",
+              "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot.",
+              "indeterminate?: boolean // Mixed state (aria-checked=\"mixed\", data-indeterminate)."
+            ]
+          },
+          "Checkbox.Indicator": {
+            "inherits": [],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // Replaces the default marks (checkbox: check and minus icons)."
+            ]
+          }
+        },
+        "component:radio": {
+          "Radio.Root": {
+            "inherits": [
+              "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
+              "suffix?: ReactNode",
+              "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+              "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
+              "size?: number // Unit u in px for this control.",
+              "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot."
+            ]
+          },
+          "Radio.Indicator": {
+            "inherits": [],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // Replaces the default marks (checkbox: check and minus icons)."
+            ]
+          }
+        },
+        "component:switch": {
+          "Switch.Root": {
+            "inherits": [
+              "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
+              "suffix?: ReactNode",
+              "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+              "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
+              "size?: number // Unit u in px for this control.",
+              "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot."
+            ]
+          },
+          "Switch.Thumb": {
+            "inherits": [],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // Replaces the default marks (checkbox: check and minus icons)."
+            ]
+          }
         }
       }
     }

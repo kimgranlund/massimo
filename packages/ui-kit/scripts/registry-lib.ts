@@ -170,7 +170,7 @@ export function assembly(id: string, graph = loadGraph()) {
     parts: by('ownsPart'), acceptsChild: by('acceptsChild'), requiresParent: by('requiresParent'), allowedIn: by('allowedIn'), uses: by('uses'),
     alternatives: (node.avoidWhen ?? []).map((a: any) => ({ ...a, ...(a.useInstead ? { availability: graph.nodes[a.useInstead]?.availability ?? 'missing' } : {}) })),
     renderers: Object.fromEntries(Object.entries<any>(m.renderers).map(([k, v]) => [k, v.status])),
-    ...(m.renderers.react?.props?.[id] ? { react: { export: m.renderers.react.exports[id], module: fromManifest(mpath, m.renderers.react.module), ...m.renderers.react.props[id] } } : {}),
+    ...(m.renderers.react?.props?.[id] ? { react: { export: m.renderers.react.exports[id], module: fromManifest(mpath, m.renderers.react.module), ...m.renderers.react.props[id], ...(m.renderers.react.parts?.[id] ? { parts: m.renderers.react.parts[id] } : {}) } } : {}),
   };
 }
 

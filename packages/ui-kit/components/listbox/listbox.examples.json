@@ -23,6 +23,13 @@
       "label": "Option anatomy",
       "subject": "component:option",
       "markup": "<ui-listbox label=\"Demo\"><ui-option><i slot=\"leading\" name=\"star\"></i><span slot=\"prefix\">#</span>Label<span slot=\"suffix\">3</span><i slot=\"trailing\" name=\"caret-right\"></i></ui-option></ui-listbox>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:option",
+      "markup": "<ui-listbox label=\"Folder\" value=\"inbox\"><ui-option value=\"inbox\"><span data-part=\"leading\"><i name=\"tray\"></i></span><span data-part=\"contents\">Inbox</span><span data-part=\"suffix\">12</span></ui-option><ui-option value=\"sent\"><span data-part=\"contents\">Sent</span></ui-option></ui-listbox>",
+      "note": "React: Listbox.Root › Listbox.Item › Listbox.ItemText, Listbox.ItemIndicator."
     }
   ]
 }

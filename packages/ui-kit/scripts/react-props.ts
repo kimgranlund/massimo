@@ -11,8 +11,12 @@
 //   - members `name?: Type;` (`;`, `,` or a line break ends one), with the JSDoc block before a
 //     member (`/** … */`) as its description; a later member of the same name replaces an earlier one;
 //   - the props type of an export: the annotation on the first parameter of `export function Name(…)`,
-//     or, for `export const Name = factory(…)`, of the first `function` in `const factory = …`.
-//     Defaults are the destructuring defaults of that parameter (`type = 'button'`), as source text.
+//     or, for `export const Name = factory(…)`, of the first `function` in `const factory = …`, or,
+//     for an alias `export const Name = Other;`, of Other. Defaults are the destructuring defaults of
+//     that parameter (`type = 'button'`), as source text. Generic interfaces (`interface A<S = X>`)
+//     keep their members' type text as written;
+//   - compound parts (Base UI style): `Name.Part = Impl;` lines after an export, Impl a function of
+//     the module or one it imports from another .tsx module (reactParts).
 import { readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
@@ -95,7 +99,7 @@ export function members(body: string): ReactProp[] {
 /** Declarations and relative .tsx type imports of one module. */
 export function parseModule(file: string, text: string): Module {
   const decls = new Map<string, Decl>(), imports = new Map<string, string>();
-  for (const m of text.matchAll(/^(?:export\s+)?interface\s+(\w+)\s*(?:extends\s+([^{]+?))?\s*\{/gm)) {
+  for (const m of text.matchAll(/^(?:export\s+)?interface\s+(\w+)\s*(?:<[^{]*?>)?\s*(?:extends\s+([^{]+?))?\s*\{/gm)) {
     const open = m.index! + m[0].length - 1;
     decls.set(m[1], { kind: 'interface', ext: m[2] ? splitTop(m[2], ',') : [], body: text.slice(open + 1, closing(text, open)) });
   }
@@ -188,6 +192,8 @@ function defaults(pattern: string): Map<string, string> {
 /** Props of an exported React component. */
 export function reactApi(file: string, exportName: string, mod = load(file)): ReactApi {
   const { text } = mod;
+  const alias = new RegExp(`^export const ${exportName}\\s*=\\s*(\\w+);`, 'm').exec(text);
+  if (alias) return reactApi(file, alias[1], mod);
   let open: number;
   const fn = new RegExp(`^export function ${exportName}\\s*\\(`, 'm').exec(text);
   if (fn) open = fn.index + fn[0].length - 1;
@@ -207,4 +213,22 @@ export function reactApi(file: string, exportName: string, mod = load(file)): Re
       name, type, optional, ...(d.has(name) ? { default: d.get(name)! } : {}), ...(description ? { description } : {}),
     })),
   };
+}
+
+/**
+ * Compound parts of an exported component: each `Name.Part = Impl;` line (following an alias
+ * `export const Name = Other;` to Other's parts), as `Name.Part` → Impl's props. Impl is an
+ * exported function of the module, or one imported from a relative .tsx module.
+ */
+export function reactParts(file: string, exportName: string, mod = load(file)): Record<string, ReactApi> {
+  const alias = new RegExp(`^export const ${exportName}\\s*=\\s*(\\w+);`, 'm').exec(mod.text);
+  const name = alias ? alias[1] : exportName;
+  const out: Record<string, ReactApi> = {};
+  for (const m of mod.text.matchAll(new RegExp(`^${name}\\.(\\w+)\\s*=\\s*(\\w+);`, 'gm'))) {
+    const from = mod.imports.get(m[2]);
+    const local = new RegExp(`^export (?:function|const) ${m[2]}\\b`, 'm').test(mod.text);
+    if (!local && !(from && existsSync(from))) throw new Error(`${file}: ${name}.${m[1]} = ${m[2]}: no exported function ${m[2]} here or in a .tsx import`);
+    out[`${name}.${m[1]}`] = local ? reactApi(file, m[2], mod) : reactApi(from!, m[2]);
+  }
+  return out;
 }
