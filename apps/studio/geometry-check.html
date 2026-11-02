@@ -17,6 +17,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/toggle/element';
 import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
@@ -52,6 +53,7 @@ for (const c of cases) {
     <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>
     <ui-palette id="pal"><ui-swatch color="red"></ui-swatch><ui-swatch color="blue"></ui-swatch><ui-swatch color="green"></ui-swatch></ui-palette>
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
+    <ui-toggle id="tgl" icon-size="${c.icon}" pressed><span slot="leading"></span>Bold</ui-toggle><ui-toggle id="tglO" aria-label="x"><span slot="leading"></span></ui-toggle><ui-toggle id="tglT">Text</ui-toggle>
     <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
     <div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
@@ -225,6 +227,21 @@ for (const c of cases) {
     checks['progress.radius'] = [px(cs(ptr).borderTopLeftRadius), rp.trackRadius];
     checks['progress.fill'] = [r2(rect(pin).width), r2(trackFill('progress', 0.3, rect(ptr).width, g))];
     checks['progress.fill.radius'] = [px(cs(pin).borderTopRightRadius), rp.trackRadius];
+  }
+  // Toggle: the control family, pressed or not (resolveControl, resolveButtonContents).
+  {
+    const tg = $('tgl'), to = $('tglO'), tt = $('tglT');
+    checks['toggle.height'] = [r2(rect(tg).height), ctl.height];
+    checks['toggle.unpressed.height'] = [r2(rect(tt).height), ctl.height];
+    checks['toggle.padding'] = [px(cs(tg).paddingTop) + px(cs(tg).borderTopWidth), ctl.padding + ctl.border];
+    checks['toggle.font'] = [px(cs(tg).fontSize), ctl.fontSize];
+    checks['toggle.radius'] = [px(cs(tg).borderTopLeftRadius), ctl.radius];
+    checks['toggle.slot'] = [r2(rect(part(tg, 'leading')).width), ctl.slot];
+    checks['toggle.icon'] = [r2(rect(part(tg, 'leading').firstElementChild).width), ctl.iconSize];
+    checks['toggle.iconOnly.square'] = [r2(rect(to).width), ctl.height];
+    checks['toggle.label.leading.start'] = [px(cs(part(tg, 'contents')).paddingLeft), resolveButtonContents(true, false, g).start];
+    checks['toggle.label.textOnly.start'] = [px(cs(part(tt, 'contents')).paddingLeft), resolveButtonContents(false, false, g).start];
+    checks['toggle.label.textOnly.end'] = [px(cs(part(tt, 'contents')).paddingRight), resolveButtonContents(false, false, g).end];
   }
   // Meter: the progress track under a label | value row (control text) 1.5u above it.
   {

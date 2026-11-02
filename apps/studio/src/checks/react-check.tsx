@@ -18,6 +18,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/toggle/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -37,6 +38,7 @@ import { Slider } from '@massimo/ui-kit/components/range/react';
 import { Separator } from '@massimo/ui-kit/components/separator/react';
 import { Avatar } from '@massimo/ui-kit/components/avatar/react';
 import { Meter } from '@massimo/ui-kit/components/meter/react';
+import { Toggle } from '@massimo/ui-kit/components/toggle/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 const r2 = (v: number) => Math.round(v * 100) / 100;
@@ -81,6 +83,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-separator data-k="sp" /></div>
         <div style={{ display: 'flex', height: 40 }}><ui-separator data-k="spv" orientation="vertical" /></div>
         <ui-avatar data-k="av" name="Ada Lovelace" />
+        <ui-toggle data-k="tg"><i slot="leading" name="star" />Star</ui-toggle>
+        <ui-toggle data-k="tgP" pressed>Bold<span slot="suffix">B</span></ui-toggle>
+        <ui-toggle data-k="tgD" disabled aria-label="Off"><i slot="leading" name="text-b" /></ui-toggle>
         <div style={{ width: 300 }}><ui-meter data-k="mt" label="Storage" value={30} /></div>
         <div style={{ width: 300 }}><ui-meter data-k="mtN" value={3} max={4} format='{"style":"decimal"}' /></div>
         <ui-avatar data-k="avS" avatar-size="sm" />
@@ -123,6 +128,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Separator data-k="sp" /></div>
         <div style={{ display: 'flex', height: 40 }}><Separator data-k="spv" orientation="vertical" /></div>
         <Avatar data-k="av" name="Ada Lovelace" />
+        <Toggle data-k="tg" leading={<i name="star" />}>Star</Toggle>
+        <Toggle data-k="tgP" pressed suffix="B">Bold</Toggle>
+        <Toggle data-k="tgD" disabled aria-label="Off" leading={<i name="text-b" />} />
         <div style={{ width: 300 }}><Meter data-k="mt" label="Storage" value={30} /></div>
         <div style={{ width: 300 }}><Meter data-k="mtN" value={3} max={4} format={{ style: 'decimal' }} /></div>
         <Avatar data-k="avS" avatarSize="sm" />
@@ -263,7 +271,7 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD']) {
       const a = host(wc, k), b = host(re, k);
       const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch')];
       const pa = parts(a), pb = parts(b);
@@ -274,7 +282,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN']) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

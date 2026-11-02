@@ -16,6 +16,7 @@ import { field, fieldGrid } from './field/field.recipe.ts';
 import { separator } from './separator/separator.recipe.ts';
 import { avatar } from './avatar/avatar.recipe.ts';
 import { meter } from './meter/meter.recipe.ts';
+import { toggle } from './toggle/toggle.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle };
 

@@ -25,7 +25,8 @@
       "summary": "Height 8u = 6u slot + 2·pad. Construction pattern [leading] [prefix] [contents] [suffix] [trailing]: icon slots 6u; the text run (prefix, label, suffix) has 0.5u beside another text part, 1u beside a slot, 2u at a bare edge. Font 10px + u. Icon = font + k·u (sm −0.5, md +0.5, lg +1.5), capped at the slot.",
       "members": [
         "component:button",
-        "component:option"
+        "component:option",
+        "component:toggle"
       ],
       "searchTerms": [
         "control geometry",

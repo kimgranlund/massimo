@@ -45,7 +45,9 @@
     "./components/avatar/element": "./components/avatar/avatar.element.ts",
     "./components/avatar/react": "./components/avatar/avatar.react.tsx",
     "./components/meter/element": "./components/meter/meter.element.ts",
-    "./components/meter/react": "./components/meter/meter.react.tsx"
+    "./components/meter/react": "./components/meter/meter.react.tsx",
+    "./components/toggle/element": "./components/toggle/toggle.element.ts",
+    "./components/toggle/react": "./components/toggle/toggle.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

@@ -379,6 +379,20 @@
         "token"
       ]
     },
+    "component:toggle": {
+      "kind": "component",
+      "source": "components/toggle/toggle.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-toggle",
+      "searchTerms": [
+        "toggle",
+        "toggle button",
+        "pressed",
+        "aria-pressed",
+        "bold",
+        "toolbar"
+      ]
+    },
     "context:card": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/card",
@@ -4123,6 +4137,141 @@
       "from": "component:swiper",
       "relation": "uses",
       "to": "foundation:icons"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesGeometry",
+      "to": "geometry:control"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "uses",
+      "to": "foundation:modality"
     }
   ]
 }

@@ -14,6 +14,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/toggle/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -21,7 +22,7 @@ import { CQ_MD, Divider, IMAGES, Page, Row, Section, SizeLadder, caption, column
 
 /** Component families, in page order: [id, label, elements]. */
 export const FAMILIES = [
-  ['actions', 'Actions', 'ui-button'],
+  ['actions', 'Actions', 'ui-button · ui-toggle'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
@@ -100,7 +101,7 @@ const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
 export function ComponentsPage({ family, params }: PageProps & { family?: Family }) {
   const [status, setStatus] = useState('');
   const NOTES: Record<Family, string> = {
-    actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u.',
+    actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u. A toggle is a button with a pressed state (aria-pressed, data-pressed): the primary solid while on.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
@@ -138,6 +139,16 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           {(['sm', 'md', 'lg'] as const).map((k) => <ui-button key={k} icon-size={k}><i slot="leading" name="star" />{k}</ui-button>)}
           <ui-button icon-size="fill"><span slot="leading" className={avatar} />fill</ui-button>
         </Row>
+        <Row label="Toggle">
+          <ui-group>
+            <ui-toggle aria-label="Bold" pressed><i slot="leading" name="text-b" /></ui-toggle>
+            <ui-toggle aria-label="Italic"><i slot="leading" name="text-italic" /></ui-toggle>
+            <ui-toggle aria-label="Underline" disabled><i slot="leading" name="text-underline" /></ui-toggle>
+          </ui-group>
+          <ui-toggle default-pressed><i slot="leading" name="star" />Favorite</ui-toggle>
+          <ui-toggle>Notify me<span slot="suffix">3</span></ui-toggle>
+          <ui-toggle pressed disabled>Locked on</ui-toggle>
+        </Row>
         <Row label="States">
           <ui-button>Default</ui-button>
           <ui-button loading>Loading</ui-button>
@@ -147,6 +158,8 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <ui-button><i slot="leading" name="plus" />Button</ui-button>
           <ui-button variant="primary">Save</ui-button>
           <ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button>
+          <ui-toggle pressed><i slot="leading" name="star" />Toggle</ui-toggle>
+          <ui-toggle aria-label="Bold"><i slot="leading" name="text-b" /></ui-toggle>
         </SizeLadder>
       </>
     ),

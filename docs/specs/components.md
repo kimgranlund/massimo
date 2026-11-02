@@ -29,6 +29,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-badge` | static label with the construction pattern; never narrower than tall; spacing in u′ = height / 8 | `icon-size` |
 | `ui-tag` | static label with slots | `icon-size` |
 | `ui-chip` | `role=button`; `selectable` toggles `aria-pressed`; `removable` adds ✕, Delete/Backspace fire cancelable `remove` | `selectable`, `selected`, `removable`, `disabled` |
+| `ui-toggle` | `role=button` with `aria-pressed` (Base UI Toggle); click, Enter, Space flip it; cancelable `change` `{ pressed, reason, event }`; button recipe and control geometry | `pressed`, `default-pressed`, `disabled`, `value` |
 | `ui-swatch` | a color chip over a checkerboard; `role=img` | `color`, `label` |
 | `ui-palette` | strip of swatches (row, or column with `orientation="vertical"`); with `name`/`selectable` a single-select listbox | `name`, `value`, `label`, `selectable`, `orientation` |
 | `ui-swiper` | scroll-snap carousel; paddles and dots; `slidechange` event | `label`, `hover-controls`, `no-dots`, `no-paddles` |
@@ -60,7 +61,7 @@ Value-bearing components take [Base UI](https://base-ui.com)'s props and report 
 
 - **Values**: `value` and `defaultValue` (attribute `default-value`) on `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented`, `ui-palette` and `ui-range`; `checked` and `defaultChecked` (`default-checked`) on the choices. The default sets the first value when no value attribute or property did, and is the value form reset returns to; without it the value attribute is the default, like a native input's (`settleDefault`, `core/form-element.ts`). `ui-select` also has `open` and `defaultOpen` (`default-open`); setting `open` shows or hides the popup without an event.
 - **Web component events**: `change` (and `input`, which ui-range and ui-input fire on every change and the others with `change`) are `CustomEvent`s whose `detail` is `{ value, reason, event }`: choices `{ checked, value, reason, event }`, a selectable chip's `change` `{ pressed, reason, event }`. `ui-select` fires `openchange` (cancelable: `preventDefault` keeps the popup as it is) with `{ open, reason, event }`. `event` is the DOM event that caused the change.
-- **React**: Checkbox, Radio, Switch `onCheckedChange(checked, details)`; Input, Listbox, Segmented, Palette, Select `onValueChange(value, details)`; Range `onValueChange` and `onValueCommitted` (the native change event); Chip `onSelectedChange(selected, details)`; Select `open`, `defaultOpen` and `onOpenChange(open, details)` within what the native select allows (`showPicker` needs user activation and cannot close; the open state is reread from `select:open`). The native `onChange` still fires.
+- **React**: Toggle `pressed`, `defaultPressed`, `onPressedChange(pressed, details)`; Checkbox, Radio, Switch `onCheckedChange(checked, details)`; Input, Listbox, Segmented, Palette, Select `onValueChange(value, details)`; Range `onValueChange` and `onValueCommitted` (the native change event); Chip `onSelectedChange(selected, details)`; Select `open`, `defaultOpen` and `onOpenChange(open, details)` within what the native select allows (`showPicker` needs user activation and cannot close; the open state is reread from `select:open`). The native `onChange` still fires.
 - **Reasons** (Base UI's names): `item-press` (an option or swatch pressed, or Enter / Space on the highlighted option), `keyboard` (arrow, Home / End, Page or typeahead keys in a listbox, palette or range), `list-navigation` (a navigation key opened the select), `trigger-press`, `outside-press`, `escape-key`, `focus-out` (blur; Tab commits the highlighted option), `track-press` and `drag` (range), `none` (checkbox, radio, switch, chip, input: Base UI's only reason for them). Both renderers report the same reason for the same interaction (`test/events.test.ts`).
 
 ## Composition
@@ -83,6 +84,7 @@ Every component with parts can be written two ways, and both render the same DOM
 | Input | *`Input.Root`*, *`Input.Label`*, *`Input.Control`*, *`Input.Description`*, *`Input.Error`* (Base UI's Field parts on the input's own recipe) |
 | Listbox, Segmented | `Listbox.Root`, `Listbox.Item`, `Listbox.ItemText`, `Listbox.ItemIndicator`; `Segmented.Root`, `Segmented.Item`, `Segmented.ItemText` (`Listbox`, `Segmented`, `Option` are the same components) |
 | Button | one part: `Button` |
+| Toggle, Separator | one part each: `Toggle`, `Separator` |
 
 - **render** (`components/compound.react.tsx`, `renderPart`): an element, whose props are merged with the part's (classes join, styles merge, handlers and refs both run, its other props win), or `(props, state) => element`. The recipe class, `data-part` and the data-* state stay on whatever renders.
 - **className**: a string, or `(state) => string`; added after the recipe class. The state is the part's data-* state as camelCase values (`data-popup-open` → `popupOpen: true`, `data-orientation="vertical"` → `orientation: 'vertical'`); every part receives its Root's state (an item its own: `selected`, `highlighted`, `disabled`).
@@ -115,6 +117,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 |---|---|---|---|
 | `ui-button` (Button) | `data-disabled`, `data-busy` | | `data-busy` ours |
 | `ui-chip` (Chip) | `data-disabled`, `data-pressed` (selected) | | Base UI Toggle |
+| `ui-toggle` (Toggle) | `data-pressed`, `data-disabled` | | Base UI Toggle |
 | `ui-checkbox` (Checkbox) | `data-checked` / `data-unchecked` / `data-indeterminate` (instead of either), field state | | Base UI Checkbox |
 | `ui-radio`, `ui-switch` (Radio, Switch) | `data-checked` / `data-unchecked`, field state | | Base UI Radio, Switch |
 | `ui-input` (Input) | field state, `data-readonly` | | Base UI Field / Input |

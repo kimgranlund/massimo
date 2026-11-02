@@ -502,6 +502,28 @@
         "form"
       ],
       "behavior": "None: a static measurement within a known range. The value text is formatNumber of the value (format) or, by default, the ratio as a percentage."
+    },
+    "toggle": {
+      "geometryFamily": "control",
+      "element": "Host is the toggle button (role=button, aria-pressed, tabindex 0); no native button inside.",
+      "parts": [
+        "slot-leading?",
+        "slot-prefix?",
+        "slot-contents?",
+        "slot-suffix?",
+        "slot-trailing?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "Click, Enter and Space flip pressed and fire a cancelable change { pressed, reason: none, event }; disabled blocks activation. No form value."
     }
   }
 }

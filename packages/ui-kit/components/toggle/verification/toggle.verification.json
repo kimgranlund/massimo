@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "toggle",
+  "scope": "Role, aria-pressed, data-pressed / data-disabled, activation by click, Enter and Space, the cancelable change event and defaultPressed of the web component in happy-dom; the React renderer in react-dom/server and react-dom/client (node:test): markup and state parity, onPressedChange details, controlled and uncontrolled state, render and className. Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/toggle/toggle.element.ts",
+      "sha256": "3aa0553795a0aec56886729dc26af2c71b8c9ad89751e84f2cb504a4b4ce5ece"
+    },
+    {
+      "path": "components/toggle/toggle.react.tsx",
+      "sha256": "d8b2a5b2d6ab9d8bbf726479f7e31489757dc551f5c70ed4c89d6ff8e1739df3"
+    },
+    {
+      "path": "components/toggle/toggle.recipe.ts",
+      "sha256": "96843d2b9f353b60f6ae9ff27d384b965307466681164f12ed3fbe6650ec11a2"
+    },
+    {
+      "path": "components/toggle/toggle.manifest.json",
+      "sha256": "ac1b3c4c01b1e48f30e666f8758afff274e292f2d869eb5338c489b06d7f01a9"
+    },
+    {
+      "path": "components/button/button.recipe.ts",
+      "sha256": "702653049447dfdd5c9071b2797ad50b444d9078ffcd035a875530f81959fbd0"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-toggle\" test/toggle.test.ts",
+          "covers": "role, aria-pressed, data-pressed, activation keys, cancelable change { pressed, reason, event }, defaultPressed, disabled, construction pattern, no native elements"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-toggle\" test/toggle.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React Toggle|parity\" test/toggle.test.ts",
+          "covers": "SSR markup, state parity with the web component, onPressedChange details, controlled and uncontrolled, render and className function"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React Toggle|parity\" test/toggle.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02): the control family's height 8u, padding u − B, radius, slots and label padding checked for ui-toggle in apps/studio/geometry-check.html at every size × B 0 and 1 × icon sizes, pressed and unpressed; growth: a long label grows the toggle like a button, slots never shrink; RTL: the construction pattern mirrors (flex); focus: the keyboard ring is the button's outline (no size change), inside a ui-group it stays within the group contour; light and dark screenshots of the Actions family (ladder 3, 4, 6 and the theme unit).",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Toggle with ui-toggle at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}
