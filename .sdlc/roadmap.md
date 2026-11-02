@@ -5,10 +5,6 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0002 | [separator](tickets/separator/handoff.md) | W1 · Separator | feature | L1 | P2 | none | 🟡 claimed |
-| T-0003 | [avatar](tickets/avatar/handoff.md) | W1 · Avatar | feature | L2 | P2 | none | 🟡 claimed |
-| T-0004 | [meter](tickets/meter/handoff.md) | W1 · Meter | feature | L2 | P2 | none | 🟡 claimed |
-| T-0005 | [toggle](tickets/toggle/handoff.md) | W1 · Toggle | feature | L1 | P2 | none | 🟡 claimed |
 | T-0006 | [radio-group](tickets/radio-group/handoff.md) | W1 · Radio Group | feature | L2 | P2 | none | 🟡 claimed |
 | T-0007 | [checkbox-group](tickets/checkbox-group/handoff.md) | W1 · Checkbox Group | feature | L2 | P2 | none | 🟡 claimed |
 | T-0008 | [fieldset](tickets/fieldset/handoff.md) | W1 · Fieldset | feature | L1 | P2 | none | 🟡 claimed |
@@ -35,4 +31,4 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0029 | [slider-range-pair](tickets/slider-range-pair/handoff.md) | W5 · Slider: two-thumb range | feature | L2 | P3 | none | ⏳ proposed |
 | T-0030 | [toggle-group-multiple](tickets/toggle-group-multiple/handoff.md) | W5 · Toggle Group: multiple selection | feature | L1 | P3 | T-0005 | ⏳ proposed |
 
-Closed: 1 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 5 done, 0 dropped (git log or .NNNN-* folders)
