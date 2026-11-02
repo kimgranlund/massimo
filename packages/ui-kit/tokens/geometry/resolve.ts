@@ -29,7 +29,7 @@ export interface GeometryInput {
   iconSize?: IconSize;
 }
 
-export const GEOMETRY_DEFAULTS = { unit: 4, border: 0, radiusScale: 1, iconSize: 'md' as IconSize };
+export const GEOMETRY_DEFAULTS = { unit: 4.5, border: 0, radiusScale: 1, iconSize: 'md' as IconSize };
 
 function inputs(input: GeometryInput) {
   const x = { ...GEOMETRY_DEFAULTS, ...input };

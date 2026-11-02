@@ -6,7 +6,7 @@ Numbers the geometry derives from (`tokens/themes/params.ts`), emitted as `--ui-
 
 | Parameter | Range | Default |
 |---|---|---|
-| `unit` | 2–12 px (0.25 steps) | 4 |
+| `unit` | 2–12 px (0.25 steps) | 4.5 |
 | `border` | 0–2 px (whole) | 0 (surfaces separate by fill; invalid controls get a danger-tinted fill) |
 | `radius-scale` | 0–3 | 1 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |

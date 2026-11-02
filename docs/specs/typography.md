@@ -15,7 +15,7 @@ massimo-ui's type roles and font families, placed on our u ramp. Reference: `pac
 |---|---|---|---|
 | ratio | theme `type-ratio` | 1–1.5 (named: 1 product UI, 1.125, 1.2, 1.25, 1.333 perfect fourth, 1.5) | 1.333 |
 | rhythm | theme `type-rhythm` | 0 (natural), 0.5, 1 (× u) | 1 |
-| u | theme `unit`, `size` / `data-size` | see geometry | 4 |
+| u | theme `unit`, `size` / `data-size` | see geometry | 4.5 |
 
 ## Faces, voices, roles
 

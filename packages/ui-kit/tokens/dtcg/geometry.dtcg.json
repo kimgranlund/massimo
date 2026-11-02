@@ -1,14 +1,14 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "ui-kit geometry. Everything derives from u (size, 2–12px), B (border) and s (radius scale). $value is resolved at u=4, B=0, s=1; com.massimo.formula gives the rule and com.massimo.bySize the value at every size.",
+  "$description": "ui-kit geometry. Everything derives from u (size, 2–12px), B (border) and s (radius scale). $value is resolved at u=4.5, B=0, s=1; com.massimo.formula gives the rule and com.massimo.bySize the value at every size.",
   "input": {
     "u": {
       "$type": "dimension",
       "$value": {
-        "value": 4,
+        "value": 4.5,
         "unit": "px"
       },
-      "$description": "all · unit u · size=\"2|2.25|2.5|3|3.5|4|4.5\"; theme default 4",
+      "$description": "all · unit u · size=\"2|2.25|2.5|3|3.5|4|4.5\"; theme default 4.5",
       "$extensions": {
         "com.massimo.formula": "u = size attribute (px)",
         "com.massimo.status": "input",
@@ -243,7 +243,7 @@
     "height": {
       "$type": "dimension",
       "$value": {
-        "value": 32,
+        "value": 36,
         "unit": "px"
       },
       "$description": "button, input, select · height",
@@ -279,7 +279,7 @@
     "padding": {
       "$type": "dimension",
       "$value": {
-        "value": 4,
+        "value": 4.5,
         "unit": "px"
       },
       "$description": "button, input, select · padding · border + padding = 1u",
@@ -315,7 +315,7 @@
     "slot": {
       "$type": "dimension",
       "$value": {
-        "value": 24,
+        "value": 27,
         "unit": "px"
       },
       "$description": "button, option · slot (leading / contents / trailing) min size · empty slots hidden; icon-only button = 8u square",
@@ -352,7 +352,7 @@
       "paddingInline": {
         "$type": "dimension",
         "$value": {
-          "value": 4,
+          "value": 4.5,
           "unit": "px"
         },
         "$description": "button, option · contents inline padding beside a slot",
@@ -388,7 +388,7 @@
       "paddingBlock": {
         "$type": "dimension",
         "$value": {
-          "value": 3.6,
+          "value": 4.8,
           "unit": "px"
         },
         "$description": "button, option · contents block padding",
@@ -424,7 +424,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 16.8,
+          "value": 17.4,
           "unit": "px"
         },
         "$description": "button, option · contents line height (single-line controls: button, option, input, select) · 1.2 × (10px + u); the 6u cap applies below u = 2.5",
@@ -462,7 +462,7 @@
       "between": {
         "$type": "dimension",
         "$value": {
-          "value": 4,
+          "value": 4.5,
           "unit": "px"
         },
         "$description": "button, option, input control, select trigger, tag, chip, choices · gap between adjacent text parts (prefix | label | suffix) · construction pattern [leading] [prefix] [contents] [suffix] [trailing]; text-run edges: 1u beside a slot, 2u bare (tag/chip 1u, choices 0)",
@@ -499,7 +499,7 @@
     "font": {
       "$type": "dimension",
       "$value": {
-        "value": 14,
+        "value": 14.5,
         "unit": "px"
       },
       "$description": "all controls · font size",
@@ -536,7 +536,7 @@
       "sm": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 12.25,
           "unit": "px"
         },
         "$description": "icons in slots · icon sm",
@@ -572,7 +572,7 @@
       "md": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 16.75,
           "unit": "px"
         },
         "$description": "icons in slots · icon md (default) · capped by slot below u~2.2",
@@ -608,7 +608,7 @@
       "lg": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 21.25,
           "unit": "px"
         },
         "$description": "icons in slots · icon lg · capped by slot below u~2.9",
@@ -644,7 +644,7 @@
       "fill": {
         "$type": "dimension",
         "$value": {
-          "value": 24,
+          "value": 27,
           "unit": "px"
         },
         "$description": "icons in slots · icon fill · object-fit cover, centered",
@@ -681,7 +681,7 @@
     "radius": {
       "$type": "dimension",
       "$value": {
-        "value": 12,
+        "value": 13.5,
         "unit": "px"
       },
       "$description": "button, input, select · radius · soft curvature, capped at half height",
@@ -718,7 +718,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 9,
           "unit": "px"
         },
         "$description": "fill slot · fill slot radius · nested inside the control radius",
@@ -759,7 +759,7 @@
         "open": {
           "$type": "dimension",
           "$value": {
-            "value": 8,
+            "value": 9,
             "unit": "px"
           },
           "$description": "button, option · label padding on a side without leading/trailing · text-only: 2u both sides; leading only: 1u start, 2u end",
@@ -799,7 +799,7 @@
     "paddingInline": {
       "$type": "dimension",
       "$value": {
-        "value": 12,
+        "value": 13.5,
         "unit": "px"
       },
       "$description": "input · text inline padding · host 1u + contents 2u (button label rule); select: contents 2u | 1u, then the 6u trailing chevron slot, then u - B",
@@ -837,7 +837,7 @@
     "paddingStart": {
       "$type": "dimension",
       "$value": {
-        "value": 12,
+        "value": 13.5,
         "unit": "px"
       },
       "$description": "select trigger · start padding",
@@ -873,7 +873,7 @@
     "paddingEnd": {
       "$type": "dimension",
       "$value": {
-        "value": 4,
+        "value": 4.5,
         "unit": "px"
       },
       "$description": "select trigger · end padding · chevron occupies a trailing 6u slot",
@@ -910,7 +910,7 @@
       "icon": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 12.25,
           "unit": "px"
         },
         "$description": "select trigger · chevron icon · all caret-* icons in slots use sm",
@@ -947,7 +947,7 @@
     "popupOffset": {
       "$type": "dimension",
       "$value": {
-        "value": 4,
+        "value": 4.5,
         "unit": "px"
       },
       "$description": "select popup · offset from trigger",
@@ -985,7 +985,7 @@
     "edge": {
       "$type": "dimension",
       "$value": {
-        "value": 2,
+        "value": 2.25,
         "unit": "px"
       },
       "$description": "listbox, segmented, popup · edge distance D · the composite padding level",
@@ -1021,7 +1021,7 @@
     "padding": {
       "$type": "dimension",
       "$value": {
-        "value": 2,
+        "value": 2.25,
         "unit": "px"
       },
       "$description": "listbox, segmented, popup · padding",
@@ -1057,7 +1057,7 @@
     "gap": {
       "$type": "dimension",
       "$value": {
-        "value": 2,
+        "value": 2.25,
         "unit": "px"
       },
       "$description": "listbox, segmented, popup · gap between options",
@@ -1094,7 +1094,7 @@
       "inset": {
         "$type": "dimension",
         "$value": {
-          "value": 2,
+          "value": 2.25,
           "unit": "px"
         },
         "$description": "option · option inset Ic",
@@ -1130,7 +1130,7 @@
       "height": {
         "$type": "dimension",
         "$value": {
-          "value": 28,
+          "value": 31.5,
           "unit": "px"
         },
         "$description": "option · option height · 7u",
@@ -1166,7 +1166,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "option · option radius · = 3u control radius (concentric)",
@@ -1203,7 +1203,7 @@
     "rowHeight": {
       "$type": "dimension",
       "$value": {
-        "value": 32,
+        "value": 36,
         "unit": "px"
       },
       "$description": "segmented · one-row height · always 8u (B ≤ u/2)",
@@ -1240,7 +1240,7 @@
       "segmented": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 15.75,
           "unit": "px"
         },
         "$description": "segmented · radius",
@@ -1276,7 +1276,7 @@
       "container": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 15.75,
           "unit": "px"
         },
         "$description": "listbox, popup · radius",
@@ -1316,7 +1316,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 4,
+          "value": 4.5,
           "unit": "px"
         },
         "$description": "ui-group · padding",
@@ -1352,7 +1352,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 4,
+          "value": 4.5,
           "unit": "px"
         },
         "$description": "ui-group · gap",
@@ -1388,7 +1388,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 18,
           "unit": "px"
         },
         "$description": "ui-group · max radius · concentric with a 3u control in the corner; capped at half height",
@@ -1426,7 +1426,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 9,
           "unit": "px"
         },
         "$description": "ui-collection · padding",
@@ -1462,7 +1462,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 9,
           "unit": "px"
         },
         "$description": "ui-collection · gap",
@@ -1498,7 +1498,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 22.5,
           "unit": "px"
         },
         "$description": "ui-collection · max radius · concentric with a 3u control in the corner; capped at half height",
@@ -1536,7 +1536,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "ui-tile · padding",
@@ -1572,7 +1572,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "ui-tile · gap",
@@ -1608,7 +1608,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 24,
+          "value": 27,
           "unit": "px"
         },
         "$description": "ui-tile · max radius · concentric with a 3u control in the corner; capped at half height",
@@ -1646,7 +1646,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 18,
           "unit": "px"
         },
         "$description": "ui-card · padding",
@@ -1682,7 +1682,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 18,
           "unit": "px"
         },
         "$description": "ui-card · gap",
@@ -1718,7 +1718,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 28,
+          "value": 31.5,
           "unit": "px"
         },
         "$description": "ui-card · max radius · concentric with a 3u control in the corner; capped at half height",
@@ -1756,7 +1756,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 24,
+          "value": 27,
           "unit": "px"
         },
         "$description": "ui-panel · padding",
@@ -1792,7 +1792,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 24,
+          "value": 27,
           "unit": "px"
         },
         "$description": "ui-panel · gap",
@@ -1866,7 +1866,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 32,
+          "value": 36,
           "unit": "px"
         },
         "$description": "ui-region · padding",
@@ -1902,7 +1902,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 32,
+          "value": 36,
           "unit": "px"
         },
         "$description": "ui-region · gap",
@@ -1976,7 +1976,7 @@
       "padding": {
         "$type": "dimension",
         "$value": {
-          "value": 32,
+          "value": 36,
           "unit": "px"
         },
         "$description": "ui-page · padding",
@@ -2012,7 +2012,7 @@
       "gap": {
         "$type": "dimension",
         "$value": {
-          "value": 32,
+          "value": 36,
           "unit": "px"
         },
         "$description": "ui-page · gap",
@@ -2123,7 +2123,7 @@
     "box": {
       "$type": "dimension",
       "$value": {
-        "value": 20,
+        "value": 22.5,
         "unit": "px"
       },
       "$description": "checkbox, radio, switch · box height · in the 6u leading slot",
@@ -2160,7 +2160,7 @@
       "width": {
         "$type": "dimension",
         "$value": {
-          "value": 36,
+          "value": 40.5,
           "unit": "px"
         },
         "$description": "switch · track width",
@@ -2196,7 +2196,7 @@
       "thumb": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 18,
           "unit": "px"
         },
         "$description": "switch · thumb · travels 4u",
@@ -2233,7 +2233,7 @@
     "rowHeight": {
       "$type": "dimension",
       "$value": {
-        "value": 24,
+        "value": 27,
         "unit": "px"
       },
       "$description": "checkbox, radio, switch · row height",
@@ -2270,7 +2270,7 @@
       "paddingStart": {
         "$type": "dimension",
         "$value": {
-          "value": 4,
+          "value": 4.5,
           "unit": "px"
         },
         "$description": "checkbox, radio, switch · label start padding · label lands 1.5u from the box",
@@ -2308,7 +2308,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 4,
+          "value": 4.5,
           "unit": "px"
         },
         "$description": "checkbox · radius · radio and switch stay round",
@@ -2344,7 +2344,7 @@
       "mark": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 18,
           "unit": "px"
         },
         "$description": "checkbox · check mark icon",
@@ -2382,7 +2382,7 @@
       "dot": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 9,
           "unit": "px"
         },
         "$description": "radio · dot",
@@ -2421,7 +2421,7 @@
     "height": {
       "$type": "dimension",
       "$value": {
-        "value": 16,
+        "value": 18,
         "unit": "px"
       },
       "$description": "range, progress · box height",
@@ -2457,7 +2457,7 @@
     "track": {
       "$type": "dimension",
       "$value": {
-        "value": 16,
+        "value": 18,
         "unit": "px"
       },
       "$description": "range, progress · track thickness · radius min(3u * s, 2u)",
@@ -2493,7 +2493,7 @@
     "radius": {
       "$type": "dimension",
       "$value": {
-        "value": 8,
+        "value": 9,
         "unit": "px"
       },
       "$description": "range, progress · track and fill radius · range fill = ratio * (width - 4u) + 4u",
@@ -2529,7 +2529,7 @@
     "thumb": {
       "$type": "dimension",
       "$value": {
-        "value": 12,
+        "value": 13.5,
         "unit": "px"
       },
       "$description": "range · thumb · inset 0.5u like the switch thumb; radius track radius - 0.5u",
@@ -2566,7 +2566,7 @@
       "range": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 18,
           "unit": "px"
         },
         "$description": "range · fill width at ratio p (shown for p = 0) · ends one track radius past the thumb center: a concentric cap around the thumb",
@@ -2603,7 +2603,7 @@
     "minWidth": {
       "$type": "dimension",
       "$value": {
-        "value": 96,
+        "value": 108,
         "unit": "px"
       },
       "$description": "range, progress · min width",
@@ -2641,7 +2641,7 @@
     "size": {
       "$type": "dimension",
       "$value": {
-        "value": 24,
+        "value": 27,
         "unit": "px"
       },
       "$description": "swatch · size",
@@ -2677,7 +2677,7 @@
     "radius": {
       "$type": "dimension",
       "$value": {
-        "value": 4,
+        "value": 4.5,
         "unit": "px"
       },
       "$description": "swatch · radius · square inside a palette",
@@ -2714,7 +2714,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 8,
+          "value": 9,
           "unit": "px"
         },
         "$description": "palette · radius · swatches attached, no gap",
@@ -2753,7 +2753,7 @@
     "paddleInset": {
       "$type": "dimension",
       "$value": {
-        "value": 8,
+        "value": 9,
         "unit": "px"
       },
       "$description": "swiper · paddle inset · paddles are 8u icon buttons",
@@ -2789,7 +2789,7 @@
     "dot": {
       "$type": "dimension",
       "$value": {
-        "value": 8,
+        "value": 9,
         "unit": "px"
       },
       "$description": "swiper · dot · 4u hit area, u gap",
@@ -2828,7 +2828,7 @@
       "height": {
         "$type": "dimension",
         "$value": {
-          "value": 24,
+          "value": 25.5,
           "unit": "px"
         },
         "$description": "chip · height · cap: never taller than a control (bites below u = 2.4)",
@@ -2864,7 +2864,7 @@
       "font": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "$description": "chip · font size · same as controls",
@@ -2900,7 +2900,7 @@
       "slot": {
         "$type": "dimension",
         "$value": {
-          "value": 21,
+          "value": 22.313,
           "unit": "px"
         },
         "$description": "chip · slot (leading / contents / trailing) min size · spacing is relative to the element",
@@ -2936,7 +2936,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 16.8,
+          "value": 17.4,
           "unit": "px"
         },
         "$description": "chip · line height · tag: same rule with the tag font and slot; badge: min(1.2 × 10px, badge height)",
@@ -2973,7 +2973,7 @@
         "bareEdge": {
           "$type": "dimension",
           "$value": {
-            "value": 4.5,
+            "value": 4.781,
             "unit": "px"
           },
           "$description": "chip · label padding at a bare edge · +0.5u′ compensation; beside a slot 1u′",
@@ -3011,7 +3011,7 @@
         "md": {
           "$type": "dimension",
           "$value": {
-            "value": 16,
+            "value": 16.75,
             "unit": "px"
           },
           "$description": "chip · icon md · sm/lg/fill as for controls, against the chip slot",
@@ -3048,7 +3048,7 @@
       "radius": {
         "$type": "dimension",
         "$value": {
-          "value": 8.5,
+          "value": 9.031,
           "unit": "px"
         },
         "$description": "chip · radius · concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot",
@@ -3086,7 +3086,7 @@
       "height": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 21,
           "unit": "px"
         },
         "$description": "tag · height · one u below chip",
@@ -3122,7 +3122,7 @@
       "font": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 12.25,
           "unit": "px"
         },
         "$description": "tag · font size",
@@ -3158,7 +3158,7 @@
       "slot": {
         "$type": "dimension",
         "$value": {
-          "value": 17.5,
+          "value": 18.375,
           "unit": "px"
         },
         "$description": "tag · slot min size · spacing is relative to the element",
@@ -3195,7 +3195,7 @@
         "md": {
           "$type": "dimension",
           "$value": {
-            "value": 14,
+            "value": 14.5,
             "unit": "px"
           },
           "$description": "tag · icon md",
@@ -3234,7 +3234,7 @@
       "height": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 16.5,
           "unit": "px"
         },
         "$description": "badge · height · one u below tag",
@@ -3307,7 +3307,7 @@
     "padding": {
       "$type": "dimension",
       "$value": {
-        "value": 1.5,
+        "value": 1.594,
         "unit": "px"
       },
       "$description": "badge, tag, chip · padding · host padding for badge, tag and chip; the label wrapper carries the rest",
@@ -3344,7 +3344,7 @@
       "edge": {
         "$type": "dimension",
         "$value": {
-          "value": 2.5,
+          "value": 2.625,
           "unit": "px"
         },
         "$description": "badge, tag · label padding (bare edge and beside a slot) · value shown for tag; text parts 0.5u′ apart",
@@ -3381,7 +3381,7 @@
     "localUnit": {
       "$type": "dimension",
       "$value": {
-        "value": 2.5,
+        "value": 2.625,
         "unit": "px"
       },
       "$description": "badge, tag, chip · local unit u′ (all spacing) · value shown for tag; chip and badge use their own height",
@@ -3417,7 +3417,7 @@
     "minWidth": {
       "$type": "dimension",
       "$value": {
-        "value": 16,
+        "value": 16.5,
         "unit": "px"
       },
       "$description": "badge, tag, chip · min width · value shown for badge; never narrower than tall",

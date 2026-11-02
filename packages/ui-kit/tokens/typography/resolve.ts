@@ -66,7 +66,7 @@ export const FACE_STACKS: Record<Face, [string, string][]> = {
   display: [['Same as sans', FONT_FAMILIES.display], ['Didot', 'Didot, "Bodoni 72", "Bodoni MT", serif'], ['Futura', 'Futura, "Century Gothic", "Avenir Next", sans-serif'], ['Avenir Next Condensed', '"Avenir Next Condensed", "Arial Narrow", sans-serif'], ['Baskerville', FONT_FAMILIES.serif]],
 };
 
-export const TYPE_DEFAULTS = { unit: 4, ratio: 1.333, rhythm: 1, voices: DEFAULT_VOICES, faces: FONT_FAMILIES };
+export const TYPE_DEFAULTS = { unit: 4.5, ratio: 1.333, rhythm: 1, voices: DEFAULT_VOICES, faces: FONT_FAMILIES };
 
 /** A face counts as serif when its stack ends in the serif generic family. */
 export const isSerifStack = (stack: string) => /\bserif\s*$/.test(stack) && !/sans-serif\s*$/.test(stack);

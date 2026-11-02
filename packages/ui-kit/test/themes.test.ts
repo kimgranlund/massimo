@@ -12,7 +12,7 @@ test('validateTheme accepts known in-range params only', () => {
 
 test('themeCss emits defaults on :root and one root-scoped block per theme', () => {
   const css = themeCss({ warm: { 'unit': 3 } });
-  assert.equal(css[':root']['--ui-unit'], '4');
+  assert.equal(css[':root']['--ui-unit'], '4.5');
   assert.deepEqual(css[':root[data-ui-theme="warm"]'], { '--ui-unit': '3' });
 });
 

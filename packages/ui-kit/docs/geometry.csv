@@ -1,5 +1,5 @@
 id,family,element,quantity,formula,u=2,u=2.25,u=2.5,u=3,u=3.5,u=4,u=4.5,u=5,u=5.5,u=6,u=6.5,u=7,u=7.5,u=8,u=8.5,u=9,u=9.5,u=10,u=10.5,u=11,u=11.5,u=12,status,notes
-in.u,input,all,unit u,u = size attribute (px),2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,input,"size=""2|2.25|2.5|3|3.5|4|4.5""; theme default 4"
+in.u,input,all,unit u,u = size attribute (px),2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,input,"size=""2|2.25|2.5|3|3.5|4|4.5""; theme default 4.5"
 in.B,input,all,border B,B (default 0),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,input,"whole px, 0..u/2; lives inside padding, never added to height"
 in.s,input,all,curvature scale s,s (default 1),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,input,"theme radius-scale, 0..3"
 in.k,input,all,corner shape k,corner-shape: superellipse(k) (default 1),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,input,"theme corner-shape; 1 round, 2 squircle, 0 bevel, -1 scoop"

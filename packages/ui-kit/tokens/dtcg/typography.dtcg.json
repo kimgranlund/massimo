@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "ui-kit typography: faces -> voices -> roles. Role size = (10px + u) × ratio^step or n·u; line heights round up to rhythm × u. $value at u=4, ratio 1.333, rhythm 1u.",
+  "$description": "ui-kit typography: faces -> voices -> roles. Role size = (10px + u) × ratio^step or n·u; line heights round up to rhythm × u. $value at u=4.5, ratio 1.333, rhythm 1u.",
   "input": {
     "type-ratio": {
       "$type": "number",
@@ -107,20 +107,20 @@
       "$value": {
         "fontFamily": "{font.voice.display}",
         "fontSize": {
-          "value": 78.543,
+          "value": 81.348,
           "unit": "px"
         },
         "fontWeight": 700,
         "letterSpacing": {
-          "value": -3.534,
+          "value": -3.661,
           "unit": "px"
         },
-        "lineHeight": 1.069
+        "lineHeight": 1.051
       },
       "$description": "Display",
       "$extensions": {
         "com.massimo.tracking": "-0.045em",
-        "com.massimo.lineHeightPx": 84,
+        "com.massimo.lineHeightPx": 85.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -129,20 +129,20 @@
       "$value": {
         "fontFamily": "{font.voice.heading}",
         "fontSize": {
-          "value": 44.203,
+          "value": 45.781,
           "unit": "px"
         },
         "fontWeight": 700,
         "letterSpacing": {
-          "value": -1.105,
+          "value": -1.145,
           "unit": "px"
         },
-        "lineHeight": 1.176
+        "lineHeight": 1.18
       },
       "$description": "Heading 1",
       "$extensions": {
         "com.massimo.tracking": "-0.025em",
-        "com.massimo.lineHeightPx": 52,
+        "com.massimo.lineHeightPx": 54,
         "com.massimo.textTransform": "none"
       }
     },
@@ -151,20 +151,20 @@
       "$value": {
         "fontFamily": "{font.voice.heading}",
         "fontSize": {
-          "value": 33.16,
+          "value": 34.345,
           "unit": "px"
         },
         "fontWeight": 700,
         "letterSpacing": {
-          "value": -0.663,
+          "value": -0.687,
           "unit": "px"
         },
-        "lineHeight": 1.206
+        "lineHeight": 1.179
       },
       "$description": "Heading 2",
       "$extensions": {
         "com.massimo.tracking": "-0.02em",
-        "com.massimo.lineHeightPx": 40,
+        "com.massimo.lineHeightPx": 40.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -173,20 +173,20 @@
       "$value": {
         "fontFamily": "{font.voice.heading}",
         "fontSize": {
-          "value": 24.876,
+          "value": 25.765,
           "unit": "px"
         },
         "fontWeight": 700,
         "letterSpacing": {
-          "value": -0.249,
+          "value": -0.258,
           "unit": "px"
         },
-        "lineHeight": 1.286
+        "lineHeight": 1.223
       },
       "$description": "Heading 3",
       "$extensions": {
         "com.massimo.tracking": "-0.01em",
-        "com.massimo.lineHeightPx": 32,
+        "com.massimo.lineHeightPx": 31.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -195,20 +195,20 @@
       "$value": {
         "fontFamily": "{font.voice.ui}",
         "fontSize": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "fontWeight": 700,
         "letterSpacing": {
-          "value": 1.4,
+          "value": 1.45,
           "unit": "px"
         },
-        "lineHeight": 1.429
+        "lineHeight": 1.241
       },
       "$description": "Kicker · Section · uppercase",
       "$extensions": {
         "com.massimo.tracking": "0.1em",
-        "com.massimo.lineHeightPx": 20,
+        "com.massimo.lineHeightPx": 18,
         "com.massimo.textTransform": "uppercase"
       }
     },
@@ -217,20 +217,20 @@
       "$value": {
         "fontFamily": "{font.voice.ui}",
         "fontSize": {
-          "value": 10.503,
+          "value": 10.878,
           "unit": "px"
         },
         "fontWeight": 400,
         "letterSpacing": {
-          "value": 0.84,
+          "value": 0.87,
           "unit": "px"
         },
-        "lineHeight": 1.523
+        "lineHeight": 1.241
       },
       "$description": "Kicker · Group · uppercase",
       "$extensions": {
         "com.massimo.tracking": "0.08em",
-        "com.massimo.lineHeightPx": 16,
+        "com.massimo.lineHeightPx": 13.5,
         "com.massimo.textTransform": "uppercase"
       }
     },
@@ -239,7 +239,7 @@
       "$value": {
         "fontFamily": "{font.voice.body}",
         "fontSize": {
-          "value": 18.662,
+          "value": 19.329,
           "unit": "px"
         },
         "fontWeight": 400,
@@ -247,12 +247,12 @@
           "value": 0,
           "unit": "px"
         },
-        "lineHeight": 1.5
+        "lineHeight": 1.63
       },
       "$description": "Body · Large",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 28,
+        "com.massimo.lineHeightPx": 31.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -261,7 +261,7 @@
       "$value": {
         "fontFamily": "{font.voice.body}",
         "fontSize": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "fontWeight": 400,
@@ -269,12 +269,12 @@
           "value": 0,
           "unit": "px"
         },
-        "lineHeight": 1.714
+        "lineHeight": 1.552
       },
       "$description": "Body",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 24,
+        "com.massimo.lineHeightPx": 22.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -283,7 +283,7 @@
       "$value": {
         "fontFamily": "{font.voice.body}",
         "fontSize": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "fontWeight": 400,
@@ -296,7 +296,7 @@
       "$description": "Caption",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 20,
+        "com.massimo.lineHeightPx": 22.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -305,7 +305,7 @@
       "$value": {
         "fontFamily": "{font.voice.code}",
         "fontSize": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "fontWeight": 400,
@@ -318,7 +318,7 @@
       "$description": "Code",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 20,
+        "com.massimo.lineHeightPx": 22.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -327,7 +327,7 @@
       "$value": {
         "fontFamily": "{font.voice.ui}",
         "fontSize": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "fontWeight": 450,
@@ -340,7 +340,7 @@
       "$description": "Control",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 16.8,
+        "com.massimo.lineHeightPx": 17.4,
         "com.massimo.textTransform": "none"
       }
     },
@@ -349,7 +349,7 @@
       "$value": {
         "fontFamily": "{font.voice.ui}",
         "fontSize": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "fontWeight": 450,
@@ -357,12 +357,12 @@
           "value": 0,
           "unit": "px"
         },
-        "lineHeight": 1.429
+        "lineHeight": 1.552
       },
       "$description": "Label",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 20,
+        "com.massimo.lineHeightPx": 22.5,
         "com.massimo.textTransform": "none"
       }
     },
@@ -371,7 +371,7 @@
       "$value": {
         "fontFamily": "{font.voice.ui}",
         "fontSize": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "fontWeight": 450,
@@ -384,7 +384,7 @@
       "$description": "Control · Small",
       "$extensions": {
         "com.massimo.tracking": "0em",
-        "com.massimo.lineHeightPx": 14.4,
+        "com.massimo.lineHeightPx": 16.2,
         "com.massimo.textTransform": "none"
       }
     }
@@ -394,7 +394,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 78.543,
+          "value": 81.348,
           "unit": "px"
         },
         "$description": "display · font size",
@@ -430,7 +430,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 84,
+          "value": 85.5,
           "unit": "px"
         },
         "$description": "display · line height · voice display, weight 700, tracking -0.045em",
@@ -468,7 +468,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 44.203,
+          "value": 45.781,
           "unit": "px"
         },
         "$description": "heading-1 · font size",
@@ -504,7 +504,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 52,
+          "value": 54,
           "unit": "px"
         },
         "$description": "heading-1 · line height · voice heading, weight 700, tracking -0.025em",
@@ -542,7 +542,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 33.16,
+          "value": 34.345,
           "unit": "px"
         },
         "$description": "heading-2 · font size",
@@ -578,7 +578,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 40,
+          "value": 40.5,
           "unit": "px"
         },
         "$description": "heading-2 · line height · voice heading, weight 700, tracking -0.02em",
@@ -616,7 +616,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 24.876,
+          "value": 25.765,
           "unit": "px"
         },
         "$description": "heading-3 · font size",
@@ -652,7 +652,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 32,
+          "value": 31.5,
           "unit": "px"
         },
         "$description": "heading-3 · line height · voice heading, weight 700, tracking -0.01em",
@@ -690,7 +690,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "$description": "section-kicker · font size",
@@ -726,7 +726,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 18,
           "unit": "px"
         },
         "$description": "section-kicker · line height · voice ui, weight 700, tracking 0.1em, uppercase",
@@ -764,7 +764,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 10.503,
+          "value": 10.878,
           "unit": "px"
         },
         "$description": "group-kicker · font size",
@@ -800,7 +800,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 16,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "group-kicker · line height · voice ui, weight 400, tracking 0.08em, uppercase",
@@ -838,7 +838,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 18.662,
+          "value": 19.329,
           "unit": "px"
         },
         "$description": "body-large · font size",
@@ -874,7 +874,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 28,
+          "value": 31.5,
           "unit": "px"
         },
         "$description": "body-large · line height · voice body, weight 400, tracking 0em",
@@ -912,7 +912,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "$description": "body · font size",
@@ -948,7 +948,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 24,
+          "value": 22.5,
           "unit": "px"
         },
         "$description": "body · line height · voice body, weight 400, tracking 0em",
@@ -986,7 +986,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "caption · font size",
@@ -1022,7 +1022,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 22.5,
           "unit": "px"
         },
         "$description": "caption · line height · voice body, weight 400, tracking 0em",
@@ -1060,7 +1060,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "code · font size",
@@ -1096,7 +1096,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 22.5,
           "unit": "px"
         },
         "$description": "code · line height · voice code, weight 400, tracking 0em",
@@ -1134,7 +1134,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "$description": "control · font size",
@@ -1170,7 +1170,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 16.8,
+          "value": 17.4,
           "unit": "px"
         },
         "$description": "control · line height · voice ui, weight 450, tracking 0em",
@@ -1208,7 +1208,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 14,
+          "value": 14.5,
           "unit": "px"
         },
         "$description": "label · font size",
@@ -1244,7 +1244,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 20,
+          "value": 22.5,
           "unit": "px"
         },
         "$description": "label · line height · voice ui, weight 450, tracking 0em",
@@ -1282,7 +1282,7 @@
       "size": {
         "$type": "dimension",
         "$value": {
-          "value": 12,
+          "value": 13.5,
           "unit": "px"
         },
         "$description": "control-small · font size",
@@ -1318,7 +1318,7 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 14.4,
+          "value": 16.2,
           "unit": "px"
         },
         "$description": "control-small · line height · voice ui, weight 450, tracking 0em",
