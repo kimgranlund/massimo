@@ -1,14 +1,17 @@
 // React <Button>: a native <button> with the same leading / prefix / contents / suffix / trailing anatomy,
-// headless state and default styles as <ui-button>.
+// headless state and slot recipe (button.recipe.ts) as <ui-button>.
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { buttonAttrs, isInactive, toReactProps } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
+import { Parts } from '../parts.react.tsx';
+import { cx } from '../../styled-system/css/cx.js';
+import { button } from '../../styled-system/recipes/button.js';
 
 // `prefix` is an RDFa attribute in React's types; here it is the text adornment part.
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix'> {
   loading?: boolean;
-  /** primary: the primary solid with contrast text; omit for the neutral button. */
-  variant?: 'primary';
+  /** primary: the primary solid with contrast text; neutral (default) the muted fill. */
+  variant?: 'neutral' | 'primary';
   leading?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -18,13 +21,14 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   size?: number;
 }
 
-export function Button({ loading, disabled, onClick, type = 'button', variant, leading, prefix, suffix, trailing, iconSize, size, children, ...rest }: ButtonProps) {
+export function Button({ loading, disabled, onClick, type = 'button', variant = 'neutral', leading, prefix, suffix, trailing, iconSize, size, children, className, ...rest }: ButtonProps) {
   const state = { disabled, loading, native: true };
+  const c = button({ variant });
   return (
     <button
       type={type}
+      className={cx(c.root, className)}
       data-ui="button"
-      data-variant={variant}
       data-size={size}
       data-icon-size={iconSize}
       {...toReactProps(buttonAttrs(state))}
@@ -35,11 +39,7 @@ export function Button({ loading, disabled, onClick, type = 'button', variant, l
         onClick?.(e);
       }}
     >
-      {leading != null && <span data-part="leading">{leading}</span>}
-      {prefix != null && <span data-part="prefix">{prefix}</span>}
-      {children != null && children !== '' && <span data-part="contents">{children}</span>}
-      {suffix != null && <span data-part="suffix">{suffix}</span>}
-      {trailing != null && <span data-part="trailing">{trailing}</span>}
+      <Parts classes={c} {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
     </button>
   );
 }

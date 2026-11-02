@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/button/button.element.ts",
-      "sha256": "3e6c838a964c7f4cbe7b2a579c0cce98961cb8ef6fd97c009c90c051c00eb811"
+      "sha256": "a7a9a936cb35f74a8100086f466ebb4c0e847b38c993aebb658d08932752457e"
     },
     {
       "path": "components/slots.ts",
@@ -18,15 +18,23 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "60074bab447c1dbdbdd925f207e10028919b8a5e9fb8fcc04cc229ff062738b5"
+      "sha256": "7a8507d4889473bbe8da892015a4215347aef3642f7f954a7248a4f9274b7890"
     },
     {
       "path": "components/button/button.react.tsx",
-      "sha256": "5dfd7965a071850e18f5de621a15292f0776eabdf88cf245494834e1ef809840"
+      "sha256": "bec52e2a8d9236b9af1a38dff22d6ada797c95131145b6275060b4f79af1eee2"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "0eaecff11141943e14e60a716d8d0dacc5015d019f6ff4f5d229cb14951422ad"
+      "path": "components/button/button.recipe.ts",
+      "sha256": "8063d6a92e9a8c0a35b4fed62be61a6d68c9370a1faaa0c8ede280ff7931fa9f"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "19ca61475b75a8365f0647f31e029754836d2f8c0941b069a05d77dd7ebbbc85"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -35,13 +43,18 @@
         {
           "command": "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
           "covers": "role, focus, Enter/Space activation, disabled and fieldset blocking, slot sorting"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts"
+          "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -53,13 +66,18 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

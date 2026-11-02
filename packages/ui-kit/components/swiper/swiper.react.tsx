@@ -4,6 +4,10 @@
 // <button data-ui="button">s and the dots native <button>s. An IntersectionObserver tracks the slide
 // that is at least 60% visible.
 import { Children, useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react';
+import { button } from '../../styled-system/recipes/button.js';
+
+/** Paddles are buttons: the button recipe's classes. */
+const paddleClasses = button();
 
 export interface SwiperProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Accessible name of the carousel region. */
@@ -46,10 +50,10 @@ export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange,
   };
 
   const paddle = (dir: 'prev' | 'next') => (
-    <button type="button" data-ui="button" data-part="paddle" data-dir={dir} data-icon-size="lg" aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
+    <button type="button" className={paddleClasses.root} data-ui="button" data-part="paddle" data-dir={dir} data-icon-size="lg" aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
       aria-disabled={(dir === 'prev' ? index <= 0 : index >= n - 1) || undefined}
       onClick={() => { if (dir === 'prev' ? index > 0 : index < n - 1) go(index + (dir === 'prev' ? -1 : 1)); }}>
-      <span data-part="leading"><i name={`caret-${dir === 'prev' ? 'left' : 'right'}`} /></span>
+      <span data-part="leading" className={paddleClasses.leading}><i name={`caret-${dir === 'prev' ? 'left' : 'right'}`} /></span>
     </button>
   );
 

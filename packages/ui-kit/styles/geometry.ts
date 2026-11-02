@@ -17,10 +17,11 @@ export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')}
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
-// Slotted hosts: buttons, options, and the input control and select trigger, which are laid out as
+// Slotted hosts (not yet recipes): options, and the input control and select trigger, which are laid out as
 // buttons (1u padding on the host; contents and slots carry the rest). :where() keeps the tag specificity.
 const FIELD_HOSTS = ':where(:is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger])';
-export const SLOTTED = `:is(ui-button, ui-option, [data-ui=button], ${FIELD_HOSTS})`;
+// [data-ui=option] (the React option) also keeps the :is() at attribute specificity, above i[name].
+export const SLOTTED = `:is(ui-option, [data-ui=option], ${FIELD_HOSTS})`;
 const SLOT = ':is([data-part=leading], [data-part=trailing])';
 const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
 const ADORN = ':is([data-part=prefix], [data-part=suffix])';
@@ -188,7 +189,6 @@ export const geometry = defineGlobalStyles({
 
   // Swiper: paddles are 8u icon buttons inset 2u; dots are 2u (active 4u) in 4u hit areas.
   // Paddle carets follow the paddle's icon size (lg), not the sm indicator rule for carets.
-  'ui-swiper [data-part=paddle] > [data-part=leading] > i': { width: 'var(--icon)', height: 'var(--icon)' },
   // Paddles are fully round whatever the curvature setting (like the dots): radius = half the height.
   'ui-swiper [data-part=paddle]': { position: 'absolute', insetBlockStart: 'calc(50% - 4 * var(--u))', '--radius': 'calc(var(--h) / 2)' },
   'ui-swiper [data-part=paddle][data-dir=prev]': { insetInlineStart: 'calc(2 * var(--u))' },

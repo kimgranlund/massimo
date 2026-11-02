@@ -8,14 +8,10 @@ import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 import { RATIOS } from '../components/image/ratios.ts';
 import { voiceFamily } from './typography.ts';
 
-const UI_VOICE = ':is(ui-button, [data-ui=button], ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option, ui-checkbox, ui-radio, ui-switch, ui-range, ui-palette)';
+const UI_VOICE = ':is(ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option, ui-checkbox, ui-radio, ui-switch, ui-range, ui-palette)';
 
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
-const BUTTON = ':is(ui-button, [data-ui=button])';
-// Button variant: an attribute on ui-button, data-variant on plain HTML and the React Button.
-const PRIMARY = ':is([variant=primary], [data-variant=primary])';
-const ENABLED = ':not([aria-disabled=true], [aria-busy=true])';
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-radio[aria-checked=true], ui-switch[aria-checked=true])';
 const LIST = ':is(ui-listbox, ui-segmented, ui-palette)';
@@ -34,30 +30,6 @@ export const defaults = defineGlobalStyles({
   // The box is reserved before the SVG arrives, so nothing shifts.
   'i[name]': { display: 'inline-flex', width: '1em', height: '1em', flexShrink: 0, fontStyle: 'normal', lineHeight: 1 },
   'i[name] > svg': { width: '100%', height: '100%' },
-
-  // Button
-  [BUTTON]: {
-    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-    height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
-    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--line)',
-    cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
-  },
-  // Hover and press step the fill one ramp step each (neutral 3 → 4 → 5).
-  [`${BUTTON}${ENABLED}:hover`]: { bg: 'bg.mutedHover' },
-  [`${BUTTON}${ENABLED}:active`]: { bg: 'bg.mutedActive' },
-  // Busy buttons also carry aria-disabled (activation is blocked) but stay readable: no fade.
-  [`${BUTTON}[aria-disabled=true]:not([aria-busy=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
-  // Primary: the primary solid with the contrast text color; hover and press use the solid hover step.
-  [`${BUTTON}${PRIMARY}`]: { bg: 'primary.solid', color: 'fg.onSolid', borderColor: 'primary.solid' },
-  [`${BUTTON}${PRIMARY}${ENABLED}:is(:hover, :active)`]: { bg: 'primary.solidHover', borderColor: 'primary.solidHover' },
-  // Busy: still readable (unlike disabled), with an indeterminate sweep along the bottom edge.
-  [`${BUTTON}[aria-busy=true]`]: { cursor: 'progress', position: 'relative', overflow: 'hidden' },
-  [`${BUTTON}[aria-busy=true]::after`]: {
-    content: '""', position: 'absolute', insetInlineStart: 0, bottom: 0, width: '30%', height: 'calc(0.5 * var(--u))',
-    bg: 'primary.solid', animation: 'ui-indeterminate 1.2s ease-in-out infinite',
-  },
-  // On a primary button the sweep uses the contrast color, so it shows against the solid fill.
-  [`${BUTTON}${PRIMARY}[aria-busy=true]::after`]: { bg: 'fg.onSolid' },
 
   // Field: label, control, description, error
   [FIELD]: { display: 'flex', flexDirection: 'column', gap: '1.5' },
@@ -106,7 +78,7 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.subtle' },
   'ui-select > [data-part=trigger] > [data-part=trailing]': { color: 'fg.muted' },
   // Prefix / suffix adornments: the label's color at 65%, so they read as secondary on any fill.
-  ':is(ui-button, ui-option, ui-checkbox, ui-radio, ui-switch, [data-ui=button], ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
+  ':is(ui-option, ui-checkbox, ui-radio, ui-switch, ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
     color: 'color-mix(in oklch, currentColor 65%, transparent)',
   },
   // Icons in field adornment slots are secondary too.
@@ -163,7 +135,7 @@ export const defaults = defineGlobalStyles({
   'ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill]': { width: '30%', animation: 'ui-indeterminate 1.2s ease-in-out infinite' },
   // Reduced motion: no sweep; a full, faint fill still says "working".
   '@media (prefers-reduced-motion: reduce)': {
-    [`ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill], ${BUTTON}[aria-busy=true]::after`]: { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 },
+    'ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill]': { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 },
   },
 
   // Swatch, palette
@@ -191,7 +163,6 @@ export const defaults = defineGlobalStyles({
     scrollbarWidth: 'none', borderRadius: 'inherit',
   },
   'ui-swiper > [data-part=viewport] > *': { flex: '0 0 100%', scrollSnapAlign: 'start', scrollSnapStop: 'always' },
-  'ui-swiper [data-part=paddle]': { bg: 'bg', zIndex: 1 },
   'ui-swiper [data-part=dot]': { cursor: 'pointer' },
   'ui-swiper [data-part=dot]::before': { bg: 'fg', opacity: 0.35 },
   'ui-swiper [data-part=dot]:not([aria-current=true]):hover::before': { opacity: 0.7 },
@@ -251,7 +222,7 @@ export const defaults = defineGlobalStyles({
   // Forced colors (Windows high contrast): fills are dropped and borders default to 0, so
   // every control gets a system-colored edge that costs no space, and "on" states use Highlight.
   '@media (forced-colors: active)': {
-    [`${BUTTON}, ${CONTROL}, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
+    [`${CONTROL}, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
     [`${ON} [data-part=box], ui-option[aria-selected=true], :is(ui-range, ui-progress) > [data-part=track] > [data-part=fill], ui-swiper [data-part=dot][aria-current=true]::before`]: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
     'ui-switch [data-part=box]::after, ui-range > [data-part=thumb]': { forcedColorAdjust: 'none', bg: 'CanvasText' },
     'ui-radio[aria-checked=true] [data-part=box]::after': { forcedColorAdjust: 'none', bg: 'HighlightText' },

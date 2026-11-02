@@ -13,6 +13,12 @@
       "markup": "<ui-button>Save</ui-button>"
     },
     {
+      "id": "primary",
+      "label": "Primary variant",
+      "subject": "component:button",
+      "markup": "<ui-button variant=\"primary\">Save</ui-button><ui-button variant=\"primary\" loading>Saving</ui-button>"
+    },
+    {
       "id": "pattern",
       "label": "Full construction pattern",
       "subject": "component:button",

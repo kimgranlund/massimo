@@ -68,7 +68,7 @@ test('the manifest check bites: edited mirrored fields are restored, hand-writte
   const edits: [string, (m: any) => void][] = [
     ['property default', (m) => { node(m).properties.find((p: any) => p.key === 'type').default = 'submit'; }],
     ['property reflects', (m) => { node(m).properties.find((p: any) => p.key === 'loading').reflects = false; }],
-    ['missing property', (m) => { node(m).properties.pop(); }],
+    ['missing property', (m) => { node(m).properties = node(m).properties.filter((p: any) => p.key !== 'loading'); }],
     ['class', (m) => { node(m).class = 'UIButtonX'; }],
     ['formAssociated', (m) => { node(m).semantics.formAssociated = false; }],
     ['ownsPart edge', (m) => { m.edges = m.edges.filter((e: any) => e.to !== 'part:slot-suffix'); }],

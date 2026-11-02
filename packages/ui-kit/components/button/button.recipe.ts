@@ -1,0 +1,68 @@
+// Slot recipe for <ui-button> and the React Button: the host is the button; the parts are the
+// construction pattern (resolveButtonContents / resolveTextRun). Lengths are geometry variables.
+import { defineSlotRecipe } from '@pandacss/dev';
+import { FORCED, FORCED_EDGE, PAINT, UI_FONT, adornment, iconSlot, t, textRun } from '../recipe-parts.ts';
+
+// Text parts form one run: 0.5u + 0.5u between them, 1u beside a slot, 2u at a bare host edge.
+const run = textRun('var(--u)', 'calc(2 * var(--u))', {
+  display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)',
+});
+const SWIPER = ':is(ui-swiper, [data-ui=swiper])';
+const REDUCED = '@media (prefers-reduced-motion: reduce)';
+
+export const button = defineSlotRecipe({
+  className: 'ui-button',
+  description: 'Action button (ui-button, React Button): neutral or primary, busy and disabled states.',
+  slots: ['root', 'leading', 'prefix', 'contents', 'suffix', 'trailing'],
+  base: {
+    root: {
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
+      borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontFamily: UI_FONT, fontSize: 'var(--font)', lineHeight: 'var(--line)',
+      cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
+      transition: t('feedback', ...PAINT),
+      // Hover and press step the fill one ramp step each (neutral 3 → 4 → 5). Busy buttons carry
+      // aria-disabled too, so they are not enabled.
+      _enabled: { _hover: { bg: 'bg.mutedHover' }, '&:active': { bg: 'bg.mutedActive' } },
+      // Busy stays readable (no fade), with an indeterminate sweep along the bottom edge.
+      _disabled: { '&:not([aria-busy=true])': { opacity: 0.5, cursor: 'not-allowed' } },
+      _busy: {
+        cursor: 'progress', position: 'relative', overflow: 'hidden',
+        _after: {
+          content: '""', position: 'absolute', insetInlineStart: 0, bottom: 0, width: '30%', height: 'calc(0.5 * var(--u))',
+          bg: 'primary.solid', animation: 'ui-indeterminate 1.2s ease-in-out infinite',
+        },
+      },
+      // Reduced motion: no sweep; a full, faint bar still says "working".
+      [REDUCED]: { _busy: { _after: { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 } } },
+      [FORCED]: { ...FORCED_EDGE, _disabled: { color: 'GrayText' } },
+      // Swiper paddles (a ui-button / data-ui=button with data-part=paddle) rest on the page fill,
+      // keep their lg caret, hide in a single-slide or no-paddles swiper and, with hover-controls,
+      // fade in. Moves to the swiper recipe.
+      '&[data-part=paddle]': { bg: 'bg', zIndex: 1, '& > [data-part=leading] > i': { width: 'var(--icon)', height: 'var(--icon)' } },
+      [`${SWIPER}:is([data-single], [no-paddles], [data-no-paddles]) &[data-part=paddle][data-dir]`]: { display: 'none' },
+      [`${SWIPER}:is([hover-controls], [data-hover-controls]) &[data-part=paddle][data-dir]`]: { opacity: 0, transition: t('reveal', 'opacity') },
+      [`${SWIPER}:is([hover-controls], [data-hover-controls]):is(:hover, :focus-within) &[data-part=paddle][data-dir]`]: { opacity: 1 },
+    },
+    leading: iconSlot(),
+    trailing: iconSlot(),
+    prefix: { ...run, ...adornment() },
+    contents: { ...run, minWidth: 'var(--slot)' },
+    suffix: { ...run, ...adornment() },
+  },
+  variants: {
+    variant: {
+      neutral: {},
+      // The primary solid with the contrast text color; hover and press use the solid hover step.
+      // The busy sweep uses the contrast color, so it shows against the solid fill.
+      primary: {
+        root: {
+          bg: 'primary.solid', color: 'fg.onSolid', borderColor: 'primary.solid',
+          _enabled: { '&:is(:hover, :active)': { bg: 'primary.solidHover', borderColor: 'primary.solidHover' } },
+          _busy: { _after: { bg: 'fg.onSolid' } },
+        },
+      },
+    },
+  },
+  defaultVariants: { variant: 'neutral' },
+});

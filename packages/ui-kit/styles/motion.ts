@@ -10,12 +10,11 @@ const t = (intent: IntentName, ...props: string[]) =>
   props.map((p) => `${p} {durations.${intent}} {easings.${intent}}`).join(', ');
 
 const PAINT = ['background-color', 'color', 'border-color', 'box-shadow', 'opacity', 'outline-color'];
-const BUTTON = ':is(ui-button, [data-ui=button])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
 
 export const motion = defineGlobalStyles({
   // Hover, press, selection and validity: color and shadow (feedback).
-  [`${BUTTON}, ${CONTROL}, ui-option, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-palette > ui-swatch`]: {
+  [`${CONTROL}, ui-option, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-palette > ui-swatch`]: {
     transition: t('feedback', ...PAINT),
   },
 
