@@ -69,7 +69,9 @@ export const defaults = defineGlobalStyles({
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
   'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', cursor: 'pointer', userSelect: 'none' },
   'ui-chip:hover': { bg: 'bg.subtle' },
-  'ui-chip[aria-pressed=true]': { bg: 'accent.subtle', color: 'accent.fg', borderColor: 'accent.solid' },
+  // Selected chips use the checkbox/switch "on" colors: the accent solid with on-solid text.
+  'ui-chip[aria-pressed=true]': { bg: 'accent.solid', color: 'fg.onSolid', borderColor: 'accent.solid' },
+  'ui-chip[aria-pressed=true]:hover': { bg: 'accent.solidHover' },
   'ui-chip[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
   'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
   'ui-chip [data-remove]:hover': { opacity: 1 },
