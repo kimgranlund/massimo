@@ -58,10 +58,12 @@ const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: 
 const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
 const ramp = css({ width: '100%' });
 const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
-const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
+// Below the medium breakpoint the specimen comes first and its specs follow.
+const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5', order: 1, [CQ_MD]: { order: 0 } });
 const metrics = css({ textStyle: 'code', color: 'fg.muted' });
-// Faint baseline grid behind each specimen: one line per rhythm unit.
-const rhythmSample = css({ backgroundImage: 'linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) 18%, transparent) 0)', whiteSpace: 'pre-wrap', maxWidth: '60ch' });
+// Baseline grid behind each specimen: a faint line per rhythm unit, every 4th line stronger.
+const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) ${pct}%, transparent) 0)`;
+const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}`, whiteSpace: 'pre-wrap', maxWidth: '60ch' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
 const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
@@ -657,7 +659,7 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
                 <span className={metrics}>{'u' in r ? `${r.u}u` : `step ${r.step}`} · {fmt(t.size)}px / {t.lineHeightRatio ?? `${fmt(t.lineHeight)}px`}</span>
                 <span className={metrics}>{t.voice} → {t.face} · {t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
               </div>
-              <div data-type={role} className={role === 'code' ? codeSample : rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${grid}px` } : undefined}>{SAMPLES[role]}</div>
+              <div data-type={role} className={role === 'code' ? codeSample : rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${4 * grid}px, 100% ${grid}px` } : undefined}>{SAMPLES[role]}</div>
             </div>
           );
         })}
