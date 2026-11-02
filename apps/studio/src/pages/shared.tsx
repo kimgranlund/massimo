@@ -141,3 +141,23 @@ export function SizeLadder({ family, params, children }: { family: LadderFamily;
     </div>
   );
 }
+
+// ── Tables ──
+// One table style for every page: real <table>s, one value per column, group headers (colSpan) over
+// related columns, the live theme row highlighted, numbers tabular, the full container width, a
+// horizontal scroller when narrow.
+export const tableScroller = css({ overflowX: 'auto', maxWidth: 'full' });
+export const dataTable = css({
+  width: 'full', borderCollapse: 'collapse', textStyle: 'code', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
+  '& th': { textStyle: 'group-kicker', color: 'fg.muted', textAlign: 'start', paddingBlock: '2', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'bottom' },
+  '& th small': { display: 'block', textStyle: 'caption', textTransform: 'none', letterSpacing: 'normal' },
+  '& td': { paddingBlock: '1.5', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'middle' },
+});
+/** A group header over related columns (colSpan); the rule under it marks the group. */
+export const groupHead = css({ paddingBlockEnd: '1' });
+/** The row for the live theme value. */
+export const currentRow = css({ bg: 'primary.subtle', color: 'primary.fg' });
+/** A row's name cell (label voice, not code). */
+export const nameCell = css({ textStyle: 'label', fontWeight: 'semibold' });
+/** A descriptive cell: caption text that wraps. */
+export const noteCell = css({ textStyle: 'caption', color: 'fg.muted', whiteSpace: 'normal', minWidth: '[14rem]' });

@@ -16,6 +16,10 @@ import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import { INTENTS, SPRING_NAMES, intentSpring, liveMotion, spanFactor, springAt, type IntentName, type SpringName } from '@massimo/ui-kit/tokens';
 import { useEvent } from '../studio/wc.tsx';
 import type { PageProps } from './types.ts';
+import { dataTable, nameCell, noteCell, tableScroller } from './shared.tsx';
+
+// The demo column holds a replayable thumb track.
+const thumbCell = css({ width: '[14rem]', minWidth: '[10rem]' });
 
 const shell = pageLayout({ width: '[80rem]' });
 const canvasQuery = css({ containerType: 'inline-size', containerName: 'motion' });
@@ -43,8 +47,6 @@ const sampled = css({ stroke: 'primary.solid', fill: 'none', strokeWidth: '[1.5]
 const dot = css({ fill: 'primary.solid' });
 const tick = css({ stroke: 'fg.muted', strokeWidth: '[1]' });
 const tickLabel = css({ fill: 'fg.muted', fontSize: '[9px]', fontFamily: 'mono' });
-const intentRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', paddingBlock: '3', borderTopWidth: 'thin', borderColor: 'border', [CQ_MD]: { gridTemplateColumns: '9rem 9rem 1fr 14rem', gap: '5' } });
-const intentName = css({ textStyle: 'label' });
 const demos = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' }, [CQ_LG]: { gridTemplateColumns: 'repeat(3, 1fr)' } });
 const demoBody = css({ display: 'flex', flexDirection: 'column', gap: '3', alignItems: 'start', minHeight: '[5rem]', '& > ui-progress, & > ui-select, & > ui-swiper': { width: 'full' } });
 const row = css({ display: 'flex', gap: '3', alignItems: 'center', flexWrap: 'wrap' });
@@ -251,18 +253,24 @@ export function MotionPage({ params }: PageProps) {
           note="What a transition is for. Each intent runs the spring the Motion tab picks for it; the thumb runs on the intent's own tokens."
           action={<ReplayButton onReplay={() => replay(intentsRef.current)} label="Replay all" />}
         >
-          <div ref={intentsRef}>
-            {(Object.keys(INTENTS) as IntentName[]).map((intent) => {
-              const spring = intentSpring(params, intent);
-              return (
-                <div key={intent} className={intentRow}>
-                  <span className={intentName}>{intent}</span>
-                  <span className={caption}>{cap(spring)} · {ms(liveMotion(params, spring).ms)}</span>
-                  <span className={caption}>{INTENT_USES[intent]}</span>
-                  <Thumb token={intent} />
-                </div>
-              );
-            })}
+          <div ref={intentsRef} className={tableScroller}>
+            <table className={dataTable} aria-label="Motion intents">
+              <thead><tr><th>Intent</th><th>Spring</th><th>Span<small>ms</small></th><th>Used for</th><th>Demo</th></tr></thead>
+              <tbody>
+                {(Object.keys(INTENTS) as IntentName[]).map((intent) => {
+                  const spring = intentSpring(params, intent);
+                  return (
+                    <tr key={intent}>
+                      <td className={nameCell}>{intent}</td>
+                      <td>{cap(spring)}</td>
+                      <td>{Math.round(liveMotion(params, spring).ms)}</td>
+                      <td className={noteCell}>{INTENT_USES[intent]}</td>
+                      <td className={thumbCell}><Thumb token={intent} /></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </Section>
 

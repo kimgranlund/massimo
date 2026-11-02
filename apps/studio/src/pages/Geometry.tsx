@@ -15,20 +15,10 @@ import {
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
-import { CQ_MD, Divider, Page, Section, fmt, metrics, rowLabel, specimens } from './shared.tsx';
+import { dataTable, currentRow, groupHead, tableScroller, CQ_MD, Divider, Page, Section, fmt, metrics, rowLabel, specimens } from './shared.tsx';
 
 const LADDER = [2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12];
 
-const scroller = css({ overflowX: 'auto', maxWidth: 'full' });
-const table = css({
-  borderCollapse: 'collapse', textStyle: 'code', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
-  '& th': { textStyle: 'group-kicker', color: 'fg.muted', textAlign: 'start', paddingBlock: '2', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'bottom' },
-  '& th small': { display: 'block', textStyle: 'caption', textTransform: 'none', letterSpacing: 'normal' },
-  '& td': { paddingBlock: '1.5', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'middle' },
-});
-// A group header spans its columns; the rule under it marks the group.
-const groupHead = css({ paddingBlockEnd: '1' });
-const current = css({ bg: 'primary.subtle', color: 'primary.fg' });
 const metricList = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
 const specRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', paddingBlock: '2', borderBottomWidth: 'thin', borderColor: 'border', [CQ_MD]: { gridTemplateColumns: '11rem 14rem 1fr', gap: '6' } });
 
@@ -83,8 +73,8 @@ export function GeometryPage({ params }: PageProps) {
     <Page title="Geometry" lead={<>One unit u sizes every control: 8u tall, 6u slots, text 10px + u. Values come from the resolvers for the live theme: border {px(params.border)}, corner radius ×{params['radius-scale']}; the highlighted row is the theme unit ({px(u)}).</>}>
       <Divider />
       <Section id="ladder" title="Control ladder" note="Per size (data-size, u in px): control height 8u, slot 6u, padding 1u − border, text 10px + u at line height 1.2 (capped at the slot), icons font + k·u (sm −0.5, md +0.5, lg +1.5, capped at the slot), radius min(3u × scale, height / 2), and badge / tag / chip heights 12px + k·u.">
-        <div className={scroller}>
-          <table className={table}>
+        <div className={tableScroller}>
+          <table className={dataTable}>
             <thead>
               <tr>
                 <th rowSpan={2}>u</th><th rowSpan={2}>Specimen</th><th rowSpan={2}>Height<small>8u</small></th><th rowSpan={2}>Slot<small>6u</small></th><th rowSpan={2}>Padding<small>u − B</small></th>
@@ -105,7 +95,7 @@ export function GeometryPage({ params }: PageProps) {
                 // A theme unit that is not a kit size renders at the canvas unit (no data-size).
                 const sizeAttr = !isTheme && (SIZES as readonly number[]).includes(size) ? String(size) : undefined;
                 return (
-                  <tr key={size} className={isTheme ? current : undefined}>
+                  <tr key={size} className={isTheme ? currentRow : undefined}>
                     <td>{fmt(size)}{isTheme ? ' · theme' : ''}</td>
                     <td><span className={specimens} data-size={sizeAttr}><ui-button aria-label={`Add, size ${size}`}><i slot="leading" name="plus" /></ui-button></span></td>
                     <td>{fmt(r.height)}</td><td>{fmt(r.slot)}</td><td>{fmt(r.padding)}</td>
@@ -122,8 +112,8 @@ export function GeometryPage({ params }: PageProps) {
       </Section>
       <Divider />
       <Section id="construction" title="Construction pattern" note={`[leading] [prefix] [contents] [suffix] [trailing] at the theme unit (u = ${fmt(u)}px). Slots are 6u (${fmt(c.slot)}px); a text part's edge is 1u beside a slot, 2u at a bare edge, 0.5u beside another text part (so text parts sit 1u apart). Absent parts take no space. Values are start | end padding per text part.`}>
-        <div className={scroller}>
-          <table className={table}>
+        <div className={tableScroller}>
+          <table className={dataTable}>
             <thead><tr><th>Specimen</th><th>Leading</th><th>Prefix</th><th>Contents</th><th>Suffix</th><th>Trailing</th></tr></thead>
             <tbody>
               {PATTERNS.map(([name, parts]) => {

@@ -9,13 +9,10 @@ import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
 import { CONTAINERS, PAGE_MAX_WIDTH_REM, resolveContainer } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
-import { Divider, IMAGES, Page, Row, Section, caption, columns, fmt, kicker, subTitle } from './shared.tsx';
+import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, groupHead, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
 
 const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
 const levelList = css({ minWidth: '[10rem]' });
-const tokenTable = css({ display: 'grid', gridTemplateColumns: 'auto auto auto auto 1fr', columnGap: '6', rowGap: '2', alignItems: 'baseline', overflowX: 'auto', '& > [role=row]': { display: 'contents' } });
-const tokenHead = css({ '& > *': { textStyle: 'group-kicker', color: 'fg.muted' } });
-const tokenRow = css({ '& > :first-child': { textStyle: 'label', fontWeight: 'semibold' } });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const tileRow = css({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
@@ -24,7 +21,6 @@ const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 
 const LEVELS = Object.keys(CONTAINERS) as (keyof typeof CONTAINERS)[];
-const fmtU = (n: number) => `${Math.round(n * 100) / 100}u`;
 
 export function ContainersPage({ params }: PageProps) {
   const p = params as unknown as Record<string, number>;
@@ -33,21 +29,33 @@ export function ContainersPage({ params }: PageProps) {
     <Page title="Containers" lead="Wrappers, containers and areas: live padding, gap and radius per level, with examples. The Geometry tab sets padding and gap per level.">
       <Divider />
       <Section id="containers" title="Container tokens" note="Three families. Wrappers (composite, group, collection) hug their children: radius 3u + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Live padding and gap per level (pad-<level>, gap-<level>, in u).">
-        <div className={tokenTable} role="table" aria-label="Container tokens">
-          <div role="row" className={tokenHead}><span role="columnheader">Level</span><span role="columnheader">Padding</span><span role="columnheader">Gap</span><span role="columnheader">Radius</span><span role="columnheader">Used by</span></div>
-          {LEVELS.map((l) => {
-            const pad = p[`pad-${l}`] ?? CONTAINERS[l].padding, gap = p[`gap-${l}`] ?? pad;
-            const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap });
-            return (
-              <div role="row" key={l} className={tokenRow}>
-                <span role="cell">{l}<span className={caption}> · {CONTAINERS[l].family}</span></span>
-                <span role="cell" data-numeric>{fmtU(pad)} · {fmt(c.padding)}px</span>
-                <span role="cell" data-numeric>{fmtU(gap)} · {fmt(c.gap)}px</span>
-                <span role="cell" data-numeric>{fmt(c.radius)}px</span>
-                <span role="cell" className={caption}>{USED_BY[l]}</span>
-              </div>
-            );
-          })}
+        <div className={tableScroller}>
+          <table className={dataTable} aria-label="Container tokens">
+            <thead>
+              <tr>
+                <th rowSpan={2}>Level</th><th rowSpan={2}>Family</th>
+                <th colSpan={2} className={groupHead}>Padding</th><th colSpan={2} className={groupHead}>Gap</th>
+                <th rowSpan={2}>Radius<small>px</small></th><th rowSpan={2}>Used by</th>
+              </tr>
+              <tr><th>u</th><th>px</th><th>u</th><th>px</th></tr>
+            </thead>
+            <tbody>
+              {LEVELS.map((l) => {
+                const pad = p[`pad-${l}`] ?? CONTAINERS[l].padding, gap = p[`gap-${l}`] ?? pad;
+                const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap });
+                return (
+                  <tr key={l}>
+                    <td className={nameCell}>{l}</td>
+                    <td>{CONTAINERS[l].family}</td>
+                    <td>{fmt(pad)}</td><td>{fmt(c.padding)}</td>
+                    <td>{fmt(gap)}</td><td>{fmt(c.gap)}</td>
+                    <td>{fmt(c.radius)}</td>
+                    <td className={noteCell}>{USED_BY[l]}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </Section>
       <Divider />
