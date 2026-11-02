@@ -98,7 +98,7 @@ for (const c of cases) {
     'badge.font': [px(cs(badge).fontSize), rb.fontSize],
     'badge.minWidth': [px(cs(badge).minWidth), rb.minWidth],
     'badge.width': [r2(rect(badge).width), r2(Math.max(rb.minWidth, 2 * rb.padding + 2 * rb.border + 2 * rb.bareEdge + rect(contentsOf(badge)).width - 2 * rb.bareEdge))],
-    'badge.radius': [px(cs(badge).borderTopLeftRadius), rb.radius],
+    'badge.radius': [px(cs(badge).borderTopLeftRadius), r2(rb.radius)],
     'tag.height': [r2(rect(tag).height), rt.height],
     'tag.font': [px(cs(tag).fontSize), rt.fontSize],
     'tag.slot': [r2(rect(slotOf(tag)).height), rt.slot],
@@ -113,7 +113,8 @@ for (const c of cases) {
     'chip.padding': [px(cs(chip).paddingTop), rc.padding],
     'chip.slot': [r2(rect(slotOf(chip)).width), rc.slot],
     'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
-    'chip.radius': [px(cs(chip).borderTopLeftRadius), rc.radius],
+    'chip.radius': [px(cs(chip).borderTopLeftRadius), r2(rc.radius)],
+    'tag.radius': [px(cs(tag).borderTopLeftRadius), r2(rt.radius)],
   };
   // Construction pattern: [leading] [prefix] [contents] [suffix] [trailing] (resolveTextRun).
   const part = (el, p) => el.querySelector(`:scope > [data-part=${p}]`);

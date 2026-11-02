@@ -113,6 +113,9 @@ export const geometry = defineGlobalStyles({
     '--lu': 'calc(var(--h) / 8)',
     '--pad': 'max(0px, calc(0.5 * var(--lu) - var(--b)))',
     '--slot': 'calc(var(--h) - var(--lu))',
+    // Concentric radius: the edge (0.5u′) plus a third of the slot, the button's 1u + 2u split
+    // (2u = its 6u slot / 3), so a fill slot's radius R − 0.5u′ stays parallel. Pill at height / 2.
+    '--radius': 'min(calc((0.5 * var(--lu) + var(--slot) / 3) * var(--ui-radius-scale)), calc(var(--h) / 2))',
     height: 'var(--h)', minWidth: 'var(--h)', borderWidth: 'var(--b)', borderRadius: 'var(--radius)',
     fontSize: 'var(--font)', padding: 'var(--pad)',
   },

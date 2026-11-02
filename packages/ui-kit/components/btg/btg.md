@@ -18,7 +18,7 @@
 <ui-chip removable>Remote</ui-chip>
 ```
 
-Heights step 12px + k·u (badge 1, tag 2, chip 3), capped below the control height. All three use the label-wrapper padding system in a local unit u′ = height / 8, so spacing is relative to each element's size: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides, text parts 0.5u′ apart.
+Heights step 12px + k·u (badge 1, tag 2, chip 3), capped below the control height. All three use the label-wrapper padding system in a local unit u′ = height / 8, so spacing is relative to each element's size: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides, text parts 0.5u′ apart. Radius is concentric with the slot: (0.5u′ + slot / 3) × corner radius, a pill at height / 2.
 
 ## Anatomy
 

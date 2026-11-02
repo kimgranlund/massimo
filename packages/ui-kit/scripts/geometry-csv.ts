@@ -110,7 +110,7 @@ export const rows: Row[] = [
   { id: 'btg.chip.icon.md', family: 'btg', element: 'chip', quantity: 'icon md', formula: 'min(chip font + 0.5u, chip slot)', value: (u) => resolveBtg('chip', { unit: u }).iconSize, status: 'implemented', notes: 'sm/lg/fill as for controls, against the chip slot' },
   { id: 'btg.tag.icon.md', family: 'btg', element: 'tag', quantity: 'icon md', formula: 'min(tag font + 0.5u, tag slot)', value: (u) => resolveBtg('tag', { unit: u }).iconSize, status: 'implemented', notes: '' },
   { id: 'btg.minWidth', family: 'btg', element: 'badge, tag, chip', quantity: 'min width', formula: 'height', value: (u) => resolveBtg('badge', { unit: u }).minWidth, status: 'implemented', notes: 'value shown for badge; never narrower than tall' },
-  { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min(3u * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'tag and badge: same formula with their height' },
+  { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min((0.5u′ + slot / 3) * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

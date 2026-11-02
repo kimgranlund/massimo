@@ -133,7 +133,12 @@ test('badge / tag / chip: text, slots, padding', () => {
   assert.equal(chip.iconSize, 16);
   assert.equal(tag.iconSize, 14);
   for (const k of [chip, tag, badge]) assert.equal(k.slot + 2 * k.padding + 2 * k.border, k.height, 'border + padding + slot = height');
-  assert.equal(badge.radius, 8, 'pill');
+  // Concentric radius 0.5u′ + slot / 3: badge u′ 2, slot 14 → 1 + 14/3.
+  assert.ok(Math.abs(badge.radius - (1 + 14 / 3)) < 1e-9);
+  // The button obeys the same rule: 1u + 6u / 3 = 3u.
+  const c = resolveControl();
+  assert.equal(c.radius, c.inset + c.slot / 3);
+  assert.equal(resolveBtg('chip', { radiusScale: 3 }).radius, 12, 'pill at height / 2');
 });
 
 test('badge / tag / chip label wrapper: 1u′ on both sides, u′ = height / 8', () => {

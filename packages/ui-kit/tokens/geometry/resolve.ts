@@ -222,7 +222,8 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
     // omit block padding (the row centers the text).
     ...(kind === 'chip' ? singleLine(fontSize, slot) : { lineHeight: Math.min(1.2 * fontSize, slot), paddingBlock: 0 }),
     iconSize: resolveIcon(fontSize, u, x.iconSize, slot),
-    radius: Math.min(3 * u * x.radiusScale, height / 2),
+    // Concentric: edge 0.5u′ + slot / 3 (the button's 1u + 6u / 3), × curvature, pill at height / 2.
+    radius: Math.min((0.5 * lu + slot / 3) * x.radiusScale, height / 2),
   };
 }
 
