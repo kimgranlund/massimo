@@ -64,7 +64,7 @@ export function resolveControl(input: GeometryInput = {}) {
   };
 }
 
-/** Button label padding: 1u beside a slot, 2u on a side with no leading/trailing element. */
+/** Button and option label padding: 1u beside a slot, 2u on a side with no leading/trailing element. */
 export function resolveButtonContents(leading: boolean, trailing: boolean, input: GeometryInput = {}) {
   const u = resolveControl(input).unit;
   return { start: leading ? u : 2 * u, end: trailing ? u : 2 * u };

@@ -27,6 +27,7 @@ for (const c of cases) {
     <ui-button icon-size="${c.icon}">Menu<i slot="trailing" name="caret-down"></i></ui-button>
     <ui-button>Text</ui-button>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
+    <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     ${LEVELS.map((l) => `<ui-${l} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
     <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>`;
@@ -56,6 +57,9 @@ for (const c of cases) {
     'label.trailingOnly.start': [px(cs(pc(caretBtn)).paddingLeft), resolveButtonContents(false, true, g).start],
     'label.trailingOnly.end': [px(cs(pc(caretBtn)).paddingRight), resolveButtonContents(false, true, g).end],
     'label.textOnly.start': [px(cs(pc(textBtn)).paddingLeft), resolveButtonContents(false, false, g).start],
+    'option.textOnly.start': [px(cs(pc(box.querySelector('ui-listbox ui-option'))).paddingLeft), resolveButtonContents(false, false, g).start],
+    'option.leading.start': [px(cs(pc(box.querySelectorAll('ui-listbox ui-option')[1])).paddingLeft), resolveButtonContents(true, false, g).start],
+    'option.leading.end': [px(cs(pc(box.querySelectorAll('ui-listbox ui-option')[1])).paddingRight), resolveButtonContents(true, false, g).end],
     'label.textOnly.end': [px(cs(pc(textBtn)).paddingRight), resolveButtonContents(false, false, g).end],
     'contents.paddingBlock': [px(cs(contents).paddingTop), ctl.contents.paddingBlock],
     'iconOnly.square': [r2(rect(iconBtn).width), ctl.height],
