@@ -63,7 +63,9 @@ const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5', ord
 const metrics = css({ textStyle: 'code', color: 'fg.muted' });
 // Baseline grid behind each specimen: a faint line per rhythm unit, every 4th line stronger.
 const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) ${pct}%, transparent) 0)`;
-const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}`, whiteSpace: 'pre-wrap', maxWidth: '60ch' });
+// The lines span the sample column; the text inside keeps a readable measure.
+const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}` });
+const rhythmText = css({ whiteSpace: 'pre-wrap', maxWidth: '60ch' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
 const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
@@ -659,11 +661,13 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
             <div key={role} className={typeRow}>
               <div className={typeMeta}>
                 <span className={rowLabel}>{r.label}</span>
-                <span className={metrics}>{role}</span>
-                <span className={metrics}>{'u' in r ? `${r.u}u` : `step ${r.step}`} · {fmt(t.size)}px / {t.lineHeightRatio ?? `${fmt(t.lineHeight)}px`}</span>
-                <span className={metrics}>{t.voice} → {t.face} · {t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
+                <span className={metrics}>{role} · {t.voice} → {t.face}</span>
+                <span className={metrics}>{fmt(t.size)} / {t.lineHeightRatio ?? fmt(t.lineHeight)} · {'u' in r ? `${r.u}u` : `step ${r.step}`}</span>
+                <span className={metrics}>{t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
               </div>
-              <div data-type={role} className={role === 'code' ? codeSample : rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${4 * grid}px, 100% ${grid}px` } : undefined}>{SAMPLES[role]}</div>
+              {role === 'code'
+                ? <div data-type={role} className={codeSample}>{SAMPLES[role]}</div>
+                : <div className={rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${4 * grid}px, 100% ${grid}px` } : undefined}><div data-type={role} className={rhythmText}>{SAMPLES[role]}</div></div>}
             </div>
           );
         })}
