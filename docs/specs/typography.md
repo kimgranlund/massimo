@@ -69,5 +69,6 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76
 
 - HTML: `<h2 data-type="heading-2">`.
 - Panda: `css({ textStyle: 'heading-2' })`.
+- Panda `fontSizes` (`xs` … `5xl`) are steps of the same scale, (10px + u) × ratio^step with `md` = step 0 (`xs` −2, `sm` −1, `lg` 1 … `5xl` 6), computed where used, so they follow `size` subtrees and the theme ratio. Use them only for text without a role (chart ticks); there is no fixed rem scale. `lineHeights` and `letterSpacings` are unitless or em, relative to the font.
 
 Both apply family, size, line height, weight, tracking and case. Every role's size and line height at every size are in `docs/geometry.csv` (`type.*`); `tokens/dtcg/typography.dtcg.json` holds faces, voices (aliases), `typography` composite tokens per role and the metrics. The browser geometry check verifies the CSS against the resolver.

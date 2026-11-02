@@ -4,6 +4,7 @@
 // theme's --ui-pad-<level> / --ui-gap-<level> in u; inset.<level> is the padding inside a border
 // (max(0, pad − B), B = min(border, u/2)), as containers use it.
 import { CONTAINERS } from './resolve.ts';
+import { fontSizes } from '../typography/index.ts';
 
 const u = (n: number | string) => `calc(${n} * var(--ui-unit) * 1px)`;
 const B = 'min(calc(var(--ui-border) * 1px), calc(var(--ui-unit) * 0.5px))';
@@ -43,7 +44,7 @@ export const borderWidths = { thin: { value: '1px' }, thick: { value: '2px' } };
 export const breakpoints = { sm: '40rem', md: '48rem', lg: '64rem', xl: '80rem' };
 
 /**
- * The u-based token variables as declarations. Panda declares them on :root, where they resolve with
+ * The u-based token variables (spacing, sizes, radii, fontSizes) as declarations. Panda declares them on :root, where they resolve with
  * the root unit; any element that sets --ui-unit (or a container param) for its subtree redeclares
  * them so descendants get lengths in that subtree's u. styles/geometry.ts does this for [size];
  * a theme scope (the jig canvas) includes unitTokenCss().
@@ -58,7 +59,7 @@ export function unitTokenVars(): Record<string, string> {
       } else add(group, v, `${name}-`);
     }
   };
-  add('spacing', spacing); add('sizes', sizes); add('radii', radii);
+  add('spacing', spacing); add('sizes', sizes); add('radii', radii); add('font-sizes', fontSizes);
   return out;
 }
 export const unitTokenCss = () => Object.entries(unitTokenVars()).map(([k, v]) => `${k}: ${v};`).join('\n  ');

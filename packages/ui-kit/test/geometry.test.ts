@@ -181,6 +181,6 @@ test('Panda spacing, sizes and radii are in u and recompute in sized subtrees', 
   assert.match((spacing as any).inset.page.value, /var\(--ui-pad-page\).*var\(--ui-border\)/);
   assert.match((radii as any).md.value, /1\.5 \* var\(--ui-unit\) \* var\(--ui-radius-scale\)/);
   const vars = unitTokenVars();
-  for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card', '--sizes-6', '--radii-lg']) assert.ok(name in vars, name);
+  for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card', '--sizes-6', '--radii-lg', '--font-sizes-sm']) assert.ok(name in vars, name);
   assert.deepEqual((geometry as any)[':where([size], [data-size])'], vars);
 });
