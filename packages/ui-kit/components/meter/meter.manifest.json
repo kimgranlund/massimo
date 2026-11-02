@@ -1,0 +1,372 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "meter",
+  "primary": "component:meter",
+  "module": "./meter.element.ts",
+  "registration": "on-import",
+  "documentation": "./meter.md",
+  "examples": "./meter.examples.json",
+  "contract": "../../contracts/components.json#/components/meter",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./meter.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:meter",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-meter",
+      "class": "UIMeter",
+      "extends": "UIElement",
+      "intent": [
+        "Show a measurement within a known range, such as storage used or a password's strength"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "number",
+          "default": 0,
+          "attribute": "value",
+          "reflects": false,
+          "description": "Clamped to [min, max].",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "min",
+          "type": "number",
+          "default": 0,
+          "attribute": "min",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "max",
+          "type": "number",
+          "default": 100,
+          "attribute": "max",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Visible label at the start of the text row; names the meter (aria-labelledby). Authored label part text seeds it.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "format",
+          "type": "string",
+          "default": null,
+          "attribute": "format",
+          "reflects": false,
+          "description": "Intl.NumberFormat options for the value text (Base UI format): an object as a property, JSON in the attribute, e.g. {\"style\":\"unit\",\"unit\":\"gigabyte\"}. Without it: the ratio as a whole percentage. Formatted by formatNumber (U+2212 minus, narrow spaces before units).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "",
+          "attribute": "locale",
+          "reflects": false,
+          "description": "BCP 47 locale for the value text; empty: the runtime's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "valueText",
+          "type": "string",
+          "default": "",
+          "attribute": "value-text",
+          "reflects": false,
+          "description": "aria-valuetext instead of the formatted value (the visible value is unchanged).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "meter",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": true,
+        "children": "Optional authored [data-part] label, value, track and track › indicator, adopted onto the generated parts."
+      },
+      "layout": {
+        "display": "grid",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The value is clamped to [min, max]; the fill is (value − min) / (max − min) of the track, carried by --ui-ratio.",
+        "The value text is formatNumber(value, format) with format, else the ratio as a whole percentage; aria-valuetext is the same text unless value-text sets another.",
+        "The label names the meter (aria-labelledby); without a label give it an aria-label.",
+        "A meter is static: it has no keyboard behavior and no form value. Task completion is a progress bar."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Showing how much of a task is done, or that work is ongoing.",
+          "reason": "That is progress (role=progressbar, indeterminate without a value), not a measurement.",
+          "useInstead": "component:progress"
+        },
+        {
+          "when": "The user sets the value.",
+          "reason": "A meter is read-only.",
+          "useInstead": "component:range"
+        }
+      ],
+      "searchTerms": [
+        "meter",
+        "gauge",
+        "usage",
+        "quota",
+        "storage",
+        "strength"
+      ]
+    },
+    {
+      "id": "part:meter-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=label]",
+      "summary": "The visible label (Base UI Meter.Label) at the start of the text row; names the meter. Hidden when empty."
+    },
+    {
+      "id": "part:meter-value",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=value]",
+      "summary": "The formatted value (Base UI Meter.Value) at the end of the text row, tabular figures; aria-hidden, the root's aria-valuetext says it."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:meter",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesGeometry",
+      "to": "geometry:track"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:meter-label"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:meter-value"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:track"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:track-indicator"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:form"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./meter.element.ts",
+      "exports": {
+        "component:meter": "UIMeter"
+      },
+      "verification": "./verification/meter.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./meter.react.tsx",
+      "exports": {
+        "component:meter": "Meter"
+      },
+      "verification": "./verification/meter.verification.json#/renderers/react",
+      "props": {
+        "component:meter": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "value: number",
+            "min?: number",
+            "max?: number",
+            "label?: ReactNode // Visible label (Meter.Label in the preset); names the meter.",
+            "format?: FormatNumberOptions // Intl.NumberFormat options for the value text (Base UI format); default the ratio as a whole percentage.",
+            "locale?: string // BCP 47 locale for the value text.",
+            "valueText?: string // aria-valuetext instead of the formatted value.",
+            "size?: number // Unit u in px for this element.",
+            "children?: ReactNode // Meter.Root: the parts (Meter.Label, Meter.Value, Meter.Track with Meter.Indicator). Ignored by the preset."
+          ]
+        }
+      },
+      "parts": {
+        "component:meter": {
+          "Meter.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: number",
+              "min?: number = 0",
+              "max?: number = 100",
+              "label?: ReactNode // Visible label (Meter.Label in the preset); names the meter.",
+              "format?: FormatNumberOptions // Intl.NumberFormat options for the value text (Base UI format); default the ratio as a whole percentage.",
+              "locale?: string // BCP 47 locale for the value text.",
+              "valueText?: string // aria-valuetext instead of the formatted value.",
+              "size?: number // Unit u in px for this element.",
+              "children?: ReactNode // Meter.Root: the parts (Meter.Label, Meter.Value, Meter.Track with Meter.Indicator). Ignored by the preset."
+            ]
+          },
+          "Meter.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Meter.Value": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className' | 'children'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ((formatted: string, value: number) => ReactNode) | null // (formatted, value) => content (Base UI Meter.Value); default the formatted value."
+            ]
+          },
+          "Meter.Track": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Meter.Indicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

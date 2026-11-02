@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -88,7 +88,7 @@ export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db277
 // metrics for the live theme (like the Typography roles); the right column renders the specimens
 // in that size subtree (data-size).
 export const LADDER_SIZES = [3, 4, 6];
-export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite';
+export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar';
 
 type Live = { unit: number; border: number; radiusScale: number };
 const px = (n: number) => `${fmt(n)}`;
@@ -110,8 +110,8 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
     return [`row ${px(cb.rowHeight)} · box ${px(cb.box)} · switch ${px(sw.width)}`, `label inset ${px(cb.labelPaddingStart)} · r ${px(cb.radius)}`];
   },
   track: (g) => {
-    const t = resolveTrack('range', g);
-    return [`track ${px(t.track)} · thumb ${px(t.thumb)}`, `r ${px(t.trackRadius)} · min width ${px(t.minWidth)}`];
+    const t = resolveTrack('range', g), m = resolveMeter(g);
+    return [`track ${px(t.track)} · thumb ${px(t.thumb)}`, `r ${px(t.trackRadius)} · min width ${px(t.minWidth)}`, `meter row gap ${px(m.rowGap)} · text ${px(m.fontSize)}`];
   },
   swatch: (g) => {
     const s = resolveSwatch(g);
@@ -120,6 +120,14 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   composite: (g) => {
     const c = resolveComposite(g);
     return [`row ${px(c.rowHeight)} · edge ${px(c.edge)} · option ${px(c.child.height)}`, `r ${px(c.radius)} · option r ${px(c.child.radius)}`];
+  },
+  separator: (g) => {
+    const s = resolveSeparator(g);
+    return [`thickness ${px(s.thickness)} · B ${px(s.border)}`];
+  },
+  avatar: (g) => {
+    const [sm, md, xl] = (['sm', 'md', 'xl'] as const).map((k) => resolveAvatar(k, g));
+    return [`sm ${px(sm.size)} · md ${px(md.size)} · xl ${px(xl.size)}`, `text ${px(md.fontSize)} · icon ${px(md.iconSize)} · r ${px(md.radius)}`];
   },
 };
 

@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -135,6 +135,24 @@ export const rows: Row[] = [
   { id: 'btg.tag.icon.md', family: 'btg', element: 'tag', quantity: 'icon md', formula: 'min(tag font + 0.5u, tag slot)', value: (u) => resolveBtg('tag', { unit: u }).iconSize, status: 'implemented', notes: '' },
   { id: 'btg.minWidth', family: 'btg', element: 'badge, tag, chip', quantity: 'min width', formula: 'height', value: (u) => resolveBtg('badge', { unit: u }).minWidth, status: 'implemented', notes: 'value shown for badge; never narrower than tall' },
   { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min((0.5u′ + slot / 3) * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot' },
+
+  // Separator
+  { id: 'separator.thickness', family: 'separator', element: 'separator', quantity: 'thickness (height, or width when vertical)', formula: 'max(1px, B)', value: (u) => resolveSeparator({ unit: u }).thickness, status: 'implemented', notes: 'B = min(border, u/2): a hairline at B = 0 and 1; the theme border above' },
+  { id: 'separator.thicknessAtB2', family: 'separator', element: 'separator', quantity: 'thickness at B = 2', formula: 'max(1px, min(2, u/2))', value: (u) => resolveSeparator({ unit: u, border: Math.min(2, u / 2) }).thickness, status: 'implemented', notes: 'spans the other axis; no padding or margin (the container gap spaces it)' },
+
+  // Meter
+  { id: 'meter.track', family: 'track', element: 'meter', quantity: 'track thickness', formula: '4u (the progress track)', value: (u) => resolveMeter({ unit: u }).track, status: 'implemented', notes: 'fill = ratio × width, radius min(3u * s, 2u)' },
+  { id: 'meter.rowGap', family: 'track', element: 'meter', quantity: 'text row to track', formula: '1.5u', value: (u) => resolveMeter({ unit: u }).rowGap, status: 'implemented', notes: 'the stacked field gap' },
+  { id: 'meter.columnGap', family: 'track', element: 'meter', quantity: 'label to value (min)', formula: '2u', value: (u) => resolveMeter({ unit: u }).columnGap, status: 'implemented', notes: 'the value sits at the end, tabular figures' },
+  { id: 'meter.lineHeight', family: 'track', element: 'meter', quantity: 'label and value line height', formula: 'min(1.2 × (10 + u), 6u)', value: (u) => resolveMeter({ unit: u }).lineHeight, status: 'implemented', notes: 'control voice, font 10 + u' },
+
+  // Avatar
+  ...(Object.keys(AVATAR_SIZES) as AvatarSize[]).flatMap((k): Row[] => [
+    { id: `avatar.${k}.size`, family: 'avatar', element: `avatar[avatar-size=${k}]`, quantity: 'size (square)', formula: `${AVATAR_SIZES[k]}u`, value: (u) => resolveAvatar(k, { unit: u }).size, status: 'implemented', notes: k === 'sm' ? 'the 6u slot: fits a leading slot' : k === 'md' ? 'the 8u control height (default)' : '' },
+    { id: `avatar.${k}.font`, family: 'avatar', element: `avatar[avatar-size=${k}]`, quantity: 'initials font size', formula: `(10 + u) × ${AVATAR_SIZES[k] / 8}`, value: (u) => resolveAvatar(k, { unit: u }).fontSize, status: 'implemented', notes: 'the control font × k, k = size / 8u; line height 1.2' },
+    { id: `avatar.${k}.icon`, family: 'avatar', element: `avatar[avatar-size=${k}]`, quantity: 'fallback icon', formula: `(10 + 1.5u) × ${AVATAR_SIZES[k] / 8}`, value: (u) => resolveAvatar(k, { unit: u }).iconSize, status: 'implemented', notes: 'the md control icon × k' },
+  ]),
+  { id: 'avatar.radius', family: 'avatar', element: 'avatar', quantity: 'radius', formula: 'size / 2 × min(1, s)', value: (u) => resolveAvatar('md', { unit: u }).radius, status: 'implemented', notes: 'value shown for md: a circle at s ≥ 1, square at s = 0' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

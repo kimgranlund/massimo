@@ -11,6 +11,10 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/separator/element';
+import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/toggle/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -18,14 +22,15 @@ import { CQ_MD, Divider, IMAGES, Page, Row, Section, SizeLadder, caption, column
 
 /** Component families, in page order: [id, label, elements]. */
 export const FAMILIES = [
-  ['actions', 'Actions', 'ui-button'],
+  ['actions', 'Actions', 'ui-button · ui-toggle'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch'],
-  ['tracks', 'Tracks', 'ui-range · ui-progress'],
+  ['tracks', 'Tracks', 'ui-range · ui-progress · ui-meter'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
+  ['display', 'Display', 'ui-separator · ui-avatar'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -35,6 +40,9 @@ const media = css({ width: 'full', maxWidth: '[40rem]', borderRadius: 'xl', over
 const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: 'end' });
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
 const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
+const tonePrimary = css({ bg: 'primary.subtle', color: 'primary.fg' });
+const separatorDemo = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
+const separatorLadder = css({ display: 'flex', flexDirection: 'column', gap: '2', width: '[min(100%, 20rem)]' });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
 // Inline fields demo: a property panel (field grid) beside stacked fields.
 const panelCard = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderRadius: 'xl', bg: 'bg.subtle', width: '[min(100%, 22rem)]' });
@@ -93,14 +101,15 @@ const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
 export function ComponentsPage({ family, params }: PageProps & { family?: Family }) {
   const [status, setStatus] = useState('');
   const NOTES: Record<Family, string> = {
-    actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u.',
+    actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u. A toggle is a button with a pressed state (aria-pressed, data-pressed): the primary solid while on.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot.',
-    tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
+    tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
+    display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
   const CONTENT: Record<Family, ReactNode> = {
     actions: (
@@ -130,6 +139,16 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           {(['sm', 'md', 'lg'] as const).map((k) => <ui-button key={k} icon-size={k}><i slot="leading" name="star" />{k}</ui-button>)}
           <ui-button icon-size="fill"><span slot="leading" className={avatar} />fill</ui-button>
         </Row>
+        <Row label="Toggle">
+          <ui-group>
+            <ui-toggle aria-label="Bold" pressed><i slot="leading" name="text-b" /></ui-toggle>
+            <ui-toggle aria-label="Italic"><i slot="leading" name="text-italic" /></ui-toggle>
+            <ui-toggle aria-label="Underline" disabled><i slot="leading" name="text-underline" /></ui-toggle>
+          </ui-group>
+          <ui-toggle default-pressed><i slot="leading" name="star" />Favorite</ui-toggle>
+          <ui-toggle>Notify me<span slot="suffix">3</span></ui-toggle>
+          <ui-toggle pressed disabled>Locked on</ui-toggle>
+        </Row>
         <Row label="States">
           <ui-button>Default</ui-button>
           <ui-button loading>Loading</ui-button>
@@ -139,6 +158,8 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <ui-button><i slot="leading" name="plus" />Button</ui-button>
           <ui-button variant="primary">Save</ui-button>
           <ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button>
+          <ui-toggle pressed><i slot="leading" name="star" />Toggle</ui-toggle>
+          <ui-toggle aria-label="Bold"><i slot="leading" name="text-b" /></ui-toggle>
         </SizeLadder>
       </>
     ),
@@ -231,8 +252,16 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
       <>
         <Row label="Range"><div className={trackStack}><ui-range label="Volume" value={40} /><ui-range label="Steps" min={0} max={10} step={1} value={3} /></div></Row>
         <Row label="Progress"><div className={trackStack}><ui-progress label="Upload" value={64} /><ui-progress label="Loading" /></div></Row>
+        <Row label="Meter">
+          <div className={trackStack}>
+            <ui-meter label="Battery" value={72} />
+            <ui-meter label="Storage" value={38.5} max={50} format='{"style":"unit","unit":"gigabyte","maximumFractionDigits":1}' value-text="38.5 of 50 gigabytes used" />
+            <ui-meter label="A much longer label that has to give way to the value" value={12} />
+            <ui-meter aria-label="Strength" value={3} max={4} format='{"style":"decimal"}' />
+          </div>
+        </Row>
         <SizeLadder family="track" params={params}>
-          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-progress label="Upload" value={64} /></div>
+          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-progress label="Upload" value={64} /><ui-meter label="Storage" value={64} /></div>
         </SizeLadder>
       </>
     ),
@@ -271,6 +300,36 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             {IMAGES.map((src, i) => <img key={i} src={src} alt={`Place ${i + 1}`} />)}
           </ui-image>
         </Row>
+      </>
+    ),
+    display: (
+      <>
+        <Row label="Separator">
+          <div className={separatorDemo}>
+            <ui-collection><span>Account</span><span>Billing</span><ui-separator /><span>Sign out</span></ui-collection>
+            <ui-group><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
+          </div>
+        </Row>
+        <Row label="Avatar">
+          <ui-avatar avatar-size="sm" name="Maya Lindqvist" />
+          <ui-avatar name="Maya Lindqvist" />
+          <ui-avatar avatar-size="lg" name="Tomás Herrera" className={tonePrimary} />
+          <ui-avatar avatar-size="xl" src={IMAGES[1]} alt="Aiko Tanaka">AT</ui-avatar>
+          <ui-avatar name="Broken link" src="data:image/png;base64,broken" />
+          <ui-avatar />
+        </Row>
+        <Row label="In a slot">
+          <ui-button icon-size="fill"><ui-avatar slot="leading" avatar-size="sm" name="Kim Sandberg" />Kim</ui-button>
+          <ui-chip><ui-avatar slot="leading" avatar-size="sm" src={IMAGES[0]} alt="" />Dawn</ui-chip>
+        </Row>
+        <h3 className={subTitle}>Avatar sizes</h3>
+        <SizeLadder family="avatar" params={params}>
+          <ui-avatar avatar-size="sm" name="Ada Lovelace" /><ui-avatar name="Ada Lovelace" /><ui-avatar avatar-size="lg" name="Ada Lovelace" className={tonePrimary} /><ui-avatar avatar-size="xl" />
+        </SizeLadder>
+        <h3 className={subTitle}>Separator sizes</h3>
+        <SizeLadder family="separator" params={params}>
+          <div className={separatorLadder}><ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group><ui-separator /></div>
+        </SizeLadder>
       </>
     ),
   };

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "meter",
+  "title": "Meter",
+  "summary": "A measurement within a known range.",
+  "defaultExample": "percent",
+  "examples": [
+    {
+      "id": "percent",
+      "label": "Percentage (default)",
+      "subject": "component:meter",
+      "markup": "<ui-meter label=\"Battery\" value=\"72\"></ui-meter>"
+    },
+    {
+      "id": "format",
+      "label": "Formatted value",
+      "subject": "component:meter",
+      "markup": "<ui-meter label=\"Storage\" value=\"38.5\" max=\"50\" format='{\"style\":\"unit\",\"unit\":\"gigabyte\",\"maximumFractionDigits\":1}' value-text=\"38.5 of 50 gigabytes used\"></ui-meter>",
+      "note": "React: <Meter label=\"Storage\" value={38.5} max={50} format={{ style: 'unit', unit: 'gigabyte' }} />."
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:meter",
+      "markup": "<ui-meter value=\"24\"><span data-part=\"label\">Strength</span><span data-part=\"value\"></span><span data-part=\"track\"><span data-part=\"indicator\"></span></span></ui-meter>",
+      "note": "React: Meter.Root › Meter.Label, Meter.Value, Meter.Track › Meter.Indicator."
+    }
+  ]
+}

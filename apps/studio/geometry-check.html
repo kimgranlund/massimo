@@ -14,7 +14,11 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/separator/element';
+import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/toggle/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -49,6 +53,10 @@ for (const c of cases) {
     <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>
     <ui-palette id="pal"><ui-swatch color="red"></ui-swatch><ui-swatch color="blue"></ui-swatch><ui-swatch color="green"></ui-swatch></ui-palette>
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
+    <ui-toggle id="tgl" icon-size="${c.icon}" pressed><span slot="leading"></span>Bold</ui-toggle><ui-toggle id="tglO" aria-label="x"><span slot="leading"></span></ui-toggle><ui-toggle id="tglT">Text</ui-toggle>
+    <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
+    <div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
+    <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
     <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
@@ -219,6 +227,55 @@ for (const c of cases) {
     checks['progress.radius'] = [px(cs(ptr).borderTopLeftRadius), rp.trackRadius];
     checks['progress.fill'] = [r2(rect(pin).width), r2(trackFill('progress', 0.3, rect(ptr).width, g))];
     checks['progress.fill.radius'] = [px(cs(pin).borderTopRightRadius), rp.trackRadius];
+  }
+  // Toggle: the control family, pressed or not (resolveControl, resolveButtonContents).
+  {
+    const tg = $('tgl'), to = $('tglO'), tt = $('tglT');
+    checks['toggle.height'] = [r2(rect(tg).height), ctl.height];
+    checks['toggle.unpressed.height'] = [r2(rect(tt).height), ctl.height];
+    checks['toggle.padding'] = [px(cs(tg).paddingTop) + px(cs(tg).borderTopWidth), ctl.padding + ctl.border];
+    checks['toggle.font'] = [px(cs(tg).fontSize), ctl.fontSize];
+    checks['toggle.radius'] = [px(cs(tg).borderTopLeftRadius), ctl.radius];
+    checks['toggle.slot'] = [r2(rect(part(tg, 'leading')).width), ctl.slot];
+    checks['toggle.icon'] = [r2(rect(part(tg, 'leading').firstElementChild).width), ctl.iconSize];
+    checks['toggle.iconOnly.square'] = [r2(rect(to).width), ctl.height];
+    checks['toggle.label.leading.start'] = [px(cs(part(tg, 'contents')).paddingLeft), resolveButtonContents(true, false, g).start];
+    checks['toggle.label.textOnly.start'] = [px(cs(part(tt, 'contents')).paddingLeft), resolveButtonContents(false, false, g).start];
+    checks['toggle.label.textOnly.end'] = [px(cs(part(tt, 'contents')).paddingRight), resolveButtonContents(false, false, g).end];
+  }
+  // Meter: the progress track under a label | value row (control text) 1.5u above it.
+  {
+    const mt = $('met'), rm = resolveMeter(g), lab = part(mt, 'label'), val = part(mt, 'value'), mtr = part(mt, 'track'), min = mtr.querySelector('[data-part=indicator]');
+    checks['meter.track'] = [r2(rect(mtr).height), rm.track];
+    checks['meter.track.radius'] = [px(cs(mtr).borderTopLeftRadius), rm.trackRadius];
+    checks['meter.track.width'] = [r2(rect(mtr).width), 400];
+    checks['meter.fill'] = [r2(rect(min).width), r2(0.3 * 400)];
+    checks['meter.fill.radius'] = [px(cs(min).borderTopRightRadius), rm.trackRadius];
+    checks['meter.rowGap'] = [r2(rect(mtr).top - Math.max(rect(lab).bottom, rect(val).bottom)), rm.rowGap];
+    checks['meter.font'] = [px(cs(lab).fontSize), rm.fontSize];
+    checks['meter.lineHeight'] = [px(cs(lab).lineHeight), r2(rm.lineHeight)];
+    checks['meter.value.lineHeight'] = [px(cs(val).lineHeight), r2(rm.lineHeight)];
+    checks['meter.value.end'] = [r2(rect(mt).right - rect(val).right), 0];
+    checks['meter.columnGap'] = [px(cs(mt).columnGap), rm.columnGap];
+    checks['meter.height'] = [r2(rect(mt).height), r2(rm.lineHeight + rm.rowGap + rm.track)];
+  }
+  // Separator: max(1px, B) thick, spanning the other axis.
+  {
+    const rsp = resolveSeparator(g), h = $('sepH'), v = $('sepV');
+    checks['separator.thickness'] = [r2(rect(h).height), rsp.thickness];
+    checks['separator.span'] = [r2(rect(h).width), 400];
+    checks['separator.vertical.thickness'] = [r2(rect(v).width), rsp.thickness];
+    checks['separator.vertical.span'] = [r2(rect(v).height), 40];
+  }
+  // Avatar: n·u squares that never shrink (in a 10px flex row), initials and icon scaled by k, round.
+  for (const k of ['sm', 'md', 'lg', 'xl']) {
+    const av = $(`av-${k}`), ra = resolveAvatar(k, g), fb = av.querySelector('[data-part=fallback]'), icon = fb.querySelector('i');
+    checks[`avatar.${k}.width`] = [r2(rect(av).width), r2(ra.size)];
+    checks[`avatar.${k}.height`] = [r2(rect(av).height), r2(ra.size)];
+    checks[`avatar.${k}.radius`] = [r2(Math.min(px(cs(av).borderTopLeftRadius), ra.size / 2)), r2(ra.radius)];
+    checks[`avatar.${k}.font`] = [px(cs(av).fontSize), r2(ra.fontSize)];
+    checks[`avatar.${k}.lineHeight`] = [px(cs(fb).lineHeight), r2(ra.lineHeight)];
+    if (icon) checks[`avatar.${k}.icon`] = [r2(rect(icon).width), r2(ra.iconSize)];
   }
   // Swiper: 8u round paddles inset 2u; 2u dots (active 4u) in 4u hit areas, u apart, 2u above the bottom.
   const swiperChecks = (name, host) => {

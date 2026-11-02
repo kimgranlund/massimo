@@ -1,0 +1,23 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "toggle",
+  "title": "Toggle",
+  "summary": "A two-state pressed button.",
+  "defaultExample": "toolbar",
+  "examples": [
+    {
+      "id": "toolbar",
+      "label": "Formatting toolbar",
+      "subject": "component:toggle",
+      "markup": "<ui-group><ui-toggle aria-label=\"Bold\" pressed><i slot=\"leading\" name=\"text-b\"></i></ui-toggle><ui-toggle aria-label=\"Italic\"><i slot=\"leading\" name=\"text-italic\"></i></ui-toggle><ui-toggle aria-label=\"Underline\" disabled><i slot=\"leading\" name=\"text-underline\"></i></ui-toggle></ui-group>"
+    },
+    {
+      "id": "label",
+      "label": "With a label",
+      "subject": "component:toggle",
+      "markup": "<ui-toggle default-pressed><i slot=\"leading\" name=\"star\"></i>Favorite</ui-toggle>",
+      "note": "React: <Toggle defaultPressed leading={<i name=\"star\" />} onPressedChange={(pressed, { reason }) => …}>Favorite</Toggle>."
+    }
+  ]
+}

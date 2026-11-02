@@ -9,9 +9,12 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
+import '@massimo/ui-kit/components/separator/element';
+import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/meter/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack,
+  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -182,10 +185,37 @@ export function GeometryPage({ params }: PageProps) {
           );
         })}
         {(() => {
+          const t = resolveMeter(theme);
+          return (
+            <SpecRow label="meter" values={[`track ${px(t.track)} · row gap ${pu(t.rowGap)} · label | value gap ${pu(t.columnGap)}`, `text ${px(t.fontSize)} / ${px(t.lineHeight)}`]}>
+              <ui-meter label="Storage" value={64} />
+            </SpecRow>
+          );
+        })()}
+        {(() => {
           const t = resolveSwatch(theme);
           return (
             <SpecRow label="swatch" values={[`size ${px(t.size)} · radius ${px(t.radius)} · palette radius ${px(t.paletteRadius)}`]}>
               <ui-swatch color="#3b82f6" /><ui-swatch color="#10b981" />
+            </SpecRow>
+          );
+        })()}
+      </Section>
+      <Divider />
+      <Section id="display" title="Display" note="A separator is as thick as the theme border, never thinner than a hairline: max(1px, B). An avatar is n·u square (sm 6, md 8, lg 12, xl 16): a control scaled by k = n / 8.">
+        {(['sm', 'md', 'lg', 'xl'] as const).map((k) => {
+          const t = resolveAvatar(k, theme);
+          return (
+            <SpecRow key={k} label={`avatar ${k}`} values={[`size ${px(t.size)} · radius ${px(t.radius)}`, `initials ${px(t.fontSize)} · icon ${px(t.iconSize)}`]}>
+              <ui-avatar avatar-size={k} name="Ada Lovelace" /><ui-avatar avatar-size={k} />
+            </SpecRow>
+          );
+        })}
+        {(() => {
+          const t = resolveSeparator(theme);
+          return (
+            <SpecRow label="separator" values={[`thickness ${px(t.thickness)} · B ${px(t.border)}`]}>
+              <ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
             </SpecRow>
           );
         })()}

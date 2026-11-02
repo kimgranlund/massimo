@@ -13,6 +13,10 @@ import { swiper } from './swiper/swiper.recipe.ts';
 import { image } from './image/image.recipe.ts';
 import { group, collection, card, panel, region, page as pageRecipe } from './container/container.recipe.ts';
 import { field, fieldGrid } from './field/field.recipe.ts';
+import { separator } from './separator/separator.recipe.ts';
+import { avatar } from './avatar/avatar.recipe.ts';
+import { meter } from './meter/meter.recipe.ts';
+import { toggle } from './toggle/toggle.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle };
 

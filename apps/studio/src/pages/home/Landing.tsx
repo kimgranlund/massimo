@@ -23,7 +23,7 @@ const onSolidSoft = '[color-mix(in oklch, var(--colors-fg-on-solid) 75%, transpa
 const onSolidMuted = css({ textStyle: 'caption', color: onSolidSoft });
 const onSolidKicker = css({ textStyle: 'group-kicker', color: onSolidSoft });
 const trust = css({ display: 'flex', alignItems: 'center', gap: '3' });
-const faces = css({ display: 'flex', '& > span + span': { marginInlineStart: '-1.5' }, '& > span': { boxShadow: '[0 0 0 2px var(--colors-bg)]' } });
+const faces = css({ display: 'flex', '& > ui-avatar + ui-avatar': { marginInlineStart: '-1.5' }, '& > ui-avatar': { boxShadow: '[0 0 0 2px var(--colors-bg)]' } });
 const features = css({
   display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 'gap.card-md',
   [CQ_MD]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' },
@@ -45,7 +45,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
           </ui-group>
           <div className={trust}>
             <span className={faces} aria-hidden="true">
-              {['ML', 'TH', 'AT', 'PN'].map((n, i) => <span key={n} className={cx(s.avatar, s.tone[s.AVATAR_TONES[i]])}>{n}</span>)}
+              {['ML', 'TH', 'AT', 'PN'].map((n, i) => <ui-avatar key={n} className={s.tone[s.AVATAR_TONES[i]]}>{n}</ui-avatar>)}
             </span>
             <span className={s.caption}>Used by 4,000 small brands · 4.8 rating</span>
           </div>

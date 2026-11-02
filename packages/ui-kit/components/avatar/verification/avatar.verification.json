@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "avatar",
+  "scope": "Load status, fallback content, delay, naming and authored parts of the web component in happy-dom, the React renderer in react-dom/server (node:test), their anatomy and state parity, and the resolver. Rendered sizes are covered by the browser geometry check; image decoding, visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/avatar/avatar.element.ts",
+      "sha256": "2a93aec353cb9a5838f3f876255f75f9e0b0bd3e285aa9eff949e2691ec546d2"
+    },
+    {
+      "path": "components/avatar/avatar.react.tsx",
+      "sha256": "74a34117bf4f10188b650a9575adfea0757f89518e17e78e3c1de9dd38f436ae"
+    },
+    {
+      "path": "components/avatar/avatar.recipe.ts",
+      "sha256": "9e90187819c878e923f78cc0cfb0767be3b5e01ae19d3017bf7334d3943d3fe7"
+    },
+    {
+      "path": "components/avatar/avatar.manifest.json",
+      "sha256": "815ea3f29031a7ee3fd17a11ce9c20c25dde166e94570b8a43c1b17b2127f58a"
+    },
+    {
+      "path": "dom/display.ts",
+      "sha256": "1192a66ad5e7842810e9e4c946e7b0672d6da69c16a59433db6bd97460c8244a"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-avatar|resolveAvatar|initialsOf\" test/avatar.test.ts",
+          "covers": "image and fallback parts, initials and icon, naming, load / error status with data-loading / data-error and loadingstatuschange, delay, authored parts; the resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-avatar|resolveAvatar|initialsOf\" test/avatar.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React Avatar|state parity\" test/avatar.test.ts",
+          "covers": "SSR anatomy and classes against the web component, state parity, compound parts against the preset, render and className functions"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React Avatar|state parity\" test/avatar.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02): size, initials font, line height, icon and radius checked in apps/studio/geometry-check.html at every size × B 0 and 1 for sm, md, lg and xl; growth: the box is fixed (n·u) and never shrinks in a flex row (flex-shrink 0), long names give at most two initials, an authored long fallback is clipped by the round frame; RTL: nothing to mirror (initials keep their order); focus: not focusable; light and dark screenshots of the Display family (ladder 3, 4, 6 and the theme unit) and the Home page dashboard, article, landing and settings avatars.",
+    "Image loading is simulated with load and error events in happy-dom; real decoding is seen in the browser only.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Avatar with ui-avatar at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

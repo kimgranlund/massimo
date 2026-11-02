@@ -1,0 +1,401 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "toggle",
+  "primary": "component:toggle",
+  "module": "./toggle.element.ts",
+  "registration": "on-import",
+  "documentation": "./toggle.md",
+  "examples": "./toggle.examples.json",
+  "contract": "../../contracts/components.json#/components/toggle",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./toggle.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/button.ts",
+      "exports": [
+        "buttonAttrs",
+        "isInactive",
+        "blockIfInactive",
+        "onButtonKeydown"
+      ],
+      "description": "ARIA attributes and activation policy for any element acting as a button; no rendering."
+    },
+    {
+      "kind": "dom-behavior",
+      "module": "../slots.ts",
+      "exports": [
+        "arrangeSlots",
+        "observeSlots"
+      ],
+      "description": "Sorts children into leading / contents / trailing parts and hides empty ones."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveControl",
+        "resolveButtonContents"
+      ],
+      "description": "Reference numbers for the control family; CSS in styles/geometry.ts implements them."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:toggle",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-toggle",
+      "class": "UIToggle",
+      "extends": "UIElement",
+      "intent": [
+        "Turn one option or mode on and off with a button that shows its pressed state, such as bold in a text toolbar"
+      ],
+      "properties": [
+        {
+          "key": "pressed",
+          "type": "boolean",
+          "default": false,
+          "attribute": "pressed",
+          "reflects": true,
+          "description": "The live pressed state (aria-pressed, data-pressed); reflects to the attribute.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultPressed",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-pressed",
+          "reflects": false,
+          "description": "Pressed at connect when no pressed attribute is set (Base UI defaultPressed); later changes do nothing.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks activation and leaves the tab order (tabindex −1); data-disabled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Identifies the toggle for an application-owned group; not submitted (a toggle has no form value).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "icon-size",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "fill"
+          ],
+          "readBy": "css",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets, the select chevron and the x close icon stay sm. data-icon-size is the same input for plain HTML.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "trigger": "click, Enter or Space while enabled",
+          "detail": "{ pressed: boolean, reason: 'none', event: Event } (Base UI Toggle onPressedChange); cancelable: preventDefault keeps the current state"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "button",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space",
+            "action": "flip pressed (click)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text, icons and adornments; children move into the construction-pattern parts: slot=\"leading\" | \"trailing\" for icons, slot=\"prefix\" | \"suffix\" for text adornments, the rest is the label."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host is the button: role=button, tabindex 0 (−1 while disabled), aria-pressed and aria-disabled set by script, with the styling state data-pressed and data-disabled (Base UI Toggle; contracts/states.json). Contains no native form elements.",
+        "Activation is click, Enter or Space; it fires a cancelable change with the next pressed value, and preventDefault keeps the current one. disabled stops the click.",
+        "A toggle has no form value; value only identifies it for an application-owned toggle group.",
+        "Its label must not change with the state: aria-pressed says whether it is on."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A setting that takes effect immediately and reads as on / off.",
+          "reason": "A switch owns role=switch, aria-checked and a form value.",
+          "useInstead": "component:switch"
+        },
+        {
+          "when": "Choosing one of a few mutually exclusive options.",
+          "reason": "Independent toggles cannot own exclusive selection or arrow-key movement; segmented is a single-select listbox.",
+          "useInstead": "component:segmented"
+        },
+        {
+          "when": "Filtering by tags or tokens in a set.",
+          "reason": "A selectable chip is the compact pressed label, with an optional remove gesture.",
+          "useInstead": "component:chip"
+        },
+        {
+          "when": "An action that does not stay on.",
+          "reason": "A button has no pressed state.",
+          "useInstead": "component:button"
+        }
+      ],
+      "searchTerms": [
+        "toggle",
+        "toggle button",
+        "pressed",
+        "aria-pressed",
+        "bold",
+        "toolbar"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:toggle",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesGeometry",
+      "to": "geometry:control"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./toggle.element.ts",
+      "exports": {
+        "component:toggle": "UIToggle"
+      },
+      "verification": "./verification/toggle.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./toggle.react.tsx",
+      "exports": {
+        "component:toggle": "Toggle"
+      },
+      "verification": "./verification/toggle.verification.json#/renderers/react",
+      "props": {
+        "component:toggle": {
+          "inherits": [
+            "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix' | 'className' | 'value'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "pressed?: boolean // Controlled pressed state (Base UI pressed).",
+            "defaultPressed?: boolean = false // Uncontrolled initial pressed state (Base UI defaultPressed).",
+            "onPressedChange?: (pressed: boolean, details: ChangeDetails) => void // Every user toggle (Base UI onPressedChange): reason 'none'.",
+            "value?: string // Identifies the toggle inside a toggle group (Base UI value).",
+            "leading?: ReactNode",
+            "prefix?: ReactNode",
+            "suffix?: ReactNode",
+            "trailing?: ReactNode",
+            "iconSize?: IconSize",
+            "size?: number // Unit u in px (2..12); control height is 8u."
+          ]
+        }
+      }
+    }
+  }
+}

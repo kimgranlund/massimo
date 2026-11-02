@@ -5,11 +5,11 @@
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
 import { unitTokenVars } from '../tokens/geometry/index.ts';
-import { GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
+import { AVATAR_SIZES, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, ui-separator, ui-avatar, ui-meter, ui-toggle, [data-ui])';
 // Badge, tag and chip hosts in both renderers (the React ones are data-ui hosts).
 export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag], [data-ui=chip])';
 const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;
@@ -72,10 +72,23 @@ export const geometry = defineGlobalStyles({
   ':is(ui-badge, [data-ui=badge])': { '--h': 'var(--badge-h)', '--font': '10px' },
 
   // Range and progress (resolveTrack): the 4u track and its radius, read by the range recipes.
-  ':is(ui-range, ui-progress, [data-ui=range], [data-ui=progress])': {
+  ':is(ui-range, ui-progress, ui-meter, [data-ui=range], [data-ui=progress], [data-ui=meter])': {
     '--track': 'calc(4 * var(--u))',
     '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
   },
+
+  // Separator (resolveSeparator): as thick as the theme border, never thinner than a hairline.
+  ':is(ui-separator, [data-ui=separator])': { '--separator': 'max(1px, var(--b))' },
+
+  // Avatar (resolveAvatar): n·u square (sm 6, md 8, lg 12, xl 16), a control scaled by k = n / 8.
+  ':is(ui-avatar, [data-ui=avatar])': {
+    '--avatar-k': '1',
+    '--avatar': 'calc(8 * var(--u) * var(--avatar-k))',
+    '--avatar-font': 'calc((10px + var(--u)) * var(--avatar-k))',
+    '--avatar-icon': 'calc((10px + 1.5 * var(--u)) * var(--avatar-k))',
+    '--avatar-r': 'calc(var(--avatar) / 2 * min(1, var(--ui-radius-scale)))',
+  },
+  ...Object.fromEntries(Object.entries(AVATAR_SIZES).filter(([k]) => k !== 'md').map(([k, n]) => [`:is(ui-avatar[avatar-size=${k}], [data-ui=avatar][data-avatar-size=${k}])`, { '--avatar-k': String(n / 8) }])),
 });
 
 /**

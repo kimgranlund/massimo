@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "meter",
+  "scope": "Role, ARIA values, value text (formatNumber), ratio, label wiring and authored parts of the web component in happy-dom, the React renderer in react-dom/server (node:test), their markup parity and the compound parts. Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/meter/meter.element.ts",
+      "sha256": "bcbf5de467c4e9e289c291085c74b27d506ea92668a46a02b2b03ca9df2a4ce7"
+    },
+    {
+      "path": "components/meter/meter.react.tsx",
+      "sha256": "7d3be284317fa5786a259a1fffd312d700714f6fa88db2c2463185aff5c88e0a"
+    },
+    {
+      "path": "components/meter/meter.recipe.ts",
+      "sha256": "03ababb5ed6dd17e1b60fdb2bfb7298a1d96278018f53f9239d7cd8e77ebed38"
+    },
+    {
+      "path": "components/meter/meter.manifest.json",
+      "sha256": "0fd4ee242c8afc55ec4ad62640774cfa77d314279e710b81f4d7ed7a534387ba"
+    },
+    {
+      "path": "dom/display.ts",
+      "sha256": "1192a66ad5e7842810e9e4c946e7b0672d6da69c16a59433db6bd97460c8244a"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-meter|meterState|resolveMeter\" test/meter.test.ts",
+          "covers": "role=meter, aria-value*, value text by formatNumber (default percent, format JSON, locale, value-text), clamping, --ui-ratio, label wiring, authored parts; the resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-meter|meterState|resolveMeter\" test/meter.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React Meter|parity\" test/meter.test.ts",
+          "covers": "SSR markup against the web component, compound parts against the preset, Meter.Value children function, render and className functions"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React Meter|parity\" test/meter.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02): track height, radius, fill = ratio × width, the 1.5u row gap, the 2u label | value gap, control font and line height checked in apps/studio/geometry-check.html at every size × B 0 and 1; growth: a long label ellipsizes before the value (minmax(0, 1fr) | auto), the meter keeps a 24u minimum width and fills its container; RTL: the grid mirrors (label at the inline start, value at the end) and the fill grows from the inline start; focus: not focusable; light and dark screenshots of the Tracks family (ladder 3, 4, 6 and the theme unit).",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Meter with ui-meter at five sizes, and Meter.Root parts with the preset (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

@@ -25,9 +25,11 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-switch` | `role=switch`; Space/Enter toggle | `checked` |
 | `ui-range` | `role=slider`; arrows, Page Up/Down (10%), Home/End, drag; exposes `--ui-ratio` | `value`, `min`, `max`, `step`, `label`, `value-text` |
 | `ui-progress` | `role=progressbar`; indeterminate without `value` | `value`, `max`, `label` |
+| `ui-meter` | `role=meter` (Base UI Meter): label, value and the progress track; value text by `formatNumber` (`format`, else a percentage), also `aria-valuetext` | `value`, `min`, `max`, `label`, `format`, `locale`, `value-text` |
 | `ui-badge` | static label with the construction pattern; never narrower than tall; spacing in u′ = height / 8 | `icon-size` |
 | `ui-tag` | static label with slots | `icon-size` |
 | `ui-chip` | `role=button`; `selectable` toggles `aria-pressed`; `removable` adds ✕, Delete/Backspace fire cancelable `remove` | `selectable`, `selected`, `removable`, `disabled` |
+| `ui-toggle` | `role=button` with `aria-pressed` (Base UI Toggle); click, Enter, Space flip it; cancelable `change` `{ pressed, reason, event }`; button recipe and control geometry | `pressed`, `default-pressed`, `disabled`, `value` |
 | `ui-swatch` | a color chip over a checkerboard; `role=img` | `color`, `label` |
 | `ui-palette` | strip of swatches (row, or column with `orientation="vertical"`); with `name`/`selectable` a single-select listbox | `name`, `value`, `label`, `selectable`, `orientation` |
 | `ui-swiper` | scroll-snap carousel; paddles and dots; `slidechange` event | `label`, `hover-controls`, `no-dots`, `no-paddles` |
@@ -35,6 +37,8 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-field` | no role; its visible label (text + `unit`) names one slotted control: `aria-labelledby` on a host-role control, `labelledby` on ui-input / ui-select (forwarded to the editor or trigger); label press focuses or toggles; optional readout and description | `label`, `unit`, `readout`, `description`, `error`, `layout` (stacked, inline) |
 | `ui-field-grid` | no role; columns label \| control \| readout shared by its ui-field rows (`subgrid`); other children (headings) span | |
 | containers | `ui-group`, `ui-collection` (wrappers), `ui-card` (container), `ui-panel`, `ui-region`, `ui-page` (areas); CSS only | `size`, `gap`; card `padding` xs…xl |
+| `ui-separator` | `role=separator` (Base UI Separator); a rule max(1px, B) thick in the border role; not focusable | `orientation` |
+| `ui-avatar` | Base UI Avatar (Root, Image, Fallback); `role=img` named by `alt` or `name`; the image shows once loaded, the fallback (authored content, initials of `name`, or a user icon) until then, after `delay`; `loadingstatuschange` | `src`, `alt`, `name`, `avatar-size` (sm 6u, md 8u, lg 12u, xl 16u), `delay` |
 
 ### Part names
 
@@ -57,7 +61,7 @@ Value-bearing components take [Base UI](https://base-ui.com)'s props and report 
 
 - **Values**: `value` and `defaultValue` (attribute `default-value`) on `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented`, `ui-palette` and `ui-range`; `checked` and `defaultChecked` (`default-checked`) on the choices. The default sets the first value when no value attribute or property did, and is the value form reset returns to; without it the value attribute is the default, like a native input's (`settleDefault`, `core/form-element.ts`). `ui-select` also has `open` and `defaultOpen` (`default-open`); setting `open` shows or hides the popup without an event.
 - **Web component events**: `change` (and `input`, which ui-range and ui-input fire on every change and the others with `change`) are `CustomEvent`s whose `detail` is `{ value, reason, event }`: choices `{ checked, value, reason, event }`, a selectable chip's `change` `{ pressed, reason, event }`. `ui-select` fires `openchange` (cancelable: `preventDefault` keeps the popup as it is) with `{ open, reason, event }`. `event` is the DOM event that caused the change.
-- **React**: Checkbox, Radio, Switch `onCheckedChange(checked, details)`; Input, Listbox, Segmented, Palette, Select `onValueChange(value, details)`; Range `onValueChange` and `onValueCommitted` (the native change event); Chip `onSelectedChange(selected, details)`; Select `open`, `defaultOpen` and `onOpenChange(open, details)` within what the native select allows (`showPicker` needs user activation and cannot close; the open state is reread from `select:open`). The native `onChange` still fires.
+- **React**: Toggle `pressed`, `defaultPressed`, `onPressedChange(pressed, details)`; Checkbox, Radio, Switch `onCheckedChange(checked, details)`; Input, Listbox, Segmented, Palette, Select `onValueChange(value, details)`; Range `onValueChange` and `onValueCommitted` (the native change event); Chip `onSelectedChange(selected, details)`; Select `open`, `defaultOpen` and `onOpenChange(open, details)` within what the native select allows (`showPicker` needs user activation and cannot close; the open state is reread from `select:open`). The native `onChange` still fires.
 - **Reasons** (Base UI's names): `item-press` (an option or swatch pressed, or Enter / Space on the highlighted option), `keyboard` (arrow, Home / End, Page or typeahead keys in a listbox, palette or range), `list-navigation` (a navigation key opened the select), `trigger-press`, `outside-press`, `escape-key`, `focus-out` (blur; Tab commits the highlighted option), `track-press` and `drag` (range), `none` (checkbox, radio, switch, chip, input: Base UI's only reason for them). Both renderers report the same reason for the same interaction (`test/events.test.ts`).
 
 ## Composition
@@ -74,10 +78,13 @@ Every component with parts can be written two ways, and both render the same DOM
 | Select | `Select.Root`, `Select.Label`, `Select.Trigger`, `Select.Value`, `Select.Icon`, `Select.Popup`, `Select.List`, `Select.Item`, `Select.ItemText`, `Select.ItemIndicator`, *`Select.Description`*, *`Select.Error`* |
 | Checkbox, Radio, Switch | `Checkbox.Root` / `Checkbox.Indicator`, `Radio.Root` / `Radio.Indicator`, `Switch.Root` / `Switch.Thumb` |
 | Slider (alias Range), Progress | `Slider.Root`, `Slider.Track`, `Slider.Indicator`, `Slider.Thumb`; `Progress.Root`, `Progress.Track`, `Progress.Indicator` |
+| Meter | `Meter.Root`, `Meter.Label`, `Meter.Value`, `Meter.Track`, `Meter.Indicator` |
+| Avatar | `Avatar.Root`, `Avatar.Image`, `Avatar.Fallback` |
 | Field | `Field.Root`, `Field.Label` (*`unit`*), `Field.Control`, `Field.Description`, `Field.Error`, *`Field.Readout`* |
 | Input | *`Input.Root`*, *`Input.Label`*, *`Input.Control`*, *`Input.Description`*, *`Input.Error`* (Base UI's Field parts on the input's own recipe) |
 | Listbox, Segmented | `Listbox.Root`, `Listbox.Item`, `Listbox.ItemText`, `Listbox.ItemIndicator`; `Segmented.Root`, `Segmented.Item`, `Segmented.ItemText` (`Listbox`, `Segmented`, `Option` are the same components) |
 | Button | one part: `Button` |
+| Toggle, Separator | one part each: `Toggle`, `Separator` |
 
 - **render** (`components/compound.react.tsx`, `renderPart`): an element, whose props are merged with the part's (classes join, styles merge, handlers and refs both run, its other props win), or `(props, state) => element`. The recipe class, `data-part` and the data-* state stay on whatever renders.
 - **className**: a string, or `(state) => string`; added after the recipe class. The state is the part's data-* state as camelCase values (`data-popup-open` → `popupOpen: true`, `data-orientation="vertical"` → `orientation: 'vertical'`); every part receives its Root's state (an item its own: `selected`, `highlighted`, `disabled`).
@@ -129,6 +136,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 |---|---|---|---|
 | `ui-button` (Button) | `data-disabled`, `data-busy` | | `data-busy` ours |
 | `ui-chip` (Chip) | `data-disabled`, `data-pressed` (selected) | | Base UI Toggle |
+| `ui-toggle` (Toggle) | `data-pressed`, `data-disabled` | | Base UI Toggle |
 | `ui-checkbox` (Checkbox) | `data-checked` / `data-unchecked` / `data-indeterminate` (instead of either), field state | | Base UI Checkbox |
 | `ui-radio`, `ui-switch` (Radio, Switch) | `data-checked` / `data-unchecked`, field state | | Base UI Radio, Switch |
 | `ui-input` (Input) | field state, `data-readonly` | | Base UI Field / Input |
@@ -136,11 +144,14 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-listbox`, `ui-segmented` (Listbox, Segmented) | field state, `data-orientation` | options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select.Item and Radio Group names (Base UI has no listbox) |
 | `ui-range` (Range) | field state, `data-orientation`, `data-dragging` | | Base UI Slider |
 | `ui-progress` (Progress) | `data-indeterminate` / `data-progressing` / `data-complete` | | Base UI Progress |
+| `ui-meter` (Meter) | none (Base UI Meter has none; the value is ARIA and `--ui-ratio`) | | Base UI Meter |
 | `ui-palette` (Palette) | field state, `data-orientation` | swatches `data-selected`, `data-highlighted` (while the palette has focus) | Base UI names on a component of ours |
 | `ui-swatch` (Swatch) | `data-alpha` (translucent), `data-invalid` (unparsable color) | | `data-alpha` ours |
 | `ui-swiper` (Swiper) | `data-single` | dots `data-selected` (current slide); paddles `data-disabled` | `data-single` ours; Base UI has no carousel |
 | `ui-image` (Image) | | `img[data-error]` | ours |
 | `ui-field` (Field) | none; reads its control's `data-disabled` / `data-required` (`:has`) | | |
+| `ui-separator` (Separator) | `data-orientation` | | Base UI Separator |
+| `ui-avatar` (Avatar) | | image `data-loading`, `data-error` | Base UI Avatar.Image |
 
 Where a React renderer keeps a native pseudo-class, and why: `:disabled` beside `data-disabled` for a native control disabled by an ancestor `<fieldset disabled>`, which React cannot see; the React Select's open state (`select:open`), its options' selection and highlight (`:checked`, `:focus`) and its popup (`::picker(select)`), because the browser owns the customizable select's picker and reports none of it to script (a native select has no placeholder either). React validity is read from the native control's constraint validation when the host sets `data-valid` / `data-invalid`, so both renderers show errors at the same moment (blur or a blocked submit), not at `:user-invalid` time. Not implemented: `data-starting-style` / `data-ending-style` (the select popup's enter and exit stay on `@starting-style` and `allow-discrete` transitions with the reveal intent).
 

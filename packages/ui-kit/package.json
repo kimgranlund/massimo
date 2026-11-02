@@ -39,7 +39,15 @@
     "./components/swiper/react": "./components/swiper/swiper.react.tsx",
     "./components/select/react": "./components/select/select.react.tsx",
     "./components/field/element": "./components/field/field.element.ts",
-    "./components/field/react": "./components/field/field.react.tsx"
+    "./components/field/react": "./components/field/field.react.tsx",
+    "./components/separator/element": "./components/separator/separator.element.ts",
+    "./components/separator/react": "./components/separator/separator.react.tsx",
+    "./components/avatar/element": "./components/avatar/avatar.element.ts",
+    "./components/avatar/react": "./components/avatar/avatar.react.tsx",
+    "./components/meter/element": "./components/meter/meter.element.ts",
+    "./components/meter/react": "./components/meter/meter.react.tsx",
+    "./components/toggle/element": "./components/toggle/toggle.element.ts",
+    "./components/toggle/react": "./components/toggle/toggle.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

@@ -15,6 +15,10 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/separator/element';
+import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/meter/element';
+import '@massimo/ui-kit/components/toggle/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -31,6 +35,10 @@ import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react
 import { Range, Progress } from '@massimo/ui-kit/components/range/react';
 import { Field } from '@massimo/ui-kit/components/field/react';
 import { Slider } from '@massimo/ui-kit/components/range/react';
+import { Separator } from '@massimo/ui-kit/components/separator/react';
+import { Avatar } from '@massimo/ui-kit/components/avatar/react';
+import { Meter } from '@massimo/ui-kit/components/meter/react';
+import { Toggle } from '@massimo/ui-kit/components/toggle/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 const r2 = (v: number) => Math.round(v * 100) / 100;
@@ -72,6 +80,16 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-select data-k="sel" label="Role" value="eng"><i slot="leading" name="briefcase" /><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
         <div style={{ width: 300 }}><ui-swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></ui-swiper></div>
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
+        <div style={{ width: 300 }}><ui-separator data-k="sp" /></div>
+        <div style={{ display: 'flex', height: 40 }}><ui-separator data-k="spv" orientation="vertical" /></div>
+        <ui-avatar data-k="av" name="Ada Lovelace" />
+        <ui-toggle data-k="tg"><i slot="leading" name="star" />Star</ui-toggle>
+        <ui-toggle data-k="tgP" pressed>Bold<span slot="suffix">B</span></ui-toggle>
+        <ui-toggle data-k="tgD" disabled aria-label="Off"><i slot="leading" name="text-b" /></ui-toggle>
+        <div style={{ width: 300 }}><ui-meter data-k="mt" label="Storage" value={30} /></div>
+        <div style={{ width: 300 }}><ui-meter data-k="mtN" value={3} max={4} format='{"style":"decimal"}' /></div>
+        <ui-avatar data-k="avS" avatar-size="sm" />
+        <ui-avatar data-k="avX" avatar-size="xl" alt="Team">TM</ui-avatar>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -107,6 +125,16 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><div data-k="sel"><Select label="Role" defaultValue="eng" leading={<i name="briefcase" />}><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div></div>
         <div style={{ width: 300 }}><Swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></Swiper></div>
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
+        <div style={{ width: 300 }}><Separator data-k="sp" /></div>
+        <div style={{ display: 'flex', height: 40 }}><Separator data-k="spv" orientation="vertical" /></div>
+        <Avatar data-k="av" name="Ada Lovelace" />
+        <Toggle data-k="tg" leading={<i name="star" />}>Star</Toggle>
+        <Toggle data-k="tgP" pressed suffix="B">Bold</Toggle>
+        <Toggle data-k="tgD" disabled aria-label="Off" leading={<i name="text-b" />} />
+        <div style={{ width: 300 }}><Meter data-k="mt" label="Storage" value={30} /></div>
+        <div style={{ width: 300 }}><Meter data-k="mtN" value={3} max={4} format={{ style: 'decimal' }} /></div>
+        <Avatar data-k="avS" avatarSize="sm" />
+        <Avatar data-k="avX" avatarSize="xl" alt="Team">TM</Avatar>
       </div>
     </div>
   );
@@ -123,6 +151,7 @@ function ComposedPair({ u }: { u: number }) {
       <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
       <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
       <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
+      <div style={{ width: 300 }}><Meter data-k="mt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
       <div style={{ width: 300 }}><Input data-k="in" label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
       <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option></Listbox>
@@ -134,6 +163,7 @@ function ComposedPair({ u }: { u: number }) {
       <ui-radio data-k="wrd" name={`wr${u}`} value="a" checked>One</ui-radio>
       <div style={{ width: 300 }}><ui-range data-k="wrg" value={25} /></div>
       <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40} /></div>
+      <div style={{ width: 300 }}><ui-meter data-k="wmt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><ui-field data-k="wfd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big"><ui-range value={25} /></ui-field></div>
       <div style={{ width: 300 }}><ui-input data-k="win" label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
       <ui-listbox data-k="wlb" label="Folder" value="inbox"><ui-option value="inbox"><i slot="leading" name="tray" />Inbox<span slot="suffix">12</span></ui-option><ui-option value="sent">Sent</ui-option></ui-listbox>
@@ -149,6 +179,7 @@ function ComposedPair({ u }: { u: number }) {
       <Switch.Root data-k="sw" defaultChecked suffix="on"><Switch.Thumb />Wi-Fi</Switch.Root>
       <div style={{ width: 300 }}><Slider.Root data-k="rg" defaultValue={25} label="Volume"><Slider.Track><Slider.Indicator /></Slider.Track><Slider.Thumb /></Slider.Root></div>
       <div style={{ width: 300 }}><Progress.Root data-k="pg" value={40} label="Upload"><Progress.Track><Progress.Indicator /></Progress.Track></Progress.Root></div>
+      <div style={{ width: 300 }}><Meter.Root data-k="mt" value={40}><Meter.Label>Storage</Meter.Label><Meter.Value /><Meter.Track><Meter.Indicator /></Meter.Track></Meter.Root></div>
       <div style={{ width: 300 }}>
         <Field.Root data-k="fd" layout="inline">
           <Field.Label unit="px">Unit</Field.Label><Field.Control render={(ids) => <Range {...ids} defaultValue={25} />} />
@@ -172,6 +203,7 @@ function ComposedPair({ u }: { u: number }) {
       <ui-radio data-k="wrd" name={`wr${u}c`} value="a" checked><span data-part="indicator" /><span data-part="contents">One</span></ui-radio>
       <div style={{ width: 300 }}><ui-range data-k="wrg" value={25}><span data-part="track"><span data-part="indicator" /></span><span data-part="thumb" /></ui-range></div>
       <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40}><span data-part="track"><span data-part="indicator" /></span></ui-progress></div>
+      <div style={{ width: 300 }}><ui-meter data-k="wmt" value={40}><span data-part="label">Storage</span><span data-part="value" /><span data-part="track"><span data-part="indicator" /></span></ui-meter></div>
       <div style={{ width: 300 }}>
         <ui-field data-k="wfd" layout="inline">
           <span data-part="label"><span data-part="contents">Unit</span><span data-part="suffix">px</span></span><ui-range value={25} />
@@ -235,11 +267,11 @@ setTimeout(() => {
     };
   };
   // State contract (contracts/states.json): the twins carry the same data-* state attributes.
-  const STRUCTURE = new Set(['data-ui', 'data-part', 'data-size', 'data-icon-size', 'data-hide-label', 'data-selectable', 'data-mark', 'data-dir', 'data-index', 'data-remove', 'data-hover-controls', 'data-no-dots', 'data-no-paddles', 'data-ratio', 'data-fit', 'data-slideshow', 'data-generated', 'data-k', 'data-case', 'data-side']);
+  const STRUCTURE = new Set(['data-ui', 'data-part', 'data-size', 'data-icon-size', 'data-hide-label', 'data-selectable', 'data-mark', 'data-dir', 'data-index', 'data-remove', 'data-hover-controls', 'data-no-dots', 'data-no-paddles', 'data-ratio', 'data-fit', 'data-slideshow', 'data-generated', 'data-k', 'data-case', 'data-side', 'data-avatar-size']);
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD']) {
       const a = host(wc, k), b = host(re, k);
       const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch')];
       const pa = parts(a), pb = parts(b);
@@ -250,7 +282,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

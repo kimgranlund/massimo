@@ -66,13 +66,8 @@ export const DATA_BG = [
   css({ bg: 'data.4' }), css({ bg: 'data.5' }), css({ bg: 'data.6' }),
 ];
 
-// A person's initials in a round chip (combine with a tone).
-export const avatar = css({
-  display: 'inline-grid', placeItems: 'center', flexShrink: 0, width: '8', height: '8', borderRadius: 'full',
-  textStyle: 'control-small', fontWeight: 'semibold',
-});
-export const avatarSm = css({ width: '6', height: '6' });
 
 /** Images keep their own small radius inside cards (cards are not concentric with children). */
 export const media = css({ borderRadius: 'md', overflow: 'hidden', width: 'full' });
+// Tones for ui-avatar initials (an author class over the avatar's neutral fill).
 export const AVATAR_TONES: Tone[] = ['primary', 'secondary', 'info', 'success', 'warning'];

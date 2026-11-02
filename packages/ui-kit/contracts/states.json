@@ -19,7 +19,7 @@
     "data-unchecked": { "baseUi": true, "condition": "_unchecked", "meaning": "Checkbox, radio or switch is off." },
     "data-indeterminate": { "baseUi": true, "condition": "_indeterminate", "meaning": "Checkbox mixed (instead of data-checked / data-unchecked); progress without a value." },
     "data-busy": { "baseUi": false, "condition": "_busy", "meaning": "Button loading: activation blocked, label readable (aria-busy for semantics)." },
-    "data-pressed": { "baseUi": true, "condition": "_pressed", "meaning": "A toggle that is on (selectable chip, Base UI Toggle); the select trigger while its popup is open (Base UI Select.Trigger)." },
+    "data-pressed": { "baseUi": true, "condition": "_pressed", "meaning": "A toggle that is on (ui-toggle and the selectable chip, Base UI Toggle); the select trigger while its popup is open (Base UI Select.Trigger)." },
     "data-popup-open": { "baseUi": true, "condition": "_popupOpen", "meaning": "The select trigger's popup is open." },
     "data-placeholder": { "baseUi": true, "condition": null, "meaning": "The select trigger and value show the placeholder (no option selected). The ui-input editor's data-placeholder is its placeholder text, not a state." },
     "data-open": { "baseUi": true, "condition": "_open", "meaning": "The select popup is open." },
@@ -28,17 +28,19 @@
     "data-align": { "baseUi": true, "condition": null, "meaning": "The open popup's alignment to the trigger: start." },
     "data-selected": { "baseUi": true, "condition": "_selected", "meaning": "The selected option or swatch; the current slide's dot (swiper; Base UI has no carousel)." },
     "data-highlighted": { "baseUi": true, "condition": "_highlighted", "meaning": "The keyboard-highlighted option or swatch (aria-activedescendant); replaces data-active." },
-    "data-orientation": { "baseUi": true, "condition": null, "meaning": "horizontal or vertical: listbox, segmented, palette, range." },
+    "data-orientation": { "baseUi": true, "condition": null, "meaning": "horizontal or vertical: listbox, segmented, palette, range, separator." },
     "data-dragging": { "baseUi": true, "condition": "_dragging", "meaning": "A pointer drags the range thumb." },
     "data-progressing": { "baseUi": true, "condition": "_progressing", "meaning": "Progress with a value below the max." },
     "data-complete": { "baseUi": true, "condition": "_complete", "meaning": "Progress at the max." },
     "data-alpha": { "baseUi": false, "condition": null, "meaning": "The swatch color is translucent or missing: a checkerboard shows under it." },
     "data-single": { "baseUi": false, "condition": null, "meaning": "The swiper has one slide: no paddles or dots." },
-    "data-error": { "baseUi": false, "condition": null, "meaning": "On a ui-image img: the image failed to load (the frame's empty fill shows)." }
+    "data-error": { "baseUi": false, "condition": null, "meaning": "On a ui-image img: the image failed to load (the frame's empty fill shows). On an avatar image (Base UI Avatar.Image, the same name): the image failed and the fallback shows." },
+    "data-loading": { "baseUi": true, "condition": null, "meaning": "On an avatar image (Base UI Avatar.Image): the image is loading; the fallback shows until it loads." }
   },
   "components": {
     "ui-button": { "host": ["data-disabled", "data-busy"] },
     "ui-chip": { "host": ["data-disabled", "data-pressed"] },
+    "ui-toggle": { "host": ["data-disabled", "data-pressed"] },
     "ui-checkbox": { "host": ["data-checked", "data-unchecked", "data-indeterminate", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
     "ui-radio": { "host": ["data-checked", "data-unchecked", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
     "ui-switch": { "host": ["data-checked", "data-unchecked", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
@@ -57,6 +59,9 @@
     "ui-swatch": { "host": ["data-invalid", "data-alpha"] },
     "ui-swiper": { "host": ["data-single"], "dot": ["data-selected"], "paddle": ["data-disabled"] },
     "ui-image": { "img": ["data-error"] },
+    "ui-separator": { "host": ["data-orientation"] },
+    "ui-meter": { "host": [], "reads": "no state of its own (Base UI Meter has no data attributes); the value is ARIA (aria-valuenow, aria-valuetext) and --ui-ratio" },
+    "ui-avatar": { "host": [], "image": ["data-loading", "data-error"], "fallback": [] },
     "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" }
   },
   "native": {
@@ -66,8 +71,8 @@
     "React field validity": "The React hosts read the native control's validity (constraint validation) when they set data-valid / data-invalid; :user-invalid is not used, so both renderers show errors at the same moment (blur or a blocked submit)."
   },
   "states": {
-    "hover-press": { "hook": ":hover / :active on _enabled controls (not data-disabled, not data-busy)", "look": "neutral fill steps 3 → 4 → 5; solids primary.solidHover; selected options primary.subtleHover", "components": ["ui-button", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette"] },
-    "keyboard-focus": { "hook": ":focus-visible after key use (html[data-modality=keyboard])", "look": "2px focus-ring outline; text fields keep it after a pointer click", "components": ["ui-button", "ui-chip", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette", "ui-swiper"] },
+    "hover-press": { "hook": ":hover / :active on _enabled controls (not data-disabled, not data-busy)", "look": "neutral fill steps 3 → 4 → 5; solids primary.solidHover; selected options primary.subtleHover", "components": ["ui-button", "ui-toggle", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette"] },
+    "keyboard-focus": { "hook": ":focus-visible after key use (html[data-modality=keyboard])", "look": "2px focus-ring outline; text fields keep it after a pointer click", "components": ["ui-button", "ui-toggle", "ui-chip", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette", "ui-swiper"] },
     "highlighted": { "hook": "[data-highlighted]", "look": "neutral fill (options); focus-ring outline under keyboard modality (swatches)", "components": ["ui-option", "ui-swatch"] },
     "selected": { "hook": "[data-checked], [data-selected], [data-pressed]", "look": "primary solid (choices, chips) or primary subtle (select options); listbox and segmented: bg.selected; swiper: the stretched dot", "components": ["ui-option", "ui-checkbox", "ui-radio", "ui-switch", "ui-chip", "ui-swatch", "ui-swiper"] },
     "open": { "hook": "trigger [data-popup-open]; popup [data-open]", "look": "pressed fill, chevron turned 180°", "components": ["ui-select"] },
