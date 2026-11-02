@@ -435,7 +435,7 @@
     {
       "from": "component:range",
       "relation": "ownsPart",
-      "to": "part:track-fill"
+      "to": "part:track-indicator"
     },
     {
       "from": "component:range",
@@ -540,7 +540,7 @@
     {
       "from": "component:progress",
       "relation": "ownsPart",
-      "to": "part:track-fill"
+      "to": "part:track-indicator"
     },
     {
       "from": "component:progress",

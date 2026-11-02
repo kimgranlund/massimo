@@ -1,7 +1,7 @@
 /// <reference path="../jsx.d.ts" />
 // React <Select> and <SelectOption>: a native <select> with customizable-select styling (appearance:
 // base-select, Chromium 135+) and the web component's anatomy: label, trigger (the select's <button>:
-// leading, prefix, value = <selectedcontent>, suffix, chevron), popup (::picker(select)) and rich
+// leading, prefix, value = <selectedcontent>, suffix, icon = chevron), popup (::picker(select)) and rich
 // <option>s with construction-pattern parts. The select owns value, keys, typeahead, the popup and
 // the form value; browsers without base-select show the platform select.
 // The host carries the field state as data-* (state.react.ts), like ui-select's host. The open state
@@ -48,9 +48,9 @@ export function Select({ label, hideLabel, description, error, leading, prefix, 
         <button data-part="trigger" type="button" className={c.trigger}>
           {leading != null && <span data-part="leading" className={c.leading}>{leading}</span>}
           {prefix != null && <span data-part="prefix" className={c.prefix}>{prefix}</span>}
-          <selectedcontent data-part="contents" className={c.contents} />
+          <selectedcontent data-part="value" className={c.value} />
           {suffix != null && <span data-part="suffix" className={c.suffix}>{suffix}</span>}
-          <span data-part="trailing" aria-hidden="true" className={c.trailing}><i name="caret-down" /></span>
+          <span data-part="icon" aria-hidden="true" className={c.icon}><i name="caret-down" /></span>
         </button>
         {children}
       </select>

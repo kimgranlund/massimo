@@ -1,9 +1,11 @@
-// Slot recipe for <ui-select> and the React Select. The trigger is a button with a trailing chevron
-// slot (resolveSelectTrigger); the popup a composite list of options (recipe-parts.ts `composite`;
+// Slot recipe for <ui-select> and the React Select, in Base UI Select's anatomy: the trigger (a button
+// with a value and a chevron icon in the construction pattern's contents and trailing places,
+// resolveSelectTrigger), the popup and its list (display: contents, so the options lay out in the
+// popup), the items being <ui-option>s. The popup is a composite list of options (recipe-parts.ts `composite`;
 // the options read its values, listbox.recipe.ts).
 // React renders a native <select> with customizable-select styling (appearance: base-select): the
-// trigger is its <button>, the value its <selectedcontent>, the popup ::picker(select) (a
-// pseudo-element, so styled from the root), the options native <option>s. Browsers without
+// trigger is its <button>, the value its <selectedcontent>, the icon the chevron, the popup ::picker(select) (a
+// pseudo-element, so styled from the root; no list part), the options native <option>s. Browsers without
 // base-select show the platform select.
 import { defineSlotRecipe } from '@pandacss/dev';
 import { FORCED, FORCED_EDGE, composite, fieldControl, fieldParts, fieldRoot, mergeStyles, t } from '../recipe-parts.ts';
@@ -41,7 +43,7 @@ const hostGap = { '--ui-gap': 'inherit' };
 export const select = defineSlotRecipe({
   className: 'ui-select',
   description: 'Single-choice dropdown (ui-select, React Select).',
-  slots: ['root', 'label', 'trigger', 'leading', 'prefix', 'contents', 'suffix', 'trailing', 'popup', 'description', 'error'],
+  slots: ['root', 'label', 'trigger', 'leading', 'prefix', 'value', 'suffix', 'icon', 'popup', 'list', 'description', 'error'],
   base: {
     root: {
       ...fieldRoot,
@@ -68,10 +70,10 @@ export const select = defineSlotRecipe({
       }), {
       cursor: 'pointer', userSelect: 'none',
       // Open: the trigger holds the pressed fill and the chevron turns.
-      [`&${OPEN}`]: { bg: 'bg.mutedActive', '& > [data-part=trailing]': { rotate: '180deg' } },
-      '& > [data-part=contents]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
-      '& > [data-part=contents][data-placeholder]': { color: 'fg.subtle' },
-      '& > [data-part=trailing]': { color: 'fg.muted', transition: t('toggle', 'rotate') },
+      [`&${OPEN}`]: { bg: 'bg.mutedActive', '& > [data-part=icon]': { rotate: '180deg' } },
+      '& > [data-part=value]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
+      '& > [data-part=value][data-placeholder]': { color: 'fg.subtle' },
+      '& > [data-part=icon]': { color: 'fg.muted', transition: t('toggle', 'rotate') },
       [ANCHORED]: { anchorName: '--ui-select-trigger' },
       '&:is(select > *)': { width: '100%' },
     }),
@@ -82,5 +84,7 @@ export const select = defineSlotRecipe({
       '&:popover-open': { display: 'flex', ...open },
       [ANCHORED]: anchored,
     }),
+    // Base UI Select.List: the options' parent, transparent to layout (the popup is the composite).
+    list: { display: 'contents' },
   },
 });

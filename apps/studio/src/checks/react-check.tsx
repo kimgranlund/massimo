@@ -123,12 +123,13 @@ setTimeout(() => {
     const q = (s: string) => el.querySelector(s) as HTMLElement | null;
     const rect = (e: Element | null) => (e ? e.getBoundingClientRect() : null);
     const kids = [...el.children] as HTMLElement[];
-    const box = q('[data-part=box]'), track = q('[data-part=track]'), fill = q('[data-part=fill]'), thumb = q('[data-part=thumb]'), contents = q('[data-part=contents]');
+    const box = q('[data-part=indicator]'), track = q('[data-part=track]'), fill = q('[data-part=track] > [data-part=indicator]'), thumb = q('[data-part=thumb]'), contents = q('[data-part=contents]');
     const er = rect(el)!;
     return {
       height: r2(er.height), width: r2(er.width),
       boxW: box ? r2(rect(box)!.width) : 0, boxBg: box ? getComputedStyle(box).backgroundColor : '',
-      boxAfter: box ? getComputedStyle(box, '::after').translate + ' ' + getComputedStyle(box, '::after').backgroundColor : '',
+      // The radio dot is the indicator's ::after; the switch knob its thumb part.
+      boxAfter: box ? ((k: CSSStyleDeclaration) => k.translate + ' ' + k.backgroundColor)(box.querySelector(':scope > [data-part=thumb]') ? getComputedStyle(box.querySelector(':scope > [data-part=thumb]')!) : getComputedStyle(box, '::after')) : '',
       mark: box ? [...box.querySelectorAll('i')].map((i) => getComputedStyle(i).display).join(',') : '',
       contentsLeft: contents && !contents.hidden ? r2(rect(contents)!.left - er.left) : 0,
       fillW: fill ? r2(rect(fill)!.width) : 0, trackH: track ? r2(rect(track)!.height) : 0,
@@ -181,8 +182,8 @@ setTimeout(() => {
       ['host', ':scope', ':scope'], ['label', ':scope > [data-part=label]', ':scope > [data-part=label]'],
       ['trigger', ':scope > [data-part=trigger]', ':scope > select > [data-part=trigger]'],
       ['leading', ':scope > [data-part=trigger] > [data-part=leading]', ':scope > select > [data-part=trigger] > [data-part=leading]'],
-      ['value', ':scope > [data-part=trigger] > [data-part=contents]', ':scope > select > [data-part=trigger] > [data-part=contents]'],
-      ['chevron', ':scope > [data-part=trigger] > [data-part=trailing]', ':scope > select > [data-part=trigger] > [data-part=trailing]'],
+      ['value', ':scope > [data-part=trigger] > [data-part=value]', ':scope > select > [data-part=trigger] > [data-part=value]'],
+      ['chevron', ':scope > [data-part=trigger] > [data-part=icon]', ':scope > select > [data-part=trigger] > [data-part=icon]'],
     ];
     for (const [name, a, b] of parts) {
       const ea = wc.querySelector(a) ?? wc, eb = re.querySelector(b) ?? re;

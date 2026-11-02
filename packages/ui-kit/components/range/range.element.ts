@@ -7,8 +7,8 @@ import { applyAttrs, progressState, rangeDataAttrs, rangeKey, ratioOf, sliderAtt
 import { applyRecipe, partOf } from '../classes.ts';
 import { range, progress } from '../../styled-system/recipes/index.js';
 
-/** Track and fill parts of a range or progress host. */
-const trackPart = (host: Element) => (slot: string) => slot === 'fill' ? partOf(partOf(host, 'track') ?? host, 'fill') : partOf(host, slot);
+/** Track and indicator (Base UI Slider.Indicator / Progress.Indicator) parts of a range or progress host. */
+const trackPart = (host: Element) => (slot: string) => slot === 'indicator' ? partOf(partOf(host, 'track') ?? host, 'indicator') : partOf(host, slot);
 
 export class UIRange extends UIFormElement {
   static properties = {
@@ -45,7 +45,7 @@ export class UIRange extends UIFormElement {
   }
 
   template() {
-    return html`<span data-part="track"><span data-part="fill"></span></span><span data-part="thumb"></span>`;
+    return html`<span data-part="track"><span data-part="indicator"></span></span><span data-part="thumb"></span>`;
   }
 
   update() {
@@ -113,7 +113,7 @@ export class UIProgress extends UIElement {
   declare max: number;
   declare label: string;
 
-  template() { return html`<span data-part="track"><span data-part="fill"></span></span>`; }
+  template() { return html`<span data-part="track"><span data-part="indicator"></span></span>`; }
 
   update() {
     const p = progressState(this.value, this.max);

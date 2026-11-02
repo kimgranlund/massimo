@@ -19,7 +19,7 @@ test('checkbox: role, toggle by click and Space, mixed, form value, required', a
   assert.equal(c.getAttribute('role'), 'checkbox');
   assert.equal(c.getAttribute('aria-checked'), 'false');
   assert.equal(c.querySelector(NATIVE), null);
-  assert.equal(c.querySelector('[data-part=leading] > [data-part=box]') !== null, true, 'box in the leading slot');
+  assert.equal(c.querySelector('[data-part=leading] > [data-part=indicator]') !== null, true, 'indicator in the leading slot');
   assert.equal(c.validity.valueMissing, true);
   c.click(); await tick();
   assert.equal(c.getAttribute('aria-checked'), 'true');

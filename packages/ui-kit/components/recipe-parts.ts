@@ -62,8 +62,9 @@ export const CRITICAL_TINT = (pct: number) => `color-mix(in oklab, var(--colors-
 /** Prefix / suffix adornments: the label's color at 65%, so they read as secondary on any fill. */
 export const ADORN_COLOR = 'color-mix(in oklch, currentColor 65%, transparent)';
 
-const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
-const SLOT = ':is([data-part=leading], [data-part=trailing])';
+// The select trigger names its contents and trailing places after Base UI (value, icon).
+const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=value], [data-part=suffix])';
+const SLOT = ':is([data-part=leading], [data-part=trailing], [data-part=icon])';
 const ADORN = ':is([data-part=prefix], [data-part=suffix])';
 const FILL = ':is([icon-size=fill], [data-icon-size=fill], [icon-size=fill] *, [data-icon-size=fill] *)';
 const shown = (part: string) => `${part}:not([hidden])`;
@@ -108,7 +109,7 @@ export function constructionPattern({ slot, bare, between = 'calc(0.5 * var(--u)
     [`& > ${TEXT}`]: { ...text, paddingInlineStart: bare, paddingInlineEnd: bare },
     [`& > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap', ...(adornColor ? { color: ADORN_COLOR } : {}) },
     [`& > ${shown('[data-part=leading]')} ~ ${TEXT}`]: { paddingInlineStart: slot },
-    [`& > ${TEXT}:has(~ ${shown('[data-part=trailing]')})`]: { paddingInlineEnd: slot },
+    [`& > ${TEXT}:has(~ ${shown(':is([data-part=trailing], [data-part=icon])')})`]: { paddingInlineEnd: slot },
     [`& > ${shown(TEXT)} ~ ${TEXT}${TEXT}`]: { paddingInlineStart: between },
     [`& > ${TEXT}${TEXT}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: between },
   };
@@ -186,8 +187,8 @@ export function fieldControl(state: { invalid: string; disabled: string; readonl
       slot: 'var(--u)', bare: 'calc(2 * var(--u))',
       text: { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)' },
     }),
-    // Field text (input, select value) fills the row.
-    '& > [data-part=contents]': { flex: '1', minWidth: 'var(--slot)' },
+    // Field text (input contents, select value) fills the row.
+    '& > :is([data-part=contents], [data-part=value])': { flex: '1', minWidth: 'var(--slot)' },
     [`&:not(${state.disabled}, ${state.readonly}):hover`]: { bg: 'bg.mutedHover' },
     [`&${state.invalid}`]: { borderColor: 'critical.solid', bg: CRITICAL_TINT(14), '&:hover': { bg: CRITICAL_TINT(20) } },
     [`&${state.readonly}`]: { bg: 'bg.subtle', cursor: 'default' },

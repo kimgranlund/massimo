@@ -36,6 +36,21 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-field-grid` | no role; columns label \| control \| readout shared by its ui-field rows (`subgrid`); other children (headings) span | |
 | containers | `ui-group`, `ui-collection` (wrappers), `ui-card` (container), `ui-panel`, `ui-region`, `ui-page` (areas); CSS only | `size`, `gap`; card `padding` xs…xl |
 
+### Part names
+
+`data-part` values (and the slot recipe's slot names) follow [Base UI](https://base-ui.com) anatomy where Base UI has an equivalent part; the construction-pattern parts (`leading`, `prefix`, `contents`, `suffix`, `trailing`) keep their names inside them, except where a Base UI part takes their place (the select trigger's value and icon). Renamed parts:
+
+| Component | Old `data-part` | New `data-part` (Base UI part) | Graph ID |
+|---|---|---|---|
+| `ui-select` / Select | trigger › `contents` | trigger › `value` (Select.Value) | `part:select-value` |
+| `ui-select` / Select | trigger › `trailing` (chevron) | trigger › `icon` (Select.Icon) | `part:select-icon` (was `part:select-chevron`) |
+| `ui-select` | popup › `ui-option` | popup › `list` › `ui-option` (Select.Popup › List › Item); web component only, the native select has no list | `part:select-list` (new) |
+| `ui-checkbox`, `ui-radio` / Checkbox, Radio | leading › `box` | leading › `indicator` (Checkbox.Indicator, Radio.Indicator; the radio dot stays its `::after`) | `part:choice-indicator` (was `part:choice-box`) |
+| `ui-switch` / Switch | leading › `box` (track) with the knob as `::after` | leading › `indicator` › `thumb` (Switch.Thumb, now an element) | `part:choice-indicator`, `part:switch-thumb` (new) |
+| `ui-range`, `ui-progress` / Range, Progress | track › `fill` | track › `indicator` (Slider.Indicator, Progress.Indicator) | `part:track-indicator` (was `part:track-fill`) |
+
+Unchanged because they already carry the Base UI name: `label`, `description`, `error` (Field.Label, Description, Error), select `trigger` and `popup`, range `track` and `thumb`. Kept because Base UI has no equivalent: the input `control`, field `readout`, swiper `viewport`, `paddle`, `dots`, `dot`, image `slide`, chip `remove`. Base UI's `Select.ItemText` and `Select.ItemIndicator` have no counterpart: an option's label is its construction pattern's `contents`, and options draw no check indicator.
+
 ## Type
 
 Buttons, form controls (input, select, listbox, segmented, option, checkbox, radio, switch, range, palette), badges, tags and chips use the UI voice: the Controls face (system-ui) unless `data-font-ui` repoints it ([typography](typography.md)). Field descriptions and errors use the caption role.
@@ -55,7 +70,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-checkbox` (Checkbox) | `data-checked` / `data-unchecked` / `data-indeterminate` (instead of either), field state | | Base UI Checkbox |
 | `ui-radio`, `ui-switch` (Radio, Switch) | `data-checked` / `data-unchecked`, field state | | Base UI Radio, Switch |
 | `ui-input` (Input) | field state, `data-readonly` | | Base UI Field / Input |
-| `ui-select` (Select) | field state | trigger `data-popup-open`, `data-pressed` (while open), `data-placeholder`, `data-disabled`; popup `data-open` / `data-closed`, `data-side` (bottom, top), `data-align` (start); options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select; the parts are web component only (React: native, below) |
+| `ui-select` (Select) | field state | trigger `data-popup-open`, `data-pressed` (while open), `data-placeholder` (also on its `value`), `data-disabled`; popup `data-open` / `data-closed`, `data-side` (bottom, top), `data-align` (start); options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select; the parts are web component only (React: native, below) |
 | `ui-listbox`, `ui-segmented` (Listbox, Segmented) | field state, `data-orientation` | options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select.Item and Radio Group names (Base UI has no listbox) |
 | `ui-range` (Range) | field state, `data-orientation`, `data-dragging` | | Base UI Slider |
 | `ui-progress` (Progress) | `data-indeterminate` / `data-progressing` / `data-complete` | | Base UI Progress |

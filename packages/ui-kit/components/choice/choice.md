@@ -31,7 +31,8 @@ Construction pattern (shared by every labelled component):
 
 Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip 1u′ on both sides (u′ = their height / 8); choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
-- `part:choice-box` `:scope > [data-part=leading] > [data-part=box]`: The indicator (aria-hidden): checkbox box with check and minus marks, radio dot, or switch track and thumb. Created at connect unless authored.
+- `part:choice-indicator` `:scope > [data-part=leading] > [data-part=indicator]`: The indicator (aria-hidden; Base UI Checkbox.Indicator, Radio.Indicator): checkbox box with check and minus marks, radio circle with its dot, or switch track holding the thumb. Created at connect unless authored.
+- `part:switch-thumb` `:scope > [data-part=leading] > [data-part=indicator] > [data-part=thumb]`: The switch knob (Base UI Switch.Thumb) inside the indicator track; slides 4u when checked.
 
 ## Keyboard
 

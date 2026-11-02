@@ -338,23 +338,23 @@
       "status": "implemented",
       "tag": "div",
       "selector": ":scope > [data-part=trigger]",
-      "summary": "The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [chevron]; keeps focus while the popup is open."
+      "summary": "The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [icon] (Base UI Select.Trigger); keeps focus while the popup is open."
     },
     {
       "id": "part:select-value",
       "kind": "part",
       "status": "implemented",
       "tag": "span",
-      "selector": ":scope > [data-part=trigger] > [data-part=contents]",
-      "summary": "The selected option label, or the placeholder (data-placeholder)."
+      "selector": ":scope > [data-part=trigger] > [data-part=value]",
+      "summary": "The selected option label, or the placeholder (data-placeholder); Base UI Select.Value, in the construction pattern's contents place."
     },
     {
-      "id": "part:select-chevron",
+      "id": "part:select-icon",
       "kind": "part",
       "status": "implemented",
       "tag": "span",
-      "selector": ":scope > [data-part=trigger] > [data-part=trailing]",
-      "summary": "The caret-down icon (icon size sm); turns 180° when open."
+      "selector": ":scope > [data-part=trigger] > [data-part=icon]",
+      "summary": "The caret-down icon (Base UI Select.Icon, in the construction pattern's trailing place; icon size sm); turns 180° when open."
     },
     {
       "id": "part:select-popup",
@@ -362,7 +362,15 @@
       "status": "implemented",
       "tag": "div",
       "selector": ":scope > [data-part=popup]",
-      "summary": "The [popover=manual] listbox on bg.overlay holding the ui-option children; placed 1u from the trigger."
+      "summary": "The [popover=manual] listbox on bg.overlay (Base UI Select.Popup) holding the list; placed 1u from the trigger."
+    },
+    {
+      "id": "part:select-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list]",
+      "summary": "The ui-option children's parent (Base UI Select.List; the options are its items), display: contents so the options lay out in the popup. Web component only: the native select has none."
     }
   ],
   "edges": [
@@ -454,12 +462,17 @@
     {
       "from": "component:select",
       "relation": "ownsPart",
-      "to": "part:select-chevron"
+      "to": "part:select-icon"
     },
     {
       "from": "component:select",
       "relation": "ownsPart",
       "to": "part:select-popup"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-list"
     },
     {
       "from": "component:select",

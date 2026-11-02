@@ -59,8 +59,9 @@
         "slot-prefix?",
         "select-value",
         "slot-suffix?",
-        "select-chevron",
+        "select-icon",
         "select-popup",
+        "select-list",
         "field-description?",
         "field-error?"
       ],
@@ -159,7 +160,7 @@
       "element": "Host is the control (role=checkbox); children are the label; the indicator box sits in the leading slot.",
       "parts": [
         "slot-leading",
-        "choice-box",
+        "choice-indicator",
         "slot-prefix?",
         "slot-contents?",
         "slot-suffix?"
@@ -181,7 +182,7 @@
       "element": "Host is the control (role=radio); radios group by name within their form or document.",
       "parts": [
         "slot-leading",
-        "choice-box",
+        "choice-indicator",
         "slot-prefix?",
         "slot-contents?",
         "slot-suffix?"
@@ -202,7 +203,8 @@
       "element": "Host is the control (role=switch).",
       "parts": [
         "slot-leading",
-        "choice-box",
+        "choice-indicator",
+        "switch-thumb",
         "slot-prefix?",
         "slot-contents?",
         "slot-suffix?"
@@ -224,7 +226,7 @@
       "element": "Host is the slider (role=slider).",
       "parts": [
         "track",
-        "track-fill",
+        "track-indicator",
         "range-thumb"
       ],
       "allowedParents": [
@@ -243,7 +245,7 @@
       "element": "Host is the progress bar (role=progressbar).",
       "parts": [
         "track",
-        "track-fill"
+        "track-indicator"
       ],
       "allowedParents": [
         "page",

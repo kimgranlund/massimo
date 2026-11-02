@@ -1,5 +1,5 @@
 // React <Range> and <Progress>: native <input type="range"> and <progress> inside a data-ui host with
-// the web components' anatomy (track > fill, thumb). The native element owns value, keys, pointer,
+// the web components' anatomy (Base UI Slider and Progress anatomy: track > indicator, thumb). The native element owns value, keys, pointer,
 // form value and semantics; the painted parts follow it through --ui-ratio (a continuous value set as
 // a custom property). The native range thumb is as wide as the track, so its travel equals the
 // painted thumb's (range.recipe.ts). The host carries the data-* state contract like the web
@@ -43,7 +43,7 @@ export function Range({ value, defaultValue = 50, min = 0, max = 100, step = 1, 
   const c = range();
   return (
     <div ref={f.ref} data-ui="range" data-size={size} {...f.attrs} {...toReactProps(rangeDataAttrs({ dragging }))} {...f.handlers} className={cx(c.root, className)} style={{ ...style, '--ui-ratio': String(ratio) } as CSSProperties}>
-      <span data-part="track" className={c.track}><span data-part="fill" className={c.fill} /></span>
+      <span data-part="track" className={c.track}><span data-part="indicator" className={c.indicator} /></span>
       <span data-part="thumb" className={c.thumb} />
       <input
         type="range" min={min} max={max} step={step} aria-label={label} aria-valuetext={valueText}
@@ -70,7 +70,7 @@ export function Progress({ value, max = 100, label, size, className, style, ...r
   const c = progress();
   return (
     <div {...rest} data-ui="progress" data-size={size} {...toReactProps(p.attrs)} className={cx(c.root, className)} style={{ ...style, '--ui-ratio': String(p.ratio) } as CSSProperties}>
-      <span data-part="track" className={c.track}><span data-part="fill" className={c.fill} /></span>
+      <span data-part="track" className={c.track}><span data-part="indicator" className={c.indicator} /></span>
       <progress max={max} aria-label={label} {...(p.indeterminate ? {} : { value: p.value })} />
     </div>
   );

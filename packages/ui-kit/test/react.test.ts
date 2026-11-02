@@ -17,7 +17,7 @@ test('Checkbox, Radio, Switch: native input inside a data-ui label with the cons
   const cb = bare(h(Checkbox, { name: 'terms', defaultChecked: true, prefix: '#', suffix: '(2)' }, 'Accept'));
   assert.match(cb, /^<label data-ui="checkbox"/);
   assert.match(cb, /<input type="checkbox" name="terms" checked=""/);
-  assert.match(cb, /<span data-part="leading"><span data-part="box" aria-hidden="true"><i name="check-bold" data-mark="checked"><\/i><i name="minus-bold" data-mark="mixed"><\/i><\/span><\/span><span data-part="prefix">#<\/span><span data-part="contents">Accept<\/span><span data-part="suffix">\(2\)<\/span>/);
+  assert.match(cb, /<span data-part="leading"><span data-part="indicator" aria-hidden="true"><i name="check-bold" data-mark="checked"><\/i><i name="minus-bold" data-mark="mixed"><\/i><\/span><\/span><span data-part="prefix">#<\/span><span data-part="contents">Accept<\/span><span data-part="suffix">\(2\)<\/span>/);
   noCustom(cb);
   assert.match(bare(h(Switch, {}, 'Wi-Fi')), /<input type="checkbox" role="switch"/);
   assert.match(bare(h(Radio, { name: 'plan', value: 'pro' }, 'Pro')), /<input type="radio" name="plan" value="pro"/);
@@ -27,12 +27,12 @@ test('Checkbox, Radio, Switch: native input inside a data-ui label with the cons
 test('Range and Progress: native input/progress with track, fill, thumb and --ui-ratio', () => {
   const r = bare(h(Range, { defaultValue: 25, label: 'Volume', name: 'vol' }));
   assert.match(r, /^<div data-ui="range" data-filled="" data-orientation="horizontal" style="--ui-ratio:0.25">/);
-  assert.match(r, /<span data-part="track"><span data-part="fill"><\/span><\/span><span data-part="thumb"><\/span><input type="range" min="0" max="100" step="1" aria-label="Volume" name="vol" value="25"\/>/);
+  assert.match(r, /<span data-part="track"><span data-part="indicator"><\/span><\/span><span data-part="thumb"><\/span><input type="range" min="0" max="100" step="1" aria-label="Volume" name="vol" value="25"\/>/);
   noCustom(r);
   assert.match(bare(h(Progress, { value: 40, label: 'Upload' })), /--ui-ratio:0.4.*<progress max="100" aria-label="Upload" value="40"><\/progress>/);
   assert.match(bare(h(Progress, {})), /data-indeterminate=""/);
-  assert.match(html(h(Range, {})), /class="ui-range__root".*class="ui-range__track"><span data-part="fill" class="ui-range__fill">.*class="ui-range__thumb"/);
-  assert.match(html(h(Progress, {})), /class="ui-progress__root".*class="ui-progress__track"><span data-part="fill" class="ui-progress__fill">/);
+  assert.match(html(h(Range, {})), /class="ui-range__root".*class="ui-range__track"><span data-part="indicator" class="ui-range__indicator">.*class="ui-range__thumb"/);
+  assert.match(html(h(Progress, {})), /class="ui-progress__root".*class="ui-progress__track"><span data-part="indicator" class="ui-progress__indicator">/);
 });
 
 const { Badge, Tag, Chip } = await loadTsx(new URL('../components/btg/btg.react.tsx', import.meta.url));
@@ -115,7 +115,7 @@ const { Select, SelectOption } = await loadTsx(new URL('../components/select/sel
 test('Select: native <select> with a <button> trigger, <selectedcontent> value and rich options', () => {
   const s = bare(h(Select, { label: 'Role', name: 'role', defaultValue: 'eng', required: true, prefix: 'As' }, h(SelectOption, { value: 'design', leading: h('i', { name: 'pen' }) }, 'Designer'), h(SelectOption, { value: 'eng' }, 'Engineer')));
   assert.match(s, /^<div data-ui="select" data-required="" data-filled=""><label data-part="label" id="[^"]+" for="[^"]+">Role<\/label><select /);
-  assert.match(s, /<button data-part="trigger" type="button"><span data-part="prefix">As<\/span><selectedcontent data-part="contents"><\/selectedcontent><span data-part="trailing" aria-hidden="true"><i name="caret-down"><\/i><\/span><\/button>/);
+  assert.match(s, /<button data-part="trigger" type="button"><span data-part="prefix">As<\/span><selectedcontent data-part="value"><\/selectedcontent><span data-part="icon" aria-hidden="true"><i name="caret-down"><\/i><\/span><\/button>/);
   assert.match(s, /<option data-ui="option" value="design"><span data-part="leading"><i name="pen"><\/i><\/span><span data-part="contents">Designer<\/span><\/option><option data-ui="option" value="eng" selected="">/);
   const sel = s.match(/<select [^>]*>/)?.[0] ?? '';
   for (const a of ['name="role"', 'required=""']) assert.ok(sel.includes(a), `${a} in ${sel}`);

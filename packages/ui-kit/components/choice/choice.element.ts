@@ -1,6 +1,7 @@
 // <ui-checkbox>, <ui-radio>, <ui-switch>: form choices with zero native form elements.
 // The host is the control (role checkbox / radio / switch); children are the label. The
-// indicator sits in the leading slot. Radios group by `name` within their form (or document):
+// indicator (Base UI Checkbox.Indicator / Radio.Indicator; the switch's holds its Switch.Thumb) sits
+// in the leading slot. Radios group by `name` within their form (or document):
 // arrow keys move and select within the group, and only the checked radio is a tab stop.
 import { UIFormElement, define, type Problem } from '../../core/index.ts';
 import { applyAttrs, checkedDataAttrs } from '../../dom/index.ts';
@@ -29,12 +30,12 @@ abstract class UIChoice extends UIFormElement {
 
   connected() {
     this.#default = this.hasAttribute('checked');
-    if (!this.querySelector(':scope > [data-part=leading] > [data-part=box], :scope > [slot=leading][data-part=box]')) {
-      const box = this.indicator();
-      box.setAttribute('slot', 'leading');
-      box.setAttribute('data-part', 'box');
-      box.setAttribute('aria-hidden', 'true');
-      this.prepend(box);
+    if (!this.querySelector(':scope > [data-part=leading] > [data-part=indicator], :scope > [slot=leading][data-part=indicator]')) {
+      const indicator = this.indicator();
+      indicator.setAttribute('slot', 'leading');
+      indicator.setAttribute('data-part', 'indicator');
+      indicator.setAttribute('aria-hidden', 'true');
+      this.prepend(indicator);
     }
     this.#unslot = observeSlots(this);
     this.addEventListener('click', this.#onClick);
@@ -57,7 +58,8 @@ abstract class UIChoice extends UIFormElement {
       tabindex: this.tabStop() ? 0 : -1,
       ...checkedDataAttrs(this.checked, this.isIndeterminate()),
     });
-    applyRecipe(this, this.recipe(), (slot) => slot === 'box' ? partOf(partOf(this, 'leading') ?? this, 'box') : partOf(this, slot));
+    const indicator = () => partOf(partOf(this, 'leading') ?? this, 'indicator');
+    applyRecipe(this, this.recipe(), (slot) => slot === 'indicator' ? indicator() : slot === 'thumb' ? partOf(indicator() ?? this, 'thumb') : partOf(this, slot));
   }
 
   protected checkedState(): string { return String(this.checked); }
@@ -99,9 +101,9 @@ export class UICheckbox extends UIChoice {
   protected choiceRole = 'checkbox' as const;
   protected recipe() { return checkbox(); }
   protected indicator() {
-    const box = document.createElement('span');
-    box.innerHTML = '<i name="check-bold" data-mark="checked"></i><i name="minus-bold" data-mark="mixed"></i>';
-    return box;
+    const indicator = document.createElement('span');
+    indicator.innerHTML = '<i name="check-bold" data-mark="checked"></i><i name="minus-bold" data-mark="mixed"></i>';
+    return indicator;
   }
   protected checkedState() { return this.indeterminate ? 'mixed' : String(this.checked); }
   protected isIndeterminate() { return this.indeterminate; }
@@ -111,7 +113,11 @@ export class UICheckbox extends UIChoice {
 export class UISwitch extends UIChoice {
   protected choiceRole = 'switch' as const;
   protected recipe() { return switchRecipe(); }
-  protected indicator() { return document.createElement('span'); }
+  protected indicator() {
+    const indicator = document.createElement('span');
+    indicator.innerHTML = '<span data-part="thumb"></span>';
+    return indicator;
+  }
   // Switches also toggle on Enter.
   protected onKeydown = (e: KeyboardEvent) => {
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!this.isDisabled) this.activate(); }

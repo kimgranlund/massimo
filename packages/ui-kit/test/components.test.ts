@@ -231,7 +231,7 @@ test('ui-select: options move into popup; open, move, commit, cancel', async () 
   assert.equal(sel.popup!.contains(sel.options[0]), true);
   assert.equal(trigger.getAttribute('role'), 'combobox');
   assert.equal(trigger.getAttribute('aria-expanded'), 'false');
-  assert.equal(sel.querySelector('[data-part=trigger] > [data-part=contents]')!.textContent, 'Select…');
+  assert.equal(sel.querySelector('[data-part=trigger] > [data-part=value]')!.textContent, 'Select…');
 
   key(trigger, 'ArrowDown'); await tick();
   assert.equal(trigger.getAttribute('aria-expanded'), 'true');
@@ -241,7 +241,7 @@ test('ui-select: options move into popup; open, move, commit, cancel', async () 
   key(trigger, 'Enter'); await tick();
   assert.equal(sel.value, 'c');
   assert.equal(trigger.getAttribute('aria-expanded'), 'false');
-  assert.equal(sel.querySelector('[data-part=trigger] > [data-part=contents]')!.textContent, 'Cherry');
+  assert.equal(sel.querySelector('[data-part=trigger] > [data-part=value]')!.textContent, 'Cherry');
 
   key(trigger, ' '); await tick();
   key(trigger, 'Home'); await tick();
@@ -319,7 +319,7 @@ test('ui-input and ui-select: adornments join the control / trigger in pattern o
   assert.equal(control.querySelector('[data-part=trailing]').hidden, true);
   assert.equal(input.editor, control.querySelector('[data-part=contents]'));
   const trigger = select.trigger;
-  assert.deepEqual([...trigger.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
+  assert.deepEqual([...trigger.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'value', 'suffix', 'icon']);
   assert.equal(trigger.querySelector('[data-part=prefix]').textContent, 'Size');
   assert.equal(trigger.querySelector('[data-part=leading]').hidden, true);
   // Reconnect keeps the adornments in place.

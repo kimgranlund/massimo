@@ -30,10 +30,11 @@ Construction pattern (shared by every labelled component):
 
 Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip 1u′ on both sides (u′ = their height / 8); choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
-- `part:select-trigger` `:scope > [data-part=trigger]`: The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [chevron]; keeps focus while the popup is open.
-- `part:select-value` `:scope > [data-part=trigger] > [data-part=contents]`: The selected option label, or the placeholder (data-placeholder).
-- `part:select-chevron` `:scope > [data-part=trigger] > [data-part=trailing]`: The caret-down icon (icon size sm); turns 180° when open.
-- `part:select-popup` `:scope > [data-part=popup]`: The [popover=manual] listbox on bg.overlay holding the ui-option children; placed 1u from the trigger.
+- `part:select-trigger` `:scope > [data-part=trigger]`: The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [icon] (Base UI Select.Trigger); keeps focus while the popup is open.
+- `part:select-value` `:scope > [data-part=trigger] > [data-part=value]`: The selected option label, or the placeholder (data-placeholder); Base UI Select.Value, in the construction pattern's contents place.
+- `part:select-icon` `:scope > [data-part=trigger] > [data-part=icon]`: The caret-down icon (Base UI Select.Icon, in the construction pattern's trailing place; icon size sm); turns 180° when open.
+- `part:select-popup` `:scope > [data-part=popup]`: The [popover=manual] listbox on bg.overlay (Base UI Select.Popup) holding the list; placed 1u from the trigger.
+- `part:select-list` `:scope > [data-part=popup] > [data-part=list]`: The ui-option children's parent (Base UI Select.List; the options are its items), display: contents so the options lay out in the popup. Web component only: the native select has none.
 
 ## Keyboard
 
