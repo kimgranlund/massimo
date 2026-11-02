@@ -6,7 +6,7 @@ Steps for a new theme parameter, a new Panda token, or a new color default. What
 
 1. Add it to `PARAMS` in `tokens/themes/params.ts` with label, range, step and default. It is emitted as `--ui-<name>` on `:root`, accepted by `validateTheme` and `themes.json`, and appears in the jig's Copy JSON when it differs from the default.
 2. Use it: in a resolver and its CSS twin together (`tokens/geometry/resolve.ts` with `styles/geometry.ts`, or `tokens/typography/resolve.ts` with `styles/typography.ts`), or in a token (`tokens/motion/index.ts`). Tokens that read it are declared on `:root`; if the jig canvas or a `[size]` subtree must re-resolve them, they go through `unitTokenVars()` or `motionTokenVars()`.
-3. Add a row to the panel in `apps/studio/src/studio/App.tsx` (a `Range` or `Select` bound to `params`).
+3. Add a row to the panel in `apps/studio/src/studio/App.tsx` (a `Range` or `Select` bound to `params`; motion parameters go in `studio/MotionPanel.tsx`).
 4. Document it in the parameter table of [theming](../specs/theming.md#theme-parameters) and in the spec of the area it drives.
 
 ## A Panda token

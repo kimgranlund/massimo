@@ -2,6 +2,7 @@
 // Each becomes a CSS custom property `--ui-<name>`, so a theme is just a set of values
 // that can change at runtime without regenerating any CSS.
 import { CONTAINERS } from '../geometry/resolve.ts';
+import { SPRINGS, SPRING_NAMES, INTENTS, BOUNCE_MAX, type SpringName, type IntentName } from '../motion/index.ts';
 
 export interface ParamSpec { label: string; min: number; max: number; step: number; default: number }
 
@@ -14,13 +15,32 @@ export const PARAMS = {
   // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).
   'type-ratio':     { label: 'Type ratio',     min: 1, max: 1.5, step: 0.001, default: 1.333 },
   'type-rhythm':    { label: 'Type rhythm (u)', min: 0, max: 1, step: 0.5, default: 1 },
-  // Motion (tokens/motion): durations × scale (0 = instant); bounce 0–1 blends each overshooting
-  // spring toward its critically damped twin (1 = as designed). Root-level, like saved themes.
+  // Motion (tokens/motion, docs/specs/motion.md): two global multipliers, then per spring its
+  // perceptual duration (s) and bounce, then per intent the spring it uses (index into SPRING_NAMES).
+  // Durations × scale (0 = instant); every bounce × motion-bounce (0 = critically damped).
   'motion-scale':   { label: 'Duration scale',  min: 0, max: 2, step: 0.05, default: 1 },
-  'motion-bounce':  { label: 'Bounce',         min: 0, max: 1, step: 0.05, default: 1 },
+  'motion-bounce':  { label: 'Bounce scale',   min: 0, max: 1, step: 0.05, default: 1 },
+  ...springParams(),
+  ...intentParams(),
   // Container ladder: padding and gap per level, in units of u (pad-card, gap-card, …).
   ...containerParams(),
 } as const satisfies Record<string, ParamSpec>;
+
+function springParams() {
+  const out = {} as Record<`spring-${SpringName}-duration` | `spring-${SpringName}-bounce`, ParamSpec>;
+  for (const [name, s] of Object.entries(SPRINGS) as [SpringName, (typeof SPRINGS)[SpringName]][]) {
+    out[`spring-${name}-duration`] = { label: `${name} duration (s)`, min: 0.05, max: 1.5, step: 0.01, default: s.duration };
+    out[`spring-${name}-bounce`] = { label: `${name} bounce`, min: 0, max: BOUNCE_MAX, step: 0.01, default: s.bounce };
+  }
+  return out;
+}
+
+function intentParams() {
+  const out = {} as Record<`intent-${IntentName}`, ParamSpec>;
+  for (const [intent, spring] of Object.entries(INTENTS) as [IntentName, SpringName][])
+    out[`intent-${intent}`] = { label: `${intent} spring`, min: 0, max: SPRING_NAMES.length - 1, step: 1, default: SPRING_NAMES.indexOf(spring) };
+  return out;
+}
 
 type Level = keyof typeof CONTAINERS;
 function containerParams() {

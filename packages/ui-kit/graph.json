@@ -904,7 +904,9 @@
         "easings",
         "spring tokens",
         "motion intents",
-        "motion-scale"
+        "motion-scale",
+        "spring params",
+        "intent mapping"
       ]
     },
     "tokens:radii": {

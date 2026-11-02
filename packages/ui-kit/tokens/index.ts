@@ -16,4 +16,8 @@ export * from './themes/index.ts';
 export * from './geometry/resolve.ts';
 export * from './typography/resolve.ts';
 export { unitTokenVars, unitTokenCss } from './geometry/index.ts';
-export { motionTokenVars, motionTokenCss, INTENTS, SPRINGS, RESOLVED_SPRINGS, type IntentName, type SpringName } from './motion/index.ts';
+export {
+  motionTokenVars, motionTokenCss, motionVars, INTENTS, SPRINGS, SPRING_NAMES, BOUNCE_MAX, RESOLVED_SPRINGS,
+  springAt, spanFactor, shapeAt, resolveSpring, liveSpring, liveMotion, intentSpring,
+  type IntentName, type SpringName, type Spring,
+} from './motion/index.ts';

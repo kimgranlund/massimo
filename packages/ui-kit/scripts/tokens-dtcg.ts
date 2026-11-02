@@ -3,7 +3,7 @@
 //   typography.dtcg.json    faces (fontFamily), voices (aliases), role styles (typography), role metrics
 //   color.light.dtcg.json   Spectrum ramps (oklch color tokens) and roles (aliases) and shadows, light scheme
 //   color.dark.dtcg.json    the same, dark scheme
-//   motion.dtcg.json        springs: settle duration, cubic-bezier fit, transition; exact linear() in extensions;
+//   motion.dtcg.json        springs: span duration, cubic-bezier fit, transition; exact linear() in extensions;
 //                           intents (feedback, toggle, reveal, emphasis) as transition aliases
 //   index.json              file list (not a DTCG file)
 // DTCG has no arithmetic: $value is the default-theme value; com.massimo.formula carries the rule and
@@ -145,14 +145,15 @@ export const DTCG_DIR = fileURLToPath(new URL('../tokens/dtcg/', import.meta.url
 export function motionTokens(): Json {
   const tree: Json = { $schema: SCHEMA, $description: 'Motion: SwiftUI-style springs (duration, bounce) solved exactly. CSS uses the linear() easing; the cubic-bezier is a fit for tools without linear().' };
   for (const [name, r] of Object.entries(RESOLVED_SPRINGS)) {
-    const ext = { 'com.massimo.spring': { duration: r.duration, bounce: r.bounce, css: r.css } };
-    put(tree, ['motion', name, 'duration'], { $type: 'duration', $value: { value: r.ms, unit: 'ms' }, $description: 'settle time (within 0.1% of rest)' });
+    const ext = { 'com.massimo.spring': { duration: r.duration, bounce: r.bounce, css: r.css, params: [`spring-${name}-duration`, `spring-${name}-bounce`] } };
+    put(tree, ['motion', name, 'duration'], { $type: 'duration', $value: { value: r.ms, unit: 'ms' }, $description: 'span: duration × span(bounce), the settle time (within 0.1% of rest) at the default bounces' });
     put(tree, ['motion', name, 'easing'], { $type: 'cubicBezier', $value: fitBezier(r), $extensions: ext });
     put(tree, ['motion', name, 'transition'], { $type: 'transition', $value: { duration: `{motion.${name}.duration}`, delay: { value: 0, unit: 'ms' }, timingFunction: `{motion.${name}.easing}` }, $extensions: ext });
   }
-  // Values are at the default theme (motion-scale 1, motion-bounce 1); the params are CSS-only inputs.
+  // Values are at the default theme (motion-scale 1, motion-bounce 1, default springs and intent
+  // mapping); the params are CSS-only inputs, named in com.massimo.param.
   for (const [intent, spring] of Object.entries(INTENTS))
-    put(tree, ['motion', 'intent', intent], { $type: 'transition', $value: `{motion.${spring}.transition}`, $description: `${intent}: the ${spring} spring` });
+    put(tree, ['motion', 'intent', intent], { $type: 'transition', $value: `{motion.${spring}.transition}`, $description: `${intent}: the ${spring} spring by default`, $extensions: { 'com.massimo.param': `intent-${intent}` } });
   return tree;
 }
 

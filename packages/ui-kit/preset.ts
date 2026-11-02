@@ -4,7 +4,7 @@
 import { definePreset } from '@pandacss/dev';
 import { tokens, semanticTokens, themeCss } from './tokens/index.ts';
 import { breakpoints } from './tokens/geometry/index.ts';
-import { reset, textStyles, typography, page, prose, geometry, defaults, pending, pendingKeyframes } from './styles/index.ts';
+import { reset, textStyles, typography, page, prose, geometry, motion, motionProperties, defaults, pending, pendingKeyframes } from './styles/index.ts';
 import { withNativeTwins } from './styles/native.ts';
 import { conditions as stateConditions } from './styles/conditions.ts';
 import { slotRecipes } from './components/recipes.ts';
@@ -21,12 +21,14 @@ export function mergeGlobalCss(...parts: Css[]): Css {
   return out;
 }
 
-export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, defaults, pending } as Record<string, Css>;
+export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, pending } as Record<string, Css>;
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',
   // Native twins for the remaining global rules (containers, composite geometry): styles/native.ts.
   globalCss: withNativeTwins(mergeGlobalCss(...Object.values(globalCssParts))) as any,
+  // Derived motion variables registered as <number> (styles/motion.ts).
+  globalVars: motionProperties,
   // Scheme conditions used by semantic colors: OS preference, plus explicit class overrides.
   // plus the state conditions shared by both renderers (styles/conditions.ts).
   conditions: { osDark: '@media (prefers-color-scheme: dark)', dark: '.dark &', light: '.light &', ...stateConditions },
