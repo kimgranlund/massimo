@@ -222,6 +222,11 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
     // omit block padding (the row centers the text).
     ...(kind === 'chip' ? singleLine(fontSize, slot) : { lineHeight: Math.min(1.2 * fontSize, slot), paddingBlock: 0 }),
     iconSize: resolveIcon(fontSize, u, x.iconSize, slot),
+    // Optical balance: icon slots hug the glyph inline (fill keeps the square slot) and take 1u′ on
+    // their outer side, so the visible edge is 0.5u′ + 1u′ beside text and beside icons alike.
+    slotInline: x.iconSize === 'fill' ? slot : resolveIcon(fontSize, u, x.iconSize, slot),
+    iconEdge: x.iconSize === 'fill' ? 0 : lu,
+    visibleEdge: pad + b + lu,
     // Concentric: edge 0.5u′ + slot / 3 (the button's 1u + 6u / 3), × curvature, pill at height / 2.
     radius: Math.min((0.5 * lu + slot / 3) * x.radiusScale, height / 2),
   };

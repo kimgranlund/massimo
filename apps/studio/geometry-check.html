@@ -111,7 +111,8 @@ for (const c of cases) {
     'badge.lineHeight': [px(cs(contentsOf(badge)).lineHeight), r2(rb.lineHeight)],
     'chip.font': [px(cs(chip).fontSize), rc.fontSize],
     'chip.padding': [px(cs(chip).paddingTop), rc.padding],
-    'chip.slot': [r2(rect(slotOf(chip)).width), rc.slot],
+    'chip.slot': [r2(rect(slotOf(chip)).height), rc.slot],
+    'chip.slot.inline': [r2(rect(slotOf(chip)).width), r2(rc.slotInline)],
     'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
     'chip.radius': [px(cs(chip).borderTopLeftRadius), r2(rc.radius)],
     'tag.radius': [px(cs(tag).borderTopLeftRadius), r2(rt.radius)],
@@ -140,6 +141,15 @@ for (const c of cases) {
   checks['image.ratio.custom'] = [r2(rect($('imgCustom')).height), r2(160 / 1.5)];
   checks['image.ratio.invalid'] = [r2(rect($('imgBad')).height), 0];
   checks['image.ratio.noInline'] = [[$('imgWide'), $('imgCustom')].filter((el) => el.style.aspectRatio).length, 0];
+  // Optical balance: edge-to-glyph equals edge-to-text on both sides, and icon-to-text is u′.
+  if (c.icon !== 'fill') {
+    const cr = rect(chip), ir = rect(slotOf(chip).firstElementChild), tx = contentsOf(chip), tr = rect(tx);
+    checks['chip.balance.iconEdge'] = [r2(ir.left - cr.left), r2(rc.visibleEdge)];
+    checks['chip.balance.textEdge'] = [r2(cr.right - (tr.right - px(cs(tx).paddingRight))), r2(rc.visibleEdge)];
+    checks['chip.balance.iconToText'] = [r2(tr.left + px(cs(tx).paddingLeft) - ir.right), r2(rc.localUnit)];
+    const xr = rect($('chipX')), xi = rect($('chipX').querySelector('[data-remove]'));
+    checks['chip.balance.removeEdge'] = [r2(xr.right - xi.right), r2(rc.visibleEdge)];
+  }
   checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];
