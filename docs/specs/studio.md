@@ -27,4 +27,4 @@
 
 ## Checks
 
-`/geometry-check.html` renders 44 configurations and compares 75 measured lengths each with the resolver (3300 in total); `"fails": []` means CSS and resolver agree.
+`/geometry-check.html` renders 44 configurations and compares 76 measured lengths each with the resolver (3344 in total); `"fails": []` means CSS and resolver agree.

@@ -173,7 +173,7 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
 // ── Choices, tracks, swatches ──
 // Checkbox, radio and switch sit on a 5u box inside the 6u leading slot (0.5u around it), so
 // the label lands 1.5u from the box after its 1u start padding. Range and progress use a 4u box
-// with a 1u track; range adds a 4u thumb.
+// whose track fills it (full height, rounded at half height); range adds a 4u thumb inside it.
 export type ChoiceKind = 'checkbox' | 'radio' | 'switch';
 
 export function resolveChoice(kind: ChoiceKind, input: GeometryInput = {}) {
@@ -200,7 +200,14 @@ export type TrackKind = 'range' | 'progress';
 export function resolveTrack(kind: TrackKind, input: GeometryInput = {}) {
   const x = inputs(input);
   const u = x.unit;
-  return { unit: u, height: 4 * u, track: u, trackRadius: 0.5 * u, thumb: kind === 'range' ? 4 * u : 0, minWidth: 24 * u };
+  const height = 4 * u;
+  return { unit: u, height, track: height, trackRadius: Math.min(3 * u * x.radiusScale, height / 2), thumb: kind === 'range' ? height : 0, minWidth: 24 * u };
+}
+
+/** Fill width for a track of `width` at `ratio`: range covers the thumb, progress is proportional. */
+export function trackFill(kind: TrackKind, ratio: number, width: number, input: GeometryInput = {}) {
+  const t = resolveTrack(kind, input);
+  return kind === 'range' ? ratio * (width - t.thumb) + t.thumb : ratio * width;
 }
 
 /** Swatch: a 6u square (the slot size); palettes attach swatches with no gap. */

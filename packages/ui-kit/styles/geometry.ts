@@ -126,12 +126,14 @@ export const geometry = defineGlobalStyles({
   },
   'ui-switch[aria-checked=true] [data-part=box]::after': { translate: 'calc(4 * var(--u)) 0' },
 
-  // Range and progress: a 4u box with a 1u track; range adds a 4u thumb.
+  // Range and progress: the track fills the 4u box (rounded at half height); range adds a 4u thumb inside.
   ':is(ui-range, ui-progress)': { display: 'grid', alignItems: 'center', height: 'calc(4 * var(--u))', minWidth: 'calc(24 * var(--u))', position: 'relative' },
-  ':is(ui-range, ui-progress) > [data-part=track]': { display: 'block', height: 'var(--u)', borderRadius: 'calc(0.5 * var(--u))', overflow: 'hidden', gridArea: '1 / 1' },
+  ':is(ui-range, ui-progress) > [data-part=track]': { display: 'block', height: '100%', borderRadius: 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(2 * var(--u)))', overflow: 'hidden', gridArea: '1 / 1' },
   ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { display: 'block', height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)' },
+  // Range fill reaches the thumb's far edge (after the generic rule: same specificity, order wins).
+  'ui-range > [data-part=track] > [data-part=fill]': { width: 'calc(var(--ui-ratio, 0) * (100% - 4 * var(--u)) + 4 * var(--u))' },
   'ui-range > [data-part=thumb]': {
-    display: 'block', gridArea: '1 / 1', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
+    display: 'block', gridArea: '1 / 1', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(2 * var(--u)))',
     marginInlineStart: 'calc(var(--ui-ratio, 0) * (100% - 4 * var(--u)))',
   },
 

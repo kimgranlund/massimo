@@ -11,7 +11,7 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
-import { SIZES, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -106,7 +106,8 @@ for (const c of cases) {
   checks['range.height'] = [r2(rect(range).height), rt2.height];
   checks['range.track'] = [r2(rect(range.querySelector('[data-part=track]')).height), rt2.track];
   checks['range.thumb'] = [r2(rect(range.querySelector('[data-part=thumb]')).width), rt2.thumb];
-  checks['range.fill'] = [r2(rect(range.querySelector('[data-part=fill]')).width), r2(rect(range.querySelector('[data-part=track]')).width * 0.25)];
+  checks['range.fill'] = [r2(rect(range.querySelector('[data-part=fill]')).width), r2(trackFill('range', 0.25, rect(range.querySelector('[data-part=track]')).width, g))];
+  checks['range.radius'] = [px(cs(range.querySelector('[data-part=track]')).borderTopLeftRadius), rt2.trackRadius];
   checks['swatch.size'] = [r2(rect(box.querySelector('ui-swatch')).width), rsw.size];
   for (const l of LEVELS) {
     const el = box.querySelector(`ui-${l}`), [a, b] = el.children, h = rect(el).height;
