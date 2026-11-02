@@ -46,12 +46,12 @@ const rampRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '
 const ramp = css({ width: '100%' });
 const typeRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '14rem 1fr' }, gap: { base: '2', md: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
 const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
-const metrics = css({ fontFamily: 'mono', fontSize: 'xs', color: 'fg.muted' });
+const metrics = css({ textStyle: 'code', color: 'fg.muted' });
 // Faint baseline grid behind each specimen: one line per rhythm unit.
 const rhythmSample = css({ backgroundImage: 'linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) 18%, transparent) 0)', whiteSpace: 'pre-wrap', maxWidth: '60ch' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
-const summary = css({ fontFamily: 'mono', fontSize: 'sm', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
+const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
 const chartGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', lg: '1fr 1fr' }, gap: '4' });
 const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
 const chartSvg = css({ width: '100%', height: 'auto', color: 'fg', overflow: 'visible' });
@@ -64,9 +64,13 @@ const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
 const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '2fr 1fr 1fr' }, gap: '4', '& > :first-child': { gridRow: { md: 'span 2' } }, '& > ui-palette': { gridColumn: { md: 'span 2' } } });
 const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
-const kicker = css({ textStyle: 'caption', textTransform: 'uppercase', letterSpacing: 'wide', display: 'inline-flex', alignItems: 'center', gap: '2' });
-const display = css({ textStyle: 'display', lineHeight: 'tight' });
-const bigFigure = css({ fontSize: '4xl', fontWeight: 'bold', lineHeight: 'tight', '& span': { fontSize: '2xl' } });
+// Type roles only: kickers, display, headings and figures come from the typography system.
+const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
+const sectionKicker = css({ textStyle: 'section-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
+const display = css({ textStyle: 'display' });
+const bodyLarge = css({ textStyle: 'body-large' });
+const panelTitle = css({ textStyle: 'heading-1' });
+const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', '& span': { textStyle: 'heading-3' } });
 const rampStrip = css({ width: '100%', alignSelf: 'end' });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
@@ -80,7 +84,7 @@ const bar = css({ width: '40%', borderRadius: 'sm' });
 const legend = css({ display: 'flex', gap: '4', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
 const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
-const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'label', fontWeight: 'normal' });
+const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'body' });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: 'min(100%, 24rem)' });
 
 function Section({ id, title, children, note }: { id: string; title: string; note: string; children: React.ReactNode }) {
@@ -339,21 +343,21 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
       <div className={contextHead}><h3 className={subTitle}>Brand</h3><span className={caption}>Primary as material · accent as punctuation</span></div>
       <div className={brandGrid}>
         <ui-panel className={campaign} style={{ background: sv(primary, 9), color: spectrum.families.find((f) => f.name === primary)?.lightText[8] }}>
-          <span className={kicker}>Studio / Collection 01</span>
+          <span className={sectionKicker}>Studio / Collection 01</span>
           <h3 className={display}>A spectrum.<br />A shared language.</h3>
-          <p>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
-          <span className={kicker} style={{ color: sv(accent, 4) }}>An exploration in color &amp; proportion</span>
+          <p className={bodyLarge}>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
+          <span className={sectionKicker} style={{ color: sv(accent, 4) }}>An exploration in color &amp; proportion</span>
         </ui-panel>
         <ui-palette label={`${primary} steps 1 to 12`} className={rampStrip}>
           {Array.from({ length: 12 }, (_, i) => <ui-swatch key={i} color={sv(primary, i + 1)} label={`${primary} ${i + 1}`} />)}
         </ui-palette>
         <ui-panel style={{ background: sv(neutral, 2), color: sv(primary, 12) }}>
-          <span className={kicker} style={{ color: sv(neutral, 11) }}>Ink &amp; paper <i className={dot} style={{ background: sv(accent, 9) }} /></span>
-          <h3 className={display}>One hue.<br />Room to breathe.</h3>
+          <span className={sectionKicker} style={{ color: sv(neutral, 11) }}>Ink &amp; paper <i className={dot} style={{ background: sv(accent, 9) }} /></span>
+          <h3 className={panelTitle}>One hue.<br />Room to breathe.</h3>
           <p style={{ color: sv(neutral, 11) }}>A quiet field, a clear voice and a single accent.</p>
         </ui-panel>
         <ui-panel style={{ background: sv(primary, 3), color: sv(primary, 11) }}>
-          <span className={kicker}>Tint &amp; emphasis</span>
+          <span className={sectionKicker}>Tint &amp; emphasis</span>
           <strong className={bigFigure} style={{ color: sv(primary, 11) }}>62<span>%</span></strong>
           <p style={{ color: sv(primary, 12) }}>Large figures and small details share the same color family.</p>
         </ui-panel>
