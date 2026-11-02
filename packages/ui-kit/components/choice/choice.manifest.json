@@ -129,6 +129,17 @@
           "inspector": {
             "control": "toggle"
           }
+        },
+        {
+          "key": "parent",
+          "type": "boolean",
+          "default": false,
+          "attribute": "parent",
+          "reflects": true,
+          "description": "In a ui-checkbox-group: the parent checkbox. Checked when every value of the group's allValues is, mixed when some are; activating it checks every value, or clears them all. Outside a group it has no effect.",
+          "inspector": {
+            "control": "toggle"
+          }
         }
       ],
       "attributes": [
@@ -749,6 +760,11 @@
     },
     {
       "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:checkbox-group"
+    },
+    {
+      "from": "component:checkbox",
       "relation": "uses",
       "to": "foundation:slots"
     },
@@ -1062,7 +1078,8 @@
             "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot.",
-            "indeterminate?: boolean // Mixed state (aria-checked=\"mixed\", data-indeterminate)."
+            "indeterminate?: boolean // Mixed state (aria-checked=\"mixed\", data-indeterminate).",
+            "parent?: boolean // In a CheckboxGroup: the parent checkbox (checked when every value is, mixed when some are; it checks or clears them all)."
           ]
         },
         "component:radio": {
@@ -1111,7 +1128,8 @@
               "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
               "size?: number // Unit u in px for this control.",
               "children?: ReactNode // The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot.",
-              "indeterminate?: boolean // Mixed state (aria-checked=\"mixed\", data-indeterminate)."
+              "indeterminate?: boolean // Mixed state (aria-checked=\"mixed\", data-indeterminate).",
+              "parent?: boolean // In a CheckboxGroup: the parent checkbox (checked when every value is, mixed when some are; it checks or clears them all)."
             ]
           },
           "Checkbox.Indicator": {

@@ -22,5 +22,5 @@ export const pending = defineGlobalStyles({
   ':is(ui-field, ui-field-grid):not(:defined)': { display: 'block' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
   // Choice groups: hidden until defined, in the block flow their choices reserve.
-  'ui-radio-group:not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-radio-group, ui-checkbox-group):not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });

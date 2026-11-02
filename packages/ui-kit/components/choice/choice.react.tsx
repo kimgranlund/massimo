@@ -13,13 +13,15 @@
 // renders the leading slot around itself; every other child is the label (contents). The presets
 // <Checkbox>, <Radio>, <Switch> are Root + Indicator (Thumb) + children.
 // In a RadioGroup a Radio takes its name, checked state, disabled, read-only and required from the
-// group (group.react.ts) and reports a press to it; the group fires onValueChange.
-import { createContext, useContext, type InputHTMLAttributes, type ReactNode } from 'react';
+// group (group.react.ts) and reports a press to it; the group fires onValueChange. In a
+// CheckboxGroup a Checkbox takes its name, checked state and disabled from the group's value; a
+// `parent` Checkbox is checked when every value is, mixed when some are, and sets them all.
+import { createContext, useContext, useEffect, type InputHTMLAttributes, type ReactNode } from 'react';
 import { Parts } from '../parts.react.tsx';
 import { useFieldState } from '../state.react.ts';
 import { renderPart, some, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
-import { RadioGroupCtx } from './group.react.ts';
+import { CheckboxGroupCtx, RadioGroupCtx } from './group.react.ts';
 import { checkbox, radio, switchRecipe } from '../../styled-system/recipes/index.js';
 
 const RECIPES = { checkbox, radio, switch: switchRecipe };
@@ -51,6 +53,8 @@ export interface ChoiceProps extends Native, PartBase {
 export interface CheckboxRootProps extends ChoiceProps {
   /** Mixed state (aria-checked="mixed", data-indeterminate). */
   indeterminate?: boolean;
+  /** In a CheckboxGroup: the parent checkbox (checked when every value is, mixed when some are; it checks or clears them all). */
+  parent?: boolean;
 }
 
 /** Props of an indicator part (Checkbox.Indicator, Radio.Indicator, Switch.Thumb). */
@@ -59,11 +63,20 @@ export interface ChoiceIndicatorProps extends PartBase {
   children?: ReactNode;
 }
 
-function ChoiceRoot({ kind, prefix, suffix, invalid, size, children, className, render, style, indeterminate, onInvalid, onChange, onClick, onCheckedChange, ...props }: CheckboxRootProps & { kind: Kind }) {
-  const radioGroup = useContext(RadioGroupCtx);
-  const rg = kind === 'radio' ? radioGroup : null;
-  // In a RadioGroup the group owns name, checked, disabled and required (the native radios carry them).
-  const input = rg ? { ...props, name: rg.name, checked: rg.value !== '' && rg.value === String(props.value ?? 'on'), defaultChecked: undefined, disabled: props.disabled || rg.disabled, required: rg.required } : props;
+function ChoiceRoot({ kind, prefix, suffix, invalid, size, children, className, render, style, indeterminate: mixedProp, parent, onInvalid, onChange, onClick, onCheckedChange, ...props }: CheckboxRootProps & { kind: Kind }) {
+  const radioGroup = useContext(RadioGroupCtx), checkboxGroup = useContext(CheckboxGroupCtx);
+  const rg = kind === 'radio' ? radioGroup : null, cg = kind === 'checkbox' ? checkboxGroup : null;
+  const own = String(props.value ?? 'on');
+  // A group member registers its value, so a parent checkbox knows the set without allValues.
+  const register = cg && !parent ? cg.register : null;
+  useEffect(() => register?.(own), [register, own]);
+  const all = cg?.allValues ?? [];
+  const anyOn = !!cg && all.some((v) => cg.value.includes(v)), every = !!cg && all.length > 0 && all.every((v) => cg.value.includes(v));
+  const indeterminate = cg && parent ? anyOn && !every : mixedProp;
+  // In a group the group owns name, checked, disabled (and a radio group's required): the native inputs carry them.
+  const input = rg ? { ...props, name: rg.name, checked: rg.value !== '' && rg.value === own, defaultChecked: undefined, disabled: props.disabled || rg.disabled, required: rg.required }
+    : cg ? { ...props, name: parent ? undefined : cg.name, checked: parent ? every : cg.value.includes(own), defaultChecked: undefined, disabled: props.disabled || cg.disabled }
+    : props;
   const f = useFieldState<HTMLLabelElement>({
     disabled: input.disabled, required: props.required, error: invalid,
     checked: input.checked, defaultChecked: input.defaultChecked, indeterminate: kind === 'checkbox' ? indeterminate : undefined,
@@ -82,6 +95,7 @@ function ChoiceRoot({ kind, prefix, suffix, invalid, size, children, className, 
             onClick={(e) => { if (rg?.readOnly) e.preventDefault(); onClick?.(e); }}
             onChange={(e) => {
               if (rg) { if (!rg.readOnly) rg.select(e.target.value, e.nativeEvent); }
+              else if (cg) { if (parent) cg.setAll(e.target.checked, e.nativeEvent); else cg.toggle(own, e.target.checked, e.nativeEvent); }
               else onCheckedChange?.(e.target.checked, eventDetails('none', e.nativeEvent));
               onChange?.(e);
             }}

@@ -12,6 +12,7 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/radio-group/element';
+import '@massimo/ui-kit/components/checkbox-group/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -23,7 +24,7 @@ export const FAMILIES = [
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
-  ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group'],
+  ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group · ui-checkbox-group'],
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
@@ -114,12 +115,23 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
               <ui-radio value="off">Off</ui-radio><ui-radio value="night">Nights, 22–07</ui-radio><ui-radio value="weekend">Weekends</ui-radio>
             </ui-radio-group>
           </ui-field>
+          <ui-field label="Send to">
+            <ui-checkbox-group orientation="horizontal" value="email push">
+              <ui-checkbox value="email">Email</ui-checkbox><ui-checkbox value="push">Push</ui-checkbox><ui-checkbox value="sms">SMS</ui-checkbox>
+            </ui-checkbox-group>
+          </ui-field>
         </div>
         <div className={stack}>
           <ui-field label="Size" description="Required; one option is sold out.">
             <ui-radio-group required>
               <ui-radio value="s">Small</ui-radio><ui-radio value="m">Medium</ui-radio><ui-radio value="l" disabled>Large</ui-radio>
             </ui-radio-group>
+          </ui-field>
+          <ui-field label="Notify by" description="A parent checkbox over the set.">
+            <ui-checkbox-group name="notify-g" value="email">
+              <ui-checkbox parent>All channels</ui-checkbox>
+              <ui-checkbox value="email">Email</ui-checkbox><ui-checkbox value="push">Push</ui-checkbox><ui-checkbox value="sms">SMS</ui-checkbox>
+            </ui-checkbox-group>
           </ui-field>
           <ui-field label="Region (disabled)">
             <ui-radio-group disabled value="eu" orientation="horizontal">
@@ -131,6 +143,7 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
       <SizeLadder family="choiceGroup" params={params}>
         <ui-radio-group label="Plan" value="pro"><ui-radio value="free">Free</ui-radio><ui-radio value="pro">Pro</ui-radio></ui-radio-group>
         <ui-radio-group label="Quiet hours" orientation="horizontal" value="off"><ui-radio value="off">Off</ui-radio><ui-radio value="night">Nights</ui-radio></ui-radio-group>
+        <ui-checkbox-group label="Channels" value="email"><ui-checkbox parent>All</ui-checkbox><ui-checkbox value="email">Email</ui-checkbox><ui-checkbox value="push">Push</ui-checkbox></ui-checkbox-group>
       </SizeLadder>
     </>
   );

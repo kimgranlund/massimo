@@ -1,0 +1,398 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "checkbox-group",
+  "primary": "component:checkbox-group",
+  "module": "./checkbox-group.element.ts",
+  "registration": "on-import",
+  "documentation": "./checkbox-group.md",
+  "examples": "./checkbox-group.examples.json",
+  "contract": "../../contracts/components.json#/components/checkbox-group",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./checkbox-group.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveChoiceGroup"
+      ],
+      "description": "Reference numbers for the gap between choices (vertical and horizontal) and the row pitch (shared with the radio group)."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:checkbox-group",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-checkbox-group",
+      "class": "UICheckboxGroup",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose any number of options from a small set, with one value list for the set",
+        "Check or clear a set at once with a parent checkbox"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the group submits name=value once per checked value (the checkboxes inside need no name).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Disables every checkbox inside (they read the group's isDisabled) and submits nothing. An ancestor <fieldset disabled> or ui-fieldset[disabled] has the same effect.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "At least one value must be checked to submit (valueMissing on the group).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": null,
+          "attribute": "value",
+          "reflects": false,
+          "description": "The checked values (null before the first render, then a list), a string[] in the order they were checked (attribute: space-separated). Setting it checks those checkboxes and clears the rest, without an event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the values at first render (when no value attribute set them) and after form reset (attribute: space-separated). Without it, the value attribute, else the checkboxes authored checked, is the default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "allValues",
+          "type": "string",
+          "default": null,
+          "attribute": "all-values",
+          "reflects": false,
+          "description": "Base UI allValues: every value the parent checkbox sets (attribute: space-separated). Default: the member checkboxes' values.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "vertical",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "description": "vertical: one checkbox per row, 1u apart. horizontal: a wrapping row, 4u between checkboxes.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name (aria-label) when no visible label names the group: prefer a ui-field label or a ui-fieldset legend.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between checkboxes in u (0…8 in 0.5 steps), along the group's direction; default 1u vertical, 4u horizontal.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string[], reason: 'none', event: Event } (Base UI onValueChange)",
+          "trigger": "the user checks or clears a checkbox, or the parent checkbox (press or Space)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string[], reason: 'none', event: Event }",
+          "trigger": "the user checks or clears a checkbox (same moment as input)"
+        }
+      ],
+      "methods": [
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the first enabled checkbox."
+        },
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the group touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "group",
+        "formAssociated": true,
+        "formValue": "name=value for each checked value (FormData); nothing without a name or a value",
+        "keyboard": [
+          {
+            "keys": "Tab",
+            "action": "moves through the checkboxes (each is a tab stop)"
+          },
+          {
+            "keys": "Space",
+            "action": "checks or clears the focused checkbox (the parent: every value or none)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "a wrapping ui-field label (aria-labelledby)",
+            "a ui-fieldset legend",
+            "label (aria-label)",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "ui-checkbox children (each with a value), optionally one with parent; they may sit in wrappers. Other content is laid out with them."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The group owns the value array: it sets its checkboxes' checked state from value; a press or Space on a checkbox adds or removes that checkbox's value, and the group (not the checkbox) fires input and change.",
+        "A checkbox with parent is checked when every value of allValues (default: the members' values) is checked, mixed (aria-checked=mixed, data-indeterminate) when some are; activating it checks every value, or clears them all when all were checked.",
+        "Its checkboxes are the ui-checkbox descendants whose nearest ui-checkbox-group is this one. Give the group the name; the checkboxes submit nothing.",
+        "disabled reaches every checkbox (a checkbox's isDisabled reads the group). required: invalid (valueMissing) until a value is checked.",
+        "Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "React: CheckboxGroup (a single part, as in Base UI) renders a div role=group; its Checkbox children are native checkboxes that take the group's name, checked state and disabled from context (a parent Checkbox has no name); onValueChange(values, { reason: 'none', event }); allValues for the parent (default: the members, registered on mount); render and className (a string or (state) => string) apply to it."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Exactly one option may be chosen.",
+          "reason": "A checkbox group holds any number of values.",
+          "useInstead": "component:radio-group"
+        },
+        {
+          "when": "A single yes / no setting.",
+          "reason": "One checkbox (or a switch for an instant setting) needs no group.",
+          "useInstead": "component:checkbox"
+        },
+        {
+          "when": "Filtering by tags in a toolbar.",
+          "reason": "Selectable chips are the compact form for filters.",
+          "useInstead": "component:chip"
+        }
+      ],
+      "searchTerms": [
+        "checkbox group",
+        "multiple choice",
+        "select all",
+        "parent checkbox",
+        "check all"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:checkbox-group",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesGeometry",
+      "to": "geometry:choice-group"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "establishes",
+      "to": "context:checkbox-group"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./checkbox-group.element.ts",
+      "exports": {
+        "component:checkbox-group": "UICheckboxGroup"
+      },
+      "verification": "./verification/checkbox-group.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./checkbox-group.react.tsx",
+      "exports": {
+        "component:checkbox-group": "CheckboxGroup"
+      },
+      "verification": "./verification/checkbox-group.verification.json#/renderers/react",
+      "props": {
+        "component:checkbox-group": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'defaultValue' | 'onChange'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "name?: string // Form name of the checkboxes: each checked one submits name=value.",
+            "value?: string[] // The checked values (controlled).",
+            "defaultValue?: string[] // The first values when uncontrolled, and the reset value.",
+            "onValueChange?: (value: string[], details: ChangeDetails) => void // The user toggled a checkbox (Base UI onValueChange; reason 'none').",
+            "allValues?: string[] // Every value the parent checkbox sets; default: the member checkboxes' values (they register on mount).",
+            "disabled?: boolean = false",
+            "required?: boolean = false // At least one value must be checked to submit (shown on the group).",
+            "orientation?: 'vertical' | 'horizontal' = 'vertical' // vertical: one checkbox per row; horizontal: a wrapping row.",
+            "label?: string // Accessible name when no Field label or Fieldset legend names the group (aria-label).",
+            "size?: number // Unit u in px for the group and its checkboxes.",
+            "children?: ReactNode // Checkbox children."
+          ]
+        }
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:checkbox-group": ".ui-checkbox-group__root"
+      }
+    }
+  }
+}

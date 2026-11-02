@@ -174,9 +174,25 @@
         "collection",
         "group",
         "form",
-        "inline"
+        "inline",
+        "checkbox-group"
       ],
       "behavior": "Space toggles; indeterminate shows mixed and clears on activation; required needs checked."
+    },
+    "checkbox-group": {
+      "geometryFamily": "choice-group",
+      "element": "Host is the group (role=group); its ui-checkbox children are the options, one of them optionally the parent; no parts of its own.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form"
+      ],
+      "behavior": "Owns the value array: sets its checkboxes' checked state, a press adds or removes that value, fires change and input with { value, reason, event } (the checkboxes then fire none); a parent checkbox is checked / mixed / unchecked for all / some / none and sets every value; submits name=value per value; disabled reaches every checkbox."
     },
     "radio": {
       "geometryFamily": "choice",

@@ -23,6 +23,8 @@ The indicator is the leading part; the label run follows with 1u after the slot 
 
 Radios outside a group element group by `name` (within their form or the document). Inside a [ui-radio-group](../radio-group/radio-group.md) (React `RadioGroup`) they group by membership: the group owns the value, name, disabled, read-only and validity, sets each radio's checked state, and fires `change` / `input` with `{ value, reason, event }` instead of the radio.
 
+Inside a [ui-checkbox-group](../checkbox-group/checkbox-group.md) (React `CheckboxGroup`) the group owns the value list the same way; a checkbox with `parent` (React `parent`) is checked when every value is, mixed when some are, and checks or clears them all.
+
 ## Anatomy
 
 ### Both forms

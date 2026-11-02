@@ -7,9 +7,9 @@
 // (alone or inside [data-part=leading]; the switch's holding [data-part=thumb]), prefix, contents,
 // suffix. The host keeps an authored indicator, fills it when empty (the checkbox marks, the switch
 // thumb) and generates it when absent; the construction pattern sorts the rest (slots.ts).
-// Groups: inside a <ui-radio-group> the group owns the value: it sets each radio's checked state,
-// a radio's activation goes to the group, and the group fires change and input instead of the
-// radio (Base UI RadioGroup).
+// Groups: inside a <ui-radio-group> (radios) or <ui-checkbox-group> (checkboxes) the group owns
+// the value: it sets each member's checked state, a member's activation goes to the group, and the
+// group fires change and input instead of the member (Base UI RadioGroup / CheckboxGroup).
 import { UIFormElement, define, settleDefault, type Problem } from '../../core/index.ts';
 import { applyAttrs, checkedDataAttrs, eventDetails } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
@@ -19,7 +19,7 @@ import { radio } from '../../styled-system/recipes/radio.js';
 import { switchRecipe } from '../../styled-system/recipes/switch-recipe.js';
 import '../../icons/index.ts';
 
-/** A group that owns its member choices' value (ui-radio-group). */
+/** A group that owns its member choices' value (ui-radio-group, ui-checkbox-group). */
 export interface ChoiceOwner extends HTMLElement {
   readonly readonly: boolean;
   /** A member was activated by the user: update the group value and fire the group's events. */
@@ -84,7 +84,7 @@ export abstract class UIChoice extends UIFormElement {
   }
 
   protected checkedState(): string { return String(this.checked); }
-  /** The group that owns this choice's value, if any (a radio's ui-radio-group). */
+  /** The group that owns this choice's value, if any (a radio's ui-radio-group, a checkbox's ui-checkbox-group). */
   choiceOwner(): ChoiceOwner | null { return null; }
   protected isIndeterminate() { return false; }
   protected tabStop() { return !this.isDisabled; }
@@ -124,8 +124,15 @@ export abstract class UIChoice extends UIFormElement {
 }
 
 export class UICheckbox extends UIChoice {
-  static properties = { ...UIChoice.properties, indeterminate: { type: Boolean, default: false, reflect: true } };
+  static properties = {
+    ...UIChoice.properties,
+    indeterminate: { type: Boolean, default: false, reflect: true },
+    /** In a ui-checkbox-group: the parent checkbox, checked when every member is, mixed when some are; it checks or clears them all (Base UI Checkbox parent). */
+    parent: { type: Boolean, default: false, reflect: true },
+  };
   declare indeterminate: boolean;
+  declare parent: boolean;
+  choiceOwner() { return ownerOf(this, 'ui-checkbox-group'); }
   protected choiceRole = 'checkbox' as const;
   protected recipe() { return checkbox(); }
   protected fill(indicator: HTMLElement) {

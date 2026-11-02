@@ -20,7 +20,7 @@ declare module 'react' {
       'ui-panel': El<{ gap?: string }>;
       'ui-region': El<{ gap?: string }>;
       'ui-page': El<{ gap?: string }>;
-      'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; required?: boolean; disabled?: boolean }>;
+      'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; parent?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-radio': El<{ name?: string; value?: string; checked?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-switch': El<{ name?: string; value?: string; checked?: boolean; disabled?: boolean }>;
       'ui-range': El<{ name?: string; value?: number; min?: number; max?: number; step?: number; label?: string; disabled?: boolean }>;
@@ -37,6 +37,7 @@ declare module 'react' {
       'ui-field': El<{ label?: string; unit?: string; readout?: string; description?: string; error?: string; layout?: 'stacked' | 'inline' }>;
       'ui-field-grid': El<{}>;
       'ui-radio-group': El<{ name?: string; value?: string; 'default-value'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
+      'ui-checkbox-group': El<{ name?: string; value?: string; 'default-value'?: string; 'all-values'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean }>;
     }
   }
 }

@@ -115,6 +115,8 @@ export class UIFormElement extends UIElement {
   authorError(): string { return ''; }
   /** Read-only (input `readonly`). */
   isReadonly(): boolean { return false; }
+  /** The value data-dirty compares with the first render's: the form value as a string (a FormData value: override). */
+  valueKey(value: string | File | FormData | null): string { return typeof value === 'string' || value == null ? value ?? '' : '\u0000'; }
   /** data-filled: a non-empty form value (a choice: checked). */
   isFilled(): boolean { const v = this.formValue(); return v != null && v !== ''; }
 
@@ -134,7 +136,7 @@ export class UIFormElement extends UIElement {
       if (p) this.internals.setValidity(p.flags, p.message, this.validationAnchor());
       else this.internals.setValidity({});
       if (!state) return;
-      const key = typeof value === 'string' || value == null ? value ?? '' : '\u0000';
+      const key = this.valueKey(value);
       this.#initial ??= key;
       const invalid = this.invalidShown;
       applyAttrs(this, fieldDataAttrs({

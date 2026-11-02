@@ -75,6 +75,15 @@
         "inside radio group"
       ]
     },
+    "checkbox-group": {
+      "id": "context:checkbox-group",
+      "host": "component:checkbox-group",
+      "summary": "Inside a ui-checkbox-group: checkboxes whose checked state, name and disabled the group's value array owns.",
+      "searchTerms": [
+        "checkbox group",
+        "inside checkbox group"
+      ]
+    },
     "form": {
       "id": "context:form",
       "host": null,

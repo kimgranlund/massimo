@@ -59,6 +59,19 @@
         "multi select"
       ]
     },
+    "component:checkbox-group": {
+      "kind": "component",
+      "source": "components/checkbox-group/checkbox-group.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-checkbox-group",
+      "searchTerms": [
+        "checkbox group",
+        "multiple choice",
+        "select all",
+        "parent checkbox",
+        "check all"
+      ]
+    },
     "component:chip": {
       "kind": "component",
       "source": "components/btg/btg.manifest.json#/nodes/2",
@@ -359,6 +372,15 @@
       "searchTerms": [
         "card",
         "inside card"
+      ]
+    },
+    "context:checkbox-group": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/checkbox-group",
+      "availability": "implemented",
+      "searchTerms": [
+        "checkbox group",
+        "inside checkbox group"
       ]
     },
     "context:collection": {
@@ -1600,6 +1622,91 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:checkbox-group",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesGeometry",
+      "to": "geometry:choice-group"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "establishes",
+      "to": "context:checkbox-group"
+    },
+    {
+      "from": "component:checkbox-group",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
       "from": "component:checkbox",
       "relation": "extends",
       "to": "foundation:form-element"
@@ -1718,6 +1825,11 @@
       "from": "component:checkbox",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:checkbox-group"
     },
     {
       "from": "component:checkbox",

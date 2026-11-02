@@ -58,7 +58,8 @@
     "ui-swiper": { "host": ["data-single"], "dot": ["data-selected"], "paddle": ["data-disabled"] },
     "ui-image": { "img": ["data-error"] },
     "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" },
-    "ui-radio-group": { "host": ["data-orientation", "data-disabled", "data-readonly", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] }
+    "ui-radio-group": { "host": ["data-orientation", "data-disabled", "data-readonly", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
+    "ui-checkbox-group": { "host": ["data-orientation", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] }
   },
   "native": {
     "disabled": "A React native control (input, select) disabled by an ancestor <fieldset disabled> is :disabled without React knowing: _disabled / _enabled and the select and input control rules keep :disabled beside data-disabled.",

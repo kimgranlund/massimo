@@ -217,7 +217,8 @@
       ],
       "summary": "Choice groups place their 6u choice rows (the choice family) 1u apart, a 7u pitch like composite items; horizontal: 4u between choices (a choice label has no end padding), wrapping with 1u between lines. The gap attribute (g·u) replaces the gap along the direction. No padding, border or radius of their own.",
       "members": [
-        "component:radio-group"
+        "component:radio-group",
+        "component:checkbox-group"
       ],
       "searchTerms": [
         "radio group spacing",

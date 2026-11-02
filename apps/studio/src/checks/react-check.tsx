@@ -16,6 +16,7 @@ import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/radio-group/element';
+import '@massimo/ui-kit/components/checkbox-group/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -33,10 +34,11 @@ import { Range, Progress } from '@massimo/ui-kit/components/range/react';
 import { Field } from '@massimo/ui-kit/components/field/react';
 import { Slider } from '@massimo/ui-kit/components/range/react';
 import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
+import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
-const GROUP_KEYS = ['rgv', 'rgh'];
+const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
 
 function Pair({ u }: { u: number }) {
@@ -78,6 +80,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
         <ui-radio-group data-k="rgv" value="b"><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
         <ui-radio-group data-k="rgh" orientation="horizontal" disabled><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
+        <ui-checkbox-group data-k="cgv" value="a"><ui-checkbox parent>All</ui-checkbox><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
+        <ui-checkbox-group data-k="cgh" orientation="horizontal" value="a b" disabled><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -115,6 +119,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
         <RadioGroup data-k="rgv" defaultValue="b"><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
         <RadioGroup data-k="rgh" orientation="horizontal" disabled><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
+        <CheckboxGroup data-k="cgv" defaultValue={['a']} allValues={['a', 'b']}><Checkbox parent>All</Checkbox><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
+        <CheckboxGroup data-k="cgh" orientation="horizontal" defaultValue={['a', 'b']} disabled><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
       </div>
     </div>
   );

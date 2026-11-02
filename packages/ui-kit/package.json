@@ -41,7 +41,9 @@
     "./components/field/element": "./components/field/field.element.ts",
     "./components/field/react": "./components/field/field.react.tsx",
     "./components/radio-group/element": "./components/radio-group/radio-group.element.ts",
-    "./components/radio-group/react": "./components/radio-group/radio-group.react.tsx"
+    "./components/radio-group/react": "./components/radio-group/radio-group.react.tsx",
+    "./components/checkbox-group/element": "./components/checkbox-group/checkbox-group.element.ts",
+    "./components/checkbox-group/react": "./components/checkbox-group/checkbox-group.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",
