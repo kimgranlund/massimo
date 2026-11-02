@@ -141,10 +141,10 @@ test('badge / tag / chip: text, slots, padding', () => {
   assert.equal(resolveBtg('chip', { radiusScale: 3 }).radius, 12, 'pill at height / 2');
 });
 
-test('badge / tag / chip label wrapper: 1u′ on both sides, u′ = height / 8', () => {
+test('badge / tag / chip label wrapper: 1u′ (chip bare edge 1.5u′), u′ = height / 8', () => {
   for (const kind of ['chip', 'tag', 'badge'] as const) for (const u of [2, 3, 4, 6]) {
     const k = resolveBtg(kind, { unit: u }), lu = k.height / 8;
-    assert.deepEqual([k.localUnit, k.bareEdge, k.slotEdge, k.between], [lu, lu, lu, lu / 4], `${kind} u=${u}`);
+    assert.deepEqual([k.localUnit, k.bareEdge, k.slotEdge, k.between], [lu, kind === 'chip' ? 1.5 * lu : lu, lu, lu / 4], `${kind} u=${u}`);
     assert.equal(k.padding, Math.max(0, lu / 2));
   }
 });

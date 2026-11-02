@@ -132,7 +132,8 @@ export const geometry = defineGlobalStyles({
   [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
   // Chip centers its text with block padding; tag and badge need none, the row centers it.
-  ...textRun('ui-chip', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--lu))'),
+  // Chip label compensation: +0.5u′ at a bare edge (1.5u′), so text balances an icon's artwork.
+  ...textRun('ui-chip', 'var(--lu)', 'calc(1.5 * var(--lu))', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--lu))'),
   ...textRun('ui-tag', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
   ...textRun('ui-badge', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
   // Fill artwork (avatars) keeps the full square slot at the edge, nested inside the 0.5u′ edge.

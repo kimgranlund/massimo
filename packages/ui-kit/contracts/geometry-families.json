@@ -60,7 +60,7 @@
         "btgHeights",
         "resolveTextRun"
       ],
-      "summary": "Badge, tag and chip heights on the 12px + k·u ladder. Spacing uses a local unit u′ = height / 8: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides, text parts 0.5u′ apart. Radius is concentric with the slot: (0.5u′ + slot / 3) × curvature, pill at height / 2 (the button's 1u + 6u / 3 = 3u). Icon slots hug the glyph inline with a 1u′ outer margin, so edge-to-icon equals edge-to-text (fill keeps the square slot).",
+      "summary": "Badge, tag and chip heights on the 12px + k·u ladder. Spacing uses a local unit u′ = height / 8: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides (chip 1.5u′ at a bare edge), text parts 0.5u′ apart. Radius is concentric with the slot: (0.5u′ + slot / 3) × curvature, pill at height / 2 (the button's 1u + 6u / 3 = 3u). Icon slots hug the glyph inline with a 1u′ outer margin, so edge-to-icon equals edge-to-text (fill keeps the square slot).",
       "members": [
         "component:badge",
         "component:tag",

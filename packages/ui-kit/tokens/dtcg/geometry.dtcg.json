@@ -2931,6 +2931,44 @@
           }
         }
       },
+      "label": {
+        "bareEdge": {
+          "$type": "dimension",
+          "$value": {
+            "value": 4.5,
+            "unit": "px"
+          },
+          "$description": "chip · label padding at a bare edge · +0.5u′ compensation; beside a slot 1u′",
+          "$extensions": {
+            "com.massimo.formula": "1.5u′",
+            "com.massimo.status": "implemented",
+            "com.massimo.bySize": {
+              "u=2": 3,
+              "u=2.25": 3.375,
+              "u=2.5": 3.656,
+              "u=3": 3.938,
+              "u=3.5": 4.219,
+              "u=4": 4.5,
+              "u=4.5": 4.781,
+              "u=5": 5.063,
+              "u=5.5": 5.344,
+              "u=6": 5.625,
+              "u=6.5": 5.906,
+              "u=7": 6.188,
+              "u=7.5": 6.469,
+              "u=8": 6.75,
+              "u=8.5": 7.031,
+              "u=9": 7.313,
+              "u=9.5": 7.594,
+              "u=10": 7.875,
+              "u=10.5": 8.156,
+              "u=11": 8.438,
+              "u=11.5": 8.719,
+              "u=12": 9
+            }
+          }
+        }
+      },
       "icon": {
         "md": {
           "$type": "dimension",
@@ -3268,36 +3306,36 @@
       "edge": {
         "$type": "dimension",
         "$value": {
-          "value": 3,
+          "value": 2.5,
           "unit": "px"
         },
-        "$description": "badge, tag, chip · label padding (bare edge and beside a slot) · value shown for chip; text parts 0.5u′ apart",
+        "$description": "badge, tag · label padding (bare edge and beside a slot) · value shown for tag; text parts 0.5u′ apart",
         "$extensions": {
           "com.massimo.formula": "u′ = height / 8",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
-            "u=2": 2,
-            "u=2.25": 2.25,
-            "u=2.5": 2.438,
-            "u=3": 2.625,
-            "u=3.5": 2.813,
-            "u=4": 3,
-            "u=4.5": 3.188,
-            "u=5": 3.375,
-            "u=5.5": 3.563,
-            "u=6": 3.75,
-            "u=6.5": 3.938,
-            "u=7": 4.125,
-            "u=7.5": 4.313,
-            "u=8": 4.5,
-            "u=8.5": 4.688,
-            "u=9": 4.875,
-            "u=9.5": 5.063,
-            "u=10": 5.25,
-            "u=10.5": 5.438,
-            "u=11": 5.625,
-            "u=11.5": 5.813,
-            "u=12": 6
+            "u=2": 1.75,
+            "u=2.25": 1.969,
+            "u=2.5": 2.125,
+            "u=3": 2.25,
+            "u=3.5": 2.375,
+            "u=4": 2.5,
+            "u=4.5": 2.625,
+            "u=5": 2.75,
+            "u=5.5": 2.875,
+            "u=6": 3,
+            "u=6.5": 3.125,
+            "u=7": 3.25,
+            "u=7.5": 3.375,
+            "u=8": 3.5,
+            "u=8.5": 3.625,
+            "u=9": 3.75,
+            "u=9.5": 3.875,
+            "u=10": 4,
+            "u=10.5": 4.125,
+            "u=11": 4.25,
+            "u=11.5": 4.375,
+            "u=12": 4.5
           }
         }
       }

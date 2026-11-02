@@ -211,7 +211,8 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
   const lu = height / 8;
   const slot = height - lu;
   const pad = Math.max(0, 0.5 * lu - b);
-  const edges = { bareEdge: lu, slotEdge: lu, between: 0.25 * lu };
+  // Chip labels get +0.5u′ compensation at a bare edge so text balances an icon's artwork.
+  const edges = { bareEdge: kind === 'chip' ? 1.5 * lu : lu, slotEdge: lu, between: 0.25 * lu };
   return {
     unit: u, localUnit: lu, border: b, height, fontSize, slot,
     minWidth: height,
@@ -226,7 +227,8 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
     // their outer side, so the visible edge is 0.5u′ + 1u′ beside text and beside icons alike.
     slotInline: x.iconSize === 'fill' ? slot : resolveIcon(fontSize, u, x.iconSize, slot),
     iconEdge: x.iconSize === 'fill' ? 0 : lu,
-    visibleEdge: pad + b + lu,
+    visibleEdge: pad + b + lu,          // edge to an icon glyph
+    visibleTextEdge: pad + b + edges.bareEdge, // edge to text at a bare edge
     // Concentric: edge 0.5u′ + slot / 3 (the button's 1u + 6u / 3), × curvature, pill at height / 2.
     radius: Math.min((0.5 * lu + slot / 3) * x.radiusScale, height / 2),
   };

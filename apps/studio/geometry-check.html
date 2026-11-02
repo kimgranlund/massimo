@@ -145,7 +145,7 @@ for (const c of cases) {
   if (c.icon !== 'fill') {
     const cr = rect(chip), ir = rect(slotOf(chip).firstElementChild), tx = contentsOf(chip), tr = rect(tx);
     checks['chip.balance.iconEdge'] = [r2(ir.left - cr.left), r2(rc.visibleEdge)];
-    checks['chip.balance.textEdge'] = [r2(cr.right - (tr.right - px(cs(tx).paddingRight))), r2(rc.visibleEdge)];
+    checks['chip.balance.textEdge'] = [r2(cr.right - (tr.right - px(cs(tx).paddingRight))), r2(rc.visibleTextEdge)];
     checks['chip.balance.iconToText'] = [r2(tr.left + px(cs(tx).paddingLeft) - ir.right), r2(rc.localUnit)];
     const xr = rect($('chipX')), xi = rect($('chipX').querySelector('[data-remove]'));
     checks['chip.balance.removeEdge'] = [r2(xr.right - xi.right), r2(rc.visibleEdge)];
