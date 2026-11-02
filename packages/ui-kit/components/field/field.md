@@ -96,7 +96,7 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 
 ## Geometry and appearance
 
-Geometry family `field-row` ([geometry-families.json](../../contracts/geometry-families.json)): Panda spacing and sizes tokens in u (column and row gap 2u in the grid; stacked label gap 1.5u; readout at least 10u); the controls keep their own geometry. Styles: the slot recipes in [field.recipe.ts](field.recipe.ts), applied by the web components and the React renderers alike.
+Geometry family `field-row` ([geometry-families.json](../../contracts/geometry-families.json)): Panda spacing and sizes tokens in u, resolved by `resolveFieldRow` and `resolveFieldGrid` (column gap 2u; row gap 1.5u stacked, 1u inline; field grid column and row gap 2u, 4u above every heading but the first; readout at least 10u); the controls keep their own geometry. Styles: the slot recipes in [field.recipe.ts](field.recipe.ts), applied by the web components and the React renderers alike.
 
 ## Renderers and verification
 

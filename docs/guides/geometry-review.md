@@ -2,7 +2,7 @@
 
 The acceptance checklist every new or reshaped component passes before it ships. The rules live in [geometry](../specs/geometry.md); this guide is the review order. Items marked **enforced** fail `npm run ui-kit:test` when missing (`packages/ui-kit/test/geometry-acceptance.test.ts`); the others need eyes and are recorded in the component's verification record notes.
 
-1. **Family** (enforced). The component is a member of a geometry family in `packages/ui-kit/contracts/geometry-families.json` (control, field, field-row, btg, choice, track, swatch, swiper, container, …), and the family names at least one resolver exported from `tokens/geometry/resolve.ts` that returns every length the component renders.
+1. **Family** (enforced). The component is a member of a geometry family in `packages/ui-kit/contracts/geometry-families.json` (control, field, field-row, btg, choice, track, swatch, swiper, image, container, …), and the family names at least one resolver exported from `tokens/geometry/resolve.ts` that returns every length the component renders.
 2. **Unit.** Every length derives from u (or the family's local unit u′). Recipes use u-based tokens or geometry variables, never literal lengths (strict tokens reject non-tokens; one-offs need `[..]` and a reason). The component follows `size` / `data-size` subtrees.
 3. **Heights and slots.** Control rows 8u, slots 6u, composite items 7u inside a 0.5u edge. Icon slots have a set size; icons use sm / md / lg (carets sm).
 4. **Construction pattern.** Labelled parts are `[leading] [prefix] [contents] [suffix] [trailing]`: 1u beside a slot, 2u at a bare edge, 0.5u between text parts; absent parts take no space.

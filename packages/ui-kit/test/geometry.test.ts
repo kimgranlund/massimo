@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -192,4 +192,24 @@ test('Panda spacing, sizes and radii are in u and recompute in sized subtrees', 
   const vars = unitTokenVars();
   for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card-md', '--sizes-6', '--radii-lg', '--font-sizes-sm']) assert.ok(name in vars, name);
   assert.deepEqual((geometry as any)[':where([size], [data-size])'], vars);
+});
+
+test('swiper: 8u round paddles inset 2u; 2u dots (active 4u) in 4u hit areas, u apart, 2u above the bottom', () => {
+  assert.deepEqual(resolveSwiper({ unit: 4 }), { paddle: 32, paddleInset: 8, paddleRadius: 16, dot: 8, dotActive: 16, dotRadius: 4, dotHit: 16, dotsGap: 4, dotsInset: 8 });
+});
+
+test('image: height = width / ratio for presets and custom w/h, none for no or an invalid ratio; square frame', () => {
+  assert.equal(resolveImage({ ratio: 'wide', width: 160 }).height, 90);
+  assert.equal(resolveImage({ ratio: '3/2', width: 150 }).height, 100);
+  assert.equal(resolveImage({ ratio: 'evil;', width: 160 }).height, null);
+  assert.equal(resolveImage({ width: 160 }).height, null);
+  assert.equal(resolveImage({ ratio: 'square' }).radius, 0);
+  assert.equal(IMAGE_RATIOS.story, 9 / 16);
+  assert.equal(resolveImage({ unit: 3, ratio: 'wide' }).slideshow.paddle, 24);
+});
+
+test('field rows: column gap 2u, row gap 1.5u stacked / 1u inline, readout ≥ 10u; grid gaps 2u, 4u above a heading', () => {
+  assert.deepEqual(resolveFieldRow('stacked', { unit: 4 }), { unit: 4, columnGap: 8, rowGap: 6, unitGap: 4, readoutMinWidth: 40 });
+  assert.deepEqual(resolveFieldRow('inline', { unit: 4 }), { unit: 4, columnGap: 8, rowGap: 4, unitGap: 8, readoutMinWidth: 40 });
+  assert.deepEqual(resolveFieldGrid({ unit: 4 }), { unit: 4, columnGap: 8, rowGap: 8, labelMaxFraction: 0.4, readoutMinWidth: 40, headingSpace: 16 });
 });

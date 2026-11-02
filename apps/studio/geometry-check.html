@@ -12,7 +12,9 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/swiper/element';
+import '@massimo/ui-kit/components/field/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -45,6 +47,13 @@ for (const c of cases) {
     <ui-button id="adorn">Save<span slot="suffix">⌘S</span></ui-button>
     <ui-input id="money" label="M"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
     <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>
+    <ui-palette id="pal"><ui-swatch color="red"></ui-swatch><ui-swatch color="blue"></ui-swatch><ui-swatch color="green"></ui-swatch></ui-palette>
+    <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
+    <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
+    <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
+    <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
+    <ui-field id="fInline" layout="inline" label="Radius" unit="px" readout="12" description="Corner"><ui-input></ui-input></ui-field>
+    <ui-field-grid id="fGrid"><h3>One</h3><ui-field layout="inline" label="A" readout="1"><ui-input></ui-input></ui-field><ui-field layout="inline" label="Longer label" readout="2"><ui-input></ui-input></ui-field><h3>Two</h3><ui-field layout="inline" label="B" readout="3"><ui-input></ui-input></ui-field></ui-field-grid></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -192,6 +201,84 @@ for (const c of cases) {
   }
   checks['range.radius'] = [px(cs(range.querySelector('[data-part=track]')).borderTopLeftRadius), rt2.trackRadius];
   checks['swatch.size'] = [r2(rect(box.querySelector('ui-swatch')).width), rsw.size];
+  // Palette: attached 6u swatches, square inside a 2u·s strip.
+  {
+    const pal = $('pal'), sws = pal.querySelectorAll('ui-swatch');
+    checks['palette.radius'] = [px(cs(pal).borderTopLeftRadius), rsw.paletteRadius];
+    checks['palette.height'] = [r2(rect(pal).height), rsw.size];
+    checks['palette.swatch.size'] = [r2(rect(sws[1]).width), rsw.size];
+    checks['palette.swatch.radius'] = [px(cs(sws[0]).borderTopLeftRadius), 0];
+    checks['palette.swatch.gap'] = [r2(rect(sws[1]).left - rect(sws[0]).right), 0];
+    checks['palette.width'] = [r2(rect(pal).width), 3 * rsw.size];
+  }
+  // Progress: the 4u track, fill = ratio × width with the track radius.
+  {
+    const pr = $('prog'), rp = resolveTrack('progress', g), ptr = pr.querySelector('[data-part=track]'), pin = ptr.querySelector('[data-part=indicator]');
+    checks['progress.height'] = [r2(rect(pr).height), rp.height];
+    checks['progress.track'] = [r2(rect(ptr).height), rp.track];
+    checks['progress.radius'] = [px(cs(ptr).borderTopLeftRadius), rp.trackRadius];
+    checks['progress.fill'] = [r2(rect(pin).width), r2(trackFill('progress', 0.3, rect(ptr).width, g))];
+    checks['progress.fill.radius'] = [px(cs(pin).borderTopRightRadius), rp.trackRadius];
+  }
+  // Swiper: 8u round paddles inset 2u; 2u dots (active 4u) in 4u hit areas, u apart, 2u above the bottom.
+  const swiperChecks = (name, host) => {
+    const rw = resolveSwiper(g), [prev, next] = host.querySelectorAll('[data-part=paddle]'), dots = host.querySelector('[data-part=dots]');
+    const [d1, d2] = dots.querySelectorAll('[data-part=dot]'), before = (el) => getComputedStyle(el, '::before');
+    checks[`${name}.paddle.width`] = [r2(rect(prev).width), rw.paddle];
+    checks[`${name}.paddle.height`] = [r2(rect(prev).height), rw.paddle];
+    checks[`${name}.paddle.radius`] = [px(cs(prev).borderTopLeftRadius), rw.paddleRadius];
+    checks[`${name}.paddle.inset.start`] = [r2(rect(prev).left - rect(host).left), rw.paddleInset];
+    checks[`${name}.paddle.inset.end`] = [r2(rect(host).right - rect(next).right), rw.paddleInset];
+    checks[`${name}.paddle.centered`] = [r2(rect(prev).top + rect(prev).height / 2 - (rect(host).top + rect(host).height / 2)), 0];
+    checks[`${name}.dot.hit`] = [r2(rect(d1).width), rw.dotHit];
+    checks[`${name}.dot.hit.height`] = [r2(rect(d1).height), rw.dotHit];
+    checks[`${name}.dot.active`] = [px(before(d1).width), rw.dotActive];
+    checks[`${name}.dot`] = [px(before(d2).width), rw.dot];
+    checks[`${name}.dot.height`] = [px(before(d2).height), rw.dot];
+    checks[`${name}.dot.radius`] = [px(before(d2).borderTopLeftRadius), rw.dotRadius];
+    checks[`${name}.dots.gap`] = [r2(rect(d2).left - rect(d1).right), rw.dotsGap];
+    checks[`${name}.dots.inset`] = [r2(rect(host).bottom - rect(dots).bottom), rw.dotsInset];
+  };
+  swiperChecks('swiper', $('swp'));
+  // Image slideshow: the frame keeps its ratio; the swiper fills it.
+  {
+    const im = $('imgShow'), ri = resolveImage({ ...g, ratio: 'landscape', width: rect(im).width }), sw = im.querySelector('ui-swiper');
+    checks['image.slideshow.height'] = [r2(rect(im).height), r2(ri.height)];
+    checks['image.slideshow.fill'] = [r2(rect(sw).height), r2(ri.height)];
+    checks['image.radius'] = [px(cs(im).borderTopLeftRadius), ri.radius];
+    swiperChecks('image.slideshow', sw);
+  }
+  // Field rows: label, control, readout, description (resolveFieldRow, resolveFieldGrid).
+  {
+    const fp = (f, p) => f.querySelector(`:scope > [data-part=${p}]`), ctlOf = (f) => f.querySelector(':scope > ui-input');
+    const rowBottom = (f) => Math.max(rect(ctlOf(f)).bottom, rect(fp(f, 'readout')).bottom);
+    const st = $('fStack'), rs1 = resolveFieldRow('stacked', g);
+    // The control row is as tall as its tallest item (the readout's label line can pass 8u at u = 2).
+    const rowTop = (f) => Math.min(rect(ctlOf(f)).top, rect(fp(f, 'readout')).top);
+    checks['field.stacked.rowGap'] = [r2(rowTop(st) - rect(fp(st, 'label')).bottom), rs1.rowGap];
+    checks['field.stacked.columnGap'] = [r2(rect(fp(st, 'readout')).left - rect(ctlOf(st)).right), rs1.columnGap];
+    checks['field.stacked.description'] = [r2(rect(fp(st, 'description')).top - rowBottom(st)), rs1.rowGap];
+    checks['field.stacked.readout.minWidth'] = [px(cs(fp(st, 'readout')).minWidth), rs1.readoutMinWidth];
+    checks['field.stacked.readout.width'] = [r2(rect(fp(st, 'readout')).width), rs1.readoutMinWidth];
+    checks['field.stacked.unitGap'] = [px(cs(fp(st, 'label')).columnGap), rs1.unitGap];
+    checks['field.stacked.control.height'] = [r2(rect(ctlOf(st)).height), ctl.height];
+    const il = $('fInline'), rs2 = resolveFieldRow('inline', g);
+    checks['field.inline.columnGap'] = [r2(rect(ctlOf(il)).left - rect(fp(il, 'label')).right), rs2.columnGap];
+    checks['field.inline.readoutGap'] = [r2(rect(fp(il, 'readout')).left - rect(ctlOf(il)).right), rs2.columnGap];
+    checks['field.inline.description'] = [r2(rect(fp(il, 'description')).top - rowBottom(il)), rs2.rowGap];
+    checks['field.inline.description.start'] = [r2(rect(fp(il, 'description')).left - rect(ctlOf(il)).left), 0];
+    checks['field.inline.unitGap'] = [px(cs(fp(il, 'label')).columnGap), rs2.unitGap];
+    checks['field.inline.readout.width'] = [r2(rect(fp(il, 'readout')).width), rs2.readoutMinWidth];
+    const gr = $('fGrid'), rg = resolveFieldGrid(g), [f1, f2, f3] = gr.querySelectorAll('ui-field'), [h1, h2] = gr.querySelectorAll('h3');
+    checks['fieldGrid.columnGap'] = [r2(rect(ctlOf(f1)).left - rect(fp(f2, 'label')).right), rg.columnGap];
+    checks['fieldGrid.readoutGap'] = [r2(rect(fp(f1, 'readout')).left - rect(ctlOf(f1)).right), rg.columnGap];
+    checks['fieldGrid.controls.aligned'] = [r2(Math.abs(rect(ctlOf(f1)).left - rect(ctlOf(f2)).left) + Math.abs(rect(ctlOf(f1)).left - rect(ctlOf(f3)).left)), 0];
+    checks['fieldGrid.rowGap'] = [r2(rect(f2).top - rect(f1).bottom), rg.rowGap];
+    checks['fieldGrid.readout.width'] = [r2(rect(fp(f1, 'readout')).width), rg.readoutMinWidth];
+    checks['fieldGrid.label.max'] = [rect(fp(f2, 'label')).width <= rg.labelMaxFraction * rect(gr).width + 0.02 ? 1 : 0, 1];
+    checks['fieldGrid.heading.first'] = [px(cs(h1).paddingTop), 0];
+    checks['fieldGrid.heading.space'] = [px(cs(h2).paddingTop), rg.headingSpace];
+  }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });
     checks[`type.${role}.size`] = [px(cs(el).fontSize), r2(t.size)];

@@ -370,7 +370,7 @@
       "behavior": "Native scrolling; paddles and dots go to slides; fires slidechange."
     },
     "image": {
-      "geometryFamily": "container",
+      "geometryFamily": "image",
       "element": "A framed image with a cover ratio, fit and position.",
       "parts": [
         "image-slide?"

@@ -63,8 +63,11 @@
     },
     "field-row": {
       "id": "geometry:field-row",
-      "resolver": [],
-      "summary": "Field rows place a label, a control, a readout and a description; the control keeps its own geometry. Stacked: label above, row gap 1.5u. Inline: label | control | readout, column gap 2u, row gap 1u to the description. Field grid: column and row gap 2u, label column content-sized up to 40% of the grid, readout column at least 10u; a heading after the first has 4u above it. Spacing and sizes tokens in u, no resolver numbers of its own.",
+      "resolver": [
+        "resolveFieldRow",
+        "resolveFieldGrid"
+      ],
+      "summary": "Field rows place a label, a control, a readout and a description; the control keeps its own geometry. Stacked: label above, row gap 1.5u, label-to-unit 1u. Inline: label | control | readout, column gap 2u, row gap 1u to the description, the unit at least 2u from the label text. Field grid: column and row gap 2u, label column content-sized up to 40% of the grid, readout column at least 10u; a heading after the first has 4u above it. Lengths are spacing and sizes tokens in u (resolveFieldRow, resolveFieldGrid).",
       "members": [
         "component:field",
         "component:field-grid"
@@ -75,7 +78,9 @@
         "inspector row",
         "property row"
       ],
-      "csv": [],
+      "csv": [
+        "field-row"
+      ],
       "ladder": "field"
     },
     "btg": {
@@ -168,7 +173,7 @@
       "resolver": [
         "resolveSwiper"
       ],
-      "summary": "Paddles are control-family buttons; dots stretch when active.",
+      "summary": "Paddles are control-family 8u icon buttons inset 2u, fully round; dots 2u (the active one 4u wide) in 4u hit areas, u apart, 2u above the bottom edge.",
       "members": [
         "component:swiper"
       ],
@@ -181,6 +186,28 @@
       ],
       "ladder": null,
       "ladderWaiver": "A carousel per size would dwarf the page; the Components page shows the swiper at the theme unit and the Geometry page lists its paddle and dot sizes."
+    },
+    "image": {
+      "id": "geometry:image",
+      "resolver": [
+        "resolveImage",
+        "resolveSwiper"
+      ],
+      "summary": "A square-cornered frame (radius 0) whose height is width / ratio for a preset (square 1/1, landscape 4/3, portrait 3/4, wide 16/9, ultrawide 21/9, story 9/16, golden 1.618/1) or a custom \"w/h\"; with no or an invalid ratio the content sets the height. A slideshow fills the frame with a swiper (the swiper family's paddles and dots).",
+      "members": [
+        "component:image"
+      ],
+      "searchTerms": [
+        "image ratio",
+        "aspect ratio",
+        "image frame",
+        "slideshow"
+      ],
+      "csv": [
+        "image"
+      ],
+      "ladder": null,
+      "ladderWaiver": "An image frame has no u-based length of its own (its height follows its width and ratio); the slideshow controls are the swiper's, also waived."
     },
     "container": {
       "id": "geometry:container",

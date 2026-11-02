@@ -644,6 +644,17 @@
         "property row"
       ]
     },
+    "geometry:image": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/image",
+      "availability": "implemented",
+      "searchTerms": [
+        "image ratio",
+        "aspect ratio",
+        "image frame",
+        "slideshow"
+      ]
+    },
     "geometry:swatch": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/swatch",
@@ -2769,7 +2780,7 @@
     {
       "from": "component:image",
       "relation": "usesGeometry",
-      "to": "geometry:container"
+      "to": "geometry:image"
     },
     {
       "from": "component:image",

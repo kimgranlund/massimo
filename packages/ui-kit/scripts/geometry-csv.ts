@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -87,6 +87,27 @@ export const rows: Row[] = [
   { id: 'swatch.palette.radius', family: 'swatch', element: 'palette', quantity: 'radius', formula: '2u * s', value: (u) => resolveSwatch({ unit: u }).paletteRadius, status: 'implemented', notes: 'swatches attached, no gap' },
   { id: 'swiper.paddleInset', family: 'swiper', element: 'swiper', quantity: 'paddle inset', formula: '2u', value: (u) => resolveSwiper({ unit: u }).paddleInset, status: 'implemented', notes: 'paddles are 8u icon buttons' },
   { id: 'swiper.dot', family: 'swiper', element: 'swiper', quantity: 'dot', formula: '2u (active 4u wide)', value: (u) => resolveSwiper({ unit: u }).dot, status: 'implemented', notes: '4u hit area, u gap' },
+  { id: 'swiper.paddle', family: 'swiper', element: 'swiper', quantity: 'paddle size', formula: '8u (radius 4u, always round)', value: (u) => resolveSwiper({ unit: u }).paddle, status: 'implemented', notes: 'icon size lg' },
+  { id: 'swiper.dotActive', family: 'swiper', element: 'swiper', quantity: 'active dot width', formula: '4u', value: (u) => resolveSwiper({ unit: u }).dotActive, status: 'implemented', notes: 'dot radius u' },
+  { id: 'swiper.dotHit', family: 'swiper', element: 'swiper', quantity: 'dot hit area', formula: '4u square', value: (u) => resolveSwiper({ unit: u }).dotHit, status: 'implemented', notes: '' },
+  { id: 'swiper.dotsGap', family: 'swiper', element: 'swiper', quantity: 'dots gap', formula: 'u', value: (u) => resolveSwiper({ unit: u }).dotsGap, status: 'implemented', notes: '' },
+  { id: 'swiper.dotsInset', family: 'swiper', element: 'swiper', quantity: 'dots inset from the bottom', formula: '2u', value: (u) => resolveSwiper({ unit: u }).dotsInset, status: 'implemented', notes: '' },
+
+  // Image
+  { id: 'image.radius', family: 'image', element: 'image', quantity: 'radius', formula: '0', value: (u) => resolveImage({ unit: u }).radius, status: 'implemented', notes: 'square frame; a container clips it' },
+  ...Object.entries(IMAGE_RATIOS).map(([name, r]): Row => ({ id: `image.ratio.${name}`, family: 'image', element: `image[ratio=${name}]`, quantity: 'height / width', formula: `1 / (${name} ratio ${Math.round(r * 1000) / 1000})`, value: (u) => resolveImage({ unit: u, ratio: name, width: 1 }).height!, status: 'implemented', notes: 'no ratio or an invalid one: the content sets the height; a custom "w/h" is h / w' })),
+  { id: 'image.slideshow.paddle', family: 'image', element: 'image[slideshow]', quantity: 'paddle size', formula: '8u (the swiper paddle)', value: (u) => resolveImage({ unit: u }).slideshow.paddle, status: 'implemented', notes: 'the swiper fills the frame; dots and insets as for the swiper' },
+
+  // Field rows
+  { id: 'fieldRow.columnGap', family: 'field-row', element: 'field', quantity: 'column gap', formula: '2u', value: (u) => resolveFieldRow('stacked', { unit: u }).columnGap, status: 'implemented', notes: 'control to readout; inline also label to control' },
+  { id: 'fieldRow.stacked.rowGap', family: 'field-row', element: 'field[layout=stacked]', quantity: 'row gap', formula: '1.5u', value: (u) => resolveFieldRow('stacked', { unit: u }).rowGap, status: 'implemented', notes: 'label above the control; control to description' },
+  { id: 'fieldRow.inline.rowGap', family: 'field-row', element: 'field[layout=inline]', quantity: 'row gap', formula: 'u', value: (u) => resolveFieldRow('inline', { unit: u }).rowGap, status: 'implemented', notes: 'control row to description' },
+  { id: 'fieldRow.stacked.unitGap', family: 'field-row', element: 'field[layout=stacked]', quantity: 'label to unit', formula: 'u', value: (u) => resolveFieldRow('stacked', { unit: u }).unitGap, status: 'implemented', notes: '' },
+  { id: 'fieldRow.inline.unitGap', family: 'field-row', element: 'field[layout=inline]', quantity: 'label to unit (min)', formula: '2u', value: (u) => resolveFieldRow('inline', { unit: u }).unitGap, status: 'implemented', notes: 'the unit sits at the label column end' },
+  { id: 'fieldRow.readout.minWidth', family: 'field-row', element: 'field, field-grid', quantity: 'readout min width', formula: '10u', value: (u) => resolveFieldRow('stacked', { unit: u }).readoutMinWidth, status: 'implemented', notes: 'end-aligned numeric voice' },
+  { id: 'fieldGrid.columnGap', family: 'field-row', element: 'field-grid', quantity: 'column gap', formula: '2u', value: (u) => resolveFieldGrid({ unit: u }).columnGap, status: 'implemented', notes: 'label column fit-content(40%), control 1fr, readout auto' },
+  { id: 'fieldGrid.rowGap', family: 'field-row', element: 'field-grid', quantity: 'row gap', formula: '2u', value: (u) => resolveFieldGrid({ unit: u }).rowGap, status: 'implemented', notes: 'each field is a subgrid row' },
+  { id: 'fieldGrid.headingSpace', family: 'field-row', element: 'field-grid', quantity: 'space above a heading', formula: '4u', value: (u) => resolveFieldGrid({ unit: u }).headingSpace, status: 'implemented', notes: 'every heading but the first' },
 
   // Typography (ratio 1.333, rhythm 1u)
   { id: 'in.typeRatio', family: 'input', element: 'text', quantity: 'type ratio r', formula: 'r (default 1.333)', value: () => 1.333, status: 'input', notes: 'theme type-ratio, 1–1.5' },
