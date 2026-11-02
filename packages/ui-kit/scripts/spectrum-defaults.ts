@@ -1,5 +1,5 @@
 // Generates tokens/colors/spectrum/defaults.json: the default Spectrum (both schemes, steps
-// 1–12 with step 1 = white/black, resolved roles) that the kit's color tokens are built from, so builds never run the
+// 1–12, step 1 = the endpoint tone, resolved roles) that the kit's color tokens are built from, so builds never run the
 // engine. Run: npm run spectrum:defaults (test/spectrum.test.ts fails when it is stale).
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';

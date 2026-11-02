@@ -57,12 +57,12 @@ export function resolveRoles(data: Spectrum, wanted: Partial<Roles> = {}): Roles
 /** Round the numbers in a color string to 4 decimals (well below a visible difference). */
 export const trimColor = (css: string) => css.replace(/-?\d*\.\d+/g, (n) => String(Number(Number(n).toFixed(4))));
 
-/** Step 1 is the scheme extreme: pure white in light ramps, pure black in dark ramps. */
-export const SCHEME_EXTREME = { light: 'oklch(1 0 0)', dark: 'oklch(0 0 0)' } as const;
-
-/** Steps 1–12 per family and scheme (index 0 = step 1, the scheme extreme). */
+/**
+ * Steps 1–12 per family and scheme (index 0 = step 1). Step 1 is the scheme endpoint: the
+ * Light endpoint tone in light ramps, the Dark endpoint tone in dark ramps (100 / 0 = white / black).
+ */
 export function ramps(data: Spectrum, mode: 'light' | 'dark'): Record<string, string[]> {
-  return Object.fromEntries(Object.entries(data.schemes[mode]).map(([name, ramp]) => [name, [SCHEME_EXTREME[mode], ...ramp.slice(1).map((sw) => trimColor(sw.css))]]));
+  return Object.fromEntries(Object.entries(data.schemes[mode]).map(([name, ramp]) => [name, ramp.map((sw) => trimColor(sw.css))]));
 }
 
 /** Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS. */

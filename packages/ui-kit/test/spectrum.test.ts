@@ -22,14 +22,15 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.equal(light['--colors-bg'], `var(--colors-spectrum-${roles.neutral}-1)`);
   assert.ok(['#fff', '#000'].includes(dark['--colors-fg-on-solid']));
   const { ramps } = await import('../tokens/colors/spectrum/index.ts');
-  assert.deepEqual([ramps(data, 'light')[roles.neutral][0], ramps(data, 'dark')[roles.neutral][0]], ['oklch(1 0 0)', 'oklch(0 0 0)'], 'step 1 = scheme extreme');
+  assert.equal(data.schemes.light[roles.neutral][0].hct[2].toFixed(1), '97.5', 'light step 1 = Light endpoint tone');
+  assert.equal(data.schemes.dark[roles.neutral][0].hct[2].toFixed(1), '2.5', 'dark step 1 = Dark endpoint tone');
+  const moved = generateSpectrum({ darkTone: 10 });
+  assert.notEqual(ramps(moved, 'dark')[roles.neutral][0], ramps(data, 'dark')[roles.neutral][0], 'Dark endpoint moves step 1 (the page background)');
   assert.equal(ramps(data, 'light')[roles.neutral].length, 12, 'steps 1-12');
   const css = spectrumCSS(data, roles);
   assert.match(css, /@media \(prefers-color-scheme: dark\)/);
   assert.match(css, /--colors-spectrum-\w+-12:/);
   assert.doesNotMatch(css, /--colors-spectrum-\w+-0:/, 'no step 0');
-  assert.match(css, /--colors-spectrum-\w+-1: oklch\(1 0 0\)/, 'light step 1 is white');
-  assert.match(css, /--colors-spectrum-\w+-1: oklch\(0 0 0\)/, 'dark step 1 is black');
   assert.match(css, /--colors-accent-solid: var\(--colors-spectrum-/);
   assert.equal(resolveRoles(data, { primary: 'blue' }).primary !== undefined, true, 'unknown names resolve by hue');
 });
