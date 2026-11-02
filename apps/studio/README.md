@@ -1,5 +1,7 @@
 # Studio
 
+Full spec: [docs/specs/studio.md](../../docs/specs/studio.md).
+
 Tune ui-kit themes live and save them back into the kit.
 
 ```sh
@@ -13,7 +15,7 @@ The jig is built entirely from ui-kit components (web components in React; no na
 - **Colors:** Spectrum (HCT) settings: hue set, first hue, chroma, falloff, hue balance, peak tone, tone endpoints, neutral tint, scale, gamut; and the role families (primary, neutral, critical). Generation is debounced (~300ms per run) and recolors the canvas live.
 - **Theme:** save the geometry and icon settings into `packages/ui-kit/tokens/themes/themes.json` (dev-only endpoint).
 - **Copy:** puts every applied setting (minus defaults) on the clipboard as JSON with instructions for applying it, ready to hand to an agent. **Reset** restores all defaults.
-- **Canvas:** `canvas.html` in an iframe, so themes apply to its `<html>` only. `/geometry-check.html` compares rendered geometry with the resolver.
+- **Canvas:** rendered inline; overrides are scoped to the `[data-canvas]` element so the panel keeps the default theme. `/geometry-check.html` compares rendered geometry with the resolver.
 
 ## How styling flows
 

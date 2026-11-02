@@ -1,5 +1,7 @@
 # @massimo/ui-kit
 
+Specs: [system](../../docs/specs/system.md), [geometry](../../docs/specs/geometry.md), [color](../../docs/specs/color.md), [components](../../docs/specs/components.md), [icons](../../docs/specs/icons.md), [theming](../../docs/specs/theming.md).
+
 Light-DOM web components and React components built on one headless layer and one PandaCSS preset.
 
 | Folder | Holds | May import |
@@ -39,7 +41,7 @@ System glyphs (plus, minus, x, check, caret-*, arrow-*, dots-three, magnifying-g
 
 ## Geometry
 
-Heights, insets, gaps, borders and radii follow one system: see [docs/geometry.md](docs/geometry.md). Use `size` (u in px, 2 to 12) or `data-size` on any element, and `gap` on a container to change its gap.
+Heights, insets, gaps, borders and radii follow one system: see [docs/specs/geometry.md](../../docs/specs/geometry.md). Use `size` (u in px, 2 to 12) or `data-size` on any element, and `gap` on a container to change its gap.
 
 ## Commands
 
