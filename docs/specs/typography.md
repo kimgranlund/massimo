@@ -45,8 +45,8 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 | heading-1 | step 4 | 1.1 | 700 | −0.025em | heading voice |
 | heading-2 | step 3 | 1.15 | 700 | −0.02em | heading voice |
 | heading-3 | step 2 | 1.2 | 700 | −0.01em | heading voice |
-| section-kicker | step 0 | 1.2 | 700 | 0.1em | uppercase |
-| group-kicker | step −1 | 1.2 | 500 | 0.08em | uppercase |
+| section-kicker | step 0 | 1.2 | 700 | 0.12em | uppercase |
+| group-kicker | step −1 | 1.2 | 500 | 0.096em | uppercase |
 | body-large | step 1 | 1.5 | 400 | 0 | |
 | body | step 0 | 1.5 | 400 | 0 | the `<body>` default |
 | caption | 3u | 1.45 | 400 | 0 | field descriptions and errors |

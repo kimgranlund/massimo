@@ -200,14 +200,14 @@
         },
         "fontWeight": 700,
         "letterSpacing": {
-          "value": 1.45,
+          "value": 1.74,
           "unit": "px"
         },
         "lineHeight": 1.241
       },
       "$description": "Kicker · Section · uppercase",
       "$extensions": {
-        "com.massimo.tracking": "0.1em",
+        "com.massimo.tracking": "0.12em",
         "com.massimo.lineHeightPx": 18,
         "com.massimo.textTransform": "uppercase"
       }
@@ -222,14 +222,14 @@
         },
         "fontWeight": 500,
         "letterSpacing": {
-          "value": 0.87,
+          "value": 1.044,
           "unit": "px"
         },
         "lineHeight": 1.241
       },
       "$description": "Kicker · Group · uppercase",
       "$extensions": {
-        "com.massimo.tracking": "0.08em",
+        "com.massimo.tracking": "0.096em",
         "com.massimo.lineHeightPx": 13.5,
         "com.massimo.textTransform": "uppercase"
       }
@@ -729,7 +729,7 @@
           "value": 18,
           "unit": "px"
         },
-        "$description": "section-kicker · line height · voice ui, weight 700, tracking 0.1em, uppercase",
+        "$description": "section-kicker · line height · voice ui, weight 700, tracking 0.12em, uppercase",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.2 / u) × u",
           "com.massimo.status": "implemented",
@@ -803,7 +803,7 @@
           "value": 13.5,
           "unit": "px"
         },
-        "$description": "group-kicker · line height · voice ui, weight 500, tracking 0.08em, uppercase",
+        "$description": "group-kicker · line height · voice ui, weight 500, tracking 0.096em, uppercase",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.2 / u) × u",
           "com.massimo.status": "implemented",
