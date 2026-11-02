@@ -1815,6 +1815,11 @@
         "$value": "{color.spectrum.neutral.11}",
         "$description": "neutral step 11"
       },
+      "fg-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.8}",
+        "$description": "neutral step 8"
+      },
       "border": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.6}",

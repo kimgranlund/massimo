@@ -16,7 +16,7 @@ export const paneGrid = css({
 export const paneLabel = css({ gridColumn: 'span 2', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '2', minWidth: 0, textStyle: 'label', color: 'fg.muted', whiteSpace: 'nowrap' });
 export const paneLabelText = css({ overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0 });
 // The unit reads as a suffix of the label (like a field suffix): muted further and never truncated.
-export const paneUnit = css({ flexShrink: 0, opacity: 0.7, fontVariantNumeric: 'tabular-nums' });
+export const paneUnit = css({ flexShrink: 0, color: 'fg.subtle', fontVariantNumeric: 'tabular-nums' });
 export const paneControl = css({ gridColumn: 'span 3', display: 'flex', alignItems: 'center', gap: '2', minWidth: 0, '& > :is(ui-range, ui-segmented, ui-select, ui-input, ui-button)': { flex: '1', minWidth: 0 } });
 export const pair = css({ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2', width: '100%', '& > ui-select': { minWidth: 0 } });
 export const groupTitle = css({ gridColumn: '1 / -1', textStyle: 'group-kicker', color: 'fg.muted', paddingTop: '1' });

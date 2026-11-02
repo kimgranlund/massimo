@@ -74,11 +74,11 @@ export const defaults = defineGlobalStyles({
   // Required: a marker after the label (and after a checkbox/switch's own text).
   [`${FIELD}[required] > [data-part=label]::after, :is(ui-checkbox, ui-switch)[aria-required=true]::after`]: { content: '" *"', color: 'danger.fg' },
   [`:is(${CONTROL}):is(${HAS('[aria-disabled=true]')}, :has(> :disabled))`]: { opacity: 0.5, cursor: 'not-allowed' },
-  [`:is(${CONTROL}) > [data-part=contents]::placeholder`]: { color: 'fg.muted' },
+  [`:is(${CONTROL}) > [data-part=contents]::placeholder`]: { color: 'fg.subtle' },
 
   // Contenteditable text field
   '[data-part=contents][contenteditable]': { whiteSpace: 'pre', overflowX: 'auto', scrollbarWidth: 'none', cursor: 'text', minWidth: 0 },
-  '[data-part=contents][contenteditable]:empty::before': { content: 'attr(data-placeholder)', color: 'fg.muted', pointerEvents: 'none' },
+  '[data-part=contents][contenteditable]:empty::before': { content: 'attr(data-placeholder)', color: 'fg.subtle', pointerEvents: 'none' },
   '[data-part=contents][data-secret]': { WebkitTextSecurity: 'disc' },
 
   // Select trigger and popup
@@ -88,7 +88,7 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=trigger][aria-expanded=true]': { bg: 'bg.mutedActive' },
   'ui-select > [data-part=trigger][aria-expanded=true] > [data-part=trailing]': { rotate: '180deg' },
   'ui-select > [data-part=trigger] > [data-part=contents]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
-  'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.muted' },
+  'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.subtle' },
   'ui-select > [data-part=trigger] > [data-part=trailing]': { color: 'fg.muted' },
   // Prefix / suffix adornments: the label's color at 65%, so they read as secondary on any fill.
   ':is(ui-button, ui-option, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, [data-ui=button], ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {

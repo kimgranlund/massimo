@@ -24,7 +24,7 @@ Roles alias ramp steps; an entry may name a different dark step or an alpha (`ro
 | `--colors-bg-inverse`, `--colors-fg-inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
 | `--colors-bg-backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
 | `--colors-border`, `--colors-border-strong` | neutral 6, 7 |
-| `--colors-fg-muted`, `--colors-fg` | neutral 11, 12 |
+| `--colors-fg-subtle` (placeholders), `--colors-fg-muted`, `--colors-fg` | neutral 8, 11, 12 |
 | `--colors-accent-subtle`, `-subtle-hover`, `-solid`, `-solid-hover`, `-fg` | primary 3, 4, 9, 10, 11 |
 | `--colors-focus-ring` | primary 8 |
 | `--colors-danger-solid`, `-solid-hover`, `-subtle`, `-fg` | critical 9, 10, 3, 11 |

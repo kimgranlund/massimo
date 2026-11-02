@@ -117,6 +117,8 @@ export const ROLE_STEPS = {
   'bg-inverse': ['neutral', 12], 'fg-inverse': ['neutral', 1],
   'bg-backdrop': ['neutral', 12, { dark: 1, alpha: 0.4, darkAlpha: 0.7 }],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
+  // Placeholders and other hints that must read as absent content: well below muted text.
+  'fg-subtle': ['neutral', 8],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
   'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-subtle-hover': ['primary', 4], 'accent-fg': ['primary', 11],
   'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-subtle': ['critical', 3], 'danger-fg': ['critical', 11],

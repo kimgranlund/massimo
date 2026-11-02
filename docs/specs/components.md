@@ -54,7 +54,7 @@ Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or
 | read-only | `aria-readonly=true` | subtle fill, default cursor |
 | required | `[required]` field, `aria-required` checkbox/switch | ` *` in `danger.fg` after the label |
 | invalid | `aria-invalid=true` | danger-tinted fill (palette: danger outline) |
-| placeholder | `data-placeholder` | `fg.muted` |
+| placeholder | `data-placeholder` | `fg.subtle` (neutral 8) |
 | indeterminate | `data-indeterminate` (progress) | sweep; a faint full fill under reduced motion |
 | unparsable color | `data-invalid` (swatch) | danger strike |
 | failed image | `img[data-error]` | hidden; the frame's empty fill remains |
