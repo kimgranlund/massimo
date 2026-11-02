@@ -63,16 +63,30 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
   // keys move and select (selection follows focus, as in the web component).
   listbox: LIST_STATE,
   segmented: LIST_STATE,
+  // Select is a native <select> with customizable-select styling (appearance: base-select): the
+  // trigger is its <button>, the value its <selectedcontent>, the popup ::picker(select), the options
+  // native <option>s. Browsers without base-select show the platform select.
+  select: [
+    [/\[data-ui=select\] > \[data-part=popup\]:popover-open$/, '[data-ui=select] > select:open::picker(select)'],
+    [/\[data-ui=select\] > \[data-part=popup\]$/, '[data-ui=select] > select::picker(select)'],
+    [/\[data-ui=select\] > \[data-part=popup\]/g, '[data-ui=select] > select'],
+    [/\[data-ui=select\] > \[data-part=trigger\]\[aria-expanded=true\]/g, '[data-ui=select] > select:open > [data-part=trigger]'],
+    [/\[data-ui=select\] > \[data-part=trigger\]/g, '[data-ui=select] > select > [data-part=trigger]'],
+    [/\[aria-invalid=true\]/g, ':is(:user-invalid > *, [data-invalid] > select > *)'],
+    [/\[aria-disabled=true\]/g, ':is(:disabled > *)'],
+    [/\[data-ui=select\]\[required\]/g, '[data-ui=select]:has(> select:required)'],
+  ],
   swiper: [
     [/\[no-paddles\]/g, '[data-no-paddles]'],
     [/\[no-dots\]/g, '[data-no-dots]'],
     [/\[hover-controls\]/g, '[data-hover-controls]'],
   ],
+  // An option is a <label> around a radio (listbox, segmented) or a native <option> (select).
   option: [
-    [/:not\(\[aria-disabled=true\]\)/g, ':not(:has(> input:disabled))'],
-    [/\[aria-disabled=true\]/g, ':has(> input:disabled)'],
-    [/\[aria-selected=true\]/g, ':has(> input:checked)'],
-    [/\[data-active\]/g, ':has(> input:focus)'],
+    [/:not\(\[aria-disabled=true\]\)/g, ':not(:disabled, :has(> input:disabled))'],
+    [/\[aria-disabled=true\]/g, ':is(:disabled, :has(> input:disabled))'],
+    [/\[aria-selected=true\]/g, ':is(:checked, :has(> input:checked))'],
+    [/\[data-active\]/g, ':is(:focus, :has(> input:focus))'],
   ],
 };
 
@@ -139,6 +153,15 @@ export const native = {
   // Options: the native radio is invisible; the option row paints it.
   '[data-ui=option]': { position: 'relative' },
   '[data-ui=option] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
+  // Select: opt in to customizable select; the inner <button> is the painted trigger.
+  '[data-ui=select] > select, [data-ui=select] > select::picker(select)': { appearance: 'base-select' },
+  // The select's own box wraps the trigger exactly: no intrinsic minimum height or line box.
+  '[data-ui=select] > select': { display: 'block', width: '100%', padding: 0, border: 0, background: 'none', minWidth: 0, minBlockSize: 0, blockSize: 'auto', lineHeight: 0 },
+  '[data-ui=select] > select > [data-part=trigger], [data-ui=select] > select > option': { lineHeight: 'var(--line)' },
+  '[data-ui=select] > select::picker-icon': { display: 'none' },
+  '[data-ui=select] > select > option::checkmark': { display: 'none' },
+  '[data-ui=select] > select > [data-part=trigger]': { width: '100%' },
+  '[data-ui=select] > select::picker(select)': { border: 0, marginBlockStart: 'var(--u)' },
   // Progress: the native element stays in the accessibility tree; the track paints it.
   '[data-ui=progress] > progress': { position: 'absolute', width: '1px', height: '1px', opacity: 0, overflow: 'hidden' },
 } as Css;

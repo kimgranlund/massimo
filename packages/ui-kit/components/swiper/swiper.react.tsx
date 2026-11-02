@@ -1,3 +1,4 @@
+/// <reference path="../jsx.d.ts" />
 // React <Swiper>: the web component's anatomy with native parts. Slides scroll in a scroll-snap
 // viewport (native momentum, touch, trackpad and arrow-key scrolling); the paddles are native
 // <button data-ui="button">s and the dots native <button>s. An IntersectionObserver tracks the slide

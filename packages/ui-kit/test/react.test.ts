@@ -91,3 +91,16 @@ test('Swiper: carousel region, scroll-snap viewport of slides, native paddle and
   assert.match(html(h(Image, { slideshow: true, alt: 'Products' }, h('img', { src: '/1.jpg', alt: '1' }))), /data-slideshow="true".*data-ui="swiper".*aria-label="Products".*data-hover-controls="true"/);
   noCustom(sw);
 });
+
+const { Select, SelectOption } = await loadTsx(new URL('../components/select/select.react.tsx', import.meta.url));
+
+test('Select: native <select> with a <button> trigger, <selectedcontent> value and rich options', () => {
+  const s = html(h(Select, { label: 'Role', name: 'role', defaultValue: 'eng', required: true, prefix: 'As' }, h(SelectOption, { value: 'design', leading: h('i', { name: 'pen' }) }, 'Designer'), h(SelectOption, { value: 'eng' }, 'Engineer')));
+  assert.match(s, /^<div data-ui="select"><label data-part="label" id="[^"]+" for="[^"]+">Role<\/label><select /);
+  assert.match(s, /<button data-part="trigger" type="button"><span data-part="prefix">As<\/span><selectedcontent data-part="contents"><\/selectedcontent><span data-part="trailing" aria-hidden="true"><i name="caret-down"><\/i><\/span><\/button>/);
+  assert.match(s, /<option data-ui="option" value="design"><span data-part="leading"><i name="pen"><\/i><\/span><span data-part="contents">Designer<\/span><\/option><option data-ui="option" value="eng" selected="">/);
+  const sel = s.match(/<select [^>]*>/)?.[0] ?? '';
+  for (const a of ['name="role"', 'required=""']) assert.ok(sel.includes(a), `${a} in ${sel}`);
+  assert.match(html(h(Select, { label: 'X', error: 'Pick one' }, h(SelectOption, { value: 'a' }, 'A'))), /data-invalid="true".*<span data-part="error"[^>]*>Pick one<\/span>/);
+  noCustom(s);
+});

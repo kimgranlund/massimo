@@ -22,11 +22,11 @@
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "2303454b22cf0df096403e92a3e95ecb285f6912ba9eb8b69bee52ba3781186f"
+      "sha256": "0d261aa1024ad2b6a2479f366781ce1e117a87fb9de9610a70373c0f758bfa4f"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "fb7b41b825e4f4cd52cb4b45ed4afd6a7b5a13fe778b66ff2d6b89a30ff5309c"
+      "sha256": "0217d8d3030888ef47d1d1859aaee408b53534a500ae2d1c95bd2849c0b7beca"
     }
   ],
   "renderers": {

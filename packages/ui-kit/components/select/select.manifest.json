@@ -502,6 +502,14 @@
         "component:select": "UISelect"
       },
       "verification": "./verification/select.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./select.react.tsx",
+      "exports": {
+        "component:select": "Select"
+      },
+      "verification": "./verification/select.verification.json#/renderers/react"
     }
   }
 }

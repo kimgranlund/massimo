@@ -1,3 +1,4 @@
+/// <reference path="../jsx.d.ts" />
 // React <Checkbox>, <Radio>, <Switch>: a native <input> (checkbox; radio; checkbox with role=switch)
 // inside a <label data-ui="…"> host with the same anatomy as the web components:
 //   label > input, [data-part=leading] > [data-part=box], [prefix], [data-part=contents], [suffix]

@@ -34,7 +34,8 @@
     "./components/image/react": "./components/image/image.react.tsx",
     "./components/container/react": "./components/container/container.react.tsx",
     "./components/listbox/react": "./components/listbox/listbox.react.tsx",
-    "./components/swiper/react": "./components/swiper/swiper.react.tsx"
+    "./components/swiper/react": "./components/swiper/swiper.react.tsx",
+    "./components/select/react": "./components/select/select.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

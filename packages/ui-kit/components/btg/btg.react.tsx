@@ -1,3 +1,4 @@
+/// <reference path="../jsx.d.ts" />
 // React <Badge>, <Tag>, <Chip>: native elements with the web components' anatomy and data-ui hosts.
 // Badge and Tag are <span>s; Chip is a native <button> (aria-pressed when selectable). A removable
 // chip's x is a click target inside it, not a nested button; Delete or Backspace also remove it.

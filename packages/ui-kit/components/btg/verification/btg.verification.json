@@ -22,7 +22,7 @@
     },
     {
       "path": "components/btg/btg.react.tsx",
-      "sha256": "7c1c0780c9f2d7e520aec086a7c6de64f81fea5d1da01c1fac75eee95b25ab64"
+      "sha256": "d67e819b58ab5625ce608c8395da185e8409af93a8b5544f70451c4a344aee75"
     },
     {
       "path": "components/parts.react.tsx",
@@ -30,7 +30,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "fb7b41b825e4f4cd52cb4b45ed4afd6a7b5a13fe778b66ff2d6b89a30ff5309c"
+      "sha256": "0217d8d3030888ef47d1d1859aaee408b53534a500ae2d1c95bd2849c0b7beca"
     }
   ],
   "renderers": {

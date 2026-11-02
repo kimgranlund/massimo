@@ -22,7 +22,19 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "8ebdddfd9e505a279e0cceb26d9fbbca32f1a9e58e55114adb4b71cc7351a109"
+      "sha256": "8a8fa638188b3a3d8987cd0333c3165aa6649a478c1e00e568e4d9c2369f88e3"
+    },
+    {
+      "path": "components/select/select.react.tsx",
+      "sha256": "de1883ba8fb234fa1700be398d95d35955726e4109fa1b6036b9cdb10c24b172"
+    },
+    {
+      "path": "components/parts.react.tsx",
+      "sha256": "8d545467b82b5e123f066ad5de9b787042c81f4eac55e8a6b994662d25eb68d5"
+    },
+    {
+      "path": "styles/native.ts",
+      "sha256": "0217d8d3030888ef47d1d1859aaee408b53534a500ae2d1c95bd2849c0b7beca"
     }
   ],
   "renderers": {
@@ -48,9 +60,33 @@
           "node": "v26.13.0"
         }
       }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native select with button trigger, selectedcontent value, rich options, label/description/error wiring"
+        },
+        {
+          "command": "node --test test/native.test.ts",
+          "covers": "twin selectors and state mapping"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts",
+          "node --test test/native.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
     }
   },
   "limitations": [
-    "The source list is the direct sources, not every transitive dependency."
+    "The source list is the direct sources, not every transitive dependency.",
+    "React Select relies on customizable select (appearance: base-select, Chromium 135+); other browsers show the platform select. Styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": [])."
   ]
 }

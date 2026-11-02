@@ -8,7 +8,9 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/swiper/element';
+import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/icons';
+import { Select, SelectOption } from '@massimo/ui-kit/components/select/react';
 import { Swiper } from '@massimo/ui-kit/components/swiper/react';
 import { Listbox, Segmented, Option } from '@massimo/ui-kit/components/listbox/react';
 import { Badge, Tag, Chip } from '@massimo/ui-kit/components/btg/react';
@@ -49,6 +51,7 @@ function Pair({ u }: { u: number }) {
         <ui-group data-k="gp" gap="2"><span>a</span><span>b</span></ui-group>
         <ui-listbox data-k="lb" label="Folder" value="inbox"><ui-option value="inbox"><i slot="leading" name="tray" />Inbox<span slot="suffix">12</span></ui-option><ui-option value="sent">Sent</ui-option><ui-option value="spam" disabled>Spam</ui-option></ui-listbox>
         <ui-segmented data-k="sg" label="View" value="grid"><ui-option value="grid">Grid</ui-option><ui-option value="list">List</ui-option></ui-segmented>
+        <div style={{ width: 300 }}><ui-select data-k="sel" label="Role" value="eng"><i slot="leading" name="briefcase" /><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
         <div style={{ width: 300 }}><ui-swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></ui-swiper></div>
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
       </div>
@@ -75,6 +78,7 @@ function Pair({ u }: { u: number }) {
         <Group data-k="gp" gap={2}><span>a</span><span>b</span></Group>
         <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option><Option value="spam" disabled>Spam</Option></Listbox>
         <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
+        <div style={{ width: 300 }}><div data-k="sel"><Select label="Role" defaultValue="eng" leading={<i name="briefcase" />}><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div></div>
         <div style={{ width: 300 }}><Swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></Swiper></div>
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
       </div>
@@ -120,6 +124,24 @@ setTimeout(() => {
         checks++;
         if (a[key] !== b[key]) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
       }
+    }
+  }
+  // Select: same parts, different DOM (the React trigger is the <button> inside a native <select>).
+  if (CSS.supports('appearance', 'base-select')) for (const c of root.querySelectorAll('[data-case]')) {
+    const wc = c.querySelector('[data-side=wc] [data-k=sel]') as HTMLElement, re = c.querySelector('[data-side=react] [data-k=sel] [data-ui=select]') as HTMLElement;
+    const parts: [string, string, string][] = [
+      ['host', ':scope', ':scope'], ['label', ':scope > [data-part=label]', ':scope > [data-part=label]'],
+      ['trigger', ':scope > [data-part=trigger]', ':scope > select > [data-part=trigger]'],
+      ['leading', ':scope > [data-part=trigger] > [data-part=leading]', ':scope > select > [data-part=trigger] > [data-part=leading]'],
+      ['value', ':scope > [data-part=trigger] > [data-part=contents]', ':scope > select > [data-part=trigger] > [data-part=contents]'],
+      ['chevron', ':scope > [data-part=trigger] > [data-part=trailing]', ':scope > select > [data-part=trigger] > [data-part=trailing]'],
+    ];
+    for (const [name, a, b] of parts) {
+      const ea = wc.querySelector(a) ?? wc, eb = re.querySelector(b) ?? re;
+      const fa = (e: Element, h: Element) => { const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.color}:${cs.fontSize}`; };
+      checks++;
+      const va = name === 'host' ? fa(wc, wc) : fa(ea as Element, wc), vb = name === 'host' ? fa(re, re) : fa(eb as Element, re);
+      if (va !== vb) fails.push(`u${c.getAttribute('data-case')} sel.${name}: wc ${va} react ${vb}`);
     }
   }
   document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
