@@ -3,7 +3,7 @@
 // code (test/geometry-csv.test.ts fails when the file is stale). Run: npm run geometry:csv
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, containerRadius, popupOffset, resolveBtg } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, popupOffset, resolveBtg, resolveContainer, CONTAINERS, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -16,7 +16,7 @@ const rows: Row[] = [
   { id: 'in.u', family: 'input', element: 'all', quantity: 'unit u', formula: 'u = size attribute (px)', value: (u) => u, status: 'input', notes: 'size="2|2.25|2.5|3|3.5|4|4.5"; theme default 4' },
   { id: 'in.B', family: 'input', element: 'all', quantity: 'border B', formula: `B (default ${GEOMETRY_DEFAULTS.border})`, value: () => GEOMETRY_DEFAULTS.border, status: 'input', notes: 'whole px, 0..u/2; lives inside padding, never added to height' },
   { id: 'in.s', family: 'input', element: 'all', quantity: 'curvature scale s', formula: `s (default ${GEOMETRY_DEFAULTS.radiusScale})`, value: () => GEOMETRY_DEFAULTS.radiusScale, status: 'input', notes: 'theme radius-scale, 0..3' },
-  { id: 'in.Q', family: 'input', element: 'composite', quantity: 'composite inset Q', formula: `Q = ${GEOMETRY_DEFAULTS.compositeInsetUnits}u`, value: (u) => GEOMETRY_DEFAULTS.compositeInsetUnits * u, status: 'input', notes: 'inset attribute 0|0.5|1|1.5 (x u)' },
+  { id: 'in.gutters', family: 'input', element: 'containers, composites', quantity: 'gutters g', formula: 'gap = g·u (default: the padding level)', value: () => NaN, status: 'input', notes: 'gutters attribute 0..8 in 0.5 steps; applies to that element only' },
 
   // Control
   { id: 'control.height', family: 'control', element: 'button, input, select', quantity: 'height', formula: '8u', value: (u) => ctl(u).height, status: 'implemented', notes: '' },
@@ -40,15 +40,25 @@ const rows: Row[] = [
   { id: 'select.popupOffset', family: 'control', element: 'select popup', quantity: 'offset from trigger', formula: 'u', value: (u) => popupOffset({ unit: u }), status: 'implemented', notes: '' },
 
   // Composite
-  { id: 'composite.edge', family: 'composite', element: 'listbox, segmented, popup', quantity: 'edge distance D', formula: 'max(B, Q)', value: (u) => cmp(u).edge, status: 'implemented', notes: '' },
+  { id: 'composite.edge', family: 'composite', element: 'listbox, segmented, popup', quantity: 'edge distance D', formula: 'max(B, 0.5u)', value: (u) => cmp(u).edge, status: 'implemented', notes: 'the composite padding level' },
   { id: 'composite.padding', family: 'composite', element: 'listbox, segmented, popup', quantity: 'padding', formula: 'D - B', value: (u) => cmp(u).padding, status: 'implemented', notes: '' },
-  { id: 'composite.gap', family: 'composite', element: 'listbox, segmented, popup', quantity: 'gap between options', formula: 'Q', value: (u) => cmp(u).gap, status: 'implemented', notes: '' },
+  { id: 'composite.gap', family: 'composite', element: 'listbox, segmented, popup', quantity: 'gap between options', formula: 'gutters·u, default 0.5u', value: (u) => cmp(u).gap, status: 'implemented', notes: '' },
   { id: 'composite.option.inset', family: 'composite', element: 'option', quantity: 'option inset Ic', formula: 'max(B, u - D)', value: (u) => cmp(u).child.inset, status: 'implemented', notes: '' },
-  { id: 'composite.option.height', family: 'composite', element: 'option', quantity: 'option height', formula: '6u + 2Ic', value: (u) => cmp(u).child.height, status: 'implemented', notes: '' },
-  { id: 'composite.rowHeight', family: 'composite', element: 'segmented', quantity: 'one-row height', formula: 'option height + 2D', value: (u) => cmp(u).rowHeight, status: 'implemented', notes: 'equals control height unless the border leaves no room (then grows)' },
-  { id: 'composite.radius.segmented', family: 'composite', element: 'segmented', quantity: 'radius', formula: 'min(3u * s, row / 2)', value: (u) => cmp(u).radius, status: 'implemented', notes: '' },
-  { id: 'composite.radius.container', family: 'composite', element: 'listbox, popup', quantity: 'radius', formula: '3u * s', value: (u) => containerRadius({ unit: u }), status: 'implemented', notes: 'container curvature, not height-capped' },
-  { id: 'composite.option.radius', family: 'composite', element: 'option in segmented', quantity: 'option radius', formula: 'min(option / 2, max(0, parent radius - D)); 0 when Q = 0', value: (u) => cmp(u).child.radius, status: 'implemented', notes: 'Q = 0 is an attached group (square options)' },
+  { id: 'composite.option.height', family: 'composite', element: 'option', quantity: 'option height', formula: '6u + 2Ic', value: (u) => cmp(u).child.height, status: 'implemented', notes: '7u' },
+  { id: 'composite.rowHeight', family: 'composite', element: 'segmented', quantity: 'one-row height', formula: 'option height + 2D', value: (u) => cmp(u).rowHeight, status: 'implemented', notes: 'always 8u (B ≤ u/2)' },
+  { id: 'composite.radius.segmented', family: 'composite', element: 'segmented', quantity: 'radius', formula: 'min(3.5u * s, row / 2)', value: (u) => cmp(u).radius, status: 'implemented', notes: '' },
+  { id: 'composite.radius.container', family: 'composite', element: 'listbox, popup', quantity: 'radius', formula: '3.5u * s', value: (u) => resolveComposite({ unit: u, container: true }).radius, status: 'implemented', notes: '' },
+  { id: 'composite.option.radius', family: 'composite', element: 'option', quantity: 'option radius', formula: 'min(option / 2, max(0, parent radius - D))', value: (u) => cmp(u).child.radius, status: 'implemented', notes: '= 3u control radius (concentric)' },
+
+  // Layout containers
+  ...(['group', 'collection', 'tile', 'card', 'panel', 'region'] as ContainerLevel[]).flatMap((level): Row[] => {
+    const spec = CONTAINERS[level];
+    return [
+      { id: `container.${level}.padding`, family: 'container', element: `ui-${level}`, quantity: 'padding', formula: `${spec.padding}u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
+      { id: `container.${level}.gap`, family: 'container', element: `ui-${level}`, quantity: 'gap', formula: `${spec.padding}u (or gutters·u)`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
+      { id: `container.${level}.radius`, family: 'container', element: `ui-${level}`, quantity: 'max radius', formula: spec.maxRadius ? `${spec.maxRadius}u * s (= 3u + ${spec.padding}u)` : '0', value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.maxRadius ? 'concentric with a 3u control in the corner; capped at half height' : 'square: meets the viewport edge' },
+    ];
+  }),
 
   // Badge / tag / chip
   { id: 'btg.chip.height', family: 'btg', element: 'chip', quantity: 'height', formula: 'min(12 + 3u, 8u)', value: (u) => resolveBtg('chip', { unit: u }).height, status: 'implemented', notes: 'cap: never taller than a control (bites below u = 2.4)' },
@@ -67,7 +77,7 @@ const rows: Row[] = [
   { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min(3u * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'tag and badge: same formula with their height' },
 ];
 
-const fmt = (n: number) => String(Math.round(n * 1000) / 1000);
+const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));
 const cell = (s: string) => (/[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);
 
 export function geometryCsv() {

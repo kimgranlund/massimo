@@ -12,7 +12,7 @@ Light-DOM web components and React components built on one headless layer and on
 | `components/<name>/` | `<name>.element.ts` (web component), `<name>.react.tsx` (React, where present) | `core`, `dom` |
 | `preset.ts` | The Panda preset: tokens + reset + component defaults + FOUC guard | all of the above |
 
-Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`.
+Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`, and CSS-only containers `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`.
 
 ## Color scheme
 
@@ -30,7 +30,7 @@ Names are Phosphor's; other sets translate them through aliases (`caret-down` â†
 
 ## Geometry
 
-Heights, insets, gaps, borders and radii follow one system: see [docs/geometry.md](docs/geometry.md). Use `size="sm|md|lg"` (or `data-size`) on any element; there is no separate density.
+Heights, insets, gaps, borders and radii follow one system: see [docs/geometry.md](docs/geometry.md). Use `size` (u in px, 2 to 12) or `data-size` on any element, and `gutters` on a container to change its gap.
 
 ## Commands
 

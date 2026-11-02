@@ -8,11 +8,11 @@ import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/btg/element';
-import { SIZES, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
-SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, q: 0.5, icon: ICONS[(i + border) % 4] }); });
-cases.push({ unit: 3, border: 1, q: 1.5, icon: 'md' }, { unit: 4, border: 0, q: 0, icon: 'md' }, { unit: 4.5, border: 1, q: 1, icon: 'lg' });
+SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gutters: (i + border) % 3 === 0 ? 2 : undefined }); });
+const LEVELS = ['group', 'collection', 'tile', 'card', 'panel', 'region'];
 const root = document.getElementById('root');
 const r2 = (v) => Math.round(v * 100) / 100;
 const px = (v) => r2(parseFloat(v));
@@ -25,11 +25,12 @@ for (const c of cases) {
   box.innerHTML = `<ui-button icon-size="${c.icon}"><span slot="leading"></span>Save</ui-button>
     <ui-button icon-size="${c.icon}" aria-label="x"><span slot="leading"></span></ui-button>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
-    <ui-segmented inset="${c.q}"><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
+    <ui-segmented ${c.gutters !== undefined ? `gutters="${c.gutters}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
+    ${LEVELS.map((l) => `<ui-${l} ${c.gutters !== undefined ? `gutters="${c.gutters}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
     <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
-  const g = { unit: c.unit, border: c.border, compositeInsetUnits: c.q, iconSize: c.icon };
+  const g = { unit: c.unit, border: c.border, iconSize: c.icon, gutters: c.gutters };
   const ctl = resolveControl(g), cmp = resolveComposite(g), fld = resolveField(g), trg = resolveSelectTrigger(g);
   const [btn, iconBtn] = box.querySelectorAll('ui-button');
   const lead = btn.querySelector('[data-part=leading]'), contents = btn.querySelector('[data-part=contents]');
@@ -75,8 +76,17 @@ for (const c of cases) {
     'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
     'chip.radius': [px(cs(chip).borderTopLeftRadius), rc.radius],
   };
-  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > 0.02) fails.push(`u${c.unit}/B${c.border}/Q${c.q}/${c.icon} ${k}: got ${got}, want ${want}`); }
-  rows.push(`u${c.unit} B${c.border} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]}`);
+  for (const l of LEVELS) {
+    const el = box.querySelector(`ui-${l}`), [a, b] = el.children, h = rect(el).height;
+    const want = resolveContainer(l, { ...g, height: h });
+    const between = l === 'group' ? rect(b).left - rect(a).right : rect(b).top - rect(a).bottom;
+    checks[`${l}.padding`] = [px(cs(el).paddingTop), want.padding];
+    checks[`${l}.gap`] = [r2(between), want.gap];
+    // getComputedStyle reports the declared radius; paint scales it to fit half the height.
+    checks[`${l}.radius`] = [r2(Math.min(px(cs(el).borderTopLeftRadius), h / 2)), r2(want.radius)];
+  }
+  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > 0.02) fails.push(`u${c.unit}/B${c.border}/g${c.gutters ?? '-'}/${c.icon} ${k}: got ${got}, want ${want}`); }
+  rows.push(`u${c.unit} B${c.border} g${c.gutters ?? '-'} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]} card ${checks['card.padding'][0]}+${c.border}/${checks['card.gap'][0]}/${checks['card.radius'][0]}`);
 }
 document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: total, fails, rows }, null, 1);
 </script></body></html>

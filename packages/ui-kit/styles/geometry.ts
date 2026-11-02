@@ -2,14 +2,17 @@
 // each element from inherited inputs, so size and theme parameters work per subtree.
 //
 // Inputs (unitless): --ui-unit (theme default; [size] overrides per subtree), --ui-border,
-// --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-composite-inset (from [inset]).
+// --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gutters (from [gutters], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
-import { ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
+import { CONTAINERS, GUTTERS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, [data-ui])';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-group, ui-collection, ui-tile, ui-card, ui-panel, ui-region, [data-ui])';
 export const BTG = ':is(ui-badge, ui-tag, ui-chip)';
+const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
+export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
+const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
 const TAGCHIP = ':is(ui-tag, ui-chip)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
 export const SLOTTED = ':is(ui-button, ui-option, [data-ui=button])';
@@ -18,13 +21,16 @@ const SLOT = ':is([data-part=leading], [data-part=trailing])';
 export const geometry = defineGlobalStyles({
   // Not ':root': the preset spreads several globalCss objects, and a shared key would replace
   // the theme parameters (themeCss) instead of merging with them.
-  ':where(:root)': { '--ui-composite-inset': '0.5', '--ui-icon-k': String(ICON_STEPS.md) },
+  ':where(:root)': { '--ui-icon-k': String(ICON_STEPS.md) },
 
   // size = u, on any element, inherited.
   ...Object.fromEntries(SIZES.map((u) => [`:is([size="${u}"], [data-size="${u}"])`, { '--ui-unit': String(u) }])),
   ...Object.fromEntries(Object.entries(ICON_STEPS).map(([k, v]) => [`:is([icon-size=${k}], [data-icon-size=${k}])`, { '--ui-icon-k': String(v) }])),
-  // Set on the component; the select's popup inherits it.
-  ...Object.fromEntries(['0', '0.5', '1', '1.5'].map((q) => [`:is(ui-listbox, ui-segmented, ui-select)[inset="${q}"]`, { '--ui-composite-inset': q }])),
+  // Gutters apply to the element that carries the attribute only: every container resets the
+  // value at tag specificity, and the attribute rule (higher specificity) sets it.
+  [CONTAINER_TAGS]: { '--ui-gutters': 'initial' },
+  'ui-select > [data-part=popup]': { '--ui-gutters': 'inherit' },
+  ...Object.fromEntries(GUTTERS.map((g) => [`[gutters="${g}"]`, { '--ui-gutters': String(g) }])),
 
   // Control family, resolved on every component element.
   [GEOMETRY_SCOPE]: {
@@ -77,27 +83,35 @@ export const geometry = defineGlobalStyles({
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))',
   },
 
-  // Composite family. Declared on the parent; children read the inherited values.
+  // Layout containers: padding level p and max radius r (units of u), see CONTAINERS.
+  ...Object.fromEntries(LAYOUT.map((k) => [`ui-${k}`, { '--cp': String(CONTAINERS[k].padding), '--cm': String(CONTAINERS[k].maxRadius) }])),
+  [LAYOUT_CONTAINERS]: {
+    padding: 'max(0px, calc(var(--cp) * var(--u) - var(--b)))',
+    gap: 'calc(var(--ui-gutters, var(--cp)) * var(--u))',
+    borderWidth: 'var(--b)',
+    borderRadius: 'calc(var(--cm) * var(--u) * var(--ui-radius-scale))',
+  },
+
+  // Composite (0.5u level). Declared on the parent; options read the inherited values.
   [COMPOSITE]: {
-    '--q': 'calc(var(--ui-composite-inset) * var(--u))',
-    '--d': 'max(var(--b), var(--q))',
+    '--d': 'max(var(--b), calc(0.5 * var(--u)))',
     '--ci': 'max(var(--b), calc(var(--u) - var(--d)))',
     '--ch': 'calc(var(--slot) + 2 * var(--ci))',
-    // Container curvature for lists and popups; segmented overrides with control curvature.
-    '--cr': 'calc(3 * var(--u) * var(--ui-radius-scale))',
+    // Container curvature for lists and popups; segmented caps it at half its height.
+    '--cr': 'calc(3.5 * var(--u) * var(--ui-radius-scale))',
     padding: 'calc(var(--d) - var(--b))',
-    gap: 'var(--q)',
+    gap: 'calc(var(--ui-gutters, 0.5) * var(--u))',
     borderWidth: 'var(--b)',
     borderRadius: 'var(--cr)',
   },
-  'ui-segmented': { '--cr': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))' },
+  'ui-segmented': { '--cr': 'min(calc(3.5 * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))' },
   [`${COMPOSITE} > ui-option`]: {
     minHeight: 'var(--ch)',
     padding: 'calc(var(--ci) - var(--b))',
     borderWidth: 'var(--b)',
     borderColor: 'transparent',
-    // Nested radius; the min(1, Q*1000) factor is 0 only when Q = 0 (attached group: square children).
-    borderRadius: 'calc(min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d)))) * min(1, var(--ui-composite-inset) * 1000))',
+    // Concentric with the composite: parent radius minus its edge (= the 3u control radius).
+    borderRadius: 'min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d))))',
     fontSize: 'var(--font)',
   },
 });

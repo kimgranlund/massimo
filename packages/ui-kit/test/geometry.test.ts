@@ -1,10 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
+import { SIZES, GUTTERS, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
 
 test('size is the unit: height 8u, font 10px + u (spec table)', () => {
   const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
-  assert.deepEqual(SIZES, table.map((r) => r[1]));
+  assert.deepEqual(SIZES.slice(0, 7), table.map((r) => r[1]));
   for (const [height, unit, font] of table) {
     const c = resolveControl({ unit, border: 0 });
     assert.equal(c.height, height);
@@ -48,26 +48,38 @@ test('fields and select trigger put text where button contents sit', () => {
   assert.deepEqual([t.paddingStart, t.paddingEnd, t.chevronSlot], [7, 3, 24]);
 });
 
-test('composite: default Q=0.5u keeps a one-row segmented control at control height', () => {
+test('composite: 0.5u padding level; one-row segmented is always 8u; options keep the 3u control radius', () => {
   const c = resolveComposite();
   assert.equal(c.edge, 2);
+  assert.equal(c.padding, 1);
   assert.equal(c.child.height, 28);
-  assert.equal(c.rowHeight, 32);
-  assert.equal(c.child.radius, 10);
+  assert.equal(c.radius, 14);
+  assert.equal(c.child.radius, 12, 'concentric: 14 - 2 = control radius');
+  for (const unit of SIZES) for (const border of [0, 1]) {
+    if (border > unit / 2) continue;
+    assert.equal(resolveComposite({ unit, border }).rowHeight, 8 * unit, `row = 8u at u=${unit} B=${border}`);
+  }
+  assert.equal(resolveComposite({ gutters: 0 }).gap, 0, 'gutters override the gap');
 });
 
-test('composite grows instead of shrinking the slot under a tight budget', () => {
-  const c = resolveComposite({ unit: 3, border: 1, compositeInsetUnits: 1.5 });
-  assert.equal(c.child.inset, 1, 'child inset floors at B');
-  assert.equal(c.child.height, 20);
-  assert.equal(c.rowHeight, 29, 'grows past the 24px control');
+test('containers: padding, gap = padding, concentric max radius, square panel and region', () => {
+  const at4 = Object.fromEntries((['group', 'collection', 'tile', 'card', 'panel', 'region'] as const).map((l) => {
+    const c = resolveContainer(l, { border: 0 });
+    return [l, [c.padding, c.gap, c.radius]];
+  }));
+  assert.deepEqual(at4, { group: [4, 4, 16], collection: [8, 8, 20], tile: [12, 12, 24], card: [16, 16, 28], panel: [24, 24, 0], region: [32, 32, 0] });
+  for (const l of ['group', 'collection', 'tile', 'card'] as const) assert.equal(CONTAINERS[l].maxRadius, 3 + CONTAINERS[l].padding, `${l} radius = 3u + padding`);
+  const card = resolveContainer('card', { unit: 5, gutters: 2 });
+  assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gutters="2">');
+  assert.equal(resolveContainer('group', { height: 20 }).radius, 10, 'half-height cap');
+  assert.equal(resolveContainer('card').padding, 15, 'border lives inside the padding');
 });
 
-test('Q = 0 is an attached group: no gap, square children', () => {
-  const c = resolveComposite({ compositeInsetUnits: 0, border: 0 });
-  assert.equal(c.gap, 0);
-  assert.equal(c.child.radius, 0);
-  assert.equal(c.child.height, 32);
+test('sizes run to 12', () => {
+  assert.equal(SIZES.at(-1), 12);
+  const c = resolveControl({ unit: 12 });
+  assert.deepEqual([c.height, c.fontSize], [96, 22]);
+  assert.equal(GUTTERS.length, 17);
 });
 
 test('badge / tag / chip: 12 + k·u with the cap; your u=3, 4, 5 values hold', () => {
@@ -94,3 +106,4 @@ test('badge / tag / chip: text, slots, padding', () => {
   assert.equal(tag.iconSize, 14);
   assert.equal(badge.radius, 8, 'pill');
 });
+

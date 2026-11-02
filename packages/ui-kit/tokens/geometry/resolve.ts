@@ -1,14 +1,16 @@
 // Component geometry: the numerical reference for every control and composite.
 // Based on Differential Forms v0.2.2 (mathematical-design-system skill), adapted:
-// - size IS the unit: size="2|2.25|2.5|3|3.5|4|4.5" sets u; a control is 8u tall.
+// - size IS the unit: size="2" … size="12" sets u; a control is 8u tall.
 // - controls have leading / contents / trailing slots, each at least 6u square,
 //   inside 1u of padding (the border is spent inside that padding, never added).
 // - text is 10px + u; contents carry 1u inline and 0.75u block padding.
 // styles/geometry.ts implements the same formulas in CSS; tests and the browser
 // check (apps/studio/geometry-check.html) keep the two in agreement. Lengths in CSS px.
 
-/** Supported units; control height = 8u → 16, 18, 20, 24, 28, 32, 36px. */
-export const SIZES = [2, 2.25, 2.5, 3, 3.5, 4, 4.5] as const;
+/** Supported units; control height = 8u. 2..4.5 as before, then every 0.5 up to 12 (96px controls). */
+export const SIZES = [2, 2.25, 2.5, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
+/** Gutter values (units of u) accepted by the gutters attribute. */
+export const GUTTERS = Array.from({ length: 17 }, (_, i) => i * 0.5);
 export type IconSize = 'sm' | 'md' | 'lg' | 'fill';
 
 /** Icon size = font size + k·u (fill takes the whole slot). */
@@ -21,20 +23,20 @@ export interface GeometryInput {
   border?: number;
   /** Multiplier on the soft (3u) curvature; 0 = square. */
   radiusScale?: number;
-  /** Composite inset Q in units of u, 0..1.5. */
-  compositeInsetUnits?: number;
+  /** Gap override in units of u (gutters attribute); default = the container's padding level. */
+  gutters?: number;
   iconSize?: IconSize;
 }
 
-export const GEOMETRY_DEFAULTS = { unit: 4, border: 1, radiusScale: 1, compositeInsetUnits: 0.5, iconSize: 'md' as IconSize };
+export const GEOMETRY_DEFAULTS = { unit: 4, border: 1, radiusScale: 1, iconSize: 'md' as IconSize };
 
 function inputs(input: GeometryInput) {
   const x = { ...GEOMETRY_DEFAULTS, ...input };
   const bad = (m: string) => { throw new RangeError(m); };
-  if (!(x.unit >= 2 && x.unit <= 6)) bad('unit must be 2..6px');
+  if (!(x.unit >= 2 && x.unit <= 12)) bad('unit must be 2..12px');
   if (!(x.border >= 0 && x.border <= x.unit / 2)) bad('border must be 0..u/2');
   if (!(x.radiusScale >= 0 && x.radiusScale <= 3)) bad('radius scale must be 0..3');
-  if (!(x.compositeInsetUnits >= 0 && x.compositeInsetUnits <= 1.5)) bad('composite inset must be 0..1.5u');
+  if (input.gutters !== undefined && !(input.gutters >= 0 && input.gutters <= 8)) bad('gutters must be 0..8u');
   if (!['sm', 'md', 'lg', 'fill'].includes(x.iconSize)) bad('unknown icon size');
   return x;
 }
@@ -62,29 +64,53 @@ export function resolveControl(input: GeometryInput = {}) {
   };
 }
 
-/** Container curvature (listbox, popup): soft 3u, not capped by height. */
-export const containerRadius = (input: GeometryInput = {}) => { const x = inputs(input); return 3 * x.unit * x.radiusScale; };
+// ── Containers ──
+// Each level has a padding (units of u) and a max radius that keeps corners concentric with
+// a 3u control sitting in the corner (3u + padding). Panel and region are square: they usually
+// meet the viewport edge. Gap = padding unless the gutters attribute overrides it.
+export const CONTAINERS = {
+  composite:  { padding: 0.5, maxRadius: 3.5 },
+  group:      { padding: 1,   maxRadius: 4 },
+  collection: { padding: 2,   maxRadius: 5 },
+  tile:       { padding: 3,   maxRadius: 6 },
+  card:       { padding: 4,   maxRadius: 7 },
+  panel:      { padding: 6,   maxRadius: 0 },
+  region:     { padding: 8,   maxRadius: 0 },
+} as const;
+export type ContainerLevel = keyof typeof CONTAINERS;
+
+/** Container padding, gap and radius. Pass `height` to apply the half-height radius cap. */
+export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number } = {}) {
+  const x = inputs(input);
+  const u = x.unit, spec = CONTAINERS[level];
+  const radius = spec.maxRadius * u * x.radiusScale;
+  return {
+    unit: u, border: x.border,
+    padding: Math.max(0, spec.padding * u - x.border),
+    edge: spec.padding * u,
+    gap: (input.gutters ?? spec.padding) * u,
+    radius: input.height === undefined ? radius : Math.min(radius, input.height / 2),
+  };
+}
 
 /**
- * Composite family: ui-listbox, ui-segmented, select popup. Options use the control
- * anatomy with an inset reduced by the parent's edge distance; the composite grows
- * when the border leaves no room (the 6u slot never shrinks).
+ * Composite: ui-listbox, ui-segmented, select popup. Padding is the composite level (0.5u);
+ * options use the control anatomy with their inset reduced by that edge, so a one-row
+ * segmented control is exactly 8u and its options keep the 3u control radius.
  */
 export function resolveComposite(input: GeometryInput & { container?: boolean } = {}) {
   const c = resolveControl(input);
-  const x = inputs(input);
-  const requested = x.compositeInsetUnits * c.unit;
-  const edge = Math.max(c.border, requested);            // D
+  const box = resolveContainer('composite', input);
+  const edge = Math.max(c.border, box.edge);             // D
   const childInset = Math.max(c.border, c.inset - edge); // Ic
   const childHeight = c.slot + 2 * childInset;
   const rowHeight = childHeight + 2 * edge;
-  const radius = input.container ? containerRadius(input) : Math.min(3 * c.unit * x.radiusScale, rowHeight / 2);
+  const radius = input.container ? box.radius : Math.min(box.radius, rowHeight / 2);
   return {
-    requestedInset: requested, edge, padding: edge - c.border, gap: requested, radius, rowHeight,
+    edge, padding: edge - c.border, gap: box.gap, radius, rowHeight,
     child: {
       inset: childInset, padding: childInset - c.border, height: childHeight,
-      // Q = 0 means an attached group: square children.
-      radius: requested === 0 ? 0 : Math.min(childHeight / 2, Math.max(0, radius - edge)),
+      radius: Math.min(childHeight / 2, Math.max(0, radius - edge)),
     },
   };
 }

@@ -73,6 +73,13 @@ export const defaults = defineGlobalStyles({
   'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
   'ui-chip [data-remove]:hover': { opacity: 1 },
 
+  // Layout containers (lengths in styles/geometry.ts)
+  'ui-group': { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', borderColor: 'transparent' },
+  ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
+  'ui-tile': { bg: 'bg.subtle' },
+  'ui-card': { bg: 'bg', borderColor: 'border' },
+  'ui-panel': { bg: 'bg.subtle' },
+
   // Listbox, segmented control, options
   'ui-listbox': { display: 'flex', flexDirection: 'column', borderColor: 'border' },
   'ui-segmented': { display: 'inline-flex', bg: 'bg.muted', borderColor: 'transparent' },
