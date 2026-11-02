@@ -1,6 +1,7 @@
-// Studio jig: built entirely from ui-kit components. Tabs switch the panel and the canvas
-// between Components, Containers and Colors; Copy hands the applied settings to an agent as JSON.
-import { useEffect, useMemo, useState } from 'react';
+// Studio jig: built entirely from ui-kit components. The panel edits tokens only (tabs Geometry,
+// Colors, Typography, Motion); the content page comes from the URL hash (#/<route>) and is chosen
+// in the content header. Copy hands the applied settings to an agent as JSON.
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
@@ -9,9 +10,18 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
-import type { FaceMap, Scheme, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
+import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
-import { Canvas } from '../canvas/Canvas.tsx';
+import { ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
+import { navigate, useHashRoute } from '../pages/route.ts';
+import { HomePage } from '../pages/Home.tsx';
+import { ComponentsPage, FAMILIES, isFamily } from '../pages/Components.tsx';
+import { ContainersPage } from '../pages/Containers.tsx';
+import { GeometryPage } from '../pages/Geometry.tsx';
+import { TypographyPage } from '../pages/Typography.tsx';
+import { ColorsPage } from '../pages/Colors.tsx';
+import { MotionPage } from '../pages/Motion.tsx';
+import { MotionPanel } from './MotionPanel.tsx';
 import { ICON_SET_NAMES } from '@massimo/ui-kit/icons';
 import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent } from './wc.tsx';
 import { buildSpectrum } from './spectrum.ts';
@@ -23,12 +33,16 @@ import * as s from './styles.ts';
 
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
 const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
-const MOTION: ParamName[] = ['motion-scale', 'motion-bounce'];
 const LEVELS = ['composite', 'group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const;
 const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
 
 const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` : r[0].toUpperCase() + r.slice(1);
 const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const PANEL_TABS: [PanelTab, string][] = [['geometry', 'Geometry'], ['colors', 'Colors'], ['typography', 'Typography'], ['motion', 'Motion']];
+const isPanelTab = (v: unknown): v is PanelTab => PANEL_TABS.some(([t]) => t === v);
+const PAGES: Record<Exclude<Route, 'components'>, (p: PageProps) => ReactNode> = {
+  home: HomePage, containers: ContainersPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage,
+};
 const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
 
 /** Surprise mapping: brand and data roles from the generated families; feedback roles keep their meaning. */
@@ -52,12 +66,19 @@ function useSheet(text: string) {
 }
 
 export function App() {
-  // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
-  const [view, setView] = useState<View>(() => {
-    try { const v = localStorage.getItem('studio:view'); if (v === 'components' || v === 'containers' || v === 'colors' || v === 'typography') return v; } catch { /* no storage */ }
-    return 'components';
+  // The selected panel tab survives reloads (per-browser convenience; storage may be unavailable).
+  // It never changes the page: the page is the URL hash alone.
+  const [tab, setTab] = useState<PanelTab>(() => {
+    try { const v = localStorage.getItem('studio:panel'); if (isPanelTab(v)) return v; } catch { /* no storage */ }
+    return 'geometry';
   });
-  useEffect(() => { try { localStorage.setItem('studio:view', view); } catch { /* no storage */ } }, [view]);
+  useEffect(() => { try { localStorage.setItem('studio:panel', tab); } catch { /* no storage */ } }, [tab]);
+  const { route, query } = useHashRoute();
+  const familyParam = query.get('family');
+  const family = isFamily(familyParam) ? familyParam : undefined;
+  // A new page starts at its top.
+  const canvasRef = useRef<HTMLDivElement>(null);
+  useEffect(() => { canvasRef.current?.scrollTo({ top: 0 }); }, [route]);
   const [params, setParams] = useState<ThemeParams>(defaultParams);
   const [scheme, setScheme] = useState<Scheme>('auto');
   const [icons, setIcons] = useState('phosphor');
@@ -131,6 +152,9 @@ export function App() {
   const resetRef = useEvent('click', reset);
   const randomRef = useEvent('click', () => setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)));
 
+  const pageProps: PageProps = { params, spectrum: generated, voices, faces };
+  const Content = route === 'components' ? null : PAGES[route];
+
   const geometry = (
     <Group title="Geometry">
       {GEOMETRY.map((k) => {
@@ -144,39 +168,39 @@ export function App() {
     <div className={s.shell}>
       <aside className={s.panel} aria-label="Jig" data-size="3">
         <header className={s.panelHeader}>
-          <div className={s.titleRow}>
-            <h1 className={s.brand}>Studio</h1>
-            <ui-button ref={schemeRef} aria-label={`Color scheme: ${SCHEME_LABEL[scheme]} (switch to ${SCHEME_LABEL[NEXT_SCHEME[scheme]]})`} title={`Scheme: ${SCHEME_LABEL[scheme]}`}>
-              <i slot="leading" name={SCHEME_ICON[scheme]} />
-            </ui-button>
-          </div>
-          <Segmented<View> value={view} onValue={setView} options={[['components', 'Components'], ['containers', 'Containers'], ['colors', 'Colors'], ['typography', 'Typography']]} />
+          <h1 className={s.brand}>Studio</h1>
+          <Segmented<PanelTab> value={tab} onValue={setTab} options={PANEL_TABS} />
         </header>
 
         <div className={s.panelBody}>
-          {(view === 'components' || view === 'containers') && geometry}
-          {view === 'typography' && (
+          {tab === 'geometry' && geometry}
+          {tab === 'geometry' && (
+            <Group title="Look">
+              <Select label="Icons" value={icons} options={ICON_SET_NAMES.map((n) => [n, n])} onValue={setIcons} />
+            </Group>
+          )}
+          {tab === 'typography' && (
             <Group title="Typography">
               <Range label="Unit (px)" value={params.unit} min={PARAMS.unit.min} max={PARAMS.unit.max} step={PARAMS.unit.step} onValue={(v) => setParam('unit', v)} />
               <Select label="Ratio" value={String(params['type-ratio'])} options={(TYPE_RATIOS.some(([r]) => r === params['type-ratio']) ? TYPE_RATIOS : [...TYPE_RATIOS, [params['type-ratio'], 'Custom'] as [number, string]]).map(([r, n]) => [String(r), `${r} · ${n}`] as [string, string])} onValue={(v) => setParam('type-ratio', Number(v))} />
               <Segmented label="Rhythm" value={String(params['type-rhythm'])} onValue={(v) => setParam('type-rhythm', Number(v))} options={[['0', 'None'], ['0.5', '½u'], ['1', '1u']]} />
             </Group>
           )}
-          {view === 'typography' && (
+          {tab === 'typography' && (
             <Group title="Faces">
               {FACES.map((f) => (
                 <Select key={f} label={f[0].toUpperCase() + f.slice(1)} value={faces[f]} options={(FACE_STACKS[f].some(([, st]) => st === faces[f]) ? FACE_STACKS[f] : [...FACE_STACKS[f], ['Custom', faces[f]] as [string, string]]).map(([n, st]) => [st, n] as [string, string])} onValue={(v) => setFaces((m) => ({ ...m, [f]: v }))} />
               ))}
             </Group>
           )}
-          {view === 'typography' && (
+          {tab === 'typography' && (
             <Group title="Voices">
               {VOICES.map((v) => (
                 <Select key={v} label={v === 'ui' ? 'UI' : v[0].toUpperCase() + v.slice(1)} value={voices[v]} options={FACES.map((f) => [f, f] as [string, string])} onValue={(x) => setVoices((m) => ({ ...m, [v]: x as keyof FaceMap }))} />
               ))}
             </Group>
           )}
-          {view === 'containers' && (
+          {tab === 'geometry' && (
             <Group title="Padding and gap per type (u)">
               <span className={s.paneLabel} /><div className={`${s.paneControl} ${s.pair}`}><span className={s.levelHead}>Padding</span><span className={s.levelHead}>Gap</span></div>
               {LEVELS.map((level) => {
@@ -193,20 +217,8 @@ export function App() {
               })}
             </Group>
           )}
-          {view === 'components' && (
-            <Group title="Motion">
-              {MOTION.map((k) => {
-                const p = PARAMS[k];
-                return <Range key={k} label={p.label} value={params[k]} min={p.min} max={p.max} step={p.step} onValue={(v) => setParam(k, v)} />;
-              })}
-            </Group>
-          )}
-          {view === 'components' && (
-            <Group title="Look">
-              <Select label="Icons" value={icons} options={ICON_SET_NAMES.map((n) => [n, n])} onValue={setIcons} />
-            </Group>
-          )}
-          {view === 'colors' && (
+          {tab === 'motion' && <MotionPanel params={params} setParam={(k, v) => setParam(k as ParamName, v)} />}
+          {tab === 'colors' && (
             <>
               <div className={s.control}>
                 <ui-button ref={randomRef}><i slot="leading" name="shuffle" />Random</ui-button>
@@ -255,8 +267,22 @@ export function App() {
         </footer>
       </aside>
 
-      <div className={s.canvas} data-canvas="" data-icons={icons} {...voiceAttrs} aria-label="Canvas">
-        <Canvas view={view} spectrum={generated} params={params} voices={voices} faces={faces} />
+      <div className={s.content}>
+        <nav className={s.contentHeader} aria-label="Pages" data-size="3">
+          <SelectControl label="Page" value={route} options={ROUTES.map((r) => [r, ROUTE_LABEL[r]])} onValue={(v) => navigate(v as Route)} />
+          <div className={s.headerEnd}>
+            {route === 'components' && (
+              <SelectControl label="Component family" value={family ?? 'all'} options={[['all', 'All families'], ...FAMILIES.map(([f, l]) => [f, l] as [string, string])]}
+                onValue={(v) => navigate('components', { family: v === 'all' ? undefined : v })} />
+            )}
+            <ui-button ref={schemeRef} aria-label={`Color scheme: ${SCHEME_LABEL[scheme]} (switch to ${SCHEME_LABEL[NEXT_SCHEME[scheme]]})`} title={`Scheme: ${SCHEME_LABEL[scheme]}`}>
+              <i slot="leading" name={SCHEME_ICON[scheme]} />
+            </ui-button>
+          </div>
+        </nav>
+        <div ref={canvasRef} className={s.canvas} data-canvas="" data-icons={icons} {...voiceAttrs} aria-label="Canvas">
+          {route === 'components' ? <ComponentsPage {...pageProps} family={family} /> : Content && <Content {...pageProps} />}
+        </div>
       </div>
     </div>
   );

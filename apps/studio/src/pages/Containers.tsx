@@ -1,0 +1,160 @@
+// Containers: container tokens, levels, nesting, groups and collections, and overrides. Every
+// container token has a live example.
+import '@massimo/ui-kit/components/button/element';
+import '@massimo/ui-kit/components/input/element';
+import '@massimo/ui-kit/components/listbox/element';
+import '@massimo/ui-kit/components/select/element';
+import '@massimo/ui-kit/components/btg/element';
+import '@massimo/ui-kit/components/image/element';
+import { css } from '../../styled-system/css/index.js';
+import { CONTAINERS, PAGE_MAX_WIDTH_REM, resolveContainer } from '@massimo/ui-kit/tokens';
+import type { PageProps } from './types.ts';
+import { Divider, IMAGES, Page, Row, Section, caption, columns, fmt, kicker, subTitle } from './shared.tsx';
+
+const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
+const levelList = css({ minWidth: '[10rem]' });
+const tokenTable = css({ display: 'grid', gridTemplateColumns: 'auto auto auto auto 1fr', columnGap: '6', rowGap: '2', alignItems: 'baseline', overflowX: 'auto', '& > [role=row]': { display: 'contents' } });
+const tokenHead = css({ '& > *': { textStyle: 'group-kicker', color: 'fg.muted' } });
+const tokenRow = css({ '& > :first-child': { textStyle: 'label', fontWeight: 'semibold' } });
+const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
+const tinted = css({ bg: 'bg' });
+const tileRow = css({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
+const wideCol = css({ minWidth: '[16rem]', bg: 'bg.muted' });
+const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1' });
+const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
+
+const LEVELS = Object.keys(CONTAINERS) as (keyof typeof CONTAINERS)[];
+const fmtU = (n: number) => `${Math.round(n * 100) / 100}u`;
+
+export function ContainersPage({ params }: PageProps) {
+  const p = params as unknown as Record<string, number>;
+  const u = params.unit;
+  return (
+    <Page title="Containers" lead="Wrappers, containers and areas: live padding, gap and radius per level, with examples. The Geometry tab sets padding and gap per level.">
+      <Divider />
+      <Section id="containers" title="Container tokens" note="Three families. Wrappers (composite, group, collection) hug their children: radius 3u + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Live padding and gap per level (pad-<level>, gap-<level>, in u).">
+        <div className={tokenTable} role="table" aria-label="Container tokens">
+          <div role="row" className={tokenHead}><span role="columnheader">Level</span><span role="columnheader">Padding</span><span role="columnheader">Gap</span><span role="columnheader">Radius</span><span role="columnheader">Used by</span></div>
+          {LEVELS.map((l) => {
+            const pad = p[`pad-${l}`] ?? CONTAINERS[l].padding, gap = p[`gap-${l}`] ?? pad;
+            const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap });
+            return (
+              <div role="row" key={l} className={tokenRow}>
+                <span role="cell">{l}<span className={caption}> · {CONTAINERS[l].family}</span></span>
+                <span role="cell" data-numeric>{fmtU(pad)} · {fmt(c.padding)}px</span>
+                <span role="cell" data-numeric>{fmtU(gap)} · {fmt(c.gap)}px</span>
+                <span role="cell" data-numeric>{fmt(c.radius)}px</span>
+                <span role="cell" className={caption}>{USED_BY[l]}</span>
+              </div>
+            );
+          })}
+        </div>
+      </Section>
+      <Divider />
+      <Section id="levels" title="Levels" note="Each box tints its padding; the two children show its gap.">
+        {LEVELS.filter((l) => l !== 'composite').map((l) => {
+          const Tag = (l.startsWith('card-') ? 'ui-card' : `ui-${l}`) as any;
+          const padding = l.startsWith('card-') && l !== 'card-md' ? l.slice(5) : undefined;
+          return (
+            <Row key={l} label={l.startsWith('card-') ? `card · padding ${l.slice(5)}` : l}>
+              <Tag className={levelBox} padding={padding}><span className={levelChild}>a</span><span className={levelChild}>b</span></Tag>
+            </Row>
+          );
+        })}
+        <Row label="composite">
+          <ui-segmented label="Composite level" value="a"><ui-option value="a">One</ui-option><ui-option value="b">Two</ui-option><ui-option value="c">Three</ui-option></ui-segmented>
+          <ui-listbox label="Composite list" value="a" className={levelList}><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option></ui-listbox>
+        </Row>
+      </Section>
+      <Divider />
+      <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). A container's radius equals its padding; wrappers stay concentric with their children.">
+        <ui-page className={miniPage} aria-label="Page example">
+          <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
+          <ui-region aria-label="Region example" className={tinted}>
+            <span className={kicker}>Region</span>
+            <ui-panel aria-label="Panel example">
+              <span className={kicker}>Panel</span>
+              <div className={columns}>
+                <ui-card>
+                  <span className={kicker}>Card · Team</span>
+                  {[['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]].map(([team, people]) => (
+                    <ui-card padding="sm" key={team as string}>
+                      <span className={kicker}>Card sm · {team}</span>
+                      <ui-collection>
+                        {(people as string[]).map((n) => (
+                          <div key={n} className={tileRow}>
+                            <span>{n}</span>
+                            <ui-group><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-group>
+                          </div>
+                        ))}
+                      </ui-collection>
+                    </ui-card>
+                  ))}
+                </ui-card>
+                <ui-card>
+                  <span className={kicker}>Card · Details</span>
+                  <ui-input label="Name" value="Spring catalog" />
+                  <ui-select label="Edition" value="spring"><ui-option value="spring">Spring</ui-option><ui-option value="autumn">Autumn</ui-option></ui-select>
+                  <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
+                </ui-card>
+              </div>
+            </ui-panel>
+          </ui-region>
+        </ui-page>
+      </Section>
+      <Divider />
+      <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack like items at the collection gap, inside a card (card › collection › group).">
+        <Row label="buttons"><ui-group><ui-button>Bold</ui-button><ui-button>Italic</ui-button><ui-button>Underline</ui-button></ui-group></Row>
+        <Row label="chips"><ui-group>{['Design', 'Engineering', 'Research', 'Ops'].map((t, i) => <ui-chip key={t} selectable selected={i === 0 || undefined}>{t}</ui-chip>)}</ui-group></Row>
+        <Row label="tags"><ui-group>{['Spring', 'Draft', 'Shared'].map((t) => <ui-tag key={t}>{t}</ui-tag>)}</ui-group></Row>
+        <Row label="collection in a card">
+          <ui-card padding="sm" className={wideCol}>
+            <ui-collection>
+              {['Inbox · 12', 'Drafts · 3', 'Archive'].map((t) => <span key={t}>{t}</span>)}
+            </ui-collection>
+          </ui-card>
+        </Row>
+        <Row label="card grid">
+          <ui-card className={tileGrid}>
+            {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
+              <ui-card padding="xs" key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-card>
+            ))}
+          </ui-card>
+        </Row>
+      </Section>
+      <Divider />
+      <Section id="overrides" title="Overrides" note='gap="n" overrides one element’s gap (0–8u); data-size sets the unit for a whole subtree.'>
+        <Row label="gap">
+          {[0, 1, 4].map((g) => (
+            <ui-card key={g} gap={String(g)} className={levelBox}>
+              <span className={caption}>card gap="{g}"</span><span className={levelChild} /><span className={levelChild} />
+            </ui-card>
+          ))}
+        </Row>
+        <Row label="size">
+          {(['3', '4', '5'] as const).map((z) => (
+            <ui-card key={z} data-size={z}>
+              <span className={kicker}>data-size="{z}"</span>
+              <h3 className={subTitle}>Card</h3>
+              <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
+            </ui-card>
+          ))}
+        </Row>
+      </Section>
+    </Page>
+  );
+}
+
+const USED_BY: Record<keyof typeof CONTAINERS, string> = {
+  composite: 'listbox, segmented, select popup',
+  group: 'inline sets: buttons, chips, tags',
+  collection: 'tables, data lists: like items inside a card',
+  'card-xs': 'thumbnails, compact items',
+  'card-sm': 'grouped lists, small items in a grid',
+  'card-md': 'self-contained content (default card)',
+  'card-lg': 'feature content',
+  'card-xl': 'hero or dialog surfaces',
+  panel: 'sidebars, workspaces',
+  region: 'page areas',
+  page: 'the outer frame (max width)',
+};
