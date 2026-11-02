@@ -101,7 +101,7 @@ const bodyLarge = css({ textStyle: 'body-large' });
 const panelTitle = css({ textStyle: 'heading-2', [CQ_LG]: { textStyle: 'heading-1' } });
 const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', '& span': { textStyle: 'heading-3' } });
 // The strip lies flat when stacked and stands up beside the panels.
-const rampStrip = css({ width: '100%', flexDirection: 'row', '& > ui-swatch': { height: '12' }, [CQ_MD]: { width: '12', flexDirection: 'column', alignSelf: 'stretch', '& > ui-swatch': { height: 'auto' } } });
+const rampStrip = css({ width: '100%', flexDirection: 'row', '& > ui-swatch': { height: '12' }, [CQ_MD]: { width: '24', flexDirection: 'column', alignSelf: 'stretch', '& > ui-swatch': { height: 'auto' } } });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
 const uiGrid = css({ display: 'grid', gridTemplateColumns: '1fr', [CQ_MD]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }, [CQ_LG]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
