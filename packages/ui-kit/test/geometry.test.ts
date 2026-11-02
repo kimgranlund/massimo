@@ -5,8 +5,8 @@ import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PA
 const U4 = { unit: 4 } as const;
 
 test('size is the unit: height 8u, font 10px + u (spec table)', () => {
-  const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
-  assert.deepEqual(SIZES.slice(0, 7), table.map((r) => r[1]));
+  const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [22, 2.75, 12.75], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
+  assert.deepEqual(SIZES.slice(0, 8), table.map((r) => r[1]));
   for (const [height, unit, font] of table) {
     const c = resolveControl({ unit, border: 0 });
     assert.equal(c.height, height);

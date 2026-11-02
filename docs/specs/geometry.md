@@ -3,7 +3,7 @@
 Every length in the kit: the unit u, controls, choices and tracks, badges/tags/chips, the container ladder and the Panda spacing, sizes and radii tokens, and how they are verified. Neighbors: [typography](typography.md) (text sizes on the same u), [theming](theming.md) (the parameters), [components](components.md) (where lengths apply).
 
 Based on Differential Forms v0.2.2 (`mathematical-design-system` skill), adapted:
-- **Size is the unit.** `size` (or `data-size`) sets u for an element and its subtree: 2, 2.25, 2.5, 3, 3.5, 4, 4.5, then every 0.5 up to 12. A control is 8u tall (16 to 96px). Default u comes from the theme `unit` (4.5 → 36px controls, 14.5px control text).
+- **Size is the unit.** `size` (or `data-size`) sets u for an element and its subtree: 2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, then every 0.5 up to 12. A control is 8u tall (16 to 96px). Default u comes from the theme `unit` (4.5 → 36px controls, 14.5px control text).
 - **Slots.** Controls have `leading`, `contents` and `trailing` slots, each at least 6u square, inside 1u of padding.
 - **Text** is 10px + u.
 
@@ -20,7 +20,7 @@ Sources of truth, kept in agreement by tests:
 
 | Input | Where | Values | Default |
 |---|---|---|---|
-| u | theme `--ui-unit`; `size` / `data-size` per subtree | 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5 … 12 (0.5 steps) | 4.5 (tables below show u = 4) |
+| u | theme `--ui-unit`; `size` / `data-size` per subtree | 2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, 5 … 12 (0.5 steps) | 4.5 (tables below show u = 4) |
 | B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 0 |
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
 | corner shape k | theme `--ui-corner-shape`: `corner-shape: superellipse(k)` on every element with a radius | −1..4 (1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |

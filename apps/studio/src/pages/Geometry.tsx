@@ -17,15 +17,17 @@ import {
 import type { PageProps } from './types.ts';
 import { CQ_MD, Divider, Page, Section, fmt, metrics, rowLabel, specimens } from './shared.tsx';
 
-const LADDER = [2, 3, 4, 4.5, 5, 6, 8, 10, 12];
+const LADDER = [2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 12];
 
 const scroller = css({ overflowX: 'auto', maxWidth: 'full' });
 const table = css({
   borderCollapse: 'collapse', textStyle: 'code', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
-  '& th': { textStyle: 'group-kicker', color: 'fg.muted', textAlign: 'start', paddingBlock: '2', paddingInline: '3', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'bottom' },
+  '& th': { textStyle: 'group-kicker', color: 'fg.muted', textAlign: 'start', paddingBlock: '2', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'bottom' },
   '& th small': { display: 'block', textStyle: 'caption', textTransform: 'none', letterSpacing: 'normal' },
-  '& td': { paddingBlock: '1.5', paddingInline: '3', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'middle' },
+  '& td': { paddingBlock: '1.5', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'middle' },
 });
+// A group header spans its columns; the rule under it marks the group.
+const groupHead = css({ paddingBlockEnd: '1' });
 const current = css({ bg: 'primary.subtle', color: 'primary.fg' });
 const metricList = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
 const specRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', paddingBlock: '2', borderBottomWidth: 'thin', borderColor: 'border', [CQ_MD]: { gridTemplateColumns: '11rem 14rem 1fr', gap: '6' } });
@@ -85,8 +87,13 @@ export function GeometryPage({ params }: PageProps) {
           <table className={table}>
             <thead>
               <tr>
-                <th>u</th><th>Specimen</th><th>Height<small>8u</small></th><th>Slot<small>6u</small></th><th>Padding<small>u − B</small></th>
-                <th>Text<small>10 + u / line</small></th><th>Icon<small>sm · md · lg</small></th><th>Radius</th><th>Badge · tag · chip</th>
+                <th rowSpan={2}>u</th><th rowSpan={2}>Specimen</th><th rowSpan={2}>Height<small>8u</small></th><th rowSpan={2}>Slot<small>6u</small></th><th rowSpan={2}>Padding<small>u − B</small></th>
+                <th colSpan={2} className={groupHead}>Text</th><th colSpan={3} className={groupHead}>Icon</th><th rowSpan={2}>Radius</th><th colSpan={3} className={groupHead}>Height</th>
+              </tr>
+              <tr>
+                <th>Size<small>10 + u</small></th><th>Line<small>1.2 × size</small></th>
+                <th>sm</th><th>md</th><th>lg</th>
+                <th>Badge</th><th>Tag</th><th>Chip</th>
               </tr>
             </thead>
             <tbody>
@@ -102,10 +109,10 @@ export function GeometryPage({ params }: PageProps) {
                     <td>{fmt(size)}{isTheme ? ' · theme' : ''}</td>
                     <td><span className={specimens} data-size={sizeAttr}><ui-button aria-label={`Add, size ${size}`}><i slot="leading" name="plus" /></ui-button></span></td>
                     <td>{fmt(r.height)}</td><td>{fmt(r.slot)}</td><td>{fmt(r.padding)}</td>
-                    <td>{fmt(r.fontSize)} / {fmt(r.contents.lineHeight)}</td>
-                    <td>{ic('sm')} · {ic('md')} · {ic('lg')}</td>
+                    <td>{fmt(r.fontSize)}</td><td>{fmt(r.contents.lineHeight)}</td>
+                    <td>{ic('sm')}</td><td>{ic('md')}</td><td>{ic('lg')}</td>
                     <td>{fmt(r.radius)}</td>
-                    <td>{b('badge')} · {b('tag')} · {b('chip')}</td>
+                    <td>{b('badge')}</td><td>{b('tag')}</td><td>{b('chip')}</td>
                   </tr>
                 );
               })}

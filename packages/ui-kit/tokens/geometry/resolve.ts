@@ -9,7 +9,7 @@
 // check (apps/studio/geometry-check.html) keep the two in agreement. Lengths in CSS px.
 
 /** Supported units; control height = 8u. 2..4.5 as before, then every 0.5 up to 12 (96px controls). */
-export const SIZES = [2, 2.25, 2.5, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
+export const SIZES = [2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
 /** Gutter values (units of u) accepted by the gap attribute. */
 export const GAPS = Array.from({ length: 17 }, (_, i) => i * 0.5);
 export type IconSize = 'sm' | 'md' | 'lg' | 'fill';
