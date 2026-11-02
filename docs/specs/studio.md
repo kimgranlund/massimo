@@ -24,7 +24,7 @@
 
 - **Components:** buttons, badges/tags/chips, fields (a real form), selection, checkbox/radio/switch, range/progress, swiper/image, swatch/palette.
 - **Containers:** the container demo and every level.
-- **Colors:** roles preview and every family's light and dark ramps.
+- **Colors:** "Color in context" (Brand: primary as material, accent as punctuation, the primary ramp, ink and paper, tint and emphasis; Interface: a workspace of cards with actions, form, library, figures, progress, a chart, action states and feedback, all colored from the active roles and scheme), then every family's light and dark ramps. The accent is the family opposite primary in the hue set; callouts, chart and button states are canvas markup, not kit components.
 
 ## Checks
 

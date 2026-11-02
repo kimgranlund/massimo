@@ -42,7 +42,27 @@ const levelBox = css({ bg: 'accent.subtle', alignSelf: 'start' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 const rampRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '7rem 1fr 1fr' }, gap: '3', alignItems: 'center' });
 const ramp = css({ width: '100%' });
-const trackBox = css({ width: '12rem' });
+const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
+const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
+const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '2fr 1fr 1fr' }, gap: '4', '& > :first-child': { gridRow: { md: 'span 2' } }, '& > ui-palette': { gridColumn: { md: 'span 2' } } });
+const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
+const kicker = css({ textStyle: 'caption', textTransform: 'uppercase', letterSpacing: 'wide', display: 'inline-flex', alignItems: 'center', gap: '2' });
+const display = css({ textStyle: 'display', lineHeight: 'tight' });
+const bigFigure = css({ fontSize: '4xl', fontWeight: 'bold', lineHeight: 'tight', '& span': { fontSize: '2xl' } });
+const rampStrip = css({ width: '100%', alignSelf: 'end' });
+const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
+const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
+const uiGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
+const cardTitle = css({ textStyle: 'title' });
+const chartCard = css({ gridColumn: { md: 'span 2' } });
+const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
+const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
+const bars = css({ flex: '1', width: '100%', display: 'flex', gap: '1', alignItems: 'end', justifyContent: 'center' });
+const bar = css({ width: '40%', borderRadius: 'sm' });
+const legend = css({ display: 'flex', gap: '4', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
+const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
+const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
+const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'label', fontWeight: 'normal' });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: 'min(100%, 24rem)' });
 
 function Section({ id, title, children, note }: { id: string; title: string; note: string; children: React.ReactNode }) {
@@ -280,6 +300,121 @@ function Containers() {
   );
 }
 
+// Spectrum variables for a family step (follow the active scheme and the jig's roles).
+const sv = (family: string, step: number) => `var(--colors-spectrum-${family}-${step})`;
+const ORDERS = { online: [72, 84, 68, 96, 108, 88, 80], store: [44, 49, 54, 46, 64, 82, 78] };
+const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
+  const { primary, neutral, critical } = spectrum.roles;
+  // Accent: the family whose step-9 hue sits furthest from primary (punctuation, not a second brand).
+  const names = spectrum.families.map((f) => f.name).filter((n) => n !== primary && n !== neutral);
+  const idx = spectrum.families.findIndex((f) => f.name === primary);
+  const accent = spectrum.families[(idx + Math.floor(spectrum.families.length / 2)) % spectrum.families.length]?.name ?? names[0];
+  const ok = spectrum.families.find((f) => f.name === 'grass' || f.name === 'green' || f.name === 'jade')?.name ?? accent;
+  const warn = spectrum.families.find((f) => f.name === 'amber' || f.name === 'yellow' || f.name === 'orange')?.name ?? accent;
+  const max = Math.max(...ORDERS.online, ...ORDERS.store);
+  const [approved, setApproved] = useState(false);
+  return (
+    <div className={context}>
+      <div className={contextHead}><h3 className={subTitle}>Brand</h3><span className={caption}>Primary as material · accent as punctuation</span></div>
+      <div className={brandGrid}>
+        <ui-panel className={campaign} style={{ background: sv(primary, 9), color: spectrum.families.find((f) => f.name === primary)?.lightText[8] }}>
+          <span className={kicker}>Studio / Collection 01</span>
+          <h3 className={display}>A spectrum.<br />A shared language.</h3>
+          <p>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
+          <span className={kicker} style={{ color: sv(accent, 4) }}>An exploration in color &amp; proportion</span>
+        </ui-panel>
+        <ui-palette label={`${primary} steps 1 to 12`} className={rampStrip}>
+          {Array.from({ length: 12 }, (_, i) => <ui-swatch key={i} color={sv(primary, i + 1)} label={`${primary} ${i + 1}`} />)}
+        </ui-palette>
+        <ui-panel style={{ background: sv(neutral, 2), color: sv(primary, 12) }}>
+          <span className={kicker} style={{ color: sv(neutral, 11) }}>Ink &amp; paper <i className={dot} style={{ background: sv(accent, 9) }} /></span>
+          <h3 className={display}>One hue.<br />Room to breathe.</h3>
+          <p style={{ color: sv(neutral, 11) }}>A quiet field, a clear voice and a single accent.</p>
+        </ui-panel>
+        <ui-panel style={{ background: sv(primary, 3), color: sv(primary, 11) }}>
+          <span className={kicker}>Tint &amp; emphasis</span>
+          <strong className={bigFigure} style={{ color: sv(primary, 11) }}>62<span>%</span></strong>
+          <p style={{ color: sv(primary, 12) }}>Large figures and small details share the same color family.</p>
+        </ui-panel>
+      </div>
+
+      <div className={contextHead}><h3 className={subTitle}>Interface</h3><span className={caption}>Neutral surfaces · primary actions · semantic feedback</span></div>
+      <ui-panel>
+        <div className={workspaceHead}>
+          <div><span className={kicker}>Collection workspace</span><h3 className={subTitle}>Spring catalog</h3></div>
+          <ui-tag>Spring edition</ui-tag>
+          <ui-badge style={{ background: sv(ok, 9), color: spectrum.families.find((f) => f.name === ok)?.lightText[8] }}>Ready for review</ui-badge>
+        </div>
+        <div className={uiGrid}>
+          <ui-card>
+            <span className={kicker}>Overview</span><h4 className={cardTitle}>A little color goes a long way.</h4>
+            <p className={caption}>Review the collection, refine its details and prepare the next edition.</p>
+            <div className={specimens}>
+              <ui-button style={{ background: sv(primary, 9), color: 'var(--colors-fg-on-solid)' }} onClick={() => setApproved(true)}>Approve collection</ui-button>
+              <ui-button onClick={() => setApproved(false)}>Reset approval</ui-button>
+            </div>
+            <p className={caption} role="status">{approved ? 'Collection approved' : 'Demo collection · awaiting approval'}</p>
+          </ui-card>
+          <ui-card>
+            <span className={kicker}>Details</span>
+            <ui-input label="Collection name" value="Spring catalog" />
+            <ui-checkbox checked>Include neutral colors</ui-checkbox>
+            <ui-checkbox>Include alternate editions</ui-checkbox>
+          </ui-card>
+          <ui-card>
+            <span className={kicker}>Library</span>
+            <ui-listbox label="Preview library" value="shared">
+              {['Inbox', 'Drafts', 'Shared', 'Archive'].map((n) => <ui-option key={n} value={n.toLowerCase()}>{n}</ui-option>)}
+            </ui-listbox>
+          </ui-card>
+          <ui-card>
+            <span className={kicker}>This week</span><strong className={bigFigure}>1,284</strong>
+            <p className={caption}>Orders across two channels.</p>
+            <ui-badge style={{ background: sv(ok, 3), color: sv(ok, 11) }}>↑ 12% this week</ui-badge>
+          </ui-card>
+          <ui-card>
+            <span className={kicker}>Collection progress</span><strong className={bigFigure}>62<span>%</span></strong>
+            <ui-progress label="Collection progress" value={62} />
+            <p className={caption}>148 of 240 items reviewed.</p>
+          </ui-card>
+          <ui-card className={chartCard}>
+            <div className={contextHead}><h4 className={cardTitle}>Orders by channel</h4><span className={caption}>Illustrative week</span></div>
+            <div className={chart} role="img" aria-label={`Illustrative orders by channel, Monday through Sunday. Online: ${ORDERS.online.join(', ')}. In store: ${ORDERS.store.join(', ')}.`}>
+              {DAYS.map((d, i) => (
+                <div key={i} className={chartDay}>
+                  <div className={bars}>
+                    <span className={bar} style={{ height: `${(ORDERS.online[i] / max) * 100}%`, background: sv(primary, 9) }} />
+                    <span className={bar} style={{ height: `${(ORDERS.store[i] / max) * 100}%`, background: sv(accent, 9) }} />
+                  </div>
+                  <span className={caption}>{d}</span>
+                </div>
+              ))}
+            </div>
+            <div className={legend}><span><i className={dot} style={{ background: sv(primary, 9) }} />Online · primary</span><span><i className={dot} style={{ background: sv(accent, 9) }} />In store · accent</span></div>
+          </ui-card>
+          <ui-card>
+            <span className={kicker}>Action states</span>
+            <div className={stateRow}>
+              {([['Rest', 9], ['Hover', 10], ['Pressed', 11]] as const).map(([label, step]) => (
+                <div key={label} className={stateCell}><span className={caption}>{label}</span><ui-button style={{ background: sv(primary, step), color: 'var(--colors-fg-on-solid)' }}>Approve</ui-button></div>
+              ))}
+              <div className={stateCell}><span className={caption}>Disabled</span><ui-button disabled>Approve</ui-button></div>
+            </div>
+          </ui-card>
+          <ui-card>
+            <span className={kicker}>Feedback</span>
+            <p className={callout} role="note" style={{ background: sv(primary, 3), color: sv(primary, 11) }}>Changes to this palette appear across every preview.</p>
+            <p className={callout} role="note" style={{ background: sv(warn, 3), color: sv(warn, 11) }}>Check small text and neighboring hues before choosing a brand color.</p>
+            <p className={callout} role="note" style={{ background: sv(critical, 3), color: sv(critical, 11) }}>Critical: {critical} carries destructive actions.</p>
+          </ui-card>
+        </div>
+      </ui-panel>
+    </div>
+  );
+}
+
 function Colors({ spectrum }: { spectrum?: SpectrumPayload }) {
   if (!spectrum) return <p className={lead}>Generating colors…</p>;
   const r = spectrum.roles;
@@ -290,15 +425,8 @@ function Colors({ spectrum }: { spectrum?: SpectrumPayload }) {
         <p className={lead}>Spectrum: HCT-generated 12-step ramps, separate for light and dark. Roles map onto the kit: primary {r.primary}, neutral {r.neutral}, critical {r.critical}.</p>
       </header>
       <Divider />
-      <Section id="roles" title="Roles in use" note="The components below are colored by the selected role families.">
-        <Row label="Preview">
-          <ui-button><i slot="leading" name="plus" />Action</ui-button>
-          <ui-chip selectable selected>Selected</ui-chip>
-          <ui-badge>3</ui-badge>
-          <ui-switch checked>On</ui-switch>
-          <ui-checkbox checked>Checked</ui-checkbox>
-          <div className={trackBox}><ui-range label="Level" value={60} /></div>
-        </Row>
+      <Section id="context" title="Color in context" note="Two synthetic settings for reviewing the active palette: primary as material and accent as punctuation, then neutral surfaces with primary actions and semantic feedback. Content and figures are illustrative.">
+        <ColorInContext spectrum={spectrum} />
       </Section>
       <Divider />
       <Section id="ramps" title="Ramps" note="Steps 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text. Light left, dark right.">
