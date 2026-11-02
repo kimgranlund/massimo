@@ -13,7 +13,7 @@ import type { FaceMap, Scheme, SpectrumPayload, View, VoiceMap } from '../protoc
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
 import { Canvas } from '../canvas/Canvas.tsx';
 import { STUDIO_ICON_SETS } from '../icons.ts';
-import { Group, Range, Segmented, Select, Switch, useEvent } from './wc.tsx';
+import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent } from './wc.tsx';
 import { buildSpectrum } from './spectrum.ts';
 import * as s from './styles.ts';
 
@@ -155,18 +155,19 @@ export function App() {
           )}
           {view === 'containers' && (
             <Group title="Padding and gap per type (u)">
-              <div className={s.levelGrid}>
-                <span className={s.levelHead}>Type</span><span className={s.levelHead}>Padding</span><span className={s.levelHead}>Gap</span>
-                {LEVELS.map((level) => {
-                  const padKey = `pad-${level}` as ParamName, gapKey = `gap-${level}` as ParamName;
-                  const opts = (key: ParamName) => STEPS.filter((v) => v <= PARAMS[key].max).map((v) => [String(v), `${v}u · ${v * params.unit}px`] as [string, string]);
-                  return [
-                    <span key={`${level}-l`} className={s.levelName}>{level}</span>,
-                    <Select key={`${level}-p`} label={`${level} padding`} value={String(params[padKey])} options={opts(padKey)} onValue={(v) => setParam(padKey, Number(v))} />,
-                    <Select key={`${level}-g`} label={`${level} gap`} value={String(params[gapKey])} options={opts(gapKey)} onValue={(v) => setParam(gapKey, Number(v))} />,
-                  ];
-                })}
-              </div>
+              <span className={s.paneLabel} /><div className={`${s.paneControl} ${s.pair}`}><span className={s.levelHead}>Padding</span><span className={s.levelHead}>Gap</span></div>
+              {LEVELS.map((level) => {
+                const padKey = `pad-${level}` as ParamName, gapKey = `gap-${level}` as ParamName;
+                const opts = (key: ParamName) => STEPS.filter((v) => v <= PARAMS[key].max).map((v) => [String(v), `${v}u · ${v * params.unit}px`] as [string, string]);
+                return (
+                  <Field key={level} label={level}>
+                    <div className={s.pair}>
+                      <SelectControl label={`${level} padding`} value={String(params[padKey])} options={opts(padKey)} onValue={(v) => setParam(padKey, Number(v))} />
+                      <SelectControl label={`${level} gap`} value={String(params[gapKey])} options={opts(gapKey)} onValue={(v) => setParam(gapKey, Number(v))} />
+                    </div>
+                  </Field>
+                );
+              })}
             </Group>
           )}
           {view === 'components' && (
@@ -184,7 +185,7 @@ export function App() {
                 <Segmented<Scheme> label="Scheme" value={scheme} onValue={setScheme} options={[['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']]} />
               </Group>
               <Group title="Hues">
-                <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['even', '12 equal'], ['radix', 'Radix 25']]} />
+                <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['even', '12'], ['radix', 'Radix']]} />
                 <Range label="First hue" value={spectrum.hue} min={0} max={359} step={1} onValue={(v) => setSpec('hue', v)} format={(v) => `${v}°`} />
               </Group>
               <Group title="Chroma">
@@ -208,8 +209,8 @@ export function App() {
           )}
           <Group title="Theme">
             <Select label="Start from" value={themes[name] ? name : 'default'} options={[['default', 'Default'], ...Object.keys(themes).map((t) => [t, t] as [string, string])]} onValue={(v) => loadTheme(v === 'default' ? '' : v)} />
-            <ui-input ref={nameRef} label="Theme name" placeholder="brand-x" value={name} error={nameError} />
-            <ui-button ref={saveRef} disabled={!name || !!nameError}>Save geometry theme</ui-button>
+            <Field label="Name"><ui-input ref={nameRef} label="Theme name" placeholder="brand-x" value={name} error={nameError} /></Field>
+            <Field label=""><ui-button ref={saveRef} disabled={!name || !!nameError}>Save theme</ui-button></Field>
           </Group>
         </div>
 

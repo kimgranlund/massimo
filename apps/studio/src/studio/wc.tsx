@@ -17,41 +17,51 @@ export function useEvent(type: string, fn: (el: any) => void) {
   return ref;
 }
 
+// Figma-style pane rows: a 5-column grid where every row is a label (2 columns) and a control
+// (3 columns). Components keep their own label for assistive tech; the pane hides it visually.
+
+/** A pane row: label in columns 1–2, control in columns 3–5. */
+export function Field({ label, children }: { label: string; children: ReactNode }) {
+  return <><span className={s.paneLabel}>{label}</span><div className={s.paneControl}>{children}</div></>;
+}
+
 export function Range({ label, value, min, max, step, onValue, format }: { label: string; value: number; min: number; max: number; step: number; onValue: (v: number) => void; format?: (v: number) => string }) {
   const ref = useEvent('input', (el) => onValue(Number(el.value)));
   return (
-    <div className={s.control}>
-      <span className={s.controlHead}><span>{label}</span><span className={s.value}>{format ? format(value) : value}</span></span>
+    <Field label={label}>
       <ui-range ref={ref} label={label} min={min} max={max} step={step} value={value} />
-    </div>
+      <span className={s.value}>{format ? format(value) : value}</span>
+    </Field>
   );
 }
 
 export function Segmented<T extends string>({ label, value, options, onValue }: { label?: string; value: T; options: [T, string][]; onValue: (v: T) => void }) {
   const ref = useEvent('change', (el) => onValue(el.value));
-  return (
-    <div className={s.control}>
-      {label && <span className={s.controlHead}><span>{label}</span></span>}
-      <ui-segmented ref={ref} value={value} label={label ?? ''}>
-        {options.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}
-      </ui-segmented>
-    </div>
+  const control = (
+    <ui-segmented ref={ref} value={value} label={label ?? ''}>
+      {options.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}
+    </ui-segmented>
   );
+  return label ? <Field label={label}>{control}</Field> : <div className={s.control}>{control}</div>;
 }
 
 /** ui-select moves its options into its popup, so a change of option list remounts it. */
-export function Select({ label, value, options, onValue }: { label: string; value: string; options: [string, string][]; onValue: (v: string) => void }) {
+export function SelectControl({ label, value, options, onValue }: { label: string; value: string; options: [string, string][]; onValue: (v: string) => void }) {
   const ref = useEvent('change', (el) => onValue(el.value));
   return <ui-select key={options.map((o) => o[0]).join('|')} ref={ref} label={label} value={value}>
     {options.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}
   </ui-select>;
 }
 
+export function Select(props: { label: string; value: string; options: [string, string][]; onValue: (v: string) => void }) {
+  return <Field label={props.label}><SelectControl {...props} /></Field>;
+}
+
 export function Switch({ label, checked, onValue }: { label: string; checked: boolean; onValue: (v: boolean) => void }) {
   const ref = useEvent('change', (el) => onValue(el.checked));
-  return <ui-switch ref={ref} checked={checked}>{label}</ui-switch>;
+  return <Field label={label}><ui-switch ref={ref} checked={checked} aria-label={label} /></Field>;
 }
 
 export function Group({ title, children }: { title: string; children: ReactNode }) {
-  return <section className={s.group}><h2 className={s.groupTitle}>{title}</h2>{children}</section>;
+  return <section className={s.paneGrid}><h2 className={s.groupTitle}>{title}</h2>{children}</section>;
 }
