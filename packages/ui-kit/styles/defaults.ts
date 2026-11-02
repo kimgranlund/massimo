@@ -6,6 +6,7 @@
 import { defineGlobalStyles } from '@pandacss/dev';
 import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 import { RATIOS } from '../components/image/ratios.ts';
+import { voiceFamily } from './typography.ts';
 
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
@@ -98,7 +99,8 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column' },
 
   // Badge, tag, chip (lengths in styles/geometry.ts)
-  ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
+  // Badge, tag and chip speak in the UI voice (the Controls face, system-ui, unless repointed).
+  ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent', fontFamily: voiceFamily('ui') },
   'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' },
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
   'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', userSelect: 'none' },

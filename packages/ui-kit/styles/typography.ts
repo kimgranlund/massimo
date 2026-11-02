@@ -9,8 +9,9 @@
 import { defineGlobalStyles, defineTextStyles } from '@pandacss/dev';
 import { DEFAULT_VOICES, FACES, NUMERIC_FEATURES, SERIF_REGULAR_VOICES, TYPE_ROLES, VOICES, type TypeRole, type Voice } from '../tokens/typography/resolve.ts';
 
-const voiceFamily = (v: Voice) => v === 'numeric'
-  ? 'var(--font-voice-numeric, var(--font-voice-ui, var(--fonts-sans)))'
+/** CSS font-family for a voice: its repointed face, else its default face. Numeric follows ui. */
+export const voiceFamily = (v: Voice) => v === 'numeric'
+  ? `var(--font-voice-numeric, var(--font-voice-ui, var(--fonts-${DEFAULT_VOICES.ui})))`
   : `var(--font-voice-${v}, var(--fonts-${DEFAULT_VOICES[v]}))`;
 
 const U = 'calc(var(--ui-unit) * 1px)';
