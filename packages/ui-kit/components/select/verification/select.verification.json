@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "32b8a8d4ef9685667eef30ce20a6a68af5d304a2e38237479ddbda133d7d37f5"
+      "sha256": "14482f19c13b7514bd9a6782f7d63f17c009ffb88d916e719d8aa71a77207b65"
     },
     {
       "path": "components/listbox/options.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "8a8fa638188b3a3d8987cd0333c3165aa6649a478c1e00e568e4d9c2369f88e3"
+      "sha256": "df3937b0099aab9d6c48f9882272081deae177828ecdd1543bb7d25fdff8b97a"
     },
     {
       "path": "components/select/select.react.tsx",

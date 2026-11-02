@@ -110,6 +110,18 @@ export const defaults = defineGlobalStyles({
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
     bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
   },
+  // Anchor positioning (browsers with position-area and anchor-scope): each select scopes one shared
+  // anchor name, so the popup sits 1u below its own trigger (above when there is no room), at least as
+  // wide, as tall as the space allows. Elsewhere the element places it from script.
+  '@supports (position-area: block-end) and (anchor-scope: all)': {
+    'ui-select': { anchorScope: '--ui-select-trigger' },
+    'ui-select > [data-part=trigger]': { anchorName: '--ui-select-trigger' },
+    'ui-select > [data-part=popup]': {
+      positionAnchor: '--ui-select-trigger', positionArea: 'block-end span-inline-end', positionTryFallbacks: 'flip-block', positionTryOrder: 'most-block-size',
+      // One margin toward the trigger; flip-block mirrors it when the popup opens upward.
+      marginBlockStart: 'var(--u)', minWidth: 'anchor-size(width)', maxHeight: 'calc(100% - var(--u))',
+    },
+  },
   // The column layout holds in every state: while closing, the popup stays displayed for its fade
   // (display transitions discretely), so a direction set only on :popover-open would flip it to a row.
   'ui-select > [data-part=popup]:popover-open': { display: 'flex' },

@@ -14,6 +14,8 @@ import { ensureId, optionList } from '../listbox/options.ts';
 import { adoptAdornments } from '../slots.ts';
 
 const TRIGGER_ADORNMENTS = ['leading', 'prefix', 'suffix'] as const;
+/** CSS anchor positioning places the popup (styles/defaults.ts); script placement is the fallback. */
+const ANCHORED = typeof CSS !== 'undefined' && !!CSS.supports?.('position-area', 'block-end') && !!CSS.supports?.('anchor-scope', 'all');
 
 export class UISelect extends UIFormElement {
   static properties = {
@@ -147,10 +149,12 @@ export class UISelect extends UIFormElement {
       popup.setAttribute('data-open', '');
       try { popup.showPopover?.(); } catch { /* already open */ }
       document.addEventListener('pointerdown', this.#onOutside, true);
-      window.addEventListener('resize', this.#place);
-      window.addEventListener('scroll', this.#place, true);
+      if (!ANCHORED) {
+        window.addEventListener('resize', this.#place);
+        window.addEventListener('scroll', this.#place, true);
+      }
     }
-    this.#place();
+    if (!ANCHORED) this.#place();
   }
 
   #hidePopup() {
@@ -163,6 +167,8 @@ export class UISelect extends UIFormElement {
     window.removeEventListener('scroll', this.#place, true);
   }
 
+  // Fallback placement where CSS anchor positioning is unavailable (styles/defaults.ts places it
+  // otherwise): measured from the trigger and written inline.
   #place = () => {
     const popup = this.popup, trigger = this.trigger;
     if (!popup || !trigger) return;

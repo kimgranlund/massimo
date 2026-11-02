@@ -262,7 +262,7 @@
         "Authored ui-option children move into the popup, including options added later.",
         "The value attribute at connect is the reset default. Option value falls back to its label text.",
         "Outside pointerdown and blur close the popup; selection commits on Enter, Space, Tab or click.",
-        "Popup position is set inline (left/top/bottom/min-width/max-height) by placePopup: the one runtime-geometry exception, measured from the trigger."
+        "The popup is placed with CSS anchor positioning (anchor-scope per select, position-area below the trigger, flip-block to the side with more room, min-width = trigger width, 1u gap). Where anchor positioning is unavailable, placePopup measures the trigger and writes the position inline as a fallback."
       ],
       "avoidWhen": [
         {
