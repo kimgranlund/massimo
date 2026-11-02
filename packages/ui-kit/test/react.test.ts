@@ -66,15 +66,16 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
 
 const { Listbox, Segmented, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));
 
-test('Listbox, Segmented, Option: radio groups of native radios with the construction pattern', () => {
+test('Listbox, Segmented, Option: ARIA listboxes like the web components, form value in a hidden input', () => {
   const lb = html(h(Listbox, { label: 'Folder', name: 'folder', defaultValue: 'sent' }, h(Option, { value: 'inbox', suffix: '12' }, 'Inbox'), h(Option, { value: 'sent' }, 'Sent'), h(Option, { value: 'spam', disabled: true }, 'Spam')));
-  assert.match(lb, /^<div data-ui="listbox" role="radiogroup" aria-label="Folder" aria-orientation="vertical">/);
-  const opt = (v: string) => lb.match(new RegExp(`<label data-ui="option"><input [^>]*value="${v}"[^>]*>`))?.[0] ?? '';
-  assert.ok(opt('sent').includes('checked=""') && opt('sent').includes('name="folder"'));
-  assert.ok(!opt('inbox').includes('checked'));
-  assert.ok(opt('spam').includes('disabled=""'));
+  assert.match(lb, /^<div data-ui="listbox" role="listbox" aria-label="Folder" tabindex="0">/);
+  const opt = (v: string) => lb.match(new RegExp(`<div data-ui="option" role="option" id="[^"]+" aria-selected="[a-z]+"[^>]*>(?=(?:(?!</div>).)*${v === 'inbox' ? 'Inbox' : v === 'sent' ? 'Sent' : 'Spam'})`))?.[0] ?? '';
+  assert.ok(opt('sent').includes('aria-selected="true"'), opt('sent'));
+  assert.ok(opt('inbox').includes('aria-selected="false"'));
+  assert.ok(opt('spam').includes('aria-disabled="true"'));
   assert.match(lb, /<span data-part="contents">Inbox<\/span><span data-part="suffix">12<\/span>/);
-  assert.match(html(h(Segmented, { label: 'View' }, h(Option, { value: 'grid' }, 'Grid'))), /data-ui="segmented" role="radiogroup" aria-label="View" aria-orientation="horizontal"/);
+  assert.match(lb, /<input type="hidden" name="folder" value="sent"\/>/);
+  assert.match(html(h(Segmented, { label: 'View' }, h(Option, { value: 'grid' }, 'Grid'))), /data-ui="segmented" role="listbox" aria-orientation="horizontal" aria-label="View"/);
   assert.throws(() => html(h(Option, { value: 'x' }, 'x')), /inside <Listbox>/);
   noCustom(lb);
 });

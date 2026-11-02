@@ -26,7 +26,7 @@
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "ba08965f07fe727d78f77548a4adefcd3612a6fa042d773382d075803f6be7b6"
+      "sha256": "149cd5a46874ebb69ed051d1b6a38815edadfcdd5c8195174ee5b540fe731d7f"
     },
     {
       "path": "components/parts.react.tsx",
@@ -34,7 +34,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "495d4bda8a6b0778fe660e3b35992448315f7d77e449b65ccafd81ec4ce05911"
+      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
     }
   ],
   "renderers": {
@@ -65,7 +65,7 @@
       "checks": [
         {
           "command": "node --test test/react.test.ts",
-          "covers": "radio-group listbox and segmented, option radios, names, checked and disabled state, parts"
+          "covers": "ARIA listbox and segmented (role, activedescendant, selection, disabled), options, hidden form input, parts"
         },
         {
           "command": "node --test test/native.test.ts",
@@ -87,6 +87,6 @@
   },
   "limitations": [
     "The source list is the direct sources, not every transitive dependency.",
-    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []). React Listbox and Segmented are radio groups (role=radiogroup), not ARIA listboxes; keyboard behavior is the browser's radio behavior."
+    "React styling and keyboard parity are checked in the browser: apps/studio/react-check.html (\"fails\": [])."
   ]
 }

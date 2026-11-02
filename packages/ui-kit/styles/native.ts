@@ -26,12 +26,6 @@ const RANGE_STATE: [RegExp, string][] = [
   [/:focus-visible/g, ':has(> input:focus-visible)'],
 ];
 
-const LIST_STATE: [RegExp, string][] = [
-  [/\[aria-disabled=true\]/g, '[data-disabled]'],
-  [/\[aria-invalid=true\]/g, '[data-invalid]'],
-  [/:focus-visible/g, ':has(input:focus-visible)'],
-];
-
 /** Components with a native React twin, and how their state hooks map. */
 export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
   checkbox: CHOICE_STATE,
@@ -59,10 +53,9 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
     [/\[slideshow\]/g, '[data-slideshow]'],
   ],
   group: [], collection: [], tile: [], card: [], panel: [], region: [], page: [],
-  // Listbox and segmented are radio groups; each option is a <label> around a native radio, so arrow
-  // keys move and select (selection follows focus, as in the web component).
-  listbox: LIST_STATE,
-  segmented: LIST_STATE,
+  // Listbox and segmented are ARIA listboxes with the web components' attributes (dom/listbox.ts).
+  listbox: [],
+  segmented: [],
   // Select is a native <select> with customizable-select styling (appearance: base-select): the
   // trigger is its <button>, the value its <selectedcontent>, the popup ::picker(select), the options
   // native <option>s. Browsers without base-select show the platform select.
@@ -81,12 +74,13 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
     [/\[no-dots\]/g, '[data-no-dots]'],
     [/\[hover-controls\]/g, '[data-hover-controls]'],
   ],
-  // An option is a <label> around a radio (listbox, segmented) or a native <option> (select).
+  // An option is an ARIA option (listbox, segmented: same attributes as the web component) or a native
+  // <option> (select: :checked, :disabled, :focus).
   option: [
-    [/:not\(\[aria-disabled=true\]\)/g, ':not(:disabled, :has(> input:disabled))'],
-    [/\[aria-disabled=true\]/g, ':is(:disabled, :has(> input:disabled))'],
-    [/\[aria-selected=true\]/g, ':is(:checked, :has(> input:checked))'],
-    [/\[data-active\]/g, ':is(:focus, :has(> input:focus))'],
+    [/:not\(\[aria-disabled=true\]\)/g, ':not([aria-disabled=true], :disabled)'],
+    [/\[aria-disabled=true\]/g, ':is([aria-disabled=true], :disabled)'],
+    [/\[aria-selected=true\]/g, ':is([aria-selected=true], :checked)'],
+    [/\[data-active\]/g, ':is([data-active], :focus)'],
   ],
 };
 
@@ -150,9 +144,6 @@ export const native = {
   '[data-ui=swatch]': { position: 'relative' },
   '[data-ui=swatch] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
   '[data-ui=palette][data-selectable] > [data-ui=swatch]': { cursor: 'pointer' },
-  // Options: the native radio is invisible; the option row paints it.
-  '[data-ui=option]': { position: 'relative' },
-  '[data-ui=option] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
   // Select: opt in to customizable select; the inner <button> is the painted trigger.
   '[data-ui=select] > select, [data-ui=select] > select::picker(select)': { appearance: 'base-select' },
   // The select's own box wraps the trigger exactly: no intrinsic minimum height or line box.

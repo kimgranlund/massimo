@@ -1,13 +1,15 @@
-// React <Listbox>, <Segmented>, <Option>: native radio groups with the web components' anatomy. The
-// host is a <div data-ui="listbox|segmented" role="radiogroup">; each option is a <label data-ui=
-// "option"> around a native radio and the construction-pattern parts. The browser owns arrow keys
-// (move and select, like the web component's selection-follows-focus), the tab stop and the form value.
-import { createContext, useContext, useId, useState, type ChangeEvent, type HTMLAttributes, type ReactNode } from 'react';
+/// <reference path="../jsx.d.ts" />
+// React <Listbox>, <Segmented>, <Option>: ARIA listboxes with the web components' semantics, built on
+// the same headless helpers (dom/listbox.ts). The host is the single tab stop (role=listbox) and
+// tracks the highlighted option with aria-activedescendant; arrow keys, Home/End and typeahead move
+// and select (selection follows focus). A hidden input carries the form value when `name` is set.
+import { Children, createContext, isValidElement, useContext, useId, useRef, useState, type HTMLAttributes, type KeyboardEvent, type ReactElement, type ReactNode } from 'react';
+import { createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type OptionItem } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 
-interface ListState { name: string; value: string; set: (v: string) => void; disabled?: boolean; required?: boolean }
-const ListContext = createContext<ListState | null>(null);
+interface OptionState { id: string; selected: boolean; disabled: boolean; active: boolean; select: () => void }
+const OptionContext = createContext<OptionState | null>(null);
 
 export interface ListboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'> {
   name?: string;
@@ -23,29 +25,11 @@ export interface ListboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
   invalid?: boolean;
   gap?: number;
   size?: number;
+  /** <Option> children. */
   children?: ReactNode;
 }
 
-function List({ kind, name, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, gap, size, children, ...rest }: ListboxProps & { kind: 'listbox' | 'segmented' }) {
-  const auto = useId();
-  const [inner, setInner] = useState(defaultValue);
-  const state: ListState = {
-    name: name ?? auto, value: value ?? inner, disabled, required,
-    set: (v) => { if (value === undefined) setInner(v); onValueChange?.(v); },
-  };
-  return (
-    <div {...rest} data-ui={kind} data-size={size} {...(gap !== undefined ? { gap: String(gap) } : {})}
-      data-disabled={disabled || undefined} data-invalid={invalid || undefined}
-      role="radiogroup" aria-label={label || undefined} aria-orientation={orientation ?? (kind === 'segmented' ? 'horizontal' : 'vertical')}>
-      <ListContext.Provider value={state}>{children}</ListContext.Provider>
-    </div>
-  );
-}
-
-export function Listbox(props: ListboxProps) { return <List kind="listbox" {...props} />; }
-export function Segmented(props: ListboxProps) { return <List kind="segmented" {...props} />; }
-
-export interface OptionProps extends PartProps, Omit<HTMLAttributes<HTMLLabelElement>, 'prefix'> {
+export interface OptionProps extends PartProps, Omit<HTMLAttributes<HTMLDivElement>, 'prefix'> {
   /** Submitted value. */
   value: string;
   disabled?: boolean;
@@ -53,14 +37,75 @@ export interface OptionProps extends PartProps, Omit<HTMLAttributes<HTMLLabelEle
   children?: ReactNode;
 }
 
-export function Option({ value, disabled, leading, prefix, suffix, trailing, iconSize, children, ...rest }: OptionProps) {
-  const list = useContext(ListContext);
-  if (!list) throw new Error('<Option> must be inside <Listbox> or <Segmented>');
+const textOf = (n: ReactNode): string => typeof n === 'string' || typeof n === 'number' ? String(n) : Array.isArray(n) ? n.map(textOf).join('') : '';
+
+function List({ kind, name, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, gap, size, children, onKeyDown, onFocus, onBlur, ...rest }: ListboxProps & { kind: 'listbox' | 'segmented' }) {
+  const base = useId();
+  const [inner, setInner] = useState(defaultValue);
+  const [active, setActive] = useState(-1);
+  const [focused, setFocused] = useState(false);
+  const typeahead = useRef(createTypeahead()).current;
+  const current = value ?? inner;
+  const orient = orientation ?? (kind === 'segmented' ? 'horizontal' : 'vertical');
+  const options = Children.toArray(children).filter(isValidElement) as ReactElement<OptionProps>[];
+  const items: OptionItem[] = options.map((o) => ({ value: o.props.value, label: textOf(o.props.children) || o.props.value, disabled: !!o.props.disabled || !!disabled }));
+  const idOf = (i: number) => `${base}-opt-${i}`;
+
+  const select = (i: number) => {
+    const it = items[i];
+    if (!it || it.disabled) return;
+    setActive(i);
+    if (it.value === current) return;
+    if (value === undefined) setInner(it.value);
+    onValueChange?.(it.value);
+  };
+
+  const shown = focused ? active : -1;
   return (
-    <label {...rest} data-ui="option" data-icon-size={iconSize}>
-      <input type="radio" name={list.name} value={value} checked={list.value === value} disabled={disabled || list.disabled} required={list.required}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => list.set(e.target.value)} />
+    <div
+      {...rest} data-ui={kind} data-size={size} {...(gap !== undefined ? { gap: String(gap) } : {})}
+      {...toReactProps(listboxAttrs({ orientation: orient, activeId: shown >= 0 ? idOf(shown) : undefined, label, disabled, required, invalid }))}
+      onFocus={(e) => {
+        setFocused(true);
+        if (active < 0) { const sel = items.findIndex((it) => it.value === current); setActive(sel >= 0 ? sel : firstEnabled(items) ?? -1); }
+        onFocus?.(e);
+      }}
+      onBlur={(e) => { setFocused(false); onBlur?.(e); }}
+      onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
+        onKeyDown?.(e);
+        if (disabled || e.defaultPrevented) return;
+        const rtl = getComputedStyle(e.currentTarget).direction === 'rtl';
+        // Start from the highlighted option, else the selected one (a key can arrive before focus state renders).
+        const from = active >= 0 ? active : items.findIndex((it) => it.value === current);
+        let i = navigate(items, from, e.key, { orientation: orient, rtl });
+        if (i === undefined && isPrintableKey(e.nativeEvent)) i = typeahead(items, from, e.key);
+        if (i === undefined) return;
+        e.preventDefault();
+        select(i); // selection follows focus
+        document.getElementById(idOf(i))?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+      }}
+    >
+      {options.map((o, i) => (
+        <OptionContext.Provider key={o.key ?? i} value={{ id: idOf(i), selected: o.props.value === current, disabled: items[i].disabled ?? false, active: i === shown, select: () => select(i) }}>
+          {o}
+        </OptionContext.Provider>
+      ))}
+      {name && <input type="hidden" name={name} value={current} disabled={disabled} />}
+    </div>
+  );
+}
+
+export function Listbox(props: ListboxProps) { return <List kind="listbox" {...props} />; }
+export function Segmented(props: ListboxProps) { return <List kind="segmented" {...props} />; }
+
+export function Option({ value: _value, disabled: _disabled, leading, prefix, suffix, trailing, iconSize, children, onClick, ...rest }: OptionProps) {
+  const o = useContext(OptionContext);
+  if (!o) throw new Error('<Option> must be inside <Listbox> or <Segmented>');
+  return (
+    <div {...rest} data-ui="option" data-icon-size={iconSize}
+      {...toReactProps(optionAttrs({ id: o.id, selected: o.selected, disabled: o.disabled, active: o.active }))}
+      onClick={(e) => { o.select(); onClick?.(e); }}>
       <Parts {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
-    </label>
+    </div>
   );
 }

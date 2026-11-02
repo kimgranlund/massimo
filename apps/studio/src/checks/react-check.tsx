@@ -171,5 +171,19 @@ setTimeout(() => {
       if (va !== vb) fails.push(`u${c.getAttribute('data-case')} sel.${name}: wc ${va} react ${vb}`);
     }
   }
-  document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
+  // Keyboard: ArrowDown on a focused listbox moves and selects (selection follows focus) in both.
+  const u4 = root.querySelector('[data-case="4"]')!;
+  const lbs = [u4.querySelector('[data-side=wc] [data-k=lb]') as HTMLElement, u4.querySelector('[data-side=react] [data-k=lb]') as HTMLElement];
+  const read = (lb: HTMLElement) => [...lb.querySelectorAll('[role=option]')].map((o) => `${o.getAttribute('aria-selected')}${o.hasAttribute('data-active') ? '*' : ''}`).join(',') + ` ad=${!!lb.getAttribute('aria-activedescendant')}`;
+  const press = (lb: HTMLElement) => new Promise<string>((done) => {
+    lb.focus();
+    lb.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true }));
+    setTimeout(() => done(read(lb)), 150);
+  });
+  press(lbs[0]).then((a) => press(lbs[1]).then((b) => {
+    checks++;
+    if (a !== b) fails.push(`keyboard listbox: wc ${a} react ${b}`);
+    document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
+  }));
+  if (false) document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
 }, 600);

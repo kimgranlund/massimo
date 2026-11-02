@@ -22,7 +22,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "495d4bda8a6b0778fe660e3b35992448315f7d77e449b65ccafd81ec4ce05911"
+      "sha256": "b6052600a7996972e2c80ffddc895f7ab094f0ecfd5d7c4366275ff61f39d5d3"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
