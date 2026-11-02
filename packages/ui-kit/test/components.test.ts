@@ -336,12 +336,14 @@ test('option label excludes slotted icons', async () => {
   lb.remove();
 });
 
-test('ui-tag and ui-chip use slots; badge is text only', async () => {
+test('ui-tag, ui-chip and ui-badge use the construction pattern', async () => {
   const tag = build('ui-tag', '<i slot="leading" name="star"></i>New');
   await tick();
   assert.deepEqual([...tag.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
   const badge = build('ui-badge', '3');
-  assert.equal(badge.children.length, 0);
+  await tick();
+  assert.deepEqual([...badge.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'prefix', 'contents', 'suffix', 'trailing']);
+  assert.equal(badge.querySelector('[data-part=contents]')!.textContent, '3');
   assert.equal(tag.querySelector(NATIVE), null);
   tag.remove(); badge.remove();
 });

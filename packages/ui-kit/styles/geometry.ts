@@ -29,15 +29,15 @@ const ADORN = ':is([data-part=prefix], [data-part=suffix])';
  * host edge, `slot` beside a visible leading/trailing slot, and 0.5u beside another visible text
  * part. Web components keep empty parts as [hidden]; React omits them; both work with ~ and :has.
  */
-function textRun(host: string, slot: string, bare: string, base: Record<string, string> = {}) {
+function textRun(host: string, slot: string, bare: string, base: Record<string, string> = {}, between = 'calc(0.5 * var(--u))') {
   const T = `${host} > ${TEXT}`;
   const shown = (part: string) => `${part}:not([hidden])`;
   return {
     [T]: { ...base, paddingInlineStart: bare, paddingInlineEnd: bare },
     [`${host} > ${shown('[data-part=leading]')} ~ ${TEXT}`]: { paddingInlineStart: slot },
-    [`${host} > ${shown(TEXT)} ~ ${TEXT}`]: { paddingInlineStart: 'calc(0.5 * var(--u))' },
+    [`${host} > ${shown(TEXT)} ~ ${TEXT}`]: { paddingInlineStart: between },
     [`${T}:has(~ ${shown('[data-part=trailing]')})`]: { paddingInlineEnd: slot },
-    [`${T}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: 'calc(0.5 * var(--u))' },
+    [`${T}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: between },
   };
 }
 
@@ -113,20 +113,25 @@ export const geometry = defineGlobalStyles({
     '--pad': 'max(0px, calc(0.5 * var(--u) - var(--b)))',
     '--slot': 'calc(var(--h) - var(--u))',
     height: 'var(--h)', minWidth: 'var(--h)', borderWidth: 'var(--b)', borderRadius: 'var(--radius)',
-    fontSize: 'var(--font)',
+    fontSize: 'var(--font)', padding: 'var(--pad)',
   },
   'ui-chip': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
   'ui-tag': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
-  'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', paddingInline: 'var(--pad)', justifyContent: 'center', lineHeight: 'min(calc(1.2 * var(--font)), var(--h))' },
-  [TAGCHIP]: { padding: 'var(--pad)' },
-  [`${TAGCHIP} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
-  [`${TAGCHIP} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
-  [`${TAGCHIP} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  ...textRun(TAGCHIP, 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }),
-  // Chip centers its text with block padding; tag (like badge) needs none, its row centers it.
+  'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', justifyContent: 'center' },
+  // Label wrapper padding (resolveBtg, half the control's): the host keeps 0.5u − B; the text run
+  // carries 1u at a bare edge and 0.5u beside a slot for tag and chip, 0.5u and 0.25u for badge
+  // (so a one-character badge stays a circle); text parts sit 0.5u apart.
+  [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
+  [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
+  [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
+  ...textRun(TAGCHIP, 'calc(0.5 * var(--u))', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
+  // Badge bare edge: 0.5u, capped so one digit (1ch; badges use tabular figures) still fits the
+  // height and a one-character badge stays a circle at every size.
+  ...textRun('ui-badge', 'calc(0.25 * var(--u))', 'max(0px, min(calc(0.5 * var(--u)), calc((var(--h) - 2 * var(--pad) - 2 * var(--b) - 1ch) / 2)))', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
+  // Chip centers its text with block padding; tag and badge need none, the row centers it.
   [`ui-chip > ${TEXT}`]: { paddingBlock: 'var(--line-pad)' },
   // Fill slots nest inside the 0.5u edge.
-  [`:is([icon-size=fill], [data-icon-size=fill]) ${TAGCHIP} > ${SLOT}, ${TAGCHIP}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
+  [`:is([icon-size=fill], [data-icon-size=fill]) ${BTG} > ${SLOT}, ${BTG}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))',
   },
 

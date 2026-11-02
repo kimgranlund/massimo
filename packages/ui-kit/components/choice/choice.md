@@ -29,7 +29,7 @@ Construction pattern (shared by every labelled component):
 [leading icon] [prefix] [contents: the label] [suffix] [trailing icon]
 ```
 
-Icons sit in 6u leading/trailing slots; prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Text parts sit 1u apart, 1u beside a slot, and at the bare edge 2u (controls), 1u (tag, chip) or 0 (choices). Parts: [parts.json](../../contracts/parts.json).
+Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip half of that (badge: half again); choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
 - `part:choice-box` `:scope > [data-part=leading] > [data-part=box]`: The indicator (aria-hidden): checkbox box with check and minus marks, radio dot, or switch track and thumb. Created at connect unless authored.
 

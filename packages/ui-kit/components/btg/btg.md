@@ -12,12 +12,13 @@
 
 ```html
 <ui-badge>3</ui-badge>
+<ui-badge><span slot="prefix">+</span>12</ui-badge>
 <ui-tag><i slot="leading" name="tag"></i>Size<span slot="suffix">M</span></ui-tag>
 <ui-chip selectable>Unread<span slot="suffix">4</span></ui-chip>
 <ui-chip removable>Remote</ui-chip>
 ```
 
-Heights step 12px + k·u (badge 1, tag 2, chip 3), capped below the control height. Tag and chip text runs use 1u edges.
+Heights step 12px + k·u (badge 1, tag 2, chip 3), capped below the control height. All three use the label-wrapper padding system at half the control's: host 0.5u − B; tag and chip labels 1u at a bare edge and 0.5u beside a slot; badge 0.5u (capped so one digit fits, keeping a one-character badge round) and 0.25u; text parts 0.5u apart.
 
 ## Anatomy
 
@@ -27,7 +28,7 @@ Construction pattern (shared by every labelled component):
 [leading icon] [prefix] [contents: the label] [suffix] [trailing icon]
 ```
 
-Icons sit in 6u leading/trailing slots; prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Text parts sit 1u apart, 1u beside a slot, and at the bare edge 2u (controls), 1u (tag, chip) or 0 (choices). Parts: [parts.json](../../contracts/parts.json).
+Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip half of that (badge: half again); choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
 - `part:chip-remove` `:scope > [data-part=trailing] > [data-remove]`: The x icon added by removable: a click target inside the chip, not a separate tab stop.
 

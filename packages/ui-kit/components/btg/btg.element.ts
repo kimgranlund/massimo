@@ -1,5 +1,7 @@
-// <ui-badge>: short status or count. Text only; one character makes a circle.
-// <ui-tag>: static label with leading / contents / trailing slots.
+// <ui-badge>: short status or count; one character makes a circle.
+// <ui-tag>: static label.
+// All three use the construction pattern (leading / prefix / contents / suffix / trailing) with the
+// label-wrapper padding of resolveBtg.
 // <ui-chip>: interactive label. `selectable` makes it a toggle button (aria-pressed);
 //   `removable` adds a trailing ✕: clicking it, Delete or Backspace fires a cancelable
 //   `remove` event, and unless prevented the chip removes itself and focus moves to a
@@ -9,7 +11,11 @@ import { applyAttrs, buttonAttrs, isInactive, onButtonKeydown } from '../../dom/
 import { observeSlots } from '../slots.ts';
 import '../../icons/index.ts';
 
-export class UIBadge extends UIElement {}
+export class UIBadge extends UIElement {
+  #unslot?: () => void;
+  connected() { this.#unslot = observeSlots(this); }
+  disconnected() { this.#unslot?.(); }
+}
 
 export class UITag extends UIElement {
   #unslot?: () => void;

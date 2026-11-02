@@ -982,6 +982,36 @@
       "to": "context:inline"
     },
     {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:badge",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
       "from": "component:tag",
       "relation": "extends",
       "to": "foundation:element"

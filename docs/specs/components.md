@@ -6,7 +6,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 
 - `UIElement` (`core/element.ts`): `static properties` become signal-backed properties with attribute parsing and optional reflection; one render effect per element (`template()` then `update()`); `connected()` / `disconnected()` hooks. Use `declare` for typed props.
 - `UIFormElement` (`core/form-element.ts`): form association through ElementInternals: `name`, value (`formValue()`), validity (`validate()`), `form`, `labels`, `checkValidity` / `reportValidity` / `setCustomValidity`, reset and restore, disabled by an ancestor `<fieldset>` (`isDisabled`). Errors show only after interaction or a blocked submit (`userInvalid`, `data-user-invalid`); author `error` shows at once.
-- Construction pattern (`components/slots.ts`): button, option, tag, chip and the choices sort children into `[data-part=leading|prefix|contents|suffix|trailing]`; `slot="leading"` / `"trailing"` mark icons, `slot="prefix"` / `"suffix"` mark text adornments, the rest is the label; empty parts are hidden. The input control and select trigger have the same parts, filled from slotted children (`adoptAdornments`). Spacing: [geometry](geometry.md).
+- Construction pattern (`components/slots.ts`): button, option, badge, tag, chip and the choices sort children into `[data-part=leading|prefix|contents|suffix|trailing]`; `slot="leading"` / `"trailing"` mark icons, `slot="prefix"` / `"suffix"` mark text adornments, the rest is the label; empty parts are hidden. The input control and select trigger have the same parts, filled from slotted children (`adoptAdornments`). Spacing: [geometry](geometry.md).
 - Input modality (`core/modality.ts`): `<html data-modality="keyboard|pointer">`; focus rings show only after keyboard use.
 - FOUC: undefined elements are hidden with their size reserved; a 1.5s reveal guards against a missing script (`styles/pending.ts`).
 
@@ -25,7 +25,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-switch` | `role=switch`; Space/Enter toggle | `checked` |
 | `ui-range` | `role=slider`; arrows, Page Up/Down (10%), Home/End, drag; exposes `--ui-ratio` | `value`, `min`, `max`, `step`, `label`, `value-text` |
 | `ui-progress` | `role=progressbar`; indeterminate without `value` | `value`, `max`, `label` |
-| `ui-badge` | static text; one character is a circle | |
+| `ui-badge` | static label with the construction pattern; one character is a circle | `icon-size` |
 | `ui-tag` | static label with slots | `icon-size` |
 | `ui-chip` | `role=button`; `selectable` toggles `aria-pressed`; `removable` adds ✕, Delete/Backspace fire cancelable `remove` | `selectable`, `selected`, `removable`, `disabled` |
 | `ui-swatch` | a color chip over a checkerboard; `role=img` | `color`, `label` |

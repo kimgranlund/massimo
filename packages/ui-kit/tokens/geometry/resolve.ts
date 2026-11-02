@@ -88,17 +88,17 @@ export interface ControlParts { leading?: boolean; prefix?: boolean; contents?: 
  *   `slotEdge` beside a slot (1u for controls), `bareEdge` at the host edge (2u for controls).
  * Absent parts take no space. Badge, tag and chip pass their own edges (resolveBtg).
  */
-export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slotEdge?: number; bareEdge?: number } = {}) {
+export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slotEdge?: number; bareEdge?: number; between?: number } = {}) {
   const u = resolveControl(input).unit;
-  const slotEdge = input.slotEdge ?? u, bareEdge = input.bareEdge ?? 2 * u;
+  const slotEdge = input.slotEdge ?? u, bareEdge = input.bareEdge ?? 2 * u, between = input.between ?? 0.5 * u;
   const p = { contents: true, ...parts };
   const order: TextPart[] = ['prefix', 'contents', 'suffix'];
   const shown = order.filter((k) => p[k]);
   const out: Partial<Record<TextPart, { start: number; end: number }>> = {};
   shown.forEach((k, i) => {
     out[k] = {
-      start: i > 0 ? 0.5 * u : p.leading ? slotEdge : bareEdge,
-      end: i < shown.length - 1 ? 0.5 * u : p.trailing ? slotEdge : bareEdge,
+      start: i > 0 ? between : p.leading ? slotEdge : bareEdge,
+      end: i < shown.length - 1 ? between : p.trailing ? slotEdge : bareEdge,
     };
   });
   return out;
@@ -200,23 +200,31 @@ export function btgHeights(unit: number) {
   return { badge, tag, chip };
 }
 
-export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
+/** `ch`: width of one digit in the badge font (CSS 1ch); 0.55 × font is a typical system-ui figure. */
+export function resolveBtg(kind: BtgKind, input: GeometryInput & { ch?: number } = {}) {
   const x = inputs(input);
   const u = x.unit, b = x.border;
   const height = btgHeights(u)[kind];
   const fontSize = { chip: 10 + u, tag: 10 + 0.5 * u, badge: 10 }[kind];
-  // Tag and chip: slots are the next level's height; badge has no slots.
-  const slot = kind === 'badge' ? 0 : height - u;
+  // Slots are one u below the element (the next level's height; badge: badge − u).
+  const slot = height - u;
+  // Label wrapper padding, half the control's: tag and chip 1u at a bare edge and 0.5u beside a
+  // slot; badge 0.5u and 0.25u (a one-character badge stays a circle). Text parts 0.5u apart.
+  // Badge bare edge is capped so one digit still fits: (height − 2·pad − 2B − ch) / 2.
+  const pad = Math.max(0, 0.5 * u - b), ch = input.ch ?? 0.55 * fontSize;
+  const edges = kind === 'badge'
+    ? { bareEdge: Math.max(0, Math.min(0.5 * u, (height - 2 * pad - 2 * b - ch) / 2)), slotEdge: 0.25 * u, between: 0.25 * u }
+    : { bareEdge: u, slotEdge: 0.5 * u, between: 0.25 * u };
   return {
     unit: u, border: b, height, fontSize, slot,
     minWidth: height,
-    padding: Math.max(0, 0.5 * u - b),
-    contentsPaddingInline: u, // same as control contents
+    padding: pad,
+    ...edges,
+    contentsPaddingInline: edges.bareEdge,
     // Single-line text at 1.2. Chip centers it in the slot with block padding; tag and badge
     // omit block padding (the row centers the text).
-    ...(kind === 'badge' ? { lineHeight: Math.min(1.2 * fontSize, height), paddingBlock: 0 }
-      : kind === 'tag' ? { lineHeight: Math.min(1.2 * fontSize, slot), paddingBlock: 0 } : singleLine(fontSize, slot)),
-    iconSize: kind === 'badge' ? 0 : resolveIcon(fontSize, u, x.iconSize, slot),
+    ...(kind === 'chip' ? singleLine(fontSize, slot) : { lineHeight: Math.min(1.2 * fontSize, slot), paddingBlock: 0 }),
+    iconSize: resolveIcon(fontSize, u, x.iconSize, slot),
     radius: Math.min(3 * u * x.radiusScale, height / 2),
   };
 }

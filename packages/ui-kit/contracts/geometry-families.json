@@ -59,7 +59,7 @@
         "resolveBtg",
         "btgHeights"
       ],
-      "summary": "Badge, tag and chip heights and label edges; chip label edge is half the control edge. Tag and chip use the construction pattern with 1u text-run edges.",
+      "summary": "Badge, tag and chip heights on the 12px + k·u ladder; slots one u below the element. Label-wrapper padding at half the control's: the host keeps 0.5u − B; tag and chip text runs have 1u at a bare edge and 0.5u beside a slot, badge 0.5u (capped so one digit fits, keeping a one-character badge round) and 0.25u; text parts 0.5u apart.",
       "members": [
         "component:badge",
         "component:tag",

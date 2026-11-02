@@ -52,6 +52,21 @@
       "properties": [],
       "attributes": [
         {
+          "name": "icon-size",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "fill"
+          ],
+          "readBy": "css",
+          "description": "Glyph artwork tier inside the badge's slots (badge height − u).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
           "name": "size",
           "type": "number",
           "readBy": "css",
@@ -70,28 +85,29 @@
         "formAssociated": false
       },
       "content": {
-        "ownership": "consumer",
+        "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "Short text only; one character makes a circle."
+        "children": "Short text, optional slot=\"prefix\" | \"suffix\" adornments and slot=\"leading\" | \"trailing\" icons; children move into the construction-pattern parts."
       },
       "layout": {
         "display": "inline-flex",
         "sizing": "intrinsic"
       },
       "constraints": [
-        "Text only: no slots, no icons, not interactive.",
+        "Not interactive and fires no events.",
+        "One character makes a circle: min width = height, and the bare label edge is capped so one digit fits at every size.",
         "A count that changes needs a live region elsewhere if it must be announced."
       ],
       "avoidWhen": [
         {
-          "when": "The label needs an icon.",
-          "reason": "Badge has no slots.",
-          "useInstead": "component:tag"
-        },
-        {
           "when": "The user can click or remove it.",
           "reason": "Badge is static.",
           "useInstead": "component:chip"
+        },
+        {
+          "when": "A category label with an icon or several words.",
+          "reason": "Tag is the taller static label with a larger font.",
+          "useInstead": "component:tag"
         }
       ],
       "searchTerms": [
@@ -449,6 +465,36 @@
       "from": "component:badge",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:badge",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:badge",
+      "relation": "uses",
+      "to": "foundation:slots"
     },
     {
       "from": "component:tag",

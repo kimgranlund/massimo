@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/btg/btg.element.ts",
-      "sha256": "e18c08c5c897ba0c481f6ec8e750ce3ed5d92e13459b95308abc86d8f856d7ad"
+      "sha256": "8f766e7b2b4fc419037868e6caa1c01533168fdd1fb1bf80acbd5036676cde34"
     },
     {
       "path": "components/slots.ts",
@@ -18,7 +18,7 @@
     },
     {
       "path": "components/btg/btg.manifest.json",
-      "sha256": "37c7bd3005024224d30a71ad084e3a5bb78440ca1d0443c727afbbdb18f57cf7"
+      "sha256": "08e99c10ad63f1836a211e9f75ddd80d0920b5944ea84b33553caa5125501214"
     }
   ],
   "renderers": {

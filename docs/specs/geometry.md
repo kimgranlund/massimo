@@ -47,7 +47,7 @@ Icons capped by the slot: `md` below u≈2.2 and `lg` below u≈2.9 (at u=2: md 
 
 Usage: `<ui-button><i slot="leading" name="credit-card"></i><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span></ui-button>`. Anything with `slot="leading" | "prefix" | "suffix" | "trailing"` goes in that part; everything else is contents. Prefix and suffix are short text adornments (a currency, a unit, a shortcut, a count) in the label color at 65%. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} prefix={…} suffix={…} trailing={…} iconSize="lg" size={3}>`.
 
-The same pattern and text-run rule apply to every labelled component: button, option, the input control, the select trigger, tag and chip (edges 1u bare and beside a slot), and checkbox/radio/switch (the indicator is the leading slot; bare end edge 0). Badge is text only.
+The same pattern and text-run rule apply to every labelled component: button, option, the input control, the select trigger, badge, tag and chip (half the control's edges, see below), and checkbox/radio/switch (the indicator is the leading slot; bare end edge 0). Badge is text only.
 
 Inputs and select triggers are laid out as buttons: the host (input `[data-part=control]`, select `[data-part=trigger]`) has only 1u (padding u − B plus border), and its parts carry the rest with the button rules. The input control is `[leading] [prefix] [contents = editor] [suffix] [trailing]`, filled from children with those `slot` values (`<ui-input label="Price"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>`); with no adornments the text has 2u each side, as a slotless label. The select trigger is `[leading] [prefix] [contents = value] [suffix] [trailing = chevron]`; authors may fill leading, prefix and suffix. Field states (`aria-invalid`, `aria-readonly`, `aria-disabled`) sit on the input's contents and the select's trigger; styles read both through `:has()`. Indicators (the select chevron, any `caret-*` icon and the `x` close icon in a slot) are always icon size sm, whatever `icon-size` says.
 
@@ -91,11 +91,11 @@ Heights sit on a 12px base plus k·u, capped so a chip is never taller than a co
 |---|---|---|---|---|
 | chip | min(12 + 3u, 8u) | 10 + u | chip − u (= tag) | 21 / 24 / 27 |
 | tag | min(12 + 2u, chip − u) | 10 + 0.5u | tag − u (= badge) | 18 / 20 / 22 |
-| badge | min(12 + u, tag − u) | 10 | none | 15 / 16 / 17 |
+| badge | min(12 + u, tag − u) | 10 | badge − u | 15 / 16 / 17 |
 
-The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). Padding is max(0, 0.5u − B); tag and chip contents get 1u inline padding like control contents; text is single-line at line height 1.2 × font (capped at the slot, badge at its height); chip centers it with block padding (slot − line) / 2, tag and badge have no block padding; min width = height (a single character is a circle); radius min(3u × s, h/2), so all three are pills at default. Icons use the control icon formulas against the element's own font and slot.
+The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). All three use the construction pattern with the label-wrapper padding system at half the control's: the host has max(0, 0.5u − B); the text run (prefix, label, suffix) has 1u at a bare edge and 0.5u beside a slot for tag and chip (the button's 2u and 1u), and 0.5u and 0.25u for badge; text parts sit 0.5u apart. The badge's bare edge is capped at (badge − 2·pad − 2B − 1ch) / 2 so one digit (tabular figures) always fits and a one-character badge stays round. Text is single-line at line height 1.2 × font (capped at the slot); chip centers it with block padding (slot − line) / 2, tag and badge have no block padding; min width = height (a single character is a circle); radius min(3u × s, h/2), so all three are pills at default. Icons use the control icon formulas against the element's own font and slot.
 
-`<ui-badge>` is static text. `<ui-tag>` is a static label with slots. `<ui-chip>` is interactive: `selectable` toggles `aria-pressed`; `removable` adds a trailing ✕, and clicking it, Delete or Backspace fires a cancelable `remove` event (the chip then removes itself and focus moves to a neighbouring chip).
+`<ui-badge>` and `<ui-tag>` are static labels. `<ui-chip>` is interactive: `selectable` toggles `aria-pressed`; `removable` adds a trailing ✕, and clicking it, Delete or Backspace fires a cancelable `remove` event (the chip then removes itself and focus moves to a neighbouring chip).
 
 ## Verification
 

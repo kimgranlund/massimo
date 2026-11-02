@@ -3226,6 +3226,44 @@
             "u=12": 10
           }
         }
+      },
+      "label": {
+        "bareEdge": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2,
+            "unit": "px"
+          },
+          "$description": "badge · label padding at a bare edge · ch = one digit (value shown for ch = 5.5px); keeps a one-character badge round; beside a slot 0.25u",
+          "$extensions": {
+            "com.massimo.formula": "max(0, min(0.5u, (badge - 2·pad - 2B - 1ch) / 2))",
+            "com.massimo.status": "implemented",
+            "com.massimo.bySize": {
+              "u=2": 1,
+              "u=2.25": 1.125,
+              "u=2.5": 1.25,
+              "u=3": 1.5,
+              "u=3.5": 1.75,
+              "u=4": 2,
+              "u=4.5": 2.25,
+              "u=5": 2.5,
+              "u=5.5": 2.75,
+              "u=6": 3,
+              "u=6.5": 3.25,
+              "u=7": 3.25,
+              "u=7.5": 3.25,
+              "u=8": 3.25,
+              "u=8.5": 3.25,
+              "u=9": 3.25,
+              "u=9.5": 3.25,
+              "u=10": 3.25,
+              "u=10.5": 3.25,
+              "u=11": 3.25,
+              "u=11.5": 3.25,
+              "u=12": 3.25
+            }
+          }
+        }
       }
     },
     "padding": {
@@ -3234,7 +3272,7 @@
         "value": 2,
         "unit": "px"
       },
-      "$description": "badge, tag, chip · padding · badge: inline only",
+      "$description": "badge, tag, chip · padding · host padding for badge, tag and chip; the label wrapper carries the rest",
       "$extensions": {
         "com.massimo.formula": "max(0, 0.5u - B)",
         "com.massimo.status": "implemented",
@@ -3264,14 +3302,14 @@
         }
       }
     },
-    "contents": {
-      "paddingInline": {
+    "label": {
+      "bareEdge": {
         "$type": "dimension",
         "$value": {
           "value": 4,
           "unit": "px"
         },
-        "$description": "tag, chip · contents inline padding",
+        "$description": "tag, chip · label padding at a bare edge · half the control (2u); beside a slot 0.5u; text parts 0.5u apart",
         "$extensions": {
           "com.massimo.formula": "u",
           "com.massimo.status": "implemented",
@@ -3298,6 +3336,42 @@
             "u=11": 11,
             "u=11.5": 11.5,
             "u=12": 12
+          }
+        }
+      },
+      "slotEdge": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        },
+        "$description": "tag, chip · label padding beside a slot",
+        "$extensions": {
+          "com.massimo.formula": "0.5u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 1,
+            "u=2.25": 1.125,
+            "u=2.5": 1.25,
+            "u=3": 1.5,
+            "u=3.5": 1.75,
+            "u=4": 2,
+            "u=4.5": 2.25,
+            "u=5": 2.5,
+            "u=5.5": 2.75,
+            "u=6": 3,
+            "u=6.5": 3.25,
+            "u=7": 3.5,
+            "u=7.5": 3.75,
+            "u=8": 4,
+            "u=8.5": 4.25,
+            "u=9": 4.5,
+            "u=9.5": 4.75,
+            "u=10": 5,
+            "u=10.5": 5.25,
+            "u=11": 5.5,
+            "u=11.5": 5.75,
+            "u=12": 6
           }
         }
       }
