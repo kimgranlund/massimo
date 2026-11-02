@@ -207,10 +207,9 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
   const fontSize = { chip: 10 + u, tag: 10 + 0.5 * u, badge: 10 }[kind];
   // Slots are one u below the element (the next level's height; badge: badge − u).
   const slot = height - u;
-  // Label wrapper padding: tag and badge 1u on both sides (beside a slot too); chip, half the
-  // control's, 1u at a bare edge and 0.5u beside a slot. Text parts 0.5u apart.
+  // Label wrapper padding: 1u on both sides (beside a slot too). Text parts 0.5u apart.
   const pad = Math.max(0, 0.5 * u - b);
-  const edges = kind === 'chip' ? { bareEdge: u, slotEdge: 0.5 * u, between: 0.25 * u } : { bareEdge: u, slotEdge: u, between: 0.25 * u };
+  const edges = { bareEdge: u, slotEdge: u, between: 0.25 * u };
   return {
     unit: u, border: b, height, fontSize, slot,
     minWidth: height,

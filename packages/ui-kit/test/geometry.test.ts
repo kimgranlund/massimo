@@ -135,11 +135,11 @@ test('badge / tag / chip: text, slots, padding', () => {
   assert.equal(badge.slot, badge.height - 4, 'badge slot is one u below the badge');
 });
 
-test('badge / tag / chip label wrapper: tag and badge 1u, chip half the control', () => {
+test('badge / tag / chip label wrapper: 1u on both sides', () => {
   const u = 4, tag = resolveBtg('tag'), badge = resolveBtg('badge'), chip = resolveBtg('chip');
   assert.deepEqual([tag.bareEdge, tag.slotEdge, tag.between], [u, u, u / 4]);
   assert.deepEqual([badge.bareEdge, badge.slotEdge, badge.between], [u, u, u / 4]);
-  assert.deepEqual([chip.bareEdge, chip.slotEdge, chip.between], [u, u / 2, u / 4]);
+  assert.deepEqual([chip.bareEdge, chip.slotEdge, chip.between], [u, u, u / 4]);
   assert.deepEqual(resolveTextRun({ leading: true }, { bareEdge: tag.bareEdge, slotEdge: tag.slotEdge, between: tag.between }).contents, { start: u, end: u });
 });
 

@@ -18,7 +18,7 @@
 <ui-chip removable>Remote</ui-chip>
 ```
 
-Heights step 12px + k·u (badge 1, tag 2, chip 3), capped below the control height. All three use the label-wrapper padding system: host 0.5u − B; tag and badge labels 1u on both sides; chip labels 1u at a bare edge and 0.5u beside a slot; text parts 0.5u apart.
+Heights step 12px + k·u (badge 1, tag 2, chip 3), capped below the control height. All three use the label-wrapper padding system: host 0.5u − B; badge, tag and chip labels 1u on both sides; text parts 0.5u apart.
 
 ## Anatomy
 
@@ -28,7 +28,7 @@ Construction pattern (shared by every labelled component):
 [leading icon] [prefix] [contents: the label] [suffix] [trailing icon]
 ```
 
-Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; tag and badge 1u on both sides, chip 1u bare and 0.5u beside a slot; choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
+Icons sit in leading/trailing slots (6u on controls); prefix and suffix are short text adornments in the label color at 65%; empty parts are hidden. Label-wrapper padding: controls 2u at a bare edge, 1u beside a slot, text parts 1u apart; badge, tag and chip 1u on both sides; choices 1u after the indicator and 0 at the end. Parts: [parts.json](../../contracts/parts.json).
 
 - `part:chip-remove` `:scope > [data-part=trailing] > [data-remove]`: The x icon added by removable: a click target inside the chip, not a separate tab stop.
 

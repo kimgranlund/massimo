@@ -117,14 +117,13 @@ export const geometry = defineGlobalStyles({
   'ui-chip': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
   'ui-tag': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
   'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', justifyContent: 'center' },
-  // Label wrapper padding (resolveBtg): the host keeps 0.5u − B; tag and badge labels carry 1u on
-  // both sides (beside a slot too); chip, half the control's: 1u at a bare edge, 0.5u beside a slot.
-  // Text parts sit 0.5u apart.
+  // Label wrapper padding (resolveBtg): the host keeps 0.5u − B; badge, tag and chip labels carry
+  // 1u on both sides (beside a slot too). Text parts sit 0.5u apart.
   [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
   // Chip centers its text with block padding; tag and badge need none, the row centers it.
-  ...textRun('ui-chip', 'calc(0.5 * var(--u))', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--u))'),
+  ...textRun('ui-chip', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--u))'),
   ...textRun('ui-tag', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
   ...textRun('ui-badge', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
   // Fill slots nest inside the 0.5u edge.
