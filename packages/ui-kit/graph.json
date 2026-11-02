@@ -84,6 +84,37 @@
         "layout"
       ]
     },
+    "component:field": {
+      "kind": "component",
+      "source": "components/field/field.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-field",
+      "searchTerms": [
+        "field",
+        "form field",
+        "label",
+        "property row",
+        "inspector row",
+        "unit",
+        "readout",
+        "value label",
+        "inline label"
+      ]
+    },
+    "component:field-grid": {
+      "kind": "component",
+      "source": "components/field/field.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "ui-field-grid",
+      "searchTerms": [
+        "field grid",
+        "property panel",
+        "inspector",
+        "form grid",
+        "label column",
+        "subgrid"
+      ]
+    },
     "component:group": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/0",
@@ -324,6 +355,16 @@
       "searchTerms": [
         "collection",
         "inside collection"
+      ]
+    },
+    "context:field-grid": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/field-grid",
+      "availability": "implemented",
+      "searchTerms": [
+        "field grid",
+        "inside field grid",
+        "property panel"
       ]
     },
     "context:form": {
@@ -587,6 +628,17 @@
         "chevron"
       ]
     },
+    "geometry:field-row": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/field-row",
+      "availability": "implemented",
+      "searchTerms": [
+        "field row",
+        "label column",
+        "inspector row",
+        "property row"
+      ]
+    },
     "geometry:swatch": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/swatch",
@@ -656,6 +708,33 @@
       "availability": "implemented",
       "searchTerms": [
         "field label"
+      ]
+    },
+    "part:field-readout": {
+      "kind": "part",
+      "source": "components/field/field.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "field readout"
+      ]
+    },
+    "part:field-text": {
+      "kind": "part",
+      "source": "components/field/field.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "field text"
+      ]
+    },
+    "part:field-unit": {
+      "kind": "part",
+      "source": "components/field/field.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "field unit"
       ]
     },
     "part:image-slide": {
@@ -2370,6 +2449,256 @@
       "from": "component:page",
       "relation": "establishes",
       "to": "context:page"
+    },
+    {
+      "from": "component:field",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesGeometry",
+      "to": "geometry:field-row"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:field",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-text"
+    },
+    {
+      "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-unit"
+    },
+    {
+      "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-readout"
+    },
+    {
+      "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:range"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:select"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:segmented"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:input"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:switch"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:button"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:listbox"
+    },
+    {
+      "from": "component:field",
+      "relation": "acceptsChild",
+      "to": "component:palette"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesGeometry",
+      "to": "geometry:field-row"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "establishes",
+      "to": "context:field-grid"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "acceptsChild",
+      "to": "component:field"
     },
     {
       "from": "component:image",

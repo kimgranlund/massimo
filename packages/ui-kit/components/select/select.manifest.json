@@ -135,6 +135,28 @@
           "inspector": {
             "control": "text"
           }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "description": "Ids (space-separated) that name the trigger and the popup listbox when label is empty; a wrapping ui-field sets it. Forwarded to aria-labelledby on both.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "description": "Ids (space-separated) that describe the trigger, after its own description and error ids; a wrapping ui-field sets it.",
+          "inspector": {
+            "control": "text"
+          }
         }
       ],
       "attributes": [
@@ -248,7 +270,8 @@
         "accessibleName": {
           "sources": [
             "label",
-            "aria-label"
+            "aria-label",
+            "labelledby (a wrapping ui-field)"
           ],
           "required": true
         }

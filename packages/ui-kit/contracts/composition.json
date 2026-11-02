@@ -56,6 +56,16 @@
         "inside group"
       ]
     },
+    "field-grid": {
+      "id": "context:field-grid",
+      "host": "component:field-grid",
+      "summary": "Rows of inline fields sharing label | control | readout columns (an inspector or property panel).",
+      "searchTerms": [
+        "field grid",
+        "inside field grid",
+        "property panel"
+      ]
+    },
     "form": {
       "id": "context:form",
       "host": null,

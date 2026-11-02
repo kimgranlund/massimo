@@ -6,7 +6,7 @@
 import { UIFormElement, define, html, signal, type Problem } from '../../core/index.ts';
 import {
   applyAttrs, comboboxAttrs, createTypeahead, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
-  listboxAttrs, navigate, optionAttrs, placePopup, selectKeyIntent, uid,
+  listboxAttrs, navigate, optionAttrs, placePopup, selectKeyIntent, uid, withExternalRefs,
 } from '../../dom/index.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
@@ -27,12 +27,18 @@ export class UISelect extends UIFormElement {
     placeholder: { type: String, default: 'Select…' },
     description: { type: String, default: '' },
     error: { type: String, default: '' },
+    /** Ids that name the trigger and popup when the select has no label (ui-field sets it). */
+    labelledby: { type: String, default: '' },
+    /** Ids that describe the trigger, after its own description and error (ui-field sets it). */
+    describedby: { type: String, default: '' },
   };
   declare value: string;
   declare label: string;
   declare placeholder: string;
   declare description: string;
   declare error: string;
+  declare labelledby: string;
+  declare describedby: string;
 
   #id = '';
   #default = '';
@@ -90,16 +96,17 @@ export class UISelect extends UIFormElement {
     const active = open ? this.#active.value : -1;
     const popupId = `${this.#id}-popup`;
     const a = fieldAttrs({ id: this.#id, hasLabel: !!this.label, hasDescription: !!this.description, error: this.#message() || undefined });
+    const refs = withExternalRefs({ 'aria-labelledby': this.label ? a.label.id : undefined, 'aria-describedby': a.control['aria-describedby'] }, this);
     applyAttrs(label, a.label);
     applyAttrs(description, a.description);
     applyAttrs(error, a.error);
     applyAttrs(trigger, comboboxAttrs({
-      open, popupId, activeId: opts[active]?.id, labelledBy: this.label ? a.label.id : undefined,
-      describedBy: a.control['aria-describedby'] as string | undefined, disabled: this.isDisabled,
+      open, popupId, activeId: opts[active]?.id, labelledBy: refs['aria-labelledby'] as string | undefined,
+      describedBy: refs['aria-describedby'] as string | undefined, disabled: this.isDisabled,
       required: this.required, invalid: !!a.control['aria-invalid'],
     }));
     trigger.id = this.#id;
-    applyAttrs(popup, { id: popupId, ...listboxAttrs({ focusable: false, label: this.label || undefined }) });
+    applyAttrs(popup, { id: popupId, ...listboxAttrs({ focusable: false, label: this.label || undefined }), 'aria-labelledby': this.label ? undefined : this.labelledby || undefined });
     opts.forEach((o, i) => applyAttrs(o, optionAttrs({ id: ensureId(o), selected: o.optionValue === this.value, disabled: o.disabled, active: i === active })));
     if (open) { this.#showPopup(); opts[active]?.scrollIntoView?.({ block: 'nearest' }); }
     else this.#hidePopup();

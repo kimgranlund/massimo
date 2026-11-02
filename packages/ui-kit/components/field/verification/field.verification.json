@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "field",
+  "scope": "Structure, labelling (the control's aria-labelledby resolves to the field label and unit), rewiring and recipe classes of the web components in happy-dom (node:test), and the React renderers' server markup. Subgrid alignment is checked on the recipe rule and by eye in the jig; screen-reader output is not certified.",
+  "sources": [
+    {
+      "path": "components/field/field.element.ts",
+      "sha256": "35ce4fd3aa3b468bf04e940d6d4f7c6c025684d2b30c5dac35f031ee41344266"
+    },
+    {
+      "path": "components/field/field.recipe.ts",
+      "sha256": "b250b18be9baa39b1e9a116d0dccd43087c0f79ed7a5222a7616aabe756f05d4"
+    },
+    {
+      "path": "dom/field.ts",
+      "sha256": "31743441330670cfabea41bd6586736b6a0492e84a650814a15f00ec010218b2"
+    },
+    {
+      "path": "components/field/field.manifest.json",
+      "sha256": "c10363e81f803cb05bdd02055d46dcc72ad54973c16db86f3f71ebb2bb02ee8d"
+    },
+    {
+      "path": "components/field/field.react.tsx",
+      "sha256": "c28e580a114608ad5e197542d6264b84a1c3bbb2fff7b5b5c567e55259c22b46"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/field.test.ts",
+          "covers": "no native elements, parts beside the authored control, label and unit name the control (host-role controls; ui-input and ui-select through labelledby), description wiring, rewiring a swapped control, label press, slot readout, grid and layout classes"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/field.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/field-react.test.ts",
+          "covers": "data-ui hosts, native label htmlFor, ids handed to the control (aria-labelledby = label + unit), readout and description parts, recipe classes"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/field-react.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency.",
+    "Subgrid alignment is asserted on the recipe rule; the rendered columns are checked by eye in the jig panel."
+  ]
+}
