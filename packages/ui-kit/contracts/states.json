@@ -59,6 +59,7 @@
     "ui-swiper": { "host": ["data-single"], "dot": ["data-selected"], "paddle": ["data-disabled"] },
     "ui-image": { "img": ["data-error"] },
     "ui-separator": { "host": ["data-orientation"] },
+    "ui-meter": { "host": [], "reads": "no state of its own (Base UI Meter has no data attributes); the value is ARIA (aria-valuenow, aria-valuetext) and --ui-ratio" },
     "ui-avatar": { "host": [], "image": ["data-loading", "data-error"], "fallback": [] },
     "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" }
   },

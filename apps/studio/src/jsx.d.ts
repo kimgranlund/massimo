@@ -37,6 +37,7 @@ declare module 'react' {
       'ui-field': El<{ label?: string; unit?: string; readout?: string; description?: string; error?: string; layout?: 'stacked' | 'inline' }>;
       'ui-field-grid': El<{}>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;
+      'ui-meter': El<{ value?: number; min?: number; max?: number; label?: string; format?: string; locale?: string; 'value-text'?: string }>;
       'ui-avatar': El<{ src?: string; alt?: string; name?: string; 'avatar-size'?: 'sm' | 'md' | 'lg' | 'xl'; delay?: number }>;
     }
   }

@@ -13,6 +13,7 @@ import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/meter/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -25,7 +26,7 @@ export const FAMILIES = [
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch'],
-  ['tracks', 'Tracks', 'ui-range · ui-progress'],
+  ['tracks', 'Tracks', 'ui-range · ui-progress · ui-meter'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
@@ -104,7 +105,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot.',
-    tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
+    tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
@@ -238,8 +239,16 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
       <>
         <Row label="Range"><div className={trackStack}><ui-range label="Volume" value={40} /><ui-range label="Steps" min={0} max={10} step={1} value={3} /></div></Row>
         <Row label="Progress"><div className={trackStack}><ui-progress label="Upload" value={64} /><ui-progress label="Loading" /></div></Row>
+        <Row label="Meter">
+          <div className={trackStack}>
+            <ui-meter label="Battery" value={72} />
+            <ui-meter label="Storage" value={38.5} max={50} format='{"style":"unit","unit":"gigabyte","maximumFractionDigits":1}' value-text="38.5 of 50 gigabytes used" />
+            <ui-meter label="A much longer label that has to give way to the value" value={12} />
+            <ui-meter aria-label="Strength" value={3} max={4} format='{"style":"decimal"}' />
+          </div>
+        </Row>
         <SizeLadder family="track" params={params}>
-          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-progress label="Upload" value={64} /></div>
+          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-progress label="Upload" value={64} /><ui-meter label="Storage" value={64} /></div>
         </SizeLadder>
       </>
     ),

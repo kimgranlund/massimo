@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -110,8 +110,8 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
     return [`row ${px(cb.rowHeight)} · box ${px(cb.box)} · switch ${px(sw.width)}`, `label inset ${px(cb.labelPaddingStart)} · r ${px(cb.radius)}`];
   },
   track: (g) => {
-    const t = resolveTrack('range', g);
-    return [`track ${px(t.track)} · thumb ${px(t.thumb)}`, `r ${px(t.trackRadius)} · min width ${px(t.minWidth)}`];
+    const t = resolveTrack('range', g), m = resolveMeter(g);
+    return [`track ${px(t.track)} · thumb ${px(t.thumb)}`, `r ${px(t.trackRadius)} · min width ${px(t.minWidth)}`, `meter row gap ${px(m.rowGap)} · text ${px(m.fontSize)}`];
   },
   swatch: (g) => {
     const s = resolveSwatch(g);

@@ -404,3 +404,15 @@ export function resolveAvatar(size: AvatarSize = 'md', input: GeometryInput = {}
     radius: (box / 2) * Math.min(1, x.radiusScale),
   };
 }
+
+// ── Meter ──
+// A meter is the progress track (resolveTrack: 4u, fill = ratio × width) under a text row: the label
+// at the start and the formatted value at the end, single lines in the control voice (10px + u at
+// min(1.2 × font, 6u)), 2u apart at least; the track sits 1.5u below the row (the stacked field gap).
+
+/** ui-meter: the progress track, a label | value row (column gap 2u) 1.5u above it, control text. */
+export function resolveMeter(input: GeometryInput = {}) {
+  const t = resolveTrack('progress', input);
+  const u = t.unit, fontSize = 10 + u;
+  return { ...t, rowGap: 1.5 * u, columnGap: 2 * u, fontSize, lineHeight: Math.min(1.2 * fontSize, 6 * u) };
+}

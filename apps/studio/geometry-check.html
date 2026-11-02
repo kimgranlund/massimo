@@ -16,7 +16,8 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/meter/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -51,6 +52,7 @@ for (const c of cases) {
     <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>
     <ui-palette id="pal"><ui-swatch color="red"></ui-swatch><ui-swatch color="blue"></ui-swatch><ui-swatch color="green"></ui-swatch></ui-palette>
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
+    <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
     <div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
@@ -223,6 +225,22 @@ for (const c of cases) {
     checks['progress.radius'] = [px(cs(ptr).borderTopLeftRadius), rp.trackRadius];
     checks['progress.fill'] = [r2(rect(pin).width), r2(trackFill('progress', 0.3, rect(ptr).width, g))];
     checks['progress.fill.radius'] = [px(cs(pin).borderTopRightRadius), rp.trackRadius];
+  }
+  // Meter: the progress track under a label | value row (control text) 1.5u above it.
+  {
+    const mt = $('met'), rm = resolveMeter(g), lab = part(mt, 'label'), val = part(mt, 'value'), mtr = part(mt, 'track'), min = mtr.querySelector('[data-part=indicator]');
+    checks['meter.track'] = [r2(rect(mtr).height), rm.track];
+    checks['meter.track.radius'] = [px(cs(mtr).borderTopLeftRadius), rm.trackRadius];
+    checks['meter.track.width'] = [r2(rect(mtr).width), 400];
+    checks['meter.fill'] = [r2(rect(min).width), r2(0.3 * 400)];
+    checks['meter.fill.radius'] = [px(cs(min).borderTopRightRadius), rm.trackRadius];
+    checks['meter.rowGap'] = [r2(rect(mtr).top - Math.max(rect(lab).bottom, rect(val).bottom)), rm.rowGap];
+    checks['meter.font'] = [px(cs(lab).fontSize), rm.fontSize];
+    checks['meter.lineHeight'] = [px(cs(lab).lineHeight), r2(rm.lineHeight)];
+    checks['meter.value.lineHeight'] = [px(cs(val).lineHeight), r2(rm.lineHeight)];
+    checks['meter.value.end'] = [r2(rect(mt).right - rect(val).right), 0];
+    checks['meter.columnGap'] = [px(cs(mt).columnGap), rm.columnGap];
+    checks['meter.height'] = [r2(rect(mt).height), r2(rm.lineHeight + rm.rowGap + rm.track)];
   }
   // Separator: max(1px, B) thick, spanning the other axis.
   {

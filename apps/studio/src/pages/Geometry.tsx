@@ -11,9 +11,10 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/meter/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar,
+  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -183,6 +184,14 @@ export function GeometryPage({ params }: PageProps) {
             </SpecRow>
           );
         })}
+        {(() => {
+          const t = resolveMeter(theme);
+          return (
+            <SpecRow label="meter" values={[`track ${px(t.track)} · row gap ${pu(t.rowGap)} · label | value gap ${pu(t.columnGap)}`, `text ${px(t.fontSize)} / ${px(t.lineHeight)}`]}>
+              <ui-meter label="Storage" value={64} />
+            </SpecRow>
+          );
+        })()}
         {(() => {
           const t = resolveSwatch(theme);
           return (

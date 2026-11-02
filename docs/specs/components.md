@@ -25,6 +25,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-switch` | `role=switch`; Space/Enter toggle | `checked` |
 | `ui-range` | `role=slider`; arrows, Page Up/Down (10%), Home/End, drag; exposes `--ui-ratio` | `value`, `min`, `max`, `step`, `label`, `value-text` |
 | `ui-progress` | `role=progressbar`; indeterminate without `value` | `value`, `max`, `label` |
+| `ui-meter` | `role=meter` (Base UI Meter): label, value and the progress track; value text by `formatNumber` (`format`, else a percentage), also `aria-valuetext` | `value`, `min`, `max`, `label`, `format`, `locale`, `value-text` |
 | `ui-badge` | static label with the construction pattern; never narrower than tall; spacing in u′ = height / 8 | `icon-size` |
 | `ui-tag` | static label with slots | `icon-size` |
 | `ui-chip` | `role=button`; `selectable` toggles `aria-pressed`; `removable` adds ✕, Delete/Backspace fire cancelable `remove` | `selectable`, `selected`, `removable`, `disabled` |
@@ -76,6 +77,8 @@ Every component with parts can be written two ways, and both render the same DOM
 | Select | `Select.Root`, `Select.Label`, `Select.Trigger`, `Select.Value`, `Select.Icon`, `Select.Popup`, `Select.List`, `Select.Item`, `Select.ItemText`, `Select.ItemIndicator`, *`Select.Description`*, *`Select.Error`* |
 | Checkbox, Radio, Switch | `Checkbox.Root` / `Checkbox.Indicator`, `Radio.Root` / `Radio.Indicator`, `Switch.Root` / `Switch.Thumb` |
 | Slider (alias Range), Progress | `Slider.Root`, `Slider.Track`, `Slider.Indicator`, `Slider.Thumb`; `Progress.Root`, `Progress.Track`, `Progress.Indicator` |
+| Meter | `Meter.Root`, `Meter.Label`, `Meter.Value`, `Meter.Track`, `Meter.Indicator` |
+| Avatar | `Avatar.Root`, `Avatar.Image`, `Avatar.Fallback` |
 | Field | `Field.Root`, `Field.Label` (*`unit`*), `Field.Control`, `Field.Description`, `Field.Error`, *`Field.Readout`* |
 | Input | *`Input.Root`*, *`Input.Label`*, *`Input.Control`*, *`Input.Description`*, *`Input.Error`* (Base UI's Field parts on the input's own recipe) |
 | Listbox, Segmented | `Listbox.Root`, `Listbox.Item`, `Listbox.ItemText`, `Listbox.ItemIndicator`; `Segmented.Root`, `Segmented.Item`, `Segmented.ItemText` (`Listbox`, `Segmented`, `Option` are the same components) |
@@ -119,6 +122,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-listbox`, `ui-segmented` (Listbox, Segmented) | field state, `data-orientation` | options `data-selected`, `data-highlighted`, `data-disabled` | Base UI Select.Item and Radio Group names (Base UI has no listbox) |
 | `ui-range` (Range) | field state, `data-orientation`, `data-dragging` | | Base UI Slider |
 | `ui-progress` (Progress) | `data-indeterminate` / `data-progressing` / `data-complete` | | Base UI Progress |
+| `ui-meter` (Meter) | none (Base UI Meter has none; the value is ARIA and `--ui-ratio`) | | Base UI Meter |
 | `ui-palette` (Palette) | field state, `data-orientation` | swatches `data-selected`, `data-highlighted` (while the palette has focus) | Base UI names on a component of ours |
 | `ui-swatch` (Swatch) | `data-alpha` (translucent), `data-invalid` (unparsable color) | | `data-alpha` ours |
 | `ui-swiper` (Swiper) | `data-single` | dots `data-selected` (current slide); paddles `data-disabled` | `data-single` ours; Base UI has no carousel |

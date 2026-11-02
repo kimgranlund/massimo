@@ -2,6 +2,35 @@
 // the same inputs. No DOM access.
 import type { Attrs } from './attrs.ts';
 import type { Orientation } from './listbox.ts';
+import { formatNumber, type FormatNumberOptions } from '../tokens/typography/format.ts';
+
+export interface MeterInput {
+  value: number;
+  min?: number;
+  max?: number;
+  /** Number format options for the value text (Base UI format); default the ratio as a whole percentage. */
+  format?: FormatNumberOptions | null;
+  /** BCP 47 locale for the value text (Base UI locale); default the runtime's. */
+  locale?: string;
+  /** Replaces aria-valuetext (Base UI aria-valuetext); the visible value stays the formatted one. */
+  valueText?: string;
+}
+
+/**
+ * Meter state (Base UI Meter): the value clamped to [min, max], its ratio of the range, the value
+ * text (formatNumber: the kit's numeric typography, U+2212 minus, narrow spaces) and the ARIA of
+ * role=meter.
+ */
+export function meterState({ value, min = 0, max = 100, format, locale, valueText }: MeterInput) {
+  const lo = Math.min(min, max), hi = Math.max(min, max);
+  const v = Number.isFinite(value) ? Math.min(hi, Math.max(lo, value)) : lo;
+  const ratio = hi > lo ? (v - lo) / (hi - lo) : 0;
+  const formatted = format ? formatNumber(v, { locale, ...format }) : formatNumber(ratio, { locale, style: 'percent', maximumFractionDigits: 0 });
+  return {
+    value: v, min: lo, max: hi, ratio, formatted,
+    attrs: { role: 'meter', 'aria-valuenow': v, 'aria-valuemin': lo, 'aria-valuemax': hi, 'aria-valuetext': valueText || formatted } as Attrs,
+  };
+}
 
 /** Separator (Base UI Separator): role, aria-orientation and data-orientation. */
 export function separatorAttrs(orientation: Orientation | string | null | undefined): Attrs {

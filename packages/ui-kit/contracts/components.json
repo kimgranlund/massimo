@@ -482,6 +482,26 @@
         "inline"
       ],
       "behavior": "The image shows once it has loaded; until then, and after an error, the fallback shows (after delay ms): authored content, else the initials of name, else a user icon."
+    },
+    "meter": {
+      "geometryFamily": "track",
+      "element": "Host is the meter (role=meter, aria-valuenow / min / max / valuetext, aria-labelledby its label part).",
+      "parts": [
+        "meter-label",
+        "meter-value",
+        "track",
+        "track-indicator"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form"
+      ],
+      "behavior": "None: a static measurement within a known range. The value text is formatNumber of the value (format) or, by default, the ratio as a percentage."
     }
   }
 }

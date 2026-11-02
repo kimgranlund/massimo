@@ -181,6 +181,20 @@
         "single select list"
       ]
     },
+    "component:meter": {
+      "kind": "component",
+      "source": "components/meter/meter.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-meter",
+      "searchTerms": [
+        "meter",
+        "gauge",
+        "usage",
+        "quota",
+        "storage",
+        "strength"
+      ]
+    },
     "component:option": {
       "kind": "component",
       "source": "components/listbox/listbox.manifest.json#/nodes/2",
@@ -726,7 +740,8 @@
       "searchTerms": [
         "range track",
         "slider thumb",
-        "progress height"
+        "progress height",
+        "meter"
       ]
     },
     "part:avatar-fallback": {
@@ -842,6 +857,24 @@
       "tag": "div",
       "searchTerms": [
         "input editor"
+      ]
+    },
+    "part:meter-label": {
+      "kind": "part",
+      "source": "components/meter/meter.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "meter label"
+      ]
+    },
+    "part:meter-value": {
+      "kind": "part",
+      "source": "components/meter/meter.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "meter value"
       ]
     },
     "part:range-thumb": {
@@ -3435,6 +3468,106 @@
       "from": "component:option",
       "relation": "uses",
       "to": "foundation:icons"
+    },
+    {
+      "from": "component:meter",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesGeometry",
+      "to": "geometry:track"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:meter",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:meter-label"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:meter-value"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:track"
+    },
+    {
+      "from": "component:meter",
+      "relation": "ownsPart",
+      "to": "part:track-indicator"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:meter",
+      "relation": "allowedIn",
+      "to": "context:form"
     },
     {
       "from": "component:range",
