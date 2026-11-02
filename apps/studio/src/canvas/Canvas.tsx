@@ -104,9 +104,18 @@ const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-num
 const rampStrip = css({ width: '100%', flexDirection: 'row', '& > ui-swatch': { height: '12' }, [CQ_MD]: { width: '24', flexDirection: 'column', alignSelf: 'stretch', '& > ui-swatch': { height: 'auto' } } });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
-const uiGrid = css({ display: 'grid', gridTemplateColumns: '1fr', [CQ_MD]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }, [CQ_LG]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
+// No holes: cards stretch to their row and the spans tile every width.
+//   lg (3 cols): overview details library / week progress actions / chart(2) feedback
+//   md (2 cols): overview details / library week / progress actions / chart(2) / feedback(2)
+const uiGrid = css({
+  display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'stretch', gridAutoFlow: 'row dense',
+  [CQ_MD]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
+  [CQ_LG]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' },
+  '& ui-card > ui-badge': { alignSelf: 'start' },
+});
 const cardTitle = css({ textStyle: 'heading-3' });
 const chartCard = css({ [CQ_MD]: { gridColumn: 'span 2' } });
+const feedbackCard = css({ [CQ_MD]: { gridColumn: 'span 2' }, [CQ_LG]: { gridColumn: 'span 1' } });
 const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
 const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
 const bars = css({ flex: '1', width: '100%', display: 'flex', gap: '1', alignItems: 'end', justifyContent: 'center' });
@@ -541,6 +550,15 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
             <ui-progress label="Collection progress" value={62} />
             <p className={caption}>148 of 240 items reviewed.</p>
           </ui-card>
+          <ui-card>
+            <span className={kicker}>Action states</span>
+            <div className={stateRow}>
+              {([['Rest', 9], ['Hover', 10], ['Pressed', 11]] as const).map(([label, step]) => (
+                <div key={label} className={stateCell}><span className={caption}>{label}</span><ui-button style={{ background: sv(primary, step), color: 'var(--colors-fg-on-solid)' }}>Approve</ui-button></div>
+              ))}
+              <div className={stateCell}><span className={caption}>Disabled</span><ui-button disabled>Approve</ui-button></div>
+            </div>
+          </ui-card>
           <ui-card className={chartCard}>
             <div className={contextHead}><h4 className={cardTitle}>Orders by channel</h4><span className={caption}>Illustrative week</span></div>
             <div className={chart} role="img" aria-label={`Illustrative orders by channel, Monday through Sunday. Online: ${ORDERS.online.join(', ')}. In store: ${ORDERS.store.join(', ')}.`}>
@@ -556,16 +574,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
             </div>
             <div className={legend}><span><i className={dot} style={{ background: sv(primary, 9) }} />Online · primary</span><span><i className={dot} style={{ background: sv(accent, 9) }} />In store · accent</span></div>
           </ui-card>
-          <ui-card>
-            <span className={kicker}>Action states</span>
-            <div className={stateRow}>
-              {([['Rest', 9], ['Hover', 10], ['Pressed', 11]] as const).map(([label, step]) => (
-                <div key={label} className={stateCell}><span className={caption}>{label}</span><ui-button style={{ background: sv(primary, step), color: 'var(--colors-fg-on-solid)' }}>Approve</ui-button></div>
-              ))}
-              <div className={stateCell}><span className={caption}>Disabled</span><ui-button disabled>Approve</ui-button></div>
-            </div>
-          </ui-card>
-          <ui-card>
+          <ui-card className={feedbackCard}>
             <span className={kicker}>Feedback</span>
             <p className={callout} role="note" style={{ background: sv(primary, 3), color: sv(primary, 11) }}>Changes to this palette appear across every preview.</p>
             <p className={callout} role="note" style={{ background: sv(warn, 3), color: sv(warn, 11) }}>Check small text and neighboring hues before choosing a brand color.</p>
