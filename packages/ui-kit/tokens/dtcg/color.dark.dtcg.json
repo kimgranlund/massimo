@@ -1772,6 +1772,34 @@
         "$value": "{color.spectrum.neutral.5}",
         "$description": "neutral step 5"
       },
+      "bg-overlay": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.2}",
+        "$description": "neutral step 2"
+      },
+      "bg-inverse": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.12}",
+        "$description": "neutral step 12"
+      },
+      "fg-inverse": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.1}",
+        "$description": "neutral step 1"
+      },
+      "bg-backdrop": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.1765,
+            0.0051,
+            225.5231
+          ],
+          "alpha": 0.7
+        },
+        "$description": "neutral step 1 at 70%"
+      },
       "fg": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.12}",

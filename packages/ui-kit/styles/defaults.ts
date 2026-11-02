@@ -83,7 +83,7 @@ export const defaults = defineGlobalStyles({
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
-    bg: 'bg', color: 'fg', borderColor: 'border', boxShadow: 'md',
+    bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
   },
   'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column' },
 

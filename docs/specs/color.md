@@ -12,13 +12,16 @@ The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generat
 
 ## Roles
 
-Roles alias ramp steps (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Defaults: primary `indigo`, neutral `neutral`, critical `crimson` (requested families resolve to the nearest generated hue).
+Roles alias ramp steps; an entry may name a different dark step or an alpha (`roleStep`, translucent roles emit `color-mix(… transparent)`) (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Defaults: primary `indigo`, neutral `neutral`, critical `crimson` (requested families resolve to the nearest generated hue).
 
 | Role variable | Step |
 |---|---|
 | `--colors-bg` (page) | neutral 1 |
 | `--colors-bg-subtle`, `--colors-bg-muted` | neutral 2, 3 |
 | `--colors-bg-muted-hover`, `--colors-bg-muted-active` (hover, press) | neutral 4, 5 |
+| `--colors-bg-overlay` (menus, popovers, dialogs, drawers; with `shadow.md`) | neutral 1 light, 2 dark |
+| `--colors-bg-inverse`, `--colors-fg-inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
+| `--colors-bg-backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
 | `--colors-border`, `--colors-border-strong` | neutral 6, 7 |
 | `--colors-fg-muted`, `--colors-fg` | neutral 11, 12 |
 | `--colors-accent-subtle`, `-subtle-hover`, `-solid`, `-solid-hover`, `-fg` | primary 3, 4, 9, 10, 11 |

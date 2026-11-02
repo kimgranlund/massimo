@@ -12,7 +12,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { GEOMETRY_DEFAULTS, SIZES, CONTAINERS } from '../tokens/geometry/resolve.ts';
 import { FACES, VOICES, DEFAULT_VOICES, FONT_FAMILIES, TYPE_ROLES, TYPE_DEFAULTS, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
-import { ROLE_STEPS } from '../tokens/colors/spectrum/index.ts';
+import { ROLE_STEPS, roleStep } from '../tokens/colors/spectrum/index.ts';
 import { shadows } from '../tokens/geometry/index.ts';
 import DEFAULTS from '../tokens/colors/spectrum/defaults.json' with { type: 'json' };
 import { rows, type Row } from './geometry-csv.ts';
@@ -129,7 +129,13 @@ export function colorTokens(mode: 'light' | 'dark'): Json {
   const D = DEFAULTS as Snapshot;
   const tree = header(`ui-kit colors, ${mode} scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (primary ${D.roles.primary}, neutral ${D.roles.neutral}, critical ${D.roles.critical}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
   for (const [family, steps] of Object.entries(D[mode])) steps.forEach((css, i) => put(tree, ['color', 'spectrum', family, String(i + 1)], { $type: 'color', $value: oklch(css) }));
-  for (const [role, [family, step]] of Object.entries(ROLE_STEPS)) put(tree, ['color', 'role', role], { $type: 'color', $value: `{color.spectrum.${D.roles[family]}.${step}}`, $description: `${family} step ${step}` });
+  for (const [role, entry] of Object.entries(ROLE_STEPS)) {
+    const { family, step, alpha } = roleStep(entry, mode);
+    const name = D.roles[family];
+    // DTCG aliases cannot add alpha: a translucent role carries the resolved color.
+    const $value = alpha === 1 ? `{color.spectrum.${name}.${step}}` : { ...oklch(D[mode][name][step - 1]), alpha };
+    put(tree, ['color', 'role', role], { $type: 'color', $value, $description: `${family} step ${step}${alpha === 1 ? '' : ` at ${alpha * 100}%`}` });
+  }
   put(tree, ['color', 'role', 'fg-on-solid'], { $type: 'color', $value: hexColor(D.onSolid[mode]), $description: 'Text on a primary solid: the APCA black/white choice for primary step 9' });
   return tree;
 }

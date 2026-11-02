@@ -20,6 +20,11 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
   assert.equal(light['--colors-accent-solid'], `var(--colors-spectrum-${roles.primary}-9)`);
   assert.equal(light['--colors-bg'], `var(--colors-spectrum-${roles.neutral}-1)`);
+  assert.equal(light['--colors-bg-overlay'], `var(--colors-spectrum-${roles.neutral}-1)`, 'overlay = page tone in light');
+  assert.equal(dark['--colors-bg-overlay'], `var(--colors-spectrum-${roles.neutral}-2)`, 'overlay one step up in dark');
+  assert.equal(dark['--colors-bg-inverse'], `var(--colors-spectrum-${roles.neutral}-12)`);
+  assert.equal(light['--colors-bg-backdrop'], `color-mix(in oklch, var(--colors-spectrum-${roles.neutral}-12) 40%, transparent)`);
+  assert.equal(dark['--colors-bg-backdrop'], `color-mix(in oklch, var(--colors-spectrum-${roles.neutral}-1) 70%, transparent)`);
   assert.ok(['#fff', '#000'].includes(dark['--colors-fg-on-solid']));
   const { ramps } = await import('../tokens/colors/spectrum/index.ts');
   assert.equal(data.schemes.light[roles.neutral][0].hct[2].toFixed(1), '97.5', 'light step 1 = Light endpoint tone');

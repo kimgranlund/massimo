@@ -97,17 +97,38 @@ export function ramps(data: Spectrum, mode: 'light' | 'dark'): Record<string, st
 export const ROLE_STEPS = {
   'bg': ['neutral', 1], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
   'bg-muted-hover': ['neutral', 4], 'bg-muted-active': ['neutral', 5],
+  // Floating layers (menus, popovers, dialogs, drawers): the page tone in light, one step up in dark,
+  // where shadows barely read. Tooltips invert; the backdrop dims the page in both schemes.
+  'bg-overlay': ['neutral', 1, { dark: 2 }],
+  'bg-inverse': ['neutral', 12], 'fg-inverse': ['neutral', 1],
+  'bg-backdrop': ['neutral', 12, { dark: 1, alpha: 0.4, darkAlpha: 0.7 }],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
   'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-subtle-hover': ['primary', 4], 'accent-fg': ['primary', 11],
   'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-fg': ['critical', 11],
   'focus-ring': ['primary', 8],
-} as const satisfies Record<string, [keyof Roles, number]>;
+} as const satisfies Record<string, RoleStep>;
+
+/** A role: a family step, optionally a different step and/or an alpha per scheme. */
+export type RoleStep = readonly [keyof Roles, number] | readonly [keyof Roles, number, { dark?: number; alpha?: number; darkAlpha?: number }];
+
+/** Family, step and alpha (1 = opaque) of a role in one scheme. */
+export function roleStep(entry: RoleStep, mode: 'light' | 'dark'): { family: keyof Roles; step: number; alpha: number } {
+  const [family, step, o = {}] = entry as readonly [keyof Roles, number, { dark?: number; alpha?: number; darkAlpha?: number }?];
+  const dark = mode === 'dark';
+  return { family, step: (dark && o.dark) || step, alpha: (dark ? o.darkAlpha ?? o.alpha : o.alpha) ?? 1 };
+}
+
+/** CSS for a role from a ramp-step reference (a var() or a token reference). */
+export const withAlpha = (ref: string, alpha: number) => alpha === 1 ? ref : `color-mix(in oklch, ${ref} ${Math.round(alpha * 100)}%, transparent)`;
 
 /** Semantic variables per scheme: ramp variables plus roles that point at them. */
 export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dark') {
   const vars: Record<string, string> = {};
-  for (const [role, [family, step]] of Object.entries(ROLE_STEPS)) vars[`--colors-${role}`] = `var(--colors-spectrum-${roles[family]}-${step})`;
+  for (const [role, entry] of Object.entries(ROLE_STEPS)) {
+    const { family, step, alpha } = roleStep(entry, mode);
+    vars[`--colors-${role}`] = withAlpha(`var(--colors-spectrum-${roles[family]}-${step})`, alpha);
+  }
   // Text on a primary solid: the engine's APCA choice for step 9.
   vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][8].apca.css;
   return vars;
