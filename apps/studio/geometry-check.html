@@ -8,7 +8,10 @@ import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/btg/element';
-import { SIZES, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/choice/element';
+import '@massimo/ui-kit/components/range/element';
+import '@massimo/ui-kit/components/color/element';
+import { SIZES, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -26,6 +29,8 @@ for (const c of cases) {
     <ui-button icon-size="${c.icon}" aria-label="x"><span slot="leading"></span></ui-button>
     <ui-button icon-size="${c.icon}">Menu<i slot="trailing" name="caret-down"></i></ui-button>
     <ui-button>Text</ui-button>
+    <ui-checkbox checked>Check</ui-checkbox><ui-radio>Radio</ui-radio><ui-switch>Switch</ui-switch>
+    <div style="width:400px"><ui-range value="25"></ui-range></div><ui-swatch color="red"></ui-swatch>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
@@ -90,6 +95,19 @@ for (const c of cases) {
     'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
     'chip.radius': [px(cs(chip).borderTopLeftRadius), rc.radius],
   };
+  const choice = (sel) => box.querySelector(`${sel} [data-part=box]`);
+  const rck = resolveChoice('checkbox', g), rs = resolveChoice('switch', g), rt2 = resolveTrack('range', g), rsw = resolveSwatch(g);
+  const range = box.querySelector('ui-range');
+  checks['checkbox.box'] = [r2(rect(choice('ui-checkbox')).height), rck.box];
+  checks['checkbox.radius'] = [px(cs(choice('ui-checkbox')).borderTopLeftRadius), rck.radius];
+  checks['checkbox.row'] = [r2(rect(box.querySelector('ui-checkbox')).height), rck.rowHeight];
+  checks['radio.box'] = [r2(rect(choice('ui-radio')).width), rck.box];
+  checks['switch.width'] = [r2(rect(choice('ui-switch')).width), rs.width];
+  checks['range.height'] = [r2(rect(range).height), rt2.height];
+  checks['range.track'] = [r2(rect(range.querySelector('[data-part=track]')).height), rt2.track];
+  checks['range.thumb'] = [r2(rect(range.querySelector('[data-part=thumb]')).width), rt2.thumb];
+  checks['range.fill'] = [r2(rect(range.querySelector('[data-part=fill]')).width), r2(rect(range.querySelector('[data-part=track]')).width * 0.25)];
+  checks['swatch.size'] = [r2(rect(box.querySelector('ui-swatch')).width), rsw.size];
   for (const l of LEVELS) {
     const el = box.querySelector(`ui-${l}`), [a, b] = el.children, h = rect(el).height;
     const want = resolveContainer(l, { ...g, height: h });

@@ -12,7 +12,11 @@ Light-DOM web components and React components built on one headless layer and on
 | `components/<name>/` | `<name>.element.ts` (web component), `<name>.react.tsx` (React, where present) | `core`, `dom` |
 | `preset.ts` | The Panda preset: tokens + reset + component defaults + FOUC guard | all of the above |
 
-Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`, and CSS-only containers `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`.
+Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`, `ui-checkbox`, `ui-radio`, `ui-switch`, `ui-range`, `ui-progress`, `ui-swatch`, `ui-palette`, `ui-swiper`, `ui-image`, and CSS-only containers `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`.
+
+## Spectrum colors
+
+`@massimo/ui-kit/spectrum` generates HCT-based, Radix-style 12-step ramps (separate light and dark) with the engine ported from massimo-ui (`tokens/colors/spectrum/`, provenance in `NOTICE.md`). `generateSpectrum(settings)` takes ~300ms; `spectrumCSS(data, resolveRoles(data, { primary, neutral, critical }))` maps the chosen families onto the kit's semantic colors (Radix step semantics) and exposes every ramp as `--spectrum-{family}-{1..12}`.
 
 ## Color scheme
 

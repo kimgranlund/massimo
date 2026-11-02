@@ -3,7 +3,7 @@
 // code (test/geometry-csv.test.ts fails when the file is stale). Run: npm run geometry:csv
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, popupOffset, resolveBtg, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, popupOffset, resolveBtg, resolveChoice, resolveTrack, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -63,6 +63,25 @@ export const rows: Row[] = [
     ];
   }),
   { id: 'container.page.maxWidth', family: 'container', element: 'ui-page', quantity: 'max width', formula: `${PAGE_MAX_WIDTH_REM}rem (fixed)`, value: () => PAGE_MAX_WIDTH_REM * 16, status: 'implemented', notes: 'px at a 16px root; centered; page({ width }) overrides' },
+
+  // Choices, tracks, swatches, swiper
+  { id: 'choice.box', family: 'choice', element: 'checkbox, radio, switch', quantity: 'box height', formula: '5u', value: (u) => resolveChoice('checkbox', { unit: u }).box, status: 'implemented', notes: 'in the 6u leading slot' },
+  { id: 'choice.switch.width', family: 'choice', element: 'switch', quantity: 'track width', formula: '9u', value: (u) => resolveChoice('switch', { unit: u }).width, status: 'implemented', notes: '' },
+  { id: 'choice.switch.thumb', family: 'choice', element: 'switch', quantity: 'thumb', formula: '4u (inset 0.5u)', value: (u) => resolveChoice('switch', { unit: u }).thumb, status: 'implemented', notes: 'travels 4u' },
+  { id: 'choice.rowHeight', family: 'choice', element: 'checkbox, radio, switch', quantity: 'row height', formula: '6u', value: (u) => resolveChoice('checkbox', { unit: u }).rowHeight, status: 'implemented', notes: '' },
+  { id: 'choice.label.paddingStart', family: 'choice', element: 'checkbox, radio, switch', quantity: 'label start padding', formula: 'u', value: (u) => resolveChoice('checkbox', { unit: u }).labelPaddingStart, status: 'implemented', notes: 'label lands 1.5u from the box' },
+  { id: 'choice.checkbox.radius', family: 'choice', element: 'checkbox', quantity: 'radius', formula: 'u * s', value: (u) => resolveChoice('checkbox', { unit: u }).radius, status: 'implemented', notes: 'radio and switch stay round' },
+  { id: 'choice.checkbox.mark', family: 'choice', element: 'checkbox', quantity: 'check mark icon', formula: '4u', value: (u) => resolveChoice('checkbox', { unit: u }).mark, status: 'implemented', notes: '' },
+  { id: 'choice.radio.dot', family: 'choice', element: 'radio', quantity: 'dot', formula: '2u', value: (u) => resolveChoice('radio', { unit: u }).dot, status: 'implemented', notes: '' },
+  { id: 'track.height', family: 'track', element: 'range, progress', quantity: 'box height', formula: '4u', value: (u) => resolveTrack('range', { unit: u }).height, status: 'implemented', notes: '' },
+  { id: 'track.track', family: 'track', element: 'range, progress', quantity: 'track thickness', formula: 'u', value: (u) => resolveTrack('range', { unit: u }).track, status: 'implemented', notes: 'radius 0.5u' },
+  { id: 'track.thumb', family: 'track', element: 'range', quantity: 'thumb', formula: '4u', value: (u) => resolveTrack('range', { unit: u }).thumb, status: 'implemented', notes: '' },
+  { id: 'track.minWidth', family: 'track', element: 'range, progress', quantity: 'min width', formula: '24u', value: (u) => resolveTrack('range', { unit: u }).minWidth, status: 'implemented', notes: '' },
+  { id: 'swatch.size', family: 'swatch', element: 'swatch', quantity: 'size', formula: '6u', value: (u) => resolveSwatch({ unit: u }).size, status: 'implemented', notes: '' },
+  { id: 'swatch.radius', family: 'swatch', element: 'swatch', quantity: 'radius', formula: 'u * s', value: (u) => resolveSwatch({ unit: u }).radius, status: 'implemented', notes: 'square inside a palette' },
+  { id: 'swatch.palette.radius', family: 'swatch', element: 'palette', quantity: 'radius', formula: '2u * s', value: (u) => resolveSwatch({ unit: u }).paletteRadius, status: 'implemented', notes: 'swatches attached, no gap' },
+  { id: 'swiper.paddleInset', family: 'swiper', element: 'swiper', quantity: 'paddle inset', formula: '2u', value: (u) => resolveSwiper({ unit: u }).paddleInset, status: 'implemented', notes: 'paddles are 8u icon buttons' },
+  { id: 'swiper.dot', family: 'swiper', element: 'swiper', quantity: 'dot', formula: '2u (active 4u wide)', value: (u) => resolveSwiper({ unit: u }).dot, status: 'implemented', notes: '4u hit area, u gap' },
 
   // Badge / tag / chip
   { id: 'btg.chip.height', family: 'btg', element: 'chip', quantity: 'height', formula: 'min(12 + 3u, 8u)', value: (u) => resolveBtg('chip', { unit: u }).height, status: 'implemented', notes: 'cap: never taller than a control (bites below u = 2.4)' },

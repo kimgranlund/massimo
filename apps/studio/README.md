@@ -6,10 +6,14 @@ Tune ui-kit themes live and save them back into the kit.
 npm run studio        # from the repo root; http://localhost:5173
 ```
 
-- **Left panel:** the theme parameters from `packages/ui-kit/tokens/themes/params.ts` (accent and neutral hue/chroma, danger hue, corner radius, control size) plus light/dark.
-- **Icons:** pick the theme's icon set: `phosphor`, `lucide`, `tabler` (CDN) or `phosphor-bundled` (a subset of `@phosphor-icons/core` bundled as a dependency, see `src/icons.ts`). Saved with the theme as `icons`.
-- **Canvas:** `canvas.html` in an iframe, showing the same prototype with web components and with React. It is its own document so a theme applies to `<html>` there and never leaks into the studio UI.
-- **Save theme:** writes the changed parameters to `packages/ui-kit/tokens/themes/themes.json` via a dev-only endpoint (`POST /__studio/themes`, validated against the parameter schema). Restart the dev server or rerun ui-kit's build to regenerate the theme CSS; any page then opts in with `<html data-ui-theme="<name>">`.
+The jig is built entirely from ui-kit components (web components in React; no native form controls).
+
+- **Tabs** (segmented control): Components, Containers, Colors. Each switches the panel and the canvas.
+- **Components / Containers:** geometry (unit, border, corner radius, corner shape), icon set and scheme.
+- **Colors:** Spectrum (HCT) settings: hue set, first hue, chroma, falloff, hue balance, peak tone, tone endpoints, neutral tint, scale, gamut; and the role families (primary, neutral, critical). Generation is debounced (~300ms per run) and recolors the canvas live.
+- **Theme:** save the geometry and icon settings into `packages/ui-kit/tokens/themes/themes.json` (dev-only endpoint).
+- **Copy:** puts every applied setting (minus defaults) on the clipboard as JSON with instructions for applying it, ready to hand to an agent. **Reset** restores all defaults.
+- **Canvas:** `canvas.html` in an iframe, so themes apply to its `<html>` only. `/geometry-check.html` compares rendered geometry with the resolver.
 
 ## How styling flows
 

@@ -20,11 +20,20 @@ declare module 'react' {
       'ui-card': El<{ gap?: string }>;
       'ui-panel': El<{ gap?: string }>;
       'ui-region': El<{ gap?: string }>;
+      'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; required?: boolean; disabled?: boolean }>;
+      'ui-radio': El<{ name?: string; value?: string; checked?: boolean; required?: boolean; disabled?: boolean }>;
+      'ui-switch': El<{ name?: string; value?: string; checked?: boolean; disabled?: boolean }>;
+      'ui-range': El<{ name?: string; value?: number; min?: number; max?: number; step?: number; label?: string; disabled?: boolean }>;
+      'ui-progress': El<{ value?: number; max?: number; label?: string }>;
+      'ui-swatch': El<{ color?: string; label?: string }>;
+      'ui-palette': El<{ name?: string; value?: string; label?: string; selectable?: boolean }>;
+      'ui-swiper': El<{ label?: string; 'hover-controls'?: boolean; 'no-dots'?: boolean; 'no-paddles'?: boolean }>;
+      'ui-image': El<{ src?: string; alt?: string; ratio?: string; fit?: string; position?: string; slideshow?: boolean }>;
       'ui-option': El<{ value?: string; disabled?: boolean }>;
       'ui-listbox': El<{ name?: string; value?: string; label?: string; orientation?: string; required?: boolean; disabled?: boolean }>;
       'ui-segmented': El<{ name?: string; value?: string; label?: string; required?: boolean; disabled?: boolean }>;
       'ui-select': El<{ name?: string; value?: string; label?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean }>;
-      'ui-input': El<{ label?: string; type?: string; name?: string; value?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; minlength?: number; pattern?: string }>;
+      'ui-input': El<{ ref?: any; label?: string; type?: string; name?: string; value?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; minlength?: number; pattern?: string }>;
     }
   }
 }

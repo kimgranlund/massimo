@@ -49,6 +49,17 @@ Usage: `<ui-button><svg slot="leading">…</svg>Save</ui-button>`. Anything with
 
 Text fields put their text where button contents sit (padding + 1u each side). The select trigger is contents (value) plus the chevron in a trailing 6u slot. Indicators (the select chevron and any `caret-*` icon in a slot) are always icon size sm, whatever `icon-size` says.
 
+## Choices, tracks, swatches, swiper
+
+| | Formula | at u=4 |
+|---|---|---|
+| checkbox / radio box | 5u, in the 6u leading slot; label start padding u (1.5u from the box) | 20 |
+| switch | 9u × 5u track, 4u thumb inset 0.5u, travels 4u | 36 × 20 |
+| checkbox radius | u × s (radio and switch round) | 4 |
+| range / progress | 4u box, u track (radius 0.5u), range thumb 4u, min width 24u | 16 / 4 / 16 |
+| swatch | 6u square, radius u × s; palette strip radius 2u × s, no gaps | 24 |
+| swiper | paddles are 8u icon buttons inset 2u; dots 2u (active 4u) in 4u hit areas, gap u | |
+
 ## Containers
 
 Every container has a padding level p and a max radius. Gap = padding unless `gap` overrides it. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
@@ -87,6 +98,6 @@ The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). Padding is max(0, 0.5u �
 ## Verification
 
 - `npm test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
-- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 65 measured lengths each (2860 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
+- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 75 measured lengths each (3300 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
 
 Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: multiline fields, chips inside inputs, table cells.

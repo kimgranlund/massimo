@@ -2,7 +2,12 @@
 // boundary ready for serving previews from a separate origin later.
 import type { ThemeParams } from '@massimo/ui-kit/tokens';
 
-export type ThemeMessage = { type: 'studio/theme'; params: ThemeParams; dark: boolean; icons: string };
+export type View = 'components' | 'containers' | 'colors';
+export type Scheme = 'auto' | 'light' | 'dark';
+export interface FamilyRamp { name: string; light: string[]; dark: string[]; lightText: string[]; darkText: string[] }
+export interface SpectrumPayload { css: string; families: FamilyRamp[]; roles: { primary: string; neutral: string; critical: string } }
+
+export type ThemeMessage = { type: 'studio/theme'; params: ThemeParams; scheme: Scheme; icons: string; view: View; spectrum?: SpectrumPayload };
 export type ReadyMessage = { type: 'studio/ready' };
 export type StudioMessage = ThemeMessage | ReadyMessage;
 

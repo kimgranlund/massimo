@@ -128,10 +128,10 @@ export const geometry = defineGlobalStyles({
 
   // Range and progress: a 4u box with a 1u track; range adds a 4u thumb.
   ':is(ui-range, ui-progress)': { display: 'grid', alignItems: 'center', height: 'calc(4 * var(--u))', minWidth: 'calc(24 * var(--u))', position: 'relative' },
-  ':is(ui-range, ui-progress) > [data-part=track]': { height: 'var(--u)', borderRadius: 'calc(0.5 * var(--u))', overflow: 'hidden', gridArea: '1 / 1' },
-  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)' },
+  ':is(ui-range, ui-progress) > [data-part=track]': { display: 'block', height: 'var(--u)', borderRadius: 'calc(0.5 * var(--u))', overflow: 'hidden', gridArea: '1 / 1' },
+  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { display: 'block', height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)' },
   'ui-range > [data-part=thumb]': {
-    gridArea: '1 / 1', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
+    display: 'block', gridArea: '1 / 1', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
     marginInlineStart: 'calc(var(--ui-ratio, 0) * (100% - 4 * var(--u)))',
   },
 
