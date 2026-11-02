@@ -77,6 +77,22 @@ export function resolveButtonContents(leading: boolean, trailing: boolean, input
   return { start: leading ? u : 2 * u, end: trailing ? u : 2 * u };
 }
 
+/**
+ * Button optical balance: with visible text, an icon slot hugs its glyph inline (block size stays
+ * 6u) and takes the label's bare edge (2u) on its outer side, so the visible space from the edge to
+ * an icon equals the space to text (padding + B + 2u) and icon-to-text is 1u. Icon-only buttons
+ * keep the square 6u slot; fill artwork keeps the full slot with no margin.
+ */
+export function resolveButtonIcons(input: GeometryInput = {}) {
+  const c = resolveControl(input), fill = (input.iconSize ?? GEOMETRY_DEFAULTS.iconSize) === 'fill';
+  return {
+    slotInline: fill ? c.slot : c.iconSize,
+    iconEdge: fill ? 0 : 2 * c.unit,
+    iconToText: c.unit,
+    visibleEdge: c.padding + c.border + 2 * c.unit,
+  };
+}
+
 export type TextPart = 'prefix' | 'contents' | 'suffix';
 export interface ControlParts { leading?: boolean; prefix?: boolean; contents?: boolean; suffix?: boolean; trailing?: boolean }
 

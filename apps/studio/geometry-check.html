@@ -12,7 +12,7 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveButtonIcons, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -60,8 +60,9 @@ for (const c of cases) {
     'button.padding': [px(cs(btn).paddingTop) + px(cs(btn).borderTopWidth), ctl.padding + ctl.border],
     'button.font': [px(cs(btn).fontSize), ctl.fontSize],
     'button.radius': [px(cs(btn).borderTopLeftRadius), ctl.radius],
-    'slot.width': [r2(rect(lead).width), ctl.slot],
+    'slot.width': [r2(rect(slotOf(iconBtn)).width), ctl.slot],
     'slot.height': [r2(rect(lead).height), ctl.slot],
+    'slot.inline.withText': [r2(rect(lead).width), r2(resolveButtonIcons(g).slotInline)],
     'icon.size': [r2(rect(lead.firstElementChild).width), ctl.iconSize],
     'label.leadingOnly.start': [px(cs(pc(btn)).paddingLeft), resolveButtonContents(true, false, g).start],
     'label.leadingOnly.end': [px(cs(pc(btn)).paddingRight), resolveButtonContents(true, false, g).end],
@@ -141,6 +142,16 @@ for (const c of cases) {
   checks['image.ratio.custom'] = [r2(rect($('imgCustom')).height), r2(160 / 1.5)];
   checks['image.ratio.invalid'] = [r2(rect($('imgBad')).height), 0];
   checks['image.ratio.noInline'] = [[$('imgWide'), $('imgCustom')].filter((el) => el.style.aspectRatio).length, 0];
+  // Button optical balance: edge-to-icon = edge-to-text (pad + B + 2u), icon-to-text = 1u.
+  if (c.icon !== 'fill') {
+    const bi = resolveButtonIcons(g);
+    for (const [k, b, side] of [['leading', btn, 'leading'], ['trailing', caretBtn, 'trailing']]) {
+      const br = rect(b), ir = rect(b.querySelector(`[data-part=${side}]`).firstElementChild), tx = pc(b), tr = rect(tx);
+      checks[`button.balance.${k}.iconEdge`] = [r2(side === 'leading' ? ir.left - br.left : br.right - ir.right), r2(bi.visibleEdge)];
+      checks[`button.balance.${k}.textEdge`] = [r2(side === 'leading' ? br.right - (tr.right - px(cs(tx).paddingRight)) : (tr.left + px(cs(tx).paddingLeft)) - br.left), r2(bi.visibleEdge)];
+      checks[`button.balance.${k}.iconToText`] = [r2(side === 'leading' ? tr.left + px(cs(tx).paddingLeft) - ir.right : ir.left - (tr.right - px(cs(tx).paddingRight))), r2(bi.iconToText)];
+    }
+  }
   // Optical balance: edge-to-glyph equals edge-to-text on both sides, and icon-to-text is u′.
   if (c.icon !== 'fill') {
     const cr = rect(chip), ir = rect(slotOf(chip).firstElementChild), tx = contentsOf(chip), tr = rect(tx);

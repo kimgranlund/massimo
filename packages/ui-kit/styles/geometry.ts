@@ -21,6 +21,7 @@ const FIELD_HOSTS = ':where(:is(ui-input, [data-ui=input]) > [data-part=control]
 export const SLOTTED = `:is(ui-button, ui-option, [data-ui=button], ${FIELD_HOSTS})`;
 const SLOT = ':is([data-part=leading], [data-part=trailing])';
 const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
+const BUTTON_HOST = ':is(ui-button, [data-ui=button])';
 const ADORN = ':is([data-part=prefix], [data-part=suffix])';
 
 /**
@@ -85,6 +86,15 @@ export const geometry = defineGlobalStyles({
   [`${SLOTTED} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${SLOTTED} > [data-part=contents]`]: { minWidth: 'var(--slot)' },
   [`${SLOTTED} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
+  // Optical balance (resolveButtonIcons): in a button with visible text, icon slots hug their glyph
+  // inline and take the label's 2u on the outer side, so edge-to-icon = edge-to-text (pad + 2u) and
+  // icon-to-text = 1u. Icon-only buttons keep the square slot; fill artwork keeps the full slot.
+  [`${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > ${SLOT}`]: { minWidth: 0 },
+  [`${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > [data-part=leading]`]: { marginInlineStart: 'calc(2 * var(--u))' },
+  [`${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > [data-part=trailing]`]: { marginInlineEnd: 'calc(2 * var(--u))' },
+  [`${BUTTON_HOST}:is([icon-size=fill], [data-icon-size=fill]):has(> ${TEXT}:not([hidden])) > ${SLOT}, :is([icon-size=fill], [data-icon-size=fill]) ${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > ${SLOT}`]: {
+    minWidth: 'var(--slot)', marginInline: 0,
+  },
   // Field text (input, select value) fills the row as a block, so it can scroll or ellipsize.
   [`${FIELD_HOSTS} > [data-part=contents]`]: { display: 'block', flex: '1', minWidth: 0 },
   ...textRun(SLOTTED, 'var(--u)', 'calc(2 * var(--u))', {
