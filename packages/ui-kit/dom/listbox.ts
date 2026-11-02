@@ -2,6 +2,7 @@
 // Focus model: the focusable element keeps focus and points at the active option with
 // aria-activedescendant; options are never focused themselves.
 import type { Attrs } from './attrs.ts';
+import { placeFloating, positionerVars, type AnchorRect, type Placement, type Viewport } from './floating.ts';
 
 export interface OptionItem { value: string; label: string; disabled?: boolean }
 export type Orientation = 'vertical' | 'horizontal';
@@ -126,29 +127,17 @@ export function selectKeyIntent(open: boolean, e: { key: string; altKey?: boolea
 }
 
 /**
- * Place a popup under its anchor (or above when there is more room there), within the viewport.
- * Pure: pass rects and viewport size; apply the result as fixed-position styles and, through
- * popupVars, as Base UI's positioner variables.
+ * Place a select popup under its anchor (or above when there is more room there), within the
+ * viewport: the floating positioner's script placement (floating.ts placeFloating) at side bottom,
+ * align start. Apply the result as fixed-position insets and, through popupVars, as Base UI's
+ * positioner variables.
  */
-export function placePopup(anchor: { top: number; bottom: number; left: number; width: number; height?: number }, viewport: { width: number; height: number }, gap = 4, margin = 8) {
-  const below = viewport.height - anchor.bottom - gap - margin;
-  const above = anchor.top - gap - margin;
-  const flip = below < 160 && above > below;
-  const left = Math.max(margin, Math.min(anchor.left, viewport.width - margin - anchor.width));
-  const shared = { left, minWidth: anchor.width, anchorWidth: anchor.width, anchorHeight: anchor.height ?? anchor.bottom - anchor.top, availableWidth: viewport.width - left - margin };
-  return flip
-    ? { ...shared, bottom: viewport.height - anchor.top + gap, top: undefined, maxHeight: above, availableHeight: above, side: 'top' as const, transformOrigin: 'bottom center' }
-    : { ...shared, top: anchor.bottom + gap, bottom: undefined, maxHeight: below, availableHeight: below, side: 'bottom' as const, transformOrigin: 'top center' };
+export function placePopup(anchor: AnchorRect, viewport: Viewport, gap = 4, margin = 8): Placement {
+  return placeFloating(anchor, viewport, { side: 'bottom', align: 'start', offset: gap, margin });
 }
 
 /**
  * Base UI's positioner variables (Select.Positioner: --anchor-width, --anchor-height,
  * --available-width, --available-height, --transform-origin) for a placePopup result, in px.
  */
-export function popupVars(p: ReturnType<typeof placePopup>): Record<string, string> {
-  return {
-    '--anchor-width': `${p.anchorWidth}px`, '--anchor-height': `${p.anchorHeight}px`,
-    '--available-width': `${p.availableWidth}px`, '--available-height': `${p.availableHeight}px`,
-    '--transform-origin': p.transformOrigin,
-  };
-}
+export const popupVars = positionerVars;

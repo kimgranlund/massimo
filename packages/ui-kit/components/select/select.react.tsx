@@ -17,7 +17,7 @@
 // className. The preset <Select label leading prefix suffix description error> is Root + parts.
 import { Children, createContext, isValidElement, useContext, useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent, type HTMLAttributes, type ReactNode, type SelectHTMLAttributes } from 'react';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
-import { eventDetails, fieldAttrs, toReactProps, type ChangeDetails, type ChangeReason } from '../../dom/index.ts';
+import { eventDetails, fieldAttrs, isOutside, toReactProps, type ChangeDetails, type ChangeReason } from '../../dom/index.ts';
 import { useFieldState } from '../state.react.ts';
 import type { PartProps } from '../parts.react.tsx';
 import { findPart, isPartOf, renderPart, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
@@ -57,7 +57,11 @@ const showPicker = (el: HTMLSelectElement) => { try { el.showPicker?.(); } catch
 
 /**
  * Report the native picker's open state through onOpenChange: the browser owns the picker and fires
- * no event for it, so the state is reread after each interaction that can open or close it.
+ * no event for it, so the state is reread after each interaction that can open or close it. The
+ * picker is the browser's floating layer (its top layer, positioning and light dismiss): the kit's
+ * positioner reaches it only as CSS (select.recipe.ts anchoredPopup on ::picker(select)), and the
+ * dismissals are named with the floating layer's reasons (dom/floating.ts: outside-press,
+ * escape-key, focus-out; isOutside decides what an outside press is).
  */
 function useOpenState(el: { current: HTMLSelectElement | null }, onOpenChange: SelectProps['onOpenChange'], open: boolean | undefined, defaultOpen: boolean | undefined) {
   const cb = useRef(onOpenChange);
@@ -71,7 +75,7 @@ function useOpenState(el: { current: HTMLSelectElement | null }, onOpenChange: S
       const now = isOpen(s);
       if (now !== was.current) { was.current = now; cb.current?.(now, eventDetails(reason, event)); }
     });
-    const onPointer = (e: Event) => check(s.contains(e.target as Node) ? (was.current ? 'item-press' : 'trigger-press') : 'outside-press', e);
+    const onPointer = (e: Event) => check(!isOutside(e.target, [s]) ? (was.current ? 'item-press' : 'trigger-press') : 'outside-press', e);
     const onKey = (e: KeyboardEvent) => check(e.key === 'Escape' ? 'escape-key' : was.current ? 'item-press' : e.key === 'Enter' || e.key === ' ' ? 'trigger-press' : 'list-navigation', e);
     const onChange = (e: Event) => check('item-press', e);
     const onBlur = (e: Event) => check('focus-out', e);

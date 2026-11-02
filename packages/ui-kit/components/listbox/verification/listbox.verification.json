@@ -18,7 +18,7 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "4fbe3d0a731ae58377ede4fe18a3bcdc1ffdab949ff8d1273b92541725436cd9"
+      "sha256": "decebd30af1172e88663561a8b0c592da29759b571f3e36e494597bd1c188ede"
     },
     {
       "path": "components/listbox/listbox.manifest.json",
@@ -34,7 +34,7 @@
     },
     {
       "path": "dom/state.ts",
-      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+      "sha256": "1eda06391d78e873db7eaf60a643bbfa528e4035d28eeb2c00525abab3f328ae"
     },
     {
       "path": "components/state.react.ts",

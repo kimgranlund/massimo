@@ -3,6 +3,7 @@
 // maps in update() (applyAttrs); React spreads them (toReactProps). Present = '' , absent = undefined,
 // so both renderers write the same markup (data-checked="").
 import type { Attrs } from './attrs.ts';
+import type { Align, Side } from './floating.ts';
 
 const on = (v: unknown) => (v ? '' : undefined);
 
@@ -49,8 +50,11 @@ export function checkedDataAttrs(checked: boolean, indeterminate = false): Attrs
   };
 }
 
-/** Popup state (Base UI Select popup): data-open or data-closed, the side it sits on, its alignment. */
-export function popupDataAttrs(s: { open: boolean; side?: 'top' | 'bottom'; align?: 'start' | 'center' | 'end' }): Attrs {
+/**
+ * Popup state (Base UI Select popup, and every floating layer's positioner and popup): data-open or
+ * data-closed, the side it sits on, its alignment.
+ */
+export function popupDataAttrs(s: { open: boolean; side?: Side; align?: Align }): Attrs {
   return {
     'data-open': on(s.open),
     'data-closed': on(!s.open),
