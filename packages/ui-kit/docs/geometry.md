@@ -5,6 +5,8 @@ Based on Differential Forms v0.2.2 (`mathematical-design-system` skill), adapted
 - **Slots.** Controls have `leading`, `contents` and `trailing` slots, each at least 6u square, inside 1u of padding.
 - **Text** is 10px + u.
 
+Quick reference: [geometry.csv](geometry.csv), every formula with its value at each size (generated from the resolver: `npm run geometry:csv`; a test fails if it is stale).
+
 Sources of truth, kept in agreement by tests:
 - `tokens/geometry/resolve.ts`: numerical reference (`resolveControl`, `resolveComposite`, `resolveField`, `resolveSelectTrigger`, `resolveIcon`).
 - `styles/geometry.ts`: the same formulas in CSS, computed per element from inherited inputs.

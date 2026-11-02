@@ -1,0 +1,36 @@
+id,family,element,quantity,formula,u=2,u=2.25,u=2.5,u=3,u=3.5,u=4,u=4.5,status,notes
+in.u,input,all,unit u,u = size attribute (px),2,2.25,2.5,3,3.5,4,4.5,input,"size=""2|2.25|2.5|3|3.5|4|4.5""; theme default 4"
+in.B,input,all,border B,B (default 1),1,1,1,1,1,1,1,input,"whole px, 0..u/2; lives inside padding, never added to height"
+in.s,input,all,curvature scale s,s (default 1),1,1,1,1,1,1,1,input,"theme radius-scale, 0..3"
+in.Q,input,composite,composite inset Q,Q = 0.5u,1,1.125,1.25,1.5,1.75,2,2.25,input,inset attribute 0|0.5|1|1.5 (x u)
+control.height,control,"button, input, select",height,8u,16,18,20,24,28,32,36,implemented,
+control.padding,control,"button, input, select",padding,u - B,1,1.25,1.5,2,2.5,3,3.5,implemented,border + padding = 1u
+control.slot,control,"button, option",slot (leading / contents / trailing) min size,6u,12,13.5,15,18,21,24,27,implemented,empty slots hidden; icon-only button = 8u square
+control.contents.paddingInline,control,"button, option",contents inline padding,u,2,2.25,2.5,3,3.5,4,4.5,implemented,
+control.contents.paddingBlock,control,"button, option",contents block padding,0.75u,1.5,1.688,1.875,2.25,2.625,3,3.375,implemented,
+control.contents.lineHeight,control,"button, option",contents line height,4.5u,9,10.125,11.25,13.5,15.75,18,20.25,implemented,"below font size at u < 2.86 (tight, not clipped)"
+control.font,control,all controls,font size,10 + u,12,12.25,12.5,13,13.5,14,14.5,implemented,
+control.icon.sm,control,icons in slots,icon sm,"min(font - 0.5u, 6u)",11,11.125,11.25,11.5,11.75,12,12.25,implemented,
+control.icon.md,control,icons in slots,icon md (default),"min(font + 0.5u, 6u)",12,13.375,13.75,14.5,15.25,16,16.75,implemented,capped by slot below u~2.2
+control.icon.lg,control,icons in slots,icon lg,"min(font + 1.5u, 6u)",12,13.5,15,17.5,18.75,20,21.25,implemented,capped by slot below u~2.9
+control.icon.fill,control,icons in slots,icon fill,6u,12,13.5,15,18,21,24,27,implemented,"object-fit cover, centered"
+control.radius,control,"button, input, select",radius,"min(3u * s, 4u)",6,6.75,7.5,9,10.5,12,13.5,implemented,"soft curvature, capped at half height"
+control.fill.radius,control,fill slot,fill slot radius,"max(0, radius - u)",4,4.5,5,6,7,8,9,implemented,nested inside the control radius
+field.paddingInline,control,input,text inline padding,(u - B) + u,3,3.5,4,5,6,7,8,implemented,text sits where button contents sit
+select.paddingStart,control,select trigger,start padding,(u - B) + u,3,3.5,4,5,6,7,8,implemented,
+select.paddingEnd,control,select trigger,end padding,u - B,1,1.25,1.5,2,2.5,3,3.5,implemented,chevron occupies a trailing 6u slot
+select.popupOffset,control,select popup,offset from trigger,u,2,2.25,2.5,3,3.5,4,4.5,implemented,
+composite.edge,composite,"listbox, segmented, popup",edge distance D,"max(B, Q)",1,1.125,1.25,1.5,1.75,2,2.25,implemented,
+composite.padding,composite,"listbox, segmented, popup",padding,D - B,0,0.125,0.25,0.5,0.75,1,1.25,implemented,
+composite.gap,composite,"listbox, segmented, popup",gap between options,Q,1,1.125,1.25,1.5,1.75,2,2.25,implemented,
+composite.option.inset,composite,option,option inset Ic,"max(B, u - D)",1,1.125,1.25,1.5,1.75,2,2.25,implemented,
+composite.option.height,composite,option,option height,6u + 2Ic,14,15.75,17.5,21,24.5,28,31.5,implemented,
+composite.rowHeight,composite,segmented,one-row height,option height + 2D,16,18,20,24,28,32,36,implemented,equals control height unless the border leaves no room (then grows)
+composite.radius.segmented,composite,segmented,radius,"min(3u * s, row / 2)",6,6.75,7.5,9,10.5,12,13.5,implemented,
+composite.radius.container,composite,"listbox, popup",radius,3u * s,6,6.75,7.5,9,10.5,12,13.5,implemented,"container curvature, not height-capped"
+composite.option.radius,composite,option in segmented,option radius,"min(option / 2, max(0, parent radius - D)); 0 when Q = 0",5,5.625,6.25,7.5,8.75,10,11.25,implemented,Q = 0 is an attached group (square options)
+btg.badge.height,btg,badge,height,12 + u,14,14.25,14.5,15,15.5,16,16.5,proposed,font + 2
+btg.tag.height,btg,tag,height,12 + 2u,16,16.5,17,18,19,20,21,proposed,taller than control below u = 2
+btg.chip.height,btg,chip,height,12 + 3u,18,18.75,19.5,21,22.5,24,25.5,proposed,taller than control below u = 2.4; equals 6u only at u = 4; cap decision open
+btg.chip.innerSlot,btg,chip,inner slot (0.5u inset),12 + 3u - 2(0.5u) = 12 + 2u,16,16.5,17,18,19,20,21,proposed,equals tag height
+btg.tag.innerSlot,btg,tag,inner slot (0.5u inset),12 + 2u - 2(0.5u) = 12 + u,14,14.25,14.5,15,15.5,16,16.5,proposed,equals badge height

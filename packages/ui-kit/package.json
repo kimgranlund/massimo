@@ -26,7 +26,8 @@
     "css": "panda cssgen --outfile dist/ui-kit.css",
     "build": "panda codegen && panda cssgen --outfile dist/ui-kit.css",
     "typecheck": "tsc -p .",
-    "test": "node --test test/"
+    "test": "node --test test/",
+    "geometry:csv": "node scripts/geometry-csv.ts"
   },
   "peerDependencies": {
     "react": ">=19"
