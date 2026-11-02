@@ -3,6 +3,8 @@
 import '../index.css';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
+import '@massimo/ui-kit/components/listbox/element';
+import '@massimo/ui-kit/components/select/element';
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Button } from '@massimo/ui-kit/components/button/react';
@@ -39,11 +41,26 @@ function Canvas() {
           <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
           <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
           <ui-input name="team" label="Team" error="That name is taken." value="Acme" />
+          <ui-select name="role" label="Role" required description="You can change this later.">
+            <ui-option value="design">Designer</ui-option>
+            <ui-option value="eng">Engineer</ui-option>
+            <ui-option value="pm" disabled>Product manager</ui-option>
+            <ui-option value="research">Researcher</ui-option>
+          </ui-select>
+          <ui-segmented name="plan" value="monthly" label="Billing">
+            <ui-option value="monthly">Monthly</ui-option>
+            <ui-option value="yearly">Yearly</ui-option>
+          </ui-segmented>
+          <ui-listbox name="region" value="eu" label="Region">
+            <ui-option value="us">United States</ui-option>
+            <ui-option value="eu">Europe</ui-option>
+            <ui-option value="apac">Asia Pacific</ui-option>
+          </ui-listbox>
           <div className={row}>
             <ui-button type="submit">Create account</ui-button>
-            <ui-button type="reset" variant="outline">Reset</ui-button>
-            <ui-button variant="ghost">Help</ui-button>
-            <ui-button variant="danger" size="sm">Delete</ui-button>
+            <ui-button type="reset">Reset</ui-button>
+            <ui-button>Help</ui-button>
+            <ui-button>Delete</ui-button>
             <ui-button loading>Saving</ui-button>
           </div>
           <p className={eyebrow} role="status">{status}</p>
@@ -56,9 +73,9 @@ function Canvas() {
         <Input label="Password" type="password" error="At least 12 characters." />
         <div className={row}>
           <Button>Create account</Button>
-          <Button variant="outline">Sign in</Button>
-          <Button variant="ghost">Help</Button>
-          <Button variant="danger" size="sm">Delete</Button>
+          <Button>Sign in</Button>
+          <Button>Help</Button>
+          <Button>Delete</Button>
           <Button loading>Saving</Button>
         </div>
       </section>

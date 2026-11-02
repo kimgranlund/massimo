@@ -3,7 +3,6 @@
 // aria-labelledby; the host is form-associated through UIFormElement.
 import { UIFormElement, define, html, type Problem } from '../../core/index.ts';
 import { applyAttrs, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, type TextType } from '../../dom/index.ts';
-import { input, type InputVariantProps } from '../../styled-system/recipes/index.js';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,7 +16,6 @@ export class UIInput extends UIFormElement {
     description: { type: String, default: '' },
     /** Author-supplied error. Shown immediately; built-in validation waits for interaction. */
     error: { type: String, default: '' },
-    size: { type: String, default: 'md', reflect: true },
     readonly: { type: Boolean, default: false, reflect: true },
     minlength: { type: Number, default: null },
     pattern: { type: String, default: '' },
@@ -28,7 +26,6 @@ export class UIInput extends UIFormElement {
   declare placeholder: string;
   declare description: string;
   declare error: string;
-  declare size: NonNullable<InputVariantProps['size']>;
   declare readonly: boolean;
   declare minlength: number | null;
   declare pattern: string;
@@ -43,15 +40,13 @@ export class UIInput extends UIFormElement {
   }
 
   template() {
-    const cls = input({ size: this.size });
-    this.classList.add(...cls.root.split(' '));
     const message = this.#message();
     return html`
-      <span class=${cls.label} ?hidden=${!this.label} @click=${this.#focusEditor}>${this.label}</span>
-      <div class=${cls.control} @beforeinput=${this.#onBeforeInput} @input=${this.#onInput}
+      <span data-part="label" ?hidden=${!this.label} @click=${this.#focusEditor}>${this.label}</span>
+      <div data-part="control" @beforeinput=${this.#onBeforeInput} @input=${this.#onInput}
         @blur=${this.#onBlur} @copy=${this.#guardSecret} @cut=${this.#guardSecret}></div>
-      <span class=${cls.description} ?hidden=${!this.description}>${this.description}</span>
-      <span class=${cls.error} ?hidden=${!message}>${message}</span>`;
+      <span data-part="description" ?hidden=${!this.description}>${this.description}</span>
+      <span data-part="error" ?hidden=${!message}>${message}</span>`;
   }
 
   update() {

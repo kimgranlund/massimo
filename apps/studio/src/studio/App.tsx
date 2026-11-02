@@ -46,7 +46,7 @@ export function App() {
       <aside className={s.panel} aria-label="Theme">
         <header className={s.panelHeader}>
           <h1 className={s.brand}>Studio</h1>
-          <Button variant="ghost" size="sm" onClick={() => setDark((d) => !d)} aria-pressed={dark}>{dark ? 'Dark' : 'Light'}</Button>
+          <Button onClick={() => setDark((d) => !d)} aria-pressed={dark}>{dark ? 'Dark' : 'Light'}</Button>
         </header>
 
         <label className={s.fieldLabel}>
@@ -71,11 +71,11 @@ export function App() {
         </div>
 
         <div className={s.saveRow}>
-          <Input label="Theme name" placeholder="brand-x" value={name} onChange={(e) => setName(e.target.value)} error={nameError} size="sm" />
+          <Input label="Theme name" placeholder="brand-x" value={name} onChange={(e) => setName(e.target.value)} error={nameError} />
           <div className={s.actions}>
-            <Button size="sm" disabled={!name || !!nameError} onClick={save}>Save theme</Button>
-            <Button size="sm" variant="outline" onClick={() => navigator.clipboard.writeText(snippet).then(() => setStatus('Copied'))}>Copy</Button>
-            <Button size="sm" variant="ghost" onClick={() => load('')}>Reset</Button>
+            <Button disabled={!name || !!nameError} onClick={save}>Save theme</Button>
+            <Button onClick={() => navigator.clipboard.writeText(snippet).then(() => setStatus('Copied'))}>Copy</Button>
+            <Button onClick={() => load('')}>Reset</Button>
           </div>
           <p className={s.status} role="status">{status}</p>
         </div>

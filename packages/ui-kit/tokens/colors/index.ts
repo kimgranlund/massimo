@@ -23,10 +23,8 @@ export const colors = {
 };
 
 const role = (base: string, dark: string) => ({ value: { base: `{colors.${base}}`, _dark: `{colors.${dark}}` } });
-const alias = (to: string) => ({ value: `{colors.${to}}` });
 
-// Chain: component tokens -> semantic roles -> ramps -> theme parameters.
-// Override a component token to restyle one component without touching the rest.
+// Chain: semantic roles -> ramps -> theme parameters.
 export const semanticColors = {
   bg: { DEFAULT: role('white', 'gray.950'), subtle: role('gray.50', 'gray.900'), muted: role('gray.100', 'gray.800') },
   fg: { DEFAULT: role('gray.950', 'gray.50'), muted: role('gray.600', 'gray.400'), onSolid: role('white', 'white') },
@@ -34,14 +32,4 @@ export const semanticColors = {
   accent: { solid: role('accent.600', 'accent.500'), solidHover: role('accent.700', 'accent.400'), subtle: role('accent.50', 'accent.950'), fg: role('accent.700', 'accent.300') },
   danger: { solid: role('danger.600', 'danger.500'), solidHover: role('danger.700', 'danger.400'), fg: role('danger.700', 'danger.300') },
   focusRing: role('accent.500', 'accent.400'),
-  button: {
-    solid: { bg: alias('accent.solid'), bgHover: alias('accent.solidHover'), fg: alias('fg.onSolid') },
-    danger: { bg: alias('danger.solid'), bgHover: alias('danger.solidHover'), fg: alias('fg.onSolid') },
-    outline: { border: alias('border.strong'), fg: alias('fg'), bgHover: alias('bg.muted') },
-    ghost: { fg: alias('fg'), bgHover: alias('bg.muted') },
-  },
-  input: {
-    bg: alias('bg'), fg: alias('fg'), border: alias('border.strong'),
-    borderFocus: alias('focusRing'), borderInvalid: alias('danger.solid'), placeholder: alias('fg.muted'),
-  },
 };

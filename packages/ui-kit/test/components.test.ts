@@ -3,18 +3,18 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 await import('../components/button/button.element.ts');
 await import('../components/input/input.element.ts');
+await import('../components/listbox/listbox.element.ts');
+await import('../components/select/select.element.ts');
 
-test('ui-button: role, focus, recipe classes, author classes kept', async () => {
+test('ui-button: role, focus, author classes and label kept', async () => {
   const b = document.createElement('ui-button');
   b.className = 'mine';
   b.textContent = 'Save';
   document.body.append(b);
   assert.equal(b.getAttribute('role'), 'button');
   assert.equal(b.getAttribute('tabindex'), '0');
-  assert.ok(b.classList.contains('ui-button--variant_solid'));
-  b.variant = 'ghost'; await tick();
-  assert.ok(b.classList.contains('ui-button--variant_ghost'));
-  assert.ok(!b.classList.contains('ui-button--variant_solid'));
+  b.loading = true; await tick();
+  assert.equal(b.getAttribute('aria-busy'), 'true');
   assert.ok(b.classList.contains('mine'));
   assert.equal(b.textContent, 'Save', 'authored label kept');
   b.remove();
@@ -57,7 +57,7 @@ test('ui-input: zero native form elements, ARIA wiring', async () => {
   assert.equal(ed.getAttribute('aria-labelledby'), label.id);
   assert.equal(ed.getAttribute('aria-describedby'), `${ed.id}-desc`);
   assert.equal(ed.getAttribute('aria-placeholder'), 'you@example.com');
-  assert.ok(ed.classList.contains('ui-input__control--size_md'));
+  assert.equal(ed.dataset.part, 'control');
   el.remove();
 });
 
@@ -166,4 +166,111 @@ test('fieldset-disabled ui-button blocks activation', async () => {
   assert.equal(b.getAttribute('aria-disabled'), 'true');
   assert.equal(b.querySelector(NATIVE), null);
   b.remove();
+});
+
+const key = (el: Element, k: string, init: KeyboardEventInit = {}) => {
+  const e = new KeyboardEvent('keydown', { key: k, bubbles: true, cancelable: true, ...init });
+  el.dispatchEvent(e);
+  return e;
+};
+const build = (tag: string, html: string) => {
+  const el = document.createElement(tag) as any;
+  el.innerHTML = html;
+  document.body.append(el);
+  return el;
+};
+const OPTS = '<ui-option value="a">Apple</ui-option><ui-option value="b" disabled>Banana</ui-option><ui-option value="c">Cherry</ui-option><ui-option value="d">Date</ui-option>';
+
+test('ui-listbox: arrows skip disabled, selection follows focus, events and form value', async () => {
+  const lb = build('ui-listbox', OPTS);
+  await tick();
+  assert.equal(lb.getAttribute('role'), 'listbox');
+  assert.equal(lb.querySelector(NATIVE), null);
+  let changes = 0;
+  lb.addEventListener('change', () => changes++);
+  lb.dispatchEvent(new Event('focus'));
+  key(lb, 'ArrowDown'); await tick();
+  assert.equal(lb.value, 'c', 'skipped disabled Banana');
+  assert.equal(lb.getAttribute('aria-activedescendant'), lb.options[2].id);
+  assert.equal(lb.options[2].getAttribute('aria-selected'), 'true');
+  assert.equal(lb.options[0].getAttribute('aria-selected'), 'false');
+  key(lb, 'End'); await tick();
+  assert.equal(lb.value, 'd');
+  key(lb, 'a'); await tick();
+  assert.equal(lb.value, 'a', 'typeahead');
+  assert.equal(changes, 3);
+  assert.equal((lb.internals as any).value, 'a');
+  lb.options[1].click(); await tick();
+  assert.equal(lb.value, 'a', 'disabled option not selectable');
+  lb.remove();
+});
+
+test('ui-segmented: horizontal arrows, RTL-agnostic vertical keys ignored', async () => {
+  const sg = build('ui-segmented', '<ui-option>Day</ui-option><ui-option>Week</ui-option><ui-option>Month</ui-option>');
+  sg.setAttribute('value', 'Day');
+  await tick();
+  assert.equal(sg.getAttribute('aria-orientation'), 'horizontal');
+  sg.dispatchEvent(new Event('focus'));
+  key(sg, 'ArrowRight'); await tick();
+  assert.equal(sg.value, 'Week', 'value defaults to label');
+  const down = key(sg, 'ArrowDown');
+  assert.equal(down.defaultPrevented, false);
+  assert.equal(sg.value, 'Week');
+  sg.remove();
+});
+
+test('ui-select: options move into popup; open, move, commit, cancel', async () => {
+  const sel = build('ui-select', OPTS);
+  sel.label = 'Fruit';
+  await tick();
+  const trigger = sel.trigger!;
+  assert.equal(sel.querySelector(NATIVE), null);
+  assert.equal(sel.options.length, 4);
+  assert.equal(sel.popup!.contains(sel.options[0]), true);
+  assert.equal(trigger.getAttribute('role'), 'combobox');
+  assert.equal(trigger.getAttribute('aria-expanded'), 'false');
+  assert.equal(sel.querySelector('[data-part=value]')!.textContent, 'Select…');
+
+  key(trigger, 'ArrowDown'); await tick();
+  assert.equal(trigger.getAttribute('aria-expanded'), 'true');
+  assert.equal(trigger.getAttribute('aria-activedescendant'), sel.options[0].id);
+  key(trigger, 'ArrowDown'); await tick();
+  assert.equal(trigger.getAttribute('aria-activedescendant'), sel.options[2].id, 'skips disabled');
+  key(trigger, 'Enter'); await tick();
+  assert.equal(sel.value, 'c');
+  assert.equal(trigger.getAttribute('aria-expanded'), 'false');
+  assert.equal(sel.querySelector('[data-part=value]')!.textContent, 'Cherry');
+
+  key(trigger, ' '); await tick();
+  key(trigger, 'Home'); await tick();
+  key(trigger, 'Escape'); await tick();
+  assert.equal(sel.value, 'c', 'Escape cancels');
+  assert.equal(sel.open, false);
+
+  key(trigger, 'd'); await tick();
+  assert.equal(sel.open, true, 'typing opens on the match');
+  sel.options[3].click(); await tick();
+  assert.equal(sel.value, 'd');
+  assert.equal(sel.open, false);
+  sel.remove();
+});
+
+test('ui-select: outside pointerdown closes; required; reconnect keeps options', async () => {
+  const sel = build('ui-select', OPTS);
+  sel.required = true;
+  await tick();
+  sel.trigger!.click(); await tick();
+  assert.equal(sel.open, true);
+  document.body.dispatchEvent(new Event('pointerdown', { bubbles: true }));
+  await tick();
+  assert.equal(sel.open, false);
+  assert.equal(sel.validity.valueMissing, true);
+  sel.remove();
+  document.body.append(sel); await tick();
+  assert.equal(sel.options.length, 4, 'options survive reconnect');
+  sel.innerHTML; // eslint-ignore
+  sel.append(Object.assign(document.createElement('ui-option'), { textContent: 'Elderberry' }));
+  await tick(); await tick();
+  assert.equal(sel.options.length, 5, 'late options are adopted');
+  sel.remove();
 });

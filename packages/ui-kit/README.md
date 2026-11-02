@@ -8,10 +8,10 @@ Light-DOM web components and React components built on one headless layer and on
 | `dom/` | Headless behaviors: functions that return attribute maps and handle events (`buttonAttrs`, `fieldAttrs`, …) | nothing |
 | `tokens/` | Global tokens in Panda format: `colors/`, `typography/`, `geometry/`, `motion/` | `@pandacss/dev` |
 | `styles/` | Reset, text styles, `pages/` patterns (`page`, `prose`) | `@pandacss/dev` |
-| `components/<name>/` | `<name>.recipe.ts`, `<name>.element.ts` (web component), `<name>.react.tsx` (React) | `core`, `dom`, `styled-system` |
-| `preset.ts` | The Panda preset: tokens + styles + every recipe | all of the above |
+| `components/<name>/` | `<name>.element.ts` (web component), `<name>.react.tsx` (React, where present) | `core`, `dom` |
+| `preset.ts` | The Panda preset: tokens + reset + component defaults + FOUC guard | all of the above |
 
-A component's two views share state logic (`dom/`) and class names (its recipe), so `<ui-button variant="ghost">` and `<Button variant="ghost">` render identical classes and ARIA.
+Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`.
 
 ## Commands
 
@@ -42,7 +42,7 @@ export default defineConfig({ presets: ['@pandacss/preset-base', uiKitPreset] })
 ## Adding a component
 
 1. `dom/<name>.ts`: state in, attribute maps out, plus event helpers. No DOM writes.
-2. `components/<name>/<name>.recipe.ts`: `defineRecipe`/`defineSlotRecipe`; register it in `preset.ts`.
+2. Default styles: add tag/`data-part` rules to `styles/defaults.ts` and the tag to `styles/pending.ts`.
 3. `<name>.element.ts`: extend `UIElement` (or `UIFormElement` for anything that submits or validates); no native form elements; use `declare` for typed props, never class fields (they shadow the reactive accessor).
 4. `<name>.react.tsx`: spread `toReactProps(...)` from the same `dom/` function.
 5. `npm run codegen`, then add a test in `test/`.
@@ -60,10 +60,9 @@ Known trade-offs of contenteditable fields: browser autofill and password manage
 
 ## No flash of unstyled content
 
-Undefined `ui-*` elements are `visibility: hidden` with their final size reserved (`*Pending` styles in each recipe file, `styles/pending.ts`), so nothing jumps when they upgrade. If the script never loads, a 1.5s animation reveals the raw content instead of hiding it forever. New components: add the tag to `styles/pending.ts` and export a `<name>Pending` size.
+Undefined `ui-*` elements are `visibility: hidden` with their final size reserved (`*Pending` styles in each recipe file, `styles/pending.ts`), so nothing jumps when they upgrade. If the script never loads, a 1.5s animation reveals the raw content instead of hiding it forever. New components: add the tag and its reserved size to `styles/pending.ts`.
 
 ## Notes
 
 - Panda 2 needs `@pandacss/preset-base` installed and listed in `presets`; without it utilities such as `bg` are emitted verbatim.
-- `staticCss: { recipes: '*' }` emits every variant because web components pick classes at runtime.
 - Template bindings: `.prop`, `@event`, `?bool`, `attr`. Attribute names are lowercased by the parser, so camelCase properties use kebab-case: `.tab-index=${0}`.

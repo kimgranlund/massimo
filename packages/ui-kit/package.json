@@ -10,13 +10,14 @@
     "./tokens": "./tokens/index.ts",
     "./styles": "./styles/index.ts",
     "./preset": "./preset.ts",
-    "./components": "./components/index.ts",
     "./styled-system/*": "./styled-system/*",
     "./css": "./dist/ui-kit.css",
     "./components/button/element": "./components/button/button.element.ts",
     "./components/button/react": "./components/button/button.react.tsx",
     "./components/input/element": "./components/input/input.element.ts",
-    "./components/input/react": "./components/input/input.react.tsx"
+    "./components/input/react": "./components/input/input.react.tsx",
+    "./components/listbox/element": "./components/listbox/listbox.element.ts",
+    "./components/select/element": "./components/select/select.element.ts"
   },
   "scripts": {
     "prepare": "panda codegen",
