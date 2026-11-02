@@ -84,6 +84,6 @@ The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). Padding is max(0, 0.5u �
 ## Verification
 
 - `npm test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
-- Browser: `npm run studio`, open `/geometry-check.html`. It renders 17 configurations (7 sizes × 2 borders with rotating icon sizes, plus growth, Q=0, Q=1u) and compares 34 measured lengths each (578 in total) with the resolver; `"fails": []` means CSS and resolver agree.
+- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 55 measured lengths each (2420 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
 
 Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: multiline fields, chips inside inputs, table cells.
