@@ -72,7 +72,8 @@ export function resolveButtonContents(leading: boolean, trailing: boolean, input
 
 // ── Containers ──
 // Each level has a padding (units of u) and a max radius that keeps corners concentric with
-// a 3u control sitting in the corner (3u + padding). Panel, region and page are square: they usually
+// a 3u control sitting in the corner (3u + padding). Padding and gap are theme parameters
+// (pad-<level>, gap-<level>); these are their defaults. Panel, region and page are square: they usually
 // meet the viewport edge. Gap = padding unless the gap attribute overrides it.
 export const CONTAINERS = {
   composite:  { padding: 0.5, maxRadius: 3.5 },
@@ -90,16 +91,24 @@ export type ContainerLevel = keyof typeof CONTAINERS;
 /** Page max width: 72rem (1152px at a 16px root). Fixed, not u-scaled. */
 export const PAGE_MAX_WIDTH_REM = 72;
 
-/** Container padding, gap and radius. Pass `height` to apply the half-height radius cap. */
-export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number } = {}) {
+/** Square levels: they usually meet the viewport edge, so they get no radius. */
+export const SQUARE_LEVELS: ReadonlySet<ContainerLevel> = new Set(['panel', 'region', 'page']);
+
+/**
+ * Container padding, gap and radius. `padUnits` / `gapUnits` override the level's theme
+ * defaults (pad-<level>, gap-<level>); `gap` is the per-element attribute and wins over both.
+ * Pass `height` to apply the half-height radius cap.
+ */
+export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number } = {}) {
   const x = inputs(input);
-  const u = x.unit, spec = CONTAINERS[level];
-  const radius = spec.maxRadius * u * x.radiusScale;
+  const u = x.unit;
+  const pad = input.padUnits ?? CONTAINERS[level].padding;
+  const radius = SQUARE_LEVELS.has(level) ? 0 : (3 + pad) * u * x.radiusScale;
   return {
     unit: u, border: x.border,
-    padding: Math.max(0, spec.padding * u - x.border),
-    edge: spec.padding * u,
-    gap: (input.gap ?? spec.padding) * u,
+    padding: Math.max(0, pad * u - x.border),
+    edge: pad * u,
+    gap: (input.gap ?? input.gapUnits ?? pad) * u,
     radius: input.height === undefined ? radius : Math.min(radius, input.height / 2),
   };
 }

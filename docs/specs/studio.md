@@ -14,7 +14,8 @@
 ## Panel
 
 - **Tabs** (segmented, persisted in localStorage): Components, Containers, Colors; each switches panel and canvas.
-- **Components / Containers:** unit, border, corner radius, corner shape; icon set; scheme.
+- **Components:** unit, border, corner radius, corner shape; icon set; scheme.
+- **Containers:** the same geometry, plus a padding menu and a gap menu (in u, with px) for each container type: composite, group, collection, tile, card, panel, region, page.
 - **Colors:** roles (primary, neutral, critical), scheme, hue set and first hue, chroma (requested, base %, falloff, hue balance), tone (automatic peak, dark and light endpoints), neutral tint, scale, gamut. Generation runs on the main thread, debounced (~300ms per run).
 - **Theme:** start from a saved theme, name, save geometry and icons to `packages/ui-kit/tokens/themes/themes.json` (dev-only `POST /__studio/themes`, validated).
 - **Copy:** JSON of every applied setting minus defaults (`theme`, `scheme`, `spectrum.settings`, `spectrum.roles`) plus `howToApply`, for an agent. **Reset:** all defaults.

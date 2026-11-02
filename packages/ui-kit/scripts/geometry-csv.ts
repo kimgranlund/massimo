@@ -57,9 +57,9 @@ export const rows: Row[] = [
   ...(['group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as ContainerLevel[]).flatMap((level): Row[] => {
     const spec = CONTAINERS[level];
     return [
-      { id: `container.${level}.padding`, family: 'container', element: `ui-${level}`, quantity: 'padding', formula: `${spec.padding}u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
-      { id: `container.${level}.gap`, family: 'container', element: `ui-${level}`, quantity: 'gap', formula: `${spec.padding}u (or g·u from the gap attribute)`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
-      { id: `container.${level}.radius`, family: 'container', element: `ui-${level}`, quantity: 'max radius', formula: spec.maxRadius ? `${spec.maxRadius}u * s (= 3u + ${spec.padding}u)` : '0', value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.maxRadius ? 'concentric with a 3u control in the corner; capped at half height' : 'square: meets the viewport edge' },
+      { id: `container.${level}.padding`, family: 'container', element: `ui-${level}`, quantity: 'padding', formula: `pad-${level} (default ${spec.padding})u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
+      { id: `container.${level}.gap`, family: 'container', element: `ui-${level}`, quantity: 'gap', formula: `gap-${level} (default ${spec.padding})u; the gap attribute wins`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
+      { id: `container.${level}.radius`, family: 'container', element: `ui-${level}`, quantity: 'max radius', formula: spec.maxRadius ? `(3 + pad-${level})u * s (default ${spec.maxRadius}u)` : '0', value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.maxRadius ? 'concentric with a 3u control in the corner; capped at half height' : 'square: meets the viewport edge' },
     ];
   }),
   { id: 'container.page.maxWidth', family: 'container', element: 'ui-page', quantity: 'max width', formula: `${PAGE_MAX_WIDTH_REM}rem (fixed)`, value: () => PAGE_MAX_WIDTH_REM * 16, status: 'implemented', notes: 'px at a 16px root; centered; page({ width }) overrides' },

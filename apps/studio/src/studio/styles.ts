@@ -15,3 +15,7 @@ export const actions = css({ display: 'flex', gap: '2', '& > ui-button': { flex:
 export const status = css({ textStyle: 'caption', color: 'fg.muted', minHeight: '1lh' });
 // The canvas scrolls on its own; bg/color restated here so scoped theme values apply to it.
 export const canvas = css({ height: '100dvh', overflowY: 'auto', bg: 'bg', color: 'fg' });
+// Containers tab: one row per type; the selects' visible labels are hidden (they still name them).
+export const levelGrid = css({ display: 'grid', gridTemplateColumns: '6rem 1fr 1fr', gap: '2', alignItems: 'center', '& ui-select > [data-part=label]': { display: 'none' } });
+export const levelHead = css({ textStyle: 'caption', color: 'fg.muted' });
+export const levelName = css({ textStyle: 'label' });

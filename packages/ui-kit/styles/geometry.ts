@@ -4,7 +4,7 @@
 // Inputs (unitless): --ui-unit (theme default; [size] overrides per subtree), --ui-border,
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
-import { CONTAINERS, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
+import { CONTAINERS, GAPS, ICON_STEPS, SIZES, SQUARE_LEVELS } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
@@ -102,10 +102,16 @@ export const geometry = defineGlobalStyles({
   },
 
   // Layout containers: padding level p and max radius r (units of u), see CONTAINERS.
-  ...Object.fromEntries(LAYOUT.map((k) => [`ui-${k}`, { '--cp': String(CONTAINERS[k].padding), '--cm': String(CONTAINERS[k].maxRadius) }])),
+  // Padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the max
+  // radius follows the padding (3u + pad) so corners stay concentric. The gap attribute wins.
+  ...Object.fromEntries(LAYOUT.map((k) => [`ui-${k}`, {
+    '--cp': `var(--ui-pad-${k})`,
+    '--cg': `var(--ui-gap-${k})`,
+    '--cm': SQUARE_LEVELS.has(k) ? '0' : `calc(3 + var(--ui-pad-${k}))`,
+  }])),
   [LAYOUT_CONTAINERS]: {
     padding: 'max(0px, calc(var(--cp) * var(--u) - var(--b)))',
-    gap: 'calc(var(--ui-gap, var(--cp)) * var(--u))',
+    gap: 'calc(var(--ui-gap, var(--cg)) * var(--u))',
     borderWidth: 'var(--b)',
     borderRadius: 'calc(var(--cm) * var(--u) * var(--ui-radius-scale))',
   },
@@ -153,17 +159,17 @@ export const geometry = defineGlobalStyles({
 
   // Composite (0.5u level). Declared on the parent; options read the inherited values.
   [COMPOSITE]: {
-    '--d': 'max(var(--b), calc(0.5 * var(--u)))',
+    '--d': 'max(var(--b), calc(var(--ui-pad-composite) * var(--u)))',
     '--ci': 'max(var(--b), calc(var(--u) - var(--d)))',
     '--ch': 'calc(var(--slot) + 2 * var(--ci))',
     // Container curvature for lists and popups; segmented caps it at half its height.
-    '--cr': 'calc(3.5 * var(--u) * var(--ui-radius-scale))',
+    '--cr': 'calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale))',
     padding: 'calc(var(--d) - var(--b))',
-    gap: 'calc(var(--ui-gap, 0.5) * var(--u))',
+    gap: 'calc(var(--ui-gap, var(--ui-gap-composite)) * var(--u))',
     borderWidth: 'var(--b)',
     borderRadius: 'var(--cr)',
   },
-  'ui-segmented': { '--cr': 'min(calc(3.5 * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))' },
+  'ui-segmented': { '--cr': 'min(calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))' },
   [`${COMPOSITE} > ui-option`]: {
     minHeight: 'var(--ch)',
     padding: 'calc(var(--ci) - var(--b))',

@@ -19,6 +19,8 @@ import * as s from './styles.ts';
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
 const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
 const DEFAULT_ROLES = { primary: 'indigo', neutral: 'neutral', critical: 'red' };
+const LEVELS = ['composite', 'group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as const;
+const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
 
 export function App() {
   // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
@@ -115,6 +117,22 @@ export function App() {
 
         <div className={s.panelBody}>
           {view !== 'colors' && geometry}
+          {view === 'containers' && (
+            <Group title="Padding and gap per type (u)">
+              <div className={s.levelGrid}>
+                <span className={s.levelHead}>Type</span><span className={s.levelHead}>Padding</span><span className={s.levelHead}>Gap</span>
+                {LEVELS.map((level) => {
+                  const padKey = `pad-${level}` as ParamName, gapKey = `gap-${level}` as ParamName;
+                  const opts = (key: ParamName) => STEPS.filter((v) => v <= PARAMS[key].max).map((v) => [String(v), `${v}u · ${v * params.unit}px`] as [string, string]);
+                  return [
+                    <span key={`${level}-l`} className={s.levelName}>{level}</span>,
+                    <Select key={`${level}-p`} label={`${level} padding`} value={String(params[padKey])} options={opts(padKey)} onValue={(v) => setParam(padKey, Number(v))} />,
+                    <Select key={`${level}-g`} label={`${level} gap`} value={String(params[gapKey])} options={opts(gapKey)} onValue={(v) => setParam(gapKey, Number(v))} />,
+                  ];
+                })}
+              </div>
+            </Group>
+          )}
           {view === 'components' && (
             <Group title="Look">
               <Select label="Icons" value={icons} options={STUDIO_ICON_SETS.map((n) => [n, n])} onValue={setIcons} />

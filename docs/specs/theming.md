@@ -10,6 +10,7 @@ Numbers the geometry derives from (`tokens/themes/params.ts`), emitted as `--ui-
 | `border` | 0–2 px (whole) | 0 (surfaces separate by fill; invalid controls get a danger-tinted fill) |
 | `radius-scale` | 0–3 | 1 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
+| `pad-<level>`, `gap-<level>` | container padding and gap in u, 0.5 steps (composite padding 0–1.5, others 0–12) | composite 0.5, group 1, collection 2, tile 3, card 4, panel 6, region 8, page 8 |
 
 Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` accepts only known parameters in range, plus `icons`), emitted as `:root[data-ui-theme="name"]`. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does.
 

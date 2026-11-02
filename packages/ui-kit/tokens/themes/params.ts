@@ -1,6 +1,8 @@
 // Theme parameters: the few numbers the geometry derives from (colors come from Spectrum).
 // Each becomes a CSS custom property `--ui-<name>`, so a theme is just a set of values
 // that can change at runtime without regenerating any CSS.
+import { CONTAINERS } from '../geometry/resolve.ts';
+
 export interface ParamSpec { label: string; min: number; max: number; step: number; default: number }
 
 export const PARAMS = {
@@ -9,7 +11,21 @@ export const PARAMS = {
   'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4 },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
+  // Container ladder: padding and gap per level, in units of u (pad-card, gap-card, …).
+  ...containerParams(),
 } as const satisfies Record<string, ParamSpec>;
+
+type Level = keyof typeof CONTAINERS;
+function containerParams() {
+  const out = {} as Record<`pad-${Level}` | `gap-${Level}`, ParamSpec>;
+  for (const [level, spec] of Object.entries(CONTAINERS) as [Level, (typeof CONTAINERS)[Level]][]) {
+    // Composite padding stays within the Differential Forms range so its rows can stay 8u.
+    const maxPad = level === 'composite' ? 1.5 : 12;
+    out[`pad-${level}`] = { label: `${level} padding (u)`, min: 0, max: maxPad, step: 0.5, default: spec.padding };
+    out[`gap-${level}`] = { label: `${level} gap (u)`, min: 0, max: 12, step: 0.5, default: spec.padding };
+  }
+  return out;
+}
 
 export type ParamName = keyof typeof PARAMS;
 export type ThemeParams = Record<ParamName, number>;

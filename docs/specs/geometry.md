@@ -62,7 +62,7 @@ Text fields put their text where button contents sit (padding + 1u each side). T
 
 ## Containers
 
-Every container has a padding level p and a max radius. Gap = padding unless `gap` overrides it. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
+Every container has a padding level p and a max radius. Padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults); the max radius follows the padding (3u + p). The `gap` attribute overrides the gap on one element. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|

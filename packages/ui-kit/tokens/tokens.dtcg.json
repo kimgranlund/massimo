@@ -1185,7 +1185,7 @@
         },
         "$description": "ui-group · padding",
         "$extensions": {
-          "com.massimo.formula": "1u - B",
+          "com.massimo.formula": "pad-group (default 1)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 2,
@@ -1221,7 +1221,7 @@
         },
         "$description": "ui-group · gap",
         "$extensions": {
-          "com.massimo.formula": "1u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-group (default 1)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 2,
@@ -1257,7 +1257,7 @@
         },
         "$description": "ui-group · max radius · concentric with a 3u control in the corner; capped at half height",
         "$extensions": {
-          "com.massimo.formula": "4u * s (= 3u + 1u)",
+          "com.massimo.formula": "(3 + pad-group)u * s (default 4u)",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 8,
@@ -1295,7 +1295,7 @@
         },
         "$description": "ui-collection · padding",
         "$extensions": {
-          "com.massimo.formula": "2u - B",
+          "com.massimo.formula": "pad-collection (default 2)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 4,
@@ -1331,7 +1331,7 @@
         },
         "$description": "ui-collection · gap",
         "$extensions": {
-          "com.massimo.formula": "2u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-collection (default 2)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 4,
@@ -1367,7 +1367,7 @@
         },
         "$description": "ui-collection · max radius · concentric with a 3u control in the corner; capped at half height",
         "$extensions": {
-          "com.massimo.formula": "5u * s (= 3u + 2u)",
+          "com.massimo.formula": "(3 + pad-collection)u * s (default 5u)",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 10,
@@ -1405,7 +1405,7 @@
         },
         "$description": "ui-tile · padding",
         "$extensions": {
-          "com.massimo.formula": "3u - B",
+          "com.massimo.formula": "pad-tile (default 3)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 6,
@@ -1441,7 +1441,7 @@
         },
         "$description": "ui-tile · gap",
         "$extensions": {
-          "com.massimo.formula": "3u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-tile (default 3)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 6,
@@ -1477,7 +1477,7 @@
         },
         "$description": "ui-tile · max radius · concentric with a 3u control in the corner; capped at half height",
         "$extensions": {
-          "com.massimo.formula": "6u * s (= 3u + 3u)",
+          "com.massimo.formula": "(3 + pad-tile)u * s (default 6u)",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 12,
@@ -1515,7 +1515,7 @@
         },
         "$description": "ui-card · padding",
         "$extensions": {
-          "com.massimo.formula": "4u - B",
+          "com.massimo.formula": "pad-card (default 4)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 8,
@@ -1551,7 +1551,7 @@
         },
         "$description": "ui-card · gap",
         "$extensions": {
-          "com.massimo.formula": "4u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-card (default 4)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 8,
@@ -1587,7 +1587,7 @@
         },
         "$description": "ui-card · max radius · concentric with a 3u control in the corner; capped at half height",
         "$extensions": {
-          "com.massimo.formula": "7u * s (= 3u + 4u)",
+          "com.massimo.formula": "(3 + pad-card)u * s (default 7u)",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 14,
@@ -1625,7 +1625,7 @@
         },
         "$description": "ui-panel · padding",
         "$extensions": {
-          "com.massimo.formula": "6u - B",
+          "com.massimo.formula": "pad-panel (default 6)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 12,
@@ -1661,7 +1661,7 @@
         },
         "$description": "ui-panel · gap",
         "$extensions": {
-          "com.massimo.formula": "6u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-panel (default 6)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 12,
@@ -1735,7 +1735,7 @@
         },
         "$description": "ui-region · padding",
         "$extensions": {
-          "com.massimo.formula": "8u - B",
+          "com.massimo.formula": "pad-region (default 8)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 16,
@@ -1771,7 +1771,7 @@
         },
         "$description": "ui-region · gap",
         "$extensions": {
-          "com.massimo.formula": "8u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-region (default 8)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 16,
@@ -1845,7 +1845,7 @@
         },
         "$description": "ui-page · padding",
         "$extensions": {
-          "com.massimo.formula": "8u - B",
+          "com.massimo.formula": "pad-page (default 8)u - B",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 16,
@@ -1881,7 +1881,7 @@
         },
         "$description": "ui-page · gap",
         "$extensions": {
-          "com.massimo.formula": "8u (or g·u from the gap attribute)",
+          "com.massimo.formula": "gap-page (default 8)u; the gap attribute wins",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
             "u=2": 16,

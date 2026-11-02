@@ -32,26 +32,26 @@ composite.rowHeight,composite,segmented,one-row height,option height + 2D,16,18,
 composite.radius.segmented,composite,segmented,radius,"min(3.5u * s, row / 2)",7,7.875,8.75,10.5,12.25,14,15.75,17.5,19.25,21,22.75,24.5,26.25,28,29.75,31.5,33.25,35,36.75,38.5,40.25,42,implemented,
 composite.radius.container,composite,"listbox, popup",radius,3.5u * s,7,7.875,8.75,10.5,12.25,14,15.75,17.5,19.25,21,22.75,24.5,26.25,28,29.75,31.5,33.25,35,36.75,38.5,40.25,42,implemented,
 composite.option.radius,composite,option,option radius,"min(option / 2, max(0, parent radius - D))",6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,= 3u control radius (concentric)
-container.group.padding,container,ui-group,padding,1u - B,2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,
-container.group.gap,container,ui-group,gap,1u (or g·u from the gap attribute),2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,
-container.group.radius,container,ui-group,max radius,4u * s (= 3u + 1u),8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,concentric with a 3u control in the corner; capped at half height
-container.collection.padding,container,ui-collection,padding,2u - B,4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
-container.collection.gap,container,ui-collection,gap,2u (or g·u from the gap attribute),4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
-container.collection.radius,container,ui-collection,max radius,5u * s (= 3u + 2u),10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,concentric with a 3u control in the corner; capped at half height
-container.tile.padding,container,ui-tile,padding,3u - B,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
-container.tile.gap,container,ui-tile,gap,3u (or g·u from the gap attribute),6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
-container.tile.radius,container,ui-tile,max radius,6u * s (= 3u + 3u),12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,concentric with a 3u control in the corner; capped at half height
-container.card.padding,container,ui-card,padding,4u - B,8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,
-container.card.gap,container,ui-card,gap,4u (or g·u from the gap attribute),8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,
-container.card.radius,container,ui-card,max radius,7u * s (= 3u + 4u),14,15.75,17.5,21,24.5,28,31.5,35,38.5,42,45.5,49,52.5,56,59.5,63,66.5,70,73.5,77,80.5,84,implemented,concentric with a 3u control in the corner; capped at half height
-container.panel.padding,container,ui-panel,padding,6u - B,12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,
-container.panel.gap,container,ui-panel,gap,6u (or g·u from the gap attribute),12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,
+container.group.padding,container,ui-group,padding,pad-group (default 1)u - B,2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,
+container.group.gap,container,ui-group,gap,gap-group (default 1)u; the gap attribute wins,2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,
+container.group.radius,container,ui-group,max radius,(3 + pad-group)u * s (default 4u),8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,concentric with a 3u control in the corner; capped at half height
+container.collection.padding,container,ui-collection,padding,pad-collection (default 2)u - B,4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
+container.collection.gap,container,ui-collection,gap,gap-collection (default 2)u; the gap attribute wins,4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
+container.collection.radius,container,ui-collection,max radius,(3 + pad-collection)u * s (default 5u),10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,concentric with a 3u control in the corner; capped at half height
+container.tile.padding,container,ui-tile,padding,pad-tile (default 3)u - B,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
+container.tile.gap,container,ui-tile,gap,gap-tile (default 3)u; the gap attribute wins,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
+container.tile.radius,container,ui-tile,max radius,(3 + pad-tile)u * s (default 6u),12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,concentric with a 3u control in the corner; capped at half height
+container.card.padding,container,ui-card,padding,pad-card (default 4)u - B,8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,
+container.card.gap,container,ui-card,gap,gap-card (default 4)u; the gap attribute wins,8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,
+container.card.radius,container,ui-card,max radius,(3 + pad-card)u * s (default 7u),14,15.75,17.5,21,24.5,28,31.5,35,38.5,42,45.5,49,52.5,56,59.5,63,66.5,70,73.5,77,80.5,84,implemented,concentric with a 3u control in the corner; capped at half height
+container.panel.padding,container,ui-panel,padding,pad-panel (default 6)u - B,12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,
+container.panel.gap,container,ui-panel,gap,gap-panel (default 6)u; the gap attribute wins,12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,
 container.panel.radius,container,ui-panel,max radius,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,implemented,square: meets the viewport edge
-container.region.padding,container,ui-region,padding,8u - B,16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
-container.region.gap,container,ui-region,gap,8u (or g·u from the gap attribute),16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
+container.region.padding,container,ui-region,padding,pad-region (default 8)u - B,16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
+container.region.gap,container,ui-region,gap,gap-region (default 8)u; the gap attribute wins,16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
 container.region.radius,container,ui-region,max radius,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,implemented,square: meets the viewport edge
-container.page.padding,container,ui-page,padding,8u - B,16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
-container.page.gap,container,ui-page,gap,8u (or g·u from the gap attribute),16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
+container.page.padding,container,ui-page,padding,pad-page (default 8)u - B,16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
+container.page.gap,container,ui-page,gap,gap-page (default 8)u; the gap attribute wins,16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
 container.page.radius,container,ui-page,max radius,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,implemented,square: meets the viewport edge
 container.page.maxWidth,container,ui-page,max width,72rem (fixed),1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,implemented,px at a 16px root; centered; page({ width }) overrides
 choice.box,choice,"checkbox, radio, switch",box height,5u,10,11.25,12.5,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,in the 6u leading slot
