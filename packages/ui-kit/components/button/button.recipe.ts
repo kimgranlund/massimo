@@ -27,3 +27,8 @@ export const buttonRecipe = defineRecipe({
   },
   defaultVariants: { variant: 'solid', size: 'md' },
 });
+
+// Before the element is defined: invisible, but holding its final size so nothing jumps.
+export const buttonPending = {
+  'ui-button:not(:defined)': { display: 'inline-flex', height: 'control.md', paddingInline: '4', fontSize: 'sm', alignItems: 'center' },
+};

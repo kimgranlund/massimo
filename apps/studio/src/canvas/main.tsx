@@ -3,6 +3,7 @@
 import '../index.css';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
+import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -24,23 +25,29 @@ const page = css({ minHeight: '100dvh', bg: 'bg.subtle', padding: '10', display:
 const card = css({ bg: 'bg', borderWidth: 'thin', borderColor: 'border', borderRadius: 'xl', padding: '6', display: 'flex', flexDirection: 'column', gap: '4' });
 const eyebrow = css({ textStyle: 'caption', color: 'fg.muted', textTransform: 'uppercase', letterSpacing: 'wide' });
 const title = css({ textStyle: 'heading' });
+const form = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const row = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
 
 function Canvas() {
+  const [status, setStatus] = useState('');
   return (
     <main className={page}>
       <section className={card} aria-labelledby="wc-title">
         <p className={eyebrow}>Web components</p>
         <h1 id="wc-title" className={title}>Create your account</h1>
-        <ui-input label="Email" placeholder="you@example.com" description="We never share it." />
-        <ui-input label="Password" type="password" error="At least 12 characters." />
-        <div className={row}>
-          <ui-button>Create account</ui-button>
-          <ui-button variant="outline">Sign in</ui-button>
-          <ui-button variant="ghost">Help</ui-button>
-          <ui-button variant="danger" size="sm">Delete</ui-button>
-          <ui-button loading>Saving</ui-button>
-        </div>
+        <form className={form} onSubmit={(e) => { e.preventDefault(); setStatus(JSON.stringify(Object.fromEntries(new FormData(e.currentTarget)))); }}>
+          <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
+          <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
+          <ui-input name="team" label="Team" error="That name is taken." value="Acme" />
+          <div className={row}>
+            <ui-button type="submit">Create account</ui-button>
+            <ui-button type="reset" variant="outline">Reset</ui-button>
+            <ui-button variant="ghost">Help</ui-button>
+            <ui-button variant="danger" size="sm">Delete</ui-button>
+            <ui-button loading>Saving</ui-button>
+          </div>
+          <p className={eyebrow} role="status">{status}</p>
+        </form>
       </section>
       <section className={card} aria-labelledby="react-title">
         <p className={eyebrow}>React</p>

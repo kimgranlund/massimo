@@ -4,7 +4,7 @@ Light-DOM web components and React components built on one headless layer and on
 
 | Folder | Holds | May import |
 |---|---|---|
-| `core/` | `signal`/`computed`/`effect`, `html`/`render`/`repeat`, `UIElement`, `define` | nothing |
+| `core/` | `signal`/`computed`/`effect`, `html`/`render`/`repeat`, `UIElement`, `UIFormElement`, `define` | nothing |
 | `dom/` | Headless behaviors: functions that return attribute maps and handle events (`buttonAttrs`, `fieldAttrs`, …) | nothing |
 | `tokens/` | Global tokens in Panda format: `colors/`, `typography/`, `geometry/`, `motion/` | `@pandacss/dev` |
 | `styles/` | Reset, text styles, `pages/` patterns (`page`, `prose`) | `@pandacss/dev` |
@@ -43,9 +43,24 @@ export default defineConfig({ presets: ['@pandacss/preset-base', uiKitPreset] })
 
 1. `dom/<name>.ts`: state in, attribute maps out, plus event helpers. No DOM writes.
 2. `components/<name>/<name>.recipe.ts`: `defineRecipe`/`defineSlotRecipe`; register it in `preset.ts`.
-3. `<name>.element.ts`: extend `UIElement`; use `declare` for typed props, never class fields (they shadow the reactive accessor).
+3. `<name>.element.ts`: extend `UIElement` (or `UIFormElement` for anything that submits or validates); no native form elements; use `declare` for typed props, never class fields (they shadow the reactive accessor).
 4. `<name>.react.tsx`: spread `toReactProps(...)` from the same `dom/` function.
 5. `npm run codegen`, then add a test in `test/`.
+
+## Web components contain zero native form elements
+
+No `input`, `button`, `select`, `textarea`, `label`, `fieldset`, `option` or `output` inside a `ui-*` element (tests enforce it). Instead:
+
+- **`UIFormElement`** (`core/form-element.ts`) makes the host form-associated: `name`, `value` via `formValue()`, validity via `validate()`, `form`, `labels`, `checkValidity()`/`reportValidity()`/`setCustomValidity()`, reset/restore, and disabled by an ancestor `<fieldset>` (`isDisabled`).
+- **Errors wait for the user.** Built-in validation is tracked from the start, but `aria-invalid` and the message only appear after blur or a blocked submit (`userInvalid`, `data-user-invalid` on the host). An author-supplied `error` shows immediately. Recipes key on `[aria-invalid=true]`, never native `:invalid`.
+- **`<ui-input>`** is a `contenteditable="plaintext-only"` `role="textbox"`, labelled by a span via `aria-labelledby`. Enter submits the form, pasted newlines become spaces, `type="password"` masks with `-webkit-text-security` and blocks copy/cut, `type` also sets `inputmode`/spellcheck.
+- **`<ui-button>`** is the host itself (`role="button"`), submitting or resetting its form through `ElementInternals`.
+
+Known trade-offs of contenteditable fields: browser autofill and password managers don't recognise them, and there is no `maxlength` typing limit (validate instead).
+
+## No flash of unstyled content
+
+Undefined `ui-*` elements are `visibility: hidden` with their final size reserved (`*Pending` styles in each recipe file, `styles/pending.ts`), so nothing jumps when they upgrade. If the script never loads, a 1.5s animation reveals the raw content instead of hiding it forever. New components: add the tag to `styles/pending.ts` and export a `<name>Pending` size.
 
 ## Notes
 

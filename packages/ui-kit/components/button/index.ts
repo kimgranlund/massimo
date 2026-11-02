@@ -1,1 +1,1 @@
-export { buttonRecipe } from './button.recipe.ts';
+export { buttonRecipe, buttonPending } from './button.recipe.ts';

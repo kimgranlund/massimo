@@ -1,26 +1,23 @@
 // <ui-button>: the host element is the button. Authored children are kept as its label.
-import { UIElement, define } from '../../core/index.ts';
+import { UIFormElement, define } from '../../core/index.ts';
 import { applyAttrs, buttonAttrs, blockIfInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
 import { button, type ButtonVariantProps } from '../../styled-system/recipes/index.js';
 
-export class UIButton extends UIElement {
-  static formAssociated = true;
+export class UIButton extends UIFormElement {
   static properties = {
+    ...UIFormElement.properties,
     variant: { type: String, default: 'solid', reflect: true },
     size: { type: String, default: 'md', reflect: true },
     type: { type: String, default: 'button' },
-    disabled: { type: Boolean, default: false, reflect: true },
     loading: { type: Boolean, default: false, reflect: true },
   };
   declare variant: NonNullable<ButtonVariantProps['variant']>;
   declare size: NonNullable<ButtonVariantProps['size']>;
   declare type: 'button' | 'submit' | 'reset';
-  declare disabled: boolean;
   declare loading: boolean;
 
-  #internals = this.attachInternals?.();
   #classes: string[] = [];
-  get #state(): ButtonState { return { disabled: this.disabled, loading: this.loading }; }
+  get #state(): ButtonState { return { disabled: this.isDisabled, loading: this.loading }; }
 
   connected() {
     // Capture phase so a blocked click never reaches the page's own listeners.
@@ -44,7 +41,7 @@ export class UIButton extends UIElement {
 
   #onClick = (e: Event) => {
     if (blockIfInactive(e, this.#state)) return;
-    const form = this.#internals?.form;
+    const form = this.form;
     if (this.type === 'submit') form?.requestSubmit();
     else if (this.type === 'reset') form?.reset();
   };

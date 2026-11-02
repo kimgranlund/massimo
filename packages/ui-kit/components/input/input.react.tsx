@@ -12,7 +12,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
 
 export function Input({ label, description, error, size, className, id, required, disabled, readOnly, ...rest }: InputProps) {
   const auto = useId();
-  const a = fieldAttrs({ id: id ?? auto, hasDescription: !!description, error, required, disabled, readonly: readOnly });
+  const a = fieldAttrs({ id: id ?? auto, hasDescription: !!description, error, required, disabled, readonly: readOnly, native: true });
   const cls = input({ size });
   return (
     <div className={cx(cls.root, className)}>
