@@ -466,9 +466,26 @@
         "region",
         "panel",
         "card",
-        "collection"
+        "collection",
+        "accordion"
       ],
       "behavior": "Enter, Space or a press on the trigger toggles the panel and fires a cancelable openchange ({ open, reason: 'trigger-press', event }); setting open fires nothing. The panel's height animates on the reveal intent in CSS."
+    },
+    "accordion": {
+      "geometryFamily": "disclosure",
+      "element": "Host stacks ui-collapsible children as its items (data-part=item); each item wraps its trigger in a heading part (role=heading, aria-level 3) and makes its panel a region labelled by the trigger.",
+      "parts": [
+        "accordion-item",
+        "accordion-header"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection"
+      ],
+      "behavior": "The accordion owns the open state (value: the open item values; multiple allows several). A trigger press fires the item's openchange, then the accordion's cancelable change ({ value: string[], reason: 'trigger-press', event }); in single mode opening one item closes the others. Arrow keys (Up / Down, or Left / Right when horizontal), Home and End move focus between enabled triggers; every trigger stays in the tab order."
     }
   }
 }

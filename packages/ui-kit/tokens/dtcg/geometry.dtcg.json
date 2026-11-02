@@ -5084,6 +5084,82 @@
           }
         }
       }
+    },
+    "accordion": {
+      "divider": {
+        "$type": "dimension",
+        "$value": {
+          "value": 1,
+          "unit": "px"
+        },
+        "$description": "accordion item · divider between items · border role; outside the trigger padding, so it is the same at B = 0 and B > 0",
+        "$extensions": {
+          "com.massimo.formula": "thin border width (1px token)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 1,
+            "u=2.25": 1,
+            "u=2.5": 1,
+            "u=2.75": 1,
+            "u=3": 1,
+            "u=3.5": 1,
+            "u=4": 1,
+            "u=4.5": 1,
+            "u=5": 1,
+            "u=5.5": 1,
+            "u=6": 1,
+            "u=6.5": 1,
+            "u=7": 1,
+            "u=7.5": 1,
+            "u=8": 1,
+            "u=8.5": 1,
+            "u=9": 1,
+            "u=9.5": 1,
+            "u=10": 1,
+            "u=10.5": 1,
+            "u=11": 1,
+            "u=11.5": 1,
+            "u=12": 1
+          }
+        }
+      },
+      "itemHeight": {
+        "$type": "dimension",
+        "$value": {
+          "value": 37,
+          "unit": "px"
+        },
+        "$description": "accordion item · closed item height · trigger row plus the divider",
+        "$extensions": {
+          "com.massimo.formula": "8u + 1px",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 17,
+            "u=2.25": 19,
+            "u=2.5": 21,
+            "u=2.75": 23,
+            "u=3": 25,
+            "u=3.5": 29,
+            "u=4": 33,
+            "u=4.5": 37,
+            "u=5": 41,
+            "u=5.5": 45,
+            "u=6": 49,
+            "u=6.5": 53,
+            "u=7": 57,
+            "u=7.5": 61,
+            "u=8": 65,
+            "u=8.5": 69,
+            "u=9": 73,
+            "u=9.5": 77,
+            "u=10": 81,
+            "u=10.5": 85,
+            "u=11": 89,
+            "u=11.5": 93,
+            "u=12": 97
+          }
+        }
+      }
     }
   }
 }

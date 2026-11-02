@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "accordion",
+  "title": "Accordion",
+  "summary": "Stacked collapsible sections, one or several open.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "One open at a time",
+      "subject": "component:accordion",
+      "markup": "<ui-accordion default-value=\"shipping\"><ui-collapsible value=\"shipping\" label=\"Shipping\"><p>Ships in 2–3 days.</p></ui-collapsible><ui-collapsible value=\"returns\" label=\"Returns\"><p>30 days, free.</p></ui-collapsible><ui-collapsible value=\"warranty\" label=\"Warranty\"><p>Two years.</p></ui-collapsible></ui-accordion>"
+    },
+    {
+      "id": "multiple",
+      "label": "Several open",
+      "subject": "component:accordion",
+      "markup": "<ui-accordion multiple><ui-collapsible label=\"Account\" open><p>Name and email.</p></ui-collapsible><ui-collapsible label=\"Billing\" open><p>Card ending 4242.</p></ui-collapsible><ui-collapsible label=\"Archive\" disabled><p>Read only.</p></ui-collapsible></ui-accordion>"
+    }
+  ]
+}

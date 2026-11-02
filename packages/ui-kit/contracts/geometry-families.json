@@ -247,15 +247,17 @@
         "resolveControl",
         "resolveTextRun"
       ],
-      "summary": "Collapsible (and accordion) triggers are control rows: 8u, padding u − B, the construction pattern with a trailing caret at icon size sm, the control radius, full width. The panel's text starts at the trigger's label edge (1u + 2u = 3u) and ends 2u below its content; its height animates between 0 and auto on the reveal intent.",
+      "summary": "Collapsible (and accordion) triggers are control rows: 8u, padding u − B, the construction pattern with a trailing caret at icon size sm, the control radius, full width. The panel's text starts at the trigger's label edge (1u + 2u = 3u) and ends 2u below its content; its height animates between 0 and auto on the reveal intent. Accordion items are collapsibles separated by the thin (1px) border-width token outside their padding: a closed item is 8u + 1px at any B.",
       "members": [
-        "component:collapsible"
+        "component:collapsible",
+        "component:accordion"
       ],
       "searchTerms": [
         "disclosure geometry",
         "collapsible trigger",
         "accordion row",
-        "panel inset"
+        "panel inset",
+        "accordion divider"
       ],
       "csv": [
         "disclosure"

@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "accordion",
+  "scope": "Behavior, ARIA, parts, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and client behavior. Rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/accordion/accordion.element.ts",
+      "sha256": "4c38de789f75f543cf155c6b328968e9af489bc0a3ad7841367bdbe81fd8501b"
+    },
+    {
+      "path": "components/accordion/accordion.react.tsx",
+      "sha256": "d197b960686973467824aaf1f9611b26d6415ab9f2983596cad9744af7f0712f"
+    },
+    {
+      "path": "components/accordion/accordion.recipe.ts",
+      "sha256": "da46793c165ee6580562956909bf512e6356a78facce4e92de8d6d44e921ccbf"
+    },
+    {
+      "path": "components/accordion/accordion.manifest.json",
+      "sha256": "ee2e9837f23d46d77c204a367e67b66cdf82803b685b2c3e9a92a639c545a29c"
+    },
+    {
+      "path": "components/collapsible/collapsible.element.ts",
+      "sha256": "67c0c09f629fccea467fe256d7bdfe1ac3cc4efb3e143066c5f4c6aaf2c2324d"
+    },
+    {
+      "path": "components/collapsible/collapsible.react.tsx",
+      "sha256": "e8a5b31c598f09cd20e29398dc164774ad13479986431bc2577d19685d3c869f"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"accordion\" test/disclosure.test.ts",
+          "covers": "items, header and region parts, single and multiple modes, value / default-value / seeded open, change (cancelable, reason trigger-press), disabled, arrow / Home / End focus, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"disclosure\" test/geometry.test.ts",
+          "covers": "resolveDisclosure: trigger row, panel insets, the 1px divider and the closed item height"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"accordion\" test/disclosure.test.ts",
+          "node --test --test-name-pattern=\"disclosure\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Accordion\" test/disclosure.test.ts",
+          "covers": "React SSR: the same data-* as the web component on host, items, headers, triggers and panels; composed parts render the preset items; onValueChange / onOpenChange details; keyboard focus"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Accordion\" test/disclosure.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The panel height animation needs a real browser; unit tests cover the attributes it keys on.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio at u = 2, 3, the theme unit 4.5 and 6, B = 0 and 1, light and dark): growth (long labels wrap and grow their trigger; the divider stays 1px), RTL (dir=rtl mirrors the triggers; horizontal arrow keys are mirrored), focus (the outline ring never changes an item's size), screenshots of the Disclosure family checked light and dark."
+  ]
+}

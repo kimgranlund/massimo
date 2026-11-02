@@ -144,6 +144,8 @@ export const rows: Row[] = [
   { id: 'disclosure.trigger.radius', family: 'disclosure', element: 'collapsible trigger', quantity: 'radius', formula: 'min(3u * s, 4u)', value: (u) => resolveDisclosure({ unit: u }).radius, status: 'implemented', notes: 'the control radius' },
   { id: 'disclosure.panel.paddingInline', family: 'disclosure', element: 'collapsible panel', quantity: 'panel inline padding', formula: 'u + 2u', value: (u) => resolveDisclosure({ unit: u }).panelInline, status: 'implemented', notes: 'text starts at the trigger label edge' },
   { id: 'disclosure.panel.paddingBlockEnd', family: 'disclosure', element: 'collapsible panel', quantity: 'panel end padding', formula: '2u', value: (u) => resolveDisclosure({ unit: u }).panelBlockEnd, status: 'implemented', notes: '0 while closed; height and padding animate on the reveal intent' },
+  { id: 'disclosure.accordion.divider', family: 'disclosure', element: 'accordion item', quantity: 'divider between items', formula: 'thin border width (1px token)', value: (u) => resolveDisclosure({ unit: u }).divider, status: 'implemented', notes: 'border role; outside the trigger padding, so it is the same at B = 0 and B > 0' },
+  { id: 'disclosure.accordion.itemHeight', family: 'disclosure', element: 'accordion item', quantity: 'closed item height', formula: '8u + 1px', value: (u) => resolveDisclosure({ unit: u }).itemHeight, status: 'implemented', notes: 'trigger row plus the divider' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

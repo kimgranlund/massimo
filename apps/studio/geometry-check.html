@@ -15,6 +15,7 @@ import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/collapsible/element';
+import '@massimo/ui-kit/components/accordion/element';
 import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveDisclosure } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
@@ -55,7 +56,8 @@ for (const c of cases) {
     <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
     <ui-field id="fInline" layout="inline" label="Radius" unit="px" readout="12" description="Corner"><ui-input></ui-input></ui-field>
     <ui-field-grid id="fGrid"><h3>One</h3><ui-field layout="inline" label="A" readout="1"><ui-input></ui-input></ui-field><ui-field layout="inline" label="Longer label" readout="2"><ui-input></ui-input></ui-field><h3>Two</h3><ui-field layout="inline" label="B" readout="3"><ui-input></ui-input></ui-field></ui-field-grid></div>
-    <div style="width:${60 * c.unit}px"><ui-collapsible id="colClosed" label="Closed"><p>x</p></ui-collapsible><ui-collapsible id="colOpen" label="Open" open><p style="height:${4 * c.unit}px">x</p></ui-collapsible><ui-collapsible id="colLead"><div data-part="trigger"><span slot="leading"></span>Lead</div><div data-part="panel">y</div></ui-collapsible></div>
+    <div style="width:${60 * c.unit}px"><ui-collapsible id="colClosed" label="Closed"><p>x</p></ui-collapsible><ui-collapsible id="colOpen" label="Open" open><p style="height:${4 * c.unit}px">x</p></ui-collapsible><ui-collapsible id="colLead"><div data-part="trigger"><span slot="leading"></span>Lead</div><div data-part="panel">y</div></ui-collapsible>
+      <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -306,6 +308,15 @@ for (const c of cases) {
     checks['collapsible.panel.text'] = [r2(rect(opp.firstElementChild).left - rect(op).left), r2(rect(part(part(op, 'trigger'), 'contents')).left - rect(op).left + rd.labelStart)];
     checks['collapsible.open.height'] = [r2(rect(op).height), r2(rd.height + 4 * c.unit + rd.panelBlockEnd)];
     checks['collapsible.closed.panel'] = [part(cl, 'panel').getClientRects().length, 0];
+    // Accordion: items are trigger rows plus a 1px divider outside their padding.
+    const ac = $('acc'), [ia, ib, ic] = ac.querySelectorAll(':scope > ui-collapsible');
+    checks['accordion.item.height'] = [r2(rect(ia).height), rd.itemHeight];
+    checks['accordion.item.divider'] = [px(cs(ia).borderBottomWidth), rd.divider];
+    checks['accordion.item.trigger'] = [r2(rect(part(ia, 'trigger')).height), rd.height];
+    checks['accordion.open.height'] = [r2(rect(ib).height), r2(rd.height + 4 * c.unit + rd.panelBlockEnd + rd.divider)];
+    checks['accordion.stack'] = [r2(rect(ic).top - rect(ia).top), r2(rect(ia).height + rect(ib).height)];
+    checks['accordion.panel.inline'] = [px(cs(part(ib, 'panel')).paddingLeft), rd.panelInline];
+    checks['accordion.width'] = [r2(rect(part(ia, 'trigger')).width), r2(rect(ac).width)];
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

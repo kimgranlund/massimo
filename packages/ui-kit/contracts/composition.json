@@ -66,6 +66,16 @@
         "property panel"
       ]
     },
+    "accordion": {
+      "id": "context:accordion",
+      "host": "component:accordion",
+      "summary": "Inside a ui-accordion: ui-collapsible children are its items (one or several open, focus moves between their triggers).",
+      "searchTerms": [
+        "accordion",
+        "inside accordion",
+        "accordion item"
+      ]
+    },
     "form": {
       "id": "context:form",
       "host": null,

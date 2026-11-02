@@ -12,6 +12,7 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/collapsible/element';
+import '@massimo/ui-kit/components/accordion/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -27,7 +28,7 @@ export const FAMILIES = [
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
-  ['disclosure', 'Disclosure', 'ui-collapsible'],
+  ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -106,7 +107,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
-    disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS.',
+    disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
   };
   const CONTENT: Record<Family, ReactNode> = {
@@ -272,8 +273,29 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             <ui-collapsible label="Archived (read only)" disabled><p className={panelText}>Hidden.</p></ui-collapsible>
           </div>
         </Row>
+        <Row label="Accordion">
+          <div className={disclosureColumn}>
+            <ui-accordion default-value="shipping">
+              <ui-collapsible value="shipping" label="Shipping"><p className={panelText}>Orders ship within two working days. Tracking arrives by email.</p></ui-collapsible>
+              <ui-collapsible value="returns" label="Returns"><p className={panelText}>Return anything within 30 days, free of charge.</p></ui-collapsible>
+              <ui-collapsible value="warranty" label="Warranty"><i slot="leading" name="shield-check" /><p className={panelText}>Two years on every part, worldwide.</p></ui-collapsible>
+              <ui-collapsible value="archive" label="Archived orders" disabled><p className={panelText}>Hidden.</p></ui-collapsible>
+            </ui-accordion>
+          </div>
+        </Row>
+        <Row label="Multiple">
+          <div className={disclosureColumn}>
+            <ui-accordion multiple>
+              <ui-collapsible label="Account" open><p className={panelText}>Name, email and avatar.</p></ui-collapsible>
+              <ui-collapsible label="Billing" open><p className={panelText}>Card ending 4242, renews 1 Dec.</p></ui-collapsible>
+              <ui-collapsible label="Notifications"><p className={panelText}>Email and push.</p></ui-collapsible>
+            </ui-accordion>
+          </div>
+        </Row>
         <SizeLadder family="disclosure" params={params}>
-          <div className={disclosureColumn}><ui-collapsible label="Details" default-open><p className={panelText}>Panel text starts at the trigger label.</p></ui-collapsible></div>
+          <div className={disclosureColumn}>
+            <ui-accordion default-value="0"><ui-collapsible label="Details"><p className={panelText}>Panel text starts at the trigger label.</p></ui-collapsible><ui-collapsible label="More" /></ui-accordion>
+          </div>
         </SizeLadder>
       </>
     ),

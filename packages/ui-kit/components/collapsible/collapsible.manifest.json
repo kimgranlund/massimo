@@ -308,6 +308,11 @@
     },
     {
       "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:accordion"
+    },
+    {
+      "from": "component:collapsible",
       "relation": "uses",
       "to": "foundation:icons"
     }

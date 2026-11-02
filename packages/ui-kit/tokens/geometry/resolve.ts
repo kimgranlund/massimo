@@ -372,7 +372,8 @@ export const popupOffset = (input: GeometryInput = {}) => inputs(input).unit;
 // ── Disclosure: collapsible, accordion, tabs ──
 // A collapsible's trigger is a control row (8u, pad u − B, the construction pattern with a trailing
 // caret at icon size sm); its panel starts at the trigger's label edge (1u host + 2u bare label
-// edge = 3u) and ends 2u below its content. Lengths in CSS px.
+// edge = 3u) and ends 2u below its content. Accordion items are collapsibles separated by a thin
+// (1px token) divider. Lengths in CSS px.
 
 /** ui-collapsible (and each ui-accordion item): trigger row, caret, panel insets. */
 export function resolveDisclosure(input: GeometryInput = {}) {
@@ -387,5 +388,12 @@ export function resolveDisclosure(input: GeometryInput = {}) {
     // The panel text lines up with the trigger label: the trigger's 1u (padding + border) + its 2u bare edge.
     panelInline: c.inset + label.start,
     panelBlockEnd: 2 * u,
+    // Accordion: items are separated by the thin border-width token (1px), outside the trigger's
+    // padding, so a closed item is its trigger row plus the divider at any B.
+    divider: DIVIDER,
+    itemHeight: c.height + DIVIDER,
   };
 }
+
+/** The thin border-width token (tokens/geometry/index.ts borderWidths.thin): accordion dividers, the tab underline track. */
+export const DIVIDER = 1;

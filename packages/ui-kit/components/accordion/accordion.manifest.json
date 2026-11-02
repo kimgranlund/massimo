@@ -1,0 +1,403 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "accordion",
+  "primary": "component:accordion",
+  "module": "./accordion.element.ts",
+  "registration": "on-import",
+  "documentation": "./accordion.md",
+  "examples": "./accordion.examples.json",
+  "contract": "../../contracts/components.json#/components/accordion",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./accordion.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveDisclosure"
+      ],
+      "description": "Reference numbers for the item trigger rows, the panel insets and the divider."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:accordion",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-accordion",
+      "class": "UIAccordion",
+      "extends": "UIElement",
+      "intent": [
+        "Show one or several of a set of labelled sections, each under its own trigger"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Comma-separated values of the open items (an item value is its value attribute, else its index). Setting it opens and closes the items without a change event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": "",
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "The first value, applied once at connect when no value attribute is present (Base UI defaultValue). Without either, the items open / default-open seed it.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "multiple",
+          "type": "boolean",
+          "default": false,
+          "attribute": "multiple",
+          "reflects": false,
+          "description": "Several items may be open; otherwise opening one closes the others and only the first seeded item opens.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Every item ignores presses and its trigger leaves the tab order.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "vertical",
+          "attribute": "orientation",
+          "reflects": false,
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "description": "vertical (default) or horizontal: the item layout, the divider side and which arrow keys move focus.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ value: string[], reason: 'trigger-press', event: Event }",
+          "trigger": "an item's trigger is pressed and its openchange was not canceled; preventDefault keeps every item as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none (each trigger is role=button inside a role=heading header; each panel is role=region)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on a trigger",
+            "action": "open or close that item (single mode: opening closes the others)"
+          },
+          {
+            "keys": "ArrowDown, ArrowUp (ArrowRight, ArrowLeft when horizontal)",
+            "action": "move focus to the next / previous enabled trigger, wrapping"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move focus to the first / last enabled trigger"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "each item's trigger text"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "ui-collapsible items (preset: label and content; or their trigger and panel parts). Other children are left as they are and take no part in the value."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The accordion owns the items' open state: change the accordion's value, not an item's open, from script.",
+        "Without value or default-value, the items' open / default-open attributes seed the first value (only the first open one in single mode).",
+        "Every trigger stays in the tab order; arrow keys only move focus (APG accordion), they do not open items.",
+        "Headers are role=heading aria-level=3 elements in both renderers (Base UI renders an h3; render changes it)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A single show / hide section.",
+          "reason": "One collapsible needs no coordinator.",
+          "useInstead": "component:collapsible"
+        },
+        {
+          "when": "Peer views where exactly one is always shown, switched from a row of labels.",
+          "reason": "Tabs keep one panel visible and name every view in one list."
+        },
+        {
+          "when": "Content the user must compare side by side.",
+          "reason": "An accordion hides the sections it closes; lay them out in a collection instead.",
+          "useInstead": "component:collection"
+        }
+      ],
+      "searchTerms": [
+        "accordion",
+        "faq",
+        "expandable sections",
+        "disclosure group"
+      ]
+    },
+    {
+      "id": "part:accordion-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "ui-collapsible",
+      "selector": ":scope > [data-part=item]",
+      "summary": "One item: a ui-collapsible child (data-open / data-closed, data-disabled, data-index). Base UI Accordion.Item."
+    },
+    {
+      "id": "part:accordion-header",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=item] > [data-part=header]",
+      "summary": "The heading around an item's trigger (role=heading, aria-level 3; data-open, data-disabled, data-index). Base UI Accordion.Header."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:accordion",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesGeometry",
+      "to": "geometry:disclosure"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "ownsPart",
+      "to": "part:accordion-item"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "ownsPart",
+      "to": "part:accordion-header"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:accordion",
+      "relation": "uses",
+      "to": "component:collapsible"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./accordion.element.ts",
+      "exports": {
+        "component:accordion": "UIAccordion"
+      },
+      "verification": "./verification/accordion.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./accordion.react.tsx",
+      "exports": {
+        "component:accordion": "Accordion"
+      },
+      "verification": "./verification/accordion.verification.json#/renderers/react",
+      "props": {
+        "component:accordion": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "value?: string[] // Controlled open item values.",
+            "defaultValue?: string[] // Open item values at first render (uncontrolled).",
+            "onValueChange?: (value: string[], details: ChangeDetails) => void // Called when a trigger press changes the open items, with Base UI's details ({ reason: 'trigger-press', event }).",
+            "multiple?: boolean // Several items may be open at once (default: opening one closes the others).",
+            "disabled?: boolean // Every item ignores presses.",
+            "orientation?: 'vertical' | 'horizontal' // vertical (default): Up / Down move focus; horizontal: Left / Right.",
+            "size?: number // Unit u in px; each trigger row is 8u.",
+            "children?: ReactNode"
+          ]
+        }
+      },
+      "parts": {
+        "component:accordion": {
+          "Accordion.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'defaultValue'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: string[] // Controlled open item values.",
+              "defaultValue?: string[] = [] // Open item values at first render (uncontrolled).",
+              "onValueChange?: (value: string[], details: ChangeDetails) => void // Called when a trigger press changes the open items, with Base UI's details ({ reason: 'trigger-press', event }).",
+              "multiple?: boolean = false // Several items may be open at once (default: opening one closes the others).",
+              "disabled?: boolean = false // Every item ignores presses.",
+              "orientation?: 'vertical' | 'horizontal' = 'vertical' // vertical (default): Up / Down move focus; horizontal: Left / Right.",
+              "size?: number // Unit u in px; each trigger row is 8u.",
+              "children?: ReactNode"
+            ]
+          },
+          "Accordion.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "value?: string // The item's value in the Root's value list; defaults to its index.",
+              "disabled?: boolean // Ignores presses on this item's trigger.",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when this item's trigger is pressed.",
+              "label?: ReactNode // Preset item: the trigger's label (the children become the panel).",
+              "children?: ReactNode"
+            ]
+          },
+          "Accordion.Header": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Accordion.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "children?: ReactNode"
+            ]
+          },
+          "Accordion.Panel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

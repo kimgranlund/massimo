@@ -13,7 +13,7 @@ export const pendingKeyframes = defineKeyframes({
 const FIELD_HEIGHT = 'calc(var(--h) + 1.75rem)';
 
 export const pending = defineGlobalStyles({
-  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-collapsible):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-collapsible, ui-accordion):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
   ':is(ui-badge, ui-tag, ui-chip):not(:defined)': { display: 'inline-flex' },
@@ -21,6 +21,6 @@ export const pending = defineGlobalStyles({
   // Fields keep the block flow their controls reserve space in.
   ':is(ui-field, ui-field-grid):not(:defined)': { display: 'block' },
   // A collapsible reserves its trigger row.
-  'ui-collapsible:not(:defined)': { display: 'block', minHeight: 'var(--h)' },
+  ':is(ui-collapsible, ui-accordion):not(:defined)': { display: 'block', minHeight: 'var(--h)' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
 });

@@ -41,7 +41,9 @@
     "./components/field/element": "./components/field/field.element.ts",
     "./components/field/react": "./components/field/field.react.tsx",
     "./components/collapsible/element": "./components/collapsible/collapsible.element.ts",
-    "./components/collapsible/react": "./components/collapsible/collapsible.react.tsx"
+    "./components/collapsible/react": "./components/collapsible/collapsible.react.tsx",
+    "./components/accordion/element": "./components/accordion/accordion.element.ts",
+    "./components/accordion/react": "./components/accordion/accordion.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

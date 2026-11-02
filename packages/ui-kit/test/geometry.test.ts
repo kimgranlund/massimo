@@ -224,4 +224,8 @@ test('disclosure: the collapsible trigger is an 8u control row with a sm caret; 
   assert.equal(d.panelInline, 12, 'border + padding + bare label edge');
   assert.equal(d.panelBlockEnd, 8);
   assert.equal(resolveDisclosure({ unit: 2 }).caret, 11, 'sm below the 6u slot at u = 2');
+  // Accordion: a 1px (thin token) divider outside the padding, the same at every B.
+  assert.equal(d.divider, 1);
+  assert.equal(d.itemHeight, 33);
+  assert.equal(resolveDisclosure({ unit: 4, border: 0 }).itemHeight, d.itemHeight);
 });
