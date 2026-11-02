@@ -12,8 +12,50 @@ export type Voice = (typeof VOICES)[number];
 export const DEFAULT_VOICES: Record<Voice, Face> = { display: 'display', heading: 'sans', body: 'sans', ui: 'controls', numeric: 'controls', code: 'mono' };
 /** Voices whose bold weight drops to regular on a serif face (massimo-ui's serif heading style). */
 export const SERIF_REGULAR_VOICES: ReadonlySet<Voice> = new Set(['display', 'heading']);
-/** Figures for the numeric voice: aligned columns, lining digits. */
-export const NUMERIC_FEATURES = 'tabular-nums lining-nums';
+// Numerals contract: `data-numeric="<variant> …"` (space-separated) and the Panda `numeric()` pattern.
+// Each variant sets one axis of font-variant-numeric (or, for `caps`, font-feature-settings), so
+// variants on different axes combine. Two variants on one axis conflict: the later one in this
+// table wins (the CSS rules follow table order), whatever the attribute order. Bare = the defaults.
+export const NUMERIC_AXES = ['spacing', 'figures', 'fraction', 'zero', 'ordinal'] as const;
+export type NumericAxis = (typeof NUMERIC_AXES)[number];
+/** Axis defaults: aligned columns, lining digits. The other axes default to off. */
+export const NUMERIC_DEFAULTS: Partial<Record<NumericAxis, string>> = { spacing: 'tabular-nums', figures: 'lining-nums' };
+export const NUMERIC_VARIANTS = {
+  'tabular':          { axis: 'spacing', value: 'tabular-nums', feature: 'tnum', label: 'Tabular figures' },
+  'proportional':     { axis: 'spacing', value: 'proportional-nums', feature: 'pnum', label: 'Proportional figures' },
+  'lining':           { axis: 'figures', value: 'lining-nums', feature: 'lnum', label: 'Lining figures' },
+  'oldstyle':         { axis: 'figures', value: 'oldstyle-nums', feature: 'onum', label: 'Oldstyle figures' },
+  'fraction':         { axis: 'fraction', value: 'diagonal-fractions', feature: 'frac', label: 'Diagonal fractions' },
+  'stacked-fraction': { axis: 'fraction', value: 'stacked-fractions', feature: 'afrc', label: 'Stacked fractions' },
+  'slashed-zero':     { axis: 'zero', value: 'slashed-zero', feature: 'zero', label: 'Slashed zero' },
+  'ordinal':          { axis: 'ordinal', value: 'ordinal', feature: 'ordn', label: 'Ordinals' },
+  // Case-sensitive forms: punctuation and (in some faces) figures sized for all-caps settings.
+  'caps':             { axis: 'caps', value: '"case"', feature: 'case', label: 'Case-sensitive forms' },
+} as const satisfies Record<string, { axis: NumericAxis | 'caps'; value: string; feature: string; label: string }>;
+export type NumericVariant = keyof typeof NUMERIC_VARIANTS;
+/** `data-position` on a `data-numeric` element: superior / inferior figures (font-variant-position). */
+export const NUMERIC_POSITIONS = { super: { feature: 'sups', label: 'Superior figures' }, sub: { feature: 'subs', label: 'Inferior figures' } } as const;
+export type NumericPosition = keyof typeof NUMERIC_POSITIONS;
+
+/** The CSS for a set of numeric variants (unknown tokens are ignored, as in the attribute). */
+export function numericStyle(variants: readonly string[] | string = [], position?: NumericPosition) {
+  const list = new Set(typeof variants === 'string' ? variants.split(/\s+/) : variants);
+  const axes: Partial<Record<NumericAxis, string>> = { ...NUMERIC_DEFAULTS };
+  let caps = false;
+  for (const [t, v] of Object.entries(NUMERIC_VARIANTS)) {
+    if (!list.has(t)) continue;
+    if (v.axis === 'caps') caps = true;
+    else axes[v.axis as NumericAxis] = v.value;
+  }
+  return {
+    fontVariantNumeric: NUMERIC_AXES.map((a) => axes[a]).filter(Boolean).join(' '),
+    ...(caps ? { fontFeatureSettings: '"case"' } : {}),
+    ...(position ? { fontVariantPosition: position, fontSynthesisPosition: 'auto' } : {}),
+  };
+}
+
+/** Figures for the numeric voice: aligned columns, lining digits (bare `data-numeric`). */
+export const NUMERIC_FEATURES = numericStyle().fontVariantNumeric;
 
 export interface TypeRole {
   label: string;

@@ -1,5 +1,6 @@
-// Dashboard: stat cards (numeric voice, feedback badges), a stacked bar chart and a ranked meter in
-// the data colors, and a data list (card › collection of rows › group of row actions).
+// Dashboard: stat cards (figures through the data-numeric contract, feedback badges), a stacked bar
+// chart and a ranked meter in the data colors, and a data list (card › collection of rows › group
+// of row actions).
 import { useState } from 'react';
 import { css, cx } from '../../../styled-system/css/index.js';
 import { CHANNELS, ORDERS, STATS, STATUS_TONE, TOP_PRODUCTS, WEEKS, type OrderStatus } from './data.ts';
@@ -16,7 +17,7 @@ const stats = css({
   [CQ_SM]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' },
   [CQ_LG]: { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' },
 });
-const figure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', display: 'flex', alignItems: 'baseline', gap: '0.5' });
+const figure = css({ textStyle: 'heading-1', display: 'flex', alignItems: 'baseline', gap: '0.5' });
 const unit = css({ textStyle: 'heading-3', color: 'fg.muted' });
 const statFoot = css({ display: 'flex', alignItems: 'center', gap: '2', flexWrap: 'wrap' });
 const charts = css({
@@ -27,7 +28,7 @@ const plot = css({ display: 'grid', gridTemplateColumns: 'auto minmax(0, 1fr)', 
 // Axis labels sit centered on their gridlines (top, quarters, baseline).
 const yAxis = css({
   display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'end',
-  textStyle: 'caption', color: 'fg.muted', fontVariantNumeric: 'tabular-nums',
+  textStyle: 'caption', color: 'fg.muted',
   '& > span': { lineHeight: '[1]', marginBlock: '[-0.5em]' },
 });
 // Gridlines: a top border plus one line at the bottom of each quarter.
@@ -43,13 +44,12 @@ const barStack = css({
   '& > span:last-child': { borderTopRadius: 'sm' },
 });
 const ticks = css({ gridColumn: '2', display: 'flex', gap: '2', '& > span': { flex: '1', minWidth: '0', textAlign: 'center' } });
-const tick = css({ textStyle: 'caption', color: 'fg.muted', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' });
+const tick = css({ textStyle: 'caption', color: 'fg.muted', whiteSpace: 'nowrap' });
 const tickWide = css({ visibility: 'hidden', [CQ_MD]: { visibility: 'visible' } });
 const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', color: 'fg.muted', '& > span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const meter = css({ display: 'flex', flexDirection: 'column', gap: '1.5' });
 const meterTrack = css({ height: '2', borderRadius: 'full', bg: 'bg.muted', overflow: 'hidden', '& > span': { display: 'block', height: 'full', width: '[calc(var(--v) * 100%)]', borderRadius: 'full' } });
-const num = css({ fontVariantNumeric: 'tabular-nums lining-nums' });
 
 // Orders: narrow, each row is its own two-line grid; wide, the collection is one grid of columns
 // and every row (and the header) is a subgrid, so the columns line up without fixed widths.
@@ -68,7 +68,7 @@ const metaStatus = css({ [CQ_MD]: { display: 'none' } });
 // Narrow rows keep status, time and one action; the channel and the quick view join from medium up.
 const wideOnly = css({ display: 'none', [CQ_MD]: { display: 'inline-flex' } });
 const statusCol = css({ gridArea: 'status', display: 'none', [CQ_MD]: { display: 'block' } });
-const total = css({ gridArea: 'total', textAlign: 'end', textStyle: 'title', fontVariantNumeric: 'tabular-nums lining-nums' });
+const total = css({ gridArea: 'total', textAlign: 'end', textStyle: 'title' });
 const actions = css({ gridArea: 'actions', justifySelf: 'end' });
 const listHead = css({
   display: 'none', paddingBottom: '2', borderBottomWidth: 'thin', borderColor: 'border',
@@ -104,7 +104,7 @@ export function Dashboard() {
           <ui-card key={st.label}>
             <span className={s.label}>{st.label}</span>
             <strong className={figure} data-numeric>
-              {st.unit === '$' && <span className={unit}>$</span>}{st.value}{st.unit === '%' && <span className={unit}>%</span>}
+              {st.unit === '$' && <span className={unit} data-numeric>$</span>}{st.value}{st.unit === '%' && <span className={unit} data-numeric>%</span>}
             </strong>
             <div className={statFoot}>
               <ui-badge className={s.tone[st.tone]}><i slot="leading" name={st.icon} />{st.delta}</ui-badge>
@@ -121,7 +121,7 @@ export function Dashboard() {
             <ui-tag><i slot="leading" name="calendar-blank" />Sep 8 – Nov 2</ui-tag>
           </div>
           <div className={plot} role="img" aria-label={`Weekly revenue by channel. ${CHANNELS.map(([n, v]) => `${n}: ${v.join(', ')}`).join('. ')}.`}>
-            <div className={yAxis} aria-hidden="true">{[4, 3, 2, 1, 0].map((i) => <span key={i}>{(max / 4) * i}</span>)}</div>
+            <div className={yAxis} aria-hidden="true">{[4, 3, 2, 1, 0].map((i) => <span key={i} data-numeric>{(max / 4) * i}</span>)}</div>
             <div className={bars}>
               {WEEKS.map((w, i) => (
                 <div key={w} className={week}>
@@ -133,7 +133,7 @@ export function Dashboard() {
               ))}
             </div>
             <div className={ticks} aria-hidden="true">
-              {WEEKS.map((w, i) => <span key={w} className={cx(tick, i % 2 ? tickWide : undefined)}>{w}</span>)}
+              {WEEKS.map((w, i) => <span key={w} className={cx(tick, i % 2 ? tickWide : undefined)} data-numeric>{w}</span>)}
             </div>
           </div>
           <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={cx(dot, s.DATA_BG[c])} />{n}</span>)}</div>
@@ -142,7 +142,7 @@ export function Dashboard() {
           <div className={s.stack1}><h3 className={s.h3}>Top products</h3><span className={s.caption}>Units sold, last 30 days</span></div>
           {TOP_PRODUCTS.map((p, i) => (
             <div key={p.name} className={meter}>
-              <div className={s.spread}><span className={s.label}>{p.name}</span><span className={cx(s.caption, num)} data-numeric>{p.units}</span></div>
+              <div className={s.spread}><span className={s.label}>{p.name}</span><span className={s.caption} data-numeric>{p.units}</span></div>
               <div className={meterTrack}><span className={s.DATA_BG[i]} style={{ '--v': String(p.units / topMax) } as React.CSSProperties} /></div>
             </div>
           ))}

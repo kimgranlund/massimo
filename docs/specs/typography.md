@@ -30,7 +30,7 @@ Fonts work in three layers, like colors (ramps → roles):
    | heading | sans | heading-1–3 |
    | body | sans | body-large, body, caption |
    | ui | controls | control, label, control-small, kickers; all buttons, form controls, badges, tags and chips |
-   | numeric | follows ui (controls) | `data-numeric` (stats, counters, tables), with `tabular-nums lining-nums` |
+   | numeric | follows ui (controls) | `data-numeric` (stats, counters, tables), tabular lining figures by default ([numerals](#numerals)) |
    | code | mono | code |
 
 3. **Roles** (below) point at voices. Kickers are a role on the ui voice (case, tracking, weight), not a voice of their own; numerics are mostly font features, so `numeric` follows `ui` unless repointed.
@@ -73,3 +73,39 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76
 - Panda `fontSizes` (`xs` … `5xl`) are steps of the same scale, (10px + u) × ratio^step with `md` = step 0 (`xs` −2, `sm` −1, `lg` 1 … `5xl` 6), computed where used, so they follow `size` subtrees and the theme ratio. Use them only for text without a role (chart ticks); there is no fixed rem scale. `lineHeights` and `letterSpacings` are unitless or em, relative to the font.
 
 Both apply family, size, line height, weight, tracking and case. Every role's size and line height at every size are in `docs/geometry.csv` (`type.*`); `tokens/dtcg/typography.dtcg.json` holds faces, voices (aliases), `typography` composite tokens per role and the metrics. The browser geometry check verifies the CSS against the resolver.
+
+## Numerals
+
+Figures (stats, counters, prices, table columns) use the `data-numeric` contract: the numeric voice plus OpenType numeric features. Reference: `NUMERIC_VARIANTS`, `numericStyle()` in `tokens/typography/resolve.ts`; CSS in `styles/typography.ts`; Panda pattern `styles/numeric.ts`.
+
+### Contract
+
+`data-numeric` on any element; bare is `tabular-nums lining-nums`. Space-separated variants set one axis each, so variants on different axes combine (`data-numeric="oldstyle fraction"`). Two variants on one axis conflict and the later one in the table wins, whatever the attribute order.
+
+| Token | Axis | CSS | OpenType |
+|---|---|---|---|
+| (bare) / `tabular` | spacing | `tabular-nums` | tnum |
+| `proportional` | spacing | `proportional-nums` | pnum |
+| (bare) / `lining` | figures | `lining-nums` | lnum |
+| `oldstyle` | figures | `oldstyle-nums` | onum |
+| `fraction` | fraction | `diagonal-fractions` | frac |
+| `stacked-fraction` | fraction | `stacked-fractions` | afrc |
+| `slashed-zero` | zero | `slashed-zero` | zero |
+| `ordinal` | ordinal | `ordinal` | ordn |
+| `caps` | caps | `font-feature-settings: "case"` | case (punctuation for all-caps settings) |
+| `data-position="super"` / `"sub"` (with `data-numeric`) | position | `font-variant-position`, `font-synthesis-position: auto` | sups / subs |
+
+Panda and React: the attribute works as is in JSX; for styles composed in `css()`, use the pattern, one typed prop per axis: `numeric({ spacing: 'proportional', figures: 'oldstyle', fraction: 'diagonal' | 'stacked', slashedZero, ordinal, caps, position: 'super' | 'sub' })` or `css(numeric.raw({ … }), …)`. Its transform is inlined by Panda, so a test checks it against `numericStyle()`.
+
+### Layering
+
+Roles reach elements as `textStyle` classes (Panda's utilities layer, `compositions` sublayer), while `[data-numeric]` is a global rule (base layer); a base-layer `font-family` can never beat a utilities-layer one, whatever the specificity. So the roles carry the numeric voice instead: every role's family is `var(--ui-numeric-family, <its voice>)`, and `data-numeric` sets `--ui-numeric-family` to the numeric voice. A role plus `data-numeric` on one element therefore renders in the numeric voice in both renderers (`[data-type]`, a `textStyle` class or a recipe's `textStyle`). `--ui-numeric-family` and the per-axis `--ui-num-<axis>` variables are registered non-inheriting: text without a role inherits the numeric family and features as usual, an explicit role inside a numeric element (a "/ month" caption) keeps its voice, and a nested `data-numeric` composes from its own tokens. `font-variant-numeric` reads the axis variables with the defaults as fallbacks, so a variant needs one variable, not a rule per combination. The pattern's classes are plain utilities, above textStyle compositions. Explicit utilities (`css({ fontFamily })`) still win. The browser geometry check covers role class, `data-type`, variants, nesting and position.
+
+### formatNumber
+
+`@massimo/ui-kit/format` (also exported from `tokens`): `formatNumber(value, options)`, `formatNumberParts(value, options)`, `formatFraction(value, options)`. Options are `Intl.NumberFormatOptions` (style, currency, unit, notation compact / scientific / engineering, digits, signDisplay) plus `locale`, `minus` (U+2212 for negatives and negative exponents, default on), `grouping` (`locale`, `narrow` U+202F as SI recommends, `thin` U+2009, `none`), `unitSpace` (U+202F where the locale puts a space before a unit, currency, percent sign or compact suffix; or `locale`) and `exponent` (`times`: `6.02 × 10²³` with narrow no-break spaces around ×; or `e`). `formatNumberParts` returns Intl's parts plus `times`, `base` and `exponent` (plain digits), for a `<sup>` where the face has no superior figures. `formatFraction` finds the nearest fraction up to `maxDenominator` (16) and writes a precomposed character (`1¾`) or `n⁄d` with U+2044 FRACTION SLASH after a narrow no-break space, which `data-numeric="fraction"` builds up where the face has `frac`.
+
+### Feature support
+
+Whether a feature shows depends on the face: in Chrome on macOS the controls face (system-ui, SF) has tnum (its digits are proportional by default), frac, sups, subs, ordn and case, but no onum, zero or afrc; Helvetica Neue (sans, display) is tabular by default and has pnum, nothing else; Baskerville (serif) is tabular lining by default with onum; the mono face has none (tabular by nature). The jig's Numerals specimen detects each feature per face live ([studio](studio.md)). Caveats: canvas text ignores font features, so detection rasterizes HTML through an SVG `foreignObject`; it measures this browser and machine, a stack resolves to the first installed font, and fallback fonts can supply glyphs. Chrome and Safari do not synthesize superior or inferior figures when the face lacks them (Firefox does), so exponents use `formatNumberParts` and `<sup>` when the face is unknown. `frac` also turns a preceding minus into a numerator in some faces, so a negative fraction reads better without `data-numeric="fraction"`.
+

@@ -44,7 +44,9 @@ for (const c of cases) {
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
     <ui-button id="adorn">Save<span slot="suffix">⌘S</span></ui-button>
     <ui-input id="money" label="M"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
-    <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
+    <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>
+    <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
+    <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
@@ -149,6 +151,22 @@ for (const c of cases) {
   const uiFamily = cs(box.querySelector('[data-type="control"]')).fontFamily;
   const uiVoiced = [['badge', badge], ['tag', tag], ['chip', chip], ['button', btn], ['input', pc(inp)], ['select', pv(tr)], ['option', box.querySelector('ui-listbox ui-option')], ['segmented', o1], ['checkbox', box.querySelector('ui-checkbox')], ['radio', box.querySelector('ui-radio')], ['switch', box.querySelector('ui-switch')]];
   for (const [k, el] of uiVoiced) checks[`${k}.font.uiVoice`] = [cs(el).fontFamily === uiFamily && /system-ui/.test(uiFamily) ? 1 : 0, 1];
+  // Numerals: data-numeric beats a type role (class or attribute) on the same element; variants
+  // compose per axis; a role inside a numeric element keeps its voice but inherits the figures;
+  // a nested bare one resets to the defaults.
+  {
+    const numFamily = cs($('numBare')).fontFamily, headFamily = cs(box.querySelector('[data-type="heading-1"]')).fontFamily;
+    const is = (got, want) => [got === want ? 1 : 0, 1];
+    checks['numeric.voice.distinct'] = [numFamily !== headFamily && /system-ui/.test(numFamily) ? 1 : 0, 1];
+    checks['numeric.role.class.family'] = is(cs($('numRole')).fontFamily, numFamily);
+    checks['numeric.role.attr.family'] = is(cs($('numType')).fontFamily, numFamily);
+    checks['numeric.role.class.features'] = is(cs($('numRole')).fontVariantNumeric, 'lining-nums tabular-nums');
+    checks['numeric.variants'] = is(cs($('numMix')).fontVariantNumeric, 'oldstyle-nums tabular-nums diagonal-fractions slashed-zero');
+    checks['numeric.subtree.role'] = is(cs($('numIn').firstElementChild).fontFamily, cs(box.querySelector('[data-type="caption"]')).fontFamily);
+    checks['numeric.subtree.features'] = is(cs($('numIn').firstElementChild).fontVariantNumeric, 'lining-nums proportional-nums');
+    checks['numeric.nested.reset'] = is(cs($('numIn').lastElementChild).fontVariantNumeric, 'lining-nums tabular-nums');
+    checks['numeric.position'] = is(cs($('numSup')).fontVariantPosition, 'super');
+  }
   checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];

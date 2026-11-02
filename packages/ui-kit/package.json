@@ -8,6 +8,7 @@
     "./core": "./core/index.ts",
     "./dom": "./dom/index.ts",
     "./tokens": "./tokens/index.ts",
+    "./format": "./tokens/typography/format.ts",
     "./styles": "./styles/index.ts",
     "./preset": "./preset.ts",
     "./styled-system/*": "./styled-system/*",

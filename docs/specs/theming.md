@@ -29,7 +29,7 @@ Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` a
 - `icon-size` / `data-icon-size`: sm, md, lg, fill.
 - `gap`: container gap override in units of u (0–8, 0.5 steps), that element only.
 - `.light` / `.dark`: force a color scheme for a subtree.
-- `data-font-<voice>="<face>"`: repoint a font voice (display, heading, body, ui, numeric, code) to a face (sans, serif, mono, display); `data-numeric` for tabular figures ([typography](typography.md)).
+- `data-font-<voice>="<face>"`: repoint a font voice (display, heading, body, ui, numeric, code) to a face (sans, serif, mono, display); `data-numeric` for figures in the numeric voice, tabular lining when bare, with space-separated variants (`proportional`, `oldstyle`, `fraction`, …) and `data-position="super|sub"` ([typography](typography.md#numerals)).
 - `data-type="<role>"`: apply a type role.
 
 ## Preset

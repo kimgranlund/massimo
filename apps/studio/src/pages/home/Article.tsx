@@ -28,7 +28,7 @@ const quote = css({
 const dropcap = css({ '&::first-letter': { float: 'left', textStyle: 'display', color: 'primary.fg', marginInlineEnd: '2', marginBlockStart: '1' } });
 const aside = css({ position: 'sticky', top: '6' });
 const listItem = css({ display: 'flex', gap: '3', alignItems: 'start', paddingBlock: '2', '&:not(:last-child)': { borderBottomWidth: 'thin', borderColor: 'border' } });
-const index = css({ textStyle: 'heading-3', color: 'fg.subtle', fontVariantNumeric: 'tabular-nums lining-nums', minWidth: '6' });
+const index = css({ textStyle: 'heading-3', color: 'fg.subtle', minWidth: '6' });
 
 const MORE = [
   ['Layering, explained in three shirts', 'Guide · 5 min'],

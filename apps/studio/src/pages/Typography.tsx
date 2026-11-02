@@ -1,10 +1,12 @@
-// Typography: faces and voices, every role with live metrics over a rhythm grid, and a short
-// article set in the roles.
+// Typography: faces and voices, every role with live metrics over a rhythm grid, a short article
+// set in the roles, and numerals (the data-numeric contract with live feature detection).
 import { Fragment } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
+import { numeric } from '../../styled-system/patterns/index.js';
 import { TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
 import { CQ_MD, Divider, Page, Section, fmt, metrics, rowLabel } from './shared.tsx';
+import { Numerals } from './TypographyNumerals.tsx';
 
 const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
 // Below the medium breakpoint the specimen comes first and its specs follow.
@@ -36,7 +38,7 @@ const VOICE_FONT: Record<string, string> = {
   heading: css({ fontFamily: 'var(--font-voice-heading, var(--fonts-sans))' }),
   body: css({ fontFamily: 'var(--font-voice-body, var(--fonts-sans))' }),
   ui: css({ fontFamily: 'var(--font-voice-ui, var(--fonts-controls))' }),
-  numeric: css({ fontFamily: 'var(--font-voice-numeric, var(--font-voice-ui, var(--fonts-controls)))', fontVariantNumeric: 'tabular-nums lining-nums' }),
+  numeric: numeric(),
   code: css({ fontFamily: 'var(--font-voice-code, var(--fonts-mono))', whiteSpace: 'pre' }),
 };
 
@@ -130,6 +132,10 @@ export function TypographyPage({ params, voices, faces }: PageProps) {
             </Fragment>
           ))}
         </article>
+      </Section>
+      <Divider />
+      <Section id="numerals" title="Numerals" note={'data-numeric="<variants>" (or numeric() in Panda) sets figures in the numeric voice; bare is tabular lining. Detection renders each OpenType feature off and on in every face and compares the result: yes = it changes the rendering, default = the face already renders that way, one form = the face has a single figure style, — = not in this face (on this browser and machine).'}>
+        <Numerals voices={voices} faces={faces} />
       </Section>
     </Page>
   );
