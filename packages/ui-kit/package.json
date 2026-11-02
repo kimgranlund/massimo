@@ -11,10 +11,12 @@
     "./styles": "./styles/index.ts",
     "./preset": "./preset.ts",
     "./components": "./components/index.ts",
-    "./components/*/element": "./components/*/*.element.ts",
-    "./components/*/react": "./components/*/*.react.tsx",
     "./styled-system/*": "./styled-system/*",
-    "./css": "./dist/ui-kit.css"
+    "./css": "./dist/ui-kit.css",
+    "./components/button/element": "./components/button/button.element.ts",
+    "./components/button/react": "./components/button/button.react.tsx",
+    "./components/input/element": "./components/input/input.element.ts",
+    "./components/input/react": "./components/input/input.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",
@@ -28,6 +30,8 @@
     "react": ">=19"
   },
   "peerDependenciesMeta": {
-    "react": { "optional": true }
+    "react": {
+      "optional": true
+    }
   }
 }

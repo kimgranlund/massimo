@@ -1,0 +1,15 @@
+{
+  "name": "@massimo/studio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "panda codegen",
+    "dev": "panda codegen && vite",
+    "build": "panda codegen && tsc -p . && vite build",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@massimo/ui-kit": "*"
+  }
+}

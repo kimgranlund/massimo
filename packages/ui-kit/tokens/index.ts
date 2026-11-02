@@ -2,7 +2,7 @@
 import { defineTokens, defineSemanticTokens } from '@pandacss/dev';
 import { colors, semanticColors } from './colors/index.ts';
 import { fonts, fontSizes, fontWeights, lineHeights, letterSpacings } from './typography/index.ts';
-import { spacing, sizes, radii, borderWidths } from './geometry/index.ts';
+import { spacing, sizes, radii, borderWidths, semanticRadii } from './geometry/index.ts';
 import { durations, easings } from './motion/index.ts';
 
 export const tokens = defineTokens({
@@ -10,4 +10,6 @@ export const tokens = defineTokens({
   spacing, sizes, radii, borderWidths, durations, easings,
 });
 
-export const semanticTokens = defineSemanticTokens({ colors: semanticColors });
+export const semanticTokens = defineSemanticTokens({ colors: semanticColors, radii: semanticRadii });
+
+export * from './themes/index.ts';
