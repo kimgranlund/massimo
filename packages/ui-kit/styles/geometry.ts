@@ -2,9 +2,9 @@
 // each element from inherited inputs, so size and theme parameters work per subtree.
 //
 // Inputs (unitless): --ui-unit (theme default; [size] overrides per subtree), --ui-border,
-// --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gutters (from [gutters], per element).
+// --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
-import { CONTAINERS, GUTTERS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
+import { CONTAINERS, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
@@ -26,11 +26,11 @@ export const geometry = defineGlobalStyles({
   // size = u, on any element, inherited.
   ...Object.fromEntries(SIZES.map((u) => [`:is([size="${u}"], [data-size="${u}"])`, { '--ui-unit': String(u) }])),
   ...Object.fromEntries(Object.entries(ICON_STEPS).map(([k, v]) => [`:is([icon-size=${k}], [data-icon-size=${k}])`, { '--ui-icon-k': String(v) }])),
-  // Gutters apply to the element that carries the attribute only: every container resets the
+  // Gap apply to the element that carries the attribute only: every container resets the
   // value at tag specificity, and the attribute rule (higher specificity) sets it.
-  [CONTAINER_TAGS]: { '--ui-gutters': 'initial' },
-  'ui-select > [data-part=popup]': { '--ui-gutters': 'inherit' },
-  ...Object.fromEntries(GUTTERS.map((g) => [`[gutters="${g}"]`, { '--ui-gutters': String(g) }])),
+  [CONTAINER_TAGS]: { '--ui-gap': 'initial' },
+  'ui-select > [data-part=popup]': { '--ui-gap': 'inherit' },
+  ...Object.fromEntries(GAPS.map((g) => [`[gap="${g}"]`, { '--ui-gap': String(g) }])),
 
   // Control family, resolved on every component element.
   [GEOMETRY_SCOPE]: {
@@ -87,7 +87,7 @@ export const geometry = defineGlobalStyles({
   ...Object.fromEntries(LAYOUT.map((k) => [`ui-${k}`, { '--cp': String(CONTAINERS[k].padding), '--cm': String(CONTAINERS[k].maxRadius) }])),
   [LAYOUT_CONTAINERS]: {
     padding: 'max(0px, calc(var(--cp) * var(--u) - var(--b)))',
-    gap: 'calc(var(--ui-gutters, var(--cp)) * var(--u))',
+    gap: 'calc(var(--ui-gap, var(--cp)) * var(--u))',
     borderWidth: 'var(--b)',
     borderRadius: 'calc(var(--cm) * var(--u) * var(--ui-radius-scale))',
   },
@@ -100,7 +100,7 @@ export const geometry = defineGlobalStyles({
     // Container curvature for lists and popups; segmented caps it at half its height.
     '--cr': 'calc(3.5 * var(--u) * var(--ui-radius-scale))',
     padding: 'calc(var(--d) - var(--b))',
-    gap: 'calc(var(--ui-gutters, 0.5) * var(--u))',
+    gap: 'calc(var(--ui-gap, 0.5) * var(--u))',
     borderWidth: 'var(--b)',
     borderRadius: 'var(--cr)',
   },

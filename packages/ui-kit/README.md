@@ -30,7 +30,7 @@ Names are Phosphor's; other sets translate them through aliases (`caret-down` â†
 
 ## Geometry
 
-Heights, insets, gaps, borders and radii follow one system: see [docs/geometry.md](docs/geometry.md). Use `size` (u in px, 2 to 12) or `data-size` on any element, and `gutters` on a container to change its gap.
+Heights, insets, gaps, borders and radii follow one system: see [docs/geometry.md](docs/geometry.md). Use `size` (u in px, 2 to 12) or `data-size` on any element, and `gap` on a container to change its gap.
 
 ## Commands
 

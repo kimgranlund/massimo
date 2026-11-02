@@ -14,12 +14,12 @@ declare module 'react' {
       'ui-badge': El<{}>;
       'ui-tag': El<{ 'icon-size'?: string }>;
       'ui-chip': El<{ selectable?: boolean; selected?: boolean; removable?: boolean; disabled?: boolean; 'icon-size'?: string }>;
-      'ui-group': El<{ gutters?: string }>;
-      'ui-collection': El<{ gutters?: string }>;
-      'ui-tile': El<{ gutters?: string }>;
-      'ui-card': El<{ gutters?: string }>;
-      'ui-panel': El<{ gutters?: string }>;
-      'ui-region': El<{ gutters?: string }>;
+      'ui-group': El<{ gap?: string }>;
+      'ui-collection': El<{ gap?: string }>;
+      'ui-tile': El<{ gap?: string }>;
+      'ui-card': El<{ gap?: string }>;
+      'ui-panel': El<{ gap?: string }>;
+      'ui-region': El<{ gap?: string }>;
       'ui-option': El<{ value?: string; disabled?: boolean }>;
       'ui-listbox': El<{ name?: string; value?: string; label?: string; orientation?: string; required?: boolean; disabled?: boolean }>;
       'ui-segmented': El<{ name?: string; value?: string; label?: string; required?: boolean; disabled?: boolean }>;

@@ -9,8 +9,8 @@
 
 /** Supported units; control height = 8u. 2..4.5 as before, then every 0.5 up to 12 (96px controls). */
 export const SIZES = [2, 2.25, 2.5, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
-/** Gutter values (units of u) accepted by the gutters attribute. */
-export const GUTTERS = Array.from({ length: 17 }, (_, i) => i * 0.5);
+/** Gutter values (units of u) accepted by the gap attribute. */
+export const GAPS = Array.from({ length: 17 }, (_, i) => i * 0.5);
 export type IconSize = 'sm' | 'md' | 'lg' | 'fill';
 
 /** Icon size = font size + k·u (fill takes the whole slot). */
@@ -23,8 +23,8 @@ export interface GeometryInput {
   border?: number;
   /** Multiplier on the soft (3u) curvature; 0 = square. */
   radiusScale?: number;
-  /** Gap override in units of u (gutters attribute); default = the container's padding level. */
-  gutters?: number;
+  /** Gap override in units of u (gap attribute); default = the container's padding level. */
+  gap?: number;
   iconSize?: IconSize;
 }
 
@@ -36,7 +36,7 @@ function inputs(input: GeometryInput) {
   if (!(x.unit >= 2 && x.unit <= 12)) bad('unit must be 2..12px');
   if (!(x.border >= 0 && x.border <= x.unit / 2)) bad('border must be 0..u/2');
   if (!(x.radiusScale >= 0 && x.radiusScale <= 3)) bad('radius scale must be 0..3');
-  if (input.gutters !== undefined && !(input.gutters >= 0 && input.gutters <= 8)) bad('gutters must be 0..8u');
+  if (input.gap !== undefined && !(input.gap >= 0 && input.gap <= 8)) bad('gap must be 0..8u');
   if (!['sm', 'md', 'lg', 'fill'].includes(x.iconSize)) bad('unknown icon size');
   return x;
 }
@@ -67,7 +67,7 @@ export function resolveControl(input: GeometryInput = {}) {
 // ── Containers ──
 // Each level has a padding (units of u) and a max radius that keeps corners concentric with
 // a 3u control sitting in the corner (3u + padding). Panel and region are square: they usually
-// meet the viewport edge. Gap = padding unless the gutters attribute overrides it.
+// meet the viewport edge. Gap = padding unless the gap attribute overrides it.
 export const CONTAINERS = {
   composite:  { padding: 0.5, maxRadius: 3.5 },
   group:      { padding: 1,   maxRadius: 4 },
@@ -88,7 +88,7 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
     unit: u, border: x.border,
     padding: Math.max(0, spec.padding * u - x.border),
     edge: spec.padding * u,
-    gap: (input.gutters ?? spec.padding) * u,
+    gap: (input.gap ?? spec.padding) * u,
     radius: input.height === undefined ? radius : Math.min(radius, input.height / 2),
   };
 }

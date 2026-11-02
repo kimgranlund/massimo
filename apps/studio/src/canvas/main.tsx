@@ -97,12 +97,12 @@ function Canvas() {
         <p className={eyebrow}>Containers: panel 6u › card 4u › tile 3u › group 1u</p>
         <ui-card>
           <h2 className={title}>Team</h2>
-          <ui-collection gutters="1">
+          <ui-collection gap="1">
             {['Ada', 'Grace', 'Linus'].map((n) => <ui-tile key={n}>{n}<ui-group><ui-button>Message</ui-button><ui-button><i slot="leading" name="dots-three" /></ui-button></ui-group></ui-tile>)}
           </ui-collection>
         </ui-card>
-        <ui-card data-size="3" gutters="2">
-          <strong>Compact card (size 3, gutters 2)</strong>
+        <ui-card data-size="3" gap="2">
+          <strong>Compact card (size 3, gap 2)</strong>
           <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
         </ui-card>
       </ui-panel>

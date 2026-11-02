@@ -20,7 +20,7 @@ Sources of truth, kept in agreement by tests:
 | B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 1 |
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
 | icon size | `icon-size` / `data-icon-size`, any element, inherited | sm, md, lg, fill | md |
-| gutters | `gutters` on a container or composite; that element only | 0 … 8 (0.5 steps, ×u) | = the padding level |
+| gap | `gap` on a container or composite; that element only | 0 … 8 (0.5 steps, ×u) | = the padding level |
 
 ## Control: ui-button (and the shape ui-input / ui-select share)
 
@@ -48,7 +48,7 @@ Text fields put their text where button contents sit (padding + 1u each side). T
 
 ## Containers
 
-Every container has a padding level p and a max radius. Gap = padding unless `gutters` overrides it. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel and region are square because they usually meet the viewport edge.
+Every container has a padding level p and a max radius. Gap = padding unless `gap` overrides it. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel and region are square because they usually meet the viewport edge.
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
@@ -60,7 +60,7 @@ Every container has a padding level p and a max radius. Gap = padding unless `gu
 | panel | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
 | region | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
 
-Example: `<ui-card size="5" gutters="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script.
+Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script.
 
 ### Composite detail
 

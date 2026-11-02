@@ -16,7 +16,7 @@ const rows: Row[] = [
   { id: 'in.u', family: 'input', element: 'all', quantity: 'unit u', formula: 'u = size attribute (px)', value: (u) => u, status: 'input', notes: 'size="2|2.25|2.5|3|3.5|4|4.5"; theme default 4' },
   { id: 'in.B', family: 'input', element: 'all', quantity: 'border B', formula: `B (default ${GEOMETRY_DEFAULTS.border})`, value: () => GEOMETRY_DEFAULTS.border, status: 'input', notes: 'whole px, 0..u/2; lives inside padding, never added to height' },
   { id: 'in.s', family: 'input', element: 'all', quantity: 'curvature scale s', formula: `s (default ${GEOMETRY_DEFAULTS.radiusScale})`, value: () => GEOMETRY_DEFAULTS.radiusScale, status: 'input', notes: 'theme radius-scale, 0..3' },
-  { id: 'in.gutters', family: 'input', element: 'containers, composites', quantity: 'gutters g', formula: 'gap = g·u (default: the padding level)', value: () => NaN, status: 'input', notes: 'gutters attribute 0..8 in 0.5 steps; applies to that element only' },
+  { id: 'in.gap', family: 'input', element: 'containers, composites', quantity: 'gap g', formula: 'gap = g·u (default: the padding level)', value: () => NaN, status: 'input', notes: 'gap attribute 0..8 in 0.5 steps; applies to that element only' },
 
   // Control
   { id: 'control.height', family: 'control', element: 'button, input, select', quantity: 'height', formula: '8u', value: (u) => ctl(u).height, status: 'implemented', notes: '' },
@@ -42,7 +42,7 @@ const rows: Row[] = [
   // Composite
   { id: 'composite.edge', family: 'composite', element: 'listbox, segmented, popup', quantity: 'edge distance D', formula: 'max(B, 0.5u)', value: (u) => cmp(u).edge, status: 'implemented', notes: 'the composite padding level' },
   { id: 'composite.padding', family: 'composite', element: 'listbox, segmented, popup', quantity: 'padding', formula: 'D - B', value: (u) => cmp(u).padding, status: 'implemented', notes: '' },
-  { id: 'composite.gap', family: 'composite', element: 'listbox, segmented, popup', quantity: 'gap between options', formula: 'gutters·u, default 0.5u', value: (u) => cmp(u).gap, status: 'implemented', notes: '' },
+  { id: 'composite.gap', family: 'composite', element: 'listbox, segmented, popup', quantity: 'gap between options', formula: 'g·u (gap attribute), default 0.5u', value: (u) => cmp(u).gap, status: 'implemented', notes: '' },
   { id: 'composite.option.inset', family: 'composite', element: 'option', quantity: 'option inset Ic', formula: 'max(B, u - D)', value: (u) => cmp(u).child.inset, status: 'implemented', notes: '' },
   { id: 'composite.option.height', family: 'composite', element: 'option', quantity: 'option height', formula: '6u + 2Ic', value: (u) => cmp(u).child.height, status: 'implemented', notes: '7u' },
   { id: 'composite.rowHeight', family: 'composite', element: 'segmented', quantity: 'one-row height', formula: 'option height + 2D', value: (u) => cmp(u).rowHeight, status: 'implemented', notes: 'always 8u (B ≤ u/2)' },
@@ -55,7 +55,7 @@ const rows: Row[] = [
     const spec = CONTAINERS[level];
     return [
       { id: `container.${level}.padding`, family: 'container', element: `ui-${level}`, quantity: 'padding', formula: `${spec.padding}u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
-      { id: `container.${level}.gap`, family: 'container', element: `ui-${level}`, quantity: 'gap', formula: `${spec.padding}u (or gutters·u)`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
+      { id: `container.${level}.gap`, family: 'container', element: `ui-${level}`, quantity: 'gap', formula: `${spec.padding}u (or g·u from the gap attribute)`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
       { id: `container.${level}.radius`, family: 'container', element: `ui-${level}`, quantity: 'max radius', formula: spec.maxRadius ? `${spec.maxRadius}u * s (= 3u + ${spec.padding}u)` : '0', value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.maxRadius ? 'concentric with a 3u control in the corner; capped at half height' : 'square: meets the viewport edge' },
     ];
   }),

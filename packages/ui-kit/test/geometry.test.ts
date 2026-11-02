@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GUTTERS, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
 
 test('size is the unit: height 8u, font 10px + u (spec table)', () => {
   const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
@@ -59,7 +59,7 @@ test('composite: 0.5u padding level; one-row segmented is always 8u; options kee
     if (border > unit / 2) continue;
     assert.equal(resolveComposite({ unit, border }).rowHeight, 8 * unit, `row = 8u at u=${unit} B=${border}`);
   }
-  assert.equal(resolveComposite({ gutters: 0 }).gap, 0, 'gutters override the gap');
+  assert.equal(resolveComposite({ gap: 0 }).gap, 0, 'gap override the gap');
 });
 
 test('containers: padding, gap = padding, concentric max radius, square panel and region', () => {
@@ -69,8 +69,8 @@ test('containers: padding, gap = padding, concentric max radius, square panel an
   }));
   assert.deepEqual(at4, { group: [4, 4, 16], collection: [8, 8, 20], tile: [12, 12, 24], card: [16, 16, 28], panel: [24, 24, 0], region: [32, 32, 0] });
   for (const l of ['group', 'collection', 'tile', 'card'] as const) assert.equal(CONTAINERS[l].maxRadius, 3 + CONTAINERS[l].padding, `${l} radius = 3u + padding`);
-  const card = resolveContainer('card', { unit: 5, gutters: 2 });
-  assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gutters="2">');
+  const card = resolveContainer('card', { unit: 5, gap: 2 });
+  assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gap="2">');
   assert.equal(resolveContainer('group', { height: 20 }).radius, 10, 'half-height cap');
   assert.equal(resolveContainer('card').padding, 15, 'border lives inside the padding');
 });
@@ -79,7 +79,7 @@ test('sizes run to 12', () => {
   assert.equal(SIZES.at(-1), 12);
   const c = resolveControl({ unit: 12 });
   assert.deepEqual([c.height, c.fontSize], [96, 22]);
-  assert.equal(GUTTERS.length, 17);
+  assert.equal(GAPS.length, 17);
 });
 
 test('badge / tag / chip: 12 + k·u with the cap; your u=3, 4, 5 values hold', () => {
