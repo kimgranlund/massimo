@@ -5,11 +5,12 @@
 ## Rules
 
 - Built exclusively from ui-kit web components (in React); no native form controls and no React component counterparts.
-- The canvas renders inline (no iframe). All overrides are scoped to the `[data-canvas]` element, so the panel keeps the default theme:
+- The canvas renders inline (no iframe). Shape and type overrides are scoped to the `[data-canvas]` element, so the panel stays usable whatever they are:
   - geometry parameters as inherited `--ui-*` custom properties on the element,
-  - the scheme as a `light` / `dark` class (none for Auto),
-  - the icon set as `data-icons`,
-  - Spectrum as `spectrumCSS(data, roles, '[data-canvas]')`.
+  - the icon set as `data-icons`.
+- Color applies to the whole jig (panel and canvas):
+  - the scheme as a `light` / `dark` class on `<html>` (none for Auto),
+  - Spectrum as `spectrumCSS(data, roles, ':root')`.
 
 ## Panel
 

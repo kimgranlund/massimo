@@ -60,7 +60,7 @@ export function App() {
   }, [spectrum, roles]);
 
   // Theme overrides are scoped to the canvas element: geometry parameters as inherited custom
-  // properties, the scheme as a class, icons as data-icons, Spectrum as [data-canvas] CSS.
+  // properties, icons as data-icons. Scheme and Spectrum colors apply to the whole jig (:root).
   const canvasVars = {
     ...Object.fromEntries(Object.entries(params).map(([k, v]) => [paramVar(k as ParamName), String(v)])),
     // Faces override the stacks on the canvas; display/heading weight follows a serif stack.
@@ -94,7 +94,13 @@ export function App() {
     setStatus('Reset to defaults');
   };
 
-  // One icon button cycles the canvas scheme: auto (follow the OS) → light → dark.
+  // The scheme applies to the whole jig: a .light/.dark class on <html> (none for auto).
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('light', scheme === 'light');
+    root.classList.toggle('dark', scheme === 'dark');
+  }, [scheme]);
+  // One icon button cycles the scheme: auto (follow the OS) → light → dark.
   const schemeRef = useEvent('click', () => setScheme((v) => NEXT_SCHEME[v]));
   const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify(snapshot(), null, 2)).then(() => setStatus('Copied settings JSON'), () => setStatus('Copy failed')));
   const resetRef = useEvent('click', reset);
@@ -134,7 +140,7 @@ export function App() {
           <div className={s.titleRow}>
             <h1 className={s.brand}>Studio</h1>
             <ui-button ref={schemeRef} aria-label={`Color scheme: ${SCHEME_LABEL[scheme]} (switch to ${SCHEME_LABEL[NEXT_SCHEME[scheme]]})`} title={`Scheme: ${SCHEME_LABEL[scheme]}`}>
-              <i key={scheme} slot="leading" name={SCHEME_ICON[scheme]} />
+              <i slot="leading" name={SCHEME_ICON[scheme]} />
             </ui-button>
           </div>
           <Segmented<View> value={view} onValue={setView} options={[['components', 'Components'], ['containers', 'Containers'], ['colors', 'Colors'], ['typography', 'Typography']]} />
@@ -231,7 +237,7 @@ export function App() {
         </footer>
       </aside>
 
-      <div className={`${s.canvas}${scheme === 'auto' ? '' : ` ${scheme}`}`} data-canvas="" data-icons={icons} {...voiceAttrs} style={canvasVars} aria-label="Canvas">
+      <div className={s.canvas} data-canvas="" data-icons={icons} {...voiceAttrs} style={canvasVars} aria-label="Canvas">
         {generated && <style>{generated.css}</style>}
         <Canvas view={view} spectrum={generated} params={params} voices={voices} faces={faces} />
       </div>

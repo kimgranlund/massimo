@@ -10,7 +10,8 @@ export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<
   const f = families(data);
   const light = ramps(data, 'light'), dark = ramps(data, 'dark');
   const payload: SpectrumPayload = {
-    css: spectrumCSS(data, resolved, '[data-canvas]'),
+    // Applied to the whole jig (panel and canvas): :root, with .light/.dark on <html> forcing a scheme.
+    css: spectrumCSS(data, resolved, ':root'),
     diagnostics: spectrumDiagnostics(data, resolved),
     ms,
     roles: resolved,
