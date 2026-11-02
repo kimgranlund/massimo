@@ -21,7 +21,12 @@ const DEFAULT_ROLES = { primary: 'indigo', neutral: 'neutral', critical: 'red' }
 
 export function App() {
   const frame = useRef<HTMLIFrameElement>(null);
-  const [view, setView] = useState<View>('components');
+  // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
+  const [view, setView] = useState<View>(() => {
+    try { const v = localStorage.getItem('studio:view'); if (v === 'components' || v === 'containers' || v === 'colors') return v; } catch { /* no storage */ }
+    return 'components';
+  });
+  useEffect(() => { try { localStorage.setItem('studio:view', view); } catch { /* no storage */ } }, [view]);
   const [params, setParams] = useState<ThemeParams>(defaultParams);
   const [scheme, setScheme] = useState<Scheme>('auto');
   const [icons, setIcons] = useState('phosphor');
