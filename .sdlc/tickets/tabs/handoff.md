@@ -2,7 +2,7 @@
 id: T-0022
 title: "W4 · Tabs"
 type: feature        # feature | bug | chore | spike | idea
-status: claimed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L2             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P1         # P1 | P2 | P3
 depends: []
@@ -28,3 +28,9 @@ Base UI parity, wave 4: Tabs exists in ui-kit for both renderers (web component 
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; class names unhashed; existing components' APIs unchanged.
+
+## Outcome
+
+2026-11-02 · lane: full L2 · verdict: closed by reason (delivered in 0384fa3, merged 1921942; checks green (270 tests; geometry-check 17802 and react-check ~6950 in Chromium, Firefox, WebKit)) · verifier: none · base: none
+- Changed: see commits
+- Commits: none
