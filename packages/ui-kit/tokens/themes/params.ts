@@ -10,6 +10,8 @@ export const PARAMS = {
   'neutral-chroma': { label: 'Neutral chroma', min: 0, max: 0.06, step: 0.001, default: 0.015 },
   'danger-hue':     { label: 'Danger hue',     min: 0, max: 360, step: 1, default: 25 },
   'radius-scale':   { label: 'Corner radius',  min: 0, max: 3, step: 0.05, default: 1 },
+  // corner-shape: superellipse(k). 1 = round, 2 = squircle, 0 = bevel, negative = scoop.
+  'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4 },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 1 },
 } as const satisfies Record<string, ParamSpec>;

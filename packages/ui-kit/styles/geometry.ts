@@ -46,6 +46,10 @@ export const geometry = defineGlobalStyles({
     '--radius': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--h) / 2))',
   },
 
+  // Corner shape for every element that carries a radius: superellipse(k) from the theme,
+  // k = 1 (round) by default. Browsers without corner-shape keep plain round corners.
+  [`${GEOMETRY_SCOPE.slice(0, -1)}, [data-part])`]: { cornerShape: 'superellipse(var(--ui-corner-shape))' },
+
   // Slots: leading / contents / trailing, each at least 6u square.
   [`${SLOTTED} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${SLOTTED} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },

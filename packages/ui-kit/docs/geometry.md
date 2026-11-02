@@ -19,6 +19,7 @@ Sources of truth, kept in agreement by tests:
 | u | theme `--ui-unit`; `size` / `data-size` per subtree | 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5 … 12 (0.5 steps) | 4 |
 | B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 1 |
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
+| corner shape k | theme `--ui-corner-shape`: `corner-shape: superellipse(k)` on every element with a radius | −1..4 (1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | icon size | `icon-size` / `data-icon-size`, any element, inherited | sm, md, lg, fill | md |
 | gap | `gap` on a container or composite; that element only | 0 … 8 (0.5 steps, ×u) | = the padding level |
 
