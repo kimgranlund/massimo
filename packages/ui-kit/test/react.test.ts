@@ -30,3 +30,36 @@ test('Range and Progress: native input/progress with track, fill, thumb and --ui
   assert.match(html(h(Progress, { value: 40, label: 'Upload' })), /--ui-ratio:0.4.*<progress max="100" aria-label="Upload" value="40"><\/progress>/);
   assert.match(html(h(Progress, {})), /data-indeterminate="true"/);
 });
+
+const { Badge, Tag, Chip } = await loadTsx(new URL('../components/btg/btg.react.tsx', import.meta.url));
+const { Swatch, Palette } = await loadTsx(new URL('../components/color/color.react.tsx', import.meta.url));
+const { Image } = await loadTsx(new URL('../components/image/image.react.tsx', import.meta.url));
+const { Card, Group } = await loadTsx(new URL('../components/container/container.react.tsx', import.meta.url));
+
+test('Badge, Tag, Chip: data-ui hosts with the construction pattern; Chip is a native toggle button', () => {
+  assert.equal(html(h(Badge, {}, '3')), '<span data-ui="badge"><span data-part="contents">3</span></span>');
+  assert.match(html(h(Tag, { leading: h('i', { name: 'tag' }), suffix: 'M' }, 'Size')), /<span data-ui="tag"><span data-part="leading"><i name="tag"><\/i><\/span><span data-part="contents">Size<\/span><span data-part="suffix">M<\/span><\/span>/);
+  const chip = html(h(Chip, { selectable: true, defaultSelected: true }, 'Design'));
+  assert.match(chip, /^<button type="button" data-ui="chip" data-selectable="true" aria-pressed="true"/);
+  assert.match(html(h(Chip, { removable: true }, 'Remote')), /aria-keyshortcuts="Delete".*<span data-part="trailing"><i name="x" data-remove=""><\/i><\/span>/);
+  noCustom(chip);
+});
+
+test('Swatch and Palette: role=img swatches; a selectable palette is a radio group of native radios', () => {
+  assert.match(html(h(Swatch, { color: '#3366ff', label: 'Blue' })), /data-ui="swatch" role="img" aria-label="Blue" style="--ui-swatch-color:#3366ff"/);
+  assert.match(html(h(Swatch, { color: 'rgb(255 0 0 / 40%)' })), /data-alpha="true"/);
+  const p = html(h(Palette, { name: 'accent', defaultValue: '#22aa66', label: 'Accent' }, h(Swatch, { color: '#3366ff' }), h(Swatch, { color: '#22aa66' })));
+  assert.match(p, /data-ui="palette" data-selectable="true" role="radiogroup" aria-label="Accent"/);
+  const checked = p.match(/<label data-ui="swatch" style="--ui-swatch-color:#22aa66"><input [^>]*>/)?.[0] ?? '';
+  for (const a of ['type="radio"', 'name="accent"', 'value="#22aa66"', 'aria-label="#22aa66"', 'checked=""']) assert.ok(checked.includes(a), `${a} in ${checked}`);
+  assert.match(html(h(Palette, { orientation: 'vertical' }, h(Swatch, { color: '#eee' }))), /role="group".*data-ui="swatch" role="img"/);
+  noCustom(p);
+});
+
+test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio as a variable', () => {
+  assert.match(html(h(Image, { src: '/a.jpg', alt: 'A', ratio: 'wide' })), /data-ui="image" data-ratio="wide" data-fit="cover".*<img src="\/a.jpg" alt="A" loading="lazy" decoding="async"/);
+  assert.match(html(h(Image, { ratio: '3/2' })), /--ui-image-ratio:3\/2/);
+  assert.doesNotMatch(html(h(Image, { ratio: 'evil;' })), /--ui-image-ratio/);
+  assert.equal(html(h(Card, {}, 'x')), '<div data-ui="card">x</div>');
+  assert.equal(html(h(Group, { gap: 2 }, 'x')), '<div data-ui="group" gap="2">x</div>');
+});

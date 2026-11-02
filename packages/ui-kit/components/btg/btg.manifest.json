@@ -767,6 +767,16 @@
         "component:chip": "UIChip"
       },
       "verification": "./verification/btg.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./btg.react.tsx",
+      "exports": {
+        "component:badge": "Badge",
+        "component:tag": "Tag",
+        "component:chip": "Chip"
+      },
+      "verification": "./verification/btg.verification.json#/renderers/react"
     }
   }
 }

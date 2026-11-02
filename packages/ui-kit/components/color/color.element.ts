@@ -8,10 +8,9 @@
 import { UIElement, UIFormElement, define, signal, type Problem } from '../../core/index.ts';
 import { applyAttrs, navigate, optionAttrs, listboxAttrs, uid } from '../../dom/index.ts';
 
-// Translucent: transparent/currentcolor-free keywords, an alpha channel (`/ a`, rgba/hsla, #rgba, #rrggbbaa).
-const TRANSLUCENT = /transparent|rgba\(|hsla\(|\/\s*[\d.]+%?\s*\)|#(?:[0-9a-f]{4}|[0-9a-f]{8})\b/i;
-export const isTranslucent = (c: string) => TRANSLUCENT.test(c);
-const validColor = (c: string) => !!c && (typeof CSS === 'undefined' || !CSS.supports || CSS.supports('color', c));
+import { isTranslucent, validColor } from './color.ts';
+
+export { isTranslucent } from './color.ts';
 
 export class UISwatch extends UIElement {
   static properties = {

@@ -33,6 +33,26 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
   switch: CHOICE_STATE,
   range: RANGE_STATE,
   progress: [],
+  badge: [],
+  tag: [],
+  chip: [[/\[selectable\]/g, '[data-selectable]']],
+  // A selectable palette is a radio group: each swatch is a label around a native radio.
+  palette: [
+    [/\[(selectable|name)\]/g, '[data-selectable]'],
+    [/\[orientation=vertical\]/g, '[data-orientation=vertical]'],
+    [/\[aria-disabled=true\]/g, '[data-disabled]'],
+    [/\[aria-invalid=true\]/g, '[data-invalid]'],
+  ],
+  swatch: [
+    [/\[aria-selected=true\]/g, ':has(> input:checked)'],
+    [/\[data-active\]/g, ':has(> input:focus-visible)'],
+  ],
+  image: [
+    [/\[ratio(?=[=\]])/g, '[data-ratio'],
+    [/\[fit=/g, '[data-fit='],
+    [/\[slideshow\]/g, '[data-slideshow]'],
+  ],
+  group: [], collection: [], tile: [], card: [], panel: [], region: [], page: [],
 };
 
 const tagRe = (names: string[]) => new RegExp(`(?<![\\w-])ui-(${names.join('|')})(?![\\w-])`, 'g');
@@ -91,6 +111,10 @@ export const native = {
   // thumb's travel (width − track) and the pointer lands where the thumb is drawn. One rule per engine.
   '[data-ui=range] > input::-webkit-slider-thumb': { appearance: 'none', width: 'var(--track)', height: 'var(--track)' },
   '[data-ui=range] > input::-moz-range-thumb': { width: 'var(--track)', height: 'var(--track)', border: 0 },
+  // Swatch in a selectable palette: the native radio is invisible; the swatch paints it.
+  '[data-ui=swatch]': { position: 'relative' },
+  '[data-ui=swatch] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
+  '[data-ui=palette][data-selectable] > [data-ui=swatch]': { cursor: 'pointer' },
   // Progress: the native element stays in the accessibility tree; the track paints it.
   '[data-ui=progress] > progress': { position: 'absolute', width: '1px', height: '1px', opacity: 0, overflow: 'hidden' },
 } as Css;

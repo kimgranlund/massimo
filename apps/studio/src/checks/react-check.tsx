@@ -3,7 +3,14 @@
 import '../index.css';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
+import '@massimo/ui-kit/components/btg/element';
+import '@massimo/ui-kit/components/color/element';
+import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/icons';
+import { Badge, Tag, Chip } from '@massimo/ui-kit/components/btg/react';
+import { Swatch, Palette } from '@massimo/ui-kit/components/color/react';
+import { Image } from '@massimo/ui-kit/components/image/react';
+import { Card, Group } from '@massimo/ui-kit/components/container/react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react';
@@ -24,6 +31,18 @@ function Pair({ u }: { u: number }) {
         <ui-switch data-k="sw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
         <div style={{ width: 300 }}><ui-range data-k="rg" value={25} /></div>
         <div style={{ width: 300 }}><ui-progress data-k="pg" value={40} /></div>
+        <ui-badge data-k="bd">3</ui-badge>
+        <ui-tag data-k="tg"><i slot="leading" name="tag" />Size<span slot="suffix">M</span></ui-tag>
+        <ui-chip data-k="ch" selectable selected><i slot="leading" name="check" />Design</ui-chip>
+        <ui-chip data-k="chX" removable>Remote</ui-chip>
+        <ui-swatch data-k="sws" color="#3366ff" />
+        <ui-swatch data-k="swa" color="rgb(255 0 0 / 40%)" />
+        <ui-palette data-k="pl" name={`p${u}`} value="#22aa66"><ui-swatch color="#3366ff" /><ui-swatch color="#22aa66" /><ui-swatch color="#dd4433" /></ui-palette>
+        <ui-palette data-k="plv" orientation="vertical"><ui-swatch color="#eef" /><ui-swatch color="#99f" /></ui-palette>
+        <div style={{ width: 200 }}><ui-image data-k="im" ratio="wide" /></div>
+        <div style={{ width: 200 }}><ui-image data-k="imc" ratio="3/2" /></div>
+        <ui-card data-k="cd"><span>a</span><span>b</span></ui-card>
+        <ui-group data-k="gp" gap="2"><span>a</span><span>b</span></ui-group>
       </div>
       <div data-side="react">
         <Checkbox data-k="cb">Accept</Checkbox>
@@ -34,6 +53,18 @@ function Pair({ u }: { u: number }) {
         <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
         <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
         <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
+        <Badge data-k="bd">3</Badge>
+        <Tag data-k="tg" leading={<i name="tag" />} suffix="M">Size</Tag>
+        <Chip data-k="ch" selectable defaultSelected leading={<i name="check" />}>Design</Chip>
+        <Chip data-k="chX" removable>Remote</Chip>
+        <Swatch data-k="sws" color="#3366ff" />
+        <Swatch data-k="swa" color="rgb(255 0 0 / 40%)" />
+        <Palette data-k="pl" name={`pp${u}`} defaultValue="#22aa66"><Swatch color="#3366ff" /><Swatch color="#22aa66" /><Swatch color="#dd4433" /></Palette>
+        <Palette data-k="plv" orientation="vertical"><Swatch color="#eef" /><Swatch color="#99f" /></Palette>
+        <div style={{ width: 200 }}><Image data-k="im" ratio="wide" /></div>
+        <div style={{ width: 200 }}><Image data-k="imc" ratio="3/2" /></div>
+        <Card data-k="cd"><span>a</span><span>b</span></Card>
+        <Group data-k="gp" gap={2}><span>a</span><span>b</span></Group>
       </div>
     </div>
   );
@@ -52,6 +83,7 @@ setTimeout(() => {
   const measure = (el: HTMLElement) => {
     const q = (s: string) => el.querySelector(s) as HTMLElement | null;
     const rect = (e: Element | null) => (e ? e.getBoundingClientRect() : null);
+    const kids = [...el.children] as HTMLElement[];
     const box = q('[data-part=box]'), track = q('[data-part=track]'), fill = q('[data-part=fill]'), thumb = q('[data-part=thumb]'), contents = q('[data-part=contents]');
     const er = rect(el)!;
     return {
@@ -63,11 +95,14 @@ setTimeout(() => {
       fillW: fill ? r2(rect(fill)!.width) : 0, trackH: track ? r2(rect(track)!.height) : 0,
       thumbLeft: thumb ? r2(rect(thumb)!.left - er.left) : 0, opacity: getComputedStyle(el).opacity,
       font: getComputedStyle(el).fontFamily,
+      bg: getComputedStyle(el).backgroundColor, radius: getComputedStyle(el).borderTopLeftRadius, pad: getComputedStyle(el).paddingLeft,
+      // Child layout: each part's offset and size (covers slots, labels, swatches and container gaps).
+      kids: kids.filter((k) => k.localName !== 'input' && k.localName !== 'progress' && !k.hidden).map((k) => { const r = k.getBoundingClientRect(); return `${r2(r.left - er.left)}:${r2(r.top - er.top)}:${r2(r.width)}x${r2(r.height)}:${getComputedStyle(k).backgroundColor}:${getComputedStyle(k).outlineStyle}`; }).join(' '),
     };
   };
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg']) {
+    for (const k of ['cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

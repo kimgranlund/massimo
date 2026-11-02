@@ -510,6 +510,15 @@
         "component:palette": "UIPalette"
       },
       "verification": "./verification/color.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./color.react.tsx",
+      "exports": {
+        "component:swatch": "Swatch",
+        "component:palette": "Palette"
+      },
+      "verification": "./verification/color.verification.json#/renderers/react"
     }
   }
 }

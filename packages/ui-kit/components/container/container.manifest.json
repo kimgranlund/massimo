@@ -903,6 +903,20 @@
       "status": "completed",
       "documentation": "./container.md",
       "verification": "./verification/container.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./container.react.tsx",
+      "exports": {
+        "component:group": "Group",
+        "component:collection": "Collection",
+        "component:tile": "Tile",
+        "component:card": "Card",
+        "component:panel": "Panel",
+        "component:region": "Region",
+        "component:page": "Page"
+      },
+      "verification": "./verification/container.verification.json#/renderers/react"
     }
   }
 }

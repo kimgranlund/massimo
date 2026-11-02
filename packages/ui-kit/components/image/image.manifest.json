@@ -299,6 +299,14 @@
         "component:image": "UIImage"
       },
       "verification": "./verification/image.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./image.react.tsx",
+      "exports": {
+        "component:image": "Image"
+      },
+      "verification": "./verification/image.verification.json#/renderers/react"
     }
   }
 }

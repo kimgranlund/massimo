@@ -14,7 +14,15 @@
     },
     {
       "path": "components/container/container.manifest.json",
-      "sha256": "6165dda50a809bb88ab6a987ad1c7e252aa5db4fa242611bc5d6e1079c5afe5f"
+      "sha256": "44e578872137fc28cf4a79506c1035d97932d1aabf57f47244c0ba3b78c8feff"
+    },
+    {
+      "path": "components/container/container.react.tsx",
+      "sha256": "9fe7983b8fa85143db3327ed047ce6d56f7bf234e52f15eaddedc4bcc87c5002"
+    },
+    {
+      "path": "styles/native.ts",
+      "sha256": "95e2ccb48c4b9fd3131c0a4a25ad803a64bda333fdc7e820616e483f1948d1ae"
     }
   ],
   "renderers": {
@@ -35,10 +43,34 @@
           "node": "v26.13.0"
         }
       }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+        },
+        {
+          "command": "node --test test/native.test.ts",
+          "covers": "twin selectors and state mapping"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts",
+          "node --test test/native.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
     }
   },
   "limitations": [
     "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
-    "The source list is the direct sources, not every transitive dependency."
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": [])."
   ]
 }

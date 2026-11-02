@@ -28,7 +28,11 @@
     "./spectrum": "./tokens/colors/spectrum/index.ts",
     "./dtcg/*": "./tokens/dtcg/*",
     "./components/choice/react": "./components/choice/choice.react.tsx",
-    "./components/range/react": "./components/range/range.react.tsx"
+    "./components/range/react": "./components/range/range.react.tsx",
+    "./components/btg/react": "./components/btg/btg.react.tsx",
+    "./components/color/react": "./components/color/color.react.tsx",
+    "./components/image/react": "./components/image/image.react.tsx",
+    "./components/container/react": "./components/container/container.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",
