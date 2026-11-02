@@ -21,18 +21,31 @@ const ANCHORED = '@supports (position-area: block-end) and (anchor-scope: all)';
 const popup = {
   flexDirection: 'column', position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
   bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
-  // Fades and grows from its trigger edge.
-  transformOrigin: 'top center', opacity: 0, scale: 0.97,
+  // Base UI's positioner variables (Select.Positioner): computed in CSS where anchor positioning
+  // runs (`anchored` below), set in px by the element's script placement elsewhere; the React
+  // picker gets the CSS ones. The popup is sized from them.
+  minWidth: 'var(--anchor-width)', maxHeight: 'var(--available-height)',
+  // Fades and grows from its trigger edge: the top edge below the trigger, the bottom edge above it.
+  // (The web component's popup flips the origin by data-side, `side` below; the browser reports no
+  // side for the React picker.)
+  '--transform-origin': 'top center',
+  transformOrigin: 'var(--transform-origin)', opacity: 0, scale: 0.97,
   transition: `${t('reveal', 'opacity', 'scale')}, display {durations.reveal} allow-discrete, overlay {durations.reveal} allow-discrete`,
   [FORCED]: FORCED_EDGE,
 };
 // Anchor positioning (browsers with position-area and anchor-scope): each select scopes one shared
 // anchor name, so the popup sits 1u below its own trigger (above when there is no room), at least as
 // wide, as tall as the space allows. Elsewhere the element places it from script.
+// The variables hold anchor functions and percentages of the position-area cell (the space beside
+// the trigger), so they resolve where they are used: in sizing, inset and margin properties.
 const anchored = {
   positionAnchor: '--ui-select-trigger', positionArea: 'block-end span-inline-end', positionTryFallbacks: 'flip-block', positionTryOrder: 'most-block-size',
+  '--anchor-width': 'anchor-size(width)', '--anchor-height': 'anchor-size(height)',
+  // The cell spans from the trigger's start edge to the viewport's end, and from the trigger to the
+  // viewport edge on the open side; the popup's 1u margin toward the trigger is not available.
+  '--available-width': '100%', '--available-height': 'calc(100% - var(--u))',
   // One margin toward the trigger; flip-block mirrors it when the popup opens upward.
-  marginBlockStart: 'var(--u)', minWidth: 'anchor-size(width)', maxHeight: 'calc(100% - var(--u))',
+  marginBlockStart: 'var(--u)',
 };
 const open = { opacity: 1, scale: 1, '@starting-style': { opacity: 0, scale: 0.97 } };
 // The composite variables alone (the native select holds them for its options, which inherit from it).
@@ -81,6 +94,8 @@ export const select = defineSlotRecipe({
     // the popup stays displayed for its fade (display transitions discretely), so a direction set
     // only on :popover-open would flip it to a row.
     popup: mergeStyles(popup, composite, hostGap, {
+      // Base UI data-side: opening upward, the popup grows from its bottom edge.
+      '&[data-side=top]': { '--transform-origin': 'bottom center' },
       '&:popover-open': { display: 'flex', ...open },
       [ANCHORED]: anchored,
     }),

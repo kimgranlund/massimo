@@ -236,6 +236,9 @@ test('ui-select: options move into popup; open, move, commit, cancel', async () 
   key(trigger, 'ArrowDown'); await tick();
   assert.equal(trigger.getAttribute('aria-expanded'), 'true');
   assert.equal(trigger.getAttribute('aria-activedescendant'), sel.options[0].id);
+  // (Base UI's positioner variables from script placement: popupVars in listbox.test.ts.)
+  assert.equal(sel.popup!.parentElement, sel, 'popup › list › options');
+  assert.equal(sel.options[0].parentElement!.getAttribute('data-part'), 'list');
   key(trigger, 'ArrowDown'); await tick();
   assert.equal(trigger.getAttribute('aria-activedescendant'), sel.options[2].id, 'skips disabled');
   key(trigger, 'Enter'); await tick();

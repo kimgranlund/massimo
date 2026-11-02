@@ -61,6 +61,19 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 
 The React Select is a native customizable select: its open state (`select:open`), option selection (`:checked`) and highlight (`:focus`) and the popup (`::picker(select)`) stay native, because the browser does not report them to script. Enter and exit motion is `@starting-style` (no `data-starting-style` / `data-ending-style`).
 
+## Popup variables
+
+The popup carries Base UI's positioner variables (Select.Positioner), and the recipe sizes it from them: `min-width: var(--anchor-width)`, `max-height: var(--available-height)`, `transform-origin: var(--transform-origin)`.
+
+| Variable | Anchor positioning (CSS) | Script fallback (`placePopup`, `popupVars`) | React (`::picker(select)`) |
+|---|---|---|---|
+| `--anchor-width`, `--anchor-height` | `anchor-size(width)`, `anchor-size(height)` | trigger size in px | as CSS |
+| `--available-width` | `100%` of the position-area cell (trigger start to viewport end) | viewport width − left − 8px, px | as CSS |
+| `--available-height` | `calc(100% - var(--u))`: the cell on the open side, less the 1u offset | the space on the chosen side, px | as CSS |
+| `--transform-origin` | `top center`, `bottom center` with `data-side="top"` | the same, inline | `top center` only: the browser does not report a flip |
+
+The CSS values are anchor functions and percentages of the anchored containing block, so they resolve where they are used (sizing, inset and margin properties); `getComputedStyle` returns them unresolved. The script values are px, written inline when the element places the popup itself. The React picker has no `data-side` / `data-align`: it is a pseudo-element the browser places.
+
 ## Geometry and appearance
 
 Geometry families: `field` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [select.recipe.ts](select.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

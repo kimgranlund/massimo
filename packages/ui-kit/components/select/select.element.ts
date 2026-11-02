@@ -7,7 +7,7 @@
 import { UIFormElement, define, html, signal, type Problem } from '../../core/index.ts';
 import {
   applyAttrs, comboboxAttrs, createTypeahead, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
-  listboxAttrs, navigate, optionAttrs, placePopup, popupDataAttrs, selectKeyIntent, uid, withExternalRefs,
+  listboxAttrs, navigate, optionAttrs, placePopup, popupDataAttrs, popupVars, selectKeyIntent, uid, withExternalRefs,
 } from '../../dom/index.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
@@ -209,8 +209,10 @@ export class UISelect extends UIFormElement {
     this.#side.value = p.side;
     Object.assign(popup.style, {
       left: `${p.left}px`, top: p.top == null ? 'auto' : `${p.top}px`, bottom: p.bottom == null ? 'auto' : `${p.bottom}px`,
-      minWidth: `${p.minWidth}px`, maxHeight: `${p.maxHeight}px`,
     });
+    // Base UI's positioner variables; the recipe sizes the popup from them (min-width, max-height,
+    // transform-origin). With anchor positioning the recipe computes them in CSS instead.
+    for (const [k, v] of Object.entries(popupVars(p))) popup.style.setProperty(k, v);
   };
 
   #focusTrigger = () => { if (!this.isDisabled) this.focus(); };

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "9cf64fce1be582f674096e54f11747904589f92a58e37c35a7a22174d7eed4a8"
+      "sha256": "1a12a97379286285d9d681b8f0f2477cb9375fa2057ceadedbcb6439fe6e4974"
     },
     {
       "path": "components/listbox/options.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "0abd44cae858161a92412ac6e4f9ad03ff4cdaf34c0ddc89f0a95f249510bec3"
+      "sha256": "4fbe3d0a731ae58377ede4fe18a3bcdc1ffdab949ff8d1273b92541725436cd9"
     },
     {
       "path": "dom/field.ts",

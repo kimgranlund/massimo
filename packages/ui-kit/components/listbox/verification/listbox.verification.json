@@ -18,7 +18,7 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "0abd44cae858161a92412ac6e4f9ad03ff4cdaf34c0ddc89f0a95f249510bec3"
+      "sha256": "4fbe3d0a731ae58377ede4fe18a3bcdc1ffdab949ff8d1273b92541725436cd9"
     },
     {
       "path": "components/listbox/listbox.manifest.json",
