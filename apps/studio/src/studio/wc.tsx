@@ -1,20 +1,21 @@
 // Thin React bindings for ui-kit web components: properties go through React 19's custom
 // element support; events are attached with addEventListener.
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useCallback, useRef, type ReactNode } from 'react';
 import * as s from './styles.ts';
 
+/**
+ * Listen for a DOM event on an element. Returns a callback ref, so the listener follows the element:
+ * a keyed component that remounts (a select whose options change) gets its listener again.
+ */
 export function useEvent(type: string, fn: (el: any) => void) {
-  const ref = useRef<any>(null);
   const fnRef = useRef(fn);
   fnRef.current = fn;
-  useEffect(() => {
-    const el = ref.current;
+  return useCallback((el: any) => {
     if (!el) return;
     const h = () => fnRef.current(el);
     el.addEventListener(type, h);
     return () => el.removeEventListener(type, h);
   }, [type]);
-  return ref;
 }
 
 // Figma-style pane rows: a 5-column grid where every row is a label (2 columns) and a control
