@@ -29,7 +29,7 @@ export const defaults = defineGlobalStyles({
   [BUTTON]: {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
-    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
+    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--line)',
     cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
   },
   // Hover and press step the fill one ramp step each (neutral 3 → 4 → 5).
@@ -51,7 +51,7 @@ export const defaults = defineGlobalStyles({
   [CONTROL]: {
     // Laid out as a button: 1u (padding + border) on the host; contents and slots carry the rest.
     display: 'flex', alignItems: 'center', width: '100%', height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
-    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
+    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--line)',
   },
   // aria-invalid only: native :invalid would flag untouched required fields on load.
   // Invalid: a danger-tinted fill (borders default to 0, so the edge alone cannot carry it).

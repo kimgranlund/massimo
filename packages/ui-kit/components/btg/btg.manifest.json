@@ -125,7 +125,7 @@
             "fill"
           ],
           "readBy": "css",
-          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets and the select chevron stay sm. data-icon-size is the same input for plain HTML.",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets, the select chevron and the x close icon stay sm. data-icon-size is the same input for plain HTML.",
           "inspector": {
             "control": "select"
           }
@@ -248,7 +248,7 @@
             "fill"
           ],
           "readBy": "css",
-          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets and the select chevron stay sm. data-icon-size is the same input for plain HTML.",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets, the select chevron and the x close icon stay sm. data-icon-size is the same input for plain HTML.",
           "inspector": {
             "control": "select"
           }

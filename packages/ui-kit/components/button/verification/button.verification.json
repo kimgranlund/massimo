@@ -18,7 +18,7 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "9a441cb3cc4048909667bfb0e51f61e39e72251250ba3d3e433a9130a01ca25b"
+      "sha256": "518278a0722aa9132f3e96f871dc409d966e1542c264c3def36f23197d8da769"
     }
   ],
   "renderers": {

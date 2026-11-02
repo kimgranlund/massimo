@@ -40,7 +40,7 @@ for (const c of cases) {
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
     <ui-button id="adorn">Save<span slot="suffix">⌘S</span></ui-button>
     <ui-input id="money" label="M"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
-    <ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
+    <ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
@@ -72,6 +72,9 @@ for (const c of cases) {
     'option.leading.end': [px(cs(pc(box.querySelectorAll('ui-listbox ui-option')[1])).paddingRight), resolveButtonContents(true, false, g).end],
     'label.textOnly.end': [px(cs(pc(textBtn)).paddingRight), resolveButtonContents(false, false, g).end],
     'contents.paddingBlock': [px(cs(contents).paddingTop), ctl.contents.paddingBlock],
+    'contents.lineHeight': [px(cs(contents).lineHeight), r2(ctl.contents.lineHeight)],
+    'input.editor.lineHeight': [px(cs(pc(inp)).lineHeight), r2(ctl.contents.lineHeight)],
+    'select.value.lineHeight': [px(cs(pc(tr)).lineHeight), r2(ctl.contents.lineHeight)],
     'iconOnly.square': [r2(rect(iconBtn).width), ctl.height],
     'input.height': [r2(rect(inp).height), fld.height],
     'input.padding': [px(cs(inp).paddingLeft) + px(cs(inp).borderLeftWidth), ctl.padding + ctl.border],
@@ -100,6 +103,11 @@ for (const c of cases) {
     'tag.icon': [r2(rect(slotOf(tag).firstElementChild).width), rt.iconSize],
     'tag.contents.paddingInline': [px(cs(contentsOf(tag)).paddingLeft), rt.contentsPaddingInline],
     'chip.height': [r2(rect(chip).height), rc.height],
+    'chip.lineHeight': [px(cs(contentsOf(chip)).lineHeight), r2(rc.lineHeight)],
+    'tag.lineHeight': [px(cs(contentsOf(tag)).lineHeight), r2(rt.lineHeight)],
+    'tag.paddingBlock': [px(cs(contentsOf(tag)).paddingTop), rt.paddingBlock],
+    'chip.paddingBlock': [px(cs(contentsOf(chip)).paddingTop), r2(rc.paddingBlock)],
+    'badge.lineHeight': [px(cs(badge).lineHeight), r2(rb.lineHeight)],
     'chip.font': [px(cs(chip).fontSize), rc.fontSize],
     'chip.padding': [px(cs(chip).paddingTop), rc.padding],
     'chip.slot': [r2(rect(slotOf(chip)).width), rc.slot],
@@ -121,6 +129,7 @@ for (const c of cases) {
   runChecks('pattern.input', part($('money'), 'control'), { prefix: true, suffix: true });
   runChecks('pattern.chip', $('chipSfx'), { suffix: true }, { slotEdge: c.unit, bareEdge: c.unit });
   runChecks('pattern.checkbox', $('chkSfx'), { leading: true, suffix: true }, { bareEdge: 0 });
+  checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];
   const choice = (sel) => box.querySelector(`${sel} [data-part=box]`);

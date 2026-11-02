@@ -12,11 +12,16 @@ test('size is the unit: height 8u, font 10px + u (spec table)', () => {
   }
 });
 
-test('32px control: 1u padding, 6u slots, contents 1u inline / 0.75u block', () => {
+test('32px control: 1u padding, 6u slots, contents 1u inline, line height 1.2 centered in the slot', () => {
   const c = resolveControl({ border: 0 });
   assert.equal(c.padding, 4);
   assert.equal(c.slot, 24);
-  assert.deepEqual(c.contents, { paddingInline: 4, paddingBlock: 3, lineHeight: 18, minSize: 24 });
+  assert.deepEqual(c.contents, { paddingInline: 4, paddingBlock: 3.6, lineHeight: 16.8, minSize: 24 });
+  // Single-line controls: line height 1.2 × font, capped at the 6u slot (u = 2: font 12, slot 12).
+  assert.equal(resolveBtg('tag').paddingBlock, 0, 'tag omits block padding');
+  assert.equal(resolveBtg('badge').paddingBlock, 0, 'badge omits block padding');
+  assert.ok(Math.abs(resolveBtg('chip').paddingBlock - (resolveBtg('chip').slot - resolveBtg('chip').lineHeight) / 2) < 1e-6);
+  assert.deepEqual(resolveControl({ unit: 2 }).contents, { paddingInline: 2, paddingBlock: 0, lineHeight: 12, minSize: 12 });
   assert.equal(c.height, c.slot + 2 * c.padding);
 });
 

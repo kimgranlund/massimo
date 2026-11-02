@@ -3,7 +3,8 @@
 // - size IS the unit: size="2" … size="12" sets u; a control is 8u tall.
 // - controls have leading / contents / trailing slots, each at least 6u square,
 //   inside 1u of padding (the border is spent inside that padding, never added).
-// - text is 10px + u; contents carry 1u inline and 0.75u block padding.
+// - text is 10px + u at line height 1.2 (capped at the 6u slot); contents are centered in the slot by
+//   equal block padding.
 // styles/geometry.ts implements the same formulas in CSS; tests and the browser
 // check (apps/studio/geometry-check.html) keep the two in agreement. Lengths in CSS px.
 
@@ -58,10 +59,16 @@ export function resolveControl(input: GeometryInput = {}) {
     unit: u, border: b, slot, inset, height,
     padding: inset - b,
     fontSize,
-    contents: { paddingInline: u, paddingBlock: 0.75 * u, lineHeight: 4.5 * u, minSize: slot },
+    contents: { paddingInline: u, ...singleLine(fontSize, slot), minSize: slot },
     iconSize: resolveIcon(fontSize, u, x.iconSize, slot),
     radius: Math.min(3 * u * x.radiusScale, height / 2),
   };
+}
+
+/** Single-line control text: line height 1.2 × font, capped at the slot, centered by equal block padding. */
+export function singleLine(fontSize: number, slot: number) {
+  const lineHeight = Math.min(1.2 * fontSize, slot);
+  return { lineHeight, paddingBlock: Math.round(((slot - lineHeight) / 2) * 1e6) / 1e6 };
 }
 
 /** Button and option label padding: 1u beside a slot, 2u on a side with no leading/trailing element. */
@@ -205,6 +212,10 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
     minWidth: height,
     padding: Math.max(0, 0.5 * u - b),
     contentsPaddingInline: u, // same as control contents
+    // Single-line text at 1.2. Chip centers it in the slot with block padding; tag and badge
+    // omit block padding (the row centers the text).
+    ...(kind === 'badge' ? { lineHeight: Math.min(1.2 * fontSize, height), paddingBlock: 0 }
+      : kind === 'tag' ? { lineHeight: Math.min(1.2 * fontSize, slot), paddingBlock: 0 } : singleLine(fontSize, slot)),
     iconSize: kind === 'badge' ? 0 : resolveIcon(fontSize, u, x.iconSize, slot),
     radius: Math.min(3 * u * x.radiusScale, height / 2),
   };

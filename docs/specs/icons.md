@@ -8,4 +8,4 @@
 - **Bundled sets:** `registerIconSet(name, moduleSet(import.meta.glob(…, { query: '?raw', import: 'default' })))`.
 - **Safety:** fetched SVG is sanitized (drawing elements and presentation attributes only; no scripts, handlers, external references, `<use>`, `<image>`, `<foreignObject>`).
 - **Accessibility:** decorative (`aria-hidden`) unless the `<i>` has `aria-label`; missing icons get `data-icon-missing`.
-- **Sizes:** 1em by default; in slots `sm` / `md` / `lg` / `fill` from the geometry ([geometry](geometry.md)); carets and the select chevron are always `sm`.
+- **Sizes:** 1em by default; in slots `sm` / `md` / `lg` / `fill` from the geometry ([geometry](geometry.md)); carets, the select chevron and the `x` close icon (chip remove, dismiss) are always `sm`.

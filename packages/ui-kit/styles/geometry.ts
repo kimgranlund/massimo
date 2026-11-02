@@ -63,7 +63,11 @@ export const geometry = defineGlobalStyles({
     '--pad': 'calc(var(--u) - var(--b))',
     '--h': 'calc(8 * var(--u))',
     '--font': 'calc(10px + var(--u))',
+    // Multi-line labels (choices) keep the 4.5u rhythm; single-line controls use 1.2, capped at
+    // the slot (only below u = 2.5 does 1.2 × font exceed 6u), centered by equal block padding.
     '--leading': 'calc(4.5 * var(--u))',
+    '--line': 'min(calc(1.2 * var(--font)), var(--slot))',
+    '--line-pad': 'calc((var(--slot) - var(--line)) / 2)',
     // Capped at the slot so the control stays 8u.
     '--icon': 'min(calc(var(--font) + var(--ui-icon-k) * var(--u)), var(--slot))',
     // Indicators (carets, the select chevron) are always icon size sm.
@@ -86,11 +90,12 @@ export const geometry = defineGlobalStyles({
   [`${FIELD_HOSTS} > [data-part=contents]`]: { display: 'block', flex: '1', minWidth: 0 },
   ...textRun(SLOTTED, 'var(--u)', 'calc(2 * var(--u))', {
     display: 'flex', alignItems: 'center', minHeight: 'var(--slot)',
-    paddingBlock: 'calc(0.75 * var(--u))', lineHeight: 'var(--leading)',
+    paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)',
   }),
 
-  // Carets and the select chevron use icon size sm regardless of icon-size.
-  [`${SLOT} > i[name^="caret-"]`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
+  // Indicators use icon size sm regardless of icon-size: carets, the select chevron and the x
+  // close / remove icon (chip remove, dismiss buttons).
+  [`${SLOT} > :is(i[name^="caret-"], i[name="x"])`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
 
   // Fill: artwork covers the whole slot, with a radius nested inside the control's.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${SLOT}`]: {
@@ -112,12 +117,14 @@ export const geometry = defineGlobalStyles({
   },
   'ui-chip': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
   'ui-tag': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
-  'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', paddingInline: 'var(--pad)', justifyContent: 'center', lineHeight: 1 },
+  'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', paddingInline: 'var(--pad)', justifyContent: 'center', lineHeight: 'min(calc(1.2 * var(--font)), var(--h))' },
   [TAGCHIP]: { padding: 'var(--pad)' },
   [`${TAGCHIP} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${TAGCHIP} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${TAGCHIP} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  ...textRun(TAGCHIP, 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: '1' }),
+  ...textRun(TAGCHIP, 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }),
+  // Chip centers its text with block padding; tag (like badge) needs none, its row centers it.
+  [`ui-chip > ${TEXT}`]: { paddingBlock: 'var(--line-pad)' },
   // Fill slots nest inside the 0.5u edge.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${TAGCHIP} > ${SLOT}, ${TAGCHIP}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))',
