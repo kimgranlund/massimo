@@ -1,6 +1,8 @@
-// <ui-button>: the host element is the button. Authored children are kept as its label.
+// <ui-button>: the host element is the button. Children are sorted into leading / contents /
+// trailing slots (mark icons with slot="leading" or slot="trailing"); see components/slots.ts.
 import { UIFormElement, define } from '../../core/index.ts';
 import { applyAttrs, buttonAttrs, blockIfInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
+import { observeSlots } from '../slots.ts';
 
 export class UIButton extends UIFormElement {
   static properties = {
@@ -11,15 +13,18 @@ export class UIButton extends UIFormElement {
   declare type: 'button' | 'submit' | 'reset';
   declare loading: boolean;
 
+  #unslot?: () => void;
   get #state(): ButtonState { return { disabled: this.isDisabled, loading: this.loading }; }
 
   connected() {
+    this.#unslot = observeSlots(this);
     // Capture phase so a blocked click never reaches the page's own listeners.
     this.addEventListener('click', this.#onClick, true);
     this.addEventListener('keydown', this.#onKeydown);
   }
 
   disconnected() {
+    this.#unslot?.();
     this.removeEventListener('click', this.#onClick, true);
     this.removeEventListener('keydown', this.#onKeydown);
   }

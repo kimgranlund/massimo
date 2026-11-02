@@ -1,7 +1,9 @@
 // <ui-option>: one choice inside <ui-listbox>, <ui-segmented> or <ui-select>.
-// The owning list sets role, id and selection state; the option only carries data.
+// The owning list sets role, id and selection state; the option carries data and the same
+// leading / contents / trailing slots as ui-button.
 import { UIElement, define } from '../../core/index.ts';
 import type { OptionItem } from '../../dom/index.ts';
+import { observeSlots } from '../slots.ts';
 
 export class UIOption extends UIElement {
   static properties = {
@@ -11,9 +13,17 @@ export class UIOption extends UIElement {
   declare value: string;
   declare disabled: boolean;
 
-  get label() { return (this.textContent ?? '').trim(); }
+  #unslot?: () => void;
+  connected() { this.#unslot = observeSlots(this); }
+  disconnected() { this.#unslot?.(); }
+
+  /** Text of the contents slot (icons excluded). */
+  get label(): string {
+    const contents = this.querySelector(':scope > [data-part=contents]');
+    return ((contents ?? this).textContent ?? '').trim();
+  }
   /** The submitted value: the `value` attribute, or the label when absent. */
-  get optionValue() { return this.getAttribute('value') ?? (this.value || this.label); }
+  get optionValue(): string { return this.getAttribute('value') ?? (this.value || this.label); }
   get item(): OptionItem { return { value: this.optionValue, label: this.label, disabled: this.disabled }; }
 }
 

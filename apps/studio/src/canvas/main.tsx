@@ -30,6 +30,14 @@ const card = css({ bg: 'bg', borderWidth: 'thin', borderColor: 'border', borderR
 const eyebrow = css({ textStyle: 'caption', color: 'fg.muted', textTransform: 'uppercase', letterSpacing: 'wide' });
 const title = css({ textStyle: 'heading' });
 const form = css({ display: 'flex', flexDirection: 'column', gap: '4' });
+const avatar = css({ display: 'block', bg: 'accent.solid' });
+
+// Demo icons: plain inline SVG, sized by the slot (--icon).
+const svg = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true };
+const Plus = (p: { slot?: string }) => <svg {...svg} {...p}><path d="M12 5v14M5 12h14" /></svg>;
+const Arrow = (p: { slot?: string }) => <svg {...svg} {...p}><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
+const Globe = (p: { slot?: string }) => <svg {...svg} {...p}><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>;
+
 const row = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
 
 function Canvas() {
@@ -50,19 +58,21 @@ function Canvas() {
             <ui-option value="research">Researcher</ui-option>
           </ui-select>
           <div className={row}>
-            <ui-segmented name="size-sm" value="a" data-size="sm"><ui-option value="a">Small</ui-option><ui-option>B</ui-option></ui-segmented>
-            <ui-button data-size="sm">Small</ui-button>
-            <ui-button data-size="lg">Large</ui-button>
-            <ui-segmented name="size-lg" value="a" data-size="lg"><ui-option value="a">Large</ui-option><ui-option>B</ui-option></ui-segmented>
+            <ui-button data-size="3"><Plus slot="leading" />Add</ui-button>
+            <ui-button><Plus slot="leading" />Add item</ui-button>
+            <ui-button data-size="4.5">Next<Arrow slot="trailing" /></ui-button>
+            <ui-button aria-label="Add"><Plus slot="leading" /></ui-button>
+            <ui-button icon-size="fill"><span slot="leading" className={avatar} />Kim</ui-button>
+            <ui-button icon-size="lg"><Plus slot="leading" />Large icon</ui-button>
           </div>
           <ui-segmented name="plan" value="monthly" label="Billing">
             <ui-option value="monthly">Monthly</ui-option>
             <ui-option value="yearly">Yearly</ui-option>
           </ui-segmented>
           <ui-listbox name="region" value="eu" label="Region">
-            <ui-option value="us">United States</ui-option>
-            <ui-option value="eu">Europe</ui-option>
-            <ui-option value="apac">Asia Pacific</ui-option>
+            <ui-option value="us"><Globe slot="leading" />United States</ui-option>
+            <ui-option value="eu"><Globe slot="leading" />Europe</ui-option>
+            <ui-option value="apac"><Globe slot="leading" />Asia Pacific</ui-option>
           </ui-listbox>
           <div className={row}>
             <ui-button type="submit">Create account</ui-button>
@@ -80,7 +90,7 @@ function Canvas() {
         <Input label="Email" placeholder="you@example.com" description="We never share it." />
         <Input label="Password" type="password" error="At least 12 characters." />
         <div className={row}>
-          <Button>Create account</Button>
+          <Button leading={<Plus />}>Create account</Button>
           <Button>Sign in</Button>
           <Button>Help</Button>
           <Button>Delete</Button>

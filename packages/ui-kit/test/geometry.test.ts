@@ -1,40 +1,51 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveControl, resolveComposite, resolveLabelEdges, resolveSelectTrigger, type Size } from '../tokens/geometry/resolve.ts';
+import { SIZES, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
 
-const SIZES: Size[] = ['sm', 'md', 'lg'];
-
-test('control golden values at u=4, B=0 (Differential Forms compact/default/loose)', () => {
-  assert.deepEqual(SIZES.map((size) => resolveControl({ size, border: 0 }).height), [28, 32, 40]);
-  assert.deepEqual(SIZES.map((size) => resolveControl({ size }).gap), [0, 4, 8]);
-  for (const size of SIZES) {
-    const c = resolveControl({ size });
-    assert.equal(c.slot, 24, 'slot is size-independent');
-    assert.equal(c.fontSize, 14, 'text is size-independent');
-    assert.equal(c.lineHeight, 20);
-    assert.equal(c.labelEdge, 6, 'label edge is size-independent');
+test('size is the unit: height 8u, font 10px + u (spec table)', () => {
+  const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
+  assert.deepEqual(SIZES, table.map((r) => r[1]));
+  for (const [height, unit, font] of table) {
+    const c = resolveControl({ unit, border: 0 });
+    assert.equal(c.height, height);
+    assert.equal(c.fontSize, font);
   }
 });
 
-test('border is spent inside the inset, never added to height', () => {
-  const a = resolveControl({ border: 0 }), b = resolveControl({ border: 2 });
-  assert.equal(a.height, b.height);
-  assert.equal(b.padding, b.inset - 2);
-  assert.throws(() => resolveControl({ border: 3 }), RangeError, 'B > u/2 rejected');
+test('32px control: 1u padding, 6u slots, contents 1u inline / 0.75u block', () => {
+  const c = resolveControl({ border: 0 });
+  assert.equal(c.padding, 4);
+  assert.equal(c.slot, 24);
+  assert.deepEqual(c.contents, { paddingInline: 4, paddingBlock: 3, lineHeight: 18, minSize: 24 });
+  assert.equal(c.height, c.slot + 2 * c.padding);
 });
 
-test('curvature: soft 3u, capped at half height, scaled by radius-scale', () => {
+test('icon sizes: sm = font − 0.5u, md = font + 0.5u, lg = font + 1.5u, fill = slot', () => {
+  assert.deepEqual((['sm', 'md', 'lg', 'fill'] as const).map((iconSize) => resolveControl({ iconSize }).iconSize), [12, 16, 20, 24]);
+  // At u=2 the slot is 12px: md (13) and lg (15) cap at the slot so the control stays 16px.
+  assert.deepEqual((['sm', 'md', 'lg', 'fill'] as const).map((iconSize) => resolveControl({ unit: 2, iconSize }).iconSize), [11, 12, 12, 12]);
+  assert.equal(resolveControl({ unit: 2.5, iconSize: 'lg' }).iconSize, 15, 'lg caps below u≈2.9');
+  assert.equal(resolveControl({ unit: 3, iconSize: 'lg' }).iconSize, 17.5, 'uncapped from u=3');
+});
+
+test('border is spent inside the padding, never added to height', () => {
+  const a = resolveControl({ border: 0 }), b = resolveControl({ border: 2 });
+  assert.equal(a.height, b.height);
+  assert.equal(b.padding, 2);
+  assert.throws(() => resolveControl({ unit: 2, border: 1.5 }), RangeError, 'B > u/2 rejected');
+});
+
+test('curvature: soft 3u, capped at half height, scaled', () => {
   assert.equal(resolveControl().radius, 12);
-  assert.equal(resolveControl({ size: 'sm', radiusScale: 3 }).radius, 14, 'cap = 28/2');
+  assert.equal(resolveControl({ unit: 2, radiusScale: 3 }).radius, 8, 'cap = 16/2');
   assert.equal(resolveControl({ radiusScale: 0 }).radius, 0);
 });
 
-test('label edges: buttons double the opposite edge, text fields do not', () => {
-  assert.deepEqual(resolveLabelEdges(6, false, false), { start: 6, end: 6 });
-  assert.deepEqual(resolveLabelEdges(6, true, false), { start: 0, end: 12 });
-  assert.deepEqual(resolveLabelEdges(6, true, false, false), { start: 0, end: 6 });
+test('fields and select trigger put text where button contents sit', () => {
+  const f = resolveField();
+  assert.deepEqual([f.paddingStart, f.paddingEnd], [3 + 4, 3 + 4]);
   const t = resolveSelectTrigger();
-  assert.deepEqual([t.paddingStart, t.paddingEnd], [3 + 6, 3]);
+  assert.deepEqual([t.paddingStart, t.paddingEnd, t.chevronSlot], [7, 3, 24]);
 });
 
 test('composite: default Q=0.5u keeps a one-row segmented control at control height', () => {
@@ -42,14 +53,14 @@ test('composite: default Q=0.5u keeps a one-row segmented control at control hei
   assert.equal(c.edge, 2);
   assert.equal(c.child.height, 28);
   assert.equal(c.rowHeight, 32);
-  assert.equal(c.rowHeight, resolveControl().height);
-  assert.equal(c.child.radius, 10, 'parent 12 minus edge 2');
+  assert.equal(c.child.radius, 10);
 });
 
 test('composite grows instead of shrinking the slot under a tight budget', () => {
-  const c = resolveComposite({ size: 'sm', border: 2, compositeInsetUnits: 1.5 });
-  assert.equal(c.child.height, 28, 'child inset floors at B');
-  assert.equal(c.rowHeight, 40, 'grows past the 28px control');
+  const c = resolveComposite({ unit: 3, border: 1, compositeInsetUnits: 1.5 });
+  assert.equal(c.child.inset, 1, 'child inset floors at B');
+  assert.equal(c.child.height, 20);
+  assert.equal(c.rowHeight, 29, 'grows past the 24px control');
 });
 
 test('Q = 0 is an attached group: no gap, square children', () => {

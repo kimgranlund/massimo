@@ -6,7 +6,7 @@ type El<P> = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & P;
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      'ui-button': El<{ type?: string; disabled?: boolean; loading?: boolean }>;
+      'ui-button': El<{ type?: string; disabled?: boolean; loading?: boolean; 'icon-size'?: string; size?: string }>;
       'ui-option': El<{ value?: string; disabled?: boolean }>;
       'ui-listbox': El<{ name?: string; value?: string; label?: string; orientation?: string; required?: boolean; disabled?: boolean }>;
       'ui-segmented': El<{ name?: string; value?: string; label?: string; required?: boolean; disabled?: boolean }>;

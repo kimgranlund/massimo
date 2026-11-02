@@ -274,3 +274,35 @@ test('ui-select: outside pointerdown closes; required; reconnect keeps options',
   assert.equal(sel.options.length, 5, 'late options are adopted');
   sel.remove();
 });
+
+test('slots: icons sort into leading/trailing, the rest into contents; empty slots hidden', async () => {
+  const b = document.createElement('ui-button');
+  b.innerHTML = '<svg slot="leading"></svg>Save<i slot="trailing"></i>';
+  document.body.append(b);
+  const parts = [...b.children].map((c) => c.getAttribute('data-part'));
+  assert.deepEqual(parts, ['leading', 'contents', 'trailing']);
+  assert.equal(b.children[1].textContent, 'Save');
+  assert.equal(b.children[0].firstElementChild!.localName, 'svg');
+
+  const icon = document.createElement('ui-button');
+  icon.innerHTML = '<svg slot="leading"></svg>';
+  document.body.append(icon);
+  assert.equal((icon.children[1] as HTMLElement).hidden, true, 'icon-only: contents hidden');
+  assert.equal((icon.children[2] as HTMLElement).hidden, true);
+
+  b.querySelector('i')!.setAttribute('slot', 'leading');
+  await tick(); await tick();
+  assert.equal(b.children[0].children.length, 2, 're-sorted on slot change');
+  assert.equal((b.children[2] as HTMLElement).hidden, true);
+  b.append('!');
+  await tick(); await tick();
+  assert.equal(b.children[1].textContent, 'Save!', 'late text joins contents');
+  b.remove(); icon.remove();
+});
+
+test('option label excludes slotted icons', async () => {
+  const lb = build('ui-listbox', '<ui-option value="x"><svg slot="leading"><title>icon</title></svg>Inbox</ui-option>');
+  await tick();
+  assert.equal(lb.options[0].label, 'Inbox');
+  lb.remove();
+});
