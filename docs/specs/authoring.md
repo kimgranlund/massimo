@@ -15,9 +15,9 @@ How to add or change a reusable ui-kit component. Assembling a screen from exist
 - Typed properties use `declare`; avoid names that collide with built-in element properties (`role`, `prefix`, `ariaChecked`, …).
 - Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`, `resolveTextRun`). Icons go in leading/trailing; short text adornments in prefix/suffix.
 - Every length comes from the geometry system: change `tokens/geometry/resolve.ts` and `styles/geometry.ts` together, then regenerate `docs/geometry.csv` and `tokens/dtcg/`.
-- Colors are Spectrum roles; type is a role (`textStyle`); motion uses `durations.<spring>` with `easings.<spring>`.
-- Styles live in the Panda global style modules, never in element modules. A selector key appears once per style object: JavaScript keeps the last of two equal keys, so the second silently replaces the first (`test/style-keys.test.ts` fails on a repeat, including one produced by a spread). Continuous values reach CSS only as custom properties set by script; finite choices are attributes and selectors.
-- States are keyed on ARIA or `data-*` and styled once in `styles/defaults.ts`; add new ones to `contracts/states.json`.
+- Colors are Spectrum roles; type is a role (`textStyle`); motion uses the intents `durations.<intent>` with `easings.<intent>` (feedback, toggle, reveal, emphasis).
+- Styles live in the folder's slot recipe (`<name>.recipe.ts`, registered in `components/recipes.ts`), never in element modules; the element and the React renderer only apply the generated classes. The recipe's slots are `root` plus the parts its contract owns (`test/recipes.test.ts`). A selector key appears once per style object: JavaScript keeps the last of two equal keys, so compose recipe objects with `mergeStyles` (`recipe-parts.ts`), not spreads. Continuous values reach CSS only as custom properties set by script; finite choices are attributes mapped to recipe variants.
+- States are keyed on ARIA or `data-*` and styled in the recipe with the conditions of `styles/conditions.ts`, which match both renderers; add new ones to `contracts/states.json`.
 
 ## Change together
 
@@ -27,7 +27,7 @@ A component change is complete when these agree:
 |---|---|
 | Behavior | `components/<name>/<name>.element.ts`, shared logic in `dom/` |
 | Geometry | `tokens/geometry/resolve.ts`, `styles/geometry.ts`, `contracts/geometry-families.json` |
-| Look and states | `styles/defaults.ts`, `styles/motion.ts`, `contracts/states.json` |
+| Look, states and motion | `components/<name>/<name>.recipe.ts`, `components/recipe-parts.ts`, `styles/conditions.ts`, `contracts/states.json` |
 | Semantic contract | `contracts/components.json` (family, parts, parents, behavior) |
 | Manifest | `components/<name>/<name>.manifest.json` (see [manifest language](manifest-language.md)); the fields mirrored from source are rewritten by `npm run manifests` ([generated fields](registry.md#generated-manifest-fields)), never by hand |
 | Guide and examples | `<name>.md`, `<name>.examples.json` |

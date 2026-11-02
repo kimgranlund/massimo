@@ -25,13 +25,14 @@ One folder per element module. A folder may hold several public components (`btg
 components/button/
   button.element.ts        web component (registers ui-button on import)
   button.react.tsx         React renderer
+  button.recipe.ts         Panda slot recipe (styles)
   button.manifest.json     graph fragment
   button.md                guide
   button.examples.json     examples
   verification/button.verification.json
 ```
 
-Styles are never in a component folder: they are authored once in the Panda global style modules (`styles/geometry.ts`, `styles/defaults.ts`, `styles/motion.ts`), named by each manifest's `styleSource`.
+Styles are the folder's slot recipe module, named by the manifest's `styleSource` (`{ format: 'panda-slot-recipe', module: './<name>.recipe.ts' }`): one recipe per component node, exported under the node's name and registered in the preset. Its slots are `root` plus one per owned part (the part's last `[data-part=x]` or `[data-x]`); `test/recipes.test.ts` fails when a manifest's parts and its recipe's slots differ. Foundations (geometry variables, conditions, reset, typography, the FOUC guard, layout containers) stay in `styles/`.
 
 ## Graph IDs
 

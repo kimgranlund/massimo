@@ -29,4 +29,4 @@ Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` a
 
 ## Preset
 
-`preset.ts` merges the theme parameters, reset, scheme rules, geometry, defaults and FOUC guard per selector (`mergeGlobalCss`; a test fails if any rule is lost). Apps add `@pandacss/preset-base` and the ui-kit preset to their own Panda config. Panda 2 ships no utilities or breakpoints without preset-base and the kit's breakpoints.
+`preset.ts` merges the theme parameters, reset, scheme rules, geometry, defaults and FOUC guard per selector (`mergeGlobalCss`; a test fails if any rule is lost), and registers the component slot recipes (`theme.slotRecipes`) and the state conditions. An app that renders the web components sets `staticCss: { recipes: '*' }` and leaves class names unhashed ([components](components.md#styles)). Apps add `@pandacss/preset-base` and the ui-kit preset to their own Panda config. Panda 2 ships no utilities or breakpoints without preset-base and the kit's breakpoints.

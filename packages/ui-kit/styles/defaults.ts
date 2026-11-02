@@ -1,8 +1,7 @@
-// Boilerplate component defaults: just enough to make every component usable and its
-// state visible. No variants, no design. Every length comes from styles/geometry.ts
-// (--h, --pad, --slot, --b, --radius, …); this file only says where each applies. Keyed on tags, [data-ui]/[data-part] hooks and
-// ARIA state, so web components and their React counterparts share one stylesheet and
-// tag rules already apply before an element upgrades.
+// Global defaults that are not component recipes: hidden, the icon box, the layout containers
+// (CSS-only tags; lengths in styles/geometry.ts) and the forced-colors disabled color. Component
+// styles are slot recipes (components/<name>/<name>.recipe.ts). Keyed on tags and [data-ui] hosts
+// (React twins are generated, styles/native.ts), so tag rules already apply before upgrade.
 import { defineGlobalStyles } from '@pandacss/dev';
 import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 

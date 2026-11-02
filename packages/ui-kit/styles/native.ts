@@ -1,11 +1,13 @@
-// Native twins: the React renderers use native HTML (input type=checkbox/radio/range, progress, button)
-// with `data-ui="<name>"` on the host instead of the ui-* custom element. Every rule written for a
-// ui-* tag gets a twin selector for its data-ui host, generated here, so the authored styles stay the
-// single source. State hooks are mapped to what the native element carries: a choice or range keeps
-// its state in a native <input> that is a direct child of the host, read with :has().
+// Native twins for the global rules that are not slot recipes: the layout containers and the
+// composite geometry (list and popup padding, gap, radius, option height and inset). The React
+// renderers use native HTML with `data-ui="<name>"` on the host instead of the ui-* custom element;
+// every rule written for one of these ui-* tags gets a twin selector for its data-ui host, so the
+// authored rule stays the single source. Component styles are slot recipes
+// (components/<name>/<name>.recipe.ts), which match both renderers through the state conditions
+// and need no twins.
 //
 // Twins are emitted as separate rules (the original selectors are untouched), so web-component
-// specificity and order do not change. ui-button and ui-input have hand-written data-ui twins.
+// specificity and order do not change.
 
 type Css = Record<string, any>;
 
@@ -77,8 +79,3 @@ export function withNativeTwins(css: Css): Css {
   }
   return out;
 }
-
-/** Native plumbing the twins need: the input that carries state is invisible but interactive. */
-export const native = {
-} as Css;
-

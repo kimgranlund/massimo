@@ -12,7 +12,7 @@ Quick reference: [geometry.csv](../../packages/ui-kit/docs/geometry.csv), every 
 Sources of truth, kept in agreement by tests:
 - `packages/ui-kit/tokens/geometry/resolve.ts`: numerical reference (`resolveControl`, `resolveComposite`, `resolveField`, `resolveSelectTrigger`, `resolveIcon`).
 - `packages/ui-kit/styles/geometry.ts`: the same formulas in CSS, computed per element from inherited inputs.
-- `packages/ui-kit/styles/defaults.ts`: where each length applies; no numbers of its own.
+- `packages/ui-kit/components/<name>/<name>.recipe.ts`: where each length applies (the slot recipes read the variables); no numbers of their own.
 
 ## Inputs
 

@@ -1,10 +1,11 @@
-// The ui-kit Panda preset: tokens, reset, component geometry, component defaults and the FOUC guard.
+// The ui-kit Panda preset: tokens, reset, geometry foundations, state conditions, the component slot
+// recipes (components/recipes.ts) and the FOUC guard.
 // Apps add it to their own panda.config `presets` to style with the same system.
 import { definePreset } from '@pandacss/dev';
 import { tokens, semanticTokens, themeCss } from './tokens/index.ts';
 import { breakpoints } from './tokens/geometry/index.ts';
 import { reset, textStyles, typography, page, prose, geometry, defaults, pending, pendingKeyframes } from './styles/index.ts';
-import { native, withNativeTwins } from './styles/native.ts';
+import { withNativeTwins } from './styles/native.ts';
 import { conditions as stateConditions } from './styles/conditions.ts';
 import { slotRecipes } from './components/recipes.ts';
 
@@ -20,11 +21,11 @@ export function mergeGlobalCss(...parts: Css[]): Css {
   return out;
 }
 
-export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, defaults, native, pending } as Record<string, Css>;
+export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, defaults, pending } as Record<string, Css>;
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',
-  // Native twins: React renderers use native HTML with data-ui hosts (styles/native.ts).
+  // Native twins for the remaining global rules (containers, composite geometry): styles/native.ts.
   globalCss: withNativeTwins(mergeGlobalCss(...Object.values(globalCssParts))) as any,
   // Scheme conditions used by semantic colors: OS preference, plus explicit class overrides.
   // plus the state conditions shared by both renderers (styles/conditions.ts).

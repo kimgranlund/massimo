@@ -11,10 +11,10 @@ Light-DOM web components and React components built on one headless layer and on
 | `icons/` | Theme-aware `<i name>` runtime, built-in CDN sets, `moduleSet` for bundled sets, SVG sanitizer | `tokens` |
 | `tokens/` | Global tokens in Panda format: `colors/`, `typography/`, `geometry/`, `motion/` | `@pandacss/dev` |
 | `styles/` | Reset, text styles, `pages/` patterns (`page`, `prose`) | `@pandacss/dev` |
-| `components/<name>/` | `<name>.element.ts` (web component), `<name>.react.tsx` (React, where present) | `core`, `dom` |
-| `preset.ts` | The Panda preset: tokens + reset + component defaults + FOUC guard | all of the above |
+| `components/<name>/` | `<name>.element.ts` (web component), `<name>.react.tsx` (React, where present), `<name>.recipe.ts` (Panda slot recipe) | `core`, `dom`, `styled-system/recipes` |
+| `preset.ts` | The Panda preset: tokens + reset + geometry + FOUC guard + component slot recipes | all of the above |
 
-Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`, `ui-checkbox`, `ui-radio`, `ui-switch`, `ui-range`, `ui-progress`, `ui-swatch`, `ui-palette`, `ui-swiper`, `ui-image`, and CSS-only containers `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`.
+Each component's styles are a Panda slot recipe (`components/<name>/<name>.recipe.ts`); the web component and its React counterpart put the same generated classes on host and parts. `dist/ui-kit.css` holds everything; `dist/split/` the same split per recipe. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`, `ui-checkbox`, `ui-radio`, `ui-switch`, `ui-range`, `ui-progress`, `ui-swatch`, `ui-palette`, `ui-swiper`, `ui-image`, and CSS-only containers `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`.
 
 ## Colors: Spectrum by default
 
@@ -72,10 +72,10 @@ export default defineConfig({ presets: ['@pandacss/preset-base', uiKitPreset] })
 ## Adding a component
 
 1. `dom/<name>.ts`: state in, attribute maps out, plus event helpers. No DOM writes.
-2. Default styles: add tag/`data-part` rules to `styles/defaults.ts` and the tag to `styles/pending.ts`.
+2. Styles: a slot recipe in `components/<name>/<name>.recipe.ts`, registered in `components/recipes.ts`; the tag in `styles/pending.ts`.
 3. `<name>.element.ts`: extend `UIElement` (or `UIFormElement` for anything that submits or validates); no native form elements; use `declare` for typed props, never class fields (they shadow the reactive accessor).
 4. `<name>.react.tsx`: spread `toReactProps(...)` from the same `dom/` function.
-5. `npm run codegen`, then add a test in `test/`.
+5. `npm run codegen` (generates `styled-system/recipes/<name>.js`, which the element and the React renderer apply), then add a test in `test/`.
 
 ## Web components contain zero native form elements
 
