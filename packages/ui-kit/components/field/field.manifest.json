@@ -81,6 +81,17 @@
           }
         },
         {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          },
+          "description": "Error message under the control, after the description (Base UI Field.Error), added to the control's aria-describedby. The field does not validate: the application sets it (an invalid kit control also shows its own error). The error part exists only once set."
+        },
+        {
           "key": "layout",
           "type": "string",
           "default": "stacked",
@@ -131,7 +142,7 @@
       "content": {
         "ownership": "mixed",
         "acceptsChildren": true,
-        "children": "One control (ui-range, ui-select, ui-segmented, ui-input, ui-switch, ui-checkbox, ui-button, …) without a label of its own; an optional slot=\"readout\" child. Children stay where they are authored; the field adds its label, readout and description parts as siblings."
+        "children": "One control (ui-range, ui-select, ui-segmented, ui-input, ui-switch, ui-checkbox, ui-button, …) without a label of its own; an optional slot=\"readout\" child. Children stay where they are authored; the field adds its label, readout, description and error parts as siblings, or keeps authored [data-part] ones (composition)."
       },
       "layout": {
         "display": "grid",
@@ -143,7 +154,8 @@
         "Contains no native form elements and is not form-associated: the control submits its own value.",
         "A press on the label toggles a checkbox, switch or radio control and focuses any other control.",
         "The readout is text the application updates; it is not a live region (a slider already announces its value).",
-        "Ids follow the host id when it has one (id=\"pad\" gives pad-field-label, pad-field-unit, pad-field-desc)."
+        "Ids follow the host id when it has one (id=\"pad\" gives pad-field-label, pad-field-unit, pad-field-desc).",
+        "Composition: the label (plain text, or contents and suffix spans), readout, description and error may be authored as [data-part] children; their text seeds label, unit, readout, description and error at the first connect, and the field keeps and fills those parts. React: Field.Root with Field.Label (unit prop), Field.Control (no element: it hands the ids to its child, render element or function), Field.Readout, Field.Description and Field.Error as direct children; the Root wires the control from the Label, Description and Error it finds; every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -333,6 +345,11 @@
       "from": "component:field",
       "relation": "ownsPart",
       "to": "part:field-description"
+    },
+    {
+      "from": "component:field",
+      "relation": "ownsPart",
+      "to": "part:field-error"
     },
     {
       "from": "component:field",
@@ -531,16 +548,19 @@
       "props": {
         "component:field": {
           "inherits": [
-            "Omit<HTMLAttributes<HTMLDivElement>, 'children'>"
+            "Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "label?: string",
             "unit?: string // Unit shown at the label's end (\"px\"); part of the control's accessible name.",
             "readout?: ReactNode // Readout in the readout column (tabular figures, end-aligned).",
             "description?: string",
+            "error?: string // Error message under the control (Base UI Field.Error), in the description's place and after it.",
             "layout?: 'stacked' | 'inline' = 'stacked' // stacked: label above the control; inline: label beside it.",
             "htmlFor?: string // Id of the control; generated when omitted.",
-            "children?: ReactNode | ((ids: FieldControlProps) => ReactNode) // The control, or a function that receives the ids to put on it."
+            "children?: ReactNode | ((ids: FieldControlProps) => ReactNode) // The control, or a function that receives the ids to put on it (Field.Root: the parts)."
           ]
         },
         "component:field-grid": {
@@ -548,6 +568,64 @@
             "HTMLAttributes<HTMLDivElement>"
           ],
           "props": []
+        }
+      },
+      "parts": {
+        "component:field": {
+          "Field.Root": {
+            "inherits": [
+              "Omit<FieldProps, 'label' | 'unit' | 'readout' | 'description' | 'error'>"
+            ],
+            "props": []
+          },
+          "Field.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLLabelElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "unit?: ReactNode // Unit at the label's end, in its suffix part; part of the control's accessible name.",
+              "children?: ReactNode"
+            ]
+          },
+          "Field.Control": {
+            "inherits": [],
+            "props": [
+              "render?: ReactElement | ((ids: FieldControlProps, state: PartState) => ReactNode) // The control to wire: an element (the ids merge into its props) or `(ids, state) => element`.",
+              "children?: ReactNode | ((ids: FieldControlProps) => ReactNode) // The control element (the ids merge into it), or a function of the ids."
+            ]
+          },
+          "Field.Readout": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Field.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Field.Error": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
         }
       }
     },

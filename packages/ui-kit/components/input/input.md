@@ -23,6 +23,31 @@ Built-in problems (required, email, minlength, pattern) set validity at once but
 
 ## Anatomy
 
+### Both forms
+
+Preset or parts ([components spec](../../../../docs/specs/components.md#composition)); the same DOM, classes and data-*:
+
+```html
+<ui-input name="price" value="40">
+  <span data-part="label">Price</span>
+  <div data-part="control">
+    <span data-part="prefix">$</span><span data-part="contents"></span><span data-part="suffix">USD</span>
+  </div>
+  <span data-part="description">Before tax</span>
+</ui-input>
+```
+
+```tsx
+<Input.Root name="price" defaultValue="40">
+  <Input.Label>Price</Input.Label>
+  <Input.Control prefix="$" suffix="USD" />
+  <Input.Description>Before tax</Input.Description>
+  <Input.Error>…</Input.Error>  {/* an author error: data-invalid at once */}
+</Input.Root>
+```
+
+Web component: authored parts are adopted onto the generated ones; label, description and error text seed those properties. React: Base UI's Field.Label, Field.Control, Field.Description and Field.Error on the input's recipe. The native `<input>` is inside `Input.Control` and is not a part of its own: its props (value, name, events) come from `Input.Root`, which wires it from the Label, Description and Error among its direct children.
+
 Construction pattern (shared by every labelled component):
 
 ```

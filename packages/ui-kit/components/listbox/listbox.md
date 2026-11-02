@@ -19,6 +19,27 @@ Listbox and segmented are composites: 0.5u padding, options inset so a one-row s
 
 ## Anatomy
 
+### Both forms
+
+The options are already parts: `ui-option` children of a `ui-listbox` or `ui-segmented`, each with the construction pattern, which may also be written as `[data-part]` spans ([components spec](../../../../docs/specs/components.md#composition)):
+
+```html
+<ui-listbox label="Folder" value="inbox">
+  <ui-option value="inbox"><span data-part="leading"><i name="tray"></i></span><span data-part="contents">Inbox</span><span data-part="suffix">12</span></ui-option>
+  <ui-option value="sent"><span data-part="contents">Sent</span></ui-option>
+</ui-listbox>
+```
+
+```tsx
+<Listbox.Root label="Folder" defaultValue="inbox">
+  <Listbox.Item value="inbox" leading={<i name="tray" />} suffix="12"><Listbox.ItemText>Inbox</Listbox.ItemText><Listbox.ItemIndicator /></Listbox.Item>
+  <Listbox.Item value="sent">Sent</Listbox.Item>
+</Listbox.Root>
+<Segmented.Root label="View" defaultValue="grid"><Segmented.Item value="grid">Grid</Segmented.Item></Segmented.Root>
+```
+
+`Listbox`, `Segmented` and `Option` are the same components as `.Root` and `.Item`. Items are direct children of the Root, which reads their value, label and disabled. `ItemText` is the contents part; `ItemIndicator` a check in the trailing slot of the selected item (opt-in: the presets draw none). Every part takes `render` and `className` (a string or a function of the state: `selected`, `highlighted`, `disabled`, …).
+
 Construction pattern (shared by every labelled component):
 
 ```

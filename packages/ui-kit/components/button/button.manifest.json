@@ -222,7 +222,8 @@
         "type=submit calls form.requestSubmit(); type=reset calls form.reset(); type=button (default) does nothing but fire click.",
         "loading sets aria-busy and data-busy; the label stays readable and activation is blocked. The application owns the async work.",
         "Icon-only buttons need aria-label or aria-labelledby: an icon gives no accessible name.",
-        "Never nest interactive controls inside a button. Do not re-key or replace children a framework passed in: the button has moved them into slot parts; change attributes instead."
+        "Never nest interactive controls inside a button. Do not re-key or replace children a framework passed in: the button has moved them into slot parts; change attributes instead.",
+        "Composition: one part (Base UI Button). [data-part] slot spans may be authored, their loose children kept in them. React: render (an element, e.g. <a href>, or (props, state) => element) replaces the native <button> with the recipe class, data-* and handlers merged in; className may be (state) => string."
       ],
       "avoidWhen": [
         {
@@ -411,9 +412,11 @@
       "props": {
         "component:button": {
           "inherits": [
-            "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix'>"
+            "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "loading?: boolean",
             "variant?: 'neutral' | 'primary' = 'neutral' // primary: the primary solid with contrast text; neutral (default) the muted fill.",
             "leading?: ReactNode",

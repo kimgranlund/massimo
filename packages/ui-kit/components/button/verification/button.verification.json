@@ -27,6 +27,10 @@
     {
       "path": "dom/state.ts",
       "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+    },
+    {
+      "path": "components/compound.react.tsx",
+      "sha256": ""
     }
   ],
   "renderers": {
@@ -39,6 +43,10 @@
         {
           "command": "node --test test/state-parity.test.ts",
           "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: authored [data-part] parts render the same parts, recipe classes, data-* and hidden flags as the generated anatomy; authored attributes, classes and content are adopted, text seeds properties, a reconnect keeps them"
         }
       ],
       "latestRun": {
@@ -62,6 +70,10 @@
         {
           "command": "node --test test/state-parity.test.ts",
           "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: each compound-part form renders the server markup of its preset; render (element or function) and className functions of the part state"
         }
       ],
       "latestRun": {

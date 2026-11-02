@@ -35,6 +35,13 @@
       "label": "Hidden label",
       "subject": "component:input",
       "markup": "<ui-input label=\"Search files\" hide-label placeholder=\"Search\"><i slot=\"leading\" name=\"magnifying-glass\"></i></ui-input>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:input",
+      "markup": "<ui-input name=\"price\" value=\"40\"><span data-part=\"label\">Price</span><div data-part=\"control\"><span data-part=\"prefix\">$</span><span data-part=\"contents\"></span><span data-part=\"suffix\">USD</span></div><span data-part=\"description\">Before tax</span></ui-input>",
+      "note": "React: Input.Root › Input.Label, Input.Control (prefix, suffix props), Input.Description."
     }
   ]
 }

@@ -238,7 +238,8 @@
       "constraints": [
         "The host is the listbox and the single tab stop; aria-activedescendant tracks the highlighted option. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "Selection follows focus: moving the highlight selects and fires input and change.",
-        "Only direct ui-option children count; disabled options are skipped."
+        "Only direct ui-option children count; disabled options are skipped.",
+        "Composition: the options are already parts (ui-option children; an option takes authored [data-part] slot spans). React: Listbox.Root with Listbox.Item children (the preset names are Listbox and Option), each with Listbox.ItemText and Listbox.ItemIndicator (rendered on the selected item only, in the trailing slot) or plain label children; items are direct children of the Root, which reads their value, label and disabled; every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -455,7 +456,8 @@
       },
       "constraints": [
         "A ui-listbox with horizontal orientation by default; the selected option is a raised bg segment. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
-        "Selection follows focus, so each option should be cheap to show (switching a view, not running a task)."
+        "Selection follows focus, so each option should be cheap to show (switching a view, not running a task).",
+        "Composition: the options are already parts (ui-option children; an option takes authored [data-part] slot spans). React: Segmented.Root with Segmented.Item children (the preset names are Segmented and Option), each with Segmented.ItemText or plain label children; items are direct children of the Root, which reads their value, label and disabled; every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -554,7 +556,8 @@
       "constraints": [
         "The owning list sets role=option, id, aria-selected, aria-disabled and the styling state data-selected, data-highlighted (the active option) and data-disabled; the option sets none itself.",
         "optionValue is the value attribute, else the contents text (icons excluded).",
-        "Only a direct child of ui-listbox, ui-segmented or ui-select (ui-select moves it into its popup)."
+        "Only a direct child of ui-listbox, ui-segmented or ui-select (ui-select moves it into its popup).",
+        "Composition: [data-part] slot spans (leading, prefix, contents, suffix, trailing) may be authored; their loose children are kept in them. React: Option is Listbox.Item / Segmented.Item, Select.Item is the native option; ItemText is the contents part, ItemIndicator a trailing check on the selected item."
       ],
       "avoidWhen": [
         {
@@ -895,9 +898,11 @@
       "props": {
         "component:listbox": {
           "inherits": [
-            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>"
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "name?: string",
             "value?: string",
             "defaultValue?: string",
@@ -909,14 +914,16 @@
             "invalid?: boolean // Show the invalid state now (author error).",
             "gap?: number",
             "size?: number",
-            "children?: ReactNode // <Option> children."
+            "children?: ReactNode // <Option> (Listbox.Item) children."
           ]
         },
         "component:segmented": {
           "inherits": [
-            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>"
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "name?: string",
             "value?: string",
             "defaultValue?: string",
@@ -928,23 +935,137 @@
             "invalid?: boolean // Show the invalid state now (author error).",
             "gap?: number",
             "size?: number",
-            "children?: ReactNode // <Option> children."
+            "children?: ReactNode // <Option> (Listbox.Item) children."
           ]
         },
         "component:option": {
           "inherits": [
-            "Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>"
+            "Omit<HTMLAttributes<HTMLDivElement>, 'prefix' | 'className'>"
           ],
           "props": [
             "leading?: ReactNode // Leading icon (an <i name> or artwork).",
             "prefix?: ReactNode // Short text adornment before the label.",
             "suffix?: ReactNode // Short text adornment after the label.",
             "trailing?: ReactNode // Trailing icon.",
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "value: string // Submitted value.",
             "disabled?: boolean",
             "iconSize?: IconSize",
             "children?: ReactNode"
           ]
+        }
+      },
+      "parts": {
+        "component:listbox": {
+          "Listbox.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "name?: string",
+              "value?: string",
+              "defaultValue?: string",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // An option was chosen (Base UI onValueChange): reason 'item-press' (pointer) or 'keyboard' (arrows, Home / End, typeahead).",
+              "label?: string // Accessible name (aria-label).",
+              "orientation?: 'vertical' | 'horizontal'",
+              "disabled?: boolean",
+              "required?: boolean",
+              "invalid?: boolean // Show the invalid state now (author error).",
+              "gap?: number",
+              "size?: number",
+              "children?: ReactNode // <Option> (Listbox.Item) children."
+            ]
+          },
+          "Listbox.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'prefix' | 'className'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: string // Submitted value.",
+              "disabled?: boolean",
+              "iconSize?: IconSize",
+              "children?: ReactNode"
+            ]
+          },
+          "Listbox.ItemText": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Listbox.ItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        },
+        "component:segmented": {
+          "Segmented.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "name?: string",
+              "value?: string",
+              "defaultValue?: string",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // An option was chosen (Base UI onValueChange): reason 'item-press' (pointer) or 'keyboard' (arrows, Home / End, typeahead).",
+              "label?: string // Accessible name (aria-label).",
+              "orientation?: 'vertical' | 'horizontal'",
+              "disabled?: boolean",
+              "required?: boolean",
+              "invalid?: boolean // Show the invalid state now (author error).",
+              "gap?: number",
+              "size?: number",
+              "children?: ReactNode // <Option> (Listbox.Item) children."
+            ]
+          },
+          "Segmented.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'prefix' | 'className'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: string // Submitted value.",
+              "disabled?: boolean",
+              "iconSize?: IconSize",
+              "children?: ReactNode"
+            ]
+          },
+          "Segmented.ItemText": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
         }
       }
     }

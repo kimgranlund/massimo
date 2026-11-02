@@ -39,6 +39,14 @@
     {
       "path": "dom/events.ts",
       "sha256": "76db980a6af8bce8d8f3ce38a5543d5c12e65a4729657fd13551e7643e663ea9"
+    },
+    {
+      "path": "components/compound.react.tsx",
+      "sha256": ""
+    },
+    {
+      "path": "components/slots.ts",
+      "sha256": ""
     }
   ],
   "renderers": {
@@ -55,6 +63,10 @@
         {
           "command": "node --test test/events.test.ts",
           "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: authored [data-part] parts render the same parts, recipe classes, data-* and hidden flags as the generated anatomy; authored attributes, classes and content are adopted, text seeds properties, a reconnect keeps them"
         }
       ],
       "latestRun": {
@@ -83,6 +95,10 @@
         {
           "command": "node --test test/events.test.ts",
           "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: each compound-part form renders the server markup of its preset; render (element or function) and className functions of the part state"
         }
       ],
       "latestRun": {

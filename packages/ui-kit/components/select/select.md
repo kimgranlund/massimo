@@ -22,6 +22,44 @@ The trigger shows the selected option's text (icons and adornments excluded) or 
 
 ## Anatomy
 
+### Both forms
+
+The one-element form (`<ui-select label …>`, `<Select label leading …>`) is a preset; the parts can also be written out (Base UI Select anatomy, [components spec](../../../../docs/specs/components.md#composition)). Both render the same DOM, recipe classes and data-*.
+
+```html
+<ui-select name="sort">
+  <span data-part="label">Sort</span>
+  <div data-part="trigger">
+    <span data-part="leading"><i name="sort-ascending"></i></span>
+    <span data-part="value">Choose…</span>                <!-- text: the placeholder -->
+    <span data-part="icon"><i name="caret-up-down"></i></span>  <!-- replaces the chevron -->
+  </div>
+  <div data-part="popup"><div data-part="list">
+    <ui-option value="name">Name</ui-option><ui-option value="date">Date</ui-option>
+  </div></div>
+  <span data-part="description">Applies to the list below.</span>
+</ui-select>
+```
+
+```tsx
+<Select.Root name="sort" defaultValue="name">
+  <Select.Label>Sort</Select.Label>
+  <Select.Trigger leading={<i name="sort-ascending" />}>
+    <Select.Value />
+    <Select.Icon />
+  </Select.Trigger>
+  <Select.Popup>
+    <Select.List>
+      <Select.Item value="name"><Select.ItemText>Name</Select.ItemText><Select.ItemIndicator /></Select.Item>
+      <Select.Item value="date"><Select.ItemText>Date</Select.ItemText><Select.ItemIndicator /></Select.Item>
+    </Select.List>
+  </Select.Popup>
+  <Select.Description>Applies to the list below.</Select.Description>
+</Select.Root>
+```
+
+Web component: each authored `[data-part]` is adopted onto the generated part (author attributes and classes; slot and icon content; the label, description, error and value text seed `label`, `description`, `error` and `placeholder`); missing parts are generated. React: the parts are direct children of `Select.Root`, which puts the Trigger and the Popup's items inside the native `<select>`; `Select.Popup` and `Select.List` render no element (the browser draws `::picker(select)`), so they take neither `render` nor `className`. `Select.Trigger` without children renders Value and Icon; its `leading`, `prefix` and `suffix` props are the adornments. `Select.ItemIndicator` (a check in the item's trailing slot) renders on the selected item only and is hidden inside the trigger's copy of it (`<selectedcontent>`); the web component's options draw no indicator. `Select.Description` and `Select.Error` are Base UI's Field.Description and Field.Error on the select's own recipe. Every other part takes `render` and `className` (a string or a function of the state).
+
 Construction pattern (shared by every labelled component):
 
 ```
@@ -34,7 +72,7 @@ Icons sit in leading/trailing slots (6u on controls); prefix and suffix are shor
 - `part:select-value` `:scope > [data-part=trigger] > [data-part=value]`: The selected option label, or the placeholder (data-placeholder); Base UI Select.Value, in the construction pattern's contents place.
 - `part:select-icon` `:scope > [data-part=trigger] > [data-part=icon]`: The caret-down icon (Base UI Select.Icon, in the construction pattern's trailing place; icon size sm); turns 180° when open.
 - `part:select-popup` `:scope > [data-part=popup]`: The [popover=manual] listbox on bg.overlay (Base UI Select.Popup) holding the list; placed 1u from the trigger.
-- `part:select-list` `:scope > [data-part=popup] > [data-part=list]`: The ui-option children's parent (Base UI Select.List; the options are its items), display: contents so the options lay out in the popup. Web component only: the native select has none.
+- `part:select-list` `:scope > [data-part=popup] > [data-part=list]`: The ui-option children's parent (Base UI Select.List; the options are its items), display: contents so the options lay out in the popup. Web component only: the native select has none (React's `Select.List` renders no element).
 
 ## Keyboard
 

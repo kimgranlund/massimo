@@ -18,6 +18,25 @@ Pair a range with a visible label element and `aria-labelledby` when the label m
 
 ## Anatomy
 
+### Both forms
+
+Preset or parts ([components spec](../../../../docs/specs/components.md#composition)); the same DOM, classes and data-*. React's `Slider` is the Base UI name; `Range` is the same component.
+
+```html
+<ui-range value="25" label="Volume"><span data-part="track"><span data-part="indicator"></span></span><span data-part="thumb"></span></ui-range>
+<ui-progress value="40"><span data-part="track"><span data-part="indicator"></span></span></ui-progress>
+```
+
+```tsx
+<Slider.Root defaultValue={25} label="Volume">
+  <Slider.Track><Slider.Indicator /></Slider.Track>
+  <Slider.Thumb />
+</Slider.Root>
+<Progress.Root value={40}><Progress.Track><Progress.Indicator /></Progress.Track></Progress.Root>
+```
+
+Web component: authored parts are adopted (attributes and classes; the thumb's content). React: `Slider.Thumb` renders the painted thumb and the native range input after it, as Base UI's Thumb holds its input; the input is the element that takes keys, pointer and the form value, so it is not a part of its own, and `Slider.Root`'s native props (name, aria-*, data-*) go to it. `Progress.Root` renders the native `<progress>` after its parts. No Slider.Control or Slider.Value: the host is the control, and the value is shown outside (a field readout).
+
 - `part:range-thumb` `:scope > [data-part=thumb]`: The thumb, inside the track like a switch thumb (track − u, inset 0.5u); offset 0.5u + ratio × (width − track). The fill wraps it with a concentric cap.
 
 ## Keyboard

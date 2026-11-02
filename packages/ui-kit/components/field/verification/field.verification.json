@@ -23,6 +23,14 @@
     {
       "path": "components/field/field.react.tsx",
       "sha256": "c28e580a114608ad5e197542d6264b84a1c3bbb2fff7b5b5c567e55259c22b46"
+    },
+    {
+      "path": "components/compound.react.tsx",
+      "sha256": ""
+    },
+    {
+      "path": "components/slots.ts",
+      "sha256": ""
     }
   ],
   "renderers": {
@@ -31,6 +39,10 @@
         {
           "command": "node --test test/field.test.ts",
           "covers": "no native elements, parts beside the authored control, label and unit name the control (host-role controls; ui-input and ui-select through labelledby), description wiring, rewiring a swapped control, label press, slot readout, grid and layout classes"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: authored [data-part] parts render the same parts, recipe classes, data-* and hidden flags as the generated anatomy; authored attributes, classes and content are adopted, text seeds properties, a reconnect keeps them"
         }
       ],
       "latestRun": {
@@ -49,6 +61,10 @@
         {
           "command": "node --test test/field-react.test.ts",
           "covers": "data-ui hosts, native label htmlFor, ids handed to the control (aria-labelledby = label + unit), readout and description parts, recipe classes"
+        },
+        {
+          "command": "node --test test/composition.test.ts",
+          "covers": "composition: each compound-part form renders the server markup of its preset; render (element or function) and className functions of the part state"
         }
       ],
       "latestRun": {

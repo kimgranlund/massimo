@@ -1,6 +1,8 @@
 // Browser parity check: every native React renderer next to its web component, at several sizes and
 // states. Compares rendered geometry and paint, and the data-* state attributes (contracts/states.json)
-// on each twin's host and items; "fails": [] means the twins match.
+// on each twin's host and items; "fails": [] means the twins match. Composition (Base UI level 4):
+// each preset next to its composed form (React compound parts; web components with authored
+// [data-part] children), compared part by part in a separate #composed root.
 import '../index.css';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
@@ -28,6 +30,7 @@ import { flushSync } from 'react-dom';
 import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react';
 import { Range, Progress } from '@massimo/ui-kit/components/range/react';
 import { Field } from '@massimo/ui-kit/components/field/react';
+import { Slider } from '@massimo/ui-kit/components/range/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 const r2 = (v: number) => Math.round(v * 100) / 100;
@@ -109,8 +112,99 @@ function Pair({ u }: { u: number }) {
   );
 }
 
+/** Presets (data-side=preset) and their composed forms (data-side=composed), the same data-k on both. */
+function ComposedPair({ u }: { u: number }) {
+  const presets = (
+    <>
+      <Button data-k="bt" leading={<i name="plus" />}>Add</Button>
+      <Checkbox data-k="cb" defaultChecked suffix="(2)">Accept</Checkbox>
+      <Checkbox data-k="cbM" indeterminate>Some</Checkbox>
+      <Radio data-k="rd" name={`cr${u}`} value="a" defaultChecked>One</Radio>
+      <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
+      <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
+      <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
+      <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
+      <div style={{ width: 300 }}><Input data-k="in" label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
+      <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option></Listbox>
+      <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
+      <div style={{ width: 300 }}><Select data-k="sel" label="Role" defaultValue="eng" leading={<i name="briefcase" />} description="Pick"><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div>
+      <ui-button data-k="wbt"><i slot="leading" name="plus" />Add</ui-button>
+      <ui-checkbox data-k="wcb" checked>Accept<span slot="suffix">(2)</span></ui-checkbox>
+      <ui-switch data-k="wsw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
+      <ui-radio data-k="wrd" name={`wr${u}`} value="a" checked>One</ui-radio>
+      <div style={{ width: 300 }}><ui-range data-k="wrg" value={25} /></div>
+      <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40} /></div>
+      <div style={{ width: 300 }}><ui-field data-k="wfd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big"><ui-range value={25} /></ui-field></div>
+      <div style={{ width: 300 }}><ui-input data-k="win" label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
+      <ui-listbox data-k="wlb" label="Folder" value="inbox"><ui-option value="inbox"><i slot="leading" name="tray" />Inbox<span slot="suffix">12</span></ui-option><ui-option value="sent">Sent</ui-option></ui-listbox>
+      <div style={{ width: 300 }}><ui-select data-k="wsel" label="Role" value="eng" description="Pick"><i slot="leading" name="briefcase" /><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
+    </>
+  );
+  const composed = (
+    <>
+      <Button data-k="bt" leading={<i name="plus" />} render={<button />}>Add</Button>
+      <Checkbox.Root data-k="cb" defaultChecked suffix="(2)"><Checkbox.Indicator />Accept</Checkbox.Root>
+      <Checkbox.Root data-k="cbM" indeterminate><Checkbox.Indicator />Some</Checkbox.Root>
+      <Radio.Root data-k="rd" name={`cr${u}c`} value="a" defaultChecked><Radio.Indicator />One</Radio.Root>
+      <Switch.Root data-k="sw" defaultChecked suffix="on"><Switch.Thumb />Wi-Fi</Switch.Root>
+      <div style={{ width: 300 }}><Slider.Root data-k="rg" defaultValue={25} label="Volume"><Slider.Track><Slider.Indicator /></Slider.Track><Slider.Thumb /></Slider.Root></div>
+      <div style={{ width: 300 }}><Progress.Root data-k="pg" value={40} label="Upload"><Progress.Track><Progress.Indicator /></Progress.Track></Progress.Root></div>
+      <div style={{ width: 300 }}>
+        <Field.Root data-k="fd" layout="inline">
+          <Field.Label unit="px">Unit</Field.Label><Field.Control render={(ids) => <Range {...ids} defaultValue={25} />} />
+          <Field.Readout>4.5</Field.Readout><Field.Description>Sets u.</Field.Description><Field.Error>Too big</Field.Error>
+        </Field.Root>
+      </div>
+      <div style={{ width: 300 }}><Input.Root data-k="in" defaultValue="40"><Input.Label>Price</Input.Label><Input.Control prefix="$" suffix="USD" /><Input.Description>Before tax</Input.Description></Input.Root></div>
+      <Listbox.Root data-k="lb" label="Folder" defaultValue="inbox"><Listbox.Item value="inbox" leading={<i name="tray" />} suffix="12"><Listbox.ItemText>Inbox</Listbox.ItemText></Listbox.Item><Listbox.Item value="sent">Sent</Listbox.Item></Listbox.Root>
+      <Segmented.Root data-k="sg" label="View" defaultValue="grid"><Segmented.Item value="grid"><Segmented.ItemText>Grid</Segmented.ItemText></Segmented.Item><Segmented.Item value="list">List</Segmented.Item></Segmented.Root>
+      <div style={{ width: 300 }}>
+        <Select.Root data-k="sel" defaultValue="eng">
+          <Select.Label>Role</Select.Label>
+          <Select.Trigger leading={<i name="briefcase" />}><Select.Value /><Select.Icon /></Select.Trigger>
+          <Select.Popup><Select.List><Select.Item value="design"><Select.ItemText>Designer</Select.ItemText></Select.Item><Select.Item value="eng"><Select.ItemText>Engineer</Select.ItemText></Select.Item></Select.List></Select.Popup>
+          <Select.Description>Pick</Select.Description>
+        </Select.Root>
+      </div>
+      <ui-button data-k="wbt"><span data-part="leading"><i name="plus" /></span><span data-part="contents">Add</span></ui-button>
+      <ui-checkbox data-k="wcb" checked><span data-part="leading"><span data-part="indicator" /></span><span data-part="contents">Accept</span><span data-part="suffix">(2)</span></ui-checkbox>
+      <ui-switch data-k="wsw" checked><span data-part="indicator"><span data-part="thumb" /></span>Wi-Fi<span data-part="suffix">on</span></ui-switch>
+      <ui-radio data-k="wrd" name={`wr${u}c`} value="a" checked><span data-part="indicator" /><span data-part="contents">One</span></ui-radio>
+      <div style={{ width: 300 }}><ui-range data-k="wrg" value={25}><span data-part="track"><span data-part="indicator" /></span><span data-part="thumb" /></ui-range></div>
+      <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40}><span data-part="track"><span data-part="indicator" /></span></ui-progress></div>
+      <div style={{ width: 300 }}>
+        <ui-field data-k="wfd" layout="inline">
+          <span data-part="label"><span data-part="contents">Unit</span><span data-part="suffix">px</span></span><ui-range value={25} />
+          <span data-part="readout">4.5</span><span data-part="description">Sets u.</span><span data-part="error">Too big</span>
+        </ui-field>
+      </div>
+      <div style={{ width: 300 }}><ui-input data-k="win" value="40"><span data-part="label">Price</span><div data-part="control"><span data-part="prefix"><span>$</span></span><span data-part="suffix"><span>USD</span></span></div><span data-part="description">Before tax</span></ui-input></div>
+      <ui-listbox data-k="wlb" label="Folder" value="inbox"><ui-option value="inbox"><span data-part="leading"><i name="tray" /></span><span data-part="contents">Inbox</span><span data-part="suffix">12</span></ui-option><ui-option value="sent"><span data-part="contents">Sent</span></ui-option></ui-listbox>
+      <div style={{ width: 300 }}>
+        <ui-select data-k="wsel" value="eng">
+          <span data-part="label">Role</span>
+          <div data-part="trigger"><span data-part="leading"><i name="briefcase" /></span><span data-part="value" /><span data-part="icon" /></div>
+          <div data-part="popup"><div data-part="list"><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></div></div>
+          <span data-part="description">Pick</span>
+        </ui-select>
+      </div>
+    </>
+  );
+  return (
+    <div data-size={u} data-ccase={u} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, width: 640, marginBottom: 16 }}>
+      <div data-side="preset">{presets}</div>
+      <div data-side="composed">{composed}</div>
+    </div>
+  );
+}
+
 const root = document.getElementById('root')!;
 flushSync(() => createRoot(root).render(<>{UNITS.map((u) => <Pair key={u} u={u} />)}</>));
+// The composed cases sit in their own root after the twins, so the twins' layout is unchanged.
+const composedRoot = document.createElement('div');
+composedRoot.id = 'composed';
+root.after(composedRoot);
+flushSync(() => createRoot(composedRoot).render(<>{UNITS.map((u) => <ComposedPair key={u} u={u} />)}</>));
 
 setTimeout(() => {
   const fails: string[] = []; let checks = 0;
@@ -191,6 +285,35 @@ setTimeout(() => {
       checks++;
       const va = name === 'host' ? fa(wc, wc) : fa(ea as Element, wc), vb = name === 'host' ? fa(re, re) : fa(eb as Element, re);
       if (va !== vb) fails.push(`u${c.getAttribute('data-case')} sel.${name}: wc ${va} react ${vb}`);
+    }
+  }
+  // Composition: each composed form against its preset, the host (measure) and every part below it
+  // (offset, size, paint, type), and the data-* state of the host and its parts.
+  // Closed popups and native options have no box (and an arbitrary position): they are left out.
+  const deep = (h: HTMLElement) => [...h.querySelectorAll<HTMLElement>('[data-part], [role=option], ui-option')].filter((e) => !e.closest('[hidden]') && e.getClientRects().length > 0 && e.getBoundingClientRect().width > 0).map((e) => {
+    const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e);
+    return `${e.getAttribute('data-part') ?? 'option'}@${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.color}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.fontSize}:${cs.display}:${stateOf(e)}`;
+  }).join(' | ');
+  for (const c of composedRoot.querySelectorAll('[data-ccase]')) {
+    const [pre, com] = [c.querySelector('[data-side=preset]')!, c.querySelector('[data-side=composed]')!];
+    const u = c.getAttribute('data-ccase');
+    const keys = [...pre.querySelectorAll('[data-k]')].map((e) => e.getAttribute('data-k')!);
+    if (keys.length < 20) fails.push(`u${u} composed: only ${keys.length} cases`);
+    for (const k of keys) {
+      const a = host(pre, k), b = host(com, k);
+      // A select's closed popup has no box: measure() would read its position, so selects compare by parts only.
+      const sel = k === 'sel' || k === 'wsel';
+      const ma = sel ? {} : measure(a), mb = sel ? {} : measure(b);
+      for (const key of Object.keys(ma) as (keyof typeof ma)[]) {
+        checks++;
+        if (ma[key] !== (mb as typeof ma)[key]) fails.push(`u${u} composed ${k}.${key}: preset ${ma[key]} composed ${(mb as typeof ma)[key]}`);
+      }
+      checks++;
+      const da = deep(a), db = deep(b);
+      if (!da) fails.push(`u${u} composed ${k}: no parts measured`);
+      if (da !== db) fails.push(`u${u} composed ${k} parts: preset ${da} composed ${db}`);
+      checks++;
+      if (stateOf(a) !== stateOf(b)) fails.push(`u${u} composed ${k} data-*: preset "${stateOf(a)}" composed "${stateOf(b)}"`);
     }
   }
   // Keyboard: ArrowDown on a focused listbox moves and selects (selection follows focus) in both.

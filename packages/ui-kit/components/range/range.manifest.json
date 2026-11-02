@@ -254,7 +254,8 @@
         "template() owns track, fill and thumb; the ratio reaches CSS as --ui-ratio (0…1). Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "input fires while dragging or stepping; change fires on key commit and pointer release.",
         "The value attribute at connect is the reset default. Values snap to step.",
-        "label sets aria-label; value-text sets aria-valuetext."
+        "label sets aria-label; value-text sets aria-valuetext.",
+        "Composition: track › indicator and thumb may be authored as [data-part] spans; the host adopts their attributes and classes (the thumb also its content) onto the generated parts. React: Slider.Root (alias Range.Root) with Slider.Track › Slider.Indicator and Slider.Thumb, which renders the painted thumb and the native range input after it (Base UI's Thumb also holds the input: the input takes keys, pointer and the form value, so it is not a separate part); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -357,7 +358,8 @@
       },
       "constraints": [
         "No value (or NaN) means indeterminate: data-indeterminate and a sweep; reduced motion shows a faint full fill.",
-        "value is clamped to 0…max; the ratio reaches CSS as --ui-ratio."
+        "value is clamped to 0…max; the ratio reaches CSS as --ui-ratio.",
+        "Composition: track › indicator may be authored as [data-part] spans; the host adopts their attributes and classes onto the generated parts. React: Progress.Root with Progress.Track › Progress.Indicator; the Root renders the native <progress> after its parts; every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [
         {
@@ -600,16 +602,18 @@
       "status": "completed",
       "module": "./range.react.tsx",
       "exports": {
-        "component:range": "Range",
+        "component:range": "Slider",
         "component:progress": "Progress"
       },
       "verification": "./verification/range.verification.json#/renderers/react",
       "props": {
         "component:range": {
           "inherits": [
-            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'value' | 'defaultValue' | 'min' | 'max' | 'step'>"
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'value' | 'defaultValue' | 'min' | 'max' | 'step' | 'className' | 'children'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "value?: number",
             "defaultValue?: number = 50",
             "min?: number = 0",
@@ -619,19 +623,113 @@
             "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\".",
             "size?: number // Unit u in px for this control.",
             "onValueChange?: (value: number, details: ChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'. The native onChange still fires.",
-            "onValueCommitted?: (value: number, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event)."
+            "onValueCommitted?: (value: number, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
+            "children?: ReactNode // Slider.Root: the parts (Slider.Track with Slider.Indicator, Slider.Thumb). Ignored by the preset."
           ]
         },
         "component:progress": {
           "inherits": [
-            "Omit<HTMLAttributes<HTMLDivElement>, 'children'>"
+            "Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'className'>"
           ],
           "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "value?: number | null // Current value; omit for indeterminate.",
             "max?: number = 100",
             "label?: string",
-            "size?: number"
+            "size?: number",
+            "children?: ReactNode // Progress.Root: the parts (Progress.Track with Progress.Indicator). Ignored by the preset."
           ]
+        }
+      },
+      "parts": {
+        "component:range": {
+          "Slider.Root": {
+            "inherits": [
+              "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'value' | 'defaultValue' | 'min' | 'max' | 'step' | 'className' | 'children'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: number",
+              "defaultValue?: number = 50",
+              "min?: number = 0",
+              "max?: number = 100",
+              "step?: number = 1",
+              "label?: string // Accessible name (aria-label) when there is no visible label.",
+              "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\".",
+              "size?: number // Unit u in px for this control.",
+              "onValueChange?: (value: number, details: ChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'. The native onChange still fires.",
+              "onValueCommitted?: (value: number, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
+              "children?: ReactNode // Slider.Root: the parts (Slider.Track with Slider.Indicator, Slider.Thumb). Ignored by the preset."
+            ]
+          },
+          "Slider.Track": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Slider.Indicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Slider.Thumb": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        },
+        "component:progress": {
+          "Progress.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: number | null // Current value; omit for indeterminate.",
+              "max?: number = 100",
+              "label?: string",
+              "size?: number",
+              "children?: ReactNode // Progress.Root: the parts (Progress.Track with Progress.Indicator). Ignored by the preset."
+            ]
+          },
+          "Progress.Track": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Progress.Indicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
         }
       }
     }

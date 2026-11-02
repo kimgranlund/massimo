@@ -23,6 +23,23 @@ The indicator is the leading part; the label run follows with 1u after the slot 
 
 ## Anatomy
 
+### Both forms
+
+Preset or parts ([components spec](../../../../docs/specs/components.md#composition)); the same DOM, classes and data-*:
+
+```html
+<ui-checkbox checked><span data-part="leading"><span data-part="indicator"></span></span><span data-part="contents">Accept</span></ui-checkbox>
+<ui-switch><span data-part="indicator"><span data-part="thumb"></span></span>Wi-Fi<span data-part="suffix">on</span></ui-switch>
+```
+
+```tsx
+<Checkbox.Root defaultChecked><Checkbox.Indicator />Accept</Checkbox.Root>
+<Radio.Root name="plan" value="pro"><Radio.Indicator />Pro</Radio.Root>
+<Switch.Root suffix="on"><Switch.Thumb />Wi-Fi</Switch.Root>
+```
+
+Web component: an authored indicator (alone or in `leading`) is kept and filled when empty (the checkbox marks, the switch thumb); authored slot spans keep their loose children. React: `Checkbox.Indicator` and `Radio.Indicator` render the leading slot around themselves; `Switch.Thumb` renders the leading slot and the track (the indicator) around the thumb, which `render` and `className` apply to. Other children are the label (contents); `prefix` and `suffix` stay props. The native input is rendered by the Root and cannot be a separate part: the `<label>` host is what makes a press on the text toggle it. Radios group by `name` (no RadioGroup: ui-radio has none either).
+
 Construction pattern (shared by every labelled component):
 
 ```

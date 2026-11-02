@@ -27,6 +27,20 @@ Plain HTML: the classes of the `button` slot recipe style any markup, e.g. `<but
 
 ## Anatomy
 
+### Both forms
+
+One part (Base UI Button). Slot spans may be authored instead of `slot` attributes ([components spec](../../../../docs/specs/components.md#composition)); React's `render` swaps the element:
+
+```html
+<ui-button><span data-part="leading"><i name="plus"></i></span><span data-part="contents">Add</span><span data-part="suffix">⌘N</span></ui-button>
+```
+
+```tsx
+<Button leading={<i name="plus" />} suffix="⌘N">Add</Button>
+<Button render={<a href="/new" />}>New</Button>              {/* a link with the button's recipe class and data-* */}
+<Button className={(state) => (state.busy ? 'saving' : '')} loading>Save</Button>
+```
+
 Construction pattern (shared by every labelled component):
 
 ```

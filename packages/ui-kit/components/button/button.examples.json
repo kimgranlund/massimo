@@ -47,6 +47,13 @@
       "label": "Size and icon size",
       "subject": "component:button",
       "markup": "<ui-button size=\"3\" icon-size=\"lg\"><i slot=\"leading\" name=\"star\"></i>Star</ui-button>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "component:button",
+      "markup": "<ui-button><span data-part=\"leading\"><i name=\"plus\"></i></span><span data-part=\"contents\">Add</span><span data-part=\"suffix\">⌘N</span></ui-button>",
+      "note": "The same DOM as <i slot=\"leading\"> and <span slot=\"suffix\"> children. React: <Button render={<a href=\"/new\" />}> renders a link with the button's recipe class and data-*."
     }
   ]
 }
