@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "92441535dba846959c386a5082123404cd7ad36f56fd16e50970570211b0b8bb"
+      "sha256": "825273f5f959aec8548739d980d08701f8961ea4f9a913dcc4d93aa116c33985"
     },
     {
       "path": "dom/range.ts",
-      "sha256": "b47143cf552905a96ad905d04b21735b540a1682bb96c97880db2ec80c5c3822"
+      "sha256": "0db700261cc4bfbf93665475633c865a8253a3ed3ad17d8ed43798052cf7446a"
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "9097aae9f3a9900b872acdec4a18d52af05533b4b24b76a9658be0ab4d2e2300"
+      "sha256": "4570b0624d87ff7fdae17c0c269eb60903192c420f8dbe7237b83379c35d4d69"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "00b8516e3efab665b7c22d231c9fbfcfcf46a1d1fa1fd64b56463fd9b835161c"
+      "sha256": "bb6a973efcb59805426a9dea8cb9aee30cc2d33bcd8c76f1292187ad58d67f4b"
     },
     {
       "path": "dom/state.ts",
@@ -45,7 +45,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -67,7 +68,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -18,15 +18,15 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "5713529eff157100f139aed0cb0380c9a88ce6943eb27a37b0c2b005e9b66f0e"
+      "sha256": "0abd44cae858161a92412ac6e4f9ad03ff4cdaf34c0ddc89f0a95f249510bec3"
     },
     {
       "path": "components/listbox/listbox.manifest.json",
-      "sha256": "4f4141b18b4dea626d74dec8fdaacf01fc1c3301d7d684ad99becfeecb953f1e"
+      "sha256": "a3c5761b6eaff1f82fd318c79445adefb2ff79b7e89b6d8178bb2b87e4a95e3e"
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "ccbe8b0629cc03404bca176a1f0de784ef8f95670349f2b2f00c0a3ea6e764be"
+      "sha256": "1eea17f8e1178ccf28805656e2f50b927e70d3d70ad9be2011caa247084a759b"
     },
     {
       "path": "components/parts.react.tsx",
@@ -62,7 +62,8 @@
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
-          "node --test test/listbox.test.ts"
+          "node --test test/listbox.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -84,7 +85,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

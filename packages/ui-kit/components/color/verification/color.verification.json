@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/color/color.element.ts",
-      "sha256": "39b492fd369cef25cbd55b9674d0d77ea113e3f3c86aef21702295960ce239b2"
+      "sha256": "3ea66ca206878677896140cb37d03a81108ced417ee45a0b8afd94b8402fdb3e"
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "5713529eff157100f139aed0cb0380c9a88ce6943eb27a37b0c2b005e9b66f0e"
+      "sha256": "0abd44cae858161a92412ac6e4f9ad03ff4cdaf34c0ddc89f0a95f249510bec3"
     },
     {
       "path": "components/color/color.manifest.json",
-      "sha256": "8e80f1d3a42ea7ebadd1ef85f89d99c9e8aa731f34079e4f62ff64da67ab634e"
+      "sha256": "7e69d2e9a0fcf91e76cd2229ae293c22184b1f45b43278ac019a119807c674df"
     },
     {
       "path": "components/color/color.react.tsx",
-      "sha256": "b20a035b8108589addab9ba60745454ba9926f1cfddaecb19c38258b72ecaef8"
+      "sha256": "b6a6912d49308eb6ebe9485c7a97466444147f10eab735e05790ad5e6f60704d"
     },
     {
       "path": "components/color/color.ts",
@@ -49,7 +49,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -71,7 +72,8 @@
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts"
+          "node --test test/react.test.ts",
+          "node --test test/state-parity.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
