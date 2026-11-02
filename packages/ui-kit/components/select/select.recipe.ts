@@ -25,6 +25,8 @@ const ANCHOR = '--ui-select-trigger';
 const popup = floatingPopup;
 const anchored = anchoredPopup({ anchor: ANCHOR, side: 'bottom', align: 'start' });
 const open = floatingOpen;
+const BASE_SELECT = '@supports (appearance: base-select)';
+const NO_BASE_SELECT = '@supports not (appearance: base-select)';
 // The composite variables alone (the native select holds them for its options, which inherit from it).
 const compositeVars = Object.fromEntries(Object.entries(composite).filter(([k]) => k.startsWith('--')));
 // The gap attribute is on the host (--ui-gap does not inherit, styles/geometry.ts): the popup takes it.
@@ -40,7 +42,16 @@ export const select = defineSlotRecipe({
       // React: opt in to customizable select; the select's own box wraps the trigger exactly (no
       // intrinsic minimum height or line box); the inner <button> is the painted trigger.
       '& > select, & > select::picker(select)': { appearance: 'base-select' },
-      '& > select': { display: 'block', width: '100%', padding: 0, border: 0, background: 'none', minWidth: 0, minBlockSize: 0, blockSize: 'auto', lineHeight: 0, ...compositeVars, ...hostGap },
+      '& > select': { display: 'block', width: '100%', minWidth: 0, blockSize: 'var(--h)', ...compositeVars, ...hostGap },
+      // Only a customizable select gives up its own box to the painted trigger. Elsewhere (Firefox
+      // 157) the platform select is the control: the trigger's fill, edge, radius and bare-edge
+      // padding at the control height, the platform's own arrow and picker.
+      [BASE_SELECT]: { '& > select': { padding: 0, border: 0, background: 'none', minBlockSize: 0, blockSize: 'auto', lineHeight: 0 } },
+      [NO_BASE_SELECT]: { '& > select': {
+        bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', borderRadius: 'var(--radius)', paddingInline: 'calc(2 * var(--u))',
+        borderStyle: 'solid', borderWidth: 'var(--b)', borderColor: 'border.strong',
+        '&:disabled': { opacity: 0.5, cursor: 'not-allowed' },
+      } },
       '& > select > [data-part=trigger], & > select > option': { lineHeight: 'var(--line)' },
       '& > select::picker-icon': { display: 'none' },
       '& > select > option::checkmark': { display: 'none' },
@@ -76,7 +87,12 @@ export const select = defineSlotRecipe({
       // Base UI data-side: opening upward, the popup grows from its bottom edge.
       ...sideOrigins,
       '&:popover-open': { display: 'flex', ...open },
-      [ANCHORED]: anchored,
+      [ANCHORED]: {
+        ...anchored,
+        // The element's side choice where the engine keeps a squeezed first fit (#measureSide):
+        // above the trigger, still flipping back below when the space above runs out.
+        '&[data-side=top]': { positionArea: 'block-start span-inline-end', marginBlockStart: 0, marginBlockEnd: 'var(--u)' },
+      },
     }),
     // Base UI Select.List: the options' parent, transparent to layout (the popup is the composite).
     list: { display: 'contents' },

@@ -9,7 +9,9 @@ import { motionProperties } from '../styles/motion.ts';
 
 // Evaluate the motion CSS as a browser would: theme params as --ui-*, the derived variables and
 // tokens from motionTokenVars(), var() substituted, then calc/clamp/max/sqrt/exp/cos/sin as JS.
-function cssEnv(overrides: Partial<Record<ParamName, number>> = {}) {
+// `decimals` stores each registered --motion-* number at that many decimal places, as WebKit does
+// (Safari 27 keeps a computed <number> custom property at 6 decimals; Chrome and Firefox keep a float).
+function cssEnv(overrides: Partial<Record<ParamName, number>> = {}, decimals?: number) {
   const decls: Record<string, string> = {};
   for (const [k, v] of Object.entries({ ...defaultParams, ...overrides })) decls[paramVar(k as ParamName)] = String(v);
   Object.assign(decls, motionTokenVars());
@@ -25,7 +27,8 @@ function cssEnv(overrides: Partial<Record<ParamName, number>> = {}) {
   const get = (name: string): number => {
     if (!cache.has(name)) {
       if (!(name in decls)) throw new Error(`undeclared ${name}`);
-      cache.set(name, evalExpr(decls[name]));
+      const v = evalExpr(decls[name]);
+      cache.set(name, decimals !== undefined && name.startsWith('--motion-') ? Math.round(v * 10 ** decimals) / 10 ** decimals : v);
     }
     return cache.get(name)!;
   };
@@ -79,6 +82,13 @@ test('default params reproduce each spring: span and linear() samples (and the p
   for (const [intent, spring] of Object.entries(INTENTS)) {
     assert.ok(Math.abs(env.ms(intent) - env.ms(spring)) < 1e-9, `${intent} duration`);
     assert.ok(near(env.curve(intent), env.curve(spring), 1e-12), `${intent} easing`);
+  }
+});
+
+test('WebKit precision: registered numbers kept at 6 decimals still solve every spring and intent to 1e-4', () => {
+  for (const overrides of [{}, { 'motion-bounce': 0 }, { 'spring-smooth-duration': 1.5 }, { 'spring-quick-duration': 0.05 }] as Partial<Record<ParamName, number>>[]) {
+    const env = cssEnv(overrides, 6), exact = cssEnv(overrides);
+    for (const name of [...SPRING_NAMES, ...Object.keys(INTENTS)]) assert.ok(near(env.curve(name), exact.curve(name), 1e-4), `${name} ${JSON.stringify(overrides)}`);
   }
 });
 

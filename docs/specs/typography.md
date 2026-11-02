@@ -6,7 +6,7 @@ massimo-ui's type roles and font families, placed on our u ramp. Reference: `pac
 
 - **Base** = the control font, `10px + u` (14px at u = 4, massimo-ui's anchor). Text scales with `size` like every other length.
 - **Step role:** `size = (10px + u) × ratio^step`. **Fixed role:** `size = n·u`.
-- **Line height:** `round(up, size × multiplier, rhythm × u)`; rhythm 0 keeps the natural height. Controls keep a unitless 1.2.
+- **Line height:** `round(up, size × multiplier, rhythm × u)`, less 1e-4 of a step first (`RHYTHM_TOLERANCE`, in the resolver too: Firefox computes in float32, where 12.5px × 1.2 lands above 15px and would round up a whole step); rhythm 0 keeps the natural height. Controls keep a unitless 1.2.
 - Computed in CSS with `pow()` and `round()` at each element from inherited inputs, so it works per subtree with no script.
 
 ## Inputs

@@ -94,7 +94,7 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 |---|---|
 | `ui-select` / Select (host) | field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
 | trigger (web component) | `data-popup-open` and `data-pressed` while open, `data-placeholder` with no selection, `data-disabled` |
-| popup (web component) | `data-open` / `data-closed`; while open `data-side` (bottom or top, read back after anchor positioning) and `data-align` (start) |
+| popup (web component) | `data-open` / `data-closed`; while open `data-side` (bottom or top, read back after anchor positioning; where the list is squeezed on that side, the side with more room, which `data-side="top"` then places in CSS) and `data-align` (start) |
 | `ui-option` in the popup | `data-selected`, `data-highlighted` (the active option), `data-disabled` |
 
 The React Select is a native customizable select: its open state (`select:open`), option selection (`:checked`) and highlight (`:focus`) and the popup (`::picker(select)`) stay native, because the browser does not report them to script. Enter and exit motion is `@starting-style` (no `data-starting-style` / `data-ending-style`).
@@ -109,6 +109,10 @@ The popup is a floating layer ([components spec, Floating layers](../../../../do
 | `--available-width` | `100%` of the position-area cell (trigger start to viewport end) | viewport width − left − 8px, px | as CSS |
 | `--available-height` | `calc(100% - var(--u))`: the cell on the open side, less the 1u offset | the space on the chosen side, px | as CSS |
 | `--transform-origin` | `top center`, `bottom center` with `data-side="top"` | the same, inline | `top center` only: the browser does not report a flip |
+
+Each opening starts below. Chrome and Firefox flip by `position-try-order: most-block-size`; Safari 27 parses it but keeps the first position that fits, squeezed to its `max-height`, so the element reads the popup back and, when its list overflows, sets `data-side` to the side with more room (`data-side="top"` moves the position area above, with `flip-block` still as the fallback). The React picker has no script; in Safari it can open squeezed below a trigger near the viewport bottom (open: [cross-browser report](../../../../docs/reports/2026-11-02-cross-browser.md)).
+
+Browsers without `appearance: base-select` (Firefox 157) show the React Select as the platform select, painted as the field control (fill, edge, radius, 2u bare-edge padding, the control height) with the platform's arrow and picker; adornments and rich option content are not drawn there.
 
 The CSS values are anchor functions and percentages of the anchored containing block, so they resolve where they are used (sizing, inset and margin properties); `getComputedStyle` returns them unresolved. The script values are px, written inline when the element places the popup itself. The React picker has no `data-side` / `data-align`: it is a pseudo-element the browser places.
 

@@ -266,6 +266,10 @@ setTimeout(() => {
       kids: kids.filter((k) => k.localName !== 'input' && k.localName !== 'progress' && !k.hidden).map((k) => { const r = k.getBoundingClientRect(); return `${r2(r.left - er.left)}:${r2(r.top - er.top)}:${r2(r.width)}x${r2(r.height)}:${getComputedStyle(k).backgroundColor}:${getComputedStyle(k).outlineStyle}`; }).join(' '),
     };
   };
+  // A lone px value may differ by less than a layout unit: Gecko snaps a native <button>'s computed
+  // padding to 1/60px (1.3125px reads 1.31667px), which no layout can show.
+  const isPx = (v: unknown): v is string => typeof v === 'string' && /^-?[\d.]+px$/.test(v);
+  const same = (x: unknown, y: unknown) => x === y || (isPx(x) && isPx(y) && Math.abs(parseFloat(x) - parseFloat(y)) < 1 / 60);
   // State contract (contracts/states.json): the twins carry the same data-* state attributes.
   const STRUCTURE = new Set(['data-ui', 'data-part', 'data-size', 'data-icon-size', 'data-hide-label', 'data-selectable', 'data-mark', 'data-dir', 'data-index', 'data-remove', 'data-hover-controls', 'data-no-dots', 'data-no-paddles', 'data-ratio', 'data-fit', 'data-slideshow', 'data-generated', 'data-k', 'data-case', 'data-side', 'data-avatar-size']);
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
@@ -286,7 +290,7 @@ setTimeout(() => {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
-        if (a[key] !== b[key]) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
+        if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
       }
     }
   }

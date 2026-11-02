@@ -17,7 +17,7 @@
 // as fallbacks, so `data-numeric="oldstyle fraction"` combines. Panda code uses the same contract
 // through the `numeric()` pattern (styles/numeric.ts), whose classes sit above textStyles too.
 import { defineGlobalStyles, defineTextStyles } from '@pandacss/dev';
-import { DEFAULT_VOICES, FACES, NUMERIC_AXES, NUMERIC_DEFAULTS, NUMERIC_POSITIONS, NUMERIC_VARIANTS, SERIF_REGULAR_VOICES, TYPE_ROLES, VOICES, type TypeRole, type Voice } from '../tokens/typography/resolve.ts';
+import { DEFAULT_VOICES, FACES, NUMERIC_AXES, NUMERIC_DEFAULTS, NUMERIC_POSITIONS, NUMERIC_VARIANTS, RHYTHM_TOLERANCE, SERIF_REGULAR_VOICES, TYPE_ROLES, VOICES, type TypeRole, type Voice } from '../tokens/typography/resolve.ts';
 
 /** CSS font-family for a voice: its repointed face, else its default face. Numeric follows ui. */
 export const voiceFamily = (v: Voice) => v === 'numeric'
@@ -37,7 +37,9 @@ const BASE = `calc(10px + ${U})`;
 function roleStyle(r: TypeRole) {
   const size = r.u !== undefined ? `calc(${r.u} * ${U})` : `calc(${BASE} * pow(var(--ui-type-ratio), ${r.step}))`;
   // Round up to the rhythm unit; a zero rhythm falls back to a 0.01px grid (natural height).
-  const lineHeight = r.control ? String(r.lh) : `round(up, calc(${size} * ${r.lh}), max(calc(var(--ui-type-rhythm) * ${U}), 0.01px))`;
+  // RHYTHM_TOLERANCE of a step absorbs float error (Firefox: 12.5px × 1.2 computes above 15px).
+  const grid = `max(calc(var(--ui-type-rhythm) * ${U}), 0.01px)`;
+  const lineHeight = r.control ? String(r.lh) : `round(up, calc(${size} * ${r.lh} - ${grid} * ${RHYTHM_TOLERANCE}), ${grid})`;
   return {
     fontFamily: `var(${NUMERIC_FAMILY_VAR}, ${voiceFamily(r.voice)})`,
     fontSize: size,

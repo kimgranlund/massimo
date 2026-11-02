@@ -114,7 +114,14 @@ export const anchorPositioning = () =>
 export function measureSide(popup: Element, anchor: Element, preferred: Side = 'bottom'): Side | undefined {
   const p = popup.getBoundingClientRect(), a = anchor.getBoundingClientRect();
   if (!p.height && !p.width) return undefined;
-  if (preferred === 'top' || preferred === 'bottom') return p.top < a.top ? 'top' : 'bottom';
+  if (preferred === 'top' || preferred === 'bottom') {
+    // position-try-order: most-block-size is parsed but not acted on by some engines (Safari 27), which
+    // keep a squeezed first fit: when the popup scrolls on the side CSS chose, take the side with more
+    // room; data-side="top" then places it above in CSS (anchoredPopup), so the choice holds.
+    const squeezed = (popup as HTMLElement).scrollHeight > (popup as HTMLElement).clientHeight + 1;
+    if (squeezed) return a.top > window.innerHeight - a.bottom ? 'top' : 'bottom';
+    return p.top < a.top ? 'top' : 'bottom';
+  }
   return p.left < a.left ? 'left' : 'right';
 }
 
@@ -158,6 +165,11 @@ export function createPositioner(o: PositionerOptions) {
       if (!running) {
         running = true;
         if (script()) { window.addEventListener('resize', place); window.addEventListener('scroll', place, true); }
+        else {
+          // Each opening starts on the preferred side, so CSS (and measureSide) picks the side afresh.
+          const popup = o.popup(), side = o.side ?? 'bottom';
+          if (popup) { popup.setAttribute('data-side', side); o.onSide?.(side); }
+        }
       }
       place();
     },
