@@ -21,7 +21,6 @@ const FIELD_HOSTS = ':where(:is(ui-input, [data-ui=input]) > [data-part=control]
 export const SLOTTED = `:is(ui-button, ui-option, [data-ui=button], ${FIELD_HOSTS})`;
 const SLOT = ':is([data-part=leading], [data-part=trailing])';
 const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
-const BUTTON_HOST = ':is(ui-button, [data-ui=button])';
 const ADORN = ':is([data-part=prefix], [data-part=suffix])';
 
 /**
@@ -86,15 +85,6 @@ export const geometry = defineGlobalStyles({
   [`${SLOTTED} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${SLOTTED} > [data-part=contents]`]: { minWidth: 'var(--slot)' },
   [`${SLOTTED} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  // Optical balance (resolveButtonIcons): in a button with visible text, icon slots hug their glyph
-  // inline and take the label's 2u on the outer side, so edge-to-icon = edge-to-text (pad + 2u) and
-  // icon-to-text = 1u. Icon-only buttons keep the square slot; fill artwork keeps the full slot.
-  [`${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > ${SLOT}`]: { minWidth: 0 },
-  [`${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > [data-part=leading]`]: { marginInlineStart: 'calc(2 * var(--u))' },
-  [`${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > [data-part=trailing]`]: { marginInlineEnd: 'calc(2 * var(--u))' },
-  [`${BUTTON_HOST}:is([icon-size=fill], [data-icon-size=fill]):has(> ${TEXT}:not([hidden])) > ${SLOT}, :is([icon-size=fill], [data-icon-size=fill]) ${BUTTON_HOST}:has(> ${TEXT}:not([hidden])) > ${SLOT}`]: {
-    minWidth: 'var(--slot)', marginInline: 0,
-  },
   // Field text (input, select value) fills the row as a block, so it can scroll or ellipsize.
   [`${FIELD_HOSTS} > [data-part=contents]`]: { display: 'block', flex: '1', minWidth: 0 },
   ...textRun(SLOTTED, 'var(--u)', 'calc(2 * var(--u))', {
@@ -134,11 +124,8 @@ export const geometry = defineGlobalStyles({
   'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', justifyContent: 'center' },
   // Label wrapper padding (resolveBtg), in the local unit u′: the host keeps 0.5u′ − B; labels carry
   // 1u′ on both sides (beside a slot too). Text parts sit 0.5u′ apart.
-  // Optical balance: an icon slot hugs its glyph inline (block size stays the slot) and takes the
-  // label's 1u′ on its outer side, so edge-to-glyph = edge-to-text = 0.5u′ + 1u′ and icon-to-text = 1u′.
-  [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minHeight: 'var(--slot)' },
-  [`${BTG} > [data-part=leading]`]: { marginInlineStart: 'var(--lu)' },
-  [`${BTG} > [data-part=trailing]`]: { marginInlineEnd: 'var(--lu)' },
+  // Icon containers have a set size: the slot (height − u′) in both directions, glyph centered.
+  [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
   // Chip centers its text with block padding; tag and badge need none, the row centers it.
@@ -146,9 +133,8 @@ export const geometry = defineGlobalStyles({
   ...textRun('ui-chip', 'var(--lu)', 'calc(1.5 * var(--lu))', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--lu))'),
   ...textRun('ui-tag', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
   ...textRun('ui-badge', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
-  // Fill artwork (avatars) keeps the full square slot at the edge, nested inside the 0.5u′ edge.
+  // Fill artwork (avatars) nests inside the 0.5u′ edge.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${BTG} > ${SLOT}, ${BTG}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
-    marginInline: 0, minWidth: 'var(--slot)',
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--lu)))',
   },
 

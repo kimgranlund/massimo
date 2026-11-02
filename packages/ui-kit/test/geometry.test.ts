@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, resolveButtonIcons, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -44,16 +44,6 @@ test('text run: 0.5u between text parts, 1u beside a slot, 2u at a bare edge', (
   // Matches the older two-flag rule when there are no adornments.
   for (const [l, t] of [[false, false], [true, false], [false, true], [true, true]])
     assert.deepEqual(resolveTextRun({ leading: l, trailing: t }, U4).contents, resolveButtonContents(l, t, U4));
-});
-
-test('button icon balance: slot hugs the glyph, outer edge 2u, edge-to-icon = edge-to-text', () => {
-  for (const iconSize of ['sm', 'md', 'lg'] as const) {
-    const c = resolveControl({ unit: 4, iconSize }), b = resolveButtonIcons({ unit: 4, iconSize });
-    assert.equal(b.slotInline, c.iconSize);
-    assert.equal(b.visibleEdge, c.padding + c.border + resolveButtonContents(false, false, U4).start, 'icon edge = text edge');
-    assert.equal(b.iconToText, resolveButtonContents(true, false, U4).start);
-  }
-  assert.deepEqual([resolveButtonIcons({ unit: 4, iconSize: 'fill' }).slotInline, resolveButtonIcons({ unit: 4, iconSize: 'fill' }).iconEdge], [24, 0]);
 });
 
 test('icon sizes: sm = font − 0.5u, md = font + 0.5u, lg = font + 1.5u, fill = slot', () => {

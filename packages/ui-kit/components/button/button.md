@@ -16,10 +16,6 @@
 
 React: `<Button leading={…} prefix="$" suffix="⌘P" trailing={…} iconSize="lg" size={3}>Pay</Button>` renders a native `<button data-ui="button">` with the same parts and styles.
 
-## Icon balance
-
-With visible text, an icon slot hugs its glyph and takes the label's 2u outer edge, so the space from the edge to an icon matches the space to text, and icon-to-text is 1u. Icon-only buttons stay 8u squares.
-
 ## Composition
 
 - In a row of related actions, wrap buttons in `ui-group` (1u gap).

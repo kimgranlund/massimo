@@ -12,7 +12,7 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveButtonIcons, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -62,7 +62,7 @@ for (const c of cases) {
     'button.radius': [px(cs(btn).borderTopLeftRadius), ctl.radius],
     'slot.width': [r2(rect(slotOf(iconBtn)).width), ctl.slot],
     'slot.height': [r2(rect(lead).height), ctl.slot],
-    'slot.inline.withText': [r2(rect(lead).width), r2(resolveButtonIcons(g).slotInline)],
+    'slot.width.withText': [r2(rect(lead).width), ctl.slot],
     'icon.size': [r2(rect(lead.firstElementChild).width), ctl.iconSize],
     'label.leadingOnly.start': [px(cs(pc(btn)).paddingLeft), resolveButtonContents(true, false, g).start],
     'label.leadingOnly.end': [px(cs(pc(btn)).paddingRight), resolveButtonContents(true, false, g).end],
@@ -113,7 +113,7 @@ for (const c of cases) {
     'chip.font': [px(cs(chip).fontSize), rc.fontSize],
     'chip.padding': [px(cs(chip).paddingTop), rc.padding],
     'chip.slot': [r2(rect(slotOf(chip)).height), rc.slot],
-    'chip.slot.inline': [r2(rect(slotOf(chip)).width), r2(rc.slotInline)],
+    'chip.slot.width': [r2(rect(slotOf(chip)).width), r2(rc.slot)],
     'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
     'chip.radius': [px(cs(chip).borderTopLeftRadius), r2(rc.radius)],
     'tag.radius': [px(cs(tag).borderTopLeftRadius), r2(rt.radius)],
@@ -142,25 +142,6 @@ for (const c of cases) {
   checks['image.ratio.custom'] = [r2(rect($('imgCustom')).height), r2(160 / 1.5)];
   checks['image.ratio.invalid'] = [r2(rect($('imgBad')).height), 0];
   checks['image.ratio.noInline'] = [[$('imgWide'), $('imgCustom')].filter((el) => el.style.aspectRatio).length, 0];
-  // Button optical balance: edge-to-icon = edge-to-text (pad + B + 2u), icon-to-text = 1u.
-  if (c.icon !== 'fill') {
-    const bi = resolveButtonIcons(g);
-    for (const [k, b, side] of [['leading', btn, 'leading'], ['trailing', caretBtn, 'trailing']]) {
-      const br = rect(b), ir = rect(b.querySelector(`[data-part=${side}]`).firstElementChild), tx = pc(b), tr = rect(tx);
-      checks[`button.balance.${k}.iconEdge`] = [r2(side === 'leading' ? ir.left - br.left : br.right - ir.right), r2(bi.visibleEdge)];
-      checks[`button.balance.${k}.textEdge`] = [r2(side === 'leading' ? br.right - (tr.right - px(cs(tx).paddingRight)) : (tr.left + px(cs(tx).paddingLeft)) - br.left), r2(bi.visibleEdge)];
-      checks[`button.balance.${k}.iconToText`] = [r2(side === 'leading' ? tr.left + px(cs(tx).paddingLeft) - ir.right : ir.left - (tr.right - px(cs(tx).paddingRight))), r2(bi.iconToText)];
-    }
-  }
-  // Optical balance: edge-to-glyph equals edge-to-text on both sides, and icon-to-text is u′.
-  if (c.icon !== 'fill') {
-    const cr = rect(chip), ir = rect(slotOf(chip).firstElementChild), tx = contentsOf(chip), tr = rect(tx);
-    checks['chip.balance.iconEdge'] = [r2(ir.left - cr.left), r2(rc.visibleEdge)];
-    checks['chip.balance.textEdge'] = [r2(cr.right - (tr.right - px(cs(tx).paddingRight))), r2(rc.visibleTextEdge)];
-    checks['chip.balance.iconToText'] = [r2(tr.left + px(cs(tx).paddingLeft) - ir.right), r2(rc.localUnit)];
-    const xr = rect($('chipX')), xi = rect($('chipX').querySelector('[data-remove]'));
-    checks['chip.balance.removeEdge'] = [r2(xr.right - xi.right), r2(rc.visibleEdge)];
-  }
   // Buttons, form controls, badges, tags and chips use the UI voice: same family as the control role.
   const uiFamily = cs(box.querySelector('[data-type="control"]')).fontFamily;
   const uiVoiced = [['badge', badge], ['tag', tag], ['chip', chip], ['button', btn], ['input', pc(inp)], ['select', pc(tr)], ['option', box.querySelector('ui-listbox ui-option')], ['segmented', o1], ['checkbox', box.querySelector('ui-checkbox')], ['radio', box.querySelector('ui-radio')], ['switch', box.querySelector('ui-switch')]];

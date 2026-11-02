@@ -77,22 +77,6 @@ export function resolveButtonContents(leading: boolean, trailing: boolean, input
   return { start: leading ? u : 2 * u, end: trailing ? u : 2 * u };
 }
 
-/**
- * Button optical balance: with visible text, an icon slot hugs its glyph inline (block size stays
- * 6u) and takes the label's bare edge (2u) on its outer side, so the visible space from the edge to
- * an icon equals the space to text (padding + B + 2u) and icon-to-text is 1u. Icon-only buttons
- * keep the square 6u slot; fill artwork keeps the full slot with no margin.
- */
-export function resolveButtonIcons(input: GeometryInput = {}) {
-  const c = resolveControl(input), fill = (input.iconSize ?? GEOMETRY_DEFAULTS.iconSize) === 'fill';
-  return {
-    slotInline: fill ? c.slot : c.iconSize,
-    iconEdge: fill ? 0 : 2 * c.unit,
-    iconToText: c.unit,
-    visibleEdge: c.padding + c.border + 2 * c.unit,
-  };
-}
-
 export type TextPart = 'prefix' | 'contents' | 'suffix';
 export interface ControlParts { leading?: boolean; prefix?: boolean; contents?: boolean; suffix?: boolean; trailing?: boolean }
 
@@ -239,12 +223,6 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
     // omit block padding (the row centers the text).
     ...(kind === 'chip' ? singleLine(fontSize, slot) : { lineHeight: Math.min(1.2 * fontSize, slot), paddingBlock: 0 }),
     iconSize: resolveIcon(fontSize, u, x.iconSize, slot),
-    // Optical balance: icon slots hug the glyph inline (fill keeps the square slot) and take 1u′ on
-    // their outer side, so the visible edge is 0.5u′ + 1u′ beside text and beside icons alike.
-    slotInline: x.iconSize === 'fill' ? slot : resolveIcon(fontSize, u, x.iconSize, slot),
-    iconEdge: x.iconSize === 'fill' ? 0 : lu,
-    visibleEdge: pad + b + lu,          // edge to an icon glyph
-    visibleTextEdge: pad + b + edges.bareEdge, // edge to text at a bare edge
     // Concentric: edge 0.5u′ + slot / 3 (the button's 1u + 6u / 3), × curvature, pill at height / 2.
     radius: Math.min((0.5 * lu + slot / 3) * x.radiusScale, height / 2),
   };

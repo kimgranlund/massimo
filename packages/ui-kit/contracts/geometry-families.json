@@ -20,10 +20,9 @@
         "resolveControl",
         "resolveTextRun",
         "resolveButtonContents",
-        "resolveIcon",
-        "resolveButtonIcons"
+        "resolveIcon"
       ],
-      "summary": "Height 8u = 6u slot + 2·pad. Construction pattern [leading] [prefix] [contents] [suffix] [trailing]: icon slots 6u; the text run (prefix, label, suffix) has 0.5u beside another text part, 1u beside a slot, 2u at a bare edge. Font 10px + u. Icon = font + k·u (sm −0.5, md +0.5, lg +1.5), capped at the slot. Buttons with text: icon slots hug the glyph with a 2u outer margin, so edge-to-icon = edge-to-text.",
+      "summary": "Height 8u = 6u slot + 2·pad. Construction pattern [leading] [prefix] [contents] [suffix] [trailing]: icon slots 6u; the text run (prefix, label, suffix) has 0.5u beside another text part, 1u beside a slot, 2u at a bare edge. Font 10px + u. Icon = font + k·u (sm −0.5, md +0.5, lg +1.5), capped at the slot.",
       "members": [
         "component:button",
         "component:option"
@@ -61,7 +60,7 @@
         "btgHeights",
         "resolveTextRun"
       ],
-      "summary": "Badge, tag and chip heights on the 12px + k·u ladder. Spacing uses a local unit u′ = height / 8: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides (chip 1.5u′ at a bare edge), text parts 0.5u′ apart. Radius is concentric with the slot: (0.5u′ + slot / 3) × curvature, pill at height / 2 (the button's 1u + 6u / 3 = 3u). Icon slots hug the glyph inline with a 1u′ outer margin, so edge-to-icon equals edge-to-text (fill keeps the square slot).",
+      "summary": "Badge, tag and chip heights on the 12px + k·u ladder. Spacing uses a local unit u′ = height / 8: host 0.5u′ − B, slots height − u′, labels 1u′ on both sides (chip 1.5u′ at a bare edge), text parts 0.5u′ apart. Radius is concentric with the slot: (0.5u′ + slot / 3) × curvature, pill at height / 2 (the button's 1u + 6u / 3 = 3u). Icon containers are a set size: the slot, square.",
       "members": [
         "component:badge",
         "component:tag",
