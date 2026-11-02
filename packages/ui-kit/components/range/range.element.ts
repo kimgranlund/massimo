@@ -2,13 +2,27 @@
 // PageUp/Down move 10%, Home/End jump; pointer drag with capture. Form-associated.
 // <ui-progress>: progress bar (role="progressbar"); no `value` means indeterminate.
 // Both expose the fill ratio as --ui-ratio (0..1), a continuous value carried by a variable.
+// Composition (optional): track › indicator and thumb may be authored as [data-part] children; each
+// is adopted onto the generated part (attributes, classes; the thumb's content), absent ones generated.
 import { UIElement, UIFormElement, define, html, settleDefault, signal } from '../../core/index.ts';
 import { applyAttrs, eventDetails, progressState, rangeDataAttrs, rangeKey, type ChangeReason, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
 import { applyRecipe, partOf } from '../classes.ts';
+import { adoptPart, authoredParts } from '../slots.ts';
 import { range, progress } from '../../styled-system/recipes/index.js';
 
 /** Track and indicator (Base UI Slider.Indicator / Progress.Indicator) parts of a range or progress host. */
 const trackPart = (host: Element) => (slot: string) => slot === 'indicator' ? partOf(partOf(host, 'track') ?? host, 'indicator') : partOf(host, slot);
+/** The parts an author may write (composition), by path. */
+const AUTHORED = ['track', 'track > indicator', 'thumb'];
+/** Adopt authored parts (collected at connect) onto the generated ones, once per render of the template. */
+function adoptTrack(host: Element, authored: Map<string, Element>) {
+  if (!authored.size) return;
+  const find = trackPart(host);
+  adoptPart(authored.get('track'), find('track'));
+  adoptPart(authored.get('track > indicator'), find('indicator'));
+  adoptPart(authored.get('thumb'), find('thumb'), 'replace');
+  authored.clear();
+}
 
 export class UIRange extends UIFormElement {
   static properties = {
@@ -31,9 +45,11 @@ export class UIRange extends UIFormElement {
   declare valueText: string;
 
   #dragging = signal(false);
+  #authored = new Map<string, Element>();
   get #state() { return { value: this.value, min: this.min, max: this.max, step: this.step }; }
 
   connected() {
+    this.#authored = authoredParts(this, AUTHORED);
     settleDefault(this, 50, this.value);
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('pointerdown', this.#onPointerDown);
@@ -54,6 +70,7 @@ export class UIRange extends UIFormElement {
     const s = { ...this.#state, value: snap(this.value, this.#state) };
     applyAttrs(this, { ...sliderAttrs({ ...s, disabled: this.isDisabled, label: this.label, valueText: this.valueText || undefined }), ...rangeDataAttrs({ dragging: this.#dragging.value }) });
     this.style.setProperty('--ui-ratio', String(ratioOf(s)));
+    adoptTrack(this, this.#authored);
     applyRecipe(this, range(), trackPart(this));
   }
 
@@ -124,6 +141,9 @@ export class UIProgress extends UIElement {
   declare value: number | null;
   declare max: number;
   declare label: string;
+  #authored = new Map<string, Element>();
+
+  connected() { this.#authored = authoredParts(this, AUTHORED); }
 
   template() { return html`<span data-part="track"><span data-part="indicator"></span></span>`; }
 
@@ -137,6 +157,7 @@ export class UIProgress extends UIElement {
       ...p.attrs,
     });
     this.style.setProperty('--ui-ratio', String(p.ratio));
+    adoptTrack(this, this.#authored);
     applyRecipe(this, progress(), trackPart(this));
   }
 }

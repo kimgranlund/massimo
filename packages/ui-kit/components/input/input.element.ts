@@ -4,11 +4,17 @@
 // The control follows the construction pattern (components/slots.ts):
 //   [leading] [prefix] [contents = editor] [suffix] [trailing]
 // Author adornments as children with slot="leading" | "prefix" | "suffix" | "trailing".
+// Composition (optional): the parts may be authored as [data-part] children (label, control ›
+// leading · prefix · contents · suffix · trailing, description, error); each is adopted onto the
+// generated part (slots.ts adoptPart), absent ones are generated.
 import { UIFormElement, define, html, settleDefault, type Problem } from '../../core/index.ts';
-import { adoptAdornments, ADORNMENT_PARTS } from '../slots.ts';
+import { adoptAdornments, adoptPart, authoredParts, partText, ADORNMENT_PARTS } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { input } from '../../styled-system/recipes/input.js';
 import { applyAttrs, eventDetails, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, withExternalRefs, type TextType } from '../../dom/index.ts';
+
+/** The parts an author may write (composition), by path. */
+const AUTHORED = ['label', 'control', ...ADORNMENT_PARTS.map((p) => `control > ${p}`), 'control > contents', 'description', 'error'];
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -47,6 +53,9 @@ export class UIInput extends UIFormElement {
 
   #id = '';
   #adornments: Element[] = [];
+  /** Authored parts waiting to be adopted by the next render; seeded marks the first connect. */
+  #authored = new Map<string, Element>();
+  #seeded = false;
   /** The value when the editor gained focus: change fires on blur when it differs, like a native input. */
   #focusValue = '';
 
@@ -55,7 +64,16 @@ export class UIInput extends UIFormElement {
     // Like a native input, the `value` attribute is the default value used on form reset.
     settleDefault(this, '');
     // Authored adornments (or ones already placed on a previous connect) join the control.
-    this.#adornments = [...this.querySelectorAll(ADORNMENT_PARTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=control] > [data-part=${p}] > [slot]`).join(', '))];
+    this.#adornments = [...this.querySelectorAll(ADORNMENT_PARTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=control] > [slot=${p}], :scope > [data-part=control] > [data-part=${p}] > [slot]`).join(', '))];
+    this.#authored = authoredParts(this, AUTHORED);
+    // Authored text seeds the properties it stands for, once (a reconnect finds the generated parts).
+    if (!this.#seeded) {
+      this.#seeded = true;
+      const text = (p: string) => partText(this.#authored.get(p));
+      if (!this.label && text('label')) this.label = text('label');
+      if (!this.description && text('description')) this.description = text('description');
+      if (!this.error && text('error')) this.error = text('error');
+    }
   }
 
   template() {
@@ -74,6 +92,17 @@ export class UIInput extends UIFormElement {
 
   update() {
     const [label, control, description, error] = this.children as unknown as HTMLElement[];
+    if (this.#authored.size) {
+      const a = this.#authored;
+      adoptPart(a.get('label'), label);
+      adoptPart(a.get('control'), control);
+      for (const p of ADORNMENT_PARTS) adoptPart(a.get(`control > ${p}`), partOf(control, p), 'append');
+      adoptPart(a.get('control > contents'), partOf(control, 'contents'));
+      adoptPart(a.get('description'), description);
+      adoptPart(a.get('error'), error);
+      adoptAdornments(control, []);
+      a.clear();
+    }
     if (this.#adornments.length) { adoptAdornments(control, this.#adornments); this.#adornments = []; }
     const editor = this.editor!;
     const a = fieldAttrs({

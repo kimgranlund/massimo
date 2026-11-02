@@ -3,6 +3,10 @@
 // adds its parts as siblings and the recipe places every child by part:
 //   [label: contents · suffix (unit)] [control] [readout]
 //   [description]
+//   [error]
+// Composition (optional): the parts may be authored as [data-part] children (label, alone or with
+// contents and suffix, readout, description, error); their text seeds the properties (label, unit,
+// readout, description, error) at the first connect, and the field keeps and fills them.
 // The label names the control: aria-labelledby on the control's role host, or, for a control whose
 // role sits inside it (ui-input's editor, ui-select's trigger), its `labelledby` property, which
 // forwards the ids to that element. No hide-label, no native <label>.
@@ -17,7 +21,7 @@ import { fieldGrid } from '../../styled-system/recipes/field-grid.js';
 export type FieldLayout = 'stacked' | 'inline';
 
 /** The field's own parts; every other element child is the control. */
-const PARTS = new Set(['label', 'readout', 'description']);
+const PARTS = new Set(['label', 'readout', 'description', 'error']);
 /** Roles a label press activates (like a native <label> on a checkbox); other controls get focus. */
 const TOGGLES = new Set(['checkbox', 'switch', 'radio']);
 
@@ -34,15 +38,19 @@ export class UIField extends UIElement {
     /** Readout text in the readout column (a slot="readout" child replaces it). */
     readout: { type: String, default: '' },
     description: { type: String, default: '' },
+    /** Error message under the control (Base UI Field.Error), after the description; part of its aria-describedby. */
+    error: { type: String, default: '' },
     layout: { type: String, default: 'stacked' },
   };
   declare label: string;
   declare unit: string;
   declare readout: string;
   declare description: string;
+  declare error: string;
   declare layout: FieldLayout;
 
   #id = '';
+  #seeded = false;
   #observer?: MutationObserver;
   /** The element that carries our ids, and the ids it carries, so a rewire can take them back. */
   #wired?: Wired;
@@ -54,6 +62,7 @@ export class UIField extends UIElement {
 
   connected() {
     this.#id = this.id ? `${this.id}-field` : uid('field');
+    if (!this.#seeded) { this.#seeded = true; this.#seed(); }
     // Controls come and go (React remounts a keyed child, adds a readout): sort and wire again.
     this.#observer = new MutationObserver(() => this.update());
     this.#observer.observe(this, { childList: true });
@@ -91,12 +100,36 @@ export class UIField extends UIElement {
     description.textContent = this.description;
     description.hidden = !this.description;
 
+    // The error part is created only once there is an error (fields without one keep their anatomy).
+    const error = this.error ? this.#part('error', 'append') : [...this.children].find((c) => c.getAttribute('data-part') === 'error') as HTMLElement | undefined;
+    if (error) {
+      error.id = `${this.#id}-error`;
+      error.textContent = this.error;
+      error.hidden = !this.error;
+    }
+
     this.#wire();
     applyRecipe(this, field({ layout: this.layout === 'inline' ? 'inline' : 'stacked' }), (slot) =>
       slot === 'contents' || slot === 'suffix' ? partOf(label, slot) : [...this.children].find((c) => c.getAttribute('data-part') === slot));
   }
 
   focus(options?: FocusOptions) { (this.control as HTMLElement | null)?.focus(options); }
+
+  /** Authored parts' text becomes the properties it stands for (when unset); the label is rebuilt as contents and suffix. */
+  #seed() {
+    const own = (name: string) => [...this.children].find((c) => c.getAttribute('data-part') === name && c.getAttribute('slot') !== 'readout');
+    const text = (el: Element | null | undefined) => (el?.textContent ?? '').trim();
+    const label = own('label');
+    if (label) {
+      const contents = partOf(label, 'contents'), suffix = partOf(label, 'suffix');
+      if (!this.label) this.label = text(contents ?? label);
+      if (!this.unit && suffix) this.unit = text(suffix);
+      if (!contents) label.replaceChildren();
+    }
+    if (!this.readout && text(own('readout'))) this.readout = text(own('readout'));
+    if (!this.description && text(own('description'))) this.description = text(own('description'));
+    if (!this.error && text(own('error'))) this.error = text(own('error'));
+  }
 
   /** The field's own part, created once (label first; readout and description last). */
   #part(name: string, at: 'prepend' | 'append') {
@@ -114,7 +147,7 @@ export class UIField extends UIElement {
   #wire() {
     const el = this.control;
     const name = this.label ? this.labelIds : [];
-    const desc = this.description ? [`${this.#id}-desc`] : [];
+    const desc = [...(this.description ? [`${this.#id}-desc`] : []), ...(this.error ? [`${this.#id}-error`] : [])];
     const prev = this.#wired;
     if (prev && (prev.el !== el)) { this.#unwire(prev); this.#wired = undefined; }
     if (!el) return;

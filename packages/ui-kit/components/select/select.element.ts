@@ -4,6 +4,9 @@
 //   [leading] [prefix] [value] [suffix] [icon = chevron]
 // (Base UI Select anatomy: trigger › value · icon; popup › list › item, the items being <ui-option>s.)
 // Author adornments as children with slot="leading" | "prefix" | "suffix".
+// Composition (optional): the parts may be authored as [data-part] children, in the anatomy above
+// (label, trigger › leading · prefix · value · suffix · icon, popup › list › ui-option, description,
+// error); each is adopted onto the generated part (slots.ts adoptPart), absent ones are generated.
 import { UIFormElement, define, html, settleDefault, signal, type Problem } from '../../core/index.ts';
 import {
   applyAttrs, comboboxAttrs, createTypeahead, eventDetails, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
@@ -12,11 +15,13 @@ import {
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
 import { ensureId, optionList } from '../listbox/options.ts';
-import { adoptAdornments } from '../slots.ts';
+import { adoptAdornments, adoptPart, authoredParts, partText } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { select } from '../../styled-system/recipes/select.js';
 
 const TRIGGER_ADORNMENTS = ['leading', 'prefix', 'suffix'] as const;
+/** The parts an author may write (composition), by path. */
+const AUTHORED = ['label', 'trigger', 'trigger > leading', 'trigger > prefix', 'trigger > value', 'trigger > suffix', 'trigger > icon', 'popup', 'popup > list', 'description', 'error'] as const;
 /** CSS anchor positioning places the popup (select.recipe.ts); script placement is the fallback. */
 const ANCHORED = typeof CSS !== 'undefined' && !!CSS.supports?.('position-area', 'block-end') && !!CSS.supports?.('anchor-scope', 'all');
 
@@ -58,6 +63,9 @@ export class UISelect extends UIFormElement {
   #typeahead = createTypeahead();
   #pending: Element[] = [];
   #adornments: Element[] = [];
+  /** Authored parts waiting to be adopted by the next render; seeded marks the first connect. */
+  #authored = new Map<string, Element>();
+  #seeded = false;
   #list = optionList(() => this.list);
   #hostObserver?: MutationObserver;
 
@@ -73,7 +81,18 @@ export class UISelect extends UIFormElement {
     if (this.defaultOpen) this.open = true;
     // Authored options (or ones already in a popup from a previous connect) move into the popup.
     this.#pending = [...this.querySelectorAll(':scope > ui-option, :scope > [data-part=popup] > [data-part=list] > ui-option, :scope > [data-part=popup] > ui-option')];
-    this.#adornments = [...this.querySelectorAll(TRIGGER_ADORNMENTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=trigger] > [data-part=${p}] > [slot]`).join(', '))];
+    this.#adornments = [...this.querySelectorAll(TRIGGER_ADORNMENTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=trigger] > [slot=${p}], :scope > [data-part=trigger] > [data-part=${p}] > [slot]`).join(', '))];
+    this.#authored = authoredParts(this, AUTHORED);
+    // Authored text seeds the properties it stands for, once (on a reconnect the parts are the
+    // generated ones, whose text the properties already gave them).
+    if (!this.#seeded) {
+      this.#seeded = true;
+      const text = (p: string) => partText(this.#authored.get(p));
+      if (!this.label && text('label')) this.label = text('label');
+      if (!this.description && text('description')) this.description = text('description');
+      if (!this.error && text('error')) this.error = text('error');
+      if (!this.hasAttribute('placeholder') && text('trigger > value')) this.placeholder = text('trigger > value');
+    }
     this.#hostObserver = new MutationObserver(() => this.#adopt([...this.children].filter((c) => c.localName === 'ui-option')));
     this.#hostObserver.observe(this, { childList: true });
   }
@@ -104,6 +123,7 @@ export class UISelect extends UIFormElement {
   update() {
     const [label, trigger, popup, description, error] = this.children as unknown as HTMLElement[];
     if (this.#pending.length) { this.#adopt(this.#pending); this.#pending = []; this.#list.observe(this.list!); }
+    if (this.#authored.size) { this.#adoptParts(label, trigger, popup, description, error); this.#authored.clear(); }
     if (this.#adornments.length) { adoptAdornments(trigger, this.#adornments, TRIGGER_ADORNMENTS); this.#adornments = []; }
     const opts = this.options;
     const open = this.open;
@@ -148,6 +168,21 @@ export class UISelect extends UIFormElement {
   #message() { return this.error || (this.userInvalid ? this.problem!.message : ''); }
   #selected() { return this.options.find((o) => o.optionValue === this.value); }
   #items() { return this.options.map((o) => o.item); }
+
+  /** Adopt the authored parts onto the generated ones (attributes, classes; slot and icon content). */
+  #adoptParts(label: Element, trigger: Element, popup: Element, description: Element, error: Element) {
+    const a = this.#authored;
+    adoptPart(a.get('label'), label);
+    adoptPart(a.get('trigger'), trigger);
+    for (const p of TRIGGER_ADORNMENTS) adoptPart(a.get(`trigger > ${p}`), partOf(trigger, p), 'append');
+    adoptPart(a.get('trigger > value'), partOf(trigger, 'value'));
+    adoptPart(a.get('trigger > icon'), partOf(trigger, 'icon'), 'replace');
+    adoptPart(a.get('popup'), popup);
+    adoptPart(a.get('popup > list'), this.list);
+    adoptPart(a.get('description'), description);
+    adoptPart(a.get('error'), error);
+    adoptAdornments(trigger, [], TRIGGER_ADORNMENTS);
+  }
 
   #adopt(options: Element[]) {
     const list = this.list;
