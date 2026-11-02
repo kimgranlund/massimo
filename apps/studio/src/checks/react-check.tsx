@@ -11,6 +11,7 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
+import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -25,6 +26,7 @@ import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react';
 import { Range, Progress } from '@massimo/ui-kit/components/range/react';
+import { Field } from '@massimo/ui-kit/components/field/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 const r2 = (v: number) => Math.round(v * 100) / 100;
@@ -47,6 +49,7 @@ function Pair({ u }: { u: number }) {
         <ui-radio data-k="rd" name={`r${u}`} value="a" checked>One</ui-radio>
         <ui-switch data-k="sw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
         <div style={{ width: 300 }}><ui-range data-k="rg" value={25} /></div>
+        <div style={{ width: 300 }}><ui-field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u."><ui-range value={25} /></ui-field></div>
         <div style={{ width: 300 }}><ui-progress data-k="pg" value={40} /></div>
         <ui-badge data-k="bd">3</ui-badge>
         <ui-tag data-k="tg"><i slot="leading" name="tag" />Size<span slot="suffix">M</span></ui-tag>
@@ -81,6 +84,7 @@ function Pair({ u }: { u: number }) {
         <Radio data-k="rd" name={`rr${u}`} value="a" defaultChecked>One</Radio>
         <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
         <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
+        <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u.">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
         <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
         <Badge data-k="bd">3</Badge>
         <Tag data-k="tg" leading={<i name="tag" />} suffix="M">Size</Tag>
@@ -136,7 +140,7 @@ setTimeout(() => {
   };
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

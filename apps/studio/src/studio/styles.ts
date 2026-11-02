@@ -6,22 +6,12 @@ export const panel = css({ display: 'flex', flexDirection: 'column', minHeight: 
 export const panelHeader = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderBottomWidth: 'thin', borderColor: 'border' });
 export const brand = css({ textStyle: 'heading-3' });
 export const titleRow = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2' });
-export const panelBody = css({ flex: '1', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '5', padding: '4' });
+// The panel's ui-field-grid: it scrolls on its own; rows keep their height (align to the top).
+export const panelBody = css({ flex: '1', minHeight: '0', overflowY: 'auto', alignContent: 'start', padding: '4' });
 export const group = css({ display: 'flex', flexDirection: 'column', gap: '3' });
-// Figma-style pane: 5 columns; label spans 2, control spans 3.
-export const paneGrid = css({
-  display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', columnGap: '2', rowGap: '2', alignItems: 'center',
-});
-export const paneLabel = css({ gridColumn: 'span 2', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '2', minWidth: '0', textStyle: 'label', color: 'fg.muted', whiteSpace: 'nowrap' });
-export const paneLabelText = css({ overflow: 'hidden', textOverflow: 'ellipsis', minWidth: '0' });
-// The unit reads as a suffix of the label (like a field suffix): muted further and never truncated.
-export const paneUnit = css({ flexShrink: 0, color: 'fg.subtle', fontVariantNumeric: 'tabular-nums' });
-export const paneControl = css({ gridColumn: 'span 3', display: 'flex', alignItems: 'center', gap: '2', minWidth: '0', '& > :is(ui-range, ui-segmented, ui-select, ui-input, ui-button)': { flex: '1', minWidth: '0' } });
 export const pair = css({ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2', width: 'full', '& > ui-select': { minWidth: '0' } });
-export const groupTitle = css({ gridColumn: '1 / -1', textStyle: 'group-kicker', color: 'neutral.10', paddingTop: '1' });
 export const control = css({ display: 'flex', flexDirection: 'column', gap: '1', '& > ui-segmented': { width: 'full' } });
 export const controlHead = css({ display: 'flex', justifyContent: 'space-between', textStyle: 'label' });
-export const value = css({ fontFamily: 'mono', fontSize: 'sm', color: 'fg.muted', minWidth: '[5ch]', textAlign: 'end', fontVariantNumeric: 'tabular-nums' });
 export const footer = css({ display: 'flex', flexDirection: 'column', gap: '2', padding: '4', borderTopWidth: 'thin', borderColor: 'border' });
 export const actions = css({ display: 'flex', gap: '2', '& > ui-button': { flex: '1' } });
 export const status = css({ textStyle: 'caption', color: 'fg.muted', minHeight: '[1lh]' });

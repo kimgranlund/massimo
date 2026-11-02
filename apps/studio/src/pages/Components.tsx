@@ -10,16 +10,17 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
-import { Fragment, useState, type ReactNode } from 'react';
+import '@massimo/ui-kit/components/field/element';
+import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
-import { CQ_MD, Divider, IMAGES, Page, Row, Section, caption, columns, specimens, stack } from './shared.tsx';
+import { CQ_MD, Divider, IMAGES, Page, Row, Section, caption, columns, specimens, stack, subTitle } from './shared.tsx';
 
 /** Component families, in page order: [id, label, elements]. */
 export const FAMILIES = [
   ['actions', 'Actions', 'ui-button'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
-  ['fields', 'Fields', 'ui-input · ui-select'],
+  ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch'],
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
@@ -35,6 +36,56 @@ const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: '
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
 const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
+// Inline fields demo: a property panel (field grid) beside stacked fields.
+const panelCard = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderRadius: 'xl', bg: 'bg.subtle', width: '[min(100%, 22rem)]' });
+
+/** A ui-range whose readout follows it: the field's readout is application text. */
+function useRangeValue(initial: number) {
+  const [value, setValue] = useState(initial);
+  const ref = useCallback((el: HTMLElement | null) => {
+    if (!el) return;
+    const h = () => setValue(Number((el as any).value));
+    el.addEventListener('input', h);
+    return () => el.removeEventListener('input', h);
+  }, []);
+  return [value, ref] as const;
+}
+
+function InlineFields() {
+  const [radius, radiusRef] = useRangeValue(12);
+  const [opacity, opacityRef] = useRangeValue(80);
+  const [volume, volumeRef] = useRangeValue(40);
+  return (
+    <div className={columns}>
+      <div className={panelCard}>
+        <p className={caption}>Inline rows in a ui-field-grid: labels share one column, readouts another.</p>
+        <ui-field-grid>
+          <h3>Layer</h3>
+          <ui-field layout="inline" label="Name"><ui-input value="Card background" /></ui-field>
+          <ui-field layout="inline" label="Blend">
+            <ui-select value="normal"><ui-option value="normal">Normal</ui-option><ui-option value="multiply">Multiply</ui-option><ui-option value="screen">Screen</ui-option></ui-select>
+          </ui-field>
+          <ui-field layout="inline" label="Opacity" unit="%" readout={String(opacity)}><ui-range ref={opacityRef} value={80} /></ui-field>
+          <h3>Shape</h3>
+          <ui-field layout="inline" label="Radius" unit="px" readout={String(radius)}><ui-range ref={radiusRef} min={0} max={48} value={12} /></ui-field>
+          <ui-field layout="inline" label="Corners">
+            <ui-segmented value="round"><ui-option value="round">Round</ui-option><ui-option value="squircle">Squircle</ui-option><ui-option value="bevel">Bevel</ui-option></ui-segmented>
+          </ui-field>
+          <ui-field layout="inline" label="Clip content"><ui-switch checked /></ui-field>
+        </ui-field-grid>
+      </div>
+      <div className={stack}>
+        <p className={caption}>Stacked (the default): the label above; a readout still sits beside the control.</p>
+        <ui-field label="Volume" unit="%" readout={String(volume)} description="Applies to every output."><ui-range ref={volumeRef} value={40} /></ui-field>
+        <ui-field label="Theme">
+          <ui-segmented value="auto"><ui-option value="light">Light</ui-option><ui-option value="dark">Dark</ui-option><ui-option value="auto">Auto</ui-option></ui-segmented>
+        </ui-field>
+        <ui-field label="Project name" description="Shown in the title bar."><ui-input placeholder="Untitled" /></ui-field>
+      </div>
+    </div>
+  );
+}
+
 const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'], ['6', '48px']] as const;
 
 export function ComponentsPage({ family }: PageProps & { family?: Family }) {
@@ -42,7 +93,7 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
   const NOTES: Record<Family, string> = {
     actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
-    fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values.',
+    fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
@@ -101,6 +152,7 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
       </Row>
     )),
     fields: (
+      <>
       <form className={formGrid} onSubmit={(e) => { e.preventDefault(); setStatus(JSON.stringify(Object.fromEntries(new FormData(e.currentTarget)))); }}>
         <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
         <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
@@ -119,6 +171,8 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
         </div>
         <p className={caption} role="status">{status}</p>
       </form>
+      <div className={stack}><h3 className={subTitle}>Inline fields</h3><InlineFields /></div>
+      </>
     ),
     selection: (
       <div className={columns}>
