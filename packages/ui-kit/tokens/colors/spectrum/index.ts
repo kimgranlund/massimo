@@ -96,9 +96,10 @@ export function ramps(data: Spectrum, mode: 'light' | 'dark'): Record<string, st
 /** Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS. */
 export const ROLE_STEPS = {
   'bg': ['neutral', 1], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
+  'bg-muted-hover': ['neutral', 4], 'bg-muted-active': ['neutral', 5],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
-  'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-fg': ['primary', 11],
+  'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-subtle-hover': ['primary', 4], 'accent-fg': ['primary', 11],
   'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-fg': ['critical', 11],
   'focus-ring': ['primary', 8],
 } as const satisfies Record<string, [keyof Roles, number]>;

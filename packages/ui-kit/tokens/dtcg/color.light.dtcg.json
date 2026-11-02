@@ -1762,6 +1762,16 @@
         "$value": "{color.spectrum.neutral.3}",
         "$description": "neutral step 3"
       },
+      "bg-muted-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.4}",
+        "$description": "neutral step 4"
+      },
+      "bg-muted-active": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.5}",
+        "$description": "neutral step 5"
+      },
       "fg": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.12}",
@@ -1796,6 +1806,11 @@
         "$type": "color",
         "$value": "{color.spectrum.indigo.3}",
         "$description": "primary step 3"
+      },
+      "accent-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.4}",
+        "$description": "primary step 4"
       },
       "accent-fg": {
         "$type": "color",

@@ -18,9 +18,10 @@ Roles alias ramp steps (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Defa
 |---|---|
 | `--colors-bg` (page) | neutral 1 |
 | `--colors-bg-subtle`, `--colors-bg-muted` | neutral 2, 3 |
+| `--colors-bg-muted-hover`, `--colors-bg-muted-active` (hover, press) | neutral 4, 5 |
 | `--colors-border`, `--colors-border-strong` | neutral 6, 7 |
 | `--colors-fg-muted`, `--colors-fg` | neutral 11, 12 |
-| `--colors-accent-subtle`, `-solid`, `-solid-hover`, `-fg` | primary 3, 9, 10, 11 |
+| `--colors-accent-subtle`, `-subtle-hover`, `-solid`, `-solid-hover`, `-fg` | primary 3, 4, 9, 10, 11 |
 | `--colors-focus-ring` | primary 8 |
 | `--colors-danger-solid`, `-solid-hover`, `-fg` | critical 9, 10, 11 |
 | `--colors-fg-on-solid` | the engine's APCA black/white choice for primary 9 |

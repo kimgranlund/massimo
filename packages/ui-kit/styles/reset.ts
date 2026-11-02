@@ -11,6 +11,6 @@ export const reset = defineGlobalStyles({
   // No focus ring after a pointer press; it returns on the next key (core/modality.ts).
   ':root[data-modality=pointer] :focus-visible': { outline: 'none' },
   '@media (prefers-reduced-motion: reduce)': {
-    '*, *::before, *::after': { animationDuration: '0.01ms !important', transitionDuration: '0.01ms !important' },
+    '*, *::before, *::after': { animationDuration: '0.01ms !important', transitionDuration: '0.01ms !important', scrollBehavior: 'auto !important' },
   },
 });

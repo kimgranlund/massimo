@@ -20,9 +20,10 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `tokens/geometry/` | the geometry resolver (numerical reference) | [geometry](geometry.md) |
 | `tokens/colors/` | Spectrum engine, settings, snapshot, color tokens | [color](color.md) |
 | `tokens/typography/` | type roles, ratios, font families (numerical reference) | [typography](typography.md) |
+| `tokens/motion/` | SwiftUI-style springs → CSS `linear()` easings and settle durations | [motion](motion.md) |
 | `tokens/themes/` | theme parameters and saved themes | [theming](theming.md) |
 | `icons/` | `<i name>` runtime, icon sets, SVG sanitizer | [icons](icons.md) |
-| `styles/` | reset, geometry CSS, defaults, FOUC guard, page patterns | [geometry](geometry.md), [theming](theming.md) |
+| `styles/` | reset, geometry CSS, defaults (states), motion, FOUC guard, page patterns | [geometry](geometry.md), [components](components.md), [motion](motion.md) |
 | `preset.ts` | the PandaCSS preset assembling all of the above | [theming](theming.md) |
 | `scripts/` | generators: `geometry:csv`, `tokens:dtcg`, `spectrum:defaults` | below |
 

@@ -9,6 +9,11 @@ import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
 const BUTTON = ':is(ui-button, [data-ui=button])';
+const ENABLED = ':not([aria-disabled=true], [aria-busy=true])';
+const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
+const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true])';
+const LIST = ':is(ui-listbox, ui-segmented, ui-palette)';
+const DANGER_TINT = (pct: number) => `color-mix(in oklch, var(--colors-danger-solid) ${pct}%, var(--colors-bg-muted))`;
 
 export const defaults = defineGlobalStyles({
   '[hidden]': { display: 'none !important' },
@@ -25,8 +30,16 @@ export const defaults = defineGlobalStyles({
     borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
     cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
   },
-  [`${BUTTON}:hover`]: { bg: 'bg.subtle' },
-  [`${BUTTON}:is([aria-disabled=true], [aria-busy=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
+  // Hover and press step the fill one ramp step each (neutral 3 → 4 → 5).
+  [`${BUTTON}${ENABLED}:hover`]: { bg: 'bg.mutedHover' },
+  [`${BUTTON}${ENABLED}:active`]: { bg: 'bg.mutedActive' },
+  [`${BUTTON}[aria-disabled=true]`]: { opacity: 0.5, cursor: 'not-allowed' },
+  // Busy: still readable (unlike disabled), with an indeterminate sweep along the bottom edge.
+  [`${BUTTON}[aria-busy=true]`]: { cursor: 'progress', position: 'relative', overflow: 'hidden' },
+  [`${BUTTON}[aria-busy=true]::after`]: {
+    content: '""', position: 'absolute', insetInlineStart: 0, bottom: 0, width: '30%', height: 'calc(0.5 * var(--u))',
+    bg: 'accent.solid', animation: 'ui-indeterminate 1.2s ease-in-out infinite',
+  },
 
   // Field: label, control, description, error
   [FIELD]: { display: 'flex', flexDirection: 'column', gap: '1.5' },
@@ -41,7 +54,15 @@ export const defaults = defineGlobalStyles({
   },
   // aria-invalid only: native :invalid would flag untouched required fields on load.
   // Invalid: a danger-tinted fill (borders default to 0, so the edge alone cannot carry it).
-  [`:is(${CONTROL})[aria-invalid=true]`]: { borderColor: 'danger.solid', bg: 'color-mix(in oklch, var(--colors-danger-solid) 14%, var(--colors-bg-muted))' },
+  [`:is(${CONTROL}):not([aria-disabled=true], [aria-readonly=true]):hover`]: { bg: 'bg.mutedHover' },
+  [`:is(${CONTROL})[aria-invalid=true]`]: { borderColor: 'danger.solid', bg: DANGER_TINT(14) },
+  [`:is(${CONTROL})[aria-invalid=true]:hover`]: { bg: DANGER_TINT(20) },
+  // Read-only: the value stays selectable but the field drops its fill.
+  [`:is(${CONTROL})[aria-readonly=true]`]: { bg: 'bg.subtle', cursor: 'default' },
+  // Text fields always show focus, also after a pointer click (the caret target must be visible).
+  [`:root[data-modality] ${FIELD} > [data-part=control][contenteditable]:focus-visible`]: { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
+  // Required: a marker after the label (and after a checkbox/switch's own text).
+  [`${FIELD}[required] > [data-part=label]::after, :is(ui-checkbox, ui-switch)[aria-required=true]::after`]: { content: '" *"', color: 'danger.fg' },
   [`:is(${CONTROL}):is(:disabled, [aria-disabled=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
   [`:is(${CONTROL})::placeholder`]: { color: 'fg.muted' },
 
@@ -53,6 +74,9 @@ export const defaults = defineGlobalStyles({
   // Select trigger and popup
   // Trailing chevron slot: padding only on that side (the slot replaces contents padding).
   'ui-select > [data-part=trigger]': { cursor: 'pointer', userSelect: 'none', paddingInlineEnd: 'var(--pad)' },
+  // Open: the trigger holds the pressed fill and the chevron turns.
+  'ui-select > [data-part=trigger][aria-expanded=true]': { bg: 'bg.mutedActive' },
+  'ui-select > [data-part=trigger][aria-expanded=true] [data-part=chevron]': { rotate: '180deg' },
   'ui-select [data-part=value]': { flex: '1', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
   'ui-select [data-part=value][data-placeholder]': { color: 'fg.muted' },
   'ui-select [data-part=chevron]': { display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', marginInlineStart: 'var(--u)', color: 'fg.muted' },
@@ -67,11 +91,14 @@ export const defaults = defineGlobalStyles({
   ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
   'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' },
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
-  'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', cursor: 'pointer', userSelect: 'none' },
-  'ui-chip:hover': { bg: 'bg.subtle' },
+  'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', userSelect: 'none' },
+  // Only a selectable chip is a button; a plain or removable chip is a label (its × is the control).
+  'ui-chip[selectable]': { cursor: 'pointer' },
+  'ui-chip[selectable]:not([aria-disabled=true]):hover': { bg: 'bg.mutedHover' },
+  'ui-chip[selectable]:not([aria-disabled=true]):active': { bg: 'bg.mutedActive' },
   // Selected chips use the checkbox/switch "on" colors: the accent solid with on-solid text.
   'ui-chip[aria-pressed=true]': { bg: 'accent.solid', color: 'fg.onSolid', borderColor: 'accent.solid' },
-  'ui-chip[aria-pressed=true]:hover': { bg: 'accent.solidHover' },
+  'ui-chip[aria-pressed=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'accent.solidHover' },
   'ui-chip[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
   'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
   'ui-chip [data-remove]:hover': { opacity: 1 },
@@ -80,10 +107,13 @@ export const defaults = defineGlobalStyles({
   ':is(ui-checkbox, ui-radio, ui-switch)': { display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle' },
   ':is(ui-checkbox, ui-radio, ui-switch)[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
   '[data-part=box]': { borderColor: 'border.strong', bg: 'bg.muted', color: 'fg.onSolid' },
-  ':is(ui-checkbox, ui-radio, ui-switch)[aria-invalid=true] [data-part=box]': { borderColor: 'danger.solid', bg: 'color-mix(in oklch, var(--colors-danger-solid) 20%, var(--colors-bg-muted))' },
+  [`${CHOICE}:not([aria-disabled=true]):hover [data-part=box]`]: { bg: 'bg.mutedHover' },
+  [`${CHOICE}:not([aria-disabled=true]):active [data-part=box]`]: { bg: 'bg.mutedActive' },
+  [`${CHOICE}[aria-invalid=true] [data-part=box]`]: { borderColor: 'danger.solid', bg: DANGER_TINT(20) },
   'ui-checkbox [data-part=box] > i': { display: 'none' },
   'ui-checkbox[aria-checked=true] [data-part=box] > i[data-mark=checked], ui-checkbox[aria-checked=mixed] [data-part=box] > i[data-mark=mixed]': { display: 'inline-flex' },
   ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true]) [data-part=box]': { bg: 'accent.solid', borderColor: 'accent.solid' },
+  [`${ON}:not([aria-disabled=true]):is(:hover, :active) [data-part=box]`]: { bg: 'accent.solidHover', borderColor: 'accent.solidHover' },
   'ui-radio[aria-checked=true] [data-part=box]': { borderColor: 'accent.solid' },
   'ui-radio[aria-checked=true] [data-part=box]::after': { bg: 'accent.solid' },
   'ui-switch [data-part=box]': { bg: 'bg.muted' },
@@ -95,7 +125,16 @@ export const defaults = defineGlobalStyles({
   'ui-range': { cursor: 'pointer', touchAction: 'none', userSelect: 'none' },
   'ui-range[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
   'ui-range > [data-part=thumb]': { bg: 'white', borderWidth: 'var(--b)', borderColor: 'accent.solid', boxShadow: 'sm' },
+  'ui-range:not([aria-disabled=true]):hover > [data-part=track]': { bg: 'bg.mutedHover' },
+  'ui-range:not([aria-disabled=true]):hover > [data-part=track] > [data-part=fill]': { bg: 'accent.solidHover' },
+  // Dragging (:active holds while the pointer is captured).
+  'ui-range:not([aria-disabled=true]):active': { cursor: 'grabbing' },
+  'ui-range:not([aria-disabled=true]):active > [data-part=thumb]': { boxShadow: 'md' },
   'ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill]': { width: '30%', animation: 'ui-indeterminate 1.2s ease-in-out infinite' },
+  // Reduced motion: no sweep; a full, faint fill still says "working".
+  '@media (prefers-reduced-motion: reduce)': {
+    [`ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill], ${BUTTON}[aria-busy=true]::after`]: { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 },
+  },
 
   // Swatch, palette
   'ui-swatch': {
@@ -104,7 +143,10 @@ export const defaults = defineGlobalStyles({
     backgroundImage: 'linear-gradient(var(--ui-swatch-color, transparent), var(--ui-swatch-color, transparent)), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)',
     backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))',
   },
+  // A color that does not parse: a diagonal strike over the empty checkerboard.
+  'ui-swatch[data-invalid]': { backgroundImage: 'linear-gradient(to top right, transparent calc(50% - 1px), var(--colors-danger-solid) 0 calc(50% + 1px), transparent 0), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)' },
   'ui-palette[selectable], ui-palette[name]': { cursor: 'pointer' },
+  ':is(ui-palette[selectable], ui-palette[name]):not([aria-disabled=true]) > ui-swatch:not([aria-selected=true]):hover': { boxShadow: 'inset 0 0 0 2px color-mix(in oklch, var(--colors-bg) 70%, transparent)' },
   'ui-palette > ui-swatch[aria-selected=true]': { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
   ':root[data-modality=keyboard] ui-palette > ui-swatch[data-active]': { outline: '2px solid {colors.focusRing}', outlineOffset: '-2px' },
 
@@ -118,10 +160,11 @@ export const defaults = defineGlobalStyles({
   'ui-swiper [data-part=paddle]': { bg: 'bg', zIndex: 1 },
   'ui-swiper [data-part=dot]': { cursor: 'pointer' },
   'ui-swiper [data-part=dot]::before': { bg: 'fg', opacity: 0.35 },
+  'ui-swiper [data-part=dot]:not([aria-current=true]):hover::before': { opacity: 0.7 },
   'ui-swiper [data-part=dot][aria-current=true]::before': { opacity: 1 },
   'ui-swiper[data-single] :is([data-part=paddle], [data-part=dots])': { display: 'none' },
   'ui-swiper[no-paddles] [data-part=paddle], ui-swiper[no-dots] [data-part=dots]': { display: 'none' },
-  'ui-swiper[hover-controls] :is([data-part=paddle], [data-part=dots])': { opacity: 0, transitionProperty: 'opacity', transitionDuration: 'fast' },
+  'ui-swiper[hover-controls] :is([data-part=paddle], [data-part=dots])': { opacity: 0 },
   'ui-swiper[hover-controls]:is(:hover, :focus-within) :is([data-part=paddle], [data-part=dots])': { opacity: 1 },
 
   // Image
@@ -129,6 +172,8 @@ export const defaults = defineGlobalStyles({
   'ui-image :is(img, picture)': { display: 'block', width: '100%', height: '100%' },
   'ui-image img': { objectFit: 'cover', objectPosition: 'var(--ui-image-position, center)' },
   ...Object.fromEntries(['contain', 'fill', 'none', 'scale-down'].map((f) => [`ui-image[fit=${f}] img`, { objectFit: f }])),
+  // Failed image: hide the broken-image glyph; the frame's empty fill remains.
+  'ui-image img[data-error]': { visibility: 'hidden' },
   'ui-image[slideshow] > ui-swiper, ui-image[slideshow] > ui-swiper > [data-part=viewport], ui-image [data-part=slide]': { height: '100%' },
 
   // Layout containers (lengths in styles/geometry.ts)
@@ -151,4 +196,23 @@ export const defaults = defineGlobalStyles({
   'ui-segmented > ui-option[data-active]': { bg: 'transparent' },
   'ui-segmented > ui-option[aria-selected=true]': { bg: 'bg', color: 'fg', boxShadow: 'sm' },
   'ui-option[aria-disabled=true]': { opacity: 0.45, cursor: 'not-allowed' },
+  'ui-option:not([aria-disabled=true]):hover': { bg: 'bg.mutedHover' },
+  'ui-option:not([aria-disabled=true]):active': { bg: 'bg.mutedActive' },
+  'ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'accent.subtleHover' },
+  'ui-segmented > ui-option:not([aria-disabled=true]):hover': { color: 'fg' },
+  'ui-segmented > ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'bg' },
+  // Disabled or invalid lists, segmented controls and palettes (the host carries the ARIA state).
+  [`${LIST}[aria-disabled=true]`]: { opacity: 0.5, cursor: 'not-allowed' },
+  [`${LIST}[aria-disabled=true] > *`]: { cursor: 'not-allowed', pointerEvents: 'none' },
+  ':is(ui-listbox, ui-segmented)[aria-invalid=true]': { bg: DANGER_TINT(14) },
+  'ui-palette[aria-invalid=true]': { outline: '2px solid {colors.danger.solid}', outlineOffset: '2px' },
+
+  // Forced colors (Windows high contrast): fills are dropped and borders default to 0, so
+  // every control gets a system-colored edge that costs no space, and "on" states use Highlight.
+  '@media (forced-colors: active)': {
+    [`${BUTTON}, ${CONTROL}, ui-chip, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
+    [`${ON} [data-part=box], ui-chip[aria-pressed=true], ui-option[aria-selected=true], :is(ui-range, ui-progress) > [data-part=track] > [data-part=fill], ui-swiper [data-part=dot][aria-current=true]::before`]: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
+    'ui-radio[aria-checked=true] [data-part=box]::after, ui-switch [data-part=box]::after, ui-range > [data-part=thumb]': { forcedColorAdjust: 'none', bg: 'CanvasText' },
+    '[aria-disabled=true]': { color: 'GrayText' },
+  },
 });

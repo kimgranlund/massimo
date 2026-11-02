@@ -4,6 +4,7 @@
 //   ratio: square | landscape (4/3) | portrait (3/4) | wide (16/9) | ultrawide (21/9) |
 //          story (9/16) | golden (1.618/1) | any "w/h". fit: cover (default) | contain | fill |
 //          none | scale-down. position: object-position (e.g. "top", "30% 70%").
+//   A failed image gets data-error (the frame shows its empty fill).
 //   slideshow: several child images become an inline swiper; dots and paddles show on hover.
 import { UIElement, define } from '../../core/index.ts';
 import '../swiper/swiper.element.ts';
@@ -37,6 +38,9 @@ export class UIImage extends UIElement {
   #swiper?: HTMLElement;
 
   connected() {
+    // error/load do not bubble; capture them to mark a failed image (styled as an empty frame).
+    this.addEventListener('error', this.#onLoad, true);
+    this.addEventListener('load', this.#onLoad, true);
     if (this.slideshow && !this.#swiper) {
       const swiper = document.createElement('ui-swiper');
       swiper.setAttribute('hover-controls', '');
@@ -51,6 +55,16 @@ export class UIImage extends UIElement {
       this.replaceChildren(swiper);
     }
   }
+
+  disconnected() {
+    this.removeEventListener('error', this.#onLoad, true);
+    this.removeEventListener('load', this.#onLoad, true);
+  }
+
+  #onLoad = (e: Event) => {
+    const t = e.target as HTMLElement;
+    if (t.localName === 'img') t.toggleAttribute('data-error', e.type === 'error');
+  };
 
   update() {
     // Ratio: named preset or a validated "w/h"; anything else is ignored.

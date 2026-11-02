@@ -34,4 +34,26 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-image` | cover formats, fit, position; author `<picture>`/`<source>` for file formats; `slideshow` makes an inline swiper | `src`, `srcset`, `sizes`, `alt`, `ratio`, `fit`, `position`, `slideshow` |
 | containers | `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`; CSS only | `size`, `gap` |
 
+## States
+
+Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or `data-*` (never on a class), so React counterparts match. Transitions: [motion](motion.md).
+
+| State | Hook | Look |
+|---|---|---|
+| hover / press | `:hover` / `:active` on enabled controls | neutral fill steps 3 → 4 → 5; on solids `accent.solidHover`; selected options `accent.subtleHover` |
+| keyboard focus | `:focus-visible` after key use (`data-modality`) | 2px focus-ring outline; text fields keep it after a pointer click |
+| highlighted option | `data-active` | neutral fill |
+| selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | accent solid (choices, chips) or accent subtle (options); segmented: raised `bg` |
+| open | trigger `aria-expanded=true` | pressed fill, chevron turned 180° |
+| disabled | `aria-disabled=true` (host or control) | 50% opacity, `not-allowed` |
+| busy | `aria-busy=true` (button) | readable, `progress` cursor, indeterminate sweep on the bottom edge |
+| read-only | `aria-readonly=true` | subtle fill, default cursor |
+| required | `[required]` field, `aria-required` checkbox/switch | ` *` in `danger.fg` after the label |
+| invalid | `aria-invalid=true` | danger-tinted fill (palette: danger outline) |
+| placeholder | `data-placeholder` | `fg.muted` |
+| indeterminate | `data-indeterminate` (progress) | sweep; a faint full fill under reduced motion |
+| unparsable color | `data-invalid` (swatch) | danger strike |
+| failed image | `img[data-error]` | hidden; the frame's empty fill remains |
+| forced colors | `@media (forced-colors: active)` | 1px `CanvasText` outline (no space), `Highlight` for on states, `GrayText` disabled |
+
 React counterparts exist for `Button` and `Input` (`/components/button/react`, `/components/input/react`).

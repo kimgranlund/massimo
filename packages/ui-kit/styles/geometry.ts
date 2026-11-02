@@ -128,7 +128,6 @@ export const geometry = defineGlobalStyles({
   'ui-switch [data-part=box]': { width: 'calc(9 * var(--u))', borderRadius: 'calc(2.5 * var(--u))', justifyItems: 'start', paddingInline: 'calc(0.5 * var(--u) - var(--b))' },
   'ui-switch [data-part=box]::after': {
     content: '""', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
-    transitionProperty: 'translate', transitionDuration: 'fast', transitionTimingFunction: 'standard',
   },
   'ui-switch[aria-checked=true] [data-part=box]::after': { translate: 'calc(4 * var(--u)) 0' },
 
@@ -154,7 +153,7 @@ export const geometry = defineGlobalStyles({
   'ui-swiper [data-part=paddle][data-dir=next]': { insetInlineEnd: 'calc(2 * var(--u))' },
   'ui-swiper [data-part=dots]': { position: 'absolute', insetBlockEnd: 'calc(2 * var(--u))', insetInline: 0, display: 'flex', justifyContent: 'center', gap: 'var(--u)' },
   'ui-swiper [data-part=dot]': { display: 'grid', placeItems: 'center', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))' },
-  'ui-swiper [data-part=dot]::before': { content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: 'var(--u)', transitionProperty: 'width', transitionDuration: 'fast' },
+  'ui-swiper [data-part=dot]::before': { content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: 'var(--u)' },
   'ui-swiper [data-part=dot][aria-current=true]::before': { width: 'calc(4 * var(--u))' },
 
   // Composite (0.5u level). Declared on the parent; options read the inherited values.
