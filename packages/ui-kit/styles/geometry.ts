@@ -8,7 +8,7 @@ import { CONTAINERS, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-group, ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
 export const BTG = ':is(ui-badge, ui-tag, ui-chip)';
 const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
 export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
@@ -109,6 +109,45 @@ export const geometry = defineGlobalStyles({
     borderWidth: 'var(--b)',
     borderRadius: 'calc(var(--cm) * var(--u) * var(--ui-radius-scale))',
   },
+
+  // Choices: a 6u row; the 5u box (9u wide for switch) sits in the 6u leading slot.
+  ':is(ui-checkbox, ui-radio, ui-switch)': { minHeight: 'var(--slot)', fontSize: 'var(--font)', lineHeight: 'var(--leading)' },
+  ':is(ui-checkbox, ui-radio, ui-switch) > [data-part=contents]': { paddingInlineStart: 'var(--u)', paddingBlock: 'calc(0.75 * var(--u))' },
+  ':is(ui-checkbox, ui-radio, ui-switch) > [data-part=leading]': { display: 'grid', placeItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)', flexShrink: 0 },
+  '[data-part=box]': { display: 'grid', placeItems: 'center', width: 'calc(5 * var(--u))', height: 'calc(5 * var(--u))', borderWidth: 'var(--b)' },
+  'ui-checkbox [data-part=box]': { borderRadius: 'calc(var(--u) * var(--ui-radius-scale))' },
+  'ui-checkbox [data-part=box] > i': { width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))' },
+  'ui-radio [data-part=box]': { borderRadius: '50%' },
+  'ui-radio [data-part=box]::after': { content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: '50%' },
+  'ui-switch [data-part=box]': { width: 'calc(9 * var(--u))', borderRadius: 'calc(2.5 * var(--u))', justifyItems: 'start', paddingInline: 'calc(0.5 * var(--u) - var(--b))' },
+  'ui-switch [data-part=box]::after': {
+    content: '""', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
+    transitionProperty: 'translate', transitionDuration: 'fast', transitionTimingFunction: 'standard',
+  },
+  'ui-switch[aria-checked=true] [data-part=box]::after': { translate: 'calc(4 * var(--u)) 0' },
+
+  // Range and progress: a 4u box with a 1u track; range adds a 4u thumb.
+  ':is(ui-range, ui-progress)': { display: 'grid', alignItems: 'center', height: 'calc(4 * var(--u))', minWidth: 'calc(24 * var(--u))', position: 'relative' },
+  ':is(ui-range, ui-progress) > [data-part=track]': { height: 'var(--u)', borderRadius: 'calc(0.5 * var(--u))', overflow: 'hidden', gridArea: '1 / 1' },
+  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)' },
+  'ui-range > [data-part=thumb]': {
+    gridArea: '1 / 1', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
+    marginInlineStart: 'calc(var(--ui-ratio, 0) * (100% - 4 * var(--u)))',
+  },
+
+  // Swatch: 6u square; palette attaches them with no gap inside a 2u-radius strip.
+  'ui-swatch': { display: 'inline-block', width: 'var(--slot)', height: 'var(--slot)', borderRadius: 'calc(var(--u) * var(--ui-radius-scale))', flexShrink: 0 },
+  'ui-palette': { display: 'inline-flex', borderRadius: 'calc(2 * var(--u) * var(--ui-radius-scale))', overflow: 'hidden' },
+  'ui-palette > ui-swatch': { borderRadius: 0, flex: '1 0 var(--slot)' },
+
+  // Swiper: paddles are 8u icon buttons inset 2u; dots are 2u (active 4u) in 4u hit areas.
+  'ui-swiper [data-part=paddle]': { position: 'absolute', insetBlockStart: 'calc(50% - 4 * var(--u))' },
+  'ui-swiper [data-part=paddle][data-dir=prev]': { insetInlineStart: 'calc(2 * var(--u))' },
+  'ui-swiper [data-part=paddle][data-dir=next]': { insetInlineEnd: 'calc(2 * var(--u))' },
+  'ui-swiper [data-part=dots]': { position: 'absolute', insetBlockEnd: 'calc(2 * var(--u))', insetInline: 0, display: 'flex', justifyContent: 'center', gap: 'var(--u)' },
+  'ui-swiper [data-part=dot]': { display: 'grid', placeItems: 'center', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))' },
+  'ui-swiper [data-part=dot]::before': { content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: 'var(--u)', transitionProperty: 'width', transitionDuration: 'fast' },
+  'ui-swiper [data-part=dot][aria-current=true]::before': { width: 'calc(4 * var(--u))' },
 
   // Composite (0.5u level). Declared on the parent; options read the inherited values.
   [COMPOSITE]: {

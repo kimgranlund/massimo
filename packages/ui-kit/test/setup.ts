@@ -4,7 +4,7 @@ import { Window } from 'happy-dom';
 const win = new Window({ url: 'http://localhost/' });
 const g = globalThis as any;
 for (const k of ['window', 'document', 'HTMLElement', 'Element', 'Node', 'NodeFilter', 'customElements',
-  'Event', 'KeyboardEvent', 'MouseEvent', 'InputEvent', 'ClipboardEvent', 'HTMLInputElement', 'HTMLFormElement', 'MutationObserver', 'DOMParser'])
+  'Event', 'KeyboardEvent', 'MouseEvent', 'InputEvent', 'ClipboardEvent', 'HTMLInputElement', 'HTMLFormElement', 'MutationObserver', 'DOMParser', 'CustomEvent', 'PointerEvent', 'getComputedStyle', 'CSS'])
   if (!(k in g) || k === 'Event') g[k] = (win as any)[k];
 g.window = win;
 

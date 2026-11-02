@@ -73,6 +73,62 @@ export const defaults = defineGlobalStyles({
   'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
   'ui-chip [data-remove]:hover': { opacity: 1 },
 
+  // Checkbox, radio, switch
+  ':is(ui-checkbox, ui-radio, ui-switch)': { display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle' },
+  ':is(ui-checkbox, ui-radio, ui-switch)[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
+  '[data-part=box]': { borderColor: 'border.strong', bg: 'bg', color: 'fg.onSolid' },
+  ':is(ui-checkbox, ui-radio, ui-switch)[aria-invalid=true] [data-part=box]': { borderColor: 'danger.solid' },
+  'ui-checkbox [data-part=box] > i': { display: 'none' },
+  'ui-checkbox[aria-checked=true] [data-part=box] > i[data-mark=checked], ui-checkbox[aria-checked=mixed] [data-part=box] > i[data-mark=mixed]': { display: 'inline-flex' },
+  ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true]) [data-part=box]': { bg: 'accent.solid', borderColor: 'accent.solid' },
+  'ui-radio[aria-checked=true] [data-part=box]': { borderColor: 'accent.solid' },
+  'ui-radio[aria-checked=true] [data-part=box]::after': { bg: 'accent.solid' },
+  'ui-switch [data-part=box]': { bg: 'bg.muted' },
+  'ui-switch [data-part=box]::after': { bg: 'white', boxShadow: 'sm' },
+
+  // Range, progress
+  ':is(ui-range, ui-progress) > [data-part=track]': { bg: 'bg.muted' },
+  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { bg: 'accent.solid' },
+  'ui-range': { cursor: 'pointer', touchAction: 'none', userSelect: 'none' },
+  'ui-range[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
+  'ui-range > [data-part=thumb]': { bg: 'white', borderWidth: 'var(--b)', borderColor: 'accent.solid', boxShadow: 'sm' },
+  'ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill]': { width: '30%', animation: 'ui-indeterminate 1.2s ease-in-out infinite' },
+
+  // Swatch, palette
+  'ui-swatch': {
+    backgroundColor: 'var(--ui-swatch-color, transparent)',
+    // Checkerboard under the color so alpha reads; the color layer sits on top.
+    backgroundImage: 'linear-gradient(var(--ui-swatch-color, transparent), var(--ui-swatch-color, transparent)), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)',
+    backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))',
+    boxShadow: 'inset 0 0 0 1px oklch(0 0 0 / 0.08)',
+  },
+  'ui-palette[selectable], ui-palette[name]': { cursor: 'pointer' },
+  'ui-palette > ui-swatch[aria-selected=true]': { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
+  'ui-palette > ui-swatch[data-active]': { outline: '2px solid {colors.focusRing}', outlineOffset: '-2px' },
+
+  // Swiper (scroll-snap viewport; controls positioned in styles/geometry.ts)
+  'ui-swiper': { display: 'block', position: 'relative' },
+  'ui-swiper > [data-part=viewport]': {
+    display: 'flex', overflowX: 'auto', scrollSnapType: 'x mandatory', scrollBehavior: 'smooth', overscrollBehaviorX: 'contain',
+    scrollbarWidth: 'none', borderRadius: 'inherit',
+  },
+  'ui-swiper > [data-part=viewport] > *': { flex: '0 0 100%', scrollSnapAlign: 'start', scrollSnapStop: 'always' },
+  'ui-swiper [data-part=paddle]': { bg: 'bg', zIndex: 1 },
+  'ui-swiper [data-part=dot]': { cursor: 'pointer' },
+  'ui-swiper [data-part=dot]::before': { bg: 'fg', opacity: 0.35 },
+  'ui-swiper [data-part=dot][aria-current=true]::before': { opacity: 1 },
+  'ui-swiper[data-single] :is([data-part=paddle], [data-part=dots])': { display: 'none' },
+  'ui-swiper[no-paddles] [data-part=paddle], ui-swiper[no-dots] [data-part=dots]': { display: 'none' },
+  'ui-swiper[hover-controls] :is([data-part=paddle], [data-part=dots])': { opacity: 0, transitionProperty: 'opacity', transitionDuration: 'fast' },
+  'ui-swiper[hover-controls]:is(:hover, :focus-within) :is([data-part=paddle], [data-part=dots])': { opacity: 1 },
+
+  // Image
+  'ui-image': { display: 'block', overflow: 'hidden', position: 'relative', bg: 'bg.muted' },
+  'ui-image :is(img, picture)': { display: 'block', width: '100%', height: '100%' },
+  'ui-image img': { objectFit: 'cover', objectPosition: 'var(--ui-image-position, center)' },
+  ...Object.fromEntries(['contain', 'fill', 'none', 'scale-down'].map((f) => [`ui-image[fit=${f}] img`, { objectFit: f }])),
+  'ui-image[slideshow] > ui-swiper, ui-image[slideshow] > ui-swiper > [data-part=viewport], ui-image [data-part=slide]': { height: '100%' },
+
   // Layout containers (lengths in styles/geometry.ts)
   'ui-group': { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', borderColor: 'transparent' },
   ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },

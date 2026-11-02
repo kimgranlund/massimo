@@ -20,7 +20,12 @@
     "./components/select/element": "./components/select/select.element.ts",
     "./icons": "./icons/index.ts",
     "./components/btg/element": "./components/btg/btg.element.ts",
-    "./tokens.dtcg.json": "./tokens/tokens.dtcg.json"
+    "./tokens.dtcg.json": "./tokens/tokens.dtcg.json",
+    "./components/choice/element": "./components/choice/choice.element.ts",
+    "./components/range/element": "./components/range/range.element.ts",
+    "./components/color/element": "./components/color/color.element.ts",
+    "./components/swiper/element": "./components/swiper/swiper.element.ts",
+    "./components/image/element": "./components/image/image.element.ts"
   },
   "scripts": {
     "prepare": "panda codegen",

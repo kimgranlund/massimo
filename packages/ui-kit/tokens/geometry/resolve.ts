@@ -170,5 +170,52 @@ export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
   };
 }
 
+// ── Choices, tracks, swatches ──
+// Checkbox, radio and switch sit on a 5u box inside the 6u leading slot (0.5u around it), so
+// the label lands 1.5u from the box after its 1u start padding. Range and progress use a 4u box
+// with a 1u track; range adds a 4u thumb.
+export type ChoiceKind = 'checkbox' | 'radio' | 'switch';
+
+export function resolveChoice(kind: ChoiceKind, input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  const box = 5 * u;
+  const width = kind === 'switch' ? 9 * u : box;
+  return {
+    unit: u, box, width, slot: 6 * u,
+    rowHeight: 6 * u,
+    labelPaddingStart: u,
+    // Checkbox: 1u corners (scaled); radio and switch stay round.
+    radius: kind === 'checkbox' ? u * x.radiusScale : box / 2,
+    mark: 4 * u,              // check / minus icon inside the checkbox
+    dot: 2 * u,               // radio dot
+    thumb: 4 * u,             // switch thumb
+    thumbInset: 0.5 * u,
+    thumbTravel: width - 4 * u - u, // switch: thumb moves track width - thumb - 2 insets
+  };
+}
+
+export type TrackKind = 'range' | 'progress';
+
+export function resolveTrack(kind: TrackKind, input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  return { unit: u, height: 4 * u, track: u, trackRadius: 0.5 * u, thumb: kind === 'range' ? 4 * u : 0, minWidth: 24 * u };
+}
+
+/** Swatch: a 6u square (the slot size); palettes attach swatches with no gap. */
+export function resolveSwatch(input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  return { size: 6 * u, radius: u * x.radiusScale, paletteRadius: 2 * u * x.radiusScale };
+}
+
+/** Swiper controls: icon-only paddles (8u buttons) inset 2u from the edge; 2u dots in 4u hit areas. */
+export function resolveSwiper(input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  return { paddle: 8 * u, paddleInset: 2 * u, dot: 2 * u, dotActive: 4 * u, dotHit: 4 * u, dotsGap: u };
+}
+
 /** Popup offset from its trigger. */
 export const popupOffset = (input: GeometryInput = {}) => inputs(input).unit;
