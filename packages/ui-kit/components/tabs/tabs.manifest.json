@@ -1,0 +1,474 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "tabs",
+  "primary": "component:tabs",
+  "module": "./tabs.element.ts",
+  "registration": "on-import",
+  "documentation": "./tabs.md",
+  "examples": "./tabs.examples.json",
+  "contract": "../../contracts/components.json#/components/tabs",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./tabs.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveTabs"
+      ],
+      "description": "Reference numbers for the list, tabs and indicator of both variants."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:tabs",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-tabs",
+      "class": "UITabs",
+      "extends": "UIElement",
+      "intent": [
+        "Switch between peer panels that share one area, from a list naming each"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The active tab value (a tab or panel value attribute, else its index). Setting it switches panels without a change event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": "",
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "The first active tab, applied once at connect when no value attribute is present; default: the first enabled tab.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": false,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "horizontal (default) or vertical: the list direction, the indicator edge and which arrow keys move focus.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "variant",
+          "type": "string",
+          "default": "segmented",
+          "attribute": "variant",
+          "reflects": false,
+          "enum": [
+            "segmented",
+            "underline"
+          ],
+          "description": "segmented (default): a composite list with a raised indicator; underline: tabs over a thin track with a 0.5u bar.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "activateOnFocus",
+          "type": "boolean",
+          "default": false,
+          "attribute": "activate-on-focus",
+          "reflects": false,
+          "description": "Arrow-key focus also activates the tab (automatic activation); otherwise Enter, Space or a press does.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name of the tablist (aria-label on the list part).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ value: string, reason: 'none', event: Event }",
+          "trigger": "a press, Enter or Space (or focus, with activate-on-focus) activates another enabled tab; preventDefault keeps the current tab"
+        }
+      ],
+      "semantics": {
+        "role": "none (the list is role=tablist, each tab role=tab, each panel role=tabpanel)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "ArrowRight, ArrowLeft (mirrored in RTL; ArrowDown, ArrowUp when vertical)",
+            "action": "move focus to the next / previous enabled tab, wrapping; activate it with activate-on-focus"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move focus to the first / last enabled tab"
+          },
+          {
+            "keys": "Enter, Space on a tab",
+            "action": "activate it"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label (the tablist's aria-label)",
+            "aria-labelledby on the list part"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "A [data-part=list] of [data-part=tab] children (an optional [data-part=indicator] is generated when absent) and [data-part=panel] children, matched by their value attributes (else by index). Preset: panels alone, each with a label attribute; the list is generated."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Each tab's value names a panel with the same value; a tab without a panel has no aria-controls.",
+        "Inactive panels stay in the DOM, hidden (data-hidden); every panel is a tab stop (tabindex 0).",
+        "The indicator is placed by --active-tab-left / -top / -right / -bottom / -width / -height (px, set by script after layout and on resize); it does not move before the first change (data-activation-direction=none).",
+        "Setting value from script changes the active tab without a change event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Choosing a value for a form or a setting.",
+          "reason": "A tab switches content and submits nothing; a segmented control is a form-associated choice.",
+          "useInstead": "component:segmented"
+        },
+        {
+          "when": "Sections the user may want to see together or in sequence.",
+          "reason": "Tabs show one panel at a time; an accordion lets several be open.",
+          "useInstead": "component:accordion"
+        },
+        {
+          "when": "Moving between pages or routes.",
+          "reason": "Tabs swap panels in place; navigation needs links (the kit has no navigation component yet)."
+        }
+      ],
+      "searchTerms": [
+        "tabs",
+        "tab bar",
+        "tablist",
+        "segmented tabs",
+        "underline tabs"
+      ]
+    },
+    {
+      "id": "part:tabs-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=list]",
+      "summary": "The tablist (role=tablist, aria-orientation; data-orientation, data-activation-direction). Base UI Tabs.List."
+    },
+    {
+      "id": "part:tabs-tab",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=list] > [data-part=tab]",
+      "summary": "One tab (role=tab, aria-selected, aria-controls; data-active, data-disabled), the construction pattern inside; the active tab is the list's tab stop. Base UI Tabs.Tab."
+    },
+    {
+      "id": "part:tabs-indicator",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=list] > [data-part=indicator]",
+      "summary": "The active tab's marker, placed by the --active-tab-* variables: a raised fill under the tab (segmented) or a 0.5u bar on the track (underline). Base UI Tabs.Indicator."
+    },
+    {
+      "id": "part:tabs-panel",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=panel]",
+      "summary": "A tabpanel (aria-labelledby its tab, tabindex 0), hidden and data-hidden while its tab is inactive. Base UI Tabs.Panel."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:tabs",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesGeometry",
+      "to": "geometry:disclosure"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-list"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-tab"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-indicator"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-panel"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./tabs.element.ts",
+      "exports": {
+        "component:tabs": "UITabs"
+      },
+      "verification": "./verification/tabs.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./tabs.react.tsx",
+      "exports": {
+        "component:tabs": "Tabs"
+      },
+      "verification": "./verification/tabs.verification.json#/renderers/react",
+      "props": {
+        "component:tabs": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "value?: string // Controlled active tab value.",
+            "defaultValue?: string // Active tab at first render (uncontrolled); default: the first enabled tab's value.",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // Called when a press or a key activates another tab, with Base UI's details ({ reason: 'none', event }).",
+            "orientation?: 'horizontal' | 'vertical'",
+            "variant?: 'segmented' | 'underline' // segmented (default): a composite with a raised indicator; underline: a bar on a thin track.",
+            "size?: number // Unit u in px; tab rows are 8u (segmented tabs 7u inside the 8u list).",
+            "children?: ReactNode",
+            "items?: TabsItem[] // Preset: a tab and a panel per item.",
+            "label?: string // The tablist's accessible name.",
+            "activateOnFocus?: boolean"
+          ]
+        }
+      },
+      "parts": {
+        "component:tabs": {
+          "Tabs.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'defaultValue'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: string // Controlled active tab value.",
+              "defaultValue?: string // Active tab at first render (uncontrolled); default: the first enabled tab's value.",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // Called when a press or a key activates another tab, with Base UI's details ({ reason: 'none', event }).",
+              "orientation?: 'horizontal' | 'vertical' = 'horizontal'",
+              "variant?: 'segmented' | 'underline' = 'segmented' // segmented (default): a composite with a raised indicator; underline: a bar on a thin track.",
+              "size?: number // Unit u in px; tab rows are 8u (segmented tabs 7u inside the 8u list).",
+              "children?: ReactNode"
+            ]
+          },
+          "Tabs.List": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "activateOnFocus?: boolean = false // Focusing a tab with the arrow keys also activates it (automatic activation).",
+              "loopFocus?: boolean = true // Arrow keys wrap from the last tab to the first (default true).",
+              "label?: string // Accessible name of the tablist.",
+              "children?: ReactNode"
+            ]
+          },
+          "Tabs.Tab": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "value: string // The tab's value (its panel has the same value).",
+              "disabled?: boolean",
+              "children?: ReactNode"
+            ]
+          },
+          "Tabs.Indicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Tabs.Panel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: string // The value of the tab that shows this panel.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

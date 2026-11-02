@@ -486,6 +486,29 @@
         "collection"
       ],
       "behavior": "The accordion owns the open state (value: the open item values; multiple allows several). A trigger press fires the item's openchange, then the accordion's cancelable change ({ value: string[], reason: 'trigger-press', event }); in single mode opening one item closes the others. Arrow keys (Up / Down, or Left / Right when horizontal), Home and End move focus between enabled triggers; every trigger stays in the tab order."
+    },
+    "tabs": {
+      "geometryFamily": "disclosure",
+      "element": "Host holds a tablist part (role=tablist) of tab parts (role=tab, aria-selected, aria-controls) and an indicator, and tabpanel parts (one per tab, hidden while inactive). The preset generates the list from labelled panels.",
+      "parts": [
+        "tabs-list",
+        "tabs-tab",
+        "slot-leading?",
+        "slot-prefix?",
+        "slot-contents?",
+        "slot-suffix?",
+        "slot-trailing?",
+        "tabs-indicator",
+        "tabs-panel"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection"
+      ],
+      "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
     }
   }
 }

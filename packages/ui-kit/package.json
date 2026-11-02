@@ -43,7 +43,9 @@
     "./components/collapsible/element": "./components/collapsible/collapsible.element.ts",
     "./components/collapsible/react": "./components/collapsible/collapsible.react.tsx",
     "./components/accordion/element": "./components/accordion/accordion.element.ts",
-    "./components/accordion/react": "./components/accordion/accordion.react.tsx"
+    "./components/accordion/react": "./components/accordion/accordion.react.tsx",
+    "./components/tabs/element": "./components/tabs/tabs.element.ts",
+    "./components/tabs/react": "./components/tabs/tabs.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

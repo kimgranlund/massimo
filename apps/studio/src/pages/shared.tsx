@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveDisclosure, resolveField, resolveSwatch, resolveTrack, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveDisclosure, resolveField, resolveTabs, resolveSwatch, resolveTrack, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -123,7 +123,8 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   },
   disclosure: (g) => {
     const d = resolveDisclosure(g);
-    return [`trigger ${px(d.height)} · pad ${px(d.padding)} · caret ${px(d.caret)}`, `panel inset ${px(d.panelInline)} · end ${px(d.panelBlockEnd)} · r ${px(d.radius)}`];
+    const [sg, ul] = [resolveTabs('segmented', g), resolveTabs('underline', g)];
+    return [`trigger ${px(d.height)} · caret ${px(d.caret)} · panel inset ${px(d.panelInline)}`, `tabs ${px(sg.listHeight)} · tab ${px(sg.tabHeight)} · bar ${px(ul.indicatorThickness ?? 0)}`];
   },
 };
 

@@ -352,6 +352,19 @@
         "setting"
       ]
     },
+    "component:tabs": {
+      "kind": "component",
+      "source": "components/tabs/tabs.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-tabs",
+      "searchTerms": [
+        "tabs",
+        "tab bar",
+        "tablist",
+        "segmented tabs",
+        "underline tabs"
+      ]
+    },
     "component:tag": {
       "kind": "component",
       "source": "components/btg/btg.manifest.json#/nodes/1",
@@ -666,7 +679,9 @@
         "collapsible trigger",
         "accordion row",
         "panel inset",
-        "accordion divider"
+        "accordion divider",
+        "tab height",
+        "tab indicator"
       ]
     },
     "geometry:field": {
@@ -1008,6 +1023,42 @@
       "tag": "span",
       "searchTerms": [
         "switch thumb"
+      ]
+    },
+    "part:tabs-indicator": {
+      "kind": "part",
+      "source": "components/tabs/tabs.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "tabs indicator"
+      ]
+    },
+    "part:tabs-list": {
+      "kind": "part",
+      "source": "components/tabs/tabs.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tabs list"
+      ]
+    },
+    "part:tabs-panel": {
+      "kind": "part",
+      "source": "components/tabs/tabs.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tabs panel"
+      ]
+    },
+    "part:tabs-tab": {
+      "kind": "part",
+      "source": "components/tabs/tabs.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tabs tab"
       ]
     },
     "part:track": {
@@ -4054,6 +4105,136 @@
       "from": "component:swiper",
       "relation": "uses",
       "to": "foundation:icons"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesGeometry",
+      "to": "geometry:disclosure"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-list"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-tab"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-indicator"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "ownsPart",
+      "to": "part:tabs-panel"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tabs",
+      "relation": "allowedIn",
+      "to": "context:collection"
     }
   ]
 }

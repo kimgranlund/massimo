@@ -15,6 +15,7 @@ import { group, collection, card, panel, region, page as pageRecipe } from './co
 import { field, fieldGrid } from './field/field.recipe.ts';
 import { collapsible } from './collapsible/collapsible.recipe.ts';
 import { accordion } from './accordion/accordion.recipe.ts';
+import { tabs } from './tabs/tabs.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, collapsible, accordion };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, collapsible, accordion, tabs };
 

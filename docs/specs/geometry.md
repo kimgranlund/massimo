@@ -68,7 +68,7 @@ Inputs and select triggers are laid out as buttons: the host (input `[data-part=
 
 Swiper paddles are fully round (radius = half their height) whatever the curvature setting, like the dots, and use icon size lg.
 
-## Disclosure: collapsible, accordion
+## Disclosure: collapsible, accordion, tabs
 
 | | Formula | at u=4 |
 |---|---|---|
@@ -76,6 +76,9 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | caret | icon size sm in the 6u trailing slot, turned 180° while open | 12 |
 | panel | text starts at the trigger's label edge: inline padding u + 2u; end padding 2u (0 while closed); height 0 ↔ auto on the reveal intent (`resolveDisclosure`) | 12 / 8 |
 | accordion item | a collapsible; items are separated by the thin border-width token (1px, border role) outside the trigger's padding, so a closed item is 8u + 1px at any B (inline end when horizontal) | 33 |
+| tabs, segmented | the list is a composite (edge D, one row 8u, radius min(3.5u·s, 4u)); tabs are composite options (7u, the option radius); the indicator is the active tab's box (`resolveTabs`) | 32 / 28 / 12 |
+| tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
+| tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
 ## Containers
 

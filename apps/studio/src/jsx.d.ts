@@ -36,6 +36,7 @@ declare module 'react' {
       'ui-input': El<{ ref?: any; label?: string; type?: string; name?: string; value?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; minlength?: number; pattern?: string; labelledby?: string; describedby?: string }>;
       'ui-field': El<{ label?: string; unit?: string; readout?: string; description?: string; error?: string; layout?: 'stacked' | 'inline' }>;
       'ui-field-grid': El<{}>;
+      'ui-tabs': El<{ ref?: any; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; variant?: 'segmented' | 'underline'; 'activate-on-focus'?: boolean; label?: string }>;
       'ui-accordion': El<{ ref?: any; value?: string; 'default-value'?: string; multiple?: boolean; disabled?: boolean; orientation?: 'vertical' | 'horizontal' }>;
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
     }

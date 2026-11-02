@@ -11,8 +11,10 @@ import { loadTsx } from './load-tsx.ts';
 
 await import('../components/collapsible/collapsible.element.ts');
 await import('../components/accordion/accordion.element.ts');
+await import('../components/tabs/tabs.element.ts');
 const { Collapsible } = await loadTsx(new URL('../components/collapsible/collapsible.react.tsx', import.meta.url));
 const { Accordion } = await loadTsx(new URL('../components/accordion/accordion.react.tsx', import.meta.url));
+const { Tabs } = await loadTsx(new URL('../components/tabs/tabs.react.tsx', import.meta.url));
 
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
 const contract = JSON.parse(readFileSync(new URL('../contracts/states.json', import.meta.url), 'utf8'));
@@ -326,6 +328,162 @@ test('Accordion (React): presses call onValueChange / onOpenChange; single mode;
   assert.equal(document.activeElement, btn(1));
   await act(async () => { key(btn(1), 'ArrowDown'); });
   assert.equal(document.activeElement, btn(0), 'skips the disabled one and wraps');
+  await act(async () => root.unmount());
+  box.remove();
+});
+
+// ── Tabs ──
+
+const TABS = '<div data-part="list"><div data-part="tab" value="a">A</div><div data-part="tab" value="b"><i slot="leading" name="code"></i>B</div><div data-part="tab" value="c" disabled>C</div><div data-part="tab" value="d">D</div></div>'
+  + '<div data-part="panel" value="a">pa</div><div data-part="panel" value="b">pb</div><div data-part="panel" value="c">pc</div><div data-part="panel" value="d">pd</div>';
+const activeOf = (el: any) => el.tabs.map((t: HTMLElement) => (t.hasAttribute('data-active') ? 1 : 0)).join('');
+
+test('tabs: the preset builds a list of tabs from labelled panels, with ARIA, roving tabindex and an indicator', async () => {
+  const el = await wc('<ui-tabs label="Project"><div data-part="panel" value="o" label="Overview">o</div><div data-part="panel" value="s" label="Settings">s</div></ui-tabs>') as any;
+  const list = el.querySelector(':scope > [data-part=list]'), [t1, t2] = el.tabs, [p1, p2] = el.panels;
+  assert.equal(list.getAttribute('role'), 'tablist');
+  assert.equal(list.getAttribute('aria-label'), 'Project');
+  assert.equal(list.getAttribute('aria-orientation'), 'horizontal');
+  assert.deepEqual([t1.textContent, t2.textContent], ['Overview', 'Settings']);
+  assert.equal(el.value, 'o', 'the first tab by default');
+  assert.equal(t1.getAttribute('role'), 'tab');
+  assert.equal(t1.getAttribute('aria-selected'), 'true');
+  assert.deepEqual([t1.getAttribute('tabindex'), t2.getAttribute('tabindex')], ['0', '-1']);
+  assert.equal(t1.getAttribute('aria-controls'), p1.id);
+  assert.equal(p1.getAttribute('role'), 'tabpanel');
+  assert.equal(p1.getAttribute('aria-labelledby'), t1.id);
+  assert.equal(p1.getAttribute('tabindex'), '0');
+  assert.ok(!p1.hidden && p2.hidden);
+  assert.deepEqual(names(t1), ['data-activation-direction', 'data-active', 'data-orientation']);
+  assert.deepEqual(names(p2), ['data-activation-direction', 'data-hidden', 'data-orientation']);
+  assert.equal(el.getAttribute('data-activation-direction'), 'none');
+  const ind = list.querySelector(':scope > [data-part=indicator]');
+  assert.ok(ind, 'an indicator is generated');
+  assert.equal(kit(el), 'ui-tabs__root ui-tabs__root--variant_segmented');
+  assert.equal(kit(list), 'ui-tabs__list ui-tabs__list--variant_segmented');
+  assert.equal(kit(t1), 'ui-tabs__tab ui-tabs__tab--variant_segmented');
+  assert.equal(kit(ind), 'ui-tabs__indicator ui-tabs__indicator--variant_segmented');
+  assert.equal(kit(p1), 'ui-tabs__panel ui-tabs__panel--variant_segmented');
+  await new Promise((r) => setTimeout(r, 30));
+  for (const k of ['left', 'top', 'right', 'bottom', 'width', 'height']) assert.match(ind.style.getPropertyValue(`--active-tab-${k}`), /^-?\d+(\.\d+)?px$/, `--active-tab-${k} is set`);
+  assert.equal(el.querySelector(NATIVE), null);
+  el.variant = 'underline'; await tick();
+  assert.equal(kit(list), 'ui-tabs__list ui-tabs__list--variant_underline');
+  el.parentElement.remove();
+});
+
+test('tabs: a press, Enter and Space activate; change is cancelable with reason none; the activation direction follows', async () => {
+  const el = await wc(`<ui-tabs default-value="b">${TABS}</ui-tabs>`) as any;
+  const got: any[] = [];
+  el.addEventListener('change', (e: CustomEvent) => got.push(e.detail));
+  assert.equal(activeOf(el), '0100');
+  el.tabs[3].click(); await tick();
+  assert.equal(activeOf(el), '0001');
+  assert.equal(el.getAttribute('data-activation-direction'), 'right');
+  assert.deepEqual(Object.keys(got[0]).sort(), ['event', 'reason', 'value']);
+  assert.deepEqual([got[0].value, got[0].reason], ['d', 'none']);
+  assert.ok(el.panels[3].hidden === false && el.panels[1].hidden);
+  key(el.tabs[0], 'Enter'); await tick();
+  assert.equal(activeOf(el), '1000');
+  assert.equal(el.getAttribute('data-activation-direction'), 'left');
+  el.tabs[2].click(); await tick();
+  assert.equal(activeOf(el), '1000', 'a disabled tab ignores presses');
+  assert.deepEqual(names(el.tabs[2]), ['data-activation-direction', 'data-disabled', 'data-orientation']);
+  const stop = (e: Event) => e.preventDefault();
+  el.addEventListener('change', stop);
+  key(el.tabs[1], ' '); await tick();
+  assert.equal(activeOf(el), '1000', 'a canceled change keeps the tab');
+  el.removeEventListener('change', stop);
+  const n = got.length;
+  el.value = 'b'; await tick();
+  assert.equal(activeOf(el), '0100');
+  assert.equal(got.length, n, 'setting value fires nothing');
+  el.parentElement.remove();
+});
+
+test('tabs: arrow keys, Home and End move focus (skipping disabled, wrapping); activate-on-focus activates', async () => {
+  const el = await wc(`<ui-tabs>${TABS}</ui-tabs>`) as any;
+  const t = el.tabs as HTMLElement[];
+  t[0].focus();
+  key(t[0], 'ArrowRight');
+  assert.equal(document.activeElement, t[1]);
+  key(t[1], 'ArrowRight');
+  assert.equal(document.activeElement, t[3], 'skips the disabled tab');
+  key(t[3], 'ArrowRight');
+  assert.equal(document.activeElement, t[0], 'wraps');
+  key(t[0], 'ArrowLeft');
+  assert.equal(document.activeElement, t[3]);
+  key(t[3], 'Home');
+  assert.equal(document.activeElement, t[0]);
+  key(t[0], 'ArrowDown');
+  assert.equal(document.activeElement, t[0], 'vertical keys do nothing when horizontal');
+  assert.equal(activeOf(el), '1000', 'manual activation: focus only');
+  el.activateOnFocus = true;
+  key(t[0], 'End'); await tick();
+  assert.equal(activeOf(el), '0001', 'activate-on-focus');
+  el.orientation = 'vertical'; await tick();
+  key(t[3], 'ArrowUp'); await tick();
+  assert.equal(document.activeElement, t[1]);
+  assert.equal(el.getAttribute('data-activation-direction'), 'up');
+  assert.equal(el.querySelector('[data-part=list]').getAttribute('aria-orientation'), 'vertical');
+  el.parentElement.remove();
+});
+
+const reactTabs = (extra: object = {}) => h(Tabs.Root, { defaultValue: 'b', ...extra },
+  h(Tabs.List, null, h(Tabs.Tab, { value: 'a' }, 'A'), h(Tabs.Tab, { value: 'b', leading: h('i', { name: 'code' }) }, 'B'), h(Tabs.Tab, { value: 'c', disabled: true }, 'C'), h(Tabs.Tab, { value: 'd' }, 'D'), h(Tabs.Indicator)),
+  ...['a', 'b', 'c', 'd'].map((v) => h(Tabs.Panel, { key: v, value: v }, `p${v}`)));
+
+test('Tabs (React): the same data-* as ui-tabs on host, list, tabs, indicator and panels', async () => {
+  const P: Part[] = [['host', ':scope'], ['list', '[data-part=list]'], ['tab', '[data-part=tab]', '[role=tab]'], ['indicator', '[data-part=indicator]'], ['panel', '[data-part=panel]']];
+  await same('ui-tabs', `<ui-tabs default-value="b">${TABS}</ui-tabs>`, reactTabs(), P);
+  await same('ui-tabs', `<ui-tabs default-value="a" orientation="vertical" variant="underline">${TABS}</ui-tabs>`, reactTabs({ defaultValue: 'a', orientation: 'vertical', variant: 'underline' }), P);
+});
+
+test('Tabs (React): native tab buttons, classes, the preset renders the composed parts', () => {
+  const items = [{ value: 'o', label: 'Overview', leading: h('i', { name: 'house' }) }, { value: 's', label: 'Settings', content: h('p', null, 's') }];
+  const a = html(h(Tabs, { items, label: 'Project', variant: 'underline' }));
+  const b = html(h(Tabs.Root, { variant: 'underline' },
+    h(Tabs.List, { label: 'Project' }, h(Tabs.Tab, { value: 'o', leading: h('i', { name: 'house' }) }, 'Overview'), h(Tabs.Tab, { value: 's' }, 'Settings'), h(Tabs.Indicator)),
+    h(Tabs.Panel, { value: 'o' }), h(Tabs.Panel, { value: 's' }, h('p', null, 's'))));
+  assert.equal(b, a, 'composed = preset');
+  assert.match(a, /^<div data-ui="tabs" data-orientation="horizontal" data-activation-direction="none" class="ui-tabs__root ui-tabs__root--variant_underline">/);
+  assert.match(a, /<div data-part="list" role="tablist" aria-orientation="horizontal" aria-label="Project"/);
+  assert.match(a, /<button type="button" role="tab" id="ID[\w-]*" aria-selected="true" aria-controls="ID[\w-]*" tabindex="0" data-active=""/);
+  assert.match(a, /<span data-part="indicator" aria-hidden="true" data-orientation="horizontal" data-activation-direction="none" class="ui-tabs__indicator ui-tabs__indicator--variant_underline"><\/span>/);
+  assert.match(a, /role="tabpanel" id="ID[\w-]*" aria-labelledby="ID[\w-]*" tabindex="0" hidden="" data-part="panel" data-hidden=""/);
+  // className functions see the tab state.
+  const c = html(h(Tabs.Root, null, h(Tabs.List, null, h(Tabs.Tab, { value: 'x', className: (s: any) => (s.active ? 'on' : 'off') }, 'X'), h(Tabs.Tab, { value: 'y', className: (s: any) => (s.active ? 'on' : 'off') }, 'Y'))));
+  assert.match(c, /class="ui-tabs__tab ui-tabs__tab--variant_segmented on".*class="ui-tabs__tab ui-tabs__tab--variant_segmented off"/);
+  assert.throws(() => html(h(Tabs.Tab, { value: 'x' })), /inside Tabs.Root/);
+});
+
+test('Tabs (React): presses and keys call onValueChange(value, { reason, event }); the indicator gets its variables', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const calls: any[] = [];
+  await act(async () => root.render(reactTabs({ onValueChange: (v: string, d: any) => calls.push([v, d]) })));
+  const tabs = () => [...box.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+  const active = () => tabs().map((t) => (t.hasAttribute('data-active') ? 1 : 0)).join('');
+  assert.equal(active(), '0100');
+  await act(async () => { tabs()[3].click(); });
+  assert.equal(active(), '0001');
+  assert.deepEqual([calls[0][0], calls[0][1].reason], ['d', 'none']);
+  assert.equal(box.querySelector('[data-ui=tabs]')!.getAttribute('data-activation-direction'), 'right');
+  await act(async () => { tabs()[2].click(); });
+  assert.equal(active(), '0001', 'disabled');
+  tabs()[3].focus();
+  await act(async () => { key(tabs()[3], 'ArrowRight'); });
+  assert.equal(document.activeElement, tabs()[0], 'wraps');
+  await act(async () => { key(tabs()[0], 'ArrowRight'); });
+  assert.equal(document.activeElement, tabs()[1]);
+  assert.equal(active(), '0001', 'manual activation');
+  const ind = box.querySelector<HTMLElement>('[data-part=indicator]')!;
+  assert.match(ind.style.getPropertyValue('--active-tab-width'), /px$/);
+  assert.ok(!box.querySelectorAll('[role=tabpanel]')[3].hasAttribute('hidden'));
   await act(async () => root.unmount());
   box.remove();
 });

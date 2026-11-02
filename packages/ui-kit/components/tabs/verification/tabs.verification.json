@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "tabs",
+  "scope": "Behavior, ARIA, parts, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and client behavior. Rendered lengths and the indicator placement are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/tabs/tabs.element.ts",
+      "sha256": "83c696bcf1fc4c0f56b8827dcf1be74f18f7f0596005687a61275f744dd7ed16"
+    },
+    {
+      "path": "components/tabs/tabs.react.tsx",
+      "sha256": "1ed5cefd6264c549a166b8f8d6de8473478183b2269e5347121a9637c67faa02"
+    },
+    {
+      "path": "components/tabs/tabs.recipe.ts",
+      "sha256": "146dc684956a92783ca32671694397785545e25b75d680ed016dd7b6dd098bff"
+    },
+    {
+      "path": "components/tabs/indicator.ts",
+      "sha256": "aec684c555f11666d628b466bad4a10ec26977b9b1d9042aef84b5f007f5be70"
+    },
+    {
+      "path": "components/tabs/tabs.manifest.json",
+      "sha256": "44451a64fe0fc7419128128e5092cbc4a764a275c6f0892b2ed4d75ef7a43687"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"tabs\" test/disclosure.test.ts",
+          "covers": "preset and parts anatomy, tablist / tab / tabpanel ARIA, roving tabindex, arrow / Home / End keys (RTL, vertical, disabled skipped), activate-on-focus, change (cancelable, reason none), activation direction, indicator variables, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"disclosure\" test/geometry.test.ts",
+          "covers": "resolveTabs: segmented composite list and 7u tabs, underline 8u tabs, 0.5u indicator, 1px track, 2u gap"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"tabs\" test/disclosure.test.ts",
+          "node --test --test-name-pattern=\"disclosure\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Tabs\" test/disclosure.test.ts",
+          "covers": "React SSR: the same data-* as the web component on host, list, tabs, indicator and panels; the preset renders the composed parts; onValueChange details; keys and the indicator variables in the client"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Tabs\" test/disclosure.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The indicator variables come from layout (getBoundingClientRect, snapped to 1/64 px); happy-dom reports zero boxes, so unit tests check that they are set and the browser geometry check checks their values.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio at u = 2, 3, the theme unit 4.5 and 6, B = 0 and 1, light and dark): growth (a long label keeps one line and widens its tab and the list; slots keep 6u; the indicator follows on resize), RTL (dir=rtl reverses the tab order and the horizontal arrow keys; both indicators follow the active tab), focus (the ring is inset by the thick border width, so it never changes a tab's size and stays within the segmented list), screenshots of the Disclosure family checked light and dark."
+  ]
+}

@@ -397,3 +397,35 @@ export function resolveDisclosure(input: GeometryInput = {}) {
 
 /** The thin border-width token (tokens/geometry/index.ts borderWidths.thin): accordion dividers, the tab underline track. */
 export const DIVIDER = 1;
+
+export type TabsVariant = 'segmented' | 'underline';
+
+/**
+ * ui-tabs: the list and its indicator, 2u above the panel (beside it when vertical).
+ * - segmented: the list is a composite (edge D = max(B, 0.5u), one row 8u); tabs are composite
+ *   options (7u, inset Ic); the indicator is the active tab's box with the option radius.
+ * - underline: tabs are control rows (8u, pad u − B) side by side with no gap over a thin (1px)
+ *   track; the indicator is a 0.5u bar on the track under the active tab, radius 0.25u.
+ * Tab labels use the construction pattern (2u at a bare edge, 1u beside a slot).
+ */
+export function resolveTabs(variant: TabsVariant = 'segmented', input: GeometryInput & { vertical?: boolean } = {}) {
+  const c = resolveControl(input);
+  const u = c.unit;
+  const label = resolveButtonContents(false, false, input);
+  const base = { variant, unit: u, border: c.border, fontSize: c.fontSize, labelStart: label.start, labelEnd: label.end, slot: c.slot, gap: 2 * u };
+  if (variant === 'segmented') {
+    const k = resolveComposite({ ...input, container: !!input.vertical });
+    return {
+      ...base,
+      listHeight: k.rowHeight, listEdge: k.edge, listPadding: k.padding, listGap: k.gap, listRadius: k.radius,
+      tabHeight: k.child.height, tabPadding: k.child.padding, tabRadius: k.child.radius,
+      indicatorThickness: null, indicatorRadius: k.child.radius, track: 0,
+    };
+  }
+  return {
+    ...base,
+    listHeight: c.height, listEdge: 0, listPadding: 0, listGap: 0, listRadius: 0,
+    tabHeight: c.height, tabPadding: c.padding, tabRadius: c.radius,
+    indicatorThickness: 0.5 * u, indicatorRadius: 0.25 * u, track: DIVIDER,
+  };
+}
