@@ -4,6 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -72,3 +73,71 @@ export const fmt = (n: number) => String(Math.round(n * 100) / 100);
 // Sample images as inline SVG gradients (no network).
 const art = (a: string, b: string, label: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="40" y="560" font-family="system-ui" font-size="48" fill="white" fill-opacity=".85">${label}</text></svg>`)}`;
 export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Dusk'), art('#16a34a', '#0ea5e9', 'Coast'), art('#1e293b', '#7c3aed', 'Night')];
+
+// ── Size ladders ──
+// Every component page shows sizes the same way: the standard sizes 3, 4 and 6 plus the theme's own
+// unit (highlighted), one row each. The left column names the size and lists the family's resolver
+// metrics for the live theme (like the Typography roles); the right column renders the specimens
+// in that size subtree (data-size).
+export const LADDER_SIZES = [3, 4, 6];
+export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite';
+
+type Live = { unit: number; border: number; radiusScale: number };
+const px = (n: number) => `${fmt(n)}`;
+const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
+  button: (g) => {
+    const c = resolveControl(g);
+    return [`h ${px(c.height)} · slot ${px(c.slot)} · pad ${px(c.padding)}`, `text ${px(c.fontSize)} · icon ${px(c.iconSize)} · r ${px(c.radius)}`];
+  },
+  btg: (g) => {
+    const [b, t, c] = (['badge', 'tag', 'chip'] as const).map((k) => resolveBtg(k, g));
+    return [`h ${px(b.height)} · ${px(t.height)} · ${px(c.height)}`, `text ${px(b.fontSize)} · ${px(t.fontSize)} · ${px(c.fontSize)}`];
+  },
+  field: (g) => {
+    const f = resolveField(g);
+    return [`h ${px(f.height)} · text inset ${px(f.paddingStart)}`, `text ${px(f.fontSize)} · r ${px(f.radius)}`];
+  },
+  choice: (g) => {
+    const [cb, sw] = [resolveChoice('checkbox', g), resolveChoice('switch', g)];
+    return [`row ${px(cb.rowHeight)} · box ${px(cb.box)} · switch ${px(sw.width)}`, `label inset ${px(cb.labelPaddingStart)} · r ${px(cb.radius)}`];
+  },
+  track: (g) => {
+    const t = resolveTrack('range', g);
+    return [`track ${px(t.track)} · thumb ${px(t.thumb)}`, `r ${px(t.trackRadius)} · min width ${px(t.minWidth)}`];
+  },
+  swatch: (g) => {
+    const s = resolveSwatch(g);
+    return [`swatch ${px(s.size)} · r ${px(s.radius)}`, `palette r ${px(s.paletteRadius)}`];
+  },
+  composite: (g) => {
+    const c = resolveComposite(g);
+    return [`row ${px(c.rowHeight)} · edge ${px(c.edge)} · option ${px(c.child.height)}`, `r ${px(c.radius)} · option r ${px(c.child.radius)}`];
+  },
+};
+
+const ladderRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', paddingBlock: '2', [CQ_MD]: { gridTemplateColumns: '16rem 1fr', gap: '6' } });
+const ladderMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
+const ladderTheme = css({ color: 'primary.fg' });
+
+export function SizeLadder({ family, params, children }: { family: LadderFamily; params: ThemeParams; children: ReactNode }) {
+  const theme = params.unit;
+  const sizes = [...new Set([...LADDER_SIZES, theme])].sort((a, b) => a - b);
+  return (
+    <div role="list" aria-label="Sizes">
+      {sizes.map((u) => {
+        const isTheme = u === theme;
+        const lines = LADDER_METRICS[family]({ unit: u, border: params.border, radiusScale: params['radius-scale'] });
+        return (
+          <div role="listitem" key={u} className={ladderRow}>
+            <div className={ladderMeta}>
+              <span className={cx(rowLabel, isTheme && ladderTheme)}>Size {fmt(u)} · {px(8 * u)}px{isTheme ? ' · theme' : ''}</span>
+              {lines.map((l) => <span key={l} className={cx(metrics, isTheme && ladderTheme)}>{l}</span>)}
+            </div>
+            {/* The theme row inherits the canvas unit (it may sit between the data-size steps). */}
+            <div className={specimens} data-size={isTheme ? undefined : String(u)}>{children}</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

@@ -13,7 +13,7 @@ import '@massimo/ui-kit/components/image/element';
 import { Fragment, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
-import { CQ_MD, Divider, IMAGES, Page, Row, Section, caption, columns, specimens, stack } from './shared.tsx';
+import { CQ_MD, Divider, IMAGES, Page, Row, Section, SizeLadder, caption, columns, specimens, stack } from './shared.tsx';
 
 /** Component families, in page order: [id, label, elements]. */
 export const FAMILIES = [
@@ -35,9 +35,11 @@ const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: '
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
 const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
-const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'], ['6', '48px']] as const;
 
-export function ComponentsPage({ family }: PageProps & { family?: Family }) {
+// A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
+const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
+
+export function ComponentsPage({ family, params }: PageProps & { family?: Family }) {
   const [status, setStatus] = useState('');
   const NOTES: Record<Family, string> = {
     actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u.',
@@ -82,25 +84,25 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
           <ui-button loading>Loading</ui-button>
           <ui-button disabled>Disabled</ui-button>
         </Row>
-        {SIZE_ROWS.map(([u, h]) => (
-          <Row key={u} label={`Size ${u} · ${h}`} size={u}>
-            <ui-button><i slot="leading" name="plus" />Button</ui-button>
-            <ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button>
-          </Row>
-        ))}
+        <SizeLadder family="button" params={params}>
+          <ui-button><i slot="leading" name="plus" />Button</ui-button>
+          <ui-button variant="primary">Save</ui-button>
+          <ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button>
+        </SizeLadder>
       </>
     ),
-    labels: SIZE_ROWS.map(([u, h]) => (
-      <Row key={u} label={`Size ${u} · ${h}`} size={u}>
+    labels: (
+      <SizeLadder family="btg" params={params}>
         <ui-badge>3</ui-badge>
         <ui-badge>New</ui-badge>
         <ui-tag><i slot="leading" name="star" />Featured</ui-tag>
         <ui-chip selectable selected><i slot="leading" name="check" />Design</ui-chip>
         <ui-chip selectable>Engineering</ui-chip>
         <ui-chip removable>Remote</ui-chip>
-      </Row>
-    )),
+      </SizeLadder>
+    ),
     fields: (
+      <>
       <form className={formGrid} onSubmit={(e) => { e.preventDefault(); setStatus(JSON.stringify(Object.fromEntries(new FormData(e.currentTarget)))); }}>
         <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
         <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
@@ -119,8 +121,14 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
         </div>
         <p className={caption} role="status">{status}</p>
       </form>
+      <SizeLadder family="field" params={params}>
+        <div className={ladderField}><ui-input label="Price" value="40"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
+        <div className={ladderField}><ui-select label="Role" value="eng"><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
+      </SizeLadder>
+      </>
     ),
     selection: (
+      <>
       <div className={columns}>
         <div className={stack}>
           <ui-select name="role" label="Role" required description="You can change this later.">
@@ -140,6 +148,10 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
           <ui-option value="apac"><i slot="leading" name="globe" />Asia Pacific</ui-option>
         </ui-listbox>
       </div>
+      <SizeLadder family="composite" params={params}>
+        <ui-segmented label="Billing" value="monthly"><ui-option value="monthly">Monthly</ui-option><ui-option value="yearly">Yearly</ui-option></ui-segmented>
+      </SizeLadder>
+      </>
     ),
     choices: (
       <>
@@ -158,17 +170,18 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
           <ui-switch checked>Wi-Fi</ui-switch>
           <ui-switch>Bluetooth</ui-switch>
         </Row>
-        {SIZE_ROWS.slice(1, 4).map(([u, h]) => (
-          <Row key={u} label={`Size ${u} · ${h}`} size={u}>
-            <ui-checkbox checked>Checkbox</ui-checkbox><ui-radio checked>Radio</ui-radio><ui-switch checked>Switch</ui-switch>
-          </Row>
-        ))}
+        <SizeLadder family="choice" params={params}>
+          <ui-checkbox checked>Checkbox</ui-checkbox><ui-radio checked>Radio</ui-radio><ui-switch checked>Switch</ui-switch>
+        </SizeLadder>
       </>
     ),
     tracks: (
       <>
         <Row label="Range"><div className={trackStack}><ui-range label="Volume" value={40} /><ui-range label="Steps" min={0} max={10} step={1} value={3} /></div></Row>
         <Row label="Progress"><div className={trackStack}><ui-progress label="Upload" value={64} /><ui-progress label="Loading" /></div></Row>
+        <SizeLadder family="track" params={params}>
+          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-progress label="Upload" value={64} /></div>
+        </SizeLadder>
       </>
     ),
     color: (
@@ -181,6 +194,10 @@ export function ComponentsPage({ family }: PageProps & { family?: Family }) {
             {['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6'].map((c) => <ui-swatch key={c} color={c} />)}
           </ui-palette>
         </Row>
+        <SizeLadder family="swatch" params={params}>
+          <ui-swatch color="#3b82f6" />
+          <ui-palette label="Brand">{['#ef4444', '#f59e0b', '#10b981', '#3b82f6'].map((c) => <ui-swatch key={c} color={c} />)}</ui-palette>
+        </SizeLadder>
       </>
     ),
     media: (
