@@ -113,7 +113,7 @@ export function App() {
 
   return (
     <div className={s.shell}>
-      <aside className={s.panel} aria-label="Jig">
+      <aside className={s.panel} aria-label="Jig" data-size="3">
         <header className={s.panelHeader}>
           <h1 className={s.brand}>Studio</h1>
           <Segmented<View> value={view} onValue={setView} options={[['components', 'Components'], ['containers', 'Containers'], ['colors', 'Colors'], ['typography', 'Typography']]} />
@@ -185,8 +185,8 @@ export function App() {
           )}
           <Group title="Theme">
             <Select label="Start from" value={themes[name] ? name : 'default'} options={[['default', 'Default'], ...Object.keys(themes).map((t) => [t, t] as [string, string])]} onValue={(v) => loadTheme(v === 'default' ? '' : v)} />
-            <ui-input ref={nameRef} label="Theme name" placeholder="brand-x" value={name} error={nameError} data-size="3" />
-            <ui-button ref={saveRef} data-size="3" disabled={!name || !!nameError}>Save geometry theme</ui-button>
+            <ui-input ref={nameRef} label="Theme name" placeholder="brand-x" value={name} error={nameError} />
+            <ui-button ref={saveRef} disabled={!name || !!nameError}>Save geometry theme</ui-button>
           </Group>
         </div>
 
