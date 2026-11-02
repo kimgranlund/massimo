@@ -19,15 +19,15 @@ import { CONTAINERS, PAGE_MAX_WIDTH_REM, TYPE_ROLES, VOICES, resolveContainer, r
 
 // Specimen layout: the page container (8u padding and gap) holds titled sections split by
 // dividers. Each section is a list of labelled rows: label on the left, specimens on the right.
-const shell = pageLayout({ width: '80rem' });
+const shell = pageLayout({ width: '[80rem]' });
 // Layout responds to the canvas width (the jig panel takes part of the viewport), not the viewport.
 const canvasQuery = css({ containerType: 'inline-size', containerName: 'canvas' });
 const CQ_MD = '@container canvas (min-width: 40rem)';
 const CQ_LG = '@container canvas (min-width: 64rem)';
 const header = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const pageTitle = css({ textStyle: 'display' });
-const lead = css({ textStyle: 'body-large', color: 'fg.muted', maxWidth: '60ch' });
-const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: '100%' });
+const lead = css({ textStyle: 'body-large', color: 'fg.muted', maxWidth: 'prose' });
+const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: 'full' });
 const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const sectionHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const sectionTitle = css({ textStyle: 'heading-2' });
@@ -40,22 +40,22 @@ const columns = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '8', ali
 const subTitle = css({ textStyle: 'heading-3' });
 const stack = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const avatar = css({ display: 'block', bg: 'accent.solid' });
-const media = css({ width: '100%', maxWidth: '40rem', borderRadius: 'xl', overflow: 'hidden' });
+const media = css({ width: 'full', maxWidth: '[40rem]', borderRadius: 'xl', overflow: 'hidden' });
 const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: 'end' });
-const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '8rem' });
+const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
 const levelBox = css({ bg: 'accent.subtle', alignSelf: 'start' });
-const levelList = css({ minWidth: '40' });
+const levelList = css({ minWidth: '[10rem]' });
 const tokenTable = css({ display: 'grid', gridTemplateColumns: 'auto auto auto auto 1fr', columnGap: '6', rowGap: '2', alignItems: 'baseline', '& > [role=row]': { display: 'contents' } });
 const tokenHead = css({ '& > *': { textStyle: 'group-kicker', color: 'fg.muted' } });
 const tokenRow = css({ '& > :first-child': { textStyle: 'label', fontWeight: 'semibold' } });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const tileRow = css({ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
-const wideCol = css({ minWidth: '64', bg: 'bg.muted', borderRadius: 'lg' });
+const wideCol = css({ minWidth: '[16rem]', bg: 'bg.muted', borderRadius: 'lg' });
 const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1', bg: 'bg.muted', borderRadius: 'lg' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
-const ramp = css({ width: '100%' });
+const ramp = css({ width: 'full' });
 const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
 // Below the medium breakpoint the specimen comes first and its specs follow.
 const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5', order: 1, [CQ_MD]: { order: 0 } });
@@ -66,7 +66,7 @@ const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc
 const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}` });
 // The baseline grid pitch is rhythm × u, computed from the canvas's own theme variables.
 const rhythmGrid = css({ backgroundSize: '100% calc(4px * var(--ui-type-rhythm) * var(--ui-unit)), 100% calc(1px * var(--ui-type-rhythm) * var(--ui-unit))' });
-const rhythmText = css({ whiteSpace: 'pre-wrap', maxWidth: '60ch' });
+const rhythmText = css({ whiteSpace: 'pre-wrap', maxWidth: 'prose' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 // Same two columns as the role rows: role names in the spec column (from the medium breakpoint),
 // the article in the sample column at a readable measure.
@@ -76,15 +76,15 @@ const article = css({
   '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', overflowX: 'auto' },
 });
 const articleRole = css({ display: 'none', textStyle: 'code', color: 'fg.muted', [CQ_MD]: { display: 'block' } });
-const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
+const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'regular' } });
 const chartGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_LG]: { gridTemplateColumns: '1fr 1fr' } });
 const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
-const chartSvg = css({ width: '100%', height: 'auto', color: 'fg', overflow: 'visible' });
-const chartLabel = css({ fontFamily: 'mono', fontSize: '11px', fill: 'fg.muted' });
-const chartTick = css({ fontFamily: 'mono', fontSize: '10px', fill: 'fg.muted' });
-const axis = css({ stroke: 'border.strong', strokeWidth: 1 });
-const grid = css({ stroke: 'border', strokeWidth: 1 });
-const dashed = css({ stroke: 'fg.muted', strokeWidth: 1, strokeDasharray: '3 3', fill: 'none' });
+const chartSvg = css({ width: 'full', height: 'auto', color: 'fg', overflow: 'visible' });
+const chartLabel = css({ fontFamily: 'mono', fontSize: '[11px]', fill: 'fg.muted' });
+const chartTick = css({ fontFamily: 'mono', fontSize: '[10px]', fill: 'fg.muted' });
+const axis = css({ stroke: 'border.strong', strokeWidth: '[1px]' });
+const grid = css({ stroke: 'border', strokeWidth: '[1px]' });
+const dashed = css({ stroke: 'fg.muted', strokeWidth: '[1px]', strokeDasharray: '3 3', fill: 'none' });
 const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
 // Campaign, the primary ramp as a vertical strip (step 1 at the top), then ink and tint panels.
@@ -98,7 +98,7 @@ const brandGrid = css({
     '& > [data-ramp]': { gridColumn: '3', gridRow: '1 / 3' },
   },
 });
-const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
+const campaign = css({ justifyContent: 'space-between', minHeight: '[20rem]' });
 // Type roles only: kickers, display, headings and figures come from the typography system.
 const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
 const sectionKicker = css({ textStyle: 'section-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
@@ -113,16 +113,16 @@ const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-num
 // Role overview: one chip per role (step-9 swatch, role, family).
 const roleGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(9rem, 1fr))', gap: '3' });
 const roleChip = css({ display: 'flex', alignItems: 'center', gap: '3', '& figcaption': { display: 'flex', flexDirection: 'column' } });
-const roleSwatch = css({ width: '2.5rem', height: '2.5rem', borderRadius: 'lg', flexShrink: 0 });
+const roleSwatch = css({ width: '8', height: '8', borderRadius: 'lg', flexShrink: 0 });
 const rampStrip = css({
   display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', borderRadius: 'xl', overflow: 'hidden',
-  [CQ_MD]: { display: 'flex', flexDirection: 'column', width: '14rem', alignSelf: 'stretch' },
+  [CQ_MD]: { display: 'flex', flexDirection: 'column', width: '[14rem]', alignSelf: 'stretch' },
 });
 const rampStep = css({
-  display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '2', minHeight: '3.5rem', padding: '2',
+  display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '2', minHeight: '[3.5rem]', padding: '2',
   textStyle: 'control-small', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
   '& > span:last-child': { display: 'none' },
-  [CQ_MD]: { flex: '1', minHeight: '2.5rem', alignItems: 'center', paddingInline: '3', '& > span:last-child': { display: 'block', opacity: 0.8 } },
+  [CQ_MD]: { flex: '1', minHeight: '[2.5rem]', alignItems: 'center', paddingInline: '3', '& > span:last-child': { display: 'block', opacity: 0.8 } },
 });
 const RAMP_USE = ['App background', 'Subtle background', 'Element', 'Hovered', 'Active, selected', 'Subtle border', 'Border', 'Strong border', 'Solid', 'Solid hover', 'Muted text', 'Text'];
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
@@ -139,7 +139,7 @@ const uiGrid = css({
 const cardTitle = css({ textStyle: 'heading-3' });
 const chartCard = css({ [CQ_MD]: { gridColumn: 'span 2' } });
 const feedbackCard = css({ [CQ_MD]: { gridColumn: 'span 2' }, [CQ_LG]: { gridColumn: 'span 1' } });
-const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
+const chart = css({ display: 'flex', gap: '3', height: '[10rem]', alignItems: 'stretch' });
 const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
 // Stacked bar: data 1 at the bottom; 1px gaps separate the series, the top rounds.
 // Static color classes from role tokens: the demos never set colors inline.
@@ -173,7 +173,7 @@ const ROLE_BG: Record<string, string> = {
   data1: DATA_BG[0], data2: DATA_BG[1], data3: DATA_BG[2], data4: DATA_BG[3], data5: DATA_BG[4], data6: DATA_BG[5],
 };
 // Voice samples: each voice's family (repointed voices set --font-voice-* on the canvas).
-const voiceSample = css({ fontSize: '1.5em', lineHeight: 1.3 });
+const voiceSample = css({ fontSize: '[1.5em]', lineHeight: 'snug' });
 const VOICE_FONT: Record<string, string> = {
   display: css({ fontFamily: 'var(--font-voice-display, var(--fonts-display))' }),
   heading: css({ fontFamily: 'var(--font-voice-heading, var(--fonts-sans))' }),
@@ -182,12 +182,12 @@ const VOICE_FONT: Record<string, string> = {
   numeric: css({ fontFamily: 'var(--font-voice-numeric, var(--font-voice-ui, var(--fonts-controls)))', fontVariantNumeric: 'tabular-nums lining-nums' }),
   code: css({ fontFamily: 'var(--font-voice-code, var(--fonts-mono))', whiteSpace: 'pre' }),
 };
-const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '1px', width: '60%', flex: '1', minHeight: 0, marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0, height: 'calc(var(--v) * 100%)' }, '& > span:last-child': { borderTopRadius: 'sm' } });
+const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '[1px]', width: '3/5', flex: '1', minHeight: '0', marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0, height: '[calc(var(--v) * 100%)]' }, '& > span:last-child': { borderTopRadius: 'sm' } });
 const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
 const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'body' });
-const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: 'min(100%, 24rem)' });
+const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
 
 function Section({ id, title, children, note }: { id: string; title: string; note: string; children: React.ReactNode }) {
   return (

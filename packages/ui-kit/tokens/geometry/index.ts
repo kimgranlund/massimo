@@ -17,7 +17,12 @@ export const spacing = {
   gap: ladder((l) => u(`var(--ui-gap-${l})`)),
   inset: ladder((l) => `max(0px, ${u(`var(--ui-pad-${l})`)} - ${B})`),
 };
-export const sizes = Object.fromEntries(STEPS.map((n) => [n, { value: n === 0 ? '0' : u(n) }]));
+export const sizes = {
+  ...Object.fromEntries(STEPS.map((n) => [n, { value: n === 0 ? '0' : u(n) }])),
+  // Keywords (not lengths): fill, intrinsic sizes, and the readable measure.
+  full: { value: '100%' }, min: { value: 'min-content' }, max: { value: 'max-content' }, fit: { value: 'fit-content' },
+  prose: { value: '65ch' },
+};
 const scaled = (n: number) => ({ value: `calc(${n} * var(--ui-unit) * var(--ui-radius-scale) * 1px)` });
 export const radii = {
   none: { value: '0' },

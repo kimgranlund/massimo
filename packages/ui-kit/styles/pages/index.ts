@@ -21,7 +21,7 @@ export const page = definePattern({
 export const prose = definePattern({
   description: 'Readable long-form text with vertical rhythm',
   transform: (props) => ({
-    maxWidth: '65ch',
+    maxWidth: 'prose',
     '& > * + *': { marginTop: '4' },
     '& h1': { textStyle: 'heading-1' }, '& h2': { textStyle: 'heading-2' }, '& h3': { textStyle: 'heading-3' },
     '& a': { color: 'accent.fg', textDecoration: 'underline' },
