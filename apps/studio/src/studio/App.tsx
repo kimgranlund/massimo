@@ -192,7 +192,7 @@ export function App() {
               {([['Brand', BRAND_ROLES], ['Feedback', FEEDBACK_ROLES], ['Data', DATA_ROLES]] as [string, readonly RoleName[]][]).map(([title, names]) => (
                 <Group key={title} title={title}>
                   {names.map((r) => (
-                    <Select key={r} label={ROLE_LABEL(r)} value={generated?.roles[r] ?? roles[r]}
+                    <Select key={r} label={ROLE_LABEL(r)} value={(r === 'neutral' ? familyNames.neutrals : familyNames.accents).includes(roles[r]) ? roles[r] : generated?.roles[r] ?? roles[r]}
                       options={(r === 'neutral' ? familyNames.neutrals : familyNames.accents).map((n) => [n, n])}
                       onValue={(v) => setRoles((cur) => ({ ...cur, [r]: v }))}
                       swatch={(family) => `var(--colors-spectrum-${family}-9)`} />

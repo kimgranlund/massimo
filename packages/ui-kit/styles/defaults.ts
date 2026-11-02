@@ -106,10 +106,13 @@ export const defaults = defineGlobalStyles({
   ':is(ui-input, [data-ui=input]) > [data-part=control] > :is([data-part=leading], [data-part=trailing])': { color: 'fg.muted' },
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
+    flexDirection: 'column',
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
     bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
   },
-  'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column' },
+  // The column layout holds in every state: while closing, the popup stays displayed for its fade
+  // (display transitions discretely), so a direction set only on :popover-open would flip it to a row.
+  'ui-select > [data-part=popup]:popover-open': { display: 'flex' },
 
   // Badge, tag, chip (lengths in styles/geometry.ts)
   ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
