@@ -114,7 +114,7 @@
         },
         {
           "role": "styles",
-          "source": "styles/motion.ts"
+          "source": "components/recipe-parts.ts"
         },
         {
           "role": "styles",
@@ -267,7 +267,7 @@
     "states": {
       "id": "foundation:states",
       "title": "States",
-      "summary": "Every interaction and data state keyed on ARIA or data-* attributes, styled once in styles/defaults.ts.",
+      "summary": "Every interaction and data state keyed on ARIA or data-* attributes; the Panda conditions (styles/conditions.ts) match both renderers and each component recipe styles its states.",
       "documentation": "../../docs/specs/components.md#states",
       "authority": [
         {
@@ -276,7 +276,7 @@
         },
         {
           "role": "styles",
-          "source": "styles/defaults.ts"
+          "source": "styles/conditions.ts"
         }
       ],
       "searchTerms": [

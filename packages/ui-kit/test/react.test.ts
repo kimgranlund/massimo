@@ -66,6 +66,9 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
   assert.match(html(h(Image, { src: '/a.jpg', alt: 'A', ratio: 'wide' })), /data-ui="image" data-ratio="wide" data-fit="cover".*<img src="\/a.jpg" alt="A" loading="lazy" decoding="async"/);
   assert.match(html(h(Image, { ratio: '3/2' })), /--ui-image-ratio:3\/2/);
   assert.doesNotMatch(html(h(Image, { ratio: 'evil;' })), /--ui-image-ratio/);
+  // Ratio and fit presets are recipe variants (image.recipe.ts); a custom ratio is the custom variant.
+  assert.match(html(h(Image, { ratio: 'wide', fit: 'contain' })), /class="ui-image__root ui-image__root--fit_contain ui-image__root--ratio_wide ui-image__root--slideshow_false"/);
+  assert.match(html(h(Image, { ratio: '3/2' })), /ui-image__root--ratio_custom/);
   assert.equal(html(h(Card, {}, 'x')), '<div data-ui="card">x</div>');
   assert.equal(html(h(Group, { gap: 2 }, 'x')), '<div data-ui="group" gap="2">x</div>');
 });
@@ -89,10 +92,16 @@ test('Listbox, Segmented, Option: ARIA listboxes like the web components, form v
 const { Swiper } = await loadTsx(new URL('../components/swiper/swiper.react.tsx', import.meta.url));
 
 test('Swiper: carousel region, scroll-snap viewport of slides, native paddle and dot buttons; Image slideshow uses it', () => {
-  const sw = html(h(Swiper, { label: 'Highlights', hoverControls: true }, h('div', null, 'One'), h('div', null, 'Two')));
+  const sw = bare(h(Swiper, { label: 'Highlights', hoverControls: true }, h('div', null, 'One'), h('div', null, 'Two')));
   assert.match(sw, /^<div data-ui="swiper" role="region" aria-roledescription="carousel" aria-label="Highlights" data-hover-controls="true">/);
   assert.match(sw, /<div data-part="viewport" tabindex="0"><div data-part="slide" role="group" aria-roledescription="slide" aria-label="1 of 2"><div>One<\/div><\/div>/);
-  assert.match(sw, /<button type="button" class="ui-button__root ui-button__root--variant_neutral" data-ui="button" data-part="paddle" data-dir="prev" data-icon-size="lg" aria-label="Previous slide" aria-disabled="true">/);
+  assert.match(sw, /<button type="button" data-ui="button" data-part="paddle" data-dir="prev" data-icon-size="lg" aria-label="Previous slide" aria-disabled="true">/);
+  // Classes: the swiper recipe's slots; a paddle is also a button-recipe root.
+  const classes = html(h(Swiper, { label: 'H' }, h('div', null, 'One'), h('div', null, 'Two')));
+  assert.match(classes, /^<div class="ui-swiper__root" data-ui="swiper"/);
+  assert.match(classes, /<div data-part="viewport" class="ui-swiper__viewport"/);
+  assert.match(classes, /class="ui-button__root ui-button__root--variant_neutral ui-swiper__paddle" data-ui="button" data-part="paddle"/);
+  assert.match(classes, /<div data-part="dots" class="ui-swiper__dots"><button type="button" class="ui-swiper__dot" data-part="dot"/);
   assert.match(sw, /<button type="button" data-part="dot" aria-label="Go to slide 1" aria-current="true"><\/button><button type="button" data-part="dot" aria-label="Go to slide 2" aria-current="false">/);
   assert.match(html(h(Swiper, {}, h('div', null, 'only'))), /data-single="true"/);
   assert.match(html(h(Image, { slideshow: true, alt: 'Products' }, h('img', { src: '/1.jpg', alt: '1' }))), /data-slideshow="true".*data-ui="swiper".*aria-label="Products".*data-hover-controls="true"/);

@@ -9,6 +9,8 @@ import { swatch, palette } from './color/color.recipe.ts';
 import { listbox, segmented, option } from './listbox/listbox.recipe.ts';
 import { input } from './input/input.recipe.ts';
 import { select } from './select/select.recipe.ts';
+import { swiper } from './swiper/swiper.recipe.ts';
+import { image } from './image/image.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image };
 

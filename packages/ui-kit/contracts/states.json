@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "notation": "Every state a component sets is keyed on ARIA or data-* (never a class) and styled once in styles/defaults.ts, so every renderer matches. components lists the tags that set or style the state.",
-  "styles": "styles/defaults.ts",
-  "motion": "styles/motion.ts",
+  "notation": "Every state a component sets is keyed on ARIA or data-* (never a class). The state conditions (styles/conditions.ts) match the web component ARIA host and the React native element, and each slot recipe (components/<name>/<name>.recipe.ts) styles its states with them, so every renderer matches. components lists the tags that set or style the state.",
+  "styles": "styles/conditions.ts",
+  "motion": "components/recipe-parts.ts",
   "states": {
     "hover-press": { "hook": ":hover / :active on enabled controls", "look": "neutral fill steps 3 → 4 → 5; solids primary.solidHover; selected options primary.subtleHover", "components": ["ui-button", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette"] },
     "keyboard-focus": { "hook": ":focus-visible after key use (html[data-modality=keyboard])", "look": "2px focus-ring outline; text fields keep it after a pointer click", "components": ["ui-button", "ui-chip", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette", "ui-swiper"] },

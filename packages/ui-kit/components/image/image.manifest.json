@@ -10,11 +10,8 @@
   "contract": "../../contracts/components.json#/components/image",
   "stateContract": "../../contracts/states.json",
   "styleSource": {
-    "format": "panda-global",
-    "modules": [
-      "../../styles/geometry.ts",
-      "../../styles/defaults.ts"
-    ]
+    "format": "panda-slot-recipe",
+    "module": "./image.recipe.ts"
   },
   "independentLayers": [
     {

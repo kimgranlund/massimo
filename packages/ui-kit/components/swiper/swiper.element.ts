@@ -4,6 +4,8 @@
 // hover or focus). Fires `slidechange` with detail { index }.
 import { UIElement, define, signal } from '../../core/index.ts';
 import { applyAttrs } from '../../dom/index.ts';
+import { applyRecipe, partOf, setClasses } from '../classes.ts';
+import { swiper } from '../../styled-system/recipes/swiper.js';
 import '../button/button.element.ts';
 import '../../icons/index.ts';
 
@@ -112,6 +114,10 @@ export class UISwiper extends UIElement {
     }
     this.#dots?.querySelectorAll<HTMLElement>('[data-part=dot]').forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
     this.toggleAttribute('data-single', n <= 1);
+    const c = swiper();
+    applyRecipe(this, c, (slot) => slot === 'paddle' || slot === 'dot' ? null : partOf(this, slot));
+    for (const p of [this.#prev, this.#next]) setClasses(p, c.paddle, 'swiper');
+    this.#dots?.querySelectorAll('[data-part=dot]').forEach((d) => setClasses(d, c.dot));
   }
 }
 

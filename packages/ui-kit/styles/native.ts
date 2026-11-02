@@ -11,11 +11,6 @@ type Css = Record<string, any>;
 
 /** Components with a native React twin, and how their state hooks map. */
 export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
-  image: [
-    [/\[ratio(?=[=\]])/g, '[data-ratio'],
-    [/\[fit=/g, '[data-fit='],
-    [/\[slideshow\]/g, '[data-slideshow]'],
-  ],
   group: [], collection: [], tile: [], card: [], panel: [], region: [], page: [],
   // Listbox and segmented are ARIA listboxes with the web components' attributes (dom/listbox.ts).
   listbox: [],
@@ -32,11 +27,6 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
     [/\[aria-invalid=true\]/g, ':is(:user-invalid > *, [data-invalid] > select > *)'],
     [/\[aria-disabled=true\]/g, ':is(:disabled > *)'],
     [/\[data-ui=select\]\[required\]/g, '[data-ui=select]:has(> select:required)'],
-  ],
-  swiper: [
-    [/\[no-paddles\]/g, '[data-no-paddles]'],
-    [/\[no-dots\]/g, '[data-no-dots]'],
-    [/\[hover-controls\]/g, '[data-hover-controls]'],
   ],
   // An option is an ARIA option (listbox, segmented: same attributes as the web component) or a native
   // <option> (select: :checked, :disabled, :focus).

@@ -6,27 +6,35 @@
   "sources": [
     {
       "path": "components/image/image.element.ts",
-      "sha256": "b4732cd81255fe4bbeca802416bd4c4863dbce079c5a0711070992cdb2be4079"
+      "sha256": "69fad04cbe0ec70db844baf0bb1e4ca377be061e88b267ffe66b448e345ac219"
     },
     {
       "path": "components/image/ratios.ts",
-      "sha256": "e421c5212927ddded1f5355e51b825fd4ce039153cac03ef97326c45c9d54d76"
+      "sha256": "5505555c58aa344f0d2a6124349df38f7620f89e77a5d9e08a4cbc3fc462498d"
     },
     {
       "path": "components/image/image.manifest.json",
-      "sha256": "0ce4e0e148c92662c60ed48247b5823469782813149087bf5ce09af2172720c2"
+      "sha256": "11f8b873e6f6a995965c57b0ace369ab8392e05e9f5d9adf63d88a95e1919493"
     },
     {
       "path": "components/image/image.react.tsx",
-      "sha256": "7ed88053447af0493d765e1be944ced850d041d289a59d573996c20a58caae08"
-    },
-    {
-      "path": "styles/native.ts",
-      "sha256": "fa00ea3b6b3be63fafa6e911ab78925012bb47cd017825f55db595e762d02d49"
+      "sha256": "06fd36406ae084ac70085a5ab115ca1e36f9939174777a81263f3161b64cdeb4"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
-      "sha256": "3edfc4f21697246d5f03cf9b4d3e6f44be51f6bcc2beab3c051bce5af4c92f65"
+      "sha256": "12ef727d6b887c78ae3627d24a234927a80dc3d051a05202558c4d289c87b041"
+    },
+    {
+      "path": "components/image/image.recipe.ts",
+      "sha256": "5efcb8696a68f9ba5b6e63496c04168821700312b4f27265bfd5385832ad552f"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "8e61fc57a82deed61255c491c43167df744e2f7b841be63c13c82ecba084d7bd"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -35,13 +43,18 @@
         {
           "command": "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
           "covers": "image presets and slideshow (shared test with swiper)"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -55,8 +68,8 @@
           "covers": "native anatomy, roles, controls and slides"
         },
         {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors and state mapping"
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -64,7 +77,7 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -99,17 +99,6 @@ export const geometry = defineGlobalStyles({
     '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
   },
 
-  // Swiper: paddles are 8u icon buttons inset 2u; dots are 2u (active 4u) in 4u hit areas.
-  // Paddle carets follow the paddle's icon size (lg), not the sm indicator rule for carets.
-  // Paddles are fully round whatever the curvature setting (like the dots): radius = half the height.
-  'ui-swiper [data-part=paddle]': { position: 'absolute', insetBlockStart: 'calc(50% - 4 * var(--u))', '--radius': 'calc(var(--h) / 2)' },
-  'ui-swiper [data-part=paddle][data-dir=prev]': { insetInlineStart: 'calc(2 * var(--u))' },
-  'ui-swiper [data-part=paddle][data-dir=next]': { insetInlineEnd: 'calc(2 * var(--u))' },
-  'ui-swiper [data-part=dots]': { position: 'absolute', insetBlockEnd: 'calc(2 * var(--u))', insetInline: 0, display: 'flex', justifyContent: 'center', gap: 'var(--u)' },
-  'ui-swiper [data-part=dot]': { display: 'grid', placeItems: 'center', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))' },
-  'ui-swiper [data-part=dot]::before': { content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: 'var(--u)' },
-  'ui-swiper [data-part=dot][aria-current=true]::before': { width: 'calc(4 * var(--u))' },
-
   // Composite (0.5u level). Declared on the parent; options read the inherited values.
   [COMPOSITE]: {
     '--d': 'max(var(--b), calc(var(--ui-pad-composite) * var(--u)))',

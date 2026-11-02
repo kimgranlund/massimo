@@ -10,12 +10,8 @@
   "contract": "../../contracts/components.json#/components/swiper",
   "stateContract": "../../contracts/states.json",
   "styleSource": {
-    "format": "panda-global",
-    "modules": [
-      "../../styles/geometry.ts",
-      "../../styles/defaults.ts",
-      "../../styles/motion.ts"
-    ]
+    "format": "panda-slot-recipe",
+    "module": "./swiper.recipe.ts"
   },
   "independentLayers": [
     {

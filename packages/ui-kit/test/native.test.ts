@@ -6,8 +6,8 @@ import { twinSelector, splitSelectors, withNativeTwins } from '../styles/native.
 test('twinSelector maps the tag and the ARIA state to the native element', () => {
   assert.equal(twinSelector('ui-option[aria-selected=true]'), '[data-ui=option]:is([aria-selected=true], :checked)');
   assert.equal(twinSelector('ui-option[data-active]'), '[data-ui=option]:is([data-active], :focus)');
-  assert.equal(twinSelector('ui-swiper[no-paddles] [data-part=paddle]'), '[data-ui=swiper][data-no-paddles] [data-part=paddle]');
-  assert.equal(twinSelector('ui-image[ratio=wide]'), '[data-ui=image][data-ratio=wide]');
+  assert.equal(twinSelector('ui-listbox > ui-option'), '[data-ui=listbox] > [data-ui=option]');
+  assert.equal(twinSelector('ui-card'), '[data-ui=card]');
   assert.equal(twinSelector('ui-checkbox[aria-checked=true]'), null, 'recipe components have no twins');
   assert.equal(twinSelector('ui-option-like'), null, 'whole tag names only');
 });

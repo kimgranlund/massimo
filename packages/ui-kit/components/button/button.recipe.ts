@@ -8,7 +8,6 @@ const PATTERN = constructionPattern({
   slot: 'var(--u)', bare: 'calc(2 * var(--u))',
   text: { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)' },
 });
-const SWIPER = ':is(ui-swiper, [data-ui=swiper])';
 const REDUCED = '@media (prefers-reduced-motion: reduce)';
 
 export const button = defineSlotRecipe({
@@ -38,13 +37,6 @@ export const button = defineSlotRecipe({
       // Reduced motion: no sweep; a full, faint bar still says "working".
       [REDUCED]: { _busy: { _after: { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 } } },
       [FORCED]: { ...FORCED_EDGE, _disabled: { color: 'GrayText' } },
-      // Swiper paddles (a ui-button / data-ui=button with data-part=paddle) rest on the page fill,
-      // keep their lg caret, hide in a single-slide or no-paddles swiper and, with hover-controls,
-      // fade in. Moves to the swiper recipe.
-      '&[data-part=paddle]': { bg: 'bg', zIndex: 1, '&[data-dir] > [data-part=leading] > i': { width: 'var(--icon)', height: 'var(--icon)' } },
-      [`${SWIPER}:is([data-single], [no-paddles], [data-no-paddles]) &[data-part=paddle][data-dir]`]: { display: 'none' },
-      [`${SWIPER}:is([hover-controls], [data-hover-controls]) &[data-part=paddle][data-dir]`]: { opacity: 0, transition: t('reveal', 'opacity') },
-      [`${SWIPER}:is([hover-controls], [data-hover-controls]):is(:hover, :focus-within) &[data-part=paddle][data-dir]`]: { opacity: 1 },
     },
     contents: { minWidth: 'var(--slot)' },
   },
