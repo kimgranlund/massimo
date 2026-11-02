@@ -3,7 +3,7 @@
 Steps for tuning a theme in the jig and handing the result to an agent, which applies it to the kit. The jig itself: [studio](../specs/studio.md).
 
 1. Start it: `npm run studio`, then open http://localhost:5173.
-2. Tune. Components: unit, border, corner radius and shape, motion duration scale and bounce, icon set. Containers: padding and gap per level. Colors: Spectrum settings and role families. Typography: ratio, rhythm, a stack per face and a face per voice. The header button cycles the scheme; check both light and dark.
+2. Tune in the panel tabs. Geometry: unit, border, corner radius and shape, icon set, padding and gap per level. Colors: Spectrum settings and role families. Typography: ratio, rhythm, a stack per face and a face per voice. Motion: duration scale, bounce, springs and intents. Pick the page to look at from the content header's page menu (the URL hash, e.g. `#/geometry`); its trailing button cycles the scheme, so check both light and dark.
 3. Press **Copy**. The clipboard holds JSON of every setting that differs from the defaults: `theme` (parameters and `icons`), `scheme`, `typography.voices` and `faces`, `spectrum.settings` and `spectrum.roles`, plus `howToApply`.
 4. Paste the JSON into the agent prompt with what it is for: a saved theme, or new kit defaults.
 
