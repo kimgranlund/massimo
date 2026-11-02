@@ -6,6 +6,7 @@ import {
   listboxAttrs, navigate, optionAttrs, placePopup, selectKeyIntent, uid,
 } from '../../dom/index.ts';
 import '../listbox/option.element.ts';
+import '../../icons/index.ts';
 import { ensureId, optionList } from '../listbox/options.ts';
 
 export class UISelect extends UIFormElement {
@@ -59,7 +60,7 @@ export class UISelect extends UIFormElement {
       <span data-part="label" ?hidden=${!this.label} @click=${this.#focusTrigger}>${this.label}</span>
       <div data-part="trigger" @keydown=${this.#onKeydown} @click=${this.#onTriggerClick} @blur=${this.#onBlur}>
         <span data-part="value" ?data-placeholder=${!selected}>${selected?.label || this.placeholder}</span>
-        <span data-part="chevron" aria-hidden="true"></span>
+        <span data-part="chevron" aria-hidden="true"><i name="caret-down"></i></span>
       </div>
       <div data-part="popup" popover="manual" @pointerdown=${this.#keepFocus} @mousedown=${this.#keepFocus} @click=${this.#onOptionClick}></div>
       <span data-part="description" ?hidden=${!this.description}>${this.description}</span>

@@ -10,6 +10,7 @@
     "typecheck": "tsc -p ."
   },
   "dependencies": {
-    "@massimo/ui-kit": "*"
+    "@massimo/ui-kit": "*",
+    "@phosphor-icons/core": "^2.1.1"
   }
 }

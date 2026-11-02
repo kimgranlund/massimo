@@ -5,6 +5,8 @@ import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/select/element';
+import { ICON_SET_NAME } from '@massimo/ui-kit/icons';
+import '../icons.ts';
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Button } from '@massimo/ui-kit/components/button/react';
@@ -22,6 +24,7 @@ listen(() => parent, (m) => {
   // Explicit scheme from the studio; without a message the canvas follows the host preference.
   root.classList.toggle('dark', m.dark);
   root.classList.toggle('light', !m.dark);
+  if (ICON_SET_NAME.test(m.icons)) root.setAttribute('data-icons', m.icons);
 });
 post(parent, { type: 'studio/ready' });
 
@@ -31,12 +34,6 @@ const eyebrow = css({ textStyle: 'caption', color: 'fg.muted', textTransform: 'u
 const title = css({ textStyle: 'heading' });
 const form = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const avatar = css({ display: 'block', bg: 'accent.solid' });
-
-// Demo icons: plain inline SVG, sized by the slot (--icon).
-const svg = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true };
-const Plus = (p: { slot?: string }) => <svg {...svg} {...p}><path d="M12 5v14M5 12h14" /></svg>;
-const Arrow = (p: { slot?: string }) => <svg {...svg} {...p}><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
-const Globe = (p: { slot?: string }) => <svg {...svg} {...p}><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>;
 
 const row = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
 
@@ -58,21 +55,21 @@ function Canvas() {
             <ui-option value="research">Researcher</ui-option>
           </ui-select>
           <div className={row}>
-            <ui-button data-size="3"><Plus slot="leading" />Add</ui-button>
-            <ui-button><Plus slot="leading" />Add item</ui-button>
-            <ui-button data-size="4.5">Next<Arrow slot="trailing" /></ui-button>
-            <ui-button aria-label="Add"><Plus slot="leading" /></ui-button>
+            <ui-button data-size="3"><i slot="leading" name="plus" />Add</ui-button>
+            <ui-button><i slot="leading" name="plus" />Add item</ui-button>
+            <ui-button data-size="4.5">Next<i slot="trailing" name="arrow-right" /></ui-button>
+            <ui-button aria-label="Add"><i slot="leading" name="plus" /></ui-button>
             <ui-button icon-size="fill"><span slot="leading" className={avatar} />Kim</ui-button>
-            <ui-button icon-size="lg"><Plus slot="leading" />Large icon</ui-button>
+            <ui-button icon-size="lg"><i slot="leading" name="plus" />Large icon</ui-button>
           </div>
           <ui-segmented name="plan" value="monthly" label="Billing">
             <ui-option value="monthly">Monthly</ui-option>
             <ui-option value="yearly">Yearly</ui-option>
           </ui-segmented>
           <ui-listbox name="region" value="eu" label="Region">
-            <ui-option value="us"><Globe slot="leading" />United States</ui-option>
-            <ui-option value="eu"><Globe slot="leading" />Europe</ui-option>
-            <ui-option value="apac"><Globe slot="leading" />Asia Pacific</ui-option>
+            <ui-option value="us"><i slot="leading" name="globe" />United States</ui-option>
+            <ui-option value="eu"><i slot="leading" name="globe" />Europe</ui-option>
+            <ui-option value="apac"><i slot="leading" name="globe" />Asia Pacific</ui-option>
           </ui-listbox>
           <div className={row}>
             <ui-button type="submit">Create account</ui-button>
@@ -90,7 +87,7 @@ function Canvas() {
         <Input label="Email" placeholder="you@example.com" description="We never share it." />
         <Input label="Password" type="password" error="At least 12 characters." />
         <div className={row}>
-          <Button leading={<Plus />}>Create account</Button>
+          <Button leading={<i name="plus" />}>Create account</Button>
           <Button>Sign in</Button>
           <Button>Help</Button>
           <Button>Delete</Button>

@@ -2,7 +2,7 @@
 // boundary ready for serving previews from a separate origin later.
 import type { ThemeParams } from '@massimo/ui-kit/tokens';
 
-export type ThemeMessage = { type: 'studio/theme'; params: ThemeParams; dark: boolean };
+export type ThemeMessage = { type: 'studio/theme'; params: ThemeParams; dark: boolean; icons: string };
 export type ReadyMessage = { type: 'studio/ready' };
 export type StudioMessage = ThemeMessage | ReadyMessage;
 

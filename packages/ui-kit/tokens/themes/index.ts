@@ -12,8 +12,9 @@ export * from './validate.ts';
 
 export const savedThemes = saved as Record<string, ThemeOverrides>;
 
+// Numeric parameters become CSS variables; `icons` is read by the icon runtime instead.
 const toVars = (p: ThemeOverrides) =>
-  Object.fromEntries(Object.entries(p).map(([k, v]) => [paramVar(k as ParamName), String(v)]));
+  Object.fromEntries(Object.entries(p).filter(([, v]) => typeof v === 'number').map(([k, v]) => [paramVar(k as ParamName), String(v)]));
 
 /** Global CSS: defaults on :root, then one block per saved theme. */
 export function themeCss(themes: Record<string, ThemeOverrides> = savedThemes) {

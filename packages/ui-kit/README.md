@@ -6,6 +6,7 @@ Light-DOM web components and React components built on one headless layer and on
 |---|---|---|
 | `core/` | `signal`/`computed`/`effect`, `html`/`render`/`repeat`, `UIElement`, `UIFormElement`, `define` | nothing |
 | `dom/` | Headless behaviors: functions that return attribute maps and handle events (`buttonAttrs`, `fieldAttrs`, …) | nothing |
+| `icons/` | Theme-aware `<i name>` runtime, built-in CDN sets, `moduleSet` for bundled sets, SVG sanitizer | `tokens` |
 | `tokens/` | Global tokens in Panda format: `colors/`, `typography/`, `geometry/`, `motion/` | `@pandacss/dev` |
 | `styles/` | Reset, text styles, `pages/` patterns (`page`, `prose`) | `@pandacss/dev` |
 | `components/<name>/` | `<name>.element.ts` (web component), `<name>.react.tsx` (React, where present) | `core`, `dom` |
@@ -16,6 +17,16 @@ Components carry no styles of their own yet. `styles/defaults.ts` is one boilerp
 ## Color scheme
 
 Dark is automatic when the host prefers it (`prefers-color-scheme: dark`), with no script needed. Add `class="dark"` or `class="light"` to `<html>` or any element to force a scheme for that subtree.
+
+## Icons
+
+```html
+<script type="module">import '@massimo/ui-kit/icons';</script>
+<i name="caret-right"></i>
+<ui-button><i slot="leading" name="plus"></i>Add</ui-button>
+```
+
+Names are Phosphor's; other sets translate them through aliases (`caret-down` → Lucide/Tabler `chevron-down`). The set comes from the nearest `data-icons` attribute, else the active theme's `icons` value (`<html data-ui-theme>`), else `phosphor`. Built-ins load on demand from jsDelivr at pinned versions: `phosphor`, `lucide`, `tabler`. Bundle a set as a dependency instead with `registerIconSet('phosphor', moduleSet(import.meta.glob('…/*.svg', { query: '?raw', import: 'default' })))`. Fetched SVG is sanitized (drawing elements and presentation attributes only) before it touches the DOM. Icons are decorative (`aria-hidden`) unless given an `aria-label`.
 
 ## Geometry
 

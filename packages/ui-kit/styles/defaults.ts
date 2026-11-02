@@ -12,6 +12,11 @@ const BUTTON = ':is(ui-button, [data-ui=button])';
 export const defaults = defineGlobalStyles({
   '[hidden]': { display: 'none !important' },
 
+  // Icons: <i name="…"> filled by the icon runtime. 1em by default; slots size them to --icon.
+  // The box is reserved before the SVG arrives, so nothing shifts.
+  'i[name]': { display: 'inline-flex', width: '1em', height: '1em', flexShrink: 0, fontStyle: 'normal', lineHeight: 1 },
+  'i[name] > svg': { width: '100%', height: '100%' },
+
   // Button
   [BUTTON]: {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -49,10 +54,7 @@ export const defaults = defineGlobalStyles({
   'ui-select [data-part=value]': { flex: '1', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
   'ui-select [data-part=value][data-placeholder]': { color: 'fg.muted' },
   'ui-select [data-part=chevron]': { display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', marginInlineStart: 'var(--u)', color: 'fg.muted' },
-  'ui-select [data-part=chevron]::before': {
-    content: '""', width: 'calc(var(--icon) * 0.35)', height: 'calc(var(--icon) * 0.35)',
-    borderRightWidth: '1.5px', borderBottomWidth: '1.5px', borderColor: 'currentColor', transform: 'translateY(-25%) rotate(45deg)',
-  },
+  'ui-select [data-part=chevron] > i': { width: 'var(--icon)', height: 'var(--icon)' },
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',

@@ -4,7 +4,7 @@ import { Window } from 'happy-dom';
 const win = new Window({ url: 'http://localhost/' });
 const g = globalThis as any;
 for (const k of ['window', 'document', 'HTMLElement', 'Element', 'Node', 'NodeFilter', 'customElements',
-  'Event', 'KeyboardEvent', 'MouseEvent', 'InputEvent', 'ClipboardEvent', 'HTMLInputElement', 'HTMLFormElement', 'MutationObserver'])
+  'Event', 'KeyboardEvent', 'MouseEvent', 'InputEvent', 'ClipboardEvent', 'HTMLInputElement', 'HTMLFormElement', 'MutationObserver', 'DOMParser'])
   if (!(k in g) || k === 'Event') g[k] = (win as any)[k];
 g.window = win;
 
@@ -26,5 +26,8 @@ g.window = win;
     reportValidity() { return this.checkValidity(); },
   };
 };
+
+// Tests never touch the network: built-in icon sets get a placeholder SVG.
+g.fetch = async () => new Response('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0"/></svg>', { status: 200 });
 
 export const tick = () => new Promise((r) => setTimeout(r, 0));

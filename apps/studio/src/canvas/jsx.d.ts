@@ -4,6 +4,10 @@ import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 type El<P> = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & P;
 
 declare module 'react' {
+  interface HTMLAttributes<T> {
+    /** ui-kit icon name on <i>. */
+    name?: string;
+  }
   namespace JSX {
     interface IntrinsicElements {
       'ui-button': El<{ type?: string; disabled?: boolean; loading?: boolean; 'icon-size'?: string; size?: string }>;

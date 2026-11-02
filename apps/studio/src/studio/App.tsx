@@ -5,6 +5,7 @@ import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
 import { PARAMS, defaultParams, diffFromDefaults, savedThemes, THEME_NAME, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { listen, post } from '../protocol.ts';
+import { STUDIO_ICON_SETS } from '../icons.ts';
 import * as s from './styles.ts';
 
 const NAMES = Object.keys(PARAMS) as ParamName[];
@@ -24,19 +25,22 @@ export function App() {
   }, [pinned]);
   const [themes, setThemes] = useState(savedThemes);
   const [name, setName] = useState('');
+  const [icons, setIcons] = useState('phosphor');
   const [status, setStatus] = useState('');
 
-  const send = () => post(frame.current?.contentWindow, { type: 'studio/theme', params, dark });
-  useEffect(send, [params, dark]);
-  useEffect(() => listen(() => frame.current?.contentWindow, (m) => { if (m.type === 'studio/ready') send(); }), [params, dark]);
+  const send = () => post(frame.current?.contentWindow, { type: 'studio/theme', params, dark, icons });
+  useEffect(send, [params, dark, icons]);
+  useEffect(() => listen(() => frame.current?.contentWindow, (m) => { if (m.type === 'studio/ready') send(); }), [params, dark, icons]);
 
   const load = (key: string) => {
-    setParams({ ...defaultParams, ...(themes[key] ?? {}) });
+    const { icons: themeIcons, ...nums } = themes[key] ?? {};
+    setParams({ ...defaultParams, ...nums });
+    setIcons(themeIcons ?? 'phosphor');
     setName(key === '' ? '' : key);
     setStatus('');
   };
 
-  const overrides = diffFromDefaults(params);
+  const overrides = { ...diffFromDefaults(params), ...(icons !== 'phosphor' ? { icons } : {}) };
   const nameError = name && !THEME_NAME.test(name) ? 'Lowercase letters, digits and dashes; start with a letter.' : undefined;
 
   async function save() {
@@ -63,6 +67,13 @@ export function App() {
           <select className={s.select} value={themes[name] ? name : ''} onChange={(e) => load(e.target.value)}>
             <option value="">Default</option>
             {Object.keys(themes).map((t) => <option key={t} value={t}>{t}</option>)}
+          </select>
+        </label>
+
+        <label className={s.fieldLabel}>
+          Icons
+          <select className={s.select} value={icons} onChange={(e) => setIcons(e.target.value)}>
+            {STUDIO_ICON_SETS.map((n) => <option key={n} value={n}>{n}</option>)}
           </select>
         </label>
 
