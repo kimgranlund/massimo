@@ -64,6 +64,12 @@ export function resolveControl(input: GeometryInput = {}) {
   };
 }
 
+/** Button label padding: 1u beside a slot, 2u on a side with no leading/trailing element. */
+export function resolveButtonContents(leading: boolean, trailing: boolean, input: GeometryInput = {}) {
+  const u = resolveControl(input).unit;
+  return { start: leading ? u : 2 * u, end: trailing ? u : 2 * u };
+}
+
 // ── Containers ──
 // Each level has a padding (units of u) and a max radius that keeps corners concentric with
 // a 3u control sitting in the corner (3u + padding). Panel, region and page are square: they usually

@@ -30,7 +30,7 @@ Sources of truth, kept in agreement by tests:
 | height | 8u | 32 |
 | padding | 1u − B (the border lives inside the 1u) | 4 at B=0 |
 | slots | leading, contents, trailing: min 6u × 6u; empty slots are hidden | 24 |
-| contents padding | 1u inline, 0.75u block, line height 4.5u | 4 / 3 / 18 |
+| contents padding | 1u inline beside a slot, 2u on a side with no leading/trailing element (buttons); 0.75u block; line height 4.5u | 4 or 8 / 3 / 18 |
 | font | 10px + u | 14 |
 | icon sm / md / lg | font − 0.5u / font + 0.5u / font + 1.5u, capped at 6u | 12 / 16 / 20 |
 | icon fill | the whole 6u slot, object-fit cover, centered; radius = control radius − u | 24 |
@@ -85,6 +85,6 @@ The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). Padding is max(0, 0.5u �
 ## Verification
 
 - `npm test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
-- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 57 measured lengths each (2508 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
+- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 62 measured lengths each (2728 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
 
 Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: multiline fields, chips inside inputs, table cells.

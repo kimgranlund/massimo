@@ -59,6 +59,15 @@ export const geometry = defineGlobalStyles({
     display: 'flex', alignItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)',
     paddingInline: 'var(--u)', paddingBlock: 'calc(0.75 * var(--u))', lineHeight: 'var(--leading)',
   },
+  // Button label: 1u more on a side with no leading/trailing element (2u there, 1u beside a slot).
+  // Web components keep empty parts as [hidden]; React omits them, so contents is first/last child.
+  [`:is(ui-button, [data-ui=button]) > :is([data-part=leading][hidden] + [data-part=contents], [data-part=contents]:first-child)`]: {
+    paddingInlineStart: 'calc(2 * var(--u))',
+  },
+  [`:is(ui-button, [data-ui=button]) > :is([data-part=contents]:has(+ [data-part=trailing][hidden]), [data-part=contents]:last-child)`]: {
+    paddingInlineEnd: 'calc(2 * var(--u))',
+  },
+
   // Carets and the select chevron use icon size sm regardless of icon-size.
   [`:is(${SLOT}, [data-part=chevron]) > i[name^="caret-"]`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
 

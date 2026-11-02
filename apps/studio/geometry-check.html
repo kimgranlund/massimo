@@ -8,7 +8,7 @@ import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/btg/element';
-import { SIZES, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -25,6 +25,7 @@ for (const c of cases) {
   box.innerHTML = `<ui-button icon-size="${c.icon}"><span slot="leading"></span>Save</ui-button>
     <ui-button icon-size="${c.icon}" aria-label="x"><span slot="leading"></span></ui-button>
     <ui-button icon-size="${c.icon}">Menu<i slot="trailing" name="caret-down"></i></ui-button>
+    <ui-button>Text</ui-button>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     ${LEVELS.map((l) => `<ui-${l} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
@@ -33,7 +34,8 @@ for (const c of cases) {
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
   const ctl = resolveControl(g), cmp = resolveComposite(g), fld = resolveField(g), trg = resolveSelectTrigger(g);
-  const [btn, iconBtn, caretBtn] = box.querySelectorAll('ui-button');
+  const [btn, iconBtn, caretBtn, textBtn] = box.querySelectorAll('ui-button');
+  const pc = (b) => b.querySelector('[data-part=contents]');
   const lead = btn.querySelector('[data-part=leading]'), contents = btn.querySelector('[data-part=contents]');
   const inp = box.querySelector('ui-input [data-part=control]'), tr = box.querySelector('ui-select [data-part=trigger]');
   const seg = box.querySelector('ui-segmented'), [o1, o2] = seg.querySelectorAll('ui-option');
@@ -49,7 +51,12 @@ for (const c of cases) {
     'slot.width': [r2(rect(lead).width), ctl.slot],
     'slot.height': [r2(rect(lead).height), ctl.slot],
     'icon.size': [r2(rect(lead.firstElementChild).width), ctl.iconSize],
-    'contents.paddingInline': [px(cs(contents).paddingLeft), ctl.contents.paddingInline],
+    'label.leadingOnly.start': [px(cs(pc(btn)).paddingLeft), resolveButtonContents(true, false, g).start],
+    'label.leadingOnly.end': [px(cs(pc(btn)).paddingRight), resolveButtonContents(true, false, g).end],
+    'label.trailingOnly.start': [px(cs(pc(caretBtn)).paddingLeft), resolveButtonContents(false, true, g).start],
+    'label.trailingOnly.end': [px(cs(pc(caretBtn)).paddingRight), resolveButtonContents(false, true, g).end],
+    'label.textOnly.start': [px(cs(pc(textBtn)).paddingLeft), resolveButtonContents(false, false, g).start],
+    'label.textOnly.end': [px(cs(pc(textBtn)).paddingRight), resolveButtonContents(false, false, g).end],
     'contents.paddingBlock': [px(cs(contents).paddingTop), ctl.contents.paddingBlock],
     'iconOnly.square': [r2(rect(iconBtn).width), ctl.height],
     'input.height': [r2(rect(inp).height), fld.height],
