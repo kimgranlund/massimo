@@ -12,9 +12,9 @@ Start at [docs/specs/system.md](docs/specs/system.md), then the spec for the are
 ## Shared rules
 
 - Web components contain zero native form elements (`input`, `button`, `select`, `textarea`, `label`, `fieldset`, `option`, `output`, …). Form participation goes through `UIFormElement` (ElementInternals). Tests enforce this.
-- Every length comes from the geometry system: change `packages/ui-kit/tokens/geometry/resolve.ts` and `styles/geometry.ts` together, then regenerate `docs/geometry.csv` and `tokens/tokens.dtcg.json`. Never hard-code a component length elsewhere.
+- Every length comes from the geometry system: change `packages/ui-kit/tokens/geometry/resolve.ts` and `styles/geometry.ts` together, then regenerate `docs/geometry.csv` and `tokens/dtcg/`. Never hard-code a component length elsewhere.
 - Colors come from Spectrum. Change defaults through settings and `npm run spectrum:defaults`; never hand-edit `tokens/colors/spectrum/defaults.json` or `runtime.json` (vendored engine, see its `NOTICE.md`).
-- Generated files (`docs/geometry.csv`, `tokens/tokens.dtcg.json`, `tokens/colors/spectrum/defaults.json`, `styled-system/`, `dist/`) are never edited by hand; tests fail when the committed ones are stale.
+- Generated files (`docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `styled-system/`, `dist/`) are never edited by hand; tests fail when the committed ones are stale.
 - Preset style objects merge per selector (`mergeGlobalCss`); shared-variable rules use `:where()` so per-component rules win.
 - Typed element properties use `declare`, never class fields (a field shadows the reactive accessor). Avoid names that collide with built-in element properties (`role`, `ariaChecked`, …).
 - Continuous values reach CSS only as custom properties set by script (`--ui-ratio`, `--ui-swatch-color`); finite choices are attributes and CSS selectors. No runtime stylesheet generation in components.
@@ -27,7 +27,8 @@ From the repository root:
 - `npm run ui-kit:test`: unit tests (node:test + happy-dom), including staleness checks for the CSV, DTCG tokens and Spectrum snapshot.
 - `npm run ui-kit:typecheck` and `npm run typecheck -w @massimo/studio`.
 - `npm run ui-kit:build`: Panda codegen and `dist/ui-kit.css`.
-- After geometry or color changes: `npm run geometry:csv -w @massimo/ui-kit`, `npm run tokens:dtcg -w @massimo/ui-kit`, `npm run spectrum:defaults -w @massimo/ui-kit`.
+- Design tokens: `tokens/dtcg/` holds DTCG 2025.10 files (geometry, typography, color light/dark), validated against the vendored official schema in the tests.
+- After geometry, typography or color changes: `npm run geometry:csv -w @massimo/ui-kit`, `npm run tokens:dtcg -w @massimo/ui-kit`, `npm run spectrum:defaults -w @massimo/ui-kit`.
 - Browser: `npm run studio`, then open `/geometry-check.html`; `"fails": []` means rendered CSS matches the resolver.
 
 <!-- sdlc:managed:start v1 sha256:5af188d5b00b -->

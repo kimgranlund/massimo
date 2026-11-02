@@ -1,57 +1,157 @@
-// Generates tokens/tokens.dtcg.json: the geometry as Design Tokens Community Group (2025.10)
-// tokens. DTCG has no arithmetic, so each token carries:
-//   $value                       the resolved value at the default theme (u = 4, B = 1, s = 1)
-//   $extensions.com.massimo.formula  the generative rule (u = {input.u}, B = {input.border}, s = {input.radiusScale})
-//   $extensions.com.massimo.bySize   the resolved value at every supported size (u = 2 … 12)
-// Rows come from scripts/geometry-csv.ts, which computes them with the resolver, so the CSV,
-// the CSS and this file share one source. Run: npm run tokens:dtcg (test fails when stale).
-import { writeFileSync } from 'node:fs';
+// Generates the DTCG (2025.10) token files in tokens/dtcg/ from the kit's sources:
+//   geometry.dtcg.json      every geometry row (resolver), typed inputs, shadows
+//   typography.dtcg.json    faces (fontFamily), voices (aliases), role styles (typography), role metrics
+//   color.light.dtcg.json   Spectrum ramps (oklch color tokens) and roles (aliases), light scheme
+//   color.dark.dtcg.json    the same, dark scheme
+//   index.json              file list (not a DTCG file)
+// DTCG has no arithmetic: $value is the default-theme value; com.massimo.formula carries the rule and
+// com.massimo.bySize the value at every size. test/tokens-dtcg.test.ts validates every file against
+// the official schema and fails when a committed file is stale. Run: npm run tokens:dtcg
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { GEOMETRY_DEFAULTS, SIZES } from '../tokens/geometry/resolve.ts';
-import { rows } from './geometry-csv.ts';
+import { GEOMETRY_DEFAULTS, SIZES, CONTAINERS } from '../tokens/geometry/resolve.ts';
+import { FACES, VOICES, DEFAULT_VOICES, FONT_FAMILIES, TYPE_ROLES, TYPE_DEFAULTS, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
+import { ROLE_STEPS } from '../tokens/colors/spectrum/index.ts';
+import { shadows } from '../tokens/geometry/index.ts';
+import DEFAULTS from '../tokens/colors/spectrum/defaults.json' with { type: 'json' };
+import { rows, type Row } from './geometry-csv.ts';
 
 type Json = Record<string, any>;
-const NUMBER_TOKENS = new Set(['in.s', 'in.k']);
-const ROOT_PATH: Record<string, string> = { in: 'input' };
+const SCHEMA = 'https://www.designtokens.org/schemas/2025.10/format.json';
 const round = (n: number) => Math.round(n * 1000) / 1000;
+const px = (n: number) => ({ value: round(n), unit: 'px' });
+const NUMBER_ROWS = new Set(['in.s', 'in.k', 'in.typeRatio', 'in.typeRhythm']);
 
-export function tokensDtcg(): Json {
-  const tree: Json = {
-    $schema: 'https://www.designtokens.org/schemas/2025.10/format.json',
-    $description: `ui-kit geometry. Everything derives from u (size, 2–12px), B (border) and s (radius scale). $value is resolved at u=${GEOMETRY_DEFAULTS.unit}, B=${GEOMETRY_DEFAULTS.border}, s=${GEOMETRY_DEFAULTS.radiusScale}; com.massimo.formula gives the rule and com.massimo.bySize the value at every size.`,
-  };
-  for (const r of rows) {
-    const value = r.value(GEOMETRY_DEFAULTS.unit);
-    if (Number.isNaN(value)) continue; // inputs without a numeric value (e.g. the gap attribute)
-    const [head, ...rest] = r.id.split('.');
-    const path = [ROOT_PATH[head] ?? head, ...rest];
-    let group = tree;
-    for (const key of path.slice(0, -1)) {
-      group[key] ??= {};
-      if ('$value' in group[key]) throw new Error(`${r.id}: ${key} is already a token`);
-      group = group[key];
-    }
-    const leaf = path.at(-1)!;
-    if (group[leaf]) throw new Error(`${r.id}: duplicate or group/token clash`);
-    const isNumber = NUMBER_TOKENS.has(r.id);
-    group[leaf] = {
-      $type: isNumber ? 'number' : 'dimension',
-      $value: isNumber ? round(value) : { value: round(value), unit: 'px' },
-      $description: [r.element, r.quantity, r.notes].filter(Boolean).join(' · '),
-      $extensions: {
-        'com.massimo.formula': r.formula,
-        'com.massimo.status': r.status,
-        'com.massimo.bySize': Object.fromEntries(SIZES.map((u) => [`u=${u}`, round(r.value(u))])),
-      },
-    };
+/** Put a token at a dotted path, refusing group/token clashes. */
+function put(tree: Json, path: string[], token: Json) {
+  let g = tree;
+  for (const key of path.slice(0, -1)) {
+    g[key] ??= {};
+    if ('$value' in g[key]) throw new Error(`${path.join('.')}: ${key} is already a token`);
+    g = g[key];
   }
+  const leaf = path.at(-1)!;
+  if (g[leaf]) throw new Error(`${path.join('.')}: duplicate`);
+  g[leaf] = token;
+}
+
+const rowToken = (r: Row): Json => {
+  const isNumber = NUMBER_ROWS.has(r.id);
+  const v = r.value(GEOMETRY_DEFAULTS.unit);
+  return {
+    $type: isNumber ? 'number' : 'dimension',
+    $value: isNumber ? round(v) : px(v),
+    $description: [r.element, r.quantity, r.notes].filter(Boolean).join(' · '),
+    $extensions: {
+      'com.massimo.formula': r.formula,
+      'com.massimo.status': r.status,
+      'com.massimo.bySize': Object.fromEntries(SIZES.map((u) => [`u=${u}`, round(r.value(u))])),
+    },
+  };
+};
+
+const rowPath = (id: string) => { const [head, ...rest] = id.split('.'); return [head === 'in' ? 'input' : head, ...rest]; };
+
+/** oklch(L C H) or oklch(L C H / A) -> DTCG color value. */
+function oklch(css: string): Json {
+  const m = /^oklch\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*(?:\/\s*([\d.]+))?\s*\)$/.exec(css);
+  if (!m) throw new Error(`not an oklch color: ${css}`);
+  const out: Json = { colorSpace: 'oklch', components: [Number(m[1]), Number(m[2]), Number(m[3])] };
+  if (m[4] !== undefined) out.alpha = Number(m[4]);
+  return out;
+}
+const hexColor = (hex: string): Json => {
+  const h = hex.replace('#', '');
+  const full = h.length === 3 ? [...h].map((c) => c + c).join('') : h;
+  return { colorSpace: 'srgb', components: [0, 2, 4].map((i) => round(parseInt(full.slice(i, i + 2), 16) / 255)), hex: `#${full}` };
+};
+
+/** "0 1px 2px oklch(0 0 0 / 0.08), …" -> DTCG shadow objects. */
+function shadowValue(css: string): Json[] {
+  return css.split(/,(?![^(]*\))/).map((layer) => {
+    const m = /^\s*(-?[\d.]+)(?:px)?\s+(-?[\d.]+)px\s+(-?[\d.]+)px(?:\s+(-?[\d.]+)px)?\s+(oklch\([^)]+\))\s*$/.exec(layer);
+    if (!m) throw new Error(`unsupported shadow: ${layer}`);
+    return { color: oklch(m[5]), offsetX: px(Number(m[1])), offsetY: px(Number(m[2])), blur: px(Number(m[3])), spread: px(Number(m[4] ?? 0)) };
+  });
+}
+
+const header = (description: string): Json => ({ $schema: SCHEMA, $description: description });
+
+export function geometryTokens(): Json {
+  const tree = header(`ui-kit geometry. Everything derives from u (size, 2–12px), B (border) and s (radius scale). $value is resolved at u=${GEOMETRY_DEFAULTS.unit}, B=${GEOMETRY_DEFAULTS.border}, s=${GEOMETRY_DEFAULTS.radiusScale}; com.massimo.formula gives the rule and com.massimo.bySize the value at every size.`);
+  for (const r of rows) {
+    if (r.family === 'type' || r.id === 'in.typeRatio' || r.id === 'in.typeRhythm') continue; // typography file
+    if (Number.isNaN(r.value(GEOMETRY_DEFAULTS.unit))) continue;
+    put(tree, rowPath(r.id), rowToken(r));
+  }
+  // Container ladder inputs: unitless multiples of u (theme parameters pad-<level>, gap-<level>).
+  for (const [level, spec] of Object.entries(CONTAINERS)) {
+    for (const kind of ['pad', 'gap'] as const) put(tree, ['input', 'container', level, kind], {
+      $type: 'number', $value: spec.padding,
+      $description: `${level} ${kind === 'pad' ? 'padding' : 'gap'} in units of u (theme parameter ${kind}-${level})`,
+    });
+  }
+  for (const [name, t] of Object.entries(shadows)) put(tree, ['shadow', name], { $type: 'shadow', $value: shadowValue((t as { value: string }).value) });
   return tree;
 }
 
-export const DTCG_PATH = fileURLToPath(new URL('../tokens/tokens.dtcg.json', import.meta.url));
-export const tokensDtcgText = () => JSON.stringify(tokensDtcg(), null, 2) + '\n';
+export function typographyTokens(): Json {
+  const tree = header(`ui-kit typography: faces -> voices -> roles. Role size = (10px + u) × ratio^step or n·u; line heights round up to rhythm × u. $value at u=${TYPE_DEFAULTS.unit}, ratio ${TYPE_DEFAULTS.ratio}, rhythm ${TYPE_DEFAULTS.rhythm}u.`);
+  const stack = (s: string) => s.split(',').map((f) => f.trim().replace(/^"|"$/g, ''));
+  put(tree, ['input', 'type-ratio'], { $type: 'number', $value: TYPE_DEFAULTS.ratio, $description: 'Type ratio (theme type-ratio, 1–1.5)' });
+  put(tree, ['input', 'type-rhythm'], { $type: 'number', $value: TYPE_DEFAULTS.rhythm, $description: 'Line-height rhythm in units of u (theme type-rhythm: 0 natural, 0.5, 1)' });
+  for (const f of FACES) put(tree, ['font', 'face', f], { $type: 'fontFamily', $value: stack(FONT_FAMILIES[f]), $description: `Face ${f} (--fonts-${f})` });
+  for (const v of VOICES) put(tree, ['font', 'voice', v], { $type: 'fontFamily', $value: `{font.face.${DEFAULT_VOICES[v]}}`, $description: `Voice ${v}; repoint with data-font-${v}="<face>"` });
+  for (const role of Object.keys(TYPE_ROLES) as TypeRoleName[]) {
+    const r = TYPE_ROLES[role], t = resolveType(role);
+    put(tree, ['typography', role], {
+      $type: 'typography',
+      $value: {
+        fontFamily: `{font.voice.${r.voice}}`,
+        fontSize: px(t.size),
+        fontWeight: t.weight,
+        letterSpacing: px(t.tracking * t.size),
+        lineHeight: round((t.lineHeightRatio ?? t.lineHeight / t.size)),
+      },
+      $description: `${r.label}${'upper' in r ? ' · uppercase' : ''}`,
+      $extensions: { 'com.massimo.tracking': `${r.tracking}em`, 'com.massimo.lineHeightPx': round(t.lineHeightRatio ? t.lineHeightRatio * t.size : t.lineHeight), 'com.massimo.textTransform': t.transform },
+    });
+  }
+  for (const r of rows) if (r.family === 'type') put(tree, rowPath(r.id), rowToken(r));
+  return tree;
+}
+
+type Snapshot = { roles: Record<'primary' | 'neutral' | 'critical', string>; onSolid: Record<'light' | 'dark', string>; light: Record<string, string[]>; dark: Record<string, string[]> };
+
+export function colorTokens(mode: 'light' | 'dark'): Json {
+  const D = DEFAULTS as Snapshot;
+  const tree = header(`ui-kit colors, ${mode} scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (primary ${D.roles.primary}, neutral ${D.roles.neutral}, critical ${D.roles.critical}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
+  for (const [family, steps] of Object.entries(D[mode])) steps.forEach((css, i) => put(tree, ['color', 'spectrum', family, String(i + 1)], { $type: 'color', $value: oklch(css) }));
+  for (const [role, [family, step]] of Object.entries(ROLE_STEPS)) put(tree, ['color', 'role', role], { $type: 'color', $value: `{color.spectrum.${D.roles[family]}.${step}}`, $description: `${family} step ${step}` });
+  put(tree, ['color', 'role', 'fg-on-solid'], { $type: 'color', $value: hexColor(D.onSolid[mode]), $description: 'Text on a primary solid: the APCA black/white choice for primary step 9' });
+  return tree;
+}
+
+export const DTCG_DIR = fileURLToPath(new URL('../tokens/dtcg/', import.meta.url));
+export function dtcgFiles(): Record<string, string> {
+  const text = (j: Json) => JSON.stringify(j, null, 2) + '\n';
+  const files: Record<string, string> = {
+    'geometry.dtcg.json': text(geometryTokens()),
+    'typography.dtcg.json': text(typographyTokens()),
+    'color.light.dtcg.json': text(colorTokens('light')),
+    'color.dark.dtcg.json': text(colorTokens('dark')),
+  };
+  files['index.json'] = text({
+    $comment: 'Generated by scripts/tokens-dtcg.ts. DTCG 2025.10 token files; merge geometry, typography and one color scheme.',
+    schema: SCHEMA,
+    files: Object.keys(files),
+    schemes: { light: 'color.light.dtcg.json', dark: 'color.dark.dtcg.json' },
+  });
+  return files;
+}
 
 if (import.meta.main) {
-  writeFileSync(DTCG_PATH, tokensDtcgText());
-  console.log(`wrote ${DTCG_PATH}`);
+  mkdirSync(DTCG_DIR, { recursive: true });
+  for (const [name, text] of Object.entries(dtcgFiles())) writeFileSync(DTCG_DIR + name, text);
+  console.log(`wrote ${Object.keys(dtcgFiles()).length} files to ${DTCG_DIR}`);
 }

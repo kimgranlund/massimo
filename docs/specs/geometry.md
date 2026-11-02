@@ -5,7 +5,7 @@ Based on Differential Forms v0.2.2 (`mathematical-design-system` skill), adapted
 - **Slots.** Controls have `leading`, `contents` and `trailing` slots, each at least 6u square, inside 1u of padding.
 - **Text** is 10px + u.
 
-Design tokens: [tokens.dtcg.json](../../packages/ui-kit/tokens/tokens.dtcg.json) (DTCG 2025.10; `$value` at the default theme, the rule in `$extensions["com.massimo.formula"]`, every size in `com.massimo.bySize`; `npm run tokens:dtcg`, exported as `@massimo/ui-kit/tokens.dtcg.json`). Validated against the published 2025.10 schema.
+Design tokens: [geometry.dtcg.json](../../packages/ui-kit/tokens/dtcg/geometry.dtcg.json) (DTCG 2025.10; see [system](system.md#design-tokens-dtcg)).
 
 Quick reference: [geometry.csv](../../packages/ui-kit/docs/geometry.csv), every formula with its value at each size (generated from the resolver: `npm run geometry:csv`; a test fails if it is stale).
 

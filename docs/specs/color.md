@@ -29,6 +29,10 @@ Roles alias ramp steps (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Defa
 
 Light by default; dark under `prefers-color-scheme: dark`; `.light` / `.dark` on any element force a scheme for its subtree. Role tokens are redeclared in every scheme block so a subtree class re-resolves them.
 
+## Design tokens
+
+`tokens/dtcg/color.light.dtcg.json` and `color.dark.dtcg.json`: every ramp step as an oklch `color` token, every role as an alias (`{color.spectrum.indigo.9}`). See [system](system.md#design-tokens-dtcg).
+
 ## Defaults and overrides
 
 - Kit tokens are built from `tokens/colors/spectrum/defaults.json`, a generated snapshot (`npm run spectrum:defaults`), so builds never run the engine. Values are rounded to 4 decimals.

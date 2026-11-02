@@ -20,13 +20,13 @@
     "./components/select/element": "./components/select/select.element.ts",
     "./icons": "./icons/index.ts",
     "./components/btg/element": "./components/btg/btg.element.ts",
-    "./tokens.dtcg.json": "./tokens/tokens.dtcg.json",
     "./components/choice/element": "./components/choice/choice.element.ts",
     "./components/range/element": "./components/range/range.element.ts",
     "./components/color/element": "./components/color/color.element.ts",
     "./components/swiper/element": "./components/swiper/swiper.element.ts",
     "./components/image/element": "./components/image/image.element.ts",
-    "./spectrum": "./tokens/colors/spectrum/index.ts"
+    "./spectrum": "./tokens/colors/spectrum/index.ts",
+    "./dtcg/*": "./tokens/dtcg/*"
   },
   "scripts": {
     "prepare": "panda codegen",
@@ -46,5 +46,9 @@
     "react": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
   }
 }

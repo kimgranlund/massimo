@@ -69,4 +69,4 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/84
 - HTML: `<h2 data-type="heading-2">`.
 - Panda: `css({ textStyle: 'heading-2' })`.
 
-Both apply family, size, line height, weight, tracking and case. Every role's size and line height at every size are in `docs/geometry.csv` (`type.*`) and the DTCG tokens; the browser geometry check verifies them.
+Both apply family, size, line height, weight, tracking and case. Every role's size and line height at every size are in `docs/geometry.csv` (`type.*`); `tokens/dtcg/typography.dtcg.json` holds faces, voices (aliases), `typography` composite tokens per role and the metrics. The browser geometry check verifies the CSS against the resolver.
