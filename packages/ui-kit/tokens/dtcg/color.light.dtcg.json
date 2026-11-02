@@ -1830,115 +1830,35 @@
         "$value": "{color.spectrum.neutral.7}",
         "$description": "neutral step 7"
       },
-      "accent-solid": {
+      "primary-solid": {
         "$type": "color",
         "$value": "{color.spectrum.indigo.9}",
         "$description": "primary step 9"
       },
-      "accent-solid-hover": {
+      "primary-solid-hover": {
         "$type": "color",
         "$value": "{color.spectrum.indigo.10}",
         "$description": "primary step 10"
       },
-      "accent-subtle": {
+      "primary-subtle": {
         "$type": "color",
         "$value": "{color.spectrum.indigo.3}",
         "$description": "primary step 3"
       },
-      "accent-subtle-hover": {
+      "primary-subtle-hover": {
         "$type": "color",
         "$value": "{color.spectrum.indigo.4}",
         "$description": "primary step 4"
       },
-      "accent-fg": {
+      "primary-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.7}",
+        "$description": "primary step 7"
+      },
+      "primary-fg": {
         "$type": "color",
         "$value": "{color.spectrum.indigo.11}",
         "$description": "primary step 11"
-      },
-      "danger-solid": {
-        "$type": "color",
-        "$value": "{color.spectrum.crimson.9}",
-        "$description": "critical step 9"
-      },
-      "danger-solid-hover": {
-        "$type": "color",
-        "$value": "{color.spectrum.crimson.10}",
-        "$description": "critical step 10"
-      },
-      "danger-subtle": {
-        "$type": "color",
-        "$value": "{color.spectrum.crimson.3}",
-        "$description": "critical step 3"
-      },
-      "danger-fg": {
-        "$type": "color",
-        "$value": "{color.spectrum.crimson.11}",
-        "$description": "critical step 11"
-      },
-      "secondary-solid": {
-        "$type": "color",
-        "$value": "{color.spectrum.amber.9}",
-        "$description": "secondary step 9"
-      },
-      "secondary-solid-hover": {
-        "$type": "color",
-        "$value": "{color.spectrum.amber.10}",
-        "$description": "secondary step 10"
-      },
-      "secondary-subtle": {
-        "$type": "color",
-        "$value": "{color.spectrum.amber.3}",
-        "$description": "secondary step 3"
-      },
-      "secondary-fg": {
-        "$type": "color",
-        "$value": "{color.spectrum.amber.11}",
-        "$description": "secondary step 11"
-      },
-      "warning-solid": {
-        "$type": "color",
-        "$value": "{color.spectrum.orange.9}",
-        "$description": "warning step 9"
-      },
-      "warning-subtle": {
-        "$type": "color",
-        "$value": "{color.spectrum.orange.3}",
-        "$description": "warning step 3"
-      },
-      "warning-fg": {
-        "$type": "color",
-        "$value": "{color.spectrum.orange.11}",
-        "$description": "warning step 11"
-      },
-      "success-solid": {
-        "$type": "color",
-        "$value": "{color.spectrum.grass.9}",
-        "$description": "success step 9"
-      },
-      "success-subtle": {
-        "$type": "color",
-        "$value": "{color.spectrum.grass.3}",
-        "$description": "success step 3"
-      },
-      "success-fg": {
-        "$type": "color",
-        "$value": "{color.spectrum.grass.11}",
-        "$description": "success step 11"
-      },
-      "info-solid": {
-        "$type": "color",
-        "$value": "{color.spectrum.cyan.9}",
-        "$description": "info step 9"
-      },
-      "info-subtle": {
-        "$type": "color",
-        "$value": "{color.spectrum.cyan.3}",
-        "$description": "info step 3"
-      },
-      "info-fg": {
-        "$type": "color",
-        "$value": "{color.spectrum.cyan.11}",
-        "$description": "info step 11"
       },
       "primary-1": {
         "$type": "color",
@@ -2000,10 +1920,550 @@
         "$value": "{color.spectrum.indigo.12}",
         "$description": "primary step 12"
       },
+      "secondary-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.9}",
+        "$description": "secondary step 9"
+      },
+      "secondary-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.10}",
+        "$description": "secondary step 10"
+      },
+      "secondary-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.3}",
+        "$description": "secondary step 3"
+      },
+      "secondary-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.4}",
+        "$description": "secondary step 4"
+      },
+      "secondary-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.7}",
+        "$description": "secondary step 7"
+      },
+      "secondary-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.11}",
+        "$description": "secondary step 11"
+      },
+      "secondary-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.1}",
+        "$description": "secondary step 1"
+      },
+      "secondary-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.2}",
+        "$description": "secondary step 2"
+      },
+      "secondary-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.3}",
+        "$description": "secondary step 3"
+      },
+      "secondary-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.4}",
+        "$description": "secondary step 4"
+      },
+      "secondary-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.5}",
+        "$description": "secondary step 5"
+      },
+      "secondary-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.6}",
+        "$description": "secondary step 6"
+      },
+      "secondary-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.7}",
+        "$description": "secondary step 7"
+      },
+      "secondary-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.8}",
+        "$description": "secondary step 8"
+      },
+      "secondary-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.9}",
+        "$description": "secondary step 9"
+      },
+      "secondary-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.10}",
+        "$description": "secondary step 10"
+      },
+      "secondary-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.11}",
+        "$description": "secondary step 11"
+      },
+      "secondary-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.12}",
+        "$description": "secondary step 12"
+      },
       "neutral-solid": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.9}",
         "$description": "neutral step 9"
+      },
+      "neutral-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.10}",
+        "$description": "neutral step 10"
+      },
+      "neutral-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.3}",
+        "$description": "neutral step 3"
+      },
+      "neutral-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.4}",
+        "$description": "neutral step 4"
+      },
+      "neutral-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.7}",
+        "$description": "neutral step 7"
+      },
+      "neutral-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.11}",
+        "$description": "neutral step 11"
+      },
+      "neutral-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.1}",
+        "$description": "neutral step 1"
+      },
+      "neutral-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.2}",
+        "$description": "neutral step 2"
+      },
+      "neutral-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.3}",
+        "$description": "neutral step 3"
+      },
+      "neutral-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.4}",
+        "$description": "neutral step 4"
+      },
+      "neutral-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.5}",
+        "$description": "neutral step 5"
+      },
+      "neutral-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.6}",
+        "$description": "neutral step 6"
+      },
+      "neutral-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.7}",
+        "$description": "neutral step 7"
+      },
+      "neutral-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.8}",
+        "$description": "neutral step 8"
+      },
+      "neutral-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.9}",
+        "$description": "neutral step 9"
+      },
+      "neutral-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.10}",
+        "$description": "neutral step 10"
+      },
+      "neutral-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.11}",
+        "$description": "neutral step 11"
+      },
+      "neutral-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.12}",
+        "$description": "neutral step 12"
+      },
+      "critical-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.9}",
+        "$description": "critical step 9"
+      },
+      "critical-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.10}",
+        "$description": "critical step 10"
+      },
+      "critical-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.3}",
+        "$description": "critical step 3"
+      },
+      "critical-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.4}",
+        "$description": "critical step 4"
+      },
+      "critical-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.7}",
+        "$description": "critical step 7"
+      },
+      "critical-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.11}",
+        "$description": "critical step 11"
+      },
+      "critical-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.1}",
+        "$description": "critical step 1"
+      },
+      "critical-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.2}",
+        "$description": "critical step 2"
+      },
+      "critical-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.3}",
+        "$description": "critical step 3"
+      },
+      "critical-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.4}",
+        "$description": "critical step 4"
+      },
+      "critical-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.5}",
+        "$description": "critical step 5"
+      },
+      "critical-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.6}",
+        "$description": "critical step 6"
+      },
+      "critical-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.7}",
+        "$description": "critical step 7"
+      },
+      "critical-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.8}",
+        "$description": "critical step 8"
+      },
+      "critical-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.9}",
+        "$description": "critical step 9"
+      },
+      "critical-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.10}",
+        "$description": "critical step 10"
+      },
+      "critical-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.11}",
+        "$description": "critical step 11"
+      },
+      "critical-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.12}",
+        "$description": "critical step 12"
+      },
+      "warning-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.9}",
+        "$description": "warning step 9"
+      },
+      "warning-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.10}",
+        "$description": "warning step 10"
+      },
+      "warning-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.3}",
+        "$description": "warning step 3"
+      },
+      "warning-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.4}",
+        "$description": "warning step 4"
+      },
+      "warning-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.7}",
+        "$description": "warning step 7"
+      },
+      "warning-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.11}",
+        "$description": "warning step 11"
+      },
+      "warning-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.1}",
+        "$description": "warning step 1"
+      },
+      "warning-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.2}",
+        "$description": "warning step 2"
+      },
+      "warning-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.3}",
+        "$description": "warning step 3"
+      },
+      "warning-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.4}",
+        "$description": "warning step 4"
+      },
+      "warning-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.5}",
+        "$description": "warning step 5"
+      },
+      "warning-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.6}",
+        "$description": "warning step 6"
+      },
+      "warning-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.7}",
+        "$description": "warning step 7"
+      },
+      "warning-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.8}",
+        "$description": "warning step 8"
+      },
+      "warning-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.9}",
+        "$description": "warning step 9"
+      },
+      "warning-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.10}",
+        "$description": "warning step 10"
+      },
+      "warning-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.11}",
+        "$description": "warning step 11"
+      },
+      "warning-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.12}",
+        "$description": "warning step 12"
+      },
+      "success-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.9}",
+        "$description": "success step 9"
+      },
+      "success-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.10}",
+        "$description": "success step 10"
+      },
+      "success-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.3}",
+        "$description": "success step 3"
+      },
+      "success-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.4}",
+        "$description": "success step 4"
+      },
+      "success-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.7}",
+        "$description": "success step 7"
+      },
+      "success-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.11}",
+        "$description": "success step 11"
+      },
+      "success-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.1}",
+        "$description": "success step 1"
+      },
+      "success-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.2}",
+        "$description": "success step 2"
+      },
+      "success-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.3}",
+        "$description": "success step 3"
+      },
+      "success-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.4}",
+        "$description": "success step 4"
+      },
+      "success-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.5}",
+        "$description": "success step 5"
+      },
+      "success-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.6}",
+        "$description": "success step 6"
+      },
+      "success-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.7}",
+        "$description": "success step 7"
+      },
+      "success-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.8}",
+        "$description": "success step 8"
+      },
+      "success-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.9}",
+        "$description": "success step 9"
+      },
+      "success-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.10}",
+        "$description": "success step 10"
+      },
+      "success-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.11}",
+        "$description": "success step 11"
+      },
+      "success-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.12}",
+        "$description": "success step 12"
+      },
+      "info-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.9}",
+        "$description": "info step 9"
+      },
+      "info-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.10}",
+        "$description": "info step 10"
+      },
+      "info-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.3}",
+        "$description": "info step 3"
+      },
+      "info-subtle-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.4}",
+        "$description": "info step 4"
+      },
+      "info-border": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.7}",
+        "$description": "info step 7"
+      },
+      "info-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.11}",
+        "$description": "info step 11"
+      },
+      "info-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.1}",
+        "$description": "info step 1"
+      },
+      "info-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.2}",
+        "$description": "info step 2"
+      },
+      "info-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.3}",
+        "$description": "info step 3"
+      },
+      "info-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.4}",
+        "$description": "info step 4"
+      },
+      "info-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.5}",
+        "$description": "info step 5"
+      },
+      "info-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.6}",
+        "$description": "info step 6"
+      },
+      "info-7": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.7}",
+        "$description": "info step 7"
+      },
+      "info-8": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.8}",
+        "$description": "info step 8"
+      },
+      "info-9": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.9}",
+        "$description": "info step 9"
+      },
+      "info-10": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.10}",
+        "$description": "info step 10"
+      },
+      "info-11": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.11}",
+        "$description": "info step 11"
+      },
+      "info-12": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.12}",
+        "$description": "info step 12"
+      },
+      "shadow": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.12}",
+        "$description": "neutral step 12"
       },
       "data-1": {
         "$type": "color",
@@ -2058,6 +2518,101 @@
         "$value": "{color.spectrum.neutral.12}",
         "$description": "Text on bg-selected (neutral 1 in light): neutral 12"
       }
+    }
+  },
+  "shadow": {
+    "sm": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.416,
+              0.0251,
+              223.6924
+            ],
+            "alpha": 0.12
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "neutral step 12 (role shadow) at 12%"
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.416,
+              0.0251,
+              223.6924
+            ],
+            "alpha": 0.08
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 2,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 4,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.416,
+              0.0251,
+              223.6924
+            ],
+            "alpha": 0.16
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 8,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 24,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "neutral step 12 (role shadow) at 8%, 16%"
     }
   }
 }

@@ -1,7 +1,7 @@
 // Generates the DTCG (2025.10) token files in tokens/dtcg/ from the kit's sources:
-//   geometry.dtcg.json      every geometry row (resolver), typed inputs, shadows
+//   geometry.dtcg.json      every geometry row (resolver), typed inputs
 //   typography.dtcg.json    faces (fontFamily), voices (aliases), role styles (typography), role metrics
-//   color.light.dtcg.json   Spectrum ramps (oklch color tokens) and roles (aliases), light scheme
+//   color.light.dtcg.json   Spectrum ramps (oklch color tokens) and roles (aliases) and shadows, light scheme
 //   color.dark.dtcg.json    the same, dark scheme
 //   motion.dtcg.json        springs: settle duration, cubic-bezier fit, transition; exact linear() in extensions
 //   index.json              file list (not a DTCG file)
@@ -12,8 +12,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { GEOMETRY_DEFAULTS, SIZES, CONTAINERS } from '../tokens/geometry/resolve.ts';
 import { FACES, VOICES, DEFAULT_VOICES, FONT_FAMILIES, TYPE_ROLES, TYPE_DEFAULTS, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
-import { ROLE_STEPS, roleStep } from '../tokens/colors/spectrum/index.ts';
-import { shadows } from '../tokens/geometry/index.ts';
+import { ROLE_STEPS, SHADOWS, roleStep } from '../tokens/colors/spectrum/index.ts';
 import DEFAULTS from '../tokens/colors/spectrum/defaults.json' with { type: 'json' };
 import { rows, type Row } from './geometry-csv.ts';
 import { RESOLVED_SPRINGS, fitBezier } from '../tokens/motion/index.ts';
@@ -68,15 +67,6 @@ const hexColor = (hex: string): Json => {
   return { colorSpace: 'srgb', components: [0, 2, 4].map((i) => round(parseInt(full.slice(i, i + 2), 16) / 255)), hex: `#${full}` };
 };
 
-/** "0 1px 2px oklch(0 0 0 / 0.08), …" -> DTCG shadow objects. */
-function shadowValue(css: string): Json[] {
-  return css.split(/,(?![^(]*\))/).map((layer) => {
-    const m = /^\s*(-?[\d.]+)(?:px)?\s+(-?[\d.]+)px\s+(-?[\d.]+)px(?:\s+(-?[\d.]+)px)?\s+(oklch\([^)]+\))\s*$/.exec(layer);
-    if (!m) throw new Error(`unsupported shadow: ${layer}`);
-    return { color: oklch(m[5]), offsetX: px(Number(m[1])), offsetY: px(Number(m[2])), blur: px(Number(m[3])), spread: px(Number(m[4] ?? 0)) };
-  });
-}
-
 const header = (description: string): Json => ({ $schema: SCHEMA, $description: description });
 
 export function geometryTokens(): Json {
@@ -93,7 +83,6 @@ export function geometryTokens(): Json {
       $description: `${level} ${kind === 'pad' ? 'padding' : 'gap'} in units of u (theme parameter ${kind}-${level})`,
     });
   }
-  for (const [name, t] of Object.entries(shadows)) put(tree, ['shadow', name], { $type: 'shadow', $value: shadowValue((t as { value: string }).value) });
   return tree;
 }
 
@@ -140,6 +129,13 @@ export function colorTokens(mode: 'light' | 'dark'): Json {
   put(tree, ['color', 'role', 'fg-selected'], mode === 'dark'
     ? { $type: 'color', $value: hexColor(D.onSolid.dark), $description: 'Text on bg-selected (the primary solid in dark): the contrast color' }
     : { $type: 'color', $value: `{color.spectrum.${D.roles.neutral}.12}`, $description: 'Text on bg-selected (neutral 1 in light): neutral 12' });
+  // Shadows: layers of the shadow role at a per-scheme alpha (DTCG aliases cannot add alpha, so the color is resolved).
+  const shadow = roleStep(ROLE_STEPS.shadow, mode), shadowColor = D[mode][D.roles[shadow.family]][shadow.step - 1];
+  for (const [name, layers] of Object.entries(SHADOWS)) put(tree, ['shadow', name], {
+    $type: 'shadow',
+    $value: layers.map((l) => ({ color: { ...oklch(shadowColor), alpha: l[mode] }, offsetX: px(0), offsetY: px(l.y), blur: px(l.blur), spread: px(0) })),
+    $description: `${shadow.family} step ${shadow.step} (role shadow) at ${layers.map((l) => `${l[mode] * 100}%`).join(', ')}`,
+  });
   return tree;
 }
 

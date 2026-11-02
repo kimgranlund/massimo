@@ -18,7 +18,7 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.ok(f.accents.includes(roles.primary));
   assert.ok(f.accents.includes(roles.critical));
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
-  assert.equal(light['--colors-accent-solid'], `var(--colors-spectrum-${roles.primary}-9)`);
+  assert.equal(light['--colors-primary-solid'], `var(--colors-spectrum-${roles.primary}-9)`);
   assert.equal(light['--colors-bg'], `var(--colors-spectrum-${roles.neutral}-1)`);
   assert.equal(light['--colors-bg-overlay'], `var(--colors-spectrum-${roles.neutral}-1)`, 'overlay = page tone in light');
   assert.equal(dark['--colors-bg-overlay'], `var(--colors-spectrum-${roles.neutral}-2)`, 'overlay one step up in dark');
@@ -36,7 +36,7 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.match(css, /@media \(prefers-color-scheme: dark\)/);
   assert.match(css, /--colors-spectrum-\w+-12:/);
   assert.doesNotMatch(css, /--colors-spectrum-\w+-0:/, 'no step 0');
-  assert.match(css, /--colors-accent-solid: var\(--colors-spectrum-/);
+  assert.match(css, /--colors-primary-solid: var\(--colors-spectrum-/);
   assert.equal(resolveRoles(data, { primary: 'blue' }).primary !== undefined, true, 'unknown names resolve by hue');
   const scoped = spectrumCSS(data, roles, '[data-canvas]');
   assert.match(scoped, /^\[data-canvas\] \{/);
@@ -91,4 +91,23 @@ test('selected option roles: neutral 1 / 12 in light, primary solid / contrast t
   assert.equal(light['--colors-fg-selected'], `var(--colors-spectrum-${r.neutral}-12)`);
   assert.equal(dark['--colors-bg-selected'], `var(--colors-spectrum-${r.primary}-9)`, 'dark switches family to primary');
   assert.equal(dark['--colors-fg-selected'], dark['--colors-fg-on-solid']);
+});
+
+test('one color vocabulary: every brand and feedback role has the same steps, no aliases', async () => {
+  const { ROLE_STEPS, SCALE_ROLES } = await import('../tokens/colors/spectrum/index.ts');
+  const { semanticColors, semanticShadows } = await import('../tokens/colors/index.ts');
+  const names = Object.keys(ROLE_STEPS);
+  assert.ok(!names.some((n) => /^(accent|danger)-/.test(n)), 'no accent-* / danger-* aliases');
+  const c = semanticColors as Record<string, Record<string, unknown>>;
+  assert.ok(!('accent' in c) && !('danger' in c));
+  for (const role of SCALE_ROLES) {
+    for (const key of ['solid', 'solidHover', 'subtle', 'subtleHover', 'border', 'fg', ...Array.from({ length: 12 }, (_, i) => String(i + 1))]) assert.ok(c[role][key], `${role}.${key}`);
+  }
+  assert.deepEqual([...ROLE_STEPS['critical-solid']], ['critical', 9]);
+  assert.deepEqual([...ROLE_STEPS['neutral-border']], ['neutral', 7]);
+  // Shadows follow the scheme and the shadow role, never raw black.
+  const md = (semanticShadows as Record<string, { value: Record<string, string> }>).md.value;
+  assert.match(md.base, /\{colors\.shadow\}/);
+  assert.notEqual(md.base, md._dark);
+  assert.ok(!/oklch\(0 0 0/.test(JSON.stringify(semanticShadows)));
 });

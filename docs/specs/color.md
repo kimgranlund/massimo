@@ -14,25 +14,37 @@ The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generat
 
 Roles alias ramp steps; an entry may name a different dark step, a different dark family (`darkFamily`) or an alpha (`roleStep`, translucent roles emit `color-mix(… transparent)`) (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Each role is a family (`Roles`, `ROLE_NAMES`): brand (primary, secondary, neutral), feedback (critical = errors and danger, warning, success, info) and data 1–6 (chart series and categories). Defaults request primary `indigo`, secondary `amber`, neutral `neutral`, critical `red`, warning `orange`, success `green`, info `cyan`, data `indigo`, `cyan`, `grass`, `amber`, `tomato`, `plum`; each resolves to the nearest generated hue (`resolveRoles`).
 
-| Role variable | Step |
+One name per role: a role's tokens are named after the role (`primary.solid`, never an alias such as `accent` or `danger`). Panda token paths are camelCase (`primary.solidHover`); CSS variables are kebab-case (`--colors-primary-solid-hover`).
+
+**Scale roles.** Every brand and feedback role (primary, secondary, neutral, critical, warning, success, info) carries the same set:
+
+| Token | Step | Use |
+|---|---|---|
+| `<role>.subtle`, `<role>.subtleHover` | 3, 4 | tinted fills (selected options, callouts) and their hover |
+| `<role>.border` | 7 | the role's edge |
+| `<role>.solid`, `<role>.solidHover` | 9, 10 | filled controls and their hover / press |
+| `<role>.fg` | 11 | the role's text and icons on page fills |
+| `<role>.1` … `<role>.12` | 1–12 | the whole ramp (swatches, scales, anything off the semantic set) |
+
+**Page roles** (all neutral unless stated):
+
+| Token (CSS variable) | Step |
 |---|---|
-| `--colors-bg` (page) | neutral 1 |
-| `--colors-bg-subtle`, `--colors-bg-muted` | neutral 2, 3 |
-| `--colors-bg-muted-hover`, `--colors-bg-muted-active` (hover, press) | neutral 4, 5 |
-| `--colors-bg-overlay` (menus, popovers, dialogs, drawers; with `shadow.md`) | neutral 1 light, 2 dark |
-| `--colors-bg-selected`, `--colors-fg-selected` (selected option in a listbox or segmented control) | neutral 1 / neutral 12 in light; primary 9 / its contrast color (`fg-on-solid`) in dark |
-| `--colors-bg-inverse`, `--colors-fg-inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
-| `--colors-bg-backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
-| `--colors-border`, `--colors-border-strong` | neutral 6, 7 |
-| `--colors-fg-subtle` (placeholders), `--colors-fg-muted`, `--colors-fg` | neutral 8, 11, 12 |
-| `--colors-accent-subtle`, `-subtle-hover`, `-solid`, `-solid-hover`, `-fg` | primary 3, 4, 9, 10, 11 |
-| `--colors-focus-ring` | primary 8 |
-| `--colors-danger-solid`, `-solid-hover`, `-subtle`, `-fg` | critical 9, 10, 3, 11 |
-| `--colors-secondary-solid`, `-solid-hover`, `-subtle`, `-fg` | secondary 9, 10, 3, 11 |
-| `--colors-warning-*`, `--colors-success-*`, `--colors-info-*` (`-solid`, `-subtle`, `-fg`) | warning, success, info 9, 3, 11 |
-| `--colors-data-1` … `--colors-data-6` | data 1–6 at 9 |
-| `--colors-primary-1` … `--colors-primary-12`, `--colors-neutral-solid` | the primary ramp; neutral 9 (swatches, scales) |
-| `--colors-fg-on-solid` | the engine's APCA black/white choice for primary 9 |
+| `bg` (`--colors-bg`, page) | neutral 1 |
+| `bg.subtle`, `bg.muted` | neutral 2, 3 |
+| `bg.mutedHover`, `bg.mutedActive` (hover, press) | neutral 4, 5 |
+| `bg.overlay` (menus, popovers, dialogs, drawers; with `shadows.md`) | neutral 1 light, 2 dark |
+| `bg.selected`, `fg.selected` (selected option in a listbox or segmented control) | neutral 1 / neutral 12 in light; primary 9 / its contrast color (`fg.onSolid`) in dark |
+| `bg.inverse`, `fg.inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
+| `bg.backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
+| `border`, `border.strong` | neutral 6, 7 |
+| `fg.subtle` (placeholders), `fg.muted`, `fg` | neutral 8, 11, 12 |
+| `fg.onSolid` | the engine's APCA black/white choice for primary 9 |
+| `focusRing` | primary 8 |
+| `data.1` … `data.6` | data 1–6 at 9 (chart series, categories) |
+| `shadow` | neutral 12 light, neutral 1 dark (the shadow color) |
+
+**Shadows.** `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and a runtime spectrum. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
 
 ## Schemes
 

@@ -39,11 +39,11 @@ const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', al
 const columns = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '8', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
 const subTitle = css({ textStyle: 'heading-3' });
 const stack = css({ display: 'flex', flexDirection: 'column', gap: '4' });
-const avatar = css({ display: 'block', bg: 'accent.solid' });
+const avatar = css({ display: 'block', bg: 'primary.solid' });
 const media = css({ width: 'full', maxWidth: '[40rem]', borderRadius: 'xl', overflow: 'hidden' });
 const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: 'end' });
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
-const levelBox = css({ bg: 'accent.subtle', alignSelf: 'start' });
+const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
 const levelList = css({ minWidth: '[10rem]' });
 const tokenTable = css({ display: 'grid', gridTemplateColumns: 'auto auto auto auto 1fr', columnGap: '6', rowGap: '2', alignItems: 'baseline', '& > [role=row]': { display: 'contents' } });
 const tokenHead = css({ '& > *': { textStyle: 'group-kicker', color: 'fg.muted' } });
@@ -61,7 +61,7 @@ const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ
 const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5', order: 1, [CQ_MD]: { order: 0 } });
 const metrics = css({ textStyle: 'code', color: 'fg.muted' });
 // Baseline grid behind each specimen: a faint line per rhythm unit, every 4th line stronger.
-const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) ${pct}%, transparent) 0)`;
+const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-primary-solid) ${pct}%, transparent) 0)`;
 // The lines span the sample column; the text inside keeps a readable measure.
 const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}` });
 // The baseline grid pitch is rhythm × u, computed from the canvas's own theme variables.
@@ -76,7 +76,7 @@ const article = css({
   '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', overflowX: 'auto' },
 });
 const articleRole = css({ display: 'none', textStyle: 'code', color: 'fg.muted', [CQ_MD]: { display: 'block' } });
-const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'regular' } });
+const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'primary.fg', fontWeight: 'regular' } });
 const chartGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_LG]: { gridTemplateColumns: '1fr 1fr' } });
 const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
 const chartSvg = css({ width: 'full', height: 'auto', color: 'fg', overflow: 'visible' });
@@ -144,17 +144,17 @@ const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap:
 // Stacked bar: data 1 at the bottom; 1px gaps separate the series, the top rounds.
 // Static color classes from role tokens: the demos never set colors inline.
 const tone = {
-  solid: css({ bg: 'accent.solid', color: 'fg.onSolid' }),
-  solidHover: css({ bg: 'accent.solidHover !important' }),
+  solid: css({ bg: 'primary.solid', color: 'fg.onSolid' }),
+  solidHover: css({ bg: 'primary.solidHover !important' }),
   secondaryOnSolid: css({ color: 'secondary.subtle' }),
   secondaryDot: css({ bg: 'secondary.solid' }),
-  paper: css({ bg: 'bg.subtle', color: 'accent.fg' }),
+  paper: css({ bg: 'bg.subtle', color: 'primary.fg' }),
   muted: css({ color: 'fg.muted' }),
-  tint: css({ bg: 'accent.subtle', color: 'accent.fg' }),
+  tint: css({ bg: 'primary.subtle', color: 'primary.fg' }),
   tintStrong: css({ color: 'primary.12' }),
   success: css({ bg: 'success.subtle', color: 'success.fg' }),
   warning: css({ bg: 'warning.subtle', color: 'warning.fg' }),
-  danger: css({ bg: 'danger.subtle', color: 'danger.fg' }),
+  critical: css({ bg: 'critical.subtle', color: 'critical.fg' }),
   info: css({ bg: 'info.subtle', color: 'info.fg' }),
 };
 // Primary ramp steps 1–12 (primary.N tokens), with readable text: step 12 on 1–8, step 1 on 9–12.
@@ -168,8 +168,8 @@ const RAMP_STEP = [
 const DATA_BG = [css({ bg: 'data.1' }), css({ bg: 'data.2' }), css({ bg: 'data.3' }), css({ bg: 'data.4' }), css({ bg: 'data.5' }), css({ bg: 'data.6' })];
 // Each role's solid (step 9).
 const ROLE_BG: Record<string, string> = {
-  primary: css({ bg: 'accent.solid' }), secondary: css({ bg: 'secondary.solid' }), neutral: css({ bg: 'neutral.solid' }),
-  critical: css({ bg: 'danger.solid' }), warning: css({ bg: 'warning.solid' }), success: css({ bg: 'success.solid' }), info: css({ bg: 'info.solid' }),
+  primary: css({ bg: 'primary.solid' }), secondary: css({ bg: 'secondary.solid' }), neutral: css({ bg: 'neutral.solid' }),
+  critical: css({ bg: 'critical.solid' }), warning: css({ bg: 'warning.solid' }), success: css({ bg: 'success.solid' }), info: css({ bg: 'info.solid' }),
   data1: DATA_BG[0], data2: DATA_BG[1], data3: DATA_BG[2], data4: DATA_BG[3], data5: DATA_BG[4], data6: DATA_BG[5],
 };
 // Voice samples: each voice's family (repointed voices set --font-voice-* on the canvas).
@@ -609,7 +609,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
         <ui-panel className={tone.paper}>
           <span className={cx(sectionKicker, tone.muted)}>Ink &amp; paper <i className={cx(dot, tone.secondaryDot)} /></span>
           <h3 className={panelTitle}>One hue.<br />Room to breathe.</h3>
-          <p className={tone.muted}>A quiet field, a clear voice and a single accent.</p>
+          <p className={tone.muted}>A quiet field, a clear voice and a single primary.</p>
         </ui-panel>
         <ui-panel className={tone.tint}>
           <span className={sectionKicker}>Tint &amp; emphasis</span>
@@ -685,7 +685,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
             <span className={kicker}>Feedback</span>
             <p className={cx(callout, tone.tint)} role="note">Changes to this palette appear across every preview.</p>
             <p className={cx(callout, tone.warning)} role="note">Check small text and neighboring hues before choosing a brand color.</p>
-            <p className={cx(callout, tone.danger)} role="note">Critical: {critical} carries destructive actions.</p>
+            <p className={cx(callout, tone.critical)} role="note">Critical: {critical} carries destructive actions.</p>
             <p className={cx(callout, tone.info)} role="note">Info: {info} marks neutral announcements.</p>
           </ui-card>
         </div>

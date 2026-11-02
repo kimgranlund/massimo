@@ -21,8 +21,8 @@ The jig is built entirely from ui-kit components (web components in React; no na
 
 ```
 Spectrum settings  ->  engine (HCT)  ->  ramps   --colors-spectrum-indigo-9 (light and dark values)
-                                         roles   --colors-accent-solid: var(--colors-spectrum-indigo-9)
-components                               ui-option[aria-selected=true] { background: var(--colors-accent-subtle) }
+                                         roles   --colors-primary-solid: var(--colors-spectrum-indigo-9)
+components                               ui-option[aria-selected=true] { background: var(--colors-primary-subtle) }
 geometry           theme parameters      --ui-unit, --ui-border, --ui-radius-scale, --ui-corner-shape
 ```
 

@@ -70,7 +70,7 @@ export function closestFamily(data: Spectrum, requested: string, candidates: str
 
 /**
  * Color roles, each a family: brand (primary, secondary, neutral), feedback (critical = errors and
- * danger, warning, success, info) and data 1–6 (chart series and categories, well spaced in hue).
+ * destructive actions, warning, success, info) and data 1–6 (chart series and categories, well spaced in hue).
  */
 export const BRAND_ROLES = ['primary', 'secondary', 'neutral'] as const;
 export const FEEDBACK_ROLES = ['critical', 'warning', 'success', 'info'] as const;
@@ -104,7 +104,20 @@ export function ramps(data: Spectrum, mode: 'light' | 'dark'): Record<string, st
   return Object.fromEntries(Object.entries(data.schemes[mode]).map(([name, ramp]) => [name, ramp.map((sw) => trimColor(sw.css))]));
 }
 
-/** Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS. */
+/** Brand and feedback roles: each gets the same semantic steps and its whole ramp. */
+export const SCALE_ROLES = [...BRAND_ROLES, ...FEEDBACK_ROLES] as const;
+/** Semantic steps every scale role carries (Radix step semantics). */
+export const SEMANTIC_STEPS = { solid: 9, 'solid-hover': 10, subtle: 3, 'subtle-hover': 4, border: 7, fg: 11 } as const;
+const UNIFORM_STEPS = Object.fromEntries(SCALE_ROLES.flatMap((role) => [
+  ...Object.entries(SEMANTIC_STEPS).map(([name, step]) => [`${role}-${name}`, [role, step] as const]),
+  ...Array.from({ length: 12 }, (_, i) => [`${role}-${i + 1}`, [role, i + 1] as const]),
+])) as Record<`${(typeof SCALE_ROLES)[number]}-${keyof typeof SEMANTIC_STEPS | number}`, RoleStep>;
+
+/**
+ * Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS.
+ * One name per role: <role>-solid, -solid-hover, -subtle, -subtle-hover, -border, -fg and <role>-1…12
+ * for primary, secondary, neutral, critical, warning, success and info; data-1…6; plus the page roles.
+ */
 export const ROLE_STEPS = {
   'bg': ['neutral', 1], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
   'bg-muted-hover': ['neutral', 4], 'bg-muted-active': ['neutral', 5],
@@ -120,21 +133,27 @@ export const ROLE_STEPS = {
   // Placeholders and other hints that must read as absent content: well below muted text.
   'fg-subtle': ['neutral', 8],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
-  'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-subtle-hover': ['primary', 4], 'accent-fg': ['primary', 11],
-  'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-subtle': ['critical', 3], 'danger-fg': ['critical', 11],
-  'secondary-solid': ['secondary', 9], 'secondary-solid-hover': ['secondary', 10], 'secondary-subtle': ['secondary', 3], 'secondary-fg': ['secondary', 11],
-  'warning-solid': ['warning', 9], 'warning-subtle': ['warning', 3], 'warning-fg': ['warning', 11],
-  'success-solid': ['success', 9], 'success-subtle': ['success', 3], 'success-fg': ['success', 11],
-  'info-solid': ['info', 9], 'info-subtle': ['info', 3], 'info-fg': ['info', 11],
-  // The primary ramp as tokens (primary.1 … primary.12) and the neutral solid, for swatches and scales.
-  'primary-1': ['primary', 1], 'primary-2': ['primary', 2], 'primary-3': ['primary', 3], 'primary-4': ['primary', 4],
-  'primary-5': ['primary', 5], 'primary-6': ['primary', 6], 'primary-7': ['primary', 7], 'primary-8': ['primary', 8],
-  'primary-9': ['primary', 9], 'primary-10': ['primary', 10], 'primary-11': ['primary', 11], 'primary-12': ['primary', 12],
-  'neutral-solid': ['neutral', 9],
+  ...UNIFORM_STEPS,
+  // The scheme's shadow color (shadows.sm, shadows.md mix it with transparent): neutral 12 in light,
+  // the darkest neutral in dark, where the shadow alphas are stronger.
+  'shadow': ['neutral', 12, { dark: 1 }],
   // Data series: the step-9 solid of each data family.
   'data-1': ['data1', 9], 'data-2': ['data2', 9], 'data-3': ['data3', 9], 'data-4': ['data4', 9], 'data-5': ['data5', 9], 'data-6': ['data6', 9],
   'focus-ring': ['primary', 8],
 } as const satisfies Record<string, RoleStep>;
+
+/**
+ * Elevation shadows: layers of the `shadow` role color (neutral 12 in light, the darkest neutral in
+ * dark) at a per-scheme alpha, stronger in dark where a shadow has less page to darken. Offsets in px.
+ */
+export const SHADOWS = {
+  sm: [{ y: 1, blur: 2, light: 0.12, dark: 0.5 }],
+  md: [{ y: 2, blur: 4, light: 0.08, dark: 0.36 }, { y: 8, blur: 24, light: 0.16, dark: 0.56 }],
+} as const satisfies Record<string, readonly { y: number; blur: number; light: number; dark: number }[]>;
+
+/** A shadow's CSS in one scheme, its color from a reference to the shadow role (a var() or token reference). */
+export const shadowCss = (name: keyof typeof SHADOWS, mode: 'light' | 'dark', colorRef: string) =>
+  SHADOWS[name].map((l) => `0 ${l.y}px ${l.blur}px ${withAlpha(colorRef, l[mode])}`).join(', ');
 
 /** A role: a family step, optionally a different step and/or an alpha per scheme. */
 export type RoleStep = readonly [keyof Roles, number] | readonly [keyof Roles, number, { dark?: number; darkFamily?: keyof Roles; alpha?: number; darkAlpha?: number }];

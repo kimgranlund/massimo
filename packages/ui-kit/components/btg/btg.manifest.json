@@ -338,7 +338,7 @@
       "constraints": [
         "role=button; selectable adds aria-pressed. Not form-associated: collect selected chips in script.",
         "remove is cancelable; unless prevented the chip removes itself and focus moves to a neighbouring chip.",
-        "Selected chips use the checkbox colors (accent solid).",
+        "Selected chips use the checkbox colors (primary solid).",
         "The remove icon is a click target, not a nested button."
       ],
       "avoidWhen": [

@@ -854,8 +854,9 @@
         "color tokens",
         "bg",
         "fg",
-        "accent",
-        "danger",
+        "primary",
+        "critical",
+        "shadows",
         "overlay"
       ]
     },

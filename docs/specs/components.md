@@ -44,19 +44,19 @@ Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or
 
 | State | Hook | Look |
 |---|---|---|
-| hover / press | `:hover` / `:active` on enabled controls | neutral fill steps 3 → 4 → 5; on solids `accent.solidHover`; selected options `accent.subtleHover` |
+| hover / press | `:hover` / `:active` on enabled controls | neutral fill steps 3 → 4 → 5; on solids `primary.solidHover`; selected options `primary.subtleHover` |
 | keyboard focus | `:focus-visible` after key use (`data-modality`) | 2px focus-ring outline; text fields keep it after a pointer click |
 | highlighted option | `data-active` | neutral fill |
-| selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | accent solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or accent subtle (select popup options); listbox and segmented: `bg.selected` / `fg.selected` (neutral 1 with neutral 12 text in light, the primary solid with its contrast text in dark) |
+| selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | primary solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or primary subtle (select popup options); listbox and segmented: `bg.selected` / `fg.selected` (neutral 1 with neutral 12 text in light, the primary solid with its contrast text in dark) |
 | open | trigger `aria-expanded=true` | pressed fill, chevron turned 180° |
 | disabled | `aria-disabled=true` (host or control) | 50% opacity, `not-allowed` |
 | busy | `aria-busy=true` (button) | readable (no disabled fade), `progress` cursor, indeterminate sweep on the bottom edge (contrast color on primary) |
 | read-only | `aria-readonly=true` | subtle fill, default cursor |
-| required | `[required]` field, `aria-required` checkbox/switch | ` *` in `danger.fg` after the label |
-| invalid | `aria-invalid=true` | danger-tinted fill (palette: danger outline) |
+| required | `[required]` field, `aria-required` checkbox/switch | ` *` in `critical.fg` after the label |
+| invalid | `aria-invalid=true` | critical-tinted fill (palette: critical outline) |
 | placeholder | `data-placeholder` | `fg.subtle` (neutral 8) |
 | indeterminate | `data-indeterminate` (progress) | sweep; a faint full fill under reduced motion |
-| unparsable color | `data-invalid` (swatch) | danger strike |
+| unparsable color | `data-invalid` (swatch) | critical strike |
 | failed image | `img[data-error]` | hidden; the frame's empty fill remains |
 | forced colors | `@media (forced-colors: active)` | 1px `CanvasText` outline (no space), `Highlight` for on states, `GrayText` disabled |
 

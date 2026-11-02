@@ -33,10 +33,6 @@ export const radii = {
   xl: scaled(3),
   full: { value: '9999px' },
 };
-export const shadows = {
-  sm: { value: '0 1px 2px oklch(0 0 0 / 0.08)' },
-  md: { value: '0 2px 4px oklch(0 0 0 / 0.06), 0 8px 24px oklch(0 0 0 / 0.12)' },
-};
 export const borderWidths = { thin: { value: '1px' }, thick: { value: '2px' } };
 
 

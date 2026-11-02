@@ -131,7 +131,7 @@
             "primary"
           ],
           "readBy": "css",
-          "description": "primary: the primary solid (accent.solid) with the contrast text color (fg.onSolid); hover and press use accent.solidHover. Omit for the neutral button. data-variant is the same input for plain HTML and the React Button.",
+          "description": "primary: the primary solid (primary.solid) with the contrast text color (fg.onSolid); hover and press use primary.solidHover. Omit for the neutral button. data-variant is the same input for plain HTML and the React Button.",
           "inspector": {
             "control": "select"
           }

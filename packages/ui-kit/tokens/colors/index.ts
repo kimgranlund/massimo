@@ -4,7 +4,7 @@
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
-import { ROLE_STEPS, roleStep, withAlpha } from './spectrum/index.ts';
+import { ROLE_STEPS, SHADOWS, roleStep, shadowCss, withAlpha } from './spectrum/index.ts';
 
 type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
 const D = DEFAULTS as Snapshot;
@@ -22,7 +22,7 @@ const spectrum = Object.fromEntries(Object.keys(D.light).map((family) => [
   Object.fromEntries(D.light[family].map((css, i) => [i + 1, schemed(css, D.dark[family][i])])),
 ]));
 
-// Role tokens: "accent.solid" style paths from ROLE_STEPS names, aliasing ramp steps.
+// Role tokens: "primary.solid" style paths from ROLE_STEPS names, aliasing ramp steps.
 const roles: Record<string, any> = {};
 for (const [role, entry] of Object.entries(ROLE_STEPS)) {
   const at = (mode: 'light' | 'dark') => { const r = roleStep(entry, mode); return withAlpha(`{colors.spectrum.${D.roles[r.family]}.${r.step}}`, r.alpha); };
@@ -33,6 +33,11 @@ for (const [role, entry] of Object.entries(ROLE_STEPS)) {
   if (camelGroup === 'focusRing') { roles.focusRing = schemed(ref, dref); continue; }
   (roles[camelGroup] ??= {})[key] = schemed(ref, dref);
 }
+
+// Elevation shadows: scheme-aware, colored by the shadow role so a runtime spectrum restyles them too.
+export const semanticShadows = Object.fromEntries((Object.keys(SHADOWS) as (keyof typeof SHADOWS)[]).map((name) => [
+  name, schemed(shadowCss(name, 'light', '{colors.shadow}'), shadowCss(name, 'dark', '{colors.shadow}')),
+]));
 
 export const semanticColors = {
   spectrum,

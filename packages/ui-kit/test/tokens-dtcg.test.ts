@@ -53,10 +53,11 @@ test('types cover the system: ratios are numbers, roles are typography, ramps ar
   const g = JSON.parse(files['geometry.dtcg.json']), t = JSON.parse(files['typography.dtcg.json']), c = JSON.parse(files['color.dark.dtcg.json']);
   assert.equal(t.input['type-ratio'].$type, 'number');
   assert.equal(g.input.container.card.pad.$value, 4);
-  assert.equal(g.shadow.md.$type, 'shadow');
+  assert.equal(c.shadow.md.$type, 'shadow');
+  assert.equal(c.shadow.md.$value.length, 2);
   assert.equal(t.typography['heading-1'].$type, 'typography');
   assert.equal(t.typography['heading-1'].$value.fontFamily, '{font.voice.heading}');
   assert.equal(t.font.voice.heading.$value, '{font.face.sans}');
   assert.equal(c.color.spectrum.indigo['9'].$value.colorSpace, 'oklch');
-  assert.equal(c.color.role['accent-solid'].$value, '{color.spectrum.indigo.9}');
+  assert.equal(c.color.role['primary-solid'].$value, '{color.spectrum.indigo.9}');
 });
