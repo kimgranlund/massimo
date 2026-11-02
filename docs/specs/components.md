@@ -36,6 +36,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-field-grid` | no role; columns label \| control \| readout shared by its ui-field rows (`subgrid`); other children (headings) span | |
 | containers | `ui-group`, `ui-collection` (wrappers), `ui-card` (container), `ui-panel`, `ui-region`, `ui-page` (areas); CSS only | `size`, `gap`; card `padding` xs…xl |
 | `ui-separator` | `role=separator` (Base UI Separator); a rule max(1px, B) thick in the border role; not focusable | `orientation` |
+| `ui-avatar` | Base UI Avatar (Root, Image, Fallback); `role=img` named by `alt` or `name`; the image shows once loaded, the fallback (authored content, initials of `name`, or a user icon) until then, after `delay`; `loadingstatuschange` | `src`, `alt`, `name`, `avatar-size` (sm 6u, md 8u, lg 12u, xl 16u), `delay` |
 
 ### Part names
 
@@ -124,6 +125,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-image` (Image) | | `img[data-error]` | ours |
 | `ui-field` (Field) | none; reads its control's `data-disabled` / `data-required` (`:has`) | | |
 | `ui-separator` (Separator) | `data-orientation` | | Base UI Separator |
+| `ui-avatar` (Avatar) | | image `data-loading`, `data-error` | Base UI Avatar.Image |
 
 Where a React renderer keeps a native pseudo-class, and why: `:disabled` beside `data-disabled` for a native control disabled by an ancestor `<fieldset disabled>`, which React cannot see; the React Select's open state (`select:open`), its options' selection and highlight (`:checked`, `:focus`) and its popup (`::picker(select)`), because the browser owns the customizable select's picker and reports none of it to script (a native select has no placeholder either). React validity is read from the native control's constraint validation when the host sets `data-valid` / `data-invalid`, so both renderers show errors at the same moment (blur or a blocked submit), not at `:user-invalid` time. Not implemented: `data-starting-style` / `data-ending-style` (the select popup's enter and exit stay on `@starting-style` and `allow-discrete` transitions with the reveal intent).
 

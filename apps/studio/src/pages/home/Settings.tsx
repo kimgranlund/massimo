@@ -27,7 +27,6 @@ const planGrid = css({ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', g
 const price = css({ textStyle: 'heading-2', '& span': { textStyle: 'body', color: 'fg.muted' } });
 const profileText = css({ flex: '[1 1 14rem]', minWidth: '0' });
 const profileHead = css({ display: 'flex', alignItems: 'center', gap: '4', flexWrap: 'wrap' });
-const bigAvatar = css({ display: 'inline-grid', placeItems: 'center', flexShrink: 0, width: '12', height: '12', borderRadius: 'full', textStyle: 'heading-3', [CQ_MD]: { width: '16', height: '16' } });
 
 export function Settings() {
   const [seats, setSeats] = useState(12);
@@ -49,7 +48,7 @@ export function Settings() {
       <form className={main} onSubmit={(e) => e.preventDefault()} aria-label="Profile settings">
         <ui-card padding="lg">
           <div className={profileHead}>
-            <span className={cx(bigAvatar, s.tone.primary)} aria-hidden="true">KS</span>
+            <ui-avatar avatar-size="xl" className={s.tone.primary} aria-hidden="true">KS</ui-avatar>
             <div className={cx(s.stack1, profileText)}>
               <h3 className={s.h3}>Profile</h3>
               <p className={s.caption}>How you appear on comments, approvals and the activity feed.</p>

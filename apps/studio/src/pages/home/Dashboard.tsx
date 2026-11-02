@@ -165,7 +165,7 @@ export function Dashboard() {
           </div>
           {rows.map((o, i) => (
             <div key={o.id} className={orderRow}>
-              <span className={cx(s.avatar, s.tone[s.AVATAR_TONES[i % 5]], who)} aria-hidden="true">{o.initials}</span>
+              <ui-avatar className={cx(s.tone[s.AVATAR_TONES[i % 5]], who)} aria-hidden="true">{o.initials}</ui-avatar>
               <div className={cx(area('name'), s.stack1)}>
                 <span className={cx(s.strong, ellipsis)}>{o.customer}</span>
                 <span className={cx(s.caption, ellipsis)}>{o.id} · {o.item}</span>

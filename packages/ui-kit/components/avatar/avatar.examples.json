@@ -1,0 +1,36 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "avatar",
+  "title": "Avatar",
+  "summary": "A person or entity as a round picture with a fallback.",
+  "defaultExample": "initials",
+  "examples": [
+    {
+      "id": "initials",
+      "label": "Initials from a name",
+      "subject": "component:avatar",
+      "markup": "<ui-avatar name=\"Maya Lindqvist\"></ui-avatar>"
+    },
+    {
+      "id": "image",
+      "label": "Picture with a fallback",
+      "subject": "component:avatar",
+      "markup": "<ui-avatar src=\"/people/maya.jpg\" alt=\"Maya Lindqvist\" delay=\"300\">ML</ui-avatar>",
+      "note": "The initials show until the picture loads, and stay if it fails."
+    },
+    {
+      "id": "sizes",
+      "label": "Sizes",
+      "subject": "component:avatar",
+      "markup": "<ui-avatar avatar-size=\"sm\" name=\"Ada\"></ui-avatar><ui-avatar name=\"Ada\"></ui-avatar><ui-avatar avatar-size=\"lg\" name=\"Ada\"></ui-avatar><ui-avatar avatar-size=\"xl\"></ui-avatar>"
+    },
+    {
+      "id": "composed",
+      "label": "Composed parts",
+      "subject": "part:avatar-fallback",
+      "markup": "<ui-avatar name=\"Kim Sandberg\"><img data-part=\"image\" src=\"/people/kim.jpg\" alt=\"\"><span data-part=\"fallback\">KS</span></ui-avatar>",
+      "note": "React: Avatar.Root › Avatar.Image, Avatar.Fallback."
+    }
+  ]
+}

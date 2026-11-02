@@ -24,4 +24,6 @@ export const pending = defineGlobalStyles({
   // A separator reserves its rule (thickness max(1px, B)) until its classes arrive.
   'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },
   'ui-separator[orientation=vertical]:not(:defined)': { height: 'auto', width: 'var(--separator)' },
+  // An avatar keeps its square; its initials stay hidden until the fallback is set up.
+  'ui-avatar:not(:defined)': { display: 'inline-block', flexShrink: 0, width: 'var(--avatar)', height: 'var(--avatar)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });

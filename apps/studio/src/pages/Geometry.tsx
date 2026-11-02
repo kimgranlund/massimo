@@ -10,9 +10,10 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/separator/element';
+import '@massimo/ui-kit/components/avatar/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator,
+  SIZES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -192,7 +193,15 @@ export function GeometryPage({ params }: PageProps) {
         })()}
       </Section>
       <Divider />
-      <Section id="display" title="Display" note="A separator is as thick as the theme border, never thinner than a hairline: max(1px, B).">
+      <Section id="display" title="Display" note="A separator is as thick as the theme border, never thinner than a hairline: max(1px, B). An avatar is n·u square (sm 6, md 8, lg 12, xl 16): a control scaled by k = n / 8.">
+        {(['sm', 'md', 'lg', 'xl'] as const).map((k) => {
+          const t = resolveAvatar(k, theme);
+          return (
+            <SpecRow key={k} label={`avatar ${k}`} values={[`size ${px(t.size)} · radius ${px(t.radius)}`, `initials ${px(t.fontSize)} · icon ${px(t.iconSize)}`]}>
+              <ui-avatar avatar-size={k} name="Ada Lovelace" /><ui-avatar avatar-size={k} />
+            </SpecRow>
+          );
+        })}
         {(() => {
           const t = resolveSeparator(theme);
           return (

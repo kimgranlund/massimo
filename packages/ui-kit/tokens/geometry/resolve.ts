@@ -380,3 +380,27 @@ export function resolveSeparator(input: GeometryInput = {}) {
   const b = Math.min(x.border, x.unit / 2);
   return { unit: x.unit, border: b, thickness: Math.max(1, b) };
 }
+
+// ── Display: avatar ──
+// An avatar is a square on the slot and control ladder: sm = the 6u slot (it fits a button's
+// leading slot), md = the 8u control height (default), lg = 12u, xl = 16u. It is a control scaled by
+// k = size / 8u: its initials take the control font × k and its fallback icon the md icon × k, so
+// the artwork keeps the control's proportions at every size. It is round: radius = size / 2 ×
+// min(1, s) (the corner scale squares it, never rounds it past a circle).
+export type AvatarSize = 'sm' | 'md' | 'lg' | 'xl';
+export const AVATAR_SIZES: Record<AvatarSize, number> = { sm: 6, md: 8, lg: 12, xl: 16 };
+
+/** ui-avatar: box n·u (sm 6, md 8, lg 12, xl 16), initials (10px + u)·k, icon (10px + 1.5u)·k, k = n / 8; radius box/2 · min(1, s). */
+export function resolveAvatar(size: AvatarSize = 'md', input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  if (!Object.hasOwn(AVATAR_SIZES, size)) throw new RangeError('unknown avatar size');
+  const box = AVATAR_SIZES[size] * u, k = AVATAR_SIZES[size] / 8;
+  const fontSize = (10 + u) * k;
+  return {
+    unit: u, size: box, scale: k, fontSize,
+    lineHeight: Math.min(1.2 * fontSize, box),
+    iconSize: (10 + u + ICON_STEPS.md * u) * k,
+    radius: (box / 2) * Math.min(1, x.radiusScale),
+  };
+}

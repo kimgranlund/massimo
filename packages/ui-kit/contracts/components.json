@@ -464,6 +464,24 @@
         "inline"
       ],
       "behavior": "None: a static rule. orientation sets aria-orientation and data-orientation."
+    },
+    "avatar": {
+      "geometryFamily": "avatar",
+      "element": "Host is the avatar frame (role=img with aria-label when alt or name is set); it owns an <img> image part and a fallback part.",
+      "parts": [
+        "avatar-image",
+        "avatar-fallback"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "inline"
+      ],
+      "behavior": "The image shows once it has loaded; until then, and after an error, the fallback shows (after delay ms): authored content, else the initials of name, else a user icon."
     }
   }
 }

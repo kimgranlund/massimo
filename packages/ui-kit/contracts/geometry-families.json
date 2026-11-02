@@ -258,6 +258,25 @@
         "separator"
       ],
       "ladder": "separator"
+    },
+    "avatar": {
+      "id": "geometry:avatar",
+      "resolver": [
+        "resolveAvatar"
+      ],
+      "summary": "A square on the slot and control ladder: sm 6u (the slot), md 8u (the control height, default), lg 12u, xl 16u. A control scaled by k = size / 8u: initials (10px + u)·k at line height 1.2, fallback icon (10px + 1.5u)·k (the md icon). Round: radius size/2 × min(1, s).",
+      "members": [
+        "component:avatar"
+      ],
+      "searchTerms": [
+        "avatar size",
+        "initials",
+        "profile picture"
+      ],
+      "csv": [
+        "avatar"
+      ],
+      "ladder": "avatar"
     }
   }
 }

@@ -34,7 +34,8 @@
     "data-complete": { "baseUi": true, "condition": "_complete", "meaning": "Progress at the max." },
     "data-alpha": { "baseUi": false, "condition": null, "meaning": "The swatch color is translucent or missing: a checkerboard shows under it." },
     "data-single": { "baseUi": false, "condition": null, "meaning": "The swiper has one slide: no paddles or dots." },
-    "data-error": { "baseUi": false, "condition": null, "meaning": "On a ui-image img: the image failed to load (the frame's empty fill shows)." }
+    "data-error": { "baseUi": false, "condition": null, "meaning": "On a ui-image img: the image failed to load (the frame's empty fill shows). On an avatar image (Base UI Avatar.Image, the same name): the image failed and the fallback shows." },
+    "data-loading": { "baseUi": true, "condition": null, "meaning": "On an avatar image (Base UI Avatar.Image): the image is loading; the fallback shows until it loads." }
   },
   "components": {
     "ui-button": { "host": ["data-disabled", "data-busy"] },
@@ -58,6 +59,7 @@
     "ui-swiper": { "host": ["data-single"], "dot": ["data-selected"], "paddle": ["data-disabled"] },
     "ui-image": { "img": ["data-error"] },
     "ui-separator": { "host": ["data-orientation"] },
+    "ui-avatar": { "host": [], "image": ["data-loading", "data-error"], "fallback": [] },
     "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" }
   },
   "native": {

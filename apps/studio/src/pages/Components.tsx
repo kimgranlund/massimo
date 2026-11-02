@@ -12,6 +12,7 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
+import '@massimo/ui-kit/components/avatar/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -27,7 +28,7 @@ export const FAMILIES = [
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
-  ['display', 'Display', 'ui-separator'],
+  ['display', 'Display', 'ui-separator · ui-avatar'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -37,6 +38,7 @@ const media = css({ width: 'full', maxWidth: '[40rem]', borderRadius: 'xl', over
 const formats = css({ display: 'flex', gap: '3', flexWrap: 'wrap', alignItems: 'end' });
 const figure = css({ display: 'flex', flexDirection: 'column', gap: '1', width: '[8rem]' });
 const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
+const tonePrimary = css({ bg: 'primary.subtle', color: 'primary.fg' });
 const separatorDemo = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
 const separatorLadder = css({ display: 'flex', flexDirection: 'column', gap: '2', width: '[min(100%, 20rem)]' });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
@@ -105,7 +107,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
-    display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it.',
+    display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
   const CONTENT: Record<Family, ReactNode> = {
     actions: (
@@ -286,6 +288,23 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             <ui-group><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
           </div>
         </Row>
+        <Row label="Avatar">
+          <ui-avatar avatar-size="sm" name="Maya Lindqvist" />
+          <ui-avatar name="Maya Lindqvist" />
+          <ui-avatar avatar-size="lg" name="Tomás Herrera" className={tonePrimary} />
+          <ui-avatar avatar-size="xl" src={IMAGES[1]} alt="Aiko Tanaka">AT</ui-avatar>
+          <ui-avatar name="Broken link" src="data:image/png;base64,broken" />
+          <ui-avatar />
+        </Row>
+        <Row label="In a slot">
+          <ui-button icon-size="fill"><ui-avatar slot="leading" avatar-size="sm" name="Kim Sandberg" />Kim</ui-button>
+          <ui-chip><ui-avatar slot="leading" avatar-size="sm" src={IMAGES[0]} alt="" />Dawn</ui-chip>
+        </Row>
+        <h3 className={subTitle}>Avatar sizes</h3>
+        <SizeLadder family="avatar" params={params}>
+          <ui-avatar avatar-size="sm" name="Ada Lovelace" /><ui-avatar name="Ada Lovelace" /><ui-avatar avatar-size="lg" name="Ada Lovelace" className={tonePrimary} /><ui-avatar avatar-size="xl" />
+        </SizeLadder>
+        <h3 className={subTitle}>Separator sizes</h3>
         <SizeLadder family="separator" params={params}>
           <div className={separatorLadder}><ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group><ui-separator /></div>
         </SizeLadder>

@@ -1,0 +1,332 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "avatar",
+  "primary": "component:avatar",
+  "module": "./avatar.element.ts",
+  "registration": "on-import",
+  "documentation": "./avatar.md",
+  "examples": "./avatar.examples.json",
+  "contract": "../../contracts/components.json#/components/avatar",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./avatar.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:avatar",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-avatar",
+      "class": "UIAvatar",
+      "extends": "UIElement",
+      "intent": [
+        "Show a person or entity as a round picture, with initials or an icon until the picture loads or when it fails"
+      ],
+      "properties": [
+        {
+          "key": "src",
+          "type": "string",
+          "default": "",
+          "attribute": "src",
+          "reflects": false,
+          "description": "Image source. The image part shows once it has loaded; without a src the fallback shows.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "alt",
+          "type": "string",
+          "default": "",
+          "attribute": "alt",
+          "reflects": false,
+          "description": "Accessible name of the picture; set, it names the host (role=img) and the image itself gets alt=\"\".",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": false,
+          "description": "The person or entity: names the host when alt is empty, and its initials (up to two letters) are the fallback when none is authored.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "avatarSize",
+          "type": "string",
+          "default": "md",
+          "attribute": "avatar-size",
+          "reflects": true,
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "description": "sm 6u (the slot), md 8u (the control height), lg 12u, xl 16u. Initials and icon scale with it.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": 0,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "Milliseconds before the fallback shows (Base UI Fallback delay), so a fast image does not flash initials.",
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [
+        {
+          "name": "loadingstatuschange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the image starts loading, loads or fails, or src is cleared",
+          "detail": "{ status: 'idle' | 'loading' | 'loaded' | 'error' } (Base UI Avatar.Image onLoadingStatusChange)"
+        }
+      ],
+      "semantics": {
+        "role": "img",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "alt",
+            "name"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Fallback content (initials text or an <i name> icon); optionally an authored <img data-part=\"image\"> and [data-part=fallback]."
+      },
+      "layout": {
+        "display": "inline-grid",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host sets role=img and aria-label from alt, else name; without either it sets no role and the image's alt (or the fallback text) is read.",
+        "The image shows only once it has loaded; the fallback shows while it loads, after an error and without a src, after delay ms.",
+        "Fallback content: authored children win; else the initials of name (up to two letters); else a user icon.",
+        "Sizes are avatar-size sm | md | lg | xl (6u | 8u | 12u | 16u); size sets u for the subtree as everywhere else.",
+        "Tone colors are the application's: an author class (bg and color roles) overrides the neutral fill."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A content image or photo with its own aspect ratio.",
+          "reason": "An avatar is a round square for a person or entity.",
+          "useInstead": "component:image"
+        },
+        {
+          "when": "A status dot or a count over the avatar.",
+          "reason": "The kit has no avatar badge or group overlap; compose a badge beside it."
+        }
+      ],
+      "searchTerms": [
+        "avatar",
+        "profile picture",
+        "initials",
+        "user image",
+        "person"
+      ]
+    },
+    {
+      "id": "part:avatar-image",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "img",
+      "selector": ":scope > [data-part=image]",
+      "summary": "The picture (Base UI Avatar.Image): hidden until it has loaded; data-loading while loading, data-error after a failure. Covers the frame."
+    },
+    {
+      "id": "part:avatar-fallback",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=fallback]",
+      "summary": "Shown until the image has loaded (Base UI Avatar.Fallback): authored content, else initials at the control font × k, else a user icon at the md icon × k."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:avatar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesGeometry",
+      "to": "geometry:avatar"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "ownsPart",
+      "to": "part:avatar-image"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "ownsPart",
+      "to": "part:avatar-fallback"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:avatar",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./avatar.element.ts",
+      "exports": {
+        "component:avatar": "UIAvatar"
+      },
+      "verification": "./verification/avatar.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./avatar.react.tsx",
+      "exports": {
+        "component:avatar": "Avatar"
+      },
+      "verification": "./verification/avatar.verification.json#/renderers/react",
+      "props": {
+        "component:avatar": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "name?: string // Names the avatar (role=img, aria-label) when the image has no alt; its initials are the default fallback.",
+            "alt?: string // Accessible name of the image; names the avatar (role=img).",
+            "avatarSize?: AvatarSize // sm 6u (the slot) | md 8u (the control height, default) | lg 12u | xl 16u.",
+            "size?: number // Unit u in px for this element.",
+            "children?: ReactNode",
+            "src?: string // Image source; without one (or until it loads, or after an error) the fallback shows.",
+            "delay?: number // Fallback delay in ms.",
+            "onLoadingStatusChange?: (status: ImageStatus) => void"
+          ]
+        }
+      },
+      "parts": {
+        "component:avatar": {
+          "Avatar.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "name?: string // Names the avatar (role=img, aria-label) when the image has no alt; its initials are the default fallback.",
+              "alt?: string // Accessible name of the image; names the avatar (role=img).",
+              "avatarSize?: AvatarSize = 'md' // sm 6u (the slot) | md 8u (the control height, default) | lg 12u | xl 16u.",
+              "size?: number // Unit u in px for this element.",
+              "children?: ReactNode"
+            ]
+          },
+          "Avatar.Image": {
+            "inherits": [
+              "Omit<ImgHTMLAttributes<HTMLImageElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "onLoadingStatusChange?: (status: ImageStatus) => void // Every status change: 'loading', 'loaded' or 'error' (Base UI onLoadingStatusChange)."
+            ]
+          },
+          "Avatar.Fallback": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "delay?: number = 0 // Milliseconds to wait before showing the fallback (Base UI delay).",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

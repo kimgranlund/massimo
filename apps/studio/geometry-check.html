@@ -15,7 +15,8 @@ import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/avatar/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -51,6 +52,7 @@ for (const c of cases) {
     <ui-palette id="pal"><ui-swatch color="red"></ui-swatch><ui-swatch color="blue"></ui-swatch><ui-swatch color="green"></ui-swatch></ui-palette>
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
     <div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
+    <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
     <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
@@ -229,6 +231,16 @@ for (const c of cases) {
     checks['separator.span'] = [r2(rect(h).width), 400];
     checks['separator.vertical.thickness'] = [r2(rect(v).width), rsp.thickness];
     checks['separator.vertical.span'] = [r2(rect(v).height), 40];
+  }
+  // Avatar: n·u squares that never shrink (in a 10px flex row), initials and icon scaled by k, round.
+  for (const k of ['sm', 'md', 'lg', 'xl']) {
+    const av = $(`av-${k}`), ra = resolveAvatar(k, g), fb = av.querySelector('[data-part=fallback]'), icon = fb.querySelector('i');
+    checks[`avatar.${k}.width`] = [r2(rect(av).width), r2(ra.size)];
+    checks[`avatar.${k}.height`] = [r2(rect(av).height), r2(ra.size)];
+    checks[`avatar.${k}.radius`] = [r2(Math.min(px(cs(av).borderTopLeftRadius), ra.size / 2)), r2(ra.radius)];
+    checks[`avatar.${k}.font`] = [px(cs(av).fontSize), r2(ra.fontSize)];
+    checks[`avatar.${k}.lineHeight`] = [px(cs(fb).lineHeight), r2(ra.lineHeight)];
+    if (icon) checks[`avatar.${k}.icon`] = [r2(rect(icon).width), r2(ra.iconSize)];
   }
   // Swiper: 8u round paddles inset 2u; 2u dots (active 4u) in 4u hit areas, u apart, 2u above the bottom.
   const swiperChecks = (name, host) => {

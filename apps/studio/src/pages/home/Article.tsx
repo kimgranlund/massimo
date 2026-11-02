@@ -45,7 +45,7 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
           <h2 className={title}>Ten days on the Kungsleden, carrying only what we make</h2>
           <p className={s.bodyLarge}>Four hundred kilometres of Swedish fell, a rain shell we almost left at home and the one question every trip answers: what did you never take out of the bag?</p>
           <div className={byline}>
-            <span className={cx(s.avatar, s.tone.secondary)} aria-hidden="true">EL</span>
+            <ui-avatar className={s.tone.secondary} aria-hidden="true">EL</ui-avatar>
             <div className={cx(s.stack1, s.grow)}>
               <span className={s.strong}>Elin Lund</span>
               <span className={s.caption}>Oct 28, 2026 · 12 min read</span>
