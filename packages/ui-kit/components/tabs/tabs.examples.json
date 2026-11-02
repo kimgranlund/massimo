@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "tabs",
+  "title": "Tabs",
+  "summary": "A list of tabs switching between peer panels.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Panels with labels (segmented)",
+      "subject": "component:tabs",
+      "markup": "<ui-tabs label=\"Project\"><div data-part=\"panel\" value=\"overview\" label=\"Overview\"><p>Status and owners.</p></div><div data-part=\"panel\" value=\"activity\" label=\"Activity\"><p>Recent changes.</p></div><div data-part=\"panel\" value=\"settings\" label=\"Settings\"><p>Name and access.</p></div></ui-tabs>"
+    },
+    {
+      "id": "underline",
+      "label": "Parts, underline, a disabled tab",
+      "subject": "component:tabs",
+      "markup": "<ui-tabs variant=\"underline\" default-value=\"files\" label=\"Repository\"><div data-part=\"list\"><div data-part=\"tab\" value=\"code\"><i slot=\"leading\" name=\"code\"></i>Code</div><div data-part=\"tab\" value=\"files\">Files<span slot=\"suffix\">12</span></div><div data-part=\"tab\" value=\"wiki\" disabled>Wiki</div></div><div data-part=\"panel\" value=\"code\"><p>main.ts</p></div><div data-part=\"panel\" value=\"files\"><p>12 files</p></div><div data-part=\"panel\" value=\"wiki\"><p>Empty</p></div></ui-tabs>"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical, activate on focus",
+      "subject": "component:tabs",
+      "markup": "<ui-tabs orientation=\"vertical\" activate-on-focus label=\"Settings\"><div data-part=\"panel\" label=\"General\"><p>Language, region.</p></div><div data-part=\"panel\" label=\"Privacy\"><p>Sharing.</p></div></ui-tabs>"
+    }
+  ]
+}

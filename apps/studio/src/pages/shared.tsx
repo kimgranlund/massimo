@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -88,7 +88,7 @@ export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db277
 // metrics for the live theme (like the Typography roles); the right column renders the specimens
 // in that size subtree (data-size).
 export const LADDER_SIZES = [3, 4, 6];
-export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset';
+export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure';
 
 type Live = { unit: number; border: number; radiusScale: number };
 const px = (n: number) => `${fmt(n)}`;
@@ -136,6 +136,11 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   choiceGroup: (g) => {
     const [v, h] = [resolveChoiceGroup('vertical', g), resolveChoiceGroup('horizontal', g)];
     return [`row ${px(v.rowHeight)} · gap ${px(v.gap)} · pitch ${px(v.pitch)}`, `horizontal gap ${px(h.columnGap)} · wrap ${px(h.rowGap)}`];
+  },
+  disclosure: (g) => {
+    const d = resolveDisclosure(g);
+    const [sg, ul] = [resolveTabs('segmented', g), resolveTabs('underline', g)];
+    return [`trigger ${px(d.height)} · caret ${px(d.caret)} · panel inset ${px(d.panelInline)}`, `tabs ${px(sg.listHeight)} · tab ${px(sg.tabHeight)} · bar ${px(ul.indicatorThickness ?? 0)}`];
   },
 };
 

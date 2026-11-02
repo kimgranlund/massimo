@@ -6,66 +6,498 @@
   "react": "components/state.react.ts",
   "motion": "components/recipe-parts.ts",
   "attributes": {
-    "data-disabled": { "baseUi": true, "condition": "_disabled", "meaning": "Disabled: by its own property, an ancestor <fieldset disabled> or ui-fieldset[disabled], a disabled choice group, or (an option) its list." },
-    "data-readonly": { "baseUi": true, "condition": "_readOnly", "meaning": "Read-only (input)." },
-    "data-required": { "baseUi": true, "condition": "_required", "meaning": "A value is required." },
-    "data-valid": { "baseUi": true, "condition": "_valid", "meaning": "Valid, once validity is shown (after the user leaves the control or a submit is blocked)." },
-    "data-invalid": { "baseUi": true, "condition": "_invalid", "meaning": "Invalid, once shown: after the user leaves the control or a submit is blocked; an author error at once. On ui-swatch: the color does not parse." },
-    "data-dirty": { "baseUi": true, "condition": "_dirty", "meaning": "The value differs from the initial value." },
-    "data-touched": { "baseUi": true, "condition": "_touched", "meaning": "The user has left the control once (a choice: also activated it)." },
-    "data-filled": { "baseUi": true, "condition": "_filled", "meaning": "The value is not empty (a choice: checked)." },
-    "data-focused": { "baseUi": true, "condition": "_focused", "meaning": "Focus is within the control." },
-    "data-checked": { "baseUi": true, "condition": "_checked", "meaning": "Checkbox, radio or switch is on." },
-    "data-unchecked": { "baseUi": true, "condition": "_unchecked", "meaning": "Checkbox, radio or switch is off." },
-    "data-indeterminate": { "baseUi": true, "condition": "_indeterminate", "meaning": "Checkbox mixed (instead of data-checked / data-unchecked); progress without a value." },
-    "data-busy": { "baseUi": false, "condition": "_busy", "meaning": "Button loading: activation blocked, label readable (aria-busy for semantics)." },
-    "data-pressed": { "baseUi": true, "condition": "_pressed", "meaning": "A toggle that is on (ui-toggle and the selectable chip, Base UI Toggle); the select trigger while its popup is open (Base UI Select.Trigger)." },
-    "data-popup-open": { "baseUi": true, "condition": "_popupOpen", "meaning": "The select trigger's popup is open." },
-    "data-placeholder": { "baseUi": true, "condition": null, "meaning": "The select trigger and value show the placeholder (no option selected). The ui-input editor's data-placeholder is its placeholder text, not a state." },
-    "data-open": { "baseUi": true, "condition": "_open", "meaning": "The select popup is open." },
-    "data-closed": { "baseUi": true, "condition": "_closed", "meaning": "The select popup is closed." },
-    "data-side": { "baseUi": true, "condition": null, "meaning": "The side of the trigger the open popup sits on: bottom or top (anchor positioning may flip it)." },
-    "data-align": { "baseUi": true, "condition": null, "meaning": "The open popup's alignment to the trigger: start." },
-    "data-selected": { "baseUi": true, "condition": "_selected", "meaning": "The selected option or swatch; the current slide's dot (swiper; Base UI has no carousel)." },
-    "data-highlighted": { "baseUi": true, "condition": "_highlighted", "meaning": "The keyboard-highlighted option or swatch (aria-activedescendant); replaces data-active." },
-    "data-orientation": { "baseUi": true, "condition": null, "meaning": "horizontal or vertical: listbox, segmented, palette, range, separator." },
-    "data-dragging": { "baseUi": true, "condition": "_dragging", "meaning": "A pointer drags the range thumb." },
-    "data-progressing": { "baseUi": true, "condition": "_progressing", "meaning": "Progress with a value below the max." },
-    "data-complete": { "baseUi": true, "condition": "_complete", "meaning": "Progress at the max." },
-    "data-alpha": { "baseUi": false, "condition": null, "meaning": "The swatch color is translucent or missing: a checkerboard shows under it." },
-    "data-single": { "baseUi": false, "condition": null, "meaning": "The swiper has one slide: no paddles or dots." },
-    "data-error": { "baseUi": false, "condition": null, "meaning": "On a ui-image img: the image failed to load (the frame's empty fill shows). On an avatar image (Base UI Avatar.Image, the same name): the image failed and the fallback shows." },
-    "data-loading": { "baseUi": true, "condition": null, "meaning": "On an avatar image (Base UI Avatar.Image): the image is loading; the fallback shows until it loads." }
+    "data-disabled": {
+      "baseUi": true,
+      "condition": "_disabled",
+      "meaning": "Disabled: by its own property, an ancestor <fieldset disabled> or ui-fieldset[disabled], a disabled choice group, or (an option) its list."
+    },
+    "data-readonly": {
+      "baseUi": true,
+      "condition": "_readOnly",
+      "meaning": "Read-only (input)."
+    },
+    "data-required": {
+      "baseUi": true,
+      "condition": "_required",
+      "meaning": "A value is required."
+    },
+    "data-valid": {
+      "baseUi": true,
+      "condition": "_valid",
+      "meaning": "Valid, once validity is shown (after the user leaves the control or a submit is blocked)."
+    },
+    "data-invalid": {
+      "baseUi": true,
+      "condition": "_invalid",
+      "meaning": "Invalid, once shown: after the user leaves the control or a submit is blocked; an author error at once. On ui-swatch: the color does not parse."
+    },
+    "data-dirty": {
+      "baseUi": true,
+      "condition": "_dirty",
+      "meaning": "The value differs from the initial value."
+    },
+    "data-touched": {
+      "baseUi": true,
+      "condition": "_touched",
+      "meaning": "The user has left the control once (a choice: also activated it)."
+    },
+    "data-filled": {
+      "baseUi": true,
+      "condition": "_filled",
+      "meaning": "The value is not empty (a choice: checked)."
+    },
+    "data-focused": {
+      "baseUi": true,
+      "condition": "_focused",
+      "meaning": "Focus is within the control."
+    },
+    "data-checked": {
+      "baseUi": true,
+      "condition": "_checked",
+      "meaning": "Checkbox, radio or switch is on."
+    },
+    "data-unchecked": {
+      "baseUi": true,
+      "condition": "_unchecked",
+      "meaning": "Checkbox, radio or switch is off."
+    },
+    "data-indeterminate": {
+      "baseUi": true,
+      "condition": "_indeterminate",
+      "meaning": "Checkbox mixed (instead of data-checked / data-unchecked); progress without a value."
+    },
+    "data-busy": {
+      "baseUi": false,
+      "condition": "_busy",
+      "meaning": "Button loading: activation blocked, label readable (aria-busy for semantics)."
+    },
+    "data-pressed": {
+      "baseUi": true,
+      "condition": "_pressed",
+      "meaning": "A toggle that is on (ui-toggle and the selectable chip, Base UI Toggle); the select trigger while its popup is open (Base UI Select.Trigger)."
+    },
+    "data-popup-open": {
+      "baseUi": true,
+      "condition": "_popupOpen",
+      "meaning": "The select trigger's popup is open."
+    },
+    "data-placeholder": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The select trigger and value show the placeholder (no option selected). The ui-input editor's data-placeholder is its placeholder text, not a state."
+    },
+    "data-open": {
+      "baseUi": true,
+      "condition": "_open",
+      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open."
+    },
+    "data-closed": {
+      "baseUi": true,
+      "condition": "_closed",
+      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed."
+    },
+    "data-side": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The side of the trigger the open popup sits on: bottom or top (anchor positioning may flip it)."
+    },
+    "data-align": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The open popup's alignment to the trigger: start."
+    },
+    "data-selected": {
+      "baseUi": true,
+      "condition": "_selected",
+      "meaning": "The selected option or swatch; the current slide's dot (swiper; Base UI has no carousel)."
+    },
+    "data-highlighted": {
+      "baseUi": true,
+      "condition": "_highlighted",
+      "meaning": "The keyboard-highlighted option or swatch (aria-activedescendant); replaces data-active."
+    },
+    "data-orientation": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "horizontal or vertical: listbox, segmented, palette, range, separator; accordion (host and panels); tabs (every part)."
+    },
+    "data-dragging": {
+      "baseUi": true,
+      "condition": "_dragging",
+      "meaning": "A pointer drags the range thumb."
+    },
+    "data-progressing": {
+      "baseUi": true,
+      "condition": "_progressing",
+      "meaning": "Progress with a value below the max."
+    },
+    "data-complete": {
+      "baseUi": true,
+      "condition": "_complete",
+      "meaning": "Progress at the max."
+    },
+    "data-alpha": {
+      "baseUi": false,
+      "condition": null,
+      "meaning": "The swatch color is translucent or missing: a checkerboard shows under it."
+    },
+    "data-single": {
+      "baseUi": false,
+      "condition": null,
+      "meaning": "The swiper has one slide: no paddles or dots."
+    },
+    "data-error": {
+      "baseUi": false,
+      "condition": null,
+      "meaning": "On a ui-image img: the image failed to load (the frame's empty fill shows). On an avatar image (Base UI Avatar.Image, the same name): the image failed and the fallback shows."
+    },
+    "data-loading": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "On an avatar image (Base UI Avatar.Image): the image is loading; the fallback shows until it loads."
+    },
+    "data-active": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The active tab (Base UI Tabs.Tab; aria-selected for semantics)."
+    },
+    "data-hidden": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A tab panel that is not shown (Base UI Tabs.Panel; also hidden)."
+    },
+    "data-activation-direction": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "Where the active tab moved last: left, right, up, down, or none before any change (Base UI Tabs; root, list, tabs, indicator, panels)."
+    },
+    "data-panel-open": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    }
   },
   "components": {
-    "ui-button": { "host": ["data-disabled", "data-busy"] },
-    "ui-chip": { "host": ["data-disabled", "data-pressed"] },
-    "ui-toggle": { "host": ["data-disabled", "data-pressed"] },
-    "ui-checkbox": { "host": ["data-checked", "data-unchecked", "data-indeterminate", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-radio": { "host": ["data-checked", "data-unchecked", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-switch": { "host": ["data-checked", "data-unchecked", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-input": { "host": ["data-disabled", "data-readonly", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-select": {
-      "host": ["data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"],
-      "trigger": ["data-popup-open", "data-pressed", "data-placeholder", "data-disabled"],
-      "popup": ["data-open", "data-closed", "data-side", "data-align"],
-      "option": ["data-selected", "data-highlighted", "data-disabled"]
+    "ui-button": {
+      "host": [
+        "data-disabled",
+        "data-busy"
+      ]
     },
-    "ui-listbox": { "host": ["data-orientation", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"], "option": ["data-selected", "data-highlighted", "data-disabled"] },
-    "ui-segmented": { "host": ["data-orientation", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"], "option": ["data-selected", "data-highlighted", "data-disabled"] },
-    "ui-range": { "host": ["data-orientation", "data-dragging", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-progress": { "host": ["data-indeterminate", "data-progressing", "data-complete"] },
-    "ui-palette": { "host": ["data-orientation", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"], "swatch": ["data-selected", "data-highlighted"] },
-    "ui-swatch": { "host": ["data-invalid", "data-alpha"] },
-    "ui-swiper": { "host": ["data-single"], "dot": ["data-selected"], "paddle": ["data-disabled"] },
-    "ui-image": { "img": ["data-error"] },
-    "ui-separator": { "host": ["data-orientation"] },
-    "ui-meter": { "host": [], "reads": "no state of its own (Base UI Meter has no data attributes); the value is ARIA (aria-valuenow, aria-valuetext) and --ui-ratio" },
-    "ui-avatar": { "host": [], "image": ["data-loading", "data-error"], "fallback": [] },
-    "ui-field": { "host": [], "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker" },
-    "ui-radio-group": { "host": ["data-orientation", "data-disabled", "data-readonly", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-checkbox-group": { "host": ["data-orientation", "data-disabled", "data-required", "data-valid", "data-invalid", "data-dirty", "data-touched", "data-filled", "data-focused"] },
-    "ui-fieldset": { "host": ["data-disabled"], "legend": ["data-disabled"] }
+    "ui-chip": {
+      "host": [
+        "data-disabled",
+        "data-pressed"
+      ]
+    },
+    "ui-toggle": {
+      "host": [
+        "data-disabled",
+        "data-pressed"
+      ]
+    },
+    "ui-checkbox": {
+      "host": [
+        "data-checked",
+        "data-unchecked",
+        "data-indeterminate",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-radio": {
+      "host": [
+        "data-checked",
+        "data-unchecked",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-switch": {
+      "host": [
+        "data-checked",
+        "data-unchecked",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-input": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-select": {
+      "host": [
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "trigger": [
+        "data-popup-open",
+        "data-pressed",
+        "data-placeholder",
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ],
+      "option": [
+        "data-selected",
+        "data-highlighted",
+        "data-disabled"
+      ]
+    },
+    "ui-listbox": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "option": [
+        "data-selected",
+        "data-highlighted",
+        "data-disabled"
+      ]
+    },
+    "ui-segmented": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "option": [
+        "data-selected",
+        "data-highlighted",
+        "data-disabled"
+      ]
+    },
+    "ui-range": {
+      "host": [
+        "data-orientation",
+        "data-dragging",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-progress": {
+      "host": [
+        "data-indeterminate",
+        "data-progressing",
+        "data-complete"
+      ]
+    },
+    "ui-palette": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "swatch": [
+        "data-selected",
+        "data-highlighted"
+      ]
+    },
+    "ui-swatch": {
+      "host": [
+        "data-invalid",
+        "data-alpha"
+      ]
+    },
+    "ui-swiper": {
+      "host": [
+        "data-single"
+      ],
+      "dot": [
+        "data-selected"
+      ],
+      "paddle": [
+        "data-disabled"
+      ]
+    },
+    "ui-image": {
+      "img": [
+        "data-error"
+      ]
+    },
+    "ui-separator": {
+      "host": [
+        "data-orientation"
+      ]
+    },
+    "ui-meter": {
+      "host": [],
+      "reads": "no state of its own (Base UI Meter has no data attributes); the value is ARIA (aria-valuenow, aria-valuetext) and --ui-ratio"
+    },
+    "ui-avatar": {
+      "host": [],
+      "image": [
+        "data-loading",
+        "data-error"
+      ],
+      "fallback": []
+    },
+    "ui-field": {
+      "host": [],
+      "reads": "its control's data-disabled and data-required (:has), for the label fade and the required marker"
+    },
+    "ui-radio-group": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-checkbox-group": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ]
+    },
+    "ui-fieldset": {
+      "host": [
+        "data-disabled"
+      ],
+      "legend": [
+        "data-disabled"
+      ]
+    },
+    "ui-collapsible": {
+      "host": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-panel-open",
+        "data-disabled"
+      ],
+      "panel": [
+        "data-open",
+        "data-closed"
+      ]
+    },
+    "ui-accordion": {
+      "host": [
+        "data-orientation",
+        "data-disabled"
+      ],
+      "item": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "header": [
+        "data-open",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-panel-open",
+        "data-disabled"
+      ],
+      "panel": [
+        "data-open",
+        "data-closed",
+        "data-disabled",
+        "data-orientation"
+      ]
+    },
+    "ui-tabs": {
+      "host": [
+        "data-orientation",
+        "data-activation-direction"
+      ],
+      "list": [
+        "data-orientation",
+        "data-activation-direction"
+      ],
+      "tab": [
+        "data-active",
+        "data-disabled",
+        "data-orientation",
+        "data-activation-direction"
+      ],
+      "indicator": [
+        "data-orientation",
+        "data-activation-direction"
+      ],
+      "panel": [
+        "data-hidden",
+        "data-orientation",
+        "data-activation-direction"
+      ]
+    }
   },
   "native": {
     "disabled": "A React native control (input, select) disabled by an ancestor <fieldset disabled> is :disabled without React knowing: _disabled / _enabled and the select and input control rules keep :disabled beside data-disabled.",
@@ -74,24 +506,203 @@
     "React field validity": "The React hosts read the native control's validity (constraint validation) when they set data-valid / data-invalid; :user-invalid is not used, so both renderers show errors at the same moment (blur or a blocked submit)."
   },
   "states": {
-    "hover-press": { "hook": ":hover / :active on _enabled controls (not data-disabled, not data-busy)", "look": "neutral fill steps 3 → 4 → 5; solids primary.solidHover; selected options primary.subtleHover", "components": ["ui-button", "ui-toggle", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette"] },
-    "keyboard-focus": { "hook": ":focus-visible after key use (html[data-modality=keyboard])", "look": "2px focus-ring outline; text fields keep it after a pointer click", "components": ["ui-button", "ui-toggle", "ui-chip", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette", "ui-swiper"] },
-    "highlighted": { "hook": "[data-highlighted]", "look": "neutral fill (options); focus-ring outline under keyboard modality (swatches)", "components": ["ui-option", "ui-swatch"] },
-    "selected": { "hook": "[data-checked], [data-selected], [data-pressed]", "look": "primary solid (choices, chips) or primary subtle (select options); listbox and segmented: bg.selected; swiper: the stretched dot", "components": ["ui-option", "ui-checkbox", "ui-radio", "ui-switch", "ui-chip", "ui-swatch", "ui-swiper"] },
-    "open": { "hook": "trigger [data-popup-open]; popup [data-open]", "look": "pressed fill, chevron turned 180°", "components": ["ui-select"] },
-    "disabled": { "hook": "[data-disabled] on host, option or paddle", "look": "50% opacity, not-allowed cursor", "components": ["ui-button", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette", "ui-field"] },
-    "busy": { "hook": "[data-busy]", "look": "readable, progress cursor, indeterminate sweep on the bottom edge", "components": ["ui-button"] },
-    "read-only": { "hook": "[data-readonly]", "look": "subtle fill, default cursor", "components": ["ui-input"] },
-    "required": { "hook": "[data-required]", "look": " * in critical.fg after the label", "components": ["ui-input", "ui-select", "ui-checkbox", "ui-switch", "ui-field"] },
-    "invalid": { "hook": "[data-invalid] (shown after blur or a blocked submit; an author error at once)", "look": "critical-tinted fill (palette: critical outline)", "components": ["ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-palette"] },
-    "dragging": { "hook": "[data-dragging]", "look": "grabbing cursor, raised thumb; thumb and fill track the pointer 1:1", "components": ["ui-range"] },
-    "placeholder": { "hook": "trigger [data-placeholder]; :empty editor", "look": "fg.subtle", "components": ["ui-select", "ui-input"] },
-    "indeterminate": { "hook": "[data-indeterminate]", "look": "sweep (progress), minus mark (checkbox); a faint full fill under reduced motion", "components": ["ui-progress", "ui-checkbox"] },
-    "unparsable-color": { "hook": "[data-invalid] (swatch)", "look": "critical strike", "components": ["ui-swatch"] },
-    "translucent-color": { "hook": "[data-alpha] (swatch)", "look": "checkerboard under the color", "components": ["ui-swatch"] },
-    "failed-image": { "hook": "img[data-error]", "look": "hidden; the frame's empty fill remains", "components": ["ui-image"] },
-    "single-slide": { "hook": "[data-single] (swiper)", "look": "paddles and dots hidden", "components": ["ui-swiper"] },
-    "forced-colors": { "hook": "@media (forced-colors: active)", "look": "1px CanvasText outline, Highlight for on states, GrayText disabled", "components": ["*"] },
-    "reduced-motion": { "hook": "@media (prefers-reduced-motion: reduce)", "look": "every duration collapses; sweeps become static fills", "components": ["*"] }
+    "hover-press": {
+      "hook": ":hover / :active on _enabled controls (not data-disabled, not data-busy)",
+      "look": "neutral fill steps 3 → 4 → 5; solids primary.solidHover; selected options primary.subtleHover",
+      "components": [
+        "ui-button",
+        "ui-toggle",
+        "ui-chip",
+        "ui-option",
+        "ui-input",
+        "ui-select",
+        "ui-checkbox",
+        "ui-radio",
+        "ui-switch",
+        "ui-range",
+        "ui-palette",
+        "ui-collapsible",
+        "ui-accordion"
+      ]
+    },
+    "keyboard-focus": {
+      "hook": ":focus-visible after key use (html[data-modality=keyboard])",
+      "look": "2px focus-ring outline; text fields keep it after a pointer click",
+      "components": [
+        "ui-button",
+        "ui-toggle",
+        "ui-chip",
+        "ui-input",
+        "ui-select",
+        "ui-listbox",
+        "ui-segmented",
+        "ui-checkbox",
+        "ui-radio",
+        "ui-switch",
+        "ui-range",
+        "ui-palette",
+        "ui-swiper",
+        "ui-collapsible",
+        "ui-accordion",
+        "ui-tabs"
+      ]
+    },
+    "highlighted": {
+      "hook": "[data-highlighted]",
+      "look": "neutral fill (options); focus-ring outline under keyboard modality (swatches)",
+      "components": [
+        "ui-option",
+        "ui-swatch"
+      ]
+    },
+    "selected": {
+      "hook": "[data-checked], [data-selected], [data-pressed]",
+      "look": "primary solid (choices, chips) or primary subtle (select options); listbox and segmented: bg.selected; swiper: the stretched dot; tabs [data-active]: the indicator under the active tab (segmented bg.selected, underline a primary bar)",
+      "components": [
+        "ui-option",
+        "ui-checkbox",
+        "ui-radio",
+        "ui-switch",
+        "ui-chip",
+        "ui-swatch",
+        "ui-swiper",
+        "ui-tabs"
+      ]
+    },
+    "open": {
+      "hook": "trigger [data-popup-open]; popup [data-open]",
+      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent)",
+      "components": [
+        "ui-select",
+        "ui-collapsible",
+        "ui-accordion"
+      ]
+    },
+    "disabled": {
+      "hook": "[data-disabled] on host, option or paddle",
+      "look": "50% opacity, not-allowed cursor (a disabled tab 45%)",
+      "components": [
+        "ui-button",
+        "ui-chip",
+        "ui-option",
+        "ui-input",
+        "ui-select",
+        "ui-listbox",
+        "ui-segmented",
+        "ui-checkbox",
+        "ui-radio",
+        "ui-switch",
+        "ui-range",
+        "ui-palette",
+        "ui-field",
+        "ui-collapsible",
+        "ui-accordion",
+        "ui-tabs"
+      ]
+    },
+    "busy": {
+      "hook": "[data-busy]",
+      "look": "readable, progress cursor, indeterminate sweep on the bottom edge",
+      "components": [
+        "ui-button"
+      ]
+    },
+    "read-only": {
+      "hook": "[data-readonly]",
+      "look": "subtle fill, default cursor",
+      "components": [
+        "ui-input"
+      ]
+    },
+    "required": {
+      "hook": "[data-required]",
+      "look": " * in critical.fg after the label",
+      "components": [
+        "ui-input",
+        "ui-select",
+        "ui-checkbox",
+        "ui-switch",
+        "ui-field"
+      ]
+    },
+    "invalid": {
+      "hook": "[data-invalid] (shown after blur or a blocked submit; an author error at once)",
+      "look": "critical-tinted fill (palette: critical outline)",
+      "components": [
+        "ui-input",
+        "ui-select",
+        "ui-listbox",
+        "ui-segmented",
+        "ui-checkbox",
+        "ui-radio",
+        "ui-switch",
+        "ui-palette"
+      ]
+    },
+    "dragging": {
+      "hook": "[data-dragging]",
+      "look": "grabbing cursor, raised thumb; thumb and fill track the pointer 1:1",
+      "components": [
+        "ui-range"
+      ]
+    },
+    "placeholder": {
+      "hook": "trigger [data-placeholder]; :empty editor",
+      "look": "fg.subtle",
+      "components": [
+        "ui-select",
+        "ui-input"
+      ]
+    },
+    "indeterminate": {
+      "hook": "[data-indeterminate]",
+      "look": "sweep (progress), minus mark (checkbox); a faint full fill under reduced motion",
+      "components": [
+        "ui-progress",
+        "ui-checkbox"
+      ]
+    },
+    "unparsable-color": {
+      "hook": "[data-invalid] (swatch)",
+      "look": "critical strike",
+      "components": [
+        "ui-swatch"
+      ]
+    },
+    "translucent-color": {
+      "hook": "[data-alpha] (swatch)",
+      "look": "checkerboard under the color",
+      "components": [
+        "ui-swatch"
+      ]
+    },
+    "failed-image": {
+      "hook": "img[data-error]",
+      "look": "hidden; the frame's empty fill remains",
+      "components": [
+        "ui-image"
+      ]
+    },
+    "single-slide": {
+      "hook": "[data-single] (swiper)",
+      "look": "paddles and dots hidden",
+      "components": [
+        "ui-swiper"
+      ]
+    },
+    "forced-colors": {
+      "hook": "@media (forced-colors: active)",
+      "look": "1px CanvasText outline, Highlight for on states, GrayText disabled",
+      "components": [
+        "*"
+      ]
+    },
+    "reduced-motion": {
+      "hook": "@media (prefers-reduced-motion: reduce)",
+      "look": "every duration collapses; sweeps become static fills",
+      "components": [
+        "*"
+      ]
+    }
   }
 }

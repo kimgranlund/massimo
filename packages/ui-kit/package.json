@@ -53,7 +53,13 @@
     "./components/checkbox-group/element": "./components/checkbox-group/checkbox-group.element.ts",
     "./components/checkbox-group/react": "./components/checkbox-group/checkbox-group.react.tsx",
     "./components/fieldset/element": "./components/fieldset/fieldset.element.ts",
-    "./components/fieldset/react": "./components/fieldset/fieldset.react.tsx"
+    "./components/fieldset/react": "./components/fieldset/fieldset.react.tsx",
+    "./components/collapsible/element": "./components/collapsible/collapsible.element.ts",
+    "./components/collapsible/react": "./components/collapsible/collapsible.react.tsx",
+    "./components/accordion/element": "./components/accordion/accordion.element.ts",
+    "./components/accordion/react": "./components/accordion/accordion.react.tsx",
+    "./components/tabs/element": "./components/tabs/tabs.element.ts",
+    "./components/tabs/react": "./components/tabs/tabs.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

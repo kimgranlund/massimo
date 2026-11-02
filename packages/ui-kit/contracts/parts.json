@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "notation": "Shared anatomy owned by more than one component. Component-specific parts are nodes in their component manifest. Owning a part does not make it a consumer insertion slot unless the summary says so. The five slot parts form the construction pattern [leading] [prefix] [contents] [suffix] [trailing]; their selectors are relative to the slotted host: the component itself, the input control or the select trigger.",
+  "notation": "Shared anatomy owned by more than one component. Component-specific parts are nodes in their component manifest. Owning a part does not make it a consumer insertion slot unless the summary says so. The five slot parts form the construction pattern [leading] [prefix] [contents] [suffix] [trailing]; their selectors are relative to the slotted host: the component itself, the input control, the select trigger, the collapsible trigger or a tab.",
   "parts": {
     "slot-leading": {
       "id": "part:slot-leading",

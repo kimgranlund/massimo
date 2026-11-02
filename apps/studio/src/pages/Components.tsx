@@ -18,6 +18,9 @@ import '@massimo/ui-kit/components/toggle/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
 import '@massimo/ui-kit/components/fieldset/element';
+import '@massimo/ui-kit/components/collapsible/element';
+import '@massimo/ui-kit/components/accordion/element';
+import '@massimo/ui-kit/components/tabs/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -34,6 +37,7 @@ export const FAMILIES = [
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
+  ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -185,6 +189,11 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
     </>
   );
 }
+// Disclosure specimens: a readable column, as a settings or FAQ page would hold them.
+const disclosureColumn = css({ display: 'flex', flexDirection: 'column', gap: '1', width: 'full', maxWidth: '[28rem]' });
+const panelText = css({ color: 'fg.muted', textStyle: 'body' });
+const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
+const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
@@ -199,6 +208,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot. Groups own one value: rows 1u apart (a 7u pitch), or a wrapping row 4u apart.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
+    disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -371,6 +381,81 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         <SizeLadder family="swatch" params={params}>
           <ui-swatch color="#3b82f6" />
           <ui-palette label="Brand">{['#ef4444', '#f59e0b', '#10b981', '#3b82f6'].map((c) => <ui-swatch key={c} color={c} />)}</ui-palette>
+        </SizeLadder>
+      </>
+    ),
+    disclosure: (
+      <>
+        <Row label="Collapsible">
+          <div className={disclosureColumn}>
+            <ui-collapsible label="What is a unit?"><p className={panelText}>Every length in the kit is a multiple of u. A control is 8u tall; type is 10px + u.</p></ui-collapsible>
+            <ui-collapsible label="Shipping" default-open><p className={panelText}>Orders ship within two working days. Tracking arrives by email.</p></ui-collapsible>
+            <ui-collapsible>
+              <div data-part="trigger"><i slot="leading" name="key" />Recovery keys<span slot="suffix">3</span></div>
+              <div data-part="panel"><p className={panelText}>alien-bean-pasta · quiet-river-stone · north-paper-lamp</p></div>
+            </ui-collapsible>
+            <ui-collapsible label="Archived (read only)" disabled><p className={panelText}>Hidden.</p></ui-collapsible>
+          </div>
+        </Row>
+        <Row label="Accordion">
+          <div className={disclosureColumn}>
+            <ui-accordion default-value="shipping">
+              <ui-collapsible value="shipping" label="Shipping"><p className={panelText}>Orders ship within two working days. Tracking arrives by email.</p></ui-collapsible>
+              <ui-collapsible value="returns" label="Returns"><p className={panelText}>Return anything within 30 days, free of charge.</p></ui-collapsible>
+              <ui-collapsible value="warranty" label="Warranty"><i slot="leading" name="shield-check" /><p className={panelText}>Two years on every part, worldwide.</p></ui-collapsible>
+              <ui-collapsible value="archive" label="Archived orders" disabled><p className={panelText}>Hidden.</p></ui-collapsible>
+            </ui-accordion>
+          </div>
+        </Row>
+        <Row label="Multiple">
+          <div className={disclosureColumn}>
+            <ui-accordion multiple>
+              <ui-collapsible label="Account" open><p className={panelText}>Name, email and avatar.</p></ui-collapsible>
+              <ui-collapsible label="Billing" open><p className={panelText}>Card ending 4242, renews 1 Dec.</p></ui-collapsible>
+              <ui-collapsible label="Notifications"><p className={panelText}>Email and push.</p></ui-collapsible>
+            </ui-accordion>
+          </div>
+        </Row>
+        <Row label="Tabs">
+          <div className={tabsColumn}>
+            <ui-tabs label="Project">
+              <div {...{ value: 'overview', label: 'Overview' }} data-part="panel"><p className={panelText}>Status, owners and the next milestone.</p></div>
+              <div {...{ value: 'activity', label: 'Activity' }} data-part="panel"><p className={panelText}>Twelve changes this week, three reviews waiting.</p></div>
+              <div {...{ value: 'settings', label: 'Settings' }} data-part="panel"><p className={panelText}>Name, visibility and access.</p></div>
+            </ui-tabs>
+            <ui-tabs variant="underline" default-value="files" label="Repository">
+              <div data-part="list">
+                <div {...{ value: 'code' }} data-part="tab"><i slot="leading" name="code" />Code</div>
+                <div {...{ value: 'files' }} data-part="tab">Files<span slot="suffix">12</span></div>
+                <div {...{ value: 'issues' }} data-part="tab"><i slot="leading" name="bug" />Issues</div>
+                <div {...{ value: 'wiki', disabled: true }} data-part="tab">Wiki</div>
+              </div>
+              <div {...{ value: 'code' }} data-part="panel"><p className={panelText}>main.ts · styles.css · README.md</p></div>
+              <div {...{ value: 'files' }} data-part="panel"><p className={panelText}>12 files, 4 folders.</p></div>
+              <div {...{ value: 'issues' }} data-part="panel"><p className={panelText}>No open issues.</p></div>
+              <div {...{ value: 'wiki' }} data-part="panel"><p className={panelText}>Empty.</p></div>
+            </ui-tabs>
+          </div>
+        </Row>
+        <Row label="Vertical">
+          <div className={tabsRow}>
+            <ui-tabs orientation="vertical" activate-on-focus label="Preferences">
+              <div {...{ label: 'General' }} data-part="panel"><p className={panelText}>Language and region. Arrow keys switch tabs here (activate on focus).</p></div>
+              <div {...{ label: 'Privacy' }} data-part="panel"><p className={panelText}>Who can see your profile.</p></div>
+              <div {...{ label: 'Billing' }} data-part="panel"><p className={panelText}>Invoices and payment.</p></div>
+            </ui-tabs>
+            <ui-tabs orientation="vertical" variant="underline" label="Sections">
+              <div {...{ label: 'Intro' }} data-part="panel"><p className={panelText}>Underline, vertical: the bar runs on the inline end.</p></div>
+              <div {...{ label: 'Details' }} data-part="panel"><p className={panelText}>Second panel.</p></div>
+            </ui-tabs>
+          </div>
+        </Row>
+        <SizeLadder family="disclosure" params={params}>
+          <ui-tabs label="Size"><div {...{ label: 'One' }} data-part="panel" /><div {...{ label: 'Two' }} data-part="panel" /><div {...{ label: 'Three' }} data-part="panel" /></ui-tabs>
+          <ui-tabs variant="underline" label="Size"><div {...{ label: 'One' }} data-part="panel" /><div {...{ label: 'Two' }} data-part="panel" /></ui-tabs>
+          <div className={disclosureColumn}>
+            <ui-accordion default-value="0"><ui-collapsible label="Details"><p className={panelText}>Panel text starts at the trigger label.</p></ui-collapsible><ui-collapsible label="More" /></ui-accordion>
+          </div>
         </SizeLadder>
       </>
     ),

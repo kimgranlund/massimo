@@ -12,6 +12,7 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/avatar/element';
+import '@massimo/ui-kit/components/accordion/element';
 import { cx } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
 import { Article } from './home/Article.tsx';

@@ -18,10 +18,13 @@ import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/toggle/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
 import '@massimo/ui-kit/components/fieldset/element';
+import '@massimo/ui-kit/components/collapsible/element';
+import '@massimo/ui-kit/components/accordion/element';
+import '@massimo/ui-kit/components/tabs/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -86,6 +89,10 @@ for (const c of cases) {
     <ui-checkbox-group id="cgH" orientation="horizontal" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
     <ui-checkbox-group id="cgW" orientation="horizontal" style="width:1px"><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
     <div style="width:${60 * c.unit}px"><ui-fieldset id="fs" legend="Address" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-input label="A"></ui-input><ui-checkbox>B</ui-checkbox></ui-fieldset></div>
+    <div style="width:${60 * c.unit}px"><ui-collapsible id="colClosed" label="Closed"><p>x</p></ui-collapsible><ui-collapsible id="colOpen" label="Open" open><p style="height:${4 * c.unit}px">x</p></ui-collapsible><ui-collapsible id="colLead"><div data-part="trigger"><span slot="leading"></span>Lead</div><div data-part="panel">y</div></ui-collapsible>
+      <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
+    <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
+    <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -390,6 +397,68 @@ for (const c of cases) {
     checks['fieldset.padding'] = [px(cs(fs).paddingTop) + px(cs(fs).paddingLeft) + px(cs(fs).borderTopWidth), rf.padding + rf.border];
     checks['fieldset.radius'] = [px(cs(fs).borderTopLeftRadius), rf.radius];
     checks['fieldset.fill'] = [r2(rect(a).width), r2(rect(fs).width)];
+  }
+  // Disclosure: the collapsible trigger is an 8u control row; the panel starts at the label edge (resolveDisclosure).
+  {
+    // Running height transitions end at once, so the open panel is measured at rest.
+    for (const el of box.querySelectorAll('[data-part=panel]')) el.style.transition = 'none';
+    const rd = resolveDisclosure(g), part = (el, p) => el.querySelector(`[data-part=${p}]`);
+    const cl = $('colClosed'), ct = part(cl, 'trigger'), op = $('colOpen'), opp = part(op, 'panel'), ld = part($('colLead'), 'trigger');
+    checks['collapsible.closed.height'] = [r2(rect(cl).height), rd.height];
+    checks['collapsible.trigger.height'] = [r2(rect(ct).height), rd.height];
+    checks['collapsible.trigger.width'] = [r2(rect(ct).width), r2(rect(cl).width)];
+    checks['collapsible.trigger.padding'] = [px(cs(ct).paddingTop) + px(cs(ct).borderTopWidth), rd.padding + rd.border];
+    checks['collapsible.trigger.radius'] = [px(cs(ct).borderTopLeftRadius), rd.radius];
+    checks['collapsible.trigger.font'] = [px(cs(ct).fontSize), rd.fontSize];
+    checks['collapsible.label.start'] = [px(cs(part(ct, 'contents')).paddingLeft), rd.labelStart];
+    checks['collapsible.label.end'] = [px(cs(part(ct, 'contents')).paddingRight), rd.labelEnd];
+    checks['collapsible.caret.slot'] = [r2(rect(part(ct, 'trailing')).width), rd.slot];
+    checks['collapsible.caret'] = [r2(rect(part(ct, 'trailing').firstElementChild).width), rd.caret];
+    checks['collapsible.lead.slot'] = [r2(rect(part(ld, 'leading')).width), rd.slot];
+    checks['collapsible.lead.label'] = [px(cs(part(ld, 'contents')).paddingLeft), ctl.contents.paddingInline];
+    checks['collapsible.panel.inline'] = [px(cs(opp).paddingLeft), rd.panelInline];
+    checks['collapsible.panel.end'] = [px(cs(opp).paddingBottom), rd.panelBlockEnd];
+    checks['collapsible.panel.text'] = [r2(rect(opp.firstElementChild).left - rect(op).left), r2(rect(part(part(op, 'trigger'), 'contents')).left - rect(op).left + rd.labelStart)];
+    checks['collapsible.open.height'] = [r2(rect(op).height), r2(rd.height + 4 * c.unit + rd.panelBlockEnd)];
+    checks['collapsible.closed.panel'] = [part(cl, 'panel').getClientRects().length, 0];
+    // Accordion: items are trigger rows plus a 1px divider outside their padding.
+    const ac = $('acc'), [ia, ib, ic] = ac.querySelectorAll(':scope > ui-collapsible');
+    checks['accordion.item.height'] = [r2(rect(ia).height), rd.itemHeight];
+    checks['accordion.item.divider'] = [px(cs(ia).borderBottomWidth), rd.divider];
+    checks['accordion.item.trigger'] = [r2(rect(part(ia, 'trigger')).height), rd.height];
+    checks['accordion.open.height'] = [r2(rect(ib).height), r2(rd.height + 4 * c.unit + rd.panelBlockEnd + rd.divider)];
+    checks['accordion.stack'] = [r2(rect(ic).top - rect(ia).top), r2(rect(ia).height + rect(ib).height)];
+    checks['accordion.panel.inline'] = [px(cs(part(ib, 'panel')).paddingLeft), rd.panelInline];
+    checks['accordion.width'] = [r2(rect(part(ia, 'trigger')).width), r2(rect(ac).width)];
+    // Tabs (resolveTabs): the indicator sits on the active tab's box (segmented) or under it (underline).
+    for (const el of box.querySelectorAll('ui-tabs [data-part=indicator]')) el.style.transition = 'none';
+    const tabChecks = (name, host, variant) => {
+      const rt = resolveTabs(variant, { ...g, gap: undefined }), list = part(host, 'list'), [ta, tb] = list.querySelectorAll('[data-part=tab]'), ind = part(list, 'indicator'), panel = host.querySelector(':scope > [data-part=panel]:not([hidden])');
+      checks[`${name}.list.height`] = [r2(rect(list).height), rt.listHeight];
+      checks[`${name}.list.padding`] = [px(cs(list).paddingTop) + px(cs(list).borderTopWidth), rt.listPadding + (variant === 'segmented' ? rt.border : 0)];
+      checks[`${name}.list.gap`] = [r2(rect(tb).left - rect(ta).right), rt.listGap];
+      checks[`${name}.list.radius`] = [px(cs(list).borderTopLeftRadius), rt.listRadius];
+      checks[`${name}.tab.height`] = [r2(rect(ta).height), rt.tabHeight];
+      checks[`${name}.tab.radius`] = [px(cs(ta).borderTopLeftRadius), rt.tabRadius];
+      checks[`${name}.tab.label`] = [px(cs(part(ta, 'contents')).paddingLeft), rt.labelStart];
+      checks[`${name}.tab.font`] = [px(cs(ta).fontSize), rt.fontSize];
+      checks[`${name}.gap`] = [r2(rect(panel).top - rect(list).bottom), rt.gap];
+      checks[`${name}.indicator.left`] = [r2(rect(ind).left), r2(rect(tb).left)];
+      checks[`${name}.indicator.width`] = [r2(rect(ind).width), r2(rect(tb).width)];
+      checks[`${name}.indicator.radius`] = [px(cs(ind).borderTopLeftRadius), r2(rt.indicatorRadius)];
+      if (variant === 'segmented') {
+        checks[`${name}.indicator.top`] = [r2(rect(ind).top), r2(rect(tb).top)];
+        checks[`${name}.indicator.height`] = [r2(rect(ind).height), r2(rect(tb).height)];
+        checks[`${name}.lead.slot`] = [r2(rect(part(tb, 'leading')).width), rt.slot];
+      } else {
+        checks[`${name}.indicator.height`] = [r2(rect(ind).height), rt.indicatorThickness];
+        checks[`${name}.indicator.bottom`] = [r2(rect(ind).bottom), r2(rect(list).bottom)];
+        checks[`${name}.tab.padding`] = [px(cs(ta).paddingTop) + px(cs(ta).borderTopWidth), rt.tabPadding + rt.border];
+        checks[`${name}.track`] = [px(getComputedStyle(list, '::after').borderBottomWidth), rt.track];
+      }
+    };
+    tabChecks('tabs.segmented', $('tabSeg'), 'segmented');
+    tabChecks('tabs.underline', $('tabLine'), 'underline');
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

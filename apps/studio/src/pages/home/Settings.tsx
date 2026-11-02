@@ -122,6 +122,14 @@ export function Settings() {
             </div>
           </div>
           <p className={cx(callout, s.tone.info)} role="note"><i name="info" />Seats you add today are prorated to your renewal date.</p>
+          <div className={s.stack2}>
+            <span className={s.groupKicker}>Billing questions</span>
+            <ui-accordion>
+              <ui-collapsible label="When am I charged?"><p className={s.caption}>On the first of each period. Yearly plans are charged once, up front.</p></ui-collapsible>
+              <ui-collapsible label="Can I remove seats?"><p className={s.caption}>Yes. Removed seats are credited at your next renewal.</p></ui-collapsible>
+              <ui-collapsible label="Do you offer invoices?"><p className={s.caption}>Every charge has a PDF invoice under Billing history.</p></ui-collapsible>
+            </ui-accordion>
+          </div>
         </ui-card>
 
         <div className={footer}>

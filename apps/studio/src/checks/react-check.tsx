@@ -22,6 +22,9 @@ import '@massimo/ui-kit/components/toggle/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
 import '@massimo/ui-kit/components/fieldset/element';
+import '@massimo/ui-kit/components/collapsible/element';
+import '@massimo/ui-kit/components/accordion/element';
+import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -45,6 +48,9 @@ import { Toggle } from '@massimo/ui-kit/components/toggle/react';
 import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
 import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
 import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
+import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
+import { Accordion } from '@massimo/ui-kit/components/accordion/react';
+import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -104,6 +110,11 @@ function Pair({ u }: { u: number }) {
         <ui-checkbox-group data-k="cgh" orientation="horizontal" value="a b" disabled><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
         <div style={{ width: 300 }}><ui-fieldset data-k="fs" legend="Address"><ui-checkbox>Same</ui-checkbox><ui-switch checked>Ship</ui-switch></ui-fieldset></div>
         <div style={{ width: 300 }}><ui-fieldset data-k="fsd" legend="Address" disabled><ui-checkbox checked>Same</ui-checkbox><ui-radio-group value="a"><ui-radio value="a">One</ui-radio></ui-radio-group></ui-fieldset></div>
+        <div style={{ width: 300 }}><ui-collapsible data-k="col" label="Details" open><p>Panel</p></ui-collapsible></div>
+        <div style={{ width: 300 }}><ui-collapsible data-k="colD" label="Off" disabled><p>Panel</p></ui-collapsible></div>
+        <div style={{ width: 300 }}><ui-tabs data-k="tab" default-value="b"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">A</div><div {...{ value: 'b' }} data-part="tab"><i slot="leading" name="code" />B</div><div {...{ value: 'c', disabled: true }} data-part="tab">C</div></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div><div {...{ value: 'c' }} data-part="panel">c</div></ui-tabs></div>
+        <div style={{ width: 300 }}><ui-tabs data-k="tabU" variant="underline"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
+        <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -155,6 +166,11 @@ function Pair({ u }: { u: number }) {
         <CheckboxGroup data-k="cgh" orientation="horizontal" defaultValue={['a', 'b']} disabled><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
         <div style={{ width: 300 }}><Fieldset data-k="fs" legend="Address"><Checkbox>Same</Checkbox><Switch defaultChecked>Ship</Switch></Fieldset></div>
         <div style={{ width: 300 }}><Fieldset data-k="fsd" legend="Address" disabled><Checkbox defaultChecked>Same</Checkbox><RadioGroup defaultValue="a"><Radio value="a">One</Radio></RadioGroup></Fieldset></div>
+        <div style={{ width: 300 }}><Collapsible data-k="col" label="Details" defaultOpen><p>Panel</p></Collapsible></div>
+        <div style={{ width: 300 }}><Collapsible data-k="colD" label="Off" disabled><p>Panel</p></Collapsible></div>
+        <div style={{ width: 300 }}><Tabs.Root data-k="tab" defaultValue="b"><Tabs.List><Tabs.Tab value="a">A</Tabs.Tab><Tabs.Tab value="b" leading={<i name="code" />}>B</Tabs.Tab><Tabs.Tab value="c" disabled>C</Tabs.Tab><Tabs.Indicator /></Tabs.List><Tabs.Panel value="a">a</Tabs.Panel><Tabs.Panel value="b">b</Tabs.Panel><Tabs.Panel value="c">c</Tabs.Panel></Tabs.Root></div>
+        <div style={{ width: 300 }}><Tabs data-k="tabU" variant="underline" items={[{ value: 'a', label: 'One', content: 'a' }, { value: 'b', label: 'Two', content: 'b' }]} /></div>
+        <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
       </div>
     </div>
   );
@@ -177,6 +193,12 @@ function ComposedPair({ u }: { u: number }) {
       <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option></Listbox>
       <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
       <div style={{ width: 300 }}><Select data-k="sel" label="Role" defaultValue="eng" leading={<i name="briefcase" />} description="Pick"><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div>
+      <div style={{ width: 300 }}><Collapsible data-k="col" label="Keys" leading={<i name="key" />} defaultOpen><p>Panel</p></Collapsible></div>
+      <div style={{ width: 300 }}><ui-collapsible data-k="wcol" label="Keys" open><i slot="leading" name="key" /><p>Panel</p></ui-collapsible></div>
+      <div style={{ width: 300 }}><Tabs data-k="tab" variant="underline" label="T" items={[{ value: 'a', label: 'One', leading: <i name="code" />, content: 'a' }, { value: 'b', label: 'Two', content: 'b' }]} /></div>
+      <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
+      <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['a']}><Accordion.Item value="a" label="Ship" leading={<i name="truck" />}><p>a</p></Accordion.Item><Accordion.Item value="b" label="Return"><p>b</p></Accordion.Item></Accordion></div>
+      <div style={{ width: 300 }}><ui-accordion data-k="wacc" value="a"><ui-collapsible value="a" label="Ship"><i slot="leading" name="truck" /><p>a</p></ui-collapsible><ui-collapsible value="b" label="Return"><p>b</p></ui-collapsible></ui-accordion></div>
       <ui-button data-k="wbt"><i slot="leading" name="plus" />Add</ui-button>
       <ui-checkbox data-k="wcb" checked>Accept<span slot="suffix">(2)</span></ui-checkbox>
       <ui-switch data-k="wsw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
@@ -216,6 +238,27 @@ function ComposedPair({ u }: { u: number }) {
           <Select.Popup><Select.List><Select.Item value="design"><Select.ItemText>Designer</Select.ItemText></Select.Item><Select.Item value="eng"><Select.ItemText>Engineer</Select.ItemText></Select.Item></Select.List></Select.Popup>
           <Select.Description>Pick</Select.Description>
         </Select.Root>
+      </div>
+      <div style={{ width: 300 }}><Collapsible.Root data-k="col" defaultOpen><Collapsible.Trigger leading={<i name="key" />}>Keys</Collapsible.Trigger><Collapsible.Panel><p>Panel</p></Collapsible.Panel></Collapsible.Root></div>
+      <div style={{ width: 300 }}><ui-collapsible data-k="wcol" open><div data-part="trigger"><i slot="leading" name="key" />Keys</div><div data-part="panel"><p>Panel</p></div></ui-collapsible></div>
+      <div style={{ width: 300 }}>
+        <Tabs.Root data-k="tab" variant="underline">
+          <Tabs.List label="T"><Tabs.Tab value="a" leading={<i name="code" />}>One</Tabs.Tab><Tabs.Tab value="b">Two</Tabs.Tab><Tabs.Indicator /></Tabs.List>
+          <Tabs.Panel value="a">a</Tabs.Panel><Tabs.Panel value="b">b</Tabs.Panel>
+        </Tabs.Root>
+      </div>
+      <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">One</div><div {...{ value: 'b' }} data-part="tab">Two</div><span data-part="indicator" /></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div></ui-tabs></div>
+      <div style={{ width: 300 }}>
+        <Accordion.Root data-k="acc" defaultValue={['a']}>
+          <Accordion.Item value="a"><Accordion.Header><Accordion.Trigger leading={<i name="truck" />}>Ship</Accordion.Trigger></Accordion.Header><Accordion.Panel><p>a</p></Accordion.Panel></Accordion.Item>
+          <Accordion.Item value="b"><Accordion.Header><Accordion.Trigger>Return</Accordion.Trigger></Accordion.Header><Accordion.Panel><p>b</p></Accordion.Panel></Accordion.Item>
+        </Accordion.Root>
+      </div>
+      <div style={{ width: 300 }}>
+        <ui-accordion data-k="wacc" value="a">
+          <ui-collapsible value="a"><div data-part="header"><div data-part="trigger"><i slot="leading" name="truck" />Ship</div></div><div data-part="panel"><p>a</p></div></ui-collapsible>
+          <ui-collapsible value="b"><div data-part="header"><div data-part="trigger">Return</div></div><div data-part="panel"><p>b</p></div></ui-collapsible>
+        </ui-accordion>
       </div>
       <ui-button data-k="wbt"><span data-part="leading"><i name="plus" /></span><span data-part="contents">Add</span></ui-button>
       <ui-checkbox data-k="wcb" checked><span data-part="leading"><span data-part="indicator" /></span><span data-part="contents">Accept</span><span data-part="suffix">(2)</span></ui-checkbox>
@@ -295,9 +338,9 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU']) {
       const a = host(wc, k), b = host(re, k);
-      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch')];
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator]')];
       const pa = parts(a), pb = parts(b);
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
@@ -318,7 +361,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

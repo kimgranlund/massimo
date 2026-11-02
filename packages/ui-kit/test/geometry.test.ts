@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -229,4 +229,29 @@ test('fieldset: the collection gap (2u; theme gapUnits and the gap attribute win
   assert.deepEqual(resolveFieldset(U4), { unit: 4, gap: 8, padding: 0, border: 0, radius: 0 });
   assert.equal(resolveFieldset({ unit: 4, gapUnits: 3 }).gap, 12);
   assert.equal(resolveFieldset({ unit: 4, gapUnits: 3, gap: 1 }).gap, 4);
+});
+
+test('disclosure: the collapsible trigger is an 8u control row with a sm caret; the panel starts at its label edge (3u), 2u below', () => {
+  const d = resolveDisclosure({ unit: 4, border: 1 });
+  assert.equal(d.height, 32);
+  assert.equal(d.padding, 3, 'u - B');
+  assert.deepEqual([d.labelStart, d.labelEnd], [8, 4]);
+  assert.equal(d.caret, 12, 'icon sm = font - 0.5u');
+  assert.equal(d.radius, 12);
+  assert.equal(d.panelInline, 12, 'border + padding + bare label edge');
+  assert.equal(d.panelBlockEnd, 8);
+  assert.equal(resolveDisclosure({ unit: 2 }).caret, 11, 'sm below the 6u slot at u = 2');
+  // Accordion: a 1px (thin token) divider outside the padding, the same at every B.
+  assert.equal(d.divider, 1);
+  assert.equal(d.itemHeight, 33);
+  assert.equal(resolveDisclosure({ unit: 4, border: 0 }).itemHeight, d.itemHeight);
+});
+
+test('disclosure: segmented tabs are 7u composite options in an 8u list; underline tabs are 8u rows with a 0.5u bar on a 1px track', () => {
+  const s = resolveTabs('segmented', { unit: 4, border: 1 });
+  assert.deepEqual([s.listHeight, s.listEdge, s.listPadding, s.listGap, s.tabHeight, s.tabRadius, s.indicatorRadius, s.gap], [32, 2, 1, 2, 28, 12, 12, 8]);
+  assert.equal(resolveTabs('segmented', { unit: 4, border: 0 }).listHeight, 32, 'one row stays 8u at any B');
+  assert.equal(s.listRadius, 14, 'min(3.5u, 8u / 2)');
+  const n = resolveTabs('underline', { unit: 4, border: 1 });
+  assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
 });

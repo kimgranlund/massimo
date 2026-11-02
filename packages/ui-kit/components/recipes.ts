@@ -20,6 +20,9 @@ import { toggle } from './toggle/toggle.recipe.ts';
 import { radioGroup } from './radio-group/radio-group.recipe.ts';
 import { checkboxGroup } from './checkbox-group/checkbox-group.recipe.ts';
 import { fieldset } from './fieldset/fieldset.recipe.ts';
+import { collapsible } from './collapsible/collapsible.recipe.ts';
+import { accordion } from './accordion/accordion.recipe.ts';
+import { tabs } from './tabs/tabs.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs };
 

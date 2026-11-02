@@ -13,13 +13,17 @@ export const pendingKeyframes = defineKeyframes({
 const FIELD_HEIGHT = 'calc(var(--h) + 1.75rem)';
 
 export const pending = defineGlobalStyles({
-  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
   ':is(ui-badge, ui-tag, ui-chip):not(:defined)': { display: 'inline-flex' },
   ':is(ui-checkbox, ui-radio, ui-switch):not(:defined)': { display: 'inline-flex', minHeight: 'var(--slot)' },
   // Fields keep the block flow their controls reserve space in.
   ':is(ui-field, ui-field-grid):not(:defined)': { display: 'block' },
+  // A collapsible reserves its trigger row.
+  ':is(ui-collapsible, ui-accordion):not(:defined)': { display: 'block', minHeight: 'var(--h)' },
+  // Tabs reserve the list row and the 2u gap above the panel.
+  'ui-tabs:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--u))' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
   // A toggle reserves the control height like a button.
   'ui-toggle:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)' },
