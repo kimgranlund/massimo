@@ -14,3 +14,4 @@ export const semanticTokens = defineSemanticTokens({ colors: semanticColors });
 
 export * from './themes/index.ts';
 export * from './geometry/resolve.ts';
+export * from './typography/resolve.ts';

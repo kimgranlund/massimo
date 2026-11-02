@@ -11,6 +11,9 @@ export const PARAMS = {
   'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4 },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
+  // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).
+  'type-ratio':     { label: 'Type ratio',     min: 1, max: 1.5, step: 0.001, default: 1.333 },
+  'type-rhythm':    { label: 'Type rhythm (u)', min: 0, max: 1, step: 0.5, default: 1 },
   // Container ladder: padding and gap per level, in units of u (pad-card, gap-card, …).
   ...containerParams(),
 } as const satisfies Record<string, ParamSpec>;

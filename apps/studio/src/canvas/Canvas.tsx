@@ -14,7 +14,8 @@ import '../icons.ts';
 import { useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import type { SpectrumPayload, View } from '../protocol.ts';
+import type { HeadingStyle, SpectrumPayload, View } from '../protocol.ts';
+import { TYPE_ROLES, resolveType, type ThemeParams, type TypeRoleName } from '@massimo/ui-kit/tokens';
 
 // Specimen layout: the page container (8u padding and gap) holds titled sections split by
 // dividers. Each section is a list of labelled rows: label on the left, specimens on the right.
@@ -25,14 +26,14 @@ const lead = css({ color: 'fg.muted', maxWidth: '60ch' });
 const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: '100%' });
 const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const sectionHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
-const sectionTitle = css({ textStyle: 'heading' });
+const sectionTitle = css({ textStyle: 'heading-2' });
 const caption = css({ textStyle: 'caption', color: 'fg.muted' });
 const rowGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '11rem 1fr' }, gap: { base: '2', md: '6' }, alignItems: 'center' });
 const rowLabel = css({ textStyle: 'label', color: 'fg.muted' });
 const specimens = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
 const formGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, gap: '4', alignItems: 'start' });
 const columns = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, gap: '8', alignItems: 'start' });
-const subTitle = css({ textStyle: 'title' });
+const subTitle = css({ textStyle: 'heading-3' });
 const stack = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const avatar = css({ display: 'block', bg: 'accent.solid' });
 const media = css({ width: '100%', maxWidth: '40rem', borderRadius: 'xl', overflow: 'hidden' });
@@ -42,6 +43,13 @@ const levelBox = css({ bg: 'accent.subtle', alignSelf: 'start' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 const rampRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '7rem 1fr 1fr' }, gap: '3', alignItems: 'center' });
 const ramp = css({ width: '100%' });
+const typeRow = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '14rem 1fr' }, gap: { base: '2', md: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
+const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5' });
+const metrics = css({ fontFamily: 'mono', fontSize: 'xs', color: 'fg.muted' });
+// Faint baseline grid behind each specimen: one line per rhythm unit.
+const rhythmSample = css({ backgroundImage: 'linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) 18%, transparent) 0)', whiteSpace: 'pre-wrap', maxWidth: '60ch' });
+const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
+const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
 const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
 const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '2fr 1fr 1fr' }, gap: '4', '& > :first-child': { gridRow: { md: 'span 2' } }, '& > ui-palette': { gridColumn: { md: 'span 2' } } });
@@ -53,7 +61,7 @@ const rampStrip = css({ width: '100%', alignSelf: 'end' });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
 const uiGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
-const cardTitle = css({ textStyle: 'title' });
+const cardTitle = css({ textStyle: 'heading-3' });
 const chartCard = css({ gridColumn: { md: 'span 2' } });
 const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
 const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
@@ -93,12 +101,13 @@ const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'],
 const art = (a: string, b: string, label: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="40" y="560" font-family="system-ui" font-size="48" fill="white" fill-opacity=".85">${label}</text></svg>`)}`;
 const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Dusk'), art('#16a34a', '#0ea5e9', 'Coast'), art('#1e293b', '#7c3aed', 'Night')];
 
-export function Canvas({ view, spectrum }: { view: View; spectrum?: SpectrumPayload }) {
+export function Canvas({ view, spectrum, params, heading }: { view: View; spectrum?: SpectrumPayload; params: ThemeParams; heading: HeadingStyle }) {
   return (
     <main className={shell} id="page">
       {view === 'components' && <Components />}
       {view === 'containers' && <Containers />}
       {view === 'colors' && <Colors spectrum={spectrum} />}
+      {view === 'typography' && <Typography params={params} heading={heading} />}
     </main>
   );
 }
@@ -412,6 +421,66 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
         </div>
       </ui-panel>
     </div>
+  );
+}
+
+const SAMPLES: Record<TypeRoleName, string> = {
+  'display': 'Control Foundation',
+  'heading-1': 'One unit, many tiers',
+  'heading-2': 'Margins and gutters',
+  'heading-3': 'Tiers, radii and nesting',
+  'section-kicker': 'Section kicker',
+  'group-kicker': 'Group kicker',
+  'body-large': 'Every dimension in the control is a multiple of one unit, an eighth of the control height.',
+  'body': 'Container margins stay fixed in u, while internal gutters follow the content and controls respond to size.',
+  'caption': 'Line heights round up to the rhythm unit, so stacked text stays on the grid.',
+  'code': 'const u = height / 8;\nconst font = 10 + u;',
+  'control': 'Continue',
+  'label': 'Email address',
+  'control-small': 'Details',
+};
+const fmt = (n: number) => String(Math.round(n * 100) / 100);
+
+function Typography({ params, heading }: { params: ThemeParams; heading: HeadingStyle }) {
+  const opts = { unit: params.unit, ratio: params['type-ratio'], rhythm: params['type-rhythm'], heading };
+  const grid = params['type-rhythm'] * params.unit;
+  return (
+    <>
+      <header className={header}>
+        <h1 className={pageTitle}>Typography</h1>
+        <p className={lead}>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for caption, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'} · {heading} headings.</p>
+      </header>
+      <Divider />
+      <Section id="roles" title="Roles" note={'Each specimen uses data-type="<role>" (or textStyle in Panda). Metrics come from the resolver for the current settings.'}>
+        {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => {
+          const t = resolveType(role, opts);
+          const r = TYPE_ROLES[role];
+          return (
+            <div key={role} className={typeRow}>
+              <div className={typeMeta}>
+                <span className={rowLabel}>{r.label}</span>
+                <span className={metrics}>{role}</span>
+                <span className={metrics}>{'u' in r ? `${r.u}u` : `step ${r.step}`} · {fmt(t.size)}px / {t.lineHeightRatio ?? `${fmt(t.lineHeight)}px`}</span>
+                <span className={metrics}>{t.family} {t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
+              </div>
+              <div data-type={role} className={role === 'code' ? codeSample : rhythmSample} style={grid && !t.lineHeightRatio ? { backgroundSize: `100% ${grid}px` } : undefined}>{SAMPLES[role]}</div>
+            </div>
+          );
+        })}
+      </Section>
+      <Divider />
+      <Section id="article" title="In context" note="A short article set entirely with the roles.">
+        <article className={article}>
+          <span data-type="section-kicker">Field notes</span>
+          <h2 data-type="heading-1">A system you can hold in one line</h2>
+          <p data-type="body-large">Everything is u. A control is eight of them; its label is ten pixels plus one.</p>
+          <h3 data-type="heading-3">Why the base moves with u</h3>
+          <p data-type="body">Text set on the control font scales with every size step, so a compact panel and a spacious one keep the same proportions between headings, body and controls.</p>
+          <p data-type="caption">Figures are illustrative.</p>
+          <pre data-type="code">{SAMPLES.code}</pre>
+        </article>
+      </Section>
+    </>
   );
 }
 

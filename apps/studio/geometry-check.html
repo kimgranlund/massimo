@@ -11,7 +11,7 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
-import { SIZES, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -35,6 +35,7 @@ for (const c of cases) {
     <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     ${LEVELS.map((l) => `<ui-${l} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
+    ${Object.keys(TYPE_ROLES).map((r) => `<span data-type="${r}" style="display:block">Ag</span>`).join('')}
     <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
@@ -109,6 +110,11 @@ for (const c of cases) {
   checks['range.fill'] = [r2(rect(range.querySelector('[data-part=fill]')).width), r2(trackFill('range', 0.25, rect(range.querySelector('[data-part=track]')).width, g))];
   checks['range.radius'] = [px(cs(range.querySelector('[data-part=track]')).borderTopLeftRadius), rt2.trackRadius];
   checks['swatch.size'] = [r2(rect(box.querySelector('ui-swatch')).width), rsw.size];
+  for (const role of Object.keys(TYPE_ROLES)) {
+    const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });
+    checks[`type.${role}.size`] = [px(cs(el).fontSize), r2(t.size)];
+    checks[`type.${role}.lineHeight`] = [px(cs(el).lineHeight), r2(t.lineHeightRatio ? t.lineHeightRatio * t.size : t.lineHeight)];
+  }
   for (const l of LEVELS) {
     const el = box.querySelector(`ui-${l}`), [a, b] = el.children, h = rect(el).height;
     const want = resolveContainer(l, { ...g, height: h });

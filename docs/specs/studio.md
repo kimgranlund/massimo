@@ -13,10 +13,11 @@
 
 ## Panel
 
-- **Tabs** (segmented, persisted in localStorage): Components, Containers, Colors; each switches panel and canvas.
+- **Tabs** (segmented, persisted in localStorage): Components, Containers, Colors, Typography; each switches panel and canvas.
 - **Components:** unit, border, corner radius, corner shape; icon set; scheme.
 - **Containers:** the same geometry, plus a padding menu and a gap menu (in u, with px) for each container type: composite, group, collection, tile, card, panel, region, page.
 - **Colors:** roles (primary, neutral, critical), scheme, hue set and first hue, chroma (requested, base %, falloff, hue balance), tone (automatic peak, dark and light endpoints), neutral tint, scale, gamut. Generation runs on the main thread, debounced (~300ms per run).
+- **Typography:** unit, ratio (named ratios), rhythm (none, ½u, 1u), heading style (sans, serif), scheme. The canvas shows every role with live metrics over a rhythm grid, then a short article set in the roles.
 - **Theme:** start from a saved theme, name, save geometry and icons to `packages/ui-kit/tokens/themes/themes.json` (dev-only `POST /__studio/themes`, validated).
 - **Copy:** JSON of every applied setting minus defaults (`theme`, `scheme`, `spectrum.settings`, `spectrum.roles`) plus `howToApply`, for an agent. **Reset:** all defaults.
 
@@ -28,4 +29,4 @@
 
 ## Checks
 
-`/geometry-check.html` renders 44 configurations and compares 76 measured lengths each with the resolver (3344 in total); `"fails": []` means CSS and resolver agree.
+`/geometry-check.html` renders 44 configurations and compares 102 measured lengths each with the resolver (4488 in total), including every type role's size and line height; `"fails": []` means CSS and resolver agree.

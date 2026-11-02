@@ -2,6 +2,7 @@
 // Implemented rows are computed by the resolver itself, so the CSV cannot drift from the
 // code (test/geometry-csv.test.ts fails when the file is stale). Run: npm run geometry:csv
 import { writeFileSync } from 'node:fs';
+import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
 import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, popupOffset, resolveBtg, resolveChoice, resolveTrack, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
@@ -83,6 +84,14 @@ export const rows: Row[] = [
   { id: 'swatch.palette.radius', family: 'swatch', element: 'palette', quantity: 'radius', formula: '2u * s', value: (u) => resolveSwatch({ unit: u }).paletteRadius, status: 'implemented', notes: 'swatches attached, no gap' },
   { id: 'swiper.paddleInset', family: 'swiper', element: 'swiper', quantity: 'paddle inset', formula: '2u', value: (u) => resolveSwiper({ unit: u }).paddleInset, status: 'implemented', notes: 'paddles are 8u icon buttons' },
   { id: 'swiper.dot', family: 'swiper', element: 'swiper', quantity: 'dot', formula: '2u (active 4u wide)', value: (u) => resolveSwiper({ unit: u }).dot, status: 'implemented', notes: '4u hit area, u gap' },
+
+  // Typography (ratio 1.333, rhythm 1u)
+  { id: 'in.typeRatio', family: 'input', element: 'text', quantity: 'type ratio r', formula: 'r (default 1.333)', value: () => 1.333, status: 'input', notes: 'theme type-ratio, 1–1.5' },
+  { id: 'in.typeRhythm', family: 'input', element: 'text', quantity: 'type rhythm', formula: 'rhythm × u (default 1)', value: () => 1, status: 'input', notes: 'theme type-rhythm: 0 natural, 0.5, 1' },
+  ...(Object.entries(TYPE_ROLES) as [TypeRoleName, (typeof TYPE_ROLES)[TypeRoleName]][]).flatMap(([role, r]): Row[] => [
+    { id: `type.${role}.size`, family: 'type', element: role, quantity: 'font size', formula: 'u' in r ? `${r.u}u` : `(10 + u) × r^${r.step}`, value: (u) => resolveType(role, { unit: u }).size, status: 'implemented', notes: '' },
+    { id: `type.${role}.lineHeight`, family: 'type', element: role, quantity: 'line height', formula: 'control' in r ? `${r.lh} (unitless)` : `ceil(size × ${r.lh} / u) × u`, value: (u) => resolveType(role, { unit: u }).lineHeight, status: 'implemented', notes: `weight ${r.weight}, tracking ${r.tracking}em${'upper' in r ? ', uppercase' : ''}${'mono' in r ? ', mono' : ''}${'heading' in r ? ', serif option' : ''}` },
+  ]),
 
   // Badge / tag / chip
   { id: 'btg.chip.height', family: 'btg', element: 'chip', quantity: 'height', formula: 'min(12 + 3u, 8u)', value: (u) => resolveBtg('chip', { unit: u }).height, status: 'implemented', notes: 'cap: never taller than a control (bites below u = 2.4)' },

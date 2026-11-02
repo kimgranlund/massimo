@@ -3,7 +3,7 @@
 import { definePreset } from '@pandacss/dev';
 import { tokens, semanticTokens, themeCss } from './tokens/index.ts';
 import { breakpoints } from './tokens/geometry/index.ts';
-import { reset, textStyles, page, prose, geometry, defaults, pending, pendingKeyframes } from './styles/index.ts';
+import { reset, textStyles, typography, page, prose, geometry, defaults, pending, pendingKeyframes } from './styles/index.ts';
 
 type Css = Record<string, Record<string, unknown>>;
 
@@ -17,7 +17,7 @@ export function mergeGlobalCss(...parts: Css[]): Css {
   return out;
 }
 
-export const globalCssParts = { theme: themeCss(), reset, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, defaults, pending } as Record<string, Css>;
+export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, defaults, pending } as Record<string, Css>;
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',

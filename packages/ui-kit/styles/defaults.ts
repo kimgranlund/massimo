@@ -30,9 +30,9 @@ export const defaults = defineGlobalStyles({
 
   // Field: label, control, description, error
   [FIELD]: { display: 'flex', flexDirection: 'column', gap: '1.5' },
-  [`${FIELD} > [data-part=label]`]: { fontSize: 'sm', fontWeight: 'medium', alignSelf: 'start', cursor: 'default' },
-  [`${FIELD} > [data-part=description]`]: { fontSize: 'xs', color: 'fg.muted' },
-  [`${FIELD} > [data-part=error]`]: { fontSize: 'xs', color: 'danger.fg' },
+  [`${FIELD} > [data-part=label]`]: { textStyle: 'label', alignSelf: 'start', cursor: 'default' },
+  [`${FIELD} > [data-part=description]`]: { textStyle: 'caption', color: 'fg.muted' },
+  [`${FIELD} > [data-part=error]`]: { textStyle: 'caption', color: 'danger.fg' },
   [CONTROL]: {
     // Text sits where button contents sit: padding + 1u.
     display: 'flex', alignItems: 'center', width: '100%', height: 'var(--h)',

@@ -19,6 +19,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `components/` | the web components (and React button/input) | [components](components.md) |
 | `tokens/geometry/` | the geometry resolver (numerical reference) | [geometry](geometry.md) |
 | `tokens/colors/` | Spectrum engine, settings, snapshot, color tokens | [color](color.md) |
+| `tokens/typography/` | type roles, ratios, font families (numerical reference) | [typography](typography.md) |
 | `tokens/themes/` | theme parameters and saved themes | [theming](theming.md) |
 | `icons/` | `<i name>` runtime, icon sets, SVG sanitizer | [icons](icons.md) |
 | `styles/` | reset, geometry CSS, defaults, FOUC guard, page patterns | [geometry](geometry.md), [theming](theming.md) |

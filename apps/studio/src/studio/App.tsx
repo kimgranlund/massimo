@@ -9,7 +9,8 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import { PARAMS, defaultParams, diffFromDefaults, paramVar, savedThemes, THEME_NAME, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
-import type { Scheme, SpectrumPayload, View } from '../protocol.ts';
+import type { HeadingStyle, Scheme, SpectrumPayload, View } from '../protocol.ts';
+import { TYPE_RATIOS } from '@massimo/ui-kit/tokens';
 import { Canvas } from '../canvas/Canvas.tsx';
 import { STUDIO_ICON_SETS } from '../icons.ts';
 import { Group, Range, Segmented, Select, Switch, useEvent } from './wc.tsx';
@@ -25,13 +26,14 @@ const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
 export function App() {
   // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
   const [view, setView] = useState<View>(() => {
-    try { const v = localStorage.getItem('studio:view'); if (v === 'components' || v === 'containers' || v === 'colors') return v; } catch { /* no storage */ }
+    try { const v = localStorage.getItem('studio:view'); if (v === 'components' || v === 'containers' || v === 'colors' || v === 'typography') return v; } catch { /* no storage */ }
     return 'components';
   });
   useEffect(() => { try { localStorage.setItem('studio:view', view); } catch { /* no storage */ } }, [view]);
   const [params, setParams] = useState<ThemeParams>(defaultParams);
   const [scheme, setScheme] = useState<Scheme>('auto');
   const [icons, setIcons] = useState('phosphor');
+  const [heading, setHeading] = useState<HeadingStyle>('sans');
   const [spectrum, setSpectrum] = useState<SpectrumSettings>(SPECTRUM_DEFAULTS);
   const [roles, setRoles] = useState(DEFAULT_ROLES);
   const [generated, setGenerated] = useState<SpectrumPayload>();
@@ -64,15 +66,17 @@ export function App() {
     kit: '@massimo/ui-kit',
     theme: { ...diffFromDefaults(params), ...(icons !== 'phosphor' ? { icons } : {}) },
     scheme,
+    ...(heading !== 'sans' ? { heading } : {}),
     spectrum: { settings: spectrumOverrides(spectrum), roles: generated?.roles ?? roles },
     howToApply: {
       theme: 'Merge `theme` into packages/ui-kit/tokens/themes/themes.json under a theme name, then <html data-ui-theme="name">.',
+      heading: 'Put data-heading="serif" on <html> (or any element) for serif display and headings.',
       spectrum: 'generateSpectrum(spectrum.settings) and spectrumCSS(data, resolveRoles(data, spectrum.roles)) from @massimo/ui-kit/spectrum; emit the CSS after the kit stylesheet.',
     },
   });
 
   const reset = () => {
-    setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setName('');
+    setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setHeading('sans'); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setName('');
     setStatus('Reset to defaults');
   };
 
@@ -112,11 +116,20 @@ export function App() {
       <aside className={s.panel} aria-label="Jig">
         <header className={s.panelHeader}>
           <h1 className={s.brand}>Studio</h1>
-          <Segmented<View> value={view} onValue={setView} options={[['components', 'Components'], ['containers', 'Containers'], ['colors', 'Colors']]} />
+          <Segmented<View> value={view} onValue={setView} options={[['components', 'Components'], ['containers', 'Containers'], ['colors', 'Colors'], ['typography', 'Typography']]} />
         </header>
 
         <div className={s.panelBody}>
-          {view !== 'colors' && geometry}
+          {(view === 'components' || view === 'containers') && geometry}
+          {view === 'typography' && (
+            <Group title="Typography">
+              <Range label="Unit (px)" value={params.unit} min={PARAMS.unit.min} max={PARAMS.unit.max} step={PARAMS.unit.step} onValue={(v) => setParam('unit', v)} />
+              <Select label="Ratio" value={String(params['type-ratio'])} options={(TYPE_RATIOS.some(([r]) => r === params['type-ratio']) ? TYPE_RATIOS : [...TYPE_RATIOS, [params['type-ratio'], 'Custom'] as [number, string]]).map(([r, n]) => [String(r), `${r} · ${n}`] as [string, string])} onValue={(v) => setParam('type-ratio', Number(v))} />
+              <Segmented label="Rhythm" value={String(params['type-rhythm'])} onValue={(v) => setParam('type-rhythm', Number(v))} options={[['0', 'None'], ['0.5', '½u'], ['1', '1u']]} />
+              <Segmented<HeadingStyle> label="Headings" value={heading} onValue={setHeading} options={[['sans', 'Sans serif'], ['serif', 'Serif']]} />
+              <Segmented<Scheme> label="Scheme" value={scheme} onValue={setScheme} options={[['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']]} />
+            </Group>
+          )}
           {view === 'containers' && (
             <Group title="Padding and gap per type (u)">
               <div className={s.levelGrid}>
@@ -186,9 +199,9 @@ export function App() {
         </footer>
       </aside>
 
-      <div className={`${s.canvas}${scheme === 'auto' ? '' : ` ${scheme}`}`} data-canvas="" data-icons={icons} style={canvasVars} aria-label="Canvas">
+      <div className={`${s.canvas}${scheme === 'auto' ? '' : ` ${scheme}`}`} data-canvas="" data-icons={icons} data-heading={heading} style={canvasVars} aria-label="Canvas">
         {generated && <style>{generated.css}</style>}
-        <Canvas view={view} spectrum={generated} />
+        <Canvas view={view} spectrum={generated} params={params} heading={heading} />
       </div>
     </div>
   );

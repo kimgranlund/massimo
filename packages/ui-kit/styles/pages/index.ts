@@ -25,7 +25,7 @@ export const prose = definePattern({
   transform: (props) => ({
     maxWidth: '65ch',
     '& > * + *': { marginTop: '4' },
-    '& h1, & h2, & h3': { textStyle: 'heading' },
+    '& h1': { textStyle: 'heading-1' }, '& h2': { textStyle: 'heading-2' }, '& h3': { textStyle: 'heading-3' },
     '& a': { color: 'accent.fg', textDecoration: 'underline' },
     ...props,
   }),
