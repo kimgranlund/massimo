@@ -23,11 +23,10 @@ export const button = defineSlotRecipe({
       ...PATTERN,
       transition: t('feedback', ...PAINT),
       // Hover and press deepen the translucent control fill (matches neutral 3 → 4 → 5 on the page tone,
-      // stays visible on muted surfaces). Busy buttons carry
-      // aria-disabled too, so they are not enabled.
+      // stays visible on muted surfaces). Busy buttons (data-busy) are not enabled.
       _enabled: { _hover: { bg: 'bg.controlHover' }, '&:active': { bg: 'bg.controlActive' } },
       // Busy stays readable (no fade), with an indeterminate sweep along the bottom edge.
-      _disabled: { '&:not([aria-busy=true])': { opacity: 0.5, cursor: 'not-allowed' } },
+      _disabled: { '&:not([data-busy])': { opacity: 0.5, cursor: 'not-allowed' } },
       _busy: {
         cursor: 'progress', position: 'relative', overflow: 'hidden',
         _after: {

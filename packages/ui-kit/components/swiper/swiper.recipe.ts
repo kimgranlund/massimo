@@ -47,8 +47,9 @@ export const swiper = defineSlotRecipe({
         content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: 'var(--u)',
         bg: 'fg', opacity: 0.35, transition: t('toggle', 'width', 'opacity'),
       },
-      '&:not([aria-current=true]):hover::before': { opacity: 0.7 },
-      '&[aria-current=true]::before': { width: 'calc(4 * var(--u))', opacity: 1, [FORCED]: FORCED_ON },
+      // The current slide's dot: data-selected (aria-current for semantics).
+      '&:not([data-selected]):hover::before': { opacity: 0.7 },
+      '&[data-selected]::before': { width: 'calc(4 * var(--u))', opacity: 1, [FORCED]: FORCED_ON },
     },
   },
 });

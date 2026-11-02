@@ -5,11 +5,12 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, composite, compositeOption, constructionPattern, mergeStyles, t } from '../recipe-parts.ts';
 
-// Option state: ARIA on the web component and the React option; a native <option> in the React
-// Select uses :checked, :disabled and :focus.
-const SELECTED = ':is([aria-selected=true], :checked)';
-const ACTIVE = ':is([data-active], :focus)';
-const ENABLED = ':not([aria-disabled=true], :disabled)';
+// Option state: data-selected, data-highlighted and data-disabled on the web component and the React
+// option (optionAttrs); a native <option> in the React Select keeps :checked, :disabled and :focus
+// (the browser's picker reports neither selection nor highlight to script).
+const SELECTED = ':is([data-selected], :checked)';
+const ACTIVE = ':is([data-highlighted], :focus)';
+const ENABLED = ':not([data-disabled], :disabled)';
 const IN_LIST = ':is(ui-listbox, ui-segmented, [data-ui=listbox], [data-ui=segmented]) > &';
 const IN_SEGMENTED = ':is(ui-segmented, [data-ui=segmented]) > &';
 // Any composite: a list, a segmented control, the web component's select popup or the native select.
@@ -20,7 +21,7 @@ const list = (extra: Record<string, any>) => ({
   root: mergeStyles(composite, {
     fontFamily: UI_FONT,
     _disabled: { opacity: 0.5, cursor: 'not-allowed', '& > *': { cursor: 'not-allowed', pointerEvents: 'none' } },
-    _userInvalid: { bg: CRITICAL_TINT(14) },
+    _invalid: { bg: CRITICAL_TINT(14) },
     [FORCED]: { ...FORCED_EDGE, _disabled: { color: 'GrayText' } },
   }, extra),
 });
@@ -61,7 +62,7 @@ export const option = defineSlotRecipe({
       // or segmented track, so they read on any surface.
       [`&${ACTIVE}`]: { bg: 'bg.control' },
       [`&${SELECTED}`]: { bg: 'primary.subtle', color: 'primary.fg', fontWeight: 'medium', [FORCED]: FORCED_ON },
-      '&:is([aria-disabled=true], :disabled)': { opacity: 0.45, cursor: 'not-allowed' },
+      '&:is([data-disabled], :disabled)': { opacity: 0.45, cursor: 'not-allowed' },
       [`&${ENABLED}:hover`]: { bg: 'bg.control' },
       [`&${ENABLED}:active`]: { bg: 'bg.controlHover' },
       [`&${SELECTED}${ENABLED}:is(:hover, :active)`]: { bg: 'primary.subtleHover' },
@@ -74,7 +75,7 @@ export const option = defineSlotRecipe({
       [`${IN_LIST}${SELECTED}`]: { bg: 'bg.selected', color: 'fg.selected', boxShadow: 'sm' },
       [`${IN_SEGMENTED}${ENABLED}:hover`]: { color: 'fg' },
       [`${IN_LIST}${SELECTED}${ENABLED}:is(:hover, :active)`]: { bg: 'bg.selected' },
-      [FORCED]: { '&:is([aria-disabled=true], :disabled)': { color: 'GrayText' } },
+      [FORCED]: { '&:is([data-disabled], :disabled)': { color: 'GrayText' } },
     },
   },
 });

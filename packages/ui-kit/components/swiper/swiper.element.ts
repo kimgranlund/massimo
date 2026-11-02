@@ -112,7 +112,8 @@ export class UISwiper extends UIElement {
         return d;
       }));
     }
-    this.#dots?.querySelectorAll<HTMLElement>('[data-part=dot]').forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
+    // The current slide's dot: aria-current (semantics) and data-selected (styling).
+    this.#dots?.querySelectorAll<HTMLElement>('[data-part=dot]').forEach((d, k) => applyAttrs(d, { 'aria-current': String(k === i), 'data-selected': k === i ? '' : undefined }));
     this.toggleAttribute('data-single', n <= 1);
     const c = swiper();
     applyRecipe(this, c, (slot) => slot === 'paddle' || slot === 'dot' ? null : partOf(this, slot));

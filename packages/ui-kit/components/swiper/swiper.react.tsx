@@ -4,6 +4,7 @@
 // <button data-ui="button">s and the dots native <button>s. An IntersectionObserver tracks the slide
 // that is at least 60% visible.
 import { Children, useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react';
+import { buttonAttrs, toReactProps } from '../../dom/index.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { button } from '../../styled-system/recipes/button.js';
 import { swiper } from '../../styled-system/recipes/swiper.js';
@@ -54,7 +55,7 @@ export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange,
 
   const paddle = (dir: 'prev' | 'next') => (
     <button type="button" className={cx(paddleClasses.root, c.paddle)} data-ui="button" data-part="paddle" data-dir={dir} data-icon-size="lg" aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
-      aria-disabled={(dir === 'prev' ? index <= 0 : index >= n - 1) || undefined}
+      {...toReactProps(buttonAttrs({ native: true, disabled: dir === 'prev' ? index <= 0 : index >= n - 1 }))}
       onClick={() => { if (dir === 'prev' ? index > 0 : index < n - 1) go(index + (dir === 'prev' ? -1 : 1)); }}>
       <span data-part="leading" className={paddleClasses.leading}><i name={`caret-${dir === 'prev' ? 'left' : 'right'}`} /></span>
     </button>
@@ -69,7 +70,7 @@ export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange,
       {paddle('prev')}
       {paddle('next')}
       <div data-part="dots" className={c.dots}>
-        {slides.map((_, k) => <button key={k} type="button" className={c.dot} data-part="dot" aria-label={`Go to slide ${k + 1}`} aria-current={k === index} onClick={() => go(k)} />)}
+        {slides.map((_, k) => <button key={k} type="button" className={c.dot} data-part="dot" aria-label={`Go to slide ${k + 1}`} aria-current={k === index} data-selected={k === index ? '' : undefined} onClick={() => go(k)} />)}
       </div>
     </div>
   );

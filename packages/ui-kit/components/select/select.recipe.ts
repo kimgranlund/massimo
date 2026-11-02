@@ -8,9 +8,11 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 import { FORCED, FORCED_EDGE, composite, fieldControl, fieldParts, fieldRoot, mergeStyles, t } from '../recipe-parts.ts';
 
-const has = (attr: string) => `:is(${attr}, :has(> ${attr}))`;
-// Trigger states: ARIA on the web component's trigger; the native select's state in React.
-const OPEN = ':is([aria-expanded=true], select:open > *)';
+// Trigger states: the host's field state (data-invalid, data-disabled, data-readonly; the React
+// trigger sits one level deeper, in the native select, matched at the same specificity through
+// :where), and data-popup-open on the web component's trigger. React's open state stays native
+// (select:open): the browser owns the picker; a select disabled by a <fieldset> is :disabled.
+const OPEN = ':is([data-popup-open], select:open > *)';
 const PICKER = '& > select::picker(select)';
 const ANCHORED = '@supports (position-area: block-end) and (anchor-scope: all)';
 
@@ -60,9 +62,9 @@ export const select = defineSlotRecipe({
     },
     ...fieldParts,
     trigger: mergeStyles(fieldControl({
-        invalid: `:is(${has('[aria-invalid=true]')}, :user-invalid > *, [data-invalid] > select > *)`,
-        disabled: `:is(${has('[aria-disabled=true]')}, :has(> :disabled), :disabled > *)`,
-        readonly: has('[aria-readonly=true]'),
+        invalid: ':is([data-invalid] > *, [data-invalid] > select > *)',
+        disabled: ':is([data-disabled] > *, :disabled > *, :where([data-disabled] > select > *))',
+        readonly: ':is([data-readonly] > *, :where([data-readonly] > select > *))',
       }), {
       cursor: 'pointer', userSelect: 'none',
       // Open: the trigger holds the pressed fill and the chevron turns.

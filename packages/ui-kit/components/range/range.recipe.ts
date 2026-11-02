@@ -31,11 +31,11 @@ export const range = defineSlotRecipe({
       _disabled: { opacity: 0.5, cursor: 'not-allowed' },
       _enabled: {
         '&:hover': { '& > [data-part=track]': { bg: 'bg.mutedHover' }, '& > [data-part=track] > [data-part=fill]': { bg: 'primary.solidHover' } },
-        // Dragging (:active holds while the pointer is captured).
-        '&:active': { cursor: 'grabbing', '& > [data-part=thumb]': { boxShadow: 'md' } },
+        // Dragging (data-dragging, from pointer down to up).
+        _dragging: { cursor: 'grabbing', '& > [data-part=thumb]': { boxShadow: 'md' } },
       },
-      // The thumb and fill glide on keyboard steps; while dragging (:active) they track 1:1.
-      '&:not(:active)': {
+      // The thumb and fill glide on keyboard steps; while dragging they track 1:1.
+      '&:not([data-dragging])': {
         '& > [data-part=thumb]': { transition: `${t('toggle', 'margin-inline-start')}, ${t('feedback', 'box-shadow')}` },
         '& > [data-part=track] > [data-part=fill]': { transition: `${t('toggle', 'width')}, ${t('feedback', 'background-color')}` },
       },

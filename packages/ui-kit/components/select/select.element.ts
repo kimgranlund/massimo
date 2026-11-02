@@ -6,7 +6,7 @@
 import { UIFormElement, define, html, signal, type Problem } from '../../core/index.ts';
 import {
   applyAttrs, comboboxAttrs, createTypeahead, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
-  listboxAttrs, navigate, optionAttrs, placePopup, selectKeyIntent, uid, withExternalRefs,
+  listboxAttrs, navigate, optionAttrs, placePopup, popupDataAttrs, selectKeyIntent, uid, withExternalRefs,
 } from '../../dom/index.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
@@ -43,6 +43,9 @@ export class UISelect extends UIFormElement {
   #id = '';
   #default = '';
   #open = signal(false);
+  /** The side the open popup sits on (measured: CSS anchor positioning may flip it). */
+  #side = signal<'top' | 'bottom'>('bottom');
+  #popupShown = false;
   #active = signal(-1);
   #typeahead = createTypeahead();
   #pending: Element[] = [];
@@ -106,7 +109,12 @@ export class UISelect extends UIFormElement {
       required: this.required, invalid: !!a.control['aria-invalid'],
     }));
     trigger.id = this.#id;
-    applyAttrs(popup, { id: popupId, ...listboxAttrs({ focusable: false, label: this.label || undefined }), 'aria-labelledby': this.label ? undefined : this.labelledby || undefined });
+    // Base UI Select.Trigger / Value: data-placeholder while no option is selected.
+    applyAttrs(trigger, { 'data-placeholder': this.#selected() ? undefined : '' });
+    applyAttrs(popup, {
+      id: popupId, ...listboxAttrs({ focusable: false, label: this.label || undefined }), 'aria-labelledby': this.label ? undefined : this.labelledby || undefined,
+      ...popupDataAttrs({ open, side: this.#side.value, align: 'start' }),
+    });
     opts.forEach((o, i) => applyAttrs(o, optionAttrs({ id: ensureId(o), selected: o.optionValue === this.value, disabled: o.disabled, active: i === active })));
     if (open) { this.#showPopup(); opts[active]?.scrollIntoView?.({ block: 'nearest' }); }
     else this.#hidePopup();
@@ -114,6 +122,7 @@ export class UISelect extends UIFormElement {
   }
 
   formValue() { return this.value || null; }
+  authorError() { return this.error; }
   validationAnchor() { return this.trigger ?? undefined; }
   resetValue() { this.value = this.#default; }
   restoreValue(state: unknown) { if (typeof state === 'string') this.value = state; }
@@ -155,8 +164,8 @@ export class UISelect extends UIFormElement {
 
   #showPopup() {
     const popup = this.popup!;
-    if (!popup.hasAttribute('data-open')) {
-      popup.setAttribute('data-open', '');
+    if (!this.#popupShown) {
+      this.#popupShown = true;
       try { popup.showPopover?.(); } catch { /* already open */ }
       document.addEventListener('pointerdown', this.#onOutside, true);
       if (!ANCHORED) {
@@ -165,12 +174,21 @@ export class UISelect extends UIFormElement {
       }
     }
     if (!ANCHORED) this.#place();
+    else this.#measureSide();
+  }
+
+  // With anchor positioning CSS picks the side (flip-block); read it back for data-side.
+  #measureSide() {
+    const popup = this.popup, trigger = this.trigger;
+    if (!popup || !trigger) return;
+    const p = popup.getBoundingClientRect(), t = trigger.getBoundingClientRect();
+    if (p.height || p.width) this.#side.value = p.top < t.top ? 'top' : 'bottom';
   }
 
   #hidePopup() {
     const popup = this.popup;
-    if (!popup?.hasAttribute('data-open')) return;
-    popup.removeAttribute('data-open');
+    if (!popup || !this.#popupShown) return;
+    this.#popupShown = false;
     try { popup.hidePopover?.(); } catch { /* already closed */ }
     document.removeEventListener('pointerdown', this.#onOutside, true);
     window.removeEventListener('resize', this.#place);
@@ -185,6 +203,7 @@ export class UISelect extends UIFormElement {
     // Offset is 1u (styles/geometry.ts --u).
     const unit = parseFloat(window.getComputedStyle(this).getPropertyValue('--u')) || 4;
     const p = placePopup(trigger.getBoundingClientRect(), { width: window.innerWidth, height: window.innerHeight }, unit);
+    this.#side.value = p.side;
     Object.assign(popup.style, {
       left: `${p.left}px`, top: p.top == null ? 'auto' : `${p.top}px`, bottom: p.bottom == null ? 'auto' : `${p.bottom}px`,
       minWidth: `${p.minWidth}px`, maxHeight: `${p.maxHeight}px`,

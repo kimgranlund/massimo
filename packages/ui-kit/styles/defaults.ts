@@ -12,7 +12,8 @@ export const defaults = defineGlobalStyles({
 
   // Forced colors (Windows high contrast): fills are dropped and borders default to 0, so
   // every control gets a system-colored edge that costs no space, and "on" states use Highlight.
+  // Disabled (data-disabled, the state contract) is GrayText; a busy button stays readable.
   '@media (forced-colors: active)': {
-    '[aria-disabled=true]': { color: 'GrayText' },
+    '[data-disabled]': { color: 'GrayText' },
   },
 });

@@ -50,6 +50,7 @@ export class UIPalette extends UIFormElement {
   declare orientation: 'horizontal' | 'vertical';
 
   #active = signal(-1);
+  #focused = signal(false);
   #version = signal(0);
   #mo?: MutationObserver;
 
@@ -62,19 +63,24 @@ export class UIPalette extends UIFormElement {
     this.#mo.observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ['color'] });
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('click', this.#onClick);
+    this.addEventListener('focus', this.#onFocus);
+    this.addEventListener('blur', this.#onBlur);
   }
 
   disconnected() {
     this.#mo?.disconnect();
     this.removeEventListener('keydown', this.#onKeydown);
     this.removeEventListener('click', this.#onClick);
+    this.removeEventListener('focus', this.#onFocus);
+    this.removeEventListener('blur', this.#onBlur);
   }
 
   update() {
     const list = this.swatches;
     applyRecipe(this, palette({ selectable: this.#isSelectable, orientation: this.#orientation }));
-    if (!this.#isSelectable) { applyAttrs(this, { role: 'group', 'aria-label': this.label || undefined }); return; }
-    const active = this.#active.value >= 0 ? this.#active.value : list.findIndex((s) => s.color === this.value);
+    if (!this.#isSelectable) { applyAttrs(this, { role: 'group', 'aria-label': this.label || undefined, 'data-orientation': this.#orientation }); return; }
+    // The highlighted swatch (data-highlighted, aria-activedescendant) shows while the palette has focus.
+    const active = !this.#focused.value ? -1 : this.#active.value >= 0 ? this.#active.value : list.findIndex((s) => s.color === this.value);
     list.forEach((s, i) => applyAttrs(s, {
       ...optionAttrs({ id: s.id || (s.id = uid('swatch')), selected: s.color === this.value, active: i === active }),
       'aria-label': s.label || s.color,
@@ -104,6 +110,9 @@ export class UIPalette extends UIFormElement {
     e.preventDefault();
     this.#select(i);
   };
+
+  #onFocus = () => { this.#focused.value = true; };
+  #onBlur = () => { this.#focused.value = false; };
 
   #onClick = (e: Event) => {
     if (!this.#isSelectable) return;
