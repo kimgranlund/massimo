@@ -33,9 +33,6 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
   switch: CHOICE_STATE,
   range: RANGE_STATE,
   progress: [],
-  badge: [],
-  tag: [],
-  chip: [[/\[selectable\]/g, '[data-selectable]']],
   // A selectable palette is a radio group: each swatch is a label around a native radio.
   palette: [
     [/\[(selectable|name)\]/g, '[data-selectable]'],

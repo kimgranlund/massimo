@@ -10,7 +10,8 @@ import { CONTAINERS, GAPS, ICON_STEPS, SIZES, SQUARE_LEVELS } from '../tokens/ge
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
 export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
-export const BTG = ':is(ui-badge, ui-tag, ui-chip)';
+// Badge, tag and chip hosts in both renderers (the React ones are data-ui hosts).
+export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag], [data-ui=chip])';
 const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
 export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
@@ -109,7 +110,8 @@ export const geometry = defineGlobalStyles({
   [`:is([icon-size=fill], [data-icon-size=fill]) ${SLOT} > *`]: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' },
 
   // Badge / tag / chip: capped height ladder (see resolveBtg). Overrides the control values
-  // on the same element, so --icon and --radius follow automatically.
+  // on the same element, so --icon and --radius follow automatically. Variables only: the
+  // slot recipes (components/btg/btg.recipe.ts) apply them.
   [BTG]: {
     '--chip-h': 'min(calc(12px + 3 * var(--u)), calc(8 * var(--u)))',
     '--tag-h': 'min(calc(12px + 2 * var(--u)), calc(var(--chip-h) - var(--u)))',
@@ -121,27 +123,10 @@ export const geometry = defineGlobalStyles({
     // Concentric radius: the edge (0.5u′) plus a third of the slot, the button's 1u + 2u split
     // (2u = its 6u slot / 3), so a fill slot's radius R − 0.5u′ stays parallel. Pill at height / 2.
     '--radius': 'min(calc((0.5 * var(--lu) + var(--slot) / 3) * var(--ui-radius-scale)), calc(var(--h) / 2))',
-    height: 'var(--h)', minWidth: 'var(--h)', borderWidth: 'var(--b)', borderRadius: 'var(--radius)',
-    fontSize: 'var(--font)', padding: 'var(--pad)',
   },
-  'ui-chip': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
-  'ui-tag': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
-  'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', justifyContent: 'center' },
-  // Label wrapper padding (resolveBtg), in the local unit u′: the host keeps 0.5u′ − B; labels carry
-  // 1u′ on both sides (beside a slot too). Text parts sit 0.5u′ apart.
-  // Icon containers have a set size: the slot (height − u′) in both directions, glyph centered.
-  [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
-  [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
-  [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  // Chip centers its text with block padding; tag and badge need none, the row centers it.
-  // Chip label compensation: +0.5u′ at a bare edge (1.5u′), so text balances an icon's artwork.
-  ...textRun('ui-chip', 'var(--lu)', 'calc(1.5 * var(--lu))', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--lu))'),
-  ...textRun('ui-tag', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
-  ...textRun('ui-badge', 'var(--lu)', 'var(--lu)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--lu))'),
-  // Fill artwork (avatars) nests inside the 0.5u′ edge.
-  [`:is([icon-size=fill], [data-icon-size=fill]) ${BTG} > ${SLOT}, ${BTG}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
-    borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--lu)))',
-  },
+  ':is(ui-chip, [data-ui=chip])': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
+  ':is(ui-tag, [data-ui=tag])': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
+  ':is(ui-badge, [data-ui=badge])': { '--h': 'var(--badge-h)', '--font': '10px' },
 
   // Layout containers: padding level p and max radius r (units of u), see CONTAINERS.
   // Padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the max

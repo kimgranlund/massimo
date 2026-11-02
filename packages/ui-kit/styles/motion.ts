@@ -15,7 +15,7 @@ const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select
 
 export const motion = defineGlobalStyles({
   // Hover, press, selection and validity: color and shadow (feedback).
-  [`${BUTTON}, ${CONTROL}, ui-chip, ui-option, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-palette > ui-swatch, ui-chip [data-remove]`]: {
+  [`${BUTTON}, ${CONTROL}, ui-option, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-palette > ui-swatch`]: {
     transition: t('feedback', ...PAINT),
   },
 

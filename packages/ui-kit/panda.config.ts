@@ -7,6 +7,8 @@ export default defineConfig({
   include: ['./styles/**/*.ts'],
   exclude: [],
   outdir: 'styled-system',
+  // Web components pick recipe variants at runtime, so extraction cannot see them: emit them all.
+  staticCss: { recipes: '*' },
   strictTokens: true, // a length or color that is not a token is a type error; exceptions use [..]
   strictPropertyValues: true,
   forceImportExtension: true, // explicit .js specifiers so Node and browsers resolve without a bundler

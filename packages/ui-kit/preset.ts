@@ -6,6 +6,7 @@ import { breakpoints } from './tokens/geometry/index.ts';
 import { reset, textStyles, typography, page, prose, geometry, defaults, motion, pending, pendingKeyframes } from './styles/index.ts';
 import { native, withNativeTwins } from './styles/native.ts';
 import { conditions as stateConditions } from './styles/conditions.ts';
+import { slotRecipes } from './components/recipes.ts';
 
 type Css = Record<string, Record<string, unknown>>;
 
@@ -34,6 +35,8 @@ export const uiKitPreset = definePreset({
     semanticTokens,
     textStyles,
     keyframes: pendingKeyframes,
+    // Component styles: one slot recipe per component (components/<name>/<name>.recipe.ts).
+    slotRecipes,
   },
   patterns: { page, prose },
 });

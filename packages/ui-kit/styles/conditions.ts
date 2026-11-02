@@ -9,6 +9,8 @@ export const conditions = {
   checked: '&:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"], :has(> input:checked))',
   indeterminate: '&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state="indeterminate"], :has(> input:indeterminate))',
   disabled: '&:is(:disabled, [disabled], [data-disabled], [aria-disabled=true], :has(> input:disabled))',
+  /** Not disabled in either form (the negation of disabled; Panda's own enabled is :enabled only). */
+  enabled: '&:not(:disabled, [disabled], [data-disabled], [aria-disabled=true], :has(> input:disabled))',
   /** Busy (loading) controls: aria-busy on the host. */
   busy: '&:is([aria-busy=true], [data-busy])',
   /** Invalid after interaction or author error; not :invalid, which shows before the user acts. */

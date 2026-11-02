@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 import Ajv from 'ajv';
-import { KIT, manifests, fromManifest, pointer, readSource, buildGraph, graphText, auditRecommendations, page, find, assembly } from '../scripts/registry-lib.ts';
+import { KIT, styleModules, manifests, fromManifest, pointer, readSource, buildGraph, graphText, auditRecommendations, page, find, assembly } from '../scripts/registry-lib.ts';
 import { staleness, componentFolders } from '../scripts/verification.ts';
 import { GEOMETRY_SCOPE } from '../styles/geometry.ts';
 import { compare, generate, manifestText } from '../scripts/manifests.ts';
@@ -118,7 +118,7 @@ test('every event a module dispatches is declared on one of its nodes', () => {
 
 test('paths, JSON Pointers, renderer modules and independent layers resolve', () => {
   for (const { path, manifest } of all) {
-    const refs = [manifest.documentation, manifest.examples, manifest.contract, manifest.stateContract, ...manifest.styleSource.modules,
+    const refs = [manifest.documentation, manifest.examples, manifest.contract, manifest.stateContract, ...styleModules(manifest),
       ...(manifest.module ? [manifest.module] : []), ...manifest.nodes.flatMap((n: any) => (n.contract ? [n.contract] : []))];
     for (const r of refs) assert.doesNotThrow(() => readSource(fromManifest(path, r)), `${path}: ${r}`);
     for (const [name, r] of Object.entries<any>(manifest.renderers)) {

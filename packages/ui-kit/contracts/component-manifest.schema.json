@@ -18,13 +18,26 @@
     "contract": { "type": "string", "description": "Default semantic contract, a path with a JSON Pointer into contracts/components.json." },
     "stateContract": { "type": "string", "description": "The shared state contract (contracts/states.json)." },
     "styleSource": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["format", "modules"],
-      "properties": {
-        "format": { "const": "panda-global" },
-        "modules": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Panda global style modules that hold this folder's rules. Styles are authored there, never in element modules." }
-      }
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["format", "module"],
+          "properties": {
+            "format": { "const": "panda-slot-recipe" },
+            "module": { "type": "string", "description": "The folder's recipe module (<name>.recipe.ts): one Panda config slot recipe per component node, exported under the node's name and registered in the preset (theme.slotRecipes). Its slots are root plus the node's ownsPart parts." }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["format", "modules"],
+          "properties": {
+            "format": { "const": "panda-global" },
+            "modules": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Panda global style modules that hold this folder's rules. Styles are authored there, never in element modules." }
+          }
+        }
+      ]
     },
     "independentLayers": { "type": "array", "items": { "$ref": "#/definitions/independentLayer" } },
     "nodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/node" } },

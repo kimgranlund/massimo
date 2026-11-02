@@ -37,11 +37,12 @@ const { Image } = await loadTsx(new URL('../components/image/image.react.tsx', i
 const { Card, Group } = await loadTsx(new URL('../components/container/container.react.tsx', import.meta.url));
 
 test('Badge, Tag, Chip: data-ui hosts with the construction pattern; Chip is a native toggle button', () => {
-  assert.equal(html(h(Badge, {}, '3')), '<span data-ui="badge"><span data-part="contents">3</span></span>');
-  assert.match(html(h(Tag, { leading: h('i', { name: 'tag' }), suffix: 'M' }, 'Size')), /<span data-ui="tag"><span data-part="leading"><i name="tag"><\/i><\/span><span data-part="contents">Size<\/span><span data-part="suffix">M<\/span><\/span>/);
+  // Classes come from the slot recipes (btg.recipe.ts): root on the host, one per part.
+  assert.equal(html(h(Badge, {}, '3')), '<span class="ui-badge__root" data-ui="badge"><span data-part="contents" class="ui-badge__contents">3</span></span>');
+  assert.match(html(h(Tag, { leading: h('i', { name: 'tag' }), suffix: 'M' }, 'Size')), /<span class="ui-tag__root" data-ui="tag"><span data-part="leading" class="ui-tag__leading"><i name="tag"><\/i><\/span><span data-part="contents" class="ui-tag__contents">Size<\/span><span data-part="suffix" class="ui-tag__suffix">M<\/span><\/span>/);
   const chip = html(h(Chip, { selectable: true, defaultSelected: true }, 'Design'));
-  assert.match(chip, /^<button type="button" data-ui="chip" data-selectable="true" aria-pressed="true"/);
-  assert.match(html(h(Chip, { removable: true }, 'Remote')), /aria-keyshortcuts="Delete".*<span data-part="trailing"><i name="x" data-remove=""><\/i><\/span>/);
+  assert.match(chip, /^<button type="button" class="ui-chip__root ui-chip__root--selectable_true" data-ui="chip" data-selectable="true" aria-pressed="true"/);
+  assert.match(html(h(Chip, { removable: true }, 'Remote')), /aria-keyshortcuts="Delete".*<span data-part="trailing" class="[^"]*"><i name="x" data-remove="" class="ui-chip__remove ui-chip__remove--selectable_false"><\/i><\/span>/);
   noCustom(chip);
 });
 

@@ -8,7 +8,7 @@ import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 import { RATIOS } from '../components/image/ratios.ts';
 import { voiceFamily } from './typography.ts';
 
-const UI_VOICE = ':is(ui-button, [data-ui=button], ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option, ui-checkbox, ui-radio, ui-switch, ui-range, ui-palette, ui-badge, ui-tag, ui-chip)';
+const UI_VOICE = ':is(ui-button, [data-ui=button], ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option, ui-checkbox, ui-radio, ui-switch, ui-range, ui-palette)';
 
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
@@ -106,7 +106,7 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.subtle' },
   'ui-select > [data-part=trigger] > [data-part=trailing]': { color: 'fg.muted' },
   // Prefix / suffix adornments: the label's color at 65%, so they read as secondary on any fill.
-  ':is(ui-button, ui-option, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, [data-ui=button], ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
+  ':is(ui-button, ui-option, ui-checkbox, ui-radio, ui-switch, [data-ui=button], ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
     color: 'color-mix(in oklch, currentColor 65%, transparent)',
   },
   // Icons in field adornment slots are secondary too.
@@ -132,22 +132,6 @@ export const defaults = defineGlobalStyles({
   // The column layout holds in every state: while closing, the popup stays displayed for its fade
   // (display transitions discretely), so a direction set only on :popover-open would flip it to a row.
   'ui-select > [data-part=popup]:popover-open': { display: 'flex' },
-
-  // Badge, tag, chip (lengths in styles/geometry.ts)
-  ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
-  'ui-badge': { bg: 'primary.solid', color: 'fg.onSolid', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' },
-  'ui-tag': { bg: 'bg.muted', color: 'fg' },
-  'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', userSelect: 'none' },
-  // Only a selectable chip is a button; a plain or removable chip is a label (its × is the control).
-  'ui-chip[selectable]': { cursor: 'pointer' },
-  'ui-chip[selectable]:not([aria-disabled=true]):hover': { bg: 'bg.mutedHover' },
-  'ui-chip[selectable]:not([aria-disabled=true]):active': { bg: 'bg.mutedActive' },
-  // Selected chips use the checkbox/switch "on" colors: the primary solid with on-solid text.
-  'ui-chip[aria-pressed=true]': { bg: 'primary.solid', color: 'fg.onSolid', borderColor: 'primary.solid' },
-  'ui-chip[aria-pressed=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'primary.solidHover' },
-  'ui-chip[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
-  'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
-  'ui-chip [data-remove]:hover': { opacity: 1 },
 
   // Checkbox, radio, switch
   ':is(ui-checkbox, ui-radio, ui-switch)': { display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle' },
@@ -267,8 +251,8 @@ export const defaults = defineGlobalStyles({
   // Forced colors (Windows high contrast): fills are dropped and borders default to 0, so
   // every control gets a system-colored edge that costs no space, and "on" states use Highlight.
   '@media (forced-colors: active)': {
-    [`${BUTTON}, ${CONTROL}, ui-chip, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
-    [`${ON} [data-part=box], ui-chip[aria-pressed=true], ui-option[aria-selected=true], :is(ui-range, ui-progress) > [data-part=track] > [data-part=fill], ui-swiper [data-part=dot][aria-current=true]::before`]: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
+    [`${BUTTON}, ${CONTROL}, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
+    [`${ON} [data-part=box], ui-option[aria-selected=true], :is(ui-range, ui-progress) > [data-part=track] > [data-part=fill], ui-swiper [data-part=dot][aria-current=true]::before`]: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
     'ui-switch [data-part=box]::after, ui-range > [data-part=thumb]': { forcedColorAdjust: 'none', bg: 'CanvasText' },
     'ui-radio[aria-checked=true] [data-part=box]::after': { forcedColorAdjust: 'none', bg: 'HighlightText' },
     '[aria-disabled=true]': { color: 'GrayText' },
