@@ -26,7 +26,7 @@ declare module 'react' {
       'ui-range': El<{ name?: string; value?: number; min?: number; max?: number; step?: number; label?: string; disabled?: boolean }>;
       'ui-progress': El<{ value?: number; max?: number; label?: string }>;
       'ui-swatch': El<{ color?: string; label?: string }>;
-      'ui-palette': El<{ name?: string; value?: string; label?: string; selectable?: boolean }>;
+      'ui-palette': El<{ name?: string; value?: string; label?: string; selectable?: boolean; orientation?: 'horizontal' | 'vertical' }>;
       'ui-swiper': El<{ label?: string; 'hover-controls'?: boolean; 'no-dots'?: boolean; 'no-paddles'?: boolean }>;
       'ui-image': El<{ src?: string; alt?: string; ratio?: string; fit?: string; position?: string; slideshow?: boolean }>;
       'ui-option': El<{ value?: string; disabled?: boolean }>;

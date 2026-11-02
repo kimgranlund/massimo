@@ -114,6 +114,10 @@ test('swatch and selectable palette', async () => {
   key(pal, 'Home'); await tick();
   assert.equal(pal.value, '#f00');
   assert.equal(pal.internals.value, '#f00');
+  pal.orientation = 'vertical'; await tick();
+  assert.equal(pal.getAttribute('aria-orientation'), null, 'vertical is the listbox default orientation');
+  key(pal, 'ArrowDown'); await tick();
+  assert.equal(pal.value, '#0f0', 'vertical: Down moves to the next swatch');
   d.remove();
 });
 

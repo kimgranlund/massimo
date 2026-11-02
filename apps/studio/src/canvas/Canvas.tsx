@@ -62,7 +62,8 @@ const grid = css({ stroke: 'border', strokeWidth: 1 });
 const dashed = css({ stroke: 'fg.muted', strokeWidth: 1, strokeDasharray: '3 3', fill: 'none' });
 const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
-const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '2fr 1fr 1fr' }, gap: '4', '& > :first-child': { gridRow: { md: 'span 2' } }, '& > ui-palette': { gridColumn: { md: 'span 2' } } });
+// Campaign, the primary ramp as a vertical strip (step 1 at the top), then ink and tint panels.
+const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: 'minmax(0, 2fr) auto minmax(0, 1fr) minmax(0, 1fr)' }, gap: '4' });
 const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
 // Type roles only: kickers, display, headings and figures come from the typography system.
 const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
@@ -71,7 +72,7 @@ const display = css({ textStyle: 'display' });
 const bodyLarge = css({ textStyle: 'body-large' });
 const panelTitle = css({ textStyle: 'heading-1' });
 const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', '& span': { textStyle: 'heading-3' } });
-const rampStrip = css({ width: '100%', alignSelf: 'end' });
+const rampStrip = css({ width: { base: '100%', md: '12' }, alignSelf: 'stretch' });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
 const uiGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' }, gap: '4', alignItems: 'start', '& ui-card > ui-badge': { alignSelf: 'start' } });
@@ -348,7 +349,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           <p className={bodyLarge}>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
           <span className={sectionKicker} style={{ color: sv(accent, 4) }}>An exploration in color &amp; proportion</span>
         </ui-panel>
-        <ui-palette label={`${primary} steps 1 to 12`} className={rampStrip}>
+        <ui-palette label={`${primary} steps 1 to 12`} className={rampStrip} orientation="vertical">
           {Array.from({ length: 12 }, (_, i) => <ui-swatch key={i} color={sv(primary, i + 1)} label={`${primary} ${i + 1}`} />)}
         </ui-palette>
         <ui-panel style={{ background: sv(neutral, 2), color: sv(primary, 12) }}>

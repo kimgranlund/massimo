@@ -3,7 +3,8 @@
 //   at rounded, antialiased edges).
 //   Any CSS color; invalid colors are ignored. Named by `label`, else the color text.
 // <ui-palette>: a strip of swatches with no gaps. With `name` (or `selectable`) it becomes a
-//   horizontal single-select listbox: arrows move, the swatch's color is the form value.
+//   single-select listbox: arrows move, the swatch's color is the form value.
+//   orientation: horizontal (default) | vertical (a column; Up/Down move).
 import { UIElement, UIFormElement, define, signal, type Problem } from '../../core/index.ts';
 import { applyAttrs, navigate, optionAttrs, listboxAttrs, uid } from '../../dom/index.ts';
 
@@ -39,16 +40,19 @@ export class UIPalette extends UIFormElement {
     value: { type: String, default: '' },
     label: { type: String, default: '' },
     selectable: { type: Boolean, default: false, reflect: true },
+    orientation: { type: String, default: 'horizontal', reflect: true },
   };
   declare value: string;
   declare label: string;
   declare selectable: boolean;
+  declare orientation: 'horizontal' | 'vertical';
 
   #active = signal(-1);
   #version = signal(0);
   #mo?: MutationObserver;
 
   get swatches(): UISwatch[] { void this.#version.value; return [...this.children].filter((c) => c.localName === 'ui-swatch') as UISwatch[]; }
+  get #orientation() { return this.orientation === 'vertical' ? 'vertical' as const : 'horizontal' as const; }
   get #isSelectable() { return this.selectable || !!this.name; }
 
   connected() {
@@ -72,7 +76,7 @@ export class UIPalette extends UIFormElement {
       ...optionAttrs({ id: s.id || (s.id = uid('swatch')), selected: s.color === this.value, active: i === active }),
       'aria-label': s.label || s.color,
     }));
-    applyAttrs(this, listboxAttrs({ orientation: 'horizontal', activeId: list[active]?.id, label: this.label, disabled: this.isDisabled, invalid: this.userInvalid }));
+    applyAttrs(this, listboxAttrs({ orientation: this.#orientation, activeId: list[active]?.id, label: this.label, disabled: this.isDisabled, invalid: this.userInvalid }));
   }
 
   formValue() { return this.#isSelectable ? this.value || null : null; }
@@ -92,7 +96,7 @@ export class UIPalette extends UIFormElement {
     if (!this.#isSelectable || this.isDisabled) return;
     const items = this.swatches.map((s) => ({ value: s.color, label: s.label || s.color }));
     const from = this.#active.value >= 0 ? this.#active.value : items.findIndex((i) => i.value === this.value);
-    const i = navigate(items, from, e.key, { orientation: 'horizontal', rtl: getComputedStyle(this).direction === 'rtl' });
+    const i = navigate(items, from, e.key, { orientation: this.#orientation, rtl: getComputedStyle(this).direction === 'rtl' });
     if (i === undefined) return;
     e.preventDefault();
     this.#select(i);

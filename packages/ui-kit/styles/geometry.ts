@@ -151,6 +151,9 @@ export const geometry = defineGlobalStyles({
   'ui-swatch': { display: 'inline-block', width: 'var(--slot)', height: 'var(--slot)', borderRadius: 'calc(var(--u) * var(--ui-radius-scale))', flexShrink: 0 },
   'ui-palette': { display: 'inline-flex', borderRadius: 'calc(2 * var(--u) * var(--ui-radius-scale))', overflow: 'hidden' },
   'ui-palette > ui-swatch': { borderRadius: 0, flex: '1 0 var(--slot)' },
+  // Vertical: a column of swatches; each keeps at least 6u of height and fills the strip's width.
+  'ui-palette[orientation=vertical]': { flexDirection: 'column' },
+  'ui-palette[orientation=vertical] > ui-swatch': { width: 'auto' },
 
   // Swiper: paddles are 8u icon buttons inset 2u; dots are 2u (active 4u) in 4u hit areas.
   'ui-swiper [data-part=paddle]': { position: 'absolute', insetBlockStart: 'calc(50% - 4 * var(--u))' },
