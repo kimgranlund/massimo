@@ -94,12 +94,12 @@ const brandGrid = css({
   [CQ_MD]: {
     gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr) auto',
     '& > :first-child': { gridColumn: '1 / 3' },
-    '& > ui-palette': { gridColumn: '3', gridRow: '1 / 3' },
+    '& > [data-ramp]': { gridColumn: '3', gridRow: '1 / 3' },
   },
   [CQ_LG]: {
     gridTemplateColumns: 'minmax(0, 2fr) auto minmax(0, 1fr) minmax(0, 1fr)',
     '& > :first-child': { gridColumn: 'auto' },
-    '& > ui-palette': { gridColumn: 'auto', gridRow: 'auto' },
+    '& > [data-ramp]': { gridColumn: 'auto', gridRow: 'auto' },
   },
 });
 const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
@@ -112,7 +112,19 @@ const bodyLarge = css({ textStyle: 'body-large' });
 const panelTitle = css({ textStyle: 'heading-2', [CQ_LG]: { textStyle: 'heading-1' } });
 const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', '& span': { textStyle: 'heading-3' } });
 // The strip lies flat when stacked and stands up beside the panels.
-const rampStrip = css({ width: '100%', flexDirection: 'row', '& > ui-swatch': { height: '12' }, [CQ_MD]: { width: '24', flexDirection: 'column', alignSelf: 'stretch', '& > ui-swatch': { height: 'auto' } } });
+// The primary ramp as a legible showcase (not the palette component): every step with its number,
+// and its purpose once there is room. A row of 12 at narrow widths, a tall column from medium up.
+const rampStrip = css({
+  display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', borderRadius: 'xl', overflow: 'hidden',
+  [CQ_MD]: { display: 'flex', flexDirection: 'column', width: '14rem', alignSelf: 'stretch' },
+});
+const rampStep = css({
+  display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '2', minHeight: '3.5rem', padding: '2',
+  textStyle: 'control-small', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
+  '& > span:last-child': { display: 'none' },
+  [CQ_MD]: { flex: '1', minHeight: '2.5rem', alignItems: 'center', paddingInline: '3', '& > span:last-child': { display: 'block', opacity: 0.8 } },
+});
+const RAMP_USE = ['App background', 'Subtle background', 'Element', 'Hovered', 'Active, selected', 'Subtle border', 'Border', 'Strong border', 'Solid', 'Solid hover', 'Muted text', 'Text'];
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const workspaceHead = css({ display: 'flex', alignItems: 'center', gap: '3', flexWrap: 'wrap', '& > div': { flex: '1' } });
 // No holes: cards stretch to their row and the spans tile every width.
@@ -541,9 +553,13 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           <p className={bodyLarge}>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
           <span className={sectionKicker} style={{ color: sv(accent, 4) }}>An exploration in color &amp; proportion</span>
         </ui-panel>
-        <ui-palette label={`${primary} steps 1 to 12`} className={rampStrip} orientation="vertical">
-          {Array.from({ length: 12 }, (_, i) => <ui-swatch key={i} color={sv(primary, i + 1)} label={`${primary} ${i + 1}`} />)}
-        </ui-palette>
+        <div data-ramp className={rampStrip} role="img" aria-label={`${primary} steps 1 to 12`}>
+          {RAMP_USE.map((use, i) => (
+            <div key={i} className={rampStep} style={{ background: sv(primary, i + 1), color: sv(primary, i < 8 ? 12 : 1) }}>
+              <span>{i + 1}</span><span>{use}</span>
+            </div>
+          ))}
+        </div>
         <ui-panel style={{ background: sv(neutral, 2), color: sv(primary, 12) }}>
           <span className={sectionKicker} style={{ color: sv(neutral, 11) }}>Ink &amp; paper <i className={dot} style={{ background: sv(accent, 9) }} /></span>
           <h3 className={panelTitle}>One hue.<br />Room to breathe.</h3>
