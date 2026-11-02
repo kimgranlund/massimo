@@ -640,10 +640,14 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
       <Divider />
       <Section id="voices" title="Faces and voices" note="Faces are the stacks; voices say what text is for; roles point at voices. Repoint a voice with data-font-<voice>=&quot;<face>&quot;.">
         {VOICES.map((v) => (
-          <Row key={v} label={v}>
-            <span className={metrics}>→ {voices[v]} · {VOICE_USE[v]}</span>
-            <span style={{ fontFamily: `var(--font-voice-${v}, var(--fonts-${voices[v]}))`, fontSize: '1.5em', fontVariantNumeric: v === 'numeric' ? 'tabular-nums lining-nums' : undefined }}>{VOICE_SAMPLES[v]}</span>
-          </Row>
+          <div key={v} className={typeRow}>
+            <div className={typeMeta}>
+              <span className={rowLabel}>{v === 'ui' ? 'UI' : v[0].toUpperCase() + v.slice(1)}</span>
+              <span className={metrics}>{v} → {voices[v]}</span>
+              <span className={metrics}>{VOICE_USE[v]}</span>
+            </div>
+            <div style={{ fontFamily: `var(--font-voice-${v}, var(--fonts-${voices[v]}))`, fontSize: '1.5em', lineHeight: 1.3, fontVariantNumeric: v === 'numeric' ? 'tabular-nums lining-nums' : undefined, whiteSpace: v === 'code' ? 'pre' : undefined }}>{VOICE_SAMPLES[v]}</div>
+          </div>
         ))}
       </Section>
       <Divider />
