@@ -18,11 +18,7 @@ const csvFamilies = new Set(read('docs/geometry.csv').split('\n').slice(1).map((
 const geometryCheck = readFileSync(join(KIT, '../../apps/studio/geometry-check.html'), 'utf8');
 // Known gaps on the components that existed when this check landed (2026-11-02). The list is a
 // ratchet: a new component cannot add a gap, and closing one fails the test until it is removed here.
-const KNOWN_GAPS = new Set([
-  'family:component:image',
-  'resolver:field-row', 'csv:field-row',
-  'check:ui-palette', 'check:ui-progress', 'check:ui-swiper', 'check:ui-field', 'check:ui-field-grid',
-]);
+const KNOWN_GAPS = new Set<string>([]);
 const gaps: string[] = [];
 const ladderKeys = new Set([...readFileSync(join(KIT, '../../apps/studio/src/pages/shared.tsx'), 'utf8').matchAll(/^\s{2}(\w+): \(g\) =>/gm)].map((m) => m[1]));
 

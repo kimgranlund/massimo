@@ -225,7 +225,7 @@
     {
       "from": "component:image",
       "relation": "usesGeometry",
-      "to": "geometry:container"
+      "to": "geometry:image"
     },
     {
       "from": "component:image",

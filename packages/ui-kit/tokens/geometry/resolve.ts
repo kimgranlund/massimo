@@ -7,6 +7,7 @@
 //   equal block padding.
 // styles/geometry.ts implements the same formulas in CSS; tests and the browser
 // check (apps/studio/geometry-check.html) keep the two in agreement. Lengths in CSS px.
+import { RATIOS, customRatio } from '../../components/image/ratios.ts';
 
 /** Supported units; control height = 8u. 2..4.5 as before, then every 0.5 up to 12 (96px controls). */
 export const SIZES = [2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
@@ -310,11 +311,59 @@ export function resolveSwatch(input: GeometryInput = {}) {
   return { size: 6 * u, radius: u * x.radiusScale, paletteRadius: 2 * u * x.radiusScale };
 }
 
-/** Swiper controls: icon-only paddles (8u buttons) inset 2u from the edge; 2u dots in 4u hit areas. */
+/** Swiper controls: icon-only paddles (8u buttons) inset 2u from the edge; 2u dots (active 4u wide) in 4u hit areas, u apart, 2u above the bottom. */
 export function resolveSwiper(input: GeometryInput = {}) {
   const x = inputs(input);
   const u = x.unit;
-  return { paddle: 8 * u, paddleInset: 2 * u, dot: 2 * u, dotActive: 4 * u, dotHit: 4 * u, dotsGap: u };
+  // Paddles are fully round (radius = half their height); the dots row sits 2u above the bottom edge.
+  return { paddle: 8 * u, paddleInset: 2 * u, paddleRadius: 4 * u, dot: 2 * u, dotActive: 4 * u, dotRadius: u, dotHit: 4 * u, dotsGap: u, dotsInset: 2 * u };
+}
+
+// ── Field rows ──
+// A field row places a label, a control, a readout and a description (components/field/field.recipe.ts);
+// the control keeps its own geometry. Every length is a multiple of u (Panda spacing and sizes tokens).
+export type FieldRowLayout = 'stacked' | 'inline';
+
+/** ui-field: column gap 2u; row gap 1.5u stacked (label above), 1u inline (description under the control). */
+export function resolveFieldRow(layout: FieldRowLayout = 'stacked', input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return {
+    unit: u,
+    columnGap: 2 * u,
+    rowGap: layout === 'stacked' ? 1.5 * u : u,
+    // Label to its unit suffix: 1u; inline, the unit sits at the label column's end, at least 2u away.
+    unitGap: layout === 'stacked' ? u : 2 * u,
+    readoutMinWidth: 10 * u,
+  };
+}
+
+/** ui-field-grid: shared label | control | readout columns, gaps 2u, label column ≤ 40%, 4u above every heading but the first. */
+export function resolveFieldGrid(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { unit: u, columnGap: 2 * u, rowGap: 2 * u, labelMaxFraction: 0.4, readoutMinWidth: 10 * u, headingSpace: 4 * u };
+}
+
+// ── Image ──
+// ui-image is a square-cornered frame whose height follows its cover ratio
+// (components/image/ratios.ts: presets, or a custom "w/h"); with no or an invalid ratio the frame
+// takes its content's height. A slideshow fills the frame with a swiper (resolveSwiper).
+export const IMAGE_RATIOS: Record<string, number> = Object.fromEntries(Object.entries(RATIOS).map(([k, v]) => [k, ratioValue(v)!]));
+
+function ratioValue(value: string): number | null {
+  const m = /^\s*(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)\s*$/.exec(value);
+  return m && +m[2] > 0 ? +m[1] / +m[2] : null;
+}
+
+/** Frame height for a width (null: no ratio, the content sets it), radius 0, slideshow parts. */
+export function resolveImage(input: GeometryInput & { ratio?: string; width?: number } = {}) {
+  const value = input.ratio ?? '';
+  const ratio = Object.hasOwn(IMAGE_RATIOS, value) ? IMAGE_RATIOS[value] : customRatio(value) ? ratioValue(value) : null;
+  return {
+    ratio,
+    height: ratio && input.width !== undefined ? input.width / ratio : null,
+    radius: 0,
+    slideshow: resolveSwiper(input),
+  };
 }
 
 /** Popup offset from its trigger. */
