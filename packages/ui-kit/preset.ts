@@ -4,7 +4,7 @@
 import { definePreset } from '@pandacss/dev';
 import { tokens, semanticTokens, themeCss } from './tokens/index.ts';
 import { breakpoints } from './tokens/geometry/index.ts';
-import { reset, textStyles, typography, page, prose, geometry, geometryProperties, motion, motionProperties, defaults, pending, pendingKeyframes } from './styles/index.ts';
+import { reset, textStyles, typography, numeric, numericProperties, page, prose, geometry, geometryProperties, motion, motionProperties, defaults, pending, pendingKeyframes } from './styles/index.ts';
 import { conditions as stateConditions } from './styles/conditions.ts';
 import { slotRecipes } from './components/recipes.ts';
 import { containerTags } from './components/container/container.recipe.ts';
@@ -29,8 +29,9 @@ export const uiKitPreset = definePreset({
   // components/container/container.recipe.ts), since no script puts the classes on them.
   globalCss: mergeGlobalCss(...Object.values(globalCssParts)) as any,
   // Derived motion variables registered as <number> (styles/motion.ts); --ui-gap registered as
-  // non-inheriting (styles/geometry.ts).
-  globalVars: { ...motionProperties, ...geometryProperties },
+  // non-inheriting (styles/geometry.ts), the per-axis numeric variables non-inheriting
+  // (styles/typography.ts).
+  globalVars: { ...motionProperties, ...geometryProperties, ...numericProperties },
   // Scheme conditions used by semantic colors: OS preference, plus explicit class overrides.
   // plus the state conditions shared by both renderers (styles/conditions.ts).
   conditions: { osDark: '@media (prefers-color-scheme: dark)', dark: '.dark &', light: '.light &', ...stateConditions },
@@ -43,7 +44,7 @@ export const uiKitPreset = definePreset({
     // Component styles: one slot recipe per component (components/<name>/<name>.recipe.ts).
     slotRecipes,
   },
-  patterns: { page, prose },
+  patterns: { page, prose, numeric },
 });
 
 export default uiKitPreset;
