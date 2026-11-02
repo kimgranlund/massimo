@@ -6,10 +6,23 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ui-kit:build": "npm run build -w @massimo/ui-kit",
+    "ui-kit:test": "npm test -w @massimo/ui-kit",
+    "ui-kit:typecheck": "npm run typecheck -w @massimo/ui-kit"
   },
   "devDependencies": {
+    "@pandacss/dev": "^2.4.0",
+    "@pandacss/preset-base": "^2.4.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "happy-dom": "^21.0.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "typescript": "~7.0.2",
     "vite": "^8.3.5"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

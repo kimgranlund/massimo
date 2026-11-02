@@ -1,0 +1,33 @@
+{
+  "name": "@massimo/ui-kit",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tiny light-DOM web components and React components on one headless layer, styled with PandaCSS.",
+  "exports": {
+    "./core": "./core/index.ts",
+    "./dom": "./dom/index.ts",
+    "./tokens": "./tokens/index.ts",
+    "./styles": "./styles/index.ts",
+    "./preset": "./preset.ts",
+    "./components": "./components/index.ts",
+    "./components/*/element": "./components/*/*.element.ts",
+    "./components/*/react": "./components/*/*.react.tsx",
+    "./styled-system/*": "./styled-system/*",
+    "./css": "./dist/ui-kit.css"
+  },
+  "scripts": {
+    "prepare": "panda codegen",
+    "codegen": "panda codegen",
+    "css": "panda cssgen --outfile dist/ui-kit.css",
+    "build": "panda codegen && panda cssgen --outfile dist/ui-kit.css",
+    "typecheck": "tsc -p .",
+    "test": "node --test test/"
+  },
+  "peerDependencies": {
+    "react": ">=19"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true }
+  }
+}
