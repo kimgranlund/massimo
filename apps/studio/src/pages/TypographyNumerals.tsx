@@ -3,13 +3,15 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { numeric } from '../../styled-system/patterns/index.js';
-import { FACES, NUMERIC_VARIANTS, formatFraction, formatNumber, formatNumberParts, numericStyle, type Face, type FormatNumberOptions } from '@massimo/ui-kit/tokens';
+import { FACES, NUMERIC_VARIANTS, formatFraction, formatFractionParts, formatNumber, formatNumberParts, numericStyle, type Face, type FormatNumberOptions } from '@massimo/ui-kit/tokens';
 import type { FaceMap, VoiceMap } from '../protocol.ts';
 import { FEATURES, detectFeatures, type FeatureStatus, type FeatureTag } from './numerals.ts';
 import { dataTable, groupHead, nameCell, noteCell, stack, subTitle, tableScroller } from './shared.tsx';
 import { tone } from './home/styles.ts';
 
-const sample = css({ fontSize: 'xl', lineHeight: 'tight', whiteSpace: 'nowrap' });
+const sample = css({ fontSize: 'lg', lineHeight: 'tight', whiteSpace: 'nowrap' });
+// Long call expressions wrap so the formatNumber table fits the content width.
+const callCell = css({ whiteSpace: 'normal', minWidth: '[12rem]', wordBreak: 'break-word' });
 const outputCell = css({ fontSize: 'lg' });
 const STATUS: Record<FeatureStatus | 'pending', [string, string]> = {
   supported: ['yes', tone.success], default: ['default', tone.info], single: ['one form', tone.neutral], missing: ['—', tone.neutral], pending: ['…', tone.neutral],
@@ -42,7 +44,9 @@ const NUMBERS: [string, number, FormatNumberOptions][] = [
   ["{ notation: 'compact' }", 1234567, { locale: 'en-US', notation: 'compact' }],
   ["{ grouping: 'narrow' }", 1234567.891, { locale: 'en-US', grouping: 'narrow' }],
 ];
-const FRACTIONS: [string, string][] = [['formatFraction(1.75)', formatFraction(1.75)], ['formatFraction(2.3125)', formatFraction(2.3125)], ['formatFraction(0.375, { vulgar: false })', formatFraction(0.375, { vulgar: false })]];
+// Fractions render from parts: only the fraction sits in the data-numeric="fraction" span, so the
+// sign is never set as a numerator.
+const FRACTIONS: [string, number, { vulgar?: boolean }][] = [['formatFraction(1.75)', 1.75, {}], ['formatFraction(2.3125)', 2.3125, {}], ['formatFraction(−0.375, { vulgar: false })', -0.375, { vulgar: false }]];
 
 /** Parts rendered with the exponent in a <sup> (for faces without superior figures). */
 function Parts({ value, options }: { value: number; options: FormatNumberOptions }) {
@@ -103,7 +107,7 @@ export function Numerals({ voices, faces }: { voices: VoiceMap; faces: FaceMap }
               <th colSpan={2} className={groupHead}>Numeric voice ({voiceFace})</th>
               <th colSpan={cols.length} className={groupHead}>Detected in face</th>
             </tr>
-            <tr><th>Off</th><th>On</th>{cols.map((f) => <th key={f}>{f}{f === voiceFace ? ' · voice' : ''}</th>)}</tr>
+            <tr><th>Off</th><th>On</th>{cols.map((f) => <th key={f}>{f}{f === voiceFace ? <small>voice</small> : null}</th>)}</tr>
           </>,
           FEATURES.map((f) => (
             <tr key={f.tag}>
@@ -123,20 +127,23 @@ export function Numerals({ voices, faces }: { voices: VoiceMap; faces: FaceMap }
               const out = formatNumber(value, options);
               return (
                 <tr key={call}>
-                  <td>{call}</td><td>{String(value)}</td>
+                  <td className={callCell}>{call}</td><td>{String(value)}</td>
                   <td className={cx(outputCell, numeric())}>{out}</td>
                   <td className={cx(outputCell, numeric())}><Parts value={value} options={options} /></td>
                   <td className={noteCell}>{codePoints(out)}</td>
                 </tr>
               );
             })}
-            {FRACTIONS.map(([call, out]) => (
-              <tr key={call}>
-                <td>{call}</td><td>—</td>
-                <td className={cx(outputCell, numeric({ fraction: 'diagonal' }))}>{out}</td><td>—</td>
-                <td className={noteCell}>{codePoints(out)}</td>
-              </tr>
-            ))}
+            {FRACTIONS.map(([call, value, options]) => {
+              const p = formatFractionParts(value, options);
+              return (
+                <tr key={call}>
+                  <td className={callCell}>{call}</td><td>{String(value)}</td>
+                  <td className={cx(outputCell, numeric())}>{p.sign}{p.whole}<span className={numeric({ fraction: 'diagonal' })}>{p.fraction}</span></td><td>—</td>
+                  <td className={noteCell}>{codePoints(formatFraction(value, options))}</td>
+                </tr>
+              );
+            })}
           </>)}
       </div>
     </>

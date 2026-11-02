@@ -121,3 +121,11 @@ test('formatFraction: nearest fraction, precomposed where Unicode has one', () =
   assert.equal(formatFraction(0.5, { vulgar: false }), '1⁄2');
   assert.equal(formatFraction(0.66, { maxDenominator: 3 }), '⅔');
 });
+
+test('formatFractionParts keeps the sign outside the fraction (frac would set a minus as numerator)', async () => {
+  const { formatFractionParts, formatFraction } = await import('../tokens/typography/format.ts');
+  assert.deepEqual(formatFractionParts(-0.375, { vulgar: false }), { sign: '−', whole: '', fraction: '3⁄8' });
+  assert.deepEqual(formatFractionParts(-2.3125), { sign: '−', whole: '2 ', fraction: '5⁄16' });
+  assert.equal(formatFraction(-2.3125), '−2 5⁄16', 'the string form is unchanged');
+  assert.deepEqual(formatFractionParts(3), { sign: '', whole: '3', fraction: '' });
+});

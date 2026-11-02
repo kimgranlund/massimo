@@ -90,7 +90,10 @@ export interface FormatFractionOptions {
  * A mixed number: `1¾`, or `2 5⁄16` with U+2044 FRACTION SLASH (which `data-numeric="fraction"`
  * turns into a built-up fraction where the face has `frac`) and a narrow no-break space before it.
  */
-export function formatFraction(value: number, options: FormatFractionOptions = {}): string {
+/** The parts of a mixed number: render `fraction` in a `data-numeric="fraction"` span and keep
+ * `sign` and `whole` outside it. Faces with `frac` (e.g. system-ui in Chrome) treat any figure-like
+ * glyph before the slash as numerator, so a minus inside the span is set as a superscript. */
+export function formatFractionParts(value: number, options: FormatFractionOptions = {}): { sign: string; whole: string; fraction: string } {
   const { maxDenominator = 16, vulgar = true, minus = true } = options;
   const sign = value < 0 ? (minus ? MINUS : '-') : '';
   const abs = Math.abs(value);
@@ -101,9 +104,15 @@ export function formatFraction(value: number, options: FormatFractionOptions = {
   }
   let [n, d] = best;
   if (n === d) { whole += 1; n = 0; }
-  if (n === 0) return `${sign}${whole}`;
+  if (n === 0) return { sign, whole: String(whole), fraction: '' };
   const key = `${n}/${d}`;
   const f = vulgar && VULGAR[key] ? VULGAR[key] : `${n}${FRACTION_SLASH}${d}`;
-  if (whole === 0) return `${sign}${f}`;
-  return `${sign}${whole}${f.includes(FRACTION_SLASH) ? NARROW_NBSP : ''}${f}`;
+  if (whole === 0) return { sign, whole: '', fraction: f };
+  return { sign, whole: `${whole}${f.includes(FRACTION_SLASH) ? NARROW_NBSP : ''}`, fraction: f };
+}
+
+/** A mixed number as one string: `1¾`, `2 5⁄16`, `−⅜`. For styled output use formatFractionParts. */
+export function formatFraction(value: number, options: FormatFractionOptions = {}): string {
+  const p = formatFractionParts(value, options);
+  return `${p.sign}${p.whole}${p.fraction}`;
 }
