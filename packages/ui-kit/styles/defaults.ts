@@ -7,7 +7,9 @@ export const defaults = defineGlobalStyles({
   '[hidden]': { display: 'none !important' },
   // Icons: <i name="…"> filled by the icon runtime. 1em by default; slots size them to --icon.
   // The box is reserved before the SVG arrives, so nothing shifts.
-  'i[name]': { display: 'inline-flex', width: '1em', height: '1em', flexShrink: 0, fontStyle: 'normal', lineHeight: 1 },
+  // A bare icon (in text, a callout, a heading) follows the icon formula against the font around it:
+  // font + k·u (k from [icon-size], md by default). Components size their slotted icons with --icon.
+  'i[name]': { display: 'inline-flex', width: 'calc(1em + var(--ui-icon-k) * var(--ui-unit) * 1px)', height: 'calc(1em + var(--ui-icon-k) * var(--ui-unit) * 1px)', flexShrink: 0, fontStyle: 'normal', lineHeight: 1 },
   'i[name] > svg': { width: '100%', height: '100%' },
 
   // Forced colors (Windows high contrast): fills are dropped and borders default to 0, so
