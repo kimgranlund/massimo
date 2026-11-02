@@ -1,10 +1,15 @@
-// <ui-swatch color="…">: a 6u color chip over a checkerboard (alpha shows through).
+// <ui-swatch color="…">: a 6u color chip. Translucent or missing colors get data-alpha and sit on a
+//   checkerboard; opaque ones paint a single layer (a checkerboard under an opaque color fringes
+//   at rounded, antialiased edges).
 //   Any CSS color; invalid colors are ignored. Named by `label`, else the color text.
 // <ui-palette>: a strip of swatches with no gaps. With `name` (or `selectable`) it becomes a
 //   horizontal single-select listbox: arrows move, the swatch's color is the form value.
 import { UIElement, UIFormElement, define, signal, type Problem } from '../../core/index.ts';
 import { applyAttrs, navigate, optionAttrs, listboxAttrs, uid } from '../../dom/index.ts';
 
+// Translucent: transparent/currentcolor-free keywords, an alpha channel (`/ a`, rgba/hsla, #rgba, #rrggbbaa).
+const TRANSLUCENT = /transparent|rgba\(|hsla\(|\/\s*[\d.]+%?\s*\)|#(?:[0-9a-f]{4}|[0-9a-f]{8})\b/i;
+export const isTranslucent = (c: string) => TRANSLUCENT.test(c);
 const validColor = (c: string) => !!c && (typeof CSS === 'undefined' || !CSS.supports || CSS.supports('color', c));
 
 export class UISwatch extends UIElement {
@@ -24,6 +29,7 @@ export class UISwatch extends UIElement {
       applyAttrs(this, { role: 'img', 'aria-label': this.label || this.color || undefined });
     }
     this.toggleAttribute('data-invalid', !!this.color && !ok);
+    this.toggleAttribute('data-alpha', !ok || isTranslucent(this.color));
   }
 }
 

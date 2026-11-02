@@ -137,15 +137,17 @@ export function resolveComposite(input: GeometryInput & { container?: boolean } 
 
 /** Text fields: the editable text sits where button contents sit (padding + 1u). */
 export function resolveField(input: GeometryInput = {}) {
-  const c = resolveControl(input);
-  return { ...c, paddingStart: c.padding + c.contents.paddingInline, paddingEnd: c.padding + c.contents.paddingInline };
+  // Text sits exactly where a button label with no slots sits: padding + 2u each side.
+  const c = resolveControl(input), label = resolveButtonContents(false, false, input);
+  return { ...c, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end };
 }
 
 /** Select trigger: value as contents, chevron in a trailing 6u slot. */
 export function resolveSelectTrigger(input: GeometryInput = {}) {
-  const c = resolveControl(input);
+  // Laid out as a button with a trailing slot: padding + 2u, value, 1u, 6u chevron slot, padding.
+  const c = resolveControl(input), label = resolveButtonContents(false, true, input);
   // The chevron (like every caret) is icon size sm.
-  return { ...c, paddingStart: c.padding + c.contents.paddingInline, paddingEnd: c.padding, chevronSlot: c.slot, chevronIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot) };
+  return { ...c, paddingStart: c.padding + label.start, valueGap: label.end, paddingEnd: c.padding, chevronSlot: c.slot, chevronIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot) };
 }
 
 // ── Badge / tag / chip ──

@@ -103,6 +103,12 @@ test('swatch and selectable palette', async () => {
   assert.equal(sw.getAttribute('role'), 'img');
   assert.equal(sw.getAttribute('aria-label'), 'Red');
   assert.equal(sw.style.getPropertyValue('--ui-swatch-color'), '#ff0000');
+  assert.equal(sw.hasAttribute('data-alpha'), false, 'opaque color: no checkerboard layer');
+  for (const c of ['#ff000080', 'rgb(0 0 0 / 50%)', 'rgba(0,0,0,.5)', 'transparent', 'oklch(0.5 0.1 200 / 0.3)']) {
+    sw.color = c; await Promise.resolve();
+    assert.equal(sw.hasAttribute('data-alpha'), true, c);
+  }
+  sw.color = '#ff0000'; await Promise.resolve();
   assert.equal(pal.getAttribute('role'), 'listbox');
   assert.equal(pal.swatches[2].getAttribute('aria-selected'), 'true');
   key(pal, 'Home'); await tick();

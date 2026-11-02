@@ -18,8 +18,8 @@ control.icon.lg,control,icons in slots,icon lg,"min(font + 1.5u, 6u)",12,13.5,15
 control.icon.fill,control,icons in slots,icon fill,6u,12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,"object-fit cover, centered"
 control.radius,control,"button, input, select",radius,"min(3u * s, 4u)",6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,"soft curvature, capped at half height"
 control.fill.radius,control,fill slot,fill slot radius,"max(0, radius - u)",4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,nested inside the control radius
-field.paddingInline,control,input,text inline padding,(u - B) + u,4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,text sits where button contents sit
-select.paddingStart,control,select trigger,start padding,(u - B) + u,4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
+field.paddingInline,control,input,text inline padding,(u - B) + 2u,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,"text sits where a slotless button label sits; select: same start, 1u before the 6u chevron slot, then u - B"
+select.paddingStart,control,select trigger,start padding,(u - B) + u,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
 select.paddingEnd,control,select trigger,end padding,u - B,2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,chevron occupies a trailing 6u slot
 select.chevron.icon,control,select trigger,chevron icon,"icon sm: min(font - 0.5u, 6u)",11,11.125,11.25,11.5,11.75,12,12.25,12.5,12.75,13,13.25,13.5,13.75,14,14.25,14.5,14.75,15,15.25,15.5,15.75,16,implemented,all caret-* icons in slots use sm
 select.popupOffset,control,select popup,offset from trigger,u,2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,

@@ -48,11 +48,13 @@ test('curvature: soft 3u, capped at half height, scaled', () => {
   assert.equal(resolveControl({ radiusScale: 0 }).radius, 0);
 });
 
-test('fields and select trigger put text where button contents sit', () => {
+test('fields and select trigger use button geometry: text where a button label sits', () => {
   const f = resolveField({ border: 1 });
-  assert.deepEqual([f.paddingStart, f.paddingEnd], [3 + 4, 3 + 4]);
+  assert.deepEqual([f.paddingStart, f.paddingEnd], [3 + 8, 3 + 8], 'padding + 2u, as a slotless button label');
   const t = resolveSelectTrigger({ border: 1 });
-  assert.deepEqual([t.paddingStart, t.paddingEnd, t.chevronSlot, t.chevronIcon], [7, 3, 24, 12]);
+  assert.deepEqual([t.paddingStart, t.valueGap, t.chevronSlot, t.paddingEnd, t.chevronIcon], [11, 4, 24, 3, 12], 'button with a trailing slot');
+  const b = resolveButtonContents(false, true, { border: 1 });
+  assert.equal(t.paddingStart, f.padding + b.start);
 });
 
 test('composite: 0.5u padding level; one-row segmented is always 8u; options keep the 3u control radius', () => {

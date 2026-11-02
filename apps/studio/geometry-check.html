@@ -74,6 +74,8 @@ for (const c of cases) {
     'select.height': [r2(rect(tr).height), trg.height],
     'select.paddingStart': [px(cs(tr).paddingLeft), trg.paddingStart],
     'select.paddingEnd': [px(cs(tr).paddingRight), trg.paddingEnd],
+    'select.valueGap': [px(cs(tr.querySelector('[data-part=chevron]')).marginLeft), trg.valueGap],
+    'input.paddingEnd': [px(cs(inp).paddingRight), fld.paddingEnd],
     'select.chevron.icon': [r2(rect(tr.querySelector('[data-part=chevron] > i')).width), trg.chevronIcon],
     'button.caret.icon': [r2(rect(caretBtn.querySelector('i[name=caret-down]')).width), trg.chevronIcon],
     'segmented.height': [r2(rect(seg).height), cmp.rowHeight],

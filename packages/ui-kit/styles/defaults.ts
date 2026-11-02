@@ -47,9 +47,9 @@ export const defaults = defineGlobalStyles({
   [`${FIELD} > [data-part=description]`]: { textStyle: 'caption', color: 'fg.muted' },
   [`${FIELD} > [data-part=error]`]: { textStyle: 'caption', color: 'danger.fg' },
   [CONTROL]: {
-    // Text sits where button contents sit: padding + 1u.
+    // Text sits where a slotless button label sits: padding + 2u (resolveField).
     display: 'flex', alignItems: 'center', width: '100%', height: 'var(--h)',
-    paddingInline: 'calc(var(--pad) + var(--u))', borderWidth: 'var(--b)', borderColor: 'border.strong',
+    paddingInline: 'calc(var(--pad) + 2 * var(--u))', borderWidth: 'var(--b)', borderColor: 'border.strong',
     borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
   },
   // aria-invalid only: native :invalid would flag untouched required fields on load.
@@ -72,7 +72,7 @@ export const defaults = defineGlobalStyles({
   '[data-part=control][data-secret]': { WebkitTextSecurity: 'disc' },
 
   // Select trigger and popup
-  // Trailing chevron slot: padding only on that side (the slot replaces contents padding).
+  // A button with a trailing slot (resolveSelectTrigger): padding + 2u, value, 1u, chevron slot, padding.
   'ui-select > [data-part=trigger]': { cursor: 'pointer', userSelect: 'none', paddingInlineEnd: 'var(--pad)' },
   // Open: the trigger holds the pressed fill and the chevron turns.
   'ui-select > [data-part=trigger][aria-expanded=true]': { bg: 'bg.mutedActive' },
@@ -137,14 +137,18 @@ export const defaults = defineGlobalStyles({
   },
 
   // Swatch, palette
-  'ui-swatch': {
-    backgroundColor: 'var(--ui-swatch-color, transparent)',
-    // Checkerboard under the color so alpha reads; the color layer sits on top.
+  // Opaque colors paint one layer; translucent or missing ones (data-alpha) sit on a checkerboard.
+  'ui-swatch': { backgroundColor: 'var(--ui-swatch-color, transparent)' },
+  'ui-swatch[data-alpha]': {
     backgroundImage: 'linear-gradient(var(--ui-swatch-color, transparent), var(--ui-swatch-color, transparent)), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)',
     backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))',
   },
+
   // A color that does not parse: a diagonal strike over the empty checkerboard.
-  'ui-swatch[data-invalid]': { backgroundImage: 'linear-gradient(to top right, transparent calc(50% - 1px), var(--colors-danger-solid) 0 calc(50% + 1px), transparent 0), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)' },
+  'ui-swatch[data-invalid]': { backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))', backgroundImage: 'linear-gradient(to top right, transparent calc(50% - 1px), var(--colors-danger-solid) 0 calc(50% + 1px), transparent 0), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)' },
+  // A subtle edge drawn over the swatches (no space, follows the strip's radius).
+  'ui-palette': { position: 'relative' },
+  'ui-palette::after': { content: '""', position: 'absolute', inset: 0, borderRadius: 'inherit', boxShadow: 'inset 0 0 0 1px var(--colors-border)', pointerEvents: 'none' },
   'ui-palette[selectable], ui-palette[name]': { cursor: 'pointer' },
   ':is(ui-palette[selectable], ui-palette[name]):not([aria-disabled=true]) > ui-swatch:not([aria-selected=true]):hover': { boxShadow: 'inset 0 0 0 2px color-mix(in oklch, var(--colors-bg) 70%, transparent)' },
   'ui-palette > ui-swatch[aria-selected=true]': { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
