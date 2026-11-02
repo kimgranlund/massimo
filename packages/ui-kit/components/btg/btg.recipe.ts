@@ -2,27 +2,25 @@
 // ladder and the local unit u′ (--lu, --pad, --slot, --radius) are geometry variables
 // (styles/geometry.ts, resolveBtg); these recipes only say where they apply.
 import { defineSlotRecipe } from '@pandacss/dev';
-import { FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, adornment, iconSlot, t, textRun } from '../recipe-parts.ts';
+import { FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, constructionPattern, t } from '../recipe-parts.ts';
 
 const SLOTS = ['root', 'leading', 'prefix', 'contents', 'suffix', 'trailing'] as const;
 
 /** The shared base: host box and the construction-pattern parts in the local unit u′. */
 function btgBase(text: Record<string, any>, adornColor: boolean) {
-  const run = textRun('var(--lu)', text.bare ?? 'var(--lu)', text.base, 'calc(0.25 * var(--lu))');
   return {
     root: {
       display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent',
       height: 'var(--h)', minWidth: 'var(--h)', borderWidth: 'var(--b)', borderRadius: 'var(--radius)',
       fontFamily: UI_FONT, fontSize: 'var(--font)', padding: 'var(--pad)',
       [FORCED]: { _disabled: { color: 'GrayText' } },
+      // Labels carry 1u′ on both sides (beside a slot too), text parts 0.25u′ + 0.25u′ apart. Icon
+      // slots are height − u′ square; fill artwork (avatars) nests inside the 0.5u′ edge.
+      ...constructionPattern({
+        slot: 'var(--lu)', bare: text.bare ?? 'var(--lu)', between: 'calc(0.25 * var(--lu))', text: text.base,
+        fillRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--lu)))', adornColor,
+      }),
     },
-    // Icon containers have a set size: the slot (height − u′) in both directions, glyph centered;
-    // fill artwork (avatars) nests inside the 0.5u′ edge.
-    leading: iconSlot('max(0px, calc(var(--radius) - 0.5 * var(--lu)))'),
-    trailing: iconSlot('max(0px, calc(var(--radius) - 0.5 * var(--lu)))'),
-    prefix: { ...run, ...adornment(adornColor) },
-    contents: run,
-    suffix: { ...run, ...adornment(adornColor) },
   };
 }
 

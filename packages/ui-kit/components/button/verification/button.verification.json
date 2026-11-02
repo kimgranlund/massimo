@@ -26,11 +26,11 @@
     },
     {
       "path": "components/button/button.recipe.ts",
-      "sha256": "8063d6a92e9a8c0a35b4fed62be61a6d68c9370a1faaa0c8ede280ff7931fa9f"
+      "sha256": "445774b3cf8e4de455212ae91a8bfd4192ab792d07ec8cf3f4195b7906807e84"
     },
     {
       "path": "components/recipe-parts.ts",
-      "sha256": "19ca61475b75a8365f0647f31e029754836d2f8c0941b069a05d77dd7ebbbc85"
+      "sha256": "c8eb1aea6e697c1756ed3e81f5f72012f7ccc5201befffc3801024b636d72bdb"
     },
     {
       "path": "components/classes.ts",

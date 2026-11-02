@@ -14,14 +14,9 @@ const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select
 
 export const motion = defineGlobalStyles({
   // Hover, press, selection and validity: color and shadow (feedback).
-  [`${CONTROL}, ui-option, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-palette > ui-swatch`]: {
+  [`${CONTROL}, ui-option`]: {
     transition: t('feedback', ...PAINT),
   },
-
-  // Switch thumb and radio dot: toggle, with a hint of overshoot.
-  'ui-switch [data-part=box]::after': { transition: `${t('toggle', 'translate')}, ${t('feedback', 'background-color')}` },
-  'ui-radio [data-part=box]::after': { transition: t('toggle', 'background-color', 'scale') },
-  'ui-radio:not([aria-checked=true]) [data-part=box]::after': { scale: 0.4 },
 
   // Select: the chevron turns; the popup fades and grows from its trigger edge.
   'ui-select > [data-part=trigger] > [data-part=trailing]': { transition: t('toggle', 'rotate') },
@@ -32,11 +27,6 @@ export const motion = defineGlobalStyles({
   },
   'ui-select > [data-part=popup]:popover-open': { opacity: 1, scale: 1 },
   '@starting-style': { 'ui-select > [data-part=popup]:popover-open': { opacity: 0, scale: 0.97 } },
-
-  // Range: the thumb and fill glide on keyboard steps; while dragging (:active) they track 1:1.
-  'ui-range:not(:active) > [data-part=thumb]': { transition: `${t('toggle', 'margin-inline-start')}, ${t('feedback', 'box-shadow')}` },
-  'ui-range:not(:active) > [data-part=track] > [data-part=fill]': { transition: `${t('toggle', 'width')}, ${t('feedback', 'background-color')}` },
-  'ui-progress:not([data-indeterminate]) > [data-part=track] > [data-part=fill]': { transition: t('reveal', 'width') },
 
   // Swiper: the active dot stretches; hover controls fade.
   'ui-swiper [data-part=dot]::before': { transition: t('toggle', 'width', 'opacity') },

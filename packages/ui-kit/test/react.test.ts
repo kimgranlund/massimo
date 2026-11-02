@@ -9,26 +9,30 @@ const { Checkbox, Radio, Switch } = await loadTsx(new URL('../components/choice/
 const { Range, Progress } = await loadTsx(new URL('../components/range/range.react.tsx', import.meta.url));
 
 const html = (el: any) => renderToStaticMarkup(el);
+/** Markup without class attributes: structure assertions; recipe classes are asserted separately. */
+const bare = (el: any) => html(el).replace(/ class="[^"]*"/g, '');
 const noCustom = (s: string) => assert.doesNotMatch(s, /<ui-/, 'no custom elements in React output');
 
 test('Checkbox, Radio, Switch: native input inside a data-ui label with the construction pattern', () => {
-  const cb = html(h(Checkbox, { name: 'terms', defaultChecked: true, prefix: '#', suffix: '(2)' }, 'Accept'));
+  const cb = bare(h(Checkbox, { name: 'terms', defaultChecked: true, prefix: '#', suffix: '(2)' }, 'Accept'));
   assert.match(cb, /^<label data-ui="checkbox"/);
   assert.match(cb, /<input type="checkbox" name="terms" checked=""/);
   assert.match(cb, /<span data-part="leading"><span data-part="box" aria-hidden="true"><i name="check-bold" data-mark="checked"><\/i><i name="minus-bold" data-mark="mixed"><\/i><\/span><\/span><span data-part="prefix">#<\/span><span data-part="contents">Accept<\/span><span data-part="suffix">\(2\)<\/span>/);
   noCustom(cb);
-  assert.match(html(h(Switch, {}, 'Wi-Fi')), /<input type="checkbox" role="switch"/);
-  assert.match(html(h(Radio, { name: 'plan', value: 'pro' }, 'Pro')), /<input type="radio" name="plan" value="pro"/);
-  assert.match(html(h(Checkbox, { invalid: true }, 'x')), /data-invalid="true".*aria-invalid="true"/);
+  assert.match(bare(h(Switch, {}, 'Wi-Fi')), /<input type="checkbox" role="switch"/);
+  assert.match(bare(h(Radio, { name: 'plan', value: 'pro' }, 'Pro')), /<input type="radio" name="plan" value="pro"/);
+  assert.match(bare(h(Checkbox, { invalid: true }, 'x')), /data-invalid="true".*aria-invalid="true"/);
 });
 
 test('Range and Progress: native input/progress with track, fill, thumb and --ui-ratio', () => {
-  const r = html(h(Range, { defaultValue: 25, label: 'Volume', name: 'vol' }));
+  const r = bare(h(Range, { defaultValue: 25, label: 'Volume', name: 'vol' }));
   assert.match(r, /^<div data-ui="range" style="--ui-ratio:0.25">/);
   assert.match(r, /<span data-part="track"><span data-part="fill"><\/span><\/span><span data-part="thumb"><\/span><input type="range" min="0" max="100" step="1" aria-label="Volume" name="vol" value="25"\/>/);
   noCustom(r);
-  assert.match(html(h(Progress, { value: 40, label: 'Upload' })), /--ui-ratio:0.4.*<progress max="100" aria-label="Upload" value="40"><\/progress>/);
-  assert.match(html(h(Progress, {})), /data-indeterminate="true"/);
+  assert.match(bare(h(Progress, { value: 40, label: 'Upload' })), /--ui-ratio:0.4.*<progress max="100" aria-label="Upload" value="40"><\/progress>/);
+  assert.match(bare(h(Progress, {})), /data-indeterminate="true"/);
+  assert.match(html(h(Range, {})), /class="ui-range__root".*class="ui-range__track"><span data-part="fill" class="ui-range__fill">.*class="ui-range__thumb"/);
+  assert.match(html(h(Progress, {})), /class="ui-progress__root".*class="ui-progress__track"><span data-part="fill" class="ui-progress__fill">/);
 });
 
 const { Badge, Tag, Chip } = await loadTsx(new URL('../components/btg/btg.react.tsx', import.meta.url));
@@ -47,13 +51,14 @@ test('Badge, Tag, Chip: data-ui hosts with the construction pattern; Chip is a n
 });
 
 test('Swatch and Palette: role=img swatches; a selectable palette is a radio group of native radios', () => {
-  assert.match(html(h(Swatch, { color: '#3366ff', label: 'Blue' })), /data-ui="swatch" role="img" aria-label="Blue" style="--ui-swatch-color:#3366ff"/);
-  assert.match(html(h(Swatch, { color: 'rgb(255 0 0 / 40%)' })), /data-alpha="true"/);
-  const p = html(h(Palette, { name: 'accent', defaultValue: '#22aa66', label: 'Accent' }, h(Swatch, { color: '#3366ff' }), h(Swatch, { color: '#22aa66' })));
+  assert.match(bare(h(Swatch, { color: '#3366ff', label: 'Blue' })), /data-ui="swatch" role="img" aria-label="Blue" style="--ui-swatch-color:#3366ff"/);
+  assert.match(bare(h(Swatch, { color: 'rgb(255 0 0 / 40%)' })), /data-alpha="true"/);
+  const p = bare(h(Palette, { name: 'accent', defaultValue: '#22aa66', label: 'Accent' }, h(Swatch, { color: '#3366ff' }), h(Swatch, { color: '#22aa66' })));
   assert.match(p, /data-ui="palette" data-selectable="true" role="radiogroup" aria-label="Accent"/);
   const checked = p.match(/<label data-ui="swatch" style="--ui-swatch-color:#22aa66"><input [^>]*>/)?.[0] ?? '';
   for (const a of ['type="radio"', 'name="accent"', 'value="#22aa66"', 'aria-label="#22aa66"', 'checked=""']) assert.ok(checked.includes(a), `${a} in ${checked}`);
-  assert.match(html(h(Palette, { orientation: 'vertical' }, h(Swatch, { color: '#eee' }))), /role="group".*data-ui="swatch" role="img"/);
+  assert.match(bare(h(Palette, { orientation: 'vertical' }, h(Swatch, { color: '#eee' }))), /role="group".*data-ui="swatch" role="img"/);
+  assert.match(html(h(Palette, { name: 'p', orientation: 'vertical' }, h(Swatch, { color: '#eee' }))), /class="ui-palette__root ui-palette__root--orientation_vertical ui-palette__root--selectable_true".*<label class="ui-swatch__root"/);
   noCustom(p);
 });
 

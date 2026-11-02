@@ -8,13 +8,11 @@ import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 import { RATIOS } from '../components/image/ratios.ts';
 import { voiceFamily } from './typography.ts';
 
-const UI_VOICE = ':is(ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option, ui-checkbox, ui-radio, ui-switch, ui-range, ui-palette)';
+const UI_VOICE = ':is(ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option)';
 
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
-const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
-const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-radio[aria-checked=true], ui-switch[aria-checked=true])';
-const LIST = ':is(ui-listbox, ui-segmented, ui-palette)';
+const LIST = ':is(ui-listbox, ui-segmented)';
 // A field state on the host itself (select trigger) or on its text part (input contents).
 const HAS = (attr: string) => `${attr}, :has(> ${attr})`;
 // oklab, not oklch: a hue mix with the blue-grey neutral would swing the red through blue.
@@ -52,14 +50,14 @@ export const defaults = defineGlobalStyles({
   // The ring sits on the control (the shape), not the text part inside it.
   [`:root[data-modality] :is(ui-input, [data-ui=input]) > [data-part=control]:focus-within`]: { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
   [`:is(ui-input, [data-ui=input]) > [data-part=control] > [data-part=contents]:focus-visible`]: { outline: 'none' },
-  // Required: a marker after the label (and after a checkbox/switch's own text).
+  // Required: a marker after the label (choices draw theirs in choice.recipe.ts).
   // hide-label: the label stays the control's accessible name but is not drawn (visually hidden,
   // out of flow, so the field keeps no gap for it).
   [`${FIELD}:is([hide-label], [data-hide-label]) > [data-part=label]`]: {
     position: 'absolute', width: '1px', height: '1px', margin: '-1px', padding: 0, overflow: 'hidden',
     clipPath: 'inset(50%)', whiteSpace: 'nowrap', border: 0,
   },
-  [`${FIELD}[required] > [data-part=label]::after, :is(ui-checkbox, ui-switch)[aria-required=true]::after`]: { content: '" *"', color: 'critical.fg' },
+  [`${FIELD}[required] > [data-part=label]::after`]: { content: '" *"', color: 'critical.fg' },
   [`:is(${CONTROL}):is(${HAS('[aria-disabled=true]')}, :has(> :disabled))`]: { opacity: 0.5, cursor: 'not-allowed' },
   [`:is(${CONTROL}) > [data-part=contents]::placeholder`]: { color: 'fg.subtle' },
 
@@ -78,7 +76,7 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.subtle' },
   'ui-select > [data-part=trigger] > [data-part=trailing]': { color: 'fg.muted' },
   // Prefix / suffix adornments: the label's color at 65%, so they read as secondary on any fill.
-  ':is(ui-option, ui-checkbox, ui-radio, ui-switch, ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
+  ':is(ui-option, ui-select > [data-part=trigger], :is(ui-input, [data-ui=input]) > [data-part=control]) > :is([data-part=prefix], [data-part=suffix])': {
     color: 'color-mix(in oklch, currentColor 65%, transparent)',
   },
   // Icons in field adornment slots are secondary too.
@@ -104,57 +102,6 @@ export const defaults = defineGlobalStyles({
   // The column layout holds in every state: while closing, the popup stays displayed for its fade
   // (display transitions discretely), so a direction set only on :popover-open would flip it to a row.
   'ui-select > [data-part=popup]:popover-open': { display: 'flex' },
-
-  // Checkbox, radio, switch
-  ':is(ui-checkbox, ui-radio, ui-switch)': { display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle' },
-  ':is(ui-checkbox, ui-radio, ui-switch)[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
-  '[data-part=box]': { borderColor: 'border.strong', bg: 'bg.muted', color: 'fg.onSolid' },
-  [`${CHOICE}:not([aria-disabled=true]):hover [data-part=box]`]: { bg: 'bg.mutedHover' },
-  [`${CHOICE}:not([aria-disabled=true]):active [data-part=box]`]: { bg: 'bg.mutedActive' },
-  [`${CHOICE}[aria-invalid=true] [data-part=box]`]: { borderColor: 'critical.solid', bg: CRITICAL_TINT(20) },
-  'ui-checkbox [data-part=box] > i': { display: 'none' },
-  'ui-checkbox[aria-checked=true] [data-part=box] > i[data-mark=checked], ui-checkbox[aria-checked=mixed] [data-part=box] > i[data-mark=mixed]': { display: 'inline-flex' },
-  // On: every choice fills with the primary solid; its indicator (check, radio dot) uses the contrast color.
-  [`${ON} [data-part=box]`]: { bg: 'primary.solid', borderColor: 'primary.solid' },
-  [`${ON}:not([aria-disabled=true]):is(:hover, :active) [data-part=box]`]: { bg: 'primary.solidHover', borderColor: 'primary.solidHover' },
-  'ui-radio[aria-checked=true] [data-part=box]::after': { bg: 'fg.onSolid' },
-  'ui-switch [data-part=box]': { bg: 'bg.muted' },
-  'ui-switch [data-part=box]::after': { bg: 'white', boxShadow: 'sm' },
-
-  // Range, progress
-  ':is(ui-range, ui-progress) > [data-part=track]': { bg: 'bg.muted' },
-  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { bg: 'primary.solid' },
-  'ui-range': { cursor: 'pointer', touchAction: 'none', userSelect: 'none' },
-  'ui-range[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
-  'ui-range > [data-part=thumb]': { bg: 'white', borderWidth: 'var(--b)', borderColor: 'primary.solid', boxShadow: 'sm' },
-  'ui-range:not([aria-disabled=true]):hover > [data-part=track]': { bg: 'bg.mutedHover' },
-  'ui-range:not([aria-disabled=true]):hover > [data-part=track] > [data-part=fill]': { bg: 'primary.solidHover' },
-  // Dragging (:active holds while the pointer is captured).
-  'ui-range:not([aria-disabled=true]):active': { cursor: 'grabbing' },
-  'ui-range:not([aria-disabled=true]):active > [data-part=thumb]': { boxShadow: 'md' },
-  'ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill]': { width: '30%', animation: 'ui-indeterminate 1.2s ease-in-out infinite' },
-  // Reduced motion: no sweep; a full, faint fill still says "working".
-  '@media (prefers-reduced-motion: reduce)': {
-    'ui-progress[data-indeterminate] > [data-part=track] > [data-part=fill]': { animation: 'none', width: '100%', translate: 'none', opacity: 0.4 },
-  },
-
-  // Swatch, palette
-  // Opaque colors paint one layer; translucent or missing ones (data-alpha) sit on a checkerboard.
-  'ui-swatch': { backgroundColor: 'var(--ui-swatch-color, transparent)' },
-  'ui-swatch[data-alpha]': {
-    backgroundImage: 'linear-gradient(var(--ui-swatch-color, transparent), var(--ui-swatch-color, transparent)), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)',
-    backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))',
-  },
-
-  // A color that does not parse: a diagonal strike over the empty checkerboard.
-  'ui-swatch[data-invalid]': { backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))', backgroundImage: 'linear-gradient(to top right, transparent calc(50% - 1px), var(--colors-critical-solid) 0 calc(50% + 1px), transparent 0), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)' },
-  // A subtle edge drawn over the swatches (no space, follows the strip's radius).
-  'ui-palette': { position: 'relative' },
-  'ui-palette::after': { content: '""', position: 'absolute', inset: 0, borderRadius: 'inherit', boxShadow: 'inset 0 0 0 1px var(--colors-border)', pointerEvents: 'none' },
-  'ui-palette[selectable], ui-palette[name]': { cursor: 'pointer' },
-  ':is(ui-palette[selectable], ui-palette[name]):not([aria-disabled=true]) > ui-swatch:not([aria-selected=true]):hover': { boxShadow: 'inset 0 0 0 2px color-mix(in oklch, var(--colors-bg) 70%, transparent)' },
-  'ui-palette > ui-swatch[aria-selected=true]': { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
-  ':root[data-modality=keyboard] ui-palette > ui-swatch[data-active]': { outline: '2px solid {colors.focusRing}', outlineOffset: '-2px' },
 
   // Swiper (scroll-snap viewport; controls positioned in styles/geometry.ts)
   'ui-swiper': { display: 'block', position: 'relative' },
@@ -213,19 +160,16 @@ export const defaults = defineGlobalStyles({
   'ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'primary.subtleHover' },
   'ui-segmented > ui-option:not([aria-disabled=true]):hover': { color: 'fg' },
   [`:is(ui-listbox, ui-segmented) > ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)`]: { bg: 'bg.selected' },
-  // Disabled or invalid lists, segmented controls and palettes (the host carries the ARIA state).
+  // Disabled or invalid lists and segmented controls (the host carries the ARIA state).
   [`${LIST}[aria-disabled=true]`]: { opacity: 0.5, cursor: 'not-allowed' },
   [`${LIST}[aria-disabled=true] > *`]: { cursor: 'not-allowed', pointerEvents: 'none' },
   ':is(ui-listbox, ui-segmented)[aria-invalid=true]': { bg: CRITICAL_TINT(14) },
-  'ui-palette[aria-invalid=true]': { outline: '2px solid {colors.critical.solid}', outlineOffset: '2px' },
 
   // Forced colors (Windows high contrast): fills are dropped and borders default to 0, so
   // every control gets a system-colored edge that costs no space, and "on" states use Highlight.
   '@media (forced-colors: active)': {
-    [`${CONTROL}, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
-    [`${ON} [data-part=box], ui-option[aria-selected=true], :is(ui-range, ui-progress) > [data-part=track] > [data-part=fill], ui-swiper [data-part=dot][aria-current=true]::before`]: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
-    'ui-switch [data-part=box]::after, ui-range > [data-part=thumb]': { forcedColorAdjust: 'none', bg: 'CanvasText' },
-    'ui-radio[aria-checked=true] [data-part=box]::after': { forcedColorAdjust: 'none', bg: 'HighlightText' },
+    [`${CONTROL}, ui-segmented, ui-listbox, ui-select > [data-part=popup]`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
+    ['ui-option[aria-selected=true], ui-swiper [data-part=dot][aria-current=true]::before']: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
     '[aria-disabled=true]': { color: 'GrayText' },
   },
 });

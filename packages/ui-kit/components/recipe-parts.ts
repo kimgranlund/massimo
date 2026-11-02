@@ -25,44 +25,56 @@ export const CRITICAL_TINT = (pct: number) => `color-mix(in oklab, var(--colors-
 export const ADORN_COLOR = 'color-mix(in oklch, currentColor 65%, transparent)';
 
 const TEXT = ':is([data-part=prefix], [data-part=contents], [data-part=suffix])';
+const SLOT = ':is([data-part=leading], [data-part=trailing])';
+const ADORN = ':is([data-part=prefix], [data-part=suffix])';
+const FILL = ':is([icon-size=fill], [data-icon-size=fill], [icon-size=fill] *, [data-icon-size=fill] *)';
 const shown = (part: string) => `${part}:not([hidden])`;
 
-/**
- * Inline padding of the text run (resolveTextRun): each text part gets `bare` at a host edge,
- * `slot` beside a visible leading/trailing slot, and `between` beside another visible text part.
- * Web components keep empty parts as [hidden]; React omits them; both work with ~ and :has.
- * The "beside a text part" clauses come last and are more specific, so they win when both apply.
- */
-export function textRun(slot: string, bare: string, base: Style = {}, between = 'calc(0.5 * var(--u))'): Style {
-  return {
-    ...base,
-    paddingInlineStart: bare,
-    paddingInlineEnd: bare,
-    [`${shown('[data-part=leading]')} ~ &`]: { paddingInlineStart: slot },
-    [`&:has(~ ${shown('[data-part=trailing]')})`]: { paddingInlineEnd: slot },
-    [`${shown(TEXT)} ~ &:is(${TEXT})`]: { paddingInlineStart: between },
-    [`&:is(${TEXT}):has(~ ${shown(TEXT)})`]: { paddingInlineEnd: between },
-  };
+export interface PatternOptions {
+  /** Text-part padding beside a visible leading / trailing slot. */
+  slot: string;
+  /** Text-part padding at a bare host edge. */
+  bare: string;
+  /** Text-part padding beside another visible text part. */
+  between?: string;
+  /** Extra styles for every text part (display, line box). */
+  text?: Style;
+  /** Radius of fill artwork in a slot (icon-size=fill), nested inside the host's. */
+  fillRadius?: string;
+  /** Prefix / suffix in the label color at 65%. */
+  adornColor?: boolean;
+  /** Style leading / trailing as icon slots (choices put their own indicator there). */
+  iconSlots?: boolean;
 }
 
-const FILL = ':is([icon-size=fill], [data-icon-size=fill])';
-
 /**
- * A leading / trailing icon slot: at least `--slot` square, the glyph at --icon. Indicators (carets,
- * the x) stay at icon size sm; with icon-size=fill the artwork covers the slot with a nested radius.
+ * The construction pattern [leading] [prefix] [contents] [suffix] [trailing], as rules on the
+ * recipe's root (written once per recipe instead of once per part; the parts keep their own slot
+ * classes for part-specific styles).
+ * - Icon slots: at least --slot square, the glyph at --icon; indicators (carets, the x) stay at icon
+ *   size sm; with icon-size=fill (on the host or an ancestor) the artwork covers the slot.
+ * - Text run (resolveTextRun): each text part gets `bare` at a host edge, `slot` beside a visible
+ *   slot and `between` beside another visible text part. Web components keep empty parts as
+ *   [hidden]; React omits them; both work with ~ and :has. The "between" clauses are more specific,
+ *   so they win when both apply.
  */
-export function iconSlot(fillRadius = 'max(0px, calc(var(--radius) - var(--u)))'): Style {
+export function constructionPattern({ slot, bare, between = 'calc(0.5 * var(--u))', text = {}, fillRadius = 'max(0px, calc(var(--radius) - var(--u)))', adornColor = true, iconSlots = true }: PatternOptions): Style {
   return {
-    display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)',
-    '& > *': { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
-    '& > :is(i[name^="caret-"], i[name="x"])': { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
-    [`${FILL} &`]: { width: 'var(--slot)', height: 'var(--slot)', overflow: 'hidden', borderRadius: fillRadius },
-    [`${FILL} & > *`]: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' },
+    ...(iconSlots ? {
+    [`& > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
+    [`& > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
+    [`& > ${SLOT} > :is(i[name^="caret-"], i[name="x"])`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
+    [`&${FILL} > ${SLOT}`]: { width: 'var(--slot)', height: 'var(--slot)', overflow: 'hidden', borderRadius: fillRadius },
+    [`&${FILL} > ${SLOT} > *`]: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' },
+    } : {}),
+    [`& > ${TEXT}`]: { ...text, paddingInlineStart: bare, paddingInlineEnd: bare },
+    [`& > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap', ...(adornColor ? { color: ADORN_COLOR } : {}) },
+    [`& > ${shown('[data-part=leading]')} ~ ${TEXT}`]: { paddingInlineStart: slot },
+    [`& > ${TEXT}:has(~ ${shown('[data-part=trailing]')})`]: { paddingInlineEnd: slot },
+    [`& > ${shown(TEXT)} ~ ${TEXT}${TEXT}`]: { paddingInlineStart: between },
+    [`& > ${TEXT}${TEXT}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: between },
   };
 }
-
-/** Prefix / suffix adornments keep their width and never wrap. */
-export const adornment = (color = true): Style => ({ flexShrink: 0, whiteSpace: 'nowrap', ...(color ? { color: ADORN_COLOR } : {}) });
 
 /** Forced colors (Windows high contrast): a system edge that costs no space. */
 export const FORCED_EDGE: Style = { outline: '1px solid CanvasText', outlineOffset: '-1px' };

@@ -15,7 +15,6 @@ export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag
 const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
 export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
-const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
 // Slotted hosts (not yet recipes): options, and the input control and select trigger, which are laid out as
 // buttons (1u padding on the host; contents and slots carry the rest). :where() keeps the tag specificity.
@@ -144,48 +143,11 @@ export const geometry = defineGlobalStyles({
     borderRadius: 'calc(var(--cm) * var(--u) * var(--ui-radius-scale))',
   },
 
-  // Choices: a 6u row; the 5u box (9u wide for switch) sits in the 6u leading slot.
-  ':is(ui-checkbox, ui-radio, ui-switch)': { minHeight: 'var(--slot)', fontSize: 'var(--font)', lineHeight: 'var(--leading)' },
-  [`${CHOICE} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  ...textRun(CHOICE, 'var(--u)', '0px', { paddingBlock: 'calc(0.75 * var(--u))' }),
-  ':is(ui-checkbox, ui-radio, ui-switch) > [data-part=leading]': { display: 'grid', placeItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)', flexShrink: 0 },
-  '[data-part=box]': { display: 'grid', placeItems: 'center', width: 'calc(5 * var(--u))', height: 'calc(5 * var(--u))', borderWidth: 'var(--b)' },
-  'ui-checkbox [data-part=box]': { borderRadius: 'calc(var(--u) * var(--ui-radius-scale))' },
-  'ui-checkbox [data-part=box] > i': { width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))' },
-  'ui-radio [data-part=box]': { borderRadius: '50%' },
-  'ui-radio [data-part=box]::after': { content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: '50%' },
-  'ui-switch [data-part=box]': { width: 'calc(9 * var(--u))', borderRadius: 'calc(2.5 * var(--u))', justifyItems: 'start', paddingInline: 'calc(0.5 * var(--u) - var(--b))' },
-  'ui-switch [data-part=box]::after': {
-    content: '""', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%',
-  },
-  'ui-switch[aria-checked=true] [data-part=box]::after': { translate: 'calc(4 * var(--u)) 0' },
-
-  // Range and progress (resolveTrack): a 4u track, rounded at half height. The range thumb sits inside
-  // it like a switch thumb (track − u, inset 0.5u) and travels W − track. The fill ends one
-  // track-radius past the thumb's center (track + p·(W − track)) with the track's radius, so its
-  // round cap stays concentric around the thumb at every value (maison-ui's construction).
-  ':is(ui-range, ui-progress)': {
+  // Range and progress (resolveTrack): the 4u track and its radius, read by the range recipes.
+  ':is(ui-range, ui-progress, [data-ui=range], [data-ui=progress])': {
     '--track': 'calc(4 * var(--u))',
     '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
-    display: 'grid', alignItems: 'center', height: 'var(--track)', minWidth: 'calc(24 * var(--u))', position: 'relative',
   },
-  ':is(ui-range, ui-progress) > [data-part=track]': { display: 'block', height: '100%', borderRadius: 'var(--track-r)', overflow: 'hidden', gridArea: '1 / 1' },
-  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { display: 'block', height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)', borderRadius: 'var(--track-r)' },
-  // Range fill wraps the thumb (after the generic rule: same specificity, order wins).
-  'ui-range > [data-part=track] > [data-part=fill]': { width: 'calc(var(--track) + var(--ui-ratio, 0) * (100% - var(--track)))' },
-  'ui-range > [data-part=thumb]': {
-    display: 'block', gridArea: '1 / 1', width: 'calc(var(--track) - var(--u))', height: 'calc(var(--track) - var(--u))',
-    borderRadius: 'max(0px, calc(var(--track-r) - 0.5 * var(--u)))',
-    marginInlineStart: 'calc(0.5 * var(--u) + var(--ui-ratio, 0) * (100% - var(--track)))',
-  },
-
-  // Swatch: 6u square; palette attaches them with no gap inside a 2u-radius strip.
-  'ui-swatch': { display: 'inline-block', width: 'var(--slot)', height: 'var(--slot)', borderRadius: 'calc(var(--u) * var(--ui-radius-scale))', flexShrink: 0 },
-  'ui-palette': { display: 'inline-flex', borderRadius: 'calc(2 * var(--u) * var(--ui-radius-scale))', overflow: 'hidden' },
-  'ui-palette > ui-swatch': { borderRadius: 0, flex: '1 0 var(--slot)' },
-  // Vertical: a column of swatches; each keeps at least 6u of height and fills the strip's width.
-  'ui-palette[orientation=vertical]': { flexDirection: 'column' },
-  'ui-palette[orientation=vertical] > ui-swatch': { width: 'auto' },
 
   // Swiper: paddles are 8u icon buttons inset 2u; dots are 2u (active 4u) in 4u hit areas.
   // Paddle carets follow the paddle's icon size (lg), not the sm indicator rule for carets.

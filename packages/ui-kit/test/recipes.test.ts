@@ -41,7 +41,8 @@ test("each manifest's parts equal its recipe's slots, and every recipe is regist
       const recipe = mod[name];
       assert.ok(recipe, `${path}: ${manifest.styleSource.module} exports no recipe ${name}`);
       assert.deepEqual(slotMismatch(node.id, recipe), [], `${node.id}: parts vs recipe slots`);
-      assert.equal(registered[name], recipe, `${name} is registered in the preset (theme.slotRecipes)`);
+      // Registered under its name, or another key when the name is a reserved word (switch → switchRecipe).
+      assert.ok(Object.values(registered).includes(recipe), `${name} is registered in the preset (theme.slotRecipes)`);
     }
   }
 });

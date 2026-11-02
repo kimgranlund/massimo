@@ -5,6 +5,10 @@
 import { UIFormElement, define, type Problem } from '../../core/index.ts';
 import { applyAttrs } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
+import { applyRecipe, partOf } from '../classes.ts';
+import { checkbox } from '../../styled-system/recipes/checkbox.js';
+import { radio } from '../../styled-system/recipes/radio.js';
+import { switchRecipe } from '../../styled-system/recipes/switch-recipe.js';
 import '../../icons/index.ts';
 
 abstract class UIChoice extends UIFormElement {
@@ -20,6 +24,8 @@ abstract class UIChoice extends UIFormElement {
   #default = false;
   protected abstract choiceRole: 'checkbox' | 'radio' | 'switch';
   protected abstract indicator(): HTMLElement;
+  /** The slot recipe's classes (choice.recipe.ts). */
+  protected abstract recipe(): Record<string, string>;
 
   connected() {
     this.#default = this.hasAttribute('checked');
@@ -50,6 +56,7 @@ abstract class UIChoice extends UIFormElement {
       'aria-invalid': this.userInvalid ? 'true' : undefined,
       tabindex: this.tabStop() ? 0 : -1,
     });
+    applyRecipe(this, this.recipe(), (slot) => slot === 'box' ? partOf(partOf(this, 'leading') ?? this, 'box') : partOf(this, slot));
   }
 
   protected checkedState(): string { return String(this.checked); }
@@ -88,6 +95,7 @@ export class UICheckbox extends UIChoice {
   static properties = { ...UIChoice.properties, indeterminate: { type: Boolean, default: false, reflect: true } };
   declare indeterminate: boolean;
   protected choiceRole = 'checkbox' as const;
+  protected recipe() { return checkbox(); }
   protected indicator() {
     const box = document.createElement('span');
     box.innerHTML = '<i name="check-bold" data-mark="checked"></i><i name="minus-bold" data-mark="mixed"></i>';
@@ -99,6 +107,7 @@ export class UICheckbox extends UIChoice {
 
 export class UISwitch extends UIChoice {
   protected choiceRole = 'switch' as const;
+  protected recipe() { return switchRecipe(); }
   protected indicator() { return document.createElement('span'); }
   // Switches also toggle on Enter.
   protected onKeydown = (e: KeyboardEvent) => {
@@ -108,6 +117,7 @@ export class UISwitch extends UIChoice {
 
 export class UIRadio extends UIChoice {
   protected choiceRole = 'radio' as const;
+  protected recipe() { return radio(); }
   protected indicator() { return document.createElement('span'); }
 
   /** Radios sharing this one's name in the same form (or document when outside a form). */

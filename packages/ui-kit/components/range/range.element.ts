@@ -4,6 +4,11 @@
 // Both expose the fill ratio as --ui-ratio (0..1), a continuous value carried by a variable.
 import { UIElement, UIFormElement, define, html } from '../../core/index.ts';
 import { applyAttrs, rangeKey, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
+import { applyRecipe, partOf } from '../classes.ts';
+import { range, progress } from '../../styled-system/recipes/index.js';
+
+/** Track and fill parts of a range or progress host. */
+const trackPart = (host: Element) => (slot: string) => slot === 'fill' ? partOf(partOf(host, 'track') ?? host, 'fill') : partOf(host, slot);
 
 export class UIRange extends UIFormElement {
   static properties = {
@@ -46,6 +51,7 @@ export class UIRange extends UIFormElement {
     const s = { ...this.#state, value: snap(this.value, this.#state) };
     applyAttrs(this, sliderAttrs({ ...s, disabled: this.isDisabled, label: this.label, valueText: this.valueText || undefined }));
     this.style.setProperty('--ui-ratio', String(ratioOf(s)));
+    applyRecipe(this, range(), trackPart(this));
   }
 
   formValue() { return String(this.value); }
@@ -117,6 +123,7 @@ export class UIProgress extends UIElement {
       'data-indeterminate': indeterminate || undefined,
     });
     this.style.setProperty('--ui-ratio', String(this.max ? v / this.max : 0));
+    applyRecipe(this, progress(), trackPart(this));
   }
 }
 

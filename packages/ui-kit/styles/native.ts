@@ -9,41 +9,8 @@
 
 type Css = Record<string, any>;
 
-/** Per-component replacements applied to a twin selector, in order. */
-const CHOICE_STATE: [RegExp, string][] = [
-  [/:not\(\[aria-checked=true\]\)/g, ':not(:has(> input:checked))'],
-  [/\[aria-checked=true\]/g, ':has(> input:checked)'],
-  [/\[aria-checked=mixed\]/g, ':has(> input:indeterminate)'],
-  [/\[aria-disabled=true\]/g, ':has(> input:disabled)'],
-  [/:not\(\[aria-disabled=true\]\)/g, ':not(:has(> input:disabled))'],
-  [/\[aria-required=true\]/g, ':has(> input:required)'],
-  [/\[aria-invalid=true\]/g, ':is([data-invalid], :has(> input:user-invalid))'],
-  [/:focus-visible/g, ':has(> input:focus-visible)'],
-];
-const RANGE_STATE: [RegExp, string][] = [
-  [/:not\(\[aria-disabled=true\]\)/g, ':not(:has(> input:disabled))'],
-  [/\[aria-disabled=true\]/g, ':has(> input:disabled)'],
-  [/:focus-visible/g, ':has(> input:focus-visible)'],
-];
-
 /** Components with a native React twin, and how their state hooks map. */
 export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
-  checkbox: CHOICE_STATE,
-  radio: CHOICE_STATE,
-  switch: CHOICE_STATE,
-  range: RANGE_STATE,
-  progress: [],
-  // A selectable palette is a radio group: each swatch is a label around a native radio.
-  palette: [
-    [/\[(selectable|name)\]/g, '[data-selectable]'],
-    [/\[orientation=vertical\]/g, '[data-orientation=vertical]'],
-    [/\[aria-disabled=true\]/g, '[data-disabled]'],
-    [/\[aria-invalid=true\]/g, '[data-invalid]'],
-  ],
-  swatch: [
-    [/\[aria-selected=true\]/g, ':has(> input:checked)'],
-    [/\[data-active\]/g, ':has(> input:focus-visible)'],
-  ],
   image: [
     [/\[ratio(?=[=\]])/g, '[data-ratio'],
     [/\[fit=/g, '[data-fit='],
@@ -123,24 +90,6 @@ export function withNativeTwins(css: Css): Css {
 
 /** Native plumbing the twins need: the input that carries state is invisible but interactive. */
 export const native = {
-  // Choices: the native input sits in the host, visually hidden; the box part paints it.
-  [`:is(${['checkbox', 'radio', 'switch'].map((n) => `[data-ui=${n}]`).join(', ')})`]: { position: 'relative' },
-  [`:is(${['checkbox', 'radio', 'switch'].map((n) => `[data-ui=${n}]`).join(', ')}) > input`]: {
-    position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none',
-  },
-  // Range: the native input covers the track, transparent, so pointer and keys are native.
-  '[data-ui=range] > input': {
-    position: 'absolute', inset: 0, width: '100%', height: '100%', margin: 0, opacity: 0, cursor: 'inherit',
-    gridArea: '1 / 1', appearance: 'none', background: 'transparent',
-  },
-  // The native thumb is as wide as the track, so native travel (width − thumb) equals the painted
-  // thumb's travel (width − track) and the pointer lands where the thumb is drawn. One rule per engine.
-  '[data-ui=range] > input::-webkit-slider-thumb': { appearance: 'none', width: 'var(--track)', height: 'var(--track)' },
-  '[data-ui=range] > input::-moz-range-thumb': { width: 'var(--track)', height: 'var(--track)', border: 0 },
-  // Swatch in a selectable palette: the native radio is invisible; the swatch paints it.
-  '[data-ui=swatch]': { position: 'relative' },
-  '[data-ui=swatch] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
-  '[data-ui=palette][data-selectable] > [data-ui=swatch]': { cursor: 'pointer' },
   // Select: opt in to customizable select; the inner <button> is the painted trigger.
   '[data-ui=select] > select, [data-ui=select] > select::picker(select)': { appearance: 'base-select' },
   // The select's own box wraps the trigger exactly: no intrinsic minimum height or line box.
@@ -152,7 +101,5 @@ export const native = {
   '[data-ui=select] > select::picker(select)': { border: 0, marginBlockStart: 'var(--u)' },
   // Input: a native text input keeps a minimum line box; pin it to the slot like the web component's editor.
   '[data-ui=input] > [data-part=control] > input[data-part=contents]': { height: 'var(--slot)' },
-  // Progress: the native element stays in the accessibility tree; the track paints it.
-  '[data-ui=progress] > progress': { position: 'absolute', width: '1px', height: '1px', opacity: 0, overflow: 'hidden' },
 } as Css;
 

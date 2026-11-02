@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/color/color.element.ts",
-      "sha256": "b96f44bdc02217c96bc152037dcc894a948eb3859038491d189ad58a8d35700e"
+      "sha256": "39b492fd369cef25cbd55b9674d0d77ea113e3f3c86aef21702295960ce239b2"
     },
     {
       "path": "dom/listbox.ts",
@@ -14,19 +14,27 @@
     },
     {
       "path": "components/color/color.manifest.json",
-      "sha256": "3b791d9bca6f1fc68c3c038e2cd7ed81ebc88a39970ba57cd6d7f29403fc59f3"
+      "sha256": "6cc1ac9ab696394fd8e9344b5ffbc594740af8aa0d17fb54b8a383e58e5698a9"
     },
     {
       "path": "components/color/color.react.tsx",
-      "sha256": "54239b44085002f1f57a83b58c7db59fd08360bc1f65f4c4dab2a95aa6e26827"
+      "sha256": "b20a035b8108589addab9ba60745454ba9926f1cfddaecb19c38258b72ecaef8"
     },
     {
       "path": "components/color/color.ts",
       "sha256": "2b4978cea86b0d35a3706bd4b3b984084cc18d66242e4e0472457354b8c44799"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "0eaecff11141943e14e60a716d8d0dacc5015d019f6ff4f5d229cb14951422ad"
+      "path": "components/color/color.recipe.ts",
+      "sha256": "e4eaeebd8d55e578c58a4c9f30cf867d0e3ddffe6a2720e8c7cf48acf7d7c193"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "c8eb1aea6e697c1756ed3e81f5f72012f7ccc5201befffc3801024b636d72bdb"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -35,13 +43,18 @@
         {
           "command": "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
           "covers": "swatch color variable, invalid and alpha marking, selectable palette keys and value"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -55,8 +68,8 @@
           "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
         },
         {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors and state mapping"
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -64,7 +77,7 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

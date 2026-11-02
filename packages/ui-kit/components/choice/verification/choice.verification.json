@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/choice/choice.element.ts",
-      "sha256": "c71154e80080efebbd587f1d057d520a7c187e968c71793068e07dde57f1a871"
+      "sha256": "c92221804ffc840955c39d7046d77fca9dd4df5863a279a9cc6708ce83145f44"
     },
     {
       "path": "components/slots.ts",
@@ -18,15 +18,23 @@
     },
     {
       "path": "components/choice/choice.manifest.json",
-      "sha256": "580368c98b29e00ce24cf6977e24eb118b4a616dd1a7349cb9143f36314473d1"
+      "sha256": "efc2cef311197bfb675ee65c80bc6b42120fd6ee273fd8568eb8e1833b459ef0"
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "98b0afac4cddb593380227bc65c670c8657ebb2d1b5eaf9e5b3e7142058973d8"
+      "sha256": "d55a1ccb583df0bbdbd8151b7304729fefa2a47f8a97e83b80f7709e981ce6aa"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "0eaecff11141943e14e60a716d8d0dacc5015d019f6ff4f5d229cb14951422ad"
+      "path": "components/choice/choice.recipe.ts",
+      "sha256": "714a0099ccce3cf7d7582349be4c34d6494fbba0c73d582707d41ff651b1913a"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "c8eb1aea6e697c1756ed3e81f5f72012f7ccc5201befffc3801024b636d72bdb"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -35,13 +43,18 @@
         {
           "command": "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
           "covers": "roles, toggle by click and keys, mixed, form value, required, radio group movement and roving tab stop"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -55,8 +68,8 @@
           "covers": "native input/progress inside a data-ui host, construction-pattern parts, form names and values, no custom elements"
         },
         {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors map ui-* rules and ARIA state hooks to the native input"
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -64,7 +77,7 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "4ae19e05efb84daf754496cb5af1cf4562a578fc7e55d94eba138a95415e6455"
+      "sha256": "92441535dba846959c386a5082123404cd7ad36f56fd16e50970570211b0b8bb"
     },
     {
       "path": "dom/range.ts",
@@ -14,15 +14,23 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "cab485eeae07e4f1e841f94895b99a8cc408d6b303668b5d6815844dbf36be99"
+      "sha256": "e412ca76aa7a7132a745cdd12cbb1972a841653fcc8ca4da48731f9860537901"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "c2c92aba7418e43a03f6cef9a50b0ed3905213611c179b0af9348808bcc32f01"
+      "sha256": "00b8516e3efab665b7c22d231c9fbfcfcf46a1d1fa1fd64b56463fd9b835161c"
     },
     {
-      "path": "styles/native.ts",
-      "sha256": "0eaecff11141943e14e60a716d8d0dacc5015d019f6ff4f5d229cb14951422ad"
+      "path": "components/range/range.recipe.ts",
+      "sha256": "b89c8b963d65715832365f401307a00c235a8d13f8db3f036d3e6494b758ec12"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "c8eb1aea6e697c1756ed3e81f5f72012f7ccc5201befffc3801024b636d72bdb"
+    },
+    {
+      "path": "components/classes.ts",
+      "sha256": "dcd8adce350c7734fd8d4c3b986112b68912470829d81a6f895a3ce80b752df5"
     }
   ],
   "renderers": {
@@ -31,13 +39,18 @@
         {
           "command": "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
           "covers": "keys, Page Up 10%, Home/End, pointer mapping, ratio variable, determinate and indeterminate progress"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts"
+          "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -51,8 +64,8 @@
           "covers": "native input/progress inside a data-ui host, construction-pattern parts, form names and values, no custom elements"
         },
         {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors map ui-* rules and ARIA state hooks to the native input"
+          "command": "node --test test/recipes.test.ts",
+          "covers": "recipe slots equal the manifest parts, the recipe is registered, recipe classes on host and parts"
         }
       ],
       "latestRun": {
@@ -60,7 +73,7 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/recipes.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
