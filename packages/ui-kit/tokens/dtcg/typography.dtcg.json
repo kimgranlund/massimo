@@ -115,12 +115,12 @@
           "value": -3.661,
           "unit": "px"
         },
-        "lineHeight": 1.051
+        "lineHeight": 0.996
       },
       "$description": "Display",
       "$extensions": {
         "com.massimo.tracking": "-0.045em",
-        "com.massimo.lineHeightPx": 85.5,
+        "com.massimo.lineHeightPx": 81,
         "com.massimo.textTransform": "none"
       }
     },
@@ -430,36 +430,36 @@
       "lineHeight": {
         "$type": "dimension",
         "$value": {
-          "value": 85.5,
+          "value": 81,
           "unit": "px"
         },
         "$description": "display · line height · voice display, weight 700, tracking -0.045em",
         "$extensions": {
-          "com.massimo.formula": "ceil(size × 1.05 / u) × u",
+          "com.massimo.formula": "ceil(size × 0.95 / u) × u",
           "com.massimo.status": "implemented",
           "com.massimo.bySize": {
-            "u=2": 72,
-            "u=2.25": 74.25,
-            "u=2.5": 75,
-            "u=3": 78,
-            "u=3.5": 80.5,
-            "u=4": 84,
-            "u=4.5": 85.5,
-            "u=5": 90,
-            "u=5.5": 93.5,
-            "u=6": 96,
-            "u=6.5": 97.5,
-            "u=7": 105,
-            "u=7.5": 105,
-            "u=8": 112,
-            "u=8.5": 110.5,
-            "u=9": 117,
-            "u=9.5": 123.5,
-            "u=10": 120,
-            "u=10.5": 126,
-            "u=11": 132,
-            "u=11.5": 138,
-            "u=12": 132
+            "u=2": 64,
+            "u=2.25": 67.5,
+            "u=2.5": 67.5,
+            "u=3": 72,
+            "u=3.5": 73.5,
+            "u=4": 76,
+            "u=4.5": 81,
+            "u=5": 80,
+            "u=5.5": 88,
+            "u=6": 90,
+            "u=6.5": 91,
+            "u=7": 91,
+            "u=7.5": 97.5,
+            "u=8": 96,
+            "u=8.5": 102,
+            "u=9": 108,
+            "u=9.5": 104.5,
+            "u=10": 110,
+            "u=10.5": 115.5,
+            "u=11": 121,
+            "u=11.5": 115,
+            "u=12": 120
           }
         }
       }

@@ -28,7 +28,7 @@ export interface TypeRole {
 }
 
 export const TYPE_ROLES = {
-  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 1.05, weight: 700, tracking: -0.045 },
+  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 0.95, weight: 700, tracking: -0.045 },
   'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025 },
   'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02 },
   'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01 },

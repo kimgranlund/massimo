@@ -41,7 +41,7 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 
 | Role | Size | Line height | Weight | Tracking | Notes |
 |---|---|---|---|---|---|
-| display | step 6 | 1.05 | 700 | −0.045em | display voice |
+| display | step 6 | 0.95 (rounded up to the rhythm: 76 at u = 4, 81 at u = 4.5) | 700 | −0.045em | display voice |
 | heading-1 | step 4 | 1.1 | 700 | −0.025em | heading voice |
 | heading-2 | step 3 | 1.15 | 700 | −0.02em | heading voice |
 | heading-3 | step 2 | 1.2 | 700 | −0.01em | heading voice |
@@ -55,7 +55,7 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 | label | step 0 | 1.4 | 450 | 0 | field labels |
 | control-small | 3u | 1.2 (unitless) | 450 | 0 | |
 
-At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/84, caption 12/20.
+At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76, caption 12/20.
 
 
 ## Default stacks
