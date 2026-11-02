@@ -20,11 +20,12 @@
   "independentLayers": [
     {
       "kind": "pure-behavior",
-      "module": "./color.element.ts",
+      "module": "./color.ts",
       "exports": [
-        "isTranslucent"
+        "isTranslucent",
+        "validColor"
       ],
-      "description": "Detects colors with alpha (checkerboard needed)."
+      "description": "Pure color checks (alpha, parsability) shared by the web component and React renderers; no DOM."
     },
     {
       "kind": "geometry",
