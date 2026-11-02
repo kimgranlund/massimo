@@ -68,7 +68,7 @@ const metaStatus = css({ [CQ_MD]: { display: 'none' } });
 // Narrow rows keep status, time and one action; the channel and the quick view join from medium up.
 const wideOnly = css({ display: 'none', [CQ_MD]: { display: 'inline-flex' } });
 const statusCol = css({ gridArea: 'status', display: 'none', [CQ_MD]: { display: 'block' } });
-const total = css({ gridArea: 'total', textAlign: 'end', textStyle: 'label', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' });
+const total = css({ gridArea: 'total', textAlign: 'end', textStyle: 'title', fontVariantNumeric: 'tabular-nums lining-nums' });
 const actions = css({ gridArea: 'actions', justifySelf: 'end' });
 const listHead = css({
   display: 'none', paddingBottom: '2', borderBottomWidth: 'thin', borderColor: 'border',

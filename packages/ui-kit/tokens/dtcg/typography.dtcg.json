@@ -366,6 +366,28 @@
         "com.massimo.textTransform": "none"
       }
     },
+    "title": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.voice.ui}",
+        "fontSize": {
+          "value": 14.5,
+          "unit": "px"
+        },
+        "fontWeight": 600,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "px"
+        },
+        "lineHeight": 1.552
+      },
+      "$description": "Title",
+      "$extensions": {
+        "com.massimo.tracking": "0em",
+        "com.massimo.lineHeightPx": 22.5,
+        "com.massimo.textTransform": "none"
+      }
+    },
     "control-small": {
       "$type": "typography",
       "$value": {
@@ -1271,6 +1293,82 @@
           "unit": "px"
         },
         "$description": "label · line height · voice ui, weight 450, tracking 0em",
+        "$extensions": {
+          "com.massimo.formula": "ceil(size × 1.4 / u) × u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 18,
+            "u=2.25": 18,
+            "u=2.5": 17.5,
+            "u=2.75": 19.25,
+            "u=3": 21,
+            "u=3.5": 21,
+            "u=4": 20,
+            "u=4.5": 22.5,
+            "u=5": 25,
+            "u=5.5": 22,
+            "u=6": 24,
+            "u=6.5": 26,
+            "u=7": 28,
+            "u=7.5": 30,
+            "u=8": 32,
+            "u=8.5": 34,
+            "u=9": 27,
+            "u=9.5": 28.5,
+            "u=10": 30,
+            "u=10.5": 31.5,
+            "u=11": 33,
+            "u=11.5": 34.5,
+            "u=12": 36
+          }
+        }
+      }
+    },
+    "title": {
+      "size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 14.5,
+          "unit": "px"
+        },
+        "$description": "title · font size",
+        "$extensions": {
+          "com.massimo.formula": "(10 + u) × r^0",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 12,
+            "u=2.25": 12.25,
+            "u=2.5": 12.5,
+            "u=2.75": 12.75,
+            "u=3": 13,
+            "u=3.5": 13.5,
+            "u=4": 14,
+            "u=4.5": 14.5,
+            "u=5": 15,
+            "u=5.5": 15.5,
+            "u=6": 16,
+            "u=6.5": 16.5,
+            "u=7": 17,
+            "u=7.5": 17.5,
+            "u=8": 18,
+            "u=8.5": 18.5,
+            "u=9": 19,
+            "u=9.5": 19.5,
+            "u=10": 20,
+            "u=10.5": 20.5,
+            "u=11": 21,
+            "u=11.5": 21.5,
+            "u=12": 22
+          }
+        }
+      },
+      "lineHeight": {
+        "$type": "dimension",
+        "$value": {
+          "value": 22.5,
+          "unit": "px"
+        },
+        "$description": "title · line height · voice ui, weight 600, tracking 0em",
         "$extensions": {
           "com.massimo.formula": "ceil(size × 1.4 / u) × u",
           "com.massimo.status": "implemented",

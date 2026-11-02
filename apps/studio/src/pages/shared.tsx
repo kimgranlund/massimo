@@ -166,6 +166,6 @@ export const groupHead = css({ paddingBlockEnd: '1' });
 /** The row for the live theme value. */
 export const currentRow = css({ bg: 'primary.subtle', color: 'primary.fg' });
 /** A row's name cell (label voice, not code). */
-export const nameCell = css({ textStyle: 'label', fontWeight: 'semibold' });
+export const nameCell = css({ textStyle: 'title' });
 /** A descriptive cell: caption text that wraps. */
 export const noteCell = css({ textStyle: 'caption', color: 'fg.muted', whiteSpace: 'normal', minWidth: '[14rem]' });

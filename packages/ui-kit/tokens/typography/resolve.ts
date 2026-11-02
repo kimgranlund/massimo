@@ -40,6 +40,8 @@ export const TYPE_ROLES = {
   'code':          { label: 'Code',            voice: 'code', u: 3,     lh: 1.5,  weight: 400, tracking: 0 },
   'control':       { label: 'Control',         voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
   'label':         { label: 'Label',           voice: 'ui', step: 0,  lh: 1.4,  weight: 450, tracking: 0 },
+  // A strong item title: list and settings rows, table name cells, small card titles.
+  'title':         { label: 'Title',           voice: 'ui', step: 0,  lh: 1.4,  weight: 600, tracking: 0 },
   'control-small': { label: 'Control · Small', voice: 'ui', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
 } as const satisfies Record<string, TypeRole>;
 export type TypeRoleName = keyof typeof TYPE_ROLES;

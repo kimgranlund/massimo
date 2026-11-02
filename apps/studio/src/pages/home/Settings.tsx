@@ -75,9 +75,9 @@ export function Settings() {
         <ui-card padding="lg">
           <div className={cardHead}><h3 className={s.h3}>Notifications</h3><p className={s.caption}>Pick where updates reach you. Critical alerts always send.</p></div>
           <div className={choiceList}>
-            <div className={toggleRow}><div className={s.stack1}><span className={s.label}>Order alerts</span><span className={s.caption}>Every new order over $500</span></div><ui-switch checked aria-label="Order alerts" /></div>
-            <div className={toggleRow}><div className={s.stack1}><span className={s.label}>Weekly digest</span><span className={s.caption}>A Monday summary of last week</span></div><ui-switch checked aria-label="Weekly digest" /></div>
-            <div className={toggleRow}><div className={s.stack1}><span className={s.label}>Product news</span><span className={s.caption}>New features, about once a month</span></div><ui-switch aria-label="Product news" /></div>
+            <div className={toggleRow}><div className={s.stack1}><span className={s.title}>Order alerts</span><span className={s.caption}>Every new order over $500</span></div><ui-switch checked aria-label="Order alerts" /></div>
+            <div className={toggleRow}><div className={s.stack1}><span className={s.title}>Weekly digest</span><span className={s.caption}>A Monday summary of last week</span></div><ui-switch checked aria-label="Weekly digest" /></div>
+            <div className={toggleRow}><div className={s.stack1}><span className={s.title}>Product news</span><span className={s.caption}>New features, about once a month</span></div><ui-switch aria-label="Product news" /></div>
           </div>
           <div className={s.stack2}>
             <span className={s.groupKicker}>Send to</span>

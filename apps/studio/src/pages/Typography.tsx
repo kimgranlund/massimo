@@ -78,6 +78,7 @@ const SAMPLES: Record<TypeRoleName, string> = {
   'code': 'const u = height / 8;\nconst font = 10 + u;',
   'control': 'Continue',
   'label': 'Email address',
+  'title': 'Order alerts',
   'control-small': 'Details',
 };
 

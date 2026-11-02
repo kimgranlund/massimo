@@ -109,6 +109,8 @@ type.control.size,type,control,font size,(10 + u) × r^0,12,12.25,12.5,12.75,13,
 type.control.lineHeight,type,control,line height,1.2 (unitless),14.4,14.7,15,15.3,15.6,16.2,16.8,17.4,18,18.6,19.2,19.8,20.4,21,21.6,22.2,22.8,23.4,24,24.6,25.2,25.8,26.4,implemented,"voice ui, weight 450, tracking 0em"
 type.label.size,type,label,font size,(10 + u) × r^0,12,12.25,12.5,12.75,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
 type.label.lineHeight,type,label,line height,ceil(size × 1.4 / u) × u,18,18,17.5,19.25,21,21,20,22.5,25,22,24,26,28,30,32,34,27,28.5,30,31.5,33,34.5,36,implemented,"voice ui, weight 450, tracking 0em"
+type.title.size,type,title,font size,(10 + u) × r^0,12,12.25,12.5,12.75,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
+type.title.lineHeight,type,title,line height,ceil(size × 1.4 / u) × u,18,18,17.5,19.25,21,21,20,22.5,25,22,24,26,28,30,32,34,27,28.5,30,31.5,33,34.5,36,implemented,"voice ui, weight 600, tracking 0em"
 type.control-small.size,type,control-small,font size,3u,6,6.75,7.5,8.25,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,
 type.control-small.lineHeight,type,control-small,line height,1.2 (unitless),7.2,8.1,9,9.9,10.8,12.6,14.4,16.2,18,19.8,21.6,23.4,25.2,27,28.8,30.6,32.4,34.2,36,37.8,39.6,41.4,43.2,implemented,"voice ui, weight 450, tracking 0em"
 btg.chip.height,btg,chip,height,"min(12 + 3u, 8u)",16,18,19.5,20.25,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,37.5,39,40.5,42,43.5,45,46.5,48,implemented,cap: never taller than a control (bites below u = 2.4)

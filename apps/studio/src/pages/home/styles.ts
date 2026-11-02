@@ -34,7 +34,9 @@ export const body = css({ textStyle: 'body' });
 export const muted = css({ textStyle: 'body', color: 'fg.muted' });
 export const caption = css({ textStyle: 'caption', color: 'fg.muted' });
 export const label = css({ textStyle: 'label' });
-export const strong = css({ textStyle: 'label', fontWeight: 'semibold' });
+export const strong = css({ textStyle: 'title' });
+/** A row's title line (title role). */
+export const title = css({ textStyle: 'title' });
 
 export const stack = (gap: '1' | '2' | '3' | '4' | '6' | '8') => css({ display: 'flex', flexDirection: 'column', gap });
 export const stack1 = stack('1');

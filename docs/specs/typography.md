@@ -53,6 +53,7 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 | code | 3u | 1.5 | 400 | 0 | mono |
 | control | step 0 | 1.2 (unitless) | 450 | 0 | |
 | label | step 0 | 1.4 | 450 | 0 | field labels |
+| title | step 0 | 1.4 | 600 | 0 | strong item titles: list and settings rows, table name cells, small card titles |
 | control-small | 3u | 1.2 (unitless) | 450 | 0 | |
 
 At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76, caption 12/20.
