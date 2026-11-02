@@ -135,9 +135,11 @@ export const defaults = defineGlobalStyles({
 
   // Badge, tag, chip (lengths in styles/geometry.ts)
   ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
+  // Labels on controls and badges are not selectable text (a drag or double-click never selects them).
+  ':is(ui-badge, ui-tag, ui-chip)': { userSelect: 'none' },
   'ui-badge': { bg: 'primary.solid', color: 'fg.onSolid', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' },
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
-  'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', userSelect: 'none' },
+  'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong' },
   // Only a selectable chip is a button; a plain or removable chip is a label (its × is the control).
   'ui-chip[selectable]': { cursor: 'pointer' },
   'ui-chip[selectable]:not([aria-disabled=true]):hover': { bg: 'bg.mutedHover' },
