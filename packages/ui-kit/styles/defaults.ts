@@ -22,10 +22,10 @@ export const defaults = defineGlobalStyles({
   [BUTTON]: {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
     height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
-    borderRadius: 'var(--radius)', bg: 'bg', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
+    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
     cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
   },
-  [`${BUTTON}:hover`]: { bg: 'bg.muted' },
+  [`${BUTTON}:hover`]: { bg: 'bg.subtle' },
   [`${BUTTON}:is([aria-disabled=true], [aria-busy=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
 
   // Field: label, control, description, error
@@ -37,10 +37,11 @@ export const defaults = defineGlobalStyles({
     // Text sits where button contents sit: padding + 1u.
     display: 'flex', alignItems: 'center', width: '100%', height: 'var(--h)',
     paddingInline: 'calc(var(--pad) + var(--u))', borderWidth: 'var(--b)', borderColor: 'border.strong',
-    borderRadius: 'var(--radius)', bg: 'bg', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
+    borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
   },
   // aria-invalid only: native :invalid would flag untouched required fields on load.
-  [`:is(${CONTROL})[aria-invalid=true]`]: { borderColor: 'danger.solid' },
+  // Invalid: a danger-tinted fill (borders default to 0, so the edge alone cannot carry it).
+  [`:is(${CONTROL})[aria-invalid=true]`]: { borderColor: 'danger.solid', bg: 'color-mix(in oklch, var(--colors-danger-solid) 14%, var(--colors-bg-muted))' },
   [`:is(${CONTROL}):is(:disabled, [aria-disabled=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
   [`:is(${CONTROL})::placeholder`]: { color: 'fg.muted' },
 
@@ -66,8 +67,8 @@ export const defaults = defineGlobalStyles({
   ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
   'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold' },
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
-  'ui-chip': { bg: 'bg', color: 'fg', borderColor: 'border.strong', cursor: 'pointer', userSelect: 'none' },
-  'ui-chip:hover': { bg: 'bg.muted' },
+  'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', cursor: 'pointer', userSelect: 'none' },
+  'ui-chip:hover': { bg: 'bg.subtle' },
   'ui-chip[aria-pressed=true]': { bg: 'accent.subtle', color: 'accent.fg', borderColor: 'accent.solid' },
   'ui-chip[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
   'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
@@ -76,8 +77,8 @@ export const defaults = defineGlobalStyles({
   // Checkbox, radio, switch
   ':is(ui-checkbox, ui-radio, ui-switch)': { display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle' },
   ':is(ui-checkbox, ui-radio, ui-switch)[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
-  '[data-part=box]': { borderColor: 'border.strong', bg: 'bg', color: 'fg.onSolid' },
-  ':is(ui-checkbox, ui-radio, ui-switch)[aria-invalid=true] [data-part=box]': { borderColor: 'danger.solid' },
+  '[data-part=box]': { borderColor: 'border.strong', bg: 'bg.muted', color: 'fg.onSolid' },
+  ':is(ui-checkbox, ui-radio, ui-switch)[aria-invalid=true] [data-part=box]': { borderColor: 'danger.solid', bg: 'color-mix(in oklch, var(--colors-danger-solid) 20%, var(--colors-bg-muted))' },
   'ui-checkbox [data-part=box] > i': { display: 'none' },
   'ui-checkbox[aria-checked=true] [data-part=box] > i[data-mark=checked], ui-checkbox[aria-checked=mixed] [data-part=box] > i[data-mark=mixed]': { display: 'inline-flex' },
   ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true]) [data-part=box]': { bg: 'accent.solid', borderColor: 'accent.solid' },
@@ -100,7 +101,6 @@ export const defaults = defineGlobalStyles({
     // Checkerboard under the color so alpha reads; the color layer sits on top.
     backgroundImage: 'linear-gradient(var(--ui-swatch-color, transparent), var(--ui-swatch-color, transparent)), conic-gradient(#ccc 25%, #fff 0 50%, #ccc 0 75%, #fff 0)',
     backgroundSize: '100% 100%, calc(2 * var(--u)) calc(2 * var(--u))',
-    boxShadow: 'inset 0 0 0 1px oklch(0 0 0 / 0.08)',
   },
   'ui-palette[selectable], ui-palette[name]': { cursor: 'pointer' },
   'ui-palette > ui-swatch[aria-selected=true]': { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
@@ -133,12 +133,12 @@ export const defaults = defineGlobalStyles({
   'ui-group': { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', borderColor: 'transparent' },
   ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
   'ui-page': { width: '100%', maxWidth: `${PAGE_MAX_WIDTH_REM}rem`, marginInline: 'auto' },
-  'ui-tile': { bg: 'bg.subtle' },
-  'ui-card': { bg: 'bg', borderColor: 'border' },
+  'ui-tile': { bg: 'bg.muted' },
+  'ui-card': { bg: 'bg.subtle', borderColor: 'border' },
   'ui-panel': { bg: 'bg.subtle' },
 
   // Listbox, segmented control, options
-  'ui-listbox': { display: 'flex', flexDirection: 'column', borderColor: 'border' },
+  'ui-listbox': { display: 'flex', flexDirection: 'column', borderColor: 'border', bg: 'bg.subtle' },
   'ui-segmented': { display: 'inline-flex', bg: 'bg.muted', borderColor: 'transparent' },
   'ui-option': { display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none' },
   'ui-segmented > ui-option > [data-part=contents]': { flex: '1', justifyContent: 'center' },

@@ -19,7 +19,7 @@ Sources of truth, kept in agreement by tests:
 | Input | Where | Values | Default |
 |---|---|---|---|
 | u | theme `--ui-unit`; `size` / `data-size` per subtree | 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5 … 12 (0.5 steps) | 4 |
-| B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 1 |
+| B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 0 |
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
 | corner shape k | theme `--ui-corner-shape`: `corner-shape: superellipse(k)` on every element with a radius | −1..4 (1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | icon size | `icon-size` / `data-icon-size`, any element, inherited | sm, md, lg, fill | md |
@@ -30,7 +30,7 @@ Sources of truth, kept in agreement by tests:
 | | Formula | at u=4 |
 |---|---|---|
 | height | 8u | 32 |
-| padding | 1u − B (the border lives inside the 1u) | 4 at B=0 |
+| padding | 1u − B (the border lives inside the 1u) | 4 |
 | slots | leading, contents, trailing: min 6u × 6u; empty slots are hidden | 24 |
 | contents padding | 1u inline beside a slot, 2u on a side with no leading/trailing element (buttons and options); 0.75u block; line height 4.5u | 4 or 8 / 3 / 18 |
 | font | 10px + u | 14 |

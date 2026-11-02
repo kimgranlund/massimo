@@ -49,14 +49,14 @@ test('curvature: soft 3u, capped at half height, scaled', () => {
 });
 
 test('fields and select trigger put text where button contents sit', () => {
-  const f = resolveField();
+  const f = resolveField({ border: 1 });
   assert.deepEqual([f.paddingStart, f.paddingEnd], [3 + 4, 3 + 4]);
-  const t = resolveSelectTrigger();
+  const t = resolveSelectTrigger({ border: 1 });
   assert.deepEqual([t.paddingStart, t.paddingEnd, t.chevronSlot, t.chevronIcon], [7, 3, 24, 12]);
 });
 
 test('composite: 0.5u padding level; one-row segmented is always 8u; options keep the 3u control radius', () => {
-  const c = resolveComposite();
+  const c = resolveComposite({ border: 1 });
   assert.equal(c.edge, 2);
   assert.equal(c.padding, 1);
   assert.equal(c.child.height, 28);
@@ -79,7 +79,8 @@ test('containers: padding, gap = padding, concentric max radius, square panel an
   const card = resolveContainer('card', { unit: 5, gap: 2 });
   assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gap="2">');
   assert.equal(resolveContainer('group', { height: 20 }).radius, 10, 'half-height cap');
-  assert.equal(resolveContainer('card').padding, 15, 'border lives inside the padding');
+  assert.equal(resolveContainer('card', { border: 1 }).padding, 15, 'border lives inside the padding');
+  assert.equal(resolveContainer('card').padding, 16, 'default border is 0');
 });
 
 test('sizes run to 12', () => {
@@ -103,7 +104,7 @@ test('badge / tag / chip: 12 + k·u with the cap; your u=3, 4, 5 values hold', (
 });
 
 test('badge / tag / chip: text, slots, padding', () => {
-  const chip = resolveBtg('chip'), tag = resolveBtg('tag'), badge = resolveBtg('badge');
+  const chip = resolveBtg('chip', { border: 1 }), tag = resolveBtg('tag', { border: 1 }), badge = resolveBtg('badge', { border: 1 });
   assert.deepEqual([chip.fontSize, tag.fontSize, badge.fontSize], [14, 12, 10]);
   assert.equal(chip.slot, tag.height, 'chip slot holds a tag');
   assert.equal(tag.slot, badge.height, 'tag slot holds a badge');

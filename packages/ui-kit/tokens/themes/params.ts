@@ -8,7 +8,7 @@ export const PARAMS = {
   // corner-shape: superellipse(k). 1 = round, 2 = squircle, 0 = bevel, negative = scoop.
   'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4 },
-  'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 1 },
+  'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
 } as const satisfies Record<string, ParamSpec>;
 
 export type ParamName = keyof typeof PARAMS;
