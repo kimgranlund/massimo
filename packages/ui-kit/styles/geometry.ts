@@ -144,18 +144,18 @@ export const geometry = defineGlobalStyles({
   },
 
   // Layout containers: padding level p and max radius r (units of u), see CONTAINERS.
-  // Padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the max
-  // radius follows the padding (3u + pad) so corners stay concentric. The gap attribute wins.
+  // Padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the radius
+  // is at most the padding (corner scale lowers it, never raises it). The gap attribute wins.
   ...Object.fromEntries(LAYOUT.map((k) => [`ui-${k}`, {
     '--cp': `var(--ui-pad-${k})`,
     '--cg': `var(--ui-gap-${k})`,
-    '--cm': SQUARE_LEVELS.has(k) ? '0' : `calc(3 + var(--ui-pad-${k}))`,
+    '--cm': SQUARE_LEVELS.has(k) ? '0' : `var(--ui-pad-${k})`,
   }])),
   [LAYOUT_CONTAINERS]: {
     padding: 'max(0px, calc(var(--cp) * var(--u) - var(--b)))',
     gap: 'calc(var(--ui-gap, var(--cg)) * var(--u))',
     borderWidth: 'var(--b)',
-    borderRadius: 'calc(var(--cm) * var(--u) * var(--ui-radius-scale))',
+    borderRadius: 'calc(var(--cm) * var(--u) * min(1, var(--ui-radius-scale)))',
   },
 
   // Choices: a 6u row; the 5u box (9u wide for switch) sits in the 6u leading slot.
@@ -218,7 +218,8 @@ export const geometry = defineGlobalStyles({
     '--d': 'max(var(--b), calc(var(--ui-pad-composite) * var(--u)))',
     '--ci': 'max(var(--b), calc(var(--u) - var(--d)))',
     '--ch': 'calc(var(--slot) + 2 * var(--ci))',
-    // Container curvature for lists and popups; segmented caps it at half its height.
+    // Container curvature for lists and popups, concentric with the options (composite is exempt from
+    // the radius ≤ padding rule); segmented caps it at half its height.
     '--cr': 'calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale))',
     padding: 'calc(var(--d) - var(--b))',
     gap: 'calc(var(--ui-gap, var(--ui-gap-composite)) * var(--u))',

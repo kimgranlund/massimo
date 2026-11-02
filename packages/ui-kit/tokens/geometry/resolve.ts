@@ -105,16 +105,17 @@ export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slo
 }
 
 // ── Containers ──
-// Each level has a padding (units of u) and a max radius that keeps corners concentric with
-// a 3u control sitting in the corner (3u + padding). Padding and gap are theme parameters
-// (pad-<level>, gap-<level>); these are their defaults. Panel, region and page are square: they usually
+// Each level has a padding (units of u) and a max radius equal to that padding: a container's
+// corner is never rounder than its padding is deep (corner scale can lower it, not raise it).
+// Composite is exempt: it wraps controls, so its radius stays concentric with them (3u + padding).
+// Padding and gap are theme parameters (pad-<level>, gap-<level>); these are their defaults. Panel, region and page are square: they usually
 // meet the viewport edge. Gap = padding unless the gap attribute overrides it.
 export const CONTAINERS = {
   composite:  { padding: 0.5, maxRadius: 3.5 },
-  group:      { padding: 1,   maxRadius: 4 },
-  collection: { padding: 2,   maxRadius: 5 },
-  tile:       { padding: 3,   maxRadius: 6 },
-  card:       { padding: 4,   maxRadius: 7 },
+  group:      { padding: 1,   maxRadius: 1 },
+  collection: { padding: 2,   maxRadius: 2 },
+  tile:       { padding: 3,   maxRadius: 3 },
+  card:       { padding: 4,   maxRadius: 4 },
   panel:      { padding: 6,   maxRadius: 0 },
   region:     { padding: 8,   maxRadius: 0 },
   // Same spacing as region, plus a centered max width (styles/defaults.ts, page() pattern).
@@ -137,7 +138,10 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
   const x = inputs(input);
   const u = x.unit;
   const pad = input.padUnits ?? CONTAINERS[level].padding;
-  const radius = SQUARE_LEVELS.has(level) ? 0 : (3 + pad) * u * x.radiusScale;
+  // Radius ≤ padding: the corner scale can lower it but never raise it past the padding.
+  const radius = SQUARE_LEVELS.has(level) ? 0
+    : level === 'composite' ? (3 + pad) * u * x.radiusScale
+    : pad * u * Math.min(1, x.radiusScale);
   return {
     unit: u, border: x.border,
     padding: Math.max(0, pad * u - x.border),
@@ -150,7 +154,8 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
 /**
  * Composite: ui-listbox, ui-segmented, select popup. Padding is the composite level (0.5u);
  * options use the control anatomy with their inset reduced by that edge, so a one-row
- * segmented control is exactly 8u and its options keep the 3u control radius.
+ * segmented control is exactly 8u and its options keep the 3u control radius (concentric: the
+ * composite is exempt from the radius ≤ padding rule).
  */
 export function resolveComposite(input: GeometryInput & { container?: boolean } = {}) {
   const c = resolveControl(input);

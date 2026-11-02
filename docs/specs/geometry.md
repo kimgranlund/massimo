@@ -68,7 +68,7 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 
 ## Containers
 
-Every container has a padding level p and a max radius. Padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults); the max radius follows the padding (3u + p). The `gap` attribute overrides the gap on one element. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
+Every container has a padding level p and a max radius. Padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults); the max radius equals the padding: a container's corner is never rounder than its padding is deep. The `gap` attribute overrides the gap on one element. The border lives inside the padding. Radius = min(p × min(1, corner scale), height/2): the corner scale can lower it but never raise it past the padding. Children keep their own radii (a control stays 3u), so they are not concentric with the container. The composite level (listbox, segmented, select popup) is exempt: it wraps controls, so its radius stays concentric with them, 3u + p (3.5u), and its options keep the 3u control radius. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
 ### Panda tokens in u
 
@@ -76,11 +76,11 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
-| composite | ui-listbox, ui-segmented, select popup | 0.5u | 0.5u | 3.5u | 2 / 2 / 14 |
-| group | ui-group | 1u | 1u | 4u | 4 / 4 / 16 |
-| collection | ui-collection | 2u | 2u | 5u | 8 / 8 / 20 |
-| tile | ui-tile | 3u | 3u | 6u | 12 / 12 / 24 |
-| card | ui-card | 4u | 4u | 7u | 16 / 16 / 28 |
+| composite | ui-listbox, ui-segmented, select popup | 0.5u | 0.5u | 3.5u (exempt) | 2 / 2 / 14 |
+| group | ui-group | 1u | 1u | 1u | 4 / 4 / 4 |
+| collection | ui-collection | 2u | 2u | 2u | 8 / 8 / 8 |
+| tile | ui-tile | 3u | 3u | 3u | 12 / 12 / 12 |
+| card | ui-card | 4u | 4u | 4u | 16 / 16 / 16 |
 | panel | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
 | region | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
 | page | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
@@ -89,7 +89,7 @@ Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers
 
 ### Composite detail
 
-Options use the control anatomy with their inset reduced by the composite edge D = max(B, 0.5u): option inset Ic = max(B, u − D), option height 6u + 2Ic = 7u, so a one-row segmented control is always exactly 8u. Option radius = min(option/2, composite radius − D) = 3u, the control radius. The popup sits 1u below its trigger.
+Options use the control anatomy with their inset reduced by the composite edge D = max(B, 0.5u): option inset Ic = max(B, u − D), option height 6u + 2Ic = 7u, so a one-row segmented control is always exactly 8u. Option radius = min(option/2, composite radius − D) = 3u, the control radius (the composite is exempt from radius ≤ padding). The popup sits 1u below its trigger.
 
 ## Badge, tag, chip
 

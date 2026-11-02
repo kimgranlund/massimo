@@ -460,7 +460,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
   const u = params.unit;
   return (
     <>
-      <Section id="containers" title="Container tokens" note="Live values for every level: padding and gap (pad-<level>, gap-<level>, in u), the radius they imply (3u + padding up to card; panel, region and page are square), and where each level appears.">
+      <Section id="containers" title="Container tokens" note="Live values for every level: padding and gap (pad-<level>, gap-<level>, in u), the radius they imply (at most the padding, up to card; panel, region and page are square), and where each level appears.">
         <div className={tokenTable} role="table" aria-label="Container tokens">
           <div role="row" className={tokenHead}><span role="columnheader">Level</span><span role="columnheader">Padding</span><span role="columnheader">Gap</span><span role="columnheader">Radius</span><span role="columnheader">Used by</span></div>
           {LEVELS.map((l) => {
@@ -494,7 +494,7 @@ function ContainerSections({ params }: { params: ThemeParams }) {
         </Row>
       </Section>
       <Divider />
-      <Section id="nesting" title="Nesting" note="page › region › panel › card › tile › collection › group: each level pads its children and radii stay concentric down to the control.">
+      <Section id="nesting" title="Nesting" note="page › region › panel › card › tile › collection › group: each level pads its children; a container's radius is at most its padding.">
         <ui-page className={miniPage} aria-label="Page example">
           <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
           <ui-region aria-label="Region example" className={tinted}>
