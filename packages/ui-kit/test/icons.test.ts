@@ -26,26 +26,39 @@ test('sanitizeSvg keeps drawing markup and strips anything executable', () => {
 test('<i name> renders from the active set, follows data-icons and aliases', async () => {
   const calls: string[] = [];
   registerIconSet('test-a', { load: async (n) => { calls.push(`a:${n}`); return svg(`a-${n}`); } });
-  registerIconSet('test-b', { load: async (n) => { calls.push(`b:${n}`); return svg(`b-${n}`); }, aliases: { 'caret-right': 'chevron-right' } });
+  registerIconSet('test-b', { load: async (n) => { calls.push(`b:${n}`); return svg(`b-${n}`); }, aliases: { star: 'star-outline' } });
   startIcons();
   const wrap = document.createElement('div');
   wrap.setAttribute('data-icons', 'test-a');
-  wrap.innerHTML = '<i name="caret-right"></i><i name="caret-right" aria-label="Next"></i>';
+  wrap.innerHTML = '<i name="star"></i><i name="star" aria-label="Favourite"></i>';
   document.body.append(wrap);
   await settle();
   const [deco, named] = wrap.querySelectorAll('i');
-  assert.equal(deco.querySelector('path')!.id, 'a-caret-right');
+  assert.equal(deco.querySelector('path')!.id, 'a-star');
   assert.equal(deco.getAttribute('aria-hidden'), 'true');
   assert.equal(named.getAttribute('role'), 'img');
-  assert.equal(calls.filter((c) => c === 'a:caret-right').length, 1, 'cached per set and name');
+  assert.equal(calls.filter((c) => c === 'a:star').length, 1, 'cached per set and name');
 
   wrap.setAttribute('data-icons', 'test-b');
   await settle();
-  assert.equal(deco.querySelector('path')!.id, 'b-chevron-right', 'alias applied after set switch');
+  assert.equal(deco.querySelector('path')!.id, 'b-star-outline', 'alias applied after set switch');
 
-  deco.setAttribute('name', 'plus');
+  deco.setAttribute('name', 'heart');
   await settle();
-  assert.equal(deco.querySelector('path')!.id, 'b-plus');
+  assert.equal(deco.querySelector('path')!.id, 'b-heart');
+  wrap.remove();
+});
+
+test('system glyphs stay on Phosphor under any theme set; content icons follow the theme', async () => {
+  const wrap = document.createElement('div');
+  wrap.setAttribute('data-icons', 'lucide');
+  wrap.innerHTML = '<i name="plus"></i><i name="caret-down"></i><i name="star"></i><i name="plus" data-icons="lucide"></i>';
+  document.body.append(wrap);
+  const [plus, caret, star, forced] = wrap.querySelectorAll('i');
+  assert.equal(iconSetFor(plus), 'phosphor');
+  assert.equal(iconSetFor(caret), 'phosphor');
+  assert.equal(iconSetFor(star), 'lucide', 'content icon follows the scope');
+  assert.equal(iconSetFor(forced), 'lucide', 'data-icons on the icon itself wins');
   wrap.remove();
 });
 

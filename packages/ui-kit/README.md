@@ -26,7 +26,7 @@ Dark is automatic when the host prefers it (`prefers-color-scheme: dark`), with 
 <ui-button><i slot="leading" name="plus"></i>Add</ui-button>
 ```
 
-Names are Phosphor's; other sets translate them through aliases (`caret-down` → Lucide/Tabler `chevron-down`). The set comes from the nearest `data-icons` attribute, else the active theme's `icons` value (`<html data-ui-theme>`), else `phosphor`. Built-ins load on demand from jsDelivr at pinned versions: `phosphor`, `lucide`, `tabler`. Bundle a set as a dependency instead with `registerIconSet('phosphor', moduleSet(import.meta.glob('…/*.svg', { query: '?raw', import: 'default' })))`. Fetched SVG is sanitized (drawing elements and presentation attributes only) before it touches the DOM. Icons are decorative (`aria-hidden`) unless given an `aria-label`.
+System glyphs (plus, minus, x, check, caret-*, arrow-*, dots-three, magnifying-glass) always render from Phosphor on the CDN, whatever the theme's set, so controls look the same across themes; `data-icons` on the icon itself overrides. Names are Phosphor's; other sets translate them through aliases (`caret-down` → Lucide/Tabler `chevron-down`). The set comes from the nearest `data-icons` attribute, else the active theme's `icons` value (`<html data-ui-theme>`), else `phosphor`. Built-ins load on demand from jsDelivr at pinned versions: `phosphor`, `lucide`, `tabler`. Bundle a set as a dependency instead with `registerIconSet('phosphor', moduleSet(import.meta.glob('…/*.svg', { query: '?raw', import: 'default' })))`. Fetched SVG is sanitized (drawing elements and presentation attributes only) before it touches the DOM. Icons are decorative (`aria-hidden`) unless given an `aria-label`.
 
 ## Geometry
 

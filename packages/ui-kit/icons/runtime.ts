@@ -1,11 +1,12 @@
 // Icon runtime: fills every <i name="…"> in the document with an SVG from the active icon set.
 //
-// Which set: the nearest ancestor's data-icons attribute, else the `icons` value of the theme
-// named by <html data-ui-theme>, else the default (phosphor). Changing either attribute
+// Which set: a data-icons attribute on the icon itself; else, for system glyphs (plus, minus,
+// caret-*, x, …), Phosphor from the CDN; else the nearest ancestor's data-icons, the `icons`
+// value of the theme named by <html data-ui-theme>, or the default (phosphor). Changing either attribute
 // re-renders affected icons. Fetched icons are cached per set and name.
 import { savedThemes } from '../tokens/themes/index.ts';
 import { sanitizeSvg } from './sanitize.ts';
-import { BUILTIN_SETS, DEFAULT_ICON_SET, type IconSetSource } from './sets.ts';
+import { BUILTIN_SETS, DEFAULT_ICON_SET, SYSTEM_GLYPHS, SYSTEM_ICON_SET, type IconSetSource } from './sets.ts';
 
 const sets = new Map<string, IconSetSource>(Object.entries(BUILTIN_SETS));
 const cache = new Map<string, Promise<SVGSVGElement | null>>();
@@ -23,6 +24,9 @@ export function setDefaultIconSet(name: string) { defaultSet = name; refreshIcon
 
 /** The icon set that applies to an element. */
 export function iconSetFor(el: Element): string {
+  const own = el.getAttribute('data-icons');
+  if (own && sets.has(own)) return own;
+  if (SYSTEM_GLYPHS.has(el.getAttribute('name') ?? '')) return SYSTEM_ICON_SET;
   const scoped = el.closest('[data-icons]')?.getAttribute('data-icons');
   if (scoped && sets.has(scoped)) return scoped;
   const theme = el.ownerDocument.documentElement.getAttribute('data-ui-theme');

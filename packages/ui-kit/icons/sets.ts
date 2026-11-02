@@ -49,6 +49,19 @@ export const BUILTIN_SETS = {
   }),
 } satisfies Record<string, IconSetSource>;
 
+/**
+ * System glyphs: interface marks (add, remove, close, confirm, disclosure, direction, more,
+ * search). They always render from Phosphor, loaded from the CDN, whatever icon set the
+ * theme picks, so controls look the same across themes. Content icons follow the theme.
+ */
+export const SYSTEM_ICON_SET = 'phosphor';
+export const SYSTEM_GLYPHS = new Set([
+  'plus', 'minus', 'x', 'check',
+  'caret-up', 'caret-down', 'caret-left', 'caret-right',
+  'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+  'dots-three', 'dots-three-vertical', 'magnifying-glass',
+]);
+
 export const ICON_SET_NAMES = Object.keys(BUILTIN_SETS) as (keyof typeof BUILTIN_SETS)[];
 export const DEFAULT_ICON_SET = 'phosphor';
 /** Theme values may name a built-in set or one an app registers (lowercase, dashes). */
