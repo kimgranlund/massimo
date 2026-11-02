@@ -1,0 +1,92 @@
+<!-- sdlc:managed:start v1 sha256:19a530dd4d1b -->
+# Work records
+
+This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
+
+- Ticket folders: `tickets/`; the same procedures are in `tickets/AGENTS.md`.
+- Mailbox: `messages/` is a git-ignored mailbox, not a record; follow `messages/AGENTS.md` to send, read, reply, ack, or expire a message with `<plugin-root>/scripts/messages.py`.
+- `<plugin-root>` is the installed sdlc plugin folder, the one holding `scripts/tickets.py`: `${CLAUDE_PLUGIN_ROOT}` in Claude Code; in Codex, the folder two levels above the `sdlc` skill.
+- No plugin installed: follow `.sdlc/by-hand.md` to create, claim, release or close a ticket with git alone.
+
+## Stages
+
+- proposed: 30
+  - T-0001 W1 · Floating layer foundation: positioner, dismiss layer, focus scope (floating-layer-foundation)
+  - T-0002 W1 · Separator (separator)
+  - T-0003 W1 · Avatar (avatar)
+  - T-0004 W1 · Meter (meter)
+  - T-0005 W1 · Toggle (toggle)
+  - T-0006 W1 · Radio Group (radio-group)
+  - T-0007 W1 · Checkbox Group (checkbox-group)
+  - T-0008 W1 · Fieldset (fieldset)
+  - T-0009 W2 · Tooltip (tooltip)
+  - T-0010 W2 · Popover (popover)
+  - T-0011 W2 · Menu (menu)
+  - T-0012 W2 · Context Menu (context-menu)
+  - T-0013 W2 · Preview Card (preview-card)
+  - T-0014 W2 · Menubar (menubar)
+  - T-0015 W2 · Navigation Menu (navigation-menu)
+  - T-0016 W3 · Dialog (dialog)
+  - T-0017 W3 · Alert Dialog (alert-dialog)
+  - T-0018 W3 · Drawer (drawer)
+  - T-0019 W3 · Toast (toast)
+  - T-0020 W4 · Collapsible (collapsible)
+  - T-0021 W4 · Accordion (accordion)
+  - T-0022 W4 · Tabs (tabs)
+  - T-0023 W5 · Combobox (combobox)
+  - T-0024 W5 · Autocomplete (autocomplete)
+  - T-0025 W5 · Number Field (number-field)
+  - T-0026 W5 · OTP Field (otp-field)
+  - T-0027 W5 · Form (form)
+  - T-0028 W5 · Scroll Area (scroll-area)
+  - T-0029 W5 · Slider: two-thumb range (slider-range-pair)
+  - T-0030 W5 · Toggle Group: multiple selection (toggle-group-multiple)
+- ready: 0
+- claimed: 0
+- paused: 0
+- blocked: 0
+- done: 0
+- dropped: 0
+
+## Procedures
+
+Folder layout:
+- The top of `.sdlc` holds only ticket and task folders (a folder with a `handoff.md` or `plan-doc.md`), `AGENTS.md`, `CLAUDE.md`, `by-hand.md`, `config`, `roadmap.md`, `board.md`, `notes.md`, `notes/`, `fleet.json`, `gate-ledger.jsonl`, `messages/`, `runtime/`, `supervisor/`, `evals/`, `proposals/`, `goals/`, `tickets/`, `work/`, `archive/`, and `_`- or `.`-prefixed entries. A `top_level_allow: <glob>, ...` line in `.sdlc/config` allows more.
+- Run records (role results, attempts, `runs.jsonl`, `skips.md`) go in the git-ignored records dir `.sdlc/runtime/tasks/<folder>/` (`<plugin-root>/scripts/order.py records-dir .sdlc/tickets/<folder>` prints it). Notes go to `notes.md`, an answer to another agent goes by `messages.py send`, anything else into `archive/`.
+- `python3 <plugin-root>/scripts/tickets.py --root .sdlc check` warns on any other top-level entry; `python3 <plugin-root>/scripts/tickets.py --root .sdlc tidy` lists its move into `archive/` and `python3 <plugin-root>/scripts/tickets.py --root .sdlc tidy --apply` makes it. Move nothing under `.sdlc` while a `*.running` marker exists: a role is using it.
+
+Create a ticket:
+1. Run `python3 <plugin-root>/scripts/tickets.py --root .sdlc new <feature|bug|chore|spike|idea> <slug> "<title>"`. Never pick an id by hand: `new` stamps the next id above every worktree's.
+2. Fill in the body sections of the new `handoff.md`.
+
+Ticket fields:
+status: proposed | ready | claimed | paused | blocked | done | dropped
+- `area:` is optional: the ticket's domain, one of the `areas:` names in `.sdlc/config`. It is never a lane or branch name.
+- `paused_reason:` is the one-line reason a `status: paused` ticket waits; `status: claimed` needs `claimed_by:`.
+- `branch:` and `worktree:` name the ticket's lane branch and its worktree (relative to the main checkout, under the worktree root `../<repo>.worktrees/`, `wtroot.py root`); the lane opener writes both and its close removes both. `check` warns on a `worktree:` that is not a registered worktree on that branch.
+
+Claim a ticket:
+1. Open its `handoff.md`. A `claimed_by:` front matter line means another agent holds it: pick another ticket or ask the user.
+2. Run `python3 <plugin-root>/scripts/tickets.py --root .sdlc claim <id>`; `--by <agent>` names the claimant and wins, else it takes `$SDLC_HOST`, else the host (`claude:<session8>`, `codex:<thread>`). In git it first reserves `refs/sdlc/claims/<id>`, so a claim from any worktree refuses naming the holder. It sets `status: claimed`, writes `claimed_by: <agent> <YYYY-MM-DD>` directly after `created:`, and runs `roadmap`. To take over a stale claim, add `--handover --reason "<why>"`.
+3. Start the work through `run.sh`, which puts it in progress: `<plugin-root>/scripts/run.sh planner <level> .sdlc/tickets/<folder>/handoff.md`, or `/sdlc:chain .sdlc/tickets/<folder>`. Progress shows on `/board`.
+4. Release: `python3 <plugin-root>/scripts/tickets.py --root .sdlc release <id>`. Pause: set `status: paused` and add a one-line `paused_reason:`, then rerun `roadmap`.
+
+Open a lane:
+1. Claim the ticket first: `<plugin-root>/scripts/lanes.py open` refuses an unclaimed local ticket.
+2. Run `python3 <plugin-root>/scripts/lanes.py open <name> --kind solo --ticket <id>`. It makes the worktree and branch under the worktree root (`../<repo>.worktrees/`) and writes `branch: <lane branch>` and `worktree: <path>` after `claimed_by:`, so verified, unmerged work stays visible on the roadmap and in `lanes.py list --all`. A worktree made by hand: run `python3 <plugin-root>/scripts/tickets.py --root .sdlc branch <id> <branch> --worktree <path>`.
+3. `lanes.py close <name>` removes the `branch:` and `worktree:` lines once the lane closes.
+
+Close a ticket:
+1. Run `python3 <plugin-root>/scripts/tickets.py --root .sdlc close <folder> --dry-run`. It checks the verifier verdict, lists each verifier `## Notes` line as `<i>. <tag>: <title>`, and ends with `expect <digest>`.
+2. Run `python3 <plugin-root>/scripts/tickets.py --root .sdlc close <folder> --changed "<one line>"`. It appends `## Outcome` to the handoff; add `--lessons "<lesson>"` (repeatable) for a reusable lesson, one `- Lessons:` line each: route it to a named repo skill or NOTES.md. To file the one `decide:` follow-up worth a ticket, add `--ticket <i> --expect <digest>`. `note:` items and the other `decide:` items go to `notes.md`, where adding ` -> T-NNNN` to an item's line marks it routed (the roadmap lists the rest under Open follow-ups); `fix-now:` items are finished before the close. When it refuses because files cite the folder, add `--rewrite-refs` to rewrite them to the closed `.<folder>` path.
+3. Only when a filer draft was asked for (`/file`): `python3 <plugin-root>/scripts/tickets.py --root .sdlc close <folder> --filer`.
+4. Work already done by another ticket: `python3 <plugin-root>/scripts/tickets.py --root .sdlc close <folder> --reason "<why>"`. It skips the verdict gate but files follow-ups as step 2 does: the verifier `## Notes` lines and the handoff `## Follow-ups` bullets go to `notes.md`, and `--dry-run` and `--ticket <i> --expect <digest>` work the same.
+
+Ticket lifecycle:
+1. Pick and claim: `python3 <plugin-root>/scripts/tickets.py --root .sdlc claim <id> --by <agent>`.
+2. Lane: `python3 <plugin-root>/scripts/steps.py lane .sdlc/tickets/<folder>` prints the lane.
+3. Build: the solo agent, `/sdlc:fix`, or `/sdlc:chain .sdlc/tickets/<folder>`.
+4. Verify: one independent verifier per ticket (`/sdlc:verify`).
+5. Land: `python3 <plugin-root>/scripts/fanout.py land <branch>` for a lane branch, else merge the branch.
+6. Close: `python3 <plugin-root>/scripts/tickets.py --root .sdlc close <folder> --changed "<one line>"`, as in Close a ticket above.
+<!-- sdlc:managed:end -->
