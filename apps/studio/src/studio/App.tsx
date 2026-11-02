@@ -7,7 +7,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, Scheme, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
@@ -23,6 +23,7 @@ import * as s from './styles.ts';
 
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
 const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
+const MOTION: ParamName[] = ['motion-scale', 'motion-bounce'];
 const LEVELS = ['composite', 'group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as const;
 const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
 
@@ -88,8 +89,8 @@ export function App() {
     ...Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st).map(([f, st]) => `--fonts-${f}: ${st};`),
     ...[...SERIF_REGULAR_VOICES].filter((v) => isSerifStack(faces[voices[v]])).map((v) => `--font-voice-${v}-weight: 400;`),
   ];
-  // The canvas sets its own unit and ladder, so the u-based Panda tokens recompute there too.
-  if (canvasDecls.length) canvasDecls.push(unitTokenCss());
+  // The canvas sets its own unit, ladder and motion params, so the u-based and motion Panda tokens recompute there too.
+  if (canvasDecls.length) canvasDecls.push(unitTokenCss(), motionTokenCss());
   useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}`);
   const voiceAttrs = Object.fromEntries(Object.entries(voices).filter(([v, f]) => DEFAULT_VOICES[v as keyof VoiceMap] !== f).map(([v, f]) => [`data-font-${v}`, f]));
 
@@ -189,6 +190,14 @@ export function App() {
                     </div>
                   </Field>
                 );
+              })}
+            </Group>
+          )}
+          {view === 'components' && (
+            <Group title="Motion">
+              {MOTION.map((k) => {
+                const p = PARAMS[k];
+                return <Range key={k} label={p.label} value={params[k]} min={p.min} max={p.max} step={p.step} onValue={(v) => setParam(k, v)} />;
               })}
             </Group>
           )}

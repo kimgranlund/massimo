@@ -60,16 +60,69 @@ export const RESOLVED_SPRINGS = Object.fromEntries(
   Object.entries(SPRINGS).map(([k, s]) => [k, resolveSpring(s)]),
 ) as Record<SpringName, ResolvedSpring>;
 
+// ── Theme inputs (tokens/themes/params.ts) ──
+// --ui-motion-scale multiplies every duration (0 = instant, 1 = as designed).
+// --ui-motion-bounce (0–1) blends each overshooting spring with its critically damped twin (same
+// perceptual duration, bounce 0): settle time and every linear() sample interpolate, so 1 is the
+// exact spring, 0 the exact critically damped one, and values between are a blend of the two
+// curves (not a solved spring; a CSS custom property cannot re-solve one). The blend is plain
+// calc() inside linear(), so it stays a precomputed string with no runtime generation.
+export const SCALE_VAR = 'var(--ui-motion-scale)';
+export const BOUNCE_VAR = 'var(--ui-motion-bounce)';
+
+/** The spring with its bounce removed: the 0 end of --ui-motion-bounce. */
+export const flatSpring = (s: Spring): Spring => ({ duration: s.duration, bounce: 0 });
+
+const fmt = (n: number) => String(round4(n));
+const blend = (a: number, b: number, unit = '') => {
+  const d = round4(b - a);
+  if (d === 0) return `${fmt(a)}${unit}`;
+  return `${fmt(a)}${unit} ${d < 0 ? '-' : '+'} ${fmt(Math.abs(d))}${unit} * ${BOUNCE_VAR}`;
+};
+
+/** CSS duration of a spring: settle time × --ui-motion-scale, blended by --ui-motion-bounce when it overshoots. */
+export function springDurationCss(s: Spring): string {
+  const r = resolveSpring(s), f = resolveSpring(flatSpring(s));
+  return r.ms === f.ms ? `calc(${r.ms}ms * ${SCALE_VAR})` : `calc((${blend(f.ms, r.ms, 'ms')}) * ${SCALE_VAR})`;
+}
+
+/** CSS easing of a spring: its linear() samples, each blended by --ui-motion-bounce when it overshoots. */
+export function springEasingCss(s: Spring): string {
+  const r = resolveSpring(s);
+  if (r.bounce === 0) return r.css;
+  const f = resolveSpring(flatSpring(s));
+  return `linear(${r.points.map((y, i) => { const b = blend(f.points[i], y); return b.includes(' ') ? `calc(${b})` : b; }).join(', ')})`;
+}
+
+// ── Semantic layer: transition intents ──
+// Components name what a transition is for; the intent picks the spring.
+export const INTENTS = {
+  /** Hover, press, selection and validity: color, shadow and opacity changes. */
+  feedback: 'quick',
+  /** A state flip that moves something: switch thumb, radio dot, chevron, range key steps, swiper dot. */
+  toggle: 'snappy',
+  /** Something appearing or growing: popups, hover controls, progress fill. */
+  reveal: 'smooth',
+  /** Drawing attention: visible overshoot (unused by components). */
+  emphasis: 'bouncy',
+} as const satisfies Record<string, SpringName>;
+export type IntentName = keyof typeof INTENTS;
+
 // Panda tokens: durations.<spring> and easings.<spring> are a pair; use them together.
+// Durations carry the theme inputs; the static settle times live in RESOLVED_SPRINGS (and DTCG).
+type Token = { value: string };
 export const durations = {
   instant: { value: '0ms' },
-  ...Object.fromEntries(Object.entries(RESOLVED_SPRINGS).map(([k, r]) => [k, { value: `${r.ms}ms` }])),
+  ...(Object.fromEntries(Object.entries(SPRINGS).map(([k, s]) => [k, { value: springDurationCss(s) }])) as Record<SpringName, Token>),
 };
 export const easings = {
-  ...Object.fromEntries(Object.entries(RESOLVED_SPRINGS).map(([k, r]) => [k, { value: r.css }])),
+  ...(Object.fromEntries(Object.entries(SPRINGS).map(([k, s]) => [k, { value: springEasingCss(s) }])) as Record<SpringName, Token>),
   // Plain curve for discrete flips (display/overlay in popovers) and anything that must not overshoot.
   linear: { value: 'linear' },
 };
+// Semantic tokens: durations.<intent> and easings.<intent> point at their spring's pair.
+export const semanticDurations = Object.fromEntries(Object.entries(INTENTS).map(([k, s]) => [k, { value: `{durations.${s}}` }])) as Record<IntentName, Token>;
+export const semanticEasings = Object.fromEntries(Object.entries(INTENTS).map(([k, s]) => [k, { value: `{easings.${s}}` }])) as Record<IntentName, Token>;
 
 // ── cubic-bezier approximation (for DTCG and tools without linear()) ──
 const bez = (t: number, a: number, b: number) => 3 * a * t * (1 - t) ** 2 + 3 * b * t * t * (1 - t) + t ** 3;
@@ -99,3 +152,20 @@ export function fitBezier(r: ResolvedSpring): [number, number, number, number] {
   }
   return p.map((v) => Math.round(v * 1000) / 1000) as [number, number, number, number];
 }
+
+/**
+ * The motion token variables (spring durations and easings, then the intents that point at them)
+ * as declarations. Panda declares them on :root, where --ui-motion-* resolve with the root values;
+ * a scope that sets those params for its subtree (the jig canvas) redeclares them, as with unitTokenCss().
+ */
+export function motionTokenVars(): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const [k, v] of Object.entries(durations)) if (v.value.includes('--ui-')) out[`--durations-${k}`] = v.value;
+  for (const [k, v] of Object.entries(easings)) if (v.value.includes('--ui-')) out[`--easings-${k}`] = v.value;
+  for (const [k, s] of Object.entries(INTENTS)) {
+    out[`--durations-${k}`] = `var(--durations-${s})`;
+    out[`--easings-${k}`] = `var(--easings-${s})`;
+  }
+  return out;
+}
+export const motionTokenCss = () => Object.entries(motionTokenVars()).map(([k, v]) => `${k}: ${v};`).join('\n  ');

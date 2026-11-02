@@ -2,7 +2,7 @@
 
 ## Theme parameters
 
-Numbers the geometry derives from (`tokens/themes/params.ts`), emitted as `--ui-<name>` on `:root`:
+Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: [motion](motion.md#theme-inputs)), emitted as `--ui-<name>` on `:root`:
 
 | Parameter | Range | Default |
 |---|---|---|
@@ -12,6 +12,8 @@ Numbers the geometry derives from (`tokens/themes/params.ts`), emitted as `--ui-
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | `type-ratio` | 1–1.5 | 1.333 |
 | `type-rhythm` | 0, 0.5, 1 (× u) | 1 |
+| `motion-scale` | 0–2 (× every duration; 0 instant) | 1 |
+| `motion-bounce` | 0–1 (overshoot: 0 critically damped, 1 as designed) | 1 |
 | `pad-<level>`, `gap-<level>` | container padding and gap in u, 0.5 steps (composite padding 0–1.5, others 0–12) | composite 0.5, group 1, collection 2, tile 3, card 4, panel 6, region 8, page 8 |
 
 Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` accepts only known parameters in range, plus `icons`), emitted as `:root[data-ui-theme="name"]`. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does.

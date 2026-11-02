@@ -3,7 +3,8 @@
 //   typography.dtcg.json    faces (fontFamily), voices (aliases), role styles (typography), role metrics
 //   color.light.dtcg.json   Spectrum ramps (oklch color tokens) and roles (aliases) and shadows, light scheme
 //   color.dark.dtcg.json    the same, dark scheme
-//   motion.dtcg.json        springs: settle duration, cubic-bezier fit, transition; exact linear() in extensions
+//   motion.dtcg.json        springs: settle duration, cubic-bezier fit, transition; exact linear() in extensions;
+//                           intents (feedback, toggle, reveal, emphasis) as transition aliases
 //   index.json              file list (not a DTCG file)
 // DTCG has no arithmetic: $value is the default-theme value; com.massimo.formula carries the rule and
 // com.massimo.bySize the value at every size. test/tokens-dtcg.test.ts validates every file against
@@ -15,7 +16,7 @@ import { FACES, VOICES, DEFAULT_VOICES, FONT_FAMILIES, TYPE_ROLES, TYPE_DEFAULTS
 import { ROLE_STEPS, SHADOWS, roleStep } from '../tokens/colors/spectrum/index.ts';
 import DEFAULTS from '../tokens/colors/spectrum/defaults.json' with { type: 'json' };
 import { rows, type Row } from './geometry-csv.ts';
-import { RESOLVED_SPRINGS, fitBezier } from '../tokens/motion/index.ts';
+import { RESOLVED_SPRINGS, INTENTS, fitBezier } from '../tokens/motion/index.ts';
 
 type Json = Record<string, any>;
 const SCHEMA = 'https://www.designtokens.org/schemas/2025.10/format.json';
@@ -149,6 +150,9 @@ export function motionTokens(): Json {
     put(tree, ['motion', name, 'easing'], { $type: 'cubicBezier', $value: fitBezier(r), $extensions: ext });
     put(tree, ['motion', name, 'transition'], { $type: 'transition', $value: { duration: `{motion.${name}.duration}`, delay: { value: 0, unit: 'ms' }, timingFunction: `{motion.${name}.easing}` }, $extensions: ext });
   }
+  // Values are at the default theme (motion-scale 1, motion-bounce 1); the params are CSS-only inputs.
+  for (const [intent, spring] of Object.entries(INTENTS))
+    put(tree, ['motion', 'intent', intent], { $type: 'transition', $value: `{motion.${spring}.transition}`, $description: `${intent}: the ${spring} spring` });
   return tree;
 }
 

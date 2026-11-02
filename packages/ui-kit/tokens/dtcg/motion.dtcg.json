@@ -177,6 +177,28 @@
           }
         }
       }
+    },
+    "intent": {
+      "feedback": {
+        "$type": "transition",
+        "$value": "{motion.quick.transition}",
+        "$description": "feedback: the quick spring"
+      },
+      "toggle": {
+        "$type": "transition",
+        "$value": "{motion.snappy.transition}",
+        "$description": "toggle: the snappy spring"
+      },
+      "reveal": {
+        "$type": "transition",
+        "$value": "{motion.smooth.transition}",
+        "$description": "reveal: the smooth spring"
+      },
+      "emphasis": {
+        "$type": "transition",
+        "$value": "{motion.bouncy.transition}",
+        "$description": "emphasis: the bouncy spring"
+      }
     }
   }
 }
