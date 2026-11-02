@@ -95,7 +95,7 @@
       },
       "constraints": [
         "Not interactive and fires no events.",
-        "One character makes a circle: min width = height, and the bare label edge is capped so one digit fits at every size.",
+        "Min width = height. Labels carry 1u on both sides, so a one-digit badge is a circle up to u = 4 and a short pill above.",
         "A count that changes needs a live region elsewhere if it must be announced."
       ],
       "avoidWhen": [

@@ -135,15 +135,11 @@ test('badge / tag / chip: text, slots, padding', () => {
   assert.equal(badge.slot, badge.height - 4, 'badge slot is one u below the badge');
 });
 
-test('badge / tag / chip label wrapper: half the control edges', () => {
-  const u = 4, tag = resolveBtg('tag'), badge = resolveBtg('badge');
-  assert.deepEqual([tag.bareEdge, tag.slotEdge, tag.between], [u, u / 2, u / 4]);
-  assert.deepEqual([badge.bareEdge, badge.slotEdge, badge.between], [u / 2, u / 4, u / 4]);
-  // A one-character badge stays a circle at every size: pad + edges + one digit fit in the height.
-  for (const uu of [2, 3, 4, 5, 6, 8, 12]) for (const border of [0, 1]) {
-    const b = resolveBtg('badge', { unit: uu, border, ch: 6 });
-    assert.ok(2 * b.padding + 2 * border + 2 * b.bareEdge + 6 <= b.minWidth + 1e-9, `u=${uu} B=${border}`);
-  }
-  assert.deepEqual(resolveTextRun({ leading: true }, { bareEdge: tag.bareEdge, slotEdge: tag.slotEdge, between: tag.between }).contents, { start: u / 2, end: u });
+test('badge / tag / chip label wrapper: tag and badge 1u, chip half the control', () => {
+  const u = 4, tag = resolveBtg('tag'), badge = resolveBtg('badge'), chip = resolveBtg('chip');
+  assert.deepEqual([tag.bareEdge, tag.slotEdge, tag.between], [u, u, u / 4]);
+  assert.deepEqual([badge.bareEdge, badge.slotEdge, badge.between], [u, u, u / 4]);
+  assert.deepEqual([chip.bareEdge, chip.slotEdge, chip.between], [u, u / 2, u / 4]);
+  assert.deepEqual(resolveTextRun({ leading: true }, { bareEdge: tag.bareEdge, slotEdge: tag.slotEdge, between: tag.between }).contents, { start: u, end: u });
 });
 

@@ -41,7 +41,7 @@ for (const c of cases) {
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
     <ui-button id="adorn">Save<span slot="suffix">⌘S</span></ui-button>
     <ui-input id="money" label="M"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
-    <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="chProbe"><span style="display:inline-block;width:1ch"></span></ui-badge><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
+    <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-badge id="badgeSfx"><span slot="prefix">#</span>12<span slot="suffix">k</span></ui-badge><ui-tag id="tagTrail">Tag<i slot="trailing" name="star"></i></ui-tag><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
@@ -53,8 +53,7 @@ for (const c of cases) {
   const seg = box.querySelector('ui-segmented'), [o1, o2] = seg.querySelectorAll('ui-option');
   const cs = (el) => getComputedStyle(el), rect = (el) => el.getBoundingClientRect();
   const badge = box.querySelector('ui-badge'), tag = box.querySelector('ui-tag'), chip = box.querySelector('ui-chip');
-  const chPx = rect(box.querySelector('#chProbe [data-part=contents] > span')).width;
-  const rb = resolveBtg('badge', { ...g, ch: chPx }), rt = resolveBtg('tag', g), rc = resolveBtg('chip', g);
+  const rb = resolveBtg('badge', g), rt = resolveBtg('tag', g), rc = resolveBtg('chip', g);
   const slotOf = (el) => el.querySelector('[data-part=leading]'), contentsOf = (el) => el.querySelector('[data-part=contents]');
   const checks = {
     'button.height': [r2(rect(btn).height), ctl.height],
@@ -97,7 +96,8 @@ for (const c of cases) {
     'option.gap': [r2(rect(o2).left - rect(o1).right), cmp.gap],
     'badge.height': [r2(rect(badge).height), rb.height],
     'badge.font': [px(cs(badge).fontSize), rb.fontSize],
-    'badge.minWidth': [r2(rect(badge).width), rb.minWidth],
+    'badge.minWidth': [px(cs(badge).minWidth), rb.minWidth],
+    'badge.width': [r2(rect(badge).width), r2(Math.max(rb.minWidth, 2 * rb.padding + 2 * rb.border + 2 * rb.bareEdge + rect(contentsOf(badge)).width - 2 * rb.bareEdge))],
     'badge.radius': [px(cs(badge).borderTopLeftRadius), rb.radius],
     'tag.height': [r2(rect(tag).height), rt.height],
     'tag.font': [px(cs(tag).fontSize), rt.fontSize],
@@ -134,7 +134,6 @@ for (const c of cases) {
   runChecks('pattern.tag.trailing', $('tagTrail'), { trailing: true }, rt);
   runChecks('pattern.badge', badge, {}, rb);
   runChecks('pattern.badge.adorned', $('badgeSfx'), { prefix: true, suffix: true }, rb);
-  checks['badge.circle'] = [r2(rect(badge).width), rb.minWidth];
   runChecks('pattern.checkbox', $('chkSfx'), { leading: true, suffix: true }, { bareEdge: 0 });
   checks['image.ratio.preset'] = [r2(rect($('imgWide')).height), 90];
   checks['image.ratio.custom'] = [r2(rect($('imgCustom')).height), r2(160 / 1.5)];

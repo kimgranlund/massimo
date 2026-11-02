@@ -228,7 +228,7 @@
     },
     "badge": {
       "geometryFamily": "btg",
-      "element": "Short status or count; one character makes a circle. Uses the construction pattern.",
+      "element": "Short status or count; at least as wide as tall. Uses the construction pattern.",
       "parts": [
         "slot-leading?",
         "slot-prefix?",

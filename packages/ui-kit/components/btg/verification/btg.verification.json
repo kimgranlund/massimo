@@ -18,7 +18,7 @@
     },
     {
       "path": "components/btg/btg.manifest.json",
-      "sha256": "08e99c10ad63f1836a211e9f75ddd80d0920b5944ea84b33553caa5125501214"
+      "sha256": "58f371ee35d08488848cfcf4e2bb011bba47e9d5b0a4d39be37422b306280675"
     }
   ],
   "renderers": {

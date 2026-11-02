@@ -13,7 +13,6 @@ export const BTG = ':is(ui-badge, ui-tag, ui-chip)';
 const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
 export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')})`;
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
-const TAGCHIP = ':is(ui-tag, ui-chip)';
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
 // Slotted hosts: buttons, options, and the input control and select trigger, which are laid out as
@@ -118,18 +117,16 @@ export const geometry = defineGlobalStyles({
   'ui-chip': { '--h': 'var(--chip-h)', '--font': 'calc(10px + var(--u))' },
   'ui-tag': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
   'ui-badge': { '--h': 'var(--badge-h)', '--font': '10px', justifyContent: 'center' },
-  // Label wrapper padding (resolveBtg, half the control's): the host keeps 0.5u − B; the text run
-  // carries 1u at a bare edge and 0.5u beside a slot for tag and chip, 0.5u and 0.25u for badge
-  // (so a one-character badge stays a circle); text parts sit 0.5u apart.
+  // Label wrapper padding (resolveBtg): the host keeps 0.5u − B; tag and badge labels carry 1u on
+  // both sides (beside a slot too); chip, half the control's: 1u at a bare edge, 0.5u beside a slot.
+  // Text parts sit 0.5u apart.
   [`${BTG} > ${SLOT}`]: { display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)' },
   [`${BTG} > ${SLOT} > *`]: { width: 'var(--icon)', height: 'var(--icon)', flexShrink: 0 },
   [`${BTG} > ${ADORN}`]: { flexShrink: 0, whiteSpace: 'nowrap' },
-  ...textRun(TAGCHIP, 'calc(0.5 * var(--u))', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
-  // Badge bare edge: 0.5u, capped so one digit (1ch; badges use tabular figures) still fits the
-  // height and a one-character badge stays a circle at every size.
-  ...textRun('ui-badge', 'calc(0.25 * var(--u))', 'max(0px, min(calc(0.5 * var(--u)), calc((var(--h) - 2 * var(--pad) - 2 * var(--b) - 1ch) / 2)))', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
   // Chip centers its text with block padding; tag and badge need none, the row centers it.
-  [`ui-chip > ${TEXT}`]: { paddingBlock: 'var(--line-pad)' },
+  ...textRun('ui-chip', 'calc(0.5 * var(--u))', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)', paddingBlock: 'var(--line-pad)' }, 'calc(0.25 * var(--u))'),
+  ...textRun('ui-tag', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
+  ...textRun('ui-badge', 'var(--u)', 'var(--u)', { display: 'flex', alignItems: 'center', lineHeight: 'var(--line)' }, 'calc(0.25 * var(--u))'),
   // Fill slots nest inside the 0.5u edge.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${BTG} > ${SLOT}, ${BTG}:is([icon-size=fill], [data-icon-size=fill]) > ${SLOT}`]: {
     borderRadius: 'max(0px, calc(var(--radius) - 0.5 * var(--u)))',
