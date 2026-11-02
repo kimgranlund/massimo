@@ -37,7 +37,7 @@ export const rows: Row[] = [
   { id: 'control.fill.radius', family: 'control', element: 'fill slot', quantity: 'fill slot radius', formula: 'max(0, radius - u)', value: (u) => Math.max(0, ctl(u).radius - u), status: 'implemented', notes: 'nested inside the control radius' },
 
   // Fields
-  { id: 'field.paddingInline', family: 'control', element: 'input', quantity: 'text inline padding', formula: '(u - B) + 2u', value: (u) => resolveField({ unit: u }).paddingStart, status: 'implemented', notes: 'text sits where a slotless button label sits; select: same start, 1u before the 6u chevron slot, then u - B' },
+  { id: 'field.paddingInline', family: 'control', element: 'input', quantity: 'text inline padding', formula: '(u - B) + 2u', value: (u) => resolveField({ unit: u }).paddingStart, status: 'implemented', notes: 'host 1u + contents 2u (button label rule); select: contents 2u | 1u, then the 6u trailing chevron slot, then u - B' },
   { id: 'select.paddingStart', family: 'control', element: 'select trigger', quantity: 'start padding', formula: '(u - B) + u', value: (u) => resolveSelectTrigger({ unit: u }).paddingStart, status: 'implemented', notes: '' },
   { id: 'select.paddingEnd', family: 'control', element: 'select trigger', quantity: 'end padding', formula: 'u - B', value: (u) => resolveSelectTrigger({ unit: u }).paddingEnd, status: 'implemented', notes: 'chevron occupies a trailing 6u slot' },
   { id: 'select.chevron.icon', family: 'control', element: 'select trigger', quantity: 'chevron icon', formula: 'icon sm: min(font - 0.5u, 6u)', value: (u) => resolveSelectTrigger({ unit: u }).chevronIcon, status: 'implemented', notes: 'all caret-* icons in slots use sm' },

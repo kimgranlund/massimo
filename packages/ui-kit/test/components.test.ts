@@ -58,7 +58,8 @@ test('ui-input: zero native form elements, ARIA wiring', async () => {
   assert.equal(ed.getAttribute('aria-labelledby'), label.id);
   assert.equal(ed.getAttribute('aria-describedby'), `${ed.id}-desc`);
   assert.equal(ed.getAttribute('aria-placeholder'), 'you@example.com');
-  assert.equal(ed.dataset.part, 'control');
+  assert.equal(ed.dataset.part, 'contents');
+  assert.equal(ed.parentElement!.dataset.part, 'control', 'the control wraps the text part');
   el.remove();
 });
 
@@ -230,7 +231,7 @@ test('ui-select: options move into popup; open, move, commit, cancel', async () 
   assert.equal(sel.popup!.contains(sel.options[0]), true);
   assert.equal(trigger.getAttribute('role'), 'combobox');
   assert.equal(trigger.getAttribute('aria-expanded'), 'false');
-  assert.equal(sel.querySelector('[data-part=value]')!.textContent, 'Select…');
+  assert.equal(sel.querySelector('[data-part=trigger] > [data-part=contents]')!.textContent, 'Select…');
 
   key(trigger, 'ArrowDown'); await tick();
   assert.equal(trigger.getAttribute('aria-expanded'), 'true');
@@ -240,7 +241,7 @@ test('ui-select: options move into popup; open, move, commit, cancel', async () 
   key(trigger, 'Enter'); await tick();
   assert.equal(sel.value, 'c');
   assert.equal(trigger.getAttribute('aria-expanded'), 'false');
-  assert.equal(sel.querySelector('[data-part=value]')!.textContent, 'Cherry');
+  assert.equal(sel.querySelector('[data-part=trigger] > [data-part=contents]')!.textContent, 'Cherry');
 
   key(trigger, ' '); await tick();
   key(trigger, 'Home'); await tick();

@@ -13,6 +13,8 @@ const ENABLED = ':not([aria-disabled=true], [aria-busy=true])';
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true])';
 const LIST = ':is(ui-listbox, ui-segmented, ui-palette)';
+// A field state on the host itself (select trigger) or on its text part (input contents).
+const HAS = (attr: string) => `${attr}, :has(> ${attr})`;
 const DANGER_TINT = (pct: number) => `color-mix(in oklch, var(--colors-danger-solid) ${pct}%, var(--colors-bg-muted))`;
 
 export const defaults = defineGlobalStyles({
@@ -47,39 +49,40 @@ export const defaults = defineGlobalStyles({
   [`${FIELD} > [data-part=description]`]: { textStyle: 'caption', color: 'fg.muted' },
   [`${FIELD} > [data-part=error]`]: { textStyle: 'caption', color: 'danger.fg' },
   [CONTROL]: {
-    // Text sits where a slotless button label sits: padding + 2u (resolveField).
-    display: 'flex', alignItems: 'center', width: '100%', height: 'var(--h)',
-    paddingInline: 'calc(var(--pad) + 2 * var(--u))', borderWidth: 'var(--b)', borderColor: 'border.strong',
+    // Laid out as a button: 1u (padding + border) on the host; contents and slots carry the rest.
+    display: 'flex', alignItems: 'center', width: '100%', height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
     borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontSize: 'var(--font)', lineHeight: 'var(--leading)',
   },
   // aria-invalid only: native :invalid would flag untouched required fields on load.
   // Invalid: a danger-tinted fill (borders default to 0, so the edge alone cannot carry it).
-  [`:is(${CONTROL}):not([aria-disabled=true], [aria-readonly=true]):hover`]: { bg: 'bg.mutedHover' },
-  [`:is(${CONTROL})[aria-invalid=true]`]: { borderColor: 'danger.solid', bg: DANGER_TINT(14) },
-  [`:is(${CONTROL})[aria-invalid=true]:hover`]: { bg: DANGER_TINT(20) },
+  [`:is(${CONTROL}):not(${HAS('[aria-disabled=true]')}, ${HAS('[aria-readonly=true]')}, :has(> :disabled)):hover`]: { bg: 'bg.mutedHover' },
+  [`:is(${CONTROL}):is(${HAS('[aria-invalid=true]')})`]: { borderColor: 'danger.solid', bg: DANGER_TINT(14) },
+  [`:is(${CONTROL}):is(${HAS('[aria-invalid=true]')}):hover`]: { bg: DANGER_TINT(20) },
   // Read-only: the value stays selectable but the field drops its fill.
-  [`:is(${CONTROL})[aria-readonly=true]`]: { bg: 'bg.subtle', cursor: 'default' },
+  [`:is(${CONTROL}):is(${HAS('[aria-readonly=true]')})`]: { bg: 'bg.subtle', cursor: 'default' },
   // Text fields always show focus, also after a pointer click (the caret target must be visible).
-  [`:root[data-modality] ${FIELD} > [data-part=control][contenteditable]:focus-visible`]: { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
+  // The ring sits on the control (the shape), not the text part inside it.
+  [`:root[data-modality] :is(ui-input, [data-ui=input]) > [data-part=control]:focus-within`]: { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
+  [`:is(ui-input, [data-ui=input]) > [data-part=control] > [data-part=contents]:focus-visible`]: { outline: 'none' },
   // Required: a marker after the label (and after a checkbox/switch's own text).
   [`${FIELD}[required] > [data-part=label]::after, :is(ui-checkbox, ui-switch)[aria-required=true]::after`]: { content: '" *"', color: 'danger.fg' },
-  [`:is(${CONTROL}):is(:disabled, [aria-disabled=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
-  [`:is(${CONTROL})::placeholder`]: { color: 'fg.muted' },
+  [`:is(${CONTROL}):is(${HAS('[aria-disabled=true]')}, :has(> :disabled))`]: { opacity: 0.5, cursor: 'not-allowed' },
+  [`:is(${CONTROL}) > [data-part=contents]::placeholder`]: { color: 'fg.muted' },
 
   // Contenteditable text field
-  '[data-part=control][contenteditable]': { whiteSpace: 'pre', overflowX: 'auto', scrollbarWidth: 'none', cursor: 'text', minWidth: 0 },
-  '[data-part=control][contenteditable]:empty::before': { content: 'attr(data-placeholder)', color: 'fg.muted', pointerEvents: 'none' },
-  '[data-part=control][data-secret]': { WebkitTextSecurity: 'disc' },
+  '[data-part=contents][contenteditable]': { whiteSpace: 'pre', overflowX: 'auto', scrollbarWidth: 'none', cursor: 'text', minWidth: 0 },
+  '[data-part=contents][contenteditable]:empty::before': { content: 'attr(data-placeholder)', color: 'fg.muted', pointerEvents: 'none' },
+  '[data-part=contents][data-secret]': { WebkitTextSecurity: 'disc' },
 
   // Select trigger and popup
   // A button with a trailing slot (resolveSelectTrigger): padding + 2u, value, 1u, chevron slot, padding.
-  'ui-select > [data-part=trigger]': { cursor: 'pointer', userSelect: 'none', paddingInlineEnd: 'var(--pad)' },
+  'ui-select > [data-part=trigger]': { cursor: 'pointer', userSelect: 'none' },
   // Open: the trigger holds the pressed fill and the chevron turns.
   'ui-select > [data-part=trigger][aria-expanded=true]': { bg: 'bg.mutedActive' },
-  'ui-select > [data-part=trigger][aria-expanded=true] [data-part=chevron]': { rotate: '180deg' },
-  'ui-select [data-part=value]': { flex: '1', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
-  'ui-select [data-part=value][data-placeholder]': { color: 'fg.muted' },
-  'ui-select [data-part=chevron]': { display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', marginInlineStart: 'var(--u)', color: 'fg.muted' },
+  'ui-select > [data-part=trigger][aria-expanded=true] > [data-part=trailing]': { rotate: '180deg' },
+  'ui-select > [data-part=trigger] > [data-part=contents]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
+  'ui-select > [data-part=trigger] > [data-part=contents][data-placeholder]': { color: 'fg.muted' },
+  'ui-select > [data-part=trigger] > [data-part=trailing]': { color: 'fg.muted' },
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',

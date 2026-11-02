@@ -764,7 +764,7 @@
         "value": 12,
         "unit": "px"
       },
-      "$description": "input · text inline padding · text sits where a slotless button label sits; select: same start, 1u before the 6u chevron slot, then u - B",
+      "$description": "input · text inline padding · host 1u + contents 2u (button label rule); select: contents 2u | 1u, then the 6u trailing chevron slot, then u - B",
       "$extensions": {
         "com.massimo.formula": "(u - B) + 2u",
         "com.massimo.status": "implemented",

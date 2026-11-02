@@ -15,7 +15,10 @@ export const LAYOUT_CONTAINERS = `:is(${LAYOUT.map((k) => `ui-${k}`).join(', ')}
 const CONTAINER_TAGS = `:where(${LAYOUT.map((k) => `ui-${k}`).join(', ')}, ui-listbox, ui-segmented, ui-select)`;
 const TAGCHIP = ':is(ui-tag, ui-chip)';
 export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
-export const SLOTTED = ':is(ui-button, ui-option, [data-ui=button])';
+// Slotted hosts: buttons, options, and the input control and select trigger, which are laid out as
+// buttons (1u padding on the host; contents and slots carry the rest). :where() keeps the tag specificity.
+const FIELD_HOSTS = ':where(:is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger])';
+export const SLOTTED = `:is(ui-button, ui-option, [data-ui=button], ${FIELD_HOSTS})`;
 const SLOT = ':is([data-part=leading], [data-part=trailing])';
 
 export const geometry = defineGlobalStyles({
@@ -59,17 +62,19 @@ export const geometry = defineGlobalStyles({
     display: 'flex', alignItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)',
     paddingInline: 'var(--u)', paddingBlock: 'calc(0.75 * var(--u))', lineHeight: 'var(--leading)',
   },
+  // Field text (input, select value) fills the row as a block, so it can scroll or ellipsize.
+  [`${FIELD_HOSTS} > [data-part=contents]`]: { display: 'block', flex: '1', minWidth: 0 },
   // Button and option label: 1u more on a side with no leading/trailing element (2u there, 1u beside a slot).
   // Web components keep empty parts as [hidden]; React omits them, so contents is first/last child.
-  [`:is(ui-button, ui-option, [data-ui=button]) > :is([data-part=leading][hidden] + [data-part=contents], [data-part=contents]:first-child)`]: {
+  [`${SLOTTED} > :is([data-part=leading][hidden] + [data-part=contents], [data-part=contents]:first-child)`]: {
     paddingInlineStart: 'calc(2 * var(--u))',
   },
-  [`:is(ui-button, ui-option, [data-ui=button]) > :is([data-part=contents]:has(+ [data-part=trailing][hidden]), [data-part=contents]:last-child)`]: {
+  [`${SLOTTED} > :is([data-part=contents]:has(+ [data-part=trailing][hidden]), [data-part=contents]:last-child)`]: {
     paddingInlineEnd: 'calc(2 * var(--u))',
   },
 
   // Carets and the select chevron use icon size sm regardless of icon-size.
-  [`:is(${SLOT}, [data-part=chevron]) > i[name^="caret-"]`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
+  [`${SLOT} > i[name^="caret-"]`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
 
   // Fill: artwork covers the whole slot, with a radius nested inside the control's.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${SLOT}`]: {

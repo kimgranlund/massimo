@@ -47,7 +47,7 @@ Icons capped by the slot: `md` below u≈2.2 and `lg` below u≈2.9 (at u=2: md 
 
 Usage: `<ui-button><svg slot="leading">…</svg>Save</ui-button>`. Anything with `slot="leading"`/`"trailing"` goes in that slot; everything else is contents. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} trailing={…} iconSize="lg" size={3}>`.
 
-Inputs and select triggers are laid out as buttons. Text fields put their text where a slotless button label sits (padding + 2u each side). The select trigger is a button with a trailing slot: padding + 2u, the value, 1u, the chevron in a 6u slot, padding. Indicators (the select chevron and any `caret-*` icon in a slot) are always icon size sm, whatever `icon-size` says.
+Inputs and select triggers are laid out as buttons: the host (input `[data-part=control]`, select `[data-part=trigger]`) has only 1u (padding u − B plus border), and its parts carry the rest with the button rules. The input's text is its `[data-part=contents]` (2u each side, as a slotless label). The select trigger is contents (the value, 2u | 1u) plus the chevron in a 6u `[data-part=trailing]` slot. Field states (`aria-invalid`, `aria-readonly`, `aria-disabled`) sit on the input's contents and the select's trigger; styles read both through `:has()`. Indicators (the select chevron and any `caret-*` icon in a slot) are always icon size sm, whatever `icon-size` says.
 
 ## Choices, tracks, swatches, swiper
 

@@ -43,14 +43,17 @@ export class UIInput extends UIFormElement {
     const message = this.#message();
     return html`
       <span data-part="label" ?hidden=${!this.label} @click=${this.#focusEditor}>${this.label}</span>
-      <div data-part="control" @beforeinput=${this.#onBeforeInput} @input=${this.#onInput}
-        @blur=${this.#onBlur} @copy=${this.#guardSecret} @cut=${this.#guardSecret}></div>
+      <div data-part="control" @click=${this.#onControlClick}>
+        <div data-part="contents" @beforeinput=${this.#onBeforeInput} @input=${this.#onInput}
+          @blur=${this.#onBlur} @copy=${this.#guardSecret} @cut=${this.#guardSecret}></div>
+      </div>
       <span data-part="description" ?hidden=${!this.description}>${this.description}</span>
       <span data-part="error" ?hidden=${!message}>${message}</span>`;
   }
 
   update() {
-    const [label, editor, description, error] = this.children as unknown as HTMLElement[];
+    const [label, control, description, error] = this.children as unknown as HTMLElement[];
+    const editor = control.firstElementChild as HTMLElement;
     const a = fieldAttrs({
       id: this.#id, hasLabel: !!this.label, hasDescription: !!this.description, error: this.#message() || undefined,
       required: this.required, disabled: this.isDisabled, readonly: this.readonly,
@@ -79,12 +82,14 @@ export class UIInput extends UIFormElement {
   }
 
   /** The editable element, for selection APIs. */
-  get editor() { return this.children[1] as HTMLElement | undefined; }
+  get editor() { return (this.children[1]?.firstElementChild ?? undefined) as HTMLElement | undefined; }
   focus(options?: FocusOptions) { this.editor?.focus(options); }
 
   #message() { return this.error || (this.userInvalid ? this.problem!.message : ''); }
 
   #focusEditor = () => { if (!this.isDisabled) this.focus(); };
+  // The control's 1u padding belongs to the field: a press there focuses the text.
+  #onControlClick = (e: Event) => { if (e.target === e.currentTarget) this.#focusEditor(); };
 
   #onBeforeInput = (e: InputEvent) => {
     if (onTextBeforeInput(e) === 'submit' && !this.isDisabled) this.form?.requestSubmit();

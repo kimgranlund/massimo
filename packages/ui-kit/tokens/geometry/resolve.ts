@@ -137,17 +137,19 @@ export function resolveComposite(input: GeometryInput & { container?: boolean } 
 
 /** Text fields: the editable text sits where button contents sit (padding + 1u). */
 export function resolveField(input: GeometryInput = {}) {
-  // Text sits exactly where a button label with no slots sits: padding + 2u each side.
+  // Laid out as a slotless button: the control has 1u (padding + border); its contents part
+  // carries the label padding (2u each side), so text sits where a button label sits.
   const c = resolveControl(input), label = resolveButtonContents(false, false, input);
-  return { ...c, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end };
+  return { ...c, contentsStart: label.start, contentsEnd: label.end, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end };
 }
 
 /** Select trigger: value as contents, chevron in a trailing 6u slot. */
 export function resolveSelectTrigger(input: GeometryInput = {}) {
-  // Laid out as a button with a trailing slot: padding + 2u, value, 1u, 6u chevron slot, padding.
+  // Laid out as a button with a trailing slot: 1u on the trigger; contents (the value) 2u | 1u;
+  // the chevron in the 6u trailing slot.
   const c = resolveControl(input), label = resolveButtonContents(false, true, input);
   // The chevron (like every caret) is icon size sm.
-  return { ...c, paddingStart: c.padding + label.start, valueGap: label.end, paddingEnd: c.padding, chevronSlot: c.slot, chevronIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot) };
+  return { ...c, contentsStart: label.start, contentsEnd: label.end, paddingStart: c.padding + label.start, valueGap: label.end, paddingEnd: c.padding, chevronSlot: c.slot, chevronIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot) };
 }
 
 // ── Badge / tag / chip ──

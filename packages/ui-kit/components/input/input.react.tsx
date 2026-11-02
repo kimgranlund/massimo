@@ -14,7 +14,9 @@ export function Input({ label, description, error, className, id, required, disa
   return (
     <div data-ui="input" className={className}>
       {label && <label data-part="label" {...toReactProps(a.label)}>{label}</label>}
-      <input data-part="control" {...toReactProps(a.control)} {...rest} />
+      <div data-part="control">
+        <input data-part="contents" {...toReactProps(a.control)} {...rest} />
+      </div>
       {description && <p data-part="description" {...toReactProps(a.description)}>{description}</p>}
       {error && <p data-part="error" {...toReactProps(a.error)}>{error}</p>}
     </div>

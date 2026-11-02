@@ -23,7 +23,7 @@ export const motion = defineGlobalStyles({
   'ui-radio:not([aria-checked=true]) [data-part=box]::after': { scale: 0.4 },
 
   // Select: the chevron turns; the popup fades and grows from its trigger edge.
-  'ui-select [data-part=chevron]': { transition: t('snappy', 'rotate') },
+  'ui-select > [data-part=trigger] > [data-part=trailing]': { transition: t('snappy', 'rotate') },
   'ui-select > [data-part=popup]': {
     transformOrigin: 'top center',
     opacity: 0, scale: 0.97,
