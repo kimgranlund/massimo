@@ -13,6 +13,8 @@ const UI_VOICE = ':is(ui-button, [data-ui=button], ui-input, [data-ui=input], ui
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
 const BUTTON = ':is(ui-button, [data-ui=button])';
+// Button variant: an attribute on ui-button, data-variant on plain HTML and the React Button.
+const PRIMARY = ':is([variant=primary], [data-variant=primary])';
 const ENABLED = ':not([aria-disabled=true], [aria-busy=true])';
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
 const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-radio[aria-checked=true], ui-switch[aria-checked=true])';
@@ -42,13 +44,19 @@ export const defaults = defineGlobalStyles({
   // Hover and press step the fill one ramp step each (neutral 3 → 4 → 5).
   [`${BUTTON}${ENABLED}:hover`]: { bg: 'bg.mutedHover' },
   [`${BUTTON}${ENABLED}:active`]: { bg: 'bg.mutedActive' },
-  [`${BUTTON}[aria-disabled=true]`]: { opacity: 0.5, cursor: 'not-allowed' },
+  // Busy buttons also carry aria-disabled (activation is blocked) but stay readable: no fade.
+  [`${BUTTON}[aria-disabled=true]:not([aria-busy=true])`]: { opacity: 0.5, cursor: 'not-allowed' },
+  // Primary: the primary solid with the contrast text color; hover and press use the solid hover step.
+  [`${BUTTON}${PRIMARY}`]: { bg: 'accent.solid', color: 'fg.onSolid', borderColor: 'accent.solid' },
+  [`${BUTTON}${PRIMARY}${ENABLED}:is(:hover, :active)`]: { bg: 'accent.solidHover', borderColor: 'accent.solidHover' },
   // Busy: still readable (unlike disabled), with an indeterminate sweep along the bottom edge.
   [`${BUTTON}[aria-busy=true]`]: { cursor: 'progress', position: 'relative', overflow: 'hidden' },
   [`${BUTTON}[aria-busy=true]::after`]: {
     content: '""', position: 'absolute', insetInlineStart: 0, bottom: 0, width: '30%', height: 'calc(0.5 * var(--u))',
     bg: 'accent.solid', animation: 'ui-indeterminate 1.2s ease-in-out infinite',
   },
+  // On a primary button the sweep uses the contrast color, so it shows against the solid fill.
+  [`${BUTTON}${PRIMARY}[aria-busy=true]::after`]: { bg: 'fg.onSolid' },
 
   // Field: label, control, description, error
   [FIELD]: { display: 'flex', flexDirection: 'column', gap: '1.5' },

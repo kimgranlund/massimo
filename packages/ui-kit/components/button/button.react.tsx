@@ -7,6 +7,8 @@ import type { IconSize } from '../../tokens/geometry/resolve.ts';
 // `prefix` is an RDFa attribute in React's types; here it is the text adornment part.
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix'> {
   loading?: boolean;
+  /** primary: the primary solid with contrast text; omit for the neutral button. */
+  variant?: 'primary';
   leading?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -16,12 +18,13 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   size?: number;
 }
 
-export function Button({ loading, disabled, onClick, type = 'button', leading, prefix, suffix, trailing, iconSize, size, children, ...rest }: ButtonProps) {
+export function Button({ loading, disabled, onClick, type = 'button', variant, leading, prefix, suffix, trailing, iconSize, size, children, ...rest }: ButtonProps) {
   const state = { disabled, loading, native: true };
   return (
     <button
       type={type}
       data-ui="button"
+      data-variant={variant}
       data-size={size}
       data-icon-size={iconSize}
       {...toReactProps(buttonAttrs(state))}

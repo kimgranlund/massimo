@@ -10,7 +10,7 @@ declare module 'react' {
   }
   namespace JSX {
     interface IntrinsicElements {
-      'ui-button': El<{ type?: string; disabled?: boolean; loading?: boolean; 'icon-size'?: string; size?: string }>;
+      'ui-button': El<{ type?: string; variant?: 'primary'; disabled?: boolean; loading?: boolean; 'icon-size'?: string; size?: string }>;
       'ui-badge': El<{}>;
       'ui-tag': El<{ 'icon-size'?: string }>;
       'ui-chip': El<{ selectable?: boolean; selected?: boolean; removable?: boolean; disabled?: boolean; 'icon-size'?: string }>;

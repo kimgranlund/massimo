@@ -18,11 +18,11 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "a7f4fa1d275dce2feb52ef7d9284497049559df0b772ff47f4b8d0fde91b9e1d"
+      "sha256": "4528da747017bdf2b550b1eddd58b0e375e9d3de35048a55fbcf2a76812f9910"
     },
     {
       "path": "components/button/button.react.tsx",
-      "sha256": "85fb56e70522a5311b8a9eb498d0ecc6f0ef39a8d6470be9bceee70f908a877d"
+      "sha256": "5dfd7965a071850e18f5de621a15292f0776eabdf88cf245494834e1ef809840"
     },
     {
       "path": "styles/native.ts",

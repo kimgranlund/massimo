@@ -227,6 +227,14 @@ function Components() {
           <ui-button aria-label="Add"><i slot="leading" name="plus" /></ui-button>
           <ui-button icon-size="fill"><span slot="leading" className={avatar} />Kim</ui-button>
         </Row>
+        <Row label="Primary">
+          <ui-button variant="primary">Save</ui-button>
+          <ui-button variant="primary"><i slot="leading" name="plus" />Add item</ui-button>
+          <ui-button variant="primary">Publish<span slot="suffix">⌘P</span></ui-button>
+          <ui-button variant="primary" aria-label="Add"><i slot="leading" name="plus" /></ui-button>
+          <ui-button variant="primary" loading>Saving</ui-button>
+          <ui-button variant="primary" disabled>Disabled</ui-button>
+        </Row>
         <Row label="Prefix / suffix">
           <ui-button><i slot="leading" name="credit-card" /><span slot="prefix">$</span>Pay 40<span slot="suffix">⌘P</span><i slot="trailing" name="caret-down" /></ui-button>
           <ui-button>Save<span slot="suffix">⌘S</span></ui-button>

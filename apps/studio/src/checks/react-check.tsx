@@ -38,6 +38,7 @@ function Pair({ u }: { u: number }) {
         <ui-button data-k="btO" aria-label="More"><i slot="leading" name="dots-three" /></ui-button>
         <ui-button data-k="btL" loading>Saving</ui-button>
         <ui-button data-k="btD" disabled>Off</ui-button>
+        <ui-button data-k="btP" variant="primary"><i slot="leading" name="plus" />Add</ui-button>
         <div style={{ width: 300 }} data-k="in"><ui-input label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
         <ui-checkbox data-k="cb">Accept</ui-checkbox>
         <ui-checkbox data-k="cbOn" checked>Accept</ui-checkbox>
@@ -71,6 +72,7 @@ function Pair({ u }: { u: number }) {
         <Button data-k="btO" aria-label="More" leading={<i name="dots-three" />} />
         <Button data-k="btL" loading>Saving</Button>
         <Button data-k="btD" disabled>Off</Button>
+        <Button data-k="btP" variant="primary" leading={<i name="plus" />}>Add</Button>
         <div style={{ width: 300 }} data-k="in"><Input label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
         <Checkbox data-k="cb">Accept</Checkbox>
         <Checkbox data-k="cbOn" defaultChecked>Accept</Checkbox>
@@ -134,7 +136,7 @@ setTimeout(() => {
   };
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

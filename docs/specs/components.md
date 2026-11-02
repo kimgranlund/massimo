@@ -14,7 +14,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 
 | Element | Role and behavior | Key attributes |
 |---|---|---|
-| `ui-button` | `role=button`; Enter/Space activate; submit/reset through the form | `type`, `disabled`, `loading`, `icon-size` |
+| `ui-button` | `role=button`; Enter/Space activate; submit/reset through the form; `variant="primary"` paints the primary solid with contrast text | `type`, `variant`, `disabled`, `loading`, `icon-size` |
 | `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked; adornments via `slot` children | `label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |
 | `ui-select` | select-only combobox; popover listbox; APG keys; typeahead | `label`, `value`, `placeholder`, `description`, `error`, `required`, `gap` |
 | `ui-listbox` | single-select listbox; selection follows focus; typeahead | `value`, `orientation`, `label`, `gap` |
@@ -50,7 +50,7 @@ Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or
 | selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | accent solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or accent subtle (options); segmented: raised `bg.raised` (neutral 1 light, 5 dark) |
 | open | trigger `aria-expanded=true` | pressed fill, chevron turned 180° |
 | disabled | `aria-disabled=true` (host or control) | 50% opacity, `not-allowed` |
-| busy | `aria-busy=true` (button) | readable, `progress` cursor, indeterminate sweep on the bottom edge |
+| busy | `aria-busy=true` (button) | readable (no disabled fade), `progress` cursor, indeterminate sweep on the bottom edge (contrast color on primary) |
 | read-only | `aria-readonly=true` | subtle fill, default cursor |
 | required | `[required]` field, `aria-required` checkbox/switch | ` *` in `danger.fg` after the label |
 | invalid | `aria-invalid=true` | danger-tinted fill (palette: danger outline) |
