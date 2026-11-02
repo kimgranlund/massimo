@@ -3,6 +3,7 @@
 // otherwise a class field shadows the reactive accessor.
 import { signal, effect, type Signal } from './signals.ts';
 import { render, type TemplateResult } from './template.ts';
+import './modality.ts';
 
 export interface PropConfig {
   type?: StringConstructor | NumberConstructor | BooleanConstructor;

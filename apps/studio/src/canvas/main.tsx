@@ -15,8 +15,6 @@ import { ICON_SET_NAME } from '@massimo/ui-kit/icons';
 import '../icons.ts';
 import { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Button } from '@massimo/ui-kit/components/button/react';
-import { Input } from '@massimo/ui-kit/components/input/react';
 import { paramVar, validateTheme, type ParamName } from '@massimo/ui-kit/tokens';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
@@ -60,8 +58,8 @@ const caption = css({ textStyle: 'caption', color: 'fg.muted' });
 const rowGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '11rem 1fr' }, gap: { base: '2', md: '6' }, alignItems: 'center' });
 const rowLabel = css({ textStyle: 'label', color: 'fg.muted' });
 const specimens = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
+const formGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, gap: '4', alignItems: 'start' });
 const columns = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '1fr 1fr' }, gap: '8', alignItems: 'start' });
-const column = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const subTitle = css({ textStyle: 'title' });
 const stack = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 const avatar = css({ display: 'block', bg: 'accent.solid' });
@@ -126,7 +124,7 @@ function Components() {
     <>
       <header className={header}>
         <h1 className={pageTitle}>ui-kit specimens</h1>
-        <p className={lead}>Every component at its default theme. Sizes are the unit u (control height 8u); the studio panel changes the theme live.</p>
+        <p className={lead}>Every web component at its default theme. Sizes are the unit u (control height 8u); the studio panel changes the theme live.</p>
       </header>
 
       <Divider />
@@ -169,30 +167,23 @@ function Components() {
       </Section>
 
       <Divider />
-      <Section id="fields" title="Fields" note="Web components use no native form elements; React renders native inputs. Errors appear after interaction or a submit attempt.">
-        <div className={columns}>
-          <form className={column} onSubmit={(e) => { e.preventDefault(); setStatus(JSON.stringify(Object.fromEntries(new FormData(e.currentTarget)))); }}>
-            <h3 className={subTitle}>Web components</h3>
-            <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
-            <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
-            <ui-input name="team" label="Team" error="That name is taken." value="Acme" />
-            <div className={specimens}>
-              <ui-button type="submit">Create account</ui-button>
-              <ui-button type="reset">Reset</ui-button>
-            </div>
-            <p className={caption} role="status">{status}</p>
-          </form>
-          <div className={column}>
-            <h3 className={subTitle}>React</h3>
-            <Input label="Email" placeholder="you@example.com" description="We never share it." />
-            <Input label="Password" type="password" error="At least 12 characters." />
-            <Input label="Team" defaultValue="Acme" />
-            <div className={specimens}>
-              <Button leading={<i name="plus" />}>Create account</Button>
-              <Button>Reset</Button>
-            </div>
+      <Section id="fields" title="Fields" note="No native form elements. Errors appear after interaction or a submit attempt; the form submits real values.">
+        <form className={formGrid} onSubmit={(e) => { e.preventDefault(); setStatus(JSON.stringify(Object.fromEntries(new FormData(e.currentTarget)))); }}>
+          <ui-input name="email" type="email" required label="Email" placeholder="you@example.com" description="We never share it." />
+          <ui-input name="password" type="password" required minlength={12} label="Password" value="hunter2" />
+          <ui-input name="team" label="Team" error="That name is taken." value="Acme" />
+          <ui-select name="role" label="Role" required>
+            <ui-option value="design">Designer</ui-option>
+            <ui-option value="eng">Engineer</ui-option>
+            <ui-option value="research">Researcher</ui-option>
+          </ui-select>
+          <ui-checkbox name="terms" required>I accept the terms</ui-checkbox>
+          <div className={specimens}>
+            <ui-button type="submit">Create account</ui-button>
+            <ui-button type="reset">Reset</ui-button>
           </div>
-        </div>
+          <p className={caption} role="status">{status}</p>
+        </form>
       </Section>
 
       <Divider />

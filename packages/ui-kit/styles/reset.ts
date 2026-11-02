@@ -8,6 +8,8 @@ export const reset = defineGlobalStyles({
   'img, svg, video, canvas': { display: 'block', maxWidth: '100%' },
   'button, input, select, textarea': { font: 'inherit', color: 'inherit', background: 'transparent' },
   ':focus-visible': { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
+  // No focus ring after a pointer press; it returns on the next key (core/modality.ts).
+  ':root[data-modality=pointer] :focus-visible': { outline: 'none' },
   '@media (prefers-reduced-motion: reduce)': {
     '*, *::before, *::after': { animationDuration: '0.01ms !important', transitionDuration: '0.01ms !important' },
   },

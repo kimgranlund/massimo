@@ -57,3 +57,15 @@ test('UIElement props, attributes, bindings and events', async () => {
   assert.ok(el.hasAttribute('on'), 'boolean reflects');
   el.remove();
 });
+
+test('modality: keydown -> keyboard, pointerdown -> pointer', async () => {
+  const { trackModality } = await import('../core/modality.ts');
+  trackModality();
+  const root = document.documentElement;
+  document.dispatchEvent(new (globalThis as any).window.KeyboardEvent('keydown', { key: 'Tab' }));
+  assert.equal(root.getAttribute('data-modality'), 'keyboard');
+  document.dispatchEvent(new (globalThis as any).window.PointerEvent('pointerdown'));
+  assert.equal(root.getAttribute('data-modality'), 'pointer');
+  document.dispatchEvent(new (globalThis as any).window.KeyboardEvent('keydown', { key: 'c', metaKey: true }));
+  assert.equal(root.getAttribute('data-modality'), 'pointer', 'shortcuts do not switch to keyboard');
+});

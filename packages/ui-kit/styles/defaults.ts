@@ -104,7 +104,7 @@ export const defaults = defineGlobalStyles({
   },
   'ui-palette[selectable], ui-palette[name]': { cursor: 'pointer' },
   'ui-palette > ui-swatch[aria-selected=true]': { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
-  'ui-palette > ui-swatch[data-active]': { outline: '2px solid {colors.focusRing}', outlineOffset: '-2px' },
+  ':root[data-modality=keyboard] ui-palette > ui-swatch[data-active]': { outline: '2px solid {colors.focusRing}', outlineOffset: '-2px' },
 
   // Swiper (scroll-snap viewport; controls positioned in styles/geometry.ts)
   'ui-swiper': { display: 'block', position: 'relative' },
