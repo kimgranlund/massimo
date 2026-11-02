@@ -15,6 +15,7 @@ import { useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import type { FaceMap, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
+import { UNIQUE_HUES as UNIQUE } from '@massimo/ui-kit/spectrum';
 import { TYPE_ROLES, VOICES, resolveType, type ThemeParams, type TypeRoleName } from '@massimo/ui-kit/tokens';
 
 // Specimen layout: the page container (8u padding and gap) holds titled sections split by
@@ -50,6 +51,15 @@ const metrics = css({ fontFamily: 'mono', fontSize: 'xs', color: 'fg.muted' });
 const rhythmSample = css({ backgroundImage: 'linear-gradient(to bottom, transparent calc(100% - 1px), color-mix(in oklch, var(--colors-accent-solid) 18%, transparent) 0)', whiteSpace: 'pre-wrap', maxWidth: '60ch' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
 const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
+const summary = css({ fontFamily: 'mono', fontSize: 'sm', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
+const chartGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', lg: '1fr 1fr' }, gap: '4' });
+const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
+const chartSvg = css({ width: '100%', height: 'auto', color: 'fg', overflow: 'visible' });
+const chartLabel = css({ fontFamily: 'mono', fontSize: '11px', fill: 'fg.muted' });
+const chartTick = css({ fontFamily: 'mono', fontSize: '10px', fill: 'fg.muted' });
+const axis = css({ stroke: 'border.strong', strokeWidth: 1 });
+const grid = css({ stroke: 'border', strokeWidth: 1 });
+const dashed = css({ stroke: 'fg.muted', strokeWidth: 1, strokeDasharray: '3 3', fill: 'none' });
 const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
 const brandGrid = css({ display: 'grid', gridTemplateColumns: { base: '1fr', md: '2fr 1fr 1fr' }, gap: '4', '& > :first-child': { gridRow: { md: 'span 2' } }, '& > ui-palette': { gridColumn: { md: 'span 2' } } });
@@ -493,6 +503,71 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
   );
 }
 
+const f2 = (n: number) => (Number.isFinite(n) ? n.toFixed(2) : '–');
+const f1 = (n: number) => (Number.isFinite(n) ? n.toFixed(1) : '–');
+
+function EngineSummary({ spectrum }: { spectrum: SpectrumPayload }) {
+  const d = spectrum.diagnostics;
+  return (
+    <p className={summary}>
+      T* <b>{f2(d.peakTone)}</b> · C* <b>{f2(d.peakChroma)}</b>, limited by {d.limitedBy} · {d.target === 'display-p3' ? 'Display P3' : 'sRGB'} · {d.primary.name} Lc 11/12: light <b>{f1(d.primary.light.r11)}/{f1(d.primary.light.r12)}</b>, dark <b>{f1(d.primary.dark.r11)}/{f1(d.primary.dark.r12)}</b> · {spectrum.ms} ms
+    </p>
+  );
+}
+
+const W = 560, PAD = 28;
+function QuadratureChart({ d, primary }: { d: SpectrumPayload['diagnostics']; primary: string }) {
+  const top = 70, bottom = 170, xH = (H: number) => PAD + (H / 400) * (W - 2 * PAD), xh = (h: number) => PAD + (h / 360) * (W - 2 * PAD);
+  return (
+    <svg viewBox={`0 0 ${W} 210`} className={chartSvg} role="img" aria-label={`Hue quadrature of ${d.accents.length} accents`}>
+      <text x={PAD} y={22} className={chartLabel}>H · hue quadrature</text>
+      <text x={PAD} y={204} className={chartLabel}>h · hue angle (°)</text>
+      <line x1={PAD} x2={W - PAD} y1={top} y2={top} className={axis} />
+      <line x1={PAD} x2={W - PAD} y1={bottom} y2={bottom} className={axis} />
+      {UNIQUE.map((u) => (
+        <g key={u.name}>
+          <line x1={xH(u.H)} y1={top} x2={xh(u.h)} y2={bottom} className={dashed} />
+          <text x={xH(u.H) + 3} y={top + 14} className={chartTick}>{u.name} {u.H}</text>
+          <text x={xh(u.h) + 3} y={bottom + 14} className={chartTick}>{u.h}</text>
+        </g>
+      ))}
+      {d.accents.map((a, i) => {
+        const strong = a.name === primary;
+        return (
+          <g key={a.name}>
+            <line x1={xH(a.H)} y1={top} x2={xh(a.h)} y2={bottom} stroke={a.color} strokeWidth={strong ? 3 : 1.5} />
+            <circle cx={xH(a.H)} cy={top} r={strong ? 5 : 3.5} fill={a.color} />
+            <circle cx={xh(a.h)} cy={bottom} r={strong ? 5 : 3.5} fill={a.color} />
+            <text x={xH(a.H)} y={top - 10 - (i % 2) * 11} textAnchor="middle" className={chartTick}>{a.name}</text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+function ChromaChart({ d }: { d: SpectrumPayload['diagnostics'] }) {
+  const H = 230, L = 34, R = W - 12, T = 14, B = H - 24;
+  const maxC = Math.ceil(Math.max(...d.accents.flatMap((a) => a.curve.map(([, c]) => c))) / 20) * 20;
+  const x = (t: number) => L + ((t - d.tones[0]) / (d.tones[1] - d.tones[0])) * (R - L), y = (c: number) => B - (c / maxC) * (B - T);
+  const path = (pts: [number, number][]) => pts.map(([t, c], i) => `${i ? 'L' : 'M'}${x(t).toFixed(1)},${y(c).toFixed(1)}`).join('');
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className={chartSvg} role="img" aria-label={`Max in-gamut chroma by tone; peak tone ${f2(d.peakTone)}, chroma ${f2(d.peakChroma)}`}>
+      {Array.from({ length: maxC / 20 + 1 }, (_, i) => i * 20).map((c) => (
+        <g key={c}><line x1={L} x2={R} y1={y(c)} y2={y(c)} className={grid} /><text x={L - 6} y={y(c) + 3} textAnchor="end" className={chartTick}>{c}</text></g>
+      ))}
+      {Array.from({ length: 8 }, (_, i) => 20 + i * 10).map((t) => <text key={t} x={x(t)} y={H - 8} textAnchor="middle" className={chartTick}>{t}</text>)}
+      {d.accents.map((a) => <path key={a.name} d={path(a.curve)} fill="none" stroke={a.color} strokeWidth={1.5} />)}
+      <path d={path(d.weakest)} fill="none" stroke="currentColor" strokeWidth={3} />
+      <line x1={x(d.peakTone)} x2={x(d.peakTone)} y1={T} y2={B} className={dashed} />
+      <line x1={L} x2={R} y1={y(d.peakChroma)} y2={y(d.peakChroma)} className={dashed} />
+      <circle cx={x(d.peakTone)} cy={y(d.peakChroma)} r={4} fill="currentColor" />
+      <text x={x(d.peakTone) + 5} y={T + 10} className={chartTick}>T* {f2(d.peakTone)}</text>
+      <text x={L + 4} y={y(d.peakChroma) - 5} className={chartTick}>C* {f2(d.peakChroma)}</text>
+    </svg>
+  );
+}
+
 function Colors({ spectrum }: { spectrum?: SpectrumPayload }) {
   if (!spectrum) return <p className={lead}>Generating colors…</p>;
   const r = spectrum.roles;
@@ -505,6 +580,14 @@ function Colors({ spectrum }: { spectrum?: SpectrumPayload }) {
       <Divider />
       <Section id="context" title="Color in context" note="Two synthetic settings for reviewing the active palette: primary as material and accent as punctuation, then neutral surfaces with primary actions and semantic feedback. Content and figures are illustrative.">
         <ColorInContext spectrum={spectrum} />
+      </Section>
+      <Divider />
+      <Section id="engine" title="Hue and chroma" note="What shaped this generation: where each accent sits in hue quadrature, and how much chroma each hue can hold at each tone in the target gamut.">
+        <EngineSummary spectrum={spectrum} />
+        <div className={chartGrid}>
+          <figure className={chartFig}><QuadratureChart d={spectrum.diagnostics} primary={r.primary} /><figcaption className={caption}>Even steps in quadrature H (top) land at uneven hue angles h (bottom). Dashed lines mark unique red, yellow, green and blue.</figcaption></figure>
+          <figure className={chartFig}><ChromaChart d={spectrum.diagnostics} /><figcaption className={caption}>Max in-gamut chroma per accent by tone. The bold curve is the weakest hue at each tone; T* is its peak, where the shared chroma C* is set.</figcaption></figure>
+        </div>
       </Section>
       <Divider />
       <Section id="ramps" title="Ramps" note="Steps 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text. Light left, dark right.">

@@ -44,3 +44,18 @@ test('defaults.json is the current default Spectrum (run npm run spectrum:defaul
   const { spectrumDefaultsText, DEFAULTS_PATH } = await import('../scripts/spectrum-defaults.ts');
   assert.equal(readFileSync(DEFAULTS_PATH, 'utf8'), spectrumDefaultsText());
 });
+
+test('diagnostics: quadrature, boundary, T*, C* and the limiting accent', async () => {
+  const { hueQuadrature, gamutBoundary, spectrumDiagnostics } = await import('../tokens/colors/spectrum/index.ts');
+  assert.equal(Math.round(hueQuadrature(20.14)), 0, 'unique red');
+  assert.equal(Math.round(hueQuadrature(90)), 100, 'unique yellow');
+  assert.equal(Math.round(hueQuadrature(164.25)), 200, 'unique green');
+  assert.equal(Math.round(hueQuadrature(237.53)), 300, 'unique blue');
+  assert.ok(gamutBoundary(225, 65, 'display-p3') > gamutBoundary(225, 65, 'srgb'), 'P3 holds more chroma than sRGB');
+  const data = generateSpectrum();
+  const d = spectrumDiagnostics(data, resolveRoles(data), 8);
+  assert.equal(d.peakTone, data.checks!.light.peakTone);
+  assert.ok(d.peakChroma > 0 && d.accents.some((a) => a.name === d.limitedBy));
+  assert.equal(d.accents.length, families(data).accents.length);
+  for (const [i, [, c]] of d.weakest.entries()) assert.ok(d.accents.every((a) => a.curve[i][1] >= c - 1e-9), 'weakest is the minimum');
+});

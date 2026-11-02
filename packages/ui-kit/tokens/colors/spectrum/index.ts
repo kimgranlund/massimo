@@ -8,10 +8,38 @@ export * from './config.ts';
 
 export interface Swatch { step: number; stop: number; css: string; oklch: [number, number, number]; hct: [number, number, number]; apca: { css: string; lc: number; ok: boolean } }
 export type Scheme = Record<string, Swatch[]>;
-export interface Spectrum { settings: SpectrumSettings; schemes: { light: Scheme; dark: Scheme }; metadata?: { light: { accents: string[]; neutrals: string[]; pairs: Record<string, { accent: string; neutral: string }> } } }
+interface Checks { peakTone: number; rows: Record<string, { roles: { r11: number; r12: number }; passes: { r11: boolean; r12: boolean } }> }
+export interface Spectrum { settings: SpectrumSettings; schemes: { light: Scheme; dark: Scheme }; checks?: { light: Checks; dark: Checks }; metadata?: { light: { accents: string[]; neutrals: string[]; pairs: Record<string, { accent: string; neutral: string }> } } }
 
 let engine: { generate(s: SpectrumSettings): Spectrum } | undefined;
-const load = () => (engine ??= new Function((RUNTIME as { code: string }).code + '\nreturn SpectrumRuntime;')());
+let boundaryFn: ((hue: number, tone: number, target: string) => number) | undefined;
+
+/**
+ * Load the vendored runtime. Its inner HCT engine also has a `boundary(hue, tone, gamut)` function
+ * (max in-gamut HCT chroma) that the published runtime API does not re-export. The runtime builds
+ * that engine with `new Function("self", source)`; we wrap the global Function constructor only
+ * for the first generation to keep a reference to it. The vendored file itself is untouched.
+ */
+function load() {
+  if (engine) return engine;
+  const Orig = Function;
+  engine = new Orig((RUNTIME as { code: string }).code + '\nreturn SpectrumRuntime;')() as { generate(s: SpectrumSettings): Spectrum };
+  const g = globalThis as { Function: FunctionConstructor };
+  g.Function = function (...args: string[]) {
+    const f = Orig(...args);
+    if (args.length === 2 && args[0] === 'self') return (self: any) => { f(self); boundaryFn ??= self.HCTPalettes?.boundary; };
+    return f;
+  } as unknown as FunctionConstructor;
+  try { engine.generate({ ...normalizeSpectrum({}), ...SPECTRUM_FIXED }); } finally { g.Function = Orig; }
+  return engine;
+}
+
+/** Max in-gamut HCT chroma at a hue and tone for a gamut ('srgb' | 'display-p3'). */
+export function gamutBoundary(hue: number, tone: number, target: string): number {
+  load();
+  if (!boundaryFn) throw new Error('Spectrum engine boundary function unavailable');
+  return boundaryFn(hue, tone, target);
+}
 
 /** Generate both schemes. Throws on invalid settings or a malformed ramp. */
 export function generateSpectrum(settings: SpectrumSettings = {}): Spectrum {
@@ -106,4 +134,60 @@ export function spectrumCSS(data: Spectrum, roles: Roles, scope?: string) {
     `@media (prefers-color-scheme: dark) {\n${block(sel.auto, { ...rampVars('dark'), ...dark })}\n}`,
     block(sel.dark, { ...rampVars('dark'), ...dark }),
   ].join('\n');
+}
+
+// ── Diagnostics ──
+
+/** CAM16 unique hues: hue angle h, eccentricity e, quadrature H (red, yellow, green, blue, red). */
+const UNIQUE = { h: [20.14, 90.0, 164.25, 237.53, 380.14], e: [0.8, 0.7, 1.0, 1.2, 0.8], H: [0, 100, 200, 300, 400] };
+export const UNIQUE_HUES = [{ name: 'R', h: 20.14, H: 0 }, { name: 'Y', h: 90, H: 100 }, { name: 'G', h: 164.25, H: 200 }, { name: 'B', h: 237.53, H: 300 }];
+
+/** CAM16 hue quadrature H (0–400) for a hue angle h. */
+export function hueQuadrature(h: number) {
+  const hp = h < UNIQUE.h[0] ? h + 360 : h;
+  let i = 0;
+  while (i < 3 && hp >= UNIQUE.h[i + 1]) i++;
+  const a = (hp - UNIQUE.h[i]) / UNIQUE.e[i], b = (UNIQUE.h[i + 1] - hp) / UNIQUE.e[i + 1];
+  return UNIQUE.H[i] + (100 * a) / (a + b);
+}
+
+export interface SpectrumDiagnostics {
+  peakTone: number;
+  peakChroma: number;
+  limitedBy: string;
+  target: string;
+  primary: { name: string; light: { r11: number; r12: number }; dark: { r11: number; r12: number } };
+  accents: { name: string; color: string; h: number; H: number; curve: [number, number][] }[];
+  weakest: [number, number][];
+  tones: [number, number];
+}
+
+/**
+ * What shaped this generation: the peak tone T* (the weakest hue's chroma peak), the shared peak
+ * chroma C* and the accent that limits it, the primary's contrast checks, each accent's position in
+ * hue quadrature, and the max in-gamut chroma per accent by tone (20–92).
+ */
+export function spectrumDiagnostics(data: Spectrum, roles: Roles, step = 2): SpectrumDiagnostics {
+  const accents = families(data).accents;
+  const light = data.schemes.light, target = data.settings.target;
+  const peakTone = data.checks?.light.peakTone ?? light[accents[0]][8].hct[2];
+  const rows = accents.map((name) => {
+    const h = light[name][8].hct[0];
+    const curve: [number, number][] = [];
+    for (let T = 20; T <= 92; T += step) curve.push([T, gamutBoundary(h, T, target)]);
+    return { name, color: light[name][8].css, h, H: hueQuadrature(h), curve, atPeak: gamutBoundary(h, peakTone, target) };
+  });
+  const limiting = rows.reduce((a, b) => (b.atPeak < a.atPeak ? b : a));
+  const weakest = rows[0].curve.map(([T], i) => [T, Math.min(...rows.map((r) => r.curve[i][1]))] as [number, number]);
+  const check = (mode: 'light' | 'dark') => data.checks?.[mode].rows[roles.primary]?.roles ?? { r11: NaN, r12: NaN };
+  return {
+    peakTone,
+    peakChroma: Math.min(...accents.map((a) => light[a][8].hct[1])),
+    limitedBy: limiting.name,
+    target,
+    primary: { name: roles.primary, light: check('light'), dark: check('dark') },
+    accents: rows.map(({ atPeak: _p, ...r }) => r),
+    weakest,
+    tones: [20, 92],
+  };
 }

@@ -29,6 +29,12 @@ Roles alias ramp steps (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Defa
 
 Light by default; dark under `prefers-color-scheme: dark`; `.light` / `.dark` on any element force a scheme for its subtree. Role tokens are redeclared in every scheme block so a subtree class re-resolves them.
 
+## Diagnostics
+
+`spectrumDiagnostics(data, roles)` reports what shaped a generation: the peak tone **T*** (the weakest hue's chroma peak, from the engine's checks), the shared peak chroma **C*** (accents' step-9 chroma) and the accent that limits it, the primary's step 11/12 APCA checks in both schemes, each accent's CAM16 **hue quadrature** H (unique hues red 20.14°, yellow 90°, green 164.25°, blue 237.53° at H 0/100/200/300), and the **max in-gamut chroma per accent by tone** (20–92) from `gamutBoundary(hue, tone, gamut)`. The jig's Colors tab draws it as a summary line and two charts.
+
+`gamutBoundary` is the vendored engine's internal `boundary` function, which the runtime API does not re-export; `load()` keeps a reference to it by wrapping the global `Function` constructor during the first generation only. The vendored file is not modified.
+
 ## Design tokens
 
 `tokens/dtcg/color.light.dtcg.json` and `color.dark.dtcg.json`: every ramp step as an oklch `color` token, every role as an alias (`{color.spectrum.indigo.9}`). See [system](system.md#design-tokens-dtcg).
