@@ -18,11 +18,15 @@
     },
     {
       "path": "components/image/image.react.tsx",
-      "sha256": "eb6afc5536f7a3e27615b4ec3ab05c90170c2198f6eaa60fd9b9b0aa9605de30"
+      "sha256": "7ed88053447af0493d765e1be944ced850d041d289a59d573996c20a58caae08"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "d0074d211ca6f5c6e6960f1c2e813a4895679c0070502e5b58397b4b7478f90e"
+      "sha256": "fb7b41b825e4f4cd52cb4b45ed4afd6a7b5a13fe778b66ff2d6b89a30ff5309c"
+    },
+    {
+      "path": "components/swiper/swiper.react.tsx",
+      "sha256": "b2a23994959327e5b4b4fc422bea129e865f99178b99fa66b71aa1624e650c51"
     }
   ],
   "renderers": {
@@ -48,7 +52,7 @@
       "checks": [
         {
           "command": "node --test test/react.test.ts",
-          "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+          "covers": "native anatomy, roles, controls and slides"
         },
         {
           "command": "node --test test/native.test.ts",
@@ -72,6 +76,6 @@
     "Image loading, error marking and object-fit are not exercised in happy-dom; the browser geometry check covers layout only.",
     "The source list is the direct sources, not every transitive dependency.",
     "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": []).",
-    "React Image has no slideshow yet (web component only)."
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": [])."
   ]
 }

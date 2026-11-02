@@ -321,6 +321,14 @@
         "component:swiper": "UISwiper"
       },
       "verification": "./verification/swiper.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./swiper.react.tsx",
+      "exports": {
+        "component:swiper": "Swiper"
+      },
+      "verification": "./verification/swiper.verification.json#/renderers/react"
     }
   }
 }

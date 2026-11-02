@@ -63,6 +63,11 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
   // keys move and select (selection follows focus, as in the web component).
   listbox: LIST_STATE,
   segmented: LIST_STATE,
+  swiper: [
+    [/\[no-paddles\]/g, '[data-no-paddles]'],
+    [/\[no-dots\]/g, '[data-no-dots]'],
+    [/\[hover-controls\]/g, '[data-hover-controls]'],
+  ],
   option: [
     [/:not\(\[aria-disabled=true\]\)/g, ':not(:has(> input:disabled))'],
     [/\[aria-disabled=true\]/g, ':has(> input:disabled)'],
