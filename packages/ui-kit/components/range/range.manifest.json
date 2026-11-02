@@ -35,7 +35,8 @@
       "module": "../../tokens/geometry/resolve.ts",
       "exports": [
         "resolveTrack",
-        "trackFill"
+        "trackFill",
+        "thumbOffset"
       ],
       "description": "Reference numbers for track, thumb and fill."
     }
@@ -368,7 +369,7 @@
       "status": "implemented",
       "tag": "span",
       "selector": ":scope > [data-part=thumb]",
-      "summary": "The 4u thumb, positioned from --ui-ratio."
+      "summary": "The thumb, inside the track like a switch thumb (track − u, inset 0.5u); offset 0.5u + ratio × (width − track). The fill wraps it with a concentric cap."
     }
   ],
   "edges": [

@@ -281,13 +281,29 @@ export function resolveTrack(kind: TrackKind, input: GeometryInput = {}) {
   const x = inputs(input);
   const u = x.unit;
   const height = 4 * u;
-  return { unit: u, height, track: height, trackRadius: Math.min(3 * u * x.radiusScale, height / 2), thumb: kind === 'range' ? height : 0, minWidth: 24 * u };
+  const trackRadius = Math.min(3 * u * x.radiusScale, height / 2);
+  // Range thumb sits inside the track like a switch thumb: track − u, inset 0.5u, concentric radius.
+  return {
+    unit: u, height, track: height, trackRadius, minWidth: 24 * u,
+    thumb: kind === 'range' ? height - u : 0, thumbInset: kind === 'range' ? 0.5 * u : 0,
+    thumbRadius: kind === 'range' ? Math.max(0, trackRadius - 0.5 * u) : 0,
+  };
 }
 
-/** Fill width for a track of `width` at `ratio`: range covers the thumb, progress is proportional. */
+/**
+ * Fill width for a track of `width` at `ratio`. Range: the fill ends one track-radius past the
+ * thumb's center, track + ratio·(width − track), so its round cap wraps the thumb; progress is
+ * proportional.
+ */
 export function trackFill(kind: TrackKind, ratio: number, width: number, input: GeometryInput = {}) {
   const t = resolveTrack(kind, input);
-  return kind === 'range' ? ratio * (width - t.thumb) + t.thumb : ratio * width;
+  return kind === 'range' ? t.track + ratio * (width - t.track) : ratio * width;
+}
+
+/** Range thumb offset from the start edge: inset + ratio·(width − track). Its center is track/2 + ratio·(width − track). */
+export function thumbOffset(ratio: number, width: number, input: GeometryInput = {}) {
+  const t = resolveTrack('range', input);
+  return t.thumbInset + ratio * (width - t.track);
 }
 
 /** Swatch: a 6u square (the slot size); palettes attach swatches with no gap. */

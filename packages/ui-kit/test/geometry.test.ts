@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, resolveButtonIcons, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, resolveButtonIcons, CONTAINERS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset } from '../tokens/geometry/resolve.ts';
 
 test('size is the unit: height 8u, font 10px + u (spec table)', () => {
   const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
@@ -159,3 +159,14 @@ test('badge / tag / chip label wrapper: 1u′ (chip bare edge 1.5u′), u′ = h
   }
 });
 
+
+test('range: inset thumb (track − u, 0.5u) and a fill cap concentric around it at every value', () => {
+  const t = resolveTrack('range'), W = 200;
+  assert.deepEqual([t.track, t.thumb, t.thumbInset, t.thumbRadius], [16, 12, 2, 6]);
+  for (const p of [0, 0.25, 0.5, 1]) {
+    const center = thumbOffset(p, W) + t.thumb / 2;
+    assert.equal(trackFill('range', p, W) - center, t.track / 2, `fill ends one track radius past the thumb center at ${p}`);
+  }
+  assert.equal(trackFill('range', 1, W), W);
+  assert.equal(trackFill('progress', 0.5, W), 100);
+});

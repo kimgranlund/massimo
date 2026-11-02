@@ -65,8 +65,9 @@ choice.checkbox.mark,choice,checkbox,check mark icon,4u,8,9,10,12,14,16,18,20,22
 choice.radio.dot,choice,radio,dot,2u,4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
 track.height,track,"range, progress",box height,4u,8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,
 track.track,track,"range, progress",track thickness,4u (full height),8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,"radius min(3u * s, 2u)"
-track.radius,track,"range, progress",track and thumb radius,"min(3u * s, 2u)",4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,range fill = ratio * (width - 4u) + 4u
-track.thumb,track,range,thumb,4u,8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,
+track.radius,track,"range, progress",track and fill radius,"min(3u * s, 2u)",4,4.5,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,range fill = ratio * (width - 4u) + 4u
+track.thumb,track,range,thumb,track - u,6,6.75,7.5,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,inset 0.5u like the switch thumb; radius track radius - 0.5u
+track.fill.range,track,range,fill width at ratio p (shown for p = 0),track + p * (width - track),8,9,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,ends one track radius past the thumb center: a concentric cap around the thumb
 track.minWidth,track,"range, progress",min width,24u,48,54,60,72,84,96,108,120,132,144,156,168,180,192,204,216,228,240,252,264,276,288,implemented,
 swatch.size,swatch,swatch,size,6u,12,13.5,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,
 swatch.radius,swatch,swatch,radius,u * s,2,2.25,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,square inside a palette

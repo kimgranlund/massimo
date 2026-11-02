@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "a83bcd8c312204a363d2f3039a192d35a1a59222887f1a65b4d77c03ec70a202"
+      "sha256": "4ae19e05efb84daf754496cb5af1cf4562a578fc7e55d94eba138a95415e6455"
     },
     {
       "path": "dom/range.ts",
-      "sha256": "f6473848c33c96de4566ce1091f557d3084a67f905b591bb49791d45fd7858e0"
+      "sha256": "b47143cf552905a96ad905d04b21735b540a1682bb96c97880db2ec80c5c3822"
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "e3d2a5a9f31cfa9b65e10522202e2858dd06e0f65c694695dd2ec01609605535"
+      "sha256": "1370be73d422dcc5e4569b839d2a353453cd67486d45d59a97ccd62cd6e7953c"
     }
   ],
   "renderers": {

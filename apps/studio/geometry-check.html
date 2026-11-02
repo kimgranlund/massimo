@@ -12,7 +12,7 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveButtonIcons, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveButtonIcons, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -180,6 +180,14 @@ for (const c of cases) {
   checks['range.track'] = [r2(rect(range.querySelector('[data-part=track]')).height), rt2.track];
   checks['range.thumb'] = [r2(rect(range.querySelector('[data-part=thumb]')).width), rt2.thumb];
   checks['range.fill'] = [r2(rect(range.querySelector('[data-part=fill]')).width), r2(trackFill('range', 0.25, rect(range.querySelector('[data-part=track]')).width, g))];
+  {
+    const tw = rect(range.querySelector('[data-part=track]')).width, th = range.querySelector('[data-part=thumb]'), fl = range.querySelector('[data-part=fill]');
+    checks['range.thumb.offset'] = [r2(rect(th).left - rect(range).left), r2(thumbOffset(0.25, tw, g))];
+    checks['range.thumb.radius'] = [px(cs(th).borderTopLeftRadius), r2(rt2.thumbRadius)];
+    checks['range.fill.radius'] = [px(cs(fl).borderTopRightRadius), r2(rt2.trackRadius)];
+    // Concentric cap: the fill's end sits one track-radius past the thumb's center.
+    checks['range.fill.wrapsThumb'] = [r2(rect(fl).right - (rect(th).left + rect(th).width / 2)), r2(rt2.track / 2)];
+  }
   checks['range.radius'] = [px(cs(range.querySelector('[data-part=track]')).borderTopLeftRadius), rt2.trackRadius];
   checks['swatch.size'] = [r2(rect(box.querySelector('ui-swatch')).width), rsw.size];
   for (const role of Object.keys(TYPE_ROLES)) {

@@ -68,8 +68,9 @@ export class UIRange extends UIFormElement {
   };
 
   #fromPointer(e: PointerEvent) {
-    const thumb = (this.querySelector('[data-part=thumb]') as HTMLElement)?.offsetWidth ?? 0;
-    return valueAt(e.clientX, this.getBoundingClientRect(), thumb, this.#state, this.#rtl());
+    // The thumb's center travels from track/2 to width − track/2 (the track is the host height).
+    const rect = this.getBoundingClientRect();
+    return valueAt(e.clientX, rect, rect.height, this.#state, this.#rtl());
   }
 
   #onPointerDown = (e: PointerEvent) => {

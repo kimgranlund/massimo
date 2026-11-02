@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -77,8 +77,9 @@ export const rows: Row[] = [
   { id: 'choice.radio.dot', family: 'choice', element: 'radio', quantity: 'dot', formula: '2u', value: (u) => resolveChoice('radio', { unit: u }).dot, status: 'implemented', notes: '' },
   { id: 'track.height', family: 'track', element: 'range, progress', quantity: 'box height', formula: '4u', value: (u) => resolveTrack('range', { unit: u }).height, status: 'implemented', notes: '' },
   { id: 'track.track', family: 'track', element: 'range, progress', quantity: 'track thickness', formula: '4u (full height)', value: (u) => resolveTrack('range', { unit: u }).track, status: 'implemented', notes: 'radius min(3u * s, 2u)' },
-  { id: 'track.radius', family: 'track', element: 'range, progress', quantity: 'track and thumb radius', formula: 'min(3u * s, 2u)', value: (u) => resolveTrack('range', { unit: u }).trackRadius, status: 'implemented', notes: 'range fill = ratio * (width - 4u) + 4u' },
-  { id: 'track.thumb', family: 'track', element: 'range', quantity: 'thumb', formula: '4u', value: (u) => resolveTrack('range', { unit: u }).thumb, status: 'implemented', notes: '' },
+  { id: 'track.radius', family: 'track', element: 'range, progress', quantity: 'track and fill radius', formula: 'min(3u * s, 2u)', value: (u) => resolveTrack('range', { unit: u }).trackRadius, status: 'implemented', notes: 'range fill = ratio * (width - 4u) + 4u' },
+  { id: 'track.thumb', family: 'track', element: 'range', quantity: 'thumb', formula: 'track - u', value: (u) => resolveTrack('range', { unit: u }).thumb, status: 'implemented', notes: 'inset 0.5u like the switch thumb; radius track radius - 0.5u' },
+  { id: 'track.fill.range', family: 'track', element: 'range', quantity: 'fill width at ratio p (shown for p = 0)', formula: 'track + p * (width - track)', value: (u) => trackFill('range', 0, 24 * 4 * u, { unit: u }), status: 'implemented', notes: 'ends one track radius past the thumb center: a concentric cap around the thumb' },
   { id: 'track.minWidth', family: 'track', element: 'range, progress', quantity: 'min width', formula: '24u', value: (u) => resolveTrack('range', { unit: u }).minWidth, status: 'implemented', notes: '' },
   { id: 'swatch.size', family: 'swatch', element: 'swatch', quantity: 'size', formula: '6u', value: (u) => resolveSwatch({ unit: u }).size, status: 'implemented', notes: '' },
   { id: 'swatch.radius', family: 'swatch', element: 'swatch', quantity: 'radius', formula: 'u * s', value: (u) => resolveSwatch({ unit: u }).radius, status: 'implemented', notes: 'square inside a palette' },

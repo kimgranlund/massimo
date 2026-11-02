@@ -183,15 +183,23 @@ export const geometry = defineGlobalStyles({
   },
   'ui-switch[aria-checked=true] [data-part=box]::after': { translate: 'calc(4 * var(--u)) 0' },
 
-  // Range and progress: the track fills the 4u box (rounded at half height); range adds a 4u thumb inside.
-  ':is(ui-range, ui-progress)': { display: 'grid', alignItems: 'center', height: 'calc(4 * var(--u))', minWidth: 'calc(24 * var(--u))', position: 'relative' },
-  ':is(ui-range, ui-progress) > [data-part=track]': { display: 'block', height: '100%', borderRadius: 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(2 * var(--u)))', overflow: 'hidden', gridArea: '1 / 1' },
-  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { display: 'block', height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)' },
-  // Range fill reaches the thumb's far edge (after the generic rule: same specificity, order wins).
-  'ui-range > [data-part=track] > [data-part=fill]': { width: 'calc(var(--ui-ratio, 0) * (100% - 4 * var(--u)) + 4 * var(--u))' },
+  // Range and progress (resolveTrack): a 4u track, rounded at half height. The range thumb sits inside
+  // it like a switch thumb (track − u, inset 0.5u) and travels W − track. The fill ends one
+  // track-radius past the thumb's center (track + p·(W − track)) with the track's radius, so its
+  // round cap stays concentric around the thumb at every value (maison-ui's construction).
+  ':is(ui-range, ui-progress)': {
+    '--track': 'calc(4 * var(--u))',
+    '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
+    display: 'grid', alignItems: 'center', height: 'var(--track)', minWidth: 'calc(24 * var(--u))', position: 'relative',
+  },
+  ':is(ui-range, ui-progress) > [data-part=track]': { display: 'block', height: '100%', borderRadius: 'var(--track-r)', overflow: 'hidden', gridArea: '1 / 1' },
+  ':is(ui-range, ui-progress) > [data-part=track] > [data-part=fill]': { display: 'block', height: '100%', width: 'calc(var(--ui-ratio, 0) * 100%)', borderRadius: 'var(--track-r)' },
+  // Range fill wraps the thumb (after the generic rule: same specificity, order wins).
+  'ui-range > [data-part=track] > [data-part=fill]': { width: 'calc(var(--track) + var(--ui-ratio, 0) * (100% - var(--track)))' },
   'ui-range > [data-part=thumb]': {
-    display: 'block', gridArea: '1 / 1', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(2 * var(--u)))',
-    marginInlineStart: 'calc(var(--ui-ratio, 0) * (100% - 4 * var(--u)))',
+    display: 'block', gridArea: '1 / 1', width: 'calc(var(--track) - var(--u))', height: 'calc(var(--track) - var(--u))',
+    borderRadius: 'max(0px, calc(var(--track-r) - 0.5 * var(--u)))',
+    marginInlineStart: 'calc(0.5 * var(--u) + var(--ui-ratio, 0) * (100% - var(--track)))',
   },
 
   // Swatch: 6u square; palette attaches them with no gap inside a 2u-radius strip.

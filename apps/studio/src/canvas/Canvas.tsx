@@ -289,7 +289,7 @@ function Components() {
       </Section>
 
       <Divider />
-      <Section id="tracks" title="Range and progress" note="A 4u box with a 1u track; range adds a 4u thumb. Arrow keys, Page Up/Down, Home/End, drag.">
+      <Section id="tracks" title="Range and progress" note="A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.">
         <Row label="Range"><div className={trackStack}><ui-range label="Volume" value={40} /><ui-range label="Steps" min={0} max={10} step={1} value={3} /></div></Row>
         <Row label="Progress"><div className={trackStack}><ui-progress label="Upload" value={64} /><ui-progress label="Loading" /></div></Row>
       </Section>

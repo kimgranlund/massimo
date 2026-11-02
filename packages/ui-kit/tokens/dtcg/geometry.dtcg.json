@@ -2496,7 +2496,7 @@
         "value": 8,
         "unit": "px"
       },
-      "$description": "range, progress · track and thumb radius · range fill = ratio * (width - 4u) + 4u",
+      "$description": "range, progress · track and fill radius · range fill = ratio * (width - 4u) + 4u",
       "$extensions": {
         "com.massimo.formula": "min(3u * s, 2u)",
         "com.massimo.status": "implemented",
@@ -2529,36 +2529,74 @@
     "thumb": {
       "$type": "dimension",
       "$value": {
-        "value": 16,
+        "value": 12,
         "unit": "px"
       },
-      "$description": "range · thumb",
+      "$description": "range · thumb · inset 0.5u like the switch thumb; radius track radius - 0.5u",
       "$extensions": {
-        "com.massimo.formula": "4u",
+        "com.massimo.formula": "track - u",
         "com.massimo.status": "implemented",
         "com.massimo.bySize": {
-          "u=2": 8,
-          "u=2.25": 9,
-          "u=2.5": 10,
-          "u=3": 12,
-          "u=3.5": 14,
-          "u=4": 16,
-          "u=4.5": 18,
-          "u=5": 20,
-          "u=5.5": 22,
-          "u=6": 24,
-          "u=6.5": 26,
-          "u=7": 28,
-          "u=7.5": 30,
-          "u=8": 32,
-          "u=8.5": 34,
-          "u=9": 36,
-          "u=9.5": 38,
-          "u=10": 40,
-          "u=10.5": 42,
-          "u=11": 44,
-          "u=11.5": 46,
-          "u=12": 48
+          "u=2": 6,
+          "u=2.25": 6.75,
+          "u=2.5": 7.5,
+          "u=3": 9,
+          "u=3.5": 10.5,
+          "u=4": 12,
+          "u=4.5": 13.5,
+          "u=5": 15,
+          "u=5.5": 16.5,
+          "u=6": 18,
+          "u=6.5": 19.5,
+          "u=7": 21,
+          "u=7.5": 22.5,
+          "u=8": 24,
+          "u=8.5": 25.5,
+          "u=9": 27,
+          "u=9.5": 28.5,
+          "u=10": 30,
+          "u=10.5": 31.5,
+          "u=11": 33,
+          "u=11.5": 34.5,
+          "u=12": 36
+        }
+      }
+    },
+    "fill": {
+      "range": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        },
+        "$description": "range · fill width at ratio p (shown for p = 0) · ends one track radius past the thumb center: a concentric cap around the thumb",
+        "$extensions": {
+          "com.massimo.formula": "track + p * (width - track)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 8,
+            "u=2.25": 9,
+            "u=2.5": 10,
+            "u=3": 12,
+            "u=3.5": 14,
+            "u=4": 16,
+            "u=4.5": 18,
+            "u=5": 20,
+            "u=5.5": 22,
+            "u=6": 24,
+            "u=6.5": 26,
+            "u=7": 28,
+            "u=7.5": 30,
+            "u=8": 32,
+            "u=8.5": 34,
+            "u=9": 36,
+            "u=9.5": 38,
+            "u=10": 40,
+            "u=10.5": 42,
+            "u=11": 44,
+            "u=11.5": 46,
+            "u=12": 48
+          }
         }
       }
     },

@@ -25,10 +25,13 @@ export function rangeKey(key: string, s: RangeState, rtl = false): number | unde
   return undefined;
 }
 
-/** Value under a pointer x within a track rect (thumb-centre aware). */
-export function valueAt(x: number, rect: { left: number; width: number }, thumb: number, s: RangeState, rtl = false) {
-  const usable = Math.max(1, rect.width - thumb);
-  let r = (x - rect.left - thumb / 2) / usable;
+/**
+ * Value under a pointer x within a track rect. The thumb's centre travels from `edge / 2` to
+ * `width − edge / 2`; pass the track height (the thumb plus its two insets).
+ */
+export function valueAt(x: number, rect: { left: number; width: number }, edge: number, s: RangeState, rtl = false) {
+  const usable = Math.max(1, rect.width - edge);
+  let r = (x - rect.left - edge / 2) / usable;
   if (rtl) r = 1 - r;
   return snap(s.min + Math.min(1, Math.max(0, r)) * (s.max - s.min), s);
 }
