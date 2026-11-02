@@ -32,8 +32,10 @@ declare module 'react' {
       'ui-option': El<{ value?: string; disabled?: boolean }>;
       'ui-listbox': El<{ name?: string; value?: string; label?: string; orientation?: string; required?: boolean; disabled?: boolean }>;
       'ui-segmented': El<{ name?: string; value?: string; label?: string; required?: boolean; disabled?: boolean }>;
-      'ui-select': El<{ name?: string; value?: string; label?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean }>;
-      'ui-input': El<{ ref?: any; label?: string; type?: string; name?: string; value?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; minlength?: number; pattern?: string }>;
+      'ui-select': El<{ name?: string; value?: string; label?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; labelledby?: string; describedby?: string }>;
+      'ui-input': El<{ ref?: any; label?: string; type?: string; name?: string; value?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; minlength?: number; pattern?: string; labelledby?: string; describedby?: string }>;
+      'ui-field': El<{ label?: string; unit?: string; readout?: string; description?: string; layout?: 'stacked' | 'inline' }>;
+      'ui-field-grid': El<{}>;
     }
   }
 }

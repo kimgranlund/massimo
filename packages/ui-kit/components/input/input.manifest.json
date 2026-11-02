@@ -193,6 +193,28 @@
           "inspector": {
             "control": "text"
           }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "description": "Ids (space-separated) that name the editor when label is empty; a wrapping ui-field sets it. Forwarded to the editor's aria-labelledby, so no aria-label on the generic host.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "description": "Ids (space-separated) that describe the editor, after its own description and error ids; a wrapping ui-field sets it.",
+          "inspector": {
+            "control": "text"
+          }
         }
       ],
       "attributes": [
@@ -263,7 +285,8 @@
         "accessibleName": {
           "sources": [
             "label",
-            "aria-label on the editor"
+            "aria-label on the editor",
+            "labelledby (a wrapping ui-field)"
           ],
           "required": true
         }

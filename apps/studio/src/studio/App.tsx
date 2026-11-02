@@ -172,7 +172,8 @@ export function App() {
           <Segmented<PanelTab> value={tab} onValue={setTab} options={PANEL_TABS} />
         </header>
 
-        <div className={s.panelBody}>
+        {/* One field grid per tab: every group's rows share the label | control | readout columns. */}
+        <ui-field-grid className={s.panelBody}>
           {tab === 'geometry' && geometry}
           {tab === 'geometry' && (
             <Group title="Look">
@@ -202,15 +203,16 @@ export function App() {
           )}
           {tab === 'geometry' && (
             <Group title="Padding and gap per type (u · px)">
-              <span className={s.paneLabel} /><div className={`${s.paneControl} ${s.pair}`}><span className={s.levelHead}>Padding</span><span className={s.levelHead}>Gap</span></div>
+              {/* Column captions; each select's name is "<level> Padding" / "<level> Gap" (labelledby). */}
+              <ui-field layout="inline"><div className={s.pair}><span id="level-padding" className={s.levelHead}>Padding</span><span id="level-gap" className={s.levelHead}>Gap</span></div></ui-field>
               {LEVELS.map((level) => {
                 const padKey = `pad-${level}` as ParamName, gapKey = `gap-${level}` as ParamName;
                 const opts = (key: ParamName) => STEPS.filter((v) => v <= PARAMS[key].max).map((v) => [String(v), `${v}u · ${Math.round(v * params.unit * 10) / 10}`] as [string, string]);
                 return (
-                  <Field key={level} label={level}>
+                  <Field key={level} id={`level-${level}`} label={level}>
                     <div className={s.pair}>
-                      <SelectControl label={`${level} padding`} value={String(params[padKey])} options={opts(padKey)} onValue={(v) => setParam(padKey, Number(v))} />
-                      <SelectControl label={`${level} gap`} value={String(params[gapKey])} options={opts(gapKey)} onValue={(v) => setParam(gapKey, Number(v))} />
+                      <SelectControl labelledby={`level-${level}-field-label level-padding`} value={String(params[padKey])} options={opts(padKey)} onValue={(v) => setParam(padKey, Number(v))} />
+                      <SelectControl labelledby={`level-${level}-field-label level-gap`} value={String(params[gapKey])} options={opts(gapKey)} onValue={(v) => setParam(gapKey, Number(v))} />
                     </div>
                   </Field>
                 );
@@ -256,7 +258,7 @@ export function App() {
               </Group>
             </>
           )}
-        </div>
+        </ui-field-grid>
 
         <footer className={s.footer}>
           <p className={s.status} role="status">{status}</p>

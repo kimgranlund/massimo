@@ -75,6 +75,42 @@
       ],
       "behavior": "APG select-only combobox keys, typeahead, outside press and blur close; selection commits on Enter, Tab or click."
     },
+    "field": {
+      "geometryFamily": "field-row",
+      "element": "Light-DOM wrapper with no role; the authored control stays a direct child and the field adds its parts as siblings.",
+      "parts": [
+        "field-label?",
+        "field-text",
+        "field-unit?",
+        "field-readout?",
+        "field-description?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "field-grid"
+      ],
+      "behavior": "Names its control: aria-labelledby (label text and unit ids) on a control whose host has the role, or the labelledby property of ui-input and ui-select; description ids likewise. A label press toggles a checkbox, switch or radio and focuses any other control."
+    },
+    "field-grid": {
+      "geometryFamily": "field-row",
+      "element": "Light-DOM grid with no role: columns label | control | readout.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "form"
+      ],
+      "behavior": "None: each ui-field child is a subgrid row, so labels align at the widest one; other children (group headings) span every column."
+    },
     "listbox": {
       "geometryFamily": "container",
       "element": "Host is the listbox (role=listbox) with aria-activedescendant; options are ui-option children.",

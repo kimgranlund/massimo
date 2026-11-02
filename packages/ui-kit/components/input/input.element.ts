@@ -8,7 +8,7 @@ import { UIFormElement, define, html, type Problem } from '../../core/index.ts';
 import { adoptAdornments, ADORNMENT_PARTS } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { input } from '../../styled-system/recipes/input.js';
-import { applyAttrs, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, type TextType } from '../../dom/index.ts';
+import { applyAttrs, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, withExternalRefs, type TextType } from '../../dom/index.ts';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,6 +25,10 @@ export class UIInput extends UIFormElement {
     readonly: { type: Boolean, default: false, reflect: true },
     minlength: { type: Number, default: null },
     pattern: { type: String, default: '' },
+    /** Ids that name the editor when it has no label (ui-field sets it). */
+    labelledby: { type: String, default: '' },
+    /** Ids that describe the editor, after its own description and error (ui-field sets it). */
+    describedby: { type: String, default: '' },
   };
   declare label: string;
   declare value: string;
@@ -35,6 +39,8 @@ export class UIInput extends UIFormElement {
   declare readonly: boolean;
   declare minlength: number | null;
   declare pattern: string;
+  declare labelledby: string;
+  declare describedby: string;
 
   #id = '';
   #default = '';
@@ -73,7 +79,7 @@ export class UIInput extends UIFormElement {
     applyAttrs(label, a.label);
     applyAttrs(description, a.description);
     applyAttrs(error, a.error);
-    applyAttrs(editor, { ...a.control, ...textEntryAttrs({ type: this.type, placeholder: this.placeholder, editable: !this.isDisabled && !this.readonly }) });
+    applyAttrs(editor, { ...withExternalRefs(a.control, this), ...textEntryAttrs({ type: this.type, placeholder: this.placeholder, editable: !this.isDisabled && !this.readonly }) });
     // Only write text when it differs, so typing never moves the caret.
     if (editor.textContent !== this.value) editor.textContent = this.value;
     applyRecipe(this, input(), (slot) => partOf(this, slot) ?? partOf(control, slot));

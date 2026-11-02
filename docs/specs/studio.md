@@ -14,7 +14,7 @@
 
 ## Panel
 
-- **Pane grid** (Figma-style): each group is a 5-column grid; a row is a label spanning 2 columns and a control spanning 3 (ranges show a tabular value readout, container rows in the Geometry tab pair a padding and a gap menu). Group titles span the row. Built from `Field`, `Range`, `Segmented`, `Select`, `Switch` and `Group` in `src/studio/wc.tsx`. Pane labels show a trailing `(unit)` as a suffix at the label's end.
+- **Pane grid** (Figma-style): each tab is one `ui-field-grid`; a row is a `ui-field layout="inline"` (label with a unit suffix, control, readout), so labels, controls and readouts line up across every group of the tab. Group titles are headings spanning the grid. The field's label names its control (no hidden labels); the container rows in the Geometry tab pair a padding and a gap menu, each named "<type> Padding" / "<type> Gap" through `labelledby`. Built from `Field`, `Range`, `Segmented`, `Select`, `Switch` and `Group` in `src/studio/wc.tsx`; a trailing `(unit)` in a label becomes the field's `unit`.
 - **Tabs** (segmented, persisted in localStorage `studio:panel`): Geometry, Colors, Typography, Motion. The panel edits tokens only: switching a tab never changes the page (the page is the URL hash alone).
 - **Header:** the title, then the tabs.
 - **Geometry:** unit, border, corner radius, corner shape; icon set; a padding menu and a gap menu (in u, with px) for each container type: composite, group, collection, card-xs … card-xl, panel, region, page.

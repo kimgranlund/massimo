@@ -44,3 +44,18 @@ export function fieldAttrs(s: FieldState) {
     error: { id: ids.error, role: 'alert' } satisfies Attrs,
   };
 }
+
+/** Ids from outside the control (a wrapping ui-field) that name or describe it. */
+export interface ExternalRefs { labelledby?: string; describedby?: string }
+
+/**
+ * Add outside ids to a control's ARIA references: its own label wins (outside label ids apply only
+ * when it has none); outside descriptions follow its own description and error.
+ */
+export function withExternalRefs(attrs: Attrs, ext: ExternalRefs): Attrs {
+  return {
+    ...attrs,
+    'aria-labelledby': attrs['aria-labelledby'] || ext.labelledby || undefined,
+    'aria-describedby': [attrs['aria-describedby'], ext.describedby].filter(Boolean).join(' ') || undefined,
+  };
+}

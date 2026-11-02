@@ -1,0 +1,34 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "field",
+  "title": "Field",
+  "summary": "A visible label (with a unit) that names one control, an optional readout and description; field grids align rows of them.",
+  "defaultExample": "property-panel",
+  "examples": [
+    {
+      "id": "property-panel",
+      "label": "Property panel: inline rows in a field grid",
+      "subject": "component:field-grid",
+      "markup": "<ui-field-grid><h2>Geometry</h2><ui-field layout=\"inline\" label=\"Unit\" unit=\"px\" readout=\"4.5\"><ui-range min=\"2\" max=\"12\" step=\"0.5\" value=\"4.5\"></ui-range></ui-field><ui-field layout=\"inline\" label=\"Icons\"><ui-select value=\"phosphor\"><ui-option value=\"phosphor\">Phosphor</ui-option><ui-option value=\"tabler\">Tabler</ui-option></ui-select></ui-field><h2>Look</h2><ui-field layout=\"inline\" label=\"Rhythm\"><ui-segmented value=\"1\"><ui-option value=\"0\">None</ui-option><ui-option value=\"1\">1u</ui-option></ui-segmented></ui-field><ui-field layout=\"inline\" label=\"Hue balance\"><ui-switch checked></ui-switch></ui-field></ui-field-grid>"
+    },
+    {
+      "id": "stacked",
+      "label": "Stacked: label above, readout beside the control",
+      "subject": "component:field",
+      "markup": "<ui-field label=\"Volume\" unit=\"%\" readout=\"40\" description=\"Applies to every output.\"><ui-range value=\"40\"></ui-range></ui-field>"
+    },
+    {
+      "id": "input",
+      "label": "Naming a ui-input from outside",
+      "subject": "component:field",
+      "markup": "<ui-field layout=\"inline\" label=\"Name\"><ui-input value=\"Spring catalog\"></ui-input></ui-field>"
+    },
+    {
+      "id": "slotted-readout",
+      "label": "Readout as a child",
+      "subject": "component:field",
+      "markup": "<ui-field layout=\"inline\" label=\"First hue\"><ui-range min=\"0\" max=\"359\" value=\"225\"></ui-range><span slot=\"readout\">225°</span></ui-field>"
+    }
+  ]
+}

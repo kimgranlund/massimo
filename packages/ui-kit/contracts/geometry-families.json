@@ -53,6 +53,21 @@
         "chevron"
       ]
     },
+    "field-row": {
+      "id": "geometry:field-row",
+      "resolver": [],
+      "summary": "Field rows place a label, a control, a readout and a description; the control keeps its own geometry. Stacked: label above, row gap 1.5u. Inline: label | control | readout, column gap 2u, row gap 1u to the description. Field grid: column and row gap 2u, label column content-sized up to 40% of the grid, readout column at least 10u; a heading after the first has 4u above it. Spacing and sizes tokens in u, no resolver numbers of its own.",
+      "members": [
+        "component:field",
+        "component:field-grid"
+      ],
+      "searchTerms": [
+        "field row",
+        "label column",
+        "inspector row",
+        "property row"
+      ]
+    },
     "btg": {
       "id": "geometry:btg",
       "resolver": [
