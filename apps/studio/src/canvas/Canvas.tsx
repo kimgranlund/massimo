@@ -76,12 +76,20 @@ const dashed = css({ stroke: 'fg.muted', strokeWidth: 1, strokeDasharray: '3 3',
 const context = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const contextHead = css({ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
 // Campaign, the primary ramp as a vertical strip (step 1 at the top), then ink and tint panels.
-// Narrow: stacked, ramp flat. Medium: campaign on its own row, then ramp | ink | tint.
-// Wide: campaign | ramp | ink | tint in one row.
+// Narrow: stacked, ramp flat. Medium: campaign with the ramp standing at its right (through both
+// rows), ink | tint below. Wide: campaign | ramp | ink | tint in one row.
 const brandGrid = css({
   display: 'grid', gridTemplateColumns: '1fr', gap: '4',
-  [CQ_MD]: { gridTemplateColumns: 'auto minmax(0, 1fr) minmax(0, 1fr)', '& > :first-child': { gridColumn: '1 / -1' } },
-  [CQ_LG]: { gridTemplateColumns: 'minmax(0, 2fr) auto minmax(0, 1fr) minmax(0, 1fr)', '& > :first-child': { gridColumn: 'auto' } },
+  [CQ_MD]: {
+    gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr) auto',
+    '& > :first-child': { gridColumn: '1 / 3' },
+    '& > ui-palette': { gridColumn: '3', gridRow: '1 / 3' },
+  },
+  [CQ_LG]: {
+    gridTemplateColumns: 'minmax(0, 2fr) auto minmax(0, 1fr) minmax(0, 1fr)',
+    '& > :first-child': { gridColumn: 'auto' },
+    '& > ui-palette': { gridColumn: 'auto', gridRow: 'auto' },
+  },
 });
 const campaign = css({ justifyContent: 'space-between', minHeight: '20rem' });
 // Type roles only: kickers, display, headings and figures come from the typography system.
