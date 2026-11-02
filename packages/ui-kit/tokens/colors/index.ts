@@ -1,6 +1,6 @@
 // Kit colors: the default Spectrum (HCT-generated, Radix-style ramps with separate light and
 // dark values), from the generated snapshot in spectrum/defaults.json. Every family is a token
-// group colors.spectrum.{family}.{0..12} (0 = page canvas); semantic roles alias ramp steps
+// group colors.spectrum.{family}.{1..12} (1 = white in light, black in dark); semantic roles alias ramp steps
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
@@ -19,7 +19,7 @@ export const colors = {
 
 const spectrum = Object.fromEntries(Object.keys(D.light).map((family) => [
   family,
-  Object.fromEntries(D.light[family].map((css, step) => [step, schemed(css, D.dark[family][step])])),
+  Object.fromEntries(D.light[family].map((css, i) => [i + 1, schemed(css, D.dark[family][i])])),
 ]));
 
 // Role tokens: "accent.solid" style paths from ROLE_STEPS names, aliasing ramp steps.

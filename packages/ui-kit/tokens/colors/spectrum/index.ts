@@ -54,23 +54,20 @@ export function resolveRoles(data: Spectrum, wanted: Partial<Roles> = {}): Roles
   };
 }
 
-/** Page canvas (Radix "step 0" extension): halfway from step 1 toward white/black, chroma halved. */
-export function endpoint(sw: Swatch, mode: 'light' | 'dark') {
-  const [l, c, h] = sw.oklch;
-  return `oklch(${mode === 'light' ? (l + 1) / 2 : l / 2} ${c / 2} ${h})`;
-}
-
 /** Round the numbers in a color string to 4 decimals (well below a visible difference). */
 export const trimColor = (css: string) => css.replace(/-?\d*\.\d+/g, (n) => String(Number(Number(n).toFixed(4))));
 
-/** Steps 0–12 per family and scheme (0 = canvas endpoint). */
+/** Step 1 is the scheme extreme: pure white in light ramps, pure black in dark ramps. */
+export const SCHEME_EXTREME = { light: 'oklch(1 0 0)', dark: 'oklch(0 0 0)' } as const;
+
+/** Steps 1–12 per family and scheme (index 0 = step 1, the scheme extreme). */
 export function ramps(data: Spectrum, mode: 'light' | 'dark'): Record<string, string[]> {
-  return Object.fromEntries(Object.entries(data.schemes[mode]).map(([name, ramp]) => [name, [endpoint(ramp[0], mode), ...ramp.map((sw) => sw.css)].map(trimColor)]));
+  return Object.fromEntries(Object.entries(data.schemes[mode]).map(([name, ramp]) => [name, [SCHEME_EXTREME[mode], ...ramp.slice(1).map((sw) => trimColor(sw.css))]]));
 }
 
 /** Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS. */
 export const ROLE_STEPS = {
-  'bg': ['neutral', 0], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
+  'bg': ['neutral', 1], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
   'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-fg': ['primary', 11],
@@ -93,11 +90,11 @@ const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object
  * CSS that applies a spectrum over the kit's semantic colors, mirroring the kit's scheme
  * structure: light by default, dark under prefers-color-scheme, .light/.dark to force. Emit it
  * after the kit stylesheet; selectors match the kit's own so each rule wins its counterpart.
- * Variable names match the kit's tokens (--colors-spectrum-{family}-{0..12}, --colors-{role}).
+ * Variable names match the kit's tokens (--colors-spectrum-{family}-{1..12}, --colors-{role}).
  */
 export function spectrumCSS(data: Spectrum, roles: Roles) {
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
-  const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i}`, css])));
+  const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i + 1}`, css])));
   return [
     block(':where(:root)', { ...rampVars('light'), ...light }),
     block('.light', { ...rampVars('light'), ...light }),
