@@ -29,6 +29,12 @@
       "label": "Required, minlength and author error",
       "subject": "component:input",
       "markup": "<ui-input label=\"Password\" type=\"password\" required minlength=\"12\"></ui-input><ui-input label=\"Team\" error=\"That name is taken.\" value=\"Acme\"></ui-input>"
+    },
+    {
+      "id": "hidden-label",
+      "label": "Hidden label",
+      "subject": "component:input",
+      "markup": "<ui-input label=\"Search files\" hide-label placeholder=\"Search\"><i slot=\"leading\" name=\"magnifying-glass\"></i></ui-input>"
     }
   ]
 }

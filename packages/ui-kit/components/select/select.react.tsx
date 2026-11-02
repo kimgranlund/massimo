@@ -11,6 +11,8 @@ import { Parts, type PartProps } from '../parts.react.tsx';
 
 export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix'> {
   label?: string;
+  /** Keep the label as the accessible name but do not draw it. */
+  hideLabel?: boolean;
   description?: string;
   /** Author error, shown at once; native :user-invalid shows built-in problems after interaction. */
   error?: string;
@@ -23,11 +25,11 @@ export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement
   children?: ReactNode;
 }
 
-export function Select({ label, description, error, leading, prefix, suffix, gap, size, className, style, id, required, disabled, children, ...select }: SelectProps) {
+export function Select({ label, hideLabel, description, error, leading, prefix, suffix, gap, size, className, style, id, required, disabled, children, ...select }: SelectProps) {
   const auto = useId();
   const a = fieldAttrs({ id: id ?? auto, hasLabel: !!label, hasDescription: !!description, error, required, disabled, native: true });
   return (
-    <div data-ui="select" data-size={size} data-invalid={error ? true : undefined} className={className} style={style} {...(gap !== undefined ? { gap: String(gap) } : {})}>
+    <div data-ui="select" data-size={size} data-hide-label={hideLabel || undefined} data-invalid={error ? true : undefined} className={className} style={style} {...(gap !== undefined ? { gap: String(gap) } : {})}>
       {label && <label data-part="label" {...toReactProps(a.label)}>{label}</label>}
       <select {...toReactProps(a.control)} required={required} disabled={disabled} {...select}>
         <button data-part="trigger" type="button">

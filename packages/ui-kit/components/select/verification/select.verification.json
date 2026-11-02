@@ -22,11 +22,11 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "df3937b0099aab9d6c48f9882272081deae177828ecdd1543bb7d25fdff8b97a"
+      "sha256": "3b63db9d81229296e13c51844b1d03be6a3f8994d12e492e0eb6efbdab40b928"
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "de1883ba8fb234fa1700be398d95d35955726e4109fa1b6036b9cdb10c24b172"
+      "sha256": "47524d230a2f255e02ca26a83c8b431ce912952494dda013a1e87ebf8475e794"
     },
     {
       "path": "components/parts.react.tsx",

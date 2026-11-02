@@ -22,11 +22,11 @@
     },
     {
       "path": "components/input/input.manifest.json",
-      "sha256": "12dbe6c56249c0b1fa0f2db2325defe535909a011713fd1c8d7dee250ffe8716"
+      "sha256": "2e46ad6a8817f9a6631fad087570970f36083c9ab449d7a8d4789079c82f0264"
     },
     {
       "path": "components/input/input.react.tsx",
-      "sha256": "0de63c6a44efdd2f03303a97e08c0fa8bf1200cbca71123c4f3572e321bab101"
+      "sha256": "9c62d2d913fe1ef2cd468e4bcdbc5a434b20066516057d19156a6a7df5e25c46"
     },
     {
       "path": "styles/native.ts",

@@ -5,6 +5,8 @@ import { fieldAttrs, toReactProps } from '../../dom/index.ts';
 // The control follows the construction pattern: leading / prefix / contents / suffix / trailing.
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix'> {
   label?: string;
+  /** Keep the label as the accessible name but do not draw it. */
+  hideLabel?: boolean;
   leading?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;
@@ -13,11 +15,11 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   error?: string;
 }
 
-export function Input({ label, description, error, className, id, required, disabled, readOnly, leading, prefix, suffix, trailing, ...rest }: InputProps) {
+export function Input({ label, hideLabel, description, error, className, id, required, disabled, readOnly, leading, prefix, suffix, trailing, ...rest }: InputProps) {
   const auto = useId();
   const a = fieldAttrs({ id: id ?? auto, hasDescription: !!description, error, required, disabled, readonly: readOnly, native: true });
   return (
-    <div data-ui="input" className={className}>
+    <div data-ui="input" data-hide-label={hideLabel || undefined} className={className}>
       {label && <label data-part="label" {...toReactProps(a.label)}>{label}</label>}
       <div data-part="control">
         {leading != null && <span data-part="leading">{leading}</span>}

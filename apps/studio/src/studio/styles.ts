@@ -7,11 +7,9 @@ export const brand = css({ textStyle: 'heading-3' });
 export const titleRow = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2' });
 export const panelBody = css({ flex: '1', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '5', padding: '4' });
 export const group = css({ display: 'flex', flexDirection: 'column', gap: '3' });
-// Figma-style pane: 5 columns; label spans 2, control spans 3. Components' own labels are hidden
-// visually (they still name the control via aria-labelledby).
+// Figma-style pane: 5 columns; label spans 2, control spans 3.
 export const paneGrid = css({
   display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', columnGap: '2', rowGap: '2', alignItems: 'center',
-  '& :is(ui-select, ui-input) > [data-part=label]': { display: 'none' },
 });
 export const paneLabel = css({ gridColumn: 'span 2', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '2', minWidth: '0', textStyle: 'label', color: 'fg.muted', whiteSpace: 'nowrap' });
 export const paneLabelText = css({ overflow: 'hidden', textOverflow: 'ellipsis', minWidth: '0' });
@@ -28,7 +26,7 @@ export const actions = css({ display: 'flex', gap: '2', '& > ui-button': { flex:
 export const status = css({ textStyle: 'caption', color: 'fg.muted', minHeight: '[1lh]' });
 // The canvas scrolls on its own; bg/color restated here so scoped theme values apply to it.
 export const canvas = css({ height: 'dvh', overflowY: 'auto', bg: 'bg', color: 'fg' });
-// Containers tab: one row per type; the selects' visible labels are hidden (they still name them).
-export const levelGrid = css({ display: 'grid', gridTemplateColumns: '6rem 1fr 1fr', gap: '2', alignItems: 'center', '& ui-select > [data-part=label]': { display: 'none' } });
+// Containers tab: one row per type (the selects hide their own labels: hide-label).
+export const levelGrid = css({ display: 'grid', gridTemplateColumns: '6rem 1fr 1fr', gap: '2', alignItems: 'center' });
 export const levelHead = css({ textStyle: 'caption', color: 'fg.muted' });
 export const levelName = css({ textStyle: 'label' });

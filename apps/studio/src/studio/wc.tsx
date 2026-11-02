@@ -59,10 +59,11 @@ export function Segmented<T extends string>({ label, value, options, onValue }: 
 /** ui-select moves its options into its popup, so a change of option list remounts it. */
 type SelectProps = { label: string; value: string; options: [string, string][]; onValue: (v: string) => void; swatch?: (value: string) => string };
 
-/** `swatch` maps an option value to a CSS color: each option and the trigger lead with a ui-swatch. */
+/** The jig shows the name in its pane row, so the select's own label is hidden (still its accessible name).
+ * `swatch` maps an option value to a CSS color: each option and the trigger lead with a ui-swatch. */
 export function SelectControl({ label, value, options, onValue, swatch }: SelectProps) {
   const ref = useEvent('change', (el) => onValue(el.value));
-  return <ui-select key={options.map((o) => o[0]).join('|')} ref={ref} label={label} value={value}>
+  return <ui-select key={options.map((o) => o[0]).join('|')} ref={ref} label={label} hide-label="" value={value}>
     {/* The select moves this into its trigger once; React then only updates its color attribute. */}
     {swatch && <ui-swatch slot="leading" color={swatch(value)} />}
     {options.map(([v, l]) => <ui-option key={v} value={v}>{swatch && <ui-swatch slot="leading" color={swatch(v)} />}{l}</ui-option>)}

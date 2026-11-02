@@ -18,6 +18,8 @@
 
 The trigger shows the selected option's text (icons and adornments excluded) or the placeholder.
 
+`hide-label` keeps the label as the accessible name without drawing it (React: `<Select hideLabel />`), for layouts that show the name elsewhere, such as an inspector row. Never drop `label` instead: the control would have no name.
+
 ## Anatomy
 
 Construction pattern (shared by every labelled component):

@@ -15,6 +15,8 @@
 
 React: `<Input label="Price" prefix="$" suffix="USD" />` renders a native `<input data-part="contents">` inside the same control.
 
+`hide-label` keeps the label as the accessible name without drawing it (React: `<Input hideLabel />`), for layouts that show the name elsewhere, such as an inspector row. Never drop `label` instead: the control would have no name.
+
 ## Validation timing
 
 Built-in problems (required, email, minlength, pattern) set validity at once but show only after blur or a blocked submit (`data-user-invalid`). `error` is shown immediately. `reportValidity()` reveals the current problem.

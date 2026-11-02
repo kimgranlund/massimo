@@ -211,6 +211,15 @@
             "max": 12,
             "step": 0.5
           }
+        },
+        {
+          "name": "hide-label",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Keeps the label as the control's accessible name but does not draw it (visually hidden, out of flow). For compact layouts that label the control elsewhere, such as an inspector row. data-hide-label is the same input; React: hideLabel.",
+          "inspector": {
+            "control": "toggle"
+          }
         }
       ],
       "events": [

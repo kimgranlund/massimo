@@ -80,6 +80,12 @@ export const defaults = defineGlobalStyles({
   [`:root[data-modality] :is(ui-input, [data-ui=input]) > [data-part=control]:focus-within`]: { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
   [`:is(ui-input, [data-ui=input]) > [data-part=control] > [data-part=contents]:focus-visible`]: { outline: 'none' },
   // Required: a marker after the label (and after a checkbox/switch's own text).
+  // hide-label: the label stays the control's accessible name but is not drawn (visually hidden,
+  // out of flow, so the field keeps no gap for it).
+  [`${FIELD}:is([hide-label], [data-hide-label]) > [data-part=label]`]: {
+    position: 'absolute', width: '1px', height: '1px', margin: '-1px', padding: 0, overflow: 'hidden',
+    clipPath: 'inset(50%)', whiteSpace: 'nowrap', border: 0,
+  },
   [`${FIELD}[required] > [data-part=label]::after, :is(ui-checkbox, ui-switch)[aria-required=true]::after`]: { content: '" *"', color: 'danger.fg' },
   [`:is(${CONTROL}):is(${HAS('[aria-disabled=true]')}, :has(> :disabled))`]: { opacity: 0.5, cursor: 'not-allowed' },
   [`:is(${CONTROL}) > [data-part=contents]::placeholder`]: { color: 'fg.subtle' },

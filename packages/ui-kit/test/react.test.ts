@@ -120,3 +120,15 @@ test('Button and Input: native <button> and <input> with the construction patter
   assert.match(i, /<p data-part="description"[^>]*>Before tax<\/p>/);
   noCustom(b + i);
 });
+
+test('hideLabel keeps the label in the markup (accessible name) and marks the host for visually hidden styling', async () => {
+  const { defaults } = await import('../styles/defaults.ts');
+  const sel = Object.keys(defaults).find((k) => k.includes('[hide-label]') && k.includes('[data-hide-label]'));
+  assert.ok(sel, 'hide-label rule exists for both renderers');
+  assert.equal((defaults as any)[sel!].clipPath, 'inset(50%)');
+  for (const out of [html(h(Input, { label: 'Search', hideLabel: true })), html(h(Select, { label: 'Role', hideLabel: true }, h(SelectOption, { value: 'a' }, 'A')))]) {
+    assert.match(out, /data-hide-label="true"/);
+    assert.match(out, /<label data-part="label"[^>]*>(Search|Role)<\/label>/);
+  }
+  assert.doesNotMatch(html(h(Input, { label: 'Search' })), /data-hide-label/);
+});
