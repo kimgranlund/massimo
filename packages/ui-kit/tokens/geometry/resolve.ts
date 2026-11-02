@@ -81,6 +81,9 @@ export const CONTAINERS = {
 } as const;
 export type ContainerLevel = keyof typeof CONTAINERS;
 
+/** Page max width: 72rem (1152px at a 16px root). Fixed, not u-scaled. */
+export const PAGE_MAX_WIDTH_REM = 72;
+
 /** Container padding, gap and radius. Pass `height` to apply the half-height radius cap. */
 export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number } = {}) {
   const x = inputs(input);

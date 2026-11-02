@@ -3,7 +3,7 @@
 // code (test/geometry-csv.test.ts fails when the file is stale). Run: npm run geometry:csv
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, popupOffset, resolveBtg, resolveContainer, CONTAINERS, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, popupOffset, resolveBtg, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -59,6 +59,7 @@ const rows: Row[] = [
       { id: `container.${level}.radius`, family: 'container', element: `ui-${level}`, quantity: 'max radius', formula: spec.maxRadius ? `${spec.maxRadius}u * s (= 3u + ${spec.padding}u)` : '0', value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.maxRadius ? 'concentric with a 3u control in the corner; capped at half height' : 'square: meets the viewport edge' },
     ];
   }),
+  { id: 'container.page.maxWidth', family: 'container', element: 'ui-page', quantity: 'max width', formula: `${PAGE_MAX_WIDTH_REM}rem (fixed)`, value: () => PAGE_MAX_WIDTH_REM * 16, status: 'implemented', notes: 'px at a 16px root; centered; page({ width }) overrides' },
 
   // Badge / tag / chip
   { id: 'btg.chip.height', family: 'btg', element: 'chip', quantity: 'height', formula: 'min(12 + 3u, 8u)', value: (u) => resolveBtg('chip', { unit: u }).height, status: 'implemented', notes: 'cap: never taller than a control (bites below u = 2.4)' },

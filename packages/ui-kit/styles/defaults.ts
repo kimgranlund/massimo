@@ -4,6 +4,7 @@
 // ARIA state, so web components and their React counterparts share one stylesheet and
 // tag rules already apply before an element upgrades.
 import { defineGlobalStyles } from '@pandacss/dev';
+import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
@@ -76,7 +77,7 @@ export const defaults = defineGlobalStyles({
   // Layout containers (lengths in styles/geometry.ts)
   'ui-group': { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center', borderColor: 'transparent' },
   ':is(ui-collection, ui-tile, ui-card, ui-panel, ui-region, ui-page)': { display: 'flex', flexDirection: 'column', borderColor: 'transparent' },
-  'ui-page': { width: '100%', maxWidth: '72rem', marginInline: 'auto' },
+  'ui-page': { width: '100%', maxWidth: `${PAGE_MAX_WIDTH_REM}rem`, marginInline: 'auto' },
   'ui-tile': { bg: 'bg.subtle' },
   'ui-card': { bg: 'bg', borderColor: 'border' },
   'ui-panel': { bg: 'bg.subtle' },

@@ -50,6 +50,7 @@ container.region.radius,container,ui-region,max radius,0,0,0,0,0,0,0,0,0,0,0,0,0
 container.page.padding,container,ui-page,padding,8u - B,15,17,19,23,27,31,35,39,43,47,51,55,59,63,67,71,75,79,83,87,91,95,implemented,
 container.page.gap,container,ui-page,gap,8u (or g·u from the gap attribute),16,18,20,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
 container.page.radius,container,ui-page,max radius,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,implemented,square: meets the viewport edge
+container.page.maxWidth,container,ui-page,max width,72rem (fixed),1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,1152,implemented,px at a 16px root; centered; page({ width }) overrides
 btg.chip.height,btg,chip,height,"min(12 + 3u, 8u)",16,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,37.5,39,40.5,42,43.5,45,46.5,48,implemented,cap: never taller than a control (bites below u = 2.4)
 btg.tag.height,btg,tag,height,"min(12 + 2u, chip - u)",14,15.75,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,implemented,one u below chip
 btg.badge.height,btg,badge,height,"min(12 + u, tag - u)",12,13.5,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,22.5,23,23.5,24,implemented,one u below tag
