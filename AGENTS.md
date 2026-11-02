@@ -1,41 +1,35 @@
 # massimo
 
-## What this repository is
+A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@massimo/ui-kit`: light-DOM web components with React renderers, a headless `dom/` layer, geometry in a unit u, Spectrum colors, springs, icons, a PandaCSS preset, generated CSV and DTCG tokens) and `apps/studio` (the jig: tunes the theme live on a canvas of every component; Copy hands the settings to an agent as JSON).
 
-A design system and its tuning jig, as npm workspaces:
+## Route
 
-- `packages/ui-kit` (`@massimo/ui-kit`): light-DOM web components (no native form elements), a headless behavior layer, a generative geometry system, Spectrum (HCT) colors, theme-aware icons, a PandaCSS preset, and generated token outputs (CSV, DTCG). Specs: [docs/specs/](docs/specs/system.md).
-- `apps/studio` (`@massimo/studio`): the jig. Tunes geometry, icons, scheme and Spectrum colors live on a canvas of every component; Copy hands the settings to an agent as JSON. Spec: [docs/specs/studio.md](docs/specs/studio.md).
+1. Components: ask the registry before reading source: `npm run registry -- --start`, `--find <term>`, `--assembly component:<id>`.
+2. Read the one spec that owns the topic; [system.md](docs/specs/system.md) is the map. Routine tasks: [guides](docs/guides/AGENTS.md).
 
-Start at [docs/specs/system.md](docs/specs/system.md), then the spec for the area you touch.
+| Topic | Spec |
+|---|---|
+| Add or change a component | [authoring](docs/specs/authoring.md), [manifest language](docs/specs/manifest-language.md) |
+| Element API, foundations, states, React renderers | [components](docs/specs/components.md) |
+| Manifests, graph, registry CLI, verification records | [registry](docs/specs/registry.md) |
+| Lengths, sizes, radii, containers, Panda spacing | [geometry](docs/specs/geometry.md) |
+| Colors, roles, schemes, shadows / type roles, fonts / springs | [color](docs/specs/color.md) / [typography](docs/specs/typography.md) / [motion](docs/specs/motion.md) |
+| Theme parameters, saved themes, Panda preset and configs | [theming](docs/specs/theming.md) |
+| Icons / the jig | [icons](docs/specs/icons.md) / [studio](docs/specs/studio.md) |
 
-To find or change a component, use the registry before reading source: `npm run registry -- --start`, then `npm run registry -- --find <term>` and `--assembly component:<id>` ([registry spec](docs/specs/registry.md)). Each `packages/ui-kit/components/<name>/` folder holds the element, a manifest (`<name>.manifest.json`: intent, API, anatomy, avoidWhen, relationships), a guide (`<name>.md`), examples and a verification record. Changing a component: [authoring](docs/specs/authoring.md) and [manifest language](docs/specs/manifest-language.md).
+## Rules that bite
 
-## Shared rules
-
-- Web components contain zero native form elements (`input`, `button`, `select`, `textarea`, `label`, `fieldset`, `option`, `output`, …). Form participation goes through `UIFormElement` (ElementInternals). Tests enforce this.
-- Every length comes from the geometry system: change `packages/ui-kit/tokens/geometry/resolve.ts` and `styles/geometry.ts` together, then regenerate `docs/geometry.csv` and `tokens/dtcg/`. Never hard-code a component length elsewhere.
-- Colors come from Spectrum. Change defaults through settings and `npm run spectrum:defaults`; never hand-edit `tokens/colors/spectrum/defaults.json` or `runtime.json` (vendored engine, see its `NOTICE.md`).
-- Generated files (`docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `styled-system/`, `dist/`) are never edited by hand; tests fail when the committed ones are stale.
-- Preset style objects merge per selector (`mergeGlobalCss`); shared-variable rules use `:where()` so per-component rules win.
-- Typed element properties use `declare`, never class fields (a field shadows the reactive accessor). Avoid names that collide with built-in element properties (`role`, `ariaChecked`, …).
-- Continuous values reach CSS only as custom properties set by script (`--ui-ratio`, `--ui-swatch-color`); finite choices are attributes and CSS selectors. No runtime stylesheet generation in components.
-- The jig uses ui-kit web components exclusively.
-- Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`, `resolveTextRun`).
-- A component change updates its manifest, guide, examples and contract in the same commit; the manifest fields mirrored from source (properties, events, contract edges, React props) are generated (`npm run manifests -w @massimo/ui-kit`), `graph.json` is generated (`npm run registry:graph`), and verification hashes are stamped only by `npm run verification -- run <folder>` after its checks pass.
+- Zero native form elements (`input`, `button`, `select`, `label`, …) inside web components; forms go through `UIFormElement`. Tests enforce it.
+- Every length comes from geometry (`tokens/geometry/resolve.ts` and `styles/geometry.ts` change together); every color is a Spectrum role. Panda configs are `strictTokens`; a one-off uses `[..]`.
+- Typed element properties use `declare`, never class fields; avoid built-in property names (`role`, `prefix`, `ariaChecked`).
+- Continuous values reach CSS only as custom properties set by script; finite choices are attributes and selectors. No runtime stylesheets in components.
+- Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`). The jig uses ui-kit web components only.
+- A component change updates its manifest, guide, examples and contract in the same commit.
+- Never hand-edit a generated file: `docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `graph.json`, the mirrored manifest fields, verification hashes, `styled-system/`, `dist/`. Generators: [system](docs/specs/system.md#generated-outputs). Tests fail when one is stale.
 
 ## Checks
 
-From the repository root:
-
-- `npm run ui-kit:test`: unit tests (node:test + happy-dom), including staleness checks for the CSV, DTCG tokens, Spectrum snapshot, `graph.json`, generated manifest fields and verification records, and the token contract (`contracts/tokens.json` vs the Panda theme).
-- `npm run manifests -w @massimo/ui-kit`: rewrite the manifest fields mirrored from source (`-- --check` to test).
-- `npm run verification -w @massimo/ui-kit -- check | run <folder…|--all>`: verification records.
-- `npm run ui-kit:typecheck` and `npm run typecheck -w @massimo/studio`.
-- `npm run ui-kit:build`: Panda codegen and `dist/ui-kit.css`.
-- Design tokens: `tokens/dtcg/` holds DTCG 2025.10 files (geometry, typography, color light/dark), validated against the vendored official schema in the tests.
-- After geometry, typography or color changes: `npm run geometry:csv -w @massimo/ui-kit`, `npm run tokens:dtcg -w @massimo/ui-kit`, `npm run spectrum:defaults -w @massimo/ui-kit`.
-- Browser: `npm run studio`, then open `/geometry-check.html`; `"fails": []` means rendered CSS matches the resolver.
+From the root: `npm run ui-kit:test`, `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio`, `npm run ui-kit:build`. Browser: `npm run studio`, then `/geometry-check.html` and `/react-check.html` print `"fails": []` when they agree.
 
 <!-- sdlc:managed:start v1 sha256:5af188d5b00b -->
 ## Documents

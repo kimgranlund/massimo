@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:cf9ec2dbcbab -->
+<!-- sdlc:managed:start v1 sha256:b45dcdd4cd38 -->
 # Documents
 
 Pick one home from the table, then read one file. Placement effect unproven; see the docs-schema design.
@@ -48,4 +48,6 @@ The first line that matches wins.
 ## Contents
 
 - [specs/](specs/AGENTS.md)
+- `planning/`
+- `guides/`
 <!-- sdlc:managed:end -->
