@@ -32,7 +32,8 @@
     "./components/btg/react": "./components/btg/btg.react.tsx",
     "./components/color/react": "./components/color/color.react.tsx",
     "./components/image/react": "./components/image/image.react.tsx",
-    "./components/container/react": "./components/container/container.react.tsx"
+    "./components/container/react": "./components/container/container.react.tsx",
+    "./components/listbox/react": "./components/listbox/listbox.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

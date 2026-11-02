@@ -6,7 +6,9 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
+import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/icons';
+import { Listbox, Segmented, Option } from '@massimo/ui-kit/components/listbox/react';
 import { Badge, Tag, Chip } from '@massimo/ui-kit/components/btg/react';
 import { Swatch, Palette } from '@massimo/ui-kit/components/color/react';
 import { Image } from '@massimo/ui-kit/components/image/react';
@@ -43,6 +45,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="imc" ratio="3/2" /></div>
         <ui-card data-k="cd"><span>a</span><span>b</span></ui-card>
         <ui-group data-k="gp" gap="2"><span>a</span><span>b</span></ui-group>
+        <ui-listbox data-k="lb" label="Folder" value="inbox"><ui-option value="inbox"><i slot="leading" name="tray" />Inbox<span slot="suffix">12</span></ui-option><ui-option value="sent">Sent</ui-option><ui-option value="spam" disabled>Spam</ui-option></ui-listbox>
+        <ui-segmented data-k="sg" label="View" value="grid"><ui-option value="grid">Grid</ui-option><ui-option value="list">List</ui-option></ui-segmented>
       </div>
       <div data-side="react">
         <Checkbox data-k="cb">Accept</Checkbox>
@@ -65,6 +69,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="imc" ratio="3/2" /></div>
         <Card data-k="cd"><span>a</span><span>b</span></Card>
         <Group data-k="gp" gap={2}><span>a</span><span>b</span></Group>
+        <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option><Option value="spam" disabled>Spam</Option></Listbox>
+        <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
       </div>
     </div>
   );
@@ -102,7 +108,7 @@ setTimeout(() => {
   };
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp']) {
+    for (const k of ['cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

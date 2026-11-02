@@ -862,6 +862,16 @@
         "component:option": "UIOption"
       },
       "verification": "./verification/listbox.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./listbox.react.tsx",
+      "exports": {
+        "component:listbox": "Listbox",
+        "component:segmented": "Segmented",
+        "component:option": "Option"
+      },
+      "verification": "./verification/listbox.verification.json#/renderers/react"
     }
   }
 }

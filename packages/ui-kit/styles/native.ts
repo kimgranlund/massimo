@@ -26,6 +26,12 @@ const RANGE_STATE: [RegExp, string][] = [
   [/:focus-visible/g, ':has(> input:focus-visible)'],
 ];
 
+const LIST_STATE: [RegExp, string][] = [
+  [/\[aria-disabled=true\]/g, '[data-disabled]'],
+  [/\[aria-invalid=true\]/g, '[data-invalid]'],
+  [/:focus-visible/g, ':has(input:focus-visible)'],
+];
+
 /** Components with a native React twin, and how their state hooks map. */
 export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
   checkbox: CHOICE_STATE,
@@ -53,6 +59,16 @@ export const NATIVE_TWINS: Record<string, [RegExp, string][]> = {
     [/\[slideshow\]/g, '[data-slideshow]'],
   ],
   group: [], collection: [], tile: [], card: [], panel: [], region: [], page: [],
+  // Listbox and segmented are radio groups; each option is a <label> around a native radio, so arrow
+  // keys move and select (selection follows focus, as in the web component).
+  listbox: LIST_STATE,
+  segmented: LIST_STATE,
+  option: [
+    [/:not\(\[aria-disabled=true\]\)/g, ':not(:has(> input:disabled))'],
+    [/\[aria-disabled=true\]/g, ':has(> input:disabled)'],
+    [/\[aria-selected=true\]/g, ':has(> input:checked)'],
+    [/\[data-active\]/g, ':has(> input:focus)'],
+  ],
 };
 
 const tagRe = (names: string[]) => new RegExp(`(?<![\\w-])ui-(${names.join('|')})(?![\\w-])`, 'g');
@@ -115,6 +131,9 @@ export const native = {
   '[data-ui=swatch]': { position: 'relative' },
   '[data-ui=swatch] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
   '[data-ui=palette][data-selectable] > [data-ui=swatch]': { cursor: 'pointer' },
+  // Options: the native radio is invisible; the option row paints it.
+  '[data-ui=option]': { position: 'relative' },
+  '[data-ui=option] > input': { position: 'absolute', opacity: 0, width: '1px', height: '1px', margin: 0, pointerEvents: 'none' },
   // Progress: the native element stays in the accessibility tree; the track paints it.
   '[data-ui=progress] > progress': { position: 'absolute', width: '1px', height: '1px', opacity: 0, overflow: 'hidden' },
 } as Css;

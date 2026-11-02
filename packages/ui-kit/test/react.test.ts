@@ -63,3 +63,18 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
   assert.equal(html(h(Card, {}, 'x')), '<div data-ui="card">x</div>');
   assert.equal(html(h(Group, { gap: 2 }, 'x')), '<div data-ui="group" gap="2">x</div>');
 });
+
+const { Listbox, Segmented, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));
+
+test('Listbox, Segmented, Option: radio groups of native radios with the construction pattern', () => {
+  const lb = html(h(Listbox, { label: 'Folder', name: 'folder', defaultValue: 'sent' }, h(Option, { value: 'inbox', suffix: '12' }, 'Inbox'), h(Option, { value: 'sent' }, 'Sent'), h(Option, { value: 'spam', disabled: true }, 'Spam')));
+  assert.match(lb, /^<div data-ui="listbox" role="radiogroup" aria-label="Folder" aria-orientation="vertical">/);
+  const opt = (v: string) => lb.match(new RegExp(`<label data-ui="option"><input [^>]*value="${v}"[^>]*>`))?.[0] ?? '';
+  assert.ok(opt('sent').includes('checked=""') && opt('sent').includes('name="folder"'));
+  assert.ok(!opt('inbox').includes('checked'));
+  assert.ok(opt('spam').includes('disabled=""'));
+  assert.match(lb, /<span data-part="contents">Inbox<\/span><span data-part="suffix">12<\/span>/);
+  assert.match(html(h(Segmented, { label: 'View' }, h(Option, { value: 'grid' }, 'Grid'))), /data-ui="segmented" role="radiogroup" aria-label="View" aria-orientation="horizontal"/);
+  assert.throws(() => html(h(Option, { value: 'x' }, 'x')), /inside <Listbox>/);
+  noCustom(lb);
+});
