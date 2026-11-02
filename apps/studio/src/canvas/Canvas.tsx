@@ -11,7 +11,7 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '../icons.ts';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import type { FaceMap, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
@@ -67,7 +67,14 @@ const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc
 const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}` });
 const rhythmText = css({ whiteSpace: 'pre-wrap', maxWidth: '60ch' });
 const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
-const article = css({ display: 'flex', flexDirection: 'column', gap: '3', maxWidth: '62ch', '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md' } });
+// Same two columns as the role rows: role names in the spec column (from the medium breakpoint),
+// the article in the sample column at a readable measure.
+const article = css({
+  display: 'grid', gridTemplateColumns: 'minmax(0, 62ch)', rowGap: '3', alignItems: 'baseline',
+  [CQ_MD]: { gridTemplateColumns: '14rem minmax(0, 62ch)', columnGap: '6' },
+  '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', overflowX: 'auto' },
+});
+const articleRole = css({ display: 'none', textStyle: 'code', color: 'fg.muted', [CQ_MD]: { display: 'block' } });
 const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'accent.fg', fontWeight: 'normal' } });
 const chartGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_LG]: { gridTemplateColumns: '1fr 1fr' } });
 const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
@@ -157,6 +164,17 @@ const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'],
 // Sample images as inline SVG gradients (no network).
 const art = (a: string, b: string, label: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="40" y="560" font-family="system-ui" font-size="48" fill="white" fill-opacity=".85">${label}</text></svg>`)}`;
 const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Dusk'), art('#16a34a', '#0ea5e9', 'Coast'), art('#1e293b', '#7c3aed', 'Night')];
+
+// The In context article: [role, element, text], one block per role.
+const ARTICLE: [string, 'span' | 'h2' | 'h3' | 'p' | 'pre', string][] = [
+  ['section-kicker', 'span', 'Field notes'],
+  ['heading-1', 'h2', 'A system you can hold in one line'],
+  ['body-large', 'p', 'Everything is u. A control is eight of them; its label is ten pixels plus one.'],
+  ['heading-3', 'h3', 'Why the base moves with u'],
+  ['body', 'p', 'Text set on the control font scales with every size step, so a compact panel and a spacious one keep the same proportions between headings, body and controls.'],
+  ['caption', 'p', 'Figures are illustrative.'],
+  ['code', 'pre', 'const u = height / 8;\nconst font = 10 + u;'],
+];
 
 // Specimen text per voice: what that voice is actually for, not a pangram.
 const VOICE_SAMPLES: Record<string, string> = {
@@ -675,13 +693,12 @@ function Typography({ params, voices, faces }: { params: ThemeParams; voices: Vo
       <Divider />
       <Section id="article" title="In context" note="A short article set entirely with the roles.">
         <article className={article}>
-          <span data-type="section-kicker">Field notes</span>
-          <h2 data-type="heading-1">A system you can hold in one line</h2>
-          <p data-type="body-large">Everything is u. A control is eight of them; its label is ten pixels plus one.</p>
-          <h3 data-type="heading-3">Why the base moves with u</h3>
-          <p data-type="body">Text set on the control font scales with every size step, so a compact panel and a spacious one keep the same proportions between headings, body and controls.</p>
-          <p data-type="caption">Figures are illustrative.</p>
-          <pre data-type="code">{SAMPLES.code}</pre>
+          {ARTICLE.map(([role, Tag, text]) => (
+            <Fragment key={role}>
+              <span className={articleRole} aria-hidden="true">{role}</span>
+              <Tag data-type={role}>{text}</Tag>
+            </Fragment>
+          ))}
         </article>
       </Section>
     </>
