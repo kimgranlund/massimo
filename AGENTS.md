@@ -31,6 +31,8 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 
 From the root: `npm run ui-kit:test`, `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio`, `npm run ui-kit:build`. Browser: `npm run studio`, then `/geometry-check.html` and `/react-check.html` print `"fails": []` when they agree.
 
+Cross-browser: `npm run check:browsers` (or `-- firefox webkit`) runs both check pages, the select popup's placement and every motion easing in Chromium, Firefox and WebKit through Playwright on its own Vite server, and exits non-zero on any fail (`apps/studio/scripts/check-browsers.ts`; browsers once: `npx playwright install chromium firefox webkit`). Findings: [docs/reports/2026-11-02-cross-browser.md](docs/reports/2026-11-02-cross-browser.md).
+
 <!-- sdlc:managed:start v1 sha256:5af188d5b00b -->
 ## Documents
 

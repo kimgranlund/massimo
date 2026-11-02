@@ -138,7 +138,7 @@ export function liveMotion(p: MotionParams, name: SpringName): { spring: Spring;
 //   --motion-<x>-d     perceptual duration (seconds)
 //   --motion-<x>-b     effective bounce: bounce × motion-bounce, clamped to 0..BOUNCE_MAX
 //   --motion-<x>-span  span factor, the quadratic spanFactor(b)
-//   --motion-<x>-a|f|r per-sample decay ζω0Δt, angular step ωdΔt and ζω0/ωd (Δt = span / 48)
+//   --motion-<x>-a|f|r per-sample decay ζω0Δt, angular step ωdΔt × 1000 and ζω0/ωd (Δt = span / 48)
 //   --motion-<i>-s<n>  intent i selects spring n: max(0, 1 − |intent − n|), 1 for the chosen one
 // Each linear() sample is the solved spring itself, 1 − e^(−a j)(cos f j + r sin f j), evaluated
 // by CSS math functions (exp, cos, sin, sqrt): exact at any bounce, no precomputed curve. At
@@ -159,7 +159,9 @@ export function motionVars(): Record<string, string> {
     out[`--motion-${x}-span`] = `calc(${fmt(c0)} ${signed(c1, b)} ${signed(c2, `${b} * ${b}`)})`;
     out[`--motion-${x}-q`] = `max(0.001, sqrt(${b} * (2 - ${b})))`;
     out[`--motion-${x}-a`] = `calc((1 - ${b}) * ${fmt(STEP)} * ${M(x, 'span')})`;
-    out[`--motion-${x}-f`] = `calc(${fmt(STEP)} * ${M(x, 'span')} * ${M(x, 'q')})`;
+    // Stored × 1000: at bounce 0 the step is ~2e-4, and WebKit keeps a registered <number> at 6
+    // decimals, which would cost it 3 significant digits (the samples read it as f × j / 1000).
+    out[`--motion-${x}-f`] = `calc(${fmt(1000 * STEP)} * ${M(x, 'span')} * ${M(x, 'q')})`;
     out[`--motion-${x}-r`] = `calc((1 - ${b}) / ${M(x, 'q')})`;
   };
   for (const s of SPRING_NAMES) {
@@ -185,7 +187,7 @@ export const durationCss = (x: string) => `calc(${M(x, 'd')} * ${M(x, 'span')} *
 export function easingCss(x: string): string {
   const a = M(x, 'a'), f = M(x, 'f'), r = M(x, 'r');
   const pts = Array.from({ length: SAMPLES + 1 }, (_, j) =>
-    j === 0 ? '0' : j === SAMPLES ? '1' : `calc(1 - exp(${a} * -${j}) * (cos(${f} * ${j}) + ${r} * sin(${f} * ${j})))`);
+    j === 0 ? '0' : j === SAMPLES ? '1' : `calc(1 - exp(${a} * -${j}) * (cos(${f} * ${fmt(j / 1000)}) + ${r} * sin(${f} * ${fmt(j / 1000)})))`);
   return `linear(${pts.join(', ')})`;
 }
 

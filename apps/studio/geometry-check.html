@@ -26,6 +26,20 @@ const root = document.getElementById('root');
 const r2 = (v) => Math.round(v * 100) / 100;
 const px = (v) => r2(parseFloat(v));
 const fails = [], rows = [];
+// Engine precision, measured rather than sniffed. Gecko keeps a computed font-size to about 2^-10 of
+// its value (67.32px reads 67.375px) and lays boxes out in 1/60px units (two of them can add up to
+// 0.033px); Blink and WebKit keep the font size and lay out in 1/64px. Each check allows 0.02px, or
+// half a font-size step for a measured font size and two layout units on a grid coarser than 1/64px.
+const precision = (() => {
+  const p = document.createElement('div');
+  p.style.cssText = 'position: absolute; font-size: 16.01px; height: 0.01px';
+  document.body.append(p);
+  const font = parseFloat(getComputedStyle(p).fontSize) !== 16.01, unit = p.getBoundingClientRect().height;
+  p.remove();
+  return { font, layout: unit > 1 / 64 + 1e-6 ? 2 * unit + 0.001 : 0 };
+})();
+const tolerance = (k, want) => Math.max(0.02, precision.layout,
+  precision.font && /^type\..*\.size$|\.font$/.test(k) ? 2 ** (Math.floor(Math.log2(want)) - 10) + 0.01 : 0);
 let total = 0;
 for (const c of cases) {
   const box = document.createElement('div');
@@ -295,8 +309,8 @@ for (const c of cases) {
     // getComputedStyle reports the declared radius; paint scales it to fit half the height.
     checks[`${l}.radius`] = [r2(Math.min(px(cs(el).borderTopLeftRadius), h / 2)), r2(want.radius)];
   }
-  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > 0.02) fails.push(`u${c.unit}/B${c.border}/g${c.gap ?? '-'}/${c.icon} ${k}: got ${got}, want ${want}`); }
+  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${c.unit}/B${c.border}/g${c.gap ?? '-'}/${c.icon} ${k}: got ${got}, want ${want}`); }
   rows.push(`u${c.unit} B${c.border} g${c.gap ?? '-'} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]} card ${checks['card-md.padding'][0]}+${c.border}/${checks['card-md.gap'][0]}/${checks['card-md.radius'][0]}`);
 }
-document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: total, fails, rows }, null, 1);
+document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: total, precision, fails, rows }, null, 1);
 </script></body></html>

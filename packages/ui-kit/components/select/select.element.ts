@@ -233,6 +233,8 @@ export class UISelect extends UIFormElement {
     const popup = this.popup!;
     if (!this.#popupShown) {
       this.#popupShown = true;
+      // Each opening starts below, so CSS (or #measureSide) picks the side afresh.
+      if (ANCHORED) { this.#side.value = 'bottom'; popup.setAttribute('data-side', 'bottom'); }
       try { popup.showPopover?.(); } catch { /* already open */ }
       document.addEventListener('pointerdown', this.#onOutside, true);
       if (!ANCHORED) {
@@ -249,7 +251,12 @@ export class UISelect extends UIFormElement {
     const popup = this.popup, trigger = this.trigger;
     if (!popup || !trigger) return;
     const p = popup.getBoundingClientRect(), t = trigger.getBoundingClientRect();
-    if (p.height || p.width) this.#side.value = p.top < t.top ? 'top' : 'bottom';
+    if (!p.height && !p.width) return;
+    // position-try-order: most-block-size, for engines that parse it but keep a squeezed first fit
+    // (Safari 27): when the list does not fit on the side CSS chose, take the side with more room.
+    // data-side="top" places the popup above (select.recipe.ts), so the choice holds in CSS.
+    const squeezed = popup.scrollHeight > popup.clientHeight + 1;
+    this.#side.value = squeezed ? (t.top > window.innerHeight - t.bottom ? 'top' : 'bottom') : p.top < t.top ? 'top' : 'bottom';
   }
 
   #hidePopup() {

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "d5f1bd85394debe67520bad2f176f50785d3c0081d6ce4f38eb1c43fccaeb5b9"
+      "sha256": "e14dc9c0713659c5137cb1fbb4bdc7b5b0512cc7e583c805214abc92c58c88f2"
     },
     {
       "path": "components/listbox/options.ts",

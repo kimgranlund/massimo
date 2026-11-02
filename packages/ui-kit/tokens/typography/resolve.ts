@@ -110,6 +110,8 @@ export const FACE_STACKS: Record<Face, [string, string][]> = {
   display: [['Same as sans', FONT_FAMILIES.display], ['Didot', 'Didot, "Bodoni 72", "Bodoni MT", serif'], ['Futura', 'Futura, "Century Gothic", "Avenir Next", sans-serif'], ['Avenir Next Condensed', '"Avenir Next Condensed", "Arial Narrow", sans-serif'], ['Baskerville', FONT_FAMILIES.serif]],
 };
 
+/** Fraction of a rhythm step a natural line height may exceed it by and still round down to it. */
+export const RHYTHM_TOLERANCE = 1e-4;
 export const TYPE_DEFAULTS = { unit: 4.5, ratio: 1.333, rhythm: 1, voices: DEFAULT_VOICES, faces: FONT_FAMILIES };
 
 /** A face counts as serif when its stack ends in the serif generic family. */
@@ -122,7 +124,9 @@ export function resolveType(role: TypeRoleName, input: { unit?: number; ratio?: 
   const size = r.u !== undefined ? r.u * x.unit : base * Math.pow(x.ratio, r.step!);
   const natural = size * r.lh;
   const grid = x.rhythm * x.unit;
-  const lineHeight = r.control ? natural : grid > 0 ? Math.ceil(natural / grid - 1e-6) * grid : natural;
+  // A natural height within 1e-4 grid of a step stays on it (styles/typography.ts subtracts the
+  // same tolerance: Firefox computes in float32, so 12.5px × 1.2 lands just above 15px).
+  const lineHeight = r.control ? natural : grid > 0 ? Math.ceil(natural / grid - RHYTHM_TOLERANCE) * grid : natural;
   const face = x.voices[r.voice];
   const serifRegular = SERIF_REGULAR_VOICES.has(r.voice) && isSerifStack(x.faces[face]);
   return {
