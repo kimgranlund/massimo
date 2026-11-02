@@ -3,7 +3,7 @@
 export interface Field { key: string; label: string; group: string; options?: (string | number)[]; labels?: string[]; min?: number; max?: number; step?: number; multiple?: boolean; value: unknown }
 
 export const SPECTRUM_FIELDS: Field[] = [
-  { key: 'hueSet', label: 'Hues', group: 'Hues', options: ['even', 'quad', 'radix'], labels: ['12 equal', 'Unique', 'Radix 25'], value: 'quad' },
+  { key: 'hueSet', label: 'Hues', group: 'Hues', options: ['quad', 'radix'], labels: ['Unique', 'Radix 25'], value: 'quad' },
   { key: 'quadStart', label: 'Unique start', group: 'Hues', options: ['radix', 'hue'], labels: ['Radix fit', 'First hue'], value: 'hue' },
   { key: 'hue', label: 'First hue', group: 'Hues', min: 0, max: 359, step: 1, value: 225 },
   { key: 'chroma', label: 'Requested chroma', group: 'Chroma', min: 4, max: 120, step: 1, value: 120 },

@@ -211,7 +211,7 @@ export function App() {
                 </Group>
               ))}
               <Group title="Hues">
-                <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['even', '12'], ['radix', 'Radix']]} />
+                <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['radix', 'Radix']]} />
                 <Range label="First hue" value={spectrum.hue} min={0} max={359} step={1} onValue={(v) => setSpec('hue', v)} format={(v) => `${v}°`} />
               </Group>
               <Group title="Chroma">
