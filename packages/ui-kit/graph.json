@@ -846,6 +846,16 @@
         "fill"
       ]
     },
+    "tokens:borders-shadows": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/borders-shadows",
+      "availability": "implemented",
+      "searchTerms": [
+        "border width",
+        "shadow",
+        "elevation"
+      ]
+    },
     "tokens:color-roles": {
       "kind": "tokens",
       "source": "contracts/tokens.json#/tokens/color-roles",
@@ -856,8 +866,40 @@
         "fg",
         "primary",
         "critical",
-        "shadows",
-        "overlay"
+        "role families",
+        "shadows"
+      ]
+    },
+    "tokens:conditions": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/conditions",
+      "availability": "implemented",
+      "searchTerms": [
+        "conditions",
+        "states",
+        "keyboard",
+        "checked",
+        "disabled"
+      ]
+    },
+    "tokens:container-ladder": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/container-ladder",
+      "availability": "implemented",
+      "searchTerms": [
+        "container padding",
+        "pad",
+        "gap",
+        "inset"
+      ]
+    },
+    "tokens:font-sizes": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/font-sizes",
+      "availability": "implemented",
+      "searchTerms": [
+        "font sizes",
+        "type scale"
       ]
     },
     "tokens:geometry": {
@@ -865,9 +907,8 @@
       "source": "contracts/tokens.json#/tokens/geometry",
       "availability": "implemented",
       "searchTerms": [
-        "spacing tokens",
-        "radii",
-        "unit tokens"
+        "unit tokens",
+        "theme geometry"
       ]
     },
     "tokens:motion": {
@@ -877,7 +918,39 @@
       "searchTerms": [
         "durations",
         "easings",
-        "spring tokens"
+        "spring tokens",
+        "motion intents",
+        "motion-scale"
+      ]
+    },
+    "tokens:radii": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/radii",
+      "availability": "implemented",
+      "searchTerms": [
+        "radii",
+        "radius",
+        "corner"
+      ]
+    },
+    "tokens:sizes": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/sizes",
+      "availability": "implemented",
+      "searchTerms": [
+        "size tokens",
+        "width",
+        "height"
+      ]
+    },
+    "tokens:spacing": {
+      "kind": "tokens",
+      "source": "contracts/tokens.json#/tokens/spacing",
+      "availability": "implemented",
+      "searchTerms": [
+        "spacing tokens",
+        "margin",
+        "padding"
       ]
     },
     "tokens:type-roles": {

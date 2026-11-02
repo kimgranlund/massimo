@@ -7,7 +7,7 @@
   "documentation": "../../docs/specs/registry.md",
   "workflows": {
     "consume": { "documentation": "../../docs/specs/registry.md#choose-a-component", "steps": ["--start", "list or --find <term>", "--assembly <component:id>", "evaluate avoidWhen and useInstead", "--read the guide and contract", "--packet consumer <renderer> <ids>"] },
-    "author": { "documentation": "../../docs/specs/authoring.md", "steps": ["--assembly <component:id>", "--packet author web-component <id>", "edit source, contracts and manifest together", "npm run registry:graph", "npm run verification -- run <folder>", "npm test"] },
+    "author": { "documentation": "../../docs/specs/authoring.md", "steps": ["--assembly <component:id>", "--packet author web-component <id>", "edit source, contracts and manifest together", "npm run manifests", "npm run registry:graph", "npm run verification -- run <folder>", "npm test"] },
     "verify": { "documentation": "../../docs/specs/authoring.md#verify", "steps": ["npm test", "npm run verification -- check", "open apps/studio /geometry-check.html"] },
     "manifestLanguage": { "documentation": "../../docs/specs/manifest-language.md" }
   },
@@ -21,6 +21,7 @@
     "read": "npm run registry -- --read <package-relative-path>[#anchor|#/json/pointer]",
     "packet": "npm run registry -- --packet <consumer|author> <web-component|react|html> <component:id[,component:id…]> (--page 0 | --out <file>)",
     "auditRecommendations": "npm run registry -- --audit-recommendations",
+    "manifests": "npm run manifests (rewrite the fields mirrored from source; --check to test)",
     "graph": "npm run registry:graph",
     "verification": "npm run verification -- check | run <folder…|--all>"
   },

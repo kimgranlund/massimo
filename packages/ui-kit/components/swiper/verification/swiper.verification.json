@@ -10,7 +10,7 @@
     },
     {
       "path": "components/swiper/swiper.manifest.json",
-      "sha256": "e975c7f5305ede1556c712eabea27892b3ea64ee704ff81355b32564ef6c4018"
+      "sha256": "a00da4f0f5bfba8487db543ddfb67c3491cd6cd015230ff3751cca43fddd3143"
     },
     {
       "path": "components/swiper/swiper.react.tsx",

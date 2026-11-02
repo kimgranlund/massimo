@@ -518,7 +518,26 @@
       "exports": {
         "component:select": "Select"
       },
-      "verification": "./verification/select.verification.json#/renderers/react"
+      "verification": "./verification/select.verification.json#/renderers/react",
+      "props": {
+        "component:select": {
+          "inherits": [
+            "Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix'>"
+          ],
+          "props": [
+            "label?: string",
+            "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+            "description?: string",
+            "error?: string // Author error, shown at once; native :user-invalid shows built-in problems after interaction.",
+            "leading?: ReactNode",
+            "prefix?: ReactNode",
+            "suffix?: ReactNode",
+            "gap?: number",
+            "size?: number",
+            "children?: ReactNode // <SelectOption> children."
+          ]
+        }
+      }
     }
   }
 }

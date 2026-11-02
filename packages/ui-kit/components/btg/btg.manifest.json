@@ -776,7 +776,57 @@
         "component:tag": "Tag",
         "component:chip": "Chip"
       },
-      "verification": "./verification/btg.verification.json#/renderers/react"
+      "verification": "./verification/btg.verification.json#/renderers/react",
+      "props": {
+        "component:badge": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLSpanElement>, 'prefix'>"
+          ],
+          "props": [
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "trailing?: ReactNode // Trailing icon.",
+            "iconSize?: IconSize",
+            "size?: number",
+            "children?: ReactNode"
+          ]
+        },
+        "component:tag": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLSpanElement>, 'prefix'>"
+          ],
+          "props": [
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "trailing?: ReactNode // Trailing icon.",
+            "iconSize?: IconSize",
+            "size?: number",
+            "children?: ReactNode"
+          ]
+        },
+        "component:chip": {
+          "inherits": [
+            "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix' | 'onSelect'>"
+          ],
+          "props": [
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "trailing?: ReactNode // Trailing icon.",
+            "iconSize?: IconSize",
+            "size?: number",
+            "children?: ReactNode",
+            "selectable?: boolean // Toggle button (aria-pressed).",
+            "selected?: boolean",
+            "defaultSelected?: boolean = false",
+            "onSelectedChange?: (selected: boolean) => void",
+            "removable?: boolean // Adds the trailing x and the Delete / Backspace gesture; calls onRemove.",
+            "onRemove?: () => void"
+          ]
+        }
+      }
     }
   }
 }

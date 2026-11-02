@@ -14,7 +14,7 @@
     },
     {
       "path": "components/color/color.manifest.json",
-      "sha256": "f7c582ca36b586ac24034fbb2d663a50256b9bea7cfa2bdb3465c7e324419b44"
+      "sha256": "3b791d9bca6f1fc68c3c038e2cd7ed81ebc88a39970ba57cd6d7f29403fc59f3"
     },
     {
       "path": "components/color/color.react.tsx",

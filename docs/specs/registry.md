@@ -11,7 +11,7 @@ All paths are relative to `packages/ui-kit`.
 | `registry.json` | Entry: workflows, CLI commands, delivery rules | people |
 | `system.manifest.json` | Identity, authority order, routes to specs, foundations, contract index, packet limits | people |
 | `graph.json` | Every graph ID (kind, source, availability, search terms) and every edge | `npm run registry:graph` (never by hand) |
-| `components/<name>/<name>.manifest.json` | One folder's graph fragment: component and part nodes, edges, renderers | people; checked against source by tests |
+| `components/<name>/<name>.manifest.json` | One folder's graph fragment: component and part nodes, edges, renderers | people, except the [generated fields](#generated-manifest-fields) (`npm run manifests`) |
 | `components/<name>/<name>.md` | The guide: intent, usage, anatomy, keyboard, geometry, renderers | people |
 | `components/<name>/<name>.examples.json` | Runnable markup per node | people; mounted by tests |
 | `components/<name>/verification/<name>.verification.json` | Checks, bound source hashes, latest passing run | `npm run verification -- run <name>` |
@@ -42,7 +42,7 @@ Styles are never in a component folder: they are authored once in the Panda glob
 | `foundation:` | A governing system (colors, typography, geometry, motion, icons, states, element, form-element, slots, modality, pending) | `contracts/foundations.json` |
 | `geometry:` | A geometry family and its resolvers | `contracts/geometry-families.json` |
 | `context:` | A place a component may sit; containers `establish` one | `contracts/composition.json` |
-| `tokens:` | A token group | `contracts/tokens.json` |
+| `tokens:` | A token group: color roles, type roles, font sizes, motion, geometry parameters, spacing, the container ladder, sizes, radii, borders and shadows, conditions; each lists its Panda paths under `panda` | `contracts/tokens.json` |
 
 IDs are identities, not paths: moving a folder changes `source`, not the ID. Availability: `implemented` (registered element), `css-only` (container tags).
 
@@ -53,7 +53,7 @@ Schema: `contracts/component-manifest.schema.json`. File-level fields: `primary`
 A component node carries:
 
 - `intent`: the user action or content purpose, a verb and an object.
-- `properties`: every `static properties` entry with `type`, `default`, `attribute`, `reflects`, optional `enum` and `description`, and an `inspector` control for generated editors. Tests compare these with the element class.
+- `properties`: every `static properties` entry with `type`, `default`, `attribute`, `reflects` (generated), optional `enum` and `description`, and an `inspector` control for generated editors (written by people, kept by key).
 - `attributes`: attribute-only inputs (read by CSS or once at connect), such as `size`, `icon-size`, `gap`.
 - `events`, `methods`, `semantics` (role, form association, form value, keyboard, accessible name), `content` (who owns children), `layout` (default `display` and inline `sizing`).
 - `constraints`: behavior a reader must respect that the types cannot express.
@@ -74,7 +74,23 @@ Relationships:
 | `establishes` | A container creates this context |
 | `uses` | Depends on another capability (a component, icons, slots) |
 
-Renderers: `webComponent` (required), `react`, `html` (plain markup styled by the kit CSS through `data-ui` selectors). Status is per renderer: `completed` needs a module or documentation and a verification record pointer.
+Renderers: `webComponent` (required), `react`, `html` (plain markup styled by the kit CSS through `data-ui` selectors). Status is per renderer: `completed` needs a module or documentation and a verification record pointer. `react.props` (generated) maps each graph ID to its React props: `inherits` (base types the kit does not declare, such as `Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix'>`) and `props`, one TypeScript-style line per declared prop (`size?: number = 50 // JSDoc description`). `--assembly` shows them under `react`.
+
+## Generated manifest fields
+
+`npm run manifests` (`scripts/manifests.ts`; `--check` exits 1 when stale) rewrites only the fields that mirror source and keeps every other byte:
+
+| Field | Source |
+|---|---|
+| component `class`, `extends`, `semantics.formAssociated`, the `extends` edge | the registered element class |
+| `properties[].key`, `type`, `default`, `attribute`, `reflects` (one per `static properties` key, in order) | the class's `static properties`; `enum`, `description` and `inspector` are kept by key, a new key gets a default inspector control |
+| `events[].name`, `type`, `bubbles`, `cancelable` | every `new Event` / `new CustomEvent('<name>', {…})` in the node's class or a base class in the folder's `*.element.ts` (acorn over the type-stripped source); `trigger` and `detail` are kept by name, a new event gets an empty `trigger` that the tests reject. Events the source does not dispatch (the button's managed native `click`) stay as written |
+| `usesGeometry`, `ownsPart`, `allowedIn` edges | `contracts/components.json` (`geometryFamily`, `parts`, `allowedParents`), in contract order, where the node's edges of that relation were |
+| `renderers.react.props` | the React module's types (`scripts/react-props.ts`) |
+
+Everything else is written by people: intent, attributes, methods, the rest of semantics, content, layout, constraints, avoidWhen, searchTerms, parts, the other edges and the renderer records.
+
+The React props come from a small parser of the module's type text, because node strips types and acorn never sees them. It reads `interface … extends … { … }` and `type … = …` declarations (local, or imported from another `.tsx` module by a relative import), intersections, type literals, `Omit<…>` over a declared type, and members with their JSDoc; a base the kit does not declare stays as text under `inherits`. The props type of an export is the annotation on the first parameter of `export function Name(…)`, or of the first `function` in the factory of `export const Name = factory(…)`; defaults are that parameter's destructuring defaults. Any other syntax throws (`test/react-props.test.ts`), so a renderer that outgrows the parser fails loudly instead of being misread.
 
 ## The construction pattern
 
@@ -113,8 +129,9 @@ Exact lookup (`npm run registry -- component:chip`) returns the node, contract a
 
 - a manifest, examples file or verification record breaks its schema (with a rejecting control);
 - a registered `ui-*` tag has no manifest node, or a node has no element;
-- node properties differ from `static properties` (key, type, default, attribute, reflects), or `formAssociated` and the class name differ;
-- an event a module dispatches is not declared;
+- a manifest differs from `npm run manifests` output (properties, class, form association, dispatched events, contract edges or React props changed in source but not in the manifest, or were edited by hand), with a control that edits each mirrored field and checks that the generator restores it;
+- an event a module dispatches is not declared (a second, regex derivation), or an event has an empty `trigger`;
+- `contracts/tokens.json` names a Panda path (`tokens.*`, `semanticTokens.*`, `conditions.*`) that does not exist, or a Panda token category or condition is covered by no entry (`test/tokens-contract.test.ts`, with controls);
 - a path, JSON Pointer, part, edge target or `useInstead` target does not resolve;
 - a public component lacks a required `usesFoundation` edge, or its geometry family, contexts or parts disagree with `contracts/components.json`;
 - an example does not mount, contains a native form element or names an unknown subject;

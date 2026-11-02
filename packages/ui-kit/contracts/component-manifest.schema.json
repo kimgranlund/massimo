@@ -205,7 +205,25 @@
         "exports": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Graph ID → exported name." },
         "selectors": { "type": "object", "additionalProperties": { "type": "string" }, "description": "html renderer: graph ID → selector for plain markup styled by the kit CSS." },
         "documentation": { "type": "string" },
-        "verification": { "type": "string", "description": "Pointer into this folder's verification record (verification/<name>.verification.json#/renderers/<renderer>)." }
+        "verification": { "type": "string", "description": "Pointer into this folder's verification record (verification/<name>.verification.json#/renderers/<renderer>)." },
+        "props": {
+          "type": "object",
+          "description": "react renderer: graph ID → the component's props, generated from the module's types by npm run manifests (never by hand).",
+          "additionalProperties": { "$ref": "#/definitions/reactProps" }
+        }
+      }
+    },
+    "reactProps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inherits", "props"],
+      "properties": {
+        "inherits": { "type": "array", "items": { "type": "string" }, "description": "Inherited base types the kit does not declare (React's HTML attribute types, as written, with their Omit)." },
+        "props": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[A-Za-z_$][A-Za-z0-9_$]*\\??: \\S" },
+          "description": "Declared props in order, one TypeScript-style line each: name?: Type = default // JSDoc description."
+        }
       }
     },
     "independentLayer": {

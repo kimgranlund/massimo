@@ -14,7 +14,7 @@
     },
     {
       "path": "components/image/image.manifest.json",
-      "sha256": "7c8a952be6dc6386067b3eb8b3bf731f9a099bf017d1285d8e66b7bfc23f5c29"
+      "sha256": "0ce4e0e148c92662c60ed48247b5823469782813149087bf5ce09af2172720c2"
     },
     {
       "path": "components/image/image.react.tsx",

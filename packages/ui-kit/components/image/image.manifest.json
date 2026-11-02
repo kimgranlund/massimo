@@ -306,7 +306,25 @@
       "exports": {
         "component:image": "Image"
       },
-      "verification": "./verification/image.verification.json#/renderers/react"
+      "verification": "./verification/image.verification.json#/renderers/react",
+      "props": {
+        "component:image": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "src?: string",
+            "srcSet?: string",
+            "sizes?: string",
+            "alt?: string = ''",
+            "ratio?: string = ''",
+            "fit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down' = 'cover'",
+            "position?: string = ''",
+            "slideshow?: boolean // Children become slides of an inline swiper (dots and paddles on hover).",
+            "children?: ReactNode"
+          ]
+        }
+      }
     }
   }
 }

@@ -22,7 +22,7 @@
     },
     {
       "path": "components/input/input.manifest.json",
-      "sha256": "2e46ad6a8817f9a6631fad087570970f36083c9ab449d7a8d4789079c82f0264"
+      "sha256": "0e46398c9279e0f26b33a8961e1fbf5c590c2cb217439caa5e22f13a666986a5"
     },
     {
       "path": "components/input/input.react.tsx",

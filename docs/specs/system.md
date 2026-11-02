@@ -27,7 +27,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `icons/` | `<i name>` runtime, icon sets, SVG sanitizer | [icons](icons.md) |
 | `styles/` | reset, geometry CSS, defaults (states), motion, FOUC guard, page patterns | [geometry](geometry.md), [components](components.md), [motion](motion.md) |
 | `preset.ts` | the PandaCSS preset assembling all of the above | [theming](theming.md) |
-| `scripts/` | generators: `geometry:csv`, `tokens:dtcg`, `spectrum:defaults`, `registry:graph`; the `registry` CLI; `verification` | below, [registry](registry.md) |
+| `scripts/` | generators: `geometry:csv`, `tokens:dtcg`, `spectrum:defaults`, `manifests` (mirrored manifest fields), `registry:graph`; the `registry` CLI; `verification` | below, [registry](registry.md) |
 
 ## Generated outputs
 
@@ -37,6 +37,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `packages/ui-kit/tokens/dtcg/*.dtcg.json` | `npm run tokens:dtcg` | resolvers and Spectrum snapshot (DTCG 2025.10, see below) |
 | `packages/ui-kit/tokens/colors/spectrum/defaults.json` | `npm run spectrum:defaults` | Spectrum engine at default settings |
 | `packages/ui-kit/styled-system/`, `dist/ui-kit.css` | `npm run build` | Panda preset |
+| mirrored fields of `packages/ui-kit/components/*/*.manifest.json` | `npm run manifests` | element classes, dispatched events, `contracts/components.json`, React renderer types ([registry](registry.md#generated-manifest-fields)) |
 
 ## Design tokens (DTCG)
 

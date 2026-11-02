@@ -519,7 +519,38 @@
         "component:swatch": "Swatch",
         "component:palette": "Palette"
       },
-      "verification": "./verification/color.verification.json#/renderers/react"
+      "verification": "./verification/color.verification.json#/renderers/react",
+      "props": {
+        "component:swatch": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLSpanElement>, 'color'>"
+          ],
+          "props": [
+            "color?: string = ''",
+            "label?: string",
+            "size?: number"
+          ]
+        },
+        "component:palette": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "name?: string // Form field name; also makes the palette selectable.",
+            "selectable?: boolean",
+            "value?: string",
+            "defaultValue?: string = ''",
+            "onValueChange?: (value: string) => void",
+            "label?: string",
+            "orientation?: 'horizontal' | 'vertical'",
+            "disabled?: boolean",
+            "required?: boolean",
+            "invalid?: boolean",
+            "size?: number",
+            "children?: ReactNode // <Swatch> children."
+          ]
+        }
+      }
     }
   }
 }

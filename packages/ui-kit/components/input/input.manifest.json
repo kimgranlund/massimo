@@ -504,7 +504,24 @@
       "exports": {
         "component:input": "Input"
       },
-      "verification": "./verification/input.verification.json#/renderers/react"
+      "verification": "./verification/input.verification.json#/renderers/react",
+      "props": {
+        "component:input": {
+          "inherits": [
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'prefix'>"
+          ],
+          "props": [
+            "label?: string",
+            "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+            "leading?: ReactNode",
+            "prefix?: ReactNode",
+            "suffix?: ReactNode",
+            "trailing?: ReactNode",
+            "description?: string",
+            "error?: string"
+          ]
+        }
+      }
     },
     "html": {
       "status": "in_progress",

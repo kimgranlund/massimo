@@ -14,7 +14,7 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "8bbe0248ded6102e5bd09d2f9286a1fddb2f075119c1a9c88521a73fac010e80"
+      "sha256": "cab485eeae07e4f1e841f94895b99a8cc408d6b303668b5d6815844dbf36be99"
     },
     {
       "path": "components/range/range.react.tsx",

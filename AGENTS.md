@@ -22,13 +22,14 @@ To find or change a component, use the registry before reading source: `npm run 
 - Continuous values reach CSS only as custom properties set by script (`--ui-ratio`, `--ui-swatch-color`); finite choices are attributes and CSS selectors. No runtime stylesheet generation in components.
 - The jig uses ui-kit web components exclusively.
 - Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`, `resolveTextRun`).
-- A component change updates its manifest, guide, examples and contract in the same commit; `graph.json` is generated (`npm run registry:graph`), and verification hashes are stamped only by `npm run verification -- run <folder>` after its checks pass.
+- A component change updates its manifest, guide, examples and contract in the same commit; the manifest fields mirrored from source (properties, events, contract edges, React props) are generated (`npm run manifests -w @massimo/ui-kit`), `graph.json` is generated (`npm run registry:graph`), and verification hashes are stamped only by `npm run verification -- run <folder>` after its checks pass.
 
 ## Checks
 
 From the repository root:
 
-- `npm run ui-kit:test`: unit tests (node:test + happy-dom), including staleness checks for the CSV, DTCG tokens, Spectrum snapshot, `graph.json` and verification records, and manifest-vs-source checks.
+- `npm run ui-kit:test`: unit tests (node:test + happy-dom), including staleness checks for the CSV, DTCG tokens, Spectrum snapshot, `graph.json`, generated manifest fields and verification records, and the token contract (`contracts/tokens.json` vs the Panda theme).
+- `npm run manifests -w @massimo/ui-kit`: rewrite the manifest fields mirrored from source (`-- --check` to test).
 - `npm run verification -w @massimo/ui-kit -- check | run <folder…|--all>`: verification records.
 - `npm run ui-kit:typecheck` and `npm run typecheck -w @massimo/studio`.
 - `npm run ui-kit:build`: Panda codegen and `dist/ui-kit.css`.

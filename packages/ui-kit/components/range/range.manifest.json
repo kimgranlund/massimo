@@ -596,7 +596,35 @@
         "component:range": "Range",
         "component:progress": "Progress"
       },
-      "verification": "./verification/range.verification.json#/renderers/react"
+      "verification": "./verification/range.verification.json#/renderers/react",
+      "props": {
+        "component:range": {
+          "inherits": [
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'value' | 'defaultValue' | 'min' | 'max' | 'step'>"
+          ],
+          "props": [
+            "value?: number",
+            "defaultValue?: number = 50",
+            "min?: number = 0",
+            "max?: number = 100",
+            "step?: number = 1",
+            "label?: string // Accessible name (aria-label) when there is no visible label.",
+            "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\".",
+            "size?: number // Unit u in px for this control."
+          ]
+        },
+        "component:progress": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'children'>"
+          ],
+          "props": [
+            "value?: number | null // Current value; omit for indeterminate.",
+            "max?: number = 100",
+            "label?: string",
+            "size?: number"
+          ]
+        }
+      }
     }
   }
 }

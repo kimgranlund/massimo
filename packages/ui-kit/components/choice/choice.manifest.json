@@ -982,7 +982,46 @@
         "component:radio": "Radio",
         "component:switch": "Switch"
       },
-      "verification": "./verification/choice.verification.json#/renderers/react"
+      "verification": "./verification/choice.verification.json#/renderers/react",
+      "props": {
+        "component:checkbox": {
+          "inherits": [
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix'>"
+          ],
+          "props": [
+            "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
+            "suffix?: ReactNode",
+            "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "size?: number // Unit u in px for this control.",
+            "children?: ReactNode",
+            "indeterminate?: boolean"
+          ]
+        },
+        "component:radio": {
+          "inherits": [
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix'>"
+          ],
+          "props": [
+            "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
+            "suffix?: ReactNode",
+            "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "size?: number // Unit u in px for this control.",
+            "children?: ReactNode"
+          ]
+        },
+        "component:switch": {
+          "inherits": [
+            "Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'size' | 'prefix'>"
+          ],
+          "props": [
+            "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
+            "suffix?: ReactNode",
+            "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "size?: number // Unit u in px for this control.",
+            "children?: ReactNode"
+          ]
+        }
+      }
     }
   }
 }

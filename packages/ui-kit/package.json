@@ -48,6 +48,7 @@
     "tokens:dtcg": "node scripts/tokens-dtcg.ts",
     "spectrum:defaults": "node scripts/spectrum-defaults.ts",
     "registry": "node scripts/registry.ts",
+    "manifests": "node scripts/manifests.ts",
     "registry:graph": "node scripts/registry-graph.ts",
     "verification": "node scripts/verification.ts"
   },

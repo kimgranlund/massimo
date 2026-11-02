@@ -916,7 +916,72 @@
         "component:region": "Region",
         "component:page": "Page"
       },
-      "verification": "./verification/container.verification.json#/renderers/react"
+      "verification": "./verification/container.verification.json#/renderers/react",
+      "props": {
+        "component:group": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        },
+        "component:collection": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        },
+        "component:tile": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        },
+        "component:card": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        },
+        "component:panel": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        },
+        "component:region": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        },
+        "component:page": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number"
+          ]
+        }
+      }
     }
   }
 }

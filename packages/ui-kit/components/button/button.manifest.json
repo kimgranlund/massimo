@@ -413,7 +413,24 @@
       "exports": {
         "component:button": "Button"
       },
-      "verification": "./verification/button.verification.json#/renderers/react"
+      "verification": "./verification/button.verification.json#/renderers/react",
+      "props": {
+        "component:button": {
+          "inherits": [
+            "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix'>"
+          ],
+          "props": [
+            "loading?: boolean",
+            "variant?: 'primary' // primary: the primary solid with contrast text; omit for the neutral button.",
+            "leading?: ReactNode",
+            "prefix?: ReactNode",
+            "suffix?: ReactNode",
+            "trailing?: ReactNode",
+            "iconSize?: IconSize",
+            "size?: number // Unit u in px (2..4.5); control height is 8u."
+          ]
+        }
+      }
     },
     "html": {
       "status": "in_progress",

@@ -328,7 +328,23 @@
       "exports": {
         "component:swiper": "Swiper"
       },
-      "verification": "./verification/swiper.verification.json#/renderers/react"
+      "verification": "./verification/swiper.verification.json#/renderers/react",
+      "props": {
+        "component:swiper": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange'>"
+          ],
+          "props": [
+            "label?: string // Accessible name of the carousel region.",
+            "hoverControls?: boolean // Paddles and dots appear on hover or focus.",
+            "noDots?: boolean",
+            "noPaddles?: boolean",
+            "onSlideChange?: (index: number) => void",
+            "size?: number",
+            "children?: ReactNode // Each child is a slide."
+          ]
+        }
+      }
     }
   }
 }

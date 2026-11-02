@@ -871,7 +871,62 @@
         "component:segmented": "Segmented",
         "component:option": "Option"
       },
-      "verification": "./verification/listbox.verification.json#/renderers/react"
+      "verification": "./verification/listbox.verification.json#/renderers/react",
+      "props": {
+        "component:listbox": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "name?: string",
+            "value?: string",
+            "defaultValue?: string",
+            "onValueChange?: (value: string) => void",
+            "label?: string // Accessible name (aria-label).",
+            "orientation?: 'vertical' | 'horizontal'",
+            "disabled?: boolean",
+            "required?: boolean",
+            "invalid?: boolean // Show the invalid state now (author error).",
+            "gap?: number",
+            "size?: number",
+            "children?: ReactNode // <Option> children."
+          ]
+        },
+        "component:segmented": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "name?: string",
+            "value?: string",
+            "defaultValue?: string",
+            "onValueChange?: (value: string) => void",
+            "label?: string // Accessible name (aria-label).",
+            "orientation?: 'vertical' | 'horizontal'",
+            "disabled?: boolean",
+            "required?: boolean",
+            "invalid?: boolean // Show the invalid state now (author error).",
+            "gap?: number",
+            "size?: number",
+            "children?: ReactNode // <Option> children."
+          ]
+        },
+        "component:option": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>"
+          ],
+          "props": [
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "trailing?: ReactNode // Trailing icon.",
+            "value: string // Submitted value.",
+            "disabled?: boolean",
+            "iconSize?: IconSize",
+            "children?: ReactNode"
+          ]
+        }
+      }
     }
   }
 }

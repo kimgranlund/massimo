@@ -9,6 +9,7 @@ import Ajv from 'ajv';
 import { KIT, manifests, fromManifest, pointer, readSource, buildGraph, graphText, auditRecommendations, page, find, assembly } from '../scripts/registry-lib.ts';
 import { staleness, componentFolders } from '../scripts/verification.ts';
 import { GEOMETRY_SCOPE } from '../styles/geometry.ts';
+import { compare, generate, manifestText } from '../scripts/manifests.ts';
 
 const all = manifests();
 for (const { manifest } of all) if (manifest.module) await import(`../components/${manifest.name}/${manifest.module.slice(2)}`);
@@ -19,12 +20,9 @@ const validateManifest = ajv.compile(read('contracts/component-manifest.schema.j
 const validateExamples = ajv.compile(read('contracts/examples.schema.json'));
 const validateRecord = ajv.compile(read('contracts/verification.schema.json'));
 const contracts = read('contracts/components.json').components;
-const families = read('contracts/geometry-families.json').families;
 const graph = buildGraph();
 const components = all.flatMap(({ path, manifest }) => manifest.nodes.filter((n: any) => n.kind === 'component').map((node: any) => ({ path, manifest, node })));
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
-const typeName = (t: unknown) => (t === Boolean ? 'boolean' : t === Number ? 'number' : 'string');
-const attrOf = (k: string, c: any) => c.attribute ?? k.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
 
 test('every manifest, examples file and verification record validates against its schema', () => {
   for (const { path, manifest } of all) {
@@ -56,21 +54,58 @@ test('every registered ui-* tag has exactly one manifest node, and every element
   }
 });
 
-test('node properties match static properties; class, base and form association match the element', () => {
+// Properties, class, base, form association, dispatched events, contract edges (geometry family,
+// parts, contexts) and React props are generated from source by scripts/manifests.ts.
+test('manifests are current: mirrored fields equal the generator output (run npm run manifests)', () => {
+  const stale = compare().filter(([, cur, next]) => cur !== next).map(([p]) => p);
+  assert.deepEqual(stale, []);
+});
+
+test('the manifest check bites: edited mirrored fields are restored, hand-written fields are kept', () => {
+  const { path, manifest } = all.find((m) => m.manifest.name === 'button')!;
+  const text = manifestText(manifest);
+  const node = (m: any) => m.nodes.find((n: any) => n.id === 'component:button');
+  const edits: [string, (m: any) => void][] = [
+    ['property default', (m) => { node(m).properties.find((p: any) => p.key === 'type').default = 'submit'; }],
+    ['property reflects', (m) => { node(m).properties.find((p: any) => p.key === 'loading').reflects = false; }],
+    ['missing property', (m) => { node(m).properties.pop(); }],
+    ['class', (m) => { node(m).class = 'UIButtonX'; }],
+    ['formAssociated', (m) => { node(m).semantics.formAssociated = false; }],
+    ['ownsPart edge', (m) => { m.edges = m.edges.filter((e: any) => e.to !== 'part:slot-suffix'); }],
+    ['allowedIn edge', (m) => { m.edges.push({ from: 'component:button', relation: 'allowedIn', to: 'context:nowhere' }); }],
+    ['react prop', (m) => { m.renderers.react.props['component:button'].props.push('hidden?: boolean'); }],
+  ];
+  for (const [what, edit] of edits) {
+    const m = structuredClone(manifest);
+    edit(m);
+    assert.notEqual(manifestText(m), text, `${what}: the edit changes the file`);
+    assert.equal(manifestText(generate(path, m)), text, `${what}: the generator restores it`);
+  }
+  const choice = all.find((m) => m.manifest.name === 'choice')!;
+  const c = structuredClone(choice.manifest);
+  c.nodes[0].events.find((e: any) => e.name === 'change').bubbles = false;
+  c.nodes[0].events = c.nodes[0].events.filter((e: any) => e.name !== 'input');
+  const regenerated = generate(choice.path, c);
+  assert.equal(regenerated.nodes[0].events.find((e: any) => e.name === 'change').bubbles, true, 'dispatched event flags are restored');
+  assert.deepEqual(regenerated.nodes[0].events.find((e: any) => e.name === 'input').trigger, '', 'an undeclared dispatched event is added with an empty trigger');
+  const kept = structuredClone(manifest);
+  node(kept).properties[0].description = 'hand-written';
+  node(kept).intent = ['hand-written'];
+  node(kept).avoidWhen = [];
+  node(kept).events[0].trigger = 'hand-written';
+  assert.deepEqual(generate(path, kept), kept, 'hand-written fields survive');
+});
+
+test('enum defaults sit in the enum; attribute-only inputs are not property attributes; every event has a trigger', () => {
   for (const { node } of components) {
-    const cls: any = customElements.get(node.tag);
-    if (!cls) { assert.deepEqual(node.properties, [], `${node.id}: CSS-only nodes have no properties`); continue; }
-    const want = Object.entries(cls.properties as Record<string, any>).map(([key, c]) => ({ key, type: typeName(c.type), default: c.default ?? null, attribute: attrOf(key, c), reflects: !!c.reflect }));
-    const got = node.properties.map((p: any) => ({ key: p.key, type: p.type, default: p.default, attribute: p.attribute, reflects: p.reflects }));
-    assert.deepEqual(got, want, `${node.id} properties`);
-    assert.equal(node.class, cls.name, `${node.id} class`);
-    assert.equal(node.semantics.formAssociated, !!cls.formAssociated, `${node.id} formAssociated`);
-    assert.equal(node.extends, cls.formAssociated ? 'UIFormElement' : 'UIElement', `${node.id} extends`);
+    if (!customElements.get(node.tag)) assert.deepEqual(node.properties, [], `${node.id}: CSS-only nodes have no properties`);
     for (const p of node.properties) if (p.enum && p.default !== null && p.default !== '') assert.ok(p.enum.includes(p.default), `${node.id}.${p.key} default outside its enum`);
     for (const a of node.attributes) assert.ok(!node.properties.some((p: any) => p.attribute === a.name), `${node.id}: ${a.name} is a property attribute, not attribute-only`);
+    for (const e of node.events) assert.ok(e.trigger.trim(), `${node.id}: event ${e.name} needs a trigger`);
   }
 });
 
+// A second derivation (regex, not the generator's AST walk) of the dispatched events.
 test('every event a module dispatches is declared on one of its nodes', () => {
   for (const { path, manifest } of all) {
     if (!manifest.module) continue;
@@ -110,10 +145,6 @@ test('edges and recommendations point at existing graph IDs; components carry th
     for (const f of ['colors', 'typography', 'geometry', 'motion', 'states']) assert.ok(to('usesFoundation').includes(`foundation:${f}`), `${node.id} usesFoundation ${f}`);
     const c = contracts[node.id.slice('component:'.length)];
     assert.ok(c, `${node.id} has no semantic contract`);
-    assert.deepEqual(to('usesGeometry'), [families[c.geometryFamily].id], `${node.id} geometry family`);
-    assert.deepEqual(to('allowedIn'), c.allowedParents.map((p: string) => `context:${p}`).sort(), `${node.id} contexts`);
-    const contractParts = c.parts.map((p: string) => `part:${p.replace(/\?$/, '')}`).sort();
-    assert.deepEqual(to('ownsPart'), contractParts, `${node.id} parts agree with contracts/components.json`);
     for (const a of node.avoidWhen) if (a.useInstead) {
       assert.notEqual(a.useInstead, node.id, `${node.id} recommends itself`);
       assert.ok(graph.nodes[a.useInstead], `${node.id} recommends unknown ${a.useInstead}`);
@@ -172,6 +203,9 @@ test('registry: find, assembly, paging and the continuation token', () => {
   const a = assembly('component:radio');
   assert.equal(a.tag, 'ui-radio');
   assert.ok(a.alternatives.every((x: any) => !x.useInstead || x.availability === 'implemented'));
+  const input = assembly('component:input');
+  assert.equal(input.react.export, 'Input');
+  assert.ok(input.react.props.some((p: string) => p.startsWith('hideLabel?: boolean')), 'assembly shows React props');
   const content = 'x'.repeat(10000) + '€'.repeat(100);
   let offset = 0, token: string | null = null, acc = '';
   for (let i = 0; i < 20; i++) {

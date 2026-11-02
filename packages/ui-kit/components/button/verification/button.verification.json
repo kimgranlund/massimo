@@ -18,7 +18,7 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "8c3efa5f6a8ad1f0e72b712fa073decf8f8fce81d1fb279044e61a3e610440e0"
+      "sha256": "60074bab447c1dbdbdd925f207e10028919b8a5e9fb8fcc04cc229ff062738b5"
     },
     {
       "path": "components/button/button.react.tsx",

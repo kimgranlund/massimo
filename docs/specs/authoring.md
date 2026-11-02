@@ -29,7 +29,7 @@ A component change is complete when these agree:
 | Geometry | `tokens/geometry/resolve.ts`, `styles/geometry.ts`, `contracts/geometry-families.json` |
 | Look and states | `styles/defaults.ts`, `styles/motion.ts`, `contracts/states.json` |
 | Semantic contract | `contracts/components.json` (family, parts, parents, behavior) |
-| Manifest | `components/<name>/<name>.manifest.json` (see [manifest language](manifest-language.md)) |
+| Manifest | `components/<name>/<name>.manifest.json` (see [manifest language](manifest-language.md)); the fields mirrored from source are rewritten by `npm run manifests` ([generated fields](registry.md#generated-manifest-fields)), never by hand |
 | Guide and examples | `<name>.md`, `<name>.examples.json` |
 | Renderers | `<name>.react.tsx` when one exists; its status in the manifest |
 | Specs | `docs/specs/components.md`, `geometry.md` when behavior or lengths change |
@@ -39,7 +39,7 @@ A new component also needs: `define('ui-<tag>', …)` in its module, a `package.
 
 ## Verify
 
-1. `npm run registry:graph` (rewrites `graph.json`).
+1. `npm run manifests` (rewrites the manifest fields mirrored from source: properties, class, form association, dispatched events, contract edges, React props; then write any new property's description or inspector and a new event's `trigger`), then `npm run registry:graph` (rewrites `graph.json`).
 2. `npm run verification -- run <name>`: runs the record's checks and stamps the bound source hashes only when every check runs at least one test and passes. Never edit hashes by hand; add a check when the change has a risk no existing test covers.
 3. `npm run ui-kit:test`, `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio`, `npm run ui-kit:build`.
 4. After geometry changes: `npm run geometry:csv -w @massimo/ui-kit`, `npm run tokens:dtcg -w @massimo/ui-kit`, then open `/geometry-check.html` in the running studio; `"fails": []` means the CSS matches the resolver.
