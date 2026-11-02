@@ -173,3 +173,14 @@ test('the default unit is 4.5px everywhere: 36px controls, 14.5px control text',
   assert.equal(resolveControl().height, 36);
   assert.equal(resolveControl().fontSize, 14.5);
 });
+
+test('Panda spacing, sizes and radii are in u and recompute in sized subtrees', async () => {
+  const { spacing, radii, unitTokenVars } = await import('../tokens/geometry/index.ts');
+  const { geometry } = await import('../styles/geometry.ts');
+  assert.equal((spacing as any)[8].value, 'calc(8 * var(--ui-unit) * 1px)');
+  assert.match((spacing as any).inset.page.value, /var\(--ui-pad-page\).*var\(--ui-border\)/);
+  assert.match((radii as any).md.value, /1\.5 \* var\(--ui-unit\) \* var\(--ui-radius-scale\)/);
+  const vars = unitTokenVars();
+  for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card', '--sizes-6', '--radii-lg']) assert.ok(name in vars, name);
+  assert.deepEqual((geometry as any)[':where([size], [data-size])'], vars);
+});

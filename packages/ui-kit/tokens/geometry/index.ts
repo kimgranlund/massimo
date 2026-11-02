@@ -1,13 +1,31 @@
-// 4px spacing grid stays fixed so layout rhythm is stable across themes.
-// Radii scale with --ui-radius-scale. Component geometry lives in resolve.ts / styles/geometry.ts.
-const grid = (n: number) => ({ value: `${n * 0.25}rem` });
-const scaled = (rem: number, param: string) => ({ value: `calc(${rem}rem * var(--ui-${param}))` });
+// Spacing, sizes and radii are in u: N = N·u, computed where used from the inherited --ui-unit, so they
+// follow the theme unit and [size] subtrees like component geometry does. Radii also scale with
+// --ui-radius-scale. Container tokens name the theme ladder: pad.<level> and gap.<level> are the
+// theme's --ui-pad-<level> / --ui-gap-<level> in u; inset.<level> is the padding inside a border
+// (max(0, pad − B), B = min(border, u/2)), as containers use it.
+import { CONTAINERS } from './resolve.ts';
 
-export const spacing = Object.fromEntries([0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24].map(n => [n, grid(n)]));
-export const sizes = { ...spacing };
+const u = (n: number | string) => `calc(${n} * var(--ui-unit) * 1px)`;
+const B = 'min(calc(var(--ui-border) * 1px), calc(var(--ui-unit) * 0.5px))';
+const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24];
+const LEVELS = Object.keys(CONTAINERS);
+const ladder = (fn: (level: string) => string) => Object.fromEntries(LEVELS.map((l) => [l, { value: fn(l) }]));
+
+export const spacing = {
+  ...Object.fromEntries(STEPS.map((n) => [n, { value: n === 0 ? '0' : u(n) }])),
+  pad: ladder((l) => u(`var(--ui-pad-${l})`)),
+  gap: ladder((l) => u(`var(--ui-gap-${l})`)),
+  inset: ladder((l) => `max(0px, ${u(`var(--ui-pad-${l})`)} - ${B})`),
+};
+export const sizes = Object.fromEntries(STEPS.map((n) => [n, { value: n === 0 ? '0' : u(n) }]));
+const scaled = (n: number) => ({ value: `calc(${n} * var(--ui-unit) * var(--ui-radius-scale) * 1px)` });
 export const radii = {
-  none: { value: '0' }, sm: scaled(0.25, 'radius-scale'), md: scaled(0.375, 'radius-scale'),
-  lg: scaled(0.5, 'radius-scale'), xl: scaled(0.75, 'radius-scale'), full: { value: '9999px' },
+  none: { value: '0' },
+  sm: scaled(1),
+  md: scaled(1.5),
+  lg: scaled(2),
+  xl: scaled(3),
+  full: { value: '9999px' },
 };
 export const shadows = {
   sm: { value: '0 1px 2px oklch(0 0 0 / 0.08)' },
@@ -18,3 +36,24 @@ export const borderWidths = { thin: { value: '1px' }, thick: { value: '2px' } };
 
 // Responsive breakpoints (Panda's base preset defines none).
 export const breakpoints = { sm: '40rem', md: '48rem', lg: '64rem', xl: '80rem' };
+
+/**
+ * The u-based token variables as declarations. Panda declares them on :root, where they resolve with
+ * the root unit; any element that sets --ui-unit (or a container param) for its subtree redeclares
+ * them so descendants get lengths in that subtree's u. styles/geometry.ts does this for [size];
+ * a theme scope (the jig canvas) includes unitTokenCss().
+ */
+export function unitTokenVars(): Record<string, string> {
+  const out: Record<string, string> = {};
+  const add = (group: string, tokens: Record<string, any>, prefix = '') => {
+    for (const [k, v] of Object.entries(tokens)) {
+      const name = `${prefix}${k}`;
+      if (v && typeof v === 'object' && 'value' in v) {
+        if (String(v.value).includes('--ui-')) out[`--${group}-${name.replace('.', '\\.')}`] = v.value;
+      } else add(group, v, `${name}-`);
+    }
+  };
+  add('spacing', spacing); add('sizes', sizes); add('radii', radii);
+  return out;
+}
+export const unitTokenCss = () => Object.entries(unitTokenVars()).map(([k, v]) => `${k}: ${v};`).join('\n  ');

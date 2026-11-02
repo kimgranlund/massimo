@@ -4,6 +4,7 @@
 // Inputs (unitless): --ui-unit (theme default; [size] overrides per subtree), --ui-border,
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
+import { unitTokenVars } from '../tokens/geometry/index.ts';
 import { CONTAINERS, GAPS, ICON_STEPS, SIZES, SQUARE_LEVELS } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
@@ -40,6 +41,8 @@ function textRun(host: string, slot: string, bare: string, base: Record<string, 
   };
 }
 
+const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;
+
 export const geometry = defineGlobalStyles({
   // Not ':root': the preset spreads several globalCss objects, and a shared key would replace
   // the theme parameters (themeCss) instead of merging with them.
@@ -47,6 +50,8 @@ export const geometry = defineGlobalStyles({
 
   // size = u, on any element, inherited.
   ...Object.fromEntries(SIZES.map((u) => [`:is([size="${u}"], [data-size="${u}"])`, { '--ui-unit': String(u) }])),
+  // u-based tokens (spacing, sizes, radii) recompute in a sized subtree (tokens/geometry/index.ts).
+  ':where([size], [data-size])': UNIT_TOKENS,
   ...Object.fromEntries(Object.entries(ICON_STEPS).map(([k, v]) => [`:is([icon-size=${k}], [data-icon-size=${k}])`, { '--ui-icon-k': String(v) }])),
   // Gap apply to the element that carries the attribute only: every container resets the
   // value at tag specificity, and the attribute rule (higher specificity) sets it.
