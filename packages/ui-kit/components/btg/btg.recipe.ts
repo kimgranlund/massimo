@@ -44,7 +44,7 @@ export const tag = defineSlotRecipe({
   slots: SLOTS,
   base: (() => {
     const b = btgBase({ base: { ...ROW, minHeight: 'var(--slot)' } }, true);
-    return { ...b, root: { ...b.root, bg: 'bg.muted', color: 'fg' } };
+    return { ...b, root: { ...b.root, bg: 'bg.control', color: 'fg' } };
   })(),
 });
 
@@ -59,7 +59,7 @@ export const chip = defineSlotRecipe({
     return {
       ...b,
       root: {
-        ...b.root, bg: 'bg.muted', color: 'fg', borderColor: 'border.strong',
+        ...b.root, bg: 'bg.control', color: 'fg', borderColor: 'border.strong',
         transition: t('feedback', ...PAINT),
         _disabled: { opacity: 0.5, cursor: 'not-allowed' },
         [FORCED]: { ...FORCED_EDGE, _disabled: { color: 'GrayText' } },
@@ -73,7 +73,7 @@ export const chip = defineSlotRecipe({
     selectable: {
       true: {
         root: {
-          _enabled: { cursor: 'pointer', _hover: { bg: 'bg.mutedHover' }, _active: { bg: 'bg.mutedActive' } },
+          _enabled: { cursor: 'pointer', _hover: { bg: 'bg.controlHover' }, _active: { bg: 'bg.controlActive' } },
           // Selected chips use the checkbox/switch "on" colors: the primary solid with on-solid text.
           _pressed: {
             bg: 'primary.solid', color: 'fg.onSolid', borderColor: 'primary.solid',

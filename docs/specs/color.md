@@ -35,7 +35,7 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 | `bg` (`--colors-bg`, page) | neutral 1 |
 | `bg.subtle`, `bg.muted` | neutral 2, 3 |
 | `bg.mutedHover`, `bg.mutedActive` (hover, press) | neutral 4, 5 |
-| `bg.control`, `bg.controlHover`, `bg.controlActive` (neutral button fill, hover, press) | neutral 12 at 12 / 19 / 25% (dark 20 / 29 / 39%): a translucent layer that reads on any surface; equals neutral 3 / 4 / 5 on the page tone |
+| `bg.control`, `bg.controlHover`, `bg.controlActive` (button, tag, chip and segmented fills; option hover and press) | neutral 12 at 12 / 19 / 25% (dark 20 / 29 / 39%): a translucent layer that reads on any surface; equals neutral 3 / 4 / 5 on the page tone |
 | `bg.overlay` (menus, popovers, dialogs, drawers; with `shadows.md`) | neutral 1 light, 2 dark |
 | `bg.selected`, `fg.selected` (selected option in a listbox or segmented control) | neutral 1 / neutral 12 in light; primary 9 / its contrast color (`fg.onSolid`) in dark |
 | `bg.inverse`, `fg.inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |

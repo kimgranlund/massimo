@@ -35,7 +35,7 @@ export const segmented = defineSlotRecipe({
   className: 'ui-segmented',
   description: 'Segmented control (ui-segmented, React Segmented).',
   slots: ['root'],
-  base: list({ display: 'inline-flex', bg: 'bg.muted', borderColor: 'transparent' }),
+  base: list({ display: 'inline-flex', bg: 'bg.control', borderColor: 'transparent' }),
 });
 
 export const option = defineSlotRecipe({
@@ -51,11 +51,13 @@ export const option = defineSlotRecipe({
         text: { display: 'flex', alignItems: 'center', minHeight: 'var(--slot)', paddingBlock: 'var(--line-pad)', lineHeight: 'var(--line)' },
       }),
       '& > [data-part=contents]': { minWidth: 'var(--slot)' },
-      [`&${ACTIVE}`]: { bg: 'bg.muted' },
+      // Hover, press and the keyboard-active option layer the translucent control fill over the list
+      // or segmented track, so they read on any surface.
+      [`&${ACTIVE}`]: { bg: 'bg.control' },
       [`&${SELECTED}`]: { bg: 'primary.subtle', color: 'primary.fg', fontWeight: 'medium', [FORCED]: FORCED_ON },
       '&:is([aria-disabled=true], :disabled)': { opacity: 0.45, cursor: 'not-allowed' },
-      [`&${ENABLED}:hover`]: { bg: 'bg.mutedHover' },
-      [`&${ENABLED}:active`]: { bg: 'bg.mutedActive' },
+      [`&${ENABLED}:hover`]: { bg: 'bg.control' },
+      [`&${ENABLED}:active`]: { bg: 'bg.controlHover' },
       [`&${SELECTED}${ENABLED}:is(:hover, :active)`]: { bg: 'primary.subtleHover' },
       // Segmented: options share the row, labels centered and muted until hovered or selected.
       [IN_SEGMENTED]: { flex: '1', justifyContent: 'center', color: 'fg.muted', '& > [data-part=contents]': { flex: '1', justifyContent: 'center' } },
