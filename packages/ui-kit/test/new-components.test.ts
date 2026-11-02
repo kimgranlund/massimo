@@ -138,11 +138,16 @@ test('swiper builds viewport, paddles and dots; image presets and slideshow', as
   const img = mount('<ui-image src="/a.jpg" alt="A" ratio="wide" fit="contain"></ui-image><ui-image ratio="3/2"></ui-image><ui-image ratio="evil;"></ui-image><ui-image slideshow><img src="/1.jpg" alt=""><img src="/2.jpg" alt=""></ui-image>');
   const [one, custom, bad, show] = img.querySelectorAll('ui-image') as any;
   await tick();
-  assert.equal(one.style.getPropertyValue('aspect-ratio').replace(/\s/g, ''), '16/9');
+  // No inline aspect-ratio: presets are CSS selectors, a custom ratio is a custom property.
+  for (const el of [one, custom, bad]) assert.equal(el.style.getPropertyValue('aspect-ratio'), '', 'no inline aspect-ratio');
+  assert.equal(one.getAttribute('ratio'), 'wide', 'preset stays an attribute (reflected)');
+  assert.equal(one.style.getPropertyValue('--ui-image-ratio'), '', 'presets set no variable');
   assert.equal(one.querySelector('img').getAttribute('src'), '/a.jpg');
   assert.equal(one.querySelector('img').loading, 'lazy');
-  assert.equal(custom.style.getPropertyValue('aspect-ratio').replace(/\s/g, ''), '3/2');
-  assert.equal(bad.style.getPropertyValue('aspect-ratio'), '', 'invalid ratio ignored');
+  assert.equal(custom.style.getPropertyValue('--ui-image-ratio').replace(/\s/g, ''), '3/2');
+  assert.equal(bad.style.getPropertyValue('--ui-image-ratio'), '', 'invalid ratio ignored');
+  custom.ratio = 'square'; await tick();
+  assert.equal(custom.style.getPropertyValue('--ui-image-ratio'), '', 'switching to a preset clears the variable');
   assert.equal(show.querySelector('ui-swiper').slides.length, 2);
   assert.ok(show.querySelector('ui-swiper').hasAttribute('hover-controls'));
   d.remove(); img.remove();

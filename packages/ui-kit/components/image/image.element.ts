@@ -8,11 +8,9 @@
 //   slideshow: several child images become an inline swiper; dots and paddles show on hover.
 import { UIElement, define } from '../../core/index.ts';
 import '../swiper/swiper.element.ts';
+import { customRatio } from './ratios.ts';
 
-export const RATIOS: Record<string, string> = {
-  square: '1 / 1', landscape: '4 / 3', portrait: '3 / 4', wide: '16 / 9', ultrawide: '21 / 9', story: '9 / 16', golden: '1.618 / 1',
-};
-const RATIO = /^\s*\d+(\.\d+)?\s*\/\s*\d+(\.\d+)?\s*$/;
+export { RATIOS } from './ratios.ts';
 const POSITION = /^[a-z0-9.%\s-]{1,40}$/i;
 
 export class UIImage extends UIElement {
@@ -67,9 +65,10 @@ export class UIImage extends UIElement {
   };
 
   update() {
-    // Ratio: named preset or a validated "w/h"; anything else is ignored.
-    const ratio = RATIOS[this.ratio] ?? (RATIO.test(this.ratio) ? this.ratio : '');
-    if (ratio) this.style.setProperty('aspect-ratio', ratio); else this.style.removeProperty('aspect-ratio');
+    // Ratio: presets are [ratio=<name>] selectors in CSS; a validated custom "w/h" reaches CSS as
+    // --ui-image-ratio; anything else is ignored.
+    const custom = customRatio(this.ratio);
+    if (custom) this.style.setProperty('--ui-image-ratio', custom); else this.style.removeProperty('--ui-image-ratio');
     if (POSITION.test(this.position)) this.style.setProperty('--ui-image-position', this.position);
     else this.style.removeProperty('--ui-image-position');
     if (this.slideshow) return;

@@ -5,6 +5,7 @@
 // tag rules already apply before an element upgrades.
 import { defineGlobalStyles } from '@pandacss/dev';
 import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
+import { RATIOS } from '../components/image/ratios.ts';
 
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
@@ -183,6 +184,10 @@ export const defaults = defineGlobalStyles({
   // Image
   'ui-image': { display: 'block', overflow: 'hidden', position: 'relative', bg: 'bg.muted' },
   'ui-image :is(img, picture)': { display: 'block', width: '100%', height: '100%' },
+  // Ratio: presets by attribute; a custom "w/h" via --ui-image-ratio (set by the element). :where()
+  // keeps the variable rule below the preset selectors.
+  'ui-image:where([ratio])': { aspectRatio: 'var(--ui-image-ratio, auto)' },
+  ...Object.fromEntries(Object.entries(RATIOS).map(([name, r]) => [`ui-image[ratio=${name}]`, { aspectRatio: r }])),
   'ui-image img': { objectFit: 'cover', objectPosition: 'var(--ui-image-position, center)' },
   ...Object.fromEntries(['contain', 'fill', 'none', 'scale-down'].map((f) => [`ui-image[fit=${f}] img`, { objectFit: f }])),
   // Failed image: hide the broken-image glyph; the frame's empty fill remains.

@@ -6,11 +6,15 @@
   "sources": [
     {
       "path": "components/image/image.element.ts",
-      "sha256": "3ef3e2428ab7f106580b7a72e06fdb59bcbb20fc0330bfd2526f7d3bae845ead"
+      "sha256": "b4732cd81255fe4bbeca802416bd4c4863dbce079c5a0711070992cdb2be4079"
+    },
+    {
+      "path": "components/image/ratios.ts",
+      "sha256": "e421c5212927ddded1f5355e51b825fd4ce039153cac03ef97326c45c9d54d76"
     },
     {
       "path": "components/image/image.manifest.json",
-      "sha256": "10a031b3237a4ef1d4eb5b9f0b34f353edf43f9d9c53500044074e484a58bc8f"
+      "sha256": "7c50f774472fd043dd38843061f26ccef1cc3ad83aacd319228b544eee03baa3"
     }
   ],
   "renderers": {

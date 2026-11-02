@@ -11,6 +11,7 @@ import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
+import '@massimo/ui-kit/components/image/element';
 import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
@@ -40,7 +41,7 @@ for (const c of cases) {
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
     <ui-button id="adorn">Save<span slot="suffix">⌘S</span></ui-button>
     <ui-input id="money" label="M"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input>
-    <ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
+    <div style="width:160px"><ui-image id="imgWide" ratio="wide"></ui-image><ui-image id="imgCustom" ratio="3/2"></ui-image><ui-image id="imgBad" ratio="evil;"></ui-image></div><ui-chip id="chipX" removable>Remove</ui-chip><ui-chip id="chipSfx">Chip<span slot="suffix">3</span></ui-chip><ui-checkbox id="chkSfx">Check<span slot="suffix">(2)</span></ui-checkbox>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
@@ -129,6 +130,10 @@ for (const c of cases) {
   runChecks('pattern.input', part($('money'), 'control'), { prefix: true, suffix: true });
   runChecks('pattern.chip', $('chipSfx'), { suffix: true }, { slotEdge: c.unit, bareEdge: c.unit });
   runChecks('pattern.checkbox', $('chkSfx'), { leading: true, suffix: true }, { bareEdge: 0 });
+  checks['image.ratio.preset'] = [r2(rect($('imgWide')).height), 90];
+  checks['image.ratio.custom'] = [r2(rect($('imgCustom')).height), r2(160 / 1.5)];
+  checks['image.ratio.invalid'] = [r2(rect($('imgBad')).height), 0];
+  checks['image.ratio.noInline'] = [[$('imgWide'), $('imgCustom')].filter((el) => el.style.aspectRatio).length, 0];
   checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];

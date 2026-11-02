@@ -19,11 +19,12 @@
   "independentLayers": [
     {
       "kind": "pure-behavior",
-      "module": "./image.element.ts",
+      "module": "./ratios.ts",
       "exports": [
-        "RATIOS"
+        "RATIOS",
+        "customRatio"
       ],
-      "description": "Named aspect-ratio presets."
+      "description": "Named aspect-ratio presets and custom \"w/h\" validation; no DOM."
     }
   ],
   "nodes": [
@@ -165,7 +166,7 @@
       "constraints": [
         "Authored <img>/<picture> win over src.",
         "Failed images get data-error; the frame keeps its empty fill.",
-        "ratio sets aspect-ratio inline on the host and position sets --ui-image-position (validated strings only).",
+        "ratio presets are CSS selectors ([ratio=wide] → 16 / 9); a valid custom \"w/h\" reaches CSS as --ui-image-ratio; position sets --ui-image-position. Invalid strings are ignored. No inline aspect-ratio.",
         "alt=\"\" marks a decorative image."
       ],
       "avoidWhen": [
