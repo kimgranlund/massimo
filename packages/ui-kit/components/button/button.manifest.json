@@ -1,0 +1,412 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "button",
+  "primary": "component:button",
+  "module": "./button.element.ts",
+  "registration": "on-import",
+  "documentation": "./button.md",
+  "examples": "./button.examples.json",
+  "contract": "../../contracts/components.json#/components/button",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/button.ts",
+      "exports": [
+        "buttonAttrs",
+        "isInactive",
+        "blockIfInactive",
+        "onButtonKeydown"
+      ],
+      "description": "ARIA attributes and activation policy for any element acting as a button; no rendering."
+    },
+    {
+      "kind": "dom-behavior",
+      "module": "../slots.ts",
+      "exports": [
+        "arrangeSlots",
+        "observeSlots"
+      ],
+      "description": "Sorts children into leading / contents / trailing parts and hides empty ones."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveControl",
+        "resolveButtonContents"
+      ],
+      "description": "Reference numbers for the control family; CSS in styles/geometry.ts implements them."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:button",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-button",
+      "class": "UIButton",
+      "extends": "UIFormElement",
+      "intent": [
+        "Invoke an application-defined action",
+        "Submit the owning form when type is submit",
+        "Reset the owning form when type is reset"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Inherited from UIFormElement; has no effect on a button.",
+          "inspector": {
+            "control": "none",
+            "reason": "No effect on a button."
+          }
+        },
+        {
+          "key": "type",
+          "type": "string",
+          "default": "button",
+          "attribute": "type",
+          "reflects": false,
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ],
+          "description": "Not reflected. The default is button (unlike native <button>, which defaults to submit).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "loading",
+          "type": "boolean",
+          "default": false,
+          "attribute": "loading",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "icon-size",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "fill"
+          ],
+          "readBy": "css",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets and the select chevron stay sm. data-icon-size is the same input for plain HTML.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "click",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": true,
+          "trigger": "pointer click, Enter or Space; never fired to page listeners while disabled or loading"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "button",
+        "formAssociated": true,
+        "keyboard": [
+          {
+            "keys": "Enter, Space",
+            "action": "activate (click)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text, icons and adornments; children move into the construction-pattern parts: slot=\"leading\" | \"trailing\" for icons, slot=\"prefix\" | \"suffix\" for text adornments, the rest is the label."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host is the button: role=button, tabindex 0, aria-disabled and aria-busy set by script. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "Activation is click, Enter or Space. disabled or loading stops the click in the capture phase, so page listeners never see it.",
+        "type=submit calls form.requestSubmit(); type=reset calls form.reset(); type=button (default) does nothing but fire click.",
+        "loading sets aria-busy; the label stays readable and activation is blocked. The application owns the async work.",
+        "Icon-only buttons need aria-label or aria-labelledby: an icon gives no accessible name.",
+        "Never nest interactive controls inside a button. Do not re-key or replace children a framework passed in: the button has moved them into slot parts; change attributes instead."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Representing a persistent on/off setting that takes effect immediately.",
+          "reason": "A button has no checked state; Switch owns role=switch and aria-checked.",
+          "useInstead": "component:switch"
+        },
+        {
+          "when": "Choosing one of a few mutually exclusive views or modes.",
+          "reason": "Several buttons cannot own exclusive selection or arrow-key movement; Segmented is a single-select listbox.",
+          "useInstead": "component:segmented"
+        },
+        {
+          "when": "Toggling a filter or a removable token in a set.",
+          "reason": "Chip owns aria-pressed toggling and the cancelable remove gesture.",
+          "useInstead": "component:chip"
+        },
+        {
+          "when": "Navigating to a URL.",
+          "reason": "Navigation needs a native <a href> so the browser owns links, history and open-in-new-tab. The kit has no link component yet."
+        }
+      ],
+      "searchTerms": [
+        "button",
+        "action",
+        "submit",
+        "cta",
+        "icon button",
+        "command"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:button",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesGeometry",
+      "to": "geometry:control"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:button",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:button",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:button",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:button",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:button",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:button",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:button",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:button",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:button",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:button",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./button.element.ts",
+      "exports": {
+        "component:button": "UIButton"
+      },
+      "verification": "./verification/button.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "in_progress",
+      "module": "./button.react.tsx",
+      "exports": {
+        "component:button": "Button"
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:button": "[data-ui=button]"
+      }
+    }
+  }
+}

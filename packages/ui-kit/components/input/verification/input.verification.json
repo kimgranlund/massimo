@@ -1,0 +1,51 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "input",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/input/input.element.ts",
+      "sha256": "18bcf41eb87bcd463d38aa8adcb6a1b4dad14c192f6db78f3d73872a05f927bf"
+    },
+    {
+      "path": "dom/text-entry.ts",
+      "sha256": "f1bb1af069d586dbbcd95227f3890374b6e11b1b6840951d6938f816d28bac92"
+    },
+    {
+      "path": "dom/field.ts",
+      "sha256": "596a8b0c41b8c0341c360464c348dee4c034a7a94b7072a8c7f24fd067f616e1"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "77d21733f7b97e86124fe0c4384db008cc323653d809b0e53cc6236b31262bbc"
+    },
+    {
+      "path": "components/input/input.manifest.json",
+      "sha256": "a113f702c7602f8c94c6930e6fa5b523024efc725505fc7ebe089c95b66ec2f9"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-input\" test/components.test.ts",
+          "covers": "no native elements, ARIA wiring, typing and form value, error timing, email/minlength/pattern, Enter submits, reset, password"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-input\" test/components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

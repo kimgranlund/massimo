@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "color",
+  "title": "Swatch and palette",
+  "summary": "Color samples.",
+  "defaultExample": "swatch",
+  "examples": [
+    {
+      "id": "swatch",
+      "label": "Swatches",
+      "subject": "component:swatch",
+      "markup": "<ui-swatch color=\"oklch(0.6 0.15 250)\" label=\"Blue\"></ui-swatch><ui-swatch color=\"rgb(255 0 0 / 40%)\"></ui-swatch>"
+    },
+    {
+      "id": "palette",
+      "label": "Selectable palette",
+      "subject": "component:palette",
+      "markup": "<ui-palette name=\"accent\" label=\"Accent\" value=\"#3366ff\"><ui-swatch color=\"#3366ff\"></ui-swatch><ui-swatch color=\"#22aa66\"></ui-swatch><ui-swatch color=\"#dd4433\"></ui-swatch></ui-palette>"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical ramp",
+      "subject": "component:palette",
+      "markup": "<ui-palette orientation=\"vertical\" label=\"Ramp\"><ui-swatch color=\"#eef\"></ui-swatch><ui-swatch color=\"#99f\"></ui-swatch><ui-swatch color=\"#33c\"></ui-swatch></ui-palette>"
+    }
+  ]
+}

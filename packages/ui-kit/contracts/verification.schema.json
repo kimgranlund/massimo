@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://massimo.dev/schemas/verification.schema.json",
+  "title": "massimo verification record",
+  "description": "Binds a component folder's sources (SHA-256) to the checks that cover them and their latest passing run. Written by scripts/verification.ts run; never hand-edit hashes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "component", "scope", "sources", "renderers", "limitations"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "component": { "type": "string" },
+    "scope": { "type": "string" },
+    "sources": { "type": "array", "minItems": 1, "items": { "type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": { "path": { "type": "string" }, "sha256": { "type": "string", "pattern": "^([0-9a-f]{64})?$" } } } },
+    "renderers": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["checks", "latestRun"],
+        "properties": {
+          "checks": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["command", "covers"], "properties": { "command": { "type": "string" }, "covers": { "type": "string" } } } },
+          "latestRun": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "object", "additionalProperties": false, "required": ["date", "outcome", "commands", "environment"], "properties": { "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }, "outcome": { "const": "pass" }, "commands": { "type": "array", "items": { "type": "string" } }, "environment": { "type": "object", "required": ["node"], "properties": { "node": { "type": "string" } } } } }
+            ]
+          }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

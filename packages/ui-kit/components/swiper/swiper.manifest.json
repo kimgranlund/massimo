@@ -1,0 +1,326 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "swiper",
+  "primary": "component:swiper",
+  "module": "./swiper.element.ts",
+  "registration": "on-import",
+  "documentation": "./swiper.md",
+  "examples": "./swiper.examples.json",
+  "contract": "../../contracts/components.json#/components/swiper",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveSwiper"
+      ],
+      "description": "Reference numbers for paddles and dots."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:swiper",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-swiper",
+      "class": "UISwiper",
+      "extends": "UIElement",
+      "intent": [
+        "Browse a row of slides one at a time"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name of the carousel region.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "hover-controls",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Paddles and dots appear on hover or focus.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "name": "no-dots",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Hides the dots.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "name": "no-paddles",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Hides the paddles.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "slidechange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ index: number }",
+          "trigger": "a different slide becomes 60% visible"
+        }
+      ],
+      "methods": [
+        {
+          "name": "go",
+          "signature": "(index: number) => void",
+          "description": "Scrolls to a slide (clamped)."
+        }
+      ],
+      "semantics": {
+        "role": "region",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "arrow keys in the viewport",
+            "action": "native scroll"
+          },
+          {
+            "keys": "Enter, Space on a dot",
+            "action": "go to that slide"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Any elements; each child becomes a slide (role=group, aria-roledescription=slide)."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "aria-roledescription=carousel. Children move into the viewport at connect.",
+        "No autoplay. go() respects reduced motion.",
+        "One slide sets data-single and hides the controls."
+      ],
+      "avoidWhen": [
+        {
+          "when": "All items should be visible to compare.",
+          "reason": "A carousel hides most items; use a grid in a collection.",
+          "useInstead": "component:collection"
+        },
+        {
+          "when": "A gallery of images inside one frame.",
+          "reason": "Image slideshow builds the swiper with hover controls.",
+          "useInstead": "component:image"
+        }
+      ],
+      "searchTerms": [
+        "swiper",
+        "carousel",
+        "slider gallery",
+        "slideshow"
+      ]
+    },
+    {
+      "id": "part:swiper-viewport",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=viewport]",
+      "summary": "The scroll-snap viewport (tabindex 0) holding the slides; native momentum, touch and arrow-key scrolling."
+    },
+    {
+      "id": "part:swiper-paddle",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "ui-button",
+      "selector": ":scope > [data-part=paddle]",
+      "summary": "Previous / next ui-button with a caret icon (data-dir=prev|next); disabled at the ends."
+    },
+    {
+      "id": "part:swiper-dots",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=dots]",
+      "summary": "The dot row."
+    },
+    {
+      "id": "part:swiper-dot",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=dots] > [data-part=dot]",
+      "summary": "One dot per slide (role=button, aria-current on the active one); stretches when active."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:swiper",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesGeometry",
+      "to": "geometry:swiper"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "ownsPart",
+      "to": "part:swiper-viewport"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "ownsPart",
+      "to": "part:swiper-paddle"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "ownsPart",
+      "to": "part:swiper-dots"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "ownsPart",
+      "to": "part:swiper-dot"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "uses",
+      "to": "component:button"
+    },
+    {
+      "from": "component:swiper",
+      "relation": "uses",
+      "to": "foundation:icons"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./swiper.element.ts",
+      "exports": {
+        "component:swiper": "UISwiper"
+      },
+      "verification": "./verification/swiper.verification.json#/renderers/webComponent"
+    }
+  }
+}

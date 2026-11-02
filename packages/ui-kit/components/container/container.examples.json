@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "container",
+  "title": "Containers",
+  "summary": "CSS-only layout levels.",
+  "defaultExample": "card",
+  "examples": [
+    {
+      "id": "card",
+      "label": "Card with a group",
+      "subject": "component:card",
+      "markup": "<ui-card><span>Title</span><ui-group gap=\"1\"><ui-button>Open</ui-button><ui-button>Share</ui-button></ui-group></ui-card>"
+    },
+    {
+      "id": "nesting",
+      "label": "Nesting",
+      "subject": "component:page",
+      "markup": "<ui-page><ui-region><ui-panel><ui-card><ui-tile><ui-collection><ui-group><ui-badge>1</ui-badge></ui-group></ui-collection></ui-tile></ui-card></ui-panel></ui-region></ui-page>"
+    }
+  ]
+}

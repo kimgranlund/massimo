@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "listbox",
+  "title": "Listbox, segmented, option",
+  "summary": "Visible single-select lists.",
+  "defaultExample": "listbox",
+  "examples": [
+    {
+      "id": "listbox",
+      "label": "Listbox",
+      "subject": "component:listbox",
+      "markup": "<ui-listbox label=\"Folder\" name=\"folder\" value=\"inbox\"><ui-option value=\"inbox\"><i slot=\"leading\" name=\"tray\"></i>Inbox<span slot=\"suffix\">12</span></ui-option><ui-option value=\"sent\">Sent</ui-option><ui-option value=\"spam\" disabled>Spam</ui-option></ui-listbox>"
+    },
+    {
+      "id": "segmented",
+      "label": "Segmented",
+      "subject": "component:segmented",
+      "markup": "<ui-segmented label=\"View\" value=\"grid\"><ui-option value=\"grid\">Grid</ui-option><ui-option value=\"list\">List</ui-option></ui-segmented>"
+    },
+    {
+      "id": "option",
+      "label": "Option anatomy",
+      "subject": "component:option",
+      "markup": "<ui-listbox label=\"Demo\"><ui-option><i slot=\"leading\" name=\"star\"></i><span slot=\"prefix\">#</span>Label<span slot=\"suffix\">3</span><i slot=\"trailing\" name=\"caret-right\"></i></ui-option></ui-listbox>"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "color",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/color/color.element.ts",
+      "sha256": "0db2874ae5b96ee23494938ea122b6087fa5cc40caf528ccab93ea55a57f67d7"
+    },
+    {
+      "path": "dom/listbox.ts",
+      "sha256": "5713529eff157100f139aed0cb0380c9a88ce6943eb27a37b0c2b005e9b66f0e"
+    },
+    {
+      "path": "components/color/color.manifest.json",
+      "sha256": "a2043f2f376dd739b11576b24d3a10ec65de5c153bd4f79c2e0886a41e211132"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
+          "covers": "swatch color variable, invalid and alpha marking, selectable palette keys and value"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

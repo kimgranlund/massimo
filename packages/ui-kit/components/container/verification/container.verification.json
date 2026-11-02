@@ -1,0 +1,44 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "container",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "tokens/geometry/resolve.ts",
+      "sha256": "5db93cb58c097196f74e6b30144e0b5dd57c6c032c43edf6fdb9b04baefe85cc"
+    },
+    {
+      "path": "styles/geometry.ts",
+      "sha256": "51910df2526d0bd07a55295424338ab8944194d7be7102bddf7544f35bdb2388"
+    },
+    {
+      "path": "components/container/container.manifest.json",
+      "sha256": "6165dda50a809bb88ab6a987ad1c7e252aa5db4fa242611bc5d6e1079c5afe5f"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "container padding, gap and radius numbers"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

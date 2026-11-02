@@ -1,0 +1,592 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "range",
+  "primary": "component:range",
+  "module": "./range.element.ts",
+  "registration": "on-import",
+  "documentation": "./range.md",
+  "examples": "./range.examples.json",
+  "contract": "../../contracts/components.json#/components/range",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/range.ts",
+      "exports": [
+        "snap",
+        "ratioOf",
+        "rangeKey",
+        "valueAt",
+        "sliderAttrs"
+      ],
+      "description": "Value snapping, key and pointer mapping and slider ARIA."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveTrack",
+        "trackFill"
+      ],
+      "description": "Reference numbers for track, thumb and fill."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:range",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-range",
+      "class": "UIRange",
+      "extends": "UIFormElement",
+      "intent": [
+        "Set a number within a bounded range by position"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Inherited; a range always has a value.",
+          "inspector": {
+            "control": "none",
+            "reason": "A range always has a value."
+          }
+        },
+        {
+          "key": "value",
+          "type": "number",
+          "default": 50,
+          "attribute": "value",
+          "reflects": false,
+          "description": "Live value; the value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "min",
+          "type": "number",
+          "default": 0,
+          "attribute": "min",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "max",
+          "type": "number",
+          "default": 100,
+          "attribute": "max",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "step",
+          "type": "number",
+          "default": 1,
+          "attribute": "step",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name (aria-label); not visible.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "valueText",
+          "type": "string",
+          "default": "",
+          "attribute": "value-text",
+          "reflects": false,
+          "description": "Human text for the value (aria-valuetext), e.g. \"50%\".",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "slider",
+        "formAssociated": true,
+        "formValue": "the number as a string",
+        "keyboard": [
+          {
+            "keys": "ArrowRight, ArrowUp / ArrowLeft, ArrowDown",
+            "action": "step up / down (Left/Right flip in RTL)"
+          },
+          {
+            "keys": "PageUp, PageDown",
+            "action": "±10% of the range"
+          },
+          {
+            "keys": "Home, End",
+            "action": "min / max"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false
+      },
+      "layout": {
+        "display": "grid",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "template() owns track, fill and thumb; the ratio reaches CSS as --ui-ratio (0…1). Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "input fires while dragging or stepping; change fires on key commit and pointer release.",
+        "The value attribute at connect is the reset default. Values snap to step.",
+        "label sets aria-label; value-text sets aria-valuetext."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The exact number matters more than its position.",
+          "reason": "Dragging to an exact value is slow; an input is faster.",
+          "useInstead": "component:input"
+        },
+        {
+          "when": "Showing progress the user does not set.",
+          "reason": "A slider is interactive.",
+          "useInstead": "component:progress"
+        }
+      ],
+      "searchTerms": [
+        "range",
+        "slider",
+        "volume",
+        "scrubber"
+      ]
+    },
+    {
+      "id": "component:progress",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-progress",
+      "class": "UIProgress",
+      "extends": "UIElement",
+      "intent": [
+        "Show how much of a task is done",
+        "Show that work is ongoing when no value is set"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "number",
+          "default": null,
+          "attribute": "value",
+          "reflects": false,
+          "description": "Current value; null means indeterminate.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "max",
+          "type": "number",
+          "default": 100,
+          "attribute": "max",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name (aria-label).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": "progressbar",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false
+      },
+      "layout": {
+        "display": "grid",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "No value (or NaN) means indeterminate: data-indeterminate and a sweep; reduced motion shows a faint full fill.",
+        "value is clamped to 0…max; the ratio reaches CSS as --ui-ratio."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user sets the value.",
+          "reason": "Progress is read-only.",
+          "useInstead": "component:range"
+        },
+        {
+          "when": "A button is waiting on its own action.",
+          "reason": "Button loading shows busy in place.",
+          "useInstead": "component:button"
+        }
+      ],
+      "searchTerms": [
+        "progress",
+        "progress bar",
+        "loading bar",
+        "meter",
+        "indeterminate"
+      ],
+      "contract": "../../contracts/components.json#/components/progress"
+    },
+    {
+      "id": "part:range-thumb",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=thumb]",
+      "summary": "The 4u thumb, positioned from --ui-ratio."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:range",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesGeometry",
+      "to": "geometry:track"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:range",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:range",
+      "relation": "ownsPart",
+      "to": "part:track"
+    },
+    {
+      "from": "component:range",
+      "relation": "ownsPart",
+      "to": "part:track-fill"
+    },
+    {
+      "from": "component:range",
+      "relation": "ownsPart",
+      "to": "part:range-thumb"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:range",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:range",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:progress",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesGeometry",
+      "to": "geometry:track"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:progress",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:progress",
+      "relation": "ownsPart",
+      "to": "part:track"
+    },
+    {
+      "from": "component:progress",
+      "relation": "ownsPart",
+      "to": "part:track-fill"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:progress",
+      "relation": "allowedIn",
+      "to": "context:group"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./range.element.ts",
+      "exports": {
+        "component:range": "UIRange",
+        "component:progress": "UIProgress"
+      },
+      "verification": "./verification/range.verification.json#/renderers/webComponent"
+    }
+  }
+}

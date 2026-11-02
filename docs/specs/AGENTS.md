@@ -10,6 +10,9 @@ What the system is and must do, edited in place. Start with the overview.
 - [motion.md](motion.md): SwiftUI-style springs as CSS linear() easings, what animates on which spring, reduced motion.
 - [icons.md](icons.md): the `<i name>` runtime, sets, system glyphs, sanitizing, sizes.
 - [theming.md](theming.md): theme parameters, saved themes, per-element inputs, the Panda preset.
+- [registry.md](registry.md): component folders, manifests, the graph, the registry CLI, paging and packets, verification records.
+- [authoring.md](authoring.md): adding or changing a component: rules, what changes together, how to verify.
+- [manifest-language.md](manifest-language.md): writing intent, descriptions, constraints and avoidance guidance.
 - [studio.md](studio.md): the jig: panel, canvas scoping, Copy JSON, checks.
 
 When a change alters behavior described here, update the spec in the same commit.

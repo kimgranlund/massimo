@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "notation": "Contexts are where a component may be placed. A container tag establishes its context. allowedIn edges name supported contexts; they do not pass density or size down (only the size attribute does that).",
+  "contexts": {
+    "page": {
+      "id": "context:page",
+      "host": "component:page",
+      "summary": "Top level: region padding plus a centered 72rem max width.",
+      "searchTerms": [
+        "page",
+        "inside page"
+      ]
+    },
+    "region": {
+      "id": "context:region",
+      "host": "component:region",
+      "summary": "A major area of a page (8u padding, square).",
+      "searchTerms": [
+        "region",
+        "inside region"
+      ]
+    },
+    "panel": {
+      "id": "context:panel",
+      "host": "component:panel",
+      "summary": "A side or tool panel (6u padding, square).",
+      "searchTerms": [
+        "panel",
+        "inside panel"
+      ]
+    },
+    "card": {
+      "id": "context:card",
+      "host": "component:card",
+      "summary": "A self-contained surface (4u padding).",
+      "searchTerms": [
+        "card",
+        "inside card"
+      ]
+    },
+    "tile": {
+      "id": "context:tile",
+      "host": "component:tile",
+      "summary": "A small card in a grid (3u padding).",
+      "searchTerms": [
+        "tile",
+        "inside tile"
+      ]
+    },
+    "collection": {
+      "id": "context:collection",
+      "host": "component:collection",
+      "summary": "A list or set of like items (2u padding).",
+      "searchTerms": [
+        "collection",
+        "inside collection"
+      ]
+    },
+    "group": {
+      "id": "context:group",
+      "host": "component:group",
+      "summary": "Closely related controls (1u padding).",
+      "searchTerms": [
+        "group",
+        "inside group"
+      ]
+    },
+    "form": {
+      "id": "context:form",
+      "host": null,
+      "summary": "Inside a <form>: form-associated components submit, reset and validate with it.",
+      "searchTerms": [
+        "form",
+        "inside form"
+      ]
+    },
+    "inline": {
+      "id": "context:inline",
+      "host": null,
+      "summary": "Running text or any flow content.",
+      "searchTerms": [
+        "inline",
+        "inside inline"
+      ]
+    }
+  },
+  "nesting": {
+    "order": [
+      "page",
+      "region",
+      "panel",
+      "card",
+      "tile",
+      "collection",
+      "group"
+    ],
+    "rule": "Nest outer to inner in this order; a level may be skipped. Inner radius never exceeds the outer level's (resolveContainer caps it)."
+  },
+  "forbidden": [
+    {
+      "rule": "No interactive control inside ui-button, ui-chip or ui-option.",
+      "reason": "Nested interactive content has no accessible name or focus model; the chip remove icon is a click target, not a control."
+    },
+    {
+      "rule": "No native form elements inside any ui-* component.",
+      "reason": "Form participation goes through UIFormElement; tests enforce it."
+    },
+    {
+      "rule": "ui-option only as a direct child of ui-listbox, ui-segmented or ui-select.",
+      "reason": "The owning list sets role, id and selection state."
+    },
+    {
+      "rule": "ui-swatch selection only inside ui-palette with name or selectable.",
+      "reason": "The palette owns the listbox role and value."
+    }
+  ]
+}

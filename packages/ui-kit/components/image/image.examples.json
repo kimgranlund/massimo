@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "image",
+  "title": "Image",
+  "summary": "Framed images.",
+  "defaultExample": "ratio",
+  "examples": [
+    {
+      "id": "ratio",
+      "label": "Ratio and fit",
+      "subject": "component:image",
+      "markup": "<ui-image src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"\" ratio=\"wide\" fit=\"cover\"></ui-image>"
+    },
+    {
+      "id": "slideshow",
+      "label": "Slideshow",
+      "subject": "component:image",
+      "markup": "<ui-image slideshow alt=\"Products\" ratio=\"square\"><img src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"One\"><img src=\"data:image/gif;base64,R0lGODlhAQABAAAAACw=\" alt=\"Two\"></ui-image>"
+    }
+  ]
+}

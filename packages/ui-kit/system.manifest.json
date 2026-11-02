@@ -1,0 +1,61 @@
+{
+  "name": "massimo ui-kit",
+  "package": "@massimo/ui-kit",
+  "entry": "../../AGENTS.md",
+  "registry": "registry.json",
+  "graph": "graph.json",
+  "authority": [
+    { "rank": 1, "kind": "source", "paths": ["components/", "core/", "dom/", "tokens/", "styles/", "icons/"], "meaning": "Implementation decides what is delivered. Manifests that disagree with source are wrong; tests check the API metadata against the element classes." },
+    { "rank": 2, "kind": "contract", "paths": ["contracts/"], "meaning": "Semantic contracts, geometry families, parts, composition, states and schemas." },
+    { "rank": 3, "kind": "manifest", "paths": ["components/*/*.manifest.json"], "meaning": "Per-component graph fragments: intent, API, anatomy, relationships, renderers." },
+    { "rank": 4, "kind": "documentation", "paths": ["components/*/*.md", "../../docs/specs/"], "meaning": "Guides and specs; explain, never override source or contracts." },
+    { "rank": 5, "kind": "generated", "paths": ["graph.json", "docs/geometry.csv", "tokens/dtcg/", "dist/", "styled-system/"], "meaning": "Never edited by hand; tests fail when stale." }
+  ],
+  "statusVocabulary": {
+    "node": ["implemented", "experimental", "deprecated"],
+    "renderer": ["pending", "in_progress", "blocked", "completed", "cancelled"],
+    "availability": ["implemented", "css-only", "contract"]
+  },
+  "routes": {
+    "system": "../../docs/specs/system.md",
+    "registry": "../../docs/specs/registry.md",
+    "components": "../../docs/specs/components.md",
+    "authoring": "../../docs/specs/authoring.md",
+    "manifestLanguage": "../../docs/specs/manifest-language.md",
+    "geometry": "../../docs/specs/geometry.md",
+    "color": "../../docs/specs/color.md",
+    "typography": "../../docs/specs/typography.md",
+    "motion": "../../docs/specs/motion.md",
+    "icons": "../../docs/specs/icons.md",
+    "theming": "../../docs/specs/theming.md",
+    "studio": "../../docs/specs/studio.md"
+  },
+  "foundations": {
+    "colors": "foundation:colors",
+    "typography": "foundation:typography",
+    "geometry": "foundation:geometry",
+    "motion": "foundation:motion",
+    "icons": "foundation:icons",
+    "states": "foundation:states"
+  },
+  "contracts": {
+    "componentManifestSchema": "contracts/component-manifest.schema.json",
+    "examplesSchema": "contracts/examples.schema.json",
+    "verificationSchema": "contracts/verification.schema.json",
+    "components": "contracts/components.json",
+    "parts": "contracts/parts.json",
+    "composition": "contracts/composition.json",
+    "geometryFamilies": "contracts/geometry-families.json",
+    "foundations": "contracts/foundations.json",
+    "states": "contracts/states.json",
+    "tokens": "contracts/tokens.json"
+  },
+  "taskPackets": {
+    "maxBytes": 60000,
+    "roles": {
+      "consumer": "Build with the component: node record, semantic contract, guide, examples, registration and stylesheet.",
+      "author": "Change the component: consumer packet plus module and style sources, geometry family, independent layers and the verification record."
+    },
+    "renderers": ["web-component", "react", "html"]
+  }
+}

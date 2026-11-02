@@ -1,0 +1,867 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "listbox",
+  "primary": "component:listbox",
+  "module": "./listbox.element.ts",
+  "registration": "on-import",
+  "documentation": "./listbox.md",
+  "examples": "./listbox.examples.json",
+  "contract": "../../contracts/components.json#/components/listbox",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/listbox.ts",
+      "exports": [
+        "listboxAttrs",
+        "optionAttrs",
+        "navigate",
+        "createTypeahead",
+        "firstEnabled",
+        "lastEnabled"
+      ],
+      "description": "Listbox ARIA, arrow/Home/End movement and typeahead over plain option items."
+    },
+    {
+      "kind": "dom-behavior",
+      "module": "./options.ts",
+      "exports": [
+        "optionList",
+        "ensureId"
+      ],
+      "description": "Reactive view of ui-option children, refreshed on DOM changes."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:listbox",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-listbox",
+      "class": "UIListbox",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose one value from a list that stays visible"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a value. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The selected option value. The value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "vertical",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "description": "Arrow-key axis and layout direction.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "listbox",
+        "formAssociated": true,
+        "formValue": "the selected option value",
+        "keyboard": [
+          {
+            "keys": "ArrowUp, ArrowDown (vertical) / ArrowLeft, ArrowRight (horizontal)",
+            "action": "move and select"
+          },
+          {
+            "keys": "Home, End",
+            "action": "first / last enabled option"
+          },
+          {
+            "keys": "printable characters",
+            "action": "typeahead"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "ui-option elements (direct children)."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The host is the listbox and the single tab stop; aria-activedescendant tracks the highlighted option. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "Selection follows focus: moving the highlight selects and fires input and change.",
+        "Only direct ui-option children count; disabled options are skipped."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Space is tight and the choice is made rarely.",
+          "reason": "A listbox takes room for every option; Select collapses into one field.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Choosing several values.",
+          "reason": "Single select only.",
+          "useInstead": "component:checkbox"
+        },
+        {
+          "when": "A list of navigation links or commands.",
+          "reason": "Options are values, not actions; selection follows focus would trigger navigation on arrow keys. Use buttons or links.",
+          "useInstead": "component:button"
+        }
+      ],
+      "searchTerms": [
+        "listbox",
+        "list select",
+        "option list",
+        "single select list"
+      ]
+    },
+    {
+      "id": "component:segmented",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-segmented",
+      "class": "UISegmented",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose one of a few mutually exclusive views or modes"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a value. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The selected option value.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "Defaults to horizontal.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "listbox",
+        "formAssociated": true,
+        "formValue": "the selected option value",
+        "keyboard": [
+          {
+            "keys": "ArrowLeft, ArrowRight",
+            "action": "move and select"
+          },
+          {
+            "keys": "Home, End",
+            "action": "first / last enabled option"
+          },
+          {
+            "keys": "printable characters",
+            "action": "typeahead"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "ui-option elements (direct children)."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "A ui-listbox with horizontal orientation by default; the selected option is a raised bg segment. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "Selection follows focus, so each option should be cheap to show (switching a view, not running a task)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "More than about five options or long labels.",
+          "reason": "Segments share one row and truncate.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Turning one setting on or off.",
+          "reason": "Two segments for on/off hide the state behind a choice; Switch states it directly.",
+          "useInstead": "component:switch"
+        }
+      ],
+      "searchTerms": [
+        "segmented",
+        "segmented control",
+        "toggle group",
+        "button group",
+        "tabs like"
+      ],
+      "contract": "../../contracts/components.json#/components/segmented"
+    },
+    {
+      "id": "component:option",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-option",
+      "class": "UIOption",
+      "contract": "../../contracts/components.json#/components/option",
+      "extends": "UIElement",
+      "intent": [
+        "Present one choice inside a listbox, segmented control or select"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Submitted value. When the attribute is absent the label text is used.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Skipped by keyboard movement and not selectable.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "icon-size",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "fill"
+          ],
+          "readBy": "css",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets and the select chevron stay sm. data-icon-size is the same input for plain HTML.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text, icons and adornments; children move into leading / prefix / contents / suffix / trailing parts."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The owning list sets role=option, id, aria-selected, aria-disabled and data-active; the option sets none itself.",
+        "optionValue is the value attribute, else the contents text (icons excluded).",
+        "Only a direct child of ui-listbox, ui-segmented or ui-select (ui-select moves it into its popup)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Outside a ui-listbox, ui-segmented or ui-select.",
+          "reason": "A lone option has no role, selection or keyboard owner.",
+          "useInstead": "component:listbox"
+        },
+        {
+          "when": "Running a command from a list.",
+          "reason": "Options are values; use buttons for actions.",
+          "useInstead": "component:button"
+        }
+      ],
+      "searchTerms": [
+        "option",
+        "list item",
+        "choice"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:listbox",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:listbox",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:segmented",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:option",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesGeometry",
+      "to": "geometry:control"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:option",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:option",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:option",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:option",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:option",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:option",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:option",
+      "relation": "requiresParent",
+      "to": "component:listbox"
+    },
+    {
+      "from": "component:option",
+      "relation": "requiresParent",
+      "to": "component:segmented"
+    },
+    {
+      "from": "component:option",
+      "relation": "requiresParent",
+      "to": "component:select"
+    },
+    {
+      "from": "component:option",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:option",
+      "relation": "uses",
+      "to": "foundation:icons"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./listbox.element.ts",
+      "exports": {
+        "component:listbox": "UIListbox",
+        "component:segmented": "UISegmented",
+        "component:option": "UIOption"
+      },
+      "verification": "./verification/listbox.verification.json#/renderers/webComponent"
+    }
+  }
+}

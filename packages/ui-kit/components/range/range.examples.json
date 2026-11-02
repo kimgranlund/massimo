@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "range",
+  "title": "Range and progress",
+  "summary": "Bounded numbers.",
+  "defaultExample": "range",
+  "examples": [
+    {
+      "id": "range",
+      "label": "Range",
+      "subject": "component:range",
+      "markup": "<ui-range label=\"Volume\" name=\"volume\" value=\"40\" value-text=\"40%\"></ui-range>"
+    },
+    {
+      "id": "progress",
+      "label": "Progress",
+      "subject": "component:progress",
+      "markup": "<ui-progress label=\"Upload\" value=\"60\"></ui-progress><ui-progress label=\"Loading\"></ui-progress>"
+    }
+  ]
+}

@@ -9,6 +9,8 @@ A design system and its tuning jig, as npm workspaces:
 
 Start at [docs/specs/system.md](docs/specs/system.md), then the spec for the area you touch.
 
+To find or change a component, use the registry before reading source: `npm run registry -- --start`, then `npm run registry -- --find <term>` and `--assembly component:<id>` ([registry spec](docs/specs/registry.md)). Each `packages/ui-kit/components/<name>/` folder holds the element, a manifest (`<name>.manifest.json`: intent, API, anatomy, avoidWhen, relationships), a guide (`<name>.md`), examples and a verification record. Changing a component: [authoring](docs/specs/authoring.md) and [manifest language](docs/specs/manifest-language.md).
+
 ## Shared rules
 
 - Web components contain zero native form elements (`input`, `button`, `select`, `textarea`, `label`, `fieldset`, `option`, `output`, …). Form participation goes through `UIFormElement` (ElementInternals). Tests enforce this.
@@ -19,12 +21,15 @@ Start at [docs/specs/system.md](docs/specs/system.md), then the spec for the are
 - Typed element properties use `declare`, never class fields (a field shadows the reactive accessor). Avoid names that collide with built-in element properties (`role`, `ariaChecked`, …).
 - Continuous values reach CSS only as custom properties set by script (`--ui-ratio`, `--ui-swatch-color`); finite choices are attributes and CSS selectors. No runtime stylesheet generation in components.
 - The jig uses ui-kit web components exclusively.
+- Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`, `resolveTextRun`).
+- A component change updates its manifest, guide, examples and contract in the same commit; `graph.json` is generated (`npm run registry:graph`), and verification hashes are stamped only by `npm run verification -- run <folder>` after its checks pass.
 
 ## Checks
 
 From the repository root:
 
-- `npm run ui-kit:test`: unit tests (node:test + happy-dom), including staleness checks for the CSV, DTCG tokens and Spectrum snapshot.
+- `npm run ui-kit:test`: unit tests (node:test + happy-dom), including staleness checks for the CSV, DTCG tokens, Spectrum snapshot, `graph.json` and verification records, and manifest-vs-source checks.
+- `npm run verification -w @massimo/ui-kit -- check | run <folder…|--all>`: verification records.
 - `npm run ui-kit:typecheck` and `npm run typecheck -w @massimo/studio`.
 - `npm run ui-kit:build`: Panda codegen and `dist/ui-kit.css`.
 - Design tokens: `tokens/dtcg/` holds DTCG 2025.10 files (geometry, typography, color light/dark), validated against the vendored official schema in the tests.

@@ -1,0 +1,726 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "btg",
+  "primary": "component:chip",
+  "module": "./btg.element.ts",
+  "registration": "on-import",
+  "documentation": "./btg.md",
+  "examples": "./btg.examples.json",
+  "contract": "../../contracts/components.json#/components/chip",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/button.ts",
+      "exports": [
+        "buttonAttrs",
+        "isInactive",
+        "onButtonKeydown"
+      ],
+      "description": "Chip uses the button ARIA and activation policy."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveBtg",
+        "btgHeights"
+      ],
+      "description": "Reference numbers for badge, tag and chip."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:badge",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-badge",
+      "class": "UIBadge",
+      "extends": "UIElement",
+      "intent": [
+        "Show a short status or a count"
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Short text only; one character makes a circle."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Text only: no slots, no icons, not interactive.",
+        "A count that changes needs a live region elsewhere if it must be announced."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The label needs an icon.",
+          "reason": "Badge has no slots.",
+          "useInstead": "component:tag"
+        },
+        {
+          "when": "The user can click or remove it.",
+          "reason": "Badge is static.",
+          "useInstead": "component:chip"
+        }
+      ],
+      "searchTerms": [
+        "badge",
+        "count",
+        "pill",
+        "status",
+        "counter"
+      ],
+      "contract": "../../contracts/components.json#/components/badge"
+    },
+    {
+      "id": "component:tag",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-tag",
+      "class": "UITag",
+      "extends": "UIElement",
+      "intent": [
+        "Label an item with a category or attribute"
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "icon-size",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "fill"
+          ],
+          "readBy": "css",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets and the select chevron stay sm. data-icon-size is the same input for plain HTML.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text, icons and adornments; children move into leading / prefix / contents / suffix / trailing parts."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Static: not focusable and fires no events."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user can toggle or remove it.",
+          "reason": "Tag is static.",
+          "useInstead": "component:chip"
+        },
+        {
+          "when": "Only a number or one word with no icon.",
+          "reason": "Badge is the lighter form.",
+          "useInstead": "component:badge"
+        }
+      ],
+      "searchTerms": [
+        "tag",
+        "label",
+        "category",
+        "token"
+      ],
+      "contract": "../../contracts/components.json#/components/tag"
+    },
+    {
+      "id": "component:chip",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-chip",
+      "class": "UIChip",
+      "extends": "UIElement",
+      "intent": [
+        "Toggle a filter on or off when selectable",
+        "Remove a value from a set when removable",
+        "Invoke a small action"
+      ],
+      "properties": [
+        {
+          "key": "selectable",
+          "type": "boolean",
+          "default": false,
+          "attribute": "selectable",
+          "reflects": true,
+          "description": "Makes the chip a toggle button (aria-pressed).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "selected",
+          "type": "boolean",
+          "default": false,
+          "attribute": "selected",
+          "reflects": true,
+          "description": "Pressed state when selectable; reflected.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "removable",
+          "type": "boolean",
+          "default": false,
+          "attribute": "removable",
+          "reflects": true,
+          "description": "Adds the trailing x and the Delete/Backspace gesture.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "icon-size",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "fill"
+          ],
+          "readBy": "css",
+          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, fill covers the slot (images use object-fit cover). Carets and the select chevron stay sm. data-icon-size is the same input for plain HTML.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "selectable chip toggled by the user"
+        },
+        {
+          "name": "remove",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": true,
+          "trigger": "remove icon click, Delete or Backspace; preventDefault keeps the chip"
+        }
+      ],
+      "methods": [
+        {
+          "name": "requestRemove",
+          "signature": "() => void",
+          "description": "Fires remove; unless prevented removes the chip and moves focus to a neighbour."
+        }
+      ],
+      "semantics": {
+        "role": "button",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space",
+            "action": "activate (toggle when selectable)"
+          },
+          {
+            "keys": "Delete, Backspace",
+            "action": "remove (removable)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text, icons and adornments; children move into leading / prefix / contents / suffix / trailing parts."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "role=button; selectable adds aria-pressed. Not form-associated: collect selected chips in script.",
+        "remove is cancelable; unless prevented the chip removes itself and focus moves to a neighbouring chip.",
+        "Selected chips use the checkbox colors (accent solid).",
+        "The remove icon is a click target, not a nested button."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The value must be submitted with a form.",
+          "reason": "Chip is not form-associated.",
+          "useInstead": "component:checkbox"
+        },
+        {
+          "when": "A primary action on a page.",
+          "reason": "Chips are compact and secondary.",
+          "useInstead": "component:button"
+        },
+        {
+          "when": "A static label.",
+          "reason": "An interactive chip adds a tab stop for nothing.",
+          "useInstead": "component:tag"
+        }
+      ],
+      "searchTerms": [
+        "chip",
+        "filter chip",
+        "toggle chip",
+        "removable tag",
+        "input chip"
+      ]
+    },
+    {
+      "id": "part:chip-remove",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "i",
+      "selector": ":scope > [data-part=trailing] > [data-remove]",
+      "summary": "The x icon added by removable: a click target inside the chip, not a separate tab stop."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:badge",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesGeometry",
+      "to": "geometry:btg"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:badge",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:badge",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tag",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesGeometry",
+      "to": "geometry:btg"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:tag",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tag",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:tag",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:tag",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:tag",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:tag",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:tag",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tag",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:tag",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:chip",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesGeometry",
+      "to": "geometry:btg"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:chip",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:chip",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:chip",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:chip",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:chip",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:chip",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:chip",
+      "relation": "ownsPart",
+      "to": "part:chip-remove"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:chip",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:chip",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:chip",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:chip",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./btg.element.ts",
+      "exports": {
+        "component:badge": "UIBadge",
+        "component:tag": "UITag",
+        "component:chip": "UIChip"
+      },
+      "verification": "./verification/btg.verification.json#/renderers/webComponent"
+    }
+  }
+}

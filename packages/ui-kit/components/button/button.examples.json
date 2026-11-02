@@ -1,0 +1,46 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "button",
+  "title": "Button",
+  "summary": "Actions, in the construction pattern.",
+  "defaultExample": "label",
+  "examples": [
+    {
+      "id": "label",
+      "label": "Label only",
+      "subject": "component:button",
+      "markup": "<ui-button>Save</ui-button>"
+    },
+    {
+      "id": "pattern",
+      "label": "Full construction pattern",
+      "subject": "component:button",
+      "markup": "<ui-button><i slot=\"leading\" name=\"credit-card\"></i><span slot=\"prefix\">$</span>Pay 40<span slot=\"suffix\">⌘P</span><i slot=\"trailing\" name=\"caret-down\"></i></ui-button>"
+    },
+    {
+      "id": "icon-only",
+      "label": "Icon only (named by aria-label)",
+      "subject": "component:button",
+      "markup": "<ui-button aria-label=\"Add\"><i slot=\"leading\" name=\"plus\"></i></ui-button>"
+    },
+    {
+      "id": "submit",
+      "label": "Submit and reset in a form",
+      "subject": "component:button",
+      "markup": "<form><ui-button type=\"submit\">Send</ui-button><ui-button type=\"reset\">Reset</ui-button></form>"
+    },
+    {
+      "id": "states",
+      "label": "Loading and disabled",
+      "subject": "component:button",
+      "markup": "<ui-button loading>Saving</ui-button><ui-button disabled>Disabled</ui-button>"
+    },
+    {
+      "id": "sizes",
+      "label": "Size and icon size",
+      "subject": "component:button",
+      "markup": "<ui-button size=\"3\" icon-size=\"lg\"><i slot=\"leading\" name=\"star\"></i>Star</ui-button>"
+    }
+  ]
+}

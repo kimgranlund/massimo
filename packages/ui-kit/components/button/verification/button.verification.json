@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "button",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/button/button.element.ts",
+      "sha256": "3e6c838a964c7f4cbe7b2a579c0cce98961cb8ef6fd97c009c90c051c00eb811"
+    },
+    {
+      "path": "components/slots.ts",
+      "sha256": "9be14b79c470d98628140553f0b685ae8a897c5ee86cbb9cc4b91c2dba341075"
+    },
+    {
+      "path": "dom/button.ts",
+      "sha256": "1e30c8aabe28aa63b6e2eb2bc882e39ba27f4b906b21f354b6bb0bc0f7af5fcd"
+    },
+    {
+      "path": "components/button/button.manifest.json",
+      "sha256": "9a441cb3cc4048909667bfb0e51f61e39e72251250ba3d3e433a9130a01ca25b"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
+          "covers": "role, focus, Enter/Space activation, disabled and fieldset blocking, slot sorting"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

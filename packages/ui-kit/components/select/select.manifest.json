@@ -1,0 +1,507 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "select",
+  "primary": "component:select",
+  "module": "./select.element.ts",
+  "registration": "on-import",
+  "documentation": "./select.md",
+  "examples": "./select.examples.json",
+  "contract": "../../contracts/components.json#/components/select",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/listbox.ts",
+      "exports": [
+        "comboboxAttrs",
+        "listboxAttrs",
+        "optionAttrs",
+        "navigate",
+        "createTypeahead",
+        "selectKeyIntent",
+        "placePopup"
+      ],
+      "description": "Combobox and listbox ARIA, key intents, typeahead and popup placement."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveSelectTrigger",
+        "popupOffset"
+      ],
+      "description": "Reference numbers for the trigger and popup offset."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:select",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-select",
+      "class": "UISelect",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose one value from a list of options that opens on demand"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a value. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The selected option value. The value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "Select…",
+          "attribute": "placeholder",
+          "reflects": false,
+          "description": "Shown in the trigger when no option matches the value.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "description": "Author error, shown immediately.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the trigger."
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=trigger] (role=combobox)",
+        "formAssociated": true,
+        "formValue": "the selected option value",
+        "keyboard": [
+          {
+            "keys": "Enter, Space, Alt+ArrowDown, ArrowDown",
+            "action": "open (closed)"
+          },
+          {
+            "keys": "Home, End",
+            "action": "open on the first / last option (closed); move (open)"
+          },
+          {
+            "keys": "ArrowUp, ArrowDown, PageUp, PageDown",
+            "action": "move the highlight (open)"
+          },
+          {
+            "keys": "Enter, Space",
+            "action": "commit and close (open)"
+          },
+          {
+            "keys": "Tab",
+            "action": "commit and move focus (open)"
+          },
+          {
+            "keys": "Escape",
+            "action": "close without committing"
+          },
+          {
+            "keys": "printable characters",
+            "action": "typeahead"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "ui-option elements (they move into the popup) and optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" (they move into the trigger)."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Select-only combobox (APG): focus stays on the trigger; aria-activedescendant points at the highlighted option. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "Authored ui-option children move into the popup, including options added later.",
+        "The value attribute at connect is the reset default. Option value falls back to its label text.",
+        "Outside pointerdown and blur close the popup; selection commits on Enter, Space, Tab or click.",
+        "Popup position is set inline (left/top/bottom/min-width/max-height) by placePopup: the one runtime-geometry exception, measured from the trigger."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Two to five options that should all stay visible.",
+          "reason": "A popup hides the choices; Segmented or a radio group shows them at once.",
+          "useInstead": "component:segmented"
+        },
+        {
+          "when": "A list that should always be visible, such as a sidebar of items.",
+          "reason": "Listbox keeps the options on the page.",
+          "useInstead": "component:listbox"
+        },
+        {
+          "when": "Typing to filter a long list or entering a value not in the list.",
+          "reason": "This is select-only; there is no editable combobox yet."
+        },
+        {
+          "when": "Choosing several values.",
+          "reason": "Single select only; use checkboxes or selectable chips.",
+          "useInstead": "component:checkbox"
+        }
+      ],
+      "searchTerms": [
+        "select",
+        "dropdown",
+        "combobox",
+        "picker",
+        "menu select",
+        "popup select"
+      ]
+    },
+    {
+      "id": "part:select-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The combobox (role=combobox, tabindex 0) laid out as [leading] [prefix] [value] [suffix] [chevron]; keeps focus while the popup is open."
+    },
+    {
+      "id": "part:select-value",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=trigger] > [data-part=contents]",
+      "summary": "The selected option label, or the placeholder (data-placeholder)."
+    },
+    {
+      "id": "part:select-chevron",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=trigger] > [data-part=trailing]",
+      "summary": "The caret-down icon (icon size sm); turns 180° when open."
+    },
+    {
+      "id": "part:select-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup]",
+      "summary": "The [popover=manual] listbox on bg.overlay holding the ui-option children; placed 1u from the trigger."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:select",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:select",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-trigger"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-value"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-chevron"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:select-popup"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:select",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:select",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:select",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:select",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:select",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./select.element.ts",
+      "exports": {
+        "component:select": "UISelect"
+      },
+      "verification": "./verification/select.verification.json#/renderers/webComponent"
+    }
+  }
+}

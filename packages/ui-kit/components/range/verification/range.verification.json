@@ -1,0 +1,43 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "range",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/range/range.element.ts",
+      "sha256": "a83bcd8c312204a363d2f3039a192d35a1a59222887f1a65b4d77c03ec70a202"
+    },
+    {
+      "path": "dom/range.ts",
+      "sha256": "f6473848c33c96de4566ce1091f557d3084a67f905b591bb49791d45fd7858e0"
+    },
+    {
+      "path": "components/range/range.manifest.json",
+      "sha256": "e3d2a5a9f31cfa9b65e10522202e2858dd06e0f65c694695dd2ec01609605535"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
+          "covers": "keys, Page Up 10%, Home/End, pointer mapping, ratio variable, determinate and indeterminate progress"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

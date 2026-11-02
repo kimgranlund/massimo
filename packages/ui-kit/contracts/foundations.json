@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "pathBase": "packages/ui-kit",
+  "dependencyMeaning": "A usesFoundation edge is a governing contract: the component follows the foundation's policy. It does not claim the component consumes every token or animates.",
+  "foundations": {
+    "colors": {
+      "id": "foundation:colors",
+      "title": "Colors",
+      "summary": "Spectrum (HCT) ramps, step semantics and color roles per scheme. Components paint only with roles.",
+      "documentation": "../../docs/specs/color.md",
+      "authority": [
+        {
+          "role": "source",
+          "source": "tokens/colors/spectrum/index.ts"
+        },
+        {
+          "role": "source",
+          "source": "tokens/colors/index.ts"
+        },
+        {
+          "role": "generated",
+          "source": "tokens/colors/spectrum/defaults.json"
+        },
+        {
+          "role": "generated",
+          "source": "tokens/dtcg/color.light.dtcg.json"
+        }
+      ],
+      "searchTerms": [
+        "colors",
+        "color roles",
+        "spectrum",
+        "hct",
+        "palette",
+        "dark mode",
+        "scheme"
+      ]
+    },
+    "typography": {
+      "id": "foundation:typography",
+      "title": "Typography",
+      "summary": "Faces, voices and roles on the u ramp. Components use roles (textStyle), never raw sizes.",
+      "documentation": "../../docs/specs/typography.md",
+      "authority": [
+        {
+          "role": "source",
+          "source": "tokens/typography/resolve.ts"
+        },
+        {
+          "role": "styles",
+          "source": "styles/typography.ts"
+        },
+        {
+          "role": "generated",
+          "source": "tokens/dtcg/typography.dtcg.json"
+        }
+      ],
+      "searchTerms": [
+        "typography",
+        "type roles",
+        "fonts",
+        "faces",
+        "voices",
+        "text style"
+      ]
+    },
+    "geometry": {
+      "id": "foundation:geometry",
+      "title": "Geometry",
+      "summary": "Every length from the unit u, the border B and the curvature scale. Families: control, field, btg, choice, track, swatch, swiper, container.",
+      "documentation": "../../docs/specs/geometry.md",
+      "authority": [
+        {
+          "role": "contract",
+          "contract": "contracts/geometry-families.json"
+        },
+        {
+          "role": "resolver",
+          "source": "tokens/geometry/resolve.ts"
+        },
+        {
+          "role": "styles",
+          "source": "styles/geometry.ts"
+        },
+        {
+          "role": "generated",
+          "source": "docs/geometry.csv"
+        },
+        {
+          "role": "generated",
+          "source": "tokens/dtcg/geometry.dtcg.json"
+        }
+      ],
+      "searchTerms": [
+        "geometry",
+        "unit",
+        "size",
+        "spacing",
+        "padding",
+        "radius",
+        "border",
+        "density"
+      ]
+    },
+    "motion": {
+      "id": "foundation:motion",
+      "title": "Motion",
+      "summary": "SwiftUI-style springs as CSS linear() easings; paint and transform only; reduced motion collapses every duration.",
+      "documentation": "../../docs/specs/motion.md",
+      "authority": [
+        {
+          "role": "source",
+          "source": "tokens/motion/index.ts"
+        },
+        {
+          "role": "styles",
+          "source": "styles/motion.ts"
+        },
+        {
+          "role": "styles",
+          "source": "styles/reset.ts"
+        },
+        {
+          "role": "generated",
+          "source": "tokens/dtcg/motion.dtcg.json"
+        }
+      ],
+      "searchTerms": [
+        "motion",
+        "animation",
+        "spring",
+        "easing",
+        "transition",
+        "reduced motion"
+      ]
+    },
+    "icons": {
+      "id": "foundation:icons",
+      "title": "Icons",
+      "summary": "<i name=\"…\"> filled by the icon runtime from the theme's icon set (Phosphor by default). Icons sit in leading or trailing slots.",
+      "documentation": "../../docs/specs/icons.md",
+      "authority": [
+        {
+          "role": "source",
+          "source": "icons/runtime.ts"
+        },
+        {
+          "role": "source",
+          "source": "icons/sets.ts"
+        },
+        {
+          "role": "source",
+          "source": "icons/sanitize.ts"
+        }
+      ],
+      "searchTerms": [
+        "icons",
+        "icon set",
+        "phosphor",
+        "glyph",
+        "i name"
+      ]
+    },
+    "element": {
+      "id": "foundation:element",
+      "title": "UIElement",
+      "summary": "Light-DOM custom element: static properties become signal-backed properties with attribute parsing and optional reflection; one render effect (template, then update).",
+      "documentation": "../../docs/specs/components.md#foundations",
+      "authority": [
+        {
+          "role": "source",
+          "source": "core/element.ts"
+        },
+        {
+          "role": "source",
+          "source": "core/signals.ts"
+        },
+        {
+          "role": "source",
+          "source": "core/template.ts"
+        }
+      ],
+      "searchTerms": [
+        "UIElement",
+        "custom element",
+        "properties",
+        "signals",
+        "light dom"
+      ]
+    },
+    "form-element": {
+      "id": "foundation:form-element",
+      "title": "UIFormElement",
+      "summary": "Form association through ElementInternals: name, value, validity, reset and restore, fieldset disabling, and errors only after interaction.",
+      "documentation": "../../docs/specs/components.md#foundations",
+      "authority": [
+        {
+          "role": "source",
+          "source": "core/form-element.ts"
+        }
+      ],
+      "searchTerms": [
+        "UIFormElement",
+        "form associated",
+        "ElementInternals",
+        "validation",
+        "form value"
+      ]
+    },
+    "slots": {
+      "id": "foundation:slots",
+      "title": "Slots",
+      "summary": "Sorts authored children into [data-part=leading|contents|trailing]; slot=\"leading\"/\"trailing\" mark icons; empty slots are hidden.",
+      "documentation": "../../docs/specs/components.md#foundations",
+      "authority": [
+        {
+          "role": "source",
+          "source": "components/slots.ts"
+        }
+      ],
+      "searchTerms": [
+        "slots",
+        "construction pattern",
+        "leading",
+        "prefix",
+        "suffix",
+        "trailing",
+        "anatomy"
+      ]
+    },
+    "modality": {
+      "id": "foundation:modality",
+      "title": "Input modality",
+      "summary": "<html data-modality=\"keyboard|pointer\">; focus rings show only after keyboard use.",
+      "documentation": "../../docs/specs/components.md#foundations",
+      "authority": [
+        {
+          "role": "source",
+          "source": "core/modality.ts"
+        }
+      ],
+      "searchTerms": [
+        "modality",
+        "focus ring",
+        "focus visible",
+        "keyboard focus"
+      ]
+    },
+    "pending": {
+      "id": "foundation:pending",
+      "title": "FOUC guard",
+      "summary": "Undefined elements are hidden with their size reserved; a 1.5s reveal guards against a missing script.",
+      "documentation": "../../docs/specs/components.md#foundations",
+      "authority": [
+        {
+          "role": "styles",
+          "source": "styles/pending.ts"
+        }
+      ],
+      "searchTerms": [
+        "fouc",
+        "pending",
+        "undefined elements",
+        "flash of unstyled content"
+      ]
+    },
+    "states": {
+      "id": "foundation:states",
+      "title": "States",
+      "summary": "Every interaction and data state keyed on ARIA or data-* attributes, styled once in styles/defaults.ts.",
+      "documentation": "../../docs/specs/components.md#states",
+      "authority": [
+        {
+          "role": "contract",
+          "contract": "contracts/states.json"
+        },
+        {
+          "role": "styles",
+          "source": "styles/defaults.ts"
+        }
+      ],
+      "searchTerms": [
+        "states",
+        "hover",
+        "pressed",
+        "disabled",
+        "invalid",
+        "selected",
+        "aria states"
+      ]
+    }
+  }
+}

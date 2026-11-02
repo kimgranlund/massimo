@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "select",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/select/select.element.ts",
+      "sha256": "32b8a8d4ef9685667eef30ce20a6a68af5d304a2e38237479ddbda133d7d37f5"
+    },
+    {
+      "path": "components/listbox/options.ts",
+      "sha256": "290be46df6ac0c11ee339039584456bd6d7ca53a943da6d657a4267eff6bb0da"
+    },
+    {
+      "path": "dom/listbox.ts",
+      "sha256": "5713529eff157100f139aed0cb0380c9a88ce6943eb27a37b0c2b005e9b66f0e"
+    },
+    {
+      "path": "dom/field.ts",
+      "sha256": "596a8b0c41b8c0341c360464c348dee4c034a7a94b7072a8c7f24fd067f616e1"
+    },
+    {
+      "path": "components/select/select.manifest.json",
+      "sha256": "8ebdddfd9e505a279e0cceb26d9fbbca32f1a9e58e55114adb4b71cc7351a109"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
+          "covers": "options move into the popup; open, move, commit, cancel; outside press; required; reconnect"
+        },
+        {
+          "command": "node --test test/listbox.test.ts",
+          "covers": "navigate, typeahead, selectKeyIntent, placePopup"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
+          "node --test test/listbox.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

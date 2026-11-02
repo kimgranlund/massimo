@@ -1,0 +1,978 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "choice",
+  "primary": "component:checkbox",
+  "module": "./choice.element.ts",
+  "registration": "on-import",
+  "documentation": "./choice.md",
+  "examples": "./choice.examples.json",
+  "contract": "../../contracts/components.json#/components/checkbox",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "dom-behavior",
+      "module": "../slots.ts",
+      "exports": [
+        "observeSlots"
+      ],
+      "description": "Places the indicator in the leading slot and the label in contents."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveChoice"
+      ],
+      "description": "Reference numbers for box, dot and switch track."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:checkbox",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-checkbox",
+      "class": "UICheckbox",
+      "extends": "UIFormElement",
+      "intent": [
+        "Turn one independent option on or off",
+        "Accept a statement such as terms when required"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Must be checked to submit.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "checked",
+          "type": "boolean",
+          "default": false,
+          "attribute": "checked",
+          "reflects": false,
+          "description": "Live state; not reflected. The checked attribute at connect is the reset default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "on",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Submitted when checked (default \"on\").",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "indeterminate",
+          "type": "boolean",
+          "default": false,
+          "attribute": "indeterminate",
+          "reflects": true,
+          "description": "Shows mixed (aria-checked=mixed); cleared on user activation.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "checkbox",
+        "formAssociated": true,
+        "formValue": "value when checked; nothing when unchecked",
+        "keyboard": [
+          {
+            "keys": "Space",
+            "action": "toggle"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the indicator is added to the leading slot."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host is the control: role=checkbox, aria-checked true | false | mixed, tabindex 0. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "indeterminate shows mixed and clears when the user toggles.",
+        "The checked attribute at connect is the reset default; checked is not reflected.",
+        "Box radius is 1u."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Choosing exactly one option from a mutually exclusive set.",
+          "reason": "Independent checkboxes allow several checked at once.",
+          "useInstead": "component:radio"
+        },
+        {
+          "when": "A setting that takes effect immediately, without a submit.",
+          "reason": "Switch communicates an instant on/off.",
+          "useInstead": "component:switch"
+        }
+      ],
+      "searchTerms": [
+        "checkbox",
+        "check box",
+        "tick",
+        "accept terms",
+        "multi select"
+      ]
+    },
+    {
+      "id": "component:radio",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-radio",
+      "class": "UIRadio",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose exactly one option from a small mutually exclusive set"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Group key and form field name; radios with the same name in the same form are one group.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Any required member makes the group require a checked radio.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "checked",
+          "type": "boolean",
+          "default": false,
+          "attribute": "checked",
+          "reflects": false,
+          "description": "Live state; not reflected. Checking one unchecks the others in its group (on user selection or select()).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "on",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Submitted when checked.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "select",
+          "signature": "(focus?: boolean) => void",
+          "description": "Checks this radio, unchecks its group, optionally focuses it."
+        }
+      ],
+      "semantics": {
+        "role": "radio",
+        "formAssociated": true,
+        "formValue": "value of the checked radio in the group",
+        "keyboard": [
+          {
+            "keys": "Space",
+            "action": "select"
+          },
+          {
+            "keys": "ArrowDown, ArrowRight / ArrowUp, ArrowLeft",
+            "action": "move to and select the next / previous radio (wraps)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the indicator is added to the leading slot."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Radios group by name within their form, or the document when outside a form; there is no group element. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "Roving tab stop: only the checked radio (or the first enabled one) is tabbable.",
+        "required on any member makes the whole group required.",
+        "Wrap the group in an element with role=radiogroup and a label for an accessible group name."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Several options may be chosen.",
+          "reason": "Radios allow only one.",
+          "useInstead": "component:checkbox"
+        },
+        {
+          "when": "More than about seven options.",
+          "reason": "A long radio list is hard to scan; Select collapses it.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Switching views or modes in place.",
+          "reason": "Segmented is the compact single-select for views.",
+          "useInstead": "component:segmented"
+        }
+      ],
+      "searchTerms": [
+        "radio",
+        "radio button",
+        "radio group",
+        "single choice"
+      ],
+      "contract": "../../contracts/components.json#/components/radio"
+    },
+    {
+      "id": "component:switch",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-switch",
+      "class": "UISwitch",
+      "extends": "UIFormElement",
+      "intent": [
+        "Turn a setting on or off with immediate effect"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Must be on to submit.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "checked",
+          "type": "boolean",
+          "default": false,
+          "attribute": "checked",
+          "reflects": false,
+          "description": "Live state; not reflected. The checked attribute at connect is the reset default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "on",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Submitted when on (default \"on\").",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "switch",
+        "formAssociated": true,
+        "formValue": "value when on; nothing when off",
+        "keyboard": [
+          {
+            "keys": "Space, Enter",
+            "action": "toggle"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "contents text",
+            "aria-label"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Label text and optional slot=\"prefix\" | \"suffix\" adornments; the track is added to the leading slot."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host is the control: role=switch, aria-checked. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "The track is a capsule; the thumb moves on the snappy spring.",
+        "The application applies the setting on change; a switch implies no submit step."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The choice is applied only when a form is submitted.",
+          "reason": "A switch implies an immediate effect; a checkbox reads as part of a form.",
+          "useInstead": "component:checkbox"
+        },
+        {
+          "when": "Choosing between two named options that are not on/off.",
+          "reason": "A switch has only on and off.",
+          "useInstead": "component:segmented"
+        }
+      ],
+      "searchTerms": [
+        "switch",
+        "toggle",
+        "on off",
+        "setting"
+      ],
+      "contract": "../../contracts/components.json#/components/switch"
+    },
+    {
+      "id": "part:choice-box",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=leading] > [data-part=box]",
+      "summary": "The indicator (aria-hidden): checkbox box with check and minus marks, radio dot, or switch track and thumb. Created at connect unless authored."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:checkbox",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesGeometry",
+      "to": "geometry:choice"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "ownsPart",
+      "to": "part:choice-box"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:radio",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesGeometry",
+      "to": "geometry:choice"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:radio",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:radio",
+      "relation": "ownsPart",
+      "to": "part:choice-box"
+    },
+    {
+      "from": "component:radio",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:radio",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:radio",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:radio",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:radio",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:radio",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:switch",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesGeometry",
+      "to": "geometry:choice"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:switch",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:choice-box"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:switch",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:switch",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./choice.element.ts",
+      "exports": {
+        "component:checkbox": "UICheckbox",
+        "component:radio": "UIRadio",
+        "component:switch": "UISwitch"
+      },
+      "verification": "./verification/choice.verification.json#/renderers/webComponent"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "swiper",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/swiper/swiper.element.ts",
+      "sha256": "652c11d532e5aba883a196eac88c7c0936ac06d7f2e2a1c8ee26ba36bc86447f"
+    },
+    {
+      "path": "components/swiper/swiper.manifest.json",
+      "sha256": "9e35061ae7343e711fa9b43c4e46fb09480938597d2a46d79561f9a3290aea31"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
+          "covers": "viewport, paddles and dots built; image presets and slideshow"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Scroll snapping, IntersectionObserver tracking and momentum need a real browser; unit tests cover structure.",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

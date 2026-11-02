@@ -1,0 +1,507 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "input",
+  "primary": "component:input",
+  "module": "./input.element.ts",
+  "registration": "on-import",
+  "documentation": "./input.md",
+  "examples": "./input.examples.json",
+  "contract": "../../contracts/components.json#/components/input",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/text-entry.ts",
+      "exports": [
+        "textEntryAttrs",
+        "toSingleLine",
+        "onTextBeforeInput"
+      ],
+      "description": "Textbox ARIA, single-line flattening and Enter-to-submit policy for a contenteditable editor."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/field.ts",
+      "exports": [
+        "fieldIds",
+        "fieldAttrs"
+      ],
+      "description": "Label, description and error wiring (ids, aria-labelledby, aria-describedby, aria-invalid)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveField"
+      ],
+      "description": "Reference numbers for the field family."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:input",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-input",
+      "class": "UIInput",
+      "extends": "UIFormElement",
+      "intent": [
+        "Enter a single line of text",
+        "Enter an email address when type is email",
+        "Enter a secret when type is password"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a value. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Visible label text; without it supply aria-label on the editor.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Live value. The value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "type",
+          "type": "string",
+          "default": "text",
+          "attribute": "type",
+          "reflects": false,
+          "enum": [
+            "text",
+            "email",
+            "password",
+            "search",
+            "tel",
+            "url"
+          ],
+          "description": "Not reflected. email adds format validation; password masks and blocks copy.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "",
+          "attribute": "placeholder",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "description": "Author error, shown immediately and marking the field invalid.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "minlength",
+          "type": "number",
+          "default": null,
+          "attribute": "minlength",
+          "reflects": false,
+          "description": "Minimum length; null means no limit.",
+          "inspector": {
+            "control": "number",
+            "min": 0
+          }
+        },
+        {
+          "key": "pattern",
+          "type": "string",
+          "default": "",
+          "attribute": "pattern",
+          "reflects": false,
+          "description": "Regular expression the whole value must match (anchored, v flag).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "native input event from the editor while typing"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the editor."
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=contents] (role=textbox)",
+        "formAssociated": true,
+        "formValue": "the text value",
+        "keyboard": [
+          {
+            "keys": "Enter",
+            "action": "request submit of the owning form"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label on the editor"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" | \"trailing\"; they move into the control. Other children are discarded by the template."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "template() owns the children: label, control ([leading] [prefix] [editor] [suffix] [trailing]), description, error. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "The value attribute is the default value used on form reset; the value property is the live value.",
+        "Built-in validation (required, email, minlength, pattern) shows only after blur or a blocked submit; error shows at once.",
+        "pattern is anchored (^(?:…)$) and compiled with the v flag.",
+        "type=password masks the text and blocks copy and cut. Paste is flattened to one line.",
+        "focus() moves focus to the editor."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Choosing from a known list of values.",
+          "reason": "Free text invites typos; Select constrains the value to authored options.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Entering a number within a range where the exact digit matters less than position.",
+          "reason": "Range gives a slider with step, min and max.",
+          "useInstead": "component:range"
+        },
+        {
+          "when": "Entering several lines or rich text.",
+          "reason": "Input is single-line; Enter submits and pastes are flattened. The kit has no textarea yet."
+        }
+      ],
+      "searchTerms": [
+        "input",
+        "text field",
+        "text input",
+        "textbox",
+        "email",
+        "password",
+        "form field"
+      ]
+    },
+    {
+      "id": "part:input-control",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control]",
+      "summary": "The field box (pad = u − B) laid out as [leading] [prefix] [editor] [suffix] [trailing]. A press outside the editor focuses it; the focus ring paints here."
+    },
+    {
+      "id": "part:input-editor",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control] > [data-part=contents]",
+      "summary": "The contenteditable role=textbox editor (2u text padding). The editor getter returns it for selection APIs."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:input",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:input",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:input-control"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:input-editor"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:input",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:input",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:input",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:input",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./input.element.ts",
+      "exports": {
+        "component:input": "UIInput"
+      },
+      "verification": "./verification/input.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "in_progress",
+      "module": "./input.react.tsx",
+      "exports": {
+        "component:input": "Input"
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:input": "[data-ui=input]",
+        "part:input-control": "[data-ui=input] > [data-part=control]"
+      }
+    }
+  }
+}

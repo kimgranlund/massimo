@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "btg",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/btg/btg.element.ts",
+      "sha256": "e18c08c5c897ba0c481f6ec8e750ce3ed5d92e13459b95308abc86d8f856d7ad"
+    },
+    {
+      "path": "components/slots.ts",
+      "sha256": "9be14b79c470d98628140553f0b685ae8a897c5ee86cbb9cc4b91c2dba341075"
+    },
+    {
+      "path": "dom/button.ts",
+      "sha256": "1e30c8aabe28aa63b6e2eb2bc882e39ba27f4b906b21f354b6bb0bc0f7af5fcd"
+    },
+    {
+      "path": "components/btg/btg.manifest.json",
+      "sha256": "49333c7eb9e7da89288bc1db404bddbeaadd19fd2a17e21be26dbd604d3725b8"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
+          "covers": "slots, badge text only, selectable toggling, removable gesture and focus move"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

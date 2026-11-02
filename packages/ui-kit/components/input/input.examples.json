@@ -1,0 +1,34 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "input",
+  "title": "Input",
+  "summary": "Single-line text fields.",
+  "defaultExample": "label",
+  "examples": [
+    {
+      "id": "label",
+      "label": "Label and description",
+      "subject": "component:input",
+      "markup": "<ui-input label=\"Email\" type=\"email\" name=\"email\" placeholder=\"you@example.com\" description=\"We never share it.\"></ui-input>"
+    },
+    {
+      "id": "adornments",
+      "label": "Prefix and suffix",
+      "subject": "component:input",
+      "markup": "<ui-input label=\"Price\" name=\"price\" value=\"40\"><span slot=\"prefix\">$</span><span slot=\"suffix\">USD</span></ui-input>"
+    },
+    {
+      "id": "search",
+      "label": "Leading icon and shortcut suffix",
+      "subject": "component:input",
+      "markup": "<ui-input label=\"Search\" placeholder=\"Find a file\"><i slot=\"leading\" name=\"magnifying-glass\"></i><span slot=\"suffix\">⌘K</span></ui-input>"
+    },
+    {
+      "id": "validation",
+      "label": "Required, minlength and author error",
+      "subject": "component:input",
+      "markup": "<ui-input label=\"Password\" type=\"password\" required minlength=\"12\"></ui-input><ui-input label=\"Team\" error=\"That name is taken.\" value=\"Acme\"></ui-input>"
+    }
+  ]
+}

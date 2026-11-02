@@ -1,0 +1,223 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://massimo.dev/schemas/component-manifest.schema.json",
+  "title": "massimo component manifest",
+  "description": "A graph fragment for one component folder: its public components and parts (nodes) and their relationships (edges). Paths are relative to the manifest file. See docs/specs/registry.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schemaVersion", "name", "primary", "module", "registration", "documentation", "examples", "contract", "styleSource", "nodes", "edges", "renderers"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "name": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$", "description": "Folder name under components/." },
+    "primary": { "$ref": "#/definitions/componentId", "description": "The main node of this manifest." },
+    "module": { "type": ["string", "null"], "description": "The module that defines the custom elements, or null for CSS-only tags." },
+    "registration": { "enum": ["on-import", "none"], "description": "on-import: importing module defines every tag with define(); none: CSS-only tags, nothing to register." },
+    "documentation": { "type": "string", "description": "The component guide (<name>.md)." },
+    "examples": { "type": "string", "description": "The examples file (<name>.examples.json)." },
+    "contract": { "type": "string", "description": "Default semantic contract, a path with a JSON Pointer into contracts/components.json." },
+    "stateContract": { "type": "string", "description": "The shared state contract (contracts/states.json)." },
+    "styleSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "modules"],
+      "properties": {
+        "format": { "const": "panda-global" },
+        "modules": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Panda global style modules that hold this folder's rules. Styles are authored there, never in element modules." }
+      }
+    },
+    "independentLayers": { "type": "array", "items": { "$ref": "#/definitions/independentLayer" } },
+    "nodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/definitions/edge" } },
+    "renderers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["webComponent"],
+      "properties": {
+        "webComponent": { "$ref": "#/definitions/renderer" },
+        "react": { "$ref": "#/definitions/renderer" },
+        "html": { "$ref": "#/definitions/renderer" }
+      }
+    }
+  },
+  "definitions": {
+    "componentId": { "type": "string", "pattern": "^component:[a-z][a-z0-9-]*$" },
+    "nodeId": { "type": "string", "pattern": "^(component|part):[a-z][a-z0-9-]*$" },
+    "graphId": { "type": "string", "pattern": "^(component|part|foundation|geometry|tokens|context|contract-component):[a-z][a-z0-9-]*$" },
+    "nonEmpty": { "type": "string", "minLength": 1 },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "status"],
+      "properties": {
+        "id": { "$ref": "#/definitions/nodeId" },
+        "kind": { "enum": ["component", "part"] },
+        "status": { "enum": ["implemented", "experimental", "deprecated"] },
+        "tag": { "type": "string", "description": "Custom element tag (components) or the element a part renders as." },
+        "class": { "type": "string", "description": "Exported element class." },
+        "selector": { "type": "string", "description": "Parts: the selector that finds the part inside its owner." },
+        "contract": { "type": "string", "description": "Overrides the manifest-level contract for this node." },
+        "summary": { "type": "string", "description": "Parts: what the part holds." },
+        "intent": { "type": "array", "items": { "$ref": "#/definitions/nonEmpty" }, "description": "User action or content purpose: a concrete verb and object." },
+        "extends": { "type": "string", "description": "The base class (UIElement or UIFormElement)." },
+        "properties": { "type": "array", "items": { "$ref": "#/definitions/property" } },
+        "attributes": { "type": "array", "items": { "$ref": "#/definitions/attribute" }, "description": "Attribute-only inputs read by CSS or at connect; no JavaScript property." },
+        "events": { "type": "array", "items": { "$ref": "#/definitions/event" } },
+        "methods": { "type": "array", "items": { "$ref": "#/definitions/method" } },
+        "semantics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["role", "formAssociated"],
+          "properties": {
+            "role": { "type": ["string", "null"], "description": "The ARIA role the element sets on itself, or null when it sets none." },
+            "roleTarget": { "type": "string", "description": "Where the role lives when not on the host (a part selector)." },
+            "formAssociated": { "type": "boolean" },
+            "formValue": { "type": "string", "description": "What the element submits." },
+            "keyboard": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["keys", "action"], "properties": { "keys": { "type": "string" }, "action": { "type": "string" } } } },
+            "accessibleName": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["sources", "required"],
+              "properties": { "sources": { "type": "array", "items": { "type": "string" } }, "required": { "type": "boolean" } }
+            }
+          }
+        },
+        "content": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ownership", "acceptsChildren"],
+          "properties": {
+            "ownership": { "enum": ["consumer", "component", "mixed"], "description": "consumer: authored children are kept; component: template() owns the children; mixed: authored children are moved into parts the component creates." },
+            "acceptsChildren": { "type": "boolean" },
+            "children": { "type": "string", "description": "What the children may be." }
+          }
+        },
+        "layout": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["display", "sizing"],
+          "properties": {
+            "display": { "enum": ["inline-flex", "flex", "inline-grid", "grid", "block", "inline-block"] },
+            "sizing": { "enum": ["intrinsic", "fill"], "description": "Inline axis in ordinary flow." }
+          }
+        },
+        "constraints": { "type": "array", "items": { "$ref": "#/definitions/nonEmpty" } },
+        "avoidWhen": { "type": "array", "items": { "$ref": "#/definitions/avoid" } },
+        "searchTerms": { "type": "array", "items": { "$ref": "#/definitions/nonEmpty" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "component" } } },
+          "then": { "required": ["tag", "intent", "semantics", "content", "layout", "avoidWhen", "properties", "attributes", "events"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "part" } } },
+          "then": { "required": ["selector", "summary"] }
+        }
+      ]
+    },
+    "inspector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control"],
+      "properties": {
+        "control": { "enum": ["text", "toggle", "number", "select", "color", "none"] },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "step": { "type": "number" },
+        "reason": { "type": "string", "description": "Why the input has no editor control (control none)." }
+      }
+    },
+    "property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "type", "default", "attribute", "reflects", "inspector"],
+      "properties": {
+        "key": { "type": "string" },
+        "type": { "enum": ["string", "number", "boolean"] },
+        "default": { "type": ["string", "number", "boolean", "null"] },
+        "attribute": { "type": "string" },
+        "reflects": { "type": "boolean" },
+        "enum": { "type": "array", "items": { "type": ["string", "number"] } },
+        "description": { "type": "string" },
+        "inspector": { "$ref": "#/definitions/inspector" }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "description", "inspector"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "enum": ["string", "number", "boolean"] },
+        "enum": { "type": "array", "items": { "type": ["string", "number"] } },
+        "readBy": { "enum": ["css", "connect"], "description": "css: a stylesheet selector; connect: read once when the element connects." },
+        "description": { "type": "string" },
+        "inspector": { "$ref": "#/definitions/inspector" }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "type", "bubbles", "cancelable", "trigger"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "enum": ["Event", "CustomEvent"] },
+        "bubbles": { "type": "boolean" },
+        "cancelable": { "type": "boolean" },
+        "detail": { "type": "string" },
+        "trigger": { "type": "string" }
+      }
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "signature", "description"],
+      "properties": { "name": { "type": "string" }, "signature": { "type": "string" }, "description": { "type": "string" } }
+    },
+    "avoid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["when", "reason"],
+      "properties": {
+        "when": { "$ref": "#/definitions/nonEmpty" },
+        "reason": { "$ref": "#/definitions/nonEmpty" },
+        "useInstead": { "$ref": "#/definitions/graphId" }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "relation", "to"],
+      "properties": {
+        "from": { "$ref": "#/definitions/nodeId" },
+        "relation": { "enum": ["extends", "usesFoundation", "usesGeometry", "usesTokens", "ownsPart", "acceptsChild", "requiresParent", "allowedIn", "establishes", "uses"] },
+        "to": { "$ref": "#/definitions/graphId" }
+      }
+    },
+    "renderer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["pending", "in_progress", "blocked", "completed", "cancelled"] },
+        "module": { "type": "string" },
+        "exports": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Graph ID → exported name." },
+        "selectors": { "type": "object", "additionalProperties": { "type": "string" }, "description": "html renderer: graph ID → selector for plain markup styled by the kit CSS." },
+        "documentation": { "type": "string" },
+        "verification": { "type": "string", "description": "Pointer into this folder's verification record (verification/<name>.verification.json#/renderers/<renderer>)." }
+      }
+    },
+    "independentLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "module", "exports", "description"],
+      "properties": {
+        "kind": { "enum": ["pure-behavior", "dom-behavior", "styles", "geometry"] },
+        "module": { "type": "string" },
+        "exports": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

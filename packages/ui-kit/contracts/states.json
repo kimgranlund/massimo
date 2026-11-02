@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "notation": "Every state a component sets is keyed on ARIA or data-* (never a class) and styled once in styles/defaults.ts, so every renderer matches. components lists the tags that set or style the state.",
+  "styles": "styles/defaults.ts",
+  "motion": "styles/motion.ts",
+  "states": {
+    "hover-press": { "hook": ":hover / :active on enabled controls", "look": "neutral fill steps 3 → 4 → 5; solids accent.solidHover; selected options accent.subtleHover", "components": ["ui-button", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette"] },
+    "keyboard-focus": { "hook": ":focus-visible after key use (html[data-modality=keyboard])", "look": "2px focus-ring outline; text fields keep it after a pointer click", "components": ["ui-button", "ui-chip", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette", "ui-swiper"] },
+    "highlighted": { "hook": "[data-active]", "look": "neutral fill", "components": ["ui-option", "ui-swatch"] },
+    "selected": { "hook": "aria-selected, aria-checked, aria-pressed, aria-current", "look": "accent solid (choices, chips) or accent subtle (options); segmented: raised bg", "components": ["ui-option", "ui-checkbox", "ui-radio", "ui-switch", "ui-chip", "ui-swatch", "ui-swiper"] },
+    "open": { "hook": "trigger aria-expanded=true", "look": "pressed fill, chevron turned 180°", "components": ["ui-select"] },
+    "disabled": { "hook": "aria-disabled=true on host or control", "look": "50% opacity, not-allowed cursor", "components": ["ui-button", "ui-chip", "ui-option", "ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-range", "ui-palette"] },
+    "busy": { "hook": "aria-busy=true", "look": "readable, progress cursor, indeterminate sweep on the bottom edge", "components": ["ui-button"] },
+    "read-only": { "hook": "aria-readonly=true", "look": "subtle fill, default cursor", "components": ["ui-input"] },
+    "required": { "hook": "[required] field, aria-required checkbox/switch", "look": " * in danger.fg after the label", "components": ["ui-input", "ui-select", "ui-checkbox", "ui-switch"] },
+    "invalid": { "hook": "aria-invalid=true (after interaction: data-user-invalid)", "look": "danger-tinted fill (palette: danger outline)", "components": ["ui-input", "ui-select", "ui-listbox", "ui-segmented", "ui-checkbox", "ui-radio", "ui-switch", "ui-palette"] },
+    "placeholder": { "hook": "[data-placeholder]; :empty editor", "look": "fg.muted", "components": ["ui-select", "ui-input"] },
+    "indeterminate": { "hook": "[data-indeterminate]; aria-checked=mixed", "look": "sweep (progress), minus mark (checkbox); a faint full fill under reduced motion", "components": ["ui-progress", "ui-checkbox"] },
+    "unparsable-color": { "hook": "[data-invalid] (swatch)", "look": "danger strike", "components": ["ui-swatch"] },
+    "translucent-color": { "hook": "[data-alpha] (swatch)", "look": "checkerboard under the color", "components": ["ui-swatch"] },
+    "failed-image": { "hook": "img[data-error]", "look": "hidden; the frame's empty fill remains", "components": ["ui-image"] },
+    "single-slide": { "hook": "[data-single] (swiper)", "look": "paddles and dots hidden", "components": ["ui-swiper"] },
+    "forced-colors": { "hook": "@media (forced-colors: active)", "look": "1px CanvasText outline, Highlight for on states, GrayText disabled", "components": ["*"] },
+    "reduced-motion": { "hook": "@media (prefers-reduced-motion: reduce)", "look": "every duration collapses; sweeps become static fills", "components": ["*"] }
+  }
+}

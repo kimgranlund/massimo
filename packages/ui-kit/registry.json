@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "description": "Session entry for ui-kit component discovery. Paths are relative to packages/ui-kit. The component inventory lives in the generated graph.json (from the manifests and contracts); nothing here duplicates it.",
+  "pathBase": "packages/ui-kit",
+  "system": "system.manifest.json",
+  "graph": "graph.json",
+  "documentation": "../../docs/specs/registry.md",
+  "workflows": {
+    "consume": { "documentation": "../../docs/specs/registry.md#choose-a-component", "steps": ["--start", "list or --find <term>", "--assembly <component:id>", "evaluate avoidWhen and useInstead", "--read the guide and contract", "--packet consumer <renderer> <ids>"] },
+    "author": { "documentation": "../../docs/specs/authoring.md", "steps": ["--assembly <component:id>", "--packet author web-component <id>", "edit source, contracts and manifest together", "npm run registry:graph", "npm run verification -- run <folder>", "npm test"] },
+    "verify": { "documentation": "../../docs/specs/authoring.md#verify", "steps": ["npm test", "npm run verification -- check", "open apps/studio /geometry-check.html"] },
+    "manifestLanguage": { "documentation": "../../docs/specs/manifest-language.md" }
+  },
+  "commands": {
+    "start": "npm run registry -- --start",
+    "list": "npm run registry",
+    "all": "npm run registry -- --all",
+    "lookup": "npm run registry -- component:button",
+    "assembly": "npm run registry -- --assembly component:select",
+    "find": "npm run registry -- --find <term>",
+    "read": "npm run registry -- --read <package-relative-path>[#anchor|#/json/pointer]",
+    "packet": "npm run registry -- --packet <consumer|author> <web-component|react|html> <component:id[,component:id…]> (--page 0 | --out <file>)",
+    "auditRecommendations": "npm run registry -- --audit-recommendations",
+    "graph": "npm run registry:graph",
+    "verification": "npm run verification -- check | run <folder…|--all>"
+  },
+  "delivery": {
+    "contentBudgetBytes": 4500,
+    "budgetScope": "Serialized paged response including its envelope, UTF-8 bytes.",
+    "paging": "Add --page 0 to any command for bounded pages. Each page has complete and next; run next.args until complete is true. The page sha256 binds the selection and its content: if a source changes mid-way the continuation fails; restart at --page 0.",
+    "completeFile": "--out <new-file> writes the whole response and prints a receipt (path, sha256, bytes). The parent folder must exist; an existing file is refused. A receipt proves delivery, not reading."
+  }
+}

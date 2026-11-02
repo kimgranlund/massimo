@@ -1,0 +1,515 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "color",
+  "primary": "component:palette",
+  "module": "./color.element.ts",
+  "registration": "on-import",
+  "documentation": "./color.md",
+  "examples": "./color.examples.json",
+  "contract": "../../contracts/components.json#/components/palette",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts",
+      "../../styles/motion.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "./color.element.ts",
+      "exports": [
+        "isTranslucent"
+      ],
+      "description": "Detects colors with alpha (checkerboard needed)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveSwatch"
+      ],
+      "description": "Reference numbers for swatches."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:swatch",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-swatch",
+      "class": "UISwatch",
+      "extends": "UIElement",
+      "intent": [
+        "Show a color sample"
+      ],
+      "properties": [
+        {
+          "key": "color",
+          "type": "string",
+          "default": "",
+          "attribute": "color",
+          "reflects": false,
+          "description": "Any CSS color.",
+          "inspector": {
+            "control": "color"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name; defaults to the color text.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": "img",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "label",
+            "color text"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": false
+      },
+      "layout": {
+        "display": "inline-block",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The color reaches CSS as --ui-swatch-color; invalid colors are ignored and get data-invalid.",
+        "Translucent or missing colors get data-alpha and sit on a checkerboard; opaque ones paint one layer.",
+        "Inside a selectable palette the palette sets role=option instead of img."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user picks one of several colors.",
+          "reason": "A lone swatch is not selectable.",
+          "useInstead": "component:palette"
+        }
+      ],
+      "searchTerms": [
+        "swatch",
+        "color chip",
+        "color sample"
+      ],
+      "contract": "../../contracts/components.json#/components/swatch"
+    },
+    {
+      "id": "component:palette",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-palette",
+      "class": "UIPalette",
+      "extends": "UIFormElement",
+      "intent": [
+        "Show a ramp of colors",
+        "Choose one color from a set when selectable"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; also makes the palette selectable.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Selectable palettes require a chosen color.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The selected swatch color.",
+          "inspector": {
+            "control": "color"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "selectable",
+          "type": "boolean",
+          "default": false,
+          "attribute": "selectable",
+          "reflects": true,
+          "description": "Makes the palette a listbox without a form name.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user changes the value"
+        },
+        {
+          "name": "change",
+          "type": "Event",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "user commits a new value"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        }
+      ],
+      "semantics": {
+        "role": "group",
+        "formAssociated": true,
+        "formValue": "the selected swatch color (selectable only)",
+        "keyboard": [
+          {
+            "keys": "arrows by orientation, Home, End",
+            "action": "move and select (selectable)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "ui-swatch elements (direct children)."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Not selectable: role=group, submits nothing. With name or selectable: role=listbox, swatches become options.",
+        "Swatches join with no gaps; a subtle 1px inset edge outlines the strip.",
+        "orientation=vertical stacks swatches in a column and uses Up/Down."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Choosing any color, not one from a set.",
+          "reason": "Palette offers only its swatches; the kit has no color picker yet."
+        }
+      ],
+      "searchTerms": [
+        "palette",
+        "color ramp",
+        "color picker",
+        "swatches",
+        "tones"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:swatch",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesGeometry",
+      "to": "geometry:swatch"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:swatch",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:palette",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesGeometry",
+      "to": "geometry:swatch"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:palette",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:palette",
+      "relation": "acceptsChild",
+      "to": "component:swatch"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:palette",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:palette",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./color.element.ts",
+      "exports": {
+        "component:swatch": "UISwatch",
+        "component:palette": "UIPalette"
+      },
+      "verification": "./verification/color.verification.json#/renderers/webComponent"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "select",
+  "title": "Select",
+  "summary": "Select-only combobox.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Options",
+      "subject": "component:select",
+      "markup": "<ui-select label=\"Role\" name=\"role\" required><ui-option value=\"design\">Designer</ui-option><ui-option value=\"eng\">Engineer</ui-option></ui-select>"
+    },
+    {
+      "id": "adornments",
+      "label": "Leading icon and prefix",
+      "subject": "component:select",
+      "markup": "<ui-select label=\"Sort\"><i slot=\"leading\" name=\"sort-ascending\"></i><span slot=\"prefix\">By</span><ui-option value=\"name\">Name</ui-option><ui-option value=\"date\">Date</ui-option></ui-select>"
+    },
+    {
+      "id": "icons",
+      "label": "Options with icons",
+      "subject": "component:select",
+      "markup": "<ui-select label=\"Status\"><ui-option value=\"open\"><i slot=\"leading\" name=\"circle\"></i>Open</ui-option><ui-option value=\"done\"><i slot=\"leading\" name=\"check-circle\"></i>Done<span slot=\"suffix\">12</span></ui-option></ui-select>",
+      "note": "Options with icons and a suffix; the trigger shows only the option text."
+    }
+  ]
+}

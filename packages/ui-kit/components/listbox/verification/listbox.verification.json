@@ -1,0 +1,56 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "listbox",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/listbox/listbox.element.ts",
+      "sha256": "2e8067e7ed3d1070eb1d119f45ec06f0852a9d2b26f9890b770524f28e83f9e6"
+    },
+    {
+      "path": "components/listbox/option.element.ts",
+      "sha256": "f502007504b18bb2247c668f5139f19663e07a9b0c8305c5f5d570d88ee63cc3"
+    },
+    {
+      "path": "components/listbox/options.ts",
+      "sha256": "290be46df6ac0c11ee339039584456bd6d7ca53a943da6d657a4267eff6bb0da"
+    },
+    {
+      "path": "dom/listbox.ts",
+      "sha256": "5713529eff157100f139aed0cb0380c9a88ce6943eb27a37b0c2b005e9b66f0e"
+    },
+    {
+      "path": "components/listbox/listbox.manifest.json",
+      "sha256": "4221888a4cb023ab0c886b9ec490a7a005cbad393e7ba140f2686e3e076882fe"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
+          "covers": "arrows skip disabled, selection follows focus, events, form value, segmented keys, option label"
+        },
+        {
+          "command": "node --test test/listbox.test.ts",
+          "covers": "navigate and typeahead"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
+          "node --test test/listbox.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

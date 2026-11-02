@@ -16,7 +16,9 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 |---|---|---|
 | `core/` | signals, `html`/`render`/`repeat`, `UIElement`, `UIFormElement`, input-modality tracking | [components](components.md) |
 | `dom/` | headless behaviors: button, field, text entry, listbox/select, range | [components](components.md) |
-| `components/` | the web components (and React button/input) | [components](components.md) |
+| `components/` | one folder per element module: element, React renderer, manifest, guide, examples, verification record | [components](components.md), [registry](registry.md) |
+| `contracts/` | schemas and shared contracts: components, parts, composition, geometry families, foundations, states, tokens | [registry](registry.md) |
+| `registry.json`, `system.manifest.json`, `graph.json` | registry entry, system identity and routes, the generated graph index | [registry](registry.md) |
 | `tokens/geometry/` | the geometry resolver (numerical reference) | [geometry](geometry.md) |
 | `tokens/colors/` | Spectrum engine, settings, snapshot, color tokens | [color](color.md) |
 | `tokens/typography/` | type roles, ratios, font families (numerical reference) | [typography](typography.md) |
@@ -25,7 +27,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `icons/` | `<i name>` runtime, icon sets, SVG sanitizer | [icons](icons.md) |
 | `styles/` | reset, geometry CSS, defaults (states), motion, FOUC guard, page patterns | [geometry](geometry.md), [components](components.md), [motion](motion.md) |
 | `preset.ts` | the PandaCSS preset assembling all of the above | [theming](theming.md) |
-| `scripts/` | generators: `geometry:csv`, `tokens:dtcg`, `spectrum:defaults` | below |
+| `scripts/` | generators: `geometry:csv`, `tokens:dtcg`, `spectrum:defaults`, `registry:graph`; the `registry` CLI; `verification` | below, [registry](registry.md) |
 
 ## Generated outputs
 

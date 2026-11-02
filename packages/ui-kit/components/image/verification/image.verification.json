@@ -1,0 +1,40 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "image",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/image/image.element.ts",
+      "sha256": "3ef3e2428ab7f106580b7a72e06fdb59bcbb20fc0330bfd2526f7d3bae845ead"
+    },
+    {
+      "path": "components/image/image.manifest.json",
+      "sha256": "10a031b3237a4ef1d4eb5b9f0b34f353edf43f9d9c53500044074e484a58bc8f"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
+          "covers": "image presets and slideshow (shared test with swiper)"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Image loading, error marking and object-fit are not exercised in happy-dom; the browser geometry check covers layout only.",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

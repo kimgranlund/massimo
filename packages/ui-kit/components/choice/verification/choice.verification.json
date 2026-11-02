@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "choice",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/choice/choice.element.ts",
+      "sha256": "36bb08b0a6e8ba378ffc1029a8585363316215d65f42103fdbcfc271bfc09472"
+    },
+    {
+      "path": "components/slots.ts",
+      "sha256": "9be14b79c470d98628140553f0b685ae8a897c5ee86cbb9cc4b91c2dba341075"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "77d21733f7b97e86124fe0c4384db008cc323653d809b0e53cc6236b31262bbc"
+    },
+    {
+      "path": "components/choice/choice.manifest.json",
+      "sha256": "b60c45ca1240e3f889f3e5805391a068e1b46b0fd268ff4fbd62be891419daf8"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
+          "covers": "roles, toggle by click and keys, mixed, form value, required, radio group movement and roving tab stop"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

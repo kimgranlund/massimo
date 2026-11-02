@@ -37,7 +37,10 @@
     "test": "node --test test/",
     "geometry:csv": "node scripts/geometry-csv.ts",
     "tokens:dtcg": "node scripts/tokens-dtcg.ts",
-    "spectrum:defaults": "node scripts/spectrum-defaults.ts"
+    "spectrum:defaults": "node scripts/spectrum-defaults.ts",
+    "registry": "node scripts/registry.ts",
+    "registry:graph": "node scripts/registry-graph.ts",
+    "verification": "node scripts/verification.ts"
   },
   "peerDependencies": {
     "react": ">=19"

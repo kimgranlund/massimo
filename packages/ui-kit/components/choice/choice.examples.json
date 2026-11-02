@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "choice",
+  "title": "Checkbox, radio, switch",
+  "summary": "Form choices.",
+  "defaultExample": "checkbox",
+  "examples": [
+    {
+      "id": "checkbox",
+      "label": "Checkbox",
+      "subject": "component:checkbox",
+      "markup": "<ui-checkbox name=\"terms\" required>I accept the terms</ui-checkbox><ui-checkbox indeterminate>Some selected</ui-checkbox>"
+    },
+    {
+      "id": "radio",
+      "label": "Radio group",
+      "subject": "component:radio",
+      "markup": "<div role=\"radiogroup\" aria-label=\"Plan\"><ui-radio name=\"plan\" value=\"free\" checked>Free</ui-radio><ui-radio name=\"plan\" value=\"pro\">Pro<span slot=\"suffix\">$9</span></ui-radio></div>"
+    },
+    {
+      "id": "switch",
+      "label": "Switch",
+      "subject": "component:switch",
+      "markup": "<ui-switch name=\"wifi\" checked>Wi-Fi</ui-switch>"
+    }
+  ]
+}

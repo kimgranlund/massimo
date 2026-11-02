@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "swiper",
+  "title": "Swiper",
+  "summary": "Carousel.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Slides",
+      "subject": "component:swiper",
+      "markup": "<ui-swiper label=\"Highlights\"><div>One</div><div>Two</div><div>Three</div></ui-swiper>"
+    },
+    {
+      "id": "hover",
+      "label": "Hover controls, no dots",
+      "subject": "component:swiper",
+      "markup": "<ui-swiper label=\"Gallery\" hover-controls no-dots><div>A</div><div>B</div></ui-swiper>"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "notation": "Shared anatomy owned by more than one component. Component-specific parts are nodes in their component manifest. Owning a part does not make it a consumer insertion slot unless the summary says so. The five slot parts form the construction pattern [leading] [prefix] [contents] [suffix] [trailing]; their selectors are relative to the slotted host: the component itself, the input control or the select trigger.",
+  "parts": {
+    "slot-leading": {
+      "id": "part:slot-leading",
+      "selector": ":scope > [data-part=leading]",
+      "summary": "Leading slot (6u). Authored children with slot=\"leading\" move here; usually one <i name> icon. Hidden when empty.",
+      "createdBy": "foundation:slots",
+      "insertion": "slot=\"leading\"",
+      "searchTerms": [
+        "leading icon",
+        "leading slot"
+      ]
+    },
+    "slot-prefix": {
+      "id": "part:slot-prefix",
+      "selector": ":scope > [data-part=prefix]",
+      "summary": "Prefix: a short text adornment before the label (currency, unit, scope). Authored children with slot=\"prefix\" move here; label color at 65%. Hidden when empty.",
+      "createdBy": "foundation:slots",
+      "insertion": "slot=\"prefix\"",
+      "searchTerms": [
+        "prefix",
+        "adornment",
+        "currency"
+      ]
+    },
+    "slot-contents": {
+      "id": "part:slot-contents",
+      "selector": ":scope > [data-part=contents]",
+      "summary": "Contents slot: every authored child without a slot attribute (the label text). Hidden when empty, so an icon-only control is square.",
+      "createdBy": "foundation:slots",
+      "insertion": "default",
+      "searchTerms": [
+        "label",
+        "contents"
+      ]
+    },
+    "slot-suffix": {
+      "id": "part:slot-suffix",
+      "selector": ":scope > [data-part=suffix]",
+      "summary": "Suffix: a short text adornment after the label (unit, shortcut, count). Authored children with slot=\"suffix\" move here; label color at 65%. Hidden when empty.",
+      "createdBy": "foundation:slots",
+      "insertion": "slot=\"suffix\"",
+      "searchTerms": [
+        "suffix",
+        "unit",
+        "shortcut",
+        "count"
+      ]
+    },
+    "slot-trailing": {
+      "id": "part:slot-trailing",
+      "selector": ":scope > [data-part=trailing]",
+      "summary": "Trailing slot (6u). Authored children with slot=\"trailing\" move here. Hidden when empty.",
+      "createdBy": "foundation:slots",
+      "insertion": "slot=\"trailing\"",
+      "searchTerms": [
+        "trailing icon",
+        "trailing slot"
+      ]
+    },
+    "field-label": {
+      "id": "part:field-label",
+      "selector": ":scope > [data-part=label]",
+      "summary": "Visible label span from the label property, wired to the control with aria-labelledby; clicking it focuses the control. Hidden without a label.",
+      "createdBy": "template",
+      "searchTerms": [
+        "field label"
+      ]
+    },
+    "field-description": {
+      "id": "part:field-description",
+      "selector": ":scope > [data-part=description]",
+      "summary": "Help text from the description property, wired with aria-describedby. Hidden when empty.",
+      "createdBy": "template",
+      "searchTerms": [
+        "help text",
+        "description"
+      ]
+    },
+    "field-error": {
+      "id": "part:field-error",
+      "selector": ":scope > [data-part=error]",
+      "summary": "The error message: the author error property at once, or the validation message after interaction. Wired with aria-describedby and aria-invalid.",
+      "createdBy": "template",
+      "searchTerms": [
+        "error message"
+      ]
+    },
+    "track": {
+      "id": "part:track",
+      "selector": ":scope > [data-part=track]",
+      "summary": "The 1u track of a range or progress bar.",
+      "createdBy": "template",
+      "searchTerms": [
+        "track"
+      ]
+    },
+    "track-fill": {
+      "id": "part:track-fill",
+      "selector": ":scope > [data-part=track] > [data-part=fill]",
+      "summary": "The filled portion of the track, sized by --ui-ratio.",
+      "createdBy": "template",
+      "searchTerms": [
+        "fill"
+      ]
+    }
+  }
+}

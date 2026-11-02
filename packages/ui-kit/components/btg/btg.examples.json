@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "btg",
+  "title": "Badge, tag, chip",
+  "summary": "Compact labels.",
+  "defaultExample": "badge",
+  "examples": [
+    {
+      "id": "badge",
+      "label": "Badge",
+      "subject": "component:badge",
+      "markup": "<ui-badge>3</ui-badge><ui-badge>New</ui-badge>"
+    },
+    {
+      "id": "tag",
+      "label": "Tag",
+      "subject": "component:tag",
+      "markup": "<ui-tag><i slot=\"leading\" name=\"tag\"></i>Size<span slot=\"suffix\">M</span></ui-tag>"
+    },
+    {
+      "id": "chips",
+      "label": "Selectable and removable chips",
+      "subject": "component:chip",
+      "markup": "<ui-chip selectable selected>Design</ui-chip><ui-chip selectable>Unread<span slot=\"suffix\">4</span></ui-chip><ui-chip removable>Remote</ui-chip>"
+    }
+  ]
+}

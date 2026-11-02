@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "inputs": {
+    "unit": "u in px, 2..12 (size / data-size attribute sets --ui-unit per subtree)",
+    "border": "B in px, 0..u/2 (--ui-border)",
+    "radiusScale": "multiplier on the soft 3u curvature, 0..3 (--ui-radius-scale)",
+    "gap": "gutter in u, 0..8 in 0.5 steps (gap attribute)",
+    "iconSize": "sm | md | lg | fill (icon-size / data-icon-size)"
+  },
+  "invariants": [
+    "box-sizing: border-box everywhere; each owner deducts its own border once (pad = u − B).",
+    "Slots are fixed at 6u; density never shrinks slots, icons or type.",
+    "Lengths reach CSS through the variables styles/geometry.ts derives from the inputs; components never hard-code a length.",
+    "Change resolve.ts and styles/geometry.ts together, then regenerate docs/geometry.csv and tokens/dtcg/."
+  ],
+  "families": {
+    "control": {
+      "id": "geometry:control",
+      "resolver": [
+        "resolveControl",
+        "resolveTextRun",
+        "resolveButtonContents",
+        "resolveIcon"
+      ],
+      "summary": "Height 8u = 6u slot + 2·pad. Construction pattern [leading] [prefix] [contents] [suffix] [trailing]: icon slots 6u; the text run (prefix, label, suffix) has 0.5u beside another text part, 1u beside a slot, 2u at a bare edge. Font 10px + u. Icon = font + k·u (sm −0.5, md +0.5, lg +1.5), capped at the slot.",
+      "members": [
+        "component:button",
+        "component:option"
+      ],
+      "searchTerms": [
+        "control geometry",
+        "button height",
+        "label padding",
+        "icon slot",
+        "text run"
+      ]
+    },
+    "field": {
+      "id": "geometry:field",
+      "resolver": [
+        "resolveField",
+        "resolveSelectTrigger"
+      ],
+      "summary": "The control family applied to field hosts: the input control ([leading] [prefix] [editor] [suffix] [trailing]) and select trigger ([leading] [prefix] [value] [suffix] [chevron]) have pad = u − B and use the control text-run rule; the chevron is icon size sm.",
+      "members": [
+        "component:input",
+        "component:select"
+      ],
+      "searchTerms": [
+        "field geometry",
+        "input padding",
+        "select trigger",
+        "chevron"
+      ]
+    },
+    "btg": {
+      "id": "geometry:btg",
+      "resolver": [
+        "resolveBtg",
+        "btgHeights"
+      ],
+      "summary": "Badge, tag and chip heights and label edges; chip label edge is half the control edge. Tag and chip use the construction pattern with 1u text-run edges.",
+      "members": [
+        "component:badge",
+        "component:tag",
+        "component:chip"
+      ],
+      "searchTerms": [
+        "badge height",
+        "tag height",
+        "chip height"
+      ]
+    },
+    "choice": {
+      "id": "geometry:choice",
+      "resolver": [
+        "resolveChoice"
+      ],
+      "summary": "Checkbox box (radius 1u), radio dot (circle) and switch track (capsule) inside a 6u leading slot. The indicator is the leading slot; the text run follows with a 0 bare end edge.",
+      "members": [
+        "component:checkbox",
+        "component:radio",
+        "component:switch"
+      ],
+      "searchTerms": [
+        "checkbox size",
+        "radio size",
+        "switch size"
+      ]
+    },
+    "track": {
+      "id": "geometry:track",
+      "resolver": [
+        "resolveTrack",
+        "trackFill"
+      ],
+      "summary": "1u track, 4u thumb, full-height fills; the ratio arrives as --ui-ratio.",
+      "members": [
+        "component:range",
+        "component:progress"
+      ],
+      "searchTerms": [
+        "range track",
+        "slider thumb",
+        "progress height"
+      ]
+    },
+    "swatch": {
+      "id": "geometry:swatch",
+      "resolver": [
+        "resolveSwatch"
+      ],
+      "summary": "6u swatch; palettes join swatches with no gap and round only the outer corners.",
+      "members": [
+        "component:swatch",
+        "component:palette"
+      ],
+      "searchTerms": [
+        "swatch size",
+        "palette geometry"
+      ]
+    },
+    "swiper": {
+      "id": "geometry:swiper",
+      "resolver": [
+        "resolveSwiper"
+      ],
+      "summary": "Paddles are control-family buttons; dots stretch when active.",
+      "members": [
+        "component:swiper"
+      ],
+      "searchTerms": [
+        "swiper paddles",
+        "carousel dots"
+      ]
+    },
+    "container": {
+      "id": "geometry:container",
+      "resolver": [
+        "resolveContainer",
+        "resolveComposite"
+      ],
+      "summary": "Levels composite 0.5u, group 1u, collection 2u, tile 3u, card 4u, panel 6u, region 8u, page 8u (+72rem max width). Gap defaults to the level padding; radius steps up per level and is 0 for panel, region and page.",
+      "members": [
+        "component:group",
+        "component:collection",
+        "component:tile",
+        "component:card",
+        "component:panel",
+        "component:region",
+        "component:page",
+        "component:listbox",
+        "component:segmented",
+        "component:select"
+      ],
+      "searchTerms": [
+        "container padding",
+        "container gap",
+        "container radius",
+        "nesting",
+        "composite"
+      ]
+    }
+  }
+}

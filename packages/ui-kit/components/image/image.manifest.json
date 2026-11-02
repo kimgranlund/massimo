@@ -1,0 +1,303 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "image",
+  "primary": "component:image",
+  "module": "./image.element.ts",
+  "registration": "on-import",
+  "documentation": "./image.md",
+  "examples": "./image.examples.json",
+  "contract": "../../contracts/components.json#/components/image",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-global",
+    "modules": [
+      "../../styles/geometry.ts",
+      "../../styles/defaults.ts"
+    ]
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "./image.element.ts",
+      "exports": [
+        "RATIOS"
+      ],
+      "description": "Named aspect-ratio presets."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:image",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-image",
+      "class": "UIImage",
+      "extends": "UIElement",
+      "intent": [
+        "Show an image in a fixed frame",
+        "Show several images as a slideshow"
+      ],
+      "properties": [
+        {
+          "key": "src",
+          "type": "string",
+          "default": "",
+          "attribute": "src",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "srcset",
+          "type": "string",
+          "default": "",
+          "attribute": "srcset",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "sizes",
+          "type": "string",
+          "default": "",
+          "attribute": "sizes",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "alt",
+          "type": "string",
+          "default": "",
+          "attribute": "alt",
+          "reflects": false,
+          "description": "Alternative text; empty for decorative images.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "ratio",
+          "type": "string",
+          "default": "",
+          "attribute": "ratio",
+          "reflects": true,
+          "enum": [
+            "square",
+            "landscape",
+            "portrait",
+            "wide",
+            "ultrawide",
+            "story",
+            "golden"
+          ],
+          "description": "Named preset or any \"w/h\"; invalid values are ignored.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "fit",
+          "type": "string",
+          "default": "cover",
+          "attribute": "fit",
+          "reflects": true,
+          "enum": [
+            "cover",
+            "contain",
+            "fill",
+            "none",
+            "scale-down"
+          ],
+          "description": "object-fit.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "position",
+          "type": "string",
+          "default": "",
+          "attribute": "position",
+          "reflects": false,
+          "description": "object-position, e.g. \"top\" or \"30% 70%\".",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "slideshow",
+          "type": "boolean",
+          "default": false,
+          "attribute": "slideshow",
+          "reflects": true,
+          "description": "Read at connect: children become slides of an inline swiper.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "alt"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Optional <img> or <picture> (with <source> for formats); otherwise src builds one lazy <img>."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Authored <img>/<picture> win over src.",
+        "Failed images get data-error; the frame keeps its empty fill.",
+        "ratio sets aspect-ratio inline on the host and position sets --ui-image-position (validated strings only).",
+        "alt=\"\" marks a decorative image."
+      ],
+      "avoidWhen": [
+        {
+          "when": "An icon.",
+          "reason": "Icons come from the theme icon set and sit in slots.",
+          "useInstead": "foundation:icons"
+        }
+      ],
+      "searchTerms": [
+        "image",
+        "picture",
+        "photo",
+        "thumbnail",
+        "cover",
+        "aspect ratio"
+      ]
+    },
+    {
+      "id": "part:image-slide",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > ui-swiper [data-part=slide]",
+      "summary": "With slideshow: each authored child wrapped as a slide of the inline swiper."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:image",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:image",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:image",
+      "relation": "ownsPart",
+      "to": "part:image-slide"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:tile"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:image",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:image",
+      "relation": "uses",
+      "to": "component:swiper"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./image.element.ts",
+      "exports": {
+        "component:image": "UIImage"
+      },
+      "verification": "./verification/image.verification.json#/renderers/webComponent"
+    }
+  }
+}
