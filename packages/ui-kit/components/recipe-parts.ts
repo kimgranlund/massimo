@@ -23,6 +23,29 @@ export function mergeStyles(...parts: Style[]): Style {
   return out;
 }
 
+interface RootRecipe {
+  slots: readonly string[];
+  base?: { root?: Style };
+  variants?: Record<string, Record<string, { root?: Style }>>;
+  defaultVariants?: Record<string, unknown>;
+}
+
+/**
+ * Global rules that apply a slot recipe to a CSS-only tag (the layout containers, which run no script
+ * and so never get the recipe classes): the base plus the default variants on `tag`, every other
+ * variant on `tag[<variant>=<value>]`. The style objects are the recipe's own, so the recipe stays the
+ * one source; `&` in a nested selector becomes the tag. Root-only recipes: a CSS-only tag has no parts.
+ */
+export function tagRules(tag: string, { slots, base = {}, variants = {}, defaultVariants = {} }: RootRecipe): Style {
+  if (slots.some((s) => s !== 'root')) throw new Error(`${tag}: tagRules takes root-only recipes`);
+  const defaults = Object.entries(defaultVariants).map(([v, value]) => variants[v][String(value)].root ?? {});
+  const out: Style = { [tag]: mergeStyles(base.root ?? {}, ...defaults) };
+  for (const [v, values] of Object.entries(variants)) {
+    for (const [value, styles] of Object.entries(values)) if (String(defaultVariants[v]) !== value && styles.root) out[`${tag}[${v}=${value}]`] = styles.root;
+  }
+  return out;
+}
+
 /** Buttons, form controls, badges, tags and chips speak in the UI voice. */
 export const UI_FONT = voiceFamily('ui');
 
@@ -90,6 +113,35 @@ export function constructionPattern({ slot, bare, between = 'calc(0.5 * var(--u)
     [`& > ${TEXT}${TEXT}:has(~ ${shown(TEXT)})`]: { paddingInlineEnd: between },
   };
 }
+
+// ── Composites (listbox, segmented, the select popup): the 0.5u wrapper level ──
+
+/**
+ * Composite geometry, declared on the list or popup; options read the inherited values. D is the
+ * composite edge, Ic the option inset, the option height 6u + 2Ic (resolveComposite). Padding and gap
+ * are the theme's pad-composite / gap-composite; the gap attribute wins on its own element.
+ */
+export const composite: Style = {
+  '--d': 'max(var(--b), calc(var(--ui-pad-composite) * var(--u)))',
+  '--ci': 'max(var(--b), calc(var(--u) - var(--d)))',
+  '--ch': 'calc(var(--slot) + 2 * var(--ci))',
+  // Container curvature, concentric with the options (composite is exempt from radius ≤ padding).
+  '--cr': 'calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale))',
+  padding: 'calc(var(--d) - var(--b))',
+  gap: 'calc(var(--ui-gap, var(--ui-gap-composite)) * var(--u))',
+  borderWidth: 'var(--b)',
+  borderRadius: 'var(--cr)',
+};
+
+/** An option in a composite: 7u tall with the 3u control radius (concentric with the composite's). */
+export const compositeOption: Style = {
+  minHeight: 'var(--ch)',
+  padding: 'calc(var(--ci) - var(--b))',
+  borderWidth: 'var(--b)',
+  borderColor: 'transparent',
+  borderRadius: 'min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d))))',
+  fontSize: 'var(--font)',
+};
 
 /** Forced colors (Windows high contrast): a system edge that costs no space. */
 export const FORCED_EDGE: Style = { outline: '1px solid CanvasText', outlineOffset: '-1px' };

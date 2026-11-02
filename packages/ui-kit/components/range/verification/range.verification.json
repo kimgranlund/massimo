@@ -19,10 +19,6 @@
     {
       "path": "components/range/range.react.tsx",
       "sha256": "00b8516e3efab665b7c22d231c9fbfcfcf46a1d1fa1fd64b56463fd9b835161c"
-    },
-    {
-      "path": "styles/native.ts",
-      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {
@@ -49,18 +45,13 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "native input/progress inside a data-ui host, construction-pattern parts, form names and values, no custom elements"
-        },
-        {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors map ui-* rules and ARIA state hooks to the native input"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/react.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -29,7 +29,7 @@ Areas hold containers, containers hold wrappers: page › region › panel › c
 
 ## Geometry and appearance
 
-Geometry families: `container` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Colors are Spectrum roles; states are keyed on ARIA and `data-*` ([states.json](../../contracts/states.json), `styles/defaults.ts`).
+Geometry families: `container` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [container.recipe.ts](container.recipe.ts) (one per level, `root` only; the card's `padding` is a variant), read the geometry variables; fills are Spectrum roles (panel `bg.muted`, card `bg.subtle`, a nested card `bg`). The tags run no script, so the same recipes are also emitted as global rules on `ui-group` … `ui-page` (`ui-card[padding=sm]` for a variant); React and plain HTML use the classes (`<div data-ui="card" class="ui-card__root ui-card__root--padding_sm">`). The `gap` attribute (`gap` prop) sets `--ui-gap` on that element only.
 
 ## Renderers and verification
 

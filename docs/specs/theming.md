@@ -34,7 +34,7 @@ Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` a
 
 ## Preset
 
-`preset.ts` merges the theme parameters, reset, scheme rules, geometry, defaults and FOUC guard per selector (`mergeGlobalCss`; a test fails if any rule is lost), and registers the component slot recipes (`theme.slotRecipes`) and the state conditions. An app that renders the web components sets `staticCss: { recipes: '*' }` and leaves class names unhashed ([components](components.md#styles)). Apps add `@pandacss/preset-base` and the ui-kit preset to their own Panda config. Panda 2 ships no utilities or breakpoints without preset-base and the kit's breakpoints.
+`preset.ts` merges the theme parameters, reset, scheme rules, geometry, defaults, the container tag rules and FOUC guard per selector (`mergeGlobalCss`; a test fails if any rule is lost), and registers the component slot recipes (`theme.slotRecipes`) and the state conditions. An app that renders the web components sets `staticCss: { recipes: '*' }` and leaves class names unhashed ([components](components.md#styles)). Apps add `@pandacss/preset-base` and the ui-kit preset to their own Panda config. Panda 2 ships no utilities or breakpoints without preset-base and the kit's breakpoints.
 
 Conditions: `osDark`, `dark`, `light` (schemes), plus the state conditions in `styles/conditions.ts`: `keyboard` (keyboard modality), `checked`, `indeterminate`, `disabled`, `busy` and `userInvalid`. Each matches both renderers (ARIA on a web component host, or a native `<input>` child of a `data-ui` host), so one `css()` or recipe rule serves both. `contracts/tokens.json` lists them; a test fails when a condition is uncovered.
 

@@ -6,7 +6,7 @@ date: 2026-11-02
 
 # Component styles as Panda slot recipes
 
-Proposal to move ui-kit component styles from global, selector-based rules (plus generated React twins) to Panda slot recipes that the web components and the React renderers both apply. Accepted and built for every component except the layout containers (see Progress); the current state is specified in [components](../specs/components.md#styles).
+Proposal to move ui-kit component styles from global, selector-based rules (plus generated React twins) to Panda slot recipes that the web components and the React renderers both apply. Accepted and built for every component, the layout containers included (see Progress); the current state is specified in [components](../specs/components.md#styles).
 
 ## Why
 
@@ -50,8 +50,10 @@ Each step is one component folder, shipped alone with all checks green. Order fr
 3. (done) **button**: `variant` (neutral, primary), busy, the construction pattern parts.
 4. (done) **choice** (checkbox, radio, switch), **range / progress**, **color** (swatch, palette).
 5. (done) **listbox / segmented / option**, then **input**, then **select** (trigger, popup, anchor positioning, the native-select twin).
-6. (done, containers deferred) **swiper, image, containers.**
-7. (done, with the deviations below) **Cleanup.** Delete `styles/native.ts` and the component sections of `defaults.ts`; per-component CSS output; update specs (`components.md`, `registry.md`, `authoring.md`).
+6. (done) **swiper, image, containers** (containers in step 8).
+7. (done) **Cleanup.** Delete `styles/native.ts` and the component sections of `defaults.ts`; per-component CSS output; update specs (`components.md`, `registry.md`, `authoring.md`).
+
+8. (done) **Layout containers and composites.** Container slot recipes, also emitted on the CSS-only tags; the composite geometry moved into the listbox, segmented, option and select recipes; `styles/native.ts` deleted.
 
 Verification per step: unit tests, `geometry-check.html` (`fails: []`), `react-check.html` (`fails: []`), a light and dark screenshot of the component's jig section, and a size check of `dist/ui-kit.css` (expected to shrink as twins disappear).
 
@@ -64,13 +66,16 @@ Verification per step: unit tests, `geometry-check.html` (`fails: []`), `react-c
 | 4 choice, range/progress, color | `714cc66` | construction pattern written once per recipe (`constructionPattern`), -12 KB |
 | 5 listbox/segmented/option, input, select | `195d497` | native select states and `::picker(select)` from the root; `mergeStyles` |
 | 6 swiper, image | `667b759` | `styles/motion.ts` deleted; containers deferred |
-| 7 cleanup | this commit | specs, split CSS output (`dist/split/`) |
+| 7 cleanup | `cf545ea` | specs, split CSS output (`dist/split/`) |
+| 8 containers, composites | this commit | `container.recipe.ts`, `tagRules`, `composite` / `compositeOption`, `--ui-gap` non-inheriting; `native.ts` deleted |
 
 Deviations:
 
-- **Layout containers are not migrated.** They are being redesigned on another branch (area / container / wrapper families), so `ui-group` … `ui-page`, their rules in `styles/defaults.ts`, and the container and composite sections of `styles/geometry.ts` are untouched.
-- **`styles/native.ts` stays**, reduced to the twin generator for those remaining global rules (containers, and the composite geometry of listbox, segmented, option and the select popup). All its native plumbing moved into recipes.
-- **Size.** `dist/ui-kit.css` went from 174 KB (before step 2) to 191 KB, not smaller: each recipe carries its own copy of the shared patterns (construction pattern, field control, forced colors), where the global rules shared one selector list; about 88 KB of it is tokens. Consumers who load per component use `dist/split/styles/recipes/<name>.css`.
+- **Layout containers are CSS-only tags** (no script, so nothing adds classes). Options weighed: (a) lightweight elements that add the classes on connect: breaks "containers need no script" and leaves a FOUC window; (b) emit the same recipe objects as global rules on the tags; (c) keep hand-written tag rules: two sources. Chosen (b): `tagRules` (`recipe-parts.ts`) turns each container recipe into tag rules (base and default variants on `ui-card`, other variants on `ui-card[padding=…]`), so the recipe stays the one source, the tags are styled before and without any script, and React uses the classes. Cost: the container CSS exists twice (tag rules in `base`, classes in `recipes`).
+- **Gap attribute.** `--ui-gap` is registered non-inheriting (`@property`, syntax `*`), replacing the per-tag reset that needed a list of every container tag and its twin; the select popup takes its host's value with `inherit`.
+- **`styles/native.ts` is deleted**: nothing global is keyed on a `ui-*` tag for React any more.
+- **Parity findings** (computed styles of `#/containers`, `#/home`, `#/components`, react-check and geometry-check, light and dark, before and after): no difference, except the React select's picker, which never got the composite geometry (its twin landed on the `<select>`, inside `:is()` the picker mapping did not match); it now has the composite padding, gap and radius like the web component's popup. A card's declared `border` edge color always lost to the shared transparent rule; the recipe keeps the transparent edge it rendered with. The segmented radius cap (half its height), dead before (outranked by the composite rule), now applies; at corner scales up to 8/7 it equals the composite radius.
+- **Size.** `dist/ui-kit.css` went from 174 KB (before step 2) to 191 KB at step 7 and 258 KB after step 8 (263,784 bytes; 259,683 before it, now with the motion and color tokens of later work: +4 KB for the container rules emitted twice and the composite written into four recipes), not smaller: each recipe carries its own copy of the shared patterns (construction pattern, field control, forced colors), where the global rules shared one selector list; about 88 KB of it is tokens. Consumers who load per component use `dist/split/styles/recipes/<name>.css`.
 - **Studio class names are no longer hashed** in production: web components apply the kit's (unhashed) recipe class names, so a consuming build must emit the same names.
 - **Behavior fixes found by computed-style parity** (a dump of every element's computed style before and after each step): web-component badge/tag/chip icons now size to `--icon` like the resolver and React (a specificity tie with `i[name]` kept them at 1em); a disabled swiper paddle with hover-controls stays hidden until hover in the web component too.
 

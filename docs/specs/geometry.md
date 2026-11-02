@@ -94,7 +94,7 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 | region (area) | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
 | page (area) | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
 
-Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script.
+Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script. Their styles are slot recipes (`components/container/container.recipe.ts`, the composite in `components/recipe-parts.ts`), also emitted on the tags ([components](components.md#styles)).
 
 ### Composite detail
 

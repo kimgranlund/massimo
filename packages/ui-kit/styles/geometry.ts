@@ -5,21 +5,13 @@
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
 import { unitTokenVars } from '../tokens/geometry/index.ts';
-import { CONTAINERS, GAPS, ICON_STEPS, SIZES, levelTag } from '../tokens/geometry/resolve.ts';
+import { GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
 export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, [data-ui])';
 // Badge, tag and chip hosts in both renderers (the React ones are data-ui hosts).
 export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag], [data-ui=chip])';
-const LAYOUT = Object.keys(CONTAINERS).filter((k) => k !== 'composite') as Exclude<keyof typeof CONTAINERS, 'composite'>[];
-// Selector per level: card-md is the plain ui-card; the other card levels add [padding=xs|sm|lg|xl].
-const levelSelector = (k: (typeof LAYOUT)[number]) => k === 'card-md' ? 'ui-card' : k.startsWith('card-') ? `ui-card[padding=${k.slice(5)}]` : `ui-${k}`;
-const LAYOUT_TAGS = [...new Set(LAYOUT.map(levelTag))];
-export const LAYOUT_CONTAINERS = `:is(${LAYOUT_TAGS.join(', ')})`;
-const CONTAINER_TAGS = `:where(${LAYOUT_TAGS.join(', ')}, ui-listbox, ui-segmented, ui-select)`;
-export const COMPOSITE = ':is(ui-listbox, ui-segmented, ui-select > [data-part=popup])';
-
 const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;
 
 export const geometry = defineGlobalStyles({
@@ -32,10 +24,8 @@ export const geometry = defineGlobalStyles({
   // u-based tokens (spacing, sizes, radii) recompute in a sized subtree (tokens/geometry/index.ts).
   ':where([size], [data-size])': UNIT_TOKENS,
   ...Object.fromEntries(Object.entries(ICON_STEPS).map(([k, v]) => [`:is([icon-size=${k}], [data-icon-size=${k}])`, { '--ui-icon-k': String(v) }])),
-  // Gap apply to the element that carries the attribute only: every container resets the
-  // value at tag specificity, and the attribute rule (higher specificity) sets it.
-  [CONTAINER_TAGS]: { '--ui-gap': 'initial' },
-  'ui-select > [data-part=popup]': { '--ui-gap': 'inherit' },
+  // Gap applies to the element that carries the attribute only: --ui-gap does not inherit
+  // (geometryProperties), so a nested container keeps its own level gap.
   ...Object.fromEntries(GAPS.map((g) => [`[gap="${g}"]`, { '--ui-gap': String(g) }])),
 
   // Control family, resolved on every component element.
@@ -81,54 +71,16 @@ export const geometry = defineGlobalStyles({
   ':is(ui-tag, [data-ui=tag])': { '--h': 'var(--tag-h)', '--font': 'calc(10px + 0.5 * var(--u))' },
   ':is(ui-badge, [data-ui=badge])': { '--h': 'var(--badge-h)', '--font': '10px' },
 
-  // Layout containers, three families (tokens/geometry/resolve.ts CONTAINERS). Padding and gap come
-  // from the theme parameters --ui-pad-<level> / --ui-gap-<level>; the gap attribute wins. Radius:
-  // wrapper (group, collection) concentric with 3u children, (3 + p)u × s; container (card) at most
-  // its padding, p·u × min(1, s); area (panel, region, page) square.
-  ...Object.fromEntries(LAYOUT.map((k) => {
-    const family = CONTAINERS[k].family;
-    return [levelSelector(k), {
-      '--cp': `var(--ui-pad-${k})`,
-      '--cg': `var(--ui-gap-${k})`,
-      '--cr': family === 'area' ? '0px'
-        : family === 'wrapper' ? `calc((3 + var(--ui-pad-${k})) * var(--u) * var(--ui-radius-scale))`
-        : `calc(var(--ui-pad-${k}) * var(--u) * min(1, var(--ui-radius-scale)))`,
-    }];
-  })),
-  [LAYOUT_CONTAINERS]: {
-    padding: 'max(0px, calc(var(--cp) * var(--u) - var(--b)))',
-    gap: 'calc(var(--ui-gap, var(--cg)) * var(--u))',
-    borderWidth: 'var(--b)',
-    borderRadius: 'var(--cr)',
-  },
-
   // Range and progress (resolveTrack): the 4u track and its radius, read by the range recipes.
   ':is(ui-range, ui-progress, [data-ui=range], [data-ui=progress])': {
     '--track': 'calc(4 * var(--u))',
     '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
   },
-
-  // Composite (0.5u level). Declared on the parent; options read the inherited values.
-  [COMPOSITE]: {
-    '--d': 'max(var(--b), calc(var(--ui-pad-composite) * var(--u)))',
-    '--ci': 'max(var(--b), calc(var(--u) - var(--d)))',
-    '--ch': 'calc(var(--slot) + 2 * var(--ci))',
-    // Container curvature for lists and popups, concentric with the options (composite is exempt from
-    // the radius ≤ padding rule); segmented caps it at half its height.
-    '--cr': 'calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale))',
-    padding: 'calc(var(--d) - var(--b))',
-    gap: 'calc(var(--ui-gap, var(--ui-gap-composite)) * var(--u))',
-    borderWidth: 'var(--b)',
-    borderRadius: 'var(--cr)',
-  },
-  'ui-segmented': { '--cr': 'min(calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))' },
-  [`${COMPOSITE} > ui-option`]: {
-    minHeight: 'var(--ch)',
-    padding: 'calc(var(--ci) - var(--b))',
-    borderWidth: 'var(--b)',
-    borderColor: 'transparent',
-    // Concentric with the composite: parent radius minus its edge (= the 3u control radius).
-    borderRadius: 'min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d))))',
-    fontSize: 'var(--font)',
-  },
 });
+
+/**
+ * @property registrations (Panda globalVars). --ui-gap does not inherit: the gap attribute sets it on
+ * its own element only (a container, a composite), and the select popup takes its host's explicitly.
+ * Syntax `*` has no initial value, so `var(--ui-gap, <level gap>)` falls back where it is unset.
+ */
+export const geometryProperties = { '--ui-gap': { syntax: '*', inherits: false } };

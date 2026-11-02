@@ -122,8 +122,8 @@ function registration(id: string, graph: Graph) {
     : { mode: 'none', note: 'CSS-only tag: load the kit CSS; nothing to register.', tag: r.tag };
 }
 
-/** The style modules a manifest names: its recipe module, or the global style modules. */
-export const styleModules = (m: any): string[] => m.styleSource.format === 'panda-slot-recipe' ? [m.styleSource.module] : m.styleSource.modules;
+/** The style modules a manifest names: its recipe module. */
+export const styleModules = (m: any): string[] => [m.styleSource.module];
 
 const STYLES = { css: '@massimo/ui-kit/css', preset: '@massimo/ui-kit/preset', note: 'Load dist/ui-kit.css, or add uiKitPreset to a Panda config. Components never generate styles at runtime.' };
 

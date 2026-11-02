@@ -31,10 +31,6 @@
     {
       "path": "components/parts.react.tsx",
       "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
-    },
-    {
-      "path": "styles/native.ts",
-      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {
@@ -66,18 +62,13 @@
         {
           "command": "node --test test/react.test.ts",
           "covers": "ARIA listbox and segmented (role, activedescendant, selection, disabled), options, hidden form input, parts"
-        },
-        {
-          "command": "node --test test/native.test.ts",
-          "covers": "twin selectors and state mapping"
         }
       ],
       "latestRun": {
         "date": "2026-11-02",
         "outcome": "pass",
         "commands": [
-          "node --test test/react.test.ts",
-          "node --test test/native.test.ts"
+          "node --test test/react.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

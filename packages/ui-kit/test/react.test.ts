@@ -69,8 +69,10 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
   // Ratio and fit presets are recipe variants (image.recipe.ts); a custom ratio is the custom variant.
   assert.match(html(h(Image, { ratio: 'wide', fit: 'contain' })), /class="ui-image__root ui-image__root--fit_contain ui-image__root--ratio_wide ui-image__root--slideshow_false"/);
   assert.match(html(h(Image, { ratio: '3/2' })), /ui-image__root--ratio_custom/);
-  assert.equal(html(h(Card, {}, 'x')), '<div data-ui="card">x</div>');
-  assert.equal(html(h(Group, { gap: 2 }, 'x')), '<div data-ui="group" gap="2">x</div>');
+  // Containers carry their recipe class; the card's padding is a recipe variant (md by default).
+  assert.equal(html(h(Card, {}, 'x')), '<div class="ui-card__root ui-card__root--padding_md" data-ui="card">x</div>');
+  assert.match(html(h(Card, { padding: 'xs', className: 'mine' }, 'x')), /class="ui-card__root ui-card__root--padding_xs mine"/);
+  assert.equal(html(h(Group, { gap: 2 }, 'x')), '<div class="ui-group__root" data-ui="group" gap="2">x</div>');
 });
 
 const { Listbox, Segmented, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));

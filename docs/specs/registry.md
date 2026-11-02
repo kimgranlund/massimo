@@ -32,7 +32,7 @@ components/button/
   verification/button.verification.json
 ```
 
-Styles are the folder's slot recipe module, named by the manifest's `styleSource` (`{ format: 'panda-slot-recipe', module: './<name>.recipe.ts' }`): one recipe per component node, exported under the node's name and registered in the preset. Its slots are `root` plus one per owned part (the part's last `[data-part=x]` or `[data-x]`); `test/recipes.test.ts` fails when a manifest's parts and its recipe's slots differ. Foundations (geometry variables, conditions, reset, typography, the FOUC guard, layout containers) stay in `styles/`.
+Styles are the folder's slot recipe module, named by the manifest's `styleSource` (`{ format: 'panda-slot-recipe', module: './<name>.recipe.ts' }`): one recipe per component node, exported under the node's name and registered in the preset. Its slots are `root` plus one per owned part (the part's last `[data-part=x]` or `[data-x]`); `test/recipes.test.ts` fails when a manifest's parts and its recipe's slots differ. Foundations (geometry variables, conditions, reset, typography, the FOUC guard) stay in `styles/`. The CSS-only containers have a recipe too (`container.recipe.ts`), also emitted on their tags ([components](components.md#styles)).
 
 ## Graph IDs
 
