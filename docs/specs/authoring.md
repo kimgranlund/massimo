@@ -46,3 +46,4 @@ Run the ui-kit commands in `packages/ui-kit` (from the root, add `-w @massimo/ui
 3. `npm run ui-kit:test`, `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio`, `npm run ui-kit:build`.
 4. After geometry changes: `npm run geometry:csv -w @massimo/ui-kit`, `npm run tokens:dtcg -w @massimo/ui-kit`, then open `/geometry-check.html` in the running studio; `"fails": []` means the CSS matches the resolver.
 5. Look at the specimen in the jig in light and dark. Numeric checks do not certify visual quality or accessibility; say which checks ran and which did not.
+6. A new or reshaped component passes the [geometry review](../guides/geometry-review.md) before it ships; `test/geometry-acceptance.test.ts` enforces its family, resolver, CSV rows, geometry-check coverage and size-ladder metrics.

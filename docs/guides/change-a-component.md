@@ -30,3 +30,5 @@ Steps for changing an existing ui-kit component or adding one. The rules and the
 7. Look at it in the jig (`npm run studio`) in light and dark, and open `/geometry-check.html` and `/react-check.html`; each prints `"fails": []` when it agrees. Say which checks ran.
 
 A new component also needs a `define('ui-<tag>', …)`, a `package.json` export, the tag in `GEOMETRY_SCOPE` and `styles/pending.ts`, JSX types in `apps/studio/src/canvas/jsx.d.ts`, a specimen on the canvas, a manifest and a verification record ([authoring](../specs/authoring.md#change-together)).
+
+Before shipping a new or reshaped component, go through the [geometry review](geometry-review.md).

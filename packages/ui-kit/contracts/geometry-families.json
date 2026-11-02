@@ -33,7 +33,11 @@
         "label padding",
         "icon slot",
         "text run"
-      ]
+      ],
+      "csv": [
+        "control"
+      ],
+      "ladder": "button"
     },
     "field": {
       "id": "geometry:field",
@@ -51,7 +55,11 @@
         "input padding",
         "select trigger",
         "chevron"
-      ]
+      ],
+      "csv": [
+        "control"
+      ],
+      "ladder": "field"
     },
     "field-row": {
       "id": "geometry:field-row",
@@ -66,7 +74,9 @@
         "label column",
         "inspector row",
         "property row"
-      ]
+      ],
+      "csv": [],
+      "ladder": "field"
     },
     "btg": {
       "id": "geometry:btg",
@@ -85,7 +95,11 @@
         "badge height",
         "tag height",
         "chip height"
-      ]
+      ],
+      "csv": [
+        "btg"
+      ],
+      "ladder": "btg"
     },
     "choice": {
       "id": "geometry:choice",
@@ -102,7 +116,11 @@
         "checkbox size",
         "radio size",
         "switch size"
-      ]
+      ],
+      "csv": [
+        "choice"
+      ],
+      "ladder": "choice"
     },
     "track": {
       "id": "geometry:track",
@@ -120,7 +138,11 @@
         "range track",
         "slider thumb",
         "progress height"
-      ]
+      ],
+      "csv": [
+        "track"
+      ],
+      "ladder": "track"
     },
     "swatch": {
       "id": "geometry:swatch",
@@ -135,7 +157,11 @@
       "searchTerms": [
         "swatch size",
         "palette geometry"
-      ]
+      ],
+      "csv": [
+        "swatch"
+      ],
+      "ladder": "swatch"
     },
     "swiper": {
       "id": "geometry:swiper",
@@ -149,7 +175,12 @@
       "searchTerms": [
         "swiper paddles",
         "carousel dots"
-      ]
+      ],
+      "csv": [
+        "swiper"
+      ],
+      "ladder": null,
+      "ladderWaiver": "A carousel per size would dwarf the page; the Components page shows the swiper at the theme unit and the Geometry page lists its paddle and dot sizes."
     },
     "container": {
       "id": "geometry:container",
@@ -175,7 +206,12 @@
         "container radius",
         "nesting",
         "composite"
-      ]
+      ],
+      "csv": [
+        "container",
+        "composite"
+      ],
+      "ladder": "composite"
     }
   }
 }
