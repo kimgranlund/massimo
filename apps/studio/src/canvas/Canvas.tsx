@@ -140,9 +140,9 @@ const chartCard = css({ [CQ_MD]: { gridColumn: 'span 2' } });
 const feedbackCard = css({ [CQ_MD]: { gridColumn: 'span 2' }, [CQ_LG]: { gridColumn: 'span 1' } });
 const chart = css({ display: 'flex', gap: '3', height: '10rem', alignItems: 'stretch' });
 const chartDay = css({ flex: '1', display: 'flex', flexDirection: 'column', gap: '1', alignItems: 'center' });
-const bars = css({ flex: '1', width: '100%', display: 'flex', gap: '1', alignItems: 'end', justifyContent: 'center' });
-const bar = css({ width: '40%', borderRadius: 'sm' });
-const legend = css({ display: 'flex', gap: '4', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
+// Stacked bar: data 1 at the bottom; 1px gaps separate the series, the top rounds.
+const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '1px', width: '60%', flex: '1', minHeight: 0, marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0 }, '& > span:last-child': { borderTopRadius: 'sm' } });
+const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
 const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'body' });
@@ -529,13 +529,18 @@ const USED_BY: Record<keyof typeof CONTAINERS, string> = {
 
 // Spectrum variables for a family step (follow the active scheme and the jig's roles).
 const sv = (family: string, step: number) => `var(--colors-spectrum-${family}-${step})`;
-const ORDERS = { online: [72, 84, 68, 96, 108, 88, 80], store: [44, 49, 54, 46, 64, 82, 78] };
+// Illustrative orders per channel, Monday through Sunday; one data color per channel (data 1–6).
+const CHANNELS: [string, number[]][] = [
+  ['Online', [72, 84, 68, 96, 108, 88, 80]], ['In store', [44, 49, 54, 46, 64, 82, 78]], ['Wholesale', [20, 26, 22, 30, 28, 12, 10]],
+  ['Marketplace', [18, 15, 21, 19, 25, 30, 27]], ['Social', [9, 12, 10, 14, 18, 24, 22]], ['Events', [0, 0, 6, 0, 12, 20, 8]],
+];
+const dataColor = (i: number) => `var(--colors-data-${i + 1})`;
 const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
   // Every color here is a role: brand (primary, secondary, neutral), feedback and data series.
-  const { primary, neutral, critical, secondary: accent, success: ok, warning: warn, info, data1, data2 } = spectrum.roles;
-  const max = Math.max(...ORDERS.online, ...ORDERS.store);
+  const { primary, neutral, critical, secondary: accent, success: ok, warning: warn, info } = spectrum.roles;
+  const max = Math.max(...DAYS.map((_, d) => CHANNELS.reduce((sum, [, v]) => sum + v[d], 0)));
   const [approved, setApproved] = useState(false);
   return (
     <div className={context}>
@@ -597,7 +602,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           </ui-card>
           <ui-card>
             <span className={kicker}>This week</span><strong className={bigFigure} data-numeric>1,284</strong>
-            <p className={caption}>Orders across two channels.</p>
+            <p className={caption}>Orders across six channels.</p>
             <ui-badge style={{ background: sv(ok, 3), color: sv(ok, 11) }}>↑ 12% this week</ui-badge>
           </ui-card>
           <ui-card>
@@ -616,18 +621,17 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           </ui-card>
           <ui-card className={chartCard}>
             <div className={contextHead}><h4 className={cardTitle}>Orders by channel</h4><span className={caption}>Illustrative week</span></div>
-            <div className={chart} role="img" aria-label={`Illustrative orders by channel, Monday through Sunday. Online: ${ORDERS.online.join(', ')}. In store: ${ORDERS.store.join(', ')}.`}>
+            <div className={chart} role="img" aria-label={`Illustrative orders by channel, Monday through Sunday. ${CHANNELS.map(([n, v]) => `${n}: ${v.join(', ')}`).join('. ')}.`}>
               {DAYS.map((d, i) => (
                 <div key={i} className={chartDay}>
-                  <div className={bars}>
-                    <span className={bar} style={{ height: `${(ORDERS.online[i] / max) * 100}%`, background: sv(data1, 9) }} />
-                    <span className={bar} style={{ height: `${(ORDERS.store[i] / max) * 100}%`, background: sv(data2, 9) }} />
+                  <div className={barStack}>
+                    {CHANNELS.map(([n, v], c) => <span key={n} style={{ height: `${(v[i] / max) * 100}%`, background: dataColor(c) }} />)}
                   </div>
                   <span className={caption}>{d}</span>
                 </div>
               ))}
             </div>
-            <div className={legend}><span><i className={dot} style={{ background: sv(data1, 9) }} />Online · data 1</span><span><i className={dot} style={{ background: sv(data2, 9) }} />In store · data 2</span></div>
+            <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={dot} style={{ background: dataColor(c) }} />{n}</span>)}</div>
           </ui-card>
           <ui-card className={feedbackCard}>
             <span className={kicker}>Feedback</span>
