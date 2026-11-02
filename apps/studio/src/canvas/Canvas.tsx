@@ -1,6 +1,5 @@
-// The canvas document: a sample prototype rendered with both component flavors.
-// It owns no theme state; the studio sends parameters and they land on <html>.
-import '../index.css';
+// The canvas: every ui-kit web component, rendered inline in the studio. Theme overrides are
+// scoped to the [data-canvas] element by the studio, so the panel keeps the default theme.
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/listbox/element';
@@ -11,38 +10,11 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
-import { ICON_SET_NAME } from '@massimo/ui-kit/icons';
 import '../icons.ts';
-import { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { paramVar, validateTheme, type ParamName } from '@massimo/ui-kit/tokens';
+import { useState } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { listen, post, type SpectrumPayload, type View } from '../protocol.ts';
-
-const root = document.documentElement;
-const spectrumStyle = Object.assign(document.createElement('style'), { id: 'spectrum' });
-document.head.append(spectrumStyle);
-
-// Latest view and palette from the studio; React subscribes below.
-let current: { view: View; spectrum?: SpectrumPayload } = { view: 'components' };
-const subscribers = new Set<() => void>();
-
-listen(() => parent, (m) => {
-  if (m.type !== 'studio/theme') return;
-  const v = validateTheme('live', m.params);
-  if (!v.ok) return console.warn('canvas: rejected theme', v.error);
-  for (const [k, val] of Object.entries(v.params)) root.style.setProperty(paramVar(k as ParamName), String(val));
-  // Explicit scheme from the studio; "auto" follows the host preference.
-  root.classList.toggle('dark', m.scheme === 'dark');
-  root.classList.toggle('light', m.scheme === 'light');
-  if (ICON_SET_NAME.test(m.icons)) root.setAttribute('data-icons', m.icons);
-  // Generated in the studio's worker by the kit's spectrumCSS; plain custom-property blocks.
-  if (m.spectrum && spectrumStyle.textContent !== m.spectrum.css) spectrumStyle.textContent = m.spectrum.css;
-  current = { view: m.view, spectrum: m.spectrum };
-  subscribers.forEach((f) => f());
-});
-post(parent, { type: 'studio/ready' });
+import type { SpectrumPayload, View } from '../protocol.ts';
 
 // Specimen layout: the page container (8u padding and gap) holds titled sections split by
 // dividers. Each section is a list of labelled rows: label on the left, specimens on the right.
@@ -97,18 +69,11 @@ function Row({ label, size, children }: { label: string; size?: string; children
 const Divider = () => <hr className={divider} />;
 const SIZE_ROWS = [['2', '16px'], ['3', '24px'], ['4', '32px'], ['4.5', '36px'], ['6', '48px']] as const;
 
-function useStudio() {
-  const [state, setState] = useState(current);
-  useEffect(() => { const f = () => setState(current); subscribers.add(f); return () => { subscribers.delete(f); }; }, []);
-  return state;
-}
-
 // Sample images as inline SVG gradients (no network).
 const art = (a: string, b: string, label: string) => `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><text x="40" y="560" font-family="system-ui" font-size="48" fill="white" fill-opacity=".85">${label}</text></svg>`)}`;
 const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db2777', 'Dusk'), art('#16a34a', '#0ea5e9', 'Coast'), art('#1e293b', '#7c3aed', 'Night')];
 
-function Canvas() {
-  const { view, spectrum } = useStudio();
+export function Canvas({ view, spectrum }: { view: View; spectrum?: SpectrumPayload }) {
   return (
     <main className={shell} id="page">
       {view === 'components' && <Components />}
@@ -349,4 +314,3 @@ function Colors({ spectrum }: { spectrum?: SpectrumPayload }) {
   );
 }
 
-createRoot(document.getElementById('root')!).render(<Canvas />);

@@ -41,5 +41,5 @@ export default defineConfig({
   plugins: [saveThemes()],
   // Saving a theme must not reload the studio mid-edit; restart dev to regenerate theme CSS.
   server: { watch: { ignored: ['**/tokens/themes/themes.json'] } },
-  build: { rollupOptions: { input: { studio: 'index.html', canvas: 'canvas.html', 'geometry-check': 'geometry-check.html' } } },
+  build: { rollupOptions: { input: { studio: 'index.html', 'geometry-check': 'geometry-check.html' } } },
 });

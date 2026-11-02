@@ -92,13 +92,18 @@ const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object
  * after the kit stylesheet; selectors match the kit's own so each rule wins its counterpart.
  * Variable names match the kit's tokens (--colors-spectrum-{family}-{1..12}, --colors-{role}).
  */
-export function spectrumCSS(data: Spectrum, roles: Roles) {
+export function spectrumCSS(data: Spectrum, roles: Roles, scope?: string) {
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
   const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i + 1}`, css])));
+  // Scoped: everything is declared on the scope element itself, so it re-resolves there and
+  // nothing outside it changes; .light/.dark on the scope element force a scheme.
+  const sel = scope
+    ? { base: scope, light: `${scope}.light`, dark: `${scope}.dark`, auto: `${scope}:not(.light)` }
+    : { base: ':where(:root)', light: '.light', dark: '.dark', auto: ':where(:root)' };
   return [
-    block(':where(:root)', { ...rampVars('light'), ...light }),
-    block('.light', { ...rampVars('light'), ...light }),
-    `@media (prefers-color-scheme: dark) {\n${block(':where(:root)', { ...rampVars('dark'), ...dark })}\n}`,
-    block('.dark', { ...rampVars('dark'), ...dark }),
+    block(sel.base, { ...rampVars('light'), ...light }),
+    block(sel.light, { ...rampVars('light'), ...light }),
+    `@media (prefers-color-scheme: dark) {\n${block(sel.auto, { ...rampVars('dark'), ...dark })}\n}`,
+    block(sel.dark, { ...rampVars('dark'), ...dark }),
   ].join('\n');
 }

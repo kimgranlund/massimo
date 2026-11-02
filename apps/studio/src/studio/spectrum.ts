@@ -8,7 +8,7 @@ export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<
   const f = families(data);
   const light = ramps(data, 'light'), dark = ramps(data, 'dark');
   const payload: SpectrumPayload = {
-    css: spectrumCSS(data, resolved),
+    css: spectrumCSS(data, resolved, '[data-canvas]'),
     roles: resolved,
     families: f.all.map((name) => ({
       name,

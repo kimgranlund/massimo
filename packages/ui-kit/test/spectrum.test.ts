@@ -33,6 +33,10 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.doesNotMatch(css, /--colors-spectrum-\w+-0:/, 'no step 0');
   assert.match(css, /--colors-accent-solid: var\(--colors-spectrum-/);
   assert.equal(resolveRoles(data, { primary: 'blue' }).primary !== undefined, true, 'unknown names resolve by hue');
+  const scoped = spectrumCSS(data, roles, '[data-canvas]');
+  assert.match(scoped, /^\[data-canvas\] \{/);
+  assert.match(scoped, /\[data-canvas\]\.dark \{/);
+  assert.doesNotMatch(scoped, /:root/, 'scoped CSS never touches the document root');
 });
 
 test('defaults.json is the current default Spectrum (run npm run spectrum:defaults)', async () => {

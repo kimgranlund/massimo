@@ -13,4 +13,5 @@ export const value = css({ fontFamily: 'mono', fontSize: 'xs', color: 'fg.muted'
 export const footer = css({ display: 'flex', flexDirection: 'column', gap: '2', padding: '4', borderTopWidth: 'thin', borderColor: 'border' });
 export const actions = css({ display: 'flex', gap: '2', '& > ui-button': { flex: '1' } });
 export const status = css({ textStyle: 'caption', color: 'fg.muted', minHeight: '1lh' });
-export const canvas = css({ width: '100%', height: '100%', border: 0, bg: 'bg.subtle' });
+// The canvas scrolls on its own; bg/color restated here so scoped theme values apply to it.
+export const canvas = css({ height: '100dvh', overflowY: 'auto', bg: 'bg', color: 'fg' });

@@ -1,15 +1,16 @@
 // Studio jig: built entirely from ui-kit components. Tabs switch the panel and the canvas
 // between Components, Containers and Colors; Copy hands the applied settings to an agent as JSON.
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, savedThemes, THEME_NAME, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, savedThemes, THEME_NAME, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
-import { listen, post, type Scheme, type SpectrumPayload, type View } from '../protocol.ts';
+import type { Scheme, SpectrumPayload, View } from '../protocol.ts';
+import { Canvas } from '../canvas/Canvas.tsx';
 import { STUDIO_ICON_SETS } from '../icons.ts';
 import { Group, Range, Segmented, Select, Switch, useEvent } from './wc.tsx';
 import { buildSpectrum } from './spectrum.ts';
@@ -20,7 +21,6 @@ const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape']
 const DEFAULT_ROLES = { primary: 'indigo', neutral: 'neutral', critical: 'red' };
 
 export function App() {
-  const frame = useRef<HTMLIFrameElement>(null);
   // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
   const [view, setView] = useState<View>(() => {
     try { const v = localStorage.getItem('studio:view'); if (v === 'components' || v === 'containers' || v === 'colors') return v; } catch { /* no storage */ }
@@ -50,9 +50,9 @@ export function App() {
     return () => clearTimeout(t);
   }, [spectrum, roles]);
 
-  const send = () => post(frame.current?.contentWindow, { type: 'studio/theme', params, scheme, icons, view, spectrum: generated });
-  useEffect(send, [params, scheme, icons, view, generated]);
-  useEffect(() => listen(() => frame.current?.contentWindow, (m) => { if (m.type === 'studio/ready') send(); }), [params, scheme, icons, view, generated]);
+  // Theme overrides are scoped to the canvas element: geometry parameters as inherited custom
+  // properties, the scheme as a class, icons as data-icons, Spectrum as [data-canvas] CSS.
+  const canvasVars = Object.fromEntries(Object.entries(params).map(([k, v]) => [paramVar(k as ParamName), String(v)])) as React.CSSProperties;
 
   const setParam = (k: ParamName, v: number) => setParams((p) => ({ ...p, [k]: v }));
   const setSpec = (k: string, v: unknown) => setSpectrum((p) => ({ ...p, [k]: v }));
@@ -168,7 +168,10 @@ export function App() {
         </footer>
       </aside>
 
-      <iframe ref={frame} className={s.canvas} src="/canvas.html" title="Canvas" />
+      <div className={`${s.canvas}${scheme === 'auto' ? '' : ` ${scheme}`}`} data-canvas="" data-icons={icons} style={canvasVars} aria-label="Canvas">
+        {generated && <style>{generated.css}</style>}
+        <Canvas view={view} spectrum={generated} />
+      </div>
     </div>
   );
 }
