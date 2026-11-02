@@ -1772,6 +1772,45 @@
         "$value": "{color.spectrum.neutral.5}",
         "$description": "neutral step 5"
       },
+      "bg-control": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.416,
+            0.0251,
+            223.6924
+          ],
+          "alpha": 0.12
+        },
+        "$description": "neutral step 12 at 12%"
+      },
+      "bg-control-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.416,
+            0.0251,
+            223.6924
+          ],
+          "alpha": 0.19
+        },
+        "$description": "neutral step 12 at 19%"
+      },
+      "bg-control-active": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [
+            0.416,
+            0.0251,
+            223.6924
+          ],
+          "alpha": 0.25
+        },
+        "$description": "neutral step 12 at 25%"
+      },
       "bg-overlay": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.1}",

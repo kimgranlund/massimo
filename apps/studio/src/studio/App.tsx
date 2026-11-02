@@ -201,11 +201,11 @@ export function App() {
             </Group>
           )}
           {tab === 'geometry' && (
-            <Group title="Padding and gap per type (u)">
+            <Group title="Padding and gap per type (u · px)">
               <span className={s.paneLabel} /><div className={`${s.paneControl} ${s.pair}`}><span className={s.levelHead}>Padding</span><span className={s.levelHead}>Gap</span></div>
               {LEVELS.map((level) => {
                 const padKey = `pad-${level}` as ParamName, gapKey = `gap-${level}` as ParamName;
-                const opts = (key: ParamName) => STEPS.filter((v) => v <= PARAMS[key].max).map((v) => [String(v), `${v}u · ${v * params.unit}px`] as [string, string]);
+                const opts = (key: ParamName) => STEPS.filter((v) => v <= PARAMS[key].max).map((v) => [String(v), `${v}u · ${Math.round(v * params.unit * 10) / 10}`] as [string, string]);
                 return (
                   <Field key={level} label={level}>
                     <div className={s.pair}>

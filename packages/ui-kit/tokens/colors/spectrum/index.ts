@@ -121,6 +121,11 @@ const UNIFORM_STEPS = Object.fromEntries(SCALE_ROLES.flatMap((role) => [
 export const ROLE_STEPS = {
   'bg': ['neutral', 1], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
   'bg-muted-hover': ['neutral', 4], 'bg-muted-active': ['neutral', 5],
+  // Control fills (the neutral button): neutral 12 as a translucent layer, so a control reads on any
+  // surface (page, muted panel, card). On the page tone they match neutral 3 / 4 / 5.
+  'bg-control': ['neutral', 12, { alpha: 0.12, darkAlpha: 0.2 }],
+  'bg-control-hover': ['neutral', 12, { alpha: 0.19, darkAlpha: 0.29 }],
+  'bg-control-active': ['neutral', 12, { alpha: 0.25, darkAlpha: 0.39 }],
   // Floating layers (menus, popovers, dialogs, drawers): the page tone in light, one step up in dark,
   // where shadows barely read. Tooltips invert; the backdrop dims the page in both schemes.
   'bg-overlay': ['neutral', 1, { dark: 2 }],

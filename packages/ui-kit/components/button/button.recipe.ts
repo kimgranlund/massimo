@@ -18,13 +18,14 @@ export const button = defineSlotRecipe({
     root: {
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
       height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
-      borderRadius: 'var(--radius)', bg: 'bg.muted', color: 'fg', fontFamily: UI_FONT, fontSize: 'var(--font)', lineHeight: 'var(--line)',
+      borderRadius: 'var(--radius)', bg: 'bg.control', color: 'fg', fontFamily: UI_FONT, fontSize: 'var(--font)', lineHeight: 'var(--line)',
       cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
       ...PATTERN,
       transition: t('feedback', ...PAINT),
-      // Hover and press step the fill one ramp step each (neutral 3 → 4 → 5). Busy buttons carry
+      // Hover and press deepen the translucent control fill (matches neutral 3 → 4 → 5 on the page tone,
+      // stays visible on muted surfaces). Busy buttons carry
       // aria-disabled too, so they are not enabled.
-      _enabled: { _hover: { bg: 'bg.mutedHover' }, '&:active': { bg: 'bg.mutedActive' } },
+      _enabled: { _hover: { bg: 'bg.controlHover' }, '&:active': { bg: 'bg.controlActive' } },
       // Busy stays readable (no fade), with an indeterminate sweep along the bottom edge.
       _disabled: { '&:not([aria-busy=true])': { opacity: 0.5, cursor: 'not-allowed' } },
       _busy: {
