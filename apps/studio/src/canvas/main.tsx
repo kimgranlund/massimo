@@ -5,6 +5,7 @@ import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/select/element';
+import '@massimo/ui-kit/components/btg/element';
 import { ICON_SET_NAME } from '@massimo/ui-kit/icons';
 import '../icons.ts';
 import { useState } from 'react';
@@ -62,6 +63,17 @@ function Canvas() {
             <ui-button icon-size="fill"><span slot="leading" className={avatar} />Kim</ui-button>
             <ui-button icon-size="lg"><i slot="leading" name="plus" />Large icon</ui-button>
           </div>
+          {['3', '4', '4.5'].map((u) => (
+            <div key={u} className={row} data-size={u}>
+              <ui-badge>3</ui-badge>
+              <ui-badge>New</ui-badge>
+              <ui-tag><i slot="leading" name="star" />Featured</ui-tag>
+              <ui-chip selectable selected><i slot="leading" name="check" />Design</ui-chip>
+              <ui-chip selectable>Engineering</ui-chip>
+              <ui-chip removable>Remote</ui-chip>
+              <ui-button>Control</ui-button>
+            </div>
+          ))}
           <ui-segmented name="plan" value="monthly" label="Billing">
             <ui-option value="monthly">Monthly</ui-option>
             <ui-option value="yearly">Yearly</ui-option>

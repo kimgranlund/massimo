@@ -101,5 +101,36 @@ export function resolveSelectTrigger(input: GeometryInput = {}) {
   return { ...c, paddingStart: c.padding + c.contents.paddingInline, paddingEnd: c.padding, chevronSlot: c.slot };
 }
 
+// ── Badge / tag / chip ──
+// Heights sit on a 12px base plus k·u (badge 1, tag 2, chip 3), capped so a chip is never
+// taller than a control and each level stays one u below the next:
+//   chip = min(12 + 3u, 8u), tag = min(12 + 2u, chip − u), badge = min(12 + u, tag − u).
+// The cap only bites below u = 2.5. Text steps down 0.5u per level from the control font.
+export type BtgKind = 'badge' | 'tag' | 'chip';
+
+export function btgHeights(unit: number) {
+  const chip = Math.min(12 + 3 * unit, 8 * unit);
+  const tag = Math.min(12 + 2 * unit, chip - unit);
+  const badge = Math.min(12 + unit, tag - unit);
+  return { badge, tag, chip };
+}
+
+export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit, b = x.border;
+  const height = btgHeights(u)[kind];
+  const fontSize = { chip: 10 + u, tag: 10 + 0.5 * u, badge: 10 }[kind];
+  // Tag and chip: slots are the next level's height; badge has no slots.
+  const slot = kind === 'badge' ? 0 : height - u;
+  return {
+    unit: u, border: b, height, fontSize, slot,
+    minWidth: height,
+    padding: Math.max(0, 0.5 * u - b),
+    contentsPaddingInline: u, // same as control contents
+    iconSize: kind === 'badge' ? 0 : resolveIcon(fontSize, u, x.iconSize, slot),
+    radius: Math.min(3 * u * x.radiusScale, height / 2),
+  };
+}
+
 /** Popup offset from its trigger. */
 export const popupOffset = (input: GeometryInput = {}) => inputs(input).unit;

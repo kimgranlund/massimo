@@ -25,3 +25,11 @@ test('preset globalCss keeps every :root theme parameter (no key collisions betw
   const root = (uiKitPreset.globalCss as Record<string, Record<string, string>>)[':root'];
   for (const name of ['--ui-unit', '--ui-border', '--ui-radius-scale', '--ui-accent-hue']) assert.ok(root?.[name], `${name} missing`);
 });
+
+test('preset style objects merge per selector; shared selectors keep both sides', async () => {
+  const { uiKitPreset, globalCssParts } = await import('../preset.ts');
+  const merged = uiKitPreset.globalCss as Record<string, Record<string, unknown>>;
+  for (const [name, part] of Object.entries(globalCssParts))
+    for (const [sel, rule] of Object.entries(part))
+      for (const prop of Object.keys(rule)) assert.ok(prop in merged[sel], `${name}: ${sel} { ${prop} } lost in the merge`);
+});

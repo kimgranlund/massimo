@@ -5,6 +5,7 @@ await import('../components/button/button.element.ts');
 await import('../components/input/input.element.ts');
 await import('../components/listbox/listbox.element.ts');
 await import('../components/select/select.element.ts');
+await import('../components/btg/btg.element.ts');
 
 test('ui-button: role, focus, author classes and label kept', async () => {
   const b = document.createElement('ui-button');
@@ -305,4 +306,57 @@ test('option label excludes slotted icons', async () => {
   await tick();
   assert.equal(lb.options[0].label, 'Inbox');
   lb.remove();
+});
+
+test('ui-tag and ui-chip use slots; badge is text only', async () => {
+  const tag = build('ui-tag', '<i slot="leading" name="star"></i>New');
+  await tick();
+  assert.deepEqual([...tag.children].map((c: Element) => c.getAttribute('data-part')), ['leading', 'contents', 'trailing']);
+  const badge = build('ui-badge', '3');
+  assert.equal(badge.children.length, 0);
+  assert.equal(tag.querySelector(NATIVE), null);
+  tag.remove(); badge.remove();
+});
+
+test('ui-chip: selectable toggles aria-pressed via click and keyboard', async () => {
+  const chip = build('ui-chip', 'Filter');
+  chip.selectable = true;
+  await tick();
+  assert.equal(chip.getAttribute('role'), 'button');
+  assert.equal(chip.getAttribute('aria-pressed'), 'false');
+  let changes = 0;
+  chip.addEventListener('change', () => changes++);
+  chip.click(); await tick();
+  assert.equal(chip.selected, true);
+  assert.equal(chip.getAttribute('aria-pressed'), 'true');
+  key(chip, ' '); await tick();
+  assert.equal(chip.selected, false);
+  assert.equal(changes, 2);
+  chip.disabled = true; await tick();
+  chip.click(); await tick();
+  assert.equal(chip.selected, false, 'disabled blocks toggling');
+  chip.remove();
+});
+
+test('ui-chip: removable adds an x, Delete removes and moves focus, remove is cancelable', async () => {
+  const wrap = document.createElement('div');
+  wrap.innerHTML = '<ui-chip removable>One</ui-chip><ui-chip removable>Two</ui-chip>';
+  document.body.append(wrap);
+  await tick(); await tick();
+  const [one, two] = wrap.querySelectorAll('ui-chip') as any;
+  const x = one.querySelector('[data-remove]')!;
+  assert.equal(x.parentElement!.getAttribute('data-part'), 'trailing', 'x sorted into the trailing slot');
+  assert.equal(one.getAttribute('aria-keyshortcuts'), 'Delete');
+
+  two.addEventListener('remove', (e: Event) => e.preventDefault(), { once: true });
+  key(two, 'Delete');
+  assert.ok(two.isConnected, 'prevented remove keeps the chip');
+
+  one.focus();
+  key(one, 'Backspace');
+  assert.equal(one.isConnected, false);
+  assert.equal(document.activeElement, two, 'focus moves to the neighbour');
+  (two.querySelector('[data-remove]') as HTMLElement).click();
+  assert.equal(two.isConnected, false, 'clicking the x removes');
+  wrap.remove();
 });

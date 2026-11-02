@@ -7,7 +7,8 @@ import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
-import { SIZES, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/btg/element';
+import { SIZES, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, q: 0.5, icon: ICONS[(i + border) % 4] }); });
@@ -24,7 +25,8 @@ for (const c of cases) {
   box.innerHTML = `<ui-button icon-size="${c.icon}"><span slot="leading"></span>Save</ui-button>
     <ui-button icon-size="${c.icon}" aria-label="x"><span slot="leading"></span></ui-button>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
-    <ui-segmented inset="${c.q}"><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>`;
+    <ui-segmented inset="${c.q}"><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
+    <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, compositeInsetUnits: c.q, iconSize: c.icon };
@@ -34,6 +36,9 @@ for (const c of cases) {
   const inp = box.querySelector('ui-input [data-part=control]'), tr = box.querySelector('ui-select [data-part=trigger]');
   const seg = box.querySelector('ui-segmented'), [o1, o2] = seg.querySelectorAll('ui-option');
   const cs = (el) => getComputedStyle(el), rect = (el) => el.getBoundingClientRect();
+  const badge = box.querySelector('ui-badge'), tag = box.querySelector('ui-tag'), chip = box.querySelector('ui-chip');
+  const rb = resolveBtg('badge', g), rt = resolveBtg('tag', g), rc = resolveBtg('chip', g);
+  const slotOf = (el) => el.querySelector('[data-part=leading]'), contentsOf = (el) => el.querySelector('[data-part=contents]');
   const checks = {
     'button.height': [r2(rect(btn).height), ctl.height],
     'button.padding': [px(cs(btn).paddingTop) + px(cs(btn).borderTopWidth), ctl.padding + ctl.border],
@@ -54,9 +59,24 @@ for (const c of cases) {
     'option.height': [r2(rect(o1).height), cmp.child.height],
     'option.radius': [px(cs(o1).borderTopLeftRadius), cmp.child.radius],
     'option.gap': [r2(rect(o2).left - rect(o1).right), cmp.gap],
+    'badge.height': [r2(rect(badge).height), rb.height],
+    'badge.font': [px(cs(badge).fontSize), rb.fontSize],
+    'badge.minWidth': [r2(rect(badge).width), rb.minWidth],
+    'badge.radius': [px(cs(badge).borderTopLeftRadius), rb.radius],
+    'tag.height': [r2(rect(tag).height), rt.height],
+    'tag.font': [px(cs(tag).fontSize), rt.fontSize],
+    'tag.slot': [r2(rect(slotOf(tag)).height), rt.slot],
+    'tag.icon': [r2(rect(slotOf(tag).firstElementChild).width), rt.iconSize],
+    'tag.contents.paddingInline': [px(cs(contentsOf(tag)).paddingLeft), rt.contentsPaddingInline],
+    'chip.height': [r2(rect(chip).height), rc.height],
+    'chip.font': [px(cs(chip).fontSize), rc.fontSize],
+    'chip.padding': [px(cs(chip).paddingTop), rc.padding],
+    'chip.slot': [r2(rect(slotOf(chip)).width), rc.slot],
+    'chip.icon': [r2(rect(slotOf(chip).firstElementChild).width), rc.iconSize],
+    'chip.radius': [px(cs(chip).borderTopLeftRadius), rc.radius],
   };
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > 0.02) fails.push(`u${c.unit}/B${c.border}/Q${c.q}/${c.icon} ${k}: got ${got}, want ${want}`); }
-  rows.push(`u${c.unit} B${c.border} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]}`);
+  rows.push(`u${c.unit} B${c.border} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]}`);
 }
 document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: total, fails, rows }, null, 1);
 </script></body></html>

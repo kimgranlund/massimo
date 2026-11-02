@@ -3,7 +3,7 @@
 // code (test/geometry-csv.test.ts fails when the file is stale). Run: npm run geometry:csv
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, containerRadius, popupOffset } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, containerRadius, popupOffset, resolveBtg } from '../tokens/geometry/resolve.ts';
 
 type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -50,12 +50,21 @@ const rows: Row[] = [
   { id: 'composite.radius.container', family: 'composite', element: 'listbox, popup', quantity: 'radius', formula: '3u * s', value: (u) => containerRadius({ unit: u }), status: 'implemented', notes: 'container curvature, not height-capped' },
   { id: 'composite.option.radius', family: 'composite', element: 'option in segmented', quantity: 'option radius', formula: 'min(option / 2, max(0, parent radius - D)); 0 when Q = 0', value: (u) => cmp(u).child.radius, status: 'implemented', notes: 'Q = 0 is an attached group (square options)' },
 
-  // Badge / tag / chip (proposed, not implemented)
-  { id: 'btg.badge.height', family: 'btg', element: 'badge', quantity: 'height', formula: '12 + u', value: (u) => 12 + u, status: 'proposed', notes: 'font + 2' },
-  { id: 'btg.tag.height', family: 'btg', element: 'tag', quantity: 'height', formula: '12 + 2u', value: (u) => 12 + 2 * u, status: 'proposed', notes: 'taller than control below u = 2' },
-  { id: 'btg.chip.height', family: 'btg', element: 'chip', quantity: 'height', formula: '12 + 3u', value: (u) => 12 + 3 * u, status: 'proposed', notes: 'taller than control below u = 2.4; equals 6u only at u = 4; cap decision open' },
-  { id: 'btg.chip.innerSlot', family: 'btg', element: 'chip', quantity: 'inner slot (0.5u inset)', formula: '12 + 3u - 2(0.5u) = 12 + 2u', value: (u) => 12 + 2 * u, status: 'proposed', notes: 'equals tag height' },
-  { id: 'btg.tag.innerSlot', family: 'btg', element: 'tag', quantity: 'inner slot (0.5u inset)', formula: '12 + 2u - 2(0.5u) = 12 + u', value: (u) => 12 + u, status: 'proposed', notes: 'equals badge height' },
+  // Badge / tag / chip
+  { id: 'btg.chip.height', family: 'btg', element: 'chip', quantity: 'height', formula: 'min(12 + 3u, 8u)', value: (u) => resolveBtg('chip', { unit: u }).height, status: 'implemented', notes: 'cap: never taller than a control (bites below u = 2.4)' },
+  { id: 'btg.tag.height', family: 'btg', element: 'tag', quantity: 'height', formula: 'min(12 + 2u, chip - u)', value: (u) => resolveBtg('tag', { unit: u }).height, status: 'implemented', notes: 'one u below chip' },
+  { id: 'btg.badge.height', family: 'btg', element: 'badge', quantity: 'height', formula: 'min(12 + u, tag - u)', value: (u) => resolveBtg('badge', { unit: u }).height, status: 'implemented', notes: 'one u below tag' },
+  { id: 'btg.chip.font', family: 'btg', element: 'chip', quantity: 'font size', formula: '10 + u', value: (u) => resolveBtg('chip', { unit: u }).fontSize, status: 'implemented', notes: 'same as controls' },
+  { id: 'btg.tag.font', family: 'btg', element: 'tag', quantity: 'font size', formula: '10 + 0.5u', value: (u) => resolveBtg('tag', { unit: u }).fontSize, status: 'implemented', notes: '' },
+  { id: 'btg.badge.font', family: 'btg', element: 'badge', quantity: 'font size', formula: '10', value: (u) => resolveBtg('badge', { unit: u }).fontSize, status: 'implemented', notes: '' },
+  { id: 'btg.padding', family: 'btg', element: 'badge, tag, chip', quantity: 'padding', formula: 'max(0, 0.5u - B)', value: (u) => resolveBtg('chip', { unit: u }).padding, status: 'implemented', notes: 'badge: inline only' },
+  { id: 'btg.chip.slot', family: 'btg', element: 'chip', quantity: 'slot (leading / contents / trailing) min size', formula: 'chip - u', value: (u) => resolveBtg('chip', { unit: u }).slot, status: 'implemented', notes: 'equals tag height (uncapped range)' },
+  { id: 'btg.tag.slot', family: 'btg', element: 'tag', quantity: 'slot min size', formula: 'tag - u', value: (u) => resolveBtg('tag', { unit: u }).slot, status: 'implemented', notes: 'equals badge height (uncapped range)' },
+  { id: 'btg.contents.paddingInline', family: 'btg', element: 'tag, chip', quantity: 'contents inline padding', formula: 'u', value: (u) => resolveBtg('chip', { unit: u }).contentsPaddingInline, status: 'implemented', notes: '' },
+  { id: 'btg.chip.icon.md', family: 'btg', element: 'chip', quantity: 'icon md', formula: 'min(chip font + 0.5u, chip slot)', value: (u) => resolveBtg('chip', { unit: u }).iconSize, status: 'implemented', notes: 'sm/lg/fill as for controls, against the chip slot' },
+  { id: 'btg.tag.icon.md', family: 'btg', element: 'tag', quantity: 'icon md', formula: 'min(tag font + 0.5u, tag slot)', value: (u) => resolveBtg('tag', { unit: u }).iconSize, status: 'implemented', notes: '' },
+  { id: 'btg.minWidth', family: 'btg', element: 'badge, tag, chip', quantity: 'min width', formula: 'height', value: (u) => resolveBtg('badge', { unit: u }).minWidth, status: 'implemented', notes: 'value shown for badge; a single character is a circle' },
+  { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min(3u * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'tag and badge: same formula with their height' },
 ];
 
 const fmt = (n: number) => String(Math.round(n * 1000) / 1000);

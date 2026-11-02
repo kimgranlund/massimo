@@ -18,7 +18,8 @@
     "./components/input/react": "./components/input/input.react.tsx",
     "./components/listbox/element": "./components/listbox/listbox.element.ts",
     "./components/select/element": "./components/select/select.element.ts",
-    "./icons": "./icons/index.ts"
+    "./icons": "./icons/index.ts",
+    "./components/btg/element": "./components/btg/btg.element.ts"
   },
   "scripts": {
     "prepare": "panda codegen",

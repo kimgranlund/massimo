@@ -63,9 +63,23 @@ Options use the control anatomy (same slots) with an inset reduced by the parent
 
 When the border leaves no room the composite grows rather than shrinking the slot (u=3, B=1, Q=1.5u: 20px options in a 29px row). `inset="0"` is an attached group with square options. The popup sits 1u below its trigger.
 
+## Badge, tag, chip
+
+Heights sit on a 12px base plus k·u, capped so a chip is never taller than a control and each level stays one u below the next.
+
+| | Height | Text | Slots | at u = 3 / 4 / 5 |
+|---|---|---|---|---|
+| chip | min(12 + 3u, 8u) | 10 + u | chip − u (= tag) | 21 / 24 / 27 |
+| tag | min(12 + 2u, chip − u) | 10 + 0.5u | tag − u (= badge) | 18 / 20 / 22 |
+| badge | min(12 + u, tag − u) | 10 | none | 15 / 16 / 17 |
+
+The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). Padding is max(0, 0.5u − B); tag and chip contents get 1u inline padding like control contents; min width = height (a single character is a circle); radius min(3u × s, h/2), so all three are pills at default. Icons use the control icon formulas against the element's own font and slot.
+
+`<ui-badge>` is static text. `<ui-tag>` is a static label with slots. `<ui-chip>` is interactive: `selectable` toggles `aria-pressed`; `removable` adds a trailing ✕, and clicking it, Delete or Backspace fires a cancelable `remove` event (the chip then removes itself and focus moves to a neighbouring chip).
+
 ## Verification
 
 - `npm test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
-- Browser: `npm run studio`, open `/geometry-check.html`. It renders 17 configurations (7 sizes × 2 borders with rotating icon sizes, plus growth, Q=0, Q=1u) and compares 19 measured lengths each with the resolver; `"fails": []` means CSS and resolver agree.
+- Browser: `npm run studio`, open `/geometry-check.html`. It renders 17 configurations (7 sizes × 2 borders with rotating icon sizes, plus growth, Q=0, Q=1u) and compares 34 measured lengths each (578 in total) with the resolver; `"fails": []` means CSS and resolver agree.
 
-Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: chips/badges, cards, collections, multiline fields.
+Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: cards, collections, multiline fields, chips inside inputs.

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
+import { SIZES, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger } from '../tokens/geometry/resolve.ts';
 
 test('size is the unit: height 8u, font 10px + u (spec table)', () => {
   const table = [[16, 2, 12], [18, 2.25, 12.25], [20, 2.5, 12.5], [24, 3, 13], [28, 3.5, 13.5], [32, 4, 14], [36, 4.5, 14.5]];
@@ -68,4 +68,29 @@ test('Q = 0 is an attached group: no gap, square children', () => {
   assert.equal(c.gap, 0);
   assert.equal(c.child.radius, 0);
   assert.equal(c.child.height, 32);
+});
+
+test('badge / tag / chip: 12 + k·u with the cap; your u=3, 4, 5 values hold', () => {
+  assert.deepEqual(btgHeights(3), { badge: 15, tag: 18, chip: 21 });
+  assert.deepEqual(btgHeights(4), { badge: 16, tag: 20, chip: 24 });
+  assert.deepEqual(btgHeights(5), { badge: 17, tag: 22, chip: 27 });
+  assert.deepEqual(btgHeights(2), { badge: 12, tag: 14, chip: 16 }, 'capped: chip = control height, one u per step');
+  assert.deepEqual(btgHeights(2.25), { badge: 13.5, tag: 15.75, chip: 18 });
+  for (const u of SIZES) {
+    const h = btgHeights(u);
+    assert.ok(h.chip <= 8 * u, `chip never taller than a control at u=${u}`);
+    assert.ok(h.tag <= h.chip - u && h.badge <= h.tag - u, `ladder keeps one u per step at u=${u}`);
+  }
+});
+
+test('badge / tag / chip: text, slots, padding', () => {
+  const chip = resolveBtg('chip'), tag = resolveBtg('tag'), badge = resolveBtg('badge');
+  assert.deepEqual([chip.fontSize, tag.fontSize, badge.fontSize], [14, 12, 10]);
+  assert.equal(chip.slot, tag.height, 'chip slot holds a tag');
+  assert.equal(tag.slot, badge.height, 'tag slot holds a badge');
+  assert.equal(chip.padding, 1, '0.5u minus the 1px border');
+  assert.equal(chip.slot + 2 * chip.padding + 2 * chip.border, chip.height, 'border + padding + slot = height');
+  assert.equal(chip.iconSize, 16);
+  assert.equal(tag.iconSize, 14);
+  assert.equal(badge.radius, 8, 'pill');
 });

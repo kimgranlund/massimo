@@ -29,8 +29,17 @@ composite.rowHeight,composite,segmented,one-row height,option height + 2D,16,18,
 composite.radius.segmented,composite,segmented,radius,"min(3u * s, row / 2)",6,6.75,7.5,9,10.5,12,13.5,implemented,
 composite.radius.container,composite,"listbox, popup",radius,3u * s,6,6.75,7.5,9,10.5,12,13.5,implemented,"container curvature, not height-capped"
 composite.option.radius,composite,option in segmented,option radius,"min(option / 2, max(0, parent radius - D)); 0 when Q = 0",5,5.625,6.25,7.5,8.75,10,11.25,implemented,Q = 0 is an attached group (square options)
-btg.badge.height,btg,badge,height,12 + u,14,14.25,14.5,15,15.5,16,16.5,proposed,font + 2
-btg.tag.height,btg,tag,height,12 + 2u,16,16.5,17,18,19,20,21,proposed,taller than control below u = 2
-btg.chip.height,btg,chip,height,12 + 3u,18,18.75,19.5,21,22.5,24,25.5,proposed,taller than control below u = 2.4; equals 6u only at u = 4; cap decision open
-btg.chip.innerSlot,btg,chip,inner slot (0.5u inset),12 + 3u - 2(0.5u) = 12 + 2u,16,16.5,17,18,19,20,21,proposed,equals tag height
-btg.tag.innerSlot,btg,tag,inner slot (0.5u inset),12 + 2u - 2(0.5u) = 12 + u,14,14.25,14.5,15,15.5,16,16.5,proposed,equals badge height
+btg.chip.height,btg,chip,height,"min(12 + 3u, 8u)",16,18,19.5,21,22.5,24,25.5,implemented,cap: never taller than a control (bites below u = 2.4)
+btg.tag.height,btg,tag,height,"min(12 + 2u, chip - u)",14,15.75,17,18,19,20,21,implemented,one u below chip
+btg.badge.height,btg,badge,height,"min(12 + u, tag - u)",12,13.5,14.5,15,15.5,16,16.5,implemented,one u below tag
+btg.chip.font,btg,chip,font size,10 + u,12,12.25,12.5,13,13.5,14,14.5,implemented,same as controls
+btg.tag.font,btg,tag,font size,10 + 0.5u,11,11.125,11.25,11.5,11.75,12,12.25,implemented,
+btg.badge.font,btg,badge,font size,10,10,10,10,10,10,10,10,implemented,
+btg.padding,btg,"badge, tag, chip",padding,"max(0, 0.5u - B)",0,0.125,0.25,0.5,0.75,1,1.25,implemented,badge: inline only
+btg.chip.slot,btg,chip,slot (leading / contents / trailing) min size,chip - u,14,15.75,17,18,19,20,21,implemented,equals tag height (uncapped range)
+btg.tag.slot,btg,tag,slot min size,tag - u,12,13.5,14.5,15,15.5,16,16.5,implemented,equals badge height (uncapped range)
+btg.contents.paddingInline,btg,"tag, chip",contents inline padding,u,2,2.25,2.5,3,3.5,4,4.5,implemented,
+btg.chip.icon.md,btg,chip,icon md,"min(chip font + 0.5u, chip slot)",13,13.375,13.75,14.5,15.25,16,16.75,implemented,"sm/lg/fill as for controls, against the chip slot"
+btg.tag.icon.md,btg,tag,icon md,"min(tag font + 0.5u, tag slot)",12,12.25,12.5,13,13.5,14,14.5,implemented,
+btg.minWidth,btg,"badge, tag, chip",min width,height,12,13.5,14.5,15,15.5,16,16.5,implemented,value shown for badge; a single character is a circle
+btg.chip.radius,btg,chip,radius,"min(3u * s, chip / 2)",6,6.75,7.5,9,10.5,12,12.75,implemented,tag and badge: same formula with their height

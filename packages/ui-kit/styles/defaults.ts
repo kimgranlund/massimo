@@ -62,6 +62,17 @@ export const defaults = defineGlobalStyles({
   },
   'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column' },
 
+  // Badge, tag, chip (lengths in styles/geometry.ts)
+  ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
+  'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold' },
+  'ui-tag': { bg: 'bg.muted', color: 'fg' },
+  'ui-chip': { bg: 'bg', color: 'fg', borderColor: 'border.strong', cursor: 'pointer', userSelect: 'none' },
+  'ui-chip:hover': { bg: 'bg.muted' },
+  'ui-chip[aria-pressed=true]': { bg: 'accent.subtle', color: 'accent.fg', borderColor: 'accent.solid' },
+  'ui-chip[aria-disabled=true]': { opacity: 0.5, cursor: 'not-allowed' },
+  'ui-chip [data-remove]': { cursor: 'pointer', opacity: 0.7 },
+  'ui-chip [data-remove]:hover': { opacity: 1 },
+
   // Listbox, segmented control, options
   'ui-listbox': { display: 'flex', flexDirection: 'column', borderColor: 'border' },
   'ui-segmented': { display: 'inline-flex', bg: 'bg.muted', borderColor: 'transparent' },
