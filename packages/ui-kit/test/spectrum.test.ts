@@ -81,3 +81,14 @@ test('roles: brand, feedback and data 1–6 resolve to generated families and em
   assert.equal(v['--colors-warning-fg'], `var(--colors-spectrum-${roles.warning}-11)`);
   assert.equal(resolveRoles(data, { critical: 'h140' }).critical !== roles.critical, true, 'any role can be repointed');
 });
+
+test('selected option roles: neutral 1 / 12 in light, primary solid / contrast text in dark', async () => {
+  const { generateSpectrum, resolveRoles, roleVariables } = await import('../tokens/colors/spectrum/index.ts');
+  const data = generateSpectrum({});
+  const r = resolveRoles(data);
+  const light = roleVariables(data, r, 'light'), dark = roleVariables(data, r, 'dark');
+  assert.equal(light['--colors-bg-selected'], `var(--colors-spectrum-${r.neutral}-1)`);
+  assert.equal(light['--colors-fg-selected'], `var(--colors-spectrum-${r.neutral}-12)`);
+  assert.equal(dark['--colors-bg-selected'], `var(--colors-spectrum-${r.primary}-9)`, 'dark switches family to primary');
+  assert.equal(dark['--colors-fg-selected'], dark['--colors-fg-on-solid']);
+});

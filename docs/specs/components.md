@@ -47,7 +47,7 @@ Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or
 | hover / press | `:hover` / `:active` on enabled controls | neutral fill steps 3 → 4 → 5; on solids `accent.solidHover`; selected options `accent.subtleHover` |
 | keyboard focus | `:focus-visible` after key use (`data-modality`) | 2px focus-ring outline; text fields keep it after a pointer click |
 | highlighted option | `data-active` | neutral fill |
-| selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | accent solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or accent subtle (options); segmented: raised `bg.raised` (neutral 1 light, 5 dark) |
+| selected / checked / mixed | `aria-selected`, `aria-checked`, `aria-pressed`, `aria-current` | accent solid (choices, chips; the check, minus and radio dot use the contrast color `fg.onSolid`) or accent subtle (select popup options); listbox and segmented: `bg.selected` / `fg.selected` (neutral 1 with neutral 12 text in light, the primary solid with its contrast text in dark) |
 | open | trigger `aria-expanded=true` | pressed fill, chevron turned 180° |
 | disabled | `aria-disabled=true` (host or control) | 50% opacity, `not-allowed` |
 | busy | `aria-busy=true` (button) | readable (no disabled fade), `progress` cursor, indeterminate sweep on the bottom edge (contrast color on primary) |

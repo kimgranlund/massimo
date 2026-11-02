@@ -226,13 +226,16 @@ export const defaults = defineGlobalStyles({
   'ui-option[aria-selected=true]': { bg: 'accent.subtle', color: 'accent.fg', fontWeight: 'medium' },
   'ui-segmented > ui-option': { flex: '1', justifyContent: 'center', color: 'fg.muted' },
   'ui-segmented > ui-option[data-active]': { bg: 'transparent' },
-  'ui-segmented > ui-option[aria-selected=true]': { bg: 'bg.raised', color: 'fg', boxShadow: 'sm' },
+  // Selected option in a listbox or segmented control: the lightest neutral with strong text in light,
+  // the primary solid with its contrast text in dark (bg.selected / fg.selected). Select popups keep the
+  // accent-subtle selection, since neutral 1 is the popup's own fill.
+  [`:is(ui-listbox, ui-segmented) > ui-option[aria-selected=true]`]: { bg: 'bg.selected', color: 'fg.selected', boxShadow: 'sm' },
   'ui-option[aria-disabled=true]': { opacity: 0.45, cursor: 'not-allowed' },
   'ui-option:not([aria-disabled=true]):hover': { bg: 'bg.mutedHover' },
   'ui-option:not([aria-disabled=true]):active': { bg: 'bg.mutedActive' },
   'ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'accent.subtleHover' },
   'ui-segmented > ui-option:not([aria-disabled=true]):hover': { color: 'fg' },
-  'ui-segmented > ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)': { bg: 'bg.raised' },
+  [`:is(ui-listbox, ui-segmented) > ui-option[aria-selected=true]:not([aria-disabled=true]):is(:hover, :active)`]: { bg: 'bg.selected' },
   // Disabled or invalid lists, segmented controls and palettes (the host carries the ARIA state).
   [`${LIST}[aria-disabled=true]`]: { opacity: 0.5, cursor: 'not-allowed' },
   [`${LIST}[aria-disabled=true] > *`]: { cursor: 'not-allowed', pointerEvents: 'none' },

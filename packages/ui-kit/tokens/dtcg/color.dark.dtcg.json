@@ -1777,10 +1777,10 @@
         "$value": "{color.spectrum.neutral.2}",
         "$description": "neutral step 2"
       },
-      "bg-raised": {
+      "bg-selected": {
         "$type": "color",
-        "$value": "{color.spectrum.neutral.5}",
-        "$description": "neutral step 5"
+        "$value": "{color.spectrum.indigo.9}",
+        "$description": "primary step 9"
       },
       "bg-inverse": {
         "$type": "color",
@@ -1987,6 +1987,19 @@
           "hex": "#ffffff"
         },
         "$description": "Text on a primary solid: the APCA black/white choice for primary step 9"
+      },
+      "fg-selected": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "hex": "#ffffff"
+        },
+        "$description": "Text on bg-selected (the primary solid in dark): the contrast color"
       }
     }
   }

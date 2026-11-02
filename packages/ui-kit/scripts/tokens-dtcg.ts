@@ -137,6 +137,9 @@ export function colorTokens(mode: 'light' | 'dark'): Json {
     put(tree, ['color', 'role', role], { $type: 'color', $value, $description: `${family} step ${step}${alpha === 1 ? '' : ` at ${alpha * 100}%`}` });
   }
   put(tree, ['color', 'role', 'fg-on-solid'], { $type: 'color', $value: hexColor(D.onSolid[mode]), $description: 'Text on a primary solid: the APCA black/white choice for primary step 9' });
+  put(tree, ['color', 'role', 'fg-selected'], mode === 'dark'
+    ? { $type: 'color', $value: hexColor(D.onSolid.dark), $description: 'Text on bg-selected (the primary solid in dark): the contrast color' }
+    : { $type: 'color', $value: `{color.spectrum.${D.roles.neutral}.12}`, $description: 'Text on bg-selected (neutral 1 in light): neutral 12' });
   return tree;
 }
 

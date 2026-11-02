@@ -37,5 +37,5 @@ for (const [role, entry] of Object.entries(ROLE_STEPS)) {
 export const semanticColors = {
   spectrum,
   ...roles,
-  fg: { ...roles.fg, onSolid: schemed(D.onSolid.light, D.onSolid.dark) },
+  fg: { ...roles.fg, onSolid: schemed(D.onSolid.light, D.onSolid.dark), selected: schemed(`{colors.spectrum.${D.roles.neutral}.12}`, D.onSolid.dark) },
 };

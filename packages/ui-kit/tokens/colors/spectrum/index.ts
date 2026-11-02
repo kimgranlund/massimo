@@ -111,9 +111,9 @@ export const ROLE_STEPS = {
   // Floating layers (menus, popovers, dialogs, drawers): the page tone in light, one step up in dark,
   // where shadows barely read. Tooltips invert; the backdrop dims the page in both schemes.
   'bg-overlay': ['neutral', 1, { dark: 2 }],
-  // A raised element sitting on a muted track (segmented selection): lighter than the track in both
-  // schemes, so the page tone in light and a step above the track in dark.
-  'bg-raised': ['neutral', 1, { dark: 5 }],
+  // The selected option of a listbox or segmented control: the lightest neutral in light, the primary
+  // solid in dark (its text is fg-selected: neutral 12 in light, the solid's contrast color in dark).
+  'bg-selected': ['neutral', 1, { dark: 9, darkFamily: 'primary' }],
   'bg-inverse': ['neutral', 12], 'fg-inverse': ['neutral', 1],
   'bg-backdrop': ['neutral', 12, { dark: 1, alpha: 0.4, darkAlpha: 0.7 }],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
@@ -132,13 +132,13 @@ export const ROLE_STEPS = {
 } as const satisfies Record<string, RoleStep>;
 
 /** A role: a family step, optionally a different step and/or an alpha per scheme. */
-export type RoleStep = readonly [keyof Roles, number] | readonly [keyof Roles, number, { dark?: number; alpha?: number; darkAlpha?: number }];
+export type RoleStep = readonly [keyof Roles, number] | readonly [keyof Roles, number, { dark?: number; darkFamily?: keyof Roles; alpha?: number; darkAlpha?: number }];
 
 /** Family, step and alpha (1 = opaque) of a role in one scheme. */
 export function roleStep(entry: RoleStep, mode: 'light' | 'dark'): { family: keyof Roles; step: number; alpha: number } {
-  const [family, step, o = {}] = entry as readonly [keyof Roles, number, { dark?: number; alpha?: number; darkAlpha?: number }?];
+  const [family, step, o = {}] = entry as readonly [keyof Roles, number, { dark?: number; darkFamily?: keyof Roles; alpha?: number; darkAlpha?: number }?];
   const dark = mode === 'dark';
-  return { family, step: (dark && o.dark) || step, alpha: (dark ? o.darkAlpha ?? o.alpha : o.alpha) ?? 1 };
+  return { family: (dark && o.darkFamily) || family, step: (dark && o.dark) || step, alpha: (dark ? o.darkAlpha ?? o.alpha : o.alpha) ?? 1 };
 }
 
 /** CSS for a role from a ramp-step reference (a var() or a token reference). */
@@ -153,6 +153,8 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
   }
   // Text on a primary solid: the engine's APCA choice for step 9.
   vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][8].apca.css;
+  // Text on bg-selected: strong neutral in light, the primary solid's contrast color in dark.
+  vars['--colors-fg-selected'] = mode === 'dark' ? vars['--colors-fg-on-solid'] : `var(--colors-spectrum-${roles.neutral}-12)`;
   return vars;
 }
 

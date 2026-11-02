@@ -12,7 +12,7 @@ The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generat
 
 ## Roles
 
-Roles alias ramp steps; an entry may name a different dark step or an alpha (`roleStep`, translucent roles emit `color-mix(… transparent)`) (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Each role is a family (`Roles`, `ROLE_NAMES`): brand (primary, secondary, neutral), feedback (critical = errors and danger, warning, success, info) and data 1–6 (chart series and categories). Defaults request primary `indigo`, secondary `amber`, neutral `neutral`, critical `red`, warning `orange`, success `green`, info `cyan`, data `indigo`, `cyan`, `grass`, `amber`, `tomato`, `plum`; each resolves to the nearest generated hue (`resolveRoles`).
+Roles alias ramp steps; an entry may name a different dark step, a different dark family (`darkFamily`) or an alpha (`roleStep`, translucent roles emit `color-mix(… transparent)`) (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Each role is a family (`Roles`, `ROLE_NAMES`): brand (primary, secondary, neutral), feedback (critical = errors and danger, warning, success, info) and data 1–6 (chart series and categories). Defaults request primary `indigo`, secondary `amber`, neutral `neutral`, critical `red`, warning `orange`, success `green`, info `cyan`, data `indigo`, `cyan`, `grass`, `amber`, `tomato`, `plum`; each resolves to the nearest generated hue (`resolveRoles`).
 
 | Role variable | Step |
 |---|---|
@@ -20,7 +20,7 @@ Roles alias ramp steps; an entry may name a different dark step or an alpha (`ro
 | `--colors-bg-subtle`, `--colors-bg-muted` | neutral 2, 3 |
 | `--colors-bg-muted-hover`, `--colors-bg-muted-active` (hover, press) | neutral 4, 5 |
 | `--colors-bg-overlay` (menus, popovers, dialogs, drawers; with `shadow.md`) | neutral 1 light, 2 dark |
-| `--colors-bg-raised` (an element raised on a muted track: the selected segment) | neutral 1 light, 5 dark |
+| `--colors-bg-selected`, `--colors-fg-selected` (selected option in a listbox or segmented control) | neutral 1 / neutral 12 in light; primary 9 / its contrast color (`fg-on-solid`) in dark |
 | `--colors-bg-inverse`, `--colors-fg-inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
 | `--colors-bg-backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
 | `--colors-border`, `--colors-border-strong` | neutral 6, 7 |

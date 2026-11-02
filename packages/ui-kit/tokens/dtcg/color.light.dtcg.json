@@ -1777,7 +1777,7 @@
         "$value": "{color.spectrum.neutral.1}",
         "$description": "neutral step 1"
       },
-      "bg-raised": {
+      "bg-selected": {
         "$type": "color",
         "$value": "{color.spectrum.neutral.1}",
         "$description": "neutral step 1"
@@ -1987,6 +1987,11 @@
           "hex": "#ffffff"
         },
         "$description": "Text on a primary solid: the APCA black/white choice for primary step 9"
+      },
+      "fg-selected": {
+        "$type": "color",
+        "$value": "{color.spectrum.neutral.12}",
+        "$description": "Text on bg-selected (neutral 1 in light): neutral 12"
       }
     }
   }
