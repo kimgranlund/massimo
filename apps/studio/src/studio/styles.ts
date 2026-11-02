@@ -4,6 +4,7 @@ export const shell = css({ display: 'grid', gridTemplateColumns: { base: '1fr', 
 export const panel = css({ display: 'flex', flexDirection: 'column', minHeight: 0, borderRightWidth: 'thin', borderColor: 'border', bg: 'bg' });
 export const panelHeader = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderBottomWidth: 'thin', borderColor: 'border' });
 export const brand = css({ textStyle: 'heading-3' });
+export const titleRow = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2' });
 export const panelBody = css({ flex: '1', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '5', padding: '4' });
 export const group = css({ display: 'flex', flexDirection: 'column', gap: '3' });
 // Figma-style pane: 5 columns; label spans 2, control spans 3. Components' own labels are hidden

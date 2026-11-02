@@ -15,6 +15,10 @@ import { Canvas } from '../canvas/Canvas.tsx';
 import { STUDIO_ICON_SETS } from '../icons.ts';
 import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent } from './wc.tsx';
 import { buildSpectrum } from './spectrum.ts';
+
+const NEXT_SCHEME: Record<Scheme, Scheme> = { auto: 'light', light: 'dark', dark: 'auto' };
+const SCHEME_LABEL: Record<Scheme, string> = { auto: 'auto', light: 'light', dark: 'dark' };
+const SCHEME_ICON: Record<Scheme, string> = { auto: 'circle-half', light: 'sun', dark: 'moon' };
 import * as s from './styles.ts';
 
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
@@ -90,6 +94,8 @@ export function App() {
     setStatus('Reset to defaults');
   };
 
+  // One icon button cycles the canvas scheme: auto (follow the OS) → light → dark.
+  const schemeRef = useEvent('click', () => setScheme((v) => NEXT_SCHEME[v]));
   const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify(snapshot(), null, 2)).then(() => setStatus('Copied settings JSON'), () => setStatus('Copy failed')));
   const resetRef = useEvent('click', reset);
   const saveRef = useEvent('click', () => void save());
@@ -125,7 +131,12 @@ export function App() {
     <div className={s.shell}>
       <aside className={s.panel} aria-label="Jig" data-size="3">
         <header className={s.panelHeader}>
-          <h1 className={s.brand}>Studio</h1>
+          <div className={s.titleRow}>
+            <h1 className={s.brand}>Studio</h1>
+            <ui-button ref={schemeRef} aria-label={`Color scheme: ${SCHEME_LABEL[scheme]} (switch to ${SCHEME_LABEL[NEXT_SCHEME[scheme]]})`} title={`Scheme: ${SCHEME_LABEL[scheme]}`}>
+              <i key={scheme} slot="leading" name={SCHEME_ICON[scheme]} />
+            </ui-button>
+          </div>
           <Segmented<View> value={view} onValue={setView} options={[['components', 'Components'], ['containers', 'Containers'], ['colors', 'Colors'], ['typography', 'Typography']]} />
         </header>
 
@@ -136,7 +147,6 @@ export function App() {
               <Range label="Unit (px)" value={params.unit} min={PARAMS.unit.min} max={PARAMS.unit.max} step={PARAMS.unit.step} onValue={(v) => setParam('unit', v)} />
               <Select label="Ratio" value={String(params['type-ratio'])} options={(TYPE_RATIOS.some(([r]) => r === params['type-ratio']) ? TYPE_RATIOS : [...TYPE_RATIOS, [params['type-ratio'], 'Custom'] as [number, string]]).map(([r, n]) => [String(r), `${r} · ${n}`] as [string, string])} onValue={(v) => setParam('type-ratio', Number(v))} />
               <Segmented label="Rhythm" value={String(params['type-rhythm'])} onValue={(v) => setParam('type-rhythm', Number(v))} options={[['0', 'None'], ['0.5', '½u'], ['1', '1u']]} />
-              <Segmented<Scheme> label="Scheme" value={scheme} onValue={setScheme} options={[['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']]} />
             </Group>
           )}
           {view === 'typography' && (
@@ -173,7 +183,6 @@ export function App() {
           {view === 'components' && (
             <Group title="Look">
               <Select label="Icons" value={icons} options={STUDIO_ICON_SETS.map((n) => [n, n])} onValue={setIcons} />
-              <Segmented<Scheme> label="Scheme" value={scheme} onValue={setScheme} options={[['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']]} />
             </Group>
           )}
           {view === 'colors' && (
@@ -182,7 +191,6 @@ export function App() {
                 <Select label="Primary" value={generated?.roles.primary ?? roles.primary} options={familyNames.accents.map((n) => [n, n])} onValue={(v) => setRoles((r) => ({ ...r, primary: v }))} />
                 <Select label="Neutral" value={generated?.roles.neutral ?? roles.neutral} options={familyNames.neutrals.map((n) => [n, n])} onValue={(v) => setRoles((r) => ({ ...r, neutral: v }))} />
                 <Select label="Critical" value={generated?.roles.critical ?? roles.critical} options={familyNames.accents.map((n) => [n, n])} onValue={(v) => setRoles((r) => ({ ...r, critical: v }))} />
-                <Segmented<Scheme> label="Scheme" value={scheme} onValue={setScheme} options={[['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']]} />
               </Group>
               <Group title="Hues">
                 <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['even', '12'], ['radix', 'Radix']]} />
