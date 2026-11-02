@@ -5,13 +5,13 @@ import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, popupOffset, resolveBtg, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
-type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
+export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
 const ctl = (u: number) => resolveControl({ unit: u });
 const icon = (u: number, iconSize: 'sm' | 'md' | 'lg' | 'fill') => resolveControl({ unit: u, iconSize }).iconSize;
 const cmp = (u: number) => resolveComposite({ unit: u });
 
-const rows: Row[] = [
+export const rows: Row[] = [
   // Inputs
   { id: 'in.u', family: 'input', element: 'all', quantity: 'unit u', formula: 'u = size attribute (px)', value: (u) => u, status: 'input', notes: 'size="2|2.25|2.5|3|3.5|4|4.5"; theme default 4' },
   { id: 'in.B', family: 'input', element: 'all', quantity: 'border B', formula: `B (default ${GEOMETRY_DEFAULTS.border})`, value: () => GEOMETRY_DEFAULTS.border, status: 'input', notes: 'whole px, 0..u/2; lives inside padding, never added to height' },

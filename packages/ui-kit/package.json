@@ -19,7 +19,8 @@
     "./components/listbox/element": "./components/listbox/listbox.element.ts",
     "./components/select/element": "./components/select/select.element.ts",
     "./icons": "./icons/index.ts",
-    "./components/btg/element": "./components/btg/btg.element.ts"
+    "./components/btg/element": "./components/btg/btg.element.ts",
+    "./tokens.dtcg.json": "./tokens/tokens.dtcg.json"
   },
   "scripts": {
     "prepare": "panda codegen",
@@ -28,7 +29,8 @@
     "build": "panda codegen && panda cssgen --outfile dist/ui-kit.css",
     "typecheck": "tsc -p .",
     "test": "node --test test/",
-    "geometry:csv": "node scripts/geometry-csv.ts"
+    "geometry:csv": "node scripts/geometry-csv.ts",
+    "tokens:dtcg": "node scripts/tokens-dtcg.ts"
   },
   "peerDependencies": {
     "react": ">=19"
