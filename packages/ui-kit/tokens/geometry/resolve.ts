@@ -129,7 +129,8 @@ export function resolveField(input: GeometryInput = {}) {
 /** Select trigger: value as contents, chevron in a trailing 6u slot. */
 export function resolveSelectTrigger(input: GeometryInput = {}) {
   const c = resolveControl(input);
-  return { ...c, paddingStart: c.padding + c.contents.paddingInline, paddingEnd: c.padding, chevronSlot: c.slot };
+  // The chevron (like every caret) is icon size sm.
+  return { ...c, paddingStart: c.padding + c.contents.paddingInline, paddingEnd: c.padding, chevronSlot: c.slot, chevronIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot) };
 }
 
 // ── Badge / tag / chip ──

@@ -45,7 +45,7 @@ Icons capped by the slot: `md` below u≈2.2 and `lg` below u≈2.9 (at u=2: md 
 
 Usage: `<ui-button><svg slot="leading">…</svg>Save</ui-button>`. Anything with `slot="leading"`/`"trailing"` goes in that slot; everything else is contents. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} trailing={…} iconSize="lg" size={3}>`.
 
-Text fields put their text where button contents sit (padding + 1u each side). The select trigger is contents (value) plus the chevron in a trailing 6u slot.
+Text fields put their text where button contents sit (padding + 1u each side). The select trigger is contents (value) plus the chevron in a trailing 6u slot. Indicators (the select chevron and any `caret-*` icon in a slot) are always icon size sm, whatever `icon-size` says.
 
 ## Containers
 
@@ -85,6 +85,6 @@ The cap only bites below u = 2.5 (u = 2: 12 / 14 / 16). Padding is max(0, 0.5u �
 ## Verification
 
 - `npm test`: the size table, slot and contents padding, icon formulas and caps, border conservation, composite growth, Q=0, slot sorting.
-- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 55 measured lengths each (2420 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
+- Browser: `npm run studio`, open `/geometry-check.html`. It renders 44 configurations (22 sizes × 2 borders, rotating icon sizes, a gap override on every third) and compares 57 measured lengths each (2508 in total) with the resolver; radii are compared as painted (min(declared, height/2)); `"fails": []` means CSS and resolver agree.
 
 Browsers snap fractional borders to device pixels, so use whole-pixel borders. Not covered yet: multiline fields, chips inside inputs, table cells.

@@ -24,6 +24,7 @@ for (const c of cases) {
   box.style.setProperty('--ui-border', c.border);
   box.innerHTML = `<ui-button icon-size="${c.icon}"><span slot="leading"></span>Save</ui-button>
     <ui-button icon-size="${c.icon}" aria-label="x"><span slot="leading"></span></ui-button>
+    <ui-button icon-size="${c.icon}">Menu<i slot="trailing" name="caret-down"></i></ui-button>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     ${LEVELS.map((l) => `<ui-${l} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></ui-${l}>`).join('')}
@@ -32,7 +33,7 @@ for (const c of cases) {
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
   const ctl = resolveControl(g), cmp = resolveComposite(g), fld = resolveField(g), trg = resolveSelectTrigger(g);
-  const [btn, iconBtn] = box.querySelectorAll('ui-button');
+  const [btn, iconBtn, caretBtn] = box.querySelectorAll('ui-button');
   const lead = btn.querySelector('[data-part=leading]'), contents = btn.querySelector('[data-part=contents]');
   const inp = box.querySelector('ui-input [data-part=control]'), tr = box.querySelector('ui-select [data-part=trigger]');
   const seg = box.querySelector('ui-segmented'), [o1, o2] = seg.querySelectorAll('ui-option');
@@ -56,6 +57,8 @@ for (const c of cases) {
     'select.height': [r2(rect(tr).height), trg.height],
     'select.paddingStart': [px(cs(tr).paddingLeft), trg.paddingStart],
     'select.paddingEnd': [px(cs(tr).paddingRight), trg.paddingEnd],
+    'select.chevron.icon': [r2(rect(tr.querySelector('[data-part=chevron] > i')).width), trg.chevronIcon],
+    'button.caret.icon': [r2(rect(caretBtn.querySelector('i[name=caret-down]')).width), trg.chevronIcon],
     'segmented.height': [r2(rect(seg).height), cmp.rowHeight],
     'option.height': [r2(rect(o1).height), cmp.child.height],
     'option.radius': [px(cs(o1).borderTopLeftRadius), cmp.child.radius],

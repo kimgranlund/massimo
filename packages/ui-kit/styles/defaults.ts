@@ -55,7 +55,6 @@ export const defaults = defineGlobalStyles({
   'ui-select [data-part=value]': { flex: '1', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },
   'ui-select [data-part=value][data-placeholder]': { color: 'fg.muted' },
   'ui-select [data-part=chevron]': { display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', marginInlineStart: 'var(--u)', color: 'fg.muted' },
-  'ui-select [data-part=chevron] > i': { width: 'var(--icon)', height: 'var(--icon)' },
   // [popover] stays hidden until shown; layout only while open.
   'ui-select > [data-part=popup]': {
     position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',

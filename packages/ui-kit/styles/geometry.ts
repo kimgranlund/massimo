@@ -43,6 +43,8 @@ export const geometry = defineGlobalStyles({
     '--leading': 'calc(4.5 * var(--u))',
     // Capped at the slot so the control stays 8u.
     '--icon': 'min(calc(var(--font) + var(--ui-icon-k) * var(--u)), var(--slot))',
+    // Indicators (carets, the select chevron) are always icon size sm.
+    '--icon-sm': 'min(calc(var(--font) - 0.5 * var(--u)), var(--slot))',
     '--radius': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--h) / 2))',
   },
 
@@ -57,6 +59,9 @@ export const geometry = defineGlobalStyles({
     display: 'flex', alignItems: 'center', minWidth: 'var(--slot)', minHeight: 'var(--slot)',
     paddingInline: 'var(--u)', paddingBlock: 'calc(0.75 * var(--u))', lineHeight: 'var(--leading)',
   },
+  // Carets and the select chevron use icon size sm regardless of icon-size.
+  [`:is(${SLOT}, [data-part=chevron]) > i[name^="caret-"]`]: { width: 'var(--icon-sm)', height: 'var(--icon-sm)' },
+
   // Fill: artwork covers the whole slot, with a radius nested inside the control's.
   [`:is([icon-size=fill], [data-icon-size=fill]) ${SLOT}`]: {
     width: 'var(--slot)', height: 'var(--slot)', overflow: 'hidden',

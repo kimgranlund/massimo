@@ -45,7 +45,7 @@ test('fields and select trigger put text where button contents sit', () => {
   const f = resolveField();
   assert.deepEqual([f.paddingStart, f.paddingEnd], [3 + 4, 3 + 4]);
   const t = resolveSelectTrigger();
-  assert.deepEqual([t.paddingStart, t.paddingEnd, t.chevronSlot], [7, 3, 24]);
+  assert.deepEqual([t.paddingStart, t.paddingEnd, t.chevronSlot, t.chevronIcon], [7, 3, 24, 12]);
 });
 
 test('composite: 0.5u padding level; one-row segmented is always 8u; options keep the 3u control radius', () => {
