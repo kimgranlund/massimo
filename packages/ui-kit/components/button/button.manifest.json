@@ -396,11 +396,12 @@
       "verification": "./verification/button.verification.json#/renderers/webComponent"
     },
     "react": {
-      "status": "in_progress",
+      "status": "completed",
       "module": "./button.react.tsx",
       "exports": {
         "component:button": "Button"
-      }
+      },
+      "verification": "./verification/button.verification.json#/renderers/react"
     },
     "html": {
       "status": "in_progress",

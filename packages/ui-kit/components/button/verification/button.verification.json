@@ -18,7 +18,15 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "518278a0722aa9132f3e96f871dc409d966e1542c264c3def36f23197d8da769"
+      "sha256": "a7f4fa1d275dce2feb52ef7d9284497049559df0b772ff47f4b8d0fde91b9e1d"
+    },
+    {
+      "path": "components/button/button.react.tsx",
+      "sha256": "85fb56e70522a5311b8a9eb498d0ecc6f0ef39a8d6470be9bceee70f908a877d"
+    },
+    {
+      "path": "styles/native.ts",
+      "sha256": "495d4bda8a6b0778fe660e3b35992448315f7d77e449b65ccafd81ec4ce05911"
     }
   ],
   "renderers": {
@@ -39,9 +47,28 @@
           "node": "v26.13.0"
         }
       }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
     }
   },
   "limitations": [
-    "The source list is the direct sources, not every transitive dependency."
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": [])."
   ]
 }

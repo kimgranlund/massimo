@@ -104,3 +104,18 @@ test('Select: native <select> with a <button> trigger, <selectedcontent> value a
   assert.match(html(h(Select, { label: 'X', error: 'Pick one' }, h(SelectOption, { value: 'a' }, 'A'))), /data-invalid="true".*<span data-part="error"[^>]*>Pick one<\/span>/);
   noCustom(s);
 });
+
+const { Button } = await loadTsx(new URL('../components/button/button.react.tsx', import.meta.url));
+const { Input } = await loadTsx(new URL('../components/input/input.react.tsx', import.meta.url));
+
+test('Button and Input: native <button> and <input> with the construction pattern', () => {
+  const b = html(h(Button, { leading: h('i', { name: 'plus' }), suffix: '⌘N', loading: true }, 'Add'));
+  assert.match(b, /^<button type="button" data-ui="button"/);
+  assert.match(b, /aria-busy="true"/);
+  assert.match(b, /<span data-part="leading"><i name="plus"><\/i><\/span><span data-part="contents">Add<\/span><span data-part="suffix">⌘N<\/span>/);
+  const i = html(h(Input, { label: 'Price', name: 'price', defaultValue: '40', prefix: '$', suffix: 'USD', description: 'Before tax' }));
+  assert.match(i, /^<div data-ui="input"><label data-part="label"/);
+  assert.match(i, /<div data-part="control"><span data-part="prefix">\$<\/span><input data-part="contents"[^>]*name="price"[^>]*value="40"[^>]*\/><span data-part="suffix">USD<\/span><\/div>/);
+  assert.match(i, /<p data-part="description"[^>]*>Before tax<\/p>/);
+  noCustom(b + i);
+});

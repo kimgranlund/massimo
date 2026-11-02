@@ -162,6 +162,8 @@ export const native = {
   '[data-ui=select] > select > option::checkmark': { display: 'none' },
   '[data-ui=select] > select > [data-part=trigger]': { width: '100%' },
   '[data-ui=select] > select::picker(select)': { border: 0, marginBlockStart: 'var(--u)' },
+  // Input: a native text input keeps a minimum line box; pin it to the slot like the web component's editor.
+  '[data-ui=input] > [data-part=control] > input[data-part=contents]': { height: 'var(--slot)' },
   // Progress: the native element stays in the accessibility tree; the track paints it.
   '[data-ui=progress] > progress': { position: 'absolute', width: '1px', height: '1px', opacity: 0, overflow: 'hidden' },
 } as Css;

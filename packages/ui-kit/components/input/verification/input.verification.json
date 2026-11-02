@@ -22,7 +22,15 @@
     },
     {
       "path": "components/input/input.manifest.json",
-      "sha256": "a113f702c7602f8c94c6930e6fa5b523024efc725505fc7ebe089c95b66ec2f9"
+      "sha256": "12dbe6c56249c0b1fa0f2db2325defe535909a011713fd1c8d7dee250ffe8716"
+    },
+    {
+      "path": "components/input/input.react.tsx",
+      "sha256": "0de63c6a44efdd2f03303a97e08c0fa8bf1200cbca71123c4f3572e321bab101"
+    },
+    {
+      "path": "styles/native.ts",
+      "sha256": "495d4bda8a6b0778fe660e3b35992448315f7d77e449b65ccafd81ec4ce05911"
     }
   ],
   "renderers": {
@@ -43,9 +51,28 @@
           "node": "v26.13.0"
         }
       }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native element, construction-pattern parts, ARIA state, field wiring"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-02",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
     }
   },
   "limitations": [
-    "The source list is the direct sources, not every transitive dependency."
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": [])."
   ]
 }

@@ -9,7 +9,11 @@ import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/select/element';
+import '@massimo/ui-kit/components/button/element';
+import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/icons';
+import { Button } from '@massimo/ui-kit/components/button/react';
+import { Input } from '@massimo/ui-kit/components/input/react';
 import { Select, SelectOption } from '@massimo/ui-kit/components/select/react';
 import { Swiper } from '@massimo/ui-kit/components/swiper/react';
 import { Listbox, Segmented, Option } from '@massimo/ui-kit/components/listbox/react';
@@ -29,6 +33,12 @@ function Pair({ u }: { u: number }) {
   return (
     <div data-size={u} data-case={u} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, width: 640, marginBottom: 16 }}>
       <div data-side="wc">
+        <ui-button data-k="bt">Save</ui-button>
+        <ui-button data-k="btI"><i slot="leading" name="plus" />Add<span slot="suffix">⌘N</span></ui-button>
+        <ui-button data-k="btO" aria-label="More"><i slot="leading" name="dots-three" /></ui-button>
+        <ui-button data-k="btL" loading>Saving</ui-button>
+        <ui-button data-k="btD" disabled>Off</ui-button>
+        <div style={{ width: 300 }} data-k="in"><ui-input label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
         <ui-checkbox data-k="cb">Accept</ui-checkbox>
         <ui-checkbox data-k="cbOn" checked>Accept</ui-checkbox>
         <ui-checkbox data-k="cbMixed" indeterminate>Some</ui-checkbox>
@@ -56,6 +66,12 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
       </div>
       <div data-side="react">
+        <Button data-k="bt">Save</Button>
+        <Button data-k="btI" leading={<i name="plus" />} suffix="⌘N">Add</Button>
+        <Button data-k="btO" aria-label="More" leading={<i name="dots-three" />} />
+        <Button data-k="btL" loading>Saving</Button>
+        <Button data-k="btD" disabled>Off</Button>
+        <div style={{ width: 300 }} data-k="in"><Input label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
         <Checkbox data-k="cb">Accept</Checkbox>
         <Checkbox data-k="cbOn" defaultChecked>Accept</Checkbox>
         <Checkbox data-k="cbMixed" indeterminate>Some</Checkbox>
@@ -107,7 +123,7 @@ setTimeout(() => {
       boxW: box ? r2(rect(box)!.width) : 0, boxBg: box ? getComputedStyle(box).backgroundColor : '',
       boxAfter: box ? getComputedStyle(box, '::after').translate + ' ' + getComputedStyle(box, '::after').backgroundColor : '',
       mark: box ? [...box.querySelectorAll('i')].map((i) => getComputedStyle(i).display).join(',') : '',
-      contentsLeft: contents ? r2(rect(contents)!.left - er.left) : 0,
+      contentsLeft: contents && !contents.hidden ? r2(rect(contents)!.left - er.left) : 0,
       fillW: fill ? r2(rect(fill)!.width) : 0, trackH: track ? r2(rect(track)!.height) : 0,
       thumbLeft: thumb ? r2(rect(thumb)!.left - er.left) : 0, opacity: getComputedStyle(el).opacity,
       font: getComputedStyle(el).fontFamily,
@@ -118,12 +134,23 @@ setTimeout(() => {
   };
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
         if (a[key] !== b[key]) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
       }
+    }
+  }
+  // Input: same parts; the React control holds a native <input> as its contents part.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const wc = c.querySelector('[data-side=wc] [data-k=in] ui-input') as HTMLElement, re = c.querySelector('[data-side=react] [data-k=in] [data-ui=input]') as HTMLElement;
+    for (const sel of [':scope > [data-part=label]', ':scope > [data-part=control]', ':scope > [data-part=control] > [data-part=prefix]', ':scope > [data-part=control] > [data-part=contents]', ':scope > [data-part=control] > [data-part=suffix]', ':scope > [data-part=description]']) {
+      const ea = wc.querySelector(sel), eb = re.querySelector(sel);
+      const fa = (e: Element | null, h: Element) => { if (!e) return 'missing'; const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.color}:${cs.fontSize}:${cs.fontFamily}`; };
+      checks++;
+      const va = fa(ea, wc), vb = fa(eb, re);
+      if (va !== vb) fails.push(`u${c.getAttribute('data-case')} in${sel.replace(':scope', '')}: wc ${va} react ${vb}`);
     }
   }
   // Select: same parts, different DOM (the React trigger is the <button> inside a native <select>).

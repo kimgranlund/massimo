@@ -490,11 +490,12 @@
       "verification": "./verification/input.verification.json#/renderers/webComponent"
     },
     "react": {
-      "status": "in_progress",
+      "status": "completed",
       "module": "./input.react.tsx",
       "exports": {
         "component:input": "Input"
-      }
+      },
+      "verification": "./verification/input.verification.json#/renderers/react"
     },
     "html": {
       "status": "in_progress",
