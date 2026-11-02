@@ -1,8 +1,10 @@
 // Settings: a panel sidebar (area) beside cards of fields: inputs with prefix and suffix, a select,
-// choices, a segmented control and a range, an invalid field, and primary/neutral actions.
+// choices (a fieldset of a checkbox group and a radio group), a segmented control and a range, an
+// invalid field, and primary/neutral actions.
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
+import '@massimo/ui-kit/components/fieldset/element';
 import { useState } from 'react';
 import { css, cx } from '../../../styled-system/css/index.js';
 import { SETTINGS_NAV, TIMEZONES } from './data.ts';
@@ -82,20 +84,22 @@ export function Settings() {
             <div className={toggleRow}><div className={s.stack1}><span className={s.title}>Weekly digest</span><span className={s.caption}>A Monday summary of last week</span></div><ui-switch checked aria-label="Weekly digest" /></div>
             <div className={toggleRow}><div className={s.stack1}><span className={s.title}>Product news</span><span className={s.caption}>New features, about once a month</span></div><ui-switch aria-label="Product news" /></div>
           </div>
-          <ui-field label="Send to">
-            <ui-checkbox-group name="channels" value="email push" orientation="horizontal">
-              <ui-checkbox value="email">Email</ui-checkbox>
-              <ui-checkbox value="push">Push</ui-checkbox>
-              <ui-checkbox value="sms">SMS</ui-checkbox>
-            </ui-checkbox-group>
-          </ui-field>
-          <ui-field label="Quiet hours">
-            <ui-radio-group name="quiet" value="night" orientation="horizontal">
-              <ui-radio value="off">Off</ui-radio>
-              <ui-radio value="night">Nights, 22–07</ui-radio>
-              <ui-radio value="weekend">Weekends</ui-radio>
-            </ui-radio-group>
-          </ui-field>
+          <ui-fieldset legend="Delivery">
+            <ui-field label="Send to">
+              <ui-checkbox-group name="channels" value="email push" orientation="horizontal">
+                <ui-checkbox value="email">Email</ui-checkbox>
+                <ui-checkbox value="push">Push</ui-checkbox>
+                <ui-checkbox value="sms">SMS</ui-checkbox>
+              </ui-checkbox-group>
+            </ui-field>
+            <ui-field label="Quiet hours">
+              <ui-radio-group name="quiet" value="night" orientation="horizontal">
+                <ui-radio value="off">Off</ui-radio>
+                <ui-radio value="night">Nights, 22–07</ui-radio>
+                <ui-radio value="weekend">Weekends</ui-radio>
+              </ui-radio-group>
+            </ui-field>
+          </ui-fieldset>
         </ui-card>
 
         <ui-card padding="lg">

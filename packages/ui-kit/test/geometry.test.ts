@@ -222,3 +222,11 @@ test('choice groups: 6u rows 1u apart (7u pitch); horizontal 4u between choices,
   assert.equal(resolveChoiceGroup('vertical', { unit: 4, gap: 2 }).gap, 8);
   assert.equal(resolveChoiceGroup('horizontal', { unit: 4, gap: 2 }).columnGap, 8);
 });
+
+// Fieldset (geometry:fieldset).
+import { resolveFieldset } from '../tokens/geometry/resolve.ts';
+test('fieldset: the collection gap (2u; theme gapUnits and the gap attribute win), no box', () => {
+  assert.deepEqual(resolveFieldset(U4), { unit: 4, gap: 8, padding: 0, border: 0, radius: 0 });
+  assert.equal(resolveFieldset({ unit: 4, gapUnits: 3 }).gap, 12);
+  assert.equal(resolveFieldset({ unit: 4, gapUnits: 3, gap: 1 }).gap, 4);
+});

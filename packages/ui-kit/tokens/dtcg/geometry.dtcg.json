@@ -4293,6 +4293,82 @@
       }
     }
   },
+  "fieldset": {
+    "gap": {
+      "$type": "dimension",
+      "$value": {
+        "value": 9,
+        "unit": "px"
+      },
+      "$description": "fieldset · gap between the legend and the fields · theme gap-collection",
+      "$extensions": {
+        "com.massimo.formula": "g·u (gap attribute), default the collection gap (2u)",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 4,
+          "u=2.25": 4.5,
+          "u=2.5": 5,
+          "u=2.75": 5.5,
+          "u=3": 6,
+          "u=3.5": 7,
+          "u=4": 8,
+          "u=4.5": 9,
+          "u=5": 10,
+          "u=5.5": 11,
+          "u=6": 12,
+          "u=6.5": 13,
+          "u=7": 14,
+          "u=7.5": 15,
+          "u=8": 16,
+          "u=8.5": 17,
+          "u=9": 18,
+          "u=9.5": 19,
+          "u=10": 20,
+          "u=10.5": 21,
+          "u=11": 22,
+          "u=11.5": 23,
+          "u=12": 24
+        }
+      }
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": {
+        "value": 0,
+        "unit": "px"
+      },
+      "$description": "fieldset · padding, border, radius · no box of its own; a card around it supplies the surface",
+      "$extensions": {
+        "com.massimo.formula": "0",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 0,
+          "u=2.25": 0,
+          "u=2.5": 0,
+          "u=2.75": 0,
+          "u=3": 0,
+          "u=3.5": 0,
+          "u=4": 0,
+          "u=4.5": 0,
+          "u=5": 0,
+          "u=5.5": 0,
+          "u=6": 0,
+          "u=6.5": 0,
+          "u=7": 0,
+          "u=7.5": 0,
+          "u=8": 0,
+          "u=8.5": 0,
+          "u=9": 0,
+          "u=9.5": 0,
+          "u=10": 0,
+          "u=10.5": 0,
+          "u=11": 0,
+          "u=11.5": 0,
+          "u=12": 0
+        }
+      }
+    }
+  },
   "btg": {
     "chip": {
       "height": {

@@ -5,8 +5,11 @@
 // change, invalid and form reset; a host without one (Listbox, Palette) passes its value.
 // Choices also get data-checked / data-unchecked / data-indeterminate from the native input, so a
 // radio follows its group: a change on any radio of the same name rereads this one.
-import { useCallback, useEffect, useRef, useState, type FocusEvent } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type FocusEvent } from 'react';
 import { checkedDataAttrs, fieldDataAttrs, toReactProps } from '../dom/index.ts';
+
+/** A disabled Fieldset around a host (fieldset.react.tsx provides it): the host's data-disabled follows it, as the native <fieldset disabled> disables its native control. */
+export const FieldsetDisabledCtx = createContext(false);
 
 type Control = HTMLInputElement | HTMLSelectElement;
 const controlOf = (host: Element | null) => host?.querySelector<Control>('input:not([type=hidden]), select') ?? null;
@@ -41,6 +44,8 @@ interface Inner { focused: boolean; touched: boolean; shown: boolean; dirty: boo
  * and `controlProps` on the native control (React delivers `invalid` only to the target).
  */
 export function useFieldState<T extends HTMLElement = HTMLElement>(o: FieldStateOptions) {
+  const fieldsetDisabled = useContext(FieldsetDisabledCtx);
+  if (fieldsetDisabled && !o.disabled) o = { ...o, disabled: true };
   const ref = useRef<T>(null);
   const initial = useRef<string | undefined>(o.value);
   const [s, set] = useState<Inner>(() => ({ focused: false, touched: false, shown: false, dirty: false, filled: !!o.defaultFilled, valid: true }));

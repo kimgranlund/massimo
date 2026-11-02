@@ -22,7 +22,7 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "fc6a2502e2045128e322248f6fe40186d78dc888283c7654081f352521031dc5"
+      "sha256": "4d6cb7d104bb8e1999310d533ef9e7c4834f66b581838743ec7e9dd3a05bbeb0"
     },
     {
       "path": "components/select/select.react.tsx",
@@ -38,7 +38,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
+      "sha256": "949efc88e5c42cdac3acd815c8ba52dd1b74a5bea23e41f51333ac9371e672b0"
     },
     {
       "path": "dom/events.ts",
@@ -46,7 +46,7 @@
     },
     {
       "path": "core/form-element.ts",
-      "sha256": "9c42e977d55960087441ef182f6148309ea1d24580b24d08c8ad6c058854776f"
+      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
     },
     {
       "path": "components/compound.react.tsx",

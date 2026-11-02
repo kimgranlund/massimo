@@ -570,6 +570,11 @@
     },
     {
       "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:select",
       "relation": "uses",
       "to": "foundation:slots"
     },

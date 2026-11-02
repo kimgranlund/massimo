@@ -10,9 +10,10 @@ import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/radio-group/element';
+import '@massimo/ui-kit/components/fieldset/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack,
+  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -159,6 +160,9 @@ export function GeometryPage({ params }: PageProps) {
               </SpecRow>
               <SpecRow label="composite" values={[`row ${px(m.rowHeight)} · edge ${pu(m.edge)} · radius ${px(m.radius)}`, `option height ${px(m.child.height)} · inset ${px(m.child.inset)} · radius ${px(m.child.radius)}`]}>
                 <ui-segmented label="View" value="a"><ui-option value="a">Day</ui-option><ui-option value="b">Week</ui-option></ui-segmented>
+              </SpecRow>
+              <SpecRow label="fieldset" values={[`gap ${pu(resolveFieldset(theme).gap)} (collection) · no padding, border or radius`]}>
+                <ui-fieldset legend="Address"><ui-input label="Street" hide-label="" value="Storgatan 1" /></ui-fieldset>
               </SpecRow>
             </>
           );

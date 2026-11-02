@@ -765,6 +765,11 @@
     },
     {
       "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:checkbox",
       "relation": "uses",
       "to": "foundation:slots"
     },
@@ -1032,6 +1037,11 @@
       "from": "component:switch",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:switch",

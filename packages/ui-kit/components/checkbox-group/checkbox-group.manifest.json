@@ -340,6 +340,11 @@
     },
     {
       "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:checkbox-group",
       "relation": "establishes",
       "to": "context:checkbox-group"
     },

@@ -387,3 +387,12 @@ export function resolveChoiceGroup(orientation: ChoiceGroupOrientation = 'vertic
     pitch: orientation === 'vertical' ? row + gap : row + u,
   };
 }
+
+// ── Fieldset ──
+// ui-fieldset stacks its legend and fields with the collection gap (2u by default, the theme's
+// gap-collection; the gap attribute wins) and draws no box: no padding, border or radius, so the
+// fields keep their own edges and a card around it supplies the surface.
+export function resolveFieldset(input: GeometryInput & { gapUnits?: number } = {}) {
+  const c = resolveContainer('collection', input);
+  return { unit: c.unit, gap: c.gap, padding: 0, border: 0, radius: 0 };
+}

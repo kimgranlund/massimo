@@ -13,6 +13,7 @@ import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
+import '@massimo/ui-kit/components/fieldset/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -22,7 +23,7 @@ import { CQ_MD, Divider, IMAGES, Page, Row, Section, SizeLadder, caption, column
 export const FAMILIES = [
   ['actions', 'Actions', 'ui-button'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
-  ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid'],
+  ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid · ui-fieldset'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group · ui-checkbox-group'],
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
@@ -88,6 +89,34 @@ function InlineFields() {
   );
 }
 
+
+/** Fieldsets: a legend over a set of fields, a disabled set (toggled), and a size ladder. */
+function Fieldsets({ params }: Pick<PageProps, 'params'>) {
+  const [off, setOff] = useState(true);
+  return (
+    <>
+      <div className={columns}>
+        <ui-fieldset legend="Billing address">
+          <ui-input name="street" label="Street" value="Storgatan 1" />
+          <ui-input name="city" label="City" value="Stockholm" />
+          <ui-field label="Invoice by">
+            <ui-radio-group name="invoice" value="email" orientation="horizontal"><ui-radio value="email">Email</ui-radio><ui-radio value="post">Post</ui-radio></ui-radio-group>
+          </ui-field>
+        </ui-fieldset>
+        <div className={stack}>
+          <ui-checkbox checked={off} onClick={() => setOff((v) => !v)}>Ship to the billing address</ui-checkbox>
+          <ui-fieldset legend="Shipping address" disabled={off || undefined}>
+            <ui-input name="ship-street" label="Street" value="Storgatan 1" />
+            <ui-select name="ship-country" label="Country" value="se"><ui-option value="se">Sweden</ui-option><ui-option value="no">Norway</ui-option></ui-select>
+          </ui-fieldset>
+        </div>
+      </div>
+      <SizeLadder family="fieldset" params={params}>
+        <div className={ladderField}><ui-fieldset legend="Address"><ui-input label="Street" value="Storgatan 1" /><ui-checkbox checked>Default</ui-checkbox></ui-fieldset></div>
+      </SizeLadder>
+    </>
+  );
+}
 
 /** Choice groups: a radio group named by a field label, a horizontal one, states, and a size ladder. */
 function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
@@ -157,7 +186,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
   const NOTES: Record<Family, string> = {
     actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
-    fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns.',
+    fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns; a ui-fieldset names a set of fields (legend) and disables them together, stacked with the collection gap.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot. Groups own one value: rows 1u apart (a 7u pitch), or a wrapping row 4u apart.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
@@ -239,6 +268,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         <div className={ladderField}><ui-select label="Role" value="eng"><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
       </SizeLadder>
       <div className={stack}><h3 className={subTitle}>Inline fields</h3><InlineFields /></div>
+      <div className={stack}><h3 className={subTitle}>Fieldsets</h3><Fieldsets params={params} /></div>
       </>
     ),
     selection: (

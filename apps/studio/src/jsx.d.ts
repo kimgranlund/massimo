@@ -38,6 +38,7 @@ declare module 'react' {
       'ui-field-grid': El<{}>;
       'ui-radio-group': El<{ name?: string; value?: string; 'default-value'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
       'ui-checkbox-group': El<{ name?: string; value?: string; 'default-value'?: string; 'all-values'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean }>;
+      'ui-fieldset': El<{ legend?: string; disabled?: boolean; gap?: string }>;
     }
   }
 }

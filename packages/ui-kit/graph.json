@@ -128,6 +128,20 @@
         "subgrid"
       ]
     },
+    "component:fieldset": {
+      "kind": "component",
+      "source": "components/fieldset/fieldset.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-fieldset",
+      "searchTerms": [
+        "fieldset",
+        "legend",
+        "field group",
+        "form section",
+        "disable fields",
+        "group of fields"
+      ]
+    },
     "component:group": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/0",
@@ -400,6 +414,16 @@
         "field grid",
         "inside field grid",
         "property panel"
+      ]
+    },
+    "context:fieldset": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/fieldset",
+      "availability": "implemented",
+      "searchTerms": [
+        "fieldset",
+        "inside fieldset",
+        "field group"
       ]
     },
     "context:form": {
@@ -698,6 +722,16 @@
         "property row"
       ]
     },
+    "geometry:fieldset": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/fieldset",
+      "availability": "implemented",
+      "searchTerms": [
+        "fieldset spacing",
+        "legend gap",
+        "field group spacing"
+      ]
+    },
     "geometry:image": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/image",
@@ -805,6 +839,15 @@
       "tag": "span",
       "searchTerms": [
         "field unit"
+      ]
+    },
+    "part:fieldset-legend": {
+      "kind": "part",
+      "source": "components/fieldset/fieldset.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "fieldset legend"
       ]
     },
     "part:image-slide": {
@@ -1698,6 +1741,11 @@
     },
     {
       "from": "component:checkbox-group",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:checkbox-group",
       "relation": "establishes",
       "to": "context:checkbox-group"
     },
@@ -1830,6 +1878,11 @@
       "from": "component:checkbox",
       "relation": "allowedIn",
       "to": "context:checkbox-group"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:checkbox",
@@ -2100,6 +2153,11 @@
       "from": "component:switch",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:switch",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:switch",
@@ -2763,6 +2821,11 @@
     },
     {
       "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:field",
       "relation": "acceptsChild",
       "to": "component:range"
     },
@@ -2888,6 +2951,11 @@
     },
     {
       "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:field-grid",
       "relation": "establishes",
       "to": "context:field-grid"
     },
@@ -2895,6 +2963,136 @@
       "from": "component:field-grid",
       "relation": "acceptsChild",
       "to": "component:field"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesGeometry",
+      "to": "geometry:fieldset"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "ownsPart",
+      "to": "part:fieldset-legend"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "establishes",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:field"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:input"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:select"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:radio-group"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:checkbox-group"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
+      "from": "component:fieldset",
+      "relation": "acceptsChild",
+      "to": "component:switch"
     },
     {
       "from": "component:image",
@@ -3120,6 +3318,11 @@
       "from": "component:input",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:input",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:input",
@@ -3508,6 +3711,11 @@
     },
     {
       "from": "component:radio-group",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:radio-group",
       "relation": "establishes",
       "to": "context:radio-group"
     },
@@ -3860,6 +4068,11 @@
       "from": "component:select",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:select",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:select",

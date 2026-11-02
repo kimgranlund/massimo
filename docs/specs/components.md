@@ -5,7 +5,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 ## Foundations
 
 - `UIElement` (`core/element.ts`): `static properties` become signal-backed properties with attribute parsing and optional reflection; one render effect per element (`template()` then `update()`); `connected()` / `disconnected()` hooks. Use `declare` for typed props.
-- `UIFormElement` (`core/form-element.ts`): form association through ElementInternals: `name`, value (`formValue()`), validity (`validate()`), `form`, `labels`, `checkValidity` / `reportValidity` / `setCustomValidity`, reset and restore, disabled by an ancestor `<fieldset>` (`isDisabled`). Errors show only after interaction or a blocked submit (`userInvalid`); author `error` shows at once. The host carries the field state as data-* ([state attributes](#state-attributes)): `data-disabled`, `data-readonly`, `data-required`, `data-valid` / `data-invalid` (once shown), `data-dirty` (value differs from the first render), `data-touched` (left once; a choice also on activation), `data-filled` (non-empty value; a choice: checked), `data-focused` (focus within). `static fieldState = false` opts out (ui-button).
+- `UIFormElement` (`core/form-element.ts`): form association through ElementInternals: `name`, value (`formValue()`), validity (`validate()`), `form`, `labels`, `checkValidity` / `reportValidity` / `setCustomValidity`, reset and restore, disabled by an ancestor `<fieldset>` or a kit disabling container (`ui-fieldset`, `ui-radio-group`, `ui-checkbox-group`: `registerDisabler`) (`isDisabled`). Errors show only after interaction or a blocked submit (`userInvalid`); author `error` shows at once. The host carries the field state as data-* ([state attributes](#state-attributes)): `data-disabled`, `data-readonly`, `data-required`, `data-valid` / `data-invalid` (once shown), `data-dirty` (value differs from the first render), `data-touched` (left once; a choice also on activation), `data-filled` (non-empty value; a choice: checked), `data-focused` (focus within). `static fieldState = false` opts out (ui-button).
 - Construction pattern (`components/slots.ts`): button, option, badge, tag, chip and the choices sort children into `[data-part=leading|prefix|contents|suffix|trailing]`; `slot="leading"` / `"trailing"` mark icons, `slot="prefix"` / `"suffix"` mark text adornments, the rest is the label; empty parts are hidden. The input control and select trigger have the same parts, filled from slotted children (`adoptAdornments`). Spacing: [geometry](geometry.md).
 - Input modality (`core/modality.ts`): `<html data-modality="keyboard|pointer">`; focus rings show only after keyboard use.
 - FOUC: undefined elements are hidden with their size reserved; a 1.5s reveal guards against a missing script (`styles/pending.ts`).
@@ -35,6 +35,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-swiper` | scroll-snap carousel; paddles and dots; `slidechange` event | `label`, `hover-controls`, `no-dots`, `no-paddles` |
 | `ui-image` | cover formats, fit, position; author `<picture>`/`<source>` for file formats; `slideshow` makes an inline swiper | `src`, `srcset`, `sizes`, `alt`, `ratio`, `fit`, `position`, `slideshow` |
 | `ui-field` | no role; its visible label (text + `unit`) names one slotted control: `aria-labelledby` on a host-role control, `labelledby` on ui-input / ui-select (forwarded to the editor or trigger); label press focuses or toggles; optional readout and description | `label`, `unit`, `readout`, `description`, `error`, `layout` (stacked, inline) |
+| `ui-fieldset` | `role=group` named by its legend part (no native fieldset or legend); `disabled` reaches every kit control inside at any depth (`isDisabled`), nested fieldsets too | `legend`, `disabled`, `gap` |
 | `ui-field-grid` | no role; columns label \| control \| readout shared by its ui-field rows (`subgrid`); other children (headings) span | |
 | containers | `ui-group`, `ui-collection` (wrappers), `ui-card` (container), `ui-panel`, `ui-region`, `ui-page` (areas); CSS only | `size`, `gap`; card `padding` xs…xl |
 
@@ -80,6 +81,7 @@ Every component with parts can be written two ways, and both render the same DOM
 | Input | *`Input.Root`*, *`Input.Label`*, *`Input.Control`*, *`Input.Description`*, *`Input.Error`* (Base UI's Field parts on the input's own recipe) |
 | Listbox, Segmented | `Listbox.Root`, `Listbox.Item`, `Listbox.ItemText`, `Listbox.ItemIndicator`; `Segmented.Root`, `Segmented.Item`, `Segmented.ItemText` (`Listbox`, `Segmented`, `Option` are the same components) |
 | Button | one part: `Button` |
+| Fieldset | `Fieldset.Root`, `Fieldset.Legend` |
 | RadioGroup | one part: `RadioGroup` (as Base UI); its radios are `Radio.Root` / `Radio` |
 | CheckboxGroup | one part: `CheckboxGroup` (as Base UI); its checkboxes are `Checkbox.Root` / `Checkbox` (`parent` for the parent checkbox) |
 
@@ -127,6 +129,7 @@ Base UI = the same name for the same state in Base UI; **ours** = a name Base UI
 | `ui-swatch` (Swatch) | `data-alpha` (translucent), `data-invalid` (unparsable color) | | `data-alpha` ours |
 | `ui-swiper` (Swiper) | `data-single` | dots `data-selected` (current slide); paddles `data-disabled` | `data-single` ours; Base UI has no carousel |
 | `ui-image` (Image) | | `img[data-error]` | ours |
+| `ui-fieldset` (Fieldset) | `data-disabled` | legend `data-disabled` | Base UI Fieldset |
 | `ui-field` (Field) | none; reads its control's `data-disabled` / `data-required` (`:has`) | | |
 
 Where a React renderer keeps a native pseudo-class, and why: `:disabled` beside `data-disabled` for a native control disabled by an ancestor `<fieldset disabled>`, which React cannot see; the React Select's open state (`select:open`), its options' selection and highlight (`:checked`, `:focus`) and its popup (`::picker(select)`), because the browser owns the customizable select's picker and reports none of it to script (a native select has no placeholder either). React validity is read from the native control's constraint validation when the host sets `data-valid` / `data-invalid`, so both renderers show errors at the same moment (blur or a blocked submit), not at `:user-invalid` time. Not implemented: `data-starting-style` / `data-ending-style` (the select popup's enter and exit stay on `@starting-style` and `allow-discrete` transitions with the reveal intent).

@@ -169,8 +169,9 @@
           "useInstead": "component:checkbox"
         },
         {
-          "when": "Several controls under one caption (a set of radios, two selects).",
-          "reason": "A field names one control; the kit has no labelled group (fieldset) yet, so name each control and caption the set with a heading."
+          "when": "Several controls under one caption (two selects, a set of fields).",
+          "reason": "A field names one control; a fieldset names a set of them with its legend (a set of radios or checkboxes is one choice group, which a field can name).",
+          "useInstead": "component:fieldset"
         }
       ],
       "searchTerms": [
@@ -393,6 +394,11 @@
     },
     {
       "from": "component:field",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:field",
       "relation": "acceptsChild",
       "to": "component:range"
     },
@@ -515,6 +521,11 @@
       "from": "component:field-grid",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:field-grid",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:field-grid",

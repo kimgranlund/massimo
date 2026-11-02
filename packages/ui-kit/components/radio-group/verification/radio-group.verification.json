@@ -18,7 +18,7 @@
     },
     {
       "path": "components/radio-group/radio-group.manifest.json",
-      "sha256": "7d84656d214bca80a5c4dc1a1136caa0c9462b98c18398a78789ba7e3e30eefa"
+      "sha256": "6f4ce1c2581b75157b90cf9178d4b00994d8098cd5e09205d1463f4fc0833080"
     },
     {
       "path": "components/choice/group.react.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "core/form-element.ts",
-      "sha256": "9c42e977d55960087441ef182f6148309ea1d24580b24d08c8ad6c058854776f"
+      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
     }
   ],
   "renderers": {

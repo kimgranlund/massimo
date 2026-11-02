@@ -84,6 +84,16 @@
         "inside checkbox group"
       ]
     },
+    "fieldset": {
+      "id": "context:fieldset",
+      "host": "component:fieldset",
+      "summary": "Inside a ui-fieldset: fields of one named set, disabled together; stacked with the collection gap.",
+      "searchTerms": [
+        "fieldset",
+        "inside fieldset",
+        "field group"
+      ]
+    },
     "form": {
       "id": "context:form",
       "host": null,

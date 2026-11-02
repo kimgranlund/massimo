@@ -45,7 +45,8 @@
         "card",
         "collection",
         "group",
-        "form"
+        "form",
+        "fieldset"
       ],
       "behavior": "Single line: Enter requests submit, paste is flattened. type=password masks text and blocks copy and cut. Validates required, email, minlength and pattern after interaction."
     },
@@ -72,7 +73,8 @@
         "card",
         "collection",
         "group",
-        "form"
+        "form",
+        "fieldset"
       ],
       "behavior": "APG select-only combobox keys, typeahead, outside press and blur close; selection commits on Enter, Tab or click."
     },
@@ -95,7 +97,8 @@
         "collection",
         "group",
         "form",
-        "field-grid"
+        "field-grid",
+        "fieldset"
       ],
       "behavior": "Names its control: aria-labelledby (label text and unit ids) on a control whose host has the role, or the labelledby property of ui-input and ui-select; description ids likewise. A label press toggles a checkbox, switch or radio and focuses any other control."
     },
@@ -109,9 +112,27 @@
         "panel",
         "card",
         "collection",
-        "form"
+        "form",
+        "fieldset"
       ],
       "behavior": "None: each ui-field child is a subgrid row, so labels align at the widest one; other children (group headings) span every column."
+    },
+    "fieldset": {
+      "geometryFamily": "fieldset",
+      "element": "Host is the group (role=group) named by its legend part (aria-labelledby); no native fieldset or legend.",
+      "parts": [
+        "fieldset-legend?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "form",
+        "fieldset"
+      ],
+      "behavior": "disabled reaches every kit form control inside at any depth (their isDisabled reads it, like a native <fieldset disabled>) and sets data-disabled on the host and the legend; the legend names the group."
     },
     "listbox": {
       "geometryFamily": "container",
@@ -175,7 +196,8 @@
         "group",
         "form",
         "inline",
-        "checkbox-group"
+        "checkbox-group",
+        "fieldset"
       ],
       "behavior": "Space toggles; indeterminate shows mixed and clears on activation; required needs checked."
     },
@@ -190,7 +212,8 @@
         "card",
         "collection",
         "group",
-        "form"
+        "form",
+        "fieldset"
       ],
       "behavior": "Owns the value array: sets its checkboxes' checked state, a press adds or removes that value, fires change and input with { value, reason, event } (the checkboxes then fire none); a parent checkbox is checked / mixed / unchecked for all / some / none and sets every value; submits name=value per value; disabled reaches every checkbox."
     },
@@ -227,7 +250,8 @@
         "card",
         "collection",
         "group",
-        "form"
+        "form",
+        "fieldset"
       ],
       "behavior": "Owns the value: sets its radios' checked state, fires change and input with { value, reason, event } (the radios then fire none), submits one value under its name, validates required; the radios keep arrows and the roving tab stop within the group; disabled and readonly reach every radio."
     },
@@ -250,7 +274,8 @@
         "collection",
         "group",
         "form",
-        "inline"
+        "inline",
+        "fieldset"
       ],
       "behavior": "Space and Enter toggle; takes effect immediately."
     },

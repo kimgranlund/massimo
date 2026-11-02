@@ -18,7 +18,7 @@
     },
     {
       "path": "components/checkbox-group/checkbox-group.manifest.json",
-      "sha256": "daa8ade537081fd0dcc2630ace8c9489e1be3c197af14d50972912eb9c2bce84"
+      "sha256": "791e52406a096a05342424dafe93e8e0013ac0c3b4660045091e3e77883c1707"
     },
     {
       "path": "components/radio-group/radio-group.recipe.ts",
@@ -30,7 +30,7 @@
     },
     {
       "path": "core/form-element.ts",
-      "sha256": "9c42e977d55960087441ef182f6148309ea1d24580b24d08c8ad6c058854776f"
+      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
     }
   ],
   "renderers": {

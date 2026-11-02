@@ -36,9 +36,9 @@ export function registerDisabler(tag: string) { disablers.add(tag); }
 export function disablingContainer(el: Element): { isDisabled?: boolean } | null {
   return disablers.size ? (el.parentElement?.closest([...disablers].join(', ')) as { isDisabled?: boolean } | null) ?? null : null;
 }
-/** Re-read the disabling container of every form element inside `root` (a container connected or upgraded late). */
+/** Re-read the disabling container of every form element (and nested container) inside `root` (a container connected or upgraded late). */
 export function syncDisabled(root: Element) {
-  for (const el of root.querySelectorAll('*')) if (el instanceof UIFormElement) el.syncContainer();
+  for (const el of root.querySelectorAll('*')) if (typeof (el as { syncContainer?: unknown }).syncContainer === 'function') (el as UIFormElement).syncContainer();
 }
 
 export class UIFormElement extends UIElement {

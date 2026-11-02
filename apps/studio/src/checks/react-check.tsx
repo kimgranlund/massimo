@@ -17,6 +17,7 @@ import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
+import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -35,10 +36,11 @@ import { Field } from '@massimo/ui-kit/components/field/react';
 import { Slider } from '@massimo/ui-kit/components/range/react';
 import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
 import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
+import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
-const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh'];
+const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh', 'fs', 'fsd'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
 
 function Pair({ u }: { u: number }) {
@@ -82,6 +84,8 @@ function Pair({ u }: { u: number }) {
         <ui-radio-group data-k="rgh" orientation="horizontal" disabled><ui-radio value="a">One</ui-radio><ui-radio value="b">Two</ui-radio></ui-radio-group>
         <ui-checkbox-group data-k="cgv" value="a"><ui-checkbox parent>All</ui-checkbox><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
         <ui-checkbox-group data-k="cgh" orientation="horizontal" value="a b" disabled><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
+        <div style={{ width: 300 }}><ui-fieldset data-k="fs" legend="Address"><ui-checkbox>Same</ui-checkbox><ui-switch checked>Ship</ui-switch></ui-fieldset></div>
+        <div style={{ width: 300 }}><ui-fieldset data-k="fsd" legend="Address" disabled><ui-checkbox checked>Same</ui-checkbox><ui-radio-group value="a"><ui-radio value="a">One</ui-radio></ui-radio-group></ui-fieldset></div>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -121,6 +125,8 @@ function Pair({ u }: { u: number }) {
         <RadioGroup data-k="rgh" orientation="horizontal" disabled><Radio value="a">One</Radio><Radio value="b">Two</Radio></RadioGroup>
         <CheckboxGroup data-k="cgv" defaultValue={['a']} allValues={['a', 'b']}><Checkbox parent>All</Checkbox><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
         <CheckboxGroup data-k="cgh" orientation="horizontal" defaultValue={['a', 'b']} disabled><Checkbox value="a">One</Checkbox><Checkbox value="b">Two</Checkbox></CheckboxGroup>
+        <div style={{ width: 300 }}><Fieldset data-k="fs" legend="Address"><Checkbox>Same</Checkbox><Switch defaultChecked>Ship</Switch></Fieldset></div>
+        <div style={{ width: 300 }}><Fieldset data-k="fsd" legend="Address" disabled><Checkbox defaultChecked>Same</Checkbox><RadioGroup defaultValue="a"><Radio value="a">One</Radio></RadioGroup></Fieldset></div>
       </div>
     </div>
   );
@@ -267,7 +273,7 @@ setTimeout(() => {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
     for (const k of GROUP_KEYS) {
       const a = host(wc, k), b = host(re, k);
-      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('ui-radio, ui-checkbox, ui-switch, [data-ui=radio], [data-ui=checkbox], [data-ui=switch]')];
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[data-part=legend], ui-radio-group, ui-radio, ui-checkbox, ui-switch, [data-ui=radio-group], [data-ui=radio], [data-ui=checkbox], [data-ui=switch]')];
       const pa = parts(a), pb = parts(b);
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} members: wc ${pa.length} react ${pb.length}`); continue; }

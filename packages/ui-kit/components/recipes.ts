@@ -15,6 +15,7 @@ import { group, collection, card, panel, region, page as pageRecipe } from './co
 import { field, fieldGrid } from './field/field.recipe.ts';
 import { radioGroup } from './radio-group/radio-group.recipe.ts';
 import { checkboxGroup } from './checkbox-group/checkbox-group.recipe.ts';
+import { fieldset } from './fieldset/fieldset.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, radioGroup, checkboxGroup };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, radioGroup, checkboxGroup, fieldset };
 
