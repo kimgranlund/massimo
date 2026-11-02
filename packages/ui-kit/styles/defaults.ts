@@ -8,6 +8,8 @@ import { PAGE_MAX_WIDTH_REM } from '../tokens/geometry/resolve.ts';
 import { RATIOS } from '../components/image/ratios.ts';
 import { voiceFamily } from './typography.ts';
 
+const UI_VOICE = ':is(ui-button, [data-ui=button], ui-input, [data-ui=input], ui-select, ui-listbox, ui-segmented, ui-option, ui-checkbox, ui-radio, ui-switch, ui-range, ui-palette, ui-badge, ui-tag, ui-chip)';
+
 const FIELD = ':is(ui-input, ui-select, [data-ui=input])';
 const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select > [data-part=trigger]';
 const BUTTON = ':is(ui-button, [data-ui=button])';
@@ -21,6 +23,9 @@ const DANGER_TINT = (pct: number) => `color-mix(in oklch, var(--colors-danger-so
 
 export const defaults = defineGlobalStyles({
   '[hidden]': { display: 'none !important' },
+  // Buttons, form controls, badges, tags and chips speak in the UI voice (the Controls face,
+  // system-ui, unless repointed with data-font-ui). Field descriptions and errors keep the caption role.
+  [UI_VOICE]: { fontFamily: voiceFamily('ui') },
 
   // Icons: <i name="…"> filled by the icon runtime. 1em by default; slots size them to --icon.
   // The box is reserved before the SVG arrives, so nothing shifts.
@@ -99,8 +104,7 @@ export const defaults = defineGlobalStyles({
   'ui-select > [data-part=popup]:popover-open': { display: 'flex', flexDirection: 'column' },
 
   // Badge, tag, chip (lengths in styles/geometry.ts)
-  // Badge, tag and chip speak in the UI voice (the Controls face, system-ui, unless repointed).
-  ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent', fontFamily: voiceFamily('ui') },
+  ':is(ui-badge, ui-tag, ui-chip)': { display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', verticalAlign: 'middle', borderColor: 'transparent' },
   'ui-badge': { bg: 'accent.solid', color: 'fg.onSolid', fontWeight: 'semibold', fontVariantNumeric: 'tabular-nums lining-nums' },
   'ui-tag': { bg: 'bg.muted', color: 'fg' },
   'ui-chip': { bg: 'bg.muted', color: 'fg', borderColor: 'border.strong', userSelect: 'none' },

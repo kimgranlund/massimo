@@ -150,9 +150,10 @@ for (const c of cases) {
     const xr = rect($('chipX')), xi = rect($('chipX').querySelector('[data-remove]'));
     checks['chip.balance.removeEdge'] = [r2(xr.right - xi.right), r2(rc.visibleEdge)];
   }
-  // Badge, tag and chip use the UI voice: same family as the control type role.
+  // Buttons, form controls, badges, tags and chips use the UI voice: same family as the control role.
   const uiFamily = cs(box.querySelector('[data-type="control"]')).fontFamily;
-  for (const [k, el] of [['badge', badge], ['tag', tag], ['chip', chip]]) checks[`${k}.font.uiVoice`] = [cs(el).fontFamily === uiFamily && /system-ui/.test(uiFamily) ? 1 : 0, 1];
+  const uiVoiced = [['badge', badge], ['tag', tag], ['chip', chip], ['button', btn], ['input', pc(inp)], ['select', pc(tr)], ['option', box.querySelector('ui-listbox ui-option')], ['segmented', o1], ['checkbox', box.querySelector('ui-checkbox')], ['radio', box.querySelector('ui-radio')], ['switch', box.querySelector('ui-switch')]];
+  for (const [k, el] of uiVoiced) checks[`${k}.font.uiVoice`] = [cs(el).fontFamily === uiFamily && /system-ui/.test(uiFamily) ? 1 : 0, 1];
   checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];

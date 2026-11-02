@@ -29,7 +29,7 @@ Fonts work in three layers, like colors (ramps → roles):
    | display | display | display |
    | heading | sans | heading-1–3 |
    | body | sans | body-large, body, caption |
-   | ui | controls | control, label, control-small, kickers; badge, tag and chip text |
+   | ui | controls | control, label, control-small, kickers; all buttons, form controls, badges, tags and chips |
    | numeric | follows ui (controls) | `data-numeric` (stats, counters, tables), with `tabular-nums lining-nums` |
    | code | mono | code |
 

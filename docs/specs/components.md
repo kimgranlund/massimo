@@ -34,6 +34,10 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | `ui-image` | cover formats, fit, position; author `<picture>`/`<source>` for file formats; `slideshow` makes an inline swiper | `src`, `srcset`, `sizes`, `alt`, `ratio`, `fit`, `position`, `slideshow` |
 | containers | `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`; CSS only | `size`, `gap` |
 
+## Type
+
+Buttons, form controls (input, select, listbox, segmented, option, checkbox, radio, switch, range, palette), badges, tags and chips use the UI voice: the Controls face (system-ui) unless `data-font-ui` repoints it ([typography](typography.md)). Field descriptions and errors use the caption role.
+
 ## States
 
 Every state a component sets is styled in `styles/defaults.ts`, keyed on ARIA or `data-*` (never on a class), so React counterparts match. Transitions: [motion](motion.md).
