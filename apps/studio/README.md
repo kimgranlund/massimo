@@ -16,10 +16,9 @@ npm run studio        # from the repo root; http://localhost:5173
 theme parameter   --ui-accent-hue: 265                (themes.json / live postMessage)
   -> ramp         --colors-accent-600: oklch(.53 … var(--ui-accent-hue))
   -> role         --colors-accent-solid  (light/dark)
-  -> component    --colors-button-solid-bg
-  -> recipe       .ui-button--variant_solid { background: var(--colors-button-solid-bg) }
+  -> defaults     ui-option[aria-selected=true] { background: var(--colors-accent-subtle) }
 ```
 
-Finite choices (variant, size) are recipe variants, all pre-generated. Continuous choices are parameters carried by CSS variables, so nothing is regenerated while you drag a slider. Restyle one component by overriding its component token; restyle everything by changing a parameter.
+Theme values are CSS variables, so nothing is regenerated while you drag a slider. Components currently use the boilerplate `styles/defaults.ts` only.
 
-Panda setup notes: `@pandacss/preset-base` must be listed explicitly in Panda 2; `hash: false` keeps recipe class names stable for the web components; the studio's Panda `include` covers ui-kit's components so the app emits one CSS file.
+Panda setup note: `@pandacss/preset-base` must be listed explicitly in Panda 2.

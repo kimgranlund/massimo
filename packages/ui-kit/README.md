@@ -60,7 +60,7 @@ Known trade-offs of contenteditable fields: browser autofill and password manage
 
 ## No flash of unstyled content
 
-Undefined `ui-*` elements are `visibility: hidden` with their final size reserved (`*Pending` styles in each recipe file, `styles/pending.ts`), so nothing jumps when they upgrade. If the script never loads, a 1.5s animation reveals the raw content instead of hiding it forever. New components: add the tag and its reserved size to `styles/pending.ts`.
+Undefined `ui-*` elements are `visibility: hidden` with their final size reserved (`styles/pending.ts`), so nothing jumps when they upgrade. If the script never loads, a 1.5s animation reveals the raw content instead of hiding it forever. New components: add the tag and its reserved size to `styles/pending.ts`.
 
 ## Notes
 
