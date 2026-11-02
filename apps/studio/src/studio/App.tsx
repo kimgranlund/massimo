@@ -12,7 +12,16 @@ const NAMES = Object.keys(PARAMS) as ParamName[];
 export function App() {
   const frame = useRef<HTMLIFrameElement>(null);
   const [params, setParams] = useState<ThemeParams>(defaultParams);
-  const [dark, setDark] = useState(false);
+  // The canvas starts in the host's scheme and follows it until the user picks one.
+  const [dark, setDark] = useState(() => matchMedia('(prefers-color-scheme: dark)').matches);
+  const [pinned, setPinned] = useState(false);
+  useEffect(() => {
+    if (pinned) return;
+    const mq = matchMedia('(prefers-color-scheme: dark)');
+    const on = () => setDark(mq.matches);
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, [pinned]);
   const [themes, setThemes] = useState(savedThemes);
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
@@ -46,7 +55,7 @@ export function App() {
       <aside className={s.panel} aria-label="Theme">
         <header className={s.panelHeader}>
           <h1 className={s.brand}>Studio</h1>
-          <Button onClick={() => setDark((d) => !d)} aria-pressed={dark}>{dark ? 'Dark' : 'Light'}</Button>
+          <Button onClick={() => { setPinned(true); setDark((d) => !d); }} aria-pressed={dark}>{dark ? 'Dark' : 'Light'}</Button>
         </header>
 
         <label className={s.fieldLabel}>

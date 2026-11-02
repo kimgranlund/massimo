@@ -7,7 +7,9 @@ import { reset, textStyles, page, prose, geometry, defaults, pending, pendingKey
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',
-  globalCss: { ...themeCss(), ...reset, '.dark': { colorScheme: 'dark' }, ...geometry, ...defaults, ...pending },
+  globalCss: { ...themeCss(), ...reset, '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' }, ...geometry, ...defaults, ...pending },
+  // Scheme conditions used by semantic colors: OS preference, plus explicit class overrides.
+  conditions: { osDark: '@media (prefers-color-scheme: dark)', dark: '.dark &', light: '.light &' },
   theme: {
     breakpoints,
     tokens,

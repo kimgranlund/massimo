@@ -19,7 +19,9 @@ listen(() => parent, (m) => {
   const v = validateTheme('live', m.params);
   if (!v.ok) return console.warn('canvas: rejected theme', v.error);
   for (const [k, val] of Object.entries(v.params)) root.style.setProperty(paramVar(k as ParamName), String(val));
+  // Explicit scheme from the studio; without a message the canvas follows the host preference.
   root.classList.toggle('dark', m.dark);
+  root.classList.toggle('light', !m.dark);
 });
 post(parent, { type: 'studio/ready' });
 

@@ -22,7 +22,11 @@ export const colors = {
   warning: fixedRamp(75, 0.16),
 };
 
-const role = (base: string, dark: string) => ({ value: { base: `{colors.${base}}`, _dark: `{colors.${dark}}` } });
+// Dark follows the host's prefers-color-scheme; a .light or .dark class on any element forces
+// a scheme for its subtree (class specificity beats the :where(:root) media rule).
+const role = (light: string, dark: string) => ({
+  value: { base: `{colors.${light}}`, _osDark: `{colors.${dark}}`, _dark: `{colors.${dark}}`, _light: `{colors.${light}}` },
+});
 
 // Chain: semantic roles -> ramps -> theme parameters.
 export const semanticColors = {

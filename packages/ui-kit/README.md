@@ -13,6 +13,10 @@ Light-DOM web components and React components built on one headless layer and on
 
 Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`.
 
+## Color scheme
+
+Dark is automatic when the host prefers it (`prefers-color-scheme: dark`), with no script needed. Add `class="dark"` or `class="light"` to `<html>` or any element to force a scheme for that subtree.
+
 ## Geometry
 
 Heights, insets, gaps, borders and radii follow one system: see [docs/geometry.md](docs/geometry.md). Use `size="sm|md|lg"` (or `data-size`) on any element; there is no separate density.
