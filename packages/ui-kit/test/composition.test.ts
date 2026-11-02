@@ -33,7 +33,7 @@ test('React: each composed form renders the markup of its preset', () => {
       h(Slider.Root, { defaultValue: 25, label: 'Volume', name: 'v' }, h(Slider.Track, null, h(Slider.Indicator)), h(Slider.Thumb))],
     ['range alias', h(Range, { defaultValue: 25 }), h(Slider, { defaultValue: 25 })],
     ['progress', h(Progress, { value: 40, label: 'Upload' }), h(Progress.Root, { value: 40, label: 'Upload' }, h(Progress.Track, null, h(Progress.Indicator)))],
-    ['field', h(Field, { label: 'Unit', unit: 'px', readout: '4.5', description: 'Sets u.', error: 'Too big', layout: 'inline', htmlFor: 'f' }, (ids: object) => h(Range, { ...ids, defaultValue: 25 })),
+    ['field', h(Field, { label: 'Unit', unit: 'px', readout: '4.5', description: 'Sets u.', error: 'Too big', layout: 'inline', htmlFor: 'f', children: (ids: object) => h(Range, { ...ids, defaultValue: 25 }) }),
       h(Field.Root, { layout: 'inline', htmlFor: 'f' },
         h(Field.Label, { unit: 'px' }, 'Unit'), h(Field.Control, { render: (ids: object) => h(Range, { ...ids, defaultValue: 25 }) }),
         h(Field.Readout, null, '4.5'), h(Field.Description, null, 'Sets u.'), h(Field.Error, null, 'Too big'))],
