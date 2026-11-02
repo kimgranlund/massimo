@@ -16,7 +16,7 @@ How to add or change a reusable ui-kit component. Assembling a screen from exist
 - Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`, `resolveTextRun`). Icons go in leading/trailing; short text adornments in prefix/suffix.
 - Every length comes from the geometry system: change `tokens/geometry/resolve.ts` and `styles/geometry.ts` together, then regenerate `docs/geometry.csv` and `tokens/dtcg/`.
 - Colors are Spectrum roles; type is a role (`textStyle`); motion uses `durations.<spring>` with `easings.<spring>`.
-- Styles live in the Panda global style modules, never in element modules. Continuous values reach CSS only as custom properties set by script; finite choices are attributes and selectors.
+- Styles live in the Panda global style modules, never in element modules. A selector key appears once per style object: JavaScript keeps the last of two equal keys, so the second silently replaces the first (`test/style-keys.test.ts` fails on a repeat, including one produced by a spread). Continuous values reach CSS only as custom properties set by script; finite choices are attributes and selectors.
 - States are keyed on ARIA or `data-*` and styled once in `styles/defaults.ts`; add new ones to `contracts/states.json`.
 
 ## Change together
