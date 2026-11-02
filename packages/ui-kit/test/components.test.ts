@@ -90,7 +90,7 @@ test('ui-input: required error waits for blur, then shows; author error shows at
   ed.dispatchEvent(new Event('blur'));
   await tick();
   assert.equal(ed.getAttribute('aria-invalid'), 'true');
-  assert.ok(el.hasAttribute('data-user-invalid'));
+  assert.ok(el.hasAttribute('data-invalid') && el.hasAttribute('data-touched'), 'data-invalid and data-touched on the host');
   assert.equal(el.children[3].textContent, 'Fill in this field.');
   type(el, 'x'); await tick();
   assert.equal(el.validity.valid, true);
