@@ -38,7 +38,11 @@ export function moduleSet(modules: Record<string, () => Promise<unknown>>, alias
 const CHEVRONS = { 'caret-down': 'chevron-down', 'caret-up': 'chevron-up', 'caret-left': 'chevron-left', 'caret-right': 'chevron-right' };
 
 export const BUILTIN_SETS = {
-  phosphor: cdnSet((n) => `https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2.1.1/assets/regular/${n}.svg`),
+  // Names ending in -bold / -fill load that Phosphor weight (e.g. check-bold).
+  phosphor: cdnSet((n) => {
+    const w = /-(bold|fill)$/.exec(n)?.[1] ?? 'regular';
+    return `https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2.1.1/assets/${w}/${n}.svg`;
+  }),
   lucide: cdnSet((n) => `https://cdn.jsdelivr.net/npm/lucide-static@1.57.0/icons/${n}.svg`, {
     ...CHEVRONS, 'magnifying-glass': 'search', gear: 'settings', warning: 'triangle-alert', envelope: 'mail',
     'eye-slash': 'eye-off', 'dots-three': 'ellipsis', list: 'menu',
@@ -56,7 +60,7 @@ export const BUILTIN_SETS = {
  */
 export const SYSTEM_ICON_SET = 'phosphor';
 export const SYSTEM_GLYPHS = new Set([
-  'plus', 'minus', 'x', 'check',
+  'plus', 'minus', 'x', 'check', 'check-bold', 'minus-bold',
   'caret-up', 'caret-down', 'caret-left', 'caret-right',
   'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
   'dots-three', 'dots-three-vertical', 'magnifying-glass',

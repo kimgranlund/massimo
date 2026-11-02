@@ -27,7 +27,7 @@ function Choice({ kind, prefix, suffix, invalid, size, children, className, styl
       <input ref={ref} type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined} aria-invalid={invalid || undefined} {...input} />
       <span data-part="leading">
         <span data-part="box" aria-hidden="true">
-          {kind === 'checkbox' && <><i name="check" data-mark="checked" /><i name="minus" data-mark="mixed" /></>}
+          {kind === 'checkbox' && <><i name="check-bold" data-mark="checked" /><i name="minus-bold" data-mark="mixed" /></>}
         </span>
       </span>
       {prefix != null && <span data-part="prefix">{prefix}</span>}

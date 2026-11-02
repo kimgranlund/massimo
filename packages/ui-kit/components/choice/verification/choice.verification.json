@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/choice/choice.element.ts",
-      "sha256": "36bb08b0a6e8ba378ffc1029a8585363316215d65f42103fdbcfc271bfc09472"
+      "sha256": "c71154e80080efebbd587f1d057d520a7c187e968c71793068e07dde57f1a871"
     },
     {
       "path": "components/slots.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "0d261aa1024ad2b6a2479f366781ce1e117a87fb9de9610a70373c0f758bfa4f"
+      "sha256": "98b0afac4cddb593380227bc65c670c8657ebb2d1b5eaf9e5b3e7142058973d8"
     },
     {
       "path": "styles/native.ts",

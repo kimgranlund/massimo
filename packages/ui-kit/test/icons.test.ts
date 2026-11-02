@@ -92,3 +92,13 @@ test('moduleSet maps file names to lazy loaders; themes validate icons', async (
   assert.equal(validateTheme('t', { icons: '<script>' }).ok, false);
   assert.equal(validateTheme('t', { icons: 3 }).ok, false);
 });
+
+test('phosphor set loads the bold and fill weights from their folders (check-bold → assets/bold)', async () => {
+  const { BUILTIN_SETS: sets, SYSTEM_GLYPHS: system } = await import('../icons/sets.ts');
+  const seen: string[] = [];
+  const g = globalThis as any, prev = g.fetch;
+  g.fetch = async (u: string) => { seen.push(String(u)); return new Response('<svg/>', { status: 200 }); };
+  try { for (const n of ['check', 'check-bold', 'heart-fill']) await sets.phosphor.load(n); } finally { g.fetch = prev; }
+  assert.deepEqual(seen.map((u) => u.split('/assets/')[1]), ['regular/check.svg', 'bold/check-bold.svg', 'fill/heart-fill.svg']);
+  assert.ok(system.has('check-bold') && system.has('minus-bold'), 'checkbox marks are system glyphs');
+});

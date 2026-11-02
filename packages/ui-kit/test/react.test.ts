@@ -15,7 +15,7 @@ test('Checkbox, Radio, Switch: native input inside a data-ui label with the cons
   const cb = html(h(Checkbox, { name: 'terms', defaultChecked: true, prefix: '#', suffix: '(2)' }, 'Accept'));
   assert.match(cb, /^<label data-ui="checkbox"/);
   assert.match(cb, /<input type="checkbox" name="terms" checked=""/);
-  assert.match(cb, /<span data-part="leading"><span data-part="box" aria-hidden="true"><i name="check" data-mark="checked"><\/i><i name="minus" data-mark="mixed"><\/i><\/span><\/span><span data-part="prefix">#<\/span><span data-part="contents">Accept<\/span><span data-part="suffix">\(2\)<\/span>/);
+  assert.match(cb, /<span data-part="leading"><span data-part="box" aria-hidden="true"><i name="check-bold" data-mark="checked"><\/i><i name="minus-bold" data-mark="mixed"><\/i><\/span><\/span><span data-part="prefix">#<\/span><span data-part="contents">Accept<\/span><span data-part="suffix">\(2\)<\/span>/);
   noCustom(cb);
   assert.match(html(h(Switch, {}, 'Wi-Fi')), /<input type="checkbox" role="switch"/);
   assert.match(html(h(Radio, { name: 'plan', value: 'pro' }, 'Pro')), /<input type="radio" name="plan" value="pro"/);

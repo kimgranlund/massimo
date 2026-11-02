@@ -197,6 +197,8 @@ export const geometry = defineGlobalStyles({
   'ui-palette[orientation=vertical] > ui-swatch': { width: 'auto' },
 
   // Swiper: paddles are 8u icon buttons inset 2u; dots are 2u (active 4u) in 4u hit areas.
+  // Paddle carets follow the paddle's icon size (lg), not the sm indicator rule for carets.
+  'ui-swiper [data-part=paddle] > [data-part=leading] > i': { width: 'var(--icon)', height: 'var(--icon)' },
   // Paddles are fully round whatever the curvature setting (like the dots): radius = half the height.
   'ui-swiper [data-part=paddle]': { position: 'absolute', insetBlockStart: 'calc(50% - 4 * var(--u))', '--radius': 'calc(var(--h) / 2)' },
   'ui-swiper [data-part=paddle][data-dir=prev]': { insetInlineStart: 'calc(2 * var(--u))' },

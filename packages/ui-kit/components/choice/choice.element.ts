@@ -90,7 +90,7 @@ export class UICheckbox extends UIChoice {
   protected choiceRole = 'checkbox' as const;
   protected indicator() {
     const box = document.createElement('span');
-    box.innerHTML = '<i name="check" data-mark="checked"></i><i name="minus" data-mark="mixed"></i>';
+    box.innerHTML = '<i name="check-bold" data-mark="checked"></i><i name="minus-bold" data-mark="mixed"></i>';
     return box;
   }
   protected checkedState() { return this.indeterminate ? 'mixed' : String(this.checked); }
