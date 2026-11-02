@@ -32,10 +32,21 @@
         "optionAttrs",
         "navigate",
         "createTypeahead",
-        "selectKeyIntent",
-        "placePopup"
+        "selectKeyIntent"
       ],
-      "description": "Combobox and listbox ARIA, key intents, typeahead and popup placement."
+      "description": "Combobox and listbox ARIA, key intents and typeahead."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/floating.ts",
+      "exports": [
+        "createPositioner",
+        "createDismissLayer",
+        "showTopLayer",
+        "hideTopLayer",
+        "unitOf"
+      ],
+      "description": "The floating layer foundation: the positioner (CSS anchor positioning, script placement as the fallback, data-side), the dismiss layer (outside press) and the top layer (popover API)."
     },
     {
       "kind": "geometry",
@@ -343,7 +354,7 @@
         "The value attribute at connect is the reset default. Option value falls back to its label text.",
         "Outside pointerdown and blur close the popup; selection commits on Enter, Space, Tab or click.",
         "Styling state (contracts/states.json, Base UI Select names): the host carries the field state (data-disabled, data-required, data-valid / data-invalid, data-dirty, data-touched, data-filled, data-focused); the trigger data-popup-open, data-pressed (while open), data-placeholder and data-disabled; the popup data-open / data-closed, data-side and data-align; options data-selected, data-highlighted and data-disabled. The React Select keeps the open state, option selection and highlight native (select:open, :checked, :focus).",
-        "The popup is placed with CSS anchor positioning (anchor-scope per select, position-area below the trigger, flip-block to the side with more room, min-width = trigger width, 1u gap). Where anchor positioning is unavailable, placePopup measures the trigger and writes the position inline as a fallback.",
+        "The popup is placed with CSS anchor positioning (anchor-scope per select, position-area below the trigger, flip-block to the side with more room, min-width = trigger width, 1u gap). Where anchor positioning is unavailable, the floating positioner (dom/floating.ts createPositioner, placeFloating) measures the trigger and writes the position inline as a fallback.",
         "Composition: the parts may be authored as [data-part] children (label, trigger › leading · prefix · value · suffix · icon, popup › list › ui-option, description, error); the host adopts each onto its generated part (the author attributes and classes; slot and icon content; label, description, error and the value text seed those properties and the placeholder) and generates the rest, so the DOM, classes and data-* match the generated anatomy. React: Select.Root with Select.Label, Select.Trigger (Select.Value, Select.Icon), Select.Popup › Select.List › Select.Item (Select.ItemText, Select.ItemIndicator), Select.Description and Select.Error as direct children; the Root puts Trigger and Popup inside the native <select>; Popup and List render no element (::picker(select)); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
       ],
       "avoidWhen": [

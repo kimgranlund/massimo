@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "d5f1bd85394debe67520bad2f176f50785d3c0081d6ce4f38eb1c43fccaeb5b9"
+      "sha256": "081a8db62081f05f0c265689de9c6a73aa0eb3c076881165f9b8f5b1f8bd0909"
     },
     {
       "path": "components/listbox/options.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "dom/listbox.ts",
-      "sha256": "4fbe3d0a731ae58377ede4fe18a3bcdc1ffdab949ff8d1273b92541725436cd9"
+      "sha256": "decebd30af1172e88663561a8b0c592da29759b571f3e36e494597bd1c188ede"
     },
     {
       "path": "dom/field.ts",
@@ -22,11 +22,11 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "fc6a2502e2045128e322248f6fe40186d78dc888283c7654081f352521031dc5"
+      "sha256": "910e176e10cb78c8d9aef303056cb630c2644793da9385c354903a8a60a8cf98"
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "cd673a0fda9b46380021144a88f8b67a65b97bb3a8653509730bfac73634cc63"
+      "sha256": "7c3c4c9ab0fc4d67b340d7bb7c702ea9a060147987e05fd1c0b3341896b3781d"
     },
     {
       "path": "components/parts.react.tsx",
@@ -34,7 +34,7 @@
     },
     {
       "path": "dom/state.ts",
-      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+      "sha256": "1eda06391d78e873db7eaf60a643bbfa528e4035d28eeb2c00525abab3f328ae"
     },
     {
       "path": "components/state.react.ts",
@@ -55,6 +55,10 @@
     {
       "path": "components/slots.ts",
       "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
+    },
+    {
+      "path": "dom/floating.ts",
+      "sha256": "f36816cf3b522e5f76dd51a116a88c1a0bae1d3e27a5d6fd66060b9051bcf6c3"
     }
   ],
   "renderers": {
@@ -79,6 +83,10 @@
         {
           "command": "node --test test/composition.test.ts",
           "covers": "composition: authored [data-part] parts render the same parts, recipe classes, data-* and hidden flags as the generated anatomy; authored attributes, classes and content are adopted, text seeds properties, a reconnect keeps them"
+        },
+        {
+          "command": "node --test test/floating.test.ts",
+          "covers": "the floating layer foundation the popup is built on: placeFloating (sides, flip, align, clamp; placePopup is its bottom / start case), the script positioner, the dismiss layer (outside press, topmost Escape, focus-out, nesting, Base UI reasons), the focus scope, the top layer, anchoredPopup, and the React useFloatingLayer"
         }
       ],
       "latestRun": {
@@ -89,7 +97,8 @@
           "node --test test/listbox.test.ts",
           "node --test test/state-parity.test.ts",
           "node --test test/events.test.ts",
-          "node --test test/composition.test.ts"
+          "node --test test/composition.test.ts",
+          "node --test test/floating.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -132,6 +141,7 @@
   },
   "limitations": [
     "The source list is the direct sources, not every transitive dependency.",
-    "React Select relies on customizable select (appearance: base-select, Chromium 135+); other browsers show the platform select. Styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": [])."
+    "React Select relies on customizable select (appearance: base-select, Chromium 135+); other browsers show the platform select. Styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "T-0001 refactor onto dom/floating.ts, checked in Chromium (studio on :5310): computed styles of #/components, #/home and react-check.html, light and dark, identical before and after (0 of 4330 / 3763 / 2845 elements differ); all 32 ui-selects on #/components opened, then closed by Escape, outside press and Enter, with identical popup offset (1u), width, height, data-side / data-align, positioner variables and openchange reasons; geometry-check.html and react-check.html \"fails\": []. The script fallback is covered in happy-dom only (Chromium runs anchor positioning)."
   ]
 }

@@ -197,3 +197,67 @@ export function fieldControl(state: { invalid: string; disabled: string; readonl
     [FORCED]: FORCED_EDGE,
   };
 }
+
+// ── Floating layers (dom/floating.ts; docs/specs/components.md, Floating layers) ──
+
+type FloatSide = 'top' | 'bottom' | 'left' | 'right';
+type FloatAlign = 'start' | 'center' | 'end';
+
+/** Where CSS anchor positioning runs (the same test as dom/floating.ts anchorPositioning). */
+export const ANCHORED = '@supports (position-area: block-end) and (anchor-scope: all)';
+
+/**
+ * A floating popup's surface: fixed in the top layer ([popover]), the overlay fill and edge, sized
+ * from Base UI's positioner variables (computed in CSS by anchoredPopup where anchor positioning
+ * runs, set in px by the script positioner elsewhere), and the reveal motion (opacity and scale from
+ * the anchor edge, --transform-origin; display and overlay transition discretely so the fade runs
+ * while the popover closes). Pair it with floatingOpen on the open state and sideOrigins.
+ */
+export const floatingPopup: Style = {
+  flexDirection: 'column', position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
+  bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
+  minWidth: 'var(--anchor-width)', maxHeight: 'var(--available-height)',
+  // Grows from its anchor edge: the top edge below the anchor (the default side), the opposite
+  // edge on the other sides (sideOrigins, by data-side).
+  '--transform-origin': 'top center',
+  transformOrigin: 'var(--transform-origin)', opacity: 0, scale: 0.97,
+  transition: `${t('reveal', 'opacity', 'scale')}, display {durations.reveal} allow-discrete, overlay {durations.reveal} allow-discrete`,
+  [FORCED]: FORCED_EDGE,
+};
+
+/** The open state of a floating popup: shown at full size, entering from the closed look. */
+export const floatingOpen: Style = { opacity: 1, scale: 1, '@starting-style': { opacity: 0, scale: 0.97 } };
+
+/** Base UI data-side: the popup grows from the edge that faces its anchor. */
+export const sideOrigins: Style = {
+  '&[data-side=top]': { '--transform-origin': 'bottom center' },
+  '&[data-side=left]': { '--transform-origin': 'right center' },
+  '&[data-side=right]': { '--transform-origin': 'left center' },
+};
+
+const AREA: Record<FloatSide, string> = { bottom: 'block-end', top: 'block-start', right: 'inline-end', left: 'inline-start' };
+const MARGIN: Record<FloatSide, string> = { bottom: 'marginBlockStart', top: 'marginBlockEnd', right: 'marginInlineStart', left: 'marginInlineEnd' };
+
+/**
+ * CSS anchor positioning for a popup (inside the ANCHORED condition): placed on `side` of the
+ * element whose anchorName is `anchor` (scope it per instance with anchorScope on the host), aligned
+ * `align`, 1u away, flipped to the opposite side when there is more room there. The positioner
+ * variables hold anchor functions and percentages of the position-area cell (the space beside the
+ * anchor), so they resolve where they are used: in sizing, inset and margin properties.
+ */
+export function anchoredPopup({ anchor, side = 'bottom', align = 'start' }: { anchor: string; side?: FloatSide; align?: FloatAlign }): Style {
+  const block = side === 'top' || side === 'bottom';
+  const span = align === 'center' ? 'span-all' : `span-${block ? 'inline' : 'block'}-${align === 'start' ? 'end' : 'start'}`;
+  return {
+    positionAnchor: anchor, positionArea: `${AREA[side]} ${span}`,
+    positionTryFallbacks: block ? 'flip-block' : 'flip-inline', positionTryOrder: block ? 'most-block-size' : 'most-inline-size',
+    ...(align === 'center' ? { [block ? 'justifySelf' : 'alignSelf']: 'anchor-center' } : {}),
+    '--anchor-width': 'anchor-size(width)', '--anchor-height': 'anchor-size(height)',
+    // The cell spans from the anchor's start edge (or the whole axis, centered) to the viewport's
+    // end, and from the anchor to the viewport edge on the open side; the 1u margin toward the
+    // anchor is not available.
+    '--available-width': block ? '100%' : 'calc(100% - var(--u))', '--available-height': block ? 'calc(100% - var(--u))' : '100%',
+    // One margin toward the anchor; the flip mirrors it.
+    [MARGIN[side]]: 'var(--u)',
+  };
+}

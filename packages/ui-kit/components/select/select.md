@@ -101,9 +101,9 @@ The React Select is a native customizable select: its open state (`select:open`)
 
 ## Popup variables
 
-The popup carries Base UI's positioner variables (Select.Positioner), and the recipe sizes it from them: `min-width: var(--anchor-width)`, `max-height: var(--available-height)`, `transform-origin: var(--transform-origin)`.
+The popup is a floating layer ([components spec, Floating layers](../../../../docs/specs/components.md#floating-layers)): the shared positioner places it, the dismiss layer closes it on an outside press (Escape and focus-out stay with the trigger, which keeps focus), and it sits in the top layer (`popover="manual"`). It carries Base UI's positioner variables (Select.Positioner), and the recipe sizes it from them: `min-width: var(--anchor-width)`, `max-height: var(--available-height)`, `transform-origin: var(--transform-origin)`.
 
-| Variable | Anchor positioning (CSS) | Script fallback (`placePopup`, `popupVars`) | React (`::picker(select)`) |
+| Variable | Anchor positioning (CSS) | Script fallback (floating positioner: `placeFloating`, `positionerVars`) | React (`::picker(select)`) |
 |---|---|---|---|
 | `--anchor-width`, `--anchor-height` | `anchor-size(width)`, `anchor-size(height)` | trigger size in px | as CSS |
 | `--available-width` | `100%` of the position-area cell (trigger start to viewport end) | viewport width − left − 8px, px | as CSS |

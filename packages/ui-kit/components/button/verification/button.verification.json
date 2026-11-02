@@ -26,7 +26,7 @@
     },
     {
       "path": "dom/state.ts",
-      "sha256": "3bfd1b2a44253deed049207d297b077c1571c409c3d5005aa7104732d084c5c2"
+      "sha256": "1eda06391d78e873db7eaf60a643bbfa528e4035d28eeb2c00525abab3f328ae"
     },
     {
       "path": "components/compound.react.tsx",

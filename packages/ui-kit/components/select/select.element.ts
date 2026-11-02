@@ -10,7 +10,8 @@
 import { UIFormElement, define, html, settleDefault, signal, type Problem } from '../../core/index.ts';
 import {
   applyAttrs, comboboxAttrs, createTypeahead, eventDetails, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
-  listboxAttrs, navigate, optionAttrs, placePopup, popupDataAttrs, popupVars, selectKeyIntent, uid, withExternalRefs, type ChangeReason,
+  listboxAttrs, navigate, optionAttrs, popupDataAttrs, selectKeyIntent, uid, withExternalRefs, type ChangeReason,
+  createDismissLayer, createPositioner, hideTopLayer, showTopLayer, unitOf, type Side,
 } from '../../dom/index.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
@@ -22,8 +23,6 @@ import { select } from '../../styled-system/recipes/select.js';
 const TRIGGER_ADORNMENTS = ['leading', 'prefix', 'suffix'] as const;
 /** The parts an author may write (composition), by path. */
 const AUTHORED = ['label', 'trigger', 'trigger > leading', 'trigger > prefix', 'trigger > value', 'trigger > suffix', 'trigger > icon', 'popup', 'popup > list', 'description', 'error'] as const;
-/** CSS anchor positioning places the popup (select.recipe.ts); script placement is the fallback. */
-const ANCHORED = typeof CSS !== 'undefined' && !!CSS.supports?.('position-area', 'block-end') && !!CSS.supports?.('anchor-scope', 'all');
 
 export class UISelect extends UIFormElement {
   static properties = {
@@ -57,8 +56,22 @@ export class UISelect extends UIFormElement {
 
   #id = '';
   /** The side the open popup sits on (measured: CSS anchor positioning may flip it). */
-  #side = signal<'top' | 'bottom'>('bottom');
+  #side = signal<Side>('bottom');
   #popupShown = false;
+  /**
+   * The floating layer (dom/floating.ts): CSS anchor positioning places the popup (select.recipe.ts,
+   * recipe-parts.ts anchoredPopup) and the positioner reads the side back; elsewhere it places the
+   * popup from script, 1u from the trigger (styles/geometry.ts --u). The dismiss layer closes on an
+   * outside press; Escape and focus-out stay with the trigger's keys and blur (focus never leaves it).
+   */
+  #positioner = createPositioner({
+    anchor: () => this.trigger, popup: () => this.popup, side: 'bottom', align: 'start',
+    offset: () => unitOf(this), onSide: (s) => { this.#side.value = s; },
+  });
+  #dismiss = createDismissLayer({
+    inside: () => [this], escapeKey: false,
+    onDismiss: (reason, e) => this.#close(reason, e),
+  });
   #active = signal(-1);
   #typeahead = createTypeahead();
   #pending: Element[] = [];
@@ -233,51 +246,20 @@ export class UISelect extends UIFormElement {
     const popup = this.popup!;
     if (!this.#popupShown) {
       this.#popupShown = true;
-      try { popup.showPopover?.(); } catch { /* already open */ }
-      document.addEventListener('pointerdown', this.#onOutside, true);
-      if (!ANCHORED) {
-        window.addEventListener('resize', this.#place);
-        window.addEventListener('scroll', this.#place, true);
-      }
+      showTopLayer(popup);
+      this.#dismiss.activate();
     }
-    if (!ANCHORED) this.#place();
-    else this.#measureSide();
-  }
-
-  // With anchor positioning CSS picks the side (flip-block); read it back for data-side.
-  #measureSide() {
-    const popup = this.popup, trigger = this.trigger;
-    if (!popup || !trigger) return;
-    const p = popup.getBoundingClientRect(), t = trigger.getBoundingClientRect();
-    if (p.height || p.width) this.#side.value = p.top < t.top ? 'top' : 'bottom';
+    this.#positioner.start();
   }
 
   #hidePopup() {
     const popup = this.popup;
     if (!popup || !this.#popupShown) return;
     this.#popupShown = false;
-    try { popup.hidePopover?.(); } catch { /* already closed */ }
-    document.removeEventListener('pointerdown', this.#onOutside, true);
-    window.removeEventListener('resize', this.#place);
-    window.removeEventListener('scroll', this.#place, true);
+    hideTopLayer(popup);
+    this.#dismiss.deactivate();
+    this.#positioner.stop();
   }
-
-  // Fallback placement where CSS anchor positioning is unavailable (select.recipe.ts places it
-  // otherwise): measured from the trigger and written inline.
-  #place = () => {
-    const popup = this.popup, trigger = this.trigger;
-    if (!popup || !trigger) return;
-    // Offset is 1u (styles/geometry.ts --u).
-    const unit = parseFloat(window.getComputedStyle(this).getPropertyValue('--u')) || 4;
-    const p = placePopup(trigger.getBoundingClientRect(), { width: window.innerWidth, height: window.innerHeight }, unit);
-    this.#side.value = p.side;
-    Object.assign(popup.style, {
-      left: `${p.left}px`, top: p.top == null ? 'auto' : `${p.top}px`, bottom: p.bottom == null ? 'auto' : `${p.bottom}px`,
-    });
-    // Base UI's positioner variables; the recipe sizes the popup from them (min-width, max-height,
-    // transform-origin). With anchor positioning the recipe computes them in CSS instead.
-    for (const [k, v] of Object.entries(popupVars(p))) popup.style.setProperty(k, v);
-  };
 
   #focusTrigger = () => { if (!this.isDisabled) this.focus(); };
 
@@ -332,8 +314,6 @@ export class UISelect extends UIFormElement {
 
   // Keep focus on the trigger while interacting with the popup.
   #keepFocus = (e: Event) => e.preventDefault();
-
-  #onOutside = (e: Event) => { if (!this.contains(e.target as Node)) this.#close('outside-press', e); };
 
   #onBlur = (e: Event) => { this.#close('focus-out', e); this.markTouched(); };
 }
