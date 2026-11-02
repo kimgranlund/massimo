@@ -5,9 +5,6 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0006 | [radio-group](tickets/radio-group/handoff.md) | W1 · Radio Group | feature | L2 | P2 | none | 🟡 claimed |
-| T-0007 | [checkbox-group](tickets/checkbox-group/handoff.md) | W1 · Checkbox Group | feature | L2 | P2 | none | 🟡 claimed |
-| T-0008 | [fieldset](tickets/fieldset/handoff.md) | W1 · Fieldset | feature | L1 | P2 | none | 🟡 claimed |
 | T-0009 | [tooltip](tickets/tooltip/handoff.md) | W2 · Tooltip | feature | L2 | P2 | T-0001 | ⏳ proposed |
 | T-0010 | [popover](tickets/popover/handoff.md) | W2 · Popover | feature | L2 | P2 | T-0001 | ⏳ proposed |
 | T-0011 | [menu](tickets/menu/handoff.md) | W2 · Menu | feature | L3 | P2 | T-0001 | ⏳ proposed |
@@ -31,4 +28,4 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0029 | [slider-range-pair](tickets/slider-range-pair/handoff.md) | W5 · Slider: two-thumb range | feature | L2 | P3 | none | ⏳ proposed |
 | T-0030 | [toggle-group-multiple](tickets/toggle-group-multiple/handoff.md) | W5 · Toggle Group: multiple selection | feature | L1 | P3 | T-0005 | ⏳ proposed |
 
-Closed: 5 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 8 done, 0 dropped (git log or .NNNN-* folders)
