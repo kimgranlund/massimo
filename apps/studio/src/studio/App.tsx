@@ -8,7 +8,7 @@ import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import { PARAMS, defaultParams, diffFromDefaults, paramVar, savedThemes, THEME_NAME, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
-import { SPECTRUM_DEFAULTS, spectrumOverrides, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
+import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, Scheme, SpectrumPayload, View, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
 import { Canvas } from '../canvas/Canvas.tsx';
@@ -23,9 +23,22 @@ import * as s from './styles.ts';
 
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
 const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
-const DEFAULT_ROLES = { primary: 'indigo', neutral: 'neutral', critical: 'red' };
 const LEVELS = ['composite', 'group', 'collection', 'tile', 'card', 'panel', 'region', 'page'] as const;
 const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
+
+const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` : r[0].toUpperCase() + r.slice(1);
+const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
+
+/** Surprise mapping: every role, including feedback and the neutral, from the generated families. */
+function randomRoles(accents: string[], neutrals: string[]): Roles {
+  const a = shuffle(accents), data = shuffle(accents);
+  return {
+    primary: a[0], secondary: a[1 % a.length], neutral: pick(neutrals),
+    critical: pick(accents), warning: pick(accents), success: pick(accents), info: pick(accents),
+    data1: data[0], data2: data[1 % data.length], data3: data[2 % data.length], data4: data[3 % data.length], data5: data[4 % data.length], data6: data[5 % data.length],
+  };
+}
 
 export function App() {
   // The selected tab survives reloads (per-browser convenience; storage may be unavailable).
@@ -40,7 +53,7 @@ export function App() {
   const [voices, setVoices] = useState<VoiceMap>(DEFAULT_VOICES);
   const [faces, setFaces] = useState<FaceMap>(FONT_FAMILIES);
   const [spectrum, setSpectrum] = useState<SpectrumSettings>(SPECTRUM_DEFAULTS);
-  const [roles, setRoles] = useState(DEFAULT_ROLES);
+  const [roles, setRoles] = useState<Roles>(DEFAULT_ROLES);
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
   const [themes, setThemes] = useState(savedThemes);
@@ -104,6 +117,7 @@ export function App() {
   const schemeRef = useEvent('click', () => setScheme((v) => NEXT_SCHEME[v]));
   const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify(snapshot(), null, 2)).then(() => setStatus('Copied settings JSON'), () => setStatus('Copy failed')));
   const resetRef = useEvent('click', reset);
+  const randomRef = useEvent('click', () => setRoles(randomRoles(familyNames.accents, familyNames.neutrals)));
   const saveRef = useEvent('click', () => void save());
   const nameRef = useEvent('input', (el) => setName(el.value));
 
@@ -193,11 +207,18 @@ export function App() {
           )}
           {view === 'colors' && (
             <>
-              <Group title="Roles">
-                <Select label="Primary" value={generated?.roles.primary ?? roles.primary} options={familyNames.accents.map((n) => [n, n])} onValue={(v) => setRoles((r) => ({ ...r, primary: v }))} />
-                <Select label="Neutral" value={generated?.roles.neutral ?? roles.neutral} options={familyNames.neutrals.map((n) => [n, n])} onValue={(v) => setRoles((r) => ({ ...r, neutral: v }))} />
-                <Select label="Critical" value={generated?.roles.critical ?? roles.critical} options={familyNames.accents.map((n) => [n, n])} onValue={(v) => setRoles((r) => ({ ...r, critical: v }))} />
-              </Group>
+              <div className={s.control}>
+                <ui-button ref={randomRef}><i slot="leading" name="shuffle" />Random</ui-button>
+              </div>
+              {([['Brand', BRAND_ROLES], ['Feedback', FEEDBACK_ROLES], ['Data', DATA_ROLES]] as [string, readonly RoleName[]][]).map(([title, names]) => (
+                <Group key={title} title={title}>
+                  {names.map((r) => (
+                    <Select key={r} label={ROLE_LABEL(r)} value={generated?.roles[r] ?? roles[r]}
+                      options={(r === 'neutral' ? familyNames.neutrals : familyNames.accents).map((n) => [n, n])}
+                      onValue={(v) => setRoles((cur) => ({ ...cur, [r]: v }))} />
+                  ))}
+                </Group>
+              ))}
               <Group title="Hues">
                 <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['even', '12'], ['radix', 'Radix']]} />
                 <Range label="First hue" value={spectrum.hue} min={0} max={359} step={1} onValue={(v) => setSpec('hue', v)} format={(v) => `${v}°`} />

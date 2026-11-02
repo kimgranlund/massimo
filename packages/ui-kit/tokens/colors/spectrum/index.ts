@@ -68,18 +68,29 @@ export function closestFamily(data: Spectrum, requested: string, candidates: str
   return candidates.reduce((best, n) => (distance(n) < distance(best) ? n : best));
 }
 
-export interface Roles { primary: string; neutral: string; critical: string }
-export const DEFAULT_ROLES: Roles = { primary: 'indigo', neutral: 'neutral', critical: 'red' };
+/**
+ * Color roles, each a family: brand (primary, secondary, neutral), feedback (critical = errors and
+ * danger, warning, success, info) and data 1–6 (chart series and categories, well spaced in hue).
+ */
+export const BRAND_ROLES = ['primary', 'secondary', 'neutral'] as const;
+export const FEEDBACK_ROLES = ['critical', 'warning', 'success', 'info'] as const;
+export const DATA_ROLES = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6'] as const;
+export const ROLE_NAMES = [...BRAND_ROLES, ...FEEDBACK_ROLES, ...DATA_ROLES] as const;
+export type RoleName = (typeof ROLE_NAMES)[number];
+export type Roles = Record<RoleName, string>;
+export const DEFAULT_ROLES: Roles = {
+  primary: 'indigo', secondary: 'amber', neutral: 'neutral',
+  critical: 'red', warning: 'orange', success: 'green', info: 'cyan',
+  data1: 'indigo', data2: 'cyan', data3: 'grass', data4: 'amber', data5: 'tomato', data6: 'plum',
+};
 
 /** Resolve the role families against what this generation actually produced. */
 export function resolveRoles(data: Spectrum, wanted: Partial<Roles> = {}): Roles {
   const f = families(data);
   const w = { ...DEFAULT_ROLES, ...wanted };
-  return {
-    primary: closestFamily(data, w.primary, f.accents),
-    neutral: f.all.includes(w.neutral) ? w.neutral : (f.neutrals[0] ?? 'neutral'),
-    critical: closestFamily(data, w.critical, f.accents),
-  };
+  return Object.fromEntries(ROLE_NAMES.map((r) => [r, r === 'neutral'
+    ? (f.all.includes(w.neutral) ? w.neutral : (f.neutrals[0] ?? 'neutral'))
+    : closestFamily(data, w[r], f.accents)])) as Roles;
 }
 
 /** Round the numbers in a color string to 4 decimals (well below a visible difference). */
@@ -105,7 +116,13 @@ export const ROLE_STEPS = {
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
   'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-subtle-hover': ['primary', 4], 'accent-fg': ['primary', 11],
-  'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-fg': ['critical', 11],
+  'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-subtle': ['critical', 3], 'danger-fg': ['critical', 11],
+  'secondary-solid': ['secondary', 9], 'secondary-solid-hover': ['secondary', 10], 'secondary-subtle': ['secondary', 3], 'secondary-fg': ['secondary', 11],
+  'warning-solid': ['warning', 9], 'warning-subtle': ['warning', 3], 'warning-fg': ['warning', 11],
+  'success-solid': ['success', 9], 'success-subtle': ['success', 3], 'success-fg': ['success', 11],
+  'info-solid': ['info', 9], 'info-subtle': ['info', 3], 'info-fg': ['info', 11],
+  // Data series: the step-9 solid of each data family.
+  'data-1': ['data1', 9], 'data-2': ['data2', 9], 'data-3': ['data3', 9], 'data-4': ['data4', 9], 'data-5': ['data5', 9], 'data-6': ['data6', 9],
   'focus-ring': ['primary', 8],
 } as const satisfies Record<string, RoleStep>;
 

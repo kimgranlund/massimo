@@ -123,11 +123,11 @@ export function typographyTokens(): Json {
   return tree;
 }
 
-type Snapshot = { roles: Record<'primary' | 'neutral' | 'critical', string>; onSolid: Record<'light' | 'dark', string>; light: Record<string, string[]>; dark: Record<string, string[]> };
+type Snapshot = { roles: Record<string, string>; onSolid: Record<'light' | 'dark', string>; light: Record<string, string[]>; dark: Record<string, string[]> };
 
 export function colorTokens(mode: 'light' | 'dark'): Json {
   const D = DEFAULTS as Snapshot;
-  const tree = header(`ui-kit colors, ${mode} scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (primary ${D.roles.primary}, neutral ${D.roles.neutral}, critical ${D.roles.critical}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
+  const tree = header(`ui-kit colors, ${mode} scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (${Object.entries(D.roles).map(([r, f]) => `${r} ${f}`).join(', ')}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
   for (const [family, steps] of Object.entries(D[mode])) steps.forEach((css, i) => put(tree, ['color', 'spectrum', family, String(i + 1)], { $type: 'color', $value: oklch(css) }));
   for (const [role, entry] of Object.entries(ROLE_STEPS)) {
     const { family, step, alpha } = roleStep(entry, mode);

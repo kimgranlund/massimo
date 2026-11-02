@@ -109,6 +109,10 @@ const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-num
 // The strip lies flat when stacked and stands up beside the panels.
 // The primary ramp as a legible showcase (not the palette component): every step with its number,
 // and its purpose once there is room. A row of 12 at narrow widths, a tall column from medium up.
+// Role overview: one chip per role (step-9 swatch, role, family).
+const roleGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(9rem, 1fr))', gap: '3' });
+const roleChip = css({ display: 'flex', alignItems: 'center', gap: '3', '& figcaption': { display: 'flex', flexDirection: 'column' } });
+const roleSwatch = css({ width: '2.5rem', height: '2.5rem', borderRadius: 'lg', flexShrink: 0 });
 const rampStrip = css({
   display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', borderRadius: 'xl', overflow: 'hidden',
   [CQ_MD]: { display: 'flex', flexDirection: 'column', width: '14rem', alignSelf: 'stretch' },
@@ -384,11 +388,11 @@ function Surfaces({ view, spectrum, params }: { view: View; spectrum?: SpectrumP
     <>
       <header className={header}>
         <h1 className={pageTitle}>Containers and colors</h1>
-        <p className={lead}>Surfaces, their spacing and their color on one page.{r ? ` Roles: primary ${r.primary}, neutral ${r.neutral}, critical ${r.critical}.` : ''}</p>
+        <p className={lead}>Surfaces, their spacing and their color on one page.{r ? ` Brand: primary ${r.primary}, secondary ${r.secondary}, neutral ${r.neutral}.` : ''}</p>
       </header>
       <Divider />
       {spectrum ? (
-        <Section id="context" title="Color in context" note="Two synthetic settings for reviewing the active palette: primary as material and accent as punctuation, then neutral surfaces with primary actions and semantic feedback. Content and figures are illustrative.">
+        <Section id="context" title="Color in context" note="Two synthetic settings for reviewing the active palette: primary as material and secondary as punctuation, then neutral surfaces with primary actions and semantic feedback. Content and figures are illustrative.">
           <ColorInContext spectrum={spectrum} />
         </Section>
       ) : <p className={lead}>Generating colors…</p>}
@@ -529,18 +533,13 @@ const ORDERS = { online: [72, 84, 68, 96, 108, 88, 80], store: [44, 49, 54, 46, 
 const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
-  const { primary, neutral, critical } = spectrum.roles;
-  // Accent: the family whose step-9 hue sits furthest from primary (punctuation, not a second brand).
-  const names = spectrum.families.map((f) => f.name).filter((n) => n !== primary && n !== neutral);
-  const idx = spectrum.families.findIndex((f) => f.name === primary);
-  const accent = spectrum.families[(idx + Math.floor(spectrum.families.length / 2)) % spectrum.families.length]?.name ?? names[0];
-  const ok = spectrum.families.find((f) => f.name === 'grass' || f.name === 'green' || f.name === 'jade')?.name ?? accent;
-  const warn = spectrum.families.find((f) => f.name === 'amber' || f.name === 'yellow' || f.name === 'orange')?.name ?? accent;
+  // Every color here is a role: brand (primary, secondary, neutral), feedback and data series.
+  const { primary, neutral, critical, secondary: accent, success: ok, warning: warn, info, data1, data2 } = spectrum.roles;
   const max = Math.max(...ORDERS.online, ...ORDERS.store);
   const [approved, setApproved] = useState(false);
   return (
     <div className={context}>
-      <div className={contextHead}><h3 className={subTitle}>Brand</h3><span className={caption}>Primary as material · accent as punctuation</span></div>
+      <div className={contextHead}><h3 className={subTitle}>Brand</h3><span className={caption}>Primary as material · secondary as punctuation</span></div>
       <div className={brandGrid}>
         <ui-panel className={campaign} style={{ background: sv(primary, 9), color: spectrum.families.find((f) => f.name === primary)?.lightText[8] }}>
           <span className={sectionKicker}>Studio / Collection 01</span>
@@ -621,20 +620,21 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
               {DAYS.map((d, i) => (
                 <div key={i} className={chartDay}>
                   <div className={bars}>
-                    <span className={bar} style={{ height: `${(ORDERS.online[i] / max) * 100}%`, background: sv(primary, 9) }} />
-                    <span className={bar} style={{ height: `${(ORDERS.store[i] / max) * 100}%`, background: sv(accent, 9) }} />
+                    <span className={bar} style={{ height: `${(ORDERS.online[i] / max) * 100}%`, background: sv(data1, 9) }} />
+                    <span className={bar} style={{ height: `${(ORDERS.store[i] / max) * 100}%`, background: sv(data2, 9) }} />
                   </div>
                   <span className={caption}>{d}</span>
                 </div>
               ))}
             </div>
-            <div className={legend}><span><i className={dot} style={{ background: sv(primary, 9) }} />Online · primary</span><span><i className={dot} style={{ background: sv(accent, 9) }} />In store · accent</span></div>
+            <div className={legend}><span><i className={dot} style={{ background: sv(data1, 9) }} />Online · data 1</span><span><i className={dot} style={{ background: sv(data2, 9) }} />In store · data 2</span></div>
           </ui-card>
           <ui-card className={feedbackCard}>
             <span className={kicker}>Feedback</span>
             <p className={callout} role="note" style={{ background: sv(primary, 3), color: sv(primary, 11) }}>Changes to this palette appear across every preview.</p>
             <p className={callout} role="note" style={{ background: sv(warn, 3), color: sv(warn, 11) }}>Check small text and neighboring hues before choosing a brand color.</p>
             <p className={callout} role="note" style={{ background: sv(critical, 3), color: sv(critical, 11) }}>Critical: {critical} carries destructive actions.</p>
+            <p className={callout} role="note" style={{ background: sv(info, 3), color: sv(info, 11) }}>Info: {info} marks neutral announcements.</p>
           </ui-card>
         </div>
       </ui-panel>
@@ -785,6 +785,17 @@ function ColorSections({ spectrum }: { spectrum: SpectrumPayload }) {
   const r = spectrum.roles;
   return (
     <>
+      <Section id="roles" title="Roles" note="Each role is a family. Brand: primary, secondary, neutral. Feedback: critical, warning, success, info. Data 1–6: chart series and categories. Swatches show step 9 (the solid).">
+        <div className={roleGrid}>
+          {(Object.keys(r) as (keyof typeof r)[]).map((role) => (
+            <figure key={role} className={roleChip}>
+              <span className={roleSwatch} style={{ background: sv(r[role], 9) }} />
+              <figcaption><span className={rowLabel}>{role.startsWith('data') ? `Data ${role.slice(4)}` : role[0].toUpperCase() + role.slice(1)}</span><span className={metrics}>{r[role]}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+      </Section>
+      <Divider />
       <Section id="engine" title="Hue and chroma" note="What shaped this generation: where each accent sits in hue quadrature, and how much chroma each hue can hold at each tone in the target gamut.">
         <EngineSummary spectrum={spectrum} />
         <div className={chartGrid}>

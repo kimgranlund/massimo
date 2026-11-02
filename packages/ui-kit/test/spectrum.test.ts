@@ -64,3 +64,20 @@ test('diagnostics: quadrature, boundary, T*, C* and the limiting accent', async 
   assert.equal(d.accents.length, families(data).accents.length);
   for (const [i, [, c]] of d.weakest.entries()) assert.ok(d.accents.every((a) => a.curve[i][1] >= c - 1e-9), 'weakest is the minimum');
 });
+
+test('roles: brand, feedback and data 1–6 resolve to generated families and emit role variables', async () => {
+  const { generateSpectrum, resolveRoles, roleVariables, ROLE_NAMES, DATA_ROLES, families } = await import('../tokens/colors/spectrum/index.ts');
+  const data = generateSpectrum({});
+  const roles = resolveRoles(data);
+  const f = families(data);
+  assert.deepEqual(Object.keys(roles), [...ROLE_NAMES]);
+  for (const r of ROLE_NAMES) assert.ok((r === 'neutral' ? f.all : f.accents).includes(roles[r]), `${r} → ${roles[r]}`);
+  assert.equal(new Set(DATA_ROLES.map((r) => roles[r])).size, 6, 'data series are six distinct families');
+  assert.notEqual(roles.info, roles.primary, 'info is not the primary by default');
+  assert.notEqual(roles.secondary, roles.primary);
+  const v = roleVariables(data, roles, 'light');
+  assert.equal(v['--colors-data-3'], `var(--colors-spectrum-${roles.data3}-9)`);
+  assert.equal(v['--colors-secondary-solid'], `var(--colors-spectrum-${roles.secondary}-9)`);
+  assert.equal(v['--colors-warning-fg'], `var(--colors-spectrum-${roles.warning}-11)`);
+  assert.equal(resolveRoles(data, { critical: 'h140' }).critical !== roles.critical, true, 'any role can be repointed');
+});

@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "ui-kit colors, dark scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (primary indigo, neutral neutral, critical crimson). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.",
+  "$description": "ui-kit colors, dark scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (primary indigo, secondary amber, neutral neutral, critical crimson, warning orange, success grass, info cyan, data1 indigo, data2 cyan, data3 grass, data4 amber, data5 tomato, data6 plum). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.",
   "color": {
     "spectrum": {
       "cyan": {
@@ -1855,10 +1855,110 @@
         "$value": "{color.spectrum.crimson.10}",
         "$description": "critical step 10"
       },
+      "danger-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.crimson.3}",
+        "$description": "critical step 3"
+      },
       "danger-fg": {
         "$type": "color",
         "$value": "{color.spectrum.crimson.11}",
         "$description": "critical step 11"
+      },
+      "secondary-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.9}",
+        "$description": "secondary step 9"
+      },
+      "secondary-solid-hover": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.10}",
+        "$description": "secondary step 10"
+      },
+      "secondary-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.3}",
+        "$description": "secondary step 3"
+      },
+      "secondary-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.11}",
+        "$description": "secondary step 11"
+      },
+      "warning-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.9}",
+        "$description": "warning step 9"
+      },
+      "warning-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.3}",
+        "$description": "warning step 3"
+      },
+      "warning-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.orange.11}",
+        "$description": "warning step 11"
+      },
+      "success-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.9}",
+        "$description": "success step 9"
+      },
+      "success-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.3}",
+        "$description": "success step 3"
+      },
+      "success-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.11}",
+        "$description": "success step 11"
+      },
+      "info-solid": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.9}",
+        "$description": "info step 9"
+      },
+      "info-subtle": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.3}",
+        "$description": "info step 3"
+      },
+      "info-fg": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.11}",
+        "$description": "info step 11"
+      },
+      "data-1": {
+        "$type": "color",
+        "$value": "{color.spectrum.indigo.9}",
+        "$description": "data1 step 9"
+      },
+      "data-2": {
+        "$type": "color",
+        "$value": "{color.spectrum.cyan.9}",
+        "$description": "data2 step 9"
+      },
+      "data-3": {
+        "$type": "color",
+        "$value": "{color.spectrum.grass.9}",
+        "$description": "data3 step 9"
+      },
+      "data-4": {
+        "$type": "color",
+        "$value": "{color.spectrum.amber.9}",
+        "$description": "data4 step 9"
+      },
+      "data-5": {
+        "$type": "color",
+        "$value": "{color.spectrum.tomato.9}",
+        "$description": "data5 step 9"
+      },
+      "data-6": {
+        "$type": "color",
+        "$value": "{color.spectrum.plum.9}",
+        "$description": "data6 step 9"
       },
       "focus-ring": {
         "$type": "color",

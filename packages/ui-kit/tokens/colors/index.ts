@@ -6,7 +6,7 @@
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
 import { ROLE_STEPS, roleStep, withAlpha } from './spectrum/index.ts';
 
-type Snapshot = { roles: Record<'primary' | 'neutral' | 'critical', string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
+type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
 const D = DEFAULTS as Snapshot;
 
 // Same value set in every scheme block, so a .light/.dark class on any element re-resolves it.

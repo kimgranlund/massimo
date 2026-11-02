@@ -12,7 +12,7 @@ The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generat
 
 ## Roles
 
-Roles alias ramp steps; an entry may name a different dark step or an alpha (`roleStep`, translucent roles emit `color-mix(… transparent)`) (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Defaults: primary `indigo`, neutral `neutral`, critical `crimson` (requested families resolve to the nearest generated hue).
+Roles alias ramp steps; an entry may name a different dark step or an alpha (`roleStep`, translucent roles emit `color-mix(… transparent)`) (`ROLE_STEPS` in `tokens/colors/spectrum/index.ts`). Each role is a family (`Roles`, `ROLE_NAMES`): brand (primary, secondary, neutral), feedback (critical = errors and danger, warning, success, info) and data 1–6 (chart series and categories). Defaults request primary `indigo`, secondary `amber`, neutral `neutral`, critical `red`, warning `orange`, success `green`, info `cyan`, data `indigo`, `cyan`, `grass`, `amber`, `tomato`, `plum`; each resolves to the nearest generated hue (`resolveRoles`).
 
 | Role variable | Step |
 |---|---|
@@ -26,7 +26,10 @@ Roles alias ramp steps; an entry may name a different dark step or an alpha (`ro
 | `--colors-fg-muted`, `--colors-fg` | neutral 11, 12 |
 | `--colors-accent-subtle`, `-subtle-hover`, `-solid`, `-solid-hover`, `-fg` | primary 3, 4, 9, 10, 11 |
 | `--colors-focus-ring` | primary 8 |
-| `--colors-danger-solid`, `-solid-hover`, `-fg` | critical 9, 10, 11 |
+| `--colors-danger-solid`, `-solid-hover`, `-subtle`, `-fg` | critical 9, 10, 3, 11 |
+| `--colors-secondary-solid`, `-solid-hover`, `-subtle`, `-fg` | secondary 9, 10, 3, 11 |
+| `--colors-warning-*`, `--colors-success-*`, `--colors-info-*` (`-solid`, `-subtle`, `-fg`) | warning, success, info 9, 3, 11 |
+| `--colors-data-1` … `--colors-data-6` | data 1–6 at 9 |
 | `--colors-fg-on-solid` | the engine's APCA black/white choice for primary 9 |
 
 ## Schemes
