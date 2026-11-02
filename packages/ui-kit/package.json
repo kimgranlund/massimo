@@ -25,7 +25,8 @@
     "./components/range/element": "./components/range/range.element.ts",
     "./components/color/element": "./components/color/color.element.ts",
     "./components/swiper/element": "./components/swiper/swiper.element.ts",
-    "./components/image/element": "./components/image/image.element.ts"
+    "./components/image/element": "./components/image/image.element.ts",
+    "./spectrum": "./tokens/colors/spectrum/index.ts"
   },
   "scripts": {
     "prepare": "panda codegen",
