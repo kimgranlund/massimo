@@ -36,7 +36,8 @@
     "typecheck": "tsc -p .",
     "test": "node --test test/",
     "geometry:csv": "node scripts/geometry-csv.ts",
-    "tokens:dtcg": "node scripts/tokens-dtcg.ts"
+    "tokens:dtcg": "node scripts/tokens-dtcg.ts",
+    "spectrum:defaults": "node scripts/spectrum-defaults.ts"
   },
   "peerDependencies": {
     "react": ">=19"

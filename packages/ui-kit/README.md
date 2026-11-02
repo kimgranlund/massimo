@@ -14,9 +14,14 @@ Light-DOM web components and React components built on one headless layer and on
 
 Components carry no styles of their own yet. `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `[data-ui]`/`[data-part]` hooks and ARIA state, shared by the web components and their React counterparts. Components: `ui-button`, `ui-input`, `ui-select`, `ui-listbox`, `ui-segmented` (a horizontal listbox), `ui-option`, `ui-badge`, `ui-tag`, `ui-chip`, `ui-checkbox`, `ui-radio`, `ui-switch`, `ui-range`, `ui-progress`, `ui-swatch`, `ui-palette`, `ui-swiper`, `ui-image`, and CSS-only containers `ui-group`, `ui-collection`, `ui-tile`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`.
 
-## Spectrum colors
+## Colors: Spectrum by default
 
-`@massimo/ui-kit/spectrum` generates HCT-based, Radix-style 12-step ramps (separate light and dark) with the engine ported from massimo-ui (`tokens/colors/spectrum/`, provenance in `NOTICE.md`). `generateSpectrum(settings)` takes ~300ms; `spectrumCSS(data, resolveRoles(data, { primary, neutral, critical }))` maps the chosen families onto the kit's semantic colors (Radix step semantics) and exposes every ramp as `--spectrum-{family}-{1..12}`.
+The kit's colors are the default Spectrum: HCT-generated, Radix-style 12-step ramps with separate light and dark values (engine ported from massimo-ui, provenance in `tokens/colors/spectrum/NOTICE.md`).
+
+- Tokens: `colors.spectrum.{family}.{0..12}` for every family (step 0 is the page canvas, halfway from step 1 toward white/black). CSS: `--colors-spectrum-indigo-9`.
+- Roles alias ramp steps with Radix semantics (neutral 0 canvas, 2–3 backgrounds, 6–7 borders, 11–12 text; primary 9–10 solids, 3 subtle, 11 text, 8 focus; critical 9–11). Defaults: primary indigo, neutral neutral, critical crimson.
+- The values come from a generated snapshot, `tokens/colors/spectrum/defaults.json` (`npm run spectrum:defaults`; a test fails when it is stale), so builds never run the engine.
+- Other settings at runtime: `generateSpectrum(settings)` (~300ms) and `spectrumCSS(data, resolveRoles(data, roles))` from `@massimo/ui-kit/spectrum` emit the same variable names; place the CSS after the kit stylesheet.
 
 ## Color scheme
 

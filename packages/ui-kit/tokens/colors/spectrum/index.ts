@@ -55,34 +55,36 @@ export function resolveRoles(data: Spectrum, wanted: Partial<Roles> = {}): Roles
 }
 
 /** Page canvas (Radix "step 0" extension): halfway from step 1 toward white/black, chroma halved. */
-function endpoint(sw: Swatch, mode: 'light' | 'dark') {
+export function endpoint(sw: Swatch, mode: 'light' | 'dark') {
   const [l, c, h] = sw.oklch;
   return `oklch(${mode === 'light' ? (l + 1) / 2 : l / 2} ${c / 2} ${h})`;
 }
 
-/** Semantic variables per scheme, using Radix step semantics (1-based steps). */
+/** Round the numbers in a color string to 4 decimals (well below a visible difference). */
+export const trimColor = (css: string) => css.replace(/-?\d*\.\d+/g, (n) => String(Number(Number(n).toFixed(4))));
+
+/** Steps 0–12 per family and scheme (0 = canvas endpoint). */
+export function ramps(data: Spectrum, mode: 'light' | 'dark'): Record<string, string[]> {
+  return Object.fromEntries(Object.entries(data.schemes[mode]).map(([name, ramp]) => [name, [endpoint(ramp[0], mode), ...ramp.map((sw) => sw.css)].map(trimColor)]));
+}
+
+/** Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS. */
+export const ROLE_STEPS = {
+  'bg': ['neutral', 0], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
+  'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
+  'border': ['neutral', 6], 'border-strong': ['neutral', 7],
+  'accent-solid': ['primary', 9], 'accent-solid-hover': ['primary', 10], 'accent-subtle': ['primary', 3], 'accent-fg': ['primary', 11],
+  'danger-solid': ['critical', 9], 'danger-solid-hover': ['critical', 10], 'danger-fg': ['critical', 11],
+  'focus-ring': ['primary', 8],
+} as const satisfies Record<string, [keyof Roles, number]>;
+
+/** Semantic variables per scheme: ramp variables plus roles that point at them. */
 export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dark') {
-  const s = data.schemes[mode];
-  const n = s[roles.neutral], p = s[roles.primary], c = s[roles.critical];
-  const step = (ramp: Swatch[], k: number) => ramp[k - 1].css;
-  return {
-    '--colors-bg': endpoint(n[0], mode),
-    '--colors-bg-subtle': step(n, 2),
-    '--colors-bg-muted': step(n, 3),
-    '--colors-fg': step(n, 12),
-    '--colors-fg-muted': step(n, 11),
-    '--colors-fg-on-solid': p[8].apca.css,
-    '--colors-border': step(n, 6),
-    '--colors-border-strong': step(n, 7),
-    '--colors-accent-solid': step(p, 9),
-    '--colors-accent-solid-hover': step(p, 10),
-    '--colors-accent-subtle': step(p, 3),
-    '--colors-accent-fg': step(p, 11),
-    '--colors-danger-solid': step(c, 9),
-    '--colors-danger-solid-hover': step(c, 10),
-    '--colors-danger-fg': step(c, 11),
-    '--colors-focus-ring': step(p, 8),
-  };
+  const vars: Record<string, string> = {};
+  for (const [role, [family, step]] of Object.entries(ROLE_STEPS)) vars[`--colors-${role}`] = `var(--colors-spectrum-${roles[family]}-${step})`;
+  // Text on a primary solid: the engine's APCA choice for step 9.
+  vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][8].apca.css;
+  return vars;
 }
 
 const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}`;
@@ -91,14 +93,15 @@ const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object
  * CSS that applies a spectrum over the kit's semantic colors, mirroring the kit's scheme
  * structure: light by default, dark under prefers-color-scheme, .light/.dark to force. Emit it
  * after the kit stylesheet; selectors match the kit's own so each rule wins its counterpart.
+ * Variable names match the kit's tokens (--colors-spectrum-{family}-{0..12}, --colors-{role}).
  */
 export function spectrumCSS(data: Spectrum, roles: Roles) {
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
-  const ramps = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(data.schemes[mode]).flatMap(([name, ramp]) => ramp.map((sw) => [`--spectrum-${name}-${sw.step}`, sw.css])));
+  const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i}`, css])));
   return [
-    block(':where(:root)', { ...light, ...ramps('light') }),
-    block('.light', { ...light, ...ramps('light') }),
-    `@media (prefers-color-scheme: dark) {\n${block(':where(:root)', { ...dark, ...ramps('dark') })}\n}`,
-    block('.dark', { ...dark, ...ramps('dark') }),
+    block(':where(:root)', { ...rampVars('light'), ...light }),
+    block('.light', { ...rampVars('light'), ...light }),
+    `@media (prefers-color-scheme: dark) {\n${block(':where(:root)', { ...rampVars('dark'), ...dark })}\n}`,
+    block('.dark', { ...rampVars('dark'), ...dark }),
   ].join('\n');
 }

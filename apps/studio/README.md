@@ -18,12 +18,12 @@ The jig is built entirely from ui-kit components (web components in React; no na
 ## How styling flows
 
 ```
-theme parameter   --ui-accent-hue: 265                (themes.json / live postMessage)
-  -> ramp         --colors-accent-600: oklch(.53 … var(--ui-accent-hue))
-  -> role         --colors-accent-solid  (light/dark)
-  -> defaults     ui-option[aria-selected=true] { background: var(--colors-accent-subtle) }
+Spectrum settings  ->  engine (HCT)  ->  ramps   --colors-spectrum-indigo-9 (light and dark values)
+                                         roles   --colors-accent-solid: var(--colors-spectrum-indigo-9)
+components                               ui-option[aria-selected=true] { background: var(--colors-accent-subtle) }
+geometry           theme parameters      --ui-unit, --ui-border, --ui-radius-scale, --ui-corner-shape
 ```
 
-Theme values are CSS variables, so nothing is regenerated while you drag a slider. Components currently use the boilerplate `styles/defaults.ts` only.
+The kit ships the default Spectrum as tokens; the Colors tab regenerates it live and overrides the same variables.
 
 Panda setup note: `@pandacss/preset-base` must be listed explicitly in Panda 2.
