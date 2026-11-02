@@ -31,7 +31,7 @@ The semantic layer: components name what a transition is for, the intent picks t
 | `reveal` | `smooth` | popups (and their discrete `display`/`overlay`), hover controls, progress fill |
 | `emphasis` | `bouncy` | drawing attention (unused by components) |
 
-`styles/motion.ts` uses intents only (a test fails on a spring name there). One spring per intent today; a new intent may reuse a spring.
+Each component's transitions live in its slot recipe (`components/<name>/<name>.recipe.ts`, helper `t()` in `components/recipe-parts.ts`), which use intents only (a test fails on a spring name there). One spring per intent today; a new intent may reuse a spring.
 
 ## Theme inputs
 

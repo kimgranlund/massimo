@@ -7,6 +7,8 @@ import { Children, createContext, isValidElement, useContext, useId, useRef, use
 import { createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type OptionItem } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
+import { cx } from '../../styled-system/css/cx.js';
+import { listbox, segmented, option } from '../../styled-system/recipes/index.js';
 
 interface OptionState { id: string; selected: boolean; disabled: boolean; active: boolean; select: () => void }
 const OptionContext = createContext<OptionState | null>(null);
@@ -39,7 +41,7 @@ export interface OptionProps extends PartProps, Omit<HTMLAttributes<HTMLDivEleme
 
 const textOf = (n: ReactNode): string => typeof n === 'string' || typeof n === 'number' ? String(n) : Array.isArray(n) ? n.map(textOf).join('') : '';
 
-function List({ kind, name, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, gap, size, children, onKeyDown, onFocus, onBlur, ...rest }: ListboxProps & { kind: 'listbox' | 'segmented' }) {
+function List({ kind, name, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, gap, size, children, onKeyDown, onFocus, onBlur, className, ...rest }: ListboxProps & { kind: 'listbox' | 'segmented' }) {
   const base = useId();
   const [inner, setInner] = useState(defaultValue);
   const [active, setActive] = useState(-1);
@@ -63,7 +65,7 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
   const shown = focused ? active : -1;
   return (
     <div
-      {...rest} data-ui={kind} data-size={size} {...(gap !== undefined ? { gap: String(gap) } : {})}
+      {...rest} className={cx((kind === 'segmented' ? segmented : listbox)().root, className)} data-ui={kind} data-size={size} {...(gap !== undefined ? { gap: String(gap) } : {})}
       {...toReactProps(listboxAttrs({ orientation: orient, activeId: shown >= 0 ? idOf(shown) : undefined, label, disabled, required, invalid }))}
       onFocus={(e) => {
         setFocused(true);
@@ -98,14 +100,15 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
 export function Listbox(props: ListboxProps) { return <List kind="listbox" {...props} />; }
 export function Segmented(props: ListboxProps) { return <List kind="segmented" {...props} />; }
 
-export function Option({ value: _value, disabled: _disabled, leading, prefix, suffix, trailing, iconSize, children, onClick, ...rest }: OptionProps) {
+export function Option({ value: _value, disabled: _disabled, leading, prefix, suffix, trailing, iconSize, children, onClick, className, ...rest }: OptionProps) {
   const o = useContext(OptionContext);
   if (!o) throw new Error('<Option> must be inside <Listbox> or <Segmented>');
+  const c = option();
   return (
-    <div {...rest} data-ui="option" data-icon-size={iconSize}
+    <div {...rest} className={cx(c.root, className)} data-ui="option" data-icon-size={iconSize}
       {...toReactProps(optionAttrs({ id: o.id, selected: o.selected, disabled: o.disabled, active: o.active }))}
       onClick={(e) => { o.select(); onClick?.(e); }}>
-      <Parts {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
+      <Parts classes={c} {...{ leading, prefix, suffix, trailing }}>{children}</Parts>
     </div>
   );
 }

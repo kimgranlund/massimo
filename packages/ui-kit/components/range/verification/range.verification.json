@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "4ae19e05efb84daf754496cb5af1cf4562a578fc7e55d94eba138a95415e6455"
+      "sha256": "92441535dba846959c386a5082123404cd7ad36f56fd16e50970570211b0b8bb"
     },
     {
       "path": "dom/range.ts",
@@ -14,15 +14,15 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "cf3066139fa7b9d884b4f7adffb4287ced2e83476dc001a93da05e8a2fcd84c8"
+      "sha256": "9097aae9f3a9900b872acdec4a18d52af05533b4b24b76a9658be0ab4d2e2300"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "c2c92aba7418e43a03f6cef9a50b0ed3905213611c179b0af9348808bcc32f01"
+      "sha256": "00b8516e3efab665b7c22d231c9fbfcfcf46a1d1fa1fd64b56463fd9b835161c"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
+      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {

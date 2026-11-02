@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/button/button.element.ts",
-      "sha256": "3e6c838a964c7f4cbe7b2a579c0cce98961cb8ef6fd97c009c90c051c00eb811"
+      "sha256": "a7a9a936cb35f74a8100086f466ebb4c0e847b38c993aebb658d08932752457e"
     },
     {
       "path": "components/slots.ts",
@@ -18,15 +18,15 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "ec74186d492a6c65e0d082c670cf7ad7da473e0f735a0ad393b442e2df345470"
+      "sha256": "c341563b9e457eedf58bb0f79acb6ead4a83240b24ebe6ce3b300c983110c486"
     },
     {
       "path": "components/button/button.react.tsx",
-      "sha256": "5dfd7965a071850e18f5de621a15292f0776eabdf88cf245494834e1ef809840"
+      "sha256": "bec52e2a8d9236b9af1a38dff22d6ada797c95131145b6275060b4f79af1eee2"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
+      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {

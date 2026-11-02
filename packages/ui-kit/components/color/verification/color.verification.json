@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/color/color.element.ts",
-      "sha256": "b96f44bdc02217c96bc152037dcc894a948eb3859038491d189ad58a8d35700e"
+      "sha256": "39b492fd369cef25cbd55b9674d0d77ea113e3f3c86aef21702295960ce239b2"
     },
     {
       "path": "dom/listbox.ts",
@@ -14,11 +14,11 @@
     },
     {
       "path": "components/color/color.manifest.json",
-      "sha256": "959ad9eda845eaf98b0fc19afca410baea17880405317c3b10724ddf10d5d18e"
+      "sha256": "8e80f1d3a42ea7ebadd1ef85f89d99c9e8aa731f34079e4f62ff64da67ab634e"
     },
     {
       "path": "components/color/color.react.tsx",
-      "sha256": "54239b44085002f1f57a83b58c7db59fd08360bc1f65f4c4dab2a95aa6e26827"
+      "sha256": "b20a035b8108589addab9ba60745454ba9926f1cfddaecb19c38258b72ecaef8"
     },
     {
       "path": "components/color/color.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "styles/native.ts",
-      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
+      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {

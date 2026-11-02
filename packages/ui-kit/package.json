@@ -12,6 +12,7 @@
     "./preset": "./preset.ts",
     "./styled-system/*": "./styled-system/*",
     "./css": "./dist/ui-kit.css",
+    "./css/split/*": "./dist/split/*",
     "./components/button/element": "./components/button/button.element.ts",
     "./components/button/react": "./components/button/button.react.tsx",
     "./components/input/element": "./components/input/input.element.ts",
@@ -40,8 +41,8 @@
   "scripts": {
     "prepare": "panda codegen",
     "codegen": "panda codegen",
-    "css": "panda cssgen --outfile dist/ui-kit.css",
-    "build": "panda codegen && panda cssgen --outfile dist/ui-kit.css",
+    "css": "panda cssgen --outfile dist/ui-kit.css && panda cssgen --splitting --outdir dist/split",
+    "build": "panda codegen && panda cssgen --outfile dist/ui-kit.css && panda cssgen --splitting --outdir dist/split",
     "typecheck": "tsc -p .",
     "test": "node --test test/",
     "geometry:csv": "node scripts/geometry-csv.ts",

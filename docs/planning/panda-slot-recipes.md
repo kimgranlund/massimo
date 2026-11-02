@@ -1,12 +1,12 @@
 ---
-status: proposed
+status: accepted
 owner: kim
 date: 2026-11-02
 ---
 
 # Component styles as Panda slot recipes
 
-Proposal to move ui-kit component styles from global, selector-based rules (plus generated React twins) to Panda slot recipes that the web components and the React renderers both apply. For review; nothing here is built.
+Proposal to move ui-kit component styles from global, selector-based rules (plus generated React twins) to Panda slot recipes that the web components and the React renderers both apply. Accepted and built for every component except the layout containers (see Progress); the current state is specified in [components](../specs/components.md#styles).
 
 ## Why
 
@@ -45,15 +45,36 @@ Each component gets a Panda **config slot recipe** in the preset (`theme.slotRec
 
 Each step is one component folder, shipped alone with all checks green. Order from simplest to most coupled:
 
-1. **Foundation.** Add custom conditions to the preset (done: `styles/conditions.ts`, `_keyboard`, `_checked`, `_indeterminate`, `_disabled`, `_busy`, `_userInvalid`, each matching the ARIA host and the native-child form); add the recipe registry; keep `geometry.ts` variables; add the manifest-to-recipe test. No visual change.
-2. **badge / tag / chip** (`btg`): first slot recipe with parts and the `selected` state; web component adds classes; React uses the recipe; remove their global rules and twins.
-3. **button**: `variant` (neutral, primary), busy, the construction pattern parts.
-4. **choice** (checkbox, radio, switch), **range / progress**, **color** (swatch, palette).
-5. **listbox / segmented / option**, then **input**, then **select** (trigger, popup, anchor positioning, the native-select twin).
-6. **swiper, image, containers.**
-7. **Cleanup.** Delete `styles/native.ts` and the component sections of `defaults.ts`; per-component CSS output; update specs (`components.md`, `registry.md`, `authoring.md`).
+1. **Foundation.** (done) Add custom conditions to the preset (done: `styles/conditions.ts`, `_keyboard`, `_checked`, `_indeterminate`, `_disabled`, `_busy`, `_userInvalid`, each matching the ARIA host and the native-child form); add the recipe registry; keep `geometry.ts` variables; add the manifest-to-recipe test. No visual change.
+2. (done) **badge / tag / chip** (`btg`): first slot recipe with parts and the `selected` state; web component adds classes; React uses the recipe; remove their global rules and twins.
+3. (done) **button**: `variant` (neutral, primary), busy, the construction pattern parts.
+4. (done) **choice** (checkbox, radio, switch), **range / progress**, **color** (swatch, palette).
+5. (done) **listbox / segmented / option**, then **input**, then **select** (trigger, popup, anchor positioning, the native-select twin).
+6. (done, containers deferred) **swiper, image, containers.**
+7. (done, with the deviations below) **Cleanup.** Delete `styles/native.ts` and the component sections of `defaults.ts`; per-component CSS output; update specs (`components.md`, `registry.md`, `authoring.md`).
 
 Verification per step: unit tests, `geometry-check.html` (`fails: []`), `react-check.html` (`fails: []`), a light and dark screenshot of the component's jig section, and a size check of `dist/ui-kit.css` (expected to shrink as twins disappear).
+
+## Progress
+
+| Step | Commit | Notes |
+|---|---|---|
+| 2 badge, tag, chip | `0e8b56c` | recipe registry (`components/recipes.ts`), `components/classes.ts`, `_enabled` condition, schema `panda-slot-recipe`, `test/recipes.test.ts` (parts = slots) |
+| 3 button | `08c59e8` | `variant` property and recipe variant; html renderer selectors are recipe classes |
+| 4 choice, range/progress, color | `714cc66` | construction pattern written once per recipe (`constructionPattern`), -12 KB |
+| 5 listbox/segmented/option, input, select | `195d497` | native select states and `::picker(select)` from the root; `mergeStyles` |
+| 6 swiper, image | `667b759` | `styles/motion.ts` deleted; containers deferred |
+| 7 cleanup | this commit | specs, split CSS output (`dist/split/`) |
+
+Deviations:
+
+- **Layout containers are not migrated.** They are being redesigned on another branch (area / container / wrapper families), so `ui-group` … `ui-page`, their rules in `styles/defaults.ts`, and the container and composite sections of `styles/geometry.ts` are untouched.
+- **`styles/native.ts` stays**, reduced to the twin generator for those remaining global rules (containers, and the composite geometry of listbox, segmented, option and the select popup). All its native plumbing moved into recipes.
+- **Size.** `dist/ui-kit.css` went from 174 KB (before step 2) to 191 KB, not smaller: each recipe carries its own copy of the shared patterns (construction pattern, field control, forced colors), where the global rules shared one selector list; about 88 KB of it is tokens. Consumers who load per component use `dist/split/styles/recipes/<name>.css`.
+- **Studio class names are no longer hashed** in production: web components apply the kit's (unhashed) recipe class names, so a consuming build must emit the same names.
+- **Behavior fixes found by computed-style parity** (a dump of every element's computed style before and after each step): web-component badge/tag/chip icons now size to `--icon` like the resolver and React (a specificity tie with `i[name]` kept them at 1em); a disabled swiper paddle with hover-controls stays hidden until hover in the web component too.
+
+Open question 1 is answered: classes are the styling contract (tags remain identity and FOUC hooks). Question 2: the split output exists; whether to publish it is open. Question 3: `size` stays an inherited input.
 
 ## Risks
 

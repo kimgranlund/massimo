@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/btg/btg.element.ts",
-      "sha256": "8f766e7b2b4fc419037868e6caa1c01533168fdd1fb1bf80acbd5036676cde34"
+      "sha256": "a9a6a258ca9755dbd6ebde7dde5ad250b30b1fc65d12f8fa275077c37833aa0f"
     },
     {
       "path": "components/slots.ts",
@@ -18,19 +18,19 @@
     },
     {
       "path": "components/btg/btg.manifest.json",
-      "sha256": "c7a116c57c8a604094118bee5467107c3232c25d5fc30371f2278452053085cc"
+      "sha256": "da9b0fcaae08336a49afeabb072b35ecc4806088dc77b4b7535830a292c4866b"
     },
     {
       "path": "components/btg/btg.react.tsx",
-      "sha256": "d67e819b58ab5625ce608c8395da185e8409af93a8b5544f70451c4a344aee75"
+      "sha256": "f598a21c41703db26d674d135f6051c3b039b82f4fb0da00cb2e55c4ad2ae168"
     },
     {
       "path": "components/parts.react.tsx",
-      "sha256": "8d545467b82b5e123f066ad5de9b787042c81f4eac55e8a6b994662d25eb68d5"
+      "sha256": "f7bb4c0cc6fd38681b3ddba03afbb81a2d17e74f6d8612fb237f235f5c0578d9"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
+      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {

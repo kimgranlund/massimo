@@ -8,7 +8,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 - **One source, many outputs.** The geometry and type resolvers drive the CSS, `docs/geometry.csv` and the DTCG files; the Spectrum snapshot drives the color tokens and their DTCG files. Tests fail when a committed output is stale.
 - **Light-DOM web components, zero native form elements.** Components are custom elements styled from the outside; form behavior comes from `UIFormElement` (ElementInternals), not from embedded `<input>`s.
 - **Headless behavior is shared.** `dom/` returns attribute maps and handles keys; web components apply them, and React counterparts (button, input) spread the same maps.
-- **No component styles beyond defaults.** `styles/defaults.ts` is one boilerplate stylesheet keyed on tags, `data-part` and ARIA state. Every length comes from `styles/geometry.ts`.
+- **One slot recipe per component.** Each component's styles are a Panda slot recipe (`components/<name>/<name>.recipe.ts`) applied as classes by the web component and the React renderer alike; states use shared conditions keyed on ARIA and native state. Every length comes from the geometry variables in `styles/geometry.ts`.
 
 ## Layers (`packages/ui-kit`)
 

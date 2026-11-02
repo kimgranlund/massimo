@@ -1507,6 +1507,11 @@
     {
       "from": "component:checkbox",
       "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:checkbox",
+      "relation": "ownsPart",
       "to": "part:choice-box"
     },
     {
@@ -1637,6 +1642,11 @@
     {
       "from": "component:radio",
       "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:radio",
+      "relation": "ownsPart",
       "to": "part:choice-box"
     },
     {
@@ -1753,6 +1763,11 @@
       "from": "component:switch",
       "relation": "usesTokens",
       "to": "tokens:geometry"
+    },
+    {
+      "from": "component:switch",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
     },
     {
       "from": "component:switch",

@@ -6,27 +6,27 @@
   "sources": [
     {
       "path": "components/image/image.element.ts",
-      "sha256": "b4732cd81255fe4bbeca802416bd4c4863dbce079c5a0711070992cdb2be4079"
+      "sha256": "69fad04cbe0ec70db844baf0bb1e4ca377be061e88b267ffe66b448e345ac219"
     },
     {
       "path": "components/image/ratios.ts",
-      "sha256": "e421c5212927ddded1f5355e51b825fd4ce039153cac03ef97326c45c9d54d76"
+      "sha256": "5505555c58aa344f0d2a6124349df38f7620f89e77a5d9e08a4cbc3fc462498d"
     },
     {
       "path": "components/image/image.manifest.json",
-      "sha256": "ae38eb049f54616c9a75c7371c57555656b529376d50e13e48e8af17de5cb8fc"
+      "sha256": "182b068f3616ab4a99293b30a6d34a043160099942ee63b3e148794e53eaac7d"
     },
     {
       "path": "components/image/image.react.tsx",
-      "sha256": "7ed88053447af0493d765e1be944ced850d041d289a59d573996c20a58caae08"
+      "sha256": "06fd36406ae084ac70085a5ab115ca1e36f9939174777a81263f3161b64cdeb4"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
+      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
-      "sha256": "7558f7a5f6fade247e77cfab6b0c0d74a2b71b5ab7c57194f126aeabed0efae9"
+      "sha256": "12ef727d6b887c78ae3627d24a234927a80dc3d051a05202558c4d289c87b041"
     }
   ],
   "renderers": {

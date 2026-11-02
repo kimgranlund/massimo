@@ -8,7 +8,9 @@
 //   slideshow: several child images become an inline swiper; dots and paddles show on hover.
 import { UIElement, define } from '../../core/index.ts';
 import '../swiper/swiper.element.ts';
-import { customRatio } from './ratios.ts';
+import { customRatio, fitVariant, ratioVariant } from './ratios.ts';
+import { setClasses } from '../classes.ts';
+import { image } from '../../styled-system/recipes/image.js';
 
 export { RATIOS } from './ratios.ts';
 const POSITION = /^[a-z0-9.%\s-]{1,40}$/i;
@@ -65,12 +67,15 @@ export class UIImage extends UIElement {
   };
 
   update() {
-    // Ratio: presets are [ratio=<name>] selectors in CSS; a validated custom "w/h" reaches CSS as
+    // Ratio: presets are recipe variants; a validated custom "w/h" reaches CSS as
     // --ui-image-ratio; anything else is ignored.
     const custom = customRatio(this.ratio);
     if (custom) this.style.setProperty('--ui-image-ratio', custom); else this.style.removeProperty('--ui-image-ratio');
     if (POSITION.test(this.position)) this.style.setProperty('--ui-image-position', this.position);
     else this.style.removeProperty('--ui-image-position');
+    const c = image({ ratio: ratioVariant(this.ratio) as any, fit: fitVariant(this.fit), slideshow: this.slideshow });
+    setClasses(this, c.root);
+    this.#swiper?.querySelectorAll('[data-part=slide]').forEach((s) => setClasses(s, c.slide));
     if (this.slideshow) return;
     // Single image from attributes, unless the author supplied <img>/<picture>.
     const authored = this.querySelector(':scope > img:not([data-generated]), :scope > picture');

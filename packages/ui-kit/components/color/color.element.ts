@@ -9,6 +9,8 @@ import { UIElement, UIFormElement, define, signal, type Problem } from '../../co
 import { applyAttrs, navigate, optionAttrs, listboxAttrs, uid } from '../../dom/index.ts';
 
 import { isTranslucent, validColor } from './color.ts';
+import { applyRecipe } from '../classes.ts';
+import { swatch, palette } from '../../styled-system/recipes/index.js';
 
 export { isTranslucent } from './color.ts';
 
@@ -30,6 +32,7 @@ export class UISwatch extends UIElement {
     }
     this.toggleAttribute('data-invalid', !!this.color && !ok);
     this.toggleAttribute('data-alpha', !ok || isTranslucent(this.color));
+    applyRecipe(this, swatch());
   }
 }
 
@@ -69,6 +72,7 @@ export class UIPalette extends UIFormElement {
 
   update() {
     const list = this.swatches;
+    applyRecipe(this, palette({ selectable: this.#isSelectable, orientation: this.#orientation }));
     if (!this.#isSelectable) { applyAttrs(this, { role: 'group', 'aria-label': this.label || undefined }); return; }
     const active = this.#active.value >= 0 ? this.#active.value : list.findIndex((s) => s.color === this.value);
     list.forEach((s, i) => applyAttrs(s, {

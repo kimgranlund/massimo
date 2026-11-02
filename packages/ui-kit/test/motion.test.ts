@@ -56,9 +56,11 @@ test('intents map to their springs (Panda semantic tokens and canvas redeclarati
   assert.ok(!('--durations-instant' in vars));
 });
 
-test('styles/motion.ts names intents, never springs', async () => {
-  const { readFileSync } = await import('node:fs');
-  const src = readFileSync(new URL('../styles/motion.ts', import.meta.url), 'utf8');
+test('component recipes name motion intents, never springs', async () => {
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const dir = new URL('../components/', import.meta.url);
+  const files = ['recipe-parts.ts', ...readdirSync(dir, { recursive: true }).map(String).filter((f) => f.endsWith('.recipe.ts'))];
+  const src = files.map((f) => readFileSync(new URL(f, dir), 'utf8')).join('\n');
   assert.doesNotMatch(src, /\{(durations|easings)\.(quick|smooth|snappy|bouncy)\}|t\('(quick|smooth|snappy|bouncy)'/);
   assert.match(src, /t\('toggle'/);
 });

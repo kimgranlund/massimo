@@ -9,17 +9,23 @@
 import { UIElement, define } from '../../core/index.ts';
 import { applyAttrs, buttonAttrs, isInactive, onButtonKeydown } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
+import { applyRecipe, partOf } from '../classes.ts';
+import { badge } from '../../styled-system/recipes/badge.js';
+import { tag } from '../../styled-system/recipes/tag.js';
+import { chip } from '../../styled-system/recipes/chip.js';
 import '../../icons/index.ts';
 
 export class UIBadge extends UIElement {
   #unslot?: () => void;
   connected() { this.#unslot = observeSlots(this); }
+  update() { applyRecipe(this, badge()); }
   disconnected() { this.#unslot?.(); }
 }
 
 export class UITag extends UIElement {
   #unslot?: () => void;
   connected() { this.#unslot = observeSlots(this); }
+  update() { applyRecipe(this, tag()); }
   disconnected() { this.#unslot?.(); }
 }
 
@@ -65,6 +71,7 @@ export class UIChip extends UIElement {
       this.#removeIcon.remove();
       this.#removeIcon = undefined;
     }
+    applyRecipe(this, chip({ selectable: this.selectable }), (slot) => slot === 'remove' ? this.#removeIcon : partOf(this, slot));
   }
 
   /** Fire `remove`; unless prevented, remove the chip and move focus to a neighbour. */

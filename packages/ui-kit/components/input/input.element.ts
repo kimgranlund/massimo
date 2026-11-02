@@ -6,6 +6,8 @@
 // Author adornments as children with slot="leading" | "prefix" | "suffix" | "trailing".
 import { UIFormElement, define, html, type Problem } from '../../core/index.ts';
 import { adoptAdornments, ADORNMENT_PARTS } from '../slots.ts';
+import { applyRecipe, partOf } from '../classes.ts';
+import { input } from '../../styled-system/recipes/input.js';
 import { applyAttrs, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, type TextType } from '../../dom/index.ts';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,6 +76,7 @@ export class UIInput extends UIFormElement {
     applyAttrs(editor, { ...a.control, ...textEntryAttrs({ type: this.type, placeholder: this.placeholder, editable: !this.isDisabled && !this.readonly }) });
     // Only write text when it differs, so typing never moves the caret.
     if (editor.textContent !== this.value) editor.textContent = this.value;
+    applyRecipe(this, input(), (slot) => partOf(this, slot) ?? partOf(control, slot));
   }
 
   // ── UIFormElement hooks ──

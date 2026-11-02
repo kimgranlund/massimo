@@ -10,12 +10,8 @@
   "contract": "../../contracts/components.json#/components/button",
   "stateContract": "../../contracts/states.json",
   "styleSource": {
-    "format": "panda-global",
-    "modules": [
-      "../../styles/geometry.ts",
-      "../../styles/defaults.ts",
-      "../../styles/motion.ts"
-    ]
+    "format": "panda-slot-recipe",
+    "module": "./button.recipe.ts"
   },
   "independentLayers": [
     {
@@ -121,21 +117,24 @@
           "inspector": {
             "control": "toggle"
           }
-        }
-      ],
-      "attributes": [
+        },
         {
-          "name": "variant",
+          "key": "variant",
           "type": "string",
+          "default": "neutral",
+          "attribute": "variant",
+          "reflects": false,
           "enum": [
+            "neutral",
             "primary"
           ],
-          "readBy": "css",
-          "description": "primary: the primary solid (primary.solid) with the contrast text color (fg.onSolid); hover and press use primary.solidHover. Omit for the neutral button. data-variant is the same input for plain HTML and the React Button.",
+          "description": "Recipe variant. primary: the primary solid (primary.solid) with the contrast text color (fg.onSolid); hover and press use primary.solidHover. neutral (default): the muted fill. The React Button takes the same variant prop; plain HTML uses the recipe classes (ui-button__root--variant_primary).",
           "inspector": {
             "control": "select"
           }
-        },
+        }
+      ],
+      "attributes": [
         {
           "name": "icon-size",
           "type": "string",
@@ -416,7 +415,7 @@
           ],
           "props": [
             "loading?: boolean",
-            "variant?: 'primary' // primary: the primary solid with contrast text; omit for the neutral button.",
+            "variant?: 'neutral' | 'primary' = 'neutral' // primary: the primary solid with contrast text; neutral (default) the muted fill.",
             "leading?: ReactNode",
             "prefix?: ReactNode",
             "suffix?: ReactNode",
@@ -430,7 +429,7 @@
     "html": {
       "status": "in_progress",
       "selectors": {
-        "component:button": "[data-ui=button]"
+        "component:button": ".ui-button__root"
       }
     }
   }

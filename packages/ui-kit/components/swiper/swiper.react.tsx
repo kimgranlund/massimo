@@ -4,6 +4,13 @@
 // <button data-ui="button">s and the dots native <button>s. An IntersectionObserver tracks the slide
 // that is at least 60% visible.
 import { Children, useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react';
+import { cx } from '../../styled-system/css/cx.js';
+import { button } from '../../styled-system/recipes/button.js';
+import { swiper } from '../../styled-system/recipes/swiper.js';
+
+/** Paddles are buttons: the button recipe's classes, plus the swiper's paddle slot. */
+const paddleClasses = button();
+const c = swiper();
 
 export interface SwiperProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /** Accessible name of the carousel region. */
@@ -18,7 +25,7 @@ export interface SwiperProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCha
   children?: ReactNode;
 }
 
-export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange, size, children, ...rest }: SwiperProps) {
+export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange, size, children, className, ...rest }: SwiperProps) {
   const viewport = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const slides = Children.toArray(children);
@@ -46,23 +53,23 @@ export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange,
   };
 
   const paddle = (dir: 'prev' | 'next') => (
-    <button type="button" data-ui="button" data-part="paddle" data-dir={dir} data-icon-size="lg" aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
+    <button type="button" className={cx(paddleClasses.root, c.paddle)} data-ui="button" data-part="paddle" data-dir={dir} data-icon-size="lg" aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
       aria-disabled={(dir === 'prev' ? index <= 0 : index >= n - 1) || undefined}
       onClick={() => { if (dir === 'prev' ? index > 0 : index < n - 1) go(index + (dir === 'prev' ? -1 : 1)); }}>
-      <span data-part="leading"><i name={`caret-${dir === 'prev' ? 'left' : 'right'}`} /></span>
+      <span data-part="leading" className={paddleClasses.leading}><i name={`caret-${dir === 'prev' ? 'left' : 'right'}`} /></span>
     </button>
   );
 
   return (
-    <div {...rest} data-ui="swiper" data-size={size} role="region" aria-roledescription="carousel" aria-label={label || undefined}
+    <div {...rest} className={cx(c.root, className)} data-ui="swiper" data-size={size} role="region" aria-roledescription="carousel" aria-label={label || undefined}
       data-hover-controls={hoverControls || undefined} data-no-dots={noDots || undefined} data-no-paddles={noPaddles || undefined} data-single={n <= 1 || undefined}>
-      <div ref={viewport} data-part="viewport" tabIndex={0}>
+      <div ref={viewport} data-part="viewport" className={c.viewport} tabIndex={0}>
         {slides.map((s, k) => <div key={k} data-part="slide" role="group" aria-roledescription="slide" aria-label={`${k + 1} of ${n}`}>{s}</div>)}
       </div>
       {paddle('prev')}
       {paddle('next')}
-      <div data-part="dots">
-        {slides.map((_, k) => <button key={k} type="button" data-part="dot" aria-label={`Go to slide ${k + 1}`} aria-current={k === index} onClick={() => go(k)} />)}
+      <div data-part="dots" className={c.dots}>
+        {slides.map((_, k) => <button key={k} type="button" className={c.dot} data-part="dot" aria-label={`Go to slide ${k + 1}`} aria-current={k === index} onClick={() => go(k)} />)}
       </div>
     </div>
   );

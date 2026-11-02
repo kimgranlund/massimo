@@ -31,7 +31,7 @@ Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` a
 
 ## Preset
 
-`preset.ts` merges the theme parameters, reset, scheme rules, geometry, defaults and FOUC guard per selector (`mergeGlobalCss`; a test fails if any rule is lost). Apps add `@pandacss/preset-base` and the ui-kit preset to their own Panda config. Panda 2 ships no utilities or breakpoints without preset-base and the kit's breakpoints.
+`preset.ts` merges the theme parameters, reset, scheme rules, geometry, defaults and FOUC guard per selector (`mergeGlobalCss`; a test fails if any rule is lost), and registers the component slot recipes (`theme.slotRecipes`) and the state conditions. An app that renders the web components sets `staticCss: { recipes: '*' }` and leaves class names unhashed ([components](components.md#styles)). Apps add `@pandacss/preset-base` and the ui-kit preset to their own Panda config. Panda 2 ships no utilities or breakpoints without preset-base and the kit's breakpoints.
 
 Conditions: `osDark`, `dark`, `light` (schemes), plus the state conditions in `styles/conditions.ts`: `keyboard` (keyboard modality), `checked`, `indeterminate`, `disabled`, `busy` and `userInvalid`. Each matches both renderers (ARIA on a web component host, or a native `<input>` child of a `data-ui` host), so one `css()` or recipe rule serves both. `contracts/tokens.json` lists them; a test fails when a condition is uncovered.
 
@@ -39,4 +39,4 @@ A theme scope below the root (the jig canvas) that sets `--ui-unit`, a ladder pa
 
 ## Panda configs
 
-The kit (`packages/ui-kit/panda.config.ts`) and the studio (`apps/studio/panda.config.ts`) set `strictTokens` and `strictPropertyValues`: a value that is not a token is a type error, and a deliberate one-off uses Panda's escape hatch (`'[80rem]'`), which keeps exceptions visible and greppable. The studio hashes class names in production builds only (`hash.className`); token variables stay readable because the kit and the jig set them by name.
+The kit (`packages/ui-kit/panda.config.ts`) and the studio (`apps/studio/panda.config.ts`) set `strictTokens` and `strictPropertyValues`: a value that is not a token is a type error, and a deliberate one-off uses Panda's escape hatch (`'[80rem]'`), which keeps exceptions visible and greppable. Class names are not hashed: the web components put the kit's recipe class names on their parts, so an app that renders them uses `hash: false` and `staticCss: { recipes: '*' }`. Token variables stay readable because the kit and the jig set them by name.

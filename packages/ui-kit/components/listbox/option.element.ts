@@ -4,6 +4,8 @@
 import { UIElement, define } from '../../core/index.ts';
 import type { OptionItem } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
+import { applyRecipe } from '../classes.ts';
+import { option } from '../../styled-system/recipes/option.js';
 
 export class UIOption extends UIElement {
   static properties = {
@@ -16,6 +18,7 @@ export class UIOption extends UIElement {
   #unslot?: () => void;
   connected() { this.#unslot = observeSlots(this); }
   disconnected() { this.#unslot?.(); }
+  update() { applyRecipe(this, option()); }
 
   /** Text of the contents slot (icons excluded). */
   get label(): string {

@@ -4,6 +4,8 @@
 // CSS as --ui-swatch-color (a continuous value set as a custom property).
 import { Children, cloneElement, isValidElement, useId, useState, type ChangeEvent, type CSSProperties, type HTMLAttributes, type ReactElement, type ReactNode } from 'react';
 import { isTranslucent, validColor } from './color.ts';
+import { cx } from '../../styled-system/css/cx.js';
+import { swatch, palette } from '../../styled-system/recipes/index.js';
 
 export interface SwatchProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'color'> {
   color?: string;
@@ -16,10 +18,10 @@ const swatchState = (color = '') => {
   return { ok, attrs: { 'data-invalid': (!!color && !ok) || undefined, 'data-alpha': (!ok || isTranslucent(color)) || undefined } };
 };
 
-export function Swatch({ color = '', label, size, style, ...rest }: SwatchProps) {
+export function Swatch({ color = '', label, size, style, className, ...rest }: SwatchProps) {
   const { ok, attrs } = swatchState(color);
   return (
-    <span {...rest} data-ui="swatch" data-size={size} role="img" aria-label={label || color || undefined} {...attrs}
+    <span {...rest} className={cx(swatch().root, className)} data-ui="swatch" data-size={size} role="img" aria-label={label || color || undefined} {...attrs}
       style={{ ...style, ...(ok ? { '--ui-swatch-color': color } : {}) } as CSSProperties} />
   );
 }
@@ -41,14 +43,14 @@ export interface PaletteProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
   children?: ReactNode;
 }
 
-export function Palette({ name, selectable, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, size, children, ...rest }: PaletteProps) {
+export function Palette({ name, selectable, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, size, children, className, ...rest }: PaletteProps) {
   const auto = useId();
   const [inner, setInner] = useState(defaultValue);
   const current = value ?? inner;
   const isSelectable = selectable || !!name;
   const swatches = Children.toArray(children).filter(isValidElement) as ReactElement<SwatchProps>[];
   return (
-    <div {...rest} data-ui="palette" data-size={size} data-selectable={isSelectable || undefined} data-orientation={orientation === 'vertical' ? 'vertical' : undefined}
+    <div {...rest} className={cx(palette({ selectable: isSelectable, orientation: orientation === 'vertical' ? 'vertical' : 'horizontal' }).root, className)} data-ui="palette" data-size={size} data-selectable={isSelectable || undefined} data-orientation={orientation === 'vertical' ? 'vertical' : undefined}
       data-disabled={disabled || undefined} data-invalid={invalid || undefined}
       role={isSelectable ? 'radiogroup' : 'group'} aria-label={label || undefined} aria-orientation={isSelectable ? orientation ?? 'horizontal' : undefined}>
       {isSelectable
@@ -56,7 +58,7 @@ export function Palette({ name, selectable, value, defaultValue = '', onValueCha
           const color = s.props.color ?? '';
           const { ok, attrs } = swatchState(color);
           return (
-            <label key={s.key ?? i} data-ui="swatch" {...attrs} style={ok ? ({ '--ui-swatch-color': color } as CSSProperties) : undefined}>
+            <label key={s.key ?? i} className={swatch().root} data-ui="swatch" {...attrs} style={ok ? ({ '--ui-swatch-color': color } as CSSProperties) : undefined}>
               <input type="radio" name={name ?? auto} value={color} aria-label={s.props.label || color} checked={current === color} disabled={disabled} required={required}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => { if (value === undefined) setInner(e.target.value); onValueChange?.(e.target.value); }} />
             </label>

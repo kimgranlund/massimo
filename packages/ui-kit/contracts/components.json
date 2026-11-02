@@ -122,6 +122,7 @@
       "geometryFamily": "choice",
       "element": "Host is the control (role=checkbox); children are the label; the indicator box sits in the leading slot.",
       "parts": [
+        "slot-leading",
         "choice-box",
         "slot-prefix?",
         "slot-contents?",
@@ -143,6 +144,7 @@
       "geometryFamily": "choice",
       "element": "Host is the control (role=radio); radios group by name within their form or document.",
       "parts": [
+        "slot-leading",
         "choice-box",
         "slot-prefix?",
         "slot-contents?",
@@ -163,6 +165,7 @@
       "geometryFamily": "choice",
       "element": "Host is the control (role=switch).",
       "parts": [
+        "slot-leading",
         "choice-box",
         "slot-prefix?",
         "slot-contents?",

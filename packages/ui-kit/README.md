@@ -29,12 +29,12 @@ Other entry points (`package.json` `exports`): `./core`, `./dom`, `./tokens`, `.
 |---|---|---|
 | `core/` | signals, `html`/`render`/`repeat`, `UIElement`, `UIFormElement`, input modality | [components](../../docs/specs/components.md) |
 | `dom/` | headless behaviors: attribute maps and event helpers shared by both renderers | [components](../../docs/specs/components.md) |
-| `components/<folder>/` | element, React renderer, manifest, guide, examples, verification record | [registry](../../docs/specs/registry.md) |
+| `components/<folder>/` | element, React renderer, Panda slot recipe (`<name>.recipe.ts`, applied as classes by both renderers), manifest, guide, examples, verification record | [registry](../../docs/specs/registry.md) |
 | `contracts/` | schemas and shared contracts (components, parts, composition, states, tokens) | [registry](../../docs/specs/registry.md) |
 | `tokens/` | geometry and type resolvers, Spectrum colors, springs, theme parameters, Panda tokens, DTCG output | [geometry](../../docs/specs/geometry.md), [color](../../docs/specs/color.md), [typography](../../docs/specs/typography.md), [motion](../../docs/specs/motion.md), [theming](../../docs/specs/theming.md) |
 | `icons/` | `<i name>` runtime, CDN sets, `moduleSet`, SVG sanitizer | [icons](../../docs/specs/icons.md) |
-| `styles/` | the Panda global style modules, state conditions, page patterns (`page`, `prose`) | [components](../../docs/specs/components.md) |
-| `preset.ts` | the Panda preset assembling all of the above | [theming](../../docs/specs/theming.md) |
+| `styles/` | foundations (geometry variables, reset, typography), container styles, state conditions, page patterns (`page`, `prose`) | [components](../../docs/specs/components.md) |
+| `preset.ts` | the Panda preset: tokens, foundations, slot recipes (`staticCss: { recipes: '*' }` and unhashed class names in apps that render the web components) | [theming](../../docs/specs/theming.md) |
 | `scripts/` | generators, the registry CLI, verification | [system](../../docs/specs/system.md#generated-outputs) |
 
 ## Commands

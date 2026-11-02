@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/swiper/swiper.element.ts",
-      "sha256": "840a9c994b39aea6f71e7094aa0cb2d66e3d27acbba49f834157e2d3f87e4d8f"
+      "sha256": "d549bf1a04a84ce77e25a3b5416db4344115f5d29173b663ee54a73b3ac9f22e"
     },
     {
       "path": "components/swiper/swiper.manifest.json",
-      "sha256": "748e455b8f63ba1907b528acb59370f2682e768eb68a69e2854152b450ab1bb1"
+      "sha256": "17c2674bf65a85454da03ebbe64b142b6a2a4f8a59783f13080c16a8c4e71156"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
-      "sha256": "7558f7a5f6fade247e77cfab6b0c0d74a2b71b5ab7c57194f126aeabed0efae9"
+      "sha256": "12ef727d6b887c78ae3627d24a234927a80dc3d051a05202558c4d289c87b041"
     },
     {
       "path": "styles/native.ts",
-      "sha256": "1125fae1c9142b86d73b3eed69b7d39600ca16198cfa90a2ecaa1e26c5efcbea"
+      "sha256": "a38c169aba944661d022b153f03dfb42313535254b2dee7e2d8ee2aa3748a1a2"
     }
   ],
   "renderers": {

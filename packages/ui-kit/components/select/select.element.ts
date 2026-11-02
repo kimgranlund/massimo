@@ -12,9 +12,11 @@ import '../listbox/option.element.ts';
 import '../../icons/index.ts';
 import { ensureId, optionList } from '../listbox/options.ts';
 import { adoptAdornments } from '../slots.ts';
+import { applyRecipe, partOf } from '../classes.ts';
+import { select } from '../../styled-system/recipes/select.js';
 
 const TRIGGER_ADORNMENTS = ['leading', 'prefix', 'suffix'] as const;
-/** CSS anchor positioning places the popup (styles/defaults.ts); script placement is the fallback. */
+/** CSS anchor positioning places the popup (select.recipe.ts); script placement is the fallback. */
 const ANCHORED = typeof CSS !== 'undefined' && !!CSS.supports?.('position-area', 'block-end') && !!CSS.supports?.('anchor-scope', 'all');
 
 export class UISelect extends UIFormElement {
@@ -101,6 +103,7 @@ export class UISelect extends UIFormElement {
     opts.forEach((o, i) => applyAttrs(o, optionAttrs({ id: ensureId(o), selected: o.optionValue === this.value, disabled: o.disabled, active: i === active })));
     if (open) { this.#showPopup(); opts[active]?.scrollIntoView?.({ block: 'nearest' }); }
     else this.#hidePopup();
+    applyRecipe(this, select(), (slot) => partOf(this, slot) ?? partOf(trigger, slot));
   }
 
   formValue() { return this.value || null; }
@@ -167,7 +170,7 @@ export class UISelect extends UIFormElement {
     window.removeEventListener('scroll', this.#place, true);
   }
 
-  // Fallback placement where CSS anchor positioning is unavailable (styles/defaults.ts places it
+  // Fallback placement where CSS anchor positioning is unavailable (select.recipe.ts places it
   // otherwise): measured from the trigger and written inline.
   #place = () => {
     const popup = this.popup, trigger = this.trigger;

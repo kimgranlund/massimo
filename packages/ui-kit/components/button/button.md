@@ -12,9 +12,12 @@
 <ui-button><i slot="leading" name="credit-card"></i><span slot="prefix">$</span>Pay 40<span slot="suffix">⌘P</span></ui-button>
 <ui-button type="submit">Send</ui-button>
 <ui-button aria-label="Add"><i slot="leading" name="plus"></i></ui-button>
+<ui-button variant="primary">Save</ui-button>
 ```
 
-React: `<Button leading={…} prefix="$" suffix="⌘P" trailing={…} iconSize="lg" size={3}>Pay</Button>` renders a native `<button data-ui="button">` with the same parts and styles.
+React: `<Button variant="primary" leading={…} prefix="$" suffix="⌘P" trailing={…} iconSize="lg" size={3}>Pay</Button>` renders a native `<button data-ui="button">` with the same parts and the same recipe classes.
+
+Plain HTML: the classes of the `button` slot recipe style any markup, e.g. `<button data-ui="button" class="ui-button__root ui-button__root--variant_primary"><span data-part="contents" class="ui-button__contents">Save</span></button>` (`data-ui` gives it the geometry variables).
 
 ## Composition
 
@@ -40,7 +43,7 @@ Icons sit in leading/trailing slots (6u on controls); prefix and suffix are shor
 
 ## Geometry and appearance
 
-Geometry families: `control` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Colors are Spectrum roles; states are keyed on ARIA and `data-*` ([states.json](../../contracts/states.json), `styles/defaults.ts`); motion in `styles/motion.ts`.
+Geometry families: `control` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [button.recipe.ts](button.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.
 
 ## Renderers and verification
 

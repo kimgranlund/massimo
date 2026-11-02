@@ -3,15 +3,19 @@
 import { UIFormElement, define } from '../../core/index.ts';
 import { applyAttrs, buttonAttrs, blockIfInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
+import { applyRecipe } from '../classes.ts';
+import { button } from '../../styled-system/recipes/button.js';
 
 export class UIButton extends UIFormElement {
   static properties = {
     ...UIFormElement.properties,
     type: { type: String, default: 'button' },
     loading: { type: Boolean, default: false, reflect: true },
+    variant: { type: String, default: 'neutral' },
   };
   declare type: 'button' | 'submit' | 'reset';
   declare loading: boolean;
+  declare variant: 'neutral' | 'primary';
 
   #unslot?: () => void;
   get #state(): ButtonState { return { disabled: this.isDisabled, loading: this.loading }; }
@@ -31,6 +35,7 @@ export class UIButton extends UIFormElement {
 
   update() {
     applyAttrs(this, buttonAttrs(this.#state));
+    applyRecipe(this, button({ variant: this.variant === 'primary' ? 'primary' : 'neutral' }));
   }
 
   #onClick = (e: Event) => {
