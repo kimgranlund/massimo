@@ -16,14 +16,16 @@
 //   the usesGeometry, allowedIn and ownsPart edges, in contract order, placed where that node's
 //   edges of the relation already were.
 // From the React renderer module (scripts/react-props.ts):
-//   renderers.react.props: per graph ID, the inherited base types and the declared props.
+//   renderers.react.props: per graph ID, the inherited base types and the declared props;
+//   renderers.react.parts: per graph ID, the compound parts (`Select.Trigger`, Base UI style) and
+//     the props of each, from the `Name.Part = Impl;` lines of the module (omitted when none).
 import { readFileSync, writeFileSync } from 'node:fs';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { stripTypeScriptTypes } from 'node:module';
 import { parse } from 'acorn';
 import { KIT, manifests, fromManifest } from './registry-lib.ts';
-import { reactApi, type ReactProp } from './react-props.ts';
+import { reactApi, reactParts, type ReactProp } from './react-props.ts';
 
 type EventFact = { name: string; type: 'Event' | 'CustomEvent'; bubbles: boolean; cancelable: boolean };
 type ClassFacts = { superName: string | null; events: EventFact[] };
@@ -148,7 +150,12 @@ export function generate(path: string, manifest: any): any {
       const api = reactApi(file, name);
       return [id, { inherits: api.inherits, props: api.props.map(propLine) }];
     }));
-    m.renderers.react = { ...react, props };
+    const parts = Object.fromEntries(Object.entries<string>(react.exports ?? {}).flatMap(([id, name]) => {
+      const found = Object.entries(reactParts(file, name)).map(([part, api]) => [part, { inherits: api.inherits, props: api.props.map(propLine) }]);
+      return found.length ? [[id, Object.fromEntries(found)]] : [];
+    }));
+    const { parts: _old, ...rest } = react;
+    m.renderers.react = { ...rest, props, ...(Object.keys(parts).length ? { parts } : {}) };
   }
   return m;
 }

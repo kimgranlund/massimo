@@ -1,7 +1,7 @@
 // The React props parser (scripts/react-props.ts) on each type form the renderers use, and its refusals.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseModule, reactApi, members, splitTop } from '../scripts/react-props.ts';
+import { parseModule, reactApi, reactParts, members, splitTop } from '../scripts/react-props.ts';
 import { propLine } from '../scripts/manifests.ts';
 
 const api = (text: string, name: string) => {
@@ -56,9 +56,30 @@ export const D = make('d');
 test('real renderers: imported PartProps resolve; inherited HTML attributes stay as text', () => {
   const kit = new URL('../components/', import.meta.url).pathname;
   const option = reactApi(`${kit}listbox/listbox.react.tsx`, 'Option');
-  assert.deepEqual(option.inherits, ["Omit<HTMLAttributes<HTMLDivElement>, 'prefix'>"]);
-  assert.deepEqual(option.props.map((p) => p.name), ['leading', 'prefix', 'suffix', 'trailing', 'value', 'disabled', 'iconSize', 'children']);
+  assert.deepEqual(option.inherits, ["Omit<HTMLAttributes<HTMLDivElement>, 'prefix' | 'className'>"]);
+  assert.deepEqual(option.props.map((p) => p.name), ['leading', 'prefix', 'suffix', 'trailing', 'render', 'className', 'value', 'disabled', 'iconSize', 'children']);
   assert.equal(option.props.find((p) => p.name === 'value')!.optional, false);
+  // Range is an alias of Slider: the same props, defaults included.
   const range = reactApi(`${kit}range/range.react.tsx`, 'Range');
   assert.equal(range.props.find((p) => p.name === 'defaultValue')!.default, '50');
+});
+
+test('compound parts: Name.Part = Impl lines, local or imported Impl, through an alias; generic interfaces', () => {
+  const kit = new URL('../components/', import.meta.url).pathname;
+  const select = reactParts(`${kit}select/select.react.tsx`, 'Select');
+  assert.deepEqual(Object.keys(select).slice(0, 4), ['Select.Root', 'Select.Label', 'Select.Trigger', 'Select.Value']);
+  // Select.ItemText is the listbox module's ItemText (imported).
+  assert.ok(select['Select.ItemText'].props.some((p) => p.name === 'render'));
+  assert.ok(!select['Select.Root'].props.some((p) => p.name === 'label'), 'Root omits what its parts carry');
+  assert.deepEqual(Object.keys(reactParts(`${kit}range/range.react.tsx`, 'Range')), ['Slider.Root', 'Slider.Track', 'Slider.Indicator', 'Slider.Thumb']);
+  const text = `
+export interface Base<S = X> { /** Render. */ render?: (s: S) => void }
+export function AThing(p: Base) { return null; }
+export function A(p: Base & { a?: number }) { return null; }
+A.Thing = AThing;
+A.Missing = Nowhere;
+`;
+  const mod = parseModule('/virtual/y.react.tsx', text);
+  assert.deepEqual(reactApi('/virtual/y.react.tsx', 'A', mod).props.map(propLine), ['render?: (s: S) => void // Render.', 'a?: number']);
+  assert.throws(() => reactParts('/virtual/y.react.tsx', 'A', mod), /A.Missing = Nowhere: no exported function/);
 });

@@ -210,6 +210,11 @@
           "type": "object",
           "description": "react renderer: graph ID → the component's props, generated from the module's types by npm run manifests (never by hand).",
           "additionalProperties": { "$ref": "#/definitions/reactProps" }
+        },
+        "parts": {
+          "type": "object",
+          "description": "react renderer: graph ID → its compound parts (Base UI style, \"Select.Trigger\") → each part's props, generated from the module's `Name.Part = Impl;` lines by npm run manifests (never by hand).",
+          "additionalProperties": { "type": "object", "additionalProperties": { "$ref": "#/definitions/reactProps" } }
         }
       }
     },
