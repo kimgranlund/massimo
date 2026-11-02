@@ -215,7 +215,8 @@ export function App() {
                   {names.map((r) => (
                     <Select key={r} label={ROLE_LABEL(r)} value={generated?.roles[r] ?? roles[r]}
                       options={(r === 'neutral' ? familyNames.neutrals : familyNames.accents).map((n) => [n, n])}
-                      onValue={(v) => setRoles((cur) => ({ ...cur, [r]: v }))} />
+                      onValue={(v) => setRoles((cur) => ({ ...cur, [r]: v }))}
+                      swatch={(family) => `var(--colors-spectrum-${family}-9)`} />
                   ))}
                 </Group>
               ))}
