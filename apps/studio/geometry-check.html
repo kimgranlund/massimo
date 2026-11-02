@@ -253,7 +253,8 @@ for (const c of cases) {
     const fp = (f, p) => f.querySelector(`:scope > [data-part=${p}]`), ctlOf = (f) => f.querySelector(':scope > ui-input');
     const rowBottom = (f) => Math.max(rect(ctlOf(f)).bottom, rect(fp(f, 'readout')).bottom);
     const st = $('fStack'), rs1 = resolveFieldRow('stacked', g);
-    // The control row is as tall as its tallest item (the readout's label line can pass 8u at u = 2).
+    // The control row is as tall as its tallest item; label and readout are single lines (1.2 × font),
+    // so it is the control's height at every u (checked as field.inline.rowHeight).
     const rowTop = (f) => Math.min(rect(ctlOf(f)).top, rect(fp(f, 'readout')).top);
     checks['field.stacked.rowGap'] = [r2(rowTop(st) - rect(fp(st, 'label')).bottom), rs1.rowGap];
     checks['field.stacked.columnGap'] = [r2(rect(fp(st, 'readout')).left - rect(ctlOf(st)).right), rs1.columnGap];
@@ -265,6 +266,7 @@ for (const c of cases) {
     const il = $('fInline'), rs2 = resolveFieldRow('inline', g);
     checks['field.inline.columnGap'] = [r2(rect(ctlOf(il)).left - rect(fp(il, 'label')).right), rs2.columnGap];
     checks['field.inline.readoutGap'] = [r2(rect(fp(il, 'readout')).left - rect(ctlOf(il)).right), rs2.columnGap];
+    checks['field.inline.rowHeight'] = [r2(Math.max(rect(fp(il, 'label')).height, rect(ctlOf(il)).height, rect(fp(il, 'readout')).height)), r2(rect(ctlOf(il)).height)];
     checks['field.inline.description'] = [r2(rect(fp(il, 'description')).top - rowBottom(il)), rs2.rowGap];
     checks['field.inline.description.start'] = [r2(rect(fp(il, 'description')).left - rect(ctlOf(il)).left), 0];
     checks['field.inline.unitGap'] = [px(cs(fp(il, 'label')).columnGap), rs2.unitGap];

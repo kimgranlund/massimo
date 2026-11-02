@@ -44,9 +44,11 @@ export const field = defineSlotRecipe({
     // The unit reads as a suffix of the label: muted further and never truncated.
     suffix: { flexShrink: 0, color: 'fg.subtle', fontVariantNumeric: NUMERIC_FEATURES },
     // Figures in the numeric voice, end-aligned so a column of readouts lines up on the right.
+    // Single line at 1.2 × font (like control text), so at small u the readout never makes the row
+    // taller than its 8u control (the label role's 1.4 rounds to 18px at u = 2).
     readout: {
       textStyle: 'label', fontFamily: voiceFamily('numeric'), fontVariantNumeric: NUMERIC_FEATURES,
-      color: 'fg.muted', textAlign: 'end', whiteSpace: 'nowrap', minWidth: '10',
+      color: 'fg.muted', textAlign: 'end', whiteSpace: 'nowrap', minWidth: '10', lineHeight: 'tight',
     },
     description: { ...fieldParts.description, gridColumn: '1 / -1' },
     // The error message (Base UI Field.Error) takes the description's place, after it.
@@ -70,7 +72,8 @@ export const field = defineSlotRecipe({
         root: {
           gridTemplateColumns: 'auto minmax(0, 1fr) auto', rowGap: '1',
           // The unit sits at the label column's end, next to the control.
-          '& > [data-part=label]': { gridColumn: '1 / 2', alignSelf: 'center', justifyContent: 'space-between', gap: '2' },
+          // Single line at 1.2 × font beside the control, so the row stays the control's 8u at small u.
+          '& > [data-part=label]': { gridColumn: '1 / 2', alignSelf: 'center', justifyContent: 'space-between', gap: '2', lineHeight: 'tight' },
           [CONTROL]: { gridColumn: '2 / -1' },
           [`${WITH_READOUT} > :not([data-part])`]: { gridColumn: '2 / -2' },
           '& > [data-part=readout]': { gridColumn: '-2 / -1' },
