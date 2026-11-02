@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:19a530dd4d1b -->
+<!-- sdlc:managed:start v1 sha256:73a3539ad8e8 -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -10,15 +10,7 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 ## Stages
 
-- proposed: 30
-  - T-0001 W1 · Floating layer foundation: positioner, dismiss layer, focus scope (floating-layer-foundation)
-  - T-0002 W1 · Separator (separator)
-  - T-0003 W1 · Avatar (avatar)
-  - T-0004 W1 · Meter (meter)
-  - T-0005 W1 · Toggle (toggle)
-  - T-0006 W1 · Radio Group (radio-group)
-  - T-0007 W1 · Checkbox Group (checkbox-group)
-  - T-0008 W1 · Fieldset (fieldset)
+- proposed: 19
   - T-0009 W2 · Tooltip (tooltip)
   - T-0010 W2 · Popover (popover)
   - T-0011 W2 · Menu (menu)
@@ -30,9 +22,6 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
   - T-0017 W3 · Alert Dialog (alert-dialog)
   - T-0018 W3 · Drawer (drawer)
   - T-0019 W3 · Toast (toast)
-  - T-0020 W4 · Collapsible (collapsible)
-  - T-0021 W4 · Accordion (accordion)
-  - T-0022 W4 · Tabs (tabs)
   - T-0023 W5 · Combobox (combobox)
   - T-0024 W5 · Autocomplete (autocomplete)
   - T-0025 W5 · Number Field (number-field)
@@ -42,7 +31,18 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
   - T-0029 W5 · Slider: two-thumb range (slider-range-pair)
   - T-0030 W5 · Toggle Group: multiple selection (toggle-group-multiple)
 - ready: 0
-- claimed: 0
+- claimed: 11
+  - T-0001 W1 · Floating layer foundation: positioner, dismiss layer, focus scope (floating-layer-foundation), claimed by claude-live 2026-11-02
+  - T-0002 W1 · Separator (separator), claimed by claude-live 2026-11-02
+  - T-0003 W1 · Avatar (avatar), claimed by claude-live 2026-11-02
+  - T-0004 W1 · Meter (meter), claimed by claude-live 2026-11-02
+  - T-0005 W1 · Toggle (toggle), claimed by claude-live 2026-11-02
+  - T-0006 W1 · Radio Group (radio-group), claimed by claude-live 2026-11-02
+  - T-0007 W1 · Checkbox Group (checkbox-group), claimed by claude-live 2026-11-02
+  - T-0008 W1 · Fieldset (fieldset), claimed by claude-live 2026-11-02
+  - T-0020 W4 · Collapsible (collapsible), claimed by claude-live 2026-11-02
+  - T-0021 W4 · Accordion (accordion), claimed by claude-live 2026-11-02
+  - T-0022 W4 · Tabs (tabs), claimed by claude-live 2026-11-02
 - paused: 0
 - blocked: 0
 - done: 0

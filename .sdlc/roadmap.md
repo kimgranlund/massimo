@@ -5,14 +5,14 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0001 | [floating-layer-foundation](tickets/floating-layer-foundation/handoff.md) | W1 · Floating layer foundation: positioner, dismiss layer, focus scope | feature | L3 | P1 | none | ⏳ proposed |
-| T-0002 | [separator](tickets/separator/handoff.md) | W1 · Separator | feature | L1 | P2 | none | ⏳ proposed |
-| T-0003 | [avatar](tickets/avatar/handoff.md) | W1 · Avatar | feature | L2 | P2 | none | ⏳ proposed |
-| T-0004 | [meter](tickets/meter/handoff.md) | W1 · Meter | feature | L2 | P2 | none | ⏳ proposed |
-| T-0005 | [toggle](tickets/toggle/handoff.md) | W1 · Toggle | feature | L1 | P2 | none | ⏳ proposed |
-| T-0006 | [radio-group](tickets/radio-group/handoff.md) | W1 · Radio Group | feature | L2 | P2 | none | ⏳ proposed |
-| T-0007 | [checkbox-group](tickets/checkbox-group/handoff.md) | W1 · Checkbox Group | feature | L2 | P2 | none | ⏳ proposed |
-| T-0008 | [fieldset](tickets/fieldset/handoff.md) | W1 · Fieldset | feature | L1 | P2 | none | ⏳ proposed |
+| T-0001 | [floating-layer-foundation](tickets/floating-layer-foundation/handoff.md) | W1 · Floating layer foundation: positioner, dismiss layer, focus scope | feature | L3 | P1 | none | 🟡 claimed |
+| T-0002 | [separator](tickets/separator/handoff.md) | W1 · Separator | feature | L1 | P2 | none | 🟡 claimed |
+| T-0003 | [avatar](tickets/avatar/handoff.md) | W1 · Avatar | feature | L2 | P2 | none | 🟡 claimed |
+| T-0004 | [meter](tickets/meter/handoff.md) | W1 · Meter | feature | L2 | P2 | none | 🟡 claimed |
+| T-0005 | [toggle](tickets/toggle/handoff.md) | W1 · Toggle | feature | L1 | P2 | none | 🟡 claimed |
+| T-0006 | [radio-group](tickets/radio-group/handoff.md) | W1 · Radio Group | feature | L2 | P2 | none | 🟡 claimed |
+| T-0007 | [checkbox-group](tickets/checkbox-group/handoff.md) | W1 · Checkbox Group | feature | L2 | P2 | none | 🟡 claimed |
+| T-0008 | [fieldset](tickets/fieldset/handoff.md) | W1 · Fieldset | feature | L1 | P2 | none | 🟡 claimed |
 | T-0009 | [tooltip](tickets/tooltip/handoff.md) | W2 · Tooltip | feature | L2 | P2 | T-0001 | ⏳ proposed |
 | T-0010 | [popover](tickets/popover/handoff.md) | W2 · Popover | feature | L2 | P2 | T-0001 | ⏳ proposed |
 | T-0011 | [menu](tickets/menu/handoff.md) | W2 · Menu | feature | L3 | P2 | T-0001 | ⏳ proposed |
@@ -24,9 +24,9 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0017 | [alert-dialog](tickets/alert-dialog/handoff.md) | W3 · Alert Dialog | feature | L2 | P2 | T-0016 | ⏳ proposed |
 | T-0018 | [drawer](tickets/drawer/handoff.md) | W3 · Drawer | feature | L3 | P2 | T-0016 | ⏳ proposed |
 | T-0019 | [toast](tickets/toast/handoff.md) | W3 · Toast | feature | L3 | P2 | T-0001 | ⏳ proposed |
-| T-0020 | [collapsible](tickets/collapsible/handoff.md) | W4 · Collapsible | feature | L2 | P2 | none | ⏳ proposed |
-| T-0021 | [accordion](tickets/accordion/handoff.md) | W4 · Accordion | feature | L2 | P2 | T-0020 | ⏳ proposed |
-| T-0022 | [tabs](tickets/tabs/handoff.md) | W4 · Tabs | feature | L2 | P1 | none | ⏳ proposed |
+| T-0020 | [collapsible](tickets/collapsible/handoff.md) | W4 · Collapsible | feature | L2 | P2 | none | 🟡 claimed |
+| T-0021 | [accordion](tickets/accordion/handoff.md) | W4 · Accordion | feature | L2 | P2 | T-0020 | 🟡 claimed |
+| T-0022 | [tabs](tickets/tabs/handoff.md) | W4 · Tabs | feature | L2 | P1 | none | 🟡 claimed |
 | T-0023 | [combobox](tickets/combobox/handoff.md) | W5 · Combobox | feature | L3 | P2 | T-0001 | ⏳ proposed |
 | T-0024 | [autocomplete](tickets/autocomplete/handoff.md) | W5 · Autocomplete | feature | L2 | P3 | T-0023 | ⏳ proposed |
 | T-0025 | [number-field](tickets/number-field/handoff.md) | W5 · Number Field | feature | L2 | P2 | none | ⏳ proposed |
