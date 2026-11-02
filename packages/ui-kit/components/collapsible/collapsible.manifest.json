@@ -1,0 +1,398 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "collapsible",
+  "primary": "component:collapsible",
+  "module": "./collapsible.element.ts",
+  "registration": "on-import",
+  "documentation": "./collapsible.md",
+  "examples": "./collapsible.examples.json",
+  "contract": "../../contracts/components.json#/components/collapsible",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./collapsible.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveDisclosure"
+      ],
+      "description": "Reference numbers for the trigger row, its caret and the panel insets."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:collapsible",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-collapsible",
+      "class": "UICollapsible",
+      "extends": "UIElement",
+      "intent": [
+        "Show or hide one section of content under a labelled trigger"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the panel is shown. Setting it (attribute or property) fires no openchange; a trigger press sets it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Ignores trigger presses; the trigger leaves the tab order (aria-disabled). Inside a disabled ui-accordion every item is disabled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Text of a generated trigger (the preset form). Ignored when an authored trigger has its own text.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The item value inside a ui-accordion (its value list names open items); defaults to the item index. Unused outside an accordion.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press', event: Event }",
+          "trigger": "the trigger is pressed (pointer, Enter or Space); preventDefault keeps the panel as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none (the trigger is role=button)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on the trigger",
+            "action": "toggle the panel"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the trigger's text (label or authored trigger content)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Panel content (any elements), or authored [data-part=trigger] and [data-part=panel] children. Elements with slot=leading | prefix | suffix | trailing (direct children in the preset, or inside an authored trigger) fill the trigger's construction-pattern parts."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The panel stays in the DOM and is hidden while closed; its contents are not focusable or found by find-in-page then.",
+        "The trailing slot holds a caret-down icon unless the author fills it; the caret turns 180° while open.",
+        "Height animates in CSS (interpolate-size); browsers without it open and close at once. Reduced motion collapses the duration.",
+        "Setting open from script changes the panel without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Several sections of which the user opens one or a few at a time.",
+          "reason": "An accordion coordinates the items (single or multiple open) and moves focus between their triggers."
+        },
+        {
+          "when": "Switching between peer views of the same area.",
+          "reason": "Peer views are tabs: one panel shows at a time and the list names every view."
+        },
+        {
+          "when": "Content that floats over the page next to its trigger.",
+          "reason": "A collapsible pushes the content below it; the kit has no popover or menu component yet."
+        }
+      ],
+      "searchTerms": [
+        "collapsible",
+        "disclosure",
+        "expand collapse",
+        "show more",
+        "details summary"
+      ]
+    },
+    {
+      "id": "part:collapsible-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The trigger row (role=button, aria-expanded, aria-controls; data-panel-open while open): the construction pattern with a caret in trailing. Base UI Collapsible.Trigger."
+    },
+    {
+      "id": "part:collapsible-panel",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=panel]",
+      "summary": "The panel (data-open / data-closed; hidden while closed), its height animated on the reveal intent. Base UI Collapsible.Panel."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:collapsible",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesGeometry",
+      "to": "geometry:disclosure"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:collapsible-trigger"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:collapsible-panel"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "uses",
+      "to": "foundation:icons"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./collapsible.element.ts",
+      "exports": {
+        "component:collapsible": "UICollapsible"
+      },
+      "verification": "./verification/collapsible.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./collapsible.react.tsx",
+      "exports": {
+        "component:collapsible": "Collapsible"
+      },
+      "verification": "./verification/collapsible.verification.json#/renderers/react",
+      "props": {
+        "component:collapsible": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "open?: boolean // Controlled open state.",
+            "defaultOpen?: boolean // Open at first render (uncontrolled).",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when the trigger is pressed, with Base UI's details ({ reason: 'trigger-press', event }).",
+            "disabled?: boolean // Ignores presses on the trigger.",
+            "size?: number // Unit u in px; the trigger row is 8u.",
+            "children?: ReactNode",
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "trailing?: ReactNode // Trailing icon.",
+            "label?: ReactNode // The trigger's label."
+          ]
+        }
+      },
+      "parts": {
+        "component:collapsible": {
+          "Collapsible.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when the trigger is pressed, with Base UI's details ({ reason: 'trigger-press', event }).",
+              "disabled?: boolean = false // Ignores presses on the trigger.",
+              "size?: number // Unit u in px; the trigger row is 8u.",
+              "children?: ReactNode"
+            ]
+          },
+          "Collapsible.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode = <i name=\"caret-down\" /> // Trailing icon.",
+              "children?: ReactNode"
+            ]
+          },
+          "Collapsible.Panel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

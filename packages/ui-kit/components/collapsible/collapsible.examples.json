@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "collapsible",
+  "title": "Collapsible",
+  "summary": "One trigger that shows and hides one panel.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Label and content",
+      "subject": "component:collapsible",
+      "markup": "<ui-collapsible label=\"Recovery keys\"><p>Store these keys somewhere safe.</p></ui-collapsible>"
+    },
+    {
+      "id": "open",
+      "label": "Open at first render",
+      "subject": "component:collapsible",
+      "markup": "<ui-collapsible label=\"Shipping\" default-open><p>Ships in 2–3 days.</p></ui-collapsible>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts, with a leading icon",
+      "subject": "component:collapsible",
+      "markup": "<ui-collapsible><div data-part=\"trigger\"><i slot=\"leading\" name=\"key\"></i>Recovery keys<span slot=\"suffix\">3</span></div><div data-part=\"panel\"><p>alien-bean-pasta</p></div></ui-collapsible>"
+    }
+  ]
+}

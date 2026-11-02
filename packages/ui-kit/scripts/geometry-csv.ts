@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveDisclosure, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -135,6 +135,15 @@ export const rows: Row[] = [
   { id: 'btg.tag.icon.md', family: 'btg', element: 'tag', quantity: 'icon md', formula: 'min(tag font + 0.5u, tag slot)', value: (u) => resolveBtg('tag', { unit: u }).iconSize, status: 'implemented', notes: '' },
   { id: 'btg.minWidth', family: 'btg', element: 'badge, tag, chip', quantity: 'min width', formula: 'height', value: (u) => resolveBtg('badge', { unit: u }).minWidth, status: 'implemented', notes: 'value shown for badge; never narrower than tall' },
   { id: 'btg.chip.radius', family: 'btg', element: 'chip', quantity: 'radius', formula: 'min((0.5u′ + slot / 3) * s, chip / 2)', value: (u) => resolveBtg('chip', { unit: u }).radius, status: 'implemented', notes: 'concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot' },
+  // Disclosure (collapsible, accordion)
+  { id: 'disclosure.trigger.height', family: 'disclosure', element: 'collapsible trigger', quantity: 'trigger height', formula: '8u', value: (u) => resolveDisclosure({ unit: u }).height, status: 'implemented', notes: 'a control row, full width; grows with a wrapping label' },
+  { id: 'disclosure.trigger.padding', family: 'disclosure', element: 'collapsible trigger', quantity: 'padding', formula: 'u - B', value: (u) => resolveDisclosure({ unit: u }).padding, status: 'implemented', notes: 'transparent border inside the 1u' },
+  { id: 'disclosure.trigger.labelStart', family: 'disclosure', element: 'collapsible trigger', quantity: 'label start padding (bare edge)', formula: '2u', value: (u) => resolveDisclosure({ unit: u }).labelStart, status: 'implemented', notes: '1u beside a leading slot' },
+  { id: 'disclosure.trigger.labelEnd', family: 'disclosure', element: 'collapsible trigger', quantity: 'label end padding (beside the caret slot)', formula: 'u', value: (u) => resolveDisclosure({ unit: u }).labelEnd, status: 'implemented', notes: 'the caret sits in the 6u trailing slot' },
+  { id: 'disclosure.caret', family: 'disclosure', element: 'collapsible trigger', quantity: 'caret icon', formula: 'icon sm: min(font - 0.5u, 6u)', value: (u) => resolveDisclosure({ unit: u }).caret, status: 'implemented', notes: 'turns 180° while open (toggle intent)' },
+  { id: 'disclosure.trigger.radius', family: 'disclosure', element: 'collapsible trigger', quantity: 'radius', formula: 'min(3u * s, 4u)', value: (u) => resolveDisclosure({ unit: u }).radius, status: 'implemented', notes: 'the control radius' },
+  { id: 'disclosure.panel.paddingInline', family: 'disclosure', element: 'collapsible panel', quantity: 'panel inline padding', formula: 'u + 2u', value: (u) => resolveDisclosure({ unit: u }).panelInline, status: 'implemented', notes: 'text starts at the trigger label edge' },
+  { id: 'disclosure.panel.paddingBlockEnd', family: 'disclosure', element: 'collapsible panel', quantity: 'panel end padding', formula: '2u', value: (u) => resolveDisclosure({ unit: u }).panelBlockEnd, status: 'implemented', notes: '0 while closed; height and padding animate on the reveal intent' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

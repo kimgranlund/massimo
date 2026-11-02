@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -212,4 +212,16 @@ test('field rows: column gap 2u, row gap 1.5u stacked / 1u inline, readout ≥ 1
   assert.deepEqual(resolveFieldRow('stacked', { unit: 4 }), { unit: 4, columnGap: 8, rowGap: 6, unitGap: 4, readoutMinWidth: 40 });
   assert.deepEqual(resolveFieldRow('inline', { unit: 4 }), { unit: 4, columnGap: 8, rowGap: 4, unitGap: 8, readoutMinWidth: 40 });
   assert.deepEqual(resolveFieldGrid({ unit: 4 }), { unit: 4, columnGap: 8, rowGap: 8, labelMaxFraction: 0.4, readoutMinWidth: 40, headingSpace: 16 });
+});
+
+test('disclosure: the collapsible trigger is an 8u control row with a sm caret; the panel starts at its label edge (3u), 2u below', () => {
+  const d = resolveDisclosure({ unit: 4, border: 1 });
+  assert.equal(d.height, 32);
+  assert.equal(d.padding, 3, 'u - B');
+  assert.deepEqual([d.labelStart, d.labelEnd], [8, 4]);
+  assert.equal(d.caret, 12, 'icon sm = font - 0.5u');
+  assert.equal(d.radius, 12);
+  assert.equal(d.panelInline, 12, 'border + padding + bare label edge');
+  assert.equal(d.panelBlockEnd, 8);
+  assert.equal(resolveDisclosure({ unit: 2 }).caret, 11, 'sm below the 6u slot at u = 2');
 });

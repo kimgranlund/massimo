@@ -448,6 +448,27 @@
       "parts": [],
       "allowedParents": [],
       "behavior": "None."
+    },
+    "collapsible": {
+      "geometryFamily": "disclosure",
+      "element": "Host holds a trigger (role=button, aria-expanded, aria-controls) and a panel that stays in the DOM, hidden while closed. Children become the panel unless a [data-part=panel] is authored; the label property fills a generated trigger.",
+      "parts": [
+        "collapsible-trigger",
+        "slot-leading?",
+        "slot-prefix?",
+        "slot-contents?",
+        "slot-suffix?",
+        "slot-trailing?",
+        "collapsible-panel"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection"
+      ],
+      "behavior": "Enter, Space or a press on the trigger toggles the panel and fires a cancelable openchange ({ open, reason: 'trigger-press', event }); setting open fires nothing. The panel's height animates on the reveal intent in CSS."
     }
   }
 }

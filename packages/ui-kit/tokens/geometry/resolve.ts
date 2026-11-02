@@ -368,3 +368,24 @@ export function resolveImage(input: GeometryInput & { ratio?: string; width?: nu
 
 /** Popup offset from its trigger. */
 export const popupOffset = (input: GeometryInput = {}) => inputs(input).unit;
+
+// ── Disclosure: collapsible, accordion, tabs ──
+// A collapsible's trigger is a control row (8u, pad u − B, the construction pattern with a trailing
+// caret at icon size sm); its panel starts at the trigger's label edge (1u host + 2u bare label
+// edge = 3u) and ends 2u below its content. Lengths in CSS px.
+
+/** ui-collapsible (and each ui-accordion item): trigger row, caret, panel insets. */
+export function resolveDisclosure(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  const u = c.unit;
+  const label = resolveButtonContents(false, true, input); // bare start 2u, 1u beside the caret slot
+  return {
+    unit: u, border: c.border,
+    height: c.height, padding: c.padding, slot: c.slot, fontSize: c.fontSize, radius: c.radius,
+    labelStart: label.start, labelEnd: label.end,
+    caret: resolveIcon(c.fontSize, u, 'sm', c.slot),
+    // The panel text lines up with the trigger label: the trigger's 1u (padding + border) + its 2u bare edge.
+    panelInline: c.inset + label.start,
+    panelBlockEnd: 2 * u,
+  };
+}

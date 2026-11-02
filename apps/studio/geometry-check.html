@@ -14,7 +14,8 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/field/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/collapsible/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveDisclosure } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -54,6 +55,7 @@ for (const c of cases) {
     <div style="width:${80 * c.unit}px"><ui-field id="fStack" label="Opacity" unit="%" readout="40" description="Fill"><ui-input></ui-input></ui-field>
     <ui-field id="fInline" layout="inline" label="Radius" unit="px" readout="12" description="Corner"><ui-input></ui-input></ui-field>
     <ui-field-grid id="fGrid"><h3>One</h3><ui-field layout="inline" label="A" readout="1"><ui-input></ui-input></ui-field><ui-field layout="inline" label="Longer label" readout="2"><ui-input></ui-input></ui-field><h3>Two</h3><ui-field layout="inline" label="B" readout="3"><ui-input></ui-input></ui-field></ui-field-grid></div>
+    <div style="width:${60 * c.unit}px"><ui-collapsible id="colClosed" label="Closed"><p>x</p></ui-collapsible><ui-collapsible id="colOpen" label="Open" open><p style="height:${4 * c.unit}px">x</p></ui-collapsible><ui-collapsible id="colLead"><div data-part="trigger"><span slot="leading"></span>Lead</div><div data-part="panel">y</div></ui-collapsible></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -280,6 +282,30 @@ for (const c of cases) {
     checks['fieldGrid.label.max'] = [rect(fp(f2, 'label')).width <= rg.labelMaxFraction * rect(gr).width + 0.02 ? 1 : 0, 1];
     checks['fieldGrid.heading.first'] = [px(cs(h1).paddingTop), 0];
     checks['fieldGrid.heading.space'] = [px(cs(h2).paddingTop), rg.headingSpace];
+  }
+  // Disclosure: the collapsible trigger is an 8u control row; the panel starts at the label edge (resolveDisclosure).
+  {
+    // Running height transitions end at once, so the open panel is measured at rest.
+    for (const el of box.querySelectorAll('[data-part=panel]')) el.style.transition = 'none';
+    const rd = resolveDisclosure(g), part = (el, p) => el.querySelector(`[data-part=${p}]`);
+    const cl = $('colClosed'), ct = part(cl, 'trigger'), op = $('colOpen'), opp = part(op, 'panel'), ld = part($('colLead'), 'trigger');
+    checks['collapsible.closed.height'] = [r2(rect(cl).height), rd.height];
+    checks['collapsible.trigger.height'] = [r2(rect(ct).height), rd.height];
+    checks['collapsible.trigger.width'] = [r2(rect(ct).width), r2(rect(cl).width)];
+    checks['collapsible.trigger.padding'] = [px(cs(ct).paddingTop) + px(cs(ct).borderTopWidth), rd.padding + rd.border];
+    checks['collapsible.trigger.radius'] = [px(cs(ct).borderTopLeftRadius), rd.radius];
+    checks['collapsible.trigger.font'] = [px(cs(ct).fontSize), rd.fontSize];
+    checks['collapsible.label.start'] = [px(cs(part(ct, 'contents')).paddingLeft), rd.labelStart];
+    checks['collapsible.label.end'] = [px(cs(part(ct, 'contents')).paddingRight), rd.labelEnd];
+    checks['collapsible.caret.slot'] = [r2(rect(part(ct, 'trailing')).width), rd.slot];
+    checks['collapsible.caret'] = [r2(rect(part(ct, 'trailing').firstElementChild).width), rd.caret];
+    checks['collapsible.lead.slot'] = [r2(rect(part(ld, 'leading')).width), rd.slot];
+    checks['collapsible.lead.label'] = [px(cs(part(ld, 'contents')).paddingLeft), ctl.contents.paddingInline];
+    checks['collapsible.panel.inline'] = [px(cs(opp).paddingLeft), rd.panelInline];
+    checks['collapsible.panel.end'] = [px(cs(opp).paddingBottom), rd.panelBlockEnd];
+    checks['collapsible.panel.text'] = [r2(rect(opp.firstElementChild).left - rect(op).left), r2(rect(part(part(op, 'trigger'), 'contents')).left - rect(op).left + rd.labelStart)];
+    checks['collapsible.open.height'] = [r2(rect(op).height), r2(rd.height + 4 * c.unit + rd.panelBlockEnd)];
+    checks['collapsible.closed.panel'] = [part(cl, 'panel').getClientRects().length, 0];
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

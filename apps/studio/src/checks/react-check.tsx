@@ -15,6 +15,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -31,6 +32,7 @@ import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react
 import { Range, Progress } from '@massimo/ui-kit/components/range/react';
 import { Field } from '@massimo/ui-kit/components/field/react';
 import { Slider } from '@massimo/ui-kit/components/range/react';
+import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 const r2 = (v: number) => Math.round(v * 100) / 100;
@@ -72,6 +74,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-select data-k="sel" label="Role" value="eng"><i slot="leading" name="briefcase" /><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
         <div style={{ width: 300 }}><ui-swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></ui-swiper></div>
         <div style={{ width: 200 }}><ui-image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></ui-image></div>
+        <div style={{ width: 300 }}><ui-collapsible data-k="col" label="Details" open><p>Panel</p></ui-collapsible></div>
+        <div style={{ width: 300 }}><ui-collapsible data-k="colD" label="Off" disabled><p>Panel</p></ui-collapsible></div>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -107,6 +111,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><div data-k="sel"><Select label="Role" defaultValue="eng" leading={<i name="briefcase" />}><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div></div>
         <div style={{ width: 300 }}><Swiper data-k="swp" label="Highlights"><div style={{ height: 80 }}>One</div><div>Two</div><div>Three</div></Swiper></div>
         <div style={{ width: 200 }}><Image data-k="ims" slideshow ratio="square" alt="Products"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="1" /><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="2" /></Image></div>
+        <div style={{ width: 300 }}><Collapsible data-k="col" label="Details" defaultOpen><p>Panel</p></Collapsible></div>
+        <div style={{ width: 300 }}><Collapsible data-k="colD" label="Off" disabled><p>Panel</p></Collapsible></div>
       </div>
     </div>
   );
@@ -128,6 +134,8 @@ function ComposedPair({ u }: { u: number }) {
       <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option></Listbox>
       <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
       <div style={{ width: 300 }}><Select data-k="sel" label="Role" defaultValue="eng" leading={<i name="briefcase" />} description="Pick"><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div>
+      <div style={{ width: 300 }}><Collapsible data-k="col" label="Keys" leading={<i name="key" />} defaultOpen><p>Panel</p></Collapsible></div>
+      <div style={{ width: 300 }}><ui-collapsible data-k="wcol" label="Keys" open><i slot="leading" name="key" /><p>Panel</p></ui-collapsible></div>
       <ui-button data-k="wbt"><i slot="leading" name="plus" />Add</ui-button>
       <ui-checkbox data-k="wcb" checked>Accept<span slot="suffix">(2)</span></ui-checkbox>
       <ui-switch data-k="wsw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
@@ -166,6 +174,8 @@ function ComposedPair({ u }: { u: number }) {
           <Select.Description>Pick</Select.Description>
         </Select.Root>
       </div>
+      <div style={{ width: 300 }}><Collapsible.Root data-k="col" defaultOpen><Collapsible.Trigger leading={<i name="key" />}>Keys</Collapsible.Trigger><Collapsible.Panel><p>Panel</p></Collapsible.Panel></Collapsible.Root></div>
+      <div style={{ width: 300 }}><ui-collapsible data-k="wcol" open><div data-part="trigger"><i slot="leading" name="key" />Keys</div><div data-part="panel"><p>Panel</p></div></ui-collapsible></div>
       <ui-button data-k="wbt"><span data-part="leading"><i name="plus" /></span><span data-part="contents">Add</span></ui-button>
       <ui-checkbox data-k="wcb" checked><span data-part="leading"><span data-part="indicator" /></span><span data-part="contents">Accept</span><span data-part="suffix">(2)</span></ui-checkbox>
       <ui-switch data-k="wsw" checked><span data-part="indicator"><span data-part="thumb" /></span>Wi-Fi<span data-part="suffix">on</span></ui-switch>
@@ -239,9 +249,9 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'col', 'colD']) {
       const a = host(wc, k), b = host(re, k);
-      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch')];
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel]')];
       const pa = parts(a), pb = parts(b);
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
@@ -250,7 +260,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims']) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'col', 'colD']) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

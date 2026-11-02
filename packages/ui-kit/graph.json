@@ -72,6 +72,19 @@
         "input chip"
       ]
     },
+    "component:collapsible": {
+      "kind": "component",
+      "source": "components/collapsible/collapsible.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-collapsible",
+      "searchTerms": [
+        "collapsible",
+        "disclosure",
+        "expand collapse",
+        "show more",
+        "details summary"
+      ]
+    },
     "component:collection": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/1",
@@ -622,6 +635,17 @@
         "text run"
       ]
     },
+    "geometry:disclosure": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/disclosure",
+      "availability": "implemented",
+      "searchTerms": [
+        "disclosure geometry",
+        "collapsible trigger",
+        "accordion row",
+        "panel inset"
+      ]
+    },
     "geometry:field": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/field",
@@ -699,6 +723,24 @@
       "tag": "span",
       "searchTerms": [
         "choice indicator"
+      ]
+    },
+    "part:collapsible-panel": {
+      "kind": "part",
+      "source": "components/collapsible/collapsible.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "collapsible panel"
+      ]
+    },
+    "part:collapsible-trigger": {
+      "kind": "part",
+      "source": "components/collapsible/collapsible.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "collapsible trigger"
       ]
     },
     "part:field-description": {
@@ -1961,6 +2003,131 @@
       "from": "component:switch",
       "relation": "uses",
       "to": "foundation:modality"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesGeometry",
+      "to": "geometry:disclosure"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:collapsible-trigger"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "ownsPart",
+      "to": "part:collapsible-panel"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:collapsible",
+      "relation": "uses",
+      "to": "foundation:icons"
     },
     {
       "from": "component:swatch",

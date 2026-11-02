@@ -68,6 +68,14 @@ Inputs and select triggers are laid out as buttons: the host (input `[data-part=
 
 Swiper paddles are fully round (radius = half their height) whatever the curvature setting, like the dots, and use icon size lg.
 
+## Disclosure: collapsible
+
+| | Formula | at u=4 |
+|---|---|---|
+| trigger | a control row: height 8u (grows with a wrapping label), padding u − B inside a transparent border, the control radius, full width; construction pattern with the label 2u from a bare start edge (1u beside a leading slot) and 1u from the trailing caret slot | 32 / 4 / 12 |
+| caret | icon size sm in the 6u trailing slot, turned 180° while open | 12 |
+| panel | text starts at the trigger's label edge: inline padding u + 2u; end padding 2u (0 while closed); height 0 ↔ auto on the reveal intent (`resolveDisclosure`) | 12 / 8 |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

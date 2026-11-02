@@ -11,6 +11,7 @@ import '@massimo/ui-kit/components/color/element';
 import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/collapsible/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -26,6 +27,7 @@ export const FAMILIES = [
   ['tracks', 'Tracks', 'ui-range · ui-progress'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
   ['media', 'Media', 'ui-swiper · ui-image'],
+  ['disclosure', 'Disclosure', 'ui-collapsible'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -87,6 +89,10 @@ function InlineFields() {
 }
 
 
+// Disclosure specimens: a readable column, as a settings or FAQ page would hold them.
+const disclosureColumn = css({ display: 'flex', flexDirection: 'column', gap: '1', width: 'full', maxWidth: '[28rem]' });
+const panelText = css({ color: 'fg.muted', textStyle: 'body' });
+
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
 
@@ -100,6 +106,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag.',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
+    disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
   };
   const CONTENT: Record<Family, ReactNode> = {
@@ -249,6 +256,24 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         <SizeLadder family="swatch" params={params}>
           <ui-swatch color="#3b82f6" />
           <ui-palette label="Brand">{['#ef4444', '#f59e0b', '#10b981', '#3b82f6'].map((c) => <ui-swatch key={c} color={c} />)}</ui-palette>
+        </SizeLadder>
+      </>
+    ),
+    disclosure: (
+      <>
+        <Row label="Collapsible">
+          <div className={disclosureColumn}>
+            <ui-collapsible label="What is a unit?"><p className={panelText}>Every length in the kit is a multiple of u. A control is 8u tall; type is 10px + u.</p></ui-collapsible>
+            <ui-collapsible label="Shipping" default-open><p className={panelText}>Orders ship within two working days. Tracking arrives by email.</p></ui-collapsible>
+            <ui-collapsible>
+              <div data-part="trigger"><i slot="leading" name="key" />Recovery keys<span slot="suffix">3</span></div>
+              <div data-part="panel"><p className={panelText}>alien-bean-pasta · quiet-river-stone · north-paper-lamp</p></div>
+            </ui-collapsible>
+            <ui-collapsible label="Archived (read only)" disabled><p className={panelText}>Hidden.</p></ui-collapsible>
+          </div>
+        </Row>
+        <SizeLadder family="disclosure" params={params}>
+          <div className={disclosureColumn}><ui-collapsible label="Details" default-open><p className={panelText}>Panel text starts at the trigger label.</p></ui-collapsible></div>
         </SizeLadder>
       </>
     ),
