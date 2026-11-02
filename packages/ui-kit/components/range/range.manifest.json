@@ -103,6 +103,17 @@
           }
         },
         {
+          "key": "defaultValue",
+          "type": "number",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
           "key": "min",
           "type": "number",
           "default": 0,
@@ -172,17 +183,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ value: number, reason: 'keyboard' | 'track-press' | 'drag', event: Event }",
+          "trigger": "every value change from keys, a track press or a drag (Base UI onValueChange)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ value: number, reason: 'keyboard' | 'track-press' | 'drag', event: Event }",
+          "trigger": "an interaction ends with a new value: each key step, or pointer release after a press or drag (Base UI onValueCommitted)"
         }
       ],
       "methods": [
@@ -604,7 +617,9 @@
             "step?: number = 1",
             "label?: string // Accessible name (aria-label) when there is no visible label.",
             "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\".",
-            "size?: number // Unit u in px for this control."
+            "size?: number // Unit u in px for this control.",
+            "onValueChange?: (value: number, details: ChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'. The native onChange still fires.",
+            "onValueCommitted?: (value: number, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event)."
           ]
         },
         "component:progress": {

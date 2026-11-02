@@ -4,10 +4,10 @@
 //   [leading] [prefix] [value] [suffix] [icon = chevron]
 // (Base UI Select anatomy: trigger › value · icon; popup › list › item, the items being <ui-option>s.)
 // Author adornments as children with slot="leading" | "prefix" | "suffix".
-import { UIFormElement, define, html, signal, type Problem } from '../../core/index.ts';
+import { UIFormElement, define, html, settleDefault, signal, type Problem } from '../../core/index.ts';
 import {
-  applyAttrs, comboboxAttrs, createTypeahead, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
-  listboxAttrs, navigate, optionAttrs, placePopup, popupDataAttrs, popupVars, selectKeyIntent, uid, withExternalRefs,
+  applyAttrs, comboboxAttrs, createTypeahead, eventDetails, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
+  listboxAttrs, navigate, optionAttrs, placePopup, popupDataAttrs, popupVars, selectKeyIntent, uid, withExternalRefs, type ChangeReason,
 } from '../../dom/index.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
@@ -24,6 +24,12 @@ export class UISelect extends UIFormElement {
   static properties = {
     ...UIFormElement.properties,
     value: { type: String, default: '' },
+    /** The value at first render and on form reset; without it, the value attribute (Base UI defaultValue). */
+    defaultValue: { type: String, default: null },
+    /** Whether the popup is open (Base UI open). Setting it opens or closes without an openchange event. */
+    open: { type: Boolean, default: false },
+    /** Open the popup at connect (Base UI defaultOpen). */
+    defaultOpen: { type: Boolean, default: false },
     label: { type: String, default: '' },
     placeholder: { type: String, default: 'Select…' },
     description: { type: String, default: '' },
@@ -34,6 +40,9 @@ export class UISelect extends UIFormElement {
     describedby: { type: String, default: '' },
   };
   declare value: string;
+  declare defaultValue: string | null;
+  declare open: boolean;
+  declare defaultOpen: boolean;
   declare label: string;
   declare placeholder: string;
   declare description: string;
@@ -42,8 +51,6 @@ export class UISelect extends UIFormElement {
   declare describedby: string;
 
   #id = '';
-  #default = '';
-  #open = signal(false);
   /** The side the open popup sits on (measured: CSS anchor positioning may flip it). */
   #side = signal<'top' | 'bottom'>('bottom');
   #popupShown = false;
@@ -55,7 +62,6 @@ export class UISelect extends UIFormElement {
   #hostObserver?: MutationObserver;
 
   get options() { return this.#list.options; }
-  get open() { return this.#open.value; }
   get trigger() { return this.querySelector<HTMLElement>(':scope > [data-part=trigger]'); }
   get popup() { return this.querySelector<HTMLElement>(':scope > [data-part=popup]') ?? undefined; }
   /** The popup's list: the <ui-option> children's parent (Base UI Select.List). */
@@ -63,7 +69,8 @@ export class UISelect extends UIFormElement {
 
   connected() {
     this.#id = this.id ? `${this.id}-field` : uid('select');
-    this.#default = this.getAttribute('value') ?? '';
+    settleDefault(this, '');
+    if (this.defaultOpen) this.open = true;
     // Authored options (or ones already in a popup from a previous connect) move into the popup.
     this.#pending = [...this.querySelectorAll(':scope > ui-option, :scope > [data-part=popup] > [data-part=list] > ui-option, :scope > [data-part=popup] > ui-option')];
     this.#adornments = [...this.querySelectorAll(TRIGGER_ADORNMENTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=trigger] > [data-part=${p}] > [slot]`).join(', '))];
@@ -72,7 +79,8 @@ export class UISelect extends UIFormElement {
   }
 
   disconnected() {
-    this.#close();
+    this.open = false;
+    this.#hidePopup();
     this.#hostObserver?.disconnect();
     this.#list.disconnect();
   }
@@ -98,8 +106,8 @@ export class UISelect extends UIFormElement {
     if (this.#pending.length) { this.#adopt(this.#pending); this.#pending = []; this.#list.observe(this.list!); }
     if (this.#adornments.length) { adoptAdornments(trigger, this.#adornments, TRIGGER_ADORNMENTS); this.#adornments = []; }
     const opts = this.options;
-    const open = this.#open.value;
-    const active = open ? this.#active.value : -1;
+    const open = this.open;
+    const active = open ? this.#current() : -1;
     const popupId = `${this.#id}-popup`;
     const a = fieldAttrs({ id: this.#id, hasLabel: !!this.label, hasDescription: !!this.description, error: this.#message() || undefined });
     const refs = withExternalRefs({ 'aria-labelledby': this.label ? a.label.id : undefined, 'aria-describedby': a.control['aria-describedby'] }, this);
@@ -127,7 +135,7 @@ export class UISelect extends UIFormElement {
   formValue() { return this.value || null; }
   authorError() { return this.error; }
   validationAnchor() { return this.trigger ?? undefined; }
-  resetValue() { this.value = this.#default; }
+  resetValue() { this.value = this.defaultValue ?? ''; }
   restoreValue(state: unknown) { if (typeof state === 'string') this.value = state; }
   validate(): Problem | null {
     return this.required && !this.value ? { flags: { valueMissing: true }, message: 'Select an option.' } : null;
@@ -146,23 +154,44 @@ export class UISelect extends UIFormElement {
     if (list) for (const o of options) list.append(o);
   }
 
-  #openAt(i: number | undefined) {
-    if (this.isDisabled) return;
+  /** The highlighted option: the one moved to, else the selected one, else the first enabled. */
+  #current() {
+    if (this.#active.value >= 0) return this.#active.value;
     const sel = this.options.findIndex((o) => o.optionValue === this.value);
-    this.#active.value = i ?? (sel >= 0 ? sel : firstEnabled(this.#items()) ?? -1);
-    this.#open.value = true;
+    return sel >= 0 ? sel : firstEnabled(this.#items()) ?? -1;
   }
 
-  #close() { this.#open.value = false; }
+  /**
+   * Open or close from an interaction: openchange (Base UI onOpenChange: { open, reason, event }),
+   * cancelable; unless prevented, the open property follows. False when nothing changed.
+   */
+  #setOpen(open: boolean, reason: ChangeReason, event: Event) {
+    if (open === this.open) return false;
+    if (!this.dispatchEvent(new CustomEvent('openchange', { bubbles: true, cancelable: true, detail: { open, ...eventDetails(reason, event) } }))) return false;
+    this.open = open;
+    return true;
+  }
 
-  #commit(i: number) {
+  #openAt(i: number | undefined, reason: ChangeReason, event: Event) {
+    if (this.isDisabled) return;
+    this.#active.value = -1;
+    this.#active.value = i ?? this.#current();
+    this.#setOpen(true, reason, event);
+  }
+
+  #close(reason: ChangeReason, event: Event) {
+    if (this.#setOpen(false, reason, event)) this.#active.value = -1;
+  }
+
+  #commit(i: number, reason: ChangeReason, event: Event) {
     const o = this.options[i];
     if (o && !o.disabled && o.optionValue !== this.value) {
       this.value = o.optionValue;
-      this.dispatchEvent(new Event('input', { bubbles: true }));
-      this.dispatchEvent(new Event('change', { bubbles: true }));
+      const detail = { value: this.value, ...eventDetails(reason, event) };
+      this.dispatchEvent(new CustomEvent('input', { bubbles: true, detail }));
+      this.dispatchEvent(new CustomEvent('change', { bubbles: true, detail }));
     }
-    this.#close();
+    this.#close(reason, event);
   }
 
   #showPopup() {
@@ -217,40 +246,42 @@ export class UISelect extends UIFormElement {
 
   #focusTrigger = () => { if (!this.isDisabled) this.focus(); };
 
-  #onTriggerClick = () => {
+  #onTriggerClick = (e: Event) => {
     if (this.isDisabled) return;
-    this.#open.value ? this.#close() : this.#openAt(undefined);
+    this.open ? this.#close('trigger-press', e) : this.#openAt(undefined, 'trigger-press', e);
   };
 
   #onKeydown = (e: KeyboardEvent) => {
     if (this.isDisabled) return;
     const items = this.#items();
-    const open = this.#open.value;
+    const open = this.open;
     const intent = selectKeyIntent(open, e, this.#typeahead.busy());
     if (!open) {
-      if (intent === 'open') { e.preventDefault(); this.#openAt(undefined); }
-      else if (intent === 'open-first') { e.preventDefault(); this.#openAt(firstEnabled(items)); }
-      else if (intent === 'open-last') { e.preventDefault(); this.#openAt(lastEnabled(items)); }
+      // Enter and Space press the trigger; arrows, Home / End and typeahead navigate the list.
+      const press = e.key === 'Enter' || e.key === ' ';
+      if (intent === 'open') { e.preventDefault(); this.#openAt(undefined, press ? 'trigger-press' : 'list-navigation', e); }
+      else if (intent === 'open-first') { e.preventDefault(); this.#openAt(firstEnabled(items), 'list-navigation', e); }
+      else if (intent === 'open-last') { e.preventDefault(); this.#openAt(lastEnabled(items), 'list-navigation', e); }
       else if (isPrintableKey(e)) {
         const i = this.#typeahead(items, this.#active.value, e.key);
-        if (i !== undefined) { e.preventDefault(); this.#openAt(i); }
+        if (i !== undefined) { e.preventDefault(); this.#openAt(i, 'list-navigation', e); }
       }
       return;
     }
     switch (intent) {
-      case 'close': e.preventDefault(); this.#close(); return;
-      case 'commit': e.preventDefault(); this.#commit(this.#active.value); return;
-      case 'commit-tab': this.#commit(this.#active.value); return;
+      case 'close': e.preventDefault(); this.#close('escape-key', e); return;
+      case 'commit': e.preventDefault(); this.#commit(this.#current(), 'item-press', e); return;
+      case 'commit-tab': this.#commit(this.#current(), 'focus-out', e); return;
       case 'move': {
         e.preventDefault();
         const key = e.key === 'PageDown' ? 'End' : e.key === 'PageUp' ? 'Home' : e.key;
-        const i = navigate(items, this.#active.value, key);
+        const i = navigate(items, this.#current(), key);
         if (i !== undefined) this.#active.value = i;
         return;
       }
     }
     if (isPrintableKey(e)) {
-      const i = this.#typeahead(items, this.#active.value, e.key);
+      const i = this.#typeahead(items, this.#current(), e.key);
       if (i !== undefined) { e.preventDefault(); this.#active.value = i; }
     }
   };
@@ -260,16 +291,16 @@ export class UISelect extends UIFormElement {
     if (!o) return;
     const i = this.options.indexOf(o as any);
     if (i < 0 || this.options[i].disabled) return;
-    this.#commit(i);
+    this.#commit(i, 'item-press', e);
     this.focus();
   };
 
   // Keep focus on the trigger while interacting with the popup.
   #keepFocus = (e: Event) => e.preventDefault();
 
-  #onOutside = (e: Event) => { if (!this.contains(e.target as Node)) this.#close(); };
+  #onOutside = (e: Event) => { if (!this.contains(e.target as Node)) this.#close('outside-press', e); };
 
-  #onBlur = () => { this.#close(); this.markTouched(); };
+  #onBlur = (e: Event) => { this.#close('focus-out', e); this.markTouched(); };
 }
 
 define('ui-select', UISelect);

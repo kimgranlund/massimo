@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "0c13237f59fa6f3b96627f9cbb83fbe4a79b0db947542ca69d2dbfcdb200d645"
+      "sha256": "b3996f0b3654f643b775468eaabbced4e3f915b597435169b7e2bd48e0f98941"
     },
     {
       "path": "dom/range.ts",
@@ -14,11 +14,11 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "4dd711264868dd082ef5f909ef0427ea5f96a9e5621a8423cb26958034a34354"
+      "sha256": "1e14e729d219e925ee6eb3f2feddbe433418eb309b3f88f7129f5b458bedb359"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "f577fca86b489fce414eb21579ed0b84eb49c2201f2303dbc9a06efd11f89c36"
+      "sha256": "b3257bb57a31558981ab3a8c0564d03a34381c52faf6745df429e3953da056c1"
     },
     {
       "path": "dom/state.ts",
@@ -27,6 +27,14 @@
     {
       "path": "components/state.react.ts",
       "sha256": "93939c48a44a3ef9f278ce569aa55a59d1eb8ffaaa45dd12644eef9b4ba9fcf1"
+    },
+    {
+      "path": "dom/events.ts",
+      "sha256": "76db980a6af8bce8d8f3ce38a5543d5c12e65a4729657fd13551e7643e663ea9"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "1a9b478f598e231cd2799bd4ede9338af9fb67b55307d9a31d1673027ab8e053"
     }
   ],
   "renderers": {
@@ -39,6 +47,10 @@
         {
           "command": "node --test test/state-parity.test.ts",
           "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
+        },
+        {
+          "command": "node --test test/events.test.ts",
+          "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
         }
       ],
       "latestRun": {
@@ -46,7 +58,8 @@
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
-          "node --test test/state-parity.test.ts"
+          "node --test test/state-parity.test.ts",
+          "node --test test/events.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -62,6 +75,10 @@
         {
           "command": "node --test test/state-parity.test.ts",
           "covers": "the data-* state contract (contracts/states.json): the same state attributes on the web component (happy-dom) and the React renderer (SSR) for the same state; field state after blur, typing and focus"
+        },
+        {
+          "command": "node --test test/events.test.ts",
+          "covers": "Base UI event details on both renderers: change / input / openchange detail { value | checked | pressed | open, reason, event } and React (value, { reason, event }) with the same reasons; value / defaultValue, checked / defaultChecked; select open / defaultOpen"
         }
       ],
       "latestRun": {
@@ -69,7 +86,8 @@
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
-          "node --test test/state-parity.test.ts"
+          "node --test test/state-parity.test.ts",
+          "node --test test/events.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

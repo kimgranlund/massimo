@@ -281,9 +281,10 @@
       "events": [
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
+          "detail": "{ pressed: boolean, reason: 'none', event: Event } (Base UI Toggle onPressedChange)",
           "trigger": "selectable chip toggled by the user"
         },
         {
@@ -802,7 +803,7 @@
             "selectable?: boolean // Toggle button (aria-pressed).",
             "selected?: boolean",
             "defaultSelected?: boolean = false",
-            "onSelectedChange?: (selected: boolean) => void",
+            "onSelectedChange?: (selected: boolean, details: ChangeDetails) => void",
             "removable?: boolean // Adds the trailing x and the Delete / Backspace gesture; calls onRemove.",
             "onRemove?: () => void"
           ]

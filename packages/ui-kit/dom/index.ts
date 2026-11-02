@@ -5,3 +5,4 @@ export * from './text-entry.ts';
 export * from './listbox.ts';
 export * from './range.ts';
 export * from './state.ts';
+export * from './events.ts';

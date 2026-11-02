@@ -104,6 +104,39 @@
           }
         },
         {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": false,
+          "description": "Base UI open: whether the popup is shown. Setting it opens or closes the popup without an openchange event; user interaction updates it after openchange.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Base UI defaultOpen: open the popup when the element connects.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "label",
           "type": "string",
           "default": "",
@@ -206,17 +239,27 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ value: string, reason: 'item-press' | 'focus-out', event: Event }",
+          "trigger": "an option is committed with a new value (same moment as change)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ value: string, reason: 'item-press' | 'focus-out', event: Event } (Base UI onValueChange)",
+          "trigger": "an option is committed with a new value: pressed, Enter / Space on the highlighted one, or Tab"
+        },
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'list-navigation' | 'item-press' | 'outside-press' | 'escape-key' | 'focus-out', event: Event } (Base UI onOpenChange)",
+          "trigger": "the user opens or closes the popup; preventDefault keeps it as it is. Setting open does not fire it"
         }
       ],
       "methods": [
@@ -571,7 +614,11 @@
             "suffix?: ReactNode",
             "gap?: number",
             "size?: number",
-            "children?: ReactNode // <SelectOption> children."
+            "children?: ReactNode // <SelectOption> children.",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // An option was chosen (Base UI onValueChange; reason 'item-press'). The native onChange still fires.",
+            "open?: boolean // Open the picker (Base UI open). Opening needs user activation (showPicker); a native picker cannot be closed from script.",
+            "defaultOpen?: boolean // Open the picker on mount (Base UI defaultOpen); with the same user-activation limit.",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // The picker opened or closed (Base UI onOpenChange), read from select:open after each interaction."
           ]
         }
       }

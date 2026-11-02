@@ -7,7 +7,7 @@
 //   `remove` event, and unless prevented the chip removes itself and focus moves to a
 //   neighbouring chip.
 import { UIElement, define } from '../../core/index.ts';
-import { applyAttrs, buttonAttrs, isInactive, onButtonKeydown } from '../../dom/index.ts';
+import { applyAttrs, buttonAttrs, eventDetails, isInactive, onButtonKeydown } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { badge } from '../../styled-system/recipes/badge.js';
@@ -90,7 +90,8 @@ export class UIChip extends UIElement {
     if ((e.target as Element).closest?.('[data-remove]')) { e.stopImmediatePropagation(); this.requestRemove(); return; }
     if (this.selectable) {
       this.selected = !this.selected;
-      this.dispatchEvent(new Event('change', { bubbles: true }));
+      // Base UI Toggle's onPressedChange details (reason 'none').
+      this.dispatchEvent(new CustomEvent('change', { bubbles: true, detail: { pressed: this.selected, ...eventDetails('none', e) } }));
     }
   };
 

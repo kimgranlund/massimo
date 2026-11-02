@@ -5,8 +5,8 @@
 // <ui-palette>: a strip of swatches with no gaps. With `name` (or `selectable`) it becomes a
 //   single-select listbox: arrows move, the swatch's color is the form value.
 //   orientation: horizontal (default) | vertical (a column; Up/Down move).
-import { UIElement, UIFormElement, define, signal, type Problem } from '../../core/index.ts';
-import { applyAttrs, navigate, optionAttrs, listboxAttrs, uid } from '../../dom/index.ts';
+import { UIElement, UIFormElement, define, settleDefault, signal, type Problem } from '../../core/index.ts';
+import { applyAttrs, eventDetails, navigate, optionAttrs, listboxAttrs, uid, type ChangeReason } from '../../dom/index.ts';
 
 import { isTranslucent, validColor } from './color.ts';
 import { applyRecipe } from '../classes.ts';
@@ -40,11 +40,14 @@ export class UIPalette extends UIFormElement {
   static properties = {
     ...UIFormElement.properties,
     value: { type: String, default: '' },
+    /** The value at first render and on form reset; without it, the value attribute (Base UI defaultValue). */
+    defaultValue: { type: String, default: null },
     label: { type: String, default: '' },
     selectable: { type: Boolean, default: false, reflect: true },
     orientation: { type: String, default: 'horizontal', reflect: true },
   };
   declare value: string;
+  declare defaultValue: string | null;
   declare label: string;
   declare selectable: boolean;
   declare orientation: 'horizontal' | 'vertical';
@@ -59,6 +62,7 @@ export class UIPalette extends UIFormElement {
   get #isSelectable() { return this.selectable || !!this.name; }
 
   connected() {
+    settleDefault(this, '');
     this.#mo = new MutationObserver(() => this.#version.value++);
     this.#mo.observe(this, { childList: true, subtree: true, attributes: true, attributeFilter: ['color'] });
     this.addEventListener('keydown', this.#onKeydown);
@@ -89,16 +93,19 @@ export class UIPalette extends UIFormElement {
   }
 
   formValue() { return this.#isSelectable ? this.value || null : null; }
+  resetValue() { this.value = this.defaultValue ?? ''; }
+  restoreValue(state: unknown) { if (typeof state === 'string') this.value = state; }
   validate(): Problem | null { return this.required && !this.value ? { flags: { valueMissing: true }, message: 'Choose a color.' } : null; }
 
-  #select(i: number) {
+  #select(i: number, reason: ChangeReason, event: Event) {
     const s = this.swatches[i];
     if (!s || this.isDisabled) return;
     this.#active.value = i;
     if (s.color === this.value) return;
     this.value = s.color;
-    this.dispatchEvent(new Event('input', { bubbles: true }));
-    this.dispatchEvent(new Event('change', { bubbles: true }));
+    const detail = { value: this.value, ...eventDetails(reason, event) };
+    this.dispatchEvent(new CustomEvent('input', { bubbles: true, detail }));
+    this.dispatchEvent(new CustomEvent('change', { bubbles: true, detail }));
   }
 
   #onKeydown = (e: KeyboardEvent) => {
@@ -108,7 +115,7 @@ export class UIPalette extends UIFormElement {
     const i = navigate(items, from, e.key, { orientation: this.#orientation, rtl: getComputedStyle(this).direction === 'rtl' });
     if (i === undefined) return;
     e.preventDefault();
-    this.#select(i);
+    this.#select(i, 'keyboard', e);
   };
 
   #onFocus = () => { this.#focused.value = true; };
@@ -117,7 +124,7 @@ export class UIPalette extends UIFormElement {
   #onClick = (e: Event) => {
     if (!this.#isSelectable) return;
     const s = (e.target as Element).closest?.('ui-swatch');
-    if (s) this.#select(this.swatches.indexOf(s as UISwatch));
+    if (s) this.#select(this.swatches.indexOf(s as UISwatch), 'item-press', e);
   };
 }
 

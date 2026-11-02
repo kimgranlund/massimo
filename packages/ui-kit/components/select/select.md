@@ -74,6 +74,15 @@ The popup carries Base UI's positioner variables (Select.Positioner), and the re
 
 The CSS values are anchor functions and percentages of the anchored containing block, so they resolve where they are used (sizing, inset and margin properties); `getComputedStyle` returns them unresolved. The script values are px, written inline when the element places the popup itself. The React picker has no `data-side` / `data-align`: it is a pseudo-element the browser places.
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Open | Events / callbacks |
+|---|---|---|---|
+| `ui-select` | `value`, `defaultValue` (`default-value`) | `open`, `defaultOpen` (`default-open`) | `change` and `input`: `detail { value, reason, event }`, reason `item-press` (pointer, Enter, Space) or `focus-out` (Tab commits); `openchange` (cancelable): `detail { open, reason, event }`, reason `trigger-press`, `list-navigation`, `item-press`, `outside-press`, `escape-key` or `focus-out`. Setting `open` fires none. |
+| React Select | native `value` / `defaultValue` | `open`, `defaultOpen` (both through `showPicker`, which needs user activation; a native picker cannot be closed from script) | `onValueChange(value, { reason: 'item-press', event })`; `onOpenChange(open, { reason, event })` from `select:open` reread after each pointer, key, change and blur; native `onChange` still fires |
+
 ## Geometry and appearance
 
 Geometry families: `field` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [select.recipe.ts](select.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

@@ -44,7 +44,7 @@ function useRangeValue(initial: number) {
   const [value, setValue] = useState(initial);
   const ref = useCallback((el: HTMLElement | null) => {
     if (!el) return;
-    const h = () => setValue(Number((el as any).value));
+    const h = (e: Event) => setValue((e as CustomEvent<{ value: number }>).detail.value);
     el.addEventListener('input', h);
     return () => el.removeEventListener('input', h);
   }, []);

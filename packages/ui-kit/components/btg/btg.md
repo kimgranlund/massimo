@@ -48,6 +48,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | `ui-chip` / Chip | `data-disabled`; `data-pressed` when selectable and selected (Base UI Toggle) |
 | `ui-badge`, `ui-tag` | none (static) |
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | State | Events / callbacks |
+|---|---|---|
+| `ui-chip` (selectable) | `selected` | `change`: `detail { pressed, reason: 'none', event }` (Base UI Toggle) |
+| React Chip | `selected`, `defaultSelected` | `onSelectedChange(selected, { reason: 'none', event })` |
+
 ## Geometry and appearance
 
 Geometry families: `btg` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [btg.recipe.ts](btg.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

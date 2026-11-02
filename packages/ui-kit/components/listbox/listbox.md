@@ -47,6 +47,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | `ui-listbox` / Listbox, `ui-segmented` / Segmented | `data-orientation`; field state: `data-disabled`, `data-required`, `data-valid` / `data-invalid` (once shown: after blur or a blocked submit; an author error at once), `data-dirty`, `data-touched`, `data-filled`, `data-focused` |
 | `ui-option` / Option | `data-selected`, `data-highlighted` (the active option while the list has focus; was `data-active`), `data-disabled` |
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Events / callbacks |
+|---|---|---|
+| `ui-listbox`, `ui-segmented` | `value`, `defaultValue` (`default-value`) | `change` and `input` (same moment): `detail { value, reason, event }`, reason `item-press` (pointer) or `keyboard` (arrows, Home / End, typeahead) |
+| React Listbox, Segmented | `value`, `defaultValue` | `onValueChange(value, { reason, event })`, the same reasons |
+
 ## Geometry and appearance
 
 Geometry families: `container`, `control` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [listbox.recipe.ts](listbox.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

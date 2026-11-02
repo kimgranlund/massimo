@@ -54,6 +54,15 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 
 `data-filled` means checked. `data-touched` is set when the user leaves the control or activates it. The React host mirrors its native input (a radio rereads itself on any change in its group).
 
+## Events and values
+
+Base UI's props and event details ([components spec](../../../../docs/specs/components.md#events-and-values)).
+
+| Renderer | Value | Events / callbacks |
+|---|---|---|
+| `ui-checkbox`, `ui-radio`, `ui-switch` | `checked`, `defaultChecked` (`default-checked`); `value` is the submitted string | `change` and `input`: `detail { checked, value, reason: 'none', event }` (Base UI's only reason for these) |
+| React Checkbox, Radio, Switch | native `checked` / `defaultChecked` | `onCheckedChange(checked, { reason: 'none', event })`; native `onChange` still fires |
+
 ## Geometry and appearance
 
 Geometry families: `choice` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [choice.recipe.ts](choice.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.

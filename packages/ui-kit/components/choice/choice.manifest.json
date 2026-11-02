@@ -98,6 +98,17 @@
           }
         },
         {
+          "key": "defaultChecked",
+          "type": "boolean",
+          "default": null,
+          "attribute": "default-checked",
+          "reflects": false,
+          "description": "Base UI defaultChecked: checked at first render (when no checked attribute set it) and after form reset. Without it, the checked attribute is the default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "value",
           "type": "string",
           "default": "on",
@@ -137,17 +148,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event } (Base UI onCheckedChange)",
+          "trigger": "the user toggles it (radio: selects it)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event }",
+          "trigger": "the user toggles it (radio: selects it; same moment as input)"
         }
       ],
       "methods": [
@@ -276,6 +289,17 @@
           }
         },
         {
+          "key": "defaultChecked",
+          "type": "boolean",
+          "default": null,
+          "attribute": "default-checked",
+          "reflects": false,
+          "description": "Base UI defaultChecked: checked at first render (when no checked attribute set it) and after form reset. Without it, the checked attribute is the default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "value",
           "type": "string",
           "default": "on",
@@ -304,17 +328,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event } (Base UI onCheckedChange)",
+          "trigger": "the user toggles it (radio: selects it)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event }",
+          "trigger": "the user toggles it (radio: selects it; same moment as input)"
         }
       ],
       "methods": [
@@ -457,6 +483,17 @@
           }
         },
         {
+          "key": "defaultChecked",
+          "type": "boolean",
+          "default": null,
+          "attribute": "default-checked",
+          "reflects": false,
+          "description": "Base UI defaultChecked: checked at first render (when no checked attribute set it) and after form reset. Without it, the checked attribute is the default.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "key": "value",
           "type": "string",
           "default": "on",
@@ -485,17 +522,19 @@
       "events": [
         {
           "name": "input",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user changes the value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event } (Base UI onCheckedChange)",
+          "trigger": "the user toggles it (radio: selects it)"
         },
         {
           "name": "change",
-          "type": "Event",
+          "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "trigger": "user commits a new value"
+          "detail": "{ checked: boolean, value: string, reason: 'none', event: Event }",
+          "trigger": "the user toggles it (radio: selects it; same moment as input)"
         }
       ],
       "methods": [
@@ -1010,6 +1049,7 @@
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode",
             "indeterminate?: boolean"
@@ -1023,6 +1063,7 @@
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode"
           ]
@@ -1035,6 +1076,7 @@
             "prefix?: ReactNode // Text adornments beside the label (construction pattern).",
             "suffix?: ReactNode",
             "invalid?: boolean // Show the invalid state now (author error); native :user-invalid shows it after interaction anyway.",
+            "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires.",
             "size?: number // Unit u in px for this control.",
             "children?: ReactNode"
           ]

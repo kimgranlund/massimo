@@ -4,11 +4,11 @@
 // The control follows the construction pattern (components/slots.ts):
 //   [leading] [prefix] [contents = editor] [suffix] [trailing]
 // Author adornments as children with slot="leading" | "prefix" | "suffix" | "trailing".
-import { UIFormElement, define, html, type Problem } from '../../core/index.ts';
+import { UIFormElement, define, html, settleDefault, type Problem } from '../../core/index.ts';
 import { adoptAdornments, ADORNMENT_PARTS } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { input } from '../../styled-system/recipes/input.js';
-import { applyAttrs, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, withExternalRefs, type TextType } from '../../dom/index.ts';
+import { applyAttrs, eventDetails, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, withExternalRefs, type TextType } from '../../dom/index.ts';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,6 +17,8 @@ export class UIInput extends UIFormElement {
     ...UIFormElement.properties,
     label: { type: String, default: '' },
     value: { type: String, default: '' },
+    /** The value at first render and on form reset; without it, the value attribute, like a native input's (Base UI defaultValue). */
+    defaultValue: { type: String, default: null },
     type: { type: String, default: 'text' },
     placeholder: { type: String, default: '' },
     description: { type: String, default: '' },
@@ -32,6 +34,7 @@ export class UIInput extends UIFormElement {
   };
   declare label: string;
   declare value: string;
+  declare defaultValue: string | null;
   declare type: TextType;
   declare placeholder: string;
   declare description: string;
@@ -43,13 +46,14 @@ export class UIInput extends UIFormElement {
   declare describedby: string;
 
   #id = '';
-  #default = '';
   #adornments: Element[] = [];
+  /** The value when the editor gained focus: change fires on blur when it differs, like a native input. */
+  #focusValue = '';
 
   connected() {
     this.#id = this.id ? `${this.id}-field` : uid('input');
     // Like a native input, the `value` attribute is the default value used on form reset.
-    this.#default = this.getAttribute('value') ?? '';
+    settleDefault(this, '');
     // Authored adornments (or ones already placed on a previous connect) join the control.
     this.#adornments = [...this.querySelectorAll(ADORNMENT_PARTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=control] > [data-part=${p}] > [slot]`).join(', '))];
   }
@@ -61,7 +65,7 @@ export class UIInput extends UIFormElement {
       <div data-part="control" @click=${this.#onControlClick}>
         <span data-part="leading" hidden></span><span data-part="prefix" hidden></span>
         <div data-part="contents" @beforeinput=${this.#onBeforeInput} @input=${this.#onInput}
-          @blur=${this.#onBlur} @copy=${this.#guardSecret} @cut=${this.#guardSecret}></div>
+          @focus=${this.#onFocus} @blur=${this.#onBlur} @copy=${this.#guardSecret} @cut=${this.#guardSecret}></div>
         <span data-part="suffix" hidden></span><span data-part="trailing" hidden></span>
       </div>
       <span data-part="description" ?hidden=${!this.description}>${this.description}</span>
@@ -90,7 +94,7 @@ export class UIInput extends UIFormElement {
   authorError() { return this.error; }
   isReadonly() { return this.readonly; }
   validationAnchor() { return this.editor ?? undefined; }
-  resetValue() { this.value = this.#default; }
+  resetValue() { this.value = this.defaultValue ?? ''; }
   restoreValue(state: unknown) { if (typeof state === 'string') this.value = state; }
   validate(): Problem | null {
     const v = this.value;
@@ -121,9 +125,18 @@ export class UIInput extends UIFormElement {
     const text = toSingleLine(ed.textContent ?? '');
     if (!text) ed.replaceChildren(); // keep :empty so the placeholder shows
     this.value = text;
+    // The editor's native input event stops here; the host fires one with Base UI's details
+    // (onValueChange: reason 'none'; the native event is detail.event).
+    e.stopPropagation();
+    this.dispatchEvent(new CustomEvent('input', { bubbles: true, detail: { value: text, ...eventDetails('none', e) } }));
   };
 
-  #onBlur = () => this.markTouched();
+  #onFocus = () => { this.#focusValue = this.value; };
+
+  #onBlur = (e: Event) => {
+    this.markTouched();
+    if (this.value !== this.#focusValue) this.dispatchEvent(new CustomEvent('change', { bubbles: true, detail: { value: this.value, ...eventDetails('none', e) } }));
+  };
 
   // Never let a password leave through the clipboard.
   #guardSecret = (e: ClipboardEvent) => { if (this.type === 'password') e.preventDefault(); };

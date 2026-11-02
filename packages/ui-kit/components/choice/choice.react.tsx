@@ -10,6 +10,7 @@
 import type { InputHTMLAttributes, ReactNode } from 'react';
 import { Parts } from '../parts.react.tsx';
 import { useFieldState } from '../state.react.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { checkbox, radio, switchRecipe } from '../../styled-system/recipes/index.js';
 
@@ -22,12 +23,14 @@ export interface ChoiceProps extends Native {
   suffix?: ReactNode;
   /** Show the invalid state now (author error); native :user-invalid shows it after interaction anyway. */
   invalid?: boolean;
+  /** Checked changed by the user (Base UI onCheckedChange; reason 'none', as Base UI). The native onChange still fires. */
+  onCheckedChange?: (checked: boolean, details: ChangeDetails) => void;
   /** Unit u in px for this control. */
   size?: number;
   children?: ReactNode;
 }
 
-function Choice({ kind, prefix, suffix, invalid, size, children, className, style, indeterminate, onInvalid, ...input }: ChoiceProps & { kind: 'checkbox' | 'radio' | 'switch'; indeterminate?: boolean }) {
+function Choice({ kind, prefix, suffix, invalid, size, children, className, style, indeterminate, onInvalid, onChange, onCheckedChange, ...input }: ChoiceProps & { kind: 'checkbox' | 'radio' | 'switch'; indeterminate?: boolean }) {
   const f = useFieldState<HTMLLabelElement>({
     disabled: input.disabled, required: input.required, error: invalid,
     checked: input.checked, defaultChecked: input.defaultChecked, indeterminate: kind === 'checkbox' ? indeterminate : undefined,
@@ -37,6 +40,7 @@ function Choice({ kind, prefix, suffix, invalid, size, children, className, styl
   return (
     <label ref={f.ref} data-ui={kind} data-size={size} {...f.attrs} {...f.checkedAttrs} {...f.handlers} className={cx(c.root, className)} style={style}>
       <input type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined} aria-invalid={invalid || undefined} {...input}
+        onChange={(e) => { onCheckedChange?.(e.target.checked, eventDetails('none', e.nativeEvent)); onChange?.(e); }}
         onInvalid={(e) => { f.controlProps.onInvalid(); onInvalid?.(e); }} />
       <span data-part="leading" className={c.leading}>
         <span data-part="indicator" aria-hidden="true" className={c.indicator}>
