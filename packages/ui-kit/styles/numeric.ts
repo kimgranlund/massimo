@@ -2,10 +2,10 @@
 // or `className={numeric({ fraction: 'diagonal' })}`. One prop per axis of the attribute
 // (tokens/typography/resolve.ts NUMERIC_VARIANTS): enums and booleans, so strict values hold.
 // Pattern classes are atomic utilities, above textStyle compositions, so they win over a role on
-// the same element; --ui-numeric-family also carries the numeric voice into roles below.
+// the same element (a role inside keeps its voice, as with the attribute).
 //
 // Panda serializes `transform` into styled-system/patterns, so it cannot import: the values are
-// inline and test/typography.test.ts checks them against numericStyle() and voiceFamily('numeric').
+// inline and test/numeric.test.ts checks them against numericStyle() and voiceFamily('numeric').
 import { definePattern } from '@pandacss/dev';
 
 export const numeric = definePattern({

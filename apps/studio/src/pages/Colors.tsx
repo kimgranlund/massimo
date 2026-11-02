@@ -45,7 +45,7 @@ const sectionKicker = css({ textStyle: 'section-kicker', display: 'inline-flex',
 const display = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
 const bodyLarge = css({ textStyle: 'body-large' });
 const panelTitle = css({ textStyle: 'heading-2', [CQ_LG]: { textStyle: 'heading-1' } });
-const bigFigure = css({ textStyle: 'heading-1', fontVariantNumeric: 'tabular-nums lining-nums', '& span': { textStyle: 'heading-3' } });
+const bigFigure = css({ textStyle: 'heading-1', '& span': { textStyle: 'heading-3' } });
 // The strip lies flat when stacked and stands up beside the panels.
 // The primary ramp as a legible showcase (not the palette component): every step with its number,
 // and its purpose once there is room. A row of 12 at narrow widths, a tall column from medium up.
@@ -154,7 +154,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
         </ui-panel>
         <ui-panel className={tone.tint}>
           <span className={sectionKicker}>Tint &amp; emphasis</span>
-          <strong className={bigFigure}>62<span>%</span></strong>
+          <strong className={bigFigure} data-numeric>62<span data-numeric>%</span></strong>
           <p className={tone.tintStrong}>Large figures and small details share the same color family.</p>
         </ui-panel>
       </div>
@@ -194,7 +194,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
             <ui-badge className={tone.success}>↑ 12% this week</ui-badge>
           </ui-card>
           <ui-card>
-            <span className={kicker}>Collection progress</span><strong className={bigFigure}>62<span>%</span></strong>
+            <span className={kicker}>Collection progress</span><strong className={bigFigure} data-numeric>62<span data-numeric>%</span></strong>
             <ui-progress label="Collection progress" value={62} />
             <p className={caption}>148 of 240 items reviewed.</p>
           </ui-card>

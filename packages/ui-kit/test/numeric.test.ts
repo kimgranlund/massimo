@@ -35,8 +35,8 @@ test('numeric: a type role plus data-numeric takes the numeric voice (role class
     const family = (textStyles as unknown as Record<string, { value: Rule }>)[role].value.fontFamily;
     // On its own the role keeps its voice ...
     assert.equal(resolve(family, {}), resolve(voiceFamily(r.voice), {}), `${role} alone`);
-    // ... with data-numeric on the same element (or an ancestor: the variable inherits), the
-    // role's own declaration resolves to the numeric voice, whatever layer the role is in.
+    // ... with data-numeric on the same element, the role's own declaration resolves to the
+    // numeric voice, whatever layer the role is in.
     assert.equal(resolve(family, envFor('[data-numeric]')), resolve(voiceFamily('numeric'), {}), `${role} + data-numeric`);
     assert.equal(resolve(rules[`[data-type="${role}"]`].fontFamily, envFor('[data-numeric]')), resolve(voiceFamily('numeric'), {}), `data-type=${role} + data-numeric`);
   }
@@ -59,6 +59,7 @@ test('numeric: variant tokens compose per axis, matching numericStyle()', () => 
   assert.equal(numericStyle(['caps']).fontFeatureSettings, '"case"');
   for (const p of Object.keys(NUMERIC_POSITIONS)) assert.equal(rules[`[data-numeric][data-position="${p}"]`].fontVariantPosition, p);
   // Each element composes from its own tokens: the per-axis variables do not inherit.
+  assert.ok('--ui-numeric-family' in numericProperties);
   for (const v of Object.values(numericProperties)) assert.equal(v.inherits, false);
 });
 

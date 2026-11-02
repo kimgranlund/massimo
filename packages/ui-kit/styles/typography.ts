@@ -9,9 +9,10 @@
 //
 // Numerals: `data-numeric` (a global rule, Panda's base layer) must beat a role class
 // (`textStyle`, Panda's utilities layer), which a base-layer font-family never can. So every role
-// reads `var(--ui-numeric-family, <its voice>)`: the numeric rule sets --ui-numeric-family (it
-// inherits, so roles inside a numeric subtree take the numeric voice too) and the role resolves to
-// it, whichever layer the role came from. Figures compose per axis: each variant token sets one
+// reads `var(--ui-numeric-family, <its voice>)`: the numeric rule sets --ui-numeric-family on its
+// own element and the role resolves to it, whichever layer the role came from. The variable does
+// not inherit: text below without a role inherits the numeric family as usual, while an explicit
+// role inside a numeric element (a "/ month" caption) keeps its own voice. Figures compose per axis: each variant token sets one
 // non-inheriting --ui-num-<axis> and font-variant-numeric reads them all with the axis defaults
 // as fallbacks, so `data-numeric="oldstyle fraction"` combines. Panda code uses the same contract
 // through the `numeric()` pattern (styles/numeric.ts), whose classes sit above textStyles too.
@@ -27,8 +28,8 @@ export const voiceFamily = (v: Voice) => v === 'numeric'
 export const NUMERIC_FAMILY_VAR = '--ui-numeric-family';
 /** font-variant-numeric composed from the per-axis variables, defaults as fallbacks. */
 export const NUMERIC_COMPOSED = NUMERIC_AXES.map((a) => `var(--ui-num-${a},${NUMERIC_DEFAULTS[a] ? ` ${NUMERIC_DEFAULTS[a]}` : ''})`).join(' ');
-/** The per-axis variables do not inherit: each data-numeric element composes from its own tokens. */
-export const numericProperties = Object.fromEntries(NUMERIC_AXES.map((a) => [`--ui-num-${a}`, { syntax: '*', inherits: false }]));
+/** None of the numeric variables inherit: each data-numeric element composes from its own tokens. */
+export const numericProperties = Object.fromEntries([NUMERIC_FAMILY_VAR, ...NUMERIC_AXES.map((a) => `--ui-num-${a}`)].map((n) => [n, { syntax: '*', inherits: false }]));
 
 const U = 'calc(var(--ui-unit) * 1px)';
 const BASE = `calc(10px + ${U})`;
