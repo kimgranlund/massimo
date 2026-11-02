@@ -62,6 +62,8 @@ Inputs and select triggers are laid out as buttons: the host (input `[data-part=
 | swatch | 6u square, radius u × s; palette strip radius 2u × s, no gaps | 24 |
 | swiper | paddles are 8u icon buttons inset 2u; dots 2u (active 4u) in 4u hit areas, gap u | |
 
+Swiper paddles are fully round (radius = half their height) whatever the curvature setting, like the dots, and use icon size lg.
+
 ## Containers
 
 Every container has a padding level p and a max radius. Padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults); the max radius follows the padding (3u + p). The `gap` attribute overrides the gap on one element. The border lives inside the padding. Radius = min(max × corner scale, height/2); up to card the max is 3u + p, so corners stay concentric with a 3u control in the corner. Panel, region and page are square because they usually meet the viewport edge. Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).

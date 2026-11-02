@@ -85,7 +85,7 @@ test('Swiper: carousel region, scroll-snap viewport of slides, native paddle and
   const sw = html(h(Swiper, { label: 'Highlights', hoverControls: true }, h('div', null, 'One'), h('div', null, 'Two')));
   assert.match(sw, /^<div data-ui="swiper" role="region" aria-roledescription="carousel" aria-label="Highlights" data-hover-controls="true">/);
   assert.match(sw, /<div data-part="viewport" tabindex="0"><div data-part="slide" role="group" aria-roledescription="slide" aria-label="1 of 2"><div>One<\/div><\/div>/);
-  assert.match(sw, /<button type="button" data-ui="button" data-part="paddle" data-dir="prev" aria-label="Previous slide" aria-disabled="true">/);
+  assert.match(sw, /<button type="button" data-ui="button" data-part="paddle" data-dir="prev" data-icon-size="lg" aria-label="Previous slide" aria-disabled="true">/);
   assert.match(sw, /<button type="button" data-part="dot" aria-label="Go to slide 1" aria-current="true"><\/button><button type="button" data-part="dot" aria-label="Go to slide 2" aria-current="false">/);
   assert.match(html(h(Swiper, {}, h('div', null, 'only'))), /data-single="true"/);
   assert.match(html(h(Image, { slideshow: true, alt: 'Products' }, h('img', { src: '/1.jpg', alt: '1' }))), /data-slideshow="true".*data-ui="swiper".*aria-label="Products".*data-hover-controls="true"/);

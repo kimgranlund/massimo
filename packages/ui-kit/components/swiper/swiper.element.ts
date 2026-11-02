@@ -41,6 +41,7 @@ export class UISwiper extends UIElement {
       const b = document.createElement('ui-button');
       b.setAttribute('data-part', 'paddle');
       b.setAttribute('data-dir', dir);
+      b.setAttribute('icon-size', 'lg');
       b.setAttribute('aria-label', dir === 'prev' ? 'Previous slide' : 'Next slide');
       b.innerHTML = `<i slot="leading" name="caret-${dir === 'prev' ? 'left' : 'right'}"></i>`;
       b.addEventListener('click', () => this.go(this.#index.value + (dir === 'prev' ? -1 : 1)));

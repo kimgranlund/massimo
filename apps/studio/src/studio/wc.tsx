@@ -21,8 +21,18 @@ export function useEvent(type: string, fn: (el: any) => void) {
 // (3 columns). Components keep their own label for assistive tech; the pane hides it visually.
 
 /** A pane row: label in columns 1–2, control in columns 3–5. */
+// A trailing "(unit)" in a label becomes a unit suffix at the label's end: "Unit (px)" → Unit … px.
 export function Field({ label, children }: { label: string; children: ReactNode }) {
-  return <><span className={s.paneLabel}>{label}</span><div className={s.paneControl}>{children}</div></>;
+  const m = /^(.*?)\s*\(([^()]+)\)$/.exec(label);
+  return (
+    <>
+      <span className={s.paneLabel}>
+        <span className={s.paneLabelText}>{m ? m[1] : label}</span>
+        {m && <span className={s.paneUnit}>{m[2]}</span>}
+      </span>
+      <div className={s.paneControl}>{children}</div>
+    </>
+  );
 }
 
 export function Range({ label, value, min, max, step, onValue, format }: { label: string; value: number; min: number; max: number; step: number; onValue: (v: number) => void; format?: (v: number) => string }) {

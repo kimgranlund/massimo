@@ -15,7 +15,7 @@ const CONTROL = ':is(ui-input, [data-ui=input]) > [data-part=control], ui-select
 const BUTTON = ':is(ui-button, [data-ui=button])';
 const ENABLED = ':not([aria-disabled=true], [aria-busy=true])';
 const CHOICE = ':is(ui-checkbox, ui-radio, ui-switch)';
-const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true])';
+const ON = ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-radio[aria-checked=true], ui-switch[aria-checked=true])';
 const LIST = ':is(ui-listbox, ui-segmented, ui-palette)';
 // A field state on the host itself (select trigger) or on its text part (input contents).
 const HAS = (attr: string) => `${attr}, :has(> ${attr})`;
@@ -52,7 +52,7 @@ export const defaults = defineGlobalStyles({
 
   // Field: label, control, description, error
   [FIELD]: { display: 'flex', flexDirection: 'column', gap: '1.5' },
-  [`${FIELD} > [data-part=label]`]: { textStyle: 'label', alignSelf: 'start', cursor: 'default' },
+  [`${FIELD} > [data-part=label]`]: { textStyle: 'label', color: 'fg.muted', alignSelf: 'start', cursor: 'default' },
   [`${FIELD} > [data-part=description]`]: { textStyle: 'caption', color: 'fg.muted' },
   [`${FIELD} > [data-part=error]`]: { textStyle: 'caption', color: 'danger.fg' },
   [CONTROL]: {
@@ -128,10 +128,10 @@ export const defaults = defineGlobalStyles({
   [`${CHOICE}[aria-invalid=true] [data-part=box]`]: { borderColor: 'danger.solid', bg: DANGER_TINT(20) },
   'ui-checkbox [data-part=box] > i': { display: 'none' },
   'ui-checkbox[aria-checked=true] [data-part=box] > i[data-mark=checked], ui-checkbox[aria-checked=mixed] [data-part=box] > i[data-mark=mixed]': { display: 'inline-flex' },
-  ':is(ui-checkbox:is([aria-checked=true], [aria-checked=mixed]), ui-switch[aria-checked=true]) [data-part=box]': { bg: 'accent.solid', borderColor: 'accent.solid' },
+  // On: every choice fills with the primary solid; its indicator (check, radio dot) uses the contrast color.
+  [`${ON} [data-part=box]`]: { bg: 'accent.solid', borderColor: 'accent.solid' },
   [`${ON}:not([aria-disabled=true]):is(:hover, :active) [data-part=box]`]: { bg: 'accent.solidHover', borderColor: 'accent.solidHover' },
-  'ui-radio[aria-checked=true] [data-part=box]': { borderColor: 'accent.solid' },
-  'ui-radio[aria-checked=true] [data-part=box]::after': { bg: 'accent.solid' },
+  'ui-radio[aria-checked=true] [data-part=box]::after': { bg: 'fg.onSolid' },
   'ui-switch [data-part=box]': { bg: 'bg.muted' },
   'ui-switch [data-part=box]::after': { bg: 'white', boxShadow: 'sm' },
 
@@ -236,7 +236,8 @@ export const defaults = defineGlobalStyles({
   '@media (forced-colors: active)': {
     [`${BUTTON}, ${CONTROL}, ui-chip, [data-part=box], :is(ui-range, ui-progress) > [data-part=track], ui-segmented, ui-listbox, ui-select > [data-part=popup], ui-swatch`]: { outline: '1px solid CanvasText', outlineOffset: '-1px' },
     [`${ON} [data-part=box], ui-chip[aria-pressed=true], ui-option[aria-selected=true], :is(ui-range, ui-progress) > [data-part=track] > [data-part=fill], ui-swiper [data-part=dot][aria-current=true]::before`]: { forcedColorAdjust: 'none', bg: 'Highlight', color: 'HighlightText' },
-    'ui-radio[aria-checked=true] [data-part=box]::after, ui-switch [data-part=box]::after, ui-range > [data-part=thumb]': { forcedColorAdjust: 'none', bg: 'CanvasText' },
+    'ui-switch [data-part=box]::after, ui-range > [data-part=thumb]': { forcedColorAdjust: 'none', bg: 'CanvasText' },
+    'ui-radio[aria-checked=true] [data-part=box]::after': { forcedColorAdjust: 'none', bg: 'HighlightText' },
     '[aria-disabled=true]': { color: 'GrayText' },
   },
 });

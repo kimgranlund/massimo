@@ -46,7 +46,7 @@ export function Swiper({ label, hoverControls, noDots, noPaddles, onSlideChange,
   };
 
   const paddle = (dir: 'prev' | 'next') => (
-    <button type="button" data-ui="button" data-part="paddle" data-dir={dir} aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
+    <button type="button" data-ui="button" data-part="paddle" data-dir={dir} data-icon-size="lg" aria-label={dir === 'prev' ? 'Previous slide' : 'Next slide'}
       aria-disabled={(dir === 'prev' ? index <= 0 : index >= n - 1) || undefined}
       onClick={() => { if (dir === 'prev' ? index > 0 : index < n - 1) go(index + (dir === 'prev' ? -1 : 1)); }}>
       <span data-part="leading"><i name={`caret-${dir === 'prev' ? 'left' : 'right'}`} /></span>
