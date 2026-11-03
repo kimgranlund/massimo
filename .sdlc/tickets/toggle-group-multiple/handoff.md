@@ -2,7 +2,7 @@
 id: T-0030
 title: "W5 · Toggle Group: multiple selection"
 type: feature        # feature | bug | chore | spike | idea
-status: claimed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L1             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P3         # P1 | P2 | P3
 depends: [T-0005]
@@ -28,3 +28,9 @@ Base UI parity, wave 5: Toggle Group: multiple selection exists in ui-kit for bo
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; class names unhashed; existing components' APIs unchanged.
+
+## Outcome
+
+2026-11-02 · lane: full L1 · verdict: closed by reason (merged from wave 5d lane) · verifier: none · base: none
+- Changed: see commits
+- Commits: none
