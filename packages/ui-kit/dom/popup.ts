@@ -88,9 +88,20 @@ export function arrowOffset(popup: DOMRectReadOnly | { left: number; top: number
  * Place an arrow element on its popup's edge facing the anchor: sets --arrow-offset (px from the
  * popup's start along the side) and data-uncentered. `inset` defaults to the popup radius + u.
  */
+/**
+ * An element's layout box in viewport px, before its own transform: a popup is measured while it
+ * still enters (scaled from 0.97), and the arrow must sit where the settled popup will be.
+ */
+export function layoutRect(el: Element): { left: number; top: number; right: number; bottom: number; width: number; height: number } {
+  const h = el as HTMLElement, parent = h.offsetParent;
+  if (!parent || typeof h.offsetWidth !== 'number') return el.getBoundingClientRect();
+  const pr = parent.getBoundingClientRect(), left = pr.left + parent.clientLeft + h.offsetLeft, top = pr.top + parent.clientTop + h.offsetTop;
+  return { left, top, right: left + h.offsetWidth, bottom: top + h.offsetHeight, width: h.offsetWidth, height: h.offsetHeight };
+}
+
 export function placeArrow(arrow: HTMLElement | null | undefined, popup: Element | null | undefined, anchor: Element | null | undefined, side: Side) {
   if (!arrow || !popup || !anchor) return;
-  const p = popup.getBoundingClientRect();
+  const p = layoutRect(popup);
   if (!p.width && !p.height) return;
   const cs = window.getComputedStyle(popup);
   const u = parseFloat(cs.getPropertyValue('--u')) || 4;
@@ -131,6 +142,10 @@ export interface AnchoredPositionerOptions {
   align: () => Align;
   /** Called with the side in use after each placement (data-side). */
   onPlace?: (side: Side) => void;
+  /** Place by script even where CSS anchor positioning works (an anchor the kit does not own, such as a toast's: no anchor-name to set on it). */
+  script?: boolean;
+  /** The gap to the anchor in px (Base UI sideOffset); default 1u. */
+  offset?: () => number | undefined;
 }
 
 /** The positioner of an anchored popup: start() when shown, update() after a render, stop() when hidden. */
@@ -146,8 +161,8 @@ export function createAnchoredPositioner(o: AnchoredPositionerOptions) {
     const natural = { width: surface.scrollWidth + surface.offsetWidth - surface.clientWidth, height: surface.scrollHeight + surface.offsetHeight - surface.clientHeight };
     const side = chooseSide(a, natural, vp, o.side(), u), align = o.align();
     pos.setAttribute('data-placement', `${side}-${align}`);
-    if (!anchorPositioning()) {
-      applyPlacement(pos, placeFloating(a, vp, { side, align, offset: u, flipBelow: -Infinity, popup: { width: pos.offsetWidth, height: pos.offsetHeight } }));
+    if (o.script || !anchorPositioning()) {
+      applyPlacement(pos, placeFloating(a, vp, { side, align, offset: o.offset?.() ?? u, flipBelow: -Infinity, popup: { width: pos.offsetWidth, height: pos.offsetHeight } }));
     }
     o.onPlace?.(side);
     placeArrow(o.arrow?.(), surface, anchor, side);

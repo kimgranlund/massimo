@@ -35,6 +35,12 @@ export interface ToastOptions<Data = unknown> {
   onRemove?: () => void;
   /** Props for the action part: children (its label) and onClick, plus any attributes. */
   actionProps?: { children?: any; onClick?: (event: any) => void; [k: string]: any };
+  /**
+   * Anchor the toast to an element (Base UI positionerProps): it shows beside the anchor, with an
+   * arrow, instead of in the stack (feedback such as "Copied" next to the button that copied).
+   * side (default top) and align (center) place it; sideOffset is the gap in px (default 1u).
+   */
+  positionerProps?: { anchor?: Element | null; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; sideOffset?: number };
   data?: Data;
 }
 
@@ -175,6 +181,7 @@ export const toastManager = createToastManager();
 
 /** The toasts a viewport stacks (not closing), newest first, and each one's index (0 = frontmost). */
 export function stackIndex(toasts: readonly ToastObject[]) {
-  const live = toasts.filter((t) => t.transitionStatus !== 'ending');
+  // Anchored toasts sit beside their anchor, not in the stack.
+  const live = toasts.filter((t) => t.transitionStatus !== 'ending' && !t.positionerProps?.anchor);
   return (t: ToastObject) => live.indexOf(t);
 }

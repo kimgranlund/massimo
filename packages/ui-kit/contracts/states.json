@@ -99,7 +99,7 @@
     "data-side": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The side of the trigger the open popup sits on: top, bottom, left or right (measured: anchor positioning may flip it). Select: bottom or top."
+      "meaning": "The side of the trigger (or an anchored toast's anchor) the open popup sits on: top, bottom, left or right (measured: anchor positioning may flip it). Select: bottom or top."
     },
     "data-align": {
       "baseUi": true,
@@ -306,6 +306,11 @@
       "baseUi": false,
       "condition": null,
       "meaning": "The positioner's preferred side and alignment, <side>-<align> (ours): keys the CSS anchor placement; data-side and data-align say where it ended up."
+    },
+    "data-anchored": {
+      "baseUi": false,
+      "condition": null,
+      "meaning": "An anchored toast (positionerProps.anchor): it sits beside its anchor in a positioner with an arrow, not in the stack."
     }
   },
   "components": {
@@ -643,7 +648,9 @@
         "data-swiping",
         "data-swipe-direction",
         "data-starting-style",
-        "data-ending-style"
+        "data-ending-style",
+        "data-anchored",
+        "data-side"
       ],
       "content": [
         "data-behind",
@@ -660,6 +667,13 @@
       ],
       "close": [
         "data-type"
+      ],
+      "positioner": [
+        "data-placement",
+        "data-side"
+      ],
+      "arrow": [
+        "data-side"
       ]
     },
     "ui-form": {

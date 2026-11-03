@@ -2322,16 +2322,25 @@
     },
     "part:toast-action": {
       "kind": "part",
-      "source": "components/toast/toast.manifest.json#/nodes/5",
+      "source": "components/toast/toast.manifest.json#/nodes/7",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
         "toast action"
       ]
     },
+    "part:toast-arrow": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "toast arrow"
+      ]
+    },
     "part:toast-close": {
       "kind": "part",
-      "source": "components/toast/toast.manifest.json#/nodes/6",
+      "source": "components/toast/toast.manifest.json#/nodes/8",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
@@ -2340,7 +2349,7 @@
     },
     "part:toast-content": {
       "kind": "part",
-      "source": "components/toast/toast.manifest.json#/nodes/2",
+      "source": "components/toast/toast.manifest.json#/nodes/4",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
@@ -2349,16 +2358,25 @@
     },
     "part:toast-description": {
       "kind": "part",
-      "source": "components/toast/toast.manifest.json#/nodes/4",
+      "source": "components/toast/toast.manifest.json#/nodes/6",
       "availability": "implemented",
       "tag": "p",
       "searchTerms": [
         "toast description"
       ]
     },
+    "part:toast-positioner": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "toast positioner"
+      ]
+    },
     "part:toast-title": {
       "kind": "part",
-      "source": "components/toast/toast.manifest.json#/nodes/3",
+      "source": "components/toast/toast.manifest.json#/nodes/5",
       "availability": "implemented",
       "tag": "h2",
       "searchTerms": [
@@ -2367,7 +2385,7 @@
     },
     "part:toast-toast": {
       "kind": "part",
-      "source": "components/toast/toast.manifest.json#/nodes/1",
+      "source": "components/toast/toast.manifest.json#/nodes/2",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
@@ -8288,7 +8306,17 @@
     {
       "from": "component:toast",
       "relation": "ownsPart",
+      "to": "part:toast-positioner"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
       "to": "part:toast-toast"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-arrow"
     },
     {
       "from": "component:toast",

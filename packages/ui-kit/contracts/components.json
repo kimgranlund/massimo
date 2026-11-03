@@ -648,7 +648,9 @@
       "geometryFamily": "toast",
       "element": "Host is the toast region (role=region, a polite live region) holding a toast part per toast (role=dialog, alertdialog for priority high), each with a content part of title (h2), description (p), action and close (role=button) parts, drawn from a toast manager.",
       "parts": [
+        "toast-positioner?",
         "toast-toast",
+        "toast-arrow?",
         "toast-content",
         "toast-title",
         "toast-description",

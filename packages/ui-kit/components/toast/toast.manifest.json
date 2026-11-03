@@ -201,12 +201,28 @@
       "extends": "UIElement"
     },
     {
+      "id": "part:toast-positioner",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner]",
+      "summary": "Base UI Toast.Positioner: an anchored toast's box (positionerProps.anchor), fixed in the top layer and placed by script beside the anchor (side default top, align center, 1u or sideOffset away; data-side)."
+    },
+    {
       "id": "part:toast-toast",
       "kind": "part",
       "status": "implemented",
       "tag": "div",
       "selector": ":scope > [data-part=toast]",
       "summary": "One toast (Base UI Toast.Root; data-part toast because the viewport is the recipe root): role=dialog or alertdialog, a card-sm container; data-type, data-expanded, data-limited, data-swiping, data-swipe-direction, data-starting-style, data-ending-style."
+    },
+    {
+      "id": "part:toast-arrow",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=arrow]",
+      "summary": "Base UI Toast.Arrow: an anchored toast's arrow pointing at the anchor, as a popover's (2u wide, spanning the 1u gap)."
     },
     {
       "id": "part:toast-content",
@@ -308,7 +324,17 @@
     {
       "from": "component:toast",
       "relation": "ownsPart",
+      "to": "part:toast-positioner"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
       "to": "part:toast-toast"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-arrow"
     },
     {
       "from": "component:toast",
@@ -415,6 +441,26 @@
               "toast: ToastObject // The toast object from useToastManager().toasts.",
               "swipeDirection?: SwipeDirection | SwipeDirection[] // Directions a swipe dismisses toward (default: the viewport's, down and right).",
               "children?: ReactNode"
+            ]
+          },
+          "Toast.Positioner": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "toast: ToastObject // The anchored toast (its positionerProps name the anchor, side, align and sideOffset).",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Arrow": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
             ]
           },
           "Toast.Content": {

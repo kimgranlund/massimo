@@ -325,3 +325,57 @@ test('Toast (React): useToastManager adds toasts; the close fires onOpenChange (
   await act(async () => root.unmount());
   box.remove();
 });
+
+test('anchored toasts (positionerProps.anchor): a positioner with an arrow beside the anchor, out of the stack, in both renderers', async () => {
+  const anchor = document.createElement('button');
+  document.body.append(anchor);
+  const m = createToastManager();
+  const el = await viewport(m, '');
+  m.add({ id: 's', title: 'Stacked', timeout: 0 });
+  m.add({ id: 'a', title: 'Copied', timeout: 0, positionerProps: { anchor, side: 'bottom' } });
+  await tick(); await tick();
+  const pos = el.querySelector(':scope > [data-part=positioner]') as HTMLElement;
+  assert.ok(pos, 'the anchored toast sits in a positioner');
+  const t = pos.querySelector(':scope > [data-part=toast]') as HTMLElement, arrow = pos.querySelector(':scope > [data-part=arrow]') as HTMLElement;
+  assert.equal(t.dataset.id, 'a');
+  assert.equal(arrow.getAttribute('aria-hidden'), 'true');
+  assert.ok(pos.classList.contains('ui-toast__positioner') && arrow.classList.contains('ui-toast__arrow'));
+  assert.equal(pos.getAttribute('popover'), 'manual', 'in the top layer');
+  assert.equal(pos.getAttribute('data-side'), 'bottom');
+  assert.equal(t.getAttribute('data-side'), 'bottom');
+  assert.ok(t.hasAttribute('data-anchored'));
+  assert.notEqual(pos.style.top, '', 'placed by script');
+  assert.equal(toastsOf(el).length, 1, 'the stack holds only the stacked toast');
+  assert.equal(toastsOf(el)[0].style.getPropertyValue('--toast-index'), '0', 'the anchored toast takes no stack index');
+  for (const n of names(t)) assert.ok(contract.components['ui-toast-viewport'].toast.includes(n), n);
+  for (const n of names(pos)) assert.ok(contract.components['ui-toast-viewport'].positioner.includes(n), n);
+  const web = { pos: names(pos), toast: names(t), arrow: names(arrow) };
+  // Its close still closes it.
+  (t.querySelector('[data-part=close]') as HTMLElement).click();
+  await tick();
+  assert.ok(t.hasAttribute('data-ending-style'));
+  el.parentElement!.remove();
+
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  let api: any;
+  function Grab() { api = useToastManager(); return null; }
+  await act(async () => root.render(h(Toast, null, h(Grab))));
+  await act(async () => { api.add({ id: 's', title: 'Stacked', timeout: 0 }); api.add({ id: 'a', title: 'Copied', timeout: 0, positionerProps: { anchor, side: 'bottom' } }); });
+  await act(async () => { await wait(20); });
+  const rpos = box.querySelector('[data-ui=toast] > [data-part=positioner]') as HTMLElement;
+  assert.ok(rpos);
+  const rt = rpos.querySelector(':scope > [data-part=toast]') as HTMLElement, rarrow = rpos.querySelector(':scope > [data-part=arrow]') as HTMLElement;
+  assert.equal(rt.dataset.id, 'a');
+  assert.match(rpos.className, /ui-toast__positioner/);
+  assert.match(rarrow.className, /ui-toast__arrow/);
+  assert.equal(rpos.getAttribute('popover'), 'manual');
+  assert.deepEqual({ pos: names(rpos), toast: names(rt).filter((n) => n !== 'data-expanded'), arrow: names(rarrow) }, { ...web, toast: web.toast.filter((n) => n !== 'data-expanded') }, 'same data-* as the web component');
+  await act(async () => root.unmount());
+  box.remove();
+  anchor.remove();
+});

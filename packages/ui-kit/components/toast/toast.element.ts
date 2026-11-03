@@ -18,7 +18,7 @@
 // reason none after the fact); an added toast fires openchange { open: true, …, reason: 'none' }.
 // Toasts beyond `limit` are data-limited and inert. Zero native form elements.
 import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, hideTopLayer, showTopLayer, uid } from '../../dom/index.ts';
+import { applyAttrs, createAnchoredPositioner, hideTopLayer, showTopLayer, uid } from '../../dom/index.ts';
 import { setClasses } from '../classes.ts';
 import { toast as toastRecipe } from '../../styled-system/recipes/toast.js';
 import { createToastManager, stackIndex, toastManager, type ToastCloseReason, type ToastManager, type ToastObject, type ToastOptions } from './manager.ts';
@@ -33,7 +33,14 @@ const popoverOpen = (el: Element) => { try { return el.matches(':popover-open');
 const PLACEMENTS = ['bottom-end', 'bottom-center', 'top-end', 'top-center', 'inline'] as const;
 export type ToastPlacement = (typeof PLACEMENTS)[number];
 
-interface Drawn { el: HTMLElement; content: HTMLElement; key: number; detach: () => void; ids: { title: string; description: string }; leaving?: boolean }
+interface Drawn {
+  el: HTMLElement; content: HTMLElement; key: number; detach: () => void; ids: { title: string; description: string }; leaving?: boolean;
+  /** An anchored toast (positionerProps.anchor): its positioner (top layer) and arrow, placed beside the anchor. */
+  anchored?: { positioner: HTMLElement; arrow: HTMLElement; stop: () => void };
+}
+/** The element a drawn toast puts in the viewport: its positioner when anchored. */
+const outer = (d: Drawn) => d.anchored?.positioner ?? d.el;
+const isAnchored = (t: ToastObject) => !!t.positionerProps?.anchor;
 
 export class UIToastViewport extends UIElement {
   static properties = {
@@ -175,7 +182,7 @@ export class UIToastViewport extends UIElement {
 
   #onKeydown = (e: KeyboardEvent) => {
     const t = (e.target as Element).closest?.('[data-part=toast]') as HTMLElement | null;
-    if (!t || t.parentElement !== this) return;
+    if (!t || t.closest('ui-toast-viewport') !== this) return;
     const button = (e.target as Element).closest('[data-part=action], [data-part=close]') as HTMLElement | null;
     if (button && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); button.click(); return; }
     if (e.key === 'Escape' && this.#dismiss(t.dataset.id!, 'escape-key', e)) e.preventDefault();
@@ -184,7 +191,7 @@ export class UIToastViewport extends UIElement {
   #onClick = (e: MouseEvent) => {
     const part = (e.target as Element).closest?.('[data-part=action], [data-part=close]') as HTMLElement | null;
     const t = part?.closest('[data-part=toast]') as HTMLElement | null;
-    if (!part || !t || t.parentElement !== this) return;
+    if (!part || !t || t.closest('ui-toast-viewport') !== this) return;
     const id = t.dataset.id!;
     if (part.getAttribute('data-part') === 'close') { this.#dismiss(id, 'close-press', e); return; }
     this.#seen.get(id)?.actionProps?.onClick?.(e);
@@ -200,7 +207,9 @@ export class UIToastViewport extends UIElement {
       const content = document.createElement('div');
       content.setAttribute('data-part', 'content');
       el.append(content);
-      const detach = attachSwipe(el, {
+      // An anchored toast is not in the stack: no swipe, a positioner and arrow instead.
+      const anchored = isAnchored(t) ? this.#anchor(t, el) : undefined;
+      const detach = anchored ? () => {} : attachSwipe(el, {
         directions: () => swipeDirections(this.swipeDirection),
         unit: () => parseFloat(getComputedStyle(this).getPropertyValue('--u')) || 4,
         onSwiping: (s) => el.toggleAttribute('data-swiping', s),
@@ -213,11 +222,11 @@ export class UIToastViewport extends UIElement {
           }
         },
       });
-      d = { el, content, key: -1, detach, ids: { title: uid('toast-title'), description: uid('toast-description') } };
+      d = { el, content, key: -1, detach, anchored, ids: { title: uid('toast-title'), description: uid('toast-description') } };
       this.#drawn.set(t.id, d);
       el.setAttribute('data-starting-style', '');
       nextPaint(() => el.removeAttribute('data-starting-style'));
-      this.#ro?.observe(el);
+      if (!anchored) this.#ro?.observe(el);
     }
     if (d.key !== t.updateKey) {
       d.key = t.updateKey;
@@ -250,8 +259,26 @@ export class UIToastViewport extends UIElement {
     return d;
   }
 
+  /** Wrap an anchored toast in its positioner and arrow, show it in the top layer, and place it beside the anchor. */
+  #anchor(t: ToastObject, el: HTMLElement): NonNullable<Drawn['anchored']> {
+    const positioner = document.createElement('div');
+    positioner.setAttribute('data-part', 'positioner');
+    const arrow = document.createElement('div');
+    arrow.setAttribute('data-part', 'arrow');
+    arrow.setAttribute('aria-hidden', 'true');
+    positioner.append(el, arrow);
+    const p = () => this.#seen.get(t.id)?.positionerProps ?? t.positionerProps ?? {};
+    const api = createAnchoredPositioner({
+      anchor: () => p().anchor, positioner: () => positioner, surface: () => el, arrow: () => arrow,
+      side: () => p().side ?? 'top', align: () => p().align ?? 'center', script: true, offset: () => p().sideOffset,
+      onPlace: (side) => { for (const x of [positioner, el, arrow]) x.setAttribute('data-side', side); },
+    });
+    queueMicrotask(() => { if (!positioner.isConnected) return; showTopLayer(positioner); api.start(); });
+    return { positioner, arrow, stop: () => { api.stop(); hideTopLayer(positioner); } };
+  }
+
   #measure() {
-    const live = this.#toasts.peek().filter((t) => t.transitionStatus !== 'ending').map((t) => this.#drawn.get(t.id)?.el).filter(Boolean) as HTMLElement[];
+    const live = this.#toasts.peek().filter((t) => t.transitionStatus !== 'ending' && !isAnchored(t)).map((t) => this.#drawn.get(t.id)?.el).filter(Boolean) as HTMLElement[];
     measureStack(this, live);
   }
 
@@ -270,8 +297,8 @@ export class UIToastViewport extends UIElement {
     // Draw in list order (newest first), keeping elements in place when they already are.
     let at: ChildNode | null = this.firstChild;
     for (const t of list) {
-      const d = this.#draw(t);
-      if (d.el !== at) this.insertBefore(d.el, at); else at = at.nextSibling;
+      const d = this.#draw(t), node = outer(d);
+      if (node !== at) this.insertBefore(node, at); else at = at.nextSibling;
       const i = index(t), behind = i > 0, limited = i >= limit, type = t.type || undefined;
       const title = d.content.querySelector(':scope > [data-part=title]'), description = d.content.querySelector(':scope > [data-part=description]');
       applyAttrs(d.el, {
@@ -285,6 +312,7 @@ export class UIToastViewport extends UIElement {
       applyAttrs(d.content, { 'data-behind': on(behind), 'data-expanded': on(expanded) });
       for (const p of d.content.children) applyAttrs(p, { 'data-type': type });
       setClasses(d.el, c.toast);
+      if (d.anchored) { setClasses(d.anchored.positioner, c.positioner); setClasses(d.anchored.arrow, c.arrow); applyAttrs(d.el, { 'data-anchored': '' }); }
       setClasses(d.content, c.content);
       for (const p of d.content.children) setClasses(p, c[p.getAttribute('data-part') as 'title']);
       if (t.transitionStatus === 'ending' && !d.leaving) {
@@ -294,7 +322,7 @@ export class UIToastViewport extends UIElement {
     }
     for (const [id, d] of this.#drawn) {
       if (list.some((t) => t.id === id)) continue;
-      d.detach(); this.#ro?.unobserve(d.el); d.el.remove(); this.#drawn.delete(id);
+      d.detach(); d.anchored?.stop(); this.#ro?.unobserve(d.el); outer(d).remove(); this.#drawn.delete(id);
     }
     this.#measure();
     // A removed toast that held focus fires no focusout everywhere: let the timers run again.

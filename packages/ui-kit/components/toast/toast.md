@@ -32,7 +32,8 @@ function SaveButton() {
 }
 ```
 
-- **Manager** (both renderers): `add(options)` returns the id (an existing id updates that toast in place and restarts its timer); `update(id, options | prev => options)`; `close(id?)` (no id: all); `promise(p, { loading, success, error })` (each a string, options or a function of the result; the loading toast has no timeout). Options: `id`, `title`, `description`, `type` (`data-type`; success, error, warning and info colour the title and edge, loading is set by `promise`), `timeout` (ms; 0 keeps it), `priority` (`low` polite, `high` assertive), `actionProps` (`children` is the label, `onClick`), `onClose`, `onRemove`, `data`.
+- **Manager** (both renderers): `add(options)` returns the id (an existing id updates that toast in place and restarts its timer); `update(id, options | prev => options)`; `close(id?)` (no id: all); `promise(p, { loading, success, error })` (each a string, options or a function of the result; the loading toast has no timeout). Options: `id`, `title`, `description`, `type` (`data-type`; success, error, warning and info colour the title and edge, loading is set by `promise`), `timeout` (ms; 0 keeps it), `priority` (`low` polite, `high` assertive), `actionProps` (`children` is the label, `onClick`), `positionerProps` (an anchored toast, below), `onClose`, `onRemove`, `data`.
+- **Anchored toasts** (Base UI `positionerProps`): `add({ description: 'Copied', positionerProps: { anchor: button, side: 'bottom' } })` shows the toast beside `anchor` with an arrow instead of in the stack, for feedback at the control that caused it. `side` (default `top`), `align` (default `center`) and `sideOffset` (px, default 1u) place it; it flips when there is no room, keeps its timer, and closes as any toast does (close, Escape, timeout), but does not swipe and takes no stack index.
 - **Viewport**: `limit` (default 3: older toasts stay mounted, `data-limited` and `inert`), `timeout` (the default for toasts that set none, 5000), `placement` (`bottom-end` default, `bottom-center`, `top-end`, `top-center`, or `inline` for a preview in flow), `swipe-direction` (default `down right`), `label` (default Notifications), and the `manager` property (default: the page's `toastManager`; React: `Toast.Provider toastManager`, else its own).
 - **Timers** pause while the stack is hovered or holds focus (which also expands it, `data-expanded`) and while the document is hidden, keeping the time left.
 - **Events**: the viewport fires `openchange` with `{ open, id, toast, reason, event }`: `open: true, reason: 'none'` when a toast is added; `open: false` when one closes. A swipe (`swipe`), the close (`close-press`) or Escape on a focused toast (`escape-key`) fire it first and cancelably (`preventDefault` keeps the toast); a timeout or a script close fires it after the fact with `reason: 'none'`. React: `Toast.Viewport onOpenChange(open, details)` (or the preset's), and per toast `onClose` / `onRemove`.
@@ -44,7 +45,9 @@ function SaveButton() {
 | Toast.Provider | the manager (`toastManager`, `createToastManager`) | `Toast.Provider` |
 | Toast.Portal | not needed (the viewport is in the top layer) | `Toast.Portal` (document.body, after mount) |
 | Toast.Viewport | `ui-toast-viewport` (host) | `Toast.Viewport` (`div[data-ui=toast]`) |
+| Toast.Positioner | `[data-part=positioner]` around an anchored toast (top layer) | `Toast.Positioner toast` |
 | Toast.Root | `[data-part=toast]` | `Toast.Root` |
+| Toast.Arrow | `[data-part=positioner] > [data-part=arrow]` | `Toast.Arrow` |
 | Toast.Content | `[data-part=toast] > [data-part=content]` | `Toast.Content` |
 | Toast.Title | `[data-part=content] > h2[data-part=title]` | `Toast.Title` (`<h2>`) |
 | Toast.Description | `[data-part=content] > p[data-part=description]` | `Toast.Description` (`<p>`) |
@@ -53,7 +56,9 @@ function SaveButton() {
 
 Base UI's Root is the `toast` part here, because the viewport is the recipe's root. The web component draws every part itself (title and description as text); the React parts take children and `render`:
 
-- `part:toast-toast` `:scope > [data-part=toast]`: one toast.
+- `part:toast-positioner` `:scope > [data-part=positioner]`: an anchored toast's box, fixed in the top layer beside the anchor (`data-side`, `data-placement`).
+- `part:toast-toast` `:scope > [data-part=toast]`: one toast (in a positioner when anchored: `data-anchored`, `data-side`).
+- `part:toast-arrow` `… > [data-part=positioner] > [data-part=arrow]`: the anchored toast's arrow, as a popover's.
 - `part:toast-content` `… > [data-part=content]`: its parts in a grid: title and description in one column, then the action and the close.
 - `part:toast-title`, `part:toast-description`, `part:toast-action`, `part:toast-close`: the parts above.
 
@@ -118,7 +123,8 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | Element | Attributes |
 |---|---|
 | `ui-toast-viewport` / Toast.Viewport | `data-expanded` |
-| toast | `data-type`, `data-expanded`, `data-limited`, `data-swiping`, `data-swipe-direction`, `data-starting-style`, `data-ending-style` |
+| toast | `data-type`, `data-expanded`, `data-limited`, `data-swiping`, `data-swipe-direction`, `data-starting-style`, `data-ending-style`, `data-anchored`, `data-side` (anchored) |
+| positioner, arrow (anchored) | `data-side` (positioner also `data-placement`) |
 | content | `data-behind`, `data-expanded` |
 | title, description, action, close | `data-type` |
 

@@ -30,7 +30,7 @@
     },
     {
       "path": "dom/popup.ts",
-      "sha256": "e78bada9915e6a53db847ea9809e6954cb9f0a72003ce8acae84141e19a0d4c0"
+      "sha256": "ff8a789d8ae0410650e128bdf61eb09e15f6f254298573c317de65b47293bfae"
     }
   ],
   "renderers": {

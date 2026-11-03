@@ -16,6 +16,7 @@
 // reveal intent; data-limited toasts (beyond the provider limit) are hidden and inert.
 import { defineSlotRecipe } from '@pandacss/dev';
 import { FORCED, FORCED_EDGE, PAINT, UI_FONT, t } from '../recipe-parts.ts';
+import { popupArrow } from '../popover/popup-parts.ts';
 
 const OFF = 'calc(100% + 4 * var(--u))';
 const TYPES = { success: 'success', error: 'critical', warning: 'warning', info: 'info' } as const;
@@ -28,7 +29,7 @@ const center = { insetInlineStart: '50%', translate: '-50% 0' };
 export const toast = defineSlotRecipe({
   className: 'ui-toast',
   description: 'Brief notifications in a stack at a window corner (ui-toast-viewport, React Toast).',
-  slots: ['root', 'toast', 'content', 'title', 'description', 'action', 'close'],
+  slots: ['root', 'positioner', 'toast', 'arrow', 'content', 'title', 'description', 'action', 'close'],
   base: {
     root: {
       '--toast-gap': 'calc(2 * var(--u))', '--toast-peek': 'calc(2 * var(--u))', '--toast-dir': '-1',
@@ -68,6 +69,25 @@ export const toast = defineSlotRecipe({
       ...Object.fromEntries(Object.entries(TYPES).map(([type, role]) => [`&[data-type=${type}]`, { borderColor: `${role}.border` }])),
       [FORCED]: FORCED_EDGE,
     },
+    // An anchored toast (positionerProps.anchor; Base UI Toast.Positioner, Toast.Arrow): the
+    // positioner is fixed in the top layer, placed by script beside the anchor (1u, or sideOffset);
+    // the toast inside is a card-sm popup at its own size (at most 80u), entering and leaving as a
+    // popup does (opacity and 0.97 scale from the edge facing the anchor, the reveal intent).
+    positioner: {
+      position: 'fixed', inset: 'auto', margin: 0, padding: 0, border: 0, bg: 'transparent', color: 'fg', overflow: 'visible',
+      width: 'max-content', maxWidth: 'min(calc(80 * var(--u)), calc(100vw - 8 * var(--u)))', fontFamily: UI_FONT,
+      '&:popover-open': { display: 'block' },
+      '& > [data-part=toast]': {
+        position: 'relative', insetInline: 'auto', zIndex: 'auto', translate: 'none', scale: 1, height: 'auto',
+        transition: t('reveal', 'opacity', 'scale'),
+        transformOrigin: 'center',
+        _after: { display: 'none' },
+        '&[data-side=top]': { transformOrigin: 'bottom center' }, '&[data-side=bottom]': { transformOrigin: 'top center' },
+        '&[data-side=left]': { transformOrigin: 'center right' }, '&[data-side=right]': { transformOrigin: 'center left' },
+        '&:is([data-starting-style], [data-ending-style])': { opacity: 0, scale: 0.97, transform: 'none' },
+      },
+    },
+    arrow: popupArrow('bg.overlay', 'border'),
     content: {
       display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gridAutoColumns: 'auto', columnGap: 'var(--u)', alignItems: 'center',
       transition: t('reveal', 'opacity'),

@@ -10,7 +10,7 @@
 import { createContext, useContext, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactNode, type CSSProperties, type Context } from 'react';
 import { createPortal } from 'react-dom';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { hideTopLayer, showTopLayer } from '../../dom/index.ts';
+import { createAnchoredPositioner, hideTopLayer, showTopLayer, type Side } from '../../dom/index.ts';
 import { toast as toastRecipe } from '../../styled-system/recipes/toast.js';
 import { createToastManager, stackIndex, type SwipeDirection, type ToastCloseReason, type ToastManager, type ToastObject, type ToastOptions } from './manager.ts';
 import { afterTransitions, attachSwipe, measureStack, nextPaint, swipeDirections } from './stack.ts';
@@ -28,6 +28,8 @@ interface ViewportContext { expanded: boolean; c: Record<string, string>; swipe:
 const ViewportCtx = createContext<ViewportContext | null>(null);
 interface RootContext { toast: ToastObject; ids: { title: string; description: string }; type: string | undefined; index: number }
 const RootCtx = createContext<RootContext | null>(null);
+/** Inside a Toast.Positioner: the side it sits on, and the arrow's element for placement. */
+const PositionerCtx = createContext<{ side: Side | undefined; arrowRef: { current: HTMLDivElement | null } } | null>(null);
 const use = <T,>(ctx: Context<T | null>, part: string, owner: string) => {
   const v = useContext(ctx);
   if (!v) throw new Error(`<${part}> must be inside ${owner}`);
@@ -143,7 +145,7 @@ export function ToastViewport({ placement = 'bottom-end', label = 'Notifications
     const el = ref.current;
     if (!el) return;
     const measure = () => {
-      const live = manager.toasts.filter((t) => t.transitionStatus !== 'ending').map((t) => el.querySelector<HTMLElement>(`:scope > [data-part=toast][data-id="${CSS.escape(t.id)}"]`)).filter(Boolean) as HTMLElement[];
+      const live = manager.toasts.filter((t) => t.transitionStatus !== 'ending' && !t.positionerProps?.anchor).map((t) => el.querySelector<HTMLElement>(`:scope > [data-part=toast][data-id="${CSS.escape(t.id)}"]`)).filter(Boolean) as HTMLElement[];
       measureStack(el, live);
     };
     measure();
@@ -166,10 +168,13 @@ export function ToastViewport({ placement = 'bottom-end', label = 'Notifications
   const keys = (e: KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(e);
     const t = (e.target as Element).closest('[data-part=toast]') as HTMLElement | null;
-    if (e.key === 'Escape' && t && t.parentElement === e.currentTarget && dismiss(t.dataset.id!, 'escape-key', e.nativeEvent)) e.preventDefault();
+    if (e.key === 'Escape' && t && t.closest('[data-ui=toast]') === e.currentTarget && dismiss(t.dataset.id!, 'escape-key', e.nativeEvent)) e.preventDefault();
   };
   const attrs = { 'data-expanded': on(expanded) };
-  const content = children ?? toasts.map((t) => <ToastRoot key={t.id} toast={t} />);
+  // Anchored toasts (positionerProps.anchor) sit beside their anchor with an arrow, not in the stack.
+  const content = children ?? toasts.map((t) => (t.positionerProps?.anchor
+    ? <ToastPositioner key={t.id} toast={t}><ToastRoot toast={t} /><ToastArrow /></ToastPositioner>
+    : <ToastRoot key={t.id} toast={t} />));
   return (
     <ViewportCtx.Provider value={{ expanded, c, swipe: swipeDirections(swipeDirection), dismiss }}>
       {renderPart('div', c.root, {
@@ -212,10 +217,11 @@ export function ToastRoot({ toast, swipeDirection, children, className, style, r
   dirs.current = swipeDirection ? swipeDirections(swipeDirection) : v.swipe;
   const dismissRef = useRef(v.dismiss);
   dismissRef.current = v.dismiss;
+  const placed = useContext(PositionerCtx);
   useEffect(() => { nextPaint(() => setStarting(false)); }, []);
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || placed) return;
     return attachSwipe(el, {
       directions: () => dirs.current,
       unit: () => parseFloat(getComputedStyle(el).getPropertyValue('--u')) || 4,
@@ -237,6 +243,7 @@ export function ToastRoot({ toast, swipeDirection, children, className, style, r
   const attrs = {
     'data-type': type, 'data-expanded': on(v.expanded), 'data-limited': on(limited), 'data-swiping': on(swiping), 'data-swipe-direction': swipeDir,
     'data-starting-style': on(starting && !ending), 'data-ending-style': on(ending),
+    'data-anchored': on(placed), 'data-side': placed?.side,
   };
   const body = children ?? (
     <ToastContent>
@@ -258,6 +265,49 @@ export function ToastRoot({ toast, swipeDirection, children, className, style, r
       }, stateOf(attrs))}
     </RootCtx.Provider>
   );
+}
+
+export interface ToastPositionerProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'>, PartBase {
+  /** The anchored toast (its positionerProps name the anchor, side, align and sideOffset). */
+  toast: ToastObject;
+  children?: ReactNode;
+}
+
+/** Toast.Positioner (Base UI): places an anchored toast beside its anchor, in the top layer (data-side). */
+export function ToastPositioner({ toast, children, className, render, ...rest }: ToastPositionerProps) {
+  const v = use(ViewportCtx, 'Toast.Positioner', 'Toast.Viewport');
+  const ref = useRef<HTMLDivElement>(null);
+  const arrowRef = useRef<HTMLDivElement | null>(null);
+  const [side, setSide] = useState<Side | undefined>();
+  const props = useRef(toast.positionerProps ?? {});
+  props.current = toast.positionerProps ?? {};
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const api = createAnchoredPositioner({
+      anchor: () => props.current.anchor, positioner: () => ref.current, surface: () => ref.current?.querySelector<HTMLElement>(':scope > [data-part=toast]'),
+      arrow: () => arrowRef.current, side: () => props.current.side ?? 'top', align: () => props.current.align ?? 'center',
+      script: true, offset: () => props.current.sideOffset, onPlace: setSide,
+    });
+    showTopLayer(el);
+    api.start();
+    return () => { api.stop(); hideTopLayer(el); };
+  }, []);
+  const attrs = { 'data-side': side };
+  return (
+    <PositionerCtx.Provider value={{ side, arrowRef }}>
+      {renderPart('div', v.c.positioner, { 'data-part': 'positioner', popover: 'manual', ...attrs, className, ...rest, ref, render, children }, stateOf(attrs))}
+    </PositionerCtx.Provider>
+  );
+}
+
+/** Toast.Arrow (Base UI): the anchored toast's arrow, pointing at the anchor. */
+export function ToastArrow({ className, render, ...rest }: Omit<HTMLAttributes<HTMLDivElement>, 'className'> & PartBase) {
+  const v = use(ViewportCtx, 'Toast.Arrow', 'Toast.Viewport');
+  const p = useContext(PositionerCtx);
+  if (!p) throw new Error('<Toast.Arrow> must be inside Toast.Positioner');
+  const attrs = { 'data-side': p.side };
+  return renderPart('div', v.c.arrow, { 'data-part': 'arrow', 'aria-hidden': 'true', ...attrs, className, ...rest, ref: (el: HTMLDivElement | null) => { p.arrowRef.current = el; }, render }, stateOf(attrs));
 }
 
 export interface ToastContentProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'>, PartBase {
@@ -346,6 +396,8 @@ Toast.Provider = ToastProvider;
 Toast.Portal = ToastPortal;
 Toast.Viewport = ToastViewport;
 Toast.Root = ToastRoot;
+Toast.Positioner = ToastPositioner;
+Toast.Arrow = ToastArrow;
 Toast.Content = ToastContent;
 Toast.Title = ToastTitle;
 Toast.Description = ToastDescription;

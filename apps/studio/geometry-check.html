@@ -126,7 +126,7 @@ for (const c of cases) {
       <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
-    <div style="width:${100 * c.unit}px"><ui-toast-viewport id="toastV" placement="inline" timeout="0"></ui-toast-viewport></div><ui-toast-viewport id="toastF" timeout="0"></ui-toast-viewport>
+    <div style="width:${100 * c.unit}px"><ui-toast-viewport id="toastV" placement="inline" timeout="0"></ui-toast-viewport></div><ui-toast-viewport id="toastF" timeout="0"></ui-toast-viewport><span id="toastAnchor" style="position:fixed;top:20px;left:300px">Copy</span>
     <div style="width:${40 * c.unit}px"><ui-number-field id="numF" label="N" value="12"></ui-number-field><ui-number-field id="numS" label="S" value="3"><span slot="prefix">$</span><span slot="suffix">kg</span></ui-number-field></div>
     <ui-otp-field id="otp" value="12"><div data-part="input"></div><div data-part="input"></div><div data-part="separator"></div><div data-part="input"></div></ui-otp-field>
     <div style="width:${100 * c.unit}px"><ui-combobox id="cbS" label="C" value="a"><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option></ui-combobox>
@@ -159,6 +159,8 @@ for (const c of cases) {
     m.add({ title: 'Second', description: 'More' });
     m.add({ title: 'Saved', description: 'Draft stored.', actionProps: { children: 'Undo' } });
   }
+  // An anchored toast (Base UI positionerProps): beside its anchor, with an arrow.
+  box.querySelector('#toastF').manager.add({ id: 'anch', title: 'Copied', positionerProps: { anchor: box.querySelector('#toastAnchor'), side: 'bottom' } });
   // The context menu opens at a viewport point (script placement); measured below.
   box.querySelector('#ctx').openAt(100, 100);
   await new Promise((r) => setTimeout(r, 30));
@@ -617,6 +619,14 @@ for (const c of cases) {
       checks['toast.viewport.bottom'] = [r2(vh - rect(tf).bottom), rq.margin];
       checks['toast.viewport.height'] = [r2(rect(tf).height), r2(rect(f0).height)];
       checks['toast.stack.offset'] = [px(f1.style.getPropertyValue('--toast-offset-y')), r2(rect(f0).height)];
+      // Anchored: 1u below the anchor (the popup offset), a card-sm toast, the arrow spanning the gap; not in the stack.
+      const ap = tf.querySelector(':scope > [data-part=positioner]'), at = ap && ap.querySelector(':scope > [data-part=toast]'), aa = ap && ap.querySelector(':scope > [data-part=arrow]'), anc = $('toastAnchor'), rpop = resolvePopup('popover', g);
+      checks['toast.anchored.offset'] = [r2(rect(at).top - rect(anc).bottom), rpop.offset];
+      checks['toast.anchored.padding'] = [px(cs(at).paddingTop), rq.padding];
+      checks['toast.anchored.arrow.width'] = [r2(rect(aa).width), rpop.arrowWidth];
+      checks['toast.anchored.arrow.tip'] = [r2(rect(at).top - rect(aa).top), rpop.arrowHeight];
+      checks['toast.anchored.arrow.center'] = [r2(rect(aa).left + rect(aa).width / 2), r2(rect(anc).left + rect(anc).width / 2)];
+      checks['toast.anchored.outOfStack'] = [tf.querySelectorAll(':scope > [data-part=toast]').length, 2];
     }
   }
   // Number field (resolveNumberField): the field control with steppers in the 6u slots, the text 1u from each.
