@@ -159,7 +159,7 @@
       "concept": "vibrancy",
       "severity": "error",
       "checks": "Each brand and feedback role's text step (11) reaches the engine's APCA threshold on the page fill, in light and dark.",
-      "fix": "The peak tone is the main lever: move the manual peak tone toward 62 (the default); then the endpoints (a lighter light endpoint, a darker dark one) or another family for the role.",
+      "fix": "Undo the tone settings the finding names (they changed the ramps), or move the manual peak tone toward 62 (the default), or choose another family for the role.",
       "fixtures": {
         "fail": {
           "color": {

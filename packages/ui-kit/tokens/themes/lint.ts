@@ -4,7 +4,7 @@
 import constraints from '../../contracts/theme-constraints.json' with { type: 'json' };
 import { defaultParams, type ParamName, type ThemeParams } from './params.ts';
 import type { Theme } from './theme.ts';
-import { normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
+import { SPECTRUM_FIELDS, normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
 import { generateSpectrum, resolveRoles, SCALE_ROLES, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
 import { densityInset } from '../geometry/resolve.ts';
 import { SPRING_NAMES } from '../motion/index.ts';
@@ -19,6 +19,14 @@ export const THEME_CONSTRAINTS = constraints.rules as Record<string, { concept: 
 const SPRING = (n: number) => SPRING_NAMES[Math.max(0, Math.min(SPRING_NAMES.length - 1, Math.round(n)))];
 /** APCA Lc for text on a solid fill (button labels, danger actions). */
 export const ON_SOLID_LC = 60;
+/** The tone settings a theme changed (the likely cause of a contrast finding), as "; changed: Light endpoint 89 (default 97.5)". */
+const TONE_KEYS = ['toneMax', 'darkTone', 'ptAuto', 'pt', 'chroma', 'base', 'falloff', 'hueSet', 'mat', 'tint'];
+function changedTones(theme: Partial<Theme>) {
+  const s = theme.color?.spectrum ?? {};
+  const rows = SPECTRUM_FIELDS.filter((f) => TONE_KEYS.includes(f.key) && f.key in s && JSON.stringify(s[f.key]) !== JSON.stringify(f.value))
+    .map((f) => `${f.label} ${f.labels && f.options ? f.labels[f.options.indexOf(s[f.key])] ?? s[f.key] : s[f.key]} (default ${f.labels && f.options ? f.labels[f.options.indexOf(f.value as never)] ?? f.value : f.value})`);
+  return rows.length ? `; changed from the defaults: ${rows.join(', ')}` : '';
+}
 /** "Lc 40.4" or "Lc 40.4–57.2". */
 const range = (lcs: number[]) => { const lo = Math.min(...lcs), hi = Math.max(...lcs); return fmt(lo) === fmt(hi) ? `Lc ${fmt(lo)}` : `Lc ${fmt(lo)}–${fmt(hi)}`; };
 /** "primary (indigo), critical (crimson)". */
@@ -52,7 +60,7 @@ export const RULES: Record<string, Rule> = {
   'curvature.pill-containers': ({ p }) =>
     p['radius-scale'] >= 2 && p['radius-card'] > 0.75 ? [`radius-scale ${p['radius-scale']} with radius-card ${p['radius-card']} makes short cards near pills`] : [],
   // One finding per scheme, listing the roles, so a palette-wide problem reads as one line.
-  'vibrancy.text-contrast': ({ color }) => {
+  'vibrancy.text-contrast': ({ color, theme }) => {
     const { data, roles } = color();
     const out: string[] = [];
     for (const mode of ['light', 'dark'] as const) {
@@ -60,7 +68,7 @@ export const RULES: Record<string, Rule> = {
         const row = data.checks?.[mode].rows[roles[role]];
         return row && !row.passes.r11 ? [{ role, family: roles[role], lc: Math.abs(row.roles.r11) }] : [];
       });
-      if (low.length) out.push(`step 11 text is ${range(low.map((l) => l.lc))} on the ${mode} page for ${list(low)}`);
+      if (low.length) out.push(`step 11 text is ${range(low.map((l) => l.lc))} on the ${mode} page for ${list(low)}${changedTones(theme)}`);
     }
     return out;
   },
