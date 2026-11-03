@@ -89,8 +89,9 @@ export function App() {
   const [faces, setFaces] = useState<FaceMap>(FONT_FAMILIES);
   const [spectrum, setSpectrum] = useState<SpectrumSettings>(SPECTRUM_DEFAULTS);
   const [roles, setRoles] = useState<Roles>(DEFAULT_ROLES);
-  // White and black: the family whose step 1 they take ('neutral': the neutral role's; 'pure': #fff / #000).
-  const [endpoints, setEndpoints] = useState<{ white: string; black: string }>({ white: 'neutral', black: 'neutral' });
+  // White and black: a neutral step (white from the light ramp, black from the dark ramp; 1 by default) or 'pure'.
+  type Endpoint = number | 'pure';
+  const [endpoints, setEndpoints] = useState<{ white: Endpoint; black: Endpoint }>({ white: 1, black: 1 });
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
   const [status, setStatus] = useState('');
@@ -117,16 +118,14 @@ export function App() {
   ];
   // The canvas sets its own unit, ladder, motion and elevation params, so the u-based, motion and elevation Panda tokens recompute there too.
   if (canvasDecls.length) canvasDecls.push(unitTokenCss(), motionTokenCss(), elevationTokenCss());
-  // White and black mapped to another family: its step 1 (light ramp for white, dark for black), after
-  // the generated colors so it wins in every scheme block.
-  const endpoint = (want: string, mode: 'light' | 'dark', pure: string) => {
-    if (want === 'pure') return pure;
-    const name = want === 'neutral' ? generated?.roles.neutral : want;
-    return generated?.families.find((f) => f.name === name)?.[mode][0];
-  };
-  const white = endpoints.white !== 'neutral' ? endpoint(endpoints.white, 'light', '#fff') : undefined;
-  const black = endpoints.black !== 'neutral' ? endpoint(endpoints.black, 'dark', '#000') : undefined;
-  const endpointCss = white || black ? `:root, :root.light, :root.dark {${white ? ` --colors-white: ${white};` : ''}${black ? ` --colors-black: ${black};` : ''} }\n` : '';
+  // White and black mapped to another neutral step (light ramp for white, dark for black) or pure,
+  // after the generated colors so it wins in every scheme block.
+  const endpoint = (want: Endpoint, mode: 'light' | 'dark', pure: string) =>
+    want === 'pure' ? pure : generated?.families.find((f) => f.name === generated.roles.neutral)?.[mode][want - 1];
+  const white = endpoints.white !== 1 ? endpoint(endpoints.white, 'light', '#fff') : undefined;
+  const black = endpoints.black !== 1 ? endpoint(endpoints.black, 'dark', '#000') : undefined;
+  // :not(#…) outranks the generated scheme blocks (:root:not(.light) under the OS dark scheme, :root.dark).
+  const endpointCss = white || black ? `:root:not(#ui-endpoints) {${white ? ` --colors-white: ${white};` : ''}${black ? ` --colors-black: ${black};` : ''} }\n` : '';
   useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}\n${endpointCss}`);
   const voiceAttrs = Object.fromEntries(Object.entries(voices).filter(([v, f]) => DEFAULT_VOICES[v as keyof VoiceMap] !== f).map(([v, f]) => [`data-font-${v}`, f]));
 
@@ -144,7 +143,7 @@ export function App() {
     parameters: diffFromDefaults(params),
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
-    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: 'neutral', black: 'neutral' }) }),
+    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: 1, black: 1 }) }),
     typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES) }),
   }) as unknown as Theme;
   // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
@@ -161,7 +160,7 @@ export function App() {
     setThemeName(t.name);
     setParams({ ...defaultParams, ...(t.parameters as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
     setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
-    setEndpoints({ white: 'neutral', black: 'neutral', ...(t.color?.endpoints ?? {}) });
+    setEndpoints({ white: 1, black: 1, ...(t.color?.endpoints ?? {}) });
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
   };
   const loadTheme = async () => {
@@ -176,7 +175,7 @@ export function App() {
   };
 
   const reset = () => {
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: 'neutral', black: 'neutral' });
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: 1, black: 1 });
     setStatus('Reset to defaults');
   };
 
@@ -296,10 +295,10 @@ export function App() {
               ))}
               <Group title="White and black">
                 {(['white', 'black'] as const).map((k) => (
-                  <Select key={k} label={k === 'white' ? 'White (light 1)' : 'Black (dark 1)'} value={endpoints[k]}
-                    options={[['neutral', 'Neutral role'], ...[...familyNames.neutrals, ...familyNames.accents].filter((n, i, a) => a.indexOf(n) === i).map((n) => [n, n] as [string, string]), ['pure', k === 'white' ? 'Pure #fff' : 'Pure #000']]}
-                    onValue={(v) => setEndpoints((cur) => ({ ...cur, [k]: v }))}
-                    swatch={(family) => family === 'pure' ? (k === 'white' ? '#fff' : '#000') : family === 'neutral' ? `var(--colors-${k})` : (endpoint(family, k === 'white' ? 'light' : 'dark', '') ?? 'transparent')} />
+                  <Select key={k} label={k === 'white' ? 'White (light ramp)' : 'Black (dark ramp)'} value={String(endpoints[k])}
+                    options={[...Array.from({ length: 12 }, (_, i) => [String(i + 1), `Neutral ${i + 1}`] as [string, string]), ['pure', k === 'white' ? 'Pure #fff' : 'Pure #000']]}
+                    onValue={(v) => setEndpoints((cur) => ({ ...cur, [k]: v === 'pure' ? 'pure' : Number(v) }))}
+                    swatch={(v) => (v === 'pure' ? (k === 'white' ? '#fff' : '#000') : endpoint(Number(v), k === 'white' ? 'light' : 'dark', '')) ?? 'transparent'} />
                 ))}
               </Group>
               <Group title="Hues">

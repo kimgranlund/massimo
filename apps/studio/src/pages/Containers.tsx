@@ -7,7 +7,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
-import { useState, type CSSProperties, type ReactNode } from 'react';
+import { Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Range, Segmented } from '../studio/wc.tsx';
 import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveControl } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -81,7 +81,7 @@ export function ContainersPage({ params }: PageProps) {
         <ConcentricWire params={params} />
       </Section>
       <Divider />
-      <Section id="nested" title="Nested cards" note="Three ways a card can hold cards. A, outward (today): every card is its own control radius + padding, so inner corners do not follow the outer curve. B, inward subtraction (the listbox model): a child's radius is the parent's radius − its padding and siblings sit one padding apart, so every curve is concentric and radii shrink by p per level. C, ratio ladder: a child's radius is the parent's × k and the padding is what is left (R − R·k), ending at the control radius. D, even split: B with the padding derived from the outer radius and the leaf's control radius, p = (R − r_control) / depth. Each box shows r · p and Δ, its distance from the concentric radius (0 = concentric).">
+      <Section id="nested" title="Nested cards" note="Three ways a card can hold cards. A, outward (today): every card is its own control radius + padding, so inner corners do not follow the outer curve. B, inward subtraction (the listbox model): a child's radius is the parent's radius − its padding and siblings sit one padding apart, so every curve is concentric and radii shrink by p per level. C, ratio ladder: a child's radius is the parent's × k and the padding is what is left (R − R·k), ending at the control radius. D, even split: B with the padding derived from the outer radius and the control radius, p = (R − r_control) / levels, so every curve down to the control is concentric. Each box shows r · p and Δ, its distance from the concentric radius (0 = concentric).">
         <NestedLab params={params} />
       </Section>
       <Divider />
@@ -244,6 +244,19 @@ const DEPTH_STROKE = ['data-1', 'data-2', 'data-3', 'data-4'];
 const labGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '8', alignItems: 'start' });
 const labBox = css({ display: 'flex', flexDirection: 'column', boxSizing: 'border-box', borderRadius: '[var(--r)]', padding: '[var(--p)]', gap: '[var(--g)]', boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
 const labTag = css({ textStyle: 'caption', color: 'fg.muted', fontVariantNumeric: 'tabular-nums' });
+// U: the universal-container prototype in real CSS. Each nesting depth n has its own variables, so a
+// container reads its parent's radius without a cycle: r1 = the root radius; r(n) = max(control radius,
+// r(n−1) × k); the padding is what is left, p(n) = r(n) − max(control radius, r(n) × k), so the last
+// level holds controls concentrically.
+const UC_DEPTH = 6;
+const ucSel = (n: number) => Array.from({ length: n }, () => '[data-uc]').join(' ');
+// Panda extracts css() at build time, so the depth rules (generated) are a scoped stylesheet instead.
+const UC_CSS = Array.from({ length: UC_DEPTH }, (_, i) => {
+  const n = i + 1;
+  const r = n === 1 ? 'var(--uc-root)' : `max(var(--uc-ctl), calc(var(--uc-r${n - 1}) * var(--uc-k)))`;
+  return `.uc-lab ${ucSel(n)} { --uc-r${n}: ${r}; --uc-p${n}: calc(var(--uc-r${n}) - max(var(--uc-ctl), calc(var(--uc-r${n}) * var(--uc-k)))); display: flex; flex-direction: column; box-sizing: border-box; border-radius: var(--uc-r${n}); padding: var(--uc-p${n}); gap: var(--uc-p${n}); box-shadow: inset 0 0 0 1.5px var(--colors-data-${(i % 4) + 1}); }`;
+}).join('\n');
+
 const labControls = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))', gap: '4', marginBlockEnd: '6' });
 
 function NestedLab({ params }: Pick<PageProps, 'params'>) {
@@ -268,17 +281,33 @@ function NestedLab({ params }: Pick<PageProps, 'params'>) {
     const pad = Math.max(0, r - child);
     return { r, p: pad, gap: pad, kids: kids(d, (n) => ladder(n, child)) };
   };
-  // D: B with the padding derived: the leaf takes the control radius and every level steps down
-  // evenly, p = (R − control radius) / depth, so R → R − p → … → the control radius.
-  const step = Math.max(0, (outer.radius - ctlR) / D);
+  // D: B with the padding derived: every level steps down evenly so the innermost container's inside
+  // (R − p) is the control radius: p = (R − control radius) / (levels), the root and D nested levels.
+  const step = Math.max(0, (outer.radius - ctlR) / (D + 1));
   const even = (d: number, r = outer.radius): Node => ({ r, p: step, gap: step, kids: kids(d, (n) => even(n, Math.max(0, r - step))) });
   const withIdeal = (n: Node): Node => ({ ...n, kids: n.kids.map((c) => withIdeal({ ...c, ideal: Math.max(0, n.r - n.p) })) });
   const box = (n: Node, d: number, key: string): ReactNode => (
     <div key={key} className={labBox} style={{ '--r': `${n.r}px`, '--p': `${n.p}px`, '--g': `${n.gap}px`, '--stroke': `var(--colors-${DEPTH_STROKE[d % 4]})` } as CSSProperties}>
       <span className={labTag}>r {fmt(n.r)} · p {fmt(n.p)}{n.ideal !== undefined ? ` · Δ ${n.r - n.ideal >= 0 ? '+' : ''}${fmt(n.r - n.ideal)}` : ''}</span>
-      {n.kids.length ? n.kids.map((c, i) => box(c, d + 1, `${key}.${i}`)) : <ui-button>Action</ui-button>}
+      {n.kids.length ? n.kids.map((c, i) => box(c, d + 1, `${key}.${i}`)) : (<>
+        <span className={labTag}>control r {fmt(ctlR)} · Δ {ctlR - Math.max(0, n.r - n.p) >= 0 ? '+' : ''}{fmt(ctlR - Math.max(0, n.r - n.p))}</span>
+        <ui-button>Action</ui-button>
+      </>)}
     </div>
   );
+  // U renders real nested elements under the prototype CSS; their radii and paddings are read back.
+  const ucRef = useRef<HTMLDivElement>(null);
+  const [ucRead, setUcRead] = useState<string[]>([]);
+  useEffect(() => {
+    const t = setTimeout(() => setUcRead([...(ucRef.current?.querySelectorAll<HTMLElement>('[data-uc]') ?? [])].map((el) => { const cs = getComputedStyle(el); return `r ${fmt(parseFloat(cs.borderTopLeftRadius))} · p ${fmt(parseFloat(cs.paddingTop))}`; })), 50);
+    return () => clearTimeout(t);
+  });
+  const ucTree = (d: number): ReactNode => (d > D ? <ui-button>Action</ui-button> : (
+    <div data-uc="">
+      <span className={labTag}>{'\u00a0'}</span>
+      {Array.from({ length: d === 1 ? 2 : 1 }, (_, i) => <Fragment key={i}>{ucTree(d + 1)}</Fragment>)}
+    </div>
+  ));
   const models: [string, Node][] = [['A · outward (today)', withIdeal(outward(0))], ['B · inward subtraction', withIdeal(inward(0))], ['C · ratio ladder', withIdeal(ladder(0))], ['D · even split (B, padding derived)', withIdeal(even(0))]];
   return (
     <>
@@ -294,6 +323,12 @@ function NestedLab({ params }: Pick<PageProps, 'params'>) {
             {box(tree, 0, name)}
           </div>
         ))}
+        <div>
+          <h3 className={subTitle}>U · universal prototype (CSS)</h3>
+          <style>{UC_CSS}</style>
+          <div ref={ucRef} className="uc-lab" style={{ '--uc-root': `${outer.radius}px`, '--uc-ctl': `${ctlR}px`, '--uc-k': String(k) } as CSSProperties}>{ucTree(1)}</div>
+          <p className={labTag}>Read back from CSS: {ucRead.join(' → ')}</p>
+        </div>
       </div>
     </>
   );

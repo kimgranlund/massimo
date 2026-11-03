@@ -713,12 +713,28 @@
           "additionalProperties": false,
           "properties": {
             "white": {
-              "type": "string",
-              "pattern": "^[a-z][a-z0-9-]{0,30}$"
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 12
+                },
+                {
+                  "const": "pure"
+                }
+              ]
             },
             "black": {
-              "type": "string",
-              "pattern": "^[a-z][a-z0-9-]{0,30}$"
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 12
+                },
+                {
+                  "const": "pure"
+                }
+              ]
             }
           }
         }

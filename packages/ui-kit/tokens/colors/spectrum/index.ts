@@ -203,17 +203,15 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
 }
 
 /**
- * White and black (`--colors-white`, `--colors-black`): step 1 of a family's light and dark ramps,
- * the same in both schemes. Each maps to the neutral role's family by default, to any family by
- * name (nearest by hue when it is not generated), or to 'pure' (#fff, #000).
+ * White and black (`--colors-white`, `--colors-black`): a step of the neutral role's ramp, the same
+ * in both schemes: white from the light ramp, black from the dark ramp, step 1 (the endpoints) by
+ * default; or 'pure' (#fff, #000).
  */
-export type Endpoints = { white?: string; black?: string };
+export type Endpoint = number | 'pure';
+export type Endpoints = { white?: Endpoint; black?: Endpoint };
 export function endpointVars(data: Spectrum, roles: Roles, map: Endpoints = {}) {
-  const pick = (want: string | undefined, mode: 'light' | 'dark', pure: string) => {
-    if (want === 'pure') return pure;
-    const name = !want || want === 'neutral' ? roles.neutral : data.schemes[mode][want] ? want : closestFamily(data, want, families(data).all);
-    return data.schemes[mode][name][0].css;
-  };
+  const pick = (want: Endpoint | undefined, mode: 'light' | 'dark', pure: string) =>
+    want === 'pure' ? pure : data.schemes[mode][roles.neutral][(want ?? 1) - 1].css;
   return { '--colors-white': pick(map.white, 'light', '#fff'), '--colors-black': pick(map.black, 'dark', '#000') };
 }
 
