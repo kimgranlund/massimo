@@ -29,6 +29,8 @@ const notice = css({ textStyle: 'body', color: 'fg', bg: 'bg.muted', borderRadiu
 const sectionTitle = css({ textStyle: 'heading-2' });
 const sectionTags = css({ textStyle: 'code' });
 export const caption = css({ textStyle: 'caption' });
+// A section's note: body text (its color is the body role's; theme typography.colors).
+const sectionNote = css({ textStyle: 'body', margin: '0' });
 const rowGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '11rem 1fr', gap: '6' } });
 export const rowLabel = css({ textStyle: 'label' });
 export const specimens = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
@@ -57,7 +59,7 @@ export function Section({ id, title, tags, children, note, action, className }: 
     <div className={sectionHead}>
       <h2 id={id} className={sectionTitle}>{title}</h2>
       {tags && <span className={sectionTags}>{tags}</span>}
-      <p className={caption}>{note}</p>
+      <p className={sectionNote}>{note}</p>
     </div>
   );
   return (
