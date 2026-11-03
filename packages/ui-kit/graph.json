@@ -2083,10 +2083,10 @@
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
       "availability": "implemented",
-      "title": "Dark endpoint",
+      "title": "Dark page",
       "searchTerms": [
         "dark tone",
-        "dark endpoint"
+        "dark page"
       ]
     },
     "parameter:spectrum-falloff": {
@@ -2163,10 +2163,10 @@
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
       "availability": "implemented",
-      "title": "Scale",
+      "title": "Scale (legacy)",
       "searchTerms": [
         "ladder",
-        "scale"
+        "scale (legacy)"
       ]
     },
     "parameter:spectrum-mat": {
@@ -2203,20 +2203,20 @@
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
       "availability": "implemented",
-      "title": "Manual peak tone",
+      "title": "Manual peak tone (legacy)",
       "searchTerms": [
         "pt",
-        "manual peak tone"
+        "manual peak tone (legacy)"
       ]
     },
     "parameter:spectrum-pt-auto": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
       "availability": "implemented",
-      "title": "Peak tone",
+      "title": "Peak tone (legacy)",
       "searchTerms": [
         "pt auto",
-        "peak tone"
+        "peak tone (legacy)"
       ]
     },
     "parameter:spectrum-quad-start": {
@@ -2269,6 +2269,26 @@
         "gamut"
       ]
     },
+    "parameter:spectrum-targets-dark": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Dark targets (Lc, steps 2–12)",
+      "searchTerms": [
+        "targets dark",
+        "dark targets (lc, steps 2–12)"
+      ]
+    },
+    "parameter:spectrum-targets-light": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Light targets (Lc, steps 2–12)",
+      "searchTerms": [
+        "targets light",
+        "light targets (lc, steps 2–12)"
+      ]
+    },
     "parameter:spectrum-tint": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
@@ -2283,10 +2303,10 @@
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
       "availability": "implemented",
-      "title": "Light endpoint",
+      "title": "Light page",
       "searchTerms": [
         "tone max",
-        "light endpoint"
+        "light page"
       ]
     },
     "parameter:spring-bouncy-bounce": {
@@ -10865,6 +10885,16 @@
     },
     {
       "from": "parameter:spectrum-tone-max",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-targets-light",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-targets-dark",
       "relation": "memberOf",
       "to": "parameters:spectrum"
     },

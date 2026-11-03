@@ -554,6 +554,8 @@
         "pt",
         "darkTone",
         "toneMax",
+        "targetsLight",
+        "targetsDark",
         "ladder",
         "mat",
         "tint",
@@ -567,7 +569,7 @@
         "target"
       ],
       "idPrefix": "spectrum-",
-      "formula": "the HCT engine generates every family's 12-step ramp per scheme from these settings (generateSpectrum); roles alias ramp steps (ROLE_STEPS); the build uses the snapshot defaults.json, the jig regenerates live",
+      "formula": "the HCT engine generates every family's 12-step ramp per scheme from these settings (generateSpectrum); roles alias ramp steps (ROLE_STEPS); the build uses the snapshot defaults.json, the jig regenerates live; tone placement is contrast-targeted (the Leonardo model): step 1 is the page tone per scheme (toneMax, darkTone) and steps 2–12 take APCA Lc targets against it (targetsLight, targetsDark), each step's tone solved from its target",
       "drives": [
         "foundation:colors",
         "tokens:color-roles",

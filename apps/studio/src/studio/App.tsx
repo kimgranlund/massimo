@@ -9,7 +9,7 @@ import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, lintTheme, type Finding, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
-import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
+import { SPECTRUM_DEFAULTS, spectrumOverrides, stepTones, TARGET_MAX, DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens';
 import { ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
@@ -89,6 +89,7 @@ export function App() {
   const [faces, setFaces] = useState<FaceMap>(FONT_FAMILIES);
   const [typeColors, setTypeColors] = useState<Record<TypeRoleName, TextColor>>(DEFAULT_TYPE_COLORS);
   const [spectrum, setSpectrum] = useState<SpectrumSettings>(SPECTRUM_DEFAULTS);
+  const [targetScheme, setTargetScheme] = useState<'light' | 'dark'>('light');
   const [roles, setRoles] = useState<Roles>(DEFAULT_ROLES);
   // White and black: a neutral step (white from the light ramp, black from the dark ramp; 1 by default) or 'pure'.
   type Endpoint = number | 'pure';
@@ -336,15 +337,25 @@ export function App() {
                 <Range label="Falloff" value={spectrum.falloff} min={0.2} max={5} step={0.1} onValue={(v) => setSpec('falloff', v)} />
                 <Switch label="Hue balance" checked={spectrum.hb === 1} onValue={(v) => setSpec('hb', v ? 1 : 0)} />
               </Group>
-              <Group title="Tone">
-                <Switch label="Automatic peak tone" checked={spectrum.ptAuto === 1} onValue={(v) => setSpec('ptAuto', v ? 1 : 0)} />
-                {spectrum.ptAuto === 0 && <Range label="Peak tone" value={spectrum.pt} min={20} max={92} step={0.5} onValue={(v) => setSpec('pt', v)} />}
-                <Range label="Dark endpoint" value={spectrum.darkTone} min={0} max={20} step={0.5} onValue={(v) => setSpec('darkTone', v)} />
-                <Range label="Light endpoint" value={spectrum.toneMax} min={80} max={100} step={0.5} onValue={(v) => setSpec('toneMax', v)} />
+              <Group title="Contrast">
+                {/* The Leonardo model: the page tone per scheme (step 1), then an APCA Lc target per step
+                    against it; each step's tone is solved from its target (spectrum contrast.ts). */}
+                <Range label="Light page (tone)" value={spectrum.toneMax} min={80} max={100} step={0.5} onValue={(v) => setSpec('toneMax', v)} />
+                <Range label="Dark page (tone)" value={spectrum.darkTone} min={0} max={20} step={0.5} onValue={(v) => setSpec('darkTone', v)} />
+                <Segmented label="Targets" value={targetScheme} onValue={setTargetScheme} options={[['light', 'Light page'], ['dark', 'Dark page']]} />
+                {(() => {
+                  const key = targetScheme === 'light' ? 'targetsLight' : 'targetsDark';
+                  const targets = spectrum[key] as number[];
+                  const tones = stepTones(targetScheme === 'light' ? spectrum.toneMax : spectrum.darkTone, targets, targetScheme);
+                  return targets.map((lc, i) => (
+                    <Range key={`${targetScheme}-${i}`} label={`Step ${i + 2} (Lc)`} value={lc} min={0} max={TARGET_MAX} step={0.5}
+                      format={(v) => `${v} · ${Math.round(tones[i + 1] * 10) / 10}`}
+                      onValue={(v) => setSpec(key, targets.map((t, j) => (j === i ? v : t)))} />
+                  ));
+                })()}
               </Group>
               <Group title="Neutrals and output">
                 <Range label="Neutral tint" value={spectrum.tint} min={0} max={100} step={1} onValue={(v) => setSpec('tint', v)} />
-                <Segmented label="Scale" value={spectrum.ladder} onValue={(v) => setSpec('ladder', v)} options={[['even', '050–700'], ['radix', 'Radix 1–12']]} />
                 <Segmented label="Gamut" value={spectrum.target} onValue={(v) => setSpec('target', v)} options={[['display-p3', 'P3'], ['srgb', 'sRGB']]} />
               </Group>
             </>

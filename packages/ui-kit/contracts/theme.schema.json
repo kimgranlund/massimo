@@ -475,37 +475,59 @@
               ],
               "description": "Chroma origin"
             },
-            "ptAuto": {
-              "enum": [
-                1,
-                0
-              ],
-              "description": "Peak tone"
-            },
-            "pt": {
-              "type": "number",
-              "minimum": 20,
-              "maximum": 92,
-              "description": "Manual peak tone"
-            },
             "darkTone": {
               "type": "number",
               "minimum": 0,
               "maximum": 20,
-              "description": "Dark endpoint"
+              "description": "Dark page"
             },
             "toneMax": {
               "type": "number",
               "minimum": 80,
               "maximum": 100,
-              "description": "Light endpoint"
+              "description": "Light page"
+            },
+            "targetsLight": {
+              "type": "array",
+              "minItems": 11,
+              "maxItems": 11,
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 108
+              },
+              "description": "Light targets (Lc, steps 2–12)"
+            },
+            "targetsDark": {
+              "type": "array",
+              "minItems": 11,
+              "maxItems": 11,
+              "items": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 108
+              },
+              "description": "Dark targets (Lc, steps 2–12)"
+            },
+            "ptAuto": {
+              "enum": [
+                1,
+                0
+              ],
+              "description": "Peak tone (legacy)"
+            },
+            "pt": {
+              "type": "number",
+              "minimum": 20,
+              "maximum": 92,
+              "description": "Manual peak tone (legacy)"
             },
             "ladder": {
               "enum": [
                 "even",
                 "radix"
               ],
-              "description": "Scale"
+              "description": "Scale (legacy)"
             },
             "mat": {
               "enum": [

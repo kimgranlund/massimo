@@ -159,12 +159,24 @@
       "concept": "vibrancy",
       "severity": "warning",
       "checks": "Each brand and feedback role's text step (11) reaches the engine's APCA threshold on the page fill, in light and dark.",
-      "fix": "Undo the tone settings the finding names (they changed the ramps), or move the manual peak tone toward 62 (the default), or choose another family for the role.",
+      "fix": "Raise the step 11 target (the Contrast group: Lc 60 or more), undo the tone settings the finding names, or choose another family for the role.",
       "fixtures": {
         "fail": {
           "color": {
             "spectrum": {
-              "toneMax": 80
+              "targetsLight": [
+                7.3,
+                14.3,
+                21.2,
+                27.8,
+                34.2,
+                40.4,
+                46.3,
+                52.1,
+                63.6,
+                50,
+                85.7
+              ]
             }
           }
         },

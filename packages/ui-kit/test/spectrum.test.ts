@@ -146,3 +146,20 @@ test('white and black map to a neutral step or to pure, at runtime and in a save
   assert.equal(css[':root[data-ui-theme="ends"]']['--colors-white'], '#fff');
   assert.equal(css[':root[data-ui-theme="ends"].dark']['--colors-black'], mapped['--colors-black'], 'the same black in every scheme');
 });
+
+test('contrast-targeted ramps: tones solve from APCA targets against the page; defaults reproduce the old ramp; legacy peak tones map to targets', async () => {
+  const { apcaLc, toneForLc, stepTones, DEFAULT_TARGETS } = await import('../tokens/colors/spectrum/contrast.ts');
+  const { generateSpectrum } = await import('../tokens/colors/spectrum/index.ts');
+  for (const lc of [10, 45, 75]) assert.ok(Math.abs(apcaLc(toneForLc(97.5, lc, 'light'), 97.5) - lc) < 0.05, `solves Lc ${lc} on a light page`);
+  assert.ok(Math.abs(apcaLc(toneForLc(5, 60, 'dark'), 5) - 60) < 0.05, 'and on a dark page');
+  const tones = stepTones(97.5, DEFAULT_TARGETS.light, 'light');
+  assert.ok(tones.every((t, i) => i === 0 || t < tones[i - 1]), 'strictly darker step by step on a light page');
+  const d = generateSpectrum({});
+  assert.ok(d.schemes.light.neutral.every((sw, i) => Math.abs(sw.hct[2] - [97.5, 93.1, 88.6, 84.2, 79.8, 75.3, 70.9, 66.4, 62, 52.5, 43, 30.9][i]) < 0.2), 'the default targets reproduce the even ramp');
+  const raised = generateSpectrum({ targetsLight: [...DEFAULT_TARGETS.light.slice(0, 9), 85, 95] });
+  assert.ok(raised.schemes.light.neutral[10].hct[2] < 35, 'a higher step 11 target darkens step 11');
+  const page = generateSpectrum({ toneMax: 90 });
+  assert.ok(Math.abs(apcaLc(page.schemes.light.neutral[10].hct[2], page.schemes.light.neutral[0].hct[2]) - DEFAULT_TARGETS.light[9]) < 0.5, 'a darker page keeps each step’s contrast');
+  const legacy = generateSpectrum({ ptAuto: 0, pt: 55 });
+  assert.notDeepEqual(legacy.settings.targetsLight, [...DEFAULT_TARGETS.light], 'legacy peak tones become measured targets');
+});

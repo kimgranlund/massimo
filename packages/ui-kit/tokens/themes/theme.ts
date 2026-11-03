@@ -129,7 +129,9 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
 /** The JSON Schema of a theme object, from the same exports the validator reads (contracts/theme.schema.json). */
 export function themeJsonSchema() {
   const num = (k: ParamName) => ({ type: 'number', minimum: PARAMS[k].min, maximum: PARAMS[k].max, multipleOfStep: PARAMS[k].step, description: PARAMS[k].label });
-  const field = (f: (typeof SPECTRUM_FIELDS)[number]) => f.multiple
+  const field = (f: (typeof SPECTRUM_FIELDS)[number]) => f.list
+    ? { type: 'array', minItems: f.list, maxItems: f.list, items: { type: 'number', minimum: f.min, maximum: f.max }, description: f.label }
+    : f.multiple
     ? { type: 'array', uniqueItems: true, items: { enum: f.options }, description: f.label }
     : f.options ? { enum: f.options, description: f.label } : { type: 'number', minimum: f.min, maximum: f.max, description: f.label };
   const strict = (properties: Record<string, unknown>, extra: Record<string, unknown> = {}) => ({ type: 'object', additionalProperties: false, properties, ...extra });

@@ -3,6 +3,8 @@
 // NOTICE.md) lazily; it takes ~300ms, so callers should debounce.
 import RUNTIME from './runtime.json' with { type: 'json' };
 import { RADIX_HUES, SPECTRUM_FIXED, normalizeSpectrum, type SpectrumSettings } from './config.ts';
+import { apcaLc, stepTones } from './contrast.ts';
+export { apcaLc, stepTones, toneForLc, DEFAULT_TARGETS, TARGET_MAX } from './contrast.ts';
 
 export * from './config.ts';
 
@@ -13,6 +15,10 @@ export interface Spectrum { settings: SpectrumSettings; schemes: { light: Scheme
 
 let engine: { generate(s: SpectrumSettings): Spectrum } | undefined;
 let boundaryFn: ((hue: number, tone: number, target: string) => number) | undefined;
+/** The step tones generateSpectrum asks for (contrast targets), per scheme; null while generating the legacy way. */
+let toneOverride: { light: number[]; dark: number[] } | null = null;
+/** The even ladder's 12 output stops per scheme (recorded on the first generation), the keys our tones take. */
+const stepStops: { light: number[]; dark: number[] } = { light: [], dark: [] };
 
 /**
  * Load the vendored runtime. Its inner HCT engine also has a `boundary(hue, tone, gamut)` function
@@ -27,11 +33,35 @@ function load() {
   const g = globalThis as { Function: FunctionConstructor };
   g.Function = function (...args: string[]) {
     const f = Orig(...args);
-    if (args.length === 2 && args[0] === 'self') return (self: any) => { f(self); boundaryFn ??= self.HCTPalettes?.boundary; };
+    if (args.length === 2 && args[0] === 'self') return (self: any) => { f(self); boundaryFn ??= self.HCTPalettes?.boundary; installToneMap(self); };
     return f;
   } as unknown as FunctionConstructor;
-  try { engine.generate({ ...normalizeSpectrum({}), ...SPECTRUM_FIXED }); } finally { g.Function = Orig; }
+  try {
+    const first = engine.generate({ ...normalizeSpectrum({}), ladder: 'even', ...SPECTRUM_FIXED });
+    for (const mode of ['light', 'dark'] as const) stepStops[mode] = Object.values(first.schemes[mode])[0].map((sw) => sw.stop);
+  } finally { g.Function = Orig; }
   return engine;
+}
+
+/**
+ * The engine reads its step → tone map from a flag on its own global object (__HCT_TONEMAP, written
+ * just after __HCT_TONES, the scheme's end tones). An accessor there hands back our solved tones, in
+ * step order, while generateSpectrum asks for them; otherwise the engine's own map passes through.
+ */
+function installToneMap(self: any) {
+  let stored: Record<string, number> | null = null;
+  Object.defineProperty(self, '__HCT_TONEMAP', {
+    configurable: true,
+    get() {
+      if (!toneOverride) return stored;
+      const ends = self.__HCT_TONES as number[] | null;
+      const tones = toneOverride[ends && ends[0] < ends[1] ? 'dark' : 'light'];
+      // Keyed by the even ladder's output stops, in step order; other sampled stops keep the engine's tones.
+      const stops = stepStops[ends && ends[0] < ends[1] ? 'dark' : 'light'];
+      return stops.length === tones.length ? { ...(stored ?? {}), ...Object.fromEntries(stops.map((k, i) => [String(k), tones[i]])) } : stored;
+    },
+    set(v) { stored = v; },
+  });
 }
 
 /** Max in-gamut HCT chroma at a hue and tone for a gamut ('srgb' | 'display-p3'). */
@@ -42,9 +72,35 @@ export function gamutBoundary(hue: number, tone: number, target: string): number
 }
 
 /** Generate both schemes. Throws on invalid settings or a malformed ramp. */
+/** The engine's own settings: ours minus the contrast targets. */
+const engineSettings = (s: SpectrumSettings) => { const { targetsLight: _l, targetsDark: _d, ...rest } = s; return rest; };
+/** A ramp the legacy way (the engine's own tone placement), for measuring targets from old settings. */
+const generateLegacy = (s: SpectrumSettings) => engine!.generate({ ...engineSettings(s), ...SPECTRUM_FIXED, tint: s.tint }) as Spectrum;
+/** The contrast targets (steps 2–12) a ramp has against its page, per scheme, measured on the neutral family. */
+export function measureTargets(data: Spectrum) {
+  const of = (mode: 'light' | 'dark') => {
+    const fam = Object.keys(data.schemes[mode]).find((n) => /neutral/i.test(n)) ?? Object.keys(data.schemes[mode])[0];
+    const ramp = data.schemes[mode][fam];
+    return ramp.slice(1).map((sw) => Math.round(apcaLc(sw.hct[2], ramp[0].hct[2]) * 10) / 10);
+  };
+  return { light: of('light'), dark: of('dark') };
+}
+
 export function generateSpectrum(settings: SpectrumSettings = {}): Spectrum {
   const s = normalizeSpectrum(settings);
-  const out = load().generate({ ...s, ...SPECTRUM_FIXED, tint: s.tint });
+  load();
+  // Contrast targets (contrast.ts): a theme that sets only the legacy tone placement (peak tone,
+  // scale) has its targets measured from the ramp those settings produce.
+  const legacy = ['ptAuto', 'pt', 'ladder'].some((k) => k in settings) && !('targetsLight' in settings || 'targetsDark' in settings);
+  const targets = legacy ? measureTargets(generateLegacy(s)) : { light: s.targetsLight, dark: s.targetsDark };
+  const tones = { light: stepTones(s.toneMax, targets.light, 'light'), dark: stepTones(s.darkTone, targets.dark, 'dark') };
+  toneOverride = tones;
+  let out: Spectrum;
+  try {
+    // The even ladder keeps the kit's chroma envelope; its 12 stops take our tones. Step 9 is the chroma peak.
+    out = engine!.generate({ ...engineSettings(s), ladder: 'even', ptAuto: 0, pt: Math.round(tones.light[8] * 2) / 2, ...SPECTRUM_FIXED, tint: s.tint });
+  } finally { toneOverride = null; }
+  out.settings = { ...out.settings, targetsLight: targets.light, targetsDark: targets.dark };
   for (const mode of ["light", "dark"] as const) for (const [name, ramp] of Object.entries(out.schemes[mode]) as [string, Swatch[]][]) {
     if (ramp.length !== 12 || ramp.some((sw) => !sw.css)) throw new Error(`Invalid generated ramp: ${name}`);
   }

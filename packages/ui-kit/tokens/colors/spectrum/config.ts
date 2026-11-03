@@ -1,6 +1,7 @@
 // Spectrum settings: the editable inputs of the HCT ramp generator (ported from massimo-ui
 // spectrum-config.js). Generation always produces separate light and dark 12-step ramps.
-export interface Field { key: string; label: string; group: string; options?: (string | number)[]; labels?: string[]; min?: number; max?: number; step?: number; multiple?: boolean; value: unknown }
+export interface Field { key: string; label: string; group: string; options?: (string | number)[]; labels?: string[]; min?: number; max?: number; step?: number; multiple?: boolean; /** A fixed-length list of numbers in min..max (the contrast targets). */ list?: number; legacy?: boolean; value: unknown }
+import { DEFAULT_TARGETS, TARGET_MAX } from './contrast.ts';
 
 export const SPECTRUM_FIELDS: Field[] = [
   { key: 'hueSet', label: 'Hues', group: 'Hues', options: ['quad', 'radix'], labels: ['Unique', 'Radix 25'], value: 'quad' },
@@ -12,11 +13,17 @@ export const SPECTRUM_FIELDS: Field[] = [
   { key: 'keyC', label: 'Chroma distribution', group: 'Chroma', options: ['shared', 'radix'], labels: ['Shared', 'Radix'], value: 'radix' },
   { key: 'hb', label: 'Hue balance', group: 'Chroma', options: [0, 1], labels: ['Off', 'On'], value: 1 },
   { key: 'rc', label: 'Chroma origin', group: 'Chroma', options: [0, 1], labels: ['HCT zero', 'True gray'], value: 0 },
-  { key: 'ptAuto', label: 'Peak tone', group: 'Tone', options: [1, 0], labels: ['Auto', 'Manual'], value: 0 },
-  { key: 'pt', label: 'Manual peak tone', group: 'Tone', min: 20, max: 92, step: 0.5, value: 62 },
-  { key: 'darkTone', label: 'Dark endpoint', group: 'Tone', min: 0, max: 20, step: 0.5, value: 5 },
-  { key: 'toneMax', label: 'Light endpoint', group: 'Tone', min: 80, max: 100, step: 0.5, value: 97.5 },
-  { key: 'ladder', label: 'Scale', group: 'Output', options: ['even', 'radix'], labels: ['050–700', 'Radix 1–12'], value: 'even' },
+  // Contrast (the Leonardo model, contrast.ts): the page tone per scheme (step 1) and an APCA Lc
+  // target per step 2–12 against it; each step's tone is solved from its target.
+  { key: 'darkTone', label: 'Dark page', group: 'Contrast', min: 0, max: 20, step: 0.5, value: 5 },
+  { key: 'toneMax', label: 'Light page', group: 'Contrast', min: 80, max: 100, step: 0.5, value: 97.5 },
+  { key: 'targetsLight', label: 'Light targets (Lc, steps 2–12)', group: 'Contrast', list: 11, min: 0, max: TARGET_MAX, step: 0.1, value: [...DEFAULT_TARGETS.light] },
+  { key: 'targetsDark', label: 'Dark targets (Lc, steps 2–12)', group: 'Contrast', list: 11, min: 0, max: TARGET_MAX, step: 0.1, value: [...DEFAULT_TARGETS.dark] },
+  // Legacy tone placement, superseded by the targets: a theme that sets them (and no targets) has its
+  // targets measured from the ramp they produce (generateSpectrum).
+  { key: 'ptAuto', label: 'Peak tone (legacy)', group: 'Legacy', options: [1, 0], labels: ['Auto', 'Manual'], value: 0, legacy: true },
+  { key: 'pt', label: 'Manual peak tone (legacy)', group: 'Legacy', min: 20, max: 92, step: 0.5, value: 62, legacy: true },
+  { key: 'ladder', label: 'Scale (legacy)', group: 'Legacy', options: ['even', 'radix'], labels: ['050–700', 'Radix 1–12'], value: 'even', legacy: true },
   { key: 'mat', label: 'Tinted neutral', group: 'Neutrals', options: ['none', 'tinted'], labels: ['Off', 'On'], value: 'tinted' },
   { key: 'tint', label: 'Neutral tint', group: 'Neutrals', min: 0, max: 100, step: 1, value: 75 },
   { key: 'neutralFrom', label: 'Neutral hue source', group: 'Neutrals', options: Array.from({ length: 12 }, (_, i) => i), value: 0 },
@@ -34,7 +41,9 @@ export const SPECTRUM_DEFAULTS: SpectrumSettings = Object.fromEntries(SPECTRUM_F
 /** Fixed engine parameters (not editable). */
 export const SPECTRUM_FIXED = { peak: 400, lc: 100 };
 
-const valid = (f: Field, v: unknown) => f.multiple
+const valid = (f: Field, v: unknown) => f.list
+  ? Array.isArray(v) && v.length === f.list && v.every((x) => typeof x === 'number' && Number.isFinite(x) && x >= f.min! && x <= f.max!)
+  : f.multiple
   ? Array.isArray(v) && new Set(v).size === v.length && v.every((x) => f.options!.includes(x))
   : f.options ? f.options.includes(v as any)
   : typeof v === 'number' && Number.isFinite(v) && v >= f.min! && v <= f.max! && Math.abs((v - f.min!) / f.step! - Math.round((v - f.min!) / f.step!)) < 1e-7;

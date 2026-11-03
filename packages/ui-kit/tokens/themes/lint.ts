@@ -20,11 +20,11 @@ const SPRING = (n: number) => SPRING_NAMES[Math.max(0, Math.min(SPRING_NAMES.len
 /** APCA Lc for text on a solid fill (button labels, danger actions). */
 export const ON_SOLID_LC = 60;
 /** The tone settings a theme changed (the likely cause of a contrast finding), as "; changed: Light endpoint 89 (default 97.5)". */
-const TONE_KEYS = ['toneMax', 'darkTone', 'ptAuto', 'pt', 'chroma', 'base', 'falloff', 'hueSet', 'mat', 'tint'];
+const TONE_KEYS = ['toneMax', 'darkTone', 'targetsLight', 'targetsDark', 'ptAuto', 'pt', 'chroma', 'base', 'falloff', 'hueSet', 'mat', 'tint'];
 function changedTones(theme: Partial<Theme>) {
   const s = theme.color?.spectrum ?? {};
   const rows = SPECTRUM_FIELDS.filter((f) => TONE_KEYS.includes(f.key) && f.key in s && JSON.stringify(s[f.key]) !== JSON.stringify(f.value))
-    .map((f) => `${f.label} ${f.labels && f.options ? f.labels[f.options.indexOf(s[f.key])] ?? s[f.key] : s[f.key]} (default ${f.labels && f.options ? f.labels[f.options.indexOf(f.value as never)] ?? f.value : f.value})`);
+    .map((f) => f.list ? `${f.label.replace(/ \(.*\)$/, '')}` : `${f.label} ${f.labels && f.options ? f.labels[f.options.indexOf(s[f.key])] ?? s[f.key] : s[f.key]} (default ${f.labels && f.options ? f.labels[f.options.indexOf(f.value as never)] ?? f.value : f.value})`);
   return rows.length ? `; changed from the defaults: ${rows.join(', ')}` : '';
 }
 /** "Lc 40.4" or "Lc 40.4–57.2". */
