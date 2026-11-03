@@ -25,16 +25,16 @@ export function useEvent(type: string, fn: (el: any, detail: any) => void) {
 // control (aria-labelledby, or labelledby on ui-select), so controls carry no label of their own.
 
 /** A pane row. A trailing "(unit)" in the label becomes the unit suffix: "Unit (px)" → Unit … px. */
-export function Field({ label, readout, id, children }: { label: string; readout?: string; id?: string; children: ReactNode }) {
+export function Field({ label, readout, id, description, children }: { label: string; readout?: string; id?: string; description?: string; children: ReactNode }) {
   const m = /^(.*?)\s*\(([^()]+)\)$/.exec(label);
-  return <ui-field id={id} layout="inline" label={m ? m[1] : label} unit={m ? m[2] : ''} readout={readout ?? ''}>{children}</ui-field>;
+  return <ui-field id={id} layout="inline" label={m ? m[1] : label} unit={m ? m[2] : ''} readout={readout ?? ''} description={description ?? ''}>{children}</ui-field>;
 }
 
-export function Range({ label, value, min, max, step, onValue, format }: { label: string; value: number; min: number; max: number; step: number; onValue: (v: number) => void; format?: (v: number) => string }) {
+export function Range({ label, value, min, max, step, onValue, format, disabled, description }: { label: string; value: number; min: number; max: number; step: number; onValue: (v: number) => void; format?: (v: number) => string; disabled?: boolean; description?: string }) {
   const ref = useEvent('input', (_el, d) => onValue(d.value));
   return (
-    <Field label={label} readout={format ? format(value) : String(value)}>
-      <ui-range ref={ref} min={min} max={max} step={step} value={value} />
+    <Field label={label} readout={format ? format(value) : String(value)} description={description}>
+      <ui-range ref={ref} min={min} max={max} step={step} value={value} disabled={disabled} />
     </Field>
   );
 }

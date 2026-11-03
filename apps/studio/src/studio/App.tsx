@@ -32,7 +32,10 @@ const SCHEME_ICON: Record<Scheme, string> = { auto: 'circle-half', light: 'sun',
 import * as s from './styles.ts';
 
 // Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
-const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape', 'radius-group', 'radius-collection', 'radius-card'];
+const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
+const CONTAINER_RADIUS: [ParamName, string][] = [['radius-group', 'Group'], ['radius-collection', 'Collection'], ['radius-card', 'Card']];
+// corner-shape (superellipse): Chromium draws it; where CSS.supports says no (Firefox, older WebKit) corners stay round.
+const CORNER_SHAPE = typeof CSS !== 'undefined' && CSS.supports('corner-shape', 'superellipse(2)');
 const LEVELS = ['composite', 'group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const;
 const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
 
@@ -160,8 +163,14 @@ export function App() {
       <Segmented label="Density" value={String(params.density)} onValue={(v) => setParam('density', Number(v))} options={[['0', 'Compact'], ['1', 'Default'], ['2', 'Loose']]} />
       {GEOMETRY.map((k) => {
         const p = PARAMS[k];
-        return <Range key={k} label={p.label} value={params[k]} min={p.min} max={p.max} step={p.step} onValue={(v) => setParam(k, v)} />;
+        const unsupported = k === 'corner-shape' && !CORNER_SHAPE;
+        return <Range key={k} label={p.label} value={params[k]} min={p.min} max={p.max} step={p.step} onValue={(v) => setParam(k, v)} disabled={unsupported} description={unsupported ? 'This browser does not draw corner-shape, so corners stay round.' : undefined} />;
       })}
+    </Group>
+  );
+  const containerRadius = (
+    <Group title="Container radius (× concentric)">
+      {CONTAINER_RADIUS.map(([k, label]) => <Range key={k} label={label} value={params[k]} min={PARAMS[k].min} max={PARAMS[k].max} step={PARAMS[k].step} onValue={(v) => setParam(k, v)} />)}
     </Group>
   );
 
@@ -176,6 +185,7 @@ export function App() {
         {/* One field grid per tab: every group's rows share the label | control | readout columns. */}
         <ui-field-grid className={s.panelBody}>
           {tab === 'geometry' && geometry}
+          {tab === 'geometry' && containerRadius}
           {tab === 'geometry' && (
             <Group title="Elevation">
               <Range label={PARAMS['shadow-strength'].label} value={params['shadow-strength']} min={PARAMS['shadow-strength'].min} max={PARAMS['shadow-strength'].max} step={PARAMS['shadow-strength'].step} onValue={(v) => setParam('shadow-strength', v)} />
