@@ -134,7 +134,7 @@ export function colorTokens(mode: 'light' | 'dark'): Json {
   const shadow = roleStep(ROLE_STEPS.shadow, mode), shadowColor = D[mode][D.roles[shadow.family]][shadow.step - 1];
   for (const [name, layers] of Object.entries(SHADOWS)) put(tree, ['shadow', name], {
     $type: 'shadow',
-    $value: layers.map((l) => ({ color: { ...oklch(shadowColor), alpha: l[mode] }, offsetX: px(0), offsetY: px(l.y), blur: px(l.blur), spread: px(0) })),
+    $value: layers.map((l) => ({ color: { ...oklch(shadowColor), alpha: l[mode] }, offsetX: px(0), offsetY: px(l.y), blur: px(l.blur), spread: px(l.spread) })),
     $description: `${shadow.family} step ${shadow.step} (role shadow) at ${layers.map((l) => `${l[mode] * 100}%`).join(', ')}`,
   });
   return tree;

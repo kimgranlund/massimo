@@ -54,7 +54,7 @@ test('types cover the system: ratios are numbers, roles are typography, ramps ar
   assert.equal(t.input['type-ratio'].$type, 'number');
   assert.equal(g.input.container['card-md'].pad.$value, 4);
   assert.equal(c.shadow.md.$type, 'shadow');
-  assert.equal(c.shadow.md.$value.length, 2);
+  assert.equal(c.shadow.md.$value.length, 3, 'umbra, penumbra, ambient');
   assert.equal(t.typography['heading-1'].$type, 'typography');
   assert.equal(t.typography['heading-1'].$value.fontFamily, '{font.voice.heading}');
   assert.equal(t.font.voice.heading.$value, '{font.face.sans}');

@@ -2571,7 +2571,34 @@
               0.0252,
               223.5953
             ],
-            "alpha": 0.12
+            "alpha": 0.14
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 0.5,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 0.6,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -0.3,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.4024,
+              0.0252,
+              223.5953
+            ],
+            "alpha": 0.1
           },
           "offsetX": {
             "value": 0,
@@ -2582,20 +2609,14 @@
             "unit": "px"
           },
           "blur": {
-            "value": 2,
+            "value": 1.6,
             "unit": "px"
           },
           "spread": {
-            "value": 0,
+            "value": 0.125,
             "unit": "px"
           }
-        }
-      ],
-      "$description": "neutral step 12 (role shadow) at 12%"
-    },
-    "md": {
-      "$type": "shadow",
-      "$value": [
+        },
         {
           "color": {
             "colorSpace": "oklch",
@@ -2611,15 +2632,48 @@
             "unit": "px"
           },
           "offsetY": {
-            "value": 2,
+            "value": 0.4,
             "unit": "px"
           },
           "blur": {
-            "value": 4,
+            "value": 1.9,
             "unit": "px"
           },
           "spread": {
+            "value": 0.33,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "neutral step 12 (role shadow) at 14.000000000000002%, 10%, 8%"
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.4024,
+              0.0252,
+              223.5953
+            ],
+            "alpha": 0.14
+          },
+          "offsetX": {
             "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1.5,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 1.8,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -0.9,
             "unit": "px"
           }
         },
@@ -2631,27 +2685,54 @@
               0.0252,
               223.5953
             ],
-            "alpha": 0.16
+            "alpha": 0.1
           },
           "offsetX": {
             "value": 0,
             "unit": "px"
           },
           "offsetY": {
-            "value": 8,
+            "value": 3,
             "unit": "px"
           },
           "blur": {
-            "value": 24,
+            "value": 4.8,
             "unit": "px"
           },
           "spread": {
+            "value": 0.375,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.4024,
+              0.0252,
+              223.5953
+            ],
+            "alpha": 0.08
+          },
+          "offsetX": {
             "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1.2,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 5.7,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0.99,
             "unit": "px"
           }
         }
       ],
-      "$description": "neutral step 12 (role shadow) at 8%, 16%"
+      "$description": "neutral step 12 (role shadow) at 14.000000000000002%, 10%, 8%"
     }
   }
 }

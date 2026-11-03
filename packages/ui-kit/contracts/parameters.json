@@ -513,7 +513,7 @@
         "card-raised"
       ],
       "cssVar": "--ui-<member>",
-      "formula": "six levels (page 0, panel 1, card 2, raised 3, floating 4, modal 5), each a fill, a shadow and a layer (ELEVATION, tokens/elevation); every shadow alpha × shadow-strength; each surface fill = mix(level fill, page fill, surface-contrast); shadow-<level> picks none, sm or md (weights sm = 1 − (n − 1)², md = n(n − 1)/2); card-raised lifts cards to the raised shadow",
+      "formula": "six levels (page 0, panel 1, card 2, raised 3, floating 4, modal 5), each a fill, a shadow and a layer (ELEVATION, tokens/elevation); every shadow alpha × shadow-strength; each surface fill = mix(level fill, page fill, surface-contrast); shadow-<level> is the level's elevation in dp: a compound shadow (umbra, penumbra, ambient) whose offsets, blurs and spreads are linear in e (SHADOW_LAYERS); card-raised lifts cards to the raised shadow",
       "drives": [
         "foundation:colors",
         "tokens:borders-shadows",

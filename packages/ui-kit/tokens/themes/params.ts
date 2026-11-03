@@ -16,13 +16,13 @@ export const PARAMS = {
   'radius-collection': { label: 'Collection radius (× concentric)', min: 0, max: 1, step: 0.05, default: 1 },
   'radius-card':       { label: 'Card radius (× concentric)',          min: 0, max: 1, step: 0.05, default: 1 },
   // Elevation (tokens/elevation, docs/specs/elevation.md): every shadow's alpha × shadow-strength; each
-  // surface fill mixed toward the page fill by surface-contrast (0 one fill, shadows only); the shadow
-  // each lifted level casts (0 none, 1 sm, 2 md); card-raised lifts cards to the raised level.
+  // surface fill mixed toward the page fill by surface-contrast (0 one fill, shadows only); each lifted
+  // level's elevation in dp (the compound shadow's size; 0 casts none); card-raised lifts cards.
   'shadow-strength':  { label: 'Shadow strength',  min: 0, max: 2, step: 0.05, default: 1 },
   'surface-contrast': { label: 'Surface contrast', min: 0, max: 1, step: 0.05, default: 1 },
-  'shadow-raised':    { label: 'Raised shadow',    min: 0, max: 2, step: 1, default: 1 },
-  'shadow-floating':  { label: 'Floating shadow',  min: 0, max: 2, step: 1, default: 2 },
-  'shadow-modal':     { label: 'Modal shadow',     min: 0, max: 2, step: 1, default: 2 },
+  'shadow-raised':    { label: 'Raised (dp)',      min: 0, max: 24, step: 1, default: 2 },
+  'shadow-floating':  { label: 'Floating (dp)',    min: 0, max: 24, step: 1, default: 8 },
+  'shadow-modal':     { label: 'Modal (dp)',       min: 0, max: 24, step: 1, default: 24 },
   'card-raised':      { label: 'Raise cards',      min: 0, max: 1, step: 1, default: 0 },
   // Density (resolve.ts DENSITIES): 0 compact, 1 default, 2 loose; insets, padding and gaps only.
   'density':          { label: 'Density',          min: 0, max: 2, step: 1, default: 1 },

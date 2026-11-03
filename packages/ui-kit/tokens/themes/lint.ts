@@ -19,6 +19,10 @@ export const THEME_CONSTRAINTS = constraints.rules as Record<string, { concept: 
 const SPRING = (n: number) => SPRING_NAMES[Math.max(0, Math.min(SPRING_NAMES.length - 1, Math.round(n)))];
 /** APCA Lc for text on a solid fill (button labels, danger actions). */
 export const ON_SOLID_LC = 60;
+/** "Lc 40.4" or "Lc 40.4–57.2". */
+const range = (lcs: number[]) => { const lo = Math.min(...lcs), hi = Math.max(...lcs); return fmt(lo) === fmt(hi) ? `Lc ${fmt(lo)}` : `Lc ${fmt(lo)}–${fmt(hi)}`; };
+/** "primary (indigo), critical (crimson)". */
+const list = (rows: { role: string; family: string }[]) => rows.map((r) => `${r.role} (${r.family})`).join(', ');
 const fmt = (n: number) => String(Math.round(n * 100) / 100);
 
 export const RULES: Record<string, Rule> = {
@@ -47,22 +51,29 @@ export const RULES: Record<string, Rule> = {
   },
   'curvature.pill-containers': ({ p }) =>
     p['radius-scale'] >= 2 && p['radius-card'] > 0.75 ? [`radius-scale ${p['radius-scale']} with radius-card ${p['radius-card']} makes short cards near pills`] : [],
+  // One finding per scheme, listing the roles, so a palette-wide problem reads as one line.
   'vibrancy.text-contrast': ({ color }) => {
     const { data, roles } = color();
     const out: string[] = [];
-    for (const mode of ['light', 'dark'] as const) for (const role of SCALE_ROLES) {
-      const row = data.checks?.[mode].rows[roles[role]];
-      if (row && !row.passes.r11) out.push(`${role} (${roles[role]}) text, step 11, is Lc ${fmt(Math.abs(row.roles.r11))} on the ${mode} page`);
+    for (const mode of ['light', 'dark'] as const) {
+      const low = SCALE_ROLES.flatMap((role) => {
+        const row = data.checks?.[mode].rows[roles[role]];
+        return row && !row.passes.r11 ? [{ role, family: roles[role], lc: Math.abs(row.roles.r11) }] : [];
+      });
+      if (low.length) out.push(`step 11 text is ${range(low.map((l) => l.lc))} on the ${mode} page for ${list(low)}`);
     }
     return out;
   },
   'emphasis.on-solid': ({ color }) => {
     const { data, roles } = color();
     const out: string[] = [];
-    for (const mode of ['light', 'dark'] as const) for (const role of ['primary', 'critical'] as const) {
-      const row = data.checks?.[mode].rows[roles[role]] as any;
+    for (const mode of ['light', 'dark'] as const) {
       // APCA Lc 60 is the level for UI text (labels at the control font); the engine's own onSolid flag also asks for a ramp color, so it is not used.
-      if (row?.roles.onSolid && Math.abs(row.roles.onSolid.lc) < ON_SOLID_LC) out.push(`text on the ${role} solid (${roles[role]} 9) is Lc ${fmt(Math.abs(row.roles.onSolid.lc))} in ${mode}`);
+      const low = (['primary', 'critical'] as const).flatMap((role) => {
+        const lc = Math.abs((data.checks?.[mode].rows[roles[role]] as any)?.roles.onSolid?.lc ?? Infinity);
+        return lc < ON_SOLID_LC ? [{ role, family: roles[role], lc }] : [];
+      });
+      if (low.length) out.push(`text on the solid (step 9) is ${range(low.map((l) => l.lc))} in ${mode} for ${list(low)}`);
     }
     return out;
   },

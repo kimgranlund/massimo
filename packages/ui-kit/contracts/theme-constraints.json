@@ -65,8 +65,8 @@
     "elevation.floating-visible": {
       "concept": "elevation",
       "severity": "warning",
-      "checks": "Floating surfaces (menus, popovers, select popups, toasts) separate from the page: a floating shadow, or a border.",
-      "fix": "Give shadow-floating sm or md, or set a border.",
+      "checks": "Floating surfaces (menus, popovers, select popups, toasts) separate from the page: a floating elevation above 0dp, or a border.",
+      "fix": "Give shadow-floating an elevation (8dp by default), or set a border.",
       "fixtures": {
         "fail": {
           "parameters": {
@@ -84,8 +84,8 @@
     "elevation.modal-shadow": {
       "concept": "elevation",
       "severity": "info",
-      "checks": "Modal surfaces cast a shadow; with none, only the backdrop separates a dialog from the page.",
-      "fix": "Confirm it is intended, or give shadow-modal sm or md.",
+      "checks": "Modal surfaces cast a shadow (shadow-modal > 0dp); with none, only the backdrop separates a dialog from the page.",
+      "fix": "Confirm it is intended, or give shadow-modal an elevation (24dp by default).",
       "fixtures": {
         "fail": {
           "parameters": {
@@ -159,7 +159,7 @@
       "concept": "vibrancy",
       "severity": "error",
       "checks": "Each brand and feedback role's text step (11) reaches the engine's APCA threshold on the page fill, in light and dark.",
-      "fix": "Lower the light endpoint or raise the dark one, raise chroma falloff, or choose another family for the role.",
+      "fix": "The peak tone is the main lever: move the manual peak tone toward 62 (the default); then the endpoints (a lighter light endpoint, a darker dark one) or another family for the role.",
       "fixtures": {
         "fail": {
           "color": {

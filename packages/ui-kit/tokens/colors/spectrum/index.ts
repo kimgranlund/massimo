@@ -148,17 +148,28 @@ export const ROLE_STEPS = {
 } as const satisfies Record<string, RoleStep>;
 
 /**
- * Elevation shadows: layers of the `shadow` role color (neutral 12 in light, the darkest neutral in
- * dark) at a per-scheme alpha, stronger in dark where a shadow has less page to darken. Offsets in px.
+ * Compound shadows (Material's key-light umbra and penumbra plus an ambient layer), continuous in the
+ * elevation e (dp): each layer's offset, blur and spread are px per dp, fitted to Material's tables
+ * at 2, 8 and 24dp, so any elevation is valid. Colored by the `shadow` role (neutral 12 in light, the
+ * darkest neutral in dark: tinted, never black) at a per-scheme alpha, stronger in dark where a
+ * shadow has less page to darken.
  */
-export const SHADOWS = {
-  sm: [{ y: 1, blur: 2, light: 0.12, dark: 0.5 }],
-  md: [{ y: 2, blur: 4, light: 0.08, dark: 0.36 }, { y: 8, blur: 24, light: 0.16, dark: 0.56 }],
-} as const satisfies Record<string, readonly { y: number; blur: number; light: number; dark: number }[]>;
+export const SHADOW_LAYERS = {
+  umbra:    { y: 0.5, blur: 0.6, spread: -0.3,  light: 0.14, dark: 0.5 },
+  penumbra: { y: 1,   blur: 1.6, spread: 0.125, light: 0.1,  dark: 0.36 },
+  ambient:  { y: 0.4, blur: 1.9, spread: 0.33,  light: 0.08, dark: 0.3 },
+} as const satisfies Record<string, { y: number; blur: number; spread: number; light: number; dark: number }>;
+export type ShadowLayer = keyof typeof SHADOW_LAYERS;
 
-/** A shadow's CSS in one scheme, its color from a reference to the shadow role (a var() or token reference). */
-export const shadowCss = (name: keyof typeof SHADOWS, mode: 'light' | 'dark', colorRef: string) =>
-  SHADOWS[name].map((l) => `0 ${l.y}px ${l.blur}px ${withAlpha(colorRef, l[mode])}`).join(', ');
+/** The base shadows' elevations (small lifts inside components: a selected option, a range thumb). */
+export const SHADOW_DP = { sm: 1, md: 3 } as const;
+
+/** The three layers at elevation e: px offsets, blur and spread, and the per-scheme alphas. */
+export const shadowAt = (e: number) => (Object.entries(SHADOW_LAYERS) as [ShadowLayer, (typeof SHADOW_LAYERS)[ShadowLayer]][]).map(([layer, l]) =>
+  ({ layer, y: l.y * e, blur: l.blur * e, spread: l.spread * e, light: e > 0 ? l.light : 0, dark: e > 0 ? l.dark : 0 }));
+
+/** The base shadows as layers (the DTCG export). */
+export const SHADOWS = { sm: shadowAt(SHADOW_DP.sm), md: shadowAt(SHADOW_DP.md) };
 
 /** A role: a family step, optionally a different step and/or an alpha per scheme. */
 export type RoleStep = readonly [keyof Roles, number] | readonly [keyof Roles, number, { dark?: number; darkFamily?: keyof Roles; alpha?: number; darkAlpha?: number }];

@@ -76,23 +76,23 @@
         "shadow-raised": {
           "type": "number",
           "minimum": 0,
-          "maximum": 2,
+          "maximum": 24,
           "multipleOfStep": 1,
-          "description": "Raised shadow"
+          "description": "Raised (dp)"
         },
         "shadow-floating": {
           "type": "number",
           "minimum": 0,
-          "maximum": 2,
+          "maximum": 24,
           "multipleOfStep": 1,
-          "description": "Floating shadow"
+          "description": "Floating (dp)"
         },
         "shadow-modal": {
           "type": "number",
           "minimum": 0,
-          "maximum": 2,
+          "maximum": 24,
           "multipleOfStep": 1,
-          "description": "Modal shadow"
+          "description": "Modal (dp)"
         },
         "card-raised": {
           "type": "number",

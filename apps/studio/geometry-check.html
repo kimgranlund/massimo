@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOWS, shadowWeights, elevationTokenVars, resolveChoiceCard } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOW_LAYERS, elevationTokenVars, resolveChoiceCard } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -1072,9 +1072,11 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     return t + (c ? rgba(c)[3] / 255 : 0);
   }, 0);
   const dark = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const base = (name) => SHADOWS[name].reduce((t, l) => t + l[dark], 0);
-  const want = (n, strength) => (shadowWeights(n).sm * base('sm') + shadowWeights(n).md * base('md')) * strength;
-  for (const [label, vars] of [['default', {}], ['flat', { '--ui-surface-contrast': 0 }], ['half', { '--ui-surface-contrast': 0.5, '--ui-shadow-strength': 0.5 }], ['none', { '--ui-shadow-floating': 0, '--ui-shadow-modal': 1, '--ui-card-raised': 1 }], ['off', { '--ui-shadow-strength': 0 }]]) {
+  // A compound shadow at e dp: its three layer alphas × strength (each clamped at 1), none at 0dp.
+  const want = (e, strength) => e > 0 ? Object.values(SHADOW_LAYERS).reduce((t, l) => t + l[dark] * Math.min(1, strength), 0) : 0;
+  // The widest blur is the ambient layer's: 1.9 px per dp.
+  const maxBlur = (shadow) => shadow === 'none' ? 0 : Math.max(...shadow.split(/,(?![^(]*\))/).map((layer) => (layer.replace(/(?:rgba?|color|oklch|oklab)\([^)]*\)/, '').match(/-?[\d.]+px/g) ?? []).map(parseFloat)[2] ?? 0));
+  for (const [label, vars] of [['default', {}], ['flat', { '--ui-surface-contrast': 0 }], ['half', { '--ui-surface-contrast': 0.5, '--ui-shadow-strength': 0.5 }], ['none', { '--ui-shadow-floating': 0, '--ui-shadow-modal': 12, '--ui-card-raised': 1 }], ['off', { '--ui-shadow-strength': 0 }]]) {
     const box = document.createElement('div');
     for (const [k, v] of Object.entries(vars)) box.style.setProperty(k, v);
     // The scope sets elevation params, so it redeclares the elevation tokens (as the jig canvas does).
@@ -1083,7 +1085,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
       <div id="bg" style="background: var(--colors-bg)"></div><div id="bm" style="background: var(--colors-bg-muted)"></div><div id="bs" style="background: var(--colors-bg-subtle)"></div>`;
     root.append(box);
     const cs = (sel) => getComputedStyle(box.querySelector(sel));
-    const p = { contrast: vars['--ui-surface-contrast'] ?? 1, strength: vars['--ui-shadow-strength'] ?? 1, floating: vars['--ui-shadow-floating'] ?? 2, modal: vars['--ui-shadow-modal'] ?? 2, raised: 1, card: vars['--ui-card-raised'] ?? 0 };
+    const p = { contrast: vars['--ui-surface-contrast'] ?? 1, strength: vars['--ui-shadow-strength'] ?? 1, floating: vars['--ui-shadow-floating'] ?? 8, modal: vars['--ui-shadow-modal'] ?? 24, raised: 2, card: vars['--ui-card-raised'] ?? 0 };
     const mix = (a, b, t) => a.map((v, i) => Math.round(v * t + b[i] * (1 - t)));
     const [bg, bm, bs] = ['#bg', '#bm', '#bs'].map((s) => rgba(cs(s).backgroundColor));
     const checks = {
@@ -1093,6 +1095,8 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
       'shadow.modal': [r2(alphaSum(cs('#sm').boxShadow)), r2(want(p.modal, p.strength))],
       'shadow.raised': [r2(alphaSum(cs('#sr').boxShadow)), r2(want(p.raised, p.strength))],
       'card.shadow': [r2(alphaSum(cs('ui-card').boxShadow)), r2(want(p.raised, p.strength) * p.card)],
+      'shadow.floating.blur': [r2(maxBlur(cs('#sf').boxShadow)), r2(1.9 * p.floating)],
+      'shadow.modal.blur': [r2(maxBlur(cs('#sm').boxShadow)), r2(1.9 * p.modal)],
     };
     for (const [k, [got, w]] of Object.entries(checks)) { total++; if (Math.abs(got - w) > 0.02) fails.push(`elevation/${label} ${k}: got ${got}, want ${w}`); }
     box.remove();

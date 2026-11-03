@@ -1982,30 +1982,30 @@
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/elevation",
       "availability": "implemented",
-      "title": "Floating shadow",
+      "title": "Floating (dp)",
       "searchTerms": [
         "shadow-floating",
-        "floating shadow"
+        "floating (dp)"
       ]
     },
     "parameter:shadow-modal": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/elevation",
       "availability": "implemented",
-      "title": "Modal shadow",
+      "title": "Modal (dp)",
       "searchTerms": [
         "shadow-modal",
-        "modal shadow"
+        "modal (dp)"
       ]
     },
     "parameter:shadow-raised": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/elevation",
       "availability": "implemented",
-      "title": "Raised shadow",
+      "title": "Raised (dp)",
       "searchTerms": [
         "shadow-raised",
-        "raised shadow"
+        "raised (dp)"
       ]
     },
     "parameter:shadow-strength": {

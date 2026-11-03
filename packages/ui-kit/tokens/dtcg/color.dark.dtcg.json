@@ -2586,24 +2586,18 @@
             "unit": "px"
           },
           "offsetY": {
-            "value": 1,
+            "value": 0.5,
             "unit": "px"
           },
           "blur": {
-            "value": 2,
+            "value": 0.6,
             "unit": "px"
           },
           "spread": {
-            "value": 0,
+            "value": -0.3,
             "unit": "px"
           }
-        }
-      ],
-      "$description": "neutral step 1 (role shadow) at 50%"
-    },
-    "md": {
-      "$type": "shadow",
-      "$value": [
+        },
         {
           "color": {
             "colorSpace": "oklch",
@@ -2619,15 +2613,15 @@
             "unit": "px"
           },
           "offsetY": {
-            "value": 2,
+            "value": 1,
             "unit": "px"
           },
           "blur": {
-            "value": 4,
+            "value": 1.6,
             "unit": "px"
           },
           "spread": {
-            "value": 0,
+            "value": 0.125,
             "unit": "px"
           }
         },
@@ -2639,27 +2633,114 @@
               0.0051,
               225.5111
             ],
-            "alpha": 0.56
+            "alpha": 0.3
           },
           "offsetX": {
             "value": 0,
             "unit": "px"
           },
           "offsetY": {
-            "value": 8,
+            "value": 0.4,
             "unit": "px"
           },
           "blur": {
-            "value": 24,
+            "value": 1.9,
             "unit": "px"
           },
           "spread": {
-            "value": 0,
+            "value": 0.33,
             "unit": "px"
           }
         }
       ],
-      "$description": "neutral step 1 (role shadow) at 36%, 56.00000000000001%"
+      "$description": "neutral step 1 (role shadow) at 50%, 36%, 30%"
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.1765,
+              0.0051,
+              225.5111
+            ],
+            "alpha": 0.5
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1.5,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 1.8,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -0.9,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.1765,
+              0.0051,
+              225.5111
+            ],
+            "alpha": 0.36
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 3,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 4.8,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0.375,
+            "unit": "px"
+          }
+        },
+        {
+          "color": {
+            "colorSpace": "oklch",
+            "components": [
+              0.1765,
+              0.0051,
+              225.5111
+            ],
+            "alpha": 0.3
+          },
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1.2,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 5.7,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0.99,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "neutral step 1 (role shadow) at 50%, 36%, 30%"
     }
   }
 }

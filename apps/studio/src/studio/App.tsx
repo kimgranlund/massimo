@@ -216,7 +216,7 @@ export function App() {
               <Range label={PARAMS['shadow-strength'].label} value={params['shadow-strength']} min={PARAMS['shadow-strength'].min} max={PARAMS['shadow-strength'].max} step={PARAMS['shadow-strength'].step} onValue={(v) => setParam('shadow-strength', v)} />
               <Range label={PARAMS['surface-contrast'].label} value={params['surface-contrast']} min={PARAMS['surface-contrast'].min} max={PARAMS['surface-contrast'].max} step={PARAMS['surface-contrast'].step} onValue={(v) => setParam('surface-contrast', v)} />
               {(['shadow-raised', 'shadow-floating', 'shadow-modal'] as const).map((k) => (
-                <Segmented key={k} label={PARAMS[k].label} value={String(params[k])} onValue={(v) => setParam(k, Number(v))} options={[['0', 'None'], ['1', 'Small'], ['2', 'Medium']]} />
+                <Range key={k} label={PARAMS[k].label} value={params[k]} min={PARAMS[k].min} max={PARAMS[k].max} step={PARAMS[k].step} onValue={(v) => setParam(k, v)} />
               ))}
               <Switch label={PARAMS['card-raised'].label} checked={params['card-raised'] === 1} onValue={(v) => setParam('card-raised', v ? 1 : 0)} />
             </Group>

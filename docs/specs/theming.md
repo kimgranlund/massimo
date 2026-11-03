@@ -13,7 +13,7 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 | `radius-scale` | 0–3 | 1 |
 | `density` | 0, 1, 2 (compact, default, loose; [geometry](geometry.md#density)) | 1 |
 | `radius-group`, `radius-collection`, `radius-card` | 0–1 (0.05 steps; the magnitude t of each family's concentric radius: 1 concentric, 0 square) | 1 |
-| `shadow-strength`, `surface-contrast`, `shadow-raised`, `shadow-floating`, `shadow-modal`, `card-raised` | see [elevation](elevation.md#parameters) | 1, 1, 1, 2, 2, 0 |
+| `shadow-strength`, `surface-contrast`, `shadow-raised`, `shadow-floating`, `shadow-modal`, `card-raised` | see [elevation](elevation.md#parameters) | 1, 1, 2dp, 8dp, 24dp, 0 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | `type-ratio` | 1–1.5 | 1.333 |
 | `type-rhythm` | 0, 0.5, 1 (× u) | 1 |
