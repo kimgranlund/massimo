@@ -49,9 +49,12 @@ Form controls are the leaves: their radius stays min(3u·s, H/2). A container is
 3. Composition contracts move from tag contexts to preset contexts; the registry keeps `context:card` and the rest.
 4. Remove the aliases after one release.
 
+## Decided
+
+- Default model (2026-11-03): D (even split) when the root declares `levels`, else C (the ratio ladder), which needs no depth.
+
 ## Open questions
 
-- Default model: C (no depth needed) or D (needs `levels`)? Or C with D when `levels` is set?
 - Should a container ever grow its radius to fit content that is rounder than its inherited radius (A's behavior), or always inherit (B/C/D)?
 - Does `surface` belong on the container or stay a separate elevation attribute usable on any element?
 - Maximum depth: 6 indexed levels, or 8?
