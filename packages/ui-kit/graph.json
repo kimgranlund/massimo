@@ -308,6 +308,18 @@
         "anchored dialog"
       ]
     },
+    "component:preview-card": {
+      "kind": "component",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-preview-card",
+      "searchTerms": [
+        "preview card",
+        "hover card",
+        "link preview",
+        "profile card"
+      ]
+    },
     "component:progress": {
       "kind": "component",
       "source": "components/range/range.manifest.json#/nodes/1",
@@ -1185,6 +1197,42 @@
       "tag": "ui-button",
       "searchTerms": [
         "popover trigger"
+      ]
+    },
+    "part:preview-card-arrow": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "preview card arrow"
+      ]
+    },
+    "part:preview-card-popup": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "preview card popup"
+      ]
+    },
+    "part:preview-card-positioner": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "preview card positioner"
+      ]
+    },
+    "part:preview-card-trigger": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "a",
+      "searchTerms": [
+        "preview card trigger"
       ]
     },
     "part:range-thumb": {
@@ -4555,6 +4603,116 @@
       "from": "component:popover",
       "relation": "uses",
       "to": "component:button"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-trigger"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-positioner"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-popup"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-arrow"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "uses",
+      "to": "component:popover"
     },
     {
       "from": "component:radio-group",

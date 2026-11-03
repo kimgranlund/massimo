@@ -279,3 +279,9 @@ test('popup: a tooltip is a 7u text row (0.5u edge, 2u ends), radius min(3u·s, 
   assert.equal(t.maxWidth, 240);
   assert.equal(t.minWidthAnchor, false);
 });
+
+test('popup: a preview card is a card-md with the collection gap, capped at 80u', () => {
+  const c = resolvePopup('preview-card', { unit: 4, border: 1 });
+  assert.deepEqual([c.paddingBlock, c.paddingInline, c.radius, c.gap, c.maxWidth, c.offset], [15, 15, 16, 8, 320, 4]);
+  assert.equal(resolvePopup('preview-card', { unit: 4, radiusScale: 0.5 }).radius, 8);
+});

@@ -63,7 +63,9 @@
     "./components/popover/element": "./components/popover/popover.element.ts",
     "./components/popover/react": "./components/popover/popover.react.tsx",
     "./components/tooltip/element": "./components/tooltip/tooltip.element.ts",
-    "./components/tooltip/react": "./components/tooltip/tooltip.react.tsx"
+    "./components/tooltip/react": "./components/tooltip/tooltip.react.tsx",
+    "./components/preview-card/element": "./components/preview-card/preview-card.element.ts",
+    "./components/preview-card/react": "./components/preview-card/preview-card.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

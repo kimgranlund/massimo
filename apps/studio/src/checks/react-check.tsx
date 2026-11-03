@@ -27,6 +27,7 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/popover/element';
 import '@massimo/ui-kit/components/tooltip/element';
+import '@massimo/ui-kit/components/preview-card/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -55,6 +56,7 @@ import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 import { Popover } from '@massimo/ui-kit/components/popover/react';
 import { Tooltip } from '@massimo/ui-kit/components/tooltip/react';
+import { PreviewCard } from '@massimo/ui-kit/components/preview-card/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -62,7 +64,7 @@ const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh', 'fs', 'fsd'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
 
 // ── Anchored popups: twins opened one pair at a time (open = "<u>:<key>"), measured at rest ──
-const POPUP_KEYS = ['pop', 'tip'];
+const POPUP_KEYS = ['pop', 'tip', 'pc'];
 function PopupPair({ u, open }: { u: number; open: string | null }) {
   const on = (k: string) => open === `${u}:${k}`;
   return (
@@ -70,10 +72,12 @@ function PopupPair({ u, open }: { u: number; open: string | null }) {
       <div data-side="wc">
         <ui-popover data-k="pop" side="bottom" align="start" open={on('pop')}><ui-button data-part="trigger">Open popover</ui-button><div data-part="popup"><h2 data-part="title">Title</h2><p data-part="description">Description text</p><div data-part="arrow" /></div></ui-popover>
         <ui-tooltip data-k="tip" side="bottom" open={on('tip')}><ui-button data-part="trigger">Tip</ui-button><div data-part="popup">Tooltip text<div data-part="arrow" /></div></ui-tooltip>
+        <ui-preview-card data-k="pc" side="bottom" align="start" open={on('pc')}><a data-part="trigger" href="#x">Preview</a><div data-part="popup"><strong>Card</strong><span>Body</span><div data-part="arrow" /></div></ui-preview-card>
       </div>
       <div data-side="react">
         <Popover.Root data-k="pop" open={on('pop')}><Popover.Trigger>Open popover</Popover.Trigger><Popover.Positioner side="bottom" align="start"><Popover.Popup><Popover.Title>Title</Popover.Title><Popover.Description>Description text</Popover.Description></Popover.Popup><Popover.Arrow /></Popover.Positioner></Popover.Root>
         <Tooltip.Root data-k="tip" open={on('tip')}><Tooltip.Trigger>Tip</Tooltip.Trigger><Tooltip.Positioner side="bottom"><Tooltip.Popup>Tooltip text</Tooltip.Popup><Tooltip.Arrow /></Tooltip.Positioner></Tooltip.Root>
+        <PreviewCard.Root data-k="pc" open={on('pc')}><PreviewCard.Trigger href="#x">Preview</PreviewCard.Trigger><PreviewCard.Positioner side="bottom" align="start"><PreviewCard.Popup><strong>Card</strong><span>Body</span></PreviewCard.Popup><PreviewCard.Arrow /></PreviewCard.Positioner></PreviewCard.Root>
       </div>
     </div>
   );

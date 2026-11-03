@@ -14,6 +14,8 @@ await import('../components/popover/popover.element.ts');
 const { Popover } = await loadTsx(new URL('../components/popover/popover.react.tsx', import.meta.url));
 await import('../components/tooltip/tooltip.element.ts');
 const { Tooltip } = await loadTsx(new URL('../components/tooltip/tooltip.react.tsx', import.meta.url));
+await import('../components/preview-card/preview-card.element.ts');
+const { PreviewCard } = await loadTsx(new URL('../components/preview-card/preview-card.react.tsx', import.meta.url));
 
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
 const contract = JSON.parse(readFileSync(new URL('../contracts/states.json', import.meta.url), 'utf8'));
@@ -308,4 +310,58 @@ test('Tooltip (React): the same data-* as ui-tooltip; preset vs parts; Provider 
   const b = html(h(Tooltip.Root, null, h(Tooltip.Trigger, { render: h('span', { tabIndex: 0 }) }, 'B'), h(Tooltip.Positioner, null, h(Tooltip.Popup, null, 'Bold'))));
   assert.equal(a, b, 'the preset renders its parts');
   assert.doesNotThrow(() => html(h(Tooltip.Provider, { delay: 100, timeout: 0 }, h(Tooltip, { content: 'x' }, 'y'))));
+});
+
+// ── Preview card ──
+
+test('preview card: the preset makes the first child link the trigger and the rest the card', async () => {
+  const el = await wc('<ui-preview-card><a href="/ada">Ada Lovelace</a><strong>Ada Lovelace</strong><p>Mathematician</p></ui-preview-card>') as any;
+  assert.equal(el.trigger.localName, 'a');
+  assert.equal(el.trigger.getAttribute('data-part'), 'trigger');
+  assert.equal(el.trigger.getAttribute('role'), null, 'a link keeps its role');
+  assert.equal(el.popup.querySelector('p')!.textContent, 'Mathematician');
+  assert.equal(el.popup.getAttribute('role'), null, 'Base UI: no popup role');
+  assert.equal(el.trigger.getAttribute('aria-describedby'), null);
+  assert.equal(el.positioner.getAttribute('data-placement'), 'bottom-center');
+  assert.equal(kit(el), 'ui-preview-card__root');
+  assert.equal(kit(el.popup), 'ui-preview-card__popup');
+  assert.ok(el.trigger.classList.contains('ui-preview-card__trigger'));
+  assert.equal(el.querySelector(NATIVE), null, 'no native form elements');
+  el.parentElement!.remove();
+});
+
+test('preview card: hover opens after the delay and stays while the pointer moves onto the card; leaving closes it after close-delay', async () => {
+  const el = await wc('<ui-preview-card delay="10" close-delay="30"><a href="/ada">Ada</a><p>Card</p></ui-preview-card>') as any;
+  const reasons: string[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => reasons.push(`${e.detail.open}:${e.detail.reason}`));
+  const ev = (t: Element, type: string) => t.dispatchEvent(new PointerEvent(type, { pointerType: 'mouse' }));
+  ev(el.trigger, 'pointerenter'); await sleep(30);
+  assert.equal(el.open, true);
+  ev(el.trigger, 'pointerleave'); await sleep(10);
+  ev(el.positioner, 'pointerenter'); await sleep(60);
+  assert.equal(el.open, true, 'the pointer reached the card before the close delay');
+  ev(el.positioner, 'pointerleave'); await sleep(60);
+  assert.equal(el.open, false);
+  el.trigger.click(); await tick();
+  assert.equal(el.open, false, 'a press follows the link, it does not toggle');
+  el.trigger.focus(); await tick();
+  assert.equal(el.open, true, 'keyboard focus opens it');
+  key(el.positioner, 'Escape'); await tick();
+  assert.equal(el.open, false);
+  assert.deepEqual(reasons, ['true:trigger-hover', 'false:trigger-hover', 'true:trigger-focus', 'false:escape-key']);
+  el.parentElement!.remove();
+});
+
+test('PreviewCard (React): the same data-* as ui-preview-card; the trigger is a link; preset vs parts', async () => {
+  const P: Part[] = [['host', ':scope'], ['trigger', '[data-part=trigger]'], ['positioner', '[data-part=positioner]'], ['popup', '[data-part=popup]'], ['arrow', '[data-part=arrow]']];
+  const tree = h(PreviewCard.Root, null, h(PreviewCard.Trigger, { href: '/ada' }, 'Ada'), h(PreviewCard.Positioner, null, h(PreviewCard.Popup, null, h('p', null, 'Card')), h(PreviewCard.Arrow)));
+  await same('ui-preview-card', '<ui-preview-card><a data-part="trigger" href="/ada">Ada</a><div data-part="popup"><p>Card</p><div data-part="arrow"></div></div></ui-preview-card>', tree, P);
+  const a = html(h(PreviewCard, { trigger: 'Ada', href: '/ada' }, h('p', null, 'Card')));
+  assert.match(a, /^<div data-ui="preview-card" data-closed="" class="ui-preview-card__root" style="--ui-anchor:--ID\w*">/);
+  assert.match(a, /<a data-part="trigger" class="ui-preview-card__trigger" href="\/ada">Ada<\/a>/);
+  assert.match(a, /<div data-part="popup" id="ID\w*popup" data-closed="" class="ui-preview-card__popup"><p>Card<\/p><\/div>/);
+  const b = html(h(PreviewCard, { trigger: h('a', { href: '/ada' }, 'Ada') }, h('p', null, 'Card')));
+  const noHref = (m: string) => m.replace(' href="/ada"', '');
+  assert.ok(b.includes(' href="/ada"'));
+  assert.equal(noHref(a), noHref(b), 'a trigger element renders as the Trigger (attribute order aside)');
 });

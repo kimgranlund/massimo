@@ -207,3 +207,7 @@ popup.tooltip.paddingBlock,popup,tooltip popup,block padding,0.5u - B + (6u - li
 popup.tooltip.paddingInline,popup,tooltip popup,inline padding,2u - B,4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,text 2u from a bare edge
 popup.tooltip.radius,popup,tooltip popup,radius,"min(3u * s, 3.5u)",6,6.75,7.5,8.25,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,"the control radius, capped at half the 7u row"
 popup.tooltip.maxWidth,popup,tooltip positioner,max width,"min(available width, 60u)",120,135,150,165,180,210,240,270,300,330,360,390,420,450,480,510,540,570,600,630,660,690,720,implemented,no minimum of the trigger width
+popup.previewCard.padding,popup,preview card popup,padding,4u - B,8,9,10,11,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,the card-md level (theme pad-card-md)
+popup.previewCard.radius,popup,preview card popup,radius,"4u * min(1, s)",8,9,10,11,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,container family: at most the padding
+popup.previewCard.gap,popup,preview card popup,gap,2u,4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,the collection gap; the gap attribute wins
+popup.previewCard.maxWidth,popup,preview card positioner,max width,"min(available width, 80u)",160,180,200,220,240,280,320,360,400,440,480,520,560,600,640,680,720,760,800,840,880,920,960,implemented,min width = the link width

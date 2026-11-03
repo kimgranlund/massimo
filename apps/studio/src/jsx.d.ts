@@ -47,6 +47,7 @@ declare module 'react' {
       'ui-accordion': El<{ ref?: any; value?: string; 'default-value'?: string; multiple?: boolean; disabled?: boolean; orientation?: 'vertical' | 'horizontal' }>;
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
       'ui-tooltip': El<{ ref?: any; content?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; delay?: number; 'close-delay'?: number }>;
+      'ui-preview-card': El<{ ref?: any; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; delay?: number; 'close-delay'?: number; gap?: string }>;
       'ui-popover': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; modal?: boolean; 'open-on-hover'?: boolean; delay?: number; 'close-delay'?: number; gap?: string }>;
     }
   }

@@ -362,7 +362,8 @@
       "summary": "Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger (tooltips excepted), no wider than the space beside it or the kind's cap (popover and preview card 80u, tooltip 60u), no taller than the space beside it; an optional arrow 2u wide spans the 1u gap, centered on the trigger. Surfaces from the container ladder: popover a card-sm (padding 3u − B, radius 3u·min(1, s), the group gap 1u), preview card a card-md (4u − B, 4u·min(1, s), the collection gap 2u), tooltip a 7u text row (6u text slot in a 0.5u edge, 2u at the bare ends, radius min(3u·s, 3.5u)) on the inverse fill.",
       "members": [
         "component:popover",
-        "component:tooltip"
+        "component:tooltip",
+        "component:preview-card"
       ],
       "searchTerms": [
         "popup geometry",

@@ -23,6 +23,7 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/popover/element';
 import '@massimo/ui-kit/components/tooltip/element';
+import '@massimo/ui-kit/components/preview-card/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -40,7 +41,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['popups', 'Popups', 'ui-popover · ui-tooltip'],
+  ['popups', 'Popups', 'ui-popover · ui-tooltip · ui-preview-card'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -218,7 +219,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
-    popups: 'Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger. A popover is a small card (padding 3u, radius ≤ 3u, a 1u gap) that takes focus when pressed open; Escape, an outside press or a Close part dismiss it. A tooltip is a 7u text row on the inverse fill, above its trigger, after 600 ms on hover or at once on keyboard focus (and at once while the group is warm). An arrow is a 2u triangle spanning the 1u gap.',
+    popups: 'Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger. A popover is a small card (padding 3u, radius ≤ 3u, a 1u gap) that takes focus when pressed open; Escape, an outside press or a Close part dismiss it. A tooltip is a 7u text row on the inverse fill, above its trigger, after 600 ms on hover or at once on keyboard focus (and at once while the group is warm). A preview card is a medium card (padding 4u, radius ≤ 4u, a 2u gap) below a link, after 600 ms on hover; it stays while the pointer moves onto it. An arrow is a 2u triangle spanning the 1u gap.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -254,6 +255,21 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             <ui-tooltip content="Italic (⌘I)"><ui-button aria-label="Italic"><i slot="leading" name="text-italic" /></ui-button></ui-tooltip>
             <ui-tooltip side="bottom"><ui-button data-part="trigger">Publish</ui-button><div data-part="popup">Visible to everyone with the link<div data-part="arrow" /></div></ui-tooltip>
             <ui-tooltip content="A longer explanation wraps at 60u so the tooltip stays a readable column of short lines." side="right"><ui-button>Long text</ui-button></ui-tooltip>
+          </div>
+        </Row>
+        <Row label="Preview card">
+          <div className={popupText}>
+            Geometry follows the{' '}
+            <ui-preview-card>
+              <a href="#/geometry">Differential Forms model</a>
+              <strong>Differential Forms</strong>
+              <span>Every length is a multiple of the unit u: controls 8u, slots 6u, type 10px + u.</span>
+            </ui-preview-card>
+            {' '}by{' '}
+            <ui-preview-card side="top">
+              <a data-part="trigger" href="#/components">the kit</a>
+              <div data-part="popup"><ui-avatar name="Massimo Kit" /><span>Light-DOM web components with React renderers.</span><div data-part="arrow" /></div>
+            </ui-preview-card>.
           </div>
         </Row>
         <SizeLadder family="popup" params={params}>

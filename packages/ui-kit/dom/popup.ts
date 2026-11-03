@@ -81,7 +81,7 @@ export function arrowOffset(popup: DOMRectReadOnly | { left: number; top: number
   const center = (block ? anchor.left + anchor.width / 2 : anchor.top + anchor.height / 2) - start;
   const lo = Math.min(inset, size / 2), hi = Math.max(size - inset, size / 2);
   const offset = Math.max(lo, Math.min(center, hi));
-  return { offset, uncentered: Math.abs(offset - center) > 0.5 };
+  return { offset, uncentered: Math.abs(offset - center) > 0.01 };
 }
 
 /**

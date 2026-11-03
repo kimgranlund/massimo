@@ -686,6 +686,25 @@
         "field-grid"
       ],
       "behavior": "Opens after delay (600 ms) while the pointer rests on the trigger ('trigger-hover'), at once on keyboard focus ('trigger-focus') and at once without motion while the group is warm (another tooltip closed under 400 ms ago, data-instant). Closes when the pointer leaves trigger and popup, on blur ('focus-out'), a press on the trigger ('trigger-press'), an outside press or Escape; each fires a cancelable openchange ({ open, reason, event }). The trigger's aria-describedby names the popup; focus never moves. Placed 1u from the trigger, above it by default, flipping when there is no room."
+    },
+    "preview-card": {
+      "geometryFamily": "popup",
+      "element": "Host (display: contents) holds the trigger link (its first child element, or a [data-part=trigger]) and a positioner in the top layer (popover=manual) holding the card popup and an optional arrow; the other children become the card.",
+      "parts": [
+        "preview-card-trigger",
+        "preview-card-positioner",
+        "preview-card-popup",
+        "preview-card-arrow?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "inline"
+      ],
+      "behavior": "Opens after delay (600 ms) while the pointer rests on the link ('trigger-hover') and at once on keyboard focus ('trigger-focus'); stays while the pointer moves onto the card; closes close-delay (300 ms) after the pointer leaves link and card, when focus leaves both ('focus-out'), on an outside press or Escape; each fires a cancelable openchange ({ open, reason, event }). A press follows the link. Tab moves from the link into the card. Placed 1u below the link, flipping when there is no room."
     }
   }
 }

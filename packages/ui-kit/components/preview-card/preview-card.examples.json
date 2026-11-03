@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "preview-card",
+  "title": "Preview card",
+  "summary": "A preview of a link's destination on hover and keyboard focus.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "A profile link",
+      "subject": "component:preview-card",
+      "markup": "<div>Written by <ui-preview-card><a href=\"/people/ada\">Ada Lovelace</a><ui-avatar name=\"Ada Lovelace\"></ui-avatar><strong>Ada Lovelace</strong><p>Mathematician and writer; the first published algorithm.</p></ui-preview-card>.</div>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts, with an arrow",
+      "subject": "component:preview-card",
+      "markup": "<ui-preview-card side=\"top\"><a data-part=\"trigger\" href=\"/docs/geometry\">Geometry</a><div data-part=\"popup\"><strong>Geometry</strong><p>Every length is a multiple of u.</p><div data-part=\"arrow\"></div></div></ui-preview-card>"
+    }
+  ]
+}

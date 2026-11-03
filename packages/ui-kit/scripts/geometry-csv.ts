@@ -192,6 +192,10 @@ export const rows: Row[] = [
   { id: 'popup.tooltip.paddingInline', family: 'popup', element: 'tooltip popup', quantity: 'inline padding', formula: '2u - B', value: (u) => resolvePopup('tooltip', { unit: u }).paddingInline, status: 'implemented', notes: 'text 2u from a bare edge' },
   { id: 'popup.tooltip.radius', family: 'popup', element: 'tooltip popup', quantity: 'radius', formula: 'min(3u * s, 3.5u)', value: (u) => resolvePopup('tooltip', { unit: u }).radius, status: 'implemented', notes: 'the control radius, capped at half the 7u row' },
   { id: 'popup.tooltip.maxWidth', family: 'popup', element: 'tooltip positioner', quantity: 'max width', formula: 'min(available width, 60u)', value: (u) => resolvePopup('tooltip', { unit: u }).maxWidth, status: 'implemented', notes: 'no minimum of the trigger width' },
+  { id: 'popup.previewCard.padding', family: 'popup', element: 'preview card popup', quantity: 'padding', formula: '4u - B', value: (u) => resolvePopup('preview-card', { unit: u }).paddingBlock, status: 'implemented', notes: 'the card-md level (theme pad-card-md)' },
+  { id: 'popup.previewCard.radius', family: 'popup', element: 'preview card popup', quantity: 'radius', formula: '4u * min(1, s)', value: (u) => resolvePopup('preview-card', { unit: u }).radius, status: 'implemented', notes: 'container family: at most the padding' },
+  { id: 'popup.previewCard.gap', family: 'popup', element: 'preview card popup', quantity: 'gap', formula: '2u', value: (u) => resolvePopup('preview-card', { unit: u }).gap, status: 'implemented', notes: 'the collection gap; the gap attribute wins' },
+  { id: 'popup.previewCard.maxWidth', family: 'popup', element: 'preview card positioner', quantity: 'max width', formula: 'min(available width, 80u)', value: (u) => resolvePopup('preview-card', { unit: u }).maxWidth, status: 'implemented', notes: 'min width = the link width' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));
