@@ -10,11 +10,11 @@ export const PARAMS = {
   'radius-scale':   { label: 'Corner radius',  min: 0, max: 3, step: 0.05, default: 1 },
   // corner-shape: superellipse(k). 1 = round, 2 = squircle, 0 = bevel, negative = scoop.
   'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1 },
-  // Container curvature: a factor t on each family's concentric radius R0 (wrapper: control radius
-  // + padding; card: its padding): R = t × R0, 1 concentric, 0 square. [radius] sets it per element.
+  // Container curvature: a factor t on each family's concentric radius R0 (the control radius
+  // + padding): R = t × R0, 1 concentric, 0 square. [radius] sets it per element.
   'radius-group':      { label: 'Group radius (× concentric)',      min: 0, max: 1, step: 0.05, default: 1 },
   'radius-collection': { label: 'Collection radius (× concentric)', min: 0, max: 1, step: 0.05, default: 1 },
-  'radius-card':       { label: 'Card radius (× padding)',          min: 0, max: 1, step: 0.05, default: 1 },
+  'radius-card':       { label: 'Card radius (× concentric)',          min: 0, max: 1, step: 0.05, default: 1 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4.5 },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
   // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).

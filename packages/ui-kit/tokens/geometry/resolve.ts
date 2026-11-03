@@ -115,8 +115,9 @@ export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slo
 //   radius, min(3u·s, 4u), and its options split the difference (R − D), concentric inside it.
 // - wrapper (group, collection): hugs its controls, so its radius is concentric with them: the
 //   control radius + its padding (square at s = 0), capped at half its height.
-// - container (card, padding xs | sm | md | lg | xl): a self-contained surface; its radius equals its
-//   padding, never rounder than it is deep (the corner scale can lower it, not raise it).
+// - container (card, padding xs | sm | md | lg | xl): concentric with the controls it holds, like a
+//   wrapper: the control radius + its padding (square at s = 0). Floating and modal surfaces on a
+//   card level (toast, popover, preview card, dialog) keep radius = padding × min(1, s) (surface).
 // - area (panel, region, page): meets the viewport or other areas, so it is square.
 // Padding and gap are theme parameters per level (pad-<level>, gap-<level>, in u); these are their
 // defaults. Gap = padding unless the gap attribute overrides it.
@@ -125,11 +126,11 @@ export const CONTAINERS = {
   composite:  { family: 'composite', padding: 0.5, maxRadius: 3 },
   group:      { family: 'wrapper',   padding: 1,   maxRadius: 4 },
   collection: { family: 'wrapper',   padding: 2,   maxRadius: 5 },
-  'card-xs':  { family: 'container', padding: 2,   maxRadius: 2 },
-  'card-sm':  { family: 'container', padding: 3,   maxRadius: 3 },
-  'card-md':  { family: 'container', padding: 4,   maxRadius: 4 },
-  'card-lg':  { family: 'container', padding: 5,   maxRadius: 5 },
-  'card-xl':  { family: 'container', padding: 6,   maxRadius: 6 },
+  'card-xs':  { family: 'container', padding: 2,   maxRadius: 5 },
+  'card-sm':  { family: 'container', padding: 3,   maxRadius: 6 },
+  'card-md':  { family: 'container', padding: 4,   maxRadius: 7 },
+  'card-lg':  { family: 'container', padding: 5,   maxRadius: 8 },
+  'card-xl':  { family: 'container', padding: 6,   maxRadius: 9 },
   panel:      { family: 'area',      padding: 6,   maxRadius: 0 },
   region:     { family: 'area',      padding: 8,   maxRadius: 0 },
   // Same spacing as region, plus a centered max width (styles/defaults.ts, page() pattern).
@@ -160,20 +161,22 @@ const roundOn = (s: number) => Math.min(1, 100 * s);
  * defaults (pad-<level>, gap-<level>); `gap` is the per-element attribute and wins over both.
  * The radius is a magnitude t on the family's concentric radius R0: `radius` is the per-element
  * attribute, `radiusFactor` the theme's radius-<family>; R = t × R0 (wrappers and cards only).
+ * `surface` is a floating or modal surface on a card level (toast, popover, preview card, dialog):
+ * radius = padding × min(1, s), not concentric, no t.
  * Pass `height` to apply the half-height radius cap.
  */
-export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number; radius?: number; radiusFactor?: number } = {}) {
+export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number; radius?: number; radiusFactor?: number; surface?: boolean } = {}) {
   const x = inputs(input);
   const u = x.unit;
   const pad = input.padUnits ?? CONTAINERS[level].padding;
   const family = CONTAINERS[level].family;
   const r = controlRadius(u, x.radiusScale);
-  const t = radiusFamily(level) ? input.radius ?? input.radiusFactor ?? 1 : 1;
+  const t = radiusFamily(level) && !input.surface ? input.radius ?? input.radiusFactor ?? 1 : 1;
   if (!(t >= 0 && t <= 1)) throw new Error('container radius factor must be 0..1');
   const r0 = family === 'area' ? 0
     : family === 'composite' ? r                                 // a control: its options take R − D
-    : family === 'wrapper' ? r + pad * u * roundOn(x.radiusScale) // concentric with the controls it hugs
-    : pad * u * Math.min(1, x.radiusScale);                      // container: at most the padding
+    : input.surface ? pad * u * Math.min(1, x.radiusScale)        // surface: at most the padding
+    : r + pad * u * roundOn(x.radiusScale);                       // wrapper, card: concentric with its controls
   const radius = t * r0;
   return {
     unit: u, border: x.border,
@@ -548,7 +551,7 @@ export type ToastPlacement = 'bottom-end' | 'bottom-center' | 'top-end' | 'top-c
 export function resolveToast(input: GeometryInput & { padUnits?: number } = {}) {
   const c = resolveControl(input);
   const u = c.unit;
-  const box = resolveContainer('card-sm', input);
+  const box = resolveContainer('card-sm', { ...input, surface: true });
   return {
     unit: u, border: c.border, fontSize: c.fontSize,
     padding: box.padding, edge: box.edge, radius: box.radius,
@@ -693,7 +696,7 @@ export const DIALOG_WIDTH = 96;
 
 /** ui-dialog, ui-alert-dialog popup: padding, radius, gap, width and the viewport margin. */
 export function resolveDialog(input: GeometryInput & { padUnits?: number; gapUnits?: number; viewport?: { width: number; height: number } } = {}) {
-  const box = resolveContainer('card-xl', input);
+  const box = resolveContainer('card-xl', { ...input, surface: true });
   const stack = resolveContainer('collection', { ...input, padUnits: undefined });
   const u = box.unit, margin = DIALOG_MARGIN * u;
   const vp = input.viewport;
@@ -781,7 +784,7 @@ export function resolvePopup(kind: PopupKind = 'popover', input: GeometryInput =
       radius: Math.min(3 * u * x.radiusScale, height / 2), gap: 0,
     };
   }
-  const box = resolveContainer(kind === 'popover' ? 'card-sm' : 'card-md', input);
+  const box = resolveContainer(kind === 'popover' ? 'card-sm' : 'card-md', { ...input, surface: true });
   const gap = input.gap !== undefined ? input.gap * u : (kind === 'popover' ? CONTAINERS.group.padding : CONTAINERS.collection.padding) * u;
   return { ...base, height: null, fontSize: c.fontSize, lineHeight: null, minWidthAnchor: true, paddingBlock: box.padding, paddingInline: box.padding, radius: box.radius, gap };
 }

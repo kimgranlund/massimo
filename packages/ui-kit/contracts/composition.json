@@ -32,7 +32,7 @@
     "card": {
       "id": "context:card",
       "host": "component:card",
-      "summary": "A self-contained surface (container family): padding xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; radius equals the padding. A card may hold a smaller card.",
+      "summary": "A self-contained surface (container family): padding xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; radius concentric with its controls (the control radius + padding). A card may hold a smaller card.",
       "searchTerms": [
         "card",
         "inside card"

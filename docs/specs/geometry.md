@@ -157,10 +157,10 @@ Containers come in four families, each with one radius rule; the rule is concent
 
 - **Composite** (listbox, segmented, toggle group, tabs list, menubar, the select, menu and navigation popups): a control. It takes the control radius, min(3u × s, 4u), the same as a button beside it, and its options split the difference: R − D, concentric inside it.
 - **Wrapper** (group, collection): hugs its controls, so its radius is concentric with them: the control radius + p, min(3u × s, 4u) + p·u, at every corner scale; at s = 0 everything is square (the p term is multiplied by min(1, 100·s)).
-- **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface whose radius equals its padding, p × min(1, corner scale): never rounder than it is deep; the corner scale can lower it, not raise it. Children keep their own radii, so they are not concentric with it. A card may hold a smaller card (it takes the base fill).
+- **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, concentric with the controls it holds: the control radius + its padding, min(3u·s, 4u) + p (square at s = 0), like a wrapper, so a button at its edge sits on the same curve. Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) keep radius = padding × min(1, s): never rounder than they are deep. A card may hold a smaller card (it takes the base fill).
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
-**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of the family's concentric radius R0 (the rule above): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-group radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
+**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their concentric radius R0 (the control radius + p): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-group radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
 
 Nesting: areas hold containers, containers hold wrappers (page › region › panel › card › collection › group; a level may be skipped). Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
@@ -173,11 +173,11 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 | composite (control) | ui-listbox, ui-segmented, ui-toggle-group, select popup | 0.5u | 0.5u | 3u | 2 / 2 / 12 |
 | group (wrapper) | ui-group | 1u | 1u | 4u | 4 / 4 / 16 |
 | collection (wrapper) | ui-collection | 2u | 2u | 5u | 8 / 8 / 20 |
-| card-xs (container) | ui-card padding="xs" | 2u | 2u | 2u | 8 / 8 / 8 |
-| card-sm (container) | ui-card padding="sm" | 3u | 3u | 3u | 12 / 12 / 12 |
-| card-md (container) | ui-card (padding="md") | 4u | 4u | 4u | 16 / 16 / 16 |
-| card-lg (container) | ui-card padding="lg" | 5u | 5u | 5u | 20 / 20 / 20 |
-| card-xl (container) | ui-card padding="xl" | 6u | 6u | 6u | 24 / 24 / 24 |
+| card-xs (container) | ui-card padding="xs" | 2u | 2u | 5u | 8 / 8 / 20 |
+| card-sm (container) | ui-card padding="sm" | 3u | 3u | 6u | 12 / 12 / 24 |
+| card-md (container) | ui-card (padding="md") | 4u | 4u | 7u | 16 / 16 / 28 |
+| card-lg (container) | ui-card padding="lg" | 5u | 5u | 8u | 20 / 20 / 32 |
+| card-xl (container) | ui-card padding="xl" | 6u | 6u | 9u | 24 / 24 / 36 |
 | panel (area) | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
 | region (area) | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
 | page (area) | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |

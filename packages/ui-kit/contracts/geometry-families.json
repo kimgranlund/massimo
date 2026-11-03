@@ -267,7 +267,7 @@
         "resolveContainer",
         "resolveComposite"
       ],
-      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius = padding (corner scale lowers, never raises). Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding.",
+      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius concentric like a wrapper, min(3u·s, 4u) + padding; toast, popover, preview card and dialog surfaces keep radius = padding × min(1, s). Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding.",
       "members": [
         "component:group",
         "component:collection",

@@ -470,7 +470,7 @@
     },
     "card": {
       "geometryFamily": "container",
-      "element": "CSS-only container tag; padding=\"xs | sm | md | lg | xl\" (2u…6u, md default) sets its level; radius equals its padding.",
+      "element": "CSS-only container tag; padding=\"xs | sm | md | lg | xl\" (2u…6u, md default) sets its level; radius concentric with its controls (the control radius + padding).",
       "parts": [],
       "allowedParents": [
         "page",

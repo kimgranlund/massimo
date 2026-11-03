@@ -43,7 +43,7 @@ export function ContainersPage({ params }: PageProps) {
   return (
     <Page title="Containers" lead="Wrappers, containers and areas: live padding, gap and radius per level, with examples. The Geometry tab sets padding and gap per level.">
       <Divider />
-      <Section id="containers" title="Container tokens" note="Four families. Composites (listbox, segmented) are controls: the control radius, options R − D. Wrappers (group, collection) hug their controls: control radius + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Wrappers and cards scale that radius by a magnitude t (radius-group, radius-collection, radius-card in the Geometry tab; the radius attribute per element). Live padding, gap and radius per level.">
+      <Section id="containers" title="Container tokens" note="Four families. Composites (listbox, segmented) are controls: the control radius, options R − D. Wrappers (group, collection) and containers (card, padding xs…xl) are concentric with their controls: control radius + padding. Areas (panel, region, page) are square. Wrappers and cards scale that radius by a magnitude t (radius-group, radius-collection, radius-card in the Geometry tab; the radius attribute per element). Live padding, gap and radius per level.">
         <div className={tableScroller}>
           <table className={dataTable} aria-label="Container tokens">
             <thead>
@@ -75,7 +75,7 @@ export function ContainersPage({ params }: PageProps) {
         </div>
       </Section>
       <Divider />
-      <Section id="concentric" title="Concentric" note="A card holding a button and a group; the group holds a button and a composite (segmented) with its options. Fills are removed and each type is one stroke, so the nested curves show: the group and the composite share the control's radius rule; options split the composite's difference (R − D); the group is the control radius + its padding; the card is its padding × t. Move Corner radius, Unit or the radius magnitudes in the Geometry tab.">
+      <Section id="concentric" title="Concentric" note="A card holding a button and a group; the group holds a button and a composite (segmented) with its options. Fills are removed and each type is one stroke, so the nested curves show: the group and the composite share the control's radius rule; options split the composite's difference (R − D); the group and the card are the control radius + their padding. Move Corner radius, Unit or the radius magnitudes in the Geometry tab.">
         <ConcentricWire params={params} />
       </Section>
       <Divider />
@@ -104,7 +104,7 @@ export function ContainersPage({ params }: PageProps) {
         ))}
       </Section>
       <Divider />
-      <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). A container's radius equals its padding; wrappers stay concentric with their controls; both times the radius magnitude t.">
+      <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). Wrappers and cards stay concentric with their controls (control radius + padding), times the radius magnitude t.">
         <ui-page className={miniPage} aria-label="Page example">
           <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
           <ui-region aria-label="Region example" className={tinted}>
@@ -203,7 +203,7 @@ function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
   const group = resolveContainer('group', { ...g, padUnits: p['pad-group'], radiusFactor: p['radius-group'] });
   const cmp = resolveComposite({ ...g, padUnits: p['pad-composite'] });
   const rows: [keyof typeof STROKE, string, string][] = [
-    ['card', 'card (md)', `${fmt(card.radius)}px · padding × min(1, s) × t`],
+    ['card', 'card (md)', `${fmt(card.radius)}px · control radius + padding, × t`],
     ['group', 'group', `${fmt(group.radius)}px · control radius + padding, × t`],
     ['control', 'button', `${fmt(resolveControl(g).radius)}px · min(3u·s, 4u)`],
     ['composite', 'composite', `${fmt(cmp.radius)}px · the control radius`],

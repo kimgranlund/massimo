@@ -43,7 +43,7 @@
       "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
       "members": ["radius-group", "radius-collection", "radius-card"],
       "cssVar": "--ui-<member>",
-      "formula": "R = t × R0, t in 0..1: R0 is the family's concentric radius (group, collection: the control radius + p; card: p × min(1, s)); 1 keeps it concentric, 0 square, so a container can be sharper than fully rounded contents; the radius attribute sets t on one element",
+      "formula": "R = t × R0, t in 0..1: R0 is the family's concentric radius (group, collection, card: the control radius + p); 1 keeps it concentric, 0 square, so a container can be sharper than fully rounded contents; the radius attribute sets t on one element",
       "drives": ["foundation:geometry", "tokens:container-ladder", "geometry:container"],
       "documentation": "../../docs/specs/geometry.md#containers",
       "searchTerms": ["container radius", "radius magnitude", "sharper container", "concentric"]
@@ -98,7 +98,7 @@
       "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
       "members": ["pad-composite", "gap-composite", "pad-group", "gap-group", "pad-collection", "gap-collection", "pad-card-xs", "gap-card-xs", "pad-card-sm", "gap-card-sm", "pad-card-md", "gap-card-md", "pad-card-lg", "gap-card-lg", "pad-card-xl", "gap-card-xl", "pad-panel", "gap-panel", "pad-region", "gap-region", "pad-page", "gap-page"],
       "cssVar": "--ui-<member>",
-      "formula": "padding and gap per container level in u; [gap] overrides one element. Radius by family: composite = the control radius, its options R − D; wrapper (group, collection) = the control radius + p (concentric, square at s = 0); card = p × min(1, s); areas square",
+      "formula": "padding and gap per container level in u; [gap] overrides one element. Radius by family: composite = the control radius, its options R − D; wrapper (group, collection) = the control radius + p (concentric, square at s = 0); card = the control radius + p too (toast, popover, dialog surfaces: p × min(1, s)); areas square",
       "drives": ["foundation:geometry", "tokens:container-ladder", "geometry:container", "geometry:popup", "geometry:dialog", "geometry:drawer", "geometry:menu", "geometry:toast"],
       "documentation": "../../docs/specs/geometry.md#containers",
       "searchTerms": ["padding", "gap", "spacing", "container", "card padding", "inset"]

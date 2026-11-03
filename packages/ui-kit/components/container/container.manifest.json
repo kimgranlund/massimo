@@ -202,7 +202,7 @@
             "lg",
             "xl"
           ],
-          "description": "Padding level of the card: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u, from the theme parameters pad-card-<level>. The radius equals the padding (a container is never rounder than it is deep). A card inside a card takes the base fill.",
+          "description": "Padding level of the card: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u, from the theme parameters pad-card-<level>. The radius is concentric with its controls: the control radius + the padding. A card inside a card takes the base fill.",
           "inspector": {
             "control": "select"
           }
@@ -867,7 +867,7 @@
             "gap?: number",
             "size?: number",
             "radius?: number // Group, collection, card: the radius as a magnitude of the concentric radius, 0 … 1 in 0.05 steps (1 concentric, 0 square).",
-            "padding?: CardPadding // Padding level: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; the radius equals the padding."
+            "padding?: CardPadding // Padding level: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; the radius is the control radius + the padding (concentric)."
           ]
         },
         "component:panel": {

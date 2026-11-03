@@ -1644,10 +1644,10 @@
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/container-curvature",
       "availability": "implemented",
-      "title": "Card radius (× padding)",
+      "title": "Card radius (× concentric)",
       "searchTerms": [
         "radius-card",
-        "card radius (× padding)"
+        "card radius (× concentric)"
       ]
     },
     "parameter:radius-collection": {

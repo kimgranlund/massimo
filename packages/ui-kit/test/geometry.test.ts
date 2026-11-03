@@ -92,30 +92,31 @@ test('composite: 0.5u padding level; a control: the control radius, options R �
   assert.equal(resolveComposite({ unit: 4, gap: 0 }).gap, 0, 'gap override the gap');
 });
 
-test('containers: wrapper concentric with its controls, container radius = padding, area square', () => {
+test('containers: wrappers and cards concentric with their controls, container radius = padding, area square', () => {
   const at4 = Object.fromEntries((['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const).map((l) => {
     const c = resolveContainer(l, { unit: 4, border: 0 });
     return [l, [c.padding, c.gap, c.radius]];
   }));
   assert.deepEqual(at4, {
     group: [4, 4, 16], collection: [8, 8, 20],
-    'card-xs': [8, 8, 8], 'card-sm': [12, 12, 12], 'card-md': [16, 16, 16], 'card-lg': [20, 20, 20], 'card-xl': [24, 24, 24],
+    'card-xs': [8, 8, 20], 'card-sm': [12, 12, 24], 'card-md': [16, 16, 28], 'card-lg': [20, 20, 32], 'card-xl': [24, 24, 36],
     panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0],
   });
   for (const [l, c] of Object.entries(CONTAINERS)) {
-    const want = c.family === 'area' ? 0 : c.family === 'composite' ? 3 : c.family === 'wrapper' ? 3 + c.padding : c.padding;
+    const want = c.family === 'area' ? 0 : c.family === 'composite' ? 3 : 3 + c.padding;
     assert.equal(c.maxRadius, want, `${l} (${c.family}) max radius`);
   }
   assert.deepEqual(CARD_PADDINGS.map((p) => CONTAINERS[`card-${p}`].padding), [2, 3, 4, 5, 6], 'card xs…xl = 2…6u');
-  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3 }).radius, 16, 'corner scale cannot raise a container past its padding');
-  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 8, 'corner scale lowers it');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 6 + 16, 'card: concentric, the control radius + padding');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3, surface: true }).radius, 16, 'a surface (toast, popover, dialog) stays at most its padding');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5, surface: true }).radius, 8, 'the corner scale lowers a surface');
   // Concentric: the control radius (min(3u·s, 4u)) + the padding, at every scale; square at s = 0.
   assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0.5 }).radius, 6 + 4, 'group at s = 0.5');
   assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 2 }).radius, 16 + 8, 'collection at s = 2: the 4u control cap + 2u');
   assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0 }).radius, 0, 'square at s = 0');
   // Radius magnitude t: R = t × the concentric radius; the attribute wins over the theme factor.
   assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 3, radius: 0.25 }).radius, 0.25 * (16 + 8), 'sharper than pill contents');
-  assert.equal(resolveContainer('card-md', { unit: 4, radiusFactor: 0.5 }).radius, 8, 'card: t × padding');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusFactor: 0.5 }).radius, 14, 'card: t × (12 + 16)');
   assert.equal(resolveContainer('group', { unit: 4, radius: 1, radiusFactor: 0 }).radius, 16, 'attribute over theme');
   assert.equal(resolveContainer('panel', { unit: 4, radius: 0.5 }).radius, 0, 'areas stay square');
   assert.throws(() => resolveContainer('group', { radius: 2 }), /0\.\.1/);

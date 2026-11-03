@@ -10,7 +10,7 @@ Three families, each with one radius rule:
 - `radius` (group, collection, card) scales that radius by a magnitude t, 0…1 in 0.05 steps: 1 concentric, 0 square; the theme's `radius-group`, `radius-collection` and `radius-card` set the default. `<ui-collection radius="0.25">` holds pill buttons in a nearly square box.
   - `ui-group`: closely related controls (toolbars, button and chip sets).
   - `ui-collection`: a list or set of like items (tables, data lists).
-- Containers are self-contained surfaces; radius = padding.
+- Cards are self-contained surfaces, concentric with their controls like wrappers: the control radius + padding.
   - `ui-card`: `padding="xs | sm | md | lg | xl"` (2u…6u, md default), from thumbnails (xs) and small items in a grid (sm) to hero or dialog surfaces (xl). A card may hold a smaller card.
 - Areas meet the viewport or other areas; square.
   - `ui-panel`: a side or tool panel.

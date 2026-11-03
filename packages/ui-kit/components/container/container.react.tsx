@@ -14,7 +14,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   radius?: number;
 }
 export interface CardProps extends ContainerProps {
-  /** Padding level: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; the radius equals the padding. */
+  /** Padding level: xs 2u, sm 3u, md 4u (default), lg 5u, xl 6u; the radius is the control radius + the padding (concentric). */
   padding?: CardPadding;
 }
 
