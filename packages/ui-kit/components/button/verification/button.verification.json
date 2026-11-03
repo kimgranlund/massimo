@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/button/button.element.ts",
-      "sha256": "c52f232b9f52eab5645b50e5c1d64630f0bbf0c0d1383b02d063f17655b160ff"
+      "sha256": "8e1de0bff1db7c66fd10911e7d753501eb117e57879deddb55566bb32c857d72"
     },
     {
       "path": "components/slots.ts",
@@ -50,7 +50,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
@@ -78,7 +78,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

@@ -180,6 +180,21 @@
         "group of fields"
       ]
     },
+    "component:form": {
+      "kind": "component",
+      "source": "components/form/form.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-form",
+      "searchTerms": [
+        "form",
+        "submit",
+        "server errors",
+        "validation",
+        "validation mode",
+        "form values",
+        "onFormSubmit"
+      ]
+    },
     "component:group": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/0",
@@ -355,6 +370,21 @@
         "region container",
         "container",
         "layout"
+      ]
+    },
+    "component:scroll-area": {
+      "kind": "component",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-scroll-area",
+      "searchTerms": [
+        "scroll area",
+        "scrollbar",
+        "custom scrollbar",
+        "scrollable",
+        "overflow",
+        "scroll container",
+        "thumb"
       ]
     },
     "component:segmented": {
@@ -547,7 +577,8 @@
       "availability": "implemented",
       "searchTerms": [
         "form",
-        "inside form"
+        "inside form",
+        "ui-form"
       ]
     },
     "context:group": {
@@ -871,6 +902,16 @@
         "field group spacing"
       ]
     },
+    "geometry:form": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/form",
+      "availability": "implemented",
+      "searchTerms": [
+        "form spacing",
+        "gap between fields",
+        "form layout"
+      ]
+    },
     "geometry:image": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/image",
@@ -880,6 +921,17 @@
         "aspect ratio",
         "image frame",
         "slideshow"
+      ]
+    },
+    "geometry:scroll-area": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/scroll-area",
+      "availability": "implemented",
+      "searchTerms": [
+        "scrollbar size",
+        "scrollbar thickness",
+        "thumb size",
+        "scroll area geometry"
       ]
     },
     "geometry:separator": {
@@ -1117,6 +1169,51 @@
       "tag": "span",
       "searchTerms": [
         "range thumb"
+      ]
+    },
+    "part:scroll-area-content": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area content"
+      ]
+    },
+    "part:scroll-area-corner": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area corner"
+      ]
+    },
+    "part:scroll-area-scrollbar": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area scrollbar"
+      ]
+    },
+    "part:scroll-area-thumb": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area thumb"
+      ]
+    },
+    "part:scroll-area-viewport": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area viewport"
       ]
     },
     "part:select-icon": {
@@ -3728,6 +3825,131 @@
       "to": "component:switch"
     },
     {
+      "from": "component:form",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesGeometry",
+      "to": "geometry:form"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:form",
+      "relation": "establishes",
+      "to": "context:form"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:field"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:input"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:select"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:fieldset"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:radio-group"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:checkbox-group"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:switch"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:button"
+    },
+    {
       "from": "component:image",
       "relation": "extends",
       "to": "foundation:element"
@@ -4651,6 +4873,116 @@
       "from": "component:progress",
       "relation": "allowedIn",
       "to": "context:group"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-area"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-viewport"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-content"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-scrollbar"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-thumb"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-corner"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:select",

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/field/field.element.ts",
-      "sha256": "819788f3f5b0e8fc55834c2beca09088b2dfa7ba96fc619450bbb36d6494d441"
+      "sha256": "049b9f6f95057929c152ba953bcabd28d37131fa041ecb5cd56eb1ca0263cc5d"
     },
     {
       "path": "components/field/field.recipe.ts",
@@ -18,11 +18,11 @@
     },
     {
       "path": "components/field/field.manifest.json",
-      "sha256": "7b51ce6a5e3c72c83fb2b291c73532086fd2350ae72005bb0eefc8ef89804142"
+      "sha256": "f0b4354a636db925d30a2dd6eec5365744a727f1dc188996d04a0dd7ac4a1056"
     },
     {
       "path": "components/field/field.react.tsx",
-      "sha256": "9f20a67f25055a2f423becaf6c0ad2c035f17e5f80d9922e51b9ace0c3334565"
+      "sha256": "df6ecdec75b4b8fb447c409e3a90b6b54ebb10cc2affa0236584ba04b9593263"
     },
     {
       "path": "components/compound.react.tsx",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/field.test.ts",
@@ -69,7 +69,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/field-react.test.ts",

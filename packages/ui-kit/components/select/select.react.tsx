@@ -18,7 +18,7 @@
 import { Children, createContext, isValidElement, useContext, useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent, type HTMLAttributes, type ReactNode, type SelectHTMLAttributes } from 'react';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { eventDetails, fieldAttrs, isOutside, toReactProps, type ChangeDetails, type ChangeReason } from '../../dom/index.ts';
-import { useFieldState } from '../state.react.ts';
+import { useFieldState, useFormError } from '../state.react.ts';
 import type { PartProps } from '../parts.react.tsx';
 import { findPart, isPartOf, renderPart, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { ItemContext, ItemIndicator, ItemParts, ItemText } from '../listbox/listbox.react.tsx';
@@ -108,7 +108,8 @@ export function SelectRoot({ hideLabel, error: rootError, gap, size, className, 
   const native = useRef<HTMLSelectElement>(null);
   useOpenState(native, onOpenChange, open, defaultOpen);
   const err = findPart<SelectTextPartProps>(children, [SelectError]);
-  const error = rootError ?? (err ? String(err.props.children ?? '') || undefined : undefined);
+  const formError = useFormError(select.name);
+  const error = rootError ?? (err ? String(err.props.children ?? '') || undefined : undefined) ?? (formError || undefined);
   const a = fieldAttrs({ id: id ?? auto, hasLabel: !!findPart(children, [SelectLabel]), hasDescription: !!findPart(children, [SelectDescription]), error, required, disabled, native: true });
   // Without a value the select shows its first option; filled follows that option's value.
   const [current, setCurrent] = useState(() => String(select.value ?? select.defaultValue ?? firstValue(children)));
@@ -251,7 +252,10 @@ function findFirst(children: ReactNode): string | undefined {
 const firstValue = (children: ReactNode) => findFirst(children) ?? '';
 
 /** Preset: Select.Root with a Label, the Trigger (Value and Icon, adornments), Popup › List of items, Description and Error. */
-export function Select({ label, description, error, leading, prefix, suffix, children, ...rest }: SelectProps) {
+export function Select({ label, description, error: own, leading, prefix, suffix, children, ...rest }: SelectProps) {
+  // Inside a Form, its error for this name (Base UI Form errors) shows when there is no author error.
+  const formError = useFormError(rest.name);
+  const error = own ?? (formError || undefined);
   return (
     <SelectRoot error={error} {...rest}>
       {label && <SelectLabel>{label}</SelectLabel>}

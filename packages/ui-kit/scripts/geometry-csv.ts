@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -116,6 +116,16 @@ export const rows: Row[] = [
   // Fieldset
   { id: 'fieldset.gap', family: 'fieldset', element: 'fieldset', quantity: 'gap between the legend and the fields', formula: 'g·u (gap attribute), default the collection gap (2u)', value: (u) => resolveFieldset({ unit: u }).gap, status: 'implemented', notes: 'theme gap-collection' },
   { id: 'fieldset.padding', family: 'fieldset', element: 'fieldset', quantity: 'padding, border, radius', formula: '0', value: (u) => resolveFieldset({ unit: u }).padding, status: 'implemented', notes: 'no box of its own; a card around it supplies the surface' },
+  // Form
+  { id: 'form.gap', family: 'form', element: 'form', quantity: 'gap between fields, fieldsets and actions', formula: 'g·u (gap attribute), default the collection gap (2u)', value: (u) => resolveForm({ unit: u }).gap, status: 'implemented', notes: 'theme gap-collection' },
+  { id: 'form.padding', family: 'form', element: 'form', quantity: 'padding, border, radius', formula: '0', value: (u) => resolveForm({ unit: u }).padding, status: 'implemented', notes: 'no box of its own; a card around it supplies the surface' },
+  // Scroll area
+  { id: 'scrollArea.thickness', family: 'scroll-area', element: 'scroll-area scrollbar', quantity: 'track thickness', formula: '2u', value: (u) => resolveScrollArea({ unit: u }).thickness, status: 'implemented', notes: 'overlays the viewport at the inline end (vertical) or block end (horizontal)' },
+  { id: 'scrollArea.inset', family: 'scroll-area', element: 'scroll-area scrollbar', quantity: 'track padding around the thumb', formula: '0.5u', value: (u) => resolveScrollArea({ unit: u }).inset, status: 'implemented', notes: '' },
+  { id: 'scrollArea.thumb', family: 'scroll-area', element: 'scroll-area thumb', quantity: 'thumb thickness', formula: '2u - 2 × 0.5u = u', value: (u) => resolveScrollArea({ unit: u }).thumb, status: 'implemented', notes: '' },
+  { id: 'scrollArea.thumbMin', family: 'scroll-area', element: 'scroll-area thumb', quantity: 'minimum thumb length', formula: '4u', value: (u) => resolveScrollArea({ unit: u }).thumbMin, status: 'implemented', notes: 'else track × visible / total' },
+  { id: 'scrollArea.thumbRadius', family: 'scroll-area', element: 'scroll-area thumb', quantity: 'thumb radius', formula: 'min(3u·s, u / 2)', value: (u) => resolveScrollArea({ unit: u }).thumbRadius, status: 'implemented', notes: 'track radius min(3u·s, u)' },
+  { id: 'scrollArea.corner', family: 'scroll-area', element: 'scroll-area corner', quantity: 'corner square', formula: '2u × 2u (both bars shown)', value: (u) => resolveScrollArea({ unit: u }).corner, status: 'implemented', notes: '0 unless both axes overflow' },
 
   // Typography (ratio 1.333, rhythm 1u)
   { id: 'in.typeRatio', family: 'input', element: 'text', quantity: 'type ratio r', formula: 'r (default 1.333)', value: () => 1.333, status: 'input', notes: 'theme type-ratio, 1–1.5' },

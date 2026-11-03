@@ -62,7 +62,11 @@
     "./components/tabs/react": "./components/tabs/tabs.react.tsx",
     "./components/toast/element": "./components/toast/toast.element.ts",
     "./components/toast/react": "./components/toast/toast.react.tsx",
-    "./components/toast/manager": "./components/toast/manager.ts"
+    "./components/toast/manager": "./components/toast/manager.ts",
+    "./components/form/element": "./components/form/form.element.ts",
+    "./components/form/react": "./components/form/form.react.tsx",
+    "./components/scroll-area/element": "./components/scroll-area/scroll-area.element.ts",
+    "./components/scroll-area/react": "./components/scroll-area/scroll-area.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

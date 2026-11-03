@@ -9,7 +9,7 @@
 // <Input label description error leading …> is Root + those parts.
 import { createContext, useContext, useId, type ChangeEvent, type FormEvent, type HTMLAttributes, type InputHTMLAttributes, type ReactNode } from 'react';
 import { eventDetails, fieldAttrs, toReactProps, type ChangeDetails } from '../../dom/index.ts';
-import { useFieldState } from '../state.react.ts';
+import { useFieldState, useFormError } from '../state.react.ts';
 import { findPart, renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import type { PartProps } from '../parts.react.tsx';
 import { input } from '../../styled-system/recipes/input.js';
@@ -47,7 +47,8 @@ const useInput = (part: string) => {
 export function InputRoot({ hideLabel, error: rootError, className, render, id, required, disabled, readOnly, onInvalid, onChange, onValueChange, children, ...rest }: InputRootProps) {
   const auto = useId();
   const err = findPart<InputTextPartProps>(children, [InputError]);
-  const error = rootError ?? (err ? String(err.props.children ?? '') || undefined : undefined);
+  const formError = useFormError(rest.name);
+  const error = rootError ?? (err ? String(err.props.children ?? '') || undefined : undefined) ?? (formError || undefined);
   const a = fieldAttrs({ id: id ?? auto, hasDescription: !!findPart(children, [InputDescription]), error, required, disabled, readonly: readOnly, native: true });
   const f = useFieldState<HTMLDivElement>({
     disabled, readOnly, required, error: !!error,
@@ -108,7 +109,10 @@ export function InputError({ className, render, ...rest }: InputTextPartProps) {
 }
 
 /** Preset: Input.Root with a Label, the Control (and its adornments), a Description and an Error. */
-export function Input({ label, description, error, leading, prefix, suffix, trailing, children: _parts, ...rest }: InputProps) {
+export function Input({ label, description, error: own, leading, prefix, suffix, trailing, children: _parts, ...rest }: InputProps) {
+  // Inside a Form, its error for this name (Base UI Form errors) shows when there is no author error.
+  const formError = useFormError(rest.name);
+  const error = own ?? (formError || undefined);
   return (
     <InputRoot error={error} {...rest}>
       {label && <InputLabel>{label}</InputLabel>}

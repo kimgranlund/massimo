@@ -101,16 +101,26 @@ export class UIField extends UIElement {
     description.hidden = !this.description;
 
     // The error part is created only once there is an error (fields without one keep their anatomy).
-    const error = this.error ? this.#part('error', 'append') : [...this.children].find((c) => c.getAttribute('data-part') === 'error') as HTMLElement | undefined;
+    // Besides the author error it shows the control's form error (ui-form errors by name) when the
+    // control has no error part of its own (choices, groups, range; ui-input and ui-select show theirs).
+    const message = this.error || this.#formError();
+    const error = message ? this.#part('error', 'append') : [...this.children].find((c) => c.getAttribute('data-part') === 'error') as HTMLElement | undefined;
     if (error) {
       error.id = `${this.#id}-error`;
-      error.textContent = this.error;
-      error.hidden = !this.error;
+      error.textContent = message;
+      error.hidden = !message;
     }
 
     this.#wire();
     applyRecipe(this, field({ layout: this.layout === 'inline' ? 'inline' : 'stacked' }), (slot) =>
       slot === 'contents' || slot === 'suffix' ? partOf(label, slot) : [...this.children].find((c) => c.getAttribute('data-part') === slot));
+  }
+
+  /** The control's form error (reactive), unless the control draws its own error part. */
+  #formError(): string {
+    const el = this.control as (Element & { formError?: string }) | null;
+    const ctor = el && customElements.get(el.localName) as { properties?: Record<string, unknown> } | undefined;
+    return el && !ctor?.properties?.error ? el.formError ?? '' : '';
   }
 
   focus(options?: FocusOptions) { (this.control as HTMLElement | null)?.focus(options); }
@@ -147,7 +157,7 @@ export class UIField extends UIElement {
   #wire() {
     const el = this.control;
     const name = this.label ? this.labelIds : [];
-    const desc = [...(this.description ? [`${this.#id}-desc`] : []), ...(this.error ? [`${this.#id}-error`] : [])];
+    const desc = [...(this.description ? [`${this.#id}-desc`] : []), ...(this.error || this.#formError() ? [`${this.#id}-error`] : [])];
     const prev = this.#wired;
     if (prev && (prev.el !== el)) { this.#unwire(prev); this.#wired = undefined; }
     if (!el) return;

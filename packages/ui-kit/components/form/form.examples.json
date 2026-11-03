@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "form",
+  "title": "Form",
+  "summary": "A form of kit fields: submit validates them all and fires formsubmit with the values; errors by name show on the named fields.",
+  "defaultExample": "signup",
+  "examples": [
+    {
+      "id": "signup",
+      "label": "Fields and a submit button",
+      "subject": "component:form",
+      "markup": "<ui-form><ui-input name=\"email\" label=\"Email\" type=\"email\" required></ui-input><ui-field label=\"Plan\"><ui-radio-group name=\"plan\" value=\"pro\" orientation=\"horizontal\"><ui-radio value=\"free\">Free</ui-radio><ui-radio value=\"pro\">Pro</ui-radio></ui-radio-group></ui-field><ui-button type=\"submit\" variant=\"primary\">Sign up</ui-button></ui-form>"
+    },
+    {
+      "id": "server-errors",
+      "label": "Server errors by name",
+      "subject": "component:form",
+      "markup": "<ui-form errors='{\"email\":\"Already registered\",\"plan\":\"Not available in your region\"}'><ui-input name=\"email\" label=\"Email\" value=\"ada@example.com\"></ui-input><ui-field label=\"Plan\"><ui-radio-group name=\"plan\" value=\"pro\" orientation=\"horizontal\"><ui-radio value=\"free\">Free</ui-radio><ui-radio value=\"pro\">Pro</ui-radio></ui-radio-group></ui-field><ui-button type=\"submit\">Save</ui-button></ui-form>"
+    },
+    {
+      "id": "on-blur",
+      "label": "Errors on blur",
+      "subject": "component:form",
+      "markup": "<ui-form validation-mode=\"onBlur\"><ui-input name=\"name\" label=\"Name\" required></ui-input><ui-input name=\"code\" label=\"Code\" minlength=\"4\"></ui-input><ui-button type=\"submit\">Check</ui-button><ui-button type=\"reset\">Reset</ui-button></ui-form>"
+    }
+  ]
+}

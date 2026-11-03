@@ -11,6 +11,16 @@ import { checkedDataAttrs, fieldDataAttrs, toReactProps } from '../dom/index.ts'
 /** A disabled Fieldset around a host (fieldset.react.tsx provides it): the host's data-disabled follows it, as the native <fieldset disabled> disables its native control. */
 export const FieldsetDisabledCtx = createContext(false);
 
+/** A React Form around a host (form.react.tsx provides it): when errors show (Base UI validationMode) and the form errors by name. */
+export interface FormContextValue {
+  validationMode: 'onSubmit' | 'onBlur' | 'onChange';
+  /** The form error for a control name ('' when none, or cleared by a change). */
+  errorFor: (name: string | undefined) => string;
+}
+export const FormCtx = createContext<FormContextValue | null>(null);
+/** The React Form's error for a control name (Base UI Form errors), '' outside a Form. */
+export const useFormError = (name: string | undefined) => useContext(FormCtx)?.errorFor(name) ?? '';
+
 type Control = HTMLInputElement | HTMLSelectElement;
 const controlOf = (host: Element | null) => host?.querySelector<Control>('input:not([type=hidden]), select') ?? null;
 const isChoice = (c: Control): c is HTMLInputElement => c.localName === 'input' && (c.type === 'checkbox' || c.type === 'radio');
@@ -45,6 +55,8 @@ interface Inner { focused: boolean; touched: boolean; shown: boolean; dirty: boo
  */
 export function useFieldState<T extends HTMLElement = HTMLElement>(o: FieldStateOptions) {
   const fieldsetDisabled = useContext(FieldsetDisabledCtx);
+  // Outside a Form errors show on blur (the kit default); a Form's onSubmit waits for a submit.
+  const mode = useContext(FormCtx)?.validationMode ?? 'onBlur';
   if (fieldsetDisabled && !o.disabled) o = { ...o, disabled: true };
   const ref = useRef<T>(null);
   const initial = useRef<string | undefined>(o.value);
@@ -97,9 +109,9 @@ export function useFieldState<T extends HTMLElement = HTMLElement>(o: FieldState
 
   const handlers = {
     onFocus: () => set((p) => (p.focused ? p : { ...p, focused: true })),
-    onBlur: (e: FocusEvent) => { if (!(e.relatedTarget instanceof Node && ref.current?.contains(e.relatedTarget))) read({ focused: false, touched: true, shown: true }); },
-    onInput: () => read(),
-    onChange: () => read(),
+    onBlur: (e: FocusEvent) => { if (!(e.relatedTarget instanceof Node && ref.current?.contains(e.relatedTarget))) read({ focused: false, touched: true, ...(mode === 'onSubmit' ? {} : { shown: true }) }); },
+    onInput: () => read(mode === 'onChange' ? { shown: true } : {}),
+    onChange: () => read(mode === 'onChange' ? { shown: true } : {}),
   };
   const controlProps = { onInvalid: () => read({ shown: true }) };
 

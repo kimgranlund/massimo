@@ -215,6 +215,42 @@
       "baseUi": true,
       "condition": null,
       "meaning": "A toast's content while another toast is in front of it (Base UI Toast.Content)."
+    },
+    "data-submitted": {
+      "baseUi": false,
+      "meaning": "A submit was attempted (ui-form, React Form), until the form is reset."
+    },
+    "data-has-overflow-x": {
+      "baseUi": true,
+      "meaning": "The scroll area's content overflows horizontally."
+    },
+    "data-has-overflow-y": {
+      "baseUi": true,
+      "meaning": "The scroll area's content overflows vertically."
+    },
+    "data-overflow-x-start": {
+      "baseUi": true,
+      "meaning": "Scrolled away from the inline start by more than the edge threshold."
+    },
+    "data-overflow-x-end": {
+      "baseUi": true,
+      "meaning": "Content remains past the inline end by more than the edge threshold."
+    },
+    "data-overflow-y-start": {
+      "baseUi": true,
+      "meaning": "Scrolled away from the top by more than the edge threshold."
+    },
+    "data-overflow-y-end": {
+      "baseUi": true,
+      "meaning": "Content remains below by more than the edge threshold."
+    },
+    "data-scrolling": {
+      "baseUi": true,
+      "meaning": "The scroll area is scrolling (until a moment after the last scroll event)."
+    },
+    "data-hovering": {
+      "baseUi": true,
+      "meaning": "The pointer is over the scroll area (on its scrollbars)."
     }
   },
   "components": {
@@ -567,6 +603,56 @@
       "close": [
         "data-type"
       ]
+    },
+    "ui-form": {
+      "host": [
+        "data-submitted"
+      ]
+    },
+    "ui-scroll-area": {
+      "host": [
+        "data-has-overflow-x",
+        "data-has-overflow-y",
+        "data-overflow-x-start",
+        "data-overflow-x-end",
+        "data-overflow-y-start",
+        "data-overflow-y-end",
+        "data-scrolling"
+      ],
+      "viewport": [
+        "data-has-overflow-x",
+        "data-has-overflow-y",
+        "data-overflow-x-start",
+        "data-overflow-x-end",
+        "data-overflow-y-start",
+        "data-overflow-y-end",
+        "data-scrolling"
+      ],
+      "content": [
+        "data-has-overflow-x",
+        "data-has-overflow-y",
+        "data-overflow-x-start",
+        "data-overflow-x-end",
+        "data-overflow-y-start",
+        "data-overflow-y-end",
+        "data-scrolling"
+      ],
+      "scrollbar": [
+        "data-has-overflow-x",
+        "data-has-overflow-y",
+        "data-overflow-x-start",
+        "data-overflow-x-end",
+        "data-overflow-y-start",
+        "data-overflow-y-end",
+        "data-scrolling",
+        "data-orientation",
+        "data-hovering"
+      ],
+      "thumb": [
+        "data-orientation",
+        "data-scrolling"
+      ],
+      "corner": []
     }
   },
   "native": {

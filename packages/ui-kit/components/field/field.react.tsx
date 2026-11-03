@@ -9,6 +9,7 @@
 // label unit readout description error> is Root + those parts.
 import { Children, cloneElement, createContext, isValidElement, useContext, useId, type HTMLAttributes, type ReactElement, type ReactNode } from 'react';
 import { findPart, renderPart, type PartBase, type PartState } from '../compound.react.tsx';
+import { useFormError } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { field, fieldGrid } from '../../styled-system/recipes/index.js';
 
@@ -28,6 +29,8 @@ export interface FieldProps extends Omit<HTMLAttributes<HTMLDivElement>, 'childr
   description?: string;
   /** Error message under the control (Base UI Field.Error), in the description's place and after it. */
   error?: string;
+  /** The control's name, for a Form's errors (Base UI Field.Root name): its error shows in Field.Error. For controls without an error part of their own (choices, groups); Input and Select show theirs. */
+  name?: string;
   /** stacked: label above the control; inline: label beside it. */
   layout?: 'stacked' | 'inline';
   /** Id of the control; generated when omitted. */
@@ -37,7 +40,7 @@ export interface FieldProps extends Omit<HTMLAttributes<HTMLDivElement>, 'childr
 }
 
 /** Field.Root's props: the preset's without the content its parts carry. */
-export type FieldRootProps = Omit<FieldProps, 'label' | 'unit' | 'readout' | 'description' | 'error'>;
+export type FieldRootProps = Omit<FieldProps, 'label' | 'unit' | 'readout' | 'description' | 'error' | 'name'>;
 
 interface FieldContext { c: Record<string, string>; state: PartState; id: string; ids: { label: string; unit: string; desc: string; error: string }; control: FieldControlProps }
 const Ctx = createContext<FieldContext | null>(null);
@@ -127,7 +130,9 @@ export function FieldError({ className, render, ...rest }: FieldTextPartProps) {
 }
 
 /** Preset: Field.Root with a Label (and unit), the control, a Readout, a Description and an Error. */
-export function Field({ label, unit, readout, description, error, layout = 'stacked', children, ...rest }: FieldProps) {
+export function Field({ label, unit, readout, description, error: own, name, layout = 'stacked', children, ...rest }: FieldProps) {
+  const formError = useFormError(name);
+  const error = own || formError;
   return (
     <FieldRoot layout={layout} {...rest}>
       {label && <FieldLabel unit={unit}>{label}</FieldLabel>}

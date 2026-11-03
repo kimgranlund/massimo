@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"collapsible\" test/disclosure.test.ts",
@@ -53,7 +53,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Collapsible\" test/disclosure.test.ts"

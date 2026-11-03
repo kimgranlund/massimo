@@ -96,11 +96,12 @@
     },
     "form": {
       "id": "context:form",
-      "host": null,
-      "summary": "Inside a <form>: form-associated components submit, reset and validate with it.",
+      "host": "component:form",
+      "summary": "Inside a ui-form (or a native <form>): form-associated components submit, reset and validate with it; ui-form maps its errors to them by name and sets when their errors show.",
       "searchTerms": [
         "form",
-        "inside form"
+        "inside form",
+        "ui-form"
       ]
     },
     "inline": {

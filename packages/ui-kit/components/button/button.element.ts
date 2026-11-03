@@ -1,6 +1,6 @@
 // <ui-button>: the host element is the button. Children are sorted into leading / contents /
 // trailing slots (mark icons with slot="leading" or slot="trailing"); see components/slots.ts.
-import { UIFormElement, define } from '../../core/index.ts';
+import { UIFormElement, define, submitOwner } from '../../core/index.ts';
 import { applyAttrs, buttonAttrs, blockIfInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe } from '../classes.ts';
@@ -42,8 +42,11 @@ export class UIButton extends UIFormElement {
 
   #onClick = (e: Event) => {
     if (blockIfInactive(e, this.#state)) return;
-    if (this.type === 'submit') this.form?.requestSubmit();
-    else if (this.type === 'reset') this.form?.reset();
+    // The native form, else the nearest kit form owner (ui-form).
+    const owner = submitOwner(this);
+    // (A native form takes no custom-element submitter: requestSubmit() would throw.)
+    if (this.type === 'submit') owner === this.form ? this.form?.requestSubmit() : owner?.requestSubmit(this);
+    else if (this.type === 'reset') owner?.reset();
   };
 
   #onKeydown = (e: KeyboardEvent) => onButtonKeydown(e, this.#state, () => this.click());

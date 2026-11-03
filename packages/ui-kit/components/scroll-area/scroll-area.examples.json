@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "scroll-area",
+  "title": "Scroll Area",
+  "summary": "A bounded region that scrolls natively with the kit's scrollbars.",
+  "defaultExample": "list",
+  "examples": [
+    {
+      "id": "list",
+      "label": "A bounded list",
+      "subject": "component:scroll-area",
+      "markup": "<ui-scroll-area style=\"height: 12rem\"><ul><li>Alpha</li><li>Bravo</li><li>Charlie</li><li>Delta</li><li>Echo</li><li>Foxtrot</li><li>Golf</li><li>Hotel</li><li>India</li><li>Juliett</li><li>Kilo</li><li>Lima</li></ul></ui-scroll-area>"
+    },
+    {
+      "id": "both-axes",
+      "label": "Both axes and the corner",
+      "subject": "component:scroll-area",
+      "markup": "<ui-scroll-area style=\"height: 10rem; width: 16rem\"><div style=\"width: 40rem\">A wide and tall table or canvas scrolls on both axes; the corner fills the meeting point.</div></ui-scroll-area>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts written out",
+      "subject": "component:scroll-area",
+      "markup": "<ui-scroll-area style=\"max-height: 12rem\" overflow-edge-threshold=\"8\"><div data-part=\"viewport\"><div data-part=\"content\"><p>Only a vertical scrollbar is written, so only it is drawn.</p></div></div><div data-part=\"scrollbar\" data-orientation=\"vertical\"><div data-part=\"thumb\"></div></div></ui-scroll-area>"
+    }
+  ]
+}

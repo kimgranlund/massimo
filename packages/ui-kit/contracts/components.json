@@ -658,6 +658,40 @@
         "page"
       ],
       "behavior": "Toasts come from a toast manager (add, update, close, promise). Each closes after its timeout (default 5000 ms; 0 keeps it); hovering or focusing the stack expands it and pauses every timer, as a hidden document does. A swipe in an allowed direction (default down, right), the close or Escape on a focused toast fire a cancelable openchange ({ open: false, id, toast, reason: 'swipe' | 'close-press' | 'escape-key', event }) and close it; F6 moves focus into the viewport and back. Toasts beyond the limit (3) are data-limited and inert."
+    },
+    "form": {
+      "geometryFamily": "form",
+      "element": "Host is the form (role=form) and the form owner of the kit controls inside that have no native form; no native form inside or around it.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection"
+      ],
+      "behavior": "A submit (ui-button type=submit, Enter in a ui-input, requestSubmit()) validates every owned control, shows their errors and focuses the first invalid one; when all pass it fires formsubmit with { values, reason: 'none', event }. errors (by name) become the named controls' form errors, shown at once and cleared on their next change; validation-mode (onSubmit, onBlur, onChange) decides when their own errors show; reset() returns every control to its default."
+    },
+    "scroll-area": {
+      "geometryFamily": "scroll-area",
+      "element": "Host is the area (no role); its viewport part scrolls natively (role=presentation, focusable while it overflows) and its scrollbar parts are pointer affordances (aria-hidden).",
+      "parts": [
+        "scroll-area-viewport",
+        "scroll-area-content?",
+        "scroll-area-scrollbar?",
+        "scroll-area-thumb?",
+        "scroll-area-corner?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "form",
+        "fieldset"
+      ],
+      "behavior": "Measures the viewport on scroll and resize: Base UI's overflow and scrolling data-* on root, viewport, content and scrollbars, its CSS variables as custom properties; a scrollbar shows while its axis overflows and fades in on hover, scroll or keyboard focus; dragging a thumb scrolls 1:1 along its track, a press on the track centers the thumb under the pointer; keys scroll the focused viewport natively."
     }
   }
 }

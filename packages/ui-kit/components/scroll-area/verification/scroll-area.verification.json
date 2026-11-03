@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "scroll-area",
+  "scope": "Structure (generated and authored parts, classes, aria-hidden scrollbars, no native elements), Base UI's overflow and scrolling data-* and CSS variables from a stubbed viewport, the thumb's track ratio and 4u minimum, the corner, track press and thumb drag, the edge threshold, keep-mounted, of the web component in happy-dom (node:test); the React renderer's server markup (preset equal to the composed parts, keepMounted, className function) and state parity with the web component; resolver numbers. Real layout, scrolling, the fade and RTL are checked in the browser (apps/studio geometry-check.html and react-check.html, the jig); screen-reader output is not certified.",
+  "sources": [
+    {
+      "path": "components/scroll-area/scroll-area.element.ts",
+      "sha256": "85407dce419b6b11eb98695a5426f6f9d85f4bc964ad2dbdb87243ddb28a76b3"
+    },
+    {
+      "path": "components/scroll-area/scroll-area.recipe.ts",
+      "sha256": "b0d49594ed9a1cca352cae9892f2a910ad7b6cbaac43f23955cddbaf9aaf7b23"
+    },
+    {
+      "path": "components/scroll-area/scroll-area.react.tsx",
+      "sha256": "e7cc8cca53f209e341e7996d1dfe324660c6bf200935683307fad9e8d9f1b849"
+    },
+    {
+      "path": "components/scroll-area/scroll-area.manifest.json",
+      "sha256": "e31e25b13ce992729d16e40a623b1c898fb9ce3a03942a5c9e8e6e59b87250a4"
+    },
+    {
+      "path": "dom/scroll-area.ts",
+      "sha256": "c2137fc5177a2fca0c6fb1862913f4ac94b8784f6595959e6f30dbcf2d06cf77"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/scroll-area.test.ts",
+          "covers": "generated and authored anatomy, classes, hidden bars without overflow, overflow and scrolling data-*, the CSS variables, thumb ratio and minimum, corner, track press, thumb drag and release, the edge threshold, keep-mounted"
+        },
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "resolveScrollArea: track, inset, thumb, minimum, radii (corner scale), corner"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/scroll-area.test.ts",
+          "node --test test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/scroll-area.test.ts",
+          "covers": "preset markup, ScrollArea.Root / Viewport / Content / Scrollbar / Thumb / Corner equal to the preset, keepMounted and className state, state parity with the web component"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/scroll-area.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency.",
+    "The scrollbars are pointer affordances (aria-hidden), as Base UI's; keyboard and assistive technology scroll the focusable viewport natively.",
+    "React measures after mount: its server markup has no overflow state, like the web component before its first measurement.",
+    "Manual geometry review (2026-11-03, studio #/components?family=scrolling, light and dark, hovered and scrolled, size ladder u = 3, 4, theme 4.5, 6): 2u tracks at the inline and block ends, the thumb u thick 0.5u inside them with the track ratio (geometry-check scrollArea.* at every SIZES step, both borders, after fixing a rounded clientHeight track: the fractional box is used), the 2u corner only with both bars; growth: the bars follow the area's size and the content grows freely inside the viewport (content min-width fit-content); RTL: the vertical bar moves to the left edge, the horizontal bar starts after the corner and its thumb runs from the right (offset negative), data-overflow-x-start set when scrolled; focus: the viewport takes focus while it overflows, its ring is an outline inset 2px (no size change) inside the area contour, and keyboard focus inside shows the bars; parity: react-check.html twins sa and saY match part by part (place, size, colour, radius, opacity, data-*), fails []."
+  ]
+}

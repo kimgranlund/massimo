@@ -8,3 +8,4 @@ export * from './state.ts';
 export * from './events.ts';
 export * from './floating.ts';
 export * from './display.ts';
+export * from './scroll-area.ts';

@@ -530,3 +530,30 @@ export function resolveToast(input: GeometryInput & { padUnits?: number } = {}) 
     close: c.slot, closeRadius: Math.min(c.radius, c.slot / 2), closeIcon: resolveIcon(c.fontSize, u, 'sm', c.slot),
   };
 }
+
+// ── Form ──
+// ui-form stacks its fields, fieldsets and actions with the collection gap (2u by default, the
+// theme's gap-collection; the gap attribute wins), like a fieldset, and draws no box: no padding,
+// border or radius, so its fields keep their own edges and a card around it supplies the surface.
+export function resolveForm(input: GeometryInput & { gapUnits?: number } = {}) {
+  const c = resolveContainer('collection', input);
+  return { unit: c.unit, gap: c.gap, padding: 0, border: 0, radius: 0 };
+}
+
+// ── Scroll area ──
+// ui-scroll-area draws its own scrollbars over a natively scrolling viewport: a track 2u thick at
+// the inline end (vertical) or the block end (horizontal), the thumb inside it 0.5u from each side
+// (so u thick), at least 4u long, a pill (radius half its thickness, scaled by the corner radius
+// like a control: min(3u·s, t/2)). Where both bars show, a 2u corner square fills the meeting
+// point. No border: the bars overlay the content's edge, which the content pads when it needs to.
+export function resolveScrollArea(input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  const thickness = 2 * u, inset = 0.5 * u, thumb = thickness - 2 * inset;
+  return {
+    unit: u, thickness, inset, thumb, thumbMin: 4 * u,
+    trackRadius: Math.min(3 * u * x.radiusScale, thickness / 2),
+    thumbRadius: Math.min(3 * u * x.radiusScale, thumb / 2),
+    corner: thickness,
+  };
+}

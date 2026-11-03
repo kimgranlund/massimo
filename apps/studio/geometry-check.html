@@ -24,8 +24,10 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/form/element';
+import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -90,6 +92,8 @@ for (const c of cases) {
     <ui-checkbox-group id="cgH" orientation="horizontal" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
     <ui-checkbox-group id="cgW" orientation="horizontal" style="width:1px"><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
     <div style="width:${60 * c.unit}px"><ui-fieldset id="fs" legend="Address" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-input label="A"></ui-input><ui-checkbox>B</ui-checkbox></ui-fieldset></div>
+    <div style="width:${60 * c.unit}px"><ui-form id="fm" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-input name="a" label="A"></ui-input><ui-checkbox name="b">B</ui-checkbox><ui-button type="submit">C</ui-button></ui-form></div>
+    <ui-scroll-area id="sa" style="height:${20 * c.unit}px;width:${40 * c.unit}px"><div style="width:${80 * c.unit}px;height:${80 * c.unit}px"></div></ui-scroll-area>
     <div style="width:${60 * c.unit}px"><ui-collapsible id="colClosed" label="Closed"><p>x</p></ui-collapsible><ui-collapsible id="colOpen" label="Open" open><p style="height:${4 * c.unit}px">x</p></ui-collapsible><ui-collapsible id="colLead"><div data-part="trigger"><span slot="leading"></span>Lead</div><div data-part="panel">y</div></ui-collapsible>
       <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
@@ -406,6 +410,38 @@ for (const c of cases) {
     checks['fieldset.padding'] = [px(cs(fs).paddingTop) + px(cs(fs).paddingLeft) + px(cs(fs).borderTopWidth), rf.padding + rf.border];
     checks['fieldset.radius'] = [px(cs(fs).borderTopLeftRadius), rf.radius];
     checks['fieldset.fill'] = [r2(rect(a).width), r2(rect(fs).width)];
+  }
+  // Form: fields and actions with the collection gap (gap attribute wins), no box (resolveForm).
+  {
+    const fm = $('fm'), rf = resolveForm(g), [a, b, btn] = fm.children;
+    checks['form.gap'] = [r2(rect(b).top - rect(a).bottom), rf.gap];
+    checks['form.actionGap'] = [r2(rect(btn).top - rect(b).bottom), rf.gap];
+    checks['form.padding'] = [px(cs(fm).paddingTop) + px(cs(fm).paddingLeft) + px(cs(fm).borderTopWidth), rf.padding + rf.border];
+    checks['form.radius'] = [px(cs(fm).borderTopLeftRadius), rf.radius];
+    checks['form.fill'] = [r2(rect(a).width), r2(rect(fm).width)];
+  }
+  // Scroll area: 2u tracks at the inline and block ends, the thumb u thick 0.5u inside, the track
+  // ratio (at least 4u), pill radii, a 2u corner where both show (resolveScrollArea).
+  {
+    const sa = $('sa'), rs = resolveScrollArea(g);
+    sa.sync();
+    const [vy, vx] = sa.querySelectorAll('[data-part=scrollbar]'), ty = vy.firstElementChild, tx = vx.firstElementChild, corner = sa.querySelector('[data-part=corner]'), vp = sa.viewport;
+    const R = rect(sa), Y = rect(vy), X = rect(vx), TY = rect(ty), TX = rect(tx);
+    const trackY = Y.height - 2 * rs.inset, trackX = X.width - 2 * rs.inset;
+    checks['scrollArea.thickness'] = [r2(Y.width), rs.thickness];
+    checks['scrollArea.thicknessX'] = [r2(X.height), rs.thickness];
+    checks['scrollArea.inset'] = [px(cs(vy).paddingTop), rs.inset];
+    checks['scrollArea.thumb'] = [r2(TY.width), rs.thumb];
+    checks['scrollArea.thumbX'] = [r2(TX.height), rs.thumb];
+    checks['scrollArea.thumbLength'] = [r2(TY.height), r2(Math.max(rs.thumbMin, trackY * vp.clientHeight / vp.scrollHeight))];
+    checks['scrollArea.thumbLengthX'] = [r2(TX.width), r2(Math.max(rs.thumbMin, trackX * vp.clientWidth / vp.scrollWidth))];
+    checks['scrollArea.thumbRadius'] = [px(cs(ty).borderTopLeftRadius), rs.thumbRadius];
+    checks['scrollArea.trackRadius'] = [px(cs(vy).borderTopLeftRadius), rs.trackRadius];
+    checks['scrollArea.corner'] = [r2(rect(corner).width) + r2(rect(corner).height), 2 * rs.corner];
+    checks['scrollArea.edgeY'] = [r2(R.right - Y.right) + r2(Y.top - R.top) + r2(R.bottom - Y.bottom), rs.corner];
+    checks['scrollArea.edgeX'] = [r2(R.bottom - X.bottom) + r2(X.left - R.left) + r2(R.right - X.right), rs.corner];
+    checks['scrollArea.thumbStart'] = [r2(TY.top - Y.top) + r2(TX.left - X.left), 2 * rs.inset];
+    checks['scrollArea.viewport'] = [r2(rect(vp).width) + r2(rect(vp).height), r2(R.width) + r2(R.height)];
   }
   // Disclosure: the collapsible trigger is an 8u control row; the panel starts at the label edge (resolveDisclosure).
   {

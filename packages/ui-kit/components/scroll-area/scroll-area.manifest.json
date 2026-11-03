@@ -1,0 +1,393 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "scroll-area",
+  "primary": "component:scroll-area",
+  "module": "./scroll-area.element.ts",
+  "registration": "on-import",
+  "documentation": "./scroll-area.md",
+  "examples": "./scroll-area.examples.json",
+  "contract": "../../contracts/components.json#/components/scroll-area",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./scroll-area.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveScrollArea"
+      ],
+      "description": "Reference numbers for the track thickness, the thumb inset, thickness, minimum length and radii, and the corner."
+    },
+    {
+      "kind": "dom-behavior",
+      "module": "../../dom/scroll-area.ts",
+      "exports": [
+        "measureScrollArea",
+        "scrollAreaDataAttrs",
+        "scrollAreaVars",
+        "bindScrollbar"
+      ],
+      "description": "Measurement, Base UI's data-* and CSS variables, thumb drag and track press, shared by both renderers."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:scroll-area",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-scroll-area",
+      "class": "UIScrollArea",
+      "extends": "UIElement",
+      "intent": [
+        "Scroll a bounded region with scrollbars that match the theme",
+        "Show where more content is (overflow edges)"
+      ],
+      "properties": [
+        {
+          "key": "overflowEdgeThreshold",
+          "type": "number",
+          "default": 0,
+          "attribute": "overflow-edge-threshold",
+          "reflects": false,
+          "description": "Distance in px from an edge before its data-overflow-*-start / -end applies (Base UI overflowEdgeThreshold; React also takes one per edge).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 64,
+            "step": 1
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Any content (the preset wraps it in the viewport and content parts), or the parts written out: [data-part=viewport] (› [data-part=content]), [data-part=scrollbar] (data-orientation, keep-mounted) › [data-part=thumb], [data-part=corner]."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Size it: a height or max-height on the host bounds the viewport (the host is a flex column); without one it grows with its content and never scrolls vertically.",
+        "Scrolling stays native (wheel, touch, keys in the focused viewport, find-in-page); the viewport's own scrollbars are hidden and the kit's overlay its inline end and block end, so pad the content's end when its text must not sit under a bar.",
+        "The scrollbars are pointer affordances (aria-hidden): a thumb drags 1:1 along its track, a press on the track centers the thumb under the pointer. The viewport is focusable while it overflows.",
+        "Continuous values reach CSS as custom properties set by script: Base UI's --scroll-area-corner-width / -height (root), --scroll-area-overflow-{x,y}-{start,end} (viewport), --scroll-area-thumb-width / -height (scrollbar) and ours, --scroll-area-thumb-offset.",
+        "Composition: React ScrollArea.Root, Viewport, Content, Scrollbar (orientation, keepMounted), Thumb, Corner; the preset ScrollArea wraps its children; every part takes render (an element or (props, state) => element) and className (a string or (state) => string)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A row of slides or cards to page through.",
+          "reason": "A swiper snaps to items and has paddles and dots.",
+          "useInstead": "component:swiper"
+        },
+        {
+          "when": "A whole page.",
+          "reason": "The page scrolls with the browser's own scrollbar; a scroll area is for a bounded region inside it.",
+          "useInstead": "component:page"
+        }
+      ],
+      "searchTerms": [
+        "scroll area",
+        "scrollbar",
+        "custom scrollbar",
+        "scrollable",
+        "overflow",
+        "scroll container",
+        "thumb"
+      ]
+    },
+    {
+      "id": "part:scroll-area-viewport",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=viewport]",
+      "summary": "The viewport (Base UI ScrollArea.Viewport): scrolls natively, its own scrollbars hidden; role=presentation, tabindex 0 while it overflows; the overflow data-* and --scroll-area-overflow-* variables."
+    },
+    {
+      "id": "part:scroll-area-content",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=viewport] > [data-part=content]",
+      "summary": "The content (Base UI ScrollArea.Content): the preset's children; min-width fit-content, so wide content overflows horizontally; the overflow data-*."
+    },
+    {
+      "id": "part:scroll-area-scrollbar",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=scrollbar]",
+      "summary": "A scrollbar (Base UI ScrollArea.Scrollbar): a 2u track at the inline end (data-orientation=vertical) or block end (horizontal), 0.5u padding around the thumb; hidden while its axis has no overflow (unless keep-mounted); fades in on data-hovering, data-scrolling or keyboard focus inside; --scroll-area-thumb-width / -height, --scroll-area-thumb-offset."
+    },
+    {
+      "id": "part:scroll-area-thumb",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=scrollbar] > [data-part=thumb]",
+      "summary": "The thumb (Base UI ScrollArea.Thumb): u thick, at least 4u long, a pill in fg.subtle (fg.muted while scrolling or hovered); drags with pointer capture; data-orientation, data-scrolling."
+    },
+    {
+      "id": "part:scroll-area-corner",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=corner]",
+      "summary": "The corner (Base UI ScrollArea.Corner): the 2u square where both scrollbars meet; hidden unless both axes overflow."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:scroll-area",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-area"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-viewport"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-content"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-scrollbar"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-thumb"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-corner"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./scroll-area.element.ts",
+      "exports": {
+        "component:scroll-area": "UIScrollArea"
+      },
+      "verification": "./verification/scroll-area.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./scroll-area.react.tsx",
+      "exports": {
+        "component:scroll-area": "ScrollArea"
+      },
+      "verification": "./verification/scroll-area.verification.json#/renderers/react",
+      "props": {
+        "component:scroll-area": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "overflowEdgeThreshold?: EdgeThreshold // Distance in px from an edge before its data-overflow-*-start / -end applies (Base UI overflowEdgeThreshold): one number or per edge.",
+            "size?: number // Unit u in px for the area and its scrollbars.",
+            "children?: ReactNode"
+          ]
+        }
+      },
+      "parts": {
+        "component:scroll-area": {
+          "ScrollArea.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "overflowEdgeThreshold?: EdgeThreshold // Distance in px from an edge before its data-overflow-*-start / -end applies (Base UI overflowEdgeThreshold): one number or per edge.",
+              "size?: number // Unit u in px for the area and its scrollbars.",
+              "children?: ReactNode"
+            ]
+          },
+          "ScrollArea.Viewport": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ScrollArea.Content": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ScrollArea.Scrollbar": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "orientation?: ScrollOrientation = 'vertical' // Which axis it scrolls (Base UI orientation).",
+              "keepMounted?: boolean = false // Keep it shown while its axis has no overflow (Base UI keepMounted; otherwise it is hidden)."
+            ]
+          },
+          "ScrollArea.Thumb": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ScrollArea.Corner": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:scroll-area": ".ui-scroll-area__root",
+        "part:scroll-area-viewport": ".ui-scroll-area__viewport",
+        "part:scroll-area-content": ".ui-scroll-area__content",
+        "part:scroll-area-scrollbar": ".ui-scroll-area__scrollbar",
+        "part:scroll-area-thumb": ".ui-scroll-area__thumb",
+        "part:scroll-area-corner": ".ui-scroll-area__corner"
+      }
+    }
+  }
+}

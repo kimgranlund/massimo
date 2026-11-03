@@ -372,6 +372,46 @@
         "toast"
       ],
       "ladder": "toast"
+    },
+    "form": {
+      "id": "geometry:form",
+      "resolver": [
+        "resolveForm",
+        "resolveContainer"
+      ],
+      "summary": "A form stacks its fields, fieldsets and actions with the collection gap of the container ladder (theme gap-collection, default 2u; the gap attribute wins) and draws no box: padding, border and radius 0, so its fields keep their own edges and a surrounding card supplies the surface.",
+      "members": [
+        "component:form"
+      ],
+      "searchTerms": [
+        "form spacing",
+        "gap between fields",
+        "form layout"
+      ],
+      "csv": [
+        "form"
+      ],
+      "ladder": "form"
+    },
+    "scroll-area": {
+      "id": "geometry:scroll-area",
+      "resolver": [
+        "resolveScrollArea"
+      ],
+      "summary": "Scrollbars over a natively scrolling viewport: a 2u track at the inline end (vertical) or block end (horizontal), the thumb inside it 0.5u from each side (u thick), at least 4u long, pill radii min(3u·s, thickness / 2); a 2u corner square where both bars meet. No border; the bars overlay the content's edge.",
+      "members": [
+        "component:scroll-area"
+      ],
+      "searchTerms": [
+        "scrollbar size",
+        "scrollbar thickness",
+        "thumb size",
+        "scroll area geometry"
+      ],
+      "csv": [
+        "scroll-area"
+      ],
+      "ladder": "scrollArea"
     }
   }
 }
