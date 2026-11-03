@@ -69,6 +69,7 @@ The parts are the Combobox's ([combobox guide](../combobox/combobox.md#anatomy))
 - `part:autocomplete-clear` `… > [data-part=clear]`: empties the text; hidden while it is empty.
 - `part:autocomplete-trigger` `… > [data-part=trigger]`: opens every suggestion; hidden unless `show-trigger`.
 - `part:autocomplete-popup`, `part:autocomplete-list`, `part:autocomplete-empty`: the popup listbox, the suggestions' parent and the empty text.
+- `part:autocomplete-group`, `part:autocomplete-group-label`: suggestions grouped under a muted label (Autocomplete.Group, GroupLabel), as the [combobox's groups](../combobox/combobox.md#groups); a group hides while none of its suggestions matches.
 
 ## Keyboard
 

@@ -16,7 +16,7 @@ const anchored = anchoredPopup({ anchor: ANCHOR, side: 'bottom', align: 'start' 
 const NESTED_RADIUS = 'min(calc(var(--slot) / 2), max(0px, calc(var(--radius) - var(--u))))';
 const SM_ICON = { width: 'var(--icon-sm)', height: 'var(--icon-sm)', flexShrink: 0 };
 
-const SLOTS = ['root', 'label', 'control', 'leading', 'prefix', 'chips', 'chip', 'chip-remove', 'input', 'suffix', 'clear', 'trigger', 'popup', 'list', 'empty', 'description', 'error'];
+const SLOTS = ['root', 'label', 'control', 'leading', 'prefix', 'chips', 'chip', 'chip-remove', 'input', 'suffix', 'clear', 'trigger', 'popup', 'list', 'group', 'group-label', 'empty', 'description', 'error'];
 const CHIP_SLOTS = ['chips', 'chip', 'chip-remove'];
 
 /** The shared styles by slot; the autocomplete takes them without the chip slots. */
@@ -95,7 +95,14 @@ const base = {
       },
     }),
     // Combobox.List: the items' parent, transparent to layout (the popup is the composite).
-    list: { display: 'contents' },
+    list: { display: 'contents', gap: 'inherit' }, // passes the popup's gap to its groups
+    // Combobox.Group: its options in the popup's column, with the popup's gap; hidden when the text filters out all of them.
+    group: { display: 'flex', flexDirection: 'column', gap: 'inherit', '&[hidden]': { display: 'none' } },
+    // Combobox.GroupLabel: muted text on an option row, where an option's label starts (Ic + 2u), as the menu's group label.
+    'group-label': {
+      display: 'flex', alignItems: 'center', minHeight: 'var(--ch)', paddingInline: 'calc(var(--ci) + 2 * var(--u))',
+      color: 'fg.muted', fontSize: 'var(--font)', lineHeight: 'var(--line)', fontWeight: 'medium', userSelect: 'none', whiteSpace: 'nowrap',
+    },
     // Combobox.Empty: one option row, its text where an option's label starts (Ic + 2u).
     empty: {
       display: 'flex', alignItems: 'center', minHeight: 'var(--ch)', paddingInline: 'calc(var(--ci) + 2 * var(--u))',

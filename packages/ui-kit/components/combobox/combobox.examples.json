@@ -24,6 +24,13 @@
       "label": "Leading icon, empty text",
       "subject": "component:combobox",
       "markup": "<ui-combobox label=\"Assignee\" empty-text=\"Nobody by that name.\" auto-highlight><i slot=\"leading\" name=\"user\"></i><ui-option value=\"ada\">Ada Lovelace</ui-option><ui-option value=\"alan\">Alan Turing</ui-option><ui-option value=\"grace\" disabled>Grace Hopper</ui-option></ui-combobox>"
+    },
+    {
+      "id": "groups",
+      "label": "Grouped options",
+      "subject": "component:combobox",
+      "markup": "<ui-combobox label=\"Food\" placeholder=\"Search…\"><div data-part=\"group\"><div data-part=\"group-label\">Fruit</div><ui-option value=\"apple\">Apple</ui-option><ui-option value=\"pear\">Pear</ui-option></div><div data-part=\"group\"><div data-part=\"group-label\">Vegetables</div><ui-option value=\"leek\">Leek</ui-option><ui-option value=\"carrot\">Carrot</ui-option></div></ui-combobox>",
+      "note": "A group hides while the text matches none of its options."
     }
   ]
 }

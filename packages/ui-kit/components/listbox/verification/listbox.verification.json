@@ -14,7 +14,7 @@
     },
     {
       "path": "components/listbox/options.ts",
-      "sha256": "290be46df6ac0c11ee339039584456bd6d7ca53a943da6d657a4267eff6bb0da"
+      "sha256": "c1c82cc76461677c317ac291c7fa17e16e81a01734f5b20516a3ddf11a72e9b4"
     },
     {
       "path": "dom/listbox.ts",

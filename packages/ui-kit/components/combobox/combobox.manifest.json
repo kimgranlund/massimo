@@ -535,6 +535,22 @@
       "summary": "Combobox.List: the ui-option children's parent (display: contents)."
     },
     {
+      "id": "part:combobox-group",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list] > [data-part=group]",
+      "summary": "Combobox.Group: some ui-option children together (role=group, aria-labelledby its group label); hidden while the text filters out all of them."
+    },
+    {
+      "id": "part:combobox-group-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list] > [data-part=group] > [data-part=group-label]",
+      "summary": "Combobox.GroupLabel: a group's visible name, muted, one option row tall at an option label's inset."
+    },
+    {
       "id": "part:combobox-empty",
       "kind": "part",
       "status": "implemented",
@@ -663,6 +679,16 @@
       "from": "component:combobox",
       "relation": "ownsPart",
       "to": "part:combobox-list"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-group"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-group-label"
     },
     {
       "from": "component:combobox",
@@ -911,6 +937,26 @@
           "Combobox.List": {
             "inherits": [
               "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Group": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.GroupLabel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
             ],
             "props": [
               "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",

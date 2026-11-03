@@ -14,7 +14,7 @@ const ENABLED = ':not([data-disabled], :disabled)';
 const IN_LIST = ':is(ui-listbox, ui-segmented, [data-ui=listbox], [data-ui=segmented]) > &';
 const IN_SEGMENTED = ':is(ui-segmented, [data-ui=segmented]) > &';
 // Any composite: a list, a segmented control, the web component's select popup or the native select, a combobox or autocomplete popup.
-const IN_COMPOSITE = ':is(ui-listbox, ui-segmented, [data-ui=listbox], [data-ui=segmented], ui-select [data-part=list], [data-ui=select] > select, :is(ui-combobox, ui-autocomplete, [data-ui=combobox], [data-ui=autocomplete]) > [data-part=popup] > [data-part=list]) > &';
+const IN_COMPOSITE = ':is(ui-listbox, ui-segmented, [data-ui=listbox], [data-ui=segmented], ui-select [data-part=list], [data-ui=select] > select, :is(ui-combobox, ui-autocomplete, [data-ui=combobox], [data-ui=autocomplete]) > [data-part=popup] > [data-part=list], :is(ui-combobox, ui-autocomplete, [data-ui=combobox], [data-ui=autocomplete]) > [data-part=popup] > [data-part=list] > [data-part=group]) > &';
 
 /** A list host: disabled fades and blocks its options; invalid tints the fill. */
 const list = (extra: Record<string, any>) => ({

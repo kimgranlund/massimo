@@ -510,6 +510,22 @@
       "summary": "Autocomplete.List: the ui-option children's parent (display: contents)."
     },
     {
+      "id": "part:autocomplete-group",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list] > [data-part=group]",
+      "summary": "Autocomplete.Group: some ui-option children together (role=group, aria-labelledby its group label); hidden while the text filters out all of them."
+    },
+    {
+      "id": "part:autocomplete-group-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list] > [data-part=group] > [data-part=group-label]",
+      "summary": "Autocomplete.GroupLabel: a group's visible name, muted, one option row tall at an option label's inset."
+    },
+    {
       "id": "part:autocomplete-empty",
       "kind": "part",
       "status": "implemented",
@@ -623,6 +639,16 @@
       "from": "component:autocomplete",
       "relation": "ownsPart",
       "to": "part:autocomplete-list"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-group"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-group-label"
     },
     {
       "from": "component:autocomplete",
@@ -823,6 +849,26 @@
           "Autocomplete.List": {
             "inherits": [
               "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Group": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.GroupLabel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
             ],
             "props": [
               "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",

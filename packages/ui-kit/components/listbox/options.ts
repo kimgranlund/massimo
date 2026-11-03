@@ -11,7 +11,8 @@ export function optionList(container: () => Element | undefined) {
     get options(): UIOption[] {
       void version.value;
       const c = container();
-      return c ? ([...c.children].filter((el) => el.localName === 'ui-option') as UIOption[]) : [];
+      // Options sit in the container or one level down in a group (Base UI Combobox.Group: [data-part=group]).
+      return c ? ([...c.querySelectorAll(':scope > ui-option, :scope > [data-part=group] > ui-option')] as UIOption[]) : [];
     },
     observe(target: Element) {
       mo?.disconnect();

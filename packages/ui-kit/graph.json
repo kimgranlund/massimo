@@ -1338,11 +1338,29 @@
     },
     "part:autocomplete-empty": {
       "kind": "part",
-      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/7",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/9",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
         "autocomplete empty"
+      ]
+    },
+    "part:autocomplete-group": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete group"
+      ]
+    },
+    "part:autocomplete-group-label": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/8",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete group label"
       ]
     },
     "part:autocomplete-input": {
@@ -1482,11 +1500,29 @@
     },
     "part:combobox-empty": {
       "kind": "part",
-      "source": "components/combobox/combobox.manifest.json#/nodes/10",
+      "source": "components/combobox/combobox.manifest.json#/nodes/12",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
         "combobox empty"
+      ]
+    },
+    "part:combobox-group": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/10",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox group"
+      ]
+    },
+    "part:combobox-group-label": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/11",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox group label"
       ]
     },
     "part:combobox-input": {
@@ -2824,6 +2860,16 @@
       "from": "component:autocomplete",
       "relation": "ownsPart",
       "to": "part:autocomplete-list"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-group"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-group-label"
     },
     {
       "from": "component:autocomplete",
@@ -4424,6 +4470,16 @@
       "from": "component:combobox",
       "relation": "ownsPart",
       "to": "part:combobox-list"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-group"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-group-label"
     },
     {
       "from": "component:combobox",

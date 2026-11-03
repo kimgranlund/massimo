@@ -436,6 +436,30 @@ export function ComboboxList({ className, render, children, ...rest }: ComboboxP
   return renderPart('div', s.c.list, { 'data-part': 'list', className, ...attrs, ...rest, render, children }, stateOf(attrs));
 }
 
+const GroupCtx = createContext<string | null>(null);
+
+/** Combobox.Group: role=group around some items, named by its GroupLabel; hidden when the text filters out all of its items. */
+export function ComboboxGroup({ className, render, children, ...rest }: ComboboxPopupProps) {
+  const s = useCombobox('Combobox.Group');
+  const labelId = useId();
+  const own = scan(children).items.map((it) => it.value);
+  const hidden = !s.items.some((it, i) => s.shown[i] && own.includes(it.value));
+  const hasLabel = findDeep(children, ComboboxGroupLabel);
+  return (
+    <GroupCtx.Provider value={labelId}>
+      {renderPart('div', s.c.group, { 'data-part': 'group', role: 'group', 'aria-labelledby': hasLabel ? labelId : undefined, hidden: hidden || undefined, className, ...rest, render, children }, s.state)}
+    </GroupCtx.Provider>
+  );
+}
+
+/** Combobox.GroupLabel: the group's visible name (muted, on an item row). */
+export function ComboboxGroupLabel({ className, render, ...rest }: ComboboxTextPartProps) {
+  const s = useCombobox('Combobox.GroupLabel');
+  const id = useContext(GroupCtx);
+  if (id === null) throw new Error('<Combobox.GroupLabel> must be inside Combobox.Group');
+  return renderPart('div', s.c['group-label'], { 'data-part': 'group-label', id, className, ...rest, render }, s.state);
+}
+
 /** Combobox.Empty: shown when no item matches the text (role=status). */
 export function ComboboxEmpty({ className, render, children, ...rest }: ComboboxTextPartProps) {
   const s = useCombobox('Combobox.Empty');
@@ -484,7 +508,7 @@ export function ComboboxError({ className, render, ...rest }: ComboboxTextPartPr
   return renderPart('span', s.c.error, { 'data-part': 'error', className, ...toReactProps(s.a.error), ...rest, render }, s.state);
 }
 
-const holders: unknown[] = [ComboboxControl, ComboboxPositioner, ComboboxPopup, ComboboxList];
+const holders: unknown[] = [ComboboxControl, ComboboxPositioner, ComboboxPopup, ComboboxList, ComboboxGroup];
 export const isComboboxPart = isPartOf([ComboboxLabel, ComboboxControl, ComboboxPositioner, ComboboxDescription, ComboboxError]);
 
 export interface ComboboxProps extends Omit<ComboboxRootProps, 'freeText' | 'mode' | 'kind'>, Omit<PartProps, 'trailing'> {
@@ -523,6 +547,8 @@ Combobox.Trigger = ComboboxTrigger;
 Combobox.Positioner = ComboboxPositioner;
 Combobox.Popup = ComboboxPopup;
 Combobox.List = ComboboxList;
+Combobox.Group = ComboboxGroup;
+Combobox.GroupLabel = ComboboxGroupLabel;
 Combobox.Item = ComboboxItem;
 Combobox.ItemText = ItemText;
 Combobox.ItemIndicator = ItemIndicator;

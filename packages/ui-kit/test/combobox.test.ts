@@ -350,3 +350,58 @@ test('Autocomplete (React): the same data-* and classes as the web component; pa
   assert.equal(parts, preset);
   assert.match(preset, /aria-autocomplete="both"/);
 });
+
+const GROUPED = '<div data-part="group"><div data-part="group-label">Fruit</div><ui-option value="apple">Apple</ui-option><ui-option value="banana">Banana</ui-option></div>'
+  + '<div data-part="group"><div data-part="group-label">Vegetables</div><ui-option value="carrot">Carrot</ui-option><ui-option value="leek">Leek</ui-option></div>';
+
+test('ui-combobox: groups (Combobox.Group, GroupLabel) are named, navigate in order, and hide when filtered out', async () => {
+  const el = await wc(`<ui-combobox label="Food">${GROUPED}</ui-combobox>`);
+  const groups = [...el.list.querySelectorAll(':scope > [data-part=group]')] as HTMLElement[];
+  assert.equal(groups.length, 2, 'authored groups move into the list');
+  const [fruit, veg] = groups;
+  assert.equal(fruit.getAttribute('role'), 'group');
+  assert.equal(fruit.getAttribute('aria-labelledby'), part(fruit, 'group-label').id);
+  assert.ok(fruit.classList.contains('ui-combobox__group'));
+  assert.ok(part(fruit, 'group-label').classList.contains('ui-combobox__group-label'));
+  assert.deepEqual(el.options.map((o: any) => o.optionValue), ['apple', 'banana', 'carrot', 'leek']);
+  el.open = true; await tick();
+  key(el.editor, 'ArrowDown'); await tick();
+  key(el.editor, 'ArrowDown'); await tick();
+  key(el.editor, 'ArrowDown'); await tick();
+  assert.equal(el.editor.getAttribute('aria-activedescendant'), el.querySelector('ui-option[value=carrot]').id, 'arrows cross into the next group');
+  await type(el, 'lee');
+  assert.deepEqual(shown(el), ['leek']);
+  assert.ok(fruit.hidden, 'a group with no match hides');
+  assert.ok(!veg.hidden);
+  await type(el, 'zz');
+  assert.ok(fruit.hidden && veg.hidden);
+  el.parentElement!.remove();
+});
+
+test('Combobox (React): Group and GroupLabel with the same markup; a group with no match hides', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const C = Combobox;
+  const tree = h(C.Root, { defaultOpen: true }, h(C.Control, null, h(C.Input)), h(C.Popup, null, h(C.List, null,
+    h(C.Group, null, h(C.GroupLabel, null, 'Fruit'), h(C.Item, { value: 'apple' }, 'Apple'), h(C.Item, { value: 'banana' }, 'Banana')),
+    h(C.Group, null, h(C.GroupLabel, null, 'Vegetables'), h(C.Item, { value: 'carrot' }, 'Carrot'), h(C.Item, { value: 'leek' }, 'Leek')))));
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  await act(async () => root.render(tree));
+  const groups = [...box.querySelectorAll<HTMLElement>('[data-part=list] > [data-part=group]')];
+  assert.equal(groups.length, 2);
+  const [fruit, veg] = groups;
+  assert.equal(fruit.getAttribute('role'), 'group');
+  assert.equal(fruit.getAttribute('aria-labelledby'), part(fruit, 'group-label').id);
+  assert.match(fruit.className, /ui-combobox__group/);
+  assert.match(part(fruit, 'group-label').className, /ui-combobox__group-label/);
+  const input = box.querySelector<HTMLInputElement>('[data-part=input]')!;
+  const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
+  await act(async () => { setter.call(input, 'lee'); input.dispatchEvent(new Event('input', { bubbles: true })); });
+  assert.ok(fruit.hidden, 'a group with no match hides');
+  assert.ok(!veg.hidden);
+  await act(async () => root.unmount());
+  box.remove();
+});

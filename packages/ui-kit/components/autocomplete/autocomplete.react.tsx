@@ -13,7 +13,7 @@ import type { ReactNode } from 'react';
 import type { AutocompleteMode } from '../../dom/index.ts';
 import type { PartProps } from '../parts.react.tsx';
 import {
-  ComboboxClear, ComboboxControl, ComboboxDescription, ComboboxEmpty, ComboboxError, ComboboxInput, ComboboxItem, ComboboxLabel,
+  ComboboxClear, ComboboxControl, ComboboxDescription, ComboboxEmpty, ComboboxError, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxItem, ComboboxLabel,
   ComboboxList, ComboboxPopup, ComboboxPositioner, ComboboxRoot, ComboboxTrigger, type ComboboxRootProps,
 } from '../combobox/combobox.react.tsx';
 import { ItemText } from '../listbox/listbox.react.tsx';
@@ -68,6 +68,8 @@ Autocomplete.Trigger = ComboboxTrigger;
 Autocomplete.Positioner = ComboboxPositioner;
 Autocomplete.Popup = ComboboxPopup;
 Autocomplete.List = ComboboxList;
+Autocomplete.Group = ComboboxGroup;
+Autocomplete.GroupLabel = ComboboxGroupLabel;
 Autocomplete.Item = ComboboxItem;
 Autocomplete.ItemText = ItemText;
 Autocomplete.Empty = ComboboxEmpty;

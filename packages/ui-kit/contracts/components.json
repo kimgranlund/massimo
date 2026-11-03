@@ -759,6 +759,8 @@
         "combobox-trigger",
         "combobox-popup",
         "combobox-list",
+        "combobox-group",
+        "combobox-group-label",
         "combobox-empty",
         "field-description?",
         "field-error?"
@@ -789,6 +791,8 @@
         "autocomplete-trigger",
         "autocomplete-popup",
         "autocomplete-list",
+        "autocomplete-group",
+        "autocomplete-group-label",
         "autocomplete-empty",
         "field-description?",
         "field-error?"

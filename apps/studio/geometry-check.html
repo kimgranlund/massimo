@@ -133,7 +133,7 @@ for (const c of cases) {
       <ui-combobox id="cbM" multiple value="a,b"><span slot="leading"></span><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option><ui-option value="c">Gamma</ui-option></ui-combobox>
 </div>
     <div style="width:${60 * c.unit}px"><ui-autocomplete id="acBare"><ui-option>Alpha</ui-option></ui-autocomplete><ui-autocomplete id="acClear" value="Al" show-trigger><span slot="leading"></span><ui-option>Alpha</ui-option></ui-autocomplete></div>
-    <div id="cbEBox" style="width:${60 * c.unit}px"><ui-combobox id="cbE"><ui-option value="a">Alpha</ui-option></ui-combobox></div>
+    <div id="cbEBox" style="width:${60 * c.unit}px"><ui-combobox id="cbE"><ui-option value="a">Alpha</ui-option><div data-part="group"><div data-part="group-label">Group</div><ui-option value="g">In group</ui-option></div></ui-combobox></div>
     <div style="width:${40 * c.unit}px"><ui-combobox id="cbW" multiple value="a,b,c,d"><ui-option value="a">Alpha</ui-option><ui-option value="b">Bravo</ui-option><ui-option value="c">Charlie</ui-option><ui-option value="d">Delta</ui-option></ui-combobox></div>
     <ui-dialog id="dlg" modal="false" disable-pointer-dismissal open label="Title" description="Description" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><p>Body</p><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button>Save</ui-button></div></ui-dialog>
     <ui-alert-dialog id="adlg" open label="Delete?" description="Gone for good."><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button>Delete</ui-button></div></ui-alert-dialog>
@@ -718,6 +718,15 @@ for (const c of cases) {
     e.query.value = null; e.open = true;
     await new Promise((r) => setTimeout(r, 30));
     checks['combobox.option.height'] = [r2(rect(e.querySelector('ui-option')).height), rcb.optionHeight];
+    // A group label is an option row with no slot: the empty row's geometry.
+    const cgl = e.querySelector('[data-part=group-label]');
+    checks['combobox.groupLabel.height'] = [r2(rect(cgl).height), rcb.emptyHeight];
+    checks['combobox.groupLabel.inline'] = [px(cs(cgl).paddingLeft), rcb.emptyInline];
+    // A grouped option is the same composite option as an ungrouped one.
+    checks['combobox.group.option.height'] = [r2(rect(cgl.nextElementSibling).height), rcb.optionHeight];
+    checks['combobox.group.option.padding'] = [px(cs(cgl.nextElementSibling).paddingLeft), px(cs(e.querySelector('ui-option')).paddingLeft)];
+    // Inside a group the popup's gap holds: label to option equals option to group.
+    checks['combobox.group.gap'] = [r2(rect(cgl.nextElementSibling).top - rect(cgl).bottom), r2(rect(cgl.parentElement).top - rect(e.querySelector('ui-option')).bottom)];
     e.open = false;
     eBox.style.position = 'static';
     await new Promise((r) => setTimeout(r, 0));

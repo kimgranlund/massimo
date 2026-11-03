@@ -27,6 +27,17 @@ Typing filters: an option shows while its label contains the text, ignoring case
 
 ## Anatomy
 
+### Groups
+
+Options can be grouped (Base UI Combobox.Group, GroupLabel): write a `[data-part=group]` with a `[data-part=group-label]` and its options, as host children or inside the list. React: `<Combobox.Group><Combobox.GroupLabel>Fruit</Combobox.GroupLabel><Combobox.Item …/></Combobox.Group>` inside `Combobox.List`. Ungrouped and grouped options can mix.
+
+```html
+<ui-combobox label="Food">
+  <div data-part="group"><div data-part="group-label">Fruit</div><ui-option value="apple">Apple</ui-option><ui-option value="pear">Pear</ui-option></div>
+  <div data-part="group"><div data-part="group-label">Vegetables</div><ui-option value="leek">Leek</ui-option></div>
+</ui-combobox>
+```
+
 ### Both forms
 
 The one-element form (`<ui-combobox label …>`, `<Combobox label leading …>`) is a preset; the parts can also be written out (Base UI Combobox anatomy, [components spec](../../../../docs/specs/components.md#composition)). Both render the same DOM, recipe classes and data-*.
@@ -83,6 +94,8 @@ The input row follows the construction pattern, as the select trigger:
 - `part:combobox-trigger` `… > [data-part=trigger]`: Combobox.Trigger (caret-down, turned while open).
 - `part:combobox-popup` `:scope > [data-part=popup]`: Combobox.Popup, the [popover] listbox 1u below the row.
 - `part:combobox-list` `… > [data-part=list]`: Combobox.List, the options' parent (`display: contents`).
+- `part:combobox-group` `… > [data-part=list] > [data-part=group]`: Combobox.Group, some options together (role=group, named by its label); hidden while the text filters out all of its options. Arrows run through the groups in order.
+- `part:combobox-group-label` `… > [data-part=group] > [data-part=group-label]`: Combobox.GroupLabel, the group's name: muted, one option row tall, at an option label's inset (the empty row's geometry).
 - `part:combobox-empty` `… > [data-part=empty]`: Combobox.Empty, the empty text (role=status) while nothing matches.
 
 Clear, trigger and chip-remove are press buttons, not tab stops: focus stays in the input.

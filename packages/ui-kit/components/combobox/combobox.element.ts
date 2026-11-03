@@ -26,6 +26,8 @@ import { combobox } from '../../styled-system/recipes/combobox.js';
 
 const ADORNMENTS = ['leading', 'prefix', 'suffix'] as const;
 /** The parts an author may write (composition), by path. */
+/** What the list holds: options and groups of options (Combobox.Group). */
+const OPTION_LIKE = ['ui-option', '[data-part=group]'];
 const AUTHORED = ['label', 'control', 'control > leading', 'control > prefix', 'control > input', 'control > suffix', 'control > clear', 'control > trigger', 'popup', 'popup > list', 'popup > empty', 'description', 'error'] as const;
 
 export class UICombobox extends UIFormElement {
@@ -121,7 +123,7 @@ export class UICombobox extends UIFormElement {
     this.#id = this.id ? `${this.id}-field` : uid('combobox');
     settleDefault(this, '');
     if (this.defaultOpen) this.open = true;
-    this.#pending = [...this.querySelectorAll(':scope > ui-option, :scope > [data-part=popup] > [data-part=list] > ui-option, :scope > [data-part=popup] > ui-option')];
+    this.#pending = [...this.querySelectorAll(OPTION_LIKE.map((x) => `:scope > ${x}, :scope > [data-part=popup] > [data-part=list] > ${x}, :scope > [data-part=popup] > ${x}`).join(', '))];
     this.#adornments = [...this.querySelectorAll(ADORNMENTS.map((p) => `:scope > [slot=${p}], :scope > [data-part=control] > [slot=${p}], :scope > [data-part=control] > [data-part=${p}] > [slot]`).join(', '))];
     this.#authored = authoredParts(this, AUTHORED);
     if (!this.#seeded) {
@@ -132,7 +134,7 @@ export class UICombobox extends UIFormElement {
       if (!this.error && text('error')) this.error = text('error');
       if (!this.hasAttribute('empty-text') && this.#authored.has('popup > empty')) this.emptyText = text('popup > empty');
     }
-    this.#hostObserver = new MutationObserver(() => this.#adopt([...this.children].filter((c) => c.localName === 'ui-option')));
+    this.#hostObserver = new MutationObserver(() => this.#adopt([...this.children].filter((c) => c.matches(OPTION_LIKE.join(', ')))));
     this.#hostObserver.observe(this, { childList: true });
   }
 
@@ -217,6 +219,15 @@ export class UICombobox extends UIFormElement {
       applyAttrs(o, optionAttrs({ id: ensureId(o), selected: values.includes(o.optionValue), disabled: o.disabled, active: i === active }));
       if (o.hidden !== !shown[i]) o.hidden = !shown[i];
     });
+    // Groups (Base UI Combobox.Group): role=group named by its label; hidden when none of its options shows.
+    for (const g of this.list!.querySelectorAll<HTMLElement>(':scope > [data-part=group]')) {
+      const gl = partOf(g, 'group-label');
+      applyAttrs(g, { role: 'group', 'aria-labelledby': gl ? ensureId(gl, 'group') : undefined });
+      const hide = !opts.some((o, i) => shown[i] && o.parentElement === g);
+      if (g.hidden !== hide) g.hidden = hide;
+      setClasses(g, c.group);
+      setClasses(gl, c['group-label']);
+    }
     if (open && (!empty || this.emptyText)) { this.#showPopup(); opts[active]?.scrollIntoView?.({ block: 'nearest' }); }
     else this.#hidePopup();
     applyRecipe(this, c, (slot) => partOf(this, slot) ?? partOf(control, slot) ?? partOf(popup, slot));
