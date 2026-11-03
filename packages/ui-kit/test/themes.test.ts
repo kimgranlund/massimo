@@ -97,9 +97,9 @@ test('theme lint: every contract rule has a predicate, and its failing fixture f
     assert.ok(!fired(rule.fixtures.pass), `${id}: the passing fixture does not`);
     assert.ok(validateThemeObject({ schemaVersion: 1, name: 'fixture', ...(rule.fixtures.fail as object) }).ok, `${id}: the failing fixture is a valid theme`);
   }
-  const r = lintTheme({ parameters: { unit: 2.5, 'shadow-floating': 0 } });
-  assert.equal(r.ok, false, 'an error fails the theme');
-  assert.equal(r.findings[0].severity, 'error', 'errors first');
+  const r = lintTheme({ parameters: { unit: 2.5, 'modal-shadow': undefined, 'shadow-modal': 0 } as any });
+  assert.equal(r.findings[0].severity, 'warning', 'warnings before info');
+  assert.ok(Object.values(THEME_CONSTRAINTS).every((c) => c.severity !== 'error'), 'the lint advises, it never blocks');
 });
 
 test('typography.colors maps a type role to a text color: validated, emitted as --ui-type-color-<role>', async () => {

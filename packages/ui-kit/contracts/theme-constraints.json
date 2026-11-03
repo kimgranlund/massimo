@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "pathBase": "packages/ui-kit",
-  "summary": "Coherence rules over a theme object (docs/planning/theme-schema.md, step 3): combinations of parameters, colors and fonts that break the design even when every value is in range. Each rule names its concept, a severity (error: the theme should not ship; warning: it works but loses something; info: a deliberate choice worth confirming), what it checks, a fix, and a failing and a passing fixture (theme sections merged over the defaults). lintTheme (tokens/themes/lint.ts) implements one predicate per id; a test runs every fixture.",
+  "summary": "Coherence rules over a theme object (docs/planning/theme-schema.md, step 3): combinations of parameters, colors and fonts that break the design even when every value is in range. Each rule names its concept, a severity (warning: it works but loses something, such as contrast or target size; info: a deliberate choice worth confirming). The lint advises: it never blocks a setting, a save or a build, what it checks, a fix, and a failing and a passing fixture (theme sections merged over the defaults). lintTheme (tokens/themes/lint.ts) implements one predicate per id; a test runs every fixture.",
   "rules": {
     "scale.target-size": {
       "concept": "scale",
-      "severity": "error",
+      "severity": "warning",
       "checks": "The control height at the theme root, (6 + 2I) × u, is at least 24px (WCAG 2.5.8 target size).",
       "fix": "Raise unit, or use a looser density; keep small units for subtrees (size) instead of the root.",
       "fixtures": {
@@ -157,7 +157,7 @@
     },
     "vibrancy.text-contrast": {
       "concept": "vibrancy",
-      "severity": "error",
+      "severity": "warning",
       "checks": "Each brand and feedback role's text step (11) reaches the engine's APCA threshold on the page fill, in light and dark.",
       "fix": "Undo the tone settings the finding names (they changed the ramps), or move the manual peak tone toward 62 (the default), or choose another family for the role.",
       "fixtures": {
