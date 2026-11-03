@@ -1091,7 +1091,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
         const row = cs.flexDirection === 'row', [c0, c1] = kids.length > 1 ? kids : [...el.children];
         const gapEl = c1 ? r2(row ? c1.getBoundingClientRect().left - c0.getBoundingClientRect().right : c1.getBoundingClientRect().top - c0.getBoundingClientRect().bottom) : null;
         if (gapEl !== null) checks.gap = [gapEl, r2(node.gap)];
-        for (const [k, [got, w]] of Object.entries(checks)) { total++; if (Math.abs(got - w) > tolerance(k, w)) fails.push(`u${unit}/B${border}/${density}/s${s} container.tree${ti}${path}.${k}: got ${got}, want ${w}`); }
+        for (const [k, [got, w]] of Object.entries(checks)) { const name = `container.tree${ti}${path}.${k}`; total++; if (Math.abs(got - w) > tolerance(name, w)) fails.push(`u${unit}/B${border}/${density}/s${s} ${name}: got ${got}, want ${w}`); }
         node.children.forEach((c, i) => visit(c, kids[i], `${path}.${i}`));
       };
       visit(want, els[ti], '');
