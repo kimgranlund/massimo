@@ -1,0 +1,474 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "toast",
+  "primary": "component:toast",
+  "module": "./toast.element.ts",
+  "registration": "on-import",
+  "documentation": "./toast.md",
+  "examples": "./toast.examples.json",
+  "contract": "../../contracts/components.json#/components/toast",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./toast.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveToast"
+      ],
+      "description": "Reference numbers for the viewport, the toast container and its action and close."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "./manager.ts",
+      "exports": [
+        "createToastManager",
+        "toastManager"
+      ],
+      "description": "The framework-free toast store both renderers draw: add, update, close, promise, timers and their pause."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:toast",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-toast-viewport",
+      "intent": [
+        "Tell the user briefly that something happened or is in progress, without interrupting their task, with an optional action"
+      ],
+      "properties": [
+        {
+          "key": "limit",
+          "type": "number",
+          "default": 3,
+          "attribute": "limit",
+          "reflects": false,
+          "description": "How many toasts are shown; older ones stay mounted, data-limited and inert, until the newer ones close.",
+          "inspector": {
+            "control": "number",
+            "min": 1,
+            "max": 10,
+            "step": 1
+          }
+        },
+        {
+          "key": "timeout",
+          "type": "number",
+          "default": 5000,
+          "attribute": "timeout",
+          "reflects": false,
+          "description": "Auto-dismiss delay in ms for toasts added without a timeout (the manager's default; 0 keeps them). Hover, focus and a hidden document pause it.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 20000,
+            "step": 500
+          }
+        },
+        {
+          "key": "placement",
+          "type": "string",
+          "default": "bottom-end",
+          "attribute": "placement",
+          "reflects": false,
+          "enum": [
+            "bottom-end",
+            "bottom-center",
+            "top-end",
+            "top-center",
+            "inline"
+          ],
+          "description": "The window corner or edge the stack sits at, in the top layer; inline draws the toasts in flow, 2u apart (specimens and previews).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "swipeDirection",
+          "type": "string",
+          "default": "down right",
+          "attribute": "swipe-direction",
+          "reflects": false,
+          "description": "Space-separated directions a swipe dismisses toward: up, down, left, right (default down right).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Notifications",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name of the region landmark (aria-label).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "detail": "{ open: boolean, id: string, toast: ToastObject, reason: 'swipe' | 'close-press' | 'escape-key' | 'none', event?: Event }",
+          "trigger": "a toast is added (open true, reason none) or closes: a swipe, the close or Escape on a focused toast (cancelable: preventDefault keeps it), or its timeout or a script close (reason none, after the fact)",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true
+        }
+      ],
+      "semantics": {
+        "role": "region (a polite live region, aria-relevant additions text); each toast role=dialog (alertdialog and aria-live assertive for priority high), aria-modal false, named by its title and described by its description",
+        "keyboard": [
+          {
+            "keys": "F6",
+            "action": "move focus into the viewport when it has toasts (a placed one, not inline); F6 again returns it to where it was"
+          },
+          {
+            "keys": "Tab, Shift+Tab",
+            "action": "move between the toasts' actions and close buttons"
+          },
+          {
+            "keys": "Enter, Space on the action or close",
+            "action": "press it (the close dismisses the toast)"
+          },
+          {
+            "keys": "Escape in a toast",
+            "action": "dismiss that toast (reason escape-key)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label (aria-label on the region; default Notifications)"
+          ],
+          "required": false
+        },
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "component",
+        "acceptsChildren": false,
+        "children": "None authored: the viewport draws a [data-part=toast] per toast of its manager, newest first, each with a content part of title, description, action (from actionProps) and close parts."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Toasts are added through a toast manager (the page's toastManager, or the viewport's manager property), not as markup; every viewport bound to a manager draws its toasts.",
+        "Title and description are text in the web component; the React parts take any node.",
+        "The action runs actionProps.onClick and does not close the toast; the application closes it when the action needs to.",
+        "The stack variables (--toast-index, --toast-offset-y, --toast-height, --toast-frontmost-height, --toast-swipe-movement-x / -y) are px set by script from layout.",
+        "Do not put the only copy of important information in a toast: it disappears after its timeout."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user must read and decide before going on.",
+          "reason": "A toast does not take focus or block the page and leaves after its timeout; a modal dialog is needed (the kit has none yet)."
+        },
+        {
+          "when": "A validation error on a field.",
+          "reason": "The error belongs next to the control; the field's error part shows it there.",
+          "useInstead": "component:field"
+        }
+      ],
+      "searchTerms": [
+        "toast",
+        "snackbar",
+        "notification",
+        "flash message",
+        "alert"
+      ],
+      "class": "UIToastViewport",
+      "extends": "UIElement"
+    },
+    {
+      "id": "part:toast-toast",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=toast]",
+      "summary": "One toast (Base UI Toast.Root; data-part toast because the viewport is the recipe root): role=dialog or alertdialog, a card-sm container; data-type, data-expanded, data-limited, data-swiping, data-swipe-direction, data-starting-style, data-ending-style."
+    },
+    {
+      "id": "part:toast-content",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=toast] > [data-part=content]",
+      "summary": "The toast's parts in a grid (Base UI Toast.Content); data-behind (hidden while collapsed) when another toast is in front."
+    },
+    {
+      "id": "part:toast-title",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "h2",
+      "selector": ":scope > [data-part=toast] > [data-part=content] > [data-part=title]",
+      "summary": "The heading (Base UI Toast.Title), the title type role; names the toast."
+    },
+    {
+      "id": "part:toast-description",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "p",
+      "selector": ":scope > [data-part=toast] > [data-part=content] > [data-part=description]",
+      "summary": "The message (Base UI Toast.Description), the caption role, 0.5u under the title; describes the toast."
+    },
+    {
+      "id": "part:toast-action",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=toast] > [data-part=content] > [data-part=action]",
+      "summary": "The toast's action (Base UI Toast.Action; role=button, a native button in React) from actionProps: an 8u control row on the control fill."
+    },
+    {
+      "id": "part:toast-close",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=toast] > [data-part=content] > [data-part=close]",
+      "summary": "Closes its toast (Base UI Toast.Close; role=button named Close, a native button in React): a 6u slot with an x at icon size sm."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:toast",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesGeometry",
+      "to": "geometry:toast"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-toast"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-content"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-title"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-description"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-action"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-close"
+    },
+    {
+      "from": "component:toast",
+      "relation": "allowedIn",
+      "to": "context:page"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./toast.element.ts",
+      "exports": {
+        "component:toast": "UIToastViewport"
+      },
+      "verification": "./verification/toast.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./toast.react.tsx",
+      "exports": {
+        "component:toast": "Toast"
+      },
+      "verification": "./verification/toast.verification.json#/renderers/react",
+      "props": {
+        "component:toast": {
+          "inherits": [],
+          "props": [
+            "limit?: number // Toasts beyond this count stay mounted, data-limited and inert (default 3).",
+            "timeout?: number // Auto-dismiss delay in ms for toasts that set none (default 5000; 0 keeps them).",
+            "toastManager?: ToastManager // A manager made with createToastManager, to add toasts from outside React.",
+            "children?: ReactNode",
+            "placement?: Placement // The viewport's placement (default bottom-end).",
+            "label?: string // The viewport's accessible name.",
+            "swipeDirection?: SwipeDirection | SwipeDirection[]",
+            "onOpenChange?: (open: boolean, details: ToastOpenDetails) => void"
+          ]
+        }
+      },
+      "parts": {
+        "component:toast": {
+          "Toast.Provider": {
+            "inherits": [],
+            "props": [
+              "limit?: number = 3 // Toasts beyond this count stay mounted, data-limited and inert (default 3).",
+              "timeout?: number = 5000 // Auto-dismiss delay in ms for toasts that set none (default 5000; 0 keeps them).",
+              "toastManager?: ToastManager // A manager made with createToastManager, to add toasts from outside React.",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Portal": {
+            "inherits": [],
+            "props": [
+              "container?: Element | null // Where to render (default document.body).",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Viewport": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "placement?: Placement = 'bottom-end' // bottom-end (default), bottom-center, top-end, top-center: fixed in the top layer; inline: in flow.",
+              "label?: string = 'Notifications' // Accessible name of the region (default \"Notifications\").",
+              "swipeDirection?: SwipeDirection | SwipeDirection[] // Default swipe directions of its toasts (default down and right).",
+              "onOpenChange?: (open: boolean, details: ToastOpenDetails) => void // A toast was added (open true) or closed (open false), with { id, toast, reason, event }.",
+              "size?: number // Unit u in px.",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "toast: ToastObject // The toast object from useToastManager().toasts.",
+              "swipeDirection?: SwipeDirection | SwipeDirection[] // Directions a swipe dismisses toward (default: the viewport's, down and right).",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Content": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Title": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Action": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Toast.Close": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

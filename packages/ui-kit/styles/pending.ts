@@ -29,6 +29,8 @@ export const pending = defineGlobalStyles({
   'ui-toggle:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)' },
   // A meter reserves its text row (one control line), the 1.5u gap and the 4u track.
   'ui-meter:not(:defined)': { display: 'block', minHeight: 'calc(var(--line) + 5.5 * var(--u))' },
+  // A toast viewport has no size of its own until toasts arrive; it stays out of sight until defined.
+  'ui-toast-viewport:not(:defined)': { display: 'none' },
   // A separator reserves its rule (thickness max(1px, B)) until its classes arrive.
   'ui-separator:not(:defined)': { display: 'block', flexShrink: 0, alignSelf: 'stretch', height: 'var(--separator)' },
   'ui-separator[orientation=vertical]:not(:defined)': { height: 'auto', width: 'var(--separator)' },

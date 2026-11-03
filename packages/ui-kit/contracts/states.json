@@ -175,6 +175,46 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-expanded": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The toast stack is hovered or holds focus, so its toasts stand apart at their own heights (Base UI Toast.Viewport, Root and Content)."
+    },
+    "data-limited": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A toast beyond the provider's limit: kept mounted, hidden and inert (Base UI Toast.Root)."
+    },
+    "data-swiping": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A pointer swipes the toast (Base UI Toast.Root)."
+    },
+    "data-swipe-direction": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The direction a swipe dismissed the toast toward: up, down, left or right (Base UI Toast.Root)."
+    },
+    "data-type": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The toast's type (success, error, warning, info, loading or any string; Base UI Toast.Root and its parts)."
+    },
+    "data-starting-style": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A toast that has just mounted, before its enter transition runs (Base UI)."
+    },
+    "data-ending-style": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A closed toast during its exit transition, before it is removed (Base UI)."
+    },
+    "data-behind": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A toast's content while another toast is in front of it (Base UI Toast.Content)."
     }
   },
   "components": {
@@ -497,6 +537,36 @@
         "data-orientation",
         "data-activation-direction"
       ]
+    },
+    "ui-toast-viewport": {
+      "host": [
+        "data-expanded"
+      ],
+      "toast": [
+        "data-type",
+        "data-expanded",
+        "data-limited",
+        "data-swiping",
+        "data-swipe-direction",
+        "data-starting-style",
+        "data-ending-style"
+      ],
+      "content": [
+        "data-behind",
+        "data-expanded"
+      ],
+      "title": [
+        "data-type"
+      ],
+      "description": [
+        "data-type"
+      ],
+      "action": [
+        "data-type"
+      ],
+      "close": [
+        "data-type"
+      ]
     }
   },
   "native": {
@@ -522,7 +592,8 @@
         "ui-range",
         "ui-palette",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-toast-viewport"
       ]
     },
     "keyboard-focus": {
@@ -544,7 +615,8 @@
         "ui-swiper",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-toast-viewport"
       ]
     },
     "highlighted": {

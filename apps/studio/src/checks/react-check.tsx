@@ -25,6 +25,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import { createToastManager, type ToastManager } from '@massimo/ui-kit/components/toast/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -37,6 +38,7 @@ import { Image } from '@massimo/ui-kit/components/image/react';
 import { Card, Group } from '@massimo/ui-kit/components/container/react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
+import { useState } from 'react';
 import { Checkbox, Radio, Switch } from '@massimo/ui-kit/components/choice/react';
 import { Range, Progress } from '@massimo/ui-kit/components/range/react';
 import { Field } from '@massimo/ui-kit/components/field/react';
@@ -51,6 +53,23 @@ import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
+import { Toast } from '@massimo/ui-kit/components/toast/react';
+
+/** Toast twins: each side draws its own manager seeded with the same two toasts (no timeout). */
+const seedToasts = (m: ToastManager) => {
+  m.add({ id: 'b', title: 'Second', description: 'More text that wraps onto a second line here.' });
+  m.add({ id: 'a', title: 'Saved', description: 'Draft stored.', type: 'success', actionProps: { children: 'Undo' } });
+  return m;
+};
+const seeded = new WeakSet<Element>();
+function ToastWc({ k }: { k: string }) {
+  const ref = (el: (HTMLElement & { manager: ToastManager }) | null) => { if (el && !seeded.has(el)) { seeded.add(el); el.manager = seedToasts(createToastManager({ timeout: 0 })); } };
+  return <ui-toast-viewport ref={ref} data-k={k} placement="inline" />;
+}
+function ToastReact({ k }: { k: string }) {
+  const [m] = useState(() => seedToasts(createToastManager({ timeout: 0 })));
+  return <Toast.Provider toastManager={m} timeout={0}><Toast.Viewport data-k={k} placement="inline" /></Toast.Provider>;
+}
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -113,6 +132,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-collapsible data-k="col" label="Details" open><p>Panel</p></ui-collapsible></div>
         <div style={{ width: 300 }}><ui-collapsible data-k="colD" label="Off" disabled><p>Panel</p></ui-collapsible></div>
         <div style={{ width: 300 }}><ui-tabs data-k="tab" default-value="b"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">A</div><div {...{ value: 'b' }} data-part="tab"><i slot="leading" name="code" />B</div><div {...{ value: 'c', disabled: true }} data-part="tab">C</div></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div><div {...{ value: 'c' }} data-part="panel">c</div></ui-tabs></div>
+        <div style={{ width: 300 }}><ToastWc k="tst" /></div>
         <div style={{ width: 300 }}><ui-tabs data-k="tabU" variant="underline"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
         <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
       </div>
@@ -169,6 +189,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Collapsible data-k="col" label="Details" defaultOpen><p>Panel</p></Collapsible></div>
         <div style={{ width: 300 }}><Collapsible data-k="colD" label="Off" disabled><p>Panel</p></Collapsible></div>
         <div style={{ width: 300 }}><Tabs.Root data-k="tab" defaultValue="b"><Tabs.List><Tabs.Tab value="a">A</Tabs.Tab><Tabs.Tab value="b" leading={<i name="code" />}>B</Tabs.Tab><Tabs.Tab value="c" disabled>C</Tabs.Tab><Tabs.Indicator /></Tabs.List><Tabs.Panel value="a">a</Tabs.Panel><Tabs.Panel value="b">b</Tabs.Panel><Tabs.Panel value="c">c</Tabs.Panel></Tabs.Root></div>
+        <div style={{ width: 300 }}><ToastReact k="tst" /></div>
         <div style={{ width: 300 }}><Tabs data-k="tabU" variant="underline" items={[{ value: 'a', label: 'One', content: 'a' }, { value: 'b', label: 'Two', content: 'b' }]} /></div>
         <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
       </div>
@@ -303,6 +324,8 @@ flushSync(() => createRoot(composedRoot).render(<>{UNITS.map((u) => <ComposedPai
 
 setTimeout(() => {
   const fails: string[] = []; let checks = 0;
+  // The toast twins mounted with their enter transition (reveal intent, a long spring tail): settle it.
+  for (const el of document.querySelectorAll<HTMLElement>('[data-k=tst] :is([data-part=toast], [data-part=content])')) { el.style.transition = 'none'; el.removeAttribute('data-starting-style'); }
   const host = (side: Element, k: string) => {
     const el = side.querySelector(`[data-k="${k}"]`)!;
     // React spreads data-k onto the native input; its host is the data-ui ancestor.
@@ -338,9 +361,9 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst']) {
       const a = host(wc, k), b = host(re, k);
-      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator]')];
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=toast], :scope > [data-part=toast] > [data-part=content], :scope > [data-part=toast] > [data-part=content] > *')];
       const pa = parts(a), pb = parts(b);
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
@@ -361,13 +384,28 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
         if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
       }
     }
+  }
+  // Toast: each toast and its content (title, description, action, close) laid out alike.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    const sel = ':scope > [data-part=toast], :scope > [data-part=toast] > [data-part=content]';
+    const ta = [...host(wc, 'tst').querySelectorAll<HTMLElement>(sel)], tb = [...host(re, 'tst').querySelectorAll<HTMLElement>(sel)];
+    checks++;
+    if (ta.length !== tb.length) { fails.push(`u${c.getAttribute('data-case')} tst parts: wc ${ta.length} react ${tb.length}`); continue; }
+    ta.forEach((x, i) => {
+      const a = measure(x), b = measure(tb[i]);
+      for (const key of Object.keys(a) as (keyof typeof a)[]) {
+        checks++;
+        if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} tst[${i}].${key}: wc ${a[key]} react ${b[key]}`);
+      }
+    });
   }
   // Input: same parts; the React control holds a native <input> as its contents part.
   for (const c of root.querySelectorAll('[data-case]')) {

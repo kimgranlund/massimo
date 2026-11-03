@@ -21,6 +21,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import { createToastManager, type ToastManager, type ToastOptions } from '@massimo/ui-kit/components/toast/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -38,6 +39,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
+  ['feedback', 'Feedback', 'ui-toast-viewport'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -210,6 +212,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
+    feedback: 'A toast is a container at the card-sm level: padding 3u − B, radius equal to it. Title and description share one column 0.5u apart; the action is an 8u control row and the close a 6u slot, 1u apart. The viewport is 80u wide, 4u from the window edges; collapsed toasts peek 2u, expanded (hover or focus, which also pause the timers) they stand 2u apart. Swipe, the close or Escape dismiss; F6 focuses the stack.',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
   const CONTENT: Record<Family, ReactNode> = {
@@ -480,6 +483,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         </Row>
       </>
     ),
+    feedback: <Toasts params={params} />,
     display: (
       <>
         <Row label="Separator">
@@ -521,5 +525,57 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         </Fragment>
       ))}
     </Page>
+  );
+}
+
+// Toast specimens: inline viewports seeded from their own managers (timeout 0: they stay), and live
+// viewports in the top layer fed by the buttons.
+const toastColumn = css({ display: 'flex', flexDirection: 'column', gap: '4', width: 'full', maxWidth: '[24rem]' });
+const live = createToastManager();
+const liveTop = createToastManager();
+type ToastViewportEl = HTMLElement & { manager: ToastManager };
+
+function ToastPreview({ toasts, limit }: { toasts: ToastOptions[]; limit?: number }) {
+  const ref = useCallback((el: ToastViewportEl | null) => {
+    if (!el) return;
+    const m = createToastManager({ timeout: 0 });
+    el.manager = m;
+    for (const t of [...toasts].reverse()) m.add({ timeout: 0, ...t });
+  }, []);
+  return <ui-toast-viewport ref={ref} placement="inline" limit={limit} label="Preview" />;
+}
+
+function Toasts({ params }: Pick<PageProps, 'params'>) {
+  const bind = (m: ToastManager) => (el: ToastViewportEl | null) => { if (el) el.manager = m; };
+  let n = 0;
+  const save = () => new Promise<string>((ok, no) => setTimeout(() => (Math.random() < 0.75 ? ok('draft.md') : no(new Error('The server did not answer.'))), 1600));
+  return (
+    <>
+      <Row label="Types">
+        <div className={toastColumn}>
+          <ToastPreview toasts={[
+            { title: 'Changes saved', description: 'Your draft is stored on this device.', type: 'success', actionProps: { children: 'Undo' } },
+            { title: 'Upload failed', description: 'cover.png is larger than 10 MB.', type: 'error' },
+            { description: 'Syncing 12 files…', type: 'loading' },
+          ]} />
+        </div>
+      </Row>
+      <Row label="Long text">
+        <div className={toastColumn}>
+          <ToastPreview toasts={[{ title: 'Invitation sent to the design review group for Thursday', description: 'Everyone on the list gets an email with the agenda, the meeting link and the files attached to this project.', actionProps: { children: 'View invite' } }]} />
+        </div>
+      </Row>
+      <Row label="Live">
+        <ui-button onClick={() => live.add({ title: `Message ${++n}`, description: 'Hover or focus the stack to pause and expand it.', actionProps: { children: 'Undo', onClick: () => live.add({ description: 'Undone.', type: 'info' }) } })}>Notify</ui-button>
+        <ui-button onClick={() => live.promise(save(), { loading: 'Saving draft…', success: (f) => ({ title: 'Saved', description: `${f} is stored.` }), error: (e) => ({ title: 'Not saved', description: (e as Error).message }) })}>Save (promise)</ui-button>
+        <ui-button onClick={() => liveTop.add({ title: 'Connection lost', description: 'Swipe up or press Escape to dismiss.', type: 'warning', priority: 'high' })}>Alert at the top</ui-button>
+        <ui-button onClick={() => { live.close(); liveTop.close(); }}>Close all</ui-button>
+        <ui-toast-viewport ref={bind(live)} />
+        <ui-toast-viewport ref={bind(liveTop)} placement="top-center" swipe-direction="up" label="Alerts" />
+      </Row>
+      <SizeLadder family="toast" params={params}>
+        <div className={toastColumn}><ToastPreview toasts={[{ title: 'Saved', description: 'Draft stored.', actionProps: { children: 'Undo' } }]} /></div>
+      </SizeLadder>
+    </>
   );
 }

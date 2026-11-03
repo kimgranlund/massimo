@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "toast",
+  "title": "Toast",
+  "summary": "A viewport that stacks the toasts of a toast manager.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "One viewport for the page (bottom end)",
+      "subject": "component:toast",
+      "markup": "<ui-toast-viewport></ui-toast-viewport>"
+    },
+    {
+      "id": "top",
+      "label": "Top center, three at a time, swipe up to dismiss",
+      "subject": "component:toast",
+      "markup": "<ui-toast-viewport placement=\"top-center\" limit=\"3\" swipe-direction=\"up\" label=\"Alerts\"></ui-toast-viewport>"
+    },
+    {
+      "id": "inline",
+      "label": "Inline (a preview in flow), toasts that stay",
+      "subject": "component:toast",
+      "markup": "<ui-toast-viewport placement=\"inline\" timeout=\"0\"></ui-toast-viewport>"
+    }
+  ]
+}
