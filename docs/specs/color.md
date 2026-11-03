@@ -43,6 +43,8 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 | `border`, `border.strong` | neutral 6, 7 |
 | `fg.subtle` (placeholders), `fg.muted`, `fg` | neutral 8, 11, 12 |
 | `fg.onSolid` | the engine's APCA black/white choice for primary 9 |
+| `fg.strong` (display, headings, titles) | `black` in light, `white` in dark |
+| `white`, `black` (`--colors-white`, `--colors-black`) | the neutral endpoints: light step 1 (tone 97.5) and dark step 1 (tone 5), the same in every scheme; a runtime spectrum emits them too |
 | `focusRing` | primary 8 |
 | `data.1` … `data.6` | data 1–6 at 9 (chart series, categories) |
 | `shadow` | neutral 12 light, neutral 1 dark (the shadow color) |

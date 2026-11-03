@@ -47,6 +47,8 @@ function roleStyle(r: TypeRole) {
     fontWeight: SERIF_REGULAR_VOICES.has(r.voice) ? `var(--font-voice-${r.voice}-weight, ${r.weight})` : String(r.weight),
     letterSpacing: `${r.tracking}em`,
     textTransform: r.upper ? 'uppercase' : 'none',
+    // Display, headings and titles take the strong text color, the neutral endpoint (fg.strong).
+    ...(r.strong ? { color: 'var(--colors-fg-strong)' } : {}),
   };
 }
 

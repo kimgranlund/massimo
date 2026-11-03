@@ -66,6 +66,8 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76
 - mono: `ui-monospace, "SF Mono", Menlo, Consolas, monospace`
 - controls: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`
 
+Display, the headings and title take the strong text color `fg.strong` (the neutral endpoint: black in light, white in dark; [color](color.md#roles)); every other role inherits its color.
+
 ## Using a role
 
 - HTML: `<h2 data-type="heading-2">`.

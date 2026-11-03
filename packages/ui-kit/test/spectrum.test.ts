@@ -114,3 +114,18 @@ test('one color vocabulary: every brand and feedback role has the same steps, no
   assert.notEqual(layer.base, layer._dark);
   assert.ok(!/oklch\(0 0 0/.test(JSON.stringify(semanticShadows)));
 });
+
+test('white and black are the neutral endpoints; fg.strong is black in light, white in dark, in the kit tokens and at runtime', async () => {
+  const D = (await import('../tokens/colors/spectrum/defaults.json', { with: { type: 'json' } })).default as any;
+  const { colors, semanticColors } = await import('../tokens/colors/index.ts');
+  const { generateSpectrum, resolveRoles, roleVariables } = await import('../tokens/colors/spectrum/index.ts');
+  assert.equal(colors.white.value, D.light[D.roles.neutral][0]);
+  assert.equal(colors.black.value, D.dark[D.roles.neutral][0]);
+  const strong = (semanticColors as any).fg.strong.value;
+  assert.deepEqual([strong.base, strong._dark], ['{colors.black}', '{colors.white}']);
+  const data = generateSpectrum({}), roles = resolveRoles(data, {});
+  const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
+  assert.equal(light['--colors-white'], dark['--colors-white'], 'white is the same in both schemes');
+  assert.equal(light['--colors-white'], data.schemes.light[roles.neutral][0].css);
+  assert.deepEqual([light['--colors-fg-strong'], dark['--colors-fg-strong']], ['var(--colors-black)', 'var(--colors-white)']);
+});

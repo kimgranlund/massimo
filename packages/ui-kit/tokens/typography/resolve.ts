@@ -67,13 +67,15 @@ export interface TypeRole {
   tracking: number; // em
   upper?: boolean;
   control?: boolean; // unitless line height, no rhythm rounding
+  strong?: boolean; // the strong text color (fg.strong): display, headings, titles
 }
 
 export const TYPE_ROLES = {
-  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 0.95, weight: 700, tracking: -0.045 },
-  'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025 },
-  'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02 },
-  'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01 },
+  // strong: the role takes fg.strong (the neutral endpoint: black in light, white in dark).
+  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 0.95, weight: 700, tracking: -0.045, strong: true },
+  'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025, strong: true },
+  'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02, strong: true },
+  'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01, strong: true },
   'section-kicker': { label: 'Kicker · Section', voice: 'ui', step: 0, lh: 1.2, weight: 700, tracking: 0.12, upper: true },
   'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 500, tracking: 0.096, upper: true },
   'body-large':    { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0 },
@@ -83,7 +85,7 @@ export const TYPE_ROLES = {
   'control':       { label: 'Control',         voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
   'label':         { label: 'Label',           voice: 'ui', step: 0,  lh: 1.4,  weight: 450, tracking: 0 },
   // A strong item title: list and settings rows, table name cells, small card titles.
-  'title':         { label: 'Title',           voice: 'ui', step: 0,  lh: 1.4,  weight: 600, tracking: 0 },
+  'title':         { label: 'Title',           voice: 'ui', step: 0,  lh: 1.4,  weight: 600, tracking: 0, strong: true },
   'control-small': { label: 'Control · Small', voice: 'ui', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
 } as const satisfies Record<string, TypeRole>;
 export type TypeRoleName = keyof typeof TYPE_ROLES;
