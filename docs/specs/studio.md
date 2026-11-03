@@ -21,7 +21,7 @@
 - **Colors:** Random, role groups (brand, feedback, data 1–6), hue set (Unique or Radix) and first hue, chroma (requested, base %, falloff, hue balance), tone (automatic peak, dark and light endpoints), neutral tint, scale, gamut. Generation runs on the main thread, debounced (~300ms per run). Role selects are grouped Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6, each option and the trigger led by a swatch of the family's step 9; **Random** reassigns the brand roles (the neutral included) and data 1–6 from the generated families, and feedback roles keep their colors.
 - **Typography:** unit, ratio (named ratios), rhythm (none, ½u, 1u); a stack menu per face (sans, serif, mono, display) and a face menu per voice (display, heading, body, ui, numeric, code). Copy JSON carries `typography.faces` and `typography.voices`.
 - **Motion:** `MotionPanel` (`src/studio/MotionPanel.tsx`) owns every motion control (duration scale, bounce, springs, intents); no other tab shows motion.
-- **Copy:** JSON of every applied setting minus defaults (`theme`, `scheme`, `spectrum.settings`, `spectrum.roles`) plus `howToApply`, for an agent. **Reset:** all defaults.
+- **Copy:** the applied settings minus defaults as one [theme object](theming.md#theme-object) (`parameters`, `icons`, `scheme`, `color.spectrum`, `color.roles`, `typography.faces`, `typography.voices`), with `$schema`. **Load:** reads a theme object from the clipboard, validates it (`validateThemeObject`; the status line lists the problems) and applies it; sections it omits return to the defaults. **Reset:** all defaults.
 
 ## Pages
 

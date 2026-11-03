@@ -8,7 +8,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
@@ -121,25 +121,40 @@ export function App() {
   const setParam = (k: ParamName, v: number) => setParams((p) => ({ ...p, [k]: v }));
   const setSpec = (k: string, v: unknown) => setSpectrum((p) => ({ ...p, [k]: v }));
 
-  // Everything applied, minus defaults: paste into an agent prompt.
-  const snapshot = () => ({
-    kit: '@massimo/ui-kit',
-    theme: { ...diffFromDefaults(params), ...(icons !== 'phosphor' ? { icons } : {}) },
-    scheme,
-    typography: {
-      voices: Object.fromEntries(Object.entries(voices).filter(([v, f]) => DEFAULT_VOICES[v as keyof VoiceMap] !== f)),
-      faces: Object.fromEntries(Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st)),
-    },
-    spectrum: { settings: spectrumOverrides(spectrum), roles: generated?.roles ?? roles },
-    howToApply: {
-      theme: 'Merge `theme` into packages/ui-kit/tokens/themes/themes.json under a theme name, then <html data-ui-theme="name">.',
-      typography: 'Voices: data-font-<voice>="<face>" on <html> (or any element). Faces: set --fonts-<face> to the stack (e.g. in the Panda preset tokens.fonts).',
-      spectrum: 'generateSpectrum(spectrum.settings) and spectrumCSS(data, resolveRoles(data, spectrum.roles)) from @massimo/ui-kit/spectrum; emit the CSS after the kit stylesheet.',
-    },
-  });
+  // Everything applied, minus defaults, as one theme object (contracts/theme.schema.json): paste it
+  // into an agent prompt or save it under its name in packages/ui-kit/tokens/themes/themes.json.
+  const [themeName, setThemeName] = useState('custom');
+  const changed = <T extends Record<string, unknown>>(cur: T, base: T) => Object.fromEntries(Object.entries(cur).filter(([k, v]) => JSON.stringify(v) !== JSON.stringify(base[k])));
+  const nonEmpty = <T extends Record<string, unknown>>(o: T) => Object.fromEntries(Object.entries(o).filter(([, v]) => v !== undefined && !(typeof v === 'object' && v && !Array.isArray(v) && !Object.keys(v).length)));
+  const themeObject = (): Theme => nonEmpty({
+    schemaVersion: 1 as const,
+    name: themeName,
+    parameters: diffFromDefaults(params),
+    icons: icons !== 'phosphor' ? icons : undefined,
+    scheme: scheme !== 'auto' ? scheme : undefined,
+    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES) }),
+    typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES) }),
+  }) as unknown as Theme;
+  // Load: the same object back (clipboard); every section not in it returns to the default.
+  const applyTheme = (t: Theme) => {
+    setThemeName(t.name);
+    setParams({ ...defaultParams, ...(t.parameters as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
+    setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
+    setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
+  };
+  const loadTheme = async () => {
+    let text = '';
+    try { text = await navigator.clipboard.readText(); } catch { setStatus('Load: clipboard not readable'); return; }
+    let data: unknown;
+    try { data = JSON.parse(text); } catch { setStatus('Load: the clipboard is not JSON'); return; }
+    const r = validateThemeObject(data);
+    if (!r.ok) { setStatus(`Load: ${r.errors.slice(0, 3).join('; ')}${r.errors.length > 3 ? ` (+${r.errors.length - 3})` : ''}`); return; }
+    applyTheme(r.theme);
+    setStatus(`Loaded theme ${r.theme.name}`);
+  };
 
   const reset = () => {
-    setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES);
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES);
     setStatus('Reset to defaults');
   };
 
@@ -151,7 +166,8 @@ export function App() {
   }, [scheme]);
   // One icon button cycles the scheme: auto (follow the OS) → light → dark.
   const schemeRef = useEvent('click', () => setScheme((v) => NEXT_SCHEME[v]));
-  const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify(snapshot(), null, 2)).then(() => setStatus('Copied settings JSON'), () => setStatus('Copy failed')));
+  const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify({ $schema: 'packages/ui-kit/contracts/theme.schema.json', ...themeObject() }, null, 2)).then(() => setStatus('Copied theme JSON'), () => setStatus('Copy failed')));
+  const loadRef = useEvent('click', () => { void loadTheme(); });
   const resetRef = useEvent('click', reset);
   const randomRef = useEvent('click', () => setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)));
 
@@ -285,6 +301,7 @@ export function App() {
           <p className={s.status} role="status">{status}</p>
           <div className={s.actions}>
             <ui-button ref={copyRef}><i slot="leading" name="copy" />Copy</ui-button>
+            <ui-button ref={loadRef}><i slot="leading" name="clipboard-text" />Load</ui-button>
             <ui-button ref={resetRef}>Reset</ui-button>
           </div>
         </footer>

@@ -77,6 +77,7 @@ Never edit these by hand; `npm run ui-kit:test` fails when a committed one is st
 | `packages/ui-kit/tokens/dtcg/*.dtcg.json` | `npm run tokens:dtcg` | resolvers and Spectrum snapshot (DTCG 2025.10, see below) |
 | `packages/ui-kit/tokens/colors/spectrum/defaults.json` | `npm run spectrum:defaults` | Spectrum engine at default settings |
 | `packages/ui-kit/graph.json` | `npm run registry:graph` | manifests and contracts ([registry](registry.md)) |
+| `packages/ui-kit/contracts/theme.schema.json` | `npm run theme:schema` | `tokens/themes/theme.ts` and the parameter, Spectrum, role, face and voice exports ([theming](theming.md#theme-object)) |
 | verification hashes in `components/*/verification/*.json` | `npm run verification -- run <folder…\|--all>`, stamped only when the checks pass | bound sources ([registry](registry.md)) |
 | `packages/ui-kit/styled-system/`, `dist/ui-kit.css` (not committed) | `npm run build` | Panda preset |
 | mirrored fields of `packages/ui-kit/components/*/*.manifest.json` | `npm run manifests` | element classes, dispatched events, `contracts/components.json`, React renderer types ([registry](registry.md#generated-manifest-fields)) |

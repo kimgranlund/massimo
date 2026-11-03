@@ -105,7 +105,7 @@ Precedence, as in artifact-design: the user's words, the brand's existing system
 
 | Step | Delivers | Done when |
 |---|---|---|
-| 1 | `theme.schema.json`; saved themes and jig Copy/Load use it (Spectrum, roles, faces, voices, density, elevation included) | a theme round-trips jig → file → jig unchanged; `validateTheme` validates the whole object |
+| 1 (built 2026-11-03) | `theme.schema.json`; saved themes and jig Copy/Load use it (Spectrum, roles, faces, voices, density, elevation included) | a theme round-trips jig → file → jig unchanged; `validateThemeObject` validates the whole object |
 | 2 | `theme-descriptors.json` and `resolveTheme` / `describeTheme` | every descriptor resolves inside the parameter ranges; describe(resolve(d)) = d for every descriptor |
 | 3 | `theme-constraints.json` and `lintTheme` (with APCA on roles) | each rule has a passing and a failing fixture |
 | 4 | registry nodes and the `theme` CLI | `--find soft`, `--describe`, `--lint` work from the root |

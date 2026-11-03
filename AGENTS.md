@@ -16,7 +16,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 | Colors, roles, schemes / type roles, fonts / springs | [color](docs/specs/color.md) / [typography](docs/specs/typography.md) / [motion](docs/specs/motion.md) |
 | Elevation: levels, fills, shadows, layers | [elevation](docs/specs/elevation.md) |
 | The system as a function: every input and what it drives (`contracts/parameters.json`) | [system](docs/specs/system.md#the-system-as-a-function) |
-| Theme parameters, saved themes, Panda preset and configs | [theming](docs/specs/theming.md) |
+| Theme parameters, the theme object (`contracts/theme.schema.json`), saved themes, Panda preset and configs | [theming](docs/specs/theming.md) |
 | Icons / the jig | [icons](docs/specs/icons.md) / [studio](docs/specs/studio.md) |
 
 ## Rules that bite
@@ -27,7 +27,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 - Continuous values reach CSS only as custom properties set by script; finite choices are attributes and selectors. No runtime stylesheets in components.
 - Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`). The jig uses ui-kit web components only.
 - A component change updates its manifest, guide, examples and contract in the same commit.
-- Never hand-edit a generated file: `docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `graph.json`, the mirrored manifest fields, verification hashes, `styled-system/`, `dist/`. Generators: [system](docs/specs/system.md#generated-outputs). Tests fail when one is stale.
+- Never hand-edit a generated file: `docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `graph.json`, `contracts/theme.schema.json`, the mirrored manifest fields, verification hashes, `styled-system/`, `dist/`. Generators: [system](docs/specs/system.md#generated-outputs). Tests fail when one is stale.
 
 ## Checks
 
