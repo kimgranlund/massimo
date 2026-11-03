@@ -514,3 +514,21 @@ export function resolveForm(input: GeometryInput & { gapUnits?: number } = {}) {
   const c = resolveContainer('collection', input);
   return { unit: c.unit, gap: c.gap, padding: 0, border: 0, radius: 0 };
 }
+
+// ── Scroll area ──
+// ui-scroll-area draws its own scrollbars over a natively scrolling viewport: a track 2u thick at
+// the inline end (vertical) or the block end (horizontal), the thumb inside it 0.5u from each side
+// (so u thick), at least 4u long, a pill (radius half its thickness, scaled by the corner radius
+// like a control: min(3u·s, t/2)). Where both bars show, a 2u corner square fills the meeting
+// point. No border: the bars overlay the content's edge, which the content pads when it needs to.
+export function resolveScrollArea(input: GeometryInput = {}) {
+  const x = inputs(input);
+  const u = x.unit;
+  const thickness = 2 * u, inset = 0.5 * u, thumb = thickness - 2 * inset;
+  return {
+    unit: u, thickness, inset, thumb, thumbMin: 4 * u,
+    trackRadius: Math.min(3 * u * x.radiusScale, thickness / 2),
+    thumbRadius: Math.min(3 * u * x.radiusScale, thumb / 2),
+    corner: thickness,
+  };
+}

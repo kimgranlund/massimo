@@ -9,7 +9,7 @@ import { AVATAR_SIZES, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolv
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, ui-separator, ui-avatar, ui-meter, ui-toggle, [data-ui], ui-collapsible, ui-accordion, ui-tabs)';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, ui-separator, ui-avatar, ui-meter, ui-toggle, [data-ui], ui-collapsible, ui-accordion, ui-tabs, ui-scroll-area)';
 // Badge, tag and chip hosts in both renderers (the React ones are data-ui hosts).
 export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag], [data-ui=chip])';
 const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;
@@ -75,6 +75,17 @@ export const geometry = defineGlobalStyles({
   ':is(ui-range, ui-progress, ui-meter, [data-ui=range], [data-ui=progress], [data-ui=meter])': {
     '--track': 'calc(4 * var(--u))',
     '--track-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--track) / 2))',
+  },
+
+  // Scroll area (resolveScrollArea): a 2u track, the thumb 0.5u inside it (u thick), at least 4u
+  // long, pill radii capped like a control's; read by the scroll-area recipe.
+  ':is(ui-scroll-area, [data-ui=scroll-area])': {
+    '--scrollbar': 'calc(2 * var(--u))',
+    '--scrollbar-inset': 'calc(0.5 * var(--u))',
+    '--thumb': 'calc(var(--scrollbar) - 2 * var(--scrollbar-inset))',
+    '--thumb-min': 'calc(4 * var(--u))',
+    '--scrollbar-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--scrollbar) / 2))',
+    '--thumb-r': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--thumb) / 2))',
   },
 
   // Separator (resolveSeparator): as thick as the theme border, never thinner than a hairline.

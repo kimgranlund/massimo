@@ -372,6 +372,21 @@
         "layout"
       ]
     },
+    "component:scroll-area": {
+      "kind": "component",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-scroll-area",
+      "searchTerms": [
+        "scroll area",
+        "scrollbar",
+        "custom scrollbar",
+        "scrollable",
+        "overflow",
+        "scroll container",
+        "thumb"
+      ]
+    },
     "component:segmented": {
       "kind": "component",
       "source": "components/listbox/listbox.manifest.json#/nodes/1",
@@ -895,6 +910,17 @@
         "slideshow"
       ]
     },
+    "geometry:scroll-area": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/scroll-area",
+      "availability": "implemented",
+      "searchTerms": [
+        "scrollbar size",
+        "scrollbar thickness",
+        "thumb size",
+        "scroll area geometry"
+      ]
+    },
     "geometry:separator": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/separator",
@@ -1119,6 +1145,51 @@
       "tag": "span",
       "searchTerms": [
         "range thumb"
+      ]
+    },
+    "part:scroll-area-content": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area content"
+      ]
+    },
+    "part:scroll-area-corner": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area corner"
+      ]
+    },
+    "part:scroll-area-scrollbar": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area scrollbar"
+      ]
+    },
+    "part:scroll-area-thumb": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area thumb"
+      ]
+    },
+    "part:scroll-area-viewport": {
+      "kind": "part",
+      "source": "components/scroll-area/scroll-area.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "scroll area viewport"
       ]
     },
     "part:select-icon": {
@@ -4724,6 +4795,116 @@
       "from": "component:progress",
       "relation": "allowedIn",
       "to": "context:group"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "usesGeometry",
+      "to": "geometry:scroll-area"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-viewport"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-content"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-scrollbar"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-thumb"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "ownsPart",
+      "to": "part:scroll-area-corner"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:scroll-area",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
     },
     {
       "from": "component:select",

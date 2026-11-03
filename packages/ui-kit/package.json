@@ -61,7 +61,9 @@
     "./components/tabs/element": "./components/tabs/tabs.element.ts",
     "./components/tabs/react": "./components/tabs/tabs.react.tsx",
     "./components/form/element": "./components/form/form.element.ts",
-    "./components/form/react": "./components/form/form.react.tsx"
+    "./components/form/react": "./components/form/form.react.tsx",
+    "./components/scroll-area/element": "./components/scroll-area/scroll-area.element.ts",
+    "./components/scroll-area/react": "./components/scroll-area/scroll-area.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

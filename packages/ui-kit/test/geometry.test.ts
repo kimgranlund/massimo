@@ -263,3 +263,11 @@ test('form: the collection gap (2u; theme gapUnits and the gap attribute win), n
   assert.equal(resolveForm({ unit: 4, gapUnits: 3 }).gap, 12);
   assert.equal(resolveForm({ unit: 4, gapUnits: 3, gap: 1 }).gap, 4);
 });
+
+// Scroll area (geometry:scroll-area).
+import { resolveScrollArea } from '../tokens/geometry/resolve.ts';
+test('scroll area: a 2u track, the thumb u thick 0.5u inside it, at least 4u long, pill radii, a 2u corner', () => {
+  assert.deepEqual(resolveScrollArea({ unit: 4 }), { unit: 4, thickness: 8, inset: 2, thumb: 4, thumbMin: 16, trackRadius: 4, thumbRadius: 2, corner: 8 });
+  assert.equal(resolveScrollArea({ unit: 4, radiusScale: 0 }).thumbRadius, 0);
+  assert.equal(resolveScrollArea({ unit: 6, radiusScale: 0.1 }).thumbRadius, 1.8);
+});

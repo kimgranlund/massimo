@@ -38,4 +38,6 @@ export const pending = defineGlobalStyles({
   ':is(ui-radio-group, ui-checkbox-group, ui-fieldset):not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   // A form keeps the block flow of its fields (they reserve their own space).
   'ui-form:not(:defined)': { display: 'block' },
+  // A scroll area keeps the block its author sized and scrolls natively until its viewport wraps the content.
+  'ui-scroll-area:not(:defined)': { display: 'block', overflow: 'auto' },
 });

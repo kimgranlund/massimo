@@ -370,6 +370,26 @@
         "form"
       ],
       "ladder": "form"
+    },
+    "scroll-area": {
+      "id": "geometry:scroll-area",
+      "resolver": [
+        "resolveScrollArea"
+      ],
+      "summary": "Scrollbars over a natively scrolling viewport: a 2u track at the inline end (vertical) or block end (horizontal), the thumb inside it 0.5u from each side (u thick), at least 4u long, pill radii min(3u·s, thickness / 2); a 2u corner square where both bars meet. No border; the bars overlay the content's edge.",
+      "members": [
+        "component:scroll-area"
+      ],
+      "searchTerms": [
+        "scrollbar size",
+        "scrollbar thickness",
+        "thumb size",
+        "scroll area geometry"
+      ],
+      "csv": [
+        "scroll-area"
+      ],
+      "ladder": "scrollArea"
     }
   }
 }

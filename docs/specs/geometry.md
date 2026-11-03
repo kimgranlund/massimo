@@ -68,6 +68,19 @@ Inputs and select triggers are laid out as buttons: the host (input `[data-part=
 
 Swiper paddles are fully round (radius = half their height) whatever the curvature setting, like the dots, and use icon size lg.
 
+## Scroll area
+
+`ui-scroll-area` (`resolveScrollArea`, CSS in `styles/geometry.ts`): scrollbars over a natively scrolling viewport.
+
+| Quantity | Formula | u = 4 / 6 |
+|---|---|---|
+| track thickness | 2u, at the inline end (vertical) or block end (horizontal) | 8 / 12 |
+| thumb | 0.5u inside the track: u thick, at least 4u long, else track × visible / total | 4 / 6, ≥ 16 / 24 |
+| radii | track min(3u·s, u), thumb min(3u·s, u / 2): pills | 4 / 6, 2 / 3 |
+| corner | 2u square where both bars show, else 0 | 8 / 12 |
+
+No border; the bars overlay the content's edge. Lengths that follow the scroll position (thumb length and offset, corner, overflow distances) are custom properties set by script.
+
 ## Disclosure: collapsible, accordion, tabs
 
 | | Formula | at u=4 |

@@ -26,6 +26,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
+import '@massimo/ui-kit/components/scroll-area/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -50,6 +51,7 @@ import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
 import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
 import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Form } from '@massimo/ui-kit/components/form/react';
+import { ScrollArea } from '@massimo/ui-kit/components/scroll-area/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
@@ -113,6 +115,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-fieldset data-k="fs" legend="Address"><ui-checkbox>Same</ui-checkbox><ui-switch checked>Ship</ui-switch></ui-fieldset></div>
         <div style={{ width: 300 }}><ui-fieldset data-k="fsd" legend="Address" disabled><ui-checkbox checked>Same</ui-checkbox><ui-radio-group value="a"><ui-radio value="a">One</ui-radio></ui-radio-group></ui-fieldset></div>
         <div style={{ width: 300 }}><ui-form data-k="fm"><ui-checkbox name="same">Same</ui-checkbox><ui-switch name="ship" checked>Ship</ui-switch></ui-form></div>
+        <ui-scroll-area data-k="sa" style={{ height: 120, width: 240 }}><div style={{ width: 480, height: 480 }} /></ui-scroll-area>
+        <ui-scroll-area data-k="saY" style={{ height: 120, width: 240 }}><div style={{ height: 480 }} /></ui-scroll-area>
         <div style={{ width: 300 }}><ui-collapsible data-k="col" label="Details" open><p>Panel</p></ui-collapsible></div>
         <div style={{ width: 300 }}><ui-collapsible data-k="colD" label="Off" disabled><p>Panel</p></ui-collapsible></div>
         <div style={{ width: 300 }}><ui-tabs data-k="tab" default-value="b"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">A</div><div {...{ value: 'b' }} data-part="tab"><i slot="leading" name="code" />B</div><div {...{ value: 'c', disabled: true }} data-part="tab">C</div></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div><div {...{ value: 'c' }} data-part="panel">c</div></ui-tabs></div>
@@ -170,6 +174,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Fieldset data-k="fs" legend="Address"><Checkbox>Same</Checkbox><Switch defaultChecked>Ship</Switch></Fieldset></div>
         <div style={{ width: 300 }}><Fieldset data-k="fsd" legend="Address" disabled><Checkbox defaultChecked>Same</Checkbox><RadioGroup defaultValue="a"><Radio value="a">One</Radio></RadioGroup></Fieldset></div>
         <div style={{ width: 300 }}><Form data-k="fm"><Checkbox name="same">Same</Checkbox><Switch name="ship" defaultChecked>Ship</Switch></Form></div>
+        <ScrollArea data-k="sa" style={{ height: 120, width: 240 }}><div style={{ width: 480, height: 480 }} /></ScrollArea>
+        <ScrollArea data-k="saY" style={{ height: 120, width: 240 }}><div style={{ height: 480 }} /></ScrollArea>
         <div style={{ width: 300 }}><Collapsible data-k="col" label="Details" defaultOpen><p>Panel</p></Collapsible></div>
         <div style={{ width: 300 }}><Collapsible data-k="colD" label="Off" disabled><p>Panel</p></Collapsible></div>
         <div style={{ width: 300 }}><Tabs.Root data-k="tab" defaultValue="b"><Tabs.List><Tabs.Tab value="a">A</Tabs.Tab><Tabs.Tab value="b" leading={<i name="code" />}>B</Tabs.Tab><Tabs.Tab value="c" disabled>C</Tabs.Tab><Tabs.Indicator /></Tabs.List><Tabs.Panel value="a">a</Tabs.Panel><Tabs.Panel value="b">b</Tabs.Panel><Tabs.Panel value="c">c</Tabs.Panel></Tabs.Root></div>
@@ -349,6 +355,25 @@ setTimeout(() => {
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
       pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
+    }
+  }
+  // Scroll areas: every part (viewport, content, scrollbars, thumbs, corner) at the same place and size, with the same data-*.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['sa', 'saY']) {
+      const a = host(wc, k), b = host(re, k);
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[data-part=viewport], [data-part=content], [data-part=scrollbar], [data-part=thumb], [data-part=corner]')] as HTMLElement[];
+      const geo = (e: HTMLElement, h: HTMLElement) => { if (e.hidden || e.closest('[hidden]')) return 'hidden'; const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.opacity}`; };
+      const pa = parts(a), pb = parts(b);
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} parts: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => {
+        checks += 2;
+        const va = stateOf(x), vb = stateOf(pb[i]);
+        if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`);
+        const ga = geo(x, a), gb = geo(pb[i], b);
+        if (ga !== gb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] ${x.getAttribute('data-part') ?? 'root'}: wc ${ga} react ${gb}`);
+      });
     }
   }
   // Groups (radio group, checkbox group, fieldset): the host and each member carry the same data-*.
