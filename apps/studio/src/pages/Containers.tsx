@@ -7,7 +7,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
-import { CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveContainer } from '@massimo/ui-kit/tokens';
+import { CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveControl } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, groupHead, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
 
@@ -21,6 +21,21 @@ const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 
 const LEVELS = Object.keys(CONTAINERS) as (keyof typeof CONTAINERS)[];
+
+// Concentric wireframe: the real components with their fills removed and one inset stroke per
+// type (a box-shadow follows border-radius and corner-shape), so only the nested curves show.
+const STROKE = { card: 1, group: 2, control: 3, composite: 4, option: 5 } as const;
+const wire = css({
+  display: 'flex', flexWrap: 'wrap', alignItems: 'start', gap: '8',
+  '& :is(ui-card, ui-group, ui-button, ui-segmented, ui-option)': { bg: 'transparent', color: 'fg.muted' },
+  '& ui-card': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-1)]' },
+  '& ui-group': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-2)]' },
+  '& ui-button': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-3)]' },
+  '& ui-segmented': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-4)]' },
+  '& ui-option': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-5)]' },
+});
+const legend = css({ display: 'grid', gridTemplateColumns: '[auto auto 1fr]', alignItems: 'center', columnGap: '3', rowGap: '2', textStyle: 'caption', color: 'fg.muted' });
+const key = css({ width: '6', height: '4', borderRadius: 'sm' });
 
 export function ContainersPage({ params }: PageProps) {
   const p = params as unknown as Record<string, number>;
@@ -58,6 +73,10 @@ export function ContainersPage({ params }: PageProps) {
             </tbody>
           </table>
         </div>
+      </Section>
+      <Divider />
+      <Section id="concentric" title="Concentric" note="A card holding a button and a group; the group holds a button and a composite (segmented) with its options. Fills are removed and each type is one stroke, so the nested curves show: the group and the composite share the control's radius rule; options split the composite's difference (R − D); the group is the control radius + its padding; the card is its padding × t. Move Corner radius, Unit or the radius magnitudes in the Geometry tab.">
+        <ConcentricWire params={params} />
       </Section>
       <Divider />
       <Section id="levels" title="Levels" note="Each box tints its padding; the two children show its gap.">
@@ -176,3 +195,38 @@ const USED_BY: Record<keyof typeof CONTAINERS, string> = {
   region: 'page areas',
   page: 'the outer frame (max width)',
 };
+
+function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
+  const p = params as unknown as Record<string, number>;
+  const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'] };
+  const card = resolveContainer('card-md', { ...g, padUnits: p['pad-card-md'], radiusFactor: p['radius-card'] });
+  const group = resolveContainer('group', { ...g, padUnits: p['pad-group'], radiusFactor: p['radius-group'] });
+  const cmp = resolveComposite({ ...g, padUnits: p['pad-composite'] });
+  const rows: [keyof typeof STROKE, string, string][] = [
+    ['card', 'card (md)', `${fmt(card.radius)}px · padding × min(1, s) × t`],
+    ['group', 'group', `${fmt(group.radius)}px · control radius + padding, × t`],
+    ['control', 'button', `${fmt(resolveControl(g).radius)}px · min(3u·s, 4u)`],
+    ['composite', 'composite', `${fmt(cmp.radius)}px · the control radius`],
+    ['option', 'option', `${fmt(cmp.child.radius)}px · R − D`],
+  ];
+  return (
+    <div className={wire}>
+      <ui-card>
+        <ui-button>Button</ui-button>
+        <ui-group>
+          <ui-button>Button</ui-button>
+          <ui-segmented label="Composite" value="a"><ui-option value="a">Option</ui-option><ui-option value="b">Option</ui-option></ui-segmented>
+        </ui-group>
+      </ui-card>
+      <div className={legend} role="list" aria-label="Stroke colors">
+        {rows.map(([k, name, value]) => (
+          <div key={k} role="listitem" style={{ display: 'contents' }}>
+            <span className={key} style={{ boxShadow: `inset 0 0 0 1.5px var(--colors-data-${STROKE[k]})` }} />
+            <span>{name}</span>
+            <span>{value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

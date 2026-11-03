@@ -190,7 +190,7 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
  * segmented control is exactly 8u. The composite is a control: it takes the control radius and its
  * options R − D, concentric inside it.
  */
-export function resolveComposite(input: GeometryInput & { container?: boolean } = {}) {
+export function resolveComposite(input: GeometryInput & { container?: boolean; padUnits?: number } = {}) {
   const c = resolveControl(input);
   const box = resolveContainer('composite', input);
   const edge = Math.max(c.border, box.edge);             // D
