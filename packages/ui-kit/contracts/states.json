@@ -544,6 +544,38 @@
         "data-align",
         "data-uncentered"
       ]
+    },
+    "ui-tooltip": {
+      "host": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement",
+        "data-instant"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-instant"
+      ],
+      "arrow": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-uncentered"
+      ]
     }
   },
   "native": {
@@ -623,7 +655,8 @@
         "ui-select",
         "ui-collapsible",
         "ui-accordion",
-        "ui-popover"
+        "ui-popover",
+        "ui-tooltip"
       ]
     },
     "disabled": {

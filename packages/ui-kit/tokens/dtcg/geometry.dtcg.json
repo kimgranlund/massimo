@@ -6637,6 +6637,193 @@
           }
         }
       }
+    },
+    "tooltip": {
+      "height": {
+        "$type": "dimension",
+        "$value": {
+          "value": 31.5,
+          "unit": "px"
+        },
+        "$description": "tooltip popup · single-line height · a 6u text slot inside a 0.5u edge, like a composite item; grows when it wraps",
+        "$extensions": {
+          "com.massimo.formula": "6u + 2 * 0.5u = 7u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 14,
+            "u=2.25": 15.75,
+            "u=2.5": 17.5,
+            "u=2.75": 19.25,
+            "u=3": 21,
+            "u=3.5": 24.5,
+            "u=4": 28,
+            "u=4.5": 31.5,
+            "u=5": 35,
+            "u=5.5": 38.5,
+            "u=6": 42,
+            "u=6.5": 45.5,
+            "u=7": 49,
+            "u=7.5": 52.5,
+            "u=8": 56,
+            "u=8.5": 59.5,
+            "u=9": 63,
+            "u=9.5": 66.5,
+            "u=10": 70,
+            "u=10.5": 73.5,
+            "u=11": 77,
+            "u=11.5": 80.5,
+            "u=12": 84
+          }
+        }
+      },
+      "paddingBlock": {
+        "$type": "dimension",
+        "$value": {
+          "value": 7.05,
+          "unit": "px"
+        },
+        "$description": "tooltip popup · block padding · line = min(1.2 * font, 6u)",
+        "$extensions": {
+          "com.massimo.formula": "0.5u - B + (6u - line) / 2",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 1,
+            "u=2.25": 1.125,
+            "u=2.5": 1.25,
+            "u=2.75": 1.975,
+            "u=3": 2.7,
+            "u=3.5": 4.15,
+            "u=4": 5.6,
+            "u=4.5": 7.05,
+            "u=5": 8.5,
+            "u=5.5": 9.95,
+            "u=6": 11.4,
+            "u=6.5": 12.85,
+            "u=7": 14.3,
+            "u=7.5": 15.75,
+            "u=8": 17.2,
+            "u=8.5": 18.65,
+            "u=9": 20.1,
+            "u=9.5": 21.55,
+            "u=10": 23,
+            "u=10.5": 24.45,
+            "u=11": 25.9,
+            "u=11.5": 27.35,
+            "u=12": 28.8
+          }
+        }
+      },
+      "paddingInline": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9,
+          "unit": "px"
+        },
+        "$description": "tooltip popup · inline padding · text 2u from a bare edge",
+        "$extensions": {
+          "com.massimo.formula": "2u - B",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 4,
+            "u=2.25": 4.5,
+            "u=2.5": 5,
+            "u=2.75": 5.5,
+            "u=3": 6,
+            "u=3.5": 7,
+            "u=4": 8,
+            "u=4.5": 9,
+            "u=5": 10,
+            "u=5.5": 11,
+            "u=6": 12,
+            "u=6.5": 13,
+            "u=7": 14,
+            "u=7.5": 15,
+            "u=8": 16,
+            "u=8.5": 17,
+            "u=9": 18,
+            "u=9.5": 19,
+            "u=10": 20,
+            "u=10.5": 21,
+            "u=11": 22,
+            "u=11.5": 23,
+            "u=12": 24
+          }
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 13.5,
+          "unit": "px"
+        },
+        "$description": "tooltip popup · radius · the control radius, capped at half the 7u row",
+        "$extensions": {
+          "com.massimo.formula": "min(3u * s, 3.5u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 6,
+            "u=2.25": 6.75,
+            "u=2.5": 7.5,
+            "u=2.75": 8.25,
+            "u=3": 9,
+            "u=3.5": 10.5,
+            "u=4": 12,
+            "u=4.5": 13.5,
+            "u=5": 15,
+            "u=5.5": 16.5,
+            "u=6": 18,
+            "u=6.5": 19.5,
+            "u=7": 21,
+            "u=7.5": 22.5,
+            "u=8": 24,
+            "u=8.5": 25.5,
+            "u=9": 27,
+            "u=9.5": 28.5,
+            "u=10": 30,
+            "u=10.5": 31.5,
+            "u=11": 33,
+            "u=11.5": 34.5,
+            "u=12": 36
+          }
+        }
+      },
+      "maxWidth": {
+        "$type": "dimension",
+        "$value": {
+          "value": 270,
+          "unit": "px"
+        },
+        "$description": "tooltip positioner · max width · no minimum of the trigger width",
+        "$extensions": {
+          "com.massimo.formula": "min(available width, 60u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 120,
+            "u=2.25": 135,
+            "u=2.5": 150,
+            "u=2.75": 165,
+            "u=3": 180,
+            "u=3.5": 210,
+            "u=4": 240,
+            "u=4.5": 270,
+            "u=5": 300,
+            "u=5.5": 330,
+            "u=6": 360,
+            "u=6.5": 390,
+            "u=7": 420,
+            "u=7.5": 450,
+            "u=8": 480,
+            "u=8.5": 510,
+            "u=9": 540,
+            "u=9.5": 570,
+            "u=10": 600,
+            "u=10.5": 630,
+            "u=11": 660,
+            "u=11.5": 690,
+            "u=12": 720
+          }
+        }
+      }
     }
   }
 }

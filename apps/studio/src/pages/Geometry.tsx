@@ -15,6 +15,7 @@ import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/popover/element';
+import '@massimo/ui-kit/components/tooltip/element';
 import { css } from '../../styled-system/css/index.js';
 import {
   SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup,
@@ -175,11 +176,14 @@ export function GeometryPage({ params }: PageProps) {
       <Divider />
       <Section id="popups" title="Popups" note="Anchored popups sit 1u from their trigger on the preferred side (flipping when they do not fit), at least as wide as it; an arrow is a 2u triangle spanning the 1u gap. Surfaces come from the container ladder. Press a trigger to open it.">
         {(() => {
-          const p = resolvePopup('popover', theme);
+          const p = resolvePopup('popover', theme), t = resolvePopup('tooltip', theme);
           return (
             <>
               <SpecRow label="popover" values={[`offset ${pu(p.offset)} · arrow ${pu(p.arrowWidth)} × ${pu(p.arrowHeight)} · max width ${pu(p.maxWidth)}`, `padding ${px(p.paddingBlock)} · gap ${pu(p.gap)} · radius ${px(p.radius)} (card-sm)`]}>
                 <ui-popover label="Open popover"><h2 data-part="title">Popover</h2><p data-part="description">A small card 1u below its trigger.</p></ui-popover>
+              </SpecRow>
+              <SpecRow label="tooltip" values={[`row ${px(t.height ?? 0)} · padding ${px(t.paddingInline)} inline · radius ${px(t.radius)}`, `max width ${pu(t.maxWidth)} · inverse fill`]}>
+                <ui-tooltip content="A 7u text row"><ui-button>Hover or focus</ui-button></ui-tooltip>
               </SpecRow>
             </>
           );

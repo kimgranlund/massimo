@@ -187,6 +187,11 @@ export const rows: Row[] = [
   { id: 'popup.popover.radius', family: 'popup', element: 'popover popup', quantity: 'radius', formula: '3u * min(1, s)', value: (u) => resolvePopup('popover', { unit: u }).radius, status: 'implemented', notes: 'container family: at most the padding' },
   { id: 'popup.popover.gap', family: 'popup', element: 'popover popup', quantity: 'gap', formula: 'u', value: (u) => resolvePopup('popover', { unit: u }).gap, status: 'implemented', notes: 'the group gap; the gap attribute wins' },
   { id: 'popup.popover.maxWidth', family: 'popup', element: 'popover positioner', quantity: 'max width', formula: 'min(available width, 80u)', value: (u) => resolvePopup('popover', { unit: u }).maxWidth, status: 'implemented', notes: 'value shown is the 80u cap; min width = the trigger width' },
+  { id: 'popup.tooltip.height', family: 'popup', element: 'tooltip popup', quantity: 'single-line height', formula: '6u + 2 * 0.5u = 7u', value: (u) => resolvePopup('tooltip', { unit: u }).height ?? NaN, status: 'implemented', notes: 'a 6u text slot inside a 0.5u edge, like a composite item; grows when it wraps' },
+  { id: 'popup.tooltip.paddingBlock', family: 'popup', element: 'tooltip popup', quantity: 'block padding', formula: '0.5u - B + (6u - line) / 2', value: (u) => resolvePopup('tooltip', { unit: u }).paddingBlock, status: 'implemented', notes: 'line = min(1.2 * font, 6u)' },
+  { id: 'popup.tooltip.paddingInline', family: 'popup', element: 'tooltip popup', quantity: 'inline padding', formula: '2u - B', value: (u) => resolvePopup('tooltip', { unit: u }).paddingInline, status: 'implemented', notes: 'text 2u from a bare edge' },
+  { id: 'popup.tooltip.radius', family: 'popup', element: 'tooltip popup', quantity: 'radius', formula: 'min(3u * s, 3.5u)', value: (u) => resolvePopup('tooltip', { unit: u }).radius, status: 'implemented', notes: 'the control radius, capped at half the 7u row' },
+  { id: 'popup.tooltip.maxWidth', family: 'popup', element: 'tooltip positioner', quantity: 'max width', formula: 'min(available width, 60u)', value: (u) => resolvePopup('tooltip', { unit: u }).maxWidth, status: 'implemented', notes: 'no minimum of the trigger width' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

@@ -13,7 +13,7 @@ export const pendingKeyframes = defineKeyframes({
 const FIELD_HEIGHT = 'calc(var(--h) + 1.75rem)';
 
 export const pending = defineGlobalStyles({
-  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-popover):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-popover, ui-tooltip):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
   ':is(ui-badge, ui-tag, ui-chip):not(:defined)': { display: 'inline-flex' },
@@ -26,6 +26,8 @@ export const pending = defineGlobalStyles({
   // Anchored popups: the host has no box; only the trigger shows before the element runs.
   'ui-popover:not(:defined)': { display: 'contents' },
   'ui-popover:not(:defined) > :not([data-part=trigger])': { display: 'none' },
+  'ui-tooltip:not(:defined)': { display: 'contents' },
+  'ui-tooltip:not(:defined) > [data-part=popup]': { display: 'none' },
   'ui-tabs:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--u))' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
   // A toggle reserves the control height like a button.

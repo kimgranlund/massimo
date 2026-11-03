@@ -89,6 +89,7 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | height | at most the space beside the trigger (`--available-height`); the popup then scrolls | |
 | arrow | 2u wide, tip 1u from the popup (it spans the gap), centered on the trigger, kept radius + u inside the popup ends | 8 × 4 |
 | popover | the card-sm level: padding 3u − B, radius 3u·min(1, s), the group gap 1u (the `gap` attribute wins) (`resolvePopup('popover')`) | 12 / 12 / 4 |
+| tooltip | a 7u text row: the control font at line height 1.2 in a 6u text slot inside a 0.5u edge (block padding 0.5u − B + line padding), 2u − B at the ends, radius min(3u·s, 3.5u), at most 60u wide, no trigger-width minimum; inverse fill (`resolvePopup('tooltip')`) | 28 / 8 / 12 |
 
 ## Containers
 

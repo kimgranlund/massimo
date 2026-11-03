@@ -12,6 +12,8 @@ import { arrowOffset, chooseSide, createHoverIntent } from '../dom/popup.ts';
 
 await import('../components/popover/popover.element.ts');
 const { Popover } = await loadTsx(new URL('../components/popover/popover.react.tsx', import.meta.url));
+await import('../components/tooltip/tooltip.element.ts');
+const { Tooltip } = await loadTsx(new URL('../components/tooltip/tooltip.react.tsx', import.meta.url));
 
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
 const contract = JSON.parse(readFileSync(new URL('../contracts/states.json', import.meta.url), 'utf8'));
@@ -222,4 +224,88 @@ test('Popover (React): markup, preset vs parts, render and className functions',
   const c = html(h(Popover.Root, { defaultOpen: true, className: (s: any) => (s.open ? 'is-open' : 'is-closed') }, h(Popover.Trigger, { render: h('a', { href: '#x' }) }, 'Go')));
   assert.match(c, /class="ui-popover__root is-open"/);
   assert.match(c, /<a href="#x" .*data-popup-open=""/);
+});
+
+// ── Tooltip ──
+
+test('tooltip: the preset makes the child the trigger and content the role=tooltip popup it describes', async () => {
+  const el = await wc('<ui-tooltip content="Bold (⌘B)"><ui-button aria-label="Bold" aria-describedby="hint">B</ui-button></ui-tooltip>') as any;
+  const t = el.trigger, pos = el.positioner, p = el.popup;
+  assert.equal(t.localName, 'ui-button');
+  assert.equal(t.getAttribute('data-part'), 'trigger');
+  assert.equal(p.getAttribute('role'), 'tooltip');
+  assert.equal(p.textContent, 'Bold (⌘B)');
+  assert.equal(t.getAttribute('aria-describedby'), `hint ${p.id}`, 'its own description first, then the tooltip');
+  assert.equal(t.getAttribute('aria-haspopup'), null);
+  assert.equal(pos.getAttribute('data-placement'), 'top-center');
+  assert.equal(kit(el), 'ui-tooltip__root');
+  assert.equal(kit(p), 'ui-tooltip__popup');
+  assert.equal(kit(pos), 'ui-tooltip__positioner');
+  assert.ok(t.classList.contains('ui-tooltip__trigger'));
+  el.content = 'Bold'; await tick();
+  assert.equal(p.textContent, 'Bold', 'content follows the property');
+  assert.equal(el.querySelector(NATIVE), null, 'no native form elements');
+  el.parentElement!.remove();
+});
+
+test('tooltip: hover opens after the delay (trigger-hover); leaving, a press and Escape close it; the warm group skips the delay', async () => {
+  await sleep(450); // let the warm group from earlier tests cool down
+  const el = await wc('<ui-tooltip content="Save" delay="20"><ui-button>S</ui-button></ui-tooltip>') as any;
+  const reasons: string[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => reasons.push(`${e.detail.open}:${e.detail.reason}`));
+  const enter = () => el.trigger.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }));
+  const leave = () => el.trigger.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }));
+  enter(); await sleep(5);
+  assert.equal(el.open, false, 'still waiting for the delay');
+  await sleep(40);
+  assert.equal(el.open, true);
+  assert.equal(el.popup.hasAttribute('data-instant'), false, 'a cold open runs the motion');
+  assert.notEqual(document.activeElement, el.popup, 'focus never moves');
+  leave(); await sleep(80);
+  assert.equal(el.open, false);
+  // Warm: the next hover opens at once, without motion.
+  enter(); await tick();
+  assert.equal(el.open, true, 'warm: no delay');
+  assert.equal(el.popup.getAttribute('data-instant'), 'delay');
+  el.trigger.click(); await tick();
+  assert.equal(el.open, false, 'a press closes it');
+  enter(); await tick();
+  key(el.positioner, 'Escape'); await tick();
+  assert.equal(el.open, false);
+  assert.deepEqual(reasons, ['true:trigger-hover', 'false:trigger-hover', 'true:trigger-hover', 'false:trigger-press', 'true:trigger-hover', 'false:escape-key']);
+  el.parentElement!.remove();
+});
+
+test('tooltip: keyboard focus opens it at once (trigger-focus), blur closes it (focus-out); disabled never opens', async () => {
+  const el = await wc('<ui-tooltip content="Search"><ui-button>Find</ui-button></ui-tooltip>') as any;
+  const reasons: string[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => reasons.push(`${e.detail.open}:${e.detail.reason}`));
+  el.trigger.focus(); await tick();
+  assert.equal(el.open, true);
+  el.trigger.blur(); await tick();
+  assert.equal(el.open, false);
+  assert.deepEqual(reasons, ['true:trigger-focus', 'false:focus-out']);
+  el.disabled = true; await tick();
+  el.trigger.focus(); await tick();
+  assert.equal(el.open, false);
+  el.parentElement!.remove();
+  const parts = await wc('<ui-tooltip side="bottom" align="start"><span data-part="trigger" tabindex="0">?</span><div data-part="popup">Help<div data-part="arrow"></div></div></ui-tooltip>') as any;
+  assert.equal(parts.trigger.getAttribute('role'), null, 'a focusable authored trigger keeps its own semantics');
+  assert.equal(parts.arrow.parentElement, parts.positioner);
+  assert.equal(parts.positioner.getAttribute('data-placement'), 'bottom-start');
+  parts.parentElement!.remove();
+});
+
+test('Tooltip (React): the same data-* as ui-tooltip; preset vs parts; Provider delays', async () => {
+  const P: Part[] = [['host', ':scope'], ['trigger', '[data-part=trigger]'], ['positioner', '[data-part=positioner]'], ['popup', '[data-part=popup]'], ['arrow', '[data-part=arrow]']];
+  const tree = h(Tooltip.Root, null, h(Tooltip.Trigger, null, 'B'), h(Tooltip.Positioner, null, h(Tooltip.Popup, null, 'Bold'), h(Tooltip.Arrow)));
+  await same('ui-tooltip', '<ui-tooltip><ui-button data-part="trigger">B</ui-button><div data-part="popup">Bold<div data-part="arrow"></div></div></ui-tooltip>', tree, P);
+  const a = html(h(Tooltip, { content: 'Bold' }, h('span', { tabIndex: 0 }, 'B')));
+  assert.match(a, /^<div data-ui="tooltip" data-closed="" class="ui-tooltip__root" style="--ui-anchor:--ID\w*">/);
+  assert.match(a, /<span tabindex="0" data-part="trigger" class="ui-tooltip__trigger" aria-describedby="ID\w*popup">B<\/span>/);
+  assert.match(a, /<div data-part="popup" id="ID\w*popup" role="tooltip" data-closed="" class="ui-tooltip__popup">Bold<\/div>/);
+  assert.match(a, /data-placement="top-center"/);
+  const b = html(h(Tooltip.Root, null, h(Tooltip.Trigger, { render: h('span', { tabIndex: 0 }) }, 'B'), h(Tooltip.Positioner, null, h(Tooltip.Popup, null, 'Bold'))));
+  assert.equal(a, b, 'the preset renders its parts');
+  assert.doesNotThrow(() => html(h(Tooltip.Provider, { delay: 100, timeout: 0 }, h(Tooltip, { content: 'x' }, 'y'))));
 });

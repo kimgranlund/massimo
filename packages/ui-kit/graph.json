@@ -484,6 +484,18 @@
         "toolbar"
       ]
     },
+    "component:tooltip": {
+      "kind": "component",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-tooltip",
+      "searchTerms": [
+        "tooltip",
+        "hint",
+        "hover label",
+        "title text"
+      ]
+    },
     "context:accordion": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/accordion",
@@ -1356,6 +1368,42 @@
       "tag": "div",
       "searchTerms": [
         "tabs tab"
+      ]
+    },
+    "part:tooltip-arrow": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tooltip arrow"
+      ]
+    },
+    "part:tooltip-popup": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tooltip popup"
+      ]
+    },
+    "part:tooltip-positioner": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tooltip positioner"
+      ]
+    },
+    "part:tooltip-trigger": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "tooltip trigger"
       ]
     },
     "part:track": {
@@ -5422,6 +5470,126 @@
       "from": "component:toggle",
       "relation": "uses",
       "to": "foundation:modality"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-trigger"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-positioner"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-popup"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-arrow"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "uses",
+      "to": "component:popover"
     }
   ]
 }

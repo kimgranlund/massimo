@@ -144,7 +144,8 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   },
   popup: (g) => {
     const p = resolvePopup('popover', g);
-    return [`offset ${px(p.offset)} · arrow ${px(p.arrowWidth)} × ${px(p.arrowHeight)}`, `popover pad ${px(p.paddingBlock)} · gap ${px(p.gap)} · r ${px(p.radius)}`];
+    const t = resolvePopup('tooltip', g);
+    return [`offset ${px(p.offset)} · arrow ${px(p.arrowWidth)} × ${px(p.arrowHeight)}`, `popover pad ${px(p.paddingBlock)} · gap ${px(p.gap)} · r ${px(p.radius)}`, `tooltip ${px(t.height ?? 0)} · pad ${px(t.paddingInline)} · r ${px(t.radius)}`];
   },
 };
 

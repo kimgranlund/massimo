@@ -665,6 +665,27 @@
         "inline"
       ],
       "behavior": "A trigger press (pointer, Enter, Space) toggles the popup and fires a cancelable openchange ({ open, reason, event }); opening by a press moves focus into the popup. An outside press, Escape (the topmost layer), focus leaving (non-modal) or a Close part close it ('outside-press', 'escape-key', 'focus-out', 'close-press') and focus returns to the trigger. modal traps Tab inside. open-on-hover also opens it after the delay ('trigger-hover'). Placed 1u from the trigger, flipping when there is no room."
+    },
+    "tooltip": {
+      "geometryFamily": "popup",
+      "element": "Host (display: contents) holds the trigger (its first child element, or a [data-part=trigger]) and a positioner in the top layer (popover=manual) holding the popup (role=tooltip) and an optional arrow. The content property fills a generated popup.",
+      "parts": [
+        "tooltip-trigger",
+        "tooltip-positioner",
+        "tooltip-popup",
+        "tooltip-arrow?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "inline",
+        "field-grid"
+      ],
+      "behavior": "Opens after delay (600 ms) while the pointer rests on the trigger ('trigger-hover'), at once on keyboard focus ('trigger-focus') and at once without motion while the group is warm (another tooltip closed under 400 ms ago, data-instant). Closes when the pointer leaves trigger and popup, on blur ('focus-out'), a press on the trigger ('trigger-press'), an outside press or Escape; each fires a cancelable openchange ({ open, reason, event }). The trigger's aria-describedby names the popup; focus never moves. Placed 1u from the trigger, above it by default, flipping when there is no room."
     }
   }
 }

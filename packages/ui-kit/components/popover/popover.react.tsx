@@ -6,7 +6,7 @@
 // and focus scope of dom/floating.ts, as the web component's popup-base.ts uses them); the Popup the surface. Popover.Arrow goes inside the Positioner,
 // after the Popup (Base UI puts it in the Popup; beside it, the popup can scroll without clipping
 // it). The preset <Popover label …>content</Popover> is Root + Trigger + Positioner + Popup.
-// The same machinery serves Tooltip and PreviewCard (createPopupParts), each with its own recipe.
+// The same machinery serves Tooltip and PreviewCard (usePopupRoot and the Popup* parts), each with its own recipe.
 import {
   createContext, useContext, useEffect, useId, useLayoutEffect, useRef, useState,
   type HTMLAttributes, type MouseEvent, type PointerEvent as ReactPointerEvent, type ReactNode, type RefObject,
@@ -113,7 +113,7 @@ export function usePopupRoot(kind: PopupKind, { open, defaultOpen = false, onOpe
   useEffect(() => () => intent.current?.cancel(), []);
   // A closed popup: the tooltip group stays warm for a moment.
   const was = useRef(value);
-  useEffect(() => { if (was.current && !value) { kind.onClosed?.(); reason.current = 'none'; } was.current = value; }, [value]);
+  useEffect(() => { if (was.current && !value) { kind.onClosed?.(); reason.current = 'none'; setInstant(false); } was.current = value; }, [value]);
   const c = kind.recipe();
   const attrs = { 'data-open': on(value), 'data-closed': on(!value), 'data-disabled': on(disabled) };
   const ctx: PopupContext = {

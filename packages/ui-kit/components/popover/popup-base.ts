@@ -271,7 +271,8 @@ export abstract class UIPopupBase extends UIElement {
     const c = this.config();
     if (!this.#shown) {
       this.#shown = true;
-      this.#instant.value = !!c.warm?.();
+      // Warm (tooltip group): an interaction that opens it skips the motion; setting open never does.
+      this.#instant.value = this.#reason !== 'none' && !!c.warm?.();
       // Each opening starts from the preferred side.
       this.#side.value = this.placement.side;
       showTopLayer(pos);
