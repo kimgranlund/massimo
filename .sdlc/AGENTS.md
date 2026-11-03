@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:a6ae5cabba36 -->
+<!-- sdlc:managed:start v1 sha256:773ad685d03f -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -12,7 +12,7 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 - proposed: 0
 - ready: 0
-- claimed: 19
+- claimed: 18
   - T-0009 W2 · Tooltip (tooltip), claimed by claude 2026-11-02
   - T-0010 W2 · Popover (popover), claimed by claude 2026-11-02
   - T-0011 W2 · Menu (menu), claimed by claude 2026-11-02
@@ -23,7 +23,6 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
   - T-0016 W3 · Dialog (dialog), claimed by claude 2026-11-02
   - T-0017 W3 · Alert Dialog (alert-dialog), claimed by claude 2026-11-02
   - T-0018 W3 · Drawer (drawer), claimed by claude 2026-11-02
-  - T-0019 W3 · Toast (toast), claimed by claude 2026-11-02
   - T-0023 W5 · Combobox (combobox), claimed by claude 2026-11-02
   - T-0024 W5 · Autocomplete (autocomplete), claimed by claude 2026-11-02
   - T-0025 W5 · Number Field (number-field), claimed by claude 2026-11-02
@@ -34,7 +33,7 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
   - T-0030 W5 · Toggle Group: multiple selection (toggle-group-multiple), claimed by claude 2026-11-02
 - paused: 0
 - blocked: 0
-- done: 11
+- done: 12
 - dropped: 0
 
 ## Procedures
