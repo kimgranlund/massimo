@@ -1007,6 +1007,40 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/s${s} ${k}: got ${got}, want ${want}`); }
   box.remove();
 }
+// Attached composites and tracks (inset="none"): the edge is the border alone, no gap, children
+// square except the outer corners (R − D), one row still the control height; thumbs fill the track.
+for (const unit of [3, 4, 4.5]) for (const border of [0, 1]) for (const density of ['default', 'compact', 'loose']) {
+  const box = document.createElement('div');
+  box.setAttribute('data-size', String(unit)); box.setAttribute('density', density); box.style.setProperty('--ui-border', border);
+  box.innerHTML = `<ui-segmented inset="none" value="b"><ui-option value="a">One</ui-option><ui-option value="b">Two</ui-option><ui-option value="c">Three</ui-option></ui-segmented>
+    <ui-listbox inset="none" value="a"><ui-option value="a">A</ui-option><ui-option value="b">B</ui-option></ui-listbox>
+    <ui-switch inset="none" checked>S</ui-switch><div style="width:300px"><ui-range inset="none" value="40"></ui-range></div>`;
+  root.append(box);
+  await new Promise((r) => setTimeout(r, 0));
+  const g = { unit, border, density, inset: 'none' };
+  const cmp = resolveComposite(g), lst = resolveComposite({ ...g, container: true }), ctl = resolveControl(g);
+  const q = (s) => box.querySelector(s), cs = (s) => getComputedStyle(q(s)), rect = (el) => el.getBoundingClientRect();
+  const [o1, o2, o3] = box.querySelectorAll('ui-segmented > ui-option');
+  const sw = resolveChoice('switch', g), tr = resolveTrack('range', g);
+  const rg = q('ui-range'), th = rg.querySelector('[data-part=thumb]');
+  const checks = {
+    'attached.segmented.height': [r2(rect(q('ui-segmented')).height), r2(Math.max(ctl.height, cmp.rowHeight))],
+    'attached.segmented.gap': [r2(rect(o2).left - rect(o1).right), 0],
+    'attached.segmented.edge': [r2(rect(o1).left - rect(q('ui-segmented')).left), cmp.edge],
+    'attached.segmented.middle.radius': [px(getComputedStyle(o2).borderTopLeftRadius), 0],
+    'attached.segmented.first.outer': [px(getComputedStyle(o1).borderTopLeftRadius), r2(cmp.child.outerRadius)],
+    'attached.segmented.first.inner': [px(getComputedStyle(o1).borderTopRightRadius), 0],
+    'attached.segmented.last.outer': [px(getComputedStyle(o3).borderBottomRightRadius), r2(cmp.child.outerRadius)],
+    'attached.listbox.first.outer': [px(cs('ui-listbox > ui-option').borderTopRightRadius), r2(lst.child.outerRadius)],
+    'attached.listbox.first.bottom': [px(cs('ui-listbox > ui-option').borderBottomLeftRadius), 0],
+    'attached.switch.thumb': [r2(rect(q('ui-switch [data-part=thumb]')).width), r2(sw.thumb)],
+    'attached.range.thumb': [r2(rect(th).height), r2(tr.thumb)],
+    'attached.range.thumb.radius': [px(getComputedStyle(th).borderTopLeftRadius), r2(tr.thumbRadius)],
+    'attached.range.thumb.offset': [r2(rect(th).left - rect(rg).left), r2(thumbOffset(0.4, rect(rg).width, g))],
+  };
+  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/${density} ${k}: got ${got}, want ${want}`); }
+  box.remove();
+}
 // Elevation (docs/specs/elevation.md): level fills mix toward the page by surface-contrast; level
 // shadows pick sm or md by shadow-<level>, × shadow-strength; cards cast the raised shadow when raised.
 {

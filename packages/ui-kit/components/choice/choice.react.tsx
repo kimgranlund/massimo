@@ -46,6 +46,8 @@ export interface ChoiceProps extends Native, PartBase {
   onCheckedChange?: (checked: boolean, details: ChangeDetails) => void;
   /** Unit u in px for this control. */
   size?: number;
+  /** inset="none": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track. */
+  inset?: 'none';
   /** The label; a Checkbox.Indicator (Radio.Indicator, Switch.Thumb) child goes in the leading slot. */
   children?: ReactNode;
 }
@@ -63,7 +65,7 @@ export interface ChoiceIndicatorProps extends PartBase {
   children?: ReactNode;
 }
 
-function ChoiceRoot({ kind, prefix, suffix, invalid, size, children, className, render, style, indeterminate: mixedProp, parent, onInvalid, onChange, onClick, onCheckedChange, ...props }: CheckboxRootProps & { kind: Kind }) {
+function ChoiceRoot({ kind, prefix, suffix, invalid, size, inset, children, className, render, style, indeterminate: mixedProp, parent, onInvalid, onChange, onClick, onCheckedChange, ...props }: CheckboxRootProps & { kind: Kind }) {
   const radioGroup = useContext(RadioGroupCtx), checkboxGroup = useContext(CheckboxGroupCtx);
   const rg = kind === 'radio' ? radioGroup : null, cg = kind === 'checkbox' ? checkboxGroup : null;
   const own = String(props.value ?? 'on');
@@ -89,7 +91,7 @@ function ChoiceRoot({ kind, prefix, suffix, invalid, size, children, className, 
   return (
     <Ctx.Provider value={{ kind, c, state }}>
       {renderPart('label', c.root, {
-        ref: f.ref, 'data-ui': kind, 'data-size': size, ...attrs, ...f.handlers, className, style, render,
+        ref: f.ref, 'data-ui': kind, 'data-size': size, 'data-inset': inset, ...attrs, ...f.handlers, className, style, render,
         children: <>
           <input type={kind === 'radio' ? 'radio' : 'checkbox'} role={kind === 'switch' ? 'switch' : undefined} aria-invalid={invalid || undefined} {...input}
             onClick={(e) => { if (rg?.readOnly) e.preventDefault(); onClick?.(e); }}

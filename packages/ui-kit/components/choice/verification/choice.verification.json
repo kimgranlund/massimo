@@ -18,11 +18,11 @@
     },
     {
       "path": "components/choice/choice.manifest.json",
-      "sha256": "b629e258d7b3ed6aa3435fc65c9492e9ccc32f5f78795f582d4aebfe15fab7f2"
+      "sha256": "9553277a40f23e723845b17abe78adbccc81be68adf8a797faff95553b7bdb0b"
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "a0969c988887e3a94c877222e11e1020d75cd00d5abda466dd050dbf52a322cd"
+      "sha256": "6de15c17a4c30cece515c6b4b64bc844082092f4908c6f3d0bab94f5a04f37d9"
     },
     {
       "path": "dom/state.ts",

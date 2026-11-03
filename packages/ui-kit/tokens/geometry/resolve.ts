@@ -34,6 +34,12 @@ export interface GeometryInput {
   iconSize?: IconSize;
   /** Density (theme `density` 0, 1, 2; the density attribute per subtree): compact, default, loose. */
   density?: Density;
+  /**
+   * inset="none" on a composite (listbox, segmented, toggle group) or a track control (range, switch):
+   * attached. The edge is the border alone, children touch the edge and each other (gap 0) and lose
+   * their curvature (radius 0, the outer corners follow the container); thumbs fill the track.
+   */
+  inset?: 'none';
 }
 
 /**
@@ -214,16 +220,20 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
 export function resolveComposite(input: GeometryInput & { container?: boolean; padUnits?: number } = {}) {
   const c = resolveControl(input);
   const box = resolveContainer('composite', input);
-  const edge = Math.max(c.border, box.edge);             // D
+  const attached = input.inset === 'none';
+  const edge = attached ? c.border : Math.max(c.border, box.edge); // D: the border alone when attached
   const childInset = Math.max(c.border, c.inset - edge); // Ic
   const childHeight = c.slot + 2 * childInset;
   const rowHeight = childHeight + 2 * edge;
   const radius = input.container ? box.radius : Math.min(box.radius, rowHeight / 2);
+  const concentric = Math.min(childHeight / 2, Math.max(0, radius - edge));
   return {
-    edge, padding: edge - c.border, gap: box.gap, radius, rowHeight,
+    edge, padding: edge - c.border, gap: attached ? 0 : box.gap, radius, rowHeight, attached,
     child: {
       inset: childInset, padding: childInset - c.border, height: childHeight,
-      radius: Math.min(childHeight / 2, Math.max(0, radius - edge)),
+      // Attached children lose their curvature; the first and last keep the container's outer corners (R − D).
+      radius: attached ? 0 : concentric,
+      outerRadius: attached ? Math.max(0, radius - edge) : concentric,
     },
   };
 }
@@ -298,6 +308,9 @@ export function resolveChoice(kind: ChoiceKind, input: GeometryInput = {}) {
   const u = x.unit;
   const box = 5 * u;
   const width = kind === 'switch' ? 9 * u : box;
+  // inset="none": the switch thumb fills the track inside its border (5u − 2B) and still travels 4u.
+  const attached = kind === 'switch' && input.inset === 'none';
+  const thumb = attached ? box - 2 * x.border : 4 * u, thumbInset = attached ? x.border : 0.5 * u;
   return {
     unit: u, box, width, slot: 6 * u,
     rowHeight: 6 * u,
@@ -306,9 +319,9 @@ export function resolveChoice(kind: ChoiceKind, input: GeometryInput = {}) {
     radius: kind === 'checkbox' ? u * x.radiusScale : box / 2,
     mark: 4 * u,              // check / minus icon inside the checkbox
     dot: 2 * u,               // radio dot
-    thumb: 4 * u,             // switch thumb
-    thumbInset: 0.5 * u,
-    thumbTravel: width - 4 * u - u, // switch: thumb moves track width - thumb - 2 insets
+    thumb,                    // switch thumb
+    thumbInset,
+    thumbTravel: width - 2 * thumbInset - thumb, // switch: track width − thumb − 2 insets (4u either way)
   };
 }
 
@@ -319,11 +332,14 @@ export function resolveTrack(kind: TrackKind, input: GeometryInput = {}) {
   const u = x.unit;
   const height = 4 * u;
   const trackRadius = Math.min(3 * u * x.radiusScale, height / 2);
-  // Range thumb sits inside the track like a switch thumb: track − u, inset 0.5u, concentric radius.
+  // Range thumb sits inside the track like a switch thumb: track − u, inset 0.5u, concentric radius;
+  // inset="none": it fills the track and takes the track's radius (the track's own end cap).
+  const attached = kind === 'range' && input.inset === 'none';
+  const inset = kind !== 'range' ? 0 : attached ? 0 : 0.5 * u;
   return {
     unit: u, height, track: height, trackRadius, minWidth: 24 * u,
-    thumb: kind === 'range' ? height - u : 0, thumbInset: kind === 'range' ? 0.5 * u : 0,
-    thumbRadius: kind === 'range' ? Math.max(0, trackRadius - 0.5 * u) : 0,
+    thumb: kind === 'range' ? height - 2 * inset : 0, thumbInset: inset,
+    thumbRadius: kind === 'range' ? Math.max(0, trackRadius - inset) : 0,
   };
 }
 

@@ -162,6 +162,18 @@
             "max": 8,
             "step": 0.5
           }
+        },
+        {
+          "name": "inset",
+          "type": "string",
+          "readBy": "css",
+          "description": "none: attached. The edge is the border alone and children touch the edge and each other with no gap and no curvature (the first and last keep the container's outer corners; neighbours split by a 1px border-role divider). Range and switch: the thumb fills the track and takes its radius. Default: inset.",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "none"
+          ]
         }
       ],
       "events": [
@@ -381,6 +393,18 @@
             "max": 8,
             "step": 0.5
           }
+        },
+        {
+          "name": "inset",
+          "type": "string",
+          "readBy": "css",
+          "description": "none: attached. The edge is the border alone and children touch the edge and each other with no gap and no curvature (the first and last keep the container's outer corners; neighbours split by a 1px border-role divider). Range and switch: the thumb fills the track and takes its radius. Default: inset.",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "none"
+          ]
         }
       ],
       "events": [
@@ -914,6 +938,7 @@
             "invalid?: boolean // Show the invalid state now (author error).",
             "gap?: number",
             "size?: number",
+            "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
             "children?: ReactNode // <Option> (Listbox.Item) children."
           ]
         },
@@ -935,6 +960,7 @@
             "invalid?: boolean // Show the invalid state now (author error).",
             "gap?: number",
             "size?: number",
+            "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
             "children?: ReactNode // <Option> (Listbox.Item) children."
           ]
         },
@@ -976,6 +1002,7 @@
               "invalid?: boolean // Show the invalid state now (author error).",
               "gap?: number",
               "size?: number",
+              "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
               "children?: ReactNode // <Option> (Listbox.Item) children."
             ]
           },
@@ -1036,6 +1063,7 @@
               "invalid?: boolean // Show the invalid state now (author error).",
               "gap?: number",
               "size?: number",
+              "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
               "children?: ReactNode // <Option> (Listbox.Item) children."
             ]
           },

@@ -4,16 +4,16 @@
 // are composite options: the toggle recipe's in-group rules (toggle.recipe.ts) give them the option
 // height, inset and radius and the raised selected fill while pressed. Vertical stacks them.
 import { defineSlotRecipe } from '@pandacss/dev';
-import { FORCED, FORCED_EDGE, UI_FONT, composite, mergeStyles } from '../recipe-parts.ts';
+import { FORCED, FORCED_EDGE, UI_FONT, attachedComposite, composite, mergeStyles } from '../recipe-parts.ts';
 
 export const toggleGroup = defineSlotRecipe({
   className: 'ui-toggle-group',
   description: 'A row of toggles with one or several pressed (ui-toggle-group, React ToggleGroup, Base UI ToggleGroup).',
   slots: ['root'],
   base: {
-    root: mergeStyles(composite, {
+    root: mergeStyles(composite, attachedComposite('row'), {
       display: 'inline-flex', alignItems: 'stretch', maxWidth: '100%', fontFamily: UI_FONT, bg: 'bg.control', borderColor: 'transparent',
-      '&[data-orientation=vertical]': { flexDirection: 'column' },
+      '&[data-orientation=vertical]': { flexDirection: 'column', ...attachedComposite('column') },
       [FORCED]: FORCED_EDGE,
     }),
   },

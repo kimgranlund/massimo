@@ -107,6 +107,18 @@
             "max": 12,
             "step": 0.5
           }
+        },
+        {
+          "name": "inset",
+          "type": "string",
+          "readBy": "css",
+          "description": "none: attached. The edge is the border alone and children touch the edge and each other with no gap and no curvature (the first and last keep the container's outer corners; neighbours split by a 1px border-role divider). Range and switch: the thumb fills the track and takes its radius. Default: inset.",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "none"
+          ]
         }
       ],
       "events": [
@@ -326,6 +338,7 @@
             "disabled?: boolean = false // Every toggle ignores presses.",
             "orientation?: 'horizontal' | 'vertical' = 'horizontal' // horizontal (default): Left / Right move focus; vertical: Up / Down.",
             "size?: number // Unit u in px; the row is 8u with 7u toggles.",
+            "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
             "children?: ReactNode"
           ]
         }

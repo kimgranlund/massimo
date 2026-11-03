@@ -30,6 +30,12 @@
       "subject": "component:option",
       "markup": "<ui-listbox label=\"Folder\" value=\"inbox\"><ui-option value=\"inbox\"><span data-part=\"leading\"><i name=\"tray\"></i></span><span data-part=\"contents\">Inbox</span><span data-part=\"suffix\">12</span></ui-option><ui-option value=\"sent\"><span data-part=\"contents\">Sent</span></ui-option></ui-listbox>",
       "note": "React: Listbox.Root › Listbox.Item › Listbox.ItemText, Listbox.ItemIndicator."
+    },
+    {
+      "id": "attached",
+      "label": "Attached (inset none): a segmented control and a stacked list",
+      "subject": "component:listbox",
+      "markup": "<ui-segmented inset=\"none\" value=\"b\"><ui-option value=\"a\">Day</ui-option><ui-option value=\"b\">Week</ui-option><ui-option value=\"c\">Month</ui-option></ui-segmented><ui-listbox inset=\"none\" label=\"Plan\" value=\"a\"><ui-option value=\"a\">Option 1</ui-option><ui-option value=\"b\">Option 2</ui-option><ui-option value=\"c\">Option 3</ui-option></ui-listbox>"
     }
   ]
 }

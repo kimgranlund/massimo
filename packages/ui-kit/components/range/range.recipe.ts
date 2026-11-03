@@ -4,7 +4,7 @@
 // (track + p·(W − track)) with the track's radius, so its round cap stays concentric around the
 // thumb at every value. --track and --track-r are geometry variables; --ui-ratio is set by script.
 import { defineSlotRecipe } from '@pandacss/dev';
-import { FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, t } from '../recipe-parts.ts';
+import { ATTACHED, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, t } from '../recipe-parts.ts';
 
 const REDUCED = '@media (prefers-reduced-motion: reduce)';
 const host = {
@@ -63,7 +63,9 @@ export const range = defineSlotRecipe({
       marginInlineStart: 'calc(var(--ui-ratio-start, 0) * (100% - var(--track)))',
       width: 'calc(var(--track) + (var(--ui-ratio, 0) - var(--ui-ratio-start, 0)) * (100% - var(--track)))',
     },
+    // inset="none": the thumb fills the track and takes its radius (the track's own end cap).
     thumb: {
+      [`${ATTACHED} > &`]: { width: 'var(--track)', height: 'var(--track)', borderRadius: 'var(--track-r)', marginInlineStart: 'calc(var(--ui-ratio, 0) * (100% - var(--track)))' },
       display: 'block', gridArea: '1 / 1', width: 'calc(var(--track) - var(--u))', height: 'calc(var(--track) - var(--u))',
       borderRadius: 'max(0px, calc(var(--track-r) - 0.5 * var(--u)))',
       marginInlineStart: 'calc(0.5 * var(--u) + var(--ui-ratio, 0) * (100% - var(--track)))',

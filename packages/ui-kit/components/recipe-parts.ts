@@ -125,6 +125,9 @@ export function constructionPattern({ slot, bare, between = 'calc(0.5 * var(--u)
 /** The control radius: 3u × s, capped at half the control height (resolveControl; 8u at default density). */
 export const CONTROL_RADIUS = 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--ctl-h) / 2))';
 
+/** An option's concentric radius in its composite: R − D, at most half its height. */
+const OPTION_R = 'min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d))))';
+
 export const composite: Style = {
   '--d': 'max(var(--b), calc(calc(var(--ui-pad-composite) * (0.5 + 0.5 * var(--ui-density))) * var(--u)))',
   // The option inset: the control inset (density) less the composite edge, so one row is the control height.
@@ -133,11 +136,43 @@ export const composite: Style = {
   // A composite is a control: it takes the control radius, min(3u·s, 4u), and its options split the
   // difference, R − D, so they stay concentric with it (composite is exempt from radius ≤ padding).
   '--cr': CONTROL_RADIUS,
+  // Attached radii (attachedComposite) stop here, so a composite nested inside an attached one keeps its own.
+  '--child-r': 'initial', '--c-ss': 'initial', '--c-se': 'initial', '--c-es': 'initial', '--c-ee': 'initial',
   padding: 'calc(var(--d) - var(--b))',
   gap: 'calc(var(--ui-gap, calc(var(--ui-gap-composite) * (0.5 + 0.5 * var(--ui-density)))) * var(--u))',
   borderWidth: 'var(--b)',
   borderRadius: 'var(--cr)',
 };
+
+/** inset="none" on a composite or track control (either renderer: the attribute, or data-inset). */
+export const ATTACHED = ':is([inset=none], [data-inset=none])';
+
+/**
+ * An attached composite (inset="none"): the edge is the border alone, no gap, the children lose
+ * their curvature (radius 0) except the first and last, which keep the container's outer corners
+ * (R − D), and a 1px divider of the border role separates neighbours (an inset shadow, so it costs no
+ * space and the selected fill keeps it). The selector repeats ATTACHED so it outranks the options'
+ * own radius and lift. `direction` is the main axis: row for segmented, column for a list.
+ */
+export function attachedComposite(direction: 'row' | 'column'): Style {
+  const A = `&${ATTACHED}${ATTACHED}`;
+  const outer = 'max(0px, calc(var(--cr) - var(--d)))';
+  // Corners reach the options as variables (compositeOption reads them), so no selector has to
+  // outrank the option's own rules; every corner is set, so a nested orientation (a vertical toggle
+  // group) replaces the row's corners.
+  const corners = (ss: boolean, se: boolean, es: boolean, ee: boolean) => ({
+    '--c-ss': ss ? outer : '0px', '--c-se': se ? outer : '0px', '--c-es': es ? outer : '0px', '--c-ee': ee ? outer : '0px',
+  });
+  const [first, last] = direction === 'row' ? [corners(true, false, true, false), corners(false, true, false, true)] : [corners(true, true, false, false), corners(false, false, true, true)];
+  return {
+    [`&${ATTACHED}`]: { '--d': 'var(--b)', gap: '0', '--child-r': '0px' },
+    [`${A} > *`]: { boxShadow: 'none' },
+    [`${A} > :not(:first-child)`]: { boxShadow: direction === 'row' ? 'inset 1px 0 0 {colors.border}' : 'inset 0 1px 0 {colors.border}' },
+    [`${A} > :first-child`]: first,
+    [`${A} > :last-child`]: last,
+    [`${A} > :only-child`]: corners(true, true, true, true),
+  };
+}
 
 /** An option in a composite: 7u tall, radius R − D (concentric with the composite's control radius). */
 export const compositeOption: Style = {
@@ -145,7 +180,10 @@ export const compositeOption: Style = {
   padding: 'calc(var(--ci) - var(--b))',
   borderWidth: 'var(--b)',
   borderColor: 'transparent',
-  borderRadius: 'min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d))))',
+  // Concentric with the composite (R − D); attached composites (inset="none") set --child-r (0) and
+  // the outer corners --c-ss / -se / -es / -ee on their first and last children.
+  borderStartStartRadius: `var(--c-ss, var(--child-r, ${OPTION_R}))`, borderStartEndRadius: `var(--c-se, var(--child-r, ${OPTION_R}))`,
+  borderEndStartRadius: `var(--c-es, var(--child-r, ${OPTION_R}))`, borderEndEndRadius: `var(--c-ee, var(--child-r, ${OPTION_R}))`,
   fontSize: 'var(--font)',
 };
 

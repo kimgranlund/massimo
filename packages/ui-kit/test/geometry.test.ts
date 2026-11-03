@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
+import { resolveChoice, SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -410,4 +410,20 @@ test('density: compact, default, loose change insets and the ladder, never type,
   assert.equal(resolveBtg('chip', { unit: 2, density: 'compact' }).height, 14, 'a chip is never taller than a compact control');
   assert.equal(resolveControl({ unit: 4, radiusScale: 3, density: 'compact' }).radius, 14, 'the radius cap is half the compact height');
   assert.throws(() => resolveControl({ density: 'tight' as any }), /density/);
+});
+
+test('attached (inset none): no edge but the border, no gap, square children with outer corners; thumbs fill the track', () => {
+  for (const border of [0, 1]) for (const density of ['compact', 'default', 'loose'] as const) {
+    const c = resolveComposite({ unit: 4, border, density, inset: 'none' }), ctl = resolveControl({ unit: 4, border, density });
+    assert.equal(c.edge, border);
+    assert.equal(c.gap, 0);
+    assert.equal(c.child.radius, 0);
+    assert.equal(c.child.outerRadius, Math.max(0, c.radius - c.edge));
+    assert.equal(c.rowHeight, Math.max(ctl.height, ctl.slot + 4 * border), `B=${border} ${density}: one row is the control height`);
+  }
+  const t = resolveTrack('range', { unit: 4, inset: 'none' });
+  assert.deepEqual([t.thumb, t.thumbInset, t.thumbRadius], [16, 0, t.trackRadius]);
+  const s = resolveChoice('switch', { unit: 4, border: 1, inset: 'none' });
+  assert.deepEqual([s.thumb, s.thumbInset, s.thumbTravel], [18, 1, 16]);
+  assert.equal(resolveChoice('switch', { unit: 4 }).thumbTravel, 16, 'inset switch travels 4u too');
 });

@@ -22,11 +22,11 @@
     },
     {
       "path": "components/listbox/listbox.manifest.json",
-      "sha256": "813af0ddaa183965d256380ec7c8d55023c8ed37c20f6cc5a37a546f64a1d3ae"
+      "sha256": "65aa7696113e0eeb52cfd7ba5cde7dbf663a4d8c8de445fa46e18f5da22dd852"
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "ee62bf206d7e045f685621d4fbc07df025615fcdfc1f9d90ab8da63bd21e8de5"
+      "sha256": "ada910c14523c1f3456227b99d50263a4f363d4864e39893de579674c18d4014"
     },
     {
       "path": "components/parts.react.tsx",

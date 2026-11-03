@@ -188,6 +188,18 @@
             "max": 12,
             "step": 0.5
           }
+        },
+        {
+          "name": "inset",
+          "type": "string",
+          "readBy": "css",
+          "description": "none: attached. The edge is the border alone and children touch the edge and each other with no gap and no curvature (the first and last keep the container's outer corners; neighbours split by a 1px border-role divider). Range and switch: the thumb fills the track and takes its radius. Default: inset.",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "none"
+          ]
         }
       ],
       "events": [
@@ -633,6 +645,7 @@
             "label?: string // Accessible name (aria-label) when there is no visible label; a pair names its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
             "valueText?: ValueText // Human text for each thumb's value (aria-valuetext): a template, \"{value} °C\" (\"40%\" without {value} is used as written), or (value, index) => text (Base UI getAriaValueText).",
             "size?: number // Unit u in px for this control.",
+            "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
             "onValueChange?: (value: V, details: SliderChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires.",
             "onValueCommitted?: (value: V, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
             "children?: ReactNode // Slider.Root: the parts (Slider.Track with Slider.Indicator, Slider.Thumb). Ignored by the preset."
@@ -670,6 +683,7 @@
               "label?: string // Accessible name (aria-label) when there is no visible label; a pair names its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
               "valueText?: ValueText // Human text for each thumb's value (aria-valuetext): a template, \"{value} °C\" (\"40%\" without {value} is used as written), or (value, index) => text (Base UI getAriaValueText).",
               "size?: number // Unit u in px for this control.",
+              "inset?: 'none' // inset=\"none\": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track.",
               "onValueChange?: (value: V, details: SliderChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires.",
               "onValueCommitted?: (value: V, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
               "children?: ReactNode // Slider.Root: the parts (Slider.Track with Slider.Indicator, Slider.Thumb). Ignored by the preset."

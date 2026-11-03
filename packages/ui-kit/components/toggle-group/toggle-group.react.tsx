@@ -30,11 +30,13 @@ export interface ToggleGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, '
   orientation?: 'horizontal' | 'vertical';
   /** Unit u in px; the row is 8u with 7u toggles. */
   size?: number;
+  /** inset="none": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track. */
+  inset?: 'none';
   children?: ReactNode;
 }
 
 /** The toggle group: Toggle children with values share its pressed state. */
-export function ToggleGroup({ value, defaultValue = [], onValueChange, multiple = false, disabled = false, orientation = 'horizontal', size, children, onKeyDown, onFocus, className, render, ...rest }: ToggleGroupProps) {
+export function ToggleGroup({ value, defaultValue = [], onValueChange, multiple = false, disabled = false, orientation = 'horizontal', size, inset, children, onKeyDown, onFocus, className, render, ...rest }: ToggleGroupProps) {
   const [own, setOwn] = useState<string[]>(() => (multiple ? defaultValue : defaultValue.slice(0, 1)));
   const values = value ?? own;
   const root = useRef<HTMLDivElement>(null);
@@ -75,7 +77,7 @@ export function ToggleGroup({ value, defaultValue = [], onValueChange, multiple 
   const attrs = { 'data-orientation': orientation, 'data-disabled': on(disabled), 'data-multiple': on(multiple) };
   return (
     <ToggleGroupContext.Provider value={{ values, press, disabled }}>
-      {renderPart('div', c.root, { ref: root, role: 'group', ...rest, 'data-ui': 'toggle-group', 'data-size': size, ...attrs, onKeyDown: keys, onFocus: focus, className, render, children }, stateOf(attrs))}
+      {renderPart('div', c.root, { ref: root, role: 'group', ...rest, 'data-ui': 'toggle-group', 'data-size': size, 'data-inset': inset, ...attrs, onKeyDown: keys, onFocus: focus, className, render, children }, stateOf(attrs))}
     </ToggleGroupContext.Provider>
   );
 }

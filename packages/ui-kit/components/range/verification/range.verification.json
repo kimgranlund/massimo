@@ -14,11 +14,11 @@
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "bf95f7c6eb2342ccff5220bab321f1904e02e3bcb55f94b1916f0642fec68f98"
+      "sha256": "e0e2a3d9e34b966ee8a8d848ca403b73a50fc99b688a3848c5d7085f268d9d5b"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "aeb8d7de69a9361e4629905957e83fb4f6800960f00d0db6969da9e862e0d6f8"
+      "sha256": "d873e32e5fe9649a7885a19dc4edee5351f15d7ba820588cfbba9ef2f82302fd"
     },
     {
       "path": "dom/state.ts",

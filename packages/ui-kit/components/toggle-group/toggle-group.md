@@ -80,6 +80,8 @@ No form value: submit the group's value from application state.
 
 Geometry family: `container` ([geometry-families.json](../../contracts/geometry-families.json): `resolveComposite`), like `ui-segmented`: the group is a composite on the control fill (`bg.control`) with padding D − B (D = max(B, pad-composite · u)), the composite gap (the `gap` attribute wins) and a radius concentric with its toggles, capped at half the 8u row when horizontal. Its toggles are composite options: 7u tall (6u + 2·Ic), inset Ic − B, radius min(h/2, R − D), their label padding the control family's. Styles: [toggle-group.recipe.ts](toggle-group.recipe.ts) for the group; the toggle recipe's in-group rules ([toggle.recipe.ts](../toggle/toggle.recipe.ts)) give the toggles no fill and muted text until hovered and the raised selected fill (`bg.selected`, `fg.selected`, shadow sm) while pressed; the focus ring is inset so it stays inside the group; forced colors paint pressed toggles `Highlight`.
 
+**Attached** (`inset="none"`): toggles touch the group's edge and each other with no gap and no curvature, split by 1px dividers; the outer corners follow the group, horizontal or vertical.
+
 ## Renderers and verification
 
 - webComponent: completed (`./toggle-group.element.ts`)

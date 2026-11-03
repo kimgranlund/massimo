@@ -10,15 +10,15 @@
     },
     {
       "path": "components/toggle-group/toggle-group.react.tsx",
-      "sha256": "d211bcb19a07696401446d6ba9efef5ff16082879e3aa686f804ec4d1d229f9c"
+      "sha256": "b09daec9863b97c2190348c576f587eb02e5a3bca108aa3520c1d63631ccf543"
     },
     {
       "path": "components/toggle-group/toggle-group.recipe.ts",
-      "sha256": "7fbae7ea4a9ef506a7dab94ba01cbf0bcf8e005d69397c7cadc6cca39311d86a"
+      "sha256": "9dda977f061cca493f9036d189332cf2eed42b44b74e67b95e39244e2f48b496"
     },
     {
       "path": "components/toggle-group/toggle-group.manifest.json",
-      "sha256": "12cae191aceee82bd1548050ff7b95af1ab8bbae0d9bd70bad0903e7672def2d"
+      "sha256": "01ca9f633388c0ebc50dca80f753a696ff9402195c60fbbe00a384837fde3b75"
     },
     {
       "path": "components/toggle/toggle.element.ts",

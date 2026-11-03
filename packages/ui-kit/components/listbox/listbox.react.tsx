@@ -36,6 +36,8 @@ export interface ListboxProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCh
   invalid?: boolean;
   gap?: number;
   size?: number;
+  /** inset="none": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track. */
+  inset?: 'none';
   /** <Option> (Listbox.Item) children. */
   children?: ReactNode;
 }
@@ -52,7 +54,7 @@ const textOf = (n: ReactNode): string => typeof n === 'string' || typeof n === '
   : Array.isArray(n) ? n.map(textOf).join('')
   : isValidElement<{ children?: ReactNode }>(n) && n.type === ItemText ? textOf(n.props.children) : '';
 
-function List({ kind, name, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, gap, size, children, onKeyDown, onFocus, onBlur, className, render, ...rest }: ListboxProps & { kind: 'listbox' | 'segmented' }) {
+function List({ kind, name, value, defaultValue = '', onValueChange, label, orientation, disabled, required, invalid, gap, size, inset, children, onKeyDown, onFocus, onBlur, className, render, ...rest }: ListboxProps & { kind: 'listbox' | 'segmented' }) {
   const base = useId();
   const [inner, setInner] = useState(defaultValue);
   const [active, setActive] = useState(-1);
@@ -82,7 +84,7 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
   const listAttrs = toReactProps(listboxAttrs({ orientation: orient, activeId: shown >= 0 ? idOf(shown) : undefined, label, disabled, required, invalid: f.attrs['data-invalid'] !== undefined }));
   const state = stateOf({ ...listAttrs, ...f.attrs });
   return renderPart('div', (kind === 'segmented' ? segmented : listbox)().root, {
-    ...rest, ref: f.ref, className, 'data-ui': kind, 'data-size': size, ...(gap !== undefined ? { gap: String(gap) } : {}),
+    ...rest, ref: f.ref, className, 'data-ui': kind, 'data-size': size, 'data-inset': inset, ...(gap !== undefined ? { gap: String(gap) } : {}),
     ...listAttrs,
     ...f.attrs,
     onFocus: (e: FocusEvent<HTMLDivElement>) => {

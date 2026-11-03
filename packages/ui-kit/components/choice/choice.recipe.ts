@@ -5,7 +5,7 @@
 // data-indeterminate, data-disabled, data-invalid, data-required, …), set by the web component and
 // by the React renderer from its native input: the conditions (_checked, _disabled, …) key on it.
 import { defineSlotRecipe } from '@pandacss/dev';
-import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, constructionPattern, t } from '../recipe-parts.ts';
+import { ATTACHED, CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, constructionPattern, t } from '../recipe-parts.ts';
 
 const SLOTS = ['root', 'leading', 'indicator', 'prefix', 'contents', 'suffix'] as const;
 const BOX = '& [data-part=indicator]';
@@ -80,6 +80,9 @@ const switchRecipe = choice('switch', {
 }, {
   ...requiredMarker,
   _checked: on({ [`${BOX} > [data-part=thumb]`]: { translate: 'calc(4 * var(--u)) 0' } }),
+  // inset="none": the thumb fills the track inside its border (5u − 2B); it still travels 4u.
+  [`&${ATTACHED} [data-part=indicator]`]: { paddingInline: '0' },
+  [`&${ATTACHED} [data-part=indicator] > [data-part=thumb]`]: { width: 'calc(5 * var(--u) - 2 * var(--b))', height: 'calc(5 * var(--u) - 2 * var(--b))' },
 }, {
   // Base UI Switch.Thumb.
   thumb: {

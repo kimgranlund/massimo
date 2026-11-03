@@ -81,6 +81,8 @@ Base UI's props and event details ([components spec](../../../../docs/specs/comp
 
 Geometry families: `container`, `control` ([geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [listbox.recipe.ts](listbox.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.
 
+**Attached** (`inset="none"`, React `inset="none"`): the list or segmented control keeps its own radius, but its edge is the border alone, options touch the edge and each other (no gap) and lose their curvature; the first and last keep the container's outer corners (R − D) and a 1px border-role divider separates neighbours. One segmented row is still the control height. Use it for a stacked choice list (settings rows, a plan picker inside a card) where rows read as one surface.
+
 ## Renderers and verification
 
 - webComponent: completed (`./listbox.element.ts`)

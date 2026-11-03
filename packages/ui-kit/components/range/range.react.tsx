@@ -51,6 +51,8 @@ export interface RangeProps<V extends SliderValue = number> extends Native, Part
   valueText?: ValueText;
   /** Unit u in px for this control. */
   size?: number;
+  /** inset="none": attached. Children touch the edge and each other with no curvature (outer corners follow the container); thumbs fill the track. */
+  inset?: 'none';
   /** Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires. */
   onValueChange?: (value: V, details: SliderChangeDetails) => void;
   /** The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event). */
@@ -67,7 +69,7 @@ export function SliderRoot<V extends SliderValue = number>({ defaultValue = 50 a
   return isPair(props.value ?? defaultValue) ? <PairRoot {...all} defaultValue={isPair(defaultValue) ? defaultValue : undefined} /> : <SingleRoot {...all} />;
 }
 
-function SingleRoot({ value, defaultValue = 50, min = 0, max = 100, step = 1, label, valueText, size, className, render, style, children, onChange, onValueChange, onValueCommitted, onPointerDown, onKeyDown, onInvalid, ...input }: RangeProps<number>) {
+function SingleRoot({ value, defaultValue = 50, min = 0, max = 100, step = 1, label, valueText, size, inset, className, render, style, children, onChange, onValueChange, onValueCommitted, onPointerDown, onKeyDown, onInvalid, ...input }: RangeProps<number>) {
   const [inner, setInner] = useState(defaultValue);
   const [dragging, setDragging] = useState(false);
   // The gesture behind a change: a pointer press on the track, then a drag; otherwise keys.
@@ -116,13 +118,13 @@ function SingleRoot({ value, defaultValue = 50, min = 0, max = 100, step = 1, la
   };
   return (
     <Ctx.Provider value={{ c, state, input: nativeProps }}>
-      {renderPart('div', c.root, { ref: f.ref, 'data-ui': 'range', 'data-size': size, ...attrs, ...f.handlers, className, style: { ...style, '--ui-ratio': String(ratio) } as CSSProperties, render, children }, state)}
+      {renderPart('div', c.root, { ref: f.ref, 'data-ui': 'range', 'data-size': size, 'data-inset': inset, ...attrs, ...f.handlers, className, style: { ...style, '--ui-ratio': String(ratio) } as CSSProperties, render, children }, state)}
     </Ctx.Provider>
   );
 }
 
 /** Two thumbs: native inputs for keys, names and the form; the root maps the pointer to the nearer thumb. */
-function PairRoot({ value, defaultValue, min = 0, max = 100, step = 1, label, valueText, size, className, render, style, children, onChange, onValueChange, onValueCommitted, onPointerDown, onKeyDown, onInvalid, id, 'aria-labelledby': labelledBy, 'aria-describedby': describedBy, ...input }: RangeProps<readonly number[]>) {
+function PairRoot({ value, defaultValue, min = 0, max = 100, step = 1, label, valueText, size, inset, className, render, style, children, onChange, onValueChange, onValueCommitted, onPointerDown, onKeyDown, onInvalid, id, 'aria-labelledby': labelledBy, 'aria-describedby': describedBy, ...input }: RangeProps<readonly number[]>) {
   const bounds = { min, max, step };
   const [inner, setInner] = useState<RangePair>(() => snapPair(defaultValue ?? [min, max], bounds));
   const current = value ? snapPair(value, bounds) : inner;
@@ -205,7 +207,7 @@ function PairRoot({ value, defaultValue, min = 0, max = 100, step = 1, label, va
     <Ctx.Provider value={{ c, state, thumbs }}>
       {renderPart('div', c.root, {
         ref: f.ref, id, role: 'group', 'aria-label': label, 'aria-labelledby': labelledBy, 'aria-describedby': describedBy,
-        'data-ui': 'range', 'data-size': size, ...attrs, ...f.handlers, onPointerDown: rootPointerDown, className,
+        'data-ui': 'range', 'data-size': size, 'data-inset': inset, ...attrs, ...f.handlers, onPointerDown: rootPointerDown, className,
         style: { ...style, '--ui-ratio-start': String(ratios[0]), '--ui-ratio': String(ratios[1]) } as CSSProperties, render, children,
       }, state)}
     </Ctx.Provider>

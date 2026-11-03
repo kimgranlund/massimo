@@ -3,7 +3,7 @@
 // level): their padding, gap, border and radius, and each option's height, inset and radius, are the
 // composite geometry (recipe-parts.ts `composite`, `compositeOption`).
 import { defineSlotRecipe } from '@pandacss/dev';
-import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, composite, compositeOption, constructionPattern, mergeStyles, t } from '../recipe-parts.ts';
+import { CRITICAL_TINT, FORCED, FORCED_EDGE, FORCED_ON, PAINT, UI_FONT, attachedComposite, composite, compositeOption, constructionPattern, mergeStyles, t } from '../recipe-parts.ts';
 
 // Option state: data-selected, data-highlighted and data-disabled on the web component and the React
 // option (optionAttrs); a native <option> in the React Select keeps :checked, :disabled and :focus
@@ -30,16 +30,16 @@ export const listbox = defineSlotRecipe({
   className: 'ui-listbox',
   description: 'Single-choice list (ui-listbox, React Listbox).',
   slots: ['root'],
-  base: list({ display: 'flex', flexDirection: 'column', borderColor: 'border', bg: 'bg.subtle' }),
+  base: list(mergeStyles({ display: 'flex', flexDirection: 'column', borderColor: 'border', bg: 'bg.subtle' }, attachedComposite('column'))),
 });
 
 export const segmented = defineSlotRecipe({
   className: 'ui-segmented',
   description: 'Segmented control (ui-segmented, React Segmented).',
   slots: ['root'],
-  base: list({
+  base: list(mergeStyles({
     display: 'inline-flex', bg: 'bg.control', borderColor: 'transparent',
-  }),
+  }, attachedComposite('row'))),
 });
 
 export const option = defineSlotRecipe({
