@@ -9,7 +9,7 @@ import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
 import { Fragment, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Range, Segmented } from '../studio/wc.tsx';
-import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveControl } from '@massimo/ui-kit/tokens';
+import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveContainerTree, resolveControl } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, groupHead, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
 
@@ -29,9 +29,9 @@ const LEVELS = Object.keys(CONTAINERS) as (keyof typeof CONTAINERS)[];
 const STROKE = { card: 1, group: 2, control: 3, composite: 4, option: 5 } as const;
 const wire = css({
   display: 'flex', flexWrap: 'wrap', alignItems: 'start', gap: '8',
-  '& :is(ui-card, ui-group, ui-button, ui-segmented, ui-option)': { bg: 'transparent', color: 'fg.muted' },
-  '& ui-card': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-1)]' },
-  '& ui-group': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-2)]' },
+  '& :is(ui-container, ui-button, ui-segmented, ui-option)': { bg: 'transparent', color: 'fg.muted' },
+  '& ui-container[preset=card]': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-1)]' },
+  '& ui-container[preset=group]': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-2)]' },
   '& ui-button': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-3)]' },
   '& ui-segmented': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-4)]' },
   '& ui-option': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-5)]' },
@@ -77,21 +77,21 @@ export function ContainersPage({ params }: PageProps) {
         </div>
       </Section>
       <Divider />
-      <Section id="concentric" title="Concentric" note="A card holding a button and a group; the group holds a button and a composite (segmented) with its options. Fills are removed and each type is one stroke, so the nested curves show: the group and the composite share the control's radius rule; options split the composite's difference (R − D); the group and the card are the control radius + their padding. Move Corner radius, Unit or the radius magnitudes in the Geometry tab.">
+      <Section id="concentric" title="Concentric" note="A card holding a button and a group; the group holds a button and a composite (segmented) with its options. Fills are removed and each type is one stroke, so the nested curves show: the group and the composite share the control's radius rule; options split the composite's difference (R − D); the card is the control radius + its padding and, holding the group, keeps a ratio for it (p = R − R·k); the group is the card's R − p, so the curves nest down to the buttons. Move Corner radius, Unit or the radius magnitudes in the Geometry tab.">
         <ConcentricWire params={params} />
       </Section>
       <Divider />
-      <Section id="nested" title="Nested cards" note="Three ways a card can hold cards. A, outward (today): every card is its own control radius + padding, so inner corners do not follow the outer curve. B, inward subtraction (the listbox model): a child's radius is the parent's radius − its padding and siblings sit one padding apart, so every curve is concentric and radii shrink by p per level. C, ratio ladder: a child's radius is the parent's × k and the padding is what is left (R − R·k), ending at the control radius. D, even split: B with the padding derived from the outer radius and the control radius, p = (R − r_control) / levels, so every curve down to the control is concentric. Each box shows r · p and Δ, its distance from the concentric radius (0 = concentric).">
+      <Section id="nested" title="Nested cards" note="Three ways a card can hold cards. A, outward (today): every card is its own control radius + padding, so inner corners do not follow the outer curve. B, inward subtraction (the listbox model): a child's radius is the parent's radius − its padding and siblings sit one padding apart, so every curve is concentric and radii shrink by p per level. C, ratio ladder: a child's radius is the parent's × k and the padding is what is left (R − R·k), ending at the control radius. U is the kit's ui-container, which uses C (k = the theme's container-ratio) or D with levels. D, even split: B with the padding derived from the outer radius and the control radius, p = (R − r_control) / levels, so every curve down to the control is concentric. Each box shows r · p and Δ, its distance from the concentric radius (0 = concentric).">
         <NestedLab params={params} />
       </Section>
       <Divider />
       <Section id="levels" title="Levels" note="Each box tints its padding; the two children show its gap.">
         {LEVELS.filter((l) => l !== 'composite').map((l) => {
-          const Tag = (l.startsWith('card-') ? 'ui-card' : `ui-${l}`) as any;
-          const padding = l.startsWith('card-') && l !== 'card-md' ? l.slice(5) : undefined;
+          const preset = (l.startsWith('card-') ? 'card' : l) as any;
+          const padding = (l.startsWith('card-') && l !== 'card-md' ? l.slice(5) : undefined) as 'xs' | 'sm' | 'lg' | 'xl' | undefined;
           return (
             <Row key={l} label={l.startsWith('card-') ? `card · padding ${l.slice(5)}` : l}>
-              <Tag className={levelBox} padding={padding}><span className={levelChild}>a</span><span className={levelChild}>b</span></Tag>
+              <ui-container preset={preset} className={levelBox} padding={padding}><span className={levelChild}>a</span><span className={levelChild}>b</span></ui-container>
             </Row>
           );
         })}
@@ -104,83 +104,83 @@ export function ContainersPage({ params }: PageProps) {
       <Section id="magnitude" title="Radius magnitude" note="R = t × the concentric radius: a container can be sharper than its contents. Each collection holds the same buttons; the radius attribute sets t on that element only (the Geometry tab sets the theme's t per family).">
         {[1, 0.75, 0.5, 0.25, 0].map((t) => (
           <Row key={t} label={`radius="${t}"`}>
-            <ui-collection className={levelBox} radius={String(t)}><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-collection>
-            <ui-card className={levelBox} radius={String(t)}><span className={levelChild}>card</span></ui-card>
+            <ui-container preset="collection" className={levelBox} radius={String(t)}><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container>
+            <ui-container preset="card" className={levelBox} radius={String(t)}><span className={levelChild}>card</span></ui-container>
           </Row>
         ))}
       </Section>
       <Divider />
       <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). Wrappers and cards stay concentric with their controls (control radius + padding), times the radius magnitude t.">
-        <ui-page className={miniPage} aria-label="Page example">
+        <ui-container preset="page" className={miniPage} aria-label="Page example">
           <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
-          <ui-region aria-label="Region example" className={tinted}>
+          <ui-container preset="region" aria-label="Region example" className={tinted}>
             <span className={kicker}>Region</span>
-            <ui-panel aria-label="Panel example">
+            <ui-container preset="panel" aria-label="Panel example">
               <span className={kicker}>Panel</span>
               <div className={columns}>
-                <ui-card>
+                <ui-container preset="card">
                   <span className={kicker}>Card · Team</span>
                   {[['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]].map(([team, people]) => (
-                    <ui-card padding="sm" key={team as string}>
+                    <ui-container preset="card" padding="sm" key={team as string}>
                       <span className={kicker}>Card sm · {team}</span>
-                      <ui-collection>
+                      <ui-container preset="collection">
                         {(people as string[]).map((n) => (
                           <div key={n} className={tileRow}>
                             <span>{n}</span>
-                            <ui-group><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-group>
+                            <ui-container preset="group"><ui-button>Message</ui-button><ui-button aria-label="More"><i slot="leading" name="dots-three" /></ui-button></ui-container>
                           </div>
                         ))}
-                      </ui-collection>
-                    </ui-card>
+                      </ui-container>
+                    </ui-container>
                   ))}
-                </ui-card>
-                <ui-card>
+                </ui-container>
+                <ui-container preset="card">
                   <span className={kicker}>Card · Details</span>
                   <ui-input label="Name" value="Spring catalog" />
                   <ui-select label="Edition" value="spring"><ui-option value="spring">Spring</ui-option><ui-option value="autumn">Autumn</ui-option></ui-select>
-                  <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
-                </ui-card>
+                  <ui-container preset="group"><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-container>
+                </ui-container>
               </div>
-            </ui-panel>
-          </ui-region>
-        </ui-page>
+            </ui-container>
+          </ui-container>
+        </ui-container>
       </Section>
       <Divider />
       <Section id="groups" title="Groups and collections" note="Groups wrap inline items at the group gap; collections stack like items at the collection gap, inside a card (card › collection › group).">
-        <Row label="buttons"><ui-group><ui-button>Bold</ui-button><ui-button>Italic</ui-button><ui-button>Underline</ui-button></ui-group></Row>
-        <Row label="chips"><ui-group>{['Design', 'Engineering', 'Research', 'Ops'].map((t, i) => <ui-chip key={t} selectable selected={i === 0 || undefined}>{t}</ui-chip>)}</ui-group></Row>
-        <Row label="tags"><ui-group>{['Spring', 'Draft', 'Shared'].map((t) => <ui-tag key={t}>{t}</ui-tag>)}</ui-group></Row>
+        <Row label="buttons"><ui-container preset="group"><ui-button>Bold</ui-button><ui-button>Italic</ui-button><ui-button>Underline</ui-button></ui-container></Row>
+        <Row label="chips"><ui-container preset="group">{['Design', 'Engineering', 'Research', 'Ops'].map((t, i) => <ui-chip key={t} selectable selected={i === 0 || undefined}>{t}</ui-chip>)}</ui-container></Row>
+        <Row label="tags"><ui-container preset="group">{['Spring', 'Draft', 'Shared'].map((t) => <ui-tag key={t}>{t}</ui-tag>)}</ui-container></Row>
         <Row label="collection in a card">
-          <ui-card padding="sm" className={wideCol}>
-            <ui-collection>
+          <ui-container preset="card" padding="sm" className={wideCol}>
+            <ui-container preset="collection">
               {['Inbox · 12', 'Drafts · 3', 'Archive'].map((t) => <span key={t}>{t}</span>)}
-            </ui-collection>
-          </ui-card>
+            </ui-container>
+          </ui-container>
         </Row>
         <Row label="card grid">
-          <ui-card className={tileGrid}>
+          <ui-container preset="card" className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
-              <ui-card padding="xs" key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-card>
+              <ui-container preset="card" padding="xs" key={t}><ui-image src={IMAGES[i]} alt={t} ratio="landscape" /><span>{t}</span></ui-container>
             ))}
-          </ui-card>
+          </ui-container>
         </Row>
       </Section>
       <Divider />
       <Section id="overrides" title="Overrides" note='gap="n" overrides one element’s gap (0–8u); data-size sets the unit for a whole subtree.'>
         <Row label="gap">
           {[0, 1, 4].map((g) => (
-            <ui-card key={g} gap={String(g)} className={levelBox}>
+            <ui-container preset="card" key={g} gap={String(g)} className={levelBox}>
               <span className={caption}>card gap="{g}"</span><span className={levelChild} /><span className={levelChild} />
-            </ui-card>
+            </ui-container>
           ))}
         </Row>
         <Row label="size">
           {(['3', '4', '5'] as const).map((z) => (
-            <ui-card key={z} data-size={z}>
+            <ui-container preset="card" key={z} data-size={z}>
               <span className={kicker}>data-size="{z}"</span>
               <h3 className={subTitle}>Card</h3>
-              <ui-group><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-group>
-            </ui-card>
+              <ui-container preset="group"><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-container>
+            </ui-container>
           ))}
         </Row>
       </Section>
@@ -205,25 +205,26 @@ const USED_BY: Record<keyof typeof CONTAINERS, string> = {
 function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
   const p = params as unknown as Record<string, number>;
   const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] };
-  const card = resolveContainer('card-md', { ...g, padUnits: p['pad-card-md'], radiusFactor: p['radius-card'] });
-  const group = resolveContainer('group', { ...g, padUnits: p['pad-group'], radiusFactor: p['radius-group'] });
+  // The wireframe's tree under the nesting rule: the card holds a group, so it keeps the ratio for it.
+  const tree = resolveContainerTree({ preset: 'card', children: [{ preset: 'group' }] }, { ...g, ratio: p['container-ratio'], padUnits: { 'card-md': p['pad-card-md'], group: p['pad-group'] }, radiusFactor: { card: p['radius-card'], group: p['radius-group'] } });
+  const card = tree, group = tree.children[0];
   const cmp = resolveComposite({ ...g, padUnits: p['pad-composite'] });
   const rows: [keyof typeof STROKE, string, string][] = [
-    ['card', 'card (md)', `${fmt(card.radius)}px · control radius + padding, × t`],
-    ['group', 'group', `${fmt(group.radius)}px · control radius + padding, × t`],
+    ['card', 'card (md)', `${fmt(card.radius)}px · p ${fmt(card.edge)}: control radius + padding (× t); holding a container, p = R − R·k`],
+    ['group', 'group', `${fmt(group.radius)}px · p ${fmt(group.edge)}: the card's R − p, its controls inside at R − p`],
     ['control', 'button', `${fmt(resolveControl(g).radius)}px · min(3u·s, 4u)`],
     ['composite', 'composite', `${fmt(cmp.radius)}px · the control radius`],
     ['option', 'option', `${fmt(cmp.child.radius)}px · R − D`],
   ];
   return (
     <div className={wire}>
-      <ui-card>
+      <ui-container preset="card">
         <ui-button>Button</ui-button>
-        <ui-group>
+        <ui-container preset="group">
           <ui-button>Button</ui-button>
           <ui-segmented label="Composite" value="a"><ui-option value="a">Option</ui-option><ui-option value="b">Option</ui-option></ui-segmented>
-        </ui-group>
-      </ui-card>
+        </ui-container>
+      </ui-container>
       <div className={legend} role="list" aria-label="Stroke colors">
         {rows.map(([k, name, value]) => (
           <div key={k} role="listitem" style={{ display: 'contents' }}>
@@ -244,19 +245,7 @@ const DEPTH_STROKE = ['data-1', 'data-2', 'data-3', 'data-4'];
 const labGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '8', alignItems: 'start' });
 const labBox = css({ display: 'flex', flexDirection: 'column', boxSizing: 'border-box', borderRadius: '[var(--r)]', padding: '[var(--p)]', gap: '[var(--g)]', boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
 const labTag = css({ textStyle: 'caption', color: 'fg.muted', fontVariantNumeric: 'tabular-nums' });
-// U: the universal-container prototype in real CSS. Each nesting depth n has its own variables, so a
-// container reads its parent's radius without a cycle: r1 = the root radius; r(n) = max(control radius,
-// r(n−1) × k); the padding is what is left, p(n) = r(n) − max(control radius, r(n) × k), so the last
-// level holds controls concentrically.
-const UC_DEPTH = 6;
-const ucSel = (n: number) => Array.from({ length: n }, () => '[data-uc]').join(' ');
-// Panda extracts css() at build time, so the depth rules (generated) are a scoped stylesheet instead.
-const UC_CSS = Array.from({ length: UC_DEPTH }, (_, i) => {
-  const n = i + 1;
-  const r = n === 1 ? 'var(--uc-root)' : `max(var(--uc-ctl), calc(var(--uc-r${n - 1}) * var(--uc-k)))`;
-  return `.uc-lab ${ucSel(n)} { --uc-r${n}: ${r}; --uc-p${n}: calc(var(--uc-r${n}) - max(var(--uc-ctl), calc(var(--uc-r${n}) * var(--uc-k)))); display: flex; flex-direction: column; box-sizing: border-box; border-radius: var(--uc-r${n}); padding: var(--uc-p${n}); gap: var(--uc-p${n}); box-shadow: inset 0 0 0 1.5px var(--colors-data-${(i % 4) + 1}); }`;
-}).join('\n');
-
+const ucBox = css({ boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
 const labControls = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))', gap: '4', marginBlockEnd: '6' });
 
 function NestedLab({ params }: Pick<PageProps, 'params'>) {
@@ -299,14 +288,14 @@ function NestedLab({ params }: Pick<PageProps, 'params'>) {
   const ucRef = useRef<HTMLDivElement>(null);
   const [ucRead, setUcRead] = useState<string[]>([]);
   useEffect(() => {
-    const t = setTimeout(() => setUcRead([...(ucRef.current?.querySelectorAll<HTMLElement>('[data-uc]') ?? [])].map((el) => { const cs = getComputedStyle(el); return `r ${fmt(parseFloat(cs.borderTopLeftRadius))} · p ${fmt(parseFloat(cs.paddingTop))}`; })), 50);
+    const t = setTimeout(() => setUcRead([...(ucRef.current?.querySelectorAll<HTMLElement>('ui-container') ?? [])].map((el) => { const cs = getComputedStyle(el); return `r ${fmt(parseFloat(cs.borderTopLeftRadius))} · p ${fmt(parseFloat(cs.paddingTop))}`; })), 50);
     return () => clearTimeout(t);
   });
+  // U: real ui-containers (the kit's nesting chain, the theme's container-ratio), read back.
   const ucTree = (d: number): ReactNode => (d > D ? <ui-button>Action</ui-button> : (
-    <div data-uc="">
-      <span className={labTag}>{'\u00a0'}</span>
+    <ui-container preset="card" padding={d === 1 ? level : undefined} className={ucBox} style={{ '--stroke': `var(--colors-${DEPTH_STROKE[(d - 1) % 4]})` } as CSSProperties}>
       {Array.from({ length: d === 1 ? 2 : 1 }, (_, i) => <Fragment key={i}>{ucTree(d + 1)}</Fragment>)}
-    </div>
+    </ui-container>
   ));
   const models: [string, Node][] = [['A · outward (today)', withIdeal(outward(0))], ['B · inward subtraction', withIdeal(inward(0))], ['C · ratio ladder', withIdeal(ladder(0))], ['D · even split (B, padding derived)', withIdeal(even(0))]];
   return (
@@ -324,9 +313,8 @@ function NestedLab({ params }: Pick<PageProps, 'params'>) {
           </div>
         ))}
         <div>
-          <h3 className={subTitle}>U · universal prototype (CSS)</h3>
-          <style>{UC_CSS}</style>
-          <div ref={ucRef} className="uc-lab" style={{ '--uc-root': `${outer.radius}px`, '--uc-ctl': `${ctlR}px`, '--uc-k': String(k) } as CSSProperties}>{ucTree(1)}</div>
+          <h3 className={subTitle}>U · ui-container (the kit)</h3>
+          <div ref={ucRef}>{ucTree(1)}</div>
           <p className={labTag}>Read back from CSS: {ucRead.join(' → ')}</p>
         </div>
       </div>

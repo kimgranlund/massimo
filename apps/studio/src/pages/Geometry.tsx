@@ -254,7 +254,7 @@ export function GeometryPage({ params }: PageProps) {
           const t = resolveSeparator(theme);
           return (
             <SpecRow label="separator" values={[`thickness ${px(t.thickness)} · B ${px(t.border)}`]}>
-              <ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
+              <ui-container preset="group"><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-container>
             </SpecRow>
           );
         })()}

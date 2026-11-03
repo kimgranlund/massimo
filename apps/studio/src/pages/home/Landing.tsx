@@ -39,10 +39,10 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
           <ui-tag className={cx(s.tone.primary, badgeLink)}><i slot="leading" name="sparkle" />New<span slot="suffix">Autumn planner is live</span></ui-tag>
           <h1 className={s.display}>Plan the season. Ship it on time.</h1>
           <p className={s.bodyLarge}>{BRAND} keeps your collections, launches and numbers in one calm workspace, so the whole team sees the same plan.</p>
-          <ui-group>
+          <ui-container preset="group">
             <ui-button variant="primary">Start free trial<i slot="trailing" name="arrow-right" /></ui-button>
             <ui-button><i slot="leading" name="play" />Watch the tour<span slot="suffix">2 min</span></ui-button>
-          </ui-group>
+          </ui-container>
           <div className={trust}>
             <span className={faces} aria-hidden="true">
               {['ML', 'TH', 'AT', 'PN'].map((n, i) => <ui-avatar key={n} className={s.tone[s.AVATAR_TONES[i]]}>{n}</ui-avatar>)}
@@ -50,10 +50,10 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
             <span className={s.caption}>Used by 4,000 small brands · 4.8 rating</span>
           </div>
         </div>
-        <ui-card padding="xl" className={brandCard}>
+        <ui-container preset="card" padding="xl" className={brandCard}>
           <span className={onSolidKicker}>Autumn / Winter 26</span>
           <ui-image src={art(spectrum, 'hills', 'primary', 'secondary')} alt="Hills at first light" ratio="landscape" className={heroImage} />
-          <ui-card padding="sm" className={floating}>
+          <ui-container preset="card" padding="sm" className={floating}>
             <div className={s.spread}>
               <div className={s.stack1}>
                 <span className={s.strong}>Next drop · Field collection</span>
@@ -62,19 +62,19 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
               <ui-badge className={s.tone.success}>On track</ui-badge>
             </div>
             <ui-progress label="Collection readiness" value={62} />
-          </ui-card>
+          </ui-container>
           <span className={onSolidMuted}>Photography: Sarek, Sweden</span>
-        </ui-card>
+        </ui-container>
       </div>
       <div className={features}>
         {FEATURES.map((f, i) => (
-          <ui-card key={f.title} padding="lg">
+          <ui-container preset="card" key={f.title} padding="lg">
             <span className={cx(featureIcon, s.tone[(['primary', 'secondary', 'info'] as const)[i]])}><i name={f.icon} /></span>
             <div className={s.stack1}>
               <h3 className={s.h3}>{f.title}</h3>
               <p className={s.muted}>{f.text}</p>
             </div>
-          </ui-card>
+          </ui-container>
         ))}
       </div>
     </>

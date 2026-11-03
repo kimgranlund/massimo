@@ -91,17 +91,17 @@ export function Dashboard() {
           <span className={s.groupKicker}>Store · last 30 days</span>
           <h2 className={s.h1}>Good morning, Kim</h2>
         </div>
-        <ui-group>
+        <ui-container preset="group">
           <ui-segmented label="Period" value="30d">
             <ui-option value="7d">7d</ui-option><ui-option value="30d">30d</ui-option><ui-option value="90d">90d</ui-option>
           </ui-segmented>
           <ui-button><i slot="leading" name="export" />Export</ui-button>
-        </ui-group>
+        </ui-container>
       </div>
 
       <div className={stats}>
         {STATS.map((st) => (
-          <ui-card key={st.label}>
+          <ui-container preset="card" key={st.label}>
             <span className={s.label}>{st.label}</span>
             <strong className={figure} data-numeric>
               {st.unit === '$' && <span className={unit} data-numeric>$</span>}{st.value}{st.unit === '%' && <span className={unit} data-numeric>%</span>}
@@ -110,12 +110,12 @@ export function Dashboard() {
               <ui-badge className={s.tone[st.tone]}><i slot="leading" name={st.icon} />{st.delta}</ui-badge>
               <span className={s.caption}>{st.note}</span>
             </div>
-          </ui-card>
+          </ui-container>
         ))}
       </div>
 
       <div className={charts}>
-        <ui-card>
+        <ui-container preset="card">
           <div className={s.spread}>
             <div className={s.stack1}><h3 className={s.h3}>Revenue by channel</h3><span className={s.caption}>Weekly, in thousands of dollars</span></div>
             <ui-tag><i slot="leading" name="calendar-blank" />Sep 8 – Nov 2</ui-tag>
@@ -137,8 +137,8 @@ export function Dashboard() {
             </div>
           </div>
           <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={cx(dot, s.DATA_BG[c])} />{n}</span>)}</div>
-        </ui-card>
-        <ui-card>
+        </ui-container>
+        <ui-container preset="card">
           <div className={s.stack1}><h3 className={s.h3}>Top products</h3><span className={s.caption}>Units sold, last 30 days</span></div>
           {TOP_PRODUCTS.map((p, i) => (
             <div key={p.name} className={meter}>
@@ -147,19 +147,19 @@ export function Dashboard() {
             </div>
           ))}
           <ui-button><i slot="leading" name="list-bullets" />All products</ui-button>
-        </ui-card>
+        </ui-container>
       </div>
 
-      <ui-card>
+      <ui-container preset="card">
         <div className={s.spread}>
           <div className={s.stack1}><h3 className={s.h3}>Recent orders</h3><span className={s.caption}>{rows.length} of {ORDERS.length} shown</span></div>
-          <ui-group>
+          <ui-container preset="group">
             {FILTERS.map((f) => (
               <ui-chip key={f} selectable selected={filter === f || undefined} onClick={() => setFilter(f)}>{f}</ui-chip>
             ))}
-          </ui-group>
+          </ui-container>
         </div>
-        <ui-collection gap="0" className={orders}>
+        <ui-container preset="collection" gap="0" className={orders}>
           <div className={cx(listHead, s.groupKicker)} aria-hidden="true">
             <span /><span>Customer</span><span>Channel</span><span>Status</span><span>Total</span><span />
           </div>
@@ -177,14 +177,14 @@ export function Dashboard() {
               </div>
               <span className={statusCol}><ui-tag className={s.tone[STATUS_TONE[o.status]]}>{o.status}</ui-tag></span>
               <span className={total} data-numeric>${o.total}</span>
-              <ui-group className={actions}>
+              <ui-container preset="group" className={actions}>
                 <ui-button aria-label={`View order ${o.id}`} className={wideOnly}><i slot="leading" name="eye" /></ui-button>
                 <ui-button aria-label={`More for order ${o.id}`}><i slot="leading" name="dots-three" /></ui-button>
-              </ui-group>
+              </ui-container>
             </div>
           ))}
-        </ui-collection>
-      </ui-card>
+        </ui-container>
+      </ui-container>
     </>
   );
 }

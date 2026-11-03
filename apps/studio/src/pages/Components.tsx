@@ -188,7 +188,7 @@ function Forms({ params }: Pick<PageProps, 'params'>) {
   return (
     <>
       <div className={columns}>
-        <ui-card padding="lg">
+        <ui-container preset="card" padding="lg">
           <ui-form ref={onForm} validation-mode={mode}>
             <ui-input name="email" label="Email" type="email" required description="taken@example.com gets server errors" />
             <ui-field label="Plan">
@@ -196,9 +196,9 @@ function Forms({ params }: Pick<PageProps, 'params'>) {
             </ui-field>
             <ui-checkbox-group name="topics" value="news" orientation="horizontal"><ui-checkbox value="news">News</ui-checkbox><ui-checkbox value="tips">Tips</ui-checkbox></ui-checkbox-group>
             <ui-input name="code" label="Invite code" minlength={4} />
-            <ui-group><ui-button type="submit" variant="primary">Sign up</ui-button><ui-button type="reset">Reset</ui-button></ui-group>
+            <ui-container preset="group"><ui-button type="submit" variant="primary">Sign up</ui-button><ui-button type="reset">Reset</ui-button></ui-container>
           </ui-form>
-        </ui-card>
+        </ui-container>
         <div className={stack}>
           <ui-field label="Validation mode">
             <ui-segmented ref={onMode} value={mode}><ui-option value="onSubmit">onSubmit</ui-option><ui-option value="onBlur">onBlur</ui-option><ui-option value="onChange">onChange</ui-option></ui-segmented>
@@ -467,11 +467,11 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <ui-button icon-size="fill"><span slot="leading" className={avatar} />fill</ui-button>
         </Row>
         <Row label="Toggle">
-          <ui-group>
+          <ui-container preset="group">
             <ui-toggle aria-label="Bold" pressed><i slot="leading" name="text-b" /></ui-toggle>
             <ui-toggle aria-label="Italic"><i slot="leading" name="text-italic" /></ui-toggle>
             <ui-toggle aria-label="Underline" disabled><i slot="leading" name="text-underline" /></ui-toggle>
-          </ui-group>
+          </ui-container>
           <ui-toggle default-pressed><i slot="leading" name="star" />Favorite</ui-toggle>
           <ui-toggle>Notify me<span slot="suffix">3</span></ui-toggle>
           <ui-toggle pressed disabled>Locked on</ui-toggle>
@@ -967,8 +967,8 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
       <>
         <Row label="Separator">
           <div className={separatorDemo}>
-            <ui-collection><span>Account</span><span>Billing</span><ui-separator /><span>Sign out</span></ui-collection>
-            <ui-group><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group>
+            <ui-container preset="collection"><span>Account</span><span>Billing</span><ui-separator /><span>Sign out</span></ui-container>
+            <ui-container preset="group"><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-container>
           </div>
         </Row>
         <Row label="Avatar">
@@ -989,7 +989,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         </SizeLadder>
         <h3 className={subTitle}>Separator sizes</h3>
         <SizeLadder family="separator" params={params}>
-          <div className={separatorLadder}><ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-group><ui-separator /></div>
+          <div className={separatorLadder}><ui-container preset="group"><ui-button>Cut</ui-button><ui-separator orientation="vertical" /><ui-button>Paste</ui-button></ui-container><ui-separator /></div>
         </SizeLadder>
       </>
     ),

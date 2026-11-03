@@ -16,6 +16,7 @@ declare module 'react' {
       'ui-chip': El<{ selectable?: boolean; selected?: boolean; removable?: boolean; disabled?: boolean; 'icon-size'?: string }>;
       'ui-group': El<{ gap?: string; radius?: string }>;
       'ui-collection': El<{ gap?: string; radius?: string }>;
+      'ui-container': El<{ preset?: 'group' | 'collection' | 'card' | 'panel' | 'region' | 'page'; padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; layout?: 'stack' | 'row' | 'wrap'; surface?: 'none' | 'panel' | 'card' | 'raised'; levels?: string | number; gap?: string | number; radius?: string; size?: string; 'aria-label'?: string; role?: string }>;
       'ui-card': El<{ gap?: string; radius?: string; padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' }>;
       'ui-panel': El<{ gap?: string }>;
       'ui-region': El<{ gap?: string }>;

@@ -27,12 +27,12 @@ const TINT: Record<Tint, string> = { base: s.regionBase, subtle: s.regionSubtle,
 
 function Region({ id, name, note, tint = 'base', children }: { id: string; name: string; note: string; tint?: Tint; children: React.ReactNode }) {
   return (
-    <ui-region id={id} aria-label={name} className={TINT[tint]}>
+    <ui-container preset="region" id={id} aria-label={name} className={TINT[tint]}>
       <div className={s.column}>
         <p className={s.marker}><span className={s.markerName}>{name}</span><span className={s.markerNote}>{note}</span></p>
         {children}
       </div>
-    </ui-region>
+    </ui-container>
   );
 }
 

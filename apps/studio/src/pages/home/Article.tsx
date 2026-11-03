@@ -50,10 +50,10 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
               <span className={s.strong}>Elin Lund</span>
               <span className={s.caption}>Oct 28, 2026 · 12 min read</span>
             </div>
-            <ui-group>
+            <ui-container preset="group">
               <ui-button aria-label="Save article"><i slot="leading" name="bookmark-simple" /></ui-button>
               <ui-button><i slot="leading" name="share-network" />Share</ui-button>
-            </ui-group>
+            </ui-container>
           </div>
         </header>
         <p className={dropcap}>The trail starts at Abisko with a sign, a birch wood and a weather forecast nobody believes. We walked south for ten days with two packs, one tent and a list we had argued over for a month. Everything on it was ours: jackets, base layers, the canvas sacks the food rode in.</p>
@@ -71,7 +71,7 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
         <p>We came home with a shorter list and a longer one: what to cut, and what to make next. The second list is the reason this journal exists.</p>
       </article>
       <aside className={aside}>
-        <ui-card padding="md">
+        <ui-container preset="card" padding="md">
           <span className={s.groupKicker}>Read next</span>
           <div>
             {MORE.map(([t, m], i) => (
@@ -81,13 +81,13 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
               </div>
             ))}
           </div>
-          <ui-card padding="sm" className={s.tone.primary}>
+          <ui-container preset="card" padding="sm" className={s.tone.primary}>
             <span className={s.strong}>The Fieldnote letter</span>
             <span className={s.caption}>One trip, one lesson, every other Sunday.</span>
             <ui-input label="Email" hide-label placeholder="you@example.com"><i slot="leading" name="envelope-simple" /></ui-input>
             <ui-button variant="primary">Subscribe</ui-button>
-          </ui-card>
-        </ui-card>
+          </ui-container>
+        </ui-container>
       </aside>
     </div>
   );

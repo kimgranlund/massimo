@@ -77,8 +77,9 @@ const precision = (() => {
 // and height span two text line boxes (fractional line heights at u ≥ 11.5); a vertical menubar's
 // height adds two edges and a gap of 0.5u each (fractional at u = 2.25, 2.75). Three units and a
 // rounding step. A wrapping combobox's height sums its chip rows, gaps and edges (compact density at
-// fractional u leaves several fractional boxes).
-const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height|combobox\.wrap\.height)$/;
+// fractional u leaves several fractional boxes). A nested container's gap is measured between two
+// containers whose fractional heights each snap (WebKit).
+const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height|combobox\.wrap\.height|container\.tree[\d.]*\.gap)$/;
 const tolerance = (k, want) => Math.max(0.02, precision.layout, SNAPPED_PAIR.test(k) ? Math.max(3 / 64, 1.5 * precision.layout) + 0.01 : 0,
   precision.font && /^type\..*\.size$|\.font$/.test(k) ? 2 ** (Math.floor(Math.log2(want)) - 10) + 0.01 : 0);
 let total = 0;
