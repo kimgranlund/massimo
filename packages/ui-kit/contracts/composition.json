@@ -187,7 +187,7 @@
         "composite"
       ]
     },
-    "rule": "Areas hold containers, containers hold wrappers; a level may be skipped and a card may hold a smaller card (padding xs…xl). Radius by family: area square, container = its padding, wrapper concentric with its children (3u + padding)."
+    "rule": "Areas hold containers, containers hold wrappers; a level may be skipped and a card may hold a smaller card (padding xs…xl). Radius by family: area square, container = its padding, composite the control radius (options R − D), wrapper concentric with the controls it hugs (control radius + padding)."
   },
   "forbidden": [
     {

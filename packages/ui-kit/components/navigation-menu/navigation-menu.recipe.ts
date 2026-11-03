@@ -3,7 +3,7 @@
 // (resolveNavigationMenu): the list is a composite row (8u, edge 0.5u, no fill) of triggers and
 // links that are composite options (7u, the construction pattern, the trigger's caret at icon size
 // sm in its trailing slot, turned while open); the popup is a composite container (edge 0.5u,
-// radius (3 + 0.5)u·s) 1u below the open trigger whose content's links are composite options too.
+// the control radius) 1u below the open trigger whose content's links are composite options too.
 // The popup's size follows the open content (--popup-width / --popup-height set by script) on the
 // reveal intent, and new content slides in from the side it came from (data-activation-direction).
 // The shared popup pieces (components/popover/popup-parts.ts) place it and run the reveal motion.
@@ -41,7 +41,6 @@ export const navigationMenu = defineSlotRecipe({
     // One row: the radius is capped at half the 8u height, like a segmented control.
     list: mergeStyles(composite, {
       display: 'flex', flexWrap: 'wrap', alignItems: 'center', listStyle: 'none', margin: 0, borderColor: 'transparent', bg: 'transparent',
-      '--cr': 'min(calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))',
       '&[data-orientation=vertical]': { flexDirection: 'column', alignItems: 'stretch' },
     }),
     item: { display: 'flex', margin: 0, padding: 0 },

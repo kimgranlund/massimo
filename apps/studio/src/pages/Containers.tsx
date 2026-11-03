@@ -28,7 +28,7 @@ export function ContainersPage({ params }: PageProps) {
   return (
     <Page title="Containers" lead="Wrappers, containers and areas: live padding, gap and radius per level, with examples. The Geometry tab sets padding and gap per level.">
       <Divider />
-      <Section id="containers" title="Container tokens" note="Three families. Wrappers (composite, group, collection) hug their children: radius 3u + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Live padding and gap per level (pad-<level>, gap-<level>, in u).">
+      <Section id="containers" title="Container tokens" note="Four families. Composites (listbox, segmented) are controls: the control radius, options R − D. Wrappers (group, collection) hug their controls: control radius + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Live padding and gap per level (pad-<level>, gap-<level>, in u).">
         <div className={tableScroller}>
           <table className={dataTable} aria-label="Container tokens">
             <thead>

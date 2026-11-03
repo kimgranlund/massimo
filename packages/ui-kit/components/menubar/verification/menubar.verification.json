@@ -14,7 +14,7 @@
     },
     {
       "path": "components/menubar/menubar.recipe.ts",
-      "sha256": "061b1dfa7ebcba6f79edb33c0762e38579fde4dce0ff30ccb02942733a93b478"
+      "sha256": "3e3a21ed95b31cd222d0259bb057168c65db4ca65cf17fb24a1ea7a6929e000c"
     },
     {
       "path": "dom/menubar.ts",

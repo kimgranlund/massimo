@@ -54,11 +54,7 @@ export const tabs = defineSlotRecipe({
   variants: {
     variant: {
       segmented: {
-        list: mergeStyles(composite, { bg: 'bg.control', borderColor: 'transparent', [FORCED]: FORCED_EDGE,
-          // One row: the radius is capped at half the height (8u), like ui-segmented.
-          '--cr': 'min(calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))',
-          [VERTICAL]: { '--cr': 'calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale))' },
-        }),
+        list: mergeStyles(composite, { bg: 'bg.control', borderColor: 'transparent', [FORCED]: FORCED_EDGE, }),
         tab: mergeStyles(compositeOption, { [ACTIVE]: { color: 'fg.selected' } }),
         indicator: { bg: 'bg.selected', boxShadow: 'sm', borderRadius: 'min(calc(var(--ch) / 2), max(0px, calc(var(--cr) - var(--d))))', [FORCED]: { bg: 'Highlight' } },
       },

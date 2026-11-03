@@ -76,7 +76,7 @@ Roving focus: the last focused trigger is the tab stop (tabindex 0, the others �
 
 ## Geometry and appearance
 
-Geometry family: `menu` (resolver `resolveMenubar`). The bar is a composite on the control fill: edge D = max(B, 0.5u), padding D − B, the composite gap, one row 8u with the radius capped at half the height (uncapped when vertical). Its menus' triggers are composite options: 7u, inset Ic, the option radius concentric with the bar, labels 2u from a bare edge (1u beside a slot); transparent until hovered (`bg.control`), `bg.controlHover` while their menu is open; the focus ring is drawn inside the trigger, so it stays within the bar. The menus open 1u below their trigger (beside it when vertical), as in [Menu](../menu/menu.md#geometry-and-appearance). Styles: [menubar.recipe.ts](menubar.recipe.ts).
+Geometry family: `menu` (resolver `resolveMenubar`). The bar is a composite on the control fill: edge D = max(B, 0.5u), padding D − B, the composite gap, one row 8u with the control radius, min(3u·s, 4u), vertical too. Its menus' triggers are composite options: 7u, inset Ic, the option radius concentric with the bar, labels 2u from a bare edge (1u beside a slot); transparent until hovered (`bg.control`), `bg.controlHover` while their menu is open; the focus ring is drawn inside the trigger, so it stays within the bar. The menus open 1u below their trigger (beside it when vertical), as in [Menu](../menu/menu.md#geometry-and-appearance). Styles: [menubar.recipe.ts](menubar.recipe.ts).
 
 ## Renderers and verification
 

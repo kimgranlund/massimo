@@ -2,7 +2,7 @@
 // <ui-region>, <ui-page> and the React Group … Page. Three families (tokens/geometry/resolve.ts
 // CONTAINERS): padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>
 // (the gap attribute wins on its own element); radius: wrapper (group, collection) concentric with
-// 3u children, (3 + p)u × s; container (card) at most its padding, p·u × min(1, s); area (panel,
+// the controls it hugs, min(3u·s, 4u) + p·u (square at s = 0); container (card) at most its padding, p·u × min(1, s); area (panel,
 // region, page) square. Fills alternate by depth so each level reads without borders: panel 3, card
 // 2, a card nested in a card 1.
 //
@@ -12,7 +12,7 @@
 // React renderers and plain HTML use the classes.
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CARD_PADDINGS, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
-import { mergeStyles, tagRules } from '../recipe-parts.ts';
+import { CONTROL_RADIUS, mergeStyles, tagRules } from '../recipe-parts.ts';
 
 type Layout = Exclude<ContainerLevel, 'composite'>;
 
@@ -23,7 +23,8 @@ const level = (k: Layout) => {
     '--cp': `var(--ui-pad-${k})`,
     '--cg': `var(--ui-gap-${k})`,
     '--cr': family === 'area' ? '0px'
-      : family === 'wrapper' ? `calc((3 + var(--ui-pad-${k})) * var(--u) * var(--ui-radius-scale))`
+      // Concentric with the controls they hug: the control radius + the padding; square at s = 0.
+      : family === 'wrapper' ? `calc(${CONTROL_RADIUS} + var(--ui-pad-${k}) * var(--u) * min(1, 100 * var(--ui-radius-scale)))`
       : `calc(var(--ui-pad-${k}) * var(--u) * min(1, var(--ui-radius-scale)))`,
   };
 };

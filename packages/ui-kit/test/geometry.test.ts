@@ -76,13 +76,15 @@ test('fields and select trigger use button geometry: text where a button label s
   assert.equal(t.paddingStart, f.padding + b.start);
 });
 
-test('composite: 0.5u padding level, concentric radius; one-row segmented is always 8u; options keep the 3u control radius', () => {
+test('composite: 0.5u padding level; a control: the control radius, options R − D; one-row segmented is always 8u', () => {
   const c = resolveComposite({ unit: 4, border: 1 });
   assert.equal(c.edge, 2);
   assert.equal(c.padding, 1);
   assert.equal(c.child.height, 28);
-  assert.equal(c.radius, 14, 'composite is a wrapper: 3u + padding');
-  assert.equal(c.child.radius, 12, 'concentric: 14 - 2 = control radius');
+  assert.equal(c.radius, 12, 'composite is a control: the 3u control radius');
+  assert.equal(c.child.radius, 10, 'options split the difference: 12 - 2');
+  assert.equal(resolveComposite({ unit: 4, radiusScale: 2, container: true }).radius, 16, 'the control radius caps at 4u, like a button');
+  assert.equal(resolveComposite({ unit: 4, radiusScale: 0 }).child.radius, 0, 'square at s = 0');
   for (const unit of SIZES) for (const border of [0, 1]) {
     if (border > unit / 2) continue;
     assert.equal(resolveComposite({ unit, border }).rowHeight, 8 * unit, `row = 8u at u=${unit} B=${border}`);
@@ -90,7 +92,7 @@ test('composite: 0.5u padding level, concentric radius; one-row segmented is alw
   assert.equal(resolveComposite({ unit: 4, gap: 0 }).gap, 0, 'gap override the gap');
 });
 
-test('containers: three families: wrapper concentric, container radius = padding, area square', () => {
+test('containers: wrapper concentric with its controls, container radius = padding, area square', () => {
   const at4 = Object.fromEntries((['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const).map((l) => {
     const c = resolveContainer(l, { unit: 4, border: 0 });
     return [l, [c.padding, c.gap, c.radius]];
@@ -101,13 +103,16 @@ test('containers: three families: wrapper concentric, container radius = padding
     panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0],
   });
   for (const [l, c] of Object.entries(CONTAINERS)) {
-    const want = c.family === 'area' ? 0 : c.family === 'wrapper' ? 3 + c.padding : c.padding;
+    const want = c.family === 'area' ? 0 : c.family === 'composite' ? 3 : c.family === 'wrapper' ? 3 + c.padding : c.padding;
     assert.equal(c.maxRadius, want, `${l} (${c.family}) max radius`);
   }
   assert.deepEqual(CARD_PADDINGS.map((p) => CONTAINERS[`card-${p}`].padding), [2, 3, 4, 5, 6], 'card xs…xl = 2…6u');
   assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3 }).radius, 16, 'corner scale cannot raise a container past its padding');
   assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 8, 'corner scale lowers it');
-  assert.equal(resolveContainer('group', { unit: 4, radiusScale: 2 }).radius, 32, 'wrappers follow the corner scale (concentric)');
+  // Concentric: the control radius (min(3u·s, 4u)) + the padding, at every scale; square at s = 0.
+  assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0.5 }).radius, 6 + 4, 'group at s = 0.5');
+  assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 2 }).radius, 16 + 8, 'collection at s = 2: the 4u control cap + 2u');
+  assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0 }).radius, 0, 'square at s = 0');
   const card = resolveContainer('card-md', { unit: 5, gap: 2 });
   assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gap="2">');
   assert.equal(resolveContainer('group', { unit: 4, height: 20 }).radius, 10, 'half-height cap');
@@ -259,9 +264,9 @@ test('disclosure: the collapsible trigger is an 8u control row with a sm caret; 
 
 test('disclosure: segmented tabs are 7u composite options in an 8u list; underline tabs are 8u rows with a 0.5u bar on a 1px track', () => {
   const s = resolveTabs('segmented', { unit: 4, border: 1 });
-  assert.deepEqual([s.listHeight, s.listEdge, s.listPadding, s.listGap, s.tabHeight, s.tabRadius, s.indicatorRadius, s.gap], [32, 2, 1, 2, 28, 12, 12, 8]);
+  assert.deepEqual([s.listHeight, s.listEdge, s.listPadding, s.listGap, s.tabHeight, s.tabRadius, s.indicatorRadius, s.gap], [32, 2, 1, 2, 28, 10, 10, 8]);
   assert.equal(resolveTabs('segmented', { unit: 4, border: 0 }).listHeight, 32, 'one row stays 8u at any B');
-  assert.equal(s.listRadius, 14, 'min(3.5u, 8u / 2)');
+  assert.equal(s.listRadius, 12, 'the control radius, min(3u·s, 4u)');
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
 });
@@ -326,18 +331,18 @@ test('drawer: an area-level sheet (6u panel padding inside B, square, parts 2u a
 test('menu: an 8u trigger; the popup is a composite 1u away; items are 7u composite options; separators 0.5u apart', () => {
   const m = resolveMenu({ unit: 4, border: 1 });
   assert.deepEqual([m.triggerHeight, m.triggerPadding, m.triggerRadius, m.offset], [32, 3, 12, 4]);
-  assert.deepEqual([m.popupEdge, m.popupPadding, m.popupGap, m.popupRadius], [2, 1, 2, 14]);
-  assert.deepEqual([m.itemHeight, m.itemInset, m.itemPadding, m.itemRadius, m.labelStart, m.labelBesideSlot], [28, 2, 1, 12, 8, 4]);
+  assert.deepEqual([m.popupEdge, m.popupPadding, m.popupGap, m.popupRadius], [2, 1, 2, 12]);
+  assert.deepEqual([m.itemHeight, m.itemInset, m.itemPadding, m.itemRadius, m.labelStart, m.labelBesideSlot], [28, 2, 1, 10, 8, 4]);
   assert.deepEqual([m.separator, m.separatorMargin, m.slot], [1, 2, 24]);
   assert.equal(resolveMenu({ unit: 4, border: 0 }).itemHeight, 28, 'items stay 7u at any B');
 });
 
-test('menu: a menubar is an 8u composite row of 7u composite-option triggers; its radius is capped at half the row unless vertical', () => {
+test('menu: a menubar is an 8u composite row of 7u composite-option triggers; its radius is the control radius', () => {
   const b = resolveMenubar({ unit: 4, border: 1 });
-  assert.deepEqual([b.rowHeight, b.edge, b.padding, b.gap, b.radius, b.triggerHeight, b.triggerPadding, b.triggerRadius, b.labelStart, b.offset], [32, 2, 1, 2, 14, 28, 1, 12, 8, 4]);
+  assert.deepEqual([b.rowHeight, b.edge, b.padding, b.gap, b.radius, b.triggerHeight, b.triggerPadding, b.triggerRadius, b.labelStart, b.offset], [32, 2, 1, 2, 12, 28, 1, 10, 8, 4]);
   assert.equal(resolveMenubar({ unit: 4, border: 0 }).rowHeight, 32, 'one row stays 8u at any B');
-  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2 }).radius, 16, 'capped at half the row');
-  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2, vertical: true }).radius, 28, 'uncapped when vertical');
+  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2 }).radius, 16, 'the 4u control cap');
+  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2, vertical: true }).radius, 16, 'vertical too: a composite is a control');
 });
 
 test('popup: 1u offset, a 2u × 1u arrow; the popover is a card-sm with the group gap, capped at 80u', () => {
@@ -373,7 +378,7 @@ test('popup: a preview card is a card-md with the collection gap, capped at 80u'
 test('navigation menu: an 8u composite list of 7u triggers and links with a sm caret; the popup a composite container', () => {
   const n = resolveNavigationMenu({ unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.listEdge, n.listPadding, n.listGap], [32, 2, 1, 2]);
-  assert.deepEqual([n.itemHeight, n.itemPadding, n.itemRadius], [28, 1, 12]);
+  assert.deepEqual([n.itemHeight, n.itemPadding, n.itemRadius], [28, 1, 10]);
   assert.deepEqual([n.labelStart, n.labelEnd, n.caret, n.offset], [8, 4, 12, 4]);
-  assert.deepEqual([n.popupEdge, n.popupPadding, n.popupRadius, n.linkHeight, n.linkRadius], [2, 1, 14, 28, 12]);
+  assert.deepEqual([n.popupEdge, n.popupPadding, n.popupRadius, n.linkHeight, n.linkRadius], [2, 1, 12, 28, 10]);
 });

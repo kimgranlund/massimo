@@ -91,7 +91,7 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 | caret | icon size sm in the 6u trailing slot, turned 180° while open | 12 |
 | panel | text starts at the trigger's label edge: inline padding u + 2u; end padding 2u (0 while closed); height 0 ↔ auto on the reveal intent (`resolveDisclosure`) | 12 / 8 |
 | accordion item | a collapsible; items are separated by the thin border-width token (1px, border role) outside the trigger's padding, so a closed item is 8u + 1px at any B (inline end when horizontal) | 33 |
-| tabs, segmented | the list is a composite (edge D, one row 8u, radius min(3.5u·s, 4u)); tabs are composite options (7u, the option radius); the indicator is the active tab's box (`resolveTabs`) | 32 / 28 / 12 |
+| tabs, segmented | the list is a composite (edge D, one row 8u, the control radius min(3u·s, 4u)); tabs are composite options (7u, the option radius); the indicator is the active tab's box (`resolveTabs`) | 32 / 28 / 12 |
 | tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
 | tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
@@ -133,10 +133,10 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 | | Formula | at u=4 |
 |---|---|---|
 | trigger | a control row: 8u, padding u − B, the control radius, the construction pattern (a preset's caret is trailing, icon size sm) (`resolveMenu`) | 32 |
-| popup | a floating composite 1u from its anchor (below the trigger, beside a submenu trigger, at the pointer): edge D = max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s; at least as wide as the anchor, at most the space left | 4 / 2 / 14 |
+| popup | a floating composite 1u from its anchor (below the trigger, beside a submenu trigger, at the pointer): edge D = max(B, 0.5u), padding D − B, the composite gap, the control radius min(3u·s, 4u) (items R − D inside it); at least as wide as the anchor, at most the space left | 4 / 2 / 12 |
 | item | a composite option: 7u, inset Ic, radius min(item / 2, popup radius − D); labels 2u from a bare edge, 1u from a slot; a suffix (shortcut) 2u after the label; checkbox and radio items keep a 6u leading indicator slot; group labels share the item row | 28 / 12 |
 | separator | the separator rule max(1px, B) with 0.5u above and below, beyond the gap | 1 / 2 |
-| menubar | a composite row (edge D, one row 8u, radius min(3.5u·s, 4u), uncapped when vertical) of its menus' triggers as composite options (7u, the option radius); its menus open 1u below the trigger (beside a vertical bar) (`resolveMenubar`) | 32 / 28 / 14 |
+| menubar | a composite row (edge D, one row 8u, the control radius min(3u·s, 4u), vertical too) of its menus' triggers as composite options (7u, the option radius); its menus open 1u below the trigger (beside a vertical bar) (`resolveMenubar`) | 32 / 28 / 14 |
 
 ## Popups: popover, tooltip, preview card
 
@@ -148,14 +148,15 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 | arrow | 2u wide, tip 1u from the popup (it spans the gap), centered on the trigger, kept radius + u inside the popup ends | 8 × 4 |
 | popover | the card-sm level: padding 3u − B, radius 3u·min(1, s), the group gap 1u (the `gap` attribute wins) (`resolvePopup('popover')`) | 12 / 12 / 4 |
 | tooltip | a 7u text row: the control font at line height 1.2 in a 6u text slot inside a 0.5u edge (block padding 0.5u − B + line padding), 2u − B at the ends, radius min(3u·s, 3.5u), at most 60u wide, no trigger-width minimum; inverse fill (`resolvePopup('tooltip')`) | 28 / 8 / 12 |
-| navigation menu | the list a composite row without a fill (8u, edge 0.5u); triggers and links composite options (7u, labels 2u / 1u, the caret icon sm in trailing); the popup a composite container (edge 0.5u, radius (3 + 0.5)u·s) 1u below the open trigger, aligned to its start, sized to the open content (at most 120u) (`resolveNavigationMenu`) | 32 / 28 / 14 |
+| navigation menu | the list a composite row without a fill (8u, edge 0.5u); triggers and links composite options (7u, labels 2u / 1u, the caret icon sm in trailing); the popup a composite container (edge 0.5u, the control radius) 1u below the open trigger, aligned to its start, sized to the open content (at most 120u) (`resolveNavigationMenu`) | 32 / 28 / 14 |
 | preview card | the card-md level: padding 4u − B, radius 4u·min(1, s), the collection gap 2u, at most 80u (`resolvePopup('preview-card')`) | 16 / 16 / 8 |
 
 ## Containers
 
-Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.
+Containers come in four families, each with one radius rule; the rule is concentricity: an outer radius is the inner radius plus the distance between the two edges (R = r + p), and the inner one splits the difference (r = R − p). Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.
 
-- **Wrapper** (composite, group, collection): hugs its children (options, controls, rows), so its radius is concentric with them: (3u + p) × corner scale. Composite options keep the 3u control radius.
+- **Composite** (listbox, segmented, toggle group, tabs list, menubar, the select, menu and navigation popups): a control. It takes the control radius, min(3u × s, 4u), the same as a button beside it, and its options split the difference: R − D, concentric inside it.
+- **Wrapper** (group, collection): hugs its controls, so its radius is concentric with them: the control radius + p, min(3u × s, 4u) + p·u, at every corner scale; at s = 0 everything is square (the p term is multiplied by min(1, 100·s)).
 - **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface whose radius equals its padding, p × min(1, corner scale): never rounder than it is deep; the corner scale can lower it, not raise it. Children keep their own radii, so they are not concentric with it. A card may hold a smaller card (it takes the base fill).
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
@@ -167,7 +168,7 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
-| composite (wrapper) | ui-listbox, ui-segmented, ui-toggle-group, select popup | 0.5u | 0.5u | 3.5u | 2 / 2 / 14 |
+| composite (control) | ui-listbox, ui-segmented, ui-toggle-group, select popup | 0.5u | 0.5u | 3u | 2 / 2 / 12 |
 | group (wrapper) | ui-group | 1u | 1u | 4u | 4 / 4 / 16 |
 | collection (wrapper) | ui-collection | 2u | 2u | 5u | 8 / 8 / 20 |
 | card-xs (container) | ui-card padding="xs" | 2u | 2u | 2u | 8 / 8 / 8 |
@@ -183,7 +184,7 @@ Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers
 
 ### Composite detail
 
-Options use the control anatomy with their inset reduced by the composite edge D = max(B, 0.5u): option inset Ic = max(B, u − D), option height 6u + 2Ic = 7u, so a one-row segmented control is always exactly 8u. Option radius = min(option/2, composite radius − D) = 3u, the control radius (the composite is exempt from radius ≤ padding). The popup sits 1u below its trigger.
+Options use the control anatomy with their inset reduced by the composite edge D = max(B, 0.5u): option inset Ic = max(B, u − D), option height 6u + 2Ic = 7u, so a one-row segmented control is always exactly 8u. Option radius = min(option/2, composite radius − D) = 2.5u at s = 1: the composite has the control radius and its options split the difference (the composite is exempt from radius ≤ padding). The popup sits 1u below its trigger.
 
 ## Badge, tag, chip
 

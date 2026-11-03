@@ -106,17 +106,19 @@ export function resolveTextRun(parts: ControlParts, input: GeometryInput & { slo
 }
 
 // ── Containers ──
-// Three families, one radius rule each:
-// - wrapper (composite, group, collection): hugs its children, so its radius is concentric with
-//   them: the 3u control radius + its padding, capped at half its height.
+// Four families, one radius rule each:
+// - composite (listbox, segmented, toggle group, select popup): a control; it takes the control
+//   radius, min(3u·s, 4u), and its options split the difference (R − D), concentric inside it.
+// - wrapper (group, collection): hugs its controls, so its radius is concentric with them: the
+//   control radius + its padding (square at s = 0), capped at half its height.
 // - container (card, padding xs | sm | md | lg | xl): a self-contained surface; its radius equals its
 //   padding, never rounder than it is deep (the corner scale can lower it, not raise it).
 // - area (panel, region, page): meets the viewport or other areas, so it is square.
 // Padding and gap are theme parameters per level (pad-<level>, gap-<level>, in u); these are their
 // defaults. Gap = padding unless the gap attribute overrides it.
-export type ContainerFamily = 'wrapper' | 'container' | 'area';
+export type ContainerFamily = 'composite' | 'wrapper' | 'container' | 'area';
 export const CONTAINERS = {
-  composite:  { family: 'wrapper',   padding: 0.5, maxRadius: 3.5 },
+  composite:  { family: 'composite', padding: 0.5, maxRadius: 3 },
   group:      { family: 'wrapper',   padding: 1,   maxRadius: 4 },
   collection: { family: 'wrapper',   padding: 2,   maxRadius: 5 },
   'card-xs':  { family: 'container', padding: 2,   maxRadius: 2 },
@@ -144,6 +146,11 @@ export const PAGE_MAX_WIDTH_REM = 72;
 /** Square levels (the area family): they meet the viewport or other areas, so they get no radius. */
 export const SQUARE_LEVELS: ReadonlySet<ContainerLevel> = new Set((Object.keys(CONTAINERS) as ContainerLevel[]).filter((l) => CONTAINERS[l].family === 'area'));
 
+/** The control radius: 3u × s, capped at half the 8u control height (resolveControl). */
+export const controlRadius = (u: number, s: number) => Math.min(3 * u * s, 4 * u);
+/** 1 while the radius scale is on, 0 at s = 0 so everything is square (CSS: min(1, 100 × s)). */
+const roundOn = (s: number) => Math.min(1, 100 * s);
+
 /**
  * Container padding, gap and radius. `padUnits` / `gapUnits` override the level's theme
  * defaults (pad-<level>, gap-<level>); `gap` is the per-element attribute and wins over both.
@@ -154,9 +161,11 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
   const u = x.unit;
   const pad = input.padUnits ?? CONTAINERS[level].padding;
   const family = CONTAINERS[level].family;
+  const r = controlRadius(u, x.radiusScale);
   const radius = family === 'area' ? 0
-    : family === 'wrapper' ? (3 + pad) * u * x.radiusScale // concentric with 3u children
-    : pad * u * Math.min(1, x.radiusScale);                // container: at most the padding
+    : family === 'composite' ? r                                 // a control: its options take R − D
+    : family === 'wrapper' ? r + pad * u * roundOn(x.radiusScale) // concentric with the controls it hugs
+    : pad * u * Math.min(1, x.radiusScale);                      // container: at most the padding
   return {
     unit: u, border: x.border,
     padding: Math.max(0, pad * u - x.border),
@@ -169,8 +178,8 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
 /**
  * Composite: ui-listbox, ui-segmented, select popup. Padding is the composite level (0.5u);
  * options use the control anatomy with their inset reduced by that edge, so a one-row
- * segmented control is exactly 8u and its options keep the 3u control radius (concentric: the
- * composite is a wrapper).
+ * segmented control is exactly 8u. The composite is a control: it takes the control radius and its
+ * options R − D, concentric inside it.
  */
 export function resolveComposite(input: GeometryInput & { container?: boolean } = {}) {
   const c = resolveControl(input);
@@ -611,8 +620,8 @@ export function resolveOtpField(input: GeometryInput = {}) {
 /**
  * ui-menu (and the context menu and menubar built on it): the trigger is a control row (8u, pad
  * u − B, the control radius); the popup is a floating composite 1u from its anchor (edge D =
- * max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s, uncapped like
- * the select popup); items, group labels and submenu triggers are composite options (7u, inset Ic,
+ * max(B, 0.5u), padding D − B, the composite gap, the control radius like the select popup;
+ * items split the difference); items, group labels and submenu triggers are composite options (7u, inset Ic,
  * radius concentric with the popup) in the construction pattern (2u at a bare edge, 1u beside a
  * slot); checkbox and radio items keep a 6u leading indicator slot; a separator is the separator
  * rule (max(1px, B)) with 0.5u above and below, beyond the gap.
@@ -720,7 +729,7 @@ export function resolveDrawer(side: DrawerSide = 'bottom', input: GeometryInput 
 
 /**
  * ui-menubar: a composite row of its menus' triggers (edge D = max(B, 0.5u), padding D − B, the
- * composite gap; one row 8u, the radius capped at half the height, uncapped when vertical); each
+ * composite gap; one row 8u, the control radius, vertical too); each
  * trigger is a composite option (7u, inset Ic, the option radius) with its label 2u from a bare edge.
  * The menus open 1u below the bar's trigger (beside it when vertical).
  */
@@ -771,7 +780,7 @@ export function resolvePopup(kind: PopupKind = 'popover', input: GeometryInput =
 /**
  * ui-navigation-menu: the list is a composite row (8u, edge 0.5u) of triggers and links that are
  * composite options (7u, the construction pattern, a trailing caret at icon size sm); the popup is
- * a composite (edge 0.5u, radius (3 + 0.5)u·s) 1u below the list, holding the open item's content,
+ * a composite (edge 0.5u, the control radius) 1u below the list, holding the open item's content,
  * whose links are composite options too. The popup's size animates between contents (reveal).
  */
 export function resolveNavigationMenu(input: GeometryInput = {}) {

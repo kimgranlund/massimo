@@ -39,8 +39,6 @@ export const segmented = defineSlotRecipe({
   slots: ['root'],
   base: list({
     display: 'inline-flex', bg: 'bg.control', borderColor: 'transparent',
-    // One row: the radius is capped at half the height (8u).
-    '--cr': 'min(calc((3 + var(--ui-pad-composite)) * var(--u) * var(--ui-radius-scale)), calc((var(--ch) + 2 * var(--d)) / 2))',
   }),
 });
 

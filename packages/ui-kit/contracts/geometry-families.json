@@ -267,7 +267,7 @@
         "resolveContainer",
         "resolveComposite"
       ],
-      "summary": "Three families. Wrapper: composite 0.5u, group 1u, collection 2u; radius concentric with 3u children (3u + padding). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius = padding (corner scale lowers, never raises). Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding.",
+      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius = padding (corner scale lowers, never raises). Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding.",
       "members": [
         "component:group",
         "component:collection",
@@ -515,7 +515,7 @@
         "resolveControl",
         "resolveTextRun"
       ],
-      "summary": "Menu triggers are control rows (8u, padding u − B, the control radius, the construction pattern with a trailing caret at icon size sm). The popup is a floating composite 1u from its anchor (edge D = max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s), at least as wide as the anchor and as tall as the space allows. Items, submenu triggers and group labels are composite options (7u, inset Ic, the concentric option radius) with labels 2u from a bare edge and 1u from a slot; checkbox and radio items keep a 6u leading indicator slot; separators are max(1px, B) with 0.5u above and below. Submenus sit 1u beside their trigger. A context menu has no trigger geometry (the area is the author's); its popup opens 1u from the pointer. A menubar is a composite row (8u, the radius capped at half the height) of its menus' triggers as 7u composite options; their menus open 1u below (beside a vertical bar).",
+      "summary": "Menu triggers are control rows (8u, padding u − B, the control radius, the construction pattern with a trailing caret at icon size sm). The popup is a floating composite 1u from its anchor (edge D = max(B, 0.5u), padding D − B, the composite gap, the control radius), at least as wide as the anchor and as tall as the space allows. Items, submenu triggers and group labels are composite options (7u, inset Ic, the concentric option radius) with labels 2u from a bare edge and 1u from a slot; checkbox and radio items keep a 6u leading indicator slot; separators are max(1px, B) with 0.5u above and below. Submenus sit 1u beside their trigger. A context menu has no trigger geometry (the area is the author's); its popup opens 1u from the pointer. A menubar is a composite row (8u, the radius capped at half the height) of its menus' triggers as 7u composite options; their menus open 1u below (beside a vertical bar).",
       "members": [
         "component:menu",
         "component:context-menu",

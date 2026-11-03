@@ -6,7 +6,7 @@
 
 Three families, each with one radius rule:
 
-- Wrappers hug their children; radius concentric with them (3u + padding).
+- Wrappers hug their controls; radius concentric with them: the control radius + padding, min(3u·s, 4u) + p (square at s = 0).
   - `ui-group`: closely related controls (toolbars, button and chip sets).
   - `ui-collection`: a list or set of like items (tables, data lists).
 - Containers are self-contained surfaces; radius = padding.
