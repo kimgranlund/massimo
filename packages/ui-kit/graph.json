@@ -276,6 +276,22 @@
         "choice"
       ]
     },
+    "component:otp-field": {
+      "kind": "component",
+      "source": "components/otp-field/otp-field.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-otp-field",
+      "searchTerms": [
+        "otp",
+        "one-time code",
+        "verification code",
+        "pin",
+        "2fa",
+        "sms code",
+        "code input",
+        "segmented input"
+      ]
+    },
     "component:page": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/5",
@@ -898,6 +914,16 @@
         "increment decrement"
       ]
     },
+    "geometry:otp-field": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/otp-field",
+      "availability": "implemented",
+      "searchTerms": [
+        "otp cell size",
+        "verification code geometry",
+        "pin input"
+      ]
+    },
     "geometry:separator": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/separator",
@@ -1167,6 +1193,24 @@
       "tag": "span",
       "searchTerms": [
         "number field scrub area"
+      ]
+    },
+    "part:otp-field-input": {
+      "kind": "part",
+      "source": "components/otp-field/otp-field.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "otp field input"
+      ]
+    },
+    "part:otp-field-separator": {
+      "kind": "part",
+      "source": "components/otp-field/otp-field.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "otp field separator"
       ]
     },
     "part:range-thumb": {
@@ -4534,6 +4578,121 @@
     },
     {
       "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesGeometry",
+      "to": "geometry:otp-field"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "ownsPart",
+      "to": "part:otp-field-input"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "ownsPart",
+      "to": "part:otp-field-separator"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:otp-field",
       "relation": "allowedIn",
       "to": "context:field-grid"
     },

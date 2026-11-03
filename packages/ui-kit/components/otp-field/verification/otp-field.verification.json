@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "otp-field",
+  "scope": "Editing over a contiguous value (dom/otp.ts), the resolver, and the web component in happy-dom: anatomy, ARIA, the tab stop, typing, rejection, paste distribution, completion, deletes, arrows, focus redirect, validation types, normalizeValue, mask, validity, read-only, disabled, auto-submit, reset, authored cells and separators, events; the React renderer in react-dom/server (node:test), its markup parity with the web component and the compound parts. Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/otp-field/otp-field.element.ts",
+      "sha256": "874e3646a58ec8c240b3dd4f6a95ae0a7c939edbbc0256cf40aa34210d612bfd"
+    },
+    {
+      "path": "components/otp-field/otp-field.react.tsx",
+      "sha256": "4ee54583800e73df225915f9eb17107b0dcb3b11ad67938efd7814c0263092a3"
+    },
+    {
+      "path": "components/otp-field/otp-field.recipe.ts",
+      "sha256": "a32e210ae191b9c6dccabef28e885ef15cbd270eb451d8b18f14daa78bf3682b"
+    },
+    {
+      "path": "components/otp-field/otp-field.manifest.json",
+      "sha256": "36de3cef9bfbaea7b8618d7f2ef3ba382450ec7d8f4e4ef9b892e5ac82e35ac7"
+    },
+    {
+      "path": "dom/otp.ts",
+      "sha256": "bb4736d984d02ff9edfe1bf4eadfd0e98252d2f32880084b81722200e301031c"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-otp-field|dom/otp|resolveOtpField\" test/otp-field.test.ts",
+          "covers": "the resolver; validation types, insert and distribution, deletes, focus limit, keys; anatomy, ARIA, tab stop, typing and rejection, paste, complete, Backspace / Delete / arrows / Home / End, focus redirect, mask, normalizeValue, required and incomplete validity, read-only, disabled, auto-submit, reset, authored cells and separators"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-otp-field|dom/otp|resolveOtpField\" test/otp-field.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React OTPField\" test/otp-field.test.ts",
+          "covers": "SSR markup against the web component (host and cell data-*, ARIA, classes, tab stop, input mode, autocomplete, characters), the hidden form input, mask, compound parts against the preset, separators, render and className functions, parts outside the Root"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React OTPField\" test/otp-field.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02, Chromium): apps/studio/geometry-check.html checks the cell width and height (8u), padding (u − B), radius, font and line height, the 1u gap, the separator's 2u × 0.5u size, its radius and its 1u gaps, and the row height at every size × B 0 and 1 (\"fails\": []). Growth: at u = 2 cells are 16px squares; in a 100px container the six 36px cells keep their size (the row does not shrink them; the container clips or scrolls). RTL: the cells mirror (the first on the right) and Arrow Left moves to the next cell. Focus: the 2px ring is an outline on the focused cell, its 36px box unchanged. Real Chromium input: a press on cell 3 of an empty field lands on cell 1; typing 1a2 gives 12 (a refused); Backspace on the empty cell clears the one before; pasting 98-76 from cell 2 gives 1987, complete. Screenshots: the Entry family (#/components?family=entry), light and dark, ladder 3, 4, 4.5 (theme) and 6.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React OTPField with ui-otp-field at five sizes, and the composed parts with the preset (\"fails\": []).",
+    "Platform one-time-code autofill needs a native input: only the React renderer gets it (the web component's cells are contenteditables).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

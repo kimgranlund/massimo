@@ -38,4 +38,6 @@ export const pending = defineGlobalStyles({
   ':is(ui-radio-group, ui-checkbox-group, ui-fieldset):not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   // A number field reserves its label line and control row, like an input.
   'ui-number-field:not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT, visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  // An OTP field reserves its row of 8u cells.
+  'ui-otp-field:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });

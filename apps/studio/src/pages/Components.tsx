@@ -22,6 +22,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/number-field/element';
+import '@massimo/ui-kit/components/otp-field/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -32,7 +33,7 @@ export const FAMILIES = [
   ['actions', 'Actions', 'ui-button · ui-toggle'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid · ui-fieldset'],
-  ['entry', 'Entry', 'ui-number-field'],
+  ['entry', 'Entry', 'ui-number-field · ui-otp-field'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group · ui-checkbox-group'],
   ['tracks', 'Tracks', 'ui-range · ui-progress · ui-meter'],
@@ -208,7 +209,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u. A toggle is a button with a pressed state (aria-pressed, data-pressed): the primary solid while on.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns; a ui-fieldset names a set of fields (legend) and disables them together, stacked with the collection gap.',
-    entry: 'A number field is the field control with its steppers in the 6u leading and trailing slots (the glyph at icon size sm, radius R − u) and the text 1u from each. The text is formatNumber of the value for the locale and is parsed back; arrows step (Shift ×10, Alt ×0.1), the steppers repeat while held, dragging the label scrubs, blur clamps and reformats.',
+    entry: 'A number field is the field control with its steppers in the 6u leading and trailing slots (the glyph at icon size sm, radius R − u) and the text 1u from each. The text is formatNumber of the value for the locale and is parsed back; arrows step (Shift ×10, Alt ×0.1), the steppers repeat while held, dragging the label scrubs, blur clamps and reformats. An OTP field is a row of 8u square cells 1u apart over one code: typing advances, a paste fills from the focused cell, Backspace steps back; a separator is a 2u dash.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot. Groups own one value: rows 1u apart (a 7u pitch), or a wrapping row 4u apart.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
@@ -413,6 +414,24 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         </Row>
         <SizeLadder family="numberField" params={params}>
           <div className={entryColumn}><ui-number-field label="Amount" value={1284} /></div>
+        </SizeLadder>
+        <Row label="OTP field">
+          <div className={entryColumn}>
+            <ui-field label="Verification code" description="Paste or type the 6 digits."><ui-otp-field name="code" required /></ui-field>
+            <ui-field label="Grouped">
+              <ui-otp-field value="123">
+                <div data-part="input" /><div data-part="input" /><div data-part="input" /><div data-part="separator" /><div data-part="input" /><div data-part="input" /><div data-part="input" />
+              </ui-otp-field>
+            </ui-field>
+          </div>
+          <div className={entryColumn}>
+            <ui-field label="Recovery key"><ui-otp-field length={4} validation-type="alphanumeric" value="A7" mask /></ui-field>
+            <ui-field label="Read-only"><ui-otp-field length={4} value="2468" readonly /></ui-field>
+            <ui-field label="Disabled"><ui-otp-field length={4} value="13" disabled /></ui-field>
+          </div>
+        </Row>
+        <SizeLadder family="otpField" params={params}>
+          <ui-otp-field length={4} value="42" label="Code" />
         </SizeLadder>
       </>
     ),

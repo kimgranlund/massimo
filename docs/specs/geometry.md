@@ -80,11 +80,12 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
 | tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
-## Entry fields: number field
+## Entry fields: number field, OTP field
 
 | | Formula | at u=4 |
 |---|---|---|
 | number field | the field control (8u, padding u − B, the control radius) with the decrement in the leading 6u slot and the increment in the trailing one; the text run (prefix, input, suffix) is 1u from each stepper, 0.5u between text parts; stepper glyph at icon size sm, stepper radius R − u (concentric); the label (in the scrub area) 1.5u above (`resolveNumberField`) | 32 / 24 / 4 / 8 |
+| OTP field | each cell a square field control, 8u × 8u, padding u − B, the control radius and font, one centered character; cells 1u apart; a separator is a 2u × 0.5u dash, radius 0.25u, in that gap (`resolveOtpField`) | 32 / 4 / 8 × 2 |
 
 ## Containers
 

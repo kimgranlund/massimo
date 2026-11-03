@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import { resolveNumberField } from '@massimo/ui-kit/tokens';
+import { resolveOtpField } from '@massimo/ui-kit/tokens';
 import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
@@ -89,7 +90,7 @@ export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db277
 // metrics for the live theme (like the Typography roles); the right column renders the specimens
 // in that size subtree (data-size).
 export const LADDER_SIZES = [3, 4, 6];
-export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure' | 'numberField';
+export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure' | 'numberField' | 'otpField';
 
 type Live = { unit: number; border: number; radiusScale: number };
 const px = (n: number) => `${fmt(n)}`;
@@ -146,6 +147,10 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   numberField: (g) => {
     const n = resolveNumberField(g);
     return [`h ${px(n.height)} · stepper ${px(n.stepper)} · glyph ${px(n.stepperIcon)}`, `inset ${px(n.contentsStart)} · r ${px(n.radius)} / ${px(n.stepperRadius)}`];
+  },
+  otpField: (g) => {
+    const o = resolveOtpField(g);
+    return [`cell ${px(o.cell)} · pad ${px(o.padding)} · gap ${px(o.gap)}`, `text ${px(o.fontSize)} · r ${px(o.radius)} · dash ${px(o.separatorWidth)}`];
   },
 };
 

@@ -24,6 +24,7 @@ import { collapsible } from './collapsible/collapsible.recipe.ts';
 import { accordion } from './accordion/accordion.recipe.ts';
 import { tabs } from './tabs/tabs.recipe.ts';
 import { numberField } from './number-field/number-field.recipe.ts';
+import { otpField } from './otp-field/otp-field.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, numberField };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, numberField, otpField };
 

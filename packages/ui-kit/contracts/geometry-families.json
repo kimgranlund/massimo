@@ -372,6 +372,26 @@
         "number-field"
       ],
       "ladder": "numberField"
+    },
+    "otp-field": {
+      "id": "geometry:otp-field",
+      "resolver": [
+        "resolveOtpField",
+        "resolveControl"
+      ],
+      "summary": "Each cell is a square field control: 8u × 8u, pad u − B inside the border, the control radius and font, one centered character on the single-line rule. Cells sit 1u apart; a separator is a 2u × 0.5u dash with a 0.25u radius in that gap.",
+      "members": [
+        "component:otp-field"
+      ],
+      "searchTerms": [
+        "otp cell size",
+        "verification code geometry",
+        "pin input"
+      ],
+      "csv": [
+        "otp-field"
+      ],
+      "ladder": "otpField"
     }
   }
 }

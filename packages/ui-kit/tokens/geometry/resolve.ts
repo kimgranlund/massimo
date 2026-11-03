@@ -526,3 +526,20 @@ export function resolveNumberField(input: GeometryInput = {}) {
     rowGap: 1.5 * c.unit,
   };
 }
+
+// ── OTP field (ui-otp-field, React OTPField) ──
+// Each cell is a square field control: 8u × 8u (the control height both ways), pad u − B, the
+// control radius and font, one centered character. Cells sit 1u apart (the group wrapper gap); a
+// separator is a 2u dash, 0.5u thick with a 0.25u radius (the tab indicator's bar), in that gap.
+
+/** ui-otp-field: cell size, padding, radius, gap and separator. */
+export function resolveOtpField(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  const u = c.unit;
+  return {
+    unit: u, border: c.border, fontSize: c.fontSize, lineHeight: c.contents.lineHeight,
+    cell: c.height, padding: c.padding, radius: c.radius,
+    gap: u,
+    separatorWidth: 2 * u, separatorThickness: 0.5 * u, separatorRadius: 0.25 * u,
+  };
+}

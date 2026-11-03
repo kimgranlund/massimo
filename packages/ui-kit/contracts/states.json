@@ -134,7 +134,7 @@
     "data-complete": {
       "baseUi": true,
       "condition": "_complete",
-      "meaning": "Progress at the max."
+      "meaning": "Progress at the max; an OTP field with every cell filled (host and cells)."
     },
     "data-alpha": {
       "baseUi": false,
@@ -525,6 +525,30 @@
       "increment": [
         "data-disabled"
       ]
+    },
+    "ui-otp-field": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused",
+        "data-complete"
+      ],
+      "input": [
+        "data-filled",
+        "data-complete",
+        "data-disabled",
+        "data-readonly",
+        "data-focused"
+      ],
+      "separator": [
+        "data-orientation"
+      ]
     }
   },
   "native": {
@@ -551,7 +575,8 @@
         "ui-palette",
         "ui-collapsible",
         "ui-accordion",
-        "ui-number-field"
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "keyboard-focus": {
@@ -574,7 +599,8 @@
         "ui-collapsible",
         "ui-accordion",
         "ui-tabs",
-        "ui-number-field"
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "highlighted": {
@@ -628,7 +654,8 @@
         "ui-collapsible",
         "ui-accordion",
         "ui-tabs",
-        "ui-number-field"
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "busy": {
@@ -643,7 +670,8 @@
       "look": "subtle fill, default cursor",
       "components": [
         "ui-input",
-        "ui-number-field"
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "required": {
@@ -655,7 +683,8 @@
         "ui-checkbox",
         "ui-switch",
         "ui-field",
-        "ui-number-field"
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "invalid": {
@@ -670,7 +699,8 @@
         "ui-radio",
         "ui-switch",
         "ui-palette",
-        "ui-number-field"
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "dragging": {

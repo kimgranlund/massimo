@@ -1,0 +1,30 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "otp-field",
+  "title": "OTP Field",
+  "summary": "A one-time code entered in single-character cells over one value.",
+  "defaultExample": "code",
+  "examples": [
+    {
+      "id": "code",
+      "label": "Six-digit code (default)",
+      "subject": "component:otp-field",
+      "markup": "<ui-field label=\"Verification code\" description=\"Sent to your phone.\"><ui-otp-field name=\"code\" length=\"6\" required></ui-otp-field></ui-field>",
+      "note": "React: <Field label=\"Verification code\">{(ids) => <OTPField {...ids} name=\"code\" length={6} required />}</Field>."
+    },
+    {
+      "id": "grouped",
+      "label": "3 + 3 with a separator",
+      "subject": "component:otp-field",
+      "markup": "<ui-otp-field name=\"code\" label=\"Code\"><div data-part=\"input\"></div><div data-part=\"input\"></div><div data-part=\"input\"></div><div data-part=\"separator\"></div><div data-part=\"input\"></div><div data-part=\"input\"></div><div data-part=\"input\"></div></ui-otp-field>",
+      "note": "React: OTPField.Root length={6} › three OTPField.Input, OTPField.Separator, three OTPField.Input."
+    },
+    {
+      "id": "alphanumeric",
+      "label": "Alphanumeric, masked, auto-submit",
+      "subject": "component:otp-field",
+      "markup": "<ui-otp-field name=\"key\" label=\"Recovery key\" length=\"4\" validation-type=\"alphanumeric\" mask auto-submit></ui-otp-field>"
+    }
+  ]
+}
