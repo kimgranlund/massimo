@@ -37,6 +37,6 @@ export const pending = defineGlobalStyles({
   // Choice groups: hidden until defined, in the block flow their choices reserve.
   ':is(ui-radio-group, ui-checkbox-group, ui-fieldset):not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   // A modal layer draws nothing in the page but its trigger: its popup content never shows inline.
-  ':is(ui-dialog, ui-alert-dialog):not(:defined)': { display: 'contents' },
-  ':is(ui-dialog, ui-alert-dialog):not(:defined) > :not([data-part=trigger])': { display: 'none' },
+  ':is(ui-dialog, ui-alert-dialog, ui-drawer):not(:defined)': { display: 'contents' },
+  ':is(ui-dialog, ui-alert-dialog, ui-drawer):not(:defined) > :not([data-part=trigger])': { display: 'none' },
 });

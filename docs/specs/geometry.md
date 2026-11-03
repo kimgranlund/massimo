@@ -89,6 +89,14 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | size | width min(96u, viewport − 8u), centered; max height viewport − 8u, then the popup scrolls | 384 / 16 |
 | backdrop | the whole viewport, `bg.backdrop` | |
 
+## Drawer
+
+| | Formula | at u=4 |
+|---|---|---|
+| popup | an area at the panel level: padding p·u − B (p = pad-panel, 6u), square at any corner scale (it meets the viewport edge), parts 2u apart, actions 2u apart (`resolveDrawer`) | 24 / 0 / 8 |
+| left, right | the viewport's height; width min(80u, viewport − 8u) | 320 |
+| top, bottom | the full width; height of its content, at most viewport height − 8u, then it scrolls | 32 kept |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

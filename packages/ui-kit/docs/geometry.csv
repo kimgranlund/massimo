@@ -201,3 +201,8 @@ dialog.popup.gap,dialog,dialog popup,gap between parts,2u (gap-collection; the g
 dialog.actions.gap,dialog,dialog actions,gap between actions,2u,4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,"at the end edge, wrapping"
 dialog.popup.width,dialog,dialog popup,width,"min(96u, viewport - 8u)",192,216,240,264,288,336,384,432,480,528,576,624,672,720,768,816,864,912,960,1008,1056,1104,1152,implemented,value shown without the viewport cap (24rem at u = 4)
 dialog.viewport.margin,dialog,dialog popup,viewport margin,4u,8,9,10,11,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,implemented,"on each side; max height = viewport height - 8u, then the popup scrolls"
+drawer.popup.padding,drawer,drawer popup,padding,"p·u - B (p = pad-panel, 6)",12,13.5,15,16.5,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,the border (border role) lives inside it
+drawer.popup.radius,drawer,drawer popup,radius,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,implemented,area family: it meets the viewport edge
+drawer.popup.gap,drawer,drawer popup,gap between parts,2u (gap-collection; the gap attribute wins),4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,as the dialog
+drawer.side.width,drawer,drawer[side=left|right] popup,width,"min(80u, viewport - 8u)",160,180,200,220,240,280,320,360,400,440,480,520,560,600,640,680,720,760,800,840,880,920,960,implemented,value shown without the viewport cap; the viewport height
+drawer.sheet.reserve,drawer,drawer popup,viewport kept in view,8u,16,18,20,22,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,side sheets: width cap; top and bottom sheets (full width): max height = viewport height - 8u

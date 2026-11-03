@@ -161,6 +161,20 @@
         "overlay"
       ]
     },
+    "component:drawer": {
+      "kind": "component",
+      "source": "components/drawer/drawer.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-drawer",
+      "searchTerms": [
+        "drawer",
+        "sheet",
+        "bottom sheet",
+        "side panel",
+        "slide over",
+        "off-canvas"
+      ]
+    },
     "component:field": {
       "kind": "component",
       "source": "components/field/field.manifest.json#/nodes/0",
@@ -871,6 +885,17 @@
         "accordion divider",
         "tab height",
         "tab indicator"
+      ]
+    },
+    "geometry:drawer": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/drawer",
+      "availability": "implemented",
+      "searchTerms": [
+        "drawer geometry",
+        "sheet width",
+        "side panel",
+        "bottom sheet"
       ]
     },
     "geometry:field": {
@@ -3608,6 +3633,126 @@
     },
     {
       "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesGeometry",
+      "to": "geometry:drawer"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:drawer",
       "relation": "allowedIn",
       "to": "context:group"
     },

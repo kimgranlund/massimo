@@ -60,6 +60,8 @@
     "./components/dialog/react": "./components/dialog/dialog.react.tsx",
     "./components/alert-dialog/element": "./components/alert-dialog/alert-dialog.element.ts",
     "./components/alert-dialog/react": "./components/alert-dialog/alert-dialog.react.tsx",
+    "./components/drawer/element": "./components/drawer/drawer.element.ts",
+    "./components/drawer/react": "./components/drawer/drawer.react.tsx",
     "./components/accordion/element": "./components/accordion/accordion.element.ts",
     "./components/accordion/react": "./components/accordion/accordion.react.tsx",
     "./components/tabs/element": "./components/tabs/tabs.element.ts",

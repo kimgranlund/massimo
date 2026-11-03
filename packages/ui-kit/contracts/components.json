@@ -687,6 +687,28 @@
         "dialog"
       ],
       "behavior": "Always modal (page scroll locked, the rest of the page inert, focus trapped and returned). A trigger press opens it; Escape or a close part closes it through a cancelable openchange ({ open, reason: 'trigger-press' | 'escape-key' | 'close-press', event }); an outside press never closes it. Focus starts on an [autofocus] element, else the first close part (the least destructive action), else the first tabbable."
+    },
+    "drawer": {
+      "geometryFamily": "drawer",
+      "element": "The ui-dialog anatomy (host display: contents; optional trigger, a backdrop and a popup with a title, a description, content, an actions row and close parts) on a sheet anchored to one edge of the viewport (side: top, right, bottom, left).",
+      "parts": [
+        "dialog-trigger?",
+        "dialog-backdrop",
+        "dialog-popup",
+        "dialog-title?",
+        "dialog-description?",
+        "dialog-actions?",
+        "dialog-close?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group"
+      ],
+      "behavior": "The dialog's behavior (top layer; modal by default: scroll lock, the rest of the page inert, focus trapped and returned; Escape, outside press and close parts; nesting), plus swipe to dismiss: a press on the popup dragged toward its edge moves it with the pointer (--drawer-swipe-movement-x / -y, data-swiping); released past 40% of its size or flicked it closes with reason 'swipe', otherwise it springs back. The sheet slides in and out from its edge on the reveal intent."
     }
   }
 }

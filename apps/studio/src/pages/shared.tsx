@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveDialog, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveDialog, resolveDrawer, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -88,7 +88,7 @@ export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db277
 // metrics for the live theme (like the Typography roles); the right column renders the specimens
 // in that size subtree (data-size).
 export const LADDER_SIZES = [3, 4, 6];
-export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure' | 'dialog';
+export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure' | 'dialog' | 'drawer';
 
 type Live = { unit: number; border: number; radiusScale: number };
 const px = (n: number) => `${fmt(n)}`;
@@ -145,6 +145,10 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   dialog: (g) => {
     const d = resolveDialog(g);
     return [`pad ${px(d.padding)} · r ${px(d.radius)} · gap ${px(d.gap)}`, `width ${px(d.width)} · margin ${px(d.margin)}`];
+  },
+  drawer: (g) => {
+    const d = resolveDrawer('right', g);
+    return [`pad ${px(d.padding)} · r ${px(d.radius)} · gap ${px(d.gap)}`, `side width ${px(d.width ?? 0)} · kept ${px(d.reserve)}`];
   },
 };
 

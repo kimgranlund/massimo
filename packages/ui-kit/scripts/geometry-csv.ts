@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveDialog, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveDialog, resolveDrawer, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -186,6 +186,12 @@ export const rows: Row[] = [
   { id: 'dialog.actions.gap', family: 'dialog', element: 'dialog actions', quantity: 'gap between actions', formula: '2u', value: (u) => resolveDialog({ unit: u }).actionsGap, status: 'implemented', notes: 'at the end edge, wrapping' },
   { id: 'dialog.popup.width', family: 'dialog', element: 'dialog popup', quantity: 'width', formula: 'min(96u, viewport - 8u)', value: (u) => resolveDialog({ unit: u }).width, status: 'implemented', notes: 'value shown without the viewport cap (24rem at u = 4)' },
   { id: 'dialog.viewport.margin', family: 'dialog', element: 'dialog popup', quantity: 'viewport margin', formula: '4u', value: (u) => resolveDialog({ unit: u }).margin, status: 'implemented', notes: 'on each side; max height = viewport height - 8u, then the popup scrolls' },
+  // Drawer: an edge sheet in the area family (panel level)
+  { id: 'drawer.popup.padding', family: 'drawer', element: 'drawer popup', quantity: 'padding', formula: 'p·u - B (p = pad-panel, 6)', value: (u) => resolveDrawer('right', { unit: u }).padding, status: 'implemented', notes: 'the border (border role) lives inside it' },
+  { id: 'drawer.popup.radius', family: 'drawer', element: 'drawer popup', quantity: 'radius', formula: '0', value: (u) => resolveDrawer('right', { unit: u }).radius, status: 'implemented', notes: 'area family: it meets the viewport edge' },
+  { id: 'drawer.popup.gap', family: 'drawer', element: 'drawer popup', quantity: 'gap between parts', formula: '2u (gap-collection; the gap attribute wins)', value: (u) => resolveDrawer('right', { unit: u }).gap, status: 'implemented', notes: 'as the dialog' },
+  { id: 'drawer.side.width', family: 'drawer', element: 'drawer[side=left|right] popup', quantity: 'width', formula: 'min(80u, viewport - 8u)', value: (u) => resolveDrawer('right', { unit: u }).width!, status: 'implemented', notes: 'value shown without the viewport cap; the viewport height' },
+  { id: 'drawer.sheet.reserve', family: 'drawer', element: 'drawer popup', quantity: 'viewport kept in view', formula: '8u', value: (u) => resolveDrawer('bottom', { unit: u }).reserve, status: 'implemented', notes: 'side sheets: width cap; top and bottom sheets (full width): max height = viewport height - 8u' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

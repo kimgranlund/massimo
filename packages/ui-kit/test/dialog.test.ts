@@ -378,3 +378,102 @@ test('AlertDialog (React): the same data-* as ui-alert-dialog; role alertdialog;
   await act(async () => root.unmount());
   box.remove();
 });
+
+// ── Drawer ──
+
+await import('../components/drawer/drawer.element.ts');
+const { Drawer } = await loadTsx(new URL('../components/drawer/drawer.react.tsx', import.meta.url));
+const { createSwipeDismiss } = await import('../dom/swipe.ts');
+const DRAWER = '<ui-drawer side="right" label="Filters" description="Narrow the list."><ui-button data-part="trigger">Filters</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Done</ui-button></div></ui-drawer>';
+const ptr = (el: EventTarget, type: string, x: number, y: number, t = 0) =>
+  el.dispatchEvent(new PointerEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, pointerId: 1, button: 0, timeStamp: t } as any));
+
+test('drawer (headless): a drag toward the edge moves the popup (--drawer-swipe-movement-*), a release past the threshold swipes, a short one springs back', () => {
+  const el = document.createElement('div');
+  document.body.append(el);
+  Object.defineProperty(el, 'offsetWidth', { value: 300 });
+  const swiped: Event[] = [];
+  const s = createSwipeDismiss({ el: () => el, direction: () => 'right', onSwipe: (e) => swiped.push(e), velocity: Infinity });
+  s.attach();
+  ptr(el, 'pointerdown', 100, 100); ptr(el, 'pointermove', 103, 100);
+  assert.ok(!el.hasAttribute('data-swiping'), 'within the slop: still a press');
+  ptr(el, 'pointermove', 160, 102);
+  assert.ok(el.hasAttribute('data-swiping'));
+  assert.equal(el.style.getPropertyValue('--drawer-swipe-movement-x'), '60px');
+  assert.equal(el.style.getPropertyValue('--drawer-swipe-movement-y'), '0px');
+  ptr(el, 'pointermove', 80, 102);
+  assert.equal(el.style.getPropertyValue('--drawer-swipe-movement-x'), '0px', 'never past its open position');
+  ptr(el, 'pointermove', 150, 102); ptr(el, 'pointerup', 150, 102);
+  assert.equal(swiped.length, 0, '50px of 300: springs back');
+  assert.ok(!el.hasAttribute('data-swiping') && el.style.getPropertyValue('--drawer-swipe-movement-x') === '');
+  ptr(el, 'pointerdown', 100, 100); ptr(el, 'pointermove', 250, 100); ptr(el, 'pointerup', 250, 100);
+  assert.equal(swiped.length, 1, '150px of 300 (past 40%): swiped');
+  assert.ok(el.hasAttribute('data-swipe-dismiss'));
+  s.reset();
+  assert.ok(!el.hasAttribute('data-swipe-dismiss'));
+  // A drag along the other axis, or from a [data-swipe-ignore] element, does not swipe.
+  el.innerHTML = '<span data-swipe-ignore>x</span>';
+  ptr(el.firstChild!, 'pointerdown', 100, 100); ptr(el, 'pointermove', 250, 100);
+  assert.ok(!el.hasAttribute('data-swiping'));
+  ptr(el, 'pointerup', 250, 100);
+  ptr(el, 'pointerdown', 100, 100); ptr(el, 'pointermove', 104, 160); ptr(el, 'pointermove', 250, 160);
+  assert.ok(!el.hasAttribute('data-swiping'), 'a vertical drag is not a swipe to the right');
+  s.detach(); el.remove();
+});
+
+test('drawer: side variant and data-swipe-direction; the dialog behavior; a swipe closes it with reason swipe', async () => {
+  const el = await wc(DRAWER, 'ui-drawer') as any;
+  const p = el.popup as HTMLElement;
+  assert.equal(p.getAttribute('role'), 'dialog');
+  assert.equal(p.getAttribute('data-swipe-direction'), 'right');
+  assert.ok(p.classList.contains('ui-drawer__popup') && p.classList.contains('ui-drawer__popup--side_right'));
+  assert.ok(el.classList.contains('ui-drawer__root--side_right'));
+  assert.equal(el.querySelector(NATIVE), null, 'no native form elements');
+  el.side = 'top'; await tick();
+  assert.equal(p.getAttribute('data-swipe-direction'), 'up');
+  assert.ok(p.classList.contains('ui-drawer__popup--side_top') && !p.classList.contains('ui-drawer__popup--side_right'));
+  el.side = 'nowhere'; await tick();
+  assert.equal(p.getAttribute('data-swipe-direction'), 'down', 'unknown: bottom');
+  const got: string[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => got.push(e.detail.reason));
+  el.trigger.click(); await tick();
+  assert.equal(el.open, true);
+  assert.equal(p.getAttribute('aria-modal'), 'true');
+  ptr(p, 'pointerdown', 10, 10); ptr(p, 'pointermove', 10, 200); ptr(p, 'pointerup', 10, 200);
+  await tick();
+  assert.equal(el.open, false);
+  assert.deepEqual(got, ['trigger-press', 'swipe']);
+  el.open = true; await tick();
+  assert.ok(!p.hasAttribute('data-swipe-dismiss'), 'reopening clears the swipe');
+  press(el.backdrop); await tick();
+  assert.equal(el.open, false);
+  assert.equal(got.at(-1), 'outside-press');
+  el.parentElement.remove();
+});
+
+test('Drawer (React): the same data-* as ui-drawer; side classes; composed parts render the preset; a swipe calls onOpenChange(false, { reason: swipe })', async () => {
+  const P: Part[] = [['host', ':scope'], ['trigger', '[data-part=trigger]'], ['backdrop', '[data-part=backdrop]'], ['popup', '[data-part=popup]']];
+  const bare = '<ui-drawer side="left" label="Menu"><ui-button data-part="trigger">Menu</ui-button></ui-drawer>';
+  await sameDialog('ui-drawer', bare, h(Drawer, { side: 'left', label: 'Menu', trigger: 'Menu' }), P);
+  await sameDialog('ui-drawer', bare.replace('<ui-drawer', '<ui-drawer open'), h(Drawer, { side: 'left', label: 'Menu', trigger: 'Menu', defaultOpen: true }), P);
+  const a = html(h(Drawer, { label: 'Menu', trigger: 'Menu' }, 'x'));
+  assert.match(a, /^<div data-ui="drawer" data-closed="" class="ui-drawer__root ui-drawer__root--side_bottom">/);
+  assert.match(a, /<div data-part="popup" id="ID\w*" role="dialog" aria-modal="true" tabindex="-1" popover="manual" data-closed="" data-swipe-direction="down" class="ui-drawer__popup ui-drawer__popup--side_bottom">/);
+  const b = html(h(Drawer.Root, null, h(Drawer.Trigger, null, 'Menu'), h(Drawer.Portal, null, h(Drawer.Backdrop), h(Drawer.Popup, null, h(Drawer.Title, null, 'Menu'), 'x'))));
+  assert.equal(b, a, 'composed = preset');
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const calls: any[] = [];
+  await act(async () => root.render(h(Drawer, { side: 'right', label: 'Filters', trigger: 'Filters', onOpenChange: (o: boolean, d: any) => calls.push([o, d.reason]) }, h(Drawer.Close, null, 'Done'))));
+  await act(async () => { (box.querySelector('[data-part=trigger]') as HTMLButtonElement).click(); });
+  const p = box.querySelector('[data-part=popup]') as HTMLElement;
+  assert.ok(p.hasAttribute('data-open'));
+  await act(async () => { ptr(p, 'pointerdown', 10, 10); ptr(p, 'pointermove', 200, 10); ptr(p, 'pointerup', 200, 10); });
+  assert.deepEqual(calls, [[true, 'trigger-press'], [false, 'swipe']]);
+  assert.ok(p.hasAttribute('data-closed'));
+  await act(async () => root.unmount());
+  box.remove();
+});

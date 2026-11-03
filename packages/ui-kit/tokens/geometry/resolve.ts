@@ -534,3 +534,32 @@ export function resolveDialog(input: GeometryInput & { padUnits?: number; gapUni
     maxHeight: vp ? vp.height - 2 * margin : undefined,
   };
 }
+
+// A drawer is an edge-anchored sheet: an area at the panel level (it meets the viewport edge, so it
+// is square), padding p·u − B (p = the theme's pad-panel, 6u), its parts 2u apart like a dialog's.
+// A side sheet (left, right) is the viewport's full height and 80u wide, at most the viewport less
+// 8u, so some of the page stays in view; a top or bottom sheet is the full width and as tall as its
+// content, at most the viewport less 8u.
+
+/** A drawer's edge: Base UI swipes it away toward that edge. */
+export type DrawerSide = 'top' | 'right' | 'bottom' | 'left';
+/** A side drawer's width, in u. */
+export const DRAWER_WIDTH = 80;
+
+/** ui-drawer popup: padding, radius (0), gap, and its size against a viewport. */
+export function resolveDrawer(side: DrawerSide = 'bottom', input: GeometryInput & { padUnits?: number; gapUnits?: number; viewport?: { width: number; height: number } } = {}) {
+  const box = resolveContainer('panel', input);
+  const stack = resolveContainer('collection', { ...input, padUnits: undefined });
+  const u = box.unit, reserve = 2 * DIALOG_MARGIN * u;
+  const vp = input.viewport;
+  const inline = side === 'left' || side === 'right';
+  return {
+    side, unit: u, border: box.border,
+    padding: box.padding, edge: box.edge, radius: box.radius,
+    gap: stack.gap, actionsGap: 2 * u,
+    reserve,
+    width: inline ? (vp ? Math.min(DRAWER_WIDTH * u, vp.width - reserve) : DRAWER_WIDTH * u) : vp?.width,
+    height: inline ? vp?.height : undefined,
+    maxHeight: inline ? vp?.height : vp ? vp.height - reserve : undefined,
+  };
+}

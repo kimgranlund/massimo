@@ -27,6 +27,7 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/dialog/element';
 import '@massimo/ui-kit/components/alert-dialog/element';
+import '@massimo/ui-kit/components/drawer/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -55,6 +56,7 @@ import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 import { Dialog } from '@massimo/ui-kit/components/dialog/react';
 import { AlertDialog } from '@massimo/ui-kit/components/alert-dialog/react';
+import { Drawer } from '@massimo/ui-kit/components/drawer/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -121,6 +123,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
         <ui-dialog data-k="dlg" modal="false" disable-pointer-dismissal open label="Rename" description="Pick a name."><ui-button data-part="trigger">Rename</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button variant="primary">Save</ui-button></div></ui-dialog>
         <ui-alert-dialog data-k="adlg" label="Delete?" description="Gone for good."><ui-button data-part="trigger">Delete</ui-button><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button variant="primary">Delete</ui-button></div></ui-alert-dialog>
+        <ui-drawer data-k="drw" side="right" modal="false" disable-pointer-dismissal open label="Filters" description="Narrow the list."><ui-button data-part="trigger">Filters</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Done</ui-button></div></ui-drawer>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -179,6 +182,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
         <Dialog data-k="dlg" modal={false} disablePointerDismissal defaultOpen label="Rename" description="Pick a name." trigger="Rename"><p>Body</p><Dialog.Actions><Dialog.Close>Cancel</Dialog.Close><Button variant="primary">Save</Button></Dialog.Actions></Dialog>
         <AlertDialog data-k="adlg" label="Delete?" description="Gone for good." trigger="Delete"><Dialog.Actions><Dialog.Close>Cancel</Dialog.Close><Button variant="primary">Delete</Button></Dialog.Actions></AlertDialog>
+        <Drawer data-k="drw" side="right" modal={false} disablePointerDismissal defaultOpen label="Filters" description="Narrow the list." trigger="Filters"><p>Body</p><Drawer.Actions><Drawer.Close>Done</Drawer.Close></Drawer.Actions></Drawer>
       </div>
     </div>
   );
@@ -353,7 +357,7 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'dlg', 'adlg']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'dlg', 'adlg', 'drw']) {
       const a = host(wc, k), b = host(re, k);
       const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=backdrop], :scope > [data-part=popup]')];
       const pa = parts(a), pb = parts(b);
@@ -414,19 +418,19 @@ setTimeout(() => {
     }
   }
   // Dialog: the open popups (top layer) and every part in them, against each other.
-  for (const c of root.querySelectorAll('[data-case]')) {
-    const [wc, re] = [c.querySelector('[data-side=wc] [data-k=dlg]')!, c.querySelector('[data-side=react] [data-k=dlg]')!];
+  for (const c of root.querySelectorAll('[data-case]')) for (const k of ['dlg', 'drw']) {
+    const [wc, re] = [c.querySelector(`[data-side=wc] [data-k=${k}]`)!, c.querySelector(`[data-side=react] [data-k=${k}]`)!];
     const pa = wc.querySelector(':scope > [data-part=popup]') as HTMLElement, pb = re.querySelector(':scope > [data-part=popup]') as HTMLElement;
     const fa = (e: Element, p: Element) => { const r = e.getBoundingClientRect(), pr = p.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - pr.left)}:${r2(r.top - pr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.paddingTop}:${cs.color}:${cs.fontSize}:${cs.boxShadow}`; };
     // The popup's own parts (the buttons' construction-pattern parts are the button parity's).
     const list = (p: HTMLElement) => [p, ...p.querySelectorAll<HTMLElement>('[data-part]:not(:is([data-part=leading], [data-part=prefix], [data-part=contents], [data-part=suffix], [data-part=trailing]))')];
     const la = list(pa), lb = list(pb);
     checks++;
-    if (la.length !== lb.length) { fails.push(`u${c.getAttribute('data-case')} dlg parts: wc ${la.length} react ${lb.length}`); continue; }
-    la.forEach((e, i) => { checks++; const va = fa(e, pa), vb = fa(lb[i], pb); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} dlg.${e.getAttribute('data-part') ?? 'popup'}[${i}]: wc ${va} react ${vb}`); });
+    if (la.length !== lb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} parts: wc ${la.length} react ${lb.length}`); continue; }
+    la.forEach((e, i) => { checks++; const va = fa(e, pa), vb = fa(lb[i], pb); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}.${e.getAttribute('data-part') ?? 'popup'}[${i}]: wc ${va} react ${vb}`); });
     checks++;
     const rb = (e: Element) => r2(e.getBoundingClientRect().width);
-    if (rb(pa) !== rb(pb) || r2(pa.getBoundingClientRect().left) !== r2(pb.getBoundingClientRect().left)) fails.push(`u${c.getAttribute('data-case')} dlg.popup position differs`);
+    if (rb(pa) !== rb(pb) || r2(pa.getBoundingClientRect().left) !== r2(pb.getBoundingClientRect().left)) fails.push(`u${c.getAttribute('data-case')} ${k}.popup position differs`);
   }
   // Composition: each composed form against its preset, the host (measure) and every part below it
   // (offset, size, paint, type), and the data-* state of the host and its parts.

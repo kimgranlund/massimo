@@ -185,6 +185,21 @@
       "baseUi": true,
       "condition": null,
       "meaning": "A dialog popup with an open dialog nested in it (Base UI Dialog.Popup); --nested-dialogs counts them."
+    },
+    "data-swipe-direction": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The direction a drawer popup is swiped away (Base UI Drawer.Popup): down, up, left or right, from its side."
+    },
+    "data-swiping": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A drawer popup is following a swipe (Base UI Drawer.Popup); its transition is off until the release."
+    },
+    "data-swipe-dismiss": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A drawer popup was closed by a swipe (Base UI Drawer.Popup): it leaves from where it was dragged."
     }
   },
   "components": {
@@ -545,6 +560,28 @@
         "data-nested",
         "data-nested-dialog-open"
       ]
+    },
+    "ui-drawer": {
+      "host": [
+        "data-open",
+        "data-closed"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "backdrop": [
+        "data-open",
+        "data-closed"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-nested",
+        "data-nested-dialog-open",
+        "data-swipe-direction",
+        "data-swiping",
+        "data-swipe-dismiss"
+      ]
     }
   },
   "native": {
@@ -619,13 +656,14 @@
     },
     "open": {
       "hook": "trigger [data-popup-open]; popup [data-open]",
-      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); dialog: trigger [data-popup-open], backdrop and popup [data-open] in the top layer, fading and growing in on the reveal intent",
+      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); dialog: trigger [data-popup-open], backdrop and popup [data-open] in the top layer, fading and growing in on the reveal intent; drawer: the sheet slides in from its side (translate) on the reveal intent and follows a swipe (data-swiping)",
       "components": [
         "ui-select",
         "ui-collapsible",
         "ui-accordion",
         "ui-dialog",
-        "ui-alert-dialog"
+        "ui-alert-dialog",
+        "ui-drawer"
       ]
     },
     "disabled": {

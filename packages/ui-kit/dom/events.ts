@@ -15,12 +15,13 @@
  * - focus-out: focus left the select (Tab commits the highlighted option and closes)
  * - track-press, drag: a press on the range track, then dragging its thumb
  * - close-press: a dialog's close part was pressed (Dialog.Close)
+ * - swipe: a drawer was swiped toward its edge (Drawer)
  * - none: no specific interaction (Base UI's reason for checkbox, switch, radio, toggle and input)
  */
 export type ChangeReason =
   | 'item-press' | 'keyboard' | 'list-navigation' | 'trigger-press' | 'outside-press' | 'escape-key'
   | 'focus-out' | 'track-press' | 'drag' | 'none'
-  | 'close-press';
+  | 'close-press' | 'swipe';
 
 /** Base UI eventDetails: the reason and the DOM event that caused the change, when there is one. */
 export interface ChangeDetails {

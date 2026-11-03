@@ -23,6 +23,7 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/dialog/element';
 import '@massimo/ui-kit/components/alert-dialog/element';
+import '@massimo/ui-kit/components/drawer/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -40,7 +41,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog'],
+  ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog · ui-drawer'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -215,7 +216,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
-    overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent. An alert dialog is the same popup with role=alertdialog: always modal, no outside-press dismissal, focus on the least destructive action (Cancel).',
+    overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent. An alert dialog is the same popup with role=alertdialog: always modal, no outside-press dismissal, focus on the least destructive action (Cancel). A drawer is a square panel-level sheet (6u padding) on one edge: side sheets 80u wide, top and bottom sheets full width, 8u of the viewport kept in view; it slides in on the reveal intent and a swipe toward its edge dismisses it (reason swipe).',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -504,11 +505,36 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             <div data-part="actions"><ui-button data-part="close">Keep editing</ui-button><ui-button data-part="close" variant="primary">Discard</ui-button></div>
           </ui-alert-dialog>
         </Row>
+        <Row label="Drawer">
+          <ui-drawer side="right" label="Filters" description="Narrow the list; swipe right or press Escape to close.">
+            <ui-button data-part="trigger"><i slot="leading" name="funnel" />Filters</ui-button>
+            <div className={dialogBody}>
+              <ui-checkbox checked>In stock</ui-checkbox>
+              <ui-checkbox>On sale</ui-checkbox>
+              <ui-switch>Free shipping</ui-switch>
+            </div>
+            <div data-part="actions"><ui-button data-part="close">Reset</ui-button><ui-button data-part="close" variant="primary">Show results</ui-button></div>
+          </ui-drawer>
+          <ui-drawer label="Share" description="A bottom sheet: drag it down to dismiss.">
+            <ui-button data-part="trigger">Share…</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Copy link</ui-button><ui-button data-part="close" variant="primary">Done</ui-button></div>
+          </ui-drawer>
+          <ui-drawer side="left" label="Navigation">
+            <ui-button data-part="trigger"><i slot="leading" name="list" />Menu</ui-button>
+            <div className={dialogBody}><ui-button>Inbox</ui-button><ui-button>Sent</ui-button><ui-button>Archive</ui-button></div>
+          </ui-drawer>
+        </Row>
         <SizeLadder family="dialog" params={params}>
           <ui-dialog label="Dialog at this size" description="Padding 6u, radius = padding, parts 2u apart.">
             <ui-button data-part="trigger">Open</ui-button>
             <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
           </ui-dialog>
+        </SizeLadder>
+        <SizeLadder family="drawer" params={params}>
+          <ui-drawer side="right" label="Drawer at this size" description="Panel padding 6u, square, 80u wide.">
+            <ui-button data-part="trigger">Open drawer</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
+          </ui-drawer>
         </SizeLadder>
       </>
     ),
