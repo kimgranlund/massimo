@@ -487,6 +487,14 @@
       "summary": "The scrub area (Base UI NumberField.ScrubArea) holding the label: drag it to step the value (pixel-sensitivity px per step, scrub-direction); data-scrubbing while dragging. Hidden without a label."
     },
     {
+      "id": "part:number-field-scrub-area-cursor",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=scrub-area] > [data-part=scrub-area-cursor]",
+      "summary": "Base UI NumberField.ScrubAreaCursor: while a mouse drag holds the pointer locked to the scrub area, an icon in the top layer at the virtual pointer (--ui-scrub-x / -y, wrapping at the viewport's edges); hidden otherwise. Authored content replaces the arrows."
+    },
+    {
       "id": "part:number-field-label",
       "kind": "part",
       "status": "implemented",
@@ -602,6 +610,11 @@
       "from": "component:number-field",
       "relation": "ownsPart",
       "to": "part:number-field-scrub-area"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-scrub-area-cursor"
     },
     {
       "from": "component:number-field",
@@ -791,6 +804,16 @@
               "children?: ReactNode",
               "direction?: 'horizontal' | 'vertical' = 'horizontal' // The pointer axis that changes the value (Base UI direction).",
               "pixelSensitivity?: number = 2 // Pixels dragged per step (Base UI pixelSensitivity)."
+            ]
+          },
+          "NumberField.ScrubAreaCursor": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
             ]
           },
           "NumberField.Label": {

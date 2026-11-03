@@ -21,12 +21,12 @@ import { numberField } from '../../styled-system/recipes/number-field.js';
 import type { FormatNumberOptions } from '../../tokens/typography/format.ts';
 import {
   applyAttrs, clampNumber, eventDetails, fieldAttrs, formatNumberValue, holdStepper, isNumberChar, numberInputMode, numberKey,
-  parseNumber, sanitizeNumberText, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled, uid, withExternalRefs,
+  hideTopLayer, parseNumber, sanitizeNumberText, showTopLayer, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled, uid, withExternalRefs,
   type ChangeReason,
 } from '../../dom/index.ts';
 
 const ADORN = ['prefix', 'suffix'] as const;
-const AUTHORED = ['scrub-area', 'scrub-area > label', 'group', 'group > decrement', 'group > prefix', 'group > input', 'group > suffix', 'group > increment', 'description', 'error'];
+const AUTHORED = ['scrub-area', 'scrub-area > label', 'scrub-area > scrub-area-cursor', 'group', 'group > decrement', 'group > prefix', 'group > input', 'group > suffix', 'group > increment', 'description', 'error'];
 
 export class UINumberField extends UIFormElement {
   static properties = {
@@ -112,7 +112,7 @@ export class UINumberField extends UIFormElement {
   template() {
     const message = this.#message();
     return html`
-      <span data-part="scrub-area" ?hidden=${!this.label} @pointerdown=${this.#onScrubDown}><span data-part="label" @click=${this.#focusInput}>${this.label}</span></span>
+      <span data-part="scrub-area" ?hidden=${!this.label} @pointerdown=${this.#onScrubDown}><span data-part="label" @click=${this.#focusInput}>${this.label}</span><span data-part="scrub-area-cursor" popover="manual" aria-hidden="true"><i name="arrows-horizontal"></i></span></span>
       <div data-part="group" @click=${this.#onGroupClick} @wheel=${this.#onWheel} @pointerenter=${this.#onEnter} @pointerleave=${this.#onLeave}>
         <span data-part="decrement" role="button" @pointerdown=${this.#onDecrementDown} @click=${this.#onDecrementClick}><i name="minus"></i></span>
         <span data-part="prefix" hidden></span>
@@ -133,6 +133,7 @@ export class UINumberField extends UIFormElement {
       const a = this.#authored;
       adoptPart(a.get('scrub-area'), scrub);
       adoptPart(a.get('scrub-area > label'), label);
+      if (a.has('scrub-area > scrub-area-cursor')) { this.#ownCursor = true; adoptPart(a.get('scrub-area > scrub-area-cursor'), partOf(scrub, 'scrub-area-cursor'), 'replace'); }
       adoptPart(a.get('group'), group);
       for (const p of ['decrement', 'increment'] as const) adoptPart(a.get(`group > ${p}`), g(p), 'replace');
       for (const p of ADORN) adoptPart(a.get(`group > ${p}`), g(p), 'append');
@@ -167,6 +168,8 @@ export class UINumberField extends UIFormElement {
       applyAttrs(g(p), { ...stepperAttrs(dir, this.#id, off), 'aria-disabled': off ? 'true' : undefined });
     }
     applyAttrs(scrub, { 'data-direction': this.scrubDirection === 'vertical' ? 'vertical' : undefined });
+    const cursorIcon = partOf(scrub, 'scrub-area-cursor')?.querySelector(':scope > i');
+    if (!this.#ownCursor && cursorIcon) cursorIcon.setAttribute('name', this.scrubDirection === 'vertical' ? 'arrows-vertical' : 'arrows-horizontal');
     // Only write text when it is not the user's, so typing never moves the caret.
     const text = this.#display(value);
     if (!this.#typing && input.textContent !== text) input.textContent = text;
@@ -265,13 +268,25 @@ export class UINumberField extends UIFormElement {
   #onDecrementClick = (e: MouseEvent) => this.#click(-1, e);
   #onIncrementClick = (e: MouseEvent) => this.#click(1, e);
 
+  /** An authored ScrubAreaCursor keeps its own content. */
+  #ownCursor = false;
+
   // ── Scrub area: drag the label ──
   #onScrubDown = (e: PointerEvent) => {
     if (e.button !== 0 || this.#inactive) return;
     e.preventDefault(); // no text selection while dragging
     this.#committed = this.value;
+    const scrub = this.querySelector<HTMLElement>(':scope > [data-part=scrub-area]')!, cursor = partOf(scrub, 'scrub-area-cursor') as HTMLElement | null;
     startScrub(e, {
-      direction: this.scrubDirection, pixelSensitivity: this.pixelSensitivity,
+      direction: this.scrubDirection, pixelSensitivity: this.pixelSensitivity, lock: scrub,
+      // Pointer lock hides the real cursor: the cursor part stands in for it in the top layer.
+      onCursor: (pt) => {
+        if (!cursor) return;
+        if (!pt) { hideTopLayer(cursor); return; }
+        cursor.style.setProperty('--ui-scrub-x', `${pt.x}px`);
+        cursor.style.setProperty('--ui-scrub-y', `${pt.y}px`);
+        showTopLayer(cursor);
+      },
       onStart: () => { this.toggleAttribute('data-scrubbing', true); (this.querySelector(':scope > [data-part=scrub-area]') as HTMLElement)?.toggleAttribute('data-scrubbing', true); },
       onStep: (dir, ev) => { this.#step(dir, stepAmount(ev, this), 'scrub', ev, false); },
       onEnd: (scrubbed, ev) => {

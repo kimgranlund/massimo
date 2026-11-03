@@ -699,6 +699,7 @@
       "element": "Host is form-associated; the label sits in the scrub area; the group holds the decrement and increment steppers (role=button, not tab stops) around the input, a contenteditable role=textbox with aria-roledescription \"Number field\".",
       "parts": [
         "number-field-scrub-area?",
+        "number-field-scrub-area-cursor?",
         "number-field-label?",
         "number-field-group",
         "number-field-decrement",

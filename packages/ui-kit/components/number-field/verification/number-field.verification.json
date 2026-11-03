@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/number-field/number-field.element.ts",
-      "sha256": "3114cb446f94704fd5bf9a00b9914103053c6b5c6c3ac702f209f490fc5d8213"
+      "sha256": "c78b79fbb7788db2c46df9d11480f0b1974a4f3d57478d416f545e27eb73ddbe"
     },
     {
       "path": "components/number-field/number-field.react.tsx",
-      "sha256": "2d69daff0a017efe872dca1b82fbe3496d4c4aa33c4f8793a8462e670650f294"
+      "sha256": "5836b80f3fa8d0f2fe9378dd6970b1b93c491b8d679fcaf65890696fe0ec92ba"
     },
     {
       "path": "components/number-field/number-field.recipe.ts",
-      "sha256": "b4db0f84fb70c25b53260cceaff83f62011d3d59a9076ce61f29cd1de4c6ec42"
+      "sha256": "b0b5a8697a9273180ee27536f27e4103ac6201d10969cb4b7577a29d0b6693e0"
     },
     {
       "path": "components/number-field/number-field.manifest.json",
-      "sha256": "b2839cb4abb63ddc50356559956a8f9dd2194f2bf19f2c2b7b1fa914174793ad"
+      "sha256": "1ba2ed43fc6fb3d095b1f8cf4182b40da9d06462c847b18ae51a07abdd2f66b5"
     },
     {
       "path": "dom/number.ts",
-      "sha256": "c544e4c1bb87155410f499ef95af4ef208e4769cbbd9db942f7aa4811ac74068"
+      "sha256": "17893ec59c627c3ca0f5ef435da51a2476e30f2242aafe542b32f95bec98fcf4"
     }
   ],
   "renderers": {

@@ -48,7 +48,7 @@ const stepper = {
 export const numberField = defineSlotRecipe({
   className: 'ui-number-field',
   description: 'Number field with steppers, a scrub area and locale formatting (ui-number-field, React NumberField).',
-  slots: ['root', 'scrub-area', 'label', 'group', 'decrement', 'prefix', 'input', 'suffix', 'increment', 'description', 'error'],
+  slots: ['root', 'scrub-area', 'scrub-area-cursor', 'label', 'group', 'decrement', 'prefix', 'input', 'suffix', 'increment', 'description', 'error'],
   base: {
     root: mergeStyles(fieldRoot, {
       '&:is([hide-label], [data-hide-label]) > [data-part=scrub-area]': {
@@ -61,6 +61,16 @@ export const numberField = defineSlotRecipe({
       display: 'flex', alignSelf: 'start', cursor: 'ew-resize', userSelect: 'none', touchAction: 'none',
       '&[data-direction=vertical]': { cursor: 'ns-resize' },
       [`${INACTIVE} > &`]: { cursor: 'default' },
+    },
+    // Base UI ScrubAreaCursor: while the pointer is locked to the scrub area, an icon in the top layer
+    // at the virtual pointer (--ui-scrub-x / -y, set by script; it wraps at the viewport's edges).
+    'scrub-area-cursor': {
+      position: 'fixed', inset: '0 auto auto 0', margin: 0, padding: 0, border: 0, bg: 'transparent', overflow: 'visible',
+      pointerEvents: 'none', color: 'fg', display: 'none',
+      translate: 'calc(var(--ui-scrub-x, 0px) - 50%) calc(var(--ui-scrub-y, 0px) - 50%)',
+      '&:popover-open': { display: 'block' },
+      '& > i': { display: 'block', width: 'var(--icon)', height: 'var(--icon)' },
+      [FORCED]: { color: 'CanvasText' },
     },
     label: { ...fieldParts.label, cursor: 'inherit' },
     description: fieldParts.description,

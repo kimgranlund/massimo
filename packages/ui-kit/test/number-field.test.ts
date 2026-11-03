@@ -285,7 +285,7 @@ test('React NumberField: same anatomy, ARIA, classes and data-* as the web compo
 test('React NumberField: compound parts render the preset; render and className; parts need their Root', () => {
   const preset = html(h(NumberField, { label: 'Width', defaultValue: 3, prefix: '$', description: 'In px' }));
   const composed = html(h(NumberField.Root, { defaultValue: 3 },
-    h(NumberField.ScrubArea, null, h(NumberField.Label, null, 'Width')),
+    h(NumberField.ScrubArea, null, h(NumberField.Label, null, 'Width'), h(NumberField.ScrubAreaCursor)),
     h(NumberField.Group, { prefix: '$' }, h(NumberField.Decrement), h(NumberField.Input), h(NumberField.Increment)),
     h(NumberField.Description, null, 'In px')));
   assert.equal(composed, preset);
@@ -294,4 +294,92 @@ test('React NumberField: compound parts render the preset; render and className;
   assert.match(preset, /<input data-part="input" data-numeric=""[^>]*aria-roledescription="Number field"[^>]*value="3"/);
   assert.match(html(h(NumberField.Root, { render: h('section'), className: (s: any) => (s.disabled ? 'off' : 'on'), disabled: true }, h(NumberField.Group))), /^<section data-ui="number-field"[^>]*class="ui-number-field__root off"/);
   assert.throws(() => html(h(NumberField.Input)), /inside NumberField.Root/);
+});
+
+/** Pointer lock in the test DOM: requestPointerLock locks at once; exitPointerLock releases. */
+function stubPointerLock(refuse = false) {
+  const setLocked = (el: Element | null) => {
+    Object.defineProperty(document, 'pointerLockElement', { value: el, configurable: true });
+    document.dispatchEvent(new Event('pointerlockchange'));
+  };
+  const proto = (globalThis as any).HTMLElement.prototype;
+  const had = { req: proto.requestPointerLock, exit: (document as any).exitPointerLock };
+  proto.requestPointerLock = function () { if (refuse) return Promise.reject(new Error('no')); setLocked(this); return Promise.resolve(); };
+  (document as any).exitPointerLock = () => setLocked(null);
+  return () => { proto.requestPointerLock = had.req; (document as any).exitPointerLock = had.exit; Object.defineProperty(document, 'pointerLockElement', { value: null, configurable: true }); };
+}
+const moveBy = (dx: number, dy = 0) => {
+  const e = new PointerEvent('pointermove', { clientX: 0, clientY: 0 });
+  Object.defineProperty(e, 'movementX', { value: dx });
+  Object.defineProperty(e, 'movementY', { value: dy });
+  window.dispatchEvent(e);
+};
+
+test('ui-number-field: a mouse scrub locks the pointer, steps by movement, and shows the scrub cursor at the virtual pointer (wrapping)', async () => {
+  const restore = stubPointerLock();
+  try {
+    const d = await mount('<ui-number-field label="N" value="0" pixel-sensitivity="2" locale="en-US"></ui-number-field>');
+    const el = d.firstElementChild as any, scrub = part(el, 'scrub-area'), cursor = part(el, 'scrub-area-cursor');
+    assert.equal(cursor.getAttribute('aria-hidden'), 'true');
+    assert.ok(cursor.classList.contains('ui-number-field__scrub-area-cursor'));
+    assert.equal(cursor.querySelector('i')!.getAttribute('name'), 'arrows-horizontal');
+    scrub.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, cancelable: true, button: 0, clientX: 30, clientY: 40, pointerType: 'mouse' }));
+    assert.equal(document.pointerLockElement, scrub, 'the pointer locks to the scrub area');
+    assert.equal(cursor.style.getPropertyValue('--ui-scrub-x'), '30px', 'the cursor starts at the press');
+    moveBy(6);
+    assert.equal(el.value, 3, 'movementX steps while locked (clientX is frozen)');
+    assert.equal(cursor.style.getPropertyValue('--ui-scrub-x'), '36px');
+    moveBy(-50);
+    assert.equal(cursor.style.getPropertyValue('--ui-scrub-x'), `${window.innerWidth - 14}px`, 'it wraps to the other edge');
+    window.dispatchEvent(new PointerEvent('pointerup'));
+    assert.equal(document.pointerLockElement, null, 'release unlocks');
+    el.scrubDirection = 'vertical'; await tick();
+    assert.equal(cursor.querySelector('i')!.getAttribute('name'), 'arrows-vertical');
+    d.remove();
+  } finally { restore(); }
+});
+
+test('ui-number-field: a refused lock or a touch scrub steps on the pointer position, no cursor', async () => {
+  const restore = stubPointerLock(true);
+  try {
+    const d = await mount('<ui-number-field label="N" value="0" pixel-sensitivity="2" locale="en-US"></ui-number-field>');
+    const el = d.firstElementChild as any, scrub = part(el, 'scrub-area'), cursor = part(el, 'scrub-area-cursor');
+    scrub.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, cancelable: true, button: 0, clientX: 100, pointerType: 'mouse' }));
+    await tick();
+    window.dispatchEvent(new PointerEvent('pointermove', { clientX: 104 }));
+    assert.equal(el.value, 2);
+    assert.equal(cursor.style.getPropertyValue('--ui-scrub-x'), '', 'no virtual cursor');
+    window.dispatchEvent(new PointerEvent('pointerup'));
+    d.remove();
+  } finally { restore(); }
+});
+
+test('NumberField (React): ScrubAreaCursor in the preset and as a part; it follows the locked pointer', async () => {
+  const restore = stubPointerLock();
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  try {
+    const box = document.createElement('div');
+    document.body.append(box);
+    const root = createRoot(box);
+    const values: number[] = [];
+    await act(async () => root.render(h(NumberField, { label: 'N', defaultValue: 0, onValueChange: (v: number) => values.push(v) })));
+    const scrub = part(box, 'scrub-area'), cursor = part(box, 'scrub-area-cursor');
+    assert.ok(cursor, 'the preset has a cursor');
+    assert.equal(cursor.getAttribute('aria-hidden'), 'true');
+    assert.match(cursor.className, /ui-number-field__scrub-area-cursor/);
+    await act(async () => { scrub.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, cancelable: true, button: 0, clientX: 30, clientY: 40, pointerType: 'mouse' })); });
+    assert.equal(document.pointerLockElement, scrub);
+    await act(async () => { moveBy(4); });
+    assert.equal(values.at(-1), 2);
+    assert.equal(cursor.style.getPropertyValue('--ui-scrub-x'), '34px');
+    await act(async () => { window.dispatchEvent(new PointerEvent('pointerup')); });
+    assert.equal(document.pointerLockElement, null);
+    const own = h(NumberField.Root, { defaultValue: 1 }, h(NumberField.ScrubArea, { direction: 'vertical' }, h(NumberField.Label, null, 'H'), h(NumberField.ScrubAreaCursor)), h(NumberField.Group, null, h(NumberField.Input)));
+    await act(async () => root.render(own));
+    assert.equal(part(box, 'scrub-area-cursor').querySelector('i')!.getAttribute('name'), 'arrows-vertical');
+    await act(async () => root.unmount());
+    box.remove();
+  } finally { restore(); }
 });

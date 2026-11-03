@@ -54,6 +54,7 @@ Preset or parts ([components spec](../../../../docs/specs/components.md#composit
 Web component: authored parts are adopted (attributes and classes); stepper content replaces the plus / minus glyph (an empty stepper keeps it), prefix and suffix content is appended; label, description and error text seed those properties. `slot="prefix"` / `"suffix"` children move into the group. React: `NumberField.Group` puts its `prefix` and `suffix` beside the `NumberField.Input`; `NumberField.Root` reads a `NumberField.Description` and `NumberField.Error` among its direct children to wire them.
 
 - `part:number-field-scrub-area` `:scope > [data-part=scrub-area]`: Base UI ScrubArea, holding the label; hidden without one.
+- `part:number-field-scrub-area-cursor` `:scope > [data-part=scrub-area] > [data-part=scrub-area-cursor]`: Base UI ScrubAreaCursor, an icon (the arrows along `scrub-direction`; authored content replaces them) shown in the top layer at the virtual pointer while a mouse drag holds the pointer locked. React: `NumberField.ScrubAreaCursor` inside `ScrubArea` (the preset has one).
 - `part:number-field-label` `:scope > [data-part=scrub-area] > [data-part=label]`: names the input; a press focuses it.
 - `part:number-field-group` `:scope > [data-part=group]`: the field control, `[decrement] [prefix] [input] [suffix] [increment]`; the focus ring paints here.
 - `part:number-field-decrement`, `part:number-field-increment`: the steppers in the leading and trailing 6u slots (role=button / native buttons, `tabindex=-1`, `aria-label` Decrease / Increase, `aria-controls` the input).
@@ -68,7 +69,7 @@ Web component: authored parts are adopted (attributes and classes); stepper cont
 | Home / End | go to `min` / `max` when set; commits |
 | Enter | commit, then submit the form |
 | Stepper press | step once, then after 400 ms every 60 ms while held; commits on release |
-| Scrub area drag | one step per `pixel-sensitivity` px (2) along `scrub-direction` (right / up increase; mirrored in RTL); `data-scrubbing`; commits on release; a press without a drag focuses the input |
+| Scrub area drag | one step per `pixel-sensitivity` px (2) along `scrub-direction` (right / up increase; mirrored in RTL); `data-scrubbing`; commits on release; a press without a drag focuses the input. A mouse press locks the pointer to the scrub area (Base UI): the system cursor hides, movement never stops at the screen edge, and the scrub area cursor follows the movement, wrapping to the opposite edge. Touch, pen or a refused lock scrub on the pointer's position |
 | Wheel | with `allow-wheel-scrub`, while the input is focused and the pointer is over the group: up increases; commits |
 
 Steppers are not tab stops (Base UI): the keyboard steps with the arrows. Disabled and read-only stop every gesture; a stepper at its limit is `data-disabled`.
@@ -95,6 +96,6 @@ Geometry family: `number-field` ([geometry-families.json](../../contracts/geomet
 - webComponent: completed (`./number-field.element.ts`)
 - react: completed (`./number-field.react.tsx`)
 
-Not implemented: Base UI's `ScrubAreaCursor` and pointer lock (the system cursor stays and scrubbing stops at the screen edge), `inputRef` (React: the input takes a `ref` through `render`).
+Not implemented: `inputRef` (React: the input takes a `ref` through `render`).
 
 Checks and their latest run: [verification/number-field.verification.json](verification/number-field.verification.json).

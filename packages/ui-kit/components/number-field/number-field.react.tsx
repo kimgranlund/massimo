@@ -14,8 +14,8 @@ import {
   type PointerEvent as ReactPointerEvent, type ReactNode, type ButtonHTMLAttributes, type RefObject,
 } from 'react';
 import {
-  clampNumber, eventDetails, fieldAttrs, formatNumberValue, holdStepper, numberInputMode, numberKey, parseNumber, sanitizeNumberText,
-  snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled, toReactProps, type ChangeDetails, type ChangeReason,
+  clampNumber, eventDetails, fieldAttrs, formatNumberValue, hideTopLayer, holdStepper, numberInputMode, numberKey, parseNumber, sanitizeNumberText,
+  showTopLayer, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled, toReactProps, type ChangeDetails, type ChangeReason,
 } from '../../dom/index.ts';
 import type { FormatNumberOptions } from '../../tokens/typography/format.ts';
 import { useFieldState } from '../state.react.ts';
@@ -89,7 +89,7 @@ interface Controller {
   onBlur: (e: FocusEvent<HTMLInputElement>) => void;
   press: (dir: 1 | -1, e: ReactPointerEvent<HTMLElement>) => void;
   click: (dir: 1 | -1, e: MouseEvent<HTMLElement>) => void;
-  scrub: (e: ReactPointerEvent<HTMLElement>, direction: 'horizontal' | 'vertical', pixelSensitivity: number) => void;
+  scrub: (e: ReactPointerEvent<HTMLElement>, direction: 'horizontal' | 'vertical', pixelSensitivity: number, cursor: () => HTMLElement | null) => void;
   wheel: (e: WheelEvent) => void;
 }
 interface Ctx { c: Record<string, string>; state: PartState; a: ReturnType<typeof fieldAttrs>; k: Controller; native: Record<string, unknown>; disabled: boolean; readOnly: boolean }
@@ -201,12 +201,21 @@ function useController(p: NumberFieldRootProps, inactive: boolean, hidden: RefOb
       committed.current = valueRef.current;
       stepBy(dir, stepAmount(e, steps), dir > 0 ? 'increment-press' : 'decrement-press', e.nativeEvent, true);
     },
-    scrub: (e, direction, pixelSensitivity) => {
+    scrub: (e, direction, pixelSensitivity, cursor) => {
       if (e.button !== 0 || inactive) return;
       e.preventDefault();
       committed.current = valueRef.current;
       startScrub(e.nativeEvent, {
-        direction, pixelSensitivity,
+        direction, pixelSensitivity, lock: e.currentTarget,
+        // Pointer lock hides the real cursor: ScrubAreaCursor stands in for it (set by script, no re-render per move).
+        onCursor: (pt) => {
+          const el = cursor();
+          if (!el) return;
+          if (!pt) { hideTopLayer(el); return; }
+          el.style.setProperty('--ui-scrub-x', `${pt.x}px`);
+          el.style.setProperty('--ui-scrub-y', `${pt.y}px`);
+          showTopLayer(el);
+        },
         onStart: () => setScrubbing(true),
         onStep: (dir, ev) => { stepBy(dir, stepAmount(ev, steps), 'scrub', ev, false); },
         onEnd: (scrubbed, ev) => { setScrubbing(false); if (scrubbed) doCommit('scrub', ev); },
@@ -269,11 +278,29 @@ export interface NumberFieldScrubAreaProps extends NumberFieldPartProps {
 }
 
 /** NumberField.ScrubArea: drag it to step the value (Base UI ScrubArea); holds the label. */
-export function NumberFieldScrubArea({ direction = 'horizontal', pixelSensitivity = 2, className, render, onPointerDown, ...rest }: NumberFieldScrubAreaProps) {
+const ScrubCtx = createContext<{ direction: 'horizontal' | 'vertical'; cursorRef: RefObject<HTMLElement | null> } | null>(null);
+
+export function NumberFieldScrubArea({ direction = 'horizontal', pixelSensitivity = 2, className, render, onPointerDown, children, ...rest }: NumberFieldScrubAreaProps) {
   const t = useNF('NumberField.ScrubArea');
-  return renderPart('span', t.c['scrub-area'], {
-    'data-part': 'scrub-area', 'data-direction': direction === 'vertical' ? 'vertical' : undefined, 'data-scrubbing': t.k.scrubbing ? '' : undefined, className, ...rest, render,
-    onPointerDown: (e: ReactPointerEvent<HTMLElement>) => { onPointerDown?.(e as never); t.k.scrub(e, direction, pixelSensitivity); },
+  const cursorRef = useRef<HTMLElement | null>(null);
+  return (
+    <ScrubCtx.Provider value={{ direction, cursorRef }}>
+      {renderPart('span', t.c['scrub-area'], {
+        'data-part': 'scrub-area', 'data-direction': direction === 'vertical' ? 'vertical' : undefined, 'data-scrubbing': t.k.scrubbing ? '' : undefined, className, ...rest, render, children,
+        onPointerDown: (e: ReactPointerEvent<HTMLElement>) => { onPointerDown?.(e as never); t.k.scrub(e, direction, pixelSensitivity, () => cursorRef.current); },
+      }, t.state)}
+    </ScrubCtx.Provider>
+  );
+}
+
+/** NumberField.ScrubAreaCursor (Base UI): while the pointer is locked to the scrub area, an icon at the virtual pointer, in the top layer; children replace the arrows. */
+export function NumberFieldScrubAreaCursor({ className, render, children, ...rest }: NumberFieldPartProps) {
+  const t = useNF('NumberField.ScrubAreaCursor');
+  const sc = useContext(ScrubCtx);
+  if (!sc) throw new Error('<NumberField.ScrubAreaCursor> must be inside NumberField.ScrubArea');
+  return renderPart('span', t.c['scrub-area-cursor'], {
+    'data-part': 'scrub-area-cursor', popover: 'manual', 'aria-hidden': 'true', ref: sc.cursorRef, className, ...rest, render,
+    children: children ?? <i {...{ name: sc.direction === 'vertical' ? 'arrows-vertical' : 'arrows-horizontal' }} />,
   }, t.state);
 }
 
@@ -362,7 +389,7 @@ export function NumberFieldError({ className, render, ...rest }: NumberFieldPart
 export function NumberField({ label, description, error, placeholder, prefix, suffix, children: _parts, ...rest }: NumberFieldProps) {
   return (
     <NumberFieldRoot error={error} {...rest}>
-      {label && <NumberFieldScrubArea><NumberFieldLabel>{label}</NumberFieldLabel></NumberFieldScrubArea>}
+      {label && <NumberFieldScrubArea><NumberFieldLabel>{label}</NumberFieldLabel><NumberFieldScrubAreaCursor /></NumberFieldScrubArea>}
       <NumberFieldGroup prefix={prefix} suffix={suffix}>
         <NumberFieldDecrement />
         <NumberFieldInput placeholder={placeholder} />
@@ -375,6 +402,7 @@ export function NumberField({ label, description, error, placeholder, prefix, su
 }
 NumberField.Root = NumberFieldRoot;
 NumberField.ScrubArea = NumberFieldScrubArea;
+NumberField.ScrubAreaCursor = NumberFieldScrubAreaCursor;
 NumberField.Label = NumberFieldLabel;
 NumberField.Group = NumberFieldGroup;
 NumberField.Decrement = NumberFieldDecrement;

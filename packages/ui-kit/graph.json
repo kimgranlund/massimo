@@ -1914,7 +1914,7 @@
     },
     "part:number-field-decrement": {
       "kind": "part",
-      "source": "components/number-field/number-field.manifest.json#/nodes/4",
+      "source": "components/number-field/number-field.manifest.json#/nodes/5",
       "availability": "implemented",
       "tag": "span",
       "searchTerms": [
@@ -1923,7 +1923,7 @@
     },
     "part:number-field-group": {
       "kind": "part",
-      "source": "components/number-field/number-field.manifest.json#/nodes/3",
+      "source": "components/number-field/number-field.manifest.json#/nodes/4",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
@@ -1932,7 +1932,7 @@
     },
     "part:number-field-increment": {
       "kind": "part",
-      "source": "components/number-field/number-field.manifest.json#/nodes/6",
+      "source": "components/number-field/number-field.manifest.json#/nodes/7",
       "availability": "implemented",
       "tag": "span",
       "searchTerms": [
@@ -1941,7 +1941,7 @@
     },
     "part:number-field-input": {
       "kind": "part",
-      "source": "components/number-field/number-field.manifest.json#/nodes/5",
+      "source": "components/number-field/number-field.manifest.json#/nodes/6",
       "availability": "implemented",
       "tag": "div",
       "searchTerms": [
@@ -1950,7 +1950,7 @@
     },
     "part:number-field-label": {
       "kind": "part",
-      "source": "components/number-field/number-field.manifest.json#/nodes/2",
+      "source": "components/number-field/number-field.manifest.json#/nodes/3",
       "availability": "implemented",
       "tag": "span",
       "searchTerms": [
@@ -1964,6 +1964,15 @@
       "tag": "span",
       "searchTerms": [
         "number field scrub area"
+      ]
+    },
+    "part:number-field-scrub-area-cursor": {
+      "kind": "part",
+      "source": "components/number-field/number-field.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "number field scrub area cursor"
       ]
     },
     "part:otp-field-input": {
@@ -6880,6 +6889,11 @@
       "from": "component:number-field",
       "relation": "ownsPart",
       "to": "part:number-field-scrub-area"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-scrub-area-cursor"
     },
     {
       "from": "component:number-field",

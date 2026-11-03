@@ -63,7 +63,7 @@ export const SYSTEM_GLYPHS = new Set([
   'plus', 'minus', 'x', 'check', 'check-bold', 'minus-bold',
   'caret-up', 'caret-down', 'caret-left', 'caret-right',
   'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
-  'dots-three', 'dots-three-vertical', 'magnifying-glass',
+  'dots-three', 'dots-three-vertical', 'magnifying-glass', 'arrows-horizontal', 'arrows-vertical',
 ]);
 
 export const ICON_SET_NAMES = Object.keys(BUILTIN_SETS) as (keyof typeof BUILTIN_SETS)[];

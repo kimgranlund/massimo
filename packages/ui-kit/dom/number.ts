@@ -212,16 +212,45 @@ export interface ScrubOptions {
   onStart: () => void;
   /** Released: whether it scrubbed, and the event. */
   onEnd: (scrubbed: boolean, event: PointerEvent) => void;
+  /**
+   * The element to lock the pointer to (Base UI ScrubArea): a mouse press requests pointer lock on
+   * it, so the drag never hits the screen edge, and movement is read from movementX / Y. Touch and
+   * pen, or a refused lock, scrub on the pointer's position instead.
+   */
+  lock?: Element;
+  /** While locked: the virtual cursor's viewport point (wrapping at the edges), or null when the lock ends (Base UI ScrubAreaCursor). */
+  onCursor?: (point: { x: number; y: number } | null) => void;
 }
+
+/** A point kept inside the viewport by wrapping at its edges (the virtual scrub cursor teleports to the other side). */
+export const wrapPoint = (x: number, y: number, w: number, h: number) => ({ x: ((x % w) + w) % w, y: ((y % h) + h) % h });
 
 /** Drag on the scrub area (Base UI ScrubArea): every pixelSensitivity px along the direction is a step. */
 export function startScrub(e: PointerEvent, o: ScrubOptions) {
   const vertical = o.direction === 'vertical', px = Math.max(0.5, o.pixelSensitivity ?? 2);
+  const rtl = getComputedStyle(e.target as Element).direction === 'rtl';
   let last = vertical ? e.clientY : e.clientX, carry = 0, scrubbed = false;
+  // The virtual cursor starts where the press was.
+  let cursor = { x: e.clientX, y: e.clientY };
+  const lockEl = o.lock && e.pointerType === 'mouse' ? o.lock : undefined;
+  const locked = () => !!lockEl && document.pointerLockElement === lockEl;
+  const onLock = () => o.onCursor?.(locked() ? cursor : null);
+  if (lockEl) {
+    document.addEventListener('pointerlockchange', onLock);
+    try { (lockEl as HTMLElement).requestPointerLock?.()?.catch?.(() => {}); } catch { /* refused: scrub on clientX */ }
+  }
   const move = (ev: PointerEvent) => {
-    const at = vertical ? ev.clientY : ev.clientX;
-    carry += vertical ? last - at : (at - last) * (getComputedStyle(e.target as Element).direction === 'rtl' ? -1 : 1);
-    last = at;
+    let delta: number;
+    if (locked()) {
+      delta = vertical ? -ev.movementY : ev.movementX * (rtl ? -1 : 1);
+      cursor = wrapPoint(cursor.x + ev.movementX, cursor.y + ev.movementY, window.innerWidth, window.innerHeight);
+      o.onCursor?.(cursor);
+    } else {
+      const at = vertical ? ev.clientY : ev.clientX;
+      delta = vertical ? last - at : (at - last) * (rtl ? -1 : 1);
+      last = at;
+    }
+    carry += delta;
     while (Math.abs(carry) >= px) {
       if (!scrubbed) { scrubbed = true; o.onStart(); }
       const dir = carry > 0 ? 1 : -1;
@@ -233,6 +262,11 @@ export function startScrub(e: PointerEvent, o: ScrubOptions) {
     window.removeEventListener('pointermove', move);
     window.removeEventListener('pointerup', up);
     window.removeEventListener('pointercancel', up);
+    if (lockEl) {
+      document.removeEventListener('pointerlockchange', onLock);
+      if (locked()) document.exitPointerLock?.();
+      o.onCursor?.(null);
+    }
     o.onEnd(scrubbed, ev);
   };
   window.addEventListener('pointermove', move);
