@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -88,7 +88,7 @@ export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db277
 // metrics for the live theme (like the Typography roles); the right column renders the specimens
 // in that size subtree (data-size).
 export const LADDER_SIZES = [3, 4, 6];
-export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure';
+export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure' | 'menu';
 
 type Live = { unit: number; border: number; radiusScale: number };
 const px = (n: number) => `${fmt(n)}`;
@@ -141,6 +141,10 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
     const d = resolveDisclosure(g);
     const [sg, ul] = [resolveTabs('segmented', g), resolveTabs('underline', g)];
     return [`trigger ${px(d.height)} · caret ${px(d.caret)} · panel inset ${px(d.panelInline)}`, `tabs ${px(sg.listHeight)} · tab ${px(sg.tabHeight)} · bar ${px(ul.indicatorThickness ?? 0)}`];
+  },
+  menu: (g) => {
+    const m = resolveMenu(g);
+    return [`trigger ${px(m.triggerHeight)} · item ${px(m.itemHeight)}`, `edge ${px(m.popupEdge)} · r ${px(m.popupRadius)} · item r ${px(m.itemRadius)}`];
   },
 };
 

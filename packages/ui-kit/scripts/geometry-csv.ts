@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -179,6 +179,13 @@ export const rows: Row[] = [
   { id: 'disclosure.tabs.underline.indicator', family: 'disclosure', element: 'tabs[variant=underline] indicator', quantity: 'indicator thickness', formula: '0.5u', value: (u) => resolveTabs('underline', { unit: u }).indicatorThickness!, status: 'implemented', notes: 'radius 0.25u; as wide as the active tab, on the track' },
   { id: 'disclosure.tabs.underline.track', family: 'disclosure', element: 'tabs[variant=underline] list', quantity: 'track', formula: 'thin border width (1px token)', value: (u) => resolveTabs('underline', { unit: u }).track, status: 'implemented', notes: 'border role, on the list end edge (inline end when vertical)' },
   { id: 'disclosure.accordion.itemHeight', family: 'disclosure', element: 'accordion item', quantity: 'closed item height', formula: '8u + 1px', value: (u) => resolveDisclosure({ unit: u }).itemHeight, status: 'implemented', notes: 'trigger row plus the divider' },
+  { id: 'menu.trigger.height', family: 'menu', element: 'menu trigger', quantity: 'trigger height', formula: '8u', value: (u) => resolveMenu({ unit: u }).triggerHeight, status: 'implemented', notes: 'a control row, padding u - B, the control radius' },
+  { id: 'menu.popup.offset', family: 'menu', element: 'menu popup', quantity: 'offset from the anchor', formula: 'u', value: (u) => resolveMenu({ unit: u }).offset, status: 'implemented', notes: 'below the trigger, beside a submenu trigger, from the pointer (context menu)' },
+  { id: 'menu.popup.edge', family: 'menu', element: 'menu popup', quantity: 'edge (padding + border)', formula: 'D = max(B, 0.5u)', value: (u) => resolveMenu({ unit: u }).popupEdge, status: 'implemented', notes: 'a composite; padding D - B' },
+  { id: 'menu.popup.radius', family: 'menu', element: 'menu popup', quantity: 'radius', formula: '(3 + 0.5)u * s', value: (u) => resolveMenu({ unit: u }).popupRadius, status: 'implemented', notes: 'wrapper radius, uncapped (a column)' },
+  { id: 'menu.item.height', family: 'menu', element: 'menu item, submenu trigger, group label', quantity: 'item height', formula: '6u + 2Ic = 7u', value: (u) => resolveMenu({ unit: u }).itemHeight, status: 'implemented', notes: 'a composite option; label 2u from a bare edge, 1u from a slot' },
+  { id: 'menu.item.radius', family: 'menu', element: 'menu item', quantity: 'item radius', formula: 'min(item / 2, max(0, popup radius - D))', value: (u) => resolveMenu({ unit: u }).itemRadius, status: 'implemented', notes: 'concentric with the popup' },
+  { id: 'menu.separator.margin', family: 'menu', element: 'menu separator', quantity: 'space above and below', formula: '0.5u', value: (u) => resolveMenu({ unit: u }).separatorMargin, status: 'implemented', notes: 'beyond the popup gap; the rule is max(1px, B)' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

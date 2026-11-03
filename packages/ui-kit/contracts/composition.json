@@ -121,6 +121,16 @@
         "inside accordion",
         "accordion item"
       ]
+    },
+    "menu": {
+      "id": "context:menu",
+      "host": "component:menu",
+      "summary": "Inside a ui-menu popup: item, checkbox-item, radio-item, group, radio-group and separator parts, and nested ui-menu submenus (their trigger is a submenu-trigger item).",
+      "searchTerms": [
+        "menu",
+        "inside menu",
+        "submenu"
+      ]
     }
   },
   "nesting": {

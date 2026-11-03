@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveMenu } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -254,4 +254,13 @@ test('disclosure: segmented tabs are 7u composite options in an 8u list; underli
   assert.equal(s.listRadius, 14, 'min(3.5u, 8u / 2)');
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
+});
+
+test('menu: an 8u trigger; the popup is a composite 1u away; items are 7u composite options; separators 0.5u apart', () => {
+  const m = resolveMenu({ unit: 4, border: 1 });
+  assert.deepEqual([m.triggerHeight, m.triggerPadding, m.triggerRadius, m.offset], [32, 3, 12, 4]);
+  assert.deepEqual([m.popupEdge, m.popupPadding, m.popupGap, m.popupRadius], [2, 1, 2, 14]);
+  assert.deepEqual([m.itemHeight, m.itemInset, m.itemPadding, m.itemRadius, m.labelStart, m.labelBesideSlot], [28, 2, 1, 12, 8, 4]);
+  assert.deepEqual([m.separator, m.separatorMargin, m.slot], [1, 2, 24]);
+  assert.equal(resolveMenu({ unit: 4, border: 0 }).itemHeight, 28, 'items stay 7u at any B');
 });

@@ -29,6 +29,8 @@ export interface FloatingLayerOptions {
   topLayer?: boolean;
   /** Elements beyond anchor and popup that count as inside (presses there do not dismiss). */
   inside?: () => (Node | null | undefined)[];
+  /** Place from script even where CSS anchor positioning runs (a popup at a point: the context menu). */
+  script?: boolean;
 }
 
 export interface FloatingLayer<A extends HTMLElement, P extends HTMLElement> {
@@ -53,7 +55,7 @@ export function useFloatingLayer<A extends HTMLElement = HTMLElement, P extends 
     if (!o.open) return;
     const popup = popupRef.current;
     if (!popup) return;
-    const positioner = createPositioner({ anchor: () => anchorRef.current, popup: () => popupRef.current, side: want, align, offset: opts.current.offset, onSide: setSide });
+    const positioner = createPositioner({ anchor: () => anchorRef.current, popup: () => popupRef.current, side: want, align, offset: opts.current.offset, onSide: setSide, script: o.script });
     const dismiss = createDismissLayer({
       inside: () => [anchorRef.current, popupRef.current, ...(opts.current.inside?.() ?? [])],
       outsidePress: o.outsidePress, escapeKey: o.escapeKey, focusOut: o.focusOut,

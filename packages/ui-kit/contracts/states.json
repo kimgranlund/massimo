@@ -497,6 +497,52 @@
         "data-orientation",
         "data-activation-direction"
       ]
+    },
+    "ui-menu": {
+      "host": [],
+      "trigger": [
+        "data-popup-open",
+        "data-pressed",
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ],
+      "item": [
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "checkbox-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "radio-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "indicator": [
+        "data-checked",
+        "data-unchecked",
+        "data-disabled"
+      ],
+      "submenu-trigger": [
+        "data-popup-open",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "separator": [
+        "data-orientation"
+      ],
+      "group": [],
+      "group-label": [],
+      "radio-group": []
     }
   },
   "native": {
@@ -522,7 +568,8 @@
         "ui-range",
         "ui-palette",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-menu"
       ]
     },
     "keyboard-focus": {
@@ -544,7 +591,8 @@
         "ui-swiper",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-menu"
       ]
     },
     "highlighted": {
@@ -552,7 +600,8 @@
       "look": "neutral fill (options); focus-ring outline under keyboard modality (swatches)",
       "components": [
         "ui-option",
-        "ui-swatch"
+        "ui-swatch",
+        "ui-menu"
       ]
     },
     "selected": {
@@ -566,7 +615,8 @@
         "ui-chip",
         "ui-swatch",
         "ui-swiper",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-menu"
       ]
     },
     "open": {
@@ -575,7 +625,8 @@
       "components": [
         "ui-select",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-menu"
       ]
     },
     "disabled": {
@@ -597,7 +648,8 @@
         "ui-field",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-menu"
       ]
     },
     "busy": {

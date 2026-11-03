@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "menu",
+  "scope": "Behavior, ARIA, parts, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and client behavior. Rendered lengths and placement are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/menu/menu.element.ts",
+      "sha256": "c1a7e07667f7c0f73a4a6038d65dd42133abadd56b2afc2437e2902f7d5e5790"
+    },
+    {
+      "path": "components/menu/menu.react.tsx",
+      "sha256": "bca249337b542707cfd57a6cca169b76f937d51271cd4854f69cd46be4f71b1c"
+    },
+    {
+      "path": "components/menu/menu.recipe.ts",
+      "sha256": "2e10b34938154ee6a62c09c8938aee4cc0ced7bf96fa2dd284ad544b78ac7fb2"
+    },
+    {
+      "path": "dom/menu.ts",
+      "sha256": "f30a9ea2da909804e0c315680a438aeade8eca184ac07126b57f9a8fb0d44219"
+    },
+    {
+      "path": "components/menu/menu.manifest.json",
+      "sha256": "321c508ef7678f25ccd601a5fd60785747b513c5877b3ecbc57c6e44a1e34377"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"menu\" test/menu.test.ts",
+          "covers": "preset and parts anatomy, menu / menuitem / menuitemcheckbox / menuitemradio ARIA, trigger keys (Enter, Space, ArrowDown, ArrowUp), wrapping arrows that skip disabled items, Home / End, typeahead, Escape returning focus, item press (click, item-press close, close-on-click), checkbox and radio change (cancelable), submenus (ArrowRight / ArrowLeft, RTL swap, Enter, item press closing the tree), disabled, default-open, the pointer highlight, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"menu\" test/geometry.test.ts",
+          "covers": "resolveMenu: 8u trigger, composite popup (edge, padding, radius), 7u items, label insets, separator, 1u offset"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"menu\" test/menu.test.ts",
+          "node --test --test-name-pattern=\"menu\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Menu\" test/menu.test.ts",
+          "covers": "React SSR: the same data-* as the web component on host, trigger, popup and every item kind; the preset renders the composed parts; className and render receive the state; onOpenChange, onCheckedChange and onValueChange details, keys and focus in the client"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Menu\" test/menu.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Placement comes from layout (CSS anchor positioning, or the script positioner); happy-dom reports zero boxes, so unit tests check the side and state attributes and the browser geometry check checks the lengths and the 1u offset.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio on :5182 at the theme unit 4.5 and the size ladder 3, 4, 6, B = 0; geometry-check covers u = 2…12 × B = 0, 1): growth (a long label widens the popup past the trigger; shortcuts line up at the end, 2u after the label; slots keep 6u, the indicator slot stays while unchecked), RTL (dir=rtl: the popup's right edge lines up with the trigger's, submenus open to the left 1u away, ArrowLeft opens and ArrowRight closes them), focus (items show the highlight fill, never a ring, so they keep their size; the trigger's ring is the global focus ring outside its box), floating layer (1u offset, min width = the trigger, max height = the space left, flips above, the submenu prefers the inline end and flips only without room), screenshots of the Menus family checked light and dark with the View menu and the File › Export submenu open."
+  ]
+}

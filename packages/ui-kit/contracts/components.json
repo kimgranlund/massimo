@@ -642,6 +642,38 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "menu": {
+      "geometryFamily": "menu",
+      "element": "Host holds a trigger part (role=button, aria-haspopup=menu) and a popup part (role=menu, popover) of item, checkbox-item, radio-item and submenu-trigger parts (menuitem roles), group, group-label, radio-group and separator parts; a ui-menu inside the popup is a submenu. The preset generates the trigger (label, caret) and the popup from the children.",
+      "parts": [
+        "menu-trigger",
+        "slot-leading?",
+        "slot-prefix?",
+        "slot-contents?",
+        "slot-suffix?",
+        "slot-trailing?",
+        "menu-popup",
+        "menu-item",
+        "menu-checkbox-item",
+        "menu-radio-item",
+        "menu-indicator",
+        "menu-submenu-trigger",
+        "menu-group",
+        "menu-group-label",
+        "menu-radio-group",
+        "menu-separator"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "menu"
+      ],
+      "behavior": "A press, Enter or Space on the trigger opens the popup (ArrowDown / ArrowUp open it on the first / last item); focus moves to the highlighted item (data-highlighted): ArrowDown / ArrowUp (wrapping), Home, End, typeahead and the pointer; Enter, Space or a press activates an item (its click), which closes the menu (close-on-click), checkbox and radio items toggle and stay open. Submenus open beside their trigger on ArrowRight (mirrored in RTL), Enter, Space, a press or a rest of the pointer, and close on ArrowLeft or Escape. Outside press, Escape and focus-out close it with Base UI's reasons; focus returns to the trigger. openchange { open, reason, event } is cancelable."
     }
   }
 }

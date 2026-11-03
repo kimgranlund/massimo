@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "menu",
+  "title": "Menu",
+  "summary": "A menu of actions and options opened from a trigger.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Actions with shortcuts (preset)",
+      "subject": "component:menu",
+      "markup": "<ui-menu label=\"Edit\"><div data-part=\"item\">Cut<span slot=\"suffix\">⌘X</span></div><div data-part=\"item\">Copy<span slot=\"suffix\">⌘C</span></div><div data-part=\"separator\"></div><div data-part=\"item\" disabled>Paste<span slot=\"suffix\">⌘V</span></div></ui-menu>"
+    },
+    {
+      "id": "options",
+      "label": "Checkbox and radio items in a group",
+      "subject": "component:menu",
+      "markup": "<ui-menu><div data-part=\"trigger\"><i slot=\"leading\" name=\"sliders\"></i>View</div><div data-part=\"popup\"><div data-part=\"checkbox-item\" checked>Show grid</div><div data-part=\"group\"><div data-part=\"group-label\">Sort by</div><div data-part=\"radio-group\" value=\"name\"><div data-part=\"radio-item\" value=\"name\">Name</div><div data-part=\"radio-item\" value=\"date\">Date</div></div></div></div></ui-menu>"
+    },
+    {
+      "id": "submenu",
+      "label": "A submenu",
+      "subject": "component:menu",
+      "markup": "<ui-menu label=\"File\"><div data-part=\"item\">New</div><ui-menu><div data-part=\"submenu-trigger\">Export</div><div data-part=\"popup\"><div data-part=\"item\">PNG</div><div data-part=\"item\">SVG</div></div></ui-menu></ui-menu>"
+    }
+  ]
+}

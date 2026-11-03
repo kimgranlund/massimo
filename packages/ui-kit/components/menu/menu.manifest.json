@@ -1,0 +1,774 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "menu",
+  "primary": "component:menu",
+  "module": "./menu.element.ts",
+  "registration": "on-import",
+  "documentation": "./menu.md",
+  "examples": "./menu.examples.json",
+  "contract": "../../contracts/components.json#/components/menu",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./menu.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveMenu"
+      ],
+      "description": "Reference numbers for the trigger, popup, items, group labels and separators."
+    },
+    {
+      "kind": "dom-behavior",
+      "module": "../../dom/menu.ts",
+      "exports": [
+        "menuItems",
+        "menuNavigate",
+        "menuTriggerAttrs",
+        "menuPopupAttrs",
+        "menuItemAttrs"
+      ],
+      "description": "Roles, data-* and navigation shared by both renderers."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:menu",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-menu",
+      "class": "UIMenu",
+      "extends": "UIElement",
+      "intent": [
+        "Offer a list of actions or options from a trigger, shown on demand"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the popup is open (reflected). Setting it opens or closes without an openchange event; a submenu closes with its menu.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at connect; focus stays where it is (an interaction moves it into the popup).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Preset: the generated trigger's text (with a trailing caret) when no trigger part is authored.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": false,
+          "description": "The trigger ignores presses, keys and hover (aria-disabled, data-disabled); a disabled submenu's trigger is a disabled item.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "side",
+          "type": "string",
+          "default": "bottom",
+          "attribute": "side",
+          "reflects": false,
+          "enum": [
+            "bottom",
+            "top"
+          ],
+          "description": "Preferred side of the trigger: bottom (default) or top; the popup flips when that side has no room. Submenus always open at the inline end.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "align",
+          "type": "string",
+          "default": "start",
+          "attribute": "align",
+          "reflects": false,
+          "enum": [
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Alignment along the side: start (default), center or end.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "openOnHover",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open-on-hover",
+          "reflects": false,
+          "description": "Open when the pointer rests on the trigger for `delay` ms (reason trigger-hover). Submenus always do.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": 100,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "The rest before a hover opens the popup, in ms.",
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'trigger-hover' | 'list-navigation' | 'item-press' | 'outside-press' | 'escape-key' | 'focus-out' | 'sibling-open', event: Event }",
+          "trigger": "a trigger press, key or hover opens the popup, or an item press, outside press, Escape, ArrowLeft (submenu) or focus leaving closes it; preventDefault keeps it as it is"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "checkbox item: { checked: boolean, reason: 'item-press', event }; radio group: { value: string, reason: 'item-press', event }",
+          "trigger": "a press (or Enter / Space) on a checkbox item toggles its checked attribute (dispatched on the item), or on a radio item sets its radio group's value (dispatched on the group); preventDefault keeps the state"
+        }
+      ],
+      "semantics": {
+        "role": "none (the trigger is role=button with aria-haspopup=menu, the popup role=menu, items menuitem / menuitemcheckbox / menuitemradio)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space, ArrowDown on the trigger",
+            "action": "open the popup on the first item (ArrowUp: the last)"
+          },
+          {
+            "keys": "ArrowDown, ArrowUp",
+            "action": "move focus to the next / previous enabled item, wrapping"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move focus to the first / last enabled item"
+          },
+          {
+            "keys": "a printable character",
+            "action": "move focus to the next item whose label starts with the typed text"
+          },
+          {
+            "keys": "Enter, Space on an item",
+            "action": "activate it (click); checkbox and radio items toggle"
+          },
+          {
+            "keys": "ArrowRight (ArrowLeft in RTL), Enter, Space on a submenu trigger",
+            "action": "open the submenu on its first item"
+          },
+          {
+            "keys": "ArrowLeft (ArrowRight in RTL) in a submenu",
+            "action": "close it, focus back on its trigger"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the topmost open menu, focus back on its trigger"
+          },
+          {
+            "keys": "Tab",
+            "action": "close the menu (focus-out) and move on"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the trigger's text (the popup is aria-labelledby the trigger)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "A [data-part=trigger] and a [data-part=popup] holding item, checkbox-item, radio-item, separator, group (with a group-label) and radio-group parts and nested ui-menu submenus (a [data-part=submenu-trigger] and a popup). Preset: the items alone, with label; the trigger and popup are generated."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The popup stays in the DOM, hidden (popover=manual); it is shown in the top layer while open.",
+        "Item activation is the item's click event; the application listens to it on the item or the host.",
+        "A checkbox item's state is its checked attribute and a radio group's its value attribute; the menu toggles them on a press (cancelable change).",
+        "Setting open from script opens or closes without an openchange event and leaves focus where it is."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Choosing a value for a form field.",
+          "reason": "A menu runs actions and submits nothing; a select is a form-associated choice.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "A few always-visible actions.",
+          "reason": "A menu hides its actions behind a trigger; buttons keep them one press away.",
+          "useInstead": "component:button"
+        },
+        {
+          "when": "Site or app navigation between pages.",
+          "reason": "Menu items are actions, not links; navigation needs a navigation menu (not in the kit yet)."
+        }
+      ],
+      "searchTerms": [
+        "menu",
+        "dropdown menu",
+        "action menu",
+        "submenu",
+        "menu button",
+        "overflow menu"
+      ]
+    },
+    {
+      "id": "part:menu-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The trigger (role=button, aria-haspopup=menu, aria-expanded, aria-controls; data-popup-open, data-pressed, data-disabled), the construction pattern inside. Base UI Menu.Trigger."
+    },
+    {
+      "id": "part:menu-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup]",
+      "summary": "The popup (role=menu, popover=manual, tabindex -1; data-open / data-closed, data-side, data-align): a floating composite placed by the trigger. Base UI Menu.Positioner and Menu.Popup in one element."
+    },
+    {
+      "id": "part:menu-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=item]",
+      "summary": "An action (role=menuitem, tabindex -1; data-highlighted, data-disabled) in the construction pattern; a press fires its click and closes the menu. Base UI Menu.Item."
+    },
+    {
+      "id": "part:menu-checkbox-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=checkbox-item]",
+      "summary": "A toggle (role=menuitemcheckbox, aria-checked from its checked attribute; data-checked / data-unchecked, data-highlighted, data-disabled) with an indicator in its leading slot. Base UI Menu.CheckboxItem."
+    },
+    {
+      "id": "part:menu-radio-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=radio-item]",
+      "summary": "One choice of a radio group (role=menuitemradio, checked when its value is the group's; data-checked / data-unchecked, data-highlighted, data-disabled) with a dot indicator. Base UI Menu.RadioItem."
+    },
+    {
+      "id": "part:menu-indicator",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=popup] [data-part=indicator]",
+      "summary": "A checkbox or radio item's indicator in its leading slot (aria-hidden; data-checked / data-unchecked): the check icon or the dot, its space kept while unchecked. Base UI CheckboxItemIndicator, RadioItemIndicator."
+    },
+    {
+      "id": "part:menu-submenu-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=submenu-trigger]",
+      "summary": "A nested ui-menu's trigger, an item of this popup (role=menuitem, aria-haspopup=menu, aria-expanded; data-popup-open, data-highlighted, data-disabled) with a trailing caret. Base UI Menu.SubmenuTrigger."
+    },
+    {
+      "id": "part:menu-group",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=group]",
+      "summary": "A set of items (role=group, aria-labelledby its group label). Base UI Menu.Group."
+    },
+    {
+      "id": "part:menu-group-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=group-label]",
+      "summary": "A group's visible name, muted, on the item inset. Base UI Menu.GroupLabel."
+    },
+    {
+      "id": "part:menu-radio-group",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=radio-group]",
+      "summary": "Radio items sharing one value (role=group; the value attribute). Base UI Menu.RadioGroup."
+    },
+    {
+      "id": "part:menu-separator",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] [data-part=separator]",
+      "summary": "A horizontal rule between items (role=separator; data-orientation). Base UI Menu.Separator."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-trigger"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-popup"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-item"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-checkbox-item"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-radio-item"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-indicator"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-submenu-trigger"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-group"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-group-label"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-radio-group"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-separator"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:menu"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./menu.element.ts",
+      "exports": {
+        "component:menu": "UIMenu"
+      },
+      "verification": "./verification/menu.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./menu.react.tsx",
+      "exports": {
+        "component:menu": "Menu"
+      },
+      "verification": "./verification/menu.verification.json#/renderers/react",
+      "props": {
+        "component:menu": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "open?: boolean // Controlled open state.",
+            "defaultOpen?: boolean // Open at first render (uncontrolled).",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes the menu, with Base UI's details ({ reason, event }).",
+            "disabled?: boolean // Ignores presses and keys on the trigger.",
+            "openOnHover?: boolean // Open when the pointer rests on the trigger (Base UI openOnHover).",
+            "delay?: number // The rest before a hover opens, in ms. Default 100.",
+            "size?: number // Unit u in px; the trigger row is 8u, items 7u.",
+            "placement?: MenuPlacement // Internal: where the popup goes (ContextMenu passes point; SubmenuRoot submenu).",
+            "children?: ReactNode",
+            "label?: ReactNode // Preset: the trigger's text (with a trailing caret).",
+            "leading?: ReactNode // Preset: the trigger's leading icon.",
+            "side?: Side",
+            "align?: Align"
+          ]
+        }
+      },
+      "parts": {
+        "component:menu": {
+          "Menu.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean = false // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes the menu, with Base UI's details ({ reason, event }).",
+              "disabled?: boolean = false // Ignores presses and keys on the trigger.",
+              "openOnHover?: boolean = false // Open when the pointer rests on the trigger (Base UI openOnHover).",
+              "delay?: number = 100 // The rest before a hover opens, in ms. Default 100.",
+              "size?: number // Unit u in px; the trigger row is 8u, items 7u.",
+              "placement?: MenuPlacement // Internal: where the popup goes (ContextMenu passes point; SubmenuRoot submenu).",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.Portal": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode",
+              "container?: unknown",
+              "keepMounted?: boolean"
+            ]
+          },
+          "Menu.Positioner": {
+            "inherits": [],
+            "props": [
+              "side?: Side // The preferred side of the trigger (Base UI side): bottom (default) or top. Submenus open at the inline end.",
+              "align?: Align // Alignment along that side (Base UI align): start (default), center, end.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.CheckboxItem": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean = false // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode",
+              "checked?: boolean // Controlled checked state.",
+              "defaultChecked?: boolean = false // Checked at first render (uncontrolled).",
+              "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Called when a press toggles it, with Base UI's details ({ reason: 'item-press', event })."
+            ]
+          },
+          "Menu.CheckboxItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.RadioGroup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'defaultValue' | 'onChange'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: string",
+              "defaultValue?: string",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // Called when a press checks another radio item, with Base UI's details ({ reason: 'item-press', event }).",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.RadioItem": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean = false // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode",
+              "value: string // The value the radio group takes when this item is pressed."
+            ]
+          },
+          "Menu.RadioItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.Group": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.GroupLabel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Menu.Separator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Menu.SubmenuRoot": {
+            "inherits": [
+              "Omit<MenuRootProps, 'placement'>"
+            ],
+            "props": []
+          },
+          "Menu.SubmenuTrigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean = false // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

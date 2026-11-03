@@ -350,6 +350,30 @@
         "disclosure"
       ],
       "ladder": "disclosure"
+    },
+    "menu": {
+      "id": "geometry:menu",
+      "resolver": [
+        "resolveMenu",
+        "resolveComposite",
+        "resolveControl",
+        "resolveTextRun"
+      ],
+      "summary": "Menu triggers are control rows (8u, padding u − B, the control radius, the construction pattern with a trailing caret at icon size sm). The popup is a floating composite 1u from its anchor (edge D = max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s), at least as wide as the anchor and as tall as the space allows. Items, submenu triggers and group labels are composite options (7u, inset Ic, the concentric option radius) with labels 2u from a bare edge and 1u from a slot; checkbox and radio items keep a 6u leading indicator slot; separators are max(1px, B) with 0.5u above and below. Submenus sit 1u beside their trigger.",
+      "members": [
+        "component:menu"
+      ],
+      "searchTerms": [
+        "menu geometry",
+        "menu item height",
+        "menu popup",
+        "dropdown menu",
+        "submenu offset"
+      ],
+      "csv": [
+        "menu"
+      ],
+      "ladder": "menu"
     }
   }
 }

@@ -24,7 +24,8 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/menu/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -93,6 +94,8 @@ for (const c of cases) {
       <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
+    <ui-menu id="mnu" default-open><div data-part="trigger"><span slot="leading"></span>Menu</div><div data-part="popup" style="transition:none"><div data-part="item">Alpha</div><div data-part="item"><span slot="leading"></span>Lead</div><div data-part="separator"></div><div data-part="checkbox-item" checked>Check</div><div data-part="group"><div data-part="group-label">Group</div><div data-part="item">In group</div></div><ui-menu default-open><div data-part="submenu-trigger">Sub</div><div data-part="popup" style="transition:none"><div data-part="item">S</div></div></ui-menu></div></ui-menu>
+    <ui-menu id="mnuP" label="Preset"><div data-part="item">x</div></ui-menu>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -459,6 +462,47 @@ for (const c of cases) {
     };
     tabChecks('tabs.segmented', $('tabSeg'), 'segmented');
     tabChecks('tabs.underline', $('tabLine'), 'underline');
+  }
+  // Menu (resolveMenu): an 8u trigger; the popup a composite 1u from it; 7u items; submenus 1u beside their trigger.
+  {
+    const rm = resolveMenu({ ...g, gap: undefined, iconSize: 'md' }), part = (el, p) => el.querySelector(`:scope > [data-part=${p}]`);
+    const mn = $('mnu'), mt = part(mn, 'trigger'), mp = part(mn, 'popup'), [it, il] = mp.querySelectorAll(':scope > [data-part=item]');
+    const sep = part(mp, 'separator'), chk = part(mp, 'checkbox-item'), grp = part(mp, 'group'), gl = part(grp, 'group-label');
+    const sub = mp.querySelector(':scope > ui-menu'), st = part(sub, 'submenu-trigger'), sp = part(sub, 'popup');
+    const pt = part($('mnuP'), 'trigger');
+    checks['menu.trigger.height'] = [r2(rect(mt).height), rm.triggerHeight];
+    checks['menu.trigger.padding'] = [px(cs(mt).paddingTop) + px(cs(mt).borderTopWidth), rm.triggerPadding + rm.border];
+    checks['menu.trigger.radius'] = [px(cs(mt).borderTopLeftRadius), rm.triggerRadius];
+    checks['menu.trigger.font'] = [px(cs(mt).fontSize), rm.fontSize];
+    checks['menu.trigger.lead.slot'] = [r2(rect(part(mt, 'leading')).width), rm.slot];
+    checks['menu.trigger.label'] = [px(cs(part(mt, 'contents')).paddingLeft), rm.labelBesideSlot];
+    checks['menu.preset.label'] = [px(cs(part(pt, 'contents')).paddingLeft), rm.labelStart];
+    checks['menu.preset.caret'] = [r2(rect(part(pt, 'trailing').firstElementChild).width), rm.caret];
+    const side = mp.getAttribute('data-side');
+    checks['menu.popup.offset'] = [r2(side === 'top' ? rect(mt).top - rect(mp).bottom : rect(mp).top - rect(mt).bottom), rm.offset];
+    checks['menu.popup.align'] = [r2(rect(mp).left), r2(rect(mt).left)];
+    checks['menu.popup.minWidth'] = [rect(mp).width + 0.01 >= rect(mt).width ? 1 : 0, 1];
+    checks['menu.popup.edge'] = [px(cs(mp).paddingTop) + px(cs(mp).borderTopWidth), rm.popupEdge];
+    checks['menu.popup.radius'] = [px(cs(mp).borderTopLeftRadius), rm.popupRadius];
+    checks['menu.popup.gap'] = [r2(rect(il).top - rect(it).bottom), rm.popupGap];
+    checks['menu.item.height'] = [r2(rect(it).height), rm.itemHeight];
+    checks['menu.item.padding'] = [px(cs(it).paddingTop) + px(cs(it).borderTopWidth), rm.itemInset];
+    checks['menu.item.radius'] = [px(cs(it).borderTopLeftRadius), rm.itemRadius];
+    checks['menu.item.label'] = [px(cs(part(it, 'contents')).paddingLeft), rm.labelStart];
+    checks['menu.item.lead.slot'] = [r2(rect(part(il, 'leading')).width), rm.slot];
+    checks['menu.item.lead.label'] = [px(cs(part(il, 'contents')).paddingLeft), rm.labelBesideSlot];
+    checks['menu.item.width'] = [r2(rect(it).width), r2(rect(mp).width - 2 * rm.popupEdge)];
+    checks['menu.checkbox.slot'] = [r2(rect(part(chk, 'leading')).width), rm.slot];
+    checks['menu.checkbox.indicator'] = [r2(rect(chk.querySelector('[data-part=indicator]')).width), rm.iconSize];
+    checks['menu.separator.thickness'] = [r2(rect(sep).height), rm.separator];
+    checks['menu.separator.space'] = [r2(rect(sep).top - rect(il).bottom), rm.popupGap + rm.separatorMargin];
+    checks['menu.groupLabel.height'] = [r2(rect(gl).height), rm.itemHeight];
+    checks['menu.groupLabel.text'] = [r2(rect(gl).left + px(cs(gl).paddingLeft) - rect(it).left), r2(rm.itemInset + rm.labelStart)];
+    checks['menu.submenu.trigger'] = [r2(rect(st).height), rm.itemHeight];
+    const subSide = sp.getAttribute('data-side');
+    checks['menu.submenu.offset'] = [r2(subSide === 'left' ? rect(st).left - rect(sp).right : rect(sp).left - rect(st).right), rm.offset];
+    checks['menu.submenu.top'] = [r2(rect(sp).top), r2(rect(st).top)];
+    mn.open = false;
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

@@ -80,6 +80,15 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
 | tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
+## Menus: menu, context menu, menubar
+
+| | Formula | at u=4 |
+|---|---|---|
+| trigger | a control row: 8u, padding u − B, the control radius, the construction pattern (a preset's caret is trailing, icon size sm) (`resolveMenu`) | 32 |
+| popup | a floating composite 1u from its anchor (below the trigger, beside a submenu trigger, at the pointer): edge D = max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s; at least as wide as the anchor, at most the space left | 4 / 2 / 14 |
+| item | a composite option: 7u, inset Ic, radius min(item / 2, popup radius − D); labels 2u from a bare edge, 1u from a slot; a suffix (shortcut) 2u after the label; checkbox and radio items keep a 6u leading indicator slot; group labels share the item row | 28 / 12 |
+| separator | the separator rule max(1px, B) with 0.5u above and below, beyond the gap | 1 / 2 |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

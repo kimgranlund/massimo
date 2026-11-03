@@ -25,6 +25,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -51,6 +52,7 @@ import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
+import { Menu } from '@massimo/ui-kit/components/menu/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -114,6 +116,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-collapsible data-k="colD" label="Off" disabled><p>Panel</p></ui-collapsible></div>
         <div style={{ width: 300 }}><ui-tabs data-k="tab" default-value="b"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">A</div><div {...{ value: 'b' }} data-part="tab"><i slot="leading" name="code" />B</div><div {...{ value: 'c', disabled: true }} data-part="tab">C</div></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div><div {...{ value: 'c' }} data-part="panel">c</div></ui-tabs></div>
         <div style={{ width: 300 }}><ui-tabs data-k="tabU" variant="underline"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
+        <div style={{ width: 300 }}><ui-menu data-k="mn"><div data-part="trigger"><i slot="leading" name="sliders" />View</div><div data-part="popup"><div data-part="item">Cut</div><div {...{ checked: '' }} data-part="checkbox-item">Grid</div></div></ui-menu></div>
+        <div style={{ width: 300 }}><ui-menu data-k="mnO" label="Open" default-open><div data-part="item">Cut<span slot="suffix">X</span></div><div data-part="item"><i slot="leading" name="copy" />Copy</div><div data-part="separator" /><div {...{ checked: '' }} data-part="checkbox-item">Grid</div><div data-part="group"><div data-part="group-label">Sort</div><div {...{ value: 'a' }} data-part="radio-group"><div {...{ value: 'a' }} data-part="radio-item">A</div><div {...{ value: 'b' }} data-part="radio-item">B</div></div></div></ui-menu></div>
+        <div style={{ width: 300 }}><ui-menu data-k="mnD" label="Off" disabled><div data-part="item">x</div></ui-menu></div>
         <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
       </div>
       <div data-side="react">
@@ -170,6 +175,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Collapsible data-k="colD" label="Off" disabled><p>Panel</p></Collapsible></div>
         <div style={{ width: 300 }}><Tabs.Root data-k="tab" defaultValue="b"><Tabs.List><Tabs.Tab value="a">A</Tabs.Tab><Tabs.Tab value="b" leading={<i name="code" />}>B</Tabs.Tab><Tabs.Tab value="c" disabled>C</Tabs.Tab><Tabs.Indicator /></Tabs.List><Tabs.Panel value="a">a</Tabs.Panel><Tabs.Panel value="b">b</Tabs.Panel><Tabs.Panel value="c">c</Tabs.Panel></Tabs.Root></div>
         <div style={{ width: 300 }}><Tabs data-k="tabU" variant="underline" items={[{ value: 'a', label: 'One', content: 'a' }, { value: 'b', label: 'Two', content: 'b' }]} /></div>
+        <div style={{ width: 300 }}><Menu.Root data-k="mn"><Menu.Trigger leading={<i name="sliders" />}>View</Menu.Trigger><Menu.Popup><Menu.Item>Cut</Menu.Item><Menu.CheckboxItem defaultChecked>Grid</Menu.CheckboxItem></Menu.Popup></Menu.Root></div>
+        <div style={{ width: 300 }}><Menu data-k="mnO" label="Open" defaultOpen><Menu.Item suffix="X">Cut</Menu.Item><Menu.Item leading={<i name="copy" />}>Copy</Menu.Item><Menu.Separator /><Menu.CheckboxItem defaultChecked>Grid</Menu.CheckboxItem><Menu.Group><Menu.GroupLabel>Sort</Menu.GroupLabel><Menu.RadioGroup defaultValue="a"><Menu.RadioItem value="a">A</Menu.RadioItem><Menu.RadioItem value="b">B</Menu.RadioItem></Menu.RadioGroup></Menu.Group></Menu></div>
+        <div style={{ width: 300 }}><Menu data-k="mnD" label="Off" disabled><Menu.Item>x</Menu.Item></Menu></div>
         <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
       </div>
     </div>
@@ -197,6 +205,8 @@ function ComposedPair({ u }: { u: number }) {
       <div style={{ width: 300 }}><ui-collapsible data-k="wcol" label="Keys" open><i slot="leading" name="key" /><p>Panel</p></ui-collapsible></div>
       <div style={{ width: 300 }}><Tabs data-k="tab" variant="underline" label="T" items={[{ value: 'a', label: 'One', leading: <i name="code" />, content: 'a' }, { value: 'b', label: 'Two', content: 'b' }]} /></div>
       <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
+      <div style={{ width: 300 }}><Menu data-k="mnu" label="Edit" leading={<i name="pencil" />}><Menu.Item>Cut</Menu.Item></Menu></div>
+      <div style={{ width: 300 }}><ui-menu data-k="wmnu" label="Edit"><div data-part="item">Cut</div></ui-menu></div>
       <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['a']}><Accordion.Item value="a" label="Ship" leading={<i name="truck" />}><p>a</p></Accordion.Item><Accordion.Item value="b" label="Return"><p>b</p></Accordion.Item></Accordion></div>
       <div style={{ width: 300 }}><ui-accordion data-k="wacc" value="a"><ui-collapsible value="a" label="Ship"><i slot="leading" name="truck" /><p>a</p></ui-collapsible><ui-collapsible value="b" label="Return"><p>b</p></ui-collapsible></ui-accordion></div>
       <ui-button data-k="wbt"><i slot="leading" name="plus" />Add</ui-button>
@@ -248,6 +258,8 @@ function ComposedPair({ u }: { u: number }) {
         </Tabs.Root>
       </div>
       <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">One</div><div {...{ value: 'b' }} data-part="tab">Two</div><span data-part="indicator" /></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div></ui-tabs></div>
+      <div style={{ width: 300 }}><Menu.Root data-k="mnu"><Menu.Trigger leading={<i name="pencil" />} trailing={<i name="caret-down" />}>Edit</Menu.Trigger><Menu.Portal><Menu.Positioner><Menu.Popup><Menu.Item>Cut</Menu.Item></Menu.Popup></Menu.Positioner></Menu.Portal></Menu.Root></div>
+      <div style={{ width: 300 }}><ui-menu data-k="wmnu"><div data-part="trigger">Edit<i slot="trailing" name="caret-down" /></div><div data-part="popup"><div data-part="item">Cut</div></div></ui-menu></div>
       <div style={{ width: 300 }}>
         <Accordion.Root data-k="acc" defaultValue={['a']}>
           <Accordion.Item value="a"><Accordion.Header><Accordion.Trigger leading={<i name="truck" />}>Ship</Accordion.Trigger></Accordion.Header><Accordion.Panel><p>a</p></Accordion.Panel></Accordion.Item>
@@ -326,7 +338,7 @@ setTimeout(() => {
       font: getComputedStyle(el).fontFamily,
       bg: getComputedStyle(el).backgroundColor, radius: getComputedStyle(el).borderTopLeftRadius, pad: getComputedStyle(el).paddingLeft,
       // Child layout: each part's offset and size (covers slots, labels, swatches and container gaps).
-      kids: kids.filter((k) => k.localName !== 'input' && k.localName !== 'progress' && !k.hidden).map((k) => { const r = k.getBoundingClientRect(); return `${r2(r.left - er.left)}:${r2(r.top - er.top)}:${r2(r.width)}x${r2(r.height)}:${getComputedStyle(k).backgroundColor}:${getComputedStyle(k).outlineStyle}`; }).join(' '),
+      kids: kids.filter((k) => k.localName !== 'input' && k.localName !== 'progress' && !k.hidden && !k.matches('[popover]:not(:popover-open)')).map((k) => { const r = k.getBoundingClientRect(); return `${r2(r.left - er.left)}:${r2(r.top - er.top)}:${r2(r.width)}x${r2(r.height)}:${getComputedStyle(k).backgroundColor}:${getComputedStyle(k).outlineStyle}`; }).join(' '),
     };
   };
   // A lone px value may differ by less than a layout unit: Gecko snaps a native <button>'s computed
@@ -338,9 +350,9 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnO', 'mnD']) {
       const a = host(wc, k), b = host(re, k);
-      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator]')];
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=popup], [role^=menuitem], [role=separator], [data-part=group-label]')];
       const pa = parts(a), pb = parts(b);
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
@@ -361,13 +373,31 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
         if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
       }
     }
+  }
+  // Menu (open): the popup and every part in it, offset from the host, size and paint, in both renderers.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    const a = host(wc, 'mnO'), b = host(re, 'mnO');
+    const parts = (h: HTMLElement) => [...h.querySelectorAll<HTMLElement>('[data-part]')].filter((e) => !e.closest('[hidden]')).map((e) => {
+      const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e);
+      return `${e.getAttribute('data-part')}@${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.color}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.fontSize}:${cs.visibility}`;
+    });
+    const pa = parts(a), pb = parts(b);
+    checks++;
+    if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} mnO parts: wc ${pa.length} react ${pb.length}`); continue; }
+    // Lengths to 0.05px: the open popups are placed by the engine (anchor positioning) a few 1/64px apart.
+    const near = (x: string, y: string) => {
+      const nx = x.match(/-?[\d.]+/g) ?? [], ny = y.match(/-?[\d.]+/g) ?? [];
+      return x.replace(/-?[\d.]+/g, '#') === y.replace(/-?[\d.]+/g, '#') && nx.length === ny.length && nx.every((v, j) => Math.abs(parseFloat(v) - parseFloat(ny[j])) <= 0.05);
+    };
+    pa.forEach((x, i) => { checks++; if (!near(x, pb[i])) fails.push(`u${c.getAttribute('data-case')} mnO part ${i}: wc ${x} react ${pb[i]}`); });
   }
   // Input: same parts; the React control holds a native <input> as its contents part.
   for (const c of root.querySelectorAll('[data-case]')) {

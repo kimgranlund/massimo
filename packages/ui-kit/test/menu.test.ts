@@ -1,0 +1,382 @@
+// Menus (menu, context menu, menubar): web component behavior in happy-dom, React server markup and
+// client behavior, the same data-* state on both renderers (contracts/states.json), Base UI event
+// details, and the composed parts against the presets.
+import { tick } from './setup.ts';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createElement as h, type ReactElement, type ReactNode } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { loadTsx } from './load-tsx.ts';
+import { menuNavigate, menuItems } from '../dom/index.ts';
+
+await import('../components/menu/menu.element.ts');
+const { Menu } = await loadTsx(new URL('../components/menu/menu.react.tsx', import.meta.url));
+
+const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
+const contract = JSON.parse(readFileSync(new URL('../contracts/states.json', import.meta.url), 'utf8'));
+const STATE = new Set(Object.keys(contract.attributes));
+const STRUCTURE = new Set(['data-ui', 'data-part', 'data-size', 'data-index']);
+const names = (el: Element | null | undefined) => [...(el?.attributes ?? [])].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort();
+const html = (el: ReactNode) => renderToStaticMarkup(el as any).replace(/_R_[a-z0-9]+_/gi, 'ID');
+const key = (el: Element, k: string, o: KeyboardEventInit = {}) => el.dispatchEvent(new KeyboardEvent('keydown', { key: k, bubbles: true, cancelable: true, ...o }));
+/** Recipe classes on an element (variant classes left out). */
+const kit = (el: Element | null) => [...(el?.classList ?? [])].filter((c) => c.startsWith('ui-') && !c.includes('--')).join(' ');
+
+async function wc<T extends HTMLElement = any>(markup: string): Promise<T> {
+  const box = document.createElement('div');
+  box.innerHTML = markup;
+  document.body.append(box);
+  await tick(); await tick();
+  return box.firstElementChild as T;
+}
+function ssr(el: ReactElement) {
+  const box = document.createElement('div');
+  box.innerHTML = renderToStaticMarkup(el);
+  return box.querySelector('[data-ui]') as HTMLElement;
+}
+type Part = [string, string, string?];
+/** Same data-* on host and parts in both renderers; each name is in the contract for that element and part. */
+async function same(tag: string, markup: string, el: ReactElement, parts: Part[]) {
+  const a = await wc(markup), b = ssr(el);
+  const allowed = contract.components[tag];
+  assert.ok(allowed, `${tag} is in contracts/states.json components`);
+  for (const [label, s, rs] of parts) {
+    const ea = [...(s === ':scope' ? [a] : a.querySelectorAll(s))], eb = [...((rs ?? s) === ':scope' ? [b] : b.querySelectorAll(rs ?? s))];
+    assert.equal(ea.length, eb.length, `${tag} ${label}: same count`);
+    ea.forEach((x, k) => {
+      assert.deepEqual(names(x), names(eb[k]), `${tag} ${label}[${k}]: web component vs React`);
+      for (const n of names(x)) {
+        assert.ok(STATE.has(n), `${tag} ${label}: ${n} is defined in the contract`);
+        assert.ok((allowed[label] ?? []).includes(n), `${tag} ${label}: ${n} is listed for it`);
+      }
+    });
+  }
+  a.parentElement!.remove();
+}
+
+const MENU = `<ui-menu><div data-part="trigger">Edit</div><div data-part="popup">
+  <div data-part="item">Cut<span slot="suffix">⌘X</span></div>
+  <div data-part="item" disabled>Copy</div>
+  <div data-part="item">Paste</div>
+  <div data-part="separator"></div>
+  <div data-part="checkbox-item" checked>Grid</div>
+  <div data-part="group"><div data-part="group-label">Sort</div>
+    <div data-part="radio-group" value="name"><div data-part="radio-item" value="name">Name</div><div data-part="radio-item" value="date">Date</div></div></div>
+  <ui-menu><div data-part="submenu-trigger">Share</div><div data-part="popup"><div data-part="item">Email</div><div data-part="item">Link</div></div></ui-menu>
+</div></ui-menu>`;
+
+// ── Headless ──
+
+test('menu (dom): navigation wraps and skips disabled items; items of a nested popup are its own', () => {
+  const items = [{ value: '', label: 'a' }, { value: '', label: 'b', disabled: true }, { value: '', label: 'c' }];
+  assert.equal(menuNavigate(items, 0, 'ArrowDown'), 2);
+  assert.equal(menuNavigate(items, 2, 'ArrowDown'), 0, 'wraps to the first');
+  assert.equal(menuNavigate(items, 0, 'ArrowUp'), 2, 'wraps to the last');
+  assert.equal(menuNavigate(items, 2, 'ArrowDown', { loop: false }), 2);
+  assert.equal(menuNavigate(items, 0, 'ArrowRight', { horizontal: true }), 2);
+  assert.equal(menuNavigate(items, 0, 'ArrowLeft', { horizontal: true, rtl: true }), 2);
+  const box = document.createElement('div');
+  box.innerHTML = '<div data-part="popup"><div data-part="item">a</div><div><div data-part="submenu-trigger">s</div><div data-part="popup"><div data-part="item">x</div></div></div></div>';
+  assert.deepEqual(menuItems(box.firstElementChild).map((e) => e.textContent), ['a', 's']);
+});
+
+// ── Web component ──
+
+test('menu: anatomy, roles, ids, recipe classes and no native form elements', async () => {
+  const el = await wc(MENU) as any;
+  const t = el.trigger as HTMLElement, p = el.popup as HTMLElement;
+  assert.equal(t.getAttribute('role'), 'button');
+  assert.equal(t.getAttribute('aria-haspopup'), 'menu');
+  assert.equal(t.getAttribute('aria-expanded'), 'false');
+  assert.equal(t.getAttribute('aria-controls'), p.id);
+  assert.equal(t.getAttribute('tabindex'), '0');
+  assert.equal(p.getAttribute('role'), 'menu');
+  assert.equal(p.getAttribute('popover'), 'manual');
+  assert.equal(p.getAttribute('aria-labelledby'), t.id);
+  assert.deepEqual(names(p), ['data-closed']);
+  assert.deepEqual(el.items.map((i: Element) => i.getAttribute('role')), ['menuitem', 'menuitem', 'menuitem', 'menuitemcheckbox', 'menuitemradio', 'menuitemradio', 'menuitem']);
+  const [cut, copy, , grid, byName, byDate, share] = el.items as HTMLElement[];
+  assert.equal(cut.getAttribute('tabindex'), '-1');
+  assert.deepEqual(names(copy), ['data-disabled']);
+  assert.equal(copy.getAttribute('aria-disabled'), 'true');
+  assert.deepEqual(names(grid), ['data-checked']);
+  assert.equal(grid.getAttribute('aria-checked'), 'true');
+  assert.deepEqual(names(byName), ['data-checked']);
+  assert.deepEqual(names(byDate), ['data-unchecked']);
+  assert.equal(share.getAttribute('aria-haspopup'), 'menu');
+  assert.equal(share.getAttribute('aria-expanded'), 'false');
+  assert.equal(share.querySelector('[data-part=trailing] i')!.getAttribute('name'), 'caret-right');
+  assert.deepEqual(names(grid.querySelector('[data-part=indicator]')), ['data-checked']);
+  assert.equal(grid.querySelector('[data-part=leading] > [data-part=indicator] > i')!.getAttribute('name'), 'check');
+  assert.equal(p.querySelector('[data-part=separator]')!.getAttribute('role'), 'separator');
+  const group = p.querySelector('[data-part=group]')!;
+  assert.equal(group.getAttribute('role'), 'group');
+  assert.equal(group.getAttribute('aria-labelledby'), group.querySelector('[data-part=group-label]')!.id);
+  assert.equal(kit(el), 'ui-menu__root');
+  assert.equal(kit(t), 'ui-menu__trigger');
+  assert.equal(kit(p), 'ui-menu__popup');
+  assert.ok(p.classList.contains('ui-menu__popup--placement_anchor'));
+  assert.equal(kit(cut), 'ui-menu__item');
+  assert.equal(kit(cut.querySelector('[data-part=suffix]')), 'ui-menu__suffix');
+  assert.equal(kit(grid), 'ui-menu__item ui-menu__checkbox-item');
+  assert.equal(kit(share), 'ui-menu__item ui-menu__submenu-trigger');
+  assert.ok(share.closest('[data-part=popup] ui-menu')!.querySelector('[data-part=popup]')!.classList.contains('ui-menu__popup--placement_submenu'));
+  assert.equal(el.querySelector(NATIVE), null, 'no native form elements');
+  el.parentElement.remove();
+});
+
+test('menu: the preset builds the trigger (label, caret) and the popup from the children', async () => {
+  const el = await wc('<ui-menu label="Actions"><div data-part="item">One</div><div data-part="item">Two</div></ui-menu>') as any;
+  assert.equal(el.children.length, 2);
+  assert.equal(el.trigger.querySelector('[data-part=contents]').textContent, 'Actions');
+  assert.equal(el.trigger.querySelector('[data-part=trailing] i').getAttribute('name'), 'caret-down');
+  assert.deepEqual(el.items.map((i: Element) => i.textContent), ['One', 'Two']);
+  el.parentElement.remove();
+});
+
+test('menu: a press opens and closes with openchange { open, reason, event }; cancelable; open is silent', async () => {
+  const el = await wc(MENU) as any, got: any[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => { if (e.target === el) got.push(e.detail); });
+  el.trigger.click(); await tick();
+  assert.equal(el.open, true);
+  assert.equal(el.trigger.getAttribute('aria-expanded'), 'true');
+  assert.deepEqual(names(el.trigger), ['data-popup-open', 'data-pressed']);
+  assert.deepEqual(names(el.popup), ['data-align', 'data-open', 'data-side']);
+  assert.deepEqual(Object.keys(got[0]).sort(), ['event', 'open', 'reason']);
+  assert.deepEqual([got[0].open, got[0].reason], [true, 'trigger-press']);
+  assert.ok(got[0].event instanceof Event);
+  el.trigger.click(); await tick();
+  assert.equal(el.open, false);
+  const stop = (e: Event) => e.preventDefault();
+  el.addEventListener('openchange', stop);
+  el.trigger.click(); await tick();
+  assert.equal(el.open, false, 'preventDefault keeps it closed');
+  el.removeEventListener('openchange', stop);
+  const n = got.length;
+  el.open = true; await tick();
+  assert.equal(got.length, n, 'setting open fires nothing');
+  assert.deepEqual(names(el.popup), ['data-align', 'data-open', 'data-side']);
+  el.parentElement.remove();
+});
+
+test('menu: keys open on the first or last item; arrows wrap and skip disabled; typeahead; Escape returns focus', async () => {
+  const el = await wc(MENU) as any;
+  const t = el.trigger as HTMLElement, reasons: string[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => { if (e.target === el) reasons.push(e.detail.reason); });
+  t.focus();
+  key(t, 'ArrowDown'); await tick(); await tick();
+  const [cut, , paste, grid, , , share] = el.items as HTMLElement[];
+  assert.equal(document.activeElement, cut, 'ArrowDown opens on the first item');
+  assert.deepEqual(names(cut), ['data-highlighted']);
+  key(cut, 'ArrowDown'); await tick();
+  assert.equal(document.activeElement, paste, 'skips the disabled item');
+  assert.deepEqual(names(cut), []);
+  key(paste, 'End'); await tick();
+  assert.equal(document.activeElement, share);
+  key(share, 'ArrowDown'); await tick();
+  assert.equal(document.activeElement, cut, 'wraps');
+  key(cut, 'g'); await tick();
+  assert.equal(document.activeElement, grid, 'typeahead');
+  key(grid, 'Escape'); await tick(); await tick();
+  assert.equal(el.open, false);
+  assert.equal(document.activeElement, t, 'focus returns to the trigger');
+  key(t, 'ArrowUp'); await tick(); await tick();
+  assert.equal(document.activeElement, share, 'ArrowUp opens on the last item');
+  key(share, 'Tab'); document.body.focus();
+  assert.deepEqual(reasons.slice(0, 3), ['list-navigation', 'escape-key', 'list-navigation']);
+  el.parentElement.remove();
+});
+
+test('menu: an item press fires click and closes (item-press); checkbox and radio items change and stay open', async () => {
+  const el = await wc(MENU) as any, reasons: string[] = [], changes: any[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => { if (e.target === el) reasons.push(e.detail.reason); });
+  el.addEventListener('change', (e: CustomEvent) => changes.push([(e.target as Element).getAttribute('data-part'), e.detail]));
+  const [cut, copy, , grid, , byDate] = el.items as HTMLElement[];
+  let clicks = 0;
+  cut.addEventListener('click', () => clicks++);
+  el.trigger.click(); await tick();
+  copy.click(); await tick();
+  assert.equal(el.open, true, 'a disabled item does nothing');
+  grid.click(); await tick();
+  assert.equal(el.open, true, 'a checkbox item keeps the menu open');
+  assert.ok(!grid.hasAttribute('checked'));
+  assert.deepEqual(names(grid), ['data-unchecked']);
+  assert.equal(grid.getAttribute('aria-checked'), 'false');
+  assert.deepEqual(changes[0][0], 'checkbox-item');
+  assert.deepEqual([changes[0][1].checked, changes[0][1].reason], [false, 'item-press']);
+  byDate.click(); await tick();
+  assert.equal(el.popup.querySelector('[data-part=radio-group]').getAttribute('value'), 'date');
+  assert.deepEqual(names(byDate), ['data-checked']);
+  assert.deepEqual([changes[1][0], changes[1][1].value, changes[1][1].reason], ['radio-group', 'date', 'item-press']);
+  // A prevented change keeps the item as it is.
+  const stop = (e: Event) => e.preventDefault();
+  el.addEventListener('change', stop);
+  grid.click(); await tick();
+  assert.ok(!grid.hasAttribute('checked'));
+  el.removeEventListener('change', stop);
+  grid.setAttribute('close-on-click', '');
+  grid.click(); await tick();
+  assert.equal(el.open, false, 'close-on-click closes a checkbox item');
+  el.trigger.click(); await tick();
+  cut.click(); await tick();
+  assert.equal(clicks, 1);
+  assert.equal(el.open, false);
+  assert.deepEqual(reasons, ['trigger-press', 'item-press', 'trigger-press', 'item-press']);
+  el.parentElement.remove();
+});
+
+test('menu: a submenu opens on ArrowRight (first item), closes on ArrowLeft back to its trigger; RTL swaps them', async () => {
+  const el = await wc(MENU) as any;
+  el.trigger.focus();
+  key(el.trigger, 'ArrowUp'); await tick(); await tick();
+  const share = el.items.at(-1) as HTMLElement, sub = share.parentElement as any;
+  assert.equal(document.activeElement, share);
+  key(share, 'ArrowRight'); await tick(); await tick();
+  assert.equal(sub.open, true);
+  assert.deepEqual(names(share), ['data-highlighted', 'data-popup-open']);
+  assert.equal(share.getAttribute('aria-expanded'), 'true');
+  assert.equal(document.activeElement, sub.items[0]);
+  assert.deepEqual(names(sub.popup), ['data-align', 'data-open', 'data-side']);
+  assert.equal(sub.popup.getAttribute('data-side'), 'right');
+  key(sub.items[0], 'ArrowDown'); await tick();
+  assert.equal(document.activeElement, sub.items[1]);
+  key(sub.items[1], 'ArrowLeft'); await tick(); await tick();
+  assert.equal(sub.open, false);
+  assert.equal(el.open, true, 'the parent stays open');
+  assert.equal(document.activeElement, share);
+  // Enter opens it too; an item press in the submenu closes the whole tree.
+  key(share, 'Enter'); await tick(); await tick();
+  assert.equal(sub.open, true);
+  sub.items[0].click(); await tick();
+  assert.equal(sub.open, false);
+  assert.equal(el.open, false);
+  el.parentElement.remove();
+  const rtl = await wc(`<div dir="rtl">${MENU}</div>`) as any;
+  const m = rtl.querySelector('ui-menu') as any;
+  m.trigger.focus();
+  key(m.trigger, 'ArrowUp'); await tick(); await tick();
+  const s = m.items.at(-1).parentElement as any;
+  key(m.items.at(-1), 'ArrowRight'); await tick();
+  assert.equal(s.open, false, 'ArrowRight does not open in RTL');
+  key(m.items.at(-1), 'ArrowLeft'); await tick(); await tick();
+  assert.equal(s.open, true, 'ArrowLeft opens in RTL');
+  rtl.parentElement.remove();
+});
+
+test('menu: disabled, default-open and the pointer highlight', async () => {
+  const off = await wc('<ui-menu label="A" disabled><div data-part="item">x</div></ui-menu>') as any;
+  off.trigger.click(); await tick();
+  assert.equal(off.open, false);
+  assert.deepEqual(names(off.trigger), ['data-disabled']);
+  assert.equal(off.trigger.getAttribute('tabindex'), '-1');
+  off.parentElement.remove();
+  const d = await wc('<ui-menu label="A" default-open><div data-part="item">x</div><div data-part="item">y</div></ui-menu>') as any;
+  assert.equal(d.open, true);
+  assert.notEqual(document.activeElement, d.items[0], 'markup-opened menus leave focus alone');
+  d.items[1].dispatchEvent(new PointerEvent('pointermove', { bubbles: true }));
+  await tick();
+  assert.equal(document.activeElement, d.items[1]);
+  assert.deepEqual(names(d.items[1]), ['data-highlighted']);
+  d.parentElement.remove();
+});
+
+test('menu: a ui-menu built on its own and then moved into a popup becomes a submenu (its trigger an item with a caret)', async () => {
+  const sub = await wc('<ui-menu><div data-part="trigger">Share</div><div data-part="popup"><div data-part="item">Email</div></div></ui-menu>') as any;
+  assert.equal(sub.trigger.getAttribute('data-part'), 'trigger');
+  const parent = await wc('<ui-menu label="File"><div data-part="item">New</div></ui-menu>') as any;
+  parent.popup.append(sub);
+  await tick(); await tick();
+  assert.equal(sub.trigger.getAttribute('data-part'), 'submenu-trigger');
+  assert.equal(sub.trigger.getAttribute('role'), 'menuitem');
+  assert.equal(sub.trigger.querySelector('[data-part=trailing] i')!.getAttribute('name'), 'caret-right');
+  assert.deepEqual(parent.items.map((i: Element) => i.getAttribute('data-part')), ['item', 'submenu-trigger']);
+  parent.parentElement.remove();
+});
+
+// ── React ──
+
+const M = Menu as any;
+const reactMenu = (p: Record<string, unknown> = {}) => h(M.Root, p,
+  h(M.Trigger, null, 'Edit'),
+  h(M.Positioner, null, h(M.Popup, null,
+    h(M.Item, { suffix: '⌘X' }, 'Cut'),
+    h(M.Item, { disabled: true }, 'Copy'),
+    h(M.Item, null, 'Paste'),
+    h(M.Separator),
+    h(M.CheckboxItem, { defaultChecked: true }, 'Grid'),
+    h(M.Group, null, h(M.GroupLabel, null, 'Sort'),
+      h(M.RadioGroup, { defaultValue: 'name' }, h(M.RadioItem, { value: 'name' }, 'Name'), h(M.RadioItem, { value: 'date' }, 'Date'))),
+    h(M.SubmenuRoot, null, h(M.SubmenuTrigger, null, 'Share'), h(M.Positioner, null, h(M.Popup, null, h(M.Item, null, 'Email'), h(M.Item, null, 'Link')))))));
+
+const MENU_PARTS: Part[] = [
+  ['host', ':scope'], ['trigger', ':scope > [data-part=trigger]'], ['popup', '[data-part=popup]'],
+  ['item', '[data-part=item]'], ['checkbox-item', '[data-part=checkbox-item]'], ['radio-item', '[data-part=radio-item]'],
+  ['indicator', '[data-part=indicator]'], ['submenu-trigger', '[data-part=submenu-trigger]'], ['separator', '[data-part=separator]'],
+  ['group', '[data-part=group]'], ['group-label', '[data-part=group-label]'], ['radio-group', '[data-part=radio-group]'],
+];
+
+test('Menu (React): the same data-* as ui-menu on host, trigger, popup and every item kind', async () => {
+  await same('ui-menu', MENU, reactMenu(), MENU_PARTS);
+  await same('ui-menu', '<ui-menu label="A" disabled><div data-part="item">x</div></ui-menu>', h(Menu, { label: 'A', disabled: true }, h(M.Item, null, 'x')), [['host', ':scope'], ['trigger', ':scope > [data-part=trigger]'], ['popup', '[data-part=popup]'], ['item', '[data-part=item]']]);
+});
+
+test('Menu (React): native trigger button, roles and classes; the preset renders the composed parts; className and render get the state', () => {
+  const a = html(reactMenu());
+  assert.match(a, /^<div data-ui="menu" class="ui-menu__root ui-menu__root--placement_anchor">/);
+  assert.match(a, /<button type="button" data-part="trigger" id="ID\w*" role="button" aria-haspopup="menu" aria-expanded="false" aria-controls="ID\w*" class="ui-menu__trigger/);
+  assert.match(a, /<div data-part="popup" popover="manual" id="ID\w*" role="menu" tabindex="-1" aria-labelledby="ID\w*" data-closed="" class="ui-menu__popup/);
+  assert.match(a, /<div data-part="checkbox-item" role="menuitemcheckbox" tabindex="-1" aria-checked="true" data-checked="" class="ui-menu__item [^"]*ui-menu__checkbox-item/);
+  assert.match(a, /<div data-part="submenu-trigger" id="ID\w*" role="menuitem" tabindex="-1" aria-haspopup="menu" aria-expanded="false"/);
+  assert.match(a, /<i name="caret-right"><\/i>/);
+  assert.equal(new RegExp(NATIVE.split(', ').filter((t) => t !== 'button').map((t) => `<${t}[ >]`).join('|')).test(a), false, 'no native form elements beyond the trigger button');
+  const preset = html(h(Menu, { label: 'Edit' }, h(M.Item, null, 'Cut')));
+  const parts = html(h(M.Root, null, h(M.Trigger, { trailing: h('i', { name: 'caret-down' }) }, 'Edit'), h(M.Positioner, null, h(M.Popup, null, h(M.Item, null, 'Cut')))));
+  assert.equal(preset, parts, 'composed = preset');
+  const fn = html(h(M.Root, null, h(M.Trigger, { className: (s: any) => (s.disabled ? 'off' : 'on') }, 'A'), h(M.Popup, null, h(M.Item, { render: (p: any, s: any) => h('a', { ...p, href: '#', 'data-s': String(!!s.highlighted) }) }, 'x'))));
+  assert.match(fn, /class="ui-menu__trigger[^"]* on"/);
+  assert.match(fn, /<a data-part="item" role="menuitem"[^>]* href="#" data-s="false">/);
+});
+
+test('Menu (React): presses, keys and items call onOpenChange / onCheckedChange / onValueChange with Base UI details', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const calls: any[] = [];
+  const log = (k: string) => (v: unknown, d: any) => calls.push([k, v, d.reason]);
+  await act(async () => root.render(h(M.Root, { onOpenChange: log('open') },
+    h(M.Trigger, null, 'Edit'),
+    h(M.Popup, null,
+      h(M.Item, null, 'Cut'), h(M.Item, { disabled: true }, 'Copy'),
+      h(M.CheckboxItem, { onCheckedChange: log('checked') }, 'Grid'),
+      h(M.RadioGroup, { defaultValue: 'a', onValueChange: log('value') }, h(M.RadioItem, { value: 'a' }, 'A'), h(M.RadioItem, { value: 'b' }, 'B'))))));
+  const t = box.querySelector('[data-part=trigger]') as HTMLElement;
+  const items = () => [...box.querySelectorAll<HTMLElement>('[role^=menuitem]')];
+  await act(async () => { t.click(); });
+  assert.equal(t.getAttribute('aria-expanded'), 'true');
+  assert.deepEqual(names(t), ['data-popup-open', 'data-pressed']);
+  await act(async () => { items()[2].click(); });
+  assert.equal(items()[2].getAttribute('aria-checked'), 'true');
+  await act(async () => { items()[4].click(); });
+  assert.deepEqual(names(items()[4]), ['data-checked']);
+  assert.equal(t.getAttribute('aria-expanded'), 'true', 'checkable items keep it open');
+  await act(async () => { items()[0].click(); });
+  assert.equal(t.getAttribute('aria-expanded'), 'false');
+  await act(async () => { t.focus(); key(t, 'ArrowDown'); });
+  assert.equal(document.activeElement, items()[0]);
+  assert.deepEqual(names(items()[0]), ['data-highlighted']);
+  await act(async () => { key(items()[0], 'ArrowDown'); });
+  assert.equal(document.activeElement, items()[2], 'skips the disabled item');
+  await act(async () => { key(items()[2], 'Escape'); });
+  assert.equal(t.getAttribute('aria-expanded'), 'false');
+  assert.equal(document.activeElement, t);
+  assert.deepEqual(calls, [
+    ['open', true, 'trigger-press'], ['checked', true, 'item-press'], ['value', 'b', 'item-press'], ['open', false, 'item-press'],
+    ['open', true, 'list-navigation'], ['open', false, 'escape-key'],
+  ]);
+  await act(async () => root.unmount());
+  box.remove();
+});

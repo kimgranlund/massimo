@@ -43,6 +43,7 @@ declare module 'react' {
       'ui-radio-group': El<{ name?: string; value?: string; 'default-value'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
       'ui-checkbox-group': El<{ name?: string; value?: string; 'default-value'?: string; 'all-values'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean }>;
       'ui-fieldset': El<{ legend?: string; disabled?: boolean; gap?: string }>;
+      'ui-menu': El<{ ref?: any; open?: boolean; 'default-open'?: boolean; label?: string; disabled?: boolean; side?: 'bottom' | 'top'; align?: 'start' | 'center' | 'end'; 'open-on-hover'?: boolean; delay?: number }>;
       'ui-tabs': El<{ ref?: any; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; variant?: 'segmented' | 'underline'; 'activate-on-focus'?: boolean; label?: string }>;
       'ui-accordion': El<{ ref?: any; value?: string; 'default-value'?: string; multiple?: boolean; disabled?: boolean; orientation?: 'vertical' | 'horizontal' }>;
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
