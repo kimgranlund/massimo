@@ -11,7 +11,9 @@ import { loadTsx } from './load-tsx.ts';
 import { menuNavigate, menuItems } from '../dom/index.ts';
 
 await import('../components/menu/menu.element.ts');
+await import('../components/context-menu/context-menu.element.ts');
 const { Menu } = await loadTsx(new URL('../components/menu/menu.react.tsx', import.meta.url));
+const { ContextMenu } = await loadTsx(new URL('../components/context-menu/context-menu.react.tsx', import.meta.url));
 
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
 const contract = JSON.parse(readFileSync(new URL('../contracts/states.json', import.meta.url), 'utf8'));
@@ -377,6 +379,116 @@ test('Menu (React): presses, keys and items call onOpenChange / onCheckedChange 
     ['open', true, 'trigger-press'], ['checked', true, 'item-press'], ['value', 'b', 'item-press'], ['open', false, 'item-press'],
     ['open', true, 'list-navigation'], ['open', false, 'escape-key'],
   ]);
+  await act(async () => root.unmount());
+  box.remove();
+});
+
+// ── Context menu ──
+
+const CTX = '<ui-context-menu><div data-part="trigger" tabindex="0">Canvas</div><div data-part="item">Copy</div><div data-part="item">Paste</div><ui-menu><div data-part="submenu-trigger">Arrange</div><div data-part="popup"><div data-part="item">Front</div></div></ui-menu></ui-context-menu>';
+
+test('context menu: the area is the trigger (no role); contextmenu opens the popup at the pointer (trigger-press); the native menu is prevented', async () => {
+  const el = await wc(CTX) as any, got: any[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => { if (e.target === el) got.push(e.detail); });
+  const t = el.trigger as HTMLElement, p = el.popup as HTMLElement;
+  assert.equal(t.getAttribute('role'), null);
+  assert.equal(t.getAttribute('aria-haspopup'), null);
+  assert.equal(t.querySelector('[data-part=contents]'), null, 'the area keeps its own content');
+  assert.equal(p.getAttribute('role'), 'menu');
+  assert.equal(p.getAttribute('aria-labelledby'), null);
+  assert.equal(kit(el), 'ui-context-menu__root');
+  assert.equal(kit(t), 'ui-context-menu__trigger');
+  assert.equal(kit(p), 'ui-menu__popup');
+  assert.ok(p.classList.contains('ui-menu__popup--placement_point'));
+  assert.deepEqual(el.items.map((i: Element) => i.getAttribute('data-part')), ['item', 'item', 'submenu-trigger']);
+  const e = new MouseEvent('contextmenu', { bubbles: true, cancelable: true, clientX: 120, clientY: 80 });
+  t.dispatchEvent(e); await tick(); await tick();
+  assert.ok(e.defaultPrevented, 'no native context menu');
+  assert.equal(el.open, true);
+  assert.deepEqual(names(t), ['data-popup-open']);
+  assert.deepEqual(names(p), ['data-align', 'data-open', 'data-side']);
+  assert.deepEqual([got[0].open, got[0].reason], [true, 'trigger-press']);
+  // Script placement at the point, 1u below it (--u falls back to 4 in happy-dom).
+  assert.equal(p.style.left, '120px');
+  assert.equal(p.style.top, '84px');
+  // Again elsewhere while open: it moves, no new event.
+  t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true, clientX: 200, clientY: 50 })); await tick();
+  assert.equal(p.style.left, '200px');
+  assert.equal(got.length, 1);
+  key(p, 'Escape'); await tick();
+  assert.equal(el.open, false);
+  assert.equal(el.querySelector(NATIVE), null, 'no native form elements');
+  el.parentElement.remove();
+});
+
+test("context menu: Shift+F10 and the ContextMenu key open on the first item; a long touch press opens; items and submenus are the menu's", async () => {
+  const el = await wc(CTX) as any;
+  const t = el.trigger as HTMLElement;
+  t.focus();
+  key(t, 'F10', { shiftKey: true }); await tick(); await tick();
+  assert.equal(el.open, true);
+  assert.equal(document.activeElement, el.items[0]);
+  key(el.items[0], 'End'); await tick();
+  const sub = el.items[2].parentElement as any;
+  key(el.items[2], 'ArrowRight'); await tick(); await tick();
+  assert.equal(sub.open, true, 'submenus open beside their trigger');
+  assert.equal(sub.popup.getAttribute('data-side'), 'right');
+  sub.items[0].click(); await tick();
+  assert.equal(el.open, false, 'an item press closes the tree');
+  key(t, 'ContextMenu'); await tick();
+  assert.equal(el.open, true);
+  el.open = false; await tick();
+  t.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerType: 'touch', clientX: 10, clientY: 10 }));
+  await new Promise((r) => setTimeout(r, 550));
+  await tick();
+  assert.equal(el.open, true, 'a 500ms touch press opens it');
+  el.open = false; await tick();
+  t.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerType: 'touch', clientX: 10, clientY: 10 }));
+  t.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerType: 'touch' }));
+  await new Promise((r) => setTimeout(r, 550));
+  assert.equal(el.open, false, 'a short press does not');
+  el.disabled = true; await tick();
+  t.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, cancelable: true }));
+  await tick();
+  assert.equal(el.open, false, 'disabled');
+  assert.deepEqual(names(t), ['data-disabled']);
+  el.parentElement.remove();
+});
+
+const C = ContextMenu as any;
+test('ContextMenu (React): the same data-* as ui-context-menu on host, trigger, popup and items; the preset renders the composed parts', async () => {
+  const P: Part[] = [['host', ':scope'], ['trigger', ':scope > [data-part=trigger]'], ['popup', '[data-part=popup]'], ['item', '[data-part=item]'], ['submenu-trigger', '[data-part=submenu-trigger]']];
+  const parts = h(C.Root, null, h(C.Trigger, { tabIndex: 0 }, 'Canvas'), h(C.Portal, null, h(C.Positioner, null, h(C.Popup, null,
+    h(C.Item, null, 'Copy'), h(C.Item, null, 'Paste'),
+    h(C.SubmenuRoot, null, h(C.SubmenuTrigger, null, 'Arrange'), h(C.Positioner, null, h(C.Popup, null, h(C.Item, null, 'Front'))))))));
+  await same('ui-context-menu', CTX, parts, P);
+  const a = html(h(ContextMenu, { label: 'Canvas' }, h(C.Item, null, 'Copy')));
+  assert.match(a, /^<div data-ui="context-menu" class="ui-context-menu__root"><div data-part="trigger" class="ui-context-menu__trigger">Canvas<\/div><div data-part="popup" popover="manual" id="ID\w*" role="menu" tabindex="-1" data-closed="" class="ui-menu__popup/);
+  assert.equal(a, html(h(C.Root, null, h(C.Trigger, null, 'Canvas'), h(C.Positioner, null, h(C.Popup, null, h(C.Item, null, 'Copy'))))), 'composed = preset');
+});
+
+test('ContextMenu (React): contextmenu and Shift+F10 open at a point with onOpenChange(true, { reason: trigger-press })', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const calls: any[] = [];
+  await act(async () => root.render(h(ContextMenu, { label: 'Area', onOpenChange: (o: boolean, d: any) => calls.push([o, d.reason]) }, h(C.Item, null, 'Copy'), h(C.Item, null, 'Paste'))));
+  const t = box.querySelector('[data-part=trigger]') as HTMLElement, p = box.querySelector('[data-part=popup]') as HTMLElement;
+  const e = new MouseEvent('contextmenu', { bubbles: true, cancelable: true, clientX: 40, clientY: 30 });
+  await act(async () => { t.dispatchEvent(e); });
+  assert.ok(e.defaultPrevented);
+  assert.deepEqual(names(t), ['data-popup-open']);
+  assert.equal(p.style.left, '40px');
+  assert.equal(p.style.top, '34px');
+  await act(async () => { key(p, 'Escape'); });
+  assert.deepEqual(names(t), []);
+  t.tabIndex = 0;
+  await act(async () => { t.focus(); key(t, 'F10', { shiftKey: true }); });
+  assert.equal(document.activeElement, box.querySelector('[role=menuitem]'));
+  assert.deepEqual(calls, [[true, 'trigger-press'], [false, 'escape-key'], [true, 'trigger-press']]);
   await act(async () => root.unmount());
   box.remove();
 });

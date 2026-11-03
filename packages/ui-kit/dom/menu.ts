@@ -100,3 +100,13 @@ export const menuSeparatorAttrs = (): Attrs => ({ role: 'separator', 'aria-orien
 
 /** Menu.Group (and RadioGroup): role=group named by its GroupLabel. */
 export const menuGroupAttrs = (labelledBy?: string): Attrs => ({ role: 'group', 'aria-labelledby': labelledBy });
+
+/** A zero-size anchor at a viewport point (the context menu's; the script positioner reads only its box); focus goes to `focusTarget`. */
+export function pointAnchor(x: number, y: number, focusTarget?: () => HTMLElement | null | undefined) {
+  return {
+    getBoundingClientRect: () => ({ top: y, bottom: y, left: x, right: x, width: 0, height: 0, x, y, toJSON() { return this; } }) as DOMRect,
+    focus: (o?: FocusOptions) => focusTarget?.()?.focus(o),
+    // Nothing is inside a point (the dismiss layer asks).
+    contains: () => false,
+  } as unknown as HTMLElement;
+}

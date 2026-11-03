@@ -543,6 +543,51 @@
       "group": [],
       "group-label": [],
       "radio-group": []
+    },
+    "ui-context-menu": {
+      "host": [],
+      "trigger": [
+        "data-popup-open",
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ],
+      "item": [
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "checkbox-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "radio-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "indicator": [
+        "data-checked",
+        "data-unchecked",
+        "data-disabled"
+      ],
+      "submenu-trigger": [
+        "data-popup-open",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "separator": [
+        "data-orientation"
+      ],
+      "group": [],
+      "group-label": [],
+      "radio-group": []
     }
   },
   "native": {
@@ -626,7 +671,8 @@
         "ui-select",
         "ui-collapsible",
         "ui-accordion",
-        "ui-menu"
+        "ui-menu",
+        "ui-context-menu"
       ]
     },
     "disabled": {
@@ -649,7 +695,8 @@
         "ui-collapsible",
         "ui-accordion",
         "ui-tabs",
-        "ui-menu"
+        "ui-menu",
+        "ui-context-menu"
       ]
     },
     "busy": {

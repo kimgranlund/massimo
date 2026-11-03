@@ -61,7 +61,9 @@
     "./components/tabs/element": "./components/tabs/tabs.element.ts",
     "./components/tabs/react": "./components/tabs/tabs.react.tsx",
     "./components/menu/element": "./components/menu/menu.element.ts",
-    "./components/menu/react": "./components/menu/menu.react.tsx"
+    "./components/menu/react": "./components/menu/menu.react.tsx",
+    "./components/context-menu/element": "./components/context-menu/context-menu.element.ts",
+    "./components/context-menu/react": "./components/context-menu/context-menu.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

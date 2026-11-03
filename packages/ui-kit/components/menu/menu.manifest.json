@@ -563,6 +563,8 @@
             "delay?: number // The rest before a hover opens, in ms. Default 100.",
             "size?: number // Unit u in px; the trigger row is 8u, items 7u.",
             "placement?: MenuPlacement // Internal: where the popup goes (ContextMenu passes point; SubmenuRoot submenu).",
+            "ui?: string // Internal: the host's data-ui (ContextMenu's: context-menu).",
+            "hostClass?: string // Internal: the host's recipe class in place of the menu root's (ContextMenu's).",
             "children?: ReactNode",
             "label?: ReactNode // Preset: the trigger's text (with a trailing caret).",
             "leading?: ReactNode // Preset: the trigger's leading icon.",
@@ -588,6 +590,8 @@
               "delay?: number = 100 // The rest before a hover opens, in ms. Default 100.",
               "size?: number // Unit u in px; the trigger row is 8u, items 7u.",
               "placement?: MenuPlacement // Internal: where the popup goes (ContextMenu passes point; SubmenuRoot submenu).",
+              "ui?: string = 'menu' // Internal: the host's data-ui (ContextMenu's: context-menu).",
+              "hostClass?: string // Internal: the host's recipe class in place of the menu root's (ContextMenu's).",
               "children?: ReactNode"
             ]
           },

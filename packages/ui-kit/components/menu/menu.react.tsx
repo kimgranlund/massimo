@@ -61,6 +61,8 @@ export interface MenubarLink {
 }
 export const MenubarCtx = createContext<MenubarLink | null>(null);
 export const MenuCtx = createContext<MenuContext | null>(null);
+/** The enclosing menu's context (for parts built on Menu: ContextMenu.Trigger, Menubar); throws outside one. */
+export const useMenuContext = (part: string) => useMenu(part);
 const useMenu = (part: string) => {
   const v = useContext(MenuCtx);
   if (!v) throw new Error(`<${part}> must be inside Menu.Root`);
@@ -90,11 +92,15 @@ export interface MenuRootProps extends Omit<HTMLAttributes<HTMLDivElement>, 'cla
   size?: number;
   /** Internal: where the popup goes (ContextMenu passes point; SubmenuRoot submenu). */
   placement?: MenuPlacement;
+  /** Internal: the host's data-ui (ContextMenu's: context-menu). */
+  ui?: string;
+  /** Internal: the host's recipe class in place of the menu root's (ContextMenu's). */
+  hostClass?: string;
   children?: ReactNode;
 }
 
 /** Menu.Root: the host (data-ui="menu"); shares the open state, the floating layer and the highlight with its parts. */
-export function MenuRoot({ open, defaultOpen = false, onOpenChange, disabled = false, openOnHover = false, delay = 100, size, placement: forced, children, className, render, ...rest }: MenuRootProps) {
+export function MenuRoot({ open, defaultOpen = false, onOpenChange, disabled = false, openOnHover = false, delay = 100, size, placement: forced, ui = 'menu', hostClass, children, className, render, ...rest }: MenuRootProps) {
   const parent = useContext(MenuCtx);
   const bar = useContext(MenubarCtx);
   const placement: MenuPlacement = forced ?? (parent ? 'submenu' : 'anchor');
@@ -167,7 +173,7 @@ export function MenuRoot({ open, defaultOpen = false, onOpenChange, disabled = f
   ref.current = ctx;
   return (
     <MenuCtx.Provider value={ctx}>
-      {renderPart('div', ctx.c.root, { 'data-ui': 'menu', 'data-size': size, className, ...rest, ref: hostRef, render, children }, {})}
+      {renderPart('div', hostClass ?? ctx.c.root, { 'data-ui': ui, 'data-size': size, className, ...rest, ref: hostRef, render, children }, {})}
     </MenuCtx.Provider>
   );
 }

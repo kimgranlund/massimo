@@ -138,8 +138,15 @@ export interface PositionerOptions {
   script?: boolean;
 }
 
-/** One u in px from --u on an element (styles/geometry.ts), else 4. */
-export const unitOf = (el: Element) => parseFloat(window.getComputedStyle(el).getPropertyValue('--u')) || 4;
+/**
+ * One u in px from --u on an element (styles/geometry.ts), else 4. In a browser --u computes to
+ * `calc(<unit> * 1px)` (an unregistered custom property keeps its tokens), so the unit is read from
+ * the --ui-unit number it is made from.
+ */
+export const unitOf = (el: Element) => {
+  const cs = window.getComputedStyle(el);
+  return parseFloat(cs.getPropertyValue('--u')) || parseFloat(cs.getPropertyValue('--ui-unit')) || 4;
+};
 
 /**
  * The positioner for one popup: start() when shown, update() after each render while shown,

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "context-menu",
+  "title": "Context Menu",
+  "summary": "A menu opened at the pointer over an area.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Actions for an area (preset)",
+      "subject": "component:context-menu",
+      "markup": "<ui-context-menu><div data-part=\"trigger\" tabindex=\"0\">Right-click the canvas</div><div data-part=\"item\">Copy<span slot=\"suffix\">⌘C</span></div><div data-part=\"item\">Paste<span slot=\"suffix\">⌘V</span></div><div data-part=\"separator\"></div><div data-part=\"item\">Delete</div></ui-context-menu>"
+    },
+    {
+      "id": "submenu",
+      "label": "A submenu and a checkbox item",
+      "subject": "component:context-menu",
+      "markup": "<ui-context-menu><div data-part=\"trigger\" tabindex=\"0\">Layer 1</div><div data-part=\"popup\" aria-label=\"Layer actions\"><div data-part=\"item\">Rename</div><ui-menu><div data-part=\"submenu-trigger\">Arrange</div><div data-part=\"popup\"><div data-part=\"item\">Bring to front</div><div data-part=\"item\">Send to back</div></div></ui-menu><div data-part=\"separator\"></div><div data-part=\"checkbox-item\" checked>Visible</div></div></ui-context-menu>"
+    }
+  ]
+}

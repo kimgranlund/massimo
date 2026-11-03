@@ -99,6 +99,16 @@ export class UIMenu extends UIElement {
   protected anchorElement(): Element | null | undefined { return this.#trigger; }
   /** Whether the trigger is a menubar item (the menubar owns its tab stop). */
   protected inMenubar() { return this.parentElement?.localName === 'ui-menubar'; }
+  /** Whether the trigger takes the construction pattern (an area trigger, the context menu's, does not). */
+  protected slottedTrigger() { return true; }
+  /** The caret a generated (preset) trigger ends with, or null for none. */
+  protected generatedCaret(): string | null { return 'caret-down'; }
+  /** The trigger's recipe classes (the context menu's trigger is an area with its own recipe). */
+  protected triggerClass(c: Record<string, string>) { return this.nested ? `${c.item} ${c['submenu-trigger']}` : c.trigger; }
+  /** The host's recipe classes. */
+  protected rootClass(c: Record<string, string>) { return c.root; }
+  /** Place the open popup again (after its anchor moved: a context menu reopened at another point). */
+  protected place() { this.#layer?.positioner.update(); }
 
   connected() {
     if (!this.#popup) this.#build();
@@ -126,11 +136,11 @@ export class UIMenu extends UIElement {
       if (this.label) trigger.textContent = this.label;
       this.prepend(trigger);
     }
-    if (generated && !nested) this.#caret(trigger, 'caret-down');
+    const caret = this.generatedCaret();
+    if (generated && !nested && caret) this.#caret(trigger, caret);
     if (nested || trigger.getAttribute('data-part') === 'submenu-trigger') this.#asSubmenuTrigger(trigger);
     else trigger.setAttribute('data-part', 'trigger');
-    claimSlots(trigger);
-    arrangeSlots(trigger);
+    if (this.slottedTrigger()) { claimSlots(trigger); arrangeSlots(trigger); }
     let popup = [...this.children].find((c) => c.getAttribute('data-part') === 'popup') as HTMLElement | undefined;
     if (!popup) {
       popup = document.createElement('div');
@@ -396,9 +406,9 @@ export class UIMenu extends UIElement {
     if (!trigger.id) trigger.id = uid('menu-trigger');
     applyAttrs(popup, menuPopupAttrs({ id: this.#popupId, open, side: this.#side.value, align: this.align === 'center' || this.align === 'end' ? this.align : 'start', labelledBy: this.placement() === 'point' ? undefined : trigger.id }));
     const c = menuRecipe({ placement: this.placement() });
-    setClasses(this, c.root);
-    setClasses(trigger, this.nested ? `${c.item} ${c['submenu-trigger']}` : c.trigger);
-    for (const s of SLOT_PARTS) setClasses(partOf(trigger, s), c[s]);
+    setClasses(this, this.rootClass(c));
+    setClasses(trigger, this.triggerClass(c));
+    if (this.slottedTrigger()) for (const s of SLOT_PARTS) setClasses(partOf(trigger, s), c[s]);
     setClasses(popup, c.popup);
     const own = (el: Element) => el.parentElement?.closest('[data-part=popup]') === popup;
     for (const item of this.items) {

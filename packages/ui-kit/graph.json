@@ -135,6 +135,18 @@
         "layout"
       ]
     },
+    "component:context-menu": {
+      "kind": "component",
+      "source": "components/context-menu/context-menu.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-context-menu",
+      "searchTerms": [
+        "context menu",
+        "right click menu",
+        "secondary click",
+        "long press menu"
+      ]
+    },
     "component:field": {
       "kind": "component",
       "source": "components/field/field.manifest.json#/nodes/0",
@@ -1014,6 +1026,15 @@
       "tag": "div",
       "searchTerms": [
         "collapsible trigger"
+      ]
+    },
+    "part:context-menu-trigger": {
+      "kind": "part",
+      "source": "components/context-menu/context-menu.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "context menu trigger"
       ]
     },
     "part:field-description": {
@@ -3388,6 +3409,96 @@
       "from": "component:page",
       "relation": "establishes",
       "to": "context:page"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "uses",
+      "to": "component:menu"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "ownsPart",
+      "to": "part:context-menu-trigger"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:collection"
     },
     {
       "from": "component:field",

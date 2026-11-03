@@ -26,6 +26,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/menu/element';
+import '@massimo/ui-kit/components/context-menu/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -53,6 +54,7 @@ import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 import { Menu } from '@massimo/ui-kit/components/menu/react';
+import { ContextMenu } from '@massimo/ui-kit/components/context-menu/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -119,6 +121,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-menu data-k="mn"><div data-part="trigger"><i slot="leading" name="sliders" />View</div><div data-part="popup"><div data-part="item">Cut</div><div {...{ checked: '' }} data-part="checkbox-item">Grid</div></div></ui-menu></div>
         <div style={{ width: 300 }}><ui-menu data-k="mnO" label="Open" default-open><div data-part="item">Cut<span slot="suffix">X</span></div><div data-part="item"><i slot="leading" name="copy" />Copy</div><div data-part="separator" /><div {...{ checked: '' }} data-part="checkbox-item">Grid</div><div data-part="group"><div data-part="group-label">Sort</div><div {...{ value: 'a' }} data-part="radio-group"><div {...{ value: 'a' }} data-part="radio-item">A</div><div {...{ value: 'b' }} data-part="radio-item">B</div></div></div></ui-menu></div>
         <div style={{ width: 300 }}><ui-menu data-k="mnD" label="Off" disabled><div data-part="item">x</div></ui-menu></div>
+        <div style={{ width: 300 }}><ui-context-menu data-k="cm"><div data-part="trigger" style={{ height: 6 * u }}>Area</div><div data-part="item">Copy</div></ui-context-menu></div>
         <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
       </div>
       <div data-side="react">
@@ -178,6 +181,7 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Menu.Root data-k="mn"><Menu.Trigger leading={<i name="sliders" />}>View</Menu.Trigger><Menu.Popup><Menu.Item>Cut</Menu.Item><Menu.CheckboxItem defaultChecked>Grid</Menu.CheckboxItem></Menu.Popup></Menu.Root></div>
         <div style={{ width: 300 }}><Menu data-k="mnO" label="Open" defaultOpen><Menu.Item suffix="X">Cut</Menu.Item><Menu.Item leading={<i name="copy" />}>Copy</Menu.Item><Menu.Separator /><Menu.CheckboxItem defaultChecked>Grid</Menu.CheckboxItem><Menu.Group><Menu.GroupLabel>Sort</Menu.GroupLabel><Menu.RadioGroup defaultValue="a"><Menu.RadioItem value="a">A</Menu.RadioItem><Menu.RadioItem value="b">B</Menu.RadioItem></Menu.RadioGroup></Menu.Group></Menu></div>
         <div style={{ width: 300 }}><Menu data-k="mnD" label="Off" disabled><Menu.Item>x</Menu.Item></Menu></div>
+        <div style={{ width: 300 }}><ContextMenu.Root data-k="cm"><ContextMenu.Trigger style={{ height: 6 * u }}>Area</ContextMenu.Trigger><ContextMenu.Popup><ContextMenu.Item>Copy</ContextMenu.Item></ContextMenu.Popup></ContextMenu.Root></div>
         <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
       </div>
     </div>
@@ -207,6 +211,8 @@ function ComposedPair({ u }: { u: number }) {
       <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
       <div style={{ width: 300 }}><Menu data-k="mnu" label="Edit" leading={<i name="pencil" />}><Menu.Item>Cut</Menu.Item></Menu></div>
       <div style={{ width: 300 }}><ui-menu data-k="wmnu" label="Edit"><div data-part="item">Cut</div></ui-menu></div>
+      <div style={{ width: 300 }}><ContextMenu data-k="cmu" label="Area"><ContextMenu.Item>Copy</ContextMenu.Item></ContextMenu></div>
+      <div style={{ width: 300 }}><ui-context-menu data-k="wcmu" label="Area"><div data-part="item">Copy</div></ui-context-menu></div>
       <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['a']}><Accordion.Item value="a" label="Ship" leading={<i name="truck" />}><p>a</p></Accordion.Item><Accordion.Item value="b" label="Return"><p>b</p></Accordion.Item></Accordion></div>
       <div style={{ width: 300 }}><ui-accordion data-k="wacc" value="a"><ui-collapsible value="a" label="Ship"><i slot="leading" name="truck" /><p>a</p></ui-collapsible><ui-collapsible value="b" label="Return"><p>b</p></ui-collapsible></ui-accordion></div>
       <ui-button data-k="wbt"><i slot="leading" name="plus" />Add</ui-button>
@@ -260,6 +266,8 @@ function ComposedPair({ u }: { u: number }) {
       <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div data-part="list"><div {...{ value: 'a' }} data-part="tab">One</div><div {...{ value: 'b' }} data-part="tab">Two</div><span data-part="indicator" /></div><div {...{ value: 'a' }} data-part="panel">a</div><div {...{ value: 'b' }} data-part="panel">b</div></ui-tabs></div>
       <div style={{ width: 300 }}><Menu.Root data-k="mnu"><Menu.Trigger leading={<i name="pencil" />} trailing={<i name="caret-down" />}>Edit</Menu.Trigger><Menu.Portal><Menu.Positioner><Menu.Popup><Menu.Item>Cut</Menu.Item></Menu.Popup></Menu.Positioner></Menu.Portal></Menu.Root></div>
       <div style={{ width: 300 }}><ui-menu data-k="wmnu"><div data-part="trigger">Edit<i slot="trailing" name="caret-down" /></div><div data-part="popup"><div data-part="item">Cut</div></div></ui-menu></div>
+      <div style={{ width: 300 }}><ContextMenu.Root data-k="cmu"><ContextMenu.Trigger>Area</ContextMenu.Trigger><ContextMenu.Portal><ContextMenu.Positioner><ContextMenu.Popup><ContextMenu.Item>Copy</ContextMenu.Item></ContextMenu.Popup></ContextMenu.Positioner></ContextMenu.Portal></ContextMenu.Root></div>
+      <div style={{ width: 300 }}><ui-context-menu data-k="wcmu"><div data-part="trigger">Area</div><div data-part="popup"><div data-part="item">Copy</div></div></ui-context-menu></div>
       <div style={{ width: 300 }}>
         <Accordion.Root data-k="acc" defaultValue={['a']}>
           <Accordion.Item value="a"><Accordion.Header><Accordion.Trigger leading={<i name="truck" />}>Ship</Accordion.Trigger></Accordion.Header><Accordion.Panel><p>a</p></Accordion.Panel></Accordion.Item>
@@ -332,7 +340,8 @@ setTimeout(() => {
       // The radio dot is the indicator's ::after; the switch knob its thumb part.
       boxAfter: box ? ((k: CSSStyleDeclaration) => k.translate + ' ' + k.backgroundColor)(box.querySelector(':scope > [data-part=thumb]') ? getComputedStyle(box.querySelector(':scope > [data-part=thumb]')!) : getComputedStyle(box, '::after')) : '',
       mark: box ? [...box.querySelectorAll('i')].map((i) => getComputedStyle(i).display).join(',') : '',
-      contentsLeft: contents && !contents.hidden ? r2(rect(contents)!.left - er.left) : 0,
+      // A contents part inside a closed popup has no box: it counts as absent.
+      contentsLeft: contents && !contents.hidden && contents.getClientRects().length ? r2(rect(contents)!.left - er.left) : 0,
       fillW: fill ? r2(rect(fill)!.width) : 0, trackH: track ? r2(rect(track)!.height) : 0,
       thumbLeft: thumb ? r2(rect(thumb)!.left - er.left) : 0, opacity: getComputedStyle(el).opacity,
       font: getComputedStyle(el).fontFamily,
@@ -350,7 +359,7 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnO', 'mnD']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnO', 'mnD', 'cm']) {
       const a = host(wc, k), b = host(re, k);
       const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=popup], [role^=menuitem], [role=separator], [data-part=group-label]')];
       const pa = parts(a), pb = parts(b);
@@ -373,7 +382,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

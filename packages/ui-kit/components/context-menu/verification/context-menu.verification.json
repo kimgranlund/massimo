@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "context-menu",
+  "scope": "Behavior, ARIA, parts, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and client behavior. The popup, items and submenus are ui-menu's (its record covers them); rendered lengths and the point placement are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/context-menu/context-menu.element.ts",
+      "sha256": "9389c6fe016b8f33ef9321b7b7cdddbc65404879b1c424fe1501cb5bddcfe7d8"
+    },
+    {
+      "path": "components/context-menu/context-menu.react.tsx",
+      "sha256": "9330f15156089be9fdbf57470eba1c5d92eec5c6182f882641b2a53dd6e93fe7"
+    },
+    {
+      "path": "components/context-menu/context-menu.recipe.ts",
+      "sha256": "d32385f4c301c2062306a07e6e6c8396f52e3f91862e41883ec56b4a231b5657"
+    },
+    {
+      "path": "components/menu/menu.element.ts",
+      "sha256": "5c2bf6b467ec0184b9c19c7d4669cecead30c3430d9f52a84f2a4a67c51f0ec1"
+    },
+    {
+      "path": "components/context-menu/context-menu.manifest.json",
+      "sha256": "0019d4ccf9ba6f41e88a7bfb1f56268962706fe9602acafddc78c55eb667e671"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"context menu\" test/menu.test.ts",
+          "covers": "the area trigger (no role, no construction pattern), contextmenu at the pointer (native menu prevented, script placement 1u from the point, moving while open), Shift+F10 and the ContextMenu key on the first item, the 500 ms touch press (and a short press not), submenus and item presses, disabled, Escape, no native form elements"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"context menu\" test/menu.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ContextMenu\" test/menu.test.ts",
+          "covers": "React SSR: the same data-* as the web component on host, trigger, popup, items and submenu trigger; the preset renders the composed parts; contextmenu and Shift+F10 in the client with onOpenChange details and the point placement"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ContextMenu\" test/menu.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The long press is checked with a synthetic touch pointerdown; the platform's own contextmenu on long press (Android, iOS) is not exercised.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio on :5182 at the theme unit 4.5, B = 0; geometry-check covers u = 2…12 × B = 0, 1, the popup 1u below the point and start-aligned): growth (the area keeps the author's size; long item labels widen the popup), RTL (the popup is the menu's; its point placement is physical, start corner at the pointer; submenus follow the menu's RTL rules), focus (Shift+F10 on the focusable area opens on the first item; Escape closes and the area keeps focus), floating layer (script placement from a zero-size point anchor, flipping above or to the start at the viewport edges), screenshots of the Menus family checked light and dark with the canvas context menu and its Arrange submenu open."
+  ]
+}

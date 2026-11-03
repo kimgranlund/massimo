@@ -22,6 +22,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/menu/element';
+import '@massimo/ui-kit/components/context-menu/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -39,7 +40,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['menus', 'Menus', 'ui-menu'],
+  ['menus', 'Menus', 'ui-menu · ui-context-menu'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -194,6 +195,7 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
 // Disclosure specimens: a readable column, as a settings or FAQ page would hold them.
 const disclosureColumn = css({ display: 'flex', flexDirection: 'column', gap: '1', width: 'full', maxWidth: '[28rem]' });
 const panelText = css({ color: 'fg.muted', textStyle: 'body' });
+const contextArea = css({ display: 'grid', placeItems: 'center', width: '[min(100%, 28rem)]', height: '[8rem]', borderRadius: 'xl', borderWidth: 'thin', borderStyle: 'dashed', borderColor: 'border', color: 'fg.muted', textStyle: 'caption' });
 const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
 const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
@@ -211,7 +213,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
-    menus: 'A menu trigger is an 8u control row; its popup is a floating composite 1u below it (beside a submenu trigger), at least as wide, with 7u items in the construction pattern. Focus moves to the highlighted item: arrow keys wrap, Home / End, typeahead and the pointer; ArrowRight opens a submenu, ArrowLeft or Escape closes it. Checkbox and radio items keep a 6u indicator slot and stay open on a press.',
+    menus: 'A menu trigger is an 8u control row; its popup is a floating composite 1u below it (beside a submenu trigger), at least as wide, with 7u items in the construction pattern. Focus moves to the highlighted item: arrow keys wrap, Home / End, typeahead and the pointer; ArrowRight opens a submenu, ArrowLeft or Escape closes it. Checkbox and radio items keep a 6u indicator slot and stay open on a press. A context menu opens the same popup 1u from the pointer on a right click, a long press or Shift+F10.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -500,6 +502,22 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           </ui-menu>
           <ui-menu label="Hover" open-on-hover><div data-part="item">Opens on hover</div><div data-part="item">After 100ms</div></ui-menu>
           <ui-menu label="Disabled" disabled><div data-part="item">Hidden</div></ui-menu>
+        </Row>
+        <Row label="Context menu">
+          <ui-context-menu>
+            <div data-part="trigger" tabIndex={0} className={contextArea}>Right-click (or long-press, or Shift+F10) here</div>
+            <div data-part="popup" aria-label="Canvas actions">
+              <div data-part="item"><i slot="leading" name="copy" />Copy<span slot="suffix">⌘C</span></div>
+              <div data-part="item"><i slot="leading" name="clipboard" />Paste<span slot="suffix">⌘V</span></div>
+              <ui-menu>
+                <div data-part="submenu-trigger"><i slot="leading" name="stack" />Arrange</div>
+                <div data-part="popup"><div data-part="item">Bring to front</div><div data-part="item">Send to back</div></div>
+              </ui-menu>
+              <div data-part="separator" />
+              <div data-part="checkbox-item" {...{ checked: '' }}>Snap to grid</div>
+              <div data-part="item"><i slot="leading" name="trash" />Delete</div>
+            </div>
+          </ui-context-menu>
         </Row>
         <SizeLadder family="menu" params={params}>
           <ui-menu label="Menu"><div data-part="item">One</div><div data-part="item">Two</div></ui-menu>
