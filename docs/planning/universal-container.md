@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 owner: kim
 date: 2026-11-03
 ---
@@ -48,6 +48,10 @@ Form controls are the leaves: their radius stays min(3u·s, H/2). A container is
 2. The old tags become aliases (`ui-card` = `ui-container preset="card"`), with manifests pointing at the new component.
 3. Composition contracts move from tag contexts to preset contexts; the registry keeps `context:card` and the rest.
 4. Remove the aliases after one release.
+
+## Progress
+
+- Built 2026-11-03: `ui-container` (CSS-only tag, React `Container`) with presets, layout, surface, levels; the nesting chain (exact-depth variables, `:has()`); `resolveContainerTree`; the old tags as aliases in the chain; geometry checks over nested trees; the jig moved to ui-container.
 
 ## Decided
 

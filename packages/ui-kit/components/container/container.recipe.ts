@@ -75,7 +75,77 @@ export const card = defineSlotRecipe({
   defaultVariants: { padding: 'md' },
 });
 
-/** The CSS-only tags' rules: the same recipes, keyed on ui-<level> (card variants on [padding=…]). */
+// ── ui-container: one element for every level (docs/planning/universal-container.md) ──
+// preset picks the starting geometry, flow and surface (group, collection, card, panel, region,
+// page); padding (xs … xl) the card ladder level; layout and surface override the preset's. The
+// nesting chain below sets radius, padding and gap from the parent.
+const ROW = { display: 'inline-flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' };
+const SURFACES = {
+  none: { bg: 'transparent', boxShadow: 'none' },
+  panel: { bg: 'elevation.panel', boxShadow: 'none' },
+  card: { bg: 'elevation.card', boxShadow: 'card' },
+  raised: { bg: 'elevation.card', boxShadow: 'raised' },
+};
+export const uiContainer = defineSlotRecipe({
+  className: 'ui-container',
+  description: 'One container for every level, group to page, nesting concentrically (ui-container, React Container).',
+  slots: ['root'],
+  base: { root: mergeStyles(box, column, { ':is(ui-card, .ui-card__root, [surface=card], [preset=card]) &[surface=card]': { bg: 'bg' } }) },
+  variants: {
+    preset: {
+      group: { root: mergeStyles(level('group'), ROW) },
+      collection: { root: mergeStyles(level('collection'), column) },
+      card: { root: mergeStyles(level('card-md'), column, SURFACES.card, { ':is(ui-card, .ui-card__root, [preset=card]) &': { bg: 'bg' } }) },
+      panel: { root: mergeStyles(level('panel'), column, SURFACES.panel) },
+      region: { root: mergeStyles(level('region'), column) },
+      page: { root: mergeStyles(level('page'), column, { width: '100%', maxWidth: `${PAGE_MAX_WIDTH_REM}rem`, marginInline: 'auto' }) },
+    },
+    padding: Object.fromEntries(CARD_PADDINGS.map((p) => [p, { root: level(`card-${p}`) }])),
+    layout: { stack: { root: column }, row: { root: { ...ROW, flexWrap: 'nowrap' } }, wrap: { root: ROW } },
+    surface: Object.fromEntries(Object.entries(SURFACES).map(([k, v]) => [k, { root: v }])),
+  },
+  defaultVariants: { preset: 'collection' },
+});
+export { uiContainer as 'container' };
+
+/**
+ * The nesting chain. Each depth n has its own variables (--uc-r<n>, --uc-p<n>), so a container reads
+ * its parent's radius and padding without a cycle; depth is counted over chain containers (areas,
+ * which are square, restart it). Depth 1 keeps the preset geometry (--cr, the ladder padding); a
+ * nested container is concentric with its parent, R = max(0, R_parent − p_parent). Padding: the
+ * root's levels split evenly (--uc-step: (R − r_control) / levels); else a container holding
+ * containers keeps the ratio (R − max(r_control, R × k), k = the theme's container-ratio); a nested
+ * leaf fits its controls (R − r_control). Derived padding is also the gap unless [gap] is set.
+ * resolveContainerTree is the same rule in numbers.
+ */
+export const CHAIN_DEPTH = 6;
+// Chain containers: ui-container (the React Container sets the same preset attribute) and the old
+// wrapper and card tags; areas are left out. A rule for depth n matches exactly depth n (n chain
+// ancestors-or-self, not n + 1), so a nested container never redeclares its parent's variables.
+const C = ':is(ui-container, [data-ui=container], ui-group, ui-collection, ui-card, [data-ui=group], [data-ui=collection], [data-ui=card]):not([preset=panel], [preset=region], [preset=page])';
+const chain = (n: number) => Array.from({ length: n }, () => C).join(' ');
+const depthSel = (n: number) => `${chain(n)}:not(${chain(n + 1)})`;
+const ratio = (r: string) => `max(${CONTROL_RADIUS}, calc(${r} * var(--ui-container-ratio)))`;
+export const containerChain = Object.fromEntries(Array.from({ length: CHAIN_DEPTH }, (_, i) => i + 1).flatMap((n) => {
+  const r = `var(--uc-r${n})`, p = `var(--uc-p${n})`;
+  const leaf = n === 1 ? 'calc(var(--cp) * var(--u))' : `max(0px, calc(${r} - ${CONTROL_RADIUS}))`;
+  return [
+    [depthSel(n), {
+      [`--uc-r${n}`]: n === 1 ? 'var(--cr)' : `max(0px, calc(var(--uc-r${n - 1}) - var(--uc-p${n - 1})))`,
+      [`--uc-p${n}`]: `var(--uc-step, ${leaf})`,
+      // The root's levels (D): every level below takes the same step; a root without levels clears it.
+      ...(n === 1 ? { '--uc-step': 'initial' } : {}),
+      borderRadius: r, padding: `max(0px, calc(${p} - var(--b)))`,
+      ...(n > 1 ? { '&:not([gap])': { gap: p } } : {}),
+    }],
+    // A container holding containers keeps the ratio for them (C), unless levels set the step.
+    [`${depthSel(n)}:has(${C})`, { [`--uc-p${n}`]: `var(--uc-step, calc(${r} - ${ratio(r)}))`, '&:not([gap])': { gap: p } }],
+    ...(n === 1 ? Array.from({ length: CHAIN_DEPTH }, (_, j) => j + 1).map((L) => [`${depthSel(1)}[levels="${L}"]`, { '--uc-step': `max(0px, calc((var(--uc-r1) - ${CONTROL_RADIUS}) / ${L}))`, '&:not([gap])': { gap: 'var(--uc-p1)' } }]) : []),
+  ];
+}));
+
+/** The CSS-only tags' rules: the same recipes, keyed on ui-<level> (card variants on [padding=…]), ui-container, and the nesting chain. */
 export const containerTags = mergeStyles(
-  ...[group, collection, card, panel, region, page].map((r) => tagRules(r.className!, r)),
+  ...[group, collection, card, panel, region, page, uiContainer].map((r) => tagRules(r.className!, r)),
+  containerChain,
 );

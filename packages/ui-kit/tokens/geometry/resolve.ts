@@ -211,6 +211,49 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
   };
 }
 
+// ── Universal container (ui-container; docs/planning/universal-container.md) ──
+export const CONTAINER_PRESETS = ['group', 'collection', 'card', 'panel', 'region', 'page'] as const;
+export type ContainerPreset = (typeof CONTAINER_PRESETS)[number];
+/** The ladder level a preset (and a card padding) starts from. */
+export const presetLevel = (preset: ContainerPreset, padding: CardPadding = 'md'): Exclude<ContainerLevel, 'composite'> =>
+  preset === 'card' ? `card-${padding}` : preset;
+export const isAreaPreset = (preset: ContainerPreset) => CONTAINERS[presetLevel(preset)].family === 'area';
+/** The default container ratio k (theme container-ratio): a nested container's radius is its parent's × k. */
+export const CONTAINER_RATIO = 0.6;
+
+export interface ContainerNode { preset?: ContainerPreset; padding?: CardPadding; levels?: number; gap?: number; radius?: number; children?: ContainerNode[] }
+export interface ResolvedContainer { preset: ContainerPreset; radius: number; edge: number; padding: number; gap: number; depth: number; children: ResolvedContainer[] }
+
+/**
+ * A tree of containers under the universal rule. A root (depth 1, or the first container under an
+ * area) keeps its preset geometry: the ladder padding and the concentric radius (control radius +
+ * padding, × t). A nested container is concentric with its parent: R = max(0, R_parent − p_parent).
+ * Its padding: with `levels` on the root, every level splits evenly, p = (R_root − r_control) / levels
+ * (D); else a container that holds containers keeps a ratio for them, p = R − max(r_control, R × k)
+ * (C); a leaf fits its controls, p = R − r_control (a root leaf keeps its ladder padding). Areas
+ * (panel, region, page) are square and restart the chain. The gap is the padding wherever the padding
+ * is derived; an explicit gap attribute wins.
+ */
+export function resolveContainerTree(node: ContainerNode, input: GeometryInput & { ratio?: number; padUnits?: Partial<Record<string, number>>; radiusFactor?: Partial<Record<string, number>> } = {}): ResolvedContainer {
+  const x = inputs(input);
+  const u = x.unit, k = input.ratio ?? CONTAINER_RATIO;
+  const ctl = controlRadius(u, x.radiusScale, (6 + 2 * x.inset) * u);
+  const walk = (n: ContainerNode, depth: number, parent?: { r: number; p: number }, step?: number): ResolvedContainer => {
+    const preset = n.preset ?? 'collection', level = presetLevel(preset, n.padding);
+    const fam = radiusFamily(level);
+    const base = resolveContainer(level, { ...input, padUnits: input.padUnits?.[level], radius: n.radius, radiusFactor: fam ? input.radiusFactor?.[fam] : undefined });
+    if (isAreaPreset(preset)) return { preset, radius: 0, edge: base.edge, padding: base.padding, gap: n.gap !== undefined ? n.gap * u : base.gap, depth: 0, children: (n.children ?? []).map((c) => walk(c, 1)) };
+    const kids = (n.children ?? []).filter((c) => !isAreaPreset(c.preset ?? 'collection'));
+    const r = depth === 1 ? base.radius : Math.max(0, parent!.r - parent!.p);
+    const s = depth === 1 && n.levels ? Math.max(0, (r - ctl) / n.levels) : step;
+    const derived = s !== undefined || kids.length > 0 || depth > 1;
+    const p = s !== undefined ? s : kids.length ? r - Math.max(ctl, r * k) : depth === 1 ? base.edge : Math.max(0, r - ctl);
+    const gap = n.gap !== undefined ? n.gap * u : derived ? p : base.gap;
+    return { preset, radius: r, edge: p, padding: Math.max(0, p - x.border), gap, depth, children: (n.children ?? []).map((c) => walk(c, isAreaPreset(c.preset ?? 'collection') ? 0 : depth + 1, { r, p }, s)) };
+  };
+  return walk(node, 1);
+}
+
 /**
  * Composite: ui-listbox, ui-segmented, select popup. Padding is the composite level (0.5u);
  * options use the control anatomy with their inset reduced by that edge, so a one-row

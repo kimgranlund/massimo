@@ -443,6 +443,22 @@
       ],
       "behavior": "Lazy, async-decoded; failed images are marked; slideshow builds an inline swiper."
     },
+    "container": {
+      "geometryFamily": "container",
+      "element": "CSS-only container tag (React Container): preset, padding, layout, surface, levels, gap and radius set its geometry, flow and surface; nested ui-containers are concentric with their parent (the nesting chain).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
     "group": {
       "geometryFamily": "container",
       "element": "CSS-only container tag.",

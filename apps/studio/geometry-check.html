@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOW_LAYERS, elevationTokenVars, resolveChoiceCard } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOW_LAYERS, elevationTokenVars, resolveChoiceCard, resolveContainerTree } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -1059,6 +1059,44 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
   };
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/${density} ${k}: got ${got}, want ${want}`); }
   box.remove();
+}
+// Universal container (ui-container, resolveContainerTree): roots keep their preset geometry; nested
+// containers are concentric with their parent; padding is derived (ratio, levels, leaf fit).
+{
+  const TREES = [
+    { preset: 'card' },
+    { preset: 'group' },
+    { preset: 'card', padding: 'xl', children: [{ preset: 'card' }, { preset: 'card', children: [{ preset: 'group' }] }] },
+    { preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] },
+    { preset: 'page', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'collection' }] }] },
+    { preset: 'panel', children: [{ preset: 'card', children: [{ preset: 'card', gap: 2 }] }] },
+  ];
+  const html = (n) => `<ui-container preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.levels ? ` levels="${n.levels}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map(html).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</ui-container>`;
+  for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const [density, s] of [['default', 1], ['compact', 2], ['loose', 0.5]]) {
+    const box = document.createElement('div');
+    box.setAttribute('data-size', String(unit)); box.setAttribute('density', density);
+    box.style.setProperty('--ui-border', border); box.style.setProperty('--ui-radius-scale', s);
+    box.innerHTML = TREES.map(html).join('');
+    root.append(box);
+    await new Promise((r) => setTimeout(r, 0));
+    const g = { unit, border, density, radiusScale: s };
+    const els = [...box.children];
+    TREES.forEach((t, ti) => {
+      const want = resolveContainerTree(t, g);
+      const visit = (node, el, path) => {
+        const cs = getComputedStyle(el), kids = [...el.children].filter((c) => c.localName === 'ui-container');
+        const checks = { radius: [px(cs.borderTopLeftRadius), r2(node.radius)], padding: [px(cs.paddingTop), r2(node.padding)] };
+        // The gap along the flow: rows (group) measure across, stacks down.
+        const row = cs.flexDirection === 'row', [c0, c1] = kids.length > 1 ? kids : [...el.children];
+        const gapEl = c1 ? r2(row ? c1.getBoundingClientRect().left - c0.getBoundingClientRect().right : c1.getBoundingClientRect().top - c0.getBoundingClientRect().bottom) : null;
+        if (gapEl !== null) checks.gap = [gapEl, r2(node.gap)];
+        for (const [k, [got, w]] of Object.entries(checks)) { total++; if (Math.abs(got - w) > tolerance(k, w)) fails.push(`u${unit}/B${border}/${density}/s${s} container.tree${ti}${path}.${k}: got ${got}, want ${w}`); }
+        node.children.forEach((c, i) => visit(c, kids[i], `${path}.${i}`));
+      };
+      visit(want, els[ti], '');
+    });
+    box.remove();
+  }
 }
 // Elevation (docs/specs/elevation.md): level fills mix toward the page by surface-contrast; level
 // shadows pick sm or md by shadow-<level>, × shadow-strength; cards cast the raised shadow when raised.

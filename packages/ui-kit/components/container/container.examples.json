@@ -4,8 +4,26 @@
   "component": "container",
   "title": "Containers",
   "summary": "CSS-only layout levels.",
-  "defaultExample": "card",
+  "defaultExample": "container-nested",
   "examples": [
+    {
+      "id": "container-nested",
+      "label": "ui-container: cards in a card, concentric",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-container preset=\"card\"><strong>Plan</strong><ui-container preset=\"group\"><ui-button>Choose</ui-button><ui-button variant=\"primary\">Buy</ui-button></ui-container></ui-container><ui-container preset=\"card\"><strong>Team</strong><ui-button>Choose</ui-button></ui-container></ui-container>"
+    },
+    {
+      "id": "container-levels",
+      "label": "ui-container levels: an even split down to the controls",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\" padding=\"xl\" levels=\"3\"><ui-container preset=\"card\"><ui-container preset=\"group\"><ui-button>Save</ui-button></ui-container></ui-container></ui-container>"
+    },
+    {
+      "id": "container-presets",
+      "label": "ui-container presets",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"page\"><ui-container preset=\"panel\"><ui-container preset=\"group\"><ui-button>A</ui-button><ui-button>B</ui-button></ui-container></ui-container><ui-container preset=\"card\" surface=\"raised\"><span>Raised card</span></ui-container></ui-container>"
+    },
     {
       "id": "card",
       "label": "Card with a group",

@@ -2,7 +2,7 @@
   "$schema": "../../contracts/component-manifest.schema.json",
   "schemaVersion": 1,
   "name": "container",
-  "primary": "component:card",
+  "primary": "component:container",
   "module": null,
   "registration": "none",
   "documentation": "./container.md",
@@ -20,12 +20,171 @@
       "exports": [
         "resolveContainer",
         "resolveComposite",
-        "CONTAINERS"
+        "CONTAINERS",
+        "resolveContainerTree"
       ],
       "description": "Reference numbers for container padding, gap and radius."
     }
   ],
   "nodes": [
+    {
+      "id": "component:container",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-container",
+      "contract": "../../contracts/components.json#/components/container",
+      "intent": [
+        "Hold content at any level, from a group of controls to a whole page, with one element whose radius and padding nest concentrically: a nested container takes its parent's radius minus its padding, so every curve down to the controls follows the outer one"
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "preset",
+          "type": "string",
+          "readBy": "css",
+          "description": "The starting geometry, flow and surface: group (a wrapping row, 1u), collection (a stack, 2u; the default), card (a card surface, 4u), panel (the panel fill, square), region (square, 8u), page (square, 8u, a centered 72rem column).",
+          "enum": [
+            "group",
+            "collection",
+            "card",
+            "panel",
+            "region",
+            "page"
+          ],
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "padding",
+          "type": "string",
+          "readBy": "css",
+          "description": "The card ladder level, xs 2u, sm 3u, md 4u, lg 5u, xl 6u; replaces the preset level.",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "readBy": "css",
+          "description": "stack (a column), row (one line), wrap (a wrapping row). Default: the preset's.",
+          "enum": [
+            "stack",
+            "row",
+            "wrap"
+          ],
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "surface",
+          "type": "string",
+          "readBy": "css",
+          "description": "none, panel, card, raised: the elevation level (fill and shadow). Default: the preset's.",
+          "enum": [
+            "none",
+            "panel",
+            "card",
+            "raised"
+          ],
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "levels",
+          "type": "number",
+          "readBy": "css",
+          "description": "On a root: the nested levels below it. The padding splits evenly, (R − control radius) / levels, so every curve down to the controls is concentric.",
+          "inspector": {
+            "control": "number",
+            "min": 1,
+            "max": 6,
+            "step": 1
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "readBy": "css",
+          "description": "Radius as a magnitude of the concentric radius, 0…1 in 0.05 steps: 1 concentric (default: the theme's radius-card), 0 square. Lets the container be sharper than fully rounded contents.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 1,
+            "step": 0.05
+          }
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Any flow content."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "CSS-only tag: no script, nothing to register. preset (group, collection, card, panel, region, page) sets the starting geometry, flow and surface; layout and surface override it.",
+        "Nesting: a root keeps its preset geometry; a nested ui-container is concentric with its parent (R = R_parent − p_parent); a container holding containers keeps the ratio (container-ratio) for them, or splits evenly with levels; a leaf fits its controls. Areas (panel, region, page) are square and restart the chain. Up to 6 levels.",
+        "Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
+      ],
+      "avoidWhen": [],
+      "searchTerms": [
+        "container",
+        "universal container",
+        "card",
+        "group",
+        "collection",
+        "panel",
+        "region",
+        "page",
+        "surface",
+        "nesting",
+        "concentric",
+        "layout",
+        "stack"
+      ]
+    },
     {
       "id": "component:group",
       "kind": "component",
@@ -89,6 +248,7 @@
         "sizing": "intrinsic"
       },
       "constraints": [
+        "Alias of <ui-container preset=\"group\"> (deprecated: use ui-container); it takes part in the same nesting chain.",
         "CSS-only tag: no script, nothing to register. 1u padding, radius up to 4u.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
@@ -169,6 +329,7 @@
         "sizing": "fill"
       },
       "constraints": [
+        "Alias of <ui-container preset=\"collection\"> (deprecated: use ui-container); it takes part in the same nesting chain.",
         "CSS-only tag: no script, nothing to register. 2u padding, radius up to 5u.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
@@ -259,6 +420,7 @@
         "sizing": "fill"
       },
       "constraints": [
+        "Alias of <ui-container preset=\"card\"> (deprecated: use ui-container); it takes part in the same nesting chain.",
         "CSS-only tag: no script, nothing to register. 4u padding, radius up to 7u.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
@@ -326,6 +488,7 @@
         "sizing": "fill"
       },
       "constraints": [
+        "Alias of <ui-container preset=\"panel\"> (deprecated: use ui-container); it takes part in the same nesting chain.",
         "CSS-only tag: no script, nothing to register. 6u padding, square.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
@@ -388,6 +551,7 @@
         "sizing": "fill"
       },
       "constraints": [
+        "Alias of <ui-container preset=\"region\"> (deprecated: use ui-container); it takes part in the same nesting chain.",
         "CSS-only tag: no script, nothing to register. 8u padding, square.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
@@ -450,6 +614,7 @@
         "sizing": "fill"
       },
       "constraints": [
+        "Alias of <ui-container preset=\"page\"> (deprecated: use ui-container); it takes part in the same nesting chain.",
         "CSS-only tag: no script, nothing to register. 8u padding, square, centered 72rem max width.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
@@ -469,6 +634,116 @@
     }
   ],
   "edges": [
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:group"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:card"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:region"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:page"
+    },
     {
       "from": "component:group",
       "relation": "usesFoundation",
@@ -835,7 +1110,8 @@
         "component:card": "Card",
         "component:panel": "Panel",
         "component:region": "Region",
-        "component:page": "Page"
+        "component:page": "Page",
+        "component:container": "Container"
       },
       "verification": "./verification/container.verification.json#/renderers/react",
       "props": {
@@ -898,6 +1174,21 @@
             "gap?: number",
             "size?: number",
             "radius?: number // Group, collection, card: the radius as a magnitude of the concentric radius, 0 … 1 in 0.05 steps (1 concentric, 0 square)."
+          ]
+        },
+        "component:container": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number",
+            "size?: number",
+            "radius?: number // Group, collection, card: the radius as a magnitude of the concentric radius, 0 … 1 in 0.05 steps (1 concentric, 0 square).",
+            "preset?: ContainerPreset = 'collection' // group, collection (default), card, panel, region, page: the starting geometry, flow and surface.",
+            "padding?: CardPadding // The card ladder level: xs 2u, sm 3u, md 4u, lg 5u, xl 6u.",
+            "layout?: 'stack' | 'row' | 'wrap' // stack (column), row, wrap. Default: the preset's.",
+            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's.",
+            "levels?: number // Nested levels below this root: the padding splits evenly so every curve down to the controls is concentric."
           ]
         }
       }

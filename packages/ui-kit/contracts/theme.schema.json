@@ -59,6 +59,13 @@
           "multipleOfStep": 0.05,
           "description": "Card radius (× concentric)"
         },
+        "container-ratio": {
+          "type": "number",
+          "minimum": 0.3,
+          "maximum": 0.9,
+          "multipleOfStep": 0.05,
+          "description": "Nesting ratio (k)"
+        },
         "shadow-strength": {
           "type": "number",
           "minimum": 0,

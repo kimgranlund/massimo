@@ -177,6 +177,21 @@ Containers come in four families, each with one radius rule; the rule is concent
 
 Nesting: areas hold containers, containers hold wrappers (page › region › panel › card › collection › group; a level may be skipped). Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
+### Nesting (ui-container)
+
+`ui-container` (presets group, collection, card, panel, region, page; the old level tags are its aliases) nests under one rule, R_parent = R_child + p_parent, anchored at the root (`resolveContainerTree`, the chain in `container.recipe.ts`):
+
+| Node | Radius | Padding |
+|---|---|---|
+| root (no container ancestor, or the first under an area) | its preset's: control radius + p (× t) | its preset's ladder padding |
+| nested | R_parent − p_parent (concentric) | — |
+| holds containers | — | R − max(control radius, R × k), k = `container-ratio` (0.6) |
+| nested leaf | — | R − control radius (its controls are concentric) |
+| root with `levels="n"` | — | (R − control radius) / n for every level below |
+| area (panel, region, page) | 0 | its ladder padding; the chain restarts below it |
+
+Derived padding is also the gap unless the element sets `gap`. At u = 4.5 an xl card holding cards that hold a group: 40.5 · 16.2 → 24.3 · 9.72 → 14.58 · 1.08 (the group's controls at 13.5); with `levels="3"`: 40.5 → 31.5 → 22.5, p 9 each. CSS reads the parent through depth-indexed variables (`--uc-r<n>`, `--uc-p<n>`, a rule per exact depth, up to 6) and `:has()` for containers that hold containers. A container that is not nested is exactly the level rule above.
+
 ### Panda tokens in u
 
 Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p: '8'` is 8u, `gap: '0.5'` is 0.5u; keys 0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24), and `radii` are u × corner scale (`sm` 1u, `md` 1.5u, `lg` 2u, `xl` 3u; `full` is a pill). The container ladder is named (`<level>` as in the table: `group`, `card-md`, `page`…): `pad.<level>` and `gap.<level>` are the theme's `pad-<level>` / `gap-<level>` in u, and `inset.<level>` is the padding inside a border, max(0, pad − B), the way containers use it. `page()` is `p: inset.page`, `gap: gap.page`. Panda declares token variables on `:root`, where they resolve with the root unit, so every element with `size` / `data-size` redeclares the u-based ones (`unitTokenVars()`), and a theme scope that sets `--ui-unit` or a ladder parameter on its own element includes `unitTokenCss()` (the jig canvas does). There is no fixed rem grid. `sizes` also has keywords: `full` (100%), `min`, `max`, `fit` and `prose` (65ch). A length that is not one of these tokens is a type error ([theming](theming.md#panda-configs)).

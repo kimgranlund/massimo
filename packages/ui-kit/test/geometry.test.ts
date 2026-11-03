@@ -427,3 +427,22 @@ test('attached (inset none): no edge but the border, no gap, square children wit
   assert.deepEqual([s.thumb, s.thumbInset, s.thumbTravel], [18, 1, 16]);
   assert.equal(resolveChoice('switch', { unit: 4 }).thumbTravel, 16, 'inset switch travels 4u too');
 });
+
+test('universal container: a root keeps its preset geometry; nested containers are concentric; padding derives by ratio, levels or the controls', async () => {
+  const { resolveContainerTree, resolveContainer, resolveControl } = await import('../tokens/geometry/resolve.ts');
+  const g = { unit: 4 };
+  const ctl = resolveControl(g).radius;
+  const lone = resolveContainerTree({ preset: 'card' }, g);
+  assert.deepEqual([lone.radius, lone.edge], [resolveContainer('card-md', g).radius, resolveContainer('card-md', g).edge], 'a lone card is unchanged');
+  const t = resolveContainerTree({ preset: 'card', padding: 'xl', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }, g);
+  const [c] = t.children, [leaf] = c.children;
+  assert.equal(c.radius, t.radius - t.edge, 'concentric with the parent');
+  assert.equal(t.edge, t.radius - Math.max(ctl, t.radius * 0.6), 'a container of containers keeps the ratio');
+  assert.equal(leaf.edge, Math.max(0, leaf.radius - ctl), 'a leaf fits its controls');
+  const d = resolveContainerTree({ preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] }, g);
+  const inner = d.children[0].children[0];
+  assert.equal(inner.radius - inner.edge, ctl, 'levels: every curve down to the controls is concentric');
+  const area = resolveContainerTree({ preset: 'page', children: [{ preset: 'card' }] }, g);
+  assert.equal(area.radius, 0, 'areas are square');
+  assert.deepEqual([area.children[0].radius, area.children[0].edge], [lone.radius, lone.edge], 'and restart the chain');
+});

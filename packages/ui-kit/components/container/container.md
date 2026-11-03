@@ -17,6 +17,21 @@ Three families, each with one radius rule:
   - `ui-region`: a major area of a page.
   - `ui-page`: a whole page.
 
+## ui-container (use this)
+
+`<ui-container>` (React `Container`) is the one container for every level, from a group of controls to the page. The six level tags (`ui-group`, `ui-collection`, `ui-card`, `ui-panel`, `ui-region`, `ui-page`) are deprecated aliases of its presets and take part in the same nesting.
+
+- `preset`: `group` (a wrapping row, 1u), `collection` (a stack, 2u; the default), `card` (a card surface, 4u), `panel` (the panel fill, square), `region` (square, 8u), `page` (square, 8u, a centered 72rem column).
+- `padding="xs | sm | md | lg | xl"`: the card ladder level, for any preset. `layout="stack | row | wrap"` and `surface="none | panel | card | raised"` override the preset's.
+- **Nesting** (`resolveContainerTree`): a root keeps its preset geometry, the ladder padding and the concentric radius (control radius + padding). A nested ui-container is concentric with its parent, R = R_parent − p_parent. A container that holds containers keeps a ratio for them, p = R − max(control radius, R × k) (k: the theme's `container-ratio`, 0.6), and a nested leaf fits its controls, p = R − control radius, so the curves follow each other down to the buttons. `levels="n"` on the root splits the padding evenly instead, p = (R − control radius) / n. Derived padding is also the gap unless `gap` is set. Areas (panel, region, page) are square and restart the chain; up to 6 levels.
+
+```html
+<ui-container preset="card" padding="xl">
+  <ui-container preset="card">…</ui-container>
+  <ui-container preset="card"><ui-container preset="group"><ui-button>Save</ui-button></ui-container></ui-container>
+</ui-container>
+```
+
 ## Usage
 
 ```html

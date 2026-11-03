@@ -83,7 +83,7 @@
     },
     "component:card": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/2",
+      "source": "components/container/container.manifest.json#/nodes/3",
       "availability": "css-only",
       "tag": "ui-card",
       "searchTerms": [
@@ -152,7 +152,7 @@
     },
     "component:collection": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/1",
+      "source": "components/container/container.manifest.json#/nodes/2",
       "availability": "css-only",
       "tag": "ui-collection",
       "searchTerms": [
@@ -175,6 +175,27 @@
         "multi select",
         "chips input",
         "tag picker"
+      ]
+    },
+    "component:container": {
+      "kind": "component",
+      "source": "components/container/container.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-container",
+      "searchTerms": [
+        "container",
+        "universal container",
+        "card",
+        "group",
+        "collection",
+        "panel",
+        "region",
+        "page",
+        "surface",
+        "nesting",
+        "concentric",
+        "layout",
+        "stack"
       ]
     },
     "component:context-menu": {
@@ -278,7 +299,7 @@
     },
     "component:group": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/0",
+      "source": "components/container/container.manifest.json#/nodes/1",
       "availability": "css-only",
       "tag": "ui-group",
       "searchTerms": [
@@ -429,7 +450,7 @@
     },
     "component:page": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/5",
+      "source": "components/container/container.manifest.json#/nodes/6",
       "availability": "css-only",
       "tag": "ui-page",
       "searchTerms": [
@@ -454,7 +475,7 @@
     },
     "component:panel": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/3",
+      "source": "components/container/container.manifest.json#/nodes/4",
       "availability": "css-only",
       "tag": "ui-panel",
       "searchTerms": [
@@ -541,7 +562,7 @@
     },
     "component:region": {
       "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/4",
+      "source": "components/container/container.manifest.json#/nodes/5",
       "availability": "css-only",
       "tag": "ui-region",
       "searchTerms": [
@@ -1492,6 +1513,16 @@
       "searchTerms": [
         "card-raised",
         "raise cards"
+      ]
+    },
+    "parameter:container-ratio": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/container-curvature",
+      "availability": "implemented",
+      "title": "Nesting ratio (k)",
+      "searchTerms": [
+        "container-ratio",
+        "nesting ratio (k)"
       ]
     },
     "parameter:corner-shape": {
@@ -5978,6 +6009,116 @@
       "to": "foundation:modality"
     },
     {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:container",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:container",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:group"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:card"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:region"
+    },
+    {
+      "from": "component:container",
+      "relation": "establishes",
+      "to": "context:page"
+    },
+    {
       "from": "component:group",
       "relation": "usesFoundation",
       "to": "foundation:colors"
@@ -10284,6 +10425,11 @@
     },
     {
       "from": "parameter:radius-card",
+      "relation": "memberOf",
+      "to": "parameters:container-curvature"
+    },
+    {
+      "from": "parameter:container-ratio",
       "relation": "memberOf",
       "to": "parameters:container-curvature"
     },

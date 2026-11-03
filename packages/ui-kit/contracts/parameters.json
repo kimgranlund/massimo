@@ -307,10 +307,11 @@
       "members": [
         "radius-group",
         "radius-collection",
-        "radius-card"
+        "radius-card",
+        "container-ratio"
       ],
       "cssVar": "--ui-<member>",
-      "formula": "R = t × R0, t in 0..1: R0 is the family's concentric radius (group, collection, card: the control radius + p); 1 keeps it concentric, 0 square, so a container can be sharper than fully rounded contents; the radius attribute sets t on one element",
+      "formula": "R = t × R0, t in 0..1: R0 is the family's concentric radius (group, collection, card: the control radius + p); 1 keeps it concentric, 0 square, so a container can be sharper than fully rounded contents; the radius attribute sets t on one element; container-ratio k: a ui-container holding containers gives them its radius × k (min the control radius) and keeps the rest as padding",
       "drives": [
         "foundation:geometry",
         "tokens:container-ladder",
