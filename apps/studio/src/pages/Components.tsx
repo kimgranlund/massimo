@@ -24,6 +24,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/popover/element';
 import '@massimo/ui-kit/components/tooltip/element';
 import '@massimo/ui-kit/components/preview-card/element';
+import '@massimo/ui-kit/components/navigation-menu/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -41,7 +42,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['popups', 'Popups', 'ui-popover · ui-tooltip · ui-preview-card'],
+  ['popups', 'Popups', 'ui-popover · ui-tooltip · ui-preview-card · ui-navigation-menu'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -199,6 +200,8 @@ const panelText = css({ color: 'fg.muted', textStyle: 'body' });
 const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
 const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
+/** Attributes the DOM types lack (a navigation item's value and label, a link's active), for ui-navigation-menu markup. */
+const nav = (a: Record<string, string>) => a as Record<string, string>;
 // Popup specimens: a row of triggers; ladder rows leave room for the open popup beside the trigger.
 const popupRow = css({ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4' });
 const popupLadder = css({ display: 'flex', alignItems: 'start', minHeight: '[calc(36 * var(--u))]', width: 'full' });
@@ -219,7 +222,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
-    popups: 'Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger. A popover is a small card (padding 3u, radius ≤ 3u, a 1u gap) that takes focus when pressed open; Escape, an outside press or a Close part dismiss it. A tooltip is a 7u text row on the inverse fill, above its trigger, after 600 ms on hover or at once on keyboard focus (and at once while the group is warm). A preview card is a medium card (padding 4u, radius ≤ 4u, a 2u gap) below a link, after 600 ms on hover; it stays while the pointer moves onto it. An arrow is a 2u triangle spanning the 1u gap.',
+    popups: 'Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger. A popover is a small card (padding 3u, radius ≤ 3u, a 1u gap) that takes focus when pressed open; Escape, an outside press or a Close part dismiss it. A tooltip is a 7u text row on the inverse fill, above its trigger, after 600 ms on hover or at once on keyboard focus (and at once while the group is warm). A preview card is a medium card (padding 4u, radius ≤ 4u, a 2u gap) below a link, after 600 ms on hover; it stays while the pointer moves onto it. A navigation menu is an 8u composite row of 7u triggers and links; one popup (a composite container) shows the open item\'s links 1u below its trigger, animating its size between items. An arrow is a 2u triangle spanning the 1u gap.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -272,6 +275,13 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             </ui-preview-card>.
           </div>
         </Row>
+        <Row label="Navigation menu">
+          <ui-navigation-menu label="Specimen">
+            <div data-part="item" {...nav({ value: 'docs', label: 'Docs' })}><a href="#/geometry">Geometry</a><a href="#/colors" {...nav({ active: '' })}>Colors</a><a href="#/typography">Typography</a></div>
+            <div data-part="item" {...nav({ value: 'kit', label: 'Components' })}><a href="#/components?family=actions">Actions and toggles</a><a href="#/components?family=fields">Fields, selects and fieldsets</a><a href="#/components?family=disclosure">Collapsibles, accordions and tabs</a><a href="#/components?family=popups">Popovers, tooltips and preview cards</a></div>
+            <div data-part="item"><a data-part="link" href="#/motion">Motion</a></div>
+          </ui-navigation-menu>
+        </Row>
         <SizeLadder family="popup" params={params}>
           <div className={popupLadder}>
             <ui-popover label="Details" side="right" align="start" default-open>
@@ -280,6 +290,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
               <div data-part="arrow" />
             </ui-popover>
             <span className={popupGap} />
+            <ui-navigation-menu label="Ladder"><div data-part="item" {...nav({ label: 'Menu' })}><a href="#/geometry">Link</a></div><div data-part="item"><a data-part="link" href="#/colors">Link</a></div></ui-navigation-menu>
             <ui-tooltip content="Tooltip" side="right" default-open><ui-button aria-label="Info"><i slot="leading" name="info" /></ui-button></ui-tooltip>
           </div>
         </SizeLadder>

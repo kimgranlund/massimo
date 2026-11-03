@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup, resolveNavigationMenu, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -145,7 +145,7 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   popup: (g) => {
     const p = resolvePopup('popover', g);
     const t = resolvePopup('tooltip', g);
-    return [`offset ${px(p.offset)} · arrow ${px(p.arrowWidth)} × ${px(p.arrowHeight)}`, `popover pad ${px(p.paddingBlock)} · gap ${px(p.gap)} · r ${px(p.radius)}`, `tooltip ${px(t.height ?? 0)} · pad ${px(t.paddingInline)} · r ${px(t.radius)}`, `card pad ${px(resolvePopup('preview-card', g).paddingBlock)} · r ${px(resolvePopup('preview-card', g).radius)}`];
+    return [`offset ${px(p.offset)} · arrow ${px(p.arrowWidth)} × ${px(p.arrowHeight)}`, `popover pad ${px(p.paddingBlock)} · gap ${px(p.gap)} · r ${px(p.radius)}`, `tooltip ${px(t.height ?? 0)} · pad ${px(t.paddingInline)} · r ${px(t.radius)}`, `card pad ${px(resolvePopup('preview-card', g).paddingBlock)} · r ${px(resolvePopup('preview-card', g).radius)}`, `nav ${px(resolveNavigationMenu(g).listHeight)} · item ${px(resolveNavigationMenu(g).itemHeight)} · popup r ${px(resolveNavigationMenu(g).popupRadius)}`];
   },
 };
 

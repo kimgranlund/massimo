@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "navigation-menu",
+  "scope": "Anatomy, ARIA, hover, press and keyboard behavior, the shared viewport, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup. Placement, the popup's size animation and rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/navigation-menu/navigation-menu.element.ts",
+      "sha256": "8578b9e8b227250eb7d58078fcffe893da27e1a6221193dbafc0c6d32f38a726"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.react.tsx",
+      "sha256": "c61eb29eb389cb16b7d6dcf5305012e785f9f489e14eefa8c7c4093e3040d250"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.recipe.ts",
+      "sha256": "1dd8794457b0ee33d985356d9a35e9888f31ee1921a9eac092150587d3afc907"
+    },
+    {
+      "path": "components/navigation-menu/navigation-menu.manifest.json",
+      "sha256": "f583147f3fd7fd53d4b694741fdb2d0c96e1e5575ad0cf6570cd2bd04a89010b"
+    },
+    {
+      "path": "dom/navigation.ts",
+      "sha256": "46469eccda398eb6b526e47959ae91388cc77670209974dd964671ac9509d0c9"
+    },
+    {
+      "path": "dom/popup.ts",
+      "sha256": "e78bada9915e6a53db847ea9809e6954cb9f0a72003ce8acae84141e19a0d4c0"
+    },
+    {
+      "path": "components/popover/popup-parts.ts",
+      "sha256": "de42968d03bf4631117a42804730ffae42f12a057b930af4e9396ad6765d5ce1"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"navigation menu\" test/navigation-menu.test.ts",
+          "covers": "anatomy (landmark, list, items, generated triggers with carets, contents moved into the viewport, links, active), press toggle and change (cancelable; trigger-press), switching and the activation direction, hover delay and switching, arrow keys, Home / End, ArrowDown into the content, Escape returning focus, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"navigation\" test/geometry.test.ts",
+          "covers": "resolveNavigationMenu: the 8u list row, 7u trigger and link rows, sm caret, the popup composite"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"navigation menu\" test/navigation-menu.test.ts",
+          "node --test --test-name-pattern=\"navigation\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"NavigationMenu\" test/navigation-menu.test.ts",
+          "covers": "React SSR: the same data-* and recipe classes as the web component on host, list, items, triggers, links, positioner and popup; the preset renders its parts; className functions"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"NavigationMenu\" test/navigation-menu.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The popup's size animation, the content slide and placement need a real browser; react-check.html compares both renderers there (\"fails\": []).",
+    "React contents render in place (hidden) on the server and move into the Viewport (a portal) once it mounts.",
+    "Nested submenus, the Backdrop and Arrow parts, and Base UI's handles are not implemented; the popup aligns to the trigger's start (Base UI's default align is center).",
+    "Geometry review, manual items (2026-11-02, studio Chromium at u = 3, 4, the theme unit 4.5 and 6, light and dark): growth (long labels widen their trigger, the list wraps onto a second row; a long content widens the popup up to 120u, then its links wrap), RTL (the arrow keys mirror; the anchor rule is logical, so the popup aligns to the trigger's inline start), focus (the triggers' and links' 2px ring keeps their size and stays inside the list row), screenshots of the Navigation menu specimens and the size ladder checked light and dark."
+  ]
+}

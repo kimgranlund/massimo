@@ -363,7 +363,8 @@
       "members": [
         "component:popover",
         "component:tooltip",
-        "component:preview-card"
+        "component:preview-card",
+        "component:navigation-menu"
       ],
       "searchTerms": [
         "popup geometry",

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolvePopup, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolvePopup, resolveNavigationMenu, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -284,4 +284,12 @@ test('popup: a preview card is a card-md with the collection gap, capped at 80u'
   const c = resolvePopup('preview-card', { unit: 4, border: 1 });
   assert.deepEqual([c.paddingBlock, c.paddingInline, c.radius, c.gap, c.maxWidth, c.offset], [15, 15, 16, 8, 320, 4]);
   assert.equal(resolvePopup('preview-card', { unit: 4, radiusScale: 0.5 }).radius, 8);
+});
+
+test('navigation menu: an 8u composite list of 7u triggers and links with a sm caret; the popup a composite container', () => {
+  const n = resolveNavigationMenu({ unit: 4, border: 1 });
+  assert.deepEqual([n.listHeight, n.listEdge, n.listPadding, n.listGap], [32, 2, 1, 2]);
+  assert.deepEqual([n.itemHeight, n.itemPadding, n.itemRadius], [28, 1, 12]);
+  assert.deepEqual([n.labelStart, n.labelEnd, n.caret, n.offset], [8, 4, 12, 4]);
+  assert.deepEqual([n.popupEdge, n.popupPadding, n.popupRadius, n.linkHeight, n.linkRadius], [2, 1, 14, 28, 12]);
 });

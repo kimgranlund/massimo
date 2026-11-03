@@ -48,6 +48,7 @@ declare module 'react' {
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
       'ui-tooltip': El<{ ref?: any; content?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; delay?: number; 'close-delay'?: number }>;
       'ui-preview-card': El<{ ref?: any; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; delay?: number; 'close-delay'?: number; gap?: string }>;
+      'ui-navigation-menu': El<{ ref?: any; label?: string; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; delay?: number; 'close-delay'?: number }>;
       'ui-popover': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; modal?: boolean; 'open-on-hover'?: boolean; delay?: number; 'close-delay'?: number; gap?: string }>;
     }
   }

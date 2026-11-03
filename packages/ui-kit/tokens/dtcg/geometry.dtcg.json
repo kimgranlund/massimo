@@ -6974,6 +6974,230 @@
           }
         }
       }
+    },
+    "navigation": {
+      "listHeight": {
+        "$type": "dimension",
+        "$value": {
+          "value": 36,
+          "unit": "px"
+        },
+        "$description": "navigation menu list · list row height · a composite without a fill: edge D = max(B, 0.5u), padding D - B",
+        "$extensions": {
+          "com.massimo.formula": "7u + 2D = 8u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 16,
+            "u=2.25": 18,
+            "u=2.5": 20,
+            "u=2.75": 22,
+            "u=3": 24,
+            "u=3.5": 28,
+            "u=4": 32,
+            "u=4.5": 36,
+            "u=5": 40,
+            "u=5.5": 44,
+            "u=6": 48,
+            "u=6.5": 52,
+            "u=7": 56,
+            "u=7.5": 60,
+            "u=8": 64,
+            "u=8.5": 68,
+            "u=9": 72,
+            "u=9.5": 76,
+            "u=10": 80,
+            "u=10.5": 84,
+            "u=11": 88,
+            "u=11.5": 92,
+            "u=12": 96
+          }
+        }
+      },
+      "itemHeight": {
+        "$type": "dimension",
+        "$value": {
+          "value": 31.5,
+          "unit": "px"
+        },
+        "$description": "navigation menu trigger, link · trigger and link height · composite options; labels 2u from a bare edge, 1u beside a slot",
+        "$extensions": {
+          "com.massimo.formula": "6u + 2Ic = 7u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 14,
+            "u=2.25": 15.75,
+            "u=2.5": 17.5,
+            "u=2.75": 19.25,
+            "u=3": 21,
+            "u=3.5": 24.5,
+            "u=4": 28,
+            "u=4.5": 31.5,
+            "u=5": 35,
+            "u=5.5": 38.5,
+            "u=6": 42,
+            "u=6.5": 45.5,
+            "u=7": 49,
+            "u=7.5": 52.5,
+            "u=8": 56,
+            "u=8.5": 59.5,
+            "u=9": 63,
+            "u=9.5": 66.5,
+            "u=10": 70,
+            "u=10.5": 73.5,
+            "u=11": 77,
+            "u=11.5": 80.5,
+            "u=12": 84
+          }
+        }
+      },
+      "caret": {
+        "$type": "dimension",
+        "$value": {
+          "value": 12.25,
+          "unit": "px"
+        },
+        "$description": "navigation menu trigger · caret icon · turns 180° while open (toggle intent)",
+        "$extensions": {
+          "com.massimo.formula": "icon sm: min(font - 0.5u, 6u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 11,
+            "u=2.25": 11.125,
+            "u=2.5": 11.25,
+            "u=2.75": 11.375,
+            "u=3": 11.5,
+            "u=3.5": 11.75,
+            "u=4": 12,
+            "u=4.5": 12.25,
+            "u=5": 12.5,
+            "u=5.5": 12.75,
+            "u=6": 13,
+            "u=6.5": 13.25,
+            "u=7": 13.5,
+            "u=7.5": 13.75,
+            "u=8": 14,
+            "u=8.5": 14.25,
+            "u=9": 14.5,
+            "u=9.5": 14.75,
+            "u=10": 15,
+            "u=10.5": 15.25,
+            "u=11": 15.5,
+            "u=11.5": 15.75,
+            "u=12": 16
+          }
+        }
+      },
+      "itemRadius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 13.5,
+          "unit": "px"
+        },
+        "$description": "navigation menu trigger, link · radius · concentric with the list row",
+        "$extensions": {
+          "com.massimo.formula": "min(7u / 2, list radius - D)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 6,
+            "u=2.25": 6.75,
+            "u=2.5": 7.5,
+            "u=2.75": 8.25,
+            "u=3": 9,
+            "u=3.5": 10.5,
+            "u=4": 12,
+            "u=4.5": 13.5,
+            "u=5": 15,
+            "u=5.5": 16.5,
+            "u=6": 18,
+            "u=6.5": 19.5,
+            "u=7": 21,
+            "u=7.5": 22.5,
+            "u=8": 24,
+            "u=8.5": 25.5,
+            "u=9": 27,
+            "u=9.5": 28.5,
+            "u=10": 30,
+            "u=10.5": 31.5,
+            "u=11": 33,
+            "u=11.5": 34.5,
+            "u=12": 36
+          }
+        }
+      },
+      "popupPadding": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.25,
+          "unit": "px"
+        },
+        "$description": "navigation menu popup · padding · a composite container; its links are 7u composite options",
+        "$extensions": {
+          "com.massimo.formula": "D - B (D = max(B, 0.5u))",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 1,
+            "u=2.25": 1.125,
+            "u=2.5": 1.25,
+            "u=2.75": 1.375,
+            "u=3": 1.5,
+            "u=3.5": 1.75,
+            "u=4": 2,
+            "u=4.5": 2.25,
+            "u=5": 2.5,
+            "u=5.5": 2.75,
+            "u=6": 3,
+            "u=6.5": 3.25,
+            "u=7": 3.5,
+            "u=7.5": 3.75,
+            "u=8": 4,
+            "u=8.5": 4.25,
+            "u=9": 4.5,
+            "u=9.5": 4.75,
+            "u=10": 5,
+            "u=10.5": 5.25,
+            "u=11": 5.5,
+            "u=11.5": 5.75,
+            "u=12": 6
+          }
+        }
+      },
+      "popupRadius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 15.75,
+          "unit": "px"
+        },
+        "$description": "navigation menu popup · radius · concentric with its 3u options",
+        "$extensions": {
+          "com.massimo.formula": "(3 + 0.5)u * s",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 7,
+            "u=2.25": 7.875,
+            "u=2.5": 8.75,
+            "u=2.75": 9.625,
+            "u=3": 10.5,
+            "u=3.5": 12.25,
+            "u=4": 14,
+            "u=4.5": 15.75,
+            "u=5": 17.5,
+            "u=5.5": 19.25,
+            "u=6": 21,
+            "u=6.5": 22.75,
+            "u=7": 24.5,
+            "u=7.5": 26.25,
+            "u=8": 28,
+            "u=8.5": 29.75,
+            "u=9": 31.5,
+            "u=9.5": 33.25,
+            "u=10": 35,
+            "u=10.5": 36.75,
+            "u=11": 38.5,
+            "u=11.5": 40.25,
+            "u=12": 42
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,566 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "navigation-menu",
+  "primary": "component:navigation-menu",
+  "module": "./navigation-menu.element.ts",
+  "registration": "on-import",
+  "documentation": "./navigation-menu.md",
+  "examples": "./navigation-menu.examples.json",
+  "contract": "../../contracts/components.json#/components/navigation-menu",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./navigation-menu.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveNavigationMenu"
+      ],
+      "description": "Reference numbers for the list row, the trigger and link rows, the caret and the popup composite."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:navigation-menu",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-navigation-menu",
+      "class": "UINavigationMenu",
+      "extends": "UIElement",
+      "intent": [
+        "Move between the sections of a site from a bar of links, some of which open a panel of more links"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": true,
+          "description": "The open item's value, '' when closed (Base UI value): an item's value attribute, else its index. Setting it (attribute or property) opens or closes without a change event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": "",
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "The item open at first connect when no value attribute is present (Base UI defaultValue).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": false,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "horizontal (default) or vertical: the list direction, which arrow keys move focus, and the popup beside (vertical) or below the open trigger.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "The navigation landmark's name (aria-label).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": 50,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "Hover: open an item after the pointer rests this long on its trigger, in ms (Base UI delay); default 50. Moving between triggers while open switches at once.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "closeDelay",
+          "type": "number",
+          "default": 50,
+          "attribute": "close-delay",
+          "reflects": false,
+          "description": "Hover: close this long after the pointer leaves the triggers and the popup, in ms (Base UI closeDelay); default 50.",
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ value: string, reason: 'trigger-hover' | 'trigger-press' | 'list-navigation' | 'escape-key' | 'outside-press' | 'focus-out' | 'link-press', event: Event }",
+          "trigger": "hover, a trigger press, ArrowDown on a trigger, Escape, an outside press, focus leaving or a close-on-click link opens, switches or closes an item; value is '' when closed; preventDefault keeps it as it is"
+        }
+      ],
+      "semantics": {
+        "role": "navigation (named by label); the list is role=list of listitems; triggers are role=button with aria-expanded and aria-controls; links are links (aria-current=page when active)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "ArrowLeft, ArrowRight (ArrowUp, ArrowDown when vertical; mirrored in RTL), Home, End",
+            "action": "move focus between the list's triggers and links"
+          },
+          {
+            "keys": "Enter, Space on a trigger",
+            "action": "toggle its content"
+          },
+          {
+            "keys": "ArrowDown on a trigger (ArrowRight when vertical)",
+            "action": "open its content and focus its first link"
+          },
+          {
+            "keys": "Tab",
+            "action": "from an open trigger into its content, from its last link on to the next item"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the content; focus returns to its trigger"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label (aria-label of the navigation landmark)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "[data-part=item] children (or a [data-part=list] of them; ul / li work): an item with label holds its content's links; an item holding one link is a plain link; or author [data-part=trigger] and [data-part=content] inside an item. Links are <a> elements (data-part=link is set on them); active marks the current page, close-on-click closes the menu when pressed."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Contents move into the shared viewport when the element builds; they keep their ids, and each trigger's aria-controls names its content.",
+        "Only links belong in the contents (the menu is navigation, not a command menu).",
+        "Setting value from script opens or closes an item without a change event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Commands or actions (copy, delete, share).",
+          "reason": "A menu gives command semantics (role=menu, menuitems) and roving focus."
+        },
+        {
+          "when": "Switching views inside one page.",
+          "reason": "Tabs keep the views in the page and name the active one."
+        },
+        {
+          "when": "A single control with a panel of settings.",
+          "reason": "A popover anchors one panel to one trigger."
+        }
+      ],
+      "searchTerms": [
+        "navigation menu",
+        "site navigation",
+        "nav bar",
+        "mega menu",
+        "header links"
+      ]
+    },
+    {
+      "id": "part:navigation-menu-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=list]",
+      "summary": "The row (or column) of items (role=list): a composite without a fill. Base UI NavigationMenu.List."
+    },
+    {
+      "id": "part:navigation-menu-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=list] > [data-part=item]",
+      "summary": "One entry (role=listitem; data-value names it): a trigger whose content shows in the viewport, or a link. Base UI NavigationMenu.Item."
+    },
+    {
+      "id": "part:navigation-menu-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=list] > [data-part=item] > [data-part=trigger]",
+      "summary": "Opens its item's content (role=button, aria-expanded, aria-controls, data-popup-open while open): a composite option in the construction pattern with a caret in trailing (Base UI Icon), turned while open. Base UI NavigationMenu.Trigger."
+    },
+    {
+      "id": "part:navigation-menu-content",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=popup] > [data-part=viewport] > [data-part=content]",
+      "summary": "An item's links, in the shared viewport (hidden unless open; data-open / data-closed, data-activation-direction). Base UI NavigationMenu.Content."
+    },
+    {
+      "id": "part:navigation-menu-link",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "a",
+      "selector": "[data-part=link]",
+      "summary": "A link (in the list or in a content): a composite option; data-active and aria-current=page on the current page. Base UI NavigationMenu.Link."
+    },
+    {
+      "id": "part:navigation-menu-positioner",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner]",
+      "summary": "The floating layer (popover=manual, in the top layer while open), 1u below the open trigger. Base UI NavigationMenu.Positioner."
+    },
+    {
+      "id": "part:navigation-menu-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=popup]",
+      "summary": "The surface: a composite container sized to the open content (--popup-width / --popup-height, reveal intent). Base UI NavigationMenu.Popup."
+    },
+    {
+      "id": "part:navigation-menu-viewport",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=popup] > [data-part=viewport]",
+      "summary": "Where the open content shows; clips the content while the popup's size animates. Base UI NavigationMenu.Viewport."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:navigation-menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-list"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-item"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-trigger"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-content"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-link"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-positioner"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-popup"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-viewport"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "uses",
+      "to": "foundation:icons"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./navigation-menu.element.ts",
+      "exports": {
+        "component:navigation-menu": "UINavigationMenu"
+      },
+      "verification": "./verification/navigation-menu.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./navigation-menu.react.tsx",
+      "exports": {
+        "component:navigation-menu": "NavigationMenu"
+      },
+      "verification": "./verification/navigation-menu.verification.json#/renderers/react",
+      "props": {
+        "component:navigation-menu": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLElement>, 'className' | 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "value?: string // The open item's value, '' when closed (controlled).",
+            "defaultValue?: string // The item open at first render (uncontrolled).",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // Called when an interaction opens, switches or closes an item, with Base UI's details.",
+            "orientation?: 'horizontal' | 'vertical' // horizontal (default) or vertical.",
+            "delay?: number // Hover: open after this long on a trigger, ms (default 50).",
+            "closeDelay?: number // Hover: close this long after the pointer leaves, ms (default 50).",
+            "label?: string // The landmark's name (aria-label).",
+            "size?: number // Unit u in px.",
+            "children?: ReactNode"
+          ]
+        }
+      },
+      "parts": {
+        "component:navigation-menu": {
+          "NavigationMenu.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'onChange' | 'defaultValue'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: string // The open item's value, '' when closed (controlled).",
+              "defaultValue?: string = '' // The item open at first render (uncontrolled).",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // Called when an interaction opens, switches or closes an item, with Base UI's details.",
+              "orientation?: 'horizontal' | 'vertical' = 'horizontal' // horizontal (default) or vertical.",
+              "delay?: number = 50 // Hover: open after this long on a trigger, ms (default 50).",
+              "closeDelay?: number = 50 // Hover: close this long after the pointer leaves, ms (default 50).",
+              "label?: string // The landmark's name (aria-label).",
+              "size?: number // Unit u in px.",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.List": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.Item": {
+            "inherits": [
+              "Omit<NavigationMenuPartProps, 'prefix'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "value?: string // The item's value (the Root's value names the open item).",
+              "label?: ReactNode // Preset: a Trigger with this label, the children in a Content."
+            ]
+          },
+          "NavigationMenu.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLButtonElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode = <i name=\"caret-down\" /> // Trailing icon.",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.Content": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.Link": {
+            "inherits": [
+              "Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "active?: boolean = false // The current page (data-active, aria-current=page).",
+              "closeOnClick?: boolean = false // Close the menu when pressed (reason link-press).",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.Positioner": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NavigationMenu.Viewport": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

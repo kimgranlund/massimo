@@ -247,6 +247,19 @@
         "strength"
       ]
     },
+    "component:navigation-menu": {
+      "kind": "component",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-navigation-menu",
+      "searchTerms": [
+        "navigation menu",
+        "site navigation",
+        "nav bar",
+        "mega menu",
+        "header links"
+      ]
+    },
     "component:option": {
       "kind": "component",
       "source": "components/listbox/listbox.manifest.json#/nodes/2",
@@ -1134,6 +1147,78 @@
       "tag": "span",
       "searchTerms": [
         "meter value"
+      ]
+    },
+    "part:navigation-menu-content": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu content"
+      ]
+    },
+    "part:navigation-menu-item": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu item"
+      ]
+    },
+    "part:navigation-menu-link": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "a",
+      "searchTerms": [
+        "navigation menu link"
+      ]
+    },
+    "part:navigation-menu-list": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu list"
+      ]
+    },
+    "part:navigation-menu-popup": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu popup"
+      ]
+    },
+    "part:navigation-menu-positioner": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu positioner"
+      ]
+    },
+    "part:navigation-menu-trigger": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu trigger"
+      ]
+    },
+    "part:navigation-menu-viewport": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/8",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu viewport"
       ]
     },
     "part:popover-arrow": {
@@ -4473,6 +4558,151 @@
       "from": "component:meter",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-list"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-item"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-trigger"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-content"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-link"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-positioner"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-popup"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-viewport"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "uses",
+      "to": "foundation:icons"
     },
     {
       "from": "component:popover",

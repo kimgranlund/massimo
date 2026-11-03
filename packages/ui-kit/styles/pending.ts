@@ -13,7 +13,7 @@ export const pendingKeyframes = defineKeyframes({
 const FIELD_HEIGHT = 'calc(var(--h) + 1.75rem)';
 
 export const pending = defineGlobalStyles({
-  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-popover, ui-tooltip, ui-preview-card):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-popover, ui-tooltip, ui-preview-card, ui-navigation-menu):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
   ':is(ui-badge, ui-tag, ui-chip):not(:defined)': { display: 'inline-flex' },
@@ -30,6 +30,9 @@ export const pending = defineGlobalStyles({
   'ui-tooltip:not(:defined) > [data-part=popup]': { display: 'none' },
   'ui-preview-card:not(:defined)': { display: 'contents' },
   'ui-preview-card:not(:defined) > :not(:first-child)': { display: 'none' },
+  // A navigation menu reserves its list row; item contents wait for the element.
+  'ui-navigation-menu:not(:defined)': { display: 'block', minHeight: 'var(--h)' },
+  'ui-navigation-menu:not(:defined) [data-part=content]': { display: 'none' },
   'ui-tabs:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--u))' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
   // A toggle reserves the control height like a button.

@@ -17,9 +17,10 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/popover/element';
 import '@massimo/ui-kit/components/tooltip/element';
 import '@massimo/ui-kit/components/preview-card/element';
+import '@massimo/ui-kit/components/navigation-menu/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup,
+  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup, resolveNavigationMenu,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -177,7 +178,7 @@ export function GeometryPage({ params }: PageProps) {
       <Divider />
       <Section id="popups" title="Popups" note="Anchored popups sit 1u from their trigger on the preferred side (flipping when they do not fit), at least as wide as it; an arrow is a 2u triangle spanning the 1u gap. Surfaces come from the container ladder. Press a trigger to open it.">
         {(() => {
-          const p = resolvePopup('popover', theme), t = resolvePopup('tooltip', theme), k = resolvePopup('preview-card', theme);
+          const p = resolvePopup('popover', theme), t = resolvePopup('tooltip', theme), k = resolvePopup('preview-card', theme), nm = resolveNavigationMenu(theme);
           return (
             <>
               <SpecRow label="popover" values={[`offset ${pu(p.offset)} · arrow ${pu(p.arrowWidth)} × ${pu(p.arrowHeight)} · max width ${pu(p.maxWidth)}`, `padding ${px(p.paddingBlock)} · gap ${pu(p.gap)} · radius ${px(p.radius)} (card-sm)`]}>
@@ -188,6 +189,9 @@ export function GeometryPage({ params }: PageProps) {
               </SpecRow>
               <SpecRow label="preview card" values={[`padding ${px(k.paddingBlock)} · gap ${pu(k.gap)} · radius ${px(k.radius)} (card-md)`, `max width ${pu(k.maxWidth)} · opens on hover after 600 ms`]}>
                 <ui-preview-card><a href="#/geometry">Hover this link</a><strong>Preview card</strong><span>A medium card 1u below its link.</span></ui-preview-card>
+              </SpecRow>
+              <SpecRow label="navigation menu" values={[`list ${px(nm.listHeight)} · items ${px(nm.itemHeight)} · caret ${px(nm.caret)}`, `popup edge ${pu(nm.popupEdge)} · radius ${px(nm.popupRadius)} · links ${px(nm.linkHeight)}`]}>
+                <ui-navigation-menu label="Geometry specimen"><div data-part="item" {...({ label: 'Pages' } as Record<string, string>)}><a href="#/geometry">Geometry</a><a href="#/colors">Colors</a></div><div data-part="item"><a data-part="link" href="#/motion">Motion</a></div></ui-navigation-menu>
               </SpecRow>
             </>
           );

@@ -26,6 +26,7 @@ import { tabs } from './tabs/tabs.recipe.ts';
 import { popover } from './popover/popover.recipe.ts';
 import { tooltip } from './tooltip/tooltip.recipe.ts';
 import { previewCard } from './preview-card/preview-card.recipe.ts';
+import { navigationMenu } from './navigation-menu/navigation-menu.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, popover, tooltip, previewCard };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, popover, tooltip, previewCard, navigationMenu };
 

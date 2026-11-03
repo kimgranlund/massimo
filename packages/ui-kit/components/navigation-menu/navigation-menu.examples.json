@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "navigation-menu",
+  "title": "Navigation menu",
+  "summary": "A bar of site links whose items open panels of more links.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Items with contents and a plain link",
+      "subject": "component:navigation-menu",
+      "markup": "<ui-navigation-menu label=\"Main\"><div data-part=\"item\" label=\"Docs\"><a href=\"/docs/intro\">Introduction</a><a href=\"/docs/geometry\">Geometry</a></div><div data-part=\"item\" label=\"Components\"><a href=\"/kit/button\">Button</a><a href=\"/kit/select\">Select</a></div><div data-part=\"item\"><a data-part=\"link\" href=\"/blog\">Blog</a></div></ui-navigation-menu>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts: a list of items, triggers and contents",
+      "subject": "component:navigation-menu",
+      "markup": "<ui-navigation-menu label=\"Main\"><ul data-part=\"list\"><li data-part=\"item\" value=\"learn\"><div data-part=\"trigger\"><i slot=\"leading\" name=\"book-open\"></i>Learn</div><div data-part=\"content\"><a href=\"/guides\" active>Guides</a><a href=\"/api\" close-on-click>API</a></div></li><li data-part=\"item\"><a data-part=\"link\" href=\"/about\">About</a></li></ul></ui-navigation-menu>"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical, contents to the side",
+      "subject": "component:navigation-menu",
+      "markup": "<ui-navigation-menu label=\"Sections\" orientation=\"vertical\"><div data-part=\"item\" label=\"Products\"><a href=\"/p/one\">One</a><a href=\"/p/two\">Two</a></div><div data-part=\"item\"><a data-part=\"link\" href=\"/pricing\">Pricing</a></div></ui-navigation-menu>"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup, resolveNavigationMenu, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -196,6 +196,12 @@ export const rows: Row[] = [
   { id: 'popup.previewCard.radius', family: 'popup', element: 'preview card popup', quantity: 'radius', formula: '4u * min(1, s)', value: (u) => resolvePopup('preview-card', { unit: u }).radius, status: 'implemented', notes: 'container family: at most the padding' },
   { id: 'popup.previewCard.gap', family: 'popup', element: 'preview card popup', quantity: 'gap', formula: '2u', value: (u) => resolvePopup('preview-card', { unit: u }).gap, status: 'implemented', notes: 'the collection gap; the gap attribute wins' },
   { id: 'popup.previewCard.maxWidth', family: 'popup', element: 'preview card positioner', quantity: 'max width', formula: 'min(available width, 80u)', value: (u) => resolvePopup('preview-card', { unit: u }).maxWidth, status: 'implemented', notes: 'min width = the link width' },
+  { id: 'popup.navigation.listHeight', family: 'popup', element: 'navigation menu list', quantity: 'list row height', formula: '7u + 2D = 8u', value: (u) => resolveNavigationMenu({ unit: u }).listHeight, status: 'implemented', notes: 'a composite without a fill: edge D = max(B, 0.5u), padding D - B' },
+  { id: 'popup.navigation.itemHeight', family: 'popup', element: 'navigation menu trigger, link', quantity: 'trigger and link height', formula: '6u + 2Ic = 7u', value: (u) => resolveNavigationMenu({ unit: u }).itemHeight, status: 'implemented', notes: 'composite options; labels 2u from a bare edge, 1u beside a slot' },
+  { id: 'popup.navigation.caret', family: 'popup', element: 'navigation menu trigger', quantity: 'caret icon', formula: 'icon sm: min(font - 0.5u, 6u)', value: (u) => resolveNavigationMenu({ unit: u }).caret, status: 'implemented', notes: 'turns 180° while open (toggle intent)' },
+  { id: 'popup.navigation.itemRadius', family: 'popup', element: 'navigation menu trigger, link', quantity: 'radius', formula: 'min(7u / 2, list radius - D)', value: (u) => resolveNavigationMenu({ unit: u }).itemRadius, status: 'implemented', notes: 'concentric with the list row' },
+  { id: 'popup.navigation.popupPadding', family: 'popup', element: 'navigation menu popup', quantity: 'padding', formula: 'D - B (D = max(B, 0.5u))', value: (u) => resolveNavigationMenu({ unit: u }).popupPadding, status: 'implemented', notes: 'a composite container; its links are 7u composite options' },
+  { id: 'popup.navigation.popupRadius', family: 'popup', element: 'navigation menu popup', quantity: 'radius', formula: '(3 + 0.5)u * s', value: (u) => resolveNavigationMenu({ unit: u }).popupRadius, status: 'implemented', notes: 'concentric with its 3u options' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

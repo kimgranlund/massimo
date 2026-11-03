@@ -27,7 +27,8 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/popover/element';
 import '@massimo/ui-kit/components/tooltip/element';
 import '@massimo/ui-kit/components/preview-card/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/navigation-menu/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup, resolveNavigationMenu } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -98,7 +99,8 @@ for (const c of cases) {
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
     <div style="height:${48 * c.unit}px"><ui-popover id="popA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-button data-part="trigger">Open popover</ui-button><div data-part="popup"><h2 data-part="title">T</h2><p data-part="description">D</p><div data-part="arrow"></div></div></ui-popover>
       <ui-tooltip id="tipA" side="bottom" align="center"><ui-button data-part="trigger">Tip</ui-button><div data-part="popup">Tooltip text<div data-part="arrow"></div></div></ui-tooltip>
-      <ui-preview-card id="pcA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><a data-part="trigger" href="#x">Preview</a><div data-part="popup"><strong>Card</strong><span>Body</span><div data-part="arrow"></div></div></ui-preview-card></div>
+      <ui-preview-card id="pcA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><a data-part="trigger" href="#x">Preview</a><div data-part="popup"><strong>Card</strong><span>Body</span><div data-part="arrow"></div></div></ui-preview-card>
+      <ui-navigation-menu id="navA" label="N"><div data-part="item" value="a"><div data-part="trigger"><span slot="leading"></span>Menu</div><div data-part="content"><a href="#a">Link one</a><a href="#b">Link two</a></div></div><div data-part="item"><a data-part="link" href="#c">Plain</a></div></ui-navigation-menu></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -516,6 +518,37 @@ for (const c of cases) {
     const [a, b] = el.popup.children;
     checks['previewCard.gap'] = [r2(rect(b).top - rect(a).bottom), rp.gap];
     el.open = false;
+  }
+  // Navigation menu: an 8u composite list of 7u triggers and links; the popup a composite container 1u below the open trigger (resolveNavigationMenu).
+  {
+    const el = $('navA'), rn = resolveNavigationMenu({ ...g, gap: undefined }), [item, plain] = el.items, t = item.trigger;
+    for (const p of [el.positioner, el.popup, item.content]) p.style.transition = 'none';
+    checks['nav.list.height'] = [r2(rect(el.list).height), rn.listHeight];
+    checks['nav.list.padding'] = [px(cs(el.list).paddingTop) + px(cs(el.list).borderTopWidth), rn.listEdge];
+    checks['nav.list.gap'] = [r2(rect(plain.link).left - rect(t).right), rn.listGap];
+    checks['nav.trigger.height'] = [r2(rect(t).height), rn.itemHeight];
+    checks['nav.trigger.radius'] = [px(cs(t).borderTopLeftRadius), rn.itemRadius];
+    checks['nav.trigger.font'] = [px(cs(t).fontSize), rn.fontSize];
+    checks['nav.trigger.lead.slot'] = [r2(rect(part(t, 'leading')).width), rn.slot];
+    checks['nav.trigger.label.start'] = [px(cs(part(t, 'contents')).paddingLeft), ctl.contents.paddingInline];
+    checks['nav.trigger.label.end'] = [px(cs(part(t, 'contents')).paddingRight), rn.labelEnd];
+    checks['nav.trigger.caret'] = [r2(rect(part(t, 'trailing').firstElementChild).width), rn.caret];
+    checks['nav.link.height'] = [r2(rect(plain.link).height), rn.itemHeight];
+    checks['nav.link.label'] = [px(cs(part(plain.link, 'contents')).paddingLeft), rn.labelStart];
+    t.scrollIntoView({ block: 'center' });
+    el.value = 'a';
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    const pr = rect(el.popup), links = item.content.querySelectorAll('a');
+    checks['nav.offset'] = [r2(pr.top - rect(t).bottom), rn.offset];
+    checks['nav.popup.start'] = [r2(pr.left), r2(rect(t).left)];
+    checks['nav.popup.padding'] = [px(cs(el.popup).paddingTop) + px(cs(el.popup).borderTopWidth), rn.popupEdge];
+    checks['nav.popup.radius'] = [px(cs(el.popup).borderTopLeftRadius), rn.popupRadius];
+    checks['nav.popup.width'] = [r2(pr.width), r2(rect(item.content).width + 2 * rn.popupEdge)];
+    checks['nav.popup.height'] = [r2(pr.height), r2(rect(item.content).height + 2 * rn.popupEdge)];
+    checks['nav.content.link.height'] = [r2(rect(links[0]).height), rn.linkHeight];
+    checks['nav.content.link.radius'] = [px(cs(links[0]).borderTopLeftRadius), rn.linkRadius];
+    checks['nav.content.gap'] = [r2(rect(links[1]).top - rect(links[0]).bottom), rn.popupGap];
+    el.value = '';
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

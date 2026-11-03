@@ -65,7 +65,9 @@
     "./components/tooltip/element": "./components/tooltip/tooltip.element.ts",
     "./components/tooltip/react": "./components/tooltip/tooltip.react.tsx",
     "./components/preview-card/element": "./components/preview-card/preview-card.element.ts",
-    "./components/preview-card/react": "./components/preview-card/preview-card.react.tsx"
+    "./components/preview-card/react": "./components/preview-card/preview-card.react.tsx",
+    "./components/navigation-menu/element": "./components/navigation-menu/navigation-menu.element.ts",
+    "./components/navigation-menu/react": "./components/navigation-menu/navigation-menu.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

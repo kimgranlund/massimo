@@ -159,7 +159,7 @@
     "data-active": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The active tab (Base UI Tabs.Tab; aria-selected for semantics)."
+      "meaning": "The active tab (Base UI Tabs.Tab; aria-selected for semantics); the navigation link to the current page (Base UI NavigationMenu.Link; aria-current=page)."
     },
     "data-hidden": {
       "baseUi": true,
@@ -169,7 +169,7 @@
     "data-activation-direction": {
       "baseUi": true,
       "condition": null,
-      "meaning": "Where the active tab moved last: left, right, up, down, or none before any change (Base UI Tabs; root, list, tabs, indicator, panels)."
+      "meaning": "Where the active tab moved last: left, right, up, down, or none before any change (Base UI Tabs; root, list, tabs, indicator, panels); the side the open navigation content came from: left, right, up or down (Base UI NavigationMenu.Content; absent when the menu opened)."
     },
     "data-panel-open": {
       "baseUi": true,
@@ -606,6 +606,40 @@
         "data-align",
         "data-uncentered"
       ]
+    },
+    "ui-navigation-menu": {
+      "host": [
+        "data-orientation"
+      ],
+      "list": [
+        "data-orientation"
+      ],
+      "item": [],
+      "trigger": [
+        "data-popup-open",
+        "data-disabled"
+      ],
+      "content": [
+        "data-open",
+        "data-closed",
+        "data-activation-direction"
+      ],
+      "link": [
+        "data-active"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ]
     }
   },
   "native": {
@@ -687,7 +721,8 @@
         "ui-accordion",
         "ui-popover",
         "ui-tooltip",
-        "ui-preview-card"
+        "ui-preview-card",
+        "ui-navigation-menu"
       ]
     },
     "disabled": {
