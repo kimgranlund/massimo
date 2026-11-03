@@ -66,7 +66,7 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76
 - mono: `ui-monospace, "SF Mono", Menlo, Consolas, monospace`
 - controls: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`
 
-Display, the headings and title take the strong text color `fg.strong` (the neutral endpoint: black in light, white in dark; [color](color.md#roles)); every other role inherits its color.
+Display, the headings and title take the strong text color `fg.strong` (the neutral endpoint: black in light, white in dark; [color](color.md#roles)); every other role inherits its color. A theme remaps any role (`typography.colors`: strong, default, muted, subtle, primary or inherit; `TEXT_COLORS`), emitted as `--ui-type-color-<role>`; the jig's Typography tab has a Text colors menu per role and the Typography page lists every text color token with the roles that use it.
 
 ## Using a role
 

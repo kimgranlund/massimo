@@ -11,7 +11,7 @@ import '@massimo/ui-kit/components/range/element';
 import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, lintTheme, type Finding, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
-import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
+import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens';
 import { ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
 import { navigate, useHashRoute } from '../pages/route.ts';
 import { HomePage } from '../pages/Home.tsx';
@@ -87,6 +87,7 @@ export function App() {
   const [icons, setIcons] = useState('phosphor');
   const [voices, setVoices] = useState<VoiceMap>(DEFAULT_VOICES);
   const [faces, setFaces] = useState<FaceMap>(FONT_FAMILIES);
+  const [typeColors, setTypeColors] = useState<Record<TypeRoleName, TextColor>>(DEFAULT_TYPE_COLORS);
   const [spectrum, setSpectrum] = useState<SpectrumSettings>(SPECTRUM_DEFAULTS);
   const [roles, setRoles] = useState<Roles>(DEFAULT_ROLES);
   // White and black: a neutral step (white from the light ramp, black from the dark ramp; 1 by default) or 'pure'.
@@ -115,6 +116,7 @@ export function App() {
     ...Object.entries(diffFromDefaults(params)).map(([k, v]) => `${paramVar(k as ParamName)}: ${v};`),
     ...Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st).map(([f, st]) => `--fonts-${f}: ${st};`),
     ...[...SERIF_REGULAR_VOICES].filter((v) => isSerifStack(faces[voices[v]])).map((v) => `--font-voice-${v}-weight: 400;`),
+    ...(Object.entries(typeColors) as [TypeRoleName, TextColor][]).filter(([r, c]) => DEFAULT_TYPE_COLORS[r] !== c).map(([r, c]) => `${typeColorVar(r)}: ${TEXT_COLORS[c]};`),
   ];
   // The canvas sets its own unit, ladder, motion and elevation params, so the u-based, motion and elevation Panda tokens recompute there too.
   if (canvasDecls.length) canvasDecls.push(unitTokenCss(), motionTokenCss(), elevationTokenCss());
@@ -144,14 +146,14 @@ export function App() {
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
     color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: 1, black: 1 }) }),
-    typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES) }),
+    typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
   }) as unknown as Theme;
   // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
   const [findings, setFindings] = useState<Finding[]>([]);
   useEffect(() => {
     const t = setTimeout(() => { try { setFindings(lintTheme(themeObject()).findings); } catch (err) { setStatus(`Lint failed: ${err}`); } }, 400);
     return () => clearTimeout(t);
-  }, [params, icons, scheme, spectrum, roles, endpoints, faces, voices]);
+  }, [params, icons, scheme, spectrum, roles, endpoints, faces, voices, typeColors]);
   const count = (sev: Finding['severity']) => findings.filter((f) => f.severity === sev).length;
   const lintSummary = findings.length ? `Checks: ${count('error')} errors, ${count('warning')} warnings, ${count('info')} info` : 'Checks: clean';
 
@@ -162,6 +164,7 @@ export function App() {
     setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
     setEndpoints({ white: 1, black: 1, ...(t.color?.endpoints ?? {}) });
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
+    setTypeColors({ ...DEFAULT_TYPE_COLORS, ...(t.typography?.colors ?? {}) } as Record<TypeRoleName, TextColor>);
   };
   const loadTheme = async () => {
     let text = '';
@@ -175,7 +178,7 @@ export function App() {
   };
 
   const reset = () => {
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: 1, black: 1 });
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: 1, black: 1 }); setTypeColors(DEFAULT_TYPE_COLORS);
     setStatus('Reset to defaults');
   };
 
@@ -192,7 +195,7 @@ export function App() {
   const resetRef = useEvent('click', reset);
   const randomRef = useEvent('click', () => setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)));
 
-  const pageProps: PageProps = { params, spectrum: generated, voices, faces };
+  const pageProps: PageProps = { params, spectrum: generated, voices, faces, typeColors };
   const Content = route === 'components' ? null : PAGES[route];
 
   const geometry = (
@@ -249,6 +252,15 @@ export function App() {
             <Group title="Faces">
               {FACES.map((f) => (
                 <Select key={f} label={f[0].toUpperCase() + f.slice(1)} value={faces[f]} options={(FACE_STACKS[f].some(([, st]) => st === faces[f]) ? FACE_STACKS[f] : [...FACE_STACKS[f], ['Custom', faces[f]] as [string, string]]).map(([n, st]) => [st, n] as [string, string])} onValue={(v) => setFaces((m) => ({ ...m, [f]: v }))} />
+              ))}
+            </Group>
+          )}
+          {tab === 'typography' && (
+            <Group title="Text colors">
+              {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((r) => (
+                <Select key={r} label={TYPE_ROLES[r].label} value={typeColors[r]} options={(Object.keys(TEXT_COLORS) as TextColor[]).map((c) => [c, c] as [string, string])}
+                  onValue={(v) => setTypeColors((m) => ({ ...m, [r]: v as TextColor }))}
+                  swatch={(c) => c === 'inherit' ? 'transparent' : TEXT_COLORS[c as TextColor]} />
               ))}
             </Group>
           )}

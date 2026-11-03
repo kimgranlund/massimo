@@ -69,7 +69,9 @@ function useDetection(faces: FaceMap) {
 
 const Status = ({ s }: { s?: FeatureStatus }) => {
   const [text, cls] = STATUS[s ?? 'pending'];
-  return <ui-badge className={cls}>{text}</ui-badge>;
+  // key: a new badge per status, so React sets className before the element upgrades; changing
+  // className on an upgraded ui-badge would replace the recipe classes it put on itself.
+  return <ui-badge key={text} className={cls}>{text}</ui-badge>;
 };
 
 export function Numerals({ voices, faces }: { voices: VoiceMap; faces: FaceMap }) {

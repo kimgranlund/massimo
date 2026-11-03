@@ -1,7 +1,7 @@
 // Page contract for the jig's content area. Every page renders from the same live theme (the jig
 // panel only edits tokens), so a page receives the inputs below and nothing about which panel tab
 // is open. Routes live in the URL hash (#/<route>), see ROUTES.
-import type { ThemeParams } from '@massimo/ui-kit/tokens';
+import type { TextColor, ThemeParams, TypeRoleName } from '@massimo/ui-kit/tokens';
 import type { FaceMap, SpectrumPayload, VoiceMap } from '../protocol.ts';
 
 export interface PageProps {
@@ -9,6 +9,8 @@ export interface PageProps {
   spectrum?: SpectrumPayload;
   voices: VoiceMap;
   faces: FaceMap;
+  /** Each type role's text color (theme typography.colors). */
+  typeColors: Record<TypeRoleName, TextColor>;
 }
 
 /** Content pages, in menu order. `home` is the default route (#/ or an unknown hash). */

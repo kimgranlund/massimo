@@ -3,9 +3,9 @@
 import { Fragment } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { numeric } from '../../styled-system/patterns/index.js';
-import { TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from '@massimo/ui-kit/tokens';
+import { TEXT_COLORS, TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
-import { CQ_MD, Divider, Page, Section, fmt, metrics, rowLabel } from './shared.tsx';
+import { CQ_MD, Divider, Page, Section, dataTable, fmt, metrics, nameCell, noteCell, rowLabel, tableScroller } from './shared.tsx';
 import { Numerals } from './TypographyNumerals.tsx';
 
 const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
@@ -84,7 +84,7 @@ const SAMPLES: Record<TypeRoleName, string> = {
   'control-small': 'Details',
 };
 
-export function TypographyPage({ params, voices, faces }: PageProps) {
+export function TypographyPage({ params, voices, faces, typeColors }: PageProps) {
   const opts = { unit: params.unit, ratio: params['type-ratio'], rhythm: params['type-rhythm'], voices, faces };
   const grid = params['type-rhythm'] * params.unit;
   return (
@@ -123,6 +123,10 @@ export function TypographyPage({ params, voices, faces }: PageProps) {
         })}
       </Section>
       <Divider />
+      <Section id="text-colors" title="Text colors" note="Every text color token, on the surface it is meant for, and the type roles that use it. Display, headings and titles take fg.strong (the neutral endpoint: black in light, white in dark); the other roles inherit, usually fg. Remap any role in the jig's Typography tab, Text colors (theme typography.colors).">
+        <TextColors typeColors={typeColors} />
+      </Section>
+      <Divider />
       <Section id="article" title="In context" note="A short article set entirely with the roles.">
         <article className={article}>
           {ARTICLE.map(([role, Tag, text]) => (
@@ -138,5 +142,57 @@ export function TypographyPage({ params, voices, faces }: PageProps) {
         <Numerals voices={voices} faces={faces} />
       </Section>
     </Page>
+  );
+}
+
+// ── Text colors: the fg tokens, where each sits, and which type roles use it ──
+const swatchText = css({ display: 'inline-block', paddingInline: '2', paddingBlock: '1', borderRadius: 'sm', fontWeight: 'semibold', fontFamily: 'sans' });
+const TEXT_TOKENS: { token: string; css: string; on?: string; use: string; mapped?: keyof typeof TEXT_COLORS }[] = [
+  { token: 'fg.strong', css: 'var(--colors-fg-strong)', use: 'Display, headings, titles: black in light, white in dark (the neutral endpoints)', mapped: 'strong' },
+  { token: 'fg', css: 'var(--colors-fg)', use: 'Body text and controls (neutral 12)', mapped: 'default' },
+  { token: 'fg.muted', css: 'var(--colors-fg-muted)', use: 'Secondary text, descriptions, captions (neutral 11)', mapped: 'muted' },
+  { token: 'fg.subtle', css: 'var(--colors-fg-subtle)', use: 'Placeholders, disabled hints (neutral 8)', mapped: 'subtle' },
+  { token: 'primary.fg', css: 'var(--colors-primary-fg)', use: 'Links, the active navigation link, selected option text in popups (primary 11)', mapped: 'primary' },
+  { token: 'critical.fg · warning.fg · success.fg · info.fg', css: 'var(--colors-critical-fg)', use: 'Feedback text: errors, warnings, success, notices (each role\'s step 11)' },
+  { token: 'fg.onSolid', css: 'var(--colors-fg-on-solid)', on: 'var(--colors-primary-solid)', use: 'Text on a solid fill: primary buttons, checked boxes (the APCA choice for primary 9)' },
+  { token: 'fg.selected', css: 'var(--colors-fg-selected)', on: 'var(--colors-bg-selected)', use: 'The selected option or segment on bg.selected' },
+  { token: 'fg.inverse', css: 'var(--colors-fg-inverse)', on: 'var(--colors-bg-inverse)', use: 'Tooltips on bg.inverse' },
+];
+
+function TextColors({ typeColors }: { typeColors: PageProps['typeColors'] }) {
+  const byColor = (c?: keyof typeof TEXT_COLORS) => c ? (Object.keys(TYPE_ROLES) as TypeRoleName[]).filter((r) => typeColors[r] === c).map((r) => TYPE_ROLES[r].label) : [];
+  const inheriting = byColor('inherit');
+  return (
+    <>
+      <div className={tableScroller}>
+        <table className={dataTable} aria-label="Text color tokens">
+          <thead><tr><th>Token</th><th>Sample</th><th>Use</th><th>Type roles</th></tr></thead>
+          <tbody>
+            {TEXT_TOKENS.map((t) => (
+              <tr key={t.token}>
+                <td className={nameCell}>{t.token}</td>
+                <td><span className={swatchText} style={{ color: t.css, background: t.on ?? 'transparent' }}>Aa Text</span></td>
+                <td className={noteCell}>{t.use}</td>
+                <td className={noteCell}>{[...byColor(t.mapped), ...(t.mapped === 'default' && inheriting.length ? [`(inherits) ${inheriting.join(', ')}`] : [])].join(', ') || '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className={tableScroller}>
+        <table className={dataTable} aria-label="Type roles and their text colors">
+          <thead><tr><th>Type role</th><th>Text color</th><th>Specimen</th></tr></thead>
+          <tbody>
+            {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((r) => (
+              <tr key={r}>
+                <td className={nameCell}>{TYPE_ROLES[r].label}</td>
+                <td className={noteCell}>{typeColors[r] === 'inherit' ? 'inherit (fg here)' : typeColors[r] === 'default' ? 'fg' : typeColors[r] === 'primary' ? 'primary.fg' : `fg.${typeColors[r]}`}</td>
+                <td><span data-type={r}>{TYPE_ROLES[r].label}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }

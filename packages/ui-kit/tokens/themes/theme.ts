@@ -13,7 +13,7 @@ import { THEME_NAME } from './validate.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
 import { ROLE_NAMES, type RoleName } from '../colors/spectrum/index.ts';
-import { FACES, VOICES, type Face, type Voice } from '../typography/resolve.ts';
+import { FACES, VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 
 export const THEME_SCHEMA_VERSION = 1;
 export const SCHEMES = ['auto', 'light', 'dark'] as const;
@@ -28,7 +28,7 @@ export interface Theme {
   scheme?: ThemeScheme;
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 1 by default, or 'pure' (#fff, #000). */
   color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' } };
-  typography?: { faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>> };
+  typography?: { faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
   /** Reserved: L0 intent (subject, audience, character words, signature). */
   intent?: Record<string, unknown>;
   /** Reserved: L1 character, one descriptor per concept. */
@@ -95,8 +95,15 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.typography !== undefined) {
     if (!isObject(input.typography)) err('typography', 'must be an object');
     else {
-      for (const k of Object.keys(input.typography)) if (k !== 'faces' && k !== 'voices') err(`typography.${k}`, 'unknown section');
-      const { faces, voices } = input.typography;
+      for (const k of Object.keys(input.typography)) if (k !== 'faces' && k !== 'voices' && k !== 'colors') err(`typography.${k}`, 'unknown section');
+      const { faces, voices, colors } = input.typography;
+      if (colors !== undefined) {
+        if (!isObject(colors)) err('typography.colors', 'must be an object');
+        else for (const [k, v] of Object.entries(colors)) {
+          if (!(k in TYPE_ROLES)) err(`typography.colors.${k}`, 'unknown type role');
+          else if (!(String(v) in TEXT_COLORS)) err(`typography.colors.${k}`, `must be one of ${Object.keys(TEXT_COLORS).join(', ')}`);
+        }
+      }
       if (faces !== undefined) {
         if (!isObject(faces)) err('typography.faces', 'must be an object');
         else for (const [k, v] of Object.entries(faces)) {
@@ -148,6 +155,7 @@ export function themeJsonSchema() {
       typography: strict({
         faces: strict(Object.fromEntries(FACES.map((f) => [f, { type: 'string', pattern: FONT_STACK.source }]))),
         voices: strict(Object.fromEntries(VOICES.map((v) => [v, { enum: [...FACES] }]))),
+        colors: strict(Object.fromEntries(Object.keys(TYPE_ROLES).map((r) => [r, { enum: Object.keys(TEXT_COLORS) }]))),
       }),
       intent: { type: 'object' },
       character: { type: 'object', additionalProperties: { type: 'string' } },

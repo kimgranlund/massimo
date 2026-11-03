@@ -90,6 +90,19 @@ export const TYPE_ROLES = {
 } as const satisfies Record<string, TypeRole>;
 export type TypeRoleName = keyof typeof TYPE_ROLES;
 
+/**
+ * Text colors a type role can take (theme `typography.colors`, the jig's Text colors): the fg tokens
+ * and the primary role's text. inherit keeps the surrounding color. Strong roles (display, headings,
+ * title) default to strong; the others inherit.
+ */
+export const TEXT_COLORS = {
+  strong: 'var(--colors-fg-strong)', default: 'var(--colors-fg)', muted: 'var(--colors-fg-muted)', subtle: 'var(--colors-fg-subtle)', primary: 'var(--colors-primary-fg)', inherit: 'inherit',
+} as const;
+export type TextColor = keyof typeof TEXT_COLORS;
+export const DEFAULT_TYPE_COLORS = Object.fromEntries(Object.entries(TYPE_ROLES).map(([k, r]) => [k, ('strong' in r && r.strong) ? 'strong' : 'inherit'])) as Record<TypeRoleName, TextColor>;
+/** The variable a theme sets to recolor a type role. */
+export const typeColorVar = (role: TypeRoleName) => `--ui-type-color-${role}`;
+
 /** Named ratios from massimo-ui. */
 export const TYPE_RATIOS: [number, string][] = [[1, 'Product UI'], [1.125, 'Major second'], [1.2, 'Minor third'], [1.25, 'Major third'], [1.333, 'Perfect fourth'], [1.5, 'Perfect fifth']];
 

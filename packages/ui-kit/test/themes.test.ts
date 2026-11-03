@@ -101,3 +101,16 @@ test('theme lint: every contract rule has a predicate, and its failing fixture f
   assert.equal(r.ok, false, 'an error fails the theme');
   assert.equal(r.findings[0].severity, 'error', 'errors first');
 });
+
+test('typography.colors maps a type role to a text color: validated, emitted as --ui-type-color-<role>', async () => {
+  const { DEFAULT_TYPE_COLORS } = await import('../tokens/typography/resolve.ts');
+  assert.equal(DEFAULT_TYPE_COLORS['heading-1'], 'strong');
+  assert.equal(DEFAULT_TYPE_COLORS.body, 'inherit');
+  const t = { schemaVersion: 1 as const, name: 'tc', typography: { colors: { caption: 'muted' as const, 'heading-2': 'primary' as const } } };
+  assert.ok(validateThemeObject(t).ok);
+  assert.equal(validateThemeObject({ ...t, typography: { colors: { caption: 'pink' } } }).ok, false);
+  assert.equal(validateThemeObject({ ...t, typography: { colors: { footer: 'muted' } } }).ok, false);
+  const root = themeCss({ tc: t })[':root[data-ui-theme="tc"]'];
+  assert.equal(root['--ui-type-color-caption'], 'var(--colors-fg-muted)');
+  assert.equal(root['--ui-type-color-heading-2'], 'var(--colors-primary-fg)');
+});

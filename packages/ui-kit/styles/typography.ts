@@ -34,7 +34,7 @@ export const numericProperties = Object.fromEntries([NUMERIC_FAMILY_VAR, ...NUME
 const U = 'calc(var(--ui-unit) * 1px)';
 const BASE = `calc(10px + ${U})`;
 
-function roleStyle(r: TypeRole) {
+function roleStyle(name: string, r: TypeRole) {
   const size = r.u !== undefined ? `calc(${r.u} * ${U})` : `calc(${BASE} * pow(var(--ui-type-ratio), ${r.step}))`;
   // Round up to the rhythm unit; a zero rhythm falls back to a 0.01px grid (natural height).
   // RHYTHM_TOLERANCE of a step absorbs float error (Firefox: 12.5px × 1.2 computes above 15px).
@@ -47,17 +47,19 @@ function roleStyle(r: TypeRole) {
     fontWeight: SERIF_REGULAR_VOICES.has(r.voice) ? `var(--font-voice-${r.voice}-weight, ${r.weight})` : String(r.weight),
     letterSpacing: `${r.tracking}em`,
     textTransform: r.upper ? 'uppercase' : 'none',
-    // Display, headings and titles take the strong text color, the neutral endpoint (fg.strong).
-    ...(r.strong ? { color: 'var(--colors-fg-strong)' } : {}),
+    // The role's text color (theme typography.colors): display, headings and titles default to the
+    // strong color (fg.strong, the neutral endpoint); the others inherit unless a theme maps them (an
+    // unset variable leaves an inherited property inheriting).
+    color: r.strong ? `var(--ui-type-color-${name}, var(--colors-fg-strong))` : `var(--ui-type-color-${name})`,
   };
 }
 
 const roles = Object.entries(TYPE_ROLES) as [string, TypeRole][];
 
-export const textStyles = defineTextStyles(Object.fromEntries(roles.map(([name, r]) => [name, { value: roleStyle(r) }])));
+export const textStyles = defineTextStyles(Object.fromEntries(roles.map(([name, r]) => [name, { value: roleStyle(name, r) }])));
 
 export const typography = defineGlobalStyles({
-  ...Object.fromEntries(roles.map(([name, r]) => [`[data-type="${name}"]`, roleStyle(r)])),
+  ...Object.fromEntries(roles.map(([name, r]) => [`[data-type="${name}"]`, roleStyle(name, r)])),
   // data-font-<voice>="<face>": repoint a voice for a subtree. Display and heading voices drop
   // to regular weight on the serif face (and on a display face set to a serif stack via the jig).
   ...Object.fromEntries(VOICES.flatMap((v) => FACES.map((f) => [`[data-font-${v}="${f}"]`, {

@@ -9,7 +9,7 @@ import { THEME_NAME } from './validate.ts';
 import type { Theme } from './theme.ts';
 import { normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
 import { endpointVars, generateSpectrum, ramps, resolveRoles, roleVariables } from '../colors/spectrum/index.ts';
-import { SERIF_REGULAR_VOICES, type Voice } from '../typography/resolve.ts';
+import { SERIF_REGULAR_VOICES, TEXT_COLORS, typeColorVar, type Voice, type TypeRoleName } from '../typography/resolve.ts';
 
 export * from './params.ts';
 export * from './validate.ts';
@@ -31,6 +31,7 @@ export function themeVars(t: Theme): Record<string, string> {
     out[`--font-voice-${voice}`] = `var(--fonts-${face})`;
     if (SERIF_REGULAR_VOICES.has(voice as Voice)) out[`--font-voice-${voice}-weight`] = face === 'serif' ? '400' : 'initial';
   }
+  for (const [role, c] of Object.entries(t.typography?.colors ?? {})) out[typeColorVar(role as TypeRoleName)] = TEXT_COLORS[c!];
   return out;
 }
 
