@@ -12,8 +12,10 @@ import { menuNavigate, menuItems } from '../dom/index.ts';
 
 await import('../components/menu/menu.element.ts');
 await import('../components/context-menu/context-menu.element.ts');
+await import('../components/menubar/menubar.element.ts');
 const { Menu } = await loadTsx(new URL('../components/menu/menu.react.tsx', import.meta.url));
 const { ContextMenu } = await loadTsx(new URL('../components/context-menu/context-menu.react.tsx', import.meta.url));
+const { Menubar } = await loadTsx(new URL('../components/menubar/menubar.react.tsx', import.meta.url));
 
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
 const contract = JSON.parse(readFileSync(new URL('../contracts/states.json', import.meta.url), 'utf8'));
@@ -491,4 +493,145 @@ test('ContextMenu (React): contextmenu and Shift+F10 open at a point with onOpen
   assert.deepEqual(calls, [[true, 'trigger-press'], [false, 'escape-key'], [true, 'trigger-press']]);
   await act(async () => root.unmount());
   box.remove();
+});
+
+// ── Menubar ──
+
+const BAR = '<ui-menubar label="App"><ui-menu label="File"><div data-part="item">New</div><div data-part="item">Open</div></ui-menu><ui-menu label="Edit" disabled><div data-part="item">Undo</div></ui-menu><ui-menu label="View"><div data-part="item">Zoom</div></ui-menu></ui-menubar>';
+
+test('menubar: role=menubar; its menus\' triggers are menuitems with one tab stop; arrows wrap and skip disabled menus', async () => {
+  const bar = await wc(BAR) as any;
+  await tick();
+  const [file, edit, view] = bar.menus as any[];
+  assert.equal(bar.getAttribute('role'), 'menubar');
+  assert.equal(bar.getAttribute('aria-orientation'), 'horizontal');
+  assert.equal(bar.getAttribute('aria-label'), 'App');
+  assert.deepEqual(names(bar), ['data-orientation']);
+  assert.equal(kit(bar), 'ui-menubar__root');
+  assert.deepEqual([file, edit, view].map((m) => m.trigger.getAttribute('role')), ['menuitem', 'menuitem', 'menuitem']);
+  assert.deepEqual([file, edit, view].map((m) => m.trigger.getAttribute('tabindex')), ['0', '-1', '-1']);
+  assert.equal(file.trigger.querySelector('[data-part=trailing] i'), null, 'bar triggers have no caret');
+  file.trigger.focus();
+  key(file.trigger, 'ArrowRight'); await tick();
+  assert.equal(document.activeElement, view.trigger, 'skips the disabled menu');
+  assert.deepEqual([file, edit, view].map((m) => m.trigger.getAttribute('tabindex')), ['-1', '-1', '0']);
+  key(view.trigger, 'ArrowRight'); await tick();
+  assert.equal(document.activeElement, file.trigger, 'wraps');
+  key(file.trigger, 'End'); await tick();
+  assert.equal(document.activeElement, view.trigger);
+  key(view.trigger, 'Home'); await tick();
+  assert.equal(document.activeElement, file.trigger);
+  assert.equal(bar.querySelector(NATIVE), null, 'no native form elements');
+  bar.parentElement.remove();
+});
+
+test('menubar: ArrowDown opens a menu on its first item; ArrowRight inside it switches menus (sibling-open); hovering another trigger opens it', async () => {
+  const bar = await wc(BAR) as any;
+  await tick();
+  const [file, , view] = bar.menus as any[], reasons: string[] = [];
+  bar.addEventListener('openchange', (e: CustomEvent) => reasons.push(`${(e.target as any).label}:${e.detail.open}:${e.detail.reason}`));
+  file.trigger.focus();
+  key(file.trigger, 'ArrowDown'); await tick(); await tick();
+  assert.equal(file.open, true);
+  assert.equal(document.activeElement, file.items[0]);
+  assert.deepEqual(names(bar), ['data-has-submenu-open', 'data-orientation']);
+  key(file.items[0], 'ArrowRight'); await tick(); await tick(); await tick();
+  assert.equal(file.open, false);
+  assert.equal(view.open, true);
+  assert.equal(document.activeElement, view.items[0]);
+  key(view.items[0], 'Escape'); await tick(); await tick();
+  assert.equal(view.open, false);
+  assert.equal(document.activeElement, view.trigger);
+  assert.deepEqual(names(bar), ['data-orientation']);
+  // Hover: once a menu is open, another trigger opens on pointerenter, and the first closes.
+  file.trigger.click(); await tick();
+  view.trigger.dispatchEvent(new PointerEvent('pointerenter'));
+  await new Promise((r) => setTimeout(r, 10)); await tick(); await tick();
+  assert.equal(view.open, true);
+  assert.equal(file.open, false);
+  assert.deepEqual(reasons, ['File:true:list-navigation', 'File:false:sibling-open', 'View:true:list-navigation', 'View:false:escape-key', 'File:true:trigger-press', 'View:true:trigger-hover', 'File:false:sibling-open']);
+  bar.parentElement.remove();
+});
+
+test('menubar: vertical bars move on ArrowDown / ArrowUp and open beside on ArrowRight', async () => {
+  const bar = await wc(BAR.replace('<ui-menubar label="App">', '<ui-menubar label="App" orientation="vertical">')) as any;
+  await tick();
+  const [file, , view] = bar.menus as any[];
+  assert.deepEqual(names(bar), ['data-orientation']);
+  assert.equal(bar.getAttribute('data-orientation'), 'vertical');
+  file.trigger.focus();
+  key(file.trigger, 'ArrowDown'); await tick();
+  assert.equal(document.activeElement, view.trigger);
+  key(view.trigger, 'ArrowRight'); await tick(); await tick();
+  assert.equal(view.open, true);
+  assert.equal(view.popup.getAttribute('data-side'), 'right');
+  assert.ok(view.popup.classList.contains('ui-menu__popup--placement_submenu'));
+  bar.parentElement.remove();
+});
+
+const reactBar = () => h(Menubar, { label: 'App' },
+  h(Menu, { label: 'File' }, h(M.Item, null, 'New'), h(M.Item, null, 'Open')),
+  h(Menu, { label: 'Edit', disabled: true }, h(M.Item, null, 'Undo')),
+  h(Menu, { label: 'View' }, h(M.Item, null, 'Zoom')));
+
+test('Menubar (React): the same data-* as ui-menubar on the bar, its menus and their triggers; roles and tab stop', async () => {
+  const P: Part[] = [['host', ':scope'], ['trigger', ':scope > [data-ui=menu] > [data-part=trigger], :scope > ui-menu > [data-part=trigger]']];
+  const a = await wc(BAR), b = ssr(reactBar());
+  await tick();
+  const allowed = contract.components['ui-menubar'];
+  assert.ok(allowed);
+  assert.deepEqual(names(a), names(b));
+  const ta = [...a.querySelectorAll(':scope > ui-menu > [data-part=trigger]')], tb = [...b.querySelectorAll(':scope > [data-ui=menu] > [data-part=trigger]')];
+  assert.equal(ta.length, 3);
+  ta.forEach((t, k) => {
+    assert.deepEqual(names(t), names(tb[k]));
+    assert.equal(t.getAttribute('role'), tb[k].getAttribute('role'));
+    assert.equal(t.getAttribute('tabindex'), tb[k].getAttribute('tabindex'));
+  });
+  for (const n of names(a)) assert.ok(allowed.host.includes(n));
+  void P;
+  a.parentElement!.remove();
+  const m = html(reactBar());
+  assert.match(m, /^<div data-ui="menubar" role="menubar" aria-orientation="horizontal" aria-label="App" data-orientation="horizontal" class="ui-menubar__root/);
+  assert.match(m, /<button type="button" data-part="trigger" id="ID\w*" role="menuitem" aria-haspopup="menu" aria-expanded="false" aria-controls="ID\w*" tabindex="0"/);
+});
+
+test('Menubar (React): arrows move the tab stop; ArrowDown opens; ArrowRight in a menu switches with sibling-open', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const calls: string[] = [];
+  const log = (k: string) => (o: boolean, d: any) => calls.push(`${k}:${o}:${d.reason}`);
+  await act(async () => root.render(h(Menubar, null,
+    h(Menu, { label: 'File', onOpenChange: log('File') }, h(M.Item, null, 'New')),
+    h(Menu, { label: 'View', onOpenChange: log('View') }, h(M.Item, null, 'Zoom')))));
+  const ts = () => [...box.querySelectorAll<HTMLElement>('[data-part=trigger]')];
+  await act(async () => { ts()[0].focus(); key(ts()[0], 'ArrowRight'); });
+  assert.equal(document.activeElement, ts()[1]);
+  assert.deepEqual(ts().map((t) => t.getAttribute('tabindex')), ['-1', '0']);
+  await act(async () => { key(ts()[1], 'ArrowDown'); });
+  const zoom = box.querySelectorAll<HTMLElement>('[role=menuitem][data-part=item]')[1];
+  assert.equal(document.activeElement, zoom);
+  assert.ok(box.firstElementChild!.hasAttribute('data-has-submenu-open'));
+  await act(async () => { key(zoom, 'ArrowRight'); });
+  assert.equal(ts()[0].getAttribute('aria-expanded'), 'true');
+  assert.equal(ts()[1].getAttribute('aria-expanded'), 'false');
+  assert.deepEqual(calls, ['View:true:list-navigation', 'View:false:sibling-open', 'File:true:list-navigation']);
+  await act(async () => root.unmount());
+  box.remove();
+});
+
+test('menubar: RTL mirrors the arrows along the bar', async () => {
+  const box = await wc(`<div dir="rtl">${BAR}</div>`) as any;
+  await tick();
+  const bar = box.querySelector('ui-menubar') as any, [file, , view] = bar.menus as any[];
+  file.trigger.focus();
+  key(file.trigger, 'ArrowLeft'); await tick();
+  assert.equal(document.activeElement, view.trigger, 'ArrowLeft moves to the next trigger');
+  key(view.trigger, 'ArrowRight'); await tick();
+  assert.equal(document.activeElement, file.trigger);
+  box.parentElement.remove();
 });

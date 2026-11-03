@@ -88,6 +88,7 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | popup | a floating composite 1u from its anchor (below the trigger, beside a submenu trigger, at the pointer): edge D = max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s; at least as wide as the anchor, at most the space left | 4 / 2 / 14 |
 | item | a composite option: 7u, inset Ic, radius min(item / 2, popup radius − D); labels 2u from a bare edge, 1u from a slot; a suffix (shortcut) 2u after the label; checkbox and radio items keep a 6u leading indicator slot; group labels share the item row | 28 / 12 |
 | separator | the separator rule max(1px, B) with 0.5u above and below, beyond the gap | 1 / 2 |
+| menubar | a composite row (edge D, one row 8u, radius min(3.5u·s, 4u), uncapped when vertical) of its menus' triggers as composite options (7u, the option radius); its menus open 1u below the trigger (beside a vertical bar) (`resolveMenubar`) | 32 / 28 / 14 |
 
 ## Containers
 

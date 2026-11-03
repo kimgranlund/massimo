@@ -100,11 +100,13 @@ export const menu = defineSlotRecipe({
   },
   variants: {
     placement: {
-      // Below the trigger, start-aligned, at least as wide; flips above when there is no room.
+      // Below the trigger, start-aligned, at least as wide; flips above only when it does not fit below.
       anchor: {
         popup: {
           [ANCHORED]: {
             ...anchoredPopup({ anchor: MENU_ANCHOR, side: 'bottom', align: 'start' }),
+            // Below unless it does not fit there (the select prefers the roomier side; a menu stays put).
+            positionTryOrder: 'normal',
             // The element's side choice where the engine keeps a squeezed first fit (measureSide).
             '&[data-side=top]': { positionArea: 'block-start span-inline-end', marginBlockStart: 0, marginBlockEnd: 'var(--u)' },
             // RTL: position-area reads the (left-to-right) viewport's axes, so the popup spans from the

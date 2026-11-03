@@ -18,7 +18,7 @@
     },
     {
       "path": "components/menu/menu.element.ts",
-      "sha256": "5c2bf6b467ec0184b9c19c7d4669cecead30c3430d9f52a84f2a4a67c51f0ec1"
+      "sha256": "49ce7307ceaab110bbc7d3a786cd26f749bf0f7a728fe60810ef54aeda3e97e8"
     },
     {
       "path": "components/context-menu/context-menu.manifest.json",

@@ -259,6 +259,18 @@
         "overflow menu"
       ]
     },
+    "component:menubar": {
+      "kind": "component",
+      "source": "components/menubar/menubar.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-menubar",
+      "searchTerms": [
+        "menubar",
+        "menu bar",
+        "application menu",
+        "file edit view"
+      ]
+    },
     "component:meter": {
       "kind": "component",
       "source": "components/meter/meter.manifest.json#/nodes/0",
@@ -591,6 +603,16 @@
         "submenu"
       ]
     },
+    "context:menubar": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/menubar",
+      "availability": "implemented",
+      "searchTerms": [
+        "menubar",
+        "inside menubar",
+        "app menu bar"
+      ]
+    },
     "context:page": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/page",
@@ -914,7 +936,8 @@
         "menu item height",
         "menu popup",
         "dropdown menu",
-        "submenu offset"
+        "submenu offset",
+        "menubar height"
       ]
     },
     "geometry:separator": {
@@ -4609,6 +4632,96 @@
       "from": "component:menu",
       "relation": "allowedIn",
       "to": "context:menu"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:menubar"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "acceptsChild",
+      "to": "component:menu"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "establishes",
+      "to": "context:menubar"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:card"
     },
     {
       "from": "component:meter",

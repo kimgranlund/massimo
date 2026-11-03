@@ -533,3 +533,20 @@ export function resolveMenu(input: GeometryInput = {}) {
     separator: resolveSeparator(input).thickness, separatorMargin: 0.5 * u,
   };
 }
+
+/**
+ * ui-menubar: a composite row of its menus' triggers (edge D = max(B, 0.5u), padding D − B, the
+ * composite gap; one row 8u, the radius capped at half the height, uncapped when vertical); each
+ * trigger is a composite option (7u, inset Ic, the option radius) with its label 2u from a bare edge.
+ * The menus open 1u below the bar's trigger (beside it when vertical).
+ */
+export function resolveMenubar(input: GeometryInput & { vertical?: boolean } = {}) {
+  const k = resolveComposite({ ...input, container: !!input.vertical });
+  const m = resolveMenu(input);
+  return {
+    unit: m.unit, border: m.border, fontSize: m.fontSize,
+    rowHeight: k.rowHeight, edge: k.edge, padding: k.padding, gap: k.gap, radius: k.radius,
+    triggerHeight: k.child.height, triggerPadding: k.child.padding, triggerRadius: k.child.radius,
+    labelStart: m.labelStart, offset: m.offset,
+  };
+}

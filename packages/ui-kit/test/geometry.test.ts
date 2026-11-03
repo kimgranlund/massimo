@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveMenu } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveMenu, resolveMenubar } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -263,4 +263,12 @@ test('menu: an 8u trigger; the popup is a composite 1u away; items are 7u compos
   assert.deepEqual([m.itemHeight, m.itemInset, m.itemPadding, m.itemRadius, m.labelStart, m.labelBesideSlot], [28, 2, 1, 12, 8, 4]);
   assert.deepEqual([m.separator, m.separatorMargin, m.slot], [1, 2, 24]);
   assert.equal(resolveMenu({ unit: 4, border: 0 }).itemHeight, 28, 'items stay 7u at any B');
+});
+
+test('menu: a menubar is an 8u composite row of 7u composite-option triggers; its radius is capped at half the row unless vertical', () => {
+  const b = resolveMenubar({ unit: 4, border: 1 });
+  assert.deepEqual([b.rowHeight, b.edge, b.padding, b.gap, b.radius, b.triggerHeight, b.triggerPadding, b.triggerRadius, b.labelStart, b.offset], [32, 2, 1, 2, 14, 28, 1, 12, 8, 4]);
+  assert.equal(resolveMenubar({ unit: 4, border: 0 }).rowHeight, 32, 'one row stays 8u at any B');
+  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2 }).radius, 16, 'capped at half the row');
+  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2, vertical: true }).radius, 28, 'uncapped when vertical');
 });

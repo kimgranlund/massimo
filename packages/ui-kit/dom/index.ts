@@ -9,3 +9,4 @@ export * from './events.ts';
 export * from './floating.ts';
 export * from './display.ts';
 export * from './menu.ts';
+export * from './menubar.ts';

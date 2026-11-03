@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "components/menu/menu.element.ts",
-      "sha256": "5c2bf6b467ec0184b9c19c7d4669cecead30c3430d9f52a84f2a4a67c51f0ec1"
+      "sha256": "49ce7307ceaab110bbc7d3a786cd26f749bf0f7a728fe60810ef54aeda3e97e8"
     },
     {
       "path": "components/menu/menu.react.tsx",
-      "sha256": "23113d07db87a492dfc110de341edd9704d54bf7daf58ba0c78144778e77a4c2"
+      "sha256": "a9137fe027c784a0cabff7aedf9a5ac86e0dcbb9f604e8c8852c8da263bac1ae"
     },
     {
       "path": "components/menu/menu.recipe.ts",
-      "sha256": "2e10b34938154ee6a62c09c8938aee4cc0ced7bf96fa2dd284ad544b78ac7fb2"
+      "sha256": "1609b67876aa62a072a3cd47d09b8c2749bd2a212da30500dc263c268ea55eb0"
     },
     {
       "path": "dom/menu.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/menu/menu.manifest.json",
-      "sha256": "0943fe8934d0224bf5d8f84e0a4df2458b6eccc4d45e2079e28f8e34b9964428"
+      "sha256": "593ad5da6ba5e6edbb5edb40dc7ebe70ce95ffa103d5264abb3be38d9208a24e"
     }
   ],
   "renderers": {

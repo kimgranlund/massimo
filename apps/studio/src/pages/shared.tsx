@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, resolveMenubar, type ThemeParams } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -143,8 +143,8 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
     return [`trigger ${px(d.height)} · caret ${px(d.caret)} · panel inset ${px(d.panelInline)}`, `tabs ${px(sg.listHeight)} · tab ${px(sg.tabHeight)} · bar ${px(ul.indicatorThickness ?? 0)}`];
   },
   menu: (g) => {
-    const m = resolveMenu(g);
-    return [`trigger ${px(m.triggerHeight)} · item ${px(m.itemHeight)}`, `edge ${px(m.popupEdge)} · r ${px(m.popupRadius)} · item r ${px(m.itemRadius)}`];
+    const m = resolveMenu(g), b = resolveMenubar(g);
+    return [`trigger ${px(m.triggerHeight)} · item ${px(m.itemHeight)}`, `edge ${px(m.popupEdge)} · r ${px(m.popupRadius)} · item r ${px(m.itemRadius)}`, `bar ${px(b.rowHeight)} · r ${px(b.radius)}`];
   },
 };
 

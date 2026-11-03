@@ -131,6 +131,16 @@
         "inside menu",
         "submenu"
       ]
+    },
+    "menubar": {
+      "id": "context:menubar",
+      "host": "component:menubar",
+      "summary": "Inside a ui-menubar: ui-menu children, whose triggers become the bar's items (role=menuitem, a roving tab stop, composite options).",
+      "searchTerms": [
+        "menubar",
+        "inside menubar",
+        "app menu bar"
+      ]
     }
   },
   "nesting": {

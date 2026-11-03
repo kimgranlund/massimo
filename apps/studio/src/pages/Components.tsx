@@ -23,6 +23,7 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/components/context-menu/element';
+import '@massimo/ui-kit/components/menubar/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -40,7 +41,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['menus', 'Menus', 'ui-menu · ui-context-menu'],
+  ['menus', 'Menus', 'ui-menu · ui-context-menu · ui-menubar'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -213,7 +214,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
-    menus: 'A menu trigger is an 8u control row; its popup is a floating composite 1u below it (beside a submenu trigger), at least as wide, with 7u items in the construction pattern. Focus moves to the highlighted item: arrow keys wrap, Home / End, typeahead and the pointer; ArrowRight opens a submenu, ArrowLeft or Escape closes it. Checkbox and radio items keep a 6u indicator slot and stay open on a press. A context menu opens the same popup 1u from the pointer on a right click, a long press or Shift+F10.',
+    menus: 'A menu trigger is an 8u control row; its popup is a floating composite 1u below it (beside a submenu trigger), at least as wide, with 7u items in the construction pattern. Focus moves to the highlighted item: arrow keys wrap, Home / End, typeahead and the pointer; ArrowRight opens a submenu, ArrowLeft or Escape closes it. Checkbox and radio items keep a 6u indicator slot and stay open on a press. A context menu opens the same popup 1u from the pointer on a right click, a long press or Shift+F10. A menubar is an 8u composite row of its menus\' triggers (7u); arrow keys move between them and, once a menu is open, switch menus, as does hovering another trigger.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -503,6 +504,30 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <ui-menu label="Hover" open-on-hover><div data-part="item">Opens on hover</div><div data-part="item">After 100ms</div></ui-menu>
           <ui-menu label="Disabled" disabled><div data-part="item">Hidden</div></ui-menu>
         </Row>
+        <Row label="Menubar">
+          <ui-menubar label="Editor">
+            <ui-menu label="File">
+              <div data-part="item">New<span slot="suffix">⌘N</span></div>
+              <div data-part="item">Open…<span slot="suffix">⌘O</span></div>
+              <ui-menu><div data-part="submenu-trigger">Open recent</div><div data-part="popup"><div data-part="item">notes.md</div><div data-part="item">plan.md</div></div></ui-menu>
+              <div data-part="separator" />
+              <div data-part="item">Save<span slot="suffix">⌘S</span></div>
+            </ui-menu>
+            <ui-menu label="Edit">
+              <div data-part="item">Undo<span slot="suffix">⌘Z</span></div>
+              <div data-part="item">Redo<span slot="suffix">⇧⌘Z</span></div>
+            </ui-menu>
+            <ui-menu label="View">
+              <div data-part="checkbox-item" {...{ checked: '' }}>Ruler</div>
+              <div data-part="checkbox-item">Grid</div>
+            </ui-menu>
+            <ui-menu label="Help" disabled><div data-part="item">Docs</div></ui-menu>
+          </ui-menubar>
+          <ui-menubar orientation="vertical" label="Tools">
+            <ui-menu><div data-part="trigger"><i slot="leading" name="pencil" />Draw</div><div data-part="popup"><div data-part="item">Pen</div><div data-part="item">Brush</div></div></ui-menu>
+            <ui-menu><div data-part="trigger"><i slot="leading" name="shapes" />Shapes</div><div data-part="popup"><div data-part="item">Rectangle</div><div data-part="item">Ellipse</div></div></ui-menu>
+          </ui-menubar>
+        </Row>
         <Row label="Context menu">
           <ui-context-menu>
             <div data-part="trigger" tabIndex={0} className={contextArea}>Right-click (or long-press, or Shift+F10) here</div>
@@ -521,6 +546,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         </Row>
         <SizeLadder family="menu" params={params}>
           <ui-menu label="Menu"><div data-part="item">One</div><div data-part="item">Two</div></ui-menu>
+          <ui-menubar label="Size"><ui-menu label="File"><div data-part="item">New</div></ui-menu><ui-menu label="Edit"><div data-part="item">Undo</div></ui-menu></ui-menubar>
         </SizeLadder>
       </>
     ),

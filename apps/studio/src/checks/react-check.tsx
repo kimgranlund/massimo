@@ -27,6 +27,7 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/components/context-menu/element';
+import '@massimo/ui-kit/components/menubar/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -55,6 +56,7 @@ import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 import { Menu } from '@massimo/ui-kit/components/menu/react';
 import { ContextMenu } from '@massimo/ui-kit/components/context-menu/react';
+import { Menubar } from '@massimo/ui-kit/components/menubar/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -121,6 +123,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-menu data-k="mn"><div data-part="trigger"><i slot="leading" name="sliders" />View</div><div data-part="popup"><div data-part="item">Cut</div><div {...{ checked: '' }} data-part="checkbox-item">Grid</div></div></ui-menu></div>
         <div style={{ width: 300 }}><ui-menu data-k="mnO" label="Open" default-open><div data-part="item">Cut<span slot="suffix">X</span></div><div data-part="item"><i slot="leading" name="copy" />Copy</div><div data-part="separator" /><div {...{ checked: '' }} data-part="checkbox-item">Grid</div><div data-part="group"><div data-part="group-label">Sort</div><div {...{ value: 'a' }} data-part="radio-group"><div {...{ value: 'a' }} data-part="radio-item">A</div><div {...{ value: 'b' }} data-part="radio-item">B</div></div></div></ui-menu></div>
         <div style={{ width: 300 }}><ui-menu data-k="mnD" label="Off" disabled><div data-part="item">x</div></ui-menu></div>
+        <div style={{ width: 300 }}><ui-menubar data-k="mb" label="App"><ui-menu label="File"><div data-part="item">New</div></ui-menu><ui-menu><div data-part="trigger"><i slot="leading" name="pencil" />Edit</div><div data-part="popup"><div data-part="item">Undo</div></div></ui-menu><ui-menu label="Off" disabled><div data-part="item">x</div></ui-menu></ui-menubar></div>
+        <div style={{ width: 300 }}><ui-menubar data-k="mbV" orientation="vertical"><ui-menu label="One"><div data-part="item">x</div></ui-menu><ui-menu label="Two"><div data-part="item">y</div></ui-menu></ui-menubar></div>
         <div style={{ width: 300 }}><ui-context-menu data-k="cm"><div data-part="trigger" style={{ height: 6 * u }}>Area</div><div data-part="item">Copy</div></ui-context-menu></div>
         <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
       </div>
@@ -181,6 +185,8 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><Menu.Root data-k="mn"><Menu.Trigger leading={<i name="sliders" />}>View</Menu.Trigger><Menu.Popup><Menu.Item>Cut</Menu.Item><Menu.CheckboxItem defaultChecked>Grid</Menu.CheckboxItem></Menu.Popup></Menu.Root></div>
         <div style={{ width: 300 }}><Menu data-k="mnO" label="Open" defaultOpen><Menu.Item suffix="X">Cut</Menu.Item><Menu.Item leading={<i name="copy" />}>Copy</Menu.Item><Menu.Separator /><Menu.CheckboxItem defaultChecked>Grid</Menu.CheckboxItem><Menu.Group><Menu.GroupLabel>Sort</Menu.GroupLabel><Menu.RadioGroup defaultValue="a"><Menu.RadioItem value="a">A</Menu.RadioItem><Menu.RadioItem value="b">B</Menu.RadioItem></Menu.RadioGroup></Menu.Group></Menu></div>
         <div style={{ width: 300 }}><Menu data-k="mnD" label="Off" disabled><Menu.Item>x</Menu.Item></Menu></div>
+        <div style={{ width: 300 }}><Menubar data-k="mb" label="App"><Menu label="File"><Menu.Item>New</Menu.Item></Menu><Menu.Root><Menu.Trigger leading={<i name="pencil" />}>Edit</Menu.Trigger><Menu.Popup><Menu.Item>Undo</Menu.Item></Menu.Popup></Menu.Root><Menu label="Off" disabled><Menu.Item>x</Menu.Item></Menu></Menubar></div>
+        <div style={{ width: 300 }}><Menubar data-k="mbV" orientation="vertical"><Menu label="One"><Menu.Item>x</Menu.Item></Menu><Menu label="Two"><Menu.Item>y</Menu.Item></Menu></Menubar></div>
         <div style={{ width: 300 }}><ContextMenu.Root data-k="cm"><ContextMenu.Trigger style={{ height: 6 * u }}>Area</ContextMenu.Trigger><ContextMenu.Popup><ContextMenu.Item>Copy</ContextMenu.Item></ContextMenu.Popup></ContextMenu.Root></div>
         <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
       </div>
@@ -359,7 +365,7 @@ setTimeout(() => {
   const stateOf = (el: Element) => [...el.attributes].map((a) => a.name).filter((n) => n.startsWith('data-') && !STRUCTURE.has(n)).sort().join(' ');
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnO', 'mnD', 'cm']) {
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnO', 'mnD', 'cm', 'mb', 'mbV']) {
       const a = host(wc, k), b = host(re, k);
       const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=popup], [role^=menuitem], [role=separator], [data-part=group-label]')];
       const pa = parts(a), pb = parts(b);
@@ -382,7 +388,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -407,6 +413,20 @@ setTimeout(() => {
       return x.replace(/-?[\d.]+/g, '#') === y.replace(/-?[\d.]+/g, '#') && nx.length === ny.length && nx.every((v, j) => Math.abs(parseFloat(v) - parseFloat(ny[j])) <= 0.05);
     };
     pa.forEach((x, i) => { checks++; if (!near(x, pb[i])) fails.push(`u${c.getAttribute('data-case')} mnO part ${i}: wc ${x} react ${pb[i]}`); });
+  }
+  // Menubar: each menu host and trigger, the same box, paint, data-*, role and tab stop.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['mb', 'mbV']) {
+      const a = host(wc, k), b = host(re, k);
+      const ts = (h: HTMLElement) => [...h.querySelectorAll<HTMLElement>(':scope > :is(ui-menu, [data-ui=menu]) > [data-part=trigger]')].map((t) => {
+        const r = t.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(t);
+        return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${t.getAttribute('role')}:${t.getAttribute('tabindex')}:${stateOf(t)}`;
+      });
+      const pa = ts(a), pb = ts(b);
+      checks++;
+      if (pa.join(' | ') !== pb.join(' | ')) fails.push(`u${c.getAttribute('data-case')} ${k} triggers: wc ${pa.join(' | ')} react ${pb.join(' | ')}`);
+    }
   }
   // Input: same parts; the React control holds a native <input> as its contents part.
   for (const c of root.querySelectorAll('[data-case]')) {

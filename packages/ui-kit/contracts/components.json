@@ -671,7 +671,8 @@
         "card",
         "collection",
         "group",
-        "menu"
+        "menu",
+        "menubar"
       ],
       "behavior": "A press, Enter or Space on the trigger opens the popup (ArrowDown / ArrowUp open it on the first / last item); focus moves to the highlighted item (data-highlighted): ArrowDown / ArrowUp (wrapping), Home, End, typeahead and the pointer; Enter, Space or a press activates an item (its click), which closes the menu (close-on-click), checkbox and radio items toggle and stay open. Submenus open beside their trigger on ArrowRight (mirrored in RTL), Enter, Space, a press or a rest of the pointer, and close on ArrowLeft or Escape. Outside press, Escape and focus-out close it with Base UI's reasons; focus returns to the trigger. openchange { open, reason, event } is cancelable."
     },
@@ -689,6 +690,18 @@
         "collection"
       ],
       "behavior": "contextmenu (right click, the platform gesture) and a 500 ms touch press open the popup at the pointer, Shift+F10 or the ContextMenu key at the focused element's start corner (focus on the first item); a gesture while open moves it. The popup is placed from script, 1u from the point, flipping at the viewport edges. Items, keys, submenus, dismissal and events are ui-menu's (openchange reason trigger-press for the gesture)."
+    },
+    "menubar": {
+      "geometryFamily": "menu",
+      "element": "Host (role=menubar, aria-orientation) holds ui-menu children; their triggers are the bar's items (role=menuitem) with one tab stop.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card"
+      ],
+      "behavior": "Roving focus: one trigger is the tab stop; ArrowRight / ArrowLeft (mirrored in RTL; ArrowDown / ArrowUp when vertical), Home and End move between enabled triggers, wrapping. ArrowDown (ArrowRight when vertical), Enter or Space opens a menu on its first item, ArrowUp on its last. While one is open, ArrowRight / ArrowLeft inside it switch to the adjacent menu and hovering another trigger opens it; one menu is open at a time (the others close with reason sibling-open)."
     }
   }
 }

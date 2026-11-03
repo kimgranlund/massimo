@@ -1,0 +1,276 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "menubar",
+  "primary": "component:menubar",
+  "module": "./menubar.element.ts",
+  "registration": "on-import",
+  "documentation": "./menubar.md",
+  "examples": "./menubar.examples.json",
+  "contract": "../../contracts/components.json#/components/menubar",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./menubar.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveMenubar"
+      ],
+      "description": "Reference numbers for the bar and its triggers."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/menubar.ts",
+      "exports": [
+        "menubarAttrs",
+        "menubarKeyIntent",
+        "menubarStep"
+      ],
+      "description": "The bar's ARIA, data-* and keys, shared by both renderers."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:menubar",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-menubar",
+      "class": "UIMenubar",
+      "extends": "UIElement",
+      "intent": [
+        "Keep an application's menus in one bar, moving between them with the arrow keys and the pointer"
+      ],
+      "properties": [
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": true,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "horizontal (default) or vertical: the bar's direction, which arrow keys move between triggers and open a menu, and where the menus open (below, or beside a vertical bar).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Accessible name of the bar (aria-label).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": "menubar",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "ArrowRight, ArrowLeft (mirrored in RTL; ArrowDown, ArrowUp when vertical)",
+            "action": "move focus to the next / previous enabled trigger, wrapping; with a menu open, open that one instead"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move focus to the first / last enabled trigger"
+          },
+          {
+            "keys": "ArrowDown (ArrowRight when vertical), Enter, Space",
+            "action": "open the menu on its first item (ArrowUp: the last)"
+          },
+          {
+            "keys": "ArrowRight, ArrowLeft inside an open menu",
+            "action": "close it and open the next / previous menu"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the menu, focus back on its trigger"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label (aria-label)",
+            "aria-labelledby on the host"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "ui-menu elements (presets with label, or with their parts); their triggers become the bar's items."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Only direct ui-menu children are the bar's menus; one trigger is the tab stop (the last focused, else the first enabled).",
+        "One menu is open at a time: another opening closes the rest with reason sibling-open (each menu fires its own openchange).",
+        "A preset menu in a bar has no caret; its trigger is a composite option of the bar."
+      ],
+      "avoidWhen": [
+        {
+          "when": "One or two menus.",
+          "reason": "A bar earns its keys only with several menus; a menu button is simpler.",
+          "useInstead": "component:menu"
+        },
+        {
+          "when": "Site navigation with links.",
+          "reason": "Menubar items open menus of actions; navigation needs a navigation menu (not in the kit yet)."
+        }
+      ],
+      "searchTerms": [
+        "menubar",
+        "menu bar",
+        "application menu",
+        "file edit view"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:menubar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "acceptsChild",
+      "to": "component:menu"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "establishes",
+      "to": "context:menubar"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:card"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./menubar.element.ts",
+      "exports": {
+        "component:menubar": "UIMenubar"
+      },
+      "verification": "./verification/menubar.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./menubar.react.tsx",
+      "exports": {
+        "component:menubar": "Menubar"
+      },
+      "verification": "./verification/menubar.verification.json#/renderers/react",
+      "props": {
+        "component:menubar": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "orientation?: 'horizontal' | 'vertical' = 'horizontal' // horizontal (default) or vertical: the bar's direction, its keys and where its menus open.",
+            "label?: string // Accessible name of the bar.",
+            "size?: number // Unit u in px; the bar is 8u, its triggers 7u.",
+            "children?: ReactNode"
+          ]
+        }
+      }
+    }
+  }
+}

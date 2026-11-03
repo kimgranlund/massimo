@@ -25,6 +25,7 @@ import { accordion } from './accordion/accordion.recipe.ts';
 import { tabs } from './tabs/tabs.recipe.ts';
 import { menu } from './menu/menu.recipe.ts';
 import { contextMenu } from './context-menu/context-menu.recipe.ts';
+import { menubar } from './menubar/menubar.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, menu, contextMenu };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, menu, contextMenu, menubar };
 

@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, resolveMenubar, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -186,6 +186,9 @@ export const rows: Row[] = [
   { id: 'menu.item.height', family: 'menu', element: 'menu item, submenu trigger, group label', quantity: 'item height', formula: '6u + 2Ic = 7u', value: (u) => resolveMenu({ unit: u }).itemHeight, status: 'implemented', notes: 'a composite option; label 2u from a bare edge, 1u from a slot' },
   { id: 'menu.item.radius', family: 'menu', element: 'menu item', quantity: 'item radius', formula: 'min(item / 2, max(0, popup radius - D))', value: (u) => resolveMenu({ unit: u }).itemRadius, status: 'implemented', notes: 'concentric with the popup' },
   { id: 'menu.separator.margin', family: 'menu', element: 'menu separator', quantity: 'space above and below', formula: '0.5u', value: (u) => resolveMenu({ unit: u }).separatorMargin, status: 'implemented', notes: 'beyond the popup gap; the rule is max(1px, B)' },
+  { id: 'menu.menubar.height', family: 'menu', element: 'menubar', quantity: 'bar height (one row)', formula: '7u + 2D = 8u', value: (u) => resolveMenubar({ unit: u }).rowHeight, status: 'implemented', notes: 'a composite: edge D = max(B, 0.5u), padding D - B, the composite gap' },
+  { id: 'menu.menubar.radius', family: 'menu', element: 'menubar', quantity: 'bar radius', formula: 'min((3 + 0.5)u * s, 8u / 2)', value: (u) => resolveMenubar({ unit: u }).radius, status: 'implemented', notes: 'uncapped when vertical' },
+  { id: 'menu.menubar.trigger', family: 'menu', element: 'menubar trigger', quantity: 'trigger height', formula: '6u + 2Ic = 7u', value: (u) => resolveMenubar({ unit: u }).triggerHeight, status: 'implemented', notes: 'a composite option; label 2u from a bare edge' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

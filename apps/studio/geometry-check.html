@@ -26,7 +26,8 @@ import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/components/context-menu/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/menubar/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveMenu, resolveMenubar } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -97,6 +98,8 @@ for (const c of cases) {
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
     <ui-menu id="mnu" default-open><div data-part="trigger"><span slot="leading"></span>Menu</div><div data-part="popup" style="transition:none"><div data-part="item">Alpha</div><div data-part="item"><span slot="leading"></span>Lead</div><div data-part="separator"></div><div data-part="checkbox-item" checked>Check</div><div data-part="group"><div data-part="group-label">Group</div><div data-part="item">In group</div></div><ui-menu default-open><div data-part="submenu-trigger">Sub</div><div data-part="popup" style="transition:none"><div data-part="item">S</div></div></ui-menu></div></ui-menu>
     <ui-menu id="mnuP" label="Preset"><div data-part="item">x</div></ui-menu>
+    <ui-menubar id="bar"><ui-menu label="File"><div data-part="item">x</div></ui-menu><ui-menu><div data-part="trigger"><span slot="leading"></span>Edit</div><div data-part="popup"><div data-part="item">y</div></div></ui-menu></ui-menubar>
+    <ui-menubar id="barV" orientation="vertical"><ui-menu label="One"><div data-part="item">x</div></ui-menu><ui-menu label="Two"><div data-part="item">y</div></ui-menu></ui-menubar>
     <ui-context-menu id="ctx"><div data-part="trigger" style="height:${10 * c.unit}px">Area</div><div data-part="popup" style="transition:none"><div data-part="item">Copy</div><div data-part="item">Paste</div></div></ui-context-menu>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
@@ -517,6 +520,22 @@ for (const c of cases) {
     checks['contextMenu.item.gap'] = [r2(rect(ci2).top - rect(ci1).bottom), rm.popupGap];
     checks['contextMenu.trigger.height'] = [r2(rect(part(cx, 'trigger')).height), 10 * c.unit];
     cx.open = false;
+    // Menubar (resolveMenubar): an 8u composite row of 7u composite-option triggers.
+    const rb = resolveMenubar({ ...g, gap: undefined }), br = $('bar'), [b1, b2] = br.querySelectorAll(':scope > ui-menu > [data-part=trigger]');
+    checks['menubar.height'] = [r2(rect(br).height), rb.rowHeight];
+    checks['menubar.padding'] = [px(cs(br).paddingTop) + px(cs(br).borderTopWidth), rb.edge];
+    checks['menubar.radius'] = [px(cs(br).borderTopLeftRadius), rb.radius];
+    checks['menubar.gap'] = [r2(rect(b2).left - rect(b1).right), rb.gap];
+    checks['menubar.trigger.height'] = [r2(rect(b1).height), rb.triggerHeight];
+    checks['menubar.trigger.padding'] = [px(cs(b1).paddingTop) + px(cs(b1).borderTopWidth), rb.triggerPadding + rb.border];
+    checks['menubar.trigger.radius'] = [px(cs(b1).borderTopLeftRadius), rb.triggerRadius];
+    checks['menubar.trigger.label'] = [px(cs(part(b1, 'contents')).paddingLeft), rb.labelStart];
+    checks['menubar.trigger.lead.slot'] = [r2(rect(part(b2, 'leading')).width), resolveMenu(g).slot];
+    const rv = resolveMenubar({ ...g, gap: undefined, vertical: true }), bv = $('barV'), [v1, v2] = bv.querySelectorAll(':scope > ui-menu > [data-part=trigger]');
+    checks['menubar.vertical.gap'] = [r2(rect(v2).top - rect(v1).bottom), rv.gap];
+    checks['menubar.vertical.width'] = [r2(rect(v1).width), r2(rect(v2).width)];
+    checks['menubar.vertical.radius'] = [px(cs(bv).borderTopLeftRadius), rv.radius];
+    checks['menubar.vertical.height'] = [r2(rect(bv).height), r2(2 * rv.triggerHeight + rv.gap + 2 * rv.edge)];
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

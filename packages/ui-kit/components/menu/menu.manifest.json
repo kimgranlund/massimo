@@ -529,6 +529,11 @@
       "from": "component:menu",
       "relation": "allowedIn",
       "to": "context:menu"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:menubar"
     }
   ],
   "renderers": {

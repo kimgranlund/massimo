@@ -175,6 +175,11 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-has-submenu-open": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A menu of the menubar is open (Base UI Menubar)."
     }
   },
   "components": {
@@ -588,6 +593,13 @@
       "group": [],
       "group-label": [],
       "radio-group": []
+    },
+    "ui-menubar": {
+      "host": [
+        "data-orientation",
+        "data-has-submenu-open"
+      ],
+      "menus": "its ui-menu children carry ui-menu's state; their triggers are the bar's items"
     }
   },
   "native": {
@@ -637,7 +649,8 @@
         "ui-collapsible",
         "ui-accordion",
         "ui-tabs",
-        "ui-menu"
+        "ui-menu",
+        "ui-menubar"
       ]
     },
     "highlighted": {
@@ -672,7 +685,8 @@
         "ui-collapsible",
         "ui-accordion",
         "ui-menu",
-        "ui-context-menu"
+        "ui-context-menu",
+        "ui-menubar"
       ]
     },
     "disabled": {

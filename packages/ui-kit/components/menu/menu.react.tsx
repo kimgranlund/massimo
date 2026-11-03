@@ -51,13 +51,26 @@ export interface MenuContext {
 }
 /** What a menubar shares with its menus (set by Menubar; null elsewhere). */
 export interface MenubarLink {
+  /** This menu's place in the bar. */
+  index: number;
+  /** The place whose trigger holds the bar's tab stop. */
+  stop: number;
   /** Whether a menu of the bar is open (then hovering another trigger opens it). */
   anyOpen: boolean;
-  /** Report a menu's open state to the bar. */
-  report: (id: string, open: boolean) => void;
-  /** The trigger that holds the bar's tab stop. */
-  stop: string | null;
   orientation: 'horizontal' | 'vertical';
+  /** Report a menu's open state to the bar (an opening closes the others: sibling-open). */
+  report: (index: number, open: boolean) => void;
+  /** A trigger took focus: it holds the tab stop. */
+  focused: (index: number) => void;
+  /** Keep the bar's handle on a menu (its trigger, popup and setOpen), for its keys. */
+  register: (index: number, entry: MenubarEntry) => void;
+}
+export interface MenubarEntry {
+  trigger: RefObject<HTMLElement | null>;
+  popup: RefObject<HTMLElement | null>;
+  open: boolean;
+  disabled: boolean;
+  setOpen: MenuContext['setOpen'];
 }
 export const MenubarCtx = createContext<MenubarLink | null>(null);
 export const MenuCtx = createContext<MenuContext | null>(null);
@@ -102,8 +115,10 @@ export interface MenuRootProps extends Omit<HTMLAttributes<HTMLDivElement>, 'cla
 /** Menu.Root: the host (data-ui="menu"); shares the open state, the floating layer and the highlight with its parts. */
 export function MenuRoot({ open, defaultOpen = false, onOpenChange, disabled = false, openOnHover = false, delay = 100, size, placement: forced, ui = 'menu', hostClass, children, className, render, ...rest }: MenuRootProps) {
   const parent = useContext(MenuCtx);
-  const bar = useContext(MenubarCtx);
-  const placement: MenuPlacement = forced ?? (parent ? 'submenu' : 'anchor');
+  const barCtx = useContext(MenubarCtx);
+  // Only a top-level menu is the bar's (its submenus see the same context and leave it).
+  const bar = parent ? null : barCtx;
+  const placement: MenuPlacement = forced ?? (parent || bar?.orientation === 'vertical' ? 'submenu' : 'anchor');
   const id = useId();
   const [own, setOwn] = useState(defaultOpen);
   const value = open ?? own;
@@ -151,7 +166,8 @@ export function MenuRoot({ open, defaultOpen = false, onOpenChange, disabled = f
   // After the floating layer has shown the popup (its effect runs first): move focus in.
   useEffect(() => { if (value) focusIn(); }, [value]);
   useLayoutEffect(() => { if (hostRef.current) setRtl(isRtl(hostRef.current)); }, []);
-  useEffect(() => { bar?.report(id, value); }, [value]);
+  useEffect(() => { bar?.report(bar.index, value); }, [value]);
+  useEffect(() => { bar?.register(bar.index, { trigger: layer.anchorRef, popup: layer.popupRef, open: value, disabled, setOpen }); });
   const subs = useRef(new Map<string, { trigger: RefObject<HTMLElement | null>; close: (e: Event) => void }>()).current;
   // A submenu: listed with its parent while open; closes (silently) with it.
   useEffect(() => {
@@ -189,7 +205,7 @@ export function MenuTrigger({ leading, prefix, suffix, trailing, children, onCli
   const inBar = !!m.bar;
   const attrs = props({
     ...menuTriggerAttrs({ open: m.open, popupId: m.ids.popup, disabled: m.disabled, role: inBar ? 'menuitem' : undefined }),
-    tabindex: inBar ? (m.bar!.stop === m.ids.trigger ? 0 : -1) : undefined,
+    tabindex: inBar ? (m.bar!.stop === m.bar!.index ? 0 : -1) : undefined,
   });
   const keys = (e: KeyboardEvent<HTMLButtonElement>) => {
     onKeyDown?.(e);
@@ -207,13 +223,16 @@ export function MenuTrigger({ leading, prefix, suffix, trailing, children, onCli
       m.open ? m.setOpen(false, 'trigger-press', e.nativeEvent) : m.setOpen(true, 'trigger-press', e.nativeEvent, 'popup');
     },
     onKeyDown: keys,
+    onFocus: (e: FocusEvent<HTMLButtonElement>) => { rest.onFocus?.(e); if (inBar) m.bar!.focused(m.bar!.index); },
     onPointerEnter: (e: PointerEvent<HTMLButtonElement>) => {
       onPointerEnter?.(e);
       const hover = m.openOnHover || (inBar && m.bar!.anyOpen);
       if (m.disabled || m.open || !hover) return;
       const ev = e.nativeEvent;
       clearTimeout(timer.current);
-      timer.current = setTimeout(() => m.setOpen(true, inBar && m.bar!.anyOpen ? 'sibling-open' : 'trigger-hover', ev, 'none'), inBar && m.bar!.anyOpen ? 0 : m.delay);
+      const switching = inBar && m.bar!.anyOpen, el = e.currentTarget;
+      // In a menubar with a menu open, hovering another trigger switches to it at once (and focuses it).
+      timer.current = setTimeout(() => { m.setOpen(true, 'trigger-hover', ev, 'none'); if (switching) el.focus({ preventScroll: true }); }, switching ? 0 : m.delay);
     },
     onPointerLeave: (e: PointerEvent<HTMLButtonElement>) => { onPointerLeave?.(e); clearTimeout(timer.current); },
     children: <Parts classes={m.c} {...{ leading, prefix, suffix, trailing }}>{children}</Parts>,
@@ -479,10 +498,12 @@ export interface MenuProps extends MenuRootProps {
 
 /** Preset: Menu.Root with a Trigger (label, caret), a Positioner and a Popup holding the children; or Root with its parts as children. */
 export function Menu({ label, leading, side, align, children, ...rest }: MenuProps) {
+  // A menubar's triggers have no caret.
+  const inBar = !!useContext(MenubarCtx) && !useContext(MenuCtx);
   if (label === undefined) return <MenuRoot {...rest}>{children}</MenuRoot>;
   return (
     <MenuRoot {...rest}>
-      <MenuTrigger leading={leading} trailing={<i {...{ name: 'caret-down' }} />}>{label}</MenuTrigger>
+      <MenuTrigger leading={leading} trailing={inBar ? undefined : <i {...{ name: 'caret-down' }} />}>{label}</MenuTrigger>
       <MenuPositioner side={side} align={align}><MenuPopup>{children}</MenuPopup></MenuPositioner>
     </MenuRoot>
   );

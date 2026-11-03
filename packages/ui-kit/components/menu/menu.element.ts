@@ -94,15 +94,17 @@ export class UIMenu extends UIElement {
   get highlighted() { return this.#highlight.peek(); }
 
   /** Where the popup is placed: below the trigger, beside a submenu trigger, or at a point (context menu). */
-  protected placement(): MenuPlacement { return this.nested ? 'submenu' : 'anchor'; }
+  protected placement(): MenuPlacement { return this.nested || this.barOrientation() === 'vertical' ? 'submenu' : 'anchor'; }
   /** The element the popup is placed against. */
   protected anchorElement(): Element | null | undefined { return this.#trigger; }
   /** Whether the trigger is a menubar item (the menubar owns its tab stop). */
   protected inMenubar() { return this.parentElement?.localName === 'ui-menubar'; }
+  /** The orientation of the menubar this menu belongs to (a vertical bar opens its menus beside it). */
+  protected barOrientation() { return this.inMenubar() ? (this.parentElement!.getAttribute('orientation') === 'vertical' ? 'vertical' : 'horizontal') : null; }
   /** Whether the trigger takes the construction pattern (an area trigger, the context menu's, does not). */
   protected slottedTrigger() { return true; }
   /** The caret a generated (preset) trigger ends with, or null for none. */
-  protected generatedCaret(): string | null { return 'caret-down'; }
+  protected generatedCaret(): string | null { return this.inMenubar() ? null : 'caret-down'; }
   /** The trigger's recipe classes (the context menu's trigger is an area with its own recipe). */
   protected triggerClass(c: Record<string, string>) { return this.nested ? `${c.item} ${c['submenu-trigger']}` : c.trigger; }
   /** The host's recipe classes. */
@@ -218,9 +220,11 @@ export class UIMenu extends UIElement {
       else if (e.key === 'ArrowUp' && !this.inMenubar()) { e.preventDefault(); this.openMenu('list-navigation', e, 'last'); }
     });
     trigger.addEventListener('pointerenter', (e) => {
-      if (this.disabled || this.open || !(this.nested || this.openOnHover)) return;
+      // In a menubar with a menu open, hovering another trigger switches to it at once.
+      const switching = this.inMenubar() && !!this.parentElement!.querySelector(':scope > ui-menu[open]');
+      if (this.disabled || this.open || !(this.nested || this.openOnHover || switching)) return;
       clearTimeout(this.#hover);
-      this.#hover = setTimeout(() => this.openMenu('trigger-hover', e, 'none'), this.delay);
+      this.#hover = setTimeout(() => this.openMenu('trigger-hover', e, 'none'), switching ? 0 : this.delay);
     });
     trigger.addEventListener('pointerleave', () => clearTimeout(this.#hover));
   }
