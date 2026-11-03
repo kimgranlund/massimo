@@ -21,6 +21,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/number-field/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -31,6 +32,7 @@ export const FAMILIES = [
   ['actions', 'Actions', 'ui-button · ui-toggle'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid · ui-fieldset'],
+  ['entry', 'Entry', 'ui-number-field'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group · ui-checkbox-group'],
   ['tracks', 'Tracks', 'ui-range · ui-progress · ui-meter'],
@@ -50,6 +52,8 @@ const formGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', al
 const tonePrimary = css({ bg: 'primary.subtle', color: 'primary.fg' });
 const separatorDemo = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
 const separatorLadder = css({ display: 'flex', flexDirection: 'column', gap: '2', width: '[min(100%, 20rem)]' });
+// Number entry fields sit in a narrow column, like the inspector rows they serve.
+const entryColumn = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 18rem)]', alignSelf: 'start' });
 const trackStack = css({ display: 'flex', flexDirection: 'column', gap: '4', width: '[min(100%, 24rem)]' });
 // Inline fields demo: a property panel (field grid) beside stacked fields.
 const panelCard = css({ display: 'flex', flexDirection: 'column', gap: '3', padding: '4', borderRadius: 'xl', bg: 'bg.subtle', width: '[min(100%, 22rem)]' });
@@ -204,6 +208,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u. A toggle is a button with a pressed state (aria-pressed, data-pressed): the primary solid while on.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns; a ui-fieldset names a set of fields (legend) and disables them together, stacked with the collection gap.',
+    entry: 'A number field is the field control with its steppers in the 6u leading and trailing slots (the glyph at icon size sm, radius R − u) and the text 1u from each. The text is formatNumber of the value for the locale and is parsed back; arrows step (Shift ×10, Alt ×0.1), the steppers repeat while held, dragging the label scrubs, blur clamps and reformats.',
     selection: 'Select, segmented control and listbox share one option model; composites pad 0.5u so a segmented row stays 8u.',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot. Groups own one value: rows 1u apart (a 7u pitch), or a wrapping row 4u apart.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
@@ -381,6 +386,33 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         <SizeLadder family="swatch" params={params}>
           <ui-swatch color="#3b82f6" />
           <ui-palette label="Brand">{['#ef4444', '#f59e0b', '#10b981', '#3b82f6'].map((c) => <ui-swatch key={c} color={c} />)}</ui-palette>
+        </SizeLadder>
+      </>
+    ),
+    entry: (
+      <>
+        <Row label="Number field">
+          <div className={entryColumn}>
+            <ui-number-field label="Quantity" value={1} min={1} max={99} description="Drag the label to scrub." />
+            <ui-number-field label="Width" value={240} min={0} step={8} snap-on-step allow-wheel-scrub><span slot="suffix">px</span></ui-number-field>
+          </div>
+          <div className={entryColumn}>
+            <ui-number-field label="Price" value={1200} min={0} step={0.5} locale="de-DE" format='{"style":"currency","currency":"EUR"}' />
+            <ui-number-field label="Discount" value={0.15} min={0} max={1} step={0.01} format='{"style":"percent"}' />
+          </div>
+        </Row>
+        <Row label="States">
+          <div className={entryColumn}>
+            <ui-number-field label="Read-only" value={-42.5} readonly />
+            <ui-number-field label="Disabled" value={3} disabled />
+          </div>
+          <div className={entryColumn}>
+            <ui-number-field label="Required" required placeholder="Enter a number" />
+            <ui-number-field label="Out of range" value={12} max={10} allow-out-of-range error="Use 10 or less." />
+          </div>
+        </Row>
+        <SizeLadder family="numberField" params={params}>
+          <div className={entryColumn}><ui-number-field label="Amount" value={1284} /></div>
         </SizeLadder>
       </>
     ),

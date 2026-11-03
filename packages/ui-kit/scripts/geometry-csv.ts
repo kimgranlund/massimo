@@ -4,6 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
+import { resolveNumberField } from '../tokens/geometry/resolve.ts';
 import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
@@ -180,6 +181,16 @@ export const rows: Row[] = [
   { id: 'disclosure.tabs.underline.track', family: 'disclosure', element: 'tabs[variant=underline] list', quantity: 'track', formula: 'thin border width (1px token)', value: (u) => resolveTabs('underline', { unit: u }).track, status: 'implemented', notes: 'border role, on the list end edge (inline end when vertical)' },
   { id: 'disclosure.accordion.itemHeight', family: 'disclosure', element: 'accordion item', quantity: 'closed item height', formula: '8u + 1px', value: (u) => resolveDisclosure({ unit: u }).itemHeight, status: 'implemented', notes: 'trigger row plus the divider' },
 ];
+
+// Number field (resolveNumberField).
+rows.push(
+  { id: 'number-field.height', family: 'number-field', element: 'number-field group', quantity: 'height', formula: '8u', value: (u) => resolveNumberField({ unit: u }).height, status: 'implemented', notes: 'the field control; pad u - B' },
+  { id: 'number-field.stepper.size', family: 'number-field', element: 'number-field decrement, increment', quantity: 'stepper size', formula: '6u', value: (u) => resolveNumberField({ unit: u }).stepper, status: 'implemented', notes: 'the leading and trailing slots, square' },
+  { id: 'number-field.stepper.icon', family: 'number-field', element: 'number-field stepper glyph', quantity: 'plus / minus glyph', formula: 'min(10px + u - 0.5u, 6u)', value: (u) => resolveNumberField({ unit: u }).stepperIcon, status: 'implemented', notes: 'icon size sm, like a caret' },
+  { id: 'number-field.stepper.radius', family: 'number-field', element: 'number-field stepper', quantity: 'stepper radius', formula: 'max(0, min(3u·s, 4u) - u)', value: (u) => resolveNumberField({ unit: u }).stepperRadius, status: 'implemented', notes: 'concentric with the control radius' },
+  { id: 'number-field.input.paddingInline', family: 'number-field', element: 'number-field input', quantity: 'text inset beside a stepper', formula: 'u', value: (u) => resolveNumberField({ unit: u }).contentsStart, status: 'implemented', notes: '0.5u beside a prefix or suffix; 2u at a bare edge (no stepper)' },
+  { id: 'number-field.rowGap', family: 'number-field', element: 'number-field', quantity: 'label to control', formula: '1.5u', value: (u) => resolveNumberField({ unit: u }).rowGap, status: 'implemented', notes: 'the scrub area holds the label' },
+);
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));
 const cell = (s: string) => (/[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);

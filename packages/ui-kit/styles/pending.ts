@@ -36,4 +36,6 @@ export const pending = defineGlobalStyles({
   'ui-avatar:not(:defined)': { display: 'inline-block', flexShrink: 0, width: 'var(--avatar)', height: 'var(--avatar)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   // Choice groups: hidden until defined, in the block flow their choices reserve.
   ':is(ui-radio-group, ui-checkbox-group, ui-fieldset):not(:defined)': { display: 'block', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  // A number field reserves its label line and control row, like an input.
+  'ui-number-field:not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT, visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });

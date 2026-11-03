@@ -350,6 +350,28 @@
         "disclosure"
       ],
       "ladder": "disclosure"
+    },
+    "number-field": {
+      "id": "geometry:number-field",
+      "resolver": [
+        "resolveNumberField",
+        "resolveControl",
+        "resolveTextRun"
+      ],
+      "summary": "The field control (8u, pad u − B) with its steppers in the construction pattern's slots: decrement in the leading 6u slot, increment in the trailing one, the text run (prefix, input, suffix) 1u beside each and 0.5u between text parts. Steppers are the slot square, glyph at icon size sm, radius concentric with the control (R − u). The label sits in the scrub area 1.5u above the control.",
+      "members": [
+        "component:number-field"
+      ],
+      "searchTerms": [
+        "number field geometry",
+        "stepper size",
+        "spin button",
+        "increment decrement"
+      ],
+      "csv": [
+        "number-field"
+      ],
+      "ladder": "numberField"
     }
   }
 }

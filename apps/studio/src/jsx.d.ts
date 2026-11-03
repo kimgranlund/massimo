@@ -46,6 +46,7 @@ declare module 'react' {
       'ui-tabs': El<{ ref?: any; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; variant?: 'segmented' | 'underline'; 'activate-on-focus'?: boolean; label?: string }>;
       'ui-accordion': El<{ ref?: any; value?: string; 'default-value'?: string; multiple?: boolean; disabled?: boolean; orientation?: 'vertical' | 'horizontal' }>;
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
+      'ui-number-field': El<{ ref?: any; name?: string; label?: string; value?: number; 'default-value'?: number; min?: number; max?: number; step?: number; 'small-step'?: number; 'large-step'?: number; 'snap-on-step'?: boolean; 'allow-out-of-range'?: boolean; 'allow-wheel-scrub'?: boolean; 'scrub-direction'?: 'horizontal' | 'vertical'; 'pixel-sensitivity'?: number; format?: string; locale?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; 'hide-label'?: boolean }>;
     }
   }
 }

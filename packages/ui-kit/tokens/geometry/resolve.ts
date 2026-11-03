@@ -505,3 +505,24 @@ export function resolveTabs(variant: TabsVariant = 'segmented', input: GeometryI
     indicatorThickness: 0.5 * u, indicatorRadius: 0.25 * u, track: DIVIDER,
   };
 }
+
+// ── Number field (ui-number-field, React NumberField) ──
+// The field control with its steppers in the construction pattern's slots: the decrement in the
+// leading 6u slot, the increment in the trailing one, so the text run is 1u from each (resolveTextRun)
+// and the control stays 8u with pad u − B. A stepper is the slot itself, its plus / minus glyph at
+// icon size sm (an indicator, like a caret), its radius concentric with the control's: R − u.
+// The label sits in the scrub area, 1.5u above the control (the field's row gap).
+
+/** ui-number-field: control row, stepper slots, text run, label gap. */
+export function resolveNumberField(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  const run = resolveTextRun({ leading: true, trailing: true }, input).contents!;
+  return {
+    ...c,
+    contentsStart: run.start, contentsEnd: run.end,
+    stepper: c.slot,
+    stepperIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot),
+    stepperRadius: Math.max(0, c.radius - c.inset),
+    rowGap: 1.5 * c.unit,
+  };
+}

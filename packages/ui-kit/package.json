@@ -59,7 +59,9 @@
     "./components/accordion/element": "./components/accordion/accordion.element.ts",
     "./components/accordion/react": "./components/accordion/accordion.react.tsx",
     "./components/tabs/element": "./components/tabs/tabs.element.ts",
-    "./components/tabs/react": "./components/tabs/tabs.react.tsx"
+    "./components/tabs/react": "./components/tabs/tabs.react.tsx",
+    "./components/number-field/element": "./components/number-field/number-field.element.ts",
+    "./components/number-field/react": "./components/number-field/number-field.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

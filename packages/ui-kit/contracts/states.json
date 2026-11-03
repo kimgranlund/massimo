@@ -175,6 +175,11 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-scrubbing": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The number field's scrub area is being dragged (Base UI NumberField; host and scrub area)."
     }
   },
   "components": {
@@ -497,6 +502,29 @@
         "data-orientation",
         "data-activation-direction"
       ]
+    },
+    "ui-number-field": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused",
+        "data-scrubbing"
+      ],
+      "scrub-area": [
+        "data-scrubbing"
+      ],
+      "decrement": [
+        "data-disabled"
+      ],
+      "increment": [
+        "data-disabled"
+      ]
     }
   },
   "native": {
@@ -522,7 +550,8 @@
         "ui-range",
         "ui-palette",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-number-field"
       ]
     },
     "keyboard-focus": {
@@ -544,7 +573,8 @@
         "ui-swiper",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-number-field"
       ]
     },
     "highlighted": {
@@ -597,7 +627,8 @@
         "ui-field",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-number-field"
       ]
     },
     "busy": {
@@ -611,7 +642,8 @@
       "hook": "[data-readonly]",
       "look": "subtle fill, default cursor",
       "components": [
-        "ui-input"
+        "ui-input",
+        "ui-number-field"
       ]
     },
     "required": {
@@ -622,7 +654,8 @@
         "ui-select",
         "ui-checkbox",
         "ui-switch",
-        "ui-field"
+        "ui-field",
+        "ui-number-field"
       ]
     },
     "invalid": {
@@ -636,7 +669,8 @@
         "ui-checkbox",
         "ui-radio",
         "ui-switch",
-        "ui-palette"
+        "ui-palette",
+        "ui-number-field"
       ]
     },
     "dragging": {
