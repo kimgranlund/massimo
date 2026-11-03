@@ -32,9 +32,23 @@ export interface GeometryInput {
   /** Gap override in units of u (gap attribute); default = the container's padding level. */
   gap?: number;
   iconSize?: IconSize;
+  /** Density (theme `density` 0, 1, 2; the density attribute per subtree): compact, default, loose. */
+  density?: Density;
 }
 
-export const GEOMETRY_DEFAULTS = { unit: 4.5, border: 0, radiusScale: 1, iconSize: 'md' as IconSize };
+/**
+ * Density: how much fits at the same scale. It changes insets, padding and gaps, never type, slots
+ * or icons. Control inset I = 0.5u, 1u, 2u (controls 7u, 8u, 10u); the container ladder (padding and
+ * gap) × 0.5, 1, 1.5. As formulas of the index n (0, 1, 2) so CSS can compute them from one
+ * variable: I = 0.5 + 0.25n + 0.25n² (in u), ladder factor = 0.5 + 0.5n.
+ */
+export const DENSITIES = ['compact', 'default', 'loose'] as const;
+export type Density = (typeof DENSITIES)[number];
+export const densityIndex = (d: Density = 'default') => DENSITIES.indexOf(d);
+export const densityInset = (n: number) => 0.5 + 0.25 * n + 0.25 * n * n;
+export const densityFactor = (n: number) => 0.5 + 0.5 * n;
+
+export const GEOMETRY_DEFAULTS = { unit: 4.5, border: 0, radiusScale: 1, iconSize: 'md' as IconSize, density: 'default' as Density };
 
 function inputs(input: GeometryInput) {
   const x = { ...GEOMETRY_DEFAULTS, ...input };
@@ -44,7 +58,9 @@ function inputs(input: GeometryInput) {
   if (!(x.radiusScale >= 0 && x.radiusScale <= 3)) bad('radius scale must be 0..3');
   if (input.gap !== undefined && !(input.gap >= 0 && input.gap <= 8)) bad('gap must be 0..8u');
   if (!['sm', 'md', 'lg', 'fill'].includes(x.iconSize)) bad('unknown icon size');
-  return x;
+  if (!DENSITIES.includes(x.density)) bad('density must be compact, default or loose');
+  const n = densityIndex(x.density);
+  return { ...x, n, inset: densityInset(n), factor: densityFactor(n) };
 }
 
 /** Icon artwork, capped at the 6u slot so the control stays 8u (md caps below u≈2.2, lg below u≈2.9). */
@@ -57,8 +73,8 @@ export function resolveControl(input: GeometryInput = {}) {
   const x = inputs(input);
   const u = x.unit, b = x.border;
   const slot = 6 * u;
-  const inset = u;
-  const height = slot + 2 * inset; // 8u
+  const inset = x.inset * u; // 0.5u, 1u, 2u by density
+  const height = slot + 2 * inset; // 7u, 8u, 10u
   const fontSize = 10 + u;
   return {
     unit: u, border: b, slot, inset, height,
@@ -151,8 +167,8 @@ export const PAGE_MAX_WIDTH_REM = 72;
 /** Square levels (the area family): they meet the viewport or other areas, so they get no radius. */
 export const SQUARE_LEVELS: ReadonlySet<ContainerLevel> = new Set((Object.keys(CONTAINERS) as ContainerLevel[]).filter((l) => CONTAINERS[l].family === 'area'));
 
-/** The control radius: 3u × s, capped at half the 8u control height (resolveControl). */
-export const controlRadius = (u: number, s: number) => Math.min(3 * u * s, 4 * u);
+/** The control radius: 3u × s, capped at half the control height (resolveControl: 8u at default density). */
+export const controlRadius = (u: number, s: number, height = 8 * u) => Math.min(3 * u * s, height / 2);
 /** 1 while the radius scale is on, 0 at s = 0 so everything is square (CSS: min(1, 100 × s)). */
 const roundOn = (s: number) => Math.min(1, 100 * s);
 
@@ -168,9 +184,11 @@ const roundOn = (s: number) => Math.min(1, 100 * s);
 export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number; radius?: number; radiusFactor?: number; surface?: boolean } = {}) {
   const x = inputs(input);
   const u = x.unit;
-  const pad = input.padUnits ?? CONTAINERS[level].padding;
+  // The ladder (theme pad-<level> / gap-<level>, the defaults below) × the density factor; an
+  // explicit gap attribute is taken as written.
+  const pad = (input.padUnits ?? CONTAINERS[level].padding) * x.factor;
   const family = CONTAINERS[level].family;
-  const r = controlRadius(u, x.radiusScale);
+  const r = controlRadius(u, x.radiusScale, (6 + 2 * x.inset) * u);
   const t = radiusFamily(level) && !input.surface ? input.radius ?? input.radiusFactor ?? 1 : 1;
   if (!(t >= 0 && t <= 1)) throw new Error('container radius factor must be 0..1');
   const r0 = family === 'area' ? 0
@@ -182,7 +200,7 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
     unit: u, border: x.border,
     padding: Math.max(0, pad * u - x.border),
     edge: pad * u,
-    gap: (input.gap ?? input.gapUnits ?? pad) * u,
+    gap: (input.gap ?? (input.gapUnits ?? input.padUnits ?? CONTAINERS[level].padding) * x.factor) * u,
     radius: input.height === undefined ? radius : Math.min(radius, input.height / 2),
   };
 }
@@ -230,12 +248,12 @@ export function resolveSelectTrigger(input: GeometryInput = {}) {
 // ── Badge / tag / chip ──
 // Heights sit on a 12px base plus k·u (badge 1, tag 2, chip 3), capped so a chip is never
 // taller than a control and each level stays one u below the next:
-//   chip = min(12 + 3u, 8u), tag = min(12 + 2u, chip − u), badge = min(12 + u, tag − u).
-// The cap only bites below u = 2.5. Text steps down 0.5u per level from the control font.
+//   chip = min(12 + 3u, H), tag = min(12 + 2u, chip − u), badge = min(12 + u, tag − u), H the
+// control height (8u at default density; 7u compact, 10u loose), so a chip is never taller than a control. Text steps down 0.5u per level from the control font.
 export type BtgKind = 'badge' | 'tag' | 'chip';
 
-export function btgHeights(unit: number) {
-  const chip = Math.min(12 + 3 * unit, 8 * unit);
+export function btgHeights(unit: number, controlHeight = 8 * unit) {
+  const chip = Math.min(12 + 3 * unit, controlHeight);
   const tag = Math.min(12 + 2 * unit, chip - unit);
   const badge = Math.min(12 + unit, tag - unit);
   return { badge, tag, chip };
@@ -244,7 +262,7 @@ export function btgHeights(unit: number) {
 export function resolveBtg(kind: BtgKind, input: GeometryInput = {}) {
   const x = inputs(input);
   const u = x.unit, b = x.border;
-  const height = btgHeights(u)[kind];
+  const height = btgHeights(u, (6 + 2 * x.inset) * u)[kind];
   const fontSize = { chip: 10 + u, tag: 10 + 0.5 * u, badge: 10 }[kind];
   // Spacing uses the local unit u′ = height / 8 (a control is 8u tall), so each element is spaced
   // like a scaled-down control: host 0.5u′ − B, slot = height − u′, labels 1u′ on both sides
@@ -342,12 +360,13 @@ export function resolveSwatch(input: GeometryInput = {}) {
   return { size: 6 * u, radius: u * x.radiusScale, paletteRadius: 2 * u * x.radiusScale };
 }
 
-/** Swiper controls: icon-only paddles (8u buttons) inset 2u from the edge; 2u dots (active 4u wide) in 4u hit areas, u apart, 2u above the bottom. */
+/** Swiper controls: icon-only paddles (control-height buttons, 8u by default) inset 2u from the edge; 2u dots (active 4u wide) in 4u hit areas, u apart, 2u above the bottom. */
 export function resolveSwiper(input: GeometryInput = {}) {
   const x = inputs(input);
   const u = x.unit;
-  // Paddles are fully round (radius = half their height); the dots row sits 2u above the bottom edge.
-  return { paddle: 8 * u, paddleInset: 2 * u, paddleRadius: 4 * u, dot: 2 * u, dotActive: 4 * u, dotRadius: u, dotHit: 4 * u, dotsGap: u, dotsInset: 2 * u };
+  // Paddles are icon buttons at the control height (density), fully round; the dots row sits 2u above the bottom edge.
+  const paddle = (6 + 2 * x.inset) * u;
+  return { paddle, paddleInset: 2 * u, paddleRadius: paddle / 2, dot: 2 * u, dotActive: 4 * u, dotRadius: u, dotHit: 4 * u, dotsGap: u, dotsInset: 2 * u };
 }
 
 // ── Field rows ──

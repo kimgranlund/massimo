@@ -64,7 +64,7 @@ export const navigationMenu = defineSlotRecipe({
     viewport: { position: 'relative', width: '100%', height: '100%', overflow: 'clip' },
     content: {
       display: 'flex', flexDirection: 'column', width: 'max-content', maxWidth: 'calc(120 * var(--u) - 2 * var(--d))',
-      gap: 'calc(var(--ui-gap, var(--ui-gap-composite)) * var(--u))',
+      gap: 'calc(var(--ui-gap, calc(var(--ui-gap-composite) * (0.5 + 0.5 * var(--ui-density)))) * var(--u))',
       '&[hidden]': { display: 'none' },
       transition: t('reveal', 'opacity', 'translate'),
       '&[data-open][data-activation-direction]': { '@starting-style': { opacity: 0 } },

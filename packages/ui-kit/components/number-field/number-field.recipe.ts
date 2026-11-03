@@ -30,10 +30,10 @@ const textRun = {
   '& > :is([data-part=prefix], [data-part=suffix])': { flexShrink: 0, whiteSpace: 'nowrap', color: ADORN_COLOR },
 };
 
-/** A stepper: the 6u slot, the glyph at icon size sm, the radius concentric with the control (R − u). */
+/** A stepper: the 6u slot, the glyph at icon size sm, the radius concentric with the control (R − the control inset). */
 const stepper = {
   display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', padding: 0, border: 0,
-  borderRadius: 'max(0px, calc(var(--radius) - var(--u)))', bg: 'transparent', color: 'fg.muted', cursor: 'default',
+  borderRadius: 'max(0px, calc(var(--radius) - var(--di) * var(--u)))', bg: 'transparent', color: 'fg.muted', cursor: 'default',
   userSelect: 'none', touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent',
   transition: t('feedback', ...PAINT),
   '& > *': { width: 'var(--icon-sm)', height: 'var(--icon-sm)', flexShrink: 0 },

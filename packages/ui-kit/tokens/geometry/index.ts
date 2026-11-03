@@ -1,12 +1,16 @@
 // Spacing, sizes and radii are in u: N = N·u, computed where used from the inherited --ui-unit, so they
 // follow the theme unit and [size] subtrees like component geometry does. Radii also scale with
 // --ui-radius-scale. Container tokens name the theme ladder: pad.<level> and gap.<level> are the
-// theme's --ui-pad-<level> / --ui-gap-<level> in u; inset.<level> is the padding inside a border
+// theme's --ui-pad-<level> / --ui-gap-<level> in u × the density factor; inset.<level> is the padding inside a border
 // (max(0, pad − B), B = min(border, u/2)), as containers use it.
 import { CONTAINERS } from './resolve.ts';
 import { fontSizes } from '../typography/index.ts';
 
 const u = (n: number | string) => `calc(${n} * var(--ui-unit) * 1px)`;
+/** Density as CSS of --ui-density (0 compact, 1 default, 2 loose; resolve.ts densityInset / densityFactor). */
+export const DENSITY_INSET_CSS = '(0.5 + 0.25 * var(--ui-density) + 0.25 * var(--ui-density) * var(--ui-density))';
+export const DENSITY_FACTOR_CSS = '(0.5 + 0.5 * var(--ui-density))';
+const lad = (v: string) => `${v} * ${DENSITY_FACTOR_CSS}`;
 const B = 'min(calc(var(--ui-border) * 1px), calc(var(--ui-unit) * 0.5px))';
 const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24];
 const LEVELS = Object.keys(CONTAINERS);
@@ -14,9 +18,10 @@ const ladder = (fn: (level: string) => string) => Object.fromEntries(LEVELS.map(
 
 export const spacing = {
   ...Object.fromEntries(STEPS.map((n) => [n, { value: n === 0 ? '0' : u(n) }])),
-  pad: ladder((l) => u(`var(--ui-pad-${l})`)),
-  gap: ladder((l) => u(`var(--ui-gap-${l})`)),
-  inset: ladder((l) => `max(0px, ${u(`var(--ui-pad-${l})`)} - ${B})`),
+  // The ladder × the density factor (0.5, 1, 1.5).
+  pad: ladder((l) => u(lad(`var(--ui-pad-${l})`))),
+  gap: ladder((l) => u(lad(`var(--ui-gap-${l})`))),
+  inset: ladder((l) => `max(0px, ${u(lad(`var(--ui-pad-${l})`))} - ${B})`),
 };
 export const sizes = {
   ...Object.fromEntries(STEPS.map((n) => [n, { value: n === 0 ? '0' : u(n) }])),

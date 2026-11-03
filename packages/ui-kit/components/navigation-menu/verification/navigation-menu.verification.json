@@ -14,7 +14,7 @@
     },
     {
       "path": "components/navigation-menu/navigation-menu.recipe.ts",
-      "sha256": "02bf0c6bd4450a4a04492e4d3b0b5f6b6d47138b78ec1e2eb53baf4517313d7c"
+      "sha256": "f9de156d179dba9c7d5dc1dee54506be86756f3b1007cc6617922ed223af7f56"
     },
     {
       "path": "components/navigation-menu/navigation-menu.manifest.json",
@@ -30,7 +30,7 @@
     },
     {
       "path": "components/popover/popup-parts.ts",
-      "sha256": "8dc4026411522e2ee72dc472d09f964f62d741d8c0335f415f89bc7872969bf7"
+      "sha256": "3b3f4b0953b7f04beb074a2ec80b00801b1a631aa5e5ac3cebd09201baa892bb"
     }
   ],
   "renderers": {

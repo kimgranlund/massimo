@@ -49,7 +49,9 @@ import '@massimo/ui-kit/components/preview-card/element';
 import '@massimo/ui-kit/components/navigation-menu/element';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
-SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
+// Density cycles through the cases so every size meets each density with and without a border.
+const DENS = ['default', 'compact', 'loose'];
+SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined, density: DENS[(2 * i + border) % 3] }); });
 const LEVELS = ['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'];
 // card-<p> is <ui-card padding="<p>"> (md is the plain card).
 const levelTag = (l) => l.startsWith('card-') ? 'ui-card' : `ui-${l}`;
@@ -74,14 +76,16 @@ const precision = (() => {
 // layout unit each (1/64px; 1/60px in Gecko, which also snaps the font size). The meter's row gap
 // and height span two text line boxes (fractional line heights at u ≥ 11.5); a vertical menubar's
 // height adds two edges and a gap of 0.5u each (fractional at u = 2.25, 2.75). Three units and a
-// rounding step.
-const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height)$/;
+// rounding step. A wrapping combobox's height sums its chip rows, gaps and edges (compact density at
+// fractional u leaves several fractional boxes).
+const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height|combobox\.wrap\.height)$/;
 const tolerance = (k, want) => Math.max(0.02, precision.layout, SNAPPED_PAIR.test(k) ? Math.max(3 / 64, 1.5 * precision.layout) + 0.01 : 0,
   precision.font && /^type\..*\.size$|\.font$/.test(k) ? 2 ** (Math.floor(Math.log2(want)) - 10) + 0.01 : 0);
 let total = 0;
 for (const c of cases) {
   const box = document.createElement('div');
   box.setAttribute('data-size', String(c.unit));
+  box.setAttribute('density', c.density);
   box.style.setProperty('--ui-border', c.border);
   box.innerHTML = `<ui-button icon-size="${c.icon}"><span slot="leading"></span>Save</ui-button>
     <ui-button icon-size="${c.icon}" aria-label="x"><span slot="leading"></span></ui-button>
@@ -166,7 +170,7 @@ for (const c of cases) {
   // The context menu opens at a viewport point (script placement); measured below.
   box.querySelector('#ctx').openAt(100, 100);
   await new Promise((r) => setTimeout(r, 30));
-  const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
+  const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap, density: c.density };
   const ctl = resolveControl(g), cmp = resolveComposite(g), fld = resolveField(g), trg = resolveSelectTrigger(g);
   const [btn, iconBtn, caretBtn, textBtn] = box.querySelectorAll('ui-button');
   const pc = (b) => b.querySelector('[data-part=contents]'), pv = (b) => b.querySelector('[data-part=value]');
@@ -455,7 +459,8 @@ for (const c of cases) {
     const il = $('fInline'), rs2 = resolveFieldRow('inline', g);
     checks['field.inline.columnGap'] = [r2(rect(ctlOf(il)).left - rect(fp(il, 'label')).right), rs2.columnGap];
     checks['field.inline.readoutGap'] = [r2(rect(fp(il, 'readout')).left - rect(ctlOf(il)).right), rs2.columnGap];
-    checks['field.inline.rowHeight'] = [r2(Math.max(rect(fp(il, 'label')).height, rect(ctlOf(il)).height, rect(fp(il, 'readout')).height)), r2(rect(ctlOf(il)).height)];
+    // The row is the control's height, or the label's line where text outgrows a compact control (type never shrinks).
+    checks['field.inline.rowHeight'] = [r2(Math.max(rect(fp(il, 'label')).height, rect(ctlOf(il)).height, rect(fp(il, 'readout')).height)), r2(Math.max(rect(ctlOf(il)).height, parseFloat(cs(fp(il, 'label')).lineHeight) || 0))];
     checks['field.inline.description'] = [r2(rect(fp(il, 'description')).top - rowBottom(il)), rs2.rowGap];
     checks['field.inline.description.start'] = [r2(rect(fp(il, 'description')).left - rect(ctlOf(il)).left), 0];
     checks['field.inline.unitGap'] = [px(cs(fp(il, 'label')).columnGap), rs2.unitGap];
@@ -770,7 +775,8 @@ for (const c of cases) {
     ap.style.transition = 'none';
     checks['alertDialog.padding'] = [px(cs(ap).paddingTop), rd.padding];
     checks['alertDialog.radius'] = [px(cs(ap).borderTopLeftRadius), r2(rd.radius)];
-    checks['alertDialog.gap'] = [r2(rect(ad).top - rect(at).bottom), rd.gap];
+    // The alert dialog carries no gap attribute: the collection gap at this density.
+    checks['alertDialog.gap'] = [r2(rect(ad).top - rect(at).bottom), resolveDialog({ ...g, gap: undefined }).gap];
     checks['alertDialog.actions.gap'] = [r2(rect(aa.children[1]).left - rect(aa.children[0]).right), rd.actionsGap];
     checks['alertDialog.width'] = [r2(rect(ap).width), r2(rd.width)];
     $('adlg').open = false;
@@ -960,7 +966,7 @@ for (const c of cases) {
     // getComputedStyle reports the declared radius; paint scales it to fit half the height.
     checks[`${l}.radius`] = [r2(Math.min(px(cs(el).borderTopLeftRadius), h / 2)), r2(want.radius)];
   }
-  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${c.unit}/B${c.border}/g${c.gap ?? '-'}/${c.icon} ${k}: got ${got}, want ${want}`); }
+  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${c.unit}/B${c.border}/g${c.gap ?? '-'}/${c.icon}/${c.density} ${k}: got ${got}, want ${want}`); }
   rows.push(`u${c.unit} B${c.border} g${c.gap ?? '-'} ${c.icon}: button ${checks['button.height'][0]} font ${checks['button.font'][0]} icon ${checks['icon.size'][0]} segmented ${checks['segmented.height'][0]} btg ${checks['badge.height'][0]}/${checks['tag.height'][0]}/${checks['chip.height'][0]} card ${checks['card-md.padding'][0]}+${c.border}/${checks['card-md.gap'][0]}/${checks['card-md.radius'][0]}`);
 }
 // Concentric radii across the corner scale s: a composite takes the control radius (min(3u·s, 4u))

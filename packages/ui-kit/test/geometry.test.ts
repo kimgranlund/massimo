@@ -213,7 +213,7 @@ test('Panda spacing, sizes and radii are in u and recompute in sized subtrees', 
   assert.match((radii as any).md.value, /1\.5 \* var\(--ui-unit\) \* var\(--ui-radius-scale\)/);
   const vars = unitTokenVars();
   for (const name of ['--spacing-8', '--spacing-0\\.5', '--spacing-gap-card-md', '--sizes-6', '--radii-lg', '--font-sizes-sm']) assert.ok(name in vars, name);
-  assert.deepEqual((geometry as any)[':where([size], [data-size])'], vars);
+  assert.deepEqual((geometry as any)[':where([size], [data-size], [density], [data-density])'], vars);
 });
 
 test('swiper: 8u round paddles inset 2u; 2u dots (active 4u) in 4u hit areas, u apart, 2u above the bottom', () => {
@@ -388,4 +388,26 @@ test('navigation menu: an 8u composite list of 7u triggers and links with a sm c
   assert.deepEqual([n.itemHeight, n.itemPadding, n.itemRadius], [28, 1, 10]);
   assert.deepEqual([n.labelStart, n.labelEnd, n.caret, n.offset], [8, 4, 12, 4]);
   assert.deepEqual([n.popupEdge, n.popupPadding, n.popupRadius, n.linkHeight, n.linkRadius], [2, 1, 12, 28, 10]);
+});
+
+test('density: compact, default, loose change insets and the ladder, never type, slots or icons', () => {
+  const at = (density: 'compact' | 'default' | 'loose') => resolveControl({ unit: 4, density });
+  assert.deepEqual(['compact', 'default', 'loose'].map((d) => at(d as any).height), [28, 32, 40], 'controls 7u, 8u, 10u');
+  assert.deepEqual(['compact', 'default', 'loose'].map((d) => at(d as any).padding), [2, 4, 8], 'inset 0.5u, 1u, 2u');
+  for (const d of ['compact', 'loose'] as const) {
+    assert.equal(at(d).fontSize, at('default').fontSize, `${d}: the font stays`);
+    assert.equal(at(d).slot, at('default').slot, `${d}: the 6u slot stays`);
+    assert.equal(at(d).iconSize, at('default').iconSize, `${d}: icons stay`);
+    for (const unit of SIZES) for (const border of [0, 1]) {
+      if (border > unit / 2) continue;
+      // The composite and its option each keep their own edge (≥ B), so where the compact inset cannot hold both the row grows (6u + 4B).
+      const c = resolveControl({ unit, border, density: d });
+      assert.equal(resolveComposite({ unit, border, density: d }).rowHeight, Math.max(c.height, c.slot + 4 * border), `${d} u=${unit} B=${border}: one composite row is the control height`);
+    }
+  }
+  assert.deepEqual(['compact', 'default', 'loose'].map((d) => resolveContainer('card-md', { unit: 4, density: d as any }).padding), [8, 16, 24], 'the ladder × 0.5, 1, 1.5');
+  assert.equal(resolveContainer('card-md', { unit: 4, density: 'loose', gap: 2 }).gap, 8, 'an explicit gap attribute is taken as written');
+  assert.equal(resolveBtg('chip', { unit: 2, density: 'compact' }).height, 14, 'a chip is never taller than a compact control');
+  assert.equal(resolveControl({ unit: 4, radiusScale: 3, density: 'compact' }).radius, 14, 'the radius cap is half the compact height');
+  assert.throws(() => resolveControl({ density: 'tight' as any }), /density/);
 });

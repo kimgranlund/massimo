@@ -19,7 +19,7 @@ import '@massimo/ui-kit/components/tooltip/element';
 import '@massimo/ui-kit/components/preview-card/element';
 import '@massimo/ui-kit/components/navigation-menu/element';
 import { css } from '../../styled-system/css/index.js';
-import {
+import { DENSITIES,
   SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup, resolveNavigationMenu,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
@@ -71,7 +71,7 @@ function SpecRow({ label, children, values }: { label: string; children: React.R
 export function GeometryPage({ params }: PageProps) {
   const u = params.unit;
   // Border is 0..u/2 per resolver contract: clamp it per size so the small end of the ladder resolves.
-  const at = (unit: number): GeometryInput => ({ unit, border: Math.min(params.border, unit / 2), radiusScale: params['radius-scale'] });
+  const at = (unit: number): GeometryInput => ({ unit, border: Math.min(params.border, unit / 2), radiusScale: params['radius-scale'], density: DENSITIES[params.density] });
   const theme = at(u);
   const ladder = [...new Set([...LADDER, u])].sort((a, b) => a - b);
   const px = (v: number) => `${fmt(v)}px`;

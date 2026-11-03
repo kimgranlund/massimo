@@ -23,10 +23,10 @@ const level = (k: Layout) => {
   const r0 = family === 'area' ? '0px'
       // Wrappers and cards: concentric with the controls they hold, the control radius + the padding;
       // square at s = 0.
-      : `calc(${CONTROL_RADIUS} + var(--ui-pad-${k}) * var(--u) * min(1, 100 * var(--ui-radius-scale)))`;
+      : `calc(${CONTROL_RADIUS} + calc(var(--ui-pad-${k}) * (0.5 + 0.5 * var(--ui-density))) * var(--u) * min(1, 100 * var(--ui-radius-scale)))`;
   return {
-    '--cp': `var(--ui-pad-${k})`,
-    '--cg': `var(--ui-gap-${k})`,
+    '--cp': `calc(var(--ui-pad-${k}) * (0.5 + 0.5 * var(--ui-density)))`,
+    '--cg': `calc(var(--ui-gap-${k}) * (0.5 + 0.5 * var(--ui-density)))`,
     // The magnitude t (the radius attribute, else the theme's radius-<family>) on the concentric radius.
     '--cr': f ? `calc(var(--ui-radius, var(--ui-radius-${f})) * ${r0})` : r0,
   };

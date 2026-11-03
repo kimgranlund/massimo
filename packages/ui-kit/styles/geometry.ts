@@ -4,8 +4,8 @@
 // Inputs (unitless): --ui-unit (theme default; [size] overrides per subtree), --ui-border,
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
-import { unitTokenVars } from '../tokens/geometry/index.ts';
-import { AVATAR_SIZES, GAPS, ICON_STEPS, RADIUS_FACTORS, SIZES } from '../tokens/geometry/resolve.ts';
+import { DENSITY_FACTOR_CSS, DENSITY_INSET_CSS, unitTokenVars } from '../tokens/geometry/index.ts';
+import { AVATAR_SIZES, DENSITIES, GAPS, ICON_STEPS, RADIUS_FACTORS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
@@ -21,8 +21,10 @@ export const geometry = defineGlobalStyles({
 
   // size = u, on any element, inherited.
   ...Object.fromEntries(SIZES.map((u) => [`:is([size="${u}"], [data-size="${u}"])`, { '--ui-unit': String(u) }])),
-  // u-based tokens (spacing, sizes, radii) recompute in a sized subtree (tokens/geometry/index.ts).
-  ':where([size], [data-size])': UNIT_TOKENS,
+  // density = compact | default | loose on any element, inherited (theme default: --ui-density).
+  ...Object.fromEntries(DENSITIES.map((d, i) => [`:is([density="${d}"], [data-density="${d}"])`, { '--ui-density': String(i) }])),
+  // u-based tokens (spacing, sizes, radii, the ladder) recompute in a sized or density subtree (tokens/geometry/index.ts).
+  ':where([size], [data-size], [density], [data-density])': UNIT_TOKENS,
   ...Object.fromEntries(Object.entries(ICON_STEPS).map(([k, v]) => [`:is([icon-size=${k}], [data-icon-size=${k}])`, { '--ui-icon-k': String(v) }])),
   // Gap applies to the element that carries the attribute only: --ui-gap does not inherit
   // (geometryProperties), so a nested container keeps its own level gap.
@@ -35,15 +37,21 @@ export const geometry = defineGlobalStyles({
     '--u': 'calc(var(--ui-unit) * 1px)',
     '--b': 'min(calc(var(--ui-border) * 1px), calc(var(--u) / 2))',
     '--slot': 'calc(6 * var(--u))',
-    '--pad': 'calc(var(--u) - var(--b))',
-    '--h': 'calc(8 * var(--u))',
+    // Density: the control inset --di (0.5u, 1u, 2u) and the ladder factor --df (0.5, 1, 1.5).
+    '--di': `calc${DENSITY_INSET_CSS}`,
+    '--df': `calc${DENSITY_FACTOR_CSS}`,
+    '--pad': 'calc(var(--di) * var(--u) - var(--b))',
+    // The control height (7u, 8u, 10u); --h is the element's own height, which badge, tag and chip override.
+    // From u, not --slot: badge, tag and chip derive their slot from their own height (no cycle).
+    '--ctl-h': 'calc((6 + 2 * var(--di)) * var(--u))',
+    '--h': 'var(--ctl-h)',
     '--font': 'calc(10px + var(--u))',
     // Multi-line labels (choices) keep the 4.5u rhythm; single-line controls use 1.2, capped at
     // the slot (only below u = 2.5 does 1.2 × font exceed 6u), centered by equal block padding.
     '--leading': 'calc(4.5 * var(--u))',
     '--line': 'min(calc(1.2 * var(--font)), var(--slot))',
     '--line-pad': 'calc((var(--slot) - var(--line)) / 2)',
-    // Capped at the slot so the control stays 8u.
+    // Capped at the slot so the control keeps its height.
     '--icon': 'min(calc(var(--font) + var(--ui-icon-k) * var(--u)), var(--slot))',
     // Indicators (carets, the select chevron) are always icon size sm.
     '--icon-sm': 'min(calc(var(--font) - 0.5 * var(--u)), var(--slot))',
@@ -58,7 +66,7 @@ export const geometry = defineGlobalStyles({
   // on the same element, so --icon and --radius follow automatically. Variables only: the
   // slot recipes (components/btg/btg.recipe.ts) apply them.
   [BTG]: {
-    '--chip-h': 'min(calc(12px + 3 * var(--u)), calc(8 * var(--u)))',
+    '--chip-h': 'min(calc(12px + 3 * var(--u)), var(--ctl-h))',
     '--tag-h': 'min(calc(12px + 2 * var(--u)), calc(var(--chip-h) - var(--u)))',
     '--badge-h': 'min(calc(12px + var(--u)), calc(var(--tag-h) - var(--u)))',
     // Local unit u′ = height / 8 (a control is 8u tall): spacing is relative to each element's size.

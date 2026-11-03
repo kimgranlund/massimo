@@ -10,7 +10,7 @@
     },
     {
       "path": "components/fieldset/fieldset.recipe.ts",
-      "sha256": "d74d4724a87fa275c0af862af164526034d756a69f4c235d3fb3372c0e731956"
+      "sha256": "e509b91af44b8c04613d68774efda120ccb3c272a927b2cd9e699cd3e42afcff"
     },
     {
       "path": "components/fieldset/fieldset.react.tsx",

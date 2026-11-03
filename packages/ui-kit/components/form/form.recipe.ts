@@ -12,7 +12,7 @@ export const form = defineSlotRecipe({
   base: {
     root: {
       display: 'flex', flexDirection: 'column', alignItems: 'stretch', minWidth: '0',
-      gap: 'calc(var(--ui-gap, var(--ui-gap-collection)) * var(--ui-unit) * 1px)',
+      gap: 'calc(var(--ui-gap, calc(var(--ui-gap-collection) * (0.5 + 0.5 * var(--ui-density)))) * var(--ui-unit) * 1px)',
       margin: '0', padding: '0', fontFamily: UI_FONT,
       // Fields fill the column; a lone action keeps its own width (put several in a ui-group).
       '& > .ui-button__root': { alignSelf: 'flex-start' },

@@ -41,9 +41,9 @@ export const toast = defineSlotRecipe({
     },
     toast: {
       position: 'absolute', insetInline: 0, boxSizing: 'border-box',
-      padding: 'max(0px, calc(var(--ui-pad-card-sm) * var(--u) - var(--b)))',
+      padding: 'max(0px, calc(calc(var(--ui-pad-card-sm) * (0.5 + 0.5 * var(--ui-density))) * var(--u) - var(--b)))',
       borderWidth: 'var(--b)', borderStyle: 'solid', borderColor: 'border',
-      borderRadius: 'calc(var(--ui-pad-card-sm) * var(--u) * min(1, var(--ui-radius-scale)))',
+      borderRadius: 'calc(calc(var(--ui-pad-card-sm) * (0.5 + 0.5 * var(--ui-density))) * var(--u) * min(1, var(--ui-radius-scale)))',
       // Elevation level 4 (floating).
       bg: 'elevation.overlay', color: 'fg', boxShadow: 'floating', overflow: 'hidden',
       zIndex: 'calc(1000 - var(--toast-index, 0))',
@@ -95,15 +95,16 @@ export const toast = defineSlotRecipe({
       '&[data-behind]:not([data-expanded])': { opacity: 0 },
     },
     title: {
-      gridRow: 1, gridColumn: 1, margin: 0, textStyle: 'title', color: 'fg', overflowWrap: 'anywhere',
+      // Hugs the description (0.5u apart) when the action row is taller than the two lines (loose density).
+      gridRow: 1, gridColumn: 1, alignSelf: 'end', margin: 0, textStyle: 'title', color: 'fg', overflowWrap: 'anywhere',
       // Alone (no description): both rows, so it centers on the action and close.
-      '&:not(:has(+ [data-part=description]))': { gridRow: '1 / span 2' },
+      '&:not(:has(+ [data-part=description]))': { gridRow: '1 / span 2', alignSelf: 'center' },
       ...Object.fromEntries(Object.entries(TYPES).map(([type, role]) => [`&[data-type=${type}]`, { color: `${role}.fg` }])),
     },
     description: {
-      gridRow: 2, gridColumn: 1, margin: 0, textStyle: 'caption', color: 'fg.muted', overflowWrap: 'anywhere',
+      gridRow: 2, gridColumn: 1, alignSelf: 'start', margin: 0, textStyle: 'caption', color: 'fg.muted', overflowWrap: 'anywhere',
       // Alone (no title): both rows, so it centers on the action and close.
-      '&:first-child': { gridRow: '1 / span 2' },
+      '&:first-child': { gridRow: '1 / span 2', alignSelf: 'center' },
       '[data-part=title] + &': { marginBlockStart: 'calc(var(--u) / 2)' },
     },
     action: {

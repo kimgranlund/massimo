@@ -4,7 +4,7 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type ThemeParams, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '@massimo/ui-kit/tokens';
+import { DENSITIES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type ThemeParams, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, type Density } from '@massimo/ui-kit/tokens';
 import { resolveNumberField } from '@massimo/ui-kit/tokens';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
 import { resolveCombobox } from '@massimo/ui-kit/tokens';
@@ -93,7 +93,7 @@ export const IMAGES = [art('#4f46e5', '#06b6d4', 'Dawn'), art('#f97316', '#db277
 export const LADDER_SIZES = [3, 4, 6];
 export type LadderFamily = 'button' | 'btg' | 'field' | 'choice' | 'track' | 'swatch' | 'composite' | 'separator' | 'avatar' | 'choiceGroup' | 'fieldset' | 'disclosure' | 'toast' | 'form' | 'scrollArea' | 'numberField' | 'otpField' | 'dialog' | 'drawer' | 'menu' | 'popup';
 
-type Live = { unit: number; border: number; radiusScale: number };
+type Live = { unit: number; border: number; radiusScale: number; density?: Density };
 const px = (n: number) => `${fmt(n)}`;
 const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
   button: (g) => {
@@ -195,7 +195,7 @@ export function SizeLadder({ family, params, children }: { family: LadderFamily;
     <div role="list" aria-label="Sizes">
       {sizes.map((u) => {
         const isTheme = u === theme;
-        const lines = LADDER_METRICS[family]({ unit: u, border: params.border, radiusScale: params['radius-scale'] });
+        const lines = LADDER_METRICS[family]({ unit: u, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] });
         return (
           <div role="listitem" key={u} className={ladderRow}>
             <div className={ladderMeta}>

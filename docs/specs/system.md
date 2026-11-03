@@ -33,7 +33,7 @@ The inputs are organized by the peer concepts the system governs. Each parameter
 | Concept | Governs | Mechanism | Spec |
 |---|---|---|---|
 | Scale | how big everything is | one unit u; `size` per subtree | [geometry](geometry.md#inputs) |
-| Density | how much fits at the same scale | not yet separate from scale (planned: compact, default, loose) | [geometry](geometry.md#containers) |
+| Density | how much fits at the same scale | `density` compact, default, loose (theme; attribute per subtree): control insets 0.5u / 1u / 2u, the ladder × 0.5 / 1 / 1.5; type, slots and icons stay | [geometry](geometry.md#density) |
 | Space | margins and gutters | the container ladder `pad-<level>` / `gap-<level>`; `gap` per element | [geometry](geometry.md#containers) |
 | Curvature | roundness and corner shape | radius scale s, corner shape k, the concentric rule, the container magnitude t | [geometry](geometry.md#containers) |
 | Line | edges and separators | border B inside the padding; the separator rule; fills separate surfaces | [geometry](geometry.md#inputs) |

@@ -1,4 +1,4 @@
-// Slot recipe for <ui-swiper> and the React Swiper: a scroll-snap viewport, paddles (8u icon
+// Slot recipe for <ui-swiper> and the React Swiper: a scroll-snap viewport, paddles (control-height icon
 // buttons inset 2u, styled by the button recipe plus these overrides) and dots (2u, the active one
 // 4u, in 4u hit areas). Flags (no-paddles, no-dots, hover-controls, data-single) are attributes on
 // the web component and data-* on the React host; both are matched.
@@ -35,7 +35,7 @@ export const swiper = defineSlotRecipe({
     },
     // Paddles are fully round whatever the curvature setting (like the dots): radius = half the height.
     paddle: {
-      position: 'absolute', insetBlockStart: 'calc(50% - 4 * var(--u))', zIndex: 1, '--radius': 'calc(var(--h) / 2)',
+      position: 'absolute', insetBlockStart: 'calc(50% - var(--h) / 2)', zIndex: 1, '--radius': 'calc(var(--h) / 2)',
       '&[data-dir=prev]': { insetInlineStart: 'calc(2 * var(--u))' },
       '&[data-dir=next]': { insetInlineEnd: 'calc(2 * var(--u))' },
     },

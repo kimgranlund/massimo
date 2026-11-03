@@ -60,8 +60,8 @@ export const popupSurface: Style = {
 /** A card-level popup (popover: card-sm, preview card: card-md): padding and radius from the ladder, a gap. */
 export function cardPopup(level: 'card-sm' | 'card-md', gapLevel: 'group' | 'collection'): Style {
   return mergeStyles(popupSurface, {
-    padding: `max(0px, calc(var(--ui-pad-${level}) * var(--u) - var(--b)))`,
-    borderRadius: `calc(var(--ui-pad-${level}) * var(--u) * min(1, var(--ui-radius-scale)))`,
+    padding: `max(0px, calc(calc(var(--ui-pad-${level}) * (0.5 + 0.5 * var(--ui-density))) * var(--u) - var(--b)))`,
+    borderRadius: `calc(calc(var(--ui-pad-${level}) * (0.5 + 0.5 * var(--ui-density))) * var(--u) * min(1, var(--ui-radius-scale)))`,
     gap: `calc(var(--ui-gap, var(--ui-gap-${gapLevel})) * var(--u))`,
     fontFamily: UI_FONT,
   });

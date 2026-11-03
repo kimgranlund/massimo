@@ -25,13 +25,26 @@ Sources of truth, kept in agreement by tests:
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
 | corner shape k | theme `--ui-corner-shape`: `corner-shape: superellipse(k)` on every element with a radius | −1..4 (1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | icon size | `icon-size` / `data-icon-size`, any element, inherited | sm, md, lg, fill | md |
+| density | theme `--ui-density`; `density` / `data-density` per subtree | compact, default, loose | default ([density](#density)) |
 | gap | `gap` on a container or composite; that element only | 0 … 8 (0.5 steps, ×u) | = the padding level |
+
+## Density
+
+Density is how much fits at the same scale, separate from scale (u). The theme's `density` (0 compact, 1 default, 2 loose) sets it for the document; `density="compact | default | loose"` (or `data-density`, React `data-density`) sets it for a subtree and inherits like `size`.
+
+| | compact | default | loose | formula of the index n |
+|---|---|---|---|---|
+| control inset I | 0.5u | 1u | 2u | 0.5 + 0.25n + 0.25n² |
+| control height 6u + 2I | 7u | 8u | 10u | |
+| container ladder (padding, gap) | × 0.5 | × 1 | × 1.5 | 0.5 + 0.5n |
+
+Type, the 6u slot, icons and text-run edges never change with density. Everything built on the control follows it: padding I − B, the control radius cap (half the height), composite rows (edge D = max(B, pad-composite × factor), option inset max(B, I − D), so one row is the control height), chips (never taller than a control), swiper paddles, steppers and panel indents. An explicit `gap` attribute is taken as written. Where the compact inset cannot hold both a composite's edge and its option's edge (B ≥ I / 2, only at u = 2 with a 1px border), the row grows to 6u + 4B instead of shrinking anything. CSS computes the same formulas from `--ui-density` (`--di`, `--df`, `--ctl-h` in `styles/geometry.ts`); the resolvers take `density`. The tables below are at default density.
 
 ## Control: ui-button (and the shape ui-input / ui-select share)
 
 | | Formula | at u=4 |
 |---|---|---|
-| height | 8u | 32 |
+| height | 6u + 2I: 8u at default density (7u compact, 10u loose) | 32 |
 | padding | 1u − B (the border lives inside the 1u) | 4 |
 | parts | construction pattern `[leading] [prefix] [contents] [suffix] [trailing]`; leading/trailing are icon slots, min 6u × 6u; empty parts are hidden | 24 |
 | text run | prefix, contents (the label) and suffix: 0.5u on a side next to another text part (so they sit 1u apart), 1u beside a slot, 2u at a bare edge (`resolveTextRun`); single-line text: line height 1.2 × font, capped at the 6u slot, centered by equal block padding (slot − line) / 2 | 2, 4 or 8 / 3.6 / 16.8 |

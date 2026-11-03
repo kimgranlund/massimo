@@ -24,6 +24,8 @@ export const PARAMS = {
   'shadow-floating':  { label: 'Floating shadow',  min: 0, max: 2, step: 1, default: 2 },
   'shadow-modal':     { label: 'Modal shadow',     min: 0, max: 2, step: 1, default: 2 },
   'card-raised':      { label: 'Raise cards',      min: 0, max: 1, step: 1, default: 0 },
+  // Density (resolve.ts DENSITIES): 0 compact, 1 default, 2 loose; insets, padding and gaps only.
+  'density':          { label: 'Density',          min: 0, max: 2, step: 1, default: 1 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4.5 },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
   // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).

@@ -157,6 +157,7 @@ export function App() {
 
   const geometry = (
     <Group title="Geometry">
+      <Segmented label="Density" value={String(params.density)} onValue={(v) => setParam('density', Number(v))} options={[['0', 'Compact'], ['1', 'Default'], ['2', 'Loose']]} />
       {GEOMETRY.map((k) => {
         const p = PARAMS[k];
         return <Range key={k} label={p.label} value={params[k]} min={p.min} max={p.max} step={p.step} onValue={(v) => setParam(k, v)} />;

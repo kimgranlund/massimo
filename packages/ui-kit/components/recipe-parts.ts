@@ -122,18 +122,19 @@ export function constructionPattern({ slot, bare, between = 'calc(0.5 * var(--u)
  * composite edge, Ic the option inset, the option height 6u + 2Ic (resolveComposite). Padding and gap
  * are the theme's pad-composite / gap-composite; the gap attribute wins on its own element.
  */
-/** The control radius: 3u × s, capped at half the 8u control height (resolveControl). */
-export const CONTROL_RADIUS = 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(4 * var(--u)))';
+/** The control radius: 3u × s, capped at half the control height (resolveControl; 8u at default density). */
+export const CONTROL_RADIUS = 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--ctl-h) / 2))';
 
 export const composite: Style = {
-  '--d': 'max(var(--b), calc(var(--ui-pad-composite) * var(--u)))',
-  '--ci': 'max(var(--b), calc(var(--u) - var(--d)))',
+  '--d': 'max(var(--b), calc(calc(var(--ui-pad-composite) * (0.5 + 0.5 * var(--ui-density))) * var(--u)))',
+  // The option inset: the control inset (density) less the composite edge, so one row is the control height.
+  '--ci': 'max(var(--b), calc(var(--di) * var(--u) - var(--d)))',
   '--ch': 'calc(var(--slot) + 2 * var(--ci))',
   // A composite is a control: it takes the control radius, min(3u·s, 4u), and its options split the
   // difference, R − D, so they stay concentric with it (composite is exempt from radius ≤ padding).
   '--cr': CONTROL_RADIUS,
   padding: 'calc(var(--d) - var(--b))',
-  gap: 'calc(var(--ui-gap, var(--ui-gap-composite)) * var(--u))',
+  gap: 'calc(var(--ui-gap, calc(var(--ui-gap-composite) * (0.5 + 0.5 * var(--ui-density)))) * var(--u))',
   borderWidth: 'var(--b)',
   borderRadius: 'var(--cr)',
 };

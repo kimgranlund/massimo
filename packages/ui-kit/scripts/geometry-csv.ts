@@ -23,9 +23,10 @@ export const rows: Row[] = [
   { id: 'in.k', family: 'input', element: 'all', quantity: 'corner shape k', formula: 'corner-shape: superellipse(k) (default 1)', value: () => 1, status: 'input', notes: 'theme corner-shape; 1 round, 2 squircle, 0 bevel, -1 scoop' },
   { id: 'in.gap', family: 'input', element: 'containers, composites', quantity: 'gap g', formula: 'gap = g·u (default: the padding level)', value: () => NaN, status: 'input', notes: 'gap attribute 0..8 in 0.5 steps; applies to that element only' },
   { id: 'in.t', family: 'input', element: 'ui-group, ui-collection, ui-card', quantity: 'radius magnitude t', formula: 'radius attribute, else radius-<family> (default 1): R = t × R0, the concentric radius', value: () => NaN, status: 'input', notes: '0 … 1 in 0.05 steps; 1 concentric, 0 square; applies to that element only' },
+  { id: 'in.density', family: 'input', element: 'all', quantity: 'density', formula: 'density 0 compact, 1 default, 2 loose: inset I = (0.5 + 0.25n + 0.25n²)u, ladder × (0.5 + 0.5n)', value: () => NaN, status: 'input', notes: 'values below are at default density; type, slots and icons never change' },
 
   // Control
-  { id: 'control.height', family: 'control', element: 'button, input, select', quantity: 'height', formula: '8u', value: (u) => ctl(u).height, status: 'implemented', notes: '' },
+  { id: 'control.height', family: 'control', element: 'button, input, select', quantity: 'height', formula: '6u + 2I (8u at default density)', value: (u) => ctl(u).height, status: 'implemented', notes: '' },
   { id: 'control.padding', family: 'control', element: 'button, input, select', quantity: 'padding', formula: 'u - B', value: (u) => ctl(u).padding, status: 'implemented', notes: 'border + padding = 1u' },
   { id: 'control.slot', family: 'control', element: 'button, option', quantity: 'slot (leading / contents / trailing) min size', formula: '6u', value: (u) => ctl(u).slot, status: 'implemented', notes: 'empty slots hidden; icon-only button = 8u square' },
   { id: 'control.contents.paddingInline', family: 'control', element: 'button, option', quantity: 'contents inline padding beside a slot', formula: 'u', value: (u) => ctl(u).contents.paddingInline, status: 'implemented', notes: '' },

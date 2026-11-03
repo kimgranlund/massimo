@@ -13,7 +13,7 @@ import { FORCED, FORCED_EDGE, mergeStyles, t } from '../recipe-parts.ts';
 
 /** Every length of a dialog popup reads these, set on the popup (resolveDialog). */
 const LEVEL = {
-  '--dp': 'var(--ui-pad-card-xl)',
+  '--dp': 'calc(var(--ui-pad-card-xl) * (0.5 + 0.5 * var(--ui-density)))',
   '--dialog-margin': 'calc(4 * var(--u))',
 };
 const FADE = `display {durations.reveal} allow-discrete, overlay {durations.reveal} allow-discrete`;
@@ -38,7 +38,7 @@ export const dialogSurface = {
   padding: 'max(0px, calc(var(--dp) * var(--u) - var(--b)))',
   // The gap attribute is on the host (--ui-gap does not inherit): the popup takes it.
   '--ui-gap': 'inherit',
-  gap: 'calc(var(--ui-gap, var(--ui-gap-collection)) * var(--u))',
+  gap: 'calc(var(--ui-gap, calc(var(--ui-gap-collection) * (0.5 + 0.5 * var(--ui-density)))) * var(--u))',
   outline: 'none',
   display: 'flex',
   '&[data-closed]': { display: 'none' },

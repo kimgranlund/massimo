@@ -34,7 +34,8 @@ export const disclosureTrigger = {
 /** Panel: height 0 ↔ auto on the reveal intent; the content inset follows the trigger's label. */
 export const disclosurePanel = {
   overflow: 'clip', interpolateSize: 'allow-keywords', height: 'auto',
-  paddingInline: 'calc(var(--u) + 2 * var(--u))', paddingBlockEnd: 'calc(2 * var(--u))',
+  // Lines up with the trigger label: the control inset (density) + the label's 2u bare edge.
+  paddingInline: 'calc(var(--di) * var(--u) + 2 * var(--u))', paddingBlockEnd: 'calc(2 * var(--u))',
   transition: `${t('reveal', 'height', 'padding-block-end')}, display {durations.reveal} allow-discrete, content-visibility {durations.reveal} allow-discrete`,
   // Closed (hidden): collapsed; opening starts from collapsed.
   '&[data-closed]': { height: 0, paddingBlockEnd: 0 },

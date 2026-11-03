@@ -288,7 +288,7 @@
       },
       "$description": "button, input, select · height",
       "$extensions": {
-        "com.massimo.formula": "8u",
+        "com.massimo.formula": "6u + 2I (8u at default density)",
         "com.massimo.status": "implemented",
         "com.massimo.bySize": {
           "u=2": 16,

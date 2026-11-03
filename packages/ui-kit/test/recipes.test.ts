@@ -80,12 +80,12 @@ test('CSS-only container tags get their recipes as tag rules: base and default v
   const tags = Object.keys(containerTags);
   for (const t of ['ui-group', 'ui-collection', 'ui-card', 'ui-panel', 'ui-region', 'ui-page', 'ui-card[padding=xs]', 'ui-card[padding=sm]', 'ui-card[padding=lg]', 'ui-card[padding=xl]']) assert.ok(tags.includes(t), t);
   assert.ok(!tags.includes('ui-card[padding=md]'), 'the default variant is on the bare tag');
-  assert.equal(containerTags['ui-card']['--cp'], 'var(--ui-pad-card-md)');
+  assert.equal(containerTags['ui-card']['--cp'], 'calc(var(--ui-pad-card-md) * (0.5 + 0.5 * var(--ui-density)))', 'the theme ladder × the density factor');
   assert.equal(containerTags['ui-card'].padding, (card.base as any).root.padding, 'same style objects as the recipe');
   assert.deepEqual(containerTags['ui-card[padding=sm]'], (card.variants as any).padding.sm.root);
   assert.deepEqual(containerTags['ui-group'], (group.base as any).root);
   // In the preset's global CSS; only root-only recipes can be aliased.
-  assert.equal((uiKitPreset as any).globalCss['ui-card[padding=xl]']['--cp'], 'var(--ui-pad-card-xl)');
+  assert.equal((uiKitPreset as any).globalCss['ui-card[padding=xl]']['--cp'], 'calc(var(--ui-pad-card-xl) * (0.5 + 0.5 * var(--ui-density)))');
   assert.throws(() => tagRules('ui-x', { slots: ['root', 'label'] }), /root-only/);
 });
 

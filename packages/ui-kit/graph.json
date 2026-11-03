@@ -1504,6 +1504,16 @@
         "corner shape"
       ]
     },
+    "parameter:density": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/density",
+      "availability": "implemented",
+      "title": "Density",
+      "searchTerms": [
+        "density",
+        "density"
+      ]
+    },
     "parameter:face-controls": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/faces",
@@ -2328,6 +2338,14 @@
         "snappy duration (s)"
       ]
     },
+    "parameter:subtree-density": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "density"
+      ]
+    },
     "parameter:subtree-gap": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/subtree",
@@ -2514,6 +2532,19 @@
         "squircle",
         "superellipse",
         "corner shape"
+      ]
+    },
+    "parameters:density": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/density",
+      "availability": "implemented",
+      "title": "Density",
+      "searchTerms": [
+        "density",
+        "compact",
+        "loose",
+        "comfortable",
+        "dense"
       ]
     },
     "parameters:elevation": {
@@ -10127,6 +10158,46 @@
       "to": "parameters:unit"
     },
     {
+      "from": "parameters:density",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:density",
+      "relation": "drives",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "parameters:density",
+      "relation": "drives",
+      "to": "tokens:spacing"
+    },
+    {
+      "from": "parameters:density",
+      "relation": "drives",
+      "to": "tokens:container-ladder"
+    },
+    {
+      "from": "parameters:density",
+      "relation": "drives",
+      "to": "geometry:control"
+    },
+    {
+      "from": "parameters:density",
+      "relation": "drives",
+      "to": "geometry:container"
+    },
+    {
+      "from": "parameters:density",
+      "relation": "expresses",
+      "to": "concept:density"
+    },
+    {
+      "from": "parameter:density",
+      "relation": "memberOf",
+      "to": "parameters:density"
+    },
+    {
       "from": "parameters:border",
       "relation": "drives",
       "to": "foundation:geometry"
@@ -10960,6 +11031,16 @@
       "from": "parameter:subtree-type",
       "relation": "expresses",
       "to": "concept:typography"
+    },
+    {
+      "from": "parameter:subtree-density",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-density",
+      "relation": "expresses",
+      "to": "concept:density"
     }
   ]
 }

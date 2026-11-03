@@ -7,7 +7,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
-import { CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveControl } from '@massimo/ui-kit/tokens';
+import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveControl } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, groupHead, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
 
@@ -58,7 +58,7 @@ export function ContainersPage({ params }: PageProps) {
               {LEVELS.map((l) => {
                 const pad = p[`pad-${l}`] ?? CONTAINERS[l].padding, gap = p[`gap-${l}`] ?? pad;
                 const f = radiusFamily(l);
-                const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap, radiusFactor: f ? p[`radius-${f}`] : undefined });
+                const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density], padUnits: pad, gapUnits: gap, radiusFactor: f ? p[`radius-${f}`] : undefined });
                 return (
                   <tr key={l}>
                     <td className={nameCell}>{l}</td>
@@ -198,7 +198,7 @@ const USED_BY: Record<keyof typeof CONTAINERS, string> = {
 
 function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
   const p = params as unknown as Record<string, number>;
-  const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'] };
+  const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] };
   const card = resolveContainer('card-md', { ...g, padUnits: p['pad-card-md'], radiusFactor: p['radius-card'] });
   const group = resolveContainer('group', { ...g, padUnits: p['pad-group'], radiusFactor: p['radius-group'] });
   const cmp = resolveComposite({ ...g, padUnits: p['pad-composite'] });

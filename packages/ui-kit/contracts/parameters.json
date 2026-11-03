@@ -20,8 +20,8 @@
     "density": {
       "title": "Density",
       "governs": "how much fits at the same scale",
-      "mechanism": "not yet separate from scale: size changes u, the container ladder changes padding and gap",
-      "documentation": "../../docs/specs/geometry.md#containers",
+      "mechanism": "density 0 compact, 1 default, 2 loose (theme, and the density attribute per subtree): control insets 0.5u / 1u / 2u, the ladder × 0.5 / 1 / 1.5; type, slots and icons stay",
+      "documentation": "../../docs/specs/geometry.md#density",
       "searchTerms": [
         "density",
         "compact",
@@ -211,6 +211,36 @@
         "scale"
       ],
       "concept": "scale"
+    },
+    "density": {
+      "title": "Density",
+      "scope": "theme",
+      "concept": "density",
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "density"
+      ],
+      "cssVar": "--ui-<member>",
+      "formula": "0 compact, 1 default, 2 loose (the density attribute per subtree): control inset I = 0.5 + 0.25n + 0.25n² u (0.5u, 1u, 2u; controls 7u, 8u, 10u); the container ladder × 0.5 + 0.5n (0.5, 1, 1.5); type, the 6u slot and icons never change",
+      "drives": [
+        "foundation:geometry",
+        "tokens:geometry",
+        "tokens:spacing",
+        "tokens:container-ladder",
+        "geometry:control",
+        "geometry:container"
+      ],
+      "documentation": "../../docs/specs/geometry.md#density",
+      "searchTerms": [
+        "density",
+        "compact",
+        "loose",
+        "comfortable",
+        "dense"
+      ]
     },
     "border": {
       "title": "Border B",
@@ -663,7 +693,8 @@
         "gap",
         "radius",
         "scheme",
-        "type"
+        "type",
+        "density"
       ],
       "idPrefix": "subtree-",
       "attributes": {
@@ -672,7 +703,8 @@
         "icon-size": "icon-size / data-icon-size: sm, md, lg, fill",
         "gap": "gap: container gap in u (0–8, 0.5 steps), that element only",
         "scheme": ".light / .dark: force a color scheme",
-        "type": "data-type=\"<role>\": apply a type role"
+        "type": "data-type=\"<role>\": apply a type role",
+        "density": "density / data-density: compact, default, loose for the subtree (inherited)"
       },
       "formula": "the same formulas, evaluated with a local input: [size] re-resolves every length under it, .dark every role",
       "drives": [
@@ -697,7 +729,8 @@
         "gap": "space",
         "radius": "curvature",
         "scheme": "adaptivity",
-        "type": "typography"
+        "type": "typography",
+        "density": "density"
       }
     }
   },

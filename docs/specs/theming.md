@@ -11,6 +11,7 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 | `unit` | 2–12 px (0.25 steps) | 4.5 |
 | `border` | 0–2 px (whole) | 0 (surfaces separate by fill; invalid controls get a critical-tinted fill) |
 | `radius-scale` | 0–3 | 1 |
+| `density` | 0, 1, 2 (compact, default, loose; [geometry](geometry.md#density)) | 1 |
 | `radius-group`, `radius-collection`, `radius-card` | 0–1 (0.05 steps; the magnitude t of each family's concentric radius: 1 concentric, 0 square) | 1 |
 | `shadow-strength`, `surface-contrast`, `shadow-raised`, `shadow-floating`, `shadow-modal`, `card-raised` | see [elevation](elevation.md#parameters) | 1, 1, 1, 2, 2, 0 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
@@ -31,6 +32,7 @@ Every parameter is also a registry node (`parameter:<name>`) with its formula an
 
 - `size` / `data-size`: u for a subtree (2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, then 0.5 steps to 12).
 - `icon-size` / `data-icon-size`: sm, md, lg, fill.
+- `density` / `data-density`: compact, default, loose for a subtree, inherited ([geometry](geometry.md#density)).
 - `gap`: container gap override in units of u (0–8, 0.5 steps), that element only.
 - `radius` (ui-group, ui-collection, ui-card): the radius magnitude t, 0–1 in 0.05 steps, that element only ([geometry](geometry.md#containers)).
 - `.light` / `.dark`: force a color scheme for a subtree.
