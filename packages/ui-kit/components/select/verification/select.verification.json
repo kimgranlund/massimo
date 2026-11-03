@@ -42,7 +42,7 @@
     },
     {
       "path": "dom/events.ts",
-      "sha256": "33e6336c702866cca6cfc21470d744593d88f99342aefd3f4b1594b5817a9217"
+      "sha256": "c5c701c0e82c7c54ac1d3e025804ded90330958eb8f0e5a15666adf4364c8b1d"
     },
     {
       "path": "core/form-element.ts",
@@ -58,7 +58,7 @@
     },
     {
       "path": "dom/floating.ts",
-      "sha256": "e9e87c0e72ea878f975128f94b4170b44ee60ad2f7c25fc0e6807053574de62d"
+      "sha256": "e928561833d0404e61b88a4fb75dc1ae36549168c79c6264830c111877f1fe97"
     }
   ],
   "renderers": {

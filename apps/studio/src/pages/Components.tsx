@@ -32,6 +32,9 @@ import '@massimo/ui-kit/components/autocomplete/element';
 import '@massimo/ui-kit/components/dialog/element';
 import '@massimo/ui-kit/components/alert-dialog/element';
 import '@massimo/ui-kit/components/drawer/element';
+import '@massimo/ui-kit/components/menu/element';
+import '@massimo/ui-kit/components/context-menu/element';
+import '@massimo/ui-kit/components/menubar/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -54,6 +57,7 @@ export const FAMILIES = [
   ['forms', 'Forms', 'ui-form'],
   ['scrolling', 'Scrolling', 'ui-scroll-area'],
   ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog · ui-drawer'],
+  ['menus', 'Menus', 'ui-menu · ui-context-menu · ui-menubar'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -293,6 +297,7 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
 // Disclosure specimens: a readable column, as a settings or FAQ page would hold them.
 const disclosureColumn = css({ display: 'flex', flexDirection: 'column', gap: '1', width: 'full', maxWidth: '[28rem]' });
 const panelText = css({ color: 'fg.muted', textStyle: 'body' });
+const contextArea = css({ display: 'grid', placeItems: 'center', width: '[min(100%, 28rem)]', height: '[8rem]', borderRadius: 'xl', borderWidth: 'thin', borderStyle: 'dashed', borderColor: 'border', color: 'fg.muted', textStyle: 'caption' });
 const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
 const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
@@ -323,6 +328,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     forms: 'A ui-form owns the kit controls inside it (no native form): a submit validates them all, shows their errors and focuses the first invalid one, then fires formsubmit with the values by name. Errors by name (a server answer) show at once on the named fields and clear on change; validation-mode is Base UI\'s onSubmit, onBlur or onChange. Fields stack with the collection gap; no box of its own.',
     scrolling: 'A ui-scroll-area scrolls natively with its own scrollbars hidden and draws the kit\'s over its edges: a 2u track, the thumb u thick 0.5u inside it and at least 4u long, pills; a 2u corner where both bars show. The bars show while their axis overflows and fade in on hover, scroll or keyboard focus; drag a thumb or press a track. Base UI\'s overflow data-* and variables are set by script.',
     overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent. An alert dialog is the same popup with role=alertdialog: always modal, no outside-press dismissal, focus on the least destructive action (Cancel). A drawer is a square panel-level sheet (6u padding) on one edge: side sheets 80u wide, top and bottom sheets full width, 8u of the viewport kept in view; it slides in on the reveal intent and a swipe toward its edge dismisses it (reason swipe).',
+    menus: 'A menu trigger is an 8u control row; its popup is a floating composite 1u below it (beside a submenu trigger), at least as wide, with 7u items in the construction pattern. Focus moves to the highlighted item: arrow keys wrap, Home / End, typeahead and the pointer; ArrowRight opens a submenu, ArrowLeft or Escape closes it. Checkbox and radio items keep a 6u indicator slot and stay open on a press. A context menu opens the same popup 1u from the pointer on a right click, a long press or Shift+F10. A menubar is an 8u composite row of its menus\' triggers (7u); arrow keys move between them and, once a menu is open, switch menus, as does hovering another trigger.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     feedback: 'A toast is a container at the card-sm level: padding 3u − B, radius equal to it. Title and description share one column 0.5u apart; the action is an 8u control row and the close a 6u slot, 1u apart. The viewport is 80u wide, 4u from the window edges; collapsed toasts peek 2u, expanded (hover or focus, which also pause the timers) they stand 2u apart. Swipe, the close or Escape dismiss; F6 focuses the stack.',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
@@ -742,6 +748,91 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             <ui-button data-part="trigger">Open drawer</ui-button>
             <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
           </ui-drawer>
+        </SizeLadder>
+      </>
+    ),
+    menus: (
+      <>
+        <Row label="Menu">
+          <ui-menu label="Edit">
+            <div data-part="item"><i slot="leading" name="scissors" />Cut<span slot="suffix">⌘X</span></div>
+            <div data-part="item"><i slot="leading" name="copy" />Copy<span slot="suffix">⌘C</span></div>
+            <div data-part="item"><i slot="leading" name="clipboard" />Paste<span slot="suffix">⌘V</span></div>
+            <div data-part="separator" />
+            <div data-part="item" {...{ disabled: true }}>Select all</div>
+          </ui-menu>
+          <ui-menu>
+            <div data-part="trigger"><i slot="leading" name="sliders" />View</div>
+            <div data-part="popup">
+              <div data-part="checkbox-item" {...{ checked: '' }}>Show grid</div>
+              <div data-part="checkbox-item">Show rulers</div>
+              <div data-part="separator" />
+              <div data-part="group">
+                <div data-part="group-label">Sort by</div>
+                <div data-part="radio-group" {...{ value: 'name' }}>
+                  <div data-part="radio-item" {...{ value: 'name' }}>Name</div>
+                  <div data-part="radio-item" {...{ value: 'date' }}>Date modified</div>
+                  <div data-part="radio-item" {...{ value: 'size' }}>Size</div>
+                </div>
+              </div>
+            </div>
+          </ui-menu>
+          <ui-menu label="File">
+            <div data-part="item">New file<span slot="suffix">⌘N</span></div>
+            <div data-part="item">Open…<span slot="suffix">⌘O</span></div>
+            <ui-menu>
+              <div data-part="submenu-trigger"><i slot="leading" name="export" />Export</div>
+              <div data-part="popup"><div data-part="item">PNG</div><div data-part="item">SVG</div><div data-part="item">PDF</div></div>
+            </ui-menu>
+            <div data-part="separator" />
+            <div data-part="item">Close</div>
+          </ui-menu>
+          <ui-menu label="Hover" open-on-hover><div data-part="item">Opens on hover</div><div data-part="item">After 100ms</div></ui-menu>
+          <ui-menu label="Disabled" disabled><div data-part="item">Hidden</div></ui-menu>
+        </Row>
+        <Row label="Menubar">
+          <ui-menubar label="Editor">
+            <ui-menu label="File">
+              <div data-part="item">New<span slot="suffix">⌘N</span></div>
+              <div data-part="item">Open…<span slot="suffix">⌘O</span></div>
+              <ui-menu><div data-part="submenu-trigger">Open recent</div><div data-part="popup"><div data-part="item">notes.md</div><div data-part="item">plan.md</div></div></ui-menu>
+              <div data-part="separator" />
+              <div data-part="item">Save<span slot="suffix">⌘S</span></div>
+            </ui-menu>
+            <ui-menu label="Edit">
+              <div data-part="item">Undo<span slot="suffix">⌘Z</span></div>
+              <div data-part="item">Redo<span slot="suffix">⇧⌘Z</span></div>
+            </ui-menu>
+            <ui-menu label="View">
+              <div data-part="checkbox-item" {...{ checked: '' }}>Ruler</div>
+              <div data-part="checkbox-item">Grid</div>
+            </ui-menu>
+            <ui-menu label="Help" disabled><div data-part="item">Docs</div></ui-menu>
+          </ui-menubar>
+          <ui-menubar orientation="vertical" label="Tools">
+            <ui-menu><div data-part="trigger"><i slot="leading" name="pencil" />Draw</div><div data-part="popup"><div data-part="item">Pen</div><div data-part="item">Brush</div></div></ui-menu>
+            <ui-menu><div data-part="trigger"><i slot="leading" name="shapes" />Shapes</div><div data-part="popup"><div data-part="item">Rectangle</div><div data-part="item">Ellipse</div></div></ui-menu>
+          </ui-menubar>
+        </Row>
+        <Row label="Context menu">
+          <ui-context-menu>
+            <div data-part="trigger" tabIndex={0} className={contextArea}>Right-click (or long-press, or Shift+F10) here</div>
+            <div data-part="popup" aria-label="Canvas actions">
+              <div data-part="item"><i slot="leading" name="copy" />Copy<span slot="suffix">⌘C</span></div>
+              <div data-part="item"><i slot="leading" name="clipboard" />Paste<span slot="suffix">⌘V</span></div>
+              <ui-menu>
+                <div data-part="submenu-trigger"><i slot="leading" name="stack" />Arrange</div>
+                <div data-part="popup"><div data-part="item">Bring to front</div><div data-part="item">Send to back</div></div>
+              </ui-menu>
+              <div data-part="separator" />
+              <div data-part="checkbox-item" {...{ checked: '' }}>Snap to grid</div>
+              <div data-part="item"><i slot="leading" name="trash" />Delete</div>
+            </div>
+          </ui-context-menu>
+        </Row>
+        <SizeLadder family="menu" params={params}>
+          <ui-menu label="Menu"><div data-part="item">One</div><div data-part="item">Two</div></ui-menu>
+          <ui-menubar label="Size"><ui-menu label="File"><div data-part="item">New</div></ui-menu><ui-menu label="Edit"><div data-part="item">Undo</div></ui-menu></ui-menubar>
         </SizeLadder>
       </>
     ),

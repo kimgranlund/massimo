@@ -1,0 +1,554 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "context-menu",
+  "primary": "component:context-menu",
+  "module": "./context-menu.element.ts",
+  "registration": "on-import",
+  "documentation": "./context-menu.md",
+  "examples": "./context-menu.examples.json",
+  "contract": "../../contracts/components.json#/components/context-menu",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./context-menu.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveMenu"
+      ],
+      "description": "Reference numbers for the popup and its items (the menu's)."
+    },
+    {
+      "kind": "dom-behavior",
+      "module": "../../dom/menu.ts",
+      "exports": [
+        "pointAnchor",
+        "menuItems",
+        "menuNavigate"
+      ],
+      "description": "The point anchor and the menu's roles, data-* and navigation."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:context-menu",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-context-menu",
+      "class": "UIContextMenu",
+      "extends": "UIElement",
+      "intent": [
+        "Offer actions for an area or object at the pointer, on a secondary press"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the popup is open (reflected). Setting it opens or closes without an openchange event; a submenu closes with its menu.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at connect; focus stays where it is (an interaction moves it into the popup).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Preset: the generated area's text when no trigger part is authored.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": false,
+          "description": "The area ignores contextmenu, long presses and keys; the native context menu shows instead.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "side",
+          "type": "string",
+          "default": "bottom",
+          "attribute": "side",
+          "reflects": false,
+          "enum": [
+            "bottom",
+            "top"
+          ],
+          "description": "Preferred side of the point: bottom (default) or top; the popup flips when that side has no room.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "align",
+          "type": "string",
+          "default": "start",
+          "attribute": "align",
+          "reflects": false,
+          "enum": [
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Alignment at the point: start (default), center or end.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "openOnHover",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open-on-hover",
+          "reflects": false,
+          "description": "Inherited from ui-menu; does nothing on a context menu (its area has no hover gesture).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": 100,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "The rest before a hover opens a submenu, in ms (inherited from ui-menu).",
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'trigger-hover' | 'list-navigation' | 'item-press' | 'outside-press' | 'escape-key' | 'focus-out' | 'sibling-open', event: Event }",
+          "trigger": "contextmenu, a 500 ms touch press, Shift+F10 or the ContextMenu key opens the popup (reason trigger-press), or an item press, outside press, Escape or focus leaving closes it; preventDefault keeps it as it is"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "checkbox item: { checked: boolean, reason: 'item-press', event }; radio group: { value: string, reason: 'item-press', event }",
+          "trigger": "a press (or Enter / Space) on a checkbox item toggles its checked attribute (dispatched on the item), or on a radio item sets its radio group's value (dispatched on the group); preventDefault keeps the state"
+        }
+      ],
+      "semantics": {
+        "role": "none (the area has no role; the popup is role=menu with menuitem / menuitemcheckbox / menuitemradio items)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Shift+F10, ContextMenu on the area or an element in it",
+            "action": "open the popup at the focused element's start corner, on the first item"
+          },
+          {
+            "keys": "ArrowDown, ArrowUp, Home, End, a printable character",
+            "action": "move between items, as in ui-menu"
+          },
+          {
+            "keys": "Enter, Space on an item",
+            "action": "activate it (click)"
+          },
+          {
+            "keys": "ArrowRight (ArrowLeft in RTL) on a submenu trigger; ArrowLeft in a submenu",
+            "action": "open / close the submenu"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the topmost menu"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "aria-label on the popup part (the area names nothing)"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "A [data-part=trigger] (the area, any content) and a [data-part=popup] with ui-menu's item, checkbox-item, radio-item, group, radio-group and separator parts and nested ui-menu submenus. Preset: the area and the items as children; the popup is generated."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The area keeps the author's content and size; make it focusable (tabindex) or hold a focusable element so Shift+F10 can reach it.",
+        "The popup is placed from script at the pointer (CSS anchor positioning needs an element); it moves when the gesture repeats while open.",
+        "Item activation is the item's click; checkbox items and radio groups change as in ui-menu.",
+        "Setting open from script opens at the last point (initially the viewport's top left)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The only way to reach an action.",
+          "reason": "A secondary press is undiscoverable on many devices; also offer the action in a visible menu or button.",
+          "useInstead": "component:menu"
+        },
+        {
+          "when": "Text the user may want the browser's own context menu for (copy, spellcheck).",
+          "reason": "The context menu replaces the native one over its area."
+        }
+      ],
+      "searchTerms": [
+        "context menu",
+        "right click menu",
+        "secondary click",
+        "long press menu"
+      ]
+    },
+    {
+      "id": "part:context-menu-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The area that opens the menu (no role; data-popup-open while open, data-disabled), the author's content as it is. Base UI ContextMenu.Trigger."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:context-menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "uses",
+      "to": "component:menu"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "ownsPart",
+      "to": "part:context-menu-trigger"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./context-menu.element.ts",
+      "exports": {
+        "component:context-menu": "UIContextMenu"
+      },
+      "verification": "./verification/context-menu.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./context-menu.react.tsx",
+      "exports": {
+        "component:context-menu": "ContextMenu"
+      },
+      "verification": "./verification/context-menu.verification.json#/renderers/react",
+      "props": {
+        "component:context-menu": {
+          "inherits": [
+            "Omit<MenuRootProps, 'placement' | 'ui' | 'hostClass' | 'openOnHover'>"
+          ],
+          "props": [
+            "label?: ReactNode // Preset: the area's content (text or nodes)."
+          ]
+        }
+      },
+      "parts": {
+        "component:context-menu": {
+          "ContextMenu.Root": {
+            "inherits": [
+              "Omit<MenuRootProps, 'placement' | 'ui' | 'hostClass' | 'openOnHover'>"
+            ],
+            "props": []
+          },
+          "ContextMenu.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.Portal": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode",
+              "container?: unknown",
+              "keepMounted?: boolean"
+            ]
+          },
+          "ContextMenu.Positioner": {
+            "inherits": [],
+            "props": [
+              "side?: Side // The preferred side of the trigger (Base UI side): bottom (default) or top. Submenus open at the inline end.",
+              "align?: Align // Alignment along that side (Base UI align): start (default), center, end.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.CheckboxItem": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean = false // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode",
+              "checked?: boolean // Controlled checked state.",
+              "defaultChecked?: boolean = false // Checked at first render (uncontrolled).",
+              "onCheckedChange?: (checked: boolean, details: ChangeDetails) => void // Called when a press toggles it, with Base UI's details ({ reason: 'item-press', event })."
+            ]
+          },
+          "ContextMenu.CheckboxItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.RadioGroup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'defaultValue' | 'onChange'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: string",
+              "defaultValue?: string",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // Called when a press checks another radio item, with Base UI's details ({ reason: 'item-press', event }).",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.RadioItem": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean = false // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode",
+              "value: string // The value the radio group takes when this item is pressed."
+            ]
+          },
+          "ContextMenu.RadioItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.Group": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.GroupLabel": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "ContextMenu.Separator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "ContextMenu.SubmenuRoot": {
+            "inherits": [
+              "Omit<MenuRootProps, 'placement'>"
+            ],
+            "props": []
+          },
+          "ContextMenu.SubmenuTrigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "disabled?: boolean = false // Ignores presses; skipped by the arrow keys.",
+              "closeOnClick?: boolean // Close the menu on a press (Base UI closeOnClick): items default true, checkbox and radio items false.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

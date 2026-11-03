@@ -15,6 +15,8 @@ const FIELD_HEIGHT = 'calc(var(--h) + 1.75rem)';
 export const pending = defineGlobalStyles({
   ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-combobox, ui-autocomplete):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select, ui-combobox, ui-autocomplete):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
+  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-menu, ui-context-menu, ui-menubar):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
   ':is(ui-badge, ui-tag, ui-chip):not(:defined)': { display: 'inline-flex' },
   ':is(ui-checkbox, ui-radio, ui-switch):not(:defined)': { display: 'inline-flex', minHeight: 'var(--slot)' },
@@ -24,6 +26,16 @@ export const pending = defineGlobalStyles({
   ':is(ui-collapsible, ui-accordion):not(:defined)': { display: 'block', minHeight: 'var(--h)' },
   // Tabs reserve the list row and the 2u gap above the panel.
   'ui-tabs:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--u))' },
+  // A menu reserves its trigger row.
+  'ui-menu:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)' },
+  // Until a menu has built its popup (popover), its items stay out of the flow: also while defined but
+  // not yet connected, when another element forces a style pass (else the popup would fade out from block).
+  'ui-menu > :not([data-part=trigger], [data-part=submenu-trigger], [popover])': { display: 'none' },
+  // A context menu's area shows at once; its items wait for the popup.
+  'ui-context-menu:not(:defined)': { display: 'block' },
+  // A menubar reserves its row.
+  'ui-menubar:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)' },
+  'ui-context-menu > :not([data-part=trigger], [popover])': { display: 'none' },
   ':is(ui-range, ui-progress):not(:defined)': { display: 'block', height: 'calc(4 * var(--u))' },
   // A toggle reserves the control height like a button.
   'ui-toggle:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)' },

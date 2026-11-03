@@ -887,6 +887,66 @@
         "group"
       ],
       "behavior": "The dialog's behavior (top layer; modal by default: scroll lock, the rest of the page inert, focus trapped and returned; Escape, outside press and close parts; nesting), plus swipe to dismiss: a press on the popup dragged toward its edge moves it with the pointer (--drawer-swipe-movement-x / -y, data-swiping); released past 40% of its size or flicked it closes with reason 'swipe', otherwise it springs back. The sheet slides in and out from its edge on the reveal intent."
+    },
+    "menu": {
+      "geometryFamily": "menu",
+      "element": "Host holds a trigger part (role=button, aria-haspopup=menu) and a popup part (role=menu, popover) of item, checkbox-item, radio-item and submenu-trigger parts (menuitem roles), group, group-label, radio-group and separator parts; a ui-menu inside the popup is a submenu. The preset generates the trigger (label, caret) and the popup from the children.",
+      "parts": [
+        "menu-trigger",
+        "slot-leading?",
+        "slot-prefix?",
+        "slot-contents?",
+        "slot-suffix?",
+        "slot-trailing?",
+        "menu-popup",
+        "menu-item",
+        "menu-checkbox-item",
+        "menu-radio-item",
+        "menu-indicator",
+        "menu-submenu-trigger",
+        "menu-group",
+        "menu-group-label",
+        "menu-radio-group",
+        "menu-separator"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "menu",
+        "menubar"
+      ],
+      "behavior": "A press, Enter or Space on the trigger opens the popup (ArrowDown / ArrowUp open it on the first / last item); focus moves to the highlighted item (data-highlighted): ArrowDown / ArrowUp (wrapping), Home, End, typeahead and the pointer; Enter, Space or a press activates an item (its click), which closes the menu (close-on-click), checkbox and radio items toggle and stay open. Submenus open beside their trigger on ArrowRight (mirrored in RTL), Enter, Space, a press or a rest of the pointer, and close on ArrowLeft or Escape. Outside press, Escape and focus-out close it with Base UI's reasons; focus returns to the trigger. openchange { open, reason, event } is cancelable."
+    },
+    "context-menu": {
+      "geometryFamily": "menu",
+      "element": "Host holds a trigger part (the author's area; no role) and a ui-menu popup part (role=menu, popover) with its items, groups, separators and submenus; the preset takes the area and the items as children.",
+      "parts": [
+        "context-menu-trigger"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection"
+      ],
+      "behavior": "contextmenu (right click, the platform gesture) and a 500 ms touch press open the popup at the pointer, Shift+F10 or the ContextMenu key at the focused element's start corner (focus on the first item); a gesture while open moves it. The popup is placed from script, 1u from the point, flipping at the viewport edges. Items, keys, submenus, dismissal and events are ui-menu's (openchange reason trigger-press for the gesture)."
+    },
+    "menubar": {
+      "geometryFamily": "menu",
+      "element": "Host (role=menubar, aria-orientation) holds ui-menu children; their triggers are the bar's items (role=menuitem) with one tab stop.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card"
+      ],
+      "behavior": "Roving focus: one trigger is the tab stop; ArrowRight / ArrowLeft (mirrored in RTL; ArrowDown / ArrowUp when vertical), Home and End move between enabled triggers, wrapping. ArrowDown (ArrowRight when vertical), Enter or Space opens a menu on its first item, ArrowUp on its last. While one is open, ArrowRight / ArrowLeft inside it switch to the adjacent menu and hovering another trigger opens it; one menu is open at a time (the others close with reason sibling-open)."
     }
   }
 }

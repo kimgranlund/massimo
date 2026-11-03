@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "menubar",
+  "scope": "Behavior, ARIA and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and client behavior. Its menus are ui-menu's (that record covers them); rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/menubar/menubar.element.ts",
+      "sha256": "63c6cad2d9600be35b6e89ac7084e44582ffd1d35ea27b8b157c0490f234c1d6"
+    },
+    {
+      "path": "components/menubar/menubar.react.tsx",
+      "sha256": "36892096899733445d4495dd80e1bead78d92167b77ce5d8b2f1dedc381c24a5"
+    },
+    {
+      "path": "components/menubar/menubar.recipe.ts",
+      "sha256": "061b1dfa7ebcba6f79edb33c0762e38579fde4dce0ff30ccb02942733a93b478"
+    },
+    {
+      "path": "dom/menubar.ts",
+      "sha256": "eb2e1941a3858344cc03ee3cb1ed7ef943955b3ee04d1ed6da87007d1a8644be"
+    },
+    {
+      "path": "components/menubar/menubar.manifest.json",
+      "sha256": "9dd7b7be2c7de91ee7a443ffa4d2d4b8d3e38088f8e389130269c8ea099d1ca3"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"menubar\" test/menu.test.ts",
+          "covers": "role=menubar and aria-orientation, menuitem triggers with one roving tab stop, arrows wrapping past disabled menus, Home / End, ArrowDown opening on the first item, ArrowRight in an open menu switching menus (sibling-open), hover switching once a menu is open, Escape, data-orientation and data-has-submenu-open, the vertical bar's keys and side placement, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"menubar\" test/geometry.test.ts",
+          "covers": "resolveMenubar: 8u composite row, 7u triggers, capped radius, uncapped when vertical"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"menubar\" test/menu.test.ts",
+          "node --test --test-name-pattern=\"menubar\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Menubar\" test/menu.test.ts",
+          "covers": "React SSR: the same data-*, roles and tab stop as the web component on the bar and its triggers; arrows, ArrowDown and ArrowRight-in-a-menu in the client with onOpenChange reasons"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Menubar\" test/menu.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio on :5182 at the theme unit 4.5 and the size ladder 3, 4, 6, B = 0; geometry-check covers u = 2…12 × B = 0, 1, horizontal and vertical): growth (long trigger labels widen their trigger and the bar; a leading slot keeps 6u), RTL (dir=rtl reverses the triggers and the arrows along the bar; the menus open from the trigger's right edge as in ui-menu), focus (the ring is drawn inside the trigger, inset by the thick border width, so it stays within the bar and never changes a trigger's size), floating layer (menus open 1u below their trigger, below unless they do not fit; beside a vertical bar), screenshots of the Menus family checked light and dark with File › Open recent open from the bar."
+  ]
+}

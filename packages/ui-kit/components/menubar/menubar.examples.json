@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "menubar",
+  "title": "Menubar",
+  "summary": "A bar of menus with one tab stop.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "An editor's menus",
+      "subject": "component:menubar",
+      "markup": "<ui-menubar label=\"Editor\"><ui-menu label=\"File\"><div data-part=\"item\">New<span slot=\"suffix\">⌘N</span></div><div data-part=\"item\">Open…<span slot=\"suffix\">⌘O</span></div></ui-menu><ui-menu label=\"Edit\"><div data-part=\"item\">Undo<span slot=\"suffix\">⌘Z</span></div><div data-part=\"item\">Redo</div></ui-menu><ui-menu label=\"View\"><div data-part=\"checkbox-item\" checked>Ruler</div><div data-part=\"checkbox-item\">Grid</div></ui-menu></ui-menubar>"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical, menus open beside it",
+      "subject": "component:menubar",
+      "markup": "<ui-menubar orientation=\"vertical\" label=\"Tools\"><ui-menu><div data-part=\"trigger\"><i slot=\"leading\" name=\"pencil\"></i>Draw</div><div data-part=\"popup\"><div data-part=\"item\">Pen</div><div data-part=\"item\">Brush</div></div></ui-menu><ui-menu><div data-part=\"trigger\"><i slot=\"leading\" name=\"shapes\"></i>Shapes</div><div data-part=\"popup\"><div data-part=\"item\">Rectangle</div></div></ui-menu></ui-menubar>"
+    }
+  ]
+}

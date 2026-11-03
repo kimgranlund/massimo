@@ -141,6 +141,26 @@
         "inside dialog",
         "modal content"
       ]
+    },
+    "menu": {
+      "id": "context:menu",
+      "host": "component:menu",
+      "summary": "Inside a ui-menu popup: item, checkbox-item, radio-item, group, radio-group and separator parts, and nested ui-menu submenus (their trigger is a submenu-trigger item).",
+      "searchTerms": [
+        "menu",
+        "inside menu",
+        "submenu"
+      ]
+    },
+    "menubar": {
+      "id": "context:menubar",
+      "host": "component:menubar",
+      "summary": "Inside a ui-menubar: ui-menu children, whose triggers become the bar's items (role=menuitem, a roving tab stop, composite options).",
+      "searchTerms": [
+        "menubar",
+        "inside menubar",
+        "app menu bar"
+      ]
     }
   },
   "nesting": {

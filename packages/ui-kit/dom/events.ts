@@ -17,6 +17,8 @@
  * - clear-press, chip-remove-press: the combobox clear button or a chip's remove button was pressed
  * - close-press: a dialog's close part was pressed (Dialog.Close)
  * - swipe: a drawer was swiped toward its edge (Drawer)
+ * - trigger-hover: the pointer rested on a menu trigger or submenu trigger (menus that open on hover)
+ * - sibling-open: another menu of the same menubar opened (Base UI Menubar)
  * - none: no specific interaction (Base UI's reason for checkbox, switch, radio, toggle and input)
  * - input-change, input-clear, input-blur, input-paste: typing a value, emptying the text, the
  *   commit on blur (formatting, clamping), a paste (number field, OTP field; combobox and autocomplete
@@ -25,7 +27,7 @@
  */
 export type ChangeReason =
   | 'item-press' | 'keyboard' | 'list-navigation' | 'trigger-press' | 'outside-press' | 'escape-key'
-  | 'focus-out' | 'track-press' | 'drag' | 'none'
+  | 'focus-out' | 'track-press' | 'drag' | 'none' | 'trigger-hover' | 'sibling-open'
   | 'input-change' | 'input-clear' | 'input-blur' | 'input-paste' | 'increment-press' | 'decrement-press' | 'wheel' | 'scrub'
   // Combobox, Autocomplete (Base UI): the clear button, a chip's remove button.
   | 'clear-press' | 'chip-remove-press'

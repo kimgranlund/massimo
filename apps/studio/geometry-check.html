@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -40,6 +40,9 @@ import { trackPairFill } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/dialog/element';
 import '@massimo/ui-kit/components/alert-dialog/element';
 import '@massimo/ui-kit/components/drawer/element';
+import '@massimo/ui-kit/components/menu/element';
+import '@massimo/ui-kit/components/context-menu/element';
+import '@massimo/ui-kit/components/menubar/element';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -63,11 +66,13 @@ const precision = (() => {
   p.remove();
   return { font, layout: unit > 1 / 64 + 1e-6 ? 2 * unit + 0.001 : 0 };
 })();
-// A gap measured between two text line boxes (the meter's label row and its track) takes both edges'
-// snapping: up to one layout unit each (1/64px; 1/60px in Gecko, which also snaps the font size), so
-// two units and a rounding step where the line height is fractional (u ≥ 11.5).
-const SNAPPED_PAIR = /^meter\.(rowGap|height)$/;
-const tolerance = (k, want) => Math.max(0.02, precision.layout, SNAPPED_PAIR.test(k) ? Math.max(2 / 64, precision.layout) + 0.01 : 0,
+// A length summed from several independently snapped boxes takes each one's snapping: up to one
+// layout unit each (1/64px; 1/60px in Gecko, which also snaps the font size). The meter's row gap
+// and height span two text line boxes (fractional line heights at u ≥ 11.5); a vertical menubar's
+// height adds two edges and a gap of 0.5u each (fractional at u = 2.25, 2.75). Three units and a
+// rounding step.
+const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height)$/;
+const tolerance = (k, want) => Math.max(0.02, precision.layout, SNAPPED_PAIR.test(k) ? Math.max(3 / 64, 1.5 * precision.layout) + 0.01 : 0,
   precision.font && /^type\..*\.size$|\.font$/.test(k) ? 2 ** (Math.floor(Math.log2(want)) - 10) + 0.01 : 0);
 let total = 0;
 for (const c of cases) {
@@ -131,6 +136,11 @@ for (const c of cases) {
     <ui-drawer id="drwR" side="right" modal="false" disable-pointer-dismissal open label="Filters" description="Narrow" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><div data-part="actions"><ui-button data-part="close">Done</ui-button><ui-button>Reset</ui-button></div></ui-drawer>
     <ui-drawer id="drwB" modal="false" disable-pointer-dismissal open label="Sheet"><p style="height:200vh">Tall</p></ui-drawer>
     <ui-dialog id="dlgTall" modal="false" disable-pointer-dismissal open><p style="height:200vh">Tall</p></ui-dialog>
+    <ui-menu id="mnu" default-open><div data-part="trigger"><span slot="leading"></span>Menu</div><div data-part="popup" style="transition:none"><div data-part="item">Alpha</div><div data-part="item"><span slot="leading"></span>Lead</div><div data-part="separator"></div><div data-part="checkbox-item" checked>Check</div><div data-part="group"><div data-part="group-label">Group</div><div data-part="item">In group</div></div><ui-menu default-open><div data-part="submenu-trigger">Sub</div><div data-part="popup" style="transition:none"><div data-part="item">S</div></div></ui-menu></div></ui-menu>
+    <ui-menu id="mnuP" label="Preset"><div data-part="item">x</div></ui-menu>
+    <ui-menubar id="bar"><ui-menu label="File"><div data-part="item">x</div></ui-menu><ui-menu><div data-part="trigger"><span slot="leading"></span>Edit</div><div data-part="popup"><div data-part="item">y</div></div></ui-menu></ui-menubar>
+    <ui-menubar id="barV" orientation="vertical"><ui-menu label="One"><div data-part="item">x</div></ui-menu><ui-menu label="Two"><div data-part="item">y</div></ui-menu></ui-menubar>
+    <ui-context-menu id="ctx"><div data-part="trigger" style="height:${10 * c.unit}px">Area</div><div data-part="popup" style="transition:none"><div data-part="item">Copy</div><div data-part="item">Paste</div></div></ui-context-menu>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -141,6 +151,8 @@ for (const c of cases) {
     m.add({ title: 'Second', description: 'More' });
     m.add({ title: 'Saved', description: 'Draft stored.', actionProps: { children: 'Undo' } });
   }
+  // The context menu opens at a viewport point (script placement); measured below.
+  box.querySelector('#ctx').openAt(100, 100);
   await new Promise((r) => setTimeout(r, 30));
   const g = { unit: c.unit, border: c.border, iconSize: c.icon, gap: c.gap };
   const ctl = resolveControl(g), cmp = resolveComposite(g), fld = resolveField(g), trg = resolveSelectTrigger(g);
@@ -748,6 +760,73 @@ for (const c of cases) {
     checks['drawer.bottom.edge'] = [r2(rect(pb).bottom), vp.height];
     $('drwR').open = false; $('drwB').open = false;
     dl.open = false; $('dlgTall').open = false;
+  }
+  // Menu (resolveMenu): an 8u trigger; the popup a composite 1u from it; 7u items; submenus 1u beside their trigger.
+  {
+    const rm = resolveMenu({ ...g, gap: undefined, iconSize: 'md' }), part = (el, p) => el.querySelector(`:scope > [data-part=${p}]`);
+    const mn = $('mnu'), mt = part(mn, 'trigger'), mp = part(mn, 'popup'), [it, il] = mp.querySelectorAll(':scope > [data-part=item]');
+    const sep = part(mp, 'separator'), chk = part(mp, 'checkbox-item'), grp = part(mp, 'group'), gl = part(grp, 'group-label');
+    const sub = mp.querySelector(':scope > ui-menu'), st = part(sub, 'submenu-trigger'), sp = part(sub, 'popup');
+    const pt = part($('mnuP'), 'trigger');
+    checks['menu.trigger.height'] = [r2(rect(mt).height), rm.triggerHeight];
+    checks['menu.trigger.padding'] = [px(cs(mt).paddingTop) + px(cs(mt).borderTopWidth), rm.triggerPadding + rm.border];
+    checks['menu.trigger.radius'] = [px(cs(mt).borderTopLeftRadius), rm.triggerRadius];
+    checks['menu.trigger.font'] = [px(cs(mt).fontSize), rm.fontSize];
+    checks['menu.trigger.lead.slot'] = [r2(rect(part(mt, 'leading')).width), rm.slot];
+    checks['menu.trigger.label'] = [px(cs(part(mt, 'contents')).paddingLeft), rm.labelBesideSlot];
+    checks['menu.preset.label'] = [px(cs(part(pt, 'contents')).paddingLeft), rm.labelStart];
+    checks['menu.preset.caret'] = [r2(rect(part(pt, 'trailing').firstElementChild).width), rm.caret];
+    const side = mp.getAttribute('data-side');
+    checks['menu.popup.offset'] = [r2(side === 'top' ? rect(mt).top - rect(mp).bottom : rect(mp).top - rect(mt).bottom), rm.offset];
+    checks['menu.popup.align'] = [r2(rect(mp).left), r2(rect(mt).left)];
+    checks['menu.popup.minWidth'] = [rect(mp).width + 0.01 >= rect(mt).width ? 1 : 0, 1];
+    checks['menu.popup.edge'] = [px(cs(mp).paddingTop) + px(cs(mp).borderTopWidth), rm.popupEdge];
+    checks['menu.popup.radius'] = [px(cs(mp).borderTopLeftRadius), rm.popupRadius];
+    checks['menu.popup.gap'] = [r2(rect(il).top - rect(it).bottom), rm.popupGap];
+    checks['menu.item.height'] = [r2(rect(it).height), rm.itemHeight];
+    checks['menu.item.padding'] = [px(cs(it).paddingTop) + px(cs(it).borderTopWidth), rm.itemInset];
+    checks['menu.item.radius'] = [px(cs(it).borderTopLeftRadius), rm.itemRadius];
+    checks['menu.item.label'] = [px(cs(part(it, 'contents')).paddingLeft), rm.labelStart];
+    checks['menu.item.lead.slot'] = [r2(rect(part(il, 'leading')).width), rm.slot];
+    checks['menu.item.lead.label'] = [px(cs(part(il, 'contents')).paddingLeft), rm.labelBesideSlot];
+    checks['menu.item.width'] = [r2(rect(it).width), r2(rect(mp).width - 2 * rm.popupEdge)];
+    checks['menu.checkbox.slot'] = [r2(rect(part(chk, 'leading')).width), rm.slot];
+    checks['menu.checkbox.indicator'] = [r2(rect(chk.querySelector('[data-part=indicator]')).width), rm.iconSize];
+    checks['menu.separator.thickness'] = [r2(rect(sep).height), rm.separator];
+    checks['menu.separator.space'] = [r2(rect(sep).top - rect(il).bottom), rm.popupGap + rm.separatorMargin];
+    checks['menu.groupLabel.height'] = [r2(rect(gl).height), rm.itemHeight];
+    checks['menu.groupLabel.text'] = [r2(rect(gl).left + px(cs(gl).paddingLeft) - rect(it).left), r2(rm.itemInset + rm.labelStart)];
+    checks['menu.submenu.trigger'] = [r2(rect(st).height), rm.itemHeight];
+    const subSide = sp.getAttribute('data-side');
+    checks['menu.submenu.offset'] = [r2(subSide === 'left' ? rect(st).left - rect(sp).right : rect(sp).left - rect(st).right), rm.offset];
+    checks['menu.submenu.top'] = [r2(rect(sp).top), r2(rect(st).top)];
+    mn.open = false;
+    // Context menu: the popup's start corner 1u below the point; the menu's items.
+    const cx = $('ctx'), cp = part(cx, 'popup'), [ci1, ci2] = cp.querySelectorAll(':scope > [data-part=item]');
+    checks['contextMenu.popup.left'] = [r2(rect(cp).left), 100];
+    checks['contextMenu.popup.offset'] = [r2(rect(cp).top - 100), rm.offset];
+    checks['contextMenu.popup.edge'] = [px(cs(cp).paddingTop) + px(cs(cp).borderTopWidth), rm.popupEdge];
+    checks['contextMenu.popup.radius'] = [px(cs(cp).borderTopLeftRadius), rm.popupRadius];
+    checks['contextMenu.item.height'] = [r2(rect(ci1).height), rm.itemHeight];
+    checks['contextMenu.item.gap'] = [r2(rect(ci2).top - rect(ci1).bottom), rm.popupGap];
+    checks['contextMenu.trigger.height'] = [r2(rect(part(cx, 'trigger')).height), 10 * c.unit];
+    cx.open = false;
+    // Menubar (resolveMenubar): an 8u composite row of 7u composite-option triggers.
+    const rb = resolveMenubar({ ...g, gap: undefined }), br = $('bar'), [b1, b2] = br.querySelectorAll(':scope > ui-menu > [data-part=trigger]');
+    checks['menubar.height'] = [r2(rect(br).height), rb.rowHeight];
+    checks['menubar.padding'] = [px(cs(br).paddingTop) + px(cs(br).borderTopWidth), rb.edge];
+    checks['menubar.radius'] = [px(cs(br).borderTopLeftRadius), rb.radius];
+    checks['menubar.gap'] = [r2(rect(b2).left - rect(b1).right), rb.gap];
+    checks['menubar.trigger.height'] = [r2(rect(b1).height), rb.triggerHeight];
+    checks['menubar.trigger.padding'] = [px(cs(b1).paddingTop) + px(cs(b1).borderTopWidth), rb.triggerPadding + rb.border];
+    checks['menubar.trigger.radius'] = [px(cs(b1).borderTopLeftRadius), rb.triggerRadius];
+    checks['menubar.trigger.label'] = [px(cs(part(b1, 'contents')).paddingLeft), rb.labelStart];
+    checks['menubar.trigger.lead.slot'] = [r2(rect(part(b2, 'leading')).width), resolveMenu(g).slot];
+    const rv = resolveMenubar({ ...g, gap: undefined, vertical: true }), bv = $('barV'), [v1, v2] = bv.querySelectorAll(':scope > ui-menu > [data-part=trigger]');
+    checks['menubar.vertical.gap'] = [r2(rect(v2).top - rect(v1).bottom), rv.gap];
+    checks['menubar.vertical.width'] = [r2(rect(v1).width), r2(rect(v2).width)];
+    checks['menubar.vertical.radius'] = [px(cs(bv).borderTopLeftRadius), rv.radius];
+    checks['menubar.vertical.height'] = [r2(rect(bv).height), r2(2 * rv.triggerHeight + rv.gap + 2 * rv.edge)];
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

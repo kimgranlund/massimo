@@ -82,7 +82,13 @@
     "./components/autocomplete/element": "./components/autocomplete/autocomplete.element.ts",
     "./components/autocomplete/react": "./components/autocomplete/autocomplete.react.tsx",
     "./components/toggle-group/element": "./components/toggle-group/toggle-group.element.ts",
-    "./components/toggle-group/react": "./components/toggle-group/toggle-group.react.tsx"
+    "./components/toggle-group/react": "./components/toggle-group/toggle-group.react.tsx",
+    "./components/menu/element": "./components/menu/menu.element.ts",
+    "./components/menu/react": "./components/menu/menu.react.tsx",
+    "./components/context-menu/element": "./components/context-menu/context-menu.element.ts",
+    "./components/context-menu/react": "./components/context-menu/context-menu.react.tsx",
+    "./components/menubar/element": "./components/menubar/menubar.element.ts",
+    "./components/menubar/react": "./components/menubar/menubar.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

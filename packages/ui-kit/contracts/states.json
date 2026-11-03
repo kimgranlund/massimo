@@ -286,6 +286,11 @@
       "baseUi": true,
       "condition": null,
       "meaning": "A drawer popup was closed by a swipe (Base UI Drawer.Popup): it leaves from where it was dragged."
+    },
+    "data-has-submenu-open": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A menu of the menubar is open (Base UI Menubar)."
     }
   },
   "components": {
@@ -892,6 +897,104 @@
         "data-swiping",
         "data-swipe-dismiss"
       ]
+    },
+    "ui-menu": {
+      "host": [],
+      "trigger": [
+        "data-popup-open",
+        "data-pressed",
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ],
+      "item": [
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "checkbox-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "radio-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "indicator": [
+        "data-checked",
+        "data-unchecked",
+        "data-disabled"
+      ],
+      "submenu-trigger": [
+        "data-popup-open",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "separator": [
+        "data-orientation"
+      ],
+      "group": [],
+      "group-label": [],
+      "radio-group": []
+    },
+    "ui-context-menu": {
+      "host": [],
+      "trigger": [
+        "data-popup-open",
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ],
+      "item": [
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "checkbox-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "radio-item": [
+        "data-checked",
+        "data-unchecked",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "indicator": [
+        "data-checked",
+        "data-unchecked",
+        "data-disabled"
+      ],
+      "submenu-trigger": [
+        "data-popup-open",
+        "data-highlighted",
+        "data-disabled"
+      ],
+      "separator": [
+        "data-orientation"
+      ],
+      "group": [],
+      "group-label": [],
+      "radio-group": []
+    },
+    "ui-menubar": {
+      "host": [
+        "data-orientation",
+        "data-has-submenu-open"
+      ],
+      "menus": "its ui-menu children carry ui-menu's state; their triggers are the bar's items"
     }
   },
   "native": {
@@ -922,7 +1025,8 @@
         "ui-number-field",
         "ui-otp-field",
         "ui-combobox",
-        "ui-autocomplete"
+        "ui-autocomplete",
+        "ui-menu"
       ]
     },
     "keyboard-focus": {
@@ -949,7 +1053,9 @@
         "ui-number-field",
         "ui-otp-field",
         "ui-combobox",
-        "ui-autocomplete"
+        "ui-autocomplete",
+        "ui-menu",
+        "ui-menubar"
       ]
     },
     "highlighted": {
@@ -957,7 +1063,8 @@
       "look": "neutral fill (options); focus-ring outline under keyboard modality (swatches)",
       "components": [
         "ui-option",
-        "ui-swatch"
+        "ui-swatch",
+        "ui-menu"
       ]
     },
     "selected": {
@@ -971,7 +1078,8 @@
         "ui-chip",
         "ui-swatch",
         "ui-swiper",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-menu"
       ]
     },
     "open": {
@@ -985,7 +1093,10 @@
         "ui-autocomplete",
         "ui-dialog",
         "ui-alert-dialog",
-        "ui-drawer"
+        "ui-drawer",
+        "ui-menu",
+        "ui-context-menu",
+        "ui-menubar"
       ]
     },
     "disabled": {
@@ -1011,7 +1122,9 @@
         "ui-number-field",
         "ui-otp-field",
         "ui-combobox",
-        "ui-autocomplete"
+        "ui-autocomplete",
+        "ui-menu",
+        "ui-context-menu"
       ]
     },
     "busy": {

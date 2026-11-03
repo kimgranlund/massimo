@@ -177,6 +177,18 @@
         "tag picker"
       ]
     },
+    "component:context-menu": {
+      "kind": "component",
+      "source": "components/context-menu/context-menu.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-context-menu",
+      "searchTerms": [
+        "context menu",
+        "right click menu",
+        "secondary click",
+        "long press menu"
+      ]
+    },
     "component:dialog": {
       "kind": "component",
       "source": "components/dialog/dialog.manifest.json#/nodes/0",
@@ -315,6 +327,32 @@
         "list select",
         "option list",
         "single select list"
+      ]
+    },
+    "component:menu": {
+      "kind": "component",
+      "source": "components/menu/menu.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-menu",
+      "searchTerms": [
+        "menu",
+        "dropdown menu",
+        "action menu",
+        "submenu",
+        "menu button",
+        "overflow menu"
+      ]
+    },
+    "component:menubar": {
+      "kind": "component",
+      "source": "components/menubar/menubar.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-menubar",
+      "searchTerms": [
+        "menubar",
+        "menu bar",
+        "application menu",
+        "file edit view"
       ]
     },
     "component:meter": {
@@ -726,6 +764,26 @@
         "inside inline"
       ]
     },
+    "context:menu": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/menu",
+      "availability": "implemented",
+      "searchTerms": [
+        "menu",
+        "inside menu",
+        "submenu"
+      ]
+    },
+    "context:menubar": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/menubar",
+      "availability": "implemented",
+      "searchTerms": [
+        "menubar",
+        "inside menubar",
+        "app menu bar"
+      ]
+    },
     "context:page": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/page",
@@ -1084,6 +1142,19 @@
         "slideshow"
       ]
     },
+    "geometry:menu": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/menu",
+      "availability": "implemented",
+      "searchTerms": [
+        "menu geometry",
+        "menu item height",
+        "menu popup",
+        "dropdown menu",
+        "submenu offset",
+        "menubar height"
+      ]
+    },
     "geometry:number-field": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/number-field",
@@ -1391,6 +1462,15 @@
         "combobox trigger"
       ]
     },
+    "part:context-menu-trigger": {
+      "kind": "part",
+      "source": "components/context-menu/context-menu.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "context menu trigger"
+      ]
+    },
     "part:dialog-actions": {
       "kind": "part",
       "source": "contracts/parts.json#/parts/dialog-actions",
@@ -1542,6 +1622,105 @@
       "tag": "div",
       "searchTerms": [
         "input editor"
+      ]
+    },
+    "part:menu-checkbox-item": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu checkbox item"
+      ]
+    },
+    "part:menu-group": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/8",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu group"
+      ]
+    },
+    "part:menu-group-label": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/9",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu group label"
+      ]
+    },
+    "part:menu-indicator": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "menu indicator"
+      ]
+    },
+    "part:menu-item": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu item"
+      ]
+    },
+    "part:menu-popup": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu popup"
+      ]
+    },
+    "part:menu-radio-group": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/10",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu radio group"
+      ]
+    },
+    "part:menu-radio-item": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu radio item"
+      ]
+    },
+    "part:menu-separator": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/11",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu separator"
+      ]
+    },
+    "part:menu-submenu-trigger": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu submenu trigger"
+      ]
+    },
+    "part:menu-trigger": {
+      "kind": "part",
+      "source": "components/menu/menu.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "menu trigger"
       ]
     },
     "part:meter-label": {
@@ -4402,6 +4581,96 @@
       "to": "context:page"
     },
     {
+      "from": "component:context-menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "uses",
+      "to": "component:menu"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "ownsPart",
+      "to": "part:context-menu-trigger"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:context-menu",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
       "from": "component:dialog",
       "relation": "extends",
       "to": "foundation:element"
@@ -5700,6 +5969,271 @@
       "from": "component:option",
       "relation": "uses",
       "to": "foundation:icons"
+    },
+    {
+      "from": "component:menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-trigger"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-popup"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-item"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-checkbox-item"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-radio-item"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-indicator"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-submenu-trigger"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-group"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-group-label"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-radio-group"
+    },
+    {
+      "from": "component:menu",
+      "relation": "ownsPart",
+      "to": "part:menu-separator"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:menu"
+    },
+    {
+      "from": "component:menu",
+      "relation": "allowedIn",
+      "to": "context:menubar"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesGeometry",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "acceptsChild",
+      "to": "component:menu"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "establishes",
+      "to": "context:menubar"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:menubar",
+      "relation": "allowedIn",
+      "to": "context:card"
     },
     {
       "from": "component:meter",

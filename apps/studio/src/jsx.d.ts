@@ -47,6 +47,9 @@ declare module 'react' {
       'ui-toast-viewport': El<{ ref?: any; limit?: number; timeout?: number; placement?: 'bottom-end' | 'bottom-center' | 'top-end' | 'top-center' | 'inline'; 'swipe-direction'?: string; label?: string }>;
       'ui-form': El<{ ref?: any; errors?: string; 'validation-mode'?: 'onSubmit' | 'onBlur' | 'onChange'; gap?: string }>;
       'ui-scroll-area': El<{ ref?: any; 'overflow-edge-threshold'?: number; size?: string }>;
+      'ui-menubar': El<{ ref?: any; orientation?: 'horizontal' | 'vertical'; label?: string }>;
+      'ui-context-menu': El<{ ref?: any; open?: boolean; 'default-open'?: boolean; label?: string; disabled?: boolean }>;
+      'ui-menu': El<{ ref?: any; open?: boolean; 'default-open'?: boolean; label?: string; disabled?: boolean; side?: 'bottom' | 'top'; align?: 'start' | 'center' | 'end'; 'open-on-hover'?: boolean; delay?: number }>;
       'ui-tabs': El<{ ref?: any; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; variant?: 'segmented' | 'underline'; 'activate-on-focus'?: boolean; label?: string }>;
       'ui-combobox': El<{ ref?: any; name?: string; value?: string; 'default-value'?: string; 'input-value'?: string; label?: string; placeholder?: string; description?: string; error?: string; multiple?: boolean; required?: boolean; disabled?: boolean; readonly?: boolean; open?: boolean; 'empty-text'?: string; 'auto-highlight'?: boolean; labelledby?: string; describedby?: string }>;
       'ui-autocomplete': El<{ ref?: any; name?: string; value?: string; 'default-value'?: string; label?: string; placeholder?: string; description?: string; error?: string; mode?: 'list' | 'both' | 'inline' | 'none'; 'show-trigger'?: boolean; required?: boolean; disabled?: boolean; readonly?: boolean; 'empty-text'?: string; 'auto-highlight'?: boolean; labelledby?: string; describedby?: string }>;

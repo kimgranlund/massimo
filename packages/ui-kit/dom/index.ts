@@ -14,3 +14,5 @@ export * from './scroll-area.ts';
 export * from './number.ts';
 export * from './otp.ts';
 export * from './combobox.ts';
+export * from './menu.ts';
+export * from './menubar.ts';

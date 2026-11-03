@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -321,4 +321,21 @@ test('drawer: an area-level sheet (6u panel padding inside B, square, parts 2u a
   const b = resolveDrawer('bottom', { unit: 4, radiusScale: 2, viewport: { width: 1280, height: 800 } });
   assert.deepEqual([b.width, b.maxHeight, b.radius], [1280, 768, 0], 'square at any corner scale');
   assert.equal(resolveDrawer('top', { unit: 4, padUnits: 4 }).padding, 16, 'pad-panel is a theme parameter');
+});
+
+test('menu: an 8u trigger; the popup is a composite 1u away; items are 7u composite options; separators 0.5u apart', () => {
+  const m = resolveMenu({ unit: 4, border: 1 });
+  assert.deepEqual([m.triggerHeight, m.triggerPadding, m.triggerRadius, m.offset], [32, 3, 12, 4]);
+  assert.deepEqual([m.popupEdge, m.popupPadding, m.popupGap, m.popupRadius], [2, 1, 2, 14]);
+  assert.deepEqual([m.itemHeight, m.itemInset, m.itemPadding, m.itemRadius, m.labelStart, m.labelBesideSlot], [28, 2, 1, 12, 8, 4]);
+  assert.deepEqual([m.separator, m.separatorMargin, m.slot], [1, 2, 24]);
+  assert.equal(resolveMenu({ unit: 4, border: 0 }).itemHeight, 28, 'items stay 7u at any B');
+});
+
+test('menu: a menubar is an 8u composite row of 7u composite-option triggers; its radius is capped at half the row unless vertical', () => {
+  const b = resolveMenubar({ unit: 4, border: 1 });
+  assert.deepEqual([b.rowHeight, b.edge, b.padding, b.gap, b.radius, b.triggerHeight, b.triggerPadding, b.triggerRadius, b.labelStart, b.offset], [32, 2, 1, 2, 14, 28, 1, 12, 8, 4]);
+  assert.equal(resolveMenubar({ unit: 4, border: 0 }).rowHeight, 32, 'one row stays 8u at any B');
+  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2 }).radius, 16, 'capped at half the row');
+  assert.equal(resolveMenubar({ unit: 4, radiusScale: 2, vertical: true }).radius, 28, 'uncapped when vertical');
 });

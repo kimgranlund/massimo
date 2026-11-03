@@ -33,7 +33,11 @@ import { combobox, autocomplete } from './combobox/combobox.recipe.ts';
 import { dialog } from './dialog/dialog.recipe.ts';
 import { alertDialog } from './alert-dialog/alert-dialog.recipe.ts';
 import { drawer } from './drawer/drawer.recipe.ts';
+import { menu } from './menu/menu.recipe.ts';
+import { contextMenu } from './context-menu/context-menu.recipe.ts';
+import { menubar } from './menubar/menubar.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar };
+
 
 

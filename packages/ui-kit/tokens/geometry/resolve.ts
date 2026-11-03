@@ -606,6 +606,34 @@ export function resolveOtpField(input: GeometryInput = {}) {
   };
 }
 
+// ── Menus: menu, context menu, menubar ──
+
+/**
+ * ui-menu (and the context menu and menubar built on it): the trigger is a control row (8u, pad
+ * u − B, the control radius); the popup is a floating composite 1u from its anchor (edge D =
+ * max(B, 0.5u), padding D − B, the composite gap, the wrapper radius (3 + 0.5)u · s, uncapped like
+ * the select popup); items, group labels and submenu triggers are composite options (7u, inset Ic,
+ * radius concentric with the popup) in the construction pattern (2u at a bare edge, 1u beside a
+ * slot); checkbox and radio items keep a 6u leading indicator slot; a separator is the separator
+ * rule (max(1px, B)) with 0.5u above and below, beyond the gap.
+ */
+export function resolveMenu(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  const u = c.unit;
+  const k = resolveComposite({ ...input, container: true });
+  const bare = resolveButtonContents(false, false, input), slotted = resolveButtonContents(true, true, input);
+  return {
+    unit: u, border: c.border, fontSize: c.fontSize, slot: c.slot, iconSize: c.iconSize,
+    triggerHeight: c.height, triggerPadding: c.padding, triggerRadius: c.radius,
+    offset: popupOffset(input),
+    popupEdge: k.edge, popupPadding: k.padding, popupGap: k.gap, popupRadius: k.radius,
+    itemHeight: k.child.height, itemInset: k.child.inset, itemPadding: k.child.padding, itemRadius: k.child.radius,
+    labelStart: bare.start, labelBesideSlot: slotted.start,
+    caret: resolveIcon(c.fontSize, u, 'sm', c.slot),
+    separator: resolveSeparator(input).thickness, separatorMargin: 0.5 * u,
+  };
+}
+
 /**
  * ui-combobox, ui-autocomplete: the input row is the select trigger's control row (8u, pad u − B)
  * with the editable text as its contents: 2u at a bare edge, 1u beside a slot (the trailing
@@ -687,5 +715,22 @@ export function resolveDrawer(side: DrawerSide = 'bottom', input: GeometryInput 
     width: inline ? (vp ? Math.min(DRAWER_WIDTH * u, vp.width - reserve) : DRAWER_WIDTH * u) : vp?.width,
     height: inline ? vp?.height : undefined,
     maxHeight: inline ? vp?.height : vp ? vp.height - reserve : undefined,
+  };
+}
+
+/**
+ * ui-menubar: a composite row of its menus' triggers (edge D = max(B, 0.5u), padding D − B, the
+ * composite gap; one row 8u, the radius capped at half the height, uncapped when vertical); each
+ * trigger is a composite option (7u, inset Ic, the option radius) with its label 2u from a bare edge.
+ * The menus open 1u below the bar's trigger (beside it when vertical).
+ */
+export function resolveMenubar(input: GeometryInput & { vertical?: boolean } = {}) {
+  const k = resolveComposite({ ...input, container: !!input.vertical });
+  const m = resolveMenu(input);
+  return {
+    unit: m.unit, border: m.border, fontSize: m.fontSize,
+    rowHeight: k.rowHeight, edge: k.edge, padding: k.padding, gap: k.gap, radius: k.radius,
+    triggerHeight: k.child.height, triggerPadding: k.child.padding, triggerRadius: k.child.radius,
+    labelStart: m.labelStart, offset: m.offset,
   };
 }
