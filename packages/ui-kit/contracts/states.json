@@ -134,7 +134,7 @@
     "data-complete": {
       "baseUi": true,
       "condition": "_complete",
-      "meaning": "Progress at the max."
+      "meaning": "Progress at the max; an OTP field with every cell filled (host and cells)."
     },
     "data-alpha": {
       "baseUi": false,
@@ -251,6 +251,11 @@
     "data-hovering": {
       "baseUi": true,
       "meaning": "The pointer is over the scroll area (on its scrollbars)."
+    },
+    "data-scrubbing": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The number field's scrub area is being dragged (Base UI NumberField; host and scrub area)."
     }
   },
   "components": {
@@ -653,6 +658,53 @@
         "data-scrolling"
       ],
       "corner": []
+    },
+    "ui-number-field": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused",
+        "data-scrubbing"
+      ],
+      "scrub-area": [
+        "data-scrubbing"
+      ],
+      "decrement": [
+        "data-disabled"
+      ],
+      "increment": [
+        "data-disabled"
+      ]
+    },
+    "ui-otp-field": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused",
+        "data-complete"
+      ],
+      "input": [
+        "data-filled",
+        "data-complete",
+        "data-disabled",
+        "data-readonly",
+        "data-focused"
+      ],
+      "separator": [
+        "data-orientation"
+      ]
     }
   },
   "native": {
@@ -679,7 +731,9 @@
         "ui-palette",
         "ui-collapsible",
         "ui-accordion",
-        "ui-toast-viewport"
+        "ui-toast-viewport",
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "keyboard-focus": {
@@ -702,7 +756,9 @@
         "ui-collapsible",
         "ui-accordion",
         "ui-tabs",
-        "ui-toast-viewport"
+        "ui-toast-viewport",
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "highlighted": {
@@ -755,7 +811,9 @@
         "ui-field",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "busy": {
@@ -769,7 +827,9 @@
       "hook": "[data-readonly]",
       "look": "subtle fill, default cursor",
       "components": [
-        "ui-input"
+        "ui-input",
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "required": {
@@ -780,7 +840,9 @@
         "ui-select",
         "ui-checkbox",
         "ui-switch",
-        "ui-field"
+        "ui-field",
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "invalid": {
@@ -794,7 +856,9 @@
         "ui-checkbox",
         "ui-radio",
         "ui-switch",
-        "ui-palette"
+        "ui-palette",
+        "ui-number-field",
+        "ui-otp-field"
       ]
     },
     "dragging": {

@@ -28,6 +28,8 @@ import '@massimo/ui-kit/components/tabs/element';
 import { createToastManager, type ToastManager } from '@massimo/ui-kit/components/toast/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
+import '@massimo/ui-kit/components/number-field/element';
+import '@massimo/ui-kit/components/otp-field/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -58,6 +60,8 @@ import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 import { Toast } from '@massimo/ui-kit/components/toast/react';
+import { NumberField } from '@massimo/ui-kit/components/number-field/react';
+import { OTPField } from '@massimo/ui-kit/components/otp-field/react';
 
 /** Toast twins: each side draws its own manager seeded with the same two toasts (no timeout). */
 const seedToasts = (m: ToastManager) => {
@@ -91,6 +95,10 @@ function Pair({ u }: { u: number }) {
         <ui-button data-k="btD" disabled>Off</ui-button>
         <ui-button data-k="btP" variant="primary"><i slot="leading" name="plus" />Add</ui-button>
         <div style={{ width: 300 }} data-k="in"><ui-input label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
+        <div style={{ width: 300 }}><ui-number-field data-k="nf" label="Width" value={1234.5} min={0} max={1234.5} description="In px" locale="en-US"><span slot="prefix">$</span></ui-number-field></div>
+        <div style={{ width: 300 }}><ui-number-field data-k="nfD" label="Off" value={3} disabled locale="en-US"><span slot="suffix">kg</span></ui-number-field></div>
+        <ui-otp-field data-k="otp" length={4} value="12" label="Code" />
+        <ui-otp-field data-k="otpD" length={3} value="123" disabled />
         <ui-checkbox data-k="cb">Accept</ui-checkbox>
         <ui-checkbox data-k="cbOn" checked>Accept</ui-checkbox>
         <ui-checkbox data-k="cbMixed" indeterminate>Some</ui-checkbox>
@@ -151,6 +159,10 @@ function Pair({ u }: { u: number }) {
         <Button data-k="btD" disabled>Off</Button>
         <Button data-k="btP" variant="primary" leading={<i name="plus" />}>Add</Button>
         <div style={{ width: 300 }} data-k="in"><Input label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
+        <div style={{ width: 300 }}><NumberField data-k="nf" label="Width" defaultValue={1234.5} min={0} max={1234.5} description="In px" locale="en-US" prefix="$" /></div>
+        <div style={{ width: 300 }}><NumberField data-k="nfD" label="Off" defaultValue={3} disabled locale="en-US" suffix="kg" /></div>
+        <OTPField data-k="otp" length={4} defaultValue="12" label="Code" />
+        <OTPField data-k="otpD" length={3} defaultValue="123" disabled />
         <Checkbox data-k="cb">Accept</Checkbox>
         <Checkbox data-k="cbOn" defaultChecked>Accept</Checkbox>
         <Checkbox data-k="cbMixed" indeterminate>Some</Checkbox>
@@ -221,6 +233,10 @@ function ComposedPair({ u }: { u: number }) {
       <div style={{ width: 300 }}><Meter data-k="mt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
       <div style={{ width: 300 }}><Input data-k="in" label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
+      <div style={{ width: 300 }}><NumberField data-k="nf" label="Width" defaultValue={24} prefix="$" description="In px" locale="en-US" /></div>
+      <div style={{ width: 300 }}><ui-number-field data-k="wnf" label="Width" value={24} description="In px" locale="en-US"><span slot="prefix">$</span></ui-number-field></div>
+      <OTPField data-k="otp" length={4} defaultValue="12" />
+      <ui-otp-field data-k="wotp" length={4} value="12" />
       <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option></Listbox>
       <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
       <div style={{ width: 300 }}><Select data-k="sel" label="Role" defaultValue="eng" leading={<i name="briefcase" />} description="Pick"><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div>
@@ -260,6 +276,16 @@ function ComposedPair({ u }: { u: number }) {
         </Field.Root>
       </div>
       <div style={{ width: 300 }}><Input.Root data-k="in" defaultValue="40"><Input.Label>Price</Input.Label><Input.Control prefix="$" suffix="USD" /><Input.Description>Before tax</Input.Description></Input.Root></div>
+      <div style={{ width: 300 }}>
+        <NumberField.Root data-k="nf" defaultValue={24} locale="en-US">
+          <NumberField.ScrubArea><NumberField.Label>Width</NumberField.Label></NumberField.ScrubArea>
+          <NumberField.Group prefix="$"><NumberField.Decrement /><NumberField.Input /><NumberField.Increment /></NumberField.Group>
+          <NumberField.Description>In px</NumberField.Description>
+        </NumberField.Root>
+      </div>
+      <div style={{ width: 300 }}><ui-number-field data-k="wnf" value={24} locale="en-US"><span data-part="scrub-area"><span data-part="label">Width</span></span><div data-part="group"><span data-part="decrement" /><span data-part="prefix">$</span><div data-part="input" /><span data-part="increment" /></div><span data-part="description">In px</span></ui-number-field></div>
+      <OTPField.Root data-k="otp" length={4} defaultValue="12"><OTPField.Input /><OTPField.Input /><OTPField.Input /><OTPField.Input /></OTPField.Root>
+      <ui-otp-field data-k="wotp" value="12"><div data-part="input" /><div data-part="input" /><div data-part="input" /><div data-part="input" /></ui-otp-field>
       <Listbox.Root data-k="lb" label="Folder" defaultValue="inbox"><Listbox.Item value="inbox" leading={<i name="tray" />} suffix="12"><Listbox.ItemText>Inbox</Listbox.ItemText></Listbox.Item><Listbox.Item value="sent">Sent</Listbox.Item></Listbox.Root>
       <Segmented.Root data-k="sg" label="View" defaultValue="grid"><Segmented.Item value="grid"><Segmented.ItemText>Grid</Segmented.ItemText></Segmented.Item><Segmented.Item value="list">List</Segmented.Item></Segmented.Root>
       <div style={{ width: 300 }}>
@@ -445,6 +471,43 @@ setTimeout(() => {
       checks++;
       const va = fa(ea, wc), vb = fa(eb, re);
       if (va !== vb) fails.push(`u${c.getAttribute('data-case')} in${sel.replace(':scope', '')}: wc ${va} react ${vb}`);
+    }
+  }
+  // Number field: the host (measure, data-*) and each part (offset, size, paint, type, data-*); the
+  // React input is a native <input>, its steppers native buttons, its form value a hidden input.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    for (const k of ['otp', 'otpD']) {
+      const wc = host(c.querySelector('[data-side=wc]')!, k), re = host(c.querySelector('[data-side=react]')!, k);
+      const ma = measure(wc), mb = measure(re);
+      // The cells are compared one by one below (measure's child list leaves native inputs out).
+      for (const key of (Object.keys(ma) as (keyof typeof ma)[]).filter((x) => x !== 'kids')) { checks++; if (!same(ma[key], mb[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${ma[key]} react ${mb[key]}`); }
+      checks++;
+      if (stateOf(wc) !== stateOf(re)) fails.push(`u${c.getAttribute('data-case')} ${k} data-*: wc "${stateOf(wc)}" react "${stateOf(re)}"`);
+      const ca = [...wc.querySelectorAll('[data-part=input]')], cb = [...re.querySelectorAll('[data-part=input]')];
+      checks++;
+      if (ca.length !== cb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} cells: wc ${ca.length} react ${cb.length}`); continue; }
+      ca.forEach((x, i) => {
+        // No line-height: Gecko forces line-height normal on a native single-line <input> (the React
+        // cell); the cell is a fixed 8u square that centers its one character, so the run height never shows.
+        const fa = (e: Element, h: Element) => { const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.paddingTop}:${cs.color}:${cs.fontSize}:${cs.textAlign}:${cs.opacity}:${stateOf(e)}`; };
+        checks++;
+        const va = fa(x, wc), vb = fa(cb[i], re);
+        if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}]: wc ${va} react ${vb}`);
+      });
+    }
+    for (const k of ['nf', 'nfD']) {
+      const wc = host(c.querySelector('[data-side=wc]')!, k), re = host(c.querySelector('[data-side=react]')!, k);
+      const ma = measure(wc), mb = measure(re);
+      for (const key of Object.keys(ma) as (keyof typeof ma)[]) { checks++; if (!same(ma[key], mb[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${ma[key]} react ${mb[key]}`); }
+      checks++;
+      if (stateOf(wc) !== stateOf(re)) fails.push(`u${c.getAttribute('data-case')} ${k} data-*: wc "${stateOf(wc)}" react "${stateOf(re)}"`);
+      for (const sel of [':scope > [data-part=scrub-area]', ':scope > [data-part=scrub-area] > [data-part=label]', ':scope > [data-part=group]', ':scope > [data-part=group] > [data-part=decrement]', ':scope > [data-part=group] > [data-part=prefix]:not([hidden])', ':scope > [data-part=group] > [data-part=suffix]:not([hidden])', ':scope > [data-part=group] > [data-part=input]', ':scope > [data-part=group] > [data-part=increment]', ':scope > [data-part=group] > [data-part=increment] > i', ':scope > [data-part=description]:not([hidden])']) {
+        const ea = wc.querySelector(sel), eb = re.querySelector(sel);
+        const fa = (e: Element | null, h: Element) => { if (!e) return 'missing'; const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.color}:${cs.fontSize}:${cs.fontFamily}:${cs.fontVariantNumeric}:${stateOf(e)}`; };
+        checks++;
+        const va = fa(ea, wc), vb = fa(eb, re);
+        if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}${sel.replace(':scope', '')}: wc ${va} react ${vb}`);
+      }
     }
   }
   // Select: same parts, different DOM (the React trigger is the <button> inside a native <select>).

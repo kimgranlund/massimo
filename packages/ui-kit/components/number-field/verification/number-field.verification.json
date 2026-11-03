@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "number-field",
+  "scope": "Parsing, formatting and stepping (dom/number.ts), the resolver, and the web component in happy-dom: anatomy, ARIA, typing, commit (clamp, snap, reformat), keys, steppers (press and hold), scrub, wheel, validity, reset, adornments, authored parts and events; the React renderer in react-dom/server (node:test), its markup parity with the web component and the compound parts. Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/number-field/number-field.element.ts",
+      "sha256": "3114cb446f94704fd5bf9a00b9914103053c6b5c6c3ac702f209f490fc5d8213"
+    },
+    {
+      "path": "components/number-field/number-field.react.tsx",
+      "sha256": "2d69daff0a017efe872dca1b82fbe3496d4c4aa33c4f8793a8462e670650f294"
+    },
+    {
+      "path": "components/number-field/number-field.recipe.ts",
+      "sha256": "b4db0f84fb70c25b53260cceaff83f62011d3d59a9076ce61f29cd1de4c6ec42"
+    },
+    {
+      "path": "components/number-field/number-field.manifest.json",
+      "sha256": "b2839cb4abb63ddc50356559956a8f9dd2194f2bf19f2c2b7b1fa914174793ad"
+    },
+    {
+      "path": "dom/number.ts",
+      "sha256": "c544e4c1bb87155410f499ef95af4ef208e4769cbbd9db942f7aa4811ac74068"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-number-field|parseNumber|stepNumber|resolveNumberField\" test/number-field.test.ts",
+          "covers": "locale parsing and formatNumber display, stepping (snap, clamp, float noise, modifiers), the resolver; anatomy, ARIA, recipe classes, no native form elements, typing and commit reasons, keys, steppers, press and hold, scrub, wheel, snap-on-step, allow-out-of-range, required, reset, adornments, authored parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-number-field|parseNumber|stepNumber|resolveNumberField\" test/number-field.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React NumberField\" test/number-field.test.ts",
+          "covers": "SSR markup against the web component (parts, classes, host data-*, formatted text, input mode), the hidden form input, compound parts against the preset, render and className functions, parts outside the Root"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React NumberField\" test/number-field.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02, Chromium): apps/studio/geometry-check.html checks the group height (8u), padding (u − B), radius, font, stepper size (6u), glyph (icon size sm), stepper radius (R − u) and insets, the input's 1u text inset beside each stepper and 0.5u beside a prefix or suffix, the slot-high input and the 1.5u label gap at every size × B 0 and 1 (\"fails\": []). Growth: at u = 2 a long label wraps above the 16px group (steppers stay 12px); in a 120px column the steppers keep 6u and the text scrolls inside the input (no overflow of the group). RTL: the group mirrors (decrement and prefix at the inline start, on the right) (the scrub direction reads the computed direction; not probed by pointer in RTL). Focus: the 2px ring is an outline on the group, so its box is unchanged. Real Chromium input: typing refuses letters, Arrow Up / Shift+Arrow Up step 1 / 10, a 700 ms hold repeats (1 + 5 steps), a 40px scrub steps 20 (pixel-sensitivity 2) with data-scrubbing. Screenshots: the Entry family (#/components?family=entry), light and dark, ladder 3, 4, 4.5 (theme) and 6.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React NumberField with ui-number-field at five sizes, and the composed parts with the preset (\"fails\": []).",
+    "Not implemented: Base UI's ScrubAreaCursor and pointer lock (the system cursor stays; a scrub stops at the screen edge).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

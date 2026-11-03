@@ -1,0 +1,871 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "number-field",
+  "primary": "component:number-field",
+  "module": "./number-field.element.ts",
+  "registration": "on-import",
+  "documentation": "./number-field.md",
+  "examples": "./number-field.examples.json",
+  "contract": "../../contracts/components.json#/components/number-field",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./number-field.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/number.ts",
+      "exports": [
+        "parseNumber",
+        "formatNumberValue",
+        "stepNumber",
+        "snapNumber",
+        "clampNumber",
+        "stepAmount",
+        "numberKey",
+        "stepperDisabled",
+        "stepperAttrs",
+        "holdStepper",
+        "startScrub"
+      ],
+      "description": "Locale parsing and formatNumber display, stepping (step, small and large steps, snap, clamp), stepper ARIA and the press-and-hold and scrub gestures, shared by both renderers."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/field.ts",
+      "exports": [
+        "fieldIds",
+        "fieldAttrs"
+      ],
+      "description": "Label, description and error wiring (ids, aria-labelledby, aria-describedby, aria-invalid)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveNumberField"
+      ],
+      "description": "Reference numbers for the number-field family."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:number-field",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-number-field",
+      "class": "UINumberField",
+      "extends": "UIFormElement",
+      "intent": [
+        "Enter or adjust a number, such as a quantity, a price or a dimension, by typing, stepping or dragging, formatted for the locale"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits the number (not the formatted text) under this name, empty when there is none.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission; the steppers and scrub area stop. An ancestor <fieldset disabled> or ui-fieldset disables it too.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a value. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Visible label text, in the scrub area; names the input. Without it supply aria-label or a wrapping ui-field.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "number",
+          "default": null,
+          "attribute": "value",
+          "reflects": false,
+          "description": "The live number, or null when the field is empty (Base UI value). The value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "number",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value is set) and on form reset.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "min",
+          "type": "number",
+          "default": null,
+          "attribute": "min",
+          "reflects": false,
+          "description": "Lowest value: a commit clamps to it (unless allow-out-of-range), the decrement stops there, Home goes there.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "max",
+          "type": "number",
+          "default": null,
+          "attribute": "max",
+          "reflects": false,
+          "description": "Highest value: a commit clamps to it (unless allow-out-of-range), the increment stops there, End goes there.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "step",
+          "type": "number",
+          "default": 1,
+          "attribute": "step",
+          "reflects": false,
+          "description": "Amount per arrow key, stepper press or scrub step (Base UI step, default 1); its decimals widen the displayed fraction digits.",
+          "inspector": {
+            "control": "number",
+            "min": 0
+          }
+        },
+        {
+          "key": "smallStep",
+          "type": "number",
+          "default": 0.1,
+          "attribute": "small-step",
+          "reflects": false,
+          "description": "Amount with Alt held (Base UI smallStep, default 0.1).",
+          "inspector": {
+            "control": "number",
+            "min": 0
+          }
+        },
+        {
+          "key": "largeStep",
+          "type": "number",
+          "default": 10,
+          "attribute": "large-step",
+          "reflects": false,
+          "description": "Amount with Shift held (Base UI largeStep, default 10).",
+          "inspector": {
+            "control": "number",
+            "min": 0
+          }
+        },
+        {
+          "key": "snapOnStep",
+          "type": "boolean",
+          "default": false,
+          "attribute": "snap-on-step",
+          "reflects": false,
+          "description": "Steps and commits snap to multiples of step from min (or 0) (Base UI snapOnStep).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "allowOutOfRange",
+          "type": "boolean",
+          "default": false,
+          "attribute": "allow-out-of-range",
+          "reflects": false,
+          "description": "A typed value outside min / max is kept on blur and marked invalid (rangeUnderflow / rangeOverflow) instead of clamped (Base UI allowOutOfRange).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "allowWheelScrub",
+          "type": "boolean",
+          "default": false,
+          "attribute": "allow-wheel-scrub",
+          "reflects": false,
+          "description": "The wheel steps the value while the input is focused and the pointer is over the group (Base UI allowWheelScrub).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "scrubDirection",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "scrub-direction",
+          "reflects": false,
+          "description": "The scrub area's axis: horizontal (right increases, mirrored in RTL) or vertical (up increases) (Base UI ScrubArea direction).",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "horizontal",
+            "vertical"
+          ]
+        },
+        {
+          "key": "pixelSensitivity",
+          "type": "number",
+          "default": 2,
+          "attribute": "pixel-sensitivity",
+          "reflects": false,
+          "description": "Pixels dragged on the scrub area per step (Base UI ScrubArea pixelSensitivity, default 2).",
+          "inspector": {
+            "control": "number",
+            "min": 0.5
+          }
+        },
+        {
+          "key": "format",
+          "type": "string",
+          "default": null,
+          "attribute": "format",
+          "reflects": false,
+          "description": "Intl.NumberFormat options for the text (Base UI format): an object, or JSON in the attribute; through formatNumber (U+2212 minus, narrow no-break spaces). Default: decimal with up to 3 fraction digits (more when step has more).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "locale",
+          "type": "string",
+          "default": "",
+          "attribute": "locale",
+          "reflects": false,
+          "description": "BCP 47 locale for formatting and parsing (Base UI locale); default the runtime's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "",
+          "attribute": "placeholder",
+          "reflects": false,
+          "description": "Text shown while the field is empty.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "description": "Help text under the control, wired with aria-describedby.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "description": "Author error, shown immediately and marking the field invalid.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "description": "The value can be read and focused but not changed: no typing, steppers, scrub or wheel; data-readonly.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "description": "Ids (space-separated) that name the input when label is empty (a wrapping ui-field sets it).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "description": "Ids (space-separated) that describe the input, after its own description and error (a wrapping ui-field sets it).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "hide-label",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Keeps the label as the input's accessible name but does not draw it (the scrub area is visually hidden, out of flow). data-hide-label is the same input; React: hideLabel.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the value changes: typing text that parses, emptying it, a paste, a commit that clamps or snaps, a key step, a stepper press (and each repeat while held), a scrub step, a wheel step",
+          "detail": "{ value: number | null, reason: 'input-change' | 'input-clear' | 'input-paste' | 'input-blur' | 'keyboard' | 'increment-press' | 'decrement-press' | 'scrub' | 'wheel', event: Event } (Base UI onValueChange)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "a commit with a value different from the last one: blur or Enter after typing, a key step, a stepper or scrub release, a wheel step",
+          "detail": "{ value: number | null, reason, event } (Base UI onValueCommitted; reasons as for input, input-blur for a typed commit)"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the input."
+        },
+        {
+          "name": "stepBy",
+          "signature": "(dir: 1 | -1, amount?: number) => void",
+          "description": "Steps the value as a stepper press does (fires input and change)."
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=group] > [data-part=input] (role=textbox, aria-roledescription \"Number field\")",
+        "formAssociated": true,
+        "formValue": "the number as a string, empty when there is none",
+        "keyboard": [
+          {
+            "keys": "ArrowUp / ArrowDown",
+            "action": "step by step (Shift: large-step, Alt: small-step), clamped to min / max; commits"
+          },
+          {
+            "keys": "Home / End",
+            "action": "go to min / max when set; commits"
+          },
+          {
+            "keys": "Enter",
+            "action": "commit (parse, clamp, snap, reformat), then request submit of the owning form"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label on the input",
+            "labelledby (a wrapping ui-field)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Optional text adornments with slot=\"prefix\" | \"suffix\" (\"$\", \"kg\"); they move into the group beside the input. Authored [data-part] parts (scrub-area › label, group › decrement · prefix · input · suffix · increment, description, error) are adopted (composition). Other children are discarded by the template."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "template() owns the children: scrub area (label), group ([decrement] [prefix] [input] [suffix] [increment]), description, error. Contains no native form elements: the input is a contenteditable role=textbox, the steppers role=button spans (tabindex −1, aria-label Increase / Decrease, aria-controls the input); form participation goes through ElementInternals (UIFormElement).",
+        "The text is formatNumber of the value with format and locale; parsing reads the locale's digits and separators, U+2212 or a hyphen for minus, and ignores the currency, unit and percent text the format writes (a percent format divides by 100). Characters that cannot be part of a number are refused while typing and dropped from a paste.",
+        "Typing sets the value as soon as the text parses (no clamping yet); blur or Enter commits: clamp to min / max unless allow-out-of-range, snap with snap-on-step, reformat. input fires per change, change per commit.",
+        "Stepping (keys, steppers, scrub, wheel) starts from the text being typed when it parses, else the value (0 when empty), is clamped to min / max and avoids binary noise (0.1 + 0.2 = 0.3).",
+        "A stepper at the limit it moves toward is data-disabled and aria-disabled; disabled and read-only stop every gesture.",
+        "Composition: the parts may be authored as [data-part] children; the host adopts each onto its generated part (attributes, classes; stepper content replaces the glyph, prefix / suffix content appends; label, description and error text seed those properties). React: NumberField.Root with NumberField.ScrubArea › NumberField.Label, NumberField.Group (prefix, suffix props) › NumberField.Decrement, NumberField.Input, NumberField.Increment, NumberField.Description, NumberField.Error; every React part takes render and className; the React Root renders a hidden input with the number for the form."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Picking a position in a range where the exact number matters less than where it sits.",
+          "reason": "A range is a slider with a visible track.",
+          "useInstead": "component:range"
+        },
+        {
+          "when": "Free text that happens to contain digits (a phone number, a postal code, an id).",
+          "reason": "Those are not quantities: stepping, clamping and locale formatting would corrupt them.",
+          "useInstead": "component:input"
+        },
+        {
+          "when": "Choosing from a few known values.",
+          "reason": "A select or segmented control constrains the value to authored options.",
+          "useInstead": "component:select"
+        }
+      ],
+      "searchTerms": [
+        "number field",
+        "number input",
+        "numeric input",
+        "spin button",
+        "stepper",
+        "increment",
+        "decrement",
+        "quantity",
+        "scrub",
+        "locale number"
+      ]
+    },
+    {
+      "id": "part:number-field-scrub-area",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=scrub-area]",
+      "summary": "The scrub area (Base UI NumberField.ScrubArea) holding the label: drag it to step the value (pixel-sensitivity px per step, scrub-direction); data-scrubbing while dragging. Hidden without a label."
+    },
+    {
+      "id": "part:number-field-label",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=scrub-area] > [data-part=label]",
+      "summary": "The visible label; names the input (aria-labelledby). A press focuses the input."
+    },
+    {
+      "id": "part:number-field-group",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=group]",
+      "summary": "The field control (Base UI NumberField.Group): 8u, pad u − B, [decrement] [prefix] [input] [suffix] [increment]. A press outside the steppers and input focuses the input; the focus ring paints here; the wheel steps here with allow-wheel-scrub."
+    },
+    {
+      "id": "part:number-field-decrement",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=group] > [data-part=decrement]",
+      "summary": "The decrement stepper (Base UI NumberField.Decrement) in the leading 6u slot: role=button, not a tab stop, aria-label Decrease; a press steps down and repeats while held. data-disabled at min."
+    },
+    {
+      "id": "part:number-field-input",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=group] > [data-part=input]",
+      "summary": "The contenteditable role=textbox input (Base UI NumberField.Input; aria-roledescription Number field, data-numeric tabular figures), 1u from each stepper. The input getter returns it."
+    },
+    {
+      "id": "part:number-field-increment",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=group] > [data-part=increment]",
+      "summary": "The increment stepper (Base UI NumberField.Increment) in the trailing 6u slot: role=button, not a tab stop, aria-label Increase; a press steps up and repeats while held. data-disabled at max."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:number-field",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesGeometry",
+      "to": "geometry:number-field"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-scrub-area"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-label"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-group"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-decrement"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-input"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:number-field-increment"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:number-field",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./number-field.element.ts",
+      "exports": {
+        "component:number-field": "UINumberField"
+      },
+      "verification": "./verification/number-field.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./number-field.react.tsx",
+      "exports": {
+        "component:number-field": "NumberField"
+      },
+      "verification": "./verification/number-field.verification.json#/renderers/react",
+      "props": {
+        "component:number-field": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'children' | 'defaultValue' | 'onChange' | 'prefix'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "value?: number | null // Controlled value; null is empty (Base UI value).",
+            "defaultValue?: number | null // Uncontrolled initial value (Base UI defaultValue).",
+            "onValueChange?: (value: number | null, details: ChangeDetails) => void // Every change (Base UI onValueChange): reason input-change, input-clear, input-blur, input-paste, keyboard, increment-press, decrement-press, wheel or scrub.",
+            "onValueCommitted?: (value: number | null, details: ChangeDetails) => void // A commit (Base UI onValueCommitted): blur after typing, a key step, a stepper or scrub release, a wheel step.",
+            "min?: number",
+            "max?: number",
+            "step?: number // Arrow keys and the steppers (default 1).",
+            "smallStep?: number // With Alt (default 0.1).",
+            "largeStep?: number // With Shift (default 10).",
+            "snapOnStep?: boolean // Snap to multiples of step from min (or 0).",
+            "allowOutOfRange?: boolean // Keep a typed value outside min / max on blur (it is then invalid).",
+            "allowWheelScrub?: boolean // The wheel steps while the input is focused and hovered.",
+            "format?: FormatNumberOptions // Intl.NumberFormat options for the text (Base UI format), through formatNumber.",
+            "locale?: string // BCP 47 locale for formatting and parsing.",
+            "name?: string",
+            "required?: boolean",
+            "disabled?: boolean",
+            "readOnly?: boolean",
+            "error?: string // Author error: data-invalid at once.",
+            "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+            "size?: number // Unit u in px for this element.",
+            "children?: ReactNode // NumberField.Root: the parts. Ignored by the preset.",
+            "label?: string",
+            "description?: string",
+            "placeholder?: string",
+            "prefix?: ReactNode // Short text adornment before the number (\"$\").",
+            "suffix?: ReactNode // Short text adornment after the number (\"kg\")."
+          ]
+        }
+      },
+      "parts": {
+        "component:number-field": {
+          "NumberField.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'children' | 'defaultValue' | 'onChange' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: number | null // Controlled value; null is empty (Base UI value).",
+              "defaultValue?: number | null // Uncontrolled initial value (Base UI defaultValue).",
+              "onValueChange?: (value: number | null, details: ChangeDetails) => void // Every change (Base UI onValueChange): reason input-change, input-clear, input-blur, input-paste, keyboard, increment-press, decrement-press, wheel or scrub.",
+              "onValueCommitted?: (value: number | null, details: ChangeDetails) => void // A commit (Base UI onValueCommitted): blur after typing, a key step, a stepper or scrub release, a wheel step.",
+              "min?: number",
+              "max?: number",
+              "step?: number // Arrow keys and the steppers (default 1).",
+              "smallStep?: number // With Alt (default 0.1).",
+              "largeStep?: number // With Shift (default 10).",
+              "snapOnStep?: boolean // Snap to multiples of step from min (or 0).",
+              "allowOutOfRange?: boolean // Keep a typed value outside min / max on blur (it is then invalid).",
+              "allowWheelScrub?: boolean // The wheel steps while the input is focused and hovered.",
+              "format?: FormatNumberOptions // Intl.NumberFormat options for the text (Base UI format), through formatNumber.",
+              "locale?: string // BCP 47 locale for formatting and parsing.",
+              "name?: string",
+              "required?: boolean",
+              "disabled?: boolean",
+              "readOnly?: boolean",
+              "error?: string // Author error: data-invalid at once.",
+              "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+              "size?: number // Unit u in px for this element.",
+              "children?: ReactNode // NumberField.Root: the parts. Ignored by the preset."
+            ]
+          },
+          "NumberField.ScrubArea": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "direction?: 'horizontal' | 'vertical' = 'horizontal' // The pointer axis that changes the value (Base UI direction).",
+              "pixelSensitivity?: number = 2 // Pixels dragged per step (Base UI pixelSensitivity)."
+            ]
+          },
+          "NumberField.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NumberField.Group": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "prefix?: ReactNode // Text adornment before the input.",
+              "suffix?: ReactNode // Text adornment after the input."
+            ]
+          },
+          "NumberField.Decrement": {
+            "inherits": [
+              "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'type'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NumberField.Input": {
+            "inherits": [
+              "Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'value' | 'defaultValue' | 'type' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "NumberField.Increment": {
+            "inherits": [
+              "Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'type'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NumberField.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "NumberField.Error": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

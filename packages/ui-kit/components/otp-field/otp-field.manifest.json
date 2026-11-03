@@ -1,0 +1,587 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "otp-field",
+  "primary": "component:otp-field",
+  "module": "./otp-field.element.ts",
+  "registration": "on-import",
+  "documentation": "./otp-field.md",
+  "examples": "./otp-field.examples.json",
+  "contract": "../../contracts/components.json#/components/otp-field",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./otp-field.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/otp.ts",
+      "exports": [
+        "otpAllowed",
+        "otpInsert",
+        "otpDelete",
+        "otpFocusable",
+        "otpKey",
+        "otpInputMode",
+        "otpCellAttrs"
+      ],
+      "description": "Validation types, overwrite and paste distribution over a contiguous value, deletes, the focus limit, keys and the cells' ARIA and data-*, shared by both renderers."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveOtpField"
+      ],
+      "description": "Reference numbers for the otp-field family."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:otp-field",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-otp-field",
+      "class": "UIOtpField",
+      "extends": "UIFormElement",
+      "intent": [
+        "Enter a short one-time code, such as a verification or sign-in code sent by email or SMS, one character per cell"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits the code under this name.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks editing and submission; no cell is a tab stop. An ancestor <fieldset disabled> or ui-fieldset disables it too.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a code. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The code (Base UI value): at most length characters, contiguous. The value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the code at first render (when no value is set) and on form reset.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "length",
+          "type": "number",
+          "default": 6,
+          "attribute": "length",
+          "reflects": false,
+          "description": "Number of cells (Base UI length, default 6); authored input parts set it to their count.",
+          "inspector": {
+            "control": "number",
+            "min": 1
+          }
+        },
+        {
+          "key": "validationType",
+          "type": "string",
+          "default": "numeric",
+          "attribute": "validation-type",
+          "reflects": false,
+          "description": "Accepted characters (Base UI validationType): numeric (default), alpha, alphanumeric or none (any non-space). Rejected characters fire valueinvalid.",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "numeric",
+            "alpha",
+            "alphanumeric",
+            "none"
+          ]
+        },
+        {
+          "key": "mask",
+          "type": "boolean",
+          "default": false,
+          "attribute": "mask",
+          "reflects": false,
+          "description": "Hide the characters (Base UI mask), as a password field does.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "autoSubmit",
+          "type": "boolean",
+          "default": false,
+          "attribute": "auto-submit",
+          "reflects": false,
+          "description": "Submit the owning form once the code is complete (Base UI autoSubmit).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "autocomplete",
+          "type": "string",
+          "default": "one-time-code",
+          "attribute": "autocomplete",
+          "reflects": false,
+          "description": "The first cell's autocomplete hint (Base UI autoComplete, default one-time-code). Only native inputs (the React renderer) get platform autofill.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "inputmode",
+          "type": "string",
+          "default": "",
+          "attribute": "inputmode",
+          "reflects": false,
+          "description": "The virtual keyboard (Base UI inputMode); default numeric for validation-type numeric, else text.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "The group's accessible name (aria-label) when no ui-field or aria-labelledby names it.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "description": "The code can be read and focused but not changed; data-readonly on the host and cells.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Cells are 8u square; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the code changes: a character typed or cleared, a paste, Delete",
+          "detail": "{ value: string, reason: 'input-change' | 'input-clear' | 'input-paste' | 'keyboard', event: Event } (Base UI onValueChange)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "with input, on every change of the code",
+          "detail": "{ value: string, reason, event } (as input)"
+        },
+        {
+          "name": "complete",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "the code becomes complete by typing or a paste, or a complete code is pasted again",
+          "detail": "{ value: string, reason: 'input-change' | 'input-paste', event: Event } (Base UI onValueComplete); auto-submit then submits the form"
+        },
+        {
+          "name": "valueinvalid",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "typed or pasted text had characters validation-type rejects",
+          "detail": "{ value: string (the attempted text), reason: 'input-change' | 'input-paste', event: Event } (Base UI onValueInvalid)"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the first empty cell (the last when complete)."
+        }
+      ],
+      "semantics": {
+        "role": "group",
+        "roleTarget": "[data-part=input] (role=textbox, one per character)",
+        "formAssociated": true,
+        "formValue": "the code",
+        "keyboard": [
+          {
+            "keys": "characters",
+            "action": "overwrite the focused cell and move to the next (rejected characters stay out)"
+          },
+          {
+            "keys": "Backspace",
+            "action": "clear the focused cell, or the one before when it is empty, and stay there"
+          },
+          {
+            "keys": "Delete",
+            "action": "clear the focused cell (the following characters move up)"
+          },
+          {
+            "keys": "ArrowLeft / ArrowRight",
+            "action": "move between cells (mirrored in RTL), never past the first empty cell"
+          },
+          {
+            "keys": "Home / End",
+            "action": "first cell / the last reachable cell"
+          },
+          {
+            "keys": "Enter",
+            "action": "request submit of the owning form"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "aria-labelledby (a wrapping ui-field)",
+            "label (aria-label)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Optional authored [data-part=input] and [data-part=separator] children in any order (for a 3 + 3 code); the cells are then the authored ones and length is their count. Without them the host generates length cells."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Contains no native form elements: each cell is a contenteditable role=textbox (aria-label Character i of n); form participation goes through ElementInternals (UIFormElement). Platform one-time-code autofill needs a native input, so only the React renderer gets it.",
+        "The value is contiguous: cell i shows character i. beforeinput is handled for every insert and delete, so the cells never hold more than one character; an edit it cannot cancel (IME composition) is read back on input.",
+        "Focus never lands past the first empty cell; that cell (the last when complete) is the only tab stop.",
+        "Validity: required and empty is valueMissing, a partial code is tooShort; errors show after blur or a blocked submit.",
+        "React: OTPField.Root numbers its OTPField.Input direct children in order, with OTPField.Separator between them; the inputs are native (type password with mask), the first has autoComplete one-time-code, a hidden input submits the code; every React part takes render and className."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A password or passphrase of free length.",
+          "reason": "Cells fix the length and filter characters; a password is free text.",
+          "useInstead": "component:input"
+        },
+        {
+          "when": "A number to compute with (an amount, a quantity).",
+          "reason": "A code is a string of characters, not a quantity; stepping and locale formatting belong to a number field.",
+          "useInstead": "component:number-field"
+        }
+      ],
+      "searchTerms": [
+        "otp",
+        "one-time code",
+        "verification code",
+        "pin",
+        "2fa",
+        "sms code",
+        "code input",
+        "segmented input"
+      ]
+    },
+    {
+      "id": "part:otp-field-input",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=input]",
+      "summary": "One cell (Base UI OTPField.Input): a square 8u field control holding one character, a contenteditable role=textbox (React: a native input); data-filled, data-complete, data-focused, data-disabled, data-readonly."
+    },
+    {
+      "id": "part:otp-field-separator",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=separator]",
+      "summary": "A 2u × 0.5u dash between groups of cells (Base UI OTPField.Separator, role=separator, data-orientation)."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:otp-field",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesGeometry",
+      "to": "geometry:otp-field"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "ownsPart",
+      "to": "part:otp-field-input"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "ownsPart",
+      "to": "part:otp-field-separator"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:otp-field",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./otp-field.element.ts",
+      "exports": {
+        "component:otp-field": "UIOtpField"
+      },
+      "verification": "./verification/otp-field.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./otp-field.react.tsx",
+      "exports": {
+        "component:otp-field": "OTPField"
+      },
+      "verification": "./verification/otp-field.verification.json#/renderers/react",
+      "props": {
+        "component:otp-field": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'children' | 'defaultValue' | 'onChange' | 'inputMode'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "length: number // Number of cells (Base UI length).",
+            "value?: string // Controlled value (Base UI value).",
+            "defaultValue?: string // Uncontrolled initial value (Base UI defaultValue).",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // Every change (Base UI onValueChange): reason input-change, input-clear, input-paste or keyboard.",
+            "onValueComplete?: (value: string, details: ChangeDetails) => void // The value became complete, or a complete value was pasted again (Base UI onValueComplete).",
+            "onValueInvalid?: (value: string, details: ChangeDetails) => void // Characters were rejected by validationType (Base UI onValueInvalid); value is the attempted text.",
+            "validationType?: OtpValidation // Accepted characters (Base UI validationType, default numeric).",
+            "normalizeValue?: (value: string) => string // Maps accepted text before it is applied (Base UI normalizeValue).",
+            "mask?: boolean // Hide the characters (Base UI mask): password inputs.",
+            "autoSubmit?: boolean // Submit the owning form once complete (Base UI autoSubmit).",
+            "autoComplete?: string // The first input's autocomplete (Base UI autoComplete, default one-time-code).",
+            "inputMode?: InputHTMLAttributes<HTMLInputElement>['inputMode'] // The virtual keyboard (Base UI inputMode); default from validationType.",
+            "name?: string",
+            "form?: string",
+            "required?: boolean",
+            "disabled?: boolean",
+            "readOnly?: boolean",
+            "label?: string // The group's accessible name (aria-label) when nothing else names it.",
+            "size?: number // Unit u in px for this element.",
+            "children?: ReactNode // OTPField.Root: OTPField.Input and OTPField.Separator children. Ignored by the preset."
+          ]
+        }
+      },
+      "parts": {
+        "component:otp-field": {
+          "OTPField.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'children' | 'defaultValue' | 'onChange' | 'inputMode'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "length: number // Number of cells (Base UI length).",
+              "value?: string // Controlled value (Base UI value).",
+              "defaultValue?: string // Uncontrolled initial value (Base UI defaultValue).",
+              "onValueChange?: (value: string, details: ChangeDetails) => void // Every change (Base UI onValueChange): reason input-change, input-clear, input-paste or keyboard.",
+              "onValueComplete?: (value: string, details: ChangeDetails) => void // The value became complete, or a complete value was pasted again (Base UI onValueComplete).",
+              "onValueInvalid?: (value: string, details: ChangeDetails) => void // Characters were rejected by validationType (Base UI onValueInvalid); value is the attempted text.",
+              "validationType?: OtpValidation // Accepted characters (Base UI validationType, default numeric).",
+              "normalizeValue?: (value: string) => string // Maps accepted text before it is applied (Base UI normalizeValue).",
+              "mask?: boolean // Hide the characters (Base UI mask): password inputs.",
+              "autoSubmit?: boolean // Submit the owning form once complete (Base UI autoSubmit).",
+              "autoComplete?: string // The first input's autocomplete (Base UI autoComplete, default one-time-code).",
+              "inputMode?: InputHTMLAttributes<HTMLInputElement>['inputMode'] // The virtual keyboard (Base UI inputMode); default from validationType.",
+              "name?: string",
+              "form?: string",
+              "required?: boolean",
+              "disabled?: boolean",
+              "readOnly?: boolean",
+              "label?: string // The group's accessible name (aria-label) when nothing else names it.",
+              "size?: number // Unit u in px for this element.",
+              "children?: ReactNode // OTPField.Root: OTPField.Input and OTPField.Separator children. Ignored by the preset."
+            ]
+          },
+          "OTPField.Input": {
+            "inherits": [
+              "Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'value' | 'defaultValue' | 'type'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "index?: number = 0 // The cell's position; the Root sets it from the order of its Input children."
+            ]
+          },
+          "OTPField.Separator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "orientation?: 'horizontal' | 'vertical' = 'horizontal'"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

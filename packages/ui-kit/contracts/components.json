@@ -692,6 +692,54 @@
         "fieldset"
       ],
       "behavior": "Measures the viewport on scroll and resize: Base UI's overflow and scrolling data-* on root, viewport, content and scrollbars, its CSS variables as custom properties; a scrollbar shows while its axis overflows and fades in on hover, scroll or keyboard focus; dragging a thumb scrolls 1:1 along its track, a press on the track centers the thumb under the pointer; keys scroll the focused viewport natively."
+    },
+    "number-field": {
+      "geometryFamily": "number-field",
+      "element": "Host is form-associated; the label sits in the scrub area; the group holds the decrement and increment steppers (role=button, not tab stops) around the input, a contenteditable role=textbox with aria-roledescription \"Number field\".",
+      "parts": [
+        "number-field-scrub-area?",
+        "number-field-label?",
+        "number-field-group",
+        "number-field-decrement",
+        "slot-prefix?",
+        "number-field-input",
+        "slot-suffix?",
+        "number-field-increment",
+        "field-description?",
+        "field-error?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "fieldset",
+        "field-grid"
+      ],
+      "behavior": "The text is formatNumber of the value (format, locale) and is parsed back in the locale. Typing changes the value as soon as the text parses; blur or Enter commits: clamps to min / max (unless allow-out-of-range), snaps with snap-on-step and reformats. Arrow Up / Down step (Shift large-step, Alt small-step), Home / End go to min / max; the steppers step on press and repeat while held; dragging the scrub area steps per pixel-sensitivity px (data-scrubbing); the wheel steps with allow-wheel-scrub while focused and hovered. input fires on every change and change on every commit, with { value, reason, event } (Base UI onValueChange / onValueCommitted reasons)."
+    },
+    "otp-field": {
+      "geometryFamily": "otp-field",
+      "element": "Host is form-associated and role=group; each input part is a contenteditable role=textbox holding one character (Character i of n); separator parts are role=separator.",
+      "parts": [
+        "otp-field-input",
+        "otp-field-separator?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "fieldset",
+        "field-grid"
+      ],
+      "behavior": "One value over length cells, kept contiguous. Typing overwrites the focused cell and moves to the next; a paste or autofill distributes from the focused cell; Backspace clears the focused cell or the one before, Delete the focused one; arrows (mirrored in RTL), Home and End move focus, which never lands past the first empty cell; the first empty cell is the only tab stop. validation-type (numeric, alpha, alphanumeric, none) filters characters, rejected ones fire valueinvalid; a complete value fires complete (auto-submit submits the form). input and change fire on every change with { value, reason, event } (Base UI reasons input-change, input-clear, input-paste, keyboard)."
     }
   }
 }

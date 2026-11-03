@@ -28,6 +28,10 @@ import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
 import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/number-field/element';
+import '@massimo/ui-kit/components/otp-field/element';
+import { resolveOtpField } from '@massimo/ui-kit/tokens';
+import { resolveNumberField } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -99,6 +103,8 @@ for (const c of cases) {
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
     <div style="width:${100 * c.unit}px"><ui-toast-viewport id="toastV" placement="inline" timeout="0"></ui-toast-viewport></div><ui-toast-viewport id="toastF" timeout="0"></ui-toast-viewport>
+    <div style="width:${40 * c.unit}px"><ui-number-field id="numF" label="N" value="12"></ui-number-field><ui-number-field id="numS" label="S" value="3"><span slot="prefix">$</span><span slot="suffix">kg</span></ui-number-field></div>
+    <ui-otp-field id="otp" value="12"><div data-part="input"></div><div data-part="input"></div><div data-part="separator"></div><div data-part="input"></div></ui-otp-field>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -534,6 +540,49 @@ for (const c of cases) {
       checks['toast.viewport.height'] = [r2(rect(tf).height), r2(rect(f0).height)];
       checks['toast.stack.offset'] = [px(f1.style.getPropertyValue('--toast-offset-y')), r2(rect(f0).height)];
     }
+  }
+  // Number field (resolveNumberField): the field control with steppers in the 6u slots, the text 1u from each.
+  {
+    const rn = resolveNumberField(g), part = (el, p) => el.querySelector(`[data-part=${p}]`);
+    const nf = $('numF'), grp = part(nf, 'group'), dec = part(grp, 'decrement'), inc = part(grp, 'increment'), ip = part(grp, 'input');
+    checks['numberField.height'] = [r2(rect(grp).height), rn.height];
+    checks['numberField.padding'] = [px(cs(grp).paddingLeft) + px(cs(grp).borderLeftWidth), rn.padding + rn.border];
+    checks['numberField.radius'] = [px(cs(grp).borderTopLeftRadius), rn.radius];
+    checks['numberField.font'] = [px(cs(ip).fontSize), rn.fontSize];
+    checks['numberField.stepper.width'] = [r2(rect(dec).width), rn.stepper];
+    checks['numberField.stepper.height'] = [r2(rect(inc).height), rn.stepper];
+    checks['numberField.stepper.radius'] = [px(cs(dec).borderTopLeftRadius), rn.stepperRadius];
+    checks['numberField.stepper.icon'] = [r2(rect(dec.firstElementChild).width), rn.stepperIcon];
+    checks['numberField.stepper.inset'] = [r2(rect(dec).left - rect(grp).left), rn.padding + rn.border];
+    checks['numberField.stepper.endInset'] = [r2(rect(grp).right - rect(inc).right), rn.padding + rn.border];
+    checks['numberField.input.start'] = [px(cs(ip).paddingLeft), rn.contentsStart];
+    checks['numberField.input.end'] = [px(cs(ip).paddingRight), rn.contentsEnd];
+    checks['numberField.input.height'] = [r2(rect(ip).height), rn.slot];
+    checks['numberField.rowGap'] = [r2(rect(grp).top - rect(part(nf, 'scrub-area')).bottom), rn.rowGap];
+    const sg = part($('numS'), 'group');
+    checks['numberField.adorned.height'] = [r2(rect(sg).height), rn.height];
+    checks['numberField.prefix.start'] = [px(cs(part(sg, 'prefix')).paddingLeft), rn.contentsStart];
+    checks['numberField.prefix.end'] = [px(cs(part(sg, 'prefix')).paddingRight), 0.5 * c.unit];
+    checks['numberField.adorned.input.start'] = [px(cs(part(sg, 'input')).paddingLeft), 0.5 * c.unit];
+    checks['numberField.adorned.input.end'] = [px(cs(part(sg, 'input')).paddingRight), 0.5 * c.unit];
+    checks['numberField.suffix.end'] = [px(cs(part(sg, 'suffix')).paddingRight), rn.contentsEnd];
+  }
+  // OTP field (resolveOtpField): square 8u cells 1u apart, a 2u × 0.5u separator in the gap.
+  {
+    const ro = resolveOtpField(g), otp = $('otp'), [c0, c1, c2] = otp.querySelectorAll('[data-part=input]'), sep = otp.querySelector('[data-part=separator]');
+    checks['otpField.cell.width'] = [r2(rect(c0).width), ro.cell];
+    checks['otpField.cell.height'] = [r2(rect(c0).height), ro.cell];
+    checks['otpField.cell.padding'] = [px(cs(c0).paddingLeft) + px(cs(c0).borderLeftWidth), ro.padding + ro.border];
+    checks['otpField.cell.radius'] = [px(cs(c0).borderTopLeftRadius), ro.radius];
+    checks['otpField.cell.font'] = [px(cs(c0).fontSize), ro.fontSize];
+    checks['otpField.cell.lineHeight'] = [px(cs(c0).lineHeight), r2(ro.lineHeight)];
+    checks['otpField.gap'] = [r2(rect(c1).left - rect(c0).right), ro.gap];
+    checks['otpField.separator.width'] = [r2(rect(sep).width), ro.separatorWidth];
+    checks['otpField.separator.height'] = [r2(rect(sep).height), ro.separatorThickness];
+    checks['otpField.separator.radius'] = [px(cs(sep).borderTopLeftRadius), ro.separatorRadius];
+    checks['otpField.separator.gap'] = [r2(rect(sep).left - rect(c1).right), ro.gap];
+    checks['otpField.separator.gapEnd'] = [r2(rect(c2).left - rect(sep).right), ro.gap];
+    checks['otpField.height'] = [r2(rect(otp).height), ro.cell];
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

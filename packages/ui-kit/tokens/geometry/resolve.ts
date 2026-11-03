@@ -557,3 +557,41 @@ export function resolveScrollArea(input: GeometryInput = {}) {
     corner: thickness,
   };
 }
+
+// ── Number field (ui-number-field, React NumberField) ──
+// The field control with its steppers in the construction pattern's slots: the decrement in the
+// leading 6u slot, the increment in the trailing one, so the text run is 1u from each (resolveTextRun)
+// and the control stays 8u with pad u − B. A stepper is the slot itself, its plus / minus glyph at
+// icon size sm (an indicator, like a caret), its radius concentric with the control's: R − u.
+// The label sits in the scrub area, 1.5u above the control (the field's row gap).
+
+/** ui-number-field: control row, stepper slots, text run, label gap. */
+export function resolveNumberField(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  const run = resolveTextRun({ leading: true, trailing: true }, input).contents!;
+  return {
+    ...c,
+    contentsStart: run.start, contentsEnd: run.end,
+    stepper: c.slot,
+    stepperIcon: resolveIcon(c.fontSize, c.unit, 'sm', c.slot),
+    stepperRadius: Math.max(0, c.radius - c.inset),
+    rowGap: 1.5 * c.unit,
+  };
+}
+
+// ── OTP field (ui-otp-field, React OTPField) ──
+// Each cell is a square field control: 8u × 8u (the control height both ways), pad u − B, the
+// control radius and font, one centered character. Cells sit 1u apart (the group wrapper gap); a
+// separator is a 2u dash, 0.5u thick with a 0.25u radius (the tab indicator's bar), in that gap.
+
+/** ui-otp-field: cell size, padding, radius, gap and separator. */
+export function resolveOtpField(input: GeometryInput = {}) {
+  const c = resolveControl(input);
+  const u = c.unit;
+  return {
+    unit: u, border: c.border, fontSize: c.fontSize, lineHeight: c.contents.lineHeight,
+    cell: c.height, padding: c.padding, radius: c.radius,
+    gap: u,
+    separatorWidth: 2 * u, separatorThickness: 0.5 * u, separatorRadius: 0.25 * u,
+  };
+}

@@ -5,6 +5,8 @@ import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
 import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { resolveNumberField } from '../tokens/geometry/resolve.ts';
+import { resolveOtpField } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -198,6 +200,26 @@ export const rows: Row[] = [
   { id: 'toast.action.height', family: 'toast', element: 'toast action', quantity: 'action height', formula: '8u', value: (u) => resolveToast({ unit: u }).actionHeight, status: 'implemented', notes: 'a control row: padding u - B, label 2u at its edges, the control radius' },
   { id: 'toast.close.size', family: 'toast', element: 'toast close', quantity: 'close size', formula: '6u', value: (u) => resolveToast({ unit: u }).close, status: 'implemented', notes: 'a slot; icon size sm; radius min(control radius, 3u)' },
 ];
+
+// Number field (resolveNumberField).
+rows.push(
+  { id: 'number-field.height', family: 'number-field', element: 'number-field group', quantity: 'height', formula: '8u', value: (u) => resolveNumberField({ unit: u }).height, status: 'implemented', notes: 'the field control; pad u - B' },
+  { id: 'number-field.stepper.size', family: 'number-field', element: 'number-field decrement, increment', quantity: 'stepper size', formula: '6u', value: (u) => resolveNumberField({ unit: u }).stepper, status: 'implemented', notes: 'the leading and trailing slots, square' },
+  { id: 'number-field.stepper.icon', family: 'number-field', element: 'number-field stepper glyph', quantity: 'plus / minus glyph', formula: 'min(10px + u - 0.5u, 6u)', value: (u) => resolveNumberField({ unit: u }).stepperIcon, status: 'implemented', notes: 'icon size sm, like a caret' },
+  { id: 'number-field.stepper.radius', family: 'number-field', element: 'number-field stepper', quantity: 'stepper radius', formula: 'max(0, min(3u·s, 4u) - u)', value: (u) => resolveNumberField({ unit: u }).stepperRadius, status: 'implemented', notes: 'concentric with the control radius' },
+  { id: 'number-field.input.paddingInline', family: 'number-field', element: 'number-field input', quantity: 'text inset beside a stepper', formula: 'u', value: (u) => resolveNumberField({ unit: u }).contentsStart, status: 'implemented', notes: '0.5u beside a prefix or suffix; 2u at a bare edge (no stepper)' },
+  { id: 'number-field.rowGap', family: 'number-field', element: 'number-field', quantity: 'label to control', formula: '1.5u', value: (u) => resolveNumberField({ unit: u }).rowGap, status: 'implemented', notes: 'the scrub area holds the label' },
+);
+
+// OTP field (resolveOtpField).
+rows.push(
+  { id: 'otp-field.cell.size', family: 'otp-field', element: 'otp-field input', quantity: 'cell width and height', formula: '8u', value: (u) => resolveOtpField({ unit: u }).cell, status: 'implemented', notes: 'a square field control' },
+  { id: 'otp-field.cell.padding', family: 'otp-field', element: 'otp-field input', quantity: 'cell padding', formula: 'u - B', value: (u) => resolveOtpField({ unit: u }).padding, status: 'implemented', notes: 'the border lives inside the 1u' },
+  { id: 'otp-field.cell.radius', family: 'otp-field', element: 'otp-field input', quantity: 'cell radius', formula: 'min(3u·s, 4u)', value: (u) => resolveOtpField({ unit: u }).radius, status: 'implemented', notes: 'the control radius' },
+  { id: 'otp-field.gap', family: 'otp-field', element: 'otp-field', quantity: 'gap between cells', formula: 'u', value: (u) => resolveOtpField({ unit: u }).gap, status: 'implemented', notes: 'also around a separator' },
+  { id: 'otp-field.separator.width', family: 'otp-field', element: 'otp-field separator', quantity: 'separator length', formula: '2u', value: (u) => resolveOtpField({ unit: u }).separatorWidth, status: 'implemented', notes: '' },
+  { id: 'otp-field.separator.thickness', family: 'otp-field', element: 'otp-field separator', quantity: 'separator thickness', formula: '0.5u', value: (u) => resolveOtpField({ unit: u }).separatorThickness, status: 'implemented', notes: 'radius 0.25u' },
+);
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));
 const cell = (s: string) => (/[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s);

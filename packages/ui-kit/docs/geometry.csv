@@ -211,3 +211,15 @@ toast.gap,toast,ui-toast-viewport,between expanded toasts,2u,4,4.5,5,5.5,6,7,8,9
 toast.columnGap,toast,toast content,text to action to close,u,2,2.25,2.5,2.75,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,title and description 0.5u apart in one column
 toast.action.height,toast,toast action,action height,8u,16,18,20,22,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,"a control row: padding u - B, label 2u at its edges, the control radius"
 toast.close.size,toast,toast close,close size,6u,12,13.5,15,16.5,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,"a slot; icon size sm; radius min(control radius, 3u)"
+number-field.height,number-field,number-field group,height,8u,16,18,20,22,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,the field control; pad u - B
+number-field.stepper.size,number-field,"number-field decrement, increment",stepper size,6u,12,13.5,15,16.5,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,"the leading and trailing slots, square"
+number-field.stepper.icon,number-field,number-field stepper glyph,plus / minus glyph,"min(10px + u - 0.5u, 6u)",11,11.125,11.25,11.375,11.5,11.75,12,12.25,12.5,12.75,13,13.25,13.5,13.75,14,14.25,14.5,14.75,15,15.25,15.5,15.75,16,implemented,"icon size sm, like a caret"
+number-field.stepper.radius,number-field,number-field stepper,stepper radius,"max(0, min(3u·s, 4u) - u)",4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,concentric with the control radius
+number-field.input.paddingInline,number-field,number-field input,text inset beside a stepper,u,2,2.25,2.5,2.75,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,0.5u beside a prefix or suffix; 2u at a bare edge (no stepper)
+number-field.rowGap,number-field,number-field,label to control,1.5u,3,3.375,3.75,4.125,4.5,5.25,6,6.75,7.5,8.25,9,9.75,10.5,11.25,12,12.75,13.5,14.25,15,15.75,16.5,17.25,18,implemented,the scrub area holds the label
+otp-field.cell.size,otp-field,otp-field input,cell width and height,8u,16,18,20,22,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,a square field control
+otp-field.cell.padding,otp-field,otp-field input,cell padding,u - B,2,2.25,2.5,2.75,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,the border lives inside the 1u
+otp-field.cell.radius,otp-field,otp-field input,cell radius,"min(3u·s, 4u)",6,6.75,7.5,8.25,9,10.5,12,13.5,15,16.5,18,19.5,21,22.5,24,25.5,27,28.5,30,31.5,33,34.5,36,implemented,the control radius
+otp-field.gap,otp-field,otp-field,gap between cells,u,2,2.25,2.5,2.75,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,also around a separator
+otp-field.separator.width,otp-field,otp-field separator,separator length,2u,4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,implemented,
+otp-field.separator.thickness,otp-field,otp-field separator,separator thickness,0.5u,1,1.125,1.25,1.375,1.5,1.75,2,2.25,2.5,2.75,3,3.25,3.5,3.75,4,4.25,4.5,4.75,5,5.25,5.5,5.75,6,implemented,radius 0.25u

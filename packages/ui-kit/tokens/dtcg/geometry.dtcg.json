@@ -6975,5 +6975,461 @@
         }
       }
     }
+  },
+  "number-field": {
+    "height": {
+      "$type": "dimension",
+      "$value": {
+        "value": 36,
+        "unit": "px"
+      },
+      "$description": "number-field group · height · the field control; pad u - B",
+      "$extensions": {
+        "com.massimo.formula": "8u",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 16,
+          "u=2.25": 18,
+          "u=2.5": 20,
+          "u=2.75": 22,
+          "u=3": 24,
+          "u=3.5": 28,
+          "u=4": 32,
+          "u=4.5": 36,
+          "u=5": 40,
+          "u=5.5": 44,
+          "u=6": 48,
+          "u=6.5": 52,
+          "u=7": 56,
+          "u=7.5": 60,
+          "u=8": 64,
+          "u=8.5": 68,
+          "u=9": 72,
+          "u=9.5": 76,
+          "u=10": 80,
+          "u=10.5": 84,
+          "u=11": 88,
+          "u=11.5": 92,
+          "u=12": 96
+        }
+      }
+    },
+    "stepper": {
+      "size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 27,
+          "unit": "px"
+        },
+        "$description": "number-field decrement, increment · stepper size · the leading and trailing slots, square",
+        "$extensions": {
+          "com.massimo.formula": "6u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 12,
+            "u=2.25": 13.5,
+            "u=2.5": 15,
+            "u=2.75": 16.5,
+            "u=3": 18,
+            "u=3.5": 21,
+            "u=4": 24,
+            "u=4.5": 27,
+            "u=5": 30,
+            "u=5.5": 33,
+            "u=6": 36,
+            "u=6.5": 39,
+            "u=7": 42,
+            "u=7.5": 45,
+            "u=8": 48,
+            "u=8.5": 51,
+            "u=9": 54,
+            "u=9.5": 57,
+            "u=10": 60,
+            "u=10.5": 63,
+            "u=11": 66,
+            "u=11.5": 69,
+            "u=12": 72
+          }
+        }
+      },
+      "icon": {
+        "$type": "dimension",
+        "$value": {
+          "value": 12.25,
+          "unit": "px"
+        },
+        "$description": "number-field stepper glyph · plus / minus glyph · icon size sm, like a caret",
+        "$extensions": {
+          "com.massimo.formula": "min(10px + u - 0.5u, 6u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 11,
+            "u=2.25": 11.125,
+            "u=2.5": 11.25,
+            "u=2.75": 11.375,
+            "u=3": 11.5,
+            "u=3.5": 11.75,
+            "u=4": 12,
+            "u=4.5": 12.25,
+            "u=5": 12.5,
+            "u=5.5": 12.75,
+            "u=6": 13,
+            "u=6.5": 13.25,
+            "u=7": 13.5,
+            "u=7.5": 13.75,
+            "u=8": 14,
+            "u=8.5": 14.25,
+            "u=9": 14.5,
+            "u=9.5": 14.75,
+            "u=10": 15,
+            "u=10.5": 15.25,
+            "u=11": 15.5,
+            "u=11.5": 15.75,
+            "u=12": 16
+          }
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9,
+          "unit": "px"
+        },
+        "$description": "number-field stepper · stepper radius · concentric with the control radius",
+        "$extensions": {
+          "com.massimo.formula": "max(0, min(3u·s, 4u) - u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 4,
+            "u=2.25": 4.5,
+            "u=2.5": 5,
+            "u=2.75": 5.5,
+            "u=3": 6,
+            "u=3.5": 7,
+            "u=4": 8,
+            "u=4.5": 9,
+            "u=5": 10,
+            "u=5.5": 11,
+            "u=6": 12,
+            "u=6.5": 13,
+            "u=7": 14,
+            "u=7.5": 15,
+            "u=8": 16,
+            "u=8.5": 17,
+            "u=9": 18,
+            "u=9.5": 19,
+            "u=10": 20,
+            "u=10.5": 21,
+            "u=11": 22,
+            "u=11.5": 23,
+            "u=12": 24
+          }
+        }
+      }
+    },
+    "input": {
+      "paddingInline": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "px"
+        },
+        "$description": "number-field input · text inset beside a stepper · 0.5u beside a prefix or suffix; 2u at a bare edge (no stepper)",
+        "$extensions": {
+          "com.massimo.formula": "u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 2,
+            "u=2.25": 2.25,
+            "u=2.5": 2.5,
+            "u=2.75": 2.75,
+            "u=3": 3,
+            "u=3.5": 3.5,
+            "u=4": 4,
+            "u=4.5": 4.5,
+            "u=5": 5,
+            "u=5.5": 5.5,
+            "u=6": 6,
+            "u=6.5": 6.5,
+            "u=7": 7,
+            "u=7.5": 7.5,
+            "u=8": 8,
+            "u=8.5": 8.5,
+            "u=9": 9,
+            "u=9.5": 9.5,
+            "u=10": 10,
+            "u=10.5": 10.5,
+            "u=11": 11,
+            "u=11.5": 11.5,
+            "u=12": 12
+          }
+        }
+      }
+    },
+    "rowGap": {
+      "$type": "dimension",
+      "$value": {
+        "value": 6.75,
+        "unit": "px"
+      },
+      "$description": "number-field · label to control · the scrub area holds the label",
+      "$extensions": {
+        "com.massimo.formula": "1.5u",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 3,
+          "u=2.25": 3.375,
+          "u=2.5": 3.75,
+          "u=2.75": 4.125,
+          "u=3": 4.5,
+          "u=3.5": 5.25,
+          "u=4": 6,
+          "u=4.5": 6.75,
+          "u=5": 7.5,
+          "u=5.5": 8.25,
+          "u=6": 9,
+          "u=6.5": 9.75,
+          "u=7": 10.5,
+          "u=7.5": 11.25,
+          "u=8": 12,
+          "u=8.5": 12.75,
+          "u=9": 13.5,
+          "u=9.5": 14.25,
+          "u=10": 15,
+          "u=10.5": 15.75,
+          "u=11": 16.5,
+          "u=11.5": 17.25,
+          "u=12": 18
+        }
+      }
+    }
+  },
+  "otp-field": {
+    "cell": {
+      "size": {
+        "$type": "dimension",
+        "$value": {
+          "value": 36,
+          "unit": "px"
+        },
+        "$description": "otp-field input · cell width and height · a square field control",
+        "$extensions": {
+          "com.massimo.formula": "8u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 16,
+            "u=2.25": 18,
+            "u=2.5": 20,
+            "u=2.75": 22,
+            "u=3": 24,
+            "u=3.5": 28,
+            "u=4": 32,
+            "u=4.5": 36,
+            "u=5": 40,
+            "u=5.5": 44,
+            "u=6": 48,
+            "u=6.5": 52,
+            "u=7": 56,
+            "u=7.5": 60,
+            "u=8": 64,
+            "u=8.5": 68,
+            "u=9": 72,
+            "u=9.5": 76,
+            "u=10": 80,
+            "u=10.5": 84,
+            "u=11": 88,
+            "u=11.5": 92,
+            "u=12": 96
+          }
+        }
+      },
+      "padding": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "px"
+        },
+        "$description": "otp-field input · cell padding · the border lives inside the 1u",
+        "$extensions": {
+          "com.massimo.formula": "u - B",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 2,
+            "u=2.25": 2.25,
+            "u=2.5": 2.5,
+            "u=2.75": 2.75,
+            "u=3": 3,
+            "u=3.5": 3.5,
+            "u=4": 4,
+            "u=4.5": 4.5,
+            "u=5": 5,
+            "u=5.5": 5.5,
+            "u=6": 6,
+            "u=6.5": 6.5,
+            "u=7": 7,
+            "u=7.5": 7.5,
+            "u=8": 8,
+            "u=8.5": 8.5,
+            "u=9": 9,
+            "u=9.5": 9.5,
+            "u=10": 10,
+            "u=10.5": 10.5,
+            "u=11": 11,
+            "u=11.5": 11.5,
+            "u=12": 12
+          }
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 13.5,
+          "unit": "px"
+        },
+        "$description": "otp-field input · cell radius · the control radius",
+        "$extensions": {
+          "com.massimo.formula": "min(3u·s, 4u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 6,
+            "u=2.25": 6.75,
+            "u=2.5": 7.5,
+            "u=2.75": 8.25,
+            "u=3": 9,
+            "u=3.5": 10.5,
+            "u=4": 12,
+            "u=4.5": 13.5,
+            "u=5": 15,
+            "u=5.5": 16.5,
+            "u=6": 18,
+            "u=6.5": 19.5,
+            "u=7": 21,
+            "u=7.5": 22.5,
+            "u=8": 24,
+            "u=8.5": 25.5,
+            "u=9": 27,
+            "u=9.5": 28.5,
+            "u=10": 30,
+            "u=10.5": 31.5,
+            "u=11": 33,
+            "u=11.5": 34.5,
+            "u=12": 36
+          }
+        }
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4.5,
+        "unit": "px"
+      },
+      "$description": "otp-field · gap between cells · also around a separator",
+      "$extensions": {
+        "com.massimo.formula": "u",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 2,
+          "u=2.25": 2.25,
+          "u=2.5": 2.5,
+          "u=2.75": 2.75,
+          "u=3": 3,
+          "u=3.5": 3.5,
+          "u=4": 4,
+          "u=4.5": 4.5,
+          "u=5": 5,
+          "u=5.5": 5.5,
+          "u=6": 6,
+          "u=6.5": 6.5,
+          "u=7": 7,
+          "u=7.5": 7.5,
+          "u=8": 8,
+          "u=8.5": 8.5,
+          "u=9": 9,
+          "u=9.5": 9.5,
+          "u=10": 10,
+          "u=10.5": 10.5,
+          "u=11": 11,
+          "u=11.5": 11.5,
+          "u=12": 12
+        }
+      }
+    },
+    "separator": {
+      "width": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9,
+          "unit": "px"
+        },
+        "$description": "otp-field separator · separator length",
+        "$extensions": {
+          "com.massimo.formula": "2u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 4,
+            "u=2.25": 4.5,
+            "u=2.5": 5,
+            "u=2.75": 5.5,
+            "u=3": 6,
+            "u=3.5": 7,
+            "u=4": 8,
+            "u=4.5": 9,
+            "u=5": 10,
+            "u=5.5": 11,
+            "u=6": 12,
+            "u=6.5": 13,
+            "u=7": 14,
+            "u=7.5": 15,
+            "u=8": 16,
+            "u=8.5": 17,
+            "u=9": 18,
+            "u=9.5": 19,
+            "u=10": 20,
+            "u=10.5": 21,
+            "u=11": 22,
+            "u=11.5": 23,
+            "u=12": 24
+          }
+        }
+      },
+      "thickness": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2.25,
+          "unit": "px"
+        },
+        "$description": "otp-field separator · separator thickness · radius 0.25u",
+        "$extensions": {
+          "com.massimo.formula": "0.5u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 1,
+            "u=2.25": 1.125,
+            "u=2.5": 1.25,
+            "u=2.75": 1.375,
+            "u=3": 1.5,
+            "u=3.5": 1.75,
+            "u=4": 2,
+            "u=4.5": 2.25,
+            "u=5": 2.5,
+            "u=5.5": 2.75,
+            "u=6": 3,
+            "u=6.5": 3.25,
+            "u=7": 3.5,
+            "u=7.5": 3.75,
+            "u=8": 4,
+            "u=8.5": 4.25,
+            "u=9": 4.5,
+            "u=9.5": 4.75,
+            "u=10": 5,
+            "u=10.5": 5.25,
+            "u=11": 5.5,
+            "u=11.5": 5.75,
+            "u=12": 6
+          }
+        }
+      }
+    }
   }
 }

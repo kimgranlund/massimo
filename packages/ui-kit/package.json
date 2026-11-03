@@ -66,7 +66,11 @@
     "./components/form/element": "./components/form/form.element.ts",
     "./components/form/react": "./components/form/form.react.tsx",
     "./components/scroll-area/element": "./components/scroll-area/scroll-area.element.ts",
-    "./components/scroll-area/react": "./components/scroll-area/scroll-area.react.tsx"
+    "./components/scroll-area/react": "./components/scroll-area/scroll-area.react.tsx",
+    "./components/number-field/element": "./components/number-field/number-field.element.ts",
+    "./components/number-field/react": "./components/number-field/number-field.react.tsx",
+    "./components/otp-field/element": "./components/otp-field/otp-field.element.ts",
+    "./components/otp-field/react": "./components/otp-field/otp-field.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

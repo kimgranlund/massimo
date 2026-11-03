@@ -42,4 +42,8 @@ export const pending = defineGlobalStyles({
   'ui-form:not(:defined)': { display: 'block' },
   // A scroll area keeps the block its author sized and scrolls natively until its viewport wraps the content.
   'ui-scroll-area:not(:defined)': { display: 'block', overflow: 'auto' },
+  // A number field reserves its label line and control row, like an input.
+  'ui-number-field:not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT, visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  // An OTP field reserves its row of 8u cells.
+  'ui-otp-field:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
 });
