@@ -7,7 +7,10 @@ export const panelHeader = css({ display: 'flex', flexDirection: 'column', gap: 
 export const brand = css({ textStyle: 'heading-3' });
 export const titleRow = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2' });
 // The panel's ui-field-grid: it scrolls on its own; rows keep their height (align to the top).
-export const panelBody = css({ flex: '1', minHeight: '0', overflowY: 'auto', alignContent: 'start', padding: '4' });
+// One grid for every tab: the label column is fixed at the field grid's 40% cap (not sized to the tab's
+// longest label) and the readout column holds at least 11u (the widest readout, 359°), so controls start and end at the same x
+// on Geometry, Colors, Typography and Motion.
+export const panelBody = css({ flex: '1', minHeight: '0', overflowY: 'auto', alignContent: 'start', padding: '4', gridTemplateColumns: '[40% minmax(0, 1fr) minmax(calc(11px * var(--ui-unit)), auto)]' });
 export const group = css({ display: 'flex', flexDirection: 'column', gap: '3' });
 export const pair = css({ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2', width: 'full', '& > ui-select': { minWidth: '0' } });
 export const control = css({ display: 'flex', flexDirection: 'column', gap: '1', '& > ui-segmented': { width: 'full' } });
