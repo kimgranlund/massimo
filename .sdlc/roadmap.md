@@ -5,9 +5,5 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0009 | [tooltip](tickets/tooltip/handoff.md) | W2 · Tooltip | feature | L2 | P2 | T-0001 | 🟡 claimed |
-| T-0010 | [popover](tickets/popover/handoff.md) | W2 · Popover | feature | L2 | P2 | T-0001 | 🟡 claimed |
-| T-0013 | [preview-card](tickets/preview-card/handoff.md) | W2 · Preview Card | feature | L2 | P3 | T-0010 | 🟡 claimed |
-| T-0015 | [navigation-menu](tickets/navigation-menu/handoff.md) | W2 · Navigation Menu | feature | L3 | P3 | T-0010 | 🟡 claimed |
 
-Closed: 26 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 30 done, 0 dropped (git log or .NNNN-* folders)
