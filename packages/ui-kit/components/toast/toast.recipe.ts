@@ -5,7 +5,7 @@
 //   `inline` puts it in flow (a column, toasts 2u apart) for specimens and previews.
 // - toast: a container at the card-sm level: padding pad-card-sm (3u) − B, radius = that edge
 //   × min(1, s); the overlay fill and edge with the md shadow.
-// - content: title and description in one column (0.5u apart), then the action (an 8u control row,
+// - content: title and description in one column (0.5u apart; either alone spans both rows, centered), then the action (an 8u control row,
 //   label 2u at its edges) and the close (a 6u slot, icon size sm), 1u apart, centered on the text.
 // Stacking reads Base UI's variables, px set by script (stack.ts): --toast-index (0 frontmost),
 // --toast-offset-y, --toast-height, the viewport's --toast-frontmost-height, and the swipe
@@ -95,10 +95,14 @@ export const toast = defineSlotRecipe({
     },
     title: {
       gridRow: 1, gridColumn: 1, margin: 0, textStyle: 'title', color: 'fg', overflowWrap: 'anywhere',
+      // Alone (no description): both rows, so it centers on the action and close.
+      '&:not(:has(+ [data-part=description]))': { gridRow: '1 / span 2' },
       ...Object.fromEntries(Object.entries(TYPES).map(([type, role]) => [`&[data-type=${type}]`, { color: `${role}.fg` }])),
     },
     description: {
       gridRow: 2, gridColumn: 1, margin: 0, textStyle: 'caption', color: 'fg.muted', overflowWrap: 'anywhere',
+      // Alone (no title): both rows, so it centers on the action and close.
+      '&:first-child': { gridRow: '1 / span 2' },
       '[data-part=title] + &': { marginBlockStart: 'calc(var(--u) / 2)' },
     },
     action: {
