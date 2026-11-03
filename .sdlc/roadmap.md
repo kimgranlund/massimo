@@ -12,8 +12,5 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0013 | [preview-card](tickets/preview-card/handoff.md) | W2 · Preview Card | feature | L2 | P3 | T-0010 | 🟡 claimed |
 | T-0014 | [menubar](tickets/menubar/handoff.md) | W2 · Menubar | feature | L3 | P3 | T-0011 | 🟡 claimed |
 | T-0015 | [navigation-menu](tickets/navigation-menu/handoff.md) | W2 · Navigation Menu | feature | L3 | P3 | T-0010 | 🟡 claimed |
-| T-0016 | [dialog](tickets/dialog/handoff.md) | W3 · Dialog | feature | L3 | P1 | T-0001 | 🟡 claimed |
-| T-0017 | [alert-dialog](tickets/alert-dialog/handoff.md) | W3 · Alert Dialog | feature | L2 | P2 | T-0016 | 🟡 claimed |
-| T-0018 | [drawer](tickets/drawer/handoff.md) | W3 · Drawer | feature | L3 | P2 | T-0016 | 🟡 claimed |
 
-Closed: 20 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 23 done, 0 dropped (git log or .NNNN-* folders)

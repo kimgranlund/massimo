@@ -2,7 +2,7 @@
 id: T-0016
 title: "W3 · Dialog"
 type: feature        # feature | bug | chore | spike | idea
-status: claimed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L3             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P1         # P1 | P2 | P3
 depends: [T-0001]
@@ -28,3 +28,9 @@ Base UI parity, wave 3: Dialog exists in ui-kit for both renderers (web componen
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; class names unhashed; existing components' APIs unchanged.
+
+## Outcome
+
+2026-11-02 · lane: full L3 · verdict: closed by reason (merged from wave 3a lane) · verifier: none · base: none
+- Changed: see commits
+- Commits: none
