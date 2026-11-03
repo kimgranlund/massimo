@@ -10,7 +10,7 @@
 // Composition (optional): track › indicator and thumb may be authored as [data-part] children; each
 // is adopted onto the generated part (attributes, classes; the thumb's content), absent ones generated.
 import { UIElement, UIFormElement, define, html, settleDefault, signal } from '../../core/index.ts';
-import { applyAttrs, eventDetails, nearestThumb, pairGroupAttrs, pairKey, pairRatios, pairThumbAttrs, parsePair, progressState, rangeDataAttrs, rangeKey, setPairValue, snapPair, type ChangeReason, type RangePair, ratioOf, sliderAttrs, snap, valueAt } from '../../dom/index.ts';
+import { applyAttrs, eventDetails, nearestThumb, pairGroupAttrs, pairKey, pairRatios, pairThumbAttrs, parsePair, progressState, rangeDataAttrs, rangeKey, setPairValue, snapPair, type ChangeReason, type RangePair, ratioOf, sliderAttrs, snap, thumbValueText, valueAt } from '../../dom/index.ts';
 import { applyRecipe, partOf, setClasses } from '../classes.ts';
 import { adoptPart, authoredParts } from '../slots.ts';
 import { range, progress } from '../../styled-system/recipes/index.js';
@@ -103,14 +103,14 @@ export class UIRange extends UIFormElement {
       adoptTrack(this, this.#authored, this.#authoredThumbs);
       applyRecipe(this, range(), trackPart(this));
       thumbsOf(this).forEach((t, i) => {
-        applyAttrs(t, pairThumbAttrs(pair, i, { ...this.#bounds, disabled: this.isDisabled, label: this.label, dragging: this.#active.value === i }));
+        applyAttrs(t, pairThumbAttrs(pair, i, { ...this.#bounds, disabled: this.isDisabled, label: this.label, dragging: this.#active.value === i, valueText: this.valueText }));
         t.style.setProperty('--ui-ratio', String(i ? r1 : r0));
         setClasses(t, range().thumb, 'recipe');
       });
       return;
     }
     const s = { ...this.#state, value: snap(this.value as number, this.#state) };
-    applyAttrs(this, { ...sliderAttrs({ ...s, disabled: this.isDisabled, label: this.label, valueText: this.valueText || undefined }), ...data });
+    applyAttrs(this, { ...sliderAttrs({ ...s, disabled: this.isDisabled, label: this.label, valueText: thumbValueText(this.valueText, s.value) }), ...data });
     this.style.removeProperty('--ui-ratio-start');
     this.style.setProperty('--ui-ratio', String(ratioOf(s)));
     adoptTrack(this, this.#authored);

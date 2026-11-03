@@ -10,12 +10,12 @@
 ## Usage
 
 ```html
-<ui-range label="Volume" name="volume" value="40" value-text="40%"></ui-range>
+<ui-range label="Volume" name="volume" value="40" value-text="{value}%"></ui-range>
 <ui-range label="Price" name="price" value="20,80"></ui-range>
 <ui-progress label="Upload" value="60"></ui-progress>
 ```
 
-Two thumbs (Base UI Slider with an array value): `value="20,80"` (or `el.value = [20, 80]`; React `defaultValue={[20, 80]}`). The host becomes a group named by `label`; each thumb is a slider and a tab stop named "<label>, minimum" and "<label>, maximum". Thumbs stop at each other (they may meet, never cross); a press on the track moves the nearer thumb (when they meet, the one on the side of the press) and focuses it; the indicator runs between them. With a `name`, the form gets one entry per thumb (`FormData.getAll(name)` gives `['20', '80']`). `value-text` applies to one thumb only.
+Two thumbs (Base UI Slider with an array value): `value="20,80"` (or `el.value = [20, 80]`; React `defaultValue={[20, 80]}`). The host becomes a group named by `label`; each thumb is a slider and a tab stop named "<label>, minimum" and "<label>, maximum". Thumbs stop at each other (they may meet, never cross); a press on the track moves the nearer thumb (when they meet, the one on the side of the press) and focuses it; the indicator runs between them. With a `name`, the form gets one entry per thumb (`FormData.getAll(name)` gives `['20', '80']`). `value-text` names each thumb's value: `{value}` stands for that thumb's value (`value-text="{value} °C"` reads "20 °C" and "80 °C"); text without `{value}` is used as written. React also takes a function, `valueText={(value, index) => …}` (Base UI `getAriaValueText`).
 
 Pair a range with a visible label element and `aria-labelledby` when the label must be seen; `label` alone is not visible.
 

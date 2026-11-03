@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "3fb8f9f0288d4ca0ee566ae4560e7df1cf72fc50a98f5ce9d66f31ac31a2be9c"
+      "sha256": "2d77a07a32c80091cbb4ff7f170b765469414c7766039e72d4dc2440c406e465"
     },
     {
       "path": "dom/range.ts",
-      "sha256": "9b17a99a01b8ff3dc1febc55031b8ff3ec66cc28c95275ab9b3d0f9f9ba8295d"
+      "sha256": "b29a4dc1e8377c7e709f101f75e4e8bcfbd9b0e2a6d2b804b394a664ea1ce6ab"
     },
     {
       "path": "components/range/range.manifest.json",
-      "sha256": "7d769354d7763002a8f71f5a6aea53cf18c4c00ea310c24d128a6b7466f3451c"
+      "sha256": "bf95f7c6eb2342ccff5220bab321f1904e02e3bcb55f94b1916f0642fec68f98"
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "4f7640c048cfcb69be8ab9c6ce64d36389a00a90495862dd27cf47107830a5a6"
+      "sha256": "aeb8d7de69a9361e4629905957e83fb4f6800960f00d0db6969da9e862e0d6f8"
     },
     {
       "path": "dom/state.ts",

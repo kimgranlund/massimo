@@ -36,6 +36,14 @@ export function valueAt(x: number, rect: { left: number; width: number }, edge: 
   return snap(s.min + Math.min(1, Math.max(0, r)) * (s.max - s.min), s);
 }
 
+/** Human text for a value (aria-valuetext): a template where {value} is the thumb's value ("{value} °C"), or a function of the value and the thumb index (Base UI getAriaValueText). */
+export type ValueText = string | ((value: number, index: number) => string);
+/** The aria-valuetext of one thumb; plain text without {value} is used as written. */
+export function thumbValueText(text: ValueText | undefined, value: number, index = 0): string | undefined {
+  if (text === undefined || text === '') return undefined;
+  return typeof text === 'function' ? text(value, index) : text.replaceAll('{value}', String(value));
+}
+
 export function sliderAttrs(s: RangeState & { disabled?: boolean; label?: string; valueText?: string }) {
   return {
     role: 'slider',
@@ -120,9 +128,9 @@ export function pairGroupAttrs(s: { disabled?: boolean; label?: string }) {
 }
 
 /** One thumb of a pair (role=slider, a tab stop): its value within the whole range, data-index and data-dragging. */
-export function pairThumbAttrs(pair: readonly number[], index: number, s: Bounds & { disabled?: boolean; label?: string; dragging?: boolean }) {
+export function pairThumbAttrs(pair: readonly number[], index: number, s: Bounds & { disabled?: boolean; label?: string; dragging?: boolean; valueText?: ValueText }) {
   return {
-    ...sliderAttrs({ ...s, value: pair[index], label: pairLabels(s.label)[index] }),
+    ...sliderAttrs({ ...s, value: pair[index], label: pairLabels(s.label)[index], valueText: thumbValueText(s.valueText, pair[index], index) }),
     'data-index': index,
     'data-dragging': s.dragging ? '' : undefined,
   };

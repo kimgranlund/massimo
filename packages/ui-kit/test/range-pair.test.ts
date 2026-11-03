@@ -175,3 +175,28 @@ test('React Slider pair: keys on a thumb input stop at the other thumb; onValueC
   await act(async () => root.unmount());
   box.remove();
 });
+
+test('value text per thumb: a {value} template on both renderers, a function in React; plain text as written', async () => {
+  const { thumbValueText } = await import('../dom/range.ts');
+  assert.equal(thumbValueText('{value} °C', 20), '20 °C');
+  assert.equal(thumbValueText('40%', 40), '40%', 'no {value}: used as written');
+  assert.equal(thumbValueText((v: number, i: number) => `${i}:${v}`, 7, 1), '1:7');
+  assert.equal(thumbValueText(undefined, 1), undefined);
+  assert.equal(thumbValueText('', 1), undefined);
+  const el = await wc('<ui-range label="Temp" value="20,80" value-text="{value} °C"></ui-range>');
+  const thumbs = [...el.querySelectorAll('[data-part=thumb]')];
+  assert.deepEqual(thumbs.map((t) => t.getAttribute('aria-valuetext')), ['20 °C', '80 °C']);
+  key(thumbs[1], 'ArrowLeft'); await tick();
+  assert.equal(thumbs[1].getAttribute('aria-valuetext'), '79 °C', 'it follows the value');
+  el.parentElement!.remove();
+  const one = await wc('<ui-range label="Vol" value="30" value-text="{value} percent"></ui-range>');
+  assert.equal(one.getAttribute('aria-valuetext'), '30 percent');
+  one.parentElement!.remove();
+  const html = (x: any) => { const b = document.createElement('div'); b.innerHTML = renderToStaticMarkup(x); return b; };
+  const pair = html(h(Slider, { label: 'Temp', defaultValue: [20, 80], valueText: (v: number, i: number) => `${i ? 'to' : 'from'} ${v} °C` }));
+  assert.deepEqual([...pair.querySelectorAll('input')].map((i) => i.getAttribute('aria-valuetext')), ['from 20 °C', 'to 80 °C']);
+  const tpl = html(h(Slider, { label: 'Temp', defaultValue: [20, 80], valueText: '{value} °C' }));
+  assert.deepEqual([...tpl.querySelectorAll('input')].map((i) => i.getAttribute('aria-valuetext')), ['20 °C', '80 °C']);
+  const single = html(h(Slider, { label: 'Vol', defaultValue: 30, valueText: '{value} percent' }));
+  assert.equal(single.querySelector('input')!.getAttribute('aria-valuetext'), '30 percent');
+});

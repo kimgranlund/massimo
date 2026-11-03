@@ -170,7 +170,7 @@
           "default": "",
           "attribute": "value-text",
           "reflects": false,
-          "description": "Human text for the value (aria-valuetext), e.g. \"50%\". One thumb only; a pair ignores it.",
+          "description": "Human text for each thumb's value (aria-valuetext): {value} stands for the thumb's value, e.g. \"{value}%\" or \"{value} °C\"; text without {value} is used as written.",
           "inspector": {
             "control": "text"
           }
@@ -264,7 +264,7 @@
         "template() owns track, fill and thumb; the ratio reaches CSS as --ui-ratio (0…1). Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
         "input fires while dragging or stepping; change fires on key commit and pointer release.",
         "The value attribute at connect is the reset default. Values snap to step.",
-        "label sets aria-label; value-text sets aria-valuetext.",
+        "label sets aria-label; value-text sets each thumb's aria-valuetext ({value} stands for the thumb's value).",
         "Composition: track › indicator and thumb may be authored as [data-part] spans; the host adopts their attributes and classes (the thumb also its content) onto the generated parts. React: Slider.Root (alias Range.Root) with Slider.Track › Slider.Indicator and Slider.Thumb, which renders the painted thumb and the native range input after it (Base UI's Thumb also holds the input: the input takes keys, pointer and the form value, so it is not a separate part); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders.",
         "A pair value renders two thumbs: the host is role=group (named by label) and is not focusable; each thumb is role=slider and a tab stop, with data-index. A thumb stops at the other (they may meet, never cross); a track press moves the nearer thumb. With a name, the form value is one entry per thumb. React: one Slider.Thumb per value (index 0 and 1); the thumb inputs ignore the pointer and the root maps it."
       ],
@@ -631,7 +631,7 @@
             "max?: number = 100",
             "step?: number = 1",
             "label?: string // Accessible name (aria-label) when there is no visible label; a pair names its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
-            "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\". One thumb only.",
+            "valueText?: ValueText // Human text for each thumb's value (aria-valuetext): a template, \"{value} °C\" (\"40%\" without {value} is used as written), or (value, index) => text (Base UI getAriaValueText).",
             "size?: number // Unit u in px for this control.",
             "onValueChange?: (value: V, details: SliderChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires.",
             "onValueCommitted?: (value: V, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
@@ -668,7 +668,7 @@
               "max?: number = 100",
               "step?: number = 1",
               "label?: string // Accessible name (aria-label) when there is no visible label; a pair names its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
-              "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\". One thumb only.",
+              "valueText?: ValueText // Human text for each thumb's value (aria-valuetext): a template, \"{value} °C\" (\"40%\" without {value} is used as written), or (value, index) => text (Base UI getAriaValueText).",
               "size?: number // Unit u in px for this control.",
               "onValueChange?: (value: V, details: SliderChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires.",
               "onValueCommitted?: (value: V, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",

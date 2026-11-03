@@ -16,7 +16,7 @@
 // value (index 0 and 1). Progress.Root renders the native <progress> after its children. The presets
 // <Slider> / <Range> and <Progress> are Root + Track (with its Indicator) + Thumb (two for a pair).
 import { createContext, useContext, useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type FormEvent, type KeyboardEvent, type PointerEvent, type HTMLAttributes, type InputHTMLAttributes, type ReactNode } from 'react';
-import { eventDetails, nearestThumb, pairLabels, pairRatios, progressState, rangeDataAttrs, ratioOf, setPairValue, snapPair, toReactProps, valueAt, type ChangeDetails, type ChangeReason, type RangePair } from '../../dom/index.ts';
+import { eventDetails, nearestThumb, pairLabels, pairRatios, progressState, rangeDataAttrs, ratioOf, setPairValue, snapPair, thumbValueText, toReactProps, valueAt, type ChangeDetails, type ValueText, type ChangeReason, type RangePair } from '../../dom/index.ts';
 import { useFieldState } from '../state.react.ts';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { range, progress } from '../../styled-system/recipes/index.js';
@@ -47,8 +47,8 @@ export interface RangeProps<V extends SliderValue = number> extends Native, Part
   step?: number;
   /** Accessible name (aria-label) when there is no visible label; a pair names its thumbs "<label>, minimum" and "<label>, maximum". */
   label?: string;
-  /** Human text for the value (aria-valuetext), e.g. "40%". One thumb only. */
-  valueText?: string;
+  /** Human text for each thumb's value (aria-valuetext): a template, "{value} °C" ("40%" without {value} is used as written), or (value, index) => text (Base UI getAriaValueText). */
+  valueText?: ValueText;
   /** Unit u in px for this control. */
   size?: number;
   /** Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires. */
@@ -99,7 +99,7 @@ function SingleRoot({ value, defaultValue = 50, min = 0, max = 100, step = 1, la
   const attrs = { ...f.attrs, ...toReactProps(rangeDataAttrs({ dragging })) };
   const state = stateOf(attrs);
   const nativeProps = {
-    type: 'range', min, max, step, 'aria-label': label, 'aria-valuetext': valueText,
+    type: 'range', min, max, step, 'aria-label': label, 'aria-valuetext': thumbValueText(valueText, current),
     ref: native,
     ...(value === undefined ? { defaultValue } : { value }),
     onChange: (e: ChangeEvent<HTMLInputElement>) => {
@@ -122,7 +122,7 @@ function SingleRoot({ value, defaultValue = 50, min = 0, max = 100, step = 1, la
 }
 
 /** Two thumbs: native inputs for keys, names and the form; the root maps the pointer to the nearer thumb. */
-function PairRoot({ value, defaultValue, min = 0, max = 100, step = 1, label, valueText: _text, size, className, render, style, children, onChange, onValueChange, onValueCommitted, onPointerDown, onKeyDown, onInvalid, id, 'aria-labelledby': labelledBy, 'aria-describedby': describedBy, ...input }: RangeProps<readonly number[]>) {
+function PairRoot({ value, defaultValue, min = 0, max = 100, step = 1, label, valueText, size, className, render, style, children, onChange, onValueChange, onValueCommitted, onPointerDown, onKeyDown, onInvalid, id, 'aria-labelledby': labelledBy, 'aria-describedby': describedBy, ...input }: RangeProps<readonly number[]>) {
   const bounds = { min, max, step };
   const [inner, setInner] = useState<RangePair>(() => snapPair(defaultValue ?? [min, max], bounds));
   const current = value ? snapPair(value, bounds) : inner;
@@ -189,7 +189,7 @@ function PairRoot({ value, defaultValue, min = 0, max = 100, step = 1, label, va
   const thumbs: PairThumb[] = [0, 1].map((i) => ({
     ratio: ratios[i], dragging: active === i,
     input: {
-      type: 'range', min, max, step, 'aria-label': names[i], 'data-index': i, value: current[i],
+      type: 'range', min, max, step, 'aria-label': names[i], 'aria-valuetext': thumbValueText(valueText, current[i], i), 'data-index': i, value: current[i],
       ref: (el: HTMLInputElement | null) => { inputs.current[i] = el; },
       onChange: (e: ChangeEvent<HTMLInputElement>) => {
         // The input's own min and max are the whole range: stop at the other thumb here.
