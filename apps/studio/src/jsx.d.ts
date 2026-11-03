@@ -44,6 +44,7 @@ declare module 'react' {
       'ui-checkbox-group': El<{ name?: string; value?: string; 'default-value'?: string; 'all-values'?: string; label?: string; orientation?: 'vertical' | 'horizontal'; gap?: string; required?: boolean; disabled?: boolean }>;
       'ui-fieldset': El<{ legend?: string; disabled?: boolean; gap?: string }>;
       'ui-tabs': El<{ ref?: any; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; variant?: 'segmented' | 'underline'; 'activate-on-focus'?: boolean; label?: string }>;
+      'ui-combobox': El<{ ref?: any; name?: string; value?: string; 'default-value'?: string; 'input-value'?: string; label?: string; placeholder?: string; description?: string; error?: string; multiple?: boolean; required?: boolean; disabled?: boolean; readonly?: boolean; open?: boolean; 'empty-text'?: string; 'auto-highlight'?: boolean; labelledby?: string; describedby?: string }>;
       'ui-accordion': El<{ ref?: any; value?: string; 'default-value'?: string; multiple?: boolean; disabled?: boolean; orientation?: 'vertical' | 'horizontal' }>;
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
     }

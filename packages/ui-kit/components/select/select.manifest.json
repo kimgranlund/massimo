@@ -369,8 +369,9 @@
           "useInstead": "component:listbox"
         },
         {
-          "when": "Typing to filter a long list or entering a value not in the list.",
-          "reason": "This is select-only; there is no editable combobox yet."
+          "when": "Typing to filter a long list.",
+          "reason": "This is select-only; a combobox filters as the user types.",
+          "useInstead": "component:combobox"
         },
         {
           "when": "Choosing several values.",

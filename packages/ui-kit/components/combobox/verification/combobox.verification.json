@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "combobox",
+  "scope": "Behavior, ARIA, filtering, parts, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and composed parts. Rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/combobox/combobox.element.ts",
+      "sha256": "98cd0307e0bee296ddf0fb5973054d8a2e30b7a6a92a06040a0cfe7c361e6efd"
+    },
+    {
+      "path": "components/combobox/combobox.react.tsx",
+      "sha256": "5ccd0753ac854878f3c07fae41e02230c49228c48f758f2435ae0b28babd1ae1"
+    },
+    {
+      "path": "components/combobox/combobox.recipe.ts",
+      "sha256": "e354326b25e808d51e47bb7cfdf0e4866defaa0ec2825ca56d36420e85a6266e"
+    },
+    {
+      "path": "components/combobox/combobox.manifest.json",
+      "sha256": "e826b7ccff3358fd9caed839b5fdfc2be8e2c14151d857148e0a558e6ff0c8d8"
+    },
+    {
+      "path": "dom/combobox.ts",
+      "sha256": "ffc2b1a8318dcf5725595f0e196bb58b9b91c7a7c5fa1697ed94fa65068457b7"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"combobox\" test/combobox.test.ts",
+          "covers": "anatomy, combobox / listbox ARIA, no native form elements, filtering (contains, accents folded), arrows over visible enabled options, autoHighlight, Enter / press commit, Escape restores the label, trigger, clear, multiple chips (toggle, remove, Backspace), form value, required, disabled, composition, events with Base UI reasons"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"combobox\" test/geometry.test.ts",
+          "covers": "resolveCombobox: the row, input edges, 6u clear and trigger slots, chips, wrap lines, popup and empty state"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"combobox\" test/combobox.test.ts",
+          "node --test --test-name-pattern=\"combobox\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Combobox\" test/combobox.test.ts",
+          "covers": "React SSR: the same data-* and recipe classes as the web component on host, input, trigger, clear, popup, list and items; the composed parts render the preset"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Combobox\" test/combobox.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Popup placement comes from layout; happy-dom reports zero boxes, so the browser geometry check and the cross-browser check cover it.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio at u = 2, 3, the theme unit 4.5, 4 and 6, B = 0 and 1, light and dark): growth (a long selected label scrolls inside the input and never pushes the clear and trigger slots; more chips than fit wrap the row onto lines 0.5u apart, 8u + 6.5u a line, with clear and trigger held on the first line; slots and chips keep 6u at u = 2), RTL (dir=rtl mirrors the row: leading on the right, chips flow right to left with their remove button at the inline end, clear and trigger on the left; the popup aligns to the row's start), focus (the 2px ring sits outside the row on :focus-within, so it never changes the row's size; clear, trigger and chip-remove are not tab stops), screenshots of the Selection family and an open, filtered, empty and multiple popup checked light and dark."
+  ]
+}

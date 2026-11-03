@@ -30,7 +30,7 @@
     },
     {
       "path": "dom/events.ts",
-      "sha256": "76db980a6af8bce8d8f3ce38a5543d5c12e65a4729657fd13551e7643e663ea9"
+      "sha256": "74389690e30d5a18ebefac440c162f55a15f3a8fb0b85dab88674cdf8c91cac0"
     },
     {
       "path": "core/form-element.ts",
@@ -66,7 +66,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
@@ -99,7 +99,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

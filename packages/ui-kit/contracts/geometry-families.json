@@ -44,18 +44,22 @@
       "id": "geometry:field",
       "resolver": [
         "resolveField",
-        "resolveSelectTrigger"
+        "resolveSelectTrigger",
+        "resolveCombobox"
       ],
-      "summary": "The control family applied to field hosts: the input control ([leading] [prefix] [editor] [suffix] [trailing]) and select trigger ([leading] [prefix] [value] [suffix] [chevron]) have pad = u − B and use the control text-run rule; the chevron is icon size sm.",
+      "summary": "The control family applied to field hosts: the input control ([leading] [prefix] [editor] [suffix] [trailing]) and select trigger ([leading] [prefix] [value] [suffix] [chevron]) have pad = u − B and use the control text-run rule; the chevron is icon size sm. The combobox input row is the select trigger's control row with the editable text as its contents (2u bare, 1u beside the 6u clear and trigger slots, sm icons); chips are 6u, radius min(3u, control radius − u), 0.5u apart, and wrap the row onto lines 0.5u apart; the popup is the select's composite, the empty state at an option label's inset (resolveCombobox).",
       "members": [
         "component:input",
-        "component:select"
+        "component:select",
+        "component:combobox"
       ],
       "searchTerms": [
         "field geometry",
         "input padding",
         "select trigger",
-        "chevron"
+        "chevron",
+        "combobox chips",
+        "combobox trigger"
       ],
       "csv": [
         "control"

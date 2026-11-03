@@ -1,0 +1,991 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "combobox",
+  "primary": "component:combobox",
+  "module": "./combobox.element.ts",
+  "registration": "on-import",
+  "documentation": "./combobox.md",
+  "examples": "./combobox.examples.json",
+  "contract": "../../contracts/components.json#/components/combobox",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./combobox.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs",
+        "popupDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/combobox.ts",
+      "exports": [
+        "comboboxInputAttrs",
+        "comboboxTriggerAttrs",
+        "comboboxButtonAttrs",
+        "comboboxKeyIntent",
+        "matchesQuery",
+        "visibleItems",
+        "splitValues"
+      ],
+      "description": "Editable combobox ARIA, key intents and Base UI's default filter (contains, case- and accent-insensitive)."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/listbox.ts",
+      "exports": [
+        "listboxAttrs",
+        "optionAttrs",
+        "navigate",
+        "firstEnabled",
+        "lastEnabled"
+      ],
+      "description": "Listbox and option ARIA and the navigation over enabled options."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/floating.ts",
+      "exports": [
+        "createPositioner",
+        "createDismissLayer",
+        "showTopLayer",
+        "hideTopLayer",
+        "unitOf"
+      ],
+      "description": "The floating layer foundation: the positioner (CSS anchor positioning, script placement as the fallback, data-side), the dismiss layer (outside press) and the top layer (popover API)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveCombobox"
+      ],
+      "description": "Reference numbers for the input row, chips, the clear and trigger slots, the popup and the empty state."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:combobox",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-combobox",
+      "class": "UICombobox",
+      "extends": "UIFormElement",
+      "intent": [
+        "Choose one or several values from a long list by typing to filter it"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The selected option value; with multiple, the selected values comma-separated. Setting it rewrites the input text (single) or the chips without an event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "The value at first render and on form reset; without it, the value attribute (Base UI defaultValue).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "inputValue",
+          "type": "string",
+          "default": "",
+          "attribute": "input-value",
+          "reflects": false,
+          "description": "The input's text (Base UI inputValue). Single selection shows the selected option's label; typing filters the list.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": false,
+          "description": "Whether the popup is open (Base UI open). Setting it opens or closes without an openchange event.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open the popup at connect (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "multiple",
+          "type": "boolean",
+          "default": false,
+          "attribute": "multiple",
+          "reflects": false,
+          "description": "Select several values: each shows as a chip before the input; a press toggles an option and the popup stays open.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Visible label; names the input.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "",
+          "attribute": "placeholder",
+          "reflects": false,
+          "description": "Text shown while the input is empty (not while multiple has chips).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "description": "Help text under the row, wired with aria-describedby.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "description": "Author error, shown at once; built-in validation (required) waits for interaction.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "description": "The value shows but cannot change: no typing, no popup, no clear or chip remove.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "emptyText",
+          "type": "string",
+          "default": "No results.",
+          "attribute": "empty-text",
+          "reflects": false,
+          "description": "What the popup says while no option matches the text (Base UI Combobox.Empty); empty: the popup hides instead.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "autoHighlight",
+          "type": "boolean",
+          "default": false,
+          "attribute": "auto-highlight",
+          "reflects": false,
+          "description": "Highlight the first match while typing, so Enter takes it (Base UI autoHighlight).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "description": "Ids that name the input when the combobox has no label (ui-field sets it).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "description": "Ids that describe the input, after its own description and error (ui-field sets it).",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "hide-label",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Keeps the label as the control's accessible name but does not draw it (visually hidden, out of flow). For compact layouts that label the control elsewhere, such as an inspector row. data-hide-label is the same input; React: hideLabel.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string | string[], reason, event } (same moment as change)",
+          "trigger": "the value changes from an interaction (same moment as change)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string | string[] (multiple), reason: 'item-press' | 'clear-press' | 'chip-remove-press' | 'input-clear' | 'keyboard', event: Event } (Base UI onValueChange)",
+          "trigger": "an option is committed (press or Enter), the clear button or a chip remove is pressed, the single input is emptied, or Backspace removes the last chip"
+        },
+        {
+          "name": "inputvaluechange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'input-change' | 'input-clear' | 'item-press' | 'clear-press', event: Event } (Base UI onInputValueChange)",
+          "trigger": "the user types, commits an option (the label is written) or clears"
+        },
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'input-change' | 'list-navigation' | 'trigger-press' | 'item-press' | 'outside-press' | 'escape-key' | 'focus-out', event: Event } (Base UI onOpenChange)",
+          "trigger": "the user opens or closes the popup; preventDefault keeps it as it is. Setting open does not fire it"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the input."
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=control] > [data-part=input] (role=combobox, aria-autocomplete=list)",
+        "formAssociated": true,
+        "formValue": "the selected value; with multiple and a name, one entry per value",
+        "keyboard": [
+          {
+            "keys": "printable characters",
+            "action": "edit the text: filter the list and open the popup"
+          },
+          {
+            "keys": "ArrowDown, ArrowUp",
+            "action": "open (closed; Alt+ArrowDown without a highlight); move the highlight over visible enabled options (open)"
+          },
+          {
+            "keys": "PageDown, PageUp",
+            "action": "highlight the last / first visible option (open)"
+          },
+          {
+            "keys": "Enter",
+            "action": "commit the highlighted option (open)"
+          },
+          {
+            "keys": "Escape, Alt+ArrowUp",
+            "action": "close without committing"
+          },
+          {
+            "keys": "Tab",
+            "action": "close and move focus"
+          },
+          {
+            "keys": "Backspace in an empty input",
+            "action": "remove the last chip (multiple)"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move the caret (the text keeps them)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label",
+            "labelledby (a wrapping ui-field)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "ui-option elements (they move into the popup's list) and optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" (they move into the input row); or the parts themselves as [data-part] children (composition)."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Editable combobox (APG, list autocomplete): focus stays in the input; aria-activedescendant points at the highlighted option. Contains no native form elements (the input is a contenteditable); form participation goes through ElementInternals (UIFormElement).",
+        "Filtering is Base UI's default: an option shows when its label contains the text, case- and accent-insensitive; filtered-out options are hidden and skipped by the arrow keys. The trigger opens the full list.",
+        "Single selection writes the chosen label into the input; closing without a choice restores it. Emptying the input clears the value (reason input-clear).",
+        "multiple: the value attribute is comma-separated (React: string[]); each value is a chip (label and a remove button) before the input; the row wraps when the chips need more lines.",
+        "Styling state (contracts/states.json, Base UI Combobox names): the host carries the field state; the input data-popup-open, data-list-empty, data-disabled, data-readonly; the trigger data-popup-open, data-pressed, data-disabled; the popup data-open / data-closed, data-side, data-align, data-empty; the list data-empty; options data-selected, data-highlighted, data-disabled.",
+        "The popup is the select's floating layer: CSS anchor positioning below the input row (anchor-scope per combobox, flip-block, min-width = row width, 1u gap), the script positioner elsewhere; outside presses dismiss it (dom/floating.ts).",
+        "Composition: the parts may be authored as [data-part] children (label, control › leading · prefix · input · suffix · clear · trigger, popup › list · empty, description, error); each is adopted onto the generated part, absent ones are generated."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Fewer than about ten options, when typing does not help.",
+          "reason": "A select or a radio group shows them without a text field.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Free text with optional suggestions.",
+          "reason": "The value must be one of the options; an autocomplete keeps whatever is typed."
+        },
+        {
+          "when": "A list that should always be visible.",
+          "reason": "Listbox keeps the options on the page.",
+          "useInstead": "component:listbox"
+        }
+      ],
+      "searchTerms": [
+        "combobox",
+        "filter select",
+        "searchable select",
+        "typeahead select",
+        "multi select",
+        "chips input",
+        "tag picker"
+      ]
+    },
+    {
+      "id": "part:combobox-control",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control]",
+      "summary": "The input row laid out as the select trigger: [leading] [prefix] [chips] [input] [suffix] [clear] [trigger]; the popup's anchor. A press on its padding focuses the input."
+    },
+    {
+      "id": "part:combobox-chips",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=chips]",
+      "summary": "Combobox.Chips: holds one chip per selected value (multiple); no box of its own (display: contents). Each chip ([data-part=chip], data-value) has its label (contents) and a chip-remove press button."
+    },
+    {
+      "id": "part:combobox-chip",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=chips] > [data-part=chip]",
+      "summary": "Combobox.Chip: one selected value (data-value): its label (contents) and a chip-remove button; 6u tall, bg.control, radius min(3u, control radius − u)."
+    },
+    {
+      "id": "part:combobox-chip-remove",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=chips] > [data-part=chip] > [data-part=chip-remove]",
+      "summary": "Combobox.ChipRemove: a 6u press button (x, icon sm) that removes its chip's value (reason chip-remove-press); absent while disabled or read-only."
+    },
+    {
+      "id": "part:combobox-input",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control] > [data-part=input]",
+      "summary": "Combobox.Input: the contenteditable text (role=combobox, tabindex 0), the row's contents; keeps focus while the popup is open."
+    },
+    {
+      "id": "part:combobox-clear",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=clear]",
+      "summary": "Combobox.Clear: a 6u press button (x, icon sm) that removes the value and text; hidden while both are empty; not a tab stop."
+    },
+    {
+      "id": "part:combobox-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=trigger]",
+      "summary": "Combobox.Trigger: a 6u press button (caret-down, icon sm, turned while open) that toggles the popup with every option; not a tab stop."
+    },
+    {
+      "id": "part:combobox-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup]",
+      "summary": "Combobox.Popup (and Positioner): the [popover] listbox, a composite floating layer 1u below the row."
+    },
+    {
+      "id": "part:combobox-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list]",
+      "summary": "Combobox.List: the ui-option children's parent (display: contents)."
+    },
+    {
+      "id": "part:combobox-empty",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=empty]",
+      "summary": "Combobox.Empty: the empty-text message (role=status) while no option matches; one option row tall, at an option label's inset."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:combobox",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-control"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-chips"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-chip"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-chip-remove"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-input"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-clear"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-trigger"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-popup"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-list"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-empty"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./combobox.element.ts",
+      "exports": {
+        "component:combobox": "UICombobox"
+      },
+      "verification": "./verification/combobox.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./combobox.react.tsx",
+      "exports": {
+        "component:combobox": "Combobox"
+      },
+      "verification": "./verification/combobox.verification.json#/renderers/react",
+      "props": {
+        "component:combobox": {
+          "inherits": [
+            "Omit<ComboboxRootProps, 'freeText' | 'mode' | 'kind'>"
+          ],
+          "props": [
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "label?: string",
+            "description?: string",
+            "placeholder?: string",
+            "emptyText?: string = 'No results.' // What the popup says when nothing matches; '' for nothing. Default \"No results.\".",
+            "children?: ReactNode // Combobox.Item children."
+          ]
+        }
+      },
+      "parts": {
+        "component:combobox": {
+          "Combobox.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange' | 'className' | 'children' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value?: string | string[] // The selected value (Base UI value); string[] with multiple.",
+              "defaultValue?: string | string[]",
+              "onValueChange?: (value: any, details: ChangeDetails) => void // A value was chosen, removed or cleared (Base UI onValueChange): reason item-press, chip-remove-press, clear-press, input-clear or keyboard.",
+              "inputValue?: string // The input's text (Base UI inputValue); single selection shows the selected label.",
+              "defaultInputValue?: string",
+              "onInputValueChange?: (value: string, details: ChangeDetails) => void // The text changed (Base UI onInputValueChange): reason input-change, input-clear, item-press or clear-press.",
+              "open?: boolean",
+              "defaultOpen?: boolean",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // The popup opened or closed (Base UI onOpenChange).",
+              "multiple?: boolean = false",
+              "disabled?: boolean = false",
+              "readOnly?: boolean = false",
+              "required?: boolean = false",
+              "name?: string // Form field name: one hidden input per selected value.",
+              "autoHighlight?: boolean // Highlight the first match while typing (Base UI autoHighlight).",
+              "error?: string // Author error, shown at once.",
+              "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+              "size?: number",
+              "gap?: number",
+              "children?: ReactNode // The parts (Combobox.Label, Control, Positioner › Popup › List › Item, Empty, Description, Error).",
+              "freeText?: boolean = false // Autocomplete: the value is the input's text; the items are suggestions.",
+              "mode?: AutocompleteMode = freeText ? 'list' : 'list' // Autocomplete mode (filtering, inline completion); the combobox filters (list).",
+              "kind?: 'combobox' | 'autocomplete' = 'combobox' // Data-ui and the internal kind (combobox | autocomplete)."
+            ]
+          },
+          "Combobox.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Control": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // Combobox.Chips, Combobox.Input, Combobox.Clear and Combobox.Trigger; all four when omitted."
+            ]
+          },
+          "Combobox.Input": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLInputElement>, 'className' | 'children' | 'defaultValue'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "placeholder?: string"
+            ]
+          },
+          "Combobox.Chips": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Chip": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "value: string // The selected value this chip shows."
+            ]
+          },
+          "Combobox.ChipRemove": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "value: string // The selected value this chip shows."
+            ]
+          },
+          "Combobox.Clear": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // The icon; the kit's when omitted."
+            ]
+          },
+          "Combobox.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // The icon; the kit's when omitted."
+            ]
+          },
+          "Combobox.Positioner": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.List": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'prefix' | 'className'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: string",
+              "disabled?: boolean",
+              "iconSize?: IconSize",
+              "children?: ReactNode // The label (contents), or Combobox.ItemText / Combobox.ItemIndicator parts."
+            ]
+          },
+          "Combobox.ItemText": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.ItemIndicator": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Empty": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Combobox.Error": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

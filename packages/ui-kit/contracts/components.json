@@ -642,6 +642,39 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "combobox": {
+      "geometryFamily": "field",
+      "element": "Editable combobox: focus stays in the input (a contenteditable role=combobox in the control row); typing filters the authored ui-option children in a [popover] listbox; aria-activedescendant points at the highlighted option. multiple shows the selected values as chips before the input.",
+      "parts": [
+        "field-label?",
+        "combobox-control",
+        "slot-leading?",
+        "slot-prefix?",
+        "combobox-chips",
+        "combobox-chip",
+        "combobox-chip-remove",
+        "combobox-input",
+        "slot-suffix?",
+        "combobox-clear",
+        "combobox-trigger",
+        "combobox-popup",
+        "combobox-list",
+        "combobox-empty",
+        "field-description?",
+        "field-error?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "fieldset"
+      ],
+      "behavior": "Typing filters (contains, case- and accent-insensitive) and opens the popup; ArrowDown / ArrowUp open or move the highlight over visible enabled options; Enter or a press commits (single: closes, the input shows the label; multiple: toggles a chip and stays open); Escape closes; Tab and blur close without committing; Backspace in an empty multiple input removes the last chip. The clear button removes the value and text; the trigger toggles the popup. Events carry Base UI details: change / input { value, reason, event }, inputvaluechange { value, reason, event }, openchange { open, reason, event } (cancelable)."
     }
   }
 }

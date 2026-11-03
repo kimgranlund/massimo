@@ -79,7 +79,7 @@
     "data-popup-open": {
       "baseUi": true,
       "condition": "_popupOpen",
-      "meaning": "The select trigger's popup is open."
+      "meaning": "The select trigger's popup is open; the combobox input and trigger while its popup is open."
     },
     "data-placeholder": {
       "baseUi": true,
@@ -175,6 +175,16 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-empty": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The combobox popup and list while no option matches the text (Base UI Combobox.Popup / List)."
+    },
+    "data-list-empty": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The combobox input while no option matches its text (Base UI Combobox.Input)."
     }
   },
   "components": {
@@ -497,6 +507,51 @@
         "data-orientation",
         "data-activation-direction"
       ]
+    },
+    "ui-combobox": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "input": [
+        "data-popup-open",
+        "data-list-empty",
+        "data-disabled",
+        "data-readonly"
+      ],
+      "trigger": [
+        "data-popup-open",
+        "data-pressed",
+        "data-disabled"
+      ],
+      "clear": [
+        "data-disabled"
+      ],
+      "chip": [
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-empty"
+      ],
+      "list": [
+        "data-empty"
+      ],
+      "item": [
+        "data-selected",
+        "data-highlighted",
+        "data-disabled"
+      ]
     }
   },
   "native": {
@@ -522,7 +577,8 @@
         "ui-range",
         "ui-palette",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-combobox"
       ]
     },
     "keyboard-focus": {
@@ -544,7 +600,8 @@
         "ui-swiper",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-combobox"
       ]
     },
     "highlighted": {
@@ -571,11 +628,12 @@
     },
     "open": {
       "hook": "trigger [data-popup-open]; popup [data-open]",
-      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent)",
+      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); combobox: trigger [data-popup-open], caret turned 180°",
       "components": [
         "ui-select",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-combobox"
       ]
     },
     "disabled": {
@@ -597,7 +655,8 @@
         "ui-field",
         "ui-collapsible",
         "ui-accordion",
-        "ui-tabs"
+        "ui-tabs",
+        "ui-combobox"
       ]
     },
     "busy": {
@@ -611,7 +670,8 @@
       "hook": "[data-readonly]",
       "look": "subtle fill, default cursor",
       "components": [
-        "ui-input"
+        "ui-input",
+        "ui-combobox"
       ]
     },
     "required": {
@@ -622,7 +682,8 @@
         "ui-select",
         "ui-checkbox",
         "ui-switch",
-        "ui-field"
+        "ui-field",
+        "ui-combobox"
       ]
     },
     "invalid": {

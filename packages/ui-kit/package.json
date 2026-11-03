@@ -59,7 +59,9 @@
     "./components/accordion/element": "./components/accordion/accordion.element.ts",
     "./components/accordion/react": "./components/accordion/accordion.react.tsx",
     "./components/tabs/element": "./components/tabs/tabs.element.ts",
-    "./components/tabs/react": "./components/tabs/tabs.react.tsx"
+    "./components/tabs/react": "./components/tabs/tabs.react.tsx",
+    "./components/combobox/element": "./components/combobox/combobox.element.ts",
+    "./components/combobox/react": "./components/combobox/combobox.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

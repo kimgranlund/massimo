@@ -4,6 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
+import { resolveCombobox } from '../tokens/geometry/resolve.ts';
 import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
@@ -42,6 +43,13 @@ export const rows: Row[] = [
   { id: 'select.paddingStart', family: 'control', element: 'select trigger', quantity: 'start padding', formula: '(u - B) + u', value: (u) => resolveSelectTrigger({ unit: u }).paddingStart, status: 'implemented', notes: '' },
   { id: 'select.paddingEnd', family: 'control', element: 'select trigger', quantity: 'end padding', formula: 'u - B', value: (u) => resolveSelectTrigger({ unit: u }).paddingEnd, status: 'implemented', notes: 'chevron occupies a trailing 6u slot' },
   { id: 'select.chevron.icon', family: 'control', element: 'select trigger', quantity: 'chevron icon', formula: 'icon sm: min(font - 0.5u, 6u)', value: (u) => resolveSelectTrigger({ unit: u }).chevronIcon, status: 'implemented', notes: 'all caret-* icons in slots use sm' },
+  { id: 'combobox.input.start', family: 'control', element: 'combobox input row', quantity: 'input text start', formula: '2u bare | 1u after a slot | 0.5u after text or the last chip gap', value: (u) => resolveCombobox({ unit: u }).inputStart, status: 'implemented', notes: 'the row is the select trigger (8u, pad u - B); the input is its contents' },
+  { id: 'combobox.input.end', family: 'control', element: 'combobox input row', quantity: 'input text end beside the clear / trigger slot', formula: 'u', value: (u) => resolveCombobox({ unit: u }).inputEnd, status: 'implemented', notes: '2u at a bare edge (autocomplete without trigger or clear)' },
+  { id: 'combobox.trigger.slot', family: 'control', element: 'combobox clear, trigger', quantity: 'button slot', formula: '6u, icon sm', value: (u) => resolveCombobox({ unit: u }).triggerSlot, status: 'implemented', notes: 'caret-down turns 180° while open; clear is an x' },
+  { id: 'combobox.chip.height', family: 'control', element: 'combobox chip', quantity: 'chip height', formula: '6u (the slot)', value: (u) => resolveCombobox({ unit: u }).chipHeight, status: 'implemented', notes: 'bg.control; label 1u in, a 6u remove square at the end; 0.5u apart' },
+  { id: 'combobox.chip.radius', family: 'control', element: 'combobox chip', quantity: 'chip radius', formula: 'min(3u, control radius - u)', value: (u) => resolveCombobox({ unit: u }).chipRadius, status: 'implemented', notes: 'concentric with the row (inset u)' },
+  { id: 'combobox.row.line', family: 'control', element: 'combobox input row (multiple)', quantity: 'height per extra chip line', formula: '6u + 0.5u', value: (u) => resolveCombobox({ unit: u }).rowHeight(2) - resolveCombobox({ unit: u }).rowHeight(1), status: 'implemented', notes: 'the row wraps; one line is 8u' },
+  { id: 'combobox.empty.inline', family: 'control', element: 'combobox empty', quantity: 'empty text inset', formula: 'Ic + 2u', value: (u) => resolveCombobox({ unit: u }).emptyInline, status: 'implemented', notes: "where an option's label starts; one option row (7u) tall" },
   { id: 'select.popupOffset', family: 'control', element: 'select popup', quantity: 'offset from trigger', formula: 'u', value: (u) => popupOffset({ unit: u }), status: 'implemented', notes: '' },
 
   // Composite

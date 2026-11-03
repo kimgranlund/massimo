@@ -255,3 +255,15 @@ test('disclosure: segmented tabs are 7u composite options in an 8u list; underli
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
 });
+
+import { resolveCombobox } from '../tokens/geometry/resolve.ts';
+test('combobox: the select trigger row with 6u clear and trigger slots, 6u chips that wrap, the composite popup', () => {
+  const g = resolveCombobox({ unit: 4, border: 1 });
+  assert.deepEqual([g.height, g.padding, g.inputStart, g.inputEnd, g.inputBareEnd, g.triggerSlot, g.triggerIcon, g.clearSlot], [32, 3, 8, 4, 8, 24, 12, 24]);
+  assert.deepEqual([g.chipHeight, g.chipRadius, g.chipLabelStart, g.chipRemove, g.chipGap, g.rowGap, g.afterChip], [24, 8, 4, 24, 2, 2, 2]);
+  assert.equal(g.rowHeight(1), 32);
+  assert.equal(g.rowHeight(2), 58, '8u + a 6u chip line + 0.5u');
+  assert.deepEqual([g.popupOffset, g.popupEdge, g.optionHeight, g.emptyInline, g.emptyHeight], [4, 2, 28, 10, 28]);
+  assert.equal(resolveCombobox({ unit: 4, border: 0 }).height, 32, 'the row is 8u at any B');
+  assert.equal(resolveCombobox({ unit: 2, radiusScale: 0 }).chipRadius, 0);
+});

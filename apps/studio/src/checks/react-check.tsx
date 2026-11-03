@@ -25,6 +25,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -48,6 +49,7 @@ import { Toggle } from '@massimo/ui-kit/components/toggle/react';
 import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
 import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
 import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
+import { Combobox } from '@massimo/ui-kit/components/combobox/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
@@ -68,6 +70,8 @@ function Pair({ u }: { u: number }) {
         <ui-button data-k="btD" disabled>Off</ui-button>
         <ui-button data-k="btP" variant="primary"><i slot="leading" name="plus" />Add</ui-button>
         <div style={{ width: 300 }} data-k="in"><ui-input label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
+        <div style={{ width: 300 }} data-k="cmb"><ui-combobox label="Fruit" value="b" description="Pick one"><i slot="leading" name="leaf" /><ui-option value="a">Apple</ui-option><ui-option value="b">Banana</ui-option></ui-combobox></div>
+        <div style={{ width: 220 }} data-k="cmbM"><ui-combobox multiple value="a,b,c" placeholder="Add"><ui-option value="a">Apple</ui-option><ui-option value="b">Banana</ui-option><ui-option value="c">Cherry</ui-option></ui-combobox></div>
         <ui-checkbox data-k="cb">Accept</ui-checkbox>
         <ui-checkbox data-k="cbOn" checked>Accept</ui-checkbox>
         <ui-checkbox data-k="cbMixed" indeterminate>Some</ui-checkbox>
@@ -124,6 +128,8 @@ function Pair({ u }: { u: number }) {
         <Button data-k="btD" disabled>Off</Button>
         <Button data-k="btP" variant="primary" leading={<i name="plus" />}>Add</Button>
         <div style={{ width: 300 }} data-k="in"><Input label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
+        <div style={{ width: 300 }} data-k="cmb"><Combobox label="Fruit" defaultValue="b" description="Pick one" leading={<i name="leaf" />}><Combobox.Item value="a">Apple</Combobox.Item><Combobox.Item value="b">Banana</Combobox.Item></Combobox></div>
+        <div style={{ width: 220 }} data-k="cmbM"><Combobox multiple defaultValue={['a', 'b', 'c']} placeholder="Add"><Combobox.Item value="a">Apple</Combobox.Item><Combobox.Item value="b">Banana</Combobox.Item><Combobox.Item value="c">Cherry</Combobox.Item></Combobox></div>
         <Checkbox data-k="cb">Accept</Checkbox>
         <Checkbox data-k="cbOn" defaultChecked>Accept</Checkbox>
         <Checkbox data-k="cbMixed" indeterminate>Some</Checkbox>
@@ -366,6 +372,29 @@ setTimeout(() => {
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
         if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
+      }
+    }
+  }
+  // Combobox: the same parts, geometry and data-* (the React input is a native <input>).
+  for (const c of root.querySelectorAll('[data-case]')) {
+    for (const k of ['cmb', 'cmbM']) {
+      const wc = c.querySelector(`[data-side=wc] [data-k=${k}] ui-combobox`) as HTMLElement, re = c.querySelector(`[data-side=react] [data-k=${k}] [data-ui=combobox]`) as HTMLElement;
+      const CTL = ':scope > [data-part=control]';
+      const sels = [':scope', ':scope > [data-part=label]', CTL, `${CTL} > [data-part=leading]`, `${CTL} > [data-part=input]`, `${CTL} > [data-part=clear]`, `${CTL} > [data-part=trigger]`, ':scope > [data-part=description]', ...[1, 2, 3].map((n) => `${CTL} > [data-part=chips] > [data-part=chip]:nth-child(${n})`), `${CTL} > [data-part=chips] > [data-part=chip] > [data-part=chip-remove]`];
+      // The closed popups have no box: their state only.
+      for (const sel of [':scope > [data-part=popup]', ':scope > [data-part=popup] > [data-part=list]', ':scope > [data-part=popup] [role=option]']) {
+        const sa = [...wc.querySelectorAll(sel)].map(stateOf).join('|'), sb = [...re.querySelectorAll(sel)].map(stateOf).join('|');
+        checks++;
+        if (sa !== sb) fails.push(`u${c.getAttribute('data-case')} ${k}${sel.replace(':scope', '')} data-*: wc ${sa} react ${sb}`);
+      }
+      for (const sel of sels) {
+        const pick = (h: Element) => { const e = sel === ':scope' ? h : h.querySelector(sel); return e && !(e as HTMLElement).hidden ? e : null; };
+        const ea = pick(wc), eb = pick(re);
+        const fa = (e: Element | null, h: Element) => { if (!e) return 'missing'; const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.paddingRight}:${cs.color}:${cs.fontSize}:${stateOf(e)}`; };
+        checks++;
+        const va = fa(ea, wc), vb = fa(eb, re);
+        // The editable text's width follows its content box: compare the input's box, not its text.
+        if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}${sel.replace(':scope', '')}: wc ${va} react ${vb}`);
       }
     }
   }

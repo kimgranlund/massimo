@@ -14,11 +14,15 @@
  * - escape-key: Escape closed the popup
  * - focus-out: focus left the select (Tab commits the highlighted option and closes)
  * - track-press, drag: a press on the range track, then dragging its thumb
+ * - input-change, input-clear: typing changed the combobox or autocomplete text (input-clear: emptied it)
+ * - clear-press, chip-remove-press: the combobox clear button or a chip's remove button was pressed
  * - none: no specific interaction (Base UI's reason for checkbox, switch, radio, toggle and input)
  */
 export type ChangeReason =
   | 'item-press' | 'keyboard' | 'list-navigation' | 'trigger-press' | 'outside-press' | 'escape-key'
-  | 'focus-out' | 'track-press' | 'drag' | 'none';
+  | 'focus-out' | 'track-press' | 'drag' | 'none'
+  // Combobox, Autocomplete (Base UI): typing, the clear button, a chip's remove button.
+  | 'input-change' | 'input-clear' | 'clear-press' | 'chip-remove-press';
 
 /** Base UI eventDetails: the reason and the DOM event that caused the change, when there is one. */
 export interface ChangeDetails {

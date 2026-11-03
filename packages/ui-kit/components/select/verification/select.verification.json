@@ -22,7 +22,7 @@
     },
     {
       "path": "components/select/select.manifest.json",
-      "sha256": "375894ab9fe683684a891d97010506ca5c81ab56e3e1b42a22d7ef062a1b1e62"
+      "sha256": "97bea6525edb98fd67f50facceeadc2e0059ab7cac8e96b4b84c5afffbab03c2"
     },
     {
       "path": "components/select/select.react.tsx",
@@ -42,7 +42,7 @@
     },
     {
       "path": "dom/events.ts",
-      "sha256": "76db980a6af8bce8d8f3ce38a5543d5c12e65a4729657fd13551e7643e663ea9"
+      "sha256": "74389690e30d5a18ebefac440c162f55a15f3a8fb0b85dab88674cdf8c91cac0"
     },
     {
       "path": "core/form-element.ts",
@@ -90,7 +90,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
@@ -125,7 +125,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
