@@ -16,6 +16,8 @@ npm run build         # the ui-kit, then the studio for production
 npm run preview       # serve that production build
 ```
 
+Each push to `main` publishes the studio to [kimgranlund.github.io/massimo](https://kimgranlund.github.io/massimo/), with `geometry-check.html` and `react-check.html` beside it (`.github/workflows/pages.yml`; `STUDIO_BASE=/massimo/` sets the Vite base).
+
 Use the kit from an app:
 
 ```js
