@@ -175,17 +175,16 @@
       "concept": "emphasis",
       "severity": "warning",
       "checks": "Text on the primary and critical solids (step 9: filled buttons, danger actions) reaches APCA Lc 60, the level for UI text, in light and dark.",
-      "fix": "Set a manual peak tone where step 9 carries text at Lc 60 (62 with the default hues), or pick a darker or lighter family for the role.",
+      "fix": "Set a manual peak tone where step 9 carries text at Lc 60 (the default, 62, does with the default hues), or pick a darker or lighter family for the role.",
       "fixtures": {
-        "fail": {},
-        "pass": {
+        "fail": {
           "color": {
             "spectrum": {
-              "ptAuto": 0,
-              "pt": 62
+              "ptAuto": 1
             }
           }
-        }
+        },
+        "pass": {}
       }
     }
   }

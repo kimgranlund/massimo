@@ -9,7 +9,7 @@ The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generat
 - Each family has steps 1–12 per scheme. Step semantics follow Radix: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.
 - Step 1 is the scheme endpoint: the **Light endpoint** tone (default HCT tone 97.5) in light, the **Dark endpoint** tone (default 5) in dark. 100 / 0 give pure white / black. There is no step 0.
 - Tokens: `colors.spectrum.{family}.{1..12}`; CSS `--colors-spectrum-indigo-9`. Each token carries both scheme values.
-- Kit defaults differ from the engine's original defaults in two settings: Dark endpoint 5 (was 2.5) and neutral tint 75 (was 50).
+- Kit defaults differ from the engine's original defaults in three settings: Dark endpoint 5 (was 2.5), neutral tint 75 (was 50), and a manual peak tone of 62 (was auto, which lands at 65.5): at 62 text on every solid (step 9) reaches APCA Lc 60 and step 11 text still passes on the page, so the defaults lint clean ([theming](theming.md#lint)).
 - Default hue set is "Unique" (12 accents + a tinted `neutral`): cyan, indigo, plum, crimson, tomato, orange, amber, yellow, lime, grass, jade, teal.
 
 ## Roles
