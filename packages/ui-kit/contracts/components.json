@@ -664,6 +664,29 @@
         "group"
       ],
       "behavior": "A trigger press opens it; Escape, a press outside the popup (the backdrop) or a close part closes it, each through a cancelable openchange ({ open, reason: 'trigger-press' | 'escape-key' | 'outside-press' | 'close-press' | 'focus-out', event }); setting open fires nothing. While open the backdrop and popup are in the top layer; modal (default) locks page scroll, makes the rest of the page inert and traps focus; focus moves to the first tabbable (or [autofocus]) and returns to the trigger on close. A dialog inside another's popup is nested."
+    },
+    "alert-dialog": {
+      "geometryFamily": "dialog",
+      "element": "The ui-dialog anatomy (host display: contents; optional trigger, a backdrop and a popup with a title, a description, content, an actions row and close parts) with the popup's role alertdialog.",
+      "parts": [
+        "dialog-trigger?",
+        "dialog-backdrop",
+        "dialog-popup",
+        "dialog-title?",
+        "dialog-description?",
+        "dialog-actions?",
+        "dialog-close?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "dialog"
+      ],
+      "behavior": "Always modal (page scroll locked, the rest of the page inert, focus trapped and returned). A trigger press opens it; Escape or a close part closes it through a cancelable openchange ({ open, reason: 'trigger-press' | 'escape-key' | 'close-press', event }); an outside press never closes it. Focus starts on an [autofocus] element, else the first close part (the least destructive action), else the first tabbable."
     }
   }
 }

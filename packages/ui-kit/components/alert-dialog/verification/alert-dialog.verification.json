@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "alert-dialog",
+  "scope": "The alert dialog's differences from the dialog (role=alertdialog, always modal, no outside-press dismissal, focus on the least destructive action) in happy-dom for the web component and the React renderer (server markup, client behavior); the shared dialog behavior is covered by the dialog's record. Rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/alert-dialog/alert-dialog.element.ts",
+      "sha256": "fa833db330b0182fa1b7dd78033cf13514ff096f8469673d5ebb96bc8895a620"
+    },
+    {
+      "path": "components/alert-dialog/alert-dialog.react.tsx",
+      "sha256": "884e832251dc27d0c926e77d2a76d6eae1fda42d3045d30a4e25df75789ac2d8"
+    },
+    {
+      "path": "components/alert-dialog/alert-dialog.recipe.ts",
+      "sha256": "01d31c5c8b9fa9840226b876963a946bd1c1a40631a54144a54ade2b8561a8c4"
+    },
+    {
+      "path": "components/alert-dialog/alert-dialog.manifest.json",
+      "sha256": "3cc5aba7c9d01d7a2bfdadb917d482af3b7400daac26d5e04d33925c5c9950cf"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"^alert dialog\" test/dialog.test.ts",
+          "covers": "role=alertdialog and aria-modal, recipe classes, modal whatever the modal attribute, focus on the close part, outside press ignored, Escape and close-press reasons, focus returned, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"dialog\" test/geometry.test.ts",
+          "covers": "resolveDialog (shared with the dialog)"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"^alert dialog\" test/dialog.test.ts",
+          "node --test --test-name-pattern=\"dialog\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"AlertDialog \\(React\\)\" test/dialog.test.ts",
+          "covers": "React SSR: the same data-* as the web component, role alertdialog, composed parts = preset; client: focus on Close, outside press ignored, Escape reason"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"AlertDialog \\(React\\)\" test/dialog.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The top layer, transitions and real focus movement need a real browser; the dialog's record lists what the unit tests cover.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html opens each pair of alert dialogs in turn and compares the popups part by part (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio on the Components page Overlays family at u = 3, the theme unit 4.5 and 6, light and dark): growth (a long description wraps and the popup grows, then scrolls past the viewport less 8u; actions wrap at the end edge), RTL (dir=rtl: the actions sit at the inline end, text at the start), focus (focus opens on Cancel; rings are outlines and change no dimension), screenshots of the alert dialog open checked light and dark."
+  ]
+}

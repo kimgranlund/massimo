@@ -314,3 +314,67 @@ test('Dialog (React): trigger press opens, Escape and the close part close with 
   await act(async () => root.unmount());
   box.remove(); outside.remove();
 });
+
+// ── Alert dialog ──
+
+await import('../components/alert-dialog/alert-dialog.element.ts');
+const { AlertDialog } = await loadTsx(new URL('../components/alert-dialog/alert-dialog.react.tsx', import.meta.url));
+const ALERT = '<ui-alert-dialog label="Delete project?" description="This cannot be undone."><ui-button data-part="trigger">Delete…</ui-button><div data-part="actions"><ui-button variant="primary">Delete</ui-button><ui-button data-part="close">Cancel</ui-button></div></ui-alert-dialog>';
+
+test('alert dialog: role=alertdialog, always modal, focus on the least destructive action, no outside-press dismissal', async () => {
+  const outside = document.createElement('p');
+  document.body.append(outside);
+  const el = await wc(ALERT, 'ui-alert-dialog') as any;
+  const p = el.popup as HTMLElement;
+  assert.equal(p.getAttribute('role'), 'alertdialog');
+  assert.equal(p.getAttribute('aria-modal'), 'true');
+  assert.ok(p.classList.contains('ui-alert-dialog__popup') && !p.classList.contains('ui-dialog__popup'));
+  assert.ok(el.classList.contains('ui-alert-dialog__root'));
+  assert.equal(el.querySelector(NATIVE), null, 'no native form elements');
+  el.setAttribute('modal', 'false');
+  el.setAttribute('disable-pointer-dismissal', '');
+  const got: string[] = [];
+  el.addEventListener('openchange', (e: CustomEvent) => got.push(e.detail.reason));
+  el.trigger.focus();
+  el.trigger.click(); await tick();
+  assert.equal(el.open, true);
+  assert.ok(outside.hasAttribute('inert'), 'modal whatever the modal attribute');
+  assert.equal(document.activeElement?.textContent, 'Cancel', 'focus starts on the close part, not the first button');
+  press(el.backdrop); await tick();
+  assert.equal(el.open, true, 'an outside press does not close it');
+  key(document.activeElement!, 'Escape'); await tick();
+  assert.equal(el.open, false);
+  assert.equal(document.activeElement, el.trigger, 'focus returned');
+  el.open = true; await tick();
+  (p.querySelector('[data-part=close]') as HTMLElement).click(); await tick();
+  assert.deepEqual(got, ['trigger-press', 'escape-key', 'close-press']);
+  el.parentElement.remove(); outside.remove();
+});
+
+test('AlertDialog (React): the same data-* as ui-alert-dialog; role alertdialog; composed parts render the preset; client: no outside press, focus on Close', async () => {
+  const P: Part[] = [['host', ':scope'], ['trigger', '[data-part=trigger]'], ['backdrop', '[data-part=backdrop]'], ['popup', '[data-part=popup]']];
+  const bare = '<ui-alert-dialog label="Delete project?" description="This cannot be undone."><ui-button data-part="trigger">Delete…</ui-button></ui-alert-dialog>';
+  await sameDialog('ui-alert-dialog', bare, h(AlertDialog, { label: 'Delete project?', description: 'This cannot be undone.', trigger: 'Delete…' }), P);
+  await sameDialog('ui-alert-dialog', bare.replace('<ui-alert-dialog', '<ui-alert-dialog open'), h(AlertDialog, { label: 'Delete project?', description: 'x', trigger: 'Delete…', defaultOpen: true }), P);
+  const a = html(h(AlertDialog, { label: 'Delete?', trigger: 'Delete' }, h(AlertDialog.Actions, null, h(AlertDialog.Close, null, 'Cancel'))));
+  assert.match(a, /^<div data-ui="alert-dialog" data-closed="" class="ui-alert-dialog__root">/);
+  assert.match(a, /<div data-part="popup" id="ID\w*" role="alertdialog" aria-modal="true" tabindex="-1" popover="manual" data-closed="" class="ui-alert-dialog__popup">/);
+  const b = html(h(AlertDialog.Root, null, h(AlertDialog.Trigger, null, 'Delete'), h(AlertDialog.Portal, null, h(AlertDialog.Backdrop), h(AlertDialog.Popup, null, h(AlertDialog.Title, null, 'Delete?'), h(AlertDialog.Actions, null, h(AlertDialog.Close, null, 'Cancel'))))));
+  assert.equal(b, a, 'composed = preset');
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const calls: string[] = [];
+  await act(async () => root.render(h(AlertDialog, { label: 'Delete?', trigger: 'Delete', onOpenChange: (_o: boolean, d: any) => calls.push(d.reason) },
+    h(AlertDialog.Actions, null, h('button', { type: 'button' }, 'Delete'), h(AlertDialog.Close, null, 'Cancel')))));
+  await act(async () => { (box.querySelector('[data-part=trigger]') as HTMLButtonElement).click(); });
+  assert.equal(document.activeElement?.textContent, 'Cancel');
+  await act(async () => { press(box.querySelector('[data-part=backdrop]')!); });
+  assert.ok(box.querySelector('[data-part=popup]')!.hasAttribute('data-open'), 'an outside press does not close it');
+  await act(async () => { key(document.activeElement!, 'Escape'); });
+  assert.deepEqual(calls, ['trigger-press', 'escape-key']);
+  await act(async () => root.unmount());
+  box.remove();
+});

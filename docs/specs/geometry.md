@@ -80,7 +80,7 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
 | tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
-## Dialogs: dialog
+## Dialogs: dialog, alert dialog
 
 | | Formula | at u=4 |
 |---|---|---|

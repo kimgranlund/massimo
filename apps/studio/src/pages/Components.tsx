@@ -22,6 +22,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/dialog/element';
+import '@massimo/ui-kit/components/alert-dialog/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -39,7 +40,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['overlays', 'Overlays', 'ui-dialog'],
+  ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -214,7 +215,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
-    overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent.',
+    overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent. An alert dialog is the same popup with role=alertdialog: always modal, no outside-press dismissal, focus on the least destructive action (Cancel).',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -492,6 +493,16 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             <p className={panelText}>⌘K search · ⌘S save · ⌘/ this list</p>
             <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
           </ui-dialog>
+        </Row>
+        <Row label="Alert dialog">
+          <ui-alert-dialog label="Delete project?" description="Its files, history and shared links are removed. This cannot be undone.">
+            <ui-button data-part="trigger"><i slot="leading" name="trash" />Delete project…</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button data-part="close" variant="primary">Delete</ui-button></div>
+          </ui-alert-dialog>
+          <ui-alert-dialog label="Discard changes?" description="Your edits since the last save are lost.">
+            <ui-button data-part="trigger">Discard</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Keep editing</ui-button><ui-button data-part="close" variant="primary">Discard</ui-button></div>
+          </ui-alert-dialog>
         </Row>
         <SizeLadder family="dialog" params={params}>
           <ui-dialog label="Dialog at this size" description="Padding 6u, radius = padding, parts 2u apart.">

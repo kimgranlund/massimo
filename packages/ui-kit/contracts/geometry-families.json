@@ -357,9 +357,10 @@
         "resolveDialog",
         "resolveContainer"
       ],
-      "summary": "A dialog popup is a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u), radius p·u × min(1, s), its parts (title, description, content, actions) 2u apart (the collection gap; the gap attribute wins), the actions 2u apart at the end edge. It is 96u wide (24rem at u = 4), at most the viewport less 4u on each side, centered, and scrolls when taller than the viewport less 4u above and below.",
+      "summary": "A dialog (and alert dialog) popup is a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u), radius p·u × min(1, s), its parts (title, description, content, actions) 2u apart (the collection gap; the gap attribute wins), the actions 2u apart at the end edge. It is 96u wide (24rem at u = 4), at most the viewport less 4u on each side, centered, and scrolls when taller than the viewport less 4u above and below.",
       "members": [
-        "component:dialog"
+        "component:dialog",
+        "component:alert-dialog"
       ],
       "searchTerms": [
         "dialog geometry",

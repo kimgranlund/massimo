@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/dialog/dialog.element.ts",
-      "sha256": "b631e5daee13a5eef02e1d5407d228d077c5350ab84798f81a2625f3e27f0793"
+      "sha256": "b30d41350155a93c0ee619d8d876bad03b34e060cc4d3d80bdd66012a029d24c"
     },
     {
       "path": "components/dialog/dialog.react.tsx",

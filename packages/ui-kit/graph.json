@@ -14,6 +14,19 @@
         "disclosure group"
       ]
     },
+    "component:alert-dialog": {
+      "kind": "component",
+      "source": "components/alert-dialog/alert-dialog.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-alert-dialog",
+      "searchTerms": [
+        "alert dialog",
+        "confirm",
+        "confirmation",
+        "are you sure",
+        "destructive action"
+      ]
+    },
     "component:avatar": {
       "kind": "component",
       "source": "components/avatar/avatar.manifest.json#/nodes/0",
@@ -1597,6 +1610,131 @@
       "from": "component:accordion",
       "relation": "uses",
       "to": "component:collapsible"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesGeometry",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:dialog"
     },
     {
       "from": "component:avatar",

@@ -526,6 +526,25 @@
         "data-nested",
         "data-nested-dialog-open"
       ]
+    },
+    "ui-alert-dialog": {
+      "host": [
+        "data-open",
+        "data-closed"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "backdrop": [
+        "data-open",
+        "data-closed"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-nested",
+        "data-nested-dialog-open"
+      ]
     }
   },
   "native": {
@@ -605,7 +624,8 @@
         "ui-select",
         "ui-collapsible",
         "ui-accordion",
-        "ui-dialog"
+        "ui-dialog",
+        "ui-alert-dialog"
       ]
     },
     "disabled": {

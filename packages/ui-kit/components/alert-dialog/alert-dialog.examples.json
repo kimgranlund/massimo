@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "alert-dialog",
+  "title": "Alert Dialog",
+  "summary": "A modal question with a cancel and a confirm action.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Confirm a destructive action",
+      "subject": "component:alert-dialog",
+      "markup": "<ui-alert-dialog label=\"Delete project?\" description=\"Its files and history are removed. This cannot be undone.\"><ui-button data-part=\"trigger\">Delete…</ui-button><div data-part=\"actions\"><ui-button data-part=\"close\">Cancel</ui-button><ui-button data-part=\"close\" variant=\"primary\">Delete</ui-button></div></ui-alert-dialog>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts written out",
+      "subject": "component:alert-dialog",
+      "markup": "<ui-alert-dialog><ui-button data-part=\"trigger\">Discard</ui-button><div data-part=\"popup\"><h2 data-part=\"title\">Discard changes?</h2><p data-part=\"description\">Your edits since the last save are lost.</p><div data-part=\"actions\"><ui-button data-part=\"close\">Keep editing</ui-button><ui-button data-part=\"close\" variant=\"primary\">Discard</ui-button></div></div></ui-alert-dialog>"
+    }
+  ]
+}

@@ -50,7 +50,7 @@ export class UIDialog extends UIElement {
     popup: () => this.#popup,
     backdrop: () => this.#backdrop,
     trigger: () => this.#trigger,
-    modal: () => parseModal(this.modal),
+    modal: () => this.modalMode,
     pointerDismissal: () => this.pointerDismissal,
     initialFocus: () => this.initialFocus(),
     onDismiss: (reason, event) => this.request(false, reason, event),
@@ -69,6 +69,13 @@ export class UIDialog extends UIElement {
   get popup() { return this.#popup; }
   /** Whether an outside press closes it (not disable-pointer-dismissal). AlertDialog: never. */
   protected get pointerDismissal() { return !this.disablePointerDismissal; }
+  /** Base UI modal from the modal attribute. AlertDialog: always modal. */
+  protected get modalMode() { return parseModal(this.modal); }
+  /** This dialog's own parts named `part` inside its popup (not those of a nested dialog or a kit control). */
+  protected ownParts(part: string): HTMLElement[] {
+    const popup = this.#popup;
+    return popup ? [...popup.querySelectorAll<HTMLElement>(`[data-part=${part}]`)].filter((el) => this.#mine(el)) : [];
+  }
   /** Where focus goes on open: an [autofocus] element inside the popup, else the first tabbable. */
   protected initialFocus(): HTMLElement | undefined {
     return this.#popup?.querySelector<HTMLElement>('[autofocus]') ?? undefined;
@@ -170,7 +177,7 @@ export class UIDialog extends UIElement {
   update() {
     const popup = this.#popup, backdrop = this.#backdrop, t = this.#trigger;
     if (!popup || !backdrop) return;
-    const open = this.open && this.isConnected, modal = parseModal(this.modal);
+    const open = this.open && this.isConnected, modal = this.modalMode;
     this.#generateText(popup);
     // Nested: inside another open dialog's popup (decided when it opens).
     if (open && !this.#layer.active) this.#nested = insideOpenLayer(this);
