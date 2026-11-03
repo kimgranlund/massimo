@@ -1,181 +1,734 @@
 {
   "schemaVersion": 1,
   "pathBase": "packages/ui-kit",
-  "summary": "The kit as a function: these inputs are everything a theme or a subtree can change; every length, color, type size and curve is derived from them by the resolvers. Ranges and defaults are not repeated here: each group names the export that owns them (the registry shows them on lookup), and a test keeps the member lists equal to those exports. constants lists the coefficients the formulas fix.",
+  "summary": "The kit as a function: these inputs are everything a theme or a subtree can change; every length, color, type size and curve is derived from them by the resolvers. Ranges and defaults are not repeated here: each group names the export that owns them (the registry shows them on lookup), and a test keeps the member lists equal to those exports. constants lists the coefficients the formulas fix. Each group expresses one concept (concepts: scale, density, space, curvature, line, elevation, vibrancy, emphasis, typography, movement, state, iconography, adaptivity); memberConcepts overrides it per member.",
   "drivesMeaning": "A drives edge (parameter → tokens, geometry or foundation) means the parameter enters that node's formulas; a component responds to a parameter when it uses a node the parameter drives.",
+  "concepts": {
+    "scale": {
+      "title": "Scale",
+      "governs": "how big everything is",
+      "mechanism": "one unit u; every length is a multiple of it; size sets u per subtree",
+      "documentation": "../../docs/specs/geometry.md#inputs",
+      "searchTerms": [
+        "scale",
+        "size",
+        "unit",
+        "u",
+        "zoom"
+      ]
+    },
+    "density": {
+      "title": "Density",
+      "governs": "how much fits at the same scale",
+      "mechanism": "not yet separate from scale: size changes u, the container ladder changes padding and gap",
+      "documentation": "../../docs/specs/geometry.md#containers",
+      "searchTerms": [
+        "density",
+        "compact",
+        "comfortable",
+        "loose",
+        "dense"
+      ]
+    },
+    "space": {
+      "title": "Space",
+      "governs": "margins and gutters: padding and gaps",
+      "mechanism": "the container ladder pad-<level> / gap-<level> in u; the gap attribute per element",
+      "documentation": "../../docs/specs/geometry.md#containers",
+      "searchTerms": [
+        "space",
+        "spacing",
+        "padding",
+        "gap",
+        "margin",
+        "gutter"
+      ]
+    },
+    "curvature": {
+      "title": "Curvature",
+      "governs": "roundness and corner shape",
+      "mechanism": "radius scale s, corner shape k, the concentric rule (R = r + p), the container magnitude t",
+      "documentation": "../../docs/specs/geometry.md#containers",
+      "searchTerms": [
+        "curvature",
+        "radius",
+        "roundness",
+        "corner",
+        "concentric"
+      ]
+    },
+    "line": {
+      "title": "Line",
+      "governs": "edges and separators",
+      "mechanism": "border B inside the padding (outer sizes never change); the separator rule; surfaces separate by fill, not lines",
+      "documentation": "../../docs/specs/geometry.md#inputs",
+      "searchTerms": [
+        "line",
+        "border",
+        "stroke",
+        "separator",
+        "divider"
+      ]
+    },
+    "elevation": {
+      "title": "Elevation",
+      "governs": "how surfaces stack",
+      "mechanism": "fills by depth (panel, card, nested card), shadows sm / md, bg.overlay and bg.backdrop, the floating layer and the top layer",
+      "documentation": "../../docs/specs/color.md#roles",
+      "searchTerms": [
+        "elevation",
+        "depth",
+        "shadow",
+        "layer",
+        "stacking",
+        "z-index",
+        "surface"
+      ]
+    },
+    "vibrancy": {
+      "title": "Vibrancy",
+      "governs": "richness and diversity of color",
+      "mechanism": "the Spectrum settings (hues, chroma, tone, neutrals, harmony, gamut) and the role mapping",
+      "documentation": "../../docs/specs/color.md",
+      "searchTerms": [
+        "vibrancy",
+        "color",
+        "chroma",
+        "saturation",
+        "palette",
+        "hue"
+      ]
+    },
+    "emphasis": {
+      "title": "Emphasis",
+      "governs": "how loudly something speaks",
+      "mechanism": "variants (neutral, primary), role steps (subtle, solid, fg), APCA text on solids (fg.onSolid)",
+      "documentation": "../../docs/specs/color.md#roles",
+      "searchTerms": [
+        "emphasis",
+        "hierarchy",
+        "variant",
+        "prominence",
+        "contrast"
+      ]
+    },
+    "typography": {
+      "title": "Typography",
+      "governs": "the hierarchy and voice of text",
+      "mechanism": "type ratio and rhythm, faces, voices, type roles",
+      "documentation": "../../docs/specs/typography.md",
+      "searchTerms": [
+        "typography",
+        "type",
+        "font",
+        "text",
+        "hierarchy"
+      ]
+    },
+    "movement": {
+      "title": "Movement",
+      "governs": "motion and transitions",
+      "mechanism": "springs, intents, motion scale and bounce; reduced motion collapses durations",
+      "documentation": "../../docs/specs/motion.md",
+      "searchTerms": [
+        "movement",
+        "motion",
+        "animation",
+        "transition",
+        "spring"
+      ]
+    },
+    "state": {
+      "title": "State",
+      "governs": "how components respond",
+      "mechanism": "the data-* state contracts (hover, press, focus, selected, disabled, invalid, open), the 3px focus ring, input modality",
+      "documentation": "../../docs/specs/components.md#states",
+      "searchTerms": [
+        "state",
+        "feedback",
+        "hover",
+        "focus",
+        "disabled",
+        "interaction"
+      ]
+    },
+    "iconography": {
+      "title": "Iconography",
+      "governs": "symbols",
+      "mechanism": "icon sets per theme, system glyphs, icon sizes sm / md / lg / fill",
+      "documentation": "../../docs/specs/icons.md",
+      "searchTerms": [
+        "iconography",
+        "icon",
+        "glyph",
+        "symbol"
+      ]
+    },
+    "adaptivity": {
+      "title": "Adaptivity",
+      "governs": "how the system bends to its environment",
+      "mechanism": "light / dark per subtree, forced colors, reduced motion, prefers-color-scheme",
+      "documentation": "../../docs/specs/color.md#schemes",
+      "searchTerms": [
+        "adaptivity",
+        "dark mode",
+        "scheme",
+        "forced colors",
+        "reduced motion",
+        "accessibility modes"
+      ]
+    }
+  },
   "groups": {
     "unit": {
       "title": "Unit u",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["unit"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "unit"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "every length is a multiple of u: control height 8u, padding 1u − B, icon slot 6u, control font 10px + u, type base 10px + u; [size] sets u per subtree",
-      "drives": ["foundation:geometry", "tokens:geometry", "tokens:spacing", "tokens:sizes", "tokens:radii", "tokens:font-sizes", "tokens:type-roles", "tokens:container-ladder"],
+      "drives": [
+        "foundation:geometry",
+        "tokens:geometry",
+        "tokens:spacing",
+        "tokens:sizes",
+        "tokens:radii",
+        "tokens:font-sizes",
+        "tokens:type-roles",
+        "tokens:container-ladder"
+      ],
       "documentation": "../../docs/specs/geometry.md#inputs",
-      "searchTerms": ["unit", "u", "base unit", "density", "scale"]
+      "searchTerms": [
+        "unit",
+        "u",
+        "base unit",
+        "density",
+        "scale"
+      ],
+      "concept": "scale"
     },
     "border": {
       "title": "Border B",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["border"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "border"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "whole px, clamped to 0..u/2; lives inside the padding (1u − B), so outer sizes never change",
-      "drives": ["foundation:geometry", "tokens:geometry", "tokens:borders-shadows"],
+      "drives": [
+        "foundation:geometry",
+        "tokens:geometry",
+        "tokens:borders-shadows"
+      ],
       "documentation": "../../docs/specs/geometry.md#inputs",
-      "searchTerms": ["border", "border width", "stroke"]
+      "searchTerms": [
+        "border",
+        "border width",
+        "stroke"
+      ],
+      "concept": "line"
     },
     "curvature": {
       "title": "Curvature: radius scale s and corner shape k",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["radius-scale", "corner-shape"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "radius-scale",
+        "corner-shape"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "radius = min(3u × s, 4u) for controls (checkbox u × s, swatch u × s, tracks min(3u × s, 2u)); nested radii stay concentric (inner = outer − inset); corner-shape: superellipse(k) on every element with a radius (1 round, 2 squircle, 0 bevel, < 0 scoop)",
-      "drives": ["foundation:geometry", "tokens:geometry", "tokens:radii"],
+      "drives": [
+        "foundation:geometry",
+        "tokens:geometry",
+        "tokens:radii"
+      ],
       "documentation": "../../docs/specs/geometry.md#inputs",
-      "searchTerms": ["radius", "corner radius", "roundness", "curvature", "squircle", "superellipse", "corner shape"]
+      "searchTerms": [
+        "radius",
+        "corner radius",
+        "roundness",
+        "curvature",
+        "squircle",
+        "superellipse",
+        "corner shape"
+      ],
+      "concept": "curvature"
     },
     "container-curvature": {
       "title": "Container radius magnitude t",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["radius-group", "radius-collection", "radius-card"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "radius-group",
+        "radius-collection",
+        "radius-card"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "R = t × R0, t in 0..1: R0 is the family's concentric radius (group, collection, card: the control radius + p); 1 keeps it concentric, 0 square, so a container can be sharper than fully rounded contents; the radius attribute sets t on one element",
-      "drives": ["foundation:geometry", "tokens:container-ladder", "geometry:container"],
+      "drives": [
+        "foundation:geometry",
+        "tokens:container-ladder",
+        "geometry:container"
+      ],
       "documentation": "../../docs/specs/geometry.md#containers",
-      "searchTerms": ["container radius", "radius magnitude", "sharper container", "concentric"]
+      "searchTerms": [
+        "container radius",
+        "radius magnitude",
+        "sharper container",
+        "concentric"
+      ],
+      "concept": "curvature"
     },
     "type-scale": {
       "title": "Type scale: ratio r and rhythm",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["type-ratio", "type-rhythm"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "type-ratio",
+        "type-rhythm"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "step role size = (10px + u) × r^step; line height rounds up to rhythm × u (0 keeps the natural height)",
-      "drives": ["foundation:typography", "tokens:type-roles", "tokens:font-sizes"],
+      "drives": [
+        "foundation:typography",
+        "tokens:type-roles",
+        "tokens:font-sizes"
+      ],
       "documentation": "../../docs/specs/typography.md#inputs",
-      "searchTerms": ["type scale", "modular scale", "type ratio", "line height", "rhythm", "baseline grid"]
+      "searchTerms": [
+        "type scale",
+        "modular scale",
+        "type ratio",
+        "line height",
+        "rhythm",
+        "baseline grid"
+      ],
+      "concept": "typography"
     },
     "motion-global": {
       "title": "Motion multipliers",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["motion-scale", "motion-bounce"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "motion-scale",
+        "motion-bounce"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "every spring duration × motion-scale (0 is instant); every spring bounce × motion-bounce (0 is critically damped)",
-      "drives": ["foundation:motion", "tokens:motion"],
+      "drives": [
+        "foundation:motion",
+        "tokens:motion"
+      ],
       "documentation": "../../docs/specs/motion.md#theme-inputs",
-      "searchTerms": ["motion", "animation speed", "reduced motion", "bounce", "duration"]
+      "searchTerms": [
+        "motion",
+        "animation speed",
+        "reduced motion",
+        "bounce",
+        "duration"
+      ],
+      "concept": "movement"
     },
     "springs": {
       "title": "Springs",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["spring-quick-duration", "spring-quick-bounce", "spring-smooth-duration", "spring-smooth-bounce", "spring-snappy-duration", "spring-snappy-bounce", "spring-bouncy-duration", "spring-bouncy-bounce"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "spring-quick-duration",
+        "spring-quick-bounce",
+        "spring-smooth-duration",
+        "spring-smooth-bounce",
+        "spring-snappy-duration",
+        "spring-snappy-bounce",
+        "spring-bouncy-duration",
+        "spring-bouncy-bounce"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "a SwiftUI-style spring (perceptual duration, bounce) solved in CSS to a linear() easing and a settle duration",
-      "drives": ["foundation:motion", "tokens:motion"],
+      "drives": [
+        "foundation:motion",
+        "tokens:motion"
+      ],
       "documentation": "../../docs/specs/motion.md#springs",
-      "searchTerms": ["spring", "easing", "curve", "damping"]
+      "searchTerms": [
+        "spring",
+        "easing",
+        "curve",
+        "damping"
+      ],
+      "concept": "movement"
     },
     "intents": {
       "title": "Motion intents",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["intent-feedback", "intent-toggle", "intent-reveal", "intent-emphasis"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "intent-feedback",
+        "intent-toggle",
+        "intent-reveal",
+        "intent-emphasis"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "which spring an intent runs: 0 quick, 1 smooth, 2 snappy, 3 bouncy; components animate by intent, never by spring",
-      "drives": ["foundation:motion", "tokens:motion"],
+      "drives": [
+        "foundation:motion",
+        "tokens:motion"
+      ],
       "documentation": "../../docs/specs/motion.md#intents",
-      "searchTerms": ["intent", "feedback", "toggle", "reveal", "emphasis"]
+      "searchTerms": [
+        "intent",
+        "feedback",
+        "toggle",
+        "reveal",
+        "emphasis"
+      ],
+      "concept": "movement"
     },
     "containers": {
       "title": "Container ladder",
       "scope": "theme",
-      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
-      "members": ["pad-composite", "gap-composite", "pad-group", "gap-group", "pad-collection", "gap-collection", "pad-card-xs", "gap-card-xs", "pad-card-sm", "gap-card-sm", "pad-card-md", "gap-card-md", "pad-card-lg", "gap-card-lg", "pad-card-xl", "gap-card-xl", "pad-panel", "gap-panel", "pad-region", "gap-region", "pad-page", "gap-page"],
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "pad-composite",
+        "gap-composite",
+        "pad-group",
+        "gap-group",
+        "pad-collection",
+        "gap-collection",
+        "pad-card-xs",
+        "gap-card-xs",
+        "pad-card-sm",
+        "gap-card-sm",
+        "pad-card-md",
+        "gap-card-md",
+        "pad-card-lg",
+        "gap-card-lg",
+        "pad-card-xl",
+        "gap-card-xl",
+        "pad-panel",
+        "gap-panel",
+        "pad-region",
+        "gap-region",
+        "pad-page",
+        "gap-page"
+      ],
       "cssVar": "--ui-<member>",
       "formula": "padding and gap per container level in u; [gap] overrides one element. Radius by family: composite = the control radius, its options R − D; wrapper (group, collection) = the control radius + p (concentric, square at s = 0); card = the control radius + p too (toast, popover, dialog surfaces: p × min(1, s)); areas square",
-      "drives": ["foundation:geometry", "tokens:container-ladder", "geometry:container", "geometry:popup", "geometry:dialog", "geometry:drawer", "geometry:menu", "geometry:toast"],
+      "drives": [
+        "foundation:geometry",
+        "tokens:container-ladder",
+        "geometry:container",
+        "geometry:popup",
+        "geometry:dialog",
+        "geometry:drawer",
+        "geometry:menu",
+        "geometry:toast"
+      ],
       "documentation": "../../docs/specs/geometry.md#containers",
-      "searchTerms": ["padding", "gap", "spacing", "container", "card padding", "inset"]
+      "searchTerms": [
+        "padding",
+        "gap",
+        "spacing",
+        "container",
+        "card padding",
+        "inset"
+      ],
+      "concept": "space"
     },
     "spectrum": {
       "title": "Spectrum color settings",
       "scope": "theme",
-      "spec": { "module": "tokens/colors/spectrum/config.ts", "export": "SPECTRUM_FIELDS", "key": "key" },
-      "members": ["hueSet", "quadStart", "hue", "chroma", "base", "falloff", "keyC", "hb", "rc", "ptAuto", "pt", "darkTone", "toneMax", "ladder", "mat", "tint", "neutralFrom", "grays", "radixGrays", "harmony", "primary", "secondary", "cvd", "target"],
+      "spec": {
+        "module": "tokens/colors/spectrum/config.ts",
+        "export": "SPECTRUM_FIELDS",
+        "key": "key"
+      },
+      "members": [
+        "hueSet",
+        "quadStart",
+        "hue",
+        "chroma",
+        "base",
+        "falloff",
+        "keyC",
+        "hb",
+        "rc",
+        "ptAuto",
+        "pt",
+        "darkTone",
+        "toneMax",
+        "ladder",
+        "mat",
+        "tint",
+        "neutralFrom",
+        "grays",
+        "radixGrays",
+        "harmony",
+        "primary",
+        "secondary",
+        "cvd",
+        "target"
+      ],
       "idPrefix": "spectrum-",
       "formula": "the HCT engine generates every family's 12-step ramp per scheme from these settings (generateSpectrum); roles alias ramp steps (ROLE_STEPS); the build uses the snapshot defaults.json, the jig regenerates live",
-      "drives": ["foundation:colors", "tokens:color-roles", "tokens:borders-shadows"],
+      "drives": [
+        "foundation:colors",
+        "tokens:color-roles",
+        "tokens:borders-shadows"
+      ],
       "documentation": "../../docs/specs/color.md#defaults-and-overrides",
-      "searchTerms": ["color", "palette", "hue", "chroma", "tone", "ramp", "neutral", "gamut", "harmony"]
+      "searchTerms": [
+        "color",
+        "palette",
+        "hue",
+        "chroma",
+        "tone",
+        "ramp",
+        "neutral",
+        "gamut",
+        "harmony"
+      ],
+      "concept": "vibrancy"
     },
     "roles": {
       "title": "Color roles",
       "scope": "theme",
-      "spec": { "module": "tokens/colors/spectrum/index.ts", "export": "ROLE_NAMES" },
-      "members": ["primary", "secondary", "neutral", "critical", "warning", "success", "info", "data1", "data2", "data3", "data4", "data5", "data6"],
+      "spec": {
+        "module": "tokens/colors/spectrum/index.ts",
+        "export": "ROLE_NAMES"
+      },
+      "members": [
+        "primary",
+        "secondary",
+        "neutral",
+        "critical",
+        "warning",
+        "success",
+        "info",
+        "data1",
+        "data2",
+        "data3",
+        "data4",
+        "data5",
+        "data6"
+      ],
       "idPrefix": "role-",
       "formula": "each role requests a family (resolveRoles picks the nearest generated hue); every role token is a step of that family (<role>.subtle 3, .border 7, .solid 9, .fg 11)",
-      "drives": ["foundation:colors", "tokens:color-roles"],
+      "drives": [
+        "foundation:colors",
+        "tokens:color-roles"
+      ],
       "documentation": "../../docs/specs/color.md#roles",
-      "searchTerms": ["role", "brand color", "accent", "primary color", "semantic color"]
+      "searchTerms": [
+        "role",
+        "brand color",
+        "accent",
+        "primary color",
+        "semantic color"
+      ],
+      "concept": "vibrancy"
     },
     "faces": {
       "title": "Font faces",
       "scope": "theme",
-      "spec": { "module": "tokens/typography/resolve.ts", "export": "FACES" },
-      "members": ["sans", "serif", "mono", "display", "controls"],
+      "spec": {
+        "module": "tokens/typography/resolve.ts",
+        "export": "FACES"
+      },
+      "members": [
+        "sans",
+        "serif",
+        "mono",
+        "display",
+        "controls"
+      ],
       "idPrefix": "face-",
       "cssVar": "--fonts-<member>",
       "formula": "a face is a font stack; voices point at faces and type roles use voices",
-      "drives": ["foundation:typography", "tokens:type-roles"],
+      "drives": [
+        "foundation:typography",
+        "tokens:type-roles"
+      ],
       "documentation": "../../docs/specs/typography.md#faces-voices-roles",
-      "searchTerms": ["font", "typeface", "font family", "font stack"]
+      "searchTerms": [
+        "font",
+        "typeface",
+        "font family",
+        "font stack"
+      ],
+      "concept": "typography"
     },
     "voices": {
       "title": "Font voices",
       "scope": "subtree",
-      "spec": { "module": "tokens/typography/resolve.ts", "export": "VOICES" },
-      "members": ["display", "heading", "body", "ui", "numeric", "code"],
+      "spec": {
+        "module": "tokens/typography/resolve.ts",
+        "export": "VOICES"
+      },
+      "members": [
+        "display",
+        "heading",
+        "body",
+        "ui",
+        "numeric",
+        "code"
+      ],
       "idPrefix": "voice-",
       "attribute": "data-font-<member>",
       "formula": "data-font-<voice>=\"<face>\" repoints a voice for a subtree; display and heading drop to weight 400 on a serif face",
-      "drives": ["foundation:typography", "tokens:type-roles"],
+      "drives": [
+        "foundation:typography",
+        "tokens:type-roles"
+      ],
       "documentation": "../../docs/specs/typography.md#faces-voices-roles",
-      "searchTerms": ["voice", "heading font", "body font"]
+      "searchTerms": [
+        "voice",
+        "heading font",
+        "body font"
+      ],
+      "concept": "typography"
     },
     "subtree": {
       "title": "Per-subtree inputs",
       "scope": "subtree",
-      "members": ["size", "icon-size", "gap", "radius", "scheme", "type"],
+      "members": [
+        "size",
+        "icon-size",
+        "gap",
+        "radius",
+        "scheme",
+        "type"
+      ],
       "idPrefix": "subtree-",
-      "attributes": { "size": "size / data-size: u for the subtree (2 … 12)", "radius": "radius on ui-group, ui-collection, ui-card: the magnitude t of the concentric radius, 0 … 1 in 0.05 steps", "icon-size": "icon-size / data-icon-size: sm, md, lg, fill", "gap": "gap: container gap in u (0–8, 0.5 steps), that element only", "scheme": ".light / .dark: force a color scheme", "type": "data-type=\"<role>\": apply a type role" },
+      "attributes": {
+        "size": "size / data-size: u for the subtree (2 … 12)",
+        "radius": "radius on ui-group, ui-collection, ui-card: the magnitude t of the concentric radius, 0 … 1 in 0.05 steps",
+        "icon-size": "icon-size / data-icon-size: sm, md, lg, fill",
+        "gap": "gap: container gap in u (0–8, 0.5 steps), that element only",
+        "scheme": ".light / .dark: force a color scheme",
+        "type": "data-type=\"<role>\": apply a type role"
+      },
       "formula": "the same formulas, evaluated with a local input: [size] re-resolves every length under it, .dark every role",
-      "drives": ["foundation:geometry", "tokens:geometry", "foundation:colors", "tokens:color-roles", "tokens:type-roles"],
+      "drives": [
+        "foundation:geometry",
+        "tokens:geometry",
+        "foundation:colors",
+        "tokens:color-roles",
+        "tokens:type-roles"
+      ],
       "documentation": "../../docs/specs/theming.md#per-element-inputs",
-      "searchTerms": ["size", "icon size", "dark mode", "color scheme", "subtree"]
+      "searchTerms": [
+        "size",
+        "icon size",
+        "dark mode",
+        "color scheme",
+        "subtree"
+      ],
+      "concept": "scale",
+      "memberConcepts": {
+        "size": "scale",
+        "icon-size": "iconography",
+        "gap": "space",
+        "radius": "curvature",
+        "scheme": "adaptivity",
+        "type": "typography"
+      }
     }
   },
   "constants": [
-    { "name": "control height", "value": "8u", "documentation": "../../docs/specs/geometry.md#control-ui-button-and-the-shape-ui-input-ui-select-share" },
-    { "name": "icon slot", "value": "6u" },
-    { "name": "text run edges", "value": "0.5u beside text, 1u beside a slot, 2u at a bare edge (resolveTextRun)" },
-    { "name": "control font base", "value": "10px + u" },
-    { "name": "soft curvature and radius cap", "value": "3u × s, capped at 4u" },
-    { "name": "icon sizes", "value": "font − 0.5u, font + 0.5u, font + 1.5u (capped at 6u)" },
-    { "name": "control line height", "value": "1.2" },
-    { "name": "choice box", "value": "5u (checkbox radius u × s; radio and switch round)" },
-    { "name": "switch", "value": "9u × 5u track, 4u thumb inset 0.5u" },
-    { "name": "range and progress track", "value": "4u" },
-    { "name": "swatch", "value": "6u" },
-    { "name": "scroll area track", "value": "2u (thumb u thick, at least 4u long)" },
-    { "name": "ramp step meanings", "value": "Radix 1–12: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text", "documentation": "../../docs/specs/color.md#ramps" },
-    { "name": "role steps", "value": "ROLE_STEPS (tokens/colors/spectrum/index.ts)", "documentation": "../../docs/specs/color.md#roles" },
-    { "name": "Spectrum engine", "value": "SPECTRUM_FIXED: peak 400, lc 100" }
+    {
+      "name": "control height",
+      "value": "8u",
+      "documentation": "../../docs/specs/geometry.md#control-ui-button-and-the-shape-ui-input-ui-select-share"
+    },
+    {
+      "name": "icon slot",
+      "value": "6u"
+    },
+    {
+      "name": "text run edges",
+      "value": "0.5u beside text, 1u beside a slot, 2u at a bare edge (resolveTextRun)"
+    },
+    {
+      "name": "control font base",
+      "value": "10px + u"
+    },
+    {
+      "name": "soft curvature and radius cap",
+      "value": "3u × s, capped at 4u"
+    },
+    {
+      "name": "icon sizes",
+      "value": "font − 0.5u, font + 0.5u, font + 1.5u (capped at 6u)"
+    },
+    {
+      "name": "control line height",
+      "value": "1.2"
+    },
+    {
+      "name": "choice box",
+      "value": "5u (checkbox radius u × s; radio and switch round)"
+    },
+    {
+      "name": "switch",
+      "value": "9u × 5u track, 4u thumb inset 0.5u"
+    },
+    {
+      "name": "range and progress track",
+      "value": "4u"
+    },
+    {
+      "name": "swatch",
+      "value": "6u"
+    },
+    {
+      "name": "scroll area track",
+      "value": "2u (thumb u thick, at least 4u long)"
+    },
+    {
+      "name": "ramp step meanings",
+      "value": "Radix 1–12: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text",
+      "documentation": "../../docs/specs/color.md#ramps"
+    },
+    {
+      "name": "role steps",
+      "value": "ROLE_STEPS (tokens/colors/spectrum/index.ts)",
+      "documentation": "../../docs/specs/color.md#roles"
+    },
+    {
+      "name": "Spectrum engine",
+      "value": "SPECTRUM_FIXED: peak 400, lc 100"
+    }
   ]
 }

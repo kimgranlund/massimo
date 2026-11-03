@@ -89,16 +89,21 @@ export function buildGraph(): Graph {
       kind, source: `${file}#/${key}/${k}`, availability: 'implemented', ...(rec.title ? { title: rec.title } : {}), searchTerms: rec.searchTerms ?? [k],
     });
   }
-  // Parameters (contracts/parameters.json): a node per group carrying its drives edges, and a node
-  // per member (parameter:<id>) that is a memberOf its group.
-  for (const [g, rec] of Object.entries<any>(json('contracts/parameters.json').groups)) {
+  // Parameters (contracts/parameters.json): a node per concept (concept:<id>), a node per group
+  // carrying its drives edges and the concept it expresses, and a node per member (parameter:<id>)
+  // that is a memberOf its group (and expresses its own concept when memberConcepts names one).
+  const params = json('contracts/parameters.json');
+  for (const [c, rec] of Object.entries<any>(params.concepts)) add(`concept:${c}`, { kind: 'concept', source: `contracts/parameters.json#/concepts/${c}`, availability: 'implemented', title: rec.title, searchTerms: rec.searchTerms ?? [c] });
+  for (const [g, rec] of Object.entries<any>(params.groups)) {
     const group = `parameters:${g}`;
     add(group, { kind: 'parameters', source: `contracts/parameters.json#/groups/${g}`, availability: 'implemented', title: rec.title, searchTerms: rec.searchTerms ?? [g] });
     for (const to of rec.drives) edges.push({ from: group, relation: 'drives', to });
+    edges.push({ from: group, relation: 'expresses', to: `concept:${rec.concept}` });
     for (const m of rec.members as string[]) {
       const id = parameterId(rec, m), label = parameterSpec(rec, m)?.label;
       add(id, { kind: 'parameter', source: `contracts/parameters.json#/groups/${g}`, availability: 'implemented', ...(label ? { title: label } : {}), searchTerms: [m.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase(), ...(label ? [label.toLowerCase()] : [])] });
       edges.push({ from: id, relation: 'memberOf', to: group });
+      if (rec.memberConcepts?.[m]) edges.push({ from: id, relation: 'expresses', to: `concept:${rec.memberConcepts[m]}` });
     }
   }
   const sorted = Object.fromEntries(Object.entries(nodes).sort(([a], [b]) => a.localeCompare(b)));
@@ -176,6 +181,10 @@ export function lookup(id: string, graph = loadGraph()) {
     const group = graph.edges.find((e) => e.from === id && e.relation === 'memberOf')!.to;
     const member = node.members.find((m: string) => parameterId(node, m) === id);
     return { id, kind: n.kind, source: n.source, member, group, spec: parameterSpec(node, member) ?? null, ...(node.spec ? { owner: `${node.spec.module}#${node.spec.export}` } : {}), drives: node.drives, record: node };
+  }
+  if (n.kind === 'concept') {
+    const by = (kind: string) => graph.edges.filter((e) => e.relation === 'expresses' && e.to === id && graph.nodes[e.from].kind === kind).map((e) => e.from);
+    return { id, kind: n.kind, source: n.source, record: node, groups: by('parameters'), parameters: by('parameter') };
   }
   if (n.kind === 'parameters') return { id, kind: n.kind, source: n.source, members: node.members.map((m: string) => parameterId(node, m)), record: node };
   if (n.kind !== 'component' && n.kind !== 'part') return { id, kind: n.kind, source: n.source, record: node };

@@ -230,7 +230,13 @@ test('registry CLI: unknown IDs fail; --packet requires bounded delivery', () =>
 });
 
 test('parameters: the contract lists exactly the members each owning export defines, and the registry finds and traces them', () => {
-  const groups = read('contracts/parameters.json').groups;
+  const { groups, concepts } = read('contracts/parameters.json');
+  for (const [c, rec] of Object.entries<any>(concepts)) assert.ok(readSource(rec.documentation), `concept ${c} documentation resolves`);
+  for (const [g, rec] of Object.entries<any>(groups)) {
+    assert.ok(concepts[rec.concept], `${g} expresses a known concept (${rec.concept})`);
+    for (const [m, c] of Object.entries<any>(rec.memberConcepts ?? {})) assert.ok(rec.members.includes(m) && concepts[c], `${g}.${m} → ${c}`);
+  }
+  assert.ok((lookup('concept:curvature', graph) as any).groups.includes('parameters:curvature'), 'a concept lists the groups that express it');
   const byOwner = new Map<string, { group: string; members: string[]; spec: any }[]>();
   for (const [g, rec] of Object.entries<any>(groups)) {
     assert.equal(new Set(rec.members).size, rec.members.length, `${g} repeats a member`);

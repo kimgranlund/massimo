@@ -26,6 +26,26 @@ inputs ──▶ resolvers ──▶ tokens and CSS variables ──▶ slot rec
 | motion scale, motion bounce, springs, intents | `tokens/motion/` | `linear()` easings and durations ([motion](motion.md)) |
 | per subtree: `size`, `icon-size`, `gap`, `.light` / `.dark`, `data-font-<voice>`, `data-type` | the same resolvers, evaluated locally | the subtree's values ([theming](theming.md#per-element-inputs)) |
 
+### Concepts
+
+The inputs are organized by the peer concepts the system governs. Each parameter group expresses one concept (`concept` in the contract; registry `concept:<id>`).
+
+| Concept | Governs | Mechanism | Spec |
+|---|---|---|---|
+| Scale | how big everything is | one unit u; `size` per subtree | [geometry](geometry.md#inputs) |
+| Density | how much fits at the same scale | not yet separate from scale (planned: compact, default, loose) | [geometry](geometry.md#containers) |
+| Space | margins and gutters | the container ladder `pad-<level>` / `gap-<level>`; `gap` per element | [geometry](geometry.md#containers) |
+| Curvature | roundness and corner shape | radius scale s, corner shape k, the concentric rule, the container magnitude t | [geometry](geometry.md#containers) |
+| Line | edges and separators | border B inside the padding; the separator rule; fills separate surfaces | [geometry](geometry.md#inputs) |
+| Elevation | how surfaces stack | fills by depth, shadows, overlay and backdrop, the floating and top layers | [color](color.md#roles) |
+| Vibrancy | richness and diversity of color | the Spectrum settings and the role mapping | [color](color.md) |
+| Emphasis | how loudly something speaks | variants, role steps (subtle, solid, fg), APCA text on solids | [color](color.md#roles) |
+| Typography | hierarchy and voice of text | type ratio and rhythm, faces, voices, roles | [typography](typography.md) |
+| Movement | motion and transitions | springs, intents, motion scale and bounce | [motion](motion.md) |
+| State | how components respond | the data-* state contracts, the focus ring, input modality | [components](components.md#states) |
+| Iconography | symbols | icon sets, system glyphs, icon sizes | [icons](icons.md) |
+| Adaptivity | how the system bends to its environment | light / dark per subtree, forced colors, reduced motion | [color](color.md#schemes) |
+
 The machine-readable form is `packages/ui-kit/contracts/parameters.json`: every input, its formula, what it drives, and the coefficients the formulas fix (8u controls, 6u slots, 3u curvature, 10px + u fonts). The registry indexes it: `npm run registry -- --find "radius scale"`, `parameter:<id>` for a range and default, and `--assembly component:<id>` lists the parameter groups a component responds to ([registry](registry.md#parameters)). A theme sets inputs only (`tokens/themes/params.ts`, [theming](theming.md)); changing a fixed coefficient is a geometry change.
 
 ## Layers (`packages/ui-kit`)

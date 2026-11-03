@@ -719,6 +719,180 @@
         "title text"
       ]
     },
+    "concept:adaptivity": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/adaptivity",
+      "availability": "implemented",
+      "title": "Adaptivity",
+      "searchTerms": [
+        "adaptivity",
+        "dark mode",
+        "scheme",
+        "forced colors",
+        "reduced motion",
+        "accessibility modes"
+      ]
+    },
+    "concept:curvature": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/curvature",
+      "availability": "implemented",
+      "title": "Curvature",
+      "searchTerms": [
+        "curvature",
+        "radius",
+        "roundness",
+        "corner",
+        "concentric"
+      ]
+    },
+    "concept:density": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/density",
+      "availability": "implemented",
+      "title": "Density",
+      "searchTerms": [
+        "density",
+        "compact",
+        "comfortable",
+        "loose",
+        "dense"
+      ]
+    },
+    "concept:elevation": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/elevation",
+      "availability": "implemented",
+      "title": "Elevation",
+      "searchTerms": [
+        "elevation",
+        "depth",
+        "shadow",
+        "layer",
+        "stacking",
+        "z-index",
+        "surface"
+      ]
+    },
+    "concept:emphasis": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/emphasis",
+      "availability": "implemented",
+      "title": "Emphasis",
+      "searchTerms": [
+        "emphasis",
+        "hierarchy",
+        "variant",
+        "prominence",
+        "contrast"
+      ]
+    },
+    "concept:iconography": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/iconography",
+      "availability": "implemented",
+      "title": "Iconography",
+      "searchTerms": [
+        "iconography",
+        "icon",
+        "glyph",
+        "symbol"
+      ]
+    },
+    "concept:line": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/line",
+      "availability": "implemented",
+      "title": "Line",
+      "searchTerms": [
+        "line",
+        "border",
+        "stroke",
+        "separator",
+        "divider"
+      ]
+    },
+    "concept:movement": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/movement",
+      "availability": "implemented",
+      "title": "Movement",
+      "searchTerms": [
+        "movement",
+        "motion",
+        "animation",
+        "transition",
+        "spring"
+      ]
+    },
+    "concept:scale": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/scale",
+      "availability": "implemented",
+      "title": "Scale",
+      "searchTerms": [
+        "scale",
+        "size",
+        "unit",
+        "u",
+        "zoom"
+      ]
+    },
+    "concept:space": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/space",
+      "availability": "implemented",
+      "title": "Space",
+      "searchTerms": [
+        "space",
+        "spacing",
+        "padding",
+        "gap",
+        "margin",
+        "gutter"
+      ]
+    },
+    "concept:state": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/state",
+      "availability": "implemented",
+      "title": "State",
+      "searchTerms": [
+        "state",
+        "feedback",
+        "hover",
+        "focus",
+        "disabled",
+        "interaction"
+      ]
+    },
+    "concept:typography": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/typography",
+      "availability": "implemented",
+      "title": "Typography",
+      "searchTerms": [
+        "typography",
+        "type",
+        "font",
+        "text",
+        "hierarchy"
+      ]
+    },
+    "concept:vibrancy": {
+      "kind": "concept",
+      "source": "contracts/parameters.json#/concepts/vibrancy",
+      "availability": "implemented",
+      "title": "Vibrancy",
+      "searchTerms": [
+        "vibrancy",
+        "color",
+        "chroma",
+        "saturation",
+        "palette",
+        "hue"
+      ]
+    },
     "context:accordion": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/accordion",
@@ -9867,6 +10041,11 @@
       "to": "tokens:container-ladder"
     },
     {
+      "from": "parameters:unit",
+      "relation": "expresses",
+      "to": "concept:scale"
+    },
+    {
       "from": "parameter:unit",
       "relation": "memberOf",
       "to": "parameters:unit"
@@ -9887,6 +10066,11 @@
       "to": "tokens:borders-shadows"
     },
     {
+      "from": "parameters:border",
+      "relation": "expresses",
+      "to": "concept:line"
+    },
+    {
       "from": "parameter:border",
       "relation": "memberOf",
       "to": "parameters:border"
@@ -9905,6 +10089,11 @@
       "from": "parameters:curvature",
       "relation": "drives",
       "to": "tokens:radii"
+    },
+    {
+      "from": "parameters:curvature",
+      "relation": "expresses",
+      "to": "concept:curvature"
     },
     {
       "from": "parameter:radius-scale",
@@ -9930,6 +10119,11 @@
       "from": "parameters:container-curvature",
       "relation": "drives",
       "to": "geometry:container"
+    },
+    {
+      "from": "parameters:container-curvature",
+      "relation": "expresses",
+      "to": "concept:curvature"
     },
     {
       "from": "parameter:radius-group",
@@ -9962,6 +10156,11 @@
       "to": "tokens:font-sizes"
     },
     {
+      "from": "parameters:type-scale",
+      "relation": "expresses",
+      "to": "concept:typography"
+    },
+    {
       "from": "parameter:type-ratio",
       "relation": "memberOf",
       "to": "parameters:type-scale"
@@ -9982,6 +10181,11 @@
       "to": "tokens:motion"
     },
     {
+      "from": "parameters:motion-global",
+      "relation": "expresses",
+      "to": "concept:movement"
+    },
+    {
       "from": "parameter:motion-scale",
       "relation": "memberOf",
       "to": "parameters:motion-global"
@@ -10000,6 +10204,11 @@
       "from": "parameters:springs",
       "relation": "drives",
       "to": "tokens:motion"
+    },
+    {
+      "from": "parameters:springs",
+      "relation": "expresses",
+      "to": "concept:movement"
     },
     {
       "from": "parameter:spring-quick-duration",
@@ -10050,6 +10259,11 @@
       "from": "parameters:intents",
       "relation": "drives",
       "to": "tokens:motion"
+    },
+    {
+      "from": "parameters:intents",
+      "relation": "expresses",
+      "to": "concept:movement"
     },
     {
       "from": "parameter:intent-feedback",
@@ -10110,6 +10324,11 @@
       "from": "parameters:containers",
       "relation": "drives",
       "to": "geometry:toast"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "expresses",
+      "to": "concept:space"
     },
     {
       "from": "parameter:pad-composite",
@@ -10235,6 +10454,11 @@
       "from": "parameters:spectrum",
       "relation": "drives",
       "to": "tokens:borders-shadows"
+    },
+    {
+      "from": "parameters:spectrum",
+      "relation": "expresses",
+      "to": "concept:vibrancy"
     },
     {
       "from": "parameter:spectrum-hue-set",
@@ -10367,6 +10591,11 @@
       "to": "tokens:color-roles"
     },
     {
+      "from": "parameters:roles",
+      "relation": "expresses",
+      "to": "concept:vibrancy"
+    },
+    {
       "from": "parameter:role-primary",
       "relation": "memberOf",
       "to": "parameters:roles"
@@ -10442,6 +10671,11 @@
       "to": "tokens:type-roles"
     },
     {
+      "from": "parameters:faces",
+      "relation": "expresses",
+      "to": "concept:typography"
+    },
+    {
       "from": "parameter:face-sans",
       "relation": "memberOf",
       "to": "parameters:faces"
@@ -10475,6 +10709,11 @@
       "from": "parameters:voices",
       "relation": "drives",
       "to": "tokens:type-roles"
+    },
+    {
+      "from": "parameters:voices",
+      "relation": "expresses",
+      "to": "concept:typography"
     },
     {
       "from": "parameter:voice-display",
@@ -10532,9 +10771,19 @@
       "to": "tokens:type-roles"
     },
     {
+      "from": "parameters:subtree",
+      "relation": "expresses",
+      "to": "concept:scale"
+    },
+    {
       "from": "parameter:subtree-size",
       "relation": "memberOf",
       "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-size",
+      "relation": "expresses",
+      "to": "concept:scale"
     },
     {
       "from": "parameter:subtree-icon-size",
@@ -10542,9 +10791,19 @@
       "to": "parameters:subtree"
     },
     {
+      "from": "parameter:subtree-icon-size",
+      "relation": "expresses",
+      "to": "concept:iconography"
+    },
+    {
       "from": "parameter:subtree-gap",
       "relation": "memberOf",
       "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-gap",
+      "relation": "expresses",
+      "to": "concept:space"
     },
     {
       "from": "parameter:subtree-radius",
@@ -10552,14 +10811,29 @@
       "to": "parameters:subtree"
     },
     {
+      "from": "parameter:subtree-radius",
+      "relation": "expresses",
+      "to": "concept:curvature"
+    },
+    {
       "from": "parameter:subtree-scheme",
       "relation": "memberOf",
       "to": "parameters:subtree"
     },
     {
+      "from": "parameter:subtree-scheme",
+      "relation": "expresses",
+      "to": "concept:adaptivity"
+    },
+    {
       "from": "parameter:subtree-type",
       "relation": "memberOf",
       "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-type",
+      "relation": "expresses",
+      "to": "concept:typography"
     }
   ]
 }
