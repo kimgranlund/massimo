@@ -369,6 +369,19 @@
         "strength"
       ]
     },
+    "component:navigation-menu": {
+      "kind": "component",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-navigation-menu",
+      "searchTerms": [
+        "navigation menu",
+        "site navigation",
+        "nav bar",
+        "mega menu",
+        "header links"
+      ]
+    },
     "component:number-field": {
       "kind": "component",
       "source": "components/number-field/number-field.manifest.json#/nodes/0",
@@ -449,6 +462,31 @@
         "panel container",
         "container",
         "layout"
+      ]
+    },
+    "component:popover": {
+      "kind": "component",
+      "source": "components/popover/popover.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-popover",
+      "searchTerms": [
+        "popover",
+        "popup",
+        "flyout",
+        "dropdown panel",
+        "anchored dialog"
+      ]
+    },
+    "component:preview-card": {
+      "kind": "component",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-preview-card",
+      "searchTerms": [
+        "preview card",
+        "hover card",
+        "link preview",
+        "profile card"
       ]
     },
     "component:progress": {
@@ -667,6 +705,18 @@
         "text formatting",
         "pressed group",
         "button group"
+      ]
+    },
+    "component:tooltip": {
+      "kind": "component",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-tooltip",
+      "searchTerms": [
+        "tooltip",
+        "hint",
+        "hover label",
+        "title text"
       ]
     },
     "context:accordion": {
@@ -1174,6 +1224,19 @@
         "otp cell size",
         "verification code geometry",
         "pin input"
+      ]
+    },
+    "geometry:popup": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/popup",
+      "availability": "implemented",
+      "searchTerms": [
+        "popup geometry",
+        "popover padding",
+        "tooltip size",
+        "arrow",
+        "anchored popup",
+        "offset"
       ]
     },
     "geometry:scroll-area": {
@@ -1741,6 +1804,78 @@
         "meter value"
       ]
     },
+    "part:navigation-menu-content": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu content"
+      ]
+    },
+    "part:navigation-menu-item": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu item"
+      ]
+    },
+    "part:navigation-menu-link": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "a",
+      "searchTerms": [
+        "navigation menu link"
+      ]
+    },
+    "part:navigation-menu-list": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu list"
+      ]
+    },
+    "part:navigation-menu-popup": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu popup"
+      ]
+    },
+    "part:navigation-menu-positioner": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu positioner"
+      ]
+    },
+    "part:navigation-menu-trigger": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu trigger"
+      ]
+    },
+    "part:navigation-menu-viewport": {
+      "kind": "part",
+      "source": "components/navigation-menu/navigation-menu.manifest.json#/nodes/8",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "navigation menu viewport"
+      ]
+    },
     "part:number-field-decrement": {
       "kind": "part",
       "source": "components/number-field/number-field.manifest.json#/nodes/4",
@@ -1811,6 +1946,105 @@
       "tag": "div",
       "searchTerms": [
         "otp field separator"
+      ]
+    },
+    "part:popover-arrow": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "popover arrow"
+      ]
+    },
+    "part:popover-close": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "popover close"
+      ]
+    },
+    "part:popover-description": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "p",
+      "searchTerms": [
+        "popover description"
+      ]
+    },
+    "part:popover-popup": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "popover popup"
+      ]
+    },
+    "part:popover-positioner": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "popover positioner"
+      ]
+    },
+    "part:popover-title": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "h2",
+      "searchTerms": [
+        "popover title"
+      ]
+    },
+    "part:popover-trigger": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "popover trigger"
+      ]
+    },
+    "part:preview-card-arrow": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "preview card arrow"
+      ]
+    },
+    "part:preview-card-popup": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "preview card popup"
+      ]
+    },
+    "part:preview-card-positioner": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "preview card positioner"
+      ]
+    },
+    "part:preview-card-trigger": {
+      "kind": "part",
+      "source": "components/preview-card/preview-card.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "a",
+      "searchTerms": [
+        "preview card trigger"
       ]
     },
     "part:range-thumb": {
@@ -2093,6 +2327,42 @@
       "tag": "div",
       "searchTerms": [
         "toast toast"
+      ]
+    },
+    "part:tooltip-arrow": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tooltip arrow"
+      ]
+    },
+    "part:tooltip-popup": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tooltip popup"
+      ]
+    },
+    "part:tooltip-positioner": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "tooltip positioner"
+      ]
+    },
+    "part:tooltip-trigger": {
+      "kind": "part",
+      "source": "components/tooltip/tooltip.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "tooltip trigger"
       ]
     },
     "part:track": {
@@ -6336,6 +6606,151 @@
       "to": "context:form"
     },
     {
+      "from": "component:navigation-menu",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesFoundation",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-list"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-item"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-trigger"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-contents"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-content"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-link"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-positioner"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-popup"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "ownsPart",
+      "to": "part:navigation-menu-viewport"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:navigation-menu",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
       "from": "component:number-field",
       "relation": "extends",
       "to": "foundation:form-element"
@@ -6614,6 +7029,246 @@
       "from": "component:otp-field",
       "relation": "allowedIn",
       "to": "context:field-grid"
+    },
+    {
+      "from": "component:popover",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-trigger"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-positioner"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-popup"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-arrow"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-title"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-description"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-close"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:popover",
+      "relation": "uses",
+      "to": "component:button"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-trigger"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-positioner"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-popup"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-arrow"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "uses",
+      "to": "component:popover"
     },
     {
       "from": "component:radio-group",
@@ -7839,6 +8494,126 @@
       "from": "component:toggle",
       "relation": "uses",
       "to": "foundation:modality"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-trigger"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-positioner"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-popup"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-arrow"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "uses",
+      "to": "component:popover"
     }
   ]
 }

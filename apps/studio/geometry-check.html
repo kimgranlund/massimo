@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -43,6 +43,10 @@ import '@massimo/ui-kit/components/drawer/element';
 import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/components/context-menu/element';
 import '@massimo/ui-kit/components/menubar/element';
+import '@massimo/ui-kit/components/popover/element';
+import '@massimo/ui-kit/components/tooltip/element';
+import '@massimo/ui-kit/components/preview-card/element';
+import '@massimo/ui-kit/components/navigation-menu/element';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -141,6 +145,10 @@ for (const c of cases) {
     <ui-menubar id="bar"><ui-menu label="File"><div data-part="item">x</div></ui-menu><ui-menu><div data-part="trigger"><span slot="leading"></span>Edit</div><div data-part="popup"><div data-part="item">y</div></div></ui-menu></ui-menubar>
     <ui-menubar id="barV" orientation="vertical"><ui-menu label="One"><div data-part="item">x</div></ui-menu><ui-menu label="Two"><div data-part="item">y</div></ui-menu></ui-menubar>
     <ui-context-menu id="ctx"><div data-part="trigger" style="height:${10 * c.unit}px">Area</div><div data-part="popup" style="transition:none"><div data-part="item">Copy</div><div data-part="item">Paste</div></div></ui-context-menu>
+    <div style="height:${48 * c.unit}px"><ui-popover id="popA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-button data-part="trigger">Open popover</ui-button><div data-part="popup"><h2 data-part="title">T</h2><p data-part="description">D</p><div data-part="arrow"></div></div></ui-popover>
+      <ui-tooltip id="tipA" side="bottom" align="center"><ui-button data-part="trigger">Tip</ui-button><div data-part="popup">Tooltip text<div data-part="arrow"></div></div></ui-tooltip>
+      <ui-preview-card id="pcA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><a data-part="trigger" href="#x">Preview</a><div data-part="popup"><strong>Card</strong><span>Body</span><div data-part="arrow"></div></div></ui-preview-card>
+      <ui-navigation-menu id="navA" label="N"><div data-part="item" value="a"><div data-part="trigger"><span slot="leading"></span>Menu</div><div data-part="content"><a href="#a">Link one</a><a href="#b">Link two</a></div></div><div data-part="item"><a data-part="link" href="#c">Plain</a></div></ui-navigation-menu></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -827,6 +835,91 @@ for (const c of cases) {
     checks['menubar.vertical.width'] = [r2(rect(v1).width), r2(rect(v2).width)];
     checks['menubar.vertical.radius'] = [px(cs(bv).borderTopLeftRadius), rv.radius];
     checks['menubar.vertical.height'] = [r2(rect(bv).height), r2(2 * rv.triggerHeight + rv.gap + 2 * rv.edge)];
+  }
+  // Anchored popups: open one at a time in view (transitions off, so it is measured at rest), close it after.
+  const openPopup = async (el) => {
+    el.trigger.scrollIntoView({ block: 'center' });
+    for (const p of [el.positioner, el.popup, el.arrow]) if (p) p.style.transition = 'none';
+    el.open = true;
+    // Two frames and a beat: after the scroll, Gecko sometimes re-places an anchored popup a frame late.
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 30))));
+  };
+  // Offset, width and arrow: the same rules for every kind (resolvePopup).
+  const popupChecks = (name, el, rp) => {
+    const t = rect(el.trigger), p = rect(el.popup), side = el.positioner.getAttribute('data-side');
+    const gapTo = side === 'top' ? t.top - p.bottom : side === 'bottom' ? p.top - t.bottom : side === 'right' ? p.left - t.right : t.left - p.right;
+    checks[`${name}.offset`] = [r2(gapTo), rp.offset];
+    checks[`${name}.padding`] = [px(cs(el.popup).paddingTop) + px(cs(el.popup).borderTopWidth), r2(rp.paddingBlock + rp.border)];
+    checks[`${name}.paddingInline`] = [px(cs(el.popup).paddingLeft) + px(cs(el.popup).borderLeftWidth), r2(rp.paddingInline + rp.border)];
+    checks[`${name}.radius`] = [px(cs(el.popup).borderTopLeftRadius), r2(rp.radius)];
+    if (rp.minWidthAnchor) checks[`${name}.minWidth`] = [r2(Math.max(0, t.width - p.width)), 0];
+    checks[`${name}.maxWidth`] = [r2(Math.min(px(cs(el.positioner).maxWidth), rp.maxWidth)), r2(Math.min(rp.maxWidth, innerWidth))];
+    if (el.arrow) {
+      const a = rect(el.arrow);
+      const tip = side === 'bottom' ? p.top - a.top : side === 'top' ? a.bottom - p.bottom : side === 'right' ? p.left - a.left : a.right - p.right;
+      checks[`${name}.arrow.reach`] = [r2(tip), rp.arrowHeight];
+      checks[`${name}.arrow.width`] = [r2(side === 'top' || side === 'bottom' ? a.width : a.height), rp.arrowWidth];
+      if (!el.arrow.hasAttribute('data-uncentered')) checks[`${name}.arrow.center`] = [r2(side === 'top' || side === 'bottom' ? a.left + a.width / 2 : a.top + a.height / 2), r2(side === 'top' || side === 'bottom' ? t.left + t.width / 2 : t.top + t.height / 2)];
+    }
+  };
+  {
+    const el = $('popA'), rp = resolvePopup('popover', g);
+    await openPopup(el);
+    popupChecks('popover', el, rp);
+    const [ti, de] = [el.popup.querySelector('[data-part=title]'), el.popup.querySelector('[data-part=description]')];
+    checks['popover.gap'] = [r2(rect(de).top - rect(ti).bottom), rp.gap];
+    checks['popover.side'] = [el.positioner.getAttribute('data-side') === 'bottom' ? 1 : 0, 1];
+    el.open = false;
+  }
+  {
+    const el = $('tipA'), rp = resolvePopup('tooltip', g);
+    await openPopup(el);
+    popupChecks('tooltip', el, rp);
+    checks['tooltip.height'] = [r2(rect(el.popup).height), rp.height];
+    checks['tooltip.font'] = [px(cs(el.popup).fontSize), rp.fontSize];
+    checks['tooltip.lineHeight'] = [px(cs(el.popup).lineHeight), r2(rp.lineHeight)];
+    el.open = false;
+  }
+  {
+    const el = $('pcA'), rp = resolvePopup('preview-card', g);
+    await openPopup(el);
+    popupChecks('previewCard', el, rp);
+    const [a, b] = el.popup.children;
+    checks['previewCard.gap'] = [r2(rect(b).top - rect(a).bottom), rp.gap];
+    el.open = false;
+  }
+  // Navigation menu: an 8u composite list of 7u triggers and links; the popup a composite container 1u below the open trigger (resolveNavigationMenu).
+  {
+    const el = $('navA'), rn = resolveNavigationMenu({ ...g, gap: undefined }), [item, plain] = el.items, t = item.trigger;
+    for (const p of [el.positioner, el.popup, item.content]) p.style.transition = 'none';
+    checks['nav.list.height'] = [r2(rect(el.list).height), rn.listHeight];
+    checks['nav.list.padding'] = [px(cs(el.list).paddingTop) + px(cs(el.list).borderTopWidth), rn.listEdge];
+    checks['nav.list.gap'] = [r2(rect(plain.link).left - rect(t).right), rn.listGap];
+    checks['nav.trigger.height'] = [r2(rect(t).height), rn.itemHeight];
+    checks['nav.trigger.radius'] = [px(cs(t).borderTopLeftRadius), rn.itemRadius];
+    checks['nav.trigger.font'] = [px(cs(t).fontSize), rn.fontSize];
+    checks['nav.trigger.lead.slot'] = [r2(rect(part(t, 'leading')).width), rn.slot];
+    checks['nav.trigger.label.start'] = [px(cs(part(t, 'contents')).paddingLeft), ctl.contents.paddingInline];
+    checks['nav.trigger.label.end'] = [px(cs(part(t, 'contents')).paddingRight), rn.labelEnd];
+    checks['nav.trigger.caret'] = [r2(rect(part(t, 'trailing').firstElementChild).width), rn.caret];
+    checks['nav.link.height'] = [r2(rect(plain.link).height), rn.itemHeight];
+    checks['nav.link.label'] = [px(cs(part(plain.link, 'contents')).paddingLeft), rn.labelStart];
+    t.scrollIntoView({ block: 'center' });
+    // Measured at rest: no open transition, and placement settled (Gecko sometimes places a frame late).
+    el.popup.style.transition = 'none';
+    el.value = 'a';
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 30))));
+    const pr = rect(el.popup), links = item.content.querySelectorAll('a');
+    checks['nav.offset'] = [r2(pr.top - rect(t).bottom), rn.offset];
+    checks['nav.popup.start'] = [r2(pr.left), r2(rect(t).left)];
+    checks['nav.popup.padding'] = [px(cs(el.popup).paddingTop) + px(cs(el.popup).borderTopWidth), rn.popupEdge];
+    checks['nav.popup.radius'] = [px(cs(el.popup).borderTopLeftRadius), rn.popupRadius];
+    checks['nav.popup.width'] = [r2(pr.width), r2(rect(item.content).width + 2 * rn.popupEdge)];
+    checks['nav.popup.height'] = [r2(pr.height), r2(rect(item.content).height + 2 * rn.popupEdge)];
+    checks['nav.content.link.height'] = [r2(rect(links[0]).height), rn.linkHeight];
+    checks['nav.content.link.radius'] = [px(cs(links[0]).borderTopLeftRadius), rn.linkRadius];
+    checks['nav.content.gap'] = [r2(rect(links[1]).top - rect(links[0]).bottom), rn.popupGap];
+    el.value = '';
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

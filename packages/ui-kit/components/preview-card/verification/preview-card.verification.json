@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "preview-card",
+  "scope": "Behavior, parts, events, hover-intent delays and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup. Placement, rendered lengths and motion are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/preview-card/preview-card.element.ts",
+      "sha256": "c401f80242c9b83a4fd8f9c54cd7226d9028ffa584be1a3eece3f170d59e3811"
+    },
+    {
+      "path": "components/preview-card/preview-card.react.tsx",
+      "sha256": "44031258557918f6293b248beec09862441f0006fc17a5b02a9e04ca4d9a836d"
+    },
+    {
+      "path": "components/preview-card/preview-card.recipe.ts",
+      "sha256": "c30035bf2f7644b0f28bc3bef294972c5cc94a0726c428389d26a4c8ae356344"
+    },
+    {
+      "path": "components/preview-card/preview-card.manifest.json",
+      "sha256": "8cb1fb717da19cceb57685f6edb3a6f49a2f777719ec383fcef901bc87e1cb7c"
+    },
+    {
+      "path": "components/popover/popup-base.ts",
+      "sha256": "b7d6f03674349805368834c932370746bc39b190c02a780a12595c2700d411e1"
+    },
+    {
+      "path": "components/popover/popup-parts.ts",
+      "sha256": "de42968d03bf4631117a42804730ffae42f12a057b930af4e9396ad6765d5ce1"
+    },
+    {
+      "path": "dom/popup.ts",
+      "sha256": "e78bada9915e6a53db847ea9809e6954cb9f0a72003ce8acae84141e19a0d4c0"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"preview card|popup\" test/popup.test.ts",
+          "covers": "preset and parts anatomy (the link keeps its role), hover intent (delay, close-delay, moving onto the card), keyboard focus, Escape, a press does not toggle, openchange reasons, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"popup\" test/geometry.test.ts",
+          "covers": "resolvePopup('preview-card'): card-md padding and radius, collection gap, 80u cap"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"preview card|popup\" test/popup.test.ts",
+          "node --test --test-name-pattern=\"popup\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"PreviewCard\" test/popup.test.ts",
+          "covers": "React SSR: the same data-* and recipe classes as the web component on host and parts, the trigger renders a link, the preset renders its parts"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"PreviewCard\" test/popup.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Placement, the top layer, :focus-visible and the reveal motion need a real browser; unit tests cover the attributes they key on.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "No Backdrop part and no handles or payloads (one card for several links).",
+    "Geometry review, manual items (2026-11-02, studio Chromium at u = 3, 4, the theme unit 4.5 and 6, light and dark): growth (long card content wraps at 80u and the card grows; past the space below it flips above or scrolls), RTL (start / end alignment mirrors through the logical anchor rule), focus (the link keeps its own focus ring; Tab moves into the card's links, which keep theirs), screenshots of the Popups family and the size ladder checked light and dark."
+  ]
+}

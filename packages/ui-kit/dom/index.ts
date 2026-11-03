@@ -16,3 +16,5 @@ export * from './otp.ts';
 export * from './combobox.ts';
 export * from './menu.ts';
 export * from './menubar.ts';
+export * from './popup.ts';
+export * from './navigation.ts';

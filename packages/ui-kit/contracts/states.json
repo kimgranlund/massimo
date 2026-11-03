@@ -79,7 +79,7 @@
     "data-popup-open": {
       "baseUi": true,
       "condition": "_popupOpen",
-      "meaning": "The select trigger's popup is open; the combobox input and trigger while its popup is open; a dialog trigger's dialog is open (Base UI Dialog.Trigger)."
+      "meaning": "The select trigger's popup is open; the combobox input and trigger while its popup is open; a dialog trigger's dialog is open (Base UI Dialog.Trigger); the trigger of an open popover, tooltip or preview card (Base UI Trigger)."
     },
     "data-placeholder": {
       "baseUi": true,
@@ -89,22 +89,22 @@
     "data-open": {
       "baseUi": true,
       "condition": "_open",
-      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open. A dialog (host, backdrop and popup) is open."
+      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open; an anchored popup (host, positioner, popup, arrow) is open. A dialog (host, backdrop and popup) is open."
     },
     "data-closed": {
       "baseUi": true,
       "condition": "_closed",
-      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed. A dialog (host, backdrop and popup) is closed."
+      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed; an anchored popup is closed. A dialog (host, backdrop and popup) is closed."
     },
     "data-side": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The side of the trigger the open popup sits on: bottom or top (anchor positioning may flip it)."
+      "meaning": "The side of the trigger the open popup sits on: top, bottom, left or right (measured: anchor positioning may flip it). Select: bottom or top."
     },
     "data-align": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The open popup's alignment to the trigger: start."
+      "meaning": "The open popup's alignment to the trigger: start, center or end (select: start)."
     },
     "data-selected": {
       "baseUi": true,
@@ -159,7 +159,7 @@
     "data-active": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The active tab (Base UI Tabs.Tab; aria-selected for semantics)."
+      "meaning": "The active tab (Base UI Tabs.Tab; aria-selected for semantics); the navigation link to the current page (Base UI NavigationMenu.Link; aria-current=page)."
     },
     "data-hidden": {
       "baseUi": true,
@@ -169,7 +169,7 @@
     "data-activation-direction": {
       "baseUi": true,
       "condition": null,
-      "meaning": "Where the active tab moved last: left, right, up, down, or none before any change (Base UI Tabs; root, list, tabs, indicator, panels)."
+      "meaning": "Where the active tab moved last: left, right, up, down, or none before any change (Base UI Tabs; root, list, tabs, indicator, panels); the side the open navigation content came from: left, right, up or down (Base UI NavigationMenu.Content; absent when the menu opened)."
     },
     "data-panel-open": {
       "baseUi": true,
@@ -291,6 +291,21 @@
       "baseUi": true,
       "condition": null,
       "meaning": "A menu of the menubar is open (Base UI Menubar)."
+    },
+    "data-instant": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The popup opened without its motion: delay (a tooltip opened while the group was warm, Base UI Tooltip.Popup)."
+    },
+    "data-uncentered": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The arrow cannot sit at the trigger's center: the popup edge does not reach it (Base UI Arrow)."
+    },
+    "data-placement": {
+      "baseUi": false,
+      "condition": null,
+      "meaning": "The positioner's preferred side and alignment, <side>-<align> (ours): keys the CSS anchor placement; data-side and data-align say where it ended up."
     }
   },
   "components": {
@@ -995,6 +1010,134 @@
         "data-has-submenu-open"
       ],
       "menus": "its ui-menu children carry ui-menu's state; their triggers are the bar's items"
+    },
+    "ui-popover": {
+      "host": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement",
+        "data-instant"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-instant"
+      ],
+      "arrow": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-uncentered"
+      ]
+    },
+    "ui-tooltip": {
+      "host": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement",
+        "data-instant"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-instant"
+      ],
+      "arrow": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-uncentered"
+      ]
+    },
+    "ui-preview-card": {
+      "host": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ],
+      "arrow": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-uncentered"
+      ]
+    },
+    "ui-navigation-menu": {
+      "host": [
+        "data-orientation"
+      ],
+      "list": [
+        "data-orientation"
+      ],
+      "item": [],
+      "trigger": [
+        "data-popup-open",
+        "data-disabled"
+      ],
+      "content": [
+        "data-open",
+        "data-closed",
+        "data-activation-direction"
+      ],
+      "link": [
+        "data-active"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align"
+      ]
     }
   },
   "native": {
@@ -1096,7 +1239,11 @@
         "ui-drawer",
         "ui-menu",
         "ui-context-menu",
-        "ui-menubar"
+        "ui-menubar",
+        "ui-popover",
+        "ui-tooltip",
+        "ui-preview-card",
+        "ui-navigation-menu"
       ]
     },
     "disabled": {

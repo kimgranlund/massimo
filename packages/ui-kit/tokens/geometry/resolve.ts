@@ -734,3 +734,58 @@ export function resolveMenubar(input: GeometryInput & { vertical?: boolean } = {
     labelStart: m.labelStart, offset: m.offset,
   };
 }
+
+// ── Popups: popover, tooltip, preview card, navigation menu ──
+// Anchored popups share the floating layer: 1u from the anchor (popupOffset), an optional arrow 2u
+// wide that spans the 1u gap, the popup at least as wide as its anchor (tooltips excepted) and no
+// taller than the space beside it. Surfaces come from the container ladder: a popover is a small
+// card (pad 3u, radius ≤ 3u, the group gap 1u between title, description and content), a preview
+// card a medium card (pad 4u, radius ≤ 4u, the collection gap 2u); a tooltip is a 7u text row (a
+// 6u text slot inside a 0.5u edge, 2u at the bare ends) at the control font. Lengths in CSS px.
+
+export type PopupKind = 'popover' | 'tooltip' | 'preview-card';
+/** Widest a popup grows before its text wraps, in u. */
+export const POPUP_MAX_WIDTH = { popover: 80, tooltip: 60, 'preview-card': 80 } as const;
+
+/** ui-popover, ui-tooltip, ui-preview-card: offset, arrow, popup padding, radius, gap and width cap. */
+export function resolvePopup(kind: PopupKind = 'popover', input: GeometryInput = {}) {
+  const x = inputs(input);
+  const c = resolveControl(input);
+  const u = c.unit, b = c.border;
+  const base = { kind, unit: u, border: b, offset: u, arrowWidth: 2 * u, arrowHeight: u, maxWidth: POPUP_MAX_WIDTH[kind] * u };
+  if (kind === 'tooltip') {
+    const line = singleLine(c.fontSize, c.slot);
+    const edge = 0.5 * u;
+    const height = c.slot + 2 * edge; // 7u, like a composite item
+    return {
+      ...base, height, fontSize: c.fontSize, lineHeight: line.lineHeight, minWidthAnchor: false,
+      paddingBlock: edge - b + line.paddingBlock, paddingInline: 2 * u - b,
+      radius: Math.min(3 * u * x.radiusScale, height / 2), gap: 0,
+    };
+  }
+  const box = resolveContainer(kind === 'popover' ? 'card-sm' : 'card-md', input);
+  const gap = input.gap !== undefined ? input.gap * u : (kind === 'popover' ? CONTAINERS.group.padding : CONTAINERS.collection.padding) * u;
+  return { ...base, height: null, fontSize: c.fontSize, lineHeight: null, minWidthAnchor: true, paddingBlock: box.padding, paddingInline: box.padding, radius: box.radius, gap };
+}
+
+/**
+ * ui-navigation-menu: the list is a composite row (8u, edge 0.5u) of triggers and links that are
+ * composite options (7u, the construction pattern, a trailing caret at icon size sm); the popup is
+ * a composite (edge 0.5u, radius (3 + 0.5)u·s) 1u below the list, holding the open item's content,
+ * whose links are composite options too. The popup's size animates between contents (reveal).
+ */
+export function resolveNavigationMenu(input: GeometryInput = {}) {
+  const k = resolveComposite(input);
+  const pop = resolveComposite({ ...input, container: true });
+  const c = resolveControl(input);
+  const label = resolveButtonContents(false, true, input);
+  return {
+    unit: c.unit, border: c.border, offset: c.unit,
+    listHeight: k.rowHeight, listEdge: k.edge, listPadding: k.padding, listGap: k.gap, listRadius: k.radius,
+    itemHeight: k.child.height, itemPadding: k.child.padding, itemRadius: k.child.radius,
+    labelStart: label.start, labelEnd: label.end, slot: c.slot, fontSize: c.fontSize,
+    caret: resolveIcon(c.fontSize, c.unit, 'sm', c.slot),
+    popupEdge: pop.edge, popupPadding: pop.padding, popupGap: pop.gap, popupRadius: pop.radius,
+    linkHeight: pop.child.height, linkRadius: pop.child.radius,
+  };
+}

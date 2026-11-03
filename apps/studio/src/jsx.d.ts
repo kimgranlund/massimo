@@ -60,6 +60,10 @@ declare module 'react' {
       'ui-collapsible': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; value?: string }>;
       'ui-otp-field': El<{ ref?: any; name?: string; value?: string; 'default-value'?: string; length?: number; 'validation-type'?: 'numeric' | 'alpha' | 'alphanumeric' | 'none'; mask?: boolean; 'auto-submit'?: boolean; autocomplete?: string; inputmode?: string; label?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
       'ui-number-field': El<{ ref?: any; name?: string; label?: string; value?: number; 'default-value'?: number; min?: number; max?: number; step?: number; 'small-step'?: number; 'large-step'?: number; 'snap-on-step'?: boolean; 'allow-out-of-range'?: boolean; 'allow-wheel-scrub'?: boolean; 'scrub-direction'?: 'horizontal' | 'vertical'; 'pixel-sensitivity'?: number; format?: string; locale?: string; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean; 'hide-label'?: boolean }>;
+      'ui-tooltip': El<{ ref?: any; content?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; delay?: number; 'close-delay'?: number }>;
+      'ui-preview-card': El<{ ref?: any; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; delay?: number; 'close-delay'?: number; gap?: string }>;
+      'ui-navigation-menu': El<{ ref?: any; label?: string; value?: string; 'default-value'?: string; orientation?: 'horizontal' | 'vertical'; delay?: number; 'close-delay'?: number }>;
+      'ui-popover': El<{ ref?: any; label?: string; open?: boolean; 'default-open'?: boolean; disabled?: boolean; side?: 'top' | 'bottom' | 'left' | 'right'; align?: 'start' | 'center' | 'end'; modal?: boolean; 'open-on-hover'?: boolean; delay?: number; 'close-delay'?: number; gap?: string }>;
     }
   }
 }

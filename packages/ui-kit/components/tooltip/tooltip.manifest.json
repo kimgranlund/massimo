@@ -1,0 +1,479 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "tooltip",
+  "primary": "component:tooltip",
+  "module": "./tooltip.element.ts",
+  "registration": "on-import",
+  "documentation": "./tooltip.md",
+  "examples": "./tooltip.examples.json",
+  "contract": "../../contracts/components.json#/components/tooltip",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./tooltip.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolvePopup"
+      ],
+      "description": "Reference numbers for the offset, arrow, the 7u text row, its padding, radius and width cap."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:tooltip",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-tooltip",
+      "class": "UITooltip",
+      "extends": "UIElement",
+      "intent": [
+        "Name or explain a control in a few words while the pointer rests on it or it has keyboard focus"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the tooltip is shown. Setting it (attribute or property) fires no openchange; hover, focus, a press, Escape or an outside press set it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Never opens; presses, hover and focus on the trigger do nothing.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "side",
+          "type": "string",
+          "default": "",
+          "attribute": "side",
+          "reflects": false,
+          "enum": [
+            "",
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ],
+          "description": "Preferred side of the trigger (Base UI Positioner side): top, bottom, left or right; empty for the default (top). The popup flips to the opposite side when there is no room; data-side says where it is.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "align",
+          "type": "string",
+          "default": "",
+          "attribute": "align",
+          "reflects": false,
+          "enum": [
+            "",
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Alignment along that side (Base UI Positioner align): start, center or end; empty for the default (center).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": null,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "Open after the pointer rests this long on the trigger, in ms (Base UI delay); default 600. Keyboard focus and a warm group open it at once.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "closeDelay",
+          "type": "number",
+          "default": null,
+          "attribute": "close-delay",
+          "reflects": false,
+          "description": "Close this long after the pointer leaves trigger and popup, in ms (Base UI closeDelay); default 0 (at least one frame, so the pointer can cross onto the popup).",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "content",
+          "type": "string",
+          "default": "",
+          "attribute": "content",
+          "reflects": false,
+          "description": "The popup's text in the preset form (kept in sync); ignored when a [data-part=popup] is authored.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-hover' | 'trigger-focus' | 'trigger-press' | 'focus-out' | 'outside-press' | 'escape-key', event: Event }",
+          "trigger": "hover, keyboard focus, blur, a press on the trigger, an outside press or Escape opens or closes the tooltip; preventDefault keeps it as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none on the host; the popup is role=tooltip and the trigger's aria-describedby names it (after any description the trigger already has)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Tab onto the trigger",
+            "action": "show the tooltip (keyboard focus only)"
+          },
+          {
+            "keys": "Escape",
+            "action": "hide it; focus stays on the trigger"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the trigger names itself (text or aria-label); the tooltip describes it"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "One trigger element (the first child element), or authored [data-part=trigger] and [data-part=popup] children; a [data-part=arrow] in the popup draws the arrow."
+      },
+      "layout": {
+        "display": "contents",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "Text only: the popup is not focusable and its content is never interactive (use a popover for interactive content).",
+        "The host takes no box (display: contents): the trigger lays out where the host is written.",
+        "Touch has no hover: a tooltip opens from keyboard focus or hover only, so the trigger must be understandable without it.",
+        "Setting open from script shows or hides the popup without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Content the user acts on (links, buttons, inputs).",
+          "reason": "A tooltip disappears when the pointer leaves and takes no focus; a popover holds interactive content."
+        },
+        {
+          "when": "A preview of a linked page or profile.",
+          "reason": "A preview card is the richer hover card for links."
+        },
+        {
+          "when": "Text the user needs in order to complete a task.",
+          "reason": "Hidden text is easy to miss and unavailable on touch; put it in a field description."
+        }
+      ],
+      "searchTerms": [
+        "tooltip",
+        "hint",
+        "hover label",
+        "title text"
+      ]
+    },
+    {
+      "id": "part:tooltip-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "ui-button",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The described control (the first child element, any focusable element; a plain one becomes role=button): aria-describedby names the popup, data-popup-open while open. Base UI Tooltip.Trigger."
+    },
+    {
+      "id": "part:tooltip-positioner",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner]",
+      "summary": "The floating layer (popover=manual, in the top layer while open), 1u from the trigger, above it by default. Base UI Tooltip.Positioner."
+    },
+    {
+      "id": "part:tooltip-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=popup]",
+      "summary": "The text (role=tooltip): a 7u row on the inverse fill; data-instant when the warm group skipped the motion. Base UI Tooltip.Popup."
+    },
+    {
+      "id": "part:tooltip-arrow",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=arrow]",
+      "summary": "Optional triangle on the popup's edge facing the trigger, centered on it. Base UI Tooltip.Arrow."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:tooltip",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-trigger"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-positioner"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-popup"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "ownsPart",
+      "to": "part:tooltip-arrow"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "allowedIn",
+      "to": "context:field-grid"
+    },
+    {
+      "from": "component:tooltip",
+      "relation": "uses",
+      "to": "component:popover"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./tooltip.element.ts",
+      "exports": {
+        "component:tooltip": "UITooltip"
+      },
+      "verification": "./verification/tooltip.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./tooltip.react.tsx",
+      "exports": {
+        "component:tooltip": "Tooltip"
+      },
+      "verification": "./verification/tooltip.verification.json#/renderers/react",
+      "props": {
+        "component:tooltip": {
+          "inherits": [
+            "Omit<PopupRootProps, 'content'>"
+          ],
+          "props": [
+            "content?: ReactNode // The popup's text.",
+            "side?: Side // Preferred side and alignment (Tooltip.Positioner); default top, center.",
+            "align?: Align",
+            "children?: ReactNode // The trigger: one element (rendered as Tooltip.Trigger), or text for a kit Button."
+          ]
+        }
+      },
+      "parts": {
+        "component:tooltip": {
+          "Tooltip.Provider": {
+            "inherits": [],
+            "props": [
+              "delay?: number // Hover: open after the pointer rests this long on a trigger, ms (default 600).",
+              "closeDelay?: number // Hover: close this long after the pointer leaves, ms (default 0).",
+              "timeout?: number // A tooltip opened within this long after another closed opens at once, ms (default 400).",
+              "children?: ReactNode"
+            ]
+          },
+          "Tooltip.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes it, with Base UI's details ({ reason, event }).",
+              "disabled?: boolean // Never opens.",
+              "delay?: number // Hover: open after the pointer rests this long on the trigger, ms.",
+              "closeDelay?: number // Hover: close this long after the pointer leaves trigger and popup, ms.",
+              "size?: number // Unit u in px.",
+              "children?: ReactNode"
+            ]
+          },
+          "Tooltip.Trigger": {
+            "inherits": [
+              "Omit<ButtonProps, 'render' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "href?: string"
+            ]
+          },
+          "Tooltip.Positioner": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "side?: Side // Preferred side of the trigger (Base UI side); flips when there is no room.",
+              "align?: Align // Alignment along the side (Base UI align).",
+              "children?: ReactNode"
+            ]
+          },
+          "Tooltip.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Tooltip.Arrow": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

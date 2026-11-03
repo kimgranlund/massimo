@@ -947,6 +947,94 @@
         "card"
       ],
       "behavior": "Roving focus: one trigger is the tab stop; ArrowRight / ArrowLeft (mirrored in RTL; ArrowDown / ArrowUp when vertical), Home and End move between enabled triggers, wrapping. ArrowDown (ArrowRight when vertical), Enter or Space opens a menu on its first item, ArrowUp on its last. While one is open, ArrowRight / ArrowLeft inside it switch to the adjacent menu and hovering another trigger opens it; one menu is open at a time (the others close with reason sibling-open)."
+    },
+    "popover": {
+      "geometryFamily": "popup",
+      "element": "Host (display: contents) holds the trigger and a positioner in the top layer (popover=manual) holding the popup (role=dialog) and an optional arrow. The label property makes a ui-button trigger; other children become the popup unless a [data-part=popup] is authored.",
+      "parts": [
+        "popover-trigger",
+        "popover-positioner",
+        "popover-popup",
+        "popover-arrow?",
+        "popover-title?",
+        "popover-description?",
+        "popover-close?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "inline"
+      ],
+      "behavior": "A trigger press (pointer, Enter, Space) toggles the popup and fires a cancelable openchange ({ open, reason, event }); opening by a press moves focus into the popup. An outside press, Escape (the topmost layer), focus leaving (non-modal) or a Close part close it ('outside-press', 'escape-key', 'focus-out', 'close-press') and focus returns to the trigger. modal traps Tab inside. open-on-hover also opens it after the delay ('trigger-hover'). Placed 1u from the trigger, flipping when there is no room."
+    },
+    "tooltip": {
+      "geometryFamily": "popup",
+      "element": "Host (display: contents) holds the trigger (its first child element, or a [data-part=trigger]) and a positioner in the top layer (popover=manual) holding the popup (role=tooltip) and an optional arrow. The content property fills a generated popup.",
+      "parts": [
+        "tooltip-trigger",
+        "tooltip-positioner",
+        "tooltip-popup",
+        "tooltip-arrow?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "inline",
+        "field-grid"
+      ],
+      "behavior": "Opens after delay (600 ms) while the pointer rests on the trigger ('trigger-hover'), at once on keyboard focus ('trigger-focus') and at once without motion while the group is warm (another tooltip closed under 400 ms ago, data-instant). Closes when the pointer leaves trigger and popup, on blur ('focus-out'), a press on the trigger ('trigger-press'), an outside press or Escape; each fires a cancelable openchange ({ open, reason, event }). The trigger's aria-describedby names the popup; focus never moves. Placed 1u from the trigger, above it by default, flipping when there is no room."
+    },
+    "preview-card": {
+      "geometryFamily": "popup",
+      "element": "Host (display: contents) holds the trigger link (its first child element, or a [data-part=trigger]) and a positioner in the top layer (popover=manual) holding the card popup and an optional arrow; the other children become the card.",
+      "parts": [
+        "preview-card-trigger",
+        "preview-card-positioner",
+        "preview-card-popup",
+        "preview-card-arrow?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "inline"
+      ],
+      "behavior": "Opens after delay (600 ms) while the pointer rests on the link ('trigger-hover') and at once on keyboard focus ('trigger-focus'); stays while the pointer moves onto the card; closes close-delay (300 ms) after the pointer leaves link and card, when focus leaves both ('focus-out'), on an outside press or Escape; each fires a cancelable openchange ({ open, reason, event }). A press follows the link. Tab moves from the link into the card. Placed 1u below the link, flipping when there is no room."
+    },
+    "navigation-menu": {
+      "geometryFamily": "popup",
+      "element": "Host (role=navigation, aria-label) holds a list part (role=list) of item parts (role=listitem) and a positioner in the top layer (popover=manual) › popup › viewport holding every item's content part; an item holds a trigger (role=button, aria-expanded, aria-controls, a caret in trailing) whose content shows in the viewport, or a link. An item with a label gets a generated trigger and its children become its content.",
+      "parts": [
+        "navigation-menu-list",
+        "navigation-menu-item",
+        "navigation-menu-trigger",
+        "slot-leading?",
+        "slot-prefix?",
+        "slot-contents?",
+        "slot-suffix?",
+        "slot-trailing?",
+        "navigation-menu-content",
+        "navigation-menu-link",
+        "navigation-menu-positioner",
+        "navigation-menu-popup",
+        "navigation-menu-viewport"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel"
+      ],
+      "behavior": "Hover opens an item after delay (50 ms; moving between triggers while open switches at once) and closes it close-delay (50 ms) after the pointer leaves triggers and popup ('trigger-hover'); a press toggles it ('trigger-press'). Arrows along the orientation (mirrored in RTL), Home and End move focus between the list's triggers and links; ArrowDown (ArrowRight when vertical) opens an item and focuses its first link ('list-navigation'); Tab moves from an open trigger into its content and on to the next item. Escape, an outside press or focus leaving close it; a link with close-on-click closes it ('link-press'). Each change fires a cancelable change ({ value, reason, event }; value '' when closed). The popup sits 1u below the open trigger, sized to its content (--popup-width / --popup-height, reveal intent); new content slides in from the side it came from (data-activation-direction)."
     }
   }
 }

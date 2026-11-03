@@ -39,6 +39,10 @@ import '@massimo/ui-kit/components/drawer/element';
 import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/components/context-menu/element';
 import '@massimo/ui-kit/components/menubar/element';
+import '@massimo/ui-kit/components/popover/element';
+import '@massimo/ui-kit/components/tooltip/element';
+import '@massimo/ui-kit/components/preview-card/element';
+import '@massimo/ui-kit/components/navigation-menu/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -80,6 +84,10 @@ import { Drawer } from '@massimo/ui-kit/components/drawer/react';
 import { Menu } from '@massimo/ui-kit/components/menu/react';
 import { ContextMenu } from '@massimo/ui-kit/components/context-menu/react';
 import { Menubar } from '@massimo/ui-kit/components/menubar/react';
+import { Popover } from '@massimo/ui-kit/components/popover/react';
+import { Tooltip } from '@massimo/ui-kit/components/tooltip/react';
+import { PreviewCard } from '@massimo/ui-kit/components/preview-card/react';
+import { NavigationMenu } from '@massimo/ui-kit/components/navigation-menu/react';
 
 /** Toast twins: each side draws its own manager seeded with the same two toasts (no timeout). */
 const seedToasts = (m: ToastManager) => {
@@ -101,6 +109,30 @@ const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
 const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh', 'fs', 'fsd', 'fm'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
+/** Attributes the DOM types lack (a navigation item's value and label, a link's active), for ui-navigation-menu markup. */
+const nav = (a: Record<string, string>) => a as Record<string, string>;
+
+// ── Anchored popups: twins opened one pair at a time (open = "<u>:<key>"), measured at rest ──
+const POPUP_KEYS = ['pop', 'tip', 'pc', 'nav'];
+function PopupPair({ u, open }: { u: number; open: string | null }) {
+  const on = (k: string) => open === `${u}:${k}`;
+  return (
+    <div data-size={u} data-pcase={u} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, width: 640, height: 60 * u }}>
+      <div data-side="wc">
+        <ui-popover data-k="pop" side="bottom" align="start" open={on('pop')}><ui-button data-part="trigger">Open popover</ui-button><div data-part="popup"><h2 data-part="title">Title</h2><p data-part="description">Description text</p><div data-part="arrow" /></div></ui-popover>
+        <ui-tooltip data-k="tip" side="bottom" open={on('tip')}><ui-button data-part="trigger">Tip</ui-button><div data-part="popup">Tooltip text<div data-part="arrow" /></div></ui-tooltip>
+        <ui-preview-card data-k="pc" side="bottom" align="start" open={on('pc')}><a data-part="trigger" href="#x">Preview</a><div data-part="popup"><strong>Card</strong><span>Body</span><div data-part="arrow" /></div></ui-preview-card>
+        <ui-navigation-menu data-k="nav" label="N" value={on('nav') ? 'a' : ''}><div data-part="item" {...nav({ value: 'a', label: 'Menu' })}><a href="#a">Link one</a><a href="#b" {...nav({ active: '' })}>Link two</a></div><div data-part="item" {...nav({ value: 'p' })}><a data-part="link" href="#c">Plain</a></div></ui-navigation-menu>
+      </div>
+      <div data-side="react">
+        <Popover.Root data-k="pop" open={on('pop')}><Popover.Trigger>Open popover</Popover.Trigger><Popover.Positioner side="bottom" align="start"><Popover.Popup><Popover.Title>Title</Popover.Title><Popover.Description>Description text</Popover.Description></Popover.Popup><Popover.Arrow /></Popover.Positioner></Popover.Root>
+        <Tooltip.Root data-k="tip" open={on('tip')}><Tooltip.Trigger>Tip</Tooltip.Trigger><Tooltip.Positioner side="bottom"><Tooltip.Popup>Tooltip text</Tooltip.Popup><Tooltip.Arrow /></Tooltip.Positioner></Tooltip.Root>
+        <PreviewCard.Root data-k="pc" open={on('pc')}><PreviewCard.Trigger href="#x">Preview</PreviewCard.Trigger><PreviewCard.Positioner side="bottom" align="start"><PreviewCard.Popup><strong>Card</strong><span>Body</span></PreviewCard.Popup><PreviewCard.Arrow /></PreviewCard.Positioner></PreviewCard.Root>
+        <NavigationMenu data-k="nav" label="N" value={on('nav') ? 'a' : ''}><NavigationMenu.Item value="a" label="Menu"><NavigationMenu.Link href="#a">Link one</NavigationMenu.Link><NavigationMenu.Link href="#b" active>Link two</NavigationMenu.Link></NavigationMenu.Item><NavigationMenu.Item value="p"><NavigationMenu.Link href="#c">Plain</NavigationMenu.Link></NavigationMenu.Item></NavigationMenu>
+      </div>
+    </div>
+  );
+}
 
 function Pair({ u }: { u: number }) {
   return (
@@ -424,6 +456,100 @@ const composedRoot = document.createElement('div');
 composedRoot.id = 'composed';
 root.after(composedRoot);
 flushSync(() => createRoot(composedRoot).render(<>{UNITS.map((u) => <ComposedPair key={u} u={u} />)}</>));
+// The popup twins sit last; their motion is off so each opens at rest.
+const popupsRoot = document.createElement('div');
+popupsRoot.id = 'popups';
+popupsRoot.innerHTML = '<style>#popups *, #popups *::after { transition: none !important; }</style>';
+composedRoot.after(popupsRoot);
+const popupsMount = document.createElement('div');
+popupsRoot.append(popupsMount);
+const popups = createRoot(popupsMount);
+const renderPopups = (open: string | null) => flushSync(() => popups.render(<>{UNITS.map((u) => <PopupPair key={u} u={u} open={open} />)}</>));
+renderPopups(null);
+
+/** Open each popup twin pair in view and compare their state and geometry relative to the trigger. */
+async function popupParity(fails: string[]) {
+  let n = 0;
+  const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const STRUCT = new Set(['data-ui', 'data-part', 'data-size', 'data-k']);
+  const st = (el: Element | null) => (el ? [...el.attributes].map((a) => a.name).filter((x) => x.startsWith('data-') && !STRUCT.has(x)).sort().join(' ') : 'missing');
+  // The navigation menu: its list parts, and while open the popup and the open content.
+  const navParts = (h: Element) => {
+    const q = (s: string) => [...h.querySelectorAll(s)];
+    return {
+      host: [h], list: q(':scope > [data-part=list]'), item: q(':scope > [data-part=list] > [data-part=item]'),
+      trigger: q('[data-part=trigger]'), listLink: q(':scope > [data-part=list] > [data-part=item] > [data-part=link]'),
+      positioner: q(':scope > [data-part=positioner]'), popup: q(':scope > [data-part=positioner] > [data-part=popup]'),
+      content: q('[data-part=content][data-open]'), contentLink: q('[data-part=content][data-open] [data-part=link]'),
+    };
+  };
+  const navGeo = (h: Element) => {
+    const hr = h.getBoundingClientRect(), p = navParts(h);
+    const rel = (e: Element, o = hr) => { const r = e.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - o.left)}:${r2(r.top - o.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.color}:${cs.borderTopLeftRadius}:${cs.fontSize}`; };
+    const pop = p.popup[0], pr = pop?.getBoundingClientRect();
+    return {
+      list: p.list.map((e) => rel(e)).join(' '), triggers: p.trigger.map((e) => rel(e)).join(' '), links: p.listLink.map((e) => rel(e)).join(' '),
+      labels: p.trigger.concat(p.listLink).map((e) => { const c = e.querySelector('[data-part=contents]'); return c ? rel(c) : 'none'; }).join(' '),
+      popup: pop && pr && pr.width ? `${r2(pr.left - p.trigger[0].getBoundingClientRect().left)}:${r2(pr.top - p.trigger[0].getBoundingClientRect().bottom)}:${r2(pr.width)}x${r2(pr.height)}:${getComputedStyle(pop).padding}:${getComputedStyle(pop).borderTopLeftRadius}:${getComputedStyle(pop).backgroundColor}` : 'closed',
+      contentLinks: pr ? p.contentLink.map((e) => rel(e, pr)).join(' ') : '',
+    };
+  };
+  const parts = (h: Element) => {
+    const pos = h.querySelector(':scope > [data-part=positioner]');
+    return { host: h, trigger: h.querySelector(':scope > [data-part=trigger]'), positioner: pos, popup: pos?.querySelector(':scope > [data-part=popup]') ?? null, arrow: pos?.querySelector(':scope > [data-part=arrow]') ?? null };
+  };
+  const geo = (h: Element) => {
+    const { trigger, popup, arrow, positioner } = parts(h);
+    if (!trigger || !popup) return { missing: 'parts' };
+    const tr = trigger.getBoundingClientRect(), pr = popup.getBoundingClientRect(), cs = getComputedStyle(popup);
+    const rel = (e: Element) => { const r = e.getBoundingClientRect(); return `${r2(r.left - pr.left)}:${r2(r.top - pr.top)}:${r2(r.width)}x${r2(r.height)}`; };
+    return {
+      side: positioner?.getAttribute('data-side') ?? '', offsetTop: r2(pr.top - tr.bottom), offsetLeft: r2(pr.left - tr.left), size: `${r2(pr.width)}x${r2(pr.height)}`,
+      trigger: `${r2(tr.width)}x${r2(tr.height)}`, pad: cs.padding, radius: cs.borderTopLeftRadius, bg: cs.backgroundColor, color: cs.color, shadow: cs.boxShadow, border: cs.borderTopWidth,
+      arrow: arrow ? rel(arrow) : '', arrowBg: arrow ? getComputedStyle(arrow).backgroundColor : '',
+      kids: [...popup.children].map((k) => `${rel(k)}:${getComputedStyle(k).color}:${getComputedStyle(k).fontSize}`).join(' '),
+    };
+  };
+  for (const u of UNITS) {
+    for (const k of POPUP_KEYS) {
+      renderPopups(`${u}:${k}`);
+      const c = popupsRoot.querySelector(`[data-pcase="${u}"]`)!;
+      const a = c.querySelector(`[data-side=wc] [data-k=${k}]`)!, b = c.querySelector(`[data-side=react] [data-k=${k}]`)!;
+      if (k === 'nav') {
+        (a.querySelector('[data-part=trigger]') as HTMLElement).scrollIntoView({ block: 'center' });
+        await frame(); await frame();
+        const [na, nb] = [navParts(a), navParts(b)];
+        for (const part of Object.keys(na) as (keyof typeof na)[]) {
+          n++;
+          if (na[part].length !== nb[part].length) { fails.push(`u${u} nav ${part}: wc ${na[part].length} react ${nb[part].length}`); continue; }
+          na[part].forEach((x, i) => { n++; if (st(x) !== st(nb[part][i])) fails.push(`u${u} nav ${part}[${i}] data-*: wc "${st(x)}" react "${st(nb[part][i])}"`); });
+        }
+        const [ga, gb] = [navGeo(a), navGeo(b)] as Record<string, string>[];
+        n++;
+        if (ga.popup === 'closed' || !ga.contentLinks) fails.push(`u${u} nav: not open (wc ${ga.popup})`);
+        for (const key of Object.keys(ga)) { n++; if (ga[key] !== gb[key]) fails.push(`u${u} nav.${key}: wc ${ga[key]} react ${gb[key]}`); }
+        continue;
+      }
+      (parts(a).trigger as HTMLElement).scrollIntoView({ block: 'center' });
+      await frame(); await frame();
+      const [pa, pb] = [parts(a), parts(b)];
+      for (const part of Object.keys(pa) as (keyof typeof pa)[]) {
+        n++;
+        if (st(pa[part]) !== st(pb[part])) fails.push(`u${u} ${k} ${part} data-*: wc "${st(pa[part])}" react "${st(pb[part])}"`);
+      }
+      const [ga, gb] = [geo(a), geo(b)] as Record<string, unknown>[];
+      // The pair must really be open and placed (a closed pair would agree vacuously).
+      n++;
+      if (!ga.side || !gb.side) fails.push(`u${u} ${k}: not open (wc side "${ga.side}", react side "${gb.side}")`);
+      for (const key of Object.keys(ga)) {
+        n++;
+        if (ga[key] !== gb[key]) fails.push(`u${u} ${k}.${key}: wc ${ga[key]} react ${gb[key]}`);
+      }
+    }
+  }
+  renderPopups(null);
+  return n;
+}
 
 setTimeout(() => {
   const fails: string[] = []; let checks = 0;
@@ -780,10 +906,12 @@ setTimeout(() => {
       if (got[0][0] !== 'alertdialog' || got[0][2] !== 'Cancel') fails.push(`u${u} adlg: role ${got[0][0]}, focus on "${got[0][2]}"`);
     }
   };
+  // Then the modal and anchored popups, one after the other (an open alert dialog makes the page inert).
   press(lbs[0]).then((a) => press(lbs[1]).then(async (b) => {
     checks++;
     if (a !== b) fails.push(`keyboard listbox: wc ${a} react ${b}`);
     await alerts();
+    checks += await popupParity(fails);
     document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
   }));
   if (false) document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);

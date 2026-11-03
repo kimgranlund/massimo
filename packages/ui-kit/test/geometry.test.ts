@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -338,4 +338,42 @@ test('menu: a menubar is an 8u composite row of 7u composite-option triggers; it
   assert.equal(resolveMenubar({ unit: 4, border: 0 }).rowHeight, 32, 'one row stays 8u at any B');
   assert.equal(resolveMenubar({ unit: 4, radiusScale: 2 }).radius, 16, 'capped at half the row');
   assert.equal(resolveMenubar({ unit: 4, radiusScale: 2, vertical: true }).radius, 28, 'uncapped when vertical');
+});
+
+test('popup: 1u offset, a 2u × 1u arrow; the popover is a card-sm with the group gap, capped at 80u', () => {
+  const p = resolvePopup('popover', { unit: 4, border: 1 });
+  assert.deepEqual([p.offset, p.arrowWidth, p.arrowHeight], [4, 8, 4]);
+  assert.equal(p.paddingBlock, 11, '3u - B');
+  assert.equal(p.radius, 12);
+  assert.equal(p.gap, 4, 'group gap 1u');
+  assert.equal(resolvePopup('popover', { unit: 4, gap: 2 }).gap, 8, 'the gap attribute wins');
+  assert.equal(p.maxWidth, 320);
+  assert.equal(resolvePopup('popover', { unit: 4, radiusScale: 2 }).radius, 12, 'never above the padding');
+  assert.equal(p.minWidthAnchor, true);
+});
+
+test('popup: a tooltip is a 7u text row (0.5u edge, 2u ends), radius min(3u·s, 3.5u), capped at 60u, not trigger-wide', () => {
+  const t = resolvePopup('tooltip', { unit: 4, border: 1 });
+  assert.equal(t.height, 28);
+  assert.equal(t.lineHeight, 16.8);
+  assert.equal(t.paddingBlock + t.border + t.lineHeight / 2, 14, 'the text centered in the 7u row');
+  assert.equal(t.paddingInline, 7, '2u - B');
+  assert.equal(t.radius, 12);
+  assert.equal(resolvePopup('tooltip', { unit: 4, radiusScale: 3 }).radius, 14, 'capped at half the row');
+  assert.equal(t.maxWidth, 240);
+  assert.equal(t.minWidthAnchor, false);
+});
+
+test('popup: a preview card is a card-md with the collection gap, capped at 80u', () => {
+  const c = resolvePopup('preview-card', { unit: 4, border: 1 });
+  assert.deepEqual([c.paddingBlock, c.paddingInline, c.radius, c.gap, c.maxWidth, c.offset], [15, 15, 16, 8, 320, 4]);
+  assert.equal(resolvePopup('preview-card', { unit: 4, radiusScale: 0.5 }).radius, 8);
+});
+
+test('navigation menu: an 8u composite list of 7u triggers and links with a sm caret; the popup a composite container', () => {
+  const n = resolveNavigationMenu({ unit: 4, border: 1 });
+  assert.deepEqual([n.listHeight, n.listEdge, n.listPadding, n.listGap], [32, 2, 1, 2]);
+  assert.deepEqual([n.itemHeight, n.itemPadding, n.itemRadius], [28, 1, 12]);
+  assert.deepEqual([n.labelStart, n.labelEnd, n.caret, n.offset], [8, 4, 12, 4]);
+  assert.deepEqual([n.popupEdge, n.popupPadding, n.popupRadius, n.linkHeight, n.linkRadius], [2, 1, 14, 28, 12]);
 });

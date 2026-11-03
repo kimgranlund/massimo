@@ -88,7 +88,15 @@
     "./components/context-menu/element": "./components/context-menu/context-menu.element.ts",
     "./components/context-menu/react": "./components/context-menu/context-menu.react.tsx",
     "./components/menubar/element": "./components/menubar/menubar.element.ts",
-    "./components/menubar/react": "./components/menubar/menubar.react.tsx"
+    "./components/menubar/react": "./components/menubar/menubar.react.tsx",
+    "./components/popover/element": "./components/popover/popover.element.ts",
+    "./components/popover/react": "./components/popover/popover.react.tsx",
+    "./components/tooltip/element": "./components/tooltip/tooltip.element.ts",
+    "./components/tooltip/react": "./components/tooltip/tooltip.react.tsx",
+    "./components/preview-card/element": "./components/preview-card/preview-card.element.ts",
+    "./components/preview-card/react": "./components/preview-card/preview-card.react.tsx",
+    "./components/navigation-menu/element": "./components/navigation-menu/navigation-menu.element.ts",
+    "./components/navigation-menu/react": "./components/navigation-menu/navigation-menu.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

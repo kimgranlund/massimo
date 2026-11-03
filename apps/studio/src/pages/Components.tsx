@@ -35,6 +35,10 @@ import '@massimo/ui-kit/components/drawer/element';
 import '@massimo/ui-kit/components/menu/element';
 import '@massimo/ui-kit/components/context-menu/element';
 import '@massimo/ui-kit/components/menubar/element';
+import '@massimo/ui-kit/components/popover/element';
+import '@massimo/ui-kit/components/tooltip/element';
+import '@massimo/ui-kit/components/preview-card/element';
+import '@massimo/ui-kit/components/navigation-menu/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -58,6 +62,7 @@ export const FAMILIES = [
   ['scrolling', 'Scrolling', 'ui-scroll-area'],
   ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog · ui-drawer'],
   ['menus', 'Menus', 'ui-menu · ui-context-menu · ui-menubar'],
+  ['popups', 'Popups', 'ui-popover · ui-tooltip · ui-preview-card · ui-navigation-menu'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -309,6 +314,13 @@ const COMMANDS = ['build', 'bench', 'check', 'deploy', 'dev', 'test'];
 const LABELS = [['bug', 'Bug'], ['docs', 'Docs'], ['perf', 'Performance'], ['ui', 'UI'], ['a11y', 'Accessibility'], ['infra', 'Infrastructure']] as const;
 // Overlay specimens: dialog content (a field column, an action row of triggers).
 const dialogBody = css({ display: 'flex', flexDirection: 'column', gap: '3' });
+/** Attributes the DOM types lack (a navigation item's value and label, a link's active), for ui-navigation-menu markup. */
+const nav = (a: Record<string, string>) => a as Record<string, string>;
+// Popup specimens: a row of triggers; ladder rows leave room for the open popup beside the trigger.
+const popupRow = css({ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4' });
+const popupLadder = css({ display: 'flex', alignItems: 'start', minHeight: '[calc(36 * var(--u))]', width: 'full' });
+const popupGap = css({ width: '[40%]', flexShrink: '0' });
+const popupText = css({ textStyle: 'body', color: 'fg.muted', margin: '0' });
 
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
@@ -329,11 +341,81 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     scrolling: 'A ui-scroll-area scrolls natively with its own scrollbars hidden and draws the kit\'s over its edges: a 2u track, the thumb u thick 0.5u inside it and at least 4u long, pills; a 2u corner where both bars show. The bars show while their axis overflows and fade in on hover, scroll or keyboard focus; drag a thumb or press a track. Base UI\'s overflow data-* and variables are set by script.',
     overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent. An alert dialog is the same popup with role=alertdialog: always modal, no outside-press dismissal, focus on the least destructive action (Cancel). A drawer is a square panel-level sheet (6u padding) on one edge: side sheets 80u wide, top and bottom sheets full width, 8u of the viewport kept in view; it slides in on the reveal intent and a swipe toward its edge dismisses it (reason swipe).',
     menus: 'A menu trigger is an 8u control row; its popup is a floating composite 1u below it (beside a submenu trigger), at least as wide, with 7u items in the construction pattern. Focus moves to the highlighted item: arrow keys wrap, Home / End, typeahead and the pointer; ArrowRight opens a submenu, ArrowLeft or Escape closes it. Checkbox and radio items keep a 6u indicator slot and stay open on a press. A context menu opens the same popup 1u from the pointer on a right click, a long press or Shift+F10. A menubar is an 8u composite row of its menus\' triggers (7u); arrow keys move between them and, once a menu is open, switch menus, as does hovering another trigger.',
+    popups: 'Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger. A popover is a small card (padding 3u, radius ≤ 3u, a 1u gap) that takes focus when pressed open; Escape, an outside press or a Close part dismiss it. A tooltip is a 7u text row on the inverse fill, above its trigger, after 600 ms on hover or at once on keyboard focus (and at once while the group is warm). A preview card is a medium card (padding 4u, radius ≤ 4u, a 2u gap) below a link, after 600 ms on hover; it stays while the pointer moves onto it. A navigation menu is an 8u composite row of 7u triggers and links; one popup (a composite container) shows the open item\'s links 1u below its trigger, animating its size between items. An arrow is a 2u triangle spanning the 1u gap.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     feedback: 'A toast is a container at the card-sm level: padding 3u − B, radius equal to it. Title and description share one column 0.5u apart; the action is an 8u control row and the close a 6u slot, 1u apart. The viewport is 80u wide, 4u from the window edges; collapsed toasts peek 2u, expanded (hover or focus, which also pause the timers) they stand 2u apart. Swipe, the close or Escape dismiss; F6 focuses the stack.',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
   const CONTENT: Record<Family, ReactNode> = {
+    popups: (
+      <>
+        <Row label="Popover">
+          <div className={popupRow}>
+            <ui-popover label="Notifications">
+              <h2 data-part="title">Notifications</h2>
+              <p data-part="description">You are all caught up. New mentions and replies show here.</p>
+            </ui-popover>
+            <ui-popover side="top">
+              <ui-button data-part="trigger"><i slot="leading" name="share" />Share</ui-button>
+              <div data-part="popup">
+                <h2 data-part="title">Share link</h2>
+                <p data-part="description">Anyone with the link can view this page.</p>
+                <ui-button data-part="close">Done</ui-button>
+                <div data-part="arrow" />
+              </div>
+            </ui-popover>
+            <ui-popover label="Rename" modal>
+              <h2 data-part="title">Rename file</h2>
+              <ui-input label="Name" value="Quarterly report" />
+              <ui-button data-part="close">Save</ui-button>
+            </ui-popover>
+            <ui-popover label="Hover me" open-on-hover><p className={popupText}>Opens after 300 ms on hover; a press keeps it open.</p></ui-popover>
+          </div>
+        </Row>
+        <Row label="Tooltip">
+          <div className={popupRow}>
+            <ui-tooltip content="Bold (⌘B)"><ui-button aria-label="Bold"><i slot="leading" name="text-b" /></ui-button></ui-tooltip>
+            <ui-tooltip content="Italic (⌘I)"><ui-button aria-label="Italic"><i slot="leading" name="text-italic" /></ui-button></ui-tooltip>
+            <ui-tooltip side="bottom"><ui-button data-part="trigger">Publish</ui-button><div data-part="popup">Visible to everyone with the link<div data-part="arrow" /></div></ui-tooltip>
+            <ui-tooltip content="A longer explanation wraps at 60u so the tooltip stays a readable column of short lines." side="right"><ui-button>Long text</ui-button></ui-tooltip>
+          </div>
+        </Row>
+        <Row label="Preview card">
+          <div className={popupText}>
+            Geometry follows the{' '}
+            <ui-preview-card>
+              <a href="#/geometry">Differential Forms model</a>
+              <strong>Differential Forms</strong>
+              <span>Every length is a multiple of the unit u: controls 8u, slots 6u, type 10px + u.</span>
+            </ui-preview-card>
+            {' '}by{' '}
+            <ui-preview-card side="top">
+              <a data-part="trigger" href="#/components">the kit</a>
+              <div data-part="popup"><ui-avatar name="Massimo Kit" /><span>Light-DOM web components with React renderers.</span><div data-part="arrow" /></div>
+            </ui-preview-card>.
+          </div>
+        </Row>
+        <Row label="Navigation menu">
+          <ui-navigation-menu label="Specimen">
+            <div data-part="item" {...nav({ value: 'docs', label: 'Docs' })}><a href="#/geometry">Geometry</a><a href="#/colors" {...nav({ active: '' })}>Colors</a><a href="#/typography">Typography</a></div>
+            <div data-part="item" {...nav({ value: 'kit', label: 'Components' })}><a href="#/components?family=actions">Actions and toggles</a><a href="#/components?family=fields">Fields, selects and fieldsets</a><a href="#/components?family=disclosure">Collapsibles, accordions and tabs</a><a href="#/components?family=popups">Popovers, tooltips and preview cards</a></div>
+            <div data-part="item"><a data-part="link" href="#/motion">Motion</a></div>
+          </ui-navigation-menu>
+        </Row>
+        <SizeLadder family="popup" params={params}>
+          <div className={popupLadder}>
+            <ui-popover label="Details" side="right" align="start" default-open>
+              <h2 data-part="title">Storage</h2>
+              <p data-part="description">12 of 50 GB used.</p>
+              <div data-part="arrow" />
+            </ui-popover>
+            <span className={popupGap} />
+            <ui-navigation-menu label="Ladder"><div data-part="item" {...nav({ label: 'Menu' })}><a href="#/geometry">Link</a></div><div data-part="item"><a data-part="link" href="#/colors">Link</a></div></ui-navigation-menu>
+            <ui-tooltip content="Tooltip" side="right" default-open><ui-button aria-label="Info"><i slot="leading" name="info" /></ui-button></ui-tooltip>
+          </div>
+        </SizeLadder>
+      </>
+    ),
     actions: (
       <>
         <Row label="Slots">

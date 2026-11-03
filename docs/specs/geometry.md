@@ -138,6 +138,19 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 | separator | the separator rule max(1px, B) with 0.5u above and below, beyond the gap | 1 / 2 |
 | menubar | a composite row (edge D, one row 8u, radius min(3.5u·s, 4u), uncapped when vertical) of its menus' triggers as composite options (7u, the option radius); its menus open 1u below the trigger (beside a vertical bar) (`resolveMenubar`) | 32 / 28 / 14 |
 
+## Popups: popover, tooltip, preview card
+
+| | Formula | at u=4 |
+|---|---|---|
+| offset | 1u from the trigger on the side in use (the preferred side unless the popup does not fit there and the other side has more room) | 4 |
+| width | at least the trigger's width (tooltip excepted); at most min(available width, cap): popover and preview card 80u, tooltip 60u | ≥ trigger / 320 |
+| height | at most the space beside the trigger (`--available-height`); the popup then scrolls | |
+| arrow | 2u wide, tip 1u from the popup (it spans the gap), centered on the trigger, kept radius + u inside the popup ends | 8 × 4 |
+| popover | the card-sm level: padding 3u − B, radius 3u·min(1, s), the group gap 1u (the `gap` attribute wins) (`resolvePopup('popover')`) | 12 / 12 / 4 |
+| tooltip | a 7u text row: the control font at line height 1.2 in a 6u text slot inside a 0.5u edge (block padding 0.5u − B + line padding), 2u − B at the ends, radius min(3u·s, 3.5u), at most 60u wide, no trigger-width minimum; inverse fill (`resolvePopup('tooltip')`) | 28 / 8 / 12 |
+| navigation menu | the list a composite row without a fill (8u, edge 0.5u); triggers and links composite options (7u, labels 2u / 1u, the caret icon sm in trailing); the popup a composite container (edge 0.5u, radius (3 + 0.5)u·s) 1u below the open trigger, aligned to its start, sized to the open content (at most 120u) (`resolveNavigationMenu`) | 32 / 28 / 14 |
+| preview card | the card-md level: padding 4u − B, radius 4u·min(1, s), the collection gap 2u, at most 80u (`resolvePopup('preview-card')`) | 16 / 16 / 8 |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

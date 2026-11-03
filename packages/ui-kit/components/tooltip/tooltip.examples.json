@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "tooltip",
+  "title": "Tooltip",
+  "summary": "A short text label for a control, on hover and keyboard focus.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "An icon button with a tooltip",
+      "subject": "component:tooltip",
+      "markup": "<ui-tooltip content=\"Bold (⌘B)\"><ui-button aria-label=\"Bold\"><i slot=\"leading\" name=\"text-b\"></i></ui-button></ui-tooltip>"
+    },
+    {
+      "id": "side",
+      "label": "Below, with an arrow",
+      "subject": "component:tooltip",
+      "markup": "<ui-tooltip side=\"bottom\"><ui-button data-part=\"trigger\">Publish</ui-button><div data-part=\"popup\">Visible to everyone<div data-part=\"arrow\"></div></div></ui-tooltip>"
+    },
+    {
+      "id": "delay",
+      "label": "A shorter delay",
+      "subject": "component:tooltip",
+      "markup": "<ui-tooltip content=\"Copied link\" delay=\"200\"><ui-button>Copy</ui-button></ui-tooltip>"
+    }
+  ]
+}

@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "f4ce0ec14a368de9a1934eef3ef029c6b04d82462832d4ee99638b702c7e0201"
+      "sha256": "c73abd0140390daa7778da422f46f6af603a6b65b836803b8e1925b258619138"
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "194f77df083558a93b1e4085f2a369e8694e706bdbddfec3fbae9c5db07906e9"
+      "sha256": "c2ca0fb141853a47ee44e5799386c7f00fe097fc6690eec7cd8fa59a2c5eac8a"
     },
     {
       "path": "components/container/container.manifest.json",

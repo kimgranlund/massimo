@@ -1,0 +1,470 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "preview-card",
+  "primary": "component:preview-card",
+  "module": "./preview-card.element.ts",
+  "registration": "on-import",
+  "documentation": "./preview-card.md",
+  "examples": "./preview-card.examples.json",
+  "contract": "../../contracts/components.json#/components/preview-card",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./preview-card.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolvePopup"
+      ],
+      "description": "Reference numbers for the offset, arrow, card padding, radius, gap and width cap."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:preview-card",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-preview-card",
+      "class": "UIPreviewCard",
+      "extends": "UIElement",
+      "intent": [
+        "Preview where a link goes (a profile, a page, a document) while the pointer rests on the link or it has keyboard focus"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the card is shown. Setting it (attribute or property) fires no openchange; hover, focus, Escape or an outside press set it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Never opens; presses, hover and focus on the trigger do nothing.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "side",
+          "type": "string",
+          "default": "",
+          "attribute": "side",
+          "reflects": false,
+          "enum": [
+            "",
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ],
+          "description": "Preferred side of the trigger (Base UI Positioner side): top, bottom, left or right; empty for the default (bottom). The popup flips to the opposite side when there is no room; data-side says where it is.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "align",
+          "type": "string",
+          "default": "",
+          "attribute": "align",
+          "reflects": false,
+          "enum": [
+            "",
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Alignment along that side (Base UI Positioner align): start, center or end; empty for the default (center).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": null,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "Open after the pointer rests this long on the link, in ms (Base UI delay); default 600. Keyboard focus opens it at once.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "closeDelay",
+          "type": "number",
+          "default": null,
+          "attribute": "close-delay",
+          "reflects": false,
+          "description": "Close this long after the pointer leaves link and card, in ms (Base UI closeDelay); default 300, time to move onto the card.",
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the card's children in u (0…8 in 0.5 steps); default the collection gap (2u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-hover' | 'trigger-focus' | 'focus-out' | 'outside-press' | 'escape-key', event: Event }",
+          "trigger": "hover intent, keyboard focus, focus leaving link and card, an outside press or Escape opens or closes the card; preventDefault keeps it as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none on the host; the trigger is the author's link; the card has no role (Base UI Preview Card) and is not announced on its own",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Tab onto the link",
+            "action": "show the card; Tab again moves into it"
+          },
+          {
+            "keys": "Escape",
+            "action": "hide it"
+          },
+          {
+            "keys": "Enter on the link",
+            "action": "follow the link (the card does not toggle)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the link's own text; the card repeats what the destination shows"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "The trigger link (the first child element), then the card's content (any elements); or authored [data-part=trigger] and [data-part=popup] children. A [data-part=arrow] draws the arrow."
+      },
+      "layout": {
+        "display": "contents",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The card is supplementary: everything in it must also be reachable at the link's destination (touch has no hover).",
+        "The host takes no box (display: contents): the link stays inline in its text.",
+        "Setting open from script shows or hides the card without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A short label for a control.",
+          "reason": "A tooltip is the compact text label; a preview card is a rich card for links."
+        },
+        {
+          "when": "Content opened by a press, with actions or inputs.",
+          "reason": "A popover opens on a press and takes focus; a preview card opens on hover and focus only."
+        }
+      ],
+      "searchTerms": [
+        "preview card",
+        "hover card",
+        "link preview",
+        "profile card"
+      ]
+    },
+    {
+      "id": "part:preview-card-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "a",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The link (the first child element): data-popup-open while the card is open. Base UI PreviewCard.Trigger."
+    },
+    {
+      "id": "part:preview-card-positioner",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner]",
+      "summary": "The floating layer (popover=manual, in the top layer while open), 1u below the link. Base UI PreviewCard.Positioner."
+    },
+    {
+      "id": "part:preview-card-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=popup]",
+      "summary": "The card: a card-md surface with the reveal motion. Base UI PreviewCard.Popup."
+    },
+    {
+      "id": "part:preview-card-arrow",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=arrow]",
+      "summary": "Optional triangle on the card's edge facing the link, centered on it. Base UI PreviewCard.Arrow."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:preview-card",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-trigger"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-positioner"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-popup"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "ownsPart",
+      "to": "part:preview-card-arrow"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:preview-card",
+      "relation": "uses",
+      "to": "component:popover"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./preview-card.element.ts",
+      "exports": {
+        "component:preview-card": "UIPreviewCard"
+      },
+      "verification": "./verification/preview-card.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./preview-card.react.tsx",
+      "exports": {
+        "component:preview-card": "PreviewCard"
+      },
+      "verification": "./verification/preview-card.verification.json#/renderers/react",
+      "props": {
+        "component:preview-card": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "open?: boolean // Controlled open state.",
+            "defaultOpen?: boolean // Open at first render (uncontrolled).",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes it, with Base UI's details ({ reason, event }).",
+            "disabled?: boolean // Never opens.",
+            "delay?: number // Hover: open after the pointer rests this long on the trigger, ms.",
+            "closeDelay?: number // Hover: close this long after the pointer leaves trigger and popup, ms.",
+            "size?: number // Unit u in px.",
+            "trigger?: ReactNode // The link: an element (rendered as PreviewCard.Trigger), or text for an <a> with `href`.",
+            "href?: string // The link's destination when `trigger` is text.",
+            "side?: Side // Preferred side and alignment (PreviewCard.Positioner); default bottom, center.",
+            "align?: Align",
+            "children?: ReactNode // The card's content."
+          ]
+        }
+      },
+      "parts": {
+        "component:preview-card": {
+          "PreviewCard.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes it, with Base UI's details ({ reason, event }).",
+              "disabled?: boolean // Never opens.",
+              "delay?: number // Hover: open after the pointer rests this long on the trigger, ms.",
+              "closeDelay?: number // Hover: close this long after the pointer leaves trigger and popup, ms.",
+              "size?: number // Unit u in px.",
+              "children?: ReactNode"
+            ]
+          },
+          "PreviewCard.Trigger": {
+            "inherits": [
+              "Omit<ButtonProps, 'render' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "href?: string"
+            ]
+          },
+          "PreviewCard.Positioner": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "side?: Side // Preferred side of the trigger (Base UI side); flips when there is no room.",
+              "align?: Align // Alignment along the side (Base UI align).",
+              "children?: ReactNode"
+            ]
+          },
+          "PreviewCard.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "PreviewCard.Arrow": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -16,6 +16,7 @@ export const pending = defineGlobalStyles({
   ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-combobox, ui-autocomplete):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select, ui-combobox, ui-autocomplete):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-menu, ui-context-menu, ui-menubar):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  ':is(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-palette, ui-swiper, ui-field, ui-field-grid, ui-meter, ui-toggle, ui-collapsible, ui-accordion, ui-tabs, ui-popover, ui-tooltip, ui-preview-card, ui-navigation-menu):not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   ':is(ui-input, ui-select):not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT },
   'ui-segmented:not(:defined)': { minHeight: 'var(--h)' },
   ':is(ui-badge, ui-tag, ui-chip):not(:defined)': { display: 'inline-flex' },
@@ -25,6 +26,16 @@ export const pending = defineGlobalStyles({
   // A collapsible reserves its trigger row.
   ':is(ui-collapsible, ui-accordion):not(:defined)': { display: 'block', minHeight: 'var(--h)' },
   // Tabs reserve the list row and the 2u gap above the panel.
+  // Anchored popups: the host has no box; only the trigger shows before the element runs.
+  'ui-popover:not(:defined)': { display: 'contents' },
+  'ui-popover:not(:defined) > :not([data-part=trigger])': { display: 'none' },
+  'ui-tooltip:not(:defined)': { display: 'contents' },
+  'ui-tooltip:not(:defined) > [data-part=popup]': { display: 'none' },
+  'ui-preview-card:not(:defined)': { display: 'contents' },
+  'ui-preview-card:not(:defined) > :not(:first-child)': { display: 'none' },
+  // A navigation menu reserves its list row; item contents wait for the element.
+  'ui-navigation-menu:not(:defined)': { display: 'block', minHeight: 'var(--h)' },
+  'ui-navigation-menu:not(:defined) [data-part=content]': { display: 'none' },
   'ui-tabs:not(:defined)': { display: 'block', minHeight: 'calc(var(--h) + 2 * var(--u))' },
   // A menu reserves its trigger row.
   'ui-menu:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)' },

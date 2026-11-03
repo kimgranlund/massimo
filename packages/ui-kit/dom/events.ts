@@ -31,7 +31,10 @@ export type ChangeReason =
   | 'input-change' | 'input-clear' | 'input-blur' | 'input-paste' | 'increment-press' | 'decrement-press' | 'wheel' | 'scrub'
   // Combobox, Autocomplete (Base UI): the clear button, a chip's remove button.
   | 'clear-press' | 'chip-remove-press'
-  | 'close-press' | 'swipe';
+  | 'close-press' | 'swipe'
+  // Floating layers (popover, tooltip, preview card, navigation menu): the pointer rested on or left
+  // the trigger, the trigger took focus, a Close part was pressed, a navigation link was followed.
+  | 'trigger-hover' | 'trigger-focus' | 'close-press' | 'link-press';
 
 /** Base UI eventDetails: the reason and the DOM event that caused the change, when there is one. */
 export interface ChangeDetails {

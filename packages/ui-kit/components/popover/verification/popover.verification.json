@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "popover",
+  "scope": "Behavior, ARIA, parts, events, focus and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and client state. Placement, rendered lengths and motion are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/popover/popover.element.ts",
+      "sha256": "980a5a61a685d524ae2615b9c398f22465c0850450bb52f590c6861f5ab2a634"
+    },
+    {
+      "path": "components/popover/popup-base.ts",
+      "sha256": "b7d6f03674349805368834c932370746bc39b190c02a780a12595c2700d411e1"
+    },
+    {
+      "path": "components/popover/popover.react.tsx",
+      "sha256": "886a6b44144ec6dac859b86babae525a599e8a329ab2e442654872f11905e38a"
+    },
+    {
+      "path": "components/popover/popover.recipe.ts",
+      "sha256": "3109c2e1904ad56c265f3d8978044465f0e4294c6754db0023c528ca4d925e7d"
+    },
+    {
+      "path": "components/popover/popup-parts.ts",
+      "sha256": "de42968d03bf4631117a42804730ffae42f12a057b930af4e9396ad6765d5ce1"
+    },
+    {
+      "path": "components/popover/popover.manifest.json",
+      "sha256": "1abe45a4177d4fe74922a07f300c4df7afd1cca6e1fafa283c44926de5176c1f"
+    },
+    {
+      "path": "dom/popup.ts",
+      "sha256": "e78bada9915e6a53db847ea9809e6954cb9f0a72003ce8acae84141e19a0d4c0"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"popover\" test/popup.test.ts",
+          "covers": "preset and parts anatomy, trigger and dialog ARIA, openchange (cancelable; trigger-press, escape-key, outside-press, close-press, trigger-hover), focus moves in and returns, modal trap, open / default-open / disabled, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"popup\" test/geometry.test.ts",
+          "covers": "resolvePopup: 1u offset, 2u × 1u arrow, card-sm padding and radius, group gap, width cap; arrowOffset centering and clamping"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"popover\" test/popup.test.ts",
+          "node --test --test-name-pattern=\"popup\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Popover\" test/popup.test.ts",
+          "covers": "React SSR: the same data-* and recipe classes as the web component on host and parts, the composed parts render the preset's markup, render and className functions"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Popover\" test/popup.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Placement (CSS anchor positioning or the script positioner), the top layer and the reveal motion need a real browser; unit tests cover the attributes they key on.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "modal traps focus but does not lock page scroll or make the page inert (Base UI modal also does both).",
+    "Geometry review, manual items (2026-11-02, studio Chromium at u = 3, 4, the theme unit 4.5 and 6, light and dark): growth (long content wraps at the 80u cap and the popup grows; past the space beside the trigger it scrolls inside the positioner, the arrow outside it), RTL (the CSS anchor rule uses logical position-area spans, so start / end mirror; the arrow offset is measured from the boxes; the script fallback aligns physically), focus (the trigger keeps its 2px ring without changing size; a popup with no tabbable child takes focus itself, tabindex=-1), screenshots of the Popups family and the size ladder checked light and dark."
+  ]
+}
