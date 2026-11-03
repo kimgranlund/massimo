@@ -114,7 +114,7 @@ Every part takes `render` and a `className` string or function of its state (the
 | any | Escape | close the topmost menu, focus back on its trigger |
 | any | Tab | close (focus-out) and move on |
 
-Focus moves to the highlighted item (every item tabindex −1); the pointer highlights the item under it, and resting on a submenu trigger opens its submenu after `delay`. A press on the trigger opens the popup with focus on the popup itself, so the first arrow key highlights the first item.
+Focus moves to the highlighted item (every item tabindex −1); the pointer highlights the item under it, and resting on a submenu trigger opens its submenu after `delay`. While a submenu is open, a pointer moving toward it across other items (inside the triangle from the pointer to the submenu's near edge: Base UI's safe polygon) leaves the highlight and the submenu as they are; resting on an item for 300 ms, or turning away, highlights it and closes the submenu. A press on the trigger opens the popup with focus on the popup itself, so the first arrow key highlights the first item.
 
 ## State attributes
 

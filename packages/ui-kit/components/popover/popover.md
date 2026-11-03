@@ -25,7 +25,7 @@
 `open` (attribute and property; React: controlled `open`) and `defaultOpen` (`default-open`) follow Base UI. A press on the trigger (pointer, Enter, Space) toggles the popup and fires `openchange` (cancelable: `preventDefault` keeps it as it is) with `{ open, reason, event }`; React calls `onOpenChange(open, { reason, event })`. Reasons: `trigger-press`, `outside-press`, `escape-key` (the topmost layer only), `focus-out` (focus left trigger and popup; not when modal), `close-press` (a Close part), `trigger-hover` (with `open-on-hover`). Setting `open` from script fires nothing and does not move focus.
 
 - `side` (`top`, `bottom` default, `left`, `right`) and `align` (`start`, `center` default, `end`): the preferred placement (Base UI Positioner); the popup flips to the other side when there is no room. React: on `Popover.Positioner`.
-- `modal`: focus stays inside the popup while it is open (Tab wraps); `aria-modal`.
+- `modal`: focus stays inside the popup while it is open (Tab wraps) and the page does not scroll (`html[data-scroll-locked]`, as a modal dialog; not while hovering opened it); `aria-modal`.
 - `open-on-hover` (React `openOnHover`): also opens when the pointer rests on the trigger for `delay` ms (default 300) and closes `close-delay` ms (default 0) after it leaves trigger and popup; a popover opened by a press stays until dismissed.
 - `disabled`: never opens.
 

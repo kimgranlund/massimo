@@ -14,7 +14,7 @@ import {
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { Button, type ButtonProps } from '../button/button.react.tsx';
 import {
-  createAnchoredPositioner, createDismissLayer, createFocusScope, createHoverIntent, eventDetails, hideTopLayer, isHoverPointer, popupDataAttrs, showTopLayer,
+  createAnchoredPositioner, createDismissLayer, createFocusScope, createHoverIntent, eventDetails, hideTopLayer, isHoverPointer, lockScroll, popupDataAttrs, showTopLayer,
   type Align, type ChangeDetails, type ChangeReason, type Side,
 } from '../../dom/index.ts';
 import { popover } from '../../styled-system/recipes/popover.js';
@@ -218,7 +218,10 @@ export function PopupPositioner({ side, align, className, render, onPointerEnter
     positioner.start();
     dismiss.activate();
     scope?.activate();
+    // Modal (Base UI): page scroll locks while open, unless hovering opened it.
+    const unlock = k.role === 'dialog' && f.modal && f.reason.current !== 'trigger-hover' ? lockScroll() : undefined;
     return () => {
+      unlock?.();
       scope?.deactivate();
       dismiss.deactivate();
       positioner.stop();

@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { createElement as h, type ReactElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTsx } from './load-tsx.ts';
-import { menuNavigate, menuItems } from '../dom/index.ts';
+import { menuNavigate, menuItems, inTriangle, aimsAtSubmenu } from '../dom/index.ts';
 
 await import('../components/menu/menu.element.ts');
 await import('../components/context-menu/context-menu.element.ts');
@@ -228,6 +228,71 @@ test('menu: an item press fires click and closes (item-press); checkbox and radi
   assert.equal(el.open, false);
   assert.deepEqual(reasons, ['trigger-press', 'item-press', 'trigger-press', 'item-press']);
   el.parentElement.remove();
+});
+
+test('submenu safe triangle: inTriangle, aimsAtSubmenu', () => {
+  assert.ok(inTriangle({ x: 1, y: 1 }, { x: 0, y: 0 }, { x: 4, y: 0 }, { x: 0, y: 4 }));
+  assert.ok(!inTriangle({ x: 3, y: 3 }, { x: 0, y: 0 }, { x: 4, y: 0 }, { x: 0, y: 4 }));
+  const sub = { left: 200, right: 300, top: 0, bottom: 100 };
+  assert.ok(aimsAtSubmenu({ x: 100, y: 50 }, { x: 110, y: 54 }, sub), 'diagonally toward the submenu');
+  assert.ok(!aimsAtSubmenu({ x: 100, y: 50 }, { x: 100, y: 60 }, sub), 'straight down is not');
+  assert.ok(!aimsAtSubmenu({ x: 100, y: 50 }, { x: 90, y: 50 }, sub), 'away is not');
+  assert.ok(aimsAtSubmenu({ x: 400, y: 50 }, { x: 390, y: 46 }, sub), 'a submenu on the left (RTL, flipped)');
+  assert.ok(!aimsAtSubmenu({ x: 100, y: 50 }, { x: 100, y: 50 }, sub), 'no movement is not');
+  assert.ok(!aimsAtSubmenu({ x: 100, y: 50 }, { x: 110, y: 50 }, { left: 0, right: 0, top: 0, bottom: 0 }), 'an unlaid submenu is not');
+});
+
+test('menu: crossing a sibling toward an open submenu keeps it open until the pointer rests (safe triangle)', async () => {
+  const el = await wc(MENU) as any;
+  el.trigger.focus();
+  key(el.trigger, 'ArrowUp'); await tick(); await tick();
+  const share = el.items.at(-1) as HTMLElement, sub = share.parentElement as any, sibling = el.items.at(-2) as HTMLElement;
+  key(share, 'ArrowRight'); await tick(); await tick();
+  assert.equal(sub.open, true);
+  sub.popup.getBoundingClientRect = () => ({ left: 200, right: 300, top: 0, bottom: 100 });
+  const move = (t: Element, x: number, y: number) => t.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y, bubbles: true }));
+  move(share, 100, 50);
+  move(sibling, 110, 55);
+  assert.equal(sub.open, true, 'aiming at the submenu across a sibling keeps it open');
+  assert.notEqual(el.querySelector('[data-highlighted]'), sibling);
+  await new Promise((r) => setTimeout(r, 350));
+  assert.equal(sub.open, false, 'resting on the sibling closes it');
+  assert.ok(sibling.hasAttribute('data-highlighted'));
+  // Moving away from the submenu closes it at once.
+  share.click(); await tick(); await tick();
+  assert.equal(sub.open, true);
+  move(share, 100, 50);
+  move(sibling, 95, 60);
+  assert.equal(sub.open, false);
+  el.parentElement!.remove();
+});
+
+test('Menu (React): crossing a sibling toward an open submenu keeps it open until the pointer rests', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const M = Menu;
+  await act(async () => root.render(h(M.Root, { defaultOpen: true }, h(M.Trigger, null, 'Edit'), h(M.Positioner, null, h(M.Popup, null,
+    h(M.Item, null, 'Copy'),
+    h(M.SubmenuRoot, { defaultOpen: true }, h(M.SubmenuTrigger, null, 'Share'), h(M.Positioner, null, h(M.Popup, null, h(M.Item, null, 'Email')))))))));
+  const share = box.querySelector<HTMLElement>('[data-part=submenu-trigger]')!;
+  const copy = box.querySelector<HTMLElement>('[data-part=item]')!;
+  const subPopup = () => box.querySelectorAll<HTMLElement>('[data-part=popup]')[1];
+  const isOpen = () => share.getAttribute('aria-expanded') === 'true';
+  assert.ok(isOpen());
+  subPopup().getBoundingClientRect = () => ({ left: 200, right: 300, top: 0, bottom: 100 }) as DOMRect;
+  const move = (t: Element, x: number, y: number) => act(async () => { t.dispatchEvent(new PointerEvent('pointermove', { clientX: x, clientY: y, bubbles: true })); });
+  await move(share, 100, 50);
+  await move(copy, 110, 55);
+  assert.ok(isOpen(), 'aiming at the submenu across a sibling keeps it open');
+  await act(async () => { await new Promise((r) => setTimeout(r, 350)); });
+  assert.ok(!isOpen(), 'resting on the sibling closes it');
+  assert.ok(copy.hasAttribute('data-highlighted'));
+  await act(async () => root.unmount());
+  box.remove();
 });
 
 test('menu: a submenu opens on ArrowRight (first item), closes on ArrowLeft back to its trigger; RTL swaps them', async () => {

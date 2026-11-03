@@ -169,7 +169,16 @@ test('popover: modal traps Tab; default-open, disabled, authored parts and an ar
   two.focus();
   document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
   assert.equal(document.activeElement, one, 'Tab wraps inside a modal popover');
+  assert.ok(document.documentElement.hasAttribute('data-scroll-locked'), 'a modal popover locks page scroll');
+  m.trigger.click(); await tick();
+  assert.ok(!document.documentElement.hasAttribute('data-scroll-locked'), 'closing unlocks it');
+  m.trigger.click(); await tick();
   m.parentElement!.remove();
+  assert.ok(!document.documentElement.hasAttribute('data-scroll-locked'), 'removing an open modal popover unlocks it');
+  const plain = await wc('<ui-popover label="A"><p>x</p></ui-popover>') as any;
+  plain.trigger.click(); await tick();
+  assert.ok(!document.documentElement.hasAttribute('data-scroll-locked'), 'a non-modal popover leaves scroll alone');
+  plain.parentElement!.remove();
   const d = await wc('<ui-popover label="A" default-open><p>x</p></ui-popover>') as any;
   assert.equal(d.open, true);
   assert.notEqual(document.activeElement, d.popup.querySelector('p'), 'a default-open popover does not take focus');
@@ -213,6 +222,26 @@ test('Popover (React): the same data-* as ui-popover on host, trigger, positione
     h(Popover.Positioner, null, h(Popover.Popup, null, h(Popover.Title, null, 'T')), h(Popover.Arrow)));
   const markup = (open: boolean) => `<ui-popover${open ? ' open' : ''}><ui-button data-part="trigger">Share</ui-button><div data-part="popup"><h2 data-part="title">T</h2><div data-part="arrow"></div></div></ui-popover>`;
   await same('ui-popover', markup(false), tree(false), P);
+});
+
+test('Popover (React): modal locks page scroll while open', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const locked = () => document.documentElement.hasAttribute('data-scroll-locked');
+  for (const modal of [true, false]) {
+    await act(async () => root.render(h(Popover, { key: String(modal), label: 'Share', modal }, h('p', null, 'x'))));
+    const trigger = box.querySelector<HTMLElement>('[data-part=trigger]')!;
+    await act(async () => { trigger.click(); });
+    assert.equal(locked(), modal, `modal=${modal}`);
+    await act(async () => { trigger.click(); });
+    assert.equal(locked(), false);
+  }
+  await act(async () => root.unmount());
+  box.remove();
 });
 
 test('Popover (React): markup, preset vs parts, render and className functions', () => {

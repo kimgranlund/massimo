@@ -22,7 +22,7 @@
 // { value, reason, event } on a radio group (cancelable).
 import { UIElement, define, signal } from '../../core/index.ts';
 import {
-  applyAttrs, createDismissLayer, createFocusScope, createPositioner, createTypeahead, eventDetails, hideTopLayer, isPrintableKey,
+  applyAttrs, createDismissLayer, createFocusScope, createSubmenuAim, createPositioner, createTypeahead, eventDetails, hideTopLayer, isPrintableKey,
   MENU_ITEM_SELECTOR, menuGroupAttrs, menuItemLabel, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate, menuOptionItems,
   menuPopupAttrs, menuSeparatorAttrs, menuTriggerAttrs, showTopLayer, isRtl, submenuKeys, uid, unitOf,
   type Attrs, type ChangeReason, type MenuItemKind, type Side,
@@ -331,15 +331,24 @@ export class UIMenu extends UIElement {
     if (item) this.#highlight.value = item;
   };
 
+  #aim = createSubmenuAim();
   #onPointer = (e: PointerEvent) => {
+    const subs = [...this.#popup!.querySelectorAll<UIMenu>('ui-menu[open]')].filter((sub) => sub.parentMenu === this);
+    // The pointer reached an open submenu.
+    if (subs.some((sub) => sub.popup?.contains(e.target as Node))) { this.#aim.cancel(); return; }
     const item = this.#own(e.target);
-    if (!item || item === this.#highlight.peek()) return;
-    if (!menuItemDisabled(item)) this.highlight(item);
-    // A sibling of an open submenu's trigger closes it.
-    for (const sub of this.#popup!.querySelectorAll<UIMenu>('ui-menu[open]')) {
-      if (sub.parentMenu === this && sub.trigger !== item) sub.setOpen(false, 'trigger-hover', e);
-    }
+    // Heading for an open submenu across its siblings (the safe triangle): leave everything as it is until the pointer rests.
+    const open = subs.find((sub) => sub.trigger !== item);
+    if (this.#aim.hold(e, open?.popup?.getBoundingClientRect(), () => { if (item) this.#pointAt(item, e, subs); })) return;
+    if (item) this.#pointAt(item, e, subs);
   };
+
+  /** The pointer is on an item: highlight it; a sibling of an open submenu's trigger closes it. */
+  #pointAt(item: HTMLElement, e: PointerEvent, subs: UIMenu[]) {
+    if (item === this.#highlight.peek()) return;
+    if (!menuItemDisabled(item)) this.highlight(item);
+    for (const sub of subs) if (sub.open && sub.trigger !== item) sub.setOpen(false, 'trigger-hover', e);
+  }
 
   #onKeydown = (e: KeyboardEvent) => {
     if (e.defaultPrevented || (e.target as Element).closest('[data-part=popup]') !== this.#popup) return;

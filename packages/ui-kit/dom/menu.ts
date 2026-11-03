@@ -110,3 +110,50 @@ export function pointAnchor(x: number, y: number, focusTarget?: () => HTMLElemen
     contains: () => false,
   } as unknown as HTMLElement;
 }
+
+// ── Submenu safe triangle ──
+
+export interface Point { x: number; y: number }
+type Box = Pick<DOMRect, 'top' | 'bottom' | 'left' | 'right'>;
+
+const cross = (o: Point, a: Point, b: Point) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+/** Whether q lies in the triangle abc, its edges included. */
+export function inTriangle(q: Point, a: Point, b: Point, c: Point): boolean {
+  const d1 = cross(a, b, q), d2 = cross(b, c, q), d3 = cross(c, a, q);
+  return !((d1 < 0 || d2 < 0 || d3 < 0) && (d1 > 0 || d2 > 0 || d3 > 0));
+}
+
+/**
+ * The hover safe triangle (Base UI's safePolygon): a pointer moving from `from` to `to` aims at an
+ * open submenu when `to` lies in the triangle between `from` and the submenu's near edge (with a
+ * small bleed above and below). A pointer already over the submenu's columns does not aim.
+ */
+export function aimsAtSubmenu(from: Point, to: Point, sub: Box, bleed = 4): boolean {
+  if (sub.bottom <= sub.top || (to.x === from.x && to.y === from.y)) return false;
+  const right = sub.left >= from.x, left = sub.right <= from.x;
+  if (!right && !left) return false;
+  const x = right ? sub.left : sub.right;
+  return inTriangle(to, from, { x, y: sub.top - bleed }, { x, y: sub.bottom + bleed });
+}
+
+/**
+ * Hover intent toward an open submenu, for a parent popup's pointermove: `hold` says whether this
+ * move aims at the submenu (then the parent leaves its highlight and the submenu as they are) and
+ * runs `rest` once the pointer stops there for `delay` ms; any later move cancels that.
+ */
+export function createSubmenuAim(delay = 300) {
+  let last: Point | null = null;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  return {
+    hold(e: { clientX: number; clientY: number }, sub: Box | null | undefined, rest: () => void): boolean {
+      clearTimeout(timer);
+      const to = { x: e.clientX, y: e.clientY }, from = last;
+      last = to;
+      if (!sub || !from || !aimsAtSubmenu(from, to, sub)) return false;
+      timer = setTimeout(rest, delay);
+      return true;
+    },
+    /** The pointer reached the submenu or left: forget the path. */
+    cancel() { clearTimeout(timer); timer = undefined; },
+  };
+}

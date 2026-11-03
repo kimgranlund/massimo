@@ -13,7 +13,7 @@ import {
 } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import {
-  createTypeahead, eventDetails, isPrintableKey, menuGroupAttrs, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate,
+  createSubmenuAim, createTypeahead, eventDetails, isPrintableKey, menuGroupAttrs, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate,
   menuOptionItems, menuPopupAttrs, menuSeparatorAttrs, menuTriggerAttrs, submenuKeys, toReactProps, isRtl,
   type Align, type ChangeDetails, type ChangeReason, type MenuItemKind, type Side,
 } from '../../dom/index.ts';
@@ -47,7 +47,7 @@ export interface MenuContext {
   /** The menubar this menu's trigger belongs to, if any (components/menubar). */
   bar: MenubarLink | null;
   /** Open submenus of this menu's popup, by id: their trigger and how to close them. */
-  subs: Map<string, { trigger: RefObject<HTMLElement | null>; close: (e: Event) => void }>;
+  subs: Map<string, { trigger: RefObject<HTMLElement | null>; popup: RefObject<HTMLElement | null>; close: (e: Event) => void }>;
 }
 /** What a menubar shares with its menus (set by Menubar; null elsewhere). */
 export interface MenubarLink {
@@ -168,11 +168,11 @@ export function MenuRoot({ open, defaultOpen = false, onOpenChange, disabled = f
   useLayoutEffect(() => { if (hostRef.current) setRtl(isRtl(hostRef.current)); }, []);
   useEffect(() => { bar?.report(bar.index, value); }, [value]);
   useEffect(() => { bar?.register(bar.index, { trigger: layer.anchorRef, popup: layer.popupRef, open: value, disabled, setOpen }); });
-  const subs = useRef(new Map<string, { trigger: RefObject<HTMLElement | null>; close: (e: Event) => void }>()).current;
+  const subs = useRef(new Map<string, { trigger: RefObject<HTMLElement | null>; popup: RefObject<HTMLElement | null>; close: (e: Event) => void }>()).current;
   // A submenu: listed with its parent while open; closes (silently) with it.
   useEffect(() => {
     if (!parent) return;
-    if (value) parent.subs.set(id, { trigger: layer.anchorRef, close: (e) => setOpen(false, 'trigger-hover', e) });
+    if (value) parent.subs.set(id, { trigger: layer.anchorRef, popup: layer.popupRef, close: (e) => setOpen(false, 'trigger-hover', e) });
     else parent.subs.delete(id);
     return () => { parent.subs.delete(id); };
   }, [value]);
@@ -298,13 +298,25 @@ export function MenuPopup({ children, onKeyDown, onPointerMove, onFocus, classNa
       if (i !== undefined) { e.preventDefault(); m.highlight(items[i]); }
     }
   };
+  const aim = useRef(createSubmenuAim()).current;
+  /** The pointer is on an item: highlight it; a sibling of an open submenu's trigger closes it. */
+  const pointAt = (item: HTMLElement, ev: Event) => {
+    if (item === m.highlighted) return;
+    if (!menuItemDisabled(item)) m.highlight(item);
+    for (const sub of [...m.subs.values()]) if (sub.trigger.current !== item) sub.close(ev);
+  };
   const pointer = (e: PointerEvent<HTMLDivElement>) => {
     onPointerMove?.(e);
-    const item = (e.target as Element).closest?.('[data-part=item], [data-part=checkbox-item], [data-part=radio-item], [data-part=submenu-trigger]') as HTMLElement | null;
-    if (!item || !own(popup(), item) || item === m.highlighted) return;
-    if (!menuItemDisabled(item)) m.highlight(item);
-    // A sibling of an open submenu's trigger closes it.
-    for (const sub of [...m.subs.values()]) if (sub.trigger.current !== item) sub.close(e.nativeEvent);
+    const subs = [...m.subs.values()];
+    // The pointer reached an open submenu.
+    if (subs.some((sub) => sub.popup.current?.contains(e.target as Node))) { aim.cancel(); return; }
+    const found = (e.target as Element).closest?.('[data-part=item], [data-part=checkbox-item], [data-part=radio-item], [data-part=submenu-trigger]') as HTMLElement | null;
+    const item = found && own(popup(), found) ? found : null;
+    const ev = e.nativeEvent;
+    // Heading for an open submenu across its siblings (the safe triangle): leave everything as it is until the pointer rests.
+    const open = subs.find((sub) => sub.trigger.current !== item);
+    if (aim.hold(ev, open?.popup.current?.getBoundingClientRect(), () => { if (item) pointAt(item, ev); })) return;
+    if (item) pointAt(item, ev);
   };
   const focusin = (e: FocusEvent<HTMLDivElement>) => {
     onFocus?.(e);

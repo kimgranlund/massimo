@@ -12,7 +12,7 @@
 import { UIElement, signal } from '../../core/index.ts';
 import {
   applyAttrs, buttonAttrs, createAnchoredPositioner, createDismissLayer, createFocusScope, createHoverIntent, eventDetails, hideTopLayer,
-  isHoverPointer, onButtonKeydown, popupDataAttrs, showTopLayer, uid,
+  isHoverPointer, lockScroll, onButtonKeydown, popupDataAttrs, showTopLayer, uid,
   type Align, type ChangeReason, type Side,
 } from '../../dom/index.ts';
 import { applyRecipe } from '../classes.ts';
@@ -100,6 +100,8 @@ export abstract class UIPopupBase extends UIElement {
     focusOut: false,
   });
   #focus = createFocusScope(() => this.#popup, { returnFocus: () => this.#trigger });
+  /** Undoes the page scroll lock of a modal popup (Base UI modal); a no-op otherwise. */
+  #unlock = () => {};
   #hover = createHoverIntent({
     delay: () => (this.config().warm?.() ? 0 : this.delay ?? this.config().delay),
     closeDelay: () => this.closeDelay ?? this.config().closeDelay,
@@ -283,6 +285,8 @@ export abstract class UIPopupBase extends UIElement {
       });
       this.#dismiss.activate();
       this.#positionerApi.start();
+      // Modal (Base UI): page scroll locks while open, unless hovering opened it.
+      if (c.trap && this.#reason !== 'trigger-hover') this.#unlock = lockScroll();
       if (c.moveFocus && (this.#reason === 'trigger-press')) {
         this.#focus = createFocusScope(() => this.#popup, { trap: c.trap, returnFocus: () => this.#trigger });
         this.#focus.activate();
@@ -294,6 +298,7 @@ export abstract class UIPopupBase extends UIElement {
     if (!this.#shown) return;
     this.#shown = false;
     this.#focus.deactivate();
+    this.#unlock(); this.#unlock = () => {};
     this.#dismiss.deactivate();
     this.#positionerApi.stop();
     if (this.#positioner) hideTopLayer(this.#positioner);
