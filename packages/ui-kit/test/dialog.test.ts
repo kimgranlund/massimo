@@ -385,8 +385,12 @@ await import('../components/drawer/drawer.element.ts');
 const { Drawer } = await loadTsx(new URL('../components/drawer/drawer.react.tsx', import.meta.url));
 const { createSwipeDismiss } = await import('../dom/swipe.ts');
 const DRAWER = '<ui-drawer side="right" label="Filters" description="Narrow the list."><ui-button data-part="trigger">Filters</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Done</ui-button></div></ui-drawer>';
-const ptr = (el: EventTarget, type: string, x: number, y: number, t = 0) =>
-  el.dispatchEvent(new PointerEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, pointerId: 1, button: 0, timeStamp: t } as any));
+const ptr = (el: EventTarget, type: string, x: number, y: number, t?: number) => {
+  const e = new PointerEvent(type, { bubbles: true, cancelable: true, clientX: x, clientY: y, pointerId: 1, button: 0 } as any);
+  // timeStamp is not an init field: set it so a test controls the release speed.
+  if (t !== undefined) Object.defineProperty(e, 'timeStamp', { value: t });
+  return el.dispatchEvent(e);
+};
 
 test('drawer (headless): a drag toward the edge moves the popup (--drawer-swipe-movement-*), a release past the threshold swipes, a short one springs back', () => {
   const el = document.createElement('div');
@@ -476,4 +480,115 @@ test('Drawer (React): the same data-* as ui-drawer; side classes; composed parts
   assert.ok(p.hasAttribute('data-closed'));
   await act(async () => root.unmount());
   box.remove();
+});
+
+test('drawer snap points (headless): parse, extents, nearest; a drag moves both ways and settles on the nearest point or dismisses', async () => {
+  const { parseSnapPoints, snapExtent, nearestSnap } = await import('../dom/swipe.ts');
+  assert.deepEqual(parseSnapPoints('0.4, 1'), [0.4, 1]);
+  assert.deepEqual(parseSnapPoints('148px, 20rem'), ['148px', '20rem']);
+  assert.deepEqual(parseSnapPoints(''), []);
+  assert.equal(snapExtent(0.5, 800, 600), 400, 'a fraction of the viewport');
+  assert.equal(snapExtent(1, 800, 600), 600, 'at most the sheet');
+  assert.equal(snapExtent('148px', 800, 600), 148);
+  assert.equal(snapExtent('10rem', 800, 600, 16), 160);
+  assert.equal(snapExtent(200, 800, 600), 200, 'a px number');
+  assert.ok(Number.isNaN(snapExtent('auto', 800, 600)));
+  assert.equal(nearestSnap([240, 600], 500), 1);
+  assert.equal(nearestSnap([240, 600], 300), 0);
+  const el = document.createElement('div');
+  document.body.append(el);
+  let index = 0;
+  const snapped: number[] = [], swiped: Event[] = [];
+  const s = createSwipeDismiss({
+    el: () => el, direction: () => 'down', onSwipe: (e) => swiped.push(e), velocity: Infinity,
+    snap: { extents: () => [240, 600], index: () => index, onSnap: (i) => { snapped.push(i); index = i; } },
+  });
+  s.attach();
+  ptr(el, 'pointerdown', 100, 500, 0); ptr(el, 'pointermove', 100, 300, 1000);
+  assert.equal(el.style.getPropertyValue('--drawer-swipe-movement-y'), '-200px', 'drags outward toward a larger point');
+  ptr(el, 'pointermove', 100, 0, 2000);
+  assert.equal(el.style.getPropertyValue('--drawer-swipe-movement-y'), '-360px', 'no further than the largest point');
+  ptr(el, 'pointerup', 100, 0, 3000);
+  assert.deepEqual(snapped, [1], 'settles on the full point');
+  ptr(el, 'pointerdown', 100, 100, 4000); ptr(el, 'pointermove', 100, 200, 5000); ptr(el, 'pointerup', 100, 200, 6000);
+  assert.deepEqual(snapped, [1], '100px down from 600: stays');
+  ptr(el, 'pointerdown', 100, 100, 7000); ptr(el, 'pointermove', 100, 500, 8000); ptr(el, 'pointerup', 100, 500, 9000);
+  assert.deepEqual(snapped, [1, 0], '400px down: the smaller point');
+  assert.equal(swiped.length, 0);
+  ptr(el, 'pointerdown', 100, 100, 10000); ptr(el, 'pointermove', 100, 250, 11000); ptr(el, 'pointerup', 100, 250, 12000);
+  assert.equal(swiped.length, 1, 'below half the smallest point: dismissed');
+  s.detach(); el.remove();
+});
+
+test('drawer snap points: the sheet rests at its point (--drawer-snap-y); a swipe settles on another and fires snappointchange', async () => {
+  const el = await wc('<ui-drawer label="Sheet" snap-points="0.25, 1"><p>Body</p></ui-drawer>', 'ui-drawer') as any;
+  const p = el.popup as HTMLElement;
+  Object.defineProperty(p, 'offsetHeight', { value: 600, configurable: true });
+  const vh = window.innerHeight, small = Math.min(600, 0.25 * vh), big = Math.min(600, vh);
+  const got: any[] = [];
+  el.addEventListener('snappointchange', (e: CustomEvent) => got.push([e.detail.value, e.detail.reason]));
+  el.open = true; await tick();
+  assert.equal(p.style.getPropertyValue('--drawer-snap-y'), `${600 - small}px`, 'resting at the first point');
+  ptr(p, 'pointerdown', 10, 500, 0); ptr(p, 'pointermove', 10, 500 - (big - small), 1000); ptr(p, 'pointerup', 10, 500 - (big - small), 2000);
+  await tick();
+  assert.deepEqual(got, [[1, 'swipe']]);
+  assert.equal(el.getAttribute('snap-point'), '1');
+  assert.equal(p.style.getPropertyValue('--drawer-snap-y'), `${600 - big}px`);
+  assert.equal(el.open, true);
+  el.snapPoint = '0.25'; await tick();
+  assert.equal(p.style.getPropertyValue('--drawer-snap-y'), `${600 - small}px`, 'setting snap-point moves it');
+  el.parentElement.remove();
+});
+
+test('Drawer (React): snapPoints rest the sheet; a swipe calls onSnapPointChange; snapPoint is controllable', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const got: any[] = [];
+  const proto = (globalThis as any).HTMLElement.prototype, had = Object.getOwnPropertyDescriptor(proto, 'offsetHeight');
+  Object.defineProperty(proto, 'offsetHeight', { configurable: true, get() { return this.getAttribute?.('data-part') === 'popup' ? 600 : 0; } });
+  try {
+    const vh = window.innerHeight, small = Math.min(600, 0.25 * vh), big = Math.min(600, vh);
+    await act(async () => root.render(h(Drawer, { label: 'Sheet', defaultOpen: true, snapPoints: [0.25, 1], onSnapPointChange: (v: any, d: any) => got.push([v, d.reason]) }, h('p', null, 'Body'))));
+    const p = document.querySelector('[data-ui=drawer] [data-part=popup], [data-part=popup][class*=ui-drawer]') as HTMLElement;
+    assert.ok(p);
+    assert.equal(p.style.getPropertyValue('--drawer-snap-y'), `${600 - small}px`);
+    await act(async () => { ptr(p, 'pointerdown', 10, 500, 0); ptr(p, 'pointermove', 10, 500 - (big - small), 1000); ptr(p, 'pointerup', 10, 500 - (big - small), 2000); });
+    assert.deepEqual(got, [[1, 'swipe']]);
+    assert.equal(p.style.getPropertyValue('--drawer-snap-y'), `${600 - big}px`, 'uncontrolled: it moves to the new point');
+    await act(async () => root.render(h(Drawer, { label: 'Sheet', defaultOpen: true, snapPoints: [0.25, 1], snapPoint: 0.25 }, h('p', null, 'Body'))));
+    assert.equal(p.style.getPropertyValue('--drawer-snap-y'), `${600 - small}px`, 'controlled snapPoint wins');
+    await act(async () => root.unmount());
+  } finally {
+    if (had) Object.defineProperty(proto, 'offsetHeight', had); else delete proto.offsetHeight;
+    box.remove();
+  }
+});
+
+test('drawer snap points (headless): a flick goes to the next point in its direction; toward the edge from the smallest it dismisses', () => {
+  const el = document.createElement('div');
+  document.body.append(el);
+  let index = 1;
+  const snapped: number[] = [], swiped: Event[] = [];
+  const s = createSwipeDismiss({
+    el: () => el, direction: () => 'down', onSwipe: (e) => swiped.push(e), velocity: 0.5,
+    snap: { extents: () => [200, 400, 600], index: () => index, onSnap: (i) => { snapped.push(i); index = i; } },
+  });
+  s.attach();
+  // From 600, a fast 60px flick down (2 px/ms): the next point below, 400 (not the nearest, 600).
+  index = 2;
+  ptr(el, 'pointerdown', 0, 0, 100); ptr(el, 'pointermove', 0, 30, 110); ptr(el, 'pointermove', 0, 60, 125); ptr(el, 'pointerup', 0, 60, 126);
+  assert.deepEqual(snapped, [1], 'a flick down from the largest point stops at the next one');
+  // From 200 (the smallest), a flick down dismisses.
+  index = 0;
+  ptr(el, 'pointerdown', 0, 0, 200); ptr(el, 'pointermove', 0, 30, 210); ptr(el, 'pointermove', 0, 60, 225); ptr(el, 'pointerup', 0, 60, 226);
+  assert.equal(swiped.length, 1);
+  // From 200, a flick up: the next point above, 400.
+  index = 0; snapped.length = 0;
+  ptr(el, 'pointerdown', 0, 100, 300); ptr(el, 'pointermove', 0, 70, 310); ptr(el, 'pointermove', 0, 40, 325); ptr(el, 'pointerup', 0, 40, 326);
+  assert.deepEqual(snapped, [1]);
+  s.detach(); el.remove();
 });

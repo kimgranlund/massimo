@@ -32,7 +32,9 @@ It is the [dialog](../dialog/dialog.md) (same parts, props, events, modality, fo
 - Swipe to dismiss (`dom/swipe.ts`): a press on the popup dragged toward its edge moves it with the pointer through Base UI's `--drawer-swipe-movement-x` / `-y` (px) and `data-swiping`; dragging the other way does not move it. Released past 40% of its size, or flicked, it closes with reason `swipe` (`data-swipe-dismiss`; it leaves from where it was dragged); otherwise it springs back. A press needs 6px of movement before it becomes a swipe, so clicks inside stay clicks. Elements marked `[data-swipe-ignore]` (and text entry, sliders) never start one.
 - `openchange` reasons: the dialog's plus `swipe`.
 
-Base UI's snap points, swipe area, indent and virtual-keyboard parts are not implemented.
+- Snap points (Base UI `snapPoints`): `snap-points="0.4, 1"` (React `snapPoints={[0.4, 1]}`) lets the sheet rest partly open. Each point is a fraction of the viewport along the sheet's axis (0..1), a px number, or a length (`"148px"`, `"20rem"`), at most the sheet's size. `snap-point` (reflected; React `snapPoint` controlled, `defaultSnapPoint`) is the point it rests at, the first by default. At rest the sheet keeps its full size and sits `--drawer-snap-x` / `-y` toward its edge (set by script). A drag then moves it both ways (out to the largest point); a release settles on the nearest point, a flick on the next point in its direction, and below half the smallest point (or a flick toward the edge from it) it closes with reason `swipe`. Settling on another point fires `snappointchange` `{ value, reason: 'swipe', event }` (React `onSnapPointChange(value, details)`).
+
+Base UI's swipe area, indent and virtual-keyboard parts are not implemented.
 
 ## Anatomy
 

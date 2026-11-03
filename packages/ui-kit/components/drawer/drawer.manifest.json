@@ -142,6 +142,26 @@
           "inspector": {
             "control": "select"
           }
+        },
+        {
+          "key": "snapPoints",
+          "type": "string",
+          "default": "",
+          "attribute": "snap-points",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "snapPoint",
+          "type": "string",
+          "default": "",
+          "attribute": "snap-point",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
         }
       ],
       "attributes": [
@@ -178,6 +198,14 @@
           "cancelable": true,
           "detail": "{ open: boolean, reason: 'trigger-press' | 'escape-key' | 'outside-press' | 'close-press' | 'focus-out' | 'swipe', event: Event }",
           "trigger": "the trigger is pressed, Escape is pressed, a press lands outside the sheet, a close part is pressed, the sheet is swiped toward its edge, or (modal false) focus leaves; preventDefault keeps the drawer as it is (a canceled swipe springs back on the next open)"
+        },
+        {
+          "name": "snappointchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "trigger": "a drag or flick settles the sheet on another of its snap-points",
+          "detail": "{ value: number | string, reason: 'swipe', event: Event }"
         }
       ],
       "semantics": {
@@ -395,7 +423,11 @@
             "disablePointerDismissal?: boolean // Outside presses do not close it (Base UI disablePointerDismissal).",
             "size?: number // Unit u in px; the popup's padding and radius scale with it.",
             "children?: ReactNode",
-            "side?: DrawerSide // The edge the sheet is anchored to and swipes away toward (Base UI swipeDirection: bottom = down). Default bottom."
+            "side?: DrawerSide // The edge the sheet is anchored to and swipes away toward (Base UI swipeDirection: bottom = down). Default bottom.",
+            "snapPoints?: SnapPoint[] // Where the sheet can rest (Base UI snapPoints): viewport fractions (0..1), px numbers, or \"148px\" / \"20rem\".",
+            "snapPoint?: SnapPoint | null // The snap point it rests at (controlled; Base UI snapPoint).",
+            "defaultSnapPoint?: SnapPoint // The first snap point (uncontrolled); default the first of snapPoints.",
+            "onSnapPointChange?: (value: SnapPoint, details: ChangeDetails) => void // A swipe settled on another snap point (Base UI onSnapPointChange)."
           ]
         }
       },
@@ -415,7 +447,11 @@
               "disablePointerDismissal?: boolean // Outside presses do not close it (Base UI disablePointerDismissal).",
               "size?: number // Unit u in px; the popup's padding and radius scale with it.",
               "children?: ReactNode",
-              "side?: DrawerSide = 'bottom' // The edge the sheet is anchored to and swipes away toward (Base UI swipeDirection: bottom = down). Default bottom."
+              "side?: DrawerSide = 'bottom' // The edge the sheet is anchored to and swipes away toward (Base UI swipeDirection: bottom = down). Default bottom.",
+              "snapPoints?: SnapPoint[] // Where the sheet can rest (Base UI snapPoints): viewport fractions (0..1), px numbers, or \"148px\" / \"20rem\".",
+              "snapPoint?: SnapPoint | null // The snap point it rests at (controlled; Base UI snapPoint).",
+              "defaultSnapPoint?: SnapPoint // The first snap point (uncontrolled); default the first of snapPoints.",
+              "onSnapPointChange?: (value: SnapPoint, details: ChangeDetails) => void // A swipe settled on another snap point (Base UI onSnapPointChange)."
             ]
           },
           "Drawer.Trigger": {

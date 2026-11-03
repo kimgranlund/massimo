@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/drawer/drawer.element.ts",
-      "sha256": "8141c7c7aa653dcbc5078b47295b04052c2f579631d628c4edfaf9b3c62b23e8"
+      "sha256": "2d3916350a78ef8d341be4a9a97163905f07a4229dd030b55c7c8ad5cd4b60a4"
     },
     {
       "path": "components/drawer/drawer.react.tsx",
-      "sha256": "745929e3275ffad91df524535f58ca8e0728ad8c2e7d5daa901e2ab9e05d3d73"
+      "sha256": "0c9cc4c9580caf0d19b40b05588eb831ae575b9dd04d838af61756efaaab50da"
     },
     {
       "path": "components/drawer/drawer.recipe.ts",
-      "sha256": "26eebaa622933286e73c386292ca6a1b88d57d4b4bbbc85521a5f2e1e6feadb1"
+      "sha256": "7b01f1e7feb3464d69aa62f6b7ba9f82c7672885b0f4c8fee4172663d545c4cf"
     },
     {
       "path": "components/drawer/drawer.manifest.json",
-      "sha256": "5bdcd82a615d274cd6846696f2c9c19a52d6dafa064309b7978c95a650eac93e"
+      "sha256": "fea7c248408551a3e8db5b18d22aa2c8fcbab62ea3f746e616f7112e9ec88835"
     },
     {
       "path": "dom/swipe.ts",
-      "sha256": "aa8ed05e72e881275e81dccdf2d826ede486b81bed2a0c24f8fb479ad867af56"
+      "sha256": "4aa2a8c0fb4e64b9e6fe2967b94628f71cbf2a1c682a32f5f8e4bc554442893a"
     }
   ],
   "renderers": {

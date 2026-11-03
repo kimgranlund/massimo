@@ -17,6 +17,48 @@ export interface SwipeOptions {
   threshold?: number;
   /** Release speed (px/ms) that dismisses whatever the distance. Default 0.5. */
   velocity?: number;
+  /**
+   * Snap points (Base UI Drawer snapPoints): the sheet's visible extent (px) at each point, and the
+   * current one. A drag then moves both ways (out to the largest point, in past the smallest), and a
+   * release settles on the point nearest where the flick would carry it; below half the smallest it
+   * dismisses.
+   */
+  snap?: { extents: () => number[]; index: () => number; onSnap: (index: number, event: Event) => void };
+}
+
+/** A snap point: a fraction of the viewport (0..1), a px number, or a length string ("148px", "20rem"). */
+export type SnapPoint = number | string;
+
+/** Snap points from an attribute ("0.4, 1", "148px, 30rem"): numbers stay numbers. */
+export function parseSnapPoints(v: string | readonly SnapPoint[] | null | undefined): SnapPoint[] {
+  if (v == null || v === '') return [];
+  if (Array.isArray(v)) return [...v];
+  return String(v).split(',').map((x) => x.trim()).filter(Boolean).map((x) => (/^-?\d*\.?\d+$/.test(x) ? Number(x) : x));
+}
+
+/** A snap point's visible extent in px (NaN when it cannot be read), at most `size`. */
+export function snapExtent(p: SnapPoint, viewport: number, size: number, rem = 16): number {
+  let px: number;
+  if (typeof p === 'number') px = p <= 1 ? p * viewport : p;
+  else {
+    const m = /^(-?\d*\.?\d+)(px|rem)$/.exec(p.trim());
+    px = m ? parseFloat(m[1]) * (m[2] === 'rem' ? rem : 1) : NaN;
+  }
+  return Number.isFinite(px) ? Math.max(0, Math.min(size, px)) : NaN;
+}
+
+/** The index of the extent nearest `at` (ties: the larger). */
+export function nearestSnap(extents: readonly number[], at: number): number {
+  let best = 0;
+  extents.forEach((e, i) => { if (Math.abs(e - at) <= Math.abs(extents[best] - at)) best = i; });
+  return best;
+}
+
+/** Set the sheet's snap offset (px toward its edge) as Base UI-style variables, signed by its swipe direction. */
+export function applySnapOffset(el: HTMLElement, direction: SwipeDirection, offset: number) {
+  const sign = direction === 'down' || direction === 'right' ? 1 : -1, x = direction === 'left' || direction === 'right';
+  el.style.setProperty('--drawer-snap-x', x ? `${offset * sign}px` : '0px');
+  el.style.setProperty('--drawer-snap-y', x ? '0px' : `${offset * sign}px`);
 }
 
 /** Movement (px) before a press becomes a swipe, so presses and clicks inside stay clicks. */
@@ -53,14 +95,17 @@ export function createSwipeDismiss(o: SwipeOptions) {
     const el = o.el();
     if (!start || !el || e.pointerId !== start.id) return;
     const d = ((axis() === 'x' ? e.clientX - start.x : e.clientY - start.y) * sign());
+    // With snap points the sheet also drags outward (negative d), up to its largest point.
+    const room = o.snap ? (() => { const ex = o.snap.extents(); return Math.max(0, Math.max(...ex) - (ex[o.snap.index()] ?? 0)); })() : 0;
     if (!swiping) {
       const cross = axis() === 'x' ? Math.abs(e.clientY - start.y) : Math.abs(e.clientX - start.x);
-      if (d < SLOP || cross > d) { if (cross > SLOP) start = null; return; }
+      const along = o.snap && room > 0 ? Math.abs(d) : d;
+      if (along < SLOP || cross > along) { if (cross > SLOP) start = null; return; }
       swiping = true;
       el.setAttribute('data-swiping', '');
       try { el.setPointerCapture?.(e.pointerId); } catch { /* synthetic pointer */ }
     }
-    delta = Math.max(0, d);
+    delta = Math.max(-room, d);
     const dt = e.timeStamp - last.t;
     // Speed over the latest move (moves closer than 4ms apart are coalesced).
     if (dt < 4) return set(el, delta);
@@ -74,6 +119,29 @@ export function createSwipeDismiss(o: SwipeOptions) {
     const was = swiping;
     start = null; swiping = false;
     if (!was) return;
+    if (o.snap) {
+      const ex = o.snap.extents(), cur = ex[o.snap.index()] ?? 0, at = cur - delta, v = o.velocity ?? 0.5;
+      // A flick (Base UI) goes to the next point in its direction from where it was released: toward
+      // the edge past the smallest point it dismisses; otherwise the nearest point wins, and below
+      // half the smallest it dismisses.
+      let i: number | undefined;
+      if (speed > v) {
+        const below = ex.map((x, k) => [x, k] as const).filter(([x]) => x < at - 1).sort((a, b) => b[0] - a[0]);
+        i = below[0]?.[1];
+      } else if (speed < -v) {
+        const above = ex.map((x, k) => [x, k] as const).filter(([x]) => x > at + 1).sort((a, b) => a[0] - b[0]);
+        i = above[0]?.[1] ?? nearestSnap(ex, at);
+      } else if (at >= Math.min(...ex) / 2) i = nearestSnap(ex, at);
+      if (i === undefined) {
+        el.removeAttribute('data-swiping');
+        el.setAttribute('data-swipe-dismiss', '');
+        o.onSwipe(e);
+        return;
+      }
+      reset(el);
+      if (i !== o.snap.index()) o.snap.onSnap(i, e);
+      return;
+    }
     const size = axis() === 'x' ? el.offsetWidth : el.offsetHeight;
     if (delta > (o.threshold ?? 0.4) * size || speed > (o.velocity ?? 0.5)) {
       // The popup leaves from where it was dragged to: data-swipe-dismiss keeps the movement for the exit.
@@ -106,5 +174,8 @@ export function createSwipeDismiss(o: SwipeOptions) {
     /** Clear the swipe state (after the popup reopens). */
     reset() { const el = o.el(); if (el) { reset(el); el.removeAttribute('data-swipe-dismiss'); } },
     get swiping() { return swiping; },
+    /** Snap points can change after creation (an attribute or prop update). */
+    get snap() { return o.snap; },
+    set snap(v: SwipeOptions['snap']) { o.snap = v; },
   };
 }

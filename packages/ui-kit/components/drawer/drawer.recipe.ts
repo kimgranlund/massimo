@@ -33,7 +33,8 @@ const sheet = (side: keyof typeof AWAY) => {
 export const drawerPopup = mergeStyles(dialogSurface, {
   '--dp': 'var(--ui-pad-panel)',
   margin: 0, maxWidth: 'none', borderRadius: 0,
-  translate: 'var(--drawer-swipe-movement-x, 0px) var(--drawer-swipe-movement-y, 0px)',
+  // The snap offset (a sheet resting at a snap point, set by script) plus the swipe movement.
+  translate: 'calc(var(--drawer-snap-x, 0px) + var(--drawer-swipe-movement-x, 0px)) calc(var(--drawer-snap-y, 0px) + var(--drawer-swipe-movement-y, 0px))',
   transition: `${t('reveal', 'translate')}, ${FADE}`,
   touchAction: 'none',
   // Following the pointer: no transition until the release.
