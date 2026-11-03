@@ -11,7 +11,9 @@ Requirements: Node 22.18 or later (scripts run `.ts` files directly) and npm.
 
 ```sh
 npm install
-npm run studio        # the jig at http://localhost:5173
+npm run dev           # the jig at http://localhost:5173 (same as npm run studio)
+npm run build         # the ui-kit, then the studio for production
+npm run preview       # serve that production build
 ```
 
 Use the kit from an app:

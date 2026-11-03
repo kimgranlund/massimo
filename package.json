@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "dev": "npm run studio",
+    "build": "npm run ui-kit:build && npm run studio:build",
+    "preview": "npm run preview -w @massimo/studio",
     "ui-kit:build": "npm run build -w @massimo/ui-kit",
     "ui-kit:test": "npm test -w @massimo/ui-kit",
     "ui-kit:typecheck": "npm run typecheck -w @massimo/ui-kit",
