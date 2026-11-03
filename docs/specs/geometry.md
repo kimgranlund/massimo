@@ -60,7 +60,7 @@ Inputs and select triggers are laid out as buttons: the host (input `[data-part=
 | checkbox / radio box | 5u, in the 6u leading slot; label start padding u (1.5u from the box) | 20 |
 | switch | 9u × 5u track, 4u thumb inset 0.5u, travels 4u | 36 × 20 |
 | checkbox radius | u × s (radio and switch round) | 4 |
-| range / progress | 4u track, radius min(3u × s, 2u); range thumb inside it like the switch thumb: track − u, inset 0.5u, radius track radius − 0.5u, offset 0.5u + ratio × (width − track); range fill = track + ratio × (width − track) with the track radius, so its cap stays concentric around the thumb (maison-ui's construction); progress fill = ratio × width; min width 24u | 16 / 12 / 16 |
+| range / progress | 4u track, radius min(3u × s, 2u); range thumb inside it like the switch thumb: track − u, inset 0.5u, radius track radius − 0.5u, offset 0.5u + ratio × (width − track); range fill = track + ratio × (width − track) with the track radius, so its cap stays concentric around the thumb (maison-ui's construction); a two-thumb range's fill starts r0 × (width − track) and is track + (r1 − r0) × (width − track) wide, wrapping both thumbs (`trackPairFill`); progress fill = ratio × width; min width 24u | 16 / 12 / 16 |
 | swatch | 6u square, radius u × s; palette strip radius 2u × s, no gaps | 24 |
 | swiper | paddles are 8u icon buttons inset 2u; dots 2u (active 4u) in 4u hit areas, gap u, 2u above the bottom edge | 32 / 8 |
 | image | square frame (radius 0), height = width / ratio (presets or a custom w/h; none or invalid: the content sets it); a slideshow is a swiper filling the frame (`resolveImage`) | |

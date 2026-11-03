@@ -13,6 +13,13 @@
       "markup": "<ui-range label=\"Volume\" name=\"volume\" value=\"40\" value-text=\"40%\"></ui-range>"
     },
     {
+      "id": "pair",
+      "label": "Range pair",
+      "subject": "component:range",
+      "markup": "<ui-range label=\"Price\" name=\"price\" min=\"0\" max=\"500\" step=\"10\" value=\"100,350\"></ui-range>",
+      "note": "Two thumbs that cannot cross; React: <Range defaultValue={[100, 350]} … />."
+    },
+    {
       "id": "progress",
       "label": "Progress",
       "subject": "component:progress",

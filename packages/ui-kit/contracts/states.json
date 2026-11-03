@@ -124,7 +124,7 @@
     "data-dragging": {
       "baseUi": true,
       "condition": "_dragging",
-      "meaning": "A pointer drags the range thumb."
+      "meaning": "A pointer drags the range thumb (on the host; with two thumbs, also on the dragged thumb)."
     },
     "data-progressing": {
       "baseUi": true,
@@ -329,6 +329,9 @@
         "data-touched",
         "data-filled",
         "data-focused"
+      ],
+      "thumb": [
+        "data-dragging"
       ]
     },
     "ui-progress": {

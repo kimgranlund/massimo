@@ -32,12 +32,13 @@ export const range = defineSlotRecipe({
       _enabled: {
         '&:hover': { '& > [data-part=track]': { bg: 'bg.mutedHover' }, '& > [data-part=track] > [data-part=indicator]': { bg: 'primary.solidHover' } },
         // Dragging (data-dragging, from pointer down to up).
-        _dragging: { cursor: 'grabbing', '& > [data-part=thumb]': { boxShadow: 'md' } },
+        // A pair raises only the dragged thumb (data-dragging on the thumb).
+        _dragging: { cursor: 'grabbing', '& > [data-part=thumb]:is(:not([data-index]), [data-dragging])': { boxShadow: 'md' } },
       },
       // The thumb and fill glide on keyboard steps; while dragging they track 1:1.
       '&:not([data-dragging])': {
         '& > [data-part=thumb]': { transition: `${t('toggle', 'margin-inline-start')}, ${t('feedback', 'box-shadow')}` },
-        '& > [data-part=track] > [data-part=indicator]': { transition: `${t('toggle', 'width')}, ${t('feedback', 'background-color')}` },
+        '& > [data-part=track] > [data-part=indicator]': { transition: `${t('toggle', 'width', 'margin-inline-start')}, ${t('feedback', 'background-color')}` },
       },
       // React: the native input covers the track, transparent, so pointer and keys are native. Its
       // thumb is as wide as the track, so native travel (width − thumb) equals the painted thumb's
@@ -48,14 +49,26 @@ export const range = defineSlotRecipe({
       },
       '& > input::-webkit-slider-thumb': { appearance: 'none', width: 'var(--track)', height: 'var(--track)' },
       '& > input::-moz-range-thumb': { width: 'var(--track)', height: 'var(--track)', border: 0 },
+      // A pair's inputs (one per thumb) take keys and the form value; the root script maps the pointer.
+      '& > input[data-index]': { pointerEvents: 'none' },
     },
     track,
-    indicator: { ...fill, width: 'calc(var(--track) + var(--ui-ratio, 0) * (100% - var(--track)))' },
+    // A pair's indicator starts one track-radius before the first thumb's center (--ui-ratio-start,
+    // 0 for one thumb) and ends one past the second's, so both caps wrap their thumbs.
+    indicator: {
+      ...fill,
+      marginInlineStart: 'calc(var(--ui-ratio-start, 0) * (100% - var(--track)))',
+      width: 'calc(var(--track) + (var(--ui-ratio, 0) - var(--ui-ratio-start, 0)) * (100% - var(--track)))',
+    },
     thumb: {
       display: 'block', gridArea: '1 / 1', width: 'calc(var(--track) - var(--u))', height: 'calc(var(--track) - var(--u))',
       borderRadius: 'max(0px, calc(var(--track-r) - 0.5 * var(--u)))',
       marginInlineStart: 'calc(0.5 * var(--u) + var(--ui-ratio, 0) * (100% - var(--track)))',
       bg: 'white', borderWidth: 'var(--b)', borderColor: 'primary.solid', boxShadow: 'sm',
+      // A pair's focused or dragged thumb paints over the other where they meet.
+      '&:is(:focus-visible, [data-dragging])': { zIndex: 1 },
+      // React pair: the input after a thumb has keyboard focus (the thumb draws its ring).
+      ':root:not([data-modality=pointer]) &[data-index]:has(+ input:focus-visible)': { zIndex: 1, outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
       [FORCED]: { forcedColorAdjust: 'none', bg: 'CanvasText' },
     },
   },

@@ -133,10 +133,11 @@
       "resolver": [
         "resolveTrack",
         "trackFill",
+        "trackPairFill",
         "thumbOffset",
         "resolveMeter"
       ],
-      "summary": "4u track rounded at half height. Range thumb inside it like a switch thumb (track − u, inset 0.5u, concentric radius), travelling width − track; the fill ends one track-radius past the thumb center (track + p·(width − track)) with the track radius, so its cap wraps the thumb. Progress fill = p·width. The ratio arrives as --ui-ratio. Meter: the progress track under a label | value row (control text, column gap 2u) 1.5u above it (resolveMeter).",
+      "summary": "4u track rounded at half height. Range thumb inside it like a switch thumb (track − u, inset 0.5u, concentric radius), travelling width − track; the fill ends one track-radius past the thumb center (track + p·(width − track)) with the track radius, so its cap wraps the thumb; a two-thumb range's fill starts r0·(width − track) and is track + (r1 − r0)·(width − track) wide, wrapping both thumbs (trackPairFill). Progress fill = p·width. The ratio arrives as --ui-ratio. Meter: the progress track under a label | value row (control text, column gap 2u) 1.5u above it (resolveMeter).",
       "members": [
         "component:range",
         "component:progress",

@@ -75,6 +75,7 @@ function Pair({ u }: { u: number }) {
         <ui-radio data-k="rd" name={`r${u}`} value="a" checked>One</ui-radio>
         <ui-switch data-k="sw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
         <div style={{ width: 300 }}><ui-range data-k="rg" value={25} /></div>
+        <div style={{ width: 300 }}><ui-range data-k="rgP" value={[20, 70]} label="Price" /></div>
         <div style={{ width: 300 }}><ui-field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u."><ui-range value={25} /></ui-field></div>
         <div style={{ width: 300 }}><ui-progress data-k="pg" value={40} /></div>
         <ui-badge data-k="bd">3</ui-badge>
@@ -131,6 +132,7 @@ function Pair({ u }: { u: number }) {
         <Radio data-k="rd" name={`rr${u}`} value="a" defaultChecked>One</Radio>
         <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
         <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
+        <div style={{ width: 300 }}><Range data-k="rgP" defaultValue={[20, 70]} label="Price" /></div>
         <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u.">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
         <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
         <Badge data-k="bd">3</Badge>
@@ -186,6 +188,7 @@ function ComposedPair({ u }: { u: number }) {
       <Radio data-k="rd" name={`cr${u}`} value="a" defaultChecked>One</Radio>
       <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
       <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
+      <div style={{ width: 300 }}><Range data-k="rgP" defaultValue={[20, 70]} label="Price" /></div>
       <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
       <div style={{ width: 300 }}><Meter data-k="mt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
@@ -204,6 +207,7 @@ function ComposedPair({ u }: { u: number }) {
       <ui-switch data-k="wsw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
       <ui-radio data-k="wrd" name={`wr${u}`} value="a" checked>One</ui-radio>
       <div style={{ width: 300 }}><ui-range data-k="wrg" value={25} /></div>
+      <div style={{ width: 300 }}><ui-range data-k="wrgP" value={[20, 70]} label="Price" /></div>
       <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40} /></div>
       <div style={{ width: 300 }}><ui-meter data-k="wmt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><ui-field data-k="wfd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big"><ui-range value={25} /></ui-field></div>
@@ -220,6 +224,7 @@ function ComposedPair({ u }: { u: number }) {
       <Radio.Root data-k="rd" name={`cr${u}c`} value="a" defaultChecked><Radio.Indicator />One</Radio.Root>
       <Switch.Root data-k="sw" defaultChecked suffix="on"><Switch.Thumb />Wi-Fi</Switch.Root>
       <div style={{ width: 300 }}><Slider.Root data-k="rg" defaultValue={25} label="Volume"><Slider.Track><Slider.Indicator /></Slider.Track><Slider.Thumb /></Slider.Root></div>
+      <div style={{ width: 300 }}><Slider.Root data-k="rgP" defaultValue={[20, 70]} label="Price"><Slider.Track><Slider.Indicator /></Slider.Track><Slider.Thumb index={0} /><Slider.Thumb index={1} /></Slider.Root></div>
       <div style={{ width: 300 }}><Progress.Root data-k="pg" value={40} label="Upload"><Progress.Track><Progress.Indicator /></Progress.Track></Progress.Root></div>
       <div style={{ width: 300 }}><Meter.Root data-k="mt" value={40}><Meter.Label>Storage</Meter.Label><Meter.Value /><Meter.Track><Meter.Indicator /></Meter.Track></Meter.Root></div>
       <div style={{ width: 300 }}>
@@ -265,6 +270,7 @@ function ComposedPair({ u }: { u: number }) {
       <ui-switch data-k="wsw" checked><span data-part="indicator"><span data-part="thumb" /></span>Wi-Fi<span data-part="suffix">on</span></ui-switch>
       <ui-radio data-k="wrd" name={`wr${u}c`} value="a" checked><span data-part="indicator" /><span data-part="contents">One</span></ui-radio>
       <div style={{ width: 300 }}><ui-range data-k="wrg" value={25}><span data-part="track"><span data-part="indicator" /></span><span data-part="thumb" /></ui-range></div>
+      <div style={{ width: 300 }}><ui-range data-k="wrgP" value={[20, 70]} label="Price"><span data-part="track"><span data-part="indicator" /></span><span data-part="thumb" /><span data-part="thumb" /></ui-range></div>
       <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40}><span data-part="track"><span data-part="indicator" /></span></ui-progress></div>
       <div style={{ width: 300 }}><ui-meter data-k="wmt" value={40}><span data-part="label">Storage</span><span data-part="value" /><span data-part="track"><span data-part="indicator" /></span></ui-meter></div>
       <div style={{ width: 300 }}>

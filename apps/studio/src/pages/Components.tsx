@@ -354,6 +354,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: (
       <>
         <Row label="Range"><div className={trackStack}><ui-range label="Volume" value={40} /><ui-range label="Steps" min={0} max={10} step={1} value={3} /></div></Row>
+        <Row label="Range pair"><div className={trackStack}><ui-range label="Price" min={0} max={500} step={10} value={[100, 350]} /><ui-range label="Hours" min={0} max={24} value={[9, 9]} /></div></Row>
         <Row label="Progress"><div className={trackStack}><ui-progress label="Upload" value={64} /><ui-progress label="Loading" /></div></Row>
         <Row label="Meter">
           <div className={trackStack}>
@@ -364,7 +365,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           </div>
         </Row>
         <SizeLadder family="track" params={params}>
-          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-progress label="Upload" value={64} /><ui-meter label="Storage" value={64} /></div>
+          <div className={trackStack}><ui-range label="Volume" value={40} /><ui-range label="Price" value={[20, 70]} /><ui-progress label="Upload" value={64} /><ui-meter label="Storage" value={64} /></div>
         </SizeLadder>
       </>
     ),

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "44d6f1add72efe37fe80e441083e4abf6565f0c25233a4af14e2ee7ee03be2cc"
+      "sha256": "c9f2cb1bf4f176f087aeee4fc55ef59607a1afb9859b9df3bef2a8c26968fdb5"
     },
     {
       "path": "styles/geometry.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/geometry.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts"
