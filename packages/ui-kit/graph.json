@@ -471,6 +471,20 @@
         "toolbar"
       ]
     },
+    "component:toggle-group": {
+      "kind": "component",
+      "source": "components/toggle-group/toggle-group.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-toggle-group",
+      "searchTerms": [
+        "toggle group",
+        "toolbar toggles",
+        "multiple selection",
+        "text formatting",
+        "pressed group",
+        "button group"
+      ]
+    },
     "context:accordion": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/accordion",
@@ -589,6 +603,15 @@
       "searchTerms": [
         "region",
         "inside region"
+      ]
+    },
+    "context:toggle-group": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/toggle-group",
+      "availability": "implemented",
+      "searchTerms": [
+        "toggle group",
+        "inside toggle group"
       ]
     },
     "foundation:colors": {
@@ -5070,6 +5093,111 @@
       "to": "context:collection"
     },
     {
+      "from": "component:toggle-group",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "uses",
+      "to": "component:toggle"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
       "from": "component:toggle",
       "relation": "extends",
       "to": "foundation:element"
@@ -5188,6 +5316,11 @@
       "from": "component:toggle",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:toggle-group"
     },
     {
       "from": "component:toggle",

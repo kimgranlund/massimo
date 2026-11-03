@@ -59,7 +59,9 @@
     "./components/accordion/element": "./components/accordion/accordion.element.ts",
     "./components/accordion/react": "./components/accordion/accordion.react.tsx",
     "./components/tabs/element": "./components/tabs/tabs.element.ts",
-    "./components/tabs/react": "./components/tabs/tabs.react.tsx"
+    "./components/tabs/react": "./components/tabs/tabs.react.tsx",
+    "./components/toggle-group/element": "./components/toggle-group/toggle-group.element.ts",
+    "./components/toggle-group/react": "./components/toggle-group/toggle-group.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

@@ -1,0 +1,79 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "toggle-group",
+  "scope": "Pressed values (single and multiple), seeding, the group's cancelable change in place of the toggle's, roving focus (arrows, Home / End, RTL, vertical, disabled toggles), disabled of the web component in happy-dom; the React renderer in react-dom/server and react-dom/client (node:test): markup and data-* parity, presses, onValueChange details, controlled value, roving tabIndex and keys. Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/toggle-group/toggle-group.element.ts",
+      "sha256": "a5620b5fca6e3e1c2b89b2a1cd814c784210b0e80781e177c05809af06b776c5"
+    },
+    {
+      "path": "components/toggle-group/toggle-group.react.tsx",
+      "sha256": "d211bcb19a07696401446d6ba9efef5ff16082879e3aa686f804ec4d1d229f9c"
+    },
+    {
+      "path": "components/toggle-group/toggle-group.recipe.ts",
+      "sha256": "9e2b415e6eff9d4c56846ce0b0cf9866f26dd1055e573b666a35d0649c9ff5d2"
+    },
+    {
+      "path": "components/toggle-group/toggle-group.manifest.json",
+      "sha256": "12cae191aceee82bd1548050ff7b95af1ab8bbae0d9bd70bad0903e7672def2d"
+    },
+    {
+      "path": "components/toggle/toggle.element.ts",
+      "sha256": "a614de984a5b90d373766c579b318e2dd2a5bcae350eddfa2e443a1783804ab0"
+    },
+    {
+      "path": "components/toggle/toggle.react.tsx",
+      "sha256": "ab578d3e45ff337b16a71fe47ddfcc3833d4e1dd0b31725ee5a0dffb810ed418"
+    },
+    {
+      "path": "components/toggle/toggle.recipe.ts",
+      "sha256": "41605777e66de9c82e77b2f94d492968816b4a350e00e848b661b8c372a610e0"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-toggle-group\" test/toggle-group.test.ts",
+          "covers": "role=group, data-orientation / data-disabled / data-multiple, single and multiple pressed values, change { value: string[], reason, event } (cancelable) in place of the toggle's change, default-value and pressed seeding, roving tab stop, arrow keys wrapping and skipping disabled toggles, Home / End, RTL, vertical, disabled, no native elements"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-toggle-group\" test/toggle-group.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"React ToggleGroup\" test/toggle-group.test.ts",
+          "covers": "SSR markup and data-* parity with the web component, disabled group, single and multiple presses, onValueChange details, Toggle onPressedChange in a group, controlled value, roving tabIndex, arrow keys and End"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"React ToggleGroup\" test/toggle-group.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Geometry review (manual, 2026-11-02): the composite family (resolveComposite) checked for ui-toggle-group in apps/studio/geometry-check.html at every size x B 0 and 1 x icon sizes x gap: row height, edge (padding + border), radius, gap (the gap attribute wins; vertical uses the default), toggle height (pressed and not), inset, radius, the 6u leading slot and the label padding beside a slot and at a bare edge; growth: a long label widens its toggle and the group (vertical: every toggle takes the widest), slots never shrink, every checked unit (u = 2 to 11.5) keeps the 8u row; RTL: toggles and their construction pattern mirror (flex) and Left / Right flip; focus: the ring is inset by the thick border width, so it stays inside the group contour, and never changes dimensions; react-check.html compares the React ToggleGroup with ui-toggle-group (host and each toggle: box, paint, data-*); light and dark screenshots of the Actions family and its composite ladder.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React ToggleGroup with ui-toggle-group at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency."
+  ]
+}

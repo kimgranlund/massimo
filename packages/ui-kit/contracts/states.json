@@ -175,6 +175,11 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-multiple": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A toggle group lets several toggles be pressed (multiple)."
     }
   },
   "components": {
@@ -499,6 +504,13 @@
         "data-hidden",
         "data-orientation",
         "data-activation-direction"
+      ]
+    },
+    "ui-toggle-group": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-multiple"
       ]
     }
   },

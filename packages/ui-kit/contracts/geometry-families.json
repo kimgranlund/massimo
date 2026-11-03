@@ -271,7 +271,8 @@
         "component:page",
         "component:listbox",
         "component:segmented",
-        "component:select"
+        "component:select",
+        "component:toggle-group"
       ],
       "searchTerms": [
         "container padding",

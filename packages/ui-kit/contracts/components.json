@@ -578,9 +578,10 @@
         "collection",
         "group",
         "form",
-        "inline"
+        "inline",
+        "toggle-group"
       ],
-      "behavior": "Click, Enter and Space flip pressed and fire a cancelable change { pressed, reason: none, event }; disabled blocks activation. No form value."
+      "behavior": "Click, Enter and Space flip pressed and fire a cancelable change { pressed, reason: none, event }; disabled blocks activation. No form value. Inside a ui-toggle-group the group owns pressed (it answers the change), disables the toggle with itself and sets its roving tab index."
     },
     "collapsible": {
       "geometryFamily": "disclosure",
@@ -642,6 +643,22 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "toggle-group": {
+      "geometryFamily": "container",
+      "element": "Host is the group (role=group, data-ui=toggle-group in React); its ui-toggle children are the toggles (each role=button with aria-pressed; native buttons in React).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "The group owns its toggles' pressed state (value: the pressed toggle values; multiple allows several). A press fires the group's cancelable change ({ value: string[], reason: 'none', event }) in place of the toggle's; in single mode pressing one releases the others, and pressing the pressed one releases it. Roving focus: one tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled toggles, wrapping. disabled disables every toggle. No form value."
     }
   }
 }

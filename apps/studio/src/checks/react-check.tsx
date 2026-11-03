@@ -25,6 +25,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/toggle-group/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -51,6 +52,7 @@ import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
+import { ToggleGroup } from '@massimo/ui-kit/components/toggle-group/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
@@ -101,6 +103,8 @@ function Pair({ u }: { u: number }) {
         <ui-toggle data-k="tg"><i slot="leading" name="star" />Star</ui-toggle>
         <ui-toggle data-k="tgP" pressed>Bold<span slot="suffix">B</span></ui-toggle>
         <ui-toggle data-k="tgD" disabled aria-label="Off"><i slot="leading" name="text-b" /></ui-toggle>
+        <ui-toggle-group data-k="tgg" multiple value="b"><ui-toggle value="b"><i slot="leading" name="text-b" />Bold</ui-toggle><ui-toggle value="i">Italic</ui-toggle><ui-toggle value="u" disabled>Under</ui-toggle></ui-toggle-group>
+        <ui-toggle-group data-k="tggV" orientation="vertical" value="a"><ui-toggle value="a">One</ui-toggle><ui-toggle value="b">Two</ui-toggle></ui-toggle-group>
         <div style={{ width: 300 }}><ui-meter data-k="mt" label="Storage" value={30} /></div>
         <div style={{ width: 300 }}><ui-meter data-k="mtN" value={3} max={4} format='{"style":"decimal"}' /></div>
         <ui-avatar data-k="avS" avatar-size="sm" />
@@ -158,6 +162,8 @@ function Pair({ u }: { u: number }) {
         <Toggle data-k="tg" leading={<i name="star" />}>Star</Toggle>
         <Toggle data-k="tgP" pressed suffix="B">Bold</Toggle>
         <Toggle data-k="tgD" disabled aria-label="Off" leading={<i name="text-b" />} />
+        <ToggleGroup data-k="tgg" multiple defaultValue={['b']}><Toggle value="b" leading={<i name="text-b" />}>Bold</Toggle><Toggle value="i">Italic</Toggle><Toggle value="u" disabled>Under</Toggle></ToggleGroup>
+        <ToggleGroup data-k="tggV" orientation="vertical" defaultValue={['a']}><Toggle value="a">One</Toggle><Toggle value="b">Two</Toggle></ToggleGroup>
         <div style={{ width: 300 }}><Meter data-k="mt" label="Storage" value={30} /></div>
         <div style={{ width: 300 }}><Meter data-k="mtN" value={3} max={4} format={{ style: 'decimal' }} /></div>
         <Avatar data-k="avS" avatarSize="sm" />
@@ -373,6 +379,22 @@ setTimeout(() => {
         checks++;
         if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} ${k}.${key}: wc ${a[key]} react ${b[key]}`);
       }
+    }
+  }
+  // Toggle groups: the host and each toggle measured, with the same data-*.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['tgg', 'tggV']) {
+      const items = (h: HTMLElement) => [h, ...h.querySelectorAll<HTMLElement>(':scope > ui-toggle, :scope > [data-ui=toggle]')];
+      const pa = items(host(wc, k)), pb = items(host(re, k));
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} toggles: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => {
+        const ma = measure(x), mb = measure(pb[i]);
+        for (const key of Object.keys(ma) as (keyof typeof ma)[]) { checks++; if (!same(ma[key], mb[key])) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}].${key}: wc ${ma[key]} react ${mb[key]}`); }
+        checks++;
+        if (stateOf(x) !== stateOf(pb[i])) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${stateOf(x)}" react "${stateOf(pb[i])}"`);
+      });
     }
   }
   // Input: same parts; the React control holds a native <input> as its contents part.

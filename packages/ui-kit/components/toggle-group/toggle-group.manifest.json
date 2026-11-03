@@ -1,0 +1,335 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "toggle-group",
+  "primary": "component:toggle-group",
+  "module": "./toggle-group.element.ts",
+  "registration": "on-import",
+  "documentation": "./toggle-group.md",
+  "examples": "./toggle-group.examples.json",
+  "contract": "../../contracts/components.json#/components/toggle-group",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./toggle-group.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveComposite"
+      ],
+      "description": "Reference numbers for the composite row: edge, padding, gap and radius, and its 7u toggles (height, inset, radius)."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:toggle-group",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-toggle-group",
+      "class": "UIToggleGroup",
+      "extends": "UIElement",
+      "intent": [
+        "Press one or several of a set of related toggles, such as text formatting or a view filter, with the pressed values owned by the group"
+      ],
+      "properties": [
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Comma-separated values of the pressed toggles (a toggle value is its value attribute, else its index). Setting it presses and releases the toggles without a change event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": "",
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "The first value, applied once at connect when no value attribute is present (Base UI defaultValue). Without either, the toggles pressed / default-pressed seed it.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "multiple",
+          "type": "boolean",
+          "default": false,
+          "attribute": "multiple",
+          "reflects": false,
+          "description": "Several toggles may be pressed; otherwise pressing one releases the others and only the first seeded toggle is pressed.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Every toggle is disabled (aria-disabled, data-disabled) and leaves the tab order.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "orientation",
+          "type": "string",
+          "default": "horizontal",
+          "attribute": "orientation",
+          "reflects": false,
+          "enum": [
+            "horizontal",
+            "vertical"
+          ],
+          "description": "horizontal (default) or vertical: the toggle layout and which arrow keys move focus (Left / Right, mirrored in RTL; Up / Down).",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ value: string[], reason: 'none', event: Event } (Base UI ToggleGroup onValueChange)",
+          "trigger": "a toggle is pressed (click, Enter or Space); the toggle's own change does not leave the group; preventDefault keeps every toggle as it is"
+        }
+      ],
+      "semantics": {
+        "role": "group",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on a toggle",
+            "action": "press or release it (single mode: pressing releases the others)"
+          },
+          {
+            "keys": "ArrowRight, ArrowLeft (ArrowDown, ArrowUp when vertical)",
+            "action": "move focus to the next / previous enabled toggle, wrapping; Left / Right flip in RTL"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move focus to the first / last enabled toggle"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "ui-toggle children, each with a value (else its index). Other children are left as they are and take no part in the value."
+      },
+      "layout": {
+        "display": "inline-flex",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The group owns its toggles' pressed state: change the group's value, not a toggle's pressed, from script. A toggle's change is answered by the group and does not propagate; the group fires its own change.",
+        "Without value or default-value, the toggles' pressed / default-pressed attributes seed the first value (only the first pressed one in single mode).",
+        "Single mode allows no toggle pressed: pressing the pressed toggle releases it (Base UI ToggleGroup).",
+        "Roving focus: one toggle is the tab stop (the last focused, else the first pressed, else the first enabled); arrow keys only move focus, Enter or Space presses.",
+        "No form value: a toggle group is not form-associated (Base UI ToggleGroup); submit its value from application state.",
+        "React: ToggleGroup with Toggle children that have a value; the group sets the buttons' tabIndex after each render."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Choosing exactly one of a few options that must always have a value, submitted with a form.",
+          "reason": "A segmented control is a single-select listbox with a form value and always one selection.",
+          "useInstead": "component:segmented"
+        },
+        {
+          "when": "Several independent settings, each on or off, submitted with a form.",
+          "reason": "Checkboxes in a group own form values and a parent checkbox.",
+          "useInstead": "component:checkbox-group"
+        },
+        {
+          "when": "Switching between peer views with panels.",
+          "reason": "Tabs tie each label to its panel (role=tab, aria-controls).",
+          "useInstead": "component:tabs"
+        }
+      ],
+      "searchTerms": [
+        "toggle group",
+        "toolbar toggles",
+        "multiple selection",
+        "text formatting",
+        "pressed group",
+        "button group"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:toggle-group",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "uses",
+      "to": "component:toggle"
+    },
+    {
+      "from": "component:toggle-group",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./toggle-group.element.ts",
+      "exports": {
+        "component:toggle-group": "UIToggleGroup"
+      },
+      "verification": "./verification/toggle-group.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./toggle-group.react.tsx",
+      "exports": {
+        "component:toggle-group": "ToggleGroup"
+      },
+      "verification": "./verification/toggle-group.verification.json#/renderers/react",
+      "props": {
+        "component:toggle-group": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'defaultValue'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "value?: string[] // Controlled pressed toggle values.",
+            "defaultValue?: string[] = [] // Pressed toggle values at first render (uncontrolled).",
+            "onValueChange?: (value: string[], details: ChangeDetails) => void // Called when a press changes the pressed toggles, with Base UI's details ({ reason: 'none', event }).",
+            "multiple?: boolean = false // Several toggles may be pressed at once (default: pressing one releases the others).",
+            "disabled?: boolean = false // Every toggle ignores presses.",
+            "orientation?: 'horizontal' | 'vertical' = 'horizontal' // horizontal (default): Left / Right move focus; vertical: Up / Down.",
+            "size?: number // Unit u in px; the row is 8u with 7u toggles.",
+            "children?: ReactNode"
+          ]
+        }
+      }
+    }
+  }
+}

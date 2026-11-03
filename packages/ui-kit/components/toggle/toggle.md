@@ -60,7 +60,7 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 | `ui-toggle` | `pressed`, `defaultPressed` (`default-pressed`) | `change`: `detail { pressed, reason: 'none', event }`, cancelable (`preventDefault` keeps the state) |
 | React Toggle | `pressed`, `defaultPressed` | `onPressedChange(pressed, { reason: 'none', event })`; the native `onClick` still fires |
 
-`value` identifies a toggle for an application-owned group; a toggle has no form value.
+`value` identifies a toggle inside a [toggle group](../toggle-group/toggle-group.md) (`ui-toggle-group`, React `ToggleGroup`), which then owns its pressed state, disables it with itself and sets its roving tab index; a toggle has no form value. In a group a toggle is a composite option (7u, no fill until hovered, the raised selected fill while pressed).
 
 ## Geometry and appearance
 

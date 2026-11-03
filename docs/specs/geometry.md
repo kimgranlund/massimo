@@ -96,7 +96,7 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
-| composite (wrapper) | ui-listbox, ui-segmented, select popup | 0.5u | 0.5u | 3.5u | 2 / 2 / 14 |
+| composite (wrapper) | ui-listbox, ui-segmented, ui-toggle-group, select popup | 0.5u | 0.5u | 3.5u | 2 / 2 / 14 |
 | group (wrapper) | ui-group | 1u | 1u | 4u | 4 / 4 / 16 |
 | collection (wrapper) | ui-collection | 2u | 2u | 5u | 8 / 8 / 20 |
 | card-xs (container) | ui-card padding="xs" | 2u | 2u | 2u | 8 / 8 / 8 |

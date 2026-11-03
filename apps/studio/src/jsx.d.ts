@@ -23,6 +23,7 @@ declare module 'react' {
       'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; parent?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-radio': El<{ name?: string; value?: string; checked?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-switch': El<{ name?: string; value?: string; checked?: boolean; disabled?: boolean }>;
+      'ui-toggle-group': El<{ value?: string; 'default-value'?: string; multiple?: boolean; disabled?: boolean; orientation?: 'horizontal' | 'vertical'; gap?: number }>;
       'ui-range': El<{ name?: string; value?: number | number[]; min?: number; max?: number; step?: number; label?: string; disabled?: boolean }>;
       'ui-progress': El<{ value?: number; max?: number; label?: string }>;
       'ui-swatch': El<{ color?: string; label?: string }>;

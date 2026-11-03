@@ -24,6 +24,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/toggle-group/element';
 import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
 import { trackPairFill } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
@@ -63,6 +64,8 @@ for (const c of cases) {
     <ui-checkbox checked>Check</ui-checkbox><ui-radio>Radio</ui-radio><ui-switch>Switch</ui-switch>
     <div style="width:400px"><ui-range value="25"></ui-range></div><ui-swatch color="red"></ui-swatch>
     <div style="width:400px"><ui-range id="rpair" value="20,70"></ui-range></div>
+    <ui-toggle-group id="tgg" multiple value="b" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-toggle value="b" icon-size="${c.icon}"><span slot="leading"></span>Bold</ui-toggle><ui-toggle value="i">Italic</ui-toggle></ui-toggle-group>
+    <ui-toggle-group id="tggv" orientation="vertical"><ui-toggle value="a">A</ui-toggle><ui-toggle value="b">B</ui-toggle></ui-toggle-group>
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
@@ -254,6 +257,24 @@ for (const c of cases) {
     checks['range.pair.fill'] = [r2(rect(fl).width), r2(pf.width)];
     checks['range.pair.fill.wrapsStart'] = [r2(rect(t0).left + rect(t0).width / 2 - rect(fl).left), r2(rt2.track / 2)];
     checks['range.pair.fill.wrapsEnd'] = [r2(rect(fl).right - (rect(t1).left + rect(t1).width / 2)), r2(rt2.track / 2)];
+  }
+  // Toggle group (resolveComposite): a composite row like ui-segmented; its toggles are 7u
+  // composite options with the control family's label padding and slots.
+  {
+    const tg = $('tgg'), [ta, tb] = tg.querySelectorAll('ui-toggle'), tv = $('tggv'), [va, vb] = tv.querySelectorAll('ui-toggle');
+    checks['toggleGroup.height'] = [r2(rect(tg).height), cmp.rowHeight];
+    checks['toggleGroup.padding'] = [px(cs(tg).paddingTop) + px(cs(tg).borderTopWidth), cmp.edge];
+    checks['toggleGroup.radius'] = [px(cs(tg).borderTopLeftRadius), r2(cmp.radius)];
+    checks['toggleGroup.gap'] = [r2(rect(tb).left - rect(ta).right), cmp.gap];
+    checks['toggleGroup.toggle.height'] = [r2(rect(ta).height), cmp.child.height];
+    checks['toggleGroup.toggle.pressed.height'] = [r2(rect(tb).height), cmp.child.height];
+    checks['toggleGroup.toggle.radius'] = [px(cs(ta).borderTopLeftRadius), r2(cmp.child.radius)];
+    checks['toggleGroup.toggle.padding'] = [px(cs(ta).paddingLeft) + px(cs(ta).borderLeftWidth), cmp.child.inset];
+    checks['toggleGroup.toggle.slot'] = [r2(rect(part(ta, 'leading')).width), ctl.slot];
+    checks['toggleGroup.toggle.label.start'] = [px(cs(part(tb, 'contents')).paddingLeft), resolveButtonContents(false, false, g).start];
+    checks['toggleGroup.toggle.label.leading'] = [px(cs(part(ta, 'contents')).paddingLeft), resolveButtonContents(true, false, g).start];
+    checks['toggleGroup.vertical.stack'] = [r2(rect(vb).top - rect(va).bottom), resolveComposite({ ...g, gap: undefined }).gap];
+    checks['toggleGroup.vertical.toggle.height'] = [r2(rect(va).height), cmp.child.height];
   }
   checks['swatch.size'] = [r2(rect(box.querySelector('ui-swatch')).width), rsw.size];
   // Palette: attached 6u swatches, square inside a 2u·s strip.

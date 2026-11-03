@@ -15,6 +15,7 @@ import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/toggle/element';
+import '@massimo/ui-kit/components/toggle-group/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/checkbox-group/element';
 import '@massimo/ui-kit/components/fieldset/element';
@@ -28,7 +29,7 @@ import { CQ_MD, Divider, IMAGES, Page, Row, Section, SizeLadder, caption, column
 
 /** Component families, in page order: [id, label, elements]. */
 export const FAMILIES = [
-  ['actions', 'Actions', 'ui-button · ui-toggle'],
+  ['actions', 'Actions', 'ui-button · ui-toggle · ui-toggle-group'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid · ui-fieldset'],
   ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select'],
@@ -250,6 +251,22 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <ui-toggle>Notify me<span slot="suffix">3</span></ui-toggle>
           <ui-toggle pressed disabled>Locked on</ui-toggle>
         </Row>
+        <Row label="Toggle group">
+          <ui-toggle-group aria-label="Formatting" multiple value="bold,italic">
+            <ui-toggle value="bold" aria-label="Bold"><i slot="leading" name="text-b" /></ui-toggle>
+            <ui-toggle value="italic" aria-label="Italic"><i slot="leading" name="text-italic" /></ui-toggle>
+            <ui-toggle value="underline" aria-label="Underline"><i slot="leading" name="text-underline" /></ui-toggle>
+          </ui-toggle-group>
+          <ui-toggle-group aria-label="Alignment" default-value="left">
+            <ui-toggle value="left">Left</ui-toggle><ui-toggle value="center">Center</ui-toggle><ui-toggle value="right" disabled>Right</ui-toggle>
+          </ui-toggle-group>
+          <ui-toggle-group aria-label="View" orientation="vertical" value="grid">
+            <ui-toggle value="grid"><i slot="leading" name="grid-four" />Grid</ui-toggle><ui-toggle value="list"><i slot="leading" name="list" />List with a longer label</ui-toggle>
+          </ui-toggle-group>
+        </Row>
+        <SizeLadder family="composite" params={params}>
+          <ui-toggle-group aria-label="Formatting" multiple value="bold"><ui-toggle value="bold"><i slot="leading" name="text-b" />Bold</ui-toggle><ui-toggle value="italic">Italic</ui-toggle></ui-toggle-group>
+        </SizeLadder>
         <Row label="States">
           <ui-button>Default</ui-button>
           <ui-button loading>Loading</ui-button>
