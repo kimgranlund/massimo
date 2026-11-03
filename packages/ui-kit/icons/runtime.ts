@@ -51,7 +51,8 @@ function load(setName: string, name: string) {
 
 /** Render one <i name>. Safe to call repeatedly; only re-renders when set or name changed. */
 export async function renderIcon(el: HTMLElement) {
-  const name = el.getAttribute('name');
+  // Only <i name>: a form field's name (a radio, a hidden input) is not an icon.
+  const name = el.localName === 'i' ? el.getAttribute('name') : null;
   if (!name) return;
   const setName = iconSetFor(el);
   const key = `${setName}:${name}`;

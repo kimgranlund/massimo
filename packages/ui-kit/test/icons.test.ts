@@ -46,6 +46,18 @@ test('<i name> renders from the active set, follows data-icons and aliases', asy
   deco.setAttribute('name', 'heart');
   await settle();
   assert.equal(deco.querySelector('path')!.id, 'b-heart');
+
+  // A form field's name is not an icon: renaming a radio host must not load, hide or empty it.
+  const radio = document.createElement('ui-radio');
+  radio.textContent = 'One';
+  wrap.append(radio);
+  await settle();
+  calls.length = 0;
+  radio.setAttribute('name', 'star');
+  await settle();
+  assert.deepEqual(calls, []);
+  assert.equal(radio.textContent, 'One');
+  assert.equal(radio.hasAttribute('aria-hidden'), false);
   wrap.remove();
 });
 
