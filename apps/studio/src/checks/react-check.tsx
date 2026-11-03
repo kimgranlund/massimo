@@ -33,6 +33,9 @@ import '@massimo/ui-kit/components/otp-field/element';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
 import '@massimo/ui-kit/components/toggle-group/element';
+import '@massimo/ui-kit/components/dialog/element';
+import '@massimo/ui-kit/components/alert-dialog/element';
+import '@massimo/ui-kit/components/drawer/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -68,6 +71,9 @@ import { Toast } from '@massimo/ui-kit/components/toast/react';
 import { NumberField } from '@massimo/ui-kit/components/number-field/react';
 import { OTPField } from '@massimo/ui-kit/components/otp-field/react';
 import { ToggleGroup } from '@massimo/ui-kit/components/toggle-group/react';
+import { Dialog } from '@massimo/ui-kit/components/dialog/react';
+import { AlertDialog } from '@massimo/ui-kit/components/alert-dialog/react';
+import { Drawer } from '@massimo/ui-kit/components/drawer/react';
 
 /** Toast twins: each side draws its own manager seeded with the same two toasts (no timeout). */
 const seedToasts = (m: ToastManager) => {
@@ -162,6 +168,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ToastWc k="tst" /></div>
         <div style={{ width: 300 }}><ui-tabs data-k="tabU" variant="underline"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
         <div style={{ width: 300 }}><ui-accordion data-k="acc" default-value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><i slot="leading" name="truck" /><p>b</p></ui-collapsible><ui-collapsible value="c" label="C" disabled><p>c</p></ui-collapsible></ui-accordion></div>
+        <ui-dialog data-k="dlg" modal="false" disable-pointer-dismissal open label="Rename" description="Pick a name."><ui-button data-part="trigger">Rename</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button variant="primary">Save</ui-button></div></ui-dialog>
+        <ui-alert-dialog data-k="adlg" label="Delete?" description="Gone for good."><ui-button data-part="trigger">Delete</ui-button><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button variant="primary">Delete</ui-button></div></ui-alert-dialog>
+        <ui-drawer data-k="drw" side="right" modal="false" disable-pointer-dismissal open label="Filters" description="Narrow the list."><ui-button data-part="trigger">Filters</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Done</ui-button></div></ui-drawer>
       </div>
       <div data-side="react">
         <Button data-k="bt">Save</Button>
@@ -232,6 +241,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ToastReact k="tst" /></div>
         <div style={{ width: 300 }}><Tabs data-k="tabU" variant="underline" items={[{ value: 'a', label: 'One', content: 'a' }, { value: 'b', label: 'Two', content: 'b' }]} /></div>
         <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['b']}><Accordion.Item value="a" label="A"><p>a</p></Accordion.Item><Accordion.Item value="b" label="B" leading={<i name="truck" />}><p>b</p></Accordion.Item><Accordion.Item value="c" label="C" disabled><p>c</p></Accordion.Item></Accordion></div>
+        <Dialog data-k="dlg" modal={false} disablePointerDismissal defaultOpen label="Rename" description="Pick a name." trigger="Rename"><p>Body</p><Dialog.Actions><Dialog.Close>Cancel</Dialog.Close><Button variant="primary">Save</Button></Dialog.Actions></Dialog>
+        <AlertDialog data-k="adlg" label="Delete?" description="Gone for good." trigger="Delete"><Dialog.Actions><Dialog.Close>Cancel</Dialog.Close><Button variant="primary">Delete</Button></Dialog.Actions></AlertDialog>
+        <Drawer data-k="drw" side="right" modal={false} disablePointerDismissal defaultOpen label="Filters" description="Narrow the list." trigger="Filters"><p>Body</p><Drawer.Actions><Drawer.Close>Done</Drawer.Close></Drawer.Actions></Drawer>
       </div>
     </div>
   );
@@ -265,6 +277,8 @@ function ComposedPair({ u }: { u: number }) {
       <div style={{ width: 300 }}><ui-tabs data-k="wtab" variant="underline" label="T"><div {...{ value: 'a', label: 'One' }} data-part="panel">a</div><div {...{ value: 'b', label: 'Two' }} data-part="panel">b</div></ui-tabs></div>
       <div style={{ width: 300 }}><Accordion data-k="acc" defaultValue={['a']}><Accordion.Item value="a" label="Ship" leading={<i name="truck" />}><p>a</p></Accordion.Item><Accordion.Item value="b" label="Return"><p>b</p></Accordion.Item></Accordion></div>
       <div style={{ width: 300 }}><ui-accordion data-k="wacc" value="a"><ui-collapsible value="a" label="Ship"><i slot="leading" name="truck" /><p>a</p></ui-collapsible><ui-collapsible value="b" label="Return"><p>b</p></ui-collapsible></ui-accordion></div>
+      <Dialog data-k="dlg" modal={false} disablePointerDismissal defaultOpen label="Delete" description="Gone for good." trigger="Delete"><p>Body</p><Dialog.Actions><Dialog.Close>Keep</Dialog.Close></Dialog.Actions></Dialog>
+      <ui-dialog data-k="wdlg" modal="false" disable-pointer-dismissal open label="Delete" description="Gone for good."><ui-button data-part="trigger">Delete</ui-button><p>Body</p><div data-part="actions"><ui-button data-part="close">Keep</ui-button></div></ui-dialog>
       <ui-button data-k="wbt"><i slot="leading" name="plus" />Add</ui-button>
       <ui-checkbox data-k="wcb" checked>Accept<span slot="suffix">(2)</span></ui-checkbox>
       <ui-switch data-k="wsw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
@@ -281,6 +295,11 @@ function ComposedPair({ u }: { u: number }) {
   );
   const composed = (
     <>
+      <Dialog.Root data-k="dlg" modal={false} disablePointerDismissal defaultOpen>
+        <Dialog.Trigger>Delete</Dialog.Trigger>
+        <Dialog.Portal><Dialog.Backdrop /><Dialog.Popup><Dialog.Title>Delete</Dialog.Title><Dialog.Description>Gone for good.</Dialog.Description><p>Body</p><Dialog.Actions><Dialog.Close>Keep</Dialog.Close></Dialog.Actions></Dialog.Popup></Dialog.Portal>
+      </Dialog.Root>
+      <ui-dialog data-k="wdlg" modal="false" disable-pointer-dismissal open><ui-button data-part="trigger">Delete</ui-button><div data-part="backdrop" /><div data-part="popup"><h2 data-part="title">Delete</h2><p data-part="description">Gone for good.</p><p>Body</p><div data-part="actions"><ui-button data-part="close">Keep</ui-button></div></div></ui-dialog>
       <Button data-k="bt" leading={<i name="plus" />} render={<button />}>Add</Button>
       <Checkbox.Root data-k="cb" defaultChecked suffix="(2)"><Checkbox.Indicator />Accept</Checkbox.Root>
       <Checkbox.Root data-k="cbM" indeterminate><Checkbox.Indicator />Some</Checkbox.Root>
@@ -422,6 +441,15 @@ setTimeout(() => {
     for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst']) {
       const a = host(wc, k), b = host(re, k);
       const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=toast], :scope > [data-part=toast] > [data-part=content], :scope > [data-part=toast] > [data-part=content] > *')];
+      const pa = parts(a), pb = parts(b);
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => { const va = stateOf(x), vb = stateOf(pb[i]); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${va}" react "${vb}"`); });
+    }
+
+    for (const k of ['bt', 'btL', 'btD', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'pg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'lb', 'sg', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'dlg', 'adlg', 'drw']) {
+      const a = host(wc, k), b = host(re, k);
+      const parts = (h: HTMLElement) => [h, ...h.querySelectorAll('[role=option], [data-ui=swatch], ui-swatch, :scope > [data-part=trigger], :scope > [data-part=panel], :scope > [data-part=item], :scope > [data-part=item] :is([data-part=header], [data-part=trigger], [data-part=panel]), :scope > [data-part=list], [role=tab], [data-part=indicator], :scope > [data-part=backdrop], :scope > [data-part=popup]')];
       const pa = parts(a), pb = parts(b);
       checks++;
       if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} state parts: wc ${pa.length} react ${pb.length}`); continue; }
@@ -591,6 +619,21 @@ setTimeout(() => {
       if (va !== vb) fails.push(`u${c.getAttribute('data-case')} sel.${name}: wc ${va} react ${vb}`);
     }
   }
+  // Dialog: the open popups (top layer) and every part in them, against each other.
+  for (const c of root.querySelectorAll('[data-case]')) for (const k of ['dlg', 'drw']) {
+    const [wc, re] = [c.querySelector(`[data-side=wc] [data-k=${k}]`)!, c.querySelector(`[data-side=react] [data-k=${k}]`)!];
+    const pa = wc.querySelector(':scope > [data-part=popup]') as HTMLElement, pb = re.querySelector(':scope > [data-part=popup]') as HTMLElement;
+    const fa = (e: Element, p: Element) => { const r = e.getBoundingClientRect(), pr = p.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - pr.left)}:${r2(r.top - pr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.paddingTop}:${cs.color}:${cs.fontSize}:${cs.boxShadow}`; };
+    // The popup's own parts (the buttons' construction-pattern parts are the button parity's).
+    const list = (p: HTMLElement) => [p, ...p.querySelectorAll<HTMLElement>('[data-part]:not(:is([data-part=leading], [data-part=prefix], [data-part=contents], [data-part=suffix], [data-part=trailing]))')];
+    const la = list(pa), lb = list(pb);
+    checks++;
+    if (la.length !== lb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} parts: wc ${la.length} react ${lb.length}`); continue; }
+    la.forEach((e, i) => { checks++; const va = fa(e, pa), vb = fa(lb[i], pb); if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}.${e.getAttribute('data-part') ?? 'popup'}[${i}]: wc ${va} react ${vb}`); });
+    checks++;
+    const rb = (e: Element) => r2(e.getBoundingClientRect().width);
+    if (rb(pa) !== rb(pb) || r2(pa.getBoundingClientRect().left) !== r2(pb.getBoundingClientRect().left)) fails.push(`u${c.getAttribute('data-case')} ${k}.popup position differs`);
+  }
   // Composition: each composed form against its preset, the host (measure) and every part below it
   // (offset, size, paint, type), and the data-* state of the host and its parts.
   // Closed popups and native options have no box (and an arbitrary position): they are left out.
@@ -607,13 +650,17 @@ setTimeout(() => {
       const a = host(pre, k), b = host(com, k);
       // A select's closed popup has no box: measure() would read its position, so selects compare by parts only.
       const sel = k === 'sel' || k === 'wsel';
-      const ma = sel ? {} : measure(a), mb = sel ? {} : measure(b);
+      // A dialog host draws no box (display: contents) and its popup sits in the top layer: its parts
+      // are compared from the popup.
+      const dlg = k === 'dlg' || k === 'wdlg';
+      const ma = sel || dlg ? {} : measure(a), mb = sel || dlg ? {} : measure(b);
       for (const key of Object.keys(ma) as (keyof typeof ma)[]) {
         checks++;
         if (ma[key] !== (mb as typeof ma)[key]) fails.push(`u${u} composed ${k}.${key}: preset ${ma[key]} composed ${(mb as typeof ma)[key]}`);
       }
       checks++;
-      const da = deep(a), db = deep(b);
+      const pop = (h: HTMLElement) => (dlg ? h.querySelector<HTMLElement>(':scope > [data-part=popup]')! : h);
+      const da = deep(pop(a)), db = deep(pop(b));
       if (!da) fails.push(`u${u} composed ${k}: no parts measured`);
       if (da !== db) fails.push(`u${u} composed ${k} parts: preset ${da} composed ${db}`);
       checks++;
@@ -629,9 +676,35 @@ setTimeout(() => {
     lb.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true }));
     setTimeout(() => done(read(lb)), 150);
   });
-  press(lbs[0]).then((a) => press(lbs[1]).then((b) => {
+  // Alert dialogs are always modal (the rest of the page turns inert): each pair is opened in turn,
+  // its popups compared part by part, then closed, after the other checks.
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  const alerts = async () => {
+    const sig = (e: Element, p: Element) => { const r = e.getBoundingClientRect(), pr = p.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - pr.left)}:${r2(r.top - pr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.paddingTop}:${cs.color}:${cs.fontSize}:${cs.boxShadow}`; };
+    const own = (p: HTMLElement) => [p, ...p.querySelectorAll<HTMLElement>('[data-part]:not(:is([data-part=leading], [data-part=prefix], [data-part=contents], [data-part=suffix], [data-part=trailing]))')];
+    for (const c of root.querySelectorAll('[data-case]')) {
+      const u = c.getAttribute('data-case');
+      const sides = [c.querySelector('[data-side=wc] [data-k=adlg]') as HTMLElement, c.querySelector('[data-side=react] [data-k=adlg]') as HTMLElement];
+      const got: string[][] = [];
+      for (const h of sides) {
+        (h.querySelector(':scope > [data-part=trigger]') as HTMLElement).click();
+        await wait(60);
+        const p = h.querySelector(':scope > [data-part=popup]') as HTMLElement;
+        p.style.transition = 'none';
+        got.push([p.getAttribute('role') ?? '', stateOf(p), document.activeElement?.textContent ?? '', ...own(p).map((e) => sig(e, p))]);
+        document.activeElement!.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+        await wait(60);
+        p.style.transition = '';
+      }
+      checks++;
+      if (got[0].join(' | ') !== got[1].join(' | ')) fails.push(`u${u} adlg open: wc ${got[0].join(' | ')} react ${got[1].join(' | ')}`);
+      if (got[0][0] !== 'alertdialog' || got[0][2] !== 'Cancel') fails.push(`u${u} adlg: role ${got[0][0]}, focus on "${got[0][2]}"`);
+    }
+  };
+  press(lbs[0]).then((a) => press(lbs[1]).then(async (b) => {
     checks++;
     if (a !== b) fails.push(`keyboard listbox: wc ${a} react ${b}`);
+    await alerts();
     document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
   }));
   if (false) document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "drawer",
+  "title": "Drawer",
+  "summary": "An edge-anchored sheet with swipe to dismiss.",
+  "defaultExample": "side",
+  "examples": [
+    {
+      "id": "side",
+      "label": "A side sheet of filters",
+      "subject": "component:drawer",
+      "markup": "<ui-drawer side=\"right\" label=\"Filters\" description=\"Narrow the list.\"><ui-button data-part=\"trigger\">Filters</ui-button><ui-checkbox checked>In stock</ui-checkbox><div data-part=\"actions\"><ui-button data-part=\"close\">Reset</ui-button><ui-button data-part=\"close\" variant=\"primary\">Show results</ui-button></div></ui-drawer>"
+    },
+    {
+      "id": "bottom",
+      "label": "A bottom sheet",
+      "subject": "component:drawer",
+      "markup": "<ui-drawer label=\"Share\"><ui-button data-part=\"trigger\">Share…</ui-button><div data-part=\"actions\"><ui-button data-part=\"close\">Copy link</ui-button><ui-button data-part=\"close\" variant=\"primary\">Done</ui-button></div></ui-drawer>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts written out",
+      "subject": "component:drawer",
+      "markup": "<ui-drawer side=\"left\"><ui-button data-part=\"trigger\">Menu</ui-button><div data-part=\"backdrop\"></div><div data-part=\"popup\"><h2 data-part=\"title\">Navigation</h2><ui-button data-part=\"close\">Inbox</ui-button></div></ui-drawer>"
+    }
+  ]
+}

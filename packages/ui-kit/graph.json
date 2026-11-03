@@ -14,6 +14,19 @@
         "disclosure group"
       ]
     },
+    "component:alert-dialog": {
+      "kind": "component",
+      "source": "components/alert-dialog/alert-dialog.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-alert-dialog",
+      "searchTerms": [
+        "alert dialog",
+        "confirm",
+        "confirmation",
+        "are you sure",
+        "destructive action"
+      ]
+    },
     "component:autocomplete": {
       "kind": "component",
       "source": "components/autocomplete/autocomplete.manifest.json#/nodes/0",
@@ -162,6 +175,33 @@
         "multi select",
         "chips input",
         "tag picker"
+      ]
+    },
+    "component:dialog": {
+      "kind": "component",
+      "source": "components/dialog/dialog.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-dialog",
+      "searchTerms": [
+        "dialog",
+        "modal",
+        "popup window",
+        "lightbox",
+        "overlay"
+      ]
+    },
+    "component:drawer": {
+      "kind": "component",
+      "source": "components/drawer/drawer.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-drawer",
+      "searchTerms": [
+        "drawer",
+        "sheet",
+        "bottom sheet",
+        "side panel",
+        "slide over",
+        "off-canvas"
       ]
     },
     "component:field": {
@@ -628,6 +668,16 @@
         "inside collection"
       ]
     },
+    "context:dialog": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/dialog",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog",
+        "inside dialog",
+        "modal content"
+      ]
+    },
     "context:field-grid": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/field-grid",
@@ -942,6 +992,17 @@
         "text run"
       ]
     },
+    "geometry:dialog": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/dialog",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog geometry",
+        "modal width",
+        "dialog padding",
+        "dialog radius"
+      ]
+    },
     "geometry:disclosure": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/disclosure",
@@ -954,6 +1015,17 @@
         "accordion divider",
         "tab height",
         "tab indicator"
+      ]
+    },
+    "geometry:drawer": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/drawer",
+      "availability": "implemented",
+      "searchTerms": [
+        "drawer geometry",
+        "sheet width",
+        "side panel",
+        "bottom sheet"
       ]
     },
     "geometry:field": {
@@ -1317,6 +1389,71 @@
       "tag": "span",
       "searchTerms": [
         "combobox trigger"
+      ]
+    },
+    "part:dialog-actions": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-actions",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog actions",
+        "dialog footer",
+        "dialog buttons"
+      ]
+    },
+    "part:dialog-backdrop": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-backdrop",
+      "availability": "implemented",
+      "searchTerms": [
+        "backdrop",
+        "overlay",
+        "scrim"
+      ]
+    },
+    "part:dialog-close": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-close",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog close",
+        "close button",
+        "cancel"
+      ]
+    },
+    "part:dialog-description": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-description",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog description"
+      ]
+    },
+    "part:dialog-popup": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-popup",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog popup",
+        "modal window"
+      ]
+    },
+    "part:dialog-title": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-title",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog title",
+        "dialog heading"
+      ]
+    },
+    "part:dialog-trigger": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-trigger",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog trigger",
+        "open dialog button"
       ]
     },
     "part:field-description": {
@@ -2008,6 +2145,131 @@
       "from": "component:accordion",
       "relation": "uses",
       "to": "component:collapsible"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesGeometry",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:dialog"
     },
     {
       "from": "component:autocomplete",
@@ -4138,6 +4400,246 @@
       "from": "component:page",
       "relation": "establishes",
       "to": "context:page"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesGeometry",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesGeometry",
+      "to": "geometry:drawer"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:group"
     },
     {
       "from": "component:field",

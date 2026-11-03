@@ -79,7 +79,7 @@
     "data-popup-open": {
       "baseUi": true,
       "condition": "_popupOpen",
-      "meaning": "The select trigger's popup is open; the combobox input and trigger while its popup is open."
+      "meaning": "The select trigger's popup is open; the combobox input and trigger while its popup is open; a dialog trigger's dialog is open (Base UI Dialog.Trigger)."
     },
     "data-placeholder": {
       "baseUi": true,
@@ -89,12 +89,12 @@
     "data-open": {
       "baseUi": true,
       "condition": "_open",
-      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open."
+      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open. A dialog (host, backdrop and popup) is open."
     },
     "data-closed": {
       "baseUi": true,
       "condition": "_closed",
-      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed."
+      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed. A dialog (host, backdrop and popup) is closed."
     },
     "data-side": {
       "baseUi": true,
@@ -189,12 +189,12 @@
     "data-swiping": {
       "baseUi": true,
       "condition": null,
-      "meaning": "A pointer swipes the toast (Base UI Toast.Root)."
+      "meaning": "A pointer swipes the toast (Base UI Toast.Root), or a drawer popup is following a swipe (Base UI Drawer.Popup; its transition is off until the release)."
     },
     "data-swipe-direction": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The direction a swipe dismissed the toast toward: up, down, left or right (Base UI Toast.Root)."
+      "meaning": "The direction a swipe dismisses toward: up, down, left or right; a toast (Base UI Toast.Root) or a drawer popup, from its side (Base UI Drawer.Popup)."
     },
     "data-type": {
       "baseUi": true,
@@ -271,6 +271,21 @@
       "baseUi": true,
       "condition": null,
       "meaning": "A toggle group lets several toggles be pressed (multiple)."
+    },
+    "data-nested": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A dialog popup opened inside another open dialog's popup (Base UI Dialog.Popup); its backdrop is not shown."
+    },
+    "data-nested-dialog-open": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A dialog popup with an open dialog nested in it (Base UI Dialog.Popup); --nested-dialogs counts them."
+    },
+    "data-swipe-dismiss": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A drawer popup was closed by a swipe (Base UI Drawer.Popup): it leaves from where it was dragged."
     }
   },
   "components": {
@@ -817,6 +832,66 @@
         "data-disabled",
         "data-multiple"
       ]
+    },
+    "ui-dialog": {
+      "host": [
+        "data-open",
+        "data-closed"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "backdrop": [
+        "data-open",
+        "data-closed"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-nested",
+        "data-nested-dialog-open"
+      ]
+    },
+    "ui-alert-dialog": {
+      "host": [
+        "data-open",
+        "data-closed"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "backdrop": [
+        "data-open",
+        "data-closed"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-nested",
+        "data-nested-dialog-open"
+      ]
+    },
+    "ui-drawer": {
+      "host": [
+        "data-open",
+        "data-closed"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "backdrop": [
+        "data-open",
+        "data-closed"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-nested",
+        "data-nested-dialog-open",
+        "data-swipe-direction",
+        "data-swiping",
+        "data-swipe-dismiss"
+      ]
     }
   },
   "native": {
@@ -901,13 +976,16 @@
     },
     "open": {
       "hook": "trigger [data-popup-open]; popup [data-open]",
-      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); combobox, autocomplete: trigger [data-popup-open], caret turned 180°",
+      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); combobox, autocomplete: trigger [data-popup-open], caret turned 180°; dialog: trigger [data-popup-open], backdrop and popup [data-open] in the top layer, fading and growing in on the reveal intent; drawer: the sheet slides in from its side (translate) on the reveal intent and follows a swipe (data-swiping)",
       "components": [
         "ui-select",
         "ui-collapsible",
         "ui-accordion",
         "ui-combobox",
-        "ui-autocomplete"
+        "ui-autocomplete",
+        "ui-dialog",
+        "ui-alert-dialog",
+        "ui-drawer"
       ]
     },
     "disabled": {

@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -37,6 +37,9 @@ import '@massimo/ui-kit/components/autocomplete/element';
 import { resolveCombobox } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/toggle-group/element';
 import { trackPairFill } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/dialog/element';
+import '@massimo/ui-kit/components/alert-dialog/element';
+import '@massimo/ui-kit/components/drawer/element';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -123,6 +126,11 @@ for (const c of cases) {
     <div style="width:${60 * c.unit}px"><ui-autocomplete id="acBare"><ui-option>Alpha</ui-option></ui-autocomplete><ui-autocomplete id="acClear" value="Al" show-trigger><span slot="leading"></span><ui-option>Alpha</ui-option></ui-autocomplete></div>
     <div id="cbEBox" style="width:${60 * c.unit}px"><ui-combobox id="cbE"><ui-option value="a">Alpha</ui-option></ui-combobox></div>
     <div style="width:${40 * c.unit}px"><ui-combobox id="cbW" multiple value="a,b,c,d"><ui-option value="a">Alpha</ui-option><ui-option value="b">Bravo</ui-option><ui-option value="c">Charlie</ui-option><ui-option value="d">Delta</ui-option></ui-combobox></div>
+    <ui-dialog id="dlg" modal="false" disable-pointer-dismissal open label="Title" description="Description" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><p>Body</p><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button>Save</ui-button></div></ui-dialog>
+    <ui-alert-dialog id="adlg" open label="Delete?" description="Gone for good."><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button>Delete</ui-button></div></ui-alert-dialog>
+    <ui-drawer id="drwR" side="right" modal="false" disable-pointer-dismissal open label="Filters" description="Narrow" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><div data-part="actions"><ui-button data-part="close">Done</ui-button><ui-button>Reset</ui-button></div></ui-drawer>
+    <ui-drawer id="drwB" modal="false" disable-pointer-dismissal open label="Sheet"><p style="height:200vh">Tall</p></ui-drawer>
+    <ui-dialog id="dlgTall" modal="false" disable-pointer-dismissal open><p style="height:200vh">Tall</p></ui-dialog>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -693,6 +701,53 @@ for (const c of cases) {
     e.open = false;
     eBox.style.position = 'static';
     await new Promise((r) => setTimeout(r, 0));
+  }
+  // Dialog (resolveDialog): a card-xl container popup, centered in the viewport, 96u wide within a 4u margin.
+  {
+    const vp = { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight };
+    const rd = resolveDialog({ ...g, viewport: vp }), dl = $('dlg'), pop = dl.popup, bd = dl.backdrop, tall = $('dlgTall').popup;
+    for (const el of [pop, bd, tall]) el.style.transition = 'none';
+    const [title, desc, body, actions] = pop.children, [b1, b2] = actions.children;
+    checks['dialog.padding'] = [px(cs(pop).paddingTop), rd.padding];
+    checks['dialog.edge'] = [px(cs(pop).paddingLeft) + px(cs(pop).borderLeftWidth), rd.edge];
+    checks['dialog.radius'] = [px(cs(pop).borderTopLeftRadius), r2(rd.radius)];
+    checks['dialog.gap'] = [r2(rect(desc).top - rect(title).bottom), rd.gap];
+    checks['dialog.gap.body'] = [r2(rect(body).top - rect(desc).bottom), rd.gap];
+    checks['dialog.actions.gap'] = [r2(rect(b2).left - rect(b1).right), rd.actionsGap];
+    checks['dialog.actions.end'] = [r2(rect(pop).right - rect(b2).right), rd.edge];
+    checks['dialog.width'] = [r2(rect(pop).width), r2(rd.width)];
+    checks['dialog.center'] = [r2(rect(pop).left), r2((vp.width - rd.width) / 2)];
+    checks['dialog.backdrop'] = [r2(rect(bd).width), vp.width];
+    checks['dialog.tall.height'] = [r2(rect(tall).height), r2(rd.maxHeight)];
+    checks['dialog.tall.top'] = [r2(rect(tall).top), rd.margin];
+    // The alert dialog (always modal) has the dialog's popup.
+    const ap = $('adlg').popup, [at, ad, aa] = ap.children;
+    ap.style.transition = 'none';
+    checks['alertDialog.padding'] = [px(cs(ap).paddingTop), rd.padding];
+    checks['alertDialog.radius'] = [px(cs(ap).borderTopLeftRadius), r2(rd.radius)];
+    checks['alertDialog.gap'] = [r2(rect(ad).top - rect(at).bottom), rd.gap];
+    checks['alertDialog.actions.gap'] = [r2(rect(aa.children[1]).left - rect(aa.children[0]).right), rd.actionsGap];
+    checks['alertDialog.width'] = [r2(rect(ap).width), r2(rd.width)];
+    $('adlg').open = false;
+    // Drawer (resolveDrawer): square panel-level sheets on their edge.
+    const rr = resolveDrawer('right', { ...g, viewport: vp }), rb = resolveDrawer('bottom', { ...g, viewport: vp });
+    const pr = $('drwR').popup, pb = $('drwB').popup;
+    for (const el of [pr, pb]) el.style.transition = 'none';
+    const [rt, rdsc, ra] = pr.children;
+    checks['drawer.padding'] = [px(cs(pr).paddingTop), rr.padding];
+    checks['drawer.edge'] = [px(cs(pr).paddingLeft) + px(cs(pr).borderLeftWidth), rr.edge];
+    checks['drawer.radius'] = [px(cs(pr).borderTopLeftRadius), rr.radius];
+    checks['drawer.gap'] = [r2(rect(rdsc).top - rect(rt).bottom), rr.gap];
+    checks['drawer.actions.gap'] = [r2(rect(ra.children[1]).left - rect(ra.children[0]).right), rr.actionsGap];
+    checks['drawer.right.width'] = [r2(rect(pr).width), r2(rr.width)];
+    checks['drawer.right.height'] = [r2(rect(pr).height), rr.height];
+    checks['drawer.right.edge'] = [r2(rect(pr).right), vp.width];
+    checks['drawer.right.top'] = [r2(rect(pr).top), 0];
+    checks['drawer.bottom.width'] = [r2(rect(pb).width), rb.width];
+    checks['drawer.bottom.maxHeight'] = [r2(rect(pb).height), r2(rb.maxHeight)];
+    checks['drawer.bottom.edge'] = [r2(rect(pb).bottom), vp.height];
+    $('drwR').open = false; $('drwB').open = false;
+    dl.open = false; $('dlgTall').open = false;
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

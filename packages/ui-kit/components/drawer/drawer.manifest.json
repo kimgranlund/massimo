@@ -1,0 +1,497 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "drawer",
+  "primary": "component:drawer",
+  "module": "./drawer.element.ts",
+  "registration": "on-import",
+  "documentation": "./drawer.md",
+  "examples": "./drawer.examples.json",
+  "contract": "../../contracts/components.json#/components/drawer",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./drawer.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/dialog.ts",
+      "exports": [
+        "createModalLayer",
+        "lockScroll",
+        "inertOutside",
+        "parseModal"
+      ],
+      "description": "The modal layer on the floating layer foundation (dom/floating.ts): top layer for backdrop and popup, dismiss layer (Escape, outside press), focus scope (trap and return), scroll lock, the rest of the page inert, nesting."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/swipe.ts",
+      "exports": [
+        "createSwipeDismiss",
+        "SWIPE_OF"
+      ],
+      "description": "Swipe to dismiss: the popup follows a drag toward its edge (--drawer-swipe-movement-x / -y, data-swiping) and closes past the threshold (data-swipe-dismiss, reason swipe)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveDrawer"
+      ],
+      "description": "Reference numbers for the sheet's padding, gap and size per side."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:drawer",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-drawer",
+      "class": "UIDrawer",
+      "extends": "UIElement",
+      "intent": [
+        "Slide a panel of navigation, filters or a short task in from an edge of the screen, with swipe to dismiss"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the drawer is open. Setting it fires no openchange; a trigger press, Escape, an outside press, a close part or a swipe set it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "modal",
+          "type": "string",
+          "default": "true",
+          "attribute": "modal",
+          "reflects": false,
+          "description": "Base UI modal: true (focus trapped, page scroll locked, the rest of the page inert), trap-focus (focus trapped only) or false (the page stays interactive; focus leaving closes it).",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "true",
+            "trap-focus",
+            "false"
+          ]
+        },
+        {
+          "key": "disablePointerDismissal",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disable-pointer-dismissal",
+          "reflects": false,
+          "description": "Outside presses (the backdrop) do not close it; Escape and close parts still do (Base UI disablePointerDismissal).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Text of a generated title (an h2 that names the popup). Ignored when the popup has an authored title.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "description": "Text of a generated description under the title (aria-describedby). Ignored when the popup has an authored description.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "side",
+          "type": "string",
+          "default": "bottom",
+          "attribute": "side",
+          "reflects": false,
+          "enum": [
+            "bottom",
+            "top",
+            "right",
+            "left"
+          ],
+          "description": "The viewport edge the sheet is anchored to, slides in from and is swiped away toward (Base UI swipeDirection: bottom = down, top = up). Physical: it does not mirror in RTL.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the popup's parts in units of u (0…8 in steps of 0.5); default the collection gap (2u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'escape-key' | 'outside-press' | 'close-press' | 'focus-out' | 'swipe', event: Event }",
+          "trigger": "the trigger is pressed, Escape is pressed, a press lands outside the sheet, a close part is pressed, the sheet is swiped toward its edge, or (modal false) focus leaves; preventDefault keeps the drawer as it is (a canceled swipe springs back on the next open)"
+        }
+      ],
+      "semantics": {
+        "role": "none (the popup is role=dialog, aria-modal while modal)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on the trigger",
+            "action": "open the dialog (the trigger is a button)"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the topmost open drawer or dialog"
+          },
+          {
+            "keys": "Tab, Shift+Tab",
+            "action": "move focus among the popup's tabbables, wrapping (modal and trap-focus)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the title (label property or an authored [data-part=title]) through aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Popup content (any elements), or authored [data-part=trigger], [data-part=backdrop] and [data-part=popup] children. Inside the popup: [data-part=title], [data-part=description], [data-part=actions] and any number of [data-part=close] elements (usually ui-buttons); an [autofocus] element takes focus on open. Elements marked [data-swipe-ignore] (and text entry, sliders) never start a swipe."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host draws no box (display: contents; the manifest's layout schema has no contents value): only its trigger takes space in the page.",
+        "The sheet is square (area family): it meets the viewport edge. Left and right sheets are the viewport height and 80u wide, at most the viewport less 8u; top and bottom sheets are the full width and at most the viewport height less 8u, scrolling inside past it.",
+        "A press dragged toward the edge moves the sheet with the pointer; released past 40% of its size, or flicked, it closes with reason swipe, otherwise it springs back. Dragging away from the edge does not move it.",
+        "Modal by default, as the dialog: page scroll locks, the rest of the page is inert, focus is trapped and returns to the trigger.",
+        "Sides are physical (a swipe direction is physical): side=\"left\" stays on the left in RTL.",
+        "Setting open from script changes it without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A question or a short form that is not tied to an edge of the screen.",
+          "reason": "A dialog (ui-dialog) centers it; an alert dialog asks for a decision."
+        },
+        {
+          "when": "Navigation that stays visible beside the content on wide screens.",
+          "reason": "Lay it out as a panel in the page; a drawer covers the page while open."
+        }
+      ],
+      "searchTerms": [
+        "drawer",
+        "sheet",
+        "bottom sheet",
+        "side panel",
+        "slide over",
+        "off-canvas"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:drawer",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "usesGeometry",
+      "to": "geometry:drawer"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:drawer",
+      "relation": "allowedIn",
+      "to": "context:group"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./drawer.element.ts",
+      "exports": {
+        "component:drawer": "UIDrawer"
+      },
+      "verification": "./verification/drawer.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./drawer.react.tsx",
+      "exports": {
+        "component:drawer": "Drawer"
+      },
+      "verification": "./verification/drawer.verification.json#/renderers/react",
+      "props": {
+        "component:drawer": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'>",
+            "Pick<DialogProps, 'label' | 'description' | 'trigger'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "open?: boolean // Controlled open state.",
+            "defaultOpen?: boolean // Open at first render (uncontrolled).",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when the dialog asks to open or close, with Base UI's details ({ reason, event }).",
+            "modal?: ModalMode // Base UI modal: true (focus trap, scroll lock, the page inert), 'trap-focus' (trap only), false (page stays interactive).",
+            "disablePointerDismissal?: boolean // Outside presses do not close it (Base UI disablePointerDismissal).",
+            "size?: number // Unit u in px; the popup's padding and radius scale with it.",
+            "children?: ReactNode",
+            "side?: DrawerSide // The edge the sheet is anchored to and swipes away toward (Base UI swipeDirection: bottom = down). Default bottom."
+          ]
+        }
+      },
+      "parts": {
+        "component:drawer": {
+          "Drawer.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when the dialog asks to open or close, with Base UI's details ({ reason, event }).",
+              "modal?: ModalMode // Base UI modal: true (focus trap, scroll lock, the page inert), 'trap-focus' (trap only), false (page stays interactive).",
+              "disablePointerDismissal?: boolean // Outside presses do not close it (Base UI disablePointerDismissal).",
+              "size?: number // Unit u in px; the popup's padding and radius scale with it.",
+              "children?: ReactNode",
+              "side?: DrawerSide = 'bottom' // The edge the sheet is anchored to and swipes away toward (Base UI swipeDirection: bottom = down). Default bottom."
+            ]
+          },
+          "Drawer.Trigger": {
+            "inherits": [
+              "Omit<ButtonProps, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Drawer.Portal": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode"
+            ]
+          },
+          "Drawer.Backdrop": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Drawer.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Drawer.Title": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLHeadingElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Drawer.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLParagraphElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Drawer.Actions": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Drawer.Close": {
+            "inherits": [
+              "Omit<ButtonProps, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

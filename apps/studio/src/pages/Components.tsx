@@ -29,6 +29,9 @@ import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
+import '@massimo/ui-kit/components/dialog/element';
+import '@massimo/ui-kit/components/alert-dialog/element';
+import '@massimo/ui-kit/components/drawer/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -50,6 +53,7 @@ export const FAMILIES = [
   ['feedback', 'Feedback', 'ui-toast-viewport'],
   ['forms', 'Forms', 'ui-form'],
   ['scrolling', 'Scrolling', 'ui-scroll-area'],
+  ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog · ui-drawer'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -298,6 +302,8 @@ const COUNTRIES = [['ar', 'Argentina'], ['at', 'Austria'], ['ca', 'Canada'], ['d
 const CITIES = ['Oslo', 'Osaka', 'Ottawa', 'Oaxaca', 'Paris', 'Porto', 'Prague'];
 const COMMANDS = ['build', 'bench', 'check', 'deploy', 'dev', 'test'];
 const LABELS = [['bug', 'Bug'], ['docs', 'Docs'], ['perf', 'Performance'], ['ui', 'UI'], ['a11y', 'Accessibility'], ['infra', 'Infrastructure']] as const;
+// Overlay specimens: dialog content (a field column, an action row of triggers).
+const dialogBody = css({ display: 'flex', flexDirection: 'column', gap: '3' });
 
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
@@ -316,6 +322,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
     forms: 'A ui-form owns the kit controls inside it (no native form): a submit validates them all, shows their errors and focuses the first invalid one, then fires formsubmit with the values by name. Errors by name (a server answer) show at once on the named fields and clear on change; validation-mode is Base UI\'s onSubmit, onBlur or onChange. Fields stack with the collection gap; no box of its own.',
     scrolling: 'A ui-scroll-area scrolls natively with its own scrollbars hidden and draws the kit\'s over its edges: a 2u track, the thumb u thick 0.5u inside it and at least 4u long, pills; a 2u corner where both bars show. The bars show while their axis overflows and fade in on hover, scroll or keyboard focus; drag a thumb or press a track. Base UI\'s overflow data-* and variables are set by script.',
+    overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent. An alert dialog is the same popup with role=alertdialog: always modal, no outside-press dismissal, focus on the least destructive action (Cancel). A drawer is a square panel-level sheet (6u padding) on one edge: side sheets 80u wide, top and bottom sheets full width, 8u of the viewport kept in view; it slides in on the reveal intent and a swipe toward its edge dismisses it (reason swipe).',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     feedback: 'A toast is a container at the card-sm level: padding 3u − B, radius equal to it. Title and description share one column 0.5u apart; the action is an 8u control row and the close a 6u slot, 1u apart. The viewport is 80u wide, 4u from the window edges; collapsed toasts peek 2u, expanded (hover or focus, which also pause the timers) they stand 2u apart. Swipe, the close or Escape dismiss; F6 focuses the stack.',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
@@ -667,6 +674,77 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     ),
     forms: <Forms params={params} />,
     scrolling: <ScrollAreas params={params} />,
+    overlays: (
+      <>
+        <Row label="Dialog">
+          <ui-dialog label="Rename file" description="The name shows in the sidebar and in shared links.">
+            <ui-button data-part="trigger">Rename…</ui-button>
+            <ui-input label="Name" value="Quarterly report" {...{ autofocus: '' }} />
+            <div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button data-part="close" variant="primary">Rename</ui-button></div>
+          </ui-dialog>
+          <ui-dialog label="Workspace settings" description="Nested: a second dialog opens over this one.">
+            <ui-button data-part="trigger"><i slot="leading" name="gear" />Settings</ui-button>
+            <div className={dialogBody}>
+              <ui-switch checked>Show hidden files</ui-switch>
+              <ui-switch>Compact rows</ui-switch>
+            </div>
+            <div data-part="actions">
+              <ui-dialog label="Reset settings?" description="Every preference returns to its default.">
+                <ui-button data-part="trigger">Reset…</ui-button>
+                <div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button data-part="close" variant="primary">Reset</ui-button></div>
+              </ui-dialog>
+              <ui-button data-part="close" variant="primary">Done</ui-button>
+            </div>
+          </ui-dialog>
+          <ui-dialog modal="false" label="Keyboard shortcuts" description="Not modal: the page stays interactive; focus leaving closes it.">
+            <ui-button data-part="trigger">Shortcuts</ui-button>
+            <p className={panelText}>⌘K search · ⌘S save · ⌘/ this list</p>
+            <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
+          </ui-dialog>
+        </Row>
+        <Row label="Alert dialog">
+          <ui-alert-dialog label="Delete project?" description="Its files, history and shared links are removed. This cannot be undone.">
+            <ui-button data-part="trigger"><i slot="leading" name="trash" />Delete project…</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button data-part="close" variant="primary">Delete</ui-button></div>
+          </ui-alert-dialog>
+          <ui-alert-dialog label="Discard changes?" description="Your edits since the last save are lost.">
+            <ui-button data-part="trigger">Discard</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Keep editing</ui-button><ui-button data-part="close" variant="primary">Discard</ui-button></div>
+          </ui-alert-dialog>
+        </Row>
+        <Row label="Drawer">
+          <ui-drawer side="right" label="Filters" description="Narrow the list; swipe right or press Escape to close.">
+            <ui-button data-part="trigger"><i slot="leading" name="funnel" />Filters</ui-button>
+            <div className={dialogBody}>
+              <ui-checkbox checked>In stock</ui-checkbox>
+              <ui-checkbox>On sale</ui-checkbox>
+              <ui-switch>Free shipping</ui-switch>
+            </div>
+            <div data-part="actions"><ui-button data-part="close">Reset</ui-button><ui-button data-part="close" variant="primary">Show results</ui-button></div>
+          </ui-drawer>
+          <ui-drawer label="Share" description="A bottom sheet: drag it down to dismiss.">
+            <ui-button data-part="trigger">Share…</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Copy link</ui-button><ui-button data-part="close" variant="primary">Done</ui-button></div>
+          </ui-drawer>
+          <ui-drawer side="left" label="Navigation">
+            <ui-button data-part="trigger"><i slot="leading" name="list" />Menu</ui-button>
+            <div className={dialogBody}><ui-button>Inbox</ui-button><ui-button>Sent</ui-button><ui-button>Archive</ui-button></div>
+          </ui-drawer>
+        </Row>
+        <SizeLadder family="dialog" params={params}>
+          <ui-dialog label="Dialog at this size" description="Padding 6u, radius = padding, parts 2u apart.">
+            <ui-button data-part="trigger">Open</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
+          </ui-dialog>
+        </SizeLadder>
+        <SizeLadder family="drawer" params={params}>
+          <ui-drawer side="right" label="Drawer at this size" description="Panel padding 6u, square, 80u wide.">
+            <ui-button data-part="trigger">Open drawer</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
+          </ui-drawer>
+        </SizeLadder>
+      </>
+    ),
     media: (
       <>
         <Row label="Swiper">

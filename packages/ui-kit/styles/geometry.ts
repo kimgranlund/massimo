@@ -9,7 +9,7 @@ import { AVATAR_SIZES, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolv
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
-export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, ui-separator, ui-avatar, ui-meter, ui-toggle, [data-ui], ui-collapsible, ui-accordion, ui-tabs, ui-toast-viewport, ui-scroll-area, ui-number-field, ui-otp-field, ui-combobox, ui-autocomplete, ui-toggle-group)';
+export const GEOMETRY_SCOPE = ':where(ui-button, ui-input, ui-select, ui-listbox, ui-segmented, ui-option, ui-badge, ui-tag, ui-chip, ui-checkbox, ui-radio, ui-switch, ui-range, ui-progress, ui-swatch, ui-palette, ui-swiper, ui-image, ui-group, ui-collection, ui-card, ui-panel, ui-region, ui-page, ui-separator, ui-avatar, ui-meter, ui-toggle, [data-ui], ui-collapsible, ui-accordion, ui-tabs, ui-toast-viewport, ui-scroll-area, ui-number-field, ui-otp-field, ui-combobox, ui-autocomplete, ui-toggle-group, ui-dialog, ui-alert-dialog, ui-drawer)';
 // Badge, tag and chip hosts in both renderers (the React ones are data-ui hosts).
 export const BTG = ':is(ui-badge, ui-tag, ui-chip, [data-ui=badge], [data-ui=tag], [data-ui=chip])';
 const UNIT_TOKENS = unitTokenVars() as Record<`--${string}`, string>;

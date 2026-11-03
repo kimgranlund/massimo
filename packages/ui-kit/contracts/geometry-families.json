@@ -462,6 +462,49 @@
         "otp-field"
       ],
       "ladder": "otpField"
+    },
+    "dialog": {
+      "id": "geometry:dialog",
+      "resolver": [
+        "resolveDialog",
+        "resolveContainer"
+      ],
+      "summary": "A dialog (and alert dialog) popup is a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u), radius p·u × min(1, s), its parts (title, description, content, actions) 2u apart (the collection gap; the gap attribute wins), the actions 2u apart at the end edge. It is 96u wide (24rem at u = 4), at most the viewport less 4u on each side, centered, and scrolls when taller than the viewport less 4u above and below.",
+      "members": [
+        "component:dialog",
+        "component:alert-dialog"
+      ],
+      "searchTerms": [
+        "dialog geometry",
+        "modal width",
+        "dialog padding",
+        "dialog radius"
+      ],
+      "csv": [
+        "dialog"
+      ],
+      "ladder": "dialog"
+    },
+    "drawer": {
+      "id": "geometry:drawer",
+      "resolver": [
+        "resolveDrawer",
+        "resolveContainer"
+      ],
+      "summary": "A drawer popup is an edge-anchored sheet in the area family at the panel level: padding p·u − B (p = pad-panel, 6u), square (it meets the viewport edge), its parts 2u apart (the collection gap; the gap attribute wins), the actions 2u apart. Left and right sheets are the viewport's height and 80u wide, at most the viewport less 8u; top and bottom sheets are the full width, as tall as their content, at most the viewport height less 8u.",
+      "members": [
+        "component:drawer"
+      ],
+      "searchTerms": [
+        "drawer geometry",
+        "sheet width",
+        "side panel",
+        "bottom sheet"
+      ],
+      "csv": [
+        "drawer"
+      ],
+      "ladder": "drawer"
     }
   }
 }

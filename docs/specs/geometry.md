@@ -111,6 +111,23 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 | number field | the field control (8u, padding u − B, the control radius) with the decrement in the leading 6u slot and the increment in the trailing one; the text run (prefix, input, suffix) is 1u from each stepper, 0.5u between text parts; stepper glyph at icon size sm, stepper radius R − u (concentric); the label (in the scrub area) 1.5u above (`resolveNumberField`) | 32 / 24 / 4 / 8 |
 | OTP field | each cell a square field control, 8u × 8u, padding u − B, the control radius and font, one centered character; cells 1u apart; a separator is a 2u × 0.5u dash, radius 0.25u, in that gap (`resolveOtpField`) | 32 / 4 / 8 × 2 |
 
+## Dialogs: dialog, alert dialog
+
+| | Formula | at u=4 |
+|---|---|---|
+| popup | a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u) inside a B edge, radius p·u × min(1, s) (`resolveDialog`) | 24 / 24 |
+| parts | title, description, content and the actions row 2u apart (the collection gap; the `gap` attribute on the host wins); actions 2u apart at the end edge | 8 / 8 |
+| size | width min(96u, viewport − 8u), centered; max height viewport − 8u, then the popup scrolls | 384 / 16 |
+| backdrop | the whole viewport, `bg.backdrop` | |
+
+## Drawer
+
+| | Formula | at u=4 |
+|---|---|---|
+| popup | an area at the panel level: padding p·u − B (p = pad-panel, 6u), square at any corner scale (it meets the viewport edge), parts 2u apart, actions 2u apart (`resolveDrawer`) | 24 / 0 / 8 |
+| left, right | the viewport's height; width min(80u, viewport − 8u) | 320 |
+| top, bottom | the full width; height of its content, at most viewport height − 8u, then it scrolls | 32 kept |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

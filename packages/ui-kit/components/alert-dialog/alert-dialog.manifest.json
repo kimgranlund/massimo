@@ -1,0 +1,426 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "alert-dialog",
+  "primary": "component:alert-dialog",
+  "module": "./alert-dialog.element.ts",
+  "registration": "on-import",
+  "documentation": "./alert-dialog.md",
+  "examples": "./alert-dialog.examples.json",
+  "contract": "../../contracts/components.json#/components/alert-dialog",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./alert-dialog.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/dialog.ts",
+      "exports": [
+        "createModalLayer",
+        "lockScroll",
+        "inertOutside",
+        "parseModal"
+      ],
+      "description": "The modal layer on the floating layer foundation (dom/floating.ts): top layer for backdrop and popup, dismiss layer (Escape, outside press), focus scope (trap and return), scroll lock, the rest of the page inert, nesting."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveDialog"
+      ],
+      "description": "Reference numbers for the popup's padding, radius, gap, width and viewport margin."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:alert-dialog",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-alert-dialog",
+      "class": "UIAlertDialog",
+      "extends": "UIElement",
+      "intent": [
+        "Interrupt to ask for a decision, usually confirming a destructive or irreversible action"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the alert dialog is open. Setting it fires no openchange; a trigger press, Escape or a close part set it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Text of a generated title (an h2 that names the popup): the question, such as \"Delete project?\". Ignored when the popup has an authored title.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "description": "Text of a generated description under the title (aria-describedby). Ignored when the popup has an authored description.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the popup's parts in units of u (0…8 in steps of 0.5); default the collection gap (2u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'escape-key' | 'close-press', event: Event }",
+          "trigger": "the trigger is pressed, Escape is pressed or a close part is pressed (an outside press does nothing); preventDefault keeps the alert dialog as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none (the popup is role=alertdialog, aria-modal)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on the trigger",
+            "action": "open the dialog (the trigger is a button)"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the alert dialog (the decision is cancel)"
+          },
+          {
+            "keys": "Tab, Shift+Tab",
+            "action": "move focus among the popup's tabbables, wrapping"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the title (label property or an authored [data-part=title]) through aria-labelledby; the description (aria-describedby) states the consequence"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Popup content, or authored [data-part=trigger], [data-part=backdrop] and [data-part=popup] children. Inside the popup: [data-part=title], [data-part=description], [data-part=actions] and [data-part=close] elements (usually ui-buttons): the cancel action is a close part and comes first; an [autofocus] element takes focus instead."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host draws no box (display: contents; the manifest's layout schema has no contents value): only its trigger takes space in the page.",
+        "Always modal: the rest of the page is inert, page scroll is locked and focus is trapped until it closes; there is no modal attribute.",
+        "An outside press never closes it; Escape and the close parts do. Give it at least one close part (Cancel).",
+        "Focus starts on the least destructive action: an [autofocus] element, else the first close part, else the first tabbable.",
+        "The confirming action closes it only when it is also a close part; otherwise listen for its press and set open to false.",
+        "Setting open from script changes it without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A form, settings or other content the user works in.",
+          "reason": "A dialog (ui-dialog) is for content; an alert dialog asks one question and closes."
+        },
+        {
+          "when": "A notice that needs no decision.",
+          "reason": "Interrupting for information only trains users to dismiss alerts; show it in the page or as a toast."
+        }
+      ],
+      "searchTerms": [
+        "alert dialog",
+        "confirm",
+        "confirmation",
+        "are you sure",
+        "destructive action"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:alert-dialog",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "usesGeometry",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:alert-dialog",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./alert-dialog.element.ts",
+      "exports": {
+        "component:alert-dialog": "UIAlertDialog"
+      },
+      "verification": "./verification/alert-dialog.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./alert-dialog.react.tsx",
+      "exports": {
+        "component:alert-dialog": "AlertDialog"
+      },
+      "verification": "./verification/alert-dialog.verification.json#/renderers/react",
+      "props": {
+        "component:alert-dialog": {
+          "inherits": [
+            "Omit<DialogRootProps, 'modal' | 'disablePointerDismissal'>",
+            "Pick<DialogProps, 'label' | 'description' | 'trigger'>"
+          ],
+          "props": []
+        }
+      },
+      "parts": {
+        "component:alert-dialog": {
+          "AlertDialog.Root": {
+            "inherits": [
+              "Omit<DialogRootProps, 'modal' | 'disablePointerDismissal'>"
+            ],
+            "props": []
+          },
+          "AlertDialog.Trigger": {
+            "inherits": [
+              "Omit<ButtonProps, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "AlertDialog.Portal": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode"
+            ]
+          },
+          "AlertDialog.Backdrop": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "AlertDialog.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "AlertDialog.Title": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLHeadingElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "AlertDialog.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLParagraphElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "AlertDialog.Actions": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "AlertDialog.Close": {
+            "inherits": [
+              "Omit<ButtonProps, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

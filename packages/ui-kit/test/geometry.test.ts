@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -301,4 +301,24 @@ test('combobox: the select trigger row with 6u clear and trigger slots, 6u chips
   assert.deepEqual([g.popupOffset, g.popupEdge, g.optionHeight, g.emptyInline, g.emptyHeight], [4, 2, 28, 10, 28]);
   assert.equal(resolveCombobox({ unit: 4, border: 0 }).height, 32, 'the row is 8u at any B');
   assert.equal(resolveCombobox({ unit: 2, radiusScale: 0 }).chipRadius, 0);
+});
+
+test('dialog: the popup is a card-xl container (6u padding inside B, radius = padding), parts 2u apart, 96u wide within a 4u viewport margin', () => {
+  const d = resolveDialog({ unit: 4, border: 1 });
+  assert.deepEqual([d.padding, d.edge, d.radius, d.gap, d.actionsGap, d.margin, d.width], [23, 24, 24, 8, 8, 16, 384]);
+  assert.equal(resolveDialog({ unit: 4, radiusScale: 2 }).radius, 24, 'the corner scale lowers, never raises, a container radius');
+  assert.equal(resolveDialog({ unit: 4, radiusScale: 0.5 }).radius, 12);
+  assert.equal(resolveDialog({ unit: 4, padUnits: 5 }).padding, 20, 'pad-card-xl is a theme parameter');
+  assert.equal(resolveDialog({ unit: 4, gap: 3 }).gap, 12, 'the gap attribute wins');
+  const narrow = resolveDialog({ unit: 4, viewport: { width: 360, height: 640 } });
+  assert.deepEqual([narrow.width, narrow.maxHeight], [328, 608], 'viewport less 4u each side');
+});
+
+test('drawer: an area-level sheet (6u panel padding inside B, square, parts 2u apart); side sheets 80u wide, top and bottom full width, 8u of the viewport kept', () => {
+  const r = resolveDrawer('right', { unit: 4, border: 1, viewport: { width: 1280, height: 800 } });
+  assert.deepEqual([r.padding, r.edge, r.radius, r.gap, r.width, r.height, r.reserve], [23, 24, 0, 8, 320, 800, 32]);
+  assert.equal(resolveDrawer('left', { unit: 4, viewport: { width: 300, height: 800 } }).width, 268, 'at most the viewport less 8u');
+  const b = resolveDrawer('bottom', { unit: 4, radiusScale: 2, viewport: { width: 1280, height: 800 } });
+  assert.deepEqual([b.width, b.maxHeight, b.radius], [1280, 768, 0], 'square at any corner scale');
+  assert.equal(resolveDrawer('top', { unit: 4, padUnits: 4 }).padding, 16, 'pad-panel is a theme parameter');
 });

@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "drawer",
+  "scope": "The drawer's differences from the dialog (side variant, data-swipe-direction, swipe to dismiss) in happy-dom: the headless swipe (dom/swipe.ts), the web component and the React renderer (server markup, client swipe); the shared dialog behavior is covered by the dialog's record. Rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/drawer/drawer.element.ts",
+      "sha256": "8141c7c7aa653dcbc5078b47295b04052c2f579631d628c4edfaf9b3c62b23e8"
+    },
+    {
+      "path": "components/drawer/drawer.react.tsx",
+      "sha256": "745929e3275ffad91df524535f58ca8e0728ad8c2e7d5daa901e2ab9e05d3d73"
+    },
+    {
+      "path": "components/drawer/drawer.recipe.ts",
+      "sha256": "26eebaa622933286e73c386292ca6a1b88d57d4b4bbbc85521a5f2e1e6feadb1"
+    },
+    {
+      "path": "components/drawer/drawer.manifest.json",
+      "sha256": "5bdcd82a615d274cd6846696f2c9c19a52d6dafa064309b7978c95a650eac93e"
+    },
+    {
+      "path": "dom/swipe.ts",
+      "sha256": "aa8ed05e72e881275e81dccdf2d826ede486b81bed2a0c24f8fb479ad867af56"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"^drawer\" test/dialog.test.ts",
+          "covers": "swipe: slop, movement variables, no movement away from the edge, threshold, spring back, data-swipe-dismiss and reset, [data-swipe-ignore], cross-axis drags; element: side variant classes and data-swipe-direction (unknown side = bottom), modal, swipe and outside-press reasons, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"drawer\" test/geometry.test.ts",
+          "covers": "resolveDrawer: panel padding inside B, square at any corner scale, 2u gap, 80u side width within the 8u reserve, full-width top and bottom sheets"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"^drawer\" test/dialog.test.ts",
+          "node --test --test-name-pattern=\"drawer\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Drawer \\(React\\)\" test/dialog.test.ts",
+          "covers": "React SSR: the same data-* as the web component, side variant classes, data-swipe-direction, composed parts = preset; client: a swipe calls onOpenChange(false, { reason: 'swipe' })"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Drawer \\(React\\)\" test/dialog.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The slide transition and real pointer capture need a real browser: a Playwright drag in Chromium (2026-11-02) moved the sheet with the pointer (data-swiping, --drawer-swipe-movement-x), sprang back after 60px and closed with reason swipe after 220px of a 360px sheet, lifting the page's inert.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []), the open sheets compared part by part.",
+    "Geometry review, manual items (2026-11-02, studio on the Components page Overlays family at u = 3, the theme unit 4.5 and 6, light and dark): growth (a tall bottom sheet stops at the viewport height less 8u and scrolls; a narrow viewport narrows a side sheet to the viewport less 8u; actions wrap), RTL (sides are physical by design: side=left stays left, the content inside mirrors), focus (rings are outlines and change no dimension; focus is trapped and returns to the trigger), screenshots of the right and bottom sheets checked light and dark."
+  ]
+}

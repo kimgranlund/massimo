@@ -5,6 +5,10 @@ import { defineGlobalStyles } from '@pandacss/dev';
 
 export const defaults = defineGlobalStyles({
   '[hidden]': { display: 'none !important' },
+  // Scroll lock while a modal layer is open (dom/dialog.ts lockScroll): the page stops scrolling; a
+  // page that was scrolling keeps its scrollbar's space, so nothing shifts.
+  'html[data-scroll-locked]': { overflow: 'hidden' },
+  'html[data-scroll-locked=gutter]': { scrollbarGutter: 'stable' },
   // Icons: <i name="…"> filled by the icon runtime. 1em by default; slots size them to --icon.
   // The box is reserved before the SVG arrives, so nothing shifts.
   // A bare icon (in text, a callout, a heading) follows the icon formula against the font around it:

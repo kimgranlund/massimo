@@ -1,0 +1,474 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "dialog",
+  "primary": "component:dialog",
+  "module": "./dialog.element.ts",
+  "registration": "on-import",
+  "documentation": "./dialog.md",
+  "examples": "./dialog.examples.json",
+  "contract": "../../contracts/components.json#/components/dialog",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./dialog.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/dialog.ts",
+      "exports": [
+        "createModalLayer",
+        "lockScroll",
+        "inertOutside",
+        "parseModal"
+      ],
+      "description": "The modal layer on the floating layer foundation (dom/floating.ts): top layer for backdrop and popup, dismiss layer (Escape, outside press), focus scope (trap and return), scroll lock, the rest of the page inert, nesting."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveDialog"
+      ],
+      "description": "Reference numbers for the popup's padding, radius, gap, width and viewport margin."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:dialog",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-dialog",
+      "class": "UIDialog",
+      "extends": "UIElement",
+      "intent": [
+        "Ask for input or show content in a window over the page, with the page set aside until it closes"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the dialog is open. Setting it (attribute or property) fires no openchange; a trigger press, Escape, an outside press or a close part set it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "modal",
+          "type": "string",
+          "default": "true",
+          "attribute": "modal",
+          "reflects": false,
+          "description": "Base UI modal: true (focus trapped, page scroll locked, the rest of the page inert), trap-focus (focus trapped only) or false (the page stays interactive; focus leaving closes it).",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "true",
+            "trap-focus",
+            "false"
+          ]
+        },
+        {
+          "key": "disablePointerDismissal",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disable-pointer-dismissal",
+          "reflects": false,
+          "description": "Outside presses (the backdrop) do not close it; Escape and close parts still do (Base UI disablePointerDismissal).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Text of a generated title (an h2 that names the popup). Ignored when the popup has an authored title.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "description": "Text of a generated description under the title (aria-describedby). Ignored when the popup has an authored description.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the popup's parts in units of u (0…8 in steps of 0.5); default the collection gap (2u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'escape-key' | 'outside-press' | 'close-press' | 'focus-out', event: Event }",
+          "trigger": "the trigger is pressed, Escape is pressed, a press lands outside the popup, a close part is pressed, or (modal false) focus leaves; preventDefault keeps the dialog as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none (the popup is role=dialog, aria-modal while modal)",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on the trigger",
+            "action": "open the dialog (the trigger is a button)"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the topmost open dialog"
+          },
+          {
+            "keys": "Tab, Shift+Tab",
+            "action": "move focus among the popup's tabbables, wrapping (modal and trap-focus)"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the title (label property or an authored [data-part=title]) through aria-labelledby"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Popup content (any elements), or authored [data-part=trigger], [data-part=backdrop] and [data-part=popup] children. Inside the popup: [data-part=title], [data-part=description], [data-part=actions] and any number of [data-part=close] elements (usually ui-buttons); an [autofocus] element takes focus on open."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host draws no box (display: contents; the manifest's layout schema has no contents value): only its trigger takes space in the page.",
+        "The popup and backdrop stay in the DOM while closed (display: none) and enter the top layer (popover=manual) while open: no z-index, and no ancestor's overflow clips them.",
+        "Modal (the default) makes every element outside the popup inert (live regions excepted) and locks page scroll (html[data-scroll-locked]); both are undone on close, and when the host is removed while open.",
+        "Give the popup a title: it names the dialog. Put at least one close part in it for touch screen-reader users.",
+        "A dialog inside another's open popup is nested: no backdrop of its own; the parent steps back (data-nested-dialog-open, --nested-dialogs) and Escape or an outside press closes the nested one first.",
+        "Setting open from script changes it without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Confirming a destructive or irreversible action.",
+          "reason": "An alert dialog (ui-alert-dialog) interrupts with role=alertdialog, does not close on an outside press and starts on the least destructive action."
+        },
+        {
+          "when": "Content that slides in from an edge of the screen (navigation, filters, a mobile sheet).",
+          "reason": "A drawer (ui-drawer) is the edge-anchored sheet with swipe to dismiss."
+        },
+        {
+          "when": "Showing or hiding a section in the page flow.",
+          "reason": "A collapsible keeps the content in the page; a dialog takes the page away."
+        }
+      ],
+      "searchTerms": [
+        "dialog",
+        "modal",
+        "popup window",
+        "lightbox",
+        "overlay"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:dialog",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesGeometry",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./dialog.element.ts",
+      "exports": {
+        "component:dialog": "UIDialog"
+      },
+      "verification": "./verification/dialog.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./dialog.react.tsx",
+      "exports": {
+        "component:dialog": "Dialog"
+      },
+      "verification": "./verification/dialog.verification.json#/renderers/react",
+      "props": {
+        "component:dialog": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "open?: boolean // Controlled open state.",
+            "defaultOpen?: boolean // Open at first render (uncontrolled).",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when the dialog asks to open or close, with Base UI's details ({ reason, event }).",
+            "modal?: ModalMode // Base UI modal: true (focus trap, scroll lock, the page inert), 'trap-focus' (trap only), false (page stays interactive).",
+            "disablePointerDismissal?: boolean // Outside presses do not close it (Base UI disablePointerDismissal).",
+            "size?: number // Unit u in px; the popup's padding and radius scale with it.",
+            "children?: ReactNode",
+            "label?: ReactNode // The title (Dialog.Title).",
+            "description?: ReactNode // The description under the title (Dialog.Description).",
+            "trigger?: ReactNode // The trigger button's content (Dialog.Trigger); none when omitted."
+          ]
+        }
+      },
+      "parts": {
+        "component:dialog": {
+          "Dialog.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when the dialog asks to open or close, with Base UI's details ({ reason, event }).",
+              "modal?: ModalMode // Base UI modal: true (focus trap, scroll lock, the page inert), 'trap-focus' (trap only), false (page stays interactive).",
+              "disablePointerDismissal?: boolean // Outside presses do not close it (Base UI disablePointerDismissal).",
+              "size?: number // Unit u in px; the popup's padding and radius scale with it.",
+              "children?: ReactNode"
+            ]
+          },
+          "Dialog.Trigger": {
+            "inherits": [
+              "Omit<ButtonProps, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Dialog.Portal": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode"
+            ]
+          },
+          "Dialog.Backdrop": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Dialog.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Dialog.Title": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLHeadingElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Dialog.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLParagraphElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          },
+          "Dialog.Actions": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Dialog.Close": {
+            "inherits": [
+              "Omit<ButtonProps, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "dialog",
+  "scope": "Behavior, ARIA, parts, events and state attributes of the web component in happy-dom (node:test): top layer attributes, inert outside, scroll lock, focus in and back, Escape / outside press / close reasons, nesting; the headless modal layer (dom/dialog.ts); the React renderer's server markup and client behavior. Rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/dialog/dialog.element.ts",
+      "sha256": "b30d41350155a93c0ee619d8d876bad03b34e060cc4d3d80bdd66012a029d24c"
+    },
+    {
+      "path": "components/dialog/dialog.react.tsx",
+      "sha256": "ec16fe68726547394f2cee4b39a689a9d317b9e4c89248ea1246237757c5191a"
+    },
+    {
+      "path": "components/dialog/dialog.recipe.ts",
+      "sha256": "bbaec544df21874c8bbab474a3d0d570d18eb1e8a685fab9c704234a4b4cb8b7"
+    },
+    {
+      "path": "components/dialog/dialog.manifest.json",
+      "sha256": "5b966419c4ccb24c32022732d6f7e7d578b5b928516c28aa632a8e3eac440e32"
+    },
+    {
+      "path": "dom/dialog.ts",
+      "sha256": "fa9a127d7e86f7b9bd320b462226cbe6cab641bf1cc9a560ddcbba564ba86c42"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"^dialog\" test/dialog.test.ts",
+          "covers": "preset and parts anatomy, popup ARIA, trigger press / Escape / outside press / close part with Base UI reasons (cancelable openchange), modal / trap-focus / false, inert outside and scroll lock (counted, undone on removal), focus in ([autofocus]) and back to the trigger, nested dialogs, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"dialog\" test/geometry.test.ts",
+          "covers": "resolveDialog: card-xl padding inside B, radius = padding × min(1, s), 2u gap (the gap attribute wins), 96u width within the 4u viewport margin"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"^dialog\" test/dialog.test.ts",
+          "node --test --test-name-pattern=\"dialog\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Dialog \\(React\\)\" test/dialog.test.ts",
+          "covers": "React SSR: the same data-* and recipe classes as the web component, kit Button trigger and close, the composed parts render the preset, render and className functions; client: trigger press, Escape and close part reasons, inert outside, focus in and back, controlled open"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Dialog \\(React\\)\" test/dialog.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The top layer (popover), the enter and exit transitions and real focus movement need a real browser; unit tests cover the attributes and calls they key on.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []), the open popups and their parts compared part by part.",
+    "Geometry review, manual items (2026-11-02, studio on the Components page Overlays family at u = 3, the theme unit 4.5 and 6, light and dark): growth (long content scrolls inside the popup once it reaches the viewport less 4u; a narrow viewport narrows the popup to the viewport less 8u; actions wrap), RTL (dir=rtl: the popup stays centered, the actions row sits at the inline end, text aligns to the start; all insets are logical), focus (the trigger, close and field rings are outlines and change no dimension; focus is trapped in the popup and returns to the trigger), nested dialog (no second backdrop, the parent steps back), screenshots of the Overlays family checked light and dark."
+  ]
+}

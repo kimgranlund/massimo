@@ -131,6 +131,16 @@
         "toggle group",
         "inside toggle group"
       ]
+    },
+    "dialog": {
+      "id": "context:dialog",
+      "host": "component:dialog",
+      "summary": "Inside a dialog popup (card-xl: 6u padding, radius = padding): a title, a description, content (fields, text, a nested dialog) and an actions row of buttons.",
+      "searchTerms": [
+        "dialog",
+        "inside dialog",
+        "modal content"
+      ]
     }
   },
   "nesting": {
@@ -175,6 +185,10 @@
     {
       "rule": "ui-swatch selection only inside ui-palette with name or selectable.",
       "reason": "The palette owns the listbox role and value."
+    },
+    {
+      "rule": "ui-option only as a direct child of ui-listbox, ui-segmented or ui-select.",
+      "reason": "The owning list sets role, id and selection state."
     }
   ]
 }

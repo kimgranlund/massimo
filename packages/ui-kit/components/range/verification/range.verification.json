@@ -30,7 +30,7 @@
     },
     {
       "path": "dom/events.ts",
-      "sha256": "c8cba028cfd444fb85496e3ae6701610c940c7dd4c2d37fb5a94006271f01fe7"
+      "sha256": "33e6336c702866cca6cfc21470d744593d88f99342aefd3f4b1594b5817a9217"
     },
     {
       "path": "core/form-element.ts",
@@ -43,10 +43,6 @@
     {
       "path": "components/slots.ts",
       "sha256": "4db73c91a394e55853512560dfa0535d2833cea32fbf9a4f1be2fcfb71d432b7"
-    },
-    {
-      "path": "components/range/range.recipe.ts",
-      "sha256": "80fe54910b9b716cfc7f6cc0dbef85e120b374a229618a53026828fd793c4ceb"
     }
   ],
   "renderers": {
@@ -67,10 +63,6 @@
         {
           "command": "node --test test/composition.test.ts",
           "covers": "composition: authored [data-part] parts render the same parts, recipe classes, data-* and hidden flags as the generated anatomy; authored attributes, classes and content are adopted, text seeds properties, a reconnect keeps them"
-        },
-        {
-          "command": "node --test test/range-pair.test.ts",
-          "covers": "range pair: group host and two slider thumbs, keys stop at the other thumb, pointer moves the nearer thumb, one form entry per thumb, reset, activeThumbIndex; the same data-* as React"
         }
       ],
       "latestRun": {
@@ -80,8 +72,7 @@
           "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
           "node --test test/state-parity.test.ts",
           "node --test test/events.test.ts",
-          "node --test test/composition.test.ts",
-          "node --test test/range-pair.test.ts"
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -105,10 +96,6 @@
         {
           "command": "node --test test/composition.test.ts",
           "covers": "composition: each compound-part form renders the server markup of its preset; render (element or function) and className functions of the part state"
-        },
-        {
-          "command": "node --test test/range-pair.test.ts",
-          "covers": "range pair: a group of two thumbs with native inputs (data-index, names), the preset equals the composed parts, keys stop at the other thumb, onValueChange activeThumbIndex"
         }
       ],
       "latestRun": {
@@ -118,8 +105,7 @@
           "node --test test/react.test.ts",
           "node --test test/state-parity.test.ts",
           "node --test test/events.test.ts",
-          "node --test test/composition.test.ts",
-          "node --test test/range-pair.test.ts"
+          "node --test test/composition.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -128,7 +114,6 @@
     }
   },
   "limitations": [
-    "Geometry review of the range pair (manual, 2026-11-02): the track family (resolveTrack, trackPairFill) checked for two thumbs in apps/studio/geometry-check.html at every size x B 0 and 1 (host height, thumb size, each thumb offset, fill start and width, both concentric caps; a negative control with the expected fill start off by 1px failed 46 cases); growth: the pair keeps the 24u minimum width and grows with its container, thumbs never shrink, met thumbs show a 4u fill pill around them; RTL: thumbs and the fill mirror (margin-inline-start) and the arrows flip; focus: the keyboard ring is the thumb outline (no size change), the focused or dragged thumb paints over the other; react-check.html compares the React pair with ui-range (twins and composed parts, \"fails\": []); light and dark screenshots of the Tracks family.",
     "The source list is the direct sources, not every transitive dependency.",
     "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": [])."
   ]

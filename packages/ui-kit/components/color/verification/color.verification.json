@@ -34,7 +34,7 @@
     },
     {
       "path": "dom/events.ts",
-      "sha256": "c8cba028cfd444fb85496e3ae6701610c940c7dd4c2d37fb5a94006271f01fe7"
+      "sha256": "33e6336c702866cca6cfc21470d744593d88f99342aefd3f4b1594b5817a9217"
     },
     {
       "path": "core/form-element.ts",

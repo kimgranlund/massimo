@@ -106,6 +106,78 @@
         "fill",
         "indicator"
       ]
+    },
+    "dialog-trigger": {
+      "id": "part:dialog-trigger",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The element that opens a dialog, alert dialog or drawer (usually a ui-button; aria-haspopup=dialog, aria-expanded, aria-controls; data-popup-open while open). Authored; outside the popup. Base UI Dialog.Trigger.",
+      "createdBy": "template",
+      "searchTerms": [
+        "dialog trigger",
+        "open dialog button"
+      ]
+    },
+    "dialog-backdrop": {
+      "id": "part:dialog-backdrop",
+      "selector": ":scope > [data-part=backdrop]",
+      "summary": "The bg.backdrop overlay under the popup in the top layer (data-open / data-closed; hidden for a nested layer). Generated unless authored. Base UI Dialog.Backdrop.",
+      "createdBy": "template",
+      "searchTerms": [
+        "backdrop",
+        "overlay",
+        "scrim"
+      ]
+    },
+    "dialog-popup": {
+      "id": "part:dialog-popup",
+      "selector": ":scope > [data-part=popup]",
+      "summary": "The window (role=dialog or alertdialog, aria-modal while modal, tabindex=-1), in the top layer while open (data-open / data-closed, data-nested, data-nested-dialog-open, --nested-dialogs). Generated from the children unless authored. Base UI Dialog.Popup.",
+      "createdBy": "template",
+      "searchTerms": [
+        "dialog popup",
+        "modal window"
+      ]
+    },
+    "dialog-title": {
+      "id": "part:dialog-title",
+      "selector": ":scope > [data-part=popup] [data-part=title]",
+      "summary": "The heading that names the popup (aria-labelledby): an h2 from the label property, or authored. Base UI Dialog.Title.",
+      "createdBy": "template",
+      "searchTerms": [
+        "dialog title",
+        "dialog heading"
+      ]
+    },
+    "dialog-description": {
+      "id": "part:dialog-description",
+      "selector": ":scope > [data-part=popup] [data-part=description]",
+      "summary": "The paragraph that describes the popup (aria-describedby): a p from the description property, or authored. Base UI Dialog.Description.",
+      "createdBy": "template",
+      "searchTerms": [
+        "dialog description"
+      ]
+    },
+    "dialog-actions": {
+      "id": "part:dialog-actions",
+      "selector": ":scope > [data-part=popup] [data-part=actions]",
+      "summary": "The row of actions at the popup's end (ours): its buttons 2u apart, at the end edge, wrapping. Authored.",
+      "createdBy": "template",
+      "searchTerms": [
+        "dialog actions",
+        "dialog footer",
+        "dialog buttons"
+      ]
+    },
+    "dialog-close": {
+      "id": "part:dialog-close",
+      "selector": ":scope > [data-part=popup] [data-part=close]",
+      "summary": "An element inside the popup that closes it with reason close-press (usually a ui-button). Authored. Base UI Dialog.Close.",
+      "createdBy": "template",
+      "searchTerms": [
+        "dialog close",
+        "close button",
+        "cancel"
+      ]
     }
   }
 }

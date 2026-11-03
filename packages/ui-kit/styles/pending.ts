@@ -48,4 +48,7 @@ export const pending = defineGlobalStyles({
   'ui-otp-field:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   // A toggle group reserves its row (it holds 7u toggles inside its composite edge).
   'ui-toggle-group:not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards', display: 'inline-flex', minHeight: 'var(--h)' },
+  // A modal layer draws nothing in the page but its trigger: its popup content never shows inline.
+  ':is(ui-dialog, ui-alert-dialog, ui-drawer):not(:defined)': { display: 'contents' },
+  ':is(ui-dialog, ui-alert-dialog, ui-drawer):not(:defined) > :not([data-part=trigger])': { display: 'none' },
 });
