@@ -1,4 +1,4 @@
-<!-- sdlc:managed:start v1 sha256:2faa7341ee84 -->
+<!-- sdlc:managed:start v1 sha256:a6ae5cabba36 -->
 # Work records
 
 This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `config`. `tickets.py roadmap` (also run by `new` and `close`) generates this block: do not edit inside it; change a ticket's `handoff.md` front matter and rerun `roadmap`. `roadmap.md` lists every ticket in dependency order. Closed `.NNNN-*` folders are history: open one only when asked.
@@ -10,28 +10,28 @@ This folder holds SDLC tickets, task records, `roadmap.md`, `notes.md`, and `con
 
 ## Stages
 
-- proposed: 19
-  - T-0009 W2 · Tooltip (tooltip)
-  - T-0010 W2 · Popover (popover)
-  - T-0011 W2 · Menu (menu)
-  - T-0012 W2 · Context Menu (context-menu)
-  - T-0013 W2 · Preview Card (preview-card)
-  - T-0014 W2 · Menubar (menubar)
-  - T-0015 W2 · Navigation Menu (navigation-menu)
-  - T-0016 W3 · Dialog (dialog)
-  - T-0017 W3 · Alert Dialog (alert-dialog)
-  - T-0018 W3 · Drawer (drawer)
-  - T-0019 W3 · Toast (toast)
-  - T-0023 W5 · Combobox (combobox)
-  - T-0024 W5 · Autocomplete (autocomplete)
-  - T-0025 W5 · Number Field (number-field)
-  - T-0026 W5 · OTP Field (otp-field)
-  - T-0027 W5 · Form (form)
-  - T-0028 W5 · Scroll Area (scroll-area)
-  - T-0029 W5 · Slider: two-thumb range (slider-range-pair)
-  - T-0030 W5 · Toggle Group: multiple selection (toggle-group-multiple)
+- proposed: 0
 - ready: 0
-- claimed: 0
+- claimed: 19
+  - T-0009 W2 · Tooltip (tooltip), claimed by claude 2026-11-02
+  - T-0010 W2 · Popover (popover), claimed by claude 2026-11-02
+  - T-0011 W2 · Menu (menu), claimed by claude 2026-11-02
+  - T-0012 W2 · Context Menu (context-menu), claimed by claude 2026-11-02
+  - T-0013 W2 · Preview Card (preview-card), claimed by claude 2026-11-02
+  - T-0014 W2 · Menubar (menubar), claimed by claude 2026-11-02
+  - T-0015 W2 · Navigation Menu (navigation-menu), claimed by claude 2026-11-02
+  - T-0016 W3 · Dialog (dialog), claimed by claude 2026-11-02
+  - T-0017 W3 · Alert Dialog (alert-dialog), claimed by claude 2026-11-02
+  - T-0018 W3 · Drawer (drawer), claimed by claude 2026-11-02
+  - T-0019 W3 · Toast (toast), claimed by claude 2026-11-02
+  - T-0023 W5 · Combobox (combobox), claimed by claude 2026-11-02
+  - T-0024 W5 · Autocomplete (autocomplete), claimed by claude 2026-11-02
+  - T-0025 W5 · Number Field (number-field), claimed by claude 2026-11-02
+  - T-0026 W5 · OTP Field (otp-field), claimed by claude 2026-11-02
+  - T-0027 W5 · Form (form), claimed by claude 2026-11-02
+  - T-0028 W5 · Scroll Area (scroll-area), claimed by claude 2026-11-02
+  - T-0029 W5 · Slider: two-thumb range (slider-range-pair), claimed by claude 2026-11-02
+  - T-0030 W5 · Toggle Group: multiple selection (toggle-group-multiple), claimed by claude 2026-11-02
 - paused: 0
 - blocked: 0
 - done: 11

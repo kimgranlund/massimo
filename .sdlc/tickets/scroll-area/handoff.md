@@ -2,11 +2,12 @@
 id: T-0028
 title: "W5 · Scroll Area"
 type: feature        # feature | bug | chore | spike | idea
-status: proposed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: claimed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L2             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P3         # P1 | P2 | P3
 depends: []
 created: 2026-11-02
+claimed_by: claude 2026-11-02
 router: .sdlc/tickets/AGENTS.md  # how to claim and close this ticket
 budget_usd: 30
 ---
