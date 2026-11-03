@@ -197,3 +197,39 @@ test('React OTPField: compound parts render the preset; separators; render and c
   assert.match(html(h(OTPField.Root, { length: 1, render: h('section'), className: (s: any) => (s.complete ? 'done' : 'todo'), value: '5' }, h(OTPField.Input))), /^<section data-ui="otp-field"[^>]*class="ui-otp-field__root done"/);
   assert.throws(() => html(h(OTPField.Input)), /inside OTPField.Root/);
 });
+
+test('ui-otp-field: SMS autofill through WebOTP fills the code as typed (input-change, complete); aborted on disconnect; off without one-time-code', async () => {
+  // happy-dom: window is its own object, and navigator is the window's.
+  const w = (globalThis as any).window as any, nav = w.navigator as any;
+  const hadCred = Object.getOwnPropertyDescriptor(nav, 'credentials'), hadOtp = 'OTPCredential' in w;
+  const calls: AbortSignal[] = [];
+  let resolve!: (v: unknown) => void;
+  Object.defineProperty(nav, 'credentials', { configurable: true, value: { get: (o: any) => { calls.push(o.signal); assert.deepEqual(o.otp, { transport: ['sms'] }); return new Promise((r) => { resolve = r; }); } } });
+  w.OTPCredential = function OTPCredential() {};
+  try {
+    const d = await mount('<ui-otp-field length="6"></ui-otp-field>');
+    const el = d.firstElementChild as any;
+    const got: string[] = [];
+    for (const t of ['change', 'complete']) el.addEventListener(t, (e: CustomEvent) => got.push(`${t}:${e.detail.value}:${e.detail.reason}`));
+    assert.equal(calls.length, 1, 'asks for the code once connected');
+    resolve({ code: '123456' }); await tick(); await tick();
+    assert.equal(el.value, '123456');
+    assert.deepEqual(got, ['change:123456:input-change', 'complete:123456:input-change']);
+    d.remove();
+    const off = await mount('<ui-otp-field length="6" autocomplete="off"></ui-otp-field>');
+    assert.equal(calls.length, 1, 'no request without one-time-code');
+    off.remove();
+    const gone = await mount('<ui-otp-field length="4"></ui-otp-field>');
+    assert.equal(calls.length, 2);
+    gone.remove();
+    assert.ok(calls[1].aborted, 'disconnecting aborts the request');
+  } finally {
+    if (hadCred) Object.defineProperty(nav, 'credentials', hadCred); else delete nav.credentials;
+    if (!hadOtp) delete w.OTPCredential;
+  }
+});
+
+test('requestOtpCode: null where WebOTP is missing', async () => {
+  const { requestOtpCode } = await import('../dom/otp.ts');
+  assert.equal(await requestOtpCode(new AbortController().signal), null);
+});

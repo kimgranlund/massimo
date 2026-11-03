@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/otp-field/otp-field.element.ts",
-      "sha256": "874e3646a58ec8c240b3dd4f6a95ae0a7c939edbbc0256cf40aa34210d612bfd"
+      "sha256": "0b70b54a825d2a294b4b3b11b7997633fc3f2ff6aed53323867077620aa9b699"
     },
     {
       "path": "components/otp-field/otp-field.react.tsx",
@@ -22,7 +22,7 @@
     },
     {
       "path": "dom/otp.ts",
-      "sha256": "bb4736d984d02ff9edfe1bf4eadfd0e98252d2f32880084b81722200e301031c"
+      "sha256": "3479356d6bc4ad3f64b5911aa7a9da525071f94372b5dca5e5e03bccfd4c0d0c"
     }
   ],
   "renderers": {

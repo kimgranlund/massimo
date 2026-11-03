@@ -7,12 +7,15 @@
 // past the first empty cell, and only one cell is a tab stop. validation-type filters characters
 // (rejected ones fire valueinvalid); a complete value fires complete (and submits the form with
 // auto-submit). input and change fire on every change with { value, reason, event }.
+// SMS autofill: with autocomplete one-time-code (the default) the element asks the WebOTP API for
+// the code once connected (Chromium on Android; iOS autofill needs a native input, which only the
+// React renderer has) and fills it as typed (reason input-change; complete, auto-submit).
 // Composition (optional): author [data-part=input] and [data-part=separator] children in any order
 // (for a 3 + 3 code); the cells are then the authored ones and length is their count.
 import { UIFormElement, define, settleDefault, type Problem } from '../../core/index.ts';
 import { setClasses } from '../classes.ts';
 import { otpField } from '../../styled-system/recipes/otp-field.js';
-import { applyAttrs, eventDetails, otpCellAttrs, otpDelete, otpFocusable, otpInputMode, otpInsert, otpKey, type ChangeReason, type OtpValidation } from '../../dom/index.ts';
+import { applyAttrs, eventDetails, otpCellAttrs, requestOtpCode, otpDelete, otpFocusable, otpInputMode, otpInsert, otpKey, type ChangeReason, type OtpValidation } from '../../dom/index.ts';
 
 export class UIOtpField extends UIFormElement {
   static properties = {
@@ -62,9 +65,25 @@ export class UIOtpField extends UIFormElement {
     this.addEventListener('input', this.#onInput, true);
     this.addEventListener('keydown', this.#onKeydown);
     this.addEventListener('focusin', this.#onFocusIn);
+    this.#webOtp();
+  }
+
+  /** SMS autofill without a native input (WebOTP): fill the code it returns, as typed. */
+  #otpAbort?: AbortController;
+  #webOtp() {
+    if (!/\bone-time-code\b/.test(this.autocomplete) || this.#otpAbort) return;
+    const abort = (this.#otpAbort = new AbortController());
+    void requestOtpCode(abort.signal).then((code) => {
+      if (abort.signal.aborted || this.#otpAbort !== abort) return;
+      this.#otpAbort = undefined;
+      // From the first cell, so the code replaces whatever was there.
+      if (code && this.#editable) this.#insert(0, code, 'input-change', undefined);
+    });
   }
 
   disconnected() {
+    this.#otpAbort?.abort();
+    this.#otpAbort = undefined;
     this.removeEventListener('beforeinput', this.#onBeforeInput as EventListener);
     this.removeEventListener('input', this.#onInput, true);
     this.removeEventListener('keydown', this.#onKeydown);
@@ -138,7 +157,7 @@ export class UIOtpField extends UIFormElement {
     if (cell && document.activeElement !== cell) cell.focus();
   }
 
-  #set(next: string, reason: ChangeReason, event: Event, opts: { attempted?: string; invalid?: boolean; paste?: boolean } = {}) {
+  #set(next: string, reason: ChangeReason, event: Event | undefined, opts: { attempted?: string; invalid?: boolean; paste?: boolean } = {}) {
     if (opts.invalid) this.dispatchEvent(new CustomEvent('valueinvalid', { bubbles: true, detail: { value: opts.attempted ?? '', ...eventDetails(reason, event) } }));
     const changed = next !== this.value;
     if (changed) {
@@ -154,7 +173,7 @@ export class UIOtpField extends UIFormElement {
     }
   }
 
-  #insert(i: number, text: string, reason: ChangeReason, event: Event) {
+  #insert(i: number, text: string, reason: ChangeReason, event: Event | undefined) {
     const r = otpInsert(this.value, i, text, this.cells.length, this.validationType, this.normalizeValue);
     this.#set(r.value, reason, event, { attempted: text, invalid: r.invalid, paste: reason === 'input-paste' });
     this.#moveTo(r.accepted ? r.focus : i);

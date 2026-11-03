@@ -85,3 +85,21 @@ export function otpCellAttrs(s: OtpCellState): Attrs {
     'data-focused': s.focused || undefined,
   };
 }
+
+/**
+ * The WebOTP API (navigator.credentials.get({ otp })): the browser reads a one-time code from an SMS
+ * bound to this origin and, once the user allows it, hands it to the page; no native input needed.
+ * Resolves the code, or null where the API is missing, refused, aborted or times out. Chromium on
+ * Android implements it; elsewhere it resolves null at once.
+ */
+export async function requestOtpCode(signal: AbortSignal): Promise<string | null> {
+  if (typeof window === 'undefined' || !('OTPCredential' in window)) return null;
+  const nav = window.navigator as Navigator & { credentials?: { get?: (o: unknown) => Promise<unknown> } };
+  if (!nav?.credentials?.get) return null;
+  try {
+    const cred = await nav.credentials.get({ otp: { transport: ['sms'] }, signal }) as { code?: string } | null;
+    return cred?.code ?? null;
+  } catch {
+    return null;
+  }
+}
