@@ -642,6 +642,28 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "dialog": {
+      "geometryFamily": "dialog",
+      "element": "Host (display: contents) holds an optional trigger, a backdrop and a popup (role=dialog) with a title, a description, content, an actions row and close parts. Children become the popup unless a [data-part=popup] is authored; the label and description properties fill a generated title and description.",
+      "parts": [
+        "dialog-trigger?",
+        "dialog-backdrop",
+        "dialog-popup",
+        "dialog-title?",
+        "dialog-description?",
+        "dialog-actions?",
+        "dialog-close?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group"
+      ],
+      "behavior": "A trigger press opens it; Escape, a press outside the popup (the backdrop) or a close part closes it, each through a cancelable openchange ({ open, reason: 'trigger-press' | 'escape-key' | 'outside-press' | 'close-press' | 'focus-out', event }); setting open fires nothing. While open the backdrop and popup are in the top layer; modal (default) locks page scroll, makes the rest of the page inert and traps focus; focus moves to the first tabbable (or [autofocus]) and returns to the trigger on close. A dialog inside another's popup is nested."
     }
   }
 }

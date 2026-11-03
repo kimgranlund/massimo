@@ -24,7 +24,8 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/dialog/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveDialog } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -93,6 +94,8 @@ for (const c of cases) {
       <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
+    <ui-dialog id="dlg" modal="false" disable-pointer-dismissal open label="Title" description="Description" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><p>Body</p><div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button>Save</ui-button></div></ui-dialog>
+    <ui-dialog id="dlgTall" modal="false" disable-pointer-dismissal open><p style="height:200vh">Tall</p></ui-dialog>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -459,6 +462,26 @@ for (const c of cases) {
     };
     tabChecks('tabs.segmented', $('tabSeg'), 'segmented');
     tabChecks('tabs.underline', $('tabLine'), 'underline');
+  }
+  // Dialog (resolveDialog): a card-xl container popup, centered in the viewport, 96u wide within a 4u margin.
+  {
+    const vp = { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight };
+    const rd = resolveDialog({ ...g, viewport: vp }), dl = $('dlg'), pop = dl.popup, bd = dl.backdrop, tall = $('dlgTall').popup;
+    for (const el of [pop, bd, tall]) el.style.transition = 'none';
+    const [title, desc, body, actions] = pop.children, [b1, b2] = actions.children;
+    checks['dialog.padding'] = [px(cs(pop).paddingTop), rd.padding];
+    checks['dialog.edge'] = [px(cs(pop).paddingLeft) + px(cs(pop).borderLeftWidth), rd.edge];
+    checks['dialog.radius'] = [px(cs(pop).borderTopLeftRadius), r2(rd.radius)];
+    checks['dialog.gap'] = [r2(rect(desc).top - rect(title).bottom), rd.gap];
+    checks['dialog.gap.body'] = [r2(rect(body).top - rect(desc).bottom), rd.gap];
+    checks['dialog.actions.gap'] = [r2(rect(b2).left - rect(b1).right), rd.actionsGap];
+    checks['dialog.actions.end'] = [r2(rect(pop).right - rect(b2).right), rd.edge];
+    checks['dialog.width'] = [r2(rect(pop).width), r2(rd.width)];
+    checks['dialog.center'] = [r2(rect(pop).left), r2((vp.width - rd.width) / 2)];
+    checks['dialog.backdrop'] = [r2(rect(bd).width), vp.width];
+    checks['dialog.tall.height'] = [r2(rect(tall).height), r2(rd.maxHeight)];
+    checks['dialog.tall.top'] = [r2(rect(tall).top), rd.margin];
+    dl.open = false; $('dlgTall').open = false;
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

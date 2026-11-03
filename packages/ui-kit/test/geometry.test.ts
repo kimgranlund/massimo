@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveDialog } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -254,4 +254,15 @@ test('disclosure: segmented tabs are 7u composite options in an 8u list; underli
   assert.equal(s.listRadius, 14, 'min(3.5u, 8u / 2)');
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
+});
+
+test('dialog: the popup is a card-xl container (6u padding inside B, radius = padding), parts 2u apart, 96u wide within a 4u viewport margin', () => {
+  const d = resolveDialog({ unit: 4, border: 1 });
+  assert.deepEqual([d.padding, d.edge, d.radius, d.gap, d.actionsGap, d.margin, d.width], [23, 24, 24, 8, 8, 16, 384]);
+  assert.equal(resolveDialog({ unit: 4, radiusScale: 2 }).radius, 24, 'the corner scale lowers, never raises, a container radius');
+  assert.equal(resolveDialog({ unit: 4, radiusScale: 0.5 }).radius, 12);
+  assert.equal(resolveDialog({ unit: 4, padUnits: 5 }).padding, 20, 'pad-card-xl is a theme parameter');
+  assert.equal(resolveDialog({ unit: 4, gap: 3 }).gap, 12, 'the gap attribute wins');
+  const narrow = resolveDialog({ unit: 4, viewport: { width: 360, height: 640 } });
+  assert.deepEqual([narrow.width, narrow.maxHeight], [328, 608], 'viewport less 4u each side');
 });

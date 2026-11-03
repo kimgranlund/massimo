@@ -121,6 +121,16 @@
         "inside accordion",
         "accordion item"
       ]
+    },
+    "dialog": {
+      "id": "context:dialog",
+      "host": "component:dialog",
+      "summary": "Inside a dialog popup (card-xl: 6u padding, radius = padding): a title, a description, content (fields, text, a nested dialog) and an actions row of buttons.",
+      "searchTerms": [
+        "dialog",
+        "inside dialog",
+        "modal content"
+      ]
     }
   },
   "nesting": {

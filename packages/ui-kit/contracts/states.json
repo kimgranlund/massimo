@@ -79,7 +79,7 @@
     "data-popup-open": {
       "baseUi": true,
       "condition": "_popupOpen",
-      "meaning": "The select trigger's popup is open."
+      "meaning": "The select trigger's popup is open; a dialog trigger's dialog is open (Base UI Dialog.Trigger)."
     },
     "data-placeholder": {
       "baseUi": true,
@@ -89,12 +89,12 @@
     "data-open": {
       "baseUi": true,
       "condition": "_open",
-      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open."
+      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open. A dialog (host, backdrop and popup) is open."
     },
     "data-closed": {
       "baseUi": true,
       "condition": "_closed",
-      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed."
+      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed. A dialog (host, backdrop and popup) is closed."
     },
     "data-side": {
       "baseUi": true,
@@ -175,6 +175,16 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-nested": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A dialog popup opened inside another open dialog's popup (Base UI Dialog.Popup); its backdrop is not shown."
+    },
+    "data-nested-dialog-open": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A dialog popup with an open dialog nested in it (Base UI Dialog.Popup); --nested-dialogs counts them."
     }
   },
   "components": {
@@ -497,6 +507,25 @@
         "data-orientation",
         "data-activation-direction"
       ]
+    },
+    "ui-dialog": {
+      "host": [
+        "data-open",
+        "data-closed"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "backdrop": [
+        "data-open",
+        "data-closed"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-nested",
+        "data-nested-dialog-open"
+      ]
     }
   },
   "native": {
@@ -571,11 +600,12 @@
     },
     "open": {
       "hook": "trigger [data-popup-open]; popup [data-open]",
-      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent)",
+      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); dialog: trigger [data-popup-open], backdrop and popup [data-open] in the top layer, fading and growing in on the reveal intent",
       "components": [
         "ui-select",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-dialog"
       ]
     },
     "disabled": {

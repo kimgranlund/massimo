@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveDialog, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -179,6 +179,13 @@ export const rows: Row[] = [
   { id: 'disclosure.tabs.underline.indicator', family: 'disclosure', element: 'tabs[variant=underline] indicator', quantity: 'indicator thickness', formula: '0.5u', value: (u) => resolveTabs('underline', { unit: u }).indicatorThickness!, status: 'implemented', notes: 'radius 0.25u; as wide as the active tab, on the track' },
   { id: 'disclosure.tabs.underline.track', family: 'disclosure', element: 'tabs[variant=underline] list', quantity: 'track', formula: 'thin border width (1px token)', value: (u) => resolveTabs('underline', { unit: u }).track, status: 'implemented', notes: 'border role, on the list end edge (inline end when vertical)' },
   { id: 'disclosure.accordion.itemHeight', family: 'disclosure', element: 'accordion item', quantity: 'closed item height', formula: '8u + 1px', value: (u) => resolveDisclosure({ unit: u }).itemHeight, status: 'implemented', notes: 'trigger row plus the divider' },
+  // Dialogs (dialog, alert dialog): a card-xl container popup
+  { id: 'dialog.popup.padding', family: 'dialog', element: 'dialog popup', quantity: 'padding', formula: 'p·u - B (p = pad-card-xl, 6)', value: (u) => resolveDialog({ unit: u }).padding, status: 'implemented', notes: 'the border (border role) lives inside it' },
+  { id: 'dialog.popup.radius', family: 'dialog', element: 'dialog popup', quantity: 'radius', formula: 'p·u × min(1, s)', value: (u) => resolveDialog({ unit: u }).radius, status: 'implemented', notes: 'container family: never rounder than its padding' },
+  { id: 'dialog.popup.gap', family: 'dialog', element: 'dialog popup', quantity: 'gap between parts', formula: '2u (gap-collection; the gap attribute wins)', value: (u) => resolveDialog({ unit: u }).gap, status: 'implemented', notes: 'title, description, content, actions' },
+  { id: 'dialog.actions.gap', family: 'dialog', element: 'dialog actions', quantity: 'gap between actions', formula: '2u', value: (u) => resolveDialog({ unit: u }).actionsGap, status: 'implemented', notes: 'at the end edge, wrapping' },
+  { id: 'dialog.popup.width', family: 'dialog', element: 'dialog popup', quantity: 'width', formula: 'min(96u, viewport - 8u)', value: (u) => resolveDialog({ unit: u }).width, status: 'implemented', notes: 'value shown without the viewport cap (24rem at u = 4)' },
+  { id: 'dialog.viewport.margin', family: 'dialog', element: 'dialog popup', quantity: 'viewport margin', formula: '4u', value: (u) => resolveDialog({ unit: u }).margin, status: 'implemented', notes: 'on each side; max height = viewport height - 8u, then the popup scrolls' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

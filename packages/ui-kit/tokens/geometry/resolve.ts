@@ -505,3 +505,32 @@ export function resolveTabs(variant: TabsVariant = 'segmented', input: GeometryI
     indicatorThickness: 0.5 * u, indicatorRadius: 0.25 * u, track: DIVIDER,
   };
 }
+
+// ── Dialogs: dialog and alert dialog (a container), drawer (an area) ──
+// A dialog popup is a card at the xl level (container family): padding p·u − B (p = the theme's
+// pad-card-xl, 6u by default), radius p·u × min(1, s), never rounder than it is deep. Its parts
+// (title, description, content, actions) stack with the collection gap (2u; the gap attribute
+// wins); the actions row ends the popup, its buttons 2u apart. The popup is 96u wide (24rem at
+// u = 4), at most the viewport less a 4u margin on each side, and scrolls past the viewport height
+// less the same margins. Lengths in CSS px.
+
+/** The viewport margin around a centered dialog, in u. */
+export const DIALOG_MARGIN = 4;
+/** A dialog popup's width, in u. */
+export const DIALOG_WIDTH = 96;
+
+/** ui-dialog, ui-alert-dialog popup: padding, radius, gap, width and the viewport margin. */
+export function resolveDialog(input: GeometryInput & { padUnits?: number; gapUnits?: number; viewport?: { width: number; height: number } } = {}) {
+  const box = resolveContainer('card-xl', input);
+  const stack = resolveContainer('collection', { ...input, padUnits: undefined });
+  const u = box.unit, margin = DIALOG_MARGIN * u;
+  const vp = input.viewport;
+  return {
+    unit: u, border: box.border,
+    padding: box.padding, edge: box.edge, radius: box.radius,
+    gap: stack.gap, actionsGap: 2 * u,
+    margin,
+    width: vp ? Math.min(DIALOG_WIDTH * u, vp.width - 2 * margin) : DIALOG_WIDTH * u,
+    maxHeight: vp ? vp.height - 2 * margin : undefined,
+  };
+}

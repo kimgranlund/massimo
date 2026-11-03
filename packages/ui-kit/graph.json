@@ -135,6 +135,19 @@
         "layout"
       ]
     },
+    "component:dialog": {
+      "kind": "component",
+      "source": "components/dialog/dialog.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-dialog",
+      "searchTerms": [
+        "dialog",
+        "modal",
+        "popup window",
+        "lightbox",
+        "overlay"
+      ]
+    },
     "component:field": {
       "kind": "component",
       "source": "components/field/field.manifest.json#/nodes/0",
@@ -508,6 +521,16 @@
         "inside collection"
       ]
     },
+    "context:dialog": {
+      "kind": "context",
+      "source": "contracts/composition.json#/contexts/dialog",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog",
+        "inside dialog",
+        "modal content"
+      ]
+    },
     "context:field-grid": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/field-grid",
@@ -812,6 +835,17 @@
         "text run"
       ]
     },
+    "geometry:dialog": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/dialog",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog geometry",
+        "modal width",
+        "dialog padding",
+        "dialog radius"
+      ]
+    },
     "geometry:disclosure": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/disclosure",
@@ -978,6 +1012,71 @@
       "tag": "div",
       "searchTerms": [
         "collapsible trigger"
+      ]
+    },
+    "part:dialog-actions": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-actions",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog actions",
+        "dialog footer",
+        "dialog buttons"
+      ]
+    },
+    "part:dialog-backdrop": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-backdrop",
+      "availability": "implemented",
+      "searchTerms": [
+        "backdrop",
+        "overlay",
+        "scrim"
+      ]
+    },
+    "part:dialog-close": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-close",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog close",
+        "close button",
+        "cancel"
+      ]
+    },
+    "part:dialog-description": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-description",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog description"
+      ]
+    },
+    "part:dialog-popup": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-popup",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog popup",
+        "modal window"
+      ]
+    },
+    "part:dialog-title": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-title",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog title",
+        "dialog heading"
+      ]
+    },
+    "part:dialog-trigger": {
+      "kind": "part",
+      "source": "contracts/parts.json#/parts/dialog-trigger",
+      "availability": "implemented",
+      "searchTerms": [
+        "dialog trigger",
+        "open dialog button"
       ]
     },
     "part:field-description": {
@@ -3253,6 +3352,126 @@
       "from": "component:page",
       "relation": "establishes",
       "to": "context:page"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "usesGeometry",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-trigger"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-backdrop"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-popup"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-title"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-description"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-actions"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "ownsPart",
+      "to": "part:dialog-close"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:dialog",
+      "relation": "allowedIn",
+      "to": "context:group"
     },
     {
       "from": "component:field",

@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "44d6f1add72efe37fe80e441083e4abf6565f0c25233a4af14e2ee7ee03be2cc"
+      "sha256": "bdf38264568c59b5848dc2ffebed5d20b15e316703586b6980f6ef9411ee74fd"
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "46a2cda290153b16bacd58efb2968b7eea156561324a5299e9be531d1c4da834"
+      "sha256": "5b2a72954fd1df2e463a576378e98f5c1f92e516538df8c308c88a827a8dea4b"
     },
     {
       "path": "components/container/container.manifest.json",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/geometry.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts"

@@ -1,0 +1,34 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "dialog",
+  "title": "Dialog",
+  "summary": "A window over the page: a trigger, a backdrop and a popup with a title, a description, content and actions.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Trigger, title, description and actions",
+      "subject": "component:dialog",
+      "markup": "<ui-dialog label=\"Rename file\" description=\"The name shows in shared links.\"><ui-button data-part=\"trigger\">Rename…</ui-button><ui-input label=\"Name\" value=\"Report\" autofocus></ui-input><div data-part=\"actions\"><ui-button data-part=\"close\">Cancel</ui-button><ui-button data-part=\"close\" variant=\"primary\">Rename</ui-button></div></ui-dialog>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts written out",
+      "subject": "component:dialog",
+      "markup": "<ui-dialog><ui-button data-part=\"trigger\">Open</ui-button><div data-part=\"backdrop\"></div><div data-part=\"popup\"><h2 data-part=\"title\">Settings</h2><p data-part=\"description\">Changes apply at once.</p><div data-part=\"actions\"><ui-button data-part=\"close\">Done</ui-button></div></div></ui-dialog>"
+    },
+    {
+      "id": "nested",
+      "label": "A nested dialog",
+      "subject": "component:dialog",
+      "markup": "<ui-dialog label=\"Workspace\"><ui-button data-part=\"trigger\">Settings</ui-button><div data-part=\"actions\"><ui-dialog label=\"Reset settings?\"><ui-button data-part=\"trigger\">Reset…</ui-button><div data-part=\"actions\"><ui-button data-part=\"close\">Cancel</ui-button><ui-button data-part=\"close\" variant=\"primary\">Reset</ui-button></div></ui-dialog><ui-button data-part=\"close\">Done</ui-button></div></ui-dialog>"
+    },
+    {
+      "id": "non-modal",
+      "label": "Not modal",
+      "subject": "component:dialog",
+      "markup": "<ui-dialog modal=\"false\" label=\"Shortcuts\"><ui-button data-part=\"trigger\">Shortcuts</ui-button><p>⌘K search</p><div data-part=\"actions\"><ui-button data-part=\"close\">Close</ui-button></div></ui-dialog>"
+    }
+  ]
+}

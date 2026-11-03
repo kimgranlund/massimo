@@ -21,6 +21,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/dialog/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -38,6 +39,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
+  ['overlays', 'Overlays', 'ui-dialog'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -195,6 +197,9 @@ const panelText = css({ color: 'fg.muted', textStyle: 'body' });
 const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
 const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
+// Overlay specimens: dialog content (a field column, an action row of triggers).
+const dialogBody = css({ display: 'flex', flexDirection: 'column', gap: '3' });
+
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
 
@@ -209,6 +214,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
+    overlays: 'A dialog popup is a card-xl container in the top layer: 6u padding inside the border, radius = padding (corner scale lowers it), parts 2u apart, 96u wide within a 4u viewport margin, over the bg.backdrop role. Modal by default: page scroll locks, the rest of the page turns inert and focus is trapped; Escape, the backdrop and close parts dismiss it (reasons escape-key, outside-press, close-press) and focus returns to the trigger. It fades and grows in on the reveal intent.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -456,6 +462,42 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <div className={disclosureColumn}>
             <ui-accordion default-value="0"><ui-collapsible label="Details"><p className={panelText}>Panel text starts at the trigger label.</p></ui-collapsible><ui-collapsible label="More" /></ui-accordion>
           </div>
+        </SizeLadder>
+      </>
+    ),
+    overlays: (
+      <>
+        <Row label="Dialog">
+          <ui-dialog label="Rename file" description="The name shows in the sidebar and in shared links.">
+            <ui-button data-part="trigger">Rename…</ui-button>
+            <ui-input label="Name" value="Quarterly report" {...{ autofocus: '' }} />
+            <div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button data-part="close" variant="primary">Rename</ui-button></div>
+          </ui-dialog>
+          <ui-dialog label="Workspace settings" description="Nested: a second dialog opens over this one.">
+            <ui-button data-part="trigger"><i slot="leading" name="gear" />Settings</ui-button>
+            <div className={dialogBody}>
+              <ui-switch checked>Show hidden files</ui-switch>
+              <ui-switch>Compact rows</ui-switch>
+            </div>
+            <div data-part="actions">
+              <ui-dialog label="Reset settings?" description="Every preference returns to its default.">
+                <ui-button data-part="trigger">Reset…</ui-button>
+                <div data-part="actions"><ui-button data-part="close">Cancel</ui-button><ui-button data-part="close" variant="primary">Reset</ui-button></div>
+              </ui-dialog>
+              <ui-button data-part="close" variant="primary">Done</ui-button>
+            </div>
+          </ui-dialog>
+          <ui-dialog modal="false" label="Keyboard shortcuts" description="Not modal: the page stays interactive; focus leaving closes it.">
+            <ui-button data-part="trigger">Shortcuts</ui-button>
+            <p className={panelText}>⌘K search · ⌘S save · ⌘/ this list</p>
+            <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
+          </ui-dialog>
+        </Row>
+        <SizeLadder family="dialog" params={params}>
+          <ui-dialog label="Dialog at this size" description="Padding 6u, radius = padding, parts 2u apart.">
+            <ui-button data-part="trigger">Open</ui-button>
+            <div data-part="actions"><ui-button data-part="close">Close</ui-button></div>
+          </ui-dialog>
         </SizeLadder>
       </>
     ),

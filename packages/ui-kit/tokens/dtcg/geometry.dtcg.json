@@ -6373,5 +6373,235 @@
         }
       }
     }
+  },
+  "dialog": {
+    "popup": {
+      "padding": {
+        "$type": "dimension",
+        "$value": {
+          "value": 27,
+          "unit": "px"
+        },
+        "$description": "dialog popup · padding · the border (border role) lives inside it",
+        "$extensions": {
+          "com.massimo.formula": "p·u - B (p = pad-card-xl, 6)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 12,
+            "u=2.25": 13.5,
+            "u=2.5": 15,
+            "u=2.75": 16.5,
+            "u=3": 18,
+            "u=3.5": 21,
+            "u=4": 24,
+            "u=4.5": 27,
+            "u=5": 30,
+            "u=5.5": 33,
+            "u=6": 36,
+            "u=6.5": 39,
+            "u=7": 42,
+            "u=7.5": 45,
+            "u=8": 48,
+            "u=8.5": 51,
+            "u=9": 54,
+            "u=9.5": 57,
+            "u=10": 60,
+            "u=10.5": 63,
+            "u=11": 66,
+            "u=11.5": 69,
+            "u=12": 72
+          }
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 27,
+          "unit": "px"
+        },
+        "$description": "dialog popup · radius · container family: never rounder than its padding",
+        "$extensions": {
+          "com.massimo.formula": "p·u × min(1, s)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 12,
+            "u=2.25": 13.5,
+            "u=2.5": 15,
+            "u=2.75": 16.5,
+            "u=3": 18,
+            "u=3.5": 21,
+            "u=4": 24,
+            "u=4.5": 27,
+            "u=5": 30,
+            "u=5.5": 33,
+            "u=6": 36,
+            "u=6.5": 39,
+            "u=7": 42,
+            "u=7.5": 45,
+            "u=8": 48,
+            "u=8.5": 51,
+            "u=9": 54,
+            "u=9.5": 57,
+            "u=10": 60,
+            "u=10.5": 63,
+            "u=11": 66,
+            "u=11.5": 69,
+            "u=12": 72
+          }
+        }
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9,
+          "unit": "px"
+        },
+        "$description": "dialog popup · gap between parts · title, description, content, actions",
+        "$extensions": {
+          "com.massimo.formula": "2u (gap-collection; the gap attribute wins)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 4,
+            "u=2.25": 4.5,
+            "u=2.5": 5,
+            "u=2.75": 5.5,
+            "u=3": 6,
+            "u=3.5": 7,
+            "u=4": 8,
+            "u=4.5": 9,
+            "u=5": 10,
+            "u=5.5": 11,
+            "u=6": 12,
+            "u=6.5": 13,
+            "u=7": 14,
+            "u=7.5": 15,
+            "u=8": 16,
+            "u=8.5": 17,
+            "u=9": 18,
+            "u=9.5": 19,
+            "u=10": 20,
+            "u=10.5": 21,
+            "u=11": 22,
+            "u=11.5": 23,
+            "u=12": 24
+          }
+        }
+      },
+      "width": {
+        "$type": "dimension",
+        "$value": {
+          "value": 432,
+          "unit": "px"
+        },
+        "$description": "dialog popup · width · value shown without the viewport cap (24rem at u = 4)",
+        "$extensions": {
+          "com.massimo.formula": "min(96u, viewport - 8u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 192,
+            "u=2.25": 216,
+            "u=2.5": 240,
+            "u=2.75": 264,
+            "u=3": 288,
+            "u=3.5": 336,
+            "u=4": 384,
+            "u=4.5": 432,
+            "u=5": 480,
+            "u=5.5": 528,
+            "u=6": 576,
+            "u=6.5": 624,
+            "u=7": 672,
+            "u=7.5": 720,
+            "u=8": 768,
+            "u=8.5": 816,
+            "u=9": 864,
+            "u=9.5": 912,
+            "u=10": 960,
+            "u=10.5": 1008,
+            "u=11": 1056,
+            "u=11.5": 1104,
+            "u=12": 1152
+          }
+        }
+      }
+    },
+    "actions": {
+      "gap": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9,
+          "unit": "px"
+        },
+        "$description": "dialog actions · gap between actions · at the end edge, wrapping",
+        "$extensions": {
+          "com.massimo.formula": "2u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 4,
+            "u=2.25": 4.5,
+            "u=2.5": 5,
+            "u=2.75": 5.5,
+            "u=3": 6,
+            "u=3.5": 7,
+            "u=4": 8,
+            "u=4.5": 9,
+            "u=5": 10,
+            "u=5.5": 11,
+            "u=6": 12,
+            "u=6.5": 13,
+            "u=7": 14,
+            "u=7.5": 15,
+            "u=8": 16,
+            "u=8.5": 17,
+            "u=9": 18,
+            "u=9.5": 19,
+            "u=10": 20,
+            "u=10.5": 21,
+            "u=11": 22,
+            "u=11.5": 23,
+            "u=12": 24
+          }
+        }
+      }
+    },
+    "viewport": {
+      "margin": {
+        "$type": "dimension",
+        "$value": {
+          "value": 18,
+          "unit": "px"
+        },
+        "$description": "dialog popup · viewport margin · on each side; max height = viewport height - 8u, then the popup scrolls",
+        "$extensions": {
+          "com.massimo.formula": "4u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 8,
+            "u=2.25": 9,
+            "u=2.5": 10,
+            "u=2.75": 11,
+            "u=3": 12,
+            "u=3.5": 14,
+            "u=4": 16,
+            "u=4.5": 18,
+            "u=5": 20,
+            "u=5.5": 22,
+            "u=6": 24,
+            "u=6.5": 26,
+            "u=7": 28,
+            "u=7.5": 30,
+            "u=8": 32,
+            "u=8.5": 34,
+            "u=9": 36,
+            "u=9.5": 38,
+            "u=10": 40,
+            "u=10.5": 42,
+            "u=11": 44,
+            "u=11.5": 46,
+            "u=12": 48
+          }
+        }
+      }
+    }
   }
 }

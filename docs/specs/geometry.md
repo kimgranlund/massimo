@@ -80,6 +80,15 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
 | tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
+## Dialogs: dialog
+
+| | Formula | at u=4 |
+|---|---|---|
+| popup | a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u) inside a B edge, radius p·u × min(1, s) (`resolveDialog`) | 24 / 24 |
+| parts | title, description, content and the actions row 2u apart (the collection gap; the `gap` attribute on the host wins); actions 2u apart at the end edge | 8 / 8 |
+| size | width min(96u, viewport − 8u), centered; max height viewport − 8u, then the popup scrolls | 384 / 16 |
+| backdrop | the whole viewport, `bg.backdrop` | |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.
