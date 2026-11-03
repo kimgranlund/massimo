@@ -275,8 +275,20 @@ test('form: the collection gap (2u; theme gapUnits and the gap attribute win), n
 
 // Scroll area (geometry:scroll-area).
 import { resolveScrollArea } from '../tokens/geometry/resolve.ts';
+import { resolveCombobox } from '../tokens/geometry/resolve.ts';
 test('scroll area: a 2u track, the thumb u thick 0.5u inside it, at least 4u long, pill radii, a 2u corner', () => {
   assert.deepEqual(resolveScrollArea({ unit: 4 }), { unit: 4, thickness: 8, inset: 2, thumb: 4, thumbMin: 16, trackRadius: 4, thumbRadius: 2, corner: 8 });
   assert.equal(resolveScrollArea({ unit: 4, radiusScale: 0 }).thumbRadius, 0);
   assert.equal(resolveScrollArea({ unit: 6, radiusScale: 0.1 }).thumbRadius, 1.8);
+});
+
+test('combobox: the select trigger row with 6u clear and trigger slots, 6u chips that wrap, the composite popup', () => {
+  const g = resolveCombobox({ unit: 4, border: 1 });
+  assert.deepEqual([g.height, g.padding, g.inputStart, g.inputEnd, g.inputBareEnd, g.triggerSlot, g.triggerIcon, g.clearSlot], [32, 3, 8, 4, 8, 24, 12, 24]);
+  assert.deepEqual([g.chipHeight, g.chipRadius, g.chipLabelStart, g.chipRemove, g.chipGap, g.rowGap, g.afterChip], [24, 8, 4, 24, 2, 2, 2]);
+  assert.equal(g.rowHeight(1), 32);
+  assert.equal(g.rowHeight(2), 58, '8u + a 6u chip line + 0.5u');
+  assert.deepEqual([g.popupOffset, g.popupEdge, g.optionHeight, g.emptyInline, g.emptyHeight], [4, 2, 28, 10, 28]);
+  assert.equal(resolveCombobox({ unit: 4, border: 0 }).height, 32, 'the row is 8u at any B');
+  assert.equal(resolveCombobox({ unit: 2, radiusScale: 0 }).chipRadius, 0);
 });

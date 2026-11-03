@@ -595,3 +595,29 @@ export function resolveOtpField(input: GeometryInput = {}) {
     separatorWidth: 2 * u, separatorThickness: 0.5 * u, separatorRadius: 0.25 * u,
   };
 }
+
+/**
+ * ui-combobox, ui-autocomplete: the input row is the select trigger's control row (8u, pad u − B)
+ * with the editable text as its contents: 2u at a bare edge, 1u beside a slot (the trailing
+ * trigger, the clear button), 1u after the last chip (0.5u chip gap + 0.5u). The trigger and clear
+ * buttons are 6u slots holding an sm icon (caret-down, x). Chips (multiple) are slot-sized (6u) and
+ * nest in the row: radius min(3u, control radius − u), label 1u from the chip's start edge, a 6u
+ * remove square at its end, 0.5u apart; the row wraps onto further lines 0.5u apart, so it grows
+ * from 8u by 6.5u a line. The popup is the select's: a composite list 1u from the row; the empty
+ * state sits where an option's label would (inset Ic + 2u, one option row tall).
+ */
+export function resolveCombobox(input: GeometryInput = {}) {
+  const t = resolveSelectTrigger(input), k = resolveComposite(input);
+  const u = t.unit;
+  const chipHeight = t.slot;
+  return {
+    ...t,
+    inputStart: t.contentsStart, inputEnd: t.contentsEnd, inputBareEnd: 2 * u, afterChip: 0.5 * u,
+    triggerSlot: t.slot, triggerIcon: t.chevronIcon, clearSlot: t.slot, clearIcon: t.chevronIcon,
+    chipHeight, chipRadius: Math.min(chipHeight / 2, Math.max(0, t.radius - u)), chipLabelStart: u, chipRemove: chipHeight, chipGap: 0.5 * u, rowGap: 0.5 * u,
+    /** The row's height with chips on `lines` lines. */
+    rowHeight: (lines: number) => t.height + (lines - 1) * (chipHeight + 0.5 * u),
+    popupOffset: u, popupEdge: k.edge, popupPadding: k.padding, popupRadius: k.radius, optionHeight: k.child.height,
+    emptyInline: k.child.inset + 2 * u, emptyHeight: k.child.height,
+  };
+}

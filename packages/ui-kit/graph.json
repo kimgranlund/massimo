@@ -14,6 +14,20 @@
         "disclosure group"
       ]
     },
+    "component:autocomplete": {
+      "kind": "component",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-autocomplete",
+      "searchTerms": [
+        "autocomplete",
+        "typeahead",
+        "suggestions",
+        "search input",
+        "inline completion",
+        "autosuggest"
+      ]
+    },
     "component:avatar": {
       "kind": "component",
       "source": "components/avatar/avatar.manifest.json#/nodes/0",
@@ -133,6 +147,21 @@
         "collection container",
         "container",
         "layout"
+      ]
+    },
+    "component:combobox": {
+      "kind": "component",
+      "source": "components/combobox/combobox.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-combobox",
+      "searchTerms": [
+        "combobox",
+        "filter select",
+        "searchable select",
+        "typeahead select",
+        "multi select",
+        "chips input",
+        "tag picker"
       ]
     },
     "component:field": {
@@ -912,7 +941,10 @@
         "field geometry",
         "input padding",
         "select trigger",
-        "chevron"
+        "chevron",
+        "combobox chips",
+        "combobox trigger",
+        "autocomplete input"
       ]
     },
     "geometry:field-row": {
@@ -1057,6 +1089,69 @@
         "accordion item"
       ]
     },
+    "part:autocomplete-clear": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "autocomplete clear"
+      ]
+    },
+    "part:autocomplete-control": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete control"
+      ]
+    },
+    "part:autocomplete-empty": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete empty"
+      ]
+    },
+    "part:autocomplete-input": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete input"
+      ]
+    },
+    "part:autocomplete-list": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete list"
+      ]
+    },
+    "part:autocomplete-popup": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "autocomplete popup"
+      ]
+    },
+    "part:autocomplete-trigger": {
+      "kind": "part",
+      "source": "components/autocomplete/autocomplete.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "autocomplete trigger"
+      ]
+    },
     "part:avatar-fallback": {
       "kind": "part",
       "source": "components/avatar/avatar.manifest.json#/nodes/2",
@@ -1109,6 +1204,96 @@
       "tag": "div",
       "searchTerms": [
         "collapsible trigger"
+      ]
+    },
+    "part:combobox-chip": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "combobox chip"
+      ]
+    },
+    "part:combobox-chip-remove": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "combobox chip remove"
+      ]
+    },
+    "part:combobox-chips": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "combobox chips"
+      ]
+    },
+    "part:combobox-clear": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "combobox clear"
+      ]
+    },
+    "part:combobox-control": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox control"
+      ]
+    },
+    "part:combobox-empty": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/10",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox empty"
+      ]
+    },
+    "part:combobox-input": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox input"
+      ]
+    },
+    "part:combobox-list": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/9",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox list"
+      ]
+    },
+    "part:combobox-popup": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/8",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "combobox popup"
+      ]
+    },
+    "part:combobox-trigger": {
+      "kind": "part",
+      "source": "components/combobox/combobox.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "combobox trigger"
       ]
     },
     "part:field-description": {
@@ -1800,6 +1985,186 @@
       "from": "component:accordion",
       "relation": "uses",
       "to": "component:collapsible"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-control"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-input"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-clear"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-trigger"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-popup"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-list"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-empty"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "uses",
+      "to": "foundation:modality"
     },
     {
       "from": "component:avatar",
@@ -3203,6 +3568,201 @@
     },
     {
       "from": "component:palette",
+      "relation": "uses",
+      "to": "foundation:modality"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-control"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-chips"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-chip"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-chip-remove"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-input"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-clear"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-trigger"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-popup"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-list"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:combobox-empty"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:combobox",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:combobox",
       "relation": "uses",
       "to": "foundation:modality"
     },

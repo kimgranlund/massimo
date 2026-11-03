@@ -1,0 +1,29 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "combobox",
+  "title": "Combobox",
+  "summary": "Editable combobox: type to filter a list of options.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Filter and pick",
+      "subject": "component:combobox",
+      "markup": "<ui-combobox label=\"Country\" name=\"country\" placeholder=\"Search…\"><ui-option value=\"ca\">Canada</ui-option><ui-option value=\"fi\">Finland</ui-option><ui-option value=\"jp\">Japan</ui-option><ui-option value=\"no\">Norway</ui-option></ui-combobox>"
+    },
+    {
+      "id": "multiple",
+      "label": "Multiple, with chips",
+      "subject": "component:combobox",
+      "markup": "<ui-combobox label=\"Labels\" multiple value=\"bug,docs\"><ui-option value=\"bug\">Bug</ui-option><ui-option value=\"docs\">Docs</ui-option><ui-option value=\"ui\">UI</ui-option><ui-option value=\"perf\">Performance</ui-option></ui-combobox>",
+      "note": "Each value is a chip; Backspace in the empty input removes the last one."
+    },
+    {
+      "id": "adornments",
+      "label": "Leading icon, empty text",
+      "subject": "component:combobox",
+      "markup": "<ui-combobox label=\"Assignee\" empty-text=\"Nobody by that name.\" auto-highlight><i slot=\"leading\" name=\"user\"></i><ui-option value=\"ada\">Ada Lovelace</ui-option><ui-option value=\"alan\">Alan Turing</ui-option><ui-option value=\"grace\" disabled>Grace Hopper</ui-option></ui-combobox>"
+    }
+  ]
+}

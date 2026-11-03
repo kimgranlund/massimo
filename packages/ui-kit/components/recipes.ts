@@ -28,7 +28,9 @@ import { form } from './form/form.recipe.ts';
 import { scrollArea } from './scroll-area/scroll-area.recipe.ts';
 import { numberField } from './number-field/number-field.recipe.ts';
 import { otpField } from './otp-field/otp-field.recipe.ts';
+import { combobox, autocomplete } from './combobox/combobox.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, group, collection, card, panel, region, pageRecipe, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete };
+
 
 

@@ -160,7 +160,7 @@
       "reason": "Form participation goes through UIFormElement; tests enforce it."
     },
     {
-      "rule": "ui-option only as a direct child of ui-listbox, ui-segmented or ui-select.",
+      "rule": "ui-option only as a direct child of ui-listbox, ui-segmented, ui-select, ui-combobox or ui-autocomplete.",
       "reason": "The owning list sets role, id and selection state."
     },
     {

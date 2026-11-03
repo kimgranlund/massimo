@@ -7,6 +7,7 @@ import { page as pageLayout } from '../../styled-system/patterns/index.js';
 import { resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { resolveNumberField } from '@massimo/ui-kit/tokens';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
+import { resolveCombobox } from '@massimo/ui-kit/tokens';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';
@@ -104,8 +105,8 @@ const LADDER_METRICS: Record<LadderFamily, (g: Live) => string[]> = {
     return [`h ${px(b.height)} · ${px(t.height)} · ${px(c.height)}`, `text ${px(b.fontSize)} · ${px(t.fontSize)} · ${px(c.fontSize)}`];
   },
   field: (g) => {
-    const f = resolveField(g);
-    return [`h ${px(f.height)} · text inset ${px(f.paddingStart)}`, `text ${px(f.fontSize)} · r ${px(f.radius)}`];
+    const f = resolveField(g), cb = resolveCombobox(g);
+    return [`h ${px(f.height)} · text inset ${px(f.paddingStart)}`, `text ${px(f.fontSize)} · r ${px(f.radius)}`, `chip ${px(cb.chipHeight)} · r ${px(cb.chipRadius)} · line +${px(cb.rowHeight(2) - cb.rowHeight(1))}`];
   },
   choice: (g) => {
     const [cb, sw] = [resolveChoice('checkbox', g), resolveChoice('switch', g)];

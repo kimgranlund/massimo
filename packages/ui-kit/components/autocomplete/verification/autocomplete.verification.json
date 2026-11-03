@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "autocomplete",
+  "scope": "Behavior, ARIA, filtering, inline completion, events and state attributes of the web component in happy-dom (node:test), and the React renderer's server markup and composed parts. Rendered lengths are covered by the browser geometry check and the React parity check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/autocomplete/autocomplete.element.ts",
+      "sha256": "39cdb0a136d6a2b2d832272e43f0b424085f198fa69f42d77ba602c57369123c"
+    },
+    {
+      "path": "components/autocomplete/autocomplete.react.tsx",
+      "sha256": "41e6c3670f0a2b7f9fce194e718a52c909d7efac79bf26dbdccf9092a4a22c0c"
+    },
+    {
+      "path": "components/autocomplete/autocomplete.manifest.json",
+      "sha256": "2f2aa57803f4bf09c03f1ca057c9d7d803515cb30e792594b66e38376aa73cd1"
+    },
+    {
+      "path": "components/combobox/combobox.element.ts",
+      "sha256": "88c91c75496e8994bf16f28a6c18956e17d9869a02779f35933a81379f960625"
+    },
+    {
+      "path": "components/combobox/combobox.react.tsx",
+      "sha256": "c994efe807581ecb0bbe73b2a9bb911e0a804932cd6c5a2d8eb21196cc7a2ec7"
+    },
+    {
+      "path": "components/combobox/combobox.recipe.ts",
+      "sha256": "4512add055b8610ca28aedcb078dd3aecf3e6d09c4b80905cd8e3b5e106f2099"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"ui-autocomplete\" test/combobox.test.ts",
+          "covers": "anatomy without chips or trigger, free text as the value and form value, filtering, highlight and commit, no selected suggestion, inline completion (both, inline; not on deletion), arrows writing the suggestion, clear, show-trigger, required, change on blur, Enter submitting with no highlight, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"combobox\" test/geometry.test.ts",
+          "covers": "resolveCombobox: the row, the bare and slot input ends, the clear and trigger slots, popup and empty state"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"ui-autocomplete\" test/combobox.test.ts",
+          "node --test --test-name-pattern=\"combobox\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Autocomplete\" test/combobox.test.ts",
+          "covers": "React SSR: the same data-* and recipe classes as the web component on host, input, clear, popup, list and items; aria-autocomplete from mode; the composed parts render the preset"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Autocomplete\" test/combobox.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The inline completion's selection is checked in happy-dom (window.getSelection); caret behavior across engines is not certified.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []).",
+    "Geometry review, manual items (2026-11-02, studio at u = 2, 4, the theme unit 4.5 and 6, B = 0 and 1, light and dark): growth (long text scrolls inside the input and never pushes the clear or trigger slot; the row stays 8u; slots keep 6u at u = 2; without the trigger the text ends 2u from the bare edge, 1u before the clear slot), RTL (dir=rtl mirrors the row: leading on the right, clear on the left; suggestions align right; the popup aligns to the row's start), focus (the 2px ring sits outside the row on :focus-within, so it never changes the row's size; clear and trigger are not tab stops), inline completion seen in the browser (the typed prefix, the completed rest selected), screenshots of the Selection family and open list, inline and RTL popups checked light and dark."
+  ]
+}

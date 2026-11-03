@@ -30,6 +30,8 @@ import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
+import '@massimo/ui-kit/components/combobox/element';
+import '@massimo/ui-kit/components/autocomplete/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -56,6 +58,8 @@ import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
 import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Form } from '@massimo/ui-kit/components/form/react';
 import { ScrollArea } from '@massimo/ui-kit/components/scroll-area/react';
+import { Combobox } from '@massimo/ui-kit/components/combobox/react';
+import { Autocomplete } from '@massimo/ui-kit/components/autocomplete/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
@@ -99,6 +103,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><ui-number-field data-k="nfD" label="Off" value={3} disabled locale="en-US"><span slot="suffix">kg</span></ui-number-field></div>
         <ui-otp-field data-k="otp" length={4} value="12" label="Code" />
         <ui-otp-field data-k="otpD" length={3} value="123" disabled />
+        <div style={{ width: 300 }} data-k="cmb"><ui-combobox label="Fruit" value="b" description="Pick one"><i slot="leading" name="leaf" /><ui-option value="a">Apple</ui-option><ui-option value="b">Banana</ui-option></ui-combobox></div>
+        <div style={{ width: 300 }} data-k="acp"><ui-autocomplete label="City" value="Os" mode="both" show-trigger><i slot="leading" name="map-pin" /><ui-option>Oslo</ui-option><ui-option>Osaka</ui-option></ui-autocomplete></div>
+        <div style={{ width: 220 }} data-k="cmbM"><ui-combobox multiple value="a,b,c" placeholder="Add"><ui-option value="a">Apple</ui-option><ui-option value="b">Banana</ui-option><ui-option value="c">Cherry</ui-option></ui-combobox></div>
         <ui-checkbox data-k="cb">Accept</ui-checkbox>
         <ui-checkbox data-k="cbOn" checked>Accept</ui-checkbox>
         <ui-checkbox data-k="cbMixed" indeterminate>Some</ui-checkbox>
@@ -163,6 +170,9 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 300 }}><NumberField data-k="nfD" label="Off" defaultValue={3} disabled locale="en-US" suffix="kg" /></div>
         <OTPField data-k="otp" length={4} defaultValue="12" label="Code" />
         <OTPField data-k="otpD" length={3} defaultValue="123" disabled />
+        <div style={{ width: 300 }} data-k="cmb"><Combobox label="Fruit" defaultValue="b" description="Pick one" leading={<i name="leaf" />}><Combobox.Item value="a">Apple</Combobox.Item><Combobox.Item value="b">Banana</Combobox.Item></Combobox></div>
+        <div style={{ width: 300 }} data-k="acp"><Autocomplete label="City" defaultValue="Os" mode="both" showTrigger leading={<i name="map-pin" />}><Autocomplete.Item value="Oslo">Oslo</Autocomplete.Item><Autocomplete.Item value="Osaka">Osaka</Autocomplete.Item></Autocomplete></div>
+        <div style={{ width: 220 }} data-k="cmbM"><Combobox multiple defaultValue={['a', 'b', 'c']} placeholder="Add"><Combobox.Item value="a">Apple</Combobox.Item><Combobox.Item value="b">Banana</Combobox.Item><Combobox.Item value="c">Cherry</Combobox.Item></Combobox></div>
         <Checkbox data-k="cb">Accept</Checkbox>
         <Checkbox data-k="cbOn" defaultChecked>Accept</Checkbox>
         <Checkbox data-k="cbMixed" indeterminate>Some</Checkbox>
@@ -461,6 +471,30 @@ setTimeout(() => {
         if (!same(a[key], b[key])) fails.push(`u${c.getAttribute('data-case')} tst[${i}].${key}: wc ${a[key]} react ${b[key]}`);
       }
     });
+  }
+
+  // Combobox: the same parts, geometry and data-* (the React input is a native <input>).
+  for (const c of root.querySelectorAll('[data-case]')) {
+    for (const k of ['cmb', 'cmbM', 'acp']) {
+      const wc = c.querySelector(`[data-side=wc] [data-k=${k}] :is(ui-combobox, ui-autocomplete)`) as HTMLElement, re = c.querySelector(`[data-side=react] [data-k=${k}] :is([data-ui=combobox], [data-ui=autocomplete])`) as HTMLElement;
+      const CTL = ':scope > [data-part=control]';
+      const sels = [':scope', ':scope > [data-part=label]', CTL, `${CTL} > [data-part=leading]`, `${CTL} > [data-part=input]`, `${CTL} > [data-part=clear]`, `${CTL} > [data-part=trigger]`, ':scope > [data-part=description]', ...[1, 2, 3].map((n) => `${CTL} > [data-part=chips] > [data-part=chip]:nth-child(${n})`), `${CTL} > [data-part=chips] > [data-part=chip] > [data-part=chip-remove]`];
+      // The closed popups have no box: their state only.
+      for (const sel of [':scope > [data-part=popup]', ':scope > [data-part=popup] > [data-part=list]', ':scope > [data-part=popup] [role=option]']) {
+        const sa = [...wc.querySelectorAll(sel)].map(stateOf).join('|'), sb = [...re.querySelectorAll(sel)].map(stateOf).join('|');
+        checks++;
+        if (sa !== sb) fails.push(`u${c.getAttribute('data-case')} ${k}${sel.replace(':scope', '')} data-*: wc ${sa} react ${sb}`);
+      }
+      for (const sel of sels) {
+        const pick = (h: Element) => { const e = sel === ':scope' ? h : h.querySelector(sel); return e && !(e as HTMLElement).hidden ? e : null; };
+        const ea = pick(wc), eb = pick(re);
+        const fa = (e: Element | null, h: Element) => { if (!e) return 'missing'; const r = e.getBoundingClientRect(), hr = h.getBoundingClientRect(), cs = getComputedStyle(e); return `${r2(r.left - hr.left)}:${r2(r.top - hr.top)}:${r2(r.width)}x${r2(r.height)}:${cs.backgroundColor}:${cs.borderTopLeftRadius}:${cs.paddingLeft}:${cs.paddingRight}:${cs.color}:${cs.fontSize}:${stateOf(e)}`; };
+        checks++;
+        const va = fa(ea, wc), vb = fa(eb, re);
+        // The editable text's width follows its content box: compare the input's box, not its text.
+        if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}${sel.replace(':scope', '')}: wc ${va} react ${vb}`);
+      }
+    }
   }
   // Input: same parts; the React control holds a native <input> as its contents part.
   for (const c of root.querySelectorAll('[data-case]')) {

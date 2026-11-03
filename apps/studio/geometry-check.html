@@ -32,6 +32,9 @@ import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
 import { resolveNumberField } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/combobox/element';
+import '@massimo/ui-kit/components/autocomplete/element';
+import { resolveCombobox } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -55,7 +58,11 @@ const precision = (() => {
   p.remove();
   return { font, layout: unit > 1 / 64 + 1e-6 ? 2 * unit + 0.001 : 0 };
 })();
-const tolerance = (k, want) => Math.max(0.02, precision.layout,
+// A gap measured between two text line boxes (the meter's label row and its track) takes both edges'
+// snapping: up to one layout unit each (1/64px; 1/60px in Gecko, which also snaps the font size), so
+// two units and a rounding step where the line height is fractional (u ≥ 11.5).
+const SNAPPED_PAIR = /^meter\.(rowGap|height)$/;
+const tolerance = (k, want) => Math.max(0.02, precision.layout, SNAPPED_PAIR.test(k) ? Math.max(2 / 64, precision.layout) + 0.01 : 0,
   precision.font && /^type\..*\.size$|\.font$/.test(k) ? 2 ** (Math.floor(Math.log2(want)) - 10) + 0.01 : 0);
 let total = 0;
 for (const c of cases) {
@@ -105,6 +112,12 @@ for (const c of cases) {
     <div style="width:${100 * c.unit}px"><ui-toast-viewport id="toastV" placement="inline" timeout="0"></ui-toast-viewport></div><ui-toast-viewport id="toastF" timeout="0"></ui-toast-viewport>
     <div style="width:${40 * c.unit}px"><ui-number-field id="numF" label="N" value="12"></ui-number-field><ui-number-field id="numS" label="S" value="3"><span slot="prefix">$</span><span slot="suffix">kg</span></ui-number-field></div>
     <ui-otp-field id="otp" value="12"><div data-part="input"></div><div data-part="input"></div><div data-part="separator"></div><div data-part="input"></div></ui-otp-field>
+    <div style="width:${100 * c.unit}px"><ui-combobox id="cbS" label="C" value="a"><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option></ui-combobox>
+      <ui-combobox id="cbM" multiple value="a,b"><span slot="leading"></span><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option><ui-option value="c">Gamma</ui-option></ui-combobox>
+</div>
+    <div style="width:${60 * c.unit}px"><ui-autocomplete id="acBare"><ui-option>Alpha</ui-option></ui-autocomplete><ui-autocomplete id="acClear" value="Al" show-trigger><span slot="leading"></span><ui-option>Alpha</ui-option></ui-autocomplete></div>
+    <div id="cbEBox" style="width:${60 * c.unit}px"><ui-combobox id="cbE"><ui-option value="a">Alpha</ui-option></ui-combobox></div>
+    <div style="width:${40 * c.unit}px"><ui-combobox id="cbW" multiple value="a,b,c,d"><ui-option value="a">Alpha</ui-option><ui-option value="b">Bravo</ui-option><ui-option value="c">Charlie</ui-option><ui-option value="d">Delta</ui-option></ui-combobox></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -583,6 +596,66 @@ for (const c of cases) {
     checks['otpField.separator.gap'] = [r2(rect(sep).left - rect(c1).right), ro.gap];
     checks['otpField.separator.gapEnd'] = [r2(rect(c2).left - rect(sep).right), ro.gap];
     checks['otpField.height'] = [r2(rect(otp).height), ro.cell];
+  }
+  {
+    // Combobox (resolveCombobox): the select trigger row with the editable text, 6u clear and
+    // trigger slots, 6u chips that wrap the row, the composite popup and its empty state.
+    const rcb = resolveCombobox(g), ctlOf = (id) => part($(id), 'control'), inOf = (id) => part(ctlOf(id), 'input');
+    const s = ctlOf('cbS'), si = inOf('cbS');
+    checks['combobox.height'] = [r2(rect(s).height), rcb.height];
+    checks['combobox.padding'] = [px(cs(s).paddingLeft) + px(cs(s).borderLeftWidth), rcb.padding + rcb.border];
+    checks['combobox.paddingEnd'] = [px(cs(s).paddingRight), rcb.paddingEnd];
+    checks['combobox.input.start'] = [px(cs(si).paddingLeft), rcb.inputStart];
+    checks['combobox.input.end'] = [px(cs(si).paddingRight), rcb.inputEnd];
+    checks['combobox.input.lineHeight'] = [px(cs(si).lineHeight), r2(ctl.contents.lineHeight)];
+    checks['combobox.clear.slot'] = [r2(rect(part(s, 'clear')).width), rcb.clearSlot];
+    checks['combobox.trigger.slot'] = [r2(rect(part(s, 'trigger')).width), rcb.triggerSlot];
+    checks['combobox.trigger.icon'] = [r2(rect(part(s, 'trigger').firstElementChild).width), rcb.triggerIcon];
+    checks['combobox.radius'] = [px(cs(s).borderTopLeftRadius), rcb.radius];
+    // Autocomplete: the same row; no trigger and no text: the input ends 2u from the bare edge.
+    const ab = ctlOf('acBare'), ac = ctlOf('acClear');
+    checks['autocomplete.height'] = [r2(rect(ab).height), rcb.height];
+    checks['autocomplete.input.bare'] = [px(cs(inOf('acBare')).paddingRight), rcb.inputBareEnd];
+    checks['autocomplete.input.start'] = [px(cs(inOf('acBare')).paddingLeft), rcb.inputStart];
+    checks['autocomplete.input.afterSlot'] = [px(cs(inOf('acClear')).paddingLeft), rcb.contentsEnd];
+    checks['autocomplete.input.end'] = [px(cs(inOf('acClear')).paddingRight), rcb.inputEnd];
+    checks['autocomplete.trigger.slot'] = [r2(rect(part(ac, 'trigger')).width), rcb.triggerSlot];
+    checks['autocomplete.height.slots'] = [r2(rect(ac).height), rcb.height];
+    const m = ctlOf('cbM'), chips = [...m.querySelectorAll('[data-part=chip]')], mi = inOf('cbM');
+    checks['combobox.multiple.height'] = [r2(rect(m).height), rcb.rowHeight(1)];
+    checks['combobox.chip.height'] = [r2(rect(chips[0]).height), rcb.chipHeight];
+    checks['combobox.chip.radius'] = [px(cs(chips[0]).borderTopLeftRadius), r2(rcb.chipRadius)];
+    checks['combobox.chip.label'] = [px(cs(chips[0]).paddingLeft), rcb.chipLabelStart];
+    checks['combobox.chip.remove'] = [r2(rect(part(chips[0], 'chip-remove')).width), rcb.chipRemove];
+    checks['combobox.chip.gap'] = [r2(rect(chips[1]).left - rect(chips[0]).right), rcb.chipGap];
+    checks['combobox.chip.afterSlot'] = [r2(rect(chips[0]).left - rect(part(m, 'leading')).right), rcb.chipGap];
+    checks['combobox.chip.toInput'] = [r2(rect(mi).left - rect(chips[1]).right + px(cs(mi).paddingLeft)), rcb.chipGap + rcb.afterChip];
+    const w = ctlOf('cbW'), lines = new Set([...w.querySelectorAll('[data-part=chip]'), inOf('cbW'), part(w, 'clear'), part(w, 'trigger')].map((el) => Math.round(rect(el).top))).size;
+    checks['combobox.wrap.lines'] = [lines > 1 ? 1 : 0, 1];
+    checks['combobox.wrap.height'] = [r2(rect(w).height), r2(rcb.rowHeight(lines))];
+    checks['combobox.wrap.trigger'] = [r2(rect(part(w, 'trigger')).top - rect(w.querySelector('[data-part=chip]')).top), 0];
+    checks['combobox.wrap.triggerEnd'] = [r2(rect(w).right - rect(part(w, 'trigger')).right), rcb.padding + rcb.border];
+    const e = $('cbE');
+    // Room below: the popup opens on its preferred side (bottom), 1u from the row.
+    const eBox = $('cbEBox');
+    eBox.style.cssText += ';position:fixed;top:0;left:0';
+    part(e, 'popup').style.transition = 'none'; // the reveal scales from 0.97
+    e.query.value = 'zzz'; e.open = true;
+    await new Promise((r) => setTimeout(r, 30));
+    const pop = part(e, 'popup'), emp = part(pop, 'empty'), ec = ctlOf('cbE');
+    checks['combobox.popup.side'] = [pop.getAttribute('data-side') === 'bottom' ? 1 : 0, 1];
+    checks['combobox.popup.offset'] = [r2(rect(pop).top - rect(ec).bottom), rcb.popupOffset];
+    checks['combobox.popup.minWidth'] = [r2(rect(pop).width), r2(rect(ec).width)];
+    checks['combobox.popup.edge'] = [px(cs(pop).paddingTop) + px(cs(pop).borderTopWidth), rcb.popupEdge];
+    checks['combobox.empty.inline'] = [px(cs(emp).paddingLeft), rcb.emptyInline];
+    checks['combobox.empty.height'] = [r2(rect(emp).height), rcb.emptyHeight];
+    e.open = false;
+    e.query.value = null; e.open = true;
+    await new Promise((r) => setTimeout(r, 30));
+    checks['combobox.option.height'] = [r2(rect(e.querySelector('ui-option')).height), rcb.optionHeight];
+    e.open = false;
+    eBox.style.position = 'static';
+    await new Promise((r) => setTimeout(r, 0));
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

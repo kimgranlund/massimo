@@ -70,7 +70,11 @@
     "./components/number-field/element": "./components/number-field/number-field.element.ts",
     "./components/number-field/react": "./components/number-field/number-field.react.tsx",
     "./components/otp-field/element": "./components/otp-field/otp-field.element.ts",
-    "./components/otp-field/react": "./components/otp-field/otp-field.react.tsx"
+    "./components/otp-field/react": "./components/otp-field/otp-field.react.tsx",
+    "./components/combobox/element": "./components/combobox/combobox.element.ts",
+    "./components/combobox/react": "./components/combobox/combobox.react.tsx",
+    "./components/autocomplete/element": "./components/autocomplete/autocomplete.element.ts",
+    "./components/autocomplete/react": "./components/autocomplete/autocomplete.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

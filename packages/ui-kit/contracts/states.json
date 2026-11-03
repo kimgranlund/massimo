@@ -79,7 +79,7 @@
     "data-popup-open": {
       "baseUi": true,
       "condition": "_popupOpen",
-      "meaning": "The select trigger's popup is open."
+      "meaning": "The select trigger's popup is open; the combobox input and trigger while its popup is open."
     },
     "data-placeholder": {
       "baseUi": true,
@@ -256,6 +256,16 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The number field's scrub area is being dragged (Base UI NumberField; host and scrub area)."
+    },
+    "data-empty": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The combobox popup and list while no option matches the text (Base UI Combobox.Popup / List)."
+    },
+    "data-list-empty": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The combobox input while no option matches its text (Base UI Combobox.Input)."
     }
   },
   "components": {
@@ -705,6 +715,93 @@
       "separator": [
         "data-orientation"
       ]
+    },
+    "ui-combobox": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "input": [
+        "data-popup-open",
+        "data-list-empty",
+        "data-disabled",
+        "data-readonly"
+      ],
+      "trigger": [
+        "data-popup-open",
+        "data-pressed",
+        "data-disabled"
+      ],
+      "clear": [
+        "data-disabled"
+      ],
+      "chip": [
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-empty"
+      ],
+      "list": [
+        "data-empty"
+      ],
+      "item": [
+        "data-selected",
+        "data-highlighted",
+        "data-disabled"
+      ]
+    },
+    "ui-autocomplete": {
+      "host": [
+        "data-disabled",
+        "data-readonly",
+        "data-required",
+        "data-valid",
+        "data-invalid",
+        "data-dirty",
+        "data-touched",
+        "data-filled",
+        "data-focused"
+      ],
+      "input": [
+        "data-popup-open",
+        "data-list-empty",
+        "data-disabled",
+        "data-readonly"
+      ],
+      "trigger": [
+        "data-popup-open",
+        "data-pressed",
+        "data-disabled"
+      ],
+      "clear": [
+        "data-disabled"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-empty"
+      ],
+      "list": [
+        "data-empty"
+      ],
+      "item": [
+        "data-selected",
+        "data-highlighted",
+        "data-disabled"
+      ]
     }
   },
   "native": {
@@ -733,7 +830,9 @@
         "ui-accordion",
         "ui-toast-viewport",
         "ui-number-field",
-        "ui-otp-field"
+        "ui-otp-field",
+        "ui-combobox",
+        "ui-autocomplete"
       ]
     },
     "keyboard-focus": {
@@ -758,7 +857,9 @@
         "ui-tabs",
         "ui-toast-viewport",
         "ui-number-field",
-        "ui-otp-field"
+        "ui-otp-field",
+        "ui-combobox",
+        "ui-autocomplete"
       ]
     },
     "highlighted": {
@@ -785,11 +886,13 @@
     },
     "open": {
       "hook": "trigger [data-popup-open]; popup [data-open]",
-      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent)",
+      "look": "pressed fill, chevron turned 180° (collapsible: trigger [data-panel-open], panel [data-open]; caret turned 180°, the panel's height grows from 0 on the reveal intent); combobox, autocomplete: trigger [data-popup-open], caret turned 180°",
       "components": [
         "ui-select",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-combobox",
+        "ui-autocomplete"
       ]
     },
     "disabled": {
@@ -813,7 +916,9 @@
         "ui-accordion",
         "ui-tabs",
         "ui-number-field",
-        "ui-otp-field"
+        "ui-otp-field",
+        "ui-combobox",
+        "ui-autocomplete"
       ]
     },
     "busy": {
@@ -829,7 +934,9 @@
       "components": [
         "ui-input",
         "ui-number-field",
-        "ui-otp-field"
+        "ui-otp-field",
+        "ui-combobox",
+        "ui-autocomplete"
       ]
     },
     "required": {
@@ -842,7 +949,9 @@
         "ui-switch",
         "ui-field",
         "ui-number-field",
-        "ui-otp-field"
+        "ui-otp-field",
+        "ui-combobox",
+        "ui-autocomplete"
       ]
     },
     "invalid": {

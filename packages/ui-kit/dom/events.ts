@@ -14,15 +14,19 @@
  * - escape-key: Escape closed the popup
  * - focus-out: focus left the select (Tab commits the highlighted option and closes)
  * - track-press, drag: a press on the range track, then dragging its thumb
+ * - clear-press, chip-remove-press: the combobox clear button or a chip's remove button was pressed
  * - none: no specific interaction (Base UI's reason for checkbox, switch, radio, toggle and input)
  * - input-change, input-clear, input-blur, input-paste: typing a value, emptying the text, the
- *   commit on blur (formatting, clamping), a paste (number field, OTP field)
+ *   commit on blur (formatting, clamping), a paste (number field, OTP field; combobox and autocomplete
+ *   use input-change and input-clear for typing and emptying their text)
  * - increment-press, decrement-press, wheel, scrub: the number field's steppers, wheel and scrub area
  */
 export type ChangeReason =
   | 'item-press' | 'keyboard' | 'list-navigation' | 'trigger-press' | 'outside-press' | 'escape-key'
   | 'focus-out' | 'track-press' | 'drag' | 'none'
-  | 'input-change' | 'input-clear' | 'input-blur' | 'input-paste' | 'increment-press' | 'decrement-press' | 'wheel' | 'scrub';
+  | 'input-change' | 'input-clear' | 'input-blur' | 'input-paste' | 'increment-press' | 'decrement-press' | 'wheel' | 'scrub'
+  // Combobox, Autocomplete (Base UI): the clear button, a chip's remove button.
+  | 'clear-press' | 'chip-remove-press';
 
 /** Base UI eventDetails: the reason and the DOM event that caused the change, when there is one. */
 export interface ChangeDetails {
