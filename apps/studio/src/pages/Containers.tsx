@@ -7,6 +7,8 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
+import { useState, type CSSProperties, type ReactNode } from 'react';
+import { Range, Segmented } from '../studio/wc.tsx';
 import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveComposite, resolveContainer, resolveControl } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, groupHead, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
@@ -77,6 +79,10 @@ export function ContainersPage({ params }: PageProps) {
       <Divider />
       <Section id="concentric" title="Concentric" note="A card holding a button and a group; the group holds a button and a composite (segmented) with its options. Fills are removed and each type is one stroke, so the nested curves show: the group and the composite share the control's radius rule; options split the composite's difference (R − D); the group and the card are the control radius + their padding. Move Corner radius, Unit or the radius magnitudes in the Geometry tab.">
         <ConcentricWire params={params} />
+      </Section>
+      <Divider />
+      <Section id="nested" title="Nested cards" note="Three ways a card can hold cards. A, outward (today): every card is its own control radius + padding, so inner corners do not follow the outer curve. B, inward subtraction (the listbox model): a child's radius is the parent's radius − its padding and siblings sit one padding apart, so every curve is concentric and radii shrink by p per level. C, ratio ladder: a child's radius is the parent's × k and the padding is what is left (R − R·k), ending at the control radius. D, even split: B with the padding derived from the outer radius and the leaf's control radius, p = (R − r_control) / depth. Each box shows r · p and Δ, its distance from the concentric radius (0 = concentric).">
+        <NestedLab params={params} />
       </Section>
       <Divider />
       <Section id="levels" title="Levels" note="Each box tints its padding; the two children show its gap.">
@@ -228,5 +234,67 @@ function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
         ))}
       </div>
     </div>
+  );
+}
+
+// ── Nested cards lab (exploration: three composition models, see the section note) ──
+type Node = { r: number; p: number; gap: number; ideal?: number; kids: Node[] };
+const LAB_LEVELS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+const DEPTH_STROKE = ['data-1', 'data-2', 'data-3', 'data-4'];
+const labGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '8', alignItems: 'start' });
+const labBox = css({ display: 'flex', flexDirection: 'column', boxSizing: 'border-box', borderRadius: '[var(--r)]', padding: '[var(--p)]', gap: '[var(--g)]', boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
+const labTag = css({ textStyle: 'caption', color: 'fg.muted', fontVariantNumeric: 'tabular-nums' });
+const labControls = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))', gap: '4', marginBlockEnd: '6' });
+
+function NestedLab({ params }: Pick<PageProps, 'params'>) {
+  const p = params as unknown as Record<string, number>;
+  const [level, setLevel] = useState<(typeof LAB_LEVELS)[number]>('xl');
+  const [depth, setDepth] = useState('2');
+  const [k, setK] = useState(0.6);
+  const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] };
+  const card = (l: (typeof LAB_LEVELS)[number]) => resolveContainer(`card-${l}`, { ...g, padUnits: p[`pad-card-${l}`], radiusFactor: p['radius-card'] });
+  const outer = card(level), ctlR = resolveControl(g).radius, D = Number(depth);
+  const kids = (d: number, make: (d: number) => Node) => (d >= D ? [] : Array.from({ length: d === 0 ? 2 : 1 }, () => make(d + 1)));
+  // A: each nested card is one level smaller and keeps its own radius rule.
+  const outward = (d: number): Node => {
+    const c = card(LAB_LEVELS[Math.max(0, LAB_LEVELS.indexOf(level) - d)]);
+    return { r: c.radius, p: c.edge, gap: c.edge, kids: kids(d, outward) };
+  };
+  // B: a child's radius is the parent's radius − the parent's padding; the padding carries down.
+  const inward = (d: number, r = outer.radius): Node => ({ r, p: outer.edge, gap: outer.edge, kids: kids(d, (n) => inward(n, Math.max(0, r - outer.edge))) });
+  // C: a child's radius is the parent's × k (at least the control radius); the padding is the rest.
+  const ladder = (d: number, r = outer.radius): Node => {
+    const child = Math.max(ctlR, r * k);
+    const pad = Math.max(0, r - child);
+    return { r, p: pad, gap: pad, kids: kids(d, (n) => ladder(n, child)) };
+  };
+  // D: B with the padding derived: the leaf takes the control radius and every level steps down
+  // evenly, p = (R − control radius) / depth, so R → R − p → … → the control radius.
+  const step = Math.max(0, (outer.radius - ctlR) / D);
+  const even = (d: number, r = outer.radius): Node => ({ r, p: step, gap: step, kids: kids(d, (n) => even(n, Math.max(0, r - step))) });
+  const withIdeal = (n: Node): Node => ({ ...n, kids: n.kids.map((c) => withIdeal({ ...c, ideal: Math.max(0, n.r - n.p) })) });
+  const box = (n: Node, d: number, key: string): ReactNode => (
+    <div key={key} className={labBox} style={{ '--r': `${n.r}px`, '--p': `${n.p}px`, '--g': `${n.gap}px`, '--stroke': `var(--colors-${DEPTH_STROKE[d % 4]})` } as CSSProperties}>
+      <span className={labTag}>r {fmt(n.r)} · p {fmt(n.p)}{n.ideal !== undefined ? ` · Δ ${n.r - n.ideal >= 0 ? '+' : ''}${fmt(n.r - n.ideal)}` : ''}</span>
+      {n.kids.length ? n.kids.map((c, i) => box(c, d + 1, `${key}.${i}`)) : <ui-button>Action</ui-button>}
+    </div>
+  );
+  const models: [string, Node][] = [['A · outward (today)', withIdeal(outward(0))], ['B · inward subtraction', withIdeal(inward(0))], ['C · ratio ladder', withIdeal(ladder(0))], ['D · even split (B, padding derived)', withIdeal(even(0))]];
+  return (
+    <>
+      <div className={labControls}>
+        <Segmented label="Outer card" value={level} onValue={(v) => setLevel(v)} options={LAB_LEVELS.map((l) => [l, l])} />
+        <Segmented label="Depth" value={depth} onValue={setDepth} options={[['1', '1'], ['2', '2'], ['3', '3']]} />
+        <Range label="Ladder k (C)" value={k} min={0.3} max={0.9} step={0.05} onValue={setK} />
+      </div>
+      <div className={labGrid}>
+        {models.map(([name, tree]) => (
+          <div key={name}>
+            <h3 className={subTitle}>{name}</h3>
+            {box(tree, 0, name)}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
