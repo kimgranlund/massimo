@@ -20,7 +20,7 @@ export const marker = css({
   paddingBottom: '2', borderBottomWidth: 'thin', borderColor: 'border',
 });
 export const markerName = css({ textStyle: 'group-kicker', color: 'fg.muted' });
-export const markerNote = css({ textStyle: 'caption', color: 'fg.muted' });
+export const markerNote = css({ textStyle: 'caption' });
 
 // Type roles.
 export const display = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
@@ -29,10 +29,10 @@ export const h2 = css({ textStyle: 'heading-2' });
 export const h3 = css({ textStyle: 'heading-3' });
 export const kicker = css({ textStyle: 'section-kicker', color: 'primary.fg' });
 export const groupKicker = css({ textStyle: 'group-kicker', color: 'fg.muted' });
-export const bodyLarge = css({ textStyle: 'body-large', color: 'fg.muted', maxWidth: 'prose' });
+export const bodyLarge = css({ textStyle: 'body-large', maxWidth: 'prose' });
 export const body = css({ textStyle: 'body' });
 export const muted = css({ textStyle: 'body', color: 'fg.muted' });
-export const caption = css({ textStyle: 'caption', color: 'fg.muted' });
+export const caption = css({ textStyle: 'caption' });
 export const label = css({ textStyle: 'label' });
 export const strong = css({ textStyle: 'title' });
 /** A row's title line (title role). */

@@ -36,7 +36,7 @@ const wire = css({
   '& ui-segmented': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-4)]' },
   '& ui-option': { boxShadow: '[inset 0 0 0 1.5px var(--colors-data-5)]' },
 });
-const legend = css({ display: 'grid', gridTemplateColumns: '[auto auto 1fr]', alignItems: 'center', columnGap: '3', rowGap: '2', textStyle: 'caption', color: 'fg.muted' });
+const legend = css({ display: 'grid', gridTemplateColumns: '[auto auto 1fr]', alignItems: 'center', columnGap: '3', rowGap: '2', textStyle: 'caption' });
 const key = css({ width: '6', height: '4', borderRadius: 'sm' });
 
 export function ContainersPage({ params }: PageProps) {
@@ -244,7 +244,7 @@ const LAB_LEVELS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 const DEPTH_STROKE = ['data-1', 'data-2', 'data-3', 'data-4'];
 const labGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '8', alignItems: 'start' });
 const labBox = css({ display: 'flex', flexDirection: 'column', boxSizing: 'border-box', borderRadius: '[var(--r)]', padding: '[var(--p)]', gap: '[var(--g)]', boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
-const labTag = css({ textStyle: 'caption', color: 'fg.muted', fontVariantNumeric: 'tabular-nums' });
+const labTag = css({ textStyle: 'caption', fontVariantNumeric: 'tabular-nums' });
 const ucBox = css({ boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
 const labControls = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))', gap: '4', marginBlockEnd: '6' });
 

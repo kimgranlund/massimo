@@ -14,7 +14,7 @@
     },
     {
       "path": "components/toast/toast.recipe.ts",
-      "sha256": "720c277d258b878b64efb45b8a733e4582e18018c16c51faf61dd5b12eaf784e"
+      "sha256": "28d2a98aae7af55a0b409b5af035acec3ecb425ebd0b23b7f3366eb09c52ce7d"
     },
     {
       "path": "components/toast/manager.ts",

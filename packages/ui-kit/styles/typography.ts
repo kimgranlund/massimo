@@ -50,7 +50,7 @@ function roleStyle(name: string, r: TypeRole) {
     // The role's text color (theme typography.colors): display, headings and titles default to the
     // strong color (fg.strong); the others inherit unless a theme maps them (an
     // unset variable leaves an inherited property inheriting).
-    color: r.strong ? `var(--ui-type-color-${name}, var(--colors-fg-strong))` : `var(--ui-type-color-${name})`,
+    color: r.strong ? `var(--ui-type-color-${name}, var(--colors-fg-strong))` : r.ink ? `var(--ui-type-color-${name}, var(--colors-fg-${r.ink}))` : `var(--ui-type-color-${name})`,
   };
 }
 

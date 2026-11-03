@@ -16,7 +16,7 @@ import { CQ_LG, CQ_MD, Divider, Page, Section, caption, kicker, metrics, rowLabe
 
 const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
 const ramp = css({ width: 'full' });
-const summary = css({ textStyle: 'code', color: 'fg.muted', '& b': { color: 'primary.fg', fontWeight: 'regular' } });
+const summary = css({ textStyle: 'code', '& b': { color: 'primary.fg', fontWeight: 'regular' } });
 const chartGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_LG]: { gridTemplateColumns: '1fr 1fr' } });
 const chartFig = css({ display: 'flex', flexDirection: 'column', gap: '3', bg: 'bg.subtle', padding: '4', borderRadius: 'xl' });
 const chartSvg = css({ width: 'full', height: 'auto', color: 'fg', overflow: 'visible' });

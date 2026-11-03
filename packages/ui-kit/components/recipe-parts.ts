@@ -210,8 +210,9 @@ export const fieldRoot: Style = {
 
 /** Field label, description and error slots. */
 export const fieldParts: Record<'label' | 'description' | 'error', Style> = {
-  label: { textStyle: 'label', color: 'fg.muted', alignSelf: 'start', cursor: 'default' },
-  description: { textStyle: 'caption', color: 'fg.muted' },
+  // Label and caption take their role's color (muted by default; theme typography.colors).
+  label: { textStyle: 'label', alignSelf: 'start', cursor: 'default' },
+  description: { textStyle: 'caption' },
   error: { textStyle: 'caption', color: 'critical.fg' },
 };
 

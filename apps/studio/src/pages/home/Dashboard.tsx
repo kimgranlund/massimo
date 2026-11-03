@@ -28,7 +28,7 @@ const plot = css({ display: 'grid', gridTemplateColumns: 'auto minmax(0, 1fr)', 
 // Axis labels sit centered on their gridlines (top, quarters, baseline).
 const yAxis = css({
   display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'end',
-  textStyle: 'caption', color: 'fg.muted',
+  textStyle: 'caption',
   '& > span': { lineHeight: '[1]', marginBlock: '[-0.5em]' },
 });
 // Gridlines: a top border plus one line at the bottom of each quarter.
@@ -44,9 +44,9 @@ const barStack = css({
   '& > span:last-child': { borderTopRadius: 'sm' },
 });
 const ticks = css({ gridColumn: '2', display: 'flex', gap: '2', '& > span': { flex: '1', minWidth: '0', textAlign: 'center' } });
-const tick = css({ textStyle: 'caption', color: 'fg.muted', whiteSpace: 'nowrap' });
+const tick = css({ textStyle: 'caption', whiteSpace: 'nowrap' });
 const tickWide = css({ visibility: 'hidden', [CQ_MD]: { visibility: 'visible' } });
-const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', color: 'fg.muted', '& > span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
+const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', '& > span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const dot = css({ display: 'inline-block', width: '2', height: '2', borderRadius: 'full' });
 const meter = css({ display: 'flex', flexDirection: 'column', gap: '1.5' });
 const meterTrack = css({ height: '2', borderRadius: 'full', bg: 'bg.muted', overflow: 'hidden', '& > span': { display: 'block', height: 'full', width: '[calc(var(--v) * 100%)]', borderRadius: 'full' } });

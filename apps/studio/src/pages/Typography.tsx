@@ -26,7 +26,7 @@ const article = css({
   [CQ_MD]: { gridTemplateColumns: '14rem minmax(0, 62ch)', columnGap: '6' },
   '& pre': { whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', overflowX: 'auto' },
 });
-const articleRole = css({ display: 'none', textStyle: 'code', color: 'fg.muted', [CQ_MD]: { display: 'block' } });
+const articleRole = css({ display: 'none', textStyle: 'code', [CQ_MD]: { display: 'block' } });
 // Section kickers on neutral surfaces sit one step weaker than body text (neutral 11); on colored
 // surfaces their tone sets the color.
 const kickerInk = css({ color: 'fg.muted' });

@@ -18,7 +18,7 @@ const shell = pageLayout({ width: '[80rem]' });
 export const header = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 // Display needs the width: below the medium canvas the title steps down to heading-1.
 export const pageTitle = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
-export const lead = css({ textStyle: 'body-large', color: 'fg.muted', maxWidth: 'prose' });
+export const lead = css({ textStyle: 'body-large', maxWidth: 'prose' });
 const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: 'full' });
 const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const sectionHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
@@ -27,16 +27,16 @@ const sectionHeadRow = css({ display: 'flex', alignItems: 'end', justifyContent:
 /** A status note under a page lead (e.g. reduced motion is on). */
 const notice = css({ textStyle: 'body', color: 'fg', bg: 'bg.muted', borderRadius: 'md', padding: '3', maxWidth: 'prose' });
 const sectionTitle = css({ textStyle: 'heading-2' });
-const sectionTags = css({ textStyle: 'code', color: 'fg.muted' });
-export const caption = css({ textStyle: 'caption', color: 'fg.muted' });
+const sectionTags = css({ textStyle: 'code' });
+export const caption = css({ textStyle: 'caption' });
 const rowGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '11rem 1fr', gap: '6' } });
-export const rowLabel = css({ textStyle: 'label', color: 'fg.muted' });
+export const rowLabel = css({ textStyle: 'label' });
 export const specimens = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
 export const columns = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '8', alignItems: 'start', [CQ_MD]: { gridTemplateColumns: '1fr 1fr' } });
 export const subTitle = css({ textStyle: 'heading-3' });
 export const stack = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 export const kicker = css({ textStyle: 'group-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
-export const metrics = css({ textStyle: 'code', color: 'fg.muted' });
+export const metrics = css({ textStyle: 'code' });
 
 /** A content page: the page frame with a title and lead, then its sections. */
 export function Page({ title, lead: text, notices, children }: { title: string; lead: ReactNode; notices?: ReactNode[]; children: ReactNode }) {
@@ -229,4 +229,4 @@ export const currentRow = css({ bg: 'primary.subtle', color: 'primary.fg' });
 /** A row's name cell (label voice, not code). */
 export const nameCell = css({ textStyle: 'title' });
 /** A descriptive cell: caption text that wraps. */
-export const noteCell = css({ textStyle: 'caption', color: 'fg.muted', whiteSpace: 'normal', minWidth: '[14rem]' });
+export const noteCell = css({ textStyle: 'caption', whiteSpace: 'normal', minWidth: '[14rem]' });
