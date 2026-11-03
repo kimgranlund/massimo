@@ -35,6 +35,7 @@ More entry points and the Panda preset: [ui-kit README](packages/ui-kit/README.m
 | `npm run ui-kit:test` | unit tests, manifests, generated files, verification records |
 | `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio` | types |
 | `npm run ui-kit:build` | Panda codegen, CSS and the package build |
+| `npm run theme:lint -w @massimo/ui-kit` | the theme coherence rules over the defaults and saved themes |
 | `npm run check:browsers` | `geometry-check.html`, `react-check.html`, select placement and motion easings in Chromium, Firefox and WebKit (first time: `npx playwright install chromium firefox webkit`) |
 
 With `npm run studio` running, `/geometry-check.html` and `/react-check.html` print `"fails": []` when the CSS matches the geometry resolvers and the React renderers match the web components.

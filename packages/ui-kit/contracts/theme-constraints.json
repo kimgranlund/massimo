@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "pathBase": "packages/ui-kit",
+  "summary": "Coherence rules over a theme object (docs/planning/theme-schema.md, step 3): combinations of parameters, colors and fonts that break the design even when every value is in range. Each rule names its concept, a severity (error: the theme should not ship; warning: it works but loses something; info: a deliberate choice worth confirming), what it checks, a fix, and a failing and a passing fixture (theme sections merged over the defaults). lintTheme (tokens/themes/lint.ts) implements one predicate per id; a test runs every fixture.",
+  "rules": {
+    "scale.target-size": {
+      "concept": "scale",
+      "severity": "error",
+      "checks": "The control height at the theme root, (6 + 2I) × u, is at least 24px (WCAG 2.5.8 target size).",
+      "fix": "Raise unit, or use a looser density; keep small units for subtrees (size) instead of the root.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "unit": 2.5
+          }
+        },
+        "pass": {
+          "parameters": {
+            "unit": 3
+          }
+        }
+      }
+    },
+    "density.compact-border": {
+      "concept": "density",
+      "severity": "warning",
+      "checks": "At compact density the 0.5u control inset can hold the border twice (a composite's edge and its option's), B ≤ 0.25u; otherwise one-row composites grow past the control height.",
+      "fix": "Use border 0 or 1 at compact density, or a larger unit.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "density": 0,
+            "unit": 4,
+            "border": 2
+          }
+        },
+        "pass": {
+          "parameters": {
+            "density": 0,
+            "unit": 4,
+            "border": 1
+          }
+        }
+      }
+    },
+    "elevation.surfaces-visible": {
+      "concept": "elevation",
+      "severity": "warning",
+      "checks": "Panels and cards separate from the page: surface-contrast > 0, or cards are raised with a shadow.",
+      "fix": "Raise surface-contrast, or turn on card-raised with a raised shadow.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "surface-contrast": 0
+          }
+        },
+        "pass": {
+          "parameters": {
+            "surface-contrast": 0,
+            "card-raised": 1
+          }
+        }
+      }
+    },
+    "elevation.floating-visible": {
+      "concept": "elevation",
+      "severity": "warning",
+      "checks": "Floating surfaces (menus, popovers, select popups, toasts) separate from the page: a floating shadow, or a border.",
+      "fix": "Give shadow-floating sm or md, or set a border.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "shadow-floating": 0
+          }
+        },
+        "pass": {
+          "parameters": {
+            "shadow-floating": 0,
+            "border": 1
+          }
+        }
+      }
+    },
+    "elevation.modal-shadow": {
+      "concept": "elevation",
+      "severity": "info",
+      "checks": "Modal surfaces cast a shadow; with none, only the backdrop separates a dialog from the page.",
+      "fix": "Confirm it is intended, or give shadow-modal sm or md.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "shadow-modal": 0
+          }
+        },
+        "pass": {
+          "parameters": {
+            "shadow-modal": 1
+          }
+        }
+      }
+    },
+    "movement.reveal-bounce": {
+      "concept": "movement",
+      "severity": "warning",
+      "checks": "The reveal intent (popups, dialogs, drawers opening) does not overshoot: it does not run the bouncy spring while it bounces.",
+      "fix": "Point intent-reveal at smooth or snappy, or set motion-bounce 0.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "intent-reveal": 3
+          }
+        },
+        "pass": {
+          "parameters": {
+            "intent-reveal": 3,
+            "motion-bounce": 0
+          }
+        }
+      }
+    },
+    "movement.feedback-fast": {
+      "concept": "movement",
+      "severity": "warning",
+      "checks": "Hover and press feedback settles within 0.3s (the feedback intent's spring duration × motion-scale).",
+      "fix": "Point intent-feedback at a quick spring, shorten that spring, or lower motion-scale.",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "motion-scale": 2
+          }
+        },
+        "pass": {
+          "parameters": {
+            "motion-scale": 1
+          }
+        }
+      }
+    },
+    "curvature.pill-containers": {
+      "concept": "curvature",
+      "severity": "info",
+      "checks": "Cards are not near pills: with radius-scale ≥ 2 the concentric card radius approaches half a short card's height unless radius-card lowers it.",
+      "fix": "Confirm it is intended, or lower radius-card (for example 0.5).",
+      "fixtures": {
+        "fail": {
+          "parameters": {
+            "radius-scale": 2.5
+          }
+        },
+        "pass": {
+          "parameters": {
+            "radius-scale": 2.5,
+            "radius-card": 0.5
+          }
+        }
+      }
+    },
+    "vibrancy.text-contrast": {
+      "concept": "vibrancy",
+      "severity": "error",
+      "checks": "Each brand and feedback role's text step (11) reaches the engine's APCA threshold on the page fill, in light and dark.",
+      "fix": "Lower the light endpoint or raise the dark one, raise chroma falloff, or choose another family for the role.",
+      "fixtures": {
+        "fail": {
+          "color": {
+            "spectrum": {
+              "toneMax": 80
+            }
+          }
+        },
+        "pass": {}
+      }
+    },
+    "emphasis.on-solid": {
+      "concept": "emphasis",
+      "severity": "warning",
+      "checks": "Text on the primary and critical solids (step 9: filled buttons, danger actions) reaches APCA Lc 60, the level for UI text, in light and dark.",
+      "fix": "Set a manual peak tone where step 9 carries text at Lc 60 (62 with the default hues), or pick a darker or lighter family for the role.",
+      "fixtures": {
+        "fail": {},
+        "pass": {
+          "color": {
+            "spectrum": {
+              "ptAuto": 0,
+              "pt": 62
+            }
+          }
+        }
+      }
+    }
+  }
+}

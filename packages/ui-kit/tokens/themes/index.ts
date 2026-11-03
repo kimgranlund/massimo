@@ -14,6 +14,7 @@ import { SERIF_REGULAR_VOICES, type Voice } from '../typography/resolve.ts';
 export * from './params.ts';
 export * from './validate.ts';
 export * from './theme.ts';
+export * from './lint.ts';
 
 /** Saved themes (themes.json): theme objects keyed by name (validateThemeObject, test/themes.test.ts). */
 export const savedThemes = saved as Record<string, Theme>;

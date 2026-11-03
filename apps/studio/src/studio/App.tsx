@@ -8,7 +8,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, lintTheme, type Finding, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
@@ -135,6 +135,15 @@ export function App() {
     color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES) }),
     typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES) }),
   }) as unknown as Theme;
+  // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
+  const [findings, setFindings] = useState<Finding[]>([]);
+  useEffect(() => {
+    const t = setTimeout(() => { try { setFindings(lintTheme(themeObject()).findings); } catch (err) { setStatus(`Lint failed: ${err}`); } }, 400);
+    return () => clearTimeout(t);
+  }, [params, icons, scheme, spectrum, roles, faces, voices]);
+  const count = (sev: Finding['severity']) => findings.filter((f) => f.severity === sev).length;
+  const lintSummary = findings.length ? `Checks: ${count('error')} errors, ${count('warning')} warnings, ${count('info')} info` : 'Checks: clean';
+
   // Load: the same object back (clipboard); every section not in it returns to the default.
   const applyTheme = (t: Theme) => {
     setThemeName(t.name);
@@ -298,6 +307,9 @@ export function App() {
         </ui-field-grid>
 
         <footer className={s.footer}>
+          <ui-collapsible label={lintSummary}>
+            {findings.map((f, i) => <p key={i} className={s.status}><strong>{f.severity}</strong> {f.id}: {f.message}. {f.fix}</p>)}
+          </ui-collapsible>
           <p className={s.status} role="status">{status}</p>
           <div className={s.actions}>
             <ui-button ref={copyRef}><i slot="leading" name="copy" />Copy</ui-button>

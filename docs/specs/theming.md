@@ -30,6 +30,10 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 
 Saved themes live in `tokens/themes/themes.json` as theme objects keyed by their name, emitted as `:root[data-ui-theme="name"]` (`themeCss`): the parameters as `--ui-*`, faces as `--fonts-<face>`, voices as `--font-voice-<voice>` (serif headings at 400), and, when the theme sets colors, its Spectrum ramps and roles generated at build time, light on the theme root, with `.light` / `.dark` on the root and the OS dark scheme. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does. The jig's **Copy** emits this object and **Load** applies one ([studio](studio.md)).
 
+### Lint
+
+Values in range can still break the design together. `contracts/theme-constraints.json` lists the coherence rules, each with a concept, a severity (error: should not ship; warning: works but loses something; info: confirm it is intended), what it checks, a fix, and a failing and a passing fixture; `lintTheme(theme)` (`tokens/themes/lint.ts`) runs one predicate per rule, errors first, and is `ok` when no error fires. Rules today: the 24px target size at the root (error), the border compact density can hold, panels and cards and floating surfaces staying visible, a modal shadow, reveal overshoot, feedback within 0.3s, near-pill cards, text step 11 at the engine's APCA threshold (error) and text on the primary and critical solids at Lc 60. `npm run theme:lint -w @massimo/ui-kit` lints the defaults and every saved theme (or a file or saved name), exiting 1 on an error; the jig shows the findings live under **Checks**.
+
 Every parameter is also a registry node (`parameter:<name>`) with its formula and what it drives in `contracts/parameters.json` ([system](system.md#the-system-as-a-function)).
 
 ## Per-element inputs

@@ -87,3 +87,17 @@ test('preset style objects merge per selector; shared selectors keep both sides'
     for (const [sel, rule] of Object.entries(part))
       for (const prop of Object.keys(rule)) assert.ok(prop in merged[sel], `${name}: ${sel} { ${prop} } lost in the merge`);
 });
+
+test('theme lint: every contract rule has a predicate, and its failing fixture fires it while its passing fixture does not', async () => {
+  const { lintTheme, RULES, THEME_CONSTRAINTS } = await import('../tokens/themes/lint.ts');
+  assert.deepEqual(Object.keys(RULES).sort(), Object.keys(THEME_CONSTRAINTS).sort(), 'contracts/theme-constraints.json and lint.ts name the same rules');
+  for (const [id, rule] of Object.entries(THEME_CONSTRAINTS)) {
+    const fired = (t: unknown) => lintTheme(t as any, { only: [id] }).findings.some((f) => f.id === id);
+    assert.ok(fired(rule.fixtures.fail), `${id}: the failing fixture fires`);
+    assert.ok(!fired(rule.fixtures.pass), `${id}: the passing fixture does not`);
+    assert.ok(validateThemeObject({ schemaVersion: 1, name: 'fixture', ...(rule.fixtures.fail as object) }).ok, `${id}: the failing fixture is a valid theme`);
+  }
+  const r = lintTheme({ parameters: { unit: 2.5, 'shadow-floating': 0 } });
+  assert.equal(r.ok, false, 'an error fails the theme');
+  assert.equal(r.findings[0].severity, 'error', 'errors first');
+});
