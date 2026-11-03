@@ -973,7 +973,9 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
   box.innerHTML = `<ui-button>Save</ui-button>
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
-    <ui-group><ui-button>A</ui-button></ui-group><ui-collection><ui-button>B</ui-button></ui-collection>`;
+    <ui-group><ui-button>A</ui-button></ui-group><ui-collection><ui-button>B</ui-button></ui-collection>
+    <ui-group id="gT" radius="0.5"><ui-button>A</ui-button></ui-group><ui-card id="cT" radius="0.25">c</ui-card>
+    <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-collection><ui-button>B</ui-button></ui-collection><ui-card padding="lg">d</ui-card></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
   const g = { unit, border, radiusScale: s };
@@ -989,6 +991,11 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'group.radius': [rad('ui-group'), resolveContainer('group', g).radius],
     'collection.radius': [rad('ui-collection'), resolveContainer('collection', g).radius],
     'group.concentric': [rad('ui-group'), s === 0 ? 0 : rad('ui-group > ui-button') + resolveContainer('group', g).edge],
+    // The magnitude t: the radius attribute on one element, the theme's radius-<family> on a scope.
+    'group.radius.attr': [rad('#gT'), resolveContainer('group', { ...g, radius: 0.5 }).radius],
+    'card.radius.attr': [rad('#cT'), resolveContainer('card-md', { ...g, radius: 0.25 }).radius],
+    'collection.radius.theme': [rad('#themeT ui-collection'), resolveContainer('collection', { ...g, radiusFactor: 0.4 }).radius],
+    'card.radius.theme': [rad('#themeT ui-card'), resolveContainer('card-lg', { ...g, radiusFactor: 0 }).radius],
   };
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/s${s} ${k}: got ${got}, want ${want}`); }
   box.remove();

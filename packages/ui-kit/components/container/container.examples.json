@@ -23,6 +23,12 @@
       "label": "Nesting",
       "subject": "component:page",
       "markup": "<ui-page><ui-region><ui-panel><ui-card><ui-card padding=\"sm\"><ui-collection><ui-group><ui-badge>1</ui-badge></ui-group></ui-collection></ui-card></ui-card></ui-panel></ui-region></ui-page>"
+    },
+    {
+      "id": "radius-magnitude",
+      "label": "Radius magnitude: concentric, half, square",
+      "subject": "component:collection",
+      "markup": "<ui-collection><ui-button>Concentric</ui-button></ui-collection><ui-collection radius=\"0.5\"><ui-button>Half</ui-button></ui-collection><ui-collection radius=\"0\"><ui-button>Square</ui-button></ui-collection>"
     }
   ]
 }

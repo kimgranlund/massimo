@@ -5,7 +5,7 @@
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
 import { defineGlobalStyles } from '@pandacss/dev';
 import { unitTokenVars } from '../tokens/geometry/index.ts';
-import { AVATAR_SIZES, GAPS, ICON_STEPS, SIZES } from '../tokens/geometry/resolve.ts';
+import { AVATAR_SIZES, GAPS, ICON_STEPS, RADIUS_FACTORS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
@@ -27,6 +27,8 @@ export const geometry = defineGlobalStyles({
   // Gap applies to the element that carries the attribute only: --ui-gap does not inherit
   // (geometryProperties), so a nested container keeps its own level gap.
   ...Object.fromEntries(GAPS.map((g) => [`[gap="${g}"]`, { '--ui-gap': String(g) }])),
+  // Radius applies to the element that carries it, like gap: a container's factor on its concentric radius.
+  ...Object.fromEntries(RADIUS_FACTORS.map((t) => [`[radius="${t}"]`, { '--ui-radius': String(t) }])),
 
   // Control family, resolved on every component element.
   [GEOMETRY_SCOPE]: {
@@ -107,4 +109,4 @@ export const geometry = defineGlobalStyles({
  * its own element only (a container, a composite), and the select popup takes its host's explicitly.
  * Syntax `*` has no initial value, so `var(--ui-gap, <level gap>)` falls back where it is unset.
  */
-export const geometryProperties = { '--ui-gap': { syntax: '*', inherits: false } };
+export const geometryProperties = { '--ui-gap': { syntax: '*', inherits: false }, '--ui-radius': { syntax: '*', inherits: false } };

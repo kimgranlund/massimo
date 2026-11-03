@@ -37,6 +37,17 @@
       "documentation": "../../docs/specs/geometry.md#inputs",
       "searchTerms": ["radius", "corner radius", "roundness", "curvature", "squircle", "superellipse", "corner shape"]
     },
+    "container-curvature": {
+      "title": "Container radius magnitude t",
+      "scope": "theme",
+      "spec": { "module": "tokens/themes/params.ts", "export": "PARAMS" },
+      "members": ["radius-group", "radius-collection", "radius-card"],
+      "cssVar": "--ui-<member>",
+      "formula": "R = t × R0, t in 0..1: R0 is the family's concentric radius (group, collection: the control radius + p; card: p × min(1, s)); 1 keeps it concentric, 0 square, so a container can be sharper than fully rounded contents; the radius attribute sets t on one element",
+      "drives": ["foundation:geometry", "tokens:container-ladder", "geometry:container"],
+      "documentation": "../../docs/specs/geometry.md#containers",
+      "searchTerms": ["container radius", "radius magnitude", "sharper container", "concentric"]
+    },
     "type-scale": {
       "title": "Type scale: ratio r and rhythm",
       "scope": "theme",
@@ -141,9 +152,9 @@
     "subtree": {
       "title": "Per-subtree inputs",
       "scope": "subtree",
-      "members": ["size", "icon-size", "gap", "scheme", "type"],
+      "members": ["size", "icon-size", "gap", "radius", "scheme", "type"],
       "idPrefix": "subtree-",
-      "attributes": { "size": "size / data-size: u for the subtree (2 … 12)", "icon-size": "icon-size / data-icon-size: sm, md, lg, fill", "gap": "gap: container gap in u (0–8, 0.5 steps), that element only", "scheme": ".light / .dark: force a color scheme", "type": "data-type=\"<role>\": apply a type role" },
+      "attributes": { "size": "size / data-size: u for the subtree (2 … 12)", "radius": "radius on ui-group, ui-collection, ui-card: the magnitude t of the concentric radius, 0 … 1 in 0.05 steps", "icon-size": "icon-size / data-icon-size: sm, md, lg, fill", "gap": "gap: container gap in u (0–8, 0.5 steps), that element only", "scheme": ".light / .dark: force a color scheme", "type": "data-type=\"<role>\": apply a type role" },
       "formula": "the same formulas, evaluated with a local input: [size] re-resolves every length under it, .dark every role",
       "drives": ["foundation:geometry", "tokens:geometry", "foundation:colors", "tokens:color-roles", "tokens:type-roles"],
       "documentation": "../../docs/specs/theming.md#per-element-inputs",

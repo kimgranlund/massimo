@@ -22,6 +22,7 @@ export const rows: Row[] = [
   { id: 'in.s', family: 'input', element: 'all', quantity: 'curvature scale s', formula: `s (default ${GEOMETRY_DEFAULTS.radiusScale})`, value: () => GEOMETRY_DEFAULTS.radiusScale, status: 'input', notes: 'theme radius-scale, 0..3' },
   { id: 'in.k', family: 'input', element: 'all', quantity: 'corner shape k', formula: 'corner-shape: superellipse(k) (default 1)', value: () => 1, status: 'input', notes: 'theme corner-shape; 1 round, 2 squircle, 0 bevel, -1 scoop' },
   { id: 'in.gap', family: 'input', element: 'containers, composites', quantity: 'gap g', formula: 'gap = g·u (default: the padding level)', value: () => NaN, status: 'input', notes: 'gap attribute 0..8 in 0.5 steps; applies to that element only' },
+  { id: 'in.t', family: 'input', element: 'ui-group, ui-collection, ui-card', quantity: 'radius magnitude t', formula: 'radius attribute, else radius-<family> (default 1): R = t × R0, the concentric radius', value: () => NaN, status: 'input', notes: '0 … 1 in 0.05 steps; 1 concentric, 0 square; applies to that element only' },
 
   // Control
   { id: 'control.height', family: 'control', element: 'button, input, select', quantity: 'height', formula: '8u', value: (u) => ctl(u).height, status: 'implemented', notes: '' },

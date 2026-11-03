@@ -1640,6 +1640,36 @@
         "region padding (u)"
       ]
     },
+    "parameter:radius-card": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/container-curvature",
+      "availability": "implemented",
+      "title": "Card radius (× padding)",
+      "searchTerms": [
+        "radius-card",
+        "card radius (× padding)"
+      ]
+    },
+    "parameter:radius-collection": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/container-curvature",
+      "availability": "implemented",
+      "title": "Collection radius (× concentric)",
+      "searchTerms": [
+        "radius-collection",
+        "collection radius (× concentric)"
+      ]
+    },
+    "parameter:radius-group": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/container-curvature",
+      "availability": "implemented",
+      "title": "Group radius (× concentric)",
+      "searchTerms": [
+        "radius-group",
+        "group radius (× concentric)"
+      ]
+    },
     "parameter:radius-scale": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/curvature",
@@ -2090,6 +2120,14 @@
         "icon-size"
       ]
     },
+    "parameter:subtree-radius": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "radius"
+      ]
+    },
     "parameter:subtree-scheme": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/subtree",
@@ -2201,6 +2239,18 @@
         "border",
         "border width",
         "stroke"
+      ]
+    },
+    "parameters:container-curvature": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/container-curvature",
+      "availability": "implemented",
+      "title": "Container radius magnitude t",
+      "searchTerms": [
+        "container radius",
+        "radius magnitude",
+        "sharper container",
+        "concentric"
       ]
     },
     "parameters:containers": {
@@ -9867,6 +9917,36 @@
       "to": "parameters:curvature"
     },
     {
+      "from": "parameters:container-curvature",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:container-curvature",
+      "relation": "drives",
+      "to": "tokens:container-ladder"
+    },
+    {
+      "from": "parameters:container-curvature",
+      "relation": "drives",
+      "to": "geometry:container"
+    },
+    {
+      "from": "parameter:radius-group",
+      "relation": "memberOf",
+      "to": "parameters:container-curvature"
+    },
+    {
+      "from": "parameter:radius-collection",
+      "relation": "memberOf",
+      "to": "parameters:container-curvature"
+    },
+    {
+      "from": "parameter:radius-card",
+      "relation": "memberOf",
+      "to": "parameters:container-curvature"
+    },
+    {
       "from": "parameters:type-scale",
       "relation": "drives",
       "to": "foundation:typography"
@@ -10463,6 +10543,11 @@
     },
     {
       "from": "parameter:subtree-gap",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-radius",
       "relation": "memberOf",
       "to": "parameters:subtree"
     },

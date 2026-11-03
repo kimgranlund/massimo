@@ -7,6 +7,7 @@
 Three families, each with one radius rule:
 
 - Wrappers hug their controls; radius concentric with them: the control radius + padding, min(3u·s, 4u) + p (square at s = 0).
+- `radius` (group, collection, card) scales that radius by a magnitude t, 0…1 in 0.05 steps: 1 concentric, 0 square; the theme's `radius-group`, `radius-collection` and `radius-card` set the default. `<ui-collection radius="0.25">` holds pill buttons in a nearly square box.
   - `ui-group`: closely related controls (toolbars, button and chip sets).
   - `ui-collection`: a list or set of like items (tables, data lists).
 - Containers are self-contained surfaces; radius = padding.

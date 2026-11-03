@@ -160,6 +160,8 @@ Containers come in four families, each with one radius rule; the rule is concent
 - **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface whose radius equals its padding, p × min(1, corner scale): never rounder than it is deep; the corner scale can lower it, not raise it. Children keep their own radii, so they are not concentric with it. A card may hold a smaller card (it takes the base fill).
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
+**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of the family's concentric radius R0 (the rule above): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-group radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
+
 Nesting: areas hold containers, containers hold wrappers (page › region › panel › card › collection › group; a level may be skipped). Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
 ### Panda tokens in u

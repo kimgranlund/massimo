@@ -113,6 +113,12 @@ test('containers: wrapper concentric with its controls, container radius = paddi
   assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0.5 }).radius, 6 + 4, 'group at s = 0.5');
   assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 2 }).radius, 16 + 8, 'collection at s = 2: the 4u control cap + 2u');
   assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0 }).radius, 0, 'square at s = 0');
+  // Radius magnitude t: R = t × the concentric radius; the attribute wins over the theme factor.
+  assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 3, radius: 0.25 }).radius, 0.25 * (16 + 8), 'sharper than pill contents');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusFactor: 0.5 }).radius, 8, 'card: t × padding');
+  assert.equal(resolveContainer('group', { unit: 4, radius: 1, radiusFactor: 0 }).radius, 16, 'attribute over theme');
+  assert.equal(resolveContainer('panel', { unit: 4, radius: 0.5 }).radius, 0, 'areas stay square');
+  assert.throws(() => resolveContainer('group', { radius: 2 }), /0\.\.1/);
   const card = resolveContainer('card-md', { unit: 5, gap: 2 });
   assert.deepEqual([card.padding + card.border, card.gap], [20, 10], '<ui-card size="5" gap="2">');
   assert.equal(resolveContainer('group', { unit: 4, height: 20 }).radius, 10, 'half-height cap');

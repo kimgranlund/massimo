@@ -3,7 +3,8 @@
 // CONTAINERS): padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>
 // (the gap attribute wins on its own element); radius: wrapper (group, collection) concentric with
 // the controls it hugs, min(3u·s, 4u) + p·u (square at s = 0); container (card) at most its padding, p·u × min(1, s); area (panel,
-// region, page) square. Fills alternate by depth so each level reads without borders: panel 3, card
+// region, page) square. Wrappers and cards scale that radius by a magnitude t (0 … 1: the radius
+// attribute, else the theme's radius-group / radius-collection / radius-card): R = t × R0. Fills alternate by depth so each level reads without borders: panel 3, card
 // 2, a card nested in a card 1.
 //
 // The containers are CSS-only tags (no script), so nothing puts the recipe classes on them. The same
@@ -11,21 +12,23 @@
 // `tagRules`): the base and default variants on the tag, every other variant on tag[attr=value].
 // React renderers and plain HTML use the classes.
 import { defineSlotRecipe } from '@pandacss/dev';
-import { CARD_PADDINGS, CONTAINERS, PAGE_MAX_WIDTH_REM, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
+import { CARD_PADDINGS, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
 import { CONTROL_RADIUS, mergeStyles, tagRules } from '../recipe-parts.ts';
 
 type Layout = Exclude<ContainerLevel, 'composite'>;
 
 /** A level's padding, gap and radius inputs, read by `box`. */
 const level = (k: Layout) => {
-  const family = CONTAINERS[k].family;
+  const family = CONTAINERS[k].family, f = radiusFamily(k);
+  const r0 = family === 'area' ? '0px'
+      // Concentric with the controls they hug: the control radius + the padding; square at s = 0.
+      : family === 'wrapper' ? `calc(${CONTROL_RADIUS} + var(--ui-pad-${k}) * var(--u) * min(1, 100 * var(--ui-radius-scale)))`
+      : `calc(var(--ui-pad-${k}) * var(--u) * min(1, var(--ui-radius-scale)))`;
   return {
     '--cp': `var(--ui-pad-${k})`,
     '--cg': `var(--ui-gap-${k})`,
-    '--cr': family === 'area' ? '0px'
-      // Concentric with the controls they hug: the control radius + the padding; square at s = 0.
-      : family === 'wrapper' ? `calc(${CONTROL_RADIUS} + var(--ui-pad-${k}) * var(--u) * min(1, 100 * var(--ui-radius-scale)))`
-      : `calc(var(--ui-pad-${k}) * var(--u) * min(1, var(--ui-radius-scale)))`,
+    // The magnitude t (the radius attribute, else the theme's radius-<family>) on the concentric radius.
+    '--cr': f ? `calc(var(--ui-radius, var(--ui-radius-${f})) * ${r0})` : r0,
   };
 };
 

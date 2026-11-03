@@ -4,6 +4,7 @@ in.B,input,all,border B,B (default 0),0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 in.s,input,all,curvature scale s,s (default 1),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,input,"theme radius-scale, 0..3"
 in.k,input,all,corner shape k,corner-shape: superellipse(k) (default 1),1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,input,"theme corner-shape; 1 round, 2 squircle, 0 bevel, -1 scoop"
 in.gap,input,"containers, composites",gap g,gap = g·u (default: the padding level),,,,,,,,,,,,,,,,,,,,,,,,input,gap attribute 0..8 in 0.5 steps; applies to that element only
+in.t,input,"ui-group, ui-collection, ui-card",radius magnitude t,"radius attribute, else radius-<family> (default 1): R = t × R0, the concentric radius",,,,,,,,,,,,,,,,,,,,,,,,input,"0 … 1 in 0.05 steps; 1 concentric, 0 square; applies to that element only"
 control.height,control,"button, input, select",height,8u,16,18,20,22,24,28,32,36,40,44,48,52,56,60,64,68,72,76,80,84,88,92,96,implemented,
 control.padding,control,"button, input, select",padding,u - B,2,2.25,2.5,2.75,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,implemented,border + padding = 1u
 control.slot,control,"button, option",slot (leading / contents / trailing) min size,6u,12,13.5,15,16.5,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,63,66,69,72,implemented,empty slots hidden; icon-only button = 8u square

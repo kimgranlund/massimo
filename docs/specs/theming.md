@@ -11,6 +11,7 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 | `unit` | 2–12 px (0.25 steps) | 4.5 |
 | `border` | 0–2 px (whole) | 0 (surfaces separate by fill; invalid controls get a critical-tinted fill) |
 | `radius-scale` | 0–3 | 1 |
+| `radius-group`, `radius-collection`, `radius-card` | 0–1 (0.05 steps; the magnitude t of each family's concentric radius: 1 concentric, 0 square) | 1 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | `type-ratio` | 1–1.5 | 1.333 |
 | `type-rhythm` | 0, 0.5, 1 (× u) | 1 |
@@ -30,6 +31,7 @@ Every parameter is also a registry node (`parameter:<name>`) with its formula an
 - `size` / `data-size`: u for a subtree (2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, then 0.5 steps to 12).
 - `icon-size` / `data-icon-size`: sm, md, lg, fill.
 - `gap`: container gap override in units of u (0–8, 0.5 steps), that element only.
+- `radius` (ui-group, ui-collection, ui-card): the radius magnitude t, 0–1 in 0.05 steps, that element only ([geometry](geometry.md#containers)).
 - `.light` / `.dark`: force a color scheme for a subtree.
 - `data-font-<voice>="<face>"`: repoint a font voice (display, heading, body, ui, numeric, code) to a face (sans, serif, mono, display); `data-numeric` for figures in the numeric voice, tabular lining when bare, with space-separated variants (`proportional`, `oldstyle`, `fraction`, …) and `data-position="super|sub"` ([typography](typography.md#numerals)).
 - `data-type="<role>"`: apply a type role.

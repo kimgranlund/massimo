@@ -13,6 +13,10 @@ import { RATIOS, customRatio } from '../../components/image/ratios.ts';
 export const SIZES = [2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
 /** Gutter values (units of u) accepted by the gap attribute. */
 export const GAPS = Array.from({ length: 17 }, (_, i) => i * 0.5);
+/** Container radius factors t (the radius attribute, the radius-<family> theme parameters): 0 … 1 in 0.05 steps. */
+export const RADIUS_FACTORS = Array.from({ length: 21 }, (_, i) => i / 20);
+/** The theme parameter whose factor scales a level's radius (areas and composites have none). */
+export const radiusFamily = (level: string) => level === 'group' || level === 'collection' ? level : level.startsWith('card-') ? 'card' : undefined;
 export type IconSize = 'sm' | 'md' | 'lg' | 'fill';
 
 /** Icon size = font size + k·u (fill takes the whole slot). */
@@ -154,18 +158,23 @@ const roundOn = (s: number) => Math.min(1, 100 * s);
 /**
  * Container padding, gap and radius. `padUnits` / `gapUnits` override the level's theme
  * defaults (pad-<level>, gap-<level>); `gap` is the per-element attribute and wins over both.
+ * The radius is a magnitude t on the family's concentric radius R0: `radius` is the per-element
+ * attribute, `radiusFactor` the theme's radius-<family>; R = t × R0 (wrappers and cards only).
  * Pass `height` to apply the half-height radius cap.
  */
-export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number } = {}) {
+export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number; radius?: number; radiusFactor?: number } = {}) {
   const x = inputs(input);
   const u = x.unit;
   const pad = input.padUnits ?? CONTAINERS[level].padding;
   const family = CONTAINERS[level].family;
   const r = controlRadius(u, x.radiusScale);
-  const radius = family === 'area' ? 0
+  const t = radiusFamily(level) ? input.radius ?? input.radiusFactor ?? 1 : 1;
+  if (!(t >= 0 && t <= 1)) throw new Error('container radius factor must be 0..1');
+  const r0 = family === 'area' ? 0
     : family === 'composite' ? r                                 // a control: its options take R − D
     : family === 'wrapper' ? r + pad * u * roundOn(x.radiusScale) // concentric with the controls it hugs
     : pad * u * Math.min(1, x.radiusScale);                      // container: at most the padding
+  const radius = t * r0;
   return {
     unit: u, border: x.border,
     padding: Math.max(0, pad * u - x.border),
