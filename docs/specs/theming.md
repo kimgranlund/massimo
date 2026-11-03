@@ -12,6 +12,7 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 | `border` | 0–2 px (whole) | 0 (surfaces separate by fill; invalid controls get a critical-tinted fill) |
 | `radius-scale` | 0–3 | 1 |
 | `radius-group`, `radius-collection`, `radius-card` | 0–1 (0.05 steps; the magnitude t of each family's concentric radius: 1 concentric, 0 square) | 1 |
+| `shadow-strength`, `surface-contrast`, `shadow-raised`, `shadow-floating`, `shadow-modal`, `card-raised` | see [elevation](elevation.md#parameters) | 1, 1, 1, 2, 2, 0 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | `type-ratio` | 1–1.5 | 1.333 |
 | `type-rhythm` | 0, 0.5, 1 (× u) | 1 |

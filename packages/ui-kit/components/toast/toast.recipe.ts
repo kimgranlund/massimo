@@ -44,7 +44,8 @@ export const toast = defineSlotRecipe({
       padding: 'max(0px, calc(var(--ui-pad-card-sm) * var(--u) - var(--b)))',
       borderWidth: 'var(--b)', borderStyle: 'solid', borderColor: 'border',
       borderRadius: 'calc(var(--ui-pad-card-sm) * var(--u) * min(1, var(--ui-radius-scale)))',
-      bg: 'bg.overlay', color: 'fg', boxShadow: 'md', overflow: 'hidden',
+      // Elevation level 4 (floating).
+      bg: 'elevation.overlay', color: 'fg', boxShadow: 'floating', overflow: 'hidden',
       zIndex: 'calc(1000 - var(--toast-index, 0))',
       // Collapsed: peek 2u a step and shrink 5% a step, at the frontmost toast's height.
       '--toast-y': 'calc(var(--toast-dir) * var(--toast-index, 0) * var(--toast-peek))',
@@ -87,7 +88,7 @@ export const toast = defineSlotRecipe({
         '&:is([data-starting-style], [data-ending-style])': { opacity: 0, scale: 0.97, transform: 'none' },
       },
     },
-    arrow: popupArrow('bg.overlay', 'border'),
+    arrow: popupArrow('elevation.overlay', 'border'),
     content: {
       display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gridAutoColumns: 'auto', columnGap: 'var(--u)', alignItems: 'center',
       transition: t('reveal', 'opacity'),

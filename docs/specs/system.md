@@ -37,7 +37,7 @@ The inputs are organized by the peer concepts the system governs. Each parameter
 | Space | margins and gutters | the container ladder `pad-<level>` / `gap-<level>`; `gap` per element | [geometry](geometry.md#containers) |
 | Curvature | roundness and corner shape | radius scale s, corner shape k, the concentric rule, the container magnitude t | [geometry](geometry.md#containers) |
 | Line | edges and separators | border B inside the padding; the separator rule; fills separate surfaces | [geometry](geometry.md#inputs) |
-| Elevation | how surfaces stack | fills by depth, shadows, overlay and backdrop, the floating and top layers | [color](color.md#roles) |
+| Elevation | how surfaces stack | six levels (page, panel, card, raised, floating, modal), each a fill, a shadow and a layer; shadow strength, surface contrast | [elevation](elevation.md) |
 | Vibrancy | richness and diversity of color | the Spectrum settings and the role mapping | [color](color.md) |
 | Emphasis | how loudly something speaks | variants, role steps (subtle, solid, fg), APCA text on solids | [color](color.md#roles) |
 | Typography | hierarchy and voice of text | type ratio and rhythm, faces, voices, roles | [typography](typography.md) |

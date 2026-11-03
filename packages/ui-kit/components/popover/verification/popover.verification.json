@@ -18,11 +18,11 @@
     },
     {
       "path": "components/popover/popover.recipe.ts",
-      "sha256": "3109c2e1904ad56c265f3d8978044465f0e4294c6754db0023c528ca4d925e7d"
+      "sha256": "3e0929f43c525c427218620a68684b27501fd7fc462b85f2ccde37acc3d98e04"
     },
     {
       "path": "components/popover/popup-parts.ts",
-      "sha256": "de42968d03bf4631117a42804730ffae42f12a057b930af4e9396ad6765d5ce1"
+      "sha256": "8dc4026411522e2ee72dc472d09f964f62d741d8c0335f415f89bc7872969bf7"
     },
     {
       "path": "components/popover/popover.manifest.json",

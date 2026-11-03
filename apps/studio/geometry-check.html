@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOWS, shadowWeights, elevationTokenVars } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -1000,6 +1000,44 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
   };
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/s${s} ${k}: got ${got}, want ${want}`); }
   box.remove();
+}
+// Elevation (docs/specs/elevation.md): level fills mix toward the page by surface-contrast; level
+// shadows pick sm or md by shadow-<level>, × shadow-strength; cards cast the raised shadow when raised.
+{
+  const cv = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+  const rgba = (color) => { cv.clearRect(0, 0, 1, 1); cv.fillStyle = '#000'; cv.fillStyle = color; cv.fillRect(0, 0, 1, 1); return [...cv.getImageData(0, 0, 1, 1).data]; };
+  const near = (a, b) => a.every((v, i) => Math.abs(v - b[i]) <= 2);
+  // Sum of the shadow layers' alphas, whatever color syntax the engine prints.
+  const alphaSum = (shadow) => shadow === 'none' ? 0 : shadow.split(/,(?![^(]*\))/).reduce((t, layer) => {
+    const c = layer.match(/(?:rgba?|color|oklch|oklab)\([^)]*\)/)?.[0];
+    return t + (c ? rgba(c)[3] / 255 : 0);
+  }, 0);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const base = (name) => SHADOWS[name].reduce((t, l) => t + l[dark], 0);
+  const want = (n, strength) => (shadowWeights(n).sm * base('sm') + shadowWeights(n).md * base('md')) * strength;
+  for (const [label, vars] of [['default', {}], ['flat', { '--ui-surface-contrast': 0 }], ['half', { '--ui-surface-contrast': 0.5, '--ui-shadow-strength': 0.5 }], ['none', { '--ui-shadow-floating': 0, '--ui-shadow-modal': 1, '--ui-card-raised': 1 }], ['off', { '--ui-shadow-strength': 0 }]]) {
+    const box = document.createElement('div');
+    for (const [k, v] of Object.entries(vars)) box.style.setProperty(k, v);
+    // The scope sets elevation params, so it redeclares the elevation tokens (as the jig canvas does).
+    for (const [k, v] of Object.entries(elevationTokenVars())) box.style.setProperty(k, v);
+    box.innerHTML = `<ui-panel>p</ui-panel><ui-card>c</ui-card><div id="sf" style="box-shadow: var(--shadows-floating)"></div><div id="sm" style="box-shadow: var(--shadows-modal)"></div><div id="sr" style="box-shadow: var(--shadows-raised)"></div>
+      <div id="bg" style="background: var(--colors-bg)"></div><div id="bm" style="background: var(--colors-bg-muted)"></div><div id="bs" style="background: var(--colors-bg-subtle)"></div>`;
+    root.append(box);
+    const cs = (sel) => getComputedStyle(box.querySelector(sel));
+    const p = { contrast: vars['--ui-surface-contrast'] ?? 1, strength: vars['--ui-shadow-strength'] ?? 1, floating: vars['--ui-shadow-floating'] ?? 2, modal: vars['--ui-shadow-modal'] ?? 2, raised: 1, card: vars['--ui-card-raised'] ?? 0 };
+    const mix = (a, b, t) => a.map((v, i) => Math.round(v * t + b[i] * (1 - t)));
+    const [bg, bm, bs] = ['#bg', '#bm', '#bs'].map((s) => rgba(cs(s).backgroundColor));
+    const checks = {
+      'panel.fill': [near(rgba(cs('ui-panel').backgroundColor), mix(bm, bg, p.contrast)) ? 1 : 0, 1],
+      'card.fill': [near(rgba(cs('ui-card').backgroundColor), mix(bs, bg, p.contrast)) ? 1 : 0, 1],
+      'shadow.floating': [r2(alphaSum(cs('#sf').boxShadow)), r2(want(p.floating, p.strength))],
+      'shadow.modal': [r2(alphaSum(cs('#sm').boxShadow)), r2(want(p.modal, p.strength))],
+      'shadow.raised': [r2(alphaSum(cs('#sr').boxShadow)), r2(want(p.raised, p.strength))],
+      'card.shadow': [r2(alphaSum(cs('ui-card').boxShadow)), r2(want(p.raised, p.strength) * p.card)],
+    };
+    for (const [k, [got, w]] of Object.entries(checks)) { total++; if (Math.abs(got - w) > 0.02) fails.push(`elevation/${label} ${k}: got ${got}, want ${w}`); }
+    box.remove();
+  }
 }
 document.getElementById('out').textContent = JSON.stringify({ cases: cases.length, checks: total, precision, fails, rows }, null, 1);
 </script></body></html>

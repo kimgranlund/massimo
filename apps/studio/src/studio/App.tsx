@@ -8,7 +8,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens';
 import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, isSerifStack } from '@massimo/ui-kit/tokens';
@@ -110,8 +110,8 @@ export function App() {
     ...Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st).map(([f, st]) => `--fonts-${f}: ${st};`),
     ...[...SERIF_REGULAR_VOICES].filter((v) => isSerifStack(faces[voices[v]])).map((v) => `--font-voice-${v}-weight: 400;`),
   ];
-  // The canvas sets its own unit, ladder and motion params, so the u-based and motion Panda tokens recompute there too.
-  if (canvasDecls.length) canvasDecls.push(unitTokenCss(), motionTokenCss());
+  // The canvas sets its own unit, ladder, motion and elevation params, so the u-based, motion and elevation Panda tokens recompute there too.
+  if (canvasDecls.length) canvasDecls.push(unitTokenCss(), motionTokenCss(), elevationTokenCss());
   useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}`);
   const voiceAttrs = Object.fromEntries(Object.entries(voices).filter(([v, f]) => DEFAULT_VOICES[v as keyof VoiceMap] !== f).map(([v, f]) => [`data-font-${v}`, f]));
 
@@ -175,6 +175,16 @@ export function App() {
         {/* One field grid per tab: every group's rows share the label | control | readout columns. */}
         <ui-field-grid className={s.panelBody}>
           {tab === 'geometry' && geometry}
+          {tab === 'geometry' && (
+            <Group title="Elevation">
+              <Range label={PARAMS['shadow-strength'].label} value={params['shadow-strength']} min={PARAMS['shadow-strength'].min} max={PARAMS['shadow-strength'].max} step={PARAMS['shadow-strength'].step} onValue={(v) => setParam('shadow-strength', v)} />
+              <Range label={PARAMS['surface-contrast'].label} value={params['surface-contrast']} min={PARAMS['surface-contrast'].min} max={PARAMS['surface-contrast'].max} step={PARAMS['surface-contrast'].step} onValue={(v) => setParam('surface-contrast', v)} />
+              {(['shadow-raised', 'shadow-floating', 'shadow-modal'] as const).map((k) => (
+                <Segmented key={k} label={PARAMS[k].label} value={String(params[k])} onValue={(v) => setParam(k, Number(v))} options={[['0', 'None'], ['1', 'Small'], ['2', 'Medium']]} />
+              ))}
+              <Switch label={PARAMS['card-raised'].label} checked={params['card-raised'] === 1} onValue={(v) => setParam('card-raised', v ? 1 : 0)} />
+            </Group>
+          )}
           {tab === 'geometry' && (
             <Group title="Look">
               <Select label="Icons" value={icons} options={ICON_SET_NAMES.map((n) => [n, n])} onValue={setIcons} />

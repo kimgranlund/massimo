@@ -73,8 +73,8 @@
     "elevation": {
       "title": "Elevation",
       "governs": "how surfaces stack",
-      "mechanism": "fills by depth (panel, card, nested card), shadows sm / md, bg.overlay and bg.backdrop, the floating layer and the top layer",
-      "documentation": "../../docs/specs/color.md#roles",
+      "mechanism": "six levels (page, panel, card, raised, floating, modal), each a fill, a shadow and a layer; the theme tunes shadow strength, surface contrast, the shadow per lifted level and raised cards",
+      "documentation": "../../docs/specs/elevation.md",
       "searchTerms": [
         "elevation",
         "depth",
@@ -465,6 +465,41 @@
         "inset"
       ],
       "concept": "space"
+    },
+    "elevation": {
+      "title": "Elevation",
+      "scope": "theme",
+      "concept": "elevation",
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "shadow-strength",
+        "surface-contrast",
+        "shadow-raised",
+        "shadow-floating",
+        "shadow-modal",
+        "card-raised"
+      ],
+      "cssVar": "--ui-<member>",
+      "formula": "six levels (page 0, panel 1, card 2, raised 3, floating 4, modal 5), each a fill, a shadow and a layer (ELEVATION, tokens/elevation); every shadow alpha × shadow-strength; each surface fill = mix(level fill, page fill, surface-contrast); shadow-<level> picks none, sm or md (weights sm = 1 − (n − 1)², md = n(n − 1)/2); card-raised lifts cards to the raised shadow",
+      "drives": [
+        "foundation:colors",
+        "tokens:borders-shadows",
+        "tokens:color-roles"
+      ],
+      "documentation": "../../docs/specs/elevation.md",
+      "searchTerms": [
+        "elevation",
+        "shadow",
+        "depth",
+        "surface",
+        "layer",
+        "raised",
+        "floating",
+        "modal"
+      ]
     },
     "spectrum": {
       "title": "Spectrum color settings",

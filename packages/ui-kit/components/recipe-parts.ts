@@ -219,7 +219,8 @@ export const ANCHORED = '@supports (position-area: block-end) and (anchor-scope:
  */
 export const floatingPopup: Style = {
   flexDirection: 'column', position: 'fixed', inset: 'auto', margin: 0, overflowY: 'auto', overscrollBehavior: 'contain',
-  bg: 'bg.overlay', color: 'fg', borderColor: 'border', boxShadow: 'md',
+  // Elevation level 4 (floating): the overlay fill and the floating shadow (tokens/elevation).
+  bg: 'elevation.overlay', color: 'fg', borderColor: 'border', boxShadow: 'floating',
   minWidth: 'var(--anchor-width)', maxHeight: 'var(--available-height)',
   // Grows from its anchor edge: the top edge below the anchor (the default side), the opposite
   // edge on the other sides (sideOrigins, by data-side).

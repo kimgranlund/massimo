@@ -16,7 +16,7 @@ export const popover = defineSlotRecipe({
     trigger: { [ANCHORED]: { anchorName: 'var(--ui-anchor)' } },
     positioner: popupPositioner(80),
     popup: cardPopup('card-sm', 'group'),
-    arrow: popupArrow('bg.overlay', 'border'),
+    arrow: popupArrow('elevation.overlay', 'border'),
     title: popupTitle,
     description: popupDescription,
     close: { alignSelf: 'end' },

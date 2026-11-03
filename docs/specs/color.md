@@ -47,7 +47,7 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 | `data.1` … `data.6` | data 1–6 at 9 (chart series, categories) |
 | `shadow` | neutral 12 light, neutral 1 dark (the shadow color) |
 
-**Shadows.** `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and a runtime spectrum. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
+**Shadows.** Which surface casts which shadow, and the elevation tokens built on these, are in [elevation](elevation.md). `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and a runtime spectrum. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
 
 ## Schemes
 

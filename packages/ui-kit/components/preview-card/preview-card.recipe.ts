@@ -18,7 +18,7 @@ export const previewCard = defineSlotRecipe({
     trigger: { display: 'inline-block', [ANCHORED]: { anchorName: 'var(--ui-anchor)' } },
     positioner: popupPositioner(80),
     popup: cardPopup('card-md', 'collection'),
-    arrow: popupArrow('bg.overlay', 'border'),
+    arrow: popupArrow('elevation.overlay', 'border'),
   },
 });
 export { previewCard as 'preview-card' };

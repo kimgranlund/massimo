@@ -4,7 +4,8 @@
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
-import { ROLE_STEPS, SHADOWS, roleStep, shadowCss, withAlpha } from './spectrum/index.ts';
+import { ROLE_STEPS, SHADOWS, roleStep, withAlpha } from './spectrum/index.ts';
+import { elevationTokens } from '../elevation/index.ts';
 
 type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
 const D = DEFAULTS as Snapshot;
@@ -34,13 +35,20 @@ for (const [role, entry] of Object.entries(ROLE_STEPS)) {
   (roles[camelGroup] ??= {})[key] = schemed(ref, dref);
 }
 
-// Elevation shadows: scheme-aware, colored by the shadow role so a runtime spectrum restyles them too.
-export const semanticShadows = Object.fromEntries((Object.keys(SHADOWS) as (keyof typeof SHADOWS)[]).map((name) => [
-  name, schemed(shadowCss(name, 'light', '{colors.shadow}'), shadowCss(name, 'dark', '{colors.shadow}')),
-]));
+// Elevation (tokens/elevation, docs/specs/elevation.md). Shadow layers are per-scheme colors: the
+// shadow role at each layer's light or dark alpha. The shadow tokens scale them by the theme
+// (shadow-strength, shadow-<level>, card-raised) and the fills mix toward the page fill
+// (surface-contrast); both are declared per scheme too, so a .dark / .light subtree re-resolves them.
+const shadowLayer = Object.fromEntries((Object.keys(SHADOWS) as (keyof typeof SHADOWS)[]).flatMap((name) =>
+  SHADOWS[name].map((l, i) => [`${name}${i + 1}`, schemed(withAlpha('{colors.shadow}', l.light), withAlpha('{colors.shadow}', l.dark))])));
+const elevation = elevationTokens();
+export const semanticShadows = Object.fromEntries(Object.entries(elevation.shadows).map(([k, v]) => [k, schemed(v, v)]));
+const elevationFills = Object.fromEntries(Object.entries(elevation.fills).map(([k, v]) => [k, schemed(v, v)]));
 
 export const semanticColors = {
   spectrum,
   ...roles,
+  elevation: elevationFills,
+  shadowLayer,
   fg: { ...roles.fg, onSolid: schemed(D.onSolid.light, D.onSolid.dark), selected: schemed(`{colors.spectrum.${D.roles.neutral}.12}`, D.onSolid.dark) },
 };

@@ -32,7 +32,8 @@ export const dialogBackdrop = {
 export const dialogSurface = {
   ...LEVEL,
   position: 'fixed', flexDirection: 'column', overflowY: 'auto', overscrollBehavior: 'contain',
-  color: 'fg', bg: 'bg.overlay', boxShadow: 'md',
+  // Elevation level 5 (modal): the overlay fill and the modal shadow, over bg.backdrop (tokens/elevation).
+  color: 'fg', bg: 'elevation.overlay', boxShadow: 'modal',
   borderWidth: 'var(--b)', borderStyle: 'solid', borderColor: 'border',
   padding: 'max(0px, calc(var(--dp) * var(--u) - var(--b)))',
   // The gap attribute is on the host (--ui-gap does not inherit): the popup takes it.

@@ -14,7 +14,7 @@
     },
     {
       "path": "components/preview-card/preview-card.recipe.ts",
-      "sha256": "c30035bf2f7644b0f28bc3bef294972c5cc94a0726c428389d26a4c8ae356344"
+      "sha256": "8c61abfa41e202f5eb2fba3a8f2140a8b30357e5e477a0f22e1ab59d69d5b6da"
     },
     {
       "path": "components/preview-card/preview-card.manifest.json",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/popover/popup-parts.ts",
-      "sha256": "de42968d03bf4631117a42804730ffae42f12a057b930af4e9396ad6765d5ce1"
+      "sha256": "8dc4026411522e2ee72dc472d09f964f62d741d8c0335f415f89bc7872969bf7"
     },
     {
       "path": "dom/popup.ts",

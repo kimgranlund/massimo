@@ -1484,6 +1484,16 @@
         "border (px)"
       ]
     },
+    "parameter:card-raised": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Raise cards",
+      "searchTerms": [
+        "card-raised",
+        "raise cards"
+      ]
+    },
     "parameter:corner-shape": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/curvature",
@@ -1958,6 +1968,46 @@
         "warning"
       ]
     },
+    "parameter:shadow-floating": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Floating shadow",
+      "searchTerms": [
+        "shadow-floating",
+        "floating shadow"
+      ]
+    },
+    "parameter:shadow-modal": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Modal shadow",
+      "searchTerms": [
+        "shadow-modal",
+        "modal shadow"
+      ]
+    },
+    "parameter:shadow-raised": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Raised shadow",
+      "searchTerms": [
+        "shadow-raised",
+        "raised shadow"
+      ]
+    },
+    "parameter:shadow-strength": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Shadow strength",
+      "searchTerms": [
+        "shadow-strength",
+        "shadow strength"
+      ]
+    },
     "parameter:spectrum-base": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
@@ -2326,6 +2376,16 @@
         "type"
       ]
     },
+    "parameter:surface-contrast": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Surface contrast",
+      "searchTerms": [
+        "surface-contrast",
+        "surface contrast"
+      ]
+    },
     "parameter:type-ratio": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/type-scale",
@@ -2454,6 +2514,22 @@
         "squircle",
         "superellipse",
         "corner shape"
+      ]
+    },
+    "parameters:elevation": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/elevation",
+      "availability": "implemented",
+      "title": "Elevation",
+      "searchTerms": [
+        "elevation",
+        "shadow",
+        "depth",
+        "surface",
+        "layer",
+        "raised",
+        "floating",
+        "modal"
       ]
     },
     "parameters:faces": {
@@ -10439,6 +10515,56 @@
       "from": "parameter:gap-page",
       "relation": "memberOf",
       "to": "parameters:containers"
+    },
+    {
+      "from": "parameters:elevation",
+      "relation": "drives",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "parameters:elevation",
+      "relation": "drives",
+      "to": "tokens:borders-shadows"
+    },
+    {
+      "from": "parameters:elevation",
+      "relation": "drives",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "parameters:elevation",
+      "relation": "expresses",
+      "to": "concept:elevation"
+    },
+    {
+      "from": "parameter:shadow-strength",
+      "relation": "memberOf",
+      "to": "parameters:elevation"
+    },
+    {
+      "from": "parameter:surface-contrast",
+      "relation": "memberOf",
+      "to": "parameters:elevation"
+    },
+    {
+      "from": "parameter:shadow-raised",
+      "relation": "memberOf",
+      "to": "parameters:elevation"
+    },
+    {
+      "from": "parameter:shadow-floating",
+      "relation": "memberOf",
+      "to": "parameters:elevation"
+    },
+    {
+      "from": "parameter:shadow-modal",
+      "relation": "memberOf",
+      "to": "parameters:elevation"
+    },
+    {
+      "from": "parameter:card-raised",
+      "relation": "memberOf",
+      "to": "parameters:elevation"
     },
     {
       "from": "parameters:spectrum",

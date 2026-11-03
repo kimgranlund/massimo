@@ -13,6 +13,7 @@ export const tokens = defineTokens({
 export const semanticTokens = defineSemanticTokens({ colors: semanticColors, shadows: semanticShadows, durations: semanticDurations, easings: semanticEasings });
 
 export * from './themes/index.ts';
+export * from './elevation/index.ts';
 export * from './geometry/resolve.ts';
 export * from './typography/resolve.ts';
 export * from './typography/format.ts';

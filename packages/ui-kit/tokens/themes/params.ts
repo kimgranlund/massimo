@@ -15,6 +15,15 @@ export const PARAMS = {
   'radius-group':      { label: 'Group radius (× concentric)',      min: 0, max: 1, step: 0.05, default: 1 },
   'radius-collection': { label: 'Collection radius (× concentric)', min: 0, max: 1, step: 0.05, default: 1 },
   'radius-card':       { label: 'Card radius (× concentric)',          min: 0, max: 1, step: 0.05, default: 1 },
+  // Elevation (tokens/elevation, docs/specs/elevation.md): every shadow's alpha × shadow-strength; each
+  // surface fill mixed toward the page fill by surface-contrast (0 one fill, shadows only); the shadow
+  // each lifted level casts (0 none, 1 sm, 2 md); card-raised lifts cards to the raised level.
+  'shadow-strength':  { label: 'Shadow strength',  min: 0, max: 2, step: 0.05, default: 1 },
+  'surface-contrast': { label: 'Surface contrast', min: 0, max: 1, step: 0.05, default: 1 },
+  'shadow-raised':    { label: 'Raised shadow',    min: 0, max: 2, step: 1, default: 1 },
+  'shadow-floating':  { label: 'Floating shadow',  min: 0, max: 2, step: 1, default: 2 },
+  'shadow-modal':     { label: 'Modal shadow',     min: 0, max: 2, step: 1, default: 2 },
+  'card-raised':      { label: 'Raise cards',      min: 0, max: 1, step: 1, default: 0 },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4.5 },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
   // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).

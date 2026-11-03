@@ -47,7 +47,8 @@ export function popupPositioner(maxWidth: number): Style {
 export const popupSurface: Style = {
   display: 'flex', flexDirection: 'column', flex: '1 1 auto', minHeight: 0, overflowY: 'auto', overscrollBehavior: 'contain',
   position: 'relative', boxSizing: 'border-box',
-  bg: 'bg.overlay', color: 'fg', borderStyle: 'solid', borderWidth: 'var(--b)', borderColor: 'border', boxShadow: 'md',
+  // Elevation level 4 (floating): the overlay fill and the floating shadow (tokens/elevation).
+  bg: 'elevation.overlay', color: 'fg', borderStyle: 'solid', borderWidth: 'var(--b)', borderColor: 'border', boxShadow: 'floating',
   '--ui-gap': 'inherit',
   transformOrigin: 'var(--transform-origin)', opacity: 0, scale: 0.97,
   transition: t('reveal', 'opacity', 'scale'),

@@ -106,8 +106,11 @@ test('one color vocabulary: every brand and feedback role has the same steps, no
   assert.deepEqual([...ROLE_STEPS['critical-solid']], ['critical', 9]);
   assert.deepEqual([...ROLE_STEPS['neutral-border']], ['neutral', 7]);
   // Shadows follow the scheme and the shadow role, never raw black.
+  // Shadows draw on the per-scheme shadow layer colors, which are the shadow role at each scheme's alpha.
   const md = (semanticShadows as Record<string, { value: Record<string, string> }>).md.value;
-  assert.match(md.base, /\{colors\.shadow\}/);
-  assert.notEqual(md.base, md._dark);
+  assert.match(md.base, /\{colors\.shadowLayer\.md1\}/);
+  const layer = (c.shadowLayer as Record<string, { value: Record<string, string> }>).md1.value;
+  assert.match(layer.base, /\{colors\.shadow\}/);
+  assert.notEqual(layer.base, layer._dark);
   assert.ok(!/oklch\(0 0 0/.test(JSON.stringify(semanticShadows)));
 });

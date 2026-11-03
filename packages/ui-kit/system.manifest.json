@@ -24,6 +24,7 @@
     "manifestLanguage": "../../docs/specs/manifest-language.md",
     "geometry": "../../docs/specs/geometry.md",
     "color": "../../docs/specs/color.md",
+    "elevation": "../../docs/specs/elevation.md",
     "typography": "../../docs/specs/typography.md",
     "motion": "../../docs/specs/motion.md",
     "icons": "../../docs/specs/icons.md",
