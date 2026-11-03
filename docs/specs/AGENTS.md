@@ -2,7 +2,7 @@
 
 What the system is and must do, edited in place. Start with the overview.
 
-- [system.md](system.md): principles, layers, generated outputs and their commands, the DTCG export.
+- [system.md](system.md): principles, the system as a function (every input and what it drives), layers, generated outputs and their commands, the DTCG export.
 - [geometry.md](geometry.md): the unit u, controls and slots, badges/tags/chips, choices and tracks, containers, verification.
 - [color.md](color.md): Spectrum ramps, step semantics, roles, schemes, snapshot and runtime overrides.
 - [components.md](components.md): foundations (UIElement, UIFormElement, slots, modality, FOUC) and the component inventory.

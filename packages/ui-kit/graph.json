@@ -1300,6 +1300,1069 @@
         "meter"
       ]
     },
+    "parameter:border": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/border",
+      "availability": "implemented",
+      "title": "Border (px)",
+      "searchTerms": [
+        "border",
+        "border (px)"
+      ]
+    },
+    "parameter:corner-shape": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/curvature",
+      "availability": "implemented",
+      "title": "Corner shape",
+      "searchTerms": [
+        "corner-shape",
+        "corner shape"
+      ]
+    },
+    "parameter:face-controls": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/faces",
+      "availability": "implemented",
+      "searchTerms": [
+        "controls"
+      ]
+    },
+    "parameter:face-display": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/faces",
+      "availability": "implemented",
+      "searchTerms": [
+        "display"
+      ]
+    },
+    "parameter:face-mono": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/faces",
+      "availability": "implemented",
+      "searchTerms": [
+        "mono"
+      ]
+    },
+    "parameter:face-sans": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/faces",
+      "availability": "implemented",
+      "searchTerms": [
+        "sans"
+      ]
+    },
+    "parameter:face-serif": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/faces",
+      "availability": "implemented",
+      "searchTerms": [
+        "serif"
+      ]
+    },
+    "parameter:gap-card-lg": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-lg gap (u)",
+      "searchTerms": [
+        "gap-card-lg",
+        "card-lg gap (u)"
+      ]
+    },
+    "parameter:gap-card-md": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-md gap (u)",
+      "searchTerms": [
+        "gap-card-md",
+        "card-md gap (u)"
+      ]
+    },
+    "parameter:gap-card-sm": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-sm gap (u)",
+      "searchTerms": [
+        "gap-card-sm",
+        "card-sm gap (u)"
+      ]
+    },
+    "parameter:gap-card-xl": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-xl gap (u)",
+      "searchTerms": [
+        "gap-card-xl",
+        "card-xl gap (u)"
+      ]
+    },
+    "parameter:gap-card-xs": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-xs gap (u)",
+      "searchTerms": [
+        "gap-card-xs",
+        "card-xs gap (u)"
+      ]
+    },
+    "parameter:gap-collection": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "collection gap (u)",
+      "searchTerms": [
+        "gap-collection",
+        "collection gap (u)"
+      ]
+    },
+    "parameter:gap-composite": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "composite gap (u)",
+      "searchTerms": [
+        "gap-composite",
+        "composite gap (u)"
+      ]
+    },
+    "parameter:gap-group": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "group gap (u)",
+      "searchTerms": [
+        "gap-group",
+        "group gap (u)"
+      ]
+    },
+    "parameter:gap-page": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "page gap (u)",
+      "searchTerms": [
+        "gap-page",
+        "page gap (u)"
+      ]
+    },
+    "parameter:gap-panel": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "panel gap (u)",
+      "searchTerms": [
+        "gap-panel",
+        "panel gap (u)"
+      ]
+    },
+    "parameter:gap-region": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "region gap (u)",
+      "searchTerms": [
+        "gap-region",
+        "region gap (u)"
+      ]
+    },
+    "parameter:intent-emphasis": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/intents",
+      "availability": "implemented",
+      "title": "emphasis spring",
+      "searchTerms": [
+        "intent-emphasis",
+        "emphasis spring"
+      ]
+    },
+    "parameter:intent-feedback": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/intents",
+      "availability": "implemented",
+      "title": "feedback spring",
+      "searchTerms": [
+        "intent-feedback",
+        "feedback spring"
+      ]
+    },
+    "parameter:intent-reveal": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/intents",
+      "availability": "implemented",
+      "title": "reveal spring",
+      "searchTerms": [
+        "intent-reveal",
+        "reveal spring"
+      ]
+    },
+    "parameter:intent-toggle": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/intents",
+      "availability": "implemented",
+      "title": "toggle spring",
+      "searchTerms": [
+        "intent-toggle",
+        "toggle spring"
+      ]
+    },
+    "parameter:motion-bounce": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/motion-global",
+      "availability": "implemented",
+      "title": "Bounce scale",
+      "searchTerms": [
+        "motion-bounce",
+        "bounce scale"
+      ]
+    },
+    "parameter:motion-scale": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/motion-global",
+      "availability": "implemented",
+      "title": "Duration scale",
+      "searchTerms": [
+        "motion-scale",
+        "duration scale"
+      ]
+    },
+    "parameter:pad-card-lg": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-lg padding (u)",
+      "searchTerms": [
+        "pad-card-lg",
+        "card-lg padding (u)"
+      ]
+    },
+    "parameter:pad-card-md": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-md padding (u)",
+      "searchTerms": [
+        "pad-card-md",
+        "card-md padding (u)"
+      ]
+    },
+    "parameter:pad-card-sm": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-sm padding (u)",
+      "searchTerms": [
+        "pad-card-sm",
+        "card-sm padding (u)"
+      ]
+    },
+    "parameter:pad-card-xl": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-xl padding (u)",
+      "searchTerms": [
+        "pad-card-xl",
+        "card-xl padding (u)"
+      ]
+    },
+    "parameter:pad-card-xs": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "card-xs padding (u)",
+      "searchTerms": [
+        "pad-card-xs",
+        "card-xs padding (u)"
+      ]
+    },
+    "parameter:pad-collection": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "collection padding (u)",
+      "searchTerms": [
+        "pad-collection",
+        "collection padding (u)"
+      ]
+    },
+    "parameter:pad-composite": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "composite padding (u)",
+      "searchTerms": [
+        "pad-composite",
+        "composite padding (u)"
+      ]
+    },
+    "parameter:pad-group": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "group padding (u)",
+      "searchTerms": [
+        "pad-group",
+        "group padding (u)"
+      ]
+    },
+    "parameter:pad-page": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "page padding (u)",
+      "searchTerms": [
+        "pad-page",
+        "page padding (u)"
+      ]
+    },
+    "parameter:pad-panel": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "panel padding (u)",
+      "searchTerms": [
+        "pad-panel",
+        "panel padding (u)"
+      ]
+    },
+    "parameter:pad-region": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "region padding (u)",
+      "searchTerms": [
+        "pad-region",
+        "region padding (u)"
+      ]
+    },
+    "parameter:radius-scale": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/curvature",
+      "availability": "implemented",
+      "title": "Corner radius",
+      "searchTerms": [
+        "radius-scale",
+        "corner radius"
+      ]
+    },
+    "parameter:role-critical": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "critical"
+      ]
+    },
+    "parameter:role-data1": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "data1"
+      ]
+    },
+    "parameter:role-data2": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "data2"
+      ]
+    },
+    "parameter:role-data3": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "data3"
+      ]
+    },
+    "parameter:role-data4": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "data4"
+      ]
+    },
+    "parameter:role-data5": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "data5"
+      ]
+    },
+    "parameter:role-data6": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "data6"
+      ]
+    },
+    "parameter:role-info": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "info"
+      ]
+    },
+    "parameter:role-neutral": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "neutral"
+      ]
+    },
+    "parameter:role-primary": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "primary"
+      ]
+    },
+    "parameter:role-secondary": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "secondary"
+      ]
+    },
+    "parameter:role-success": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "success"
+      ]
+    },
+    "parameter:role-warning": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "searchTerms": [
+        "warning"
+      ]
+    },
+    "parameter:spectrum-base": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Base chroma %",
+      "searchTerms": [
+        "base",
+        "base chroma %"
+      ]
+    },
+    "parameter:spectrum-chroma": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Requested chroma",
+      "searchTerms": [
+        "chroma",
+        "requested chroma"
+      ]
+    },
+    "parameter:spectrum-cvd": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Vision simulation",
+      "searchTerms": [
+        "cvd",
+        "vision simulation"
+      ]
+    },
+    "parameter:spectrum-dark-tone": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Dark endpoint",
+      "searchTerms": [
+        "dark tone",
+        "dark endpoint"
+      ]
+    },
+    "parameter:spectrum-falloff": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Chroma falloff",
+      "searchTerms": [
+        "falloff",
+        "chroma falloff"
+      ]
+    },
+    "parameter:spectrum-grays": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Additional grays",
+      "searchTerms": [
+        "grays",
+        "additional grays"
+      ]
+    },
+    "parameter:spectrum-harmony": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Harmony",
+      "searchTerms": [
+        "harmony",
+        "harmony"
+      ]
+    },
+    "parameter:spectrum-hb": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Hue balance",
+      "searchTerms": [
+        "hb",
+        "hue balance"
+      ]
+    },
+    "parameter:spectrum-hue": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "First hue",
+      "searchTerms": [
+        "hue",
+        "first hue"
+      ]
+    },
+    "parameter:spectrum-hue-set": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Hues",
+      "searchTerms": [
+        "hue set",
+        "hues"
+      ]
+    },
+    "parameter:spectrum-key-c": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Chroma distribution",
+      "searchTerms": [
+        "key c",
+        "chroma distribution"
+      ]
+    },
+    "parameter:spectrum-ladder": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Scale",
+      "searchTerms": [
+        "ladder",
+        "scale"
+      ]
+    },
+    "parameter:spectrum-mat": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Tinted neutral",
+      "searchTerms": [
+        "mat",
+        "tinted neutral"
+      ]
+    },
+    "parameter:spectrum-neutral-from": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Neutral hue source",
+      "searchTerms": [
+        "neutral from",
+        "neutral hue source"
+      ]
+    },
+    "parameter:spectrum-primary": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Harmony primary",
+      "searchTerms": [
+        "primary",
+        "harmony primary"
+      ]
+    },
+    "parameter:spectrum-pt": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Manual peak tone",
+      "searchTerms": [
+        "pt",
+        "manual peak tone"
+      ]
+    },
+    "parameter:spectrum-pt-auto": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Peak tone",
+      "searchTerms": [
+        "pt auto",
+        "peak tone"
+      ]
+    },
+    "parameter:spectrum-quad-start": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Unique start",
+      "searchTerms": [
+        "quad start",
+        "unique start"
+      ]
+    },
+    "parameter:spectrum-radix-grays": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Radix grays",
+      "searchTerms": [
+        "radix grays",
+        "radix grays"
+      ]
+    },
+    "parameter:spectrum-rc": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Chroma origin",
+      "searchTerms": [
+        "rc",
+        "chroma origin"
+      ]
+    },
+    "parameter:spectrum-secondary": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Secondary accent",
+      "searchTerms": [
+        "secondary",
+        "secondary accent"
+      ]
+    },
+    "parameter:spectrum-target": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Gamut",
+      "searchTerms": [
+        "target",
+        "gamut"
+      ]
+    },
+    "parameter:spectrum-tint": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Neutral tint",
+      "searchTerms": [
+        "tint",
+        "neutral tint"
+      ]
+    },
+    "parameter:spectrum-tone-max": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Light endpoint",
+      "searchTerms": [
+        "tone max",
+        "light endpoint"
+      ]
+    },
+    "parameter:spring-bouncy-bounce": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "bouncy bounce",
+      "searchTerms": [
+        "spring-bouncy-bounce",
+        "bouncy bounce"
+      ]
+    },
+    "parameter:spring-bouncy-duration": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "bouncy duration (s)",
+      "searchTerms": [
+        "spring-bouncy-duration",
+        "bouncy duration (s)"
+      ]
+    },
+    "parameter:spring-quick-bounce": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "quick bounce",
+      "searchTerms": [
+        "spring-quick-bounce",
+        "quick bounce"
+      ]
+    },
+    "parameter:spring-quick-duration": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "quick duration (s)",
+      "searchTerms": [
+        "spring-quick-duration",
+        "quick duration (s)"
+      ]
+    },
+    "parameter:spring-smooth-bounce": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "smooth bounce",
+      "searchTerms": [
+        "spring-smooth-bounce",
+        "smooth bounce"
+      ]
+    },
+    "parameter:spring-smooth-duration": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "smooth duration (s)",
+      "searchTerms": [
+        "spring-smooth-duration",
+        "smooth duration (s)"
+      ]
+    },
+    "parameter:spring-snappy-bounce": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "snappy bounce",
+      "searchTerms": [
+        "spring-snappy-bounce",
+        "snappy bounce"
+      ]
+    },
+    "parameter:spring-snappy-duration": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "snappy duration (s)",
+      "searchTerms": [
+        "spring-snappy-duration",
+        "snappy duration (s)"
+      ]
+    },
+    "parameter:subtree-gap": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "gap"
+      ]
+    },
+    "parameter:subtree-icon-size": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "icon-size"
+      ]
+    },
+    "parameter:subtree-scheme": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "scheme"
+      ]
+    },
+    "parameter:subtree-size": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "size"
+      ]
+    },
+    "parameter:subtree-type": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "searchTerms": [
+        "type"
+      ]
+    },
+    "parameter:type-ratio": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/type-scale",
+      "availability": "implemented",
+      "title": "Type ratio",
+      "searchTerms": [
+        "type-ratio",
+        "type ratio"
+      ]
+    },
+    "parameter:type-rhythm": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/type-scale",
+      "availability": "implemented",
+      "title": "Type rhythm (u)",
+      "searchTerms": [
+        "type-rhythm",
+        "type rhythm (u)"
+      ]
+    },
+    "parameter:unit": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/unit",
+      "availability": "implemented",
+      "title": "Unit (px)",
+      "searchTerms": [
+        "unit",
+        "unit (px)"
+      ]
+    },
+    "parameter:voice-body": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "searchTerms": [
+        "body"
+      ]
+    },
+    "parameter:voice-code": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "searchTerms": [
+        "code"
+      ]
+    },
+    "parameter:voice-display": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "searchTerms": [
+        "display"
+      ]
+    },
+    "parameter:voice-heading": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "searchTerms": [
+        "heading"
+      ]
+    },
+    "parameter:voice-numeric": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "searchTerms": [
+        "numeric"
+      ]
+    },
+    "parameter:voice-ui": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "searchTerms": [
+        "ui"
+      ]
+    },
+    "parameters:border": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/border",
+      "availability": "implemented",
+      "title": "Border B",
+      "searchTerms": [
+        "border",
+        "border width",
+        "stroke"
+      ]
+    },
+    "parameters:containers": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/containers",
+      "availability": "implemented",
+      "title": "Container ladder",
+      "searchTerms": [
+        "padding",
+        "gap",
+        "spacing",
+        "container",
+        "card padding",
+        "inset"
+      ]
+    },
+    "parameters:curvature": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/curvature",
+      "availability": "implemented",
+      "title": "Curvature: radius scale s and corner shape k",
+      "searchTerms": [
+        "radius",
+        "corner radius",
+        "roundness",
+        "curvature",
+        "squircle",
+        "superellipse",
+        "corner shape"
+      ]
+    },
+    "parameters:faces": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/faces",
+      "availability": "implemented",
+      "title": "Font faces",
+      "searchTerms": [
+        "font",
+        "typeface",
+        "font family",
+        "font stack"
+      ]
+    },
+    "parameters:intents": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/intents",
+      "availability": "implemented",
+      "title": "Motion intents",
+      "searchTerms": [
+        "intent",
+        "feedback",
+        "toggle",
+        "reveal",
+        "emphasis"
+      ]
+    },
+    "parameters:motion-global": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/motion-global",
+      "availability": "implemented",
+      "title": "Motion multipliers",
+      "searchTerms": [
+        "motion",
+        "animation speed",
+        "reduced motion",
+        "bounce",
+        "duration"
+      ]
+    },
+    "parameters:roles": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/roles",
+      "availability": "implemented",
+      "title": "Color roles",
+      "searchTerms": [
+        "role",
+        "brand color",
+        "accent",
+        "primary color",
+        "semantic color"
+      ]
+    },
+    "parameters:spectrum": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Spectrum color settings",
+      "searchTerms": [
+        "color",
+        "palette",
+        "hue",
+        "chroma",
+        "tone",
+        "ramp",
+        "neutral",
+        "gamut",
+        "harmony"
+      ]
+    },
+    "parameters:springs": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/springs",
+      "availability": "implemented",
+      "title": "Springs",
+      "searchTerms": [
+        "spring",
+        "easing",
+        "curve",
+        "damping"
+      ]
+    },
+    "parameters:subtree": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/subtree",
+      "availability": "implemented",
+      "title": "Per-subtree inputs",
+      "searchTerms": [
+        "size",
+        "icon size",
+        "dark mode",
+        "color scheme",
+        "subtree"
+      ]
+    },
+    "parameters:type-scale": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/type-scale",
+      "availability": "implemented",
+      "title": "Type scale: ratio r and rhythm",
+      "searchTerms": [
+        "type scale",
+        "modular scale",
+        "type ratio",
+        "line height",
+        "rhythm",
+        "baseline grid"
+      ]
+    },
+    "parameters:unit": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/unit",
+      "availability": "implemented",
+      "title": "Unit u",
+      "searchTerms": [
+        "unit",
+        "u",
+        "base unit",
+        "density",
+        "scale"
+      ]
+    },
+    "parameters:voices": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/voices",
+      "availability": "implemented",
+      "title": "Font voices",
+      "searchTerms": [
+        "voice",
+        "heading font",
+        "body font"
+      ]
+    },
     "part:accordion-header": {
       "kind": "part",
       "source": "components/accordion/accordion.manifest.json#/nodes/2",
@@ -8712,6 +9775,706 @@
       "from": "component:tooltip",
       "relation": "uses",
       "to": "component:popover"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:spacing"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:sizes"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:radii"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:font-sizes"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "parameters:unit",
+      "relation": "drives",
+      "to": "tokens:container-ladder"
+    },
+    {
+      "from": "parameter:unit",
+      "relation": "memberOf",
+      "to": "parameters:unit"
+    },
+    {
+      "from": "parameters:border",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:border",
+      "relation": "drives",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "parameters:border",
+      "relation": "drives",
+      "to": "tokens:borders-shadows"
+    },
+    {
+      "from": "parameter:border",
+      "relation": "memberOf",
+      "to": "parameters:border"
+    },
+    {
+      "from": "parameters:curvature",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:curvature",
+      "relation": "drives",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "parameters:curvature",
+      "relation": "drives",
+      "to": "tokens:radii"
+    },
+    {
+      "from": "parameter:radius-scale",
+      "relation": "memberOf",
+      "to": "parameters:curvature"
+    },
+    {
+      "from": "parameter:corner-shape",
+      "relation": "memberOf",
+      "to": "parameters:curvature"
+    },
+    {
+      "from": "parameters:type-scale",
+      "relation": "drives",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "parameters:type-scale",
+      "relation": "drives",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "parameters:type-scale",
+      "relation": "drives",
+      "to": "tokens:font-sizes"
+    },
+    {
+      "from": "parameter:type-ratio",
+      "relation": "memberOf",
+      "to": "parameters:type-scale"
+    },
+    {
+      "from": "parameter:type-rhythm",
+      "relation": "memberOf",
+      "to": "parameters:type-scale"
+    },
+    {
+      "from": "parameters:motion-global",
+      "relation": "drives",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "parameters:motion-global",
+      "relation": "drives",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "parameter:motion-scale",
+      "relation": "memberOf",
+      "to": "parameters:motion-global"
+    },
+    {
+      "from": "parameter:motion-bounce",
+      "relation": "memberOf",
+      "to": "parameters:motion-global"
+    },
+    {
+      "from": "parameters:springs",
+      "relation": "drives",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "parameters:springs",
+      "relation": "drives",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "parameter:spring-quick-duration",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-quick-bounce",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-smooth-duration",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-smooth-bounce",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-snappy-duration",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-snappy-bounce",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-bouncy-duration",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameter:spring-bouncy-bounce",
+      "relation": "memberOf",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "parameters:intents",
+      "relation": "drives",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "parameters:intents",
+      "relation": "drives",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "parameter:intent-feedback",
+      "relation": "memberOf",
+      "to": "parameters:intents"
+    },
+    {
+      "from": "parameter:intent-toggle",
+      "relation": "memberOf",
+      "to": "parameters:intents"
+    },
+    {
+      "from": "parameter:intent-reveal",
+      "relation": "memberOf",
+      "to": "parameters:intents"
+    },
+    {
+      "from": "parameter:intent-emphasis",
+      "relation": "memberOf",
+      "to": "parameters:intents"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "tokens:container-ladder"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "geometry:container"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "geometry:dialog"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "geometry:drawer"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "geometry:menu"
+    },
+    {
+      "from": "parameters:containers",
+      "relation": "drives",
+      "to": "geometry:toast"
+    },
+    {
+      "from": "parameter:pad-composite",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-composite",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-group",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-group",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-collection",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-collection",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-card-xs",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-card-xs",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-card-sm",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-card-sm",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-card-md",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-card-md",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-card-lg",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-card-lg",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-card-xl",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-card-xl",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-panel",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-panel",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-region",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-region",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:pad-page",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameter:gap-page",
+      "relation": "memberOf",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "parameters:spectrum",
+      "relation": "drives",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "parameters:spectrum",
+      "relation": "drives",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "parameters:spectrum",
+      "relation": "drives",
+      "to": "tokens:borders-shadows"
+    },
+    {
+      "from": "parameter:spectrum-hue-set",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-quad-start",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-hue",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-chroma",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-base",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-falloff",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-key-c",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-hb",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-rc",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-pt-auto",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-pt",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-dark-tone",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-tone-max",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-ladder",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-mat",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-tint",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-neutral-from",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-grays",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-radix-grays",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-harmony",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-primary",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-secondary",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-cvd",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-target",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameters:roles",
+      "relation": "drives",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "parameters:roles",
+      "relation": "drives",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "parameter:role-primary",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-secondary",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-neutral",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-critical",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-warning",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-success",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-info",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-data1",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-data2",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-data3",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-data4",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-data5",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameter:role-data6",
+      "relation": "memberOf",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "parameters:faces",
+      "relation": "drives",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "parameters:faces",
+      "relation": "drives",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "parameter:face-sans",
+      "relation": "memberOf",
+      "to": "parameters:faces"
+    },
+    {
+      "from": "parameter:face-serif",
+      "relation": "memberOf",
+      "to": "parameters:faces"
+    },
+    {
+      "from": "parameter:face-mono",
+      "relation": "memberOf",
+      "to": "parameters:faces"
+    },
+    {
+      "from": "parameter:face-display",
+      "relation": "memberOf",
+      "to": "parameters:faces"
+    },
+    {
+      "from": "parameter:face-controls",
+      "relation": "memberOf",
+      "to": "parameters:faces"
+    },
+    {
+      "from": "parameters:voices",
+      "relation": "drives",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "parameters:voices",
+      "relation": "drives",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "parameter:voice-display",
+      "relation": "memberOf",
+      "to": "parameters:voices"
+    },
+    {
+      "from": "parameter:voice-heading",
+      "relation": "memberOf",
+      "to": "parameters:voices"
+    },
+    {
+      "from": "parameter:voice-body",
+      "relation": "memberOf",
+      "to": "parameters:voices"
+    },
+    {
+      "from": "parameter:voice-ui",
+      "relation": "memberOf",
+      "to": "parameters:voices"
+    },
+    {
+      "from": "parameter:voice-numeric",
+      "relation": "memberOf",
+      "to": "parameters:voices"
+    },
+    {
+      "from": "parameter:voice-code",
+      "relation": "memberOf",
+      "to": "parameters:voices"
+    },
+    {
+      "from": "parameters:subtree",
+      "relation": "drives",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "parameters:subtree",
+      "relation": "drives",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "parameters:subtree",
+      "relation": "drives",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "parameters:subtree",
+      "relation": "drives",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "parameters:subtree",
+      "relation": "drives",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "parameter:subtree-size",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-icon-size",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-gap",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-scheme",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
+    },
+    {
+      "from": "parameter:subtree-type",
+      "relation": "memberOf",
+      "to": "parameters:subtree"
     }
   ]
 }

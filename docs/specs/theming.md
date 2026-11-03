@@ -23,6 +23,8 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 
 Saved themes live in `tokens/themes/themes.json` as overrides (`validateTheme` accepts only known parameters in range, plus `icons`), emitted as `:root[data-ui-theme="name"]`. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does.
 
+Every parameter is also a registry node (`parameter:<name>`) with its formula and what it drives in `contracts/parameters.json` ([system](system.md#the-system-as-a-function)).
+
 ## Per-element inputs
 
 - `size` / `data-size`: u for a subtree (2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, then 0.5 steps to 12).

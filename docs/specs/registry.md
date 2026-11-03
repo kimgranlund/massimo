@@ -15,7 +15,7 @@ All paths are relative to `packages/ui-kit`.
 | `components/<name>/<name>.md` | The guide: intent, usage, anatomy, keyboard, geometry, renderers | people |
 | `components/<name>/<name>.examples.json` | Runnable markup per node | people; mounted by tests |
 | `components/<name>/verification/<name>.verification.json` | Checks, bound source hashes, latest passing run | `npm run verification -- run <name>` |
-| `contracts/*.json` | Schemas and shared contracts: components, parts, composition, geometry families, foundations, states, tokens | people |
+| `contracts/*.json` | Schemas and shared contracts: components, parts, composition, geometry families, foundations, states, tokens, parameters | people |
 
 ## Folder layout
 
@@ -44,6 +44,8 @@ Styles are the folder's slot recipe module, named by the manifest's `styleSource
 | `geometry:` | A geometry family and its resolvers | `contracts/geometry-families.json` |
 | `context:` | A place a component may sit; containers `establish` one | `contracts/composition.json` |
 | `tokens:` | A token group: color roles, type roles, font sizes, motion, geometry parameters, spacing, the container ladder, sizes, radii, borders and shadows, conditions; each lists its Panda paths under `panda` | `contracts/tokens.json` |
+| `parameters:` | A group of inputs (unit, border, curvature, type scale, motion, springs, intents, containers, Spectrum, roles, faces, voices, subtree) and what it `drives` | `contracts/parameters.json` |
+| `parameter:` | One input a theme or subtree can change (`parameter:unit`, `parameter:spectrum-hue`); lookup adds its live range and default | `contracts/parameters.json`, ranges from the owning export |
 
 IDs are identities, not paths: moving a folder changes `source`, not the ID. Availability: `implemented` (registered element), `css-only` (container tags).
 
@@ -74,6 +76,14 @@ Relationships:
 | `allowedIn` | Supported contexts (must match the contract's `allowedParents`) |
 | `establishes` | A container creates this context |
 | `uses` | Depends on another capability (a component, icons, slots) |
+| `drives` | A parameter group (`parameters:<group>`) enters the formulas of a token group, geometry family or foundation |
+| `memberOf` | A parameter (`parameter:<id>`) belongs to its group |
+
+## Parameters
+
+`contracts/parameters.json` lists every input the kit derives from: theme parameters (`tokens/themes/params.ts` `PARAMS`), Spectrum settings (`SPECTRUM_FIELDS`), color roles, font faces and voices, and per-subtree inputs (`size`, `icon-size`, `gap`, scheme, type role). Each group gives its scope (theme or subtree), formula, documentation and `drives` targets, and names the export that owns its members' ranges and defaults; a test keeps the member lists equal to those exports. `constants` lists the coefficients the formulas fix (8u controls, 6u slots, 3u curvature, …).
+
+The graph has a `parameters:<group>` node per group and a `parameter:<id>` node per member (`parameter:radius-scale`, `parameter:spectrum-chroma`, `parameter:role-primary`). A lookup of a member returns its live `spec` (range, step, default) from the owning export; `--assembly` lists `parameters`: the groups that drive a token group or geometry family the component uses (`usesTokens`, `usesGeometry`; foundations are left out because every component follows all of them), each with the targets it reaches the component through.
 
 Renderers: `webComponent` (required), `react`, `html` (plain markup styled by the kit CSS through `data-ui` selectors). Status is per renderer: `completed` needs a module or documentation and a verification record pointer. `react.props` (generated) maps each graph ID to its React props: `inherits` (base types the kit does not declare, such as `Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix'>`) and `props`, one TypeScript-style line per declared prop (`size?: number = 50 // JSDoc description`). `--assembly` shows them under `react`.
 

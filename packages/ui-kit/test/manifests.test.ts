@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 import Ajv from 'ajv';
-import { KIT, styleModules, manifests, fromManifest, pointer, readSource, buildGraph, graphText, auditRecommendations, page, find, assembly } from '../scripts/registry-lib.ts';
+import { KIT, styleModules, manifests, fromManifest, pointer, readSource, buildGraph, graphText, auditRecommendations, page, find, assembly, lookup, parameterId, specMembers } from '../scripts/registry-lib.ts';
 import { staleness, componentFolders } from '../scripts/verification.ts';
 import { GEOMETRY_SCOPE } from '../styles/geometry.ts';
 import { compare, generate, manifestText } from '../scripts/manifests.ts';
@@ -227,6 +227,31 @@ test('registry CLI: unknown IDs fail; --packet requires bounded delivery', () =>
   const p = JSON.parse(run('--packet', 'consumer', 'web-component', 'component:button', '--page', '0'));
   assert.equal(typeof p.complete, 'boolean');
   assert.equal(JSON.parse(run('component:button')).registration.import, '@massimo/ui-kit/components/button/element');
+});
+
+test('parameters: the contract lists exactly the members each owning export defines, and the registry finds and traces them', () => {
+  const groups = read('contracts/parameters.json').groups;
+  const byOwner = new Map<string, { group: string; members: string[]; spec: any }[]>();
+  for (const [g, rec] of Object.entries<any>(groups)) {
+    assert.equal(new Set(rec.members).size, rec.members.length, `${g} repeats a member`);
+    assert.ok(readSource(rec.documentation), `${g} documentation resolves`);
+    if (!rec.spec) continue;
+    const key = `${rec.spec.module}#${rec.spec.export}`;
+    byOwner.set(key, [...(byOwner.get(key) ?? []), { group: g, members: rec.members, spec: rec.spec }]);
+  }
+  for (const [owner, gs] of byOwner) {
+    const listed = gs.flatMap((g) => g.members);
+    assert.deepEqual([...listed].sort(), [...specMembers(gs[0].spec)].sort(), `${owner}: contracts/parameters.json must list every member once`);
+  }
+  for (const [term, id] of [['radius scale', 'parameter:radius-scale'], ['type ratio', 'parameter:type-ratio'], ['corner shape', 'parameter:corner-shape'], ['chroma', 'parameter:spectrum-chroma']])
+    assert.ok(find(term, graph).some((r) => r.id === id), `--find ${term} → ${id}`);
+  const unit = lookup(parameterId(groups.unit, 'unit'), graph) as any;
+  assert.equal(unit.spec.default, 4.5);
+  assert.equal(unit.group, 'parameters:unit');
+  const button = assembly('component:button', graph).parameters.map((p: any) => p.group);
+  assert.ok(button.includes('parameters:curvature') && button.includes('parameters:spectrum'), 'button responds to curvature and color');
+  assert.ok(!button.includes('parameters:containers'), 'button is not a container');
+  assert.ok(assembly('component:card', graph).parameters.some((p: any) => p.group === 'parameters:containers'), 'card responds to the container ladder');
 });
 
 test('pointer resolution rejects a missing key', () => {

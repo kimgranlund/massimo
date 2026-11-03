@@ -10,6 +10,24 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 - **Headless behavior is shared.** `dom/` returns attribute maps and handles keys; web components apply them, and React counterparts (button, input) spread the same maps.
 - **One slot recipe per component.** Each component's styles are a Panda slot recipe (`components/<name>/<name>.recipe.ts`) applied as classes by the web component and the React renderer alike; states use shared conditions keyed on ARIA and native state. Every length comes from the geometry variables in `styles/geometry.ts`.
 
+## The system as a function
+
+The kit is a function of a small set of inputs: every rendered length, color, type size and curve is computed from them, and nothing is set per component.
+
+```
+inputs ──▶ resolvers ──▶ tokens and CSS variables ──▶ slot recipes ──▶ components
+```
+
+| Inputs | Resolver | Outputs |
+|---|---|---|
+| unit u, border B, radius scale s, corner shape k, container pad and gap | `tokens/geometry/resolve.ts`, `styles/geometry.ts` | every length and radius ([geometry](geometry.md)) |
+| type ratio r, rhythm, faces, voices | `tokens/typography/resolve.ts` | type roles: size (10px + u) × r^step, line heights ([typography](typography.md)) |
+| Spectrum settings, role mapping | `tokens/colors/spectrum/` | 12-step ramps per scheme, role tokens ([color](color.md)) |
+| motion scale, motion bounce, springs, intents | `tokens/motion/` | `linear()` easings and durations ([motion](motion.md)) |
+| per subtree: `size`, `icon-size`, `gap`, `.light` / `.dark`, `data-font-<voice>`, `data-type` | the same resolvers, evaluated locally | the subtree's values ([theming](theming.md#per-element-inputs)) |
+
+The machine-readable form is `packages/ui-kit/contracts/parameters.json`: every input, its formula, what it drives, and the coefficients the formulas fix (8u controls, 6u slots, 3u curvature, 10px + u fonts). The registry indexes it: `npm run registry -- --find "radius scale"`, `parameter:<id>` for a range and default, and `--assembly component:<id>` lists the parameter groups a component responds to ([registry](registry.md#parameters)). A theme sets inputs only (`tokens/themes/params.ts`, [theming](theming.md)); changing a fixed coefficient is a geometry change.
+
 ## Layers (`packages/ui-kit`)
 
 | Folder | Holds | Spec |
@@ -17,7 +35,7 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 | `core/` | signals, `html`/`render`/`repeat`, `UIElement`, `UIFormElement`, input-modality tracking | [components](components.md) |
 | `dom/` | headless behaviors: button, field, text entry, listbox/select, range | [components](components.md) |
 | `components/` | one folder per element module: element, React renderer, manifest, guide, examples, verification record | [components](components.md), [registry](registry.md) |
-| `contracts/` | schemas and shared contracts: components, parts, composition, geometry families, foundations, states, tokens | [registry](registry.md) |
+| `contracts/` | schemas and shared contracts: components, parts, composition, geometry families, foundations, states, tokens, parameters | [registry](registry.md) |
 | `registry.json`, `system.manifest.json`, `graph.json` | registry entry, system identity and routes, the generated graph index | [registry](registry.md) |
 | `tokens/geometry/` | the geometry resolver (numerical reference) | [geometry](geometry.md) |
 | `tokens/colors/` | Spectrum engine, settings, snapshot, color tokens | [color](color.md) |

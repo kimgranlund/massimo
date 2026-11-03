@@ -48,7 +48,8 @@
     "geometryFamilies": "contracts/geometry-families.json",
     "foundations": "contracts/foundations.json",
     "states": "contracts/states.json",
-    "tokens": "contracts/tokens.json"
+    "tokens": "contracts/tokens.json",
+    "parameters": "contracts/parameters.json"
   },
   "taskPackets": {
     "maxBytes": 60000,

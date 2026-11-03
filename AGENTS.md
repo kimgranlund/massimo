@@ -14,6 +14,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 | Manifests, graph, registry CLI, verification records | [registry](docs/specs/registry.md) |
 | Lengths, sizes, radii, containers, Panda spacing | [geometry](docs/specs/geometry.md) |
 | Colors, roles, schemes, shadows / type roles, fonts / springs | [color](docs/specs/color.md) / [typography](docs/specs/typography.md) / [motion](docs/specs/motion.md) |
+| The system as a function: every input and what it drives (`contracts/parameters.json`) | [system](docs/specs/system.md#the-system-as-a-function) |
 | Theme parameters, saved themes, Panda preset and configs | [theming](docs/specs/theming.md) |
 | Icons / the jig | [icons](docs/specs/icons.md) / [studio](docs/specs/studio.md) |
 
