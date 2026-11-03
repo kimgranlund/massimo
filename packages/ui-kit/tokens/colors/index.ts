@@ -4,7 +4,7 @@
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
-import { ROLE_STEPS, SHADOW_LAYERS, roleStep, withAlpha } from './spectrum/index.ts';
+import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, roleStep, withAlpha } from './spectrum/index.ts';
 import { elevationTokens } from '../elevation/index.ts';
 
 type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
@@ -13,12 +13,12 @@ const D = DEFAULTS as Snapshot;
 // Same value set in every scheme block, so a .light/.dark class on any element re-resolves it.
 const schemed = (light: string, dark: string) => ({ value: { base: light, _osDark: dark, _dark: dark, _light: light } });
 
-// White and black are the neutral endpoints, not #fff / #000: the light scheme's step 1 (tone 97.5)
-// and the dark scheme's step 1 (tone 5), the same in every scheme. fg.strong uses them for headings
-// and titles: black in light, white in dark.
+// White and black are neutral steps, not #fff / #000: the light ramp's step 3 for white and the dark
+// ramp's step 3 for black (DEFAULT_ENDPOINT), the same in every scheme. fg.strong uses them for
+// headings and titles: black in light, white in dark. A theme maps them (color.endpoints).
 export const colors = {
-  white: { value: D.light[D.roles.neutral][0] },
-  black: { value: D.dark[D.roles.neutral][0] },
+  white: { value: D.light[D.roles.neutral][DEFAULT_ENDPOINT - 1] },
+  black: { value: D.dark[D.roles.neutral][DEFAULT_ENDPOINT - 1] },
 };
 
 const spectrum = Object.fromEntries(Object.keys(D.light).map((family) => [

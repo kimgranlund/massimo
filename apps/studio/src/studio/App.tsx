@@ -9,7 +9,7 @@ import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
 import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, lintTheme, type Finding, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
-import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
+import { SPECTRUM_DEFAULTS, spectrumOverrides, DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens';
 import { ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
@@ -23,7 +23,7 @@ import { ColorsPage } from '../pages/Colors.tsx';
 import { MotionPage } from '../pages/Motion.tsx';
 import { MotionPanel } from './MotionPanel.tsx';
 import { ICON_SET_NAMES } from '@massimo/ui-kit/icons';
-import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent } from './wc.tsx';
+import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent, type SwatchSpec } from './wc.tsx';
 import { buildSpectrum } from './spectrum.ts';
 
 const NEXT_SCHEME: Record<Scheme, Scheme> = { auto: 'light', light: 'dark', dark: 'auto' };
@@ -92,7 +92,7 @@ export function App() {
   const [roles, setRoles] = useState<Roles>(DEFAULT_ROLES);
   // White and black: a neutral step (white from the light ramp, black from the dark ramp; 1 by default) or 'pure'.
   type Endpoint = number | 'pure';
-  const [endpoints, setEndpoints] = useState<{ white: Endpoint; black: Endpoint }>({ white: 1, black: 1 });
+  const [endpoints, setEndpoints] = useState<{ white: Endpoint; black: Endpoint }>({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT });
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
   const [status, setStatus] = useState('');
@@ -124,8 +124,21 @@ export function App() {
   // after the generated colors so it wins in every scheme block.
   const endpoint = (want: Endpoint, mode: 'light' | 'dark', pure: string) =>
     want === 'pure' ? pure : generated?.families.find((f) => f.name === generated.roles.neutral)?.[mode][want - 1];
-  const white = endpoints.white !== 1 ? endpoint(endpoints.white, 'light', '#fff') : undefined;
-  const black = endpoints.black !== 1 ? endpoint(endpoints.black, 'dark', '#000') : undefined;
+  const white = endpoints.white !== DEFAULT_ENDPOINT ? endpoint(endpoints.white, 'light', '#fff') : undefined;
+  const black = endpoints.black !== DEFAULT_ENDPOINT ? endpoint(endpoints.black, 'dark', '#000') : undefined;
+  // Split swatches (jig Select): the dark half on the dark page (neutral dark 1), the light half on
+  // the light page (neutral light 1), each with the color it takes in that scheme.
+  const ramp = (family: string | undefined, mode: 'light' | 'dark', step: number) => generated?.families.find((f) => f.name === family)?.[mode][step - 1] ?? 'transparent';
+  const neutral = generated?.roles.neutral;
+  const pageSwatch = (darkFg: string, lightFg: string): SwatchSpec => ({ dark: [ramp(neutral, 'dark', 1), darkFg], light: [ramp(neutral, 'light', 1), lightFg] });
+  const endpointColor = (e: Endpoint, mode: 'light' | 'dark') => e === 'pure' ? (mode === 'light' ? '#fff' : '#000') : ramp(neutral, mode, e);
+  const whiteNow = endpointColor(endpoints.white, 'light'), blackNow = endpointColor(endpoints.black, 'dark');
+  const textSwatch = (c: TextColor): SwatchSpec => {
+    const step = { default: 12, inherit: 12, muted: 11, subtle: 8 } as Record<string, number>;
+    if (c === 'strong') return pageSwatch(whiteNow, blackNow);
+    if (c === 'primary') return { dark: [ramp(neutral, 'dark', 1), ramp(generated?.roles.primary, 'dark', 11)], light: [ramp(neutral, 'light', 1), ramp(generated?.roles.primary, 'light', 11)] };
+    return pageSwatch(ramp(neutral, 'dark', step[c]), ramp(neutral, 'light', step[c]));
+  };
   // :not(#…) outranks the generated scheme blocks (:root:not(.light) under the OS dark scheme, :root.dark).
   const endpointCss = white || black ? `:root:not(#ui-endpoints) {${white ? ` --colors-white: ${white};` : ''}${black ? ` --colors-black: ${black};` : ''} }\n` : '';
   useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}\n${endpointCss}`);
@@ -145,7 +158,7 @@ export function App() {
     parameters: diffFromDefaults(params),
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
-    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: 1, black: 1 }) }),
+    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }) }),
     typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
   }) as unknown as Theme;
   // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
@@ -162,7 +175,7 @@ export function App() {
     setThemeName(t.name);
     setParams({ ...defaultParams, ...(t.parameters as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
     setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
-    setEndpoints({ white: 1, black: 1, ...(t.color?.endpoints ?? {}) });
+    setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT, ...(t.color?.endpoints ?? {}) });
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
     setTypeColors({ ...DEFAULT_TYPE_COLORS, ...(t.typography?.colors ?? {}) } as Record<TypeRoleName, TextColor>);
   };
@@ -178,7 +191,7 @@ export function App() {
   };
 
   const reset = () => {
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: 1, black: 1 }); setTypeColors(DEFAULT_TYPE_COLORS);
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setTypeColors(DEFAULT_TYPE_COLORS);
     setStatus('Reset to defaults');
   };
 
@@ -260,7 +273,7 @@ export function App() {
               {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((r) => (
                 <Select key={r} label={TYPE_ROLES[r].label} value={typeColors[r]} options={(Object.keys(TEXT_COLORS) as TextColor[]).map((c) => [c, c] as [string, string])}
                   onValue={(v) => setTypeColors((m) => ({ ...m, [r]: v as TextColor }))}
-                  swatch={(c) => c === 'inherit' ? 'transparent' : TEXT_COLORS[c as TextColor]} />
+                  swatch={(c) => textSwatch(c as TextColor)} />
               ))}
             </Group>
           )}
@@ -310,7 +323,7 @@ export function App() {
                   <Select key={k} label={k === 'white' ? 'White (light ramp)' : 'Black (dark ramp)'} value={String(endpoints[k])}
                     options={[...Array.from({ length: 12 }, (_, i) => [String(i + 1), `Neutral ${i + 1}`] as [string, string]), ['pure', k === 'white' ? 'Pure #fff' : 'Pure #000']]}
                     onValue={(v) => setEndpoints((cur) => ({ ...cur, [k]: v === 'pure' ? 'pure' : Number(v) }))}
-                    swatch={(v) => (v === 'pure' ? (k === 'white' ? '#fff' : '#000') : endpoint(Number(v), k === 'white' ? 'light' : 'dark', '')) ?? 'transparent'} />
+                    swatch={(v) => { const c = endpointColor(v === 'pure' ? 'pure' : Number(v), k === 'white' ? 'light' : 'dark'); return pageSwatch(c, c); }} />
                 ))}
               </Group>
               <Group title="Hues">

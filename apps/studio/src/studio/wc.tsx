@@ -1,6 +1,7 @@
 // Thin React bindings for ui-kit web components: properties go through React 19's custom
 // element support; events are attached with addEventListener.
-import { useCallback, useRef, type ReactNode } from 'react';
+import { useCallback, useRef, type CSSProperties, type ReactNode } from 'react';
+import { css } from '../../styled-system/css/index.js';
 import '@massimo/ui-kit/components/field/element';
 import * as s from './styles.ts';
 
@@ -50,19 +51,36 @@ export function Segmented<T extends string>({ label, value, options, onValue }: 
 }
 
 /** ui-select moves its options into its popup, so a change of option list remounts it. */
-type SelectProps = { label: string; value: string; options: [string, string][]; onValue: (v: string) => void; swatch?: (value: string) => string };
+/** A color, or a split swatch: the left half dark mode, the right half light mode, each a [surface, color] pair (a square of the surface, an inset circle of the color). */
+export type SwatchSpec = string | { dark: [string, string]; light: [string, string] };
+type SelectProps = { label: string; value: string; options: [string, string][]; onValue: (v: string) => void; swatch?: (value: string) => SwatchSpec | undefined };
 /** How a bare select is named: by visible text elsewhere (`labelledby`, ids) or, with nothing visible
  * to point at (the content header), by its own hidden label. In a Field the field names it. */
 type ControlProps = Omit<SelectProps, 'label'> & { label?: string; labelledby?: string };
 
-/** `swatch` maps an option value to a CSS color: each option and the trigger lead with a ui-swatch. */
+// Split swatch: two halves (dark | light), each its surface with an inset half-circle of its color, so
+// the contrast of a text color reads in both schemes at once.
+const split = css({
+  display: 'inline-block', position: 'relative', flexShrink: 0, width: '[var(--icon)]', height: '[var(--icon)]',
+  borderRadius: '[calc(var(--u) * var(--ui-radius-scale))]', overflow: 'hidden',
+  background: '[linear-gradient(90deg, var(--sw-db) 50%, var(--sw-lb) 50%)]',
+  boxShadow: '[inset 0 0 0 1px color-mix(in oklch, var(--colors-border) 60%, transparent)]',
+  _after: { content: '""', position: 'absolute', inset: '[18%]', borderRadius: 'full', background: '[linear-gradient(90deg, var(--sw-df) 50%, var(--sw-lf) 50%)]' },
+});
+function Swatch({ spec }: { spec?: SwatchSpec }) {
+  if (spec === undefined) return <ui-swatch slot="leading" color="transparent" />;
+  if (typeof spec === 'string') return <ui-swatch slot="leading" color={spec} />;
+  return <span slot="leading" className={split} aria-hidden="true" style={{ '--sw-db': spec.dark[0], '--sw-df': spec.dark[1], '--sw-lb': spec.light[0], '--sw-lf': spec.light[1] } as CSSProperties} />;
+}
+
+/** `swatch` maps an option value to a CSS color or a split swatch: each option and the trigger lead with it. */
 export function SelectControl({ label, labelledby, value, options, onValue, swatch }: ControlProps) {
   const ref = useEvent('change', (_el, d) => onValue(d.value));
   const name = label ? { label, 'hide-label': '' } : labelledby ? { labelledby } : {};
   return <ui-select key={options.map((o) => o[0]).join('|')} ref={ref} {...name} value={value}>
     {/* The select moves this into its trigger once; React then only updates its color attribute. */}
-    {swatch && <ui-swatch slot="leading" color={swatch(value)} />}
-    {options.map(([v, l]) => <ui-option key={v} value={v}>{swatch && <ui-swatch slot="leading" color={swatch(v)} />}{l}</ui-option>)}
+    {swatch && <Swatch spec={swatch(value)} />}
+    {options.map(([v, l]) => <ui-option key={v} value={v}>{swatch && <Swatch spec={swatch(v)} />}{l}</ui-option>)}
   </ui-select>;
 }
 

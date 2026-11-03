@@ -193,7 +193,7 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
   }
   // Text on a primary solid: the engine's APCA choice for step 9.
   vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][8].apca.css;
-  // White and black: the neutral endpoints (light and dark step 1), the same in both schemes; fg.strong
+  // White and black: neutral step 3 of the light and dark ramps, the same in both schemes; fg.strong
   // (headings, titles) is black in light, white in dark. endpointVars maps them to another family.
   Object.assign(vars, endpointVars(data, roles));
   vars['--colors-fg-strong'] = mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
@@ -204,14 +204,16 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
 
 /**
  * White and black (`--colors-white`, `--colors-black`): a step of the neutral role's ramp, the same
- * in both schemes: white from the light ramp, black from the dark ramp, step 1 (the endpoints) by
- * default; or 'pure' (#fff, #000).
+ * in both schemes: white from the light ramp, black from the dark ramp, step 3 by default (DEFAULT_ENDPOINT);
+ * or 'pure' (#fff, #000).
  */
 export type Endpoint = number | 'pure';
 export type Endpoints = { white?: Endpoint; black?: Endpoint };
+/** The neutral step white and black take by default. */
+export const DEFAULT_ENDPOINT = 3;
 export function endpointVars(data: Spectrum, roles: Roles, map: Endpoints = {}) {
   const pick = (want: Endpoint | undefined, mode: 'light' | 'dark', pure: string) =>
-    want === 'pure' ? pure : data.schemes[mode][roles.neutral][(want ?? 1) - 1].css;
+    want === 'pure' ? pure : data.schemes[mode][roles.neutral][(want ?? DEFAULT_ENDPOINT) - 1].css;
   return { '--colors-white': pick(map.white, 'light', '#fff'), '--colors-black': pick(map.black, 'dark', '#000') };
 }
 

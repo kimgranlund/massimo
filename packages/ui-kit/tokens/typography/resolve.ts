@@ -71,7 +71,7 @@ export interface TypeRole {
 }
 
 export const TYPE_ROLES = {
-  // strong: the role takes fg.strong (the neutral endpoint: black in light, white in dark).
+  // strong: the role takes fg.strong (black in light, white in dark).
   'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 0.95, weight: 700, tracking: -0.045, strong: true },
   'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025, strong: true },
   'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02, strong: true },

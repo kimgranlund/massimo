@@ -26,7 +26,7 @@ export interface Theme {
   parameters?: Partial<Record<ParamName, number>>;
   icons?: string;
   scheme?: ThemeScheme;
-  /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 1 by default, or 'pure' (#fff, #000). */
+  /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
   color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' } };
   typography?: { faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
   /** Reserved: L0 intent (subject, audience, character words, signature). */

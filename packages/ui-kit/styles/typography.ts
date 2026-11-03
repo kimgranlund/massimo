@@ -48,7 +48,7 @@ function roleStyle(name: string, r: TypeRole) {
     letterSpacing: `${r.tracking}em`,
     textTransform: r.upper ? 'uppercase' : 'none',
     // The role's text color (theme typography.colors): display, headings and titles default to the
-    // strong color (fg.strong, the neutral endpoint); the others inherit unless a theme maps them (an
+    // strong color (fg.strong); the others inherit unless a theme maps them (an
     // unset variable leaves an inherited property inheriting).
     color: r.strong ? `var(--ui-type-color-${name}, var(--colors-fg-strong))` : `var(--ui-type-color-${name})`,
   };

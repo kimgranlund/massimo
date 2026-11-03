@@ -123,7 +123,7 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
         })}
       </Section>
       <Divider />
-      <Section id="text-colors" title="Text colors" note="Every text color token, on the surface it is meant for, and the type roles that use it. Display, headings and titles take fg.strong (the neutral endpoint: black in light, white in dark); the other roles inherit, usually fg. Remap any role in the jig's Typography tab, Text colors (theme typography.colors).">
+      <Section id="text-colors" title="Text colors" note="Every text color token, on the surface it is meant for, and the type roles that use it. Display, headings and titles take fg.strong (black in light, white in dark: neutral step 3); the other roles inherit, usually fg. Remap any role in the jig's Typography tab, Text colors (theme typography.colors).">
         <TextColors typeColors={typeColors} />
       </Section>
       <Divider />
@@ -148,7 +148,7 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
 // ── Text colors: the fg tokens, where each sits, and which type roles use it ──
 const swatchText = css({ display: 'inline-block', paddingInline: '2', paddingBlock: '1', borderRadius: 'sm', fontWeight: 'semibold', fontFamily: 'sans' });
 const TEXT_TOKENS: { token: string; css: string; on?: string; use: string; mapped?: keyof typeof TEXT_COLORS }[] = [
-  { token: 'fg.strong', css: 'var(--colors-fg-strong)', use: 'Display, headings, titles: black in light, white in dark (the neutral endpoints)', mapped: 'strong' },
+  { token: 'fg.strong', css: 'var(--colors-fg-strong)', use: 'Display, headings, titles: black in light, white in dark (neutral step 3 of the dark and light ramps)', mapped: 'strong' },
   { token: 'fg', css: 'var(--colors-fg)', use: 'Body text and controls (neutral 12)', mapped: 'default' },
   { token: 'fg.muted', css: 'var(--colors-fg-muted)', use: 'Secondary text, descriptions, captions (neutral 11)', mapped: 'muted' },
   { token: 'fg.subtle', css: 'var(--colors-fg-subtle)', use: 'Placeholders, disabled hints (neutral 8)', mapped: 'subtle' },

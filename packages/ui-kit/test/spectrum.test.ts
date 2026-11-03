@@ -115,18 +115,18 @@ test('one color vocabulary: every brand and feedback role has the same steps, no
   assert.ok(!/oklch\(0 0 0/.test(JSON.stringify(semanticShadows)));
 });
 
-test('white and black are the neutral endpoints; fg.strong is black in light, white in dark, in the kit tokens and at runtime', async () => {
+test('white and black are neutral step 3 of the light and dark ramps; fg.strong is black in light, white in dark, in the kit tokens and at runtime', async () => {
   const D = (await import('../tokens/colors/spectrum/defaults.json', { with: { type: 'json' } })).default as any;
   const { colors, semanticColors } = await import('../tokens/colors/index.ts');
   const { generateSpectrum, resolveRoles, roleVariables } = await import('../tokens/colors/spectrum/index.ts');
-  assert.equal(colors.white.value, D.light[D.roles.neutral][0]);
-  assert.equal(colors.black.value, D.dark[D.roles.neutral][0]);
+  assert.equal(colors.white.value, D.light[D.roles.neutral][2], 'white: light neutral 3');
+  assert.equal(colors.black.value, D.dark[D.roles.neutral][2], 'black: dark neutral 3');
   const strong = (semanticColors as any).fg.strong.value;
   assert.deepEqual([strong.base, strong._dark], ['{colors.black}', '{colors.white}']);
   const data = generateSpectrum({}), roles = resolveRoles(data, {});
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
   assert.equal(light['--colors-white'], dark['--colors-white'], 'white is the same in both schemes');
-  assert.equal(light['--colors-white'], data.schemes.light[roles.neutral][0].css);
+  assert.equal(light['--colors-white'], data.schemes.light[roles.neutral][2].css);
   assert.deepEqual([light['--colors-fg-strong'], dark['--colors-fg-strong']], ['var(--colors-black)', 'var(--colors-white)']);
 });
 
@@ -134,7 +134,7 @@ test('white and black map to a neutral step or to pure, at runtime and in a save
   const { generateSpectrum, resolveRoles, endpointVars } = await import('../tokens/colors/spectrum/index.ts');
   const { themeCss, validateThemeObject } = await import('../tokens/themes/index.ts');
   const data = generateSpectrum({}), roles = resolveRoles(data, {});
-  assert.deepEqual(endpointVars(data, roles), { '--colors-white': data.schemes.light[roles.neutral][0].css, '--colors-black': data.schemes.dark[roles.neutral][0].css });
+  assert.deepEqual(endpointVars(data, roles), { '--colors-white': data.schemes.light[roles.neutral][2].css, '--colors-black': data.schemes.dark[roles.neutral][2].css });
   const mapped = endpointVars(data, roles, { white: 'pure', black: 3 });
   assert.equal(mapped['--colors-white'], '#fff');
   assert.equal(mapped['--colors-black'], data.schemes.dark[roles.neutral][2].css);
