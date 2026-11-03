@@ -32,6 +32,7 @@ import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
+import '@massimo/ui-kit/components/toggle-group/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -66,6 +67,7 @@ import { Tabs } from '@massimo/ui-kit/components/tabs/react';
 import { Toast } from '@massimo/ui-kit/components/toast/react';
 import { NumberField } from '@massimo/ui-kit/components/number-field/react';
 import { OTPField } from '@massimo/ui-kit/components/otp-field/react';
+import { ToggleGroup } from '@massimo/ui-kit/components/toggle-group/react';
 
 /** Toast twins: each side draws its own manager seeded with the same two toasts (no timeout). */
 const seedToasts = (m: ToastManager) => {
@@ -113,6 +115,7 @@ function Pair({ u }: { u: number }) {
         <ui-radio data-k="rd" name={`r${u}`} value="a" checked>One</ui-radio>
         <ui-switch data-k="sw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
         <div style={{ width: 300 }}><ui-range data-k="rg" value={25} /></div>
+        <div style={{ width: 300 }}><ui-range data-k="rgP" value={[20, 70]} label="Price" /></div>
         <div style={{ width: 300 }}><ui-field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u."><ui-range value={25} /></ui-field></div>
         <div style={{ width: 300 }}><ui-progress data-k="pg" value={40} /></div>
         <ui-badge data-k="bd">3</ui-badge>
@@ -138,6 +141,8 @@ function Pair({ u }: { u: number }) {
         <ui-toggle data-k="tg"><i slot="leading" name="star" />Star</ui-toggle>
         <ui-toggle data-k="tgP" pressed>Bold<span slot="suffix">B</span></ui-toggle>
         <ui-toggle data-k="tgD" disabled aria-label="Off"><i slot="leading" name="text-b" /></ui-toggle>
+        <ui-toggle-group data-k="tgg" multiple value="b"><ui-toggle value="b"><i slot="leading" name="text-b" />Bold</ui-toggle><ui-toggle value="i">Italic</ui-toggle><ui-toggle value="u" disabled>Under</ui-toggle></ui-toggle-group>
+        <ui-toggle-group data-k="tggV" orientation="vertical" value="a"><ui-toggle value="a">One</ui-toggle><ui-toggle value="b">Two</ui-toggle></ui-toggle-group>
         <div style={{ width: 300 }}><ui-meter data-k="mt" label="Storage" value={30} /></div>
         <div style={{ width: 300 }}><ui-meter data-k="mtN" value={3} max={4} format='{"style":"decimal"}' /></div>
         <ui-avatar data-k="avS" avatar-size="sm" />
@@ -180,6 +185,7 @@ function Pair({ u }: { u: number }) {
         <Radio data-k="rd" name={`rr${u}`} value="a" defaultChecked>One</Radio>
         <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
         <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
+        <div style={{ width: 300 }}><Range data-k="rgP" defaultValue={[20, 70]} label="Price" /></div>
         <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u.">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
         <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
         <Badge data-k="bd">3</Badge>
@@ -205,6 +211,8 @@ function Pair({ u }: { u: number }) {
         <Toggle data-k="tg" leading={<i name="star" />}>Star</Toggle>
         <Toggle data-k="tgP" pressed suffix="B">Bold</Toggle>
         <Toggle data-k="tgD" disabled aria-label="Off" leading={<i name="text-b" />} />
+        <ToggleGroup data-k="tgg" multiple defaultValue={['b']}><Toggle value="b" leading={<i name="text-b" />}>Bold</Toggle><Toggle value="i">Italic</Toggle><Toggle value="u" disabled>Under</Toggle></ToggleGroup>
+        <ToggleGroup data-k="tggV" orientation="vertical" defaultValue={['a']}><Toggle value="a">One</Toggle><Toggle value="b">Two</Toggle></ToggleGroup>
         <div style={{ width: 300 }}><Meter data-k="mt" label="Storage" value={30} /></div>
         <div style={{ width: 300 }}><Meter data-k="mtN" value={3} max={4} format={{ style: 'decimal' }} /></div>
         <Avatar data-k="avS" avatarSize="sm" />
@@ -239,6 +247,7 @@ function ComposedPair({ u }: { u: number }) {
       <Radio data-k="rd" name={`cr${u}`} value="a" defaultChecked>One</Radio>
       <Switch data-k="sw" defaultChecked suffix="on">Wi-Fi</Switch>
       <div style={{ width: 300 }}><Range data-k="rg" defaultValue={25} label="Volume" /></div>
+      <div style={{ width: 300 }}><Range data-k="rgP" defaultValue={[20, 70]} label="Price" /></div>
       <div style={{ width: 300 }}><Progress data-k="pg" value={40} label="Upload" /></div>
       <div style={{ width: 300 }}><Meter data-k="mt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><Field data-k="fd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big">{(ids) => <Range {...ids} defaultValue={25} />}</Field></div>
@@ -261,6 +270,7 @@ function ComposedPair({ u }: { u: number }) {
       <ui-switch data-k="wsw" checked>Wi-Fi<span slot="suffix">on</span></ui-switch>
       <ui-radio data-k="wrd" name={`wr${u}`} value="a" checked>One</ui-radio>
       <div style={{ width: 300 }}><ui-range data-k="wrg" value={25} /></div>
+      <div style={{ width: 300 }}><ui-range data-k="wrgP" value={[20, 70]} label="Price" /></div>
       <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40} /></div>
       <div style={{ width: 300 }}><ui-meter data-k="wmt" value={40} label="Storage" /></div>
       <div style={{ width: 300 }}><ui-field data-k="wfd" layout="inline" label="Unit" unit="px" readout="4.5" description="Sets u." error="Too big"><ui-range value={25} /></ui-field></div>
@@ -277,6 +287,7 @@ function ComposedPair({ u }: { u: number }) {
       <Radio.Root data-k="rd" name={`cr${u}c`} value="a" defaultChecked><Radio.Indicator />One</Radio.Root>
       <Switch.Root data-k="sw" defaultChecked suffix="on"><Switch.Thumb />Wi-Fi</Switch.Root>
       <div style={{ width: 300 }}><Slider.Root data-k="rg" defaultValue={25} label="Volume"><Slider.Track><Slider.Indicator /></Slider.Track><Slider.Thumb /></Slider.Root></div>
+      <div style={{ width: 300 }}><Slider.Root data-k="rgP" defaultValue={[20, 70]} label="Price"><Slider.Track><Slider.Indicator /></Slider.Track><Slider.Thumb index={0} /><Slider.Thumb index={1} /></Slider.Root></div>
       <div style={{ width: 300 }}><Progress.Root data-k="pg" value={40} label="Upload"><Progress.Track><Progress.Indicator /></Progress.Track></Progress.Root></div>
       <div style={{ width: 300 }}><Meter.Root data-k="mt" value={40}><Meter.Label>Storage</Meter.Label><Meter.Value /><Meter.Track><Meter.Indicator /></Meter.Track></Meter.Root></div>
       <div style={{ width: 300 }}>
@@ -332,6 +343,7 @@ function ComposedPair({ u }: { u: number }) {
       <ui-switch data-k="wsw" checked><span data-part="indicator"><span data-part="thumb" /></span>Wi-Fi<span data-part="suffix">on</span></ui-switch>
       <ui-radio data-k="wrd" name={`wr${u}c`} value="a" checked><span data-part="indicator" /><span data-part="contents">One</span></ui-radio>
       <div style={{ width: 300 }}><ui-range data-k="wrg" value={25}><span data-part="track"><span data-part="indicator" /></span><span data-part="thumb" /></ui-range></div>
+      <div style={{ width: 300 }}><ui-range data-k="wrgP" value={[20, 70]} label="Price"><span data-part="track"><span data-part="indicator" /></span><span data-part="thumb" /><span data-part="thumb" /></ui-range></div>
       <div style={{ width: 300 }}><ui-progress data-k="wpg" value={40}><span data-part="track"><span data-part="indicator" /></span></ui-progress></div>
       <div style={{ width: 300 }}><ui-meter data-k="wmt" value={40}><span data-part="label">Storage</span><span data-part="value" /><span data-part="track"><span data-part="indicator" /></span></ui-meter></div>
       <div style={{ width: 300 }}>
@@ -494,6 +506,23 @@ setTimeout(() => {
         // The editable text's width follows its content box: compare the input's box, not its text.
         if (va !== vb) fails.push(`u${c.getAttribute('data-case')} ${k}${sel.replace(':scope', '')}: wc ${va} react ${vb}`);
       }
+    }
+  }
+
+  // Toggle groups: the host and each toggle measured, with the same data-*.
+  for (const c of root.querySelectorAll('[data-case]')) {
+    const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
+    for (const k of ['tgg', 'tggV']) {
+      const items = (h: HTMLElement) => [h, ...h.querySelectorAll<HTMLElement>(':scope > ui-toggle, :scope > [data-ui=toggle]')];
+      const pa = items(host(wc, k)), pb = items(host(re, k));
+      checks++;
+      if (pa.length !== pb.length) { fails.push(`u${c.getAttribute('data-case')} ${k} toggles: wc ${pa.length} react ${pb.length}`); continue; }
+      pa.forEach((x, i) => {
+        const ma = measure(x), mb = measure(pb[i]);
+        for (const key of Object.keys(ma) as (keyof typeof ma)[]) { checks++; if (!same(ma[key], mb[key])) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}].${key}: wc ${ma[key]} react ${mb[key]}`); }
+        checks++;
+        if (stateOf(x) !== stateOf(pb[i])) fails.push(`u${c.getAttribute('data-case')} ${k}[${i}] data-*: wc "${stateOf(x)}" react "${stateOf(pb[i])}"`);
+      });
     }
   }
   // Input: same parts; the React control holds a native <input> as its contents part.

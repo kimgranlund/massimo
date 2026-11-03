@@ -1,0 +1,29 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "toggle-group",
+  "title": "Toggle group",
+  "summary": "Toggles that share one pressed state, one or several pressed.",
+  "defaultExample": "formatting",
+  "examples": [
+    {
+      "id": "formatting",
+      "label": "Formatting (multiple)",
+      "subject": "component:toggle-group",
+      "markup": "<ui-toggle-group aria-label=\"Formatting\" multiple value=\"bold,italic\"><ui-toggle value=\"bold\" aria-label=\"Bold\"><i slot=\"leading\" name=\"text-b\"></i></ui-toggle><ui-toggle value=\"italic\" aria-label=\"Italic\"><i slot=\"leading\" name=\"text-italic\"></i></ui-toggle><ui-toggle value=\"underline\" aria-label=\"Underline\"><i slot=\"leading\" name=\"text-underline\"></i></ui-toggle></ui-toggle-group>",
+      "note": "React: <ToggleGroup aria-label=\"Formatting\" multiple defaultValue={['bold', 'italic']}><Toggle value=\"bold\" … /></ToggleGroup>."
+    },
+    {
+      "id": "alignment",
+      "label": "Alignment (single)",
+      "subject": "component:toggle-group",
+      "markup": "<ui-toggle-group aria-label=\"Alignment\" default-value=\"left\"><ui-toggle value=\"left\">Left</ui-toggle><ui-toggle value=\"center\">Center</ui-toggle><ui-toggle value=\"right\">Right</ui-toggle></ui-toggle-group>"
+    },
+    {
+      "id": "vertical",
+      "label": "Vertical, one disabled",
+      "subject": "component:toggle-group",
+      "markup": "<ui-toggle-group aria-label=\"Layers\" orientation=\"vertical\" multiple value=\"grid\"><ui-toggle value=\"grid\"><i slot=\"leading\" name=\"grid-four\"></i>Grid</ui-toggle><ui-toggle value=\"guides\">Guides</ui-toggle><ui-toggle value=\"rulers\" disabled>Rulers</ui-toggle></ui-toggle-group>"
+    }
+  ]
+}

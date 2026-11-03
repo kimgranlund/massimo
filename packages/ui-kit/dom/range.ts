@@ -66,3 +66,64 @@ export function progressState(value: number | null | undefined, max: number) {
     attrs: { 'data-indeterminate': indeterminate ? '' : undefined, 'data-complete': complete ? '' : undefined, 'data-progressing': !indeterminate && !complete ? '' : undefined },
   };
 }
+
+// ── Range pair (Base UI Slider with value [start, end]): two thumbs that cannot cross ──
+
+/** A two-thumb value: [start, end], start ≤ end. */
+export type RangePair = [number, number];
+type Bounds = Omit<RangeState, 'value'>;
+
+/** A pair from an attribute ("20,80") or a list; undefined when it is not two numbers. */
+export function parsePair(v: unknown): RangePair | undefined {
+  const list = Array.isArray(v) ? v : typeof v === 'string' && v.includes(',') ? v.split(',') : undefined;
+  if (!list || list.length !== 2) return undefined;
+  const [a, b] = list.map(Number);
+  return Number.isNaN(a) || Number.isNaN(b) ? undefined : [a, b];
+}
+
+/** Snap both values to the step grid, clamp them to [min, max] and order them. */
+export function snapPair(v: readonly number[], s: Bounds): RangePair {
+  const a = snap(v[0] ?? s.min, { ...s, value: 0 }), b = snap(v[1] ?? s.max, { ...s, value: 0 });
+  return a <= b ? [a, b] : [b, a];
+}
+
+/** Move one thumb to `v`, stopped at the other thumb (thumbs never cross; they may meet). */
+export function setPairValue(pair: readonly number[], index: number, v: number): RangePair {
+  return index === 0 ? [Math.min(v, pair[1]), pair[1]] : [pair[0], Math.max(v, pair[0])];
+}
+
+/** The thumb a press at `v` moves: the nearer one; when the thumbs meet, the one on the side of the press. */
+export function nearestThumb(pair: readonly number[], v: number): 0 | 1 {
+  if (pair[0] === pair[1]) return v < pair[0] ? 0 : 1;
+  return Math.abs(v - pair[0]) <= Math.abs(v - pair[1]) ? 0 : 1;
+}
+
+/** The value after a key on one thumb (the whole range's steps, stopped at the other thumb), or undefined. */
+export function pairKey(key: string, pair: readonly number[], index: number, s: Bounds, rtl = false): RangePair | undefined {
+  const v = rangeKey(key, { ...s, value: pair[index] }, rtl);
+  return v === undefined ? undefined : setPairValue(pair, index, v);
+}
+
+/** Thumb ratios (0..1) of a pair: the indicator runs from the first to the second. */
+export const pairRatios = (pair: readonly number[], s: Bounds): RangePair =>
+  [ratioOf({ ...s, value: pair[0] }), ratioOf({ ...s, value: pair[1] })];
+
+/** Accessible names of the two thumbs: the slider's label, then which end. */
+export const pairLabels = (label?: string): [string, string] => label ? [`${label}, minimum`, `${label}, maximum`] : ['Minimum', 'Maximum'];
+
+/** The host of a pair: a group named by the label; each thumb is the slider. */
+export function pairGroupAttrs(s: { disabled?: boolean; label?: string }) {
+  return {
+    role: 'group', tabindex: undefined, 'aria-label': s.label || undefined, 'aria-disabled': s.disabled ? 'true' : undefined,
+    'aria-valuemin': undefined, 'aria-valuemax': undefined, 'aria-valuenow': undefined, 'aria-valuetext': undefined, 'aria-orientation': undefined,
+  };
+}
+
+/** One thumb of a pair (role=slider, a tab stop): its value within the whole range, data-index and data-dragging. */
+export function pairThumbAttrs(pair: readonly number[], index: number, s: Bounds & { disabled?: boolean; label?: string; dragging?: boolean }) {
+  return {
+    ...sliderAttrs({ ...s, value: pair[index], label: pairLabels(s.label)[index] }),
+    'data-index': index,
+    'data-dragging': s.dragging ? '' : undefined,
+  };
+}

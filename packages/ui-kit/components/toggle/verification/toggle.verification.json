@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/toggle/toggle.element.ts",
-      "sha256": "3aa0553795a0aec56886729dc26af2c71b8c9ad89751e84f2cb504a4b4ce5ece"
+      "sha256": "a614de984a5b90d373766c579b318e2dd2a5bcae350eddfa2e443a1783804ab0"
     },
     {
       "path": "components/toggle/toggle.react.tsx",
-      "sha256": "d8b2a5b2d6ab9d8bbf726479f7e31489757dc551f5c70ed4c89d6ff8e1739df3"
+      "sha256": "ab578d3e45ff337b16a71fe47ddfcc3833d4e1dd0b31725ee5a0dffb810ed418"
     },
     {
       "path": "components/toggle/toggle.recipe.ts",
-      "sha256": "96843d2b9f353b60f6ae9ff27d384b965307466681164f12ed3fbe6650ec11a2"
+      "sha256": "41605777e66de9c82e77b2f94d492968816b4a350e00e848b661b8c372a610e0"
     },
     {
       "path": "components/toggle/toggle.manifest.json",
-      "sha256": "ac1b3c4c01b1e48f30e666f8758afff274e292f2d869eb5338c489b06d7f01a9"
+      "sha256": "730627f041b8507c25178e5cf996b82c3b811b3d55e85f7d8e2d18868e235671"
     },
     {
       "path": "components/button/button.recipe.ts",
@@ -31,13 +31,18 @@
         {
           "command": "node --test --test-name-pattern=\"ui-toggle\" test/toggle.test.ts",
           "covers": "role, aria-pressed, data-pressed, activation keys, cancelable change { pressed, reason, event }, defaultPressed, disabled, construction pattern, no native elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"ui-toggle-group\" test/toggle-group.test.ts",
+          "covers": "inside a toggle group: pressed from the group, disabled with it, the roving tab index"
         }
       ],
       "latestRun": {
         "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"ui-toggle\" test/toggle.test.ts"
+          "node --test --test-name-pattern=\"ui-toggle\" test/toggle.test.ts",
+          "node --test --test-name-pattern=\"ui-toggle-group\" test/toggle-group.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -49,13 +54,18 @@
         {
           "command": "node --test --test-name-pattern=\"React Toggle|parity\" test/toggle.test.ts",
           "covers": "SSR markup, state parity with the web component, onPressedChange details, controlled and uncontrolled, render and className function"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"React ToggleGroup\" test/toggle-group.test.ts",
+          "covers": "inside a toggle group: pressed from the group, disabled with it, the roving tab index"
         }
       ],
       "latestRun": {
         "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
-          "node --test --test-name-pattern=\"React Toggle|parity\" test/toggle.test.ts"
+          "node --test --test-name-pattern=\"React Toggle|parity\" test/toggle.test.ts",
+          "node --test --test-name-pattern=\"React ToggleGroup\" test/toggle-group.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -65,6 +75,7 @@
   },
   "limitations": [
     "Geometry review (manual, 2026-11-02): the control family's height 8u, padding u − B, radius, slots and label padding checked for ui-toggle in apps/studio/geometry-check.html at every size × B 0 and 1 × icon sizes, pressed and unpressed; growth: a long label grows the toggle like a button, slots never shrink; RTL: the construction pattern mirrors (flex); focus: the keyboard ring is the button's outline (no size change), inside a ui-group it stays within the group contour; light and dark screenshots of the Actions family (ladder 3, 4, 6 and the theme unit).",
+    "Inside a ui-toggle-group (2026-11-02): a toggle takes the composite option geometry and look (toggle.recipe.ts in-group rules), checked through the toggle group in geometry-check.html and react-check.html; see the toggle-group verification record.",
     "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Toggle with ui-toggle at five sizes (\"fails\": []).",
     "The source list is the direct sources, not every transitive dependency."
   ]

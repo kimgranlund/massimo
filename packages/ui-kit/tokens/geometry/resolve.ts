@@ -298,6 +298,16 @@ export function trackFill(kind: TrackKind, ratio: number, width: number, input: 
   return kind === 'range' ? t.track + ratio * (width - t.track) : ratio * width;
 }
 
+/**
+ * Two-thumb range fill (value [start, end] at ratios r0 ≤ r1): it starts one track-radius before the
+ * first thumb's center (offset r0·(width − track)) and ends one past the second's (width track +
+ * (r1 − r0)·(width − track)), so both caps wrap their thumbs. r0 = 0 is the one-thumb fill.
+ */
+export function trackPairFill(r0: number, r1: number, width: number, input: GeometryInput = {}) {
+  const t = resolveTrack('range', input);
+  return { offset: r0 * (width - t.track), width: t.track + (r1 - r0) * (width - t.track) };
+}
+
 /** Range thumb offset from the start edge: inset + ratio·(width − track). Its center is track/2 + ratio·(width − track). */
 export function thumbOffset(ratio: number, width: number, input: GeometryInput = {}) {
   const t = resolveTrack('range', input);

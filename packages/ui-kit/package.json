@@ -74,7 +74,9 @@
     "./components/combobox/element": "./components/combobox/combobox.element.ts",
     "./components/combobox/react": "./components/combobox/combobox.react.tsx",
     "./components/autocomplete/element": "./components/autocomplete/autocomplete.element.ts",
-    "./components/autocomplete/react": "./components/autocomplete/autocomplete.react.tsx"
+    "./components/autocomplete/react": "./components/autocomplete/autocomplete.react.tsx",
+    "./components/toggle-group/element": "./components/toggle-group/toggle-group.element.ts",
+    "./components/toggle-group/react": "./components/toggle-group/toggle-group.react.tsx"
   },
   "scripts": {
     "prepare": "panda codegen",

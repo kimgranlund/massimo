@@ -187,7 +187,7 @@
       "constraints": [
         "The host is the button: role=button, tabindex 0 (−1 while disabled), aria-pressed and aria-disabled set by script, with the styling state data-pressed and data-disabled (Base UI Toggle; contracts/states.json). Contains no native form elements.",
         "Activation is click, Enter or Space; it fires a cancelable change with the next pressed value, and preventDefault keeps the current one. disabled stops the click.",
-        "A toggle has no form value; value only identifies it for an application-owned toggle group.",
+        "A toggle has no form value; value identifies it inside a ui-toggle-group (React ToggleGroup), which owns its pressed state, disables it with itself and sets its roving tab index.",
         "Its label must not change with the state: aria-pressed says whether it is on."
       ],
       "avoidWhen": [
@@ -198,7 +198,7 @@
         },
         {
           "when": "Choosing one of a few mutually exclusive options.",
-          "reason": "Independent toggles cannot own exclusive selection or arrow-key movement; segmented is a single-select listbox.",
+          "reason": "Independent toggles cannot own exclusive selection or arrow-key movement; segmented is a single-select listbox with a form value, a toggle group owns pressed toggles without one.",
           "useInstead": "component:segmented"
         },
         {
@@ -210,6 +210,11 @@
           "when": "An action that does not stay on.",
           "reason": "A button has no pressed state.",
           "useInstead": "component:button"
+        },
+        {
+          "when": "Several related toggles whose pressed state belongs together (formatting, view filters).",
+          "reason": "A toggle group owns their pressed values (one or several), one tab stop and arrow-key movement.",
+          "useInstead": "component:toggle-group"
         }
       ],
       "searchTerms": [
@@ -342,6 +347,11 @@
       "from": "component:toggle",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:toggle",
+      "relation": "allowedIn",
+      "to": "context:toggle-group"
     },
     {
       "from": "component:toggle",

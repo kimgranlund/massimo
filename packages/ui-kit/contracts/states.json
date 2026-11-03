@@ -124,7 +124,7 @@
     "data-dragging": {
       "baseUi": true,
       "condition": "_dragging",
-      "meaning": "A pointer drags the range thumb."
+      "meaning": "A pointer drags the range thumb (on the host; with two thumbs, also on the dragged thumb)."
     },
     "data-progressing": {
       "baseUi": true,
@@ -266,6 +266,11 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The combobox input while no option matches its text (Base UI Combobox.Input)."
+    },
+    "data-multiple": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "A toggle group lets several toggles be pressed (multiple)."
     }
   },
   "components": {
@@ -420,6 +425,9 @@
         "data-touched",
         "data-filled",
         "data-focused"
+      ],
+      "thumb": [
+        "data-dragging"
       ]
     },
     "ui-progress": {
@@ -801,6 +809,13 @@
         "data-selected",
         "data-highlighted",
         "data-disabled"
+      ]
+    },
+    "ui-toggle-group": {
+      "host": [
+        "data-orientation",
+        "data-disabled",
+        "data-multiple"
       ]
     }
   },

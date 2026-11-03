@@ -122,6 +122,15 @@
         "inside accordion",
         "accordion item"
       ]
+    },
+    "toggle-group": {
+      "id": "context:toggle-group",
+      "host": "component:toggle-group",
+      "summary": "Inside a ui-toggle-group: ui-toggle children share its pressed values (one or several pressed, one tab stop).",
+      "searchTerms": [
+        "toggle group",
+        "inside toggle group"
+      ]
     }
   },
   "nesting": {

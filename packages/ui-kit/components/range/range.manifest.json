@@ -30,9 +30,17 @@
         "ratioOf",
         "rangeKey",
         "valueAt",
-        "sliderAttrs"
+        "sliderAttrs",
+        "parsePair",
+        "snapPair",
+        "setPairValue",
+        "nearestThumb",
+        "pairKey",
+        "pairRatios",
+        "pairThumbAttrs",
+        "pairGroupAttrs"
       ],
-      "description": "Value snapping, key and pointer mapping and slider ARIA."
+      "description": "Value snapping, key and pointer mapping and slider ARIA; for a pair, ordering, thumbs that stop at each other, the nearer thumb for a press and per-thumb ARIA."
     },
     {
       "kind": "geometry",
@@ -40,9 +48,10 @@
       "exports": [
         "resolveTrack",
         "trackFill",
+        "trackPairFill",
         "thumbOffset"
       ],
-      "description": "Reference numbers for track, thumb and fill."
+      "description": "Reference numbers for track, thumb and fill (a pair's fill: trackPairFill)."
     }
   ],
   "nodes": [
@@ -54,7 +63,8 @@
       "class": "UIRange",
       "extends": "UIFormElement",
       "intent": [
-        "Set a number within a bounded range by position"
+        "Set a number within a bounded range by position",
+        "Set a sub-range (start and end) with two thumbs when the value is a pair"
       ],
       "properties": [
         {
@@ -97,7 +107,7 @@
           "default": 50,
           "attribute": "value",
           "reflects": false,
-          "description": "Live value; the value attribute at connect is the reset default.",
+          "description": "Live value: a number, or a pair [start, end] for two thumbs (attribute \"20,80\"; the pair is snapped and ordered). The value attribute at connect is the reset default.",
           "inspector": {
             "control": "number"
           }
@@ -108,7 +118,7 @@
           "default": null,
           "attribute": "default-value",
           "reflects": false,
-          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's. A pair (\"20,80\") is the default of a two-thumb range.",
           "inspector": {
             "control": "number"
           }
@@ -149,7 +159,7 @@
           "default": "",
           "attribute": "label",
           "reflects": false,
-          "description": "Accessible name (aria-label); not visible.",
+          "description": "Accessible name (aria-label); not visible. A pair names the group, and its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
           "inspector": {
             "control": "text"
           }
@@ -160,7 +170,7 @@
           "default": "",
           "attribute": "value-text",
           "reflects": false,
-          "description": "Human text for the value (aria-valuetext), e.g. \"50%\".",
+          "description": "Human text for the value (aria-valuetext), e.g. \"50%\". One thumb only; a pair ignores it.",
           "inspector": {
             "control": "text"
           }
@@ -186,7 +196,7 @@
           "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "detail": "{ value: number, reason: 'keyboard' | 'track-press' | 'drag', event: Event }",
+          "detail": "{ value: number | [number, number], activeThumbIndex?: 0 | 1, reason: 'keyboard' | 'track-press' | 'drag', event: Event }",
           "trigger": "every value change from keys, a track press or a drag (Base UI onValueChange)"
         },
         {
@@ -194,7 +204,7 @@
           "type": "CustomEvent",
           "bubbles": true,
           "cancelable": false,
-          "detail": "{ value: number, reason: 'keyboard' | 'track-press' | 'drag', event: Event }",
+          "detail": "{ value: number | [number, number], reason: 'keyboard' | 'track-press' | 'drag', event: Event }",
           "trigger": "an interaction ends with a new value: each key step, or pointer release after a press or drag (Base UI onValueCommitted)"
         }
       ],
@@ -255,7 +265,8 @@
         "input fires while dragging or stepping; change fires on key commit and pointer release.",
         "The value attribute at connect is the reset default. Values snap to step.",
         "label sets aria-label; value-text sets aria-valuetext.",
-        "Composition: track › indicator and thumb may be authored as [data-part] spans; the host adopts their attributes and classes (the thumb also its content) onto the generated parts. React: Slider.Root (alias Range.Root) with Slider.Track › Slider.Indicator and Slider.Thumb, which renders the painted thumb and the native range input after it (Base UI's Thumb also holds the input: the input takes keys, pointer and the form value, so it is not a separate part); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders."
+        "Composition: track › indicator and thumb may be authored as [data-part] spans; the host adopts their attributes and classes (the thumb also its content) onto the generated parts. React: Slider.Root (alias Range.Root) with Slider.Track › Slider.Indicator and Slider.Thumb, which renders the painted thumb and the native range input after it (Base UI's Thumb also holds the input: the input takes keys, pointer and the form value, so it is not a separate part); every React part takes render (an element or (props, state) => element) and className (a string or (state) => string); the recipe class and data-* stay on whatever renders.",
+        "A pair value renders two thumbs: the host is role=group (named by label) and is not focusable; each thumb is role=slider and a tab stop, with data-index. A thumb stops at the other (they may meet, never cross); a track press moves the nearer thumb. With a name, the form value is one entry per thumb. React: one Slider.Thumb per value (index 0 and 1); the thumb inputs ignore the pointer and the root maps it."
       ],
       "avoidWhen": [
         {
@@ -614,16 +625,16 @@
           "props": [
             "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
             "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
-            "value?: number",
-            "defaultValue?: number = 50",
+            "value?: V // One number, or [start, end] for two thumbs that cannot cross.",
+            "defaultValue?: V = 50",
             "min?: number = 0",
             "max?: number = 100",
             "step?: number = 1",
-            "label?: string // Accessible name (aria-label) when there is no visible label.",
-            "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\".",
+            "label?: string // Accessible name (aria-label) when there is no visible label; a pair names its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
+            "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\". One thumb only.",
             "size?: number // Unit u in px for this control.",
-            "onValueChange?: (value: number, details: ChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'. The native onChange still fires.",
-            "onValueCommitted?: (value: number, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
+            "onValueChange?: (value: V, details: SliderChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires.",
+            "onValueCommitted?: (value: V, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
             "children?: ReactNode // Slider.Root: the parts (Slider.Track with Slider.Indicator, Slider.Thumb). Ignored by the preset."
           ]
         },
@@ -651,16 +662,16 @@
             "props": [
               "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
               "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
-              "value?: number",
-              "defaultValue?: number = 50",
+              "value?: V // One number, or [start, end] for two thumbs that cannot cross.",
+              "defaultValue?: V = 50",
               "min?: number = 0",
               "max?: number = 100",
               "step?: number = 1",
-              "label?: string // Accessible name (aria-label) when there is no visible label.",
-              "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\".",
+              "label?: string // Accessible name (aria-label) when there is no visible label; a pair names its thumbs \"<label>, minimum\" and \"<label>, maximum\".",
+              "valueText?: string // Human text for the value (aria-valuetext), e.g. \"40%\". One thumb only.",
               "size?: number // Unit u in px for this control.",
-              "onValueChange?: (value: number, details: ChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'. The native onChange still fires.",
-              "onValueCommitted?: (value: number, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
+              "onValueChange?: (value: V, details: SliderChangeDetails) => void // Every value change (Base UI onValueChange): reason 'track-press', 'drag' or 'keyboard'; a pair adds activeThumbIndex. The native onChange still fires.",
+              "onValueCommitted?: (value: V, details: ChangeDetails) => void // The value at the end of an interaction, when it changed (Base UI onValueCommitted; the native change event).",
               "children?: ReactNode // Slider.Root: the parts (Slider.Track with Slider.Indicator, Slider.Thumb). Ignored by the preset."
             ]
           },
@@ -691,7 +702,8 @@
             "props": [
               "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
               "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
-              "children?: ReactNode"
+              "children?: ReactNode",
+              "index?: number = 0 // A pair's thumb: 0 for the start, 1 for the end (Base UI Thumb index). One thumb ignores it."
             ]
           }
         },

@@ -46,4 +46,6 @@ export const pending = defineGlobalStyles({
   'ui-number-field:not(:defined)': { display: 'block', minHeight: FIELD_HEIGHT, visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
   // An OTP field reserves its row of 8u cells.
   'ui-otp-field:not(:defined)': { display: 'inline-flex', minHeight: 'var(--h)', visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards' },
+  // A toggle group reserves its row (it holds 7u toggles inside its composite edge).
+  'ui-toggle-group:not(:defined)': { visibility: 'hidden', animation: 'ui-reveal 0s 1.5s forwards', display: 'inline-flex', minHeight: 'var(--h)' },
 });

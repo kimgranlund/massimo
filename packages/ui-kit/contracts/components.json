@@ -578,9 +578,10 @@
         "collection",
         "group",
         "form",
-        "inline"
+        "inline",
+        "toggle-group"
       ],
-      "behavior": "Click, Enter and Space flip pressed and fire a cancelable change { pressed, reason: none, event }; disabled blocks activation. No form value."
+      "behavior": "Click, Enter and Space flip pressed and fire a cancelable change { pressed, reason: none, event }; disabled blocks activation. No form value. Inside a ui-toggle-group the group owns pressed (it answers the change), disables the toggle with itself and sets its roving tab index."
     },
     "collapsible": {
       "geometryFamily": "disclosure",
@@ -803,6 +804,22 @@
         "fieldset"
       ],
       "behavior": "Typing is the value and opens the popup; mode list filters the suggestions (contains, case- and accent-insensitive), both also completes inline (the rest of the first suggestion that starts with the text, selected), inline completes without filtering, none does neither. ArrowDown / ArrowUp move the highlight (inline modes write it into the input); Enter or a press writes a suggestion and closes; Enter with no highlight closes and submits the form; Escape closes. Events: input { value, reason, event } on every change, change on a commit, the clear button or blur, openchange { open, reason, event } (cancelable)."
+    },
+    "toggle-group": {
+      "geometryFamily": "container",
+      "element": "Host is the group (role=group, data-ui=toggle-group in React); its ui-toggle children are the toggles (each role=button with aria-pressed; native buttons in React).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "The group owns its toggles' pressed state (value: the pressed toggle values; multiple allows several). A press fires the group's cancelable change ({ value: string[], reason: 'none', event }) in place of the toggle's; in single mode pressing one releases the others, and pressing the pressed one releases it. Roving focus: one tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled toggles, wrapping. disabled disables every toggle. No form value."
     }
   }
 }

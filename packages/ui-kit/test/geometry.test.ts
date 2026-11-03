@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -170,6 +170,16 @@ test('range: inset thumb (track − u, 0.5u) and a fill cap concentric around it
   }
   assert.equal(trackFill('range', 1, W, U4), W);
   assert.equal(trackFill('progress', 0.5, W, U4), 100);
+});
+
+test('range pair: the fill starts one track radius before the first thumb center and ends one past the second', () => {
+  const t = resolveTrack('range', U4), W = 200;
+  for (const [a, b] of [[0, 0], [0.25, 0.75], [0.5, 0.5], [0, 1]]) {
+    const f = trackPairFill(a, b, W, U4);
+    assert.equal(thumbOffset(a, W, U4) + t.thumb / 2 - f.offset, t.track / 2, `start cap at ${a}`);
+    assert.equal(f.offset + f.width - (thumbOffset(b, W, U4) + t.thumb / 2), t.track / 2, `end cap at ${b}`);
+  }
+  assert.deepEqual(trackPairFill(0, 0.4, W, U4), { offset: 0, width: trackFill('range', 0.4, W, U4) }, 'r0 = 0 is the one-thumb fill');
 });
 
 test('the default unit is 4.5px everywhere: 36px controls, 14.5px control text', async () => {

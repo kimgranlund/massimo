@@ -10,7 +10,8 @@
 //     one) is an inherited base, kept as text under `inherits`;
 //   - members `name?: Type;` (`;`, `,` or a line break ends one), with the JSDoc block before a
 //     member (`/** … */`) as its description; a later member of the same name replaces an earlier one;
-//   - the props type of an export: the annotation on the first parameter of `export function Name(…)`,
+//   - the props type of an export: the annotation on the first parameter of `export function Name(…)`
+//     (or `export function Name<V …>(…)`),
 //     or, for `export const Name = factory(…)`, of the first `function` in `const factory = …`, or,
 //     for an alias `export const Name = Other;`, of Other. Defaults are the destructuring defaults of
 //     that parameter (`type = 'button'`), as source text. Generic interfaces (`interface A<S = X>`)
@@ -184,7 +185,8 @@ function defaults(pattern: string): Map<string, string> {
   for (const item of splitTop(pattern.slice(1, -1), ',')) {
     if (item.startsWith('...')) continue;
     const [lhs, ...rhs] = splitTop(item, '=');
-    if (rhs.length) out.set(splitTop(lhs, ':')[0], squash(rhs.join('=')));
+    // A type assertion (`50 as V`, for a generic prop) is not part of the default.
+    if (rhs.length) out.set(splitTop(lhs, ':')[0], squash(rhs.join('=')).replace(/\s+as\s+[\w.]+$/, ''));
   }
   return out;
 }
@@ -195,7 +197,7 @@ export function reactApi(file: string, exportName: string, mod = load(file)): Re
   const alias = new RegExp(`^export const ${exportName}\\s*=\\s*(\\w+);`, 'm').exec(text);
   if (alias) return reactApi(file, alias[1], mod);
   let open: number;
-  const fn = new RegExp(`^export function ${exportName}\\s*\\(`, 'm').exec(text);
+  const fn = new RegExp(`^export function ${exportName}\\s*(?:<[^()]*>)?\\s*\\(`, 'm').exec(text);
   if (fn) open = fn.index + fn[0].length - 1;
   else {
     const made = new RegExp(`^export const ${exportName}\\s*=\\s*(\\w+)\\(`, 'm').exec(text);

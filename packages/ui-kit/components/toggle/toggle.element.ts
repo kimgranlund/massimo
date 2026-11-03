@@ -3,11 +3,16 @@
 // { pressed, reason: 'none', event } (Base UI onPressedChange); preventDefault keeps the state.
 // Children use the construction pattern (slot="leading" | "prefix" | "suffix" | "trailing"; the
 // rest is the label), on the button recipe and control geometry (toggle.recipe.ts).
-import { UIElement, define } from '../../core/index.ts';
+// Inside a <ui-toggle-group> the group owns the pressed state (it answers the change), disables the
+// toggle with itself and sets the roving tab index (tabIndexFor).
+import { UIElement, define, signal } from '../../core/index.ts';
 import { applyAttrs, buttonAttrs, eventDetails, isInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe } from '../classes.ts';
 import { toggle } from '../../styled-system/recipes/toggle.js';
+
+/** What a toggle reads from its ui-toggle-group (components/toggle-group). */
+interface ToggleGroupHost { disabled: boolean; tabIndexFor(t: UIToggle): number }
 
 export class UIToggle extends UIElement {
   static properties = {
@@ -23,9 +28,15 @@ export class UIToggle extends UIElement {
   declare value: string;
 
   #unslot?: () => void;
-  get #state(): ButtonState { return { disabled: this.disabled, pressed: this.pressed }; }
+  /** The ui-toggle-group parent, if any. */
+  #group = signal<ToggleGroupHost | null>(null);
+  get #state(): ButtonState { return { disabled: this.disabled || !!this.#group.value?.disabled, pressed: this.pressed }; }
 
   connected() {
+    const p = this.parentElement;
+    this.#group.value = null;
+    // The group may upgrade after its toggles: read it once it is defined.
+    if (p?.localName === 'ui-toggle-group') customElements.whenDefined('ui-toggle-group').then(() => { if (this.parentElement === p) this.#group.value = p as unknown as ToggleGroupHost; });
     if (this.defaultPressed && !this.hasAttribute('pressed')) this.pressed = true;
     this.#unslot = observeSlots(this);
     this.addEventListener('click', this.#onClick);
@@ -39,7 +50,10 @@ export class UIToggle extends UIElement {
   }
 
   update() {
-    applyAttrs(this, buttonAttrs(this.#state));
+    const s = this.#state;
+    applyAttrs(this, buttonAttrs(s));
+    const g = this.#group.value;
+    if (g && !s.disabled) applyAttrs(this, { tabindex: g.tabIndexFor(this) });
     applyRecipe(this, toggle());
   }
 
