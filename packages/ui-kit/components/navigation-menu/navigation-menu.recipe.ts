@@ -49,6 +49,9 @@ export const navigationMenu = defineSlotRecipe({
       '& > [data-part=trailing]': { color: 'fg.muted' },
       '& > [data-part=trailing] > i': { transition: t('toggle', 'rotate') },
       '&[data-popup-open] > [data-part=trailing] > i': { rotate: '180deg' },
+      // A submenu's trigger points at the side its content opens to (caret-right, mirrored in RTL), not turned.
+      '[data-nested] > [data-part=list] > [data-part=item] > &[data-popup-open] > [data-part=trailing] > i': { rotate: 'none' },
+      '[data-nested] > [data-part=list] > [data-part=item] > &:dir(rtl) > [data-part=trailing] > i': { scale: '-1 1' },
       // The open trigger is the popup's anchor.
       [ANCHORED]: { '&[data-popup-open]': { anchorName: 'var(--ui-anchor)' } },
     }),

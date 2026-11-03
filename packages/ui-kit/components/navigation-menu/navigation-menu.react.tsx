@@ -37,6 +37,8 @@ interface NavContext {
   /** Item values in render order (activation direction). */
   order: RefObject<string[]>;
   id: string;
+  /** A submenu (a Root inside another's Content). */
+  nested: boolean;
 }
 const NavCtx = createContext<NavContext | null>(null);
 const useNav = (part: string) => {
@@ -68,8 +70,11 @@ export interface NavigationMenuRootProps extends Omit<HTMLAttributes<HTMLElement
 }
 
 /** NavigationMenu.Root: the <nav>; shares the open value with its parts and runs the menu behavior. */
-export function NavigationMenuRoot({ value, defaultValue = '', onValueChange, orientation = 'horizontal', delay = 50, closeDelay = 50, label, size, className, render, children, style, ...rest }: NavigationMenuRootProps) {
+export function NavigationMenuRoot({ value, defaultValue = '', onValueChange, orientation: orientationProp, delay = 50, closeDelay = 50, label, size, className, render, children, style, ...rest }: NavigationMenuRootProps) {
   const id = useId();
+  // Inside another menu's Content: a submenu (Base UI nested Root), vertical by default, no landmark.
+  const parent = useContext(NavCtx), parentItem = useContext(ItemCtx), nested = !!parent && !!parentItem;
+  const orientation = orientationProp ?? (nested ? 'vertical' : 'horizontal');
   const [own, setOwn] = useState(defaultValue);
   const current = value ?? own;
   const vertical = orientation === 'vertical';
@@ -103,13 +108,15 @@ export function NavigationMenuRoot({ value, defaultValue = '', onValueChange, or
     return () => n.detach();
   }, []);
   useEffect(() => { if (!current) nav.current?.reset(); }, [current]);
+  // A submenu closes with the item that holds it.
+  useEffect(() => { if (nested && !parentItem!.open && live.current.current) setValueRef.current('', 'none'); }, [nested && parentItem!.open]);
   const c = navigationMenu();
-  const attrs = { 'data-orientation': orientation };
-  const ctx: NavContext = { c, value: current, vertical, direction: dir.current, setValue, rootRef, viewport, setViewport, order, id };
+  const attrs = { 'data-orientation': orientation, 'data-nested': on(nested) };
+  const ctx: NavContext = { c, value: current, vertical, direction: dir.current, setValue, rootRef, viewport, setViewport, order, id, nested };
   return (
     <NavCtx.Provider value={ctx}>
-      {renderPart('nav', c.root, {
-        'data-ui': 'navigation-menu', 'data-size': size, 'aria-label': label, ...attrs, className,
+      {renderPart(nested ? 'div' : 'nav', c.root, {
+        'data-ui': 'navigation-menu', 'data-size': size, 'aria-label': nested ? undefined : label, ...attrs, className,
         style: { ...style, '--ui-anchor': `--${id.replace(/[^\w-]/g, '')}` } as any, ...rest, ref: rootRef, render, children,
       }, stateOf(attrs))}
     </NavCtx.Provider>
@@ -156,7 +163,10 @@ export interface NavigationMenuTriggerProps extends Omit<HTMLAttributes<HTMLButt
 }
 
 /** NavigationMenu.Trigger: a native <button> (aria-expanded, aria-controls) with a caret (Base UI Icon) in trailing. */
-export function NavigationMenuTrigger({ leading, prefix, suffix, trailing = <i name="caret-down" />, className, render, children, ...rest }: NavigationMenuTriggerProps) {
+export function NavigationMenuTrigger({ leading, prefix, suffix, trailing: trailingProp, className, render, children, ...rest }: NavigationMenuTriggerProps) {
+  const nav = useContext(NavCtx);
+  // A submenu's caret points at the side its content opens to.
+  const trailing = trailingProp === undefined ? <i {...{ name: nav?.nested ? 'caret-right' : 'caret-down' }} /> : trailingProp;
   const n = useNav('NavigationMenu.Trigger');
   const it = useContext(ItemCtx);
   if (!it) throw new Error('<NavigationMenu.Trigger> must be inside NavigationMenu.Item');

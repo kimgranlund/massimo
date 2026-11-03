@@ -18,6 +18,9 @@
 // focus leaving close it. A change fires a cancelable `change` ({ value, reason, event }; '' when
 // closed). The behavior is dom/navigation.ts (shared with React); the popup pieces are
 // popover/popup-parts.ts, dom/popup.ts and dom/floating.ts.
+// Submenus (Base UI: a Root inside a Content): a ui-navigation-menu in an item's content is a
+// nested menu, vertical unless `orientation` says otherwise, with no landmark of its own; its popup
+// opens beside its trigger, Escape closes it first, and it closes with its parent's item.
 import { UIElement, define, signal } from '../../core/index.ts';
 import {
   activationDirection, applyAttrs, buttonAttrs, createAnchoredPositioner, createDismissLayer, createNavigationController, eventDetails, hideTopLayer,
@@ -58,6 +61,8 @@ export class UINavigationMenu extends UIElement {
   #popup?: HTMLElement;
   #viewport?: HTMLElement;
   #entries: Entry[] = [];
+  /** The carets the menu generated (a submenu turns them to point at its side). */
+  #carets = new WeakSet<Element>();
   #settled = false;
   #shown = false;
   #side = signal<Side>('bottom');
@@ -86,7 +91,9 @@ export class UINavigationMenu extends UIElement {
   get viewport() { return this.#viewport; }
   /** The items, in order: their element, value, trigger, content and (plain items) link. */
   get items(): readonly Entry[] { return this.#entries; }
-  get #vertical() { return this.orientation === 'vertical'; }
+  /** A menu inside another's content (Base UI nested NavigationMenu.Root). */
+  get nested() { return !!this.parentElement?.closest('ui-navigation-menu [data-part=content]'); }
+  get #vertical() { return this.hasAttribute('orientation') || !this.nested ? this.orientation === 'vertical' : true; }
   #active() { return this.#entries.find((e) => e.value === this.value && e.content); }
 
   connected() {
@@ -139,6 +146,7 @@ export class UINavigationMenu extends UIElement {
         const caret = document.createElement('i');
         caret.setAttribute('slot', 'trailing');
         caret.setAttribute('name', 'caret-down');
+        this.#carets.add(caret);
         trigger.append(caret);
       }
       arrangeSlots(trigger);
@@ -183,7 +191,12 @@ export class UINavigationMenu extends UIElement {
       this.#previous = value;
     }
     const placed = open ? this.#side.value : (vertical ? 'right' : 'bottom');
-    applyAttrs(this, { role: 'navigation', 'aria-label': this.label || undefined, 'data-orientation': orientation });
+    const nested = this.nested;
+    for (const e of this.#entries) {
+      const caret = e.trigger && partOf(e.trigger, 'trailing')?.querySelector(':scope > i');
+      if (caret && this.#carets.has(caret)) caret.setAttribute('name', nested ? 'caret-right' : 'caret-down');
+    }
+    applyAttrs(this, { role: nested ? undefined : 'navigation', 'aria-label': nested ? undefined : this.label || undefined, 'data-orientation': orientation, 'data-nested': on(nested) });
     applyAttrs(list, { role: list.localName === 'ul' || list.localName === 'ol' ? undefined : 'list', 'aria-orientation': undefined, 'data-orientation': orientation });
     for (const e of this.#entries) {
       const isOpen = open && e === active;
@@ -199,6 +212,10 @@ export class UINavigationMenu extends UIElement {
     applyAttrs(pos, { ...state, 'data-placement': `${placed}-start` });
     applyAttrs(popup, state);
     if (open) this.#show(); else this.#hide();
+    // Submenus close with the item that holds them.
+    for (const sub of viewport.querySelectorAll<UINavigationMenu>('ui-navigation-menu')) {
+      if (sub.value && sub.parentElement?.closest('ui-navigation-menu') === this && !(active?.content?.contains(sub))) sub.value = '';
+    }
     applyRecipe(this, navigationMenu(), (slot) => slot === 'list' ? list : slot === 'positioner' ? pos : slot === 'popup' ? popup : slot === 'viewport' ? viewport : null, this.localName);
     const c = navigationMenu();
     for (const e of this.#entries) {

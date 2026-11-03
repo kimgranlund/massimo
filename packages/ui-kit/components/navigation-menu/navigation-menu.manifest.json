@@ -458,7 +458,7 @@
               "value?: string // The open item's value, '' when closed (controlled).",
               "defaultValue?: string = '' // The item open at first render (uncontrolled).",
               "onValueChange?: (value: string, details: ChangeDetails) => void // Called when an interaction opens, switches or closes an item, with Base UI's details.",
-              "orientation?: 'horizontal' | 'vertical' = 'horizontal' // horizontal (default) or vertical.",
+              "orientation?: 'horizontal' | 'vertical' // horizontal (default) or vertical.",
               "delay?: number = 50 // Hover: open after this long on a trigger, ms (default 50).",
               "closeDelay?: number = 50 // Hover: close this long after the pointer leaves, ms (default 50).",
               "label?: string // The landmark's name (aria-label).",
@@ -499,7 +499,7 @@
               "leading?: ReactNode // Leading icon (an <i name> or artwork).",
               "prefix?: ReactNode // Short text adornment before the label.",
               "suffix?: ReactNode // Short text adornment after the label.",
-              "trailing?: ReactNode = <i name=\"caret-down\" /> // Trailing icon.",
+              "trailing?: ReactNode // Trailing icon.",
               "children?: ReactNode"
             ]
           },

@@ -30,6 +30,19 @@
 
 An item with `label` gets a trigger and its children become its content; an item holding one link is a plain link. `value` names the open item (`''` when closed; an item's `value` attribute, else its index) and `default-value` (React `defaultValue`) opens one at first. Hover opens an item after `delay` ms (default 50; moving between triggers while open switches at once) and closes it `close-delay` ms (default 50) after the pointer leaves the triggers and the popup; a press toggles it (a press on the item hover opened keeps it open). Escape, an outside press or focus leaving close it; a link with `close-on-click` (React `closeOnClick`) closes it when pressed. Each change fires `change` (cancelable) with `{ value, reason, event }`, reasons `trigger-hover`, `trigger-press`, `list-navigation`, `escape-key`, `outside-press`, `focus-out`, `link-press`; React calls `onValueChange(value, { reason, event })`. `active` on a link marks the current page (`data-active`, `aria-current=page`). `orientation="vertical"` stacks the list and opens contents to its side.
 
+Submenus (Base UI: a Root inside a Content): a `ui-navigation-menu` (React `NavigationMenu` or `NavigationMenu.Root`) inside an item's content is a nested menu. It is vertical unless `orientation` is set, has no landmark of its own (a `div`, `data-nested`), and its triggers carry a `caret-right` (mirrored in RTL) that points where its content opens: beside the trigger, 1u away, top-aligned, as a menu's submenu. Hover, presses and keys work as in the top menu (ArrowRight opens a vertical trigger into its content); Escape, an outside press or focus leaving close the submenu first; switching or closing the parent's item closes it; a `close-on-click` link in it closes the whole menu.
+
+```html
+<ui-navigation-menu label="Main">
+  <div data-part="item" label="Docs">
+    <a href="/docs/intro">Introduction</a>
+    <ui-navigation-menu>
+      <div data-part="item" label="Guides"><a href="/guides/start">Getting started</a></div>
+    </ui-navigation-menu>
+  </div>
+</ui-navigation-menu>
+```
+
 ## Anatomy
 
 Parts (Base UI Navigation Menu):

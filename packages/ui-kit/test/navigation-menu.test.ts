@@ -186,3 +186,82 @@ test('NavigationMenu (React): the preset renders its parts; className and render
   assert.match(c, /data-popup-open=""/);
   assert.match(c, /data-part="content"[^>]*data-open=""/);
 });
+
+const NESTED = `<ui-navigation-menu label="Main">
+  <div data-part="item" value="docs" label="Docs">
+    <a href="/docs/intro">Introduction</a>
+    <ui-navigation-menu>
+      <div data-part="item" value="guides" label="Guides"><a href="/guides/a">Guide A</a><a href="/guides/b" close-on-click>Guide B</a></div>
+      <div data-part="item"><a data-part="link" href="/api">API</a></div>
+    </ui-navigation-menu>
+  </div>
+  <div data-part="item" value="kit" label="Kit"><a href="/kit/button">Button</a></div>
+</ui-navigation-menu>`;
+
+test('navigation menu: a menu in an item content is a submenu (vertical, no landmark); it opens beside its trigger, Escape closes it first, and it closes with its parent', async () => {
+  const el = await wc(NESTED);
+  const sub = el.querySelector('ui-navigation-menu') as any;
+  const [docs, kitItem] = el.items, [guides] = sub.items;
+  assert.ok(sub.nested && !el.nested);
+  assert.equal(sub.getAttribute('role'), null, 'no second navigation landmark');
+  assert.equal(sub.getAttribute('data-orientation'), 'vertical');
+  assert.ok(sub.hasAttribute('data-nested'));
+  for (const n of names(sub)) assert.ok(contract.components['ui-navigation-menu'].host.includes(n), n);
+  assert.ok(docs.content.contains(sub), 'the submenu stays in its item content');
+  assert.equal(guides.trigger.querySelector('i')!.getAttribute('name'), 'caret-right', 'a submenu caret points at its side');
+  assert.equal(docs.trigger.querySelector('i')!.getAttribute('name'), 'caret-down');
+  docs.trigger.click(); await tick();
+  assert.equal(el.value, 'docs');
+  guides.trigger.focus();
+  key(guides.trigger, 'ArrowRight'); // vertical: ArrowRight opens into the content
+  await sleep(40);
+  assert.equal(sub.value, 'guides');
+  assert.equal(el.value, 'docs', 'the parent stays open');
+  assert.equal(sub.positioner.getAttribute('data-placement'), 'right-start', 'beside its trigger');
+  assert.equal(document.activeElement, guides.content.querySelector('a'));
+  key(document.activeElement!, 'Escape'); await tick();
+  assert.equal(sub.value, '', 'Escape closes the submenu first');
+  assert.equal(el.value, 'docs');
+  assert.equal(document.activeElement, guides.trigger);
+  guides.trigger.click(); await tick();
+  assert.equal(sub.value, 'guides');
+  kitItem.trigger.click(); await tick();
+  assert.equal(el.value, 'kit');
+  assert.equal(sub.value, '', 'switching the parent item closes the submenu');
+  docs.trigger.click(); await tick();
+  guides.trigger.click(); await tick();
+  (guides.content.querySelectorAll('a')[1] as HTMLElement).click(); await tick();
+  assert.equal(sub.value, '');
+  assert.equal(el.value, '', 'a close-on-click link in a submenu closes the whole menu');
+  el.parentElement.remove();
+});
+
+test('NavigationMenu (React): a NavigationMenu inside a Content is a submenu, closing with its parent item', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const N = NavigationMenu;
+  const subValues: string[] = [];
+  const tree = (value: string) => h(N, { label: 'Main', value },
+    h(N.Item, { value: 'docs', label: 'Docs' },
+      h(N.Link, { href: '/docs/intro' }, 'Introduction'),
+      h(N, { defaultValue: 'guides', onValueChange: (v: string) => subValues.push(v) },
+        h(N.Item, { value: 'guides', label: 'Guides' }, h(N.Link, { href: '/guides/a' }, 'Guide A')))),
+    h(N.Item, { value: 'kit', label: 'Kit' }, h(N.Link, { href: '/kit/button' }, 'Button')));
+  await act(async () => root.render(tree('docs')));
+  const roots = [...document.querySelectorAll<HTMLElement>('[data-ui=navigation-menu]')];
+  const sub = roots.find((r) => r.hasAttribute('data-nested'))!;
+  assert.ok(sub, 'the nested root is marked');
+  assert.equal(sub.localName, 'div', 'no second <nav>');
+  assert.equal(sub.getAttribute('aria-label'), null);
+  assert.equal(sub.getAttribute('data-orientation'), 'vertical');
+  assert.equal(sub.querySelector('[data-part=trigger] i')!.getAttribute('name'), 'caret-right');
+  assert.equal(roots.find((r) => !r.hasAttribute('data-nested'))!.localName, 'nav');
+  await act(async () => root.render(tree('kit')));
+  assert.deepEqual(subValues, [''], 'the submenu closes when its parent item closes');
+  await act(async () => root.unmount());
+  box.remove();
+});

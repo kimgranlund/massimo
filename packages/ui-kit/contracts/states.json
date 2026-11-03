@@ -275,7 +275,7 @@
     "data-nested": {
       "baseUi": true,
       "condition": null,
-      "meaning": "A dialog popup opened inside another open dialog's popup (Base UI Dialog.Popup); its backdrop is not shown."
+      "meaning": "A dialog popup opened inside another open dialog's popup (Base UI Dialog.Popup); its backdrop is not shown; a navigation menu inside another menu's content (a submenu)."
     },
     "data-nested-dialog-open": {
       "baseUi": true,
@@ -1121,6 +1121,7 @@
     },
     "ui-navigation-menu": {
       "host": [
+        "data-nested",
         "data-orientation"
       ],
       "list": [
