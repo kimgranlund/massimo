@@ -201,6 +201,10 @@ Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers
 
 Options use the control anatomy with their inset reduced by the composite edge D = max(B, 0.5u): option inset Ic = max(B, u − D), option height 6u + 2Ic = 7u, so a one-row segmented control is always exactly 8u. Option radius = min(option/2, composite radius − D) = 2.5u at s = 1: the composite has the control radius and its options split the difference (the composite is exempt from radius ≤ padding). The popup sits 1u below its trigger.
 
+### Choice cards
+
+A radio or checkbox group with `variant="card"` makes each choice a card-md surface (`resolveChoiceCard`): padding 4u − B (× density), the concentric card radius (control radius + padding, × `radius-card`), cards the collection gap apart, contents 1u apart; a 1px border-role stroke, checked a 2px primary stroke and the primary-subtle fill (inset shadows, no space).
+
 ### Attached (inset="none")
 
 Listbox, segmented, toggle group, range and switch take `inset="none"`: attached, Differential Forms' zero-inset composite. The edge D is the border alone and the gap 0, so children touch the edge and each other; children lose their curvature (radius 0) and the first and last keep the container's outer corners (R − D), passed to the options as `--child-r` and `--c-ss | -se | -es | -ee` (`attachedComposite`, `recipe-parts.ts`). A 1px border-role divider (an inset shadow, no space) separates neighbours. The option inset grows to max(B, I − B), so one row stays the control height. A range thumb fills the track (4u, the track radius, offset ratio × (W − track)); a switch thumb fills its track inside the border (5u − 2B) and still travels 4u. `resolveComposite`, `resolveTrack` and `resolveChoice` take `inset: 'none'`.

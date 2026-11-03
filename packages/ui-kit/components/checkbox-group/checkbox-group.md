@@ -64,6 +64,8 @@ React: `<div role="group" data-ui="checkbox-group" data-orientation="vertical" c
 
 The host carries the field state (`data-disabled`, `data-required`, `data-valid` / `data-invalid` once shown, `data-dirty`, `data-touched`, `data-filled` when a value is checked, `data-focused`) and `data-orientation`; each checkbox its own `data-checked` / `data-unchecked` / `data-indeterminate` (the parent) and field state. The group draws nothing for them.
 
+**Card choices** (`variant="card"`, React `variant="card"`): each checkbox is a card surface holding any content (a plan name, a price, a description), and the whole card is the choice. The card-md level: padding 4u − B (× density), the concentric card radius (the control radius + padding, × the theme's `radius-card`), the card fill with a 1px border-role stroke; checked: the primary-subtle fill and a 2px primary stroke. Cards sit the collection gap apart; horizontal cards share the row (at least 48u each) and wrap. The checkbox's role, keys and form value are unchanged; its children are presentational to assistive technology, so keep the name in the first line (`resolveChoiceCard`). For a list of choices inside one card, use an attached listbox (`inset="none"`).
+
 ## Geometry
 
 Family `choice-group` (`resolveChoiceGroup`, the recipe shared with the radio group): 6u checkbox rows 1u apart (a 7u pitch); horizontal 4u between checkboxes and 1u between wrapped lines. The `gap` attribute (in u) replaces the gap along the direction. No padding, border or radius.

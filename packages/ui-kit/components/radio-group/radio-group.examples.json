@@ -23,6 +23,12 @@
       "label": "Required, with a disabled option",
       "subject": "component:radio-group",
       "markup": "<ui-field label=\"Size\"><ui-radio-group name=\"size\" required><ui-radio value=\"s\">Small</ui-radio><ui-radio value=\"m\">Medium</ui-radio><ui-radio value=\"l\" disabled>Large (sold out)</ui-radio></ui-radio-group></ui-field>"
+    },
+    {
+      "id": "cards",
+      "label": "Card choices (variant card)",
+      "subject": "component:radio-group",
+      "markup": "<ui-radio-group variant=\"card\" orientation=\"horizontal\" name=\"plan\" value=\"pro\" label=\"Plan\"><ui-radio value=\"free\"><strong>Free</strong><span>$0 / month</span></ui-radio><ui-radio value=\"pro\"><strong>Pro</strong><span>$20 / month</span></ui-radio></ui-radio-group>"
     }
   ]
 }

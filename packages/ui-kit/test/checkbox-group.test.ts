@@ -104,7 +104,7 @@ test('ui-checkbox-group: disabled reaches the checkboxes; name submits once per 
 test('React CheckboxGroup: group host with the same classes; checkboxes share the name; parent from allValues', () => {
   const out = renderToStaticMarkup(h(CheckboxGroup, { name: 'ch', defaultValue: ['push'], allValues: ['email', 'push'], label: 'Send to' },
     h(Checkbox, { parent: true }, 'All'), h(Checkbox, { value: 'email' }, 'Email'), h(Checkbox, { value: 'push' }, 'Push')));
-  assert.match(out, /^<div role="group" data-ui="checkbox-group" aria-label="Send to"[^>]* class="ui-checkbox-group__root ui-checkbox-group__root--orientation_vertical"/);
+  assert.match(out, /^<div role="group" data-ui="checkbox-group" aria-label="Send to"[^>]* class="ui-checkbox-group__root ui-checkbox-group__root--orientation_vertical ui-checkbox-group__root--variant_list"/);
   assert.equal((out.match(/name="ch"/g) ?? []).length, 2, 'the parent has no name');
   assert.match(out, /<label data-ui="checkbox" data-indeterminate=""/, 'the parent is mixed');
   assert.match(out, /name="ch" checked="" value="push"/);

@@ -118,6 +118,16 @@
           }
         },
         {
+          "key": "variant",
+          "type": "string",
+          "default": "list",
+          "attribute": "variant",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
           "key": "label",
           "type": "string",
           "default": "",
@@ -390,6 +400,7 @@
             "readOnly?: boolean = false // Radios can be focused but not changed.",
             "required?: boolean = false // One radio must be checked to submit.",
             "orientation?: 'vertical' | 'horizontal' = 'vertical' // vertical: one radio per row; horizontal: a wrapping row.",
+            "variant?: 'list' | 'card' = 'list' // list: choice rows; card: each choice is a card surface holding any content (plan pickers, rich choices).",
             "label?: string // Accessible name when no Field label or Fieldset legend names the group (aria-label).",
             "size?: number // Unit u in px for the group and its radios.",
             "children?: ReactNode // Radio children."

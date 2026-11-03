@@ -28,6 +28,8 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'c
   required?: boolean;
   /** vertical: one radio per row; horizontal: a wrapping row. */
   orientation?: 'vertical' | 'horizontal';
+  /** list: choice rows; card: each choice is a card surface holding any content (plan pickers, rich choices). */
+  variant?: 'list' | 'card';
   /** Accessible name when no Field label or Fieldset legend names the group (aria-label). */
   label?: string;
   /** Unit u in px for the group and its radios. */
@@ -37,7 +39,7 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'c
 }
 
 /** RadioGroup: the radiogroup host; its Radio children take their name and checked state from it. */
-export function RadioGroup({ name, value, defaultValue, onValueChange, disabled = false, readOnly = false, required = false, orientation = 'vertical', label, size, className, render, children, ...rest }: RadioGroupProps) {
+export function RadioGroup({ name, value, defaultValue, onValueChange, disabled = false, readOnly = false, required = false, orientation = 'vertical', variant = 'list', label, size, className, render, children, ...rest }: RadioGroupProps) {
   const auto = useId();
   const [own, setOwn] = useState(defaultValue ?? '');
   const current = value ?? own;
@@ -58,8 +60,8 @@ export function RadioGroup({ name, value, defaultValue, onValueChange, disabled 
     setOwn(v);
     onValueChange?.(v, eventDetails('none', event));
   }, [disabled, readOnly, onValueChange]);
-  const c = radioGroup({ orientation });
-  const attrs: Record<string, unknown> = { ...f.attrs, 'data-orientation': orientation };
+  const c = radioGroup({ orientation, variant });
+  const attrs: Record<string, unknown> = { ...f.attrs, 'data-orientation': orientation, 'data-variant': variant === 'card' ? 'card' : undefined };
   return (
     <RadioGroupCtx.Provider value={{ name: name ?? `${auto}radio`, value: current, disabled, readOnly, required, select }}>
       {renderPart('div', c.root, {

@@ -6,19 +6,19 @@
   "sources": [
     {
       "path": "components/radio-group/radio-group.element.ts",
-      "sha256": "2915fec534656d598d7dfc067198422a784d158cb9d48e154bfa2362c48170cf"
+      "sha256": "280dd0774bca5431914a9836d12b3513cacfda5297917214512421d530aacacf"
     },
     {
       "path": "components/radio-group/radio-group.recipe.ts",
-      "sha256": "13ada76943f3ceb4f5e7051139ba36d9dc2cf27e71443cae8fb044c74128d6fd"
+      "sha256": "230ddf6e9243f01e8647321c875c8b8b99a2f544faa46d3d17ec99b48ebd883d"
     },
     {
       "path": "components/radio-group/radio-group.react.tsx",
-      "sha256": "56e40de1ce5d6ae460757bbed8aa1a0e49e8e938c8f73c9d567a132482c9117b"
+      "sha256": "f5a026eb242f4279e2b06d929d0c9ba81eb7142afd35009cb75f94d372964b94"
     },
     {
       "path": "components/radio-group/radio-group.manifest.json",
-      "sha256": "6f4ce1c2581b75157b90cf9178d4b00994d8098cd5e09205d1463f4fc0833080"
+      "sha256": "7c6c95290b4f9842a3c51bdbe0d66b6d645e0f28e6a65baa19fe87754524c787"
     },
     {
       "path": "components/choice/group.react.ts",

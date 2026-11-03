@@ -17,6 +17,12 @@
       "label": "A wrapping row",
       "subject": "component:checkbox-group",
       "markup": "<ui-checkbox-group label=\"Send to\" orientation=\"horizontal\" value=\"email push\"><ui-checkbox value=\"email\">Email</ui-checkbox><ui-checkbox value=\"push\">Push</ui-checkbox><ui-checkbox value=\"sms\">SMS</ui-checkbox></ui-checkbox-group>"
+    },
+    {
+      "id": "cards",
+      "label": "Card choices (variant card)",
+      "subject": "component:checkbox-group",
+      "markup": "<ui-checkbox-group variant=\"card\" value=\"backups\" label=\"Add-ons\"><ui-checkbox value=\"backups\">Daily backups</ui-checkbox><ui-checkbox value=\"support\">Priority support</ui-checkbox></ui-checkbox-group>"
     }
   ]
 }

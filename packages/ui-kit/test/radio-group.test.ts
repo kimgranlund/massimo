@@ -146,7 +146,7 @@ test('ui-radio-group in a ui-field: the field label names the group; a label pre
 
 test('React RadioGroup: radiogroup host with the same classes and data-*; native radios share a name; Radio reads the group', () => {
   const out = renderToStaticMarkup(h(RadioGroup, { name: 'fruit', defaultValue: 'b', label: 'Fruit' }, h(Radio, { value: 'a' }, 'A'), h(Radio, { value: 'b' }, 'B')));
-  assert.match(out, /^<div role="radiogroup" data-ui="radio-group" aria-label="Fruit"[^>]* class="ui-radio-group__root ui-radio-group__root--orientation_vertical"/);
+  assert.match(out, /^<div role="radiogroup" data-ui="radio-group" aria-label="Fruit"[^>]* class="ui-radio-group__root ui-radio-group__root--orientation_vertical ui-radio-group__root--variant_list"/);
   assert.equal((out.match(/name="fruit"/g) ?? []).length, 2);
   assert.match(out, /<input type="radio" name="fruit" checked="" value="b"\/>/);
   assert.doesNotMatch(out, /value="a"[^>]*checked/);

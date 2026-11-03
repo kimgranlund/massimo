@@ -27,6 +27,8 @@ export class UICheckboxGroup extends UIFormElement {
     allValues: { default: null },
     /** vertical: one checkbox per row; horizontal: a wrapping row. */
     orientation: { type: String, default: 'vertical', reflect: true },
+    /** list: choice rows; card: each choice is a card surface holding any content (plan pickers, rich choices). */
+    variant: { type: String, default: 'list', reflect: true },
     /** Accessible name when no ui-field label or ui-fieldset legend names the group (aria-label). */
     label: { type: String, default: '' },
   };
@@ -34,6 +36,7 @@ export class UICheckboxGroup extends UIFormElement {
   declare defaultValue: string[] | null;
   declare allValues: string[] | null;
   declare orientation: Orientation;
+  declare variant: 'list' | 'card';
   declare label: string;
 
   /** A checkbox group has no read-only state (Base UI CheckboxGroup). */
@@ -96,8 +99,9 @@ export class UICheckboxGroup extends UIFormElement {
       'aria-disabled': this.isDisabled ? 'true' : undefined,
       'aria-invalid': this.userInvalid ? 'true' : undefined,
       'data-orientation': this.orientation === 'horizontal' ? 'horizontal' : 'vertical',
+      'data-variant': this.variant === 'card' ? 'card' : undefined,
     });
-    applyRecipe(this, checkboxGroup({ orientation: this.orientation === 'horizontal' ? 'horizontal' : 'vertical' }));
+    applyRecipe(this, checkboxGroup({ orientation: this.orientation === 'horizontal' ? 'horizontal' : 'vertical', variant: this.variant === 'card' ? 'card' : 'list' }));
   }
 
   /** Focus the first enabled checkbox. */

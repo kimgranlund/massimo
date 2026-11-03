@@ -490,6 +490,17 @@ export function resolveMeter(input: GeometryInput = {}) {
 // along the group's direction.
 export type ChoiceGroupOrientation = 'vertical' | 'horizontal';
 
+/**
+ * A choice card (radio or checkbox group, variant="card"): a card-md surface holding any content.
+ * Padding 4u − B (× density), radius the concentric card radius (control radius + padding, × the
+ * theme's radius-card), cards the collection gap apart, contents 1u apart.
+ */
+export function resolveChoiceCard(input: GeometryInput & { radiusFactor?: number } = {}) {
+  const card = resolveContainer('card-md', input);
+  const gap = resolveContainer('collection', { ...input, padUnits: undefined, radius: undefined }).gap;
+  return { padding: card.padding, edge: card.edge, radius: card.radius, gap, contentsGap: card.unit, stroke: 1, checkedStroke: 2 };
+}
+
 export function resolveChoiceGroup(orientation: ChoiceGroupOrientation = 'vertical', input: GeometryInput = {}) {
   const u = inputs(input).unit;
   const row = resolveChoice('checkbox', input).rowHeight;

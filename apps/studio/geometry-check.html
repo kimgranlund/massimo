@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOWS, shadowWeights, elevationTokenVars } from '@massimo/ui-kit/tokens';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, SHADOWS, shadowWeights, elevationTokenVars, resolveChoiceCard } from '@massimo/ui-kit/tokens';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
 import { resolveOtpField } from '@massimo/ui-kit/tokens';
@@ -1037,6 +1037,25 @@ for (const unit of [3, 4, 4.5]) for (const border of [0, 1]) for (const density 
     'attached.range.thumb': [r2(rect(th).height), r2(tr.thumb)],
     'attached.range.thumb.radius': [px(getComputedStyle(th).borderTopLeftRadius), r2(tr.thumbRadius)],
     'attached.range.thumb.offset': [r2(rect(th).left - rect(rg).left), r2(thumbOffset(0.4, rect(rg).width, g))],
+  };
+  for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/${density} ${k}: got ${got}, want ${want}`); }
+  box.remove();
+}
+// Choice cards (radio / checkbox group variant="card", resolveChoiceCard).
+for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of ['default', 'compact', 'loose']) {
+  const box = document.createElement('div');
+  box.setAttribute('data-size', String(unit)); box.setAttribute('density', density); box.style.setProperty('--ui-border', border);
+  box.innerHTML = `<ui-radio-group variant="card" value="b" label="P"><ui-radio value="a"><strong>A</strong><span>x</span></ui-radio><ui-radio value="b"><strong>B</strong><span>y</span></ui-radio></ui-radio-group>`;
+  root.append(box);
+  await new Promise((r) => setTimeout(r, 0));
+  const g = { unit, border, density }, rc = resolveChoiceCard(g), rect = (el) => el.getBoundingClientRect();
+  const [a, b] = box.querySelectorAll('ui-radio'), ca = getComputedStyle(a);
+  const parts = a.querySelector('[data-part=contents]').children;
+  const checks = {
+    'choiceCard.padding': [px(ca.paddingTop), rc.padding],
+    'choiceCard.radius': [px(ca.borderTopLeftRadius), r2(rc.radius)],
+    'choiceCard.gap': [r2(rect(b).top - rect(a).bottom), rc.gap],
+    'choiceCard.contentsGap': [r2(rect(parts[1]).top - rect(parts[0]).bottom), rc.contentsGap],
   };
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/${density} ${k}: got ${got}, want ${want}`); }
   box.remove();

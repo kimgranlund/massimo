@@ -291,6 +291,29 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
           </ui-field>
         </div>
       </div>
+      <div className={stack}><h3 className={subTitle}>Card choices and attached lists</h3></div>
+      <div className={stack}>
+        <ui-field label="Plan" description="variant=&quot;card&quot;: each radio is a card holding any content; the whole card is the choice.">
+          <ui-radio-group variant="card" orientation="horizontal" name="plan-c" value="pro">
+            <ui-radio value="free"><strong>Free</strong><span>$0 / month</span><span>One project</span></ui-radio>
+            <ui-radio value="pro"><strong>Pro</strong><span>$20 / month</span><span>Unlimited projects</span></ui-radio>
+            <ui-radio value="team"><strong>Team</strong><span>$60 / month</span><span>Shared workspaces</span></ui-radio>
+          </ui-radio-group>
+        </ui-field>
+        <div className={columns}>
+          <ui-field label="Add-ons" description="Checkbox cards: several at once.">
+            <ui-checkbox-group variant="card" value="backups"><ui-checkbox value="backups">Daily backups</ui-checkbox><ui-checkbox value="support">Priority support</ui-checkbox></ui-checkbox-group>
+          </ui-field>
+          <ui-field label="Section" description="An attached list (inset=&quot;none&quot;): rows edge to edge, split by dividers.">
+            <ui-listbox inset="none" value="a"><ui-option value="a">Option 1</ui-option><ui-option value="b">Option 2</ui-option><ui-option value="c">Option 3</ui-option></ui-listbox>
+          </ui-field>
+        </div>
+        <div className={columns}>
+          <ui-segmented inset="none" value="w"><ui-option value="d">Day</ui-option><ui-option value="w">Week</ui-option><ui-option value="m">Month</ui-option></ui-segmented>
+          <ui-switch inset="none" checked>Attached switch</ui-switch>
+          <ui-range inset="none" value={40} label="Attached range" />
+        </div>
+      </div>
       <SizeLadder family="choiceGroup" params={params}>
         <ui-radio-group label="Plan" value="pro"><ui-radio value="free">Free</ui-radio><ui-radio value="pro">Pro</ui-radio></ui-radio-group>
         <ui-radio-group label="Quiet hours" orientation="horizontal" value="off"><ui-radio value="off">Off</ui-radio><ui-radio value="night">Nights</ui-radio></ui-radio-group>

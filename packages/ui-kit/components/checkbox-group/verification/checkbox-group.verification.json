@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/checkbox-group/checkbox-group.element.ts",
-      "sha256": "16abc05d1f9f500d75a1370f8f0c7802a73ed87fbfd113c07b19c1ffdc030694"
+      "sha256": "4b76bd7cba83dff37a21ed8c783b6b6d7e97dc006d2930864708a41f7bfd9f31"
     },
     {
       "path": "components/checkbox-group/checkbox-group.recipe.ts",
@@ -14,15 +14,15 @@
     },
     {
       "path": "components/checkbox-group/checkbox-group.react.tsx",
-      "sha256": "4860c17f93820d4b03e4b6f68b6ff26edd4fd687c56c676ca2d3cf907dc54bf2"
+      "sha256": "fbac01b2d9fe48e75e81fdba9674153d2024a144cd87802db695190d2cb83f07"
     },
     {
       "path": "components/checkbox-group/checkbox-group.manifest.json",
-      "sha256": "791e52406a096a05342424dafe93e8e0013ac0c3b4660045091e3e77883c1707"
+      "sha256": "80094dc8eb4b4b4a5c06607caf1a9d084d953292738802e4ca6dd8cd5c8a4236"
     },
     {
       "path": "components/radio-group/radio-group.recipe.ts",
-      "sha256": "13ada76943f3ceb4f5e7051139ba36d9dc2cf27e71443cae8fb044c74128d6fd"
+      "sha256": "230ddf6e9243f01e8647321c875c8b8b99a2f544faa46d3d17ec99b48ebd883d"
     },
     {
       "path": "components/choice/group.react.ts",

@@ -29,6 +29,8 @@ export interface CheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>,
   required?: boolean;
   /** vertical: one checkbox per row; horizontal: a wrapping row. */
   orientation?: 'vertical' | 'horizontal';
+  /** list: choice rows; card: each choice is a card surface holding any content (plan pickers, rich choices). */
+  variant?: 'list' | 'card';
   /** Accessible name when no Field label or Fieldset legend names the group (aria-label). */
   label?: string;
   /** Unit u in px for the group and its checkboxes. */
@@ -38,7 +40,7 @@ export interface CheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>,
 }
 
 /** CheckboxGroup: the group host; its Checkbox children take their name and checked state from it. */
-export function CheckboxGroup({ name, value, defaultValue, onValueChange, allValues, disabled = false, required = false, orientation = 'vertical', label, size, className, render, children, ...rest }: CheckboxGroupProps) {
+export function CheckboxGroup({ name, value, defaultValue, onValueChange, allValues, disabled = false, required = false, orientation = 'vertical', variant = 'list', label, size, className, render, children, ...rest }: CheckboxGroupProps) {
   const [own, setOwn] = useState<string[]>(defaultValue ?? []);
   const [members, setMembers] = useState<string[]>([]);
   const current = value ?? own;
@@ -66,8 +68,8 @@ export function CheckboxGroup({ name, value, defaultValue, onValueChange, allVal
     setMembers((m) => (m.includes(v) ? m : [...m, v]));
     return () => setMembers((m) => m.filter((x) => x !== v));
   }, []);
-  const c = checkboxGroup({ orientation });
-  const attrs: Record<string, unknown> = { ...f.attrs, 'data-orientation': orientation };
+  const c = checkboxGroup({ orientation, variant });
+  const attrs: Record<string, unknown> = { ...f.attrs, 'data-orientation': orientation, 'data-variant': variant === 'card' ? 'card' : undefined };
   return (
     <CheckboxGroupCtx.Provider value={{ name, value: current, allValues: every, disabled, toggle, setAll, register }}>
       {renderPart('div', c.root, {

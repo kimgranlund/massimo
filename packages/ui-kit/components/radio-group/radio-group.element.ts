@@ -22,6 +22,8 @@ export class UIRadioGroup extends UIFormElement {
     readonly: { type: Boolean, default: false, reflect: true },
     /** vertical: one radio per row; horizontal: a wrapping row. */
     orientation: { type: String, default: 'vertical', reflect: true },
+    /** list: choice rows; card: each choice is a card surface holding any content (plan pickers, rich choices). */
+    variant: { type: String, default: 'list', reflect: true },
     /** Accessible name when no ui-field label or ui-fieldset legend names the group (aria-label). */
     label: { type: String, default: '' },
   };
@@ -29,6 +31,7 @@ export class UIRadioGroup extends UIFormElement {
   declare defaultValue: string | null;
   declare readonly: boolean;
   declare orientation: Orientation;
+  declare variant: 'list' | 'card';
   declare label: string;
 
   /** Bumped when radios are added, removed or upgraded, so update() reads the new set. */
@@ -82,8 +85,9 @@ export class UIRadioGroup extends UIFormElement {
       'aria-readonly': this.readonly ? 'true' : undefined,
       'aria-invalid': this.userInvalid ? 'true' : undefined,
       'data-orientation': this.orientation === 'horizontal' ? 'horizontal' : 'vertical',
+      'data-variant': this.variant === 'card' ? 'card' : undefined,
     });
-    applyRecipe(this, radioGroup({ orientation: this.orientation === 'horizontal' ? 'horizontal' : 'vertical' }));
+    applyRecipe(this, radioGroup({ orientation: this.orientation === 'horizontal' ? 'horizontal' : 'vertical', variant: this.variant === 'card' ? 'card' : 'list' }));
   }
 
   /** Focus the radio that is the tab stop (the checked one, else the first enabled one). */

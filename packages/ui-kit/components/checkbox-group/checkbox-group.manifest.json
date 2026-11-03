@@ -118,6 +118,16 @@
           }
         },
         {
+          "key": "variant",
+          "type": "string",
+          "default": "list",
+          "attribute": "variant",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
           "key": "label",
           "type": "string",
           "default": "",
@@ -386,6 +396,7 @@
             "disabled?: boolean = false",
             "required?: boolean = false // At least one value must be checked to submit (shown on the group).",
             "orientation?: 'vertical' | 'horizontal' = 'vertical' // vertical: one checkbox per row; horizontal: a wrapping row.",
+            "variant?: 'list' | 'card' = 'list' // list: choice rows; card: each choice is a card surface holding any content (plan pickers, rich choices).",
             "label?: string // Accessible name when no Field label or Fieldset legend names the group (aria-label).",
             "size?: number // Unit u in px for the group and its checkboxes.",
             "children?: ReactNode // Checkbox children."

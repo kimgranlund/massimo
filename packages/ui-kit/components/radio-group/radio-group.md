@@ -63,6 +63,8 @@ React: `<div role="radiogroup" data-ui="radio-group" data-orientation="vertical"
 
 The host carries the field state (`data-disabled`, `data-readonly`, `data-required`, `data-valid` / `data-invalid` once shown, `data-dirty`, `data-touched`, `data-filled` when a radio is checked, `data-focused` while focus is within) and `data-orientation`; each radio its own `data-checked` / `data-unchecked` and field state. The group draws nothing for them: the radios fade when disabled and tint when invalid.
 
+**Card choices** (`variant="card"`, React `variant="card"`): each radio is a card surface holding any content (a plan name, a price, a description), and the whole card is the choice. The card-md level: padding 4u − B (× density), the concentric card radius (the control radius + padding, × the theme's `radius-card`), the card fill with a 1px border-role stroke; checked: the primary-subtle fill and a 2px primary stroke. Cards sit the collection gap apart; horizontal cards share the row (at least 48u each) and wrap. The radio's role, keys and form value are unchanged; its children are presentational to assistive technology, so keep the name in the first line (`resolveChoiceCard`). For a list of choices inside one card, use an attached listbox (`inset="none"`).
+
 ## Geometry
 
 Family `choice-group` (`resolveChoiceGroup`): the 6u choice rows 1u apart (a 7u pitch, like composite items); horizontal 4u between radios (a radio label has no end padding) and 1u between wrapped lines. The `gap` attribute (in u) replaces the gap along the direction. No padding, border or radius: each radio's focus ring stays its own.
