@@ -80,6 +80,16 @@ Swiper paddles are fully round (radius = half their height) whatever the curvatu
 | tabs, underline | tabs are 8u control rows (padding u − B), no gap, over a thin (1px) track on the list's end edge; the indicator is a 0.5u bar, radius 0.25u, under the active tab | 32 / 2 / 1 |
 | tabs, both | list to panel 2u; the indicator is placed by `--active-tab-left / -top / -width / -height` (px, script, snapped to 1/64 px) and slides on the toggle intent | 8 |
 
+## Popups: popover, tooltip, preview card
+
+| | Formula | at u=4 |
+|---|---|---|
+| offset | 1u from the trigger on the side in use (the preferred side unless the popup does not fit there and the other side has more room) | 4 |
+| width | at least the trigger's width (tooltip excepted); at most min(available width, cap): popover 80u | ≥ trigger / 320 |
+| height | at most the space beside the trigger (`--available-height`); the popup then scrolls | |
+| arrow | 2u wide, tip 1u from the popup (it spans the gap), centered on the trigger, kept radius + u inside the popup ends | 8 × 4 |
+| popover | the card-sm level: padding 3u − B, radius 3u·min(1, s), the group gap 1u (the `gap` attribute wins) (`resolvePopup('popover')`) | 12 / 12 / 4 |
+
 ## Containers
 
 Containers come in three families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.

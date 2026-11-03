@@ -21,6 +21,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/popover/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -38,6 +39,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
+  ['popups', 'Popups', 'ui-popover'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -195,6 +197,11 @@ const panelText = css({ color: 'fg.muted', textStyle: 'body' });
 const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
 const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
+// Popup specimens: a row of triggers; ladder rows leave room for the open popup beside the trigger.
+const popupRow = css({ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4' });
+const popupLadder = css({ display: 'flex', alignItems: 'start', minHeight: '[calc(36 * var(--u))]', width: 'full' });
+const popupText = css({ textStyle: 'body', color: 'fg.muted', margin: '0' });
+
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });
 
@@ -209,10 +216,47 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
+    popups: 'Anchored popups on the floating layer: 1u from the trigger, flipping when there is no room, at least as wide as the trigger. A popover is a small card (padding 3u, radius ≤ 3u, a 1u gap) that takes focus when pressed open; Escape, an outside press or a Close part dismiss it. An arrow is a 2u triangle spanning the 1u gap.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
   const CONTENT: Record<Family, ReactNode> = {
+    popups: (
+      <>
+        <Row label="Popover">
+          <div className={popupRow}>
+            <ui-popover label="Notifications">
+              <h2 data-part="title">Notifications</h2>
+              <p data-part="description">You are all caught up. New mentions and replies show here.</p>
+            </ui-popover>
+            <ui-popover side="top">
+              <ui-button data-part="trigger"><i slot="leading" name="share" />Share</ui-button>
+              <div data-part="popup">
+                <h2 data-part="title">Share link</h2>
+                <p data-part="description">Anyone with the link can view this page.</p>
+                <ui-button data-part="close">Done</ui-button>
+                <div data-part="arrow" />
+              </div>
+            </ui-popover>
+            <ui-popover label="Rename" modal>
+              <h2 data-part="title">Rename file</h2>
+              <ui-input label="Name" value="Quarterly report" />
+              <ui-button data-part="close">Save</ui-button>
+            </ui-popover>
+            <ui-popover label="Hover me" open-on-hover><p className={popupText}>Opens after 300 ms on hover; a press keeps it open.</p></ui-popover>
+          </div>
+        </Row>
+        <SizeLadder family="popup" params={params}>
+          <div className={popupLadder}>
+            <ui-popover label="Details" side="right" align="start" default-open>
+              <h2 data-part="title">Storage</h2>
+              <p data-part="description">12 of 50 GB used.</p>
+              <div data-part="arrow" />
+            </ui-popover>
+          </div>
+        </SizeLadder>
+      </>
+    ),
     actions: (
       <>
         <Row label="Slots">

@@ -24,7 +24,8 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/popover/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -93,6 +94,7 @@ for (const c of cases) {
       <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
     <ui-tabs id="tabLine" variant="underline" value="b"><div data-part="panel" value="a" label="Alpha">a</div><div data-part="panel" value="b" label="Beta">b</div></ui-tabs>
+    <div style="height:${48 * c.unit}px"><ui-popover id="popA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-button data-part="trigger">Open popover</ui-button><div data-part="popup"><h2 data-part="title">T</h2><p data-part="description">D</p><div data-part="arrow"></div></div></ui-popover></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
     <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
@@ -459,6 +461,40 @@ for (const c of cases) {
     };
     tabChecks('tabs.segmented', $('tabSeg'), 'segmented');
     tabChecks('tabs.underline', $('tabLine'), 'underline');
+  }
+  // Anchored popups: open one at a time in view (transitions off, so it is measured at rest), close it after.
+  const openPopup = async (el) => {
+    el.trigger.scrollIntoView({ block: 'center' });
+    for (const p of [el.positioner, el.popup, el.arrow]) if (p) p.style.transition = 'none';
+    el.open = true;
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  };
+  // Offset, width and arrow: the same rules for every kind (resolvePopup).
+  const popupChecks = (name, el, rp) => {
+    const t = rect(el.trigger), p = rect(el.popup), side = el.positioner.getAttribute('data-side');
+    const gapTo = side === 'top' ? t.top - p.bottom : side === 'bottom' ? p.top - t.bottom : side === 'right' ? p.left - t.right : t.left - p.right;
+    checks[`${name}.offset`] = [r2(gapTo), rp.offset];
+    checks[`${name}.padding`] = [px(cs(el.popup).paddingTop) + px(cs(el.popup).borderTopWidth), r2(rp.paddingBlock + rp.border)];
+    checks[`${name}.paddingInline`] = [px(cs(el.popup).paddingLeft) + px(cs(el.popup).borderLeftWidth), r2(rp.paddingInline + rp.border)];
+    checks[`${name}.radius`] = [px(cs(el.popup).borderTopLeftRadius), r2(rp.radius)];
+    if (rp.minWidthAnchor) checks[`${name}.minWidth`] = [r2(Math.max(0, t.width - p.width)), 0];
+    checks[`${name}.maxWidth`] = [r2(Math.min(px(cs(el.positioner).maxWidth), rp.maxWidth)), r2(Math.min(rp.maxWidth, innerWidth))];
+    if (el.arrow) {
+      const a = rect(el.arrow);
+      const tip = side === 'bottom' ? p.top - a.top : side === 'top' ? a.bottom - p.bottom : side === 'right' ? p.left - a.left : a.right - p.right;
+      checks[`${name}.arrow.reach`] = [r2(tip), rp.arrowHeight];
+      checks[`${name}.arrow.width`] = [r2(side === 'top' || side === 'bottom' ? a.width : a.height), rp.arrowWidth];
+      if (!el.arrow.hasAttribute('data-uncentered')) checks[`${name}.arrow.center`] = [r2(side === 'top' || side === 'bottom' ? a.left + a.width / 2 : a.top + a.height / 2), r2(side === 'top' || side === 'bottom' ? t.left + t.width / 2 : t.top + t.height / 2)];
+    }
+  };
+  {
+    const el = $('popA'), rp = resolvePopup('popover', g);
+    await openPopup(el);
+    popupChecks('popover', el, rp);
+    const [ti, de] = [el.popup.querySelector('[data-part=title]'), el.popup.querySelector('[data-part=description]')];
+    checks['popover.gap'] = [r2(rect(de).top - rect(ti).bottom), rp.gap];
+    checks['popover.side'] = [el.positioner.getAttribute('data-side') === 'bottom' ? 1 : 0, 1];
+    el.open = false;
   }
   for (const role of Object.keys(TYPE_ROLES)) {
     const el = box.querySelector(`[data-type="${role}"]`), t = resolveType(role, { unit: c.unit });

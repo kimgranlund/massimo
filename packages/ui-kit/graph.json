@@ -295,6 +295,19 @@
         "layout"
       ]
     },
+    "component:popover": {
+      "kind": "component",
+      "source": "components/popover/popover.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-popover",
+      "searchTerms": [
+        "popover",
+        "popup",
+        "flyout",
+        "dropdown panel",
+        "anchored dialog"
+      ]
+    },
     "component:progress": {
       "kind": "component",
       "source": "components/range/range.manifest.json#/nodes/1",
@@ -869,6 +882,19 @@
         "slideshow"
       ]
     },
+    "geometry:popup": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/popup",
+      "availability": "implemented",
+      "searchTerms": [
+        "popup geometry",
+        "popover padding",
+        "tooltip size",
+        "arrow",
+        "anchored popup",
+        "offset"
+      ]
+    },
     "geometry:separator": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/separator",
@@ -1084,6 +1110,69 @@
       "tag": "span",
       "searchTerms": [
         "meter value"
+      ]
+    },
+    "part:popover-arrow": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "popover arrow"
+      ]
+    },
+    "part:popover-close": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/7",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "popover close"
+      ]
+    },
+    "part:popover-description": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "p",
+      "searchTerms": [
+        "popover description"
+      ]
+    },
+    "part:popover-popup": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "popover popup"
+      ]
+    },
+    "part:popover-positioner": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "popover positioner"
+      ]
+    },
+    "part:popover-title": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "h2",
+      "searchTerms": [
+        "popover title"
+      ]
+    },
+    "part:popover-trigger": {
+      "kind": "part",
+      "source": "components/popover/popover.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "ui-button",
+      "searchTerms": [
+        "popover trigger"
       ]
     },
     "part:range-thumb": {
@@ -4288,6 +4377,136 @@
       "from": "component:meter",
       "relation": "allowedIn",
       "to": "context:form"
+    },
+    {
+      "from": "component:popover",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-trigger"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-positioner"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-popup"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-arrow"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-title"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-description"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-close"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:popover",
+      "relation": "uses",
+      "to": "component:button"
     },
     {
       "from": "component:radio-group",

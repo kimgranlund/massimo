@@ -1,0 +1,586 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "popover",
+  "primary": "component:popover",
+  "module": "./popover.element.ts",
+  "registration": "on-import",
+  "documentation": "./popover.md",
+  "examples": "./popover.examples.json",
+  "contract": "../../contracts/components.json#/components/popover",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./popover.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolvePopup"
+      ],
+      "description": "Reference numbers for the offset, arrow, popup padding, radius, gap and width cap."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:popover",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-popover",
+      "class": "UIPopover",
+      "extends": "UIElement",
+      "intent": [
+        "Show interactive content (a form, settings, details with actions) anchored to the control that opened it, without leaving the page"
+      ],
+      "properties": [
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": true,
+          "description": "Whether the popup is shown. Setting it (attribute or property) fires no openchange and moves no focus; an interaction sets it unless openchange is canceled.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open at first connect when no open attribute is present (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Never opens; presses, hover and focus on the trigger do nothing.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "side",
+          "type": "string",
+          "default": "",
+          "attribute": "side",
+          "reflects": false,
+          "enum": [
+            "",
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ],
+          "description": "Preferred side of the trigger (Base UI Positioner side): top, bottom, left or right; empty for the default (bottom). The popup flips to the opposite side when there is no room; data-side says where it is.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "align",
+          "type": "string",
+          "default": "",
+          "attribute": "align",
+          "reflects": false,
+          "enum": [
+            "",
+            "start",
+            "center",
+            "end"
+          ],
+          "description": "Alignment along that side (Base UI Positioner align): start, center or end; empty for the default (center).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "delay",
+          "type": "number",
+          "default": null,
+          "attribute": "delay",
+          "reflects": false,
+          "description": "With open-on-hover: open after the pointer rests this long on the trigger, in ms (Base UI delay); default 300.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "closeDelay",
+          "type": "number",
+          "default": null,
+          "attribute": "close-delay",
+          "reflects": false,
+          "description": "With open-on-hover: close this long after the pointer leaves trigger and popup, in ms (Base UI closeDelay); default 0.",
+          "inspector": {
+            "control": "number"
+          }
+        },
+        {
+          "key": "modal",
+          "type": "boolean",
+          "default": false,
+          "attribute": "modal",
+          "reflects": false,
+          "description": "Trap focus inside the popup while open (Base UI modal); the popup gets aria-modal. Focus leaving does not close it.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "openOnHover",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open-on-hover",
+          "reflects": false,
+          "description": "Also open when the pointer rests on the trigger for delay ms, and close after close-delay once it leaves (Base UI Trigger openOnHover). A popover opened by a press stays until dismissed.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Text of the generated ui-button trigger (the preset form), read at first connect. Ignored when a [data-part=trigger] is authored.",
+          "inspector": {
+            "control": "text"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the popup's children in u (0…8 in 0.5 steps); default the group gap (1u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'trigger-press' | 'outside-press' | 'escape-key' | 'focus-out' | 'close-press' | 'trigger-hover', event: Event }",
+          "trigger": "an interaction opens or closes the popup: a trigger press, an outside press, Escape, focus leaving, a Close part or hover; preventDefault keeps it as it is"
+        }
+      ],
+      "semantics": {
+        "role": "none on the host; the popup is role=dialog (aria-modal when modal), labelled by its title and described by its description; the trigger has aria-haspopup=dialog, aria-expanded and aria-controls",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter, Space on the trigger",
+            "action": "toggle the popup; opening moves focus to its first focusable element"
+          },
+          {
+            "keys": "Escape",
+            "action": "close the topmost popup and return focus to the trigger"
+          },
+          {
+            "keys": "Tab",
+            "action": "move through the popup; leaving it closes a non-modal popover, a modal one keeps focus inside"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "the trigger's text (label or authored trigger content)",
+            "the popup: its [data-part=title]"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Popup content (any elements; [data-part=title], [data-part=description] and [data-part=close] among them), or authored [data-part=trigger] and [data-part=popup] children. A [data-part=arrow] in the popup draws the arrow."
+      },
+      "layout": {
+        "display": "contents",
+        "sizing": "intrinsic"
+      },
+      "constraints": [
+        "The host takes no box (display: contents): the trigger lays out where the host is written.",
+        "The popup stays in the DOM while closed (the positioner is a hidden manual popover) and paints in the top layer while open, above every z-index and outside overflow clipping.",
+        "Focus moves into the popup only when a press opens it; opening by setting open or by hover leaves focus where it is.",
+        "Setting open from script shows or hides the popup without an openchange event."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A short text hint for a control, shown on hover or focus.",
+          "reason": "A tooltip describes its trigger (aria-describedby) and holds no interactive content."
+        },
+        {
+          "when": "A list of commands or choices the user picks one of.",
+          "reason": "A menu gives roving focus and item semantics; a select picks a form value."
+        },
+        {
+          "when": "A task that blocks the page until it is done.",
+          "reason": "A dialog is centered and modal over a backdrop; a popover belongs to its trigger."
+        }
+      ],
+      "searchTerms": [
+        "popover",
+        "popup",
+        "flyout",
+        "dropdown panel",
+        "anchored dialog"
+      ]
+    },
+    {
+      "id": "part:popover-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "ui-button",
+      "selector": ":scope > [data-part=trigger]",
+      "summary": "The element that opens the popup (a generated ui-button, or any authored element; a plain one becomes role=button): aria-haspopup=dialog, aria-expanded, aria-controls, data-popup-open while open. Base UI Popover.Trigger."
+    },
+    {
+      "id": "part:popover-positioner",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner]",
+      "summary": "The floating layer (popover=manual, in the top layer while open), placed 1u from the trigger; data-side / data-align and Base UI's positioner variables. Base UI Popover.Positioner."
+    },
+    {
+      "id": "part:popover-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=popup]",
+      "summary": "The surface (role=dialog): a card-sm with the reveal motion; scrolls when the space runs out. Base UI Popover.Popup."
+    },
+    {
+      "id": "part:popover-arrow",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=positioner] > [data-part=arrow]",
+      "summary": "Optional triangle on the popup's edge facing the trigger, centered on it (data-uncentered when it cannot be). Base UI Popover.Arrow."
+    },
+    {
+      "id": "part:popover-title",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "h2",
+      "selector": "[data-part=popup] [data-part=title]",
+      "summary": "Optional heading that names the popup (aria-labelledby). Base UI Popover.Title."
+    },
+    {
+      "id": "part:popover-description",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "p",
+      "selector": "[data-part=popup] [data-part=description]",
+      "summary": "Optional text that describes the popup (aria-describedby). Base UI Popover.Description."
+    },
+    {
+      "id": "part:popover-close",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "ui-button",
+      "selector": "[data-part=popup] [data-part=close]",
+      "summary": "Optional element whose press closes the popup (reason close-press). Base UI Popover.Close."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:popover",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesGeometry",
+      "to": "geometry:popup"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:popover",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-trigger"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-positioner"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-popup"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-arrow"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-title"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-description"
+    },
+    {
+      "from": "component:popover",
+      "relation": "ownsPart",
+      "to": "part:popover-close"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:popover",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:popover",
+      "relation": "uses",
+      "to": "component:button"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./popover.element.ts",
+      "exports": {
+        "component:popover": "UIPopover"
+      },
+      "verification": "./verification/popover.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./popover.react.tsx",
+      "exports": {
+        "component:popover": "Popover"
+      },
+      "verification": "./verification/popover.verification.json#/renderers/react",
+      "props": {
+        "component:popover": {
+          "inherits": [
+            "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "open?: boolean // Controlled open state.",
+            "defaultOpen?: boolean // Open at first render (uncontrolled).",
+            "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes it, with Base UI's details ({ reason, event }).",
+            "disabled?: boolean // Never opens.",
+            "delay?: number // Hover: open after the pointer rests this long on the trigger, ms.",
+            "closeDelay?: number // Hover: close this long after the pointer leaves trigger and popup, ms.",
+            "size?: number // Unit u in px.",
+            "children?: ReactNode",
+            "modal?: boolean // Trap focus inside the popup while open (Base UI modal).",
+            "openOnHover?: boolean // Also open when the pointer rests on the trigger (Base UI Trigger openOnHover).",
+            "label?: ReactNode // The trigger's label.",
+            "side?: Side // Preferred side and alignment (Popover.Positioner).",
+            "align?: Align"
+          ]
+        }
+      },
+      "parts": {
+        "component:popover": {
+          "Popover.Root": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'onChange' | 'prefix'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "open?: boolean // Controlled open state.",
+              "defaultOpen?: boolean // Open at first render (uncontrolled).",
+              "onOpenChange?: (open: boolean, details: ChangeDetails) => void // Called when an interaction opens or closes it, with Base UI's details ({ reason, event }).",
+              "disabled?: boolean // Never opens.",
+              "delay?: number // Hover: open after the pointer rests this long on the trigger, ms.",
+              "closeDelay?: number // Hover: close this long after the pointer leaves trigger and popup, ms.",
+              "size?: number // Unit u in px.",
+              "children?: ReactNode",
+              "modal?: boolean = false // Trap focus inside the popup while open (Base UI modal).",
+              "openOnHover?: boolean = false // Also open when the pointer rests on the trigger (Base UI Trigger openOnHover)."
+            ]
+          },
+          "Popover.Trigger": {
+            "inherits": [
+              "Omit<ButtonProps, 'render' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode",
+              "href?: string"
+            ]
+          },
+          "Popover.Positioner": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "side?: Side // Preferred side of the trigger (Base UI side); flips when there is no room.",
+              "align?: Align // Alignment along the side (Base UI align).",
+              "children?: ReactNode"
+            ]
+          },
+          "Popover.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Popover.Arrow": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Popover.Title": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Popover.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Popover.Close": {
+            "inherits": [
+              "Omit<ButtonProps, 'render' | 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -79,7 +79,7 @@
     "data-popup-open": {
       "baseUi": true,
       "condition": "_popupOpen",
-      "meaning": "The select trigger's popup is open."
+      "meaning": "The select trigger's popup is open; the trigger of an open popover, tooltip or preview card (Base UI Trigger)."
     },
     "data-placeholder": {
       "baseUi": true,
@@ -89,22 +89,22 @@
     "data-open": {
       "baseUi": true,
       "condition": "_open",
-      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open."
+      "meaning": "The select popup is open; a collapsible or accordion item (host, header and panel) is open; an anchored popup (host, positioner, popup, arrow) is open."
     },
     "data-closed": {
       "baseUi": true,
       "condition": "_closed",
-      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed."
+      "meaning": "The select popup is closed; a collapsible or accordion item (host and panel) is closed; an anchored popup is closed."
     },
     "data-side": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The side of the trigger the open popup sits on: bottom or top (anchor positioning may flip it)."
+      "meaning": "The side of the trigger the open popup sits on: top, bottom, left or right (measured: anchor positioning may flip it). Select: bottom or top."
     },
     "data-align": {
       "baseUi": true,
       "condition": null,
-      "meaning": "The open popup's alignment to the trigger: start."
+      "meaning": "The open popup's alignment to the trigger: start, center or end (select: start)."
     },
     "data-selected": {
       "baseUi": true,
@@ -175,6 +175,21 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-instant": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The popup opened without its motion: delay (a tooltip opened while the group was warm, Base UI Tooltip.Popup)."
+    },
+    "data-uncentered": {
+      "baseUi": true,
+      "condition": null,
+      "meaning": "The arrow cannot sit at the trigger's center: the popup edge does not reach it (Base UI Arrow)."
+    },
+    "data-placement": {
+      "baseUi": false,
+      "condition": null,
+      "meaning": "The positioner's preferred side and alignment, <side>-<align> (ours): keys the CSS anchor placement; data-side and data-align say where it ended up."
     }
   },
   "components": {
@@ -497,6 +512,38 @@
         "data-orientation",
         "data-activation-direction"
       ]
+    },
+    "ui-popover": {
+      "host": [
+        "data-open",
+        "data-closed",
+        "data-disabled"
+      ],
+      "trigger": [
+        "data-popup-open"
+      ],
+      "positioner": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-placement",
+        "data-instant"
+      ],
+      "popup": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-instant"
+      ],
+      "arrow": [
+        "data-open",
+        "data-closed",
+        "data-side",
+        "data-align",
+        "data-uncentered"
+      ]
     }
   },
   "native": {
@@ -575,7 +622,8 @@
       "components": [
         "ui-select",
         "ui-collapsible",
-        "ui-accordion"
+        "ui-accordion",
+        "ui-popover"
       ]
     },
     "disabled": {

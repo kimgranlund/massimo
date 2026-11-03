@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolvePopup, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -179,6 +179,14 @@ export const rows: Row[] = [
   { id: 'disclosure.tabs.underline.indicator', family: 'disclosure', element: 'tabs[variant=underline] indicator', quantity: 'indicator thickness', formula: '0.5u', value: (u) => resolveTabs('underline', { unit: u }).indicatorThickness!, status: 'implemented', notes: 'radius 0.25u; as wide as the active tab, on the track' },
   { id: 'disclosure.tabs.underline.track', family: 'disclosure', element: 'tabs[variant=underline] list', quantity: 'track', formula: 'thin border width (1px token)', value: (u) => resolveTabs('underline', { unit: u }).track, status: 'implemented', notes: 'border role, on the list end edge (inline end when vertical)' },
   { id: 'disclosure.accordion.itemHeight', family: 'disclosure', element: 'accordion item', quantity: 'closed item height', formula: '8u + 1px', value: (u) => resolveDisclosure({ unit: u }).itemHeight, status: 'implemented', notes: 'trigger row plus the divider' },
+  // Popups (popover, tooltip, preview card)
+  { id: 'popup.offset', family: 'popup', element: 'popover, tooltip, preview card positioner', quantity: 'offset from the trigger', formula: 'u', value: (u) => resolvePopup('popover', { unit: u }).offset, status: 'implemented', notes: 'flips to the opposite side when the preferred one has no room' },
+  { id: 'popup.arrow.width', family: 'popup', element: 'popup arrow', quantity: 'arrow width', formula: '2u', value: (u) => resolvePopup('popover', { unit: u }).arrowWidth, status: 'implemented', notes: 'centered on the trigger, kept radius + u inside the popup ends' },
+  { id: 'popup.arrow.height', family: 'popup', element: 'popup arrow', quantity: 'arrow height (tip to popup edge)', formula: 'u', value: (u) => resolvePopup('popover', { unit: u }).arrowHeight, status: 'implemented', notes: 'spans the 1u gap; its base covers the popup edge (B)' },
+  { id: 'popup.popover.padding', family: 'popup', element: 'popover popup', quantity: 'padding', formula: '3u - B', value: (u) => resolvePopup('popover', { unit: u }).paddingBlock, status: 'implemented', notes: 'the card-sm level (theme pad-card-sm)' },
+  { id: 'popup.popover.radius', family: 'popup', element: 'popover popup', quantity: 'radius', formula: '3u * min(1, s)', value: (u) => resolvePopup('popover', { unit: u }).radius, status: 'implemented', notes: 'container family: at most the padding' },
+  { id: 'popup.popover.gap', family: 'popup', element: 'popover popup', quantity: 'gap', formula: 'u', value: (u) => resolvePopup('popover', { unit: u }).gap, status: 'implemented', notes: 'the group gap; the gap attribute wins' },
+  { id: 'popup.popover.maxWidth', family: 'popup', element: 'popover positioner', quantity: 'max width', formula: 'min(available width, 80u)', value: (u) => resolvePopup('popover', { unit: u }).maxWidth, status: 'implemented', notes: 'value shown is the 80u cap; min width = the trigger width' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

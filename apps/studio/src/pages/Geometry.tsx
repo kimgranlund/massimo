@@ -14,9 +14,10 @@ import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/radio-group/element';
 import '@massimo/ui-kit/components/fieldset/element';
+import '@massimo/ui-kit/components/popover/element';
 import { css } from '../../styled-system/css/index.js';
 import {
-  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter,
+  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
@@ -166,6 +167,19 @@ export function GeometryPage({ params }: PageProps) {
               </SpecRow>
               <SpecRow label="fieldset" values={[`gap ${pu(resolveFieldset(theme).gap)} (collection) · no padding, border or radius`]}>
                 <ui-fieldset legend="Address"><ui-input label="Street" hide-label="" value="Storgatan 1" /></ui-fieldset>
+              </SpecRow>
+            </>
+          );
+        })()}
+      </Section>
+      <Divider />
+      <Section id="popups" title="Popups" note="Anchored popups sit 1u from their trigger on the preferred side (flipping when they do not fit), at least as wide as it; an arrow is a 2u triangle spanning the 1u gap. Surfaces come from the container ladder. Press a trigger to open it.">
+        {(() => {
+          const p = resolvePopup('popover', theme);
+          return (
+            <>
+              <SpecRow label="popover" values={[`offset ${pu(p.offset)} · arrow ${pu(p.arrowWidth)} × ${pu(p.arrowHeight)} · max width ${pu(p.maxWidth)}`, `padding ${px(p.paddingBlock)} · gap ${pu(p.gap)} · radius ${px(p.radius)} (card-sm)`]}>
+                <ui-popover label="Open popover"><h2 data-part="title">Popover</h2><p data-part="description">A small card 1u below its trigger.</p></ui-popover>
               </SpecRow>
             </>
           );

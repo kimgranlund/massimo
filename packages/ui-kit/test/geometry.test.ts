@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolvePopup, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -254,4 +254,16 @@ test('disclosure: segmented tabs are 7u composite options in an 8u list; underli
   assert.equal(s.listRadius, 14, 'min(3.5u, 8u / 2)');
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
+});
+
+test('popup: 1u offset, a 2u × 1u arrow; the popover is a card-sm with the group gap, capped at 80u', () => {
+  const p = resolvePopup('popover', { unit: 4, border: 1 });
+  assert.deepEqual([p.offset, p.arrowWidth, p.arrowHeight], [4, 8, 4]);
+  assert.equal(p.paddingBlock, 11, '3u - B');
+  assert.equal(p.radius, 12);
+  assert.equal(p.gap, 4, 'group gap 1u');
+  assert.equal(resolvePopup('popover', { unit: 4, gap: 2 }).gap, 8, 'the gap attribute wins');
+  assert.equal(p.maxWidth, 320);
+  assert.equal(resolvePopup('popover', { unit: 4, radiusScale: 2 }).radius, 12, 'never above the padding');
+  assert.equal(p.minWidthAnchor, true);
 });

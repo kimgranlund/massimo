@@ -642,6 +642,29 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "popover": {
+      "geometryFamily": "popup",
+      "element": "Host (display: contents) holds the trigger and a positioner in the top layer (popover=manual) holding the popup (role=dialog) and an optional arrow. The label property makes a ui-button trigger; other children become the popup unless a [data-part=popup] is authored.",
+      "parts": [
+        "popover-trigger",
+        "popover-positioner",
+        "popover-popup",
+        "popover-arrow?",
+        "popover-title?",
+        "popover-description?",
+        "popover-close?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "inline"
+      ],
+      "behavior": "A trigger press (pointer, Enter, Space) toggles the popup and fires a cancelable openchange ({ open, reason, event }); opening by a press moves focus into the popup. An outside press, Escape (the topmost layer), focus leaving (non-modal) or a Close part close it ('outside-press', 'escape-key', 'focus-out', 'close-press') and focus returns to the trigger. modal traps Tab inside. open-on-hover also opens it after the delay ('trigger-hover'). Placed 1u from the trigger, flipping when there is no room."
     }
   }
 }

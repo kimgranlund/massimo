@@ -18,7 +18,10 @@
  */
 export type ChangeReason =
   | 'item-press' | 'keyboard' | 'list-navigation' | 'trigger-press' | 'outside-press' | 'escape-key'
-  | 'focus-out' | 'track-press' | 'drag' | 'none';
+  | 'focus-out' | 'track-press' | 'drag' | 'none'
+  // Floating layers (popover, tooltip, preview card, navigation menu): the pointer rested on or left
+  // the trigger, the trigger took focus, a Close part was pressed, a navigation link was followed.
+  | 'trigger-hover' | 'trigger-focus' | 'close-press' | 'link-press';
 
 /** Base UI eventDetails: the reason and the DOM event that caused the change, when there is one. */
 export interface ChangeDetails {

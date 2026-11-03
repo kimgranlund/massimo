@@ -6373,5 +6373,270 @@
         }
       }
     }
+  },
+  "popup": {
+    "offset": {
+      "$type": "dimension",
+      "$value": {
+        "value": 4.5,
+        "unit": "px"
+      },
+      "$description": "popover, tooltip, preview card positioner · offset from the trigger · flips to the opposite side when the preferred one has no room",
+      "$extensions": {
+        "com.massimo.formula": "u",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 2,
+          "u=2.25": 2.25,
+          "u=2.5": 2.5,
+          "u=2.75": 2.75,
+          "u=3": 3,
+          "u=3.5": 3.5,
+          "u=4": 4,
+          "u=4.5": 4.5,
+          "u=5": 5,
+          "u=5.5": 5.5,
+          "u=6": 6,
+          "u=6.5": 6.5,
+          "u=7": 7,
+          "u=7.5": 7.5,
+          "u=8": 8,
+          "u=8.5": 8.5,
+          "u=9": 9,
+          "u=9.5": 9.5,
+          "u=10": 10,
+          "u=10.5": 10.5,
+          "u=11": 11,
+          "u=11.5": 11.5,
+          "u=12": 12
+        }
+      }
+    },
+    "arrow": {
+      "width": {
+        "$type": "dimension",
+        "$value": {
+          "value": 9,
+          "unit": "px"
+        },
+        "$description": "popup arrow · arrow width · centered on the trigger, kept radius + u inside the popup ends",
+        "$extensions": {
+          "com.massimo.formula": "2u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 4,
+            "u=2.25": 4.5,
+            "u=2.5": 5,
+            "u=2.75": 5.5,
+            "u=3": 6,
+            "u=3.5": 7,
+            "u=4": 8,
+            "u=4.5": 9,
+            "u=5": 10,
+            "u=5.5": 11,
+            "u=6": 12,
+            "u=6.5": 13,
+            "u=7": 14,
+            "u=7.5": 15,
+            "u=8": 16,
+            "u=8.5": 17,
+            "u=9": 18,
+            "u=9.5": 19,
+            "u=10": 20,
+            "u=10.5": 21,
+            "u=11": 22,
+            "u=11.5": 23,
+            "u=12": 24
+          }
+        }
+      },
+      "height": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "px"
+        },
+        "$description": "popup arrow · arrow height (tip to popup edge) · spans the 1u gap; its base covers the popup edge (B)",
+        "$extensions": {
+          "com.massimo.formula": "u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 2,
+            "u=2.25": 2.25,
+            "u=2.5": 2.5,
+            "u=2.75": 2.75,
+            "u=3": 3,
+            "u=3.5": 3.5,
+            "u=4": 4,
+            "u=4.5": 4.5,
+            "u=5": 5,
+            "u=5.5": 5.5,
+            "u=6": 6,
+            "u=6.5": 6.5,
+            "u=7": 7,
+            "u=7.5": 7.5,
+            "u=8": 8,
+            "u=8.5": 8.5,
+            "u=9": 9,
+            "u=9.5": 9.5,
+            "u=10": 10,
+            "u=10.5": 10.5,
+            "u=11": 11,
+            "u=11.5": 11.5,
+            "u=12": 12
+          }
+        }
+      }
+    },
+    "popover": {
+      "padding": {
+        "$type": "dimension",
+        "$value": {
+          "value": 13.5,
+          "unit": "px"
+        },
+        "$description": "popover popup · padding · the card-sm level (theme pad-card-sm)",
+        "$extensions": {
+          "com.massimo.formula": "3u - B",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 6,
+            "u=2.25": 6.75,
+            "u=2.5": 7.5,
+            "u=2.75": 8.25,
+            "u=3": 9,
+            "u=3.5": 10.5,
+            "u=4": 12,
+            "u=4.5": 13.5,
+            "u=5": 15,
+            "u=5.5": 16.5,
+            "u=6": 18,
+            "u=6.5": 19.5,
+            "u=7": 21,
+            "u=7.5": 22.5,
+            "u=8": 24,
+            "u=8.5": 25.5,
+            "u=9": 27,
+            "u=9.5": 28.5,
+            "u=10": 30,
+            "u=10.5": 31.5,
+            "u=11": 33,
+            "u=11.5": 34.5,
+            "u=12": 36
+          }
+        }
+      },
+      "radius": {
+        "$type": "dimension",
+        "$value": {
+          "value": 13.5,
+          "unit": "px"
+        },
+        "$description": "popover popup · radius · container family: at most the padding",
+        "$extensions": {
+          "com.massimo.formula": "3u * min(1, s)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 6,
+            "u=2.25": 6.75,
+            "u=2.5": 7.5,
+            "u=2.75": 8.25,
+            "u=3": 9,
+            "u=3.5": 10.5,
+            "u=4": 12,
+            "u=4.5": 13.5,
+            "u=5": 15,
+            "u=5.5": 16.5,
+            "u=6": 18,
+            "u=6.5": 19.5,
+            "u=7": 21,
+            "u=7.5": 22.5,
+            "u=8": 24,
+            "u=8.5": 25.5,
+            "u=9": 27,
+            "u=9.5": 28.5,
+            "u=10": 30,
+            "u=10.5": 31.5,
+            "u=11": 33,
+            "u=11.5": 34.5,
+            "u=12": 36
+          }
+        }
+      },
+      "gap": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4.5,
+          "unit": "px"
+        },
+        "$description": "popover popup · gap · the group gap; the gap attribute wins",
+        "$extensions": {
+          "com.massimo.formula": "u",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 2,
+            "u=2.25": 2.25,
+            "u=2.5": 2.5,
+            "u=2.75": 2.75,
+            "u=3": 3,
+            "u=3.5": 3.5,
+            "u=4": 4,
+            "u=4.5": 4.5,
+            "u=5": 5,
+            "u=5.5": 5.5,
+            "u=6": 6,
+            "u=6.5": 6.5,
+            "u=7": 7,
+            "u=7.5": 7.5,
+            "u=8": 8,
+            "u=8.5": 8.5,
+            "u=9": 9,
+            "u=9.5": 9.5,
+            "u=10": 10,
+            "u=10.5": 10.5,
+            "u=11": 11,
+            "u=11.5": 11.5,
+            "u=12": 12
+          }
+        }
+      },
+      "maxWidth": {
+        "$type": "dimension",
+        "$value": {
+          "value": 360,
+          "unit": "px"
+        },
+        "$description": "popover positioner · max width · value shown is the 80u cap; min width = the trigger width",
+        "$extensions": {
+          "com.massimo.formula": "min(available width, 80u)",
+          "com.massimo.status": "implemented",
+          "com.massimo.bySize": {
+            "u=2": 160,
+            "u=2.25": 180,
+            "u=2.5": 200,
+            "u=2.75": 220,
+            "u=3": 240,
+            "u=3.5": 280,
+            "u=4": 320,
+            "u=4.5": 360,
+            "u=5": 400,
+            "u=5.5": 440,
+            "u=6": 480,
+            "u=6.5": 520,
+            "u=7": 560,
+            "u=7.5": 600,
+            "u=8": 640,
+            "u=8.5": 680,
+            "u=9": 720,
+            "u=9.5": 760,
+            "u=10": 800,
+            "u=10.5": 840,
+            "u=11": 880,
+            "u=11.5": 920,
+            "u=12": 960
+          }
+        }
+      }
+    }
   }
 }

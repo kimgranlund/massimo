@@ -25,6 +25,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/popover/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -51,11 +52,28 @@ import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
+import { Popover } from '@massimo/ui-kit/components/popover/react';
 
 const UNITS = [2, 3, 4, 4.5, 6];
 /** Group twins (radio group, checkbox group, fieldset): measured, and their members' data-* compared. */
 const GROUP_KEYS = ['rgv', 'rgh', 'cgv', 'cgh', 'fs', 'fsd'];
 const r2 = (v: number) => Math.round(v * 100) / 100;
+
+// ── Anchored popups: twins opened one pair at a time (open = "<u>:<key>"), measured at rest ──
+const POPUP_KEYS = ['pop'];
+function PopupPair({ u, open }: { u: number; open: string | null }) {
+  const on = (k: string) => open === `${u}:${k}`;
+  return (
+    <div data-size={u} data-pcase={u} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, width: 640, height: 60 * u }}>
+      <div data-side="wc">
+        <ui-popover data-k="pop" side="bottom" align="start" open={on('pop')}><ui-button data-part="trigger">Open popover</ui-button><div data-part="popup"><h2 data-part="title">Title</h2><p data-part="description">Description text</p><div data-part="arrow" /></div></ui-popover>
+      </div>
+      <div data-side="react">
+        <Popover.Root data-k="pop" open={on('pop')}><Popover.Trigger>Open popover</Popover.Trigger><Popover.Positioner side="bottom" align="start"><Popover.Popup><Popover.Title>Title</Popover.Title><Popover.Description>Description text</Popover.Description></Popover.Popup><Popover.Arrow /></Popover.Positioner></Popover.Root>
+      </div>
+    </div>
+  );
+}
 
 function Pair({ u }: { u: number }) {
   return (
@@ -300,6 +318,64 @@ const composedRoot = document.createElement('div');
 composedRoot.id = 'composed';
 root.after(composedRoot);
 flushSync(() => createRoot(composedRoot).render(<>{UNITS.map((u) => <ComposedPair key={u} u={u} />)}</>));
+// The popup twins sit last; their motion is off so each opens at rest.
+const popupsRoot = document.createElement('div');
+popupsRoot.id = 'popups';
+popupsRoot.innerHTML = '<style>#popups *, #popups *::after { transition: none !important; }</style>';
+composedRoot.after(popupsRoot);
+const popupsMount = document.createElement('div');
+popupsRoot.append(popupsMount);
+const popups = createRoot(popupsMount);
+const renderPopups = (open: string | null) => flushSync(() => popups.render(<>{UNITS.map((u) => <PopupPair key={u} u={u} open={open} />)}</>));
+renderPopups(null);
+
+/** Open each popup twin pair in view and compare their state and geometry relative to the trigger. */
+async function popupParity(fails: string[]) {
+  let n = 0;
+  const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  const STRUCT = new Set(['data-ui', 'data-part', 'data-size', 'data-k']);
+  const st = (el: Element | null) => (el ? [...el.attributes].map((a) => a.name).filter((x) => x.startsWith('data-') && !STRUCT.has(x)).sort().join(' ') : 'missing');
+  const parts = (h: Element) => {
+    const pos = h.querySelector(':scope > [data-part=positioner]');
+    return { host: h, trigger: h.querySelector(':scope > [data-part=trigger]'), positioner: pos, popup: pos?.querySelector(':scope > [data-part=popup]') ?? null, arrow: pos?.querySelector(':scope > [data-part=arrow]') ?? null };
+  };
+  const geo = (h: Element) => {
+    const { trigger, popup, arrow, positioner } = parts(h);
+    if (!trigger || !popup) return { missing: 'parts' };
+    const tr = trigger.getBoundingClientRect(), pr = popup.getBoundingClientRect(), cs = getComputedStyle(popup);
+    const rel = (e: Element) => { const r = e.getBoundingClientRect(); return `${r2(r.left - pr.left)}:${r2(r.top - pr.top)}:${r2(r.width)}x${r2(r.height)}`; };
+    return {
+      side: positioner?.getAttribute('data-side') ?? '', offsetTop: r2(pr.top - tr.bottom), offsetLeft: r2(pr.left - tr.left), size: `${r2(pr.width)}x${r2(pr.height)}`,
+      trigger: `${r2(tr.width)}x${r2(tr.height)}`, pad: cs.padding, radius: cs.borderTopLeftRadius, bg: cs.backgroundColor, color: cs.color, shadow: cs.boxShadow, border: cs.borderTopWidth,
+      arrow: arrow ? rel(arrow) : '', arrowBg: arrow ? getComputedStyle(arrow).backgroundColor : '',
+      kids: [...popup.children].map((k) => `${rel(k)}:${getComputedStyle(k).color}:${getComputedStyle(k).fontSize}`).join(' '),
+    };
+  };
+  for (const u of UNITS) {
+    for (const k of POPUP_KEYS) {
+      renderPopups(`${u}:${k}`);
+      const c = popupsRoot.querySelector(`[data-pcase="${u}"]`)!;
+      const a = c.querySelector(`[data-side=wc] [data-k=${k}]`)!, b = c.querySelector(`[data-side=react] [data-k=${k}]`)!;
+      (parts(a).trigger as HTMLElement).scrollIntoView({ block: 'center' });
+      await frame(); await frame();
+      const [pa, pb] = [parts(a), parts(b)];
+      for (const part of Object.keys(pa) as (keyof typeof pa)[]) {
+        n++;
+        if (st(pa[part]) !== st(pb[part])) fails.push(`u${u} ${k} ${part} data-*: wc "${st(pa[part])}" react "${st(pb[part])}"`);
+      }
+      const [ga, gb] = [geo(a), geo(b)] as Record<string, unknown>[];
+      // The pair must really be open and placed (a closed pair would agree vacuously).
+      n++;
+      if (!ga.side || !gb.side) fails.push(`u${u} ${k}: not open (wc side "${ga.side}", react side "${gb.side}")`);
+      for (const key of Object.keys(ga)) {
+        n++;
+        if (ga[key] !== gb[key]) fails.push(`u${u} ${k}.${key}: wc ${ga[key]} react ${gb[key]}`);
+      }
+    }
+  }
+  renderPopups(null);
+  return n;
+}
 
 setTimeout(() => {
   const fails: string[] = []; let checks = 0;
@@ -436,9 +512,10 @@ setTimeout(() => {
     lb.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true, cancelable: true }));
     setTimeout(() => done(read(lb)), 150);
   });
-  press(lbs[0]).then((a) => press(lbs[1]).then((b) => {
+  press(lbs[0]).then((a) => press(lbs[1]).then(async (b) => {
     checks++;
     if (a !== b) fails.push(`keyboard listbox: wc ${a} react ${b}`);
+    checks += await popupParity(fails);
     document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);
   }));
   if (false) document.getElementById('out')!.textContent = JSON.stringify({ checks, fails }, null, 1);

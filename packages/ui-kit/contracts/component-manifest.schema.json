@@ -97,7 +97,7 @@
           "additionalProperties": false,
           "required": ["display", "sizing"],
           "properties": {
-            "display": { "enum": ["inline-flex", "flex", "inline-grid", "grid", "block", "inline-block"] },
+            "display": { "enum": ["inline-flex", "flex", "inline-grid", "grid", "block", "inline-block", "contents"] },
             "sizing": { "enum": ["intrinsic", "fill"], "description": "Inline axis in ordinary flow." }
           }
         },

@@ -34,7 +34,7 @@
     },
     {
       "path": "dom/events.ts",
-      "sha256": "76db980a6af8bce8d8f3ce38a5543d5c12e65a4729657fd13551e7643e663ea9"
+      "sha256": "57a134a221569a39183bd705bde1111b1e91961a5274f6663231e13ba36f5e7a"
     }
   ],
   "renderers": {
@@ -54,7 +54,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
@@ -82,7 +82,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

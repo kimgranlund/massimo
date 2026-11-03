@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "popover",
+  "title": "Popover",
+  "summary": "Interactive content anchored to the control that opened it.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Label, title and content",
+      "subject": "component:popover",
+      "markup": "<ui-popover label=\"Notifications\"><h2 data-part=\"title\">Notifications</h2><p data-part=\"description\">You are all caught up.</p></ui-popover>"
+    },
+    {
+      "id": "parts",
+      "label": "Parts, with an arrow and a close button",
+      "subject": "component:popover",
+      "markup": "<ui-popover side=\"top\"><ui-button data-part=\"trigger\">Share</ui-button><div data-part=\"popup\"><h2 data-part=\"title\">Share link</h2><p data-part=\"description\">Anyone with the link can view.</p><ui-button data-part=\"close\">Done</ui-button><div data-part=\"arrow\"></div></div></ui-popover>"
+    },
+    {
+      "id": "modal",
+      "label": "Modal: focus stays inside",
+      "subject": "component:popover",
+      "markup": "<ui-popover label=\"Rename\" modal><h2 data-part=\"title\">Rename file</h2><ui-input label=\"Name\"></ui-input><ui-button data-part=\"close\">Save</ui-button></ui-popover>"
+    }
+  ]
+}
