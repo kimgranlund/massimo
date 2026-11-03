@@ -24,7 +24,8 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
-import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
+import '@massimo/ui-kit/components/form/element';
+import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
 const cases = [];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined }); });
@@ -89,6 +90,7 @@ for (const c of cases) {
     <ui-checkbox-group id="cgH" orientation="horizontal" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
     <ui-checkbox-group id="cgW" orientation="horizontal" style="width:1px"><ui-checkbox value="a">One</ui-checkbox><ui-checkbox value="b">Two</ui-checkbox></ui-checkbox-group>
     <div style="width:${60 * c.unit}px"><ui-fieldset id="fs" legend="Address" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-input label="A"></ui-input><ui-checkbox>B</ui-checkbox></ui-fieldset></div>
+    <div style="width:${60 * c.unit}px"><ui-form id="fm" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-input name="a" label="A"></ui-input><ui-checkbox name="b">B</ui-checkbox><ui-button type="submit">C</ui-button></ui-form></div>
     <div style="width:${60 * c.unit}px"><ui-collapsible id="colClosed" label="Closed"><p>x</p></ui-collapsible><ui-collapsible id="colOpen" label="Open" open><p style="height:${4 * c.unit}px">x</p></ui-collapsible><ui-collapsible id="colLead"><div data-part="trigger"><span slot="leading"></span>Lead</div><div data-part="panel">y</div></ui-collapsible>
       <ui-accordion id="acc" value="b"><ui-collapsible value="a" label="A"><p>a</p></ui-collapsible><ui-collapsible value="b" label="B"><p style="height:${4 * c.unit}px">b</p></ui-collapsible><ui-collapsible value="c" label="C"><p>c</p></ui-collapsible></ui-accordion></div>
     <ui-tabs id="tabSeg" value="b"><div data-part="list"><div data-part="tab" value="a">Alpha</div><div data-part="tab" value="b"><span slot="leading"></span>Beta</div></div><div data-part="panel" value="a">a</div><div data-part="panel" value="b">b</div></ui-tabs>
@@ -397,6 +399,15 @@ for (const c of cases) {
     checks['fieldset.padding'] = [px(cs(fs).paddingTop) + px(cs(fs).paddingLeft) + px(cs(fs).borderTopWidth), rf.padding + rf.border];
     checks['fieldset.radius'] = [px(cs(fs).borderTopLeftRadius), rf.radius];
     checks['fieldset.fill'] = [r2(rect(a).width), r2(rect(fs).width)];
+  }
+  // Form: fields and actions with the collection gap (gap attribute wins), no box (resolveForm).
+  {
+    const fm = $('fm'), rf = resolveForm(g), [a, b, btn] = fm.children;
+    checks['form.gap'] = [r2(rect(b).top - rect(a).bottom), rf.gap];
+    checks['form.actionGap'] = [r2(rect(btn).top - rect(b).bottom), rf.gap];
+    checks['form.padding'] = [px(cs(fm).paddingTop) + px(cs(fm).paddingLeft) + px(cs(fm).borderTopWidth), rf.padding + rf.border];
+    checks['form.radius'] = [px(cs(fm).borderTopLeftRadius), rf.radius];
+    checks['form.fill'] = [r2(rect(a).width), r2(rect(fm).width)];
   }
   // Disclosure: the collapsible trigger is an 8u control row; the panel starts at the label edge (resolveDisclosure).
   {

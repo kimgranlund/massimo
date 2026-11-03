@@ -1,0 +1,330 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "form",
+  "primary": "component:form",
+  "module": "./form.element.ts",
+  "registration": "on-import",
+  "documentation": "./form.md",
+  "examples": "./form.examples.json",
+  "contract": "../../contracts/components.json#/components/form",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./form.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveForm"
+      ],
+      "description": "Reference numbers for the gap between the form's fields (the collection gap) and the absent box."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:form",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-form",
+      "class": "UIForm",
+      "extends": "UIElement",
+      "intent": [
+        "Submit a set of fields together",
+        "Show server errors on the fields they name",
+        "Choose when field errors show"
+      ],
+      "properties": [
+        {
+          "key": "errors",
+          "type": "string",
+          "default": null,
+          "attribute": "errors",
+          "reflects": false,
+          "description": "Errors by control name (Base UI Form errors: { name: message | message[] }), an object or its JSON in the attribute: each named control shows its error at once (its own error part, or its ui-field's) and is invalid until it changes; a submit clears them.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "validationMode",
+          "type": "string",
+          "default": "onSubmit",
+          "attribute": "validation-mode",
+          "reflects": false,
+          "description": "When the controls' own errors show (Base UI validationMode): onSubmit (after a submit attempt, then on every change), onBlur (when a control loses focus), onChange (on every change).",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "onSubmit",
+            "onBlur",
+            "onChange"
+          ]
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gap between the fields in u (0…8 in 0.5 steps); default the collection gap (theme gap-collection, 2u).",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "formsubmit",
+          "detail": "{ values, submitter, reason: 'none', event }",
+          "trigger": "A submit (ui-button type=submit, Enter in a ui-input, requestSubmit()) that passes validation; values by name, as FormData would submit them (a repeated name or a group's values is an array).",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false
+        },
+        {
+          "name": "reset",
+          "type": "Event",
+          "bubbles": false,
+          "cancelable": true,
+          "trigger": "reset() is called (a ui-button type=reset): preventDefault keeps every control as it is; otherwise each returns to its default and the errors clear"
+        }
+      ],
+      "semantics": {
+        "role": "form",
+        "formAssociated": false,
+        "accessibleName": {
+          "sources": [
+            "aria-label",
+            "aria-labelledby"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Fields (ui-field, ui-input, ui-select, choice groups, choices), fieldsets and the actions (ui-button type=submit / reset)."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "No native <form>, inside or around it: the host is the form owner of every kit form control inside that has no native form of its own (UIFormElement submitOwner). A native <form> around the controls stays their owner instead.",
+        "A submit validates every control: the invalid ones fire invalid and show their errors, the first takes focus, and nothing is submitted; when all pass, formsubmit carries the values by name. Disabled controls submit nothing.",
+        "errors map to controls by name: ui-input and ui-select show theirs in their own error part; any other control (a choice group, a checkbox, a range) shows it in the error part of its ui-field. A change to that control, a new submit or reset() clears it.",
+        "validation-mode takes Base UI's names; outside a ui-form the kit default is onBlur. In onSubmit mode the errors wait for a submit attempt, then follow every change.",
+        "React: Form (a native <form noValidate>; one part, as Base UI) with errors, validationMode, onFormSubmit(values, details) and actionsRef ({ validate(name?) }); Input and Select inside show their name's error, a Field shows it when given name. render (an element or (props, state) => element) and className (a string or (state) => string)."
+      ],
+      "avoidWhen": [
+        {
+          "when": "One control that commits on its own (a switch in settings, a search box).",
+          "reason": "A form adds a submit step; a control's change event is enough.",
+          "useInstead": "component:switch"
+        },
+        {
+          "when": "A named group inside a form.",
+          "reason": "A fieldset names and disables a set of fields; the form owns the submit.",
+          "useInstead": "component:fieldset"
+        }
+      ],
+      "searchTerms": [
+        "form",
+        "submit",
+        "server errors",
+        "validation",
+        "validation mode",
+        "form values",
+        "onFormSubmit"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:form",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesGeometry",
+      "to": "geometry:form"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:form",
+      "relation": "establishes",
+      "to": "context:form"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:field"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:input"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:select"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:fieldset"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:radio-group"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:checkbox-group"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:switch"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:button"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./form.element.ts",
+      "exports": {
+        "component:form": "UIForm"
+      },
+      "verification": "./verification/form.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./form.react.tsx",
+      "exports": {
+        "component:form": "Form"
+      },
+      "verification": "./verification/form.verification.json#/renderers/react",
+      "props": {
+        "component:form": {
+          "inherits": [
+            "Omit<FormHTMLAttributes<HTMLFormElement>, 'className'>"
+          ],
+          "props": [
+            "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+            "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+            "errors?: FormErrors // Errors by control name (Base UI Form errors), e.g. from a server; shown at once, cleared when that control changes.",
+            "validationMode?: ValidationMode = 'onSubmit' // When the controls' own errors show (Base UI validationMode): onSubmit (after a submit attempt, then on change), onBlur, onChange.",
+            "onFormSubmit?: (values: FormValues, details: ChangeDetails) => void // Called on a submit that passes validation, with the values by name and Base UI's details ({ reason: 'none', event }); the native submit is prevented.",
+            "actionsRef?: RefObject<FormActions | null> // Imperative actions (Base UI actionsRef): validate() every control, validate(name) one.",
+            "size?: number // Unit u in px for the form and its fields.",
+            "gap?: number // Gap between the fields in u (default: the collection gap).",
+            "children?: ReactNode"
+          ]
+        }
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:form": ".ui-form__root"
+      }
+    }
+  }
+}

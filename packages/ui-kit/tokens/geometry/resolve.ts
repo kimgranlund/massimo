@@ -505,3 +505,12 @@ export function resolveTabs(variant: TabsVariant = 'segmented', input: GeometryI
     indicatorThickness: 0.5 * u, indicatorRadius: 0.25 * u, track: DIVIDER,
   };
 }
+
+// ── Form ──
+// ui-form stacks its fields, fieldsets and actions with the collection gap (2u by default, the
+// theme's gap-collection; the gap attribute wins), like a fieldset, and draws no box: no padding,
+// border or radius, so its fields keep their own edges and a card around it supplies the surface.
+export function resolveForm(input: GeometryInput & { gapUnits?: number } = {}) {
+  const c = resolveContainer('collection', input);
+  return { unit: c.unit, gap: c.gap, padding: 0, border: 0, radius: 0 };
+}

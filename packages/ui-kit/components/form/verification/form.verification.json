@@ -1,0 +1,85 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "form",
+  "scope": "Structure (role=form, recipe class, no native form inside or around it), ownership of the kit controls inside, submit validation (errors shown, first invalid focused, formsubmit with the values by name, disabled controls left out), errors by name on ui-input and on a group's ui-field, clearing on change, submit and reset, the three validation modes, of the web component in happy-dom (node:test); the React renderer's server markup (native form noValidate, errors reaching Input and a named Field, className function) and state parity with the web component; resolver numbers. Rendered spacing is checked by apps/studio/geometry-check.html; real constraint validation and focus by the browser; screen-reader output is not certified.",
+  "sources": [
+    {
+      "path": "components/form/form.element.ts",
+      "sha256": "ccb6ab2280487d24ededb992eb258b83c37fed7ca70174372549faf41fbb7295"
+    },
+    {
+      "path": "components/form/form.recipe.ts",
+      "sha256": "b73a90b32771b641df9530fbbbb4cea72627b84eab1291225d21d3a460da4e60"
+    },
+    {
+      "path": "components/form/form.react.tsx",
+      "sha256": "b09ce4acbf6e992dea8141649acb7384a6504f6f9cb8d19cb7b5e2787b210573"
+    },
+    {
+      "path": "components/form/form.manifest.json",
+      "sha256": "bf7c7292760ca4780ec5eab28244c5fde85412e739dc9b5c094ffb841238b880"
+    },
+    {
+      "path": "core/form-element.ts",
+      "sha256": "d6ae977c250021e2ec7ba0dd99412c64046b811d20eea5d5bdf4b8c260b17604"
+    },
+    {
+      "path": "components/state.react.ts",
+      "sha256": "53a93fe63ed8c5cf50036ddbfa32a0b76979e6361f20319f7a1035cf05b85603"
+    },
+    {
+      "path": "components/field/field.element.ts",
+      "sha256": "049b9f6f95057929c152ba953bcabd28d37131fa041ecb5cd56eb1ca0263cc5d"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/form.test.ts",
+          "covers": "no native elements, role=form, owned controls, submit validation and focus, formsubmit values (arrays for groups), errors by name on ui-input and a ui-field, JSON errors attribute, clearing on change and reset, onSubmit / onBlur / onChange, the onBlur default outside a form"
+        },
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "resolveForm: the collection gap, gapUnits and the gap attribute, no box"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/form.test.ts",
+          "node --test test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/form.test.ts",
+          "covers": "native form noValidate with the recipe class, errors by name in Input and a named Field, no error without errors, className function and gap, state parity with the web component"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/form.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The source list is the direct sources, not every transitive dependency.",
+    "React: a form error clears on a native input or change event from a control of that name; React custom-ARIA hosts (Listbox, Palette) fire none, so theirs clear on the next submit.",
+    "The values follow FormData: a single checkbox submits its value (\"on\") when checked and nothing otherwise, not a boolean.",
+    "Manual geometry review (2026-11-02, studio #/components?family=forms, light and dark, size ladder u = 3, 4, theme 4.5, 6): fields, groups and actions 2u apart (the collection gap; geometry-check form.gap / form.actionGap honour the gap attribute), no box; a lone ui-button keeps its own width; growth: long errors and descriptions wrap and grow the column, fields keep the form width; RTL: a column, every field mirrors itself; focus: the form draws no contour, a blocked submit moves focus to the first invalid control, whose ring is its own; parity: react-check.html twin fm matches (fails []); a submit with taken@example.com shows the server errors on the email input and the plan field."
+  ]
+}

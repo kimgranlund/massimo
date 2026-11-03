@@ -14,7 +14,7 @@
     },
     {
       "path": "core/form-element.ts",
-      "sha256": "e20fdcc745fc031794ebb38fc14ee1546b04a5f570f20baddd8aebdba44b5070"
+      "sha256": "d6ae977c250021e2ec7ba0dd99412c64046b811d20eea5d5bdf4b8c260b17604"
     },
     {
       "path": "components/choice/choice.manifest.json",
@@ -30,7 +30,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "949efc88e5c42cdac3acd815c8ba52dd1b74a5bea23e41f51333ac9371e672b0"
+      "sha256": "53a93fe63ed8c5cf50036ddbfa32a0b76979e6361f20319f7a1035cf05b85603"
     },
     {
       "path": "dom/events.ts",
@@ -62,7 +62,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
@@ -95,7 +95,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-02",
+        "date": "2026-11-03",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

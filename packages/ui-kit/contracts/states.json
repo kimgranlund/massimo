@@ -175,6 +175,10 @@
       "baseUi": true,
       "condition": null,
       "meaning": "The collapsible trigger's panel is open (Base UI Collapsible.Trigger)."
+    },
+    "data-submitted": {
+      "baseUi": false,
+      "meaning": "A submit was attempted (ui-form, React Form), until the form is reset."
     }
   },
   "components": {
@@ -496,6 +500,11 @@
         "data-hidden",
         "data-orientation",
         "data-activation-direction"
+      ]
+    },
+    "ui-form": {
+      "host": [
+        "data-submitted"
       ]
     }
   },

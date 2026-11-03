@@ -21,6 +21,7 @@ import '@massimo/ui-kit/components/fieldset/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
+import '@massimo/ui-kit/components/form/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -38,6 +39,7 @@ export const FAMILIES = [
   ['media', 'Media', 'ui-swiper · ui-image'],
   ['display', 'Display', 'ui-separator · ui-avatar'],
   ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
+  ['forms', 'Forms', 'ui-form'],
 ] as const;
 export type Family = (typeof FAMILIES)[number][0];
 export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
@@ -130,6 +132,62 @@ function Fieldsets({ params }: Pick<PageProps, 'params'>) {
   );
 }
 
+/**
+ * Forms: a ui-form whose submit validates its fields and reports the values; a simulated server
+ * answers "taken@example.com" with errors by name (the email and the plan), which clear on change.
+ * The validation mode is switchable; a size ladder follows.
+ */
+function Forms({ params }: Pick<PageProps, 'params'>) {
+  const [mode, setMode] = useState<'onSubmit' | 'onBlur' | 'onChange'>('onSubmit');
+  const [result, setResult] = useState('Submit to see the values.');
+  const onMode = useCallback((el: HTMLElement | null) => {
+    if (!el) return;
+    const h = (e: Event) => setMode((e as CustomEvent<{ value: 'onSubmit' | 'onBlur' | 'onChange' }>).detail.value);
+    el.addEventListener('change', h);
+    return () => el.removeEventListener('change', h);
+  }, []);
+  const onForm = useCallback((el: (HTMLElement & { errors?: unknown }) | null) => {
+    if (!el) return;
+    const h = (e: Event) => {
+      const values = (e as CustomEvent<{ values: Record<string, unknown> }>).detail.values;
+      if (values.email === 'taken@example.com') {
+        el.errors = { email: 'Already registered: sign in instead', plan: 'Team is not available for this address' };
+        setResult('The server answered with errors by name.');
+      } else setResult(`Submitted ${JSON.stringify(values)}`);
+    };
+    const r = () => setResult('Reset.');
+    el.addEventListener('formsubmit', h);
+    el.addEventListener('reset', r);
+    return () => { el.removeEventListener('formsubmit', h); el.removeEventListener('reset', r); };
+  }, []);
+  return (
+    <>
+      <div className={columns}>
+        <ui-card padding="lg">
+          <ui-form ref={onForm} validation-mode={mode}>
+            <ui-input name="email" label="Email" type="email" required description="taken@example.com gets server errors" />
+            <ui-field label="Plan">
+              <ui-radio-group name="plan" value="team" orientation="horizontal"><ui-radio value="solo">Solo</ui-radio><ui-radio value="team">Team</ui-radio></ui-radio-group>
+            </ui-field>
+            <ui-checkbox-group name="topics" value="news" orientation="horizontal"><ui-checkbox value="news">News</ui-checkbox><ui-checkbox value="tips">Tips</ui-checkbox></ui-checkbox-group>
+            <ui-input name="code" label="Invite code" minlength={4} />
+            <ui-group><ui-button type="submit" variant="primary">Sign up</ui-button><ui-button type="reset">Reset</ui-button></ui-group>
+          </ui-form>
+        </ui-card>
+        <div className={stack}>
+          <ui-field label="Validation mode">
+            <ui-segmented ref={onMode} value={mode}><ui-option value="onSubmit">onSubmit</ui-option><ui-option value="onBlur">onBlur</ui-option><ui-option value="onChange">onChange</ui-option></ui-segmented>
+          </ui-field>
+          <p className={caption} aria-live="polite">{result}</p>
+        </div>
+      </div>
+      <SizeLadder family="form" params={params}>
+        <div className={ladderField}><ui-form><ui-input name="n" label="Name" value="Ada" /><ui-checkbox checked>Subscribe</ui-checkbox><ui-button type="submit">Save</ui-button></ui-form></div>
+      </SizeLadder>
+    </>
+  );
+}
+
 /** Choice groups: a radio group named by a field label, a horizontal one, states, and a size ladder. */
 function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
   const [plan, setPlan] = useState('pro');
@@ -209,6 +267,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
     disclosure: 'A collapsible trigger is an 8u control row with a caret (icon size sm) that turns while open; the panel starts at the label edge (3u) and its height animates between 0 and auto on the reveal intent, in CSS. An accordion stacks collapsibles with 1px dividers; one or several open, arrow keys move between triggers. Tabs: a segmented composite (7u tabs in an 8u list) or 8u underline tabs over a 1px track; the indicator follows the active tab through --active-tab-* variables set by script.',
+    forms: 'A ui-form owns the kit controls inside it (no native form): a submit validates them all, shows their errors and focuses the first invalid one, then fires formsubmit with the values by name. Errors by name (a server answer) show at once on the named fields and clear on change; validation-mode is Base UI\'s onSubmit, onBlur or onChange. Fields stack with the collection gap; no box of its own.',
     media: 'Scroll-snap carousel with paddles and dots; images take a cover format, a fit, and an optional inline slideshow (controls on hover).',
     display: 'Static display elements. A separator is a rule as thick as the theme border, never thinner than a hairline; the container gap spaces it. An avatar is a round square on the slot and control ladder (sm 6u, md 8u, lg 12u, xl 16u) whose initials and icon scale with it; the fallback shows until the picture loads.',
   };
@@ -459,6 +518,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
         </SizeLadder>
       </>
     ),
+    forms: <Forms params={params} />,
     media: (
       <>
         <Row label="Swiper">

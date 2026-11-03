@@ -180,6 +180,21 @@
         "group of fields"
       ]
     },
+    "component:form": {
+      "kind": "component",
+      "source": "components/form/form.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-form",
+      "searchTerms": [
+        "form",
+        "submit",
+        "server errors",
+        "validation",
+        "validation mode",
+        "form values",
+        "onFormSubmit"
+      ]
+    },
     "component:group": {
       "kind": "component",
       "source": "components/container/container.manifest.json#/nodes/0",
@@ -534,7 +549,8 @@
       "availability": "implemented",
       "searchTerms": [
         "form",
-        "inside form"
+        "inside form",
+        "ui-form"
       ]
     },
     "context:group": {
@@ -856,6 +872,16 @@
         "fieldset spacing",
         "legend gap",
         "field group spacing"
+      ]
+    },
+    "geometry:form": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/form",
+      "availability": "implemented",
+      "searchTerms": [
+        "form spacing",
+        "gap between fields",
+        "form layout"
       ]
     },
     "geometry:image": {
@@ -3648,6 +3674,131 @@
       "from": "component:fieldset",
       "relation": "acceptsChild",
       "to": "component:switch"
+    },
+    {
+      "from": "component:form",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:form",
+      "relation": "usesGeometry",
+      "to": "geometry:form"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:form",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:form",
+      "relation": "establishes",
+      "to": "context:form"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:field"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:input"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:select"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:fieldset"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:radio-group"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:checkbox-group"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:checkbox"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:switch"
+    },
+    {
+      "from": "component:form",
+      "relation": "acceptsChild",
+      "to": "component:button"
     },
     {
       "from": "component:image",

@@ -569,6 +569,7 @@
             "readout?: ReactNode // Readout in the readout column (tabular figures, end-aligned).",
             "description?: string",
             "error?: string // Error message under the control (Base UI Field.Error), in the description's place and after it.",
+            "name?: string // The control's name, for a Form's errors (Base UI Field.Root name): its error shows in Field.Error. For controls without an error part of their own (choices, groups); Input and Select show theirs.",
             "layout?: 'stacked' | 'inline' = 'stacked' // stacked: label above the control; inline: label beside it.",
             "htmlFor?: string // Id of the control; generated when omitted.",
             "children?: ReactNode | ((ids: FieldControlProps) => ReactNode) // The control, or a function that receives the ids to put on it (Field.Root: the parts)."
@@ -585,7 +586,7 @@
         "component:field": {
           "Field.Root": {
             "inherits": [
-              "Omit<FieldProps, 'label' | 'unit' | 'readout' | 'description' | 'error'>"
+              "Omit<FieldProps, 'label' | 'unit' | 'readout' | 'description' | 'error' | 'name'>"
             ],
             "props": []
           },

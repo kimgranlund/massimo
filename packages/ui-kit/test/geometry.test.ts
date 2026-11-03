@@ -255,3 +255,11 @@ test('disclosure: segmented tabs are 7u composite options in an 8u list; underli
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
 });
+
+// Form (geometry:form).
+import { resolveForm } from '../tokens/geometry/resolve.ts';
+test('form: the collection gap (2u; theme gapUnits and the gap attribute win), no box', () => {
+  assert.deepEqual(resolveForm({ unit: 4 }), { unit: 4, gap: 8, padding: 0, border: 0, radius: 0 });
+  assert.equal(resolveForm({ unit: 4, gapUnits: 3 }).gap, 12);
+  assert.equal(resolveForm({ unit: 4, gapUnits: 3, gap: 1 }).gap, 4);
+});

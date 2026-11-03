@@ -642,6 +642,19 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "form": {
+      "geometryFamily": "form",
+      "element": "Host is the form (role=form) and the form owner of the kit controls inside that have no native form; no native form inside or around it.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection"
+      ],
+      "behavior": "A submit (ui-button type=submit, Enter in a ui-input, requestSubmit()) validates every owned control, shows their errors and focuses the first invalid one; when all pass it fires formsubmit with { values, reason: 'none', event }. errors (by name) become the named controls' form errors, shown at once and cleared on their next change; validation-mode (onSubmit, onBlur, onChange) decides when their own errors show; reset() returns every control to its default."
     }
   }
 }

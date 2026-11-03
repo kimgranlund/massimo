@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveForm, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -116,6 +116,9 @@ export const rows: Row[] = [
   // Fieldset
   { id: 'fieldset.gap', family: 'fieldset', element: 'fieldset', quantity: 'gap between the legend and the fields', formula: 'g·u (gap attribute), default the collection gap (2u)', value: (u) => resolveFieldset({ unit: u }).gap, status: 'implemented', notes: 'theme gap-collection' },
   { id: 'fieldset.padding', family: 'fieldset', element: 'fieldset', quantity: 'padding, border, radius', formula: '0', value: (u) => resolveFieldset({ unit: u }).padding, status: 'implemented', notes: 'no box of its own; a card around it supplies the surface' },
+  // Form
+  { id: 'form.gap', family: 'form', element: 'form', quantity: 'gap between fields, fieldsets and actions', formula: 'g·u (gap attribute), default the collection gap (2u)', value: (u) => resolveForm({ unit: u }).gap, status: 'implemented', notes: 'theme gap-collection' },
+  { id: 'form.padding', family: 'form', element: 'form', quantity: 'padding, border, radius', formula: '0', value: (u) => resolveForm({ unit: u }).padding, status: 'implemented', notes: 'no box of its own; a card around it supplies the surface' },
 
   // Typography (ratio 1.333, rhythm 1u)
   { id: 'in.typeRatio', family: 'input', element: 'text', quantity: 'type ratio r', formula: 'r (default 1.333)', value: () => 1.333, status: 'input', notes: 'theme type-ratio, 1–1.5' },

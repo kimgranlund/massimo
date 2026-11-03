@@ -41,6 +41,22 @@ export function syncDisabled(root: Element) {
   for (const el of root.querySelectorAll('*')) if (typeof (el as { syncContainer?: unknown }).syncContainer === 'function') (el as UIFormElement).syncContainer();
 }
 
+/**
+ * Kit form owners (ui-form registers its tag): a form element without a native <form> owner submits
+ * and resets through the nearest one (`submitOwner`), and follows its validation mode
+ * (Base UI Form validationMode: onSubmit, onBlur, onChange).
+ */
+export type ValidationMode = 'onSubmit' | 'onBlur' | 'onChange';
+export interface FormOwner { requestSubmit(submitter?: HTMLElement | null): void; reset(): void; validationMode?: string; submitted?: boolean }
+const owners = new Set<string>();
+export function registerFormOwner(tag: string) { owners.add(tag); }
+/** The nearest registered kit form owner around `el` (not `el` itself), if any. */
+export function formOwnerOf(el: Element): FormOwner | null {
+  return owners.size ? (el.parentElement?.closest([...owners].join(', ')) as unknown as FormOwner | null) ?? null : null;
+}
+/** Where a submit or reset from `el` goes: its native form, else the nearest kit form owner. */
+export function submitOwner(el: UIFormElement): FormOwner | null { return el.form ?? formOwnerOf(el); }
+
 export class UIFormElement extends UIElement {
   static formAssociated = true;
   /** Set the field state data-* on the host (false for controls without a value, such as a button). */
@@ -64,6 +80,10 @@ export class UIFormElement extends UIElement {
   #touched = signal(false);
   #focused = signal(false);
   #custom = signal('');
+  /** An error given by the form owner (ui-form `errors`, by name): shown at once, cleared on the next change. */
+  #formError = signal('');
+  /** The nearest kit form owner (ui-form), for its validation mode. */
+  #owner = signal<FormOwner | null>(null);
   /** The form value at the first render, for data-dirty. */
   #initial: string | undefined;
   #stopForm?: () => void;
@@ -77,6 +97,22 @@ export class UIFormElement extends UIElement {
   checkValidity() { return this.internals.checkValidity(); }
   reportValidity() { this.#shown.value = true; return this.internals.reportValidity(); }
   setCustomValidity(message: string) { this.#custom.value = message; }
+  /** The form owner's error for this control's name (ui-form `errors`). Reactive. */
+  get formError() { return this.#formError.value; }
+  /** Set (or clear, with '') the form owner's error: it is the control's problem and shows at once. */
+  setFormError(message: string) {
+    this.#formError.value = message;
+    if (message) this.#shown.value = true;
+  }
+  /**
+   * When errors show now (Base UI validationMode), from the kit form owner's mode, else onBlur:
+   * onSubmit waits for a submit attempt, then re-validates on change (onChange). Reactive.
+   */
+  get validationMode(): ValidationMode {
+    const o = this.#owner.value, m = o?.validationMode;
+    if (m === 'onSubmit') return o!.submitted ? 'onChange' : 'onSubmit';
+    return m === 'onChange' ? 'onChange' : 'onBlur';
+  }
 
   /** Disabled by its own attribute, a disabled ancestor <fieldset>, or a disabled kit container (ui-fieldset, a choice group). Reactive. */
   get isDisabled(): boolean { return this.disabled || this.#formDisabled.value || !!this.#container.value?.isDisabled; }
@@ -85,7 +121,7 @@ export class UIFormElement extends UIElement {
   /** The current validation problem, if any. Reactive. */
   get problem(): Problem | null {
     if (this.isDisabled) return null;
-    const custom = this.#custom.value;
+    const custom = this.#custom.value || this.#formError.value;
     return custom ? { flags: { customError: true }, message: custom } : this.validate();
   }
   /** Invalid and the user has interacted or tried to submit: the moment to show an error. Reactive. */
@@ -96,7 +132,9 @@ export class UIFormElement extends UIElement {
   get touched() { return this.#touched.value; }
   /** Focus is within the host. Reactive. */
   get focused() { return this.#focused.value; }
-  markTouched() { this.#touched.value = true; this.#shown.value = true; }
+  /** The user left the field (or activated a choice): touched; errors show from here on, except in onSubmit mode (they wait for a submit). */
+  markTouched() { this.#touched.value = true; if (this.validationMode !== 'onSubmit') this.#shown.value = true; }
+
   /** Take the value at the next render as the clean one (data-dirty): a group that sets a member it just adopted. */
   markClean() { this.#initial = undefined; }
 
@@ -122,8 +160,11 @@ export class UIFormElement extends UIElement {
 
   connectedCallback() {
     this.#container.value = disablingContainer(this);
+    this.#owner.value = formOwnerOf(this);
     super.connectedCallback();
     this.addEventListener('invalid', this.#onInvalid);
+    this.addEventListener('input', this.#onValueEvent);
+    this.addEventListener('change', this.#onValueEvent);
     const state = (this.constructor as typeof UIFormElement).fieldState;
     if (state) {
       this.addEventListener('focusin', this.#onFocusIn);
@@ -150,18 +191,30 @@ export class UIFormElement extends UIElement {
   disconnectedCallback() {
     this.#container.value = null;
     this.#stopForm?.();
+    this.#owner.value = null;
     this.removeEventListener('invalid', this.#onInvalid);
+    this.removeEventListener('input', this.#onValueEvent);
+    this.removeEventListener('change', this.#onValueEvent);
     this.removeEventListener('focusin', this.#onFocusIn);
     this.removeEventListener('focusout', this.#onFocusOut);
     super.disconnectedCallback();
   }
 
   formDisabledCallback(disabled: boolean) { this.#formDisabled.value = disabled; }
-  formResetCallback() { this.#shown.value = false; this.#touched.value = false; this.#custom.value = ''; this.resetValue(); }
+  formResetCallback() { this.#shown.value = false; this.#touched.value = false; this.#custom.value = ''; this.#formError.value = ''; this.resetValue(); }
   formStateRestoreCallback(state: unknown) { this.restoreValue(state); }
 
   // The browser fires `invalid` on each failing control when a submit is blocked.
   #onInvalid = () => { this.#shown.value = true; };
+  // A value change from this control (its own input / change event, not a bubbled one): the form
+  // owner's error is stale; in onChange mode errors show from the first change.
+  #onValueEvent = (e: Event) => {
+    if (e.target !== this) return;
+    if (this.#formError.peek()) this.#formError.value = '';
+    if (this.validationMode === 'onChange') this.#shown.value = true;
+  };
+  /** Find the nearest kit form owner again (a ui-form that upgraded late calls this). */
+  syncOwner() { this.#owner.value = formOwnerOf(this); }
   #onFocusIn = () => { this.#focused.value = true; };
   // Leaving the host (not moving within it) is a blur: touched, and errors show from here on.
   #onFocusOut = (e: FocusEvent) => {
