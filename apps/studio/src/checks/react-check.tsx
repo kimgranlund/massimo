@@ -26,6 +26,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/combobox/element';
+import '@massimo/ui-kit/components/autocomplete/element';
 import '@massimo/ui-kit/icons';
 import { Button } from '@massimo/ui-kit/components/button/react';
 import { Input } from '@massimo/ui-kit/components/input/react';
@@ -50,6 +51,7 @@ import { RadioGroup } from '@massimo/ui-kit/components/radio-group/react';
 import { CheckboxGroup } from '@massimo/ui-kit/components/checkbox-group/react';
 import { Fieldset } from '@massimo/ui-kit/components/fieldset/react';
 import { Combobox } from '@massimo/ui-kit/components/combobox/react';
+import { Autocomplete } from '@massimo/ui-kit/components/autocomplete/react';
 import { Collapsible } from '@massimo/ui-kit/components/collapsible/react';
 import { Accordion } from '@massimo/ui-kit/components/accordion/react';
 import { Tabs } from '@massimo/ui-kit/components/tabs/react';
@@ -71,6 +73,7 @@ function Pair({ u }: { u: number }) {
         <ui-button data-k="btP" variant="primary"><i slot="leading" name="plus" />Add</ui-button>
         <div style={{ width: 300 }} data-k="in"><ui-input label="Price" value="40" description="Before tax"><span slot="prefix">$</span><span slot="suffix">USD</span></ui-input></div>
         <div style={{ width: 300 }} data-k="cmb"><ui-combobox label="Fruit" value="b" description="Pick one"><i slot="leading" name="leaf" /><ui-option value="a">Apple</ui-option><ui-option value="b">Banana</ui-option></ui-combobox></div>
+        <div style={{ width: 300 }} data-k="acp"><ui-autocomplete label="City" value="Os" mode="both" show-trigger><i slot="leading" name="map-pin" /><ui-option>Oslo</ui-option><ui-option>Osaka</ui-option></ui-autocomplete></div>
         <div style={{ width: 220 }} data-k="cmbM"><ui-combobox multiple value="a,b,c" placeholder="Add"><ui-option value="a">Apple</ui-option><ui-option value="b">Banana</ui-option><ui-option value="c">Cherry</ui-option></ui-combobox></div>
         <ui-checkbox data-k="cb">Accept</ui-checkbox>
         <ui-checkbox data-k="cbOn" checked>Accept</ui-checkbox>
@@ -129,6 +132,7 @@ function Pair({ u }: { u: number }) {
         <Button data-k="btP" variant="primary" leading={<i name="plus" />}>Add</Button>
         <div style={{ width: 300 }} data-k="in"><Input label="Price" defaultValue="40" description="Before tax" prefix="$" suffix="USD" /></div>
         <div style={{ width: 300 }} data-k="cmb"><Combobox label="Fruit" defaultValue="b" description="Pick one" leading={<i name="leaf" />}><Combobox.Item value="a">Apple</Combobox.Item><Combobox.Item value="b">Banana</Combobox.Item></Combobox></div>
+        <div style={{ width: 300 }} data-k="acp"><Autocomplete label="City" defaultValue="Os" mode="both" showTrigger leading={<i name="map-pin" />}><Autocomplete.Item value="Oslo">Oslo</Autocomplete.Item><Autocomplete.Item value="Osaka">Osaka</Autocomplete.Item></Autocomplete></div>
         <div style={{ width: 220 }} data-k="cmbM"><Combobox multiple defaultValue={['a', 'b', 'c']} placeholder="Add"><Combobox.Item value="a">Apple</Combobox.Item><Combobox.Item value="b">Banana</Combobox.Item><Combobox.Item value="c">Cherry</Combobox.Item></Combobox></div>
         <Checkbox data-k="cb">Accept</Checkbox>
         <Checkbox data-k="cbOn" defaultChecked>Accept</Checkbox>
@@ -377,8 +381,8 @@ setTimeout(() => {
   }
   // Combobox: the same parts, geometry and data-* (the React input is a native <input>).
   for (const c of root.querySelectorAll('[data-case]')) {
-    for (const k of ['cmb', 'cmbM']) {
-      const wc = c.querySelector(`[data-side=wc] [data-k=${k}] ui-combobox`) as HTMLElement, re = c.querySelector(`[data-side=react] [data-k=${k}] [data-ui=combobox]`) as HTMLElement;
+    for (const k of ['cmb', 'cmbM', 'acp']) {
+      const wc = c.querySelector(`[data-side=wc] [data-k=${k}] :is(ui-combobox, ui-autocomplete)`) as HTMLElement, re = c.querySelector(`[data-side=react] [data-k=${k}] :is([data-ui=combobox], [data-ui=autocomplete])`) as HTMLElement;
       const CTL = ':scope > [data-part=control]';
       const sels = [':scope', ':scope > [data-part=label]', CTL, `${CTL} > [data-part=leading]`, `${CTL} > [data-part=input]`, `${CTL} > [data-part=clear]`, `${CTL} > [data-part=trigger]`, ':scope > [data-part=description]', ...[1, 2, 3].map((n) => `${CTL} > [data-part=chips] > [data-part=chip]:nth-child(${n})`), `${CTL} > [data-part=chips] > [data-part=chip] > [data-part=chip-remove]`];
       // The closed popups have no box: their state only.

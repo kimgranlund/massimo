@@ -25,6 +25,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/combobox/element';
+import '@massimo/ui-kit/components/autocomplete/element';
 import { resolveCombobox } from '@massimo/ui-kit/tokens';
 import { SIZES, TYPE_ROLES, resolveType, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs } from '@massimo/ui-kit/tokens';
 const ICONS = ['sm', 'md', 'lg', 'fill'];
@@ -98,6 +99,7 @@ for (const c of cases) {
     <div style="width:${100 * c.unit}px"><ui-combobox id="cbS" label="C" value="a"><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option></ui-combobox>
       <ui-combobox id="cbM" multiple value="a,b"><span slot="leading"></span><ui-option value="a">Alpha</ui-option><ui-option value="b">Beta</ui-option><ui-option value="c">Gamma</ui-option></ui-combobox>
 </div>
+    <div style="width:${60 * c.unit}px"><ui-autocomplete id="acBare"><ui-option>Alpha</ui-option></ui-autocomplete><ui-autocomplete id="acClear" value="Al" show-trigger><span slot="leading"></span><ui-option>Alpha</ui-option></ui-autocomplete></div>
     <div id="cbEBox" style="width:${60 * c.unit}px"><ui-combobox id="cbE"><ui-option value="a">Alpha</ui-option></ui-combobox></div>
     <div style="width:${40 * c.unit}px"><ui-combobox id="cbW" multiple value="a,b,c,d"><ui-option value="a">Alpha</ui-option><ui-option value="b">Bravo</ui-option><ui-option value="c">Charlie</ui-option><ui-option value="d">Delta</ui-option></ui-combobox></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
@@ -482,6 +484,15 @@ for (const c of cases) {
     checks['combobox.trigger.slot'] = [r2(rect(part(s, 'trigger')).width), rcb.triggerSlot];
     checks['combobox.trigger.icon'] = [r2(rect(part(s, 'trigger').firstElementChild).width), rcb.triggerIcon];
     checks['combobox.radius'] = [px(cs(s).borderTopLeftRadius), rcb.radius];
+    // Autocomplete: the same row; no trigger and no text: the input ends 2u from the bare edge.
+    const ab = ctlOf('acBare'), ac = ctlOf('acClear');
+    checks['autocomplete.height'] = [r2(rect(ab).height), rcb.height];
+    checks['autocomplete.input.bare'] = [px(cs(inOf('acBare')).paddingRight), rcb.inputBareEnd];
+    checks['autocomplete.input.start'] = [px(cs(inOf('acBare')).paddingLeft), rcb.inputStart];
+    checks['autocomplete.input.afterSlot'] = [px(cs(inOf('acClear')).paddingLeft), rcb.contentsEnd];
+    checks['autocomplete.input.end'] = [px(cs(inOf('acClear')).paddingRight), rcb.inputEnd];
+    checks['autocomplete.trigger.slot'] = [r2(rect(part(ac, 'trigger')).width), rcb.triggerSlot];
+    checks['autocomplete.height.slots'] = [r2(rect(ac).height), rcb.height];
     const m = ctlOf('cbM'), chips = [...m.querySelectorAll('[data-part=chip]')], mi = inOf('cbM');
     checks['combobox.multiple.height'] = [r2(rect(m).height), rcb.rowHeight(1)];
     checks['combobox.chip.height'] = [r2(rect(chips[0]).height), rcb.chipHeight];

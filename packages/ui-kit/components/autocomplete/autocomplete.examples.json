@@ -1,0 +1,29 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "autocomplete",
+  "title": "Autocomplete",
+  "summary": "Free text with suggestions, optionally completed inline.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "Suggestions",
+      "subject": "component:autocomplete",
+      "markup": "<ui-autocomplete label=\"City\" name=\"city\" placeholder=\"Where to?\"><ui-option>Oslo</ui-option><ui-option>Osaka</ui-option><ui-option>Ottawa</ui-option><ui-option>Paris</ui-option></ui-autocomplete>"
+    },
+    {
+      "id": "inline",
+      "label": "Inline completion",
+      "subject": "component:autocomplete",
+      "markup": "<ui-autocomplete label=\"Command\" mode=\"both\" show-trigger><i slot=\"leading\" name=\"terminal\"></i><ui-option>build</ui-option><ui-option>bench</ui-option><ui-option>check</ui-option><ui-option>deploy</ui-option></ui-autocomplete>",
+      "note": "Typing completes to the first suggestion that starts with the text; the completed rest is selected."
+    },
+    {
+      "id": "empty",
+      "label": "Empty text",
+      "subject": "component:autocomplete",
+      "markup": "<ui-autocomplete label=\"Tag\" empty-text=\"A new tag.\"><ui-option>design</ui-option><ui-option>docs</ui-option></ui-autocomplete>"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ import { useFieldState } from '../state.react.ts';
 import { useFloatingLayer } from '../floating.react.ts';
 import { isPartOf, renderPart, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { ItemContext, ItemIndicator, ItemParts, ItemText } from '../listbox/listbox.react.tsx';
-import { combobox as comboboxRecipe, option } from '../../styled-system/recipes/index.js';
+import { autocomplete as autocompleteRecipe, combobox as comboboxRecipe, option } from '../../styled-system/recipes/index.js';
 
 export interface ComboboxRootProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange' | 'className' | 'children' | 'prefix'>, PartBase {
   /** The selected value (Base UI value); string[] with multiple. */
@@ -267,7 +267,7 @@ export function ComboboxRoot({
   const a = fieldAttrs({ id: base, hasDescription: !!findDeep(children, ComboboxDescription), error, required, disabled, readonly: readOnly, native: true });
   const f = useFieldState<HTMLDivElement>({ disabled, readOnly, required, error: !!error, value: freeText ? text : values.join(','), missing: required && (freeText ? !text : !values.length) });
   const onInputBlur = (e: FocusEvent<HTMLInputElement>) => setOpen(false, 'focus-out', e.nativeEvent);
-  const c = comboboxRecipe();
+  const c = kind === 'autocomplete' ? autocompleteRecipe() : comboboxRecipe();
   const state = stateOf(f.attrs);
   const hostProps = {
     ...rest, ref: (n: HTMLDivElement | null) => { hostRef.current = n; (f.ref as { current: HTMLDivElement | null }).current = n; },
@@ -311,7 +311,8 @@ export interface ComboboxControlProps extends Omit<PartProps, 'trailing'>, Omit<
 export function ComboboxControl({ leading, prefix, suffix, children, className, render, ...rest }: ComboboxControlProps) {
   const s = useCombobox('Combobox.Control');
   const { c } = s;
-  const [end, middle] = splitParts(children ?? [<ComboboxChips key="chips" />, <ComboboxInput key="input" />, <ComboboxClear key="clear" />, <ComboboxTrigger key="trigger" />], [ComboboxClear, ComboboxTrigger]);
+  const parts = s.freeText ? [<ComboboxInput key="input" />, <ComboboxClear key="clear" />] : [<ComboboxChips key="chips" />, <ComboboxInput key="input" />, <ComboboxClear key="clear" />, <ComboboxTrigger key="trigger" />];
+  const [end, middle] = splitParts(children ?? parts, [ComboboxClear, ComboboxTrigger]);
   const keep = (e: MouseEvent) => { if (e.target !== s.inputRef.current) e.preventDefault(); };
   return renderPart('div', c.control, {
     'data-part': 'control', ref: s.layer.anchorRef, className, ...rest, render,

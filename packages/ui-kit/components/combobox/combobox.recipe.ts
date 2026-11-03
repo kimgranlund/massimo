@@ -1,4 +1,4 @@
-// Slot recipe for <ui-combobox>, <ui-autocomplete> and their React renderers, in Base UI Combobox's
+// Slot recipes for <ui-combobox>, <ui-autocomplete> and their React renderers (combobox, autocomplete), in Base UI Combobox's
 // anatomy: the input row (our control part: [leading] [prefix] [chips] [input] [suffix] [clear]
 // [trigger], laid out as the select trigger, resolveCombobox), the popup and its list (the select's
 // composite floating layer, the options being <ui-option>s / Combobox.Item) and the empty state.
@@ -16,11 +16,11 @@ const anchored = anchoredPopup({ anchor: ANCHOR, side: 'bottom', align: 'start' 
 const NESTED_RADIUS = 'min(calc(var(--slot) / 2), max(0px, calc(var(--radius) - var(--u))))';
 const SM_ICON = { width: 'var(--icon-sm)', height: 'var(--icon-sm)', flexShrink: 0 };
 
-export const combobox = defineSlotRecipe({
-  className: 'ui-combobox',
-  description: 'Filterable input with a popup list (ui-combobox, ui-autocomplete, React Combobox and Autocomplete).',
-  slots: ['root', 'label', 'control', 'leading', 'prefix', 'chips', 'chip', 'chip-remove', 'input', 'suffix', 'clear', 'trigger', 'popup', 'list', 'empty', 'description', 'error'],
-  base: {
+const SLOTS = ['root', 'label', 'control', 'leading', 'prefix', 'chips', 'chip', 'chip-remove', 'input', 'suffix', 'clear', 'trigger', 'popup', 'list', 'empty', 'description', 'error'];
+const CHIP_SLOTS = ['chips', 'chip', 'chip-remove'];
+
+/** The shared styles by slot; the autocomplete takes them without the chip slots. */
+const base = {
     root: { ...fieldRoot, [ANCHORED]: { anchorScope: ANCHOR } },
     ...fieldParts,
     control: mergeStyles(fieldControl({
@@ -102,5 +102,19 @@ export const combobox = defineSlotRecipe({
       color: 'fg.muted', fontSize: 'var(--font)', lineHeight: 'var(--line)',
       '&[hidden]': { display: 'none' },
     },
-  },
+} as Record<string, Record<string, any>>;
+
+export const combobox = defineSlotRecipe({
+  className: 'ui-combobox',
+  description: 'Filterable input with a popup list (ui-combobox, React Combobox).',
+  slots: SLOTS,
+  base,
+});
+
+/** ui-autocomplete, React Autocomplete: the combobox without chips (free text, no multiple). */
+export const autocomplete = defineSlotRecipe({
+  className: 'ui-autocomplete',
+  description: 'Free text input with a popup of suggestions (ui-autocomplete, React Autocomplete).',
+  slots: SLOTS.filter((x) => !CHIP_SLOTS.includes(x)),
+  base: Object.fromEntries(Object.entries(base).filter(([k]) => !CHIP_SLOTS.includes(k))),
 });

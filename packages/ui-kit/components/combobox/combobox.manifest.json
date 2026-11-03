@@ -443,7 +443,8 @@
         },
         {
           "when": "Free text with optional suggestions.",
-          "reason": "The value must be one of the options; an autocomplete keeps whatever is typed."
+          "reason": "The value must be one of the options; an autocomplete keeps whatever is typed.",
+          "useInstead": "component:autocomplete"
         },
         {
           "when": "A list that should always be visible.",

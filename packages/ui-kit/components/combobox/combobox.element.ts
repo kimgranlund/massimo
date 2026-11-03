@@ -74,9 +74,13 @@ export class UICombobox extends UIFormElement {
   declare describedby: string;
 
   /** aria-autocomplete, and whether typing filters (Autocomplete overrides it). */
-  protected mode(): AutocompleteMode { return 'list'; }
+  protected modeOf(): AutocompleteMode { return 'list'; }
   /** Whether the row has the trigger (Autocomplete: only with the trigger attribute). */
   protected hasTrigger() { return true; }
+  /** The slot recipe's classes (Autocomplete has its own, without chips). */
+  protected recipe(): Record<string, string> { return combobox(); }
+  /** Enter with no highlighted option: nothing (Autocomplete closes and lets the form submit). */
+  protected enterUnhighlighted(e: KeyboardEvent) { e.preventDefault(); }
 
   #id = '';
   #side = signal<Side>('bottom');
@@ -166,7 +170,7 @@ export class UICombobox extends UIFormElement {
     const opts = this.options;
     const values = this.values;
     const query = this.query.value;
-    const filters = this.mode() === 'list' || this.mode() === 'both';
+    const filters = this.modeOf() === 'list' || this.modeOf() === 'both';
     const shown = opts.map((o) => !filters || query === null || matchesQuery(o.label, query));
     const empty = !shown.some(Boolean);
     const open = this.open;
@@ -187,12 +191,13 @@ export class UICombobox extends UIFormElement {
       ...comboboxInputAttrs({
         open, popupId, activeId: opts[active]?.id, labelledBy: refs['aria-labelledby'] as string | undefined,
         describedBy: refs['aria-describedby'] as string | undefined, disabled: this.isDisabled, readonly: this.readonly,
-        required: this.required, invalid: !!a.control['aria-invalid'], autocomplete: this.mode(), empty,
+        required: this.required, invalid: !!a.control['aria-invalid'], autocomplete: this.modeOf(), empty,
       }),
     });
     if (editor.textContent !== this.inputValue) editor.textContent = this.inputValue;
-    const c = combobox();
-    this.#renderChips(partOf(control, 'chips') as HTMLElement, opts, values, editable, c);
+    const c = this.recipe();
+    const chips = partOf(control, 'chips') as HTMLElement | null;
+    if (chips) this.#renderChips(chips, opts, values, editable, c);
     const clear = partOf(control, 'clear') as HTMLElement, trigger = partOf(control, 'trigger') as HTMLElement;
     applyAttrs(clear, comboboxButtonAttrs({ label: 'Clear', disabled: this.isDisabled }));
     clear.hidden = !editable || (!values.length && !this.inputValue);
@@ -322,7 +327,7 @@ export class UICombobox extends UIFormElement {
 
   /** The visible options for navigation (filtered-out ones count as disabled). */
   protected navItems(): OptionItem[] {
-    const q = this.query.value, filters = this.mode() === 'list' || this.mode() === 'both';
+    const q = this.query.value, filters = this.modeOf() === 'list' || this.modeOf() === 'both';
     return visibleItems(this.options.map((o) => o.item), this.options.map((o) => !filters || q === null || matchesQuery(o.label, q)));
   }
 
@@ -470,8 +475,8 @@ export class UICombobox extends UIFormElement {
         return;
       }
       case 'commit':
-        e.preventDefault();
-        if (this.active.value >= 0 && !items[this.active.value]?.disabled) this.commit(this.active.value, 'item-press', e);
+        if (this.active.value >= 0 && !items[this.active.value]?.disabled) { e.preventDefault(); this.commit(this.active.value, 'item-press', e); }
+        else this.enterUnhighlighted(e);
         return;
       case 'close': e.preventDefault(); this.close('escape-key', e); return;
       case 'close-tab': this.close('focus-out', e); return;

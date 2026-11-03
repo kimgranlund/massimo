@@ -675,6 +675,36 @@
         "fieldset"
       ],
       "behavior": "Typing filters (contains, case- and accent-insensitive) and opens the popup; ArrowDown / ArrowUp open or move the highlight over visible enabled options; Enter or a press commits (single: closes, the input shows the label; multiple: toggles a chip and stays open); Escape closes; Tab and blur close without committing; Backspace in an empty multiple input removes the last chip. The clear button removes the value and text; the trigger toggles the popup. Events carry Base UI details: change / input { value, reason, event }, inputvaluechange { value, reason, event }, openchange { open, reason, event } (cancelable)."
+    },
+    "autocomplete": {
+      "geometryFamily": "field",
+      "element": "Free text with suggestions: focus stays in the input (a contenteditable role=combobox in the control row, aria-autocomplete = mode); the value is its text; the authored ui-option children are suggestions in a [popover] listbox; aria-activedescendant points at the highlighted one.",
+      "parts": [
+        "field-label?",
+        "autocomplete-control",
+        "slot-leading?",
+        "slot-prefix?",
+        "autocomplete-input",
+        "slot-suffix?",
+        "autocomplete-clear",
+        "autocomplete-trigger",
+        "autocomplete-popup",
+        "autocomplete-list",
+        "autocomplete-empty",
+        "field-description?",
+        "field-error?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "fieldset"
+      ],
+      "behavior": "Typing is the value and opens the popup; mode list filters the suggestions (contains, case- and accent-insensitive), both also completes inline (the rest of the first suggestion that starts with the text, selected), inline completes without filtering, none does neither. ArrowDown / ArrowUp move the highlight (inline modes write it into the input); Enter or a press writes a suggestion and closes; Enter with no highlight closes and submits the form; Escape closes. Events: input { value, reason, event } on every change, change on a commit, the clear button or blur, openchange { open, reason, event } (cancelable)."
     }
   }
 }

@@ -22,6 +22,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/combobox/element';
+import '@massimo/ui-kit/components/autocomplete/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
@@ -32,7 +33,7 @@ export const FAMILIES = [
   ['actions', 'Actions', 'ui-button · ui-toggle'],
   ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
   ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid · ui-fieldset'],
-  ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select · ui-combobox'],
+  ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select · ui-combobox · ui-autocomplete'],
   ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group · ui-checkbox-group'],
   ['tracks', 'Tracks', 'ui-range · ui-progress · ui-meter'],
   ['color', 'Color', 'ui-swatch · ui-palette'],
@@ -199,6 +200,8 @@ const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full'
 // Combobox specimens: a field's reading width, options a real picker would hold.
 const comboColumn = css({ display: 'flex', flexDirection: 'column', gap: '4', width: 'full', maxWidth: '[22rem]' });
 const COUNTRIES = [['ar', 'Argentina'], ['at', 'Austria'], ['ca', 'Canada'], ['dk', 'Denmark'], ['fi', 'Finland'], ['fr', 'France'], ['is', 'Iceland'], ['jp', 'Japan'], ['mx', 'México'], ['no', 'Norway'], ['se', 'Sweden']] as const;
+const CITIES = ['Oslo', 'Osaka', 'Ottawa', 'Oaxaca', 'Paris', 'Porto', 'Prague'];
+const COMMANDS = ['build', 'bench', 'check', 'deploy', 'dev', 'test'];
 const LABELS = [['bug', 'Bug'], ['docs', 'Docs'], ['perf', 'Performance'], ['ui', 'UI'], ['a11y', 'Accessibility'], ['infra', 'Infrastructure']] as const;
 
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
@@ -210,7 +213,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
     actions: 'Construction pattern: leading icon, prefix, label, suffix, trailing icon. Icon slots at least 6u; text parts 1u apart, 1u beside a slot, 2u at a bare edge; padding 1u; text 10px + u. A toggle is a button with a pressed state (aria-pressed, data-pressed): the primary solid while on.',
     labels: 'Heights 12px + k·u (badge 1, tag 2, chip 3), capped below the control height.',
     fields: 'No native form elements. Errors appear after interaction or a submit attempt; the form submits real values. ui-field names one control with a visible label (unit suffix, readout); a ui-field-grid aligns inline rows on shared columns; a ui-fieldset names a set of fields (legend) and disables them together, stacked with the collection gap.',
-    selection: 'Select, segmented control, listbox and combobox share one option model; composites pad 0.5u so a segmented row stays 8u. A combobox is the select trigger row with editable text: typing filters (contains, accents folded), arrows highlight, Enter commits; multiple keeps 6u chips that wrap the row.',
+    selection: 'Select, segmented control, listbox and combobox share one option model; composites pad 0.5u so a segmented row stays 8u. A combobox is the select trigger row with editable text: typing filters (contains, accents folded), arrows highlight, Enter commits; multiple keeps 6u chips that wrap the row. An autocomplete is free text with suggestions: mode list filters, both also completes inline (the completed rest selected).',
     choices: 'A 5u box (switch 9u × 5u) in the 6u leading slot; the label starts 1u after the slot. Groups own one value: rows 1u apart (a 7u pitch), or a wrapping row 4u apart.',
     tracks: 'A 4u track. The range thumb sits inside it (track − u, inset 0.5u) and the fill wraps it with a concentric cap. Arrow keys, Page Up/Down, Home/End, drag. A meter is the progress track under a label | value row 1.5u above it; its value is formatNumber (a percentage by default).',
     color: 'Swatches are 6u; a palette attaches them with no gaps and can be a selectable listbox.',
@@ -350,6 +353,19 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
             {LABELS.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}
           </ui-combobox>
           <ui-combobox label="Read only" readonly value="fi">{COUNTRIES.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}</ui-combobox>
+        </div>
+      </Row>
+      <Row label="Autocomplete">
+        <div className={comboColumn}>
+          <ui-autocomplete name="city" label="City" placeholder="Where to?" description="Any text; suggestions filter as you type.">
+            {CITIES.map((c) => <ui-option key={c}>{c}</ui-option>)}
+          </ui-autocomplete>
+        </div>
+        <div className={comboColumn}>
+          <ui-autocomplete name="command" label="Command" mode="both" show-trigger empty-text="Runs as typed.">
+            <i slot="leading" name="terminal" />
+            {COMMANDS.map((c) => <ui-option key={c}>{c}</ui-option>)}
+          </ui-autocomplete>
         </div>
       </Row>
       <SizeLadder family="field" params={params}>

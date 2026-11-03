@@ -231,3 +231,122 @@ test('Combobox (React): composed parts render the preset', () => {
     h(Combobox.Positioner, null, h(Combobox.Popup, null, h(Combobox.List, null, ...items), h(Combobox.Empty, null, 'No results.')))));
   assert.equal(parts, preset);
 });
+
+// ── Autocomplete ──
+
+await import('../components/autocomplete/autocomplete.element.ts');
+const { Autocomplete } = await loadTsx(new URL('../components/autocomplete/autocomplete.react.tsx', import.meta.url));
+const CITIES = '<ui-option>Oslo</ui-option><ui-option>Osaka</ui-option><ui-option disabled>Ottawa</ui-option><ui-option>Paris</ui-option>';
+/** Type one character at the end, as the browser would (an insertText input event). */
+async function typeChar(el: any, text: string) {
+  const ed = el.editor as HTMLElement;
+  ed.textContent = text;
+  ed.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: text.slice(-1) }));
+  await tick();
+}
+
+test('ui-autocomplete: anatomy (no chips, no trigger), free text is the value, suggestions filter', async () => {
+  const el = await wc(`<ui-autocomplete label="City" name="city">${CITIES}</ui-autocomplete>`);
+  assert.equal(el.querySelector(NATIVE), null);
+  assert.deepEqual([...part(el, 'control').children].map((c) => c.getAttribute('data-part')), ['leading', 'prefix', 'input', 'suffix', 'clear', 'trigger']);
+  assert.ok(part(el, 'trigger').hidden, 'no trigger without show-trigger');
+  assert.ok(el.classList.contains('ui-autocomplete__root'));
+  assert.equal(el.editor.getAttribute('aria-autocomplete'), 'list');
+  const log = events(el, 'input', 'change', 'openchange');
+  await type(el, 'os');
+  assert.equal(el.value, 'os', 'the text is the value');
+  assert.equal(el.formValue(), 'os');
+  assert.deepEqual(shown(el), [null, null], 'Oslo and Osaka');
+  assert.equal(log[0][0], 'input');
+  assert.equal(log[0][1].reason, 'input-change');
+  assert.equal(log.filter(([t]) => t === 'change').length, 0, 'change waits for a commit or blur');
+  assert.ok(el.open);
+  key(el.editor, 'ArrowDown'); key(el.editor, 'ArrowDown'); key(el.editor, 'Enter'); await tick();
+  assert.equal(el.value, 'Osaka');
+  assert.equal(el.editor.textContent, 'Osaka');
+  assert.equal(el.open, false);
+  assert.equal(log.find(([t]) => t === 'change')![1].reason, 'item-press');
+  assert.equal(el.querySelector('[data-selected]'), null, 'suggestions are never selected');
+  await type(el, 'zz');
+  assert.ok(part(el, 'empty').hidden, 'nothing matches and no empty text: no message (the popup is not shown)');
+  assert.ok(el.popup.hasAttribute('data-empty'));
+  el.parentElement!.remove();
+});
+
+test('ui-autocomplete: inline completion (mode both / inline); arrows write the suggestion; clear; show-trigger', async () => {
+  const el = await wc(`<ui-autocomplete mode="both" show-trigger>${CITIES}</ui-autocomplete>`);
+  assert.equal(el.editor.getAttribute('aria-autocomplete'), 'both');
+  assert.ok(!part(el, 'trigger').hidden);
+  await typeChar(el, 'Os');
+  assert.equal(el.value, 'Oslo', 'completed to the first match');
+  assert.equal(el.editor.textContent, 'Oslo');
+  assert.equal(el.editor.getAttribute('aria-activedescendant'), el.querySelector('ui-option').id);
+  assert.equal(window.getSelection()?.toString(), 'lo', 'the completion is selected');
+  key(el.editor, 'ArrowDown'); await tick();
+  assert.equal(el.value, 'Osaka', 'arrows write the highlighted suggestion');
+  // Deleting does not complete again.
+  el.editor.textContent = 'O';
+  el.editor.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'deleteContentBackward' }));
+  await tick();
+  assert.equal(el.value, 'O');
+  const log = events(el, 'change');
+  part(el, 'clear').click(); await tick();
+  assert.equal(el.value, '');
+  assert.equal(log[0][1].reason, 'clear-press');
+  const inl = await wc(`<ui-autocomplete mode="inline">${CITIES}</ui-autocomplete>`);
+  await typeChar(inl, 'P');
+  assert.equal(inl.value, 'Paris');
+  assert.equal(shown(inl).length, 4, 'inline does not filter');
+  el.parentElement!.remove(); inl.parentElement!.remove();
+});
+
+test('ui-autocomplete: required; change on blur; Enter without a highlight submits', async () => {
+  const form = document.createElement('form');
+  form.innerHTML = `<ui-autocomplete name="q" required>${CITIES}</ui-autocomplete>`;
+  document.body.append(form);
+  await tick(); await tick();
+  const el = form.firstElementChild as any;
+  assert.equal(el.checkValidity(), false);
+  let submitted = 0;
+  form.requestSubmit = () => { submitted++; };
+  el.dispatchEvent(new Event('focusin'));
+  await type(el, 'Berlin');
+  assert.equal(el.checkValidity(), true);
+  key(el.editor, 'Enter'); await tick();
+  assert.equal(el.open, false);
+  el.editor.dispatchEvent(new InputEvent('beforeinput', { bubbles: true, cancelable: true, inputType: 'insertParagraph' }));
+  assert.equal(submitted, 1);
+  const log = events(el, 'change');
+  el.dispatchEvent(new Event('focusout'));
+  assert.equal(log[0][1].value, 'Berlin');
+  assert.equal(log[0][1].reason, 'focus-out');
+  form.remove();
+});
+
+test('Autocomplete (React): the same data-* and classes as the web component; parts render the preset', async () => {
+  const a = await wc(`<ui-autocomplete label="City" value="Oslo">${CITIES}</ui-autocomplete>`);
+  const items = () => [h(Autocomplete.Item, { key: 1, value: 'Oslo' }, 'Oslo'), h(Autocomplete.Item, { key: 2, value: 'Osaka' }, 'Osaka'), h(Autocomplete.Item, { key: 3, value: 'Ottawa', disabled: true }, 'Ottawa'), h(Autocomplete.Item, { key: 4, value: 'Paris' }, 'Paris')];
+  const b = ssr(h(Autocomplete, { label: 'City', defaultValue: 'Oslo' }, ...items()));
+  assert.equal(b.getAttribute('data-ui'), 'autocomplete');
+  assert.equal(b.querySelector('[data-part=chips]'), null);
+  assert.equal(b.querySelector('[data-part=input]')!.getAttribute('value'), 'Oslo');
+  const allowed = contract.components['ui-autocomplete'];
+  for (const [label, s] of [['host', ':scope'], ['input', '[data-part=input]'], ['clear', '[data-part=clear]'], ['popup', '[data-part=popup]'], ['list', '[data-part=list]'], ['item', '[role=option]']] as const) {
+    const ea = s === ':scope' ? [a] : [...a.querySelectorAll(s)], eb = s === ':scope' ? [b] : [...b.querySelectorAll(s)];
+    assert.equal(ea.length, eb.length, `${label}: same count`);
+    ea.forEach((x, k) => {
+      const na = names(x).filter((n) => n !== 'data-dirty'), nb = names(eb[k]).filter((n) => n !== 'data-dirty');
+      assert.deepEqual(na, nb, `${label}[${k}]`);
+      for (const n of na) assert.ok((allowed[label] ?? []).includes(n), `${label}: ${n} listed`);
+    });
+  }
+  const kit = (el: Element | null) => [...(el?.classList ?? [])].filter((c) => c.startsWith('ui-')).join(' ');
+  for (const p of ['control', 'input', 'clear', 'popup', 'list']) assert.equal(kit(part(a, p)), kit(part(b, p)), `${p} classes`);
+  a.parentElement!.remove();
+  const preset = renderToStaticMarkup(h(Autocomplete, { label: 'L', id: 'x', mode: 'both' }, ...items()));
+  const parts = renderToStaticMarkup(h(Autocomplete.Root, { id: 'x', mode: 'both' },
+    h(Autocomplete.Label, null, 'L'), h(Autocomplete.Control, null, h(Autocomplete.Input), h(Autocomplete.Clear)),
+    h(Autocomplete.Positioner, null, h(Autocomplete.Popup, null, h(Autocomplete.List, null, ...items()), h(Autocomplete.Empty, null, '')))));
+  assert.equal(parts, preset);
+  assert.match(preset, /aria-autocomplete="both"/);
+});

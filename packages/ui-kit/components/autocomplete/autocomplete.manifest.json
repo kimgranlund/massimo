@@ -1,0 +1,894 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "autocomplete",
+  "primary": "component:autocomplete",
+  "module": "./autocomplete.element.ts",
+  "registration": "on-import",
+  "documentation": "./autocomplete.md",
+  "examples": "./autocomplete.examples.json",
+  "contract": "../../contracts/components.json#/components/autocomplete",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "../combobox/combobox.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs",
+        "popupDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/combobox.ts",
+      "exports": [
+        "comboboxInputAttrs",
+        "comboboxTriggerAttrs",
+        "comboboxButtonAttrs",
+        "comboboxKeyIntent",
+        "matchesQuery",
+        "inlineCompletion",
+        "completionOf",
+        "visibleItems"
+      ],
+      "description": "Editable combobox ARIA, key intents, Base UI's default filter (contains, case- and accent-insensitive) and inline completion."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/listbox.ts",
+      "exports": [
+        "listboxAttrs",
+        "optionAttrs",
+        "navigate",
+        "firstEnabled",
+        "lastEnabled"
+      ],
+      "description": "Listbox and option ARIA and the navigation over enabled options."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/floating.ts",
+      "exports": [
+        "createPositioner",
+        "createDismissLayer",
+        "showTopLayer",
+        "hideTopLayer",
+        "unitOf"
+      ],
+      "description": "The floating layer foundation: the positioner (CSS anchor positioning, script placement as the fallback, data-side), the dismiss layer (outside press) and the top layer (popover API)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveCombobox"
+      ],
+      "description": "Reference numbers for the input row, the clear and trigger slots, the popup and the empty state."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:autocomplete",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-autocomplete",
+      "class": "UIAutocomplete",
+      "extends": "UIFormElement",
+      "intent": [
+        "Enter free text with suggestions from a list, optionally completed inline"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "The text (Base UI value): what is typed, a chosen suggestion or an inline completion. Setting it rewrites the input without an event.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "The text at first render and on form reset; without it, the value attribute (Base UI defaultValue).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "inputValue",
+          "type": "string",
+          "default": "",
+          "attribute": "input-value",
+          "reflects": false,
+          "description": "The input's text; always the value (kept for the shared combobox machinery).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "open",
+          "type": "boolean",
+          "default": false,
+          "attribute": "open",
+          "reflects": false,
+          "description": "Whether the popup is open (Base UI open). Setting it opens or closes without an openchange event.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "defaultOpen",
+          "type": "boolean",
+          "default": false,
+          "attribute": "default-open",
+          "reflects": false,
+          "description": "Open the popup at connect (Base UI defaultOpen).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Visible label; names the input.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "",
+          "attribute": "placeholder",
+          "reflects": false,
+          "description": "Text shown while the input is empty (not while multiple has chips).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "description": "Help text under the row, wired with aria-describedby.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "description": "Author error, shown at once; built-in validation (required) waits for interaction.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "description": "The text shows but cannot change: no typing, no popup, no clear.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "emptyText",
+          "type": "string",
+          "default": "",
+          "attribute": "empty-text",
+          "reflects": false,
+          "description": "What the popup says while no suggestion matches; empty (the default): the popup hides instead.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "autoHighlight",
+          "type": "boolean",
+          "default": false,
+          "attribute": "auto-highlight",
+          "reflects": false,
+          "description": "Highlight the first suggestion while typing, so Enter takes it (Base UI autoHighlight).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "description": "Ids that name the input when the combobox has no label (ui-field sets it).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "description": "Ids that describe the input, after its own description and error (ui-field sets it).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "default": "list",
+          "attribute": "mode",
+          "reflects": false,
+          "enum": [
+            "list",
+            "both",
+            "inline",
+            "none"
+          ],
+          "description": "list (default): typing filters the suggestions; both: filters and completes inline; inline: completes without filtering; none: neither (Base UI mode, aria-autocomplete).",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "key": "showTrigger",
+          "type": "boolean",
+          "default": false,
+          "attribute": "show-trigger",
+          "reflects": false,
+          "description": "Show the trigger (caret) that opens every suggestion; off by default, as an autocomplete is typed into.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default: the container level's padding.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "hide-label",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Keeps the label as the control's accessible name but does not draw it (visually hidden, out of flow). For compact layouts that label the control elsewhere, such as an inspector row. data-hide-label is the same input; React: hideLabel.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "input",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'input-change' | 'input-clear' | 'item-press' | 'clear-press' | 'keyboard', event: Event } (Base UI onValueChange)",
+          "trigger": "the text changes: typing, an inline completion, a chosen suggestion, the clear button, or an arrow key in an inline mode"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'item-press' | 'clear-press' | 'focus-out', event: Event }",
+          "trigger": "a suggestion is chosen, the clear button is pressed, or focus leaves with a different text than it found"
+        },
+        {
+          "name": "openchange",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": true,
+          "detail": "{ open: boolean, reason: 'input-change' | 'list-navigation' | 'trigger-press' | 'item-press' | 'outside-press' | 'escape-key' | 'focus-out' | 'none', event: Event } (Base UI onOpenChange)",
+          "trigger": "the user opens or closes the popup; preventDefault keeps it as it is. Setting open does not fire it"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the input."
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=control] > [data-part=input] (role=combobox, aria-autocomplete = mode)",
+        "formAssociated": true,
+        "formValue": "the text",
+        "keyboard": [
+          {
+            "keys": "printable characters",
+            "action": "edit the text: filter (list, both), complete inline (both, inline) and open the popup"
+          },
+          {
+            "keys": "ArrowDown, ArrowUp",
+            "action": "open (closed); move the highlight (open); in mode both / inline the input shows the highlighted suggestion"
+          },
+          {
+            "keys": "Enter",
+            "action": "write the highlighted suggestion and close; with none highlighted, close and submit the form"
+          },
+          {
+            "keys": "Escape, Alt+ArrowUp",
+            "action": "close"
+          },
+          {
+            "keys": "Tab",
+            "action": "close and move focus"
+          },
+          {
+            "keys": "Home, End",
+            "action": "move the caret"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label",
+            "labelledby (a wrapping ui-field)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "ui-option elements (the suggestions; they move into the popup's list) and optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\"; or the parts themselves as [data-part] children (composition, as ui-combobox without chips)."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Free text (APG editable combobox with list, both or inline autocomplete): the value is the input's text, never limited to the suggestions; focus stays in the input; aria-activedescendant points at the highlighted suggestion. No native form elements; form participation through ElementInternals.",
+        "Suggestions show while their label contains the text (mode list, both; case- and accent-insensitive); inline completion (both, inline) only follows typing at the end (insertText), never a deletion, and selects the completed rest.",
+        "Suggestions are never marked selected (no data-selected): an autocomplete has no selected option.",
+        "Styling state (contracts/states.json): the same names as ui-combobox on host, input, trigger, clear, popup, list and options; no chips.",
+        "The popup is the combobox's floating layer; with no empty-text it hides while nothing matches."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The value must be one of the options.",
+          "reason": "An autocomplete keeps any typed text; a combobox only takes an option.",
+          "useInstead": "component:combobox"
+        },
+        {
+          "when": "A short list to pick from without typing.",
+          "reason": "A select shows the options without a text field.",
+          "useInstead": "component:select"
+        },
+        {
+          "when": "Plain text with no suggestions.",
+          "reason": "An input is simpler and has no popup.",
+          "useInstead": "component:input"
+        }
+      ],
+      "searchTerms": [
+        "autocomplete",
+        "typeahead",
+        "suggestions",
+        "search input",
+        "inline completion",
+        "autosuggest"
+      ]
+    },
+    {
+      "id": "part:autocomplete-control",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control]",
+      "summary": "The input row laid out as the select trigger: [leading] [prefix] [input] [suffix] [clear] [trigger]; the popup's anchor. A press on its padding focuses the input."
+    },
+    {
+      "id": "part:autocomplete-input",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control] > [data-part=input]",
+      "summary": "Autocomplete.Input: the contenteditable text (role=combobox, tabindex 0), the row's contents; keeps focus while the popup is open."
+    },
+    {
+      "id": "part:autocomplete-clear",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=clear]",
+      "summary": "Autocomplete.Clear: a 6u press button (x, icon sm) that empties the text (reason clear-press); hidden while the text is empty; not a tab stop."
+    },
+    {
+      "id": "part:autocomplete-trigger",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=control] > [data-part=trigger]",
+      "summary": "Autocomplete.Trigger: a 6u press button (caret-down, icon sm, turned while open) that toggles the popup with every suggestion; hidden unless show-trigger; not a tab stop."
+    },
+    {
+      "id": "part:autocomplete-popup",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup]",
+      "summary": "Autocomplete.Popup (and Positioner): the [popover] listbox, a composite floating layer 1u below the row."
+    },
+    {
+      "id": "part:autocomplete-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=list]",
+      "summary": "Autocomplete.List: the ui-option children's parent (display: contents)."
+    },
+    {
+      "id": "part:autocomplete-empty",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=popup] > [data-part=empty]",
+      "summary": "Autocomplete.Empty: the empty-text message (role=status) while no option matches; one option row tall, at an option label's inset."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:autocomplete",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-control"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-input"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-clear"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-trigger"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-popup"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-list"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:autocomplete-empty"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "acceptsChild",
+      "to": "component:option"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:autocomplete",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./autocomplete.element.ts",
+      "exports": {
+        "component:autocomplete": "UIAutocomplete"
+      },
+      "verification": "./verification/autocomplete.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./autocomplete.react.tsx",
+      "exports": {
+        "component:autocomplete": "Autocomplete"
+      },
+      "verification": "./verification/autocomplete.verification.json#/renderers/react",
+      "props": {
+        "component:autocomplete": {
+          "inherits": [
+            "Omit<ComboboxRootProps, 'freeText' | 'kind' | 'multiple' | 'value' | 'defaultValue' | 'onValueChange' | 'inputValue' | 'defaultInputValue' | 'onInputValueChange'>"
+          ],
+          "props": [
+            "value?: string // The text (Base UI value).",
+            "defaultValue?: string",
+            "onValueChange?: (value: string, details: import('../../dom/index.ts').ChangeDetails) => void // The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode.",
+            "mode?: AutocompleteMode // list (default) filters; both filters and completes inline; inline completes only; none neither (Base UI mode).",
+            "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+            "prefix?: ReactNode // Short text adornment before the label.",
+            "suffix?: ReactNode // Short text adornment after the label.",
+            "label?: string",
+            "description?: string",
+            "placeholder?: string",
+            "showTrigger?: boolean // Show the trigger (caret) that opens every suggestion.",
+            "emptyText?: string = '' // What the popup says when nothing matches; empty (the default) hides the popup instead.",
+            "children?: ReactNode // Autocomplete.Item children (the suggestions)."
+          ]
+        }
+      },
+      "parts": {
+        "component:autocomplete": {
+          "Autocomplete.Root": {
+            "inherits": [
+              "Omit<ComboboxRootProps, 'freeText' | 'kind' | 'multiple' | 'value' | 'defaultValue' | 'onValueChange' | 'inputValue' | 'defaultInputValue' | 'onInputValueChange'>"
+            ],
+            "props": [
+              "value?: string // The text (Base UI value).",
+              "defaultValue?: string",
+              "onValueChange?: (value: string, details: import('../../dom/index.ts').ChangeDetails) => void // The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode.",
+              "mode?: AutocompleteMode = 'list' // list (default) filters; both filters and completes inline; inline completes only; none neither (Base UI mode)."
+            ]
+          },
+          "Autocomplete.Label": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Control": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'prefix'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // Combobox.Chips, Combobox.Input, Combobox.Clear and Combobox.Trigger; all four when omitted."
+            ]
+          },
+          "Autocomplete.Input": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLInputElement>, 'className' | 'children' | 'defaultValue'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "placeholder?: string"
+            ]
+          },
+          "Autocomplete.Clear": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // The icon; the kit's when omitted."
+            ]
+          },
+          "Autocomplete.Trigger": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode // The icon; the kit's when omitted."
+            ]
+          },
+          "Autocomplete.Positioner": {
+            "inherits": [],
+            "props": [
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Popup": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.List": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Item": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLDivElement>, 'prefix' | 'className'>"
+            ],
+            "props": [
+              "leading?: ReactNode // Leading icon (an <i name> or artwork).",
+              "prefix?: ReactNode // Short text adornment before the label.",
+              "suffix?: ReactNode // Short text adornment after the label.",
+              "trailing?: ReactNode // Trailing icon.",
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "value: string",
+              "disabled?: boolean",
+              "iconSize?: IconSize",
+              "children?: ReactNode // The label (contents), or Combobox.ItemText / Combobox.ItemIndicator parts."
+            ]
+          },
+          "Autocomplete.ItemText": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLSpanElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Empty": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Description": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          },
+          "Autocomplete.Error": {
+            "inherits": [
+              "Omit<HTMLAttributes<HTMLElement>, 'className'>"
+            ],
+            "props": [
+              "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
+              "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
+              "children?: ReactNode"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
