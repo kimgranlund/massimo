@@ -7,7 +7,7 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/btg/element';
 import '@massimo/ui-kit/components/image/element';
 import { css } from '../../styled-system/css/index.js';
-import { CONTAINERS, PAGE_MAX_WIDTH_REM, resolveContainer } from '@massimo/ui-kit/tokens';
+import { CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, resolveContainer } from '@massimo/ui-kit/tokens';
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, groupHead, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
 
@@ -28,7 +28,7 @@ export function ContainersPage({ params }: PageProps) {
   return (
     <Page title="Containers" lead="Wrappers, containers and areas: live padding, gap and radius per level, with examples. The Geometry tab sets padding and gap per level.">
       <Divider />
-      <Section id="containers" title="Container tokens" note="Four families. Composites (listbox, segmented) are controls: the control radius, options R − D. Wrappers (group, collection) hug their controls: control radius + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Live padding and gap per level (pad-<level>, gap-<level>, in u).">
+      <Section id="containers" title="Container tokens" note="Four families. Composites (listbox, segmented) are controls: the control radius, options R − D. Wrappers (group, collection) hug their controls: control radius + padding, concentric. Containers (card, padding xs…xl) are surfaces: radius = padding. Areas (panel, region, page) are square. Wrappers and cards scale that radius by a magnitude t (radius-group, radius-collection, radius-card in the Geometry tab; the radius attribute per element). Live padding, gap and radius per level.">
         <div className={tableScroller}>
           <table className={dataTable} aria-label="Container tokens">
             <thead>
@@ -42,7 +42,8 @@ export function ContainersPage({ params }: PageProps) {
             <tbody>
               {LEVELS.map((l) => {
                 const pad = p[`pad-${l}`] ?? CONTAINERS[l].padding, gap = p[`gap-${l}`] ?? pad;
-                const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap });
+                const f = radiusFamily(l);
+                const c = resolveContainer(l, { unit: u, border: params.border, radiusScale: params['radius-scale'], padUnits: pad, gapUnits: gap, radiusFactor: f ? p[`radius-${f}`] : undefined });
                 return (
                   <tr key={l}>
                     <td className={nameCell}>{l}</td>
@@ -75,7 +76,16 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). A container's radius equals its padding; wrappers stay concentric with their children.">
+      <Section id="magnitude" title="Radius magnitude" note="R = t × the concentric radius: a container can be sharper than its contents. Each collection holds the same buttons; the radius attribute sets t on that element only (the Geometry tab sets the theme's t per family).">
+        {[1, 0.75, 0.5, 0.25, 0].map((t) => (
+          <Row key={t} label={`radius="${t}"`}>
+            <ui-collection className={levelBox} radius={String(t)}><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-collection>
+            <ui-card className={levelBox} radius={String(t)}><span className={levelChild}>card</span></ui-card>
+          </Row>
+        ))}
+      </Section>
+      <Divider />
+      <Section id="nesting" title="Nesting" note="Areas (page › region › panel) hold containers (card, a small card inside), which hold wrappers (collection › group). A container's radius equals its padding; wrappers stay concentric with their controls; both times the radius magnitude t.">
         <ui-page className={miniPage} aria-label="Page example">
           <span className={kicker}>Page · max width {PAGE_MAX_WIDTH_REM}rem</span>
           <ui-region aria-label="Region example" className={tinted}>
