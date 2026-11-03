@@ -457,6 +457,19 @@
         "token"
       ]
     },
+    "component:toast": {
+      "kind": "component",
+      "source": "components/toast/toast.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-toast-viewport",
+      "searchTerms": [
+        "toast",
+        "snackbar",
+        "notification",
+        "flash message",
+        "alert"
+      ]
+    },
     "component:toggle": {
       "kind": "component",
       "source": "components/toggle/toggle.manifest.json#/nodes/0",
@@ -897,6 +910,17 @@
         "carousel dots"
       ]
     },
+    "geometry:toast": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/toast",
+      "availability": "implemented",
+      "searchTerms": [
+        "toast geometry",
+        "toast padding",
+        "notification stack",
+        "toast width"
+      ]
+    },
     "geometry:track": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/track",
@@ -1267,6 +1291,60 @@
       "tag": "div",
       "searchTerms": [
         "tabs tab"
+      ]
+    },
+    "part:toast-action": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "toast action"
+      ]
+    },
+    "part:toast-close": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/6",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "toast close"
+      ]
+    },
+    "part:toast-content": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "toast content"
+      ]
+    },
+    "part:toast-description": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "p",
+      "searchTerms": [
+        "toast description"
+      ]
+    },
+    "part:toast-title": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "h2",
+      "searchTerms": [
+        "toast title"
+      ]
+    },
+    "part:toast-toast": {
+      "kind": "part",
+      "source": "components/toast/toast.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "toast toast"
       ]
     },
     "part:track": {
@@ -5068,6 +5146,96 @@
       "from": "component:tabs",
       "relation": "allowedIn",
       "to": "context:collection"
+    },
+    {
+      "from": "component:toast",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesGeometry",
+      "to": "geometry:toast"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:toast",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-toast"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-content"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-title"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-description"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-action"
+    },
+    {
+      "from": "component:toast",
+      "relation": "ownsPart",
+      "to": "part:toast-close"
+    },
+    {
+      "from": "component:toast",
+      "relation": "allowedIn",
+      "to": "context:page"
     },
     {
       "from": "component:toggle",

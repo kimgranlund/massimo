@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "toast",
+  "scope": "The toast manager (add, upsert, update, close, remove, promise, timers and their pause), the web component's anatomy, ARIA, stacking state, events, keys and swipe in happy-dom (node:test), and the React renderer's server markup and client behavior. Rendered lengths are covered by the browser geometry check and the React parity check; the motion, visual quality and screen-reader announcements are not certified.",
+  "sources": [
+    {
+      "path": "components/toast/toast.element.ts",
+      "sha256": "ab0e02d99172c0daae62333421af709b890d3f9bcee5a2e0e72a1b3e30c203ee"
+    },
+    {
+      "path": "components/toast/toast.react.tsx",
+      "sha256": "3fa11bd2e2e38e7a88c7d599d6d5b7a6fbc71d5b8913f9bfb8a5ce0a5e88f72c"
+    },
+    {
+      "path": "components/toast/toast.recipe.ts",
+      "sha256": "3aedfac114340a978465d0c97270419f1f852824e9901658dc204be4503d2623"
+    },
+    {
+      "path": "components/toast/manager.ts",
+      "sha256": "3f855174bd82a26dd00374bb0e9db33ecde3a0ee45c82d43627468dbe4e705cf"
+    },
+    {
+      "path": "components/toast/stack.ts",
+      "sha256": "3ccc36165942532e6a0f4fac1b6f2db18b50bae8e8d5115aad444e7164fb0f59"
+    },
+    {
+      "path": "components/toast/toast.manifest.json",
+      "sha256": "4d4760ecccd3681ab15d207ed2f3ef8bc0b0a98dd04dc3988d77e44cb6ce2e0c"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"toast\" test/toast.test.ts",
+          "covers": "manager add / upsert / update / close / remove / promise, timeouts paused by hover, focus and a hidden document; viewport anatomy (region, dialog / alertdialog, title, description, action, close), data-* stack state (index, behind, expanded, limited and inert, starting and ending style), openchange details (cancelable; close-press, escape-key, swipe, none), F6, swipe to dismiss, no native form elements"
+        },
+        {
+          "command": "node --test --test-name-pattern=\"toast\" test/geometry.test.ts",
+          "covers": "resolveToast: card-sm padding and radius, 8u action, 6u close, 80u viewport, 2u gap and peek"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"toast\" test/toast.test.ts",
+          "node --test --test-name-pattern=\"toast\" test/geometry.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test --test-name-pattern=\"Toast\" test/toast.test.ts",
+          "covers": "React SSR: the same data-* as the web component on host, toast, content, title, description, action and close; the preset renders the composed parts; useToastManager, the close and onOpenChange details in the client"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-03",
+        "outcome": "pass",
+        "commands": [
+          "node --test --test-name-pattern=\"Toast\" test/toast.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The stack variables come from layout (each toast's untransformed border-box height, snapped to 1/64 px); happy-dom reports zero boxes, so unit tests check that they are set and the browser geometry check checks their values.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html (\"fails\": []); the twins' enter transition is settled before measuring.",
+    "Geometry review, manual items (2026-11-02, studio on Chromium at the ladder's u = 3, 4, the theme unit 4.5 and 6, B = 0; geometry-check at every SIZES step 2…12, B = 0 and 1): growth (a long title and description wrap in the text column and grow the toast; the action and the 6u close keep their size; the stack re-measures --toast-height and the expanded offsets follow), RTL (dir=rtl puts the bottom-end viewport at the inline end, 4u from the left edge, and mirrors the content grid: close, action, then text), focus (F6 then Tab rings the action with the 2px focus ring inside the 3u padding, the toast keeps its size, and focus expands the stack and pauses the timers), screenshots of the Feedback family (previews, a collapsed and an expanded live stack, the top-center alert, the size ladder) checked light and dark."
+  ]
+}

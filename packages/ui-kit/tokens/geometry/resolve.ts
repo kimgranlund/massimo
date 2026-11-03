@@ -505,3 +505,28 @@ export function resolveTabs(variant: TabsVariant = 'segmented', input: GeometryI
     indicatorThickness: 0.5 * u, indicatorRadius: 0.25 * u, track: DIVIDER,
   };
 }
+
+/** ui-toast-viewport placements (finite: recipe variants). inline puts the stack in flow (specimens, previews). */
+export type ToastPlacement = 'bottom-end' | 'bottom-center' | 'top-end' | 'top-center' | 'inline';
+
+/**
+ * ui-toast-viewport and its toasts (Base UI Toast). A toast is a container (the card-sm level): its
+ * padding is pad-card-sm (3u) − B and its radius equals that edge, p·u × min(1, s). Inside, the
+ * title and description run in one column (0.5u apart), the action is a control row (8u, the
+ * control radius, label 2u at its bare edges) and the close is a 6u slot (icon size sm, radius at
+ * most half of it), 1u apart. The viewport is 80u wide (at most the window less its 4u margins)
+ * and 4u from the window edges; expanded toasts stack 2u apart, collapsed ones peek 2u.
+ */
+export function resolveToast(input: GeometryInput & { padUnits?: number } = {}) {
+  const c = resolveControl(input);
+  const u = c.unit;
+  const box = resolveContainer('card-sm', input);
+  return {
+    unit: u, border: c.border, fontSize: c.fontSize,
+    padding: box.padding, edge: box.edge, radius: box.radius,
+    width: 80 * u, margin: 4 * u, gap: 2 * u, peek: 2 * u,
+    columnGap: u, textGap: 0.5 * u,
+    actionHeight: c.height, actionPadding: c.padding, actionLabel: 2 * u, actionRadius: c.radius,
+    close: c.slot, closeRadius: Math.min(c.radius, c.slot / 2), closeIcon: resolveIcon(c.fontSize, u, 'sm', c.slot),
+  };
+}

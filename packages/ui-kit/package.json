@@ -59,7 +59,10 @@
     "./components/accordion/element": "./components/accordion/accordion.element.ts",
     "./components/accordion/react": "./components/accordion/accordion.react.tsx",
     "./components/tabs/element": "./components/tabs/tabs.element.ts",
-    "./components/tabs/react": "./components/tabs/tabs.react.tsx"
+    "./components/tabs/react": "./components/tabs/tabs.react.tsx",
+    "./components/toast/element": "./components/toast/toast.element.ts",
+    "./components/toast/react": "./components/toast/toast.react.tsx",
+    "./components/toast/manager": "./components/toast/manager.ts"
   },
   "scripts": {
     "prepare": "panda codegen",

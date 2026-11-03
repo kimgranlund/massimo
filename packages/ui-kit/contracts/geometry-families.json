@@ -350,6 +350,28 @@
         "disclosure"
       ],
       "ladder": "disclosure"
+    },
+    "toast": {
+      "id": "geometry:toast",
+      "resolver": [
+        "resolveToast",
+        "resolveContainer",
+        "resolveControl"
+      ],
+      "summary": "A toast is a container at the card-sm level: padding pad-card-sm (3u) − B, radius equal to that edge × min(1, s). Title and description share one column 0.5u apart; the action is an 8u control row (label 2u at its edges, the control radius) and the close a 6u slot (icon size sm, radius at most 3u), 1u apart. The viewport is 80u wide (at most the window less 8u), 4u from the window edges; expanded toasts stand 2u apart, collapsed ones peek 2u.",
+      "members": [
+        "component:toast"
+      ],
+      "searchTerms": [
+        "toast geometry",
+        "toast padding",
+        "notification stack",
+        "toast width"
+      ],
+      "csv": [
+        "toast"
+      ],
+      "ladder": "toast"
     }
   }
 }

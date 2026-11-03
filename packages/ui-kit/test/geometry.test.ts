@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs } from '../tokens/geometry/resolve.ts';
+import { SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -254,4 +254,13 @@ test('disclosure: segmented tabs are 7u composite options in an 8u list; underli
   assert.equal(s.listRadius, 14, 'min(3.5u, 8u / 2)');
   const n = resolveTabs('underline', { unit: 4, border: 1 });
   assert.deepEqual([n.listHeight, n.tabHeight, n.tabPadding, n.listGap, n.indicatorThickness, n.indicatorRadius, n.track, n.labelStart], [32, 32, 3, 0, 2, 1, 1, 8]);
+});
+
+test('toast: a card-sm container (padding 3u - B, radius 3u x min(1, s)) with an 8u action and a 6u close, in an 80u viewport', () => {
+  const t = resolveToast({ unit: 4, border: 1 });
+  assert.deepEqual([t.padding, t.edge, t.radius, t.width, t.margin, t.gap, t.peek, t.columnGap, t.textGap], [11, 12, 12, 320, 16, 8, 8, 4, 2]);
+  assert.deepEqual([t.actionHeight, t.actionPadding, t.actionLabel, t.actionRadius, t.close, t.closeRadius, t.closeIcon], [32, 3, 8, 12, 24, 12, 12]);
+  assert.equal(resolveToast({ unit: 4, radiusScale: 2 }).radius, 12, 'never rounder than its edge');
+  assert.equal(resolveToast({ unit: 4, radiusScale: 0.5 }).radius, 6);
+  assert.equal(resolveToast({ unit: 4, padUnits: 4 }).padding, 16, 'pad-card-sm follows the theme');
 });

@@ -4,7 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { TYPE_ROLES, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
 import { fileURLToPath } from 'node:url';
-import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
+import { SIZES, GEOMETRY_DEFAULTS, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveButtonContents, resolveTextRun, popupOffset, resolveBtg, resolveChoice, resolveTrack, trackFill, resolveSwatch, resolveSwiper, resolveFieldRow, resolveFieldGrid, resolveImage, IMAGE_RATIOS, resolveContainer, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveSeparator, resolveAvatar, resolveMeter, AVATAR_SIZES, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, type AvatarSize, type ContainerLevel } from '../tokens/geometry/resolve.ts';
 
 export type Row = { id: string; family: string; element: string; quantity: string; formula: string; value: (u: number) => number; status: 'implemented' | 'proposed' | 'input'; notes: string };
 
@@ -179,6 +179,14 @@ export const rows: Row[] = [
   { id: 'disclosure.tabs.underline.indicator', family: 'disclosure', element: 'tabs[variant=underline] indicator', quantity: 'indicator thickness', formula: '0.5u', value: (u) => resolveTabs('underline', { unit: u }).indicatorThickness!, status: 'implemented', notes: 'radius 0.25u; as wide as the active tab, on the track' },
   { id: 'disclosure.tabs.underline.track', family: 'disclosure', element: 'tabs[variant=underline] list', quantity: 'track', formula: 'thin border width (1px token)', value: (u) => resolveTabs('underline', { unit: u }).track, status: 'implemented', notes: 'border role, on the list end edge (inline end when vertical)' },
   { id: 'disclosure.accordion.itemHeight', family: 'disclosure', element: 'accordion item', quantity: 'closed item height', formula: '8u + 1px', value: (u) => resolveDisclosure({ unit: u }).itemHeight, status: 'implemented', notes: 'trigger row plus the divider' },
+  { id: 'toast.padding', family: 'toast', element: 'ui-toast-viewport toast', quantity: 'padding inside the border', formula: 'pad-card-sm (3u) - B', value: (u) => resolveToast({ unit: u }).padding, status: 'implemented', notes: 'a container at the card-sm level' },
+  { id: 'toast.radius', family: 'toast', element: 'ui-toast-viewport toast', quantity: 'radius', formula: '3u x min(1, s)', value: (u) => resolveToast({ unit: u }).radius, status: 'implemented', notes: 'a container: radius = its edge, never rounder' },
+  { id: 'toast.width', family: 'toast', element: 'ui-toast-viewport', quantity: 'viewport width', formula: 'min(80u, 100vw - 8u)', value: (u) => resolveToast({ unit: u }).width, status: 'implemented', notes: 'every toast is as wide as the viewport (inline: up to its container)' },
+  { id: 'toast.margin', family: 'toast', element: 'ui-toast-viewport', quantity: 'distance from the window edges', formula: '4u', value: (u) => resolveToast({ unit: u }).margin, status: 'implemented', notes: 'fixed placements, in the top layer' },
+  { id: 'toast.gap', family: 'toast', element: 'ui-toast-viewport', quantity: 'between expanded toasts', formula: '2u', value: (u) => resolveToast({ unit: u }).gap, status: 'implemented', notes: 'collapsed toasts peek 2u a step and shrink 5% a step' },
+  { id: 'toast.columnGap', family: 'toast', element: 'toast content', quantity: 'text to action to close', formula: 'u', value: (u) => resolveToast({ unit: u }).columnGap, status: 'implemented', notes: 'title and description 0.5u apart in one column' },
+  { id: 'toast.action.height', family: 'toast', element: 'toast action', quantity: 'action height', formula: '8u', value: (u) => resolveToast({ unit: u }).actionHeight, status: 'implemented', notes: 'a control row: padding u - B, label 2u at its edges, the control radius' },
+  { id: 'toast.close.size', family: 'toast', element: 'toast close', quantity: 'close size', formula: '6u', value: (u) => resolveToast({ unit: u }).close, status: 'implemented', notes: 'a slot; icon size sm; radius min(control radius, 3u)' },
 ];
 
 const fmt = (n: number) => (Number.isNaN(n) ? '' : String(Math.round(n * 1000) / 1000));

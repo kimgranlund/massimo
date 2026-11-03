@@ -642,6 +642,22 @@
         "collection"
       ],
       "behavior": "Roving focus: the active tab is the tab stop; arrow keys (Left / Right mirrored in RTL, Up / Down when vertical), Home and End move focus between enabled tabs, wrapping. Enter, Space or a press activates (activate-on-focus: focus does); a user change fires a cancelable change ({ value, reason: 'none', event }). The indicator is placed by --active-tab-* variables set by script and slides on the toggle intent."
+    },
+    "toast": {
+      "geometryFamily": "toast",
+      "element": "Host is the toast region (role=region, a polite live region) holding a toast part per toast (role=dialog, alertdialog for priority high), each with a content part of title (h2), description (p), action and close (role=button) parts, drawn from a toast manager.",
+      "parts": [
+        "toast-toast",
+        "toast-content",
+        "toast-title",
+        "toast-description",
+        "toast-action",
+        "toast-close"
+      ],
+      "allowedParents": [
+        "page"
+      ],
+      "behavior": "Toasts come from a toast manager (add, update, close, promise). Each closes after its timeout (default 5000 ms; 0 keeps it); hovering or focusing the stack expands it and pauses every timer, as a hidden document does. A swipe in an allowed direction (default down, right), the close or Escape on a focused toast fire a cancelable openchange ({ open: false, id, toast, reason: 'swipe' | 'close-press' | 'escape-key', event }) and close it; F6 moves focus into the viewport and back. Toasts beyond the limit (3) are data-limited and inert."
     }
   }
 }
