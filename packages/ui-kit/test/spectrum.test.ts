@@ -129,3 +129,19 @@ test('white and black are the neutral endpoints; fg.strong is black in light, wh
   assert.equal(light['--colors-white'], data.schemes.light[roles.neutral][0].css);
   assert.deepEqual([light['--colors-fg-strong'], dark['--colors-fg-strong']], ['var(--colors-black)', 'var(--colors-white)']);
 });
+
+test('white and black map to another family step 1 or to pure, at runtime and in a saved theme', async () => {
+  const { generateSpectrum, resolveRoles, endpointVars } = await import('../tokens/colors/spectrum/index.ts');
+  const { themeCss, validateThemeObject } = await import('../tokens/themes/index.ts');
+  const data = generateSpectrum({}), roles = resolveRoles(data, {});
+  assert.deepEqual(endpointVars(data, roles), { '--colors-white': data.schemes.light[roles.neutral][0].css, '--colors-black': data.schemes.dark[roles.neutral][0].css });
+  const mapped = endpointVars(data, roles, { white: 'pure', black: 'indigo' });
+  assert.equal(mapped['--colors-white'], '#fff');
+  assert.equal(mapped['--colors-black'], data.schemes.dark.indigo[0].css);
+  const theme = { schemaVersion: 1 as const, name: 'ends', color: { endpoints: { white: 'pure', black: 'indigo' } } };
+  assert.ok(validateThemeObject(theme).ok);
+  assert.equal(validateThemeObject({ ...theme, color: { endpoints: { grey: 'x' } } }).ok, false);
+  const css = themeCss({ ends: theme });
+  assert.equal(css[':root[data-ui-theme="ends"]']['--colors-white'], '#fff');
+  assert.equal(css[':root[data-ui-theme="ends"].dark']['--colors-black'], mapped['--colors-black'], 'the same black in every scheme');
+});

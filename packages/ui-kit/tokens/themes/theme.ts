@@ -26,7 +26,8 @@ export interface Theme {
   parameters?: Partial<Record<ParamName, number>>;
   icons?: string;
   scheme?: ThemeScheme;
-  color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>> };
+  /** endpoints: the family whose step 1 white (light) and black (dark) take; 'neutral' (default) or 'pure' (#fff, #000). */
+  color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: string; black?: string } };
   typography?: { faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>> };
   /** Reserved: L0 intent (subject, audience, character words, signature). */
   intent?: Record<string, unknown>;
@@ -70,7 +71,14 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.color !== undefined) {
     if (!isObject(input.color)) err('color', 'must be an object');
     else {
-      for (const k of Object.keys(input.color)) if (k !== 'spectrum' && k !== 'roles') err(`color.${k}`, 'unknown section');
+      for (const k of Object.keys(input.color)) if (k !== 'spectrum' && k !== 'roles' && k !== 'endpoints') err(`color.${k}`, 'unknown section');
+      if (input.color.endpoints !== undefined) {
+        if (!isObject(input.color.endpoints)) err('color.endpoints', 'must be an object');
+        else for (const [k, v] of Object.entries(input.color.endpoints)) {
+          if (k !== 'white' && k !== 'black') err(`color.endpoints.${k}`, 'must be white or black');
+          else if (typeof v !== 'string' || !FAMILY_NAME.test(v)) err(`color.endpoints.${k}`, "must be a family name, 'neutral' or 'pure'");
+        }
+      }
       if (input.color.spectrum !== undefined) {
         if (!isObject(input.color.spectrum)) err('color.spectrum', 'must be an object');
         else try { normalizeSpectrum(input.color.spectrum); } catch (e) { err('color.spectrum', (e as Error).message); }
@@ -135,6 +143,7 @@ export function themeJsonSchema() {
       color: strict({
         spectrum: strict(Object.fromEntries(SPECTRUM_FIELDS.map((f) => [f.key, field(f)]))),
         roles: strict(Object.fromEntries(ROLE_NAMES.map((r) => [r, { type: 'string', pattern: FAMILY_NAME.source }]))),
+        endpoints: strict({ white: { type: 'string', pattern: FAMILY_NAME.source }, black: { type: 'string', pattern: FAMILY_NAME.source } }),
       }),
       typography: strict({
         faces: strict(Object.fromEntries(FACES.map((f) => [f, { type: 'string', pattern: FONT_STACK.source }]))),

@@ -194,13 +194,27 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
   // Text on a primary solid: the engine's APCA choice for step 9.
   vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][8].apca.css;
   // White and black: the neutral endpoints (light and dark step 1), the same in both schemes; fg.strong
-  // (headings, titles) is black in light, white in dark.
-  vars['--colors-white'] = data.schemes.light[roles.neutral][0].css;
-  vars['--colors-black'] = data.schemes.dark[roles.neutral][0].css;
+  // (headings, titles) is black in light, white in dark. endpointVars maps them to another family.
+  Object.assign(vars, endpointVars(data, roles));
   vars['--colors-fg-strong'] = mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
   // Text on bg-selected: strong neutral in light, the primary solid's contrast color in dark.
   vars['--colors-fg-selected'] = mode === 'dark' ? vars['--colors-fg-on-solid'] : `var(--colors-spectrum-${roles.neutral}-12)`;
   return vars;
+}
+
+/**
+ * White and black (`--colors-white`, `--colors-black`): step 1 of a family's light and dark ramps,
+ * the same in both schemes. Each maps to the neutral role's family by default, to any family by
+ * name (nearest by hue when it is not generated), or to 'pure' (#fff, #000).
+ */
+export type Endpoints = { white?: string; black?: string };
+export function endpointVars(data: Spectrum, roles: Roles, map: Endpoints = {}) {
+  const pick = (want: string | undefined, mode: 'light' | 'dark', pure: string) => {
+    if (want === 'pure') return pure;
+    const name = !want || want === 'neutral' ? roles.neutral : data.schemes[mode][want] ? want : closestFamily(data, want, families(data).all);
+    return data.schemes[mode][name][0].css;
+  };
+  return { '--colors-white': pick(map.white, 'light', '#fff'), '--colors-black': pick(map.black, 'dark', '#000') };
 }
 
 const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}`;
