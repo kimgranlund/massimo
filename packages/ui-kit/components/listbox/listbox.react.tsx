@@ -14,7 +14,7 @@ import { Children, createContext, isValidElement, useContext, useId, useRef, use
 import { createTypeahead, eventDetails, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type ChangeDetails, type ChangeReason, type OptionItem } from '../../dom/index.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
-import { useFieldState } from '../state.react.ts';
+import { useFieldState, useFormChanged, useFormError } from '../state.react.ts';
 import { isPartOf, renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { listbox, segmented, option } from '../../styled-system/recipes/index.js';
 
@@ -63,6 +63,9 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
   const options = Children.toArray(children).filter(isValidElement) as ReactElement<OptionProps>[];
   const items: OptionItem[] = options.map((o) => ({ value: o.props.value, label: textOf(o.props.children) || o.props.value, disabled: !!o.props.disabled || !!disabled }));
   const idOf = (i: number) => `${base}-opt-${i}`;
+  // A form error for this name shows on the host and clears on the next change (no native control fires change).
+  const formError = useFormError(name);
+  const formChanged = useFormChanged();
 
   const select = (i: number, reason: ChangeReason, event: Event) => {
     const it = items[i];
@@ -70,11 +73,12 @@ function List({ kind, name, value, defaultValue = '', onValueChange, label, orie
     setActive(i);
     if (it.value === current) return;
     if (value === undefined) setInner(it.value);
+    formChanged?.(name);
     onValueChange?.(it.value, eventDetails(reason, event));
   };
 
   const shown = focused ? active : -1;
-  const f = useFieldState<HTMLDivElement>({ disabled, required, error: invalid, value: current, missing: !!required && !current });
+  const f = useFieldState<HTMLDivElement>({ disabled, required, error: invalid || !!formError, value: current, missing: !!required && !current });
   const listAttrs = toReactProps(listboxAttrs({ orientation: orient, activeId: shown >= 0 ? idOf(shown) : undefined, label, disabled, required, invalid: f.attrs['data-invalid'] !== undefined }));
   const state = stateOf({ ...listAttrs, ...f.attrs });
   return renderPart('div', (kind === 'segmented' ? segmented : listbox)().root, {

@@ -14,7 +14,7 @@
     },
     {
       "path": "components/form/form.react.tsx",
-      "sha256": "b09ce4acbf6e992dea8141649acb7384a6504f6f9cb8d19cb7b5e2787b210573"
+      "sha256": "3a3d2be8d01c34c08bcbcdbf57903563b9cd9074f54ca351ca541132d51041e4"
     },
     {
       "path": "components/form/form.manifest.json",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "53a93fe63ed8c5cf50036ddbfa32a0b76979e6361f20319f7a1035cf05b85603"
+      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
     },
     {
       "path": "components/field/field.element.ts",

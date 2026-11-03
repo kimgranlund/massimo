@@ -35,7 +35,7 @@ No native `<form>` (the kit's rule for web components), inside or around it: the
 
 A native `<form>` around the controls stays their owner (native submit, reset and validation), so do not nest a `ui-form` inside one.
 
-React: `<Form errors validationMode onFormSubmit actionsRef>`, one part as in Base UI: a native `<form noValidate>` that runs the same validation on submit (constraint validation: each invalid control fires `invalid`, its host shows the error, the first takes focus) and calls `onFormSubmit(values, { reason: 'none', event })` with the FormData as an object (and prevents the native submit). `Input` and `Select` inside show their name's error; a `Field` given `name` shows it in `Field.Error` (for choices and groups); a change event from a control clears its name's error. `actionsRef.current.validate(name?)`.
+React: `<Form errors validationMode onFormSubmit actionsRef>`, one part as in Base UI: a native `<form noValidate>` that runs the same validation on submit (constraint validation: each invalid control fires `invalid`, its host shows the error, the first takes focus) and calls `onFormSubmit(values, { reason: 'none', event })` with the FormData as an object (and prevents the native submit). `Input`, `Select`, `Listbox` and `Palette` inside show their name's error (`data-invalid`); a `Field` given `name` shows it in `Field.Error` (for choices and groups); a change event from a control clears its name's error, and so does a `Listbox` choice (it has no native control to fire one). `actionsRef.current.validate(name?)`.
 
 ## Anatomy
 

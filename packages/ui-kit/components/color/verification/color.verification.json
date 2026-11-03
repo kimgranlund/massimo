@@ -18,7 +18,7 @@
     },
     {
       "path": "components/color/color.react.tsx",
-      "sha256": "aad7c046970b70e44e536c9cd8b5ac68cd6c6f5135042e5763f815b40ca2761e"
+      "sha256": "17835118a9dd5137edd43b0f1518c9f5ab72d6551892cecfa3ea865cca6a3563"
     },
     {
       "path": "components/color/color.ts",
@@ -30,7 +30,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "53a93fe63ed8c5cf50036ddbfa32a0b76979e6361f20319f7a1035cf05b85603"
+      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
     },
     {
       "path": "dom/events.ts",

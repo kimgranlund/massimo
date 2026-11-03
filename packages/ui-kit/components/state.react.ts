@@ -16,10 +16,14 @@ export interface FormContextValue {
   validationMode: 'onSubmit' | 'onBlur' | 'onChange';
   /** The form error for a control name ('' when none, or cleared by a change). */
   errorFor: (name: string | undefined) => string;
+  /** A control's value changed without a DOM change event (Listbox): clear its name's form error. */
+  changed: (name: string | undefined) => void;
 }
 export const FormCtx = createContext<FormContextValue | null>(null);
 /** The React Form's error for a control name (Base UI Form errors), '' outside a Form. */
 export const useFormError = (name: string | undefined) => useContext(FormCtx)?.errorFor(name) ?? '';
+/** Tell the React Form a control's value changed (for hosts whose value has no native control to fire change). */
+export const useFormChanged = () => useContext(FormCtx)?.changed;
 
 type Control = HTMLInputElement | HTMLSelectElement;
 const controlOf = (host: Element | null) => host?.querySelector<Control>('input:not([type=hidden]), select') ?? null;

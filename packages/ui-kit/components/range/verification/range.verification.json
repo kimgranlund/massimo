@@ -26,7 +26,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "53a93fe63ed8c5cf50036ddbfa32a0b76979e6361f20319f7a1035cf05b85603"
+      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
     },
     {
       "path": "dom/events.ts",

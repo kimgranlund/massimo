@@ -51,6 +51,9 @@ export const range = defineSlotRecipe({
       '& > input::-moz-range-thumb': { width: 'var(--track)', height: 'var(--track)', border: 0 },
       // A pair's inputs (one per thumb) take keys and the form value; the root script maps the pointer.
       '& > input[data-index]': { pointerEvents: 'none' },
+      // React, one thumb: the transparent input covers the root, so the root draws the keyboard ring,
+      // on the same box as the web component's focused host.
+      ':root:not([data-modality=pointer]) &:has(> input:not([data-index]):focus-visible)': { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },
     },
     track,
     // A pair's indicator starts one track-radius before the first thumb's center (--ui-ratio-start,

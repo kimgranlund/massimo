@@ -22,6 +22,8 @@ await import('../components/fieldset/fieldset.element.ts');
 const { Form } = await loadTsx(new URL('../components/form/form.react.tsx', import.meta.url));
 const { Input } = await loadTsx(new URL('../components/input/input.react.tsx', import.meta.url));
 const { Field } = await loadTsx(new URL('../components/field/field.react.tsx', import.meta.url));
+const { Listbox, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));
+const { Palette, Swatch } = await loadTsx(new URL('../components/color/color.react.tsx', import.meta.url));
 
 const NATIVE = 'input, button, select, textarea, label, fieldset, legend, option, optgroup, output, datalist, meter, progress, form';
 async function mount(html: string) {
@@ -149,6 +151,29 @@ test('React Form: a native form (noValidate) with the same classes; errors by na
   const plain = renderToStaticMarkup(h(Form, {}, h(Input, { name: 'email', label: 'Email' })));
   assert.doesNotMatch(plain, /data-invalid|data-part="error"/);
   assert.match(renderToStaticMarkup(h(Form, { className: (s: any) => (s.submitted ? 'on' : 'off'), gap: 3 })), /style="--ui-gap:3" class="ui-form__root off"/);
+});
+
+test('React Form: a form error on a Listbox or Palette shows on its host and a Listbox clears it on its next change', async () => {
+  const { createRoot } = await import('react-dom/client');
+  const { act } = await import('react');
+  (globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+  const box = document.createElement('div');
+  document.body.append(box);
+  const root = createRoot(box);
+  const errors = { fruit: 'Out of stock', tint: 'Pick another' };
+  await act(async () => root.render(h(Form, { errors },
+    h(Field, { label: 'Fruit', name: 'fruit' }, h(Listbox, { name: 'fruit', label: 'Fruit' }, h(Option, { value: 'a' }, 'Apple'), h(Option, { value: 'b' }, 'Banana'))),
+    h(Palette, { name: 'tint', label: 'Tint' }, h(Swatch, { color: '#f00' }), h(Swatch, { color: '#00f' })))));
+  const lb = box.querySelector('[data-ui=listbox]')!;
+  const pal = box.querySelector('[data-ui=palette]')!;
+  assert.ok(lb.hasAttribute('data-invalid'));
+  assert.ok(pal.hasAttribute('data-invalid'));
+  assert.match(box.textContent ?? '', /Out of stock/);
+  await act(async () => { (lb.querySelectorAll('[data-ui=option]')[1] as HTMLElement).click(); });
+  assert.ok(!lb.hasAttribute('data-invalid'));
+  assert.doesNotMatch(box.textContent ?? '', /Out of stock/);
+  await act(async () => root.unmount());
+  box.remove();
 });
 
 test('state parity: the form host carries the same data-* in both renderers', async () => {

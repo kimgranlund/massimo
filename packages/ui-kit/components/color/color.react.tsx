@@ -7,7 +7,7 @@
 import { Children, cloneElement, isValidElement, useId, useRef, useState, type ChangeEvent, type CSSProperties, type HTMLAttributes, type ReactElement, type ReactNode } from 'react';
 import { isTranslucent, validColor } from './color.ts';
 import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
-import { useFieldState } from '../state.react.ts';
+import { useFieldState, useFormError } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { swatch, palette } from '../../styled-system/recipes/index.js';
 
@@ -58,7 +58,8 @@ export function Palette({ name, selectable, value, defaultValue = '', onValueCha
   const isSelectable = selectable || !!name;
   const orient = orientation === 'vertical' ? 'vertical' : 'horizontal';
   const swatches = Children.toArray(children).filter(isValidElement) as ReactElement<SwatchProps>[];
-  const f = useFieldState<HTMLDivElement>({ disabled, required, error: invalid, value: isSelectable ? current : '', missing: isSelectable && !!required && !current });
+  const formError = useFormError(name);
+  const f = useFieldState<HTMLDivElement>({ disabled, required, error: invalid || !!formError, value: isSelectable ? current : '', missing: isSelectable && !!required && !current });
   return (
     <div {...rest} ref={f.ref} className={cx(palette({ selectable: isSelectable, orientation: orient }).root, className)} data-ui="palette" data-size={size} data-selectable={isSelectable || undefined} data-orientation={orient}
       {...(isSelectable ? { ...f.attrs, ...f.handlers } : { 'data-disabled': f.attrs['data-disabled'], 'data-required': f.attrs['data-required'], 'data-invalid': invalid ? '' : undefined })}

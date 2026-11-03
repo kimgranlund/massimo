@@ -38,7 +38,7 @@ Preset or parts ([components spec](../../../../docs/specs/components.md#composit
 <Progress.Root value={40}><Progress.Track><Progress.Indicator /></Progress.Track></Progress.Root>
 ```
 
-Web component: authored parts are adopted (attributes and classes; the thumb's content). React: `Slider.Thumb` renders the painted thumb and the native range input after it, as Base UI's Thumb holds its input; the input is the element that takes keys, pointer and the form value, so it is not a part of its own, and `Slider.Root`'s native props (name, aria-*, data-*) go to it. `Progress.Root` renders the native `<progress>` after its parts. No Slider.Control or Slider.Value: the host is the control, and the value is shown outside (a field readout).
+Web component: authored parts are adopted (attributes and classes; the thumb's content). React: `Slider.Thumb` renders the painted thumb and the native range input after it, as Base UI's Thumb holds its input; the input is the element that takes keys, pointer and the form value, so it is not a part of its own; it is transparent over the root, so with one thumb the root draws the keyboard focus ring (the same box as the web component's focused host), and with two each thumb draws its input's. `Slider.Root`'s native props (name, aria-*, data-*) go to it. `Progress.Root` renders the native `<progress>` after its parts. No Slider.Control or Slider.Value: the host is the control, and the value is shown outside (a field readout).
 
 - `part:range-thumb` `:scope > [data-part=thumb]`: The thumb, inside the track like a switch thumb (track − u, inset 0.5u); offset 0.5u + ratio × (width − track). The fill wraps it with a concentric cap.
 

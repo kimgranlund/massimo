@@ -26,7 +26,7 @@
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "85456da07141cb641b54c4bdfb496197977dc2a159a6092a328f9f4e89609a3e"
+      "sha256": "ee62bf206d7e045f685621d4fbc07df025615fcdfc1f9d90ab8da63bd21e8de5"
     },
     {
       "path": "components/parts.react.tsx",
@@ -38,7 +38,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "53a93fe63ed8c5cf50036ddbfa32a0b76979e6361f20319f7a1035cf05b85603"
+      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
     },
     {
       "path": "dom/events.ts",

@@ -58,7 +58,8 @@ export function Form({ errors, validationMode = 'onSubmit', onFormSubmit, action
   const errorFor = useCallback((name: string | undefined) => (name && !gone.has(name) ? message(errors?.[name]) : ''), [errors, gone]);
   // onSubmit waits for a submit attempt, then re-validates on change (as the web component).
   const mode: ValidationMode = validationMode === 'onSubmit' && submitted ? 'onChange' : validationMode;
-  const ctx = useMemo<FormContextValue>(() => ({ validationMode: mode, errorFor }), [mode, errorFor]);
+  const changed = useCallback((name: string | undefined) => { if (name && errors?.[name] && !gone.has(name)) clear([name]); }, [errors, gone, clear]);
+  const ctx = useMemo<FormContextValue>(() => ({ validationMode: mode, errorFor, changed }), [mode, errorFor, changed]);
 
   /** checkValidity on each control fires `invalid` on the failing ones: their hosts show the error. */
   const validate = useCallback((name?: string) => controls(ref.current, name).reduce((ok, el) => el.checkValidity() && ok, true), []);
@@ -76,10 +77,7 @@ export function Form({ errors, validationMode = 'onSubmit', onFormSubmit, action
     onSubmit?.(e);
     if (onFormSubmit) { e.preventDefault(); onFormSubmit(valuesOf(f), eventDetails('none', e.nativeEvent)); }
   };
-  const handleValue = (e: ChangeEvent<HTMLFormElement>) => {
-    const name = (e.target as unknown as HTMLInputElement).name;
-    if (name && errors?.[name] && !gone.has(name)) clear([name]);
-  };
+  const handleValue = (e: ChangeEvent<HTMLFormElement>) => changed((e.target as unknown as HTMLInputElement).name);
   const state: PartState = submitted ? { submitted: true } : {};
   return (
     <FormCtx.Provider value={ctx}>
