@@ -15,9 +15,7 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 | T-0016 | [dialog](tickets/dialog/handoff.md) | W3 · Dialog | feature | L3 | P1 | T-0001 | 🟡 claimed |
 | T-0017 | [alert-dialog](tickets/alert-dialog/handoff.md) | W3 · Alert Dialog | feature | L2 | P2 | T-0016 | 🟡 claimed |
 | T-0018 | [drawer](tickets/drawer/handoff.md) | W3 · Drawer | feature | L3 | P2 | T-0016 | 🟡 claimed |
-| T-0023 | [combobox](tickets/combobox/handoff.md) | W5 · Combobox | feature | L3 | P2 | T-0001 | 🟡 claimed |
-| T-0024 | [autocomplete](tickets/autocomplete/handoff.md) | W5 · Autocomplete | feature | L2 | P3 | T-0023 | 🟡 claimed |
 | T-0029 | [slider-range-pair](tickets/slider-range-pair/handoff.md) | W5 · Slider: two-thumb range | feature | L2 | P3 | none | 🟡 claimed |
 | T-0030 | [toggle-group-multiple](tickets/toggle-group-multiple/handoff.md) | W5 · Toggle Group: multiple selection | feature | L1 | P3 | T-0005 | 🟡 claimed |
 
-Closed: 16 done, 0 dropped (git log or .NNNN-* folders)
+Closed: 18 done, 0 dropped (git log or .NNNN-* folders)
