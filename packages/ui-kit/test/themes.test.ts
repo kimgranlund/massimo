@@ -114,3 +114,22 @@ test('typography.colors maps a type role to a text color: validated, emitted as 
   assert.equal(root['--ui-type-color-caption'], 'var(--colors-fg-muted)');
   assert.equal(root['--ui-type-color-heading-2'], 'var(--colors-primary-fg)');
 });
+
+test('every theme field is wired: schema, validator, theme CSS, and the jig Copy and Load', async () => {
+  const schema = JSON.parse(themeJsonSchemaText());
+  const app = readFileSync(new URL('../../../apps/studio/src/studio/App.tsx', import.meta.url), 'utf8');
+  const sections: Record<string, string[]> = { color: ['spectrum', 'roles', 'endpoints'], typography: ['faces', 'voices', 'colors'] };
+  for (const [section, fields] of Object.entries(sections)) {
+    assert.deepEqual(Object.keys(schema.properties[section].properties).sort(), [...fields].sort(), `${section}: the schema lists exactly its fields`);
+    for (const f of fields) {
+      assert.ok(validateThemeObject({ schemaVersion: 1, name: 'x', [section]: { [f]: {} } }).ok, `${section}.${f}: the validator knows it`);
+      // Copy writes it (themeObject) and Load reads it back (applyTheme: t.<section>?.<field>).
+      assert.match(app, new RegExp(`${section}\\?\\.${f}\\b`), `${section}.${f}: the jig loads it (applyTheme)`);
+      assert.match(app, new RegExp(`\\b${f}: (changed|spectrumOverrides)\\(`), `${section}.${f}: the jig copies it (themeObject)`);
+    }
+    assert.ok(!validateThemeObject({ schemaVersion: 1, name: 'x', [section]: { nope: {} } }).ok, `${section}: unknown fields are rejected`);
+  }
+  // A saved theme emits each field.
+  const css = themeCss({ w: { schemaVersion: 1, name: 'w', color: { endpoints: { white: 'pure' } }, typography: { faces: { sans: 'Georgia, serif' }, voices: { heading: 'serif' }, colors: { caption: 'strong' } } } as any })[':root[data-ui-theme="w"]'];
+  for (const v of ['--colors-white', '--fonts-sans', '--font-voice-heading', '--ui-type-color-caption']) assert.ok(css[v], `theme CSS emits ${v}`);
+});
