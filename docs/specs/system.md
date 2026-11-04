@@ -48,6 +48,26 @@ The inputs are organized by the peer concepts the system governs. Each parameter
 
 The machine-readable form is `packages/ui-kit/contracts/parameters.json`: every input, its formula, what it drives, and the coefficients the formulas fix (8u controls, 6u slots, 3u curvature, 10px + u fonts). The registry indexes it: `npm run registry -- --find "radius scale"`, `parameter:<id>` for a range and default, and `--assembly component:<id>` lists the parameter groups a component responds to ([registry](registry.md#parameters)). A theme sets inputs only (`tokens/themes/params.ts`, [theming](theming.md)); changing a fixed coefficient is a geometry change.
 
+### Decisions
+
+Why the system is the way it is, one record each (`docs/decisions/`):
+
+- [0001](../decisions/0001-composites-are-controls.md) Composites are controls
+- [0002](../decisions/0002-concentric-wrappers-and-cards.md) Wrappers and cards are concentric with their controls
+- [0003](../decisions/0003-container-radius-magnitude.md) Container radius as a magnitude of the concentric radius
+- [0004](../decisions/0004-density-axis.md) Density is separate from scale
+- [0005](../decisions/0005-elevation-levels.md) Elevation is six levels
+- [0006](../decisions/0006-compound-dp-shadows.md) Compound shadows, continuous in dp
+- [0007](../decisions/0007-attached-inset-none.md) inset="none" attaches composites and tracks
+- [0008](../decisions/0008-card-choices.md) Card choices are a variant of the choice groups
+- [0009](../decisions/0009-theme-object.md) One theme object
+- [0010](../decisions/0010-lint-advisory.md) Theme lint advises, never blocks
+- [0011](../decisions/0011-contrast-targeted-ramps.md) Ramps are contrast-targeted (the Leonardo model)
+- [0012](../decisions/0012-white-black-neutral-3.md) White and black are neutral step 3; fg.strong
+- [0013](../decisions/0013-roles-own-text-color.md) The type role is the one source of a text's color
+- [0014](../decisions/0014-universal-container.md) One container for every level
+- [0015](../decisions/0015-concept-axis.md) Thirteen peer concepts organize the inputs
+
 ## Layers (`packages/ui-kit`)
 
 | Folder | Holds | Spec |
