@@ -127,15 +127,17 @@ Step 1 of [theme-schema.md](theme-schema.md) (the theme object) and step 3 (lint
 ## Progress
 
 - Step 1 built 2026-11-03. Theme schema version 2 adds the `geometry`, `typography`, `color` and `motion` parts, with `migrateTheme` and `loadTheme` for version 1; the jig's Copy writes v2 and Load accepts both. Each parameter's domain is declared in `PARAMS`. The domain manifests live in `contracts/domains/`, each with a verification record, and the registry gains `domain:` and `constraint:` nodes. The domain tests keep the manifests a partition of the groups, concepts and constraints.
+- Step 3 done 2026-11-03: [color anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) (decision above). Engine work it implies, for step 4: a pinned family hue, a per-family step override and chroma re-shape, and a per-role solid step.
 - Step 2 built 2026-11-03: 13 descriptor scales in the domain manifests (geometry 7, typography 1, color 4, motion 1); `themeFromCharacter` and `describeTheme` (`tokens/themes/descriptors.ts`); `character` validated against the scales; registry `descriptor:` nodes. Every value resolves, lints clean and reads back at distance 0. Not yet scaled: emphasis (role mapping) and iconography.
 
 ## Decided
+
+- Color anchors (2026-11-03, [spike](../reports/2026-11-03-color-anchoring-spike.md)): anchors are exact colors. Hydrate pins the family hue, overrides the nearest step with the anchor (contrast order held in 15 of 15 measured anchors), re-shapes that family's chroma toward it, and points the role's solid at the anchored step; generator tuning alone left a mean ΔE of 5–10.
 
 - Brand storage (2026-11-03): the brand is its own file beside the theme (`brand.json`; schema `contracts/brand.schema.json`). The theme stays a pure render input, one brand can hydrate several themes (product, campaign), and theme provenance points into the brand by path.
 
 ## Open questions
 
-- Scope of color anchors: hue only (the engine generates the ramp), or exact steps that may break the ramp's contrast order?
 - Does `voice` stay prose with closed tone words, or get its own small vocabulary for microcopy patterns?
 - Catalogue breadth: how many groundings and territory archetypes before it earns its keep, and who curates them (sources required per entry)?
 - Can a muse be a living person or a current brand, or only a quality description, to avoid imitation?

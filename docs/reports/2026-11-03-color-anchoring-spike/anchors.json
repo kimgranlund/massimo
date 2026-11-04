@@ -1,0 +1,364 @@
+{
+  "ibm-carbon": {
+    "settings": {
+      "hueSet": "quad",
+      "hue": 117,
+      "chroma": 60,
+      "base": 100
+    },
+    "runs": 100,
+    "seconds": 22.8,
+    "meanDE": {
+      "before": 10.6,
+      "after": 10.5
+    },
+    "anchors": [
+      {
+        "name": "blue 60",
+        "hex": "#0f62fe",
+        "role": "primary",
+        "before": {
+          "family": "indigo",
+          "step": 10,
+          "css": "oklch(0.595689230303731 0.12906311793334757 269.90218478355735)",
+          "dE": 12.3,
+          "anchorLc": 69.8,
+          "stepTargetLc": 63.6
+        },
+        "after": {
+          "family": "blue",
+          "step": 10,
+          "css": "oklch(0.5918576666373628 0.12976356561307018 256.9862746589629)",
+          "dE": 12,
+          "anchorLc": 69.8,
+          "stepTargetLc": 63.6
+        }
+      },
+      {
+        "name": "gray 100",
+        "hex": "#161616",
+        "role": "neutral",
+        "before": {
+          "family": "neutral",
+          "step": 12,
+          "css": "oklch(0.40203066015205025 0.02520784247566687 223.5929729430085)",
+          "dE": 20.3,
+          "anchorLc": 101.5,
+          "stepTargetLc": 85.7
+        },
+        "after": {
+          "family": "neutral",
+          "step": 12,
+          "css": "oklch(0.4028983012178359 0.02937054474288884 105.34578839767437)",
+          "dE": 20.5,
+          "anchorLc": 101.5,
+          "stepTargetLc": 85.7
+        }
+      },
+      {
+        "name": "red 60",
+        "hex": "#da1e28",
+        "role": "feedback",
+        "before": {
+          "family": "tomato",
+          "step": 10,
+          "css": "oklch(0.6042545635453571 0.13177243127353874 37.024000405943866)",
+          "dE": 9.8,
+          "anchorLc": 69.8,
+          "stepTargetLc": 63.6
+        },
+        "after": {
+          "family": "tomato",
+          "step": 10,
+          "css": "oklch(0.6050729634209626 0.13228778631991095 31.69816000407775)",
+          "dE": 9.4,
+          "anchorLc": 69.8,
+          "stepTargetLc": 63.6
+        }
+      },
+      {
+        "name": "green 50",
+        "hex": "#24a148",
+        "role": "feedback",
+        "before": {
+          "family": "grass",
+          "step": 9,
+          "css": "oklch(0.6565786377967056 0.14824090563463177 147.17693083634333)",
+          "dE": 3.8,
+          "anchorLc": 56.6,
+          "stepTargetLc": 52.1
+        },
+        "after": {
+          "family": "grass",
+          "step": 9,
+          "css": "oklch(0.6578363482863246 0.14978025234833783 140.78295029794248)",
+          "dE": 4.3,
+          "anchorLc": 56.6,
+          "stepTargetLc": 52.1
+        }
+      },
+      {
+        "name": "yellow 30",
+        "hex": "#f1c21b",
+        "role": "feedback",
+        "before": {
+          "family": "amber",
+          "step": 5,
+          "css": "oklch(0.8277046735530748 0.10364001288270609 80.16867890356917)",
+          "dE": 6.6,
+          "anchorLc": 26.9,
+          "stepTargetLc": 27.8
+        },
+        "after": {
+          "family": "yellow",
+          "step": 5,
+          "css": "oklch(0.8244775353717603 0.10178399360064384 94.20384594187948)",
+          "dE": 6.5,
+          "anchorLc": 26.9,
+          "stepTargetLc": 27.8
+        }
+      }
+    ]
+  },
+  "material-3-baseline": {
+    "settings": {
+      "hueSet": "radix",
+      "hue": 0,
+      "chroma": 60
+    },
+    "runs": 100,
+    "seconds": 28.2,
+    "meanDE": {
+      "before": 6.2,
+      "after": 5.3
+    },
+    "anchors": [
+      {
+        "name": "primary",
+        "hex": "#6750a4",
+        "role": "primary",
+        "before": {
+          "family": "indigo",
+          "step": 11,
+          "css": "oklch(0.5128575632595496 0.10284363530373883 270.28257678795757)",
+          "dE": 5.7,
+          "anchorLc": 77,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "violet",
+          "step": 11,
+          "css": "oklch(0.514443073960041 0.07481762761399599 291.9855699910039)",
+          "dE": 5.9,
+          "anchorLc": 77,
+          "stepTargetLc": 74
+        }
+      },
+      {
+        "name": "secondary",
+        "hex": "#625b71",
+        "role": "secondary",
+        "before": {
+          "family": "indigo",
+          "step": 11,
+          "css": "oklch(0.5128575632595496 0.10284363530373883 270.28257678795757)",
+          "dE": 7.9,
+          "anchorLc": 77.1,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "violet",
+          "step": 11,
+          "css": "oklch(0.514443073960041 0.07481762761399599 291.9855699910039)",
+          "dE": 4.9,
+          "anchorLc": 77.1,
+          "stepTargetLc": 74
+        }
+      },
+      {
+        "name": "tertiary",
+        "hex": "#7d5260",
+        "role": "accent",
+        "before": {
+          "family": "crimson",
+          "step": 11,
+          "css": "oklch(0.5221965336571902 0.10462668597025765 5.4841840784991405)",
+          "dE": 5.5,
+          "anchorLc": 77.1,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "bronze",
+          "step": 11,
+          "css": "oklch(0.5107925082226804 0.022392763748423288 42.22769545882937)",
+          "dE": 5.1,
+          "anchorLc": 77.1,
+          "stepTargetLc": 74
+        }
+      },
+      {
+        "name": "error",
+        "hex": "#b3261e",
+        "role": "feedback",
+        "before": {
+          "family": "tomato",
+          "step": 11,
+          "css": "oklch(0.520099061759794 0.10779910067609907 36.76546135512194)",
+          "dE": 7.6,
+          "anchorLc": 77.4,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "tomato",
+          "step": 11,
+          "css": "oklch(0.5199443046939236 0.10254033773931379 32.88602355846564)",
+          "dE": 7.9,
+          "anchorLc": 77.4,
+          "stepTargetLc": 74
+        }
+      },
+      {
+        "name": "neutral",
+        "hex": "#605d62",
+        "role": "neutral",
+        "before": {
+          "family": "neutral",
+          "step": 11,
+          "css": "oklch(0.505969854183789 0.03608486426650326 223.39629641482898)",
+          "dE": 4.4,
+          "anchorLc": 77.2,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "slate",
+          "step": 11,
+          "css": "oklch(0.5092100170575362 0.010914910837702088 279.39651391062023)",
+          "dE": 2.7,
+          "anchorLc": 77.2,
+          "stepTargetLc": 74
+        }
+      }
+    ]
+  },
+  "atlassian": {
+    "settings": {
+      "hueSet": "quad",
+      "hue": 252,
+      "chroma": 60,
+      "base": 100
+    },
+    "runs": 100,
+    "seconds": 22,
+    "meanDE": {
+      "before": 6.4,
+      "after": 6.1
+    },
+    "anchors": [
+      {
+        "name": "B400",
+        "hex": "#0052cc",
+        "role": "primary",
+        "before": {
+          "family": "indigo",
+          "step": 11,
+          "css": "oklch(0.5128575632595496 0.10284363530373883 270.28257678795757)",
+          "dE": 10.6,
+          "anchorLc": 78.5,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "blue",
+          "step": 11,
+          "css": "oklch(0.5076304469806062 0.10208714747951225 248.65837962043236)",
+          "dE": 10.7,
+          "anchorLc": 78.5,
+          "stepTargetLc": 74
+        }
+      },
+      {
+        "name": "G300",
+        "hex": "#36b37e",
+        "role": "feedback",
+        "before": {
+          "family": "jade",
+          "step": 8,
+          "css": "oklch(0.6947170100259379 0.12856747206978383 173.6381443049795)",
+          "dE": 3.1,
+          "anchorLc": 47.7,
+          "stepTargetLc": 46.3
+        },
+        "after": {
+          "family": "jade",
+          "step": 8,
+          "css": "oklch(0.6947433199264421 0.13053753895714995 166.01414503810338)",
+          "dE": 1.6,
+          "anchorLc": 47.7,
+          "stepTargetLc": 46.3
+        }
+      },
+      {
+        "name": "R300",
+        "hex": "#ff5630",
+        "role": "feedback",
+        "before": {
+          "family": "tomato",
+          "step": 9,
+          "css": "oklch(0.6886544541354622 0.15636273134274595 37.22838185605298)",
+          "dE": 5.7,
+          "anchorLc": 54.6,
+          "stepTargetLc": 52.1
+        },
+        "after": {
+          "family": "tomato",
+          "step": 9,
+          "css": "oklch(0.6900620390592113 0.15606990396975587 28.184387234905103)",
+          "dE": 5.9,
+          "anchorLc": 54.6,
+          "stepTargetLc": 52.1
+        }
+      },
+      {
+        "name": "Y300",
+        "hex": "#ffab00",
+        "role": "feedback",
+        "before": {
+          "family": "amber",
+          "step": 6,
+          "css": "oklch(0.7900389183534343 0.1188537702957008 80.40623867027)",
+          "dE": 5.6,
+          "anchorLc": 32.8,
+          "stepTargetLc": 34.2
+        },
+        "after": {
+          "family": "amber",
+          "step": 6,
+          "css": "oklch(0.7918539637975356 0.12043824161638335 73.52676855110752)",
+          "dE": 5.1,
+          "anchorLc": 32.8,
+          "stepTargetLc": 34.2
+        }
+      },
+      {
+        "name": "P300",
+        "hex": "#6554c0",
+        "role": "accent",
+        "before": {
+          "family": "indigo",
+          "step": 11,
+          "css": "oklch(0.5128575632595496 0.10284363530373883 270.28257678795757)",
+          "dE": 7,
+          "anchorLc": 74.4,
+          "stepTargetLc": 74
+        },
+        "after": {
+          "family": "purple",
+          "step": 11,
+          "css": "oklch(0.519611154528476 0.10641968692853447 305.009723334854)",
+          "dE": 7,
+          "anchorLc": 74.4,
+          "stepTargetLc": 74
+        }
+      }
+    ]
+  }
+}
