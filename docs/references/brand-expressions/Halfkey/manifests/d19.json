@@ -1,0 +1,33 @@
+{
+  "id": "D19",
+  "title": "Launch",
+  "image": "d19.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 3,
+    "column": 3
+  },
+  "slide_intent": "Show how a recurring campaign can stay legible over time. A fixed weekly format lets people notice what has changed, while phases help the team decide what to publish next.",
+  "strategic_value": "Halfkey can tie its launch story to a visible record of keys and receipts. A recurring figure can connect the waitlist, launch announcement and subsequent product activity.",
+  "demonstration": "A strip of sixteen weekly posters spans weeks 2–17. It sits above a four-phase plan with proposed targets and a $220k budget distributed across five channels.",
+  "category": "Application",
+  "practical_value": "A campaign designer can identify the week’s poster, the phase it serves and the resources allocated to that phase’s distribution channels.",
+  "content_islands": [
+    {
+      "name": "Running header and campaign idea",
+      "spec": "Place “This week’s key” beneath Campaign idea. Align the weekly publishing premise to its right. Explain that a waitlist dot represents 1,000 people while receipt dots represent money."
+    },
+    {
+      "name": "Weekly poster strip",
+      "spec": "Align one equal-width portrait per week from week 2 through week 17. Place week and date beneath each. Group by Tease, Beta, Launch and Sustain, and highlight week 10 in Signal blue."
+    },
+    {
+      "name": "Phase plan",
+      "spec": "Place a matrix below the strip with one column per phase and rows for activity and targets. Identify weekly active keys as the north star. Treat the quantities as campaign targets."
+    },
+    {
+      "name": "Budget",
+      "spec": "List creators, paid social, OOH, community and events, and PR and content beneath the plan. Align amounts, shares, dot bars and channel notes. State the January–April 2027 total of $220k and the value of $1,000 per dot."
+    }
+  ]
+}

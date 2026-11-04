@@ -1,0 +1,37 @@
+{
+  "id": "D18",
+  "title": "Physical",
+  "image": "d18.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 3,
+    "column": 2
+  },
+  "slide_intent": "Teach designers to choose what someone can read at the distance of use. A commuter across the tracks and a person holding a card encounter the same identity at different scales.",
+  "strategic_value": "Halfkey can connect a public encounter with a spending limit to an object someone carries home. The weekly figure and split mark give the two encounters a common visual reference.",
+  "demonstration": "Two large photographs place posters in London and New York. A lower row applies the mark to a tote, the two sides of a business card and a sticker sheet.",
+  "category": "Application",
+  "practical_value": "A designer can compare the amount of information that fits a distant poster with the contact details or small marks that work on objects held in the hand.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place Halfkey and Brand book at upper left, Physical and 18 at upper right."
+    },
+    {
+      "name": "Transit series",
+      "spec": "Place the London platform photograph at upper left. Keep all four weekly posters, their distinct numbers and dot states visible and caption the placement below."
+    },
+    {
+      "name": "Street placement",
+      "spec": "Place the SoHo photograph at upper right. Show the eight-sheet blue poster as a single composition, with the $40 limit and $41 exclusion at left and the disc at right."
+    },
+    {
+      "name": "Small physical items",
+      "spec": "Arrange the tote, both sides of an 85 × 55 mm card and the sticker sheet beneath the photographs. Show the mark on the dark card face and contact details on the white reverse."
+    },
+    {
+      "name": "Production note",
+      "spec": "Place the “Made to be photographed” note beside the small items. Keep the distance requirement, Pantone 2728 C spot blue and uncoated white stock together."
+    }
+  ]
+}

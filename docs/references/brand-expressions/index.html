@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand expressions · Design references</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #18191d; background: #fafaf9; font: 1rem/1.5 system-ui, sans-serif; }
+  main { max-width: 78rem; margin: auto; padding: clamp(1.25rem, 4vw, 4rem); }
+  header { border-top: 3px solid; padding-top: 1rem; }
+  .label { font: 600 .75rem/1.3 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
+  h1 { margin: 2rem 0 .75rem; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; letter-spacing: -.06em; }
+  header p { max-width: 42rem; color: #54565f; }
+  h2 { margin: 2.5rem 0 1rem; border-top: 1px solid #ccced3; padding-top: 1rem; }
+  .collections { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 1.5rem; }
+  .collection { display: block; max-width: 34rem; color: inherit; text-decoration: none; }
+  .collection img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: #f0f0ed; border: 1px solid #d5d6dc; }
+  .collection h3 { margin: .75rem 0 0; font-size: 1.8rem; letter-spacing: -.04em; }
+  .collection p { margin: .25rem 0; color: #54565f; }
+  .collection:hover h3 { text-decoration: underline; }
+  a:focus-visible { outline: 3px solid #243aff; outline-offset: 4px; }
+</style>
+</head>
+<body><main>
+<header>
+  <span class="label">Design references</span>
+  <h1>Brand expressions</h1>
+  <p>Explore how each brand uses color, typography, imagery and voice. Each gallery pairs examples from the source material with design specifications.</p>
+</header>
+<section aria-labelledby="collections">
+  <h2 id="collections" class="label">Collections</h2>
+  <div class="collections">
+    <a class="collection" href="./Halfkey/index.html">
+      <img src="./Halfkey/manifests/d01.png" alt="" width="765" height="430">
+      <h3>Halfkey</h3>
+      <p>Brand book and App Store panels · 25 slides</p>
+    </a>
+    <a class="collection" href="./NASA/index.html">
+      <img src="./NASA/manifests/v03.png" alt="">
+      <h3>NASA vehicle identification</h3>
+      <p>Color, lettering and placement across a fleet</p>
+    </a>
+    <a class="collection" href="./North-Sea-Jazz/index.html">
+      <img src="./North-Sea-Jazz/manifests/ns01.png" alt="">
+      <h3>NN North Sea Jazz Festival</h3>
+      <p>Rhythm across posters, motion and print</p>
+    </a>
+    <a class="collection" href="./Mozilla-Protocol/index.html">
+      <img src="./Mozilla-Protocol/manifests/p01.png" alt="">
+      <h3>Mozilla Protocol</h3>
+      <p>Typography and navigation across two brand themes</p>
+    </a>
+  </div>
+</section>
+</main></body>
+</html>

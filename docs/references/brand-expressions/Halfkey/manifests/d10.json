@@ -1,0 +1,33 @@
+{
+  "id": "D10",
+  "title": "Allowance dot states",
+  "image": "d10.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 2,
+    "column": 5
+  },
+  "slide_intent": "Teach designers to distinguish balance, availability and pending action in one visual vocabulary so a viewer can tell what a key currently permits.",
+  "strategic_value": "Halfkey can carry a recognizable key from a compact wallet row to a weekly poster while keeping an empty allowance distinct from a paused key or a request awaiting approval.",
+  "demonstration": "Five states of the $40 key retain the disc footprint and vary fill, dot area or a separate black indicator. Below them, the same device appears at six sizes and across four poster treatments.",
+  "category": "Geometry",
+  "practical_value": "A designer can choose the locked outline for a paused key, the black indicator for a waiting ask, and a simplified twelve-dot drawing at 24 px or below.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Retain the small brand-book header, title and folio above the pale dotted field."
+    },
+    {
+      "name": "State comparison",
+      "spec": "Arrange five equal columns labeled Full, Spending, Empty, Locked and Ask. Show a full $40 disc, the partly depleted $12.40 disc, the spent pinpoints, empty outlined places and a full disc with one black ask dot. Put a status line and a brief explanation under each."
+    },
+    {
+      "name": "Size range",
+      "spec": "Place the six scale specimens at lower left, labeled 16, 24, 32, 48, 64 and 96 px. Put the small-size redraw rule underneath and finish with a compact Weekly SOL buy row that pairs the symbol with its balance."
+    },
+    {
+      "name": "Weekly poster series",
+      "spec": "Place four same-size posters side by side at lower right. Use blue, ink, white and pale backgrounds, a key drawing and a single result or status on each. Keep the comparisons close enough to see how each key state changes the composition."
+    }
+  ]
+}

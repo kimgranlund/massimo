@@ -58,7 +58,7 @@ otherwise -> `other/`
 
 ## Legacy
 
-- `docs/references/Halfkey/**`
+- `docs/references/brand-expressions/**`
 
 ## Caps
 

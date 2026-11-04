@@ -1,0 +1,36 @@
+{
+  "id": "D15",
+  "title": "App Store",
+  "image": "d15.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 3,
+    "column": 5
+  },
+  "slide_intent": "Teach designers to give each store screenshot one claim and a product view a shopper can inspect. A sequence lets the shopper learn the promise in stages.",
+  "strategic_value": "Halfkey can introduce delegated spending through a progression from setting a limit to asking, recording and stopping. A repeated phone crop can make those changes easier to compare.",
+  "demonstration": "Five equally framed portraits pair a headline and a phone screen. The ground cycles through Signal blue, Ground, Ink, White and Screen while the phone stays aligned.",
+  "category": "Application",
+  "practical_value": "A designer can choose which screen belongs under a claim and check that adjacent panels answer different questions.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place Halfkey and Brand book at upper left, App Store and 15 at upper right."
+    },
+    {
+      "name": "Sequence principle",
+      "spec": "Place “One proof line per shot.” above the strip on the left. Align the format note at upper right. Specify 1290 × 2796 px artwork for the 6.9-inch iPhone format."
+    },
+    {
+      "name": "Five store panels",
+      "spec": "Place AS01–AS05 as five equal portraits in one row. Use the same headline, supporting line and phone positions. Caption them in order as Home on Signal blue, Key on Ground, Ask on Ink, Receipt on White and Stopped on Screen. Keep the individual claims and screens paired."
+    }
+  ],
+  "panels": [
+    "as01.json",
+    "as02.json",
+    "as03.json",
+    "as04.json",
+    "as05.json"
+  ]
+}

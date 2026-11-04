@@ -1,0 +1,33 @@
+{
+  "id": "D02",
+  "title": "Contents",
+  "image": "d02.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 1,
+    "column": 2
+  },
+  "slide_intent": "Orient a reader to the organizing idea and the page sequence so they can choose where to look next.",
+  "strategic_value": "Halfkey can introduce its countable-dot convention at the point of navigation. Counting dots already helps the reader locate the current page.",
+  "demonstration": "The left column states the brand premise and explains the value of a full, spent or empty position. Two columns on the right group the numbered contents. A row of 20 dots highlights position two in blue.",
+  "category": "Layout",
+  "practical_value": "An editor can use a topic group to find a page and use the highlighted dot to locate that page within the book.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the book identifiers at upper left and Contents with page 02 at upper right."
+    },
+    {
+      "name": "Brand premise",
+      "spec": "Set the one-line brand idea as a large multiline statement in the left column. Place the short explanation of the allowance dots below it."
+    },
+    {
+      "name": "Contents index",
+      "spec": "Stack Foundations above Signature in the middle column and Product above Market at right. Pair every title with its page number and separate adjacent entries with thin rules."
+    },
+    {
+      "name": "Page indicator",
+      "spec": "Place the one-dot-per-page caption and row of twenty dots along the lower left. Use blue for the second dot."
+    }
+  ]
+}

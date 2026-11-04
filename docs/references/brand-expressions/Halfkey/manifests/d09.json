@@ -1,0 +1,37 @@
+{
+  "id": "D09",
+  "title": "Allowance dot construction",
+  "image": "d09.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 1,
+    "column": 3
+  },
+  "slide_intent": "Teach designers to turn a monetary limit into a countable figure. A stable grid gives the viewer a way to compare what remains as a purchase changes the balance.",
+  "strategic_value": "Halfkey can make the dot disc both a recognizable brand device and a way to read the delegated allowance.",
+  "demonstration": "A numbered $40 key establishes the spending order. Three size specimens show how a single dot represents a full, partial or spent unit. Examples assign different dollar values to a dot for larger allowances.",
+  "category": "Geometry",
+  "practical_value": "A designer can pick a unit that keeps a key at 120 dots or fewer, then draw a partly spent unit by scaling its area to the share left.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place Halfkey and Brand book at upper left, with the slide title and folio at upper right on a pale dotted field."
+    },
+    {
+      "name": "Construction drawing",
+      "spec": "Give the left half to the $40 key on a square grid of pitch 96 px. Number the 40 blue dots in clockwise spending order from the top and place four open sockets in mirrored pairs. Mark the starting point."
+    },
+    {
+      "name": "Dot sizes",
+      "spec": "Align three equal square frames across the upper right. Label the full dot with radius 0.44 times the pitch, the partial dot with its area rule and the spent dot with radius 0.13 times the pitch."
+    },
+    {
+      "name": "Construction rules",
+      "spec": "Arrange Grid, Order, Sockets and Cents in two columns beneath the sizes. Describe outside-in depletion, mirror-paired empty positions and a dot at 40% area for $0.40 remaining in a $1 unit."
+    },
+    {
+      "name": "Allowance examples",
+      "spec": "Set a three-row table below the rules. Pair each small disc with its key, allowance, unit value and dot count. Weekly SOL buy uses 40 dots at $1 each, Rent buffer uses 120 at $5 and Kamino guard uses 60 at $25."
+    }
+  ]
+}

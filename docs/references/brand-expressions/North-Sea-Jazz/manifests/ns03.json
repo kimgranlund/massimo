@@ -1,0 +1,28 @@
+{
+  "id": "NS03",
+  "title": "Friday festival program cover",
+  "image": "ns03.png",
+  "source": "../sources/11-brochure.jpg",
+  "location": {
+    "unit": "whole image"
+  },
+  "slide_intent": "Show how a publication can tell someone which program to pick up at a glance. Giving the day and date most of the cover lets edition information carry the composition.",
+  "strategic_value": "The festival can connect a practical timetable to its larger identity. The cyan date and striped lettering recall the campaign, while the small signature identifies the organizer.",
+  "demonstration": "A hand holds a black program at an angle. Large cyan lettering gives Friday, 8 July and 2022 the dominant area. Thin parallel cuts interrupt the strokes. White marks and a FESTIVAL PROGRAM label sit below.",
+  "category": "Application",
+  "practical_value": "Use this cover when deciding which words to enlarge on a daily program. The edition date leads, and the publication label remains readable in a separate corner.",
+  "content_islands": [
+    {
+      "name": "Hand-held publication",
+      "spec": "Retain the photographic frame and diagonal booklet. The hand establishes scale and partially overlaps the artwork."
+    },
+    {
+      "name": "Date field",
+      "spec": "Stack the weekday, day and month, and year across the black cover in large cyan capitals and numerals. Let the thin cuts in the letterforms echo the animated campaign."
+    },
+    {
+      "name": "Publication identifiers",
+      "spec": "Place the compact white festival signature in the lower left of the cover and the white two-line publication label at lower right. Leave a black band between these identifiers and the date."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "AS02",
+  "title": "$40 a week is a key. It can’t spend $41.",
+  "image": "as02.png",
+  "source": "../03-HWIk3vTWAAEdAQ2.jpeg",
+  "location": {
+    "row": 1,
+    "column": 2
+  },
+  "slide_intent": "Show how a recurring instruction becomes a bounded allowance so a visitor can inspect the terms before delegating a purchase.",
+  "strategic_value": "The $40/$41 contrast gives a visitor a memorable boundary to look for in the interface.",
+  "demonstration": "A configured key shows its allowance, operation, venue, expiry and the instruction in the owner’s words. The mockup illustrates the configured limit. It does not show an attempted $41 spend.",
+  "category": "Application",
+  "practical_value": "Use this panel to match a natural-language request to the fields a person can inspect before trusting a recurring action.",
+  "content_islands": [
+    {
+      "name": "Headline field",
+      "spec": "On a near-white ground, set the first sentence on one line and the second directly beneath. Follow with “Write a limit in plain words. The chain holds it.”"
+    },
+    {
+      "name": "Key overview",
+      "spec": "Align a centered, cropped black-rimmed phone with the adjacent panels. Beneath the Key navigation title, enlarge the blue dot field with four outlined sockets. Center “Weekly SOL buy” and the blue $40 remaining amount below."
+    },
+    {
+      "name": "Terms",
+      "spec": "Use a rounded white block with four divided rows. Pair What, How much, Where and Until with “Buy SOL, swap only”, “$40 a week”, “Jupiter” and “31 Mar 2027”."
+    },
+    {
+      "name": "Owner’s instruction",
+      "spec": "Below the terms, label the text “In your words” and quote the request to buy $40 of SOL on Jupiter every Friday until the end of March. Let the Pause key control meet the lower crop."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "D04",
+  "title": "Logo",
+  "image": "d04.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 1,
+    "column": 4
+  },
+  "slide_intent": "Show how a symbol can express a relationship and how to choose a signature for the space available. The reader needs to recognize the same identity across different shapes of placement.",
+  "strategic_value": "The solid half and dotted half can keep Halfkey’s distinction between owner and agent legible when the symbol appears alone.",
+  "demonstration": "A large horizontal lockup pairs a split circle with the lowercase wordmark. Beneath it, three specimen cards isolate the symbol, the wordmark and a stacked lockup.",
+  "category": "Brand",
+  "practical_value": "A designer can choose the standalone symbol for an avatar, the wordmark where the symbol is already present, or the stacked lockup for a square or tall format.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the book identifiers at upper left and Logo with page 04 at upper right."
+    },
+    {
+      "name": "Primary lockup",
+      "spec": "Place the dark solid semicircle and blue dotted half to the left of the lowercase wordmark. Give the lockup most of the upper row."
+    },
+    {
+      "name": "Lockup explanation",
+      "spec": "Use the narrow upper-right column to explain the meaning of the two halves and the wordmark treatment."
+    },
+    {
+      "name": "Alternate signatures",
+      "spec": "Place three equal specimen cards across the lower row. Center the symbol, wordmark and stacked lockup in their respective cards. Keep each usage caption at the bottom."
+    }
+  ]
+}

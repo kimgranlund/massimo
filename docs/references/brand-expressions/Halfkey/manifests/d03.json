@@ -1,0 +1,41 @@
+{
+  "id": "D03",
+  "title": "Idea and voice",
+  "image": "d03.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 1,
+    "column": 3
+  },
+  "slide_intent": "Teach writers to describe an agent’s financial action in terms a tired person can check. A specific amount, reason or limit helps the reader decide whether anything needs their attention.",
+  "strategic_value": "Halfkey can give its agent a consistent, accountable voice. The Done, Ask and Stopped examples show how the tone can stay calm even when the outcome changes.",
+  "demonstration": "A headline about fatigue introduces a story, four personality traits and four speaking rules. Three paired examples contrast preferred and discouraged wording for the same event.",
+  "category": "Voice",
+  "practical_value": "A writer can revise a stopped-request message by naming who asked, what they wanted and which limit stopped the action.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the book identifiers at upper left and Idea and voice with page 03 at upper right."
+    },
+    {
+      "name": "Premise",
+      "spec": "Set the headline about fatigue prominently above the columns. Preserve its short two-line measure."
+    },
+    {
+      "name": "Story",
+      "spec": "Describe the busy holder, the agent’s limits and the approval step in the left column, with the supporting figures grouped beneath."
+    },
+    {
+      "name": "Personality",
+      "spec": "Stack Exact, Calm, Plain and Accountable in the center column, each with one brief explanation."
+    },
+    {
+      "name": "Speaking rules",
+      "spec": "Number the four rules in the right column. Keep their alignment and line lengths easy to scan."
+    },
+    {
+      "name": "Paired copy examples",
+      "spec": "Span the lower width with a comparison table. Keep Done, Ask and Stopped as row labels, with preferred and discouraged wording side by side."
+    }
+  ]
+}

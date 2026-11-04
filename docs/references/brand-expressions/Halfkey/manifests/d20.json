@@ -1,0 +1,29 @@
+{
+  "id": "D20",
+  "title": "Launch kit",
+  "image": "d20.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 4,
+    "column": 5
+  },
+  "slide_intent": "Show how to select a small set of assets for a public release. Someone preparing a launch needs to know which piece carries the invitation, announcement, street message or referral.",
+  "strategic_value": "Halfkey can keep the launch recognizable across successive encounters while giving each piece a distinct job. The closing line and mark bring the set back to its central promise.",
+  "demonstration": "Four captioned assets progress from a waitlist teaser to a launch post, an eight-sheet poster and a referral card. A full-width dark panel closes the book with the brand promise, founder contact and split mark.",
+  "category": "Application",
+  "practical_value": "A designer can choose the deliverable for a release stage by reading its caption and comparing the channel, format and message with the adjacent examples.",
+  "content_islands": [
+    {
+      "name": "Running header and kit label",
+      "spec": "Place Halfkey and Brand book at upper left, Launch kit and 20 at upper right, then repeat Launch kit above the asset row."
+    },
+    {
+      "name": "Launch assets",
+      "spec": "Arrange four pieces in release order. Use narrow portraits for “Write your first key.” and “Out now on iPhone.”, a wide blue street poster for the $40 limit, and a white referral card with “Give a friend half a key.” Place a format and release caption beneath each."
+    },
+    {
+      "name": "Closing signature",
+      "spec": "Run an ink field across the full lower panel. Set “Give it half the key.” large at left, place the founder and contact details below it, and anchor the white-and-blue split disc at right."
+    }
+  ]
+}

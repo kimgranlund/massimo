@@ -1,0 +1,33 @@
+{
+  "id": "AS01",
+  "title": "Give it half the key.",
+  "image": "as01.png",
+  "source": "../03-HWIk3vTWAAEdAQ2.jpeg",
+  "location": {
+    "row": 1,
+    "column": 1
+  },
+  "slide_intent": "Introduce delegated authority through a routine purchase so a visitor can connect an unfamiliar product idea to a job they recognize.",
+  "strategic_value": "A visitor can connect the promise of delegated authority to an everyday job, buying SOL on a schedule.",
+  "demonstration": "The depicted home screen combines a balance, an allowance, two other keys and one outstanding request.",
+  "category": "Application",
+  "practical_value": "Use as the first image in a store listing to establish the category and teach readers how to recognize a key.",
+  "content_islands": [
+    {
+      "name": "Headline field",
+      "spec": "Use a signal-blue field. Set large white, left-aligned type with a break after “half”. Beneath, in smaller pale type, set “A self-custody Solana wallet with an agent that runs your routine.”"
+    },
+    {
+      "name": "Phone and balance",
+      "spec": "Center a black-rimmed phone, about three quarters of the panel width, with its top roughly one third down and its foot cropped. On the pale screen, place the small split mark and a bell above “Balance” and $12,480.22."
+    },
+    {
+      "name": "Featured key",
+      "spec": "Center a blue dot field on a white card. Beneath it place “Weekly SOL buy”, “$40.00 of $40 left this week” in blue, then the Friday 09:00 Jupiter schedule."
+    },
+    {
+      "name": "Other keys and ask",
+      "spec": "Stack compact Rent buffer and Kamino guard rows, then a black “1 ask” strip showing the $410 USDC repayment question and a right arrow."
+    }
+  ]
+}

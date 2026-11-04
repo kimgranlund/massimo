@@ -1,0 +1,28 @@
+{
+  "id": "V02",
+  "title": "The Identification Configuration With the Logotype",
+  "image": "v02.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 50
+  },
+  "slide_intent": "Teach designers to preserve a reading order when lettering must fit a real object. A handle, molding or door edge can interrupt a name that reads clearly on a flat drawing.",
+  "strategic_value": "NASA can identify both the agency and the local center with the same arrangement on different vehicles. A common left edge helps the four pieces read as one identification even when the door hardware requires a shift.",
+  "demonstration": "The sheet pairs a small passenger-door placement with a large annotated elevation. The large diagram stacks the government-use lines, red NASA logotype, two-line agency name and research center. Inch dimensions establish a hierarchy within the group.",
+  "category": "Layout",
+  "practical_value": "Use the annotated elevation to set the heights and spacing of the elements, then use the smaller placement example to place the group on the passenger door while keeping its elements flush left.",
+  "content_islands": [
+    {
+      "name": "Heading and installation notes",
+      "spec": "Place the heading in the first column and the installation notes in the next two. Explain that the center name may occupy one or two lines and that its position may need to shift around trim."
+    },
+    {
+      "name": "Passenger-door inset",
+      "spec": "Below the divider, set a small elevation at left. Keep the lockup and door outline together and identify this as the passenger-door example."
+    },
+    {
+      "name": "Dimensioned door elevation",
+      "spec": "Give the larger door drawing the lower-right field. Draw the outline, window, mirror and handle. Stack the four elements on a common left edge and flank them with dimension marks. Use a red logotype and black type. Show the center name 2 inches below the agency name as specified in the notes."
+    }
+  ]
+}

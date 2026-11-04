@@ -1,0 +1,41 @@
+{
+  "id": "P02",
+  "title": "One set of roles, two type scales",
+  "image": "p02.png",
+  "source": "../sources/typography.html",
+  "location": {
+    "section": "Type Scale → Themes",
+    "additional_sources": [
+      "../sources/_mozilla.scss",
+      "../sources/_firefox.scss"
+    ],
+    "format": "Editorial rendering of released v22.0.0 standard desktop settings at a 16 px root"
+  },
+  "slide_intent": "Teach designers to match the apparent prominence of a heading across typefaces. Two faces at one numerical size can occupy a different visual place in the reading order.",
+  "strategic_value": "Mozilla and Firefox can give the same title role comparable prominence across their websites while preserving each brand’s chosen face. Protocol assigns the larger title sizes to Mozilla Headline.",
+  "demonstration": "At a 16 px root, the standard desktop Title 2XL uses 76 px for Mozilla and 64 px for Firefox. Title MD uses 48 px and 40 px. Body MD uses 16 px in both columns, with line-height multipliers of 1.25 and 1.5 respectively.",
+  "category": "Typography",
+  "practical_value": "Choose a semantic role first and read the size and line height from the relevant brand scale. The aligned rows show precisely which values change for that role.",
+  "content_islands": [
+    {
+      "name": "Study header",
+      "spec": "Identify Protocol 22.0.0 and title the two-column comparison."
+    },
+    {
+      "name": "Brand columns",
+      "spec": "Align Mozilla at left and Firefox at right. Use identical role names and position their specimens on corresponding rows."
+    },
+    {
+      "name": "Large and medium title rows",
+      "spec": "Set Title 2XL and Title MD in the two headline faces. Label each specimen with the family, pixel size and unitless line height from the standard brand scale."
+    },
+    {
+      "name": "Body row",
+      "spec": "Set Body MD in each brand’s text face at 16 px. Retain both line-height values in the labels."
+    },
+    {
+      "name": "Scope note",
+      "spec": "Mark the comparison as a standard desktop scale with a 16 px root. The board samples three roles."
+    }
+  ]
+}

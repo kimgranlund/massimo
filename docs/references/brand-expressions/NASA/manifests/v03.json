@@ -1,0 +1,32 @@
+{
+  "id": "V03",
+  "title": "Motor Vehicle Identification Demonstrations",
+  "image": "v03.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 52
+  },
+  "slide_intent": "Teach designers which relationships to preserve when the carrier changes shape and scale. A person viewing a moving fleet encounters different silhouettes and viewing distances, yet still needs to identify the agency.",
+  "strategic_value": "NASA can give a pickup, panel van or bus an identification suited to its body. Consistent door lettering can tie the vehicles together while a second, larger display of the logotype takes advantage of open panel space.",
+  "demonstration": "Seven labeled side elevations pair installation notes with a pickup, two panel trucks, a tractor-trailer van, a bus, a truck and a station wagon. The examples change the size, position and color of the logotype. The large white-and-blue vehicles carry the red mark at different scales.",
+  "category": "Application",
+  "practical_value": "Choose the closest vehicle body and use the example to decide where lettering can sit flush left, whether the logotype can move away from the door and how large it can become.",
+  "content_islands": [
+    {
+      "name": "Explanation and keyed notes",
+      "spec": "Set the landscape sheet’s heading at upper left. Run the introduction and lettered installation notes across its upper band. Use a horizontal rule to separate text from drawings."
+    },
+    {
+      "name": "Pickup and panel trucks",
+      "spec": "Arrange a–c across the first drawing row. Compare the rear black mark on the light pickup with white marks placed on dark panels. Keep the label for each elevation beside its drawing."
+    },
+    {
+      "name": "Large vehicles",
+      "spec": "Place a broadside tractor-trailer van and a bus side by side in the middle row. Divide each body into white above and blue below, and use a red logotype on the white field. Associate the notes specifying a 24-inch logotype on the trailer and a 12-inch logotype on the bus."
+    },
+    {
+      "name": "Truck and station wagon",
+      "spec": "Place the white-cab, gray-body truck and white station wagon along the foot of the sheet. The truck carries the red logotype on its cab door. The station wagon separates its rear logotype from the lettering on the front door."
+    }
+  ]
+}

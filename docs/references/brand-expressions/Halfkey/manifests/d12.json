@@ -1,0 +1,37 @@
+{
+  "id": "D12",
+  "title": "How the AI shows up",
+  "image": "d12.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 2,
+    "column": 1
+  },
+  "slide_intent": "Teach writers to distinguish an action the agent completed, a decision the person must make and an action that was blocked. People need the right level of detail and a clear sense of who acts next.",
+  "strategic_value": "Halfkey can make delegated action easier to follow by keeping the account of an event consistent from lock-screen notification to in-app detail.",
+  "demonstration": "Five columns pair a state definition, a notification and a corresponding in-app card. Each ends with a writing rule for that state.",
+  "category": "Voice",
+  "practical_value": "A writer can choose a question and approval action for an Ask, a factual amount and refill date for a Limit, or a calm explanation of a Stopped signature.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Set the book identity at upper left and How the AI shows up with folio 12 at upper right."
+    },
+    {
+      "name": "State headings",
+      "spec": "Use five aligned columns for Done, Ask, Receipt, Limit and Stopped. Add one short trigger beneath each heading, from a key running as written to Watch blocking a signature."
+    },
+    {
+      "name": "Lock-screen notifications",
+      "spec": "Run a full-width ink band behind five compact white alerts. Show the brand, timestamp, leading result or question and a short explanation in each. Align each alert directly under its state."
+    },
+    {
+      "name": "In-app cards",
+      "spec": "Below the band, expand the same events into five pale cards. Show the completed purchase and fee, the $410 approval request, the 0.84 SOL restaking receipt, the spent allowance and refill, and the blocked unknown app. Give the approval choice prominent controls and the blocked event a shield."
+    },
+    {
+      "name": "Editorial rules",
+      "spec": "Align five short captions beneath their cards. Lead with what happened, give one question with cost and reason, state what was checked and what it cost, describe limits plainly, and name the blocked action calmly."
+    }
+  ]
+}

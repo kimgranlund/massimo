@@ -1,0 +1,37 @@
+{
+  "id": "D13",
+  "title": "Motion",
+  "image": "d13.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 2,
+    "column": 2
+  },
+  "slide_intent": "Teach motion designers to give spending and arrival distinct directions. The viewer can follow the meaning of a change as the same figure empties or builds.",
+  "strategic_value": "Halfkey can connect movement to the financial event it represents. Restrained timing and a direct reduced-motion end state can keep the balance and its outcome central.",
+  "demonstration": "Two seven-frame sequences show a key emptying ring by ring during a spend and building from the center when the app opens. A curve and timing notes specify the intended playback.",
+  "category": "Motion",
+  "practical_value": "A designer can storyboard a spend outside in, an opening inside out and the reduced-motion end state using the timing rules on the page.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the small book header and Motion folio above two full-width horizontal sequences."
+    },
+    {
+      "name": "Spending sequence",
+      "spec": "Arrange seven disc frames on equal centers. Deplete clockwise from the outer ring inward while the numeric balance counts down. Caption each frame with elapsed time and balance, from 0 ms and $40.00 left to 840 ms and $0.00 left."
+    },
+    {
+      "name": "App-opening sequence",
+      "spec": "Align seven frames beneath the spending sequence. Begin at the center and build outward, then fade in the sockets. Caption elapsed time from 40 to 640 ms and omit the spending balances."
+    },
+    {
+      "name": "Easing curve",
+      "spec": "At bottom left, draw the curve for cubic-bezier(0.2, 0, 0, 1) in a square frame."
+    },
+    {
+      "name": "Timing and reduced motion",
+      "spec": "Beside the curve, use three short blocks. Stagger shrinking dots by 15 ms with a 240 ms duration, and growing dots by 10 ms with a 240 ms duration. Apply the common curve without overshoot. With reduced motion on, show the end state immediately."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "D07",
+  "title": "Colour",
+  "image": "d07.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 1,
+    "column": 1
+  },
+  "slide_intent": "Teach designers to choose how much space a color occupies as deliberately as they choose its hue. Repetition can give viewers a point of recognition, while a change in area can turn a small cue into the first thing they see.",
+  "strategic_value": "Halfkey can build recognition around Signal blue. A blue field on one poster can carry the same identity as a small blue allowance graphic on a quiet screen.",
+  "demonstration": "Four equal-width swatches give Signal blue, Ink, Ground and White equal room for inspection. In the strip showing use across a typical set of pages, Ground occupies 56% and Blue occupies 3%.",
+  "category": "Color",
+  "practical_value": "Review the balance across a campaign. A full-blue poster can sit within the guidance when the surrounding pieces give most of their area to neutrals.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Use a pale landscape canvas with a faint dot grid. Place Halfkey and Brand book at upper left, Colour and 07 at upper right."
+    },
+    {
+      "name": "Color principle",
+      "spec": "Set “One blue, used rarely and loud.” as the largest text. Align it to the left edge of the palette."
+    },
+    {
+      "name": "Print note",
+      "spec": "Align a short note above the fourth swatch. Specify Pantone 2728 C as a spot color for large blue fields on paper."
+    },
+    {
+      "name": "Main swatches",
+      "spec": "Place Signal blue, Ink, Ground and White in four equal columns. Set the name at upper left and the HEX, RGB, CMYK and print references at lower left. Leave open space between them."
+    },
+    {
+      "name": "Supporting swatches",
+      "spec": "Place Screen, Tile, Socket and Mute beneath the main palette on the same grid. Reduce the cards to about half the height and retain the reference fields."
+    },
+    {
+      "name": "Usage strip and legend",
+      "spec": "Span the four columns with a thin segmented bar. Caption it “Proportions of use across a typical set of pages.” Label the segments Ground 56%, Ink 18%, White 14%, Greys 7%, Blue 3%, Screen 2%."
+    }
+  ]
+}

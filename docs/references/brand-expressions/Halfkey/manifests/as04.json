@@ -1,0 +1,33 @@
+{
+  "id": "AS04",
+  "title": "Every action leaves a receipt.",
+  "image": "as04.png",
+  "source": "../03-HWIk3vTWAAEdAQ2.jpeg",
+  "location": {
+    "row": 1,
+    "column": 4
+  },
+  "slide_intent": "Make an automated action inspectable so the person who delegated it can account for the amount, fee and signer.",
+  "strategic_value": "Specific amounts, a signature description and the depleted allowance make the accountability promise legible.",
+  "demonstration": "A sample ticket records a $40.00 Jupiter purchase of 0.2318 SOL and ties it back to the Weekly SOL buy key. One ticket illustrates the record format.",
+  "category": "Application",
+  "practical_value": "Use this panel as a reference for turning a broad accountability claim into a readable transaction record.",
+  "content_islands": [
+    {
+      "name": "Headline field",
+      "spec": "On white, break the black headline after “action” and follow it with “What it did, which key it used, what it cost.”"
+    },
+    {
+      "name": "Ticket opening",
+      "spec": "Place a centered black-rimmed phone at the same height as the other panels. Inside the pale Ticket screen, start a rounded white ticket with “Ticket No 0418” and the purchase summary in large black type."
+    },
+    {
+      "name": "Receipt details",
+      "spec": "Arrange six divided label/value rows for Key, Paid, Received, Fee, When and Signed. Show Weekly SOL buy, $40.00, 0.2318 SOL, $0.16, Fri 7 Nov, 09:00 and “Agent, inside the key” respectively."
+    },
+    {
+      "name": "Allowance and sharing",
+      "spec": "Separate the receipt stub with a dotted perforation. Pair the spent dot field with “$0 of $40 left this week”. Place a full-width black “Share receipt” control beneath the ticket."
+    }
+  ]
+}

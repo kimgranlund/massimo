@@ -15,6 +15,17 @@ A brand expression board gathers examples of how a brand looks, speaks or behave
 
 **What makes a slide especially good?** Identify the choice that earns the slide a place in the collection. One image can do this on its own. For a slide with several islands, try mentally removing one. On D07, removing the usage strip preserves the palette but loses the guidance about proportion. That tells you precisely what the strip contributes.
 
+## Controlled language rules
+
+1. Use the same six fields in order: Slide intent, Strategic value, Demonstration, Category, Practical value and Content islands. Preserve the printed slide title and use a stable catalog term for its category.
+2. Name the judgment the slide teaches and why it matters to a person. Explain what someone can notice, understand, feel or remember.
+3. State visible evidence in the present tense. Use verbs such as *pairs*, *aligns* and *assigns*. Keep numbers attached to their units and scope. Use *can* for an inferred strategic benefit. Claim an achieved audience response only when there is evidence of that response.
+4. Give each slide one primary category. Name a practical decision and the example that helps a reader make it.
+5. Give content islands concrete names in reading order. Describe each with an instruction naming its placement, contents or relationship to another island.
+6. Use an adjective or metaphor when it clarifies a design choice. Tie “loud” blue to the area of the field and the surrounding neutrals.
+
+The [Halfkey manifest index](Halfkey/manifests/README.md) applies these rules to every book page and App Store panel. [Book D / 07 Colour](Halfkey/manifests/d07.json) is the worked color spec.
+
 ## Finding the why
 
 **Color.** Ask what repeated encounters with the color could teach someone. On a sign, color can orient a viewer before they read. Across years, the same hue can become a point of recognition or carry a connection to a brand’s heritage. Its emotional effect depends on context, contrast and how boldly it is used. Look for the reason this slide supports. A new palette can aim to build equity over time even when it has no inherited associations.

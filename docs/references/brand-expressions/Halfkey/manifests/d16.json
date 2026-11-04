@@ -1,0 +1,33 @@
+{
+  "id": "D16",
+  "title": "Landing page",
+  "image": "d16.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 4,
+    "column": 1
+  },
+  "slide_intent": "Show how a landing page can introduce an unfamiliar promise, then let the visitor inspect how it works. Each viewport needs a clear next action.",
+  "strategic_value": "Halfkey can connect its promise of limited authority to a visible allowance. The landing page gives the visitor a chance to understand what writing a key means before proceeding.",
+  "demonstration": "Two browser views pair a pale hero with a dark first-scroll explanation. A weekly purchase instruction, a dot figure and the resulting key details connect the visitor’s words to the product.",
+  "category": "Application",
+  "practical_value": "A designer can decide which content to expose in the hero and which explanation to reveal on the first scroll.",
+  "content_islands": [
+    {
+      "name": "Running header and title",
+      "spec": "Place the page identity at the top and set “Landing page” above two side-by-side browser frames."
+    },
+    {
+      "name": "Hero",
+      "spec": "Label the left frame Hero. Place “Give it half the key.”, the wallet description and the blue Get Halfkey action on the left. Put the full-size dot disc on the right, with three smaller key examples in a strip below."
+    },
+    {
+      "name": "First scroll",
+      "spec": "Label the right frame First scroll. Use a dark ground and the headline “Write a limit in plain words. See it drawn as a key.” Align the instruction card, dot disc and key fields in one row. Place three numbered explanations below."
+    },
+    {
+      "name": "Implementation notes",
+      "spec": "Place four aligned notes below the frames. Cover the live disc spending $40 on scroll, the single blue action, continuity with the waitlist mechanic, and web typography."
+    }
+  ]
+}

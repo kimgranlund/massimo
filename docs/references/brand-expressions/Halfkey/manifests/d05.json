@@ -1,0 +1,37 @@
+{
+  "id": "D05",
+  "title": "Logo construction",
+  "image": "d05.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 1,
+    "column": 5
+  },
+  "slide_intent": "Teach designers to preserve a symbol’s proportions and redraw its detail as display size changes. At a small size, too many dots can close the gaps that give the mark its form.",
+  "strategic_value": "Halfkey can preserve the distinction between solid and dotted halves down to favicon scale by giving smaller masters fewer, larger dots.",
+  "demonstration": "A circle and cell diagram defines the geometry at left. The center relates the lockup to its spacing unit. Four optical masters at right compare dot counts as the symbol grows.",
+  "category": "Geometry",
+  "practical_value": "A designer can select a 16, 32, 64 or 128 px optical master for the output size and use the clear-space diagram to place the resulting lockup.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the book identifiers at upper left and Logo construction with page 05 at upper right."
+    },
+    {
+      "name": "Construction diagram",
+      "spec": "Place the split circle at left. Overlay a square grid on its dotted half, mark radius R and pitch p, and put the numbered construction rules below. Specify the inter-half gap as 0.075 R and cell pitch as R/5."
+    },
+    {
+      "name": "Clear-space diagram",
+      "spec": "Center the horizontal lockup within its tinted clearance field. Use x for the symbol height, 0.4x for the wordmark gap and 0.5x for the surrounding clearance."
+    },
+    {
+      "name": "Minimum sizes",
+      "spec": "Place separate Symbol, Lockup and Favicon entries below the clearance rules. Keep screen and print units attached to their values."
+    },
+    {
+      "name": "Optical sizes",
+      "spec": "Stack the four masters down the right column with labels and use ranges. Show two, three, four and five dots across at the respective master sizes."
+    }
+  ]
+}

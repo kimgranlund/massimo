@@ -1,0 +1,33 @@
+{
+  "id": "AS05",
+  "title": "Your key never leaves your phone.",
+  "image": "as05.png",
+  "source": "../03-HWIk3vTWAAEdAQ2.jpeg",
+  "location": {
+    "row": 1,
+    "column": 5
+  },
+  "slide_intent": "Explain a stopped request so a person can tell what was at stake, whether anything moved and what they can do next.",
+  "strategic_value": "The blocked state shows what a protective intervention looks like when an unknown app asks for funds.",
+  "demonstration": "Watch shows a request for all USDC, no covering key and no signature. The screen illustrates the blocked outcome. Key-storage location is a headline claim beyond what this screen establishes.",
+  "category": "Application",
+  "practical_value": "Use this panel to specify the information a user needs after an intervention, including who asked, what was at stake and what they can do next.",
+  "content_islands": [
+    {
+      "name": "Headline field",
+      "spec": "Use a pale blue-gray ground, a black headline broken after “never”, and the line “Watch stops anything no key covers.”"
+    },
+    {
+      "name": "Intervention card",
+      "spec": "Inside a centered black-rimmed phone, set Watch as the navigation title. Use a dark rounded card with a shield, a stopped-event identifier, “An unknown app asked to move all your USDC.” and “No key covers it. Watch stopped it.”"
+    },
+    {
+      "name": "Event details",
+      "spec": "In a white four-row block, pair Asked by, Wanted, Key and Signed with “Unknown app”, “All your USDC”, “None covers it” and “Nothing”."
+    },
+    {
+      "name": "Follow-up action",
+      "spec": "Finish the main content with a dark pill labeled “Block this app”. Leave quiet space between this button and the partially cropped bottom navigation."
+    }
+  ]
+}

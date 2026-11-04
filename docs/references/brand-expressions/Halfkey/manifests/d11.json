@@ -1,0 +1,37 @@
+{
+  "id": "D11",
+  "title": "Supporting graphics",
+  "image": "d11.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 3,
+    "column": 1
+  },
+  "slide_intent": "Teach designers to choose secondary imagery deliberately. Icon weight, dot texture and photographic subject each influence what attracts attention and how the product feels in everyday use.",
+  "strategic_value": "Halfkey can extend the visual language of its allowance dots into patterns and keep its photography rooted in the ordinary routines the agent handles.",
+  "demonstration": "The upper row pairs a regular-weight icon set with three dot-based graphics. The lower row pairs three routine photographs with direction for selecting similar images.",
+  "category": "Imagery",
+  "practical_value": "A designer can choose a line icon for an action, build a patterned field from dot area, or select a cool-toned photograph of an everyday routine.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Set the book header above two upper groups and a lower photography band. Use the same pale dotted background and wide margins as the adjoining book pages."
+    },
+    {
+      "name": "Icon specimens",
+      "spec": "At upper left, arrange three rows of small Phosphor regular outline icons. Place the weight note beneath the grid, including a 1.5 px line at 24 px and ink or white strokes."
+    },
+    {
+      "name": "Halftone specimens",
+      "spec": "At upper right, put three square samples side by side. Label the stepped change in dot area Ramp, the sampled silhouette Shape and the repeated key figures Pattern. Put one explanation below each specimen."
+    },
+    {
+      "name": "Photo direction",
+      "spec": "At lower left, align three landscape photographs with matching dimensions. Show a commuter holding a phone, a kitchen table at night and a morning dog walk. Caption each with the setting and time."
+    },
+    {
+      "name": "Selection notes",
+      "spec": "At lower right, group the Do and Don’t lists with separate filled and open bullets. Favor cool light, ordinary routines and hands or distant figures. Identify the exclusions, including crypto clichés, staged trading desks and warm golden grading."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "D14",
+  "title": "App",
+  "image": "d14.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 2,
+    "column": 3
+  },
+  "slide_intent": "Teach designers how an identity changes scale and role from a launcher icon to a working interface. Someone opening the app needs to recognize it, then find the balance, the decision or the record that matters.",
+  "strategic_value": "Halfkey can link recognition on the home screen with an account of what the agent may do, what needs approval and what already happened.",
+  "demonstration": "An icon study sits beside three aligned phone mockups. The mark identifies the app, while the allowance field and transaction details take different places in Home, Ask and Receipt.",
+  "category": "Application",
+  "practical_value": "A designer can compare how much attention to give the allowance graphic on Home, the approval control on Ask and the transaction breakdown on Receipt.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the brand-book header and App folio above a four-column composition. Give the icon studies the left column and align the phone mockups to a common top and baseline."
+    },
+    {
+      "name": "App icon",
+      "spec": "Place the white solid half and Signal blue dotted half together on a rounded Ink tile. Below the large icon, compare home-screen appearances on white and blue grounds and show small sizes labeled 60, 40 and 29."
+    },
+    {
+      "name": "Home screen",
+      "spec": "Set the balance above the featured Weekly SOL buy key. Pair its disc with the remaining amount and schedule, follow with the other keys, and put the waiting ask above bottom navigation."
+    },
+    {
+      "name": "Ask screen",
+      "spec": "Lead with the $410 USDC repayment question and the reason it falls outside the key. Stack the simulated result and associated key above a dark Face ID approval button and a secondary decline action."
+    },
+    {
+      "name": "Receipt screen",
+      "spec": "Lead Ticket No 0418 with the 0.2318 SOL purchase for $40.00. Align key, payment, receipt, fee, time and signer in rows. Follow with the depleted key and a dark share action."
+    }
+  ]
+}

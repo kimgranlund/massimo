@@ -1,0 +1,28 @@
+{
+  "id": "NS01",
+  "title": "Red transit poster",
+  "image": "ns01.png",
+  "source": "../sources/03-poster-red.jpg",
+  "location": {
+    "unit": "whole image"
+  },
+  "slide_intent": "Teach designers to suggest movement in a still piece of lettering. Changes in spacing and direction can lead the eye through a static word.",
+  "strategic_value": "The festival can give a printed poster the same rhythmic character as its moving announcements. The small white festival signature anchors the more freely shaped headline.",
+  "demonstration": "On a black poster, the red words NORTH, SEA and JAZZ stretch into bands of horizontal lines. The letter groups change angle as they descend. A narrow footer carries small white marks and the festival name.",
+  "category": "Typography",
+  "practical_value": "Separate the expressive type from the identifying information. A viewer can encounter the deformed headline at street scale and still find the stable festival signature below.",
+  "content_islands": [
+    {
+      "name": "Street setting",
+      "spec": "Keep the entire photograph. The narrow poster case stands near the center, beside a pole and in front of a passing transit vehicle. The surroundings establish viewing scale."
+    },
+    {
+      "name": "Festival name",
+      "spec": "Fill the upper poster with red capitals on black. Stack NORTH, SEA and JAZZ so the widths and angles change from line to line. Interrupt portions of the letterforms with parallel horizontal gaps."
+    },
+    {
+      "name": "Identity footer",
+      "spec": "Reserve a short band at the foot for marks and small text. Place the compact white North Sea Jazz signature at lower right, clear of the patterned headline."
+    }
+  ]
+}

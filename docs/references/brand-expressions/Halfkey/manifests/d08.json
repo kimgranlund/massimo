@@ -1,0 +1,33 @@
+{
+  "id": "D08",
+  "title": "Typography",
+  "image": "d08.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 1,
+    "column": 2
+  },
+  "slide_intent": "Teach designers to give words and numbers a deliberate voice. The face shapes how a line sounds to the reader, while weight, size and spacing determine which part leads.",
+  "strategic_value": "The same Suisse Int’l voice can introduce a weekly limit and report a balance. Giving amounts their own role can carry the brand promise into the moment someone checks their money.",
+  "demonstration": "The left specimen compares Medium and Regular using the same characters. The scale at right assigns six roles to examples that range from “$40 a week.” to a timestamp.",
+  "category": "Typography",
+  "practical_value": "Choose a role for an amount, transaction sentence or timestamp by comparing each at its intended size with its neighboring roles.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Use a pale landscape page with a faint dot grid. Place Halfkey and Brand book at upper left and Typography and 08 at upper right."
+    },
+    {
+      "name": "Typeface specimen",
+      "spec": "Head the narrower left column Typeface. Lead with an oversized Aa, then Suisse Int’l and the weight guidance. Stack matching Medium and Regular alphabets, numerals and punctuation below."
+    },
+    {
+      "name": "Role scale",
+      "spec": "Head the wider right column Scale. Divide it into six ruled rows. Align the role and settings at left, the specimen at right. Use Display for “$40 a week.”, Title for “Outside a key, it asks.”, Amount for “$12,480.22”, Heading for “Weekly SOL buy”, Body for the purchase sentence and Label for its key and timestamp. Keep the settings attached to their specimens within the scale. Use Medium at 104, 56, 40 and 24 for the four largest roles, then Regular at 20 and 16. Show progressively tighter tracking toward display sizes."
+    },
+    {
+      "name": "Usage notes",
+      "spec": "Across the foot of the page, align four notes under Sentence case, Numbers are content, Tight at the top and One family. Explain case, dollar and cent treatment, tracking by size and keeping figures in Suisse Int’l."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "D01",
+  "title": "Cover",
+  "image": "d01.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 1,
+    "column": 1
+  },
+  "slide_intent": "Give a reader a way to grasp divided authority before learning how the product works. Pair a short promise with a shape whose two halves can be distinguished at a glance.",
+  "strategic_value": "Halfkey can make its name and promise easier to recall together. The solid and dotted halves give the idea of sharing a key a recognizable form.",
+  "demonstration": "A white lowercase wordmark and “Give it half the key.” sit on a blue field beside a greatly enlarged symbol. The solid half is white and the dotted half is dark.",
+  "category": "Brand",
+  "practical_value": "A designer can use the cover as a reference for cropping an oversized mark while preserving the visible division that explains the name.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the small Halfkey and Brand book identifiers near the upper-left corner of the blue field."
+    },
+    {
+      "name": "Wordmark and promise",
+      "spec": "Set the large white lowercase wordmark on the left. Align the shorter promise below it to the same margin."
+    },
+    {
+      "name": "Split symbol",
+      "spec": "Enlarge the white solid semicircle and dark dotted half on the right. Let the symbol extend beyond the top, bottom and right edges while keeping its vertical division visible."
+    },
+    {
+      "name": "Edition details",
+      "spec": "Set the edition, route and date in small type at lower left."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "V01",
+  "title": "Motor Vehicles: Various Colors & Values",
+  "image": "v01.png",
+  "source": "../nasa-graphics-standards-manual-1976.pdf",
+  "location": {
+    "page": 48
+  },
+  "slide_intent": "Teach designers to read the lightness of a painted surface before choosing a mark color. People looking at a fleet vehicle need to distinguish its identification from the door behind it.",
+  "strategic_value": "NASA can use one identification across cars acquired in different colors. Changing the lettering from black to white preserves the form of the mark while giving it contrast against a darker body.",
+  "demonstration": "Two side views hold the sedan, marking position and flush-left arrangement steady. Figure a uses black on the light car. Figure b uses white on the dark car. The text uses a 40% gray-scale value as the dividing line.",
+  "category": "Color",
+  "practical_value": "Compare the body color with the manual’s gray scale. For this black-or-white treatment, use black markings at 40% or lighter and white markings above 40%. The adjacent section 7.3 gives white vehicles a separate red-logo option.",
+  "content_islands": [
+    {
+      "name": "Heading and decision rule",
+      "spec": "Place the title at upper left and run the explanation across two columns to its right. State the cutoff and keep the note about clearing door moldings with the rule."
+    },
+    {
+      "name": "Matched sedan comparison",
+      "spec": "Below a horizontal rule, stack two equally scaled side elevations in the same orientation. Label them a and b. Keep the lockup on the front door and carry its left alignment across both examples. Change the body value and lettering color together so the contrast decision is visible."
+    }
+  ]
+}

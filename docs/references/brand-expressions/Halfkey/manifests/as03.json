@@ -1,0 +1,33 @@
+{
+  "id": "AS03",
+  "title": "Outside a key, it asks.",
+  "image": "as03.png",
+  "source": "../03-HWIk3vTWAAEdAQ2.jpeg",
+  "location": {
+    "row": 1,
+    "column": 3
+  },
+  "slide_intent": "Show the decision a person faces outside a key’s authority. A concrete cost and consequence help them judge whether to approve the exception.",
+  "strategic_value": "Permission becomes a specific question with enough consequence and cost information to decide.",
+  "demonstration": "The Ask view pairs a $410 USDC repayment request with a simulated result, the conflicting key and an approval control.",
+  "category": "Application",
+  "practical_value": "Use when a product promises human control. Show the exception, why it needs attention and what approving it would change.",
+  "content_islands": [
+    {
+      "name": "Headline field",
+      "spec": "Use an ink field with a white headline broken after “key,” and the smaller line “Anything outside a limit waits for your Face ID.”"
+    },
+    {
+      "name": "Request",
+      "spec": "Center a pale phone screen at the series’ shared height. Below the Ask header, set a small request identifier, “Repay $410 USDC on Kamino?” and the reason it falls outside the guard: it would use rent buffer USDC."
+    },
+    {
+      "name": "Simulated result",
+      "spec": "In a white card list Kamino health moving from 1.27 to 1.42, rent buffer USDC moving from 600.00 to 190.00, and network fee under $0.01. Use blue to emphasize the new health value."
+    },
+    {
+      "name": "Decision",
+      "spec": "Place a small dotted Kamino guard symbol and the $1,500 remaining allowance below the card. End with a black “Approve with Face ID” control and a secondary Decline at the crop."
+    }
+  ]
+}

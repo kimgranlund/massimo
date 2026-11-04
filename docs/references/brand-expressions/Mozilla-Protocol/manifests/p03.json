@@ -1,0 +1,37 @@
+{
+  "id": "P03",
+  "title": "Two marks in one navigation pattern",
+  "image": "p03.png",
+  "source": "../sources/navigation.html",
+  "location": {
+    "section": "Navigation → Default and Firefox",
+    "additional_sources": [
+      "../sources/navigation--firefox.html",
+      "../sources/brand-themes.html"
+    ],
+    "format": "Editorial comparison of desktop component captures at 1120 CSS px"
+  },
+  "slide_intent": "Teach designers to decide which parts of a shared navigation pattern should signal ownership. A stable set of controls can help visitors carry their bearings from one branded surface to another.",
+  "strategic_value": "Mozilla and Firefox can distinguish publisher from product at the left edge of the header while keeping familiar menu actions and the Firefox download in corresponding positions.",
+  "demonstration": "The upper bar starts with the black Mozilla signature. The lower bar starts with the multicolor Firefox symbol and wordmark. Both show two sample menu labels on the left and a blue outlined Download Firefox button on the right.",
+  "category": "Application",
+  "practical_value": "Compare both branded variants before changing a shared header. Use the preview to place the appropriate mark while preserving menu grouping and the position of the download action.",
+  "content_islands": [
+    {
+      "name": "Study header",
+      "spec": "Name the design system and the shared navigation pattern above the comparison."
+    },
+    {
+      "name": "Mozilla header",
+      "spec": "Place the Default component capture beneath the Mozilla label. Keep the full bar, including the mark, sample links and download action."
+    },
+    {
+      "name": "Firefox header",
+      "spec": "Place the Firefox variant directly below at the same width and scroll position. Align corresponding left and right content margins."
+    },
+    {
+      "name": "Source line",
+      "spec": "Identify both images as desktop navigation component excerpts."
+    }
+  ]
+}

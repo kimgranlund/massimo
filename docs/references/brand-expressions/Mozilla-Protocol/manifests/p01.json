@@ -1,0 +1,43 @@
+{
+  "id": "P01",
+  "title": "Typefaces by brand and role",
+  "image": "p01.png",
+  "source": "../sources/typography.html",
+  "location": {
+    "section": "Typefaces",
+    "specimens": [
+      "specimen-mozilla-headline",
+      "specimen-mozilla-text",
+      "specimen-metropolis",
+      "specimen-inter"
+    ],
+    "format": "Editorial comparison of four native screenshot excerpts"
+  },
+  "slide_intent": "Teach designers to choose a face for its reading role within a brand. The same letters can give a headline a distinctive voice and give supporting text a quieter rhythm.",
+  "strategic_value": "Mozilla and Firefox can share the distinction between headlines and body text while giving each brand its own pair of faces. A reader moving between the brands can encounter both a familiar hierarchy and a different voice.",
+  "demonstration": "The left column pairs Mozilla Headline with Mozilla Text. The right pairs Metropolis with Inter. Every specimen shows the same letters from Aa through Hh in bold and regular. The role labels group the specimens horizontally.",
+  "category": "Typography",
+  "practical_value": "Choose a headline and body pair for a Mozilla or Firefox page. Compare the shape of a matching letter across the row before judging the difference between the roles in a column.",
+  "content_islands": [
+    {
+      "name": "Study header",
+      "spec": "Identify the Protocol version and editorial study number. Place the descriptive title above the comparison."
+    },
+    {
+      "name": "Brand headings",
+      "spec": "Place Mozilla and Firefox above two equal-width columns. Align the start of each row across brands."
+    },
+    {
+      "name": "Headline specimens",
+      "spec": "Label the upper row Headlines. Set each name above the bold and regular letter excerpts from its published figure. Preserve the source specimen scale."
+    },
+    {
+      "name": "Body specimens",
+      "spec": "Repeat the same sample letters and arrangement for Mozilla Text and Inter. Keep the role label separate from the face name."
+    },
+    {
+      "name": "Source line",
+      "spec": "Identify the publisher and indicate that four specimen excerpts form the comparison."
+    }
+  ]
+}

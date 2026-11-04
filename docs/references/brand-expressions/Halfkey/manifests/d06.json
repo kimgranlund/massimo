@@ -1,0 +1,29 @@
+{
+  "id": "D06",
+  "title": "Logo versions and misuse",
+  "image": "d06.png",
+  "source": "../02-HWIk3kzXEAAbQU3.jpeg",
+  "location": {
+    "row": 2,
+    "column": 1
+  },
+  "slide_intent": "Teach designers which adaptations preserve recognition as backgrounds and production methods change. Paired families of examples help readers distinguish permissible contrast changes from changes to the mark’s structure.",
+  "strategic_value": "Halfkey can accommodate covers, screens, stamps and engraving while keeping the solid half and the counted dot field recognizable.",
+  "demonstration": "The upper row shows six approved color treatments of the stacked lockup. The lower row isolates six structural or color changes and labels each misuse.",
+  "category": "Brand",
+  "practical_value": "A designer can choose an approved version for a given background or one-color process and check a proposed asset against the misuse row.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Place the book identifiers at upper left and Logo versions and misuse with page 06 at upper right."
+    },
+    {
+      "name": "Approved versions",
+      "spec": "Align six equal cards under Versions on colour. Show primary, reversed, signal blue, screen tint, one-color and reversed one-color treatments. Keep the same stacked arrangement and label the background or production use below each card."
+    },
+    {
+      "name": "Misuse examples",
+      "spec": "Repeat the six-column grid under Misuse. Show filled dots, swapped halves, recoloring, distortion, rotation and a redrawn dot field. Add a cross and a short caption under each example."
+    }
+  ]
+}

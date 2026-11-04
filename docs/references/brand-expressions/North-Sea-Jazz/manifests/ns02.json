@@ -1,0 +1,34 @@
+{
+  "id": "NS02",
+  "title": "Three-day animated lineup",
+  "image": "ns02.png",
+  "source": "../sources/02-post-03.mp4",
+  "location": {
+    "unit": "video frame",
+    "seconds": 0.8
+  },
+  "slide_intent": "Teach motion designers to give information a rhythm and a reading interval. A reveal can invite attention, and a held arrangement gives someone time to read the lineup.",
+  "strategic_value": "The festival can use a recurring motion phrase to connect its three days. Changing the hue and weekday identifies the next lineup while the shared reveal ties the posts together.",
+  "demonstration": "A portrait post cycles through cyan Friday, red Saturday and pink Sunday. Thin slices gather into a large weekday and compact performer rows. The settled lists hold before they fragment for the next day.",
+  "category": "Motion",
+  "practical_value": "Give the moving headline and the schedule different duties. At 0.8 seconds Friday is still emerging. Around 2.4 seconds its list has settled into ruled rows. Compare those moments when choosing when the audience should read.",
+  "content_islands": [
+    {
+      "name": "Post frame",
+      "spec": "Center the vertical post within the black field. Keep the muted gray interface strips above and below the colored content while the schedule changes."
+    },
+    {
+      "name": "Weekday reveal",
+      "spec": "Fill the upper part of the post with one bold uppercase weekday. Begin the Friday name in separated cyan bands, then bring the fragments together until the word reads solidly."
+    },
+    {
+      "name": "Lineup",
+      "spec": "Reveal compact performer names beneath the weekday in the same hue. Use thin dividing rules and hold the aligned list before the transition resumes."
+    },
+    {
+      "name": "Day transitions",
+      "spec": "Repeat the phrase in red for Saturday and pink for Sunday. Preserve the full clip so viewers can inspect the transitions and the holds alongside the selected still."
+    }
+  ],
+  "motion": "../sources/02-post-03.mp4"
+}

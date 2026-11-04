@@ -1,0 +1,41 @@
+{
+  "id": "D17",
+  "title": "Social and ads",
+  "image": "d17.png",
+  "source": "../01-HWIk3JSWEAAhPND.jpeg",
+  "location": {
+    "row": 3,
+    "column": 1
+  },
+  "slide_intent": "Teach designers to keep a message specific as its format changes. Someone scrolling a feed or glancing at a narrow banner should be able to identify the claim and its evidence.",
+  "strategic_value": "Halfkey can carry a recognizable relationship between a key, its value and a proof line from a teaser to a receipt or a paid placement.",
+  "demonstration": "Social examples use a pale field for the teaser, blue for launch and ink for a shared receipt. Display examples reorganize a dot figure, a short line and an action to fit tall, rectangular and horizontal units.",
+  "category": "Application",
+  "practical_value": "A designer can choose the message, background and arrangement for a given placement using the format captions and the one-key-per-ad rule.",
+  "content_islands": [
+    {
+      "name": "Running header",
+      "spec": "Set Halfkey and Brand book at upper left, Social and ads and 17 at upper right."
+    },
+    {
+      "name": "Social formats",
+      "spec": "Place a 1080 × 1350 teaser, a 1080 × 1350 launch post and a 1080 × 1920 receipt story in a row under Social. Pair the teaser instruction with its dot key, the launch announcement with the split mark, and the story with the transaction ticket."
+    },
+    {
+      "name": "Display formats",
+      "spec": "Place a 160 × 600 tower beside a 300 × 250 rectangle under Display. Use blue grounds and show how the figure, proof line and Get Halfkey action change position to fit."
+    },
+    {
+      "name": "Format rules",
+      "spec": "Place the One key per ad and Blue means go notes beneath the rectangle. State the jobs of the blue launch, pale teaser and dark receipt fields."
+    },
+    {
+      "name": "Horizontal placements",
+      "spec": "Place a captioned 1500 × 500 X header and a 728 × 90 banner along the lower edge. Put the weekday dot series on the header and the Ask figure, line and action in the banner."
+    },
+    {
+      "name": "Audience note",
+      "spec": "Place the retargeting note beside the horizontal examples. State whom the campaign addresses and the limits of its claims."
+    }
+  ]
+}
