@@ -263,3 +263,18 @@ test('parameters: the contract lists exactly the members each owning export defi
 test('pointer resolution rejects a missing key', () => {
   assert.throws(() => pointer({ a: 1 }, '/b'));
 });
+
+test('examples and guides use ui-container, not the deprecated level tags', () => {
+  const OLD = /<ui-(group|collection|card|panel|region|page)[\s>/]/;
+  for (const { path, manifest } of all) {
+    const ex = read(fromManifest(path, manifest.examples));
+    for (const e of ex.examples) assert.ok(!OLD.test(e.markup), `${path} example ${e.id} uses a deprecated level tag; use <ui-container preset="…">`);
+    const guide = readFileSync(join(KIT, fromManifest(path, manifest.documentation)), 'utf8');
+    assert.ok(!OLD.test(guide), `${manifest.documentation} uses a deprecated level tag`);
+  }
+  const container = all.find((m) => m.manifest.name === 'container')!.manifest;
+  for (const n of container.nodes.filter((x: any) => x.id !== 'component:container' && x.kind === 'component')) {
+    assert.equal(n.status, 'deprecated', `${n.id} is a deprecated alias`);
+    assert.ok(n.avoidWhen.some((a: any) => a.useInstead === 'component:container'), `${n.id} points at component:container`);
+  }
+});

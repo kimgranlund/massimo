@@ -173,7 +173,7 @@ Containers come in four families, each with one radius rule; the rule is concent
 - **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, concentric with the controls it holds: the control radius + its padding, min(3u·s, 4u) + p (square at s = 0), like a wrapper, so a button at its edge sits on the same curve. Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) keep radius = padding × min(1, s): never rounder than they are deep. A card may hold a smaller card (it takes the base fill).
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
-**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their concentric radius R0 (the control radius + p): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-group radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
+**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their concentric radius R0 (the control radius + p): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-container preset="group" radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
 
 Nesting: areas hold containers, containers hold wrappers (page › region › panel › card › collection › group; a level may be skipped). Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
@@ -210,7 +210,7 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 | region (area) | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
 | page (area) | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
 
-Example: `<ui-card size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script. Their styles are slot recipes (`components/container/container.recipe.ts`, the composite in `components/recipe-parts.ts`), also emitted on the tags ([components](components.md#styles)).
+Example: `<ui-container preset="card" size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script. Their styles are slot recipes (`components/container/container.recipe.ts`, the composite in `components/recipe-parts.ts`), also emitted on the tags ([components](components.md#styles)).
 
 ### Composite detail
 

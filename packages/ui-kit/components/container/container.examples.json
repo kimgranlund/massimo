@@ -27,26 +27,26 @@
     {
       "id": "card",
       "label": "Card with a group",
-      "subject": "component:card",
-      "markup": "<ui-card><span>Title</span><ui-group gap=\"1\"><ui-button>Open</ui-button><ui-button>Share</ui-button></ui-group></ui-card>"
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\"><span>Title</span><ui-container preset=\"group\" gap=\"1\"><ui-button>Open</ui-button><ui-button>Share</ui-button></ui-container></ui-container>"
     },
     {
       "id": "card-padding",
       "label": "Card padding xs…xl",
-      "subject": "component:card",
-      "markup": "<ui-card padding=\"xs\"><span>xs · 2u</span></ui-card><ui-card padding=\"sm\"><span>sm · 3u</span></ui-card><ui-card><span>md · 4u</span></ui-card><ui-card padding=\"lg\"><span>lg · 5u</span></ui-card><ui-card padding=\"xl\"><span>xl · 6u</span></ui-card>"
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\" padding=\"xs\"><span>xs · 2u</span></ui-container><ui-container preset=\"card\" padding=\"sm\"><span>sm · 3u</span></ui-container><ui-container preset=\"card\"><span>md · 4u</span></ui-container><ui-container preset=\"card\" padding=\"lg\"><span>lg · 5u</span></ui-container><ui-container preset=\"card\" padding=\"xl\"><span>xl · 6u</span></ui-container>"
     },
     {
       "id": "nesting",
       "label": "Nesting",
-      "subject": "component:page",
-      "markup": "<ui-page><ui-region><ui-panel><ui-card><ui-card padding=\"sm\"><ui-collection><ui-group><ui-badge>1</ui-badge></ui-group></ui-collection></ui-card></ui-card></ui-panel></ui-region></ui-page>"
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"page\"><ui-container preset=\"region\"><ui-container preset=\"panel\"><ui-container preset=\"card\"><ui-container preset=\"card\" padding=\"sm\"><ui-container preset=\"collection\"><ui-container preset=\"group\"><ui-badge>1</ui-badge></ui-container></ui-container></ui-container></ui-container></ui-container></ui-container></ui-container>"
     },
     {
       "id": "radius-magnitude",
       "label": "Radius magnitude: concentric, half, square",
-      "subject": "component:collection",
-      "markup": "<ui-collection><ui-button>Concentric</ui-button></ui-collection><ui-collection radius=\"0.5\"><ui-button>Half</ui-button></ui-collection><ui-collection radius=\"0\"><ui-button>Square</ui-button></ui-collection>"
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"collection\"><ui-button>Concentric</ui-button></ui-container><ui-container preset=\"collection\" radius=\"0.5\"><ui-button>Half</ui-button></ui-container><ui-container preset=\"collection\" radius=\"0\"><ui-button>Square</ui-button></ui-container>"
     }
   ]
 }

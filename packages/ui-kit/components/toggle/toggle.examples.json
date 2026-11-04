@@ -10,7 +10,7 @@
       "id": "toolbar",
       "label": "Formatting toolbar",
       "subject": "component:toggle",
-      "markup": "<ui-group><ui-toggle aria-label=\"Bold\" pressed><i slot=\"leading\" name=\"text-b\"></i></ui-toggle><ui-toggle aria-label=\"Italic\"><i slot=\"leading\" name=\"text-italic\"></i></ui-toggle><ui-toggle aria-label=\"Underline\" disabled><i slot=\"leading\" name=\"text-underline\"></i></ui-toggle></ui-group>"
+      "markup": "<ui-container preset=\"group\"><ui-toggle aria-label=\"Bold\" pressed><i slot=\"leading\" name=\"text-b\"></i></ui-toggle><ui-toggle aria-label=\"Italic\"><i slot=\"leading\" name=\"text-italic\"></i></ui-toggle><ui-toggle aria-label=\"Underline\" disabled><i slot=\"leading\" name=\"text-underline\"></i></ui-toggle></ui-container>"
     },
     {
       "id": "label",

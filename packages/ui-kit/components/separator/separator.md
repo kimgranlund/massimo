@@ -9,8 +9,8 @@ Divide groups of content in a list, menu, toolbar or panel with a visible rule (
 ## Usage
 
 ```html
-<ui-collection><span>Account</span><span>Billing</span><ui-separator></ui-separator><span>Sign out</span></ui-collection>
-<ui-group><ui-button>Cut</ui-button><ui-separator orientation="vertical"></ui-separator><ui-button>Paste</ui-button></ui-group>
+<ui-container preset="collection"><span>Account</span><span>Billing</span><ui-separator></ui-separator><span>Sign out</span></ui-container>
+<ui-container preset="group"><ui-button>Cut</ui-button><ui-separator orientation="vertical"></ui-separator><ui-button>Paste</ui-button></ui-container>
 ```
 
 ```tsx

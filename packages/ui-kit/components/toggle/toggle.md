@@ -9,10 +9,10 @@ Turn one option or mode on and off with a button that shows its pressed state, s
 ## Usage
 
 ```html
-<ui-group>
+<ui-container preset="group">
   <ui-toggle aria-label="Bold" pressed><i slot="leading" name="text-b"></i></ui-toggle>
   <ui-toggle aria-label="Italic"><i slot="leading" name="text-italic"></i></ui-toggle>
-</ui-group>
+</ui-container>
 <ui-toggle default-pressed><i slot="leading" name="star"></i>Favorite</ui-toggle>
 ```
 

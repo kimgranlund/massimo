@@ -10,13 +10,13 @@
       "id": "horizontal",
       "label": "Between groups",
       "subject": "component:separator",
-      "markup": "<ui-collection><span>Account</span><span>Billing</span><ui-separator></ui-separator><span>Sign out</span></ui-collection>"
+      "markup": "<ui-container preset=\"collection\"><span>Account</span><span>Billing</span><ui-separator></ui-separator><span>Sign out</span></ui-container>"
     },
     {
       "id": "vertical",
       "label": "In a toolbar",
       "subject": "component:separator",
-      "markup": "<ui-group><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation=\"vertical\"></ui-separator><ui-button>Paste</ui-button></ui-group>",
+      "markup": "<ui-container preset=\"group\"><ui-button>Cut</ui-button><ui-button>Copy</ui-button><ui-separator orientation=\"vertical\"></ui-separator><ui-button>Paste</ui-button></ui-container>",
       "note": "React: <Separator orientation=\"vertical\" />."
     }
   ]

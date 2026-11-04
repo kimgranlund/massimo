@@ -168,7 +168,13 @@
         "Nesting: a root keeps its preset geometry; a nested ui-container is concentric with its parent (R = R_parent − p_parent); a container holding containers keeps the ratio (container-ratio) for them, or splits evenly with levels; a leaf fits its controls. Areas (panel, region, page) are square and restart the chain. Up to 6 levels.",
         "Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
-      "avoidWhen": [],
+      "avoidWhen": [
+        {
+          "when": "Exclusive selection among grouped buttons.",
+          "reason": "A container only lays out and nests its children.",
+          "useInstead": "component:segmented"
+        }
+      ],
       "searchTerms": [
         "container",
         "universal container",
@@ -188,7 +194,7 @@
     {
       "id": "component:group",
       "kind": "component",
-      "status": "implemented",
+      "status": "deprecated",
       "tag": "ui-group",
       "contract": "../../contracts/components.json#/components/group",
       "intent": [
@@ -254,6 +260,11 @@
       ],
       "avoidWhen": [
         {
+          "when": "Any new markup.",
+          "reason": "Deprecated alias: <ui-container preset=\"group\"> is the same container with the universal nesting rule.",
+          "useInstead": "component:container"
+        },
+        {
           "when": "Exclusive selection among the grouped buttons.",
           "reason": "A group only spaces its children.",
           "useInstead": "component:segmented"
@@ -269,7 +280,7 @@
     {
       "id": "component:collection",
       "kind": "component",
-      "status": "implemented",
+      "status": "deprecated",
       "tag": "ui-collection",
       "contract": "../../contracts/components.json#/components/collection",
       "intent": [
@@ -333,7 +344,13 @@
         "CSS-only tag: no script, nothing to register. 2u padding, radius up to 5u.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
-      "avoidWhen": [],
+      "avoidWhen": [
+        {
+          "when": "Any new markup.",
+          "reason": "Deprecated alias: <ui-container preset=\"collection\"> is the same container with the universal nesting rule.",
+          "useInstead": "component:container"
+        }
+      ],
       "searchTerms": [
         "collection",
         "collection container",
@@ -344,7 +361,7 @@
     {
       "id": "component:card",
       "kind": "component",
-      "status": "implemented",
+      "status": "deprecated",
       "tag": "ui-card",
       "contract": "../../contracts/components.json#/components/card",
       "intent": [
@@ -424,7 +441,13 @@
         "CSS-only tag: no script, nothing to register. 4u padding, radius up to 7u.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
-      "avoidWhen": [],
+      "avoidWhen": [
+        {
+          "when": "Any new markup.",
+          "reason": "Deprecated alias: <ui-container preset=\"card\"> is the same container with the universal nesting rule.",
+          "useInstead": "component:container"
+        }
+      ],
       "searchTerms": [
         "card",
         "card container",
@@ -440,7 +463,7 @@
     {
       "id": "component:panel",
       "kind": "component",
-      "status": "implemented",
+      "status": "deprecated",
       "tag": "ui-panel",
       "contract": "../../contracts/components.json#/components/panel",
       "intent": [
@@ -492,7 +515,13 @@
         "CSS-only tag: no script, nothing to register. 6u padding, square.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
-      "avoidWhen": [],
+      "avoidWhen": [
+        {
+          "when": "Any new markup.",
+          "reason": "Deprecated alias: <ui-container preset=\"panel\"> is the same container with the universal nesting rule.",
+          "useInstead": "component:container"
+        }
+      ],
       "searchTerms": [
         "panel",
         "panel container",
@@ -503,7 +532,7 @@
     {
       "id": "component:region",
       "kind": "component",
-      "status": "implemented",
+      "status": "deprecated",
       "tag": "ui-region",
       "contract": "../../contracts/components.json#/components/region",
       "intent": [
@@ -555,7 +584,13 @@
         "CSS-only tag: no script, nothing to register. 8u padding, square.",
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
-      "avoidWhen": [],
+      "avoidWhen": [
+        {
+          "when": "Any new markup.",
+          "reason": "Deprecated alias: <ui-container preset=\"region\"> is the same container with the universal nesting rule.",
+          "useInstead": "component:container"
+        }
+      ],
       "searchTerms": [
         "region",
         "region container",
@@ -566,7 +601,7 @@
     {
       "id": "component:page",
       "kind": "component",
-      "status": "implemented",
+      "status": "deprecated",
       "tag": "ui-page",
       "contract": "../../contracts/components.json#/components/page",
       "intent": [
@@ -619,6 +654,11 @@
         "Gap defaults to the level padding; gap overrides it. Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
       "avoidWhen": [
+        {
+          "when": "Any new markup.",
+          "reason": "Deprecated alias: <ui-container preset=\"page\"> is the same container with the universal nesting rule.",
+          "useInstead": "component:container"
+        },
         {
           "when": "Nested inside another container.",
           "reason": "Page is the outermost level.",
