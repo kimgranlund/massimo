@@ -434,6 +434,10 @@
                 "type": "integer",
                 "minimum": 2,
                 "maximum": 12
+              },
+              "dark": {
+                "type": "string",
+                "pattern": "^#[0-9a-fA-F]{6}$"
               }
             },
             "required": [
@@ -522,7 +526,8 @@
                     "dm-serif-display",
                     "libre-franklin",
                     "roboto-slab"
-                  ]
+                  ],
+                  "description": "A face catalogue id; fills family, descriptor and source."
                 },
                 "family": {
                   "type": "string",
@@ -560,9 +565,18 @@
                   }
                 }
               },
-              "required": [
-                "family",
-                "descriptor"
+              "anyOf": [
+                {
+                  "required": [
+                    "ref"
+                  ]
+                },
+                {
+                  "required": [
+                    "family",
+                    "descriptor"
+                  ]
+                }
               ]
             },
             "body": {
@@ -595,7 +609,8 @@
                     "dm-serif-display",
                     "libre-franklin",
                     "roboto-slab"
-                  ]
+                  ],
+                  "description": "A face catalogue id; fills family, descriptor and source."
                 },
                 "family": {
                   "type": "string",
@@ -633,9 +648,18 @@
                   }
                 }
               },
-              "required": [
-                "family",
-                "descriptor"
+              "anyOf": [
+                {
+                  "required": [
+                    "ref"
+                  ]
+                },
+                {
+                  "required": [
+                    "family",
+                    "descriptor"
+                  ]
+                }
               ]
             },
             "utility": {
@@ -668,7 +692,8 @@
                     "dm-serif-display",
                     "libre-franklin",
                     "roboto-slab"
-                  ]
+                  ],
+                  "description": "A face catalogue id; fills family, descriptor and source."
                 },
                 "family": {
                   "type": "string",
@@ -706,9 +731,18 @@
                   }
                 }
               },
-              "required": [
-                "family",
-                "descriptor"
+              "anyOf": [
+                {
+                  "required": [
+                    "ref"
+                  ]
+                },
+                {
+                  "required": [
+                    "family",
+                    "descriptor"
+                  ]
+                }
               ]
             }
           }

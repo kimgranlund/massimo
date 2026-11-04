@@ -5,13 +5,18 @@
 //      clamped into the target gamut, so the neighbors are not washed out beside the anchor;
 //   3. override the anchored step with the exact color (light ramp). The step is the one whose
 //      contrast target is nearest the anchor's Lc against the light page, unless the anchor names one;
-//   4. the role's solid follows the anchored step when the anchor lands on 8–11 (solidSteps).
+//   4. the role's solid follows the anchored step when the anchor lands on 8–12 (solidSteps.light): a
+//      brand's main color is usually its darkest solid.
+// An anchor may give its own `dark` color: it is placed in the dark ramp the same way (against the
+// dark page, the dark targets) and moves the dark solid (solidSteps.dark). Without one, the dark ramp
+// takes the hue and chroma only and the dark solid stays at step 9.
 // Lightness (each step's tone) is kept, so the ramp's contrast steps still hold.
 import { apcaLc } from './contrast.ts';
 import type { Spectrum, Swatch } from './index.ts';
 
-export interface ColorAnchor { role: string; value: string; step?: number; name?: string }
-export interface AnchorResult { role: string; family: string; value: string; step: number; lc: number; target: number; below: number; above: number; inOrder: boolean; inRange: boolean; dE: number }
+export interface ColorAnchor { role: string; value: string; step?: number; name?: string; /** The anchor's own color in the dark scheme. */ dark?: string }
+export type SolidSteps = { light: Record<string, number>; dark: Record<string, number> };
+export interface AnchorResult { role: string; family: string; value: string; step: number; lc: number; target: number; below: number; above: number; inOrder: boolean; inRange: boolean; dE: number; dark?: { value: string; step: number; lc: number; target: number; inOrder: boolean } }
 
 const HEX = /^#[0-9a-f]{6}$/i;
 export const isAnchorColor = (v: unknown): v is string => typeof v === 'string' && HEX.test(v);
@@ -62,15 +67,34 @@ function setSwatch(sw: Swatch, lch: [number, number, number]) {
  * Apply anchors to a generated spectrum (a copy is returned). `roles` maps each role to its family.
  * Returns the report per anchor and the solid step per anchored role.
  */
-export function applyAnchors(data: Spectrum, roles: Record<string, string>, anchors: ColorAnchor[], targets: { light: number[] }) {
+export function applyAnchors(data: Spectrum, roles: Record<string, string>, anchors: ColorAnchor[], targets: { light: number[]; dark: number[] }) {
   const out: Spectrum = structuredClone(data);
   const gamut = String(data.settings.target ?? 'display-p3');
   const report: AnchorResult[] = [];
-  const solidSteps: Record<string, number> = {};
+  const solidSteps: SolidSteps = { light: {}, dark: {} };
+  // Each anchor claims its family. Roles often share one (primary and data 1 both default to indigo),
+  // so a second anchor on a claimed family moves its role to the nearest free family by hue: first a
+  // family no role uses, else one no anchor has claimed.
+  const outRoles = { ...roles };
+  const claimed = new Map<string, string>();
+  const neutralFamilies = new Set(data.metadata?.light.neutrals ?? Object.keys(data.schemes.light).filter((n) => /neutral|gray|mauve|slate|sage|olive|sand/i.test(n)));
+  const hueGap = (a: number, b: number) => { const d = Math.abs(a - b) % 360; return Math.min(d, 360 - d); };
   for (const anchor of anchors) {
-    const family = roles[anchor.role];
+    let family = outRoles[anchor.role];
     if (!family || !out.schemes.light[family]) continue;
     const want = srgbToOklch(anchor.value);
+    if (claimed.has(family) && claimed.get(family) !== anchor.role) {
+      const isNeutral = neutralFamilies.has(family);
+      const pool = Object.keys(out.schemes.light).filter((f) => neutralFamilies.has(f) === isNeutral && !claimed.has(f));
+      const used = new Set(Object.values(outRoles));
+      const byHue = (f: string) => hueGap(out.schemes.light[f][8].oklch[2], want[2]);
+      const free = pool.filter((f) => !used.has(f));
+      const pick = (free.length ? free : pool).sort((a, b) => byHue(a) - byHue(b))[0];
+      if (!pick) continue;
+      family = pick;
+      outRoles[anchor.role] = family;
+    }
+    claimed.set(family, anchor.role);
     const lightRamp = out.schemes.light[family];
     const page = lightRamp[0].hct[2];
     const lc = apcaLc(toneOfY(yOfHex(anchor.value)), page);
@@ -86,14 +110,25 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     }
     setSwatch(lightRamp[step - 1], want);
     const below = step > 2 ? targets.light[step - 3] : 0, above = step < 12 ? targets.light[step - 1] : Infinity;
+    // The dark color, when given: exact at its own step in the dark ramp.
+    let dark: AnchorResult['dark'];
+    if (anchor.dark) {
+      const darkRamp = out.schemes.dark[family];
+      const lcD = apcaLc(toneOfY(yOfHex(anchor.dark)), darkRamp[0].hct[2]);
+      const stepD = 2 + targets.dark.reduce((best, t, i) => (Math.abs(t - lcD) < Math.abs(targets.dark[best] - lcD) ? i : best), 0);
+      setSwatch(darkRamp[stepD - 1], srgbToOklch(anchor.dark));
+      const lo = stepD > 2 ? targets.dark[stepD - 3] : 0, hi = stepD < 12 ? targets.dark[stepD - 1] : Infinity;
+      dark = { value: anchor.dark, step: stepD, lc: Math.round(lcD * 10) / 10, target: targets.dark[stepD - 2], inOrder: lcD > lo && lcD < hi };
+      if (stepD >= 8) solidSteps.dark[anchor.role] = stepD;
+    }
     report.push({
       role: anchor.role, family, value: anchor.value, step, lc: Math.round(lc * 10) / 10, target: targets.light[step - 2],
       below, above, inOrder: lc > below && lc < above, inRange: lc <= targets.light[10] + 10 && lc >= targets.light[0] / 2,
-      dE: Math.round(before * 10) / 10,
+      dE: Math.round(before * 10) / 10, ...(dark ? { dark } : {}),
     });
-    if (step >= 8 && step <= 11) solidSteps[anchor.role] = step;
+    if (step >= 8) solidSteps.light[anchor.role] = step;
   }
-  return { data: out, report, solidSteps };
+  return { data: out, roles: outRoles, report, solidSteps };
 }
 function yOfHex(hex: string) {
   const [r, g, b] = [1, 3, 5].map((i) => lin(parseInt(hex.slice(i, i + 2), 16) / 255));

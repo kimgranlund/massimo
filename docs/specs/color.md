@@ -54,14 +54,18 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 
 ## Anchors
 
-A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:
+A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name?, dark? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:
 
 1. every step except the page takes the anchor's OKLCH hue, in the light and dark ramps;
 2. every step's chroma is scaled by anchor chroma / the anchored step's chroma, clamped into the target gamut (sRGB or Display P3);
 3. the anchored step (the one whose contrast target is nearest the anchor's Lc against the light page, unless `step` names one) becomes the exact color, with its text color recomputed;
-4. when the anchor lands on steps 8–11, the role's `solid` and `solid-hover` move to it and the next step (`roleVariables(…, solidSteps)`), and `fg-on-solid` follows for primary.
+4. when the anchor lands on steps 8–12, the role's light `solid` and `solid-hover` move to it (hover one darker, one lighter at 12), and `fg-on-solid` follows for primary.
 
-Each step's lightness is kept, so the contrast steps hold. The lint warns when an anchor breaks the order (`vibrancy.anchor-order`: its Lc must lie between its neighbors' targets) or lies beyond the ramp (`vibrancy.anchor-range`, a near-black or near-white ink: map it to the black or white endpoint instead).
+Light and dark are placed separately. Without a `dark` color, the dark ramp only takes the hue and chroma, and the dark solid stays at step 9: a light-scheme step 12 is ink, and in dark it would be the lightest fill. With a `dark` color, the anchor is placed exactly in the dark ramp the same way, against the dark page and the dark targets, and moves the dark solid when it lands on 8–12 (`solidSteps.dark`).
+
+Roles often share a family (primary and data 1 both default to indigo). Each anchor claims its family. A later anchor on a claimed family moves its role to the nearest free family by hue, first one no role uses, so two anchors never overwrite each other. `anchoredSpectrum` returns the roles to use.
+
+Each step's lightness is kept, so the contrast steps hold. The lint warns when an anchor breaks the order, in either scheme (`vibrancy.anchor-order`: its Lc must lie between its neighbors' targets) or lies beyond the ramp (`vibrancy.anchor-range`, a near-black or near-white ink: map it to the black or white endpoint instead).
 
 ## Schemes
 

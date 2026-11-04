@@ -94,13 +94,21 @@ The catalogue (`contracts/brand-catalogue.json`) holds groundings (Swiss Interna
 - each face against the [face catalogue](typography.md#face-catalogue): unknown, missing a weight its voices need, or a different descriptor;
 - the generated-looking defaults, as predicates over saturated accent anchors: warm cream with a serif and terracotta, near-black with one acid accent, purple to blue, pill curvature with floating elevation.
 
-`npm run brand -- validate|lint|hydrate <brand.json>` runs them from the command line. Three worked brands, each with a different grounding, live in `tokens/brand/examples/`:
+`npm run brand -- validate|lint|hydrate <brand.json>` runs them from the command line. Three worked brands (Fjord Ledger, Kiln & Cup, Night Signal), each with a different grounding, live in `tokens/brand/examples/` with the briefs they came from. All three hydrate into valid, lint-clean themes that differ in at least five scales from one another (`test/brand.test.ts`). The briefs double as a reproduction check, so specs and guides do not restate the worked brands' choices.
 
-- Fjord Ledger: Swiss International, a harbor territory, density as its signature.
-- Kiln & Cup: mingei, a workshop territory, the squircle corner as its signature.
-- Night Signal: Bauhaus reinterpreted against Memphis, a night-city territory, a triadic harmony as its signature.
+`themeScopeCss(theme, selector)` applies a theme to one element and its subtree (see Scoped themes below).
 
-All three hydrate into valid, lint-clean themes that differ in at least five scales from one another (`test/brand.test.ts`).
+## Scoped themes
+
+`themeScopeCss(theme, selector = scopeSelector(theme.name))` (`tokens/themes/scope.ts`) gives the CSS that applies a theme to one element and its subtree (`data-ui-scope="<name>"`), beside other themes on the same page. Tokens resolve their `var()` references where they are declared (`:root`), so the scope redeclares every token that reads a theme input:
+
+- the theme's own variables (`themeVars`);
+- the u-based lengths (`unitTokenVars`), the motion tokens and the elevation tokens;
+- the shadow layer colors;
+- its ramps and roles per scheme;
+- `color`, so plain text follows the scope.
+
+A theme with scheme `auto` follows the document (`.light` / `.dark` on `<html>`, else the OS). With `light` or `dark`, that scheme is the scope's own default. `.light` / `.dark` on the scope element force one either way. A scope with colors is about 150 KB of CSS, mostly the ramps. `apps/studio/scope-check.html` (in `check:browsers`) checks a scope's lengths, Panda tokens, shadows, anchor color and scheme against the resolvers, and that the outside keeps the defaults. The jig's Brand page renders the worked brands side by side this way.
 
 ## Per-element inputs
 

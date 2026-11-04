@@ -105,6 +105,7 @@ try {
       ...await checkMotion(page),
       ...await checkSelect(page),
       ...await checkPage(page, 'react-check.html'),
+      ...await checkPage(page, 'scope-check.html'),
       ...errors.map((e) => `page error: ${e}`),
     ];
     for (const f of fails) console.log(`    ${f}`);

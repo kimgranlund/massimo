@@ -7,25 +7,27 @@ Steps for turning a brief, a reference site or a design into a brand, and the br
 Write `brand.json` (schema `packages/ui-kit/contracts/brand.schema.json`), starting with the fields that make a brand specific. Choose every closed value after them, and from them.
 
 1. `subject`: name, audience, primary job, kind, and at least one source of visual character taken from the subject itself (its materials, instruments, environment or history). With no source, ask; never invent one.
-2. `grounding`: the heritage or movement the brand stands in. Use a catalogue `ref` (`npm run registry -- --find <term>` lists `grounding:` nodes) and its `relation`. `inherit` takes the canon, `reinterpret` takes it and departs where the subject says, `react-against` takes nothing and puts the canon on the avoid list. A movement outside the catalogue goes in as a `name`; hydrate returns it as a question.
+2. `grounding`: the heritage or movement the brand stands in. Use a catalogue `ref` (`npm run registry -- --find <term>` lists `grounding:` nodes) and its `relation`. `inherit` takes the canon, `reinterpret` takes it and departs where the subject says, `react-against` takes nothing and puts the canon on the avoid list. A movement outside the catalogue goes in as a `name`; hydrate returns it as a question. A person or a single work (an artist, a building) is a muse, not a grounding. Reacting against a grounding is automatic: its canon adds nothing, and the lint reports as info any choice that matches the rejected canon. Keep such a choice if the territory or the subject wants it.
 3. `territories`: 1–3 bounded worlds (materials, light, palette, imagery), one marked `primary`, each with `outOfBounds` as `<scale>.<value>` entries the world excludes. Use a catalogue `ref` (`territory:` nodes) where one fits.
 4. `muse`: what the brand is in conversation with, with `take` (a quality, never a copy) and `leave`.
 
 ## 2. Choose from the frame
 
-5. `color.anchors`: 2–6 exact brand colors, each with its role. Keep feedback colors independent of the accent unless the brand owns them.
-6. `type.faces`: display, body and utility, each with a descriptor, a source and the weights you need.
-7. Closed choices: `form` (scale, density, space, curvature, corner, line, elevation), `color.character`, `type.character`, `movement`, `adaptivity`. Leave out a scale the frame does not speak to: the territory, then the grounding, fill it.
+5. `color.anchors`: 2–6 exact brand colors, each with its role (one anchor per role). Hydrate places each at the step whose contrast against the light page is nearest; give `step` (2–12) only to pin one. A brand that leads dark can give an anchor its own `dark` color, placed against the dark page the same way. A brand's main color is usually a dark solid: landing on steps 8–12 moves the role's solid there. Keep feedback colors independent of the accent unless the brand owns them.
+6. `type.faces`: display, body and utility. Prefer a [face catalogue](../specs/typography.md#face-catalogue) entry: `ref` alone (its id) fills the family and descriptor, and hydrate adds its stylesheet. A face outside the catalogue needs `family`, `descriptor` and `source` (and an https `url` when self-hosted); it comes back as a question, because its weights are unknown.
+7. Closed choices: `form` (scale, density, space, curvature, corner, line, elevation), `color.character`, `type.character`, `movement`, `adaptivity`. Leave out a scale the frame does not speak to: the primary territory, then the grounding, fill it. An explicit choice always wins over both. To depart from the grounding's canon, set the scale explicitly and say why in its rationale. To keep a canon value out entirely, list it in the territory's `outOfBounds`; the lint then flags it if it ever ends up chosen.
 8. `signature`: the one scale the brand pushes, with a reason tied to the muse or the territory. Keep the others quieter.
-9. `rationale`: one line per explicit choice, keyed by its path (`form.curvature`), naming the source in the frame it comes from.
+9. `rationale`: one line per explicit closed choice, keyed by its path: `form.<scale>`, `color.character.<scale>`, `type.character.<scale>`, `movement`, `adaptivity`. The lint asks for exactly these. Other keys (`color.anchors.0`, `grounding.primary`) are welcome, but the lint does not check them.
 10. `voice`: tone words and three microcopy samples (an action, a confirmation, an error).
+11. `iconography`: the icon set (phosphor, lucide, tabler) and a weight that matches the line character.
+12. `avoid`: anti-choices as `<scale>.<value>` (the lint flags them) or free text, including what a grounding you react against stands for.
 
 ## 3. Review, hydrate, render
 
 ```sh
 cd packages/ui-kit
 npm run brand -- validate path/to/brand.json
-npm run brand -- lint path/to/brand.json      # brand findings, then the hydrated theme's lint
+npm run brand -- lint path/to/brand.json      # brand findings, then the hydrated theme's lint, then the counts of each
 npm run brand -- hydrate path/to/brand.json   # the theme and the open questions
 ```
 

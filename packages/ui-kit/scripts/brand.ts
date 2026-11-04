@@ -25,7 +25,7 @@ else if (cmd === 'lint') {
   const brand = lintBrand(b), { theme } = hydrate(b), t = lintTheme(theme).findings;
   for (const f of brand) console.log(`  ${f.severity} ${f.id}: ${f.message}`);
   for (const f of t) console.log(`  ${f.severity} ${f.id} (theme): ${f.message}`);
-  console.log(`${b.name}: ${brand.length + t.length} findings`);
+  console.log(`${b.name}: ${brand.length} brand findings, ${t.length} theme findings`);
 } else if (cmd === 'hydrate') {
   const { theme, unresolved } = hydrate(load());
   const v = validateThemeObject(theme);

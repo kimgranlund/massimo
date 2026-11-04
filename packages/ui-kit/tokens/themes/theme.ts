@@ -141,7 +141,8 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
           const path = `color.anchors.${i}`;
           if (!isObject(raw)) return err(path, 'must be an object');
           const a = raw as any;
-          for (const k of Object.keys(a)) if (!['role', 'value', 'step', 'name'].includes(k)) err(`${path}.${k}`, 'unknown field');
+          for (const k of Object.keys(a)) if (!['role', 'value', 'step', 'name', 'dark'].includes(k)) err(`${path}.${k}`, 'unknown field');
+          if (a.dark !== undefined && !isAnchorColor(a.dark)) err(`${path}.dark`, 'must be a #rrggbb color');
           if (!ROLE_NAMES.includes(a.role)) err(`${path}.role`, 'unknown role');
           if (!isAnchorColor(a.value)) err(`${path}.value`, 'must be a #rrggbb color');
           if (a.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${path}.step`, 'must be a step 2–12');
@@ -246,7 +247,7 @@ export function themeJsonSchema() {
       color: strict({
         spectrum: strict(Object.fromEntries(SPECTRUM_FIELDS.map((f) => [f.key, field(f)]))),
         roles: strict(Object.fromEntries(ROLE_NAMES.map((r) => [r, { type: 'string', pattern: FAMILY_NAME.source }]))),
-        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ROLE_NAMES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' } }, { required: ['role', 'value'] }) },
+        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ROLE_NAMES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' }, dark: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$', description: 'The anchor\'s own dark-scheme color, placed in the dark ramp.' } }, { required: ['role', 'value'] }) },
         endpoints: strict({ white: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] }, black: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] } }),
       }),
       typography: strict({

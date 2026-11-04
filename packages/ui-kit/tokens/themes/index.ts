@@ -16,6 +16,7 @@ export * from './validate.ts';
 export * from './theme.ts';
 export * from './lint.ts';
 export * from './descriptors.ts';
+export * from './scope.ts';
 
 /** Saved themes (themes.json): theme objects keyed by name (validateThemeObject, test/themes.test.ts). */
 export const savedThemes = saved as Record<string, Theme>;
@@ -43,11 +44,10 @@ export function themeVars(t: Theme): Record<string, string> {
 export function themeColorVars(t: Theme): { light: Record<string, string>; dark: Record<string, string> } | undefined {
   if (!t.color?.spectrum && !t.color?.roles && !t.color?.endpoints && !t.color?.anchors?.length) return undefined;
   const generated = generateSpectrum(spectrumOverrides(normalizeSpectrum(t.color.spectrum ?? {})));
-  const roles = resolveRoles(generated, t.color.roles ?? {});
-  const { data, solidSteps } = anchoredSpectrum(generated, roles, t.color.anchors);
+  const { data, roles, solidSteps } = anchoredSpectrum(generated, resolveRoles(generated, t.color.roles ?? {}), t.color.anchors);
   const vars = (mode: 'light' | 'dark') => ({
     ...Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i + 1}`, css]))),
-    ...roleVariables(data, roles, mode, solidSteps),
+    ...roleVariables(data, roles, mode, solidSteps[mode]),
     ...endpointVars(data, roles, t.color?.endpoints),
   });
   return { light: vars('light'), dark: vars('dark') };

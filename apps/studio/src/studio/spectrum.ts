@@ -5,9 +5,9 @@ import type { SpectrumPayload } from '../protocol.ts';
 export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<Roles>, anchors: ColorAnchor[] = []) {
   const t0 = performance.now();
   const generated = generateSpectrum(settings);
-  const resolved = resolveRoles(generated, roles);
-  // Brand anchors (theme color.anchors): exact colors placed in their roles' ramps.
-  const { data, solidSteps, report } = anchoredSpectrum(generated, resolved, anchors);
+  // Brand anchors (theme color.anchors): exact colors placed in their roles' ramps (an anchored role may
+  // move to a free family, so the resolved roles come back from anchoredSpectrum).
+  const { data, roles: resolved, solidSteps, report } = anchoredSpectrum(generated, resolveRoles(generated, roles), anchors);
   const ms = Math.round(performance.now() - t0);
   const f = families(data);
   const light = ramps(data, 'light'), dark = ramps(data, 'dark');

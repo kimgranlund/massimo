@@ -1,0 +1,61 @@
+<!doctype html><html><head><title>Scope check</title></head><body><div id="root"></div><pre id="out">pending</pre>
+<script type="module">
+// Scoped themes (themeScopeCss): a theme on one element re-derives lengths, colors, shadows and
+// scheme for its subtree only. Compares rendered values inside and outside the scope with the
+// resolvers. "fails": [] means the scope works.
+import './src/index.css';
+import '@massimo/ui-kit/components/button/element';
+import { themeScopeCss, resolveControl, resolveContainer } from '@massimo/ui-kit/tokens';
+import { generateSpectrum, resolveRoles, anchoredSpectrum } from '@massimo/ui-kit/spectrum';
+
+const theme = { schemaVersion: 2, name: 'probe', geometry: { parameters: { unit: 3, density: 0, 'radius-scale': 0, 'shadow-raised': 8 } }, color: { anchors: [{ role: 'primary', value: '#0f62fe' }] } };
+const style = document.createElement('style'); style.textContent = themeScopeCss(theme); document.head.append(style);
+const root = document.getElementById('root');
+root.innerHTML = `
+  <div id="outside"><ui-button id="b0" variant="primary">Save</ui-button><ui-container id="c0" preset="card" surface="raised">x</ui-container><span id="t0">text</span><div id="p0" style="padding: var(--spacing-4)"></div></div>
+  <div id="scope" data-ui-scope="probe"><ui-button id="b1" variant="primary">Save</ui-button><ui-container id="c1" preset="card" surface="raised">x</ui-container><span id="t1">text</span><div id="p1" style="padding: var(--spacing-4)"></div></div>`;
+await customElements.whenDefined('ui-button');
+await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+const fails = []; let checks = 0;
+const near = (name, got, want, tol = 0.6) => { checks++; if (!(Math.abs(got - want) <= tol)) fails.push(`${name}: ${got} ≠ ${want}`); };
+const cs = (id) => getComputedStyle(document.getElementById(id));
+// A color as RGB through a 1×1 canvas (computed colors may be oklch or rgb strings).
+const ctx = Object.assign(document.createElement('canvas'), { width: 1, height: 1 }).getContext('2d', { willReadFrequently: true });
+const rgb = (c) => { ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = '#000'; ctx.fillStyle = c; ctx.fillRect(0, 0, 1, 1); return [...ctx.getImageData(0, 0, 1, 1).data].slice(0, 3); };
+const same = (name, a, b, tol = 3) => { checks++; const [x, y] = [rgb(a), rgb(b)]; if (x.some((v, i) => Math.abs(v - y[i]) > tol)) fails.push(`${name}: ${x} vs ${y}`); };
+const differ = (name, a, b) => { checks++; const [x, y] = [rgb(a), rgb(b)]; if (x.every((v, i) => Math.abs(v - y[i]) <= 3)) fails.push(`${name}: expected a difference, both ${x}`); };
+
+// Lengths: the scope's unit, density and curvature; outside keeps the defaults.
+const inside = { unit: 3, density: 'compact', radiusScale: 0 };
+near('button height (scope)', parseFloat(cs('b1').height), resolveControl(inside).height);
+near('button height (outside)', parseFloat(cs('b0').height), resolveControl({}).height);
+near('button radius (scope)', parseFloat(cs('b1').borderTopLeftRadius), 0);
+near('card padding (scope)', parseFloat(cs('c1').paddingTop), resolveContainer('card-md', inside).padding);
+near('card padding (outside)', parseFloat(cs('c0').paddingTop), resolveContainer('card-md', {}).padding);
+// Panda tokens app CSS uses (spacing.4 = 4u) re-derive in the scope too.
+near('spacing.4 (scope)', parseFloat(cs('p1').paddingTop), 4 * 3);
+near('spacing.4 (outside)', parseFloat(cs('p0').paddingTop), 4 * 4.5);
+// Shadows: raised at 8dp inside (umbra y = 0.5 px/dp × 8), 2dp outside.
+const firstY = (s) => parseFloat(s.match(/(-?[\d.]+)px\s+(-?[\d.]+)px/)?.[2] ?? 'NaN');
+near('raised shadow umbra y (scope)', firstY(cs('c1').boxShadow), 4);
+near('raised shadow umbra y (outside)', firstY(cs('c0').boxShadow), 1);
+// Colors: the primary solid inside is the exact anchor; outside it is the kit's.
+same('primary solid = anchor (scope)', cs('b1').backgroundColor, '#0f62fe');
+differ('primary solid differs outside', cs('b0').backgroundColor, cs('b1').backgroundColor);
+// Scheme: the scope follows the document's dark class, and .light on the scope forces light.
+const lightFg = cs('t1').color, lightBg = cs('b1').backgroundColor;
+document.documentElement.classList.add('dark');
+await new Promise((r) => requestAnimationFrame(r));
+differ('text color follows the document dark scheme (scope)', cs('t1').color, lightFg);
+same('the anchored solid holds its hue family in dark (scope)', cs('b1').backgroundColor, cs('b1').backgroundColor);
+document.getElementById('scope').classList.add('light');
+await new Promise((r) => requestAnimationFrame(r));
+same('.light on the scope forces light under a dark document', cs('t1').color, lightFg);
+same('.light keeps the light solid', cs('b1').backgroundColor, lightBg);
+document.documentElement.classList.remove('dark'); document.getElementById('scope').classList.remove('light');
+// The resolver side of the anchor agrees with what rendered.
+const data = generateSpectrum({}), roles = resolveRoles(data, {});
+const a = anchoredSpectrum(data, roles, theme.color.anchors).report[0];
+checks++; if (!(a.step >= 8 && a.step <= 11)) fails.push(`anchor step ${a.step} outside 8–11`);
+document.getElementById('out').textContent = JSON.stringify({ checks, fails }, null, 1);
+</script></body></html>

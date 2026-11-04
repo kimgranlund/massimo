@@ -39,7 +39,7 @@ export interface Brand {
   grounding?: { primary: { ref?: string; name?: string; relation: (typeof RELATIONS)[number]; principles?: string[] }; secondary?: { ref?: string; name?: string; relation: (typeof RELATIONS)[number] } };
   territories?: Territory[];
   muse?: { kind: (typeof MUSE_KINDS)[number]; name: string; take: string; leave?: string };
-  color?: { anchors?: { name: string; value: string; role: RoleName; step?: number }[]; feedback?: 'independent' | 'anchored'; character?: Record<string, string> };
+  color?: { anchors?: { name: string; value: string; role: RoleName; step?: number; dark?: string }[]; feedback?: 'independent' | 'anchored'; character?: Record<string, string> };
   type?: { faces?: { display?: BrandFace; body?: BrandFace; utility?: BrandFace }; character?: Record<string, string> };
   form?: Record<string, string>;
   movement?: string;
@@ -67,10 +67,11 @@ const SECTION_SCALES: Record<'color' | 'type' | 'form', string[]> = {
 const isObject = (v: unknown): v is Record<string, any> => !!v && typeof v === 'object' && !Array.isArray(v);
 const str = (v: unknown, max = 400) => typeof v === 'string' && v.trim().length > 0 && v.length <= max;
 
-export function validateBrand(input: unknown): { ok: true; brand: Brand } | { ok: false; errors: string[] } {
+export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: false; errors: string[] } {
   const errors: string[] = [];
   const err = (path: string, msg: string) => errors.push(`${path}: ${msg}`);
-  if (!isObject(input)) return { ok: false, errors: ['brand: must be an object'] };
+  if (!isObject(raw)) return { ok: false, errors: ['brand: must be an object'] };
+  const input: Record<string, any> = structuredClone(raw); // normalization below (face refs) never touches the caller's object
   const TOP = ['$schema', 'schemaVersion', 'name', 'subject', 'grounding', 'territories', 'muse', 'color', 'type', 'form', 'movement', 'adaptivity', 'voice', 'iconography', 'signature', 'avoid', 'rationale'];
   for (const k of Object.keys(input)) if (!TOP.includes(k)) err(k, 'unknown section');
   if (input.schemaVersion !== BRAND_SCHEMA_VERSION) err('schemaVersion', `must be ${BRAND_SCHEMA_VERSION}`);
@@ -134,6 +135,7 @@ export function validateBrand(input: unknown): { ok: true; brand: Brand } | { ok
         if (!isAnchorColor(a?.value)) err(`${p}.value`, 'must be #rrggbb');
         if (!ROLE_NAMES.includes(a?.role)) err(`${p}.role`, `must be one of ${ROLE_NAMES.join(', ')}`);
         if (a?.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${p}.step`, 'must be a step 2–12');
+        if (a?.dark !== undefined && !isAnchorColor(a.dark)) err(`${p}.dark`, 'must be #rrggbb');
         roles.push(a?.role);
       });
       if (new Set(roles).size !== roles.length) err('color.anchors', 'one anchor per role');
@@ -146,8 +148,12 @@ export function validateBrand(input: unknown): { ok: true; brand: Brand } | { ok
   if (ty !== undefined) {
     if (!isObject(ty)) err('type', 'must be an object');
     else {
-      for (const [role, f] of Object.entries<any>(ty.faces ?? {})) {
+      for (const [role, raw] of Object.entries<any>(ty.faces ?? {})) {
         const p = `type.faces.${role}`;
+        // A catalogue ref fills the family, descriptor and source it leaves out.
+        const entry = isObject(raw) && raw.ref ? FACE_CATALOGUE.find((x) => x.id === raw.ref) : undefined;
+        const f = entry ? { family: entry.family, descriptor: entry.descriptor, source: entry.source, ...raw } : raw;
+        if (entry) ty.faces[role] = f;
         if (!['display', 'body', 'utility'].includes(role)) { err(p, 'must be display, body or utility'); continue; }
         if (f?.ref !== undefined && !FACE_CATALOGUE.some((x) => x.id === f.ref)) err(`${p}.ref`, 'unknown catalogue face');
         if (!isObject(f) || typeof f.family !== 'string' || !/^[\w\s.-]{1,60}$/.test(f.family)) err(`${p}.family`, 'must be a family name');
@@ -216,7 +222,7 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
   const theme: Theme = { schemaVersion: THEME_SCHEMA_VERSION, name: b.name, description: `${b.subject.name}: ${b.subject.primaryJob}`, ...parts, character } as Theme;
   // Color anchors.
   if (b.color?.anchors?.length) {
-    theme.color = { ...(theme.color ?? {}), anchors: b.color.anchors.map((a) => ({ role: a.role, value: a.value.toLowerCase(), name: a.name, ...(a.step ? { step: a.step } : {}) })) };
+    theme.color = { ...(theme.color ?? {}), anchors: b.color.anchors.map((a) => ({ role: a.role, value: a.value.toLowerCase(), name: a.name, ...(a.step ? { step: a.step } : {}), ...(a.dark ? { dark: a.dark.toLowerCase() } : {}) })) };
     b.color.anchors.forEach((a, i) => { provenance[`color.anchors.${i}`] = { source: 'brand', reason: `color.anchors.${i} (${a.name})` }; });
   } else unresolved.push('color.anchors: no brand colors; the palette is generated from the character alone (name 2–6 anchors, or confirm that is intended)');
   if (b.color?.feedback === 'anchored' && !b.color.anchors?.some((a) => ['critical', 'warning', 'success', 'info'].includes(a.role))) unresolved.push('color.feedback: anchored, but no critical, warning, success or info anchor');
@@ -313,6 +319,13 @@ export function lintBrand(b: Brand): BrandFinding[] {
     if (missing.length) out.push({ id: 'brand.face-weights', severity: 'warning', message: `${role} face ${entry.family} (${entry.weights.min}–${entry.weights.max}) cannot render weight ${missing.join(', ')}; the browser fakes it` });
     if (entry.descriptor !== f!.descriptor) out.push({ id: 'brand.face-descriptor', severity: 'info', message: `${role} face ${entry.family} is ${entry.descriptor} in the catalogue, not ${f!.descriptor}` });
   }
+  // A grounding reacted against: its canon is rejected, so a choice that matches it is worth a second look.
+  for (const g of [b.grounding?.primary, b.grounding?.secondary]) {
+    if (g?.relation !== 'react-against' || !g.ref) continue;
+    const canon = groundingOf(g.ref)!.canon.character;
+    const hits = Object.entries(canon).filter(([k, v]) => character[k] === v).map(([k, v]) => `${k}.${v} (from ${from[k]})`);
+    if (hits.length) out.push({ id: 'brand.reacted-canon', severity: 'info', message: `matches the canon of ${g.ref}, which the brand reacts against: ${hits.join(', ')}` });
+  }
   for (const a of b.avoid ?? []) {
     const [scale, value] = a.split('.');
     if (DESCRIPTORS[scale] && character[scale] === value) out.push({ id: 'brand.avoid', severity: 'warning', message: `${a} is on the brand's avoid list (set by ${from[scale]})` });
@@ -326,7 +339,7 @@ export function brandJsonSchema() {
   const scales = (ids: string[]) => strict(Object.fromEntries(ids.map((id) => [id, { enum: DESCRIPTORS[id].values.map((v) => v.name), description: `${DESCRIPTORS[id].title}: ${DESCRIPTORS[id].reads}` }])));
   const text = { type: 'string', minLength: 1 };
   const hex = { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' };
-  const face = strict({ ref: { enum: FACE_CATALOGUE.map((f) => f.id) }, family: { type: 'string', pattern: '^[\\w\\s.-]{1,60}$' }, descriptor: { enum: [...FACE_DESCRIPTORS] }, source: { enum: [...FACE_SOURCES] }, url: { type: 'string', pattern: '^https://' }, weights: { type: 'array', items: { type: 'integer', minimum: 100, maximum: 900 } } }, { required: ['family', 'descriptor'] });
+  const face = strict({ ref: { enum: FACE_CATALOGUE.map((f) => f.id), description: 'A face catalogue id; fills family, descriptor and source.' }, family: { type: 'string', pattern: '^[\\w\\s.-]{1,60}$' }, descriptor: { enum: [...FACE_DESCRIPTORS] }, source: { enum: [...FACE_SOURCES] }, url: { type: 'string', pattern: '^https://' }, weights: { type: 'array', items: { type: 'integer', minimum: 100, maximum: 900 } } }, { anyOf: [{ required: ['ref'] }, { required: ['family', 'descriptor'] }] });
   const ground = (required: string[]) => strict({ ref: { enum: GROUNDINGS.map((g) => g.id) }, name: text, relation: { enum: [...RELATIONS] }, principles: { type: 'array', items: text } }, { required });
   return {
     $schema: 'http://json-schema.org/draft-07/schema#',
@@ -349,7 +362,7 @@ export function brandJsonSchema() {
       }, { required: ['name', 'description'] }) },
       muse: strict({ kind: { enum: [...MUSE_KINDS] }, name: text, take: text, leave: text }, { required: ['kind', 'name', 'take'] }),
       color: strict({
-        anchors: { type: 'array', minItems: 1, maxItems: 8, items: strict({ name: text, value: hex, role: { enum: [...ROLE_NAMES] }, step: { type: 'integer', minimum: 2, maximum: 12 } }, { required: ['name', 'value', 'role'] }) },
+        anchors: { type: 'array', minItems: 1, maxItems: 8, items: strict({ name: text, value: hex, role: { enum: [...ROLE_NAMES] }, step: { type: 'integer', minimum: 2, maximum: 12 }, dark: hex }, { required: ['name', 'value', 'role'] }) },
         feedback: { enum: ['independent', 'anchored'] },
         character: scales(SECTION_SCALES.color),
       }),

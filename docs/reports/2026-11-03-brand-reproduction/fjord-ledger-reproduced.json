@@ -1,0 +1,122 @@
+{
+  "$schema": "../../contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "fjord-ledger",
+  "subject": {
+    "name": "Fjord Ledger",
+    "audience": "Bookkeepers at small Nordic shipping firms, working early mornings and late evenings in harbor offices",
+    "primaryJob": "Reconcile a month of entries at a time without ever doubting a number",
+    "kind": "tool",
+    "sources": [
+      "Tide tables: dense columns of times and heights, read at a glance",
+      "Ledger ruling: fine horizontal rules and column lines that keep figures aligned",
+      "Harbor office light: cold daylight off water at dawn, lamp light at dusk"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "Objective clarity: content before ornament",
+        "The grid organizes everything",
+        "Sans-serif type, flush left, ragged right",
+        "Departs from generous white space: the ledger must show as much as possible without scrolling"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Harbor office",
+      "ref": "harbor",
+      "primary": true,
+      "description": "The working office on a Nordic quay: tide tables pinned to the wall, ruled ledgers, cold water light through the window. Not the boats themselves.",
+      "materials": ["ruled paper", "painted steel", "wet stone"],
+      "palette": [
+        { "name": "fjord blue", "value": "#1f4f7a" },
+        { "name": "harbor grey", "value": "#8a9099" }
+      ],
+      "light": "flat, cold daylight off water in the morning; low lamp light in the evening",
+      "textures": "none: flat surfaces and fine rules only",
+      "composition": "columns and rows on a strict grid, figures right-aligned",
+      "type": "neo-grotesque with tabular figures",
+      "motion": "almost none: values change in place",
+      "imagery": "no imagery; data is the image",
+      "outOfBounds": ["curvature.pill", "movement.playful", "elevation.floating", "space.airy"]
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "Norwegian tide tables (Tidevannstabeller)",
+    "take": "the calm authority of a dense, ruled column of figures that you trust at a glance",
+    "leave": "the printed almanac look, nautical ornament and anchors"
+  },
+  "color": {
+    "anchors": [
+      { "name": "fjord blue", "value": "#1f4f7a", "role": "primary" },
+      { "name": "harbor grey", "value": "#6b7480", "role": "neutral" },
+      { "name": "ledger red", "value": "#b42318", "role": "critical" }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "muted",
+      "harmony": "unique",
+      "neutral": "subtle"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": { "ref": "inter-tight", "family": "Inter Tight", "descriptor": "neo-grotesque", "source": "google", "weights": [500, 600] },
+      "body": { "ref": "inter", "family": "Inter", "descriptor": "neo-grotesque", "source": "google", "weights": [400, 500, 600] },
+      "utility": { "ref": "ibm-plex-mono", "family": "IBM Plex Mono", "descriptor": "mono", "source": "google", "weights": [400, 500] }
+    },
+    "character": { "type-scale": "gentle" }
+  },
+  "form": {
+    "scale": "sm",
+    "density": "compact",
+    "space": "tight",
+    "curvature": "crisp",
+    "line": "hairline",
+    "elevation": "flat"
+  },
+  "movement": "still",
+  "adaptivity": "both",
+  "iconography": { "set": "lucide", "weight": "light" },
+  "signature": {
+    "concept": "A full month on one screen",
+    "scale": "density",
+    "reason": "Tide tables and ledgers earn trust by showing every row at once; the brief asks for as much as possible without scrolling."
+  },
+  "avoid": ["curvature.pill", "elevation.floating", "movement.playful", "harmony.triadic"],
+  "rationale": {
+    "grounding.primary": "Swiss International gives the grid and objective clarity of tide tables; reinterpreted because its airy space fights the no-scrolling brief.",
+    "territories.0": "Harbor office, not harbor decoration: the brief says tide tables and ledger ruling, not maritime motifs.",
+    "color.anchors": "Fjord blue from cold water light as primary; harbor grey for neutrals; ledger red for critical, the red ink of a ledger correction.",
+    "color.feedback": "Independent: warnings and errors must read as feedback, never as the brand blue.",
+    "color.character.vibrancy": "Muted: calm for long reconciliation sessions at dawn and dusk.",
+    "color.character.harmony": "Unique: one accent, so nothing competes with the numbers.",
+    "color.character.neutral": "Subtle: a trace of the cold water hue in the greys, less than the harbor canon's tint.",
+    "type.faces.display": "Inter Tight: a neo-grotesque per the Swiss canon, tight enough for dense headers.",
+    "type.faces.body": "Inter: neo-grotesque with tabular figures so columns of amounts align.",
+    "type.faces.utility": "IBM Plex Mono for account codes and amounts, like the fixed columns of a tide table.",
+    "type.character.type-scale": "Gentle: headings stay close to body so more rows fit; Swiss dramatic scale costs space.",
+    "form.scale": "Small: more rows on one screen, from the no-scrolling brief.",
+    "form.density": "Compact: the signature, from the tide table's dense columns.",
+    "form.space": "Tight: gutters give way to rows; reinterprets Swiss airy space.",
+    "form.curvature": "Crisp: precise edges, from the harbor canon and ledger ruling.",
+    "form.line": "Hairline: ledger ruling separates rows and columns.",
+    "form.elevation": "Flat: a ledger is one sheet, from the Swiss canon.",
+    "movement": "Still: a number must never seem to move; from the Swiss canon and the precise, calm brief.",
+    "adaptivity": "Both: bookkeepers work in morning daylight and late evening, so light and dark carry equal weight.",
+    "iconography": "Lucide light: thin strokes that sit with hairline rules."
+  },
+  "voice": {
+    "tone": ["precise", "calm", "plain"],
+    "samples": {
+      "action": "Reconcile March",
+      "confirmation": "March reconciled. 412 entries, balance 0.00.",
+      "error": "Entry 214 is off by 120.00 NOK. Check the amount against the bank line."
+    }
+  }
+}

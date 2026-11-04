@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "name": "night-signal",
+  "subject": {
+    "name": "Night Signal",
+    "audience": "Festival-goers on a phone, in the dark, in a crowd",
+    "primaryJob": "Find who plays where right now",
+    "kind": "campaign",
+    "sources": [
+      "Stage lighting: colored washes and beams cutting through haze",
+      "LED walls and the timetable boards at each stage",
+      "Wristbands and stage-color wayfinding"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "memphis",
+      "relation": "react-against",
+      "principles": [
+        "No ornament for its own sake: no squiggles, confetti or pastel play",
+        "Energy comes from color relationships, not decoration"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Stage at night",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Festival stages after dark: haze, colored washes, LED walls, point sources in a dark field.",
+      "materials": ["haze", "LED wall", "truss steel", "wristband fabric"],
+      "palette": [
+        { "name": "cobalt wash", "value": "#1f3fbf" },
+        { "name": "stage orange", "value": "#f2762e" }
+      ],
+      "light": "saturated washes and beams in darkness",
+      "composition": "big stacked time-and-stage rows readable at arm's length",
+      "motion": "pulses and quick settles, like a light cue",
+      "imagery": "light, not illustration",
+      "outOfBounds": ["adaptivity.light-first", "vibrancy.muted", "movement.playful", "curvature.pill"]
+    }
+  ],
+  "muse": {
+    "kind": "person",
+    "name": "Sonia Delaunay",
+    "take": "Simultaneous contrast: adjacent color fields that make each other vibrate, in rhythm",
+    "leave": "Her literal concentric discs and textile patterns"
+  },
+  "color": {
+    "anchors": [
+      { "name": "cobalt wash", "value": "#1f3fbf", "role": "primary" },
+      { "name": "stage orange", "value": "#f2762e", "role": "secondary" },
+      { "name": "spot yellow", "value": "#f5c518", "role": "data1" },
+      { "name": "laser green", "value": "#1e9e6a", "role": "data2" },
+      { "name": "rose gel", "value": "#d6336c", "role": "data3" }
+    ],
+    "feedback": "independent",
+    "character": { "harmony": "complementary" }
+  },
+  "type": {
+    "faces": {
+      "display": { "ref": "space-grotesk" },
+      "body": { "ref": "inter" },
+      "utility": { "ref": "jetbrains-mono" }
+    }
+  },
+  "form": {
+    "scale": "lg",
+    "curvature": "round",
+    "line": "hairline",
+    "elevation": "layered"
+  },
+  "signature": {
+    "concept": "Simultaneous contrast",
+    "scale": "harmony",
+    "reason": "Delaunay's complementary color rhythms carry the stage energy, so the accents pair as complements instead of adding ornament"
+  },
+  "voice": {
+    "tone": ["confident", "plain", "warm"],
+    "samples": {
+      "action": "Take me there",
+      "confirmation": "Saved. We'll ping you 10 minutes before.",
+      "error": "No signal here. Showing the last schedule we had."
+    }
+  },
+  "iconography": { "set": "phosphor", "weight": "regular" },
+  "avoid": [
+    "movement.playful",
+    "Squiggles and confetti on pastel backgrounds",
+    "Near-black with one acid-green accent",
+    "Small type that needs a steady hand to read"
+  ],
+  "rationale": {
+    "color.character.harmony": "Complementary pairs (cobalt and orange) are Delaunay's simultaneous contrast.",
+    "form.scale": "Large targets and type for a phone held in a moving crowd.",
+    "form.curvature": "Round echoes Delaunay's circles without going to pill.",
+    "form.line": "Hairlines separate surfaces in the dark, where shadows vanish.",
+    "form.elevation": "Layered, not the territory's floating: shadows do not read on a dark field."
+  }
+}

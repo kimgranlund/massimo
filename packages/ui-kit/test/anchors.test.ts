@@ -31,11 +31,11 @@ test('anchors: each anchor is exact at its step; its family takes its hue; light
   }
 });
 
-test('anchors: an anchor at steps 8–11 moves its role\'s solid there, and theme CSS points the solid at it', () => {
+test('anchors: an anchor at steps 8–12 moves its role\'s solid there, and theme CSS points the solid at it', () => {
   const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#0f62fe' }]);
   const step = r.report[0].step;
-  assert.ok(step >= 8 && step <= 11, `IBM blue lands on ${step}`);
-  assert.equal(r.solidSteps.primary, step);
+  assert.ok(step >= 8 && step <= 12, `IBM blue lands on ${step}`);
+  assert.equal(r.solidSteps.light.primary, step);
   const css = themeCss({ b: { schemaVersion: 2, name: 'b', color: { anchors: [{ role: 'primary', value: '#0f62fe' }] } } });
   const light = css[':root[data-ui-theme="b"]'];
   assert.equal(light['--colors-primary-solid'], `var(--colors-spectrum-${roles.primary}-${step})`);
@@ -66,4 +66,39 @@ test('anchors: validation, one per role, and the lint rules for order and range'
   assert.deepEqual(ids([{ role: 'primary', value: '#0f62fe', step: 4 }]), ['vibrancy.anchor-order']);
   assert.deepEqual(ids([{ role: 'secondary', value: '#050505' }]), ['vibrancy.anchor-range']);
   assert.ok(apcaLc(0, 97.5) > 100, 'near black is beyond the ramp');
+});
+
+test('anchors: a near-black brand primary (step 12) becomes the solid, with hover one step lighter', () => {
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#1f3a5f' }]);
+  assert.equal(r.report[0].step, 12);
+  assert.equal(r.solidSteps.light.primary, 12);
+  const css = themeCss({ n: { schemaVersion: 2, name: 'n', color: { anchors: [{ role: 'primary', value: '#1f3a5f' }] } } })[':root[data-ui-theme="n"]'];
+  assert.equal(css['--colors-primary-solid-hover'], `var(--colors-spectrum-${roles.primary}-11)`);
+});
+
+test('anchors: two anchors on one family split: the second role moves to the nearest free family', () => {
+  assert.equal(roles.primary, roles.data1, 'primary and data 1 share a family by default');
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#d1187a' }, { role: 'data1', value: '#6b3fd6' }]);
+  assert.notEqual(r.roles.primary, r.roles.data1);
+  for (const a of r.report) {
+    const sw = r.data.schemes.light[a.family][a.step - 1];
+    const want = a.role === 'primary' ? '#d1187a' : '#6b3fd6';
+    assert.equal(a.family, r.roles[a.role as 'primary' | 'data1']);
+    assert.ok(sw.css.startsWith('oklch('), `${a.role} exact at ${a.family} ${a.step} (${want})`);
+  }
+  const hue = (f: string) => r.data.schemes.light[f][8].oklch[2];
+  assert.ok(Math.abs(hue(r.roles.primary) - hue(r.roles.data1)) > 20, 'the two families keep their own hues');
+});
+
+test('anchors: light solid steps stay in light; a dark anchor color sets its own dark step and solid', () => {
+  const navy = themeCss({ n: { schemaVersion: 2, name: 'n', color: { anchors: [{ role: 'primary', value: '#1f3a5f' }] } } });
+  assert.equal(navy[':root[data-ui-theme="n"]']['--colors-primary-solid'], `var(--colors-spectrum-${roles.primary}-12)`, 'light: the anchored step');
+  assert.ok(!navy[':root[data-ui-theme="n"].dark']['--colors-primary-solid']?.endsWith('-12)'), 'dark: not the lightest dark step');
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#1f3a5f', dark: '#7fb2f0' }]);
+  const d = r.report[0].dark!;
+  assert.ok(d.step >= 2 && d.step <= 12 && d.inOrder, `dark anchor at step ${d.step}, Lc ${d.lc}`);
+  assert.match(r.data.schemes.dark[r.report[0].family][d.step - 1].css, /^oklch\(/);
+  if (d.step >= 8) assert.equal(r.solidSteps.dark.primary, d.step);
+  assert.ok(validateThemeObject({ schemaVersion: 2, name: 'd', color: { anchors: [{ role: 'primary', value: '#1f3a5f', dark: '#7fb2f0' }] } }).ok);
+  assert.equal(validateThemeObject({ schemaVersion: 2, name: 'd', color: { anchors: [{ role: 'primary', value: '#1f3a5f', dark: 'blue' }] } }).ok, false);
 });

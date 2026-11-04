@@ -6,7 +6,11 @@
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/btg/element';
 import { css } from '../../styled-system/css/index.js';
-import { DESCRIPTORS, EXAMPLE_BRANDS, brandCharacter, describeTheme, hydrate, lintBrand, lintTheme, partsFromParameters, primaryTerritory, type Brand } from '@massimo/ui-kit/tokens';
+import { useEffect, useState } from 'react';
+import { DESCRIPTORS, EXAMPLE_BRANDS, brandCharacter, describeTheme, hydrate, lintBrand, lintTheme, partsFromParameters, primaryTerritory, scopeSelector, themeScopeCss, type Brand } from '@massimo/ui-kit/tokens';
+import { loadFontSource } from '../studio/fonts.ts';
+import '@massimo/ui-kit/components/input/element';
+import '@massimo/ui-kit/components/listbox/element';
 import { APPLY_BRAND, type PageProps } from './types.ts';
 import { Divider, Page, Section, caption, columns, dataTable, kicker, metrics, nameCell, noteCell, rowLabel, subTitle, tableScroller } from './shared.tsx';
 
@@ -48,6 +52,10 @@ export function BrandPage({ params, spectrum, brand }: PageProps) {
           <p className={caption}>The jig's Copy writes a theme until a brand is active.</p>
         </Section>
       )}
+      <Divider />
+      <Section id="side-by-side" title="Side by side" note="Each worked brand rendered in its own scope (themeScopeCss on a data-ui-scope element): the same composition, three themes on one page. The jig's own theme stays outside them.">
+        <SideBySide />
+      </Section>
       <Divider />
       <Section id="compare" title="Compare" note="The worked brands read back scale by scale (describeTheme on each hydrated theme). The signature, the one scale each brand pushes, is marked.">
         <div className={tableScroller}>
@@ -163,3 +171,48 @@ function ActiveBrand({ brand, params, spectrum }: { brand: Brand } & Pick<PagePr
   );
 }
 
+
+// Three scoped previews: the CSS is generated once (Spectrum takes ~300ms per brand) and kept in one
+// <style> element for the page's lifetime; each brand's web faces load as links.
+const scopeGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '4' });
+const scopeFrame = css({ bg: 'bg', borderRadius: 'xl', padding: '4', boxShadow: '[inset 0 0 0 1px var(--colors-border)]' });
+const previewTitle = css({ textStyle: 'heading-2' });
+const previewBody = css({ textStyle: 'body' });
+function SideBySide() {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.dataset.brandScopes = '';
+    document.head.append(style);
+    let i = 0, alive = true;
+    const next = () => {
+      if (!alive || i >= EXAMPLE_BRANDS.length) { if (alive) setReady(true); return; }
+      const b = EXAMPLE_BRANDS[i++], { theme } = hydrate(b);
+      for (const src of theme.typography?.sources ?? []) loadFontSource(src.url);
+      style.textContent += themeScopeCss(theme, scopeSelector(b.name)) + '\n';
+      setTimeout(next, 0);
+    };
+    setTimeout(next, 0);
+    return () => { alive = false; style.remove(); };
+  }, []);
+  return (
+    <div className={scopeGrid} aria-busy={!ready}>
+      {EXAMPLE_BRANDS.map((b) => (
+        <div key={b.name} data-ui-scope={b.name} className={scopeFrame}>
+          <ui-container preset="card">
+            <span className={kicker}>{b.subject.kind}</span>
+            <h3 className={previewTitle}>{b.subject.name}</h3>
+            <p className={previewBody}>{b.subject.primaryJob[0].toUpperCase() + b.subject.primaryJob.slice(1)}.</p>
+            <ui-input label="Search" hide-label="" placeholder="Search" />
+            <ui-segmented label="View" value="a"><ui-option value="a">Today</ui-option><ui-option value="b">Week</ui-option></ui-segmented>
+            <ui-container preset="group">
+              <ui-button variant="primary">{b.voice?.samples?.action ?? 'Continue'}</ui-button>
+              <ui-button>Later</ui-button>
+            </ui-container>
+            <ui-container preset="group"><ui-badge>3</ui-badge><ui-tag>new</ui-tag><ui-chip selectable selected>today</ui-chip></ui-container>
+          </ui-container>
+        </div>
+      ))}
+    </div>
+  );
+}

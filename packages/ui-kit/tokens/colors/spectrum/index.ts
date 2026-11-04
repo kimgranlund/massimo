@@ -4,9 +4,9 @@
 import RUNTIME from './runtime.json' with { type: 'json' };
 import { RADIX_HUES, SPECTRUM_FIXED, normalizeSpectrum, type SpectrumSettings } from './config.ts';
 import { apcaLc, stepTones, DEFAULT_TARGETS } from './contrast.ts';
-import { applyAnchors } from './anchors.ts';
+import { applyAnchors, type SolidSteps } from './anchors.ts';
 export { apcaLc, stepTones, toneForLc, DEFAULT_TARGETS, TARGET_MAX } from './contrast.ts';
-export { applyAnchors, isAnchorColor, type ColorAnchor, type AnchorResult } from './anchors.ts';
+export { applyAnchors, isAnchorColor, type ColorAnchor, type AnchorResult, type SolidSteps } from './anchors.ts';
 
 export * from './config.ts';
 
@@ -249,11 +249,12 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
     const { family, step, alpha } = roleStep(entry, mode);
     vars[`--colors-${role}`] = withAlpha(`var(--colors-spectrum-${roles[family]}-${step})`, alpha);
   }
-  // An anchored role's solid follows its anchor (applyAnchors): solid at the anchored step, hover one darker.
+  // An anchored role's solid follows its anchor (applyAnchors): solid at the anchored step, hover one
+  // darker (one lighter at step 12, the darkest).
   for (const [role, s] of Object.entries(solidSteps) as [RoleName, number][]) {
     if (!(SCALE_ROLES as readonly string[]).includes(role)) continue;
     vars[`--colors-${role}-solid`] = `var(--colors-spectrum-${roles[role]}-${s})`;
-    vars[`--colors-${role}-solid-hover`] = `var(--colors-spectrum-${roles[role]}-${Math.min(12, s + 1)})`;
+    vars[`--colors-${role}-solid-hover`] = `var(--colors-spectrum-${roles[role]}-${s === 12 ? 11 : s + 1})`;
   }
   // Text on a primary solid: the engine's APCA choice for the solid step (9 unless anchored).
   vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][(solidSteps.primary ?? 9) - 1].apca.css;
@@ -289,8 +290,8 @@ const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object
  * after the kit stylesheet; selectors match the kit's own so each rule wins its counterpart.
  * Variable names match the kit's tokens (--colors-spectrum-{family}-{1..12}, --colors-{role}).
  */
-export function spectrumCSS(data: Spectrum, roles: Roles, scope?: string, solidSteps: Partial<Record<RoleName, number>> = {}) {
-  const light = roleVariables(data, roles, 'light', solidSteps), dark = roleVariables(data, roles, 'dark', solidSteps);
+export function spectrumCSS(data: Spectrum, roles: Roles, scope?: string, solidSteps: SolidSteps = { light: {}, dark: {} }) {
+  const light = roleVariables(data, roles, 'light', solidSteps.light), dark = roleVariables(data, roles, 'dark', solidSteps.dark);
   const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i + 1}`, css])));
   // Scoped: everything is declared on the scope element itself, so it re-resolves there and
   // nothing outside it changes; .light/.dark on the scope element force a scheme.
@@ -362,12 +363,13 @@ export function spectrumDiagnostics(data: Spectrum, roles: Roles, step = 2): Spe
 }
 
 /**
- * A spectrum with a theme's anchors applied (anchors.ts): the roles resolved, each anchor's family
- * re-shaped and its step overridden, and the solid step per anchored role.
+ * A spectrum with a theme's anchors applied (anchors.ts): each anchor's family re-shaped and its step
+ * overridden, the roles (a role whose family another anchor claimed moves to a free family), and the
+ * solid step per anchored role. Use the returned roles.
  */
 export function anchoredSpectrum(data: Spectrum, roles: Roles, anchors: import('./anchors.ts').ColorAnchor[] = []) {
-  if (!anchors.length) return { data, roles, report: [] as import('./anchors.ts').AnchorResult[], solidSteps: {} as Partial<Record<RoleName, number>> };
-  const targets = { light: (data.settings.targetsLight as number[] | undefined) ?? [...DEFAULT_TARGETS.light] };
+  if (!anchors.length) return { data, roles, report: [] as import('./anchors.ts').AnchorResult[], solidSteps: { light: {}, dark: {} } as SolidSteps };
+  const targets = { light: (data.settings.targetsLight as number[] | undefined) ?? [...DEFAULT_TARGETS.light], dark: (data.settings.targetsDark as number[] | undefined) ?? [...DEFAULT_TARGETS.dark] };
   const r = applyAnchors(data, roles, anchors, targets);
-  return { data: r.data, roles, report: r.report, solidSteps: r.solidSteps as Partial<Record<RoleName, number>> };
+  return { data: r.data, roles: r.roles as Roles, report: r.report, solidSteps: r.solidSteps };
 }

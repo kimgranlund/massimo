@@ -115,5 +115,19 @@ test('brand: the lint catches the known defaults, out-of-bounds choices, feedbac
   assert.ok(ids({ signature: { concept: 'curvature', scale: 'curvature', reason: 'r' } }).includes('brand.signature'), 'a signature at its default');
   assert.ok(ids({ form: { curvature: 'pill' }, avoid: ['curvature.pill'] }).includes('brand.avoid'));
   assert.ok(ids({ muse: { kind: 'work', name: 'X', take: 'copy it exactly' } }).includes('brand.muse-copy'));
+  assert.ok(ids({ grounding: { primary: { ref: 'memphis', relation: 'react-against' } }, form: { curvature: 'round' } }).includes('brand.reacted-canon'), 'a choice matching a rejected canon');
+  assert.ok(!ids({ grounding: { primary: { ref: 'memphis', relation: 'react-against' } }, form: { curvature: 'crisp' } }).includes('brand.reacted-canon'));
   assert.ok(lintBrand(brand({ ...minimal })).every((f) => f.severity !== ('error' as string)), 'advisory only');
+});
+
+test('brand: a face ref fills family, descriptor and source from the face catalogue, without touching the input', () => {
+  const input = { ...minimal, type: { faces: { body: { ref: 'inter' }, display: { ref: 'fraunces', weights: [400, 700] } } } };
+  const before = JSON.stringify(input);
+  const b = brand(input);
+  assert.equal(JSON.stringify(input), before, 'the caller\'s object is unchanged');
+  assert.deepEqual(b.type!.faces!.body, { family: 'Inter', descriptor: 'neo-grotesque', source: 'google', ref: 'inter' });
+  assert.equal(b.type!.faces!.display!.descriptor, 'serif');
+  const { theme } = hydrate(b);
+  assert.deepEqual(theme.typography!.sources!.map((s) => s.family).sort(), ['Fraunces', 'Inter']);
+  assert.equal(validateBrand({ ...minimal, type: { faces: { body: {} } } }).ok, false, 'a face needs a ref or a family and descriptor');
 });

@@ -5,7 +5,7 @@ import constraints from '../../contracts/theme-constraints.json' with { type: 'j
 import { defaultParams, type ParamName, type ThemeParams } from './params.ts';
 import { themeParameters, type Theme } from './theme.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
-import { anchoredSpectrum, generateSpectrum, resolveRoles, SCALE_ROLES, type AnchorResult, type RoleName, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
+import { anchoredSpectrum, generateSpectrum, resolveRoles, SCALE_ROLES, type AnchorResult, type SolidSteps, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
 import { densityInset } from '../geometry/resolve.ts';
 import { SPRING_NAMES } from '../motion/index.ts';
 import { DEFAULT_VOICES, FONT_FAMILIES, VOICES, isSerifStack, type Face } from '../typography/resolve.ts';
@@ -13,7 +13,7 @@ import { catalogueFace, firstFamily, missingWeights, voiceWeights } from '../typ
 
 export type Severity = 'error' | 'warning' | 'info';
 export interface Finding { id: string; concept: string; severity: Severity; message: string; fix: string }
-interface Ctx { p: ThemeParams; theme: Partial<Theme>; color: () => { data: Spectrum; roles: Roles; anchors: AnchorResult[]; solidSteps: Partial<Record<RoleName, number>> } }
+interface Ctx { p: ThemeParams; theme: Partial<Theme>; color: () => { data: Spectrum; roles: Roles; anchors: AnchorResult[]; solidSteps: SolidSteps } }
 type Rule = (c: Ctx) => string[];
 
 export const THEME_CONSTRAINTS = constraints.rules as Record<string, { concept: string; severity: Severity; checks: string; fix: string; fixtures: { fail: unknown; pass: unknown } }>;
@@ -81,7 +81,8 @@ export const RULES: Record<string, Rule> = {
       // APCA Lc 60 is the level for UI text (labels at the control font); the engine's own onSolid flag also asks for a ramp color, so it is not used.
       const low = (['primary', 'critical'] as const).flatMap((role) => {
         // An anchored role's solid is its anchored step (applyAnchors recomputes the text color there).
-        const lc = solidSteps[role] ? Math.abs(data.schemes[mode][roles[role]][solidSteps[role]! - 1].apca.lc) : Math.abs((data.checks?.[mode].rows[roles[role]] as any)?.roles.onSolid?.lc ?? Infinity);
+        const at = solidSteps[mode][role];
+        const lc = at ? Math.abs(data.schemes[mode][roles[role]][at - 1].apca.lc) : Math.abs((data.checks?.[mode].rows[roles[role]] as any)?.roles.onSolid?.lc ?? Infinity);
         return lc < ON_SOLID_LC ? [{ role, family: roles[role], lc }] : [];
       });
       if (low.length) out.push(`text on the solid is ${range(low.map((l) => l.lc))} in ${mode} for ${list(low)}`);
@@ -110,8 +111,10 @@ export const RULES: Record<string, Rule> = {
       return entry?.source === 'google' && !sources.has(entry.family.toLowerCase()) ? [`the ${face} face ${entry.family} is a web face with no typography.sources entry, so it falls back to ${firstFamily(stack!.split(',').slice(1).join(',') || 'the fallback')}`] : [];
     });
   },
-  'vibrancy.anchor-order': ({ color }) => color().anchors.filter((a) => !a.inOrder).map((a) =>
-    `the ${a.role} anchor ${a.value} (Lc ${fmt(a.lc)}) at step ${a.step} falls outside its neighbors (Lc ${fmt(a.below)}–${a.above === Infinity ? '…' : fmt(a.above)}), so the ramp is out of order`),
+  'vibrancy.anchor-order': ({ color }) => color().anchors.flatMap((a) => [
+    ...(!a.inOrder ? [`the ${a.role} anchor ${a.value} (Lc ${fmt(a.lc)}) at step ${a.step} falls outside its neighbors (Lc ${fmt(a.below)}–${a.above === Infinity ? '…' : fmt(a.above)}), so the ramp is out of order`] : []),
+    ...(a.dark && !a.dark.inOrder ? [`the ${a.role} dark anchor ${a.dark.value} (Lc ${fmt(a.dark.lc)}) at dark step ${a.dark.step} falls outside its neighbors, so the dark ramp is out of order`] : []),
+  ]),
   'vibrancy.anchor-range': ({ color }) => color().anchors.filter((a) => !a.inRange).map((a) =>
     `the ${a.role} anchor ${a.value} (Lc ${fmt(a.lc)} against the page) is beyond the ramp; it is placed at step ${a.step}`),
 };
@@ -124,9 +127,8 @@ export function lintTheme(theme: Partial<Theme>, opts: { spectrum?: Spectrum; on
     p, theme,
     color: () => (color ??= (() => {
       const generated = opts.spectrum ?? generateSpectrum(spectrumOverrides(normalizeSpectrum(theme.color?.spectrum ?? {})));
-      const roles = resolveRoles(generated, theme.color?.roles ?? {});
-      const a = anchoredSpectrum(generated, roles, theme.color?.anchors);
-      return { data: a.data, roles, anchors: a.report, solidSteps: a.solidSteps };
+      const a = anchoredSpectrum(generated, resolveRoles(generated, theme.color?.roles ?? {}), theme.color?.anchors);
+      return { data: a.data, roles: a.roles, anchors: a.report, solidSteps: a.solidSteps };
     })()),
   };
   const order: Record<Severity, number> = { error: 0, warning: 1, info: 2 };
