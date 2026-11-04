@@ -103,6 +103,8 @@ Precedence, as in artifact-design: the user's words, the brand's existing system
 
 ## Plan
 
+Steps 2, 4 and 5 continue in [brand-schema.md](brand-schema.md), which makes L0 and L1 a typed Brand object that hydrates per-domain theme parts.
+
 | Step | Delivers | Done when |
 |---|---|---|
 | 1 (built 2026-11-03) | `theme.schema.json`; saved themes and jig Copy/Load use it (Spectrum, roles, faces, voices, density, elevation included) | a theme round-trips jig → file → jig unchanged; `validateThemeObject` validates the whole object |
