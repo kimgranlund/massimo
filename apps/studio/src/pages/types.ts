@@ -14,9 +14,9 @@ export interface PageProps {
 }
 
 /** Content pages, in menu order. `home` is the default route (#/ or an unknown hash). */
-export const ROUTES = ['home', 'components', 'containers', 'geometry', 'typography', 'colors', 'motion'] as const;
+export const ROUTES = ['home', 'components', 'containers', 'elevation', 'geometry', 'typography', 'colors', 'motion'] as const;
 export type Route = (typeof ROUTES)[number];
 export const ROUTE_LABEL: Record<Route, string> = {
-  home: 'Home', components: 'Components', containers: 'Containers', geometry: 'Geometry',
+  home: 'Home', components: 'Components', containers: 'Containers', elevation: 'Elevation', geometry: 'Geometry',
   typography: 'Typography', colors: 'Colors', motion: 'Motion',
 };

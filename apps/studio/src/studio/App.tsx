@@ -17,6 +17,7 @@ import { navigate, useHashRoute } from '../pages/route.ts';
 import { HomePage } from '../pages/Home.tsx';
 import { ComponentsPage, FAMILIES, isFamily } from '../pages/Components.tsx';
 import { ContainersPage } from '../pages/Containers.tsx';
+import { ElevationPage } from '../pages/Elevation.tsx';
 import { GeometryPage } from '../pages/Geometry.tsx';
 import { TypographyPage } from '../pages/Typography.tsx';
 import { ColorsPage } from '../pages/Colors.tsx';
@@ -44,7 +45,7 @@ const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1;
 const PANEL_TABS: [PanelTab, string][] = [['geometry', 'Geometry'], ['colors', 'Colors'], ['typography', 'Typography'], ['motion', 'Motion']];
 const isPanelTab = (v: unknown): v is PanelTab => PANEL_TABS.some(([t]) => t === v);
 const PAGES: Record<Exclude<Route, 'components'>, (p: PageProps) => ReactNode> = {
-  home: HomePage, containers: ContainersPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage,
+  home: HomePage, containers: ContainersPage, elevation: ElevationPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage,
 };
 const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
 
