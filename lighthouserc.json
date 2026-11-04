@@ -42,7 +42,29 @@
               {
                 "maxNumericValue": 4
               }
-            ]
+            ],
+            "aria-allowed-attr": "error",
+            "aria-required-attr": "error",
+            "aria-valid-attr": "error",
+            "aria-valid-attr-value": "error",
+            "aria-roles": "error",
+            "aria-input-field-name": "error",
+            "aria-toggle-field-name": "error",
+            "aria-progressbar-name": "error",
+            "aria-meter-name": "error",
+            "aria-dialog-name": "error",
+            "aria-hidden-focus": "error",
+            "button-name": "error",
+            "link-name": "error",
+            "image-alt": "error",
+            "label": "error",
+            "heading-order": "error",
+            "document-title": "error",
+            "duplicate-id-aria": "error",
+            "list": "error",
+            "listitem": "error",
+            "color-contrast": "warn",
+            "target-size": "warn"
           }
         },
         {

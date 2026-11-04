@@ -71,7 +71,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
           <ui-container preset="card" key={f.title} padding="lg">
             <span className={cx(featureIcon, s.tone[(['primary', 'secondary', 'info'] as const)[i]])}><i name={f.icon} /></span>
             <div className={s.stack1}>
-              <h3 className={s.h3}>{f.title}</h3>
+              <h2 className={s.h3}>{f.title}</h2>
               <p className={s.muted}>{f.text}</p>
             </div>
           </ui-container>

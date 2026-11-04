@@ -40,10 +40,11 @@ export function Range({ label, value, min, max, step, onValue, format, disabled,
   );
 }
 
-export function Segmented<T extends string>({ label, value, options, onValue }: { label?: string; value: T; options: [T, string][]; onValue: (v: T) => void }) {
+/** A segmented control; without a visible `label`, `ariaLabel` names it for assistive tech. */
+export function Segmented<T extends string>({ label, ariaLabel, value, options, onValue }: { label?: string; ariaLabel?: string; value: T; options: [T, string][]; onValue: (v: T) => void }) {
   const ref = useEvent('change', (_el, d) => onValue(d.value));
   const control = (
-    <ui-segmented ref={ref} value={value}>
+    <ui-segmented ref={ref} value={value} label={label ? undefined : ariaLabel}>
       {options.map(([v, l]) => <ui-option key={v} value={v}>{l}</ui-option>)}
     </ui-segmented>
   );

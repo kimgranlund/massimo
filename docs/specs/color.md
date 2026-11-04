@@ -78,6 +78,10 @@ Roles often share a family (primary and data 1 both default to indigo). Each anc
 
 Each step's lightness is kept, so the contrast steps hold. The lint warns when an anchor breaks the order, in either scheme (`vibrancy.anchor-order`: its Lc must lie between its neighbors' targets) or lies beyond the ramp (`vibrancy.anchor-range`, a near-black or near-white ink: map it to the black or white endpoint instead).
 
+## Contrast standard
+
+The kit meets APCA, not WCAG 2 contrast ratios. Step tones are solved from APCA Lc targets, and text on a solid (`fg.onSolid`) is the engine's APCA black-or-white choice. Some pairs that read well by APCA fall under WCAG 2's 4.5:1. For example, white on a mid-tone dark-scheme solid measures about 3:1, and muted text on dark surfaces measures 3.7 to 4.4:1. Lighthouse's `color-contrast` audit, which uses WCAG 2, is therefore a warning in `lighthouserc.json`, not a failure. A project that must pass a WCAG 2 AA audit anchors its solids ([Anchors](#anchors)) or raises the step targets until its pairs reach 4.5:1.
+
 ## Schemes
 
 Light by default; dark under `prefers-color-scheme: dark`; `.light` / `.dark` on any element force a scheme for its subtree. Role tokens are redeclared in every scheme block so a subtree class re-resolves them.

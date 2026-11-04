@@ -358,7 +358,7 @@ export function App() {
       <aside className={s.panel} aria-label="Jig" data-size="3" data-ui-scope="massimo">
         <header className={s.panelHeader}>
           <h1 className={s.brand}>Studio</h1>
-          <Segmented<PanelTab> value={tab} onValue={setTab} options={PANEL_TABS} />
+          <Segmented<PanelTab> ariaLabel="Panel" value={tab} onValue={setTab} options={PANEL_TABS} />
         </header>
 
         {/* One field grid per tab: every group's rows share the label | control | readout columns. */}
