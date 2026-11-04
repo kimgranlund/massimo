@@ -731,6 +731,28 @@
             }
           }
         },
+        "sources": {
+          "type": "array",
+          "description": "Stylesheets for web faces; the app (or the jig) loads them.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "family": {
+                "type": "string",
+                "pattern": "^[\\w\\s.-]{1,60}$"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https:\\/\\/(fonts\\.googleapis\\.com\\/css2\\?[\\w+:@;.,&=%-]{1,400}|[\\w.-]+\\/[\\w./-]{1,200}\\.css)$"
+              }
+            },
+            "required": [
+              "family",
+              "url"
+            ]
+          }
+        },
         "faces": {
           "type": "object",
           "additionalProperties": false,

@@ -32,7 +32,7 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 | Section | Holds |
 |---|---|
 | `geometry` | `parameters`: unit, density, border, curvature, container radius and nesting ratio, the container ladder, elevation |
-| `typography` | `parameters` (`type-ratio`, `type-rhythm`); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color |
+| `typography` | `parameters` (`type-ratio`, `type-rhythm`); `sources`: web face stylesheets ([typography](typography.md#face-catalogue)); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color |
 | `color` | `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role ([color](color.md#anchors)) |
 | `motion` | `parameters`: the multipliers, springs and intents |
 | `icons`, `scheme` | the icon set; the preferred scheme (auto, light, dark) |
@@ -75,13 +75,13 @@ A brand is authored first and hydrates a theme (`tokens/brand/index.ts`; JSON Sc
 | `territories` | 1–3 bounded visual worlds (one primary): description, materials, palette, light, textures, composition, type, motion, imagery, `outOfBounds` (`<scale>.<value>`), an optional catalogue `ref` and `character` |
 | `muse` | the person, work, object, place or archetype the brand answers to: what to `take` (a quality) and what to `leave` |
 | `color` | `anchors` (named exact colors per role), `feedback` (independent or anchored), `character` (vibrancy, harmony, neutral) |
-| `type` | `faces` (display, body, utility: family, descriptor, source, weights), `character` (type-scale) |
+| `type` | `faces` (display, body, utility: a face catalogue `ref` or a family, descriptor, source, weights), `character` (type-scale) |
 | `form`, `movement`, `adaptivity` | descriptor values (scale, density, space, curvature, corner, line, elevation; movement; adaptivity) |
 | `voice`, `iconography`, `signature`, `avoid`, `rationale` | tone words and microcopy samples; icon set and weight; the one scale the brand pushes and why; anti-choices (`<scale>.<value>`); one line per choice keyed by its brand path |
 
 The catalogue (`contracts/brand-catalogue.json`) holds groundings (Swiss International, Bauhaus, mingei, Arts and Crafts, Memphis, Brutalism, Scandinavian functionalism, Californian modernism) and territory archetypes (harbor, workshop, botanical, nocturne, archive, laboratory, desert). Each entry has a canon of descriptor values, its clichés and sources, and appears in the registry as `grounding:<id>` and `territory:<id>`, with `implies` edges to its descriptor values.
 
-`hydrate(brand)` gives a schema v2 theme and its open questions. The character is resolved in order, each source above the last: the grounding's canon (unless the brand reacts against it), then the primary territory's canon and character, then the explicit `color`, `type`, `form`, `movement` and `adaptivity` choices. `themeFromCharacter` then sets the parameters; anchors become `color.anchors`; faces become font stacks with a fallback per descriptor, and voices point at them; the icon set carries over. Every value's provenance is `{ source: 'brand', reason: '<brand path> → <scale.value>' }`. Anything hydrate cannot decide (a free grounding name, no anchors, no body face) comes back in `unresolved`, never guessed.
+`hydrate(brand)` gives a schema v2 theme and its open questions. The character is resolved in order, each source above the last: the grounding's canon (unless the brand reacts against it), then the primary territory's canon and character, then the explicit `color`, `type`, `form`, `movement` and `adaptivity` choices. `themeFromCharacter` then sets the parameters; anchors become `color.anchors`; faces become font stacks with a fallback per descriptor, a Google face from the catalogue adds its stylesheet to `typography.sources`, and voices point at them; the icon set carries over. Every value's provenance is `{ source: 'brand', reason: '<brand path> → <scale.value>' }`. Anything hydrate cannot decide (a free grounding name, no anchors, no body face) comes back in `unresolved`, never guessed.
 
 `lintBrand(brand)` is advisory, like the theme lint. It checks:
 
@@ -91,6 +91,7 @@ The catalogue (`contracts/brand-catalogue.json`) holds groundings (Swiss Interna
 - the primary territory's out-of-bounds values and the brand's own avoid list;
 - a muse taken as a copy;
 - a critical anchor within 30° of the primary's hue;
+- each face against the [face catalogue](typography.md#face-catalogue): unknown, missing a weight its voices need, or a different descriptor;
 - the generated-looking defaults, as predicates over saturated accent anchors: warm cream with a serif and terracotta, near-black with one acid accent, purple to blue, pill curvature with floating elevation.
 
 `npm run brand -- validate|lint|hydrate <brand.json>` runs them from the command line. Three worked brands, each with a different grounding, live in `tokens/brand/examples/`:

@@ -14,18 +14,18 @@ import { THEME_SCHEMA_VERSION, FONT_STACK, type Theme } from '../themes/theme.ts
 import { THEME_NAME } from '../themes/validate.ts';
 import { ROLE_NAMES, isAnchorColor, type RoleName } from '../colors/spectrum/index.ts';
 import { ICON_SET_NAMES } from '../../icons/sets.ts';
+import { FACE_CATALOGUE, FACE_DESCRIPTORS, catalogueFace, faceStack, googleFontsUrl, missingWeights, voiceWeights, type FaceDescriptor } from '../typography/faces.ts';
+export { FACE_DESCRIPTORS };
 
 export const BRAND_SCHEMA_VERSION = 1;
 export const SUBJECT_KINDS = ['product', 'editorial', 'tool', 'campaign', 'institution'] as const;
 export const RELATIONS = ['inherit', 'reinterpret', 'react-against'] as const;
 export const MUSE_KINDS = ['person', 'work', 'object', 'place', 'archetype'] as const;
-export const FACE_DESCRIPTORS = ['neo-grotesque', 'geometric', 'humanist', 'grotesque', 'serif', 'slab', 'mono', 'display'] as const;
 export const FACE_SOURCES = ['system', 'google', 'self-hosted'] as const;
 export const TONE_WORDS = ['plain', 'warm', 'precise', 'playful', 'confident', 'calm', 'candid', 'formal', 'technical', 'poetic'] as const;
 export const ANCHOR_ROLES = ROLE_NAMES;
 
-type FaceDescriptor = (typeof FACE_DESCRIPTORS)[number];
-export interface BrandFace { family: string; descriptor: FaceDescriptor; source?: (typeof FACE_SOURCES)[number]; url?: string; weights?: number[] }
+export interface BrandFace { /** A face catalogue id (contracts/face-catalogue.json); family and descriptor then default from it. */ ref?: string; family: string; descriptor: FaceDescriptor; source?: (typeof FACE_SOURCES)[number]; url?: string; weights?: number[] }
 export interface Territory {
   name: string; ref?: string; primary?: boolean; description: string;
   materials?: string[]; palette?: { name: string; value: string }[]; textures?: string; light?: string; composition?: string;
@@ -149,6 +149,7 @@ export function validateBrand(input: unknown): { ok: true; brand: Brand } | { ok
       for (const [role, f] of Object.entries<any>(ty.faces ?? {})) {
         const p = `type.faces.${role}`;
         if (!['display', 'body', 'utility'].includes(role)) { err(p, 'must be display, body or utility'); continue; }
+        if (f?.ref !== undefined && !FACE_CATALOGUE.some((x) => x.id === f.ref)) err(`${p}.ref`, 'unknown catalogue face');
         if (!isObject(f) || typeof f.family !== 'string' || !/^[\w\s.-]{1,60}$/.test(f.family)) err(`${p}.family`, 'must be a family name');
         if (!FACE_DESCRIPTORS.includes(f?.descriptor)) err(`${p}.descriptor`, `must be one of ${FACE_DESCRIPTORS.join(', ')}`);
         if (f?.source !== undefined && !FACE_SOURCES.includes(f.source)) err(`${p}.source`, `must be one of ${FACE_SOURCES.join(', ')}`);
@@ -200,13 +201,7 @@ export function brandCharacter(b: Brand): { character: Record<string, string>; f
   return { character, from, unresolved };
 }
 
-const FALLBACK: Record<FaceDescriptor, string> = {
-  'neo-grotesque': '"Helvetica Neue", Helvetica, Arial, sans-serif', grotesque: '"Helvetica Neue", Arial, sans-serif',
-  geometric: 'Futura, "Century Gothic", "Avenir Next", sans-serif', humanist: '"Gill Sans", "Segoe UI", Calibri, sans-serif',
-  serif: 'Georgia, "Times New Roman", serif', slab: 'Rockwell, "Roboto Slab", Georgia, serif',
-  mono: 'ui-monospace, Menlo, Consolas, monospace', display: 'system-ui, sans-serif',
-};
-const stack = (f: BrandFace) => `"${f.family}", ${FALLBACK[f.descriptor]}`;
+const stack = (f: BrandFace) => faceStack(f.family, f.descriptor);
 
 /** Brand → theme (schema v2) with provenance, and the questions it could not answer. */
 export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
@@ -232,6 +227,11 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
     const s = stack(f);
     if (!FONT_STACK.test(s)) { unresolved.push(`${path}.family: "${f.family}" cannot be a font stack`); return; }
     (tf.faces ??= {})[face] = s; provenance[`typography.faces.${face}`] = { source: 'brand', reason: path };
+    // A web face: its stylesheet (Google from the catalogue, or the brand's self-hosted url).
+    const entry = catalogueFace(f.family);
+    const url = f.source === 'self-hosted' ? f.url : (entry?.source === 'google' || f.source === 'google') && entry ? googleFontsUrl(entry, f.weights) : undefined;
+    if (url && !(tf.sources ??= []).some((x) => x.family === f.family)) { tf.sources.push({ family: f.family, url }); provenance[`typography.sources.${tf.sources.length - 1}`] = { source: 'brand', reason: path }; }
+    if (f.source === 'google' && !entry) unresolved.push(`${path}: "${f.family}" is not in the face catalogue, so its stylesheet and weights are unknown (add it, or pick a catalogue face)`);
   };
   if (faces.body) {
     const slot = faces.body.descriptor === 'serif' || faces.body.descriptor === 'slab' ? 'serif' : faces.body.descriptor === 'mono' ? 'mono' : 'sans';
@@ -302,6 +302,17 @@ export function lintBrand(b: Brand): BrandFinding[] {
   const pa = anchors.find((a) => a.role === 'primary'), sa = anchors.find((a) => a.role === 'secondary');
   if (pa && sa && hueOf(pa.value)! >= 255 && hueOf(pa.value)! <= 300 && hueOf(sa.value)! >= 200 && hueOf(sa.value)! < 255) out.push({ id: 'brand.cliche', severity: 'warning', message: 'purple primary with a blue secondary: the gradient-hero default' });
   if (character.curvature === 'pill' && character.elevation === 'floating') out.push({ id: 'brand.cliche', severity: 'warning', message: 'pill curvature with floating elevation: everything rounded and lifted' });
+  // Faces: each brand face against the catalogue: known, and serving the weights its voices need.
+  const need = voiceWeights(new Set(b.type?.faces?.display?.descriptor === 'serif' || b.type?.faces?.body?.descriptor === 'serif' ? ['display', 'heading'] as const : []));
+  const roleVoices: Record<string, (keyof typeof need)[]> = { display: ['display', 'heading'], body: ['body', 'ui'], utility: ['code', 'numeric'] };
+  for (const [role, f] of Object.entries(b.type?.faces ?? {})) {
+    const entry = catalogueFace(f!.family);
+    if (!entry) { out.push({ id: 'brand.face-catalogue', severity: 'info', message: `${role} face ${f!.family} is not in the face catalogue: its weights and metrics are unchecked` }); continue; }
+    const want = [...new Set(roleVoices[role].flatMap((v) => need[v]))];
+    const missing = missingWeights(entry, want);
+    if (missing.length) out.push({ id: 'brand.face-weights', severity: 'warning', message: `${role} face ${entry.family} (${entry.weights.min}–${entry.weights.max}) cannot render weight ${missing.join(', ')}; the browser fakes it` });
+    if (entry.descriptor !== f!.descriptor) out.push({ id: 'brand.face-descriptor', severity: 'info', message: `${role} face ${entry.family} is ${entry.descriptor} in the catalogue, not ${f!.descriptor}` });
+  }
   for (const a of b.avoid ?? []) {
     const [scale, value] = a.split('.');
     if (DESCRIPTORS[scale] && character[scale] === value) out.push({ id: 'brand.avoid', severity: 'warning', message: `${a} is on the brand's avoid list (set by ${from[scale]})` });
@@ -315,7 +326,7 @@ export function brandJsonSchema() {
   const scales = (ids: string[]) => strict(Object.fromEntries(ids.map((id) => [id, { enum: DESCRIPTORS[id].values.map((v) => v.name), description: `${DESCRIPTORS[id].title}: ${DESCRIPTORS[id].reads}` }])));
   const text = { type: 'string', minLength: 1 };
   const hex = { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' };
-  const face = strict({ family: { type: 'string', pattern: '^[\\w\\s.-]{1,60}$' }, descriptor: { enum: [...FACE_DESCRIPTORS] }, source: { enum: [...FACE_SOURCES] }, url: { type: 'string', pattern: '^https://' }, weights: { type: 'array', items: { type: 'integer', minimum: 100, maximum: 900 } } }, { required: ['family', 'descriptor'] });
+  const face = strict({ ref: { enum: FACE_CATALOGUE.map((f) => f.id) }, family: { type: 'string', pattern: '^[\\w\\s.-]{1,60}$' }, descriptor: { enum: [...FACE_DESCRIPTORS] }, source: { enum: [...FACE_SOURCES] }, url: { type: 'string', pattern: '^https://' }, weights: { type: 'array', items: { type: 'integer', minimum: 100, maximum: 900 } } }, { required: ['family', 'descriptor'] });
   const ground = (required: string[]) => strict({ ref: { enum: GROUNDINGS.map((g) => g.id) }, name: text, relation: { enum: [...RELATIONS] }, principles: { type: 'array', items: text } }, { required });
   return {
     $schema: 'http://json-schema.org/draft-07/schema#',

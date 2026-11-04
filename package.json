@@ -13,7 +13,8 @@
     "studio": "npm run dev -w @massimo/studio",
     "studio:build": "npm run build -w @massimo/studio",
     "registry": "npm run --silent registry -w @massimo/ui-kit --",
-    "check:browsers": "node apps/studio/scripts/check-browsers.ts"
+    "check:browsers": "node apps/studio/scripts/check-browsers.ts",
+    "faces:measure": "node apps/studio/scripts/measure-faces.ts"
   },
   "devDependencies": {
     "@pandacss/dev": "^2.4.0",

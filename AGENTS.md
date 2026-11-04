@@ -29,7 +29,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 - A component change updates its manifest, guide, examples and contract in the same commit.
 - Containers are `<ui-container preset="…">`; the level tags (`ui-card`, `ui-group`, …) are deprecated aliases. A type role is the one source of a text's color: never pair `textStyle` with an explicit color unless it is a deliberate one-off.
 - CSS traps ([authoring](docs/specs/authoring.md#traps)): React `className` on an upgraded kit element wipes its recipe classes; Panda extracts `css()` at build time, so generated style objects emit nothing; a custom property that depends back on itself (through others) is empty; a per-depth rule must match exactly its depth; tokens that read `--ui-*` must be redeclared on a scoped theme.
-- Never hand-edit a generated file: `docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `graph.json`, `contracts/theme.schema.json`, `contracts/brand.schema.json`, the mirrored manifest fields, verification hashes, `styled-system/`, `dist/`. Generators: [system](docs/specs/system.md#generated-outputs). Tests fail when one is stale.
+- Never hand-edit a generated file: `docs/geometry.csv`, `tokens/dtcg/*`, `tokens/colors/spectrum/defaults.json`, `graph.json`, `contracts/theme.schema.json`, `contracts/brand.schema.json`, the face catalogue's `measured` blocks, the mirrored manifest fields, verification hashes, `styled-system/`, `dist/`. Generators: [system](docs/specs/system.md#generated-outputs). Tests fail when one is stale.
 
 ## Checks
 

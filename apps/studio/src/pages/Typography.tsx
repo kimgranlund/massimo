@@ -7,6 +7,7 @@ import { TEXT_COLORS, TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from 
 import type { PageProps } from './types.ts';
 import { CQ_MD, Divider, Page, Section, dataTable, fmt, metrics, nameCell, noteCell, rowLabel, tableScroller } from './shared.tsx';
 import { Numerals } from './TypographyNumerals.tsx';
+import { FaceCatalogue } from './TypographyFaces.tsx';
 
 const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
 // Below the medium breakpoint the specimen comes first and its specs follow.
@@ -101,6 +102,10 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
             <div className={cx(voiceSample, VOICE_FONT[v])}>{VOICE_SAMPLES[v]}</div>
           </div>
         ))}
+      </Section>
+      <Divider />
+      <Section id="faces" title="Face catalogue" note="The curated faces themes and brands draw from (contracts/face-catalogue.json): descriptor, source, the weight range the source provides, what this browser loaded, and metrics measured by npm run faces:measure. The theme lint warns when a voice needs a weight its face lacks, or a web face has no stylesheet in typography.sources.">
+        <FaceCatalogue />
       </Section>
       <Divider />
       <Section id="roles" title="Roles" note={'Each specimen uses data-type="<role>" (or textStyle in Panda). Metrics come from the resolver for the current settings.'}>

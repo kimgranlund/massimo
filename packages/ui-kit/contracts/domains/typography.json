@@ -14,7 +14,10 @@
     "faces",
     "voices"
   ],
-  "constraints": [],
+  "constraints": [
+    "typography.face-weights",
+    "typography.web-face-source"
+  ],
   "descriptors": [
     {
       "id": "type-scale",
@@ -62,12 +65,17 @@
   ],
   "resolvers": [
     "tokens/typography/resolve.ts",
-    "tokens/typography/format.ts"
+    "tokens/typography/format.ts",
+    "tokens/typography/faces.ts"
   ],
   "checks": [
     {
       "command": "node --test test/typography.test.ts",
       "covers": "type roles, the scale, voices and text colors"
+    },
+    {
+      "command": "node --test test/faces.test.ts",
+      "covers": "the face catalogue: entries, voice weights, Google URLs, stacks, lint"
     },
     {
       "command": "node --test test/numeric.test.ts",
@@ -94,6 +102,7 @@
   ],
   "themePartFields": [
     "parameters",
+    "sources",
     "faces",
     "voices",
     "colors"

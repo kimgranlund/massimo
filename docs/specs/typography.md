@@ -68,6 +68,22 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76
 
 Display, the headings and title take the strong text color `fg.strong` (black in light, white in dark: neutral step 3 of the dark and light ramps; [color](color.md#roles)); the secondary roles (body-large, caption, code, label) default to `fg.muted`; the others inherit. The role is the one source of a text's color: components and pages do not set a color next to a role unless it is deliberate (a pull quote in primary), so a remap reaches every use. A theme remaps any role (`typography.colors`: strong, default, muted, subtle, primary or inherit; `TEXT_COLORS`), emitted as `--ui-type-color-<role>`; the jig's Typography tab has a Text colors menu per role and the Typography page lists every text color token with the roles that use it.
 
+## Face catalogue
+
+Themes and brands draw faces from a curated catalogue: `contracts/face-catalogue.json`, read by `tokens/typography/faces.ts`. It holds 24 faces: 10 system faces and 14 Google faces, covering every descriptor (neo-grotesque, grotesque, geometric, humanist, serif, slab, mono, display). Each entry has:
+
+- curated fields: family, descriptor, source, the weight range the source provides, whether it is variable, italic, and the platforms a system face exists on;
+- a `measured` block written by `npm run faces:measure` (Chromium, never by hand): whether the face is available, the weight range its loaded `@font-face` rules declare (Google faces only, because a canvas cannot tell a real bold from a synthesized one), and metrics as ratios of the em (x-height, cap height, ascent, descent, average width).
+
+`catalogueFace(stack)` finds the entry behind a stack's first family. `faceStack(family, descriptor)` builds a stack with fallbacks by descriptor, so a missing web face degrades in kind. `voiceWeights()` lists the weights each voice's roles use; serif headings drop to regular. `googleFontsUrl(face, weights?)` gives the css2 stylesheet: a variable face's whole range, or a static face's every weight or the ones asked for.
+
+A theme names web faces' stylesheets in `typography.sources` (`{ family, url }`; a Google Fonts css2 URL or an https `.css`). The kit does not load fonts; the app (or the jig) adds the links. The theme lint checks faces against the catalogue:
+
+- `typography.face-weights`: a voice whose face cannot render a weight its roles use, such as a one-weight display face on a bold sans voice;
+- `typography.web-face-source`: a web face with no source, which would fall back silently.
+
+The jig's Typography page lists the catalogue: it loads every web face and reports the declared weights, metrics and a specimen at 400 and 700.
+
 ## Using a role
 
 - HTML: `<h2 data-type="heading-2">`.

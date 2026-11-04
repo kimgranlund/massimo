@@ -287,6 +287,56 @@
           }
         }
       }
+    },
+    "typography.face-weights": {
+      "concept": "typography",
+      "severity": "warning",
+      "checks": "Each voice's face (by its first family, in the face catalogue) has the weights the type roles on that voice use; bold (600+) needs a face that goes to 600.",
+      "fix": "Pick a face with the weights (a variable face covers its range), or point the voice at another face.",
+      "fixtures": {
+        "fail": {
+          "typography": {
+            "faces": {
+              "display": "\"DM Serif Display\", system-ui, sans-serif"
+            }
+          }
+        },
+        "pass": {
+          "typography": {
+            "faces": {
+              "display": "Fraunces, system-ui, sans-serif"
+            }
+          }
+        }
+      }
+    },
+    "typography.web-face-source": {
+      "concept": "typography",
+      "severity": "warning",
+      "checks": "A face whose catalogue entry is a web face (Google) has a typography.sources entry, so it actually loads.",
+      "fix": "Add its stylesheet to typography.sources (hydrate adds it for brand faces).",
+      "fixtures": {
+        "fail": {
+          "typography": {
+            "faces": {
+              "sans": "\"Inter Tight\", \"Helvetica Neue\", sans-serif"
+            }
+          }
+        },
+        "pass": {
+          "typography": {
+            "faces": {
+              "sans": "\"Inter Tight\", \"Helvetica Neue\", sans-serif"
+            },
+            "sources": [
+              {
+                "family": "Inter Tight",
+                "url": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&display=swap"
+              }
+            ]
+          }
+        }
+      }
     }
   }
 }

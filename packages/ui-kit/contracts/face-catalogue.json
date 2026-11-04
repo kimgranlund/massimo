@@ -1,0 +1,699 @@
+{
+  "schemaVersion": 1,
+  "$comment": "Curated faces for themes and brands (docs/planning/brand-schema.md, step 5). Hand-curated fields: family, descriptor, source, weights (the range the source provides), variable, italic, platforms, notes. `measured` is written by npm run faces:measure (Chromium, canvas TextMetrics at 100px; ratios of the em) and never edited by hand.",
+  "faces": [
+    {
+      "id": "helvetica-neue",
+      "family": "Helvetica Neue",
+      "descriptor": "neo-grotesque",
+      "source": "system",
+      "weights": {
+        "min": 100,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "The neo-grotesque default on Apple platforms.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.517,
+          "capHeight": 0.714,
+          "ascent": 0.95,
+          "descent": 0.21,
+          "avgWidth": 0.501
+        }
+      }
+    },
+    {
+      "id": "system-ui",
+      "family": "system-ui",
+      "descriptor": "neo-grotesque",
+      "source": "system",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "platforms": [
+        "all"
+      ],
+      "notes": "The platform UI face (San Francisco, Segoe UI, Roboto): native, varies by platform.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.508,
+          "capHeight": 0.705,
+          "ascent": 0.97,
+          "descent": 0.21,
+          "avgWidth": 0.471
+        }
+      }
+    },
+    {
+      "id": "avenir-next",
+      "family": "Avenir Next",
+      "descriptor": "geometric",
+      "source": "system",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "A humanized geometric sans.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.468,
+          "capHeight": 0.708,
+          "ascent": 1,
+          "descent": 0.37,
+          "avgWidth": 0.513
+        }
+      }
+    },
+    {
+      "id": "futura",
+      "family": "Futura",
+      "descriptor": "geometric",
+      "source": "system",
+      "weights": {
+        "min": 400,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "The geometric original (1927); few weights on most systems.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.476,
+          "capHeight": 0.754,
+          "ascent": 1.04,
+          "descent": 0.26,
+          "avgWidth": 0.507
+        }
+      }
+    },
+    {
+      "id": "gill-sans",
+      "family": "Gill Sans",
+      "descriptor": "humanist",
+      "source": "system",
+      "weights": {
+        "min": 300,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "The British humanist sans.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.449,
+          "capHeight": 0.682,
+          "ascent": 0.92,
+          "descent": 0.23,
+          "avgWidth": 0.447
+        }
+      }
+    },
+    {
+      "id": "georgia",
+      "family": "Georgia",
+      "descriptor": "serif",
+      "source": "system",
+      "weights": {
+        "min": 400,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "all"
+      ],
+      "notes": "A screen serif with large x-height; nearly everywhere.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.481,
+          "capHeight": 0.693,
+          "ascent": 0.92,
+          "descent": 0.22,
+          "avgWidth": 0.499
+        }
+      }
+    },
+    {
+      "id": "charter",
+      "family": "Charter",
+      "descriptor": "serif",
+      "source": "system",
+      "weights": {
+        "min": 400,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "A sturdy transitional serif for reading.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.481,
+          "capHeight": 0.671,
+          "ascent": 0.98,
+          "descent": 0.24,
+          "avgWidth": 0.49
+        }
+      }
+    },
+    {
+      "id": "baskerville",
+      "family": "Baskerville",
+      "descriptor": "serif",
+      "source": "system",
+      "weights": {
+        "min": 400,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "A transitional book serif.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.4,
+          "capHeight": 0.662,
+          "ascent": 0.9,
+          "descent": 0.25,
+          "avgWidth": 0.452
+        }
+      }
+    },
+    {
+      "id": "didot",
+      "family": "Didot",
+      "descriptor": "display",
+      "source": "system",
+      "weights": {
+        "min": 400,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "notes": "High-contrast Didone for display sizes only.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.429,
+          "capHeight": 0.712,
+          "ascent": 0.94,
+          "descent": 0.3,
+          "avgWidth": 0.505
+        }
+      }
+    },
+    {
+      "id": "menlo",
+      "family": "Menlo",
+      "descriptor": "mono",
+      "source": "system",
+      "weights": {
+        "min": 400,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "platforms": [
+        "macos"
+      ],
+      "notes": "The Apple monospace.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "metrics": {
+          "xHeight": 0.547,
+          "capHeight": 0.729,
+          "ascent": 0.93,
+          "descent": 0.24,
+          "avgWidth": 0.602
+        }
+      }
+    },
+    {
+      "id": "inter",
+      "family": "Inter",
+      "descriptor": "neo-grotesque",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "A UI neo-grotesque with tabular figures and many features.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.546,
+          "capHeight": 0.728,
+          "ascent": 0.97,
+          "descent": 0.24,
+          "avgWidth": 0.535
+        }
+      }
+    },
+    {
+      "id": "inter-tight",
+      "family": "Inter Tight",
+      "descriptor": "neo-grotesque",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "Inter with tighter spacing for display and dense UI.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.546,
+          "capHeight": 0.728,
+          "ascent": 0.97,
+          "descent": 0.24,
+          "avgWidth": 0.485
+        }
+      }
+    },
+    {
+      "id": "ibm-plex-sans",
+      "family": "IBM Plex Sans",
+      "descriptor": "grotesque",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "notes": "An engineered grotesque with a mono and serif family.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 700
+        },
+        "metrics": {
+          "xHeight": 0.516,
+          "capHeight": 0.698,
+          "ascent": 1.02,
+          "descent": 0.27,
+          "avgWidth": 0.504
+        }
+      }
+    },
+    {
+      "id": "ibm-plex-mono",
+      "family": "IBM Plex Mono",
+      "descriptor": "mono",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 700
+      },
+      "variable": false,
+      "italic": true,
+      "notes": "Plex in monospace: code and tabular data.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 700
+        },
+        "metrics": {
+          "xHeight": 0.516,
+          "capHeight": 0.698,
+          "ascent": 1.02,
+          "descent": 0.27,
+          "avgWidth": 0.6
+        }
+      }
+    },
+    {
+      "id": "jetbrains-mono",
+      "family": "JetBrains Mono",
+      "descriptor": "mono",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 800
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "A monospace for code with a tall x-height.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 800
+        },
+        "metrics": {
+          "xHeight": 0.55,
+          "capHeight": 0.73,
+          "ascent": 1.02,
+          "descent": 0.3,
+          "avgWidth": 0.6
+        }
+      }
+    },
+    {
+      "id": "source-sans-3",
+      "family": "Source Sans 3",
+      "descriptor": "humanist",
+      "source": "google",
+      "weights": {
+        "min": 200,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "Adobe's humanist sans for UI and reading.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 200,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.486,
+          "capHeight": 0.656,
+          "ascent": 1.02,
+          "descent": 0.4,
+          "avgWidth": 0.472
+        }
+      }
+    },
+    {
+      "id": "work-sans",
+      "family": "Work Sans",
+      "descriptor": "grotesque",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "A grotesque with early-twentieth-century roots.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.5,
+          "capHeight": 0.66,
+          "ascent": 0.93,
+          "descent": 0.24,
+          "avgWidth": 0.546
+        }
+      }
+    },
+    {
+      "id": "space-grotesk",
+      "family": "Space Grotesk",
+      "descriptor": "geometric",
+      "source": "google",
+      "weights": {
+        "min": 300,
+        "max": 700
+      },
+      "variable": true,
+      "italic": false,
+      "notes": "A geometric grotesk with quirky details; display and UI.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 300,
+          "max": 700
+        },
+        "metrics": {
+          "xHeight": 0.489,
+          "capHeight": 0.7,
+          "ascent": 0.98,
+          "descent": 0.29,
+          "avgWidth": 0.553
+        }
+      }
+    },
+    {
+      "id": "manrope",
+      "family": "Manrope",
+      "descriptor": "geometric",
+      "source": "google",
+      "weights": {
+        "min": 200,
+        "max": 800
+      },
+      "variable": true,
+      "italic": false,
+      "notes": "A modern geometric sans, semi-condensed.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 200,
+          "max": 800
+        },
+        "metrics": {
+          "xHeight": 0.54,
+          "capHeight": 0.72,
+          "ascent": 1.07,
+          "descent": 0.3,
+          "avgWidth": 0.521
+        }
+      }
+    },
+    {
+      "id": "fraunces",
+      "family": "Fraunces",
+      "descriptor": "serif",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "A soft \"old style\" display serif with optical sizes.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.47,
+          "capHeight": 0.7,
+          "ascent": 0.98,
+          "descent": 0.26,
+          "avgWidth": 0.537
+        }
+      }
+    },
+    {
+      "id": "newsreader",
+      "family": "Newsreader",
+      "descriptor": "serif",
+      "source": "google",
+      "weights": {
+        "min": 200,
+        "max": 800
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "A reading serif with optical sizes for editorial text.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 200,
+          "max": 800
+        },
+        "metrics": {
+          "xHeight": 0.44,
+          "capHeight": 0.676,
+          "ascent": 0.74,
+          "descent": 0.26,
+          "avgWidth": 0.485
+        }
+      }
+    },
+    {
+      "id": "dm-serif-display",
+      "family": "DM Serif Display",
+      "descriptor": "display",
+      "source": "google",
+      "weights": {
+        "min": 400,
+        "max": 400
+      },
+      "variable": false,
+      "italic": true,
+      "notes": "A high-contrast display serif; one weight.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 400,
+          "max": 400
+        },
+        "metrics": {
+          "xHeight": 0.481,
+          "capHeight": 0.66,
+          "ascent": 1.04,
+          "descent": 0.34,
+          "avgWidth": 0.513
+        }
+      }
+    },
+    {
+      "id": "libre-franklin",
+      "family": "Libre Franklin",
+      "descriptor": "grotesque",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": true,
+      "notes": "A Franklin Gothic interpretation.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.53,
+          "capHeight": 0.742,
+          "ascent": 0.97,
+          "descent": 0.25,
+          "avgWidth": 0.527
+        }
+      }
+    },
+    {
+      "id": "roboto-slab",
+      "family": "Roboto Slab",
+      "descriptor": "slab",
+      "source": "google",
+      "weights": {
+        "min": 100,
+        "max": 900
+      },
+      "variable": true,
+      "italic": false,
+      "notes": "A slab serif for headings and UI.",
+      "measured": {
+        "date": "2026-11-04",
+        "browser": "chromium 156.0.8078.4",
+        "available": true,
+        "weights": {
+          "min": 100,
+          "max": 900
+        },
+        "metrics": {
+          "xHeight": 0.528,
+          "capHeight": 0.711,
+          "ascent": 1.05,
+          "descent": 0.27,
+          "avgWidth": 0.546
+        }
+      }
+    }
+  ]
+}

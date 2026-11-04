@@ -19,6 +19,7 @@ import { ComponentsPage, FAMILIES, isFamily } from '../pages/Components.tsx';
 import { ContainersPage } from '../pages/Containers.tsx';
 import { ElevationPage } from '../pages/Elevation.tsx';
 import { BrandPage } from '../pages/Brand.tsx';
+import { loadFontSource } from './fonts.ts';
 import { hydrate, validateBrand, type Brand } from '@massimo/ui-kit/tokens';
 import { GeometryPage } from '../pages/Geometry.tsx';
 import { TypographyPage } from '../pages/Typography.tsx';
@@ -120,6 +121,9 @@ export function App() {
   // Brand anchors (color.anchors): carried through Load and Copy; a brand sets them on Apply.
   // The brand the theme came from (Brand page Apply, or Load of a brand or bundle); Copy then writes both.
   const [brand, setBrand] = useState<Brand | null>(null);
+  // Web face stylesheets (typography.sources): loaded as <link> elements, one per URL.
+  const [sources, setSources] = useState<NonNullable<NonNullable<Theme['typography']>['sources']>>([]);
+  useEffect(() => { for (const x of sources) loadFontSource(x.url); }, [sources]);
   const [anchors, setAnchors] = useState<NonNullable<NonNullable<Theme['color']>['anchors']>>([]);
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
@@ -186,7 +190,7 @@ export function App() {
     schemaVersion: 2 as const,
     name: themeName,
     geometry: parts.geometry,
-    typography: nonEmpty({ parameters: parts.typography?.parameters, voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
+    typography: nonEmpty({ parameters: parts.typography?.parameters, sources: listed(sources), voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
     color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }), anchors: listed(anchors) }),
     motion: parts.motion,
     icons: icons !== 'phosphor' ? icons : undefined,
@@ -209,6 +213,7 @@ export function App() {
     setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT, ...(t.color?.endpoints ?? {}) }); setAnchors(t.color?.anchors ?? []);
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
     setTypeColors({ ...DEFAULT_TYPE_COLORS, ...(t.typography?.colors ?? {}) } as Record<TypeRoleName, TextColor>);
+    setSources(t.typography?.sources ?? []);
   };
   // A brand: hydrate it (tokens/brand), apply the theme and keep the brand for Copy.
   const applyBrand = (b: Brand) => {
@@ -248,7 +253,7 @@ export function App() {
   };
 
   const reset = () => {
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setBrand(null); setTypeColors(DEFAULT_TYPE_COLORS);
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setBrand(null); setSources([]); setTypeColors(DEFAULT_TYPE_COLORS);
     setStatus('Reset to defaults');
   };
 

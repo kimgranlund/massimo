@@ -22,7 +22,7 @@
     },
     {
       "path": "contracts/domains/typography.json",
-      "sha256": "7204e646b48a994fda897a224a24b645e109da15a357529f17349237d0e05b28"
+      "sha256": "d58f8f7919bbfcd70c507694856827bba0d2194246861f8e1fb883661cf02801"
     },
     {
       "path": "tokens/themes/descriptors.ts",
@@ -31,6 +31,14 @@
     {
       "path": "tokens/themes/descriptor-data.ts",
       "sha256": "94a3c20a563a4d9dd860cac26c4cb6642827cbde4fe39da09d8f3bc78216dd60"
+    },
+    {
+      "path": "tokens/typography/faces.ts",
+      "sha256": "d6d52884e2ab5349902dff45b4383034b85b4e3431b263d0c8f367b834ede59a"
+    },
+    {
+      "path": "contracts/face-catalogue.json",
+      "sha256": "56d38602814a0f8c1f4c23320e834700d669e1f6481091cd1e4865ce2abf9d17"
     }
   ],
   "renderers": {
@@ -51,6 +59,10 @@
         {
           "command": "node --test test/descriptors.test.ts",
           "covers": "descriptor scales"
+        },
+        {
+          "command": "node --test test/faces.test.ts",
+          "covers": "face catalogue"
         }
       ],
       "latestRun": {
@@ -60,7 +72,8 @@
           "node --test test/typography.test.ts",
           "node --test test/numeric.test.ts",
           "node --test test/themes.test.ts",
-          "node --test test/descriptors.test.ts"
+          "node --test test/descriptors.test.ts",
+          "node --test test/faces.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"

@@ -18,6 +18,7 @@ import { DESCRIPTORS } from './descriptor-data.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
 import { ROLE_NAMES, isAnchorColor, type RoleName, type ColorAnchor } from '../colors/spectrum/index.ts';
+import { FONT_SOURCE_URL } from '../typography/faces.ts';
 import { FACES, VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 
 export const THEME_SCHEMA_VERSION = 2;
@@ -30,7 +31,8 @@ export interface Theme {
   name: string;
   description?: string;
   geometry?: { parameters?: Numbers };
-  typography?: { parameters?: Numbers; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
+  /** sources: stylesheets for web faces (a Google Fonts css2 URL or a self-hosted https .css); the app or the jig loads them. */
+  typography?: { parameters?: Numbers; sources?: { family: string; url: string }[]; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
   /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped, nearest step overridden. */
   color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: RoleName })[] };
@@ -173,8 +175,15 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.typography !== undefined) {
     if (!isObject(input.typography)) err('typography', 'must be an object');
     else {
-      for (const k of Object.keys(input.typography)) if (k !== 'parameters' && k !== 'faces' && k !== 'voices' && k !== 'colors') err(`typography.${k}`, 'unknown section');
-      const { parameters, faces, voices, colors } = input.typography;
+      for (const k of Object.keys(input.typography)) if (k !== 'parameters' && k !== 'sources' && k !== 'faces' && k !== 'voices' && k !== 'colors') err(`typography.${k}`, 'unknown section');
+      const { parameters, sources, faces, voices, colors } = input.typography;
+      if (sources !== undefined) {
+        if (!Array.isArray(sources)) err('typography.sources', 'must be a list');
+        else sources.forEach((x: any, i: number) => {
+          if (!isObject(x) || typeof x.family !== 'string' || !/^[\w\s.-]{1,60}$/.test(x.family)) err(`typography.sources.${i}.family`, 'must be a family name');
+          if (!isObject(x) || typeof x.url !== 'string' || !FONT_SOURCE_URL.test(x.url)) err(`typography.sources.${i}.url`, 'must be a Google Fonts css2 URL or an https .css stylesheet');
+        });
+      }
       if (parameters !== undefined) checkParameters('typography', parameters);
       if (colors !== undefined) {
         if (!isObject(colors)) err('typography.colors', 'must be an object');
@@ -242,6 +251,7 @@ export function themeJsonSchema() {
       }),
       typography: strict({
         parameters: params('typography'),
+        sources: { type: 'array', description: 'Stylesheets for web faces; the app (or the jig) loads them.', items: strict({ family: { type: 'string', pattern: '^[\\w\\s.-]{1,60}$' }, url: { type: 'string', pattern: FONT_SOURCE_URL.source } }, { required: ['family', 'url'] }) },
         faces: strict(Object.fromEntries(FACES.map((f) => [f, { type: 'string', pattern: FONT_STACK.source }]))),
         voices: strict(Object.fromEntries(VOICES.map((v) => [v, { enum: [...FACES] }]))),
         colors: strict(Object.fromEntries(Object.keys(TYPE_ROLES).map((r) => [r, { enum: Object.keys(TEXT_COLORS) }]))),

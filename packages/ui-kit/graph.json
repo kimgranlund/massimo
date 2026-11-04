@@ -1022,6 +1022,31 @@
         "size"
       ]
     },
+    "constraint:typography.face-weights": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/typography.face-weights",
+      "availability": "implemented",
+      "title": "Each voice's face (by its first family, in the face catalogue) has the weights the type roles on that voice use; bold (600+) needs a face that goes to 600.",
+      "searchTerms": [
+        "typography.face-weights",
+        "typography",
+        "face",
+        "weights"
+      ]
+    },
+    "constraint:typography.web-face-source": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/typography.web-face-source",
+      "availability": "implemented",
+      "title": "A face whose catalogue entry is a web face (Google) has a typography.sources entry, so it actually loads.",
+      "searchTerms": [
+        "typography.web-face-source",
+        "typography",
+        "web",
+        "face",
+        "source"
+      ]
+    },
     "constraint:vibrancy.anchor-order": {
       "kind": "constraint",
       "source": "contracts/theme-constraints.json#/rules/vibrancy.anchor-order",
@@ -12336,6 +12361,16 @@
       "to": "concept:vibrancy"
     },
     {
+      "from": "constraint:typography.face-weights",
+      "relation": "constrains",
+      "to": "concept:typography"
+    },
+    {
+      "from": "constraint:typography.web-face-source",
+      "relation": "constrains",
+      "to": "concept:typography"
+    },
+    {
       "from": "domain:color",
       "relation": "covers",
       "to": "concept:vibrancy"
@@ -12864,6 +12899,16 @@
       "from": "domain:typography",
       "relation": "owns",
       "to": "parameters:voices"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "constraint:typography.face-weights"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "constraint:typography.web-face-source"
     },
     {
       "from": "domain:typography",

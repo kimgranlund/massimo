@@ -1,5 +1,5 @@
 ---
-status: proposed
+status: accepted
 owner: kim
 date: 2026-11-03
 ---
@@ -127,7 +127,8 @@ Step 1 of [theme-schema.md](theme-schema.md) (the theme object) and step 3 (lint
 ## Progress
 
 - Step 1 built 2026-11-03. Theme schema version 2 adds the `geometry`, `typography`, `color` and `motion` parts, with `migrateTheme` and `loadTheme` for version 1; the jig's Copy writes v2 and Load accepts both. Each parameter's domain is declared in `PARAMS`. The domain manifests live in `contracts/domains/`, each with a verification record, and the registry gains `domain:` and `constraint:` nodes. The domain tests keep the manifests a partition of the groups, concepts and constraints.
-- Step 6 built 2026-11-03: the jig's Brand page (Apply, frame, character with sources and live read-back, anchors, faces and voice, review, Compare); Load takes a theme, a brand or a `{ brand, theme }` bundle and Copy writes the bundle while a brand is active; the guide [author a brand](../guides/author-a-brand.md), the repo skill `.claude/skills/brand-authoring`, and the three briefs (`tokens/brand/examples/briefs.md`) as the reproduction check. Step 5 (the face catalogue) is still open.
+- Step 6 built 2026-11-03: the jig's Brand page (Apply, frame, character with sources and live read-back, anchors, faces and voice, review, Compare); Load takes a theme, a brand or a `{ brand, theme }` bundle and Copy writes the bundle while a brand is active; the guide [author a brand](../guides/author-a-brand.md), the repo skill `.claude/skills/brand-authoring`, and the three briefs (`tokens/brand/examples/briefs.md`) as the reproduction check. 
+- Step 5 built 2026-11-03: the face catalogue (`contracts/face-catalogue.json`: 24 faces, every descriptor, measured in Chromium by `npm run faces:measure`); `tokens/typography/faces.ts`; theme `typography.sources`; the lints `typography.face-weights` and `typography.web-face-source` and the brand's face checks; hydrate adds web face stylesheets; the jig loads sources and lists the catalogue on the Typography page. All six steps are built.
 - Step 4 built 2026-11-03: color anchors in the engine and the theme (`color.anchors`: pinned hue, chroma re-shape, exact step, the role's solid step; lint `vibrancy.anchor-order`, `vibrancy.anchor-range`); `brand.schema.json`, `validateBrand`, `hydrate`, `lintBrand` and the `brand` CLI (`tokens/brand/`); `brand-catalogue.json` (8 groundings, 7 territories) with registry nodes; three worked brands that hydrate into valid, lint-clean, distinct themes with full provenance.
 - Step 3 done 2026-11-03: [color anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) (decision above). Engine work it implies, for step 4: a pinned family hue, a per-family step override and chroma re-shape, and a per-role solid step.
 - Step 2 built 2026-11-03: 13 descriptor scales in the domain manifests (geometry 7, typography 1, color 4, motion 1); `themeFromCharacter` and `describeTheme` (`tokens/themes/descriptors.ts`); `character` validated against the scales; registry `descriptor:` nodes. Every value resolves, lints clean and reads back at distance 0. Not yet scaled: emphasis (role mapping) and iconography.
