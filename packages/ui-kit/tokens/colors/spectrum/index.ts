@@ -242,6 +242,20 @@ export function roleStep(entry: RoleStep, mode: 'light' | 'dark'): { family: key
 /** CSS for a role from a ramp-step reference (a var() or a token reference). */
 export const withAlpha = (ref: string, alpha: number) => alpha === 1 ? ref : `color-mix(in oklch, ${ref} ${Math.round(alpha * 100)}%, transparent)`;
 
+/**
+ * The selection fills (bg-selected, fg-selected) follow the theme's emphasis (--ui-emphasis 0–2),
+ * mixed in CSS from role variables so a theme or scope changes them live. Light: neutral 3 (quiet),
+ * neutral 1 (balanced), primary 3 (loud), text neutral 12. Dark: neutral 4 with neutral 12 text
+ * (quiet), else the primary solid with its contrast text. `ref(role)` names a role variable.
+ */
+export function selectionVars(mode: 'light' | 'dark', ref: (role: string) => string = (r) => `var(--colors-${r})`) {
+  const e = 'var(--ui-emphasis, 1)';
+  const low = `calc(clamp(0, ${e}, 1) * 100%)`, high = `calc(clamp(0, ${e} - 1, 1) * 100%)`;
+  return mode === 'light'
+    ? { 'bg-selected': `color-mix(in oklch, color-mix(in oklch, ${ref('neutral-3')}, ${ref('neutral-1')} ${low}), ${ref('primary-3')} ${high})`, 'fg-selected': ref('neutral-12') }
+    : { 'bg-selected': `color-mix(in oklch, ${ref('neutral-4')}, ${ref('primary-9')} ${low})`, 'fg-selected': `color-mix(in oklch, ${ref('neutral-12')}, ${ref('fg-on-solid')} ${low})` };
+}
+
 /** Semantic variables per scheme: ramp variables plus roles that point at them. */
 export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dark', solidSteps: Partial<Record<RoleName, number>> = {}) {
   const vars: Record<string, string> = {};
@@ -262,8 +276,8 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
   // (headings, titles) is black in light, white in dark. endpointVars maps them to another family.
   Object.assign(vars, endpointVars(data, roles));
   vars['--colors-fg-strong'] = mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
-  // Text on bg-selected: strong neutral in light, the primary solid's contrast color in dark.
-  vars['--colors-fg-selected'] = mode === 'dark' ? vars['--colors-fg-on-solid'] : `var(--colors-spectrum-${roles.neutral}-12)`;
+  // The selection fills follow the theme's emphasis (selectionVars).
+  for (const [k, v] of Object.entries(selectionVars(mode))) vars[`--colors-${k}`] = v;
   return vars;
 }
 

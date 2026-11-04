@@ -171,7 +171,7 @@
         {
           "when": "Content the user must compare side by side.",
           "reason": "An accordion hides the sections it closes; lay them out in a collection instead.",
-          "useInstead": "component:collection"
+          "useInstead": "component:container"
         }
       ],
       "searchTerms": [

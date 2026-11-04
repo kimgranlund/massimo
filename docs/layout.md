@@ -57,3 +57,9 @@ otherwise -> `other/`
 - `docs/reports/`
 
 ## Legacy
+
+## Caps
+
+- `D-14` 20
+
+Why 20, not the default 12: `specs/` keeps one spec per topic, so the root `AGENTS.md` routing table names each by path. `decisions/` holds numbered, write-once records, where topic subfolders would only scatter the sequence. Both stay flat until they pass 20.

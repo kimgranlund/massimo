@@ -51,6 +51,7 @@ Form controls are the leaves: their radius stays min(3u·s, H/2). A container is
 
 ## Progress
 
+- Done 2026-11-03: step 4, the level tags and React aliases removed ([decision 0016](../decisions/0016-remove-container-level-tags.md)); depth 8, a 1u padding floor, areas restart the chain mid-tree, React `Container` parity checked.
 - Built 2026-11-03: `ui-container` (CSS-only tag, React `Container`) with presets, layout, surface, levels; the nesting chain (exact-depth variables, `:has()`); `resolveContainerTree`; the old tags as aliases in the chain; geometry checks over nested trees; the jig moved to ui-container.
 
 ## Decided

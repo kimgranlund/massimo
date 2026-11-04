@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "d2b96cfd0b370121a208f4c1037c2873e6909ee83cff3a31ef26f45c359128ec"
+      "sha256": "814203b5c7994579bc4f01a54828f304e979ee14da347ab4d7f1383dbdc6acaa"
     },
     {
       "path": "tokens/geometry/index.ts",
@@ -14,15 +14,15 @@
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "18d24078bc3ec0bd761671b2f6e2491b72eeb674a3aeb54717138c8af39fc91f"
+      "sha256": "02b177ae1afa13e6b94c70d1317ee15fb00cf67d8f427de4d8ba05c19484198e"
     },
     {
       "path": "tokens/elevation/index.ts",
-      "sha256": "2cd7aea8a6373d8488f5a715da73d575b86e72bb0620d413dd9f59e745813882"
+      "sha256": "0c920d5532586b2a40b7e768de2e479e9f723071a66b87ea86354cb86ba1de67"
     },
     {
       "path": "tokens/themes/params.ts",
-      "sha256": "e95bbad182dfaf2a0d2c415c766fa04a0bfb491d9d35736370e33faa9332a3d2"
+      "sha256": "89d3f3f85205bd9740e31d41d98aa5dc4615808627c219507f2ff4e651bcb608"
     },
     {
       "path": "contracts/domains/geometry.json",
@@ -30,7 +30,7 @@
     },
     {
       "path": "tokens/themes/descriptors.ts",
-      "sha256": "54e76a0ff190ddd9127c2324a9c9ccbb920be3bbf50864b3e1389d92a1dc48e0"
+      "sha256": "4e8344c79e2517409f42c80cdd9a9fec324d4890f53160a60db7c1a73d1d6a2a"
     },
     {
       "path": "tokens/themes/descriptor-data.ts",

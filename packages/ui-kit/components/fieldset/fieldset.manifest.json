@@ -126,7 +126,7 @@
         {
           "when": "A visual surface around content.",
           "reason": "A fieldset adds semantics and disabling, not a surface.",
-          "useInstead": "component:card"
+          "useInstead": "component:container"
         }
       ],
       "searchTerms": [

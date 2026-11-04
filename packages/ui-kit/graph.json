@@ -81,23 +81,6 @@
         "command"
       ]
     },
-    "component:card": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/3",
-      "availability": "css-only",
-      "tag": "ui-card",
-      "searchTerms": [
-        "card",
-        "card container",
-        "card padding",
-        "container",
-        "layout",
-        "small card",
-        "surface",
-        "thumbnail",
-        "tile"
-      ]
-    },
     "component:checkbox": {
       "kind": "component",
       "source": "components/choice/choice.manifest.json#/nodes/0",
@@ -148,18 +131,6 @@
         "expand collapse",
         "show more",
         "details summary"
-      ]
-    },
-    "component:collection": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/2",
-      "availability": "css-only",
-      "tag": "ui-collection",
-      "searchTerms": [
-        "collection",
-        "collection container",
-        "container",
-        "layout"
       ]
     },
     "component:combobox": {
@@ -295,18 +266,6 @@
         "validation mode",
         "form values",
         "onFormSubmit"
-      ]
-    },
-    "component:group": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/1",
-      "availability": "css-only",
-      "tag": "ui-group",
-      "searchTerms": [
-        "group",
-        "group container",
-        "container",
-        "layout"
       ]
     },
     "component:image": {
@@ -448,18 +407,6 @@
         "segmented input"
       ]
     },
-    "component:page": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/6",
-      "availability": "css-only",
-      "tag": "ui-page",
-      "searchTerms": [
-        "page",
-        "page container",
-        "container",
-        "layout"
-      ]
-    },
     "component:palette": {
       "kind": "component",
       "source": "components/color/color.manifest.json#/nodes/1",
@@ -471,18 +418,6 @@
         "color picker",
         "swatches",
         "tones"
-      ]
-    },
-    "component:panel": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/4",
-      "availability": "css-only",
-      "tag": "ui-panel",
-      "searchTerms": [
-        "panel",
-        "panel container",
-        "container",
-        "layout"
       ]
     },
     "component:popover": {
@@ -558,18 +493,6 @@
         "slider",
         "volume",
         "scrubber"
-      ]
-    },
-    "component:region": {
-      "kind": "component",
-      "source": "components/container/container.manifest.json#/nodes/5",
-      "availability": "css-only",
-      "tag": "ui-region",
-      "searchTerms": [
-        "region",
-        "region container",
-        "container",
-        "layout"
       ]
     },
     "component:scroll-area": {
@@ -1480,6 +1403,49 @@
         "elevation layered"
       ]
     },
+    "descriptor:emphasis": {
+      "kind": "descriptor",
+      "source": "contracts/domains/color.json#/descriptors/4",
+      "availability": "implemented",
+      "title": "Emphasis: how strongly a selection shows",
+      "searchTerms": [
+        "emphasis",
+        "emphasis",
+        "quiet",
+        "balanced",
+        "loud"
+      ]
+    },
+    "descriptor:emphasis.balanced": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/4/values/1",
+      "availability": "implemented",
+      "title": "Emphasis balanced: the page-tone chip in light, the primary solid in dark (the default)",
+      "searchTerms": [
+        "balanced",
+        "emphasis balanced"
+      ]
+    },
+    "descriptor:emphasis.loud": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/4/values/2",
+      "availability": "implemented",
+      "title": "Emphasis loud: a primary tint in light: selection carries the brand",
+      "searchTerms": [
+        "loud",
+        "emphasis loud"
+      ]
+    },
+    "descriptor:emphasis.quiet": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/4/values/0",
+      "availability": "implemented",
+      "title": "Emphasis quiet: a muted neutral fill; the primary stays for actions",
+      "searchTerms": [
+        "quiet",
+        "emphasis quiet"
+      ]
+    },
     "descriptor:harmony": {
       "kind": "descriptor",
       "source": "contracts/domains/color.json#/descriptors/1",
@@ -1543,6 +1509,49 @@
       "searchTerms": [
         "unique",
         "harmony unique"
+      ]
+    },
+    "descriptor:iconography": {
+      "kind": "descriptor",
+      "source": "contracts/domains/typography.json#/descriptors/1",
+      "availability": "implemented",
+      "title": "Iconography: the icon set and its drawing",
+      "searchTerms": [
+        "iconography",
+        "iconography",
+        "phosphor",
+        "lucide",
+        "tabler"
+      ]
+    },
+    "descriptor:iconography.lucide": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/1/values/1",
+      "availability": "implemented",
+      "title": "Iconography lucide: clean, even outlines",
+      "searchTerms": [
+        "lucide",
+        "iconography lucide"
+      ]
+    },
+    "descriptor:iconography.phosphor": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/1/values/0",
+      "availability": "implemented",
+      "title": "Iconography phosphor: rounded, friendly strokes with many weights (the default)",
+      "searchTerms": [
+        "phosphor",
+        "iconography phosphor"
+      ]
+    },
+    "descriptor:iconography.tabler": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/1/values/2",
+      "availability": "implemented",
+      "title": "Iconography tabler: technical, geometric outlines",
+      "searchTerms": [
+        "tabler",
+        "iconography tabler"
       ]
     },
     "descriptor:line": {
@@ -1909,6 +1918,7 @@
       "searchTerms": [
         "adaptivity",
         "analogous",
+        "balanced",
         "both",
         "color",
         "complementary",
@@ -1916,9 +1926,11 @@
         "emphasis",
         "harmony",
         "light-first",
+        "loud",
         "muted",
         "natural",
         "neutral",
+        "quiet",
         "split",
         "strong",
         "subtle",
@@ -1994,6 +2006,11 @@
         "dramatic",
         "flat",
         "gentle",
+        "iconography",
+        "icons",
+        "lucide",
+        "phosphor",
+        "tabler",
         "type-scale",
         "typography"
       ]
@@ -2555,6 +2572,16 @@
       "searchTerms": [
         "density",
         "density"
+      ]
+    },
+    "parameter:emphasis": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/emphasis",
+      "availability": "implemented",
+      "title": "Selection emphasis",
+      "searchTerms": [
+        "emphasis",
+        "selection emphasis"
       ]
     },
     "parameter:face-controls": {
@@ -3624,6 +3651,19 @@
         "raised",
         "floating",
         "modal"
+      ]
+    },
+    "parameters:emphasis": {
+      "kind": "parameters",
+      "source": "contracts/parameters.json#/groups/emphasis",
+      "availability": "implemented",
+      "title": "Selection emphasis",
+      "searchTerms": [
+        "emphasis",
+        "selected",
+        "selection",
+        "loud",
+        "quiet"
       ]
     },
     "parameters:faces": {
@@ -7217,356 +7257,6 @@
     },
     {
       "from": "component:container",
-      "relation": "establishes",
-      "to": "context:page"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:group",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
-      "to": "context:region"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
-      "to": "context:panel"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
-      "to": "context:card"
-    },
-    {
-      "from": "component:group",
-      "relation": "allowedIn",
-      "to": "context:collection"
-    },
-    {
-      "from": "component:group",
-      "relation": "establishes",
-      "to": "context:group"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:collection",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:collection",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:collection",
-      "relation": "allowedIn",
-      "to": "context:region"
-    },
-    {
-      "from": "component:collection",
-      "relation": "allowedIn",
-      "to": "context:panel"
-    },
-    {
-      "from": "component:collection",
-      "relation": "allowedIn",
-      "to": "context:card"
-    },
-    {
-      "from": "component:collection",
-      "relation": "establishes",
-      "to": "context:collection"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:card",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:region"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:panel"
-    },
-    {
-      "from": "component:card",
-      "relation": "allowedIn",
-      "to": "context:card"
-    },
-    {
-      "from": "component:card",
-      "relation": "establishes",
-      "to": "context:card"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:panel",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:panel",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:panel",
-      "relation": "allowedIn",
-      "to": "context:region"
-    },
-    {
-      "from": "component:panel",
-      "relation": "establishes",
-      "to": "context:panel"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:region",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:region",
-      "relation": "allowedIn",
-      "to": "context:page"
-    },
-    {
-      "from": "component:region",
-      "relation": "establishes",
-      "to": "context:region"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesFoundation",
-      "to": "foundation:colors"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesFoundation",
-      "to": "foundation:typography"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesFoundation",
-      "to": "foundation:geometry"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesFoundation",
-      "to": "foundation:motion"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesFoundation",
-      "to": "foundation:states"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesGeometry",
-      "to": "geometry:container"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesTokens",
-      "to": "tokens:color-roles"
-    },
-    {
-      "from": "component:page",
-      "relation": "usesTokens",
-      "to": "tokens:geometry"
-    },
-    {
-      "from": "component:page",
       "relation": "establishes",
       "to": "context:page"
     },
@@ -12116,6 +11806,26 @@
       "to": "parameters:roles"
     },
     {
+      "from": "parameters:emphasis",
+      "relation": "drives",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "parameters:emphasis",
+      "relation": "drives",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "parameters:emphasis",
+      "relation": "expresses",
+      "to": "concept:emphasis"
+    },
+    {
+      "from": "parameter:emphasis",
+      "relation": "memberOf",
+      "to": "parameters:emphasis"
+    },
+    {
       "from": "parameters:faces",
       "relation": "drives",
       "to": "foundation:typography"
@@ -12398,6 +12108,11 @@
     {
       "from": "domain:color",
       "relation": "owns",
+      "to": "parameters:emphasis"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
       "to": "constraint:vibrancy.text-contrast"
     },
     {
@@ -12529,6 +12244,31 @@
       "from": "descriptor:adaptivity.dark-first",
       "relation": "memberOf",
       "to": "descriptor:adaptivity"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "descriptor:emphasis"
+    },
+    {
+      "from": "descriptor:emphasis",
+      "relation": "expresses",
+      "to": "concept:emphasis"
+    },
+    {
+      "from": "descriptor:emphasis.quiet",
+      "relation": "memberOf",
+      "to": "descriptor:emphasis"
+    },
+    {
+      "from": "descriptor:emphasis.balanced",
+      "relation": "memberOf",
+      "to": "descriptor:emphasis"
+    },
+    {
+      "from": "descriptor:emphasis.loud",
+      "relation": "memberOf",
+      "to": "descriptor:emphasis"
     },
     {
       "from": "domain:geometry",
@@ -12887,6 +12627,11 @@
     },
     {
       "from": "domain:typography",
+      "relation": "covers",
+      "to": "concept:iconography"
+    },
+    {
+      "from": "domain:typography",
       "relation": "owns",
       "to": "parameters:type-scale"
     },
@@ -12939,6 +12684,31 @@
       "from": "descriptor:type-scale.dramatic",
       "relation": "memberOf",
       "to": "descriptor:type-scale"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "descriptor:iconography"
+    },
+    {
+      "from": "descriptor:iconography",
+      "relation": "expresses",
+      "to": "concept:iconography"
+    },
+    {
+      "from": "descriptor:iconography.phosphor",
+      "relation": "memberOf",
+      "to": "descriptor:iconography"
+    },
+    {
+      "from": "descriptor:iconography.lucide",
+      "relation": "memberOf",
+      "to": "descriptor:iconography"
+    },
+    {
+      "from": "descriptor:iconography.tabler",
+      "relation": "memberOf",
+      "to": "descriptor:iconography"
     },
     {
       "from": "grounding:swiss-international",

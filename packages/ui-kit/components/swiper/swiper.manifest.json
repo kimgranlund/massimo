@@ -144,7 +144,7 @@
         {
           "when": "All items should be visible to compare.",
           "reason": "A carousel hides most items; use a grid in a collection.",
-          "useInstead": "component:collection"
+          "useInstead": "component:container"
         },
         {
           "when": "A gallery of images inside one frame.",

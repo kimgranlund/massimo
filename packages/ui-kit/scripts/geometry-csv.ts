@@ -22,7 +22,7 @@ export const rows: Row[] = [
   { id: 'in.s', family: 'input', element: 'all', quantity: 'curvature scale s', formula: `s (default ${GEOMETRY_DEFAULTS.radiusScale})`, value: () => GEOMETRY_DEFAULTS.radiusScale, status: 'input', notes: 'theme radius-scale, 0..3' },
   { id: 'in.k', family: 'input', element: 'all', quantity: 'corner shape k', formula: 'corner-shape: superellipse(k) (default 1)', value: () => 1, status: 'input', notes: 'theme corner-shape; 1 round, 2 squircle, 0 bevel, -1 scoop' },
   { id: 'in.gap', family: 'input', element: 'containers, composites', quantity: 'gap g', formula: 'gap = g·u (default: the padding level)', value: () => NaN, status: 'input', notes: 'gap attribute 0..8 in 0.5 steps; applies to that element only' },
-  { id: 'in.t', family: 'input', element: 'ui-group, ui-collection, ui-card', quantity: 'radius magnitude t', formula: 'radius attribute, else radius-<family> (default 1): R = t × R0, the concentric radius', value: () => NaN, status: 'input', notes: '0 … 1 in 0.05 steps; 1 concentric, 0 square; applies to that element only' },
+  { id: 'in.t', family: 'input', element: 'ui-container (group, collection, card)', quantity: 'radius magnitude t', formula: 'radius attribute, else radius-<family> (default 1): R = t × R0, the concentric radius', value: () => NaN, status: 'input', notes: '0 … 1 in 0.05 steps; 1 concentric, 0 square; applies to that element only' },
   { id: 'in.density', family: 'input', element: 'all', quantity: 'density', formula: 'density 0 compact, 1 default, 2 loose: inset I = (0.5 + 0.25n + 0.25n²)u, ladder × (0.5 + 0.5n)', value: () => NaN, status: 'input', notes: 'values below are at default density; type, slots and icons never change' },
 
   // Control
@@ -71,14 +71,14 @@ export const rows: Row[] = [
   // Layout containers
   ...((Object.keys(CONTAINERS) as ContainerLevel[]).filter((l) => l !== 'composite')).flatMap((level): Row[] => {
     const spec = CONTAINERS[level];
-    const element = level.startsWith('card-') ? `ui-card${level === 'card-md' ? '' : `[padding=${level.slice(5)}]`}` : `ui-${level}`;
+    const element = level.startsWith('card-') ? `ui-container[preset=card]${level === 'card-md' ? '' : `[padding=${level.slice(5)}]`}` : `ui-container[preset=${level}]`;
     return [
       { id: `container.${level}.padding`, family: 'container', element, quantity: 'padding', formula: `pad-${level} (default ${spec.padding})u - B`, value: (u) => resolveContainer(level, { unit: u }).padding, status: 'implemented', notes: '' },
       { id: `container.${level}.gap`, family: 'container', element, quantity: 'gap', formula: `gap-${level} (default ${spec.padding})u; the gap attribute wins`, value: (u) => resolveContainer(level, { unit: u }).gap, status: 'implemented', notes: '' },
       { id: `container.${level}.radius`, family: 'container', element, quantity: 'max radius', formula: spec.family === 'area' ? '0' : `t × (min(3u * s, 4u) + pad-${level}u), 0 at s = 0 (default ${spec.maxRadius}u)`, value: (u) => resolveContainer(level, { unit: u }).radius, status: 'implemented', notes: spec.family === 'area' ? 'area: square, meets the viewport or other areas' : spec.family === 'wrapper' ? 'wrapper: concentric with its controls; capped at half height' : 'card: concentric with its controls; capped at half height' },
     ];
   }),
-  { id: 'container.page.maxWidth', family: 'container', element: 'ui-page', quantity: 'max width', formula: `${PAGE_MAX_WIDTH_REM}rem (fixed)`, value: () => PAGE_MAX_WIDTH_REM * 16, status: 'implemented', notes: 'px at a 16px root; centered; page({ width }) overrides' },
+  { id: 'container.page.maxWidth', family: 'container', element: 'ui-container[preset=page]', quantity: 'max width', formula: `${PAGE_MAX_WIDTH_REM}rem (fixed)`, value: () => PAGE_MAX_WIDTH_REM * 16, status: 'implemented', notes: 'px at a 16px root; centered; page({ width }) overrides' },
 
   // Choices, tracks, swatches, swiper
   { id: 'choice.box', family: 'choice', element: 'checkbox, radio, switch', quantity: 'box height', formula: '5u', value: (u) => resolveChoice('checkbox', { unit: u }).box, status: 'implemented', notes: 'in the 6u leading slot' },

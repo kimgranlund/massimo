@@ -18,7 +18,7 @@
     },
     {
       "path": "components/fieldset/fieldset.manifest.json",
-      "sha256": "baeb845c90a037e1dd58ebf81c2ee948a276335f81d7da272e68d1a1a0c7ff2d"
+      "sha256": "383063dbb2bf57583431df25c42d152bb7d36b7d759161edadb4e41222512134"
     },
     {
       "path": "components/state.react.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/fieldset.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/fieldset.test.ts"

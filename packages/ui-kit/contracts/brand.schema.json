@@ -308,6 +308,14 @@
                 ],
                 "description": "Type scale: how far headings step from body text"
               },
+              "iconography": {
+                "enum": [
+                  "phosphor",
+                  "lucide",
+                  "tabler"
+                ],
+                "description": "Iconography: the icon set and its drawing"
+              },
               "vibrancy": {
                 "enum": [
                   "muted",
@@ -342,6 +350,14 @@
                   "dark-first"
                 ],
                 "description": "Adaptivity: which scheme the theme leads with"
+              },
+              "emphasis": {
+                "enum": [
+                  "quiet",
+                  "balanced",
+                  "loud"
+                ],
+                "description": "Emphasis: how strongly a selection shows"
               },
               "movement": {
                 "enum": [
@@ -483,6 +499,14 @@
                 "strong"
               ],
               "description": "Neutral: how much the neutrals carry the hue"
+            },
+            "emphasis": {
+              "enum": [
+                "quiet",
+                "balanced",
+                "loud"
+              ],
+              "description": "Emphasis: how strongly a selection shows"
             }
           }
         }
@@ -925,10 +949,12 @@
             "line",
             "elevation",
             "type-scale",
+            "iconography",
             "vibrancy",
             "harmony",
             "neutral",
             "adaptivity",
+            "emphasis",
             "movement"
           ]
         },

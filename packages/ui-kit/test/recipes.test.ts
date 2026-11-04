@@ -74,18 +74,17 @@ test('web components carry the recipe classes on host and parts; variant classes
   chip.remove();
 });
 
-test('CSS-only container tags get their recipes as tag rules: base and default variant on the tag, other variants on [attr=value]', async () => {
-  const { card, group, containerTags } = await import('../components/container/container.recipe.ts');
+test('ui-container gets its recipe as tag rules on the tag and [data-ui=container]: base and default variant bare, other variants on [attr=value]', async () => {
+  const { uiContainer, containerTags } = await import('../components/container/container.recipe.ts');
   const { tagRules } = await import('../components/recipe-parts.ts');
+  const T = ':is(ui-container, [data-ui=container])';
   const tags = Object.keys(containerTags);
-  for (const t of ['ui-group', 'ui-collection', 'ui-card', 'ui-panel', 'ui-region', 'ui-page', 'ui-card[padding=xs]', 'ui-card[padding=sm]', 'ui-card[padding=lg]', 'ui-card[padding=xl]']) assert.ok(tags.includes(t), t);
-  assert.ok(!tags.includes('ui-card[padding=md]'), 'the default variant is on the bare tag');
-  assert.equal(containerTags['ui-card']['--cp'], 'calc(var(--ui-pad-card-md) * (0.5 + 0.5 * var(--ui-density)))', 'the theme ladder × the density factor');
-  assert.equal(containerTags['ui-card'].padding, (card.base as any).root.padding, 'same style objects as the recipe');
-  assert.deepEqual(containerTags['ui-card[padding=sm]'], (card.variants as any).padding.sm.root);
-  assert.deepEqual(containerTags['ui-group'], (group.base as any).root);
-  // In the preset's global CSS; only root-only recipes can be aliased.
-  assert.equal((uiKitPreset as any).globalCss['ui-card[padding=xl]']['--cp'], 'calc(var(--ui-pad-card-xl) * (0.5 + 0.5 * var(--ui-density)))');
+  for (const v of ['[preset=group]', '[preset=card]', '[preset=panel]', '[preset=region]', '[preset=page]', '[padding=xs]', '[padding=xl]', '[layout=row]', '[surface=raised]']) assert.ok(tags.includes(`${T}${v}`), v);
+  assert.ok(!tags.includes(`${T}[preset=collection]`), 'the default preset is on the bare tag');
+  assert.deepEqual(containerTags[`${T}[preset=card]`], (uiContainer.variants as any).preset.card.root, 'same style objects as the recipe');
+  assert.equal(containerTags[`${T}[padding=xl]`]['--cp'], 'calc(var(--ui-pad-card-xl) * (0.5 + 0.5 * var(--ui-density)))', 'the theme ladder × the density factor');
+  assert.ok(!tags.some((t) => /ui-(group|collection|card|panel|region|page)\b/.test(t)), 'no level tags (removed)');
+  assert.ok((uiKitPreset as any).globalCss[`${T}[padding=xl]`], 'in the preset\'s global CSS');
   assert.throws(() => tagRules('ui-x', { slots: ['root', 'label'] }), /root-only/);
 });
 

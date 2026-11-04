@@ -4,8 +4,8 @@
 import { CONTAINERS } from '../geometry/resolve.ts';
 import { SPRINGS, SPRING_NAMES, INTENTS, BOUNCE_MAX, type SpringName, type IntentName } from '../motion/index.ts';
 
-/** The theme part a parameter belongs to (theme schema v2: geometry, typography, motion; color has no PARAMS). */
-export const PARAM_DOMAINS = ['geometry', 'typography', 'motion'] as const;
+/** The theme part a parameter belongs to (theme schema v2: geometry, typography, color, motion). */
+export const PARAM_DOMAINS = ['geometry', 'typography', 'color', 'motion'] as const;
 export type ParamDomain = (typeof PARAM_DOMAINS)[number];
 export interface ParamSpec { label: string; min: number; max: number; step: number; default: number; domain: ParamDomain }
 
@@ -33,6 +33,10 @@ export const PARAMS = {
   'density':          { label: 'Density',          min: 0, max: 2, step: 1, default: 1, domain: 'geometry' },
   'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4.5, domain: 'geometry' },
   'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0, domain: 'geometry' },
+  // Emphasis (color): how strongly a selection (segmented, listbox, tabs, toggle) shows: 0 quiet (a
+  // muted neutral fill), 1 balanced (the page-tone chip in light, the primary solid in dark), 2 loud
+  // (a primary tint in light). spectrum/index.ts selectionVars.
+  'emphasis':       { label: 'Selection emphasis', min: 0, max: 2, step: 1, default: 1, domain: 'color' },
   // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).
   'type-ratio':     { label: 'Type ratio',     min: 1, max: 1.5, step: 0.001, default: 1.333, domain: 'typography' },
   'type-rhythm':    { label: 'Type rhythm (u)', min: 0, max: 1, step: 0.5, default: 1, domain: 'typography' },

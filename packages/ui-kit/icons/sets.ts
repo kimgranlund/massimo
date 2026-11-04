@@ -46,10 +46,18 @@ export const BUILTIN_SETS = {
   lucide: cdnSet((n) => `https://cdn.jsdelivr.net/npm/lucide-static@1.57.0/icons/${n}.svg`, {
     ...CHEVRONS, 'magnifying-glass': 'search', gear: 'settings', warning: 'triangle-alert', envelope: 'mail',
     'eye-slash': 'eye-off', 'dots-three': 'ellipsis', list: 'menu',
+    'arrow-clockwise': 'rotate-cw', 'arrows-horizontal': 'move-horizontal', 'bookmark-simple': 'bookmark', 'calendar-blank': 'calendar',
+    'caret-up-down': 'chevrons-up-down', 'check-bold': 'check', 'clipboard-text': 'clipboard-list', 'envelope-simple': 'mail', export: 'share',
+    'grid-four': 'layout-grid', 'list-bullets': 'list', 'minus-bold': 'minus', 'share-network': 'share-2', 'sort-ascending': 'arrow-up-narrow-wide',
+    stack: 'layers', 'text-b': 'bold', 'text-italic': 'italic', 'text-underline': 'underline', tray: 'inbox', 'upload-simple': 'upload',
   }),
   tabler: cdnSet((n) => `https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/${n}.svg`, {
     ...CHEVRONS, 'magnifying-glass': 'search', globe: 'world', gear: 'settings', house: 'home', info: 'info-circle',
     warning: 'alert-triangle', envelope: 'mail', 'eye-slash': 'eye-off', 'dots-three': 'dots', list: 'menu-2',
+    'arrow-clockwise': 'rotate-clockwise', 'book-open': 'book', 'bookmark-simple': 'bookmark', 'calendar-blank': 'calendar', 'check-bold': 'check',
+    'envelope-simple': 'mail', export: 'share', funnel: 'filter', 'grid-four': 'layout-grid', 'list-bullets': 'list', 'minus-bold': 'minus',
+    play: 'player-play', shapes: 'shape', 'share-network': 'share', shuffle: 'arrows-shuffle', sliders: 'adjustments-horizontal',
+    'text-b': 'bold', 'text-italic': 'italic', 'text-underline': 'underline', tray: 'inbox', 'upload-simple': 'upload',
   }),
 } satisfies Record<string, IconSetSource>;
 

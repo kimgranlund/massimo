@@ -7,7 +7,8 @@
   "summary": "How text looks and reads: font faces, the voices that point at them, the type scale (ratio and rhythm on the unit) and each type role's text color. Role sizes derive from 10px + u and the ratio; voices repoint per subtree.",
   "themePart": "typography",
   "concepts": [
-    "typography"
+    "typography",
+    "iconography"
   ],
   "parameterGroups": [
     "type-scale",
@@ -58,6 +59,39 @@
           "means": "perfect fifth: editorial, display-led"
         }
       ]
+    },
+    {
+      "id": "iconography",
+      "concept": "iconography",
+      "title": "Iconography",
+      "reads": "the icon set and its drawing",
+      "default": "phosphor",
+      "inputs": [
+        "icons"
+      ],
+      "values": [
+        {
+          "name": "phosphor",
+          "set": {
+            "icons": "phosphor"
+          },
+          "means": "rounded, friendly strokes with many weights (the default)"
+        },
+        {
+          "name": "lucide",
+          "set": {
+            "icons": "lucide"
+          },
+          "means": "clean, even outlines"
+        },
+        {
+          "name": "tabler",
+          "set": {
+            "icons": "tabler"
+          },
+          "means": "technical, geometric outlines"
+        }
+      ]
     }
   ],
   "specs": [
@@ -97,6 +131,11 @@
     "dramatic",
     "flat",
     "gentle",
+    "iconography",
+    "icons",
+    "lucide",
+    "phosphor",
+    "tabler",
     "type-scale",
     "typography"
   ],

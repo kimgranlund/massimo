@@ -20,6 +20,7 @@ import { ContainersPage } from '../pages/Containers.tsx';
 import { ElevationPage } from '../pages/Elevation.tsx';
 import { BrandPage } from '../pages/Brand.tsx';
 import { loadFontSource } from './fonts.ts';
+import { BrandEditor } from './BrandEditor.tsx';
 import { hydrate, validateBrand, type Brand } from '@massimo/ui-kit/tokens';
 import { GeometryPage } from '../pages/Geometry.tsx';
 import { TypographyPage } from '../pages/Typography.tsx';
@@ -46,7 +47,7 @@ const STEPS = Array.from({ length: 25 }, (_, i) => i / 2);
 
 const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` : r[0].toUpperCase() + r.slice(1);
 const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-const PANEL_TABS: [PanelTab, string][] = [['geometry', 'Geometry'], ['colors', 'Colors'], ['typography', 'Typography'], ['motion', 'Motion']];
+const PANEL_TABS: [PanelTab, string][] = [['geometry', 'Geometry'], ['colors', 'Colors'], ['typography', 'Typography'], ['motion', 'Motion'], ['brand', 'Brand']];
 const isPanelTab = (v: unknown): v is PanelTab => PANEL_TABS.some(([t]) => t === v);
 const PAGES: Record<Exclude<Route, 'components'>, (p: PageProps) => ReactNode> = {
   home: HomePage, containers: ContainersPage, elevation: ElevationPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage, brand: BrandPage,
@@ -173,7 +174,9 @@ export function App() {
   };
   // :not(#…) outranks the generated scheme blocks (:root:not(.light) under the OS dark scheme, :root.dark).
   const endpointCss = white || black ? `:root:not(#ui-endpoints) {${white ? ` --colors-white: ${white};` : ''}${black ? ` --colors-black: ${black};` : ''} }\n` : '';
-  useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}\n${endpointCss}`);
+  // Emphasis: the selection fills are declared with the colors on :root, so its parameter goes there too.
+  const emphasisCss = params.emphasis !== defaultParams.emphasis ? `:root { ${paramVar('emphasis')}: ${params.emphasis}; }\n` : '';
+  useSheet(`${canvasDecls.length ? `[data-canvas] {\n  ${canvasDecls.join('\n  ')}\n}\n` : ''}${generated?.css ?? ''}\n${endpointCss}${emphasisCss}`);
   const voiceAttrs = Object.fromEntries(Object.entries(voices).filter(([v, f]) => DEFAULT_VOICES[v as keyof VoiceMap] !== f).map(([v, f]) => [`data-font-${v}`, f]));
 
   const setParam = (k: ParamName, v: number) => setParams((p) => ({ ...p, [k]: v }));
@@ -191,7 +194,7 @@ export function App() {
     name: themeName,
     geometry: parts.geometry,
     typography: nonEmpty({ parameters: parts.typography?.parameters, sources: listed(sources), voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
-    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }), anchors: listed(anchors) }),
+    color: nonEmpty({ parameters: parts.color?.parameters, spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }), anchors: listed(anchors) }),
     motion: parts.motion,
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
@@ -221,6 +224,9 @@ export function App() {
     applyTheme(theme); setBrand(b);
     setStatus(`Applied brand ${b.name}${unresolved.length ? ` (${unresolved.length} open questions on the Brand page)` : ''}`);
   };
+  // An edit from the Brand tab: re-hydrate after typing pauses (Spectrum takes ~300ms per run).
+  const editTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const editBrand = (b: Brand) => { setBrand(b); clearTimeout(editTimer.current); editTimer.current = setTimeout(() => applyBrand(b), 200); };
   useEffect(() => {
     const on = (e: Event) => applyBrand((e as CustomEvent<Brand>).detail);
     window.addEventListener(APPLY_BRAND, on);
@@ -305,6 +311,7 @@ export function App() {
 
         {/* One field grid per tab: every group's rows share the label | control | readout columns. */}
         <ui-field-grid className={s.panelBody}>
+          {tab === 'brand' && <BrandEditor brand={brand} onBrand={editBrand} />}
           {tab === 'geometry' && geometry}
           {tab === 'geometry' && containerRadius}
           {tab === 'geometry' && (
@@ -403,6 +410,9 @@ export function App() {
                 <Range label="Base chroma %" value={spectrum.base} min={0} max={100} step={1} onValue={(v) => setSpec('base', v)} />
                 <Range label="Falloff" value={spectrum.falloff} min={0.2} max={5} step={0.1} onValue={(v) => setSpec('falloff', v)} />
                 <Switch label="Hue balance" checked={spectrum.hb === 1} onValue={(v) => setSpec('hb', v ? 1 : 0)} />
+              </Group>
+              <Group title="Emphasis">
+                <Segmented label="Selection" value={String(params.emphasis)} onValue={(v) => setParam('emphasis', Number(v))} options={[['0', 'Quiet'], ['1', 'Balanced'], ['2', 'Loud']]} />
               </Group>
               <Group title="Contrast">
                 {/* The Leonardo model: the page tone per scheme (step 1), then an APCA Lc target per step

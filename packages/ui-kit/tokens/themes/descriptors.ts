@@ -9,6 +9,7 @@ import { DESCRIPTORS, type InputValue } from './descriptor-data.ts';
 import { PARAMS, defaultParams, type ParamName } from './params.ts';
 import { themeParameters, partsFromParameters, type Theme } from './theme.ts';
 import { SPECTRUM_DEFAULTS, SPECTRUM_FIELDS } from '../colors/spectrum/config.ts';
+import { ICON_SET_NAMES } from '../../icons/sets.ts';
 
 export * from './descriptor-data.ts';
 export type Character = Record<string, string>;
@@ -16,6 +17,7 @@ export type Character = Record<string, string>;
 /** Where an input lives in a theme, its default and how distance is measured. */
 export function inputSpec(input: string): { path: string; default: InputValue; range?: number; options?: readonly InputValue[] } {
   if (input === 'scheme') return { path: 'scheme', default: 'auto', options: ['auto', 'light', 'dark'] };
+  if (input === 'icons') return { path: 'icons', default: 'phosphor', options: ICON_SET_NAMES };
   if (input.startsWith('spectrum.')) {
     const key = input.slice(9), f = SPECTRUM_FIELDS.find((x) => x.key === key);
     if (!f) throw new Error(`unknown spectrum field ${key}`);
@@ -29,6 +31,7 @@ export function inputSpec(input: string): { path: string; default: InputValue; r
 /** The value a theme gives an input (its own setting, else the kit default). */
 export function inputValue(theme: Partial<Theme>, input: string): InputValue {
   if (input === 'scheme') return theme.scheme ?? 'auto';
+  if (input === 'icons') return theme.icons ?? 'phosphor';
   if (input.startsWith('spectrum.')) return (theme.color?.spectrum?.[input.slice(9)] ?? SPECTRUM_DEFAULTS[input.slice(9)]) as InputValue;
   return themeParameters(theme)[input as ParamName] ?? defaultParams[input as ParamName];
 }
@@ -62,6 +65,7 @@ export function themeFromCharacter(character: Character, theme: Partial<Theme> =
   const params: Partial<Record<ParamName, number>> = {};
   const spectrum: Record<string, InputValue> = {};
   let scheme: Theme['scheme'];
+  let icons: string | undefined;
   const provenance: NonNullable<Theme['provenance']> = { ...(theme.provenance ?? {}) };
   for (const [id, name] of Object.entries(character)) {
     const scale = DESCRIPTORS[id];
@@ -70,6 +74,7 @@ export function themeFromCharacter(character: Character, theme: Partial<Theme> =
     if (!value) { unresolved.push(`${id}: unknown value ${name} (one of ${scale.values.map((v) => v.name).join(', ')})`); continue; }
     for (const [input, v] of Object.entries(value.set)) {
       if (input === 'scheme') scheme = v as Theme['scheme'];
+      else if (input === 'icons') icons = String(v);
       else if (input.startsWith('spectrum.')) spectrum[input.slice(9)] = v;
       else params[input as ParamName] = v as number;
       provenance[inputSpec(input).path] ??= { source: 'character', reason: `${id}.${name}` };
@@ -81,9 +86,11 @@ export function themeFromCharacter(character: Character, theme: Partial<Theme> =
   const parts = partsFromParameters({ ...params, ...hand });
   const out: Partial<Theme> = { ...theme, character: { ...(theme.character ?? {}), ...character } };
   for (const d of ['geometry', 'motion'] as const) if (parts[d]) out[d] = { ...theme[d], parameters: parts[d]!.parameters };
+  if (parts.color) out.color = { ...theme.color, ...(out.color ?? {}), parameters: parts.color.parameters };
   if (parts.typography) out.typography = { ...theme.typography, parameters: parts.typography.parameters };
-  if (Object.keys(spectrum).length) out.color = { ...theme.color, spectrum: { ...spectrum, ...(theme.color?.spectrum ?? {}) } };
+  if (Object.keys(spectrum).length) out.color = { ...theme.color, ...out.color, spectrum: { ...spectrum, ...(theme.color?.spectrum ?? {}) } };
   if (scheme && theme.scheme === undefined) out.scheme = scheme;
+  if (icons && theme.icons === undefined) out.icons = icons;
   if (Object.keys(provenance).length) out.provenance = provenance;
   return { theme: out, unresolved };
 }

@@ -1,7 +1,7 @@
 import type { Roles } from '@massimo/ui-kit/spectrum';
 // Shared jig types.
 /** Jig panel tabs: token editing only; the content page is chosen by the URL hash (pages/route.ts). */
-export type PanelTab = 'geometry' | 'colors' | 'typography' | 'motion';
+export type PanelTab = 'geometry' | 'colors' | 'typography' | 'motion' | 'brand';
 import type { Face, Voice } from '@massimo/ui-kit/tokens';
 export type VoiceMap = Record<Voice, Face>;
 export type FaceMap = Record<Face, string>;

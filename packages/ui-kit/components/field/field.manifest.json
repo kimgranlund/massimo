@@ -234,7 +234,7 @@
         {
           "when": "A form whose fields stack their labels above the controls.",
           "reason": "Stacked fields share no columns; a container spaces them.",
-          "useInstead": "component:card"
+          "useInstead": "component:container"
         }
       ],
       "searchTerms": [

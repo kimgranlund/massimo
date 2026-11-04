@@ -10,7 +10,7 @@
     },
     {
       "path": "components/swiper/swiper.manifest.json",
-      "sha256": "a241c2d21e20745bdf9ac9ec3aa474ecb29cecf7e142e00e6262f1d8aaec6c1e"
+      "sha256": "ee11ebfe45fb3fe81b3944ee7cc00efa5c5caa1b7328aa23b83aef8d289979dc"
     },
     {
       "path": "components/swiper/swiper.react.tsx",
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

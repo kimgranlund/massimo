@@ -5,15 +5,19 @@
 // resolvers. "fails": [] means the scope works.
 import './src/index.css';
 import '@massimo/ui-kit/components/button/element';
+import '@massimo/ui-kit/components/listbox/element';
 import { themeScopeCss, resolveControl, resolveContainer } from '@massimo/ui-kit/tokens';
 import { generateSpectrum, resolveRoles, anchoredSpectrum } from '@massimo/ui-kit/spectrum';
 
+const loud = { schemaVersion: 2, name: 'loud', color: { parameters: { emphasis: 2 } } };
 const theme = { schemaVersion: 2, name: 'probe', geometry: { parameters: { unit: 3, density: 0, 'radius-scale': 0, 'shadow-raised': 8 } }, color: { anchors: [{ role: 'primary', value: '#0f62fe' }] } };
-const style = document.createElement('style'); style.textContent = themeScopeCss(theme); document.head.append(style);
+const style = document.createElement('style'); style.textContent = themeScopeCss(theme) + '\n' + themeScopeCss(loud); document.head.append(style);
 const root = document.getElementById('root');
 root.innerHTML = `
   <div id="outside"><ui-button id="b0" variant="primary">Save</ui-button><ui-container id="c0" preset="card" surface="raised">x</ui-container><span id="t0">text</span><div id="p0" style="padding: var(--spacing-4)"></div></div>
-  <div id="scope" data-ui-scope="probe"><ui-button id="b1" variant="primary">Save</ui-button><ui-container id="c1" preset="card" surface="raised">x</ui-container><span id="t1">text</span><div id="p1" style="padding: var(--spacing-4)"></div></div>`;
+  <div id="scope" data-ui-scope="probe"><ui-button id="b1" variant="primary">Save</ui-button><ui-container id="c1" preset="card" surface="raised">x</ui-container><span id="t1">text</span><div id="p1" style="padding: var(--spacing-4)"></div></div>
+  <div id="loud" data-ui-scope="loud"><ui-segmented id="s2" label="v" value="a"><ui-option id="o2" value="a">A</ui-option><ui-option value="b">B</ui-option></ui-segmented><span id="n3" style="background: var(--colors-primary-3)">x</span></div>
+  <div><ui-segmented id="s1" label="v" value="a"><ui-option id="o1" value="a">A</ui-option><ui-option value="b">B</ui-option></ui-segmented><span id="n1" style="background: var(--colors-neutral-1)">x</span></div>`;
 await customElements.whenDefined('ui-button');
 await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 const fails = []; let checks = 0;
@@ -53,6 +57,12 @@ await new Promise((r) => requestAnimationFrame(r));
 same('.light on the scope forces light under a dark document', cs('t1').color, lightFg);
 same('.light keeps the light solid', cs('b1').backgroundColor, lightBg);
 document.documentElement.classList.remove('dark'); document.getElementById('scope').classList.remove('light');
+// Options animate their fill: let the transitions settle first.
+await Promise.all(document.getAnimations().map((a) => a.finished.catch(() => {})));
+await new Promise((r) => setTimeout(r, 50));
+// Emphasis: a loud scope fills the selected option with primary 3 (a theme with no colors of its own); outside stays neutral 1.
+same('loud selection = primary 3 (scope)', cs('o2').backgroundColor, cs('n3').backgroundColor);
+same('balanced selection = neutral 1 (outside)', cs('o1').backgroundColor, cs('n1').backgroundColor);
 // The resolver side of the anchor agrees with what rendered.
 const data = generateSpectrum({}), roles = resolveRoles(data, {});
 const a = anchoredSpectrum(data, roles, theme.color.anchors).report[0];

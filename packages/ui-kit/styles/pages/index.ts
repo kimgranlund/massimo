@@ -2,7 +2,7 @@
 import { definePattern } from '@pandacss/dev';
 import { PAGE_MAX_WIDTH_REM } from '../../tokens/geometry/resolve.ts';
 
-// page(): the page container level for Panda/React code, same lengths as <ui-page>:
+// page(): the page container level for Panda/React code, same lengths as <ui-container preset="page">:
 // padding and gap from the theme ladder (inset.page, gap.page; border inside the padding), square,
 // centered at a max width. `gap` takes units of u like the gap attribute; `width` sets the max width.
 export const page = definePattern({

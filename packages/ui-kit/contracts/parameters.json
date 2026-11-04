@@ -627,6 +627,32 @@
       ],
       "concept": "vibrancy"
     },
+    "emphasis": {
+      "title": "Selection emphasis",
+      "scope": "theme",
+      "concept": "emphasis",
+      "spec": {
+        "module": "tokens/themes/params.ts",
+        "export": "PARAMS"
+      },
+      "members": [
+        "emphasis"
+      ],
+      "cssVar": "--ui-<member>",
+      "formula": "0 quiet, 1 balanced, 2 loud: the selection fills (bg.selected, fg.selected) mix in CSS from role variables: light neutral 3 → neutral 1 → primary 3, dark neutral 4 → the primary solid (selectionVars, tokens/colors/spectrum/index.ts)",
+      "drives": [
+        "foundation:colors",
+        "tokens:color-roles"
+      ],
+      "searchTerms": [
+        "emphasis",
+        "selected",
+        "selection",
+        "loud",
+        "quiet"
+      ],
+      "documentation": "../../docs/specs/color.md#roles"
+    },
     "faces": {
       "title": "Font faces",
       "scope": "theme",
@@ -702,7 +728,7 @@
       "idPrefix": "subtree-",
       "attributes": {
         "size": "size / data-size: u for the subtree (2 … 12)",
-        "radius": "radius on ui-group, ui-collection, ui-card: the magnitude t of the concentric radius, 0 … 1 in 0.05 steps",
+        "radius": "radius on ui-container (group, collection, card presets): the magnitude t of the concentric radius, 0 … 1 in 0.05 steps",
         "icon-size": "icon-size / data-icon-size: sm, md, lg, fill",
         "gap": "gap: container gap in u (0–8, 0.5 steps), that element only",
         "scheme": ".light / .dark: force a color scheme",

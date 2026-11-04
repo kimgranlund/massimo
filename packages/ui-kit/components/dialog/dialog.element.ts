@@ -16,7 +16,7 @@ import { dialog } from '../../styled-system/recipes/dialog.js';
 
 const on = (v: unknown) => (v ? '' : undefined);
 /** The CSS-only layout containers: a part inside one still belongs to the dialog. */
-const CONTAINERS = new Set(['ui-group', 'ui-collection', 'ui-card', 'ui-panel', 'ui-region', 'ui-page']);
+const CONTAINERS = new Set(['ui-container']);
 
 export class UIDialog extends UIElement {
   static properties = {

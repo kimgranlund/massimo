@@ -60,7 +60,7 @@ const territoryOf = (ref?: string) => TERRITORIES.find((t) => t.id === ref);
 
 /** Which descriptor scales each brand section may set. */
 const SECTION_SCALES: Record<'color' | 'type' | 'form', string[]> = {
-  color: ['vibrancy', 'harmony', 'neutral'],
+  color: ['vibrancy', 'harmony', 'neutral', 'emphasis'],
   type: ['type-scale'],
   form: ['scale', 'density', 'space', 'curvature', 'corner', 'line', 'elevation'],
 };
@@ -204,6 +204,7 @@ export function brandCharacter(b: Brand): { character: Record<string, string>; f
   for (const [k, v] of Object.entries(b.form ?? {})) set(k, v, `form.${k}`);
   if (b.movement) set('movement', b.movement, 'movement');
   if (b.adaptivity) set('adaptivity', b.adaptivity, 'adaptivity');
+  if (b.iconography?.set) set('iconography', b.iconography.set, 'iconography.set');
   return { character, from, unresolved };
 }
 
@@ -248,7 +249,6 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
   if (faces.utility) { setFace('mono', faces.utility, 'type.faces.utility'); tf.voices = { ...tf.voices, code: 'mono', ...(faces.utility.descriptor === 'mono' ? {} : { numeric: 'mono' }) }; }
   if (tf.voices) for (const v of Object.keys(tf.voices)) provenance[`typography.voices.${v}`] = { source: 'brand', reason: 'type.faces' };
   if (Object.keys(tf).length) theme.typography = tf;
-  if (b.iconography?.set) { theme.icons = b.iconography.set; provenance.icons = { source: 'brand', reason: 'iconography.set' }; }
   theme.provenance = provenance;
   return { theme, unresolved };
 }

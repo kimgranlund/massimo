@@ -459,69 +459,6 @@
       ],
       "behavior": "None."
     },
-    "group": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag.",
-      "parts": [],
-      "allowedParents": [
-        "page",
-        "region",
-        "panel",
-        "card",
-        "collection"
-      ],
-      "behavior": "None."
-    },
-    "collection": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag.",
-      "parts": [],
-      "allowedParents": [
-        "page",
-        "region",
-        "panel",
-        "card"
-      ],
-      "behavior": "None."
-    },
-    "card": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag; padding=\"xs | sm | md | lg | xl\" (2u…6u, md default) sets its level; radius concentric with its controls (the control radius + padding).",
-      "parts": [],
-      "allowedParents": [
-        "page",
-        "region",
-        "panel",
-        "card"
-      ],
-      "behavior": "None."
-    },
-    "panel": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag.",
-      "parts": [],
-      "allowedParents": [
-        "page",
-        "region"
-      ],
-      "behavior": "None."
-    },
-    "region": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag.",
-      "parts": [],
-      "allowedParents": [
-        "page"
-      ],
-      "behavior": "None."
-    },
-    "page": {
-      "geometryFamily": "container",
-      "element": "CSS-only container tag.",
-      "parts": [],
-      "allowedParents": [],
-      "behavior": "None."
-    },
     "separator": {
       "geometryFamily": "separator",
       "element": "Host is the rule (role=separator, aria-orientation); not focusable; no children.",

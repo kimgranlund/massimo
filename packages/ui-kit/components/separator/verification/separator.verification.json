@@ -18,7 +18,7 @@
     },
     {
       "path": "components/separator/separator.manifest.json",
-      "sha256": "45fc5a5f76c0b0f03d10610d1b89280f2a04d95213b75c7ea4d1ab4497006c00"
+      "sha256": "44f8f47fa2d238a1bbab3b46f2b0cf5062af77c57e32f5d6e5080000ab3e25af"
     },
     {
       "path": "dom/display.ts",
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-separator|resolveSeparator\" test/separator.test.ts"
@@ -52,7 +52,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React Separator|state parity\" test/separator.test.ts"

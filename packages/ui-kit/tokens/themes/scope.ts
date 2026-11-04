@@ -1,14 +1,14 @@
 // Scoped themes (docs/planning/theme-schema.md, step 6): a theme applied to one element and its
 // subtree instead of the document. Tokens resolve their var() references where they are declared
 // (:root), so a scope must redeclare every token that reads a theme input: the u-based lengths, the
-// motion and elevation tokens, and the shadow layer colors, beside the theme's own variables and its
+// motion and elevation tokens, the shadow layer colors and the selection fills, beside the theme's own variables and its
 // colors per scheme. A theme with scheme auto follows the document's scheme (.light / .dark on
 // <html>, else the OS); light or dark is the scope's own default. .light / .dark on the scope element
 // itself force one.
 import { unitTokenVars } from '../geometry/index.ts';
 import { motionTokenVars } from '../motion/index.ts';
 import { elevationTokenVars } from '../elevation/index.ts';
-import { SHADOW_LAYERS, withAlpha } from '../colors/spectrum/index.ts';
+import { SHADOW_LAYERS, selectionVars, withAlpha } from '../colors/spectrum/index.ts';
 import { themeColorVars, themeVars } from './index.ts';
 import { THEME_NAME } from './validate.ts';
 import type { Theme } from './theme.ts';
@@ -17,6 +17,8 @@ import type { Theme } from './theme.ts';
 // alone would not reach plain text in the scope.
 const block = (sel: string, vars: Record<string, string>) => Object.keys(vars).length ? `${sel} {\n${Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n  color: var(--colors-fg);\n}` : '';
 const shadowLayers = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(SHADOW_LAYERS).map(([k, l]) => [`--colors-shadow-layer-${k}`, withAlpha('var(--colors-shadow)', l[mode])]));
+// The selection fills read --ui-emphasis, so a scope redeclares them even without colors of its own.
+const selection = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(selectionVars(mode)).map(([k, v]) => [`--colors-${k}`, v]));
 
 /** A selector for one theme's scope: `[data-ui-scope="<name>"]`. */
 export const scopeSelector = (name: string) => {
@@ -33,8 +35,8 @@ export function themeScopeCss(theme: Theme, selector = scopeSelector(theme.name)
   const s = selector;
   const base = { ...themeVars(theme), ...unitTokenVars(), ...motionTokenVars(), ...elevationTokenVars() };
   const colors = themeColorVars(theme);
-  const light = { ...(colors?.light ?? {}), ...shadowLayers('light') };
-  const dark = { ...(colors?.dark ?? {}), ...shadowLayers('dark') };
+  const light = { ...(colors?.light ?? {}), ...shadowLayers('light'), ...selection('light') };
+  const dark = { ...(colors?.dark ?? {}), ...shadowLayers('dark'), ...selection('dark') };
   // The theme's scheme leads: auto follows the document (its class, else the OS); light or dark is the
   // scope's default, and only .light / .dark on the scope element override it.
   if (theme.scheme === 'dark') return [block(s, { ...base, ...dark }), block(`${s}.light`, light)].join('\n');

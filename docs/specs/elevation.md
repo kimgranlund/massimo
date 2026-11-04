@@ -6,10 +6,10 @@ How surfaces stack: six levels, each a fill, a shadow and a layer, tuned by six 
 
 | Level | | Fill | Elevation (default) | Layer | Used by |
 |---|---|---|---|---|---|
-| 0 | page | `bg` | none | inline | ui-page, ui-region, the document |
-| 1 | panel | `elevation.panel` (bg.muted) | none | inline | ui-panel |
-| 2 | card | `elevation.card` (bg.subtle) | none | inline | ui-card; a card in a card takes the page fill |
-| 3 | raised | `elevation.card` | `shadow-raised` (2dp) | inline | ui-card when `card-raised` is 1 |
+| 0 | page | `bg` | none | inline | the document; the page and region presets |
+| 1 | panel | `elevation.panel` (bg.muted) | none | inline | the panel preset; `surface="panel"` |
+| 2 | card | `elevation.card` (bg.subtle) | none | inline | the card preset, `surface="card"`; a card in a card takes the page fill |
+| 3 | raised | `elevation.card` | `shadow-raised` (2dp) | inline | `surface="raised"`; every card when `card-raised` is 1 |
 | 4 | floating | `elevation.overlay` (bg.overlay) | `shadow-floating` (8dp) | floating layer, 1u from its anchor | popover, preview card, menus, select and combobox popups, navigation menu, toast |
 | 5 | modal | `elevation.overlay` | `shadow-modal` (24dp) | top layer, over `bg.backdrop` | dialog, alert dialog, drawer |
 

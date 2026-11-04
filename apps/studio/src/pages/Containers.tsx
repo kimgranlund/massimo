@@ -65,7 +65,7 @@ const PRESET_ROWS: [ContainerPreset, CardPadding | undefined, string, string, st
 export function ContainersPage({ params }: PageProps) {
   const input = treeInput(params);
   return (
-    <Page title="Containers" lead="One element for every level: <ui-container preset=…> (React Container). A preset sets where a container starts; one nesting rule sets radius and padding from the page down to the controls, so every curve follows the one around it. The level tags (ui-card, ui-group, …) are deprecated aliases.">
+    <Page title="Containers" lead="One element for every level: <ui-container preset=…> (React Container). A preset sets where a container starts; one nesting rule sets radius and padding from the page down to the controls, so every curve follows the one around it..">
       <Divider />
       <Section id="presets" title="Presets" note="A container that is not nested keeps its preset: the ladder padding (Geometry tab, per level, × density) and the concentric radius, control radius + padding (× the radius magnitude t). Panel, region and page are square. Values are live.">
         <div className={tableScroller}>

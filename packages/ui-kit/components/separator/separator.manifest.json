@@ -75,7 +75,7 @@
         {
           "when": "Decorating a single surface's edge.",
           "reason": "Use the container's border or a card; a separator divides siblings.",
-          "useInstead": "component:card"
+          "useInstead": "component:container"
         }
       ],
       "searchTerms": [

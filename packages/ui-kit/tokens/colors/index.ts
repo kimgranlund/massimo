@@ -4,7 +4,7 @@
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
-import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, roleStep, withAlpha } from './spectrum/index.ts';
+import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, roleStep, selectionVars, withAlpha } from './spectrum/index.ts';
 import { elevationTokens } from '../elevation/index.ts';
 
 type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
@@ -37,6 +37,10 @@ for (const [role, entry] of Object.entries(ROLE_STEPS)) {
   if (camelGroup === 'focusRing') { roles.focusRing = schemed(ref, dref); continue; }
   (roles[camelGroup] ??= {})[key] = schemed(ref, dref);
 }
+// The selection fills follow the theme's emphasis (selectionVars), from the role tokens.
+const tokenRef = (r: string) => (r === 'fg-on-solid' ? '{colors.fg.onSolid}' : `{colors.${r.replace('-', '.')}}`);
+const sel = { light: selectionVars('light', tokenRef), dark: selectionVars('dark', tokenRef) };
+roles.bg.selected = schemed(sel.light['bg-selected'], sel.dark['bg-selected']);
 
 // Elevation (tokens/elevation, docs/specs/elevation.md). Shadow layers are per-scheme colors: the
 // shadow role at each layer's light or dark alpha. The shadow tokens scale them by the theme
@@ -52,5 +56,5 @@ export const semanticColors = {
   ...roles,
   elevation: elevationFills,
   shadowLayer,
-  fg: { ...roles.fg, onSolid: schemed(D.onSolid.light, D.onSolid.dark), selected: schemed(`{colors.spectrum.${D.roles.neutral}.12}`, D.onSolid.dark), strong: schemed('{colors.black}', '{colors.white}') },
+  fg: { ...roles.fg, onSolid: schemed(D.onSolid.light, D.onSolid.dark), selected: schemed(sel.light['fg-selected'], sel.dark['fg-selected']), strong: schemed('{colors.black}', '{colors.white}') },
 };

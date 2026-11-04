@@ -52,6 +52,17 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 
 **Shadows.** Which surface casts which shadow, and the elevation tokens built on these, are in [elevation](elevation.md). `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and a runtime spectrum. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
 
+## Emphasis
+
+`emphasis` (theme parameter, color part; 0 quiet, 1 balanced, 2 loud) sets how strongly a selection shows: the selected option of a listbox or segmented control, the tabs indicator and a pressed toggle in a group (`bg.selected`, `fg.selected`). The fills mix in CSS from role variables (`selectionVars`), so a theme or a scope changes them live:
+
+| | quiet | balanced (default) | loud |
+|---|---|---|---|
+| light | neutral 3, neutral 12 text | neutral 1, neutral 12 text | primary 3, neutral 12 text |
+| dark | neutral 4, neutral 12 text | the primary solid, its contrast text | the primary solid, its contrast text |
+
+The descriptor scale `emphasis` names the three values.
+
 ## Anchors
 
 A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name?, dark? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:

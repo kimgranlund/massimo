@@ -53,9 +53,9 @@ const cases = [];
 const DENS = ['default', 'compact', 'loose'];
 SIZES.forEach((unit, i) => { for (const border of [0, 1]) cases.push({ unit, border, icon: ICONS[(i + border) % 4], gap: (i + border) % 3 === 0 ? 2 : undefined, density: DENS[(2 * i + border) % 3] }); });
 const LEVELS = ['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'];
-// card-<p> is <ui-card padding="<p>"> (md is the plain card).
-const levelTag = (l) => l.startsWith('card-') ? 'ui-card' : `ui-${l}`;
-const levelAttr = (l) => l.startsWith('card-') && l !== 'card-md' ? ` padding="${l.slice(5)}"` : '';
+// A level is <ui-container preset="<level>">; card-<p> is the card preset with padding="<p>" (md is the plain card).
+const levelTag = () => 'ui-container';
+const levelAttr = (l) => l.startsWith('card-') ? ` preset="card"${l !== 'card-md' ? ` padding="${l.slice(5)}"` : ''}` : ` preset="${l}"`;
 const root = document.getElementById('root');
 const r2 = (v) => Math.round(v * 100) / 100;
 const px = (v) => r2(parseFloat(v));
@@ -980,9 +980,9 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
   box.innerHTML = `<ui-button>Save</ui-button>
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
-    <ui-group><ui-button>A</ui-button></ui-group><ui-collection><ui-button>B</ui-button></ui-collection>
-    <ui-group id="gT" radius="0.5"><ui-button>A</ui-button></ui-group><ui-card id="cT" radius="0.25">c</ui-card><ui-card id="cC"><ui-button>C</ui-button></ui-card>
-    <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-collection><ui-button>B</ui-button></ui-collection><ui-card padding="lg">d</ui-card></div>`;
+    <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
   const g = { unit, border, radiusScale: s };
@@ -995,15 +995,15 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'listbox.radius': [rad('ui-listbox'), lst.radius],
     'listbox.option.radius': [rad('ui-listbox ui-option'), lst.child.radius],
     'segmented.is.control': [rad('ui-segmented'), rad('ui-button')],
-    'group.radius': [rad('ui-group'), resolveContainer('group', g).radius],
-    'collection.radius': [rad('ui-collection'), resolveContainer('collection', g).radius],
-    'group.concentric': [rad('ui-group'), s === 0 ? 0 : rad('ui-group > ui-button') + resolveContainer('group', g).edge],
+    'group.radius': [rad('ui-container[preset=group]'), resolveContainer('group', g).radius],
+    'collection.radius': [rad('ui-container[preset=collection]'), resolveContainer('collection', g).radius],
+    'group.concentric': [rad('ui-container[preset=group]'), s === 0 ? 0 : rad('ui-container[preset=group] > ui-button') + resolveContainer('group', g).edge],
     'card.concentric': [rad('#cC'), s === 0 ? 0 : rad('#cC > ui-button') + resolveContainer('card-md', g).edge],
     // The magnitude t: the radius attribute on one element, the theme's radius-<family> on a scope.
     'group.radius.attr': [rad('#gT'), resolveContainer('group', { ...g, radius: 0.5 }).radius],
     'card.radius.attr': [rad('#cT'), resolveContainer('card-md', { ...g, radius: 0.25 }).radius],
-    'collection.radius.theme': [rad('#themeT ui-collection'), resolveContainer('collection', { ...g, radiusFactor: 0.4 }).radius],
-    'card.radius.theme': [rad('#themeT ui-card'), resolveContainer('card-lg', { ...g, radiusFactor: 0 }).radius],
+    'collection.radius.theme': [rad('#themeT ui-container[preset=collection]'), resolveContainer('collection', { ...g, radiusFactor: 0.4 }).radius],
+    'card.radius.theme': [rad('#themeT ui-container[preset=card]'), resolveContainer('card-lg', { ...g, radiusFactor: 0 }).radius],
   };
   for (const [k, [got, want]] of Object.entries(checks)) { total++; if (Math.abs(got - want) > tolerance(k, want)) fails.push(`u${unit}/B${border}/s${s} ${k}: got ${got}, want ${want}`); }
   box.remove();
@@ -1071,6 +1071,10 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     { preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] },
     { preset: 'page', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'collection' }] }] },
     { preset: 'panel', children: [{ preset: 'card', children: [{ preset: 'card', gap: 2 }] }] },
+    // An area mid-chain restarts it: the card under the panel is a root again.
+    { preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'group' }] }] }] },
+    // Deep: radii fall below the control radius; every derived padding keeps the 1u floor.
+    { preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }] },
   ];
   const html = (n) => `<ui-container preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.levels ? ` levels="${n.levels}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map(html).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</ui-container>`;
   for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const [density, s] of [['default', 1], ['compact', 2], ['loose', 0.5]]) {
@@ -1120,7 +1124,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     for (const [k, v] of Object.entries(vars)) box.style.setProperty(k, v);
     // The scope sets elevation params, so it redeclares the elevation tokens (as the jig canvas does).
     for (const [k, v] of Object.entries(elevationTokenVars())) box.style.setProperty(k, v);
-    box.innerHTML = `<ui-panel>p</ui-panel><ui-card>c</ui-card><div id="sf" style="box-shadow: var(--shadows-floating)"></div><div id="sm" style="box-shadow: var(--shadows-modal)"></div><div id="sr" style="box-shadow: var(--shadows-raised)"></div>
+    box.innerHTML = `<ui-container preset="panel">p</ui-container><ui-container preset="card">c</ui-container><div id="sf" style="box-shadow: var(--shadows-floating)"></div><div id="sm" style="box-shadow: var(--shadows-modal)"></div><div id="sr" style="box-shadow: var(--shadows-raised)"></div>
       <div id="bg" style="background: var(--colors-bg)"></div><div id="bm" style="background: var(--colors-bg-muted)"></div><div id="bs" style="background: var(--colors-bg-subtle)"></div>`;
     root.append(box);
     const cs = (sel) => getComputedStyle(box.querySelector(sel));
@@ -1128,12 +1132,12 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     const mix = (a, b, t) => a.map((v, i) => Math.round(v * t + b[i] * (1 - t)));
     const [bg, bm, bs] = ['#bg', '#bm', '#bs'].map((s) => rgba(cs(s).backgroundColor));
     const checks = {
-      'panel.fill': [near(rgba(cs('ui-panel').backgroundColor), mix(bm, bg, p.contrast)) ? 1 : 0, 1],
-      'card.fill': [near(rgba(cs('ui-card').backgroundColor), mix(bs, bg, p.contrast)) ? 1 : 0, 1],
+      'panel.fill': [near(rgba(cs('ui-container[preset=panel]').backgroundColor), mix(bm, bg, p.contrast)) ? 1 : 0, 1],
+      'card.fill': [near(rgba(cs('ui-container[preset=card]').backgroundColor), mix(bs, bg, p.contrast)) ? 1 : 0, 1],
       'shadow.floating': [r2(alphaSum(cs('#sf').boxShadow)), r2(want(p.floating, p.strength))],
       'shadow.modal': [r2(alphaSum(cs('#sm').boxShadow)), r2(want(p.modal, p.strength))],
       'shadow.raised': [r2(alphaSum(cs('#sr').boxShadow)), r2(want(p.raised, p.strength))],
-      'card.shadow': [r2(alphaSum(cs('ui-card').boxShadow)), r2(want(p.raised, p.strength) * p.card)],
+      'card.shadow': [r2(alphaSum(cs('ui-container[preset=card]').boxShadow)), r2(want(p.raised, p.strength) * p.card)],
       'shadow.floating.blur': [r2(maxBlur(cs('#sf').boxShadow)), r2(1.9 * p.floating)],
       'shadow.modal.blur': [r2(maxBlur(cs('#sm').boxShadow)), r2(1.9 * p.modal)],
     };

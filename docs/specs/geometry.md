@@ -170,7 +170,7 @@ Containers come in four families, each with one radius rule; the rule is concent
 
 - **Composite** (listbox, segmented, toggle group, tabs list, menubar, the select, menu and navigation popups): a control. It takes the control radius, min(3u × s, 4u), the same as a button beside it, and its options split the difference: R − D, concentric inside it.
 - **Wrapper** (group, collection): hugs its controls, so its radius is concentric with them: the control radius + p, min(3u × s, 4u) + p·u, at every corner scale; at s = 0 everything is square (the p term is multiplied by min(1, 100·s)).
-- **Container** (`ui-card`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, concentric with the controls it holds: the control radius + its padding, min(3u·s, 4u) + p (square at s = 0), like a wrapper, so a button at its edge sits on the same curve. Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) keep radius = padding × min(1, s): never rounder than they are deep. A card may hold a smaller card (it takes the base fill).
+- **Container** (`ui-container preset="card"`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, concentric with the controls it holds: the control radius + its padding, min(3u·s, 4u) + p (square at s = 0), like a wrapper, so a button at its edge sits on the same curve. Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) keep radius = padding × min(1, s): never rounder than they are deep. A card may hold a smaller card (it takes the base fill).
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
 **Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their concentric radius R0 (the control radius + p): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-container preset="group" radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
@@ -179,7 +179,7 @@ Nesting: areas hold containers, containers hold wrappers (page › region › pa
 
 ### Nesting (ui-container)
 
-`ui-container` (presets group, collection, card, panel, region, page; the old level tags are its aliases) nests under one rule, R_parent = R_child + p_parent, anchored at the root (`resolveContainerTree`, the chain in `container.recipe.ts`):
+`ui-container` (presets group, collection, card, panel, region, page; the old level tags were removed, decision 0016) nests under one rule, R_parent = R_child + p_parent, anchored at the root (`resolveContainerTree`, the chain in `container.recipe.ts`):
 
 | Node | Radius | Padding |
 |---|---|---|
@@ -190,7 +190,7 @@ Nesting: areas hold containers, containers hold wrappers (page › region › pa
 | root with `levels="n"` | — | (R − control radius) / n for every level below |
 | area (panel, region, page) | 0 | its ladder padding; the chain restarts below it |
 
-Derived padding is also the gap unless the element sets `gap`. At u = 4.5 an xl card holding cards that hold a group: 40.5 · 16.2 → 24.3 · 9.72 → 14.58 · 1.08 (the group's controls at 13.5); with `levels="3"`: 40.5 → 31.5 → 22.5, p 9 each. CSS reads the parent through depth-indexed variables (`--uc-r<n>`, `--uc-p<n>`, a rule per exact depth, up to 6) and `:has()` for containers that hold containers. A container that is not nested is exactly the level rule above.
+Derived padding is also the gap unless the element sets `gap`. At u = 4.5 an xl card holding cards that hold a group: 40.5 · 16.2 → 24.3 · 9.72 → 14.58 · 4.5 (the leaf fit, 1.08, lifted to the 1u floor); with `levels="3"`: 40.5 → 31.5 → 22.5, p 9 each. CSS reads the parent through depth-indexed variables (`--uc-r<n>`, `--uc-p<n>`, a rule per exact depth, up to 8) and `:has()` for containers that hold containers (through an area too). A derived padding is never below 1u, so a deep tree keeps room and a radius below the control radius never turns the padding negative. An area inside the chain restarts it: the area sets `--uc-a<n>: 1` at every depth, and the first container below it reads its parent depth's flag and takes its own preset geometry as a root. The chain is about 47 KB of CSS, 0.9 KB gzipped. A container that is not nested is exactly the level rule above.
 
 ### Panda tokens in u
 
@@ -199,16 +199,16 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 | level | element | padding p | gap | max radius | at u=4: pad / gap / radius |
 |---|---|---|---|---|---|
 | composite (control) | ui-listbox, ui-segmented, ui-toggle-group, select popup | 0.5u | 0.5u | 3u | 2 / 2 / 12 |
-| group (wrapper) | ui-group | 1u | 1u | 4u | 4 / 4 / 16 |
-| collection (wrapper) | ui-collection | 2u | 2u | 5u | 8 / 8 / 20 |
-| card-xs (container) | ui-card padding="xs" | 2u | 2u | 5u | 8 / 8 / 20 |
-| card-sm (container) | ui-card padding="sm" | 3u | 3u | 6u | 12 / 12 / 24 |
-| card-md (container) | ui-card (padding="md") | 4u | 4u | 7u | 16 / 16 / 28 |
-| card-lg (container) | ui-card padding="lg" | 5u | 5u | 8u | 20 / 20 / 32 |
-| card-xl (container) | ui-card padding="xl" | 6u | 6u | 9u | 24 / 24 / 36 |
-| panel (area) | ui-panel | 6u | 6u | 0 | 24 / 24 / 0 |
-| region (area) | ui-region | 8u | 8u | 0 | 32 / 32 / 0 |
-| page (area) | ui-page, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
+| group (wrapper) | `preset="group"` | 1u | 1u | 4u | 4 / 4 / 16 |
+| collection (wrapper) | `preset="collection"` | 2u | 2u | 5u | 8 / 8 / 20 |
+| card-xs (container) | `preset="card" padding="xs"` | 2u | 2u | 5u | 8 / 8 / 20 |
+| card-sm (container) | `preset="card" padding="sm"` | 3u | 3u | 6u | 12 / 12 / 24 |
+| card-md (container) | `preset="card"` (padding="md") | 4u | 4u | 7u | 16 / 16 / 28 |
+| card-lg (container) | `preset="card" padding="lg"` | 5u | 5u | 8u | 20 / 20 / 32 |
+| card-xl (container) | `preset="card" padding="xl"` | 6u | 6u | 9u | 24 / 24 / 36 |
+| panel (area) | `preset="panel"` | 6u | 6u | 0 | 24 / 24 / 0 |
+| region (area) | `preset="region"` | 8u | 8u | 0 | 32 / 32 / 0 |
+| page (area) | `preset="page"`, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
 
 Example: `<ui-container preset="card" size="5" gap="2">` has 20px padding and 10px gaps. Containers use the inherited size, so one `size` on a panel compacts everything inside it. A group keeps its controls full height (10u around 8u controls). Layout containers are CSS only: they need no script. Their styles are slot recipes (`components/container/container.recipe.ts`, the composite in `components/recipe-parts.ts`), also emitted on the tags ([components](components.md#styles)).
 

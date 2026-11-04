@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/dialog/dialog.element.ts",
-      "sha256": "b30d41350155a93c0ee619d8d876bad03b34e060cc4d3d80bdd66012a029d24c"
+      "sha256": "0e08660255a4d2dd9efe7d1b01e3dd9f1b421e2a04354d7665193bd82b93be8b"
     },
     {
       "path": "components/dialog/dialog.react.tsx",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"^dialog\" test/dialog.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Dialog \\(React\\)\" test/dialog.test.ts"

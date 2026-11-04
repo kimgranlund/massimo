@@ -17,10 +17,10 @@ export type Layer = 'inline' | 'floating' | 'top';
 
 /** The stack at the defaults: each level's fill, its elevation in dp (shadow-raised 2, -floating 8, -modal 24) and its layer. */
 export const ELEVATION = {
-  page:     { level: 0, fill: 'bg',         dp: 0,  layer: 'inline',   uses: 'ui-page, ui-region, the document' },
-  panel:    { level: 1, fill: 'bg.muted',   dp: 0,  layer: 'inline',   uses: 'ui-panel' },
-  card:     { level: 2, fill: 'bg.subtle',  dp: 0,  layer: 'inline',   uses: 'ui-card (a card in a card takes the page fill)' },
-  raised:   { level: 3, fill: 'bg.subtle',  dp: 2,  layer: 'inline',   uses: 'ui-card with card-raised = 1' },
+  page:     { level: 0, fill: 'bg',         dp: 0,  layer: 'inline',   uses: 'the document; the page and region presets' },
+  panel:    { level: 1, fill: 'bg.muted',   dp: 0,  layer: 'inline',   uses: 'the panel preset; surface="panel"' },
+  card:     { level: 2, fill: 'bg.subtle',  dp: 0,  layer: 'inline',   uses: 'the card preset; surface="card" (a card in a card takes the page fill)' },
+  raised:   { level: 3, fill: 'bg.subtle',  dp: 2,  layer: 'inline',   uses: 'surface="raised"; every card when card-raised is 1' },
   floating: { level: 4, fill: 'bg.overlay', dp: 8,  layer: 'floating', uses: 'popover, preview card, menus, select and combobox popups, navigation menu, toast' },
   modal:    { level: 5, fill: 'bg.overlay', dp: 24, layer: 'top',      uses: 'dialog, alert dialog, drawer (with bg.backdrop behind)' },
 } as const satisfies Record<ElevationLevel, { level: number; fill: string; dp: number; layer: Layer; uses: string }>;

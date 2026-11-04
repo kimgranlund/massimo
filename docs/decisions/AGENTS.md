@@ -17,3 +17,4 @@ One decision per file, `NNNN-slug.md` (`status:`, `date:`): its context, the dec
 - [0013-roles-own-text-color.md](0013-roles-own-text-color.md): The type role is the one source of a text's color
 - [0014-universal-container.md](0014-universal-container.md): One container for every level
 - [0015-concept-axis.md](0015-concept-axis.md): Thirteen peer concepts organize the inputs
+- [0016-remove-container-level-tags.md](0016-remove-container-level-tags.md): Remove the container level tags

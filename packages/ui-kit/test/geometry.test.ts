@@ -428,6 +428,19 @@ test('attached (inset none): no edge but the border, no gap, square children wit
   assert.equal(resolveChoice('switch', { unit: 4 }).thumbTravel, 16, 'inset switch travels 4u too');
 });
 
+test('universal container: derived padding never drops below 1u, and an area inside the chain restarts it', async () => {
+  const { resolveContainerTree, resolveContainer } = await import('../tokens/geometry/resolve.ts');
+  const g = { unit: 4 };
+  // Deep: radii shrink to the control radius and below; the floor keeps every padding at 1u or more.
+  const deep = resolveContainerTree({ preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }, g);
+  for (let n = deep, d = 0; n; n = n.children[0], d++) { assert.ok(n.edge >= g.unit, `depth ${d}: padding ${n.edge} ≥ 1u`); if (n.children[0]) assert.ok(n.children[0].radius <= n.radius, 'radii never grow inward'); }
+  // An area mid-chain: the card under the panel is a root again.
+  const t = resolveContainerTree({ preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'lg' }] }] }, g);
+  const inner = t.children[0].children[0];
+  assert.equal(inner.radius, resolveContainer('card-lg', g).radius);
+  assert.equal(inner.edge, resolveContainer('card-lg', g).edge);
+});
+
 test('universal container: a root keeps its preset geometry; nested containers are concentric; padding derives by ratio, levels or the controls', async () => {
   const { resolveContainerTree, resolveContainer, resolveControl } = await import('../tokens/geometry/resolve.ts');
   const g = { unit: 4 };
@@ -438,7 +451,7 @@ test('universal container: a root keeps its preset geometry; nested containers a
   const [c] = t.children, [leaf] = c.children;
   assert.equal(c.radius, t.radius - t.edge, 'concentric with the parent');
   assert.equal(t.edge, t.radius - Math.max(ctl, t.radius * 0.6), 'a container of containers keeps the ratio');
-  assert.equal(leaf.edge, Math.max(0, leaf.radius - ctl), 'a leaf fits its controls');
+  assert.equal(leaf.edge, Math.max(g.unit, leaf.radius - ctl), 'a leaf fits its controls, never below 1u');
   const d = resolveContainerTree({ preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] }, g);
   const inner = d.children[0].children[0];
   assert.equal(inner.radius - inner.edge, ctl, 'levels: every curve down to the controls is concentric');

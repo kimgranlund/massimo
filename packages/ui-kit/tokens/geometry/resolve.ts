@@ -160,12 +160,12 @@ export const CONTAINERS = {
 } as const satisfies Record<string, { family: ContainerFamily; padding: number; maxRadius: number }>;
 export type ContainerLevel = keyof typeof CONTAINERS;
 
-/** Card padding variants: <ui-card padding="xs | sm | md | lg | xl"> (md is the default). */
+/** Card padding variants: <ui-container preset="card" padding="xs | sm | md | lg | xl"> (md is the default). */
 export const CARD_PADDINGS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type CardPadding = (typeof CARD_PADDINGS)[number];
 
-/** The element (and attribute) that establishes a level. */
-export const levelTag = (level: ContainerLevel) => level.startsWith('card-') ? 'ui-card' : `ui-${level}`;
+/** The ui-container markup that establishes a level: its preset, and the card padding. */
+export const levelAttrs = (level: ContainerLevel) => level.startsWith('card-') ? `preset="card" padding="${level.slice(5)}"` : `preset="${level}"`;
 
 /** Page max width: 72rem (1152px at a 16px root). Fixed, not u-scaled. */
 export const PAGE_MAX_WIDTH_REM = 72;
@@ -229,8 +229,9 @@ export interface ResolvedContainer { preset: ContainerPreset; radius: number; ed
  * area) keeps its preset geometry: the ladder padding and the concentric radius (control radius +
  * padding, × t). A nested container is concentric with its parent: R = max(0, R_parent − p_parent).
  * Its padding: with `levels` on the root, every level splits evenly, p = (R_root − r_control) / levels
- * (D); else a container that holds containers keeps a ratio for them, p = R − max(r_control, R × k)
- * (C); a leaf fits its controls, p = R − r_control (a root leaf keeps its ladder padding). Areas
+ * (D); else a container that holds containers keeps a ratio for them, p = max(u, R − max(r_control,
+ * R × k)) (C); a leaf fits its controls, p = max(u, R − r_control) (a root leaf keeps its ladder
+ * padding). Areas
  * (panel, region, page) are square and restart the chain. The gap is the padding wherever the padding
  * is derived; an explicit gap attribute wins.
  */
@@ -243,11 +244,14 @@ export function resolveContainerTree(node: ContainerNode, input: GeometryInput &
     const fam = radiusFamily(level);
     const base = resolveContainer(level, { ...input, padUnits: input.padUnits?.[level], gapUnits: input.gapUnits?.[level], radius: n.radius, radiusFactor: fam ? input.radiusFactor?.[fam] : undefined });
     if (isAreaPreset(preset)) return { preset, radius: 0, edge: base.edge, padding: base.padding, gap: n.gap !== undefined ? n.gap * u : base.gap, depth: 0, children: (n.children ?? []).map((c) => walk(c, 1)) };
-    const kids = (n.children ?? []).filter((c) => !isAreaPreset(c.preset ?? 'collection'));
+    // Holding containers: any chain container below, through an area too (CSS :has() sees descendants).
+    const holds = (m: ContainerNode): boolean => (m.children ?? []).some((c) => !isAreaPreset(c.preset ?? 'collection') || holds(c));
+    const kids = holds(n) ? [true] : [];
     const r = depth === 1 ? base.radius : Math.max(0, parent!.r - parent!.p);
     const s = depth === 1 && n.levels ? Math.max(0, (r - ctl) / n.levels) : step;
     const derived = s !== undefined || kids.length > 0 || depth > 1;
-    const p = s !== undefined ? s : kids.length ? r - Math.max(ctl, r * k) : depth === 1 ? base.edge : Math.max(0, r - ctl);
+    // A derived padding is never below 1u, so a deep or tight tree keeps room (and never goes negative).
+    const p = s !== undefined ? s : kids.length ? Math.max(u, r - Math.max(ctl, r * k)) : depth === 1 ? base.edge : Math.max(u, r - ctl);
     const gap = n.gap !== undefined ? n.gap * u : derived ? p : base.gap;
     return { preset, radius: r, edge: p, padding: Math.max(0, p - x.border), gap, depth, children: (n.children ?? []).map((c) => walk(c, isAreaPreset(c.preset ?? 'collection') ? 0 : depth + 1, { r, p }, s)) };
   };

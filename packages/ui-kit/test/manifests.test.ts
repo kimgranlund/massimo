@@ -257,7 +257,7 @@ test('parameters: the contract lists exactly the members each owning export defi
   const button = assembly('component:button', graph).parameters.map((p: any) => p.group);
   assert.ok(button.includes('parameters:curvature') && button.includes('parameters:spectrum'), 'button responds to curvature and color');
   assert.ok(!button.includes('parameters:containers'), 'button is not a container');
-  assert.ok(assembly('component:card', graph).parameters.some((p: any) => p.group === 'parameters:containers'), 'card responds to the container ladder');
+  assert.ok(assembly('component:container', graph).parameters.some((p: any) => p.group === 'parameters:containers'), 'container responds to the container ladder');
 });
 
 test('pointer resolution rejects a missing key', () => {

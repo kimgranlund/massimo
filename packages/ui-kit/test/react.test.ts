@@ -38,7 +38,7 @@ test('Range and Progress: native input/progress with track, fill, thumb and --ui
 const { Badge, Tag, Chip } = await loadTsx(new URL('../components/btg/btg.react.tsx', import.meta.url));
 const { Swatch, Palette } = await loadTsx(new URL('../components/color/color.react.tsx', import.meta.url));
 const { Image } = await loadTsx(new URL('../components/image/image.react.tsx', import.meta.url));
-const { Card, Group } = await loadTsx(new URL('../components/container/container.react.tsx', import.meta.url));
+const { Container } = await loadTsx(new URL('../components/container/container.react.tsx', import.meta.url));
 
 test('Badge, Tag, Chip: data-ui hosts with the construction pattern; Chip is a native toggle button', () => {
   // Classes come from the slot recipes (btg.recipe.ts): root on the host, one per part.
@@ -70,9 +70,10 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
   assert.match(html(h(Image, { ratio: 'wide', fit: 'contain' })), /class="ui-image__root ui-image__root--fit_contain ui-image__root--ratio_wide ui-image__root--slideshow_false"/);
   assert.match(html(h(Image, { ratio: '3/2' })), /ui-image__root--ratio_custom/);
   // Containers carry their recipe class; the card's padding is a recipe variant (md by default).
-  assert.equal(html(h(Card, {}, 'x')), '<div class="ui-card__root ui-card__root--padding_md" data-ui="card">x</div>');
-  assert.match(html(h(Card, { padding: 'xs', className: 'mine' }, 'x')), /class="ui-card__root ui-card__root--padding_xs mine"/);
-  assert.equal(html(h(Group, { gap: 2 }, 'x')), '<div class="ui-group__root" data-ui="group" gap="2">x</div>');
+  // Container renders what ui-container is: data-ui="container" and plain attributes, no recipe class.
+  assert.equal(html(h(Container, {}, 'x')), '<div data-ui="container" preset="collection">x</div>');
+  assert.equal(html(h(Container, { preset: 'card', padding: 'xs', layout: 'row', surface: 'raised', levels: 2, gap: 2, radius: 0.5, className: 'mine' }, 'x')),
+    '<div class="mine" data-ui="container" preset="card" padding="xs" layout="row" surface="raised" levels="2" gap="2" radius="0.5">x</div>');
 });
 
 const { Listbox, Segmented, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));

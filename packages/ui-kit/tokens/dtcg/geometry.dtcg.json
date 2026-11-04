@@ -1696,7 +1696,7 @@
           "value": 4.5,
           "unit": "px"
         },
-        "$description": "ui-group · padding",
+        "$description": "ui-container[preset=group] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-group (default 1)u - B",
           "com.massimo.status": "implemented",
@@ -1733,7 +1733,7 @@
           "value": 4.5,
           "unit": "px"
         },
-        "$description": "ui-group · gap",
+        "$description": "ui-container[preset=group] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-group (default 1)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -1770,7 +1770,7 @@
           "value": 18,
           "unit": "px"
         },
-        "$description": "ui-group · max radius · wrapper: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=group] · max radius · wrapper: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-groupu), 0 at s = 0 (default 4u)",
           "com.massimo.status": "implemented",
@@ -1809,7 +1809,7 @@
           "value": 9,
           "unit": "px"
         },
-        "$description": "ui-collection · padding",
+        "$description": "ui-container[preset=collection] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-collection (default 2)u - B",
           "com.massimo.status": "implemented",
@@ -1846,7 +1846,7 @@
           "value": 9,
           "unit": "px"
         },
-        "$description": "ui-collection · gap",
+        "$description": "ui-container[preset=collection] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-collection (default 2)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -1883,7 +1883,7 @@
           "value": 22.5,
           "unit": "px"
         },
-        "$description": "ui-collection · max radius · wrapper: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=collection] · max radius · wrapper: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-collectionu), 0 at s = 0 (default 5u)",
           "com.massimo.status": "implemented",
@@ -1922,7 +1922,7 @@
           "value": 9,
           "unit": "px"
         },
-        "$description": "ui-card[padding=xs] · padding",
+        "$description": "ui-container[preset=card][padding=xs] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-card-xs (default 2)u - B",
           "com.massimo.status": "implemented",
@@ -1959,7 +1959,7 @@
           "value": 9,
           "unit": "px"
         },
-        "$description": "ui-card[padding=xs] · gap",
+        "$description": "ui-container[preset=card][padding=xs] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-card-xs (default 2)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -1996,7 +1996,7 @@
           "value": 22.5,
           "unit": "px"
         },
-        "$description": "ui-card[padding=xs] · max radius · card: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=card][padding=xs] · max radius · card: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-card-xsu), 0 at s = 0 (default 5u)",
           "com.massimo.status": "implemented",
@@ -2035,7 +2035,7 @@
           "value": 13.5,
           "unit": "px"
         },
-        "$description": "ui-card[padding=sm] · padding",
+        "$description": "ui-container[preset=card][padding=sm] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-card-sm (default 3)u - B",
           "com.massimo.status": "implemented",
@@ -2072,7 +2072,7 @@
           "value": 13.5,
           "unit": "px"
         },
-        "$description": "ui-card[padding=sm] · gap",
+        "$description": "ui-container[preset=card][padding=sm] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-card-sm (default 3)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2109,7 +2109,7 @@
           "value": 27,
           "unit": "px"
         },
-        "$description": "ui-card[padding=sm] · max radius · card: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=card][padding=sm] · max radius · card: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-card-smu), 0 at s = 0 (default 6u)",
           "com.massimo.status": "implemented",
@@ -2148,7 +2148,7 @@
           "value": 18,
           "unit": "px"
         },
-        "$description": "ui-card · padding",
+        "$description": "ui-container[preset=card] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-card-md (default 4)u - B",
           "com.massimo.status": "implemented",
@@ -2185,7 +2185,7 @@
           "value": 18,
           "unit": "px"
         },
-        "$description": "ui-card · gap",
+        "$description": "ui-container[preset=card] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-card-md (default 4)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2222,7 +2222,7 @@
           "value": 31.5,
           "unit": "px"
         },
-        "$description": "ui-card · max radius · card: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=card] · max radius · card: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-card-mdu), 0 at s = 0 (default 7u)",
           "com.massimo.status": "implemented",
@@ -2261,7 +2261,7 @@
           "value": 22.5,
           "unit": "px"
         },
-        "$description": "ui-card[padding=lg] · padding",
+        "$description": "ui-container[preset=card][padding=lg] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-card-lg (default 5)u - B",
           "com.massimo.status": "implemented",
@@ -2298,7 +2298,7 @@
           "value": 22.5,
           "unit": "px"
         },
-        "$description": "ui-card[padding=lg] · gap",
+        "$description": "ui-container[preset=card][padding=lg] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-card-lg (default 5)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2335,7 +2335,7 @@
           "value": 36,
           "unit": "px"
         },
-        "$description": "ui-card[padding=lg] · max radius · card: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=card][padding=lg] · max radius · card: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-card-lgu), 0 at s = 0 (default 8u)",
           "com.massimo.status": "implemented",
@@ -2374,7 +2374,7 @@
           "value": 27,
           "unit": "px"
         },
-        "$description": "ui-card[padding=xl] · padding",
+        "$description": "ui-container[preset=card][padding=xl] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-card-xl (default 6)u - B",
           "com.massimo.status": "implemented",
@@ -2411,7 +2411,7 @@
           "value": 27,
           "unit": "px"
         },
-        "$description": "ui-card[padding=xl] · gap",
+        "$description": "ui-container[preset=card][padding=xl] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-card-xl (default 6)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2448,7 +2448,7 @@
           "value": 40.5,
           "unit": "px"
         },
-        "$description": "ui-card[padding=xl] · max radius · card: concentric with its controls; capped at half height",
+        "$description": "ui-container[preset=card][padding=xl] · max radius · card: concentric with its controls; capped at half height",
         "$extensions": {
           "com.massimo.formula": "t × (min(3u * s, 4u) + pad-card-xlu), 0 at s = 0 (default 9u)",
           "com.massimo.status": "implemented",
@@ -2487,7 +2487,7 @@
           "value": 27,
           "unit": "px"
         },
-        "$description": "ui-panel · padding",
+        "$description": "ui-container[preset=panel] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-panel (default 6)u - B",
           "com.massimo.status": "implemented",
@@ -2524,7 +2524,7 @@
           "value": 27,
           "unit": "px"
         },
-        "$description": "ui-panel · gap",
+        "$description": "ui-container[preset=panel] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-panel (default 6)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2561,7 +2561,7 @@
           "value": 0,
           "unit": "px"
         },
-        "$description": "ui-panel · max radius · area: square, meets the viewport or other areas",
+        "$description": "ui-container[preset=panel] · max radius · area: square, meets the viewport or other areas",
         "$extensions": {
           "com.massimo.formula": "0",
           "com.massimo.status": "implemented",
@@ -2600,7 +2600,7 @@
           "value": 36,
           "unit": "px"
         },
-        "$description": "ui-region · padding",
+        "$description": "ui-container[preset=region] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-region (default 8)u - B",
           "com.massimo.status": "implemented",
@@ -2637,7 +2637,7 @@
           "value": 36,
           "unit": "px"
         },
-        "$description": "ui-region · gap",
+        "$description": "ui-container[preset=region] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-region (default 8)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2674,7 +2674,7 @@
           "value": 0,
           "unit": "px"
         },
-        "$description": "ui-region · max radius · area: square, meets the viewport or other areas",
+        "$description": "ui-container[preset=region] · max radius · area: square, meets the viewport or other areas",
         "$extensions": {
           "com.massimo.formula": "0",
           "com.massimo.status": "implemented",
@@ -2713,7 +2713,7 @@
           "value": 36,
           "unit": "px"
         },
-        "$description": "ui-page · padding",
+        "$description": "ui-container[preset=page] · padding",
         "$extensions": {
           "com.massimo.formula": "pad-page (default 8)u - B",
           "com.massimo.status": "implemented",
@@ -2750,7 +2750,7 @@
           "value": 36,
           "unit": "px"
         },
-        "$description": "ui-page · gap",
+        "$description": "ui-container[preset=page] · gap",
         "$extensions": {
           "com.massimo.formula": "gap-page (default 8)u; the gap attribute wins",
           "com.massimo.status": "implemented",
@@ -2787,7 +2787,7 @@
           "value": 0,
           "unit": "px"
         },
-        "$description": "ui-page · max radius · area: square, meets the viewport or other areas",
+        "$description": "ui-container[preset=page] · max radius · area: square, meets the viewport or other areas",
         "$extensions": {
           "com.massimo.formula": "0",
           "com.massimo.status": "implemented",
@@ -2824,7 +2824,7 @@
           "value": 1152,
           "unit": "px"
         },
-        "$description": "ui-page · max width · px at a 16px root; centered; page({ width }) overrides",
+        "$description": "ui-container[preset=page] · max width · px at a 16px root; centered; page({ width }) overrides",
         "$extensions": {
           "com.massimo.formula": "72rem (fixed)",
           "com.massimo.status": "implemented",

@@ -52,7 +52,7 @@ import { Listbox, Segmented, Option } from '@massimo/ui-kit/components/listbox/r
 import { Badge, Tag, Chip } from '@massimo/ui-kit/components/btg/react';
 import { Swatch, Palette } from '@massimo/ui-kit/components/color/react';
 import { Image } from '@massimo/ui-kit/components/image/react';
-import { Card, Group } from '@massimo/ui-kit/components/container/react';
+import { Container } from '@massimo/ui-kit/components/container/react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 import { useState } from 'react';
@@ -172,8 +172,11 @@ function Pair({ u }: { u: number }) {
         <ui-palette data-k="plv" orientation="vertical"><ui-swatch color="#eef" /><ui-swatch color="#99f" /></ui-palette>
         <div style={{ width: 200 }}><ui-image data-k="im" ratio="wide" /></div>
         <div style={{ width: 200 }}><ui-image data-k="imc" ratio="3/2" /></div>
-        <ui-card data-k="cd"><span>a</span><span>b</span></ui-card>
-        <ui-group data-k="gp" gap="2"><span>a</span><span>b</span></ui-group>
+        <ui-container data-k="cd" preset="card"><span>a</span><span>b</span></ui-container>
+        <ui-container data-k="gp" preset="group" gap="2"><span>a</span><span>b</span></ui-container>
+        <ui-container data-k="uc" preset="card" padding="lg"><ui-container data-k="ucN" preset="group"><span>a</span><span>b</span></ui-container></ui-container>
+        <ui-container data-k="ucL" preset="card" padding="xl" levels="2"><ui-container data-k="ucL1" preset="card"><span>b</span></ui-container></ui-container>
+        <ui-container data-k="ucS" preset="collection" layout="row" surface="raised" radius="0.5" gap="1"><span>a</span><span>b</span></ui-container>
         <ui-listbox data-k="lb" label="Folder" value="inbox"><ui-option value="inbox"><i slot="leading" name="tray" />Inbox<span slot="suffix">12</span></ui-option><ui-option value="sent">Sent</ui-option><ui-option value="spam" disabled>Spam</ui-option></ui-listbox>
         <ui-segmented data-k="sg" label="View" value="grid"><ui-option value="grid">Grid</ui-option><ui-option value="list">List</ui-option></ui-segmented>
         <div style={{ width: 300 }}><ui-select data-k="sel" label="Role" value="eng"><i slot="leading" name="briefcase" /><ui-option value="design">Designer</ui-option><ui-option value="eng">Engineer</ui-option></ui-select></div>
@@ -251,8 +254,11 @@ function Pair({ u }: { u: number }) {
         <Palette data-k="plv" orientation="vertical"><Swatch color="#eef" /><Swatch color="#99f" /></Palette>
         <div style={{ width: 200 }}><Image data-k="im" ratio="wide" /></div>
         <div style={{ width: 200 }}><Image data-k="imc" ratio="3/2" /></div>
-        <Card data-k="cd"><span>a</span><span>b</span></Card>
-        <Group data-k="gp" gap={2}><span>a</span><span>b</span></Group>
+        <Container data-k="cd" preset="card"><span>a</span><span>b</span></Container>
+        <Container data-k="gp" preset="group" gap={2}><span>a</span><span>b</span></Container>
+        <Container data-k="uc" preset="card" padding="lg"><Container data-k="ucN" preset="group"><span>a</span><span>b</span></Container></Container>
+        <Container data-k="ucL" preset="card" padding="xl" levels={2}><Container data-k="ucL1" preset="card"><span>b</span></Container></Container>
+        <Container data-k="ucS" preset="collection" layout="row" surface="raised" radius={0.5} gap={1}><span>a</span><span>b</span></Container>
         <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option><Option value="spam" disabled>Spam</Option></Listbox>
         <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>
         <div style={{ width: 300 }}><div data-k="sel"><Select label="Role" defaultValue="eng" leading={<i name="briefcase" />}><SelectOption value="design">Designer</SelectOption><SelectOption value="eng">Engineer</SelectOption></Select></div></div>
@@ -653,7 +659,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -661,7 +667,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

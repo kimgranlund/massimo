@@ -21,7 +21,7 @@ Plain HTML: the classes of the `button` slot recipe style any markup, e.g. `<but
 
 ## Composition
 
-- In a row of related actions, wrap buttons in `ui-group` (1u gap).
+- In a row of related actions, wrap buttons in `<ui-container preset="group">` (1u gap).
 - For exclusive selection among peers use `ui-segmented` with `ui-option` children, not buttons.
 - The swiper paddles are ui-buttons; a framework that renders children into a ui-button must not re-key them (the button moves them into parts).
 

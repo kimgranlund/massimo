@@ -18,7 +18,7 @@
     },
     {
       "path": "components/field/field.manifest.json",
-      "sha256": "f0b4354a636db925d30a2dd6eec5365744a727f1dc188996d04a0dd7ac4a1056"
+      "sha256": "34051af44707951be3647cf9688b8d0d3d2048017c3555f84b981464091b10da"
     },
     {
       "path": "components/field/field.react.tsx",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/field.test.ts",
@@ -69,7 +69,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/field-react.test.ts",

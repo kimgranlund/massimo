@@ -15,12 +15,22 @@
 ## Panel
 
 - **Pane grid** (Figma-style): each tab is one `ui-field-grid`; a row is a `ui-field layout="inline"` (label with a unit suffix, control, readout), so labels, controls and readouts line up across every group of the tab. Group titles are headings spanning the grid. The field's label names its control (no hidden labels); the container rows in the Geometry tab pair a padding and a gap menu, each named "<type> Padding" / "<type> Gap" through `labelledby`. Built from `Field`, `Range`, `Segmented`, `Select`, `Switch` and `Group` in `src/studio/wc.tsx`; a trailing `(unit)` in a label becomes the field's `unit`.
-- **Tabs** (segmented, persisted in localStorage `studio:panel`): Geometry, Colors, Typography, Motion. The panel edits tokens only: switching a tab never changes the page (the page is the URL hash alone).
+- **Tabs** (segmented, persisted in localStorage `studio:panel`): Geometry, Colors, Typography, Motion, Brand. The panel edits tokens only: switching a tab never changes the page (the page is the URL hash alone).
 - **Header:** the title, then the tabs.
 - **Geometry:** unit, border, corner radius, corner shape; icon set; a padding menu and a gap menu (in u, with px) for each container type: composite, group, collection, card-xs … card-xl, panel, region, page.
 - **Colors:** Random, role groups (brand, feedback, data 1–6), hue set (Unique or Radix) and first hue, chroma (requested, base %, falloff, hue balance), contrast (the light and dark page tones, then an APCA Lc target per step 2–12 for the chosen page, each readout its target · solved tone), white and black, neutral tint, gamut. Generation runs on the main thread, debounced (~300ms per run). Role selects are grouped Brand (primary, secondary, neutral), Feedback (critical, warning, success, info) and Data 1–6, each option and the trigger led by a swatch of the family's step 9; **Random** draws new generation inputs (hue set, first hue, hue balance, requested and base chroma, falloff and chroma distribution, neutral tint, the light and dark page tones; chroma 40–120, base 50–100, light page 92–100 and dark page 0–10, the rest over their full range) and reassigns the brand roles (the neutral included) and data 1–6; feedback roles keep their colors.
 - **Typography:** unit, ratio (named ratios), rhythm (none, ½u, 1u); a stack menu per face (sans, serif, mono, display) and a face menu per voice (display, heading, body, ui, numeric, code). Copy JSON carries `typography.faces` and `typography.voices`.
 - **Motion:** `MotionPanel` (`src/studio/MotionPanel.tsx`) owns every motion control (duration scale, bounce, springs, intents); no other tab shows motion.
+- **Brand:** edit the active brand in place, or start one from a worked brand or a blank brand (`studio/BrandEditor.tsx`):
+  - Subject: name, audience, primary job, kind, sources.
+  - Frame: grounding and its relation, territory, muse and what to take.
+  - Anchors: role and color per anchor; add and remove.
+  - Faces: display, body and utility, from the face catalogue.
+  - Character: every descriptor scale. An empty choice shows the frame's value and where it came from.
+  - Signature.
+
+  Every edit is validated (`validateBrand`) and re-hydrated after a short pause. The brand is the source, so hand tuning in other tabs is replaced on the next brand edit.
+- Colors also has **Emphasis** (Selection: quiet, balanced, loud; theme `color.parameters.emphasis`), declared on `:root` with the colors.
 - **Copy:** the applied settings minus defaults as one [theme object](theming.md#theme-object), schema version 2 (`geometry`, `typography`, `color` with `anchors`, `motion`, `icons`, `scheme`), with `$schema`; while a brand is active (Apply on the Brand page, or Load of a brand), the `{ brand, theme }` bundle. **Load:** reads a theme (version 1 migrates through `loadTheme`), a [brand](theming.md#brand) (validated and hydrated) or a bundle from the clipboard and applies it; sections it omits return to the defaults, and the status line lists any problems. **Checks:** the live [theme lint](theming.md#lint) findings (errors, warnings, info) for the applied settings. **Reset:** all defaults, and no brand.
 
 ## Pages

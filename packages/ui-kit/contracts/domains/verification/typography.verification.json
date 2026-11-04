@@ -18,15 +18,15 @@
     },
     {
       "path": "tokens/themes/params.ts",
-      "sha256": "e95bbad182dfaf2a0d2c415c766fa04a0bfb491d9d35736370e33faa9332a3d2"
+      "sha256": "89d3f3f85205bd9740e31d41d98aa5dc4615808627c219507f2ff4e651bcb608"
     },
     {
       "path": "contracts/domains/typography.json",
-      "sha256": "d58f8f7919bbfcd70c507694856827bba0d2194246861f8e1fb883661cf02801"
+      "sha256": "3c837bfce4413fcd7e23d19b2b4d2a040115047b5e6eed3da3c0a2bad9b85b52"
     },
     {
       "path": "tokens/themes/descriptors.ts",
-      "sha256": "54e76a0ff190ddd9127c2324a9c9ccbb920be3bbf50864b3e1389d92a1dc48e0"
+      "sha256": "4e8344c79e2517409f42c80cdd9a9fec324d4890f53160a60db7c1a73d1d6a2a"
     },
     {
       "path": "tokens/themes/descriptor-data.ts",

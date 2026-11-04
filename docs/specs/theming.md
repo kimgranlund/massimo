@@ -33,7 +33,7 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 |---|---|
 | `geometry` | `parameters`: unit, density, border, curvature, container radius and nesting ratio, the container ladder, elevation |
 | `typography` | `parameters` (`type-ratio`, `type-rhythm`); `sources`: web face stylesheets ([typography](typography.md#face-catalogue)); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color |
-| `color` | `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role ([color](color.md#anchors)) |
+| `color` | `parameters` (`emphasis`); `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role ([color](color.md#anchors)) |
 | `motion` | `parameters`: the multipliers, springs and intents |
 | `icons`, `scheme` | the icon set; the preferred scheme (auto, light, dark) |
 | `character` | one value per descriptor scale (below) |
@@ -47,13 +47,13 @@ Saved themes live in `tokens/themes/themes.json` as theme objects keyed by their
 
 ### Character
 
-A character names a theme in closed words: one value per **descriptor scale**. The scales are data in the domain manifests (`descriptors` in `contracts/domains/<domain>.json`); each names the inputs it sets (a parameter, `spectrum.<field>` or `scheme`) and the exact values per scale value, and the scale's `default` value is the kit default.
+A character names a theme in closed words: one value per **descriptor scale**. The scales are data in the domain manifests (`descriptors` in `contracts/domains/<domain>.json`); each names the inputs it sets (a parameter, `spectrum.<field>`, `scheme` or `icons`) and the exact values per scale value, and the scale's `default` value is the kit default.
 
 | Domain | Scales (default first in bold) |
 |---|---|
 | geometry | scale: xs, sm, **md**, lg, xl · density: compact, **default**, loose · space: tight, **balanced**, airy · curvature: square, crisp, **soft**, round, pill · corner: bevel, **round**, squircle · line: **borderless**, hairline, outlined · elevation: flat, **layered**, floating |
-| typography | type-scale: flat, gentle, **classic**, dramatic |
-| color | vibrancy: muted, natural, **vivid** · harmony: **unique**, analogous, complementary, split, triadic · neutral: true, subtle, **tinted**, strong · adaptivity: **both**, light-first, dark-first |
+| typography | type-scale: flat, gentle, **classic**, dramatic · iconography: **phosphor**, lucide, tabler |
+| color | vibrancy: muted, natural, **vivid** · harmony: **unique**, analogous, complementary, split, triadic · neutral: true, subtle, **tinted**, strong · adaptivity: **both**, light-first, dark-first · emphasis: quiet, **balanced**, loud |
 | motion | movement: still, calm, **lively**, playful |
 
 `themeFromCharacter(character, theme?)` (`tokens/themes/descriptors.ts`) sets each named value's inputs into the theme parts; values already in `theme` (hand edits) win; provenance records every input a descriptor set (`{ source: 'character', reason: 'curvature.soft' }`); an unknown scale or value comes back in `unresolved` rather than being guessed. `describeTheme(theme)` reads any theme back to the nearest value per scale with a distance in 0..1 (per input |a − b| / range, or 0/1 for a choice, averaged), so a hand-tuned theme can be summarized or compared. Tests hold the round trip: every value resolves to a valid, lint-clean theme and reads back as itself at distance 0, the scales set disjoint inputs, and the defaults read as defaults. The registry has `descriptor:<scale>` and `descriptor:<scale>.<value>` nodes.
@@ -116,7 +116,7 @@ A theme with scheme `auto` follows the document (`.light` / `.dark` on `<html>`,
 - `icon-size` / `data-icon-size`: sm, md, lg, fill.
 - `density` / `data-density`: compact, default, loose for a subtree, inherited ([geometry](geometry.md#density)).
 - `gap`: container gap override in units of u (0–8, 0.5 steps), that element only.
-- `radius` (ui-group, ui-collection, ui-card): the radius magnitude t, 0–1 in 0.05 steps, that element only ([geometry](geometry.md#containers)).
+- `radius` (ui-container, presets group, collection and card): the radius magnitude t, 0–1 in 0.05 steps, that element only ([geometry](geometry.md#containers)).
 - `.light` / `.dark`: force a color scheme for a subtree.
 - `data-font-<voice>="<face>"`: repoint a font voice (display, heading, body, ui, numeric, code) to a face (sans, serif, mono, display); `data-numeric` for figures in the numeric voice, tabular lining when bare, with space-separated variants (`proportional`, `oldstyle`, `fraction`, …) and `data-position="super|sub"` ([typography](typography.md#numerals)).
 - `data-type="<role>"`: apply a type role.

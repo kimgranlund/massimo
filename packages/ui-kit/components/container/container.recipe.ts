@@ -1,16 +1,17 @@
-// Slot recipes for the layout containers: <ui-group>, <ui-collection>, <ui-card>, <ui-panel>,
-// <ui-region>, <ui-page> and the React Group … Page (tokens/geometry/resolve.ts CONTAINERS): padding
-// and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level> (the gap attribute wins
-// on its own element). Radius: wrappers (group, collection) and cards are concentric with the
-// controls they hold, R0 = min(3u·s, 4u) + p·u (square at s = 0), scaled by a magnitude t (0 … 1:
-// the radius attribute, else the theme's radius-group / radius-collection / radius-card): R = t × R0;
-// areas (panel, region, page) are square. Fills alternate by depth so each level reads without
-// borders: panel 3, card 2, a card nested in a card 1.
+// The layout container: <ui-container preset="…"> and the React Container (tokens/geometry/resolve.ts
+// CONTAINERS). Padding and gap come from the theme parameters --ui-pad-<level> / --ui-gap-<level>
+// (the gap attribute wins on its own element). Radius: wrappers (group, collection) and cards are
+// concentric with the controls they hold, R0 = min(3u·s, 4u) + p·u (square at s = 0), scaled by a
+// magnitude t (0 … 1: the radius attribute, else the theme's radius-group / radius-collection /
+// radius-card): R = t × R0; areas (panel, region, page) are square. Fills alternate by depth so each
+// level reads without borders: panel 3, card 2, a card nested in a card 1.
 //
-// The containers are CSS-only tags (no script), so nothing puts the recipe classes on them. The same
-// recipe objects are therefore also emitted as global rules on the tags (`containerTags`, through
-// `tagRules`): the base and default variants on the tag, every other variant on tag[attr=value].
-// React renderers and plain HTML use the classes.
+// ui-container is a CSS-only tag (no script), so nothing puts the recipe classes on it. The recipe
+// object is therefore also emitted as global rules (`containerTags`, through `tagRules`) on
+// `:is(ui-container, [data-ui=container])`: the base and default variants on it, every other variant
+// on [attr=value]. The React Container renders <div data-ui="container"> with the same attributes,
+// so both get the same rules and the nesting chain in one layer. (The level tags ui-group … ui-page
+// were removed: docs/decisions/0016-remove-container-level-tags.md.)
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CARD_PADDINGS, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
 import { CONTROL_RADIUS, mergeStyles, tagRules } from '../recipe-parts.ts';
@@ -42,39 +43,6 @@ const box = {
 };
 const column = { display: 'flex', flexDirection: 'column' };
 
-const container = (k: Layout, description: string, root: Record<string, any>) => defineSlotRecipe({
-  className: `ui-${k}`,
-  description,
-  slots: ['root'],
-  base: { root: mergeStyles(box, level(k), root) },
-});
-
-export const group = container('group', 'Closely related controls (ui-group, React Group).', { display: 'inline-flex', flexWrap: 'wrap', alignItems: 'center' });
-export const collection = container('collection', 'A list or set of like items (ui-collection, React Collection).', column);
-export const panel = container('panel', 'A side or tool panel (ui-panel, React Panel).', { ...column, bg: 'elevation.panel' }); // elevation level 1
-export const region = container('region', 'A major area of a page (ui-region, React Region).', column);
-export const page = container('page', 'A whole page (ui-page, React Page).', { ...column, width: '100%', maxWidth: `${PAGE_MAX_WIDTH_REM}rem`, marginInline: 'auto' });
-
-export const card = defineSlotRecipe({
-  className: 'ui-card',
-  description: 'A self-contained surface, padding xs … xl (ui-card, React Card).',
-  slots: ['root'],
-  base: {
-    root: mergeStyles(box, column, {
-      // The edge stays transparent like every level's (the fill carries the level); before this
-      // recipe a card's `border` color was declared but always lost to the shared transparent rule.
-      // Elevation level 2 (card), lifted to 3 (raised) when the theme's card-raised is 1.
-      bg: 'elevation.card', boxShadow: 'card',
-      // A card nested in a card takes the base fill (either renderer).
-      ':is(ui-card, .ui-card__root) &': { bg: 'bg' },
-    }),
-  },
-  variants: {
-    padding: Object.fromEntries(CARD_PADDINGS.map((p) => [p, { root: level(`card-${p}`) }])),
-  },
-  defaultVariants: { padding: 'md' },
-});
-
 // ── ui-container: one element for every level (docs/planning/universal-container.md) ──
 // preset picks the starting geometry, flow and surface (group, collection, card, panel, region,
 // page); padding (xs … xl) the card ladder level; layout and surface override the preset's. The
@@ -90,12 +58,13 @@ export const uiContainer = defineSlotRecipe({
   className: 'ui-container',
   description: 'One container for every level, group to page, nesting concentrically (ui-container, React Container).',
   slots: ['root'],
-  base: { root: mergeStyles(box, column, { ':is(ui-card, .ui-card__root, [surface=card], [preset=card]) &[surface=card]': { bg: 'bg' } }) },
+  base: { root: mergeStyles(box, column, { ':is([surface=card], [preset=card]) &[surface=card]': { bg: 'bg' } }) },
   variants: {
     preset: {
       group: { root: mergeStyles(level('group'), ROW) },
       collection: { root: mergeStyles(level('collection'), column) },
-      card: { root: mergeStyles(level('card-md'), column, SURFACES.card, { ':is(ui-card, .ui-card__root, [preset=card]) &': { bg: 'bg' } }) },
+      // A card nested in a card takes the base fill.
+      card: { root: mergeStyles(level('card-md'), column, SURFACES.card, { '[preset=card] &': { bg: 'bg' } }) },
       panel: { root: mergeStyles(level('panel'), column, SURFACES.panel) },
       region: { root: mergeStyles(level('region'), column) },
       page: { root: mergeStyles(level('page'), column, { width: '100%', maxWidth: `${PAGE_MAX_WIDTH_REM}rem`, marginInline: 'auto' }) },
@@ -115,37 +84,55 @@ export { uiContainer as 'container' };
  * nested container is concentric with its parent, R = max(0, R_parent − p_parent). Padding: the
  * root's levels split evenly (--uc-step: (R − r_control) / levels); else a container holding
  * containers keeps the ratio (R − max(r_control, R × k), k = the theme's container-ratio); a nested
- * leaf fits its controls (R − r_control). Derived padding is also the gap unless [gap] is set.
- * resolveContainerTree is the same rule in numbers.
+ * leaf fits its controls (R − r_control); a derived padding is never below 1u. Derived padding is
+ * also the gap unless [gap] is set. An area inside the chain restarts it. resolveContainerTree is the
+ * same rule in numbers.
  */
-export const CHAIN_DEPTH = 6;
-// Chain containers: ui-container (the React Container sets the same preset attribute) and the old
-// wrapper and card tags; areas are left out. A rule for depth n matches exactly depth n (n chain
+export const CHAIN_DEPTH = 8;
+// Chain containers: ui-container and the React Container (data-ui=container); areas are left out. A rule for depth n matches exactly depth n (n chain
 // ancestors-or-self, not n + 1), so a nested container never redeclares its parent's variables.
-const C = ':is(ui-container, [data-ui=container], ui-group, ui-collection, ui-card, [data-ui=group], [data-ui=collection], [data-ui=card]):not([preset=panel], [preset=region], [preset=page])';
+const C = ':is(ui-container, [data-ui=container]):not([preset=panel], [preset=region], [preset=page])';
+// Areas (square): the panel, region and page presets.
+const AREA = ':is(ui-container, [data-ui=container]):is([preset=panel], [preset=region], [preset=page])';
 const chain = (n: number) => Array.from({ length: n }, () => C).join(' ');
 const depthSel = (n: number) => `${chain(n)}:not(${chain(n + 1)})`;
 const ratio = (r: string) => `max(${CONTROL_RADIUS}, calc(${r} * var(--ui-container-ratio)))`;
-export const containerChain = Object.fromEntries(Array.from({ length: CHAIN_DEPTH }, (_, i) => i + 1).flatMap((n) => {
-  const r = `var(--uc-r${n})`, p = `var(--uc-p${n})`;
-  const leaf = n === 1 ? 'calc(var(--cp) * var(--u))' : `max(0px, calc(${r} - ${CONTROL_RADIUS}))`;
-  return [
-    [depthSel(n), {
-      [`--uc-r${n}`]: n === 1 ? 'var(--cr)' : `max(0px, calc(var(--uc-r${n - 1}) - var(--uc-p${n - 1})))`,
-      [`--uc-p${n}`]: `var(--uc-step, ${leaf})`,
-      // The root's levels (D): every level below takes the same step; a root without levels clears it.
-      ...(n === 1 ? { '--uc-step': 'initial' } : {}),
-      borderRadius: r, padding: `max(0px, calc(${p} - var(--b)))`,
-      ...(n > 1 ? { '&:not([gap])': { gap: p } } : {}),
-    }],
-    // A container holding containers keeps the ratio for them (C), unless levels set the step.
-    [`${depthSel(n)}:has(${C})`, { [`--uc-p${n}`]: `var(--uc-step, calc(${r} - ${ratio(r)}))`, '&:not([gap])': { gap: p } }],
-    ...(n === 1 ? Array.from({ length: CHAIN_DEPTH }, (_, j) => j + 1).map((L) => [`${depthSel(1)}[levels="${L}"]`, { '--uc-step': `max(0px, calc((var(--uc-r1) - ${CONTROL_RADIUS}) / ${L}))`, '&:not([gap])': { gap: 'var(--uc-p1)' } }]) : []),
-  ];
-}));
+/** The smallest derived padding (1u): a deep or tight tree never collapses to nothing, or below zero. */
+const FLOOR = 'var(--u)';
+// An area inside the chain restarts it: the area sets --uc-a<n>: 1 for every depth, so the first chain
+// container below it (at any depth n) reads --uc-a<n−1> = 1 and takes its own preset geometry, as a
+// root; each chain container sets its own --uc-a<n>: 0 for the containers under it. An area also
+// clears a root's levels step.
+const fresh = (n: number) => `var(--uc-a${n - 1}, 0)`;
+const mixFresh = (n: number, asRoot: string, nested: string) => `calc(${fresh(n)} * ${asRoot} + (1 - ${fresh(n)}) * ${nested})`;
 
-/** The CSS-only tags' rules: the same recipes, keyed on ui-<level> (card variants on [padding=…]), ui-container, and the nesting chain. */
+export const containerChain = Object.fromEntries([
+  [AREA, { ...Object.fromEntries(Array.from({ length: CHAIN_DEPTH }, (_, i) => [`--uc-a${i}`, '1'])), '--uc-step': 'initial' }],
+  ...Array.from({ length: CHAIN_DEPTH }, (_, i) => i + 1).flatMap((n) => {
+    const r = `var(--uc-r${n})`, p = `var(--uc-p${n})`;
+    const ladder = 'calc(var(--cp) * var(--u))';
+    const leaf = n === 1 ? ladder : mixFresh(n, ladder, `max(${FLOOR}, calc(${r} - ${CONTROL_RADIUS}))`);
+    return [
+      [depthSel(n), {
+        [`--uc-r${n}`]: n === 1 ? 'var(--cr)' : mixFresh(n, 'var(--cr)', `max(0px, calc(var(--uc-r${n - 1}) - var(--uc-p${n - 1})))`),
+        [`--uc-p${n}`]: `var(--uc-step, ${leaf})`,
+        [`--uc-a${n}`]: '0',
+        // The root's levels (D): every level below takes the same step; a root without levels clears it.
+        ...(n === 1 ? { '--uc-step': 'initial' } : {}),
+        borderRadius: r, padding: `max(0px, calc(${p} - var(--b)))`,
+        ...(n > 1 ? { '&:not([gap])': { gap: p } } : {}),
+      }],
+      // A container holding containers keeps the ratio for them (C), unless levels set the step.
+      [`${depthSel(n)}:has(${C})`, { [`--uc-p${n}`]: `var(--uc-step, max(${FLOOR}, calc(${r} - ${ratio(r)})))`, '&:not([gap])': { gap: p } }],
+      ...(n === 1 ? Array.from({ length: CHAIN_DEPTH }, (_, j) => j + 1).map((L) => [`${depthSel(1)}[levels="${L}"]`, { '--uc-step': `max(0px, calc((var(--uc-r1) - ${CONTROL_RADIUS}) / ${L}))`, '&:not([gap])': { gap: 'var(--uc-p1)' } }]) : []),
+    ];
+  }),
+]);
+
+/** The CSS-only tag's rules: the recipe keyed on ui-container and [data-ui=container], then the nesting chain. */
 export const containerTags = mergeStyles(
-  ...[group, collection, card, panel, region, page, uiContainer].map((r) => tagRules(r.className!, r)),
+  // ui-container and the React Container (<div data-ui="container">) share these rules, so both take
+  // part in the nesting chain in the same layer (a recipe class would sit in a later layer and win).
+  tagRules(':is(ui-container, [data-ui=container])', uiContainer),
   containerChain,
 );

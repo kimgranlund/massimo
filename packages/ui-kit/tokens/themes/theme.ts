@@ -35,7 +35,7 @@ export interface Theme {
   typography?: { parameters?: Numbers; sources?: { family: string; url: string }[]; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
   /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped, nearest step overridden. */
-  color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: RoleName })[] };
+  color?: { parameters?: Numbers; spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: RoleName })[] };
   motion?: { parameters?: Numbers };
   icons?: string;
   scheme?: ThemeScheme;
@@ -52,10 +52,10 @@ export type ThemeDomain = (typeof THEME_DOMAINS)[number];
 
 /** Every parameter a theme sets, flat (the input the resolvers, CSS variables and lint read). */
 export const themeParameters = (t: Partial<Theme>): Numbers =>
-  ({ ...t.geometry?.parameters, ...t.typography?.parameters, ...t.motion?.parameters });
+  ({ ...t.geometry?.parameters, ...t.typography?.parameters, ...t.color?.parameters, ...t.motion?.parameters });
 /** Flat parameters back into their parts (what the jig's Copy writes). Empty parts are left out. */
-export function partsFromParameters(p: Numbers): Pick<Theme, 'geometry' | 'typography' | 'motion'> {
-  const out: Pick<Theme, 'geometry' | 'typography' | 'motion'> = {};
+export function partsFromParameters(p: Numbers): Pick<Theme, 'geometry' | 'typography' | 'color' | 'motion'> {
+  const out: Pick<Theme, 'geometry' | 'typography' | 'color' | 'motion'> = {};
   for (const d of PARAM_DOMAINS) {
     const picked = Object.fromEntries(domainParams(d).filter((k) => p[k] !== undefined).map((k) => [k, p[k]]));
     if (Object.keys(picked).length) out[d] = { parameters: picked };
@@ -84,6 +84,8 @@ export function migrateTheme(input: unknown): unknown {
   } else if (parameters !== undefined) out.parameters = parameters;
   if (Object.keys(unknown).length) out.parameters = unknown;
   if (typography !== undefined) out.typography = isObject(typography) ? { ...(out.typography ?? {}), ...typography } : typography;
+  // A v1 color section joins the color parameters (emphasis) moved above.
+  if (isObject(rest.color) && out.color?.parameters) out.color = { ...rest.color, parameters: out.color.parameters };
   return out;
 }
 
@@ -134,7 +136,8 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.color !== undefined) {
     if (!isObject(input.color)) err('color', 'must be an object');
     else {
-      for (const k of Object.keys(input.color)) if (k !== 'spectrum' && k !== 'roles' && k !== 'endpoints' && k !== 'anchors') err(`color.${k}`, 'unknown section');
+      for (const k of Object.keys(input.color)) if (k !== 'parameters' && k !== 'spectrum' && k !== 'roles' && k !== 'endpoints' && k !== 'anchors') err(`color.${k}`, 'unknown section');
+      if (input.color.parameters !== undefined) checkParameters('color', input.color.parameters);
       if (input.color.anchors !== undefined) {
         if (!Array.isArray(input.color.anchors)) err('color.anchors', 'must be a list');
         else input.color.anchors.forEach((raw: unknown, i: number) => {
@@ -245,6 +248,7 @@ export function themeJsonSchema() {
       icons: { type: 'string', pattern: ICON_SET_NAME.source },
       scheme: { enum: [...SCHEMES] },
       color: strict({
+        parameters: params('color'),
         spectrum: strict(Object.fromEntries(SPECTRUM_FIELDS.map((f) => [f.key, field(f)]))),
         roles: strict(Object.fromEntries(ROLE_NAMES.map((r) => [r, { type: 'string', pattern: FAMILY_NAME.source }]))),
         anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ROLE_NAMES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' }, dark: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$', description: 'The anchor\'s own dark-scheme color, placed in the dark ramp.' } }, { required: ['role', 'value'] }) },

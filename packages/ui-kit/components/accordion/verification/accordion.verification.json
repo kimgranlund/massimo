@@ -18,7 +18,7 @@
     },
     {
       "path": "components/accordion/accordion.manifest.json",
-      "sha256": "ee2e9837f23d46d77c204a367e67b66cdf82803b685b2c3e9a92a639c545a29c"
+      "sha256": "21fed9a5ed9e45fe8830f17ee3829a9b993e67a3db7f498665004131364064b8"
     },
     {
       "path": "components/collapsible/collapsible.element.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"accordion\" test/disclosure.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Accordion\" test/disclosure.test.ts"

@@ -113,7 +113,7 @@
         {
           "when": "A whole page.",
           "reason": "The page scrolls with the browser's own scrollbar; a scroll area is for a bounded region inside it.",
-          "useInstead": "component:page"
+          "useInstead": "component:container"
         }
       ],
       "searchTerms": [

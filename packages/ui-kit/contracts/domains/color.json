@@ -13,7 +13,8 @@
   ],
   "parameterGroups": [
     "spectrum",
-    "roles"
+    "roles",
+    "emphasis"
   ],
   "constraints": [
     "vibrancy.text-contrast",
@@ -183,6 +184,39 @@
           "means": "dark unless the reader switches"
         }
       ]
+    },
+    {
+      "id": "emphasis",
+      "concept": "emphasis",
+      "title": "Emphasis",
+      "reads": "how strongly a selection shows",
+      "default": "balanced",
+      "inputs": [
+        "emphasis"
+      ],
+      "values": [
+        {
+          "name": "quiet",
+          "set": {
+            "emphasis": 0
+          },
+          "means": "a muted neutral fill; the primary stays for actions"
+        },
+        {
+          "name": "balanced",
+          "set": {
+            "emphasis": 1
+          },
+          "means": "the page-tone chip in light, the primary solid in dark (the default)"
+        },
+        {
+          "name": "loud",
+          "set": {
+            "emphasis": 2
+          },
+          "means": "a primary tint in light: selection carries the brand"
+        }
+      ]
     }
   ],
   "specs": [
@@ -216,6 +250,7 @@
   "searchTerms": [
     "adaptivity",
     "analogous",
+    "balanced",
     "both",
     "color",
     "complementary",
@@ -223,9 +258,11 @@
     "emphasis",
     "harmony",
     "light-first",
+    "loud",
     "muted",
     "natural",
     "neutral",
+    "quiet",
     "split",
     "strong",
     "subtle",
@@ -237,6 +274,7 @@
     "vivid"
   ],
   "themePartFields": [
+    "parameters",
     "spectrum",
     "roles",
     "endpoints",

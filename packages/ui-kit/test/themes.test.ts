@@ -120,7 +120,7 @@ test('typography.colors maps a type role to a text color: validated, emitted as 
 test('every theme field is wired: schema, validator, theme CSS, and the jig Copy and Load', async () => {
   const schema = JSON.parse(themeJsonSchemaText());
   const app = readFileSync(new URL('../../../apps/studio/src/studio/App.tsx', import.meta.url), 'utf8');
-  const sections: Record<string, string[]> = { geometry: ['parameters'], typography: ['parameters', 'sources', 'faces', 'voices', 'colors'], color: ['spectrum', 'roles', 'endpoints', 'anchors'], motion: ['parameters'] };
+  const sections: Record<string, string[]> = { geometry: ['parameters'], typography: ['parameters', 'sources', 'faces', 'voices', 'colors'], color: ['parameters', 'spectrum', 'roles', 'endpoints', 'anchors'], motion: ['parameters'] };
   for (const [section, fields] of Object.entries(sections)) {
     assert.deepEqual(Object.keys(schema.properties[section].properties).sort(), [...fields].sort(), `${section}: the schema lists exactly its fields`);
     for (const f of fields) {
@@ -144,7 +144,7 @@ test('theme parts: every parameter has exactly one domain, and the parts round-t
   const all = Object.keys(PARAMS);
   const p = Object.fromEntries(all.map((k) => [k, (PARAMS as any)[k].default]));
   const parts = partsFromParameters(p);
-  assert.deepEqual(Object.keys(parts).sort(), ['geometry', 'motion', 'typography']);
+  assert.deepEqual(Object.keys(parts).sort(), ['color', 'geometry', 'motion', 'typography']);
   assert.deepEqual(themeParameters(parts), p, 'themeParameters(partsFromParameters(p)) = p');
   assert.equal(Object.values(parts).reduce((n, part) => n + Object.keys(part!.parameters!).length, 0), all.length, 'no parameter in two parts');
   assert.deepEqual(Object.keys(parts.typography!.parameters!).sort(), ['type-ratio', 'type-rhythm']);

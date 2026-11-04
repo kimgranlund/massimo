@@ -30,7 +30,7 @@ test('descriptors: every scale is well formed, its inputs are disjoint from ever
 });
 
 test('descriptors: the default value of every scale is the kit default, so the default theme reads as all defaults', () => {
-  const kit = (i: string) => i === 'scheme' ? 'auto' : i.startsWith('spectrum.') ? SPECTRUM_DEFAULTS[i.slice(9)] : defaultParams[i as keyof typeof defaultParams];
+  const kit = (i: string) => i === 'scheme' ? 'auto' : i === 'icons' ? 'phosphor' : i.startsWith('spectrum.') ? SPECTRUM_DEFAULTS[i.slice(9)] : defaultParams[i as keyof typeof defaultParams];
   for (const s of scales) {
     const d = s.values.find((v) => v.name === s.default)!;
     for (const [i, v] of Object.entries(d.set)) assert.equal(v, kit(i), `${s.id}.${s.default}: ${i} is the kit default`);

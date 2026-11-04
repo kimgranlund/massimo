@@ -18,7 +18,7 @@
     },
     {
       "path": "components/scroll-area/scroll-area.manifest.json",
-      "sha256": "e31e25b13ce992729d16e40a623b1c898fb9ce3a03942a5c9e8e6e59b87250a4"
+      "sha256": "b189998cba2711785350986f85e2250d90fa17bfad8ae34f6f2b12d18ea28bd2"
     },
     {
       "path": "dom/scroll-area.ts",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/scroll-area.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/scroll-area.test.ts"

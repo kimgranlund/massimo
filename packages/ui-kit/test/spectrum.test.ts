@@ -82,15 +82,16 @@ test('roles: brand, feedback and data 1–6 resolve to generated families and em
   assert.equal(resolveRoles(data, { critical: 'h140' }).critical !== roles.critical, true, 'any role can be repointed');
 });
 
-test('selected option roles: neutral 1 / 12 in light, primary solid / contrast text in dark', async () => {
-  const { generateSpectrum, resolveRoles, roleVariables } = await import('../tokens/colors/spectrum/index.ts');
+test('selected option roles follow the emphasis: balanced is neutral 1 / 12 in light, the primary solid in dark', async () => {
+  const { generateSpectrum, resolveRoles, roleVariables, selectionVars } = await import('../tokens/colors/spectrum/index.ts');
   const data = generateSpectrum({});
   const r = resolveRoles(data);
   const light = roleVariables(data, r, 'light'), dark = roleVariables(data, r, 'dark');
-  assert.equal(light['--colors-bg-selected'], `var(--colors-spectrum-${r.neutral}-1)`);
-  assert.equal(light['--colors-fg-selected'], `var(--colors-spectrum-${r.neutral}-12)`);
-  assert.equal(dark['--colors-bg-selected'], `var(--colors-spectrum-${r.primary}-9)`, 'dark switches family to primary');
-  assert.equal(dark['--colors-fg-selected'], dark['--colors-fg-on-solid']);
+  assert.equal(light['--colors-bg-selected'], selectionVars('light')['bg-selected']);
+  assert.match(light['--colors-bg-selected'], /var\(--colors-neutral-3\), var\(--colors-neutral-1\) calc\(clamp\(0, var\(--ui-emphasis, 1\), 1\) \* 100%\)\), var\(--colors-primary-3\)/);
+  assert.equal(light['--colors-fg-selected'], 'var(--colors-neutral-12)');
+  assert.match(dark['--colors-bg-selected'], /var\(--colors-neutral-4\), var\(--colors-primary-9\)/, 'dark: neutral 4 when quiet, else the primary solid');
+  assert.match(dark['--colors-fg-selected'], /var\(--colors-neutral-12\), var\(--colors-fg-on-solid\)/);
 });
 
 test('one color vocabulary: every brand and feedback role has the same steps, no aliases', async () => {
