@@ -86,12 +86,12 @@ test('no element module statically reaches the theme engine or the spectrum runt
   assert.deepEqual(reach, []);
 });
 
-test('the studio shell loads the spectrum engine on demand, not with its first paint', () => {
+test('the studio shell keeps the spectrum engine in its worker', () => {
   const graph = (file: string, seen = new Set<string>()): Set<string> => {
     if (seen.has(file) || !/\.(ts|tsx|json)$/.test(file)) return seen;
     seen.add(file);
     if (file.endsWith('.json')) return seen;
-    // Static imports only: import() is how the shell defers the engine.
+    // Static imports only: the engine runs in spectrum.worker.ts, which the shell starts by URL.
     for (const m of readFileSync(file, 'utf8').matchAll(/^(?:import|export)\s+(?!type\b)(?:[\w*{}\s,$]+?\s+from\s+)?'([^']+)'/gm)) {
       const spec = m[1];
       if (spec.startsWith('.')) graph(join(file, '..', spec), seen);

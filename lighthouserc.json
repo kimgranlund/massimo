@@ -73,13 +73,13 @@
             "resource-summary:script:size": [
               "error",
               {
-                "maxNumericValue": 300000
+                "maxNumericValue": 220000
               }
             ],
             "categories:performance": [
-              "warn",
+              "error",
               {
-                "minScore": 0.7
+                "minScore": 0.9
               }
             ],
             "categories:accessibility": [
@@ -104,6 +104,12 @@
               "error",
               {
                 "maxNumericValue": 0.1
+              }
+            ],
+            "total-blocking-time": [
+              "error",
+              {
+                "maxNumericValue": 200
               }
             ]
           }

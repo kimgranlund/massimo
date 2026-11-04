@@ -22,6 +22,7 @@ import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../pr
 import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens/typography/resolve';
 import { APPLY_BRAND, ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
 import { navigate, parseHash, useHashRoute } from '../pages/route.ts';
+import { generateSpectrumOff, lintThemeOff } from './engine.ts';
 import { HomePage } from '../pages/Home.tsx';
 import { FAMILIES, isFamily } from '../pages/families.ts';
 import { loadFontSource } from './fonts.ts';
@@ -45,8 +46,6 @@ const PAGE_MODULES = {
 } satisfies Record<Exclude<Route, 'home'>, () => Promise<unknown>>;
 const firstRoute = parseHash(location.hash).route;
 if (firstRoute !== 'home') void PAGE_MODULES[firstRoute]();
-// The color engine downloads beside it too; it first runs in the debounced effect below.
-void import('./spectrum.ts');
 const ComponentsPage = lazy(() => PAGE_MODULES.components().then((m) => ({ default: m.ComponentsPage })));
 const ContainersPage = lazy(() => PAGE_MODULES.containers().then((m) => ({ default: m.ContainersPage })));
 const ElevationPage = lazy(() => PAGE_MODULES.elevation().then((m) => ({ default: m.ElevationPage })));
@@ -166,12 +165,11 @@ export function App() {
 
   // Spectrum generation, debounced: it takes ~300ms, so it runs once input pauses.
   useEffect(() => {
-    // The engine (and its 264 KB runtime) loads here, after first paint, not with the shell.
+    // The engine (and its 264 KB runtime) runs in a worker, so generating never blocks the panel.
     let live = true;
     const t = setTimeout(() => {
-      import('./spectrum.ts').then(({ buildSpectrum }) => {
+      generateSpectrumOff(spectrumOverrides(spectrum), roles, anchors).then((out) => {
         if (!live) return;
-        const out = buildSpectrum(spectrumOverrides(spectrum), roles, anchors);
         setGenerated(out.payload);
         setFamilyNames({ accents: out.accents, neutrals: out.neutrals });
       }).catch((err) => setStatus(`Colors not generated: ${err}`));
@@ -242,7 +240,7 @@ export function App() {
   // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
   const [findings, setFindings] = useState<Finding[]>([]);
   useEffect(() => {
-    const t = setTimeout(() => { import('@massimo/ui-kit/tokens/themes/lint').then(({ lintTheme }) => setFindings(lintTheme(themeObject()).findings)).catch((err) => setStatus(`Lint failed: ${err}`)); }, 400);
+    const t = setTimeout(() => { lintThemeOff(themeObject()).then(setFindings).catch((err) => setStatus(`Lint failed: ${err}`)); }, 400);
     return () => clearTimeout(t);
   }, [params, icons, scheme, spectrum, roles, endpoints, anchors, faces, voices, typeColors]);
   const count = (sev: Finding['severity']) => findings.filter((f) => f.severity === sev).length;

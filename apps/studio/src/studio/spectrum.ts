@@ -1,4 +1,4 @@
-// Spectrum generation for the jig (~300ms per run, so the caller debounces).
+// Spectrum generation for the jig (~300ms per run, so the caller debounces). Runs in spectrum.worker.ts.
 import { anchoredSpectrum, generateSpectrum, resolveRoles, spectrumCSS, spectrumDiagnostics, families, ramps } from '@massimo/ui-kit/spectrum';
 import { type Roles } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
 import { type ColorAnchor } from '@massimo/ui-kit/tokens/colors/spectrum/anchors';
