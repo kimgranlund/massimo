@@ -108,6 +108,8 @@
     "geometry:csv": "node scripts/geometry-csv.ts",
     "tokens:dtcg": "node scripts/tokens-dtcg.ts",
     "theme:schema": "node scripts/theme-schema.ts",
+    "brand:schema": "node scripts/brand.ts schema",
+    "brand": "node scripts/brand.ts",
     "theme:lint": "node scripts/theme-lint.ts",
     "spectrum:defaults": "node scripts/spectrum-defaults.ts",
     "registry": "node scripts/registry.ts",

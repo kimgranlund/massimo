@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "night-signal",
+  "subject": {
+    "name": "Night Signal",
+    "audience": "people planning a weekend at an electronic music festival",
+    "primaryJob": "find who plays where, now, on a phone in the dark",
+    "kind": "campaign",
+    "sources": [
+      "stage lighting rigs",
+      "wristband colors",
+      "printed running orders"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "bauhaus",
+      "relation": "reinterpret",
+      "principles": [
+        "type as construction",
+        "primary forms"
+      ]
+    },
+    "secondary": {
+      "ref": "memphis",
+      "relation": "react-against"
+    }
+  },
+  "territories": [
+    {
+      "name": "Festival dusk",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "The hour the stages light up: haze, moving heads, wristbands glowing under UV.",
+      "materials": [
+        "haze",
+        "LED",
+        "printed card"
+      ],
+      "light": "colored point sources in haze"
+    }
+  ],
+  "muse": {
+    "kind": "person",
+    "name": "Sonia Delaunay",
+    "take": "rhythm from overlapping color discs",
+    "leave": "the painterly texture"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "stage magenta",
+        "value": "#d1187a",
+        "role": "primary"
+      },
+      {
+        "name": "wristband cyan",
+        "value": "#1aa3c9",
+        "role": "secondary"
+      },
+      {
+        "name": "UV violet",
+        "value": "#6b3fd6",
+        "role": "data1"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "triadic"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "family": "Space Grotesk",
+        "descriptor": "geometric",
+        "source": "google",
+        "weights": [
+          500,
+          700
+        ]
+      },
+      "body": {
+        "family": "Work Sans",
+        "descriptor": "grotesque",
+        "source": "google",
+        "weights": [
+          400,
+          600
+        ]
+      }
+    }
+  },
+  "form": {
+    "scale": "lg",
+    "curvature": "round",
+    "line": "borderless"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "voice": {
+    "tone": [
+      "confident",
+      "playful"
+    ],
+    "samples": {
+      "action": "Add to my night",
+      "confirmation": "Saved. We will ping you 15 minutes before.",
+      "error": "No signal here. Your schedule is saved on this phone."
+    }
+  },
+  "iconography": {
+    "set": "tabler",
+    "weight": "bold"
+  },
+  "signature": {
+    "concept": "vibrancy",
+    "scale": "harmony",
+    "reason": "Delaunay's overlapping discs: three stage colors in rhythm"
+  },
+  "avoid": [
+    "curvature.pill"
+  ],
+  "rationale": {
+    "form.scale": "thumbs in the dark need larger targets",
+    "form.curvature": "discs and stage lenses",
+    "form.line": "light, not outlines, draws edges at night",
+    "color.character.harmony": "three stage colors",
+    "movement": "the stages are moving",
+    "adaptivity": "used at night, in a crowd"
+  }
+}

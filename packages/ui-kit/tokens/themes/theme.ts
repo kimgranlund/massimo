@@ -42,7 +42,7 @@ export interface Theme {
   /** L1 character: a value per descriptor scale (DESCRIPTORS; themeFromCharacter, describeTheme). */
   character?: Record<string, string>;
   /** Who set a value and why, keyed by its path (e.g. "geometry.parameters.radius-scale"). */
-  provenance?: Record<string, { source: 'hand' | 'character' | 'intent'; reason?: string }>;
+  provenance?: Record<string, { source: 'hand' | 'character' | 'intent' | 'brand'; reason?: string }>;
 }
 /** The four domain parts of a theme (the parts a brand hydrates). */
 export const THEME_DOMAINS = ['geometry', 'typography', 'color', 'motion'] as const;
@@ -249,7 +249,7 @@ export function themeJsonSchema() {
       motion: strict({ parameters: params('motion') }, { description: 'Duration and bounce multipliers, springs, intents.' }),
       intent: { type: 'object' },
       character: strict(Object.fromEntries(Object.values(DESCRIPTORS).map((d) => [d.id, { enum: d.values.map((v) => v.name), description: `${d.title}: ${d.reads}` }])), { description: 'L1 character: one value per descriptor scale (contracts/domains/<domain>.json descriptors).' }),
-      provenance: { type: 'object', additionalProperties: strict({ source: { enum: ['hand', 'character', 'intent'] }, reason: { type: 'string' } }, { required: ['source'] }) },
+      provenance: { type: 'object', additionalProperties: strict({ source: { enum: ['hand', 'character', 'intent', 'brand'] }, reason: { type: 'string' } }, { required: ['source'] }) },
     }, { required: ['schemaVersion', 'name'] }),
   };
 }

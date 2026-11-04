@@ -1,0 +1,141 @@
+{
+  "$schema": "../../../contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "fjord-ledger",
+  "subject": {
+    "name": "Fjord Ledger",
+    "audience": "bookkeepers at small Nordic shipping firms",
+    "primaryJob": "reconcile accounts quickly and without doubt",
+    "kind": "tool",
+    "sources": [
+      "harbor signal flags",
+      "tide tables",
+      "ledger ruling lines"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "the grid organizes the ledger",
+        "content before ornament"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Winter harbor",
+      "ref": "harbor",
+      "primary": true,
+      "description": "A working harbor in January: low sun, painted hulls, signal flags against grey water.",
+      "materials": [
+        "painted steel",
+        "rope",
+        "wet stone"
+      ],
+      "light": "low, cold, from the side",
+      "outOfBounds": [
+        "vibrancy.vivid"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a ship's tide table",
+    "take": "dense numbers made calm by strict ruling",
+    "leave": "the nautical ornament"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "hull navy",
+        "value": "#1f3a5f",
+        "role": "primary"
+      },
+      {
+        "name": "signal red",
+        "value": "#c8102e",
+        "role": "critical"
+      },
+      {
+        "name": "harbor grey",
+        "value": "#5b6670",
+        "role": "neutral"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "neutral": "subtle"
+    }
+  },
+  "type": {
+    "faces": {
+      "body": {
+        "family": "Inter Tight",
+        "descriptor": "neo-grotesque",
+        "source": "google",
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "utility": {
+        "family": "IBM Plex Mono",
+        "descriptor": "mono",
+        "source": "google",
+        "weights": [
+          400,
+          500
+        ]
+      }
+    },
+    "character": {
+      "type-scale": "gentle"
+    }
+  },
+  "form": {
+    "density": "compact",
+    "space": "tight",
+    "curvature": "crisp",
+    "line": "hairline"
+  },
+  "movement": "still",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "precise",
+      "plain",
+      "calm"
+    ],
+    "samples": {
+      "action": "Reconcile",
+      "confirmation": "Ledger reconciled: 214 entries match.",
+      "error": "Two entries do not match the bank statement. Check entries 88 and 91."
+    }
+  },
+  "iconography": {
+    "set": "lucide",
+    "weight": "light"
+  },
+  "signature": {
+    "concept": "density",
+    "scale": "density",
+    "reason": "a bookkeeper sees a whole month without scrolling, like a tide table"
+  },
+  "avoid": [
+    "curvature.pill",
+    "movement.playful"
+  ],
+  "rationale": {
+    "form.density": "tide tables: dense but calm",
+    "form.space": "ruling lines, not white space, separate rows",
+    "form.curvature": "cut steel plate, not pebbles",
+    "form.line": "ledger ruling",
+    "color.character.neutral": "grey water with a hint of navy",
+    "type.character.type-scale": "a quiet hierarchy for a working tool",
+    "movement": "nothing moves on a ledger page",
+    "adaptivity": "harbor offices work day and night"
+  }
+}

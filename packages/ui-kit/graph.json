@@ -2394,6 +2394,94 @@
         "meter"
       ]
     },
+    "grounding:arts-and-crafts": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/3",
+      "availability": "implemented",
+      "title": "Arts and Crafts",
+      "searchTerms": [
+        "arts-and-crafts",
+        "arts and crafts",
+        "britain"
+      ]
+    },
+    "grounding:bauhaus": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/1",
+      "availability": "implemented",
+      "title": "Bauhaus",
+      "searchTerms": [
+        "bauhaus",
+        "bauhaus",
+        "germany"
+      ]
+    },
+    "grounding:brutalism": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/5",
+      "availability": "implemented",
+      "title": "Brutalism (web and architecture)",
+      "searchTerms": [
+        "brutalism",
+        "brutalism (web and architecture)",
+        "uk, global"
+      ]
+    },
+    "grounding:californian-modernism": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/7",
+      "availability": "implemented",
+      "title": "Californian mid-century modernism",
+      "searchTerms": [
+        "californian-modernism",
+        "californian mid-century modernism",
+        "california"
+      ]
+    },
+    "grounding:memphis": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/4",
+      "availability": "implemented",
+      "title": "Memphis Group",
+      "searchTerms": [
+        "memphis",
+        "memphis group",
+        "italy"
+      ]
+    },
+    "grounding:mingei": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/2",
+      "availability": "implemented",
+      "title": "Mingei (Japanese folk craft)",
+      "searchTerms": [
+        "mingei",
+        "mingei (japanese folk craft)",
+        "japan"
+      ]
+    },
+    "grounding:scandinavian-functionalism": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/6",
+      "availability": "implemented",
+      "title": "Scandinavian functionalism",
+      "searchTerms": [
+        "scandinavian-functionalism",
+        "scandinavian functionalism",
+        "denmark, sweden, finland, norway"
+      ]
+    },
+    "grounding:swiss-international": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/0",
+      "availability": "implemented",
+      "title": "Swiss International Style",
+      "searchTerms": [
+        "swiss-international",
+        "swiss international style",
+        "switzerland"
+      ]
+    },
     "parameter:border": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/border",
@@ -4787,6 +4875,76 @@
       "searchTerms": [
         "fill",
         "indicator"
+      ]
+    },
+    "territory:archive": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/4",
+      "availability": "implemented",
+      "title": "Archive",
+      "searchTerms": [
+        "archive",
+        "archive"
+      ]
+    },
+    "territory:botanical": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/2",
+      "availability": "implemented",
+      "title": "Botanical garden",
+      "searchTerms": [
+        "botanical",
+        "botanical garden"
+      ]
+    },
+    "territory:desert": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/6",
+      "availability": "implemented",
+      "title": "High desert",
+      "searchTerms": [
+        "desert",
+        "high desert"
+      ]
+    },
+    "territory:harbor": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/0",
+      "availability": "implemented",
+      "title": "Harbor",
+      "searchTerms": [
+        "harbor",
+        "harbor"
+      ]
+    },
+    "territory:laboratory": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/5",
+      "availability": "implemented",
+      "title": "Laboratory",
+      "searchTerms": [
+        "laboratory",
+        "laboratory"
+      ]
+    },
+    "territory:nocturne": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/3",
+      "availability": "implemented",
+      "title": "Night city",
+      "searchTerms": [
+        "nocturne",
+        "night city"
+      ]
+    },
+    "territory:workshop": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/1",
+      "availability": "implemented",
+      "title": "Workshop",
+      "searchTerms": [
+        "workshop",
+        "workshop"
       ]
     },
     "tokens:borders-shadows": {
@@ -12736,6 +12894,481 @@
       "from": "descriptor:type-scale.dramatic",
       "relation": "memberOf",
       "to": "descriptor:type-scale"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:curvature.crisp"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:type-scale.dramatic"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:neutral.true"
+    },
+    {
+      "from": "grounding:swiss-international",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:curvature.square"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:line.outlined"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:harmony.triadic"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:type-scale.dramatic"
+    },
+    {
+      "from": "grounding:bauhaus",
+      "relation": "implies",
+      "to": "descriptor:movement.lively"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:corner.squircle"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:type-scale.gentle"
+    },
+    {
+      "from": "grounding:mingei",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:type-scale.classic"
+    },
+    {
+      "from": "grounding:arts-and-crafts",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:curvature.round"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:line.outlined"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:elevation.floating"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:harmony.split"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:type-scale.dramatic"
+    },
+    {
+      "from": "grounding:memphis",
+      "relation": "implies",
+      "to": "descriptor:movement.playful"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:curvature.square"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:line.outlined"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:space.tight"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:neutral.true"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:type-scale.flat"
+    },
+    {
+      "from": "grounding:brutalism",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:type-scale.gentle"
+    },
+    {
+      "from": "grounding:scandinavian-functionalism",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:curvature.round"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:harmony.analogous"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:type-scale.classic"
+    },
+    {
+      "from": "grounding:californian-modernism",
+      "relation": "implies",
+      "to": "descriptor:movement.lively"
+    },
+    {
+      "from": "territory:harbor",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "territory:harbor",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "territory:harbor",
+      "relation": "implies",
+      "to": "descriptor:curvature.crisp"
+    },
+    {
+      "from": "territory:harbor",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "territory:workshop",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "territory:workshop",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "territory:workshop",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "territory:workshop",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "territory:botanical",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "territory:botanical",
+      "relation": "implies",
+      "to": "descriptor:harmony.analogous"
+    },
+    {
+      "from": "territory:botanical",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "territory:botanical",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "territory:botanical",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "territory:nocturne",
+      "relation": "implies",
+      "to": "descriptor:adaptivity.dark-first"
+    },
+    {
+      "from": "territory:nocturne",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "territory:nocturne",
+      "relation": "implies",
+      "to": "descriptor:elevation.floating"
+    },
+    {
+      "from": "territory:nocturne",
+      "relation": "implies",
+      "to": "descriptor:movement.lively"
+    },
+    {
+      "from": "territory:archive",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "territory:archive",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "territory:archive",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "territory:archive",
+      "relation": "implies",
+      "to": "descriptor:type-scale.classic"
+    },
+    {
+      "from": "territory:archive",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
+    },
+    {
+      "from": "territory:laboratory",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "territory:laboratory",
+      "relation": "implies",
+      "to": "descriptor:neutral.true"
+    },
+    {
+      "from": "territory:laboratory",
+      "relation": "implies",
+      "to": "descriptor:curvature.crisp"
+    },
+    {
+      "from": "territory:laboratory",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "territory:laboratory",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "territory:laboratory",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
+    },
+    {
+      "from": "territory:desert",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "territory:desert",
+      "relation": "implies",
+      "to": "descriptor:harmony.analogous"
+    },
+    {
+      "from": "territory:desert",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "territory:desert",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "territory:desert",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
     }
   ]
 }

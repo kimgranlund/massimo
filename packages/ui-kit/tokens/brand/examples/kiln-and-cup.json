@@ -1,0 +1,139 @@
+{
+  "$schema": "../../../contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "kiln-and-cup",
+  "subject": {
+    "name": "Kiln & Cup",
+    "audience": "people who buy handmade tableware online",
+    "primaryJob": "choose a piece and trust how it will feel in the hand",
+    "kind": "product",
+    "sources": [
+      "wood-fired glazes",
+      "studio shelves of drying pots",
+      "the potter's chop mark"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "mingei",
+      "relation": "reinterpret",
+      "principles": [
+        "beauty in everyday objects",
+        "imperfection as part of the form"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Studio kiln",
+      "ref": "workshop",
+      "primary": true,
+      "description": "A potter's studio the morning after a firing: ash-glazed pots on wooden boards, kiln heat, quiet.",
+      "materials": [
+        "ash glaze",
+        "oiled wood",
+        "raw clay"
+      ],
+      "light": "soft, from a north window",
+      "character": {
+        "corner": "squircle"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "Lucie Rie's porcelain bowls",
+    "take": "a thin, confident rim and tonal glaze",
+    "leave": "her mid-century palette"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "ash glaze",
+        "value": "#6f7d5c",
+        "role": "primary"
+      },
+      {
+        "name": "indigo glaze",
+        "value": "#33507a",
+        "role": "secondary"
+      },
+      {
+        "name": "clay",
+        "value": "#7a6a5c",
+        "role": "neutral"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "muted",
+      "neutral": "tinted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "family": "Fraunces",
+        "descriptor": "serif",
+        "source": "google",
+        "weights": [
+          400,
+          600
+        ]
+      },
+      "body": {
+        "family": "Source Sans 3",
+        "descriptor": "humanist",
+        "source": "google",
+        "weights": [
+          400,
+          600
+        ]
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    }
+  },
+  "form": {
+    "curvature": "soft",
+    "space": "airy",
+    "elevation": "layered"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "warm",
+      "plain",
+      "candid"
+    ],
+    "samples": {
+      "action": "Add to cart",
+      "confirmation": "Added. Each piece is fired once; this one is yours.",
+      "error": "This bowl just sold. Here are three from the same firing."
+    }
+  },
+  "iconography": {
+    "set": "phosphor",
+    "weight": "light"
+  },
+  "signature": {
+    "concept": "curvature",
+    "scale": "corner",
+    "reason": "the squircle answers Rie's thrown rim: continuous, never a drafted arc"
+  },
+  "avoid": [
+    "elevation.floating"
+  ],
+  "rationale": {
+    "form.curvature": "thrown forms are soft but not round",
+    "form.space": "pots need room on the shelf",
+    "form.elevation": "boards and shelves: layered, never floating",
+    "color.character.vibrancy": "ash and iron glazes are low chroma",
+    "color.character.neutral": "clay-warm neutrals",
+    "type.character.type-scale": "catalog plates: a classic step",
+    "movement": "a calm studio",
+    "adaptivity": "photographs of glaze read best on a light page"
+  }
+}

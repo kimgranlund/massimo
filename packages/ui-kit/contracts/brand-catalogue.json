@@ -1,0 +1,564 @@
+{
+  "$schema": "./brand-catalogue.schema.json",
+  "schemaVersion": 1,
+  "$comment": "Curated groundings (heritages, movements, schools) and visual-territory archetypes for the Brand schema (docs/planning/brand-schema.md). Each canon is a set of descriptor values (contracts/domains/*.json descriptors) the entry implies; hydrate uses them below the brand's explicit choices. Sources are general references for the entry, not endorsements.",
+  "groundings": [
+    {
+      "id": "swiss-international",
+      "kind": "grounding",
+      "title": "Swiss International Style",
+      "period": "1950s–1970s",
+      "place": "Switzerland",
+      "principles": [
+        "Objective clarity: content before ornament",
+        "The grid organizes everything",
+        "Asymmetric layouts with generous white space",
+        "Sans-serif type, flush left, ragged right",
+        "Photography over illustration"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "crisp",
+          "line": "borderless",
+          "elevation": "flat",
+          "space": "airy",
+          "type-scale": "dramatic",
+          "vibrancy": "natural",
+          "neutral": "true",
+          "movement": "still"
+        },
+        "faces": {
+          "body": "neo-grotesque",
+          "display": "neo-grotesque"
+        }
+      },
+      "cliches": [
+        "Helvetica on red, white and black posters by default",
+        "Grids shown for their own sake"
+      ],
+      "sources": [
+        "Josef Müller-Brockmann, Grid Systems in Graphic Design (1981)",
+        "Richard Hollis, Swiss Graphic Design (2006)"
+      ]
+    },
+    {
+      "id": "bauhaus",
+      "kind": "grounding",
+      "title": "Bauhaus",
+      "period": "1919–1933",
+      "place": "Germany",
+      "principles": [
+        "Form follows function",
+        "Primary shapes and primary colors",
+        "Unity of art, craft and industry",
+        "Type as construction: geometric sans, strong rules"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "square",
+          "line": "outlined",
+          "elevation": "flat",
+          "vibrancy": "vivid",
+          "harmony": "triadic",
+          "type-scale": "dramatic",
+          "movement": "lively"
+        },
+        "faces": {
+          "body": "geometric",
+          "display": "geometric"
+        }
+      },
+      "cliches": [
+        "Red, yellow and blue primaries with circles, squares and triangles as decoration"
+      ],
+      "sources": [
+        "Magdalena Droste, Bauhaus 1919–1933 (2002)"
+      ]
+    },
+    {
+      "id": "mingei",
+      "kind": "grounding",
+      "title": "Mingei (Japanese folk craft)",
+      "period": "1920s–",
+      "place": "Japan",
+      "principles": [
+        "Beauty in everyday objects made by unknown craftspeople",
+        "Natural materials, honest making",
+        "Imperfection and use as part of the form",
+        "Quiet, restrained surfaces"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "soft",
+          "corner": "squircle",
+          "line": "borderless",
+          "elevation": "layered",
+          "space": "airy",
+          "vibrancy": "muted",
+          "neutral": "tinted",
+          "type-scale": "gentle",
+          "movement": "calm"
+        },
+        "faces": {
+          "body": "humanist",
+          "display": "serif"
+        }
+      },
+      "cliches": [
+        "Indigo and kraft paper with brush lettering by default"
+      ],
+      "sources": [
+        "Sōetsu Yanagi, The Unknown Craftsman (1972)"
+      ]
+    },
+    {
+      "id": "arts-and-crafts",
+      "kind": "grounding",
+      "title": "Arts and Crafts",
+      "period": "1880s–1920s",
+      "place": "Britain",
+      "principles": [
+        "Hand-made quality against industrial sameness",
+        "Pattern drawn from nature",
+        "Honest construction and materials",
+        "Book-craft typography"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "soft",
+          "line": "hairline",
+          "elevation": "layered",
+          "vibrancy": "natural",
+          "neutral": "tinted",
+          "type-scale": "classic",
+          "movement": "calm"
+        },
+        "faces": {
+          "body": "serif",
+          "display": "serif"
+        }
+      },
+      "cliches": [
+        "Warm cream pages with serif display and terracotta accents"
+      ],
+      "sources": [
+        "William Morris, The Ideal Book (1893)",
+        "Alan Crawford, C. R. Ashbee (1985)"
+      ]
+    },
+    {
+      "id": "memphis",
+      "kind": "grounding",
+      "title": "Memphis Group",
+      "period": "1981–1987",
+      "place": "Italy",
+      "principles": [
+        "Ornament and play over good taste",
+        "Clashing colors and patterns",
+        "Laminates, terrazzo, squiggles",
+        "Objects as provocation"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "round",
+          "line": "outlined",
+          "elevation": "floating",
+          "vibrancy": "vivid",
+          "harmony": "split",
+          "type-scale": "dramatic",
+          "movement": "playful"
+        },
+        "faces": {
+          "body": "geometric",
+          "display": "display"
+        }
+      },
+      "cliches": [
+        "Squiggles and confetti on pastel backgrounds"
+      ],
+      "sources": [
+        "Barbara Radice, Memphis: Research, Experiences, Results (1985)"
+      ]
+    },
+    {
+      "id": "brutalism",
+      "kind": "grounding",
+      "title": "Brutalism (web and architecture)",
+      "period": "1950s–; web 2010s–",
+      "place": "UK, global",
+      "principles": [
+        "Raw materials shown as they are",
+        "Structure exposed, no disguise",
+        "Default elements, hard edges",
+        "Function over polish"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "square",
+          "line": "outlined",
+          "elevation": "flat",
+          "space": "tight",
+          "vibrancy": "muted",
+          "neutral": "true",
+          "type-scale": "flat",
+          "movement": "still"
+        },
+        "faces": {
+          "body": "mono",
+          "display": "neo-grotesque"
+        }
+      },
+      "cliches": [
+        "Times New Roman on raw grey with blue underlined links as an aesthetic pose"
+      ],
+      "sources": [
+        "Reyner Banham, The New Brutalism (1966)"
+      ]
+    },
+    {
+      "id": "scandinavian-functionalism",
+      "kind": "grounding",
+      "title": "Scandinavian functionalism",
+      "period": "1930s–1970s",
+      "place": "Denmark, Sweden, Finland, Norway",
+      "principles": [
+        "Democratic design: good things for everyday life",
+        "Light woods, soft daylight, calm interiors",
+        "Human scale and comfort",
+        "Restraint with one warm accent"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "soft",
+          "line": "borderless",
+          "elevation": "layered",
+          "space": "airy",
+          "vibrancy": "natural",
+          "neutral": "tinted",
+          "type-scale": "gentle",
+          "movement": "calm"
+        },
+        "faces": {
+          "body": "humanist",
+          "display": "humanist"
+        }
+      },
+      "cliches": [
+        "Pale wood and one mustard accent as a stock interior"
+      ],
+      "sources": [
+        "Charlotte & Peter Fiell, Scandinavian Design (2002)"
+      ]
+    },
+    {
+      "id": "californian-modernism",
+      "kind": "grounding",
+      "title": "Californian mid-century modernism",
+      "period": "1940s–1960s",
+      "place": "California",
+      "principles": [
+        "Indoor and outdoor as one space",
+        "Optimism, sunlight and open plans",
+        "Industrial materials made domestic",
+        "Bold graphic color fields"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "round",
+          "line": "borderless",
+          "elevation": "layered",
+          "space": "airy",
+          "vibrancy": "vivid",
+          "harmony": "analogous",
+          "type-scale": "classic",
+          "movement": "lively"
+        },
+        "faces": {
+          "body": "geometric",
+          "display": "geometric"
+        }
+      },
+      "cliches": [
+        "Sunset orange and teal with atomic starbursts"
+      ],
+      "sources": [
+        "Pat Kirkham, Charles and Ray Eames (1995)"
+      ]
+    }
+  ],
+  "territories": [
+    {
+      "id": "harbor",
+      "kind": "territory",
+      "title": "Harbor",
+      "description": "Working waterfronts: ropes, hulls, signal flags, weathered paint, cold water light.",
+      "materials": [
+        "painted steel",
+        "rope",
+        "wet stone",
+        "canvas"
+      ],
+      "light": "flat, cold daylight off water",
+      "canon": {
+        "character": {
+          "vibrancy": "natural",
+          "neutral": "tinted",
+          "curvature": "crisp",
+          "elevation": "layered"
+        },
+        "palette": [
+          {
+            "name": "signal red",
+            "value": "#c8102e"
+          },
+          {
+            "name": "hull navy",
+            "value": "#1f2a44"
+          },
+          {
+            "name": "harbor grey",
+            "value": "#8a9099"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "curvature.pill",
+        "movement.playful"
+      ],
+      "cliches": [
+        "Anchors and ship wheels as icons"
+      ]
+    },
+    {
+      "id": "workshop",
+      "kind": "territory",
+      "title": "Workshop",
+      "description": "Benches, tools and offcuts: the marks of making, labels in pencil, light through dust.",
+      "materials": [
+        "oiled wood",
+        "steel",
+        "kraft paper",
+        "chalk"
+      ],
+      "light": "warm, directional, through a high window",
+      "canon": {
+        "character": {
+          "vibrancy": "muted",
+          "neutral": "tinted",
+          "line": "hairline",
+          "curvature": "soft"
+        },
+        "palette": [
+          {
+            "name": "oiled oak",
+            "value": "#9a6b3f"
+          },
+          {
+            "name": "tool steel",
+            "value": "#5b6670"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "vibrancy.vivid",
+        "elevation.floating"
+      ],
+      "cliches": [
+        "Distressed textures applied to everything"
+      ]
+    },
+    {
+      "id": "botanical",
+      "kind": "territory",
+      "title": "Botanical garden",
+      "description": "Glasshouses, labeled specimens, damp greens, catalog plates.",
+      "materials": [
+        "glass",
+        "iron",
+        "soil",
+        "paper labels"
+      ],
+      "light": "diffuse, green-filtered",
+      "canon": {
+        "character": {
+          "vibrancy": "natural",
+          "harmony": "analogous",
+          "neutral": "tinted",
+          "curvature": "soft",
+          "movement": "calm"
+        },
+        "palette": [
+          {
+            "name": "fern",
+            "value": "#3f7d4e"
+          },
+          {
+            "name": "terracotta pot",
+            "value": "#b5603a"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "harmony.triadic",
+        "line.outlined"
+      ],
+      "cliches": [
+        "Watercolor leaves in every corner"
+      ]
+    },
+    {
+      "id": "nocturne",
+      "kind": "territory",
+      "title": "Night city",
+      "description": "Streets after dark: sodium and neon, reflections on wet asphalt, signage.",
+      "materials": [
+        "asphalt",
+        "glass",
+        "neon tube",
+        "steel"
+      ],
+      "light": "point sources in darkness",
+      "canon": {
+        "character": {
+          "adaptivity": "dark-first",
+          "vibrancy": "vivid",
+          "elevation": "floating",
+          "movement": "lively"
+        },
+        "palette": [
+          {
+            "name": "sodium",
+            "value": "#f29d38"
+          },
+          {
+            "name": "neon cyan",
+            "value": "#22c3e6"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "adaptivity.light-first",
+        "vibrancy.muted"
+      ],
+      "cliches": [
+        "Near-black with one acid-green accent"
+      ]
+    },
+    {
+      "id": "archive",
+      "kind": "territory",
+      "title": "Archive",
+      "description": "Reading rooms and catalogs: index cards, stamps, bound volumes, quiet order.",
+      "materials": [
+        "card stock",
+        "cloth binding",
+        "brass",
+        "ink"
+      ],
+      "light": "even, lamp-lit",
+      "canon": {
+        "character": {
+          "vibrancy": "muted",
+          "line": "hairline",
+          "elevation": "flat",
+          "type-scale": "classic",
+          "movement": "still"
+        },
+        "palette": [
+          {
+            "name": "binding red",
+            "value": "#7a2e2a"
+          },
+          {
+            "name": "card",
+            "value": "#e8dfc8"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "movement.playful",
+        "curvature.pill"
+      ],
+      "cliches": [
+        "Fake paper texture and coffee stains"
+      ]
+    },
+    {
+      "id": "laboratory",
+      "kind": "territory",
+      "title": "Laboratory",
+      "description": "Instruments, readouts and samples: precision, calibration, clean surfaces.",
+      "materials": [
+        "glass",
+        "white enamel",
+        "anodized aluminum"
+      ],
+      "light": "bright, shadowless",
+      "canon": {
+        "character": {
+          "vibrancy": "natural",
+          "neutral": "true",
+          "curvature": "crisp",
+          "line": "hairline",
+          "elevation": "flat",
+          "movement": "still"
+        },
+        "palette": [
+          {
+            "name": "indicator green",
+            "value": "#1f9d55"
+          },
+          {
+            "name": "calibration blue",
+            "value": "#1d5fd1"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "curvature.pill",
+        "elevation.floating"
+      ],
+      "cliches": [
+        "Beakers and atoms as decoration"
+      ]
+    },
+    {
+      "id": "desert",
+      "kind": "territory",
+      "title": "High desert",
+      "description": "Mesas, dry washes and adobe: long shadows, sun-bleached color, wide horizons.",
+      "materials": [
+        "sandstone",
+        "adobe",
+        "sage brush",
+        "sun-bleached wood"
+      ],
+      "light": "hard sun, long shadows",
+      "canon": {
+        "character": {
+          "vibrancy": "muted",
+          "harmony": "analogous",
+          "neutral": "tinted",
+          "space": "airy",
+          "movement": "calm"
+        },
+        "palette": [
+          {
+            "name": "mesa",
+            "value": "#b4573a"
+          },
+          {
+            "name": "sage",
+            "value": "#8a9a7b"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "adaptivity.dark-first"
+      ],
+      "cliches": [
+        "Cacti and cow skulls"
+      ]
+    }
+  ]
+}

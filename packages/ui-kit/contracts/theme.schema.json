@@ -1209,7 +1209,8 @@
             "enum": [
               "hand",
               "character",
-              "intent"
+              "intent",
+              "brand"
             ]
           },
           "reason": {
