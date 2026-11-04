@@ -1,0 +1,66 @@
+{
+  "$schema": "../../verification.schema.json",
+  "schemaVersion": 1,
+  "domain": "motion",
+  "scope": "The motion resolvers, their theme part and its constraints in node:test plus the browser checks (rendered CSS against the resolvers). Visual quality is not certified.",
+  "sources": [
+    {
+      "path": "tokens/motion/index.ts",
+      "sha256": "c459792a4db392893e617ea3945ddb36ef2c60e6190213a55e3035ac4f869735"
+    },
+    {
+      "path": "tokens/themes/params.ts",
+      "sha256": "e95bbad182dfaf2a0d2c415c766fa04a0bfb491d9d35736370e33faa9332a3d2"
+    },
+    {
+      "path": "contracts/domains/motion.json",
+      "sha256": "c17f7e731eaadd9da4dd9ed23a68ccab5dc61ca4a326b3613203763439bc7212"
+    }
+  ],
+  "renderers": {
+    "resolvers": {
+      "checks": [
+        {
+          "command": "node --test test/motion.test.ts",
+          "covers": "springs, easings, intents and the multipliers"
+        },
+        {
+          "command": "node --test test/themes.test.ts",
+          "covers": "theme part, migration and lint"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-04",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/motion.test.ts",
+          "node --test test/themes.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "browser": {
+      "checks": [
+        {
+          "command": "npm --prefix ../.. run check:browsers",
+          "covers": "motion easings: every linear() easing parses and matches the spring in Chromium, Firefox and WebKit"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-04",
+        "outcome": "pass",
+        "commands": [
+          "npm --prefix ../.. run check:browsers"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Descriptors (brand-schema step 2) are not built yet; the manifest lists none."
+  ]
+}

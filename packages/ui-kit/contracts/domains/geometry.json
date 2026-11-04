@@ -1,0 +1,80 @@
+{
+  "$schema": "../domain-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "domain:geometry",
+  "name": "geometry",
+  "title": "Geometry",
+  "summary": "How big everything is and how it is spaced, curved, outlined and stacked: one unit u, density, border, curvature, the container ladder and radius magnitudes, elevation. Every length and shadow derives from these by the geometry and elevation resolvers; CSS computes the same formulas live.",
+  "themePart": "geometry",
+  "concepts": [
+    "scale",
+    "density",
+    "space",
+    "curvature",
+    "line",
+    "elevation"
+  ],
+  "parameterGroups": [
+    "unit",
+    "density",
+    "border",
+    "curvature",
+    "container-curvature",
+    "containers",
+    "elevation"
+  ],
+  "constraints": [
+    "scale.target-size",
+    "density.compact-border",
+    "curvature.pill-containers",
+    "elevation.surfaces-visible",
+    "elevation.floating-visible",
+    "elevation.modal-shadow"
+  ],
+  "descriptors": [],
+  "specs": [
+    "../../../../docs/specs/geometry.md",
+    "../../../../docs/specs/elevation.md"
+  ],
+  "resolvers": [
+    "tokens/geometry/resolve.ts",
+    "tokens/elevation/index.ts"
+  ],
+  "checks": [
+    {
+      "command": "node --test test/geometry.test.ts",
+      "covers": "resolver formulas: controls, composites, containers, the nesting tree, density"
+    },
+    {
+      "command": "node --test test/geometry-acceptance.test.ts",
+      "covers": "geometry acceptance cases"
+    },
+    {
+      "command": "node --test test/geometry-csv.test.ts",
+      "covers": "docs/geometry.csv is current"
+    },
+    {
+      "command": "node --test test/themes.test.ts",
+      "covers": "the theme's geometry part: schema, validator, migration, lint fixtures"
+    },
+    {
+      "command": "npm --prefix ../.. run check:browsers",
+      "covers": "geometry-check.html: rendered lengths equal the resolvers in Chromium, Firefox and WebKit",
+      "browser": true
+    }
+  ],
+  "verification": "./verification/geometry.verification.json",
+  "avoidWhen": [],
+  "searchTerms": [
+    "geometry",
+    "scale",
+    "density",
+    "space",
+    "curvature",
+    "line",
+    "elevation"
+  ],
+  "themePartFields": [
+    "parameters"
+  ]
+}

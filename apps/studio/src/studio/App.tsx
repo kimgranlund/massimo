@@ -8,8 +8,8 @@ import '@massimo/ui-kit/components/select/element';
 import '@massimo/ui-kit/components/listbox/element';
 import '@massimo/ui-kit/components/choice/element';
 import '@massimo/ui-kit/components/range/element';
-import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, validateThemeObject, lintTheme, type Finding, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
-import { SPECTRUM_DEFAULTS, spectrumOverrides, stepTones, TARGET_MAX, DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
+import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motionTokenCss, elevationTokenCss, loadTheme as loadThemeObject, partsFromParameters, themeParameters, lintTheme, type Finding, type ParamName, type Theme, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { SPECTRUM_DEFAULTS, SPECTRUM_FIELDS, spectrumOverrides, stepTones, TARGET_MAX, DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens';
 import { ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
@@ -57,6 +57,25 @@ function randomRoles(current: Roles, accents: string[], neutrals: string[]): Rol
     critical: current.critical, warning: current.warning, success: current.success, info: current.info,
     data1: data[0], data2: data[1 % data.length], data3: data[2 % data.length], data4: data[3 % data.length], data5: data[4 % data.length], data6: data[5 % data.length],
   };
+}
+
+/**
+ * Random generation inputs: every hue setting (hue set, first hue, balance), every chroma setting
+ * (requested, base, falloff, distribution), the neutral tint, and the light and dark page tones.
+ * Each is drawn on its field's step, from a usable range (RANDOM_RANGE) where the full range would
+ * often give dull or low-contrast palettes; the full ranges stay reachable by hand.
+ */
+const RANDOM_SPECTRUM = ['hueSet', 'quadStart', 'hue', 'hb', 'chroma', 'base', 'falloff', 'keyC', 'tint', 'toneMax', 'darkTone'] as const;
+const RANDOM_RANGE: Partial<Record<(typeof RANDOM_SPECTRUM)[number], [number, number]>> = { chroma: [40, 120], base: [50, 100], toneMax: [92, 100], darkTone: [0, 10] };
+function randomSpectrum(current: SpectrumSettings): SpectrumSettings {
+  const out = { ...current };
+  for (const key of RANDOM_SPECTRUM) {
+    const f = SPECTRUM_FIELDS.find((x) => x.key === key)!;
+    if (f.options) { out[key] = pick(f.options); continue; }
+    const [lo, hi] = RANDOM_RANGE[key] ?? [f.min!, f.max!];
+    out[key] = Number((lo + Math.round((Math.random() * (hi - lo)) / f.step!) * f.step!).toFixed(4));
+  }
+  return out;
 }
 
 /** One constructed stylesheet adopted by the document, rewritten in place when its text changes. */
@@ -154,15 +173,17 @@ export function App() {
   const [themeName, setThemeName] = useState('custom');
   const changed = <T extends Record<string, unknown>>(cur: T, base: T) => Object.fromEntries(Object.entries(cur).filter(([k, v]) => JSON.stringify(v) !== JSON.stringify(base[k])));
   const nonEmpty = <T extends Record<string, unknown>>(o: T) => Object.fromEntries(Object.entries(o).filter(([, v]) => v !== undefined && !(typeof v === 'object' && v && !Array.isArray(v) && !Object.keys(v).length)));
-  const themeObject = (): Theme => nonEmpty({
-    schemaVersion: 1 as const,
+  // Theme schema v2: the changed parameters go into their parts (geometry, typography, motion).
+  const themeObject = (): Theme => { const parts = partsFromParameters(diffFromDefaults(params)); return nonEmpty({
+    schemaVersion: 2 as const,
     name: themeName,
-    parameters: diffFromDefaults(params),
+    geometry: parts.geometry,
+    typography: nonEmpty({ parameters: parts.typography?.parameters, voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
+    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }) }),
+    motion: parts.motion,
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
-    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }) }),
-    typography: nonEmpty({ voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
-  }) as unknown as Theme;
+  }) as unknown as Theme; };
   // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
   const [findings, setFindings] = useState<Finding[]>([]);
   useEffect(() => {
@@ -175,7 +196,7 @@ export function App() {
   // Load: the same object back (clipboard); every section not in it returns to the default.
   const applyTheme = (t: Theme) => {
     setThemeName(t.name);
-    setParams({ ...defaultParams, ...(t.parameters as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
+    setParams({ ...defaultParams, ...(themeParameters(t) as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
     setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
     setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT, ...(t.color?.endpoints ?? {}) });
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
@@ -186,7 +207,8 @@ export function App() {
     try { text = await navigator.clipboard.readText(); } catch { setStatus('Load: clipboard not readable'); return; }
     let data: unknown;
     try { data = JSON.parse(text); } catch { setStatus('Load: the clipboard is not JSON'); return; }
-    const r = validateThemeObject(data);
+    // Version 1 themes (one flat parameters section) migrate on load.
+    const r = loadThemeObject(data);
     if (!r.ok) { setStatus(`Load: ${r.errors.slice(0, 3).join('; ')}${r.errors.length > 3 ? ` (+${r.errors.length - 3})` : ''}`); return; }
     applyTheme(r.theme);
     setStatus(`Loaded theme ${r.theme.name}`);
@@ -208,7 +230,8 @@ export function App() {
   const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify({ $schema: 'packages/ui-kit/contracts/theme.schema.json', ...themeObject() }, null, 2)).then(() => setStatus('Copied theme JSON'), () => setStatus('Copy failed')));
   const loadRef = useEvent('click', () => { void loadTheme(); });
   const resetRef = useEvent('click', reset);
-  const randomRef = useEvent('click', () => setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)));
+  // Random: new generation inputs (hue, chroma, tint, page tones), then the brand and data roles.
+  const randomRef = useEvent('click', () => { setSpectrum((cur) => randomSpectrum(cur)); setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)); });
 
   const pageProps: PageProps = { params, spectrum: generated, voices, faces, typeColors };
   const Content = route === 'components' ? null : PAGES[route];

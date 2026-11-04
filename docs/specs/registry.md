@@ -46,6 +46,8 @@ Styles are the folder's slot recipe module, named by the manifest's `styleSource
 | `tokens:` | A token group: color roles, type roles, font sizes, motion, geometry parameters, spacing, the container ladder, sizes, radii, borders and shadows, conditions; each lists its Panda paths under `panda` | `contracts/tokens.json` |
 | `parameters:` | A group of inputs (unit, border, curvature, type scale, motion, springs, intents, containers, Spectrum, roles, faces, voices, subtree) and what it `drives` | `contracts/parameters.json` |
 | `concept:` | One of the system's peer concepts (scale, density, space, curvature, line, elevation, vibrancy, emphasis, typography, movement, state, iconography, adaptivity); lookup lists the parameter groups and parameters that express it | `contracts/parameters.json` (`concepts`) |
+| `domain:` | A theme domain (geometry, typography, color, motion): the part of the theme a brand hydrates; lookup lists the concepts it covers and the parameter groups and constraints it owns | `contracts/domains/<domain>.json` |
+| `constraint:` | A theme coherence rule (`constraint:scale.target-size`) | `contracts/theme-constraints.json` |
 | `parameter:` | One input a theme or subtree can change (`parameter:unit`, `parameter:spectrum-hue`); lookup adds its live range and default | `contracts/parameters.json`, ranges from the owning export |
 
 IDs are identities, not paths: moving a folder changes `source`, not the ID. Availability: `implemented` (registered element), `css-only` (container tags).
@@ -78,6 +80,9 @@ Relationships:
 | `establishes` | A container creates this context |
 | `uses` | Depends on another capability (a component, icons, slots) |
 | `drives` | A parameter group (`parameters:<group>`) enters the formulas of a token group, geometry family or foundation |
+| `covers` | A domain covers a concept |
+| `owns` | A domain owns a parameter group or a constraint |
+| `constrains` | A constraint checks a concept |
 | `memberOf` | A parameter (`parameter:<id>`) belongs to its group |
 | `expresses` | A parameter group, or a member with its own `memberConcepts` entry, belongs to a concept (`concept:<id>`) |
 

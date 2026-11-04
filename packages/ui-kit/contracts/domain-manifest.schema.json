@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://massimo.dev/schemas/domain-manifest.schema.json",
+  "title": "massimo theme domain manifest",
+  "description": "One theme domain (geometry, typography, color, motion): the theme part it owns, the concepts and parameter groups it covers, its constraints, descriptors, specs, resolvers, checks and verification record (docs/planning/brand-schema.md, step 1).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "name",
+    "title",
+    "summary",
+    "themePart",
+    "themePartFields",
+    "concepts",
+    "parameterGroups",
+    "constraints",
+    "descriptors",
+    "specs",
+    "resolvers",
+    "checks",
+    "verification",
+    "avoidWhen",
+    "searchTerms"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^domain:[a-z]+$"
+    },
+    "name": {
+      "enum": [
+        "geometry",
+        "typography",
+        "color",
+        "motion"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 40
+    },
+    "themePart": {
+      "enum": [
+        "geometry",
+        "typography",
+        "color",
+        "motion"
+      ],
+      "description": "The section of the theme object (contracts/theme.schema.json) this domain owns."
+    },
+    "themePartFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "The fields of that section, exactly as the theme schema lists them."
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Concept ids (contracts/parameters.json concepts)."
+    },
+    "parameterGroups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Group ids (contracts/parameters.json groups); every theme group belongs to exactly one domain."
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Rule ids (contracts/theme-constraints.json); every rule belongs to exactly one domain."
+    },
+    "descriptors": {
+      "type": "array",
+      "description": "Closed character scales and their parameter tables (brand-schema step 2)."
+    },
+    "specs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Paths of the owning specs, relative to the manifest."
+    },
+    "resolvers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Package-relative modules that turn the domain's inputs into values."
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command",
+          "covers"
+        ],
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "covers": {
+            "type": "string"
+          },
+          "browser": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "string",
+      "pattern": "^\\./verification/[a-z]+\\.verification\\.json$"
+    },
+    "avoidWhen": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "situation",
+          "useInstead",
+          "why"
+        ],
+        "properties": {
+          "situation": {
+            "type": "string"
+          },
+          "useInstead": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "searchTerms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

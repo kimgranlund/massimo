@@ -6,7 +6,7 @@
 import saved from './themes.json' with { type: 'json' };
 import { defaultParams, paramVar, type ParamName } from './params.ts';
 import { THEME_NAME } from './validate.ts';
-import type { Theme } from './theme.ts';
+import { themeParameters, type Theme } from './theme.ts';
 import { normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
 import { endpointVars, generateSpectrum, ramps, resolveRoles, roleVariables } from '../colors/spectrum/index.ts';
 import { SERIF_REGULAR_VOICES, TEXT_COLORS, typeColorVar, type Voice, type TypeRoleName } from '../typography/resolve.ts';
@@ -25,7 +25,7 @@ const toVars = (p: Partial<Record<ParamName, number>>) =>
 
 /** A theme's declarations that need no color engine: parameters, faces and voices. */
 export function themeVars(t: Theme): Record<string, string> {
-  const out: Record<string, string> = { ...toVars(t.parameters ?? {}) };
+  const out: Record<string, string> = { ...toVars(themeParameters(t)) };
   for (const [face, stack] of Object.entries(t.typography?.faces ?? {})) out[`--fonts-${face}`] = stack!;
   for (const [voice, face] of Object.entries(t.typography?.voices ?? {})) {
     out[`--font-voice-${voice}`] = `var(--fonts-${face})`;

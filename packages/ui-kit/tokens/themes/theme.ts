@@ -1,48 +1,96 @@
-// The theme object (docs/planning/theme-schema.md, step 1): one format for everything a theme can
-// set, used by saved themes (themes.json), the jig's Copy and Load, and generators. Every section is
-// optional and holds overrides of the kit defaults only:
-//   parameters  PARAMS (geometry, density, curvature, type scale, motion, elevation, the ladder)
-//   icons       an icon set name
-//   scheme      the preferred scheme (auto follows the OS)
-//   color       Spectrum settings (SPECTRUM_FIELDS) and the role mapping (role → requested family)
-//   typography  faces (face → font stack) and voices (voice → face)
-//   intent, character, provenance  reserved for the later layers (L0 intent, L1 character, who set what)
+// The theme object, schema version 2 (docs/planning/brand-schema.md, step 1): one format for
+// everything a theme can set, used by saved themes (themes.json), the jig's Copy and Load, and
+// generators. It is split into the four domain parts a brand hydrates; every section is optional and
+// holds overrides of the kit defaults only:
+//   geometry    parameters: unit, density, border, curvature, container radius and ladder, elevation
+//   typography  parameters (type ratio, rhythm), faces (face → font stack), voices (voice → face), colors
+//   color       Spectrum settings (SPECTRUM_FIELDS), the role mapping (role → requested family), endpoints
+//   motion      parameters: the multipliers, springs and intents
+//   icons, scheme  the icon set; the preferred scheme (auto follows the OS)
+//   intent, character, provenance  reserved for the brand layers (L0 intent, L1 character, who set what)
+// Version 1 kept every number in one flat `parameters` section; migrateTheme moves it into the parts
+// (each parameter's PARAMS domain) and loadTheme accepts both.
 // contracts/theme.schema.json is generated from the same exports (npm run theme:schema).
-import { PARAMS, type ParamName } from './params.ts';
+import { PARAMS, PARAM_DOMAINS, domainParams, type ParamDomain, type ParamName } from './params.ts';
 import { THEME_NAME } from './validate.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
 import { ROLE_NAMES, type RoleName } from '../colors/spectrum/index.ts';
 import { FACES, VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 
-export const THEME_SCHEMA_VERSION = 1;
+export const THEME_SCHEMA_VERSION = 2;
 export const SCHEMES = ['auto', 'light', 'dark'] as const;
 export type ThemeScheme = (typeof SCHEMES)[number];
 
+type Numbers = Partial<Record<ParamName, number>>;
 export interface Theme {
   schemaVersion: typeof THEME_SCHEMA_VERSION;
   name: string;
   description?: string;
-  parameters?: Partial<Record<ParamName, number>>;
-  icons?: string;
-  scheme?: ThemeScheme;
+  geometry?: { parameters?: Numbers };
+  typography?: { parameters?: Numbers; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
   color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' } };
-  typography?: { faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
+  motion?: { parameters?: Numbers };
+  icons?: string;
+  scheme?: ThemeScheme;
   /** Reserved: L0 intent (subject, audience, character words, signature). */
   intent?: Record<string, unknown>;
   /** Reserved: L1 character, one descriptor per concept. */
   character?: Record<string, string>;
-  /** Who set a value and why, keyed by its path (e.g. "parameters.radius-scale"). */
+  /** Who set a value and why, keyed by its path (e.g. "geometry.parameters.radius-scale"). */
   provenance?: Record<string, { source: 'hand' | 'character' | 'intent'; reason?: string }>;
 }
+/** The four domain parts of a theme (the parts a brand hydrates). */
+export const THEME_DOMAINS = ['geometry', 'typography', 'color', 'motion'] as const;
+export type ThemeDomain = (typeof THEME_DOMAINS)[number];
+
+/** Every parameter a theme sets, flat (the input the resolvers, CSS variables and lint read). */
+export const themeParameters = (t: Partial<Theme>): Numbers =>
+  ({ ...t.geometry?.parameters, ...t.typography?.parameters, ...t.motion?.parameters });
+/** Flat parameters back into their parts (what the jig's Copy writes). Empty parts are left out. */
+export function partsFromParameters(p: Numbers): Pick<Theme, 'geometry' | 'typography' | 'motion'> {
+  const out: Pick<Theme, 'geometry' | 'typography' | 'motion'> = {};
+  for (const d of PARAM_DOMAINS) {
+    const picked = Object.fromEntries(domainParams(d).filter((k) => p[k] !== undefined).map((k) => [k, p[k]]));
+    if (Object.keys(picked).length) out[d] = { parameters: picked };
+  }
+  return out;
+}
+
+/**
+ * A version 1 theme as version 2: its flat `parameters` move into the parts by each parameter's
+ * domain (typography faces, voices and colors join the type parameters); everything else is kept.
+ * Unknown parameters stay in a `parameters` section so validation reports them. A version 2 theme
+ * is returned as it is.
+ */
+export function migrateTheme(input: unknown): unknown {
+  if (!isObject(input) || input.schemaVersion !== 1) return input;
+  const { parameters, typography, schemaVersion: _, ...rest } = input as Record<string, any>;
+  const out: Record<string, any> = { schemaVersion: THEME_SCHEMA_VERSION, ...rest };
+  const unknown: Record<string, unknown> = {};
+  if (isObject(parameters)) {
+    for (const [k, v] of Object.entries(parameters)) {
+      const d: ParamDomain | undefined = PARAMS[k as ParamName]?.domain;
+      if (!d) { unknown[k] = v; continue; }
+      (out[d] ??= {}).parameters ??= {};
+      out[d].parameters[k] = v;
+    }
+  } else if (parameters !== undefined) out.parameters = parameters;
+  if (Object.keys(unknown).length) out.parameters = unknown;
+  if (typography !== undefined) out.typography = isObject(typography) ? { ...(out.typography ?? {}), ...typography } : typography;
+  return out;
+}
+
+/** Migrate (version 1) and validate: the one entry point for theme files and the jig's Load. */
+export const loadTheme = (input: unknown) => validateThemeObject(migrateTheme(input));
 
 /** A font stack: family names, quotes, commas, spaces, hyphens and digits only (no CSS syntax). */
 export const FONT_STACK = /^[\w\s"',.-]{1,300}$/;
 /** A requested Spectrum family name (resolveRoles picks the nearest generated hue). */
 export const FAMILY_NAME = /^[a-z][a-z0-9-]{0,30}$/;
 
-const TOP = new Set(['$schema', 'schemaVersion', 'name', 'description', 'parameters', 'icons', 'scheme', 'color', 'typography', 'intent', 'character', 'provenance']);
+const TOP = new Set(['$schema', 'schemaVersion', 'name', 'description', 'geometry', 'typography', 'color', 'motion', 'icons', 'scheme', 'intent', 'character', 'provenance']);
 const isObject = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
 
 /**
@@ -57,14 +105,24 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.schemaVersion !== THEME_SCHEMA_VERSION) err('schemaVersion', `must be ${THEME_SCHEMA_VERSION}`);
   if (typeof input.name !== 'string' || !THEME_NAME.test(input.name)) err('name', `must match ${THEME_NAME}`);
   if (input.description !== undefined && typeof input.description !== 'string') err('description', 'must be a string');
-  if (input.parameters !== undefined) {
-    if (!isObject(input.parameters)) err('parameters', 'must be an object');
-    else for (const [k, v] of Object.entries(input.parameters)) {
+  if (input.parameters !== undefined) err('parameters', input.schemaVersion === 1 ? 'version 1 layout: load it with loadTheme (migrateTheme)' : 'moved into geometry, typography and motion (schema version 2)');
+  const checkParameters = (domain: ParamDomain, parameters: unknown) => {
+    const path = `${domain}.parameters`;
+    if (!isObject(parameters)) return err(path, 'must be an object');
+    for (const [k, v] of Object.entries(parameters)) {
       const spec = PARAMS[k as ParamName];
-      if (!spec) { err(`parameters.${k}`, 'unknown parameter'); continue; }
-      if (typeof v !== 'number' || !Number.isFinite(v) || v < spec.min || v > spec.max) err(`parameters.${k}`, `must be a number in ${spec.min}..${spec.max}`);
-      else if (Math.abs((v - spec.min) / spec.step - Math.round((v - spec.min) / spec.step)) > 1e-7) err(`parameters.${k}`, `must be on the ${spec.step} step`);
+      if (!spec) { err(`${path}.${k}`, 'unknown parameter'); continue; }
+      if (spec.domain !== domain) { err(`${path}.${k}`, `belongs in ${spec.domain}.parameters`); continue; }
+      if (typeof v !== 'number' || !Number.isFinite(v) || v < spec.min || v > spec.max) err(`${path}.${k}`, `must be a number in ${spec.min}..${spec.max}`);
+      else if (Math.abs((v - spec.min) / spec.step - Math.round((v - spec.min) / spec.step)) > 1e-7) err(`${path}.${k}`, `must be on the ${spec.step} step`);
     }
+  };
+  for (const d of ['geometry', 'motion'] as const) {
+    const part = input[d];
+    if (part === undefined) continue;
+    if (!isObject(part)) { err(d, 'must be an object'); continue; }
+    for (const k of Object.keys(part)) if (k !== 'parameters') err(`${d}.${k}`, 'unknown section');
+    if (part.parameters !== undefined) checkParameters(d, part.parameters);
   }
   if (input.icons !== undefined && (typeof input.icons !== 'string' || !ICON_SET_NAME.test(input.icons))) err('icons', 'must be an icon set name');
   if (input.scheme !== undefined && !SCHEMES.includes(input.scheme as ThemeScheme)) err('scheme', `must be one of ${SCHEMES.join(', ')}`);
@@ -95,8 +153,9 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.typography !== undefined) {
     if (!isObject(input.typography)) err('typography', 'must be an object');
     else {
-      for (const k of Object.keys(input.typography)) if (k !== 'faces' && k !== 'voices' && k !== 'colors') err(`typography.${k}`, 'unknown section');
-      const { faces, voices, colors } = input.typography;
+      for (const k of Object.keys(input.typography)) if (k !== 'parameters' && k !== 'faces' && k !== 'voices' && k !== 'colors') err(`typography.${k}`, 'unknown section');
+      const { parameters, faces, voices, colors } = input.typography;
+      if (parameters !== undefined) checkParameters('typography', parameters);
       if (colors !== undefined) {
         if (!isObject(colors)) err('typography.colors', 'must be an object');
         else for (const [k, v] of Object.entries(colors)) {
@@ -135,18 +194,19 @@ export function themeJsonSchema() {
     ? { type: 'array', uniqueItems: true, items: { enum: f.options }, description: f.label }
     : f.options ? { enum: f.options, description: f.label } : { type: 'number', minimum: f.min, maximum: f.max, description: f.label };
   const strict = (properties: Record<string, unknown>, extra: Record<string, unknown> = {}) => ({ type: 'object', additionalProperties: false, properties, ...extra });
+  const params = (d: ParamDomain) => strict(Object.fromEntries(domainParams(d).map((k) => [k, num(k)])));
   return {
     $schema: 'http://json-schema.org/draft-07/schema#',
     $id: 'https://massimo.dev/contracts/theme.schema.json',
     $comment: 'Generated by npm run theme:schema from tokens/themes/theme.ts and the exports it reads. Do not edit. multipleOfStep is the parameter step (validateThemeObject checks it).',
     title: 'Theme',
-    description: 'One theme: overrides of the kit defaults, every section optional (docs/specs/theming.md#theme-object).',
+    description: 'One theme: overrides of the kit defaults in four domain parts (geometry, typography, color, motion), every section optional (docs/specs/theming.md#theme-object). Version 1 themes (one flat parameters section) load through migrateTheme.',
     ...strict({
       $schema: { type: 'string' },
       schemaVersion: { const: THEME_SCHEMA_VERSION },
       name: { type: 'string', pattern: THEME_NAME.source },
       description: { type: 'string' },
-      parameters: strict(Object.fromEntries((Object.keys(PARAMS) as ParamName[]).map((k) => [k, num(k)]))),
+      geometry: strict({ parameters: params('geometry') }, { description: 'Unit, density, border, curvature, container radius and ladder, elevation.' }),
       icons: { type: 'string', pattern: ICON_SET_NAME.source },
       scheme: { enum: [...SCHEMES] },
       color: strict({
@@ -155,10 +215,12 @@ export function themeJsonSchema() {
         endpoints: strict({ white: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] }, black: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] } }),
       }),
       typography: strict({
+        parameters: params('typography'),
         faces: strict(Object.fromEntries(FACES.map((f) => [f, { type: 'string', pattern: FONT_STACK.source }]))),
         voices: strict(Object.fromEntries(VOICES.map((v) => [v, { enum: [...FACES] }]))),
         colors: strict(Object.fromEntries(Object.keys(TYPE_ROLES).map((r) => [r, { enum: Object.keys(TEXT_COLORS) }]))),
       }),
+      motion: strict({ parameters: params('motion') }, { description: 'Duration and bounce multipliers, springs, intents.' }),
       intent: { type: 'object' },
       character: { type: 'object', additionalProperties: { type: 'string' } },
       provenance: { type: 'object', additionalProperties: strict({ source: { enum: ['hand', 'character', 'intent'] }, reason: { type: 'string' } }, { required: ['source'] }) },

@@ -1,0 +1,56 @@
+{
+  "$schema": "../../verification.schema.json",
+  "schemaVersion": 1,
+  "domain": "color",
+  "scope": "The color resolvers, their theme part and its constraints in node:test. Visual quality is not certified.",
+  "sources": [
+    {
+      "path": "tokens/colors/spectrum/index.ts",
+      "sha256": "ddb2c87a16ae7cc4e36a7b72acc09804548d184504cc607d2a317de7edf26cee"
+    },
+    {
+      "path": "tokens/colors/spectrum/config.ts",
+      "sha256": "b4875d77e812ffe88931993a384a876666ef9c17232844cf494a84667cc9443b"
+    },
+    {
+      "path": "tokens/colors/spectrum/contrast.ts",
+      "sha256": "316a7e12a893ede79f6f6908cb66bb8e11e7f9c5942ebb55297e2fa589727c66"
+    },
+    {
+      "path": "tokens/colors/index.ts",
+      "sha256": "0a542306c23c740447e9279eff5ea283e2f23df13d1d73204790e49845ca70d4"
+    },
+    {
+      "path": "contracts/domains/color.json",
+      "sha256": "2834be8978cfe9a3946303e77df1b3ad3cefe0decc8534342cb34c1af14baafc"
+    }
+  ],
+  "renderers": {
+    "resolvers": {
+      "checks": [
+        {
+          "command": "node --test test/spectrum.test.ts",
+          "covers": "generation, contrast targets, roles, endpoints, the legacy migration"
+        },
+        {
+          "command": "node --test test/themes.test.ts",
+          "covers": "theme part, migration and lint"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-04",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/spectrum.test.ts",
+          "node --test test/themes.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Descriptors (brand-schema step 2) are not built yet; the manifest lists none."
+  ]
+}

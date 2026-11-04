@@ -10,13 +10,17 @@
       "fix": "Raise unit, or use a looser density; keep small units for subtrees (size) instead of the root.",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "unit": 2.5
+          "geometry": {
+            "parameters": {
+              "unit": 2.5
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "unit": 3
+          "geometry": {
+            "parameters": {
+              "unit": 3
+            }
           }
         }
       }
@@ -28,17 +32,21 @@
       "fix": "Use border 0 or 1 at compact density, or a larger unit.",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "density": 0,
-            "unit": 4,
-            "border": 2
+          "geometry": {
+            "parameters": {
+              "density": 0,
+              "unit": 4,
+              "border": 2
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "density": 0,
-            "unit": 4,
-            "border": 1
+          "geometry": {
+            "parameters": {
+              "density": 0,
+              "unit": 4,
+              "border": 1
+            }
           }
         }
       }
@@ -50,14 +58,18 @@
       "fix": "Raise surface-contrast, or turn on card-raised with a raised shadow.",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "surface-contrast": 0
+          "geometry": {
+            "parameters": {
+              "surface-contrast": 0
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "surface-contrast": 0,
-            "card-raised": 1
+          "geometry": {
+            "parameters": {
+              "surface-contrast": 0,
+              "card-raised": 1
+            }
           }
         }
       }
@@ -69,14 +81,18 @@
       "fix": "Give shadow-floating an elevation (8dp by default), or set a border.",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "shadow-floating": 0
+          "geometry": {
+            "parameters": {
+              "shadow-floating": 0
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "shadow-floating": 0,
-            "border": 1
+          "geometry": {
+            "parameters": {
+              "shadow-floating": 0,
+              "border": 1
+            }
           }
         }
       }
@@ -88,13 +104,17 @@
       "fix": "Confirm it is intended, or give shadow-modal an elevation (24dp by default).",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "shadow-modal": 0
+          "geometry": {
+            "parameters": {
+              "shadow-modal": 0
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "shadow-modal": 1
+          "geometry": {
+            "parameters": {
+              "shadow-modal": 1
+            }
           }
         }
       }
@@ -106,14 +126,18 @@
       "fix": "Point intent-reveal at smooth or snappy, or set motion-bounce 0.",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "intent-reveal": 3
+          "motion": {
+            "parameters": {
+              "intent-reveal": 3
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "intent-reveal": 3,
-            "motion-bounce": 0
+          "motion": {
+            "parameters": {
+              "intent-reveal": 3,
+              "motion-bounce": 0
+            }
           }
         }
       }
@@ -125,13 +149,17 @@
       "fix": "Point intent-feedback at a quick spring, shorten that spring, or lower motion-scale.",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "motion-scale": 2
+          "motion": {
+            "parameters": {
+              "motion-scale": 2
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "motion-scale": 1
+          "motion": {
+            "parameters": {
+              "motion-scale": 1
+            }
           }
         }
       }
@@ -143,14 +171,18 @@
       "fix": "Confirm it is intended, or lower radius-card (for example 0.5).",
       "fixtures": {
         "fail": {
-          "parameters": {
-            "radius-scale": 2.5
+          "geometry": {
+            "parameters": {
+              "radius-scale": 2.5
+            }
           }
         },
         "pass": {
-          "parameters": {
-            "radius-scale": 2.5,
-            "radius-card": 0.5
+          "geometry": {
+            "parameters": {
+              "radius-scale": 2.5,
+              "radius-card": 0.5
+            }
           }
         }
       }

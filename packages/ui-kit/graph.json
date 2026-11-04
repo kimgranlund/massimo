@@ -914,6 +914,126 @@
         "hue"
       ]
     },
+    "constraint:curvature.pill-containers": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/curvature.pill-containers",
+      "availability": "implemented",
+      "title": "Cards are not near pills: with radius-scale ≥ 2 the concentric card radius approaches half a short card's height unless radius-card lowers it.",
+      "searchTerms": [
+        "curvature.pill-containers",
+        "curvature",
+        "pill",
+        "containers"
+      ]
+    },
+    "constraint:density.compact-border": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/density.compact-border",
+      "availability": "implemented",
+      "title": "At compact density the 0.5u control inset can hold the border twice (a composite's edge and its option's), B ≤ 0.25u; otherwise one-row composites grow past the control height.",
+      "searchTerms": [
+        "density.compact-border",
+        "density",
+        "compact",
+        "border"
+      ]
+    },
+    "constraint:elevation.floating-visible": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/elevation.floating-visible",
+      "availability": "implemented",
+      "title": "Floating surfaces (menus, popovers, select popups, toasts) separate from the page: a floating elevation above 0dp, or a border.",
+      "searchTerms": [
+        "elevation.floating-visible",
+        "elevation",
+        "floating",
+        "visible"
+      ]
+    },
+    "constraint:elevation.modal-shadow": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/elevation.modal-shadow",
+      "availability": "implemented",
+      "title": "Modal surfaces cast a shadow (shadow-modal > 0dp); with none, only the backdrop separates a dialog from the page.",
+      "searchTerms": [
+        "elevation.modal-shadow",
+        "elevation",
+        "modal",
+        "shadow"
+      ]
+    },
+    "constraint:elevation.surfaces-visible": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/elevation.surfaces-visible",
+      "availability": "implemented",
+      "title": "Panels and cards separate from the page: surface-contrast > 0, or cards are raised with a shadow.",
+      "searchTerms": [
+        "elevation.surfaces-visible",
+        "elevation",
+        "surfaces",
+        "visible"
+      ]
+    },
+    "constraint:emphasis.on-solid": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/emphasis.on-solid",
+      "availability": "implemented",
+      "title": "Text on the primary and critical solids (step 9: filled buttons, danger actions) reaches APCA Lc 60, the level for UI text, in light and dark.",
+      "searchTerms": [
+        "emphasis.on-solid",
+        "emphasis",
+        "on",
+        "solid"
+      ]
+    },
+    "constraint:movement.feedback-fast": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/movement.feedback-fast",
+      "availability": "implemented",
+      "title": "Hover and press feedback settles within 0.3s (the feedback intent's spring duration × motion-scale).",
+      "searchTerms": [
+        "movement.feedback-fast",
+        "movement",
+        "feedback",
+        "fast"
+      ]
+    },
+    "constraint:movement.reveal-bounce": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/movement.reveal-bounce",
+      "availability": "implemented",
+      "title": "The reveal intent (popups, dialogs, drawers opening) does not overshoot: it does not run the bouncy spring while it bounces.",
+      "searchTerms": [
+        "movement.reveal-bounce",
+        "movement",
+        "reveal",
+        "bounce"
+      ]
+    },
+    "constraint:scale.target-size": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/scale.target-size",
+      "availability": "implemented",
+      "title": "The control height at the theme root, (6 + 2I) × u, is at least 24px (WCAG 2.5.8 target size).",
+      "searchTerms": [
+        "scale.target-size",
+        "scale",
+        "target",
+        "size"
+      ]
+    },
+    "constraint:vibrancy.text-contrast": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/vibrancy.text-contrast",
+      "availability": "implemented",
+      "title": "Each brand and feedback role's text step (11) reaches the engine's APCA threshold on the page fill, in light and dark.",
+      "searchTerms": [
+        "vibrancy.text-contrast",
+        "vibrancy",
+        "text",
+        "contrast"
+      ]
+    },
     "context:accordion": {
       "kind": "context",
       "source": "contracts/composition.json#/contexts/accordion",
@@ -1072,6 +1192,53 @@
       "searchTerms": [
         "toggle group",
         "inside toggle group"
+      ]
+    },
+    "domain:color": {
+      "kind": "domain",
+      "source": "contracts/domains/color.json#",
+      "availability": "implemented",
+      "title": "Color",
+      "searchTerms": [
+        "color",
+        "vibrancy",
+        "emphasis",
+        "adaptivity"
+      ]
+    },
+    "domain:geometry": {
+      "kind": "domain",
+      "source": "contracts/domains/geometry.json#",
+      "availability": "implemented",
+      "title": "Geometry",
+      "searchTerms": [
+        "geometry",
+        "scale",
+        "density",
+        "space",
+        "curvature",
+        "line",
+        "elevation"
+      ]
+    },
+    "domain:motion": {
+      "kind": "domain",
+      "source": "contracts/domains/motion.json#",
+      "availability": "implemented",
+      "title": "Motion",
+      "searchTerms": [
+        "motion",
+        "movement"
+      ]
+    },
+    "domain:typography": {
+      "kind": "domain",
+      "source": "contracts/domains/typography.json#",
+      "availability": "implemented",
+      "title": "Typography",
+      "searchTerms": [
+        "typography",
+        "typography"
       ]
     },
     "foundation:colors": {
@@ -11217,6 +11384,236 @@
       "from": "parameter:subtree-density",
       "relation": "expresses",
       "to": "concept:density"
+    },
+    {
+      "from": "constraint:scale.target-size",
+      "relation": "constrains",
+      "to": "concept:scale"
+    },
+    {
+      "from": "constraint:density.compact-border",
+      "relation": "constrains",
+      "to": "concept:density"
+    },
+    {
+      "from": "constraint:elevation.surfaces-visible",
+      "relation": "constrains",
+      "to": "concept:elevation"
+    },
+    {
+      "from": "constraint:elevation.floating-visible",
+      "relation": "constrains",
+      "to": "concept:elevation"
+    },
+    {
+      "from": "constraint:elevation.modal-shadow",
+      "relation": "constrains",
+      "to": "concept:elevation"
+    },
+    {
+      "from": "constraint:movement.reveal-bounce",
+      "relation": "constrains",
+      "to": "concept:movement"
+    },
+    {
+      "from": "constraint:movement.feedback-fast",
+      "relation": "constrains",
+      "to": "concept:movement"
+    },
+    {
+      "from": "constraint:curvature.pill-containers",
+      "relation": "constrains",
+      "to": "concept:curvature"
+    },
+    {
+      "from": "constraint:vibrancy.text-contrast",
+      "relation": "constrains",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "constraint:emphasis.on-solid",
+      "relation": "constrains",
+      "to": "concept:emphasis"
+    },
+    {
+      "from": "domain:color",
+      "relation": "covers",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "domain:color",
+      "relation": "covers",
+      "to": "concept:emphasis"
+    },
+    {
+      "from": "domain:color",
+      "relation": "covers",
+      "to": "concept:adaptivity"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "parameters:roles"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "constraint:vibrancy.text-contrast"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "constraint:emphasis.on-solid"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "covers",
+      "to": "concept:scale"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "covers",
+      "to": "concept:density"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "covers",
+      "to": "concept:space"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "covers",
+      "to": "concept:curvature"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "covers",
+      "to": "concept:line"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "covers",
+      "to": "concept:elevation"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:unit"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:density"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:border"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:curvature"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:container-curvature"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:containers"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "parameters:elevation"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "constraint:scale.target-size"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "constraint:density.compact-border"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "constraint:curvature.pill-containers"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "constraint:elevation.surfaces-visible"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "constraint:elevation.floating-visible"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "constraint:elevation.modal-shadow"
+    },
+    {
+      "from": "domain:motion",
+      "relation": "covers",
+      "to": "concept:movement"
+    },
+    {
+      "from": "domain:motion",
+      "relation": "owns",
+      "to": "parameters:motion-global"
+    },
+    {
+      "from": "domain:motion",
+      "relation": "owns",
+      "to": "parameters:springs"
+    },
+    {
+      "from": "domain:motion",
+      "relation": "owns",
+      "to": "parameters:intents"
+    },
+    {
+      "from": "domain:motion",
+      "relation": "owns",
+      "to": "constraint:movement.reveal-bounce"
+    },
+    {
+      "from": "domain:motion",
+      "relation": "owns",
+      "to": "constraint:movement.feedback-fast"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "covers",
+      "to": "concept:typography"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "parameters:type-scale"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "parameters:faces"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "parameters:voices"
     }
   ]
 }

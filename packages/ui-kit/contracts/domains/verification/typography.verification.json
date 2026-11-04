@@ -1,0 +1,61 @@
+{
+  "$schema": "../../verification.schema.json",
+  "schemaVersion": 1,
+  "domain": "typography",
+  "scope": "The typography resolvers, their theme part and its constraints in node:test. Visual quality is not certified.",
+  "sources": [
+    {
+      "path": "tokens/typography/resolve.ts",
+      "sha256": "c34d5a43c67c6aefc7b67e757e3dbf41a17faa422394eae90906a1553d76de8f"
+    },
+    {
+      "path": "tokens/typography/index.ts",
+      "sha256": "4f91197f58fe81d062e3cce2d90540d4f0a26e81ae9c2c52523e0d0073a19c3e"
+    },
+    {
+      "path": "tokens/typography/format.ts",
+      "sha256": "5d15c64554092bb514050b377d31868bc1c890204a346c296ed5043f305d7496"
+    },
+    {
+      "path": "tokens/themes/params.ts",
+      "sha256": "e95bbad182dfaf2a0d2c415c766fa04a0bfb491d9d35736370e33faa9332a3d2"
+    },
+    {
+      "path": "contracts/domains/typography.json",
+      "sha256": "91ebd8a769b370a7ff01cdf2ea3d508f5f62fe8142a9e889205fcf7b7161d5e4"
+    }
+  ],
+  "renderers": {
+    "resolvers": {
+      "checks": [
+        {
+          "command": "node --test test/typography.test.ts",
+          "covers": "type roles, the scale, voices and text colors"
+        },
+        {
+          "command": "node --test test/numeric.test.ts",
+          "covers": "formatNumber and the numeric voice"
+        },
+        {
+          "command": "node --test test/themes.test.ts",
+          "covers": "theme part, migration and lint"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-04",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/typography.test.ts",
+          "node --test test/numeric.test.ts",
+          "node --test test/themes.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Descriptors (brand-schema step 2) are not built yet; the manifest lists none."
+  ]
+}

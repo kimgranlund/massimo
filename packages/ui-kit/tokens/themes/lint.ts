@@ -3,7 +3,7 @@
 // returns the problems it finds (empty when the theme passes it).
 import constraints from '../../contracts/theme-constraints.json' with { type: 'json' };
 import { defaultParams, type ParamName, type ThemeParams } from './params.ts';
-import type { Theme } from './theme.ts';
+import { themeParameters, type Theme } from './theme.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
 import { generateSpectrum, resolveRoles, SCALE_ROLES, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
 import { densityInset } from '../geometry/resolve.ts';
@@ -89,7 +89,7 @@ export const RULES: Record<string, Rule> = {
 
 /** Lint a theme object: every rule's findings, errors first. `ok` is false when any error fires. */
 export function lintTheme(theme: Partial<Theme>, opts: { spectrum?: Spectrum; only?: string[] } = {}) {
-  const p = { ...defaultParams, ...(theme.parameters ?? {}) } as ThemeParams;
+  const p = { ...defaultParams, ...themeParameters(theme) } as ThemeParams;
   let color: { data: Spectrum; roles: Roles } | undefined;
   const ctx: Ctx = {
     p, theme,

@@ -1,0 +1,53 @@
+{
+  "$schema": "../domain-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "domain:color",
+  "name": "color",
+  "title": "Color",
+  "summary": "Every color: Spectrum generates light and dark 12-step ramps (each step placed by an APCA Lc target against the page), the role mapping picks a family per role, and white and black map to neutral steps. Components use roles only.",
+  "themePart": "color",
+  "concepts": [
+    "vibrancy",
+    "emphasis",
+    "adaptivity"
+  ],
+  "parameterGroups": [
+    "spectrum",
+    "roles"
+  ],
+  "constraints": [
+    "vibrancy.text-contrast",
+    "emphasis.on-solid"
+  ],
+  "descriptors": [],
+  "specs": [
+    "../../../../docs/specs/color.md"
+  ],
+  "resolvers": [
+    "tokens/colors/spectrum/index.ts",
+    "tokens/colors/spectrum/contrast.ts"
+  ],
+  "checks": [
+    {
+      "command": "node --test test/spectrum.test.ts",
+      "covers": "generation, contrast targets, roles, endpoints, the legacy migration"
+    },
+    {
+      "command": "node --test test/themes.test.ts",
+      "covers": "the theme's color part: schema, validator, migration, lint fixtures"
+    }
+  ],
+  "verification": "./verification/color.verification.json",
+  "avoidWhen": [],
+  "searchTerms": [
+    "color",
+    "vibrancy",
+    "emphasis",
+    "adaptivity"
+  ],
+  "themePartFields": [
+    "spectrum",
+    "roles",
+    "endpoints"
+  ]
+}

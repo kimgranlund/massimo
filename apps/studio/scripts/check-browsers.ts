@@ -30,7 +30,7 @@ const base = `http://127.0.0.1:${typeof addr === 'object' && addr ? addr.port : 
 
 async function checkPage(page: Page, path: string): Promise<string[]> {
   await page.goto(`${base}/${path}`);
-  await page.waitForFunction(() => { const t = document.getElementById('out')?.textContent; return !!t && t !== 'pending'; }, null, { timeout: 120_000 });
+  await page.waitForFunction(() => { const t = document.getElementById('out')?.textContent; return !!t && t !== 'pending'; }, null, { timeout: 300_000 }); // WebKit needs ~2 min for the 31k geometry checks under load
   const r = JSON.parse((await page.textContent('#out'))!) as { checks: number; fails: string[] };
   console.log(`  ${path}: ${r.checks} checks, ${r.fails.length} fails`);
   return r.fails;

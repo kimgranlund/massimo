@@ -4,40 +4,43 @@
 import { CONTAINERS } from '../geometry/resolve.ts';
 import { SPRINGS, SPRING_NAMES, INTENTS, BOUNCE_MAX, type SpringName, type IntentName } from '../motion/index.ts';
 
-export interface ParamSpec { label: string; min: number; max: number; step: number; default: number }
+/** The theme part a parameter belongs to (theme schema v2: geometry, typography, motion; color has no PARAMS). */
+export const PARAM_DOMAINS = ['geometry', 'typography', 'motion'] as const;
+export type ParamDomain = (typeof PARAM_DOMAINS)[number];
+export interface ParamSpec { label: string; min: number; max: number; step: number; default: number; domain: ParamDomain }
 
 export const PARAMS = {
-  'radius-scale':   { label: 'Corner radius',  min: 0, max: 3, step: 0.05, default: 1 },
+  'radius-scale':   { label: 'Corner radius',  min: 0, max: 3, step: 0.05, default: 1, domain: 'geometry' },
   // corner-shape: superellipse(k). 1 = round, 2 = squircle, 0 = bevel, negative = scoop.
-  'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1 },
+  'corner-shape':   { label: 'Corner shape',   min: -1, max: 4, step: 0.1, default: 1, domain: 'geometry' },
   // Container curvature: a factor t on each family's concentric radius R0 (the control radius
   // + padding): R = t × R0, 1 concentric, 0 square. [radius] sets it per element.
-  'radius-group':      { label: 'Group radius (× concentric)',      min: 0, max: 1, step: 0.05, default: 1 },
-  'radius-collection': { label: 'Collection radius (× concentric)', min: 0, max: 1, step: 0.05, default: 1 },
-  'radius-card':       { label: 'Card radius (× concentric)',          min: 0, max: 1, step: 0.05, default: 1 },
+  'radius-group':      { label: 'Group radius (× concentric)',      min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
+  'radius-collection': { label: 'Collection radius (× concentric)', min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
+  'radius-card':       { label: 'Card radius (× concentric)',          min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
   // ui-container nesting (C): a container holding containers gives them its radius × k.
-  'container-ratio':   { label: 'Nesting ratio (k)', min: 0.3, max: 0.9, step: 0.05, default: 0.6 },
+  'container-ratio':   { label: 'Nesting ratio (k)', min: 0.3, max: 0.9, step: 0.05, default: 0.6, domain: 'geometry' },
   // Elevation (tokens/elevation, docs/specs/elevation.md): every shadow's alpha × shadow-strength; each
   // surface fill mixed toward the page fill by surface-contrast (0 one fill, shadows only); each lifted
   // level's elevation in dp (the compound shadow's size; 0 casts none); card-raised lifts cards.
-  'shadow-strength':  { label: 'Shadow strength',  min: 0, max: 2, step: 0.05, default: 1 },
-  'surface-contrast': { label: 'Surface contrast', min: 0, max: 1, step: 0.05, default: 1 },
-  'shadow-raised':    { label: 'Raised (dp)',      min: 0, max: 24, step: 1, default: 2 },
-  'shadow-floating':  { label: 'Floating (dp)',    min: 0, max: 24, step: 1, default: 8 },
-  'shadow-modal':     { label: 'Modal (dp)',       min: 0, max: 24, step: 1, default: 24 },
-  'card-raised':      { label: 'Raise cards',      min: 0, max: 1, step: 1, default: 0 },
+  'shadow-strength':  { label: 'Shadow strength',  min: 0, max: 2, step: 0.05, default: 1, domain: 'geometry' },
+  'surface-contrast': { label: 'Surface contrast', min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
+  'shadow-raised':    { label: 'Raised (dp)',      min: 0, max: 24, step: 1, default: 2, domain: 'geometry' },
+  'shadow-floating':  { label: 'Floating (dp)',    min: 0, max: 24, step: 1, default: 8, domain: 'geometry' },
+  'shadow-modal':     { label: 'Modal (dp)',       min: 0, max: 24, step: 1, default: 24, domain: 'geometry' },
+  'card-raised':      { label: 'Raise cards',      min: 0, max: 1, step: 1, default: 0, domain: 'geometry' },
   // Density (resolve.ts DENSITIES): 0 compact, 1 default, 2 loose; insets, padding and gaps only.
-  'density':          { label: 'Density',          min: 0, max: 2, step: 1, default: 1 },
-  'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4.5 },
-  'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0 },
+  'density':          { label: 'Density',          min: 0, max: 2, step: 1, default: 1, domain: 'geometry' },
+  'unit':           { label: 'Unit (px)',      min: 2, max: 12, step: 0.25, default: 4.5, domain: 'geometry' },
+  'border':         { label: 'Border (px)',    min: 0, max: 2, step: 1, default: 0, domain: 'geometry' },
   // Typography: role size = (10px + u) × ratio^step; line heights round up to rhythm × u (0 = natural).
-  'type-ratio':     { label: 'Type ratio',     min: 1, max: 1.5, step: 0.001, default: 1.333 },
-  'type-rhythm':    { label: 'Type rhythm (u)', min: 0, max: 1, step: 0.5, default: 1 },
+  'type-ratio':     { label: 'Type ratio',     min: 1, max: 1.5, step: 0.001, default: 1.333, domain: 'typography' },
+  'type-rhythm':    { label: 'Type rhythm (u)', min: 0, max: 1, step: 0.5, default: 1, domain: 'typography' },
   // Motion (tokens/motion, docs/specs/motion.md): two global multipliers, then per spring its
   // perceptual duration (s) and bounce, then per intent the spring it uses (index into SPRING_NAMES).
   // Durations × scale (0 = instant); every bounce × motion-bounce (0 = critically damped).
-  'motion-scale':   { label: 'Duration scale',  min: 0, max: 2, step: 0.05, default: 1 },
-  'motion-bounce':  { label: 'Bounce scale',   min: 0, max: 1, step: 0.05, default: 1 },
+  'motion-scale':   { label: 'Duration scale',  min: 0, max: 2, step: 0.05, default: 1, domain: 'motion' },
+  'motion-bounce':  { label: 'Bounce scale',   min: 0, max: 1, step: 0.05, default: 1, domain: 'motion' },
   ...springParams(),
   ...intentParams(),
   // Container ladder: padding and gap per level, in units of u (pad-card, gap-card, …).
@@ -47,8 +50,8 @@ export const PARAMS = {
 function springParams() {
   const out = {} as Record<`spring-${SpringName}-duration` | `spring-${SpringName}-bounce`, ParamSpec>;
   for (const [name, s] of Object.entries(SPRINGS) as [SpringName, (typeof SPRINGS)[SpringName]][]) {
-    out[`spring-${name}-duration`] = { label: `${name} duration (s)`, min: 0.05, max: 1.5, step: 0.01, default: s.duration };
-    out[`spring-${name}-bounce`] = { label: `${name} bounce`, min: 0, max: BOUNCE_MAX, step: 0.01, default: s.bounce };
+    out[`spring-${name}-duration`] = { label: `${name} duration (s)`, min: 0.05, max: 1.5, step: 0.01, default: s.duration, domain: 'motion' };
+    out[`spring-${name}-bounce`] = { label: `${name} bounce`, min: 0, max: BOUNCE_MAX, step: 0.01, default: s.bounce, domain: 'motion' };
   }
   return out;
 }
@@ -56,7 +59,7 @@ function springParams() {
 function intentParams() {
   const out = {} as Record<`intent-${IntentName}`, ParamSpec>;
   for (const [intent, spring] of Object.entries(INTENTS) as [IntentName, SpringName][])
-    out[`intent-${intent}`] = { label: `${intent} spring`, min: 0, max: SPRING_NAMES.length - 1, step: 1, default: SPRING_NAMES.indexOf(spring) };
+    out[`intent-${intent}`] = { label: `${intent} spring`, min: 0, max: SPRING_NAMES.length - 1, step: 1, default: SPRING_NAMES.indexOf(spring), domain: 'motion' };
   return out;
 }
 
@@ -66,8 +69,8 @@ function containerParams() {
   for (const [level, spec] of Object.entries(CONTAINERS) as [Level, (typeof CONTAINERS)[Level]][]) {
     // Composite padding stays within the Differential Forms range so its rows can stay 8u.
     const maxPad = level === 'composite' ? 1.5 : 12;
-    out[`pad-${level}`] = { label: `${level} padding (u)`, min: 0, max: maxPad, step: 0.5, default: spec.padding };
-    out[`gap-${level}`] = { label: `${level} gap (u)`, min: 0, max: 12, step: 0.5, default: spec.padding };
+    out[`pad-${level}`] = { label: `${level} padding (u)`, min: 0, max: maxPad, step: 0.5, default: spec.padding, domain: 'geometry' };
+    out[`gap-${level}`] = { label: `${level} gap (u)`, min: 0, max: 12, step: 0.5, default: spec.padding, domain: 'geometry' };
   }
   return out;
 }
@@ -79,3 +82,6 @@ export const paramVar = (name: ParamName) => `--ui-${name}`;
 export const defaultParams = Object.fromEntries(
   Object.entries(PARAMS).map(([k, s]) => [k, s.default]),
 ) as ThemeParams;
+
+/** The parameters of one theme part, in PARAMS order. */
+export const domainParams = (domain: ParamDomain) => (Object.keys(PARAMS) as ParamName[]).filter((k) => PARAMS[k].domain === domain);

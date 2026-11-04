@@ -6,14 +6,14 @@
 // warning); a file that is not a valid theme object always exits 1.
 import { readFileSync, existsSync } from 'node:fs';
 import { lintTheme } from '../tokens/themes/lint.ts';
-import { savedThemes, validateThemeObject, type Theme } from '../tokens/themes/index.ts';
+import { savedThemes, loadTheme, type Theme } from '../tokens/themes/index.ts';
 
 const strict = process.argv.includes('--strict');
 const arg = process.argv.slice(2).find((a) => a !== '--strict');
 const targets: [string, Partial<Theme>][] = [];
 if (!arg) targets.push(['(defaults)', {}], ...Object.entries(savedThemes));
 else if (existsSync(arg)) {
-  const v = validateThemeObject(JSON.parse(readFileSync(arg, 'utf8')));
+  const v = loadTheme(JSON.parse(readFileSync(arg, 'utf8')));
   if (!v.ok) { console.error(`${arg}: not a valid theme object\n  ${v.errors.join('\n  ')}`); process.exit(1); }
   targets.push([v.theme.name, v.theme]);
 } else if (savedThemes[arg]) targets.push([arg, savedThemes[arg]]);

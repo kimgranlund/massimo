@@ -138,7 +138,7 @@ test('white and black map to a neutral step or to pure, at runtime and in a save
   const mapped = endpointVars(data, roles, { white: 'pure', black: 3 });
   assert.equal(mapped['--colors-white'], '#fff');
   assert.equal(mapped['--colors-black'], data.schemes.dark[roles.neutral][2].css);
-  const theme = { schemaVersion: 1 as const, name: 'ends', color: { endpoints: { white: 'pure' as const, black: 3 } } };
+  const theme = { schemaVersion: 2 as const, name: 'ends', color: { endpoints: { white: 'pure' as const, black: 3 } } };
   assert.ok(validateThemeObject(theme).ok);
   assert.equal(validateThemeObject({ ...theme, color: { endpoints: { grey: 1 } } }).ok, false);
   assert.equal(validateThemeObject({ ...theme, color: { endpoints: { white: 13 } } }).ok, false);

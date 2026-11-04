@@ -1,11 +1,12 @@
-// Verification records: components/<name>/verification/<name>.verification.json.
-// A record binds a component folder's sources (by SHA-256) to the checks that cover them and
+// Verification records: components/<name>/verification/<name>.verification.json, and for the theme
+// domains contracts/domains/verification/<domain>.verification.json (named domain:<domain> here).
+// A record binds a component folder's (or a domain's) sources (by SHA-256) to the checks that cover them and
 // the latest run of those checks. The unit tests fail when a bound source changes, so a change
 // to a component is re-verified, not just re-hashed: `run` stamps new hashes only when every
 // declared check passes.
 //
 //   node scripts/verification.ts check [name…]   report stale or missing records (exit 1 if any)
-//   node scripts/verification.ts run <name…|--all>   run the checks; on pass, write hashes + latestRun
+//   node scripts/verification.ts run <name…|domain:<d>…|--all>   run the checks; on pass, write hashes + latestRun
 import { createHash } from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -17,14 +18,20 @@ export interface Check { command: string; covers: string }
 export interface VerificationRecord {
   $schema?: string;
   schemaVersion: 1;
-  component: string;
+  component?: string;
+  domain?: string;
   scope: string;
   sources: { path: string; sha256: string }[];
   renderers: Record<string, { checks: Check[]; latestRun: null | { date: string; outcome: 'pass'; commands: string[]; environment: { node: string } } }>;
   limitations: string[];
 }
 
-export const recordPath = (name: string) => `${KIT}components/${name}/verification/${name}.verification.json`;
+export const recordPath = (name: string) => name.startsWith('domain:')
+  ? `${KIT}contracts/domains/verification/${name.slice(7)}.verification.json`
+  : `${KIT}components/${name}/verification/${name}.verification.json`;
+/** The theme domains with a manifest (contracts/domains/<name>.json), as record names domain:<name>. */
+export const domainRecords = () =>
+  readdirSync(`${KIT}contracts/domains`).filter((f) => f.endsWith('.json')).map((f) => `domain:${f.slice(0, -5)}`).sort();
 export const sha256 = (path: string) => createHash('sha256').update(readFileSync(`${KIT}${path}`)).digest('hex');
 export const componentFolders = () =>
   readdirSync(`${KIT}components`, { withFileTypes: true }).filter((d) => d.isDirectory() && existsSync(`${KIT}components/${d.name}/${d.name}.manifest.json`)).map((d) => d.name).sort();
@@ -76,7 +83,7 @@ export function run(name: string): boolean {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const [cmd, ...args] = process.argv.slice(2);
-  const names = args.includes('--all') || !args.length ? componentFolders() : args;
+  const names = args.includes('--all') || !args.length ? [...componentFolders(), ...domainRecords()] : args;
   if (cmd === 'check') {
     const problems = names.flatMap(staleness);
     console.log(problems.length ? problems.join('\n') : `${names.length} records current`);

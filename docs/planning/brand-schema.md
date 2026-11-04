@@ -8,7 +8,7 @@ date: 2026-11-03
 
 A plan for a brand authoring workflow. Describing a project or a design starts by capturing its **brand**, a typed object. The brand then **hydrates** four domain parts of the theme: typography, color, geometry and motion. Together they are the full theme the kit renders. This extends [theme-schema.md](theme-schema.md): the Brand schema is that plan's L0 Intent and L1 Character, made concrete and typed. The domain parts are its L2, split by concept.
 
-The model is the `artifact-design` skill ([reference copy](../references/claude-artifacts-skills/artifact-design/SKILL.md)). Before building, it writes a compact plan (subject, color, type, layout, signature), reviews the plan for generic choices, then builds from it. Here that plan becomes a stored, typed object that agents can validate, diff and reuse, not prose scratch work.
+The model is the `artifact-design` skill ([reference copy](../references/claude-artifacts-skills/artifact-design/skill.md)). Before building, it writes a compact plan (subject, color, type, layout, signature), reviews the plan for generic choices, then builds from it. Here that plan becomes a stored, typed object that agents can validate, diff and reuse, not prose scratch work.
 
 ## Where we are (2026-11-03)
 
@@ -124,10 +124,17 @@ This is the riskiest step, so it opens with a spike: fit three real brand palett
 
 Step 1 of [theme-schema.md](theme-schema.md) (the theme object) and step 3 (lint) are built. This plan replaces its steps 2, 4 and 5 and keeps step 6 (scoped themes) as it is.
 
+## Progress
+
+- Step 1 built 2026-11-03. Theme schema version 2 adds the `geometry`, `typography`, `color` and `motion` parts, with `migrateTheme` and `loadTheme` for version 1; the jig's Copy writes v2 and Load accepts both. Each parameter's domain is declared in `PARAMS`. The domain manifests live in `contracts/domains/`, each with a verification record, and the registry gains `domain:` and `constraint:` nodes. The domain tests keep the manifests a partition of the groups, concepts and constraints.
+
+## Decided
+
+- Brand storage (2026-11-03): the brand is its own file beside the theme (`brand.json`; schema `contracts/brand.schema.json`). The theme stays a pure render input, one brand can hydrate several themes (product, campaign), and theme provenance points into the brand by path.
+
 ## Open questions
 
 - Scope of color anchors: hue only (the engine generates the ramp), or exact steps that may break the ramp's contrast order?
-- Is the brand stored beside the theme (`brand.json` plus `theme.json`) or inside it (`theme.brand`)?
 - Does `voice` stay prose with closed tone words, or get its own small vocabulary for microcopy patterns?
 - Catalogue breadth: how many groundings and territory archetypes before it earns its keep, and who curates them (sources required per entry)?
 - Can a muse be a living person or a current brand, or only a quality description, to avoid imitation?

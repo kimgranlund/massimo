@@ -1,0 +1,52 @@
+{
+  "$schema": "../domain-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "domain:typography",
+  "name": "typography",
+  "title": "Typography",
+  "summary": "How text looks and reads: font faces, the voices that point at them, the type scale (ratio and rhythm on the unit) and each type role's text color. Role sizes derive from 10px + u and the ratio; voices repoint per subtree.",
+  "themePart": "typography",
+  "concepts": [
+    "typography"
+  ],
+  "parameterGroups": [
+    "type-scale",
+    "faces",
+    "voices"
+  ],
+  "constraints": [],
+  "descriptors": [],
+  "specs": [
+    "../../../../docs/specs/typography.md"
+  ],
+  "resolvers": [
+    "tokens/typography/resolve.ts",
+    "tokens/typography/format.ts"
+  ],
+  "checks": [
+    {
+      "command": "node --test test/typography.test.ts",
+      "covers": "type roles, the scale, voices and text colors"
+    },
+    {
+      "command": "node --test test/numeric.test.ts",
+      "covers": "formatNumber and the numeric voice"
+    },
+    {
+      "command": "node --test test/themes.test.ts",
+      "covers": "the theme's typography part: schema, validator, migration, lint fixtures"
+    }
+  ],
+  "verification": "./verification/typography.verification.json",
+  "avoidWhen": [],
+  "searchTerms": [
+    "typography",
+    "typography"
+  ],
+  "themePartFields": [
+    "parameters",
+    "faces",
+    "voices",
+    "colors"
+  ]
+}

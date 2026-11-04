@@ -1,0 +1,52 @@
+{
+  "$schema": "../domain-manifest.schema.json",
+  "schemaVersion": 1,
+  "id": "domain:motion",
+  "name": "motion",
+  "title": "Motion",
+  "summary": "How things move: four springs (a perceptual duration and a bounce each) solved into linear() easings, the intents that pick a spring, and two global multipliers. Reduced motion collapses durations.",
+  "themePart": "motion",
+  "concepts": [
+    "movement"
+  ],
+  "parameterGroups": [
+    "motion-global",
+    "springs",
+    "intents"
+  ],
+  "constraints": [
+    "movement.reveal-bounce",
+    "movement.feedback-fast"
+  ],
+  "descriptors": [],
+  "specs": [
+    "../../../../docs/specs/motion.md"
+  ],
+  "resolvers": [
+    "tokens/motion/index.ts"
+  ],
+  "checks": [
+    {
+      "command": "node --test test/motion.test.ts",
+      "covers": "springs, easings, intents and the multipliers"
+    },
+    {
+      "command": "node --test test/themes.test.ts",
+      "covers": "the theme's motion part: schema, validator, migration, lint fixtures"
+    },
+    {
+      "command": "npm --prefix ../.. run check:browsers",
+      "covers": "motion easings: every linear() easing parses and matches the spring in Chromium, Firefox and WebKit",
+      "browser": true
+    }
+  ],
+  "verification": "./verification/motion.verification.json",
+  "avoidWhen": [],
+  "searchTerms": [
+    "motion",
+    "movement"
+  ],
+  "themePartFields": [
+    "parameters"
+  ]
+}
