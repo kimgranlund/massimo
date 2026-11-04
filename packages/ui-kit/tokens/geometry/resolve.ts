@@ -234,14 +234,14 @@ export interface ResolvedContainer { preset: ContainerPreset; radius: number; ed
  * (panel, region, page) are square and restart the chain. The gap is the padding wherever the padding
  * is derived; an explicit gap attribute wins.
  */
-export function resolveContainerTree(node: ContainerNode, input: GeometryInput & { ratio?: number; padUnits?: Partial<Record<string, number>>; radiusFactor?: Partial<Record<string, number>> } = {}): ResolvedContainer {
+export function resolveContainerTree(node: ContainerNode, input: GeometryInput & { ratio?: number; padUnits?: Partial<Record<string, number>>; gapUnits?: Partial<Record<string, number>>; radiusFactor?: Partial<Record<string, number>> } = {}): ResolvedContainer {
   const x = inputs(input);
   const u = x.unit, k = input.ratio ?? CONTAINER_RATIO;
   const ctl = controlRadius(u, x.radiusScale, (6 + 2 * x.inset) * u);
   const walk = (n: ContainerNode, depth: number, parent?: { r: number; p: number }, step?: number): ResolvedContainer => {
     const preset = n.preset ?? 'collection', level = presetLevel(preset, n.padding);
     const fam = radiusFamily(level);
-    const base = resolveContainer(level, { ...input, padUnits: input.padUnits?.[level], radius: n.radius, radiusFactor: fam ? input.radiusFactor?.[fam] : undefined });
+    const base = resolveContainer(level, { ...input, padUnits: input.padUnits?.[level], gapUnits: input.gapUnits?.[level], radius: n.radius, radiusFactor: fam ? input.radiusFactor?.[fam] : undefined });
     if (isAreaPreset(preset)) return { preset, radius: 0, edge: base.edge, padding: base.padding, gap: n.gap !== undefined ? n.gap * u : base.gap, depth: 0, children: (n.children ?? []).map((c) => walk(c, 1)) };
     const kids = (n.children ?? []).filter((c) => !isAreaPreset(c.preset ?? 'collection'));
     const r = depth === 1 ? base.radius : Math.max(0, parent!.r - parent!.p);
