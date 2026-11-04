@@ -142,7 +142,8 @@ test('brand build: the studio\'s delivered brand (apps/studio/public/brand) is c
   assert.equal(readFileSync(new URL('public/brand/massimo.fonts.html', studio), 'utf8'), r.fonts);
   assert.deepEqual(JSON.parse(readFileSync(new URL('public/brand/massimo.theme.json', studio), 'utf8')), { $schema: 'https://massimo.dev/contracts/theme.schema.json', ...r.theme });
   assert.match(r.css, /^\/\* massimo: generated/);
-  assert.match(buildBrand(b, { scope: true }).css, /\[data-ui-scope="massimo"\]/);
+  assert.equal(readFileSync(new URL('public/brand/massimo.scope.css', studio), 'utf8'), buildBrand(b, { scope: true }).css, 'the scoped build the jig panel wears is current too');
+  assert.match(readFileSync(new URL('index.html', studio), 'utf8'), /href="brand\/massimo\.scope\.css"/, 'the jig loads it');
 });
 
 test('brand: groundings pair catalogue faces per role, and hydrate fills a face the brand leaves out from them', async () => {

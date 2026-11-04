@@ -23,6 +23,7 @@ test('scope: the base block redeclares the theme and every derived token; colors
   for (const k of Object.keys(SHADOW_LAYERS)) assert.ok(base.includes(`--colors-shadow-layer-${k}:`));
   assert.match(base, /--colors-primary-solid:/);
   assert.match(base, /color: var\(--colors-fg\);/, 'plain text follows the scope');
+  assert.match(base, /font-family: var\(--font-voice-body, var\(--fonts-sans\)\);/, 'and takes the scope\'s body face');
   assert.match(css, /@media \(prefers-color-scheme: dark\) \{\n:root:not\(\.light\) \[data-ui-scope="probe"\]:not\(\.light\) \{/);
   assert.match(css, /:root\.dark \[data-ui-scope="probe"\]:not\(\.light\), \[data-ui-scope="probe"\]\.dark \{/);
   assert.ok(!css.includes(':root.light'), 'no separate light block: the base is light and the dark rules exclude .light');

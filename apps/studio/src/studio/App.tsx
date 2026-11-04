@@ -124,6 +124,8 @@ export function App() {
   const [brand, setBrand] = useState<Brand | null>(null);
   const editTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => () => clearTimeout(editTimer.current), []);
+  // The jig's own brand faces (its panel scope): from the built theme's typography.sources.
+  useEffect(() => { void fetch(`${import.meta.env.BASE_URL}brand/massimo.theme.json`).then((r) => r.json()).then((t: Theme) => { for (const x of t.typography?.sources ?? []) loadFontSource(x.url); }).catch(() => {}); }, []);
   // Web face stylesheets (typography.sources): loaded as <link> elements, one per URL.
   const [sources, setSources] = useState<NonNullable<NonNullable<Theme['typography']>['sources']>>([]);
   // Google Fonts load automatically; another host (a self-hosted stylesheet from pasted JSON) is named in
@@ -324,7 +326,8 @@ export function App() {
 
   return (
     <div className={s.shell}>
-      <aside className={s.panel} aria-label="Jig" data-size="3">
+      {/* The panel wears the jig's own brand (public/brand/massimo.scope.css); the canvas shows the theme being tuned. */}
+      <aside className={s.panel} aria-label="Jig" data-size="3" data-ui-scope="massimo">
         <header className={s.panelHeader}>
           <h1 className={s.brand}>Studio</h1>
           <Segmented<PanelTab> value={tab} onValue={setTab} options={PANEL_TABS} />

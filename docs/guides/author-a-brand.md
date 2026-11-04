@@ -46,6 +46,6 @@ npm run brand -- build path/to/brand.json --out path/to/app/public/brand        
 npm run brand -- build path/to/brand.json --out path/to/app/public/brand --scope  # or inside [data-ui-scope="<name>"]
 ```
 
-It writes `<name>.css` (load it after the kit CSS), `<name>.fonts.html` (the font `<link>` tags for the document head) and `<name>.theme.json` (the hydrated theme). Rebuild whenever the brand changes; the files are generated. Massimo brands itself this way: `apps/studio/brand/massimo.brand.json`, built by `npm run brand:studio` into `apps/studio/public/brand/`. `apps/studio/brand-demo.html` loads only the kit and those files, and checks the result in every engine (`check:browsers`).
+It writes `<name>.css` (with `--scope`, `<name>.scope.css`; load it after the kit CSS), `<name>.fonts.html` (the font `<link>` tags for the document head) and `<name>.theme.json` (the hydrated theme). Rebuild whenever the brand changes; the files are generated. Massimo brands itself this way. `apps/studio/brand/massimo.brand.json` is built by `npm run brand:studio` into `apps/studio/public/brand/`. The jig's own panel wears the scoped build (`data-ui-scope="massimo"`), while its canvas keeps the theme being tuned. `apps/studio/brand-demo.html` loads only the kit and the root build. `check:browsers` checks both in every engine.
 
 To keep a brand inside the kit instead, save its hydrated theme (or a bundle's tuned `theme`) in `tokens/themes/themes.json` under its name. Run `npm run ui-kit:test`.

@@ -12,11 +12,13 @@ import { elevationTokenVars } from '../elevation/index.ts';
 import { SHADOW_LAYERS, selectionVars, withAlpha } from '../colors/spectrum/index.ts';
 import { themeColorVars, themeVars } from './index.ts';
 import { THEME_NAME } from './validate.ts';
+import { DEFAULT_VOICES } from '../typography/resolve.ts';
 import type { Theme } from './theme.ts';
 
-// Each block also sets `color`: text inherits the color computed on <body>, so redeclaring --colors-fg
-// alone would not reach plain text in the scope.
-const block = (sel: string, vars: Record<string, string>) => Object.keys(vars).length ? `${sel} {\n${Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n  color: var(--colors-fg);\n}` : '';
+// Each block also sets `color` and the body voice's `font-family`: plain text inherits the values
+// computed on <body>, so redeclaring --colors-fg or --fonts-* alone would not reach it in the scope.
+const BODY_FONT = `var(--font-voice-body, var(--fonts-${DEFAULT_VOICES.body}))`;
+const block = (sel: string, vars: Record<string, string>) => Object.keys(vars).length ? `${sel} {\n${Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n  color: var(--colors-fg);\n  font-family: ${BODY_FONT};\n}` : '';
 const shadowLayers = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(SHADOW_LAYERS).map(([k, l]) => [`--colors-shadow-layer-${k}`, withAlpha('var(--colors-shadow)', l[mode])]));
 // The selection fills read --ui-emphasis, so a scope redeclares them even without colors of its own.
 const selection = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(selectionVars(mode)).map(([k, v]) => [`--colors-${k}`, v]));

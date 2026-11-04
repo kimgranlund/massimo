@@ -36,6 +36,25 @@ async function checkPage(page: Page, path: string): Promise<string[]> {
   return r.fails;
 }
 
+// The jig wears its own brand on its panel (data-ui-scope="massimo", public/brand/massimo.scope.css)
+// while the canvas keeps the theme being tuned: the panel's buttons take the brand's crisp radius
+// and its body face; the canvas's buttons keep the defaults.
+async function checkStudioBrand(page: Page): Promise<string[]> {
+  await page.goto(`${base}/#/components`);
+  await page.waitForFunction(() => !!document.querySelector('[data-canvas] ui-button') && !!document.querySelector('aside[data-ui-scope=massimo] ui-button'), null, { timeout: 60_000 });
+  await page.waitForTimeout(300);
+  const r = await page.evaluate(() => {
+    const cs = (sel: string) => getComputedStyle(document.querySelector(sel)!);
+    return { panelRadius: parseFloat(cs('aside[data-ui-scope=massimo] ui-button').borderTopLeftRadius), canvasRadius: parseFloat(cs('[data-canvas] ui-button').borderTopLeftRadius), panelFont: cs('aside[data-ui-scope=massimo]').fontFamily, scale: cs('aside[data-ui-scope=massimo]').getPropertyValue('--ui-radius-scale').trim() };
+  });
+  const fails: string[] = [];
+  if (r.scale !== '0.5') fails.push(`studio brand: panel radius scale ${r.scale}, want 0.5 (crisp)`);
+  if (!(r.panelRadius < r.canvasRadius)) fails.push(`studio brand: panel button radius ${r.panelRadius} should be crisper than the canvas's ${r.canvasRadius}`);
+  if (!/^"?Inter"?,/.test(r.panelFont)) fails.push(`studio brand: panel face ${r.panelFont}, want Inter`);
+  console.log(`  studio brand: ${fails.length} fails`);
+  return fails;
+}
+
 // A select fixed near the top opens below its trigger; near the bottom (no room for the list) above.
 async function checkSelect(page: Page): Promise<string[]> {
   const fails = await page.evaluate(async (geometryUrl) => {
@@ -107,6 +126,7 @@ try {
       ...await checkPage(page, 'react-check.html'),
       ...await checkPage(page, 'scope-check.html'),
       ...await checkPage(page, 'brand-demo.html'),
+      ...await checkStudioBrand(page),
       ...errors.map((e) => `page error: ${e}`),
     ];
     for (const f of fails) console.log(`    ${f}`);

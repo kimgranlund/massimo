@@ -5,8 +5,8 @@
 //   node scripts/brand.ts hydrate <brand.json>   print the theme (schema v2) and the open questions
 //   node scripts/brand.ts build <brand.json> [--out dir] [--scope]
 //       write what an app loads: <name>.theme.json (the hydrated theme), <name>.css (the theme on the
-//       document root, or with --scope on [data-ui-scope="<name>"]) and <name>.fonts.html (the font
-//       <link> tags). Load the kit CSS first, then <name>.css.
+//       document root) or with --scope <name>.scope.css (on [data-ui-scope="<name>"]), and
+//       <name>.fonts.html (the font <link> tags). Load the kit CSS first, then the brand CSS.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -49,7 +49,9 @@ else if (cmd === 'lint') {
   const r = buildBrand(load(), { scope: args.includes('--scope') });
   mkdirSync(out, { recursive: true });
   writeFileSync(join(out, `${r.theme.name}.theme.json`), JSON.stringify({ $schema: 'https://massimo.dev/contracts/theme.schema.json', ...r.theme }, null, 2) + '\n');
-  writeFileSync(join(out, `${r.theme.name}.css`), r.css);
+  // The scoped build gets its own file, so one brand can ship both.
+  const cssFile = `${r.theme.name}${args.includes('--scope') ? '.scope' : ''}.css`;
+  writeFileSync(join(out, cssFile), r.css);
   writeFileSync(join(out, `${r.theme.name}.fonts.html`), r.fonts);
-  console.log(`wrote ${out}/${r.theme.name}.{theme.json,css,fonts.html}${r.unresolved.length ? `; ${r.unresolved.length} open questions (npm run brand -- hydrate)` : ''}`);
+  console.log(`wrote ${out}/${r.theme.name}.theme.json, ${cssFile}, ${r.theme.name}.fonts.html${r.unresolved.length ? `; ${r.unresolved.length} open questions (npm run brand -- hydrate)` : ''}`);
 } else { console.error('usage: brand.ts schema [--check] | validate | lint | hydrate | build <brand.json> [--out dir] [--scope]'); process.exit(2); }

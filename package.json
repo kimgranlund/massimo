@@ -16,7 +16,7 @@
     "check:browsers": "node apps/studio/scripts/check-browsers.ts",
     "faces:measure": "node apps/studio/scripts/measure-faces.ts",
     "icons:check": "node apps/studio/scripts/check-icons.ts",
-    "brand:studio": "npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand"
+    "brand:studio": "npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand && npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand --scope"
   },
   "devDependencies": {
     "@pandacss/dev": "^2.4.0",

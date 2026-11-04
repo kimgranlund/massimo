@@ -356,6 +356,7 @@
   --colors-fg-strong: var(--colors-black);
   --colors-fg-selected: var(--colors-neutral-12);
   color: var(--colors-fg);
+  font-family: var(--font-voice-body, var(--fonts-sans));
 }
 @media (prefers-color-scheme: dark) {
 :root:not(#ui-theme):not(.light) {
@@ -673,6 +674,7 @@
   --colors-fg-strong: var(--colors-white);
   --colors-fg-selected: color-mix(in oklch, var(--colors-neutral-12), var(--colors-fg-on-solid) calc(clamp(0, var(--ui-emphasis, 1), 1) * 100%));
   color: var(--colors-fg);
+  font-family: var(--font-voice-body, var(--fonts-sans));
 }
 }
 :root:not(#ui-theme).dark {
@@ -990,4 +992,5 @@
   --colors-fg-strong: var(--colors-white);
   --colors-fg-selected: color-mix(in oklch, var(--colors-neutral-12), var(--colors-fg-on-solid) calc(clamp(0, var(--ui-emphasis, 1), 1) * 100%));
   color: var(--colors-fg);
+  font-family: var(--font-voice-body, var(--fonts-sans));
 }

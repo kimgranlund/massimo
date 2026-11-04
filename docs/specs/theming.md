@@ -111,7 +111,7 @@ Each entry has a canon of descriptor values, its clichés and sources. A groundi
 - the u-based lengths (`unitTokenVars`), the motion tokens and the elevation tokens;
 - the shadow layer colors;
 - its ramps and roles per scheme;
-- `color`, so plain text follows the scope.
+- `color` and the body voice's `font-family`, so plain text follows the scope.
 
 A theme with scheme `auto` follows the document (`.light` / `.dark` on `<html>`, else the OS). With `light` or `dark`, that scheme is the scope's own default. `.light` / `.dark` on the scope element force one either way. A scope redeclares only what the theme needs: the ramp families its roles use, the length and font-size tokens when it sets geometry or typography parameters, the motion tokens when it sets motion parameters, and the elevation tokens when it sets geometry or colors. A scope with colors and geometry is about 50 KB; one that also sets motion is about 115 KB, most of it motion easings. `themeRootCss(theme)` gives the same theme for the whole document, loaded after the kit CSS. `buildBrand(brand, { scope? })` (`npm run brand -- build`) writes a brand's root or scoped CSS, its font links and its hydrated theme for an app. `apps/studio/scope-check.html` (in `check:browsers`) checks a scope's lengths, Panda tokens, shadows, anchor color and scheme against the resolvers, and that the outside keeps the defaults. The jig's Brand page renders the worked brands side by side this way.
 
