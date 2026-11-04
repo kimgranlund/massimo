@@ -23,7 +23,7 @@ A brand expression board gathers examples of how a brand looks, speaks or behave
 
 ## Halfkey examples
 
-The [brand book overview](../assets/halfkey/brand-book-overview.jpeg) gives the page order. The [selected spreads](../assets/halfkey/selected-spreads.jpeg) enlarge individual book pages, and the [App Store sheet](../assets/halfkey/app-store-sheet.jpeg) enlarges the five customer-facing panels from page 15. Use the same six questions at either scale and identify the slide being described.
+The [brand book overview](Halfkey/02-HWIk3kzXEAAbQU3.jpeg) gives the page order. The [selected spreads](Halfkey/01-HWIk3JSWEAAhPND.jpeg) enlarge individual book pages, and the [App Store sheet](Halfkey/03-HWIk3vTWAAEdAQ2.jpeg) enlarges the five customer-facing panels from page 15. Use the same six questions at either scale and identify the slide being described.
 
 | Slide | Slide intent | Strategic value | What it demonstrates | Category | Practical value | Content islands |
 | --- | --- | --- | --- | --- | --- | --- |

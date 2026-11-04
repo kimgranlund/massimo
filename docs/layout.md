@@ -58,6 +58,8 @@ otherwise -> `other/`
 
 ## Legacy
 
+- `docs/design-references/**`
+
 ## Caps
 
 - `D-14` 20
