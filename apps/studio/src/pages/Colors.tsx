@@ -52,9 +52,17 @@ const bigFigure = css({ textStyle: 'heading-1', '& span': { textStyle: 'heading-
 // The primary ramp as a legible showcase (not the palette component): every step with its number,
 // and its purpose once there is room. A row of 12 at narrow widths, a tall column from medium up.
 // Role overview: one chip per role (step-9 swatch, role, family).
-const roleGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(9rem, 1fr))', gap: '3' });
+// The roles, ranked by size on one four-column grid: tall brand cards (primary across two columns),
+// feedback at half their height, then the data series as a thin strip.
+const roleTiers = css({ display: 'flex', flexDirection: 'column', gap: '4' });
+const roleTier = css({ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '4', [CQ_MD]: { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' } });
+const dataTier = css({ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '4', [CQ_MD]: { gridTemplateColumns: 'repeat(6, minmax(0, 1fr))' } });
+const roleCard = css({ display: 'flex', flexDirection: 'column', gap: '2', '&:has([data-primary])': { gridColumn: 'span 2' }, '& figcaption': { display: 'flex', flexDirection: 'column' } });
+const roleFill = css({ display: 'block', width: 'full', borderRadius: 'lg' });
+const brandSwatch = css({ height: '[10rem]' });
+const feedbackSwatch = css({ height: '[5rem]' });
+const dataSwatch = css({ height: '[2rem]' });
 const roleChip = css({ display: 'flex', alignItems: 'center', gap: '3', '& figcaption': { display: 'flex', flexDirection: 'column' } });
-const roleSwatch = css({ width: '8', height: '8', borderRadius: 'lg', flexShrink: 0 });
 const rampStrip = css({
   display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', borderRadius: 'xl', overflow: 'hidden',
   [CQ_MD]: { display: 'flex', flexDirection: 'column', width: '[14rem]', alignSelf: 'stretch' },
@@ -113,6 +121,18 @@ const ROLE_BG: Record<string, string> = {
   critical: css({ bg: 'critical.solid' }), warning: css({ bg: 'warning.solid' }), success: css({ bg: 'success.solid' }), info: css({ bg: 'info.solid' }),
   data1: DATA_BG[0], data2: DATA_BG[1], data3: DATA_BG[2], data4: DATA_BG[3], data5: DATA_BG[4], data6: DATA_BG[5],
 };
+const BRAND_TIER = ['primary', 'secondary', 'neutral'] as const;
+const FEEDBACK_TIER = ['critical', 'warning', 'success', 'info'] as const;
+const DATA_TIER = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6'] as const;
+const roleName = (role: string) => role.startsWith('data') ? `Data ${role.slice(4)}` : role[0].toUpperCase() + role.slice(1);
+function RoleCard({ role, family, className }: { role: string; family: string; className: string }) {
+  return (
+    <figure className={roleCard}>
+      <span className={cx(roleFill, className, ROLE_BG[role])} data-primary={role === 'primary' ? '' : undefined} />
+      <figcaption><span className={rowLabel}>{roleName(role)}</span><span className={caption}>{family}</span></figcaption>
+    </figure>
+  );
+}
 const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '[1px]', width: '3/5', flex: '1', minHeight: '0', marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0, height: '[calc(var(--v) * 100%)]' }, '& > span:last-child': { borderTopRadius: 'sm' } });
 const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
@@ -353,13 +373,10 @@ export function ColorsPage({ spectrum }: PageProps) {
     <Page title="Colors" lead={`Spectrum roles, in context and at the engine. Brand: primary ${r.primary}, secondary ${r.secondary}, neutral ${r.neutral}.`}>
       <Divider />
       <Section id="roles" title="Roles" note="Each role is a family. Brand: primary, secondary, neutral. Feedback: critical, warning, success, info. Data 1–6: chart series and categories. Swatches show step 9 (the solid).">
-        <div className={roleGrid}>
-          {(Object.keys(r) as (keyof typeof r)[]).map((role) => (
-            <figure key={role} className={roleChip}>
-              <span className={cx(roleSwatch, ROLE_BG[role])} />
-              <figcaption><span className={rowLabel}>{role.startsWith('data') ? `Data ${role.slice(4)}` : role[0].toUpperCase() + role.slice(1)}</span><span className={metrics}>{r[role]}</span></figcaption>
-            </figure>
-          ))}
+        <div className={roleTiers}>
+          <div className={roleTier}>{BRAND_TIER.map((role) => <RoleCard key={role} role={role} family={r[role]} className={brandSwatch} />)}</div>
+          <div className={roleTier}>{FEEDBACK_TIER.map((role) => <RoleCard key={role} role={role} family={r[role]} className={feedbackSwatch} />)}</div>
+          <div className={dataTier}>{DATA_TIER.map((role) => <RoleCard key={role} role={role} family={r[role]} className={dataSwatch} />)}</div>
         </div>
       </Section>
       <Divider />

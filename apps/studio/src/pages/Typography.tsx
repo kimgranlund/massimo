@@ -1,15 +1,16 @@
-// Typography: faces and voices, every role with live metrics over a rhythm grid, a short article
-// set in the roles, and numerals (the data-numeric contract with live feature detection).
+// Typography: the typeface first, then every role as a ladder from largest to smallest over a rhythm
+// grid (the settings stay quiet beside each specimen; the full table follows), then voices, text colors,
+// a short article, the face catalogue and numerals (the data-numeric contract with live feature detection).
 import { Fragment } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { numeric } from '../../styled-system/patterns/index.js';
 import { TEXT_COLORS, TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from '@massimo/ui-kit/tokens/typography/resolve';
 import type { PageProps } from './types.ts';
-import { CQ_MD, Divider, Page, Section, dataTable, fmt, metrics, nameCell, noteCell, rowLabel, tableScroller } from './shared.tsx';
+import { CQ_MD, Divider, Page, Section, caption, dataTable, fmt, metrics, nameCell, noteCell, rowLabel, subTitle, tableScroller } from './shared.tsx';
 import { Numerals } from './TypographyNumerals.tsx';
 import { FaceCatalogue } from './TypographyFaces.tsx';
 
-const typeRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem 1fr', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
+const typeRow = css({ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '2', [CQ_MD]: { gridTemplateColumns: '14rem minmax(0, 1fr)', gap: '6' }, alignItems: 'start', paddingBlock: '3', borderBottomWidth: 'thin', borderColor: 'border' });
 // Below the medium breakpoint the specimen comes first and its specs follow.
 const typeMeta = css({ display: 'flex', flexDirection: 'column', gap: '0.5', order: 1, [CQ_MD]: { order: 0 } });
 // Baseline grid behind each specimen: a faint line per rhythm unit, every 4th line stronger.
@@ -18,8 +19,8 @@ const rhythmLine = (pct: number) => `linear-gradient(to bottom, transparent calc
 const rhythmSample = css({ backgroundImage: `${rhythmLine(18)}, ${rhythmLine(7)}` });
 // The baseline grid pitch is rhythm × u, computed from the canvas's own theme variables.
 const rhythmGrid = css({ backgroundSize: '100% calc(4px * var(--ui-type-rhythm) * var(--ui-unit)), 100% calc(1px * var(--ui-type-rhythm) * var(--ui-unit))' });
-const rhythmText = css({ whiteSpace: 'pre-wrap', maxWidth: 'prose' });
-const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content' });
+const rhythmText = css({ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', maxWidth: 'prose' });
+const codeSample = css({ whiteSpace: 'pre', bg: 'bg.muted', padding: '3', borderRadius: 'md', width: 'fit-content', maxWidth: 'full', overflowX: 'auto' });
 // Same two columns as the role rows: role names in the spec column (from the medium breakpoint),
 // the article in the sample column at a readable measure.
 const article = css({
@@ -40,8 +41,20 @@ const VOICE_FONT: Record<string, string> = {
   body: css({ fontFamily: 'var(--font-voice-body, var(--fonts-sans))' }),
   ui: css({ fontFamily: 'var(--font-voice-ui, var(--fonts-controls))' }),
   numeric: numeric(),
-  code: css({ fontFamily: 'var(--font-voice-code, var(--fonts-mono))', whiteSpace: 'pre' }),
+  code: css({ fontFamily: 'var(--font-voice-code, var(--fonts-mono))', whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }),
 };
+
+// The typeface specimen: one oversized Aa in a narrow column, the character sets of the display and
+// body voices in a wide one.
+const typeface = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '6', alignItems: 'end', [CQ_MD]: { gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 2fr)' } });
+// The display role sets the mark's face, weight and color; only its size is a one-off.
+const typefaceMark = css({ fontSize: '[10rem]', lineHeight: '[1]' });
+const typefaceSets = css({ display: 'flex', flexDirection: 'column', gap: '5' });
+const typefaceSet = css({ display: 'flex', flexDirection: 'column', gap: '1' });
+const glyphs = css({ overflowWrap: 'anywhere', lineHeight: 'snug', fontSize: '[1.25em]' });
+/** The first family of a font stack, for a label. */
+const faceName = (stack: string) => stack.split(',')[0].replace(/["']/g, '').trim();
+const GLYPHS = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz', '0123456789 $ % , . ?'];
 
 // The In context article: [role, element, text], one block per role.
 const ARTICLE: [string, 'span' | 'h2' | 'h3' | 'p' | 'pre', string][] = [
@@ -88,8 +101,59 @@ const SAMPLES: Record<TypeRoleName, string> = {
 export function TypographyPage({ params, voices, faces, typeColors }: PageProps) {
   const opts = { unit: params.unit, ratio: params['type-ratio'], rhythm: params['type-rhythm'], voices, faces };
   const grid = params['type-rhythm'] * params.unit;
+  // The ladder runs largest to smallest, so the scale is the shape of the section.
+  const ladder = (Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => ({ role, t: resolveType(role, opts), r: TYPE_ROLES[role] })).sort((a, b) => b.t.size - a.t.size);
   return (
     <Page title="Typography" lead={<>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for caption, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'}.</>}>
+      <Divider />
+      <Section id="typeface" title="Typeface" note="The faces this theme sets its display and body voices in, with what each can show.">
+        <div className={typeface}>
+          <span data-type="display" className={typefaceMark} aria-hidden="true">Aa</span>
+          <div className={typefaceSets}>
+            {(['display', 'body'] as const).map((v) => (
+              <div key={v} className={typefaceSet}>
+                <span className={caption}>{v === 'display' ? 'Display' : 'Body'} · {faceName(faces[voices[v]])}</span>
+                <div className={cx(glyphs, VOICE_FONT[v])}>{GLYPHS.map((g) => <div key={g}>{g}</div>)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+      <Divider />
+      <Section id="roles" title="Roles" note={'Largest to smallest, each specimen set with data-type="<role>" (or textStyle in Panda), its settings beside it. Metrics come from the resolver for the current settings.'}>
+        <div>
+          {ladder.map(({ role, t, r }) => (
+            <div key={role} className={typeRow}>
+              <div className={typeMeta}>
+                <span className={rowLabel}>{r.label}</span>
+                <span className={caption}>{fmt(t.size)} / {t.lineHeightRatio ?? fmt(t.lineHeight)} · {t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
+              </div>
+              {role === 'code'
+                ? <div data-type={role} className={codeSample}>{SAMPLES[role]}</div>
+                : <div className={cx(rhythmSample, grid && !t.lineHeightRatio ? rhythmGrid : undefined)}><div data-type={role} className={cx(rhythmText, roleInk(role))}>{SAMPLES[role]}</div></div>}
+            </div>
+          ))}
+        </div>
+        <h3 className={subTitle}>Settings</h3>
+        <div className={tableScroller}>
+          <table className={dataTable} aria-label="Type role settings">
+            <thead><tr><th>Role</th><th>Token</th><th>Voice → face</th><th>Size / line</th><th>Scale</th><th>Weight</th><th>Tracking</th></tr></thead>
+            <tbody>
+              {ladder.map(({ role, t, r }) => (
+                <tr key={role}>
+                  <td className={nameCell}>{r.label}</td>
+                  <td className={metrics}>{role}</td>
+                  <td className={metrics}>{t.voice} → {t.face}</td>
+                  <td className={metrics}>{fmt(t.size)} / {t.lineHeightRatio ?? fmt(t.lineHeight)}</td>
+                  <td className={metrics}>{'u' in r ? `${r.u}u` : `step ${r.step}`}</td>
+                  <td className={metrics}>{t.weight}</td>
+                  <td className={metrics}>{t.tracking ? `${t.tracking}em` : '0'}{t.transform !== 'none' ? ' · upper' : ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Section>
       <Divider />
       <Section id="voices" title="Faces and voices" note="Faces are the stacks; voices say what text is for; roles point at voices. Repoint a voice with data-font-<voice>=&quot;<face>&quot;.">
         {VOICES.map((v) => (
@@ -102,30 +166,6 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
             <div className={cx(voiceSample, VOICE_FONT[v])}>{VOICE_SAMPLES[v]}</div>
           </div>
         ))}
-      </Section>
-      <Divider />
-      <Section id="faces" title="Face catalogue" note="The curated faces themes and brands draw from (contracts/face-catalogue.json): descriptor, source, the weight range the source provides, what this browser loaded, and metrics measured by npm run faces:measure. The theme lint warns when a voice needs a weight its face lacks, or a web face has no stylesheet in typography.sources.">
-        <FaceCatalogue />
-      </Section>
-      <Divider />
-      <Section id="roles" title="Roles" note={'Each specimen uses data-type="<role>" (or textStyle in Panda). Metrics come from the resolver for the current settings.'}>
-        {(Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => {
-          const t = resolveType(role, opts);
-          const r = TYPE_ROLES[role];
-          return (
-            <div key={role} className={typeRow}>
-              <div className={typeMeta}>
-                <span className={rowLabel}>{r.label}</span>
-                <span className={metrics}>{role} · {t.voice} → {t.face}</span>
-                <span className={metrics}>{fmt(t.size)} / {t.lineHeightRatio ?? fmt(t.lineHeight)} · {'u' in r ? `${r.u}u` : `step ${r.step}`}</span>
-                <span className={metrics}>{t.weight}{t.tracking ? ` · ${t.tracking}em` : ''}{t.transform !== 'none' ? ' · upper' : ''}</span>
-              </div>
-              {role === 'code'
-                ? <div data-type={role} className={codeSample}>{SAMPLES[role]}</div>
-                : <div className={cx(rhythmSample, grid && !t.lineHeightRatio ? rhythmGrid : undefined)}><div data-type={role} className={cx(rhythmText, roleInk(role))}>{SAMPLES[role]}</div></div>}
-            </div>
-          );
-        })}
       </Section>
       <Divider />
       <Section id="text-colors" title="Text colors" note="Every text color token, on the surface it is meant for, and the type roles that use it. Display, headings and titles take fg.strong (black in light, white in dark: neutral step 3); the other roles inherit, usually fg. Remap any role in the jig's Typography tab, Text colors (theme typography.colors).">
@@ -141,6 +181,10 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
             </Fragment>
           ))}
         </article>
+      </Section>
+      <Divider />
+      <Section id="faces" title="Face catalogue" note="The curated faces themes and brands draw from (contracts/face-catalogue.json): descriptor, source, the weight range the source provides, what this browser loaded, and metrics measured by npm run faces:measure. The theme lint warns when a voice needs a weight its face lacks, or a web face has no stylesheet in typography.sources.">
+        <FaceCatalogue />
       </Section>
       <Divider />
       <Section id="numerals" title="Numerals" note={'data-numeric="<variants>" (or numeric() in Panda) sets figures in the numeric voice; bare is tabular lining. Detection renders each OpenType feature off and on in every face and compares the result: yes = it changes the rendering, default = the face already renders that way, one form = the face has a single figure style, — = not in this face (on this browser and machine).'}>
