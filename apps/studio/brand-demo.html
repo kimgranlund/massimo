@@ -1,0 +1,59 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Massimo brand demo</title>
+<link rel="stylesheet" href="brand/massimo.css">
+</head><body><div id="root"></div><pre id="out" hidden>pending</pre>
+<script type="module">
+// A consumer of the kit and one built brand (npm run brand:studio → public/brand/): the kit CSS and
+// elements, then the brand's CSS and font links, and nothing from the jig. Renders a small product
+// screen and checks that it carries the brand: the anchored primary, the faces, the curvature, the
+// type ratio and the scheme. "fails": [] means the hand-off works.
+import './src/index.css';
+import '@massimo/ui-kit/components/button/element';
+import '@massimo/ui-kit/components/input/element';
+import '@massimo/ui-kit/components/listbox/element';
+import '@massimo/ui-kit/components/btg/element';
+import { resolveControl } from '@massimo/ui-kit/tokens';
+
+const base = import.meta.env.BASE_URL;
+const fonts = await fetch(`${base}brand/massimo.fonts.html`).then((r) => r.text());
+document.head.insertAdjacentHTML('beforeend', fonts);
+const theme = await fetch(`${base}brand/massimo.theme.json`).then((r) => r.json());
+document.getElementById('root').innerHTML = `
+  <ui-container preset="page">
+    <ui-container preset="card" padding="lg">
+      <h1 id="h" data-type="display">Massimo</h1>
+      <p id="p" data-type="body-large">See every token's effect live and hand the result off exactly.</p>
+      <ui-input label="Theme name" value="spring-catalog"></ui-input>
+      <ui-segmented label="Scheme" value="auto"><ui-option value="auto">Auto</ui-option><ui-option value="light">Light</ui-option><ui-option value="dark">Dark</ui-option></ui-segmented>
+      <ui-container preset="group"><ui-button id="b" variant="primary">Copy theme</ui-button><ui-button>Load</ui-button><ui-tag>12 changed</ui-tag></ui-container>
+    </ui-container>
+  </ui-container>`;
+await customElements.whenDefined('ui-button');
+await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+const settle = async () => { await new Promise((r) => requestAnimationFrame(r)); await Promise.all(document.getAnimations().map((a) => a.finished.catch(() => {}))); };
+await settle();
+const fails = []; let checks = 0;
+const cs = (id) => getComputedStyle(document.getElementById(id));
+const ctx = Object.assign(document.createElement('canvas'), { width: 1, height: 1 }).getContext('2d', { willReadFrequently: true });
+const rgb = (c) => { ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = '#000'; ctx.fillStyle = c; ctx.fillRect(0, 0, 1, 1); return [...ctx.getImageData(0, 0, 1, 1).data].slice(0, 3); };
+const ok = (name, cond, detail) => { checks++; if (!cond) fails.push(`${name}: ${detail}`); };
+const near = (a, b, t = 3) => rgb(a).every((v, i) => Math.abs(v - rgb(b)[i]) <= t);
+const p = { ...theme.geometry?.parameters, ...theme.typography?.parameters };
+// The anchored primary is the exact brand color in light (the anchor's step becomes the solid).
+const anchor = theme.color.anchors.find((a) => a.role === 'primary').value;
+ok('primary button is the drafting-blue anchor', near(cs('b').backgroundColor, anchor), `${rgb(cs('b').backgroundColor)} vs ${anchor}`);
+// Faces: display and body from the brand's face catalogue refs.
+ok('display face', /^"?Inter Tight"?/.test(cs('h').fontFamily), cs('h').fontFamily);
+ok('body face', /^"?Inter"?,/.test(cs('p').fontFamily), cs('p').fontFamily);
+// Curvature (crisp) and the type ratio (gentle) reach the components.
+const ctl = resolveControl({ unit: p.unit ?? 4.5, radiusScale: p['radius-scale'] ?? 1 }).radius;
+ok('button radius follows the brand curvature', Math.abs(parseFloat(cs('b').borderTopLeftRadius) - ctl) < 0.6, `${cs('b').borderTopLeftRadius} vs ${ctl}`);
+ok('type ratio', getComputedStyle(document.documentElement).getPropertyValue('--ui-type-ratio').trim() === String(p['type-ratio']), getComputedStyle(document.documentElement).getPropertyValue('--ui-type-ratio'));
+// Scheme: dark on <html> switches the brand's colors.
+const lightBg = cs('b').backgroundColor;
+document.documentElement.classList.add('dark'); await settle();
+ok('the primary follows the dark scheme', !near(cs('b').backgroundColor, lightBg), `${rgb(cs('b').backgroundColor)}`);
+document.documentElement.classList.remove('dark'); await settle();
+const out = document.getElementById('out');
+out.textContent = JSON.stringify({ checks, fails }, null, 1);
+if (new URLSearchParams(location.search).has('check')) out.hidden = false;
+</script></body></html>

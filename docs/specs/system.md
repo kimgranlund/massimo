@@ -99,6 +99,7 @@ Never edit these by hand; `npm run ui-kit:test` fails when a committed one is st
 | `packages/ui-kit/graph.json` | `npm run registry:graph` | manifests and contracts ([registry](registry.md)) |
 | `packages/ui-kit/contracts/theme.schema.json` | `npm run theme:schema` | `tokens/themes/theme.ts` and the parameter, Spectrum, role, face and voice exports ([theming](theming.md#theme-object)) |
 | `packages/ui-kit/contracts/face-catalogue.json` (`measured` blocks only) | `npm run faces:measure` (root; Chromium, network for Google faces) | the curated entries in the same file ([typography](typography.md#face-catalogue)) |
+| `apps/studio/public/brand/massimo.{css,fonts.html,theme.json}` | `npm run brand:studio` | `apps/studio/brand/massimo.brand.json` through `buildBrand` ([theming](theming.md#brand)) |
 | `packages/ui-kit/contracts/brand.schema.json` | `npm run brand:schema` | `tokens/brand/index.ts`, `contracts/brand-catalogue.json` and the descriptor scales ([theming](theming.md#brand)) |
 | verification hashes in `components/*/verification/*.json` | `npm run verification -- run <folder…\|--all>`, stamped only when the checks pass | bound sources ([registry](registry.md)) |
 | `packages/ui-kit/styled-system/`, `dist/ui-kit.css` (not committed) | `npm run build` | Panda preset |

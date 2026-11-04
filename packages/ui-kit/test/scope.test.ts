@@ -16,7 +16,10 @@ test('scope: the base block redeclares the theme and every derived token; colors
   const base = css.slice(0, css.indexOf('}\n'));
   assert.match(base, /^\[data-ui-scope="probe"\] \{/);
   assert.match(base, /--ui-unit: 3;/);
-  for (const k of [...Object.keys(unitTokenVars()), ...Object.keys(motionTokenVars()), ...Object.keys(elevationTokenVars())]) assert.ok(base.includes(`${k}:`), `base redeclares ${k}`);
+  for (const k of [...Object.keys(unitTokenVars()), ...Object.keys(elevationTokenVars())]) assert.ok(base.includes(`${k}:`), `base redeclares ${k}`);
+  assert.ok(!base.includes(Object.keys(motionTokenVars())[0] + ':'), 'no motion tokens without motion parameters');
+  const moving = themeScopeCss({ ...theme, motion: { parameters: { 'motion-scale': 0.5 } } });
+  for (const k of Object.keys(motionTokenVars())) assert.ok(moving.includes(`${k}:`), `with motion parameters it redeclares ${k}`);
   for (const k of Object.keys(SHADOW_LAYERS)) assert.ok(base.includes(`--colors-shadow-layer-${k}:`));
   assert.match(base, /--colors-primary-solid:/);
   assert.match(base, /color: var\(--colors-fg\);/, 'plain text follows the scope');
@@ -39,4 +42,13 @@ test('scope: a theme with its own scheme leads with it; the scope element can st
   const light = themeScopeCss({ ...theme, scheme: 'light' });
   assert.match(light, /\[data-ui-scope="probe"\]\.dark \{/);
   assert.ok(!light.includes(':root.dark'));
+});
+
+test('scope: only the ramp families its roles use are emitted', () => {
+  const css = themeScopeCss(theme);
+  const fams = new Set([...css.matchAll(/--colors-spectrum-([a-z0-9-]+?)-\d+:/g)].map((m) => m[1]));
+  const refs = new Set([...css.matchAll(/var\(--colors-spectrum-([a-z0-9-]+?)-\d+\)/g)].map((m) => m[1]));
+  assert.deepEqual([...fams].sort(), [...refs].sort(), 'every declared family is referenced, and every referenced one declared');
+  assert.ok(fams.size < 13, `${fams.size} families, not all`);
+  assert.ok(css.length < 80_000, `${css.length} bytes`);
 });

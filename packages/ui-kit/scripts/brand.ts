@@ -3,10 +3,16 @@
 //   node scripts/brand.ts validate <brand.json>
 //   node scripts/brand.ts lint <brand.json>      brand findings, then the hydrated theme's lint
 //   node scripts/brand.ts hydrate <brand.json>   print the theme (schema v2) and the open questions
-import { readFileSync, writeFileSync } from 'node:fs';
+//   node scripts/brand.ts build <brand.json> [--out dir] [--scope]
+//       write what an app loads: <name>.theme.json (the hydrated theme), <name>.css (the theme on the
+//       document root, or with --scope on [data-ui-scope="<name>"]) and <name>.fonts.html (the font
+//       <link> tags). Load the kit CSS first, then <name>.css.
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { brandJsonSchemaText, validateBrand, hydrate, lintBrand } from '../tokens/brand/index.ts';
 import { lintTheme, validateThemeObject } from '../tokens/themes/index.ts';
+import { buildBrand } from '../tokens/brand/build.ts';
 
 const [cmd, arg, flag] = process.argv.slice(2);
 const load = () => {
@@ -31,4 +37,13 @@ else if (cmd === 'lint') {
   const v = validateThemeObject(theme);
   console.log(JSON.stringify({ theme, unresolved, valid: v.ok }, null, 2));
   if (!v.ok) process.exit(1);
-} else { console.error('usage: brand.ts schema [--check] | validate | lint | hydrate <brand.json>'); process.exit(2); }
+} else if (cmd === 'build') {
+  const args = process.argv.slice(4);
+  const out = args.includes('--out') ? args[args.indexOf('--out') + 1] : '.';
+  const r = buildBrand(load(), { scope: args.includes('--scope') });
+  mkdirSync(out, { recursive: true });
+  writeFileSync(join(out, `${r.theme.name}.theme.json`), JSON.stringify({ $schema: 'https://massimo.dev/contracts/theme.schema.json', ...r.theme }, null, 2) + '\n');
+  writeFileSync(join(out, `${r.theme.name}.css`), r.css);
+  writeFileSync(join(out, `${r.theme.name}.fonts.html`), r.fonts);
+  console.log(`wrote ${out}/${r.theme.name}.{theme.json,css,fonts.html}${r.unresolved.length ? `; ${r.unresolved.length} open questions (npm run brand -- hydrate)` : ''}`);
+} else { console.error('usage: brand.ts schema [--check] | validate | lint | hydrate | build <brand.json> [--out dir] [--scope]'); process.exit(2); }

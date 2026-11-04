@@ -1,0 +1,328 @@
+{
+  "$schema": "https://massimo.dev/contracts/theme.schema.json",
+  "schemaVersion": 2,
+  "name": "massimo",
+  "description": "Massimo: see every token's effect live and hand the result off exactly",
+  "character": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "layered",
+    "space": "airy",
+    "type-scale": "gentle",
+    "vibrancy": "natural",
+    "neutral": "subtle",
+    "movement": "calm",
+    "emphasis": "balanced",
+    "adaptivity": "both",
+    "iconography": "phosphor"
+  },
+  "geometry": {
+    "parameters": {
+      "radius-scale": 0.5,
+      "shadow-strength": 1,
+      "surface-contrast": 1,
+      "shadow-raised": 2,
+      "shadow-floating": 8,
+      "shadow-modal": 24,
+      "card-raised": 0,
+      "border": 0,
+      "pad-group": 1.5,
+      "gap-group": 1.5,
+      "pad-collection": 3,
+      "gap-collection": 3,
+      "pad-card-xs": 3,
+      "gap-card-xs": 3,
+      "pad-card-sm": 4.5,
+      "gap-card-sm": 4.5,
+      "pad-card-md": 6,
+      "gap-card-md": 6,
+      "pad-card-lg": 7.5,
+      "gap-card-lg": 7.5,
+      "pad-card-xl": 9,
+      "gap-card-xl": 9,
+      "pad-panel": 9,
+      "gap-panel": 9,
+      "pad-region": 12,
+      "gap-region": 12,
+      "pad-page": 12,
+      "gap-page": 12
+    }
+  },
+  "motion": {
+    "parameters": {
+      "motion-scale": 1.25,
+      "motion-bounce": 0.25,
+      "intent-toggle": 2
+    }
+  },
+  "color": {
+    "parameters": {
+      "emphasis": 1
+    },
+    "spectrum": {
+      "chroma": 80,
+      "base": 80,
+      "mat": "tinted",
+      "tint": 30
+    },
+    "anchors": [
+      {
+        "role": "primary",
+        "value": "#2f54c4",
+        "name": "drafting blue"
+      },
+      {
+        "role": "secondary",
+        "value": "#d9480f",
+        "name": "signal orange"
+      },
+      {
+        "role": "neutral",
+        "value": "#5c6166",
+        "name": "graphite"
+      }
+    ]
+  },
+  "typography": {
+    "parameters": {
+      "type-ratio": 1.2
+    },
+    "faces": {
+      "sans": "\"Inter\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "display": "\"Inter Tight\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "mono": "\"JetBrains Mono\", ui-monospace, Menlo, Consolas, monospace"
+    },
+    "sources": [
+      {
+        "family": "Inter",
+        "url": "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      },
+      {
+        "family": "Inter Tight",
+        "url": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&display=swap"
+      },
+      {
+        "family": "JetBrains Mono",
+        "url": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap"
+      }
+    ],
+    "voices": {
+      "body": "sans",
+      "heading": "display",
+      "display": "display",
+      "code": "mono"
+    }
+  },
+  "scheme": "auto",
+  "icons": "phosphor",
+  "provenance": {
+    "geometry.parameters.radius-scale": {
+      "source": "brand",
+      "reason": "form.curvature → curvature.crisp"
+    },
+    "geometry.parameters.border": {
+      "source": "brand",
+      "reason": "form.line → line.borderless"
+    },
+    "geometry.parameters.shadow-strength": {
+      "source": "brand",
+      "reason": "form.elevation → elevation.layered"
+    },
+    "geometry.parameters.surface-contrast": {
+      "source": "brand",
+      "reason": "form.elevation → elevation.layered"
+    },
+    "geometry.parameters.shadow-raised": {
+      "source": "brand",
+      "reason": "form.elevation → elevation.layered"
+    },
+    "geometry.parameters.shadow-floating": {
+      "source": "brand",
+      "reason": "form.elevation → elevation.layered"
+    },
+    "geometry.parameters.shadow-modal": {
+      "source": "brand",
+      "reason": "form.elevation → elevation.layered"
+    },
+    "geometry.parameters.card-raised": {
+      "source": "brand",
+      "reason": "form.elevation → elevation.layered"
+    },
+    "geometry.parameters.pad-group": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-group": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-collection": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-collection": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-card-xs": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-card-xs": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-card-sm": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-card-sm": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-card-md": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-card-md": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-card-lg": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-card-lg": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-card-xl": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-card-xl": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-panel": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-panel": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-region": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-region": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.pad-page": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "geometry.parameters.gap-page": {
+      "source": "brand",
+      "reason": "grounding:swiss-international → space.airy"
+    },
+    "typography.parameters.type-ratio": {
+      "source": "brand",
+      "reason": "type.character.type-scale → type-scale.gentle"
+    },
+    "color.spectrum.chroma": {
+      "source": "brand",
+      "reason": "territories:Calibration bench (laboratory) → vibrancy.natural"
+    },
+    "color.spectrum.base": {
+      "source": "brand",
+      "reason": "territories:Calibration bench (laboratory) → vibrancy.natural"
+    },
+    "color.spectrum.mat": {
+      "source": "brand",
+      "reason": "color.character.neutral → neutral.subtle"
+    },
+    "color.spectrum.tint": {
+      "source": "brand",
+      "reason": "color.character.neutral → neutral.subtle"
+    },
+    "motion.parameters.motion-scale": {
+      "source": "brand",
+      "reason": "movement → movement.calm"
+    },
+    "motion.parameters.motion-bounce": {
+      "source": "brand",
+      "reason": "movement → movement.calm"
+    },
+    "motion.parameters.intent-toggle": {
+      "source": "brand",
+      "reason": "movement → movement.calm"
+    },
+    "color.parameters.emphasis": {
+      "source": "brand",
+      "reason": "color.character.emphasis → emphasis.balanced"
+    },
+    "scheme": {
+      "source": "brand",
+      "reason": "adaptivity → adaptivity.both"
+    },
+    "icons": {
+      "source": "brand",
+      "reason": "iconography.set → iconography.phosphor"
+    },
+    "color.anchors.0": {
+      "source": "brand",
+      "reason": "color.anchors.0 (drafting blue)"
+    },
+    "color.anchors.1": {
+      "source": "brand",
+      "reason": "color.anchors.1 (signal orange)"
+    },
+    "color.anchors.2": {
+      "source": "brand",
+      "reason": "color.anchors.2 (graphite)"
+    },
+    "typography.faces.sans": {
+      "source": "brand",
+      "reason": "type.faces.body"
+    },
+    "typography.sources.0": {
+      "source": "brand",
+      "reason": "type.faces.body"
+    },
+    "typography.faces.display": {
+      "source": "brand",
+      "reason": "type.faces.display"
+    },
+    "typography.sources.1": {
+      "source": "brand",
+      "reason": "type.faces.display"
+    },
+    "typography.faces.mono": {
+      "source": "brand",
+      "reason": "type.faces.utility"
+    },
+    "typography.sources.2": {
+      "source": "brand",
+      "reason": "type.faces.utility"
+    },
+    "typography.voices.body": {
+      "source": "brand",
+      "reason": "type.faces"
+    },
+    "typography.voices.heading": {
+      "source": "brand",
+      "reason": "type.faces"
+    },
+    "typography.voices.display": {
+      "source": "brand",
+      "reason": "type.faces"
+    },
+    "typography.voices.code": {
+      "source": "brand",
+      "reason": "type.faces"
+    }
+  }
+}

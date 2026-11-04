@@ -131,3 +131,16 @@ test('brand: a face ref fills family, descriptor and source from the face catalo
   assert.deepEqual(theme.typography!.sources!.map((s) => s.family).sort(), ['Fraunces', 'Inter']);
   assert.equal(validateBrand({ ...minimal, type: { faces: { body: {} } } }).ok, false, 'a face needs a ref or a family and descriptor');
 });
+
+test('brand build: the studio\'s delivered brand (apps/studio/public/brand) is current with its brand (npm run brand:studio)', async () => {
+  const { buildBrand } = await import('../tokens/brand/build.ts');
+  const studio = new URL('../../../apps/studio/', import.meta.url);
+  const b = brand(JSON.parse(readFileSync(new URL('brand/massimo.brand.json', studio), 'utf8')));
+  const r = buildBrand(b);
+  assert.deepEqual(r.unresolved, []);
+  assert.equal(readFileSync(new URL('public/brand/massimo.css', studio), 'utf8'), r.css);
+  assert.equal(readFileSync(new URL('public/brand/massimo.fonts.html', studio), 'utf8'), r.fonts);
+  assert.deepEqual(JSON.parse(readFileSync(new URL('public/brand/massimo.theme.json', studio), 'utf8')), { $schema: 'https://massimo.dev/contracts/theme.schema.json', ...r.theme });
+  assert.match(r.css, /^\/\* massimo: generated/);
+  assert.match(buildBrand(b, { scope: true }).css, /\[data-ui-scope="massimo"\]/);
+});

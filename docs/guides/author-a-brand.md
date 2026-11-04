@@ -38,4 +38,14 @@ npm run brand -- hydrate path/to/brand.json   # the theme and the open questions
 
 ## 4. Hand off
 
-Save `brand.json` beside the theme. A theme saved in `tokens/themes/themes.json` takes the hydrated theme (or the bundle's tuned `theme`), under the brand's name. Run `npm run ui-kit:test`.
+Save `brand.json` beside the theme, then build what the app loads:
+
+```sh
+cd packages/ui-kit
+npm run brand -- build path/to/brand.json --out path/to/app/public/brand          # the theme on the document root
+npm run brand -- build path/to/brand.json --out path/to/app/public/brand --scope  # or inside [data-ui-scope="<name>"]
+```
+
+It writes `<name>.css` (load it after the kit CSS), `<name>.fonts.html` (the font `<link>` tags for the document head) and `<name>.theme.json` (the hydrated theme). Rebuild whenever the brand changes; the files are generated. Massimo brands itself this way: `apps/studio/brand/massimo.brand.json`, built by `npm run brand:studio` into `apps/studio/public/brand/`. `apps/studio/brand-demo.html` loads only the kit and those files, and checks the result in every engine (`check:browsers`).
+
+To keep a brand inside the kit instead, save its hydrated theme (or a bundle's tuned `theme`) in `tokens/themes/themes.json` under its name. Run `npm run ui-kit:test`.

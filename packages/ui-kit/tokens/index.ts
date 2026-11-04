@@ -16,6 +16,7 @@ export * from './themes/index.ts';
 export * from './elevation/index.ts';
 export * from './brand/index.ts';
 export * from './brand/examples.ts';
+export * from './brand/build.ts';
 export * from './geometry/resolve.ts';
 export * from './typography/resolve.ts';
 export * from './typography/format.ts';
