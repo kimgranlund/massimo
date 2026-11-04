@@ -44,6 +44,9 @@ Closed vocabularies wherever a value steers generation. Free text appears only w
 | Field | Holds | From artifact-design | Hydrates |
 |---|---|---|---|
 | `subject` | name, audience, primary job, `sources` (materials, instruments, environment, history), `kind` (product, editorial, tool, campaign, institution) | Subject | the expression budget: how far descriptors may sit from the defaults |
+| `grounding` | the cultural heritage, movement, school or tradition the brand stands in: `{ name (e.g. Swiss International Style, Bauhaus, Memphis, Arts and Crafts, Japanese mingei, Brutalism, Californian modernism, Scandinavian functionalism), period, place, principles (3–5 lines), relation: inherit, reinterpret or react against }`, one primary plus optional secondary | one source of visual character, drawn from history | the defaults each territory starts from; the avoid list (what the movement rejects); face descriptors (a movement's typographic canon); the curvature and line character |
+| `territories` | 1–3 visual territories: named, bounded worlds the brand may draw from, each `{ name, description, materials, palette (anchor-like colors), textures, light, composition, type, motion, imagery, out-of-bounds }`, one marked `primary` | the subject's materials, environment and instruments, made explicit and bounded | descriptor choices per concept (each territory proposes one value per concept and hydrate takes the primary territory's, unless a field overrides it); candidate color anchors; imagery and icon treatment |
+| `muse` | the creative muse: a person, work, object, place or archetype the brand is in conversation with, `{ kind (person, work, object, place, archetype), name, what to take (a quality, never a copy), what to leave }` | the "one real aesthetic risk that serves the subject" | the `signature` (which concept the muse pushes) and its rationale; the expressive end of a territory |
 | `color.anchors` | 2–6 named colors, each `{ name, value (any CSS color), role: primary, secondary, neutral, accent or data }` | Color: four to six named colors with exact values and roles | `color` (see Color anchoring) |
 | `color.feedback` | `independent` (generated apart from the accent) or explicit anchors for critical, warning, success, info | semantic colors independent of the accent | roles |
 | `color.character` | vibrancy (muted, natural, vivid), harmony (mono, analogous, complementary, split, triadic), neutral (cool, true, warm, tinted-from-primary) | specific palette; neutrals related to the accent | spectrum chroma, base, falloff, harmony, tint |
@@ -56,7 +59,19 @@ Closed vocabularies wherever a value steers generation. Free text appears only w
 | `iconography` | set, weight | | `icons` |
 | `signature` | one concept to push, with a reason | Signature | which descriptor leaves the defaults |
 | `avoid` | anti-defaults, plus the built-in list (warm cream, serif and terracotta; near-black with one acid accent; purple-to-blue; pill-everything) | avoid generated-looking defaults | brand lint |
-| `rationale` | per field, one line tying the choice to `subject.sources` | "if a choice could be pasted into another subject, revise it" | provenance reasons |
+| `rationale` | per field, one line tying the choice to `subject.sources`, `grounding`, a territory or the muse | "if a choice could be pasted into another subject, revise it" | provenance reasons |
+
+### Grounding, territories and muse
+
+These three fields are the brand's creative frame. Every closed choice below them (`color`, `type`, `form`, `movement`) has to trace back to one of them, so the frame is what makes a brand specific rather than generic.
+
+- **Grounding** answers where the brand comes from. A movement or heritage comes with principles and a canon: the Swiss International Style brings grotesque faces, grids, flat elevation and a crisp curvature; Arts and Crafts brings humanist and serif faces, warm tinted neutrals and soft curvature. `relation` matters: a brand that reacts against Brutalism takes its principles as the avoid list, not as defaults.
+- **Territories** answer what world the brand draws from. They are bounded: `out-of-bounds` lists what a territory excludes, and the brand lint flags a choice that lands there. Two or three territories let one brand serve different surfaces (a product UI from the primary territory, a campaign from a secondary one) without breaking character.
+- **The muse** answers what the brand is in conversation with. It sets the one pushed concept (the signature) and its reason. `what to take` names a quality ("the restraint of a Dieter Rams radio", "the color temperature of a Hammershøi interior"), never a copy, and `what to leave` keeps the reference from becoming pastiche.
+
+Precedence in hydrate: explicit fields, then the primary territory, then grounding, then the kit defaults. Provenance records which source set each value (`brand.territory:<name>`, `brand.grounding`, `brand.muse`).
+
+Vocabulary: grounding names and territory archetypes come from a curated catalogue (`contracts/brand-catalogue.json`). Each entry carries its principles, a canon (faces, palette tendencies, curvature, line, elevation and movement descriptors), its known clichés and its sources. Free names are allowed, but they come back from hydrate as `unresolved`, with the nearest catalogue entries listed, until a person confirms or describes them. The catalogue is data and appears in the registry as `grounding:` and `territory:` nodes.
 
 ### Domain parts and domain manifests
 
@@ -89,8 +104,8 @@ This is the riskiest step, so it opens with a spike: fit three real brand palett
 
 ### The authoring workflow
 
-1. **Capture.** From a brief, a reference site or a design file, an agent fills the brand object. It returns `unresolved` questions instead of guessing, then asks them in one round.
-2. **Review.** `lintBrand`; revise any choice that fails the genericness review.
+1. **Capture.** From a brief, a reference site or a design file, an agent fills the brand object, frame first: grounding, territories and muse, then the closed choices that follow from them. It returns `unresolved` questions instead of guessing, then asks them in one round.
+2. **Review.** `lintBrand`. Revise any choice that fails the genericness review, has no trace to the frame, lands out of a territory's bounds, or copies the muse instead of taking a quality from it.
 3. **Hydrate.** Produce theme v2 with provenance.
 4. **Render.** In the jig: a Brand page showing the brand object, its anchors against the generated ramps, the faces and the signature, with every other page under the theme, in light and dark, at three densities.
 5. **Tune.** Hand edits in the jig land in provenance as `hand`; Copy hands over the brand and the theme together.
@@ -103,7 +118,7 @@ This is the riskiest step, so it opens with a spike: fit three real brand palett
 | 1 | theme schema v2 (domain parts, v1 migration); `contracts/domains/*.json` manifests with verification records; registry nodes for domains | every saved theme migrates and round-trips; each domain manifest lists exactly its export's members; graph has `domain:` nodes |
 | 2 | descriptor tables per domain; `describe` and the descriptor resolver | every descriptor resolves inside the parameter ranges; the round trip holds for every descriptor value |
 | 3 | spike: color anchoring on three real palettes | a report with ΔE per anchor and step placement; decide the override rule |
-| 4 | `brand.schema.json` (generated, like the theme schema), `validateBrand`, `lintBrand`, `hydrate` with provenance and `unresolved` | three worked brands validate, lint and hydrate into themes that pass `lintTheme` |
+| 4 | `brand.schema.json` (generated, like the theme schema), `validateBrand`, `lintBrand`, `hydrate` with provenance and `unresolved`; `brand-catalogue.json` with a first set of groundings and territory archetypes | three worked brands with different groundings validate, lint and hydrate into themes that pass `lintTheme`; every hydrated value traces to a field, a territory, the grounding or the muse |
 | 5 | face catalogue: curated stacks and web sources with descriptors, weights and measured metrics | every catalogue face loads in the jig and reports its weights; type lint uses it |
 | 6 | the workflow: a brand-authoring skill (capture, review, hydrate, render) and the jig Brand page; Copy and Load carry the brand | three distinct briefs produce three brands whose themes read as different side by side, and an agent can reproduce one from its brief |
 
@@ -114,4 +129,6 @@ Step 1 of [theme-schema.md](theme-schema.md) (the theme object) and step 3 (lint
 - Scope of color anchors: hue only (the engine generates the ramp), or exact steps that may break the ramp's contrast order?
 - Is the brand stored beside the theme (`brand.json` plus `theme.json`) or inside it (`theme.brand`)?
 - Does `voice` stay prose with closed tone words, or get its own small vocabulary for microcopy patterns?
+- Catalogue breadth: how many groundings and territory archetypes before it earns its keep, and who curates them (sources required per entry)?
+- Can a muse be a living person or a current brand, or only a quality description, to avoid imitation?
 - Font sources: which hosts may a theme name (system, Google Fonts, self-hosted), and who measures metrics: the catalogue or the runtime?
