@@ -90,7 +90,7 @@ test('selected option roles follow the emphasis: balanced is neutral 1 / 12 in l
   assert.equal(light['--colors-bg-selected'], selectionVars('light')['bg-selected']);
   assert.match(light['--colors-bg-selected'], /var\(--colors-neutral-3\), var\(--colors-neutral-1\) calc\(clamp\(0, var\(--ui-emphasis, 1\), 1\) \* 100%\)\), var\(--colors-primary-3\)/);
   assert.equal(light['--colors-fg-selected'], 'var(--colors-neutral-12)');
-  assert.match(dark['--colors-bg-selected'], /var\(--colors-neutral-4\), var\(--colors-primary-9\)/, 'dark: neutral 4 when quiet, else the primary solid');
+  assert.match(dark['--colors-bg-selected'], /var\(--colors-neutral-4\), var\(--colors-primary-solid\)/, 'dark: neutral 4 when quiet, else the primary solid (anchored step included)');
   assert.match(dark['--colors-fg-selected'], /var\(--colors-neutral-12\), var\(--colors-fg-on-solid\)/);
 });
 

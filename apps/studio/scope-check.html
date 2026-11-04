@@ -49,11 +49,12 @@ differ('primary solid differs outside', cs('b0').backgroundColor, cs('b1').backg
 // Scheme: the scope follows the document's dark class, and .light on the scope forces light.
 const lightFg = cs('t1').color, lightBg = cs('b1').backgroundColor;
 document.documentElement.classList.add('dark');
-await new Promise((r) => requestAnimationFrame(r));
+const settle = async () => { await new Promise((r) => requestAnimationFrame(r)); await Promise.all(document.getAnimations().map((x) => x.finished.catch(() => {}))); };
+await settle();
 differ('text color follows the document dark scheme (scope)', cs('t1').color, lightFg);
-same('the anchored solid holds its hue family in dark (scope)', cs('b1').backgroundColor, cs('b1').backgroundColor);
+differ('the solid follows the dark scheme (scope)', cs('b1').backgroundColor, lightBg);
 document.getElementById('scope').classList.add('light');
-await new Promise((r) => requestAnimationFrame(r));
+await settle();
 same('.light on the scope forces light under a dark document', cs('t1').color, lightFg);
 same('.light keeps the light solid', cs('b1').backgroundColor, lightBg);
 document.documentElement.classList.remove('dark'); document.getElementById('scope').classList.remove('light');

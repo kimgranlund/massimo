@@ -91,6 +91,8 @@ export function themeFromCharacter(character: Character, theme: Partial<Theme> =
   if (Object.keys(spectrum).length) out.color = { ...theme.color, ...out.color, spectrum: { ...spectrum, ...(theme.color?.spectrum ?? {}) } };
   if (scheme && theme.scheme === undefined) out.scheme = scheme;
   if (icons && theme.icons === undefined) out.icons = icons;
+  // Hand-set icons and scheme win too, and keep the hand's provenance.
+  for (const k of ['icons', 'scheme'] as const) if (theme[k] !== undefined && provenance[k]?.source === 'character') provenance[k] = theme.provenance?.[k] ?? { source: 'hand' };
   if (Object.keys(provenance).length) out.provenance = provenance;
   return { theme: out, unresolved };
 }

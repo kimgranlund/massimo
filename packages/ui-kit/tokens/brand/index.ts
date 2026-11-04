@@ -71,7 +71,10 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
   const errors: string[] = [];
   const err = (path: string, msg: string) => errors.push(`${path}: ${msg}`);
   if (!isObject(raw)) return { ok: false, errors: ['brand: must be an object'] };
-  const input: Record<string, any> = structuredClone(raw); // normalization below (face refs) never touches the caller's object
+  // A copy: normalization below (face refs) never touches the caller's object. JSON data only.
+  let input: Record<string, any>;
+  try { input = structuredClone(raw); } catch { return { ok: false, errors: ['brand: must be plain JSON data (no functions or symbols)'] }; }
+  const list = (path: string, v: unknown, what = 'a list'): unknown[] => { if (v === undefined) return []; if (Array.isArray(v)) return v; err(path, `must be ${what}`); return []; };
   const TOP = ['$schema', 'schemaVersion', 'name', 'subject', 'grounding', 'territories', 'muse', 'color', 'type', 'form', 'movement', 'adaptivity', 'voice', 'iconography', 'signature', 'avoid', 'rationale'];
   for (const k of Object.keys(input)) if (!TOP.includes(k)) err(k, 'unknown section');
   if (input.schemaVersion !== BRAND_SCHEMA_VERSION) err('schemaVersion', `must be ${BRAND_SCHEMA_VERSION}`);
@@ -108,9 +111,11 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
         if (!str(t.name)) err(`${p}.name`, 'is required');
         if (!str(t.description, 1000)) err(`${p}.description`, 'is required');
         if (t.ref !== undefined && !territoryOf(t.ref)) err(`${p}.ref`, `unknown territory (one of ${TERRITORIES.map((e) => e.id).join(', ')})`);
-        for (const c of t.palette ?? []) if (!isAnchorColor(c?.value)) err(`${p}.palette`, 'colors must be #rrggbb');
+        for (const c of list(`${p}.palette`, t.palette) as any[]) if (!isAnchorColor(c?.value)) err(`${p}.palette`, 'colors must be #rrggbb');
+        for (const k of ['materials'] as const) for (const x of list(`${p}.${k}`, t[k])) if (!str(x)) err(`${p}.${k}`, 'must be strings');
         for (const [k, v] of Object.entries(t.character ?? {})) scaleValue(`${p}.character.${k}`, k, v);
-        for (const o of t.outOfBounds ?? []) if (typeof o !== 'string') err(`${p}.outOfBounds`, 'must be strings');
+        for (const o of list(`${p}.outOfBounds`, t.outOfBounds)) if (typeof o !== 'string') err(`${p}.outOfBounds`, 'must be strings');
+        if (t.character !== undefined && !isObject(t.character)) err(`${p}.character`, 'must be an object');
       });
       if (input.territories.filter((t: any) => t?.primary).length > 1) err('territories', 'at most one primary');
     }
@@ -129,7 +134,7 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
     if (!isObject(c)) err('color', 'must be an object');
     else {
       const roles: string[] = [];
-      (c.anchors ?? []).forEach((a: any, i: number) => {
+      (list('color.anchors', c.anchors) as any[]).forEach((a: any, i: number) => {
         const p = `color.anchors.${i}`;
         if (!str(a?.name)) err(`${p}.name`, 'is required');
         if (!isAnchorColor(a?.value)) err(`${p}.value`, 'must be #rrggbb');
@@ -150,10 +155,8 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
     else {
       for (const [role, raw] of Object.entries<any>(ty.faces ?? {})) {
         const p = `type.faces.${role}`;
-        // A catalogue ref fills the family, descriptor and source it leaves out.
-        const entry = isObject(raw) && raw.ref ? FACE_CATALOGUE.find((x) => x.id === raw.ref) : undefined;
-        const f = entry ? { family: entry.family, descriptor: entry.descriptor, source: entry.source, ...raw } : raw;
-        if (entry) ty.faces[role] = f;
+        const f = resolveFace(raw);
+        if (f !== raw) ty.faces[role] = f;
         if (!['display', 'body', 'utility'].includes(role)) { err(p, 'must be display, body or utility'); continue; }
         if (f?.ref !== undefined && !FACE_CATALOGUE.some((x) => x.id === f.ref)) err(`${p}.ref`, 'unknown catalogue face');
         if (!isObject(f) || typeof f.family !== 'string' || !/^[\w\s.-]{1,60}$/.test(f.family)) err(`${p}.family`, 'must be a family name');
@@ -171,7 +174,7 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
   if (input.adaptivity !== undefined) scaleValue('adaptivity', 'adaptivity', input.adaptivity);
   if (input.voice !== undefined) {
     if (!isObject(input.voice)) err('voice', 'must be an object');
-    else for (const w of input.voice.tone ?? []) if (!TONE_WORDS.includes(w)) err('voice.tone', `words come from ${TONE_WORDS.join(', ')}`);
+    else for (const w of list('voice.tone', input.voice.tone) as any[]) if (!TONE_WORDS.includes(w)) err('voice.tone', `words come from ${TONE_WORDS.join(', ')}`);
   }
   if (input.iconography?.set !== undefined && !ICON_SET_NAMES.includes(input.iconography.set)) err('iconography.set', `must be one of ${ICON_SET_NAMES.join(', ')}`);
   if (input.signature !== undefined) {
@@ -184,6 +187,13 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
   const { $schema: _, ...brand } = input;
   return { ok: true, brand: brand as unknown as Brand };
 }
+
+/** A face with its catalogue ref resolved: the family, descriptor and source it leaves out filled in. */
+export function resolveFace<T>(raw: T): T {
+  const entry = isObject(raw) && raw.ref ? FACE_CATALOGUE.find((x) => x.id === raw.ref) : undefined;
+  return entry ? { family: entry.family, descriptor: entry.descriptor, source: entry.source, ...(raw as object) } as T : raw;
+}
+const facesOf = (b: Brand) => Object.fromEntries(Object.entries(b.type?.faces ?? {}).map(([k, f]) => [k, resolveFace(f)])) as NonNullable<NonNullable<Brand['type']>['faces']>;
 
 /** The primary territory: the one marked primary, else the first. */
 export const primaryTerritory = (b: Brand) => b.territories?.find((t) => t.primary) ?? b.territories?.[0];
@@ -228,7 +238,7 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
   } else unresolved.push('color.anchors: no brand colors; the palette is generated from the character alone (name 2–6 anchors, or confirm that is intended)');
   if (b.color?.feedback === 'anchored' && !b.color.anchors?.some((a) => ['critical', 'warning', 'success', 'info'].includes(a.role))) unresolved.push('color.feedback: anchored, but no critical, warning, success or info anchor');
   // Faces and voices.
-  const faces = b.type?.faces ?? {};
+  const faces = facesOf(b);
   const tf: NonNullable<Theme['typography']> = { ...(theme.typography ?? {}) };
   const setFace = (face: 'display' | 'sans' | 'serif' | 'mono', f: BrandFace, path: string) => {
     const s = stack(f);
@@ -302,16 +312,17 @@ export function lintBrand(b: Brand): BrandFinding[] {
   // Accents only: saturated, non-neutral anchors (a clay neutral is not a terracotta accent).
   const anchors = (b.color?.anchors ?? []).filter((a) => a.role !== 'neutral' && saturation(a.value) >= 0.35);
   const hues = anchors.map((a) => hueOf(a.value)).filter((h): h is number => h !== undefined);
-  const display = b.type?.faces?.display?.descriptor;
+  const display = facesOf(b).display?.descriptor;
   if (display === 'serif' && hues.some((h) => h >= 10 && h <= 35) && b.adaptivity !== 'dark-first') out.push({ id: 'brand.cliche', severity: 'warning', message: 'serif display with a terracotta accent on a light page: the warm-cream default' });
   if (b.adaptivity === 'dark-first' && anchors.length === 1 && hues.some((h) => (h >= 70 && h <= 150) || (h >= 5 && h <= 20))) out.push({ id: 'brand.cliche', severity: 'warning', message: 'dark-first with one acid accent: the near-black default' });
   const pa = anchors.find((a) => a.role === 'primary'), sa = anchors.find((a) => a.role === 'secondary');
   if (pa && sa && hueOf(pa.value)! >= 255 && hueOf(pa.value)! <= 300 && hueOf(sa.value)! >= 200 && hueOf(sa.value)! < 255) out.push({ id: 'brand.cliche', severity: 'warning', message: 'purple primary with a blue secondary: the gradient-hero default' });
   if (character.curvature === 'pill' && character.elevation === 'floating') out.push({ id: 'brand.cliche', severity: 'warning', message: 'pill curvature with floating elevation: everything rounded and lifted' });
   // Faces: each brand face against the catalogue: known, and serving the weights its voices need.
-  const need = voiceWeights(new Set(b.type?.faces?.display?.descriptor === 'serif' || b.type?.faces?.body?.descriptor === 'serif' ? ['display', 'heading'] as const : []));
+  const fs = facesOf(b);
+  const need = voiceWeights(new Set(fs.display?.descriptor === 'serif' || fs.body?.descriptor === 'serif' ? ['display', 'heading'] as const : []));
   const roleVoices: Record<string, (keyof typeof need)[]> = { display: ['display', 'heading'], body: ['body', 'ui'], utility: ['code', 'numeric'] };
-  for (const [role, f] of Object.entries(b.type?.faces ?? {})) {
+  for (const [role, f] of Object.entries(facesOf(b))) {
     const entry = catalogueFace(f!.family);
     if (!entry) { out.push({ id: 'brand.face-catalogue', severity: 'info', message: `${role} face ${f!.family} is not in the face catalogue: its weights and metrics are unchecked` }); continue; }
     const want = [...new Set(roleVoices[role].flatMap((v) => need[v]))];
@@ -337,7 +348,8 @@ export function lintBrand(b: Brand): BrandFinding[] {
 export function brandJsonSchema() {
   const strict = (properties: Record<string, unknown>, extra: Record<string, unknown> = {}) => ({ type: 'object', additionalProperties: false, properties, ...extra });
   const scales = (ids: string[]) => strict(Object.fromEntries(ids.map((id) => [id, { enum: DESCRIPTORS[id].values.map((v) => v.name), description: `${DESCRIPTORS[id].title}: ${DESCRIPTORS[id].reads}` }])));
-  const text = { type: 'string', minLength: 1 };
+  // The same caps as the validator (str): 400 by default, 1000 for a territory description, 600 for a rationale.
+  const text = { type: 'string', minLength: 1, maxLength: 400 };
   const hex = { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' };
   const face = strict({ ref: { enum: FACE_CATALOGUE.map((f) => f.id), description: 'A face catalogue id; fills family, descriptor and source.' }, family: { type: 'string', pattern: '^[\\w\\s.-]{1,60}$' }, descriptor: { enum: [...FACE_DESCRIPTORS] }, source: { enum: [...FACE_SOURCES] }, url: { type: 'string', pattern: '^https://' }, weights: { type: 'array', items: { type: 'integer', minimum: 100, maximum: 900 } } }, { anyOf: [{ required: ['ref'] }, { required: ['family', 'descriptor'] }] });
   const ground = (required: string[]) => strict({ ref: { enum: GROUNDINGS.map((g) => g.id) }, name: text, relation: { enum: [...RELATIONS] }, principles: { type: 'array', items: text } }, { required });
@@ -354,7 +366,7 @@ export function brandJsonSchema() {
       subject: strict({ name: text, audience: text, primaryJob: text, kind: { enum: [...SUBJECT_KINDS] }, sources: { type: 'array', minItems: 1, items: text } }, { required: ['name', 'audience', 'primaryJob', 'kind', 'sources'] }),
       grounding: strict({ primary: ground(['relation']), secondary: ground(['relation']) }, { required: ['primary'] }),
       territories: { type: 'array', minItems: 1, maxItems: 3, items: strict({
-        name: text, ref: { enum: TERRITORIES.map((t) => t.id) }, primary: { type: 'boolean' }, description: text,
+        name: text, ref: { enum: TERRITORIES.map((t) => t.id) }, primary: { type: 'boolean' }, description: { ...text, maxLength: 1000 },
         materials: { type: 'array', items: text }, palette: { type: 'array', items: strict({ name: text, value: hex }, { required: ['name', 'value'] }) },
         textures: text, light: text, composition: text, type: text, motion: text, imagery: text,
         outOfBounds: { type: 'array', items: { type: 'string', description: '<scale>.<value> or free text' } },
@@ -374,7 +386,7 @@ export function brandJsonSchema() {
       iconography: strict({ set: { enum: [...ICON_SET_NAMES] }, weight: { enum: ['thin', 'light', 'regular', 'bold'] } }),
       signature: strict({ concept: text, scale: { enum: Object.keys(DESCRIPTORS) }, reason: text }, { required: ['scale', 'reason'] }),
       avoid: { type: 'array', items: text },
-      rationale: { type: 'object', additionalProperties: text },
+      rationale: { type: 'object', additionalProperties: { ...text, maxLength: 600 } },
     }, { required: ['schemaVersion', 'name', 'subject'] }),
   };
 }

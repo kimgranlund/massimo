@@ -79,7 +79,11 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
   const claimed = new Map<string, string>();
   const neutralFamilies = new Set(data.metadata?.light.neutrals ?? Object.keys(data.schemes.light).filter((n) => /neutral|gray|mauve|slate|sage|olive|sand/i.test(n)));
   const hueGap = (a: number, b: number) => { const d = Math.abs(a - b) % 360; return Math.min(d, 360 - d); };
-  for (const anchor of anchors) {
+  // Claim in role order (brand, feedback, then data), so a brand role keeps its family whatever order
+  // the anchors were written in.
+  const order = Object.keys(roles);
+  const sorted = [...anchors].sort((a, b) => order.indexOf(a.role) - order.indexOf(b.role));
+  for (const anchor of sorted) {
     let family = outRoles[anchor.role];
     if (!family || !out.schemes.light[family]) continue;
     const want = srgbToOklch(anchor.value);

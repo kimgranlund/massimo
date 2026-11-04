@@ -13,7 +13,7 @@
 // so both get the same rules and the nesting chain in one layer. (The level tags ui-group … ui-page
 // were removed: docs/decisions/0016-remove-container-level-tags.md.)
 import { defineSlotRecipe } from '@pandacss/dev';
-import { CARD_PADDINGS, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
+import { CARD_PADDINGS, CONTAINER_DEPTH, CONTAINERS, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
 import { CONTROL_RADIUS, mergeStyles, tagRules } from '../recipe-parts.ts';
 
 type Layout = Exclude<ContainerLevel, 'composite'>;
@@ -88,14 +88,15 @@ export { uiContainer as 'container' };
  * also the gap unless [gap] is set. An area inside the chain restarts it. resolveContainerTree is the
  * same rule in numbers.
  */
-export const CHAIN_DEPTH = 8;
+export const CHAIN_DEPTH = CONTAINER_DEPTH;
 // Chain containers: ui-container and the React Container (data-ui=container); areas are left out. A rule for depth n matches exactly depth n (n chain
 // ancestors-or-self, not n + 1), so a nested container never redeclares its parent's variables.
 const C = ':is(ui-container, [data-ui=container]):not([preset=panel], [preset=region], [preset=page])';
 // Areas (square): the panel, region and page presets.
 const AREA = ':is(ui-container, [data-ui=container]):is([preset=panel], [preset=region], [preset=page])';
 const chain = (n: number) => Array.from({ length: n }, () => C).join(' ');
-const depthSel = (n: number) => `${chain(n)}:not(${chain(n + 1)})`;
+// Exactly depth n; the deepest rule also takes every deeper container, which then repeats its parent's radius.
+const depthSel = (n: number) => n === CHAIN_DEPTH ? chain(n) : `${chain(n)}:not(${chain(n + 1)})`;
 const ratio = (r: string) => `max(${CONTROL_RADIUS}, calc(${r} * var(--ui-container-ratio)))`;
 /** The smallest derived padding (1u): a deep or tight tree never collapses to nothing, or below zero. */
 const FLOOR = 'var(--u)';
@@ -108,6 +109,11 @@ const mixFresh = (n: number, asRoot: string, nested: string) => `calc(${fresh(n)
 
 export const containerChain = Object.fromEntries([
   [AREA, { ...Object.fromEntries(Array.from({ length: CHAIN_DEPTH }, (_, i) => [`--uc-a${i}`, '1'])), '--uc-step': 'initial' }],
+  // A root without levels clears an outer step; zero specificity, so a levels rule below wins.
+  [`:where(${depthSel(1)})`, { '--uc-step': 'initial' }],
+  // levels on a container at any depth (a root, or one restarted under an area): the padding splits
+  // evenly from it down, from its own radius (--uc-r).
+  ...Array.from({ length: CHAIN_DEPTH }, (_, j) => j + 1).map((L) => [`${C}[levels="${L}"]`, { '--uc-step': `max(0px, calc((var(--uc-r) - ${CONTROL_RADIUS}) / ${L}))`, '&:not([gap])': { gap: 'var(--uc-step)' } }]),
   ...Array.from({ length: CHAIN_DEPTH }, (_, i) => i + 1).flatMap((n) => {
     const r = `var(--uc-r${n})`, p = `var(--uc-p${n})`;
     const ladder = 'calc(var(--cp) * var(--u))';
@@ -117,22 +123,25 @@ export const containerChain = Object.fromEntries([
         [`--uc-r${n}`]: n === 1 ? 'var(--cr)' : mixFresh(n, 'var(--cr)', `max(0px, calc(var(--uc-r${n - 1}) - var(--uc-p${n - 1})))`),
         [`--uc-p${n}`]: `var(--uc-step, ${leaf})`,
         [`--uc-a${n}`]: '0',
-        // The root's levels (D): every level below takes the same step; a root without levels clears it.
-        ...(n === 1 ? { '--uc-step': 'initial' } : {}),
+        // Its own radius under one name, for the levels rules below (one per value, any depth).
+        '--uc-r': r,
         borderRadius: r, padding: `max(0px, calc(${p} - var(--b)))`,
         ...(n > 1 ? { '&:not([gap])': { gap: p } } : {}),
       }],
       // A container holding containers keeps the ratio for them (C), unless levels set the step.
       [`${depthSel(n)}:has(${C})`, { [`--uc-p${n}`]: `var(--uc-step, max(${FLOOR}, calc(${r} - ${ratio(r)})))`, '&:not([gap])': { gap: p } }],
-      ...(n === 1 ? Array.from({ length: CHAIN_DEPTH }, (_, j) => j + 1).map((L) => [`${depthSel(1)}[levels="${L}"]`, { '--uc-step': `max(0px, calc((var(--uc-r1) - ${CONTROL_RADIUS}) / ${L}))`, '&:not([gap])': { gap: 'var(--uc-p1)' } }]) : []),
     ];
   }),
 ]);
 
 /** The CSS-only tag's rules: the recipe keyed on ui-container and [data-ui=container], then the nesting chain. */
+// An area keeps its own level when it is given a padding (areas are square; padding is the card ladder).
+const areaPadding = Object.fromEntries((['panel', 'region', 'page'] as const).map((a) => [`:is(ui-container, [data-ui=container])[preset=${a}][padding]`, level(a)]));
+
 export const containerTags = mergeStyles(
   // ui-container and the React Container (<div data-ui="container">) share these rules, so both take
   // part in the nesting chain in the same layer (a recipe class would sit in a later layer and win).
   tagRules(':is(ui-container, [data-ui=container])', uiContainer),
+  areaPadding,
   containerChain,
 );

@@ -3,7 +3,8 @@
 // (:root), so a scope must redeclare every token that reads a theme input: the u-based lengths, the
 // motion and elevation tokens, the shadow layer colors and the selection fills, beside the theme's own variables and its
 // colors per scheme. A theme with scheme auto follows the document's scheme (.light / .dark on
-// <html>, else the OS); light or dark is the scope's own default. .light / .dark on the scope element
+// <html>, else the OS); light or dark is the scope's own default when the theme has colors (without
+// ramps of its own a scope follows the document). .light / .dark on the scope element
 // itself force one.
 import { unitTokenVars } from '../geometry/index.ts';
 import { motionTokenVars } from '../motion/index.ts';
@@ -39,12 +40,14 @@ export function themeScopeCss(theme: Theme, selector = scopeSelector(theme.name)
   const dark = { ...(colors?.dark ?? {}), ...shadowLayers('dark'), ...selection('dark') };
   // The theme's scheme leads: auto follows the document (its class, else the OS); light or dark is the
   // scope's default, and only .light / .dark on the scope element override it.
-  if (theme.scheme === 'dark') return [block(s, { ...base, ...dark }), block(`${s}.light`, light)].join('\n');
-  if (theme.scheme === 'light') return [block(s, { ...base, ...light }), block(`${s}.dark`, dark)].join('\n');
+  // Only with colors of its own: without ramps, dark shadows and selection would sit on the document's ramps.
+  if (colors && theme.scheme === 'dark') return [block(s, { ...base, ...dark }), block(`${s}.light`, light)].join('\n');
+  if (colors && theme.scheme === 'light') return [block(s, { ...base, ...light }), block(`${s}.dark`, dark)].join('\n');
   return [
     block(s, { ...base, ...light }),
     `@media (prefers-color-scheme: dark) {\n${block(`:root:not(.light) ${s}:not(.light)`, dark)}\n}`,
     block(`:root.dark ${s}:not(.light), ${s}.dark`, dark),
-    block(`:root.light ${s}:not(.dark), ${s}.light`, light),
+    // No light block is needed: the base is light, and every dark rule above excludes .light (on the
+    // scope, or on <html> for the OS rule).
   ].filter(Boolean).join('\n');
 }

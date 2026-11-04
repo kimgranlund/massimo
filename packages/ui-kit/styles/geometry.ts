@@ -3,6 +3,7 @@
 //
 // Inputs (unitless): --ui-unit (theme default; [size] overrides per subtree), --ui-border,
 // --ui-radius-scale, --ui-icon-k (from [icon-size]), --ui-gap (from [gap], per element).
+import { CONTAINER_DEPTH } from '../tokens/geometry/resolve.ts';
 import { defineGlobalStyles } from '@pandacss/dev';
 import { DENSITY_FACTOR_CSS, DENSITY_INSET_CSS, unitTokenVars } from '../tokens/geometry/index.ts';
 import { AVATAR_SIZES, DENSITIES, GAPS, ICON_STEPS, RADIUS_FACTORS, SIZES } from '../tokens/geometry/resolve.ts';
@@ -117,4 +118,15 @@ export const geometry = defineGlobalStyles({
  * its own element only (a container, a composite), and the select popup takes its host's explicitly.
  * Syntax `*` has no initial value, so `var(--ui-gap, <level gap>)` falls back where it is unset.
  */
-export const geometryProperties = { '--ui-gap': { syntax: '*', inherits: false }, '--ui-radius': { syntax: '*', inherits: false } };
+export const geometryProperties = {
+  '--ui-gap': { syntax: '*', inherits: false }, '--ui-radius': { syntax: '*', inherits: false },
+  // The container nesting chain (container.recipe.ts): each depth's radius and padding read the previous
+  // depth's twice, so as unregistered (token-stream) properties their values grow exponentially with
+  // depth and WebKit drops them past depth 5. Registered as lengths, each computes to a length per
+  // element and the chain stays linear. --uc-step stays unregistered: var(--uc-step, …) must fall back.
+  ...Object.fromEntries(Array.from({ length: CONTAINER_DEPTH }, (_, i) => i + 1).flatMap((n) => [
+    [`--uc-r${n}`, { syntax: '<length>', inherits: true, initialValue: '0px' }],
+    [`--uc-p${n}`, { syntax: '<length>', inherits: true, initialValue: '0px' }],
+  ])),
+  '--uc-r': { syntax: '<length>', inherits: false, initialValue: '0px' },
+};

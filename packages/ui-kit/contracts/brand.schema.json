@@ -23,15 +23,18 @@
       "properties": {
         "name": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         },
         "audience": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         },
         "primaryJob": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         },
         "kind": {
           "enum": [
@@ -47,7 +50,8 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           }
         }
       },
@@ -81,7 +85,8 @@
             },
             "name": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "maxLength": 400
             },
             "relation": {
               "enum": [
@@ -94,7 +99,8 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 1,
+                "maxLength": 400
               }
             }
           },
@@ -120,7 +126,8 @@
             },
             "name": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "maxLength": 400
             },
             "relation": {
               "enum": [
@@ -133,7 +140,8 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 1,
+                "maxLength": 400
               }
             }
           },
@@ -156,7 +164,8 @@
         "properties": {
           "name": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "ref": {
             "enum": [
@@ -174,13 +183,15 @@
           },
           "description": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 1000
           },
           "materials": {
             "type": "array",
             "items": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "maxLength": 400
             }
           },
           "palette": {
@@ -191,7 +202,8 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "maxLength": 400
                 },
                 "value": {
                   "type": "string",
@@ -206,27 +218,33 @@
           },
           "textures": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "light": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "composition": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "type": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "motion": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "imagery": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 400
           },
           "outOfBounds": {
             "type": "array",
@@ -392,15 +410,18 @@
         },
         "name": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         },
         "take": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         },
         "leave": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         }
       },
       "required": [
@@ -423,7 +444,8 @@
             "properties": {
               "name": {
                 "type": "string",
-                "minLength": 1
+                "minLength": 1,
+                "maxLength": 400
               },
               "value": {
                 "type": "string",
@@ -896,15 +918,18 @@
           "properties": {
             "action": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "maxLength": 400
             },
             "confirmation": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "maxLength": 400
             },
             "error": {
               "type": "string",
-              "minLength": 1
+              "minLength": 1,
+              "maxLength": 400
             }
           }
         }
@@ -937,7 +962,8 @@
       "properties": {
         "concept": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         },
         "scale": {
           "enum": [
@@ -960,7 +986,8 @@
         },
         "reason": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 400
         }
       },
       "required": [
@@ -972,14 +999,16 @@
       "type": "array",
       "items": {
         "type": "string",
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 400
       }
     },
     "rationale": {
       "type": "object",
       "additionalProperties": {
         "type": "string",
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 600
       }
     }
   },

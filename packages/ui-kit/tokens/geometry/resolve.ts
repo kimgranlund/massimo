@@ -215,6 +215,11 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
 export const CONTAINER_PRESETS = ['group', 'collection', 'card', 'panel', 'region', 'page'] as const;
 export type ContainerPreset = (typeof CONTAINER_PRESETS)[number];
 /** The ladder level a preset (and a card padding) starts from. */
+/** The nesting chain's depth: deeper containers repeat their parent's radius (the CSS has a rule per depth up to here). */
+export const CONTAINER_DEPTH = 8;
+/** The ladder level a container takes: an area its own (padding ignored); a card, or a wrapper given `padding`, the card ladder level. */
+export const containerLevel = (preset: ContainerPreset, padding?: CardPadding): Exclude<ContainerLevel, 'composite'> =>
+  isAreaPreset(preset) ? preset as Exclude<ContainerLevel, 'composite'> : padding ? `card-${padding}` : presetLevel(preset);
 export const presetLevel = (preset: ContainerPreset, padding: CardPadding = 'md'): Exclude<ContainerLevel, 'composite'> =>
   preset === 'card' ? `card-${padding}` : preset;
 export const isAreaPreset = (preset: ContainerPreset) => CONTAINERS[presetLevel(preset)].family === 'area';
@@ -240,15 +245,17 @@ export function resolveContainerTree(node: ContainerNode, input: GeometryInput &
   const u = x.unit, k = input.ratio ?? CONTAINER_RATIO;
   const ctl = controlRadius(u, x.radiusScale, (6 + 2 * x.inset) * u);
   const walk = (n: ContainerNode, depth: number, parent?: { r: number; p: number }, step?: number): ResolvedContainer => {
-    const preset = n.preset ?? 'collection', level = presetLevel(preset, n.padding);
+    const preset = n.preset ?? 'collection', level = containerLevel(preset, n.padding);
     const fam = radiusFamily(level);
     const base = resolveContainer(level, { ...input, padUnits: input.padUnits?.[level], gapUnits: input.gapUnits?.[level], radius: n.radius, radiusFactor: fam ? input.radiusFactor?.[fam] : undefined });
     if (isAreaPreset(preset)) return { preset, radius: 0, edge: base.edge, padding: base.padding, gap: n.gap !== undefined ? n.gap * u : base.gap, depth: 0, children: (n.children ?? []).map((c) => walk(c, 1)) };
     // Holding containers: any chain container below, through an area too (CSS :has() sees descendants).
     const holds = (m: ContainerNode): boolean => (m.children ?? []).some((c) => !isAreaPreset(c.preset ?? 'collection') || holds(c));
     const kids = holds(n) ? [true] : [];
-    const r = depth === 1 ? base.radius : Math.max(0, parent!.r - parent!.p);
-    const s = depth === 1 && n.levels ? Math.max(0, (r - ctl) / n.levels) : step;
+    // Past CONTAINER_DEPTH a container repeats its parent's radius (as the deepest CSS rule does).
+    const r = depth === 1 ? base.radius : depth > CONTAINER_DEPTH ? parent!.r : Math.max(0, parent!.r - parent!.p);
+    // levels on any container (1–8) splits the padding evenly from it down: p = (R − r_control) / levels.
+    const s = n.levels ? Math.max(0, (r - ctl) / Math.min(n.levels, CONTAINER_DEPTH)) : step;
     const derived = s !== undefined || kids.length > 0 || depth > 1;
     // A derived padding is never below 1u, so a deep or tight tree keeps room (and never goes negative).
     const p = s !== undefined ? s : kids.length ? Math.max(u, r - Math.max(ctl, r * k)) : depth === 1 ? base.edge : Math.max(u, r - ctl);

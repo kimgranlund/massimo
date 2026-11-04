@@ -253,7 +253,8 @@ export function selectionVars(mode: 'light' | 'dark', ref: (role: string) => str
   const low = `calc(clamp(0, ${e}, 1) * 100%)`, high = `calc(clamp(0, ${e} - 1, 1) * 100%)`;
   return mode === 'light'
     ? { 'bg-selected': `color-mix(in oklch, color-mix(in oklch, ${ref('neutral-3')}, ${ref('neutral-1')} ${low}), ${ref('primary-3')} ${high})`, 'fg-selected': ref('neutral-12') }
-    : { 'bg-selected': `color-mix(in oklch, ${ref('neutral-4')}, ${ref('primary-9')} ${low})`, 'fg-selected': `color-mix(in oklch, ${ref('neutral-12')}, ${ref('fg-on-solid')} ${low})` };
+    // The primary solid (an anchored role's solid step, else 9), so its contrast text (fg-on-solid) matches.
+    : { 'bg-selected': `color-mix(in oklch, ${ref('neutral-4')}, ${ref('primary-solid')} ${low})`, 'fg-selected': `color-mix(in oklch, ${ref('neutral-12')}, ${ref('fg-on-solid')} ${low})` };
 }
 
 /** Semantic variables per scheme: ramp variables plus roles that point at them. */

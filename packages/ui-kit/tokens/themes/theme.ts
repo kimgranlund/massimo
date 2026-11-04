@@ -72,28 +72,32 @@ export function partsFromParameters(p: Numbers): Pick<Theme, 'geometry' | 'typog
 export function migrateTheme(input: unknown): unknown {
   if (!isObject(input) || input.schemaVersion !== 1) return input;
   const { parameters, typography, schemaVersion: _, ...rest } = input as Record<string, any>;
+  // A copy throughout: the parts are new objects, so the caller's theme is never changed.
   const out: Record<string, any> = { schemaVersion: THEME_SCHEMA_VERSION, ...rest };
   const unknown: Record<string, unknown> = {};
+  const moved: Partial<Record<ParamDomain, Record<string, unknown>>> = {};
   if (isObject(parameters)) {
     for (const [k, v] of Object.entries(parameters)) {
       const d: ParamDomain | undefined = PARAMS[k as ParamName]?.domain;
       if (!d) { unknown[k] = v; continue; }
-      (out[d] ??= {}).parameters ??= {};
-      out[d].parameters[k] = v;
+      (moved[d] ??= {})[k] = v;
     }
   } else if (parameters !== undefined) out.parameters = parameters;
   if (Object.keys(unknown).length) out.parameters = unknown;
-  if (typography !== undefined) out.typography = isObject(typography) ? { ...(out.typography ?? {}), ...typography } : typography;
-  // A v1 color section joins the color parameters (emphasis) moved above.
-  if (isObject(rest.color) && out.color?.parameters) out.color = { ...rest.color, parameters: out.color.parameters };
+  const parts: Record<string, unknown> = { ...rest, typography };
+  for (const [d, params] of Object.entries(moved)) {
+    const existing = parts[d];
+    out[d] = { ...(isObject(existing) ? existing : {}), parameters: params };
+  }
+  if (typography !== undefined && !moved.typography) out.typography = isObject(typography) ? { ...typography } : typography;
   return out;
 }
 
 /** Migrate (version 1) and validate: the one entry point for theme files and the jig's Load. */
 export const loadTheme = (input: unknown) => validateThemeObject(migrateTheme(input));
 
-/** A font stack: family names, quotes, commas, spaces, hyphens and digits only (no CSS syntax). */
-export const FONT_STACK = /^[\w\s"',.-]{1,300}$/;
+/** A font stack: comma-separated family names, each bare or in balanced quotes (no other CSS syntax). */
+export const FONT_STACK = /^(?=.{1,300}$)\s*("[\w\s.-]+"|'[\w\s.-]+'|[\w.-][\w\s.-]*)(\s*,\s*("[\w\s.-]+"|'[\w\s.-]+'|[\w.-][\w\s.-]*))*\s*$/;
 /** A requested Spectrum family name (resolveRoles picks the nearest generated hue). */
 export const FAMILY_NAME = /^[a-z][a-z0-9-]{0,30}$/;
 
@@ -112,7 +116,7 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.schemaVersion !== THEME_SCHEMA_VERSION) err('schemaVersion', `must be ${THEME_SCHEMA_VERSION}`);
   if (typeof input.name !== 'string' || !THEME_NAME.test(input.name)) err('name', `must match ${THEME_NAME}`);
   if (input.description !== undefined && typeof input.description !== 'string') err('description', 'must be a string');
-  if (input.parameters !== undefined) err('parameters', input.schemaVersion === 1 ? 'version 1 layout: load it with loadTheme (migrateTheme)' : 'moved into geometry, typography and motion (schema version 2)');
+  if (input.parameters !== undefined) err('parameters', input.schemaVersion === 1 ? 'version 1 layout: load it with loadTheme (migrateTheme)' : 'moved into geometry, typography, color and motion (schema version 2)');
   const checkParameters = (domain: ParamDomain, parameters: unknown) => {
     const path = `${domain}.parameters`;
     if (!isObject(parameters)) return err(path, 'must be an object');

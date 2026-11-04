@@ -22,7 +22,7 @@ test('scope: the base block redeclares the theme and every derived token; colors
   assert.match(base, /color: var\(--colors-fg\);/, 'plain text follows the scope');
   assert.match(css, /@media \(prefers-color-scheme: dark\) \{\n:root:not\(\.light\) \[data-ui-scope="probe"\]:not\(\.light\) \{/);
   assert.match(css, /:root\.dark \[data-ui-scope="probe"\]:not\(\.light\), \[data-ui-scope="probe"\]\.dark \{/);
-  assert.match(css, /:root\.light \[data-ui-scope="probe"\]:not\(\.dark\), \[data-ui-scope="probe"\]\.light \{/);
+  assert.ok(!css.includes(':root.light'), 'no separate light block: the base is light and the dark rules exclude .light');
 });
 
 test('scope: a theme without colors still scopes its parameters and shadow colors', () => {

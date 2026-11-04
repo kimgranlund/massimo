@@ -17,6 +17,9 @@ const scalePath = (id: string): ['form' | 'color' | 'type' | 'top', string] =>
   : ['vibrancy', 'harmony', 'neutral', 'emphasis'].includes(id) ? ['color', id]
   : id === 'type-scale' ? ['type', id] : ['top', id];
 
+/** A brand name from its subject name, always a valid theme name (a letter first, at most 40 characters). */
+const brandName = (v: string) => { const slug = v.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); return (/^[a-z]/.test(slug) ? slug : `b-${slug}`).slice(0, 40).replace(/-$/, '') || 'brand'; };
+
 /** A text row: commits on change (blur or Enter), so the brand re-hydrates once per edit. */
 function Text({ label, value, onValue }: { label: string; value: string; onValue: (v: string) => void }) {
   const ref = useEvent('change', (_el, d) => onValue(String(d.value)));
@@ -53,7 +56,7 @@ function BrandForm({ brand, onBrand }: { brand: Brand; onBrand: (b: Brand) => vo
   return (
     <>
       <Group title="Subject">
-        <Text label="Name" value={brand.subject.name} onValue={(v) => edit((b) => { b.subject.name = v; b.name = v.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'brand'; })} />
+        <Text label="Name" value={brand.subject.name} onValue={(v) => edit((b) => { b.subject.name = v; b.name = brandName(v); })} />
         <Text label="Audience" value={brand.subject.audience} onValue={(v) => edit((b) => { b.subject.audience = v; })} />
         <Text label="Primary job" value={brand.subject.primaryJob} onValue={(v) => edit((b) => { b.subject.primaryJob = v; })} />
         <Select label="Kind" value={brand.subject.kind} options={SUBJECT_KINDS.map((k) => [k, k])} onValue={(v) => edit((b) => { b.subject.kind = v; })} />

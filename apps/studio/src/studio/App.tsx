@@ -122,9 +122,16 @@ export function App() {
   // Brand anchors (color.anchors): carried through Load and Copy; a brand sets them on Apply.
   // The brand the theme came from (Brand page Apply, or Load of a brand or bundle); Copy then writes both.
   const [brand, setBrand] = useState<Brand | null>(null);
+  const editTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(editTimer.current), []);
   // Web face stylesheets (typography.sources): loaded as <link> elements, one per URL.
   const [sources, setSources] = useState<NonNullable<NonNullable<Theme['typography']>['sources']>>([]);
-  useEffect(() => { for (const x of sources) loadFontSource(x.url); }, [sources]);
+  // Google Fonts load automatically; another host (a self-hosted stylesheet from pasted JSON) is named in
+  // the status line instead of fetched.
+  useEffect(() => {
+    const skipped = sources.filter((x) => !loadFontSource(x.url)).map((x) => x.family);
+    if (skipped.length) setStatus(`Not loaded (not Google Fonts): ${skipped.join(', ')}`);
+  }, [sources]);
   const [anchors, setAnchors] = useState<NonNullable<NonNullable<Theme['color']>['anchors']>>([]);
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
@@ -219,14 +226,26 @@ export function App() {
     setSources(t.typography?.sources ?? []);
   };
   // A brand: hydrate it (tokens/brand), apply the theme and keep the brand for Copy.
+  const lastApplied = useRef<Brand | null>(null);
   const applyBrand = (b: Brand) => {
+    clearTimeout(editTimer.current);
     const { theme, unresolved } = hydrate(b);
-    applyTheme(theme); setBrand(b);
+    applyTheme(theme); setBrand(b); lastApplied.current = b;
     setStatus(`Applied brand ${b.name}${unresolved.length ? ` (${unresolved.length} open questions on the Brand page)` : ''}`);
   };
-  // An edit from the Brand tab: re-hydrate after typing pauses (Spectrum takes ~300ms per run).
-  const editTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const editBrand = (b: Brand) => { setBrand(b); clearTimeout(editTimer.current); editTimer.current = setTimeout(() => applyBrand(b), 200); };
+  // An edit from the Brand tab: re-hydrate after typing pauses (Spectrum takes ~300ms per run). Hand-tuned
+  // parameters (those that differ from what the last applied brand hydrated to) are kept on top.
+  const editBrand = (b: Brand) => {
+    setBrand(b); clearTimeout(editTimer.current);
+    const prev = lastApplied.current, now = params;
+    editTimer.current = setTimeout(() => {
+      const was = prev ? { ...defaultParams, ...themeParameters(hydrate(prev).theme) } as ThemeParams : undefined;
+      const hand = was ? Object.fromEntries((Object.keys(now) as ParamName[]).filter((k) => now[k] !== was[k]).map((k) => [k, now[k]])) : {};
+      applyBrand(b);
+      const n = Object.keys(hand).length;
+      if (n) { setParams((p) => ({ ...p, ...hand })); setStatus(`Applied brand ${b.name}; kept ${n} hand-tuned value${n === 1 ? '' : 's'}`); }
+    }, 200);
+  };
   useEffect(() => {
     const on = (e: Event) => applyBrand((e as CustomEvent<Brand>).detail);
     window.addEventListener(APPLY_BRAND, on);
@@ -234,6 +253,7 @@ export function App() {
   });
   // Load: a theme (version 1 or 2), a brand (hydrated), or a { brand, theme } bundle from Copy.
   const loadTheme = async () => {
+    clearTimeout(editTimer.current);
     let text = '';
     try { text = await navigator.clipboard.readText(); } catch { setStatus('Load: clipboard not readable'); return; }
     let data: any;
@@ -259,6 +279,7 @@ export function App() {
   };
 
   const reset = () => {
+    clearTimeout(editTimer.current); lastApplied.current = null;
     setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setBrand(null); setSources([]); setTypeColors(DEFAULT_TYPE_COLORS);
     setStatus('Reset to defaults');
   };

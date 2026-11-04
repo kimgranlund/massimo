@@ -38,7 +38,7 @@ for (const [role, entry] of Object.entries(ROLE_STEPS)) {
   (roles[camelGroup] ??= {})[key] = schemed(ref, dref);
 }
 // The selection fills follow the theme's emphasis (selectionVars), from the role tokens.
-const tokenRef = (r: string) => (r === 'fg-on-solid' ? '{colors.fg.onSolid}' : `{colors.${r.replace('-', '.')}}`);
+const tokenRef = (r: string) => (r === 'fg-on-solid' ? '{colors.fg.onSolid}' : r === 'primary-solid' ? '{colors.primary.solid}' : `{colors.${r.replace('-', '.')}}`);
 const sel = { light: selectionVars('light', tokenRef), dark: selectionVars('dark', tokenRef) };
 roles.bg.selected = schemed(sel.light['bg-selected'], sel.dark['bg-selected']);
 

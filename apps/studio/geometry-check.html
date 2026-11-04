@@ -1075,8 +1075,20 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     { preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'group' }] }] }] },
     // Deep: radii fall below the control radius; every derived padding keeps the 1u floor.
     { preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }] },
+    // levels on a root restarted under an area.
+    { preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] },
+    // padding on wrappers takes the card ladder level; on an area it is ignored.
+    { preset: 'group', padding: 'xl' },
+    { preset: 'collection', padding: 'lg', children: [{ preset: 'group' }] },
+    { preset: 'panel', padding: 'xl', children: [{ preset: 'card', padding: 'sm' }] },
+    // Past the chain depth (8): deeper containers repeat their parent's radius.
+    { preset: 'card', padding: 'xl', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }] }] }] }] }] },
+    // The React Container's markup (div[data-ui=container]) mixed with ui-container, with a plain wrapper between.
+    { preset: 'card', padding: 'xl', div: true, children: [{ preset: 'card', wrap: true, children: [{ preset: 'group', div: true }] }] },
   ];
-  const html = (n) => `<ui-container preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.levels ? ` levels="${n.levels}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map(html).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</ui-container>`;
+  const tag = (n) => n.div ? 'div data-ui="container"' : 'ui-container';
+  const close = (n) => n.div ? 'div' : 'ui-container';
+  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.levels ? ` levels="${n.levels}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</${close(n)}>`;
   for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const [density, s] of [['default', 1], ['compact', 2], ['loose', 0.5]]) {
     const box = document.createElement('div');
     box.setAttribute('data-size', String(unit)); box.setAttribute('density', density);
@@ -1089,7 +1101,8 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     TREES.forEach((t, ti) => {
       const want = resolveContainerTree(t, g);
       const visit = (node, el, path) => {
-        const cs = getComputedStyle(el), kids = [...el.children].filter((c) => c.localName === 'ui-container');
+        const isC = (c) => c.localName === 'ui-container' || c.dataset?.ui === 'container';
+        const cs = getComputedStyle(el), kids = [...el.children].flatMap((c) => isC(c) ? [c] : [...c.children].filter(isC));
         const checks = { radius: [px(cs.borderTopLeftRadius), r2(node.radius)], padding: [px(cs.paddingTop), r2(node.padding)] };
         // The gap along the flow: rows (group) measure across, stacks down.
         const row = cs.flexDirection === 'row', [c0, c1] = kids.length > 1 ? kids : [...el.children];

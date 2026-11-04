@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "302b2bb30b75bea4aa33af638a390a80798b344493ef5ba55086c49a384cce74"
+      "sha256": "0d3501694eba461d7d6c33dbe57dc2d03e10df436285aeba790f3597187cc254"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
@@ -18,7 +18,7 @@
     },
     {
       "path": "tokens/colors/index.ts",
-      "sha256": "62ddd2d4d207d24ab9b29182a016d3e0734d63fe22bddb65c5a325353e9f0ab8"
+      "sha256": "a8c7884e0219f8d2d2ccb34d1c9665e58c25edb63eb03fd982ebb2c94b2411cc"
     },
     {
       "path": "contracts/domains/color.json",
@@ -26,7 +26,7 @@
     },
     {
       "path": "tokens/themes/descriptors.ts",
-      "sha256": "4e8344c79e2517409f42c80cdd9a9fec324d4890f53160a60db7c1a73d1d6a2a"
+      "sha256": "537c859c3e1de9285a943ec7bbc3a7f794ec266fb1f0df0dbd6b9134d369c799"
     },
     {
       "path": "tokens/themes/descriptor-data.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "26c4bb12059116c0e51386f09680fd4f8481b6d2e5236eb841a206c14067c23a"
+      "sha256": "7c7dc33f2f2d957b5e468a1a132e8d1ea7bf8784e82123bf947adfeee474c36f"
     }
   ],
   "renderers": {
