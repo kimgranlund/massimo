@@ -13,6 +13,8 @@ import { fileURLToPath } from 'node:url';
 import { brandJsonSchemaText, validateBrand, hydrate, lintBrand } from '../tokens/brand/index.ts';
 import { lintTheme, validateThemeObject } from '../tokens/themes/index.ts';
 import { buildBrand } from '../tokens/brand/build.ts';
+import { anchoredSpectrum, generateSpectrum, resolveRoles } from '../tokens/colors/spectrum/index.ts';
+import { normalizeSpectrum, spectrumOverrides } from '../tokens/colors/spectrum/config.ts';
 
 const [cmd, arg, flag] = process.argv.slice(2);
 const load = () => {
@@ -35,7 +37,11 @@ else if (cmd === 'lint') {
 } else if (cmd === 'hydrate') {
   const { theme, unresolved } = hydrate(load());
   const v = validateThemeObject(theme);
-  console.log(JSON.stringify({ theme, unresolved, valid: v.ok }, null, 2));
+  // Where each anchor lands (placed at render time, so the theme stores no step).
+  const data = generateSpectrum(spectrumOverrides(normalizeSpectrum(theme.color?.spectrum ?? {})));
+  const anchors = anchoredSpectrum(data, resolveRoles(data, theme.color?.roles ?? {}), theme.color?.anchors).report
+    .map((a) => ({ role: a.role, family: a.family, value: a.value, step: a.step, lc: a.lc, target: a.target, inOrder: a.inOrder, ...(a.dark ? { dark: a.dark } : {}) }));
+  console.log(JSON.stringify({ theme, anchors, unresolved, valid: v.ok }, null, 2));
   if (!v.ok) process.exit(1);
 } else if (cmd === 'build') {
   const args = process.argv.slice(4);

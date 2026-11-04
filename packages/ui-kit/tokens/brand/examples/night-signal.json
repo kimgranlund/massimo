@@ -128,6 +128,7 @@
     "form.line": "light, not outlines, draws edges at night",
     "color.character.harmony": "three stage colors",
     "movement": "the stages are moving",
-    "adaptivity": "used at night, in a crowd"
+    "adaptivity": "used at night, in a crowd",
+    "iconography.set": "tabler bold: icons read under stage light"
   }
 }

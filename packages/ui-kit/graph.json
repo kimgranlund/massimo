@@ -2436,6 +2436,28 @@
         "meter"
       ]
     },
+    "grounding:art-deco": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/9",
+      "availability": "implemented",
+      "title": "Art Deco",
+      "searchTerms": [
+        "art-deco",
+        "art deco",
+        "france, united states"
+      ]
+    },
+    "grounding:art-nouveau": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/12",
+      "availability": "implemented",
+      "title": "Art Nouveau",
+      "searchTerms": [
+        "art-nouveau",
+        "art nouveau",
+        "europe"
+      ]
+    },
     "grounding:arts-and-crafts": {
       "kind": "grounding",
       "source": "contracts/brand-catalogue.json#/groundings/3",
@@ -2480,6 +2502,28 @@
         "california"
       ]
     },
+    "grounding:constructivism": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/10",
+      "availability": "implemented",
+      "title": "Russian Constructivism",
+      "searchTerms": [
+        "constructivism",
+        "russian constructivism",
+        "soviet union"
+      ]
+    },
+    "grounding:de-stijl": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/8",
+      "availability": "implemented",
+      "title": "De Stijl",
+      "searchTerms": [
+        "de-stijl",
+        "de stijl",
+        "netherlands"
+      ]
+    },
     "grounding:memphis": {
       "kind": "grounding",
       "source": "contracts/brand-catalogue.json#/groundings/4",
@@ -2522,6 +2566,28 @@
         "swiss-international",
         "swiss international style",
         "switzerland"
+      ]
+    },
+    "grounding:ulm-school": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/11",
+      "availability": "implemented",
+      "title": "Ulm School of Design (HfG Ulm)",
+      "searchTerms": [
+        "ulm-school",
+        "ulm school of design (hfg ulm)",
+        "germany"
+      ]
+    },
+    "grounding:wabi-sabi": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/13",
+      "availability": "implemented",
+      "title": "Wabi-sabi",
+      "searchTerms": [
+        "wabi-sabi",
+        "wabi-sabi",
+        "japan"
       ]
     },
     "parameter:border": {
@@ -4942,6 +5008,16 @@
         "indicator"
       ]
     },
+    "territory:alpine": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/8",
+      "availability": "implemented",
+      "title": "Alpine hut",
+      "searchTerms": [
+        "alpine",
+        "alpine hut"
+      ]
+    },
     "territory:archive": {
       "kind": "territory",
       "source": "contracts/brand-catalogue.json#/territories/4",
@@ -4950,6 +5026,16 @@
       "searchTerms": [
         "archive",
         "archive"
+      ]
+    },
+    "territory:atelier": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/10",
+      "availability": "implemented",
+      "title": "Atelier",
+      "searchTerms": [
+        "atelier",
+        "atelier"
       ]
     },
     "territory:botanical": {
@@ -4992,6 +5078,16 @@
         "laboratory"
       ]
     },
+    "territory:market": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/9",
+      "availability": "implemented",
+      "title": "Covered market",
+      "searchTerms": [
+        "market",
+        "covered market"
+      ]
+    },
     "territory:nocturne": {
       "kind": "territory",
       "source": "contracts/brand-catalogue.json#/territories/3",
@@ -5000,6 +5096,26 @@
       "searchTerms": [
         "nocturne",
         "night city"
+      ]
+    },
+    "territory:observatory": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/11",
+      "availability": "implemented",
+      "title": "Observatory",
+      "searchTerms": [
+        "observatory",
+        "observatory"
+      ]
+    },
+    "territory:print-shop": {
+      "kind": "territory",
+      "source": "contracts/brand-catalogue.json#/territories/7",
+      "availability": "implemented",
+      "title": "Print shop",
+      "searchTerms": [
+        "print-shop",
+        "print shop"
       ]
     },
     "territory:workshop": {
@@ -13021,6 +13137,236 @@
       "to": "descriptor:movement.lively"
     },
     {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:curvature.square"
+    },
+    {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:line.outlined"
+    },
+    {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:harmony.triadic"
+    },
+    {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:neutral.true"
+    },
+    {
+      "from": "grounding:de-stijl",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:curvature.crisp"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:harmony.complementary"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:type-scale.dramatic"
+    },
+    {
+      "from": "grounding:art-deco",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:curvature.square"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:line.outlined"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:harmony.complementary"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:type-scale.dramatic"
+    },
+    {
+      "from": "grounding:constructivism",
+      "relation": "implies",
+      "to": "descriptor:movement.lively"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:curvature.crisp"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:space.balanced"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:neutral.true"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:type-scale.gentle"
+    },
+    {
+      "from": "grounding:ulm-school",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:curvature.round"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:corner.squircle"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:harmony.analogous"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:type-scale.classic"
+    },
+    {
+      "from": "grounding:art-nouveau",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:corner.squircle"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:type-scale.gentle"
+    },
+    {
+      "from": "grounding:wabi-sabi",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
       "from": "territory:harbor",
       "relation": "implies",
       "to": "descriptor:vibrancy.natural"
@@ -13184,6 +13530,126 @@
       "from": "territory:desert",
       "relation": "implies",
       "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "territory:print-shop",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "territory:print-shop",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "territory:print-shop",
+      "relation": "implies",
+      "to": "descriptor:type-scale.dramatic"
+    },
+    {
+      "from": "territory:print-shop",
+      "relation": "implies",
+      "to": "descriptor:curvature.crisp"
+    },
+    {
+      "from": "territory:alpine",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "territory:alpine",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "territory:alpine",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "territory:alpine",
+      "relation": "implies",
+      "to": "descriptor:elevation.layered"
+    },
+    {
+      "from": "territory:alpine",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "territory:market",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.vivid"
+    },
+    {
+      "from": "territory:market",
+      "relation": "implies",
+      "to": "descriptor:harmony.analogous"
+    },
+    {
+      "from": "territory:market",
+      "relation": "implies",
+      "to": "descriptor:space.tight"
+    },
+    {
+      "from": "territory:market",
+      "relation": "implies",
+      "to": "descriptor:curvature.soft"
+    },
+    {
+      "from": "territory:market",
+      "relation": "implies",
+      "to": "descriptor:movement.lively"
+    },
+    {
+      "from": "territory:atelier",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "territory:atelier",
+      "relation": "implies",
+      "to": "descriptor:neutral.tinted"
+    },
+    {
+      "from": "territory:atelier",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "territory:atelier",
+      "relation": "implies",
+      "to": "descriptor:space.airy"
+    },
+    {
+      "from": "territory:atelier",
+      "relation": "implies",
+      "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "territory:observatory",
+      "relation": "implies",
+      "to": "descriptor:adaptivity.dark-first"
+    },
+    {
+      "from": "territory:observatory",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.muted"
+    },
+    {
+      "from": "territory:observatory",
+      "relation": "implies",
+      "to": "descriptor:line.hairline"
+    },
+    {
+      "from": "territory:observatory",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "territory:observatory",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
     }
   ]
 }

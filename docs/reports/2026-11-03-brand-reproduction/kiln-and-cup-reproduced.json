@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "name": "kiln-and-cup",
+  "subject": {
+    "name": "Kiln & Cup",
+    "audience": "Buyers of handmade tableware who choose a one-of-a-kind piece from photographs alone",
+    "primaryJob": "Let a buyer trust how a single wood-fired piece will look and feel in the hand before buying it",
+    "kind": "product",
+    "sources": [
+      "Wood-fired stoneware: ash glaze runs, flashing and iron spots left by the flame",
+      "The kiln and its fuel: stacked wood, ash, clay wadding marks",
+      "Glazes the studio uses: iron tenmoku, ash celadon, unglazed clay body"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "mingei",
+      "relation": "reinterpret",
+      "principles": [
+        "Beauty in everyday objects, honest making",
+        "Imperfection and use as part of the form",
+        "Departs: not a Japanese brand, so no brush lettering, no indigo-and-kraft, no Japanese motifs"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Kiln yard",
+      "ref": "workshop",
+      "primary": true,
+      "description": "The studio after a firing: pots cooling on wooden boards, ash on every surface, raking daylight that shows glaze depth and the texture of the clay.",
+      "materials": ["stoneware", "wood ash", "iron glaze", "oiled wood boards"],
+      "palette": [
+        { "name": "tenmoku", "value": "#3a2a22" },
+        { "name": "ash celadon", "value": "#7d8a6c" },
+        { "name": "clay body", "value": "#b9a58c" }
+      ],
+      "light": "soft raking daylight from one side, so surfaces read",
+      "textures": "real glaze and clay in photographs only; no faked texture in the interface",
+      "composition": "one piece per frame, generous room around it",
+      "imagery": "close photographs of each piece in hand and on a board, true color",
+      "outOfBounds": ["vibrancy.vivid", "elevation.floating", "movement.playful", "curvature.pill"]
+    }
+  ],
+  "muse": {
+    "kind": "person",
+    "name": "Lucie Rie",
+    "take": "Restraint and precision: thin, exact edges and surfaces that let the glaze speak",
+    "leave": "Her forms and sgraffito lines as motifs; no imitation of her pots or her name as styling"
+  },
+  "color": {
+    "anchors": [
+      { "name": "tenmoku", "value": "#3a2a22", "role": "primary" },
+      { "name": "ash celadon", "value": "#6f7d5f", "role": "secondary" },
+      { "name": "wood ash", "value": "#8a847a", "role": "neutral" }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "muted"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": { "ref": "newsreader" },
+      "body": { "ref": "source-sans-3" },
+      "utility": { "ref": "ibm-plex-mono" }
+    }
+  },
+  "form": {
+    "space": "airy",
+    "elevation": "flat",
+    "line": "hairline"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "signature": {
+    "concept": "Room around each pot",
+    "scale": "space",
+    "reason": "Every piece is one of a kind; airy space gives each photograph the room a single pot gets on a bare board in the kiln yard"
+  },
+  "rationale": {
+    "form.space": "Airy, as the signature: one piece per view with room to look at it",
+    "form.elevation": "Flat: pieces sit on the page as pots sit on a board; shadows belong to the photographs, not the interface",
+    "form.line": "Hairline: the workshop's pencil-label line, echoing Rie's thin exact edges",
+    "color.character.vibrancy": "Muted: glaze and clay colors are earthy, and the interface must not out-color the photographs",
+    "movement": "Calm: warm and plain, no hard sell",
+    "adaptivity": "Light-first: buyers judge glaze color against a daylight page",
+    "color.anchors.0": "Tenmoku iron glaze as the dark main solid, not terracotta",
+    "grounding.primary": "Mingei reinterpreted: its values without Japanese styling"
+  },
+  "voice": {
+    "tone": ["warm", "plain", "calm"],
+    "samples": {
+      "action": "Add this cup to your basket",
+      "confirmation": "It's yours. We'll wrap it and send it this week.",
+      "error": "That piece has just sold. Each one is made once, so here are others from the same firing."
+    }
+  },
+  "iconography": { "set": "phosphor", "weight": "light" },
+  "avoid": [
+    "vibrancy.vivid",
+    "elevation.floating",
+    "Brush lettering or any faux-Japanese calligraphy",
+    "Indigo and kraft paper as a default palette",
+    "Warm cream with a serif and terracotta accents",
+    "Urgency and scarcity sales copy (countdowns, 'only 1 left!')"
+  ]
+}

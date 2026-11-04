@@ -79,7 +79,12 @@ A brand is authored first and hydrates a theme (`tokens/brand/index.ts`; JSON Sc
 | `form`, `movement`, `adaptivity` | descriptor values (scale, density, space, curvature, corner, line, elevation; movement; adaptivity) |
 | `voice`, `iconography`, `signature`, `avoid`, `rationale` | tone words and microcopy samples; icon set and weight; the one scale the brand pushes and why; anti-choices (`<scale>.<value>`); one line per choice keyed by its brand path |
 
-The catalogue (`contracts/brand-catalogue.json`) holds groundings (Swiss International, Bauhaus, mingei, Arts and Crafts, Memphis, Brutalism, Scandinavian functionalism, Californian modernism) and territory archetypes (harbor, workshop, botanical, nocturne, archive, laboratory, desert). Each entry has a canon of descriptor values, its clichés and sources, and appears in the registry as `grounding:<id>` and `territory:<id>`, with `implies` edges to its descriptor values.
+The catalogue (`contracts/brand-catalogue.json`) holds 14 groundings and 12 territory archetypes:
+
+- Groundings: Swiss International, Bauhaus, De Stijl, Constructivism, Art Deco, Art Nouveau, Arts and Crafts, Ulm School, Memphis, Brutalism, Scandinavian functionalism, Californian modernism, mingei, wabi-sabi.
+- Territories: harbor, workshop, botanical, nocturne, archive, laboratory, desert, print shop, alpine, market, atelier, observatory.
+
+Each entry has a canon of descriptor values, its clichés and sources. A grounding also pairs catalogue faces per role (`pairings`: display, body, utility), and hydrate fills a face the brand leaves out from the first pairing (unless the brand reacts against the grounding). Every entry appears in the registry as `grounding:<id>` and `territory:<id>`, with `implies` edges to its descriptor values.
 
 `hydrate(brand)` gives a schema v2 theme and its open questions. The character is resolved in order, each source above the last: the grounding's canon (unless the brand reacts against it), then the primary territory's canon and character, then the explicit `color`, `type`, `form`, `movement` and `adaptivity` choices. `themeFromCharacter` then sets the parameters; anchors become `color.anchors`; faces become font stacks with a fallback per descriptor, a Google face from the catalogue adds its stylesheet to `typography.sources`, and voices point at them; the icon set carries over. Every value's provenance is `{ source: 'brand', reason: '<brand path> → <scale.value>' }`. Anything hydrate cannot decide (a free grounding name, no anchors, no body face) comes back in `unresolved`, never guessed.
 

@@ -278,3 +278,9 @@ test('examples and guides use ui-container, not the deprecated level tags', () =
     assert.ok(n.avoidWhen.some((a: any) => a.useInstead === 'component:container'), `${n.id} points at component:container`);
   }
 });
+
+test('release: the changelog\'s latest version is the package version', () => {
+  const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const log = readFileSync(new URL('../CHANGELOG.md', import.meta.url), 'utf8');
+  assert.equal(log.match(/^## (\d+\.\d+\.\d+)/m)?.[1], pkg.version, 'CHANGELOG.md tops out at the package version (docs/guides/release.md)');
+});

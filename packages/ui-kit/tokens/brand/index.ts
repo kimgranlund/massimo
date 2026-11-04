@@ -52,7 +52,8 @@ export interface Brand {
   rationale?: Record<string, string>;
 }
 
-type Entry = { id: string; title: string; canon: { character: Record<string, string>; faces?: Record<string, string>; palette?: { name: string; value: string }[] }; cliches: string[]; outOfBounds?: string[] };
+type FaceRole = 'display' | 'body' | 'utility';
+type Entry = { id: string; title: string; canon: { character: Record<string, string>; faces?: Record<string, string>; pairings?: Partial<Record<FaceRole, string[]>>; palette?: { name: string; value: string }[] }; cliches: string[]; outOfBounds?: string[] };
 export const GROUNDINGS = catalogue.groundings as unknown as Entry[];
 export const TERRITORIES = catalogue.territories as unknown as Entry[];
 const groundingOf = (ref?: string) => GROUNDINGS.find((g) => g.id === ref);
@@ -239,11 +240,19 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
   if (b.color?.feedback === 'anchored' && !b.color.anchors?.some((a) => ['critical', 'warning', 'success', 'info'].includes(a.role))) unresolved.push('color.feedback: anchored, but no critical, warning, success or info anchor');
   // Faces and voices.
   const faces = facesOf(b);
+  // A face the brand leaves out comes from its grounding's pairings (unless it reacts against it).
+  const g = b.grounding?.primary;
+  const pairings = g?.ref && g.relation !== 'react-against' ? groundingOf(g.ref)?.canon.pairings : undefined;
+  const fromGrounding = new Set<string>();
+  for (const role of ['display', 'body', 'utility'] as const) {
+    const id = pairings?.[role]?.[0];
+    if (!faces[role] && id) { (faces as any)[role] = resolveFace({ ref: id }); fromGrounding.add(role); }
+  }
   const tf: NonNullable<Theme['typography']> = { ...(theme.typography ?? {}) };
   const setFace = (face: 'display' | 'sans' | 'serif' | 'mono', f: BrandFace, path: string) => {
     const s = stack(f);
     if (!FONT_STACK.test(s)) { unresolved.push(`${path}.family: "${f.family}" cannot be a font stack`); return; }
-    (tf.faces ??= {})[face] = s; provenance[`typography.faces.${face}`] = { source: 'brand', reason: path };
+    (tf.faces ??= {})[face] = s; provenance[`typography.faces.${face}`] = { source: 'brand', reason: fromGrounding.has(path.split('.').pop()!) ? `grounding:${g!.ref} pairing → ${path}` : path };
     // A web face: its stylesheet (Google from the catalogue, or the brand's self-hosted url).
     const entry = catalogueFace(f.family);
     const url = f.source === 'self-hosted' ? f.url : (entry?.source === 'google' || f.source === 'google') && entry ? googleFontsUrl(entry, f.weights) : undefined;
@@ -288,7 +297,7 @@ export function lintBrand(b: Brand): BrandFinding[] {
   if (!b.territories?.length) out.push({ id: 'brand.frame-territory', severity: 'warning', message: 'no visual territory: name the world the brand draws from' });
   if (!b.muse) out.push({ id: 'brand.frame-muse', severity: 'info', message: 'no muse: the signature has nothing to answer to' });
   // Traceability: every explicit choice has a rationale.
-  const explicit = Object.values(from).filter((p) => /^(form|color\.character|type\.character|movement|adaptivity)/.test(p));
+  const explicit = Object.values(from).filter((p) => /^(form|color\.character|type\.character|movement|adaptivity|iconography)/.test(p));
   const missing = explicit.filter((p) => !b.rationale?.[p.replace(/\.character\./, '.character.')]);
   if (missing.length) out.push({ id: 'brand.rationale', severity: 'info', message: `no rationale for ${missing.join(', ')}` });
   // Signature: the pushed scale leaves its default, and it is the brand's to push.

@@ -7,42 +7,133 @@
     "audience": "designers and front-end engineers tuning a product's design system",
     "primaryJob": "see every token's effect live and hand the result off exactly",
     "kind": "tool",
-    "sources": ["calipers and feeler gauges", "a drafting table under a north light", "proof sheets with crop marks"]
+    "sources": [
+      "calipers and feeler gauges",
+      "a drafting table under a north light",
+      "proof sheets with crop marks"
+    ]
   },
-  "grounding": { "primary": { "ref": "swiss-international", "relation": "reinterpret", "principles": ["the grid organizes the canvas", "content before ornament", "one signal color, used for meaning"] } },
-  "territories": [{
-    "name": "Calibration bench",
-    "ref": "laboratory",
-    "primary": true,
-    "description": "A metrology bench: gauges laid on a grey mat, readouts in a mono face, one orange tag marking what changed.",
-    "materials": ["anodized aluminum", "grey rubber mat", "printed scales"],
-    "light": "even daylight, no glare",
-    "outOfBounds": ["vibrancy.vivid", "movement.playful"]
-  }],
-  "muse": { "kind": "object", "name": "the Braun ET66 calculator", "take": "a calm instrument face where one warm key carries the meaning", "leave": "the retro plastic" },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "the grid organizes the canvas",
+        "content before ornament",
+        "one signal color, used for meaning"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Calibration bench",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "A metrology bench: gauges laid on a grey mat, readouts in a mono face, one orange tag marking what changed.",
+      "materials": [
+        "anodized aluminum",
+        "grey rubber mat",
+        "printed scales"
+      ],
+      "light": "even daylight, no glare",
+      "outOfBounds": [
+        "vibrancy.vivid",
+        "movement.playful"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the Braun ET66 calculator",
+    "take": "a calm instrument face where one warm key carries the meaning",
+    "leave": "the retro plastic"
+  },
   "color": {
     "anchors": [
-      { "name": "drafting blue", "value": "#2f54c4", "role": "primary" },
-      { "name": "signal orange", "value": "#d9480f", "role": "secondary" },
-      { "name": "graphite", "value": "#5c6166", "role": "neutral" }
+      {
+        "name": "drafting blue",
+        "value": "#2f54c4",
+        "role": "primary"
+      },
+      {
+        "name": "signal orange",
+        "value": "#d9480f",
+        "role": "secondary"
+      },
+      {
+        "name": "graphite",
+        "value": "#5c6166",
+        "role": "neutral"
+      }
     ],
     "feedback": "independent",
-    "character": { "neutral": "subtle", "emphasis": "balanced" }
+    "character": {
+      "neutral": "subtle",
+      "emphasis": "balanced"
+    }
   },
   "type": {
-    "faces": { "display": { "ref": "inter-tight", "weights": [600, 700] }, "body": { "ref": "inter", "weights": [400, 500, 600] }, "utility": { "ref": "jetbrains-mono", "weights": [400, 500] } },
-    "character": { "type-scale": "gentle" }
+    "faces": {
+      "display": {
+        "ref": "inter-tight",
+        "weights": [
+          600,
+          700
+        ]
+      },
+      "body": {
+        "ref": "inter",
+        "weights": [
+          400,
+          500,
+          600
+        ]
+      },
+      "utility": {
+        "ref": "jetbrains-mono",
+        "weights": [
+          400,
+          500
+        ]
+      }
+    },
+    "character": {
+      "type-scale": "gentle"
+    }
   },
-  "form": { "curvature": "crisp", "line": "borderless", "elevation": "layered" },
+  "form": {
+    "curvature": "crisp",
+    "line": "borderless",
+    "elevation": "layered"
+  },
   "movement": "calm",
   "adaptivity": "both",
   "voice": {
-    "tone": ["precise", "plain", "calm"],
-    "samples": { "action": "Copy theme", "confirmation": "Copied: 12 settings differ from the defaults.", "error": "That JSON is not a theme or a brand. Check line 4: \"radius-scale\" must be 0 to 3." }
+    "tone": [
+      "precise",
+      "plain",
+      "calm"
+    ],
+    "samples": {
+      "action": "Copy theme",
+      "confirmation": "Copied: 12 settings differ from the defaults.",
+      "error": "That JSON is not a theme or a brand. Check line 4: \"radius-scale\" must be 0 to 3."
+    }
   },
-  "iconography": { "set": "phosphor", "weight": "regular" },
-  "signature": { "concept": "curvature", "scale": "curvature", "reason": "the ET66's keys: precise corners on a calm face, never pebbles" },
-  "avoid": ["curvature.pill", "elevation.floating", "harmony.triadic"],
+  "iconography": {
+    "set": "phosphor",
+    "weight": "regular"
+  },
+  "signature": {
+    "concept": "curvature",
+    "scale": "curvature",
+    "reason": "the ET66's keys: precise corners on a calm face, never pebbles"
+  },
+  "avoid": [
+    "curvature.pill",
+    "elevation.floating",
+    "harmony.triadic"
+  ],
   "rationale": {
     "form.curvature": "instrument edges: crisp, not toy-like",
     "form.line": "the canvas shows components, not frames around them",
@@ -51,6 +142,7 @@
     "color.character.emphasis": "selection stays quiet enough not to compete with the components under review",
     "type.character.type-scale": "a working tool: a gentle hierarchy",
     "movement": "calm: motion reports a change, it does not perform",
-    "adaptivity": "designers work in both schemes"
+    "adaptivity": "designers work in both schemes",
+    "iconography.set": "phosphor: the kit default, so the tool shows the kit as shipped"
   }
 }

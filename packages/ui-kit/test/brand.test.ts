@@ -144,3 +144,21 @@ test('brand build: the studio\'s delivered brand (apps/studio/public/brand) is c
   assert.match(r.css, /^\/\* massimo: generated/);
   assert.match(buildBrand(b, { scope: true }).css, /\[data-ui-scope="massimo"\]/);
 });
+
+test('brand: groundings pair catalogue faces per role, and hydrate fills a face the brand leaves out from them', async () => {
+  const { FACE_CATALOGUE } = await import('../tokens/typography/faces.ts');
+  const ids = new Set(FACE_CATALOGUE.map((f) => f.id));
+  assert.ok(GROUNDINGS.length >= 12 && TERRITORIES.length >= 10);
+  for (const g of GROUNDINGS) for (const role of ['display', 'body', 'utility'] as const) {
+    const list = (g.canon as any).pairings?.[role];
+    assert.ok(list?.length, `${g.id}: pairs a ${role} face`);
+    for (const id of list) assert.ok(ids.has(id), `${g.id}.${role}: ${id} is in the face catalogue`);
+  }
+  const b = brand({ ...minimal, grounding: { primary: { ref: 'ulm-school', relation: 'inherit' } } });
+  const { theme, unresolved } = hydrate(b);
+  assert.match(theme.typography!.faces!.sans!, /^"Inter", /, 'body from the Ulm pairing');
+  assert.match(theme.provenance!['typography.faces.sans']!.reason!, /^grounding:ulm-school pairing/);
+  assert.ok(!unresolved.some((u) => u.startsWith('type.faces.body')), 'no open question once the grounding pairs a body face');
+  const against = hydrate(brand({ ...minimal, grounding: { primary: { ref: 'ulm-school', relation: 'react-against' } } }));
+  assert.ok(against.unresolved.some((u) => u.startsWith('type.faces.body')), 'a rejected grounding pairs nothing');
+});

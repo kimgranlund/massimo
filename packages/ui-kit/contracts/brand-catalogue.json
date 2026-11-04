@@ -1,7 +1,7 @@
 {
   "$schema": "./brand-catalogue.schema.json",
   "schemaVersion": 1,
-  "$comment": "Curated groundings (heritages, movements, schools) and visual-territory archetypes for the Brand schema (docs/planning/brand-schema.md). Each canon is a set of descriptor values (contracts/domains/*.json descriptors) the entry implies; hydrate uses them below the brand's explicit choices. Sources are general references for the entry, not endorsements.",
+  "$comment": "Curated groundings (heritages, movements, schools) and visual-territory archetypes for the Brand schema (docs/planning/brand-schema.md). Each canon is a set of descriptor values, and a grounding's `pairings` name catalogue faces per role (contracts/face-catalogue.json) (contracts/domains/*.json descriptors) the entry implies; hydrate uses them below the brand's explicit choices. Sources are general references for the entry, not endorsements.",
   "groundings": [
     {
       "id": "swiss-international",
@@ -30,6 +30,19 @@
         "faces": {
           "body": "neo-grotesque",
           "display": "neo-grotesque"
+        },
+        "pairings": {
+          "display": [
+            "inter-tight",
+            "helvetica-neue"
+          ],
+          "body": [
+            "inter",
+            "helvetica-neue"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
         }
       },
       "cliches": [
@@ -66,6 +79,19 @@
         "faces": {
           "body": "geometric",
           "display": "geometric"
+        },
+        "pairings": {
+          "display": [
+            "space-grotesk",
+            "futura"
+          ],
+          "body": [
+            "work-sans",
+            "avenir-next"
+          ],
+          "utility": [
+            "jetbrains-mono"
+          ]
         }
       },
       "cliches": [
@@ -102,6 +128,19 @@
         "faces": {
           "body": "humanist",
           "display": "serif"
+        },
+        "pairings": {
+          "display": [
+            "fraunces",
+            "newsreader"
+          ],
+          "body": [
+            "source-sans-3",
+            "gill-sans"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
         }
       },
       "cliches": [
@@ -136,6 +175,19 @@
         "faces": {
           "body": "serif",
           "display": "serif"
+        },
+        "pairings": {
+          "display": [
+            "fraunces",
+            "baskerville"
+          ],
+          "body": [
+            "newsreader",
+            "charter"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
         }
       },
       "cliches": [
@@ -171,6 +223,19 @@
         "faces": {
           "body": "geometric",
           "display": "display"
+        },
+        "pairings": {
+          "display": [
+            "space-grotesk",
+            "manrope"
+          ],
+          "body": [
+            "manrope",
+            "work-sans"
+          ],
+          "utility": [
+            "jetbrains-mono"
+          ]
         }
       },
       "cliches": [
@@ -206,6 +271,20 @@
         "faces": {
           "body": "mono",
           "display": "neo-grotesque"
+        },
+        "pairings": {
+          "display": [
+            "libre-franklin",
+            "helvetica-neue"
+          ],
+          "body": [
+            "ibm-plex-sans",
+            "system-ui"
+          ],
+          "utility": [
+            "ibm-plex-mono",
+            "menlo"
+          ]
         }
       },
       "cliches": [
@@ -241,6 +320,19 @@
         "faces": {
           "body": "humanist",
           "display": "humanist"
+        },
+        "pairings": {
+          "display": [
+            "source-sans-3",
+            "avenir-next"
+          ],
+          "body": [
+            "source-sans-3",
+            "gill-sans"
+          ],
+          "utility": [
+            "jetbrains-mono"
+          ]
         }
       },
       "cliches": [
@@ -276,6 +368,19 @@
         "faces": {
           "body": "geometric",
           "display": "geometric"
+        },
+        "pairings": {
+          "display": [
+            "manrope",
+            "futura"
+          ],
+          "body": [
+            "work-sans",
+            "avenir-next"
+          ],
+          "utility": [
+            "jetbrains-mono"
+          ]
         }
       },
       "cliches": [
@@ -283,6 +388,292 @@
       ],
       "sources": [
         "Pat Kirkham, Charles and Ray Eames (1995)"
+      ]
+    },
+    {
+      "id": "de-stijl",
+      "kind": "grounding",
+      "title": "De Stijl",
+      "period": "1917–1931",
+      "place": "Netherlands",
+      "principles": [
+        "Pure abstraction: horizontal and vertical only",
+        "Primary colors with black, white and grey",
+        "Asymmetric balance of planes",
+        "Elementary means, universal harmony"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "square",
+          "line": "outlined",
+          "elevation": "flat",
+          "vibrancy": "vivid",
+          "harmony": "triadic",
+          "neutral": "true",
+          "movement": "still"
+        },
+        "faces": {
+          "body": "geometric",
+          "display": "geometric"
+        },
+        "pairings": {
+          "display": [
+            "futura",
+            "space-grotesk"
+          ],
+          "body": [
+            "work-sans",
+            "avenir-next"
+          ],
+          "utility": [
+            "jetbrains-mono"
+          ]
+        }
+      },
+      "cliches": [
+        "Red, yellow and blue rectangles in black grids as a Mondrian pastiche"
+      ],
+      "sources": [
+        "Carel Blotkamp, De Stijl: The Formative Years (1986)"
+      ]
+    },
+    {
+      "id": "art-deco",
+      "kind": "grounding",
+      "title": "Art Deco",
+      "period": "1920s–1930s",
+      "place": "France, United States",
+      "principles": [
+        "Machine-age glamour and luxury",
+        "Geometric ornament, sunbursts and stepped forms",
+        "Rich materials: lacquer, chrome, inlay",
+        "Strong verticals and symmetry"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "crisp",
+          "line": "hairline",
+          "elevation": "layered",
+          "vibrancy": "natural",
+          "harmony": "complementary",
+          "type-scale": "dramatic",
+          "movement": "calm"
+        },
+        "faces": {
+          "body": "serif",
+          "display": "display"
+        },
+        "pairings": {
+          "display": [
+            "didot",
+            "dm-serif-display"
+          ],
+          "body": [
+            "charter",
+            "newsreader"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
+        }
+      },
+      "cliches": [
+        "Gold on black with fan motifs"
+      ],
+      "sources": [
+        "Bevis Hillier, Art Deco of the 20s and 30s (1968)"
+      ]
+    },
+    {
+      "id": "constructivism",
+      "kind": "grounding",
+      "title": "Russian Constructivism",
+      "period": "1915–1930s",
+      "place": "Soviet Union",
+      "principles": [
+        "Art as construction for a social purpose",
+        "Diagonals, photomontage and bold type",
+        "Red and black with stark contrast",
+        "Typography as an active, structural element"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "square",
+          "line": "outlined",
+          "elevation": "flat",
+          "vibrancy": "vivid",
+          "harmony": "complementary",
+          "type-scale": "dramatic",
+          "movement": "lively"
+        },
+        "faces": {
+          "body": "grotesque",
+          "display": "grotesque"
+        },
+        "pairings": {
+          "display": [
+            "libre-franklin",
+            "work-sans"
+          ],
+          "body": [
+            "ibm-plex-sans",
+            "work-sans"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
+        }
+      },
+      "cliches": [
+        "Red diagonal banners and fists as decoration"
+      ],
+      "sources": [
+        "Christina Lodder, Russian Constructivism (1983)"
+      ]
+    },
+    {
+      "id": "ulm-school",
+      "kind": "grounding",
+      "title": "Ulm School of Design (HfG Ulm)",
+      "period": "1953–1968",
+      "place": "Germany",
+      "principles": [
+        "Systematic, rational design method",
+        "Product systems and modular grids",
+        "Restraint: grey, black, white and one signal color",
+        "Design as research, not styling"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "crisp",
+          "line": "borderless",
+          "elevation": "flat",
+          "space": "balanced",
+          "vibrancy": "muted",
+          "neutral": "true",
+          "type-scale": "gentle",
+          "movement": "still"
+        },
+        "faces": {
+          "body": "neo-grotesque",
+          "display": "neo-grotesque"
+        },
+        "pairings": {
+          "display": [
+            "inter-tight",
+            "helvetica-neue"
+          ],
+          "body": [
+            "inter",
+            "ibm-plex-sans"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
+        }
+      },
+      "cliches": [
+        "Braun-style grey boxes with an orange dot as a quotation"
+      ],
+      "sources": [
+        "René Spitz, HfG Ulm: The View Behind the Foreground (2002)"
+      ]
+    },
+    {
+      "id": "art-nouveau",
+      "kind": "grounding",
+      "title": "Art Nouveau",
+      "period": "1890–1910",
+      "place": "Europe",
+      "principles": [
+        "Organic, flowing lines drawn from plants",
+        "Unity of architecture, objects and graphics",
+        "Whiplash curves and stylized nature",
+        "Handcraft in new materials"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "round",
+          "corner": "squircle",
+          "line": "hairline",
+          "elevation": "layered",
+          "vibrancy": "natural",
+          "harmony": "analogous",
+          "type-scale": "classic",
+          "movement": "calm"
+        },
+        "faces": {
+          "body": "serif",
+          "display": "display"
+        },
+        "pairings": {
+          "display": [
+            "fraunces",
+            "didot"
+          ],
+          "body": [
+            "newsreader",
+            "charter"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
+        }
+      },
+      "cliches": [
+        "Mucha-style women framed in vines"
+      ],
+      "sources": [
+        "Stephan Tschudi Madsen, Art Nouveau (1967)"
+      ]
+    },
+    {
+      "id": "wabi-sabi",
+      "kind": "grounding",
+      "title": "Wabi-sabi",
+      "period": "15th century–",
+      "place": "Japan",
+      "principles": [
+        "Beauty in impermanence and imperfection",
+        "Asymmetry, roughness and economy",
+        "Natural materials that age",
+        "Quiet, understated surfaces"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "soft",
+          "corner": "squircle",
+          "line": "borderless",
+          "elevation": "flat",
+          "space": "airy",
+          "vibrancy": "muted",
+          "neutral": "tinted",
+          "type-scale": "gentle",
+          "movement": "calm"
+        },
+        "faces": {
+          "body": "humanist",
+          "display": "serif"
+        },
+        "pairings": {
+          "display": [
+            "newsreader",
+            "fraunces"
+          ],
+          "body": [
+            "source-sans-3",
+            "gill-sans"
+          ],
+          "utility": [
+            "ibm-plex-mono"
+          ]
+        }
+      },
+      "cliches": [
+        "Cracked-bowl photography and beige gradients as a wellness default"
+      ],
+      "sources": [
+        "Leonard Koren, Wabi-Sabi for Artists, Designers, Poets & Philosophers (1994)"
       ]
     }
   ],
@@ -558,6 +949,199 @@
       ],
       "cliches": [
         "Cacti and cow skulls"
+      ]
+    },
+    {
+      "id": "print-shop",
+      "kind": "territory",
+      "title": "Print shop",
+      "description": "A letterpress and offset shop: lead type in cases, ink on the rollers, proofs pinned to a wall.",
+      "materials": [
+        "lead type",
+        "paper stock",
+        "printing ink",
+        "steel chases"
+      ],
+      "light": "bright overhead, ink-dark surfaces",
+      "canon": {
+        "character": {
+          "vibrancy": "natural",
+          "line": "hairline",
+          "type-scale": "dramatic",
+          "curvature": "crisp"
+        },
+        "palette": [
+          {
+            "name": "process black",
+            "value": "#1c1c1c"
+          },
+          {
+            "name": "proof red",
+            "value": "#c0392b"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "curvature.pill",
+        "elevation.floating"
+      ],
+      "cliches": [
+        "Fake halftone and misregistration everywhere"
+      ]
+    },
+    {
+      "id": "alpine",
+      "kind": "territory",
+      "title": "Alpine hut",
+      "description": "A mountain refuge above the treeline: weathered larch, wool blankets, rescue orange against snow.",
+      "materials": [
+        "larch wood",
+        "wool",
+        "granite",
+        "rescue fabric"
+      ],
+      "light": "thin, high-altitude light, snow glare",
+      "canon": {
+        "character": {
+          "vibrancy": "natural",
+          "neutral": "tinted",
+          "curvature": "soft",
+          "elevation": "layered",
+          "movement": "calm"
+        },
+        "palette": [
+          {
+            "name": "rescue orange",
+            "value": "#e4572e"
+          },
+          {
+            "name": "larch",
+            "value": "#8b5a2b"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "adaptivity.dark-first"
+      ],
+      "cliches": [
+        "Edelweiss and cuckoo clocks"
+      ]
+    },
+    {
+      "id": "market",
+      "kind": "territory",
+      "title": "Covered market",
+      "description": "A food market hall: stacked produce, chalkboard prices, enamel signs, crowded and warm.",
+      "materials": [
+        "enamel",
+        "chalkboard",
+        "produce crates",
+        "tiles"
+      ],
+      "light": "warm, mixed, through glass roofs",
+      "canon": {
+        "character": {
+          "vibrancy": "vivid",
+          "harmony": "analogous",
+          "space": "tight",
+          "curvature": "soft",
+          "movement": "lively"
+        },
+        "palette": [
+          {
+            "name": "tomato",
+            "value": "#d62828"
+          },
+          {
+            "name": "basil",
+            "value": "#2a9d8f"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "vibrancy.muted",
+        "movement.still"
+      ],
+      "cliches": [
+        "Chalk lettering on every surface"
+      ]
+    },
+    {
+      "id": "atelier",
+      "kind": "territory",
+      "title": "Atelier",
+      "description": "A painter's or tailor's studio: canvas, pinned swatches, chalk marks, a long north window.",
+      "materials": [
+        "canvas",
+        "linen",
+        "chalk",
+        "pins"
+      ],
+      "light": "cool, soft north light",
+      "canon": {
+        "character": {
+          "vibrancy": "muted",
+          "neutral": "tinted",
+          "line": "hairline",
+          "space": "airy",
+          "movement": "calm"
+        },
+        "palette": [
+          {
+            "name": "linen",
+            "value": "#d8cfc0"
+          },
+          {
+            "name": "tailor chalk",
+            "value": "#3b5b92"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "elevation.floating",
+        "harmony.triadic"
+      ],
+      "cliches": [
+        "Paint splatters as texture"
+      ]
+    },
+    {
+      "id": "observatory",
+      "kind": "territory",
+      "title": "Observatory",
+      "description": "A dome at night: the telescope, red working lights, star charts and instrument dials.",
+      "materials": [
+        "brass",
+        "painted steel",
+        "star charts",
+        "red filters"
+      ],
+      "light": "darkness with red task light",
+      "canon": {
+        "character": {
+          "adaptivity": "dark-first",
+          "vibrancy": "muted",
+          "line": "hairline",
+          "elevation": "flat",
+          "movement": "still"
+        },
+        "palette": [
+          {
+            "name": "red light",
+            "value": "#b23a3a"
+          },
+          {
+            "name": "deep sky",
+            "value": "#1b2a4a"
+          }
+        ]
+      },
+      "outOfBounds": [
+        "adaptivity.light-first",
+        "vibrancy.vivid"
+      ],
+      "cliches": [
+        "Galaxy photography as wallpaper"
       ]
     }
   ]

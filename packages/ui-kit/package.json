@@ -1,6 +1,6 @@
 {
   "name": "@massimo/ui-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "description": "Tiny light-DOM web components and React components on one headless layer, styled with PandaCSS.",

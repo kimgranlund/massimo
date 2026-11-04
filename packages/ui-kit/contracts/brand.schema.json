@@ -80,7 +80,13 @@
                 "memphis",
                 "brutalism",
                 "scandinavian-functionalism",
-                "californian-modernism"
+                "californian-modernism",
+                "de-stijl",
+                "art-deco",
+                "constructivism",
+                "ulm-school",
+                "art-nouveau",
+                "wabi-sabi"
               ]
             },
             "name": {
@@ -121,7 +127,13 @@
                 "memphis",
                 "brutalism",
                 "scandinavian-functionalism",
-                "californian-modernism"
+                "californian-modernism",
+                "de-stijl",
+                "art-deco",
+                "constructivism",
+                "ulm-school",
+                "art-nouveau",
+                "wabi-sabi"
               ]
             },
             "name": {
@@ -175,7 +187,12 @@
               "nocturne",
               "archive",
               "laboratory",
-              "desert"
+              "desert",
+              "print-shop",
+              "alpine",
+              "market",
+              "atelier",
+              "observatory"
             ]
           },
           "primary": {

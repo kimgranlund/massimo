@@ -23,11 +23,12 @@
 - **Motion:** `MotionPanel` (`src/studio/MotionPanel.tsx`) owns every motion control (duration scale, bounce, springs, intents); no other tab shows motion.
 - **Brand:** edit the active brand in place, or start one from a worked brand or a blank brand (`studio/BrandEditor.tsx`):
   - Subject: name, audience, primary job, kind, sources.
-  - Frame: grounding and its relation, territory, muse and what to take.
-  - Anchors: role and color per anchor; add and remove.
+  - Frame: grounding and its relation, territory, muse (kind, what to take and to leave).
+  - Territory: name, description, materials, light, out-of-bounds values.
+  - Anchors: name, role, color and an optional dark color per anchor; add and remove.
   - Faces: display, body and utility, from the face catalogue.
   - Character: every descriptor scale. An empty choice shows the frame's value and where it came from.
-  - Signature.
+  - Signature and its reason, the avoid list, a rationale line per explicit choice, and the voice (tone words, action, confirmation and error samples).
 
   Every edit is validated (`validateBrand`) and re-hydrated after a short pause. Parameters you tuned by hand since the last apply (those that differ from what that brand hydrated to) are kept on top, and the status line counts them; other hand changes (Spectrum settings, roles, faces) follow the brand. Reset and Load cancel a pending edit. The brand name follows the subject name as a valid theme name.
 - Colors also has **Emphasis** (Selection: quiet, balanced, loud; theme `color.parameters.emphasis`). It is declared on `:root` with the colors (the selection fills are declared there), so the panel and any scoped preview without its own emphasis follow it too.
