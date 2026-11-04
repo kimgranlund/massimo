@@ -14,6 +14,10 @@ export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<
     css: spectrumCSS(data, resolved, ':root'),
     diagnostics: spectrumDiagnostics(data, resolved),
     ms,
+    contrast: {
+      light: { page: data.settings.toneMax as number, targets: data.settings.targetsLight as number[] },
+      dark: { page: data.settings.darkTone as number, targets: data.settings.targetsDark as number[] },
+    },
     roles: resolved,
     families: f.all.map((name) => ({
       name,
@@ -21,6 +25,8 @@ export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<
       dark: dark[name],
       lightText: data.schemes.light[name].map((s) => s.apca.css),
       darkText: data.schemes.dark[name].map((s) => s.apca.css),
+      lightTones: data.schemes.light[name].map((s) => s.hct[2]),
+      darkTones: data.schemes.dark[name].map((s) => s.hct[2]),
     })),
   };
   return { payload, accents: f.accents, neutrals: f.all };

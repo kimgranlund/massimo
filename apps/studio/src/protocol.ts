@@ -6,6 +6,8 @@ import type { Face, Voice } from '@massimo/ui-kit/tokens';
 export type VoiceMap = Record<Voice, Face>;
 export type FaceMap = Record<Face, string>;
 export type Scheme = 'auto' | 'light' | 'dark';
-export interface FamilyRamp { name: string; light: string[]; dark: string[]; lightText: string[]; darkText: string[] }
+export interface FamilyRamp { name: string; light: string[]; dark: string[]; lightText: string[]; darkText: string[]; /** HCT tone per step. */ lightTones: number[]; darkTones: number[] }
+/** The contrast model's inputs: the page tone (step 1) and the APCA Lc target per step 2–12, per scheme. */
+export interface ContrastPayload { light: { page: number; targets: number[] }; dark: { page: number; targets: number[] } }
 import type { SpectrumDiagnostics } from '@massimo/ui-kit/spectrum';
-export interface SpectrumPayload { css: string; families: FamilyRamp[]; roles: Roles; diagnostics: SpectrumDiagnostics; ms: number }
+export interface SpectrumPayload { css: string; families: FamilyRamp[]; roles: Roles; diagnostics: SpectrumDiagnostics; contrast: ContrastPayload; ms: number }

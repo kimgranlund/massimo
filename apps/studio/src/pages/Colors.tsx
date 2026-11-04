@@ -1,5 +1,6 @@
 // Colors: the role overview, Color in context (brand and interface), what shaped the generation
-// (hue and chroma) and every family's light and dark ramps. Every demo color is a role token.
+// (hue and chroma), the contrast model (Lc targets vs achieved, white and black) and every family's
+// light and dark ramps. Every demo color is a role token.
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/listbox/element';
@@ -9,10 +10,10 @@ import '@massimo/ui-kit/components/range/element';
 import '@massimo/ui-kit/components/color/element';
 import { useState } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
-import { UNIQUE_HUES as UNIQUE } from '@massimo/ui-kit/spectrum';
+import { UNIQUE_HUES as UNIQUE, TARGET_MAX, apcaLc } from '@massimo/ui-kit/spectrum';
 import type { SpectrumPayload } from '../protocol.ts';
 import type { PageProps } from './types.ts';
-import { CQ_LG, CQ_MD, Divider, Page, Section, caption, kicker, metrics, rowLabel, specimens, subTitle } from './shared.tsx';
+import { CQ_LG, CQ_MD, Divider, Page, Section, caption, dataTable, kicker, metrics, nameCell, noteCell, rowLabel, specimens, subTitle, tableScroller } from './shared.tsx';
 
 const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
 const ramp = css({ width: 'full' });
@@ -299,6 +300,51 @@ function ChromaChart({ d }: { d: SpectrumPayload['diagnostics'] }) {
   );
 }
 
+// Contrast: the Leonardo model. Each step's tone is solved from an APCA Lc target against the page
+// (step 1), per scheme; the chart plots the targets and every family's achieved Lc at each step.
+const contrastGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '4', [CQ_LG]: { gridTemplateColumns: '1fr 1fr' } });
+const endpointRow = css({ display: 'flex', gap: '6', flexWrap: 'wrap', alignItems: 'center' });
+const endpointSwatch = css({ width: '8', height: '8', borderRadius: 'lg', boxShadow: '[inset 0 0 0 1px var(--colors-border)]' });
+const onWhite = css({ bg: 'white' }), onBlack = css({ bg: 'black' });
+const achievedLc = (tones: number[]) => tones.slice(1).map((t) => apcaLc(t, tones[0]));
+function ContrastChart({ spectrum, mode }: { spectrum: SpectrumPayload; mode: 'light' | 'dark' }) {
+  const { page, targets } = spectrum.contrast[mode];
+  const H = 230, L = 34, R = W - 12, T = 14, B = H - 24, top = Math.min(TARGET_MAX, Math.ceil(Math.max(...targets) / 20) * 20 + 10);
+  const x = (step: number) => L + ((step - 1) / 11) * (R - L), y = (lc: number) => B - (lc / top) * (B - T);
+  const line = [[1, 0], ...targets.map((lc, i) => [i + 2, lc])].map(([st, lc], i) => `${i ? 'L' : 'M'}${x(st).toFixed(1)},${y(lc).toFixed(1)}`).join('');
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className={chartSvg} role="img" aria-label={`${mode} page tone ${f1(page)}: APCA Lc target per step 2 to 12 (${targets.join(', ')}) `}>
+      {Array.from({ length: Math.floor(top / 20) + 1 }, (_, i) => i * 20).map((lc) => (
+        <g key={lc}><line x1={L} x2={R} y1={y(lc)} y2={y(lc)} className={grid} /><text x={L - 6} y={y(lc) + 3} textAnchor="end" className={chartTick}>{lc}</text></g>
+      ))}
+      {Array.from({ length: 12 }, (_, i) => <text key={i} x={x(i + 1)} y={H - 8} textAnchor="middle" className={chartTick}>{i + 1}</text>)}
+      <path d={line} fill="none" stroke="currentColor" strokeWidth={2} />
+      {targets.map((lc, i) => <circle key={i} cx={x(i + 2)} cy={y(lc)} r={4} fill="none" stroke="currentColor" strokeWidth={2} />)}
+      <text x={L + 4} y={T + 10} className={chartLabel}>{mode} page · tone {f1(page)}</text>
+    </svg>
+  );
+}
+function ContrastTable({ spectrum }: { spectrum: SpectrumPayload }) {
+  const neutral = spectrum.families.find((f) => f.name === spectrum.roles.neutral) ?? spectrum.families[0];
+  const lc = { light: achievedLc(neutral.lightTones), dark: achievedLc(neutral.darkTones) };
+  return (
+    <div className={tableScroller}>
+      <table className={dataTable} aria-label="Contrast per step">
+        <thead><tr><th>Step</th><th>Use</th><th>Light tone</th><th>Light<small>Lc</small></th><th>Dark tone</th><th>Dark<small>Lc</small></th></tr></thead>
+        <tbody>
+          {RAMP_USE.map((use, i) => (
+            <tr key={i}>
+              <td className={nameCell}>{i + 1}</td><td className={noteCell}>{use}</td>
+              <td>{f1(neutral.lightTones[i])}</td><td>{i ? f1(lc.light[i - 1]) : 'page'}</td>
+              <td>{f1(neutral.darkTones[i])}</td><td>{i ? f1(lc.dark[i - 1]) : 'page'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export function ColorsPage({ spectrum }: PageProps) {
   if (!spectrum) return <Page title="Colors" lead="Generating colors…"><Divider /></Page>;
   const r = spectrum.roles;
@@ -328,7 +374,21 @@ export function ColorsPage({ spectrum }: PageProps) {
         </div>
       </Section>
       <Divider />
-      <Section id="ramps" title="Ramps" note="Steps 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text. Light left, dark right.">
+      <Section id="contrast" title="Contrast" note="Every ramp is placed by contrast, not by fixed tones: step 1 is the page (the light or dark page tone) and each step 2–12 takes an APCA Lc target against it, so the same step reads the same in both schemes and for every hue. Every family shares the solved tones (hue and chroma vary, tone does not), so one table holds for all of them. Edit the targets under Contrast in the Colors tab.">
+        <div className={contrastGrid}>
+          <figure className={chartFig}><ContrastChart spectrum={spectrum} mode="light" /><figcaption className={caption}>Light: targets against the light page.</figcaption></figure>
+          <figure className={chartFig}><ContrastChart spectrum={spectrum} mode="dark" /><figcaption className={caption}>Dark: targets against the dark page.</figcaption></figure>
+        </div>
+        <ContrastTable spectrum={spectrum} />
+        <h3 className={subTitle}>White and black</h3>
+        <div className={endpointRow}>
+          <figure className={roleChip}><span className={cx(endpointSwatch, onWhite)} /><figcaption><span className={rowLabel}>white</span><span className={metrics}>a neutral light step, or pure</span></figcaption></figure>
+          <figure className={roleChip}><span className={cx(endpointSwatch, onBlack)} /><figcaption><span className={rowLabel}>black</span><span className={metrics}>a neutral dark step, or pure</span></figcaption></figure>
+          <p className={caption}>Text on solids and fg.strong use these; map them in the Colors tab (White and black).</p>
+        </div>
+      </Section>
+      <Divider />
+      <Section id="ramps" title="Ramps" note="Steps 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text, each step at its contrast target (above). Light left, dark right.">
         {spectrum.families.map((f) => (
           <div key={f.name} className={rampRow}>
             <span className={rowLabel}>{f.name}{[r.primary, r.neutral, r.critical].includes(f.name) ? ' ●' : ''}</span>
