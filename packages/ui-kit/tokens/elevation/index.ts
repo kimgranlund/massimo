@@ -8,7 +8,7 @@
 //   shadows.<raised|floating|modal|card>   the compound shadow at the level's elevation (shadow-<level>, dp)
 //   shadows.sm, shadows.md                 base shadows (1dp, 3dp) for small lifts inside components
 //   colors.shadowLayer.<umbra|penumbra|ambient>  each layer's color: the shadow role at its scheme alpha
-import { SHADOW_DP, SHADOW_LAYERS, SHADOWS, shadowAt, type ShadowLayer } from '../colors/spectrum/index.ts';
+import { SHADOW_DP, SHADOW_LAYERS, SHADOWS, shadowAt, type ShadowLayer } from '../colors/spectrum/roles.ts';
 
 export { SHADOWS, SHADOW_DP, SHADOW_LAYERS, shadowAt };
 

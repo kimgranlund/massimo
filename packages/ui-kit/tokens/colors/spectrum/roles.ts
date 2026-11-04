@@ -1,0 +1,117 @@
+// Spectrum roles and the semantic steps, shadows and selection fills built on them: plain data, no
+// generation engine, so a module that only names roles never loads the engine's 264 KB runtime.
+
+export const BRAND_ROLES = ['primary', 'secondary', 'neutral'] as const;
+export const FEEDBACK_ROLES = ['critical', 'warning', 'success', 'info'] as const;
+export const DATA_ROLES = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6'] as const;
+export const ROLE_NAMES = [...BRAND_ROLES, ...FEEDBACK_ROLES, ...DATA_ROLES] as const;
+export type RoleName = (typeof ROLE_NAMES)[number];
+export type Roles = Record<RoleName, string>;
+export const DEFAULT_ROLES: Roles = {
+  primary: 'indigo', secondary: 'amber', neutral: 'neutral',
+  critical: 'red', warning: 'orange', success: 'green', info: 'cyan',
+  data1: 'indigo', data2: 'cyan', data3: 'grass', data4: 'amber', data5: 'tomato', data6: 'plum',
+};
+
+/** Round the numbers in a color string to 4 decimals (well below a visible difference). */
+export const trimColor = (css: string) => css.replace(/-?\d*\.\d+/g, (n) => String(Number(Number(n).toFixed(4))));
+
+/** Brand and feedback roles: each gets the same semantic steps and its whole ramp. */
+export const SCALE_ROLES = [...BRAND_ROLES, ...FEEDBACK_ROLES] as const;
+/** Semantic steps every scale role carries (Radix step semantics). */
+export const SEMANTIC_STEPS = { solid: 9, 'solid-hover': 10, subtle: 3, 'subtle-hover': 4, border: 7, fg: 11 } as const;
+const UNIFORM_STEPS = Object.fromEntries(SCALE_ROLES.flatMap((role) => [
+  ...Object.entries(SEMANTIC_STEPS).map(([name, step]) => [`${role}-${name}`, [role, step] as const]),
+  ...Array.from({ length: 12 }, (_, i) => [`${role}-${i + 1}`, [role, i + 1] as const]),
+])) as Record<`${(typeof SCALE_ROLES)[number]}-${keyof typeof SEMANTIC_STEPS | number}`, RoleStep>;
+
+/**
+ * Role -> [family role, step], Radix step semantics. Shared by the kit tokens and spectrumCSS.
+ * One name per role: <role>-solid, -solid-hover, -subtle, -subtle-hover, -border, -fg and <role>-1…12
+ * for primary, secondary, neutral, critical, warning, success and info; data-1…6; plus the page roles.
+ */
+export const ROLE_STEPS = {
+  'bg': ['neutral', 1], 'bg-subtle': ['neutral', 2], 'bg-muted': ['neutral', 3],
+  'bg-muted-hover': ['neutral', 4], 'bg-muted-active': ['neutral', 5],
+  // Control fills (the neutral button): neutral 12 as a translucent layer, so a control reads on any
+  // surface (page, muted panel, card). On the page tone they match neutral 3 / 4 / 5.
+  'bg-control': ['neutral', 12, { alpha: 0.12, darkAlpha: 0.2 }],
+  'bg-control-hover': ['neutral', 12, { alpha: 0.19, darkAlpha: 0.29 }],
+  'bg-control-active': ['neutral', 12, { alpha: 0.25, darkAlpha: 0.39 }],
+  // Floating layers (menus, popovers, dialogs, drawers): the page tone in light, one step up in dark,
+  // where shadows barely read. Tooltips invert; the backdrop dims the page in both schemes.
+  'bg-overlay': ['neutral', 1, { dark: 2 }],
+  // The selected option of a listbox or segmented control: the lightest neutral in light, the primary
+  // solid in dark (its text is fg-selected: neutral 12 in light, the solid's contrast color in dark).
+  'bg-selected': ['neutral', 1, { dark: 9, darkFamily: 'primary' }],
+  'bg-inverse': ['neutral', 12], 'fg-inverse': ['neutral', 1],
+  'bg-backdrop': ['neutral', 12, { dark: 1, alpha: 0.4, darkAlpha: 0.7 }],
+  'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
+  // Placeholders and other hints that must read as absent content: well below muted text.
+  'fg-subtle': ['neutral', 8],
+  'border': ['neutral', 6], 'border-strong': ['neutral', 7],
+  ...UNIFORM_STEPS,
+  // The scheme's shadow color (shadows.sm, shadows.md mix it with transparent): neutral 12 in light,
+  // the darkest neutral in dark, where the shadow alphas are stronger.
+  'shadow': ['neutral', 12, { dark: 1 }],
+  // Data series: the step-9 solid of each data family.
+  'data-1': ['data1', 9], 'data-2': ['data2', 9], 'data-3': ['data3', 9], 'data-4': ['data4', 9], 'data-5': ['data5', 9], 'data-6': ['data6', 9],
+  'focus-ring': ['primary', 8],
+} as const satisfies Record<string, RoleStep>;
+
+/**
+ * Compound shadows (Material's key-light umbra and penumbra plus an ambient layer), continuous in the
+ * elevation e (dp): each layer's offset, blur and spread are px per dp, fitted to Material's tables
+ * at 2, 8 and 24dp, so any elevation is valid. Colored by the `shadow` role (neutral 12 in light, the
+ * darkest neutral in dark: tinted, never black) at a per-scheme alpha, stronger in dark where a
+ * shadow has less page to darken.
+ */
+export const SHADOW_LAYERS = {
+  umbra:    { y: 0.5, blur: 0.6, spread: -0.3,  light: 0.14, dark: 0.5 },
+  penumbra: { y: 1,   blur: 1.6, spread: 0.125, light: 0.1,  dark: 0.36 },
+  ambient:  { y: 0.4, blur: 1.9, spread: 0.33,  light: 0.08, dark: 0.3 },
+} as const satisfies Record<string, { y: number; blur: number; spread: number; light: number; dark: number }>;
+export type ShadowLayer = keyof typeof SHADOW_LAYERS;
+
+/** The base shadows' elevations (small lifts inside components: a selected option, a range thumb). */
+export const SHADOW_DP = { sm: 1, md: 3 } as const;
+
+/** The three layers at elevation e: px offsets, blur and spread, and the per-scheme alphas. */
+export const shadowAt = (e: number) => (Object.entries(SHADOW_LAYERS) as [ShadowLayer, (typeof SHADOW_LAYERS)[ShadowLayer]][]).map(([layer, l]) =>
+  ({ layer, y: l.y * e, blur: l.blur * e, spread: l.spread * e, light: e > 0 ? l.light : 0, dark: e > 0 ? l.dark : 0 }));
+
+/** The base shadows as layers (the DTCG export). */
+export const SHADOWS = { sm: shadowAt(SHADOW_DP.sm), md: shadowAt(SHADOW_DP.md) };
+
+/** A role: a family step, optionally a different step and/or an alpha per scheme. */
+export type RoleStep = readonly [keyof Roles, number] | readonly [keyof Roles, number, { dark?: number; darkFamily?: keyof Roles; alpha?: number; darkAlpha?: number }];
+
+/** Family, step and alpha (1 = opaque) of a role in one scheme. */
+export function roleStep(entry: RoleStep, mode: 'light' | 'dark'): { family: keyof Roles; step: number; alpha: number } {
+  const [family, step, o = {}] = entry as readonly [keyof Roles, number, { dark?: number; darkFamily?: keyof Roles; alpha?: number; darkAlpha?: number }?];
+  const dark = mode === 'dark';
+  return { family: (dark && o.darkFamily) || family, step: (dark && o.dark) || step, alpha: (dark ? o.darkAlpha ?? o.alpha : o.alpha) ?? 1 };
+}
+
+/** CSS for a role from a ramp-step reference (a var() or a token reference). */
+export const withAlpha = (ref: string, alpha: number) => alpha === 1 ? ref : `color-mix(in oklch, ${ref} ${Math.round(alpha * 100)}%, transparent)`;
+
+/**
+ * The selection fills (bg-selected, fg-selected) follow the theme's emphasis (--ui-emphasis 0–2),
+ * mixed in CSS from role variables so a theme or scope changes them live. Light: neutral 3 (quiet),
+ * neutral 1 (balanced), primary 3 (loud), text neutral 12. Dark: neutral 4 with neutral 12 text
+ * (quiet), else the primary solid with its contrast text. `ref(role)` names a role variable.
+ */
+export function selectionVars(mode: 'light' | 'dark', ref: (role: string) => string = (r) => `var(--colors-${r})`) {
+  const e = 'var(--ui-emphasis, 1)';
+  const low = `calc(clamp(0, ${e}, 1) * 100%)`, high = `calc(clamp(0, ${e} - 1, 1) * 100%)`;
+  return mode === 'light'
+    ? { 'bg-selected': `color-mix(in oklch, color-mix(in oklch, ${ref('neutral-3')}, ${ref('neutral-1')} ${low}), ${ref('primary-3')} ${high})`, 'fg-selected': ref('neutral-12') }
+    // The primary solid (an anchored role's solid step, else 9), so its contrast text (fg-on-solid) matches.
+    : { 'bg-selected': `color-mix(in oklch, ${ref('neutral-4')}, ${ref('primary-solid')} ${low})`, 'fg-selected': `color-mix(in oklch, ${ref('neutral-12')}, ${ref('fg-on-solid')} ${low})` };
+}
+
+export type Endpoint = number | 'pure';
+export type Endpoints = { white?: Endpoint; black?: Endpoint };
+/** The neutral step white and black take by default. */
+export const DEFAULT_ENDPOINT = 3;

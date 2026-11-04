@@ -13,7 +13,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { GEOMETRY_DEFAULTS, SIZES, CONTAINERS } from '../tokens/geometry/resolve.ts';
 import { FACES, VOICES, DEFAULT_VOICES, FONT_FAMILIES, TYPE_ROLES, TYPE_DEFAULTS, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
-import { ROLE_STEPS, SHADOWS, roleStep } from '../tokens/colors/spectrum/index.ts';
+import { ROLE_STEPS, SHADOWS, roleStep } from '../tokens/colors/spectrum/roles.ts';
 import DEFAULTS from '../tokens/colors/spectrum/defaults.json' with { type: 'json' };
 import { rows, type Row } from './geometry-csv.ts';
 import { RESOLVED_SPRINGS, INTENTS, fitBezier } from '../tokens/motion/index.ts';

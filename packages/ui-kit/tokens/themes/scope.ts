@@ -9,7 +9,7 @@
 import { unitTokenVars } from '../geometry/index.ts';
 import { motionTokenVars } from '../motion/index.ts';
 import { elevationTokenVars } from '../elevation/index.ts';
-import { SHADOW_LAYERS, selectionVars, withAlpha } from '../colors/spectrum/index.ts';
+import { SHADOW_LAYERS, selectionVars, withAlpha } from '../colors/spectrum/roles.ts';
 import { themeColorVars, themeVars } from './index.ts';
 import { THEME_NAME } from './validate.ts';
 import { DEFAULT_VOICES } from '../typography/resolve.ts';

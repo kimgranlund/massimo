@@ -3,7 +3,8 @@
 // engine. Run: npm run spectrum:defaults (test/spectrum.test.ts fails when it is stale).
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { generateSpectrum, resolveRoles, ramps, DEFAULT_ROLES } from '../tokens/colors/spectrum/index.ts';
+import { generateSpectrum, resolveRoles, ramps } from '../tokens/colors/spectrum/index.ts';
+import { DEFAULT_ROLES } from '../tokens/colors/spectrum/roles.ts';
 
 export function spectrumDefaults() {
   const data = generateSpectrum();

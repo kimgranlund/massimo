@@ -4,7 +4,7 @@
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
-import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, roleStep, selectionVars, withAlpha } from './spectrum/index.ts';
+import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, roleStep, selectionVars, withAlpha } from './spectrum/roles.ts';
 import { elevationTokens } from '../elevation/index.ts';
 
 type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };

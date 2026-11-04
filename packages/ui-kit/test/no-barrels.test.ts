@@ -22,6 +22,17 @@ function files(dir: string, out: string[] = []): string[] {
   return out;
 }
 const sources = [...files(KIT), ...files(join(STUDIO, 'src')), ...files(join(STUDIO, 'scripts')), ...readdirSync(STUDIO).filter((f) => f.endsWith('.html')).map((f) => join(STUDIO, f))];
+// A @massimo/ui-kit specifier → its file through the package's exports map (exact keys, then `*` patterns).
+const EXPORTS: Record<string, string> = JSON.parse(readFileSync(join(KIT, 'package.json'), 'utf8')).exports;
+function exported(spec: string): string | null {
+  const key = '.' + spec.slice('@massimo/ui-kit'.length);
+  if (typeof EXPORTS[key] === 'string') return join(KIT, EXPORTS[key]);
+  for (const [k, v] of Object.entries(EXPORTS)) {
+    const [pre, post] = k.split('*');
+    if (post !== undefined && key.startsWith(pre) && key.endsWith(post)) return join(KIT, v.replace('*', key.slice(pre.length, key.length - post.length)));
+  }
+  return null;
+}
 const code = (s: string) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '').split('\n').map((l) => l.trim()).filter(Boolean);
 
 test('no module in the kit is a barrel (only re-exports)', () => {
@@ -61,7 +72,11 @@ test('no element module statically reaches the theme engine or the spectrum runt
     if (seen.has(file) || !/\.(ts|tsx|json)$/.test(file)) return seen;
     seen.add(file);
     if (file.endsWith('.json')) return seen;
-    for (const m of readFileSync(file, 'utf8').matchAll(/^(?:import|export)\s+(?!type\b)(?:[\w*{}\s,$]+?\s+from\s+)?'(\.[^']+)'/gm)) graph(join(file, '..', m[1]), seen);
+    for (const m of readFileSync(file, 'utf8').matchAll(/^(?:import|export)\s+(?!type\b)(?:[\w*{}\s,$]+?\s+from\s+)?'([^']+)'/gm)) {
+      const spec = m[1];
+      if (spec.startsWith('.')) graph(join(file, '..', spec), seen);
+      else if (spec.startsWith('@massimo/ui-kit/')) { const r = exported(spec); if (r) graph(r, seen); }
+    }
     return seen;
   };
   const heavy = ['tokens/colors/spectrum/runtime.json', 'tokens/themes/index.ts'].map((p) => join(KIT, p));
@@ -69,4 +84,22 @@ test('no element module statically reaches the theme engine or the spectrum runt
   const reach = roots.flatMap((r) => heavy.filter((h) => graph(r).has(h)).map((h) => `${relative(KIT, r)} → ${relative(KIT, h)}`));
   assert.ok(roots.length > 40, `found ${roots.length} element modules`);
   assert.deepEqual(reach, []);
+});
+
+test('the studio shell loads the spectrum engine on demand, not with its first paint', () => {
+  const graph = (file: string, seen = new Set<string>()): Set<string> => {
+    if (seen.has(file) || !/\.(ts|tsx|json)$/.test(file)) return seen;
+    seen.add(file);
+    if (file.endsWith('.json')) return seen;
+    // Static imports only: import() is how the shell defers the engine.
+    for (const m of readFileSync(file, 'utf8').matchAll(/^(?:import|export)\s+(?!type\b)(?:[\w*{}\s,$]+?\s+from\s+)?'([^']+)'/gm)) {
+      const spec = m[1];
+      if (spec.startsWith('.')) graph(join(file, '..', spec), seen);
+      else if (spec.startsWith('@massimo/ui-kit/')) { const r = exported(spec); if (r) graph(r, seen); }
+    }
+    return seen;
+  };
+  const shell = graph(join(STUDIO, 'src/studio/main.tsx'));
+  assert.ok(shell.has(join(STUDIO, 'src/studio/App.tsx')), 'the graph reaches App.tsx');
+  assert.equal(shell.has(join(KIT, 'tokens/colors/spectrum/runtime.json')), false, 'the spectrum runtime is not in the shell');
 });

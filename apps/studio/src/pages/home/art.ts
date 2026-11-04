@@ -2,7 +2,7 @@
 // (no network, no fixed colors). A scene takes one family (its sky, ground and accents) plus an
 // optional second family for the sun or the lights, so a hue or chroma change repaints every image.
 import type { SpectrumPayload } from '../../protocol.ts';
-import type { Roles } from '@massimo/ui-kit/spectrum';
+import type { Roles } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
 
 export type Scene = 'hills' | 'coast' | 'city' | 'dunes' | 'forest' | 'studio';
 export type RoleKey = keyof Roles;

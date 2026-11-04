@@ -36,7 +36,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 
 From the root: `npm run ui-kit:test`, `npm run ui-kit:typecheck`, `npm run typecheck -w @massimo/studio`, `npm run ui-kit:build`. Browser: `npm run studio`, then `/geometry-check.html` and `/react-check.html` print `"fails": []` when they agree.
 
-Deploy: `npm run lighthouse` builds nothing; after `STUDIO_BASE=/massimo/ npm run build` it serves `apps/studio/dist` under `/massimo/` and runs Lighthouse CI on all five pages (`lighthouserc.json`: no console errors or 404s, per-page script budgets, Web Vitals on the studio and brand demo; set `CHROME_PATH` locally). The Pages workflow runs it before deploying and `npm run lighthouse:live` against the live site after.
+Deploy: `npm run lighthouse` builds nothing; after `STUDIO_BASE=/massimo/ npm run build` it serves `apps/studio/dist` under `/massimo/` and runs Lighthouse CI on the studio, brand demo and scope check (`lighthouserc.json`; geometry-check and react-check run tens of thousands of checks on load, so `check:browsers` covers them: no console errors or 404s, per-page script budgets, Web Vitals on the studio and brand demo; set `CHROME_PATH` locally). The Pages workflow runs it before deploying and `npm run lighthouse:live` against the live site after.
 
 Cross-browser: `npm run check:browsers` (or `-- firefox webkit`) runs both check pages, the select popup's placement and every motion easing in Chromium, Firefox and WebKit through Playwright on its own Vite server, and exits non-zero on any fail (`apps/studio/scripts/check-browsers.ts`; browsers once: `npx playwright install chromium firefox webkit`). Findings: [docs/reports/2026-11-02-cross-browser.md](docs/reports/2026-11-02-cross-browser.md).
 

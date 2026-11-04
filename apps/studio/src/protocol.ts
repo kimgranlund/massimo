@@ -1,4 +1,4 @@
-import type { Roles } from '@massimo/ui-kit/spectrum';
+import type { Roles } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
 // Shared jig types.
 /** Jig panel tabs: token editing only; the content page is chosen by the URL hash (pages/route.ts). */
 export type PanelTab = 'geometry' | 'colors' | 'typography' | 'motion' | 'brand';

@@ -7,7 +7,7 @@ import { dirname, join, normalize, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PARAMS } from '../tokens/themes/params.ts';
 import { SPECTRUM_FIELDS } from '../tokens/colors/spectrum/config.ts';
-import { ROLE_NAMES } from '../tokens/colors/spectrum/index.ts';
+import { ROLE_NAMES } from '../tokens/colors/spectrum/roles.ts';
 import { FACES, VOICES } from '../tokens/typography/resolve.ts';
 
 export const KIT = fileURLToPath(new URL('..', import.meta.url));

@@ -1,7 +1,7 @@
 // Studio jig: built entirely from ui-kit components. The panel edits tokens only (tabs Geometry,
 // Colors, Typography, Motion); the content page comes from the URL hash (#/<route>) and is chosen
 // in the content header. Copy hands the applied settings to an agent as JSON.
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/select/element';
@@ -14,30 +14,47 @@ import { unitTokenCss } from '@massimo/ui-kit/tokens/geometry/index';
 import { motionTokenCss } from '@massimo/ui-kit/tokens/motion/index';
 import { elevationTokenCss } from '@massimo/ui-kit/tokens/elevation/index';
 import { loadTheme as loadThemeObject, partsFromParameters, themeParameters, type Theme } from '@massimo/ui-kit/tokens/themes/theme';
-import { lintTheme, type Finding } from '@massimo/ui-kit/tokens/themes/lint';
+import type { Finding } from '@massimo/ui-kit/tokens/themes/lint';
 import { SPECTRUM_DEFAULTS, SPECTRUM_FIELDS, spectrumOverrides, type SpectrumSettings } from '@massimo/ui-kit/tokens/colors/spectrum/config';
 import { stepTones, TARGET_MAX } from '@massimo/ui-kit/tokens/colors/spectrum/contrast';
-import { DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName } from '@massimo/ui-kit/spectrum';
+import { DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens/typography/resolve';
 import { APPLY_BRAND, ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
-import { navigate, useHashRoute } from '../pages/route.ts';
+import { navigate, parseHash, useHashRoute } from '../pages/route.ts';
 import { HomePage } from '../pages/Home.tsx';
-import { ComponentsPage, FAMILIES, isFamily } from '../pages/Components.tsx';
-import { ContainersPage } from '../pages/Containers.tsx';
-import { ElevationPage } from '../pages/Elevation.tsx';
-import { BrandPage } from '../pages/Brand.tsx';
+import { FAMILIES, isFamily } from '../pages/families.ts';
 import { loadFontSource } from './fonts.ts';
 import { BrandEditor } from './BrandEditor.tsx';
 import { hydrate, validateBrand, type Brand } from '@massimo/ui-kit/tokens/brand/index';
-import { GeometryPage } from '../pages/Geometry.tsx';
-import { TypographyPage } from '../pages/Typography.tsx';
-import { ColorsPage } from '../pages/Colors.tsx';
-import { MotionPage } from '../pages/Motion.tsx';
 import { MotionPanel } from './MotionPanel.tsx';
 import { ICON_SET_NAMES } from '@massimo/ui-kit/icons/sets';
 import { Field, Group, Range, Segmented, Select, SelectControl, Switch, useEvent, type SwatchSpec } from './wc.tsx';
-import { buildSpectrum } from './spectrum.ts';
+
+// Home, the landing page, ships with the shell so it paints in the first render. Every other page loads
+// on first visit, in its own chunk; a deep link's page starts loading as this module evaluates.
+const PAGE_MODULES = {
+  components: () => import('../pages/Components.tsx'),
+  containers: () => import('../pages/Containers.tsx'),
+  elevation: () => import('../pages/Elevation.tsx'),
+  brand: () => import('../pages/Brand.tsx'),
+  geometry: () => import('../pages/Geometry.tsx'),
+  typography: () => import('../pages/Typography.tsx'),
+  colors: () => import('../pages/Colors.tsx'),
+  motion: () => import('../pages/Motion.tsx'),
+} satisfies Record<Exclude<Route, 'home'>, () => Promise<unknown>>;
+const firstRoute = parseHash(location.hash).route;
+if (firstRoute !== 'home') void PAGE_MODULES[firstRoute]();
+// The color engine downloads beside it too; it first runs in the debounced effect below.
+void import('./spectrum.ts');
+const ComponentsPage = lazy(() => PAGE_MODULES.components().then((m) => ({ default: m.ComponentsPage })));
+const ContainersPage = lazy(() => PAGE_MODULES.containers().then((m) => ({ default: m.ContainersPage })));
+const ElevationPage = lazy(() => PAGE_MODULES.elevation().then((m) => ({ default: m.ElevationPage })));
+const BrandPage = lazy(() => PAGE_MODULES.brand().then((m) => ({ default: m.BrandPage })));
+const GeometryPage = lazy(() => PAGE_MODULES.geometry().then((m) => ({ default: m.GeometryPage })));
+const TypographyPage = lazy(() => PAGE_MODULES.typography().then((m) => ({ default: m.TypographyPage })));
+const ColorsPage = lazy(() => PAGE_MODULES.colors().then((m) => ({ default: m.ColorsPage })));
+const MotionPage = lazy(() => PAGE_MODULES.motion().then((m) => ({ default: m.MotionPage })));
 
 const NEXT_SCHEME: Record<Scheme, Scheme> = { auto: 'light', light: 'dark', dark: 'auto' };
 const SCHEME_LABEL: Record<Scheme, string> = { auto: 'auto', light: 'light', dark: 'dark' };
@@ -57,7 +74,7 @@ const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` 
 const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const PANEL_TABS: [PanelTab, string][] = [['geometry', 'Geometry'], ['colors', 'Colors'], ['typography', 'Typography'], ['motion', 'Motion'], ['brand', 'Brand']];
 const isPanelTab = (v: unknown): v is PanelTab => PANEL_TABS.some(([t]) => t === v);
-const PAGES: Record<Exclude<Route, 'components'>, (p: PageProps) => ReactNode> = {
+const PAGES: Record<Exclude<Route, 'components'>, ComponentType<PageProps>> = {
   home: HomePage, containers: ContainersPage, elevation: ElevationPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage, brand: BrandPage,
 };
 const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
@@ -149,14 +166,17 @@ export function App() {
 
   // Spectrum generation, debounced: it takes ~300ms, so it runs once input pauses.
   useEffect(() => {
+    // The engine (and its 264 KB runtime) loads here, after first paint, not with the shell.
+    let live = true;
     const t = setTimeout(() => {
-      try {
+      import('./spectrum.ts').then(({ buildSpectrum }) => {
+        if (!live) return;
         const out = buildSpectrum(spectrumOverrides(spectrum), roles, anchors);
         setGenerated(out.payload);
         setFamilyNames({ accents: out.accents, neutrals: out.neutrals });
-      } catch (err) { setStatus(`Colors not generated: ${err}`); }
+      }).catch((err) => setStatus(`Colors not generated: ${err}`));
     }, 150);
-    return () => clearTimeout(t);
+    return () => { live = false; clearTimeout(t); };
   }, [spectrum, roles, anchors]);
 
   // Live overrides live in one constructed stylesheet (useSheet), never in style attributes: theme
@@ -219,7 +239,7 @@ export function App() {
   // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
   const [findings, setFindings] = useState<Finding[]>([]);
   useEffect(() => {
-    const t = setTimeout(() => { try { setFindings(lintTheme(themeObject()).findings); } catch (err) { setStatus(`Lint failed: ${err}`); } }, 400);
+    const t = setTimeout(() => { import('@massimo/ui-kit/tokens/themes/lint').then(({ lintTheme }) => setFindings(lintTheme(themeObject()).findings)).catch((err) => setStatus(`Lint failed: ${err}`)); }, 400);
     return () => clearTimeout(t);
   }, [params, icons, scheme, spectrum, roles, endpoints, anchors, faces, voices, typeColors]);
   const count = (sev: Finding['severity']) => findings.filter((f) => f.severity === sev).length;
@@ -498,7 +518,7 @@ export function App() {
           </div>
         </nav>
         <div ref={canvasRef} className={s.canvas} data-canvas="" data-icons={icons} {...voiceAttrs} aria-label="Canvas">
-          {route === 'components' ? <ComponentsPage {...pageProps} family={family} /> : Content && <Content {...pageProps} />}
+          <Suspense fallback={null}>{route === 'components' ? <ComponentsPage {...pageProps} family={family} /> : Content && <Content {...pageProps} />}</Suspense>
         </div>
       </div>
     </div>

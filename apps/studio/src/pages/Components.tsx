@@ -43,30 +43,9 @@ import '@massimo/ui-kit/components/navigation-menu/element';
 import { Fragment, useCallback, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import type { PageProps } from './types.ts';
+import { FAMILIES, type Family } from './families.ts';
 import { CQ_MD, Divider, IMAGES, Page, Row, Section, SizeLadder, caption, columns, fmt, specimens, stack, subTitle } from './shared.tsx';
 
-/** Component families, in page order: [id, label, elements]. */
-export const FAMILIES = [
-  ['actions', 'Actions', 'ui-button · ui-toggle · ui-toggle-group'],
-  ['labels', 'Labels', 'ui-badge · ui-tag · ui-chip'],
-  ['fields', 'Fields', 'ui-input · ui-select · ui-field · ui-field-grid · ui-fieldset'],
-  ['entry', 'Entry', 'ui-number-field · ui-otp-field'],
-  ['selection', 'Selection', 'ui-listbox · ui-segmented · ui-select · ui-combobox · ui-autocomplete'],
-  ['choices', 'Choices', 'ui-checkbox · ui-radio · ui-switch · ui-radio-group · ui-checkbox-group'],
-  ['tracks', 'Tracks', 'ui-range · ui-progress · ui-meter'],
-  ['color', 'Color', 'ui-swatch · ui-palette'],
-  ['media', 'Media', 'ui-swiper · ui-image'],
-  ['display', 'Display', 'ui-separator · ui-avatar'],
-  ['disclosure', 'Disclosure', 'ui-collapsible · ui-accordion · ui-tabs'],
-  ['feedback', 'Feedback', 'ui-toast-viewport'],
-  ['forms', 'Forms', 'ui-form'],
-  ['scrolling', 'Scrolling', 'ui-scroll-area'],
-  ['overlays', 'Overlays', 'ui-dialog · ui-alert-dialog · ui-drawer'],
-  ['menus', 'Menus', 'ui-menu · ui-context-menu · ui-menubar'],
-  ['popups', 'Popups', 'ui-popover · ui-tooltip · ui-preview-card · ui-navigation-menu'],
-] as const;
-export type Family = (typeof FAMILIES)[number][0];
-export const isFamily = (v: string | null): v is Family => FAMILIES.some(([f]) => f === v);
 
 const avatar = css({ display: 'block', bg: 'primary.solid' });
 const media = css({ width: 'full', maxWidth: '[40rem]', borderRadius: 'xl', overflow: 'hidden' });
