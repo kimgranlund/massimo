@@ -55,15 +55,15 @@ async function checkStudioBrand(page: Page): Promise<string[]> {
   // amber ramp to its signal orange, which a --colors-spectrum-* variable inside the panel would show.
   const panelTab = page.locator('aside[data-ui-scope=massimo] ui-option', { hasText: 'Colors' }).first();
   await panelTab.click();
-  await page.waitForFunction(() => !![...document.querySelectorAll('aside [style*="--sw-lf"]')].some((e) => (e as HTMLElement).style.getPropertyValue('--sw-lf') !== 'transparent'), null, { timeout: 30_000 });
+  await page.waitForFunction(() => { const c = ([...document.querySelectorAll('aside ui-field')].find((f) => f.textContent?.trim().startsWith('Secondary'))?.querySelector('ui-swatch') as (Element & { color?: string }) | null | undefined)?.color; return !!c && c !== 'transparent'; }, null, { timeout: 30_000 });
   const sw = await page.evaluate(() => {
     const row = [...document.querySelectorAll('aside ui-field')].find((f) => f.textContent?.trim().startsWith('Secondary'));
-    const el = row?.querySelector('[style*="--sw-lf"]') as HTMLElement | undefined;
+    const el = row?.querySelector('ui-swatch') as (Element & { color?: string }) | null | undefined;
     const probe = document.createElement('i');
     document.querySelector('[data-canvas]')!.append(probe);
     probe.style.color = 'var(--colors-spectrum-amber-9)';
     const canvas = getComputedStyle(probe).color;
-    const raw = el?.style.getPropertyValue(document.documentElement.classList.contains('dark') || matchMedia('(prefers-color-scheme: dark)').matches ? '--sw-df' : '--sw-lf') ?? '';
+    const raw = el?.color ?? '';
     probe.style.color = raw;
     const swatch = getComputedStyle(probe).color;
     probe.remove();
