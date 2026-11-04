@@ -93,7 +93,71 @@
     },
     "descriptors": {
       "type": "array",
-      "description": "Closed character scales and their parameter tables (brand-schema step 2)."
+      "description": "Closed character scales (brand-schema step 2): each names the inputs it sets and, per value, their exact values. The value named default equals the kit defaults; describeTheme reads a theme back to the nearest value.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "concept",
+          "title",
+          "reads",
+          "default",
+          "inputs",
+          "values"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z-]*$"
+          },
+          "concept": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "reads": {
+            "type": "string"
+          },
+          "default": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "description": "a PARAMS name, spectrum.<field>, or scheme"
+            }
+          },
+          "values": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "set",
+                "means"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z-]*$"
+                },
+                "set": {
+                  "type": "object"
+                },
+                "means": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "specs": {
       "type": "array",

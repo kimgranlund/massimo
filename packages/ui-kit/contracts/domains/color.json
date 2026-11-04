@@ -19,7 +19,170 @@
     "vibrancy.text-contrast",
     "emphasis.on-solid"
   ],
-  "descriptors": [],
+  "descriptors": [
+    {
+      "id": "vibrancy",
+      "concept": "vibrancy",
+      "title": "Vibrancy",
+      "reads": "how saturated the palette is",
+      "default": "vivid",
+      "inputs": [
+        "spectrum.chroma",
+        "spectrum.base"
+      ],
+      "values": [
+        {
+          "name": "muted",
+          "set": {
+            "spectrum.chroma": 40,
+            "spectrum.base": 60
+          },
+          "means": "low chroma, greyed accents"
+        },
+        {
+          "name": "natural",
+          "set": {
+            "spectrum.chroma": 80,
+            "spectrum.base": 80
+          },
+          "means": "moderate chroma"
+        },
+        {
+          "name": "vivid",
+          "set": {
+            "spectrum.chroma": 120,
+            "spectrum.base": 100
+          },
+          "means": "full chroma the gamut allows (the default)"
+        }
+      ]
+    },
+    {
+      "id": "harmony",
+      "concept": "vibrancy",
+      "title": "Harmony",
+      "reads": "how accent hues relate",
+      "default": "unique",
+      "inputs": [
+        "spectrum.harmony"
+      ],
+      "values": [
+        {
+          "name": "unique",
+          "set": {
+            "spectrum.harmony": "off"
+          },
+          "means": "evenly spread unique hues (the default)"
+        },
+        {
+          "name": "analogous",
+          "set": {
+            "spectrum.harmony": "analogous"
+          },
+          "means": "neighboring hues"
+        },
+        {
+          "name": "complementary",
+          "set": {
+            "spectrum.harmony": "complementary"
+          },
+          "means": "opposite hues"
+        },
+        {
+          "name": "split",
+          "set": {
+            "spectrum.harmony": "split"
+          },
+          "means": "split complementary"
+        },
+        {
+          "name": "triadic",
+          "set": {
+            "spectrum.harmony": "triadic"
+          },
+          "means": "three evenly spaced hues"
+        }
+      ]
+    },
+    {
+      "id": "neutral",
+      "concept": "vibrancy",
+      "title": "Neutral",
+      "reads": "how much the neutrals carry the hue",
+      "default": "tinted",
+      "inputs": [
+        "spectrum.mat",
+        "spectrum.tint"
+      ],
+      "values": [
+        {
+          "name": "true",
+          "set": {
+            "spectrum.mat": "none",
+            "spectrum.tint": 75
+          },
+          "means": "true grey neutrals"
+        },
+        {
+          "name": "subtle",
+          "set": {
+            "spectrum.mat": "tinted",
+            "spectrum.tint": 30
+          },
+          "means": "a hint of the hue"
+        },
+        {
+          "name": "tinted",
+          "set": {
+            "spectrum.mat": "tinted",
+            "spectrum.tint": 75
+          },
+          "means": "neutrals lean toward the hue (the default)"
+        },
+        {
+          "name": "strong",
+          "set": {
+            "spectrum.mat": "tinted",
+            "spectrum.tint": 100
+          },
+          "means": "neutrals fully tinted"
+        }
+      ]
+    },
+    {
+      "id": "adaptivity",
+      "concept": "adaptivity",
+      "title": "Adaptivity",
+      "reads": "which scheme the theme leads with",
+      "default": "both",
+      "inputs": [
+        "scheme"
+      ],
+      "values": [
+        {
+          "name": "both",
+          "set": {
+            "scheme": "auto"
+          },
+          "means": "follows the OS (the default)"
+        },
+        {
+          "name": "light-first",
+          "set": {
+            "scheme": "light"
+          },
+          "means": "light unless the reader switches"
+        },
+        {
+          "name": "dark-first",
+          "set": {
+            "scheme": "dark"
+          },
+          "means": "dark unless the reader switches"
+        }
+      ]
+    }
+  ],
   "specs": [
     "../../../../docs/specs/color.md"
   ],
@@ -35,15 +198,36 @@
     {
       "command": "node --test test/themes.test.ts",
       "covers": "the theme's color part: schema, validator, migration, lint fixtures"
+    },
+    {
+      "command": "node --test test/descriptors.test.ts",
+      "covers": "the color descriptor scales: resolve, read back, defaults, lint"
     }
   ],
   "verification": "./verification/color.verification.json",
   "avoidWhen": [],
   "searchTerms": [
+    "adaptivity",
+    "analogous",
+    "both",
     "color",
-    "vibrancy",
+    "complementary",
+    "dark-first",
     "emphasis",
-    "adaptivity"
+    "harmony",
+    "light-first",
+    "muted",
+    "natural",
+    "neutral",
+    "split",
+    "strong",
+    "subtle",
+    "tinted",
+    "triadic",
+    "true",
+    "unique",
+    "vibrancy",
+    "vivid"
   ],
   "themePartFields": [
     "spectrum",

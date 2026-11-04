@@ -127,6 +127,7 @@ Step 1 of [theme-schema.md](theme-schema.md) (the theme object) and step 3 (lint
 ## Progress
 
 - Step 1 built 2026-11-03. Theme schema version 2 adds the `geometry`, `typography`, `color` and `motion` parts, with `migrateTheme` and `loadTheme` for version 1; the jig's Copy writes v2 and Load accepts both. Each parameter's domain is declared in `PARAMS`. The domain manifests live in `contracts/domains/`, each with a verification record, and the registry gains `domain:` and `constraint:` nodes. The domain tests keep the manifests a partition of the groups, concepts and constraints.
+- Step 2 built 2026-11-03: 13 descriptor scales in the domain manifests (geometry 7, typography 1, color 4, motion 1); `themeFromCharacter` and `describeTheme` (`tokens/themes/descriptors.ts`); `character` validated against the scales; registry `descriptor:` nodes. Every value resolves, lints clean and reads back at distance 0. Not yet scaled: emphasis (role mapping) and iconography.
 
 ## Decided
 

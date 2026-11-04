@@ -22,7 +22,15 @@
     },
     {
       "path": "contracts/domains/typography.json",
-      "sha256": "91ebd8a769b370a7ff01cdf2ea3d508f5f62fe8142a9e889205fcf7b7161d5e4"
+      "sha256": "7204e646b48a994fda897a224a24b645e109da15a357529f17349237d0e05b28"
+    },
+    {
+      "path": "tokens/themes/descriptors.ts",
+      "sha256": "54e76a0ff190ddd9127c2324a9c9ccbb920be3bbf50864b3e1389d92a1dc48e0"
+    },
+    {
+      "path": "tokens/themes/descriptor-data.ts",
+      "sha256": "94a3c20a563a4d9dd860cac26c4cb6642827cbde4fe39da09d8f3bc78216dd60"
     }
   ],
   "renderers": {
@@ -39,6 +47,10 @@
         {
           "command": "node --test test/themes.test.ts",
           "covers": "theme part, migration and lint"
+        },
+        {
+          "command": "node --test test/descriptors.test.ts",
+          "covers": "descriptor scales"
         }
       ],
       "latestRun": {
@@ -47,7 +59,8 @@
         "commands": [
           "node --test test/typography.test.ts",
           "node --test test/numeric.test.ts",
-          "node --test test/themes.test.ts"
+          "node --test test/themes.test.ts",
+          "node --test test/descriptors.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -56,6 +69,6 @@
     }
   },
   "limitations": [
-    "Descriptors (brand-schema step 2) are not built yet; the manifest lists none."
+    "Descriptors cover the closed scales in the manifest; emphasis (role mapping) and iconography have no scale yet."
   ]
 }

@@ -47,6 +47,7 @@ Styles are the folder's slot recipe module, named by the manifest's `styleSource
 | `parameters:` | A group of inputs (unit, border, curvature, type scale, motion, springs, intents, containers, Spectrum, roles, faces, voices, subtree) and what it `drives` | `contracts/parameters.json` |
 | `concept:` | One of the system's peer concepts (scale, density, space, curvature, line, elevation, vibrancy, emphasis, typography, movement, state, iconography, adaptivity); lookup lists the parameter groups and parameters that express it | `contracts/parameters.json` (`concepts`) |
 | `domain:` | A theme domain (geometry, typography, color, motion): the part of the theme a brand hydrates; lookup lists the concepts it covers and the parameter groups and constraints it owns | `contracts/domains/<domain>.json` |
+| `descriptor:` | A character scale (`descriptor:curvature`) or one of its values (`descriptor:curvature.soft`, kind `descriptor-value`): the inputs it sets; a scale expresses its concept, a value is a memberOf its scale | `contracts/domains/<domain>.json` (`descriptors`) |
 | `constraint:` | A theme coherence rule (`constraint:scale.target-size`) | `contracts/theme-constraints.json` |
 | `parameter:` | One input a theme or subtree can change (`parameter:unit`, `parameter:spectrum-hue`); lookup adds its live range and default | `contracts/parameters.json`, ranges from the owning export |
 
@@ -81,7 +82,7 @@ Relationships:
 | `uses` | Depends on another capability (a component, icons, slots) |
 | `drives` | A parameter group (`parameters:<group>`) enters the formulas of a token group, geometry family or foundation |
 | `covers` | A domain covers a concept |
-| `owns` | A domain owns a parameter group or a constraint |
+| `owns` | A domain owns a parameter group, a constraint or a descriptor scale |
 | `constrains` | A constraint checks a concept |
 | `memberOf` | A parameter (`parameter:<id>`) belongs to its group |
 | `expresses` | A parameter group, or a member with its own `memberConcepts` entry, belongs to a concept (`concept:<id>`) |

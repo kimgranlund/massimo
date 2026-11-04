@@ -77,6 +77,8 @@ test('domains: the registry has a node per domain that covers its concepts and o
     assert.equal(r.kind, 'domain');
     assert.deepEqual([...r.groups].sort(), d.parameterGroups.map((g: string) => `parameters:${g}`).sort());
     assert.deepEqual([...r.constraints].sort(), d.constraints.map((c: string) => `constraint:${c}`).sort());
+    assert.deepEqual([...r.descriptors].sort(), d.descriptors.map((s: any) => `descriptor:${s.id}`).sort());
+    for (const s of d.descriptors) for (const v of s.values) assert.equal((lookup(`descriptor:${s.id}.${v.name}`, graph) as any).kind, 'descriptor-value');
   }
   assert.equal((lookup('constraint:scale.target-size', graph) as any).kind, 'constraint');
 });

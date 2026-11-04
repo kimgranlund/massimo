@@ -7,12 +7,14 @@
 //   color       Spectrum settings (SPECTRUM_FIELDS), the role mapping (role → requested family), endpoints
 //   motion      parameters: the multipliers, springs and intents
 //   icons, scheme  the icon set; the preferred scheme (auto follows the OS)
-//   intent, character, provenance  reserved for the brand layers (L0 intent, L1 character, who set what)
+//   character   L1: one value per descriptor scale (descriptors.ts: themeFromCharacter, describeTheme)
+//   intent, provenance  reserved for the brand layer (L0 intent) and who set what
 // Version 1 kept every number in one flat `parameters` section; migrateTheme moves it into the parts
 // (each parameter's PARAMS domain) and loadTheme accepts both.
 // contracts/theme.schema.json is generated from the same exports (npm run theme:schema).
 import { PARAMS, PARAM_DOMAINS, domainParams, type ParamDomain, type ParamName } from './params.ts';
 import { THEME_NAME } from './validate.ts';
+import { DESCRIPTORS } from './descriptor-data.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
 import { ROLE_NAMES, type RoleName } from '../colors/spectrum/index.ts';
@@ -36,7 +38,7 @@ export interface Theme {
   scheme?: ThemeScheme;
   /** Reserved: L0 intent (subject, audience, character words, signature). */
   intent?: Record<string, unknown>;
-  /** Reserved: L1 character, one descriptor per concept. */
+  /** L1 character: a value per descriptor scale (DESCRIPTORS; themeFromCharacter, describeTheme). */
   character?: Record<string, string>;
   /** Who set a value and why, keyed by its path (e.g. "geometry.parameters.radius-scale"). */
   provenance?: Record<string, { source: 'hand' | 'character' | 'intent'; reason?: string }>;
@@ -180,6 +182,11 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
     }
   }
   for (const k of ['intent', 'character', 'provenance'] as const) if (input[k] !== undefined && !isObject(input[k])) err(k, 'must be an object');
+  if (isObject(input.character)) for (const [k, v] of Object.entries(input.character)) {
+    const scale = DESCRIPTORS[k];
+    if (!scale) err(`character.${k}`, 'unknown descriptor scale');
+    else if (!scale.values.some((x) => x.name === v)) err(`character.${k}`, `must be one of ${scale.values.map((x) => x.name).join(', ')}`);
+  }
   if (errors.length) return { ok: false, errors };
   const { $schema: _, ...theme } = input;
   return { ok: true, theme: theme as unknown as Theme };
@@ -222,7 +229,7 @@ export function themeJsonSchema() {
       }),
       motion: strict({ parameters: params('motion') }, { description: 'Duration and bounce multipliers, springs, intents.' }),
       intent: { type: 'object' },
-      character: { type: 'object', additionalProperties: { type: 'string' } },
+      character: strict(Object.fromEntries(Object.values(DESCRIPTORS).map((d) => [d.id, { enum: d.values.map((v) => v.name), description: `${d.title}: ${d.reads}` }])), { description: 'L1 character: one value per descriptor scale (contracts/domains/<domain>.json descriptors).' }),
       provenance: { type: 'object', additionalProperties: strict({ source: { enum: ['hand', 'character', 'intent'] }, reason: { type: 'string' } }, { required: ['source'] }) },
     }, { required: ['schemaVersion', 'name'] }),
   };

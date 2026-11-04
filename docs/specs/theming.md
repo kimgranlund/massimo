@@ -36,13 +36,27 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 | `color` | `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure` |
 | `motion` | `parameters`: the multipliers, springs and intents |
 | `icons`, `scheme` | the icon set; the preferred scheme (auto, light, dark) |
-| `intent`, `character`, `provenance` | reserved for the brand layers |
+| `character` | one value per descriptor scale (below) |
+| `intent`, `provenance` | reserved for the brand layer; who set a value and why |
 
 Each parameter's part is its `domain` in `PARAMS` (`domainParams(domain)`); a parameter in the wrong part is an error. `themeParameters(theme)` flattens the parts for the resolvers and CSS, and `partsFromParameters(p)` writes them back. `schemaVersion` (2) and `name` (kebab-case) are required. `validateThemeObject(theme)` checks every section against the same exports the schema is generated from and returns every problem at once; font stacks admit family names and commas only, so a theme cannot inject CSS. Version 1 (one flat `parameters` section) loads through `loadTheme`, which runs `migrateTheme` first: each parameter moves to its part, and an unknown one stays where validation reports it.
 
 Each part has a domain manifest (`contracts/domains/<domain>.json`, schema `contracts/domain-manifest.schema.json`): the concepts it covers, the parameter groups and constraints it owns, its specs, resolvers and checks, and a verification record (`contracts/domains/verification/<domain>.verification.json`, `npm run verification -- run domain:<domain>`). Tests keep the manifests a partition of the groups, concepts and constraints, and in step with `PARAMS` and the theme schema.
 
 Saved themes live in `tokens/themes/themes.json` as theme objects keyed by their name, emitted as `:root[data-ui-theme="name"]` (`themeCss`): the parameters as `--ui-*`, faces as `--fonts-<face>`, voices as `--font-voice-<voice>` (serif headings at 400), and, when the theme sets colors, its Spectrum ramps and roles generated at build time, light on the theme root, with `.light` / `.dark` on the root and the OS dark scheme. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does. The jig's **Copy** emits this object and **Load** applies one, version 1 included ([studio](studio.md)).
+
+### Character
+
+A character names a theme in closed words: one value per **descriptor scale**. The scales are data in the domain manifests (`descriptors` in `contracts/domains/<domain>.json`); each names the inputs it sets (a parameter, `spectrum.<field>` or `scheme`) and the exact values per scale value, and the scale's `default` value is the kit default.
+
+| Domain | Scales (default first in bold) |
+|---|---|
+| geometry | scale: xs, sm, **md**, lg, xl · density: compact, **default**, loose · space: tight, **balanced**, airy · curvature: square, crisp, **soft**, round, pill · corner: bevel, **round**, squircle · line: **borderless**, hairline, outlined · elevation: flat, **layered**, floating |
+| typography | type-scale: flat, gentle, **classic**, dramatic |
+| color | vibrancy: muted, natural, **vivid** · harmony: **unique**, analogous, complementary, split, triadic · neutral: true, subtle, **tinted**, strong · adaptivity: **both**, light-first, dark-first |
+| motion | movement: still, calm, **lively**, playful |
+
+`themeFromCharacter(character, theme?)` (`tokens/themes/descriptors.ts`) sets each named value's inputs into the theme parts; values already in `theme` (hand edits) win; provenance records every input a descriptor set (`{ source: 'character', reason: 'curvature.soft' }`); an unknown scale or value comes back in `unresolved` rather than being guessed. `describeTheme(theme)` reads any theme back to the nearest value per scale with a distance in 0..1 (per input |a − b| / range, or 0/1 for a choice, averaged), so a hand-tuned theme can be summarized or compared. Tests hold the round trip: every value resolves to a valid, lint-clean theme and reads back as itself at distance 0, the scales set disjoint inputs, and the defaults read as defaults. The registry has `descriptor:<scale>` and `descriptor:<scale>.<value>` nodes.
 
 ### Lint
 

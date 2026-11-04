@@ -15,7 +15,48 @@
     "voices"
   ],
   "constraints": [],
-  "descriptors": [],
+  "descriptors": [
+    {
+      "id": "type-scale",
+      "concept": "typography",
+      "title": "Type scale",
+      "reads": "how far headings step from body text",
+      "default": "classic",
+      "inputs": [
+        "type-ratio"
+      ],
+      "values": [
+        {
+          "name": "flat",
+          "set": {
+            "type-ratio": 1.125
+          },
+          "means": "major second: quiet hierarchy, dense UI"
+        },
+        {
+          "name": "gentle",
+          "set": {
+            "type-ratio": 1.2
+          },
+          "means": "minor third"
+        },
+        {
+          "name": "classic",
+          "set": {
+            "type-ratio": 1.333
+          },
+          "means": "perfect fourth (the default)"
+        },
+        {
+          "name": "dramatic",
+          "set": {
+            "type-ratio": 1.5
+          },
+          "means": "perfect fifth: editorial, display-led"
+        }
+      ]
+    }
+  ],
   "specs": [
     "../../../../docs/specs/typography.md"
   ],
@@ -35,12 +76,20 @@
     {
       "command": "node --test test/themes.test.ts",
       "covers": "the theme's typography part: schema, validator, migration, lint fixtures"
+    },
+    {
+      "command": "node --test test/descriptors.test.ts",
+      "covers": "the typography descriptor scales: resolve, read back, defaults, lint"
     }
   ],
   "verification": "./verification/typography.verification.json",
   "avoidWhen": [],
   "searchTerms": [
-    "typography",
+    "classic",
+    "dramatic",
+    "flat",
+    "gentle",
+    "type-scale",
     "typography"
   ],
   "themePartFields": [

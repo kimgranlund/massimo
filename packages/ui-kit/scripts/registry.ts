@@ -55,7 +55,7 @@ function main(argv: string[]) {
     const [role, renderer, ids] = rest;
     if (!role || !renderer || !ids) throw new Error('--packet <consumer|author> <web-component|react|html> <component:id[,component:id…]>');
     result = packet(role, renderer, ids.split(','));
-  } else if (/^[a-z-]+:[a-z0-9-]+$/.test(q)) result = lookup(q);
+  } else if (/^[a-z-]+:[a-z0-9.-]+$/.test(q)) result = lookup(q);
   else throw new Error(`unknown command ${q}`);
 
   const content = typeof result === 'string' ? result : JSON.stringify(result, null, 2);

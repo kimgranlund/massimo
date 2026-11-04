@@ -1194,16 +1194,691 @@
         "inside toggle group"
       ]
     },
+    "descriptor:adaptivity": {
+      "kind": "descriptor",
+      "source": "contracts/domains/color.json#/descriptors/3",
+      "availability": "implemented",
+      "title": "Adaptivity: which scheme the theme leads with",
+      "searchTerms": [
+        "adaptivity",
+        "adaptivity",
+        "both",
+        "light-first",
+        "dark-first"
+      ]
+    },
+    "descriptor:adaptivity.both": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/3/values/0",
+      "availability": "implemented",
+      "title": "Adaptivity both: follows the OS (the default)",
+      "searchTerms": [
+        "both",
+        "adaptivity both"
+      ]
+    },
+    "descriptor:adaptivity.dark-first": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/3/values/2",
+      "availability": "implemented",
+      "title": "Adaptivity dark-first: dark unless the reader switches",
+      "searchTerms": [
+        "dark-first",
+        "adaptivity dark-first"
+      ]
+    },
+    "descriptor:adaptivity.light-first": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/3/values/1",
+      "availability": "implemented",
+      "title": "Adaptivity light-first: light unless the reader switches",
+      "searchTerms": [
+        "light-first",
+        "adaptivity light-first"
+      ]
+    },
+    "descriptor:corner": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/4",
+      "availability": "implemented",
+      "title": "Corner shape: the curve of a corner",
+      "searchTerms": [
+        "corner",
+        "corner shape",
+        "bevel",
+        "round",
+        "squircle"
+      ]
+    },
+    "descriptor:corner.bevel": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/4/values/0",
+      "availability": "implemented",
+      "title": "Corner shape bevel: straight cut corners",
+      "searchTerms": [
+        "bevel",
+        "corner bevel"
+      ]
+    },
+    "descriptor:corner.round": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/4/values/1",
+      "availability": "implemented",
+      "title": "Corner shape round: circular arcs (the default)",
+      "searchTerms": [
+        "round",
+        "corner round"
+      ]
+    },
+    "descriptor:corner.squircle": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/4/values/2",
+      "availability": "implemented",
+      "title": "Corner shape squircle: superellipse, continuous curvature",
+      "searchTerms": [
+        "squircle",
+        "corner squircle"
+      ]
+    },
+    "descriptor:curvature": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/3",
+      "availability": "implemented",
+      "title": "Curvature: how round corners are",
+      "searchTerms": [
+        "curvature",
+        "curvature",
+        "square",
+        "crisp",
+        "soft",
+        "round",
+        "pill"
+      ]
+    },
+    "descriptor:curvature.crisp": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/3/values/1",
+      "availability": "implemented",
+      "title": "Curvature crisp: small radii (control 1.5u)",
+      "searchTerms": [
+        "crisp",
+        "curvature crisp"
+      ]
+    },
+    "descriptor:curvature.pill": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/3/values/4",
+      "availability": "implemented",
+      "title": "Curvature pill: controls are pills; containers very round",
+      "searchTerms": [
+        "pill",
+        "curvature pill"
+      ]
+    },
+    "descriptor:curvature.round": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/3/values/3",
+      "availability": "implemented",
+      "title": "Curvature round: rounder (controls nearly pills)",
+      "searchTerms": [
+        "round",
+        "curvature round"
+      ]
+    },
+    "descriptor:curvature.soft": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/3/values/2",
+      "availability": "implemented",
+      "title": "Curvature soft: the default (control 3u)",
+      "searchTerms": [
+        "soft",
+        "curvature soft"
+      ]
+    },
+    "descriptor:curvature.square": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/3/values/0",
+      "availability": "implemented",
+      "title": "Curvature square: no radius",
+      "searchTerms": [
+        "square",
+        "curvature square"
+      ]
+    },
+    "descriptor:density": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/1",
+      "availability": "implemented",
+      "title": "Density: how much fits at the same scale",
+      "searchTerms": [
+        "density",
+        "density",
+        "compact",
+        "default",
+        "loose"
+      ]
+    },
+    "descriptor:density.compact": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/1/values/0",
+      "availability": "implemented",
+      "title": "Density compact: insets 0.5u, the ladder × 0.5",
+      "searchTerms": [
+        "compact",
+        "density compact"
+      ]
+    },
+    "descriptor:density.default": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/1/values/1",
+      "availability": "implemented",
+      "title": "Density default: insets 1u",
+      "searchTerms": [
+        "default",
+        "density default"
+      ]
+    },
+    "descriptor:density.loose": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/1/values/2",
+      "availability": "implemented",
+      "title": "Density loose: insets 2u, the ladder × 1.5",
+      "searchTerms": [
+        "loose",
+        "density loose"
+      ]
+    },
+    "descriptor:elevation": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/6",
+      "availability": "implemented",
+      "title": "Elevation: how surfaces separate",
+      "searchTerms": [
+        "elevation",
+        "elevation",
+        "flat",
+        "layered",
+        "floating"
+      ]
+    },
+    "descriptor:elevation.flat": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/6/values/0",
+      "availability": "implemented",
+      "title": "Elevation flat: fills separate levels; popups keep a faint shadow",
+      "searchTerms": [
+        "flat",
+        "elevation flat"
+      ]
+    },
+    "descriptor:elevation.floating": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/6/values/2",
+      "availability": "implemented",
+      "title": "Elevation floating: cards lift off the page; shadows carry the hierarchy",
+      "searchTerms": [
+        "floating",
+        "elevation floating"
+      ]
+    },
+    "descriptor:elevation.layered": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/6/values/1",
+      "availability": "implemented",
+      "title": "Elevation layered: the default: fills for inline levels, shadows for lifted ones",
+      "searchTerms": [
+        "layered",
+        "elevation layered"
+      ]
+    },
+    "descriptor:harmony": {
+      "kind": "descriptor",
+      "source": "contracts/domains/color.json#/descriptors/1",
+      "availability": "implemented",
+      "title": "Harmony: how accent hues relate",
+      "searchTerms": [
+        "harmony",
+        "harmony",
+        "unique",
+        "analogous",
+        "complementary",
+        "split",
+        "triadic"
+      ]
+    },
+    "descriptor:harmony.analogous": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/1",
+      "availability": "implemented",
+      "title": "Harmony analogous: neighboring hues",
+      "searchTerms": [
+        "analogous",
+        "harmony analogous"
+      ]
+    },
+    "descriptor:harmony.complementary": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/2",
+      "availability": "implemented",
+      "title": "Harmony complementary: opposite hues",
+      "searchTerms": [
+        "complementary",
+        "harmony complementary"
+      ]
+    },
+    "descriptor:harmony.split": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/3",
+      "availability": "implemented",
+      "title": "Harmony split: split complementary",
+      "searchTerms": [
+        "split",
+        "harmony split"
+      ]
+    },
+    "descriptor:harmony.triadic": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/4",
+      "availability": "implemented",
+      "title": "Harmony triadic: three evenly spaced hues",
+      "searchTerms": [
+        "triadic",
+        "harmony triadic"
+      ]
+    },
+    "descriptor:harmony.unique": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/0",
+      "availability": "implemented",
+      "title": "Harmony unique: evenly spread unique hues (the default)",
+      "searchTerms": [
+        "unique",
+        "harmony unique"
+      ]
+    },
+    "descriptor:line": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/5",
+      "availability": "implemented",
+      "title": "Line: how much outline controls carry",
+      "searchTerms": [
+        "line",
+        "line",
+        "borderless",
+        "hairline",
+        "outlined"
+      ]
+    },
+    "descriptor:line.borderless": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/5/values/0",
+      "availability": "implemented",
+      "title": "Line borderless: fills alone define controls",
+      "searchTerms": [
+        "borderless",
+        "line borderless"
+      ]
+    },
+    "descriptor:line.hairline": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/5/values/1",
+      "availability": "implemented",
+      "title": "Line hairline: a 1px outline",
+      "searchTerms": [
+        "hairline",
+        "line hairline"
+      ]
+    },
+    "descriptor:line.outlined": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/5/values/2",
+      "availability": "implemented",
+      "title": "Line outlined: a 2px outline",
+      "searchTerms": [
+        "outlined",
+        "line outlined"
+      ]
+    },
+    "descriptor:movement": {
+      "kind": "descriptor",
+      "source": "contracts/domains/motion.json#/descriptors/0",
+      "availability": "implemented",
+      "title": "Movement: how things move",
+      "searchTerms": [
+        "movement",
+        "movement",
+        "still",
+        "calm",
+        "lively",
+        "playful"
+      ]
+    },
+    "descriptor:movement.calm": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/motion.json#/descriptors/0/values/1",
+      "availability": "implemented",
+      "title": "Movement calm: slower, almost no overshoot",
+      "searchTerms": [
+        "calm",
+        "movement calm"
+      ]
+    },
+    "descriptor:movement.lively": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/motion.json#/descriptors/0/values/2",
+      "availability": "implemented",
+      "title": "Movement lively: the default springs",
+      "searchTerms": [
+        "lively",
+        "movement lively"
+      ]
+    },
+    "descriptor:movement.playful": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/motion.json#/descriptors/0/values/3",
+      "availability": "implemented",
+      "title": "Movement playful: toggles run on the bouncy spring too",
+      "searchTerms": [
+        "playful",
+        "movement playful"
+      ]
+    },
+    "descriptor:movement.still": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/motion.json#/descriptors/0/values/0",
+      "availability": "implemented",
+      "title": "Movement still: short, critically damped transitions",
+      "searchTerms": [
+        "still",
+        "movement still"
+      ]
+    },
+    "descriptor:neutral": {
+      "kind": "descriptor",
+      "source": "contracts/domains/color.json#/descriptors/2",
+      "availability": "implemented",
+      "title": "Neutral: how much the neutrals carry the hue",
+      "searchTerms": [
+        "neutral",
+        "neutral",
+        "true",
+        "subtle",
+        "tinted",
+        "strong"
+      ]
+    },
+    "descriptor:neutral.strong": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/2/values/3",
+      "availability": "implemented",
+      "title": "Neutral strong: neutrals fully tinted",
+      "searchTerms": [
+        "strong",
+        "neutral strong"
+      ]
+    },
+    "descriptor:neutral.subtle": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/2/values/1",
+      "availability": "implemented",
+      "title": "Neutral subtle: a hint of the hue",
+      "searchTerms": [
+        "subtle",
+        "neutral subtle"
+      ]
+    },
+    "descriptor:neutral.tinted": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/2/values/2",
+      "availability": "implemented",
+      "title": "Neutral tinted: neutrals lean toward the hue (the default)",
+      "searchTerms": [
+        "tinted",
+        "neutral tinted"
+      ]
+    },
+    "descriptor:neutral.true": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/2/values/0",
+      "availability": "implemented",
+      "title": "Neutral true: true grey neutrals",
+      "searchTerms": [
+        "true",
+        "neutral true"
+      ]
+    },
+    "descriptor:scale": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/0",
+      "availability": "implemented",
+      "title": "Scale: how big everything is",
+      "searchTerms": [
+        "scale",
+        "scale",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ]
+    },
+    "descriptor:scale.lg": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/0/values/3",
+      "availability": "implemented",
+      "title": "Scale lg: roomy, touch-friendly (40px)",
+      "searchTerms": [
+        "lg",
+        "scale lg"
+      ]
+    },
+    "descriptor:scale.md": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/0/values/2",
+      "availability": "implemented",
+      "title": "Scale md: the default (36px)",
+      "searchTerms": [
+        "md",
+        "scale md"
+      ]
+    },
+    "descriptor:scale.sm": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/0/values/1",
+      "availability": "implemented",
+      "title": "Scale sm: compact product UI (32px)",
+      "searchTerms": [
+        "sm",
+        "scale sm"
+      ]
+    },
+    "descriptor:scale.xl": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/0/values/4",
+      "availability": "implemented",
+      "title": "Scale xl: large, kiosk or display (48px)",
+      "searchTerms": [
+        "xl",
+        "scale xl"
+      ]
+    },
+    "descriptor:scale.xs": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/0/values/0",
+      "availability": "implemented",
+      "title": "Scale xs: small, dense instruments (controls 28px)",
+      "searchTerms": [
+        "xs",
+        "scale xs"
+      ]
+    },
+    "descriptor:space": {
+      "kind": "descriptor",
+      "source": "contracts/domains/geometry.json#/descriptors/2",
+      "availability": "implemented",
+      "title": "Space: margins and gutters: container padding and gaps",
+      "searchTerms": [
+        "space",
+        "space",
+        "tight",
+        "balanced",
+        "airy"
+      ]
+    },
+    "descriptor:space.airy": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/2/values/2",
+      "availability": "implemented",
+      "title": "Space airy: the container ladder × 1.5",
+      "searchTerms": [
+        "airy",
+        "space airy"
+      ]
+    },
+    "descriptor:space.balanced": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/2/values/1",
+      "availability": "implemented",
+      "title": "Space balanced: the default ladder",
+      "searchTerms": [
+        "balanced",
+        "space balanced"
+      ]
+    },
+    "descriptor:space.tight": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/geometry.json#/descriptors/2/values/0",
+      "availability": "implemented",
+      "title": "Space tight: the container ladder × 0.75",
+      "searchTerms": [
+        "tight",
+        "space tight"
+      ]
+    },
+    "descriptor:type-scale": {
+      "kind": "descriptor",
+      "source": "contracts/domains/typography.json#/descriptors/0",
+      "availability": "implemented",
+      "title": "Type scale: how far headings step from body text",
+      "searchTerms": [
+        "type-scale",
+        "type scale",
+        "flat",
+        "gentle",
+        "classic",
+        "dramatic"
+      ]
+    },
+    "descriptor:type-scale.classic": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/0/values/2",
+      "availability": "implemented",
+      "title": "Type scale classic: perfect fourth (the default)",
+      "searchTerms": [
+        "classic",
+        "type-scale classic"
+      ]
+    },
+    "descriptor:type-scale.dramatic": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/0/values/3",
+      "availability": "implemented",
+      "title": "Type scale dramatic: perfect fifth: editorial, display-led",
+      "searchTerms": [
+        "dramatic",
+        "type-scale dramatic"
+      ]
+    },
+    "descriptor:type-scale.flat": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/0/values/0",
+      "availability": "implemented",
+      "title": "Type scale flat: major second: quiet hierarchy, dense UI",
+      "searchTerms": [
+        "flat",
+        "type-scale flat"
+      ]
+    },
+    "descriptor:type-scale.gentle": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/typography.json#/descriptors/0/values/1",
+      "availability": "implemented",
+      "title": "Type scale gentle: minor third",
+      "searchTerms": [
+        "gentle",
+        "type-scale gentle"
+      ]
+    },
+    "descriptor:vibrancy": {
+      "kind": "descriptor",
+      "source": "contracts/domains/color.json#/descriptors/0",
+      "availability": "implemented",
+      "title": "Vibrancy: how saturated the palette is",
+      "searchTerms": [
+        "vibrancy",
+        "vibrancy",
+        "muted",
+        "natural",
+        "vivid"
+      ]
+    },
+    "descriptor:vibrancy.muted": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/0/values/0",
+      "availability": "implemented",
+      "title": "Vibrancy muted: low chroma, greyed accents",
+      "searchTerms": [
+        "muted",
+        "vibrancy muted"
+      ]
+    },
+    "descriptor:vibrancy.natural": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/0/values/1",
+      "availability": "implemented",
+      "title": "Vibrancy natural: moderate chroma",
+      "searchTerms": [
+        "natural",
+        "vibrancy natural"
+      ]
+    },
+    "descriptor:vibrancy.vivid": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/0/values/2",
+      "availability": "implemented",
+      "title": "Vibrancy vivid: full chroma the gamut allows (the default)",
+      "searchTerms": [
+        "vivid",
+        "vibrancy vivid"
+      ]
+    },
     "domain:color": {
       "kind": "domain",
       "source": "contracts/domains/color.json#",
       "availability": "implemented",
       "title": "Color",
       "searchTerms": [
+        "adaptivity",
+        "analogous",
+        "both",
         "color",
-        "vibrancy",
+        "complementary",
+        "dark-first",
         "emphasis",
-        "adaptivity"
+        "harmony",
+        "light-first",
+        "muted",
+        "natural",
+        "neutral",
+        "split",
+        "strong",
+        "subtle",
+        "tinted",
+        "triadic",
+        "true",
+        "unique",
+        "vibrancy",
+        "vivid"
       ]
     },
     "domain:geometry": {
@@ -1212,13 +1887,38 @@
       "availability": "implemented",
       "title": "Geometry",
       "searchTerms": [
-        "geometry",
-        "scale",
-        "density",
-        "space",
+        "airy",
+        "balanced",
+        "bevel",
+        "borderless",
+        "compact",
+        "corner",
+        "crisp",
         "curvature",
+        "default",
+        "density",
+        "elevation",
+        "flat",
+        "floating",
+        "geometry",
+        "hairline",
+        "layered",
+        "lg",
         "line",
-        "elevation"
+        "loose",
+        "md",
+        "outlined",
+        "pill",
+        "round",
+        "scale",
+        "sm",
+        "soft",
+        "space",
+        "square",
+        "squircle",
+        "tight",
+        "xl",
+        "xs"
       ]
     },
     "domain:motion": {
@@ -1227,8 +1927,12 @@
       "availability": "implemented",
       "title": "Motion",
       "searchTerms": [
+        "calm",
+        "lively",
         "motion",
-        "movement"
+        "movement",
+        "playful",
+        "still"
       ]
     },
     "domain:typography": {
@@ -1237,7 +1941,11 @@
       "availability": "implemented",
       "title": "Typography",
       "searchTerms": [
-        "typography",
+        "classic",
+        "dramatic",
+        "flat",
+        "gentle",
+        "type-scale",
         "typography"
       ]
     },
@@ -11471,6 +12179,121 @@
       "to": "constraint:emphasis.on-solid"
     },
     {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "descriptor:vibrancy"
+    },
+    {
+      "from": "descriptor:vibrancy",
+      "relation": "expresses",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "descriptor:vibrancy.muted",
+      "relation": "memberOf",
+      "to": "descriptor:vibrancy"
+    },
+    {
+      "from": "descriptor:vibrancy.natural",
+      "relation": "memberOf",
+      "to": "descriptor:vibrancy"
+    },
+    {
+      "from": "descriptor:vibrancy.vivid",
+      "relation": "memberOf",
+      "to": "descriptor:vibrancy"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "descriptor:harmony"
+    },
+    {
+      "from": "descriptor:harmony",
+      "relation": "expresses",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "descriptor:harmony.unique",
+      "relation": "memberOf",
+      "to": "descriptor:harmony"
+    },
+    {
+      "from": "descriptor:harmony.analogous",
+      "relation": "memberOf",
+      "to": "descriptor:harmony"
+    },
+    {
+      "from": "descriptor:harmony.complementary",
+      "relation": "memberOf",
+      "to": "descriptor:harmony"
+    },
+    {
+      "from": "descriptor:harmony.split",
+      "relation": "memberOf",
+      "to": "descriptor:harmony"
+    },
+    {
+      "from": "descriptor:harmony.triadic",
+      "relation": "memberOf",
+      "to": "descriptor:harmony"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "descriptor:neutral"
+    },
+    {
+      "from": "descriptor:neutral",
+      "relation": "expresses",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "descriptor:neutral.true",
+      "relation": "memberOf",
+      "to": "descriptor:neutral"
+    },
+    {
+      "from": "descriptor:neutral.subtle",
+      "relation": "memberOf",
+      "to": "descriptor:neutral"
+    },
+    {
+      "from": "descriptor:neutral.tinted",
+      "relation": "memberOf",
+      "to": "descriptor:neutral"
+    },
+    {
+      "from": "descriptor:neutral.strong",
+      "relation": "memberOf",
+      "to": "descriptor:neutral"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "descriptor:adaptivity"
+    },
+    {
+      "from": "descriptor:adaptivity",
+      "relation": "expresses",
+      "to": "concept:adaptivity"
+    },
+    {
+      "from": "descriptor:adaptivity.both",
+      "relation": "memberOf",
+      "to": "descriptor:adaptivity"
+    },
+    {
+      "from": "descriptor:adaptivity.light-first",
+      "relation": "memberOf",
+      "to": "descriptor:adaptivity"
+    },
+    {
+      "from": "descriptor:adaptivity.dark-first",
+      "relation": "memberOf",
+      "to": "descriptor:adaptivity"
+    },
+    {
       "from": "domain:geometry",
       "relation": "covers",
       "to": "concept:scale"
@@ -11566,6 +12389,201 @@
       "to": "constraint:elevation.modal-shadow"
     },
     {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:scale"
+    },
+    {
+      "from": "descriptor:scale",
+      "relation": "expresses",
+      "to": "concept:scale"
+    },
+    {
+      "from": "descriptor:scale.xs",
+      "relation": "memberOf",
+      "to": "descriptor:scale"
+    },
+    {
+      "from": "descriptor:scale.sm",
+      "relation": "memberOf",
+      "to": "descriptor:scale"
+    },
+    {
+      "from": "descriptor:scale.md",
+      "relation": "memberOf",
+      "to": "descriptor:scale"
+    },
+    {
+      "from": "descriptor:scale.lg",
+      "relation": "memberOf",
+      "to": "descriptor:scale"
+    },
+    {
+      "from": "descriptor:scale.xl",
+      "relation": "memberOf",
+      "to": "descriptor:scale"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:density"
+    },
+    {
+      "from": "descriptor:density",
+      "relation": "expresses",
+      "to": "concept:density"
+    },
+    {
+      "from": "descriptor:density.compact",
+      "relation": "memberOf",
+      "to": "descriptor:density"
+    },
+    {
+      "from": "descriptor:density.default",
+      "relation": "memberOf",
+      "to": "descriptor:density"
+    },
+    {
+      "from": "descriptor:density.loose",
+      "relation": "memberOf",
+      "to": "descriptor:density"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:space"
+    },
+    {
+      "from": "descriptor:space",
+      "relation": "expresses",
+      "to": "concept:space"
+    },
+    {
+      "from": "descriptor:space.tight",
+      "relation": "memberOf",
+      "to": "descriptor:space"
+    },
+    {
+      "from": "descriptor:space.balanced",
+      "relation": "memberOf",
+      "to": "descriptor:space"
+    },
+    {
+      "from": "descriptor:space.airy",
+      "relation": "memberOf",
+      "to": "descriptor:space"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:curvature"
+    },
+    {
+      "from": "descriptor:curvature",
+      "relation": "expresses",
+      "to": "concept:curvature"
+    },
+    {
+      "from": "descriptor:curvature.square",
+      "relation": "memberOf",
+      "to": "descriptor:curvature"
+    },
+    {
+      "from": "descriptor:curvature.crisp",
+      "relation": "memberOf",
+      "to": "descriptor:curvature"
+    },
+    {
+      "from": "descriptor:curvature.soft",
+      "relation": "memberOf",
+      "to": "descriptor:curvature"
+    },
+    {
+      "from": "descriptor:curvature.round",
+      "relation": "memberOf",
+      "to": "descriptor:curvature"
+    },
+    {
+      "from": "descriptor:curvature.pill",
+      "relation": "memberOf",
+      "to": "descriptor:curvature"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:corner"
+    },
+    {
+      "from": "descriptor:corner",
+      "relation": "expresses",
+      "to": "concept:curvature"
+    },
+    {
+      "from": "descriptor:corner.bevel",
+      "relation": "memberOf",
+      "to": "descriptor:corner"
+    },
+    {
+      "from": "descriptor:corner.round",
+      "relation": "memberOf",
+      "to": "descriptor:corner"
+    },
+    {
+      "from": "descriptor:corner.squircle",
+      "relation": "memberOf",
+      "to": "descriptor:corner"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:line"
+    },
+    {
+      "from": "descriptor:line",
+      "relation": "expresses",
+      "to": "concept:line"
+    },
+    {
+      "from": "descriptor:line.borderless",
+      "relation": "memberOf",
+      "to": "descriptor:line"
+    },
+    {
+      "from": "descriptor:line.hairline",
+      "relation": "memberOf",
+      "to": "descriptor:line"
+    },
+    {
+      "from": "descriptor:line.outlined",
+      "relation": "memberOf",
+      "to": "descriptor:line"
+    },
+    {
+      "from": "domain:geometry",
+      "relation": "owns",
+      "to": "descriptor:elevation"
+    },
+    {
+      "from": "descriptor:elevation",
+      "relation": "expresses",
+      "to": "concept:elevation"
+    },
+    {
+      "from": "descriptor:elevation.flat",
+      "relation": "memberOf",
+      "to": "descriptor:elevation"
+    },
+    {
+      "from": "descriptor:elevation.layered",
+      "relation": "memberOf",
+      "to": "descriptor:elevation"
+    },
+    {
+      "from": "descriptor:elevation.floating",
+      "relation": "memberOf",
+      "to": "descriptor:elevation"
+    },
+    {
       "from": "domain:motion",
       "relation": "covers",
       "to": "concept:movement"
@@ -11596,6 +12614,36 @@
       "to": "constraint:movement.feedback-fast"
     },
     {
+      "from": "domain:motion",
+      "relation": "owns",
+      "to": "descriptor:movement"
+    },
+    {
+      "from": "descriptor:movement",
+      "relation": "expresses",
+      "to": "concept:movement"
+    },
+    {
+      "from": "descriptor:movement.still",
+      "relation": "memberOf",
+      "to": "descriptor:movement"
+    },
+    {
+      "from": "descriptor:movement.calm",
+      "relation": "memberOf",
+      "to": "descriptor:movement"
+    },
+    {
+      "from": "descriptor:movement.lively",
+      "relation": "memberOf",
+      "to": "descriptor:movement"
+    },
+    {
+      "from": "descriptor:movement.playful",
+      "relation": "memberOf",
+      "to": "descriptor:movement"
+    },
+    {
       "from": "domain:typography",
       "relation": "covers",
       "to": "concept:typography"
@@ -11614,6 +12662,36 @@
       "from": "domain:typography",
       "relation": "owns",
       "to": "parameters:voices"
+    },
+    {
+      "from": "domain:typography",
+      "relation": "owns",
+      "to": "descriptor:type-scale"
+    },
+    {
+      "from": "descriptor:type-scale",
+      "relation": "expresses",
+      "to": "concept:typography"
+    },
+    {
+      "from": "descriptor:type-scale.flat",
+      "relation": "memberOf",
+      "to": "descriptor:type-scale"
+    },
+    {
+      "from": "descriptor:type-scale.gentle",
+      "relation": "memberOf",
+      "to": "descriptor:type-scale"
+    },
+    {
+      "from": "descriptor:type-scale.classic",
+      "relation": "memberOf",
+      "to": "descriptor:type-scale"
+    },
+    {
+      "from": "descriptor:type-scale.dramatic",
+      "relation": "memberOf",
+      "to": "descriptor:type-scale"
     }
   ]
 }

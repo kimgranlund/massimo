@@ -22,7 +22,15 @@
     },
     {
       "path": "contracts/domains/color.json",
-      "sha256": "2834be8978cfe9a3946303e77df1b3ad3cefe0decc8534342cb34c1af14baafc"
+      "sha256": "211ff3d45d92d0de916847f836726ca643c048986cadfec3e25645e2183f5a6e"
+    },
+    {
+      "path": "tokens/themes/descriptors.ts",
+      "sha256": "54e76a0ff190ddd9127c2324a9c9ccbb920be3bbf50864b3e1389d92a1dc48e0"
+    },
+    {
+      "path": "tokens/themes/descriptor-data.ts",
+      "sha256": "94a3c20a563a4d9dd860cac26c4cb6642827cbde4fe39da09d8f3bc78216dd60"
     }
   ],
   "renderers": {
@@ -35,6 +43,10 @@
         {
           "command": "node --test test/themes.test.ts",
           "covers": "theme part, migration and lint"
+        },
+        {
+          "command": "node --test test/descriptors.test.ts",
+          "covers": "descriptor scales"
         }
       ],
       "latestRun": {
@@ -42,7 +54,8 @@
         "outcome": "pass",
         "commands": [
           "node --test test/spectrum.test.ts",
-          "node --test test/themes.test.ts"
+          "node --test test/themes.test.ts",
+          "node --test test/descriptors.test.ts"
         ],
         "environment": {
           "node": "v26.13.0"
@@ -51,6 +64,6 @@
     }
   },
   "limitations": [
-    "Descriptors (brand-schema step 2) are not built yet; the manifest lists none."
+    "Descriptors cover the closed scales in the manifest; emphasis (role mapping) and iconography have no scale yet."
   ]
 }

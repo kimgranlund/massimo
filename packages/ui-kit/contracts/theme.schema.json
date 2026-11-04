@@ -1038,9 +1038,123 @@
     },
     "character": {
       "type": "object",
-      "additionalProperties": {
-        "type": "string"
-      }
+      "additionalProperties": false,
+      "properties": {
+        "scale": {
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "description": "Scale: how big everything is"
+        },
+        "density": {
+          "enum": [
+            "compact",
+            "default",
+            "loose"
+          ],
+          "description": "Density: how much fits at the same scale"
+        },
+        "space": {
+          "enum": [
+            "tight",
+            "balanced",
+            "airy"
+          ],
+          "description": "Space: margins and gutters: container padding and gaps"
+        },
+        "curvature": {
+          "enum": [
+            "square",
+            "crisp",
+            "soft",
+            "round",
+            "pill"
+          ],
+          "description": "Curvature: how round corners are"
+        },
+        "corner": {
+          "enum": [
+            "bevel",
+            "round",
+            "squircle"
+          ],
+          "description": "Corner shape: the curve of a corner"
+        },
+        "line": {
+          "enum": [
+            "borderless",
+            "hairline",
+            "outlined"
+          ],
+          "description": "Line: how much outline controls carry"
+        },
+        "elevation": {
+          "enum": [
+            "flat",
+            "layered",
+            "floating"
+          ],
+          "description": "Elevation: how surfaces separate"
+        },
+        "type-scale": {
+          "enum": [
+            "flat",
+            "gentle",
+            "classic",
+            "dramatic"
+          ],
+          "description": "Type scale: how far headings step from body text"
+        },
+        "vibrancy": {
+          "enum": [
+            "muted",
+            "natural",
+            "vivid"
+          ],
+          "description": "Vibrancy: how saturated the palette is"
+        },
+        "harmony": {
+          "enum": [
+            "unique",
+            "analogous",
+            "complementary",
+            "split",
+            "triadic"
+          ],
+          "description": "Harmony: how accent hues relate"
+        },
+        "neutral": {
+          "enum": [
+            "true",
+            "subtle",
+            "tinted",
+            "strong"
+          ],
+          "description": "Neutral: how much the neutrals carry the hue"
+        },
+        "adaptivity": {
+          "enum": [
+            "both",
+            "light-first",
+            "dark-first"
+          ],
+          "description": "Adaptivity: which scheme the theme leads with"
+        },
+        "movement": {
+          "enum": [
+            "still",
+            "calm",
+            "lively",
+            "playful"
+          ],
+          "description": "Movement: how things move"
+        }
+      },
+      "description": "L1 character: one value per descriptor scale (contracts/domains/<domain>.json descriptors)."
     },
     "provenance": {
       "type": "object",

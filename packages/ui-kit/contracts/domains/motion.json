@@ -18,7 +18,58 @@
     "movement.reveal-bounce",
     "movement.feedback-fast"
   ],
-  "descriptors": [],
+  "descriptors": [
+    {
+      "id": "movement",
+      "concept": "movement",
+      "title": "Movement",
+      "reads": "how things move",
+      "default": "lively",
+      "inputs": [
+        "motion-scale",
+        "motion-bounce",
+        "intent-toggle"
+      ],
+      "values": [
+        {
+          "name": "still",
+          "set": {
+            "motion-scale": 0.5,
+            "motion-bounce": 0,
+            "intent-toggle": 2
+          },
+          "means": "short, critically damped transitions"
+        },
+        {
+          "name": "calm",
+          "set": {
+            "motion-scale": 1.25,
+            "motion-bounce": 0.25,
+            "intent-toggle": 2
+          },
+          "means": "slower, almost no overshoot"
+        },
+        {
+          "name": "lively",
+          "set": {
+            "motion-scale": 1,
+            "motion-bounce": 1,
+            "intent-toggle": 2
+          },
+          "means": "the default springs"
+        },
+        {
+          "name": "playful",
+          "set": {
+            "motion-scale": 1,
+            "motion-bounce": 1,
+            "intent-toggle": 3
+          },
+          "means": "toggles run on the bouncy spring too"
+        }
+      ]
+    }
+  ],
   "specs": [
     "../../../../docs/specs/motion.md"
   ],
@@ -35,6 +86,10 @@
       "covers": "the theme's motion part: schema, validator, migration, lint fixtures"
     },
     {
+      "command": "node --test test/descriptors.test.ts",
+      "covers": "the motion descriptor scales: resolve, read back, defaults, lint"
+    },
+    {
       "command": "npm --prefix ../.. run check:browsers",
       "covers": "motion easings: every linear() easing parses and matches the spring in Chromium, Firefox and WebKit",
       "browser": true
@@ -43,8 +98,12 @@
   "verification": "./verification/motion.verification.json",
   "avoidWhen": [],
   "searchTerms": [
+    "calm",
+    "lively",
     "motion",
-    "movement"
+    "movement",
+    "playful",
+    "still"
   ],
   "themePartFields": [
     "parameters"

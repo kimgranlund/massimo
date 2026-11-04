@@ -31,7 +31,363 @@
     "elevation.floating-visible",
     "elevation.modal-shadow"
   ],
-  "descriptors": [],
+  "descriptors": [
+    {
+      "id": "scale",
+      "concept": "scale",
+      "title": "Scale",
+      "reads": "how big everything is",
+      "default": "md",
+      "inputs": [
+        "unit"
+      ],
+      "values": [
+        {
+          "name": "xs",
+          "set": {
+            "unit": 3.5
+          },
+          "means": "small, dense instruments (controls 28px)"
+        },
+        {
+          "name": "sm",
+          "set": {
+            "unit": 4
+          },
+          "means": "compact product UI (32px)"
+        },
+        {
+          "name": "md",
+          "set": {
+            "unit": 4.5
+          },
+          "means": "the default (36px)"
+        },
+        {
+          "name": "lg",
+          "set": {
+            "unit": 5
+          },
+          "means": "roomy, touch-friendly (40px)"
+        },
+        {
+          "name": "xl",
+          "set": {
+            "unit": 6
+          },
+          "means": "large, kiosk or display (48px)"
+        }
+      ]
+    },
+    {
+      "id": "density",
+      "concept": "density",
+      "title": "Density",
+      "reads": "how much fits at the same scale",
+      "default": "default",
+      "inputs": [
+        "density"
+      ],
+      "values": [
+        {
+          "name": "compact",
+          "set": {
+            "density": 0
+          },
+          "means": "insets 0.5u, the ladder × 0.5"
+        },
+        {
+          "name": "default",
+          "set": {
+            "density": 1
+          },
+          "means": "insets 1u"
+        },
+        {
+          "name": "loose",
+          "set": {
+            "density": 2
+          },
+          "means": "insets 2u, the ladder × 1.5"
+        }
+      ]
+    },
+    {
+      "id": "space",
+      "concept": "space",
+      "title": "Space",
+      "reads": "margins and gutters: container padding and gaps",
+      "default": "balanced",
+      "inputs": [
+        "pad-group",
+        "gap-group",
+        "pad-collection",
+        "gap-collection",
+        "pad-card-xs",
+        "gap-card-xs",
+        "pad-card-sm",
+        "gap-card-sm",
+        "pad-card-md",
+        "gap-card-md",
+        "pad-card-lg",
+        "gap-card-lg",
+        "pad-card-xl",
+        "gap-card-xl",
+        "pad-panel",
+        "gap-panel",
+        "pad-region",
+        "gap-region",
+        "pad-page",
+        "gap-page"
+      ],
+      "values": [
+        {
+          "name": "tight",
+          "set": {
+            "pad-group": 1.0,
+            "gap-group": 1.0,
+            "pad-collection": 1.5,
+            "gap-collection": 1.5,
+            "pad-card-xs": 1.5,
+            "gap-card-xs": 1.5,
+            "pad-card-sm": 2.0,
+            "gap-card-sm": 2.0,
+            "pad-card-md": 3.0,
+            "gap-card-md": 3.0,
+            "pad-card-lg": 4.0,
+            "gap-card-lg": 4.0,
+            "pad-card-xl": 4.5,
+            "gap-card-xl": 4.5,
+            "pad-panel": 4.5,
+            "gap-panel": 4.5,
+            "pad-region": 6.0,
+            "gap-region": 6.0,
+            "pad-page": 6.0,
+            "gap-page": 6.0
+          },
+          "means": "the container ladder × 0.75"
+        },
+        {
+          "name": "balanced",
+          "set": {
+            "pad-group": 1.0,
+            "gap-group": 1.0,
+            "pad-collection": 2.0,
+            "gap-collection": 2.0,
+            "pad-card-xs": 2.0,
+            "gap-card-xs": 2.0,
+            "pad-card-sm": 3.0,
+            "gap-card-sm": 3.0,
+            "pad-card-md": 4.0,
+            "gap-card-md": 4.0,
+            "pad-card-lg": 5.0,
+            "gap-card-lg": 5.0,
+            "pad-card-xl": 6.0,
+            "gap-card-xl": 6.0,
+            "pad-panel": 6.0,
+            "gap-panel": 6.0,
+            "pad-region": 8.0,
+            "gap-region": 8.0,
+            "pad-page": 8.0,
+            "gap-page": 8.0
+          },
+          "means": "the default ladder"
+        },
+        {
+          "name": "airy",
+          "set": {
+            "pad-group": 1.5,
+            "gap-group": 1.5,
+            "pad-collection": 3.0,
+            "gap-collection": 3.0,
+            "pad-card-xs": 3.0,
+            "gap-card-xs": 3.0,
+            "pad-card-sm": 4.5,
+            "gap-card-sm": 4.5,
+            "pad-card-md": 6.0,
+            "gap-card-md": 6.0,
+            "pad-card-lg": 7.5,
+            "gap-card-lg": 7.5,
+            "pad-card-xl": 9.0,
+            "gap-card-xl": 9.0,
+            "pad-panel": 9.0,
+            "gap-panel": 9.0,
+            "pad-region": 12,
+            "gap-region": 12,
+            "pad-page": 12,
+            "gap-page": 12
+          },
+          "means": "the container ladder × 1.5"
+        }
+      ]
+    },
+    {
+      "id": "curvature",
+      "concept": "curvature",
+      "title": "Curvature",
+      "reads": "how round corners are",
+      "default": "soft",
+      "inputs": [
+        "radius-scale"
+      ],
+      "values": [
+        {
+          "name": "square",
+          "set": {
+            "radius-scale": 0
+          },
+          "means": "no radius"
+        },
+        {
+          "name": "crisp",
+          "set": {
+            "radius-scale": 0.5
+          },
+          "means": "small radii (control 1.5u)"
+        },
+        {
+          "name": "soft",
+          "set": {
+            "radius-scale": 1
+          },
+          "means": "the default (control 3u)"
+        },
+        {
+          "name": "round",
+          "set": {
+            "radius-scale": 1.25
+          },
+          "means": "rounder (controls nearly pills)"
+        },
+        {
+          "name": "pill",
+          "set": {
+            "radius-scale": 2
+          },
+          "means": "controls are pills; containers very round"
+        }
+      ]
+    },
+    {
+      "id": "corner",
+      "concept": "curvature",
+      "title": "Corner shape",
+      "reads": "the curve of a corner",
+      "default": "round",
+      "inputs": [
+        "corner-shape"
+      ],
+      "values": [
+        {
+          "name": "bevel",
+          "set": {
+            "corner-shape": 0
+          },
+          "means": "straight cut corners"
+        },
+        {
+          "name": "round",
+          "set": {
+            "corner-shape": 1
+          },
+          "means": "circular arcs (the default)"
+        },
+        {
+          "name": "squircle",
+          "set": {
+            "corner-shape": 2
+          },
+          "means": "superellipse, continuous curvature"
+        }
+      ]
+    },
+    {
+      "id": "line",
+      "concept": "line",
+      "title": "Line",
+      "reads": "how much outline controls carry",
+      "default": "borderless",
+      "inputs": [
+        "border"
+      ],
+      "values": [
+        {
+          "name": "borderless",
+          "set": {
+            "border": 0
+          },
+          "means": "fills alone define controls"
+        },
+        {
+          "name": "hairline",
+          "set": {
+            "border": 1
+          },
+          "means": "a 1px outline"
+        },
+        {
+          "name": "outlined",
+          "set": {
+            "border": 2
+          },
+          "means": "a 2px outline"
+        }
+      ]
+    },
+    {
+      "id": "elevation",
+      "concept": "elevation",
+      "title": "Elevation",
+      "reads": "how surfaces separate",
+      "default": "layered",
+      "inputs": [
+        "shadow-strength",
+        "surface-contrast",
+        "shadow-raised",
+        "shadow-floating",
+        "shadow-modal",
+        "card-raised"
+      ],
+      "values": [
+        {
+          "name": "flat",
+          "set": {
+            "shadow-strength": 0.5,
+            "surface-contrast": 1,
+            "shadow-raised": 0,
+            "shadow-floating": 4,
+            "shadow-modal": 12,
+            "card-raised": 0
+          },
+          "means": "fills separate levels; popups keep a faint shadow"
+        },
+        {
+          "name": "layered",
+          "set": {
+            "shadow-strength": 1,
+            "surface-contrast": 1,
+            "shadow-raised": 2,
+            "shadow-floating": 8,
+            "shadow-modal": 24,
+            "card-raised": 0
+          },
+          "means": "the default: fills for inline levels, shadows for lifted ones"
+        },
+        {
+          "name": "floating",
+          "set": {
+            "shadow-strength": 1.25,
+            "surface-contrast": 0.5,
+            "shadow-raised": 4,
+            "shadow-floating": 12,
+            "shadow-modal": 24,
+            "card-raised": 1
+          },
+          "means": "cards lift off the page; shadows carry the hierarchy"
+        }
+      ]
+    }
+  ],
   "specs": [
     "../../../../docs/specs/geometry.md",
     "../../../../docs/specs/elevation.md"
@@ -58,6 +414,10 @@
       "covers": "the theme's geometry part: schema, validator, migration, lint fixtures"
     },
     {
+      "command": "node --test test/descriptors.test.ts",
+      "covers": "the geometry descriptor scales: resolve, read back, defaults, lint"
+    },
+    {
       "command": "npm --prefix ../.. run check:browsers",
       "covers": "geometry-check.html: rendered lengths equal the resolvers in Chromium, Firefox and WebKit",
       "browser": true
@@ -66,13 +426,38 @@
   "verification": "./verification/geometry.verification.json",
   "avoidWhen": [],
   "searchTerms": [
-    "geometry",
-    "scale",
-    "density",
-    "space",
+    "airy",
+    "balanced",
+    "bevel",
+    "borderless",
+    "compact",
+    "corner",
+    "crisp",
     "curvature",
+    "default",
+    "density",
+    "elevation",
+    "flat",
+    "floating",
+    "geometry",
+    "hairline",
+    "layered",
+    "lg",
     "line",
-    "elevation"
+    "loose",
+    "md",
+    "outlined",
+    "pill",
+    "round",
+    "scale",
+    "sm",
+    "soft",
+    "space",
+    "square",
+    "squircle",
+    "tight",
+    "xl",
+    "xs"
   ],
   "themePartFields": [
     "parameters"
