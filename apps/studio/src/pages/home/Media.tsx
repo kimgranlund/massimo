@@ -17,8 +17,6 @@ const swiper = css({
   borderRadius: 'lg', overflow: 'hidden', '& [data-part=dots]': { '--colors-fg': 'var(--colors-white)' },
   '& > [data-part=paddle]': { visibility: 'hidden', [CQ_MD]: { visibility: 'visible' } },
 });
-// Gallery cards take the page fill on the subtle region (a card's own fill would vanish there).
-const onPage = css({ bg: 'bg' });
 // Slides are 4:3 on narrow pages (room for the caption) and 16:9 from medium up.
 const slideImage = css({ [CQ_MD]: { aspectRatio: '[16 / 9]' } });
 const slide = css({ position: 'relative', display: 'block' });
@@ -55,7 +53,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
         </div>
         <ui-button>Browse all<i slot="trailing" name="arrow-right" /></ui-button>
       </div>
-      <ui-container preset="card" padding="sm" className={onPage}>
+      <ui-container preset="card" padding="sm">
         <ui-swiper label="Featured stories" className={swiper}>
           {FEATURED.map((f) => (
             <div key={f.title} className={slide}>
@@ -78,7 +76,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
         </div>
         <div className={grid}>
           {shots.map((x) => (
-            <ui-container preset="card" key={x.title} padding="xs" className={onPage}>
+            <ui-container preset="card" key={x.title} padding="xs">
               <ui-image src={art(spectrum, x.scene, x.role, x.accent)} alt={x.title} ratio="landscape" className={s.media} />
               <div className={shotText}>
                 <div className={shotHead}>

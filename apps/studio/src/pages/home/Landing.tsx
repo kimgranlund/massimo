@@ -18,7 +18,7 @@ const hero = css({
 const copy = css({ display: 'flex', flexDirection: 'column', gap: '6', alignItems: 'start' });
 const brandCard = css({ bg: 'primary.solid', color: 'fg.onSolid', position: 'relative' });
 const heroImage = css({ borderRadius: 'lg', overflow: 'hidden', width: 'full' });
-const floating = css({ position: 'relative', zIndex: '1', color: 'fg', boxShadow: 'md', [CQ_SM]: { marginInlineStart: '[20%]', marginBlockStart: '-12' } });
+const floating = css({ position: 'relative', zIndex: '1', color: 'fg', [CQ_SM]: { marginInlineStart: '[20%]', marginBlockStart: '-12' } });
 const onSolidSoft = '[color-mix(in oklch, var(--colors-fg-on-solid) 75%, transparent)]';
 const onSolidMuted = css({ textStyle: 'caption', color: onSolidSoft });
 const onSolidKicker = css({ textStyle: 'group-kicker', color: onSolidSoft });
@@ -53,7 +53,7 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
         <ui-container preset="card" padding="xl" className={brandCard}>
           <span className={onSolidKicker}>Autumn / Winter 26</span>
           <ui-image src={art(spectrum, 'hills', 'primary', 'secondary')} alt="Hills at first light" ratio="landscape" className={heroImage} />
-          <ui-container preset="card" padding="sm" className={floating}>
+          <ui-container preset="card" padding="sm" surface="raised" className={floating}>
             <div className={s.spread}>
               <div className={s.stack1}>
                 <span className={s.strong}>Next drop · Field collection</span>
