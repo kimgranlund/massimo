@@ -27,7 +27,7 @@ function choice(kind: 'checkbox' | 'radio' | 'switch', box: Record<string, any>,
     slots: [...SLOTS, ...Object.keys(extra)],
     base: {
       root: {
-        display: 'inline-flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', verticalAlign: 'middle',
+        display: 'inline-flex', alignItems: 'center', cursor: 'default', userSelect: 'none', verticalAlign: 'middle',
         minHeight: 'var(--slot)', fontFamily: UI_FONT, fontSize: 'var(--font)', lineHeight: 'var(--leading)',
         _disabled: { opacity: 0.5, cursor: 'not-allowed' },
         _enabled: { _hover: { [BOX]: { bg: 'bg.mutedHover' } }, '&:active': { [BOX]: { bg: 'bg.mutedActive' } } },

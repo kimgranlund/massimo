@@ -27,7 +27,7 @@ export const range = defineSlotRecipe({
   slots: ['root', 'track', 'indicator', 'thumb'],
   base: {
     root: {
-      ...host, fontFamily: UI_FONT, cursor: 'pointer', touchAction: 'none', userSelect: 'none',
+      ...host, fontFamily: UI_FONT, cursor: 'default', touchAction: 'none', userSelect: 'none',
       _disabled: { opacity: 0.5, cursor: 'not-allowed' },
       _enabled: {
         '&:hover': { '& > [data-part=track]': { bg: 'bg.mutedHover' }, '& > [data-part=track] > [data-part=indicator]': { bg: 'primary.solidHover' } },

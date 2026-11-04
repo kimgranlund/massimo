@@ -58,8 +58,8 @@ export const palette = defineSlotRecipe({
       true: {
         root: {
           _enabled: {
-            cursor: 'pointer',
-            [SWATCH]: { cursor: 'pointer' },
+            cursor: 'default',
+            [SWATCH]: { cursor: 'default' },
             [`${SWATCH}:not(${SELECTED}):hover`]: { boxShadow: 'inset 0 0 0 2px color-mix(in oklch, var(--colors-bg) 70%, transparent)' },
           },
           [`${SWATCH}${SELECTED}`]: { boxShadow: 'inset 0 0 0 2px var(--colors-bg), inset 0 0 0 4px var(--colors-fg)' },
