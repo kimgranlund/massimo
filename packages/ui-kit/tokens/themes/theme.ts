@@ -17,7 +17,7 @@ import { THEME_NAME } from './validate.ts';
 import { DESCRIPTORS } from './descriptor-data.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
-import { ROLE_NAMES, type RoleName } from '../colors/spectrum/index.ts';
+import { ROLE_NAMES, isAnchorColor, type RoleName, type ColorAnchor } from '../colors/spectrum/index.ts';
 import { FACES, VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 
 export const THEME_SCHEMA_VERSION = 2;
@@ -32,7 +32,8 @@ export interface Theme {
   geometry?: { parameters?: Numbers };
   typography?: { parameters?: Numbers; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
-  color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' } };
+  /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped, nearest step overridden. */
+  color?: { spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: RoleName })[] };
   motion?: { parameters?: Numbers };
   icons?: string;
   scheme?: ThemeScheme;
@@ -131,7 +132,24 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.color !== undefined) {
     if (!isObject(input.color)) err('color', 'must be an object');
     else {
-      for (const k of Object.keys(input.color)) if (k !== 'spectrum' && k !== 'roles' && k !== 'endpoints') err(`color.${k}`, 'unknown section');
+      for (const k of Object.keys(input.color)) if (k !== 'spectrum' && k !== 'roles' && k !== 'endpoints' && k !== 'anchors') err(`color.${k}`, 'unknown section');
+      if (input.color.anchors !== undefined) {
+        if (!Array.isArray(input.color.anchors)) err('color.anchors', 'must be a list');
+        else input.color.anchors.forEach((raw: unknown, i: number) => {
+          const path = `color.anchors.${i}`;
+          if (!isObject(raw)) return err(path, 'must be an object');
+          const a = raw as any;
+          for (const k of Object.keys(a)) if (!['role', 'value', 'step', 'name'].includes(k)) err(`${path}.${k}`, 'unknown field');
+          if (!ROLE_NAMES.includes(a.role)) err(`${path}.role`, 'unknown role');
+          if (!isAnchorColor(a.value)) err(`${path}.value`, 'must be a #rrggbb color');
+          if (a.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${path}.step`, 'must be a step 2–12');
+          if (a.name !== undefined && typeof a.name !== 'string') err(`${path}.name`, 'must be a string');
+        });
+        if (Array.isArray(input.color.anchors)) {
+          const roles = input.color.anchors.map((a: any) => a?.role);
+          if (new Set(roles).size !== roles.length) err('color.anchors', 'one anchor per role');
+        }
+      }
       if (input.color.endpoints !== undefined) {
         if (!isObject(input.color.endpoints)) err('color.endpoints', 'must be an object');
         else for (const [k, v] of Object.entries(input.color.endpoints)) {
@@ -219,6 +237,7 @@ export function themeJsonSchema() {
       color: strict({
         spectrum: strict(Object.fromEntries(SPECTRUM_FIELDS.map((f) => [f.key, field(f)]))),
         roles: strict(Object.fromEntries(ROLE_NAMES.map((r) => [r, { type: 'string', pattern: FAMILY_NAME.source }]))),
+        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ROLE_NAMES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' } }, { required: ['role', 'value'] }) },
         endpoints: strict({ white: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] }, black: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] } }),
       }),
       typography: strict({

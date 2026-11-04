@@ -9,5 +9,5 @@ export type Scheme = 'auto' | 'light' | 'dark';
 export interface FamilyRamp { name: string; light: string[]; dark: string[]; lightText: string[]; darkText: string[]; /** HCT tone per step. */ lightTones: number[]; darkTones: number[] }
 /** The contrast model's inputs: the page tone (step 1) and the APCA Lc target per step 2–12, per scheme. */
 export interface ContrastPayload { light: { page: number; targets: number[] }; dark: { page: number; targets: number[] } }
-import type { SpectrumDiagnostics } from '@massimo/ui-kit/spectrum';
-export interface SpectrumPayload { css: string; families: FamilyRamp[]; roles: Roles; diagnostics: SpectrumDiagnostics; contrast: ContrastPayload; ms: number }
+import type { SpectrumDiagnostics, AnchorResult } from '@massimo/ui-kit/spectrum';
+export interface SpectrumPayload { css: string; families: FamilyRamp[]; roles: Roles; diagnostics: SpectrumDiagnostics; contrast: ContrastPayload; /** Where each brand anchor landed (color.anchors). */ anchors: AnchorResult[]; ms: number }

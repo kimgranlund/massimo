@@ -8,7 +8,7 @@ import { defaultParams, paramVar, type ParamName } from './params.ts';
 import { THEME_NAME } from './validate.ts';
 import { themeParameters, type Theme } from './theme.ts';
 import { normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
-import { endpointVars, generateSpectrum, ramps, resolveRoles, roleVariables } from '../colors/spectrum/index.ts';
+import { anchoredSpectrum, endpointVars, generateSpectrum, ramps, resolveRoles, roleVariables } from '../colors/spectrum/index.ts';
 import { SERIF_REGULAR_VOICES, TEXT_COLORS, typeColorVar, type Voice, type TypeRoleName } from '../typography/resolve.ts';
 
 export * from './params.ts';
@@ -41,12 +41,13 @@ export function themeVars(t: Theme): Record<string, string> {
  * time, as variables for the light and dark blocks.
  */
 export function themeColorVars(t: Theme): { light: Record<string, string>; dark: Record<string, string> } | undefined {
-  if (!t.color?.spectrum && !t.color?.roles && !t.color?.endpoints) return undefined;
-  const data = generateSpectrum(spectrumOverrides(normalizeSpectrum(t.color.spectrum ?? {})));
-  const roles = resolveRoles(data, t.color.roles ?? {});
+  if (!t.color?.spectrum && !t.color?.roles && !t.color?.endpoints && !t.color?.anchors?.length) return undefined;
+  const generated = generateSpectrum(spectrumOverrides(normalizeSpectrum(t.color.spectrum ?? {})));
+  const roles = resolveRoles(generated, t.color.roles ?? {});
+  const { data, solidSteps } = anchoredSpectrum(generated, roles, t.color.anchors);
   const vars = (mode: 'light' | 'dark') => ({
     ...Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i + 1}`, css]))),
-    ...roleVariables(data, roles, mode),
+    ...roleVariables(data, roles, mode, solidSteps),
     ...endpointVars(data, roles, t.color?.endpoints),
   });
   return { light: vars('light'), dark: vars('dark') };

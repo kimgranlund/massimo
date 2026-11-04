@@ -1,17 +1,20 @@
 // Spectrum generation for the jig (~300ms per run, so the caller debounces).
-import { generateSpectrum, resolveRoles, spectrumCSS, spectrumDiagnostics, families, ramps, type Roles } from '@massimo/ui-kit/spectrum';
+import { anchoredSpectrum, generateSpectrum, resolveRoles, spectrumCSS, type ColorAnchor, spectrumDiagnostics, families, ramps, type Roles } from '@massimo/ui-kit/spectrum';
 import type { SpectrumPayload } from '../protocol.ts';
 
-export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<Roles>) {
+export function buildSpectrum(settings: Record<string, unknown>, roles: Partial<Roles>, anchors: ColorAnchor[] = []) {
   const t0 = performance.now();
-  const data = generateSpectrum(settings);
+  const generated = generateSpectrum(settings);
+  const resolved = resolveRoles(generated, roles);
+  // Brand anchors (theme color.anchors): exact colors placed in their roles' ramps.
+  const { data, solidSteps, report } = anchoredSpectrum(generated, resolved, anchors);
   const ms = Math.round(performance.now() - t0);
-  const resolved = resolveRoles(data, roles);
   const f = families(data);
   const light = ramps(data, 'light'), dark = ramps(data, 'dark');
   const payload: SpectrumPayload = {
     // Applied to the whole jig (panel and canvas): :root, with .light/.dark on <html> forcing a scheme.
-    css: spectrumCSS(data, resolved, ':root'),
+    css: spectrumCSS(data, resolved, ':root', solidSteps),
+    anchors: report,
     diagnostics: spectrumDiagnostics(data, resolved),
     ms,
     contrast: {

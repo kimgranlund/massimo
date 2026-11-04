@@ -120,15 +120,15 @@ test('typography.colors maps a type role to a text color: validated, emitted as 
 test('every theme field is wired: schema, validator, theme CSS, and the jig Copy and Load', async () => {
   const schema = JSON.parse(themeJsonSchemaText());
   const app = readFileSync(new URL('../../../apps/studio/src/studio/App.tsx', import.meta.url), 'utf8');
-  const sections: Record<string, string[]> = { geometry: ['parameters'], typography: ['parameters', 'faces', 'voices', 'colors'], color: ['spectrum', 'roles', 'endpoints'], motion: ['parameters'] };
+  const sections: Record<string, string[]> = { geometry: ['parameters'], typography: ['parameters', 'faces', 'voices', 'colors'], color: ['spectrum', 'roles', 'endpoints', 'anchors'], motion: ['parameters'] };
   for (const [section, fields] of Object.entries(sections)) {
     assert.deepEqual(Object.keys(schema.properties[section].properties).sort(), [...fields].sort(), `${section}: the schema lists exactly its fields`);
     for (const f of fields) {
-      assert.ok(validateThemeObject({ schemaVersion: 2, name: 'x', [section]: { [f]: {} } }).ok, `${section}.${f}: the validator knows it`);
+      assert.ok(validateThemeObject({ schemaVersion: 2, name: 'x', [section]: { [f]: f === 'anchors' ? [] : {} } }).ok, `${section}.${f}: the validator knows it`);
       if (f === 'parameters') continue; // parameters: partsFromParameters (Copy) and themeParameters (Load), below
       // Copy writes it (themeObject) and Load reads it back (applyTheme: t.<section>?.<field>).
       assert.match(app, new RegExp(`${section}\\?\\.${f}\\b`), `${section}.${f}: the jig loads it (applyTheme)`);
-      assert.match(app, new RegExp(`\\b${f}: (changed|spectrumOverrides)\\(`), `${section}.${f}: the jig copies it (themeObject)`);
+      assert.match(app, new RegExp(`\\b${f}: (changed|spectrumOverrides|listed)\\(`), `${section}.${f}: the jig copies it (themeObject)`);
     }
     assert.ok(!validateThemeObject({ schemaVersion: 2, name: 'x', [section]: { nope: {} } }).ok, `${section}: unknown fields are rejected`);
   }

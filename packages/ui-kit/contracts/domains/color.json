@@ -17,7 +17,9 @@
   ],
   "constraints": [
     "vibrancy.text-contrast",
-    "emphasis.on-solid"
+    "emphasis.on-solid",
+    "vibrancy.anchor-order",
+    "vibrancy.anchor-range"
   ],
   "descriptors": [
     {
@@ -188,12 +190,17 @@
   ],
   "resolvers": [
     "tokens/colors/spectrum/index.ts",
-    "tokens/colors/spectrum/contrast.ts"
+    "tokens/colors/spectrum/contrast.ts",
+    "tokens/colors/spectrum/anchors.ts"
   ],
   "checks": [
     {
       "command": "node --test test/spectrum.test.ts",
       "covers": "generation, contrast targets, roles, endpoints, the legacy migration"
+    },
+    {
+      "command": "node --test test/anchors.test.ts",
+      "covers": "brand anchors: exact steps, pinned hue, chroma re-shape, solid step, lint"
     },
     {
       "command": "node --test test/themes.test.ts",
@@ -232,6 +239,7 @@
   "themePartFields": [
     "spectrum",
     "roles",
-    "endpoints"
+    "endpoints",
+    "anchors"
   ]
 }

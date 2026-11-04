@@ -52,6 +52,17 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 
 **Shadows.** Which surface casts which shadow, and the elevation tokens built on these, are in [elevation](elevation.md). `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and a runtime spectrum. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
 
+## Anchors
+
+A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:
+
+1. every step except the page takes the anchor's OKLCH hue, in the light and dark ramps;
+2. every step's chroma is scaled by anchor chroma / the anchored step's chroma, clamped into the target gamut (sRGB or Display P3);
+3. the anchored step (the one whose contrast target is nearest the anchor's Lc against the light page, unless `step` names one) becomes the exact color, with its text color recomputed;
+4. when the anchor lands on steps 8–11, the role's `solid` and `solid-hover` move to it and the next step (`roleVariables(…, solidSteps)`), and `fg-on-solid` follows for primary.
+
+Each step's lightness is kept, so the contrast steps hold. The lint warns when an anchor breaks the order (`vibrancy.anchor-order`: its Lc must lie between its neighbors' targets) or lies beyond the ramp (`vibrancy.anchor-range`, a near-black or near-white ink: map it to the black or white endpoint instead).
+
 ## Schemes
 
 Light by default; dark under `prefers-color-scheme: dark`; `.light` / `.dark` on any element force a scheme for its subtree. Role tokens are redeclared in every scheme block so a subtree class re-resolves them.

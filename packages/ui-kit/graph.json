@@ -1022,6 +1022,30 @@
         "size"
       ]
     },
+    "constraint:vibrancy.anchor-order": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/vibrancy.anchor-order",
+      "availability": "implemented",
+      "title": "An anchored step's Lc against the light page stays strictly between its neighbor steps' targets, so the ramp keeps its contrast order.",
+      "searchTerms": [
+        "vibrancy.anchor-order",
+        "vibrancy",
+        "anchor",
+        "order"
+      ]
+    },
+    "constraint:vibrancy.anchor-range": {
+      "kind": "constraint",
+      "source": "contracts/theme-constraints.json#/rules/vibrancy.anchor-range",
+      "availability": "implemented",
+      "title": "An anchor's Lc against the light page lies within the ramp (step 2's target / 2 to step 12's target + 10).",
+      "searchTerms": [
+        "vibrancy.anchor-range",
+        "vibrancy",
+        "anchor",
+        "range"
+      ]
+    },
     "constraint:vibrancy.text-contrast": {
       "kind": "constraint",
       "source": "contracts/theme-constraints.json#/rules/vibrancy.text-contrast",
@@ -12144,6 +12168,16 @@
       "to": "concept:emphasis"
     },
     {
+      "from": "constraint:vibrancy.anchor-order",
+      "relation": "constrains",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "constraint:vibrancy.anchor-range",
+      "relation": "constrains",
+      "to": "concept:vibrancy"
+    },
+    {
       "from": "domain:color",
       "relation": "covers",
       "to": "concept:vibrancy"
@@ -12177,6 +12211,16 @@
       "from": "domain:color",
       "relation": "owns",
       "to": "constraint:emphasis.on-solid"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "constraint:vibrancy.anchor-order"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "constraint:vibrancy.anchor-range"
     },
     {
       "from": "domain:color",

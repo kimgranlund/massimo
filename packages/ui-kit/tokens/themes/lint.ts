@@ -5,13 +5,13 @@ import constraints from '../../contracts/theme-constraints.json' with { type: 'j
 import { defaultParams, type ParamName, type ThemeParams } from './params.ts';
 import { themeParameters, type Theme } from './theme.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
-import { generateSpectrum, resolveRoles, SCALE_ROLES, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
+import { anchoredSpectrum, generateSpectrum, resolveRoles, SCALE_ROLES, type AnchorResult, type RoleName, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
 import { densityInset } from '../geometry/resolve.ts';
 import { SPRING_NAMES } from '../motion/index.ts';
 
 export type Severity = 'error' | 'warning' | 'info';
 export interface Finding { id: string; concept: string; severity: Severity; message: string; fix: string }
-interface Ctx { p: ThemeParams; theme: Partial<Theme>; color: () => { data: Spectrum; roles: Roles } }
+interface Ctx { p: ThemeParams; theme: Partial<Theme>; color: () => { data: Spectrum; roles: Roles; anchors: AnchorResult[]; solidSteps: Partial<Record<RoleName, number>> } }
 type Rule = (c: Ctx) => string[];
 
 export const THEME_CONSTRAINTS = constraints.rules as Record<string, { concept: string; severity: Severity; checks: string; fix: string; fixtures: { fail: unknown; pass: unknown } }>;
@@ -73,29 +73,36 @@ export const RULES: Record<string, Rule> = {
     return out;
   },
   'emphasis.on-solid': ({ color }) => {
-    const { data, roles } = color();
+    const { data, roles, solidSteps } = color();
     const out: string[] = [];
     for (const mode of ['light', 'dark'] as const) {
       // APCA Lc 60 is the level for UI text (labels at the control font); the engine's own onSolid flag also asks for a ramp color, so it is not used.
       const low = (['primary', 'critical'] as const).flatMap((role) => {
-        const lc = Math.abs((data.checks?.[mode].rows[roles[role]] as any)?.roles.onSolid?.lc ?? Infinity);
+        // An anchored role's solid is its anchored step (applyAnchors recomputes the text color there).
+        const lc = solidSteps[role] ? Math.abs(data.schemes[mode][roles[role]][solidSteps[role]! - 1].apca.lc) : Math.abs((data.checks?.[mode].rows[roles[role]] as any)?.roles.onSolid?.lc ?? Infinity);
         return lc < ON_SOLID_LC ? [{ role, family: roles[role], lc }] : [];
       });
-      if (low.length) out.push(`text on the solid (step 9) is ${range(low.map((l) => l.lc))} in ${mode} for ${list(low)}`);
+      if (low.length) out.push(`text on the solid is ${range(low.map((l) => l.lc))} in ${mode} for ${list(low)}`);
     }
     return out;
   },
+  'vibrancy.anchor-order': ({ color }) => color().anchors.filter((a) => !a.inOrder).map((a) =>
+    `the ${a.role} anchor ${a.value} (Lc ${fmt(a.lc)}) at step ${a.step} falls outside its neighbors (Lc ${fmt(a.below)}–${a.above === Infinity ? '…' : fmt(a.above)}), so the ramp is out of order`),
+  'vibrancy.anchor-range': ({ color }) => color().anchors.filter((a) => !a.inRange).map((a) =>
+    `the ${a.role} anchor ${a.value} (Lc ${fmt(a.lc)} against the page) is beyond the ramp; it is placed at step ${a.step}`),
 };
 
 /** Lint a theme object: every rule's findings, errors first. `ok` is false when any error fires. */
 export function lintTheme(theme: Partial<Theme>, opts: { spectrum?: Spectrum; only?: string[] } = {}) {
   const p = { ...defaultParams, ...themeParameters(theme) } as ThemeParams;
-  let color: { data: Spectrum; roles: Roles } | undefined;
+  let color: ReturnType<Ctx['color']> | undefined;
   const ctx: Ctx = {
     p, theme,
     color: () => (color ??= (() => {
-      const data = opts.spectrum ?? generateSpectrum(spectrumOverrides(normalizeSpectrum(theme.color?.spectrum ?? {})));
-      return { data, roles: resolveRoles(data, theme.color?.roles ?? {}) };
+      const generated = opts.spectrum ?? generateSpectrum(spectrumOverrides(normalizeSpectrum(theme.color?.spectrum ?? {})));
+      const roles = resolveRoles(generated, theme.color?.roles ?? {});
+      const a = anchoredSpectrum(generated, roles, theme.color?.anchors);
+      return { data: a.data, roles, anchors: a.report, solidSteps: a.solidSteps };
     })()),
   };
   const order: Record<Severity, number> = { error: 0, warning: 1, info: 2 };

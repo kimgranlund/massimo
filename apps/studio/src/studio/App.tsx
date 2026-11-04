@@ -114,6 +114,8 @@ export function App() {
   // White and black: a neutral step (white from the light ramp, black from the dark ramp; 1 by default) or 'pure'.
   type Endpoint = number | 'pure';
   const [endpoints, setEndpoints] = useState<{ white: Endpoint; black: Endpoint }>({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT });
+  // Brand anchors (color.anchors): carried through Load and Copy; edited on the Brand page (later).
+  const [anchors, setAnchors] = useState<NonNullable<NonNullable<Theme['color']>['anchors']>>([]);
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
   const [status, setStatus] = useState('');
@@ -122,13 +124,13 @@ export function App() {
   useEffect(() => {
     const t = setTimeout(() => {
       try {
-        const out = buildSpectrum(spectrumOverrides(spectrum), roles);
+        const out = buildSpectrum(spectrumOverrides(spectrum), roles, anchors);
         setGenerated(out.payload);
         setFamilyNames({ accents: out.accents, neutrals: out.neutrals });
       } catch (err) { setStatus(`Colors not generated: ${err}`); }
     }, 150);
     return () => clearTimeout(t);
-  }, [spectrum, roles]);
+  }, [spectrum, roles, anchors]);
 
   // Live overrides live in one constructed stylesheet (useSheet), never in style attributes: theme
   // parameters, faces and serif weights that differ from the kit defaults, scoped to the canvas
@@ -172,6 +174,7 @@ export function App() {
   // into an agent prompt or save it under its name in packages/ui-kit/tokens/themes/themes.json.
   const [themeName, setThemeName] = useState('custom');
   const changed = <T extends Record<string, unknown>>(cur: T, base: T) => Object.fromEntries(Object.entries(cur).filter(([k, v]) => JSON.stringify(v) !== JSON.stringify(base[k])));
+  const listed = <T,>(xs: T[]) => (xs.length ? xs : undefined);
   const nonEmpty = <T extends Record<string, unknown>>(o: T) => Object.fromEntries(Object.entries(o).filter(([, v]) => v !== undefined && !(typeof v === 'object' && v && !Array.isArray(v) && !Object.keys(v).length)));
   // Theme schema v2: the changed parameters go into their parts (geometry, typography, motion).
   const themeObject = (): Theme => { const parts = partsFromParameters(diffFromDefaults(params)); return nonEmpty({
@@ -179,7 +182,7 @@ export function App() {
     name: themeName,
     geometry: parts.geometry,
     typography: nonEmpty({ parameters: parts.typography?.parameters, voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
-    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }) }),
+    color: nonEmpty({ spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }), anchors: listed(anchors) }),
     motion: parts.motion,
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
@@ -189,7 +192,7 @@ export function App() {
   useEffect(() => {
     const t = setTimeout(() => { try { setFindings(lintTheme(themeObject()).findings); } catch (err) { setStatus(`Lint failed: ${err}`); } }, 400);
     return () => clearTimeout(t);
-  }, [params, icons, scheme, spectrum, roles, endpoints, faces, voices, typeColors]);
+  }, [params, icons, scheme, spectrum, roles, endpoints, anchors, faces, voices, typeColors]);
   const count = (sev: Finding['severity']) => findings.filter((f) => f.severity === sev).length;
   const lintSummary = findings.length ? `Checks: ${count('error')} errors, ${count('warning')} warnings, ${count('info')} info` : 'Checks: clean';
 
@@ -198,7 +201,7 @@ export function App() {
     setThemeName(t.name);
     setParams({ ...defaultParams, ...(themeParameters(t) as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
     setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
-    setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT, ...(t.color?.endpoints ?? {}) });
+    setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT, ...(t.color?.endpoints ?? {}) }); setAnchors(t.color?.anchors ?? []);
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
     setTypeColors({ ...DEFAULT_TYPE_COLORS, ...(t.typography?.colors ?? {}) } as Record<TypeRoleName, TextColor>);
   };
@@ -215,7 +218,7 @@ export function App() {
   };
 
   const reset = () => {
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setTypeColors(DEFAULT_TYPE_COLORS);
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setTypeColors(DEFAULT_TYPE_COLORS);
     setStatus('Reset to defaults');
   };
 

@@ -33,7 +33,7 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 |---|---|
 | `geometry` | `parameters`: unit, density, border, curvature, container radius and nesting ratio, the container ladder, elevation |
 | `typography` | `parameters` (`type-ratio`, `type-rhythm`); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color |
-| `color` | `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure` |
+| `color` | `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role ([color](color.md#anchors)) |
 | `motion` | `parameters`: the multipliers, springs and intents |
 | `icons`, `scheme` | the icon set; the preferred scheme (auto, light, dark) |
 | `character` | one value per descriptor scale (below) |

@@ -230,6 +230,63 @@
         },
         "pass": {}
       }
+    },
+    "vibrancy.anchor-order": {
+      "concept": "vibrancy",
+      "severity": "warning",
+      "checks": "An anchored step's Lc against the light page stays strictly between its neighbor steps' targets, so the ramp keeps its contrast order.",
+      "fix": "Drop the anchor's step so it lands at its nearest step, or adjust the anchor's lightness.",
+      "fixtures": {
+        "fail": {
+          "color": {
+            "anchors": [
+              {
+                "role": "primary",
+                "value": "#0f62fe",
+                "step": 4
+              }
+            ]
+          }
+        },
+        "pass": {
+          "color": {
+            "anchors": [
+              {
+                "role": "primary",
+                "value": "#0f62fe"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "vibrancy.anchor-range": {
+      "concept": "vibrancy",
+      "severity": "warning",
+      "checks": "An anchor's Lc against the light page lies within the ramp (step 2's target / 2 to step 12's target + 10).",
+      "fix": "Map a near-black or near-white brand ink to the black or white endpoint instead, or anchor a lighter or darker variant.",
+      "fixtures": {
+        "fail": {
+          "color": {
+            "anchors": [
+              {
+                "role": "secondary",
+                "value": "#050505"
+              }
+            ]
+          }
+        },
+        "pass": {
+          "color": {
+            "anchors": [
+              {
+                "role": "secondary",
+                "value": "#625b71"
+              }
+            ]
+          }
+        }
+      }
     }
   }
 }
