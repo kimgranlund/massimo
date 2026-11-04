@@ -136,6 +136,7 @@ export function App() {
   const [icons, setIcons] = useState('phosphor');
   const [voices, setVoices] = useState<VoiceMap>(DEFAULT_VOICES);
   const [faces, setFaces] = useState<FaceMap>(FONT_FAMILIES);
+  const [weights, setWeights] = useState<NonNullable<NonNullable<Theme['typography']>['weights']>>({});
   const [typeColors, setTypeColors] = useState<Record<TypeRoleName, TextColor>>(DEFAULT_TYPE_COLORS);
   const [spectrum, setSpectrum] = useState<SpectrumSettings>(SPECTRUM_DEFAULTS);
   const [targetScheme, setTargetScheme] = useState<'light' | 'dark'>('light');
@@ -184,6 +185,7 @@ export function App() {
     ...Object.entries(diffFromDefaults(params)).map(([k, v]) => `${paramVar(k as ParamName)}: ${v};`),
     ...Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st).map(([f, st]) => `--fonts-${f}: ${st};`),
     ...[...SERIF_REGULAR_VOICES].filter((v) => isSerifStack(faces[voices[v]])).map((v) => `--font-voice-${v}-weight: 400;`),
+    ...Object.entries(weights).map(([v, w]) => `--font-voice-${v}-weight: ${w};`),
     ...(Object.entries(typeColors) as [TypeRoleName, TextColor][]).filter(([r, c]) => DEFAULT_TYPE_COLORS[r] !== c).map(([r, c]) => `${typeColorVar(r)}: ${TEXT_COLORS[c]};`),
   ];
   // The canvas sets its own unit, ladder, motion and elevation params, so the u-based, motion and elevation Panda tokens recompute there too.
@@ -231,7 +233,7 @@ export function App() {
     schemaVersion: 2 as const,
     name: themeName,
     geometry: parts.geometry,
-    typography: nonEmpty({ parameters: parts.typography?.parameters, sources: listed(sources), voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS) }),
+    typography: nonEmpty({ parameters: parts.typography?.parameters, sources: listed(sources), voices: changed(voices, DEFAULT_VOICES), faces: changed(faces, FONT_FAMILIES), colors: changed(typeColors, DEFAULT_TYPE_COLORS), weights: changed(weights, {}) }),
     color: nonEmpty({ parameters: parts.color?.parameters, spectrum: spectrumOverrides(spectrum), roles: changed(roles, DEFAULT_ROLES), endpoints: changed(endpoints, { white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }), anchors: listed(anchors) }),
     motion: parts.motion,
     icons: icons !== 'phosphor' ? icons : undefined,
@@ -242,7 +244,7 @@ export function App() {
   useEffect(() => {
     const t = setTimeout(() => { lintThemeOff(themeObject()).then(setFindings).catch((err) => setStatus(`Lint failed: ${err}`)); }, 400);
     return () => clearTimeout(t);
-  }, [params, icons, scheme, spectrum, roles, endpoints, anchors, faces, voices, typeColors]);
+  }, [params, icons, scheme, spectrum, roles, endpoints, anchors, faces, voices, typeColors, weights]);
   const count = (sev: Finding['severity']) => findings.filter((f) => f.severity === sev).length;
   const lintSummary = findings.length ? `Checks: ${count('error')} errors, ${count('warning')} warnings, ${count('info')} info` : 'Checks: clean';
 
@@ -252,7 +254,7 @@ export function App() {
     setParams({ ...defaultParams, ...(themeParameters(t) as Partial<ThemeParams>) }); setIcons(t.icons ?? 'phosphor'); setScheme(t.scheme ?? 'auto');
     setSpectrum({ ...SPECTRUM_DEFAULTS, ...(t.color?.spectrum ?? {}) }); setRoles({ ...DEFAULT_ROLES, ...(t.color?.roles ?? {}) } as Roles);
     setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT, ...(t.color?.endpoints ?? {}) }); setAnchors(t.color?.anchors ?? []);
-    setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
+    setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap); setWeights(t.typography?.weights ?? {});
     setTypeColors({ ...DEFAULT_TYPE_COLORS, ...(t.typography?.colors ?? {}) } as Record<TypeRoleName, TextColor>);
     setSources(t.typography?.sources ?? []);
   };
@@ -311,7 +313,7 @@ export function App() {
 
   const reset = () => {
     clearTimeout(editTimer.current); lastApplied.current = null;
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setBrand(null); setSources([]); setTypeColors(DEFAULT_TYPE_COLORS);
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setBrand(null); setSources([]); setTypeColors(DEFAULT_TYPE_COLORS); setWeights({});
     setStatus('Reset to defaults');
   };
 

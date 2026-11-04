@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/typography/resolve.ts",
-      "sha256": "c34d5a43c67c6aefc7b67e757e3dbf41a17faa422394eae90906a1553d76de8f"
+      "sha256": "1ff0290826675b0de62611d55e994f48799eff61ecf0590939ff3d2d3e61efd0"
     },
     {
       "path": "tokens/typography/index.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "contracts/domains/typography.json",
-      "sha256": "3c837bfce4413fcd7e23d19b2b4d2a040115047b5e6eed3da3c0a2bad9b85b52"
+      "sha256": "012b7a74b6504b2da2610d7de2ebb568daa2f362bb9aa07530b0ab31b81b19f9"
     },
     {
       "path": "tokens/themes/descriptors.ts",

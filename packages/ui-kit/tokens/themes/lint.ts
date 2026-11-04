@@ -10,7 +10,7 @@ import { SCALE_ROLES, type Roles } from '../colors/spectrum/roles.ts';
 import { type AnchorResult, type SolidSteps } from '../colors/spectrum/anchors.ts';
 import { densityInset } from '../geometry/resolve.ts';
 import { SPRING_NAMES } from '../motion/index.ts';
-import { DEFAULT_VOICES, FONT_FAMILIES, VOICES, isSerifStack, type Face } from '../typography/resolve.ts';
+import { DEFAULT_VOICES, FONT_FAMILIES, VOICES, isSerifStack, type Face, type Voice } from '../typography/resolve.ts';
 import { catalogueFace, firstFamily, missingWeights, voiceWeights } from '../typography/faces.ts';
 
 export type Severity = 'error' | 'warning' | 'info';
@@ -97,6 +97,7 @@ export const RULES: Record<string, Rule> = {
     const voices = { ...DEFAULT_VOICES, ...(theme.typography?.voices ?? {}) };
     const serif = new Set(VOICES.filter((v) => isSerifStack(faces[voices[v]])));
     const need = voiceWeights(serif);
+    for (const [v, w] of Object.entries(theme.typography?.weights ?? {})) need[v as Voice] = [w!];
     const out: string[] = [];
     for (const v of VOICES) {
       const entry = catalogueFace(faces[voices[v]]);

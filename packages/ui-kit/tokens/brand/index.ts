@@ -12,7 +12,7 @@ import { DESCRIPTORS } from '../themes/descriptor-data.ts';
 import { themeFromCharacter } from '../themes/descriptors.ts';
 import { THEME_SCHEMA_VERSION, FONT_STACK, type Theme } from '../themes/theme.ts';
 import { THEME_NAME } from '../themes/validate.ts';
-import { ROLE_NAMES, type RoleName } from '../colors/spectrum/roles.ts';
+import { ANCHOR_ROLES, SURFACE_ROLES, type AnchorRole } from '../colors/spectrum/roles.ts';
 import { isAnchorColor } from '../colors/spectrum/anchors.ts';
 import { ICON_SET_NAMES } from '../../icons/sets.ts';
 import { FACE_CATALOGUE, FACE_DESCRIPTORS, catalogueFace, faceStack, googleFontsUrl, missingWeights, voiceWeights, type FaceDescriptor } from '../typography/faces.ts';
@@ -24,7 +24,6 @@ export const RELATIONS = ['inherit', 'reinterpret', 'react-against'] as const;
 export const MUSE_KINDS = ['person', 'work', 'object', 'place', 'archetype'] as const;
 export const FACE_SOURCES = ['system', 'google', 'self-hosted'] as const;
 export const TONE_WORDS = ['plain', 'warm', 'precise', 'playful', 'confident', 'calm', 'candid', 'formal', 'technical', 'poetic'] as const;
-export const ANCHOR_ROLES = ROLE_NAMES;
 
 export interface BrandFace { /** A face catalogue id (contracts/face-catalogue.json); family and descriptor then default from it. */ ref?: string; family: string; descriptor: FaceDescriptor; source?: (typeof FACE_SOURCES)[number]; url?: string; weights?: number[] }
 export interface Territory {
@@ -40,8 +39,8 @@ export interface Brand {
   grounding?: { primary: { ref?: string; name?: string; relation: (typeof RELATIONS)[number]; principles?: string[] }; secondary?: { ref?: string; name?: string; relation: (typeof RELATIONS)[number] } };
   territories?: Territory[];
   muse?: { kind: (typeof MUSE_KINDS)[number]; name: string; take: string; leave?: string };
-  color?: { anchors?: { name: string; value: string; role: RoleName; step?: number; dark?: string }[]; feedback?: 'independent' | 'anchored'; character?: Record<string, string> };
-  type?: { faces?: { display?: BrandFace; body?: BrandFace; utility?: BrandFace }; character?: Record<string, string> };
+  color?: { anchors?: { name: string; value: string; role: AnchorRole; step?: number; dark?: string }[]; feedback?: 'independent' | 'anchored'; character?: Record<string, string> };
+  type?: { faces?: { display?: BrandFace; body?: BrandFace; utility?: BrandFace }; character?: Record<string, string>; weights?: { display?: number; heading?: number } };
   form?: Record<string, string>;
   movement?: string;
   adaptivity?: string;
@@ -140,13 +139,14 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
         const p = `color.anchors.${i}`;
         if (!str(a?.name)) err(`${p}.name`, 'is required');
         if (!isAnchorColor(a?.value)) err(`${p}.value`, 'must be #rrggbb');
-        if (!ROLE_NAMES.includes(a?.role)) err(`${p}.role`, `must be one of ${ROLE_NAMES.join(', ')}`);
+        if (!ANCHOR_ROLES.includes(a?.role)) err(`${p}.role`, `must be one of ${ANCHOR_ROLES.join(', ')}`);
+        if (a?.step !== undefined && SURFACE_ROLES.includes(a?.role)) err(`${p}.step`, 'ground and ink have fixed steps');
         if (a?.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${p}.step`, 'must be a step 2–12');
         if (a?.dark !== undefined && !isAnchorColor(a.dark)) err(`${p}.dark`, 'must be #rrggbb');
         roles.push(a?.role);
       });
       if (new Set(roles).size !== roles.length) err('color.anchors', 'one anchor per role');
-      if (c.anchors && (c.anchors.length < 1 || c.anchors.length > 8)) err('color.anchors', 'must list 1–8 anchors');
+      if (c.anchors && (c.anchors.length < 1 || c.anchors.length > 10)) err('color.anchors', 'must list 1–10 anchors');
       if (c.feedback !== undefined && c.feedback !== 'independent' && c.feedback !== 'anchored') err('color.feedback', 'must be independent or anchored');
       for (const [k, v] of Object.entries(c.character ?? {})) { if (!SECTION_SCALES.color.includes(k)) err(`color.character.${k}`, `not a color scale (${SECTION_SCALES.color.join(', ')})`); else scaleValue(`color.character.${k}`, k, v); }
     }
@@ -166,6 +166,10 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
         if (f?.source !== undefined && !FACE_SOURCES.includes(f.source)) err(`${p}.source`, `must be one of ${FACE_SOURCES.join(', ')}`);
         if (f?.source === 'self-hosted' && !(typeof f.url === 'string' && /^https:\/\//.test(f.url))) err(`${p}.url`, 'a self-hosted face needs an https url');
         if (f?.weights !== undefined && !(Array.isArray(f.weights) && f.weights.every((w: unknown) => Number.isInteger(w) && (w as number) >= 100 && (w as number) <= 900))) err(`${p}.weights`, 'must be weights 100–900');
+      }
+      for (const [k, v] of Object.entries<any>(ty.weights ?? {})) {
+        if (k !== 'display' && k !== 'heading') err(`type.weights.${k}`, 'must be display or heading');
+        else if (!(Number.isInteger(v) && v >= 100 && v <= 900)) err(`type.weights.${k}`, 'must be a weight 100–900');
       }
       for (const [k, v] of Object.entries(ty.character ?? {})) { if (!SECTION_SCALES.type.includes(k)) err(`type.character.${k}`, `not a type scale (${SECTION_SCALES.type.join(', ')})`); else scaleValue(`type.character.${k}`, k, v); }
     }
@@ -267,6 +271,7 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
   } else unresolved.push('type.faces.body: no body face; the kit default stack is used');
   if (faces.display) { setFace('display', faces.display, 'type.faces.display'); tf.voices = { ...tf.voices, display: 'display', heading: 'display' }; }
   if (faces.utility) { setFace('mono', faces.utility, 'type.faces.utility'); tf.voices = { ...tf.voices, code: 'mono', ...(faces.utility.descriptor === 'mono' ? {} : { numeric: 'mono' }) }; }
+  if (b.type?.weights) { tf.weights = { ...b.type.weights }; for (const v of Object.keys(tf.weights)) provenance[`typography.weights.${v}`] = { source: 'brand', reason: `type.weights.${v}` }; }
   if (tf.voices) for (const v of Object.keys(tf.voices)) provenance[`typography.voices.${v}`] = { source: 'brand', reason: 'type.faces' };
   if (Object.keys(tf).length) theme.typography = tf;
   theme.provenance = provenance;
@@ -320,7 +325,7 @@ export function lintBrand(b: Brand): BrandFinding[] {
   }
   // Genericness: the known defaults (artifact-design) as predicates.
   // Accents only: saturated, non-neutral anchors (a clay neutral is not a terracotta accent).
-  const anchors = (b.color?.anchors ?? []).filter((a) => a.role !== 'neutral' && saturation(a.value) >= 0.35);
+  const anchors = (b.color?.anchors ?? []).filter((a) => !['neutral', 'ground', 'ink'].includes(a.role) && saturation(a.value) >= 0.35);
   const hues = anchors.map((a) => hueOf(a.value)).filter((h): h is number => h !== undefined);
   const display = facesOf(b).display?.descriptor;
   if (display === 'serif' && hues.some((h) => h >= 10 && h <= 35) && b.adaptivity !== 'dark-first') out.push({ id: 'brand.cliche', severity: 'warning', message: 'serif display with a terracotta accent on a light page: the warm-cream default' });
@@ -386,11 +391,11 @@ export function brandJsonSchema() {
       }, { required: ['name', 'description'] }) },
       muse: strict({ kind: { enum: [...MUSE_KINDS] }, name: text, take: text, leave: text }, { required: ['kind', 'name', 'take'] }),
       color: strict({
-        anchors: { type: 'array', minItems: 1, maxItems: 8, items: strict({ name: text, value: hex, role: { enum: [...ROLE_NAMES] }, step: { type: 'integer', minimum: 2, maximum: 12 }, dark: hex }, { required: ['name', 'value', 'role'] }) },
+        anchors: { type: 'array', minItems: 1, maxItems: 10, items: strict({ name: text, value: hex, role: { enum: [...ANCHOR_ROLES] }, step: { type: 'integer', minimum: 2, maximum: 12 }, dark: hex }, { required: ['name', 'value', 'role'] }) },
         feedback: { enum: ['independent', 'anchored'] },
         character: scales(SECTION_SCALES.color),
       }),
-      type: strict({ faces: strict({ display: face, body: face, utility: face }), character: scales(SECTION_SCALES.type) }),
+      type: strict({ faces: strict({ display: face, body: face, utility: face }), character: scales(SECTION_SCALES.type), weights: strict({ display: { type: 'integer', minimum: 100, maximum: 900 }, heading: { type: 'integer', minimum: 100, maximum: 900 } }) }),
       form: scales(SECTION_SCALES.form),
       movement: { enum: DESCRIPTORS.movement.values.map((v) => v.name) },
       adaptivity: { enum: DESCRIPTORS.adaptivity.values.map((v) => v.name) },

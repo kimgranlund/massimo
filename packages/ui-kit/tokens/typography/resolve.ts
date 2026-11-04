@@ -12,6 +12,9 @@ export type Voice = (typeof VOICES)[number];
 export const DEFAULT_VOICES: Record<Voice, Face> = { display: 'display', heading: 'sans', body: 'sans', ui: 'controls', numeric: 'controls', code: 'mono' };
 /** Voices whose bold weight drops to regular on a serif face (massimo-ui's serif heading style). */
 export const SERIF_REGULAR_VOICES: ReadonlySet<Voice> = new Set(['display', 'heading']);
+/** Voices a theme can set a weight on (typography.weights; `--font-voice-<voice>-weight`). */
+export const WEIGHT_VOICES = ['display', 'heading'] as const;
+export type WeightVoice = (typeof WEIGHT_VOICES)[number];
 // Numerals contract: `data-numeric="<variant> …"` (space-separated) and the Panda `numeric()` pattern.
 // Each variant sets one axis of font-variant-numeric (or, for `caps`, font-feature-settings), so
 // variants on different axes combine. Two variants on one axis conflict: the later one in this

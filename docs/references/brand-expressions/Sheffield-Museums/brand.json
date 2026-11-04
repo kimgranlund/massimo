@@ -1,0 +1,179 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "sheffield-museums",
+  "subject": {
+    "name": "Sheffield Museums",
+    "audience": "visitors of all ages to six Sheffield venues",
+    "primaryJob": "tell remarkable stories of Sheffield and its people, and show which venue is speaking",
+    "kind": "institution",
+    "sources": [
+      "the circular seal (S08)",
+      "six venue hero colors (S26)",
+      "Stephenson Blake & Co's Sheffield foundry, behind Caslon Doric (S30)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "british-foundry-grotesque",
+      "relation": "reinterpret",
+      "principles": [
+        "a working sans-serif with a Sheffield foundry history (S30)",
+        "plain signage lettering, tall and legible (S16, S19)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The working museum",
+      "ref": "archive",
+      "primary": true,
+      "description": "Galleries and workshops: flat fields of venue color, a big plain title, a seal in the corner, and the object or artwork given the room.",
+      "materials": [
+        "painted walls",
+        "printed exhibition posters",
+        "an embossed seal"
+      ],
+      "light": "gallery light on saturated walls",
+      "outOfBounds": [
+        "curvature.pill",
+        "elevation.floating"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "place",
+    "name": "the Stephenson Blake foundry, Sheffield",
+    "take": "type that is local and made to work (S30)",
+    "leave": "nostalgia and heritage pastiche"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Shepherd Wheel Workshop",
+        "value": "#153E35",
+        "role": "primary"
+      },
+      {
+        "name": "Common pink",
+        "value": "#FFA4B4",
+        "role": "secondary"
+      },
+      {
+        "name": "Common grey-green",
+        "value": "#BDCDC3",
+        "role": "neutral"
+      },
+      {
+        "name": "Millennium Gallery",
+        "value": "#FF647D",
+        "role": "data1"
+      },
+      {
+        "name": "Abbeydale Industrial Hamlet",
+        "value": "#3BD4AE",
+        "role": "data2"
+      },
+      {
+        "name": "Kelham Island Museum",
+        "value": "#0080C8",
+        "role": "data3"
+      },
+      {
+        "name": "Weston Park Museum",
+        "value": "#FFB71B",
+        "role": "data4"
+      },
+      {
+        "name": "Graves Gallery",
+        "value": "#2F8066",
+        "role": "data5"
+      },
+      {
+        "name": "Page white",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Common black",
+        "value": "#1D1D1B",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "neutral": "subtle"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "libre-franklin"
+      },
+      "body": {
+        "ref": "libre-franklin"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 600,
+      "heading": 600
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat",
+    "space": "airy"
+  },
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "warm",
+      "plain",
+      "playful"
+    ],
+    "samples": {
+      "action": "Come on in"
+    }
+  },
+  "signature": {
+    "concept": "square color fields and one round seal",
+    "scale": "curvature",
+    "reason": "S20 butts venue fields edge to edge; on the museum territory every corner stays square, so the seal is the only circle a visitor sees"
+  },
+  "avoid": [
+    "a different venue's hero color (S26)",
+    "more than two palette colors together, black and grey aside (S26)",
+    "whilst, amongst, furthermore (S43)"
+  ],
+  "rationale": {
+    "grounding.primary": "Inferred from S30's history. Departs from the canon's natural vibrancy: the venue heroes are saturated (S26).",
+    "color.anchors.0": "S26, printed HEX. The dark green of the cover and chapter pages (S01, S25), which is also Shepherd Wheel's hero.",
+    "color.anchors.1": "S26 common color, printed HEX.",
+    "color.anchors.2": "S26 common color, printed HEX.",
+    "color.anchors.3": "S26 venue hero, printed HEX. Data roles hold the heroes because the schema has no per-venue color.",
+    "color.anchors.4": "S26, printed HEX.",
+    "color.anchors.5": "S26, printed HEX.",
+    "color.anchors.6": "S26, printed HEX.",
+    "color.anchors.7": "S26, printed HEX.",
+    "color.character.vibrancy": "Departs from the archive canon's muted: S26's heroes are saturated and run full-bleed",
+    "color.character.neutral": "the common grey is slightly green (S26)",
+    "type.faces": "Stand-in. Caslon Doric (S30) is outside the catalogue; Libre Franklin is the closest grotesque. Arial is the book's fallback (S31); Helvetica Neue is the nearest catalogue face.",
+    "type.character.type-scale": "large titles over small text (S29), which classic matches; dramatic doubled it",
+    "form.curvature": "square fields, cards and posters; the seal is the only circle (S20, S26)",
+    "form.line": "contiguous color fields, no outlines (S20)",
+    "form.elevation": "flat print and painted walls",
+    "form.space": "mostly open pages (S04)",
+    "adaptivity": "mostly white pages with green chapter fields (S04, S25, S26)",
+    "color.anchors.8": "Mostly white pages (S04, S26).",
+    "color.anchors.9": "S26 common color, printed HEX (Pantone 419).",
+    "type.weights": "Semibold is the book's heaviest weight (S30)"
+  }
+}

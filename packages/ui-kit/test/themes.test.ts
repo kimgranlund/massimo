@@ -123,7 +123,7 @@ test('typography.colors maps a type role to a text color: validated, emitted as 
 test('every theme field is wired: schema, validator, theme CSS, and the jig Copy and Load', async () => {
   const schema = JSON.parse(themeJsonSchemaText());
   const app = readFileSync(new URL('../../../apps/studio/src/studio/App.tsx', import.meta.url), 'utf8');
-  const sections: Record<string, string[]> = { geometry: ['parameters'], typography: ['parameters', 'sources', 'faces', 'voices', 'colors'], color: ['parameters', 'spectrum', 'roles', 'endpoints', 'anchors'], motion: ['parameters'] };
+  const sections: Record<string, string[]> = { geometry: ['parameters'], typography: ['parameters', 'sources', 'faces', 'voices', 'colors', 'weights'], color: ['parameters', 'spectrum', 'roles', 'endpoints', 'anchors'], motion: ['parameters'] };
   for (const [section, fields] of Object.entries(sections)) {
     assert.deepEqual(Object.keys(schema.properties[section].properties).sort(), [...fields].sort(), `${section}: the schema lists exactly its fields`);
     for (const f of fields) {

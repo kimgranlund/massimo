@@ -32,8 +32,8 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 | Section | Holds |
 |---|---|
 | `geometry` | `parameters`: unit, density, border, curvature, container radius and nesting ratio, the container ladder, elevation |
-| `typography` | `parameters` (`type-ratio`, `type-rhythm`); `sources`: web face stylesheets ([typography](typography.md#face-catalogue)); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color |
-| `color` | `parameters` (`emphasis`); `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role ([color](color.md#anchors)) |
+| `typography` | `parameters` (`type-ratio`, `type-rhythm`); `sources`: web face stylesheets ([typography](typography.md#face-catalogue)); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color; `weights`: display and heading voice weights (default 700), set as `--font-voice-<voice>-weight` |
+| `color` | `parameters` (`emphasis`); `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role, plus `ground` and `ink` ([color](color.md#anchors)) |
 | `motion` | `parameters`: the multipliers, springs and intents |
 | `icons`, `scheme` | the icon set; the preferred scheme (auto, light, dark) |
 | `character` | one value per descriptor scale (below) |
@@ -74,19 +74,19 @@ A brand is authored first and hydrates a theme (`tokens/brand/index.ts`; JSON Sc
 | `grounding` | the heritage or movement the brand stands in: a catalogue `ref` (or a free `name`, which comes back as a question), its `relation` (inherit, reinterpret, react-against), principles; an optional secondary |
 | `territories` | 1–3 bounded visual worlds (one primary): description, materials, palette, light, textures, composition, type, motion, imagery, `outOfBounds` (`<scale>.<value>`), an optional catalogue `ref` and `character` |
 | `muse` | the person, work, object, place or archetype the brand answers to: what to `take` (a quality) and what to `leave` |
-| `color` | `anchors` (named exact colors per role), `feedback` (independent or anchored), `character` (vibrancy, harmony, neutral) |
-| `type` | `faces` (display, body, utility: a face catalogue `ref` or a family, descriptor, source, weights), `character` (type-scale) |
+| `color` | `anchors` (named exact colors per role, plus `ground` and `ink` for the page and text), `feedback` (independent or anchored), `character` (vibrancy, harmony, neutral) |
+| `type` | `faces` (display, body, utility: a face catalogue `ref` or a family, descriptor, source, weights), `character` (type-scale), `weights` (display and heading voice weights) |
 | `form`, `movement`, `adaptivity` | descriptor values (scale, density, space, curvature, corner, line, elevation; movement; adaptivity) |
 | `voice`, `iconography`, `signature`, `avoid`, `rationale` | tone words and microcopy samples; icon set and weight; the one scale the brand pushes and why; anti-choices (`<scale>.<value>`); one line per choice keyed by its brand path |
 
-The catalogue (`contracts/brand-catalogue.json`) holds 14 groundings and 12 territory archetypes:
+The catalogue (`contracts/brand-catalogue.json`) holds 15 groundings and 12 territory archetypes:
 
 - Groundings: Swiss International, Bauhaus, De Stijl, Constructivism, Art Deco, Art Nouveau, Arts and Crafts, Ulm School, Memphis, Brutalism, Scandinavian functionalism, Californian modernism, mingei, wabi-sabi.
 - Territories: harbor, workshop, botanical, nocturne, archive, laboratory, desert, print shop, alpine, market, atelier, observatory.
 
 Each entry has a canon of descriptor values, its clichés and sources. A grounding also pairs catalogue faces per role (`pairings`: display, body, utility), and hydrate fills a face the brand leaves out from the first pairing (unless the brand reacts against the grounding). Every entry appears in the registry as `grounding:<id>` and `territory:<id>`, with `implies` edges to its descriptor values.
 
-`hydrate(brand)` gives a schema v2 theme and its open questions. The character is resolved in order, each source above the last: the grounding's canon (unless the brand reacts against it), then the primary territory's canon and character, then the explicit `color`, `type`, `form`, `movement` and `adaptivity` choices. `themeFromCharacter` then sets the parameters; anchors become `color.anchors`; faces become font stacks with a fallback per descriptor, a Google face from the catalogue adds its stylesheet to `typography.sources`, and voices point at them; the icon set carries over. Every value's provenance is `{ source: 'brand', reason: '<brand path> → <scale.value>' }`. Anything hydrate cannot decide (a free grounding name, no anchors, no body face) comes back in `unresolved`, never guessed.
+`hydrate(brand)` gives a schema v2 theme and its open questions. The character is resolved in order, each source above the last: the grounding's canon (unless the brand reacts against it), then the primary territory's canon and character, then the explicit `color`, `type`, `form`, `movement` and `adaptivity` choices. `themeFromCharacter` then sets the parameters; anchors become `color.anchors`; faces become font stacks with a fallback per descriptor, a Google face from the catalogue adds its stylesheet to `typography.sources`, and voices point at them; `type.weights` becomes `typography.weights`; the icon set carries over. Every value's provenance is `{ source: 'brand', reason: '<brand path> → <scale.value>' }`. Anything hydrate cannot decide (a free grounding name, no anchors, no body face) comes back in `unresolved`, never guessed.
 
 `lintBrand(brand)` is advisory, like the theme lint. It checks:
 

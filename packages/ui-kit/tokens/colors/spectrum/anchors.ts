@@ -11,6 +11,9 @@
 // dark page, the dark targets) and moves the dark solid (solidSteps.dark). Without one, the dark ramp
 // takes the hue and chroma only and the dark solid stays at step 9.
 // Lightness (each step's tone) is kept, so the ramp's contrast steps still hold.
+// Two surface anchors pin the ends of the neutral ramp instead of a role's family: `ground` is the
+// light page (step 1) and the dark ink (step 12); `ink` is the light ink (step 12) and the dark page
+// (step 1). `dark` gives the color for the dark scheme; without one the same color is used.
 import { apcaLc } from './contrast.ts';
 import type { Spectrum, Swatch } from './index.ts';
 
@@ -131,6 +134,28 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
       dE: Math.round(before * 10) / 10, ...(dark ? { dark } : {}),
     });
     if (step >= 8) solidSteps.light[anchor.role] = step;
+  }
+  // Surface anchors, last: the neutral family's ends, after any neutral anchor re-shaped it.
+  const neutral = out.schemes.light[outRoles.neutral] ? outRoles.neutral : undefined;
+  for (const anchor of anchors) {
+    if (anchor.role !== 'ground' && anchor.role !== 'ink') continue;
+    if (!neutral) continue;
+    const [lightStep, darkStep] = anchor.role === 'ground' ? [1, 12] : [12, 1];
+    const page = data.schemes.light[neutral][0].hct[2];
+    const lc = apcaLc(toneOfY(yOfHex(anchor.value)), page);
+    const pin = (mode: 'light' | 'dark', step: number, hex: string) => {
+      const sw = out.schemes[mode][neutral][step - 1], want = srgbToOklch(hex);
+      setSwatch(sw, want);
+      sw.hct[2] = toneOfY(yOf(want)); // the tone contrast reads
+    };
+    const before = deltaE(srgbToOklch(anchor.value), data.schemes.light[neutral][lightStep - 1].oklch);
+    pin('light', lightStep, anchor.value);
+    pin('dark', darkStep, anchor.dark ?? anchor.value);
+    (out.strongInk ??= {})[anchor.role === 'ink' ? 'light' : 'dark'] = true; // headings use the brand's text color too
+    report.push({
+      role: anchor.role, family: neutral, value: anchor.value, step: lightStep, lc: Math.round(lc * 10) / 10, target: 0, below: 0, above: Infinity, inOrder: true, inRange: true,
+      dE: Math.round(before * 10) / 10, dark: { value: anchor.dark ?? anchor.value, step: darkStep, lc: 0, target: 0, inOrder: true },
+    });
   }
   return { data: out, roles: outRoles, report, solidSteps };
 }

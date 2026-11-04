@@ -17,10 +17,10 @@ import { THEME_NAME } from './validate.ts';
 import { DESCRIPTORS } from './descriptor-data.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
-import { ROLE_NAMES, type RoleName } from '../colors/spectrum/roles.ts';
+import { ANCHOR_ROLES, ROLE_NAMES, SURFACE_ROLES, type AnchorRole, type RoleName } from '../colors/spectrum/roles.ts';
 import { isAnchorColor, type ColorAnchor } from '../colors/spectrum/anchors.ts';
 import { FONT_SOURCE_URL } from '../typography/faces.ts';
-import { FACES, VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
+import { FACES, VOICES, WEIGHT_VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type WeightVoice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 
 export const THEME_SCHEMA_VERSION = 2;
 export const SCHEMES = ['auto', 'light', 'dark'] as const;
@@ -33,10 +33,10 @@ export interface Theme {
   description?: string;
   geometry?: { parameters?: Numbers };
   /** sources: stylesheets for web faces (a Google Fonts css2 URL or a self-hosted https .css); the app or the jig loads them. */
-  typography?: { parameters?: Numbers; sources?: { family: string; url: string }[]; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>> };
+  typography?: { parameters?: Numbers; sources?: { family: string; url: string }[]; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>>; /** Weight of the display and heading voices (default 700; a serif face drops to 400). */ weights?: Partial<Record<WeightVoice, number>> };
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
-  /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped, nearest step overridden. */
-  color?: { parameters?: Numbers; spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: RoleName })[] };
+  /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped, nearest step overridden; `ground` and `ink` pin the neutral ramp's ends. */
+  color?: { parameters?: Numbers; spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: AnchorRole })[] };
   motion?: { parameters?: Numbers };
   icons?: string;
   scheme?: ThemeScheme;
@@ -151,7 +151,8 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
           const a = raw as any;
           for (const k of Object.keys(a)) if (!['role', 'value', 'step', 'name', 'dark'].includes(k)) err(`${path}.${k}`, 'unknown field');
           if (a.dark !== undefined && !isAnchorColor(a.dark)) err(`${path}.dark`, 'must be a #rrggbb color');
-          if (!ROLE_NAMES.includes(a.role)) err(`${path}.role`, 'unknown role');
+          if (!ANCHOR_ROLES.includes(a.role)) err(`${path}.role`, 'unknown role');
+          if (a.step !== undefined && SURFACE_ROLES.includes(a.role)) err(`${path}.step`, 'ground and ink have fixed steps');
           if (!isAnchorColor(a.value)) err(`${path}.value`, 'must be a #rrggbb color');
           if (a.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${path}.step`, 'must be a step 2–12');
           if (a.name !== undefined && typeof a.name !== 'string') err(`${path}.name`, 'must be a string');
@@ -184,8 +185,15 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
   if (input.typography !== undefined) {
     if (!isObject(input.typography)) err('typography', 'must be an object');
     else {
-      for (const k of Object.keys(input.typography)) if (k !== 'parameters' && k !== 'sources' && k !== 'faces' && k !== 'voices' && k !== 'colors') err(`typography.${k}`, 'unknown section');
-      const { parameters, sources, faces, voices, colors } = input.typography;
+      for (const k of Object.keys(input.typography)) if (k !== 'parameters' && k !== 'sources' && k !== 'faces' && k !== 'voices' && k !== 'colors' && k !== 'weights') err(`typography.${k}`, 'unknown section');
+      const { parameters, sources, faces, voices, colors, weights } = input.typography;
+      if (weights !== undefined) {
+        if (!isObject(weights)) err('typography.weights', 'must be an object');
+        else for (const [k, v] of Object.entries(weights)) {
+          if (!(WEIGHT_VOICES as readonly string[]).includes(k)) err(`typography.weights.${k}`, `must be one of ${WEIGHT_VOICES.join(', ')}`);
+          else if (!(Number.isInteger(v) && (v as number) >= 100 && (v as number) <= 900)) err(`typography.weights.${k}`, 'must be a weight 100–900');
+        }
+      }
       if (sources !== undefined) {
         if (!Array.isArray(sources)) err('typography.sources', 'must be a list');
         else sources.forEach((x: any, i: number) => {
@@ -256,7 +264,7 @@ export function themeJsonSchema() {
         parameters: params('color'),
         spectrum: strict(Object.fromEntries(SPECTRUM_FIELDS.map((f) => [f.key, field(f)]))),
         roles: strict(Object.fromEntries(ROLE_NAMES.map((r) => [r, { type: 'string', pattern: FAMILY_NAME.source }]))),
-        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ROLE_NAMES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' }, dark: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$', description: 'The anchor\'s own dark-scheme color, placed in the dark ramp.' } }, { required: ['role', 'value'] }) },
+        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ANCHOR_ROLES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' }, dark: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$', description: 'The anchor\'s own dark-scheme color, placed in the dark ramp.' } }, { required: ['role', 'value'] }) },
         endpoints: strict({ white: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] }, black: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] } }),
       }),
       typography: strict({
@@ -265,6 +273,7 @@ export function themeJsonSchema() {
         faces: strict(Object.fromEntries(FACES.map((f) => [f, { type: 'string', pattern: FONT_STACK.source }]))),
         voices: strict(Object.fromEntries(VOICES.map((v) => [v, { enum: [...FACES] }]))),
         colors: strict(Object.fromEntries(Object.keys(TYPE_ROLES).map((r) => [r, { enum: Object.keys(TEXT_COLORS) }]))),
+        weights: strict(Object.fromEntries(WEIGHT_VOICES.map((v) => [v, { type: 'integer', minimum: 100, maximum: 900 }]))),
       }),
       motion: strict({ parameters: params('motion') }, { description: 'Duration and bounce multipliers, springs, intents.' }),
       intent: { type: 'object' },

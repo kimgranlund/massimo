@@ -15,7 +15,7 @@ export * from './roles.ts';
 export interface Swatch { step: number; stop: number; css: string; oklch: [number, number, number]; hct: [number, number, number]; apca: { css: string; lc: number; ok: boolean } }
 export type Scheme = Record<string, Swatch[]>;
 interface Checks { peakTone: number; rows: Record<string, { roles: { r11: number; r12: number }; passes: { r11: boolean; r12: boolean } }> }
-export interface Spectrum { settings: SpectrumSettings; schemes: { light: Scheme; dark: Scheme }; checks?: { light: Checks; dark: Checks }; metadata?: { light: { accents: string[]; neutrals: string[]; pairs: Record<string, { accent: string; neutral: string }> } } }
+export interface Spectrum { settings: SpectrumSettings; schemes: { light: Scheme; dark: Scheme }; checks?: { light: Checks; dark: Checks }; metadata?: { light: { accents: string[]; neutrals: string[]; pairs: Record<string, { accent: string; neutral: string }> } }; /** Schemes whose strong text is the pinned neutral 12 (the `ink` and `ground` anchors), not the black or white endpoint. */ strongInk?: { light?: boolean; dark?: boolean } }
 
 let engine: { generate(s: SpectrumSettings): Spectrum } | undefined;
 let boundaryFn: ((hue: number, tone: number, target: string) => number) | undefined;
@@ -169,7 +169,7 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
   // White and black: neutral step 3 of the light and dark ramps, the same in both schemes; fg.strong
   // (headings, titles) is black in light, white in dark. endpointVars maps them to another family.
   Object.assign(vars, endpointVars(data, roles));
-  vars['--colors-fg-strong'] = mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
+  vars['--colors-fg-strong'] = data.strongInk?.[mode] ? `var(--colors-spectrum-${roles.neutral}-12)` : mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
   // The selection fills follow the theme's emphasis (selectionVars).
   for (const [k, v] of Object.entries(selectionVars(mode))) vars[`--colors-${k}`] = v;
   return vars;

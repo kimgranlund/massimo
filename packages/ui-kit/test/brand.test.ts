@@ -179,3 +179,36 @@ test('brand: catalogue palettes sit inside the ramp; free-text bounds and malfor
   assert.ok(f.some((x) => x.id === 'brand.avoid-format' && x.message.includes('color.vibrancy.vivid')));
   assert.ok(!f.some((x) => x.id === 'brand.avoid-format' && x.message.includes('"curvature.pill"')));
 });
+
+test('brand: ground and ink anchors pin the neutral ramp ends in both schemes, exactly', async () => {
+  const { anchoredSpectrum, generateSpectrum, resolveRoles } = await import('../tokens/colors/spectrum/index.ts');
+  const data = generateSpectrum({});
+  const before = resolveRoles(data, {});
+  const { data: out, report } = anchoredSpectrum(data, before, [{ role: 'ground', value: '#f5f6f8' }, { role: 'ink', value: '#131418', dark: '#0a0b0c' }]);
+  const n = out.schemes.light[before.neutral], d = out.schemes.dark[before.neutral];
+  const ramp = (s: { oklch: number[] }[]) => s.map((x) => x.oklch[0]);
+  assert.ok(ramp(n)[0] > ramp(n)[1] - 0.05 && ramp(n)[11] < 0.25, 'light: a pale page and a dark ink');
+  assert.ok(ramp(d)[0] < 0.2 && ramp(d)[11] > 0.9, 'dark: the ink is the page, the ground is the text');
+  assert.equal(data.schemes.light[before.neutral][0].css === n[0].css, false, 'the input spectrum is not the one changed');
+  assert.deepEqual(report.map((r) => [r.role, r.step, r.dark?.step]), [['ground', 1, 12], ['ink', 12, 1]]);
+  const { roleVariables } = await import('../tokens/colors/spectrum/index.ts');
+  for (const mode of ['light', 'dark'] as const) {
+    assert.equal(roleVariables(out, before, mode)['--colors-fg-strong'], `var(--colors-spectrum-${before.neutral}-12)`, `${mode}: headings take the pinned text color`);
+    assert.notEqual(roleVariables(data, before, mode)['--colors-fg-strong'], `var(--colors-spectrum-${before.neutral}-12)`, `${mode}: without the anchors they keep the endpoint`);
+  }
+  const b = validateBrand({ schemaVersion: 1, name: 'x', subject: { name: 'x', audience: 'a', primaryJob: 'j', kind: 'tool', sources: ['s'] }, color: { anchors: [{ name: 'i', value: '#111111', role: 'ink', step: 12 }] } });
+  assert.equal(b.ok, false, 'a surface anchor takes no step');
+});
+
+test('brand: type.weights reach the theme and its CSS, and out-of-range weights are refused', async () => {
+  const { themeVars } = await import('../tokens/themes/index.ts');
+  const base = { schemaVersion: 1, name: 'x', subject: { name: 'x', audience: 'a', primaryJob: 'j', kind: 'tool', sources: ['s'] } };
+  const ok = validateBrand({ ...base, type: { faces: { body: { ref: 'inter' }, display: { ref: 'fraunces' } }, weights: { display: 500 } } });
+  assert.ok(ok.ok);
+  const { theme } = hydrate((ok as { brand: Brand }).brand);
+  assert.deepEqual(theme.typography?.weights, { display: 500 });
+  assert.equal(themeVars(theme)['--font-voice-display-weight'], '500', 'wins over the voice default');
+  assert.equal(validateThemeObject(theme).ok, true);
+  assert.equal(validateBrand({ ...base, type: { weights: { display: 950 } } }).ok, false);
+  assert.equal(validateBrand({ ...base, type: { weights: { body: 500 } } }).ok, false);
+});

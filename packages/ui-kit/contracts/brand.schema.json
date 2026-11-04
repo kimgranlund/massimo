@@ -86,7 +86,8 @@
                 "constructivism",
                 "ulm-school",
                 "art-nouveau",
-                "wabi-sabi"
+                "wabi-sabi",
+                "british-foundry-grotesque"
               ]
             },
             "name": {
@@ -133,7 +134,8 @@
                 "constructivism",
                 "ulm-school",
                 "art-nouveau",
-                "wabi-sabi"
+                "wabi-sabi",
+                "british-foundry-grotesque"
               ]
             },
             "name": {
@@ -454,7 +456,7 @@
         "anchors": {
           "type": "array",
           "minItems": 1,
-          "maxItems": 8,
+          "maxItems": 10,
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -482,7 +484,9 @@
                   "data3",
                   "data4",
                   "data5",
-                  "data6"
+                  "data6",
+                  "ground",
+                  "ink"
                 ]
               },
               "step": {
@@ -822,6 +826,22 @@
                 "dramatic"
               ],
               "description": "Type scale: how far headings step from body text"
+            }
+          }
+        },
+        "weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "display": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 900
+            },
+            "heading": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 900
             }
           }
         }

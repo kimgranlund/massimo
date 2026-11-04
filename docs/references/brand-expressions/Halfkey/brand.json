@@ -1,0 +1,158 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "halfkey",
+  "subject": {
+    "name": "Halfkey",
+    "audience": "busy Solana holders who delegate a routine to an agent",
+    "primaryJob": "let a tired person check what an agent did with their money, against limits they wrote",
+    "kind": "product",
+    "sources": [
+      "the split key mark (D04)",
+      "the allowance dot grid (D09)",
+      "ticket-style receipts (D12)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "ulm-school",
+      "relation": "reinterpret",
+      "principles": [
+        "product systems and modular grids: the dots, type and pages share one grid (D08)",
+        "restraint: grey, black, white and one signal color (D07)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The receipt",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "A pale dotted ground where every action is itemized: amount, fee, key, signer, in ruled rows.",
+      "materials": [
+        "pale card",
+        "ruled lines",
+        "a dot grid"
+      ],
+      "light": "neutral daylight, graded cool (D11)",
+      "outOfBounds": [
+        "movement.playful",
+        "elevation.floating"
+      ],
+      "character": {
+        "curvature": "round"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a printed ticket",
+    "take": "one number first, then ruled lines that account for it (D12)",
+    "leave": "thermal paper and any skeuomorphic texture"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Signal blue",
+        "value": "#1D3BFF",
+        "role": "primary"
+      },
+      {
+        "name": "Mute",
+        "value": "#6A6F78",
+        "role": "neutral"
+      },
+      {
+        "name": "Ground",
+        "value": "#F5F6F8",
+        "role": "ground"
+      },
+      {
+        "name": "Ink",
+        "value": "#131418",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "neutral": "subtle",
+      "emphasis": "loud"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "helvetica-neue"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 500,
+      "heading": 500
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "hairline",
+    "elevation": "flat",
+    "space": "airy"
+  },
+  "movement": "calm",
+  "adaptivity": "light-first",
+  "voice": {
+    "tone": [
+      "precise",
+      "calm",
+      "plain"
+    ],
+    "samples": {
+      "action": "Approve with Face ID",
+      "confirmation": "Bought 0.2318 SOL for $40.00 on Jupiter. Fee $0.16.",
+      "error": "An unknown app asked to move all your USDC. No key covers it. Watch stopped it."
+    }
+  },
+  "iconography": {
+    "set": "phosphor",
+    "weight": "regular"
+  },
+  "signature": {
+    "concept": "one blue, used rarely and loud",
+    "scale": "emphasis",
+    "reason": "D07 gives blue 3% of a typical set of pages so that a small cue is the first thing seen; a selection should land the same way on the receipt's pale ground"
+  },
+  "avoid": [
+    "movement.playful",
+    "gradient fills (D11)",
+    "a sparkle icon: the agent is never drawn as magic (D11)",
+    "all caps and title case (D08)"
+  ],
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the deck. Departs from Ulm's crisp corners: D12's cards and pill buttons are round.",
+    "color.anchors.0": "D07, printed HEX. Pantone 2728 C on paper.",
+    "color.anchors.1": "D07, printed HEX.",
+    "color.character.vibrancy": "Signal blue is brighter than any print ink (D07)",
+    "color.character.neutral": "the greys lean slightly cool (D07)",
+    "color.character.emphasis": "used rarely and loud (D07)",
+    "type.faces": "Stand-in. The deck uses Suisse Int'l only, Medium and Regular, no monospace (D08). Helvetica Neue is the closest system face in the catalogue.",
+    "type.character.type-scale": "Display 104 over Body 20 is about 5:1 (D08), which classic matches; dramatic doubled it",
+    "form.curvature": "cards are generously round and controls are pills (D12)",
+    "form.line": "ruled rows and 1.5 px icons (D08, D11)",
+    "form.elevation": "cards separate by tone, no shadows (D12)",
+    "form.space": "pale fields with room around one number (D08, D12)",
+    "movement": "240 ms on cubic-bezier(0.2, 0, 0, 1) with no overshoot (D13)",
+    "adaptivity": "Ground 56%, Ink 18% across a typical set (D07)",
+    "iconography.set": "Phosphor regular, named on D11",
+    "color.anchors.2": "D07, printed HEX; 56% of a typical set.",
+    "color.anchors.3": "D07, printed HEX; Black 6 C on paper.",
+    "type.weights": "Medium for headlines and amounts (D08)"
+  }
+}

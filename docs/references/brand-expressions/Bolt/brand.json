@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "bolt",
+  "subject": {
+    "name": "Bolt",
+    "audience": "online shoppers at checkout and the merchants who sell to them",
+    "primaryJob": "get a shopper through checkout quickly and safely",
+    "kind": "product",
+    "sources": [
+      "the lightning opening in the wordmark (B05)",
+      "the diagonal lightning form on the cover (B01)",
+      "checkout lines and buttons (B19)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "optimism, carried by short confident headlines (B19)",
+        "bold graphic color fields: full blue and near-black grounds (B06, B15)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Checkout",
+      "primary": true,
+      "description": "The last screen before a purchase: one clear line, one dark button, nothing in the way.",
+      "materials": [
+        "near-black panels",
+        "pale violet-white panels",
+        "one electric blue"
+      ],
+      "light": "screen light, high contrast",
+      "outOfBounds": [
+        "movement.still",
+        "elevation.floating"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the lightning cut in the wordmark",
+    "take": "a fast diagonal through heavy, trustworthy capitals (B05)",
+    "leave": "sparks, literal bolts as decoration"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Bolt Blue",
+        "value": "#006CFF",
+        "role": "primary"
+      },
+      {
+        "name": "Bolt Purple",
+        "value": "#9A4EFF",
+        "role": "secondary"
+      },
+      {
+        "name": "Gray 400",
+        "value": "#6A6F8C",
+        "role": "neutral"
+      },
+      {
+        "name": "Pink",
+        "value": "#FF9AF1",
+        "role": "data1"
+      },
+      {
+        "name": "Cyan",
+        "value": "#68D8FC",
+        "role": "data2"
+      },
+      {
+        "name": "Bolt White",
+        "value": "#F8F6FE",
+        "role": "ground"
+      },
+      {
+        "name": "Bolt Black",
+        "value": "#04091A",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid",
+      "neutral": "tinted",
+      "emphasis": "loud"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "space-grotesk"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    }
+  },
+  "form": {
+    "curvature": "soft",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "confident",
+      "plain"
+    ],
+    "samples": {
+      "action": "CHECKOUT"
+    }
+  },
+  "signature": {
+    "concept": "Bolt Blue takes priority",
+    "scale": "emphasis",
+    "reason": "B12 gives blue the most visual weight and B21 uses it to pick out one word; like the wordmark's cut, one sharp accent does the work"
+  },
+  "avoid": [
+    "secondary colors on CTAs, backgrounds or type (B13)",
+    "accent colors as backgrounds (B12)"
+  ],
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the deck. Departs from the canon's sunlit domesticity: this is a screen at the moment of payment.",
+    "color.anchors.0": "B12, printed HEX; the lead color.",
+    "color.anchors.1": "B12, printed HEX.",
+    "color.anchors.2": "B14, printed HEX.",
+    "color.anchors.3": "B13: illustration and accents only, so a data role.",
+    "color.anchors.4": "B13: illustration and accents only, so a data role.",
+    "color.character.vibrancy": "Blue and purple add energy (B12)",
+    "color.character.neutral": "every gray in B14 is violet-tinted",
+    "color.character.emphasis": "Blue carries the most visual weight and takes priority (B12)",
+    "type.faces": "Stand-in for display: Agrandir Narrow (B17) is outside the catalogue; Space Grotesk shares its slightly unusual anatomy but not its narrow set. Inter is named on B18.",
+    "type.character.type-scale": "headline about 4.5 times body (B19), which classic matches; dramatic doubled it",
+    "form.curvature": "lightly rounded cards and button (B12, B19)",
+    "form.line": "panels separate by fill (B03, B19)",
+    "form.elevation": "flat fields throughout the book",
+    "adaptivity": "light and dark grounds carry equal weight (B20, B21)",
+    "color.anchors.5": "B12, printed HEX; used as a background.",
+    "color.anchors.6": "B12, printed HEX; used as a background."
+  }
+}

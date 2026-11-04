@@ -675,6 +675,56 @@
       "sources": [
         "Leonard Koren, Wabi-Sabi for Artists, Designers, Poets & Philosophers (1994)"
       ]
+    },
+    {
+      "id": "british-foundry-grotesque",
+      "kind": "grounding",
+      "title": "British foundry grotesques",
+      "period": "1816–1950s",
+      "place": "London and Sheffield, UK",
+      "principles": [
+        "The sans-serif as a working commercial letter, not a manifesto",
+        "Foundry cuts with visible irregularity and warmth",
+        "Plain lettering for signs, tickets and trade printing",
+        "Local industry and place carried by the type itself"
+      ],
+      "canon": {
+        "character": {
+          "curvature": "square",
+          "line": "borderless",
+          "elevation": "flat",
+          "space": "balanced",
+          "type-scale": "classic",
+          "vibrancy": "natural",
+          "neutral": "subtle",
+          "movement": "still"
+        },
+        "faces": {
+          "body": "grotesque",
+          "display": "grotesque"
+        },
+        "pairings": {
+          "display": [
+            "libre-franklin",
+            "work-sans"
+          ],
+          "body": [
+            "libre-franklin",
+            "work-sans"
+          ],
+          "utility": [
+            "helvetica-neue"
+          ]
+        }
+      },
+      "cliches": [
+        "Victorian wood-type pastiche",
+        "Distressed letterpress texture"
+      ],
+      "sources": [
+        "James Mosley, The Nymph and the Grot: The Revival of the Sanserif Letter (1999)",
+        "Sheffield Museums Design Guidelines, Caslon Doric and Stephenson Blake (S30)"
+      ]
     }
   ],
   "territories": [

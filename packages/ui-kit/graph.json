@@ -2480,6 +2480,17 @@
         "germany"
       ]
     },
+    "grounding:british-foundry-grotesque": {
+      "kind": "grounding",
+      "source": "contracts/brand-catalogue.json#/groundings/14",
+      "availability": "implemented",
+      "title": "British foundry grotesques",
+      "searchTerms": [
+        "british-foundry-grotesque",
+        "british foundry grotesques",
+        "london and sheffield, uk"
+      ]
+    },
     "grounding:brutalism": {
       "kind": "grounding",
       "source": "contracts/brand-catalogue.json#/groundings/5",
@@ -13365,6 +13376,46 @@
       "from": "grounding:wabi-sabi",
       "relation": "implies",
       "to": "descriptor:movement.calm"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:curvature.square"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:line.borderless"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:elevation.flat"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:space.balanced"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:type-scale.classic"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:vibrancy.natural"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:neutral.subtle"
+    },
+    {
+      "from": "grounding:british-foundry-grotesque",
+      "relation": "implies",
+      "to": "descriptor:movement.still"
     },
     {
       "from": "territory:harbor",

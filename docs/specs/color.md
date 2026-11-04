@@ -74,6 +74,8 @@ A theme can place a brand's exact colors in the ramps: `color.anchors`, one per 
 
 Light and dark are placed separately. Without a `dark` color, the dark ramp only takes the hue and chroma, and the dark solid stays at step 9: a light-scheme step 12 is ink, and in dark it would be the lightest fill. With a `dark` color, the anchor is placed exactly in the dark ramp the same way, against the dark page and the dark targets, and moves the dark solid when it lands on 8–12 (`solidSteps.dark`).
 
+Two surface anchors pin the neutral ramp's ends instead of a role's family, because a brand's ink and page lie beyond the ramp. `ground` takes step 1 in light (the page) and step 12 in dark (the text). `ink` takes step 12 in light and step 1 in dark. `dark` gives a different color for the dark scheme. They take no `step`, and they run after every other anchor. Headings (`fg.strong`) follow them, so `ink` replaces black in light and `ground` replaces white in dark. Use them for a brand's printed ink and paper; a neutral anchor still sets the ramp's hue and chroma.
+
 Roles often share a family (primary and data 1 both default to indigo). Each anchor claims its family. A later anchor on a claimed family moves its role to the nearest free family by hue, first one no role uses, so two anchors never overwrite each other. `anchoredSpectrum` returns the roles to use.
 
 Each step's lightness is kept, so the contrast steps hold. The lint warns when an anchor breaks the order, in either scheme (`vibrancy.anchor-order`: its Lc must lie between its neighbors' targets) or lies beyond the ramp (`vibrancy.anchor-range`, a near-black or near-white ink: map it to the black or white endpoint instead).

@@ -33,6 +33,7 @@ export function themeVars(t: Theme): Record<string, string> {
     out[`--font-voice-${voice}`] = `var(--fonts-${face})`;
     if (SERIF_REGULAR_VOICES.has(voice as Voice)) out[`--font-voice-${voice}-weight`] = face === 'serif' ? '400' : 'initial';
   }
+  for (const [voice, w] of Object.entries(t.typography?.weights ?? {})) out[`--font-voice-${voice}-weight`] = String(w);
   for (const [role, c] of Object.entries(t.typography?.colors ?? {})) out[typeColorVar(role as TypeRoleName)] = TEXT_COLORS[c!];
   return out;
 }

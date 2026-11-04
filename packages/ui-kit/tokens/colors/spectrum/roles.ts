@@ -7,6 +7,10 @@ export const DATA_ROLES = ['data1', 'data2', 'data3', 'data4', 'data5', 'data6']
 export const ROLE_NAMES = [...BRAND_ROLES, ...FEEDBACK_ROLES, ...DATA_ROLES] as const;
 export type RoleName = (typeof ROLE_NAMES)[number];
 export type Roles = Record<RoleName, string>;
+/** Anchors that pin the neutral ramp's ends instead of a role's family: the page (step 1) and the ink (step 12). */
+export const SURFACE_ROLES = ['ground', 'ink'] as const;
+export const ANCHOR_ROLES = [...ROLE_NAMES, ...SURFACE_ROLES] as const;
+export type AnchorRole = (typeof ANCHOR_ROLES)[number];
 export const DEFAULT_ROLES: Roles = {
   primary: 'indigo', secondary: 'amber', neutral: 'neutral',
   critical: 'red', warning: 'orange', success: 'green', info: 'cyan',

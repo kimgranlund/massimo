@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "05c6334267091176d2c5a1b52de401b713de82536c2c9de0d3f23a626fb61b56"
+      "sha256": "c987e59ae90abcde2d28fefb5876064a83e65766137afc28cdd3d792587cc163"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "7c7dc33f2f2d957b5e468a1a132e8d1ea7bf8784e82123bf947adfeee474c36f"
+      "sha256": "677959b9529a388594721f2c337daa54f6e04daa941d83cc3251dc2938c859db"
     }
   ],
   "renderers": {

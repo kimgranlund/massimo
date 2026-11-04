@@ -35,7 +35,7 @@ Fonts work in three layers, like colors (ramps → roles):
 
 3. **Roles** (below) point at voices. Kickers are a role on the ui voice (case, tracking, weight), not a voice of their own; numerics are mostly font features, so `numeric` follows `ui` unless repointed.
 
-Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font-heading="serif"`). Display and heading voices drop to regular weight (400) on the serif face, massimo-ui's serif heading style; the jig applies the same rule to any face whose stack ends in `serif`. Change a face's stack by overriding `--fonts-<face>` (or `tokens.fonts` in a Panda preset). Curated stacks per face: `FACE_STACKS`.
+Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font-heading="serif"`). Display and heading voices drop to regular weight (400) on the serif face, massimo-ui's serif heading style; the jig applies the same rule to any face whose stack ends in `serif`. A theme sets the display and heading voice weights directly with `typography.weights`, which beats the serif rule. Change a face's stack by overriding `--fonts-<face>` (or `tokens.fonts` in a Panda preset). Curated stacks per face: `FACE_STACKS`.
 
 ## Roles
 

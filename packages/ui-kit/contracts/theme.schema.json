@@ -666,7 +666,9 @@
                   "data3",
                   "data4",
                   "data5",
-                  "data6"
+                  "data6",
+                  "ground",
+                  "ink"
                 ]
               },
               "value": {
@@ -1000,6 +1002,22 @@
                 "primary",
                 "inherit"
               ]
+            }
+          }
+        },
+        "weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "display": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 900
+            },
+            "heading": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 900
             }
           }
         }
