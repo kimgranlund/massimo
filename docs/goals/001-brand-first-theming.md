@@ -1,7 +1,7 @@
 ---
 id: G-001
 title: Brand-first theming
-status: active
+status: achieved
 owner: kim
 created: 2026-11-03
 kpis: [K-001]

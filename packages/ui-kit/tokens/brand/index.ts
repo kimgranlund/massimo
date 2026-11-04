@@ -306,7 +306,7 @@ export function lintBrand(b: Brand): BrandFinding[] {
   // Bounds: a primary territory's out-of-bounds values.
   const t = primaryTerritory(b);
   const bounds = [...(t?.outOfBounds ?? []), ...((t?.ref && territoryOf(t.ref)?.outOfBounds) || [])];
-  for (const o of bounds) { const [scale, value] = o.split('.'); if (character[scale] === value) out.push({ id: 'brand.out-of-bounds', severity: 'warning', message: `${scale} ${value} is out of bounds for the ${t!.name} territory (set by ${from[scale]})` }); }
+  for (const o of bounds) { const [scale, value] = o.split('.'); if (DESCRIPTORS[scale] && value && character[scale] === value) out.push({ id: 'brand.out-of-bounds', severity: 'warning', message: `${scale} ${value} is out of bounds for the ${t!.name} territory (set by ${from[scale]})` }); }
   // Muse: take a quality.
   if (b.muse && /\b(copy|replicate|clone|exactly)\b/i.test(b.muse.take)) out.push({ id: 'brand.muse-copy', severity: 'warning', message: 'the muse take reads as a copy; name a quality to take' });
   // Coherence: feedback anchored apart from the primary.
@@ -348,6 +348,8 @@ export function lintBrand(b: Brand): BrandFinding[] {
   }
   for (const a of b.avoid ?? []) {
     const [scale, value] = a.split('.');
+    // Something that looks like a scale value but is not one (color.vibrancy.vivid) would never match.
+    if (/^[a-z-]+\.[a-z.-]+$/.test(a) && !(DESCRIPTORS[scale]?.values.some((v) => v.name === value) && a.split('.').length === 2)) out.push({ id: 'brand.avoid-format', severity: 'info', message: `avoid "${a}" is not a <scale>.<value> (scales: ${Object.keys(DESCRIPTORS).join(', ')}), so it is never checked` });
     if (DESCRIPTORS[scale] && character[scale] === value) out.push({ id: 'brand.avoid', severity: 'warning', message: `${a} is on the brand's avoid list (set by ${from[scale]})` });
   }
   return out;

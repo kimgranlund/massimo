@@ -29,6 +29,13 @@ Each run appends one row to that report folder's `eval.jsonl`. A row holds:
 - the candidate's lint warnings and unresolved questions;
 - the score.
 
-**Values.** [2026-11-03](../reports/2026-11-03-brand-reproduction/eval.jsonl): Fjord Ledger 0.70 (contaminated run), Night Signal 0.67, Kiln & Cup 0.72. Every candidate validated with no lint warnings on the first try.
+**Values** ([eval.jsonl](../reports/2026-11-03-brand-reproduction/eval.jsonl)), every candidate validating with no lint warnings:
+
+| Round | Fjord Ledger | Kiln & Cup | Night Signal | What changed |
+|---|---|---|---|---|
+| 1 | 0.70 (contaminated) | 0.72 | 0.67 | the guide alone; the briefs left the heritage, world and signature to inference |
+| 2 | 0.93 | 0.95 | 0.92 | the briefs state the heritage (and its relation), the world and the one thing that must stand out, as a client would |
+
+Target met in round 2. Every frame decision matches; the remaining differences are scales the briefs leave open (elevation, emphasis, iconography).
 
 **Serves.** The [brand schema plan](../planning/brand-schema.md): the brand is authored first, from a brief.

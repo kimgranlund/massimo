@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "name": "kiln-and-cup",
+  "subject": {
+    "name": "Kiln & Cup",
+    "audience": "Buyers of handmade tableware choosing a one-of-a-kind piece online, from photographs alone",
+    "primaryJob": "Let a buyer trust how a single wood-fired piece will feel in the hand, then buy it without pressure",
+    "kind": "product",
+    "sources": [
+      "Wood-fired stoneware: natural ash glaze, flashing where the flame passed, iron-speckled clay bodies",
+      "The thrown rim: a continuous curve made on the wheel, never drafted",
+      "The studio after a firing: cooling kiln, ash on the shelves, pieces set out on wooden boards"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "mingei",
+      "relation": "reinterpret",
+      "principles": [
+        "Beauty in everyday objects meant to be used",
+        "Natural materials and honest making, shown rather than styled",
+        "Variation from the fire is part of each piece, not a flaw",
+        "Quiet surfaces that let the work lead"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The workshop after a firing",
+      "ref": "workshop",
+      "primary": true,
+      "description": "The studio the morning the kiln is opened: still-warm ware set out on oiled boards, ash dust on the shelves, low light from a high window across glaze and bare clay.",
+      "materials": ["stoneware", "natural ash glaze", "oiled wood boards", "kiln brick", "wood ash"],
+      "palette": [
+        { "name": "ash glaze", "value": "#5a6448" },
+        { "name": "iron speckle", "value": "#3b342d" },
+        { "name": "bisque", "value": "#d9d2c5" }
+      ],
+      "light": "warm, low and directional, through a high window, catching glaze runs",
+      "textures": "glaze pooling, toasted clay, wood grain under the pots; never applied as a filter",
+      "composition": "one piece at a time, generous margin, the photograph leads",
+      "type": "plain humanist text, a calm book serif for names of pieces",
+      "motion": "slow and settled, like a piece set down on a board",
+      "imagery": "honest daylight photographs of a piece held, in use, and on the board, with its marks shown",
+      "outOfBounds": ["vibrancy.vivid", "elevation.floating", "curvature.square", "corner.bevel", "movement.playful"]
+    }
+  ],
+  "muse": {
+    "kind": "person",
+    "name": "Lucie Rie",
+    "take": "Economy and poise: thin, confident walls and rims, restraint that lets the glaze carry the piece",
+    "leave": "Her specific forms, sgraffito lines and glaze recipes; the studio's ware is its own"
+  },
+  "color": {
+    "anchors": [
+      { "name": "ash glaze", "value": "#4e5a3e", "role": "primary" },
+      { "name": "iron speckle", "value": "#3b342d", "role": "neutral" },
+      { "name": "flame flash", "value": "#8a6a3a", "role": "secondary" }
+    ],
+    "feedback": "independent"
+  },
+  "type": {
+    "faces": {
+      "display": { "ref": "newsreader" },
+      "body": { "ref": "source-sans-3" },
+      "utility": { "ref": "ibm-plex-mono" }
+    }
+  },
+  "form": {
+    "corner": "squircle",
+    "curvature": "round"
+  },
+  "voice": {
+    "tone": ["warm", "plain", "calm"],
+    "samples": {
+      "action": "Add this cup to your basket",
+      "confirmation": "It's yours. We'll wrap it and send it this week.",
+      "error": "That piece has just gone to someone else. Each one is single, so we can't make another the same."
+    }
+  },
+  "iconography": { "set": "phosphor", "weight": "light" },
+  "signature": {
+    "concept": "The thrown rim",
+    "scale": "corner",
+    "reason": "Every corner takes the continuous, never-drafted curve of a rim pulled on the wheel; squircle corners carry that curve where a circular arc would show a seam."
+  },
+  "avoid": [
+    "Brush lettering or Japanese calligraphic display type",
+    "Indigo and kraft paper as a borrowed Japanese look",
+    "Terracotta accents on warm cream",
+    "Countdown timers, scarcity banners or any hard sell",
+    "harmony.triadic"
+  ],
+  "rationale": {
+    "form.corner": "The signature: the rim's continuous curvature, which only the squircle corner holds without a visible join.",
+    "form.curvature": "Round rather than the canon's soft: a rim reads as a full, generous curve, not a nicked edge; still short of pill, which would read as a product sticker.",
+    "iconography.set": "Phosphor at light weight matches the workshop's hairline line and stays quiet next to photographs.",
+    "grounding.primary": "Reinterpret: take mingei's values (use, honest material, variation from making) and leave its look: no brush lettering, no indigo and kraft; the studio is not a Japanese brand.",
+    "color.anchors.0": "Natural ash glaze, the green the wood ash leaves on the shoulder of a pot; a dark solid for the main role.",
+    "color.anchors.2": "The flashing where flame crosses bare clay; kept toward ochre so it never reads as terracotta."
+  }
+}

@@ -162,3 +162,16 @@ test('brand: groundings pair catalogue faces per role, and hydrate fills a face 
   const against = hydrate(brand({ ...minimal, grounding: { primary: { ref: 'ulm-school', relation: 'react-against' } } }));
   assert.ok(against.unresolved.some((u) => u.startsWith('type.faces.body')), 'a rejected grounding pairs nothing');
 });
+
+test('brand: catalogue palettes sit inside the ramp; free-text bounds and malformed avoid keys are handled', async () => {
+  const S = await import('../tokens/colors/spectrum/index.ts');
+  const d = S.generateSpectrum({}), r = S.resolveRoles(d, {});
+  for (const t of TERRITORIES) for (const x of (t.canon as any).palette ?? []) {
+    const a = S.anchoredSpectrum(d, r, [{ role: 'secondary', value: x.value }]).report[0];
+    assert.ok(a.inRange && a.inOrder, `${t.id} ${x.name} ${x.value}: Lc ${a.lc} in range and order`);
+  }
+  const f = lintBrand(brand({ ...minimal, territories: [{ name: 'T', description: 'd', outOfBounds: ['no neon signs'] }], avoid: ['color.vibrancy.vivid', 'curvature.pill'] }));
+  assert.ok(!f.some((x) => /undefined/.test(x.message)), 'free-text bounds never print undefined');
+  assert.ok(f.some((x) => x.id === 'brand.avoid-format' && x.message.includes('color.vibrancy.vivid')));
+  assert.ok(!f.some((x) => x.id === 'brand.avoid-format' && x.message.includes('"curvature.pill"')));
+});

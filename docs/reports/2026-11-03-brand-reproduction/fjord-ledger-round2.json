@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "name": "fjord-ledger",
+  "subject": {
+    "name": "Fjord Ledger",
+    "audience": "Bookkeepers at small Nordic shipping firms, working early mornings and late evenings in harbor offices",
+    "primaryJob": "Reconcile a month of entries at a time without ever doubting a number",
+    "kind": "tool",
+    "sources": [
+      "Tide tables: dense columns of times and heights read at a glance",
+      "Ledger ruling: hairline rules that separate rows without decorating them",
+      "The working harbor outside the office window: painted steel hulls, cold flat light off water"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "The grid organizes everything: columns line up across the whole month",
+        "Objective type: a neo-grotesque, flush left, numbers in tabular figures",
+        "No ornament: content before decoration, no maritime motifs",
+        "Restraint in color: neutrals carry the page, one accent marks action"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Working harbor",
+      "ref": "harbor",
+      "primary": true,
+      "description": "The quay the bookkeepers look out on: painted steel hulls, wet stone, mooring lines, cold flat daylight off the water at dawn and dusk.",
+      "materials": [
+        "painted steel",
+        "wet stone",
+        "rope",
+        "printed tide tables"
+      ],
+      "light": "flat, cold daylight off water; low light at both ends of the day",
+      "composition": "ruled columns and rows, like a tide table or a ledger page",
+      "imagery": "none in the interface; numbers are the content",
+      "outOfBounds": [
+        "curvature.pill",
+        "curvature.round",
+        "movement.playful",
+        "elevation.floating"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "A printed Nordic tide table",
+    "take": "A whole month of numbers on one page, ruled and aligned so any value is found and trusted at a glance",
+    "leave": "Its nautical-chart decoration, cramped print sizes and almanac ornament"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "hull navy",
+        "value": "#2c3d5e",
+        "role": "primary"
+      },
+      {
+        "name": "harbor grey",
+        "value": "#8a9099",
+        "role": "neutral"
+      },
+      {
+        "name": "signal red",
+        "value": "#c8102e",
+        "role": "critical"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "muted",
+      "neutral": "subtle",
+      "emphasis": "quiet"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "inter-tight"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "ibm-plex-mono"
+      }
+    },
+    "character": {
+      "type-scale": "gentle"
+    }
+  },
+  "form": {
+    "density": "compact",
+    "space": "tight",
+    "line": "hairline",
+    "elevation": "flat"
+  },
+  "movement": "still",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "plain",
+      "precise",
+      "calm"
+    ],
+    "samples": {
+      "action": "Reconcile March",
+      "confirmation": "March reconciled. 412 entries, balance 0.00.",
+      "error": "Entry 214 is off by 1 250,00 NOK. Check the invoice date."
+    }
+  },
+  "iconography": {
+    "set": "phosphor",
+    "weight": "light"
+  },
+  "signature": {
+    "concept": "A whole month on one screen",
+    "scale": "density",
+    "reason": "Like the tide table muse, a month of entries must fit without scrolling: compact density, dense but calm."
+  },
+  "avoid": [
+    "movement.lively",
+    "vibrancy.vivid",
+    "Maritime decoration: anchors, ship wheels, rope, waves, nautical flags",
+    "Grids shown for their own sake"
+  ],
+  "rationale": {
+    "form.density": "The signature: a full month of entries on one screen.",
+    "form.space": "Departs from Swiss airy white space: the subject asks for a month without scrolling, so gutters stay tight and the grid does the calming.",
+    "form.line": "Ledger ruling: hairline rules separate rows and columns.",
+    "form.elevation": "Swiss flat surfaces over the harbor's layered canon: no surface should compete with the numbers.",
+    "color.character.vibrancy": "Calm for long early and late sessions; muted keeps the signal red unmistakable.",
+    "color.character.neutral": "Between Swiss true grey and the harbor's tint: a trace of cold water in the greys.",
+    "color.character.emphasis": "Selection shows quietly so a dense table stays calm.",
+    "type.character.type-scale": "Departs from Swiss dramatic: headings step gently so they do not eat rows of the month.",
+    "movement": "Swiss stillness: numbers never move under the eye.",
+    "adaptivity": "Bookkeepers work at dawn and late evening, so light and dark carry equal weight.",
+    "iconography.set": "Phosphor light matches the hairline line character.",
+    "grounding.primary": "Inherited straight, as the team asks; only space and type scale yield to density."
+  }
+}

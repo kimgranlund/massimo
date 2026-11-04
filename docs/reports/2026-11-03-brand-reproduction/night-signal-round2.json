@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "name": "night-signal",
+  "subject": {
+    "name": "Night Signal",
+    "audience": "Festival-goers on a phone, in the dark, in a crowd, between stages",
+    "primaryJob": "Find who plays where right now",
+    "kind": "campaign",
+    "sources": [
+      "The stages themselves: lighting rigs, truss construction and the colored wash each stage throws",
+      "The city after dark: sodium streetlight, neon signage, wet asphalt",
+      "The set-time board: a grid of stages against hours"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "bauhaus",
+      "relation": "reinterpret",
+      "principles": [
+        "Construction made visible: rules and outlines carry the structure, as truss carries a stage",
+        "Primary forms: square edges and plain blocks, no ornament",
+        "Type as construction: a geometric display face set large",
+        "Color as a system of relations, not decoration"
+      ]
+    },
+    "secondary": {
+      "ref": "memphis",
+      "relation": "react-against",
+      "principles": ["No confetti, squiggles, pastel clash or play for its own sake"]
+    }
+  },
+  "territories": [
+    {
+      "name": "City after dark",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "The streets around the festival at night: point sources of colored light on asphalt, each stage a glow you navigate by.",
+      "materials": ["asphalt", "steel truss", "glass", "gel-filtered light"],
+      "light": "colored point sources in darkness; the page is the night, the stages are the light",
+      "palette": [
+        { "name": "asphalt", "value": "#16171d" },
+        { "name": "sodium", "value": "#f29d38" },
+        { "name": "neon cyan", "value": "#22c3e6" },
+        { "name": "stage magenta", "value": "#ff4fa8" },
+        { "name": "signal blue", "value": "#5b7bff" }
+      ],
+      "composition": "a grid of stages against time; one bright now-playing block",
+      "motion": "pulse and cut, not drift",
+      "imagery": "light on structure, never photographs of crowds",
+      "outOfBounds": ["curvature.pill", "curvature.round", "movement.playful", "elevation.floating"]
+    }
+  ],
+  "muse": {
+    "kind": "person",
+    "name": "Sonia Delaunay",
+    "take": "Simultaneous contrast: colors set side by side so their relation, not any one hue, carries the rhythm",
+    "leave": "Her discs and arcs as motifs, and the painterly fabric look"
+  },
+  "color": {
+    "anchors": [
+      { "name": "Signal blue", "value": "#2440c8", "dark": "#5b7bff", "role": "primary" },
+      { "name": "Sodium", "value": "#a85400", "dark": "#f29d38", "role": "secondary" },
+      { "name": "Neon cyan", "value": "#007f99", "dark": "#22c3e6", "role": "data1" },
+      { "name": "Stage magenta", "value": "#b0186a", "dark": "#ff4fa8", "role": "data2" },
+      { "name": "Asphalt", "value": "#4a4c5a", "dark": "#16171d", "role": "neutral" }
+    ],
+    "feedback": "independent",
+    "character": {
+      "harmony": "triadic",
+      "emphasis": "loud"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": { "ref": "space-grotesk" },
+      "body": { "ref": "work-sans" },
+      "utility": { "ref": "jetbrains-mono" }
+    }
+  },
+  "form": {
+    "scale": "lg",
+    "elevation": "flat"
+  },
+  "voice": {
+    "tone": ["plain", "confident"],
+    "samples": {
+      "action": "Show what's on now",
+      "confirmation": "Added to your night",
+      "error": "No signal. Times shown are from 22:40."
+    }
+  },
+  "iconography": { "set": "phosphor", "weight": "bold" },
+  "signature": {
+    "concept": "Stage colors in fixed relation",
+    "scale": "harmony",
+    "reason": "Delaunay's simultaneous contrast: the stages are known by how their colors sit against one another, so the accent hues are spread in a triad rather than one accent"
+  },
+  "avoid": [
+    "Confetti, squiggles and pastel backgrounds (Memphis)",
+    "Red, yellow and blue primaries used as decoration",
+    "Discs and circles as ornament",
+    "harmony.unique"
+  ],
+  "rationale": {
+    "form.scale": "Used one-handed in a moving crowd at night: larger text and targets.",
+    "form.elevation": "Departs from the night-city canon of floating glow: surfaces separate by outline and color, as Bauhaus construction would, and floating is the Memphis canon too.",
+    "color.character.harmony": "The signature: stage colors related as a triad, after Delaunay.",
+    "color.character.emphasis": "The now-playing selection has to read at a glance in the dark.",
+    "iconography.set": "Phosphor bold holds up beside outlined controls and small on a phone at night.",
+    "grounding.primary": "Reinterpreted for night: the primaries become stage light on a dark page, and construction shows as outline rather than painted shape."
+  }
+}

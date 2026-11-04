@@ -704,7 +704,7 @@
           },
           {
             "name": "hull navy",
-            "value": "#1f2a44"
+            "value": "#2c3d5e"
           },
           {
             "name": "harbor grey",
@@ -973,7 +973,7 @@
         "palette": [
           {
             "name": "process black",
-            "value": "#1c1c1c"
+            "value": "#3a3a3a"
           },
           {
             "name": "proof red",
@@ -1132,7 +1132,7 @@
           },
           {
             "name": "deep sky",
-            "value": "#1b2a4a"
+            "value": "#2a3d66"
           }
         ]
       },
