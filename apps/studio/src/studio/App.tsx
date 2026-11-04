@@ -12,12 +12,14 @@ import { PARAMS, defaultParams, diffFromDefaults, paramVar, unitTokenCss, motion
 import { SPECTRUM_DEFAULTS, SPECTRUM_FIELDS, spectrumOverrides, stepTones, TARGET_MAX, DEFAULT_ENDPOINT, DEFAULT_ROLES, BRAND_ROLES, FEEDBACK_ROLES, DATA_ROLES, type Roles, type RoleName, type SpectrumSettings } from '@massimo/ui-kit/spectrum';
 import type { FaceMap, PanelTab, Scheme, SpectrumPayload, VoiceMap } from '../protocol.ts';
 import { TYPE_RATIOS, TYPE_ROLES, FACES, VOICES, FACE_STACKS, FONT_FAMILIES, DEFAULT_VOICES, SERIF_REGULAR_VOICES, TEXT_COLORS, DEFAULT_TYPE_COLORS, typeColorVar, isSerifStack, type TextColor, type TypeRoleName } from '@massimo/ui-kit/tokens';
-import { ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
+import { APPLY_BRAND, ROUTES, ROUTE_LABEL, type PageProps, type Route } from '../pages/types.ts';
 import { navigate, useHashRoute } from '../pages/route.ts';
 import { HomePage } from '../pages/Home.tsx';
 import { ComponentsPage, FAMILIES, isFamily } from '../pages/Components.tsx';
 import { ContainersPage } from '../pages/Containers.tsx';
 import { ElevationPage } from '../pages/Elevation.tsx';
+import { BrandPage } from '../pages/Brand.tsx';
+import { hydrate, validateBrand, type Brand } from '@massimo/ui-kit/tokens';
 import { GeometryPage } from '../pages/Geometry.tsx';
 import { TypographyPage } from '../pages/Typography.tsx';
 import { ColorsPage } from '../pages/Colors.tsx';
@@ -38,14 +40,15 @@ const CONTAINER_RADIUS: [ParamName, string][] = [['radius-group', 'Group'], ['ra
 // corner-shape (superellipse): Chromium draws it; where CSS.supports says no (Firefox, older WebKit) corners stay round.
 const CORNER_SHAPE = typeof CSS !== 'undefined' && CSS.supports('corner-shape', 'superellipse(2)');
 const LEVELS = ['composite', 'group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const;
-const STEPS = [0, 0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 6, 7, 8, 10, 12];
+// Every half step 0–12u: the ladder parameters' step, so any theme value (a descriptor's space, a loaded theme) has an option.
+const STEPS = Array.from({ length: 25 }, (_, i) => i / 2);
 
 const ROLE_LABEL = (r: RoleName) => r.startsWith('data') ? `Data ${r.slice(4)}` : r[0].toUpperCase() + r.slice(1);
 const shuffle = <T,>(xs: T[]) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const PANEL_TABS: [PanelTab, string][] = [['geometry', 'Geometry'], ['colors', 'Colors'], ['typography', 'Typography'], ['motion', 'Motion']];
 const isPanelTab = (v: unknown): v is PanelTab => PANEL_TABS.some(([t]) => t === v);
 const PAGES: Record<Exclude<Route, 'components'>, (p: PageProps) => ReactNode> = {
-  home: HomePage, containers: ContainersPage, elevation: ElevationPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage,
+  home: HomePage, containers: ContainersPage, elevation: ElevationPage, geometry: GeometryPage, typography: TypographyPage, colors: ColorsPage, motion: MotionPage, brand: BrandPage,
 };
 const pick = <T,>(xs: T[]) => xs[Math.floor(Math.random() * xs.length)];
 
@@ -114,7 +117,9 @@ export function App() {
   // White and black: a neutral step (white from the light ramp, black from the dark ramp; 1 by default) or 'pure'.
   type Endpoint = number | 'pure';
   const [endpoints, setEndpoints] = useState<{ white: Endpoint; black: Endpoint }>({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT });
-  // Brand anchors (color.anchors): carried through Load and Copy; edited on the Brand page (later).
+  // Brand anchors (color.anchors): carried through Load and Copy; a brand sets them on Apply.
+  // The brand the theme came from (Brand page Apply, or Load of a brand or bundle); Copy then writes both.
+  const [brand, setBrand] = useState<Brand | null>(null);
   const [anchors, setAnchors] = useState<NonNullable<NonNullable<Theme['color']>['anchors']>>([]);
   const [generated, setGenerated] = useState<SpectrumPayload>();
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
@@ -205,20 +210,45 @@ export function App() {
     setFaces({ ...FONT_FAMILIES, ...(t.typography?.faces ?? {}) } as FaceMap); setVoices({ ...DEFAULT_VOICES, ...(t.typography?.voices ?? {}) } as VoiceMap);
     setTypeColors({ ...DEFAULT_TYPE_COLORS, ...(t.typography?.colors ?? {}) } as Record<TypeRoleName, TextColor>);
   };
+  // A brand: hydrate it (tokens/brand), apply the theme and keep the brand for Copy.
+  const applyBrand = (b: Brand) => {
+    const { theme, unresolved } = hydrate(b);
+    applyTheme(theme); setBrand(b);
+    setStatus(`Applied brand ${b.name}${unresolved.length ? ` (${unresolved.length} open questions on the Brand page)` : ''}`);
+  };
+  useEffect(() => {
+    const on = (e: Event) => applyBrand((e as CustomEvent<Brand>).detail);
+    window.addEventListener(APPLY_BRAND, on);
+    return () => window.removeEventListener(APPLY_BRAND, on);
+  });
+  // Load: a theme (version 1 or 2), a brand (hydrated), or a { brand, theme } bundle from Copy.
   const loadTheme = async () => {
     let text = '';
     try { text = await navigator.clipboard.readText(); } catch { setStatus('Load: clipboard not readable'); return; }
-    let data: unknown;
+    let data: any;
     try { data = JSON.parse(text); } catch { setStatus('Load: the clipboard is not JSON'); return; }
+    const report = (errors: string[]) => setStatus(`Load: ${errors.slice(0, 3).join('; ')}${errors.length > 3 ? ` (+${errors.length - 3})` : ''}`);
+    if (data && typeof data === 'object' && 'subject' in data) {
+      const b = validateBrand(data);
+      if (!b.ok) return report(b.errors);
+      return applyBrand(b.brand);
+    }
+    if (data && typeof data === 'object' && 'brand' in data && 'theme' in data) {
+      const b = validateBrand(data.brand), t = loadThemeObject(data.theme);
+      if (!b.ok) return report(b.errors);
+      if (!t.ok) return report(t.errors);
+      applyTheme(t.theme); setBrand(b.brand); setStatus(`Loaded brand ${b.brand.name} with its tuned theme`);
+      return;
+    }
     // Version 1 themes (one flat parameters section) migrate on load.
     const r = loadThemeObject(data);
-    if (!r.ok) { setStatus(`Load: ${r.errors.slice(0, 3).join('; ')}${r.errors.length > 3 ? ` (+${r.errors.length - 3})` : ''}`); return; }
-    applyTheme(r.theme);
+    if (!r.ok) return report(r.errors);
+    applyTheme(r.theme); setBrand(null);
     setStatus(`Loaded theme ${r.theme.name}`);
   };
 
   const reset = () => {
-    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setTypeColors(DEFAULT_TYPE_COLORS);
+    setThemeName('custom'); setParams(defaultParams); setScheme('auto'); setIcons('phosphor'); setVoices(DEFAULT_VOICES); setFaces(FONT_FAMILIES); setSpectrum(SPECTRUM_DEFAULTS); setRoles(DEFAULT_ROLES); setEndpoints({ white: DEFAULT_ENDPOINT, black: DEFAULT_ENDPOINT }); setAnchors([]); setBrand(null); setTypeColors(DEFAULT_TYPE_COLORS);
     setStatus('Reset to defaults');
   };
 
@@ -230,13 +260,18 @@ export function App() {
   }, [scheme]);
   // One icon button cycles the scheme: auto (follow the OS) → light → dark.
   const schemeRef = useEvent('click', () => setScheme((v) => NEXT_SCHEME[v]));
-  const copyRef = useEvent('click', () => navigator.clipboard.writeText(JSON.stringify({ $schema: 'packages/ui-kit/contracts/theme.schema.json', ...themeObject() }, null, 2)).then(() => setStatus('Copied theme JSON'), () => setStatus('Copy failed')));
+  // Copy: the theme, or with a brand active the { brand, theme } bundle (the brand is the source; the theme holds hand tuning).
+  const copyRef = useEvent('click', () => {
+    const theme = { $schema: 'packages/ui-kit/contracts/theme.schema.json', ...themeObject() };
+    const out = brand ? { brand: { $schema: 'packages/ui-kit/contracts/brand.schema.json', ...brand }, theme } : theme;
+    navigator.clipboard.writeText(JSON.stringify(out, null, 2)).then(() => setStatus(brand ? `Copied brand ${brand.name} and its theme` : 'Copied theme JSON'), () => setStatus('Copy failed'));
+  });
   const loadRef = useEvent('click', () => { void loadTheme(); });
   const resetRef = useEvent('click', reset);
   // Random: new generation inputs (hue, chroma, tint, page tones), then the brand and data roles.
   const randomRef = useEvent('click', () => { setSpectrum((cur) => randomSpectrum(cur)); setRoles((cur) => randomRoles(cur, familyNames.accents, familyNames.neutrals)); });
 
-  const pageProps: PageProps = { params, spectrum: generated, voices, faces, typeColors };
+  const pageProps: PageProps = { params, spectrum: generated, voices, faces, typeColors, brand };
   const Content = route === 'components' ? null : PAGES[route];
 
   const geometry = (

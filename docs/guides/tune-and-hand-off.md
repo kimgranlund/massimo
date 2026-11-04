@@ -4,7 +4,7 @@ Steps for tuning a theme in the jig and handing the result to an agent, which ap
 
 1. Start it: `npm run studio`, then open http://localhost:5173.
 2. Tune in the panel tabs. Geometry: unit, border, corner radius and shape, icon set, padding and gap per level. Colors: Spectrum settings and role families. Typography: ratio, rhythm, a stack per face and a face per voice. Motion: duration scale, bounce, springs and intents. Pick the page to look at from the content header's page menu (the URL hash, e.g. `#/geometry`); its trailing button cycles the scheme, so check both light and dark.
-3. Press **Copy**. The clipboard holds one [theme object](../specs/theming.md#theme-object): every setting that differs from the defaults (`parameters`, `icons`, `scheme`, `color.spectrum`, `color.roles`, `typography.faces`, `typography.voices`). **Load** takes one back from the clipboard, so a saved or generated theme can be opened, tuned and copied again.
+3. Press **Copy**. The clipboard holds one [theme object](../specs/theming.md#theme-object): every setting that differs from the defaults, in its part (`geometry`, `typography`, `color`, `motion`, plus `icons` and `scheme`). With a brand active (the Brand page's Apply, or Load of a brand) it holds the `{ brand, theme }` bundle instead. **Load** takes a theme (version 1 or 2), a brand or a bundle back from the clipboard, so a saved or generated theme can be opened, tuned and copied again. Authoring a brand: [author a brand](author-a-brand.md).
 4. Paste the JSON into the agent prompt with what it is for: a saved theme, or new kit defaults.
 
 ## Applying it (the agent)

@@ -1,7 +1,7 @@
 // Page contract for the jig's content area. Every page renders from the same live theme (the jig
 // panel only edits tokens), so a page receives the inputs below and nothing about which panel tab
 // is open. Routes live in the URL hash (#/<route>), see ROUTES.
-import type { TextColor, ThemeParams, TypeRoleName } from '@massimo/ui-kit/tokens';
+import type { Brand, TextColor, ThemeParams, TypeRoleName } from '@massimo/ui-kit/tokens';
 import type { FaceMap, SpectrumPayload, VoiceMap } from '../protocol.ts';
 
 export interface PageProps {
@@ -11,12 +11,17 @@ export interface PageProps {
   faces: FaceMap;
   /** Each type role's text color (theme typography.colors). */
   typeColors: Record<TypeRoleName, TextColor>;
+  /** The brand the theme was hydrated from (the Brand page's Apply, or Load), if any. */
+  brand?: Brand | null;
 }
 
+/** Pages ask the jig to hydrate and apply a brand with this window event (detail: the brand). */
+export const APPLY_BRAND = 'studio:apply-brand';
+
 /** Content pages, in menu order. `home` is the default route (#/ or an unknown hash). */
-export const ROUTES = ['home', 'components', 'containers', 'elevation', 'geometry', 'typography', 'colors', 'motion'] as const;
+export const ROUTES = ['home', 'components', 'containers', 'elevation', 'geometry', 'typography', 'colors', 'motion', 'brand'] as const;
 export type Route = (typeof ROUTES)[number];
 export const ROUTE_LABEL: Record<Route, string> = {
   home: 'Home', components: 'Components', containers: 'Containers', elevation: 'Elevation', geometry: 'Geometry',
-  typography: 'Typography', colors: 'Colors', motion: 'Motion',
+  typography: 'Typography', colors: 'Colors', motion: 'Motion', brand: 'Brand',
 };
