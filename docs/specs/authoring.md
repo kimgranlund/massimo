@@ -19,6 +19,18 @@ How to add or change a reusable ui-kit component. Assembling a screen from exist
 - Styles live in the folder's slot recipe (`<name>.recipe.ts`, registered in `components/recipes.ts`), never in element modules; the element and the React renderer only apply the generated classes. The recipe's slots are `root` plus the parts its contract owns (`test/recipes.test.ts`). A selector key appears once per style object: JavaScript keeps the last of two equal keys, so compose recipe objects with `mergeStyles` (`recipe-parts.ts`), not spreads. Continuous values reach CSS only as custom properties set by script; finite choices are attributes mapped to recipe variants.
 - States are keyed on ARIA or `data-*` and styled in the recipe with the conditions of `styles/conditions.ts`, which match both renderers; add new ones to `contracts/states.json`.
 
+## Traps
+
+Each of these cost a debugging cycle; the symptom is silent (no error, a wrong or missing value).
+
+- **React `className` on an upgraded kit element.** A web component puts its recipe classes on itself when it renders; React re-setting `className` later (a changed value) replaces them, and the element falls back to unstyled. Give the element a `key` that changes with the class (so React recreates it), or set classes only at creation.
+- **Panda extracts `css()` statically.** Style objects built at runtime (`Object.fromEntries(…)` passed to `css()`) generate no CSS. Generated rules belong in a recipe or global style that the preset builds at codegen (`container.recipe.ts` `containerChain`), or, in the jig only, a scoped stylesheet.
+- **Custom-property cycles.** A property whose value reaches itself through other properties is invalid at computed time and every property in the loop is empty (badge, tag and chip `--slot` → `--h` → `--chip-h` → `--ctl-h` → `--slot`). Derive shared inputs from the unit, not from per-element results (`--ctl-h` uses `(6 + 2·inset)·u`, not `--slot`).
+- **Depth rules must be exact.** `C C` also matches deeper descendants, so a deep element redeclares its parent's variables from its own values. A rule for depth n is `chain(n):not(chain(n + 1))`.
+- **Tokens resolve where declared.** Panda declares tokens on `:root`; a token that reads a `--ui-*` input resolves with the root's value. A scope that sets inputs for its subtree (the jig canvas, a themed region) redeclares them: `unitTokenCss()`, `motionTokenCss()`, `elevationTokenCss()`.
+- **Explicit colors outrank roles.** An atomic `color` beats a `textStyle`'s color, so a role remap (theme `typography.colors`) never reaches text that also sets a color. Let the role carry the color.
+- **Lint advises.** `lintTheme` never blocks a setting, a save or a build; new rules are warnings or info.
+
 ## Change together
 
 A component change is complete when these agree:
