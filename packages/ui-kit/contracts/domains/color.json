@@ -121,8 +121,8 @@
         {
           "name": "true",
           "set": {
-            "spectrum.mat": "none",
-            "spectrum.tint": 75
+            "spectrum.mat": "tinted",
+            "spectrum.tint": 0
           },
           "means": "true grey neutrals"
         },

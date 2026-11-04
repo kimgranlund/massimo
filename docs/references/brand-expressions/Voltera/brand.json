@@ -1,0 +1,125 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "voltera",
+  "subject": {
+    "name": "Voltera",
+    "audience": "engineers and researchers prototyping electronics",
+    "primaryJob": "make printing circuits approachable without losing technical credibility",
+    "kind": "product",
+    "sources": [
+      "the three printed pads of the V mark (V11)",
+      "blue for research and green for PCBs (V13)",
+      "printer photography (V17)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "reinterpret",
+      "principles": [
+        "hierarchy that is apparent and easy to scan (V12)",
+        "a stated color ratio across the whole design (V13)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The electronics bench",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "A clean bench with a printer, boards and bright conductive traces on a monochrome ground.",
+      "materials": [
+        "circuit boards",
+        "conductive ink",
+        "anodized metal"
+      ],
+      "light": "even and bright",
+      "outOfBounds": [
+        "elevation.floating"
+      ],
+      "character": {
+        "curvature": "round"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a circuit pad",
+    "take": "three printed pads that form a mark (V11)",
+    "leave": "traces as decoration"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Primary accent",
+        "value": "#00C2F5",
+        "role": "primary"
+      },
+      {
+        "name": "Secondary accent",
+        "value": "#6FCF2A",
+        "role": "secondary"
+      },
+      {
+        "name": "Off White",
+        "value": "#FAFAFA",
+        "role": "ground"
+      },
+      {
+        "name": "Rich Black",
+        "value": "#1C1C1C",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "source-sans-3"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 700,
+      "heading": 600
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "flat",
+    "space": "airy"
+  },
+  "adaptivity": "both",
+  "signature": {
+    "concept": "the rounded circuit pad",
+    "scale": "curvature",
+    "reason": "V14's tiles share the printed pad's generous corner (V11), which answers the muse on the bench territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from Swiss crisp corners: pads and tiles are round.",
+    "type.faces": "Stand-in for display: Lato (V12) is outside the catalogue; Source Sans 3 is the closest humanist. Inter is named on V12.",
+    "type.weights": "Lato Bold for titles, Semibold for subheaders (V12)",
+    "type.character.type-scale": "plain titles over body (V12)",
+    "form.curvature": "rounded tiles (V14)",
+    "form.line": "filled tiles (V13)",
+    "form.elevation": "flat tiles (V14)",
+    "form.space": "open white pages (V13)",
+    "adaptivity": "the accents read as text only on dark grounds (V13)",
+    "color.anchors.0": "V13, printed HEX; 30% of a design.",
+    "color.anchors.1": "V13, printed HEX; 10% of a design.",
+    "color.anchors.2": "V13, printed HEX.",
+    "color.anchors.3": "V13, printed HEX."
+  }
+}

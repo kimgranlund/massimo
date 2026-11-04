@@ -336,6 +336,7 @@ export function lintBrand(b: Brand): BrandFinding[] {
   // Faces: each brand face against the catalogue: known, and serving the weights its voices need.
   const fs = facesOf(b);
   const need = voiceWeights(new Set(fs.display?.descriptor === 'serif' || fs.body?.descriptor === 'serif' ? ['display', 'heading'] as const : []));
+  for (const [v, w] of Object.entries(b.type?.weights ?? {})) need[v as keyof typeof need] = [w!];
   const roleVoices: Record<string, (keyof typeof need)[]> = { display: ['display', 'heading'], body: ['body', 'ui'], utility: ['code', 'numeric'] };
   for (const [role, f] of Object.entries(facesOf(b))) {
     const entry = catalogueFace(f!.family);

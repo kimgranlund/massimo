@@ -22,7 +22,7 @@
     },
     {
       "path": "contracts/domains/color.json",
-      "sha256": "99650dfc8a07e03116cf3ec4dcaff0dd0777e81d2a2c4e69cc1d4e6fc85b60f9"
+      "sha256": "139e790ea2f21603f92157f0e7bde8f09114cb213040e2f9b742bd24524d8d4a"
     },
     {
       "path": "tokens/themes/descriptors.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "677959b9529a388594721f2c337daa54f6e04daa941d83cc3251dc2938c859db"
+      "sha256": "9788126ba7c23d339a4c86ea541b2fead8a056ac32631ca1fdc40323bc8a6abf"
     }
   ],
   "renderers": {

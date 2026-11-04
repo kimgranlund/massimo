@@ -5,6 +5,7 @@
 import { useState } from 'react';
 import { DESCRIPTORS } from '@massimo/ui-kit/tokens/themes/descriptor-data';
 import { EXAMPLE_BRANDS } from '@massimo/ui-kit/tokens/brand/examples';
+import { REFERENCE_BRANDS } from './reference-brands.ts';
 import { FACE_CATALOGUE } from '@massimo/ui-kit/tokens/typography/faces';
 import { GROUNDINGS, TERRITORIES, RELATIONS, SUBJECT_KINDS, MUSE_KINDS, TONE_WORDS, brandCharacter, primaryTerritory, validateBrand, type Brand } from '@massimo/ui-kit/tokens/brand/index';
 import { ROLE_NAMES } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
@@ -35,10 +36,17 @@ export function BrandEditor({ brand, onBrand }: { brand: Brand | null; onBrand: 
 }
 
 function StartBrand({ onBrand }: { onBrand: (b: Brand) => void }) {
+  const start = async (v: string) => {
+    if (v === 'choose') return;
+    const reference = REFERENCE_BRANDS.find((b) => b.id === v);
+    if (!reference) return onBrand(structuredClone(v === 'blank' ? BLANK : EXAMPLE_BRANDS.find((b) => b.name === v)!));
+    const r = validateBrand(structuredClone((await reference.load()).default)); // test/brand.test.ts holds them valid
+    if (r.ok) onBrand(r.brand);
+  };
   return (
     <Group title="Brand">
-      <Select label="Start from" value="choose" options={[['choose', 'Choose…'], ['blank', 'A blank brand'], ...EXAMPLE_BRANDS.map((b) => [b.name, b.subject.name] as [string, string])]}
-        onValue={(v) => { if (v !== 'choose') onBrand(structuredClone(v === 'blank' ? BLANK : EXAMPLE_BRANDS.find((b) => b.name === v)!)); }} />
+      <Select label="Start from" value="choose" options={[['choose', 'Choose…'], ['blank', 'A blank brand'], ...EXAMPLE_BRANDS.map((b) => [b.name, b.subject.name] as [string, string]), ...REFERENCE_BRANDS.map((b) => [b.id, b.label] as [string, string])]}
+        onValue={(v) => void start(v)} />
     </Group>
   );
 }

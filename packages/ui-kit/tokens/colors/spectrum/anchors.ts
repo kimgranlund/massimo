@@ -55,6 +55,8 @@ const toneOfY = (Y: number) => (Y > 0.008856 ? 116 * Math.cbrt(Y) - 16 : 903.3 *
 const okLab = ([L, C, h]: number[]) => [L, C * Math.cos((h * Math.PI) / 180), C * Math.sin((h * Math.PI) / 180)];
 const deltaE = (p: number[], q: number[]) => { const [a, b] = [okLab(p), okLab(q)]; return 100 * Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); };
 
+/** A swatch's tone: the engine's, or from its color (pure gray ramps carry no HCT). */
+const toneOf = (sw: Swatch) => sw.hct?.[2] ?? toneOfY(yOf(sw.oklch));
 const css = ([L, C, h]: number[]) => `oklch(${L} ${C} ${h})`;
 /** Text on a fill: white or the darkest ink, whichever has the larger APCA Lc. */
 function onFill(lch: number[]): Swatch['apca'] {
@@ -103,7 +105,7 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     }
     claimed.set(family, anchor.role);
     const lightRamp = out.schemes.light[family];
-    const page = lightRamp[0].hct[2];
+    const page = toneOf(lightRamp[0]);
     const lc = apcaLc(toneOfY(yOfHex(anchor.value)), page);
     // The step whose target is nearest the anchor's Lc (steps 2–12), unless the anchor names one.
     const step = anchor.step ?? 2 + targets.light.reduce((best, t, i) => (Math.abs(t - lc) < Math.abs(targets.light[best] - lc) ? i : best), 0);
@@ -121,7 +123,7 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     let dark: AnchorResult['dark'];
     if (anchor.dark) {
       const darkRamp = out.schemes.dark[family];
-      const lcD = apcaLc(toneOfY(yOfHex(anchor.dark)), darkRamp[0].hct[2]);
+      const lcD = apcaLc(toneOfY(yOfHex(anchor.dark)), toneOf(darkRamp[0]));
       const stepD = 2 + targets.dark.reduce((best, t, i) => (Math.abs(t - lcD) < Math.abs(targets.dark[best] - lcD) ? i : best), 0);
       setSwatch(darkRamp[stepD - 1], srgbToOklch(anchor.dark));
       const lo = stepD > 2 ? targets.dark[stepD - 3] : 0, hi = stepD < 12 ? targets.dark[stepD - 1] : Infinity;
@@ -141,12 +143,12 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     if (anchor.role !== 'ground' && anchor.role !== 'ink') continue;
     if (!neutral) continue;
     const [lightStep, darkStep] = anchor.role === 'ground' ? [1, 12] : [12, 1];
-    const page = data.schemes.light[neutral][0].hct[2];
+    const page = toneOf(data.schemes.light[neutral][0]);
     const lc = apcaLc(toneOfY(yOfHex(anchor.value)), page);
     const pin = (mode: 'light' | 'dark', step: number, hex: string) => {
       const sw = out.schemes[mode][neutral][step - 1], want = srgbToOklch(hex);
       setSwatch(sw, want);
-      sw.hct[2] = toneOfY(yOf(want)); // the tone contrast reads
+      if (sw.hct) sw.hct[2] = toneOfY(yOf(want)); // the tone contrast reads
     };
     const before = deltaE(srgbToOklch(anchor.value), data.schemes.light[neutral][lightStep - 1].oklch);
     pin('light', lightStep, anchor.value);

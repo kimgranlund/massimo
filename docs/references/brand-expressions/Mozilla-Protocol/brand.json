@@ -1,0 +1,113 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "mozilla-protocol",
+  "subject": {
+    "name": "Mozilla Protocol",
+    "audience": "visitors to Mozilla's and Firefox's websites",
+    "primaryJob": "give Mozilla sites one set of roles and components with room for a brand's own voice",
+    "kind": "tool",
+    "sources": [
+      "the shared navigation pattern (P03)",
+      "one set of roles across two type scales (P02)",
+      "paired headline and text faces (P01)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "brutalism",
+      "relation": "reinterpret",
+      "principles": [
+        "default elements, hard edges: the outlined button (P03)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The open web",
+      "primary": true,
+      "description": "A plain page of black text, bold navigation labels and one blue outlined action.",
+      "materials": [
+        "default links",
+        "hard rules"
+      ],
+      "light": "screen light"
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a browser's default link",
+    "take": "plain blue that plainly means action (P03)",
+    "leave": "unstyled roughness"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Action blue",
+        "value": "#0464DC",
+        "role": "primary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "natural"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "space-grotesk"
+      },
+      "body": {
+        "ref": "inter"
+      },
+      "utility": {
+        "ref": "inter"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "outlined",
+    "elevation": "flat",
+    "space": "balanced"
+  },
+  "adaptivity": "light-first",
+  "voice": {
+    "samples": {
+      "action": "Download Firefox"
+    }
+  },
+  "signature": {
+    "concept": "the outlined square button",
+    "scale": "line",
+    "reason": "P03's only action is a square blue outline, the muse's plain blue given a hard edge"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Three study boards are thin evidence. Departs from the canon's flat scale (P02).",
+    "type.faces": "Stand-in for display: Mozilla Headline and Metropolis (P01) are outside the catalogue. Inter is Firefox's text face; Mozilla Text is not in the catalogue.",
+    "type.character.type-scale": "Title 2XL 76 px over Body 16 px (P02)",
+    "color.character.vibrancy": "one saturated action blue (P03)",
+    "form.curvature": "the square button (P03)",
+    "form.line": "outlined action and rules (P03)",
+    "form.elevation": "flat bars (P03)",
+    "form.space": "standard spacing, not the canon's tight (P03)",
+    "adaptivity": "the studied pages are light (P03)",
+    "color.anchors.0": "Sampled from P03, not a printed value. Mozilla's and Firefox's own palettes aren't in this study.",
+    "color.anchors.1": "Sampled from P03.",
+    "color.anchors.2": "Sampled from P03."
+  }
+}

@@ -198,7 +198,7 @@ export function SizeLadder({ family, params, children }: { family: LadderFamily;
     <div role="list" aria-label="Sizes">
       {sizes.map((u) => {
         const isTheme = u === theme;
-        const lines = LADDER_METRICS[family]({ unit: u, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] });
+        const lines = LADDER_METRICS[family]({ unit: u, border: Math.min(params.border, u / 2), radiusScale: params['radius-scale'], density: DENSITIES[params.density] });
         return (
           <div role="listitem" key={u} className={ladderRow}>
             <div className={ladderMeta}>

@@ -1,0 +1,120 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "north-sea-jazz",
+  "subject": {
+    "name": "NN North Sea Jazz Festival",
+    "audience": "festival visitors in Rotterdam",
+    "primaryJob": "show the rhythm of the festival and which day is which",
+    "kind": "campaign",
+    "sources": [
+      "lettering cut into parallel bands (NS01)",
+      "a different color per day (NS02)",
+      "type animated by custom code"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "constructivism",
+      "relation": "reinterpret",
+      "principles": [
+        "diagonals and changing angles that move the eye (NS01)",
+        "one loud color on black (NS03)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "After dark in Rotterdam",
+      "ref": "nocturne",
+      "primary": true,
+      "description": "Black posters at a tram stop with red lettering that seems to shake; the city moves behind them.",
+      "materials": [
+        "black poster stock",
+        "thin parallel cuts"
+      ],
+      "light": "night and passing trams",
+      "character": {
+        "elevation": "flat"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "work",
+    "name": "a jazz rhythm",
+    "take": "interval and hold: type that gathers, rests and breaks apart (NS02)",
+    "leave": "instruments as imagery"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Saturday red",
+        "value": "#E42C34",
+        "role": "primary",
+        "dark": "#E42C34"
+      },
+      {
+        "name": "Friday cyan",
+        "value": "#04CCFC",
+        "role": "secondary"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Poster black",
+        "value": "#1C1C24",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "libre-franklin"
+      },
+      "body": {
+        "ref": "work-sans"
+      },
+      "utility": {
+        "ref": "work-sans"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 900,
+      "heading": 800
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless"
+  },
+  "movement": "lively",
+  "adaptivity": "dark-first",
+  "signature": {
+    "concept": "everything on black",
+    "scale": "adaptivity",
+    "reason": "all three pieces sit on black (NS01, NS03), and the after-dark territory keeps the page there so one color can shout"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Three case-study images are thin evidence. Departs from the canon's outlines: the color is a solid field.",
+    "type.faces": "Stand-ins: the source images show a heavy grotesque but don't name it.",
+    "type.weights": "very heavy lettering (NS01)",
+    "type.character.type-scale": "poster-scale type, held to classic so jig pages stay legible",
+    "form.curvature": "square-cut type on square posters (NS01)",
+    "form.line": "no outlines (NS03)",
+    "movement": "animated reveals and holds (NS02)",
+    "adaptivity": "all three pieces are on black (NS01, NS03)",
+    "color.anchors.0": "Sampled from NS01, not a printed value.",
+    "color.anchors.1": "Sampled from NS02, not a printed value. Sunday's pink isn't sampled: no still shows it.",
+    "color.anchors.2": "Text on the black pieces.",
+    "color.anchors.3": "Sampled from NS01; black pieces lead."
+  }
+}

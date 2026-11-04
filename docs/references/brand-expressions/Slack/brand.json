@@ -1,0 +1,142 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "slack",
+  "subject": {
+    "name": "Slack",
+    "audience": "people and teams who work together in Slack",
+    "primaryJob": "make working together simpler, more pleasant and more productive",
+    "kind": "product",
+    "sources": [
+      "the octothorpe's speech bubble and lozenge (SL17)",
+      "the aubergine ground (SL20)",
+      "four accent colors in set proportions (SL24)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "bauhaus",
+      "relation": "reinterpret",
+      "principles": [
+        "form built from a few basic shapes (SL17)",
+        "primary-like color used in stated proportions (SL24)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The channel",
+      "primary": true,
+      "description": "A busy shared workspace kept friendly: aubergine, white and four bright accents around plain conversation.",
+      "materials": [
+        "speech bubbles",
+        "bright accent tiles",
+        "outlined icons"
+      ],
+      "light": "screen light",
+      "outOfBounds": [
+        "elevation.floating"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the octothorpe",
+    "take": "a speech bubble and lozenge turned into a symbol (SL17)",
+    "leave": "the hash sign as decoration"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Aubergine",
+        "value": "#4A154B",
+        "role": "primary"
+      },
+      {
+        "name": "Blue",
+        "value": "#36C5F0",
+        "role": "secondary"
+      },
+      {
+        "name": "Green",
+        "value": "#2EB67D",
+        "role": "data1"
+      },
+      {
+        "name": "Yellow",
+        "value": "#ECB22E",
+        "role": "data2"
+      },
+      {
+        "name": "Red",
+        "value": "#E01E5A",
+        "role": "data3"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#1D1C1D",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "work-sans"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "confident",
+      "plain",
+      "warm"
+    ]
+  },
+  "signature": {
+    "concept": "the speech-bubble curve",
+    "scale": "curvature",
+    "reason": "SL17 builds the symbol from a bubble and a lozenge, so controls take the same rounded end, in conversation with the muse"
+  },
+  "avoid": [
+    "Silicon Valley clichés and jargon (SL14)"
+  ],
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from Bauhaus outlines and square corners: Slack's forms are rounded.",
+    "type.faces": "Stand-ins. Larsseit and Circular (SL27, SL28) are outside the catalogue; Work Sans and Manrope are the closest in kind.",
+    "type.character.type-scale": "four descending bold headings over body (SL29)",
+    "form.curvature": "rounded bubble forms (SL17)",
+    "form.line": "color fields, no outlines (SL24)",
+    "form.elevation": "flat color (SL24)",
+    "adaptivity": "white, black and aubergine grounds all carry the logo (SL20)",
+    "color.anchors.0": "SL24, printed HEX.",
+    "color.anchors.1": "SL24, printed HEX; accent.",
+    "color.anchors.2": "SL24, printed HEX; accent.",
+    "color.anchors.3": "SL24, printed HEX; accent.",
+    "color.anchors.4": "SL24, printed HEX; accent.",
+    "color.anchors.5": "SL24, printed HEX.",
+    "color.anchors.6": "SL24, printed HEX."
+  }
+}

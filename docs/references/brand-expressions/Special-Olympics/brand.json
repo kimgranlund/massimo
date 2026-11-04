@@ -1,0 +1,153 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "special-olympics",
+  "subject": {
+    "name": "Special Olympics",
+    "audience": "athletes, families, volunteers and supporters of the movement",
+    "primaryJob": "show athletes with intellectual disabilities as capable and make information clear for everyone",
+    "kind": "institution",
+    "sources": [
+      "the dynamic curve (SO47)",
+      "the red and gray mark (SO32)",
+      "medal colors in the extended palette (SO40)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "scandinavian-functionalism",
+      "relation": "reinterpret",
+      "principles": [
+        "democratic design: good things for everyday life",
+        "human scale and readable information (SO44)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The field of play",
+      "primary": true,
+      "description": "A white field cut by one confident red curve, with athletes and clear, readable information.",
+      "materials": [
+        "white paper",
+        "a red curved field",
+        "biscuit panels"
+      ],
+      "light": "bright daylight",
+      "outOfBounds": [
+        "elevation.floating"
+      ]
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the dynamic curve",
+    "take": "a confident arc that gives a layout momentum (SO47)",
+    "leave": "copying the curve into controls"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "SO Red",
+        "value": "#FF0000",
+        "role": "primary"
+      },
+      {
+        "name": "Biscuit",
+        "value": "#ECEADB",
+        "role": "secondary"
+      },
+      {
+        "name": "SO Grey",
+        "value": "#636359",
+        "role": "neutral"
+      },
+      {
+        "name": "Light Blue",
+        "value": "#0095DA",
+        "role": "data1"
+      },
+      {
+        "name": "Light Turquoise",
+        "value": "#39BB9D",
+        "role": "data2"
+      },
+      {
+        "name": "Light Yellow",
+        "value": "#FFD400",
+        "role": "data3"
+      },
+      {
+        "name": "Light Magenta",
+        "value": "#EC008C",
+        "role": "data4"
+      },
+      {
+        "name": "Light Purple",
+        "value": "#92278F",
+        "role": "data5"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "source-sans-3"
+      },
+      "body": {
+        "ref": "source-sans-3"
+      },
+      "utility": {
+        "ref": "source-sans-3"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "adaptivity": "light-first",
+  "signature": {
+    "concept": "the curve in the corners",
+    "scale": "curvature",
+    "reason": "SO47 builds layouts from circular arcs, and SO42's color pills round every label; corners echo that without copying the muse"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon's quiet accent: the red is pure and loud.",
+    "type.faces": "Stand-in. Ubuntu (SO43) is outside the catalogue; Source Sans 3 is the closest humanist. The book's fallback is Arial.",
+    "type.character.type-scale": "clear steps for informational text (SO45)",
+    "form.curvature": "arcs and pill labels (SO42, SO47)",
+    "form.line": "flat color, no outlines (SO39)",
+    "form.elevation": "flat fields (SO39)",
+    "color.character.vibrancy": "pure red and saturated medal colors (SO42)",
+    "adaptivity": "white gives the primary colors room (SO39)",
+    "color.anchors.0": "SO42, printed HEX.",
+    "color.anchors.1": "SO42, printed HEX; a supporting color.",
+    "color.anchors.2": "SO42, printed HEX.",
+    "color.anchors.3": "SO42, printed HEX.",
+    "color.anchors.4": "SO42, printed HEX.",
+    "color.anchors.5": "SO42, printed HEX.",
+    "color.anchors.6": "SO42, printed HEX.",
+    "color.anchors.7": "SO42, printed HEX.",
+    "color.anchors.8": "SO42, printed HEX.",
+    "color.anchors.9": "SO42, printed HEX."
+  }
+}

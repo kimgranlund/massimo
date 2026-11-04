@@ -1,0 +1,160 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "instacart",
+  "subject": {
+    "name": "Instacart",
+    "audience": "people shopping for groceries, from a quick reorder to a meal worth savoring",
+    "primaryJob": "carry someone from shopping to savoring",
+    "kind": "product",
+    "sources": [
+      "the Shop + Savor framework (I006)",
+      "the carrot symbol (I010)",
+      "food photography as color (I026)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "californian-modernism",
+      "relation": "reinterpret",
+      "principles": [
+        "optimism and warmth in everyday life",
+        "bold graphic color fields (I025, I032)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The kitchen table",
+      "ref": "market",
+      "primary": true,
+      "description": "Fresh produce on a cream ground: deep kale fields, one carrot accent and food photographed up close.",
+      "materials": [
+        "cream paper",
+        "kale-green fields",
+        "fresh food"
+      ],
+      "light": "warm daylight",
+      "character": {
+        "curvature": "round",
+        "space": "balanced"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a carrot",
+    "take": "one bright cut through calm grounds: the palette cleanser (I025)",
+    "leave": "cartoon vegetables as decoration"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Kale",
+        "value": "#003D29",
+        "role": "primary"
+      },
+      {
+        "name": "Carrot",
+        "value": "#FF7009",
+        "role": "secondary"
+      },
+      {
+        "name": "Pomegranate",
+        "value": "#BA0239",
+        "role": "data1"
+      },
+      {
+        "name": "Lime",
+        "value": "#0AAD0A",
+        "role": "data2"
+      },
+      {
+        "name": "Guava",
+        "value": "#FF7A9B",
+        "role": "data3"
+      },
+      {
+        "name": "Turmeric",
+        "value": "#ECAA01",
+        "role": "data4"
+      },
+      {
+        "name": "Cinnamon",
+        "value": "#C22F00",
+        "role": "data5"
+      },
+      {
+        "name": "Cashew",
+        "value": "#FAF1E5",
+        "role": "ground"
+      },
+      {
+        "name": "Kale ink",
+        "value": "#003D29",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "dm-serif-display"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 400,
+      "heading": 400
+    }
+  },
+  "form": {
+    "curvature": "round",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "movement": "calm",
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "warm",
+      "playful"
+    ]
+  },
+  "signature": {
+    "concept": "pill buttons beside soft frames",
+    "scale": "curvature",
+    "reason": "I078 ties a frame's radius to the pill button so the two shapes read as family, a soft answer to the kitchen-table territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon's layered depth: fields here are flat.",
+    "type.faces": "Stand-ins. Instacart Contrast and Sans (I037, I038) are outside the catalogue; DM Serif Display and Manrope are the closest in kind.",
+    "type.character.type-scale": "headline over a one-third subhead (I041)",
+    "form.curvature": "pill buttons and gently rounded frames (I078)",
+    "form.line": "flat color fields (I025)",
+    "form.elevation": "flat fields (I032)",
+    "type.weights": "DM Serif Display has one weight; the stand-in stays at it.",
+    "movement": "smooth, not frenetic (I085)",
+    "adaptivity": "Kale and Cashew work as the black and white (I025)",
+    "territories.character": "Departs from the market's tight space and soft corners: I078 and I031 are open and rounder.",
+    "color.anchors.0": "I025, printed HEX. I029 misprints Kale as #BA0239, Pomegranate's value.",
+    "color.anchors.1": "I025, printed HEX.",
+    "color.anchors.2": "I029, printed HEX.",
+    "color.anchors.3": "I029, printed HEX.",
+    "color.anchors.4": "I029, printed HEX.",
+    "color.anchors.5": "I029, printed HEX.",
+    "color.anchors.6": "I029, printed HEX.",
+    "color.anchors.7": "I025, printed HEX.",
+    "color.anchors.8": "Kale and Cashew are the brand's black and white (I025)."
+  }
+}

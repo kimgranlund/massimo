@@ -1,0 +1,132 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "frontline-aids",
+  "subject": {
+    "name": "Frontline AIDS",
+    "audience": "communities, partners and funders in the global HIV response",
+    "primaryJob": "amplify people on the frontline and demand an end to AIDS",
+    "kind": "institution",
+    "sources": [
+      "boxed protest headlines (F41, F43)",
+      "the marker loop and arrow (F37, F71)",
+      "pixel-grid illustration (F56)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "constructivism",
+      "relation": "reinterpret",
+      "principles": [
+        "type stacked and blocked to be heard (F43)",
+        "a few loud colors on black (F42)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The street protest",
+      "ref": "print-shop",
+      "primary": true,
+      "description": "Wheat-pasted posters and painted walls: heavy capitals on pink and black, a marker stroke over the top.",
+      "materials": [
+        "painted walls",
+        "fly posters",
+        "marker pen"
+      ],
+      "light": "daylight on a street wall",
+      "character": {
+        "curvature": "square"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "a protest placard",
+    "take": "a few heavy words you can read from across a street (F38)",
+    "leave": "crude production; the system is exact (F41)"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Activist Pink",
+        "value": "#E62F79",
+        "role": "primary"
+      },
+      {
+        "name": "Smart Blue",
+        "value": "#36B0E3",
+        "role": "secondary"
+      },
+      {
+        "name": "Emotional Green",
+        "value": "#23844E",
+        "role": "data1"
+      },
+      {
+        "name": "White",
+        "value": "#FFFFFF",
+        "role": "ground"
+      },
+      {
+        "name": "Truth Black",
+        "value": "#000000",
+        "role": "ink"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "work-sans"
+      },
+      "body": {
+        "ref": "manrope"
+      },
+      "utility": {
+        "ref": "manrope"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 900,
+      "heading": 900
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "borderless",
+    "elevation": "flat"
+  },
+  "adaptivity": "both",
+  "voice": {
+    "tone": [
+      "candid",
+      "confident"
+    ]
+  },
+  "signature": {
+    "concept": "boxed headlines with hard edges",
+    "scale": "curvature",
+    "reason": "F41 sets words in hard-edged boxes, so every corner stays square, as a placard does in the street protest territory"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from the canon's outlines: the blocks are filled.",
+    "type.faces": "Stand-ins. Quasimoda Heavy and Raleway (F38, F39) are outside the catalogue; Work Sans at 900 and Manrope are the closest in kind. The deck's headlines are uppercase, which the schema can't set.",
+    "type.weights": "Quasimoda Heavy for headlines (F38)",
+    "type.character.type-scale": "large headlines over smaller Raleway (F40)",
+    "form.curvature": "square boxes (F41)",
+    "form.line": "filled blocks, no outlines (F43)",
+    "form.elevation": "flat print and paint (F32)",
+    "adaptivity": "headlines work on black and inverted (F42)",
+    "color.anchors.0": "F33, printed HEX.",
+    "color.anchors.1": "F33, printed HEX.",
+    "color.anchors.2": "F33, printed HEX; the heritage color.",
+    "color.anchors.3": "F33, printed HEX.",
+    "color.anchors.4": "F33, printed HEX."
+  }
+}

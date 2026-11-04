@@ -2,7 +2,7 @@
 // proven on three worked brands (tokens/brand/examples) with different groundings.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import Ajv from 'ajv';
 import { validateBrand, hydrate, lintBrand, brandCharacter, brandJsonSchemaText, GROUNDINGS, TERRITORIES, type Brand } from '../tokens/brand/index.ts';
 import { DESCRIPTORS } from '../tokens/themes/descriptor-data.ts';
@@ -211,4 +211,27 @@ test('brand: type.weights reach the theme and its CSS, and out-of-range weights 
   assert.equal(validateThemeObject(theme).ok, true);
   assert.equal(validateBrand({ ...base, type: { weights: { display: 950 } } }).ok, false);
   assert.equal(validateBrand({ ...base, type: { weights: { body: 500 } } }).ok, false);
+});
+
+test('brand: every reference brand (the jig lists them) is valid, hydrates with no open question and lints clean', () => {
+  const root = new URL('../../../docs/references/brand-expressions/', import.meta.url);
+  const folders = readdirSync(root, { withFileTypes: true }).filter((d) => d.isDirectory() && existsSync(new URL(`${d.name}/brand.json`, root))).map((d) => d.name);
+  assert.ok(folders.length >= 3, `found ${folders.length} reference brands`);
+  for (const folder of folders) {
+    const b = brand(JSON.parse(readFileSync(new URL(`${folder}/brand.json`, root), 'utf8')));
+    const { theme, unresolved } = hydrate(b);
+    assert.deepEqual(unresolved, [], folder);
+    assert.ok(validateThemeObject(theme).ok, folder);
+    assert.deepEqual(lintBrand(b).filter((f) => f.severity === 'warning'), [], folder);
+  }
+});
+
+test('brand: a neutral or surface anchor on a pure gray ramp generates (true neutrals carry no HCT)', async () => {
+  const { anchoredSpectrum, generateSpectrum, resolveRoles } = await import('../tokens/colors/spectrum/index.ts');
+  const { spectrumOverrides, normalizeSpectrum } = await import('../tokens/colors/spectrum/config.ts');
+  const b = brand({ ...minimal, form: {}, color: { anchors: [{ name: 'g', value: '#7c7c6c', role: 'neutral' }, { name: 'w', value: '#ffffff', role: 'ground' }], character: { neutral: 'true' } } });
+  const { theme } = hydrate(b);
+  const gen = generateSpectrum(spectrumOverrides(normalizeSpectrum(theme.color!.spectrum ?? {})));
+  const { report } = anchoredSpectrum(gen, resolveRoles(gen, theme.color!.roles ?? {}), theme.color!.anchors);
+  assert.deepEqual(report.map((r) => r.role).sort(), ['ground', 'neutral']);
 });

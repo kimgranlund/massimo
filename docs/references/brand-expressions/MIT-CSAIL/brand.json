@@ -1,0 +1,130 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "mit-csail",
+  "subject": {
+    "name": "MIT CSAIL",
+    "audience": "researchers, students and partners of the lab",
+    "primaryJob": "give a large research lab one recognizable identity",
+    "kind": "institution",
+    "sources": [
+      "the Stata Center's brick, yellow and metal (C20)",
+      "the lab's building as inspiration (C05)",
+      "geometric patterns (C25)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "ulm-school",
+      "relation": "reinterpret",
+      "principles": [
+        "design as research, not styling",
+        "a system of tints and shades (C21)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "The Stata Center",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "A research building of brick, glossy yellow and brushed metal, with posters and charts on its walls.",
+      "materials": [
+        "brick",
+        "glossy yellow panels",
+        "brushed metal"
+      ],
+      "light": "bright atrium light",
+      "character": {
+        "curvature": "square"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "place",
+    "name": "the Stata Center",
+    "take": "colors taken from real building materials (C20)",
+    "leave": "its tilting forms in everyday controls"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "Brick",
+        "value": "#B94700",
+        "role": "primary"
+      },
+      {
+        "name": "Yellow",
+        "value": "#F0B323",
+        "role": "secondary"
+      },
+      {
+        "name": "Metal grey",
+        "value": "#898D8D",
+        "role": "neutral"
+      },
+      {
+        "name": "Blue",
+        "value": "#009CDE",
+        "role": "data1"
+      },
+      {
+        "name": "Navy",
+        "value": "#151F6D",
+        "role": "data2"
+      },
+      {
+        "name": "Teal",
+        "value": "#49C5B1",
+        "role": "data3"
+      }
+    ],
+    "feedback": "independent",
+    "character": {
+      "vibrancy": "vivid"
+    }
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "source-sans-3"
+      },
+      "body": {
+        "ref": "source-sans-3"
+      },
+      "utility": {
+        "ref": "source-sans-3"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    }
+  },
+  "form": {
+    "curvature": "square",
+    "line": "hairline",
+    "space": "airy"
+  },
+  "adaptivity": "light-first",
+  "signature": {
+    "concept": "flat planes of building color",
+    "scale": "curvature",
+    "reason": "C22 sets type on square color panels, like the Stata Center's flat cladding; on the laboratory territory no corner softens them"
+  },
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. Departs from Ulm's muted grey: the brick and yellow are warm and saturated.",
+    "type.faces": "Stand-in. CSAIL Ebony (C17) is outside the catalogue; Source Sans 3 is the closest in kind. The book's fallbacks are Arial and Georgia (C19).",
+    "type.character.type-scale": "bold headings over open text (C18)",
+    "color.character.vibrancy": "glossy yellow and brick (C20)",
+    "form.curvature": "square panels (C22)",
+    "form.line": "thin ruled tables and labels (C20)",
+    "form.space": "open white pages (C20)",
+    "adaptivity": "white pages lead, with dark panels for specimens (C20, C21)",
+    "color.anchors.0": "C20, printed HTML value.",
+    "color.anchors.1": "C20, printed HTML value.",
+    "color.anchors.2": "C20, printed HTML value.",
+    "color.anchors.3": "C20, printed HTML value; secondary.",
+    "color.anchors.4": "C20, printed HTML value; secondary.",
+    "color.anchors.5": "C20, printed HTML value; secondary."
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "../../../../packages/ui-kit/contracts/brand.schema.json",
+  "schemaVersion": 1,
+  "name": "nasa",
+  "subject": {
+    "name": "NASA",
+    "audience": "the public, contractors and staff who meet NASA's publications, signs and vehicles",
+    "primaryJob": "make one agency recognizable and legible across every field center and medium",
+    "kind": "institution",
+    "sources": [
+      "the single-stroke NASA logotype (N05)",
+      "the manual's square drawing grids (N11)",
+      "painted motor vehicles (V01)"
+    ]
+  },
+  "grounding": {
+    "primary": {
+      "ref": "swiss-international",
+      "relation": "inherit",
+      "principles": [
+        "the grid organizes everything: the manual is built on it",
+        "sans-serif type with a clear hierarchy (N27)"
+      ]
+    }
+  },
+  "territories": [
+    {
+      "name": "Mission control",
+      "ref": "laboratory",
+      "primary": true,
+      "description": "Engineering drawings and flush-left documents: a white field, one red mark and exact rules for each.",
+      "materials": [
+        "white paper",
+        "technical drawings",
+        "painted vehicle panels"
+      ],
+      "light": "bright and even",
+      "character": {
+        "curvature": "crisp"
+      }
+    }
+  ],
+  "muse": {
+    "kind": "object",
+    "name": "the NASA logotype",
+    "take": "one even stroke, drawn on a grid (N05, N11)",
+    "leave": "the 1970s print production"
+  },
+  "color": {
+    "anchors": [
+      {
+        "name": "NASA red",
+        "value": "#CC243C",
+        "role": "primary"
+      },
+      {
+        "name": "NASA warm gray",
+        "value": "#7C7C6C",
+        "role": "neutral"
+      },
+      {
+        "name": "White ground",
+        "value": "#FFFFFF",
+        "role": "ground"
+      }
+    ],
+    "feedback": "independent",
+    "character": {}
+  },
+  "type": {
+    "faces": {
+      "display": {
+        "ref": "helvetica-neue"
+      },
+      "body": {
+        "ref": "helvetica-neue"
+      },
+      "utility": {
+        "ref": "futura"
+      }
+    },
+    "character": {
+      "type-scale": "classic"
+    },
+    "weights": {
+      "display": 500,
+      "heading": 500
+    }
+  },
+  "form": {
+    "curvature": "crisp",
+    "line": "hairline",
+    "space": "airy"
+  },
+  "adaptivity": "light-first",
+  "signature": {
+    "concept": "one red on a white field",
+    "scale": "curvature",
+    "reason": "N11 draws the mark on a square grid, and on the laboratory territory every edge stays drafted, so red is the only thing that speaks"
+  },
+  "avoid": [
+    "more than one signature color beside red (N07)"
+  ],
+  "rationale": {
+    "grounding.primary": "Inferred, not stated by the source. The manual's date, grid and Helvetica fit the canon.",
+    "type.faces": "Helvetica is named on N27, and Futura is an approved alternative on N28.",
+    "type.weights": "Helvetica Medium for headings (N27)",
+    "type.character.type-scale": "modest steps between Light text and Medium headings (N27)",
+    "form.curvature": "square grid drawings (N11)",
+    "form.line": "thin rules separate the manual's specimens (N27)",
+    "form.space": "open white fields (N07)",
+    "adaptivity": "a white or light neutral ground (N07)",
+    "color.anchors.0": "Sampled from the scan of N09, not a printed value; a 1976 swatch may have shifted.",
+    "color.anchors.1": "Sampled from the scan of N09, not a printed value.",
+    "color.anchors.2": "N07 specifies a white or light neutral ground."
+  }
+}
