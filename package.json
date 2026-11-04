@@ -16,9 +16,12 @@
     "check:browsers": "node apps/studio/scripts/check-browsers.ts",
     "faces:measure": "node apps/studio/scripts/measure-faces.ts",
     "icons:check": "node apps/studio/scripts/check-icons.ts",
-    "brand:studio": "npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand && npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand --scope"
+    "brand:studio": "npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand && npm run -s brand -w @massimo/ui-kit -- build ../../apps/studio/brand/massimo.brand.json --out ../../apps/studio/public/brand --scope",
+    "lighthouse": "lhci autorun",
+    "lighthouse:live": "lhci autorun --config=lighthouserc.live.json"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.16.0",
     "@pandacss/dev": "^2.4.0",
     "@pandacss/preset-base": "^2.4.0",
     "@types/react": "^19.3.0",

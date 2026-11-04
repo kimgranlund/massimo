@@ -1,0 +1,22 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "https://kimgranlund.github.io/massimo/",
+        "https://kimgranlund.github.io/massimo/brand-demo.html",
+        "https://kimgranlund.github.io/massimo/geometry-check.html"
+      ],
+      "numberOfRuns": 1,
+      "settings": { "preset": "desktop", "chromeFlags": "--headless=new --no-sandbox" }
+    },
+    "assert": {
+      "assertions": {
+        "errors-in-console": ["error", { "maxLength": 0 }],
+        "http-status-code": "error",
+        "is-on-https": "error",
+        "cache-insight": "warn"
+      }
+    },
+    "upload": { "target": "filesystem", "outputDir": ".lighthouseci/live" }
+  }
+}

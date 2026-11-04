@@ -25,3 +25,4 @@ dist-ssr
 .sdlc/messages/
 .claude/worktrees/
 docs/references/claude-artifacts-skills/web-artifacts-builder/
+.lighthouseci/

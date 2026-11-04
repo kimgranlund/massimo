@@ -29,6 +29,14 @@ jobs:
       - run: npm run build
         env:
           STUDIO_BASE: /massimo/
+      # Lighthouse CI on the built site under /massimo/: console errors, 404s, per-page script budgets,
+      # Web Vitals on the studio and brand demo (lighthouserc.json). A failure stops the deploy.
+      - run: npm run lighthouse
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-built
+          path: .lighthouseci/reports
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -43,3 +51,22 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # The live site after deploy: every page loads over HTTPS with no console errors or 404s
+  # (lighthouserc.live.json). Cache lifetimes stay a warning: Pages serves max-age=600.
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lighthouse:live
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-live
+          path: .lighthouseci/live
