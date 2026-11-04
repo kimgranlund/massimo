@@ -69,7 +69,7 @@ export const select = defineSlotRecipe({
         disabled: ':is([data-disabled] > *, :disabled > *, :where([data-disabled] > select > *))',
         readonly: ':is([data-readonly] > *, :where([data-readonly] > select > *))',
       }), {
-      cursor: 'pointer', userSelect: 'none',
+      cursor: 'default', userSelect: 'none',
       // Open: the trigger holds the pressed fill and the chevron turns.
       [`&${OPEN}`]: { bg: 'bg.mutedActive', '& > [data-part=icon]': { rotate: '180deg' } },
       '& > [data-part=value]': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' },

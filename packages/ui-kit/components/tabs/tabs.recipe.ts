@@ -38,7 +38,7 @@ export const tabs = defineSlotRecipe({
     tab: {
       position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
       borderStyle: 'solid', borderColor: 'transparent', bg: 'transparent', color: 'fg.muted',
-      fontFamily: UI_FONT, fontSize: 'var(--font)', fontWeight: 'medium', lineHeight: 'var(--line)', cursor: 'pointer', userSelect: 'none',
+      fontFamily: UI_FONT, fontSize: 'var(--font)', fontWeight: 'medium', lineHeight: 'var(--line)', cursor: 'default', userSelect: 'none',
       ...PATTERN,
       transition: t('feedback', ...PAINT),
       [`${ENABLED}:hover`]: { color: 'fg' },

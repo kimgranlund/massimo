@@ -20,7 +20,7 @@ const PATTERN = constructionPattern({
 const row = mergeStyles(compositeOption, PATTERN, {
   display: 'flex', alignItems: 'center', boxSizing: 'border-box', margin: 0,
   bg: 'transparent', color: 'fg', fontFamily: UI_FONT, fontWeight: 'medium', lineHeight: 'var(--line)', textDecoration: 'none',
-  cursor: 'pointer', userSelect: 'none', borderStyle: 'solid',
+  cursor: 'default', userSelect: 'none', borderStyle: 'solid',
   transition: t('feedback', ...PAINT),
   '&:hover, &[data-popup-open]': { bg: 'bg.control' },
   '&:active': { bg: 'bg.controlHover' },

@@ -18,7 +18,7 @@ export const disclosureTrigger = {
   display: 'flex', alignItems: 'center', width: '100%', textAlign: 'start',
   minHeight: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'transparent', borderRadius: 'var(--radius)',
   bg: 'transparent', color: 'fg', fontFamily: UI_FONT, fontSize: 'var(--font)', fontWeight: 'medium', lineHeight: 'var(--line)',
-  cursor: 'pointer', userSelect: 'none',
+  cursor: 'default', userSelect: 'none',
   ...PATTERN,
   // The label takes the row; the caret sits at the end.
   '& > [data-part=contents]': { flex: '1', minWidth: 0 },

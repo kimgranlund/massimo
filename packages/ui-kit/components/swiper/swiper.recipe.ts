@@ -41,7 +41,7 @@ export const swiper = defineSlotRecipe({
     },
     dots: { position: 'absolute', insetBlockEnd: 'calc(2 * var(--u))', insetInline: 0, display: 'flex', justifyContent: 'center', gap: 'var(--u)' },
     dot: {
-      display: 'grid', placeItems: 'center', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', cursor: 'pointer',
+      display: 'grid', placeItems: 'center', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', cursor: 'default',
       // The active dot stretches.
       _before: {
         content: '""', width: 'calc(2 * var(--u))', height: 'calc(2 * var(--u))', borderRadius: 'var(--u)',

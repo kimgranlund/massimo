@@ -19,7 +19,7 @@ export const button = defineSlotRecipe({
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
       height: 'var(--h)', padding: 'var(--pad)', borderWidth: 'var(--b)', borderColor: 'border.strong',
       borderRadius: 'var(--radius)', bg: 'bg.control', color: 'fg', fontFamily: UI_FONT, fontSize: 'var(--font)', lineHeight: 'var(--line)',
-      cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap',
+      cursor: 'default', userSelect: 'none', whiteSpace: 'nowrap',
       ...PATTERN,
       transition: t('feedback', ...PAINT),
       // Hover and press deepen the translucent control fill (matches neutral 3 → 4 → 5 on the page tone,

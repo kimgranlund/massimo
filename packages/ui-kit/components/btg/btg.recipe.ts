@@ -65,7 +65,7 @@ export const chip = defineSlotRecipe({
         [FORCED]: { ...FORCED_EDGE, _disabled: { color: 'GrayText' } },
       },
       // The remove icon is a click target inside the chip, not a nested button.
-      remove: { cursor: 'pointer', opacity: 0.7, transition: t('feedback', ...PAINT), _hover: { opacity: 1 } },
+      remove: { cursor: 'default', opacity: 0.7, transition: t('feedback', ...PAINT), _hover: { opacity: 1 } },
     };
   })(),
   variants: {
@@ -73,7 +73,7 @@ export const chip = defineSlotRecipe({
     selectable: {
       true: {
         root: {
-          _enabled: { cursor: 'pointer', _hover: { bg: 'bg.controlHover' }, _active: { bg: 'bg.controlActive' } },
+          _enabled: { cursor: 'default', _hover: { bg: 'bg.controlHover' }, _active: { bg: 'bg.controlActive' } },
           // Selected chips use the checkbox/switch "on" colors: the primary solid with on-solid text.
           _pressed: {
             bg: 'primary.solid', color: 'fg.onSolid', borderColor: 'primary.solid',

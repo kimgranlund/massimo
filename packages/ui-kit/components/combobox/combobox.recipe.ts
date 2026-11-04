@@ -52,7 +52,7 @@ const base = {
       // Clear and trigger: 6u slots with an sm icon (Base UI Combobox.Clear, Combobox.Trigger).
       [`& > ${BUTTONS}`]: {
         display: 'grid', placeItems: 'center', flexShrink: 0, minWidth: 'var(--slot)', minHeight: 'var(--slot)',
-        borderRadius: NESTED_RADIUS, color: 'fg.muted', cursor: 'pointer', transition: t('feedback', 'color', 'background-color'),
+        borderRadius: NESTED_RADIUS, color: 'fg.muted', cursor: 'default', transition: t('feedback', 'color', 'background-color'),
         '& > *': SM_ICON,
         '&:hover': { color: 'fg' },
       },
@@ -81,7 +81,7 @@ const base = {
     },
     'chip-remove': {
       display: 'grid', placeItems: 'center', flexShrink: 0, width: 'var(--slot)', height: 'var(--slot)', borderRadius: 'inherit',
-      color: 'fg.muted', cursor: 'pointer', transition: t('feedback', 'color', 'background-color'),
+      color: 'fg.muted', cursor: 'default', transition: t('feedback', 'color', 'background-color'),
       '& > *': SM_ICON,
       '&:hover': { color: 'fg', bg: 'bg.controlHover' },
     },

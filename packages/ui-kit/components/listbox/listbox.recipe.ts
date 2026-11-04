@@ -48,7 +48,7 @@ export const option = defineSlotRecipe({
   slots: ['root', 'leading', 'prefix', 'contents', 'suffix', 'trailing'],
   base: {
     root: {
-      display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', fontFamily: UI_FONT,
+      display: 'flex', alignItems: 'center', cursor: 'default', userSelect: 'none', fontFamily: UI_FONT,
       transition: t('feedback', ...PAINT),
       ...constructionPattern({
         slot: 'var(--u)', bare: 'calc(2 * var(--u))',
