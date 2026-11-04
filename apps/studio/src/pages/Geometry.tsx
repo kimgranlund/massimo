@@ -19,7 +19,7 @@ import '@massimo/ui-kit/components/tooltip/element';
 import '@massimo/ui-kit/components/preview-card/element';
 import '@massimo/ui-kit/components/navigation-menu/element';
 import { css } from '../../styled-system/css/index.js';
-import { DENSITIES,
+import { DENSITIES, densityFactor, densityInset, resolveContainer,
   SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup, resolveNavigationMenu,
   type BtgKind, type ControlParts, type GeometryInput, type TextPart,
 } from '@massimo/ui-kit/tokens';
@@ -120,6 +120,26 @@ export function GeometryPage({ params }: PageProps) {
         </div>
       </Section>
       <Divider />
+      <Section id="density" title="Density" note={`How much fits at the same unit, separate from scale: the theme's density (Geometry tab) or density="compact | default | loose" on any subtree. The control inset I is 0.5 + 0.25n + 0.25n² units (n = 0, 1, 2) and the container ladder scales by 0.5 + 0.5n; type, the 6u slot, icons and text edges never change. Columns at u = ${fmt(u)}px; the theme's density is highlighted.`}>
+        <div className={tableScroller}>
+          <table className={dataTable} aria-label="Density">
+            <thead><tr><th>Density</th><th>Inset I<small>u</small></th><th>Height<small>6u + 2I</small></th><th>Padding<small>I − B</small></th><th>Radius</th><th>Option<small>height · inset</small></th><th>Ladder<small>×</small></th><th>Card md<small>padding</small></th><th>Specimen</th></tr></thead>
+            <tbody>
+              {DENSITIES.map((d, n) => {
+                const g = { ...theme, density: d }, r = resolveControl(g), m = resolveComposite(g);
+                return (
+                  <tr key={d} className={n === params.density ? currentRow : undefined}>
+                    <td>{d}</td><td>{fmt(densityInset(n))}</td><td>{px(r.height)}</td><td>{px(r.padding)}</td><td>{px(r.radius)}</td>
+                    <td>{px(m.child.height)} · {px(m.child.inset)}</td><td>{fmt(densityFactor(n))}</td><td>{px(resolveContainer('card-md', { ...g, padUnits: (params as unknown as Record<string, number>)['pad-card-md'] }).padding)}</td>
+                    <td><span className={specimens} data-density={d}><ui-button>Save</ui-button><ui-segmented label="View" value="a"><ui-option value="a">Day</ui-option><ui-option value="b">Week</ui-option></ui-segmented></span></td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </Section>
+      <Divider />
       <Section id="construction" title="Construction pattern" note={`[leading] [prefix] [contents] [suffix] [trailing] at the theme unit (u = ${fmt(u)}px). Slots are 6u (${fmt(c.slot)}px); a text part's edge is 1u beside a slot, 2u at a bare edge, 0.5u beside another text part (so text parts sit 1u apart). Absent parts take no space. Values are start | end padding per text part.`}>
         <div className={tableScroller}>
           <table className={dataTable}>
@@ -154,7 +174,7 @@ export function GeometryPage({ params }: PageProps) {
         })}
       </Section>
       <Divider />
-      <Section id="fields" title="Fields and composites" note="Fields lay out as a slotless button (text where a button label sits); the select trigger adds a 6u chevron slot. Composites (listbox, segmented, select popup) pad 0.5u and shrink their options' inset, so a segmented row stays 8u.">
+      <Section id="fields" title="Fields and composites" note="Fields lay out as a slotless button (text where a button label sits); the select trigger adds a 6u chevron slot. Composites (listbox, segmented, select popup) pad 0.5u and shrink their options' inset, so a segmented row stays the control height; inset=&quot;none&quot; attaches them (no edge, no gap, square options inside).">
         {(() => {
           const f = resolveField(theme), s = resolveSelectTrigger(theme), m = resolveComposite(theme);
           return (
@@ -168,6 +188,14 @@ export function GeometryPage({ params }: PageProps) {
               <SpecRow label="composite" values={[`row ${px(m.rowHeight)} · edge ${pu(m.edge)} · radius ${px(m.radius)}`, `option height ${px(m.child.height)} · inset ${px(m.child.inset)} · radius ${px(m.child.radius)}`]}>
                 <ui-segmented label="View" value="a"><ui-option value="a">Day</ui-option><ui-option value="b">Week</ui-option></ui-segmented>
               </SpecRow>
+              {(() => {
+                const a = resolveComposite({ ...theme, inset: 'none' });
+                return (
+                  <SpecRow label='inset="none"' values={[`attached: edge ${pu(a.edge)} · gap 0 · radius ${px(a.radius)}`, `options square inside (radius 0), the ends keep R − D ${px(a.child.outerRadius)}`]}>
+                    <ui-segmented inset="none" label="View" value="a"><ui-option value="a">Day</ui-option><ui-option value="b">Week</ui-option><ui-option value="c">Month</ui-option></ui-segmented>
+                  </SpecRow>
+                );
+              })()}
               <SpecRow label="fieldset" values={[`gap ${pu(resolveFieldset(theme).gap)} (collection) · no padding, border or radius`]}>
                 <ui-fieldset legend="Address"><ui-input label="Street" hide-label="" value="Storgatan 1" /></ui-fieldset>
               </SpecRow>
