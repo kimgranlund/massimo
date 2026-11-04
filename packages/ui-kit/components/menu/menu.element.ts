@@ -20,13 +20,13 @@
 // keeps it open; checkbox and radio items keep it open by default). Events: openchange { open,
 // reason, event } (cancelable) on the host; change { checked, reason, event } on a checkbox item and
 // { value, reason, event } on a radio group (cancelable).
-import { UIElement, define, signal } from '../../core/index.ts';
-import {
-  applyAttrs, createDismissLayer, createFocusScope, createSubmenuAim, createPositioner, createTypeahead, eventDetails, hideTopLayer, isPrintableKey,
-  MENU_ITEM_SELECTOR, menuGroupAttrs, menuItemLabel, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate, menuOptionItems,
-  menuPopupAttrs, menuSeparatorAttrs, menuTriggerAttrs, showTopLayer, isRtl, submenuKeys, uid, unitOf,
-  type Attrs, type ChangeReason, type MenuItemKind, type Side,
-} from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid, type Attrs } from '../../dom/attrs.ts';
+import { createDismissLayer, createFocusScope, createPositioner, hideTopLayer, showTopLayer, unitOf, type Side } from '../../dom/floating.ts';
+import { createSubmenuAim, MENU_ITEM_SELECTOR, menuGroupAttrs, menuItemLabel, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate, menuOptionItems, menuPopupAttrs, menuSeparatorAttrs, menuTriggerAttrs, isRtl, submenuKeys, type MenuItemKind } from '../../dom/menu.ts';
+import { createTypeahead, isPrintableKey } from '../../dom/listbox.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
 import { partOf, setClasses } from '../classes.ts';
 import { arrangeSlots, claimSlots, SLOT_PARTS } from '../slots.ts';
 import { menu as menuRecipe } from '../../styled-system/recipes/menu.js';

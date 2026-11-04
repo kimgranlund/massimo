@@ -10,7 +10,7 @@ import { useFieldState } from '../state.react.ts';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
 import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import { RadioGroupCtx } from '../choice/group.react.ts';
-import { radioGroup } from '../../styled-system/recipes/index.js';
+import { radioGroup } from '../../styled-system/recipes/radio-group.js';
 
 export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'defaultValue' | 'onChange'>, PartBase {
   /** Form name of the radios; generated when omitted (they still group). */

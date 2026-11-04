@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/tabs/tabs.element.ts",
-      "sha256": "83c696bcf1fc4c0f56b8827dcf1be74f18f7f0596005687a61275f744dd7ed16"
+      "sha256": "362f687d73aafeb0eae09a1877bc0aa6bd9d0cbcd71df100af26c3f074df4cd7"
     },
     {
       "path": "components/tabs/tabs.react.tsx",
-      "sha256": "1ed5cefd6264c549a166b8f8d6de8473478183b2269e5347121a9637c67faa02"
+      "sha256": "c251a4bcf8ae8cc58c46c87b6e27267f24d33e2cea8e750e18e1ec88bdf439c0"
     },
     {
       "path": "components/tabs/tabs.recipe.ts",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"tabs\" test/disclosure.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Tabs\" test/disclosure.test.ts"

@@ -10,8 +10,11 @@
 // Groups: inside a <ui-radio-group> (radios) or <ui-checkbox-group> (checkboxes) the group owns
 // the value: it sets each member's checked state, a member's activation goes to the group, and the
 // group fires change and input instead of the member (Base UI RadioGroup / CheckboxGroup).
-import { UIFormElement, define, settleDefault, type Problem } from '../../core/index.ts';
-import { applyAttrs, checkedDataAttrs, eventDetails } from '../../dom/index.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { checkedDataAttrs } from '../../dom/state.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { checkbox } from '../../styled-system/recipes/checkbox.js';

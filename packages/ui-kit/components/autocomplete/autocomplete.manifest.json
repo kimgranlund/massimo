@@ -750,7 +750,7 @@
           "props": [
             "value?: string // The text (Base UI value).",
             "defaultValue?: string",
-            "onValueChange?: (value: string, details: import('../../dom/index.ts').ChangeDetails) => void // The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode.",
+            "onValueChange?: (value: string, details: import('../../dom/events.ts').ChangeDetails) => void // The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode.",
             "mode?: AutocompleteMode // list (default) filters; both filters and completes inline; inline completes only; none neither (Base UI mode).",
             "leading?: ReactNode // Leading icon (an <i name> or artwork).",
             "prefix?: ReactNode // Short text adornment before the label.",
@@ -773,7 +773,7 @@
             "props": [
               "value?: string // The text (Base UI value).",
               "defaultValue?: string",
-              "onValueChange?: (value: string, details: import('../../dom/index.ts').ChangeDetails) => void // The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode.",
+              "onValueChange?: (value: string, details: import('../../dom/events.ts').ChangeDetails) => void // The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode.",
               "mode?: AutocompleteMode = 'list' // list (default) filters; both filters and completes inline; inline completes only; none neither (Base UI mode)."
             ]
           },

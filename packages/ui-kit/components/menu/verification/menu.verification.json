@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/menu/menu.element.ts",
-      "sha256": "959a8c0cced359bb7cd7eb4a38634b3e48f166129276f41273a6064942492a2f"
+      "sha256": "7c53e060e51ab8ca2c0c8e1800bbd3748a8cc37b0c7437e612a1d8f709f53415"
     },
     {
       "path": "components/menu/menu.react.tsx",
-      "sha256": "6c6980b9360eec6b2ea5195995fb7697f65cb124211dc3d29af8c08e037cc07e"
+      "sha256": "93ec1d5c8adc29fa358cfeebf5bfde583f1ada7523907fcb533f6093016294f3"
     },
     {
       "path": "components/menu/menu.recipe.ts",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"menu\" test/menu.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Menu\" test/menu.test.ts"

@@ -8,8 +8,11 @@
 // part (ui-input, ui-select) or its ui-field's error part, and cleared when that control changes.
 // `validation-mode` (onSubmit | onBlur | onChange, Base UI's names; default onSubmit) decides when a
 // control's own errors show. The host stacks its children with the collection gap (resolveForm).
-import { UIElement, UIFormElement, define, registerFormOwner, signal, type ValidationMode } from '../../core/index.ts';
-import { applyAttrs, eventDetails } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { UIFormElement, registerFormOwner, type ValidationMode } from '../../core/form-element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { applyRecipe } from '../classes.ts';
 import { form } from '../../styled-system/recipes/form.js';
 

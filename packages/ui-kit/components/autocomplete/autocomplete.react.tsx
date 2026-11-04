@@ -10,7 +10,7 @@
 // <Autocomplete label leading prefix suffix placeholder showTrigger emptyText description error>
 // {items}</Autocomplete> is Root + parts.
 import type { ReactNode } from 'react';
-import type { AutocompleteMode } from '../../dom/index.ts';
+import type { AutocompleteMode } from '../../dom/combobox.ts';
 import type { PartProps } from '../parts.react.tsx';
 import {
   ComboboxClear, ComboboxControl, ComboboxDescription, ComboboxEmpty, ComboboxError, ComboboxGroup, ComboboxGroupLabel, ComboboxInput, ComboboxItem, ComboboxLabel,
@@ -23,7 +23,7 @@ export interface AutocompleteRootProps extends Omit<ComboboxRootProps, 'freeText
   value?: string;
   defaultValue?: string;
   /** The text changed (Base UI onValueChange): typing, a suggestion, the clear button or an arrow key in an inline mode. */
-  onValueChange?: (value: string, details: import('../../dom/index.ts').ChangeDetails) => void;
+  onValueChange?: (value: string, details: import('../../dom/events.ts').ChangeDetails) => void;
   /** list (default) filters; both filters and completes inline; inline completes only; none neither (Base UI mode). */
   mode?: AutocompleteMode;
 }

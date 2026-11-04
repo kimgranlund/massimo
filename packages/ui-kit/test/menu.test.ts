@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { createElement as h, type ReactElement, type ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTsx } from './load-tsx.ts';
-import { menuNavigate, menuItems, inTriangle, aimsAtSubmenu } from '../dom/index.ts';
+import { menuNavigate, menuItems, inTriangle, aimsAtSubmenu } from '../dom/menu.ts';
 
 await import('../components/menu/menu.element.ts');
 await import('../components/context-menu/context-menu.element.ts');

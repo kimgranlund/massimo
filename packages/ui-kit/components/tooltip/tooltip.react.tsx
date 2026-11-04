@@ -7,7 +7,8 @@
 // closeDelay and the warm-group timeout for the Roots inside it. The preset
 // <Tooltip content="Bold"><Button aria-label="Bold">…</Button></Tooltip> renders its child as the trigger.
 import { createContext, isValidElement, useContext, type ReactElement, type ReactNode } from 'react';
-import { isWarm, markClosed, WARM_TIMEOUT, type Align, type Side } from '../../dom/index.ts';
+import { isWarm, markClosed, WARM_TIMEOUT } from '../../dom/popup.ts';
+import { type Align, type Side } from '../../dom/floating.ts';
 import { Button } from '../button/button.react.tsx';
 import { PopupArrow, PopupPopup, PopupPositioner, PopupRootElement, PopupTrigger, usePopupRoot, type PopupKind, type PopupRootProps } from '../popover/popover.react.tsx';
 import { tooltip } from '../../styled-system/recipes/tooltip.js';

@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "components/popover/popover.element.ts",
-      "sha256": "980a5a61a685d524ae2615b9c398f22465c0850450bb52f590c6861f5ab2a634"
+      "sha256": "e33958dd4b36e9b36de08025e1c28f4dca4d1c9c7a2943d0daa3292c87441519"
     },
     {
       "path": "components/popover/popup-base.ts",
-      "sha256": "d4ef38d9c5130f816e385d7cc5beb6b8a301b730e820e351cddd998b416400ac"
+      "sha256": "a15130d3b30fbee4a5f862041da0e80278bddf73d8c4c7f850ebcd84d6943ad8"
     },
     {
       "path": "components/popover/popover.react.tsx",
-      "sha256": "91f044197f9b61a7cfc7ad04c7e05c58290fbfe77e1a63b50f2f75d824d46bac"
+      "sha256": "8bc9c216416022179e9d60da8bba7149820ec4f648e77fb722b8871d45ba23a8"
     },
     {
       "path": "components/popover/popover.recipe.ts",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"popover\" test/popup.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Popover\" test/popup.test.ts"

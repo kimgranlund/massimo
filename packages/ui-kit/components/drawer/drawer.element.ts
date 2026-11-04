@@ -8,8 +8,8 @@
 // open: it keeps its full size and sits --drawer-snap-x / -y toward its edge; a drag moves it both
 // ways and a release settles on the nearest point (snappointchange { value, reason: 'swipe', event })
 // or, below half the smallest, closes it.
-import { define } from '../../core/index.ts';
-import { SWIPE_OF, applySnapOffset, createSwipeDismiss, parseSnapPoints, snapExtent, type SnapPoint } from '../../dom/index.ts';
+import { define } from '../../core/element.ts';
+import { SWIPE_OF, applySnapOffset, createSwipeDismiss, parseSnapPoints, snapExtent, type SnapPoint } from '../../dom/swipe.ts';
 import type { DrawerSide } from '../../tokens/geometry/resolve.ts';
 import { UIDialog } from '../dialog/dialog.element.ts';
 import { drawer } from '../../styled-system/recipes/drawer.js';

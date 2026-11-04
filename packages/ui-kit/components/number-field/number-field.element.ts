@@ -14,16 +14,18 @@
 // { value, reason, event } (onValueChange / onValueCommitted).
 // Composition (optional): the parts may be authored as [data-part] children; each is adopted onto
 // the generated part (slots.ts adoptPart), the label, description and error text seed properties.
-import { UIFormElement, define, html, settleDefault, type Problem } from '../../core/index.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { html } from '../../core/template.ts';
 import { adoptAdornments, adoptPart, authoredParts, partText } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { numberField } from '../../styled-system/recipes/number-field.js';
 import type { FormatNumberOptions } from '../../tokens/typography/format.ts';
-import {
-  applyAttrs, clampNumber, eventDetails, fieldAttrs, formatNumberValue, holdStepper, isNumberChar, numberInputMode, numberKey,
-  hideTopLayer, parseNumber, sanitizeNumberText, showTopLayer, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled, uid, withExternalRefs,
-  type ChangeReason,
-} from '../../dom/index.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { clampNumber, formatNumberValue, holdStepper, isNumberChar, numberInputMode, numberKey, parseNumber, sanitizeNumberText, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled } from '../../dom/number.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { fieldAttrs, withExternalRefs } from '../../dom/field.ts';
+import { hideTopLayer, showTopLayer } from '../../dom/floating.ts';
 
 const ADORN = ['prefix', 'suffix'] as const;
 const AUTHORED = ['scrub-area', 'scrub-area > label', 'scrub-area > scrub-area-cursor', 'group', 'group > decrement', 'group > prefix', 'group > input', 'group > suffix', 'group > increment', 'description', 'error'];

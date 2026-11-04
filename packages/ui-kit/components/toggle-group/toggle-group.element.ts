@@ -9,8 +9,10 @@
 // move focus among enabled toggles, wrapping. `disabled` disables every toggle. Geometry: a
 // composite on the control fill like ui-segmented; its toggles are composite options (the toggle
 // recipe's in-group rules).
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, eventDetails } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { setClasses } from '../classes.ts';
 import { toggleGroup } from '../../styled-system/recipes/toggle-group.js';
 import '../toggle/toggle.element.ts';

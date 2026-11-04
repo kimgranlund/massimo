@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/drawer/drawer.element.ts",
-      "sha256": "2d3916350a78ef8d341be4a9a97163905f07a4229dd030b55c7c8ad5cd4b60a4"
+      "sha256": "ad7bcee644d197f0094036867c669358b3b21f78a44142673facbf765c2d7614"
     },
     {
       "path": "components/drawer/drawer.react.tsx",
-      "sha256": "0c9cc4c9580caf0d19b40b05588eb831ae575b9dd04d838af61756efaaab50da"
+      "sha256": "0b7a1d8ed48b038fe274f84e0a2ccfa18835745555274dd1a2daaf6d4dc86504"
     },
     {
       "path": "components/drawer/drawer.recipe.ts",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"^drawer\" test/dialog.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Drawer \\(React\\)\" test/dialog.test.ts"

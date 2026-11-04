@@ -3,7 +3,8 @@
 // of its state ({ orientation }).
 import type { HTMLAttributes } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { separatorAttrs, toReactProps } from '../../dom/index.ts';
+import { separatorAttrs } from '../../dom/display.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { separator } from '../../styled-system/recipes/separator.js';
 
 export interface SeparatorProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'>, PartBase {

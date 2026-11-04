@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/number-field/number-field.element.ts",
-      "sha256": "c78b79fbb7788db2c46df9d11480f0b1974a4f3d57478d416f545e27eb73ddbe"
+      "sha256": "f5920f647be424203ad19bf56f8d726c104dae2344a1ad61f53730a802f6b3b2"
     },
     {
       "path": "components/number-field/number-field.react.tsx",
-      "sha256": "5836b80f3fa8d0f2fe9378dd6970b1b93c491b8d679fcaf65890696fe0ec92ba"
+      "sha256": "5d1ef580e02b5a003e3c76a2014d7ce6ec59a95237f1cd090e2992dbad0f8a57"
     },
     {
       "path": "components/number-field/number-field.recipe.ts",
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-number-field|parseNumber|stepNumber|resolveNumberField\" test/number-field.test.ts"
@@ -52,7 +52,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React NumberField\" test/number-field.test.ts"

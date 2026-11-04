@@ -6,8 +6,10 @@
 // the panel stays in the DOM and is `hidden` while closed, so its height animates in CSS.
 // Inside a <ui-accordion> it is an accordion item: its trigger sits in a heading part and its panel
 // is a labelled region (components/accordion).
-import { UIElement, define } from '../../core/index.ts';
-import { applyAttrs, buttonAttrs, eventDetails, onButtonKeydown, uid } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { buttonAttrs, onButtonKeydown } from '../../dom/button.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { arrangeSlots, authoredParts, claimSlots } from '../slots.ts';
 import { collapsible } from '../../styled-system/recipes/collapsible.js';

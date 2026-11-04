@@ -5,8 +5,11 @@
 // rest is the label), on the button recipe and control geometry (toggle.recipe.ts).
 // Inside a <ui-toggle-group> the group owns the pressed state (it answers the change), disables the
 // toggle with itself and sets the roving tab index (tabIndexFor).
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, buttonAttrs, eventDetails, isInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { buttonAttrs, isInactive, onButtonKeydown, type ButtonState } from '../../dom/button.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe } from '../classes.ts';
 import { toggle } from '../../styled-system/recipes/toggle.js';

@@ -12,10 +12,13 @@
 // React renderer has) and fills it as typed (reason input-change; complete, auto-submit).
 // Composition (optional): author [data-part=input] and [data-part=separator] children in any order
 // (for a 3 + 3 code); the cells are then the authored ones and length is their count.
-import { UIFormElement, define, settleDefault, type Problem } from '../../core/index.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
 import { setClasses } from '../classes.ts';
 import { otpField } from '../../styled-system/recipes/otp-field.js';
-import { applyAttrs, eventDetails, otpCellAttrs, requestOtpCode, otpDelete, otpFocusable, otpInputMode, otpInsert, otpKey, type ChangeReason, type OtpValidation } from '../../dom/index.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { otpCellAttrs, requestOtpCode, otpDelete, otpFocusable, otpInputMode, otpInsert, otpKey, type OtpValidation } from '../../dom/otp.ts';
 
 export class UIOtpField extends UIFormElement {
   static properties = {

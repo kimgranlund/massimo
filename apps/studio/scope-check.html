@@ -6,7 +6,8 @@
 import './src/index.css';
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/listbox/element';
-import { themeScopeCss, resolveControl, resolveContainer } from '@massimo/ui-kit/tokens';
+import { themeScopeCss } from '@massimo/ui-kit/tokens/themes/scope';
+import { resolveControl, resolveContainer } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { generateSpectrum, resolveRoles, anchoredSpectrum } from '@massimo/ui-kit/spectrum';
 
 const loud = { schemaVersion: 2, name: 'loud', color: { parameters: { emphasis: 2 } } };

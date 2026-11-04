@@ -9,8 +9,9 @@
 // (non-modal) or a Close part close it and focus returns to the trigger. `modal` traps focus.
 // `open-on-hover` also opens it from the pointer resting on the trigger (Base UI openOnHover).
 // Shared machinery: popup-base.ts.
-import { define } from '../../core/index.ts';
-import { applyAttrs, uid, type ChangeReason } from '../../dom/index.ts';
+import { define } from '../../core/element.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { type ChangeReason } from '../../dom/events.ts';
 import { popover } from '../../styled-system/recipes/popover.js';
 import { POPUP_PROPERTIES, UIPopupBase, type PopupConfig } from './popup-base.ts';
 import '../button/button.element.ts';

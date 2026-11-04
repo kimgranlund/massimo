@@ -8,7 +8,7 @@
 // focus among enabled toggles, wrapping.
 import { useLayoutEffect, useRef, useState, type FocusEvent, type HTMLAttributes, type KeyboardEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { eventDetails, type ChangeDetails } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import { ToggleGroupContext } from '../toggle/toggle.react.tsx';
 import { toggleGroup } from '../../styled-system/recipes/toggle-group.js';
 

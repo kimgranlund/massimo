@@ -8,7 +8,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { readFileSync } from 'node:fs';
 import { loadTsx } from './load-tsx.ts';
 import { resolveAvatar, resolveControl } from '../tokens/geometry/resolve.ts';
-import { initialsOf } from '../dom/index.ts';
+import { initialsOf } from '../dom/display.ts';
 
 await import('../components/avatar/avatar.element.ts');
 const { Avatar } = await loadTsx(new URL('../components/avatar/avatar.react.tsx', import.meta.url));

@@ -10,7 +10,7 @@
 import { Children, createContext, isValidElement, useContext, useId, useState, type HTMLAttributes, type KeyboardEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
 import { cx } from '../../styled-system/css/cx.js';
-import { eventDetails, type ChangeDetails } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import type { PartProps } from '../parts.react.tsx';
 import { accordion } from '../../styled-system/recipes/accordion.js';
 import { collapsible } from '../../styled-system/recipes/collapsible.js';

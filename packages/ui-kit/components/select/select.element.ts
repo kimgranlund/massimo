@@ -7,12 +7,16 @@
 // Composition (optional): the parts may be authored as [data-part] children, in the anatomy above
 // (label, trigger › leading · prefix · value · suffix · icon, popup › list › ui-option, description,
 // error); each is adopted onto the generated part (slots.ts adoptPart), absent ones are generated.
-import { UIFormElement, define, html, settleDefault, signal, type Problem } from '../../core/index.ts';
-import {
-  applyAttrs, comboboxAttrs, createTypeahead, eventDetails, fieldAttrs, firstEnabled, isPrintableKey, lastEnabled,
-  listboxAttrs, navigate, optionAttrs, popupDataAttrs, selectKeyIntent, uid, withExternalRefs, type ChangeReason,
-  createDismissLayer, createPositioner, hideTopLayer, showTopLayer, unitOf, type Side,
-} from '../../dom/index.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { html } from '../../core/template.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { comboboxAttrs, createTypeahead, firstEnabled, isPrintableKey, lastEnabled, listboxAttrs, navigate, optionAttrs, selectKeyIntent } from '../../dom/listbox.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { fieldAttrs, withExternalRefs } from '../../dom/field.ts';
+import { popupDataAttrs } from '../../dom/state.ts';
+import { createDismissLayer, createPositioner, hideTopLayer, showTopLayer, unitOf, type Side } from '../../dom/floating.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
 import { ensureId, optionList } from '../listbox/options.ts';

@@ -8,7 +8,7 @@ import { createElement as h } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTsx } from './load-tsx.ts';
 import { resolveNumberField, resolveControl, resolveTextRun } from '../tokens/geometry/resolve.ts';
-import { clampNumber, formatNumberValue, numberInputMode, parseNumber, sanitizeNumberText, snapNumber, stepAmount, stepNumber, stepperDisabled } from '../dom/index.ts';
+import { clampNumber, formatNumberValue, numberInputMode, parseNumber, sanitizeNumberText, snapNumber, stepAmount, stepNumber, stepperDisabled } from '../dom/number.ts';
 
 await import('../components/number-field/number-field.element.ts');
 const { NumberField } = await loadTsx(new URL('../components/number-field/number-field.react.tsx', import.meta.url));

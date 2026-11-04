@@ -7,7 +7,8 @@
 import { appendFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join, resolve } from 'node:path';
-import { describeTheme, DESCRIPTORS } from '../tokens/themes/index.ts';
+import { describeTheme } from '../tokens/themes/descriptors.ts';
+import { DESCRIPTORS } from '../tokens/themes/descriptor-data.ts';
 import { hydrate, lintBrand, primaryTerritory, validateBrand, type Brand } from '../tokens/brand/index.ts';
 import { EXAMPLE_BRANDS } from '../tokens/brand/examples.ts';
 

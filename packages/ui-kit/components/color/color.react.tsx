@@ -9,7 +9,8 @@ import { isTranslucent, validColor } from './color.ts';
 import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
 import { useFieldState, useFormError } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
-import { swatch, palette } from '../../styled-system/recipes/index.js';
+import { swatch } from '../../styled-system/recipes/swatch.js';
+import { palette } from '../../styled-system/recipes/palette.js';
 
 export interface SwatchProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'color'> {
   color?: string;

@@ -3,7 +3,8 @@
 // takes `render` and a className function of its state (compound.react.tsx).
 import type { ButtonHTMLAttributes, MouseEvent, ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { buttonAttrs, isInactive, toReactProps } from '../../dom/index.ts';
+import { buttonAttrs, isInactive } from '../../dom/button.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts } from '../parts.react.tsx';
 import { button } from '../../styled-system/recipes/button.js';

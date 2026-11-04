@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/combobox/combobox.element.ts",
-      "sha256": "47dd187633f1541b6f7e31e9385561f21880b537af351f05b811f2bc7c55bdc3"
+      "sha256": "2c08f4e680ba4c6801961f89d05ffa34472f7a4fcda45f021a00ceea331c15a9"
     },
     {
       "path": "components/combobox/combobox.react.tsx",
-      "sha256": "9830a2367e6a66127745f8a083b67307734004c32ccbb2747a3d8be9d30dc060"
+      "sha256": "59d7f6858c171ec8989829b299fda687bb7f103c409b2a144f784220e3252de1"
     },
     {
       "path": "components/combobox/combobox.recipe.ts",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"combobox\" test/combobox.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Combobox\" test/combobox.test.ts"

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/form/form.element.ts",
-      "sha256": "ccb6ab2280487d24ededb992eb258b83c37fed7ca70174372549faf41fbb7295"
+      "sha256": "8f6286befa3a0388c6e1acb3836a0c13c965534f190dab32f6b2b3a5cbc6f676"
     },
     {
       "path": "components/form/form.recipe.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "components/form/form.react.tsx",
-      "sha256": "3a3d2be8d01c34c08bcbcdbf57903563b9cd9074f54ca351ca541132d51041e4"
+      "sha256": "4d8297f81e030eccb9c7b7b4ca82487aa809e173e5b9122761b31c8596e0c917"
     },
     {
       "path": "components/form/form.manifest.json",
@@ -26,11 +26,11 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "components/field/field.element.ts",
-      "sha256": "049b9f6f95057929c152ba953bcabd28d37131fa041ecb5cd56eb1ca0263cc5d"
+      "sha256": "2793dd60aaeae02703bef4cf8a82334059edc8b35219f7cbbd08709a88254381"
     }
   ],
   "renderers": {
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/form.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/form.test.ts"

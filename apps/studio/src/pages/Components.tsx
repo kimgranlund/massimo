@@ -23,7 +23,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import '@massimo/ui-kit/components/accordion/element';
 import '@massimo/ui-kit/components/tabs/element';
 import { createToastManager, type ToastManager, type ToastOptions } from '@massimo/ui-kit/components/toast/element';
-import { DENSITIES, resolveDialog, resolvePopup, resolveToast } from '@massimo/ui-kit/tokens';
+import { DENSITIES, resolveDialog, resolvePopup, resolveToast } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import '@massimo/ui-kit/components/number-field/element';

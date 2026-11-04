@@ -5,7 +5,10 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import Ajv from 'ajv';
 import { validateBrand, hydrate, lintBrand, brandCharacter, brandJsonSchemaText, GROUNDINGS, TERRITORIES, type Brand } from '../tokens/brand/index.ts';
-import { DESCRIPTORS, describeTheme, validateThemeObject, lintTheme } from '../tokens/themes/index.ts';
+import { DESCRIPTORS } from '../tokens/themes/descriptor-data.ts';
+import { describeTheme } from '../tokens/themes/descriptors.ts';
+import { validateThemeObject } from '../tokens/themes/theme.ts';
+import { lintTheme } from '../tokens/themes/lint.ts';
 
 const dir = new URL('../tokens/brand/examples/', import.meta.url);
 const EXAMPLES = readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(new URL(f, dir), 'utf8')));

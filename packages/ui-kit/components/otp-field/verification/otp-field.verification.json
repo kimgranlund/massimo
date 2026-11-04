@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/otp-field/otp-field.element.ts",
-      "sha256": "0b70b54a825d2a294b4b3b11b7997633fc3f2ff6aed53323867077620aa9b699"
+      "sha256": "5f0a8690d33a04f1419d07d9a8bdd5abeee49b8ebf802a5f300171c6c64bad98"
     },
     {
       "path": "components/otp-field/otp-field.react.tsx",
-      "sha256": "4ee54583800e73df225915f9eb17107b0dcb3b11ad67938efd7814c0263092a3"
+      "sha256": "9a608d796d550012fd793d428e81c97e4bb6fae2a40255d242fdd26b9c5227f3"
     },
     {
       "path": "components/otp-field/otp-field.recipe.ts",
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-otp-field|dom/otp|resolveOtpField\" test/otp-field.test.ts"
@@ -52,7 +52,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React OTPField\" test/otp-field.test.ts"

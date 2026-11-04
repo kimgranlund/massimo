@@ -4,10 +4,11 @@
 import type { ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { page as pageLayout } from '../../styled-system/patterns/index.js';
-import { DENSITIES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, type ThemeParams, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, type Density } from '@massimo/ui-kit/tokens';
-import { resolveNumberField } from '@massimo/ui-kit/tokens';
-import { resolveOtpField } from '@massimo/ui-kit/tokens';
-import { resolveCombobox } from '@massimo/ui-kit/tokens';
+import { DENSITIES, resolveBtg, resolveChoice, resolveComposite, resolveControl, resolveField, resolveSwatch, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveToast, resolveForm, resolveScrollArea, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, type Density } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { type ThemeParams } from '@massimo/ui-kit/tokens/themes/params';
+import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveCombobox } from '@massimo/ui-kit/tokens/geometry/resolve';
 
 export const CQ_MD = '@container canvas (min-width: 40rem)';
 export const CQ_LG = '@container canvas (min-width: 64rem)';

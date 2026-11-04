@@ -3,7 +3,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { FACE_CATALOGUE, FACE_DESCRIPTORS, FONT_SOURCE_URL, catalogueFace, faceStack, googleFontsUrl, missingWeights, voiceWeights } from '../tokens/typography/faces.ts';
-import { lintTheme, validateThemeObject } from '../tokens/themes/index.ts';
+import { lintTheme } from '../tokens/themes/lint.ts';
+import { validateThemeObject } from '../tokens/themes/theme.ts';
 import { hydrate, lintBrand, validateBrand } from '../tokens/brand/index.ts';
 import { EXAMPLE_BRANDS } from '../tokens/brand/examples.ts';
 import { FONT_STACK } from '../tokens/themes/theme.ts';

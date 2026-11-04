@@ -6,15 +6,15 @@
   "sources": [
     {
       "path": "components/listbox/listbox.element.ts",
-      "sha256": "9d26fbf5b934862af96dbc0e6fdc47c9be819027be2adf750a7c6664c999d70f"
+      "sha256": "923eea35ae7dda6e8fba9f44fa1cfeffa65110481366259a33cedaa747db968e"
     },
     {
       "path": "components/listbox/option.element.ts",
-      "sha256": "5233edf11371865a873784955fc505432cfef902277d19c8faf879d7bbdaef17"
+      "sha256": "7632d710d7bab39aa59fb8f2377d938b47a09d8c1bc2c4d6028e37818e26c6c1"
     },
     {
       "path": "components/listbox/options.ts",
-      "sha256": "c1c82cc76461677c317ac291c7fa17e16e81a01734f5b20516a3ddf11a72e9b4"
+      "sha256": "3a32be91b4d876d1ee32c9e15a83c134448350cfdc133cd07e08f3308434792a"
     },
     {
       "path": "dom/listbox.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/listbox/listbox.react.tsx",
-      "sha256": "ada910c14523c1f3456227b99d50263a4f363d4864e39893de579674c18d4014"
+      "sha256": "08e5a23ecdf8c0606eb59d10824a5ce8cfe1a8353114c92e69f5e7be797c598a"
     },
     {
       "path": "components/parts.react.tsx",
@@ -38,7 +38,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "dom/events.ts",
@@ -82,7 +82,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
@@ -116,7 +116,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

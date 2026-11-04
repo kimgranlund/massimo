@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { createElement as h, type ReactElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTsx } from './load-tsx.ts';
-import { comboboxKeyIntent, inlineCompletion, matchesQuery } from '../dom/index.ts';
+import { comboboxKeyIntent, inlineCompletion, matchesQuery } from '../dom/combobox.ts';
 
 await import('../components/combobox/combobox.element.ts');
 const { Combobox } = await loadTsx(new URL('../components/combobox/combobox.react.tsx', import.meta.url));

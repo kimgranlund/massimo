@@ -12,8 +12,8 @@
 // forwards the ids to that element. No hide-label, no native <label>.
 // <ui-field-grid>: shared columns label | control | readout; each ui-field in it is a subgrid row, so
 // labels line up at the widest one. Other children (headings) span every column.
-import { UIElement, define } from '../../core/index.ts';
-import { uid } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { uid } from '../../dom/attrs.ts';
 import { applyRecipe, partOf, setClasses } from '../classes.ts';
 import { field } from '../../styled-system/recipes/field.js';
 import { fieldGrid } from '../../styled-system/recipes/field-grid.js';

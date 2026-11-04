@@ -4,7 +4,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { DESCRIPTORS, describeTheme, themeFromCharacter, inputSpec, validateThemeObject, lintTheme, defaultParams, PARAMS } from '../tokens/themes/index.ts';
+import { DESCRIPTORS } from '../tokens/themes/descriptor-data.ts';
+import { describeTheme, themeFromCharacter, inputSpec } from '../tokens/themes/descriptors.ts';
+import { validateThemeObject } from '../tokens/themes/theme.ts';
+import { lintTheme } from '../tokens/themes/lint.ts';
+import { defaultParams, PARAMS } from '../tokens/themes/params.ts';
 import { SPECTRUM_DEFAULTS } from '../tokens/colors/spectrum/config.ts';
 
 const named = (t: object) => ({ schemaVersion: 2 as const, name: 'd', ...t });

@@ -5,8 +5,10 @@
 // | lg | xl (6u | 8u | 12u | 16u, resolveAvatar).
 // Composition (optional): [data-part=image] (an <img>) and [data-part=fallback] may be authored;
 // loose children become the fallback's content.
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, avatarAttrs, avatarImageAttrs, initialImageStatus, initialsOf, type ImageStatus } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { avatarAttrs, avatarImageAttrs, initialImageStatus, initialsOf, type ImageStatus } from '../../dom/display.ts';
 import type { AvatarSize } from '../../tokens/geometry/resolve.ts';
 import { applyRecipe } from '../classes.ts';
 import { avatar } from '../../styled-system/recipes/avatar.js';

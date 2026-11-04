@@ -12,7 +12,7 @@ import '@massimo/ui-kit/components/swiper/element';
 import '@massimo/ui-kit/components/image/element';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
-import { INTENTS, SPRING_NAMES, intentSpring, liveMotion, spanFactor, springAt, type IntentName, type SpringName } from '@massimo/ui-kit/tokens';
+import { INTENTS, SPRING_NAMES, intentSpring, liveMotion, spanFactor, springAt, type IntentName, type SpringName } from '@massimo/ui-kit/tokens/motion/index';
 import { useEvent } from '../studio/wc.tsx';
 import type { PageProps } from './types.ts';
 import { CQ_LG, CQ_MD, Divider, Page, Section, caption, dataTable, nameCell, noteCell, tableScroller } from './shared.tsx';

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/radio-group/radio-group.element.ts",
-      "sha256": "280dd0774bca5431914a9836d12b3513cacfda5297917214512421d530aacacf"
+      "sha256": "f6e0c19deb6f9cb32ae2154b7f6c95fe392cd6c8d5661386fb5e314fb773916a"
     },
     {
       "path": "components/radio-group/radio-group.recipe.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "components/radio-group/radio-group.react.tsx",
-      "sha256": "f5a026eb242f4279e2b06d929d0c9ba81eb7142afd35009cb75f94d372964b94"
+      "sha256": "2dc5613b25db74dd7c144ad5e9a61e776b6dfba6b03aa2ea20224b11576967f1"
     },
     {
       "path": "components/radio-group/radio-group.manifest.json",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/radio-group.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/radio-group.test.ts"

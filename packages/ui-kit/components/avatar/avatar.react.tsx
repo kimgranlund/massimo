@@ -5,7 +5,8 @@
 // <Avatar src alt name> is Root + Image + Fallback; its children are the fallback's.
 import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState, type HTMLAttributes, type ImgHTMLAttributes, type ReactNode, type SyntheticEvent } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { avatarAttrs, avatarImageAttrs, initialImageStatus, initialsOf, toReactProps, type ImageStatus } from '../../dom/index.ts';
+import { avatarAttrs, avatarImageAttrs, initialImageStatus, initialsOf, type ImageStatus } from '../../dom/display.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { AvatarSize } from '../../tokens/geometry/resolve.ts';
 import { avatar } from '../../styled-system/recipes/avatar.js';
 

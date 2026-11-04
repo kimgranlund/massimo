@@ -7,7 +7,9 @@
 // sets the roving tab index on the buttons.
 import { createContext, useContext, useState, type ButtonHTMLAttributes, type MouseEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { buttonAttrs, eventDetails, isInactive, toReactProps, type ChangeDetails } from '../../dom/index.ts';
+import { buttonAttrs, isInactive } from '../../dom/button.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts } from '../parts.react.tsx';
 import { toggle } from '../../styled-system/recipes/toggle.js';

@@ -6,7 +6,7 @@
 //          none | scale-down. position: object-position (e.g. "top", "30% 70%").
 //   A failed image gets data-error (the frame shows its empty fill).
 //   slideshow: several child images become an inline swiper; dots and paddles show on hover.
-import { UIElement, define } from '../../core/index.ts';
+import { UIElement, define } from '../../core/element.ts';
 import '../swiper/swiper.element.ts';
 import { customRatio, fitVariant, ratioVariant } from './ratios.ts';
 import { setClasses } from '../classes.ts';

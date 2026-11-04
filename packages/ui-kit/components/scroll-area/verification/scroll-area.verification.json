@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/scroll-area/scroll-area.element.ts",
-      "sha256": "85407dce419b6b11eb98695a5426f6f9d85f4bc964ad2dbdb87243ddb28a76b3"
+      "sha256": "1f699aae370161665fcaa34324032c4c10dc9bf955cc1ddcd8ef7d48bd768bdc"
     },
     {
       "path": "components/scroll-area/scroll-area.recipe.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "components/scroll-area/scroll-area.react.tsx",
-      "sha256": "e7cc8cca53f209e341e7996d1dfe324660c6bf200935683307fad9e8d9f1b849"
+      "sha256": "39284447421766f3cb9636844148f897dd0beeb57b8d3bb066d00e1552b49f7f"
     },
     {
       "path": "components/scroll-area/scroll-area.manifest.json",

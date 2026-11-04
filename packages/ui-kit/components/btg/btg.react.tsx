@@ -4,11 +4,15 @@
 // Badge and Tag are <span>s; Chip is a native <button> (aria-pressed when selectable). A removable
 // chip's x is a click target inside it, not a nested button; Delete or Backspace also remove it.
 import { useState, type ButtonHTMLAttributes, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react';
-import { buttonAttrs, eventDetails, isInactive, toReactProps, type ChangeDetails } from '../../dom/index.ts';
+import { buttonAttrs, isInactive } from '../../dom/button.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { cx } from '../../styled-system/css/cx.js';
-import { badge, tag, chip } from '../../styled-system/recipes/index.js';
+import { badge } from '../../styled-system/recipes/badge.js';
+import { tag } from '../../styled-system/recipes/tag.js';
+import { chip } from '../../styled-system/recipes/chip.js';
 
 interface Common extends PartProps { iconSize?: IconSize; size?: number; children?: ReactNode }
 

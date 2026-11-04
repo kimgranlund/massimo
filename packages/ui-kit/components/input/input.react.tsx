@@ -8,7 +8,9 @@
 // which reads the Label, Description and Error among its direct children to wire it. The preset
 // <Input label description error leading …> is Root + those parts.
 import { createContext, useContext, useId, type ChangeEvent, type FormEvent, type HTMLAttributes, type InputHTMLAttributes, type ReactNode } from 'react';
-import { eventDetails, fieldAttrs, toReactProps, type ChangeDetails } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
+import { fieldAttrs } from '../../dom/field.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { useFieldState, useFormError } from '../state.react.ts';
 import { findPart, renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import type { PartProps } from '../parts.react.tsx';

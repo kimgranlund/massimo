@@ -8,8 +8,10 @@
 // 'trigger-press', event }); in single mode opening an item closes the others. Arrow keys move focus
 // between the triggers (Up / Down; Left / Right when horizontal), Home / End to the first / last;
 // every trigger stays in the tab order (APG accordion).
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, eventDetails } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { setClasses } from '../classes.ts';
 import { accordion } from '../../styled-system/recipes/accordion.js';
 import '../collapsible/collapsible.element.ts';

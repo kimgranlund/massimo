@@ -9,12 +9,15 @@
 // Escape or focus leaving, and a focus scope moves focus in (popover) or not (tooltip, preview
 // card). Hover intent (dom/popup.ts) opens after `delay` and closes after `close-delay`.
 // Each subclass dispatches its own openchange (scripts/manifests.ts reads the dispatch site).
-import { UIElement, signal } from '../../core/index.ts';
-import {
-  applyAttrs, buttonAttrs, createAnchoredPositioner, createDismissLayer, createFocusScope, createHoverIntent, eventDetails, hideTopLayer,
-  isHoverPointer, lockScroll, onButtonKeydown, popupDataAttrs, showTopLayer, uid,
-  type Align, type ChangeReason, type Side,
-} from '../../dom/index.ts';
+import { UIElement } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { buttonAttrs, onButtonKeydown } from '../../dom/button.ts';
+import { createAnchoredPositioner, createHoverIntent, isHoverPointer } from '../../dom/popup.ts';
+import { createDismissLayer, createFocusScope, hideTopLayer, showTopLayer, type Align, type Side } from '../../dom/floating.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { lockScroll } from '../../dom/dialog.ts';
+import { popupDataAttrs } from '../../dom/state.ts';
 import { applyRecipe } from '../classes.ts';
 
 const on = (v: unknown) => (v ? '' : undefined);

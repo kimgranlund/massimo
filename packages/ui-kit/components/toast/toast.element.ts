@@ -17,8 +17,11 @@
 // event } (reasons swipe, close-press, escape-key; a timeout or a script close fires it with
 // reason none after the fact); an added toast fires openchange { open: true, …, reason: 'none' }.
 // Toasts beyond `limit` are data-limited and inert. Zero native form elements.
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, createAnchoredPositioner, hideTopLayer, showTopLayer, uid } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { createAnchoredPositioner } from '../../dom/popup.ts';
+import { hideTopLayer, showTopLayer } from '../../dom/floating.ts';
 import { setClasses } from '../classes.ts';
 import { toast as toastRecipe } from '../../styled-system/recipes/toast.js';
 import { createToastManager, stackIndex, toastManager, type ToastCloseReason, type ToastManager, type ToastObject, type ToastOptions } from './manager.ts';

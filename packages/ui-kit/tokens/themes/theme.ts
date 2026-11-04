@@ -17,7 +17,8 @@ import { THEME_NAME } from './validate.ts';
 import { DESCRIPTORS } from './descriptor-data.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
-import { ROLE_NAMES, isAnchorColor, type RoleName, type ColorAnchor } from '../colors/spectrum/index.ts';
+import { ROLE_NAMES, type RoleName } from '../colors/spectrum/index.ts';
+import { isAnchorColor, type ColorAnchor } from '../colors/spectrum/anchors.ts';
 import { FONT_SOURCE_URL } from '../typography/faces.ts';
 import { FACES, VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 

@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/button/button.element.ts",
-      "sha256": "8e1de0bff1db7c66fd10911e7d753501eb117e57879deddb55566bb32c857d72"
+      "sha256": "f7182b2d7599a2a9dc09d12be96ecf822377f9d939a0a6d3286fc790d352037d"
     },
     {
       "path": "components/slots.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/button/button.react.tsx",
-      "sha256": "6b78b4e87ebb0c238f718c89fed5745b4fc231a8e9de49a03bbb895ed747933d"
+      "sha256": "b39c1d2048eed6b7d270ccb4033890bab59c4c3b489ebde415922047134ee08f"
     },
     {
       "path": "dom/state.ts",
@@ -50,7 +50,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
@@ -78,7 +78,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

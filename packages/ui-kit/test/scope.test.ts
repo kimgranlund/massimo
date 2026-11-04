@@ -2,7 +2,10 @@
 // shadows, anchor colors, scheme) is apps/studio/scope-check.html in check:browsers.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { themeScopeCss, scopeSelector, unitTokenVars, motionTokenVars, elevationTokenVars, SHADOW_LAYERS } from '../tokens/index.ts';
+import { themeScopeCss, scopeSelector } from '../tokens/themes/scope.ts';
+import { unitTokenVars } from '../tokens/geometry/index.ts';
+import { motionTokenVars } from '../tokens/motion/index.ts';
+import { elevationTokenVars, SHADOW_LAYERS } from '../tokens/elevation/index.ts';
 
 const theme = { schemaVersion: 2 as const, name: 'probe', geometry: { parameters: { unit: 3 } }, color: { roles: { primary: 'teal' } } };
 

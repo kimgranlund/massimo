@@ -11,7 +11,8 @@ import { Children, cloneElement, createContext, isValidElement, useContext, useI
 import { findPart, renderPart, type PartBase, type PartState } from '../compound.react.tsx';
 import { useFormError } from '../state.react.ts';
 import { cx } from '../../styled-system/css/cx.js';
-import { field, fieldGrid } from '../../styled-system/recipes/index.js';
+import { field } from '../../styled-system/recipes/field.js';
+import { fieldGrid } from '../../styled-system/recipes/field-grid.js';
 
 /** Props a field passes to its control. */
 export interface FieldControlProps {

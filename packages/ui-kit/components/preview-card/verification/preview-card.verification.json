@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/preview-card/preview-card.element.ts",
-      "sha256": "c401f80242c9b83a4fd8f9c54cd7226d9028ffa584be1a3eece3f170d59e3811"
+      "sha256": "0d5186b53d6b37cfa7a9994d4d9337838ebb691bed629b83f7e740e168a2758b"
     },
     {
       "path": "components/preview-card/preview-card.react.tsx",
-      "sha256": "44031258557918f6293b248beec09862441f0006fc17a5b02a9e04ca4d9a836d"
+      "sha256": "b2dd71e7c7b97007a9b41c909fb4a5643c53b42fec68a7302d41bc9e228532e1"
     },
     {
       "path": "components/preview-card/preview-card.recipe.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/popover/popup-base.ts",
-      "sha256": "d4ef38d9c5130f816e385d7cc5beb6b8a301b730e820e351cddd998b416400ac"
+      "sha256": "a15130d3b30fbee4a5f862041da0e80278bddf73d8c4c7f850ebcd84d6943ad8"
     },
     {
       "path": "components/popover/popup-parts.ts",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"preview card|popup\" test/popup.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"PreviewCard\" test/popup.test.ts"

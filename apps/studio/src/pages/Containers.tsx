@@ -10,7 +10,7 @@ import '@massimo/ui-kit/components/collapsible/element';
 import { css } from '../../styled-system/css/index.js';
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Range, Segmented } from '../studio/wc.tsx';
-import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveComposite, resolveContainer, resolveContainerTree, resolveControl, type CardPadding, type ContainerNode, type ContainerPreset, type ResolvedContainer } from '@massimo/ui-kit/tokens';
+import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveComposite, resolveContainer, resolveContainerTree, resolveControl, type CardPadding, type ContainerNode, type ContainerPreset, type ResolvedContainer } from '@massimo/ui-kit/tokens/geometry/resolve';
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
 

@@ -5,8 +5,12 @@
 // checkboxes then fire none). A `parent` checkbox is checked when every value is, mixed when some
 // are, and checks or clears them all. With a name the group submits name=value once per value.
 // disabled reaches every checkbox inside. Name it with a ui-field label, a ui-fieldset legend or label.
-import { UIFormElement, define, registerDisabler, settleDefault, signal, syncDisabled, type Problem } from '../../core/index.ts';
-import { applyAttrs, eventDetails, type Orientation } from '../../dom/index.ts';
+import { UIFormElement, registerDisabler, settleDefault, syncDisabled, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
+import { type Orientation } from '../../dom/listbox.ts';
 import { applyRecipe } from '../classes.ts';
 import { UICheckbox, type UIChoice } from '../choice/choice.element.ts';
 import { checkboxGroup } from '../../styled-system/recipes/checkbox-group.js';

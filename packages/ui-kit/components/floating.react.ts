@@ -4,10 +4,10 @@
 // hands the layer's state to its parts (Positioner, Popup, Arrow, Close in the components built on
 // it). docs/specs/components.md, "Floating layers".
 import { createContext, useContext, useEffect, useRef, useState, type RefObject } from 'react';
-import {
-  createDismissLayer, createFocusScope, createPositioner, eventDetails, hideTopLayer, popupDataAttrs, showTopLayer, toReactProps,
-  type Align, type ChangeDetails, type DismissReason, type FocusScopeOptions, type Side,
-} from '../dom/index.ts';
+import { createDismissLayer, createFocusScope, createPositioner, hideTopLayer, showTopLayer, type Align, type DismissReason, type FocusScopeOptions, type Side } from '../dom/floating.ts';
+import { eventDetails, type ChangeDetails } from '../dom/events.ts';
+import { popupDataAttrs } from '../dom/state.ts';
+import { toReactProps } from '../dom/attrs.ts';
 
 export interface FloatingLayerOptions {
   /** Whether the layer is open (controlled by the component). */

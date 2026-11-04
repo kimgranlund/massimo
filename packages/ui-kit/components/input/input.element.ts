@@ -7,11 +7,16 @@
 // Composition (optional): the parts may be authored as [data-part] children (label, control ›
 // leading · prefix · contents · suffix · trailing, description, error); each is adopted onto the
 // generated part (slots.ts adoptPart), absent ones are generated.
-import { UIFormElement, define, html, settleDefault, submitOwner, type Problem } from '../../core/index.ts';
+import { UIFormElement, settleDefault, submitOwner, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { html } from '../../core/template.ts';
 import { adoptAdornments, adoptPart, authoredParts, partText, ADORNMENT_PARTS } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { input } from '../../styled-system/recipes/input.js';
-import { applyAttrs, eventDetails, fieldAttrs, onTextBeforeInput, textEntryAttrs, toSingleLine, uid, withExternalRefs, type TextType } from '../../dom/index.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
+import { fieldAttrs, withExternalRefs } from '../../dom/field.ts';
+import { onTextBeforeInput, textEntryAttrs, toSingleLine, type TextType } from '../../dom/text-entry.ts';
 
 /** The parts an author may write (composition), by path. */
 const AUTHORED = ['label', 'control', ...ADORNMENT_PARTS.map((p) => `control > ${p}`), 'control > contents', 'description', 'error'];

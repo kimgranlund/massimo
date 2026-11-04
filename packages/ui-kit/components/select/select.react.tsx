@@ -17,12 +17,16 @@
 // className. The preset <Select label leading prefix suffix description error> is Root + parts.
 import { Children, createContext, isValidElement, useContext, useEffect, useId, useRef, useState, type ChangeEvent, type FormEvent, type HTMLAttributes, type ReactNode, type SelectHTMLAttributes } from 'react';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
-import { eventDetails, fieldAttrs, isOutside, toReactProps, type ChangeDetails, type ChangeReason } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { fieldAttrs } from '../../dom/field.ts';
+import { isOutside } from '../../dom/floating.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { useFieldState, useFormError } from '../state.react.ts';
 import type { PartProps } from '../parts.react.tsx';
 import { findPart, isPartOf, renderPart, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { ItemContext, ItemIndicator, ItemParts, ItemText } from '../listbox/listbox.react.tsx';
-import { select as selectRecipe, option } from '../../styled-system/recipes/index.js';
+import { select as selectRecipe } from '../../styled-system/recipes/select.js';
+import { option } from '../../styled-system/recipes/option.js';
 
 export interface SelectProps extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'prefix' | 'className'>, PartBase {
   label?: string;

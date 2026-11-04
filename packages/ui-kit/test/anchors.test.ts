@@ -1,8 +1,11 @@
 // Color anchors (spectrum/anchors.ts): a brand's exact colors in the generated ramps.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { generateSpectrum, resolveRoles, anchoredSpectrum, apcaLc } from '../tokens/colors/spectrum/index.ts';
-import { themeCss, validateThemeObject, lintTheme } from '../tokens/themes/index.ts';
+import { generateSpectrum, resolveRoles, anchoredSpectrum } from '../tokens/colors/spectrum/index.ts';
+import { apcaLc } from '../tokens/colors/spectrum/contrast.ts';
+import { themeCss } from '../tokens/themes/index.ts';
+import { validateThemeObject } from '../tokens/themes/theme.ts';
+import { lintTheme } from '../tokens/themes/lint.ts';
 
 const data = generateSpectrum({});
 const roles = resolveRoles(data, {});

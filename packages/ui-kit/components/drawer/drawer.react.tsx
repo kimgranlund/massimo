@@ -7,7 +7,8 @@ import {
   presetParts, type DialogKind, type DialogProps, type DialogRootProps,
 } from '../dialog/dialog.react.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { SWIPE_OF, applySnapOffset, createSwipeDismiss, eventDetails, snapExtent, type ChangeDetails, type SnapPoint } from '../../dom/index.ts';
+import { SWIPE_OF, applySnapOffset, createSwipeDismiss, snapExtent, type SnapPoint } from '../../dom/swipe.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import type { DrawerSide } from '../../tokens/geometry/resolve.ts';
 import { drawer } from '../../styled-system/recipes/drawer.js';
 

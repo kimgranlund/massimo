@@ -4,7 +4,8 @@ import {
   SPRINGS, SPRING_NAMES, INTENTS, BOUNCE_MAX, RESOLVED_SPRINGS, durations, easings, semanticDurations, semanticEasings,
   motionTokenVars, motionVars, resolveSpring, springAt, spanFactor, settleFactor, liveMotion, intentSpring, type SpringName, type IntentName,
 } from '../tokens/motion/index.ts';
-import { PARAMS, defaultParams, paramVar, validateTheme, type ParamName } from '../tokens/themes/index.ts';
+import { PARAMS, defaultParams, paramVar, type ParamName } from '../tokens/themes/params.ts';
+import { validateTheme } from '../tokens/themes/validate.ts';
 import { motionProperties } from '../styles/motion.ts';
 
 // Evaluate the motion CSS as a browser would: theme params as --ui-*, the derived variables and

@@ -6,8 +6,10 @@
 // Composition: the legend may be authored as a [data-part=legend] child (any element, a heading
 // too); its text seeds `legend` at the first connect when the property is unset, and the fieldset
 // keeps it. Without one, the `legend` property fills a generated legend part.
-import { UIElement, define, disablingContainer, registerDisabler, signal, syncDisabled } from '../../core/index.ts';
-import { applyAttrs, uid } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { disablingContainer, registerDisabler, syncDisabled } from '../../core/form-element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { fieldset } from '../../styled-system/recipes/fieldset.js';
 

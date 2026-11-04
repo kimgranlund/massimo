@@ -7,7 +7,8 @@
 // component does.
 import { Children, createContext, isValidElement, useContext, useId, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { meterState, toReactProps } from '../../dom/index.ts';
+import { meterState } from '../../dom/display.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { FormatNumberOptions } from '../../tokens/typography/format.ts';
 import { meter } from '../../styled-system/recipes/meter.js';
 

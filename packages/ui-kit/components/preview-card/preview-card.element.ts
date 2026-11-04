@@ -8,8 +8,8 @@
 // once and Tab moves into its links (the card follows the link in the DOM); focus leaving both,
 // an outside press or Escape close it. A press follows the link: the card never toggles on press.
 // Shared machinery: popover/popup-base.ts.
-import { define } from '../../core/index.ts';
-import type { ChangeReason } from '../../dom/index.ts';
+import { define } from '../../core/element.ts';
+import type { ChangeReason } from '../../dom/events.ts';
 import { previewCard } from '../../styled-system/recipes/preview-card.js';
 import { POPUP_PROPERTIES, UIPopupBase, type PopupConfig } from '../popover/popup-base.ts';
 

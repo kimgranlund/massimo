@@ -9,8 +9,10 @@
 // dom/floating.ts). Escape, an outside press (the backdrop) and the close parts close it, with
 // Base UI's reasons; focus returns to the element focused before (the trigger). A dialog inside
 // another's popup is nested. AlertDialog and Drawer extend this class.
-import { UIElement, define } from '../../core/index.ts';
-import { applyAttrs, createModalLayer, eventDetails, insideOpenLayer, parseModal, uid, type ChangeReason } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { createModalLayer, insideOpenLayer, parseModal } from '../../dom/dialog.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
 import { applyRecipe } from '../classes.ts';
 import { dialog } from '../../styled-system/recipes/dialog.js';
 

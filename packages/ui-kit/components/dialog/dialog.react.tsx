@@ -11,7 +11,8 @@ import { createContext, useContext, useEffect, useId, useLayoutEffect, useRef, u
 import { cx } from '../../styled-system/css/cx.js';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { Button, type ButtonProps } from '../button/button.react.tsx';
-import { createModalLayer, eventDetails, type ChangeDetails, type ChangeReason, type ModalMode } from '../../dom/index.ts';
+import { createModalLayer, type ModalMode } from '../../dom/dialog.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
 import { dialog } from '../../styled-system/recipes/dialog.js';
 
 const on = (v: unknown) => (v ? '' : undefined);

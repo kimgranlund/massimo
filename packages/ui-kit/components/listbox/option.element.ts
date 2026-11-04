@@ -1,8 +1,8 @@
 // <ui-option>: one choice inside <ui-listbox>, <ui-segmented> or <ui-select>.
 // The owning list sets role, id and selection state; the option carries data and the same
 // leading / contents / trailing slots as ui-button.
-import { UIElement, define } from '../../core/index.ts';
-import type { OptionItem } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import type { OptionItem } from '../../dom/listbox.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe } from '../classes.ts';
 import { option } from '../../styled-system/recipes/option.js';

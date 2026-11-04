@@ -22,7 +22,9 @@ import { useFieldState } from '../state.react.ts';
 import { renderPart, some, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import { CheckboxGroupCtx, RadioGroupCtx } from './group.react.ts';
-import { checkbox, radio, switchRecipe } from '../../styled-system/recipes/index.js';
+import { checkbox } from '../../styled-system/recipes/checkbox.js';
+import { radio } from '../../styled-system/recipes/radio.js';
+import { switchRecipe } from '../../styled-system/recipes/switch-recipe.js';
 
 const RECIPES = { checkbox, radio, switch: switchRecipe };
 type Kind = keyof typeof RECIPES;

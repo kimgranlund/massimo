@@ -7,8 +7,10 @@
 // arrow keys write the highlighted suggestion into the input.
 // The input row: [leading] [prefix] [input] [suffix] [clear] [trigger (show-trigger only)].
 // Composition: the parts as [data-part] children, as on ui-combobox (no chips).
-import { define, type Problem } from '../../core/index.ts';
-import { completionOf, eventDetails, inlineCompletion, matchesQuery, visibleItems, type AutocompleteMode, type ChangeReason } from '../../dom/index.ts';
+import { define } from '../../core/element.ts';
+import { type Problem } from '../../core/form-element.ts';
+import { completionOf, inlineCompletion, matchesQuery, visibleItems, type AutocompleteMode } from '../../dom/combobox.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
 import { UICombobox } from '../combobox/combobox.element.ts';
 import { autocomplete } from '../../styled-system/recipes/autocomplete.js';
 

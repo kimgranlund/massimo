@@ -21,11 +21,15 @@
 // Submenus (Base UI: a Root inside a Content): a ui-navigation-menu in an item's content is a
 // nested menu, vertical unless `orientation` says otherwise, with no landmark of its own; its popup
 // opens beside its trigger, Escape closes it first, and it closes with its parent's item.
-import { UIElement, define, signal } from '../../core/index.ts';
-import {
-  activationDirection, applyAttrs, buttonAttrs, createAnchoredPositioner, createDismissLayer, createNavigationController, eventDetails, hideTopLayer,
-  popupDataAttrs, showTopLayer, uid, type ChangeReason, type Side,
-} from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { activationDirection, createNavigationController } from '../../dom/navigation.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { buttonAttrs } from '../../dom/button.ts';
+import { createAnchoredPositioner } from '../../dom/popup.ts';
+import { createDismissLayer, hideTopLayer, showTopLayer, type Side } from '../../dom/floating.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { popupDataAttrs } from '../../dom/state.ts';
 import { applyRecipe, partOf, setClasses } from '../classes.ts';
 import { arrangeSlots, claimSlots } from '../slots.ts';
 import { navigationMenu } from '../../styled-system/recipes/navigation-menu.js';

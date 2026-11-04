@@ -2,9 +2,17 @@
 // recipes (components/recipes.ts), the CSS-only container tags and the FOUC guard.
 // Apps add it to their own panda.config `presets` to style with the same system.
 import { definePreset } from '@pandacss/dev';
-import { tokens, semanticTokens, themeCss } from './tokens/index.ts';
+import { tokens, semanticTokens } from './tokens/index.ts';
+import { themeCss } from './tokens/themes/index.ts';
 import { breakpoints } from './tokens/geometry/index.ts';
-import { reset, textStyles, typography, numeric, numericProperties, page, prose, geometry, geometryProperties, motion, motionProperties, defaults, pending, pendingKeyframes } from './styles/index.ts';
+import { reset } from './styles/reset.ts';
+import { textStyles, typography, numericProperties } from './styles/typography.ts';
+import { numeric } from './styles/numeric.ts';
+import { page, prose } from './styles/pages/index.ts';
+import { geometry, geometryProperties } from './styles/geometry.ts';
+import { motion, motionProperties } from './styles/motion.ts';
+import { defaults } from './styles/defaults.ts';
+import { pending, pendingKeyframes } from './styles/pending.ts';
 import { conditions as stateConditions } from './styles/conditions.ts';
 import { slotRecipes } from './components/recipes.ts';
 import { containerTags } from './components/container/container.recipe.ts';

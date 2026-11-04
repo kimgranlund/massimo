@@ -4,7 +4,8 @@
 // the family and step each anchor lands on, ΔE (OKLab × 100) and the anchor's APCA Lc against the page
 // beside that step's target. Prints JSON; the report is docs/reports/2026-11-03-color-anchoring-spike.md.
 //   node scripts/anchor-spike.ts
-import { generateSpectrum, apcaLc, DEFAULT_TARGETS, type Spectrum } from '../tokens/colors/spectrum/index.ts';
+import { generateSpectrum, type Spectrum } from '../tokens/colors/spectrum/index.ts';
+import { apcaLc, DEFAULT_TARGETS } from '../tokens/colors/spectrum/contrast.ts';
 
 type Anchor = { name: string; hex: string; role: 'primary' | 'secondary' | 'accent' | 'neutral' | 'feedback' };
 // Published brand palettes (design-system documentation), used only as measurement inputs.

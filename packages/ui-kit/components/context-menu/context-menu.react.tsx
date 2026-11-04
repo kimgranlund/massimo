@@ -7,7 +7,8 @@
 // label) + Positioner + Popup.
 import { useRef, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { pointAnchor, toReactProps } from '../../dom/index.ts';
+import { pointAnchor } from '../../dom/menu.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import {
   MenuRoot, MenuPortal, MenuPositioner, MenuPopup, MenuItem, MenuCheckboxItem, MenuCheckboxItemIndicator, MenuRadioGroup, MenuRadioItem,
   MenuRadioItemIndicator, MenuGroup, MenuGroupLabel, MenuSeparator, MenuSubmenuRoot, MenuSubmenuTrigger, useMenuContext, type MenuRootProps,

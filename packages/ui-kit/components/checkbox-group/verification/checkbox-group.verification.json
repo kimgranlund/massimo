@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/checkbox-group/checkbox-group.element.ts",
-      "sha256": "4b76bd7cba83dff37a21ed8c783b6b6d7e97dc006d2930864708a41f7bfd9f31"
+      "sha256": "7fcb08b7045d75badff01cbc29b1488b186d0b6832ec94f90ba202ceff08389c"
     },
     {
       "path": "components/checkbox-group/checkbox-group.recipe.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "components/checkbox-group/checkbox-group.react.tsx",
-      "sha256": "fbac01b2d9fe48e75e81fdba9674153d2024a144cd87802db695190d2cb83f07"
+      "sha256": "6455495f1476447506113b3aa977c4d4c00d321d8f5512b5112dcaaeba5bd057"
     },
     {
       "path": "components/checkbox-group/checkbox-group.manifest.json",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/checkbox-group.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/checkbox-group.test.ts"

@@ -4,7 +4,7 @@
 // metrics, plus a specimen at regular and bold.
 import { useEffect, useState, type CSSProperties } from 'react';
 import { css } from '../../styled-system/css/index.js';
-import { FACE_CATALOGUE, googleFontsUrl } from '@massimo/ui-kit/tokens';
+import { FACE_CATALOGUE, googleFontsUrl } from '@massimo/ui-kit/tokens/typography/faces';
 import { loadFontSource } from '../studio/fonts.ts';
 import { dataTable, nameCell, noteCell, tableScroller } from './shared.tsx';
 

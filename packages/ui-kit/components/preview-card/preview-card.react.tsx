@@ -6,7 +6,7 @@
 // the link. PreviewCard.Trigger renders an <a> (pass href). The preset
 // <PreviewCard trigger={<a href="…">Ada</a>}>card</PreviewCard> renders its trigger element as the Trigger.
 import { isValidElement, type ReactElement, type ReactNode } from 'react';
-import type { Align, Side } from '../../dom/index.ts';
+import type { Align, Side } from '../../dom/floating.ts';
 import { PopupArrow, PopupPopup, PopupPositioner, PopupRootElement, PopupTrigger, usePopupRoot, type PopupKind, type PopupRootProps } from '../popover/popover.react.tsx';
 import { previewCard } from '../../styled-system/recipes/preview-card.js';
 

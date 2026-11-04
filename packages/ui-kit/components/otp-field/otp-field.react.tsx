@@ -9,7 +9,9 @@ import {
   Children, cloneElement, createContext, isValidElement, useContext, useEffect, useRef, useState,
   type ChangeEvent, type ClipboardEvent, type FocusEvent, type HTMLAttributes, type InputHTMLAttributes, type KeyboardEvent, type ReactElement, type ReactNode,
 } from 'react';
-import { eventDetails, otpCellAttrs, otpDelete, otpFocusable, otpInputMode, otpInsert, otpKey, toReactProps, type ChangeDetails, type ChangeReason, type OtpValidation } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { otpCellAttrs, otpDelete, otpFocusable, otpInputMode, otpInsert, otpKey, type OtpValidation } from '../../dom/otp.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { useFieldState } from '../state.react.ts';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { otpField } from '../../styled-system/recipes/otp-field.js';

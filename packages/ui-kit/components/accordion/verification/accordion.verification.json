@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/accordion/accordion.element.ts",
-      "sha256": "4c38de789f75f543cf155c6b328968e9af489bc0a3ad7841367bdbe81fd8501b"
+      "sha256": "393a35b864c98e880bd525dfdb8b690300d3799246d1d657d4c9732057d32bb3"
     },
     {
       "path": "components/accordion/accordion.react.tsx",
-      "sha256": "d197b960686973467824aaf1f9611b26d6415ab9f2983596cad9744af7f0712f"
+      "sha256": "7a3965205ddeb57dbf5516168c27f3300cee5c0c0f33947acf41534b037c2fa5"
     },
     {
       "path": "components/accordion/accordion.recipe.ts",
@@ -22,11 +22,11 @@
     },
     {
       "path": "components/collapsible/collapsible.element.ts",
-      "sha256": "67c0c09f629fccea467fe256d7bdfe1ac3cc4efb3e143066c5f4c6aaf2c2324d"
+      "sha256": "d45c6ec85ca18022f122ce43c809d06b3266444fe487faac10efb73370ea30a5"
     },
     {
       "path": "components/collapsible/collapsible.react.tsx",
-      "sha256": "e8a5b31c598f09cd20e29398dc164774ad13479986431bc2577d19685d3c869f"
+      "sha256": "ad47d560b3093d83df248e1ffaf94833e51d94bc4b32d55e0c36f68cbca6f9a2"
     }
   ],
   "renderers": {

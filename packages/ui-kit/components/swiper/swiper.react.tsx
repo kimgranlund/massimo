@@ -4,7 +4,8 @@
 // <button data-ui="button">s and the dots native <button>s. An IntersectionObserver tracks the slide
 // that is at least 60% visible.
 import { Children, useEffect, useRef, useState, type HTMLAttributes, type ReactNode } from 'react';
-import { buttonAttrs, toReactProps } from '../../dom/index.ts';
+import { buttonAttrs } from '../../dom/button.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { cx } from '../../styled-system/css/cx.js';
 import { button } from '../../styled-system/recipes/button.js';
 import { swiper } from '../../styled-system/recipes/swiper.js';

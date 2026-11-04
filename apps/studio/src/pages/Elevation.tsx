@@ -5,7 +5,7 @@ import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/range/element';
 import { useState, type CSSProperties } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
-import { ELEVATION, SHADOW_LAYERS, VAR_REF, compoundShadowCss, shadowAt, type ElevationLevel } from '@massimo/ui-kit/tokens';
+import { ELEVATION, SHADOW_LAYERS, VAR_REF, compoundShadowCss, shadowAt, type ElevationLevel } from '@massimo/ui-kit/tokens/elevation/index';
 import { Range } from '../studio/wc.tsx';
 import type { PageProps } from './types.ts';
 import { Divider, Page, Row, Section, caption, dataTable, fmt, kicker, nameCell, noteCell, tableScroller } from './shared.tsx';

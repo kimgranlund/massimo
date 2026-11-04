@@ -1,7 +1,8 @@
 // The jig's Motion tab: the global motion multipliers, each spring's duration and bounce, and the
 // spring each intent runs (tokens/motion, docs/specs/motion.md). Every control is a theme param in
 // PARAMS, so it flows into the canvas stylesheet, Copy and Reset with no extra wiring.
-import { INTENTS, PARAMS, SPRING_NAMES, liveMotion, type IntentName, type ParamName, type SpringName, type ThemeParams } from '@massimo/ui-kit/tokens';
+import { INTENTS, SPRING_NAMES, liveMotion, type IntentName, type SpringName } from '@massimo/ui-kit/tokens/motion/index';
+import { PARAMS, type ParamName, type ThemeParams } from '@massimo/ui-kit/tokens/themes/params';
 import { Group, Range, Select } from './wc.tsx';
 
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1);

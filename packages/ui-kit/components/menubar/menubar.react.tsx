@@ -6,7 +6,9 @@
 // another trigger opens it. One menu is open at a time (the others close with reason sibling-open).
 import { Children, isValidElement, useRef, useState, type HTMLAttributes, type KeyboardEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { isRtl, menubarAttrs, menubarKeyIntent, menubarStep, toReactProps } from '../../dom/index.ts';
+import { isRtl } from '../../dom/menu.ts';
+import { menubarAttrs, menubarKeyIntent, menubarStep } from '../../dom/menubar.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { Menu, MenuRoot, MenubarCtx, type MenubarEntry } from '../menu/menu.react.tsx';
 import { menubar } from '../../styled-system/recipes/menubar.js';
 

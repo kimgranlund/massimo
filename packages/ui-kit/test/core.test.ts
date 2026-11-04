@@ -1,7 +1,9 @@
 import { tick } from './setup.ts';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-const { signal, computed, effect, html, render, repeat, UIElement, define } = await import('../core/index.ts');
+const { signal, computed, effect } = await import('../core/signals.ts');
+const { html, render, repeat } = await import('../core/template.ts');
+const { UIElement, define } = await import('../core/element.ts');
 
 test('effect drops dependencies it no longer reads', async () => {
   const flag = signal(true), a = signal(1), b = signal(1);

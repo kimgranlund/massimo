@@ -13,10 +13,11 @@ import {
 } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { Button, type ButtonProps } from '../button/button.react.tsx';
-import {
-  createAnchoredPositioner, createDismissLayer, createFocusScope, createHoverIntent, eventDetails, hideTopLayer, isHoverPointer, lockScroll, popupDataAttrs, showTopLayer,
-  type Align, type ChangeDetails, type ChangeReason, type Side,
-} from '../../dom/index.ts';
+import { createAnchoredPositioner, createHoverIntent, isHoverPointer } from '../../dom/popup.ts';
+import { createDismissLayer, createFocusScope, hideTopLayer, showTopLayer, type Align, type Side } from '../../dom/floating.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { lockScroll } from '../../dom/dialog.ts';
+import { popupDataAttrs } from '../../dom/state.ts';
 import { popover } from '../../styled-system/recipes/popover.js';
 
 const on = (v: unknown) => (v ? '' : undefined);

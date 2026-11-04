@@ -163,7 +163,7 @@ When a part is present, the host adopts it (`components/slots.ts`): templated ho
 
 ## Floating layers
 
-Every popup the kit draws is a floating layer: four independent pieces in `dom/floating.ts` (exported from `@massimo/ui-kit/dom`), which web components call directly and React reaches through `components/floating.react.ts`. Select's popup is built on them; Tooltip, Popover, Menu, Dialog, Toast and Combobox take the same pieces, so placement, dismissal and focus behave alike in every component and both renderers (`test/floating.test.ts`).
+Every popup the kit draws is a floating layer: four independent pieces in `dom/floating.ts` (exported as `@massimo/ui-kit/dom/floating`), which web components call directly and React reaches through `components/floating.react.ts`. Select's popup is built on them; Tooltip, Popover, Menu, Dialog, Toast and Combobox take the same pieces, so placement, dismissal and focus behave alike in every component and both renderers (`test/floating.test.ts`).
 
 | Piece | Headless (`dom/floating.ts`) | What it does |
 |---|---|---|

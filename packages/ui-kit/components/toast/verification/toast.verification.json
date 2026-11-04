@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/toast/toast.element.ts",
-      "sha256": "84a2deec19c3eb9eaa439954bc37859899c4bffe5d8190d0fabe4787f0d3b6c0"
+      "sha256": "781bd36a392fb85e5434df48e78280fc8d531284d881ab2aca5858f3435aab41"
     },
     {
       "path": "components/toast/toast.react.tsx",
-      "sha256": "1ad80df39d2570beb928f571e65014a0f5326a888c9726a28d335f73c110d14c"
+      "sha256": "456e490c6a4da69819bdddc17609342f0cb06b92c7a6189ef594b36edff35d0c"
     },
     {
       "path": "components/toast/toast.recipe.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"toast\" test/toast.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Toast\" test/toast.test.ts"

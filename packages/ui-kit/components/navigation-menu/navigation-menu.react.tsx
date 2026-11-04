@@ -16,10 +16,11 @@ import {
 import { createPortal } from 'react-dom';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
 import { Parts, type PartProps } from '../parts.react.tsx';
-import {
-  activationDirection, createAnchoredPositioner, createDismissLayer, createNavigationController, eventDetails, hideTopLayer, popupDataAttrs, showTopLayer,
-  type ChangeDetails, type ChangeReason, type Side,
-} from '../../dom/index.ts';
+import { activationDirection, createNavigationController } from '../../dom/navigation.ts';
+import { createAnchoredPositioner } from '../../dom/popup.ts';
+import { createDismissLayer, hideTopLayer, showTopLayer, type Side } from '../../dom/floating.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { popupDataAttrs } from '../../dom/state.ts';
 import { navigationMenu } from '../../styled-system/recipes/navigation-menu.js';
 
 const on = (v: unknown) => (v ? '' : undefined);

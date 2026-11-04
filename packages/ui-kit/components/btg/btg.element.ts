@@ -6,8 +6,10 @@
 //   `removable` adds a trailing ✕: clicking it, Delete or Backspace fires a cancelable
 //   `remove` event, and unless prevented the chip removes itself and focus moves to a
 //   neighbouring chip.
-import { UIElement, define } from '../../core/index.ts';
-import { applyAttrs, buttonAttrs, eventDetails, isInactive, onButtonKeydown } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { buttonAttrs, isInactive, onButtonKeydown } from '../../dom/button.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { badge } from '../../styled-system/recipes/badge.js';

@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/navigation-menu/navigation-menu.element.ts",
-      "sha256": "ae014002d6bc1ad331fcd22e596a530fda5058e45ed20e07e58f06620e9052ea"
+      "sha256": "452a2e6fbafbcdb92cb91791a73089cb72347ae94d325a21a6a3846e6e9275df"
     },
     {
       "path": "components/navigation-menu/navigation-menu.react.tsx",
-      "sha256": "372bd0867ecf52342180b2b580418634c1bd098444e1e2fd19bd726d65ef042a"
+      "sha256": "5883d5f5329a324751767d75ce3329b56628ae86a240bb62ae11ce1c7a0e45be"
     },
     {
       "path": "components/navigation-menu/navigation-menu.recipe.ts",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"navigation menu\" test/navigation-menu.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"NavigationMenu\" test/navigation-menu.test.ts"

@@ -13,10 +13,11 @@ import {
   type ChangeEvent, type FocusEvent, type HTMLAttributes, type InputHTMLAttributes, type KeyboardEvent, type MouseEvent,
   type PointerEvent as ReactPointerEvent, type ReactNode, type ButtonHTMLAttributes, type RefObject,
 } from 'react';
-import {
-  clampNumber, eventDetails, fieldAttrs, formatNumberValue, hideTopLayer, holdStepper, numberInputMode, numberKey, parseNumber, sanitizeNumberText,
-  showTopLayer, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled, toReactProps, type ChangeDetails, type ChangeReason,
-} from '../../dom/index.ts';
+import { clampNumber, formatNumberValue, holdStepper, numberInputMode, numberKey, parseNumber, sanitizeNumberText, snapNumber, startScrub, stepAmount, stepNumber, stepperAttrs, stepperDisabled } from '../../dom/number.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { fieldAttrs } from '../../dom/field.ts';
+import { hideTopLayer, showTopLayer } from '../../dom/floating.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { FormatNumberOptions } from '../../tokens/typography/format.ts';
 import { useFieldState } from '../state.react.ts';
 import { findPart, renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';

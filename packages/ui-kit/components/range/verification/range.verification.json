@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/range/range.element.ts",
-      "sha256": "2d77a07a32c80091cbb4ff7f170b765469414c7766039e72d4dc2440c406e465"
+      "sha256": "79a0ad01413eef51ec91f15f95a52b79ce90eca52e71ceefe7ea4c0ca5845f28"
     },
     {
       "path": "dom/range.ts",
@@ -18,7 +18,7 @@
     },
     {
       "path": "components/range/range.react.tsx",
-      "sha256": "d873e32e5fe9649a7885a19dc4edee5351f15d7ba820588cfbba9ef2f82302fd"
+      "sha256": "e6a9605f0131884823758447705d2156f24ab2f4fbae9e799cf9d0ab7809c433"
     },
     {
       "path": "dom/state.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "dom/events.ts",
@@ -66,7 +66,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"range|progress\" test/new-components.test.ts",
@@ -99,7 +99,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

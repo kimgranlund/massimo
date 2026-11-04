@@ -1,7 +1,9 @@
 import { tick } from './setup.ts';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-const { sanitizeSvg, registerIconSet, startIcons, stopIcons, iconSetFor, moduleSet, BUILTIN_SETS } = await import('../icons/index.ts');
+const { sanitizeSvg } = await import('../icons/sanitize.ts');
+const { registerIconSet, startIcons, stopIcons, iconSetFor } = await import('../icons/runtime.ts');
+const { moduleSet, BUILTIN_SETS } = await import('../icons/sets.ts');
 const { validateTheme } = await import('../tokens/themes/index.ts');
 
 const settle = async () => { for (let i = 0; i < 5; i++) await tick(); };

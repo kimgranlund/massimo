@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/select/select.element.ts",
-      "sha256": "081a8db62081f05f0c265689de9c6a73aa0eb3c076881165f9b8f5b1f8bd0909"
+      "sha256": "085024782e6904d47c5ff472bb70f5fcb2001f7e1fc656e51f090e1aa0addee0"
     },
     {
       "path": "components/listbox/options.ts",
-      "sha256": "c1c82cc76461677c317ac291c7fa17e16e81a01734f5b20516a3ddf11a72e9b4"
+      "sha256": "3a32be91b4d876d1ee32c9e15a83c134448350cfdc133cd07e08f3308434792a"
     },
     {
       "path": "dom/listbox.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/select/select.react.tsx",
-      "sha256": "3f4d9c6463ef8022f3ffded5159c568c90b0446882c00116f2b7d086856a4d22"
+      "sha256": "4144e08224cfef67a3a8e5d2b061713e47ae097c2034c4e415c3981661ce130c"
     },
     {
       "path": "components/parts.react.tsx",
@@ -38,7 +38,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "dom/events.ts",
@@ -90,7 +90,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-select\" test/components.test.ts",
@@ -125,7 +125,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

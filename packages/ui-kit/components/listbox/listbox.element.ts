@@ -1,11 +1,16 @@
 // <ui-listbox>: single-select list of <ui-option> children. Selection follows focus.
 // <ui-segmented>: the same listbox, horizontal.
-import { UIFormElement, define, settleDefault, signal, type Problem } from '../../core/index.ts';
-import { applyAttrs, createTypeahead, eventDetails, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, type ChangeReason, type Orientation } from '../../dom/index.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, type Orientation } from '../../dom/listbox.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
 import './option.element.ts';
 import { ensureId, optionList } from './options.ts';
 import { applyRecipe } from '../classes.ts';
-import { listbox, segmented } from '../../styled-system/recipes/index.js';
+import { listbox } from '../../styled-system/recipes/listbox.js';
+import { segmented } from '../../styled-system/recipes/segmented.js';
 
 export class UIListbox extends UIFormElement {
   static properties = {

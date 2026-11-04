@@ -9,8 +9,8 @@
 import { useCallback, useImperativeHandle, useMemo, useRef, useState, type ChangeEvent, type FormEvent, type FormHTMLAttributes, type InputEvent, type SubmitEvent, type ReactNode, type RefObject } from 'react';
 import { FormCtx, type FormContextValue } from '../state.react.ts';
 import { renderPart, type PartBase, type PartState } from '../compound.react.tsx';
-import { eventDetails, type ChangeDetails } from '../../dom/index.ts';
-import { form } from '../../styled-system/recipes/index.js';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
+import { form } from '../../styled-system/recipes/form.js';
 
 export type FormErrors = Record<string, string | string[] | undefined | null>;
 export type FormValues = Record<string, FormDataEntryValue | FormDataEntryValue[]>;

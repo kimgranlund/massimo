@@ -9,11 +9,17 @@
 // also sets --ui-ratio-start on the host (the indicator's start) and --ui-ratio on each thumb.
 // Composition (optional): track › indicator and thumb may be authored as [data-part] children; each
 // is adopted onto the generated part (attributes, classes; the thumb's content), absent ones generated.
-import { UIElement, UIFormElement, define, html, settleDefault, signal } from '../../core/index.ts';
-import { applyAttrs, eventDetails, nearestThumb, pairGroupAttrs, pairKey, pairRatios, pairThumbAttrs, parsePair, progressState, rangeDataAttrs, rangeKey, setPairValue, snapPair, type ChangeReason, type RangePair, ratioOf, sliderAttrs, snap, thumbValueText, valueAt } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { UIFormElement, settleDefault } from '../../core/form-element.ts';
+import { html } from '../../core/template.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { nearestThumb, pairGroupAttrs, pairKey, pairRatios, pairThumbAttrs, parsePair, progressState, rangeDataAttrs, rangeKey, setPairValue, snapPair, type RangePair, ratioOf, sliderAttrs, snap, thumbValueText, valueAt } from '../../dom/range.ts';
 import { applyRecipe, partOf, setClasses } from '../classes.ts';
 import { adoptPart, authoredParts } from '../slots.ts';
-import { range, progress } from '../../styled-system/recipes/index.js';
+import { range } from '../../styled-system/recipes/range.js';
+import { progress } from '../../styled-system/recipes/progress.js';
 
 /** Track and indicator (Base UI Slider.Indicator / Progress.Indicator) parts of a range or progress host. */
 const trackPart = (host: Element) => (slot: string) => slot === 'indicator' ? partOf(partOf(host, 'track') ?? host, 'indicator') : partOf(host, slot);

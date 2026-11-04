@@ -6,7 +6,8 @@
 // Choices also get data-checked / data-unchecked / data-indeterminate from the native input, so a
 // radio follows its group: a change on any radio of the same name rereads this one.
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type FocusEvent } from 'react';
-import { checkedDataAttrs, fieldDataAttrs, toReactProps } from '../dom/index.ts';
+import { checkedDataAttrs, fieldDataAttrs } from '../dom/state.ts';
+import { toReactProps } from '../dom/attrs.ts';
 
 /** A disabled Fieldset around a host (fieldset.react.tsx provides it): the host's data-disabled follows it, as the native <fieldset disabled> disables its native control. */
 export const FieldsetDisabledCtx = createContext(false);

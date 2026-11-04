@@ -10,7 +10,8 @@
 import { createContext, useContext, useEffect, useId, useLayoutEffect, useRef, useState, useSyncExternalStore, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactNode, type CSSProperties, type Context } from 'react';
 import { createPortal } from 'react-dom';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
-import { createAnchoredPositioner, hideTopLayer, showTopLayer, type Side } from '../../dom/index.ts';
+import { createAnchoredPositioner } from '../../dom/popup.ts';
+import { hideTopLayer, showTopLayer, type Side } from '../../dom/floating.ts';
 import { toast as toastRecipe } from '../../styled-system/recipes/toast.js';
 import { createToastManager, stackIndex, type SwipeDirection, type ToastCloseReason, type ToastManager, type ToastObject, type ToastOptions } from './manager.ts';
 import { afterTransitions, attachSwipe, measureStack, nextPaint, swipeDirections } from './stack.ts';

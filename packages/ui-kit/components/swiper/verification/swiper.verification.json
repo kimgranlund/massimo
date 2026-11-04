@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/swiper/swiper.element.ts",
-      "sha256": "65c03d22142a19f3e647c1cb0c3f144d537eeaf181504e28315bc6688bd8976a"
+      "sha256": "7e33f57f212ba319c243066c6b133307082591b5e57405e9497cdc8c816408d9"
     },
     {
       "path": "components/swiper/swiper.manifest.json",
@@ -14,7 +14,7 @@
     },
     {
       "path": "components/swiper/swiper.react.tsx",
-      "sha256": "090edca44c7dcecf616617693446ff629fe9d6283ad86120573b5aa885902a49"
+      "sha256": "11a8ba473c85ee0e1c74d0634ba52f3c347edb334b863a0d96abe44588c1e3e8"
     },
     {
       "path": "dom/state.ts",

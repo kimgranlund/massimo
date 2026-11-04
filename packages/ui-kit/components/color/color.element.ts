@@ -5,12 +5,17 @@
 // <ui-palette>: a strip of swatches with no gaps. With `name` (or `selectable`) it becomes a
 //   single-select listbox: arrows move, the swatch's color is the form value.
 //   orientation: horizontal (default) | vertical (a column; Up/Down move).
-import { UIElement, UIFormElement, define, settleDefault, signal, type Problem } from '../../core/index.ts';
-import { applyAttrs, eventDetails, navigate, optionAttrs, listboxAttrs, uid, type ChangeReason } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { navigate, optionAttrs, listboxAttrs } from '../../dom/listbox.ts';
 
 import { isTranslucent, validColor } from './color.ts';
 import { applyRecipe } from '../classes.ts';
-import { swatch, palette } from '../../styled-system/recipes/index.js';
+import { swatch } from '../../styled-system/recipes/swatch.js';
+import { palette } from '../../styled-system/recipes/palette.js';
 
 export { isTranslucent } from './color.ts';
 

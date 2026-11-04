@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/dialog/dialog.element.ts",
-      "sha256": "0e08660255a4d2dd9efe7d1b01e3dd9f1b421e2a04354d7665193bd82b93be8b"
+      "sha256": "dc5a4543611ce5ab7ac36a0eb3ed22576ab0c3e84da9084c034b738367f13ec3"
     },
     {
       "path": "components/dialog/dialog.react.tsx",
-      "sha256": "ec16fe68726547394f2cee4b39a689a9d317b9e4c89248ea1246237757c5191a"
+      "sha256": "3a8b7ce56d3688f93220529032acd813cd44b3edd7e1f07ce6e404afbe4f8aac"
     },
     {
       "path": "components/dialog/dialog.recipe.ts",

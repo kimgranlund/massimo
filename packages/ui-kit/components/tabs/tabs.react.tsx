@@ -8,7 +8,7 @@
 // List (a Tab per item, the Indicator) + a Panel per item.
 import { Children, createContext, isValidElement, useContext, useId, useLayoutEffect, useRef, useState, type CSSProperties, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { eventDetails, type ChangeDetails } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { tabs as tabsRecipe } from '../../styled-system/recipes/tabs.js';
 import { activeTabVars } from './indicator.ts';

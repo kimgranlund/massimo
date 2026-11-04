@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/toggle-group/toggle-group.element.ts",
-      "sha256": "a5620b5fca6e3e1c2b89b2a1cd814c784210b0e80781e177c05809af06b776c5"
+      "sha256": "04763f1eed530f861d5d1359aedf2e6ea17fba768bc3603d073d69511e819ad8"
     },
     {
       "path": "components/toggle-group/toggle-group.react.tsx",
-      "sha256": "b09daec9863b97c2190348c576f587eb02e5a3bca108aa3520c1d63631ccf543"
+      "sha256": "33ec46ddcfca02c58a401548d8066ab03612093ac61636800c18cf93d0a3f27c"
     },
     {
       "path": "components/toggle-group/toggle-group.recipe.ts",
@@ -22,11 +22,11 @@
     },
     {
       "path": "components/toggle/toggle.element.ts",
-      "sha256": "a614de984a5b90d373766c579b318e2dd2a5bcae350eddfa2e443a1783804ab0"
+      "sha256": "fb2b5c55e75a550effb12835359d30c6dff6a560ad56c5204c7a2ebc926b7744"
     },
     {
       "path": "components/toggle/toggle.react.tsx",
-      "sha256": "ab578d3e45ff337b16a71fe47ddfcc3833d4e1dd0b31725ee5a0dffb810ed418"
+      "sha256": "1ebdf617b8236dfe7ab403dd973548107bc50d4ffcaafac3a80806a92a8306e4"
     },
     {
       "path": "components/toggle/toggle.recipe.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-toggle-group\" test/toggle-group.test.ts"
@@ -60,7 +60,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React ToggleGroup\" test/toggle-group.test.ts"

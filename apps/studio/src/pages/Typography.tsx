@@ -3,7 +3,7 @@
 import { Fragment } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { numeric } from '../../styled-system/patterns/index.js';
-import { TEXT_COLORS, TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from '@massimo/ui-kit/tokens';
+import { TEXT_COLORS, TYPE_ROLES, VOICES, resolveType, type TypeRoleName } from '@massimo/ui-kit/tokens/typography/resolve';
 import type { PageProps } from './types.ts';
 import { CQ_MD, Divider, Page, Section, dataTable, fmt, metrics, nameCell, noteCell, rowLabel, tableScroller } from './shared.tsx';
 import { Numerals } from './TypographyNumerals.tsx';

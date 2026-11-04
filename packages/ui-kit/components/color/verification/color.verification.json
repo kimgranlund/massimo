@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/color/color.element.ts",
-      "sha256": "b218539f9871f1daa138ee9c08214f9088a6ab8961378f8b5b98274d6d59c96e"
+      "sha256": "f292cf6aed4d820a662ed1437accd179f10066b7d5a51cc097bcbb0f230f13bf"
     },
     {
       "path": "dom/listbox.ts",
@@ -18,7 +18,7 @@
     },
     {
       "path": "components/color/color.react.tsx",
-      "sha256": "17835118a9dd5137edd43b0f1518c9f5ab72d6551892cecfa3ea865cca6a3563"
+      "sha256": "6ba161c16f87604c6d39ee7c969025bb75d74d55f685385c068c446a9fd2c474"
     },
     {
       "path": "components/color/color.ts",
@@ -30,7 +30,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "dom/events.ts",
@@ -58,7 +58,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
@@ -86,7 +86,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

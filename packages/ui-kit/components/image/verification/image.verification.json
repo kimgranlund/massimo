@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/image/image.element.ts",
-      "sha256": "69fad04cbe0ec70db844baf0bb1e4ca377be061e88b267ffe66b448e345ac219"
+      "sha256": "366c1d49ba25cb33a8a08cd08665fb097b342d6985edaf12dd4d9900e4f5a521"
     },
     {
       "path": "components/image/ratios.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/swiper/swiper.react.tsx",
-      "sha256": "090edca44c7dcecf616617693446ff629fe9d6283ad86120573b5aa885902a49"
+      "sha256": "11a8ba473c85ee0e1c74d0634ba52f3c347edb334b863a0d96abe44588c1e3e8"
     }
   ],
   "renderers": {
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"swiper\" test/new-components.test.ts"
@@ -52,7 +52,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts"

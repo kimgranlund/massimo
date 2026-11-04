@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/input/input.element.ts",
-      "sha256": "c79b4d2359613498f32ad3ad132646573a500908b8dcd65ffa9053e0a1315164"
+      "sha256": "ddd38005571e7cf2a7c3b74c32717e920b8b336b21ac83792cd3cf3f4c74cfe1"
     },
     {
       "path": "dom/text-entry.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/input/input.react.tsx",
-      "sha256": "c17b251199aa542828d95d96ae57a23586feacf6bd2b73d2ec87e9e317e06e8b"
+      "sha256": "be9f281ecf96938f2b98561e86ab01f8d5554cb2cbd5c72ebc7e0b0822509e59"
     },
     {
       "path": "dom/state.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "dom/events.ts",
@@ -70,7 +70,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-input\" test/components.test.ts",
@@ -103,7 +103,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

@@ -7,7 +7,7 @@
 // Viewport › Content (the children) + both scrollbars + Corner.
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type HTMLAttributes, type PointerEvent, type ReactNode, type UIEvent } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { bindScrollbar, measureScrollArea, scrollAreaDataAttrs, scrollAreaVars, setVars, type EdgeThreshold, type ScrollOrientation } from '../../dom/index.ts';
+import { bindScrollbar, measureScrollArea, scrollAreaDataAttrs, scrollAreaVars, setVars, type EdgeThreshold, type ScrollOrientation } from '../../dom/scroll-area.ts';
 import { scrollArea } from '../../styled-system/recipes/scroll-area.js';
 
 type Div = Omit<HTMLAttributes<HTMLDivElement>, 'className'> & PartBase;

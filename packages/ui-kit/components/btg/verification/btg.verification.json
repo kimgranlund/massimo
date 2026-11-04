@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/btg/btg.element.ts",
-      "sha256": "723412cdfd668005d6ea2774dad737726daed15b0b4f5cd047be1e3e5a6bc60b"
+      "sha256": "0d673c64c9833c1b3e5f8f1ee5ede1b9211b84df0d17e6c38d177da9108f3565"
     },
     {
       "path": "components/slots.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/btg/btg.react.tsx",
-      "sha256": "9a3bb09560ca3858e51eb8ddfa2ef88ff5f3cc5e10b7f20976a111e99628bf50"
+      "sha256": "6dee7b1ccdada3b5acbdd7b17b4fa4b00134aa1a9b1c9f488c4f418f05ca580a"
     },
     {
       "path": "components/parts.react.tsx",
@@ -54,7 +54,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
@@ -82,7 +82,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

@@ -12,11 +12,11 @@ import {
   type FocusEvent, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type PointerEvent, type ReactNode, type RefObject,
 } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import {
-  createSubmenuAim, createTypeahead, eventDetails, isPrintableKey, menuGroupAttrs, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate,
-  menuOptionItems, menuPopupAttrs, menuSeparatorAttrs, menuTriggerAttrs, submenuKeys, toReactProps, isRtl,
-  type Align, type ChangeDetails, type ChangeReason, type MenuItemKind, type Side,
-} from '../../dom/index.ts';
+import { createSubmenuAim, menuGroupAttrs, menuIndicatorAttrs, menuItemAttrs, menuItemDisabled, menuItems, menuNavigate, menuOptionItems, menuPopupAttrs, menuSeparatorAttrs, menuTriggerAttrs, submenuKeys, isRtl, type MenuItemKind } from '../../dom/menu.ts';
+import { createTypeahead, isPrintableKey } from '../../dom/listbox.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { toReactProps } from '../../dom/attrs.ts';
+import { type Align, type Side } from '../../dom/floating.ts';
 import { useFloatingLayer } from '../floating.react.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { menu as menuRecipe } from '../../styled-system/recipes/menu.js';

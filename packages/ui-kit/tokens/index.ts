@@ -12,18 +12,3 @@ export const tokens = defineTokens({
 
 export const semanticTokens = defineSemanticTokens({ colors: semanticColors, shadows: semanticShadows, durations: semanticDurations, easings: semanticEasings });
 
-export * from './themes/index.ts';
-export * from './elevation/index.ts';
-export * from './brand/index.ts';
-export * from './brand/examples.ts';
-export * from './brand/build.ts';
-export * from './geometry/resolve.ts';
-export * from './typography/resolve.ts';
-export * from './typography/format.ts';
-export * from './typography/faces.ts';
-export { unitTokenVars, unitTokenCss } from './geometry/index.ts';
-export {
-  motionTokenVars, motionTokenCss, motionVars, INTENTS, SPRINGS, SPRING_NAMES, BOUNCE_MAX, RESOLVED_SPRINGS,
-  springAt, spanFactor, shapeAt, resolveSpring, liveSpring, liveMotion, intentSpring,
-  type IntentName, type SpringName, type Spring,
-} from './motion/index.ts';

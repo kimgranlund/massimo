@@ -7,8 +7,9 @@
 // Script measures the viewport on scroll and resize (dom/scroll-area.ts) and puts Base UI's data-*
 // on the parts and its CSS variables on them as custom properties; the recipe does the rest.
 // A thumb drags (pointer capture); a press on the track scrolls so the thumb centers under it.
-import { UIElement, define } from '../../core/index.ts';
-import { applyAttrs, bindScrollbar, measureScrollArea, scrollAreaDataAttrs, scrollAreaVars, setVars, type ScrollMetrics, type ScrollOrientation } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { bindScrollbar, measureScrollArea, scrollAreaDataAttrs, scrollAreaVars, setVars, type ScrollMetrics, type ScrollOrientation } from '../../dom/scroll-area.ts';
 import { applyRecipe, setClasses } from '../classes.ts';
 import { scrollArea } from '../../styled-system/recipes/scroll-area.js';
 

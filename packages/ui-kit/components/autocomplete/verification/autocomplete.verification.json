@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "components/autocomplete/autocomplete.element.ts",
-      "sha256": "39cdb0a136d6a2b2d832272e43f0b424085f198fa69f42d77ba602c57369123c"
+      "sha256": "c11c5051d5f1228b7ce91df7a2c9d6448cfd4ab32efca313ca23aea0e1030bca"
     },
     {
       "path": "components/autocomplete/autocomplete.react.tsx",
-      "sha256": "5e93b0fb39617df0ace950ea72456b8a4042050424ddcdb887557b5cfbafc0bb"
+      "sha256": "8a8712c9c81668a2ba067511a297ea1de426e6077f141bac4da81c5693df82d2"
     },
     {
       "path": "components/autocomplete/autocomplete.manifest.json",
-      "sha256": "4bdbe9d6362d8a7bfa144bf831e813e8897367c71e6c1521a5267e5bdbc4f375"
+      "sha256": "c46fa925b5b905680dc45b00bf0e2161b5dc10a73ad26813103e47062a05cd3c"
     },
     {
       "path": "components/combobox/combobox.element.ts",
-      "sha256": "47dd187633f1541b6f7e31e9385561f21880b537af351f05b811f2bc7c55bdc3"
+      "sha256": "2c08f4e680ba4c6801961f89d05ffa34472f7a4fcda45f021a00ceea331c15a9"
     },
     {
       "path": "components/combobox/combobox.react.tsx",
-      "sha256": "9830a2367e6a66127745f8a083b67307734004c32ccbb2747a3d8be9d30dc060"
+      "sha256": "59d7f6858c171ec8989829b299fda687bb7f103c409b2a144f784220e3252de1"
     },
     {
       "path": "components/combobox/combobox.recipe.ts",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-autocomplete\" test/combobox.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Autocomplete\" test/combobox.test.ts"

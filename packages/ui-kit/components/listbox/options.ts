@@ -1,6 +1,6 @@
 // Shared plumbing for elements that own <ui-option> children.
-import { signal } from '../../core/index.ts';
-import { uid } from '../../dom/index.ts';
+import { signal } from '../../core/signals.ts';
+import { uid } from '../../dom/attrs.ts';
 import type { UIOption } from './option.element.ts';
 
 /** Reactive view of the <ui-option> children of `container`, refreshed on DOM changes. */

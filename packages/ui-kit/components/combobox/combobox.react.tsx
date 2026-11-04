@@ -14,18 +14,20 @@
 // placeholder emptyText description error>{items}</Combobox> is Root + parts.
 // The Autocomplete (components/autocomplete) is this Root with free text (`freeText`, `mode`).
 import { Children, createContext, isValidElement, useContext, useEffect, useId, useRef, useState, type ChangeEvent, type FocusEvent, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactElement, type ReactNode } from 'react';
-import {
-  comboboxButtonAttrs, comboboxInputAttrs, comboboxKeyIntent, comboboxTriggerAttrs, completionOf, eventDetails, fieldAttrs, firstEnabled,
-  inlineCompletion, lastEnabled, listboxAttrs, matchesQuery, navigate, optionAttrs, toReactProps, visibleItems,
-  type AutocompleteMode, type ChangeDetails, type ChangeReason, type OptionItem,
-} from '../../dom/index.ts';
+import { comboboxButtonAttrs, comboboxInputAttrs, comboboxKeyIntent, comboboxTriggerAttrs, completionOf, inlineCompletion, matchesQuery, visibleItems, type AutocompleteMode } from '../../dom/combobox.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { fieldAttrs } from '../../dom/field.ts';
+import { firstEnabled, lastEnabled, listboxAttrs, navigate, optionAttrs, type OptionItem } from '../../dom/listbox.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import type { PartProps } from '../parts.react.tsx';
 import { useFieldState } from '../state.react.ts';
 import { useFloatingLayer } from '../floating.react.ts';
 import { isPartOf, renderPart, splitParts, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
 import { ItemContext, ItemIndicator, ItemParts, ItemText } from '../listbox/listbox.react.tsx';
-import { autocomplete as autocompleteRecipe, combobox as comboboxRecipe, option } from '../../styled-system/recipes/index.js';
+import { autocomplete as autocompleteRecipe } from '../../styled-system/recipes/autocomplete.js';
+import { combobox as comboboxRecipe } from '../../styled-system/recipes/combobox.js';
+import { option } from '../../styled-system/recipes/option.js';
 
 export interface ComboboxRootProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange' | 'className' | 'children' | 'prefix'>, PartBase {
   /** The selected value (Base UI value); string[] with multiple. */

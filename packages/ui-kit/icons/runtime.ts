@@ -4,7 +4,12 @@
 // caret-*, x, …), Phosphor from the CDN; else the nearest ancestor's data-icons, the `icons`
 // value of the theme named by <html data-ui-theme>, or the default (phosphor). Changing either attribute
 // re-renders affected icons. Fetched icons are cached per set and name.
-import { savedThemes } from '../tokens/themes/index.ts';
+// The saved themes' JSON, not tokens/themes/index.ts: that module carries the theme engine and the
+// spectrum runtime, which no page that only draws icons should load.
+import saved from '../tokens/themes/themes.json' with { type: 'json' };
+import type { Theme } from '../tokens/themes/theme.ts';
+
+const savedThemes = saved as Record<string, Theme>;
 import { sanitizeSvg } from './sanitize.ts';
 import { BUILTIN_SETS, DEFAULT_ICON_SET, SYSTEM_GLYPHS, SYSTEM_ICON_SET, type IconSetSource } from './sets.ts';
 

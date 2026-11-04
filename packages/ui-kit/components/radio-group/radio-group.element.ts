@@ -5,8 +5,12 @@
 // Its radios keep their keyboard model: arrows move and select within the group, and only the
 // checked (or first enabled) radio is a tab stop. disabled and readonly reach every radio inside.
 // Name it with a ui-field (its label names the group), a ui-fieldset legend, or label / aria-label.
-import { UIFormElement, define, registerDisabler, settleDefault, signal, syncDisabled, type Problem } from '../../core/index.ts';
-import { applyAttrs, eventDetails, type Orientation } from '../../dom/index.ts';
+import { UIFormElement, registerDisabler, settleDefault, syncDisabled, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
+import { type Orientation } from '../../dom/listbox.ts';
 import { applyRecipe } from '../classes.ts';
 import { UIRadio, type UIChoice } from '../choice/choice.element.ts';
 import { radioGroup } from '../../styled-system/recipes/radio-group.js';

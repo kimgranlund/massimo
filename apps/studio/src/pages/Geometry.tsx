@@ -19,10 +19,7 @@ import '@massimo/ui-kit/components/tooltip/element';
 import '@massimo/ui-kit/components/preview-card/element';
 import '@massimo/ui-kit/components/navigation-menu/element';
 import { css } from '../../styled-system/css/index.js';
-import { DENSITIES, densityFactor, densityInset, resolveContainer,
-  SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup, resolveNavigationMenu,
-  type BtgKind, type ControlParts, type GeometryInput, type TextPart,
-} from '@massimo/ui-kit/tokens';
+import { DENSITIES, densityFactor, densityInset, resolveContainer, SIZES, resolveBtg, resolveChoice, resolveChoiceGroup, resolveFieldset, resolveComposite, resolveControl, resolveField, resolveSelectTrigger, resolveSwatch, resolveTextRun, resolveTrack, resolveSeparator, resolveAvatar, resolveMeter, resolvePopup, resolveNavigationMenu, type BtgKind, type ControlParts, type GeometryInput, type TextPart } from '@massimo/ui-kit/tokens/geometry/resolve';
 import type { PageProps } from './types.ts';
 import { dataTable, currentRow, groupHead, tableScroller, CQ_MD, Divider, Page, Section, fmt, metrics, rowLabel, specimens } from './shared.tsx';
 

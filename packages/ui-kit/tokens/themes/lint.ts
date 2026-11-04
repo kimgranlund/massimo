@@ -5,7 +5,8 @@ import constraints from '../../contracts/theme-constraints.json' with { type: 'j
 import { defaultParams, type ParamName, type ThemeParams } from './params.ts';
 import { themeParameters, type Theme } from './theme.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, spectrumOverrides } from '../colors/spectrum/config.ts';
-import { anchoredSpectrum, generateSpectrum, resolveRoles, SCALE_ROLES, type AnchorResult, type SolidSteps, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
+import { anchoredSpectrum, generateSpectrum, resolveRoles, SCALE_ROLES, type Spectrum, type Roles } from '../colors/spectrum/index.ts';
+import { type AnchorResult, type SolidSteps } from '../colors/spectrum/anchors.ts';
 import { densityInset } from '../geometry/resolve.ts';
 import { SPRING_NAMES } from '../motion/index.ts';
 import { DEFAULT_VOICES, FONT_FAMILIES, VOICES, isSerifStack, type Face } from '../typography/resolve.ts';

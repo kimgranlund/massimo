@@ -4,7 +4,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import Ajv from 'ajv';
-import { PARAMS, THEME_DOMAINS, themeJsonSchema } from '../tokens/themes/index.ts';
+import { PARAMS } from '../tokens/themes/params.ts';
+import { THEME_DOMAINS, themeJsonSchema } from '../tokens/themes/theme.ts';
 import { staleness, domainRecords } from '../scripts/verification.ts';
 import { loadGraph, lookup } from '../scripts/registry-lib.ts';
 

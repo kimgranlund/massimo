@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { generateSpectrum, normalizeSpectrum, resolveRoles, roleVariables, spectrumCSS, spectrumOverrides, families, SPECTRUM_DEFAULTS } from '../tokens/colors/spectrum/index.ts';
+import { generateSpectrum, resolveRoles, roleVariables, spectrumCSS, families } from '../tokens/colors/spectrum/index.ts';
+import { normalizeSpectrum, spectrumOverrides, SPECTRUM_DEFAULTS } from '../tokens/colors/spectrum/config.ts';
 
 test('settings validate field by field', () => {
   assert.equal(normalizeSpectrum({ hue: 120 }).hue, 120);

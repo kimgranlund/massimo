@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/menubar/menubar.element.ts",
-      "sha256": "63c6cad2d9600be35b6e89ac7084e44582ffd1d35ea27b8b157c0490f234c1d6"
+      "sha256": "58197d1684c85a555dd3ec4336d707fc868619937c49aa494883dce111cd7f9d"
     },
     {
       "path": "components/menubar/menubar.react.tsx",
-      "sha256": "36892096899733445d4495dd80e1bead78d92167b77ce5d8b2f1dedc381c24a5"
+      "sha256": "4503f271449ba77e37950cd1badad30bfee67158b7185f0abbb2f78acf4b71c6"
     },
     {
       "path": "components/menubar/menubar.recipe.ts",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"menubar\" test/menu.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Menubar\" test/menu.test.ts"

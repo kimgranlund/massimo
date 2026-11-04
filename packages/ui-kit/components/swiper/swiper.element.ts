@@ -2,8 +2,9 @@
 // touch, trackpad and arrow-key scrolling); script only adds the paddles and dots and tracks
 // the active slide. Attributes: `no-paddles`, `no-dots`, `hover-controls` (controls appear on
 // hover or focus). Fires `slidechange` with detail { index }.
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
 import { applyRecipe, partOf, setClasses } from '../classes.ts';
 import { swiper } from '../../styled-system/recipes/swiper.js';
 import '../button/button.element.ts';

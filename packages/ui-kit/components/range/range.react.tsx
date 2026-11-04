@@ -16,10 +16,13 @@
 // value (index 0 and 1). Progress.Root renders the native <progress> after its children. The presets
 // <Slider> / <Range> and <Progress> are Root + Track (with its Indicator) + Thumb (two for a pair).
 import { createContext, useContext, useEffect, useRef, useState, type ChangeEvent, type CSSProperties, type FormEvent, type KeyboardEvent, type PointerEvent, type HTMLAttributes, type InputHTMLAttributes, type ReactNode } from 'react';
-import { eventDetails, nearestThumb, pairLabels, pairRatios, progressState, rangeDataAttrs, ratioOf, setPairValue, snapPair, thumbValueText, toReactProps, valueAt, type ChangeDetails, type ValueText, type ChangeReason, type RangePair } from '../../dom/index.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { nearestThumb, pairLabels, pairRatios, progressState, rangeDataAttrs, ratioOf, setPairValue, snapPair, thumbValueText, valueAt, type ValueText, type RangePair } from '../../dom/range.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { useFieldState } from '../state.react.ts';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { range, progress } from '../../styled-system/recipes/index.js';
+import { range } from '../../styled-system/recipes/range.js';
+import { progress } from '../../styled-system/recipes/progress.js';
 
 /** One thumb of a pair: its native input's props and ratio. */
 interface PairThumb { input: Record<string, any>; ratio: number; dragging: boolean }

@@ -1,7 +1,9 @@
 // <ui-button>: the host element is the button. Children are sorted into leading / contents /
 // trailing slots (mark icons with slot="leading" or slot="trailing"); see components/slots.ts.
-import { UIFormElement, define, submitOwner } from '../../core/index.ts';
-import { applyAttrs, buttonAttrs, blockIfInactive, onButtonKeydown, type ButtonState } from '../../dom/index.ts';
+import { UIFormElement, submitOwner } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { buttonAttrs, blockIfInactive, onButtonKeydown, type ButtonState } from '../../dom/button.ts';
 import { observeSlots } from '../slots.ts';
 import { applyRecipe } from '../classes.ts';
 import { button } from '../../styled-system/recipes/button.js';

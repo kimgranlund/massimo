@@ -3,8 +3,12 @@
 // (tokens/brand hydrate), so the brand stays the source and the canvas follows. Start from a worked
 // brand or a blank one.
 import { useState } from 'react';
-import { DESCRIPTORS, EXAMPLE_BRANDS, FACE_CATALOGUE, GROUNDINGS, TERRITORIES, RELATIONS, SUBJECT_KINDS, MUSE_KINDS, TONE_WORDS, brandCharacter, primaryTerritory, validateBrand, type Brand } from '@massimo/ui-kit/tokens';
-import { ROLE_NAMES, isAnchorColor } from '@massimo/ui-kit/spectrum';
+import { DESCRIPTORS } from '@massimo/ui-kit/tokens/themes/descriptor-data';
+import { EXAMPLE_BRANDS } from '@massimo/ui-kit/tokens/brand/examples';
+import { FACE_CATALOGUE } from '@massimo/ui-kit/tokens/typography/faces';
+import { GROUNDINGS, TERRITORIES, RELATIONS, SUBJECT_KINDS, MUSE_KINDS, TONE_WORDS, brandCharacter, primaryTerritory, validateBrand, type Brand } from '@massimo/ui-kit/tokens/brand/index';
+import { ROLE_NAMES } from '@massimo/ui-kit/spectrum';
+import { isAnchorColor } from '@massimo/ui-kit/tokens/colors/spectrum/anchors';
 import { Field, Group, Segmented, Select, SelectControl, useEvent } from './wc.tsx';
 
 const BLANK: Brand = { schemaVersion: 1, name: 'new-brand', subject: { name: 'New brand', audience: 'who it serves', primaryJob: 'what it helps them do', kind: 'product', sources: ['a source of visual character'] } };

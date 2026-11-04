@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/separator/separator.element.ts",
-      "sha256": "4746fad98f86a2e4bfce2916a865bd2387a3cb1f222322fdca810ae608088bd7"
+      "sha256": "2cfa6e16d017a350a55b5fff155c871567455f8d4fa144d148ac79b933f5e81b"
     },
     {
       "path": "components/separator/separator.react.tsx",
-      "sha256": "a00a835a096a0eba953d50f4820a7b10a334edc1ec5228a641047479a4179dde"
+      "sha256": "95a9149e0aa7902b2bddbfdf9b1878198a213391936be7d528b2d1dc82fc0649"
     },
     {
       "path": "components/separator/separator.recipe.ts",

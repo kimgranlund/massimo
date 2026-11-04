@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/fieldset/fieldset.element.ts",
-      "sha256": "c3e5b31ee420a411577ec7f5056262af72073de8914b5de8d290293f3fc645f4"
+      "sha256": "c495680d724014d16438b61544cb675a00ff434db58aac15d11d725a44025f05"
     },
     {
       "path": "components/fieldset/fieldset.recipe.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "components/fieldset/fieldset.react.tsx",
-      "sha256": "bbe0fb4a8206b7ee6862f2a34aef186cf523d8a8601e4e865c66c9900c3df5ba"
+      "sha256": "e9fe3bad3a18810c715862605c32037b967f5a5e11028b1b06ca1adfdd3a0864"
     },
     {
       "path": "components/fieldset/fieldset.manifest.json",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "core/form-element.ts",

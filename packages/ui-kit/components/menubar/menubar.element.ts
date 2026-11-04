@@ -7,8 +7,11 @@
 // ArrowUp on its last. While a menu is open, ArrowRight / ArrowLeft inside it switch to the next /
 // previous menu, and hovering another trigger opens that one; only one menu is open at a time (the
 // others close with reason sibling-open). Each menu fires its own openchange.
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, isRtl, menubarAttrs, menubarKeyIntent, menubarStep, menuItemDisabled } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs } from '../../dom/attrs.ts';
+import { isRtl, menuItemDisabled } from '../../dom/menu.ts';
+import { menubarAttrs, menubarKeyIntent, menubarStep } from '../../dom/menubar.ts';
 import { setClasses } from '../classes.ts';
 import type { UIMenu } from '../menu/menu.element.ts';
 import '../menu/menu.element.ts';

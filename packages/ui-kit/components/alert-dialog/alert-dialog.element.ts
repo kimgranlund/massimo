@@ -3,7 +3,7 @@
 // differences: the popup's role is alertdialog, it is always modal, and an outside press never
 // closes it (Escape and the close parts do). Focus starts on the least destructive action: an
 // [autofocus] element, else the first close part (Cancel), else the first tabbable.
-import { define } from '../../core/index.ts';
+import { define } from '../../core/element.ts';
 import { UIDialog } from '../dialog/dialog.element.ts';
 import { alertDialog } from '../../styled-system/recipes/alert-dialog.js';
 

@@ -8,8 +8,9 @@
 // placed from script only (no anchor element), 1u from the point, flipping at the viewport edges.
 // Everything else (items, keys, submenus, dismissal, events) is ui-menu's: openchange { open,
 // reason, event } with reason trigger-press for the gesture.
-import { define } from '../../core/index.ts';
-import { pointAnchor, type Attrs } from '../../dom/index.ts';
+import { define } from '../../core/element.ts';
+import { pointAnchor } from '../../dom/menu.ts';
+import { type Attrs } from '../../dom/attrs.ts';
 import { UIMenu, type MenuPlacement } from '../menu/menu.element.ts';
 import { contextMenu } from '../../styled-system/recipes/context-menu.js';
 

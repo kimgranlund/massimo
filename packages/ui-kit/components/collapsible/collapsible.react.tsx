@@ -6,7 +6,9 @@
 // Root + Trigger (the label) + Panel (the children).
 import { createContext, useContext, useId, useState, type HTMLAttributes, type MouseEvent, type ReactNode } from 'react';
 import { renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { buttonAttrs, eventDetails, toReactProps, type ChangeDetails } from '../../dom/index.ts';
+import { buttonAttrs } from '../../dom/button.ts';
+import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { collapsible } from '../../styled-system/recipes/collapsible.js';
 

@@ -2,7 +2,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import Ajv from 'ajv';
-import { validateTheme, validateThemeObject, migrateTheme, loadTheme, themeParameters, partsFromParameters, PARAMS, themeCss, themeJsonSchemaText, savedThemes, diffFromDefaults, defaultParams } from '../tokens/themes/index.ts';
+import { validateTheme, diffFromDefaults } from '../tokens/themes/validate.ts';
+import { validateThemeObject, migrateTheme, loadTheme, themeParameters, partsFromParameters, themeJsonSchemaText } from '../tokens/themes/theme.ts';
+import { PARAMS, defaultParams } from '../tokens/themes/params.ts';
+import { themeCss, savedThemes } from '../tokens/themes/index.ts';
 
 test('validateTheme accepts known in-range params only', () => {
   assert.deepEqual(validateTheme('brand-x', { 'unit': 3 }), { ok: true, name: 'brand-x', params: { 'unit': 3 } });

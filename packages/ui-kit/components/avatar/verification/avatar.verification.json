@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/avatar/avatar.element.ts",
-      "sha256": "2a93aec353cb9a5838f3f876255f75f9e0b0bd3e285aa9eff949e2691ec546d2"
+      "sha256": "d39cc7d38ddf98bedda6e296464386731852e018529bdca008aae3eadfc539c5"
     },
     {
       "path": "components/avatar/avatar.react.tsx",
-      "sha256": "74a34117bf4f10188b650a9575adfea0757f89518e17e78e3c1de9dd38f436ae"
+      "sha256": "f999e90304afc4c362d39f6b4eaf8a46b256ed50848d006d24dda392c8aaa54f"
     },
     {
       "path": "components/avatar/avatar.recipe.ts",
@@ -34,7 +34,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-avatar|resolveAvatar|initialsOf\" test/avatar.test.ts"
@@ -52,7 +52,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React Avatar|state parity\" test/avatar.test.ts"

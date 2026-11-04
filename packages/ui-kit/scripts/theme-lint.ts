@@ -6,7 +6,8 @@
 // warning); a file that is not a valid theme object always exits 1.
 import { readFileSync, existsSync } from 'node:fs';
 import { lintTheme } from '../tokens/themes/lint.ts';
-import { savedThemes, loadTheme, type Theme } from '../tokens/themes/index.ts';
+import { savedThemes } from '../tokens/themes/index.ts';
+import { loadTheme, type Theme } from '../tokens/themes/theme.ts';
 
 const strict = process.argv.includes('--strict');
 const arg = process.argv.slice(2).find((a) => a !== '--strict');

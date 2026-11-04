@@ -1,7 +1,9 @@
 // Regressions from the adversarial review (2026-11-03): each case once broke.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { migrateTheme, validateThemeObject, themeFromCharacter, themeScopeCss, FONT_STACK } from '../tokens/themes/index.ts';
+import { migrateTheme, validateThemeObject, FONT_STACK } from '../tokens/themes/theme.ts';
+import { themeFromCharacter } from '../tokens/themes/descriptors.ts';
+import { themeScopeCss } from '../tokens/themes/scope.ts';
 import { validateBrand, hydrate, lintBrand } from '../tokens/brand/index.ts';
 import { generateSpectrum, resolveRoles, anchoredSpectrum } from '../tokens/colors/spectrum/index.ts';
 

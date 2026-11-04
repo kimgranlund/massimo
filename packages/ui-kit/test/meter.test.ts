@@ -7,7 +7,7 @@ import { createElement as h } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTsx } from './load-tsx.ts';
 import { resolveMeter, resolveTrack } from '../tokens/geometry/resolve.ts';
-import { meterState } from '../dom/index.ts';
+import { meterState } from '../dom/display.ts';
 import { formatNumber } from '../tokens/typography/format.ts';
 
 await import('../components/meter/meter.element.ts');

@@ -11,12 +11,16 @@
 // only). Items are direct children of the Root, which reads their value, label and disabled. The
 // presets <Listbox>, <Segmented> and <Option> are these same components.
 import { Children, createContext, isValidElement, useContext, useId, useRef, useState, type FocusEvent, type HTMLAttributes, type KeyboardEvent, type MouseEvent, type ReactElement, type ReactNode } from 'react';
-import { createTypeahead, eventDetails, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, toReactProps, type ChangeDetails, type ChangeReason, type OptionItem } from '../../dom/index.ts';
+import { createTypeahead, firstEnabled, isPrintableKey, listboxAttrs, navigate, optionAttrs, type OptionItem } from '../../dom/listbox.ts';
+import { eventDetails, type ChangeDetails, type ChangeReason } from '../../dom/events.ts';
+import { toReactProps } from '../../dom/attrs.ts';
 import type { IconSize } from '../../tokens/geometry/resolve.ts';
 import { Parts, type PartProps } from '../parts.react.tsx';
 import { useFieldState, useFormChanged, useFormError } from '../state.react.ts';
 import { isPartOf, renderPart, stateOf, type PartBase, type PartState } from '../compound.react.tsx';
-import { listbox, segmented, option } from '../../styled-system/recipes/index.js';
+import { listbox } from '../../styled-system/recipes/listbox.js';
+import { segmented } from '../../styled-system/recipes/segmented.js';
+import { option } from '../../styled-system/recipes/option.js';
 
 interface OptionState { id: string; selected: boolean; disabled: boolean; active: boolean; select: (event: Event) => void }
 const OptionContext = createContext<OptionState | null>(null);

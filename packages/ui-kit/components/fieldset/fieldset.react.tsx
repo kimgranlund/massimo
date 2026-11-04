@@ -7,7 +7,7 @@
 import { createContext, useContext, useId, type FieldsetHTMLAttributes, type HTMLAttributes, type ReactNode } from 'react';
 import { FieldsetDisabledCtx } from '../state.react.ts';
 import { findPart, renderPart, type PartBase, type PartState } from '../compound.react.tsx';
-import { fieldset } from '../../styled-system/recipes/index.js';
+import { fieldset } from '../../styled-system/recipes/fieldset.js';
 
 export interface FieldsetRootProps extends Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'className'>, PartBase {
   /** Disables every control inside (native fieldset disabled; data-disabled on the kit hosts inside). */

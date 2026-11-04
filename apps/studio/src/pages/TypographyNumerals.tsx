@@ -3,7 +3,8 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { css, cx } from '../../styled-system/css/index.js';
 import { numeric } from '../../styled-system/patterns/index.js';
-import { FACES, NUMERIC_VARIANTS, formatFraction, formatFractionParts, formatNumber, formatNumberParts, numericStyle, type Face, type FormatNumberOptions } from '@massimo/ui-kit/tokens';
+import { FACES, NUMERIC_VARIANTS, numericStyle, type Face } from '@massimo/ui-kit/tokens/typography/resolve';
+import { formatFraction, formatFractionParts, formatNumber, formatNumberParts, type FormatNumberOptions } from '@massimo/ui-kit/tokens/typography/format';
 import type { FaceMap, VoiceMap } from '../protocol.ts';
 import { FEATURES, detectFeatures, type FeatureStatus, type FeatureTag } from './numerals.ts';
 import { dataTable, groupHead, nameCell, noteCell, stack, subTitle, tableScroller } from './shared.tsx';

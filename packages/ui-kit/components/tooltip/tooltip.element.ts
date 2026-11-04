@@ -8,8 +8,9 @@
 // data-instant="delay"); it closes when the pointer leaves trigger and popup (`close-delay`), on
 // blur, a press on the trigger, an outside press or Escape. The popup is role=tooltip and the
 // trigger's aria-describedby names it; focus never moves. Shared machinery: popover/popup-base.ts.
-import { define } from '../../core/index.ts';
-import { isWarm, markClosed, type ChangeReason } from '../../dom/index.ts';
+import { define } from '../../core/element.ts';
+import { isWarm, markClosed } from '../../dom/popup.ts';
+import { type ChangeReason } from '../../dom/events.ts';
 import { tooltip } from '../../styled-system/recipes/tooltip.js';
 import { POPUP_PROPERTIES, UIPopupBase, type PopupConfig } from '../popover/popup-base.ts';
 

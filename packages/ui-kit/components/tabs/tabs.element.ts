@@ -9,8 +9,10 @@
 // (Left / Right, mirrored in RTL; Up / Down when vertical), Home and End move focus, wrapping and
 // skipping disabled tabs; Enter, Space or a press activates, or focus does with activate-on-focus.
 // A user change fires a cancelable change { value, reason: 'none', event } (Base UI's reason).
-import { UIElement, define, signal } from '../../core/index.ts';
-import { applyAttrs, eventDetails, uid } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { eventDetails } from '../../dom/events.ts';
 import { applyRecipe, partOf, setClasses } from '../classes.ts';
 import { arrangeSlots, claimSlots } from '../slots.ts';
 import { tabs as tabsRecipe } from '../../styled-system/recipes/tabs.js';

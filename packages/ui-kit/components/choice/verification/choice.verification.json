@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/choice/choice.element.ts",
-      "sha256": "f1a9dae1403ade06f0262b1633797f2a553aef74dab9842d6cce1c6b048b7207"
+      "sha256": "633a24e075eed49cb6091efa7db511145121c8255a82668bb1e68f5e12a9f968"
     },
     {
       "path": "components/slots.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/choice/choice.react.tsx",
-      "sha256": "6de15c17a4c30cece515c6b4b64bc844082092f4908c6f3d0bab94f5a04f37d9"
+      "sha256": "c923aac56b7a7edd3fdeddccc6c76d891e2eb143e473599befc010c9d4d94ddb"
     },
     {
       "path": "dom/state.ts",
@@ -30,7 +30,7 @@
     },
     {
       "path": "components/state.react.ts",
-      "sha256": "21146600503914c04ef3a9c0e011e286683d2c300c77f480f7d918fb174380e0"
+      "sha256": "200d85ba4291765ce6a3004600ce361497d33934c34304f52f2e4e18edba4cef"
     },
     {
       "path": "dom/events.ts",
@@ -62,7 +62,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"checkbox|switch|radio\" test/new-components.test.ts",
@@ -95,7 +95,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

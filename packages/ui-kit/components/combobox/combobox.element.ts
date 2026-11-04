@@ -10,13 +10,18 @@
 // label, control › leading · prefix · input · suffix · clear · trigger, popup › list · empty,
 // description, error.
 // <ui-autocomplete> (components/autocomplete) extends this class: free text with suggestions.
-import { UIFormElement, define, html, settleDefault, signal, type Problem } from '../../core/index.ts';
-import {
-  applyAttrs, comboboxButtonAttrs, comboboxInputAttrs, comboboxKeyIntent, comboboxTriggerAttrs, createDismissLayer, createPositioner,
-  eventDetails, fieldAttrs, firstEnabled, hideTopLayer, lastEnabled, listboxAttrs, matchesQuery, navigate, onTextBeforeInput,
-  optionAttrs, popupDataAttrs, showTopLayer, splitValues, textEntryAttrs, toSingleLine, uid, unitOf, visibleItems, withExternalRefs,
-  type AutocompleteMode, type ChangeReason, type OptionItem, type Side,
-} from '../../dom/index.ts';
+import { UIFormElement, settleDefault, type Problem } from '../../core/form-element.ts';
+import { define } from '../../core/element.ts';
+import { html } from '../../core/template.ts';
+import { signal } from '../../core/signals.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { comboboxButtonAttrs, comboboxInputAttrs, comboboxKeyIntent, comboboxTriggerAttrs, matchesQuery, splitValues, visibleItems, type AutocompleteMode } from '../../dom/combobox.ts';
+import { createDismissLayer, createPositioner, hideTopLayer, showTopLayer, unitOf, type Side } from '../../dom/floating.ts';
+import { eventDetails, type ChangeReason } from '../../dom/events.ts';
+import { fieldAttrs, withExternalRefs } from '../../dom/field.ts';
+import { firstEnabled, lastEnabled, listboxAttrs, navigate, optionAttrs, type OptionItem } from '../../dom/listbox.ts';
+import { onTextBeforeInput, textEntryAttrs, toSingleLine } from '../../dom/text-entry.ts';
+import { popupDataAttrs } from '../../dom/state.ts';
 import '../listbox/option.element.ts';
 import '../../icons/index.ts';
 import { ensureId, optionList } from '../listbox/options.ts';

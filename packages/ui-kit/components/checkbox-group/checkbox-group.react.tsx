@@ -11,7 +11,7 @@ import { useFieldState } from '../state.react.ts';
 import { renderPart, stateOf, type PartBase } from '../compound.react.tsx';
 import { eventDetails, type ChangeDetails } from '../../dom/events.ts';
 import { CheckboxGroupCtx } from '../choice/group.react.ts';
-import { checkboxGroup } from '../../styled-system/recipes/index.js';
+import { checkboxGroup } from '../../styled-system/recipes/checkbox-group.js';
 
 export interface CheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className' | 'defaultValue' | 'onChange'>, PartBase {
   /** Form name of the checkboxes: each checked one submits name=value. */

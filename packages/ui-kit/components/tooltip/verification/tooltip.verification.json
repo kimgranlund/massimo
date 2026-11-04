@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "components/tooltip/tooltip.element.ts",
-      "sha256": "7187cd8e9abe51807e1b53c66550f43dc6885525732e7133b5d3bd92c61e9978"
+      "sha256": "7f9ec0462efe6144c5e68058f92227cf7e47fe2d8455fcee2004ff6083f7fdd2"
     },
     {
       "path": "components/tooltip/tooltip.react.tsx",
-      "sha256": "92ef1e93b3e54ecf7f2e7fa86055f8f0dbf31fc40126572de9903aacd7b1f4eb"
+      "sha256": "38a17b691223eeea64511632b3b98d959b8feab5857854a917838b7d52e3d057"
     },
     {
       "path": "components/tooltip/tooltip.recipe.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/popover/popup-base.ts",
-      "sha256": "d4ef38d9c5130f816e385d7cc5beb6b8a301b730e820e351cddd998b416400ac"
+      "sha256": "a15130d3b30fbee4a5f862041da0e80278bddf73d8c4c7f850ebcd84d6943ad8"
     },
     {
       "path": "components/popover/popup-parts.ts",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"tooltip|popup\" test/popup.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-03",
+        "date": "2026-11-04",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Tooltip\" test/popup.test.ts"

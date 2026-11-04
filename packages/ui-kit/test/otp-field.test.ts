@@ -9,7 +9,7 @@ import { createElement as h } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { loadTsx } from './load-tsx.ts';
 import { resolveOtpField, resolveControl } from '../tokens/geometry/resolve.ts';
-import { otpAllowed, otpDelete, otpFocusable, otpInsert, otpKey } from '../dom/index.ts';
+import { otpAllowed, otpDelete, otpFocusable, otpInsert, otpKey } from '../dom/otp.ts';
 
 await import('../components/otp-field/otp-field.element.ts');
 const { OTPField } = await loadTsx(new URL('../components/otp-field/otp-field.react.tsx', import.meta.url));

@@ -5,8 +5,10 @@
 // as --ui-ratio (a continuous value carried by a variable).
 // Composition (optional): label, value, track and track › indicator may be authored as [data-part]
 // children; each is adopted onto the generated part (attributes, classes), label text seeds `label`.
-import { UIElement, define, html } from '../../core/index.ts';
-import { applyAttrs, meterState, uid } from '../../dom/index.ts';
+import { UIElement, define } from '../../core/element.ts';
+import { html } from '../../core/template.ts';
+import { applyAttrs, uid } from '../../dom/attrs.ts';
+import { meterState } from '../../dom/display.ts';
 import type { FormatNumberOptions } from '../../tokens/typography/format.ts';
 import { applyRecipe, partOf } from '../classes.ts';
 import { adoptPart, authoredParts, partText } from '../slots.ts';
