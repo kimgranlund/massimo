@@ -200,6 +200,8 @@ export function App() {
   // the light page (neutral light 1), each with the color it takes in that scheme.
   const ramp = (family: string | undefined, mode: 'light' | 'dark', step: number) => generated?.families.find((f) => f.name === family)?.[mode][step - 1] ?? 'transparent';
   const neutral = generated?.roles.neutral;
+  // Read from the generation, never --colors-spectrum-*: the panel wears the jig's own brand, whose
+  // anchors recolor those ramps, so a variable there shows that brand instead of the tuned theme.
   const pageSwatch = (darkFg: string, lightFg: string): SwatchSpec => ({ dark: [ramp(neutral, 'dark', 1), darkFg], light: [ramp(neutral, 'light', 1), lightFg] });
   const endpointColor = (e: Endpoint, mode: 'light' | 'dark') => e === 'pure' ? (mode === 'light' ? '#fff' : '#000') : ramp(neutral, mode, e);
   const whiteNow = endpointColor(endpoints.white, 'light'), blackNow = endpointColor(endpoints.black, 'dark');
@@ -441,7 +443,7 @@ export function App() {
                     <Select key={r} label={ROLE_LABEL(r)} value={(r === 'neutral' ? familyNames.neutrals : familyNames.accents).includes(roles[r]) ? roles[r] : generated?.roles[r] ?? roles[r]}
                       options={(r === 'neutral' ? familyNames.neutrals : familyNames.accents).map((n) => [n, n])}
                       onValue={(v) => setRoles((cur) => ({ ...cur, [r]: v }))}
-                      swatch={(family) => `var(--colors-spectrum-${family}-9)`} />
+                      swatch={(family) => pageSwatch(ramp(family, 'dark', 9), ramp(family, 'light', 9))} />
                   ))}
                 </Group>
               ))}

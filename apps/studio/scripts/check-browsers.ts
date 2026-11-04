@@ -51,6 +51,27 @@ async function checkStudioBrand(page: Page): Promise<string[]> {
   if (r.scale !== '0.5') fails.push(`studio brand: panel radius scale ${r.scale}, want 0.5 (crisp)`);
   if (!(r.panelRadius < r.canvasRadius)) fails.push(`studio brand: panel button radius ${r.panelRadius} should be crisper than the canvas's ${r.canvasRadius}`);
   if (!/^"?Inter"?,/.test(r.panelFont)) fails.push(`studio brand: panel face ${r.panelFont}, want Inter`);
+  // A role's panel swatch shows the theme being tuned, not the brand the panel wears: Massimo anchors the
+  // amber ramp to its signal orange, which a --colors-spectrum-* variable inside the panel would show.
+  const panelTab = page.locator('aside[data-ui-scope=massimo] ui-option', { hasText: 'Colors' }).first();
+  await panelTab.click();
+  await page.waitForFunction(() => !![...document.querySelectorAll('aside [style*="--sw-lf"]')].some((e) => (e as HTMLElement).style.getPropertyValue('--sw-lf') !== 'transparent'), null, { timeout: 30_000 });
+  const sw = await page.evaluate(() => {
+    const row = [...document.querySelectorAll('aside ui-field')].find((f) => f.textContent?.trim().startsWith('Secondary'));
+    const el = row?.querySelector('[style*="--sw-lf"]') as HTMLElement | undefined;
+    const probe = document.createElement('i');
+    document.querySelector('[data-canvas]')!.append(probe);
+    probe.style.color = 'var(--colors-spectrum-amber-9)';
+    const canvas = getComputedStyle(probe).color;
+    const raw = el?.style.getPropertyValue(document.documentElement.classList.contains('dark') || matchMedia('(prefers-color-scheme: dark)').matches ? '--sw-df' : '--sw-lf') ?? '';
+    probe.style.color = raw;
+    const swatch = getComputedStyle(probe).color;
+    probe.remove();
+    return { found: !!el, canvas, swatch, raw };
+  });
+  if (!sw.found) fails.push('studio brand: no secondary role swatch in the panel');
+  else if (sw.raw.includes('var(')) fails.push(`studio brand: secondary swatch reads a variable (${sw.raw}), which the panel's brand recolors`);
+  else if (sw.swatch !== sw.canvas) fails.push(`studio brand: secondary swatch ${sw.swatch} differs from the canvas ramp ${sw.canvas}`);
   console.log(`  studio brand: ${fails.length} fails`);
   return fails;
 }
