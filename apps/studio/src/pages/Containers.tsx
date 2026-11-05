@@ -16,6 +16,8 @@ import { Divider, IMAGES, Page, Row, Section, caption, dataTable, fmt, kicker, n
 
 const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
 const presetCell = css({ display: 'flex', flexDirection: 'column', gap: '2', flex: '[1 1 12rem]', minWidth: '0', alignSelf: 'start' });
+const stretched = css({ alignSelf: 'stretch' });
+const selectedRow = css({ bg: 'bg.muted' });
 const presetBox = css({ bg: 'primary.subtle', alignSelf: 'stretch' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
@@ -179,14 +181,6 @@ export function ContainersPage({ params }: PageProps) {
             </ui-container>
           </ui-container>
         </ui-container>
-        <div className={roundDemo}>
-          {([['sm', '3', 'r 40, p 13.5'], ['lg', '1.5', 'r 40, p 27']] as const).map(([padding, radius, name]) => (
-            <ui-container preset="card" padding={padding} radius={radius} key={name}>
-              <strong>{name}</strong>
-              <ui-container preset="collection" divided=""><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container>
-            </ui-container>
-          ))}
-        </div>
         <Row label="card grid">
           <ui-container preset="card" className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
@@ -194,6 +188,35 @@ export function ContainersPage({ params }: PageProps) {
             ))}
           </ui-container>
         </Row>
+      </Section>
+      <Divider />
+      <Section id="composed" title="Composed rows" note="Text in a card stays on the padding edge, level with its buttons and media. Rows are composed, so their text starts on the text edge, and the one text block directly above them is their header and starts there too. Radius follows padding, so the same outer radius takes a different multiple at each padding: the list inside stays concentric.">
+        <div className={roundDemo}>
+          {([['lg', '1.65', 'padding="lg" radius="1.65"'], ['sm', '3.3', 'padding="sm" radius="3.3"']] as const).map(([padding, radius, name]) => (
+            <div className={presetCell} key={name}>
+              <span className={caption}>{name} · divided</span>
+              <ui-container preset="card" padding={padding} radius={radius} className={stretched}>
+                <strong>Card title</strong>
+                <ui-container preset="collection" divided=""><div className={selectedRow}>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container>
+              </ui-container>
+            </div>
+          ))}
+          <div className={presetCell}>
+            <span className={caption}>data-row · rows without a box</span>
+            <ui-container preset="card" className={stretched}>
+              <strong>Notifications</strong>
+              {['Comments', 'Mentions', 'Releases'].map((t) => <div className={tileRow} data-row="" key={t}><span>{t}</span><ui-button size="sm" variant="ghost">Edit</ui-button></div>)}
+            </ui-container>
+          </div>
+          <div className={presetCell}>
+            <span className={caption}>no rows · text on the padding edge</span>
+            <ui-container preset="card" className={stretched}>
+              <strong>Card title</strong>
+              <p>Text with no rows below it lines up with the buttons.</p>
+              <ui-container preset="group"><ui-button variant="primary">Approve</ui-button><ui-button>Reset</ui-button></ui-container>
+            </ui-container>
+          </div>
+        </div>
       </Section>
     </Page>
   );

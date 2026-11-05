@@ -14,9 +14,27 @@
     },
     {
       "id": "container-divided",
-      "label": "ui-container divided: full-bleed rows with lines between them",
+      "label": "ui-container divided, compact: a small padding takes a large radius multiple",
       "subject": "component:container",
       "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><strong>Card title</strong><ui-container preset=\"collection\" divided><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container></ui-container>"
+    },
+    {
+      "id": "container-divided-spacious",
+      "label": "ui-container divided, spacious: the same outer radius at a larger padding",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\" padding=\"lg\" radius=\"1.65\"><strong>Card title</strong><ui-container preset=\"collection\" divided><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container></ui-container>"
+    },
+    {
+      "id": "container-rows",
+      "label": "data-row: rows and their header on the text edge, with no box",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\"><strong>Notifications</strong><div data-row>Comments</div><div data-row>Mentions</div><div data-row>Releases</div></ui-container>"
+    },
+    {
+      "id": "container-text-edge",
+      "label": "Text with no rows below it stays on the padding edge, level with its buttons",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\"><strong>Card title</strong><p>Text lines up with the buttons.</p><ui-container preset=\"group\"><ui-button variant=\"primary\">Approve</ui-button><ui-button>Reset</ui-button></ui-container></ui-container>"
     },
     {
       "id": "container-presets",
@@ -34,7 +52,7 @@
       "id": "card-padding",
       "label": "Card padding xs…xl",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"card\" padding=\"xs\"><span>xs · 2u</span></ui-container><ui-container preset=\"card\" padding=\"sm\"><span>sm · 3u</span></ui-container><ui-container preset=\"card\"><span>md · 4u</span></ui-container><ui-container preset=\"card\" padding=\"lg\"><span>lg · 5u</span></ui-container><ui-container preset=\"card\" padding=\"xl\"><span>xl · 6u</span></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"xs\"><span>xs · 2u</span></ui-container><ui-container preset=\"card\" padding=\"sm\"><span>sm · 3u</span></ui-container><ui-container preset=\"card\"><span>md · 4u</span></ui-container><ui-container preset=\"card\" padding=\"lg\"><span>lg · 6u</span></ui-container><ui-container preset=\"card\" padding=\"xl\"><span>xl · 8u</span></ui-container>"
     },
     {
       "id": "nesting",
