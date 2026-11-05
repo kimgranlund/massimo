@@ -14,7 +14,7 @@
     },
     {
       "path": "components/container/container.manifest.json",
-      "sha256": "7c975e81b7a54e274ca62a796f88419375ba025706236c6fe9334ed8e4975a40"
+      "sha256": "21a990d0aaaee90448abd6abc181e07589cf662611fbdcc032c7fd31d32c3f4e"
     },
     {
       "path": "components/container/container.react.tsx",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/container/container.recipe.ts",
-      "sha256": "63092a5658c171c749b31de4689a482b97974febf75aa54a24300073f6b493e2"
+      "sha256": "adeec2b9cbe7ba69380d3c811bc518fe10ac310539cc2d07193e3e2a6c7663c0"
     },
     {
       "path": "components/recipe-parts.ts",

@@ -150,7 +150,7 @@ export function ContainersPage({ params }: PageProps) {
                       <span className={kicker}>Card · {team}</span>
                       <ui-container preset="collection">
                         {people.map((n) => (
-                          <div key={n} className={tileRow}>
+                          <div key={n} className={tileRow} data-row="">
                             <span>{n}</span>
                             <ui-container preset="group"><ui-button>Message</ui-button></ui-container>
                           </div>

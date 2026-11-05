@@ -136,10 +136,13 @@ export const containerChain = Object.fromEntries([
   }),
 ]);
 
-// A card's header starts on the text edge, like the field labels and rows under it: headings, titles
-// and kickers that are the card's own children, by element, data-type or textStyle class.
-const CARD_HEADER = ':is(h1, h2, h3, h4, h5, h6, [data-type^=heading], [data-type=title], [data-type$=kicker], [class*="textStyle_heading"], [class*="textStyle_title"], [class*="-kicker"])';
-const cardHeaders = { [`:is(ui-container, [data-ui=container])[preset=card] > ${CARD_HEADER}`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
+// A card's text shares one edge with the field labels and control text in it: headings, body text,
+// any type role and [data-row] rows, by element, data-type or textStyle class. They can be the
+// card's children or sit in an unpainted wrapper, which adds no inset. Thumbnail cards (padding xs)
+// keep their text on the padding edge, under the image.
+const CARD_TEXT = ':is(h1, h2, h3, h4, h5, h6, p, strong, [data-row], [data-type], [class*="textStyle_"])';
+const CARD = ':is(ui-container, [data-ui=container])[preset=card]:not([padding=xs])';
+const cardText = { [`:is(${CARD} > ${CARD_TEXT}, ${CARD} > :is(ui-container, [data-ui=container])${UNPAINTED} > ${CARD_TEXT})`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
 
 /** The CSS-only tag's rules: the recipe keyed on ui-container and [data-ui=container], then the nesting chain. */
 // An area keeps its own level when it is given a padding (areas are square; padding is the card ladder).
@@ -151,5 +154,5 @@ export const containerTags = mergeStyles(
   tagRules(':is(ui-container, [data-ui=container])', uiContainer),
   areaPadding,
   containerChain,
-  cardHeaders,
+  cardText,
 );
