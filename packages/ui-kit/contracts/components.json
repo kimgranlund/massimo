@@ -477,7 +477,7 @@
     },
     "section": {
       "geometryFamily": "container",
-      "element": "CSS-only card child (React Section): supplies the card's inset, or part of it at a smaller size; divided makes its children rows, header makes it a row of the stack below.",
+      "element": "CSS-only card child (React Section): supplies the card's inset, or part of it at a smaller size; divided makes its children rows.",
       "parts": [],
       "allowedParents": [
         "card",

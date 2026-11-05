@@ -10,7 +10,7 @@
 
 ```html
 <ui-container preset="card">
-  <ui-section header><strong>Notifications</strong><ui-button variant="ghost">Edit</ui-button></ui-section>
+  <ui-section size="sm"><ui-row><strong>Notifications</strong><ui-button variant="ghost">Edit</ui-button></ui-row></ui-section>
   <ui-section size="sm" divided>
     <ui-row><span>Comments</span><ui-switch label="Comments"></ui-switch></ui-row>
     <ui-row><span>Mentions</span><ui-switch label="Mentions"></ui-switch></ui-row>

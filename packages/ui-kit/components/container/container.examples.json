@@ -16,7 +16,7 @@
       "id": "container-sections",
       "label": "A card's content sits in sections; a smaller section's text stays level with the title",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"card\" padding=\"lg\" radius=\"1.65\"><ui-section header><strong>Card title</strong></ui-section><ui-section size=\"sm\" divided><ui-row>Option 1</ui-row><ui-row>Option 2</ui-row></ui-section></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"lg\" radius=\"1.65\"><ui-section size=\"sm\"><ui-row><strong>Card title</strong></ui-row></ui-section><ui-section size=\"sm\" divided><ui-row>Option 1</ui-row><ui-row>Option 2</ui-row></ui-section></ui-container>"
     },
     {
       "id": "container-presets",

@@ -989,7 +989,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH" padding="xl"><ui-section id="sP"><p id="sT">t</p></ui-section><ui-section size="md" id="sM"><p id="sMt">m</p></ui-section><div><ui-section id="sW"><p id="sWt">w</p></ui-section></div><ui-section size="sm" divided id="cD"><ui-row id="cHd">a</ui-row><div>b</div></ui-section></ui-container><ui-container preset="card" id="cB"><div id="cBi">i</div><ui-section id="cHh" header>h</ui-section><ui-section size="sm" id="cBl">l</ui-section><ui-section id="cHc" header="collapse">c</ui-section><ui-section size="sm" id="cBc">k</ui-section><ui-section id="cBa">a</ui-section><ui-section id="cBb">b</ui-section></ui-container><ui-container preset="panel" id="pS"><ui-section id="pSs">a</ui-section></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH" padding="xl"><ui-section id="sP"><p id="sT">t</p></ui-section><ui-section size="md" id="sM"><p id="sMt">m</p></ui-section><div><ui-section id="sW"><p id="sWt">w</p></ui-section></div><ui-section size="sm" divided id="cD"><ui-row id="cHd">a</ui-row><div>b</div></ui-section></ui-container><ui-container preset="card" id="cB"><div id="cBi">i</div><ui-section id="cHh" size="sm">h</ui-section><ui-section size="sm" id="cBl">l</ui-section><ui-section id="cHc" size="md">c</ui-section><ui-section size="sm" id="cBc">k</ui-section><ui-section id="cBa">a</ui-section><ui-section id="cBb">b</ui-section></ui-container><ui-container preset="panel" id="pS"><ui-section id="pSs">a</ui-section></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1024,13 +1024,11 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
         'section.bare.full-bleed': [r2(left('#cBi') - left('#cB')), b],
         'section.area.adds-nothing': [px(cs('#pSs').paddingLeft), 0],
         'section.row.no-inset': [px(cs('#cHd').paddingLeft), sm.padding],
-        'section.header.block': [px(cs('#cHh').paddingTop), sm.rowBlock],
-        'section.header.margin': [px(cs('#cHh').marginTop), 0],
-        // Padded, the next section keeps its margin; collapsing, the larger of the two wins.
+        // A title at the panels' size collapses with their margin; at the card's size it is flush, and they keep it.
         ...(() => {
           const md = resolveContainer('card-md', g), inset = resolveSection({ padding: md.edge, radius: md.radius }, 'sm', g).inset;
           // Margins sit inside the card's border, so the border comes off them.
-          return { 'section.header.padded': [r2(top('#cBl') - bottom('#cHh')), r2(inset - (md.edge - md.padding))], 'section.header.collapsed': [r2(top('#cBc') - bottom('#cHc')), r2(Math.max(sm.rowBlock, inset))] };
+          return { 'section.title.collapsed': [r2(top('#cBl') - bottom('#cHh')), r2(inset - (md.edge - md.padding))], 'section.title.flush': [r2(left('#cHc') - left('#cB')), r2(md.edge - md.padding)], 'section.title.flush.margin': [r2(top('#cBc') - bottom('#cHc')), r2(inset - (md.edge - md.padding))] };
         })(),
         'section.collapsed.gap': [r2(top('#cBb') - bottom('#cBa')), resolveContainer('card-md', g).edge - (resolveContainer('card-md', g).edge - resolveContainer('card-md', g).padding)],
         'section.card.last': [r2(bottom('#cB') - bottom('#cBb')), resolveContainer('card-md', g).edge],

@@ -29,13 +29,8 @@ export const section = defineSlotRecipe({
         marginBlock: INSET, paddingBlock: 'var(--sc)', gap: 'var(--sc)',
         // The box is inside the card's border, so its distance from the card's edge includes it. Flush with
         // the card (inset 0) it is square: the card's own corners clip it, and stacked boxes meet in a line.
-        borderRadius: `min(max(calc(var(--ui-section-r, 0px) - ${INSET} - var(--b)), calc(var(--ui-section-r, 0px) * var(--ui-container-ratio))), calc(${INSET} * 1000))`,
+        borderRadius: `min(max(0px, calc(var(--ui-section-r, 0px) - ${INSET} - var(--b))), calc(${INSET} * 1000))`,
       },
-      // A header is a row: a divided row's height. Padded, it has no margin, so the next section keeps its
-      // own and moves out with its size. With `header="collapse"` the lower half is a margin, which
-      // collapses with the next section's, so that section's top stays put at every size.
-      '&[header]': { marginBlock: 0, paddingBlock: ROW_BLOCK, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-      '&[header=collapse]': { paddingBlockEnd: 0, marginBlockEnd: ROW_BLOCK },
       // Divided: every child is a full-bleed row, and the rows carry the padding.
       '&[divided]': { padding: 0, gap: 0, overflow: 'hidden', '&[size]': { boxShadow: 'inset 0 0 0 1px var(--colors-border)' } },
       '&[divided] > *': { paddingBlock: ROW_BLOCK, paddingInline: 'var(--sc)' },

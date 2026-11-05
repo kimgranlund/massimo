@@ -14,7 +14,7 @@ Areas and painted wrappers keep their padding: they hold cards and controls, not
 
 `divided` moves to `ui-section`, since its rows need the section's size.
 
-A card is block flow, and sections are spaced by collapsing margins. Padding equals gap, so one margin gives the inset and the space between sections. A section can use either: `ui-section header` is padded, so the next section keeps its margin, and `header="collapse"` spends its lower half as a margin, so the next section's top stays put.
+A card is block flow, and sections are spaced by collapsing margins. Padding equals gap, so one margin gives the inset and the space between sections. A title uses either through `size` alone: at the panels' size it is transparent and its margin collapses with theirs, and at the card's size it is flush and can be painted, and the panels keep their margin. A section's radius has no nesting floor, so it sharpens with its inset down to square.
 
 ## Consequences
 

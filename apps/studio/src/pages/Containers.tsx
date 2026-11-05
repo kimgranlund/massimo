@@ -196,22 +196,20 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A padded header keeps the list's margin, so the list moves down as its size drops; a collapsing header absorbs it, so the list stays put. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card. A sized section's gap is its size, so a box tightens as it shrinks, as the grid shows: each row steps the same distance in from the card's edge, and the bottom row is flush. A title takes either form at no extra cost: at the panel's size it is transparent and its margin collapses with the panel's; at the card's size it is painted and flush, and the panel keeps its margin. Both end the same distance from the top.">
-        {([['', 'padded header'], ['collapse', 'collapsing header']] as const).map(([header, name]) => (
-          <div className={sizeGrid} key={name}>
-            {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map((size) => (
-              <div className={presetCell} key={size}>
-                <span className={caption}>{name} · section {size}</span>
-                <ui-container preset="card" padding="xl" className={stretched}>
-                  <ui-section header={header}><strong>Card title</strong></ui-section>
-                  <ui-section size={size} divided=""><ui-row className={selectedRow}>Row 1.1</ui-row><ui-row>Row 1.2</ui-row><ui-row>Row 1.3</ui-row></ui-section>
-                  <ui-section size={size} divided=""><ui-row>Row 2</ui-row></ui-section>
-                  <ui-section size={size} divided=""><ui-row>Row 3</ui-row></ui-section>
-                </ui-container>
-              </div>
-            ))}
-          </div>
-        ))}
+      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card. A sized section's gap is its size, so a box tightens as it shrinks, as the grid shows: each row steps the same distance in from the card's edge, and the bottom row is flush. A title takes either form at no extra cost: at the panel's size it is transparent and its margin collapses with the panel's; at the card's size it is painted and flush, and the panel keeps its margin. Both end the same distance from the top.">
+        <div className={sizeGrid}>
+          {LADDER.map((size) => (
+            <div className={presetCell} key={size}>
+              <span className={caption}>divided · section {size}</span>
+              <ui-container preset="card" padding="xl" className={stretched}>
+                <ui-section size={size}><ui-row><strong>Card title</strong></ui-row></ui-section>
+                <ui-section size={size} divided=""><ui-row className={selectedRow}>Row 1.1</ui-row><ui-row>Row 1.2</ui-row><ui-row>Row 1.3</ui-row></ui-section>
+                <ui-section size={size} divided=""><ui-row>Row 2</ui-row></ui-section>
+                <ui-section size={size} divided=""><ui-row>Row 3</ui-row></ui-section>
+              </ui-container>
+            </div>
+          ))}
+        </div>
         {([[false, 'collapsing'], [true, 'padded']] as const).map(([padded, name]) => (
           <div className={sizeMatrix} key={name}>
             {[4, 3, 2, 1, 0].flatMap((steps) => LADDER.map((card, i) => i + steps >= LADDER.length ? <span key={`${steps}${card}`} /> : (
@@ -225,7 +223,7 @@ export function ContainersPage({ params }: PageProps) {
           </div>
         ))}
         <div className={roundDemo}>
-          {([[false, 'card xl · section md · collapsing header'], [true, 'card xl · section md · padded header']] as const).map(([padded, name]) => (
+          {([[false, 'card xl · section md · collapsing title'], [true, 'card xl · section md · padded title']] as const).map(([padded, name]) => (
             <div className={presetCell} key={name}>
               <span className={caption}>{name}</span>
               <ui-container preset="card" padding="xl" className={stretched}><SizedCard card="xl" size="md" padded={padded} panels={3} /></ui-container>
@@ -236,7 +234,7 @@ export function ContainersPage({ params }: PageProps) {
           <div className={presetCell}>
             <span className={caption}>card xl · tinted section md</span>
             <ui-container preset="card" padding="xl" className={stretched}>
-              <ui-section header=""><strong>Card title</strong></ui-section>
+              <ui-section size="md"><ui-row><strong>Card title</strong></ui-row></ui-section>
               <ui-section size="md" className={tintedBox}><strong>Text on the same line as the title</strong><p>The box moves out and its text stays put.</p></ui-section>
             </ui-container>
           </div>

@@ -59,19 +59,6 @@
           "inspector": {
             "control": "toggle"
           }
-        },
-        {
-          "name": "header",
-          "type": "string",
-          "readBy": "css",
-          "description": "A title row: a divided row's height. Padded by default; collapse makes its lower half a margin, so the next section's top stays put at every size.",
-          "inspector": {
-            "control": "select"
-          },
-          "enum": [
-            "",
-            "collapse"
-          ]
         }
       ],
       "events": [],
@@ -210,8 +197,7 @@
           ],
           "props": [
             "size?: CardPadding // The padding this section supplies, xs 2u … xl 8u. It sits the rest of the card's inset in from the edge, so its text stays on the card's inset. Default: all of it.",
-            "divided?: boolean // Full-bleed rows with lines between them, outlined when the section has a size.",
-            "header?: boolean | 'collapse' // A title row: a divided row's height. `collapse` makes its lower half a margin, so the next section's top stays put at every size."
+            "divided?: boolean // Full-bleed rows with lines between them, outlined when the section has a size."
           ]
         }
       }

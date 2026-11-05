@@ -16,7 +16,7 @@
       "id": "row-divided",
       "label": "A header row above a divided list",
       "subject": "component:row",
-      "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><ui-section header><strong>Card title</strong><ui-button variant=\"ghost\" size=\"sm\">Add</ui-button></ui-section><ui-section size=\"xs\" divided><ui-row><span>Option 1</span></ui-row><ui-row><span>Option 2</span></ui-row></ui-section></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><ui-section size=\"xs\"><ui-row><strong>Card title</strong><ui-button variant=\"ghost\" size=\"sm\">Add</ui-button></ui-row></ui-section><ui-section size=\"xs\" divided><ui-row><span>Option 1</span></ui-row><ui-row><span>Option 2</span></ui-row></ui-section></ui-container>"
     }
   ]
 }

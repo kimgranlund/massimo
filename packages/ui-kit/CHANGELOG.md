@@ -7,7 +7,7 @@
 **Added**
 
 - `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
-- `ui-section` (React `Section`): a card's child, supplying the card's inset, or part of it at a smaller `size`; `divided` makes its children rows, and `header` makes it a title row, padded or, with `collapse`, collapsing into the next section's margin.
+- `ui-section` (React `Section`): a card's child, supplying the card's inset, or part of it at a smaller `size`, and `divided` makes its children rows. A title is a section holding a `ui-row`: at the panels' size its margin collapses with theirs, and at the card's size it is flush and can be painted.
 - `ui-row` (React `Row`): a line of text and actions.
 - `color.spectrum.generator`: `oklch` generates the ramps in OKLCH with the same families, steps, contrast targets and anchors. `hct` stays the default.
 - `reach` on a color anchor: `key` or `ramp`, how far the anchor's chroma spreads through its family.

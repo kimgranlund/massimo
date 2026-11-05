@@ -15,7 +15,7 @@ Light-DOM custom elements, registered on import (`@massimo/ui-kit/components/<na
 | Element | Role and behavior | Key attributes |
 |---|---|---|
 | `ui-container` | CSS-only, no role (add one for a landmark or group): one container for every level; padding steps down with depth and radius follows ([geometry](geometry.md#nesting-ui-container)). | `preset`, `padding`, `layout`, `surface`, `gap`, `radius` |
-| `ui-section` | CSS-only, no role: a card's child, supplying its inset, or part of it at a smaller `size`; `divided` makes its children rows, `header` makes it a title row ([section](../../packages/ui-kit/components/section/section.md)) |
+| `ui-section` | CSS-only, no role: a card's child, supplying its inset, or part of it at a smaller `size`; `divided` makes its children rows ([section](../../packages/ui-kit/components/section/section.md)) |
 | `ui-row` | CSS-only, no role: a line of text and actions ([row](../../packages/ui-kit/components/row/row.md)) |
 | `ui-button` | `role=button`; Enter/Space activate; submit/reset through the form; `variant="primary"` paints the primary solid with contrast text | `type`, `variant`, `disabled`, `loading`, `icon-size` |
 | `ui-input` | contenteditable `role=textbox`; Enter submits; paste flattened; password masked, copy blocked; adornments via `slot` children | `label`, `hide-label`, `value`, `type`, `placeholder`, `description`, `error`, `required`, `minlength`, `pattern`, `readonly` |

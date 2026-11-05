@@ -481,7 +481,9 @@ test('universal container: padding is the input and radius follows; unpainted wr
   const xl = resolveContainer('card-xl', g), md = resolveSection({ padding: xl.edge, radius: xl.radius }, 'md', g);
   assert.deepEqual([xl.edge, md.inset, md.padding, md.inset + md.padding, md.rowBlock], [32, 16, 16, 32, 12], 'xl with md: the box moves out 4u, and the text stays on 8u');
   assert.equal(md.gap, md.padding, 'its gap is its padding');
-  assert.equal(md.radius, Math.max(xl.radius - 16, xl.radius * 0.4), 'concentric with the card');
+  assert.equal(md.radius, xl.radius - 16, 'concentric with the card');
+  assert.equal(resolveSection({ padding: 32, radius: 32 }, 'xs', g).radius, 8, 'with no floor: it keeps sharpening with the inset');
+  assert.equal(resolveSection({ padding: 32, radius: 8 }, 'xs', g).radius, 0, 'and stops at square');
   assert.equal(resolveSection({ padding: xl.edge, radius: xl.radius }, undefined, g).inset, 0, 'unsized: all of the inset');
   assert.equal(resolveSection({ padding: 12, radius: 12 }, 'xl', g).inset, 0, 'larger than the inset: it stops at the edge');
   const top = resolveContainerTree({ preset: 'collection', children: [{ preset: 'card' }] }, g);
