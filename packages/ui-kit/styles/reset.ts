@@ -4,7 +4,7 @@ import { defineGlobalStyles } from '@pandacss/dev';
 export const reset = defineGlobalStyles({
   '*, *::before, *::after': { boxSizing: 'border-box', margin: 0, padding: 0, borderWidth: 0, borderStyle: 'solid', borderColor: 'border' },
   html: { WebkitTextSizeAdjust: '100%', colorScheme: 'light dark', fontFamily: 'sans', lineHeight: 'normal', fontKerning: 'normal', fontOpticalSizing: 'auto' },
-  body: { bg: 'bg', color: 'fg', minHeight: '100dvh', WebkitFontSmoothing: 'antialiased', textStyle: 'body' },
+  body: { bg: 'bg', color: 'fg', minHeight: '100dvh', WebkitFontSmoothing: 'antialiased', textStyle: 'body-md' },
   'img, svg, video, canvas': { display: 'block', maxWidth: '100%' },
   'button, input, select, textarea': { font: 'inherit', color: 'inherit', background: 'transparent' },
   ':focus-visible': { outline: '2px solid {colors.focusRing}', outlineOffset: '2px' },

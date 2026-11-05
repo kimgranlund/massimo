@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/typography/resolve.ts",
-      "sha256": "1ff0290826675b0de62611d55e994f48799eff61ecf0590939ff3d2d3e61efd0"
+      "sha256": "89ba54a180b403cb40e6c8be00db6291fb29bb08bf8320dcbf4e0253d2179edd"
     },
     {
       "path": "tokens/typography/index.ts",
@@ -66,7 +66,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/typography.test.ts",

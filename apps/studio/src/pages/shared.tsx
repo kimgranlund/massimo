@@ -19,19 +19,19 @@ const shell = pageLayout({ width: '[80rem]' });
 export const header = css({ display: 'flex', flexDirection: 'column', gap: '4' });
 // Display needs the width: below the medium canvas the title steps down to heading-1.
 export const pageTitle = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
-export const lead = css({ textStyle: 'body-large', maxWidth: 'prose' });
+export const lead = css({ textStyle: 'body-lg', maxWidth: 'prose' });
 const divider = css({ borderTopWidth: 'thin', borderColor: 'border', width: 'full' });
 const section = css({ display: 'flex', flexDirection: 'column', gap: '5' });
 const sectionHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 // A section header with an action (e.g. Replay): text on the start, the action at the end.
 const sectionHeadRow = css({ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '4', flexWrap: 'wrap' });
 /** A status note under a page lead (e.g. reduced motion is on). */
-const notice = css({ textStyle: 'body', color: 'fg', bg: 'bg.muted', borderRadius: 'md', padding: '3', maxWidth: 'prose' });
+const notice = css({ textStyle: 'body-md', color: 'fg', bg: 'bg.muted', borderRadius: 'md', padding: '3', maxWidth: 'prose' });
 const sectionTitle = css({ textStyle: 'heading-2' });
 const sectionTags = css({ textStyle: 'code' });
-export const caption = css({ textStyle: 'caption' });
+export const caption = css({ textStyle: 'body-sm' });
 // A section's note: body text (its color is the body role's; theme typography.colors).
-const sectionNote = css({ textStyle: 'body', margin: '0' });
+const sectionNote = css({ textStyle: 'body-md', margin: '0' });
 const rowGrid = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '2', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '11rem 1fr', gap: '6' } });
 export const rowLabel = css({ textStyle: 'label' });
 export const specimens = css({ display: 'flex', gap: '2', flexWrap: 'wrap', alignItems: 'center' });
@@ -222,7 +222,7 @@ export const tableScroller = css({ overflowX: 'auto', maxWidth: 'full' });
 export const dataTable = css({
   width: 'full', borderCollapse: 'collapse', textStyle: 'code', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
   '& th': { textStyle: 'group-kicker', color: 'fg.muted', textAlign: 'start', paddingBlock: '2', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'bottom' },
-  '& th small': { display: 'block', textStyle: 'caption', textTransform: 'none', letterSpacing: 'normal' },
+  '& th small': { display: 'block', textStyle: 'body-sm', textTransform: 'none', letterSpacing: 'normal' },
   '& td': { paddingBlock: '1.5', paddingInline: '2', borderBottomWidth: 'thin', borderColor: 'border', verticalAlign: 'middle' },
 });
 /** A group header over related columns (colSpan); the rule under it marks the group. */
@@ -232,4 +232,4 @@ export const currentRow = css({ bg: 'primary.subtle', color: 'primary.fg' });
 /** A row's name cell (label voice, not code). */
 export const nameCell = css({ textStyle: 'title' });
 /** A descriptive cell: caption text that wraps. */
-export const noteCell = css({ textStyle: 'caption', whiteSpace: 'normal', minWidth: '[14rem]' });
+export const noteCell = css({ textStyle: 'body-sm', whiteSpace: 'normal', minWidth: '[14rem]' });

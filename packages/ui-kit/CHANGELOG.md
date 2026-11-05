@@ -2,6 +2,12 @@
 
 `@massimo/ui-kit`. Versions follow semver; until 1.0.0 a minor version may break, and each break is listed under **Breaking**. How to cut a release: [docs/guides/release.md](../../docs/guides/release.md).
 
+## Unreleased
+
+**Breaking**
+
+- Type roles are renamed in `data-type`, `textStyle`, `typography.colors`, the DTCG tokens and `--ui-type-color-<role>`, with no aliases: `body-large` is `body-lg`, `body` is `body-md`, `caption` is `body-sm`, `control` is `control-md`, `control-small` is `control-sm`. The `body` voice keeps its name.
+
 ## 0.1.0 (2026-11-03)
 
 The first versioned state. Everything below is new relative to no release; the breaks are listed against the shapes that existed in the repository before, for anyone who used them from source.

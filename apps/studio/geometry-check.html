@@ -157,7 +157,7 @@ for (const c of cases) {
       <ui-preview-card id="pcA" side="bottom" align="start" ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><a data-part="trigger" href="#x">Preview</a><div data-part="popup"><strong>Card</strong><span>Body</span><div data-part="arrow"></div></div></ui-preview-card>
       <ui-navigation-menu id="navA" label="N"><div data-part="item" value="a"><div data-part="trigger"><span slot="leading"></span>Menu</div><div data-part="content"><a href="#a">Link one</a><a href="#b">Link two</a></div></div><div data-part="item"><a data-part="link" href="#c">Plain</a></div></ui-navigation-menu></div>
     <span id="numBare" data-numeric>1</span><strong id="numRole" class="textStyle_heading-1" data-numeric>1,284</strong><span id="numType" data-type="heading-1" data-numeric>12</span>
-    <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="caption">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
+    <span id="numMix" data-numeric="oldstyle fraction slashed-zero">1/2</span><span id="numIn" data-numeric="proportional"><span data-type="body-sm">3</span><span data-numeric>4</span></span><sup id="numSup" data-numeric data-position="super">2</sup>`;
   root.append(box);
   // Toasts come from a manager: one each, two toasts (the first with an action).
   for (const id of ['toastV', 'toastF']) {
@@ -272,7 +272,7 @@ for (const c of cases) {
   checks['image.ratio.invalid'] = [r2(rect($('imgBad')).height), 0];
   checks['image.ratio.noInline'] = [[$('imgWide'), $('imgCustom')].filter((el) => el.style.aspectRatio).length, 0];
   // Buttons, form controls, badges, tags and chips use the UI voice: same family as the control role.
-  const uiFamily = cs(box.querySelector('[data-type="control"]')).fontFamily;
+  const uiFamily = cs(box.querySelector('[data-type="control-md"]')).fontFamily;
   const uiVoiced = [['badge', badge], ['tag', tag], ['chip', chip], ['button', btn], ['input', pc(inp)], ['select', pv(tr)], ['option', box.querySelector('ui-listbox ui-option')], ['segmented', o1], ['checkbox', box.querySelector('ui-checkbox')], ['radio', box.querySelector('ui-radio')], ['switch', box.querySelector('ui-switch')]];
   for (const [k, el] of uiVoiced) checks[`${k}.font.uiVoice`] = [cs(el).fontFamily === uiFamily && /system-ui/.test(uiFamily) ? 1 : 0, 1];
   // Numerals: data-numeric beats a type role (class or attribute) on the same element; variants
@@ -286,7 +286,7 @@ for (const c of cases) {
     checks['numeric.role.attr.family'] = is(cs($('numType')).fontFamily, numFamily);
     checks['numeric.role.class.features'] = is(cs($('numRole')).fontVariantNumeric, 'lining-nums tabular-nums');
     checks['numeric.variants'] = is(cs($('numMix')).fontVariantNumeric, 'oldstyle-nums tabular-nums diagonal-fractions slashed-zero');
-    checks['numeric.subtree.role'] = is(cs($('numIn').firstElementChild).fontFamily, cs(box.querySelector('[data-type="caption"]')).fontFamily);
+    checks['numeric.subtree.role'] = is(cs($('numIn').firstElementChild).fontFamily, cs(box.querySelector('[data-type="body-sm"]')).fontFamily);
     checks['numeric.subtree.features'] = is(cs($('numIn').firstElementChild).fontVariantNumeric, 'lining-nums proportional-nums');
     checks['numeric.nested.reset'] = is(cs($('numIn').lastElementChild).fontVariantNumeric, 'lining-nums tabular-nums');
     checks['numeric.position'] = is(cs($('numSup')).fontVariantPosition, 'super');

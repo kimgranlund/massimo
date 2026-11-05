@@ -903,7 +903,7 @@
                 "inherit"
               ]
             },
-            "section-kicker": {
+            "body-lg": {
               "enum": [
                 "strong",
                 "default",
@@ -913,7 +913,7 @@
                 "inherit"
               ]
             },
-            "group-kicker": {
+            "body-md": {
               "enum": [
                 "strong",
                 "default",
@@ -923,47 +923,7 @@
                 "inherit"
               ]
             },
-            "body-large": {
-              "enum": [
-                "strong",
-                "default",
-                "muted",
-                "subtle",
-                "primary",
-                "inherit"
-              ]
-            },
-            "body": {
-              "enum": [
-                "strong",
-                "default",
-                "muted",
-                "subtle",
-                "primary",
-                "inherit"
-              ]
-            },
-            "caption": {
-              "enum": [
-                "strong",
-                "default",
-                "muted",
-                "subtle",
-                "primary",
-                "inherit"
-              ]
-            },
-            "code": {
-              "enum": [
-                "strong",
-                "default",
-                "muted",
-                "subtle",
-                "primary",
-                "inherit"
-              ]
-            },
-            "control": {
+            "body-sm": {
               "enum": [
                 "strong",
                 "default",
@@ -993,7 +953,47 @@
                 "inherit"
               ]
             },
-            "control-small": {
+            "control-md": {
+              "enum": [
+                "strong",
+                "default",
+                "muted",
+                "subtle",
+                "primary",
+                "inherit"
+              ]
+            },
+            "control-sm": {
+              "enum": [
+                "strong",
+                "default",
+                "muted",
+                "subtle",
+                "primary",
+                "inherit"
+              ]
+            },
+            "section-kicker": {
+              "enum": [
+                "strong",
+                "default",
+                "muted",
+                "subtle",
+                "primary",
+                "inherit"
+              ]
+            },
+            "group-kicker": {
+              "enum": [
+                "strong",
+                "default",
+                "muted",
+                "subtle",
+                "primary",
+                "inherit"
+              ]
+            },
+            "code": {
               "enum": [
                 "strong",
                 "default",

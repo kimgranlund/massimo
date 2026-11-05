@@ -69,7 +69,7 @@ export function cardPopup(level: 'card-sm' | 'card-md', gapLevel: 'group' | 'col
 
 /** Title and description inside a card popup (Base UI Popover.Title, Popover.Description). */
 export const popupTitle: Style = { textStyle: 'title', color: 'fg', margin: 0 };
-export const popupDescription: Style = { textStyle: 'body', color: 'fg.muted', margin: 0 };
+export const popupDescription: Style = { textStyle: 'body-md', color: 'fg.muted', margin: 0 };
 
 /** The arrow: a triangle `fill` on `edge`, 2u wide, its tip 1u from the popup on the trigger's side. */
 export function popupArrow(fill: string, edge: string): Style {

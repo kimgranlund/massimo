@@ -39,7 +39,7 @@ function Region({ id, name, note, tint = 'base', children }: { id: string; name:
 export function HomePage({ spectrum }: PageProps) {
   return (
     <main className={cx(s.root)} aria-label="Home">
-      <Region id="home-landing" name="Landing" note="display · body-large · primary solid as material · card xl › raised card sm · primary and neutral buttons">
+      <Region id="home-landing" name="Landing" note="display · body-lg · primary solid as material · card xl › raised card sm · primary and neutral buttons">
         <Landing spectrum={spectrum} />
       </Region>
       <Region id="home-dashboard" name="Dashboard" tint="muted" note="numeric voice · feedback badges · data 1–6 · card › collection › group · segmented and chips">
@@ -48,7 +48,7 @@ export function HomePage({ spectrum }: PageProps) {
       <Region id="home-settings" name="Settings" tint="subtle" note="panel › cards › fields · prefix, suffix, leading · invalid state · choices, segmented, range">
         <Settings />
       </Region>
-      <Region id="home-article" name="Article" note="kicker · heading-1 · body-large dek · body at the prose measure · pull quote · figure caption">
+      <Region id="home-article" name="Article" note="kicker · heading-1 · body-lg dek · body at the prose measure · pull quote · figure caption">
         <Article spectrum={spectrum} />
       </Region>
       <Region id="home-media" name="Media" tint="muted" note="swiper · card sm and xs · image ratios · filter chips · tags">

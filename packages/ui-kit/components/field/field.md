@@ -79,8 +79,8 @@ The authored control stays a direct child (React keeps owning it); the field add
 - `part:field-text` `:scope > [data-part=label] > [data-part=contents]`: label text (label role, fg.muted); truncates in a narrow column.
 - `part:field-unit` `:scope > [data-part=label] > [data-part=suffix]`: unit suffix, fg.subtle, never truncated.
 - `part:field-readout` `:scope > [data-part=readout]`: tabular figures in the numeric voice, fg.muted, end-aligned.
-- `part:field-description` `:scope > [data-part=description]`: caption role.
-- `part:field-error` `:scope > [data-part=error]`: the `error` text (Base UI Field.Error), caption role in critical.fg, after the description and in its aria-describedby; created once an error is set. Inside a `ui-form` it also shows the control's form error (the form's `errors` for its name) when the control has no error part of its own (choices, groups, range; ui-input and ui-select show theirs); React: give `Field` the control's `name`.
+- `part:field-description` `:scope > [data-part=description]`: `body-sm` role.
+- `part:field-error` `:scope > [data-part=error]`: the `error` text (Base UI Field.Error), `body-sm` role in critical.fg, after the description and in its aria-describedby; created once an error is set. Inside a `ui-form` it also shows the control's form error (the form's `errors` for its name) when the control has no error part of its own (choices, groups, range; ui-input and ui-select show theirs); React: give `Field` the control's `name`.
 
 A required control adds ` *` after the label text; a disabled one fades the label.
 

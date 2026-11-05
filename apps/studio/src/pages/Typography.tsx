@@ -60,10 +60,10 @@ const GLYPHS = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz', '012
 const ARTICLE: [string, 'span' | 'h2' | 'h3' | 'p' | 'pre', string][] = [
   ['section-kicker', 'span', 'Field notes'],
   ['heading-1', 'h2', 'A system you can hold in one line'],
-  ['body-large', 'p', 'Everything is u. A control is eight of them; its label is ten pixels plus one.'],
+  ['body-lg', 'p', 'Everything is u. A control is eight of them; its label is ten pixels plus one.'],
   ['heading-3', 'h3', 'Why the base moves with u'],
-  ['body', 'p', 'Text set on the control font scales with every size step, so a compact panel and a spacious one keep the same proportions between headings, body and controls.'],
-  ['caption', 'p', 'Figures are illustrative.'],
+  ['body-md', 'p', 'Text set on the control font scales with every size step, so a compact panel and a spacious one keep the same proportions between headings, body and controls.'],
+  ['body-sm', 'p', 'Figures are illustrative.'],
   ['code', 'pre', 'const u = height / 8;\nconst font = 10 + u;'],
 ];
 
@@ -77,7 +77,7 @@ const VOICE_SAMPLES: Record<string, string> = {
   code: 'padding: calc(2 * var(--u));',
 };
 const VOICE_USE: Record<string, string> = {
-  display: 'display', heading: 'heading 1–3', body: 'body, caption', ui: 'controls, labels, kickers',
+  display: 'display', heading: 'heading 1–3', body: 'body', ui: 'controls, labels, kickers',
   numeric: 'stats, tables', code: 'code',
 };
 
@@ -88,23 +88,23 @@ const SAMPLES: Record<TypeRoleName, string> = {
   'heading-3': 'Tiers, radii and nesting',
   'section-kicker': 'Section kicker',
   'group-kicker': 'Group kicker',
-  'body-large': 'Every dimension in the control is a multiple of one unit, an eighth of the control height.',
-  'body': 'Container margins stay fixed in u, while internal gutters follow the content and controls respond to size.',
-  'caption': 'Line heights round up to the rhythm unit, so stacked text stays on the grid.',
+  'body-lg': 'Every dimension in the control is a multiple of one unit, an eighth of the control height.',
+  'body-md': 'Container margins stay fixed in u, while internal gutters follow the content and controls respond to size.',
+  'body-sm': 'Line heights round up to the rhythm unit, so stacked text stays on the grid.',
   'code': 'const u = height / 8;\nconst font = 10 + u;',
-  'control': 'Continue',
+  'control-md': 'Continue',
   'label': 'Email address',
   'title': 'Order alerts',
-  'control-small': 'Details',
+  'control-sm': 'Details',
 };
 
 export function TypographyPage({ params, voices, faces, typeColors }: PageProps) {
   const opts = { unit: params.unit, ratio: params['type-ratio'], rhythm: params['type-rhythm'], voices, faces };
   const grid = params['type-rhythm'] * params.unit;
-  // The ladder runs largest to smallest, so the scale is the shape of the section.
-  const ladder = (Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => ({ role, t: resolveType(role, opts), r: TYPE_ROLES[role] })).sort((a, b) => b.t.size - a.t.size);
+  // The ladder follows the roles' family order, so each family reads as one group.
+  const ladder = (Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => ({ role, t: resolveType(role, opts), r: TYPE_ROLES[role] }));
   return (
-    <Page title="Typography" lead={<>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for caption, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'}.</>}>
+    <Page title="Typography" lead={<>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for small body, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'}.</>}>
       <Divider />
       <Section id="typeface" title="Typeface" note="The faces this theme sets its display and body voices in, with what each can show.">
         <div className={typeface}>

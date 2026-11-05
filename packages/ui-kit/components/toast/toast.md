@@ -133,7 +133,7 @@ Contract: [states.json](../../contracts/states.json); names follow [Base UI](htt
 Geometry family: `toast` ([geometry-families.json](../../contracts/geometry-families.json), resolver `resolveToast`).
 
 - **Toast**: a container at the card-sm level: padding `pad-card-sm` (3u) − B inside the border, radius equal to that edge × min(1, s); `bg.overlay` with the `border` edge (the feedback role's border for success, error, warning, info) and the md shadow.
-- **Content**: title (`title` type role; the feedback role's `fg` by type) and description (`caption`, `fg.muted`) in one column, 0.5u apart; the action and the close sit after it, 1u apart, centered on the text.
+- **Content**: title (`title` type role; the feedback role's `fg` by type) and description (`body-sm`, `fg.muted`) in one column, 0.5u apart; the action and the close sit after it, 1u apart, centered on the text.
 - **Action**: an 8u control row on `bg.control` (padding u − B, label 2u at its edges, the control radius). **Close**: a 6u slot (radius min(control radius, 3u)) with an x at icon size sm.
 - **Viewport**: 80u wide, at most the window less 8u, 4u from the window edges, in the top layer (`showTopLayer`; raised above earlier layers when a toast arrives). `inline` is in flow, as wide as its container up to 80u, the toasts 2u apart.
 

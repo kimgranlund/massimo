@@ -26,7 +26,7 @@
     },
     {
       "path": "components/recipe-parts.ts",
-      "sha256": "c29523912f5ff67ddeb3ca2fadb552647128dc185494d4302ba7094e25eabec5"
+      "sha256": "fc6a34b8e5f14d9e31a061149ecc6b31838e8349ae6c7b3d3666de1aad72a1d2"
     }
   ],
   "renderers": {
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/geometry.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts"

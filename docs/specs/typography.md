@@ -28,8 +28,8 @@ Fonts work in three layers, like colors (ramps → roles):
    |---|---|---|
    | display | display | display |
    | heading | sans | heading-1–3 |
-   | body | sans | body-large, body, caption |
-   | ui | controls | control, label, control-small, kickers; all buttons, form controls, badges, tags and chips |
+   | body | sans | body-lg, body-md, body-sm |
+   | ui | controls | control-md, control-sm, label, title, kickers; all buttons, form controls, badges, tags and chips |
    | numeric | follows ui (controls) | `data-numeric` (stats, counters, tables), tabular lining figures by default ([numerals](#numerals)) |
    | code | mono | code |
 
@@ -45,18 +45,18 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 | heading-1 | step 4 | 1.1 | 700 | −0.025em | heading voice |
 | heading-2 | step 3 | 1.15 | 700 | −0.02em | heading voice |
 | heading-3 | step 2 | 1.2 | 700 | −0.01em | heading voice |
-| section-kicker | step 0 | 1.2 | 700 | 0.12em | uppercase |
-| group-kicker | step −1 | 1.2 | 500 | 0.096em | uppercase |
-| body-large | step 1 | 1.5 | 400 | 0 | |
-| body | step 0 | 1.5 | 400 | 0 | the `<body>` default |
-| caption | 3u | 1.45 | 400 | 0 | field descriptions and errors |
-| code | 3u | 1.5 | 400 | 0 | mono |
-| control | step 0 | 1.2 (unitless) | 450 | 0 | |
+| body-lg | step 1 | 1.5 | 400 | 0 | |
+| body-md | step 0 | 1.5 | 400 | 0 | the `<body>` default |
+| body-sm | 3u | 1.45 | 400 | 0 | field descriptions and errors |
 | label | step 0 | 1.4 | 450 | 0 | field labels |
 | title | step 0 | 1.4 | 600 | 0 | strong item titles: list and settings rows, table name cells, small card titles |
-| control-small | 3u | 1.2 (unitless) | 450 | 0 | |
+| control-md | step 0 | 1.2 (unitless) | 450 | 0 | |
+| control-sm | 3u | 1.2 (unitless) | 450 | 0 | |
+| section-kicker | step 0 | 1.2 | 700 | 0.12em | uppercase |
+| group-kicker | step −1 | 1.2 | 500 | 0.096em | uppercase |
+| code | 3u | 1.5 | 400 | 0 | mono |
 
-At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76, caption 12/20.
+At u = 4, ratio 1.333, rhythm 1u: body-md 14/24, heading-1 44.2/52, display 78.5/76, body-sm 12/20.
 
 
 ## Default stacks
@@ -66,7 +66,7 @@ At u = 4, ratio 1.333, rhythm 1u: body 14/24, heading-1 44.2/52, display 78.5/76
 - mono: `ui-monospace, "SF Mono", Menlo, Consolas, monospace`
 - controls: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`
 
-Display, the headings and title take the strong text color `fg.strong` (black in light, white in dark: neutral step 3 of the dark and light ramps; [color](color.md#roles)); the secondary roles (body-large, caption, code, label) default to `fg.muted`; the others inherit. The role is the one source of a text's color: components and pages do not set a color next to a role unless it is deliberate (a pull quote in primary), so a remap reaches every use. A theme remaps any role (`typography.colors`: strong, default, muted, subtle, primary or inherit; `TEXT_COLORS`), emitted as `--ui-type-color-<role>`; the jig's Typography tab has a Text colors menu per role and the Typography page lists every text color token with the roles that use it.
+Display, the headings and title take the strong text color `fg.strong` (black in light, white in dark: neutral step 3 of the dark and light ramps; [color](color.md#roles)); the secondary roles (body-lg, body-sm, code, label) default to `fg.muted`; the others inherit. The role is the one source of a text's color: components and pages do not set a color next to a role unless it is deliberate (a pull quote in primary), so a remap reaches every use. A theme remaps any role (`typography.colors`: strong, default, muted, subtle, primary or inherit; `TEXT_COLORS`), emitted as `--ui-type-color-<role>`; the jig's Typography tab has a Text colors menu per role and the Typography page lists every text color token with the roles that use it.
 
 ## Face catalogue
 

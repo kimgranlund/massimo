@@ -27,9 +27,9 @@ const cardHead = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const toggleRow = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '4', paddingBlock: '1' });
 const choiceList = css({ display: 'flex', flexDirection: 'column', gap: '2' });
 const footer = css({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '3', flexWrap: 'wrap' });
-const callout = css({ display: 'flex', gap: '3', alignItems: 'start', padding: '3', borderRadius: 'lg', textStyle: 'body' });
+const callout = css({ display: 'flex', gap: '3', alignItems: 'start', padding: '3', borderRadius: 'lg', textStyle: 'body-md' });
 const planGrid = css({ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '4', [CQ_MD]: { gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }, alignItems: 'start' });
-const price = css({ textStyle: 'heading-2', '& span': { textStyle: 'body', color: 'fg.muted' } });
+const price = css({ textStyle: 'heading-2', '& span': { textStyle: 'body-md', color: 'fg.muted' } });
 const profileText = css({ flex: '[1 1 14rem]', minWidth: '0' });
 const profileHead = css({ display: 'flex', alignItems: 'center', gap: '4', flexWrap: 'wrap' });
 

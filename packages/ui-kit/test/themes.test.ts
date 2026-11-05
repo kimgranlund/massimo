@@ -110,13 +110,13 @@ test('theme lint: every contract rule has a predicate, and its failing fixture f
 test('typography.colors maps a type role to a text color: validated, emitted as --ui-type-color-<role>', async () => {
   const { DEFAULT_TYPE_COLORS } = await import('../tokens/typography/resolve.ts');
   assert.equal(DEFAULT_TYPE_COLORS['heading-1'], 'strong');
-  assert.equal(DEFAULT_TYPE_COLORS.body, 'inherit');
-  const t = { schemaVersion: 2 as const, name: 'tc', typography: { colors: { caption: 'muted' as const, 'heading-2': 'primary' as const } } };
+  assert.equal(DEFAULT_TYPE_COLORS['body-md'], 'inherit');
+  const t = { schemaVersion: 2 as const, name: 'tc', typography: { colors: { 'body-sm': 'muted' as const, 'heading-2': 'primary' as const } } };
   assert.ok(validateThemeObject(t).ok);
-  assert.equal(validateThemeObject({ ...t, typography: { colors: { caption: 'pink' } } }).ok, false);
+  assert.equal(validateThemeObject({ ...t, typography: { colors: { 'body-sm': 'pink' } } }).ok, false);
   assert.equal(validateThemeObject({ ...t, typography: { colors: { footer: 'muted' } } }).ok, false);
   const root = themeCss({ tc: t })[':root[data-ui-theme="tc"]'];
-  assert.equal(root['--ui-type-color-caption'], 'var(--colors-fg-muted)');
+  assert.equal(root['--ui-type-color-body-sm'], 'var(--colors-fg-muted)');
   assert.equal(root['--ui-type-color-heading-2'], 'var(--colors-primary-fg)');
 });
 
@@ -139,8 +139,8 @@ test('every theme field is wired: schema, validator, theme CSS, and the jig Copy
   assert.match(app, /themeParameters\(t\)/, 'the jig loads parameters from every part');
   assert.match(app, /loadThemeObject\(data\)/, 'the jig loads through loadTheme (version 1 migrates)');
   // A saved theme emits each field.
-  const css = themeCss({ w: { schemaVersion: 2, name: 'w', color: { endpoints: { white: 'pure' } }, typography: { faces: { sans: 'Georgia, serif' }, voices: { heading: 'serif' }, colors: { caption: 'strong' } } } as any })[':root[data-ui-theme="w"]'];
-  for (const v of ['--colors-white', '--fonts-sans', '--font-voice-heading', '--ui-type-color-caption']) assert.ok(css[v], `theme CSS emits ${v}`);
+  const css = themeCss({ w: { schemaVersion: 2, name: 'w', color: { endpoints: { white: 'pure' } }, typography: { faces: { sans: 'Georgia, serif' }, voices: { heading: 'serif' }, colors: { 'body-sm': 'strong' } } } as any })[':root[data-ui-theme="w"]'];
+  for (const v of ['--colors-white', '--fonts-sans', '--font-voice-heading', '--ui-type-color-body-sm']) assert.ok(css[v], `theme CSS emits ${v}`);
 });
 
 test('theme parts: every parameter has exactly one domain, and the parts round-trip the flat parameters', () => {

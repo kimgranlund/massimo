@@ -246,7 +246,7 @@
       "status": "implemented",
       "tag": "p",
       "selector": ":scope > [data-part=toast] > [data-part=content] > [data-part=description]",
-      "summary": "The message (Base UI Toast.Description), the caption role, 0.5u under the title; describes the toast."
+      "summary": "The message (Base UI Toast.Description), the body-sm role, 0.5u under the title; describes the toast."
     },
     {
       "id": "part:toast-action",

@@ -1,4 +1,4 @@
-// Article: kicker, heading, body-large dek and body copy at a readable measure, a byline, a figure
+// Article: kicker, heading, body-lg dek and body copy at a readable measure, a byline, a figure
 // with a caption, a pull quote in the primary hue and an aside card.
 import { css, cx } from '../../../styled-system/css/index.js';
 import type { SpectrumPayload } from '../../protocol.ts';
@@ -13,7 +13,7 @@ const layout = css({
   display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '10', alignItems: 'start',
   [CQ_LG]: { gridTemplateColumns: 'minmax(0, 1fr) 18rem', gap: '16' },
 });
-const article = css({ display: 'flex', flexDirection: 'column', gap: '6', maxWidth: '[44rem]', '& > p': { textStyle: 'body', maxWidth: 'prose' } });
+const article = css({ display: 'flex', flexDirection: 'column', gap: '6', maxWidth: '[44rem]', '& > p': { textStyle: 'body-md', maxWidth: 'prose' } });
 // Narrow pages step the title and the quote down one role.
 const title = css({ textStyle: 'heading-2', [CQ_MD]: { textStyle: 'heading-1' } });
 const head = css({ display: 'flex', flexDirection: 'column', gap: '4' });

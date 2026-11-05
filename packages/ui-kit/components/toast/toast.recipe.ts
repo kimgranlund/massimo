@@ -102,7 +102,7 @@ export const toast = defineSlotRecipe({
       ...Object.fromEntries(Object.entries(TYPES).map(([type, role]) => [`&[data-type=${type}]`, { color: `${role}.fg` }])),
     },
     description: {
-      gridRow: 2, gridColumn: 1, alignSelf: 'start', margin: 0, textStyle: 'caption', overflowWrap: 'anywhere',
+      gridRow: 2, gridColumn: 1, alignSelf: 'start', margin: 0, textStyle: 'body-sm', overflowWrap: 'anywhere',
       // Alone (no title): both rows, so it centers on the action and close.
       '&:first-child': { gridRow: '1 / span 2', alignSelf: 'center' },
       '[data-part=title] + &': { marginBlockStart: 'calc(var(--u) / 2)' },

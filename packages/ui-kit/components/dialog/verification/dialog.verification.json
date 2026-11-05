@@ -14,7 +14,7 @@
     },
     {
       "path": "components/dialog/dialog.recipe.ts",
-      "sha256": "c6a00db17cb72637a5db3b66a8ba7d1711514a3361249fd3e73e0af5099b16c5"
+      "sha256": "f4dc20abf35e47c8aab1140df9b17143ca48de4f6783587afc9816aa0dbce682"
     },
     {
       "path": "components/dialog/dialog.manifest.json",
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"^dialog\" test/dialog.test.ts",
@@ -57,7 +57,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Dialog \\(React\\)\" test/dialog.test.ts"

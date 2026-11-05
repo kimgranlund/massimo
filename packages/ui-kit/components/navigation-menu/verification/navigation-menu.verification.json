@@ -30,7 +30,7 @@
     },
     {
       "path": "components/popover/popup-parts.ts",
-      "sha256": "3b3f4b0953b7f04beb074a2ec80b00801b1a631aa5e5ac3cebd09201baa892bb"
+      "sha256": "8cc790000d1f3a718281b0e208d1e9d7ab7cfe095ffdc383d4aa5596dfd0a425"
     }
   ],
   "renderers": {
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"navigation menu\" test/navigation-menu.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"NavigationMenu\" test/navigation-menu.test.ts"

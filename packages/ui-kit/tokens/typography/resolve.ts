@@ -71,33 +71,34 @@ export interface TypeRole {
   upper?: boolean;
   control?: boolean; // unitless line height, no rhythm rounding
   strong?: boolean; // the strong text color (fg.strong): display, headings, titles
-  ink?: 'muted'; // a secondary role's default text color (fg.muted): body-large, caption, code, label
+  ink?: 'muted'; // a secondary role's default text color (fg.muted): body-lg, body-sm, code, label
 }
 
 export const TYPE_ROLES = {
+  // In family order: the jig's tables list the roles this way.
   // strong: the role takes fg.strong (black in light, white in dark).
   'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 0.95, weight: 700, tracking: -0.045, strong: true },
   'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025, strong: true },
   'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02, strong: true },
   'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01, strong: true },
-  'section-kicker': { label: 'Kicker · Section', voice: 'ui', step: 0, lh: 1.2, weight: 700, tracking: 0.12, upper: true },
-  'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 500, tracking: 0.096, upper: true },
-  'body-large':    { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
-  'body':          { label: 'Body',            voice: 'body', step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
-  'caption':       { label: 'Caption',         voice: 'body', u: 3,     lh: 1.45, weight: 400, tracking: 0, ink: 'muted' },
-  'code':          { label: 'Code',            voice: 'code', u: 3,     lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
-  'control':       { label: 'Control',         voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'body-lg':       { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
+  'body-md':       { label: 'Body · Medium',   voice: 'body', step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
+  'body-sm':       { label: 'Body · Small',    voice: 'body', u: 3,     lh: 1.45, weight: 400, tracking: 0, ink: 'muted' },
   'label':         { label: 'Label',           voice: 'ui', step: 0,  lh: 1.4,  weight: 450, tracking: 0, ink: 'muted' },
   // A strong item title: list and settings rows, table name cells, small card titles.
   'title':         { label: 'Title',           voice: 'ui', step: 0,  lh: 1.4,  weight: 600, tracking: 0, strong: true },
-  'control-small': { label: 'Control · Small', voice: 'ui', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'control-md':    { label: 'Control · Medium', voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'control-sm':    { label: 'Control · Small', voice: 'ui', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'section-kicker': { label: 'Kicker · Section', voice: 'ui', step: 0, lh: 1.2, weight: 700, tracking: 0.12, upper: true },
+  'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 500, tracking: 0.096, upper: true },
+  'code':          { label: 'Code',            voice: 'code', u: 3,     lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
 } as const satisfies Record<string, TypeRole>;
 export type TypeRoleName = keyof typeof TYPE_ROLES;
 
 /**
  * Text colors a type role can take (theme `typography.colors`, the jig's Text colors): the fg tokens
  * and the primary role's text. inherit keeps the surrounding color. Strong roles (display, headings,
- * title) default to strong, the secondary roles (body-large, caption, code, label) to muted; the others inherit.
+ * title) default to strong, the secondary roles (body-lg, body-sm, code, label) to muted; the others inherit.
  */
 export const TEXT_COLORS = {
   strong: 'var(--colors-fg-strong)', default: 'var(--colors-fg)', muted: 'var(--colors-fg-muted)', subtle: 'var(--colors-fg-subtle)', primary: 'var(--colors-primary-fg)', inherit: 'inherit',

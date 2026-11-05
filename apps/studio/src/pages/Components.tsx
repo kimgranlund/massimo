@@ -197,7 +197,7 @@ const scrollBox = css({ height: '[14rem]', width: 'full', maxWidth: '[22rem]', b
 const scrollWide = css({ height: '[12rem]', width: 'full', maxWidth: '[22rem]', borderRadius: 'xl', bg: 'bg.subtle' });
 const scrollPad = css({ padding: '4', paddingInlineEnd: '6', display: 'flex', flexDirection: 'column', gap: '2' });
 const scrollGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(12, 6rem)', gap: '2', padding: '4' });
-const scrollCell = css({ height: '[4rem]', borderRadius: 'md', bg: 'bg.muted', display: 'grid', placeItems: 'center', textStyle: 'caption' });
+const scrollCell = css({ height: '[4rem]', borderRadius: 'md', bg: 'bg.muted', display: 'grid', placeItems: 'center', textStyle: 'body-sm' });
 const scrollLadder = css({ height: '[10rem]', width: 'full', maxWidth: '[16rem]', borderRadius: 'lg', bg: 'bg.subtle' });
 const LINES = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo', 'Lima', 'Mike', 'November', 'Oscar', 'Papa'];
 
@@ -304,8 +304,8 @@ function ChoiceGroups({ params }: Pick<PageProps, 'params'>) {
 }
 // Disclosure specimens: a readable column, as a settings or FAQ page would hold them.
 const disclosureColumn = css({ display: 'flex', flexDirection: 'column', gap: '1', width: 'full', maxWidth: '[28rem]' });
-const panelText = css({ color: 'fg.muted', textStyle: 'body' });
-const contextArea = css({ display: 'grid', placeItems: 'center', width: '[min(100%, 28rem)]', height: '[8rem]', borderRadius: 'xl', borderWidth: 'thin', borderStyle: 'dashed', borderColor: 'border', color: 'fg.muted', textStyle: 'caption' });
+const panelText = css({ color: 'fg.muted', textStyle: 'body-md' });
+const contextArea = css({ display: 'grid', placeItems: 'center', width: '[min(100%, 28rem)]', height: '[8rem]', borderRadius: 'xl', borderWidth: 'thin', borderStyle: 'dashed', borderColor: 'border', color: 'fg.muted', textStyle: 'body-sm' });
 const tabsColumn = css({ display: 'flex', flexDirection: 'column', gap: '6', width: 'full', maxWidth: '[36rem]' });
 const tabsRow = css({ display: 'flex', flexWrap: 'wrap', gap: '8', width: 'full' });
 
@@ -323,7 +323,7 @@ const nav = (a: Record<string, string>) => a as Record<string, string>;
 const popupRow = css({ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4' });
 const popupLadder = css({ display: 'flex', alignItems: 'start', minHeight: '[calc(36 * var(--u))]', width: 'full' });
 const popupGap = css({ width: '[40%]', flexShrink: '0' });
-const popupText = css({ textStyle: 'body', color: 'fg.muted', margin: '0' });
+const popupText = css({ textStyle: 'body-md', color: 'fg.muted', margin: '0' });
 
 // A field in a size ladder: a fixed share of the row so each size's field keeps its own width.
 const ladderField = css({ width: 'full', maxWidth: '[20rem]' });

@@ -45,7 +45,7 @@ const campaign = css({ justifyContent: 'space-between', minHeight: '[20rem]' });
 const sectionKicker = css({ textStyle: 'section-kicker', display: 'inline-flex', alignItems: 'center', gap: '2' });
 // Display needs the width: below the medium canvas the campaign title steps down to heading-1.
 const display = css({ textStyle: 'heading-1', [CQ_MD]: { textStyle: 'display' } });
-const bodyLarge = css({ textStyle: 'body-large' });
+const bodyLarge = css({ textStyle: 'body-lg' });
 const panelTitle = css({ textStyle: 'heading-2', [CQ_LG]: { textStyle: 'heading-1' } });
 const bigFigure = css({ textStyle: 'heading-1', '& span': { textStyle: 'heading-3' } });
 // The strip lies flat when stacked and stands up beside the panels.
@@ -69,7 +69,7 @@ const rampStrip = css({
 });
 const rampStep = css({
   display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: '2', minHeight: '[3.5rem]', padding: '2',
-  textStyle: 'control-small', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
+  textStyle: 'control-sm', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
   '& > span:last-child': { display: 'none' },
   [CQ_MD]: { flex: '1', minHeight: '[2.5rem]', alignItems: 'center', paddingInline: '3', '& > span:last-child': { display: 'block', opacity: 0.8 } },
 });
@@ -134,10 +134,10 @@ function RoleCard({ role, family, className }: { role: string; family: string; c
   );
 }
 const barStack = css({ display: 'flex', flexDirection: 'column-reverse', justifyContent: 'flex-start', gap: '[1px]', width: '3/5', flex: '1', minHeight: '0', marginInline: 'auto', '& > span': { display: 'block', flexShrink: 0, height: '[calc(var(--v) * 100%)]' }, '& > span:last-child': { borderTopRadius: 'sm' } });
-const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'caption', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
+const legend = css({ display: 'flex', flexWrap: 'wrap', columnGap: '4', rowGap: '1.5', textStyle: 'body-sm', '& span': { display: 'inline-flex', alignItems: 'center', gap: '1.5' } });
 const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
 const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
-const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'body' });
+const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'body-md' });
 
 // Spectrum variables for a family step (follow the active scheme and the jig's roles).
 // Illustrative orders per channel, Monday through Sunday; one data color per channel (data 1–6).

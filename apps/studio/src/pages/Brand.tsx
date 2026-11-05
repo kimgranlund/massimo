@@ -25,8 +25,8 @@ const cardBody = css({ display: 'flex', flexDirection: 'column', gap: '2' });
 const swatchPair = css({ display: 'flex', gap: '1' });
 const swatch = css({ width: '10', height: '8', borderRadius: 'md', boxShadow: '[inset 0 0 0 1px var(--colors-border)]', bg: '[var(--sw)]' });
 const faceLine = css({ fontSize: '[1.5rem]', lineHeight: '[1.2]', fontFamily: '[var(--face)]' });
-const frameList = css({ display: 'grid', gridTemplateColumns: '[max-content 1fr]', columnGap: '4', rowGap: '2', '& dt': { textStyle: 'label' }, '& dd': { textStyle: 'body' } });
-const findings = css({ display: 'flex', flexDirection: 'column', gap: '1', textStyle: 'body' });
+const frameList = css({ display: 'grid', gridTemplateColumns: '[max-content 1fr]', columnGap: '4', rowGap: '2', '& dt': { textStyle: 'label' }, '& dd': { textStyle: 'body-md' } });
+const findings = css({ display: 'flex', flexDirection: 'column', gap: '1', textStyle: 'body-md' });
 const chosen = css({ bg: 'primary.subtle' });
 
 const apply = (b: Brand) => window.dispatchEvent(new CustomEvent(APPLY_BRAND, { detail: b }));
@@ -183,7 +183,7 @@ function ActiveBrand({ brand, params, spectrum }: { brand: Brand } & Pick<PagePr
 const scopeGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '4' });
 const scopeFrame = css({ bg: 'bg', borderRadius: 'xl', padding: '4', boxShadow: '[inset 0 0 0 1px var(--colors-border)]' });
 const previewTitle = css({ textStyle: 'heading-2' });
-const previewBody = css({ textStyle: 'body' });
+const previewBody = css({ textStyle: 'body-md' });
 function SideBySide() {
   const [ready, setReady] = useState(false);
   useEffect(() => {

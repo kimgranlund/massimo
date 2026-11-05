@@ -1,4 +1,4 @@
-// Landing hero: display and body-large roles, primary and neutral actions, brand color as material
+// Landing hero: display and body-lg roles, primary and neutral actions, brand color as material
 // (a primary-solid card holding the hero image and a small card that takes the page fill).
 import { css, cx } from '../../../styled-system/css/index.js';
 import type { SpectrumPayload } from '../../protocol.ts';
@@ -20,7 +20,7 @@ const brandCard = css({ bg: 'primary.solid', color: 'fg.onSolid', position: 'rel
 const heroImage = css({ borderRadius: 'lg', overflow: 'hidden', width: 'full' });
 const floating = css({ position: 'relative', zIndex: '1', color: 'fg', [CQ_SM]: { marginInlineStart: '[20%]', marginBlockStart: '-12' } });
 const onSolidSoft = '[color-mix(in oklch, var(--colors-fg-on-solid) 75%, transparent)]';
-const onSolidMuted = css({ textStyle: 'caption', color: onSolidSoft });
+const onSolidMuted = css({ textStyle: 'body-sm', color: onSolidSoft });
 const onSolidKicker = css({ textStyle: 'group-kicker', color: onSolidSoft });
 const trust = css({ display: 'flex', alignItems: 'center', gap: '3' });
 const faces = css({ display: 'flex', '& > ui-avatar + ui-avatar': { marginInlineStart: '-1.5' }, '& > ui-avatar': { boxShadow: '[0 0 0 2px var(--colors-bg)]' } });

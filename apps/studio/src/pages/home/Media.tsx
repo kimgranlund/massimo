@@ -29,7 +29,7 @@ const slideCaption = css({
   '& h3': { textStyle: 'heading-3', [CQ_MD]: { textStyle: 'heading-2' } },
 });
 const badgeStart = css({ alignSelf: 'start' });
-const slideMeta = css({ textStyle: 'caption', opacity: '0.85' });
+const slideMeta = css({ textStyle: 'body-sm', opacity: '0.85' });
 const grid = css({
   display: 'grid', gap: 'gap.card-md', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
   [CQ_MD]: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' },

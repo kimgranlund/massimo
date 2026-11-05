@@ -61,7 +61,7 @@ export const dialogPopup = mergeStyles(dialogSurface, {
 });
 
 export const dialogTitle = { margin: 0, textStyle: 'heading-3', color: 'fg' };
-export const dialogDescription = { margin: 0, textStyle: 'body', color: 'fg.muted' };
+export const dialogDescription = { margin: 0, textStyle: 'body-md', color: 'fg.muted' };
 /** The actions row (ours): at the popup's end, its buttons 2u apart, wrapping on narrow popups. */
 export const dialogActions = { display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', alignItems: 'center', gap: 'calc(2 * var(--u))' };
 

@@ -14,7 +14,7 @@
     },
     {
       "path": "components/toast/toast.recipe.ts",
-      "sha256": "9885a275bc37a383af5677d04b0f7eb4e23c509496451af23226059f0b22577d"
+      "sha256": "1ae349c670d0c8ebe4c5fc33510c1cfeb51d29d5b94f8a584a2bd2e834257bb5"
     },
     {
       "path": "components/toast/manager.ts",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/toast/toast.manifest.json",
-      "sha256": "f060f99fb8665b6a4711d2a04d57d530a21c712eb8a6873ecbd03cd8d978e9d6"
+      "sha256": "5085911a5569f647931a7271e48165b5d7ec6b5544044c929b653afa8464a75f"
     }
   ],
   "renderers": {
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"toast\" test/toast.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Toast\" test/toast.test.ts"

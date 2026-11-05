@@ -212,8 +212,8 @@ export const fieldRoot: Style = {
 export const fieldParts: Record<'label' | 'description' | 'error', Style> = {
   // Label and caption take their role's color (muted by default; theme typography.colors).
   label: { textStyle: 'label', alignSelf: 'start', cursor: 'default' },
-  description: { textStyle: 'caption' },
-  error: { textStyle: 'caption', color: 'critical.fg' },
+  description: { textStyle: 'body-sm' },
+  error: { textStyle: 'body-sm', color: 'critical.fg' },
 };
 
 /**
