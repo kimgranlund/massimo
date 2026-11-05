@@ -23,9 +23,10 @@ export const section = defineSlotRecipe({
       // Padding equals gap, so one margin gives both: p above the first section, p below the last and,
       // collapsed, p between two. It reaches the card through plain wrappers.
       marginInline: INSET, marginBlock: 'var(--sp)', paddingInline: 'var(--sc)',
-      // A sized section is a box: padded all round, its corners concentric with the card's.
+      // A sized section is a box: padded all round and spaced by the same length, its corners concentric
+      // with the card's.
       '&[size]': {
-        marginBlock: INSET, paddingBlock: 'var(--sc)',
+        marginBlock: INSET, paddingBlock: 'var(--sc)', gap: 'var(--sc)',
         // The box is inside the card's border, so its distance from the card's edge includes it. Flush with
         // the card (inset 0) it is square: the card's own corners clip it, and stacked boxes meet in a line.
         borderRadius: `min(max(calc(var(--ui-section-r, 0px) - ${INSET} - var(--b)), calc(var(--ui-section-r, 0px) * var(--ui-container-ratio))), calc(${INSET} * 1000))`,

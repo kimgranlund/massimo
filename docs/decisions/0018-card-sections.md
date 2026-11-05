@@ -20,6 +20,6 @@ A card is block flow, and sections are spaced by collapsing margins. Padding equ
 
 - Text alignment needs no second number: every section's text lands on the card's p.
 - Full-bleed media needs no option.
-- A card's `gap` applies inside its sections, and `layout` has no effect on a card.
+- A card's `gap` applies inside its unsized sections (a sized section's gap is its size), and `layout` has no effect on a card.
 - Every card must wrap its content. A card that doesn't sits edge to edge, which is visible at once.
 - A card clips with `overflow: clip`. Floating popups are fixed, so they aren't clipped.

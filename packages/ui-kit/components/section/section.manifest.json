@@ -92,7 +92,7 @@
         "A card has no padding of its own: content outside a section is full-bleed.",
         "Reads the card's inset by inheritance, through plain wrappers. In an area or a painted wrapper it adds nothing.",
         "size larger than the card's inset stops at the edge.",
-        "Sections are spaced by collapsing margins, so they stack in a card's block flow; a card's gap applies inside them."
+        "Sections are spaced by collapsing margins, so they stack in a card's block flow; a sized section's gap is its size, and an unsized one takes the card's gap."
       ],
       "avoidWhen": [
         {

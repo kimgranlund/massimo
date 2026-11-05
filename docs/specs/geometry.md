@@ -187,7 +187,7 @@ Nesting: areas hold containers, containers hold wrappers (page › region › pa
 | nested card | max(R_parent − p_parent, R_parent × k), k = `container-ratio` (0.4) | max(min(3u, p_parent), p_parent − 1u) × density | its padding |
 | nested with `padding`, or a painted wrapper | as a nested card | ladder | ladder |
 | unpainted wrapper | passes its parent through | 0, and no border | ladder |
-| `ui-section` | c = `size`, default p | sits p − c in; a `divided` one has 0 and its rows pad c, 3u·f above and below (`resolveSection`), with a 1px line between |
+| `ui-section` | c = `size`, default p | sits p − c in; a sized one has gap c; a `divided` one has 0 and its rows pad c, 3u·f above and below (`resolveSection`), with a 1px line between |
 | area (panel, region, page) | 0 | its ladder padding; the chain restarts below it | ladder |
 
 At u = 4.5 a card holding cards holding a card: 18 · 18 → 7.2 · 13.5 → 2.9 · 13.5. When a card is rounder than it is deep (`radius` above 1), the curve inside is concentric: R 40, p 12 → 28. A nested radius can fall below the control radius, so a button in a nested card can be rounder than the card; the padding keeps them apart. CSS reads the parent through depth-indexed variables (`--uc-r<n>`, `--uc-p<n>`, a rule per exact depth, up to 8; a deeper container repeats its parent's radius). An area inside the chain restarts it: the area sets `--uc-a<n>: 1` at every depth, and the first container below it reads its parent depth's flag and takes its own preset geometry as a root. An unpainted wrapper passes the flag on. A container that is not nested is exactly the level rule above.

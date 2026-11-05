@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "7a8c0340a600412ba7e9c97d1653b7c190a10a4c3e3d4970199e139c6dff478a"
+      "sha256": "ac486f03d596e5a2aeeaa46b5851de4f485d1cf217301dbf2c370d4a45c2b3fa"
     },
     {
       "path": "components/section/section.manifest.json",
-      "sha256": "0f58b874bd67b53df5db8bd2992d4b226ec2f9cdc310aa8f8b0cf2f6f28afd5e"
+      "sha256": "2c496cb02a2464cac42c854040202246b36351cadf9a958833b1f73a7b61186c"
     },
     {
       "path": "components/section/section.react.tsx",
@@ -18,7 +18,7 @@
     },
     {
       "path": "components/section/section.recipe.ts",
-      "sha256": "f97b34d2871174756e1ba21b719f997163825d0012db721eeac8d8307475270e"
+      "sha256": "e358b0af6f77b817e1833c44e04066f8eb92e147bc785ee03283eb3ef1153f4b"
     },
     {
       "path": "components/container/container.recipe.ts",

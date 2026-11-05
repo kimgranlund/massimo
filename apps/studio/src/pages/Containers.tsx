@@ -24,6 +24,8 @@ const presetBox = css({ bg: 'bg.subtle', alignSelf: 'stretch' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const cardColumns = css({ display: 'grid', width: 'full', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
+const LADDER = ['xl', 'lg', 'md', 'sm', 'xs'] as const;
+const sizeMatrix = css({ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(12rem, 1fr))', gap: '6', alignItems: 'start', overflowX: 'auto' });
 const roundDemo = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
 const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
@@ -193,7 +195,7 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A padded header keeps the list's margin, so the list moves down as its size drops; a collapsing header absorbs it, so the list stays put. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card.">
+      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A padded header keeps the list's margin, so the list moves down as its size drops; a collapsing header absorbs it, so the list stays put. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card. A sized section's gap is its size, so a box tightens as it shrinks, as the grid shows: each row steps the same distance in from the card's edge, and the bottom row is flush.">
         {([['', 'padded header'], ['collapse', 'collapsing header']] as const).map(([header, name]) => (
           <div className={sizeGrid} key={name}>
             {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map((size) => (
@@ -209,6 +211,24 @@ export function ContainersPage({ params }: PageProps) {
             ))}
           </div>
         ))}
+        <div className={sizeMatrix}>
+          {[4, 3, 2, 1, 0].flatMap((steps) => LADDER.flatMap((card, i) => {
+            if (i + steps >= LADDER.length) return [<span key={`${steps}${card}`} />];
+            const size = LADDER[i + steps];
+            return [
+              <div className={presetCell} key={`${steps}${card}`}>
+                <span className={caption}>card {card} · section {size}</span>
+                <ui-container preset="card" padding={card} className={stretched}>
+                  <ui-section size={size}><ui-row><strong>Container title</strong><span>⌄</span></ui-row></ui-section>
+                  <ui-section size={size} className={tintedBox}>
+                    <ui-row><strong>Card title</strong></ui-row>
+                    {['Option 1', 'Option 2', 'Option 3'].map((o) => <ui-row key={o}><span>{o}</span><span>+</span></ui-row>)}
+                  </ui-section>
+                </ui-container>
+              </div>,
+            ];
+          }))}
+        </div>
         <div className={roundDemo}>
           <div className={presetCell}>
             <span className={caption}>card xl · tinted section md</span>
