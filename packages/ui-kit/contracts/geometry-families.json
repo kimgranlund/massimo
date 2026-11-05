@@ -268,7 +268,7 @@
         "resolveComposite",
         "resolveContainerTree"
       ],
-      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius = padding × min(1, s), as toast, popover, preview card and dialog surfaces. Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding. ui-container (any preset): padding is the input and radius follows. Roots keep their preset geometry, nested containers take max(R_parent − p_parent, R_parent × k), nested cards step down the ladder to 3u, and unpainted wrappers have no inset (resolveContainerTree).",
+      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 6u, xl 8u; radius = padding × min(1, s), as toast, popover, preview card and dialog surfaces. Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding. ui-container (any preset): padding is the input and radius follows. Roots keep their preset geometry, nested containers take max(R_parent − p_parent, R_parent × k), nested cards step down the ladder to 3u, and unpainted wrappers have no inset (resolveContainerTree).",
       "members": [
         "component:container",
         "component:group",
@@ -471,7 +471,7 @@
         "resolveDialog",
         "resolveContainer"
       ],
-      "summary": "A dialog (and alert dialog) popup is a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u), radius p·u × min(1, s), its parts (title, description, content, actions) 2u apart (the collection gap; the gap attribute wins), the actions 2u apart at the end edge. It is 96u wide (24rem at u = 4), at most the viewport less 4u on each side, centered, and scrolls when taller than the viewport less 4u above and below.",
+      "summary": "A dialog (and alert dialog) popup is a container at the card-xl level: padding p·u − B (p = pad-card-xl, 8u), radius p·u × min(1, s), its parts (title, description, content, actions) 2u apart (the collection gap; the gap attribute wins), the actions 2u apart at the end edge. It is 96u wide (24rem at u = 4), at most the viewport less 4u on each side, centered, and scrolls when taller than the viewport less 4u above and below.",
       "members": [
         "component:dialog",
         "component:alert-dialog"

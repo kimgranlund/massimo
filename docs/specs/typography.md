@@ -5,7 +5,8 @@ massimo-ui's type roles and font families, placed on our u ramp. Reference: `pac
 ## The rule
 
 - **Base** = the control font, `10px + u` (14px at u = 4, massimo-ui's anchor). Text scales with `size` like every other length.
-- **Step role:** `size = (10px + u) × ratio^step`. **Fixed role:** `size = n·u`.
+- `size = (10px + u) × ratio^step`, for every role. Small roles sit at step −½.
+- A heading's line height is `1.3 − step/20` and its tracking `−(step − 1)/100` em.
 - **Line height:** `round(up, size × multiplier, rhythm × u)`, less 1e-4 of a step first (`RHYTHM_TOLERANCE`, in the resolver too: Firefox computes in float32, where 12.5px × 1.2 lands above 15px and would round up a whole step); rhythm 0 keeps the natural height. Controls keep a unitless 1.2.
 - Computed in CSS with `pow()` and `round()` at each element from inherited inputs, so it works per subtree with no script.
 
@@ -41,22 +42,22 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 
 | Role | Size | Line height | Weight | Tracking | Notes |
 |---|---|---|---|---|---|
-| display | step 6 | 0.95 (rounded up to the rhythm: 76 at u = 4, 81 at u = 4.5) | 700 | −0.045em | display voice |
-| heading-1 | step 4 | 1.1 | 700 | −0.025em | heading voice |
+| display | step 6 | 1.0 (rounded up to the rhythm: 80 at u = 4, 85.5 at u = 4.5) | 700 | −0.05em | display voice |
+| heading-1 | step 4 | 1.1 | 700 | −0.03em | heading voice |
 | heading-2 | step 3 | 1.15 | 700 | −0.02em | heading voice |
 | heading-3 | step 2 | 1.2 | 700 | −0.01em | heading voice |
 | body-lg | step 1 | 1.5 | 400 | 0 | |
 | body-md | step 0 | 1.5 | 400 | 0 | the `<body>` default |
-| body-sm | 3u | 1.45 | 400 | 0 | field descriptions and errors |
-| label | 3u | 1.4 | 450 | 0 | field labels, the size of control-sm |
+| body-sm | step −½ | 1.45 | 400 | 0 | field descriptions and errors |
+| label | step −½ | 1.4 | 450 | 0 | field labels |
 | title | step 0 | 1.4 | 600 | 0 | strong item titles: list and settings rows, table name cells, small card titles |
 | control-md | step 0 | 1.2 (unitless) | 450 | 0 | |
-| control-sm | 3u | 1.2 (unitless) | 450 | 0 | |
+| control-sm | step −½ | 1.2 (unitless) | 450 | 0 | |
 | section-kicker | step 0 | 1.2 | 700 | 0.12em | uppercase |
 | group-kicker | step −1 | 1.2 | 500 | 0.096em | uppercase |
-| code | 3u | 1.5 | 400 | 0 | mono |
+| code | step −½ | 1.5 | 400 | 0 | mono |
 
-At u = 4, ratio 1.333, rhythm 1u: body-md 14/24, heading-1 44.2/52, display 78.5/76, body-sm 12/20.
+At u = 4, ratio 1.333, rhythm 1u: body-md 14/24, heading-1 44.2/52, display 78.5/80, body-sm 12.1/20.
 
 
 ## Default stacks

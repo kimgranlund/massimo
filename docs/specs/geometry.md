@@ -128,7 +128,7 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 
 | | Formula | at u=4 |
 |---|---|---|
-| popup | a container at the card-xl level: padding p·u − B (p = pad-card-xl, 6u) inside a B edge, radius p·u × min(1, s) (`resolveDialog`) | 24 / 24 |
+| popup | a container at the card-xl level: padding p·u − B (p = pad-card-xl, 8u) inside a B edge, radius p·u × min(1, s) (`resolveDialog`) | 24 / 24 |
 | parts | title, description, content and the actions row 2u apart (the collection gap; the `gap` attribute on the host wins); actions 2u apart at the end edge | 8 / 8 |
 | size | width min(96u, viewport − 8u), centered; max height viewport − 8u, then the popup scrolls | 384 / 16 |
 | backdrop | the whole viewport, `bg.backdrop` | |
@@ -170,7 +170,7 @@ Containers come in four families, each with one radius rule. Every level has a p
 
 - **Composite** (listbox, segmented, toggle group, tabs list, menubar, the select, menu and navigation popups): a control. It takes the control radius, min(3u × s, 4u), the same as a button beside it, and its options split the difference: R − D, concentric inside it.
 - **Wrapper** (group, collection): hugs its controls, so its radius is concentric with them when painted: the control radius + p, min(3u × s, 4u) + p·u, at every corner scale; at s = 0 everything is square (the p term is multiplied by min(1, 100·s)). A wrapper with no `surface` and no `padding` paints nothing, so it has no padding or border; it keeps its ladder gap, and its contents share an edge with what sits beside it.
-- **Container** (`ui-container preset="card"`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, never rounder than it is deep: R = p × min(1, s). Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) take the same radius. A card may hold a smaller card (it takes the base fill). A card's text starts on the text edge, the control inset + 2u (`resolveField` textEdge), like field labels: headings, paragraphs, `strong`, anything with a type role, and `[data-row]` rows, as the card's children or inside an unpainted wrapper. Other children, such as images, charts and layout divs, stay on the padding edge. A `padding="xs"` card keeps its text on the padding edge, under its image.
+- **Container** (`ui-container preset="card"`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 6u, 8u; md is the default): a self-contained surface, never rounder than it is deep: R = p × min(1, s). Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) take the same radius. A card may hold a smaller card (it takes the base fill). A card's text starts on the text edge, the control inset + 2u (`resolveField` textEdge), like field labels: headings, paragraphs, `strong`, anything with a type role, and `[data-row]` rows, as the card's children or inside an unpainted wrapper. Other children, such as images, charts and layout divs, stay on the padding edge. A `padding="xs"` card keeps its text on the padding edge, under its image.
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
 **Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their family's radius R0: R = t × R0, t from 0 to 1 in 0.05 steps (cards to 4). 1 is the default and 0 square, so a collection of pill buttons can sit in a nearly square box, and a card at t = 2 is twice as round as it is deep. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-container preset="group" radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
@@ -203,8 +203,8 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 | card-xs (container) | `preset="card" padding="xs"` | 2u | 2u | 2u | 8 / 8 / 8 |
 | card-sm (container) | `preset="card" padding="sm"` | 3u | 3u | 3u | 12 / 12 / 12 |
 | card-md (container) | `preset="card"` (padding="md") | 4u | 4u | 4u | 16 / 16 / 16 |
-| card-lg (container) | `preset="card" padding="lg"` | 5u | 5u | 5u | 20 / 20 / 20 |
-| card-xl (container) | `preset="card" padding="xl"` | 6u | 6u | 6u | 24 / 24 / 24 |
+| card-lg (container) | `preset="card" padding="lg"` | 6u | 6u | 6u | 24 / 24 / 24 |
+| card-xl (container) | `preset="card" padding="xl"` | 8u | 8u | 8u | 32 / 32 / 32 |
 | panel (area) | `preset="panel"` | 6u | 6u | 0 | 24 / 24 / 0 |
 | region (area) | `preset="region"` | 8u | 8u | 0 | 32 / 32 / 0 |
 | page (area) | `preset="page"`, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |

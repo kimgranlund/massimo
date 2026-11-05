@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/typography/resolve.ts",
-      "sha256": "7e3ad9648a9d49f278db387b70f9259abc73c3239bdae64b176116550c763663"
+      "sha256": "9618bb33c3dcf7293b5363edc3dd25feb4d29c8e905ac9d587e6a79db1822769"
     },
     {
       "path": "tokens/typography/index.ts",

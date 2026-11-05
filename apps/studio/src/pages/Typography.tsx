@@ -104,7 +104,7 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
   // The ladder follows the roles' family order, so each family reads as one group.
   const ladder = (Object.keys(TYPE_ROLES) as TypeRoleName[]).map((role) => ({ role, t: resolveType(role, opts), r: TYPE_ROLES[role] }));
   return (
-    <Page title="Typography" lead={<>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, or n·u for small body, labels, code and small controls; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'}.</>}>
+    <Page title="Typography" lead={<>Roles from massimo-ui on the u ramp: size = (10px + u) × ratio^step, with small roles at step −½; line heights round up to the rhythm. Unit {fmt(params.unit)}px · ratio {params['type-ratio']} · rhythm {grid ? `${fmt(grid)}px` : 'none'}.</>}>
       <Divider />
       <Section id="typeface" title="Typeface" note="The faces this theme sets its display and body voices in, with what each can show.">
         <div className={typeface}>
@@ -145,7 +145,7 @@ export function TypographyPage({ params, voices, faces, typeColors }: PageProps)
                   <td className={metrics}>{role}</td>
                   <td className={metrics}>{t.voice} → {t.face}</td>
                   <td className={metrics}>{fmt(t.size)} / {t.lineHeightRatio ?? fmt(t.lineHeight)}</td>
-                  <td className={metrics}>{'u' in r ? `${r.u}u` : `step ${r.step}`}</td>
+                  <td className={metrics}>{`step ${r.step}`}</td>
                   <td className={metrics}>{t.weight}</td>
                   <td className={metrics}>{t.tracking ? `${t.tracking}em` : '0'}{t.transform !== 'none' ? ' · upper' : ''}</td>
                 </tr>

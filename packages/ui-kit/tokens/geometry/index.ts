@@ -8,7 +8,7 @@ import { fontSizes } from '../typography/index.ts';
 
 const u = (n: number | string) => `calc(${n} * var(--ui-unit) * 1px)`;
 /** Density as CSS of --ui-density (0 compact, 1 default, 2 loose; resolve.ts densityInset / densityFactor). */
-export const DENSITY_INSET_CSS = '(0.5 + 0.25 * var(--ui-density) + 0.25 * var(--ui-density) * var(--ui-density))';
+export const DENSITY_INSET_CSS = '(pow(2, var(--ui-density) - 1))';
 export const DENSITY_FACTOR_CSS = '(0.5 + 0.5 * var(--ui-density))';
 const lad = (v: string) => `${v} * ${DENSITY_FACTOR_CSS}`;
 const B = 'min(calc(var(--ui-border) * 1px), calc(var(--ui-unit) * 0.5px))';

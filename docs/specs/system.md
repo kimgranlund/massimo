@@ -10,6 +10,14 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 - **Headless behavior is shared.** `dom/` returns attribute maps and handles keys; web components apply them, and React counterparts (button, input) spread the same maps.
 - **One slot recipe per component.** Each component's styles are a Panda slot recipe (`components/<name>/<name>.recipe.ts`) applied as classes by the web component and the React renderer alike; states use shared conditions keyed on ARIA and native state. Every length comes from the geometry variables in `styles/geometry.ts`.
 
+## The foundation in one statement
+
+The whole system, compressed. Density n ∈ {0, 1, 2}.
+
+- **Controls.** Everything is u (size = u, 2–12px). Inset I = 2ⁿ⁻¹u and factor f = (1 + n)/2. A control is h = 6u + 2I: padding I (border inside it) around 6u slots leading | label | trailing. Label padding is 1u beside a slot, else 2u. Text is 10px + u. Icons are text + {−½, ½, 1½}u capped at 6u (carets −½). Badge, tag and chip are min(12px + {1, 2, 3}u, h, next − u). Composites shrink children to stay h. Control radius r = min(3u·s, h/2). Corner shape is superellipse(k = 1).
+- **Type.** Size = (10 + u)·r^n, r = 4/3, n ∈ {6, 4, 3, 2, 1, 0, −½, −1}. Heading line height is 1.3 − n/20 and tracking −(n − 1)/100. Line heights round up to multiples of u.
+- **Containers.** p = gap = L·f·u, L ∈ {½, 1, 2, 3, 4, 6, 8}: composite ½, group 1, collection 2, card xs–xl 2, 3, 4, 6, 8, panel 6, region and page 8. Radius: composite r, painted wrapper r + p, card t·p·min(1, s), area 0. Nested: R′ = max(R − p, ⅖R), p′ = max(min(3fu, p), p − fu). Unpainted wrappers have p = 0 and pass through. Text edge T = I + 2u.
+
 ## The system as a function
 
 The kit is a function of a small set of inputs: every rendered length, color, type size and curve is computed from them, and nothing is set per component.

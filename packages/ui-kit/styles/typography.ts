@@ -35,7 +35,7 @@ const U = 'calc(var(--ui-unit) * 1px)';
 const BASE = `calc(10px + ${U})`;
 
 function roleStyle(name: string, r: TypeRole) {
-  const size = r.u !== undefined ? `calc(${r.u} * ${U})` : `calc(${BASE} * pow(var(--ui-type-ratio), ${r.step}))`;
+  const size = `calc(${BASE} * pow(var(--ui-type-ratio), ${r.step}))`;
   // Round up to the rhythm unit; a zero rhythm falls back to a 0.01px grid (natural height).
   // RHYTHM_TOLERANCE of a step absorbs float error (Firefox: 12.5px × 1.2 computes above 15px).
   const grid = `max(calc(var(--ui-type-rhythm) * ${U}), 0.01px)`;

@@ -11,9 +11,20 @@ test('base role = control font (10px + u); steps scale by the ratio', () => {
   assert.equal(resolveType('display', { unit: 4, ratio: 1 }).size, 14, 'ratio 1 = product UI, every step equal');
 });
 
-test('fixed roles are n·u', () => {
-  assert.equal(resolveType('body-sm', U4).size, 12);
-  assert.equal(resolveType('code', { unit: 5 }).size, 15);
+test('small roles are step −½: below body at every size', () => {
+  assert.ok(Math.abs(resolveType('body-sm', U4).size - 14 / Math.sqrt(1.333)) < 1e-9);
+  for (const unit of [2, 4.5, 8, 12]) for (const role of ['body-sm', 'label', 'control-sm', 'code'] as const) {
+    assert.ok(resolveType(role, { unit }).size < resolveType('body-md', { unit }).size, `${role} at u = ${unit}`);
+    assert.ok(resolveType(role, { unit }).size >= 10, `${role} at u = ${unit} stays readable`);
+  }
+});
+
+test('heading line height is 1.3 − step/20 and tracking −(step − 1)/100', () => {
+  for (const role of ['display', 'heading-1', 'heading-2', 'heading-3'] as const) {
+    const { step, lh, tracking } = TYPE_ROLES[role];
+    assert.ok(Math.abs(lh - (1.3 - step / 20)) < 1e-9, role);
+    assert.ok(Math.abs(tracking + (step - 1) / 100) < 1e-9, role);
+  }
 });
 
 test('line heights round up to the rhythm unit; controls keep 1.2; rhythm 0 is natural', () => {

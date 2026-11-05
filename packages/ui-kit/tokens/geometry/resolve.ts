@@ -46,12 +46,12 @@ export interface GeometryInput {
  * Density: how much fits at the same scale. It changes insets, padding and gaps, never type, slots
  * or icons. Control inset I = 0.5u, 1u, 2u (controls 7u, 8u, 10u); the container ladder (padding and
  * gap) × 0.5, 1, 1.5. As formulas of the index n (0, 1, 2) so CSS can compute them from one
- * variable: I = 0.5 + 0.25n + 0.25n² (in u), ladder factor = 0.5 + 0.5n.
+ * variable: I = 2^(n − 1) (in u), ladder factor = 0.5 + 0.5n.
  */
 export const DENSITIES = ['compact', 'default', 'loose'] as const;
 export type Density = (typeof DENSITIES)[number];
 export const densityIndex = (d: Density = 'default') => DENSITIES.indexOf(d);
-export const densityInset = (n: number) => 0.5 + 0.25 * n + 0.25 * n * n;
+export const densityInset = (n: number) => 2 ** (n - 1);
 export const densityFactor = (n: number) => 0.5 + 0.5 * n;
 
 export const GEOMETRY_DEFAULTS = { unit: 4.5, border: 0, radiusScale: 1, iconSize: 'md' as IconSize, density: 'default' as Density };
@@ -151,8 +151,8 @@ export const CONTAINERS = {
   'card-xs':  { family: 'container', padding: 2,   maxRadius: 2 },
   'card-sm':  { family: 'container', padding: 3,   maxRadius: 3 },
   'card-md':  { family: 'container', padding: 4,   maxRadius: 4 },
-  'card-lg':  { family: 'container', padding: 5,   maxRadius: 5 },
-  'card-xl':  { family: 'container', padding: 6,   maxRadius: 6 },
+  'card-lg':  { family: 'container', padding: 6,   maxRadius: 6 },
+  'card-xl':  { family: 'container', padding: 8,   maxRadius: 8 },
   panel:      { family: 'area',      padding: 6,   maxRadius: 0 },
   region:     { family: 'area',      padding: 8,   maxRadius: 0 },
   // Same spacing as region, plus a centered max width (styles/defaults.ts, page() pattern).

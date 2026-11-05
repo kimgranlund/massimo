@@ -63,8 +63,7 @@ export const NUMERIC_FEATURES = numericStyle().fontVariantNumeric;
 export interface TypeRole {
   label: string;
   voice: Voice;
-  step?: number;
-  u?: number;
+  step: number;
   lh: number;
   weight: number;
   tracking: number; // em
@@ -75,23 +74,24 @@ export interface TypeRole {
 }
 
 export const TYPE_ROLES = {
-  // In family order: the jig's tables list the roles this way.
+  // In family order: the jig's tables list the roles this way. Size = (10 + u) × r^step. A heading's
+  // line height is 1.3 − step/20 and its tracking −(step − 1)/100.
   // strong: the role takes fg.strong (black in light, white in dark).
-  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 0.95, weight: 700, tracking: -0.045, strong: true },
-  'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.025, strong: true },
+  'display':       { label: 'Display',         voice: 'display', step: 6,  lh: 1,    weight: 700, tracking: -0.05, strong: true },
+  'heading-1':     { label: 'Heading 1',       voice: 'heading', step: 4,  lh: 1.1,  weight: 700, tracking: -0.03, strong: true },
   'heading-2':     { label: 'Heading 2',       voice: 'heading', step: 3,  lh: 1.15, weight: 700, tracking: -0.02, strong: true },
   'heading-3':     { label: 'Heading 3',       voice: 'heading', step: 2,  lh: 1.2,  weight: 700, tracking: -0.01, strong: true },
   'body-lg':       { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
   'body-md':       { label: 'Body · Medium',   voice: 'body', step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
-  'body-sm':       { label: 'Body · Small',    voice: 'body', u: 3,     lh: 1.45, weight: 400, tracking: 0, ink: 'muted' },
-  'label':         { label: 'Label',           voice: 'ui', u: 3,     lh: 1.4,  weight: 450, tracking: 0, ink: 'muted' },
+  'body-sm':       { label: 'Body · Small',    voice: 'body', step: -0.5, lh: 1.45, weight: 400, tracking: 0, ink: 'muted' },
+  'label':         { label: 'Label',           voice: 'ui', step: -0.5, lh: 1.4,  weight: 450, tracking: 0, ink: 'muted' },
   // A strong item title: list and settings rows, table name cells, small card titles.
   'title':         { label: 'Title',           voice: 'ui', step: 0,  lh: 1.4,  weight: 600, tracking: 0, strong: true },
   'control-md':    { label: 'Control · Medium', voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },
-  'control-sm':    { label: 'Control · Small', voice: 'ui', u: 3,     lh: 1.2,  weight: 450, tracking: 0, control: true },
+  'control-sm':    { label: 'Control · Small', voice: 'ui', step: -0.5, lh: 1.2,  weight: 450, tracking: 0, control: true },
   'section-kicker': { label: 'Kicker · Section', voice: 'ui', step: 0, lh: 1.2, weight: 700, tracking: 0.12, upper: true },
   'group-kicker':  { label: 'Kicker · Group',  voice: 'ui', step: -1, lh: 1.2,  weight: 500, tracking: 0.096, upper: true },
-  'code':          { label: 'Code',            voice: 'code', u: 3,     lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
+  'code':          { label: 'Code',            voice: 'code', step: -0.5, lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
 } as const satisfies Record<string, TypeRole>;
 export type TypeRoleName = keyof typeof TYPE_ROLES;
 
@@ -141,7 +141,7 @@ export function resolveType(role: TypeRoleName, input: { unit?: number; ratio?: 
   const x = { ...TYPE_DEFAULTS, ...input, voices: { ...DEFAULT_VOICES, ...input.voices }, faces: { ...FONT_FAMILIES, ...input.faces } };
   const r: TypeRole = TYPE_ROLES[role];
   const base = 10 + x.unit;
-  const size = r.u !== undefined ? r.u * x.unit : base * Math.pow(x.ratio, r.step!);
+  const size = base * Math.pow(x.ratio, r.step);
   const natural = size * r.lh;
   const grid = x.rhythm * x.unit;
   // A natural height within 1e-4 grid of a step stays on it (styles/typography.ts subtracts the

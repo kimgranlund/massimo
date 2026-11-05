@@ -942,7 +942,8 @@ for (const c of cases) {
     checks['nav.trigger.caret'] = [r2(rect(part(t, 'trailing').firstElementChild).width), rn.caret];
     checks['nav.link.height'] = [r2(rect(plain.link).height), rn.itemHeight];
     checks['nav.link.label'] = [px(cs(part(plain.link, 'contents')).paddingLeft), rn.labelStart];
-    t.scrollIntoView({ block: 'center' });
+    // At the top of the viewport: at u = 12 a centered trigger leaves too little room, and the popup rightly flips.
+    t.scrollIntoView({ block: 'start' });
     // Measured at rest: no open transition, and placement settled (Gecko sometimes places a frame late).
     el.popup.style.transition = 'none';
     el.value = 'a';

@@ -99,14 +99,14 @@ test('containers: wrappers concentric with their controls, card radius = padding
   }));
   assert.deepEqual(at4, {
     group: [4, 4, 16], collection: [8, 8, 20],
-    'card-xs': [8, 8, 8], 'card-sm': [12, 12, 12], 'card-md': [16, 16, 16], 'card-lg': [20, 20, 20], 'card-xl': [24, 24, 24],
+    'card-xs': [8, 8, 8], 'card-sm': [12, 12, 12], 'card-md': [16, 16, 16], 'card-lg': [24, 24, 24], 'card-xl': [32, 32, 32],
     panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0],
   });
   for (const [l, c] of Object.entries(CONTAINERS)) {
     const want = c.family === 'area' ? 0 : c.family === 'composite' ? 3 : c.family === 'container' ? c.padding : 3 + c.padding;
     assert.equal(c.maxRadius, want, `${l} (${c.family}) max radius`);
   }
-  assert.deepEqual(CARD_PADDINGS.map((p) => CONTAINERS[`card-${p}`].padding), [2, 3, 4, 5, 6], 'card xs…xl = 2…6u');
+  assert.deepEqual(CARD_PADDINGS.map((p) => CONTAINERS[`card-${p}`].padding), [2, 3, 4, 6, 8], 'card xs…xl come from the ladder');
   assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 8, 'card: the padding × the corner scale');
   assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3 }).radius, 16, 'card: never rounder than its padding');
   assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 1 }).radius, 12 + 8, 'wrapper: concentric with its controls');
@@ -320,11 +320,11 @@ test('combobox: the select trigger row with 6u clear and trigger slots, 6u chips
   assert.equal(resolveCombobox({ unit: 2, radiusScale: 0 }).chipRadius, 0);
 });
 
-test('dialog: the popup is a card-xl container (6u padding inside B, radius = padding), parts 2u apart, 96u wide within a 4u viewport margin', () => {
+test('dialog: the popup is a card-xl container (8u padding inside B, radius = padding), parts 2u apart, 96u wide within a 4u viewport margin', () => {
   const d = resolveDialog({ unit: 4, border: 1 });
-  assert.deepEqual([d.padding, d.edge, d.radius, d.gap, d.actionsGap, d.margin, d.width], [23, 24, 24, 8, 8, 16, 384]);
-  assert.equal(resolveDialog({ unit: 4, radiusScale: 2 }).radius, 24, 'the corner scale lowers, never raises, a container radius');
-  assert.equal(resolveDialog({ unit: 4, radiusScale: 0.5 }).radius, 12);
+  assert.deepEqual([d.padding, d.edge, d.radius, d.gap, d.actionsGap, d.margin, d.width], [31, 32, 32, 8, 8, 16, 384]);
+  assert.equal(resolveDialog({ unit: 4, radiusScale: 2 }).radius, 32, 'the corner scale lowers, never raises, a container radius');
+  assert.equal(resolveDialog({ unit: 4, radiusScale: 0.5 }).radius, 16);
   assert.equal(resolveDialog({ unit: 4, padUnits: 5 }).padding, 20, 'pad-card-xl is a theme parameter');
   assert.equal(resolveDialog({ unit: 4, gap: 3 }).gap, 12, 'the gap attribute wins');
   const narrow = resolveDialog({ unit: 4, viewport: { width: 360, height: 640 } });
@@ -454,7 +454,7 @@ test('universal container: padding is the input and radius follows; unpainted wr
   assert.deepEqual([t.radius, t.children[0].radius], [16, 16 * 0.4], 'with no room for a concentric curve, the parent × k');
   const near = (node: { children: { radius: number }[] }) => Math.round(node.children[0].radius);
   assert.equal(near(resolveContainerTree({ preset: 'card', padding: 'sm', radius: 3.33, children: [{ preset: 'collection', surface: 'panel' }] }, g)), 28, 'r 40, p 12: concentric at 28');
-  assert.equal(near(resolveContainerTree({ preset: 'card', padding: 'xl', radius: 1.67, children: [{ preset: 'collection', surface: 'panel' }] }, g)), 16, 'r 40, p 24: concentric at 16');
+  assert.equal(near(resolveContainerTree({ preset: 'card', padding: 'lg', radius: 1.67, children: [{ preset: 'collection', surface: 'panel' }] }, g)), 16, 'r 40, p 24: concentric at 16');
   assert.equal(t.children[0].gap, 12, 'a nested card gaps at its padding');
   const small = resolveContainerTree({ preset: 'card', padding: 'xs', children: [{ preset: 'card' }] }, g);
   assert.equal(small.children[0].edge, 8, 'a nested card is never deeper than its parent');
