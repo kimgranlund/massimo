@@ -18,7 +18,7 @@
     },
     {
       "path": "components/toggle/toggle.manifest.json",
-      "sha256": "8f66e312b578a28a0bd2a559a468e7ab205dc3642af9e64a14b3b279269a4324"
+      "sha256": "73ee5944c87780b031dc00b835e6175f572724f4bdb2538a8468f7f2fac5205a"
     },
     {
       "path": "components/button/button.recipe.ts",

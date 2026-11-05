@@ -6,7 +6,7 @@
 import { CONTAINER_DEPTH } from '../tokens/geometry/resolve.ts';
 import { defineGlobalStyles } from '@pandacss/dev';
 import { DENSITY_FACTOR_CSS, DENSITY_INSET_CSS, unitTokenVars } from '../tokens/geometry/index.ts';
-import { AVATAR_SIZES, DENSITIES, GAPS, ICON_STEPS, RADIUS_FACTORS, SIZES } from '../tokens/geometry/resolve.ts';
+import { AVATAR_SIZES, DENSITIES, GAPS, ICON_SLOT_BASE, ICON_STEPS, RADIUS_FACTORS, SIZES } from '../tokens/geometry/resolve.ts';
 
 // :where() keeps the shared control values at zero specificity, so per-element rules (ui-chip,
 // ui-badge, …) override them. With :is() the [data-ui] argument would outrank a tag selector.
@@ -52,10 +52,10 @@ export const geometry = defineGlobalStyles({
     '--leading': 'calc(4.5 * var(--u))',
     '--line': 'min(calc(1.2 * var(--font)), var(--slot))',
     '--line-pad': 'calc((var(--slot) - var(--line)) / 2)',
-    // Capped at the slot so the control keeps its height.
-    '--icon': 'min(calc(var(--font) + var(--ui-icon-k) * var(--u)), var(--slot))',
+    // font + k·u, at least (3.5 + k)/6 of the slot (resolveIcon), capped at the slot so the control keeps its height.
+    '--icon': `min(max(calc(var(--font) + var(--ui-icon-k) * var(--u)), calc((${ICON_SLOT_BASE} + var(--ui-icon-k)) / 6 * var(--slot))), var(--slot))`,
     // Indicators (carets, the select chevron) are always icon size sm.
-    '--icon-sm': 'min(calc(var(--font) - 0.5 * var(--u)), var(--slot))',
+    '--icon-sm': `min(max(calc(var(--font) - 0.5 * var(--u)), calc((${ICON_SLOT_BASE} - 0.5) / 6 * var(--slot))), var(--slot))`,
     '--radius': 'min(calc(3 * var(--u) * var(--ui-radius-scale)), calc(var(--h) / 2))',
   },
 

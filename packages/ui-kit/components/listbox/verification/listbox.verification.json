@@ -22,7 +22,7 @@
     },
     {
       "path": "components/listbox/listbox.manifest.json",
-      "sha256": "ece325e3da92e084f66c64e75384954308ed1704438420d42edc6b0cc8b81bf0"
+      "sha256": "8ec8d979192a90de8038bbb58b1d3177d06a3c884cbf1c8322846b74965225ab"
     },
     {
       "path": "components/listbox/listbox.react.tsx",

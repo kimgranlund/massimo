@@ -18,7 +18,7 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "c5e981139b32a92df3f662fc5054fe359beb3dd2c64ebad09ebaa95e2c29a2c8"
+      "sha256": "0affe5b9fabfd4ebc5fed0e48e65298d86bf6544fac517bfe1285b118fc89df8"
     },
     {
       "path": "components/button/button.react.tsx",
@@ -58,7 +58,7 @@
           "node --test test/composition.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     },
@@ -86,7 +86,7 @@
           "node --test test/composition.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     }

@@ -21,6 +21,8 @@ export type IconSize = 'sm' | 'md' | 'lg' | 'xl' | 'fill';
 
 /** Icon size = font size + k·u (fill takes the whole slot). */
 export const ICON_STEPS: Record<Exclude<IconSize, 'fill'>, number> = { sm: -0.5, md: 0.5, lg: 1.5, xl: 2.5 };
+/** The slot floor: a tier is at least (ICON_SLOT_BASE + k) / 6 of its slot (3u, 4u, 5u, 6u for sm…xl in a 6u slot). */
+export const ICON_SLOT_BASE = 3.5;
 
 export interface GeometryInput {
   /** Unit u in px (the size). */
@@ -69,9 +71,16 @@ function inputs(input: GeometryInput) {
   return { ...x, n, inset: densityInset(n), factor: densityFactor(n) };
 }
 
-/** Icon artwork, capped at the 6u slot so the control stays 8u (md caps below u≈2.2, lg below u≈2.9, xl at u ≤ 4). */
+/**
+ * Icon artwork: font + k·u, at least (3.5 + k)/6 of the slot, capped at the slot. In a 6u control slot that is
+ * max(10 + u, 3.5u) + k·u: text-based up to u = 4 (where 10 + u = 3.5u), slot-based above it (sm 3u, md 4u,
+ * lg 5u, xl 6u), so icons fill their slot in proportion at large sizes. The cap keeps the control 8u (md caps
+ * below u≈2.2, lg below u≈2.9; xl is the slot at every size).
+ */
 export function resolveIcon(fontSize: number, unit: number, size: IconSize, slot: number) {
-  return size === 'fill' ? slot : Math.min(fontSize + ICON_STEPS[size] * unit, slot);
+  if (size === 'fill') return slot;
+  const k = ICON_STEPS[size];
+  return Math.min(Math.max(fontSize + k * unit, ((ICON_SLOT_BASE + k) / 6) * slot), slot);
 }
 
 /** Control family: ui-button, ui-input, ui-select trigger. */

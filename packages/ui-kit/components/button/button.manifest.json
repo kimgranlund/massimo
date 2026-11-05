@@ -147,7 +147,7 @@
             "fill"
           ],
           "readBy": "css",
-          "description": "Glyph artwork tier inside the fixed 6u slots: sm = font − 0.5u, md (default) = font + 0.5u, lg = font + 1.5u, xl = font + 2.5u (each capped at the slot), fill covers the slot (images use object-fit cover). Carets, the select chevron and the x close icon stay sm. data-icon-size is the same input for plain HTML.",
+          "description": "Glyph artwork tier inside the fixed 6u slots: font + k·u with k = −0.5 sm, 0.5 md (default), 1.5 lg, 2.5 xl, at least (3.5 + k)/6 of the slot (3u, 4u, 5u, 6u in a control) and capped at the slot, fill covers the slot (images use object-fit cover). Carets, the select chevron and the x close icon stay sm. data-icon-size is the same input for plain HTML.",
           "inspector": {
             "control": "select"
           }

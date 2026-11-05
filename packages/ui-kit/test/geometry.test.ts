@@ -46,16 +46,24 @@ test('text run: 0.5u between text parts, 1u beside a slot, 2u at a bare edge', (
     assert.deepEqual(resolveTextRun({ leading: l, trailing: t }, U4).contents, resolveButtonContents(l, t, U4));
 });
 
-test('icon sizes: sm = font − 0.5u, md = font + 0.5u, lg = font + 1.5u, xl = font + 2.5u, fill = slot', () => {
-  assert.deepEqual((['sm', 'md', 'lg', 'xl', 'fill'] as const).map((iconSize) => resolveControl({ unit: 4, iconSize }).iconSize), [12, 16, 20, 24, 24]);
-  // At u=2 the slot is 12px: md (13) and lg (15) cap at the slot so the control stays 16px.
-  assert.deepEqual((['sm', 'md', 'lg', 'xl', 'fill'] as const).map((iconSize) => resolveControl({ unit: 2, iconSize }).iconSize), [11, 12, 12, 12, 12]);
+test('icon sizes: font + k·u (sm −½, md ½, lg 1½, xl 2½), at least (3.5 + k)/6 of the slot, capped at the slot', () => {
+  const tiers = ['sm', 'md', 'lg', 'xl', 'fill'] as const;
+  const at = (unit: number) => tiers.map((iconSize) => resolveControl({ unit, iconSize }).iconSize);
+  // Up to u = 4 the text term wins (10 + u ≥ 3.5u): font + k·u, capped at the 6u slot.
+  assert.deepEqual(at(4), [12, 16, 20, 24, 24]);
+  // At u=2 the slot is 12px: md (13), lg (15) and xl (17) cap at the slot so the control stays 16px.
+  assert.deepEqual(at(2), [11, 12, 12, 12, 12]);
   assert.equal(resolveControl({ unit: 2.5, iconSize: 'lg' }).iconSize, 15, 'lg caps below u≈2.9');
-  assert.equal(resolveControl({ unit: 3, iconSize: 'lg' }).iconSize, 17.5, 'uncapped from u=3');
-  // xl = font + 2.5u meets the 6u slot exactly at u = 4 (10 + 3.5u = 6u), so it is the slot up to there.
-  assert.equal(resolveControl({ unit: 4, iconSize: 'xl' }).iconSize, 24, 'xl is the slot at u = 4');
-  assert.equal(resolveControl({ unit: 4.5, iconSize: 'xl' }).iconSize, 25.75, 'uncapped above u = 4');
-  assert.equal(resolveControl({ unit: 12, iconSize: 'xl' }).iconSize, 52);
+  assert.equal(resolveControl({ unit: 3, iconSize: 'lg' }).iconSize, 17.5, 'text-based below u = 4');
+  // Above u = 4 the slot term wins: sm 3u, md 4u, lg 5u, xl 6u, so icons keep their share of the slot.
+  assert.deepEqual(at(4.5), [13.5, 18, 22.5, 27, 27]);
+  assert.deepEqual(at(12), [36, 48, 60, 72, 72]);
+  for (const unit of SIZES) {
+    const v = at(unit);
+    for (let i = 1; i < v.length; i++) assert.ok(v[i] >= v[i - 1], `tiers ordered at u = ${unit}`);
+    const c = resolveControl({ unit }), md = Math.max(10 + unit, 3.5 * unit) + 0.5 * unit;
+    assert.ok(Math.abs(c.iconSize - Math.min(md, 6 * unit)) < 1e-9, `md = max(10 + u, 3.5u) + ½u at u = ${unit}`);
+  }
 });
 
 test('border is spent inside the padding, never added to height', () => {

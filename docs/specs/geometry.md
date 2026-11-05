@@ -49,7 +49,7 @@ Type, the 6u slot, icons and text-run edges never change with density. Everythin
 | parts | construction pattern `[leading] [prefix] [contents] [suffix] [trailing]`; leading/trailing are icon slots, min 6u × 6u; empty parts are hidden | 24 |
 | text run | prefix, contents (the label) and suffix: 0.5u on a side next to another text part (so they sit 1u apart), 1u beside a slot, 2u at a bare edge (`resolveTextRun`); single-line text: line height 1.2 × font, capped at the 6u slot, centered by equal block padding (slot − line) / 2 | 2, 4 or 8 / 3.6 / 16.8 |
 | font | 10px + u | 14 |
-| icon sm / md / lg / xl | font − 0.5u / font + 0.5u / font + 1.5u / font + 2.5u, capped at 6u | 12 / 16 / 20 / 24 |
+| icon sm / md / lg / xl | max(font, 3.5u) + k·u, k = −0.5 / 0.5 / 1.5 / 2.5, capped at 6u (in general font + k·u, at least (3.5 + k)/6 of the slot) | 12 / 16 / 20 / 24 |
 | icon fill | the whole 6u slot, object-fit cover, centered; radius = control radius − u | 24 |
 | radius | min(3u × scale, 4u) | 12 |
 
@@ -58,7 +58,7 @@ Type, the 6u slot, icons and text-run edges never change with density. Everythin
 | height | 16 | 18 | 20 | 24 | 28 | 32 | 36 |
 | font | 12 | 12.25 | 12.5 | 13 | 13.5 | 14 | 14.5 |
 
-Icons capped by the slot: `md` below u≈2.2, `lg` below u≈2.9 and `xl` up to u = 4 (at u=2: md, lg and xl are 12px, the slot size; at u = 4 xl is the 24px slot, at u = 4.5 it is 25.75px), so a control never grows past 8u. The steps are 1u apart, so xl is the next tier above lg: at u = 12 it is 52px (lg 40) in the 72px slot.
+Icons follow the text up to u = 4 and the slot above it. The text term is font + k·u. The slot term is (3.5 + k)/6 of the slot: 3u, 4u, 5u and 6u for sm, md, lg and xl in a 6u slot. The two meet at u = 4, where 10 + u = 3.5u, so nothing changes at u ≤ 4, and above it each tier keeps its share of the slot. At u = 12, md is 48px in the 72px slot instead of 28px, and the caret (sm) is 36px. Tiers are 1u apart. xl is the slot at every size: the glyph counterpart of `fill`, which covers the slot with an image. The cap keeps a control at 8u: at u = 2, md, lg and xl are 12px, the slot size. Badge, tag and chip use the same rule against their own font and slot.
 
 Usage: `<ui-button><i slot="leading" name="credit-card"></i><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span></ui-button>`. Anything with `slot="leading" | "prefix" | "suffix" | "trailing"` goes in that part; everything else is contents. Prefix and suffix are short text adornments (a currency, a unit, a shortcut, a count) in the label color at 65%. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} prefix={…} suffix={…} trailing={…} iconSize="lg" size={3}>`.
 
