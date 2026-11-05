@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveChoice, SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
+import { RADIUS_FACTORS, resolveChoice, SIZES, GAPS, resolveButtonContents, resolveTextRun, CONTAINERS, CARD_PADDINGS, resolveContainer, resolveBtg, btgHeights, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveTrack, trackFill, thumbOffset, resolveSwiper, resolveImage, IMAGE_RATIOS, resolveFieldRow, resolveFieldGrid, resolveDisclosure, resolveTabs, resolveToast, trackPairFill, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu } from '../tokens/geometry/resolve.ts';
 // These tests pin u = 4 (the numbers below are at u = 4); the default unit is checked separately.
 const U4 = { unit: 4 } as const;
 
@@ -92,22 +92,24 @@ test('composite: 0.5u padding level; a control: the control radius, options R �
   assert.equal(resolveComposite({ unit: 4, gap: 0 }).gap, 0, 'gap override the gap');
 });
 
-test('containers: wrappers and cards concentric with their controls, container radius = padding, area square', () => {
+test('containers: wrappers concentric with their controls, card radius = padding, area square', () => {
   const at4 = Object.fromEntries((['group', 'collection', 'card-xs', 'card-sm', 'card-md', 'card-lg', 'card-xl', 'panel', 'region', 'page'] as const).map((l) => {
     const c = resolveContainer(l, { unit: 4, border: 0 });
     return [l, [c.padding, c.gap, c.radius]];
   }));
   assert.deepEqual(at4, {
     group: [4, 4, 16], collection: [8, 8, 20],
-    'card-xs': [8, 8, 20], 'card-sm': [12, 12, 24], 'card-md': [16, 16, 28], 'card-lg': [20, 20, 32], 'card-xl': [24, 24, 36],
+    'card-xs': [8, 8, 8], 'card-sm': [12, 12, 12], 'card-md': [16, 16, 16], 'card-lg': [20, 20, 20], 'card-xl': [24, 24, 24],
     panel: [24, 24, 0], region: [32, 32, 0], page: [32, 32, 0],
   });
   for (const [l, c] of Object.entries(CONTAINERS)) {
-    const want = c.family === 'area' ? 0 : c.family === 'composite' ? 3 : 3 + c.padding;
+    const want = c.family === 'area' ? 0 : c.family === 'composite' ? 3 : c.family === 'container' ? c.padding : 3 + c.padding;
     assert.equal(c.maxRadius, want, `${l} (${c.family}) max radius`);
   }
   assert.deepEqual(CARD_PADDINGS.map((p) => CONTAINERS[`card-${p}`].padding), [2, 3, 4, 5, 6], 'card xs…xl = 2…6u');
-  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 6 + 16, 'card: concentric, the control radius + padding');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5 }).radius, 8, 'card: the padding × the corner scale');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3 }).radius, 16, 'card: never rounder than its padding');
+  assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 1 }).radius, 12 + 8, 'wrapper: concentric with its controls');
   assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 3, surface: true }).radius, 16, 'a surface (toast, popover, dialog) stays at most its padding');
   assert.equal(resolveContainer('card-md', { unit: 4, radiusScale: 0.5, surface: true }).radius, 8, 'the corner scale lowers a surface');
   // Concentric: the control radius (min(3u·s, 4u)) + the padding, at every scale; square at s = 0.
@@ -116,7 +118,10 @@ test('containers: wrappers and cards concentric with their controls, container r
   assert.equal(resolveContainer('group', { unit: 4, radiusScale: 0 }).radius, 0, 'square at s = 0');
   // Radius magnitude t: R = t × the concentric radius; the attribute wins over the theme factor.
   assert.equal(resolveContainer('collection', { unit: 4, radiusScale: 3, radius: 0.25 }).radius, 0.25 * (16 + 8), 'sharper than pill contents');
-  assert.equal(resolveContainer('card-md', { unit: 4, radiusFactor: 0.5 }).radius, 14, 'card: t × (12 + 16)');
+  assert.equal(resolveContainer('card-md', { unit: 4, radiusFactor: 0.5 }).radius, 8, 'card: t × the padding');
+  assert.equal(resolveContainer('card-md', { unit: 4, radius: 2.5 }).radius, 40, 'a card can be rounder than it is deep');
+  assert.throws(() => resolveContainer('card-md', { radius: 5 }), /0\.\.4/);
+  assert.ok(RADIUS_FACTORS.includes(3.3) && RADIUS_FACTORS.at(-1) === 4, 'the radius attribute has a rule for every step a card can take');
   assert.equal(resolveContainer('group', { unit: 4, radius: 1, radiusFactor: 0 }).radius, 16, 'attribute over theme');
   assert.equal(resolveContainer('panel', { unit: 4, radius: 0.5 }).radius, 0, 'areas stay square');
   assert.throws(() => resolveContainer('group', { radius: 2 }), /0\.\.1/);
@@ -428,33 +433,41 @@ test('attached (inset none): no edge but the border, no gap, square children wit
   assert.equal(resolveChoice('switch', { unit: 4 }).thumbTravel, 16, 'inset switch travels 4u too');
 });
 
-test('universal container: derived padding never drops below 1u, and an area inside the chain restarts it', async () => {
+test('universal container: an area inside the chain restarts it', async () => {
   const { resolveContainerTree, resolveContainer } = await import('../tokens/geometry/resolve.ts');
   const g = { unit: 4 };
-  // Deep: radii shrink to the control radius and below; the floor keeps every padding at 1u or more.
-  const deep = resolveContainerTree({ preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }, g);
-  for (let n = deep, d = 0; n; n = n.children[0], d++) { assert.ok(n.edge >= g.unit, `depth ${d}: padding ${n.edge} ≥ 1u`); if (n.children[0]) assert.ok(n.children[0].radius <= n.radius, 'radii never grow inward'); }
-  // An area mid-chain: the card under the panel is a root again.
   const t = resolveContainerTree({ preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'lg' }] }] }, g);
   const inner = t.children[0].children[0];
   assert.equal(inner.radius, resolveContainer('card-lg', g).radius);
   assert.equal(inner.edge, resolveContainer('card-lg', g).edge);
 });
 
-test('universal container: a root keeps its preset geometry; nested containers are concentric; padding derives by ratio, levels or the controls', async () => {
-  const { resolveContainerTree, resolveContainer, resolveControl } = await import('../tokens/geometry/resolve.ts');
+test('universal container: padding is the input and radius follows; unpainted wrappers add no inset', async () => {
+  const { resolveContainerTree, resolveContainer } = await import('../tokens/geometry/resolve.ts');
   const g = { unit: 4 };
-  const ctl = resolveControl(g).radius;
   const lone = resolveContainerTree({ preset: 'card' }, g);
   assert.deepEqual([lone.radius, lone.edge], [resolveContainer('card-md', g).radius, resolveContainer('card-md', g).edge], 'a lone card is unchanged');
-  const t = resolveContainerTree({ preset: 'card', padding: 'xl', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }, g);
-  const [c] = t.children, [leaf] = c.children;
-  assert.equal(c.radius, t.radius - t.edge, 'concentric with the parent');
-  assert.equal(t.edge, t.radius - Math.max(ctl, t.radius * 0.6), 'a container of containers keeps the ratio');
-  assert.equal(leaf.edge, Math.max(g.unit, leaf.radius - ctl), 'a leaf fits its controls, never below 1u');
-  const d = resolveContainerTree({ preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] }, g);
-  const inner = d.children[0].children[0];
-  assert.equal(inner.radius - inner.edge, ctl, 'levels: every curve down to the controls is concentric');
+  const held = resolveContainerTree({ preset: 'card', children: [{ preset: 'group' }] }, g);
+  assert.equal(held.edge, lone.edge, 'holding a wrapper does not cost a card its padding');
+  const t = resolveContainerTree({ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card' }] }] }, g);
+  assert.deepEqual([t.edge, t.children[0].edge, t.children[0].children[0].edge], [16, 12, 12], 'cards step down the ladder to 3u');
+  assert.deepEqual([t.radius, t.children[0].radius], [16, 16 * 0.4], 'with no room for a concentric curve, the parent × k');
+  const near = (node: { children: { radius: number }[] }) => Math.round(node.children[0].radius);
+  assert.equal(near(resolveContainerTree({ preset: 'card', padding: 'sm', radius: 3.33, children: [{ preset: 'collection', surface: 'panel' }] }, g)), 28, 'r 40, p 12: concentric at 28');
+  assert.equal(near(resolveContainerTree({ preset: 'card', padding: 'xl', radius: 1.67, children: [{ preset: 'collection', surface: 'panel' }] }, g)), 16, 'r 40, p 24: concentric at 16');
+  assert.equal(t.children[0].gap, 12, 'a nested card gaps at its padding');
+  const small = resolveContainerTree({ preset: 'card', padding: 'xs', children: [{ preset: 'card' }] }, g);
+  assert.equal(small.children[0].edge, 8, 'a nested card is never deeper than its parent');
+  const set = resolveContainerTree({ preset: 'card', children: [{ preset: 'card', padding: 'xs' }] }, g);
+  assert.equal(set.children[0].edge, 8, 'a padding attribute wins');
+  const w = resolveContainerTree({ preset: 'card', children: [{ preset: 'collection', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }, g);
+  const wrap = w.children[0], card = wrap.children[0];
+  assert.deepEqual([wrap.edge, wrap.padding, wrap.gap], [0, 0, 8], 'an unpainted wrapper has no inset and keeps its gap');
+  assert.deepEqual([card.radius, card.edge], [16 * 0.4, 12], 'and passes its parent through');
+  const painted = resolveContainerTree({ preset: 'group', surface: 'panel' }, g);
+  assert.equal(painted.edge, resolveContainer('group', g).edge, 'a painted wrapper keeps its padding');
+  const top = resolveContainerTree({ preset: 'collection', children: [{ preset: 'card' }] }, g);
+  assert.deepEqual([top.children[0].radius, top.children[0].edge], [lone.radius, lone.edge], 'a card under an unpainted root is a root');
   const area = resolveContainerTree({ preset: 'page', children: [{ preset: 'card' }] }, g);
   assert.equal(area.radius, 0, 'areas are square');
   assert.deepEqual([area.children[0].radius, area.children[0].edge], [lone.radius, lone.edge], 'and restart the chain');

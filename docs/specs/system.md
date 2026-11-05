@@ -67,6 +67,7 @@ Why the system is the way it is, one record each (`docs/decisions/`):
 - [0013](../decisions/0013-roles-own-text-color.md) The type role is the one source of a text's color
 - [0014](../decisions/0014-universal-container.md) One container for every level
 - [0015](../decisions/0015-concept-axis.md) Thirteen peer concepts organize the inputs
+- [0017](../decisions/0017-padding-first-containers.md) Padding is the input in nested containers and radius follows
 
 ## Layers (`packages/ui-kit`)
 

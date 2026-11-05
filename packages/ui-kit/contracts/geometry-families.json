@@ -268,7 +268,7 @@
         "resolveComposite",
         "resolveContainerTree"
       ],
-      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius concentric like a wrapper, min(3u·s, 4u) + padding; toast, popover, preview card and dialog surfaces keep radius = padding × min(1, s). Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding. ui-container (any preset) nests concentrically: roots keep their preset geometry, nested containers take R_parent − p_parent, padding derives by ratio or levels (resolveContainerTree).",
+      "summary": "Four families. Composite 0.5u: a control, the control radius min(3u·s, 4u), options R − D. Wrapper: group 1u, collection 2u; radius concentric with the controls they hug, min(3u·s, 4u) + padding (square at s = 0). Container: card padding xs 2u, sm 3u, md 4u, lg 5u, xl 6u; radius = padding × min(1, s), as toast, popover, preview card and dialog surfaces. Area: panel 6u, region 8u, page 8u (+72rem max width); square. Gap defaults to the level padding. ui-container (any preset): padding is the input and radius follows. Roots keep their preset geometry, nested containers take max(R_parent − p_parent, R_parent × k), nested cards step down the ladder to 3u, and unpainted wrappers have no inset (resolveContainerTree).",
       "members": [
         "component:container",
         "component:group",

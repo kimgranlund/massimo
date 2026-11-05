@@ -10,7 +10,7 @@
     },
     {
       "path": "components/field/field.recipe.ts",
-      "sha256": "05074b2f17cf40a4b195f01a887e3dfd464987eeb2dcebfeec8f25dafada4d8b"
+      "sha256": "caec3fb083f04b215a3911e527b8631f7d85ebc9f2612dabaad667e27dffc6b6"
     },
     {
       "path": "dom/field.ts",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/field.test.ts",
@@ -69,7 +69,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/field-react.test.ts",

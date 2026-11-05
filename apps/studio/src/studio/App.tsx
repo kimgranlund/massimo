@@ -350,7 +350,7 @@ export function App() {
     </Group>
   );
   const containerRadius = (
-    <Group title="Container radius (× concentric)">
+    <Group title="Container radius">
       {CONTAINER_RADIUS.map(([k, label]) => <Range key={k} label={label} value={params[k]} min={PARAMS[k].min} max={PARAMS[k].max} step={PARAMS[k].step} onValue={(v) => setParam(k, v)} />)}
     </Group>
   );

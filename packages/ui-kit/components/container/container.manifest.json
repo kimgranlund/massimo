@@ -101,18 +101,6 @@
           }
         },
         {
-          "name": "levels",
-          "type": "number",
-          "readBy": "css",
-          "description": "On a root: the nested levels below it. The padding splits evenly, (R − control radius) / levels, so every curve down to the controls is concentric.",
-          "inspector": {
-            "control": "number",
-            "min": 1,
-            "max": 6,
-            "step": 1
-          }
-        },
-        {
           "name": "gap",
           "type": "number",
           "readBy": "css",
@@ -128,7 +116,7 @@
           "name": "radius",
           "type": "number",
           "readBy": "css",
-          "description": "Radius as a magnitude of the concentric radius, 0…1 in 0.05 steps: 1 concentric (default: the theme's radius-card), 0 square. Lets the container be sharper than fully rounded contents.",
+          "description": "Radius as a magnitude of the family's radius, 0…1 in 0.05 steps, up to 4 on a card: 1 by default (the theme's radius-card), 0 square. Lets the container be sharper than fully rounded contents.",
           "inspector": {
             "control": "number",
             "min": 0,
@@ -165,7 +153,7 @@
       },
       "constraints": [
         "CSS-only tag: no script, nothing to register. preset (group, collection, card, panel, region, page) sets the starting geometry, flow and surface; layout and surface override it.",
-        "Nesting: a root keeps its preset geometry; a nested ui-container is concentric with its parent (R = R_parent − p_parent); a container holding containers keeps the ratio (container-ratio) for them, or splits evenly with levels; a leaf fits its controls. Areas (panel, region, page) are square and restart the chain. Up to 6 levels.",
+        "Nesting: padding is the input and radius follows. A root keeps its preset geometry; a nested container is concentric when its parent has room, else R_parent × k (container-ratio); a nested card steps down the ladder to 3u; an unpainted group or collection has no padding and passes its parent through. Areas (panel, region, page) are square and restart the chain.",
         "Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
       "avoidWhen": [
@@ -329,8 +317,7 @@
             "preset?: ContainerPreset = 'collection' // group, collection (default), card, panel, region, page: the starting geometry, flow and surface.",
             "padding?: CardPadding // The card ladder level: xs 2u, sm 3u, md 4u, lg 5u, xl 6u.",
             "layout?: 'stack' | 'row' | 'wrap' // stack (column), row, wrap. Default: the preset's.",
-            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's.",
-            "levels?: number // Nested levels below this root: the padding splits evenly so every curve down to the controls is concentric."
+            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's."
           ]
         }
       }

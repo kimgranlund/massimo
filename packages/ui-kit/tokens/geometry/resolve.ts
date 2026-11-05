@@ -13,8 +13,8 @@ import { RATIOS, customRatio } from '../../components/image/ratios.ts';
 export const SIZES = [2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, ...Array.from({ length: 15 }, (_, i) => 5 + i * 0.5)] as const;
 /** Gutter values (units of u) accepted by the gap attribute. */
 export const GAPS = Array.from({ length: 17 }, (_, i) => i * 0.5);
-/** Container radius factors t (the radius attribute, the radius-<family> theme parameters): 0 … 1 in 0.05 steps. */
-export const RADIUS_FACTORS = Array.from({ length: 21 }, (_, i) => i / 20);
+/** Container radius factors t (the radius attribute, the radius-<family> theme parameters): 0 … 4 in 0.05 steps; above 1 is for cards. */
+export const RADIUS_FACTORS = Array.from({ length: 81 }, (_, i) => i / 20);
 /** The theme parameter whose factor scales a level's radius (areas and composites have none). */
 export const radiusFamily = (level: string) => level === 'group' || level === 'collection' ? level : level.startsWith('card-') ? 'card' : undefined;
 export type IconSize = 'sm' | 'md' | 'lg' | 'fill';
@@ -148,11 +148,11 @@ export const CONTAINERS = {
   composite:  { family: 'composite', padding: 0.5, maxRadius: 3 },
   group:      { family: 'wrapper',   padding: 1,   maxRadius: 4 },
   collection: { family: 'wrapper',   padding: 2,   maxRadius: 5 },
-  'card-xs':  { family: 'container', padding: 2,   maxRadius: 5 },
-  'card-sm':  { family: 'container', padding: 3,   maxRadius: 6 },
-  'card-md':  { family: 'container', padding: 4,   maxRadius: 7 },
-  'card-lg':  { family: 'container', padding: 5,   maxRadius: 8 },
-  'card-xl':  { family: 'container', padding: 6,   maxRadius: 9 },
+  'card-xs':  { family: 'container', padding: 2,   maxRadius: 2 },
+  'card-sm':  { family: 'container', padding: 3,   maxRadius: 3 },
+  'card-md':  { family: 'container', padding: 4,   maxRadius: 4 },
+  'card-lg':  { family: 'container', padding: 5,   maxRadius: 5 },
+  'card-xl':  { family: 'container', padding: 6,   maxRadius: 6 },
   panel:      { family: 'area',      padding: 6,   maxRadius: 0 },
   region:     { family: 'area',      padding: 8,   maxRadius: 0 },
   // Same spacing as region, plus a centered max width (styles/defaults.ts, page() pattern).
@@ -178,13 +178,18 @@ export const controlRadius = (u: number, s: number, height = 8 * u) => Math.min(
 /** 1 while the radius scale is on, 0 at s = 0 so everything is square (CSS: min(1, 100 × s)). */
 const roundOn = (s: number) => Math.min(1, 100 * s);
 
+/** The largest radius magnitude t on a card: 4 × its padding. */
+export const CARD_RADIUS_MAX = 4;
+
 /**
  * Container padding, gap and radius. `padUnits` / `gapUnits` override the level's theme
  * defaults (pad-<level>, gap-<level>); `gap` is the per-element attribute and wins over both.
- * The radius is a magnitude t on the family's concentric radius R0: `radius` is the per-element
- * attribute, `radiusFactor` the theme's radius-<family>; R = t × R0 (wrappers and cards only).
- * `surface` is a floating or modal surface on a card level (toast, popover, preview card, dialog):
- * radius = padding × min(1, s), not concentric, no t.
+ * The radius is a magnitude t on the family's radius R0: `radius` is the per-element attribute,
+ * `radiusFactor` the theme's radius-<family>; R = t × R0 (wrappers and cards only). A card is never
+ * rounder than it is deep, R0 = padding × min(1, s); a wrapper hugs its controls, R0 = control
+ * radius + padding. A card's t runs to CARD_RADIUS_MAX, so a card can be rounder than it is deep, and
+ * its nested containers then stay concentric. `surface` is a floating or modal surface on a card level (toast, popover,
+ * preview card, dialog): the card's R0 with no t.
  * Pass `height` to apply the half-height radius cap.
  */
 export function resolveContainer(level: ContainerLevel, input: GeometryInput & { height?: number; padUnits?: number; gapUnits?: number; radius?: number; radiusFactor?: number; surface?: boolean } = {}) {
@@ -196,11 +201,12 @@ export function resolveContainer(level: ContainerLevel, input: GeometryInput & {
   const family = CONTAINERS[level].family;
   const r = controlRadius(u, x.radiusScale, (6 + 2 * x.inset) * u);
   const t = radiusFamily(level) && !input.surface ? input.radius ?? input.radiusFactor ?? 1 : 1;
-  if (!(t >= 0 && t <= 1)) throw new Error('container radius factor must be 0..1');
+  const tMax = family === 'container' && !input.surface ? CARD_RADIUS_MAX : 1;
+  if (!(t >= 0 && t <= tMax)) throw new Error(`container radius factor must be 0..${tMax}`);
   const r0 = family === 'area' ? 0
     : family === 'composite' ? r                                 // a control: its options take R − D
-    : input.surface ? pad * u * Math.min(1, x.radiusScale)        // surface: at most the padding
-    : r + pad * u * roundOn(x.radiusScale);                       // wrapper, card: concentric with its controls
+    : family === 'container' ? pad * u * Math.min(1, x.radiusScale) // a card: at most the padding
+    : r + pad * u * roundOn(x.radiusScale);                       // a wrapper: concentric with its controls
   const radius = t * r0;
   return {
     unit: u, border: x.border,
@@ -223,44 +229,47 @@ export const containerLevel = (preset: ContainerPreset, padding?: CardPadding): 
 export const presetLevel = (preset: ContainerPreset, padding: CardPadding = 'md'): Exclude<ContainerLevel, 'composite'> =>
   preset === 'card' ? `card-${padding}` : preset;
 export const isAreaPreset = (preset: ContainerPreset) => CONTAINERS[presetLevel(preset)].family === 'area';
-/** The default container ratio k (theme container-ratio): a nested container's radius is its parent's × k. */
-export const CONTAINER_RATIO = 0.6;
+/** The default container ratio k (theme container-ratio): a nested radius is at least its parent's × k. */
+export const CONTAINER_RATIO = 0.4;
+/** A nested card's padding, in u (× density): one step below its parent, down to this. */
+export const NESTED_CARD_FLOOR = 3;
 
-export interface ContainerNode { preset?: ContainerPreset; padding?: CardPadding; levels?: number; gap?: number; radius?: number; children?: ContainerNode[] }
+export interface ContainerNode { preset?: ContainerPreset; padding?: CardPadding; surface?: string; gap?: number; radius?: number; children?: ContainerNode[] }
 export interface ResolvedContainer { preset: ContainerPreset; radius: number; edge: number; padding: number; gap: number; depth: number; children: ResolvedContainer[] }
 
+/** A wrapper that paints nothing (no surface, no padding attribute): it has no inset of its own. */
+export const isUnpaintedWrapper = (n: ContainerNode) =>
+  (n.preset ?? 'collection') !== 'card' && !isAreaPreset(n.preset ?? 'collection') && !n.padding && (!n.surface || n.surface === 'none');
+
 /**
- * A tree of containers under the universal rule. A root (depth 1, or the first container under an
- * area) keeps its preset geometry: the ladder padding and the concentric radius (control radius +
- * padding, × t). A nested container is concentric with its parent: R = max(0, R_parent − p_parent).
- * Its padding: with `levels` on the root, every level splits evenly, p = (R_root − r_control) / levels
- * (D); else a container that holds containers keeps a ratio for them, p = max(u, R − max(r_control,
- * R × k)) (C); a leaf fits its controls, p = max(u, R − r_control) (a root leaf keeps its ladder
- * padding). Areas
- * (panel, region, page) are square and restart the chain. The gap is the padding wherever the padding
- * is derived; an explicit gap attribute wins.
+ * A tree of containers: padding is the input, radius follows. A root (depth 1, or the first container
+ * under an area) keeps its preset geometry. A nested container is concentric when its parent has room,
+ * R = max(R_parent − p_parent, R_parent × k). A nested card
+ * steps down the ladder, p = max(min(3u, p_parent), p_parent − 1u) × density, and its gap is that
+ * padding; a `padding` attribute or a painted wrapper takes its ladder padding and gap. An unpainted
+ * wrapper has no padding or border, keeps its ladder gap, and passes its parent through, so its
+ * contents share their edge with what sits beside it; a card directly under an unpainted root is a
+ * root. Areas (panel, region, page) are square and restart the chain. An explicit gap attribute wins.
  */
-export function resolveContainerTree(node: ContainerNode, input: GeometryInput & { ratio?: number; padUnits?: Partial<Record<string, number>>; gapUnits?: Partial<Record<string, number>>; radiusFactor?: Partial<Record<string, number>> } = {}): ResolvedContainer {
+export function resolveContainerTree(node: ContainerNode, input: GeometryInput & { ratio?: number; padUnits?: Partial<Record<string, number>>; gapUnits?: Partial<Record<string, number>>; radiusFactor?: Partial<Record<'group' | 'collection' | 'card', number>> } = {}): ResolvedContainer {
   const x = inputs(input);
-  const u = x.unit, k = input.ratio ?? CONTAINER_RATIO;
-  const ctl = controlRadius(u, x.radiusScale, (6 + 2 * x.inset) * u);
-  const walk = (n: ContainerNode, depth: number, parent?: { r: number; p: number }, step?: number): ResolvedContainer => {
+  const u = x.unit, k = input.ratio ?? CONTAINER_RATIO, step = u * x.factor;
+  const walk = (n: ContainerNode, depth: number, parent?: { r: number; p: number }): ResolvedContainer => {
     const preset = n.preset ?? 'collection', level = containerLevel(preset, n.padding);
     const fam = radiusFamily(level);
     const base = resolveContainer(level, { ...input, padUnits: input.padUnits?.[level], gapUnits: input.gapUnits?.[level], radius: n.radius, radiusFactor: fam ? input.radiusFactor?.[fam] : undefined });
-    if (isAreaPreset(preset)) return { preset, radius: 0, edge: base.edge, padding: base.padding, gap: n.gap !== undefined ? n.gap * u : base.gap, depth: 0, children: (n.children ?? []).map((c) => walk(c, 1)) };
-    // Holding containers: any chain container below, through an area too (CSS :has() sees descendants).
-    const holds = (m: ContainerNode): boolean => (m.children ?? []).some((c) => !isAreaPreset(c.preset ?? 'collection') || holds(c));
-    const kids = holds(n) ? [true] : [];
+    const gapOf = (auto: number) => n.gap !== undefined ? n.gap * u : auto;
+    if (isAreaPreset(preset)) return { preset, radius: 0, edge: base.edge, padding: base.padding, gap: gapOf(base.gap), depth: 0, children: (n.children ?? []).map((c) => walk(c, 1)) };
+    const next = depth + 1, childDepth = (c: ContainerNode) => isAreaPreset(c.preset ?? 'collection') ? 0 : next;
+    if (isUnpaintedWrapper(n)) {
+      const r = parent ? parent.r : base.radius;
+      return { preset, radius: r, edge: 0, padding: 0, gap: gapOf(base.gap), depth, children: (n.children ?? []).map((c) => walk(c, childDepth(c), parent)) };
+    }
     // Past CONTAINER_DEPTH a container repeats its parent's radius (as the deepest CSS rule does).
-    const r = depth === 1 ? base.radius : depth > CONTAINER_DEPTH ? parent!.r : Math.max(0, parent!.r - parent!.p);
-    // levels on any container (1–8) splits the padding evenly from it down: p = (R − r_control) / levels.
-    const s = n.levels ? Math.max(0, (r - ctl) / Math.min(n.levels, CONTAINER_DEPTH)) : step;
-    const derived = s !== undefined || kids.length > 0 || depth > 1;
-    // A derived padding is never below 1u, so a deep or tight tree keeps room (and never goes negative).
-    const p = s !== undefined ? s : kids.length ? Math.max(u, r - Math.max(ctl, r * k)) : depth === 1 ? base.edge : Math.max(u, r - ctl);
-    const gap = n.gap !== undefined ? n.gap * u : derived ? p : base.gap;
-    return { preset, radius: r, edge: p, padding: Math.max(0, p - x.border), gap, depth, children: (n.children ?? []).map((c) => walk(c, isAreaPreset(c.preset ?? 'collection') ? 0 : depth + 1, { r, p }, s)) };
+    const r = !parent ? base.radius : depth > CONTAINER_DEPTH ? parent.r : Math.max(parent.r - parent.p, parent.r * k);
+    const derived = !!parent && preset === 'card' && !n.padding;
+    const p = derived ? Math.max(Math.min(NESTED_CARD_FLOOR * step, parent!.p), parent!.p - step) : base.edge;
+    return { preset, radius: r, edge: p, padding: Math.max(0, p - x.border), gap: gapOf(derived ? p : base.gap), depth, children: (n.children ?? []).map((c) => walk(c, childDepth(c), { r, p })) };
   };
   return walk(node, 1);
 }
@@ -292,12 +301,12 @@ export function resolveComposite(input: GeometryInput & { container?: boolean; p
   };
 }
 
-/** Text fields: the editable text sits where button contents sit (padding + 1u). */
+/** Text fields: the editable text sits where button contents sit (padding + 1u). textEdge is that text's distance from the control's edge: the field's label, description and error start there too. */
 export function resolveField(input: GeometryInput = {}) {
   // Laid out as a slotless button: the control has 1u (padding + border); its contents part
   // carries the label padding (2u each side), so text sits where a button label sits.
   const c = resolveControl(input), label = resolveButtonContents(false, false, input);
-  return { ...c, contentsStart: label.start, contentsEnd: label.end, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end };
+  return { ...c, contentsStart: label.start, contentsEnd: label.end, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end, textEdge: c.inset + label.start };
 }
 
 /** Select trigger: value as contents, chevron in a trailing 6u slot. */
@@ -546,8 +555,8 @@ export type ChoiceGroupOrientation = 'vertical' | 'horizontal';
 
 /**
  * A choice card (radio or checkbox group, variant="card"): a card-md surface holding any content.
- * Padding 4u − B (× density), radius the concentric card radius (control radius + padding, × the
- * theme's radius-card), cards the collection gap apart, contents 1u apart.
+ * Padding 4u − B (× density), radius the card radius (padding × min(1, s), × the theme's
+ * radius-card), cards the collection gap apart, contents 1u apart.
  */
 export function resolveChoiceCard(input: GeometryInput & { radiusFactor?: number } = {}) {
   const card = resolveContainer('card-md', input);

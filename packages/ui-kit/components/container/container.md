@@ -9,26 +9,26 @@ A `preset` picks where a container starts; three families, each with one radius 
 - Wrappers hug their controls; radius concentric with them: the control radius + padding, min(3u·s, 4u) + p (square at s = 0).
   - `preset="group"`: closely related controls (toolbars, button and chip sets); a wrapping row, 1u.
   - `preset="collection"` (the default): a list or set of like items (tables, data lists); a stack, 2u.
-- Cards are self-contained surfaces, concentric with their controls like wrappers: the control radius + padding.
+- Cards are self-contained surfaces, never rounder than they are deep: radius = padding × min(1, corner scale).
   - `preset="card"` with `padding="xs | sm | md | lg | xl"` (2u…6u, md default), from thumbnails (xs) and small items in a grid (sm) to hero or dialog surfaces (xl). A card may hold a smaller card; a card nested in a card takes the page fill.
 - Areas meet the viewport or other areas; square.
   - `preset="panel"`: a side or tool panel (the panel fill), 6u.
   - `preset="region"`: a major area of a page, 8u.
   - `preset="page"`: a whole page, 8u, a centered 72rem column.
 
-`radius` (group, collection, card) scales the concentric radius by a magnitude t, 0…1 in 0.05 steps: 1 concentric, 0 square; the theme's `radius-group`, `radius-collection` and `radius-card` set the default. `<ui-container preset="collection" radius="0.25">` holds pill buttons in a nearly square box. `layout="stack | row | wrap"` and `surface="none | panel | card | raised"` override the preset's flow and elevation.
+`radius` (group, collection, card) scales the radius by a magnitude t, 0…1 in 0.05 steps (cards to 4): 1 the default, 0 square; the theme's `radius-group`, `radius-collection` and `radius-card` set the default. `<ui-container preset="collection" radius="0.25">` holds pill buttons in a nearly square box. `layout="stack | row | wrap"` and `surface="none | panel | card | raised"` override the preset's flow and elevation.
 
 ## Nesting
 
 `resolveContainerTree` is the rule in numbers; the CSS chain (`containerChain`) computes the same:
 
-- A root keeps its preset geometry: the ladder padding and the concentric radius (control radius + padding).
-- A nested ui-container is concentric with its parent, R = R_parent − p_parent.
-- A container that holds containers keeps a ratio for them, p = R − max(control radius, R × k) (k: the theme's `container-ratio`, 0.6). A nested leaf fits its controls, p = R − control radius, so the curves follow each other down to the buttons. A derived padding is never below 1u.
-- `levels="n"` (1–8) on a container splits the padding evenly from it down instead, p = (R − control radius) / n: on the root, or on a container that starts a new chain under an area.
-- Derived padding is also the gap unless `gap` is set.
+- Padding is the input and radius follows.
+- A root keeps its preset geometry: the ladder padding and its radius. A card's radius is its padding × min(1, corner scale); a wrapper's is the control radius + its padding.
+- A nested container is concentric when its parent has room: R = max(R_parent − p_parent, R_parent × k; k is the theme's `container-ratio`, 0.4).
+- A nested card steps down the ladder, p = max(min(3u, p_parent), p_parent − 1u) × density, and that padding is also its gap.
+- An unpainted group or collection (no `surface`, no `padding`) has no padding or border, keeps its ladder gap, and passes its parent through. Its contents share an edge with what sits beside it, and a card directly under an unpainted root is a root.
+- `padding` on a nested card, and any painted wrapper, takes the ladder padding and gap. `padding` on a group or collection gives it the card ladder level; an area ignores `padding`.
 - Areas (panel, region, page) are square and restart the chain, also mid-tree: a card inside a panel inside a card is a root again.
-- `padding` on a group or collection gives it the card ladder level (its padding, gap and concentric radius); an area ignores `padding`.
 - The chain has a rule per depth up to 8; a deeper container repeats its parent's radius.
 
 ```html

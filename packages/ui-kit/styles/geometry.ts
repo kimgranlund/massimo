@@ -123,10 +123,9 @@ export const geometryProperties = {
   // The container nesting chain (container.recipe.ts): each depth's radius and padding read the previous
   // depth's twice, so as unregistered (token-stream) properties their values grow exponentially with
   // depth and WebKit drops them past depth 5. Registered as lengths, each computes to a length per
-  // element and the chain stays linear. --uc-step stays unregistered: var(--uc-step, …) must fall back.
+  // element and the chain stays linear.
   ...Object.fromEntries(Array.from({ length: CONTAINER_DEPTH }, (_, i) => i + 1).flatMap((n) => [
     [`--uc-r${n}`, { syntax: '<length>', inherits: true, initialValue: '0px' }],
     [`--uc-p${n}`, { syntax: '<length>', inherits: true, initialValue: '0px' }],
   ])),
-  '--uc-r': { syntax: '<length>', inherits: false, initialValue: '0px' },
 };

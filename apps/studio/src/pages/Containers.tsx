@@ -9,14 +9,15 @@ import '@massimo/ui-kit/components/image/element';
 import '@massimo/ui-kit/components/collapsible/element';
 import { css } from '../../styled-system/css/index.js';
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { Range, Segmented } from '../studio/wc.tsx';
-import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveComposite, resolveContainer, resolveContainerTree, resolveControl, type CardPadding, type ContainerNode, type ContainerPreset, type ResolvedContainer } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { Segmented } from '../studio/wc.tsx';
+import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveComposite, resolveContainerTree, resolveControl, type CardPadding, type ContainerNode, type ContainerPreset, type ResolvedContainer } from '@massimo/ui-kit/tokens/geometry/resolve';
 import type { PageProps } from './types.ts';
-import { Divider, IMAGES, Page, Row, Section, caption, columns, dataTable, fmt, kicker, nameCell, noteCell, subTitle, tableScroller } from './shared.tsx';
+import { Divider, IMAGES, Page, Row, Section, caption, dataTable, fmt, kicker, nameCell, noteCell, tableScroller } from './shared.tsx';
 
 const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
+const cardColumns = css({ display: 'grid', width: 'full', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
 const tileRow = css({ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
 const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
@@ -93,7 +94,7 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="nesting" title="Nesting" note="The rule, live. A nested container is concentric with its parent: R = R_parent − p_parent. A container that holds containers keeps a ratio for them, p = R − max(control radius, R × k) (k is Nesting ratio in the Geometry tab); a nested leaf fits its controls, p = R − control radius. levels on the root splits the padding evenly instead, p = (R − control radius) / levels, so every curve down to the buttons is concentric. Each box shows the resolver's r · p beside what the CSS reads back.">
+      <Section id="nesting" title="Nesting" note="The rule, live. Padding is the input and radius follows: a nested container takes R_parent × k (k is Nesting ratio in the Geometry tab), and a nested card steps down the ladder to 3u. An unpainted group or collection adds no inset, so its contents share an edge. Each box shows the resolver beside the CSS it reads.">
         <NestingTree params={params} />
       </Section>
       <Divider />
@@ -141,7 +142,7 @@ export function ContainersPage({ params }: PageProps) {
             <span className={kicker}>Region</span>
             <ui-container preset="panel" aria-label="Panel example">
               <span className={kicker}>Panel</span>
-              <div className={columns}>
+              <div className={cardColumns}>
                 <ui-container preset="card">
                   <span className={kicker}>Card · Team</span>
                   {([['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]] as const).map(([team, people]) => (
@@ -167,6 +168,16 @@ export function ContainersPage({ params }: PageProps) {
             </ui-container>
           </ui-container>
         </ui-container>
+        <Row label="rounder than deep">
+          <div className={cardColumns}>
+            {([['sm', '3.3', 'r × 3.3, p sm'], ['xl', '1.65', 'r × 1.65, p xl']] as const).map(([padding, radius, name]) => (
+              <ui-container preset="card" padding={padding} radius={radius} key={name}>
+                <span className={kicker}>{name}</span>
+                <ui-container preset="collection" surface="panel"><span>Option 1</span><span>Option 2</span><span>Option 3</span></ui-container>
+              </ui-container>
+            ))}
+          </div>
+        </Row>
         <Row label="card grid">
           <ui-container preset="card" className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
@@ -174,12 +185,6 @@ export function ContainersPage({ params }: PageProps) {
             ))}
           </ui-container>
         </Row>
-      </Section>
-      <Divider />
-      <Section id="why" title="Why this model" note="How a card can hold cards, compared (decision 0014). A anchors each card to its own controls, so nested corners miss the outer curve; B subtracts a constant padding and collapses; C (the default) keeps a ratio; D (levels) splits evenly. Each box shows r · p and Δ, its distance from the concentric radius.">
-        <ui-collapsible label="Compare the four models">
-          <NestedLab params={params} />
-        </ui-collapsible>
       </Section>
     </Page>
   );
@@ -189,9 +194,8 @@ export function ContainersPage({ params }: PageProps) {
 function NestingTree({ params }: Pick<PageProps, 'params'>) {
   const [outer, setOuter] = useState<CardPadding>('xl');
   const [depth, setDepth] = useState('2');
-  const [mode, setMode] = useState('ratio');
   const D = Number(depth);
-  const build = (d: number): ContainerNode => ({ preset: 'card', padding: d === 0 ? outer : undefined, ...(d === 0 && mode === 'levels' ? { levels: D + 1 } : {}), children: d < D ? [build(d + 1)] : [] });
+  const build = (d: number): ContainerNode => ({ preset: 'card', padding: d === 0 ? outer : undefined, children: d < D ? [build(d + 1)] : [] });
   const spec = build(0);
   const flat: ResolvedContainer[] = [];
   const walk = (n: ResolvedContainer) => { flat.push(n); n.children.forEach(walk); };
@@ -206,8 +210,8 @@ function NestingTree({ params }: Pick<PageProps, 'params'>) {
     return () => clearTimeout(t);
   });
   const render = (n: ContainerNode, d: number): ReactNode => (
-    <ui-container preset={n.preset} padding={n.padding} levels={n.levels ? String(n.levels) : undefined} className={ucBox} style={{ '--stroke': `var(--colors-${DEPTH_STROKE[d % 4]})` } as CSSProperties}>
-      <span className={labTag}>{d === 0 ? `card · ${n.padding}${n.levels ? ` · levels ${n.levels}` : ''}` : 'card'}: r {fmt(flat[d].radius)} · p {fmt(flat[d].edge)}{read[d] ? ` (CSS ${read[d]})` : ''}</span>
+    <ui-container preset={n.preset} padding={n.padding} className={ucBox} style={{ '--stroke': `var(--colors-${DEPTH_STROKE[d % 4]})` } as CSSProperties}>
+      <span className={labTag}>{d === 0 ? `card · ${n.padding}` : 'card'}: r {fmt(flat[d].radius)} · p {fmt(flat[d].edge)}{read[d] ? ` (CSS ${read[d]})` : ''}</span>
       {n.children?.length ? render(n.children[0], d + 1) : <ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container>}
     </ui-container>
   );
@@ -216,7 +220,6 @@ function NestingTree({ params }: Pick<PageProps, 'params'>) {
       <div className={labControls}>
         <Segmented label="Outer card" value={outer} onValue={(v) => setOuter(v as CardPadding)} options={LAB_LEVELS.map((l) => [l, l])} />
         <Segmented label="Depth" value={depth} onValue={setDepth} options={[['1', '1'], ['2', '2'], ['3', '3']]} />
-        <Segmented label="Padding" value={mode} onValue={setMode} options={[['ratio', 'Ratio (C)'], ['levels', 'Levels (D)']]} />
       </div>
       <div ref={ref} className={treeWrap}>{render(spec, 0)}</div>
     </>
@@ -228,13 +231,13 @@ const treeWrap = css({ maxWidth: '[40rem]' });
 function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
   const p = params as unknown as Record<string, number>;
   const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] };
-  // The wireframe's tree under the nesting rule: the card holds a group, so it keeps the ratio for it.
+  // The wireframe's tree under the nesting rule: the group is unpainted, so it adds no inset.
   const tree = resolveContainerTree({ preset: 'card', children: [{ preset: 'group' }] }, { ...g, ratio: p['container-ratio'], padUnits: { 'card-md': p['pad-card-md'], group: p['pad-group'] }, radiusFactor: { card: p['radius-card'], group: p['radius-group'] } });
   const card = tree, group = tree.children[0];
   const cmp = resolveComposite({ ...g, padUnits: p['pad-composite'] });
   const rows: [keyof typeof STROKE, string, string][] = [
-    ['card', 'card (md)', `${fmt(card.radius)}px · p ${fmt(card.edge)}: control radius + padding (× t); holding a container, p = R − R·k`],
-    ['group', 'group', `${fmt(group.radius)}px · p ${fmt(group.edge)}: the card's R − p, its controls inside at R − p`],
+    ['card', 'card (md)', `${fmt(card.radius)}px · p ${fmt(card.edge)}: its padding (× t), never rounder than it is deep`],
+    ['group', 'group', `p ${fmt(group.edge)}: unpainted, so no inset; its controls share the card's edge`],
     ['control', 'button', `${fmt(resolveControl(g).radius)}px · min(3u·s, 4u)`],
     ['composite', 'composite', `${fmt(cmp.radius)}px · the control radius`],
     ['option', 'option', `${fmt(cmp.child.radius)}px · R − D`],
@@ -261,68 +264,10 @@ function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
   );
 }
 
-// ── Nested cards lab (exploration: three composition models, see the section note) ──
-type Node = { r: number; p: number; gap: number; ideal?: number; kids: Node[] };
+// ── Nesting tree ──
 const LAB_LEVELS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 const DEPTH_STROKE = ['data-1', 'data-2', 'data-3', 'data-4'];
-const labGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '8', alignItems: 'start' });
-const labBox = css({ display: 'flex', flexDirection: 'column', boxSizing: 'border-box', borderRadius: '[var(--r)]', padding: '[var(--p)]', gap: '[var(--g)]', boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
 const labTag = css({ textStyle: 'body-sm', fontVariantNumeric: 'tabular-nums' });
 const ucBox = css({ boxShadow: '[inset 0 0 0 1.5px var(--stroke)]' });
 const labControls = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))', gap: '4', marginBlockEnd: '6' });
 
-function NestedLab({ params }: Pick<PageProps, 'params'>) {
-  const p = params as unknown as Record<string, number>;
-  const [level, setLevel] = useState<(typeof LAB_LEVELS)[number]>('xl');
-  const [depth, setDepth] = useState('2');
-  const [k, setK] = useState(0.6);
-  const g = { unit: params.unit, border: params.border, radiusScale: params['radius-scale'], density: DENSITIES[params.density] };
-  const card = (l: (typeof LAB_LEVELS)[number]) => resolveContainer(`card-${l}`, { ...g, padUnits: p[`pad-card-${l}`], radiusFactor: p['radius-card'] });
-  const outer = card(level), ctlR = resolveControl(g).radius, D = Number(depth);
-  const kids = (d: number, make: (d: number) => Node) => (d >= D ? [] : Array.from({ length: d === 0 ? 2 : 1 }, () => make(d + 1)));
-  // A: each nested card is one level smaller and keeps its own radius rule.
-  const outward = (d: number): Node => {
-    const c = card(LAB_LEVELS[Math.max(0, LAB_LEVELS.indexOf(level) - d)]);
-    return { r: c.radius, p: c.edge, gap: c.edge, kids: kids(d, outward) };
-  };
-  // B: a child's radius is the parent's radius − the parent's padding; the padding carries down.
-  const inward = (d: number, r = outer.radius): Node => ({ r, p: outer.edge, gap: outer.edge, kids: kids(d, (n) => inward(n, Math.max(0, r - outer.edge))) });
-  // C: a child's radius is the parent's × k (at least the control radius); the padding is the rest.
-  const ladder = (d: number, r = outer.radius): Node => {
-    const child = Math.max(ctlR, r * k);
-    const pad = Math.max(0, r - child);
-    return { r, p: pad, gap: pad, kids: kids(d, (n) => ladder(n, child)) };
-  };
-  // D: B with the padding derived: every level steps down evenly so the innermost container's inside
-  // (R − p) is the control radius: p = (R − control radius) / (levels), the root and D nested levels.
-  const step = Math.max(0, (outer.radius - ctlR) / (D + 1));
-  const even = (d: number, r = outer.radius): Node => ({ r, p: step, gap: step, kids: kids(d, (n) => even(n, Math.max(0, r - step))) });
-  const withIdeal = (n: Node): Node => ({ ...n, kids: n.kids.map((c) => withIdeal({ ...c, ideal: Math.max(0, n.r - n.p) })) });
-  const box = (n: Node, d: number, key: string): ReactNode => (
-    <div key={key} className={labBox} style={{ '--r': `${n.r}px`, '--p': `${n.p}px`, '--g': `${n.gap}px`, '--stroke': `var(--colors-${DEPTH_STROKE[d % 4]})` } as CSSProperties}>
-      <span className={labTag}>r {fmt(n.r)} · p {fmt(n.p)}{n.ideal !== undefined ? ` · Δ ${n.r - n.ideal >= 0 ? '+' : ''}${fmt(n.r - n.ideal)}` : ''}</span>
-      {n.kids.length ? n.kids.map((c, i) => box(c, d + 1, `${key}.${i}`)) : (<>
-        <span className={labTag}>control r {fmt(ctlR)} · Δ {ctlR - Math.max(0, n.r - n.p) >= 0 ? '+' : ''}{fmt(ctlR - Math.max(0, n.r - n.p))}</span>
-        <ui-button>Action</ui-button>
-      </>)}
-    </div>
-  );
-  const models: [string, Node][] = [['A · outward (each card its own rule)', withIdeal(outward(0))], ['B · inward subtraction', withIdeal(inward(0))], ['C · ratio ladder', withIdeal(ladder(0))], ['D · even split (B, padding derived)', withIdeal(even(0))]];
-  return (
-    <>
-      <div className={labControls}>
-        <Segmented label="Outer card" value={level} onValue={(v) => setLevel(v)} options={LAB_LEVELS.map((l) => [l, l])} />
-        <Segmented label="Depth" value={depth} onValue={setDepth} options={[['1', '1'], ['2', '2'], ['3', '3']]} />
-        <Range label="Ladder k (C)" value={k} min={0.3} max={0.9} step={0.05} onValue={setK} />
-      </div>
-      <div className={labGrid}>
-        {models.map(([name, tree]) => (
-          <div key={name}>
-            <h3 className={subTitle}>{name}</h3>
-            {box(tree, 0, name)}
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}

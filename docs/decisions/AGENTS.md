@@ -18,3 +18,4 @@ One decision per file, `NNNN-slug.md` (`status:`, `date:`): its context, the dec
 - [0014-universal-container.md](0014-universal-container.md): One container for every level
 - [0015-concept-axis.md](0015-concept-axis.md): Thirteen peer concepts organize the inputs
 - [0016-remove-container-level-tags.md](0016-remove-container-level-tags.md): Remove the container level tags
+- [0017-padding-first-containers.md](0017-padding-first-containers.md): Padding first in nested containers

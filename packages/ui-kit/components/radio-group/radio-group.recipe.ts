@@ -5,7 +5,7 @@
 // each choice keeps its focus ring and the group adds only spacing. Disabled fades the choices
 // themselves (they read the group's disabled), so the group adds no second fade.
 import { defineSlotRecipe } from '@pandacss/dev';
-import { CONTROL_RADIUS, FORCED, FORCED_EDGE, FORCED_ON, PAINT, t } from '../recipe-parts.ts';
+import { FORCED, FORCED_EDGE, FORCED_ON, PAINT, t } from '../recipe-parts.ts';
 
 /** g·u from the gap attribute, else `fallback` u (the --ui-unit form of a spacing token). */
 const gapU = (fallback: number) => `calc(var(--ui-gap, ${fallback}) * var(--ui-unit) * 1px)`;
@@ -29,7 +29,7 @@ const CARD = {
     '--cc-p': `calc(var(--ui-pad-card-md) * ${DF} * var(--u))`,
     display: 'flex', alignItems: 'flex-start', boxSizing: 'border-box', minHeight: '0',
     padding: 'max(0px, calc(var(--cc-p) - var(--b)))',
-    borderRadius: `calc((${CONTROL_RADIUS} + var(--cc-p) * min(1, 100 * var(--ui-radius-scale))) * var(--ui-radius-card))`,
+    borderRadius: 'calc(var(--cc-p) * min(1, var(--ui-radius-scale)) * var(--ui-radius-card))',
     bg: 'elevation.card', borderWidth: 'var(--b)', borderColor: 'transparent', boxShadow: 'inset 0 0 0 1px {colors.border}',
     transition: t('feedback', ...PAINT, 'box-shadow'),
     '&:not([data-disabled]):hover': { boxShadow: 'inset 0 0 0 1px {colors.border.strong}' },

@@ -166,31 +166,30 @@ No border; the bars overlay the content's edge. Lengths that follow the scroll p
 
 ## Containers
 
-Containers come in four families, each with one radius rule; the rule is concentricity: an outer radius is the inner radius plus the distance between the two edges (R = r + p), and the inner one splits the difference (r = R − p). Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.
+Containers come in four families, each with one radius rule. Every level has a padding p; padding and gap are theme parameters per level (`pad-<level>`, `gap-<level>`, in u; the table shows their defaults), the `gap` attribute overrides the gap on one element, and the border lives inside the padding. All radii are capped at half the height.
 
 - **Composite** (listbox, segmented, toggle group, tabs list, menubar, the select, menu and navigation popups): a control. It takes the control radius, min(3u × s, 4u), the same as a button beside it, and its options split the difference: R − D, concentric inside it.
-- **Wrapper** (group, collection): hugs its controls, so its radius is concentric with them: the control radius + p, min(3u × s, 4u) + p·u, at every corner scale; at s = 0 everything is square (the p term is multiplied by min(1, 100·s)).
-- **Container** (`ui-container preset="card"`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, concentric with the controls it holds: the control radius + its padding, min(3u·s, 4u) + p (square at s = 0), like a wrapper, so a button at its edge sits on the same curve. Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) keep radius = padding × min(1, s): never rounder than they are deep. A card may hold a smaller card (it takes the base fill).
+- **Wrapper** (group, collection): hugs its controls, so its radius is concentric with them when painted: the control radius + p, min(3u × s, 4u) + p·u, at every corner scale; at s = 0 everything is square (the p term is multiplied by min(1, 100·s)). A wrapper with no `surface` and no `padding` paints nothing, so it has no padding or border; it keeps its ladder gap, and its contents share an edge with what sits beside it.
+- **Container** (`ui-container preset="card"`, `padding="xs | sm | md | lg | xl"` = 2u, 3u, 4u, 5u, 6u; md is the default): a self-contained surface, never rounder than it is deep: R = p × min(1, s). Floating and modal surfaces on a card level (toast card-sm, popover card-sm, preview card card-md, dialog card-xl) take the same radius. A card may hold a smaller card (it takes the base fill).
 - **Area** (panel, region, page): meets the viewport or other areas, so it is square.
 
-**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their concentric radius R0 (the control radius + p): R = t × R0, t from 0 to 1 in 0.05 steps. 1 is concentric (the default), 0 square, and anything between is sharper than the contents in proportion, so a collection of pill buttons can sit in a nearly square box and still follow the content's roundness. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-container preset="group" radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
+**Radius magnitude.** Wrappers and cards express their radius as a magnitude t of their family's radius R0: R = t × R0, t from 0 to 1 in 0.05 steps (cards to 4). 1 is the default and 0 square, so a collection of pill buttons can sit in a nearly square box, and a card at t = 2 is twice as round as it is deep. The theme sets t per family (`radius-group`, `radius-collection`, `radius-card`); the `radius` attribute sets it on one element (`<ui-container preset="group" radius="0.5">`, React `radius={0.5}`) and, like `gap`, does not inherit. Composites are controls and areas square, so neither takes t.
 
 Nesting: areas hold containers, containers hold wrappers (page › region › panel › card › collection › group; a level may be skipped). Page is region spacing plus a centered max width (72rem; `page({ width, gap })` in Panda code, where `gap` is in units of u).
 
 ### Nesting (ui-container)
 
-`ui-container` (presets group, collection, card, panel, region, page; the old level tags were removed, decision 0016) nests under one rule, R_parent = R_child + p_parent, anchored at the root (`resolveContainerTree`, the chain in `container.recipe.ts`):
+`ui-container` (presets group, collection, card, panel, region, page; the old level tags were removed, decision 0016) nests under one rule: padding is the input and radius follows (`resolveContainerTree`, the chain in `container.recipe.ts`; [decision 0017](../decisions/0017-padding-first-containers.md)).
 
-| Node | Radius | Padding |
-|---|---|---|
-| root (no container ancestor, or the first under an area) | its preset's: control radius + p (× t) | its preset's ladder padding |
-| nested | R_parent − p_parent (concentric) | — |
-| holds containers | — | R − max(control radius, R × k), k = `container-ratio` (0.6) |
-| nested leaf | — | R − control radius (its controls are concentric) |
-| root with `levels="n"` | — | (R − control radius) / n for every level below |
-| area (panel, region, page) | 0 | its ladder padding; the chain restarts below it |
+| Node | Radius | Padding | Gap |
+|---|---|---|---|
+| root (no container ancestor, the first under an area, or the first under an unpainted root) | its preset's | its preset's ladder padding | ladder |
+| nested card | max(R_parent − p_parent, R_parent × k), k = `container-ratio` (0.4) | max(min(3u, p_parent), p_parent − 1u) × density | its padding |
+| nested with `padding`, or a painted wrapper | as a nested card | ladder | ladder |
+| unpainted wrapper | passes its parent through | 0, and no border | ladder |
+| area (panel, region, page) | 0 | its ladder padding; the chain restarts below it | ladder |
 
-Derived padding is also the gap unless the element sets `gap`. At u = 4.5 an xl card holding cards that hold a group: 40.5 · 16.2 → 24.3 · 9.72 → 14.58 · 4.5 (the leaf fit, 1.08, lifted to the 1u floor); with `levels="3"`: 40.5 → 31.5 → 22.5, p 9 each. CSS reads the parent through depth-indexed variables (`--uc-r<n>`, `--uc-p<n>`, a rule per exact depth, up to 8) and `:has()` for containers that hold containers (through an area too). A derived padding is never below 1u, so a deep tree keeps room and a radius below the control radius never turns the padding negative. An area inside the chain restarts it: the area sets `--uc-a<n>: 1` at every depth, and the first container below it reads its parent depth's flag and takes its own preset geometry as a root. The chain is about 37 KB of CSS, under 1 KB gzipped. A container that is not nested is exactly the level rule above.
+At u = 4.5 a card holding cards holding a card: 18 · 18 → 7.2 · 13.5 → 2.9 · 13.5. When a card is rounder than it is deep (`radius` above 1), the curve inside is concentric: R 40, p 12 → 28. A nested radius can fall below the control radius, so a button in a nested card can be rounder than the card; the padding keeps them apart. CSS reads the parent through depth-indexed variables (`--uc-r<n>`, `--uc-p<n>`, a rule per exact depth, up to 8; a deeper container repeats its parent's radius). An area inside the chain restarts it: the area sets `--uc-a<n>: 1` at every depth, and the first container below it reads its parent depth's flag and takes its own preset geometry as a root. An unpainted wrapper passes the flag on. A container that is not nested is exactly the level rule above.
 
 ### Panda tokens in u
 
@@ -201,11 +200,11 @@ Panda code uses the same unit. `spacing` and `sizes` keys are multiples of u (`p
 | composite (control) | ui-listbox, ui-segmented, ui-toggle-group, select popup | 0.5u | 0.5u | 3u | 2 / 2 / 12 |
 | group (wrapper) | `preset="group"` | 1u | 1u | 4u | 4 / 4 / 16 |
 | collection (wrapper) | `preset="collection"` | 2u | 2u | 5u | 8 / 8 / 20 |
-| card-xs (container) | `preset="card" padding="xs"` | 2u | 2u | 5u | 8 / 8 / 20 |
-| card-sm (container) | `preset="card" padding="sm"` | 3u | 3u | 6u | 12 / 12 / 24 |
-| card-md (container) | `preset="card"` (padding="md") | 4u | 4u | 7u | 16 / 16 / 28 |
-| card-lg (container) | `preset="card" padding="lg"` | 5u | 5u | 8u | 20 / 20 / 32 |
-| card-xl (container) | `preset="card" padding="xl"` | 6u | 6u | 9u | 24 / 24 / 36 |
+| card-xs (container) | `preset="card" padding="xs"` | 2u | 2u | 2u | 8 / 8 / 8 |
+| card-sm (container) | `preset="card" padding="sm"` | 3u | 3u | 3u | 12 / 12 / 12 |
+| card-md (container) | `preset="card"` (padding="md") | 4u | 4u | 4u | 16 / 16 / 16 |
+| card-lg (container) | `preset="card" padding="lg"` | 5u | 5u | 5u | 20 / 20 / 20 |
+| card-xl (container) | `preset="card" padding="xl"` | 6u | 6u | 6u | 24 / 24 / 24 |
 | panel (area) | `preset="panel"` | 6u | 6u | 0 | 24 / 24 / 0 |
 | region (area) | `preset="region"` | 8u | 8u | 0 | 32 / 32 / 0 |
 | page (area) | `preset="page"`, `page()` pattern | 8u | 8u | 0 | 32 / 32 / 0 |
@@ -218,7 +217,7 @@ Options use the control anatomy with their inset reduced by the composite edge D
 
 ### Choice cards
 
-A radio or checkbox group with `variant="card"` makes each choice a card-md surface (`resolveChoiceCard`): padding 4u − B (× density), the concentric card radius (control radius + padding, × `radius-card`), cards the collection gap apart, contents 1u apart; a 1px border-role stroke, checked a 2px primary stroke and the primary-subtle fill (inset shadows, no space).
+A radio or checkbox group with `variant="card"` makes each choice a card-md surface (`resolveChoiceCard`): padding 4u − B (× density), the card radius (padding × min(1, s), × `radius-card`), cards the collection gap apart, contents 1u apart; a 1px border-role stroke, checked a 2px primary stroke and the primary-subtle fill (inset shadows, no space).
 
 ### Attached (inset="none")
 

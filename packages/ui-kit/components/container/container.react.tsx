@@ -22,17 +22,15 @@ export interface UniversalContainerProps extends ContainerProps {
   layout?: 'stack' | 'row' | 'wrap';
   /** none, panel, card, raised: the elevation level. Default: the preset's. */
   surface?: 'none' | 'panel' | 'card' | 'raised';
-  /** Nested levels below this root: the padding splits evenly so every curve down to the controls is concentric. */
-  levels?: number;
 }
 
 /**
  * React Container (ui-container): one element for every level, nesting concentrically. It renders what
  * the web component is, <div data-ui="container"> with plain attributes (preset, padding, layout,
- * surface, levels), styled by the same global rules (containerTags) rather than a recipe class, so
+ * surface), styled by the same global rules (containerTags) rather than a recipe class, so
  * the nesting chain applies to it in the same layer.
  */
-export function Container({ gap, size, radius, preset = 'collection', padding, layout, surface, levels, ...rest }: UniversalContainerProps) {
-  const a = { preset, ...(padding ? { padding } : {}), ...(layout ? { layout } : {}), ...(surface ? { surface } : {}), ...(levels ? { levels: String(levels) } : {}) };
+export function Container({ gap, size, radius, preset = 'collection', padding, layout, surface, ...rest }: UniversalContainerProps) {
+  const a = { preset, ...(padding ? { padding } : {}), ...(layout ? { layout } : {}), ...(surface ? { surface } : {}) };
   return <div {...rest} data-ui="container" data-size={size} {...a} {...attrs(gap, radius)} />;
 }

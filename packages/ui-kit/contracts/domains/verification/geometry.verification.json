@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "5980fecd905d7fab2ea6f2a5ca05a4759221d7df4cd7f3d1df60f54e61180548"
+      "sha256": "5079d9c5e6e537b0cc020875388b21b66b5fc073250b9bb8329d9016669f92e8"
     },
     {
       "path": "tokens/geometry/index.ts",
@@ -14,7 +14,7 @@
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "fb2491e048e7b2217c4ac50c8e13bbadd1e026100618ace941d42df34c2f8b97"
+      "sha256": "3efa16eec61a792c77886fc04dfb9546b0817befec9fd401cfe1531270d3fd3c"
     },
     {
       "path": "tokens/elevation/index.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "tokens/themes/params.ts",
-      "sha256": "89d3f3f85205bd9740e31d41d98aa5dc4615808627c219507f2ff4e651bcb608"
+      "sha256": "33b3fa48a6e6494136d6ad44544797b3e212403dba4dfed57d0473049c3ba477"
     },
     {
       "path": "contracts/domains/geometry.json",
@@ -62,7 +62,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/geometry.test.ts",
@@ -84,7 +84,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "npm --prefix ../.. run check:browsers"

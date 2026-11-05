@@ -84,7 +84,7 @@ export const TYPE_ROLES = {
   'body-lg':       { label: 'Body · Large',    voice: 'body', step: 1,  lh: 1.5,  weight: 400, tracking: 0, ink: 'muted' },
   'body-md':       { label: 'Body · Medium',   voice: 'body', step: 0,  lh: 1.5,  weight: 400, tracking: 0 },
   'body-sm':       { label: 'Body · Small',    voice: 'body', u: 3,     lh: 1.45, weight: 400, tracking: 0, ink: 'muted' },
-  'label':         { label: 'Label',           voice: 'ui', step: 0,  lh: 1.4,  weight: 450, tracking: 0, ink: 'muted' },
+  'label':         { label: 'Label',           voice: 'ui', u: 3,     lh: 1.4,  weight: 450, tracking: 0, ink: 'muted' },
   // A strong item title: list and settings rows, table name cells, small card titles.
   'title':         { label: 'Title',           voice: 'ui', step: 0,  lh: 1.4,  weight: 600, tracking: 0, strong: true },
   'control-md':    { label: 'Control · Medium', voice: 'ui', step: 0,  lh: 1.2,  weight: 450, tracking: 0, control: true },

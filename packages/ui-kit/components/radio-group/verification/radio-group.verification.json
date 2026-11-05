@@ -10,7 +10,7 @@
     },
     {
       "path": "components/radio-group/radio-group.recipe.ts",
-      "sha256": "230ddf6e9243f01e8647321c875c8b8b99a2f544faa46d3d17ec99b48ebd883d"
+      "sha256": "16b5cdc4830d74c5e819affeb8d6f8571267b6650d5fd064ceac99a30df326e2"
     },
     {
       "path": "components/radio-group/radio-group.react.tsx",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/radio-group.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/radio-group.test.ts"

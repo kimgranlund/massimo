@@ -3,6 +3,7 @@
 // never literals; states use the preset conditions (styles/conditions.ts), keyed on the data-* state
 // contract both renderers set (dom/state.ts), so one rule serves the web component and React.
 // Build-time only: element modules import the generated functions in styled-system/recipes.
+import { DENSITY_INSET_CSS } from '../tokens/geometry/index.ts';
 import type { IntentName } from '../tokens/motion/index.ts';
 import { voiceFamily } from '../styles/typography.ts';
 
@@ -208,12 +209,16 @@ export const fieldRoot: Style = {
   '&[data-required] > [data-part=label]::after': { content: '" *"', color: 'critical.fg' },
 };
 
+/** The control's inset + its contents' 2u: the left edge of a field's text. */
+export const FIELD_TEXT_EDGE = `calc((${DENSITY_INSET_CSS} + 2) * var(--ui-unit) * 1px)`; // from the theme: ui-field has no --u of its own
+
 /** Field label, description and error slots. */
 export const fieldParts: Record<'label' | 'description' | 'error', Style> = {
   // Label and caption take their role's color (muted by default; theme typography.colors).
-  label: { textStyle: 'label', alignSelf: 'start', cursor: 'default' },
-  description: { textStyle: 'body-sm' },
-  error: { textStyle: 'body-sm', color: 'critical.fg' },
+  // All three start where the control's text starts (resolveField textEdge), not at its edge.
+  label: { textStyle: 'label', alignSelf: 'start', cursor: 'default', paddingInlineStart: FIELD_TEXT_EDGE },
+  description: { textStyle: 'body-sm', paddingInlineStart: FIELD_TEXT_EDGE },
+  error: { textStyle: 'body-sm', color: 'critical.fg', paddingInlineStart: FIELD_TEXT_EDGE },
 };
 
 /**

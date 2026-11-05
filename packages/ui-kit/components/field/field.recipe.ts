@@ -6,7 +6,7 @@
 import { defineSlotRecipe } from '@pandacss/dev';
 import { NUMERIC_FEATURES } from '../../tokens/typography/resolve.ts';
 import { voiceFamily } from '../../styles/typography.ts';
-import { UI_FONT, fieldParts } from '../recipe-parts.ts';
+import { FIELD_TEXT_EDGE, UI_FONT, fieldParts } from '../recipe-parts.ts';
 
 /** Every child that is not one of the field's parts: the control. */
 const CONTROL = '& > :not([data-part])';
@@ -20,6 +20,9 @@ const WITH_READOUT = '&:has(> [data-part=readout]:not([hidden]))';
 const IN_GRID = { '.ui-field-grid__root > &': { gridColumn: '1 / -1', gridTemplateColumns: 'subgrid' } };
 /** Choices keep their own width (the indicator plus its label), at the start of the column. */
 const CHOICE = ':is([role=checkbox], [role=switch], [role=radio], :has(> input:is([type=checkbox], [type=radio])))';
+
+/** Text-entry kit controls, in both renderers: a stacked field's text lines up with theirs. */
+const TEXT_CONTROL = ':is(.ui-input__root, .ui-select__root, .ui-combobox__root, .ui-autocomplete__root, .ui-number-field__root)';
 
 export const field = defineSlotRecipe({
   className: 'ui-field',
@@ -37,7 +40,7 @@ export const field = defineSlotRecipe({
       '&:has(> [data-disabled], :is(input, select):disabled) > [data-part=label]': { opacity: 0.5 },
     },
     label: {
-      ...fieldParts.label,
+      ...fieldParts.label, paddingInlineStart: 0,
       display: 'flex', alignItems: 'baseline', gap: '1', minWidth: '0', whiteSpace: 'nowrap',
     },
     contents: { overflow: 'hidden', textOverflow: 'ellipsis', minWidth: '0' },
@@ -50,9 +53,9 @@ export const field = defineSlotRecipe({
       textStyle: 'label', fontFamily: voiceFamily('numeric'), fontVariantNumeric: NUMERIC_FEATURES,
       color: 'fg.muted', textAlign: 'end', whiteSpace: 'nowrap', minWidth: '10', lineHeight: 'tight',
     },
-    description: { ...fieldParts.description, gridColumn: '1 / -1' },
+    description: { ...fieldParts.description, paddingInlineStart: 0, gridColumn: '1 / -1' },
     // The error message (Base UI Field.Error) takes the description's place, after it.
-    error: { ...fieldParts.error, gridColumn: '1 / -1' },
+    error: { ...fieldParts.error, paddingInlineStart: 0, gridColumn: '1 / -1' },
   },
   variants: {
     layout: {
@@ -61,6 +64,8 @@ export const field = defineSlotRecipe({
         root: {
           gridTemplateColumns: 'minmax(0, 1fr) auto', rowGap: '1.5',
           '& > [data-part=label]': { gridColumn: '1 / -1' },
+          // Over a text control, the field's text starts where the control's text does.
+          [`&:has(> ${TEXT_CONTROL}) > :is([data-part=label], [data-part=description], [data-part=error])`]: { paddingInlineStart: FIELD_TEXT_EDGE },
           [CONTROL]: { gridColumn: '1 / -1' },
           [`${WITH_READOUT} > :not([data-part])`]: { gridColumn: '1 / -2' },
           '& > [data-part=readout]': { gridColumn: '-2 / -1' },

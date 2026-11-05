@@ -10,7 +10,7 @@
     },
     {
       "path": "tokens/themes/params.ts",
-      "sha256": "89d3f3f85205bd9740e31d41d98aa5dc4615808627c219507f2ff4e651bcb608"
+      "sha256": "33b3fa48a6e6494136d6ad44544797b3e212403dba4dfed57d0473049c3ba477"
     },
     {
       "path": "contracts/domains/motion.json",
@@ -42,7 +42,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/motion.test.ts",
@@ -62,7 +62,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "npm --prefix ../.. run check:browsers"

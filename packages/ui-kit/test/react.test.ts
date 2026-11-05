@@ -72,8 +72,8 @@ test('Image and containers: data-ui hosts; presets as data-ratio, custom ratio a
   // Containers carry their recipe class; the card's padding is a recipe variant (md by default).
   // Container renders what ui-container is: data-ui="container" and plain attributes, no recipe class.
   assert.equal(html(h(Container, {}, 'x')), '<div data-ui="container" preset="collection">x</div>');
-  assert.equal(html(h(Container, { preset: 'card', padding: 'xs', layout: 'row', surface: 'raised', levels: 2, gap: 2, radius: 0.5, className: 'mine' }, 'x')),
-    '<div class="mine" data-ui="container" preset="card" padding="xs" layout="row" surface="raised" levels="2" gap="2" radius="0.5">x</div>');
+  assert.equal(html(h(Container, { preset: 'card', padding: 'xs', layout: 'row', surface: 'raised', gap: 2, radius: 0.5, className: 'mine' }, 'x')),
+    '<div class="mine" data-ui="container" preset="card" padding="xs" layout="row" surface="raised" gap="2" radius="0.5">x</div>');
 });
 
 const { Listbox, Segmented, Option } = await loadTsx(new URL('../components/listbox/listbox.react.tsx', import.meta.url));

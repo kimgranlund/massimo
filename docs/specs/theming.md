@@ -12,8 +12,8 @@ Numbers the geometry and motion derive from (`tokens/themes/params.ts`; motion: 
 | `border` | 0–2 px (whole) | 0 (surfaces separate by fill; invalid controls get a critical-tinted fill) |
 | `radius-scale` | 0–3 | 1 |
 | `density` | 0, 1, 2 (compact, default, loose; [geometry](geometry.md#density)) | 1 |
-| `container-ratio` | 0.3–0.9 (0.05 steps; a ui-container holding containers gives them its radius × k; [geometry](geometry.md#nesting-ui-container)) | 0.6 |
-| `radius-group`, `radius-collection`, `radius-card` | 0–1 (0.05 steps; the magnitude t of each family's concentric radius: 1 concentric, 0 square) | 1 |
+| `container-ratio` | 0.3–0.9 (0.05 steps; a nested ui-container's radius is at least its parent's × k; [geometry](geometry.md#nesting-ui-container)) | 0.4 |
+| `radius-group`, `radius-collection`, `radius-card` | 0–1, `radius-card` 0–4 (0.05 steps; the magnitude t of each family's radius: 1 the default, 0 square) | 1 |
 | `shadow-strength`, `surface-contrast`, `shadow-raised`, `shadow-floating`, `shadow-modal`, `card-raised` | see [elevation](elevation.md#parameters) | 1, 1, 2dp, 8dp, 24dp, 0 |
 | `corner-shape` | −1–4 (`superellipse(k)`: 1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
 | `type-ratio` | 1–1.5 | 1.333 |

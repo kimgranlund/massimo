@@ -102,7 +102,7 @@ for (const c of cases) {
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
-    ${LEVELS.map((l) => `<${levelTag(l)} data-level="${l}"${levelAttr(l)} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></${levelTag(l)}>`).join('')}
+    ${LEVELS.map((l) => `<${levelTag(l)} data-level="${l}"${levelAttr(l)}${l === 'group' || l === 'collection' ? ' surface="panel"' : ''} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></${levelTag(l)}>`).join('')}
     ${Object.keys(TYPE_ROLES).map((r) => `<span data-type="${r}" style="display:block">Ag</span>`).join('')}
     <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
@@ -211,6 +211,10 @@ for (const c of cases) {
     'input.padding': [px(cs(inp).paddingLeft) + px(cs(inp).borderLeftWidth), ctl.padding + ctl.border],
     'input.contents.start': [px(cs(pc(inp)).paddingLeft), fld.contentsStart],
     'input.contents.end': [px(cs(pc(inp)).paddingRight), fld.contentsEnd],
+    // Field text starts where the control's text starts: label, stacked field, not an inline field.
+    'input.label.edge': [px(cs(inp.parentElement.querySelector('[data-part=label]')).paddingLeft), fld.textEdge],
+    'field.stacked.label.edge': [px(cs(box.querySelector('#fStack > [data-part=label]')).paddingLeft), fld.textEdge],
+    'field.inline.label.edge': [px(cs(box.querySelector('#fInline > [data-part=label]')).paddingLeft), 0],
     'input.contents.height': [r2(rect(pc(inp)).height), ctl.slot],
     'select.height': [r2(rect(tr).height), trg.height],
     'select.padding': [px(cs(tr).paddingLeft) + px(cs(tr).borderLeftWidth), ctl.padding + ctl.border],
@@ -1000,7 +1004,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'group.radius': [rad('ui-container[preset=group]'), resolveContainer('group', g).radius],
     'collection.radius': [rad('ui-container[preset=collection]'), resolveContainer('collection', g).radius],
     'group.concentric': [rad('ui-container[preset=group]'), s === 0 ? 0 : rad('ui-container[preset=group] > ui-button') + resolveContainer('group', g).edge],
-    'card.concentric': [rad('#cC'), s === 0 ? 0 : rad('#cC > ui-button') + resolveContainer('card-md', g).edge],
+    'card.radius.padding': [rad('#cC'), resolveContainer('card-md', g).edge * Math.min(1, s)],
     // The magnitude t: the radius attribute on one element, the theme's radius-<family> on a scope.
     'group.radius.attr': [rad('#gT'), resolveContainer('group', { ...g, radius: 0.5 }).radius],
     'card.radius.attr': [rad('#cT'), resolveContainer('card-md', { ...g, radius: 0.25 }).radius],
@@ -1064,21 +1068,24 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
   box.remove();
 }
 // Universal container (ui-container, resolveContainerTree): roots keep their preset geometry; nested
-// containers are concentric with their parent; padding is derived (ratio, levels, leaf fit).
+// containers take the parent's radius × k, nested cards step down the ladder, and unpainted wrappers pass through.
 {
   const TREES = [
     { preset: 'card' },
     { preset: 'group' },
     { preset: 'card', padding: 'xl', children: [{ preset: 'card' }, { preset: 'card', children: [{ preset: 'group' }] }] },
-    { preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] },
+    { preset: 'card', padding: 'xl', children: [{ preset: 'collection', surface: 'panel', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] },
     { preset: 'page', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'collection' }] }] },
     { preset: 'panel', children: [{ preset: 'card', children: [{ preset: 'card', gap: 2 }] }] },
     // An area mid-chain restarts it: the card under the panel is a root again.
     { preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'group' }] }] }] },
     // Deep: radii fall below the control radius; every derived padding keeps the 1u floor.
     { preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }] },
-    // levels on a root restarted under an area.
-    { preset: 'card', children: [{ preset: 'panel', children: [{ preset: 'card', padding: 'xl', levels: 3, children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] },
+    // Cards under an unpainted root are roots; an unpainted wrapper in a card passes the card through.
+    { preset: 'collection', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'card' }] }] },
+    { preset: 'card', padding: 'lg', children: [{ preset: 'collection', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] },
+    // A padding attribute on a nested card keeps the ladder.
+    { preset: 'card', padding: 'xl', children: [{ preset: 'card', padding: 'xs', children: [{ preset: 'group', surface: 'panel' }] }] },
     // padding on wrappers takes the card ladder level; on an area it is ignored.
     { preset: 'group', padding: 'xl' },
     { preset: 'collection', padding: 'lg', children: [{ preset: 'group' }] },
@@ -1090,7 +1097,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
   ];
   const tag = (n) => n.div ? 'div data-ui="container"' : 'ui-container';
   const close = (n) => n.div ? 'div' : 'ui-container';
-  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.levels ? ` levels="${n.levels}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</${close(n)}>`;
+  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.surface ? ` surface="${n.surface}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</${close(n)}>`;
   for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const [density, s] of [['default', 1], ['compact', 2], ['loose', 0.5]]) {
     const box = document.createElement('div');
     box.setAttribute('data-size', String(unit)); box.setAttribute('density', density);
@@ -1105,7 +1112,9 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
       const visit = (node, el, path) => {
         const isC = (c) => c.localName === 'ui-container' || c.dataset?.ui === 'container';
         const cs = getComputedStyle(el), kids = [...el.children].flatMap((c) => isC(c) ? [c] : [...c.children].filter(isC));
-        const checks = { radius: [px(cs.borderTopLeftRadius), r2(node.radius)], padding: [px(cs.paddingTop), r2(node.padding)] };
+        const checks = { padding: [px(cs.paddingTop), r2(node.padding)] };
+        // An unpainted wrapper (no edge) draws no corner, so its radius means nothing.
+        if (node.edge > 0 || node.depth === 0) checks.radius = [px(cs.borderTopLeftRadius), r2(node.radius)];
         // The gap along the flow: rows (group) measure across, stacks down.
         const row = cs.flexDirection === 'row', [c0, c1] = kids.length > 1 ? kids : [...el.children];
         const gapEl = c1 ? r2(row ? c1.getBoundingClientRect().left - c0.getBoundingClientRect().right : c1.getBoundingClientRect().top - c0.getBoundingClientRect().bottom) : null;

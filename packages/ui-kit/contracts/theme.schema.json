@@ -59,9 +59,9 @@
             "radius-card": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
+              "maximum": 4,
               "multipleOfStep": 0.05,
-              "description": "Card radius (× concentric)"
+              "description": "Card radius (× padding)"
             },
             "container-ratio": {
               "type": "number",

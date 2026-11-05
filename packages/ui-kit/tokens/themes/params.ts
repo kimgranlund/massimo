@@ -17,9 +17,9 @@ export const PARAMS = {
   // + padding): R = t × R0, 1 concentric, 0 square. [radius] sets it per element.
   'radius-group':      { label: 'Group radius (× concentric)',      min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
   'radius-collection': { label: 'Collection radius (× concentric)', min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
-  'radius-card':       { label: 'Card radius (× concentric)',          min: 0, max: 1, step: 0.05, default: 1, domain: 'geometry' },
+  'radius-card':       { label: 'Card radius (× padding)',            min: 0, max: 4, step: 0.05, default: 1, domain: 'geometry' },
   // ui-container nesting (C): a container holding containers gives them its radius × k.
-  'container-ratio':   { label: 'Nesting ratio (k)', min: 0.3, max: 0.9, step: 0.05, default: 0.6, domain: 'geometry' },
+  'container-ratio':   { label: 'Nesting ratio (k)', min: 0.3, max: 0.9, step: 0.05, default: 0.4, domain: 'geometry' },
   // Elevation (tokens/elevation, docs/specs/elevation.md): every shadow's alpha × shadow-strength; each
   // surface fill mixed toward the page fill by surface-contrast (0 one fill, shadows only); each lifted
   // level's elevation in dp (the compound shadow's size; 0 casts none); card-raised lifts cards.

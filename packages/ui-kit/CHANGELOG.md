@@ -7,6 +7,10 @@
 **Breaking**
 
 - Type roles are renamed in `data-type`, `textStyle`, `typography.colors`, the DTCG tokens and `--ui-type-color-<role>`, with no aliases: `body-large` is `body-lg`, `body` is `body-md`, `caption` is `body-sm`, `control` is `control-md`, `control-small` is `control-sm`. The `body` voice keeps its name.
+- `ui-container` nesting is padding first (decision 0017). A card's radius is its padding × min(1, s), not the control radius + padding. A nested container's radius is max(R_parent − p_parent, R_parent × k), and `container-ratio` now defaults to 0.4. `radius` on a card and `radius-card` run to 4. A nested card steps down the ladder to 3u. A group or collection with no `surface` or `padding` has no padding or border; set one of them to keep the inset.
+- The `levels` attribute and the React `levels` prop are removed.
+- The `label` type role is 3u, the size of `control-sm`, not the base step.
+- Field labels, descriptions and errors start where the control's text starts, not at its edge. In `ui-field` this applies to the stacked layout over a text control.
 
 ## 0.1.0 (2026-11-03)
 

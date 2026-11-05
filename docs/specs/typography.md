@@ -48,7 +48,7 @@ Repoint a voice for a subtree with `data-font-<voice>="<face>"` (e.g. `data-font
 | body-lg | step 1 | 1.5 | 400 | 0 | |
 | body-md | step 0 | 1.5 | 400 | 0 | the `<body>` default |
 | body-sm | 3u | 1.45 | 400 | 0 | field descriptions and errors |
-| label | step 0 | 1.4 | 450 | 0 | field labels |
+| label | 3u | 1.4 | 450 | 0 | field labels, the size of control-sm |
 | title | step 0 | 1.4 | 600 | 0 | strong item titles: list and settings rows, table name cells, small card titles |
 | control-md | step 0 | 1.2 (unitless) | 450 | 0 | |
 | control-sm | 3u | 1.2 (unitless) | 450 | 0 | |
