@@ -729,7 +729,7 @@
       "attributes": {
         "size": "size / data-size: u for the subtree (2 … 12)",
         "radius": "radius on ui-container (group, collection, card presets): the magnitude t of the concentric radius, 0 … 1 in 0.05 steps",
-        "icon-size": "icon-size / data-icon-size: sm, md, lg, fill",
+        "icon-size": "icon-size / data-icon-size: sm, md, lg, xl, fill",
         "gap": "gap: container gap in u (0–8, 0.5 steps), that element only",
         "scheme": ".light / .dark: force a color scheme",
         "type": "data-type=\"<role>\": apply a type role",

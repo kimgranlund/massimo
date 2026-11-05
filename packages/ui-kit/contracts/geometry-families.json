@@ -5,7 +5,7 @@
     "border": "B in px, 0..u/2 (--ui-border)",
     "radiusScale": "multiplier on the soft 3u curvature, 0..3 (--ui-radius-scale)",
     "gap": "gutter in u, 0..8 in 0.5 steps (gap attribute)",
-    "iconSize": "sm | md | lg | fill (icon-size / data-icon-size)"
+    "iconSize": "sm | md | lg | xl | fill (icon-size / data-icon-size)"
   },
   "invariants": [
     "box-sizing: border-box everywhere; each owner deducts its own border once (pad = u − B).",

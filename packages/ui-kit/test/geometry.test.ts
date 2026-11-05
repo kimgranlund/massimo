@@ -46,12 +46,16 @@ test('text run: 0.5u between text parts, 1u beside a slot, 2u at a bare edge', (
     assert.deepEqual(resolveTextRun({ leading: l, trailing: t }, U4).contents, resolveButtonContents(l, t, U4));
 });
 
-test('icon sizes: sm = font − 0.5u, md = font + 0.5u, lg = font + 1.5u, fill = slot', () => {
-  assert.deepEqual((['sm', 'md', 'lg', 'fill'] as const).map((iconSize) => resolveControl({ unit: 4, iconSize }).iconSize), [12, 16, 20, 24]);
+test('icon sizes: sm = font − 0.5u, md = font + 0.5u, lg = font + 1.5u, xl = font + 2.5u, fill = slot', () => {
+  assert.deepEqual((['sm', 'md', 'lg', 'xl', 'fill'] as const).map((iconSize) => resolveControl({ unit: 4, iconSize }).iconSize), [12, 16, 20, 24, 24]);
   // At u=2 the slot is 12px: md (13) and lg (15) cap at the slot so the control stays 16px.
-  assert.deepEqual((['sm', 'md', 'lg', 'fill'] as const).map((iconSize) => resolveControl({ unit: 2, iconSize }).iconSize), [11, 12, 12, 12]);
+  assert.deepEqual((['sm', 'md', 'lg', 'xl', 'fill'] as const).map((iconSize) => resolveControl({ unit: 2, iconSize }).iconSize), [11, 12, 12, 12, 12]);
   assert.equal(resolveControl({ unit: 2.5, iconSize: 'lg' }).iconSize, 15, 'lg caps below u≈2.9');
   assert.equal(resolveControl({ unit: 3, iconSize: 'lg' }).iconSize, 17.5, 'uncapped from u=3');
+  // xl = font + 2.5u meets the 6u slot exactly at u = 4 (10 + 3.5u = 6u), so it is the slot up to there.
+  assert.equal(resolveControl({ unit: 4, iconSize: 'xl' }).iconSize, 24, 'xl is the slot at u = 4');
+  assert.equal(resolveControl({ unit: 4.5, iconSize: 'xl' }).iconSize, 25.75, 'uncapped above u = 4');
+  assert.equal(resolveControl({ unit: 12, iconSize: 'xl' }).iconSize, 52);
 });
 
 test('border is spent inside the padding, never added to height', () => {

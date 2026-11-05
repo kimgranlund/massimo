@@ -18,7 +18,7 @@
     },
     {
       "path": "components/btg/btg.manifest.json",
-      "sha256": "f64e689f48a8e101842799e49f78ed8983da0369dad5fdf6d36a7182f7420e5b"
+      "sha256": "11afd82c1e8f6fe84336c24d3369ce4c6a11015537c8c711b477f4fc67591739"
     },
     {
       "path": "components/btg/btg.react.tsx",
@@ -54,7 +54,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-tag|ui-chip\" test/components.test.ts",
@@ -62,7 +62,7 @@
           "node --test test/events.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     },
@@ -82,7 +82,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
@@ -90,7 +90,7 @@
           "node --test test/events.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     }

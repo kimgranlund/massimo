@@ -8,5 +8,5 @@
 - **Bundled sets:** `registerIconSet(name, moduleSet(import.meta.glob(…, { query: '?raw', import: 'default' })))`.
 - **Safety:** fetched SVG is sanitized (drawing elements and presentation attributes only; no scripts, handlers, external references, `<use>`, `<image>`, `<foreignObject>`).
 - **Accessibility:** decorative (`aria-hidden`) unless the `<i>` has `aria-label`; missing icons get `data-icon-missing`.
-- **Sizes:** outside a component, the icon formula against the surrounding font, 1em + k·u (k from `icon-size` on the icon or an ancestor, `md` = 0.5 by default: 16.75px beside 14.5px text at u = 4.5); in slots `sm` / `md` / `lg` / `fill` from the geometry ([geometry](geometry.md)); carets, the select chevron and the `x` close icon (chip remove, dismiss) are always `sm`.
+- **Sizes:** outside a component, the icon formula against the surrounding font, 1em + k·u (k from `icon-size` on the icon or an ancestor, `md` = 0.5 by default: 16.75px beside 14.5px text at u = 4.5); in slots `sm` / `md` / `lg` / `xl` / `fill` from the geometry ([geometry](geometry.md)); carets, the select chevron and the `x` close icon (chip remove, dismiss) are always `sm`.
 - **Weights:** with the Phosphor set, a name ending in `-bold` or `-fill` loads that weight (`check-bold`, `heart-fill`).

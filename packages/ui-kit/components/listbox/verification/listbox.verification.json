@@ -22,7 +22,7 @@
     },
     {
       "path": "components/listbox/listbox.manifest.json",
-      "sha256": "65aa7696113e0eeb52cfd7ba5cde7dbf663a4d8c8de445fa46e18f5da22dd852"
+      "sha256": "ece325e3da92e084f66c64e75384954308ed1704438420d42edc6b0cc8b81bf0"
     },
     {
       "path": "components/listbox/listbox.react.tsx",
@@ -82,7 +82,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-listbox|ui-segmented|option label\" test/components.test.ts",
@@ -92,7 +92,7 @@
           "node --test test/composition.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     },
@@ -116,7 +116,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",
@@ -125,7 +125,7 @@
           "node --test test/composition.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     }

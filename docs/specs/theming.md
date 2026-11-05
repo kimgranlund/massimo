@@ -118,7 +118,7 @@ A theme with scheme `auto` follows the document (`.light` / `.dark` on `<html>`,
 ## Per-element inputs
 
 - `size` / `data-size`: u for a subtree (2, 2.25, 2.5, 2.75, 3, 3.5, 4, 4.5, then 0.5 steps to 12).
-- `icon-size` / `data-icon-size`: sm, md, lg, fill.
+- `icon-size` / `data-icon-size`: sm, md, lg, xl, fill.
 - `density` / `data-density`: compact, default, loose for a subtree, inherited ([geometry](geometry.md#density)).
 - `gap`: container gap override in units of u (0–8, 0.5 steps), that element only.
 - `radius` (ui-container, presets group, collection and card): the radius magnitude t, 0–1 in 0.05 steps, that element only ([geometry](geometry.md#containers)).

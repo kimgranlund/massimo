@@ -17,10 +17,10 @@ export const GAPS = Array.from({ length: 17 }, (_, i) => i * 0.5);
 export const RADIUS_FACTORS = Array.from({ length: 81 }, (_, i) => i / 20);
 /** The theme parameter whose factor scales a level's radius (areas and composites have none). */
 export const radiusFamily = (level: string) => level === 'group' || level === 'collection' ? level : level.startsWith('card-') ? 'card' : undefined;
-export type IconSize = 'sm' | 'md' | 'lg' | 'fill';
+export type IconSize = 'sm' | 'md' | 'lg' | 'xl' | 'fill';
 
 /** Icon size = font size + k·u (fill takes the whole slot). */
-export const ICON_STEPS: Record<Exclude<IconSize, 'fill'>, number> = { sm: -0.5, md: 0.5, lg: 1.5 };
+export const ICON_STEPS: Record<Exclude<IconSize, 'fill'>, number> = { sm: -0.5, md: 0.5, lg: 1.5, xl: 2.5 };
 
 export interface GeometryInput {
   /** Unit u in px (the size). */
@@ -63,13 +63,13 @@ function inputs(input: GeometryInput) {
   if (!(x.border >= 0 && x.border <= x.unit / 2)) bad('border must be 0..u/2');
   if (!(x.radiusScale >= 0 && x.radiusScale <= 3)) bad('radius scale must be 0..3');
   if (input.gap !== undefined && !(input.gap >= 0 && input.gap <= 8)) bad('gap must be 0..8u');
-  if (!['sm', 'md', 'lg', 'fill'].includes(x.iconSize)) bad('unknown icon size');
+  if (!['sm', 'md', 'lg', 'xl', 'fill'].includes(x.iconSize)) bad('unknown icon size');
   if (!DENSITIES.includes(x.density)) bad('density must be compact, default or loose');
   const n = densityIndex(x.density);
   return { ...x, n, inset: densityInset(n), factor: densityFactor(n) };
 }
 
-/** Icon artwork, capped at the 6u slot so the control stays 8u (md caps below u≈2.2, lg below u≈2.9). */
+/** Icon artwork, capped at the 6u slot so the control stays 8u (md caps below u≈2.2, lg below u≈2.9, xl at u ≤ 4). */
 export function resolveIcon(fontSize: number, unit: number, size: IconSize, slot: number) {
   return size === 'fill' ? slot : Math.min(fontSize + ICON_STEPS[size] * unit, slot);
 }

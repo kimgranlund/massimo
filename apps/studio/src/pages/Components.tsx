@@ -447,7 +447,7 @@ export function ComponentsPage({ family, params }: PageProps & { family?: Family
           <ui-tag><i slot="leading" name="tag" />Size<span slot="suffix">M</span></ui-tag>
         </Row>
         <Row label="Icon sizes">
-          {(['sm', 'md', 'lg'] as const).map((k) => <ui-button key={k} icon-size={k}><i slot="leading" name="star" />{k}</ui-button>)}
+          {(['sm', 'md', 'lg', 'xl'] as const).map((k) => <ui-button key={k} icon-size={k}><i slot="leading" name="star" />{k}</ui-button>)}
           <ui-button icon-size="fill"><span slot="leading" className={avatar} />fill</ui-button>
         </Row>
         <Row label="Toggle">

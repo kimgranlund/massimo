@@ -18,7 +18,7 @@
     },
     {
       "path": "components/toggle/toggle.manifest.json",
-      "sha256": "730627f041b8507c25178e5cf996b82c3b811b3d55e85f7d8e2d18868e235671"
+      "sha256": "8f66e312b578a28a0bd2a559a468e7ab205dc3642af9e64a14b3b279269a4324"
     },
     {
       "path": "components/button/button.recipe.ts",
@@ -45,7 +45,7 @@
           "node --test --test-name-pattern=\"ui-toggle-group\" test/toggle-group.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     },
@@ -68,7 +68,7 @@
           "node --test --test-name-pattern=\"React ToggleGroup\" test/toggle-group.test.ts"
         ],
         "environment": {
-          "node": "v26.13.0"
+          "node": "v24.22.2"
         }
       }
     }

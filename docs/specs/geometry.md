@@ -24,7 +24,7 @@ Sources of truth, kept in agreement by tests:
 | B (border) | theme `--ui-border` | whole px, 0..u/2 (clamped) | 0 |
 | curvature scale | theme `--ui-radius-scale` | 0..3 | 1 (soft = 3u) |
 | corner shape k | theme `--ui-corner-shape`: `corner-shape: superellipse(k)` on every element with a radius | −1..4 (1 round, 2 squircle, 0 bevel, <0 scoop) | 1 |
-| icon size | `icon-size` / `data-icon-size`, any element, inherited | sm, md, lg, fill | md |
+| icon size | `icon-size` / `data-icon-size`, any element, inherited | sm, md, lg, xl, fill | md |
 | density | theme `--ui-density`; `density` / `data-density` per subtree | compact, default, loose | default ([density](#density)) |
 | gap | `gap` on a container or composite; that element only | 0 … 8 (0.5 steps, ×u) | = the padding level |
 
@@ -49,7 +49,7 @@ Type, the 6u slot, icons and text-run edges never change with density. Everythin
 | parts | construction pattern `[leading] [prefix] [contents] [suffix] [trailing]`; leading/trailing are icon slots, min 6u × 6u; empty parts are hidden | 24 |
 | text run | prefix, contents (the label) and suffix: 0.5u on a side next to another text part (so they sit 1u apart), 1u beside a slot, 2u at a bare edge (`resolveTextRun`); single-line text: line height 1.2 × font, capped at the 6u slot, centered by equal block padding (slot − line) / 2 | 2, 4 or 8 / 3.6 / 16.8 |
 | font | 10px + u | 14 |
-| icon sm / md / lg | font − 0.5u / font + 0.5u / font + 1.5u, capped at 6u | 12 / 16 / 20 |
+| icon sm / md / lg / xl | font − 0.5u / font + 0.5u / font + 1.5u / font + 2.5u, capped at 6u | 12 / 16 / 20 / 24 |
 | icon fill | the whole 6u slot, object-fit cover, centered; radius = control radius − u | 24 |
 | radius | min(3u × scale, 4u) | 12 |
 
@@ -58,7 +58,7 @@ Type, the 6u slot, icons and text-run edges never change with density. Everythin
 | height | 16 | 18 | 20 | 24 | 28 | 32 | 36 |
 | font | 12 | 12.25 | 12.5 | 13 | 13.5 | 14 | 14.5 |
 
-Icons capped by the slot: `md` below u≈2.2 and `lg` below u≈2.9 (at u=2: md and lg are 12px, the slot size), so a control never grows past 8u.
+Icons capped by the slot: `md` below u≈2.2, `lg` below u≈2.9 and `xl` up to u = 4 (at u=2: md, lg and xl are 12px, the slot size; at u = 4 xl is the 24px slot, at u = 4.5 it is 25.75px), so a control never grows past 8u. The steps are 1u apart, so xl is the next tier above lg: at u = 12 it is 52px (lg 40) in the 72px slot.
 
 Usage: `<ui-button><i slot="leading" name="credit-card"></i><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span></ui-button>`. Anything with `slot="leading" | "prefix" | "suffix" | "trailing"` goes in that part; everything else is contents. Prefix and suffix are short text adornments (a currency, a unit, a shortcut, a count) in the label color at 65%. An icon-only button is an 8u square (give it an `aria-label`). React: `<Button leading={…} prefix={…} suffix={…} trailing={…} iconSize="lg" size={3}>`.
 
