@@ -22,7 +22,7 @@
     },
     {
       "path": "contracts/domains/color.json",
-      "sha256": "139e790ea2f21603f92157f0e7bde8f09114cb213040e2f9b742bd24524d8d4a"
+      "sha256": "11876be47a054169adf0f18cfd9499edc5fd5615ab0b4ddd9c311a1314f8f441"
     },
     {
       "path": "tokens/themes/descriptors.ts",

@@ -234,7 +234,7 @@
     },
     {
       "command": "node --test test/anchors.test.ts",
-      "covers": "brand anchors: exact steps, pinned hue, chroma re-shape, solid step, lint"
+      "covers": "brand anchors: exact steps, pinned hue, chroma reach, solid step, lint"
     },
     {
       "command": "node --test test/themes.test.ts",
