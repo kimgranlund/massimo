@@ -128,10 +128,10 @@ const hueOf = (data: Spectrum, name: string) => data.schemes.light[name][8].hct[
 export function closestFamily(data: Spectrum, requested: string, candidates: string[]): string {
   if (candidates.includes(requested)) return requested;
   const hue = RADIX_HUES[requested] ?? (/^h\d{3}$/.test(requested) ? Number(requested.slice(1)) : 25);
-  // The Radix hues are HCT. Under OKLCH both sides compare in hue quadrature, a scale they share.
-  const oklch = data.settings.generator === 'oklch', span = oklch ? 400 : 360, want = oklch ? hueQuadrature(hue) : hue;
-  const at = (n: string) => (oklch ? quadratureOf(hueOf(data, n)) : hueOf(data, n));
-  const distance = (n: string) => { const d = Math.abs(at(n) - want) % span; return Math.min(d, span - d); };
+  // The Radix hues are HCT, and they land on the same families in OKLCH angles, except red, which sits
+  // near 25° there and would tip to crimson at its HCT 20°.
+  const want = data.settings.generator === 'oklch' && requested === 'red' ? 25 : hue;
+  const distance = (n: string) => { const d = Math.abs(hueOf(data, n) - want) % 360; return Math.min(d, 360 - d); };
   return candidates.reduce((best, n) => (distance(n) < distance(best) ? n : best));
 }
 

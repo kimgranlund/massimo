@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { anchoredSpectrum, generateSpectrum, rampVar, resolveRoles, roleVariables, spectrumCSS, spectrumDiagnostics, families } from '../tokens/colors/spectrum/index.ts';
+import { RADIX_HUES, anchoredSpectrum, closestFamily, generateSpectrum, rampVar, resolveRoles, roleVariables, spectrumCSS, spectrumDiagnostics, families } from '../tokens/colors/spectrum/index.ts';
 import { normalizeSpectrum, spectrumOverrides, SPECTRUM_DEFAULTS } from '../tokens/colors/spectrum/config.ts';
 
 test('settings validate field by field', () => {
@@ -188,7 +188,8 @@ test('oklch generator: the same shape as HCT, with the same contrast at each ste
 test('oklch generator: roles, endpoints, anchors and diagnostics work on it; HCT output does not change', () => {
   const ok = generateSpectrum({ generator: 'oklch' }), roles = resolveRoles(ok);
   assert.equal(roles.primary, 'indigo');
-  assert.equal(roles.critical, resolveRoles(generateSpectrum()).critical, 'a requested hue resolves to the same family as under HCT');
+  const hct = generateSpectrum();
+  for (const name of Object.keys(RADIX_HUES)) assert.equal(closestFamily(ok, name, families(ok).accents), closestFamily(hct, name, families(hct).accents), `${name}: the same family as under HCT`);
   assert.equal(roleVariables(ok, roles, 'light')['--colors-primary-solid'], `var(${rampVar('indigo', 9)})`);
   const anchored = anchoredSpectrum(ok, roles, [{ role: 'primary', value: '#cc243c' }]), a = anchored.report[0];
   const before = ok.schemes.light[a.family], after = anchored.data.schemes.light[a.family];

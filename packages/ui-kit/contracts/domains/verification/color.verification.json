@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "ac4f2d7fd360822cdbe28c94c12a7b0d92694b414f2083e336a5d85597e2594e"
+      "sha256": "ca773e52abbd37626c1c273966a69f497071377f1ca5d5588ffb98cd6d2135f2"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
