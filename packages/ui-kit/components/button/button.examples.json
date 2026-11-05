@@ -49,6 +49,12 @@
       "markup": "<ui-button size=\"3\" icon-size=\"lg\"><i slot=\"leading\" name=\"star\"></i>Star</ui-button>"
     },
     {
+      "id": "ghost-icon",
+      "label": "Compact ghost icon buttons",
+      "subject": "component:button",
+      "markup": "<ui-container preset=\"group\" density=\"compact\"><ui-button variant=\"ghost\" aria-label=\"View\"><i slot=\"leading\" name=\"eye\"></i></ui-button><ui-button variant=\"ghost\" aria-label=\"More\"><i slot=\"leading\" name=\"dots-three\"></i></ui-button></ui-container>"
+    },
+    {
       "id": "composed",
       "label": "Composed parts",
       "subject": "component:button",

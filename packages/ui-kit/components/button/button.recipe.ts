@@ -12,7 +12,7 @@ const REDUCED = '@media (prefers-reduced-motion: reduce)';
 
 export const button = defineSlotRecipe({
   className: 'ui-button',
-  description: 'Action button (ui-button, React Button): neutral or primary, busy and disabled states.',
+  description: 'Action button (ui-button, React Button): neutral, primary or ghost, busy and disabled states.',
   slots: ['root', 'leading', 'prefix', 'contents', 'suffix', 'trailing'],
   base: {
     root: {
@@ -43,6 +43,8 @@ export const button = defineSlotRecipe({
   variants: {
     variant: {
       neutral: {},
+      // No resting fill: for repeated or low-priority actions. Hover and press keep the control fills.
+      ghost: { root: { bg: 'transparent', borderColor: 'transparent' } },
       // The primary solid with the contrast text color; hover and press use the solid hover step.
       // The busy sweep uses the contrast color, so it shows against the solid fill.
       primary: {

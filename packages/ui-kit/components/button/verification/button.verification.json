@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "components/button/button.element.ts",
-      "sha256": "f7182b2d7599a2a9dc09d12be96ecf822377f9d939a0a6d3286fc790d352037d"
+      "sha256": "9aa3c9161d572a9a42789191797e2e101fc92f951e0dc6d8f66b806f6c881602"
     },
     {
       "path": "components/slots.ts",
@@ -18,11 +18,11 @@
     },
     {
       "path": "components/button/button.manifest.json",
-      "sha256": "8feda0616a26a8a7348336d0c62947839792f23bdbcb364f496972406553106f"
+      "sha256": "c5e981139b32a92df3f662fc5054fe359beb3dd2c64ebad09ebaa95e2c29a2c8"
     },
     {
       "path": "components/button/button.react.tsx",
-      "sha256": "b39c1d2048eed6b7d270ccb4033890bab59c4c3b489ebde415922047134ee08f"
+      "sha256": "7f4058a1c00bd3d4eb5c07913f293921f38620cffd75fc0520f2b2b17bfc6282"
     },
     {
       "path": "dom/state.ts",
@@ -50,7 +50,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-button|fieldset-disabled|slots\" test/components.test.ts",
@@ -78,7 +78,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

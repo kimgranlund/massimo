@@ -22,7 +22,7 @@
     },
     {
       "path": "components/button/button.recipe.ts",
-      "sha256": "29d300363d4145d8cd976981398cb48b4c20abdb85d529fdf19bafcfaeb0959e"
+      "sha256": "5c3f1092995756e84ebfb8df493c84cf3280fe042f2ab64eee4aaa814d743b7b"
     }
   ],
   "renderers": {
@@ -38,7 +38,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"ui-toggle\" test/toggle.test.ts",
@@ -61,7 +61,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"React Toggle|parity\" test/toggle.test.ts",

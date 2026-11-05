@@ -16,21 +16,23 @@ const attrs = (gap?: number, radius?: number) => ({ ...(gap !== undefined ? { ga
 export interface UniversalContainerProps extends ContainerProps {
   /** group, collection (default), card, panel, region, page: the starting geometry, flow and surface. */
   preset?: ContainerPreset;
-  /** The card ladder level: xs 2u, sm 3u, md 4u, lg 5u, xl 6u. */
+  /** The card ladder level: xs 2u, sm 3u, md 4u, lg 6u, xl 8u. */
   padding?: CardPadding;
   /** stack (column), row, wrap. Default: the preset's. */
   layout?: 'stack' | 'row' | 'wrap';
   /** none, panel, card, raised: the elevation level. Default: the preset's. */
   surface?: 'none' | 'panel' | 'card' | 'raised';
+  /** An outlined box of full-bleed rows with lines between them. */
+  divided?: boolean;
 }
 
 /**
  * React Container (ui-container): one element for every level, nesting concentrically. It renders what
  * the web component is, <div data-ui="container"> with plain attributes (preset, padding, layout,
- * surface), styled by the same global rules (containerTags) rather than a recipe class, so
+ * surface, divided), styled by the same global rules (containerTags) rather than a recipe class, so
  * the nesting chain applies to it in the same layer.
  */
-export function Container({ gap, size, radius, preset = 'collection', padding, layout, surface, ...rest }: UniversalContainerProps) {
-  const a = { preset, ...(padding ? { padding } : {}), ...(layout ? { layout } : {}), ...(surface ? { surface } : {}) };
+export function Container({ gap, size, radius, preset = 'collection', padding, layout, surface, divided, ...rest }: UniversalContainerProps) {
+  const a = { preset, ...(padding ? { padding } : {}), ...(layout ? { layout } : {}), ...(surface ? { surface } : {}), ...(divided ? { divided: '' } : {}) };
   return <div {...rest} data-ui="container" data-size={size} {...a} {...attrs(gap, radius)} />;
 }

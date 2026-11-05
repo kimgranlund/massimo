@@ -13,6 +13,12 @@
       "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-container preset=\"card\"><strong>Plan</strong><ui-container preset=\"group\"><ui-button>Choose</ui-button><ui-button variant=\"primary\">Buy</ui-button></ui-container></ui-container><ui-container preset=\"card\"><strong>Team</strong><ui-button>Choose</ui-button></ui-container></ui-container>"
     },
     {
+      "id": "container-divided",
+      "label": "ui-container divided: full-bleed rows with lines between them",
+      "subject": "component:container",
+      "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><strong>Card title</strong><ui-container preset=\"collection\" divided><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container></ui-container>"
+    },
+    {
       "id": "container-presets",
       "label": "ui-container presets",
       "subject": "component:container",

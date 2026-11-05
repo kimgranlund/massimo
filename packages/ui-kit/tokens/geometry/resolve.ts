@@ -234,12 +234,12 @@ export const CONTAINER_RATIO = 0.4;
 /** A nested card's padding, in u (× density): one step below its parent, down to this. */
 export const NESTED_CARD_FLOOR = 3;
 
-export interface ContainerNode { preset?: ContainerPreset; padding?: CardPadding; surface?: string; gap?: number; radius?: number; children?: ContainerNode[] }
+export interface ContainerNode { preset?: ContainerPreset; padding?: CardPadding; surface?: string; divided?: boolean; gap?: number; radius?: number; children?: ContainerNode[] }
 export interface ResolvedContainer { preset: ContainerPreset; radius: number; edge: number; padding: number; gap: number; depth: number; children: ResolvedContainer[] }
 
 /** A wrapper that paints nothing (no surface, no padding attribute): it has no inset of its own. */
 export const isUnpaintedWrapper = (n: ContainerNode) =>
-  (n.preset ?? 'collection') !== 'card' && !isAreaPreset(n.preset ?? 'collection') && !n.padding && (!n.surface || n.surface === 'none');
+  (n.preset ?? 'collection') !== 'card' && !isAreaPreset(n.preset ?? 'collection') && !n.padding && !n.divided && (!n.surface || n.surface === 'none');
 
 /**
  * A tree of containers: padding is the input, radius follows. A root (depth 1, or the first container
@@ -249,7 +249,8 @@ export const isUnpaintedWrapper = (n: ContainerNode) =>
  * padding; a `padding` attribute or a painted wrapper takes its ladder padding and gap. An unpainted
  * wrapper has no padding or border, keeps its ladder gap, and passes its parent through, so its
  * contents share their edge with what sits beside it; a card directly under an unpainted root is a
- * root. Areas (panel, region, page) are square and restart the chain. An explicit gap attribute wins.
+ * root. A `divided` wrapper is painted, with no padding or gap: its rows carry the inset. Areas (panel,
+ * region, page) are square and restart the chain. An explicit gap attribute wins.
  */
 export function resolveContainerTree(node: ContainerNode, input: GeometryInput & { ratio?: number; padUnits?: Partial<Record<string, number>>; gapUnits?: Partial<Record<string, number>>; radiusFactor?: Partial<Record<'group' | 'collection' | 'card', number>> } = {}): ResolvedContainer {
   const x = inputs(input);
@@ -267,11 +268,19 @@ export function resolveContainerTree(node: ContainerNode, input: GeometryInput &
     }
     // Past CONTAINER_DEPTH a container repeats its parent's radius (as the deepest CSS rule does).
     const r = !parent ? base.radius : depth > CONTAINER_DEPTH ? parent.r : Math.max(parent.r - parent.p, parent.r * k);
+    // Divided: full-bleed rows carry the inset, so the box has none and its children sit flush.
+    if (n.divided) return { preset, radius: r, edge: 0, padding: 0, gap: 0, depth, children: (n.children ?? []).map((c) => walk(c, childDepth(c), { r, p: 0 })) };
     const derived = !!parent && preset === 'card' && !n.padding;
     const p = derived ? Math.max(Math.min(NESTED_CARD_FLOOR * step, parent!.p), parent!.p - step) : base.edge;
     return { preset, radius: r, edge: p, padding: Math.max(0, p - x.border), gap: gapOf(derived ? p : base.gap), depth, children: (n.children ?? []).map((c) => walk(c, childDepth(c), { r, p })) };
   };
   return walk(node, 1);
+}
+
+/** A row of a divided container: 3u × density above and below, so its text clears a concentric corner, and the text edge beside it, so its text meets a card's text. */
+export function resolveDividedRow(input: GeometryInput = {}) {
+  const x = inputs(input);
+  return { paddingBlock: 3 * x.unit * x.factor, paddingInline: resolveField(input).textEdge, divider: 1 };
 }
 
 /**

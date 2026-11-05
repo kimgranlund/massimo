@@ -113,6 +113,15 @@
           }
         },
         {
+          "name": "divided",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "An outlined box of full-bleed rows with lines between them: no padding or gap, and each row's text starts on the text edge. For a group or collection.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
           "name": "radius",
           "type": "number",
           "readBy": "css",
@@ -120,7 +129,7 @@
           "inspector": {
             "control": "number",
             "min": 0,
-            "max": 1,
+            "max": 4,
             "step": 0.05
           }
         },
@@ -315,9 +324,10 @@
             "size?: number",
             "radius?: number // Group, collection, card: the radius as a magnitude of the concentric radius, 0 … 1 in 0.05 steps (1 concentric, 0 square).",
             "preset?: ContainerPreset = 'collection' // group, collection (default), card, panel, region, page: the starting geometry, flow and surface.",
-            "padding?: CardPadding // The card ladder level: xs 2u, sm 3u, md 4u, lg 5u, xl 6u.",
+            "padding?: CardPadding // The card ladder level: xs 2u, sm 3u, md 4u, lg 6u, xl 8u.",
             "layout?: 'stack' | 'row' | 'wrap' // stack (column), row, wrap. Default: the preset's.",
-            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's."
+            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's.",
+            "divided?: boolean // An outlined box of full-bleed rows with lines between them."
           ]
         }
       }

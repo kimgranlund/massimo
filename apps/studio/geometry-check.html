@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { SIZES, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, resolveChoiceCard, resolveContainerTree } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveDividedRow, SIZES, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, resolveChoiceCard, resolveContainerTree } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resolve';
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
@@ -988,7 +988,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><div id="cHr" data-row>r</div></ui-container></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><div id="cHr" data-row>r</div></ui-container></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p></ui-container><ui-container preset="collection" divided id="cD"><div>a</div><div>b</div></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1008,6 +1008,11 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'card.header.edge': [px(getComputedStyle(box.querySelector('#cHk')).paddingLeft), resolveField(g).textEdge],
     'card.body.edge': [px(getComputedStyle(box.querySelector('#cHp')).paddingLeft), resolveField(g).textEdge],
     'card.row.edge': [px(getComputedStyle(box.querySelector('#cHr')).paddingLeft), resolveField(g).textEdge],
+    'divided.box': [px(getComputedStyle(box.querySelector('#cD')).paddingTop), 0],
+    'divided.gap': [r2(box.querySelector('#cD > :nth-child(2)').getBoundingClientRect().top - box.querySelector('#cD > :first-child').getBoundingClientRect().bottom), 0],
+    'divided.row.block': [px(getComputedStyle(box.querySelector('#cD > :first-child')).paddingTop), resolveDividedRow(g).paddingBlock],
+    'divided.row.inline': [px(getComputedStyle(box.querySelector('#cD > :first-child')).paddingLeft), resolveDividedRow(g).paddingInline],
+    'divided.line': [px(getComputedStyle(box.querySelector('#cD > :nth-child(2)')).borderTopWidth), resolveDividedRow(g).divider],
     'card.plain.edge': [px(getComputedStyle(box.querySelector('#cHs')).paddingLeft), 0],
     'card.xs.edge': [px(getComputedStyle(box.querySelector('#cHx')).paddingLeft), 0],
     'card.radius.padding': [rad('#cC'), resolveContainer('card-md', g).edge * Math.min(1, s)],
@@ -1089,6 +1094,8 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     { preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }] },
     // Cards under an unpainted root are roots; an unpainted wrapper in a card passes the card through.
     { preset: 'collection', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'card' }] }] },
+    // Divided: no inset, and a card inside it is nested in the parent.
+    { preset: 'card', padding: 'sm', radius: 3, children: [{ preset: 'collection', divided: true, children: [{ preset: 'card' }] }] },
     { preset: 'card', padding: 'lg', children: [{ preset: 'collection', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] },
     // A padding attribute on a nested card keeps the ladder.
     { preset: 'card', padding: 'xl', children: [{ preset: 'card', padding: 'xs', children: [{ preset: 'group', surface: 'panel' }] }] },
@@ -1103,7 +1110,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
   ];
   const tag = (n) => n.div ? 'div data-ui="container"' : 'ui-container';
   const close = (n) => n.div ? 'div' : 'ui-container';
-  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.surface ? ` surface="${n.surface}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</${close(n)}>`;
+  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.surface ? ` surface="${n.surface}"` : ''}${n.divided ? ' divided' : ''}${n.radius ? ` radius="${n.radius}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</${close(n)}>`;
   for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const [density, s] of [['default', 1], ['compact', 2], ['loose', 0.5]]) {
     const box = document.createElement('div');
     box.setAttribute('data-size', String(unit)); box.setAttribute('density', density);

@@ -4,6 +4,11 @@
 
 ## Unreleased
 
+**Added**
+
+- `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
+- `divided` on `ui-container` (React `divided`): an outlined group or collection of full-bleed rows with lines between them.
+
 **Breaking**
 
 - Type roles are renamed in `data-type`, `textStyle`, `typography.colors`, the DTCG tokens and `--ui-type-color-<role>`, with no aliases: `body-large` is `body-lg`, `body` is `body-md`, `caption` is `body-sm`, `control` is `control-md`, `control-small` is `control-sm`. The `body` voice keeps its name.

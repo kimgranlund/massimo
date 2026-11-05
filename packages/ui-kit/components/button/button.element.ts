@@ -19,7 +19,7 @@ export class UIButton extends UIFormElement {
   static fieldState = false;
   declare type: 'button' | 'submit' | 'reset';
   declare loading: boolean;
-  declare variant: 'neutral' | 'primary';
+  declare variant: 'neutral' | 'primary' | 'ghost';
 
   #unslot?: () => void;
   get #state(): ButtonState { return { disabled: this.isDisabled, loading: this.loading }; }
@@ -39,7 +39,7 @@ export class UIButton extends UIFormElement {
 
   update() {
     applyAttrs(this, buttonAttrs(this.#state));
-    applyRecipe(this, button({ variant: this.variant === 'primary' ? 'primary' : 'neutral' }));
+    applyRecipe(this, button({ variant: this.variant === 'primary' || this.variant === 'ghost' ? this.variant : 'neutral' }));
   }
 
   #onClick = (e: Event) => {

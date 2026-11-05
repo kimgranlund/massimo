@@ -13,6 +13,7 @@
 <ui-button type="submit">Send</ui-button>
 <ui-button aria-label="Add"><i slot="leading" name="plus"></i></ui-button>
 <ui-button variant="primary">Save</ui-button>
+<ui-button variant="ghost" density="compact" aria-label="More"><i slot="leading" name="dots-three"></i></ui-button>
 ```
 
 React: `<Button variant="primary" leading={…} prefix="$" suffix="⌘P" trailing={…} iconSize="lg" size={3}>Pay</Button>` renders a native `<button data-ui="button">` with the same parts and the same recipe classes.

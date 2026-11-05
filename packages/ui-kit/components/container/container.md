@@ -28,6 +28,7 @@ A `preset` picks where a container starts; three families, each with one radius 
 - A nested card steps down the ladder, p = max(min(3u, p_parent), p_parent − 1u) × density, and that padding is also its gap.
 - An unpainted group or collection (no `surface`, no `padding`) has no padding or border, keeps its ladder gap, and passes its parent through. Its contents share an edge with what sits beside it, and a card directly under an unpainted root is a root.
 - `padding` on a nested card, and any painted wrapper, takes the ladder padding and gap. `padding` on a group or collection gives it the card ladder level; an area ignores `padding`.
+- `divided` on a group or collection makes an outlined box of full-bleed rows with lines between them. The box has no padding or gap, and each child is a row with 3u above and below (× density) and the text edge beside it, so its text meets a card's text above it. Text right before it in a card takes the same block padding, as its header row.
 - Areas (panel, region, page) are square and restart the chain, also mid-tree: a card inside a panel inside a card is a root again.
 - The chain has a rule per depth up to 8; a deeper container repeats its parent's radius.
 

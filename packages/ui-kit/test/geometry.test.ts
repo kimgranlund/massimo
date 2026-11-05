@@ -443,7 +443,7 @@ test('universal container: an area inside the chain restarts it', async () => {
 });
 
 test('universal container: padding is the input and radius follows; unpainted wrappers add no inset', async () => {
-  const { resolveContainerTree, resolveContainer } = await import('../tokens/geometry/resolve.ts');
+  const { resolveContainerTree, resolveContainer, resolveDividedRow } = await import('../tokens/geometry/resolve.ts');
   const g = { unit: 4 };
   const lone = resolveContainerTree({ preset: 'card' }, g);
   assert.deepEqual([lone.radius, lone.edge], [resolveContainer('card-md', g).radius, resolveContainer('card-md', g).edge], 'a lone card is unchanged');
@@ -466,6 +466,9 @@ test('universal container: padding is the input and radius follows; unpainted wr
   assert.deepEqual([card.radius, card.edge], [16 * 0.4, 12], 'and passes its parent through');
   const painted = resolveContainerTree({ preset: 'group', surface: 'panel' }, g);
   assert.equal(painted.edge, resolveContainer('group', g).edge, 'a painted wrapper keeps its padding');
+  const list = resolveContainerTree({ preset: 'card', padding: 'sm', radius: 3.33, children: [{ preset: 'collection', divided: true }] }, g).children[0];
+  assert.deepEqual([list.edge, list.gap, Math.round(list.radius)], [0, 0, 28], 'a divided wrapper is painted, with no padding or gap');
+  assert.deepEqual(resolveDividedRow(g), { paddingBlock: 12, paddingInline: 12, divider: 1 }, 'a row: 3u, and the text edge');
   const top = resolveContainerTree({ preset: 'collection', children: [{ preset: 'card' }] }, g);
   assert.deepEqual([top.children[0].radius, top.children[0].edge], [lone.radius, lone.edge], 'a card under an unpainted root is a root');
   const area = resolveContainerTree({ preset: 'page', children: [{ preset: 'card' }] }, g);

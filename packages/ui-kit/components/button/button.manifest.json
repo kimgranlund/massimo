@@ -126,9 +126,10 @@
           "reflects": false,
           "enum": [
             "neutral",
-            "primary"
+            "primary",
+            "ghost"
           ],
-          "description": "Recipe variant. primary: the primary solid (primary.solid) with the contrast text color (fg.onSolid); hover and press use primary.solidHover. neutral (default): the muted fill. The React Button takes the same variant prop; plain HTML uses the recipe classes (ui-button__root--variant_primary).",
+          "description": "Recipe variant. ghost: no resting fill, the control fills on hover and press, for repeated or low-priority actions such as table row icons. primary: the primary solid (primary.solid) with the contrast text color (fg.onSolid); hover and press use primary.solidHover. neutral (default): the muted fill. The React Button takes the same variant prop; plain HTML uses the recipe classes (ui-button__root--variant_primary).",
           "inspector": {
             "control": "select"
           }
@@ -418,7 +419,7 @@
             "render?: RenderProp // Replace the part's element (Base UI render): an element (the part's props merge into it) or `(props, state) => element`. The recipe class and data-* stay on whatever renders.",
             "className?: string | ((state: PartState) => string | undefined) // Author class, or a function of the part's state (Base UI className); added after the recipe class.",
             "loading?: boolean",
-            "variant?: 'neutral' | 'primary' = 'neutral' // primary: the primary solid with contrast text; neutral (default) the muted fill.",
+            "variant?: 'neutral' | 'primary' | 'ghost' = 'neutral' // primary: the primary solid with contrast text; neutral (default) the muted fill; ghost no resting fill.",
             "leading?: ReactNode",
             "prefix?: ReactNode",
             "suffix?: ReactNode",

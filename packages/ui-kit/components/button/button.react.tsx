@@ -12,8 +12,8 @@ import { button } from '../../styled-system/recipes/button.js';
 // `prefix` is an RDFa attribute in React's types; here it is the text adornment part.
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'prefix' | 'className'>, PartBase {
   loading?: boolean;
-  /** primary: the primary solid with contrast text; neutral (default) the muted fill. */
-  variant?: 'neutral' | 'primary';
+  /** primary: the primary solid with contrast text; neutral (default) the muted fill; ghost no resting fill. */
+  variant?: 'neutral' | 'primary' | 'ghost';
   leading?: ReactNode;
   prefix?: ReactNode;
   suffix?: ReactNode;

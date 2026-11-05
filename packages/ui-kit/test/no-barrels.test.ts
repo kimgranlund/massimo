@@ -103,3 +103,30 @@ test('the studio shell keeps the spectrum engine in its worker', () => {
   assert.ok(shell.has(join(STUDIO, 'src/studio/App.tsx')), 'the graph reaches App.tsx');
   assert.equal(shell.has(join(KIT, 'tokens/colors/spectrum/runtime.json')), false, 'the spectrum runtime is not in the shell');
 });
+
+test('every kit element the studio shell renders is registered by the shell, whatever page loads first', () => {
+  const graph = (file: string, seen = new Set<string>()): Set<string> => {
+    if (seen.has(file) || !/\.(ts|tsx)$/.test(file)) return seen;
+    seen.add(file);
+    for (const m of readFileSync(file, 'utf8').matchAll(/^(?:import|export)\s+(?!type\b)(?:[\w*{}\s,$]+?\s+from\s+)?'([^']+)'/gm)) {
+      const spec = m[1];
+      if (spec.startsWith('.')) graph(join(file, '..', spec), seen);
+      else if (spec.startsWith('@massimo/ui-kit/')) { const r = exported(spec); if (r) graph(r, seen); }
+    }
+    return seen;
+  };
+  const shell = graph(join(STUDIO, 'src/studio/main.tsx'));
+  // Tag → the module that defines it. A tag with no element module (ui-container, CSS only) needs none.
+  const definedBy = new Map<string, string>();
+  for (const f of sources.filter((p) => p.endsWith('.element.ts'))) for (const m of readFileSync(f, 'utf8').matchAll(/define\(\s*'(ui-[a-z-]+)'/g)) definedBy.set(m[1], f);
+  assert.ok(definedBy.size > 40, `found ${definedBy.size} element tags`);
+  const missing: string[] = [];
+  for (const f of shell) {
+    if (!f.startsWith(join(STUDIO, 'src/studio'))) continue;
+    for (const m of readFileSync(f, 'utf8').matchAll(/<(ui-[a-z-]+)[\s>/]/g)) {
+      const def = definedBy.get(m[1]);
+      if (def && !shell.has(def)) missing.push(`${relative(STUDIO, f)}: <${m[1]}> (${relative(KIT, def)})`);
+    }
+  }
+  assert.deepEqual([...new Set(missing)], []);
+});

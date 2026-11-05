@@ -18,6 +18,7 @@ const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const cardColumns = css({ display: 'grid', width: 'full', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
+const roundDemo = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
 const tileRow = css({ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
 const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
@@ -168,16 +169,14 @@ export function ContainersPage({ params }: PageProps) {
             </ui-container>
           </ui-container>
         </ui-container>
-        <Row label="rounder than deep">
-          <div className={cardColumns}>
-            {([['sm', '3.3', 'r × 3.3, p sm'], ['xl', '1.65', 'r × 1.65, p xl']] as const).map(([padding, radius, name]) => (
-              <ui-container preset="card" padding={padding} radius={radius} key={name}>
-                <span className={kicker}>{name}</span>
-                <ui-container preset="collection" surface="panel"><span>Option 1</span><span>Option 2</span><span>Option 3</span></ui-container>
-              </ui-container>
-            ))}
-          </div>
-        </Row>
+        <div className={roundDemo}>
+          {([['sm', '3', 'r 40, p 13.5'], ['lg', '1.5', 'r 40, p 27']] as const).map(([padding, radius, name]) => (
+            <ui-container preset="card" padding={padding} radius={radius} key={name}>
+              <strong>{name}</strong>
+              <ui-container preset="collection" divided=""><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container>
+            </ui-container>
+          ))}
+        </div>
         <Row label="card grid">
           <ui-container preset="card" className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (

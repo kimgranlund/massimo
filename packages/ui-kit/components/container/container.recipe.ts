@@ -100,8 +100,8 @@ const chain = (n: number) => Array.from({ length: n }, () => C).join(' ');
 // Exactly depth n; the deepest rule also takes every deeper container, which then repeats its parent's radius.
 const depthSel = (n: number) => n === CHAIN_DEPTH ? chain(n) : `${chain(n)}:not(${chain(n + 1)})`;
 const WRAPPER = ':is([preset=group], [preset=collection], :not([preset]))';
-// A wrapper that paints nothing (isUnpaintedWrapper): no surface and no padding attribute.
-const UNPAINTED = `${WRAPPER}:not([padding]):not([surface]:not([surface=none]))`;
+// A wrapper that paints nothing (isUnpaintedWrapper): no surface, padding or divided attribute.
+const UNPAINTED = `${WRAPPER}:not([padding], [divided]):not([surface]:not([surface=none]))`;
 const STEP = 'calc((0.5 + 0.5 * var(--ui-density)) * var(--u))';
 const steppedDown = (p: string) => `max(min(calc(${NESTED_CARD_FLOOR} * ${STEP}), ${p}), calc(${p} - ${STEP}))`;
 // An area inside the chain restarts it: the area sets --uc-a<n>: 1 for every depth, so the first chain
@@ -132,6 +132,8 @@ export const containerChain = Object.fromEntries([
         [`--uc-a${n}`]: n === 1 ? '1' : fresh(n),
         padding: 0, borderWidth: 0,
       }],
+      // Divided: full-bleed rows carry the inset, so the box has none.
+      [`${depthSel(n)}[divided]`, { [`--uc-p${n}`]: '0px', padding: 0, gap: 0, '&:not([gap])': { gap: 0 } }],
     ];
   }),
 ]);
@@ -144,6 +146,18 @@ const CARD_TEXT = ':is(h1, h2, h3, h4, h5, h6, p, strong, [data-row], [data-type
 const CARD = ':is(ui-container, [data-ui=container])[preset=card]:not([padding=xs])';
 const cardText = { [`:is(${CARD} > ${CARD_TEXT}, ${CARD} > :is(ui-container, [data-ui=container])${UNPAINTED} > ${CARD_TEXT})`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
 
+// A divided container: an outlined box of full-bleed rows with lines between them. A row's text starts
+// on the text edge, so it meets a card's text above it (resolveDividedRow).
+const DIVIDED = ':is(ui-container, [data-ui=container])[divided]';
+const ROW_BLOCK = 'calc(3 * (0.5 + 0.5 * var(--ui-density)) * var(--ui-unit) * 1px)';
+const dividedRows = {
+  [DIVIDED]: { overflow: 'hidden', boxShadow: 'inset 0 0 0 1px var(--colors-border)' },
+  [`${DIVIDED} > *`]: { paddingBlock: ROW_BLOCK, paddingInline: FIELD_TEXT_EDGE },
+  // The text right above the list reads as its header row: the same height, clear of the card's corner.
+  [`${CARD} > ${CARD_TEXT}:has(+ ${DIVIDED})`]: { paddingBlock: ROW_BLOCK },
+  [`${DIVIDED} > * + *`]: { borderBlockStart: '1px solid var(--colors-border)' },
+};
+
 /** The CSS-only tag's rules: the recipe keyed on ui-container and [data-ui=container], then the nesting chain. */
 // An area keeps its own level when it is given a padding (areas are square; padding is the card ladder).
 const areaPadding = Object.fromEntries((['panel', 'region', 'page'] as const).map((a) => [`:is(ui-container, [data-ui=container])[preset=${a}][padding]`, level(a)]));
@@ -155,4 +169,5 @@ export const containerTags = mergeStyles(
   areaPadding,
   containerChain,
   cardText,
+  dividedRows,
 );

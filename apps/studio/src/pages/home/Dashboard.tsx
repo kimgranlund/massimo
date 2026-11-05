@@ -54,7 +54,7 @@ const meterTrack = css({ height: '2', borderRadius: 'full', bg: 'bg.muted', over
 // Orders: narrow, each row is its own two-line grid; wide, the collection is one grid of columns
 // and every row (and the header) is a subgrid, so the columns line up without fixed widths.
 const COLS = 'auto minmax(0, 1.4fr) minmax(0, 1fr) auto auto auto';
-const orders = css({ bg: 'bg', [CQ_MD]: { display: 'grid', gridTemplateColumns: COLS, columnGap: '4' } });
+const orders = css({ [CQ_MD]: { display: 'grid', gridTemplateColumns: COLS, columnGap: '4' } });
 const orderRow = css({
   display: 'grid', gridTemplateColumns: 'auto minmax(0, 1fr) auto', gridTemplateAreas: '"who name total" "who meta actions"',
   columnGap: '3', rowGap: '1', alignItems: 'center', paddingBlock: '2',
@@ -177,9 +177,9 @@ export function Dashboard() {
               </div>
               <span className={statusCol}><ui-tag className={s.tone[STATUS_TONE[o.status]]}>{o.status}</ui-tag></span>
               <span className={total} data-numeric>${o.total}</span>
-              <ui-container preset="group" className={actions}>
-                <ui-button aria-label={`View order ${o.id}`} className={wideOnly}><i slot="leading" name="eye" /></ui-button>
-                <ui-button aria-label={`More for order ${o.id}`}><i slot="leading" name="dots-three" /></ui-button>
+              <ui-container preset="group" density="compact" className={actions}>
+                <ui-button variant="ghost" aria-label={`View order ${o.id}`} className={wideOnly}><i slot="leading" name="eye" /></ui-button>
+                <ui-button variant="ghost" aria-label={`More for order ${o.id}`}><i slot="leading" name="dots-three" /></ui-button>
               </ui-container>
             </div>
           ))}

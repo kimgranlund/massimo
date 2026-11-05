@@ -69,7 +69,7 @@ export const range = defineSlotRecipe({
       display: 'block', gridArea: '1 / 1', width: 'calc(var(--track) - var(--u))', height: 'calc(var(--track) - var(--u))',
       borderRadius: 'max(0px, calc(var(--track-r) - 0.5 * var(--u)))',
       marginInlineStart: 'calc(0.5 * var(--u) + var(--ui-ratio, 0) * (100% - var(--track)))',
-      bg: 'white', borderWidth: 'var(--b)', borderColor: 'primary.solid', boxShadow: 'sm',
+      bg: 'fg.onSolid', borderWidth: 'var(--b)', borderColor: 'primary.solid', boxShadow: 'sm',
       // A pair's focused or dragged thumb paints over the other where they meet.
       '&:is(:focus-visible, [data-dragging])': { zIndex: 1 },
       // React pair: the input after a thumb has keyboard focus (the thumb draws its ring).

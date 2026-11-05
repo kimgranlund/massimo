@@ -86,7 +86,7 @@ const switchRecipe = choice('switch', {
 }, {
   // Base UI Switch.Thumb.
   thumb: {
-    display: 'block', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%', bg: 'white', boxShadow: 'sm',
+    display: 'block', width: 'calc(4 * var(--u))', height: 'calc(4 * var(--u))', borderRadius: '50%', bg: 'fg.onSolid', boxShadow: 'sm',
     transition: `${t('toggle', 'translate')}, ${t('feedback', 'background-color')}`,
     [FORCED]: { forcedColorAdjust: 'none', bg: 'CanvasText' },
   },

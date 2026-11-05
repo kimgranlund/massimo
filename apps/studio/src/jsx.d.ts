@@ -10,11 +10,11 @@ declare module 'react' {
   }
   namespace JSX {
     interface IntrinsicElements {
-      'ui-button': El<{ type?: string; variant?: 'neutral' | 'primary'; disabled?: boolean; loading?: boolean; 'icon-size'?: string; size?: string }>;
+      'ui-button': El<{ type?: string; variant?: 'neutral' | 'primary' | 'ghost'; disabled?: boolean; loading?: boolean; 'icon-size'?: string; size?: string }>;
       'ui-badge': El<{}>;
       'ui-tag': El<{ 'icon-size'?: string }>;
       'ui-chip': El<{ selectable?: boolean; selected?: boolean; removable?: boolean; disabled?: boolean; 'icon-size'?: string }>;
-      'ui-container': El<{ preset?: 'group' | 'collection' | 'card' | 'panel' | 'region' | 'page'; padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; layout?: 'stack' | 'row' | 'wrap'; surface?: 'none' | 'panel' | 'card' | 'raised'; gap?: string | number; radius?: string; size?: string; 'aria-label'?: string; role?: string }>;
+      'ui-container': El<{ preset?: 'group' | 'collection' | 'card' | 'panel' | 'region' | 'page'; padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; layout?: 'stack' | 'row' | 'wrap'; surface?: 'none' | 'panel' | 'card' | 'raised'; divided?: boolean | string; density?: 'compact' | 'default' | 'loose'; gap?: string | number; radius?: string; size?: string; 'aria-label'?: string; role?: string }>;
       'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; parent?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-radio': El<{ name?: string; value?: string; checked?: boolean; required?: boolean; disabled?: boolean }>;
       'ui-switch': El<{ inset?: 'none'; name?: string; value?: string; checked?: boolean; disabled?: boolean }>;

@@ -3,6 +3,7 @@
 import { useCallback, useRef, type CSSProperties, type ReactNode } from 'react';
 import { css } from '../../styled-system/css/index.js';
 import '@massimo/ui-kit/components/field/element';
+import '@massimo/ui-kit/components/color/element';
 import * as s from './styles.ts';
 
 /**

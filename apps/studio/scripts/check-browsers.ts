@@ -51,11 +51,17 @@ async function checkStudioBrand(page: Page): Promise<string[]> {
   if (r.scale !== '0.5') fails.push(`studio brand: panel radius scale ${r.scale}, want 0.5 (crisp)`);
   if (!(r.panelRadius < r.canvasRadius)) fails.push(`studio brand: panel button radius ${r.panelRadius} should be crisper than the canvas's ${r.canvasRadius}`);
   if (!/^"?Inter"?,/.test(r.panelFont)) fails.push(`studio brand: panel face ${r.panelFont}, want Inter`);
+  // The panel's elements are registered by the shell, not by a lazy page: on Home a swatch has size too.
+  await page.goto(`${base}/#/home`);
+  await page.reload();
+  await page.waitForFunction(() => !!document.querySelector('aside[data-ui-scope=massimo] ui-button'), null, { timeout: 60_000 });
   // A role's panel swatch shows the theme being tuned, not the brand the panel wears: Massimo anchors the
   // amber ramp to its signal orange, which a --colors-spectrum-* variable inside the panel would show.
   const panelTab = page.locator('aside[data-ui-scope=massimo] ui-option', { hasText: 'Colors' }).first();
   await panelTab.click();
   await page.waitForFunction(() => { const c = ([...document.querySelectorAll('aside ui-field')].find((f) => f.textContent?.trim().startsWith('Secondary'))?.querySelector('ui-swatch') as (Element & { color?: string }) | null | undefined)?.color; return !!c && c !== 'transparent'; }, null, { timeout: 30_000 });
+  const swatchWidth = await page.evaluate(() => [...document.querySelectorAll('aside ui-swatch')].find((s) => s.closest('ui-field'))?.getBoundingClientRect().width ?? 0);
+  if (!(swatchWidth > 0)) fails.push(`studio brand: panel swatches have no size on Home (${swatchWidth}): is ui-swatch registered by the shell?`);
   const sw = await page.evaluate(() => {
     const row = [...document.querySelectorAll('aside ui-field')].find((f) => f.textContent?.trim().startsWith('Secondary'));
     const el = row?.querySelector('ui-swatch') as (Element & { color?: string }) | null | undefined;
