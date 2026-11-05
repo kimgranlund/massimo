@@ -63,6 +63,14 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 
 The descriptor scale `emphasis` names the three values.
 
+## Generators
+
+`color.spectrum.generator` picks how the ramps are made: `hct`, the default, or `oklch`. Both produce the same 12 hue families, a neutral, 12 steps per ramp and the same contrast targets, so roles, tokens, the `white` and `black` endpoints and anchors work the same on either.
+
+`oklch` (`tokens/colors/spectrum/oklch.ts`) places twelve hues every 33.3 units of hue quadrature from `hue`, each at one OKLCH hue angle. Chroma follows one envelope peaking at step 9: `oklchChroma`, capped by the weakest hue there, so every family has the same chroma, and `falloff` shapes it. Each step's L is solved per hue and chroma to land on that step's tone, so a step has the same contrast in every family. It reads `hue`, `falloff`, the contrast fields, `mat`, `tint`, `neutralFrom`, `target` and `oklchChroma`. The HCT-only settings have no effect, and neither do `harmony` and `cvd`. It runs without starting the HCT engine, but importing `spectrum/index.ts` still bundles the engine; a build that wants it out imports `oklch.ts` directly.
+
+The kit's default tokens are the HCT snapshot. An `oklch` theme replaces them through its generated CSS, as any theme with its own spectrum does.
+
 ## Anchors
 
 A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name?, dark?, reach? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:

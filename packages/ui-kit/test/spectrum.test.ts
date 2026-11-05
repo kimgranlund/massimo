@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { generateSpectrum, rampVar, resolveRoles, roleVariables, spectrumCSS, families } from '../tokens/colors/spectrum/index.ts';
+import { anchoredSpectrum, generateSpectrum, rampVar, resolveRoles, roleVariables, spectrumCSS, spectrumDiagnostics, families } from '../tokens/colors/spectrum/index.ts';
 import { normalizeSpectrum, spectrumOverrides, SPECTRUM_DEFAULTS } from '../tokens/colors/spectrum/config.ts';
 
 test('settings validate field by field', () => {
@@ -166,4 +166,38 @@ test('contrast-targeted ramps: tones solve from APCA targets against the page; d
   assert.ok(Math.abs(apcaLc(page.schemes.light.neutral[10].hct[2], page.schemes.light.neutral[0].hct[2]) - DEFAULT_TARGETS.light[9]) < 0.5, 'a darker page keeps each step’s contrast');
   const legacy = generateSpectrum({ ptAuto: 0, pt: 55 });
   assert.notDeepEqual(legacy.settings.targetsLight, [...DEFAULT_TARGETS.light], 'legacy peak tones become measured targets');
+});
+
+test('oklch generator: the same shape as HCT, with the same contrast at each step in every family', () => {
+  const hct = generateSpectrum(), ok = generateSpectrum({ generator: 'oklch' });
+  assert.deepEqual(Object.keys(ok.schemes.light).sort(), Object.keys(hct.schemes.light).filter((f) => f === 'neutral' || families(hct).accents.includes(f)).sort(), 'the same families');
+  for (const mode of ['light', 'dark'] as const) for (const [name, ramp] of Object.entries(ok.schemes[mode])) {
+    assert.equal(ramp.length, 12, name);
+    const peers = hct.schemes[mode].indigo;
+    ramp.forEach((sw, i) => {
+      assert.ok(Math.abs(sw.hct[2] - peers[i].hct[2]) < 0.1, `${mode} ${name} ${i + 1}: tone ${sw.hct[2].toFixed(2)} ≈ ${peers[i].hct[2].toFixed(2)}`);
+      assert.match(sw.css, /^oklch\(/);
+      if (i && name !== 'neutral') assert.equal(sw.oklch[2], ramp[1].oklch[2], `${name}: one hue angle`);
+    });
+  }
+  const c9 = families(ok).accents.map((f) => ok.schemes.light[f][8].oklch[1]);
+  assert.ok(Math.max(...c9) - Math.min(...c9) < 0.002, 'one shared chroma at the peak');
+  assert.equal(ok.settings.generator, 'oklch');
+});
+
+test('oklch generator: roles, endpoints, anchors and diagnostics work on it; HCT output does not change', () => {
+  const ok = generateSpectrum({ generator: 'oklch' }), roles = resolveRoles(ok);
+  assert.equal(roles.primary, 'indigo');
+  assert.equal(roles.critical, resolveRoles(generateSpectrum()).critical, 'a requested hue resolves to the same family as under HCT');
+  assert.equal(roleVariables(ok, roles, 'light')['--colors-primary-solid'], `var(${rampVar('indigo', 9)})`);
+  const anchored = anchoredSpectrum(ok, roles, [{ role: 'primary', value: '#cc243c' }]), a = anchored.report[0];
+  const before = ok.schemes.light[a.family], after = anchored.data.schemes.light[a.family];
+  assert.ok(a.inOrder, 'the anchor lands in contrast order');
+  for (let i = 1; i < 8; i++) assert.ok(after[i].oklch[1] <= before[i].oklch[1] + 1e-9, `step ${i + 1}: tints keep their chroma`);
+  const d = spectrumDiagnostics(ok, roles);
+  assert.ok(d.peakChroma > 0.05 && d.peakChroma < 0.37);
+  assert.ok(d.accents.every((x) => x.curve.every(([, c]) => c >= 0 && c <= 0.5)), 'OKLCH chroma, not HCT');
+  assert.equal(generateSpectrum({}).settings.generator, undefined, 'HCT settings carry no generator');
+  assert.throws(() => generateSpectrum({ generator: 'lab' } as any), /generator/);
+  assert.deepEqual(spectrumOverrides(normalizeSpectrum({ generator: 'oklch' })), { generator: 'oklch' });
 });

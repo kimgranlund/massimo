@@ -3229,6 +3229,16 @@
         "chroma falloff"
       ]
     },
+    "parameter:spectrum-generator": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "Generator",
+      "searchTerms": [
+        "generator",
+        "generator"
+      ]
+    },
     "parameter:spectrum-grays": {
       "kind": "parameter",
       "source": "contracts/parameters.json#/groups/spectrum",
@@ -3317,6 +3327,16 @@
       "searchTerms": [
         "neutral from",
         "neutral hue source"
+      ]
+    },
+    "parameter:spectrum-oklch-chroma": {
+      "kind": "parameter",
+      "source": "contracts/parameters.json#/groups/spectrum",
+      "availability": "implemented",
+      "title": "OKLCH chroma",
+      "searchTerms": [
+        "oklch chroma",
+        "oklch chroma"
       ]
     },
     "parameter:spectrum-primary": {
@@ -11815,6 +11835,16 @@
       "from": "parameters:spectrum",
       "relation": "expresses",
       "to": "concept:vibrancy"
+    },
+    {
+      "from": "parameter:spectrum-generator",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
+    },
+    {
+      "from": "parameter:spectrum-oklch-chroma",
+      "relation": "memberOf",
+      "to": "parameters:spectrum"
     },
     {
       "from": "parameter:spectrum-hue-set",

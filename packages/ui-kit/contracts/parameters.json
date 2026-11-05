@@ -541,6 +541,8 @@
         "key": "key"
       },
       "members": [
+        "generator",
+        "oklchChroma",
         "hueSet",
         "quadStart",
         "hue",

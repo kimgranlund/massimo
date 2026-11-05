@@ -225,7 +225,8 @@
   "resolvers": [
     "tokens/colors/spectrum/index.ts",
     "tokens/colors/spectrum/contrast.ts",
-    "tokens/colors/spectrum/anchors.ts"
+    "tokens/colors/spectrum/anchors.ts",
+    "tokens/colors/spectrum/oklch.ts"
   ],
   "checks": [
     {

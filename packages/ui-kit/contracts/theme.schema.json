@@ -324,6 +324,19 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "generator": {
+              "enum": [
+                "hct",
+                "oklch"
+              ],
+              "description": "Generator"
+            },
+            "oklchChroma": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.37,
+              "description": "OKLCH chroma"
+            },
             "hueSet": {
               "enum": [
                 "quad",

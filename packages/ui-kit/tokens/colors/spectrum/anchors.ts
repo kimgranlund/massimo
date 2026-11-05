@@ -54,7 +54,7 @@ function oklchToLinear([L, C, h]: number[], gamut: string) {
 }
 const inGamut = (lch: number[], gamut: string) => oklchToLinear(lch, gamut).every((c) => c >= -1e-4 && c <= 1 + 1e-4);
 /** The largest chroma ≤ C at this lightness and hue inside the gamut. */
-function clampChroma(L: number, C: number, h: number, gamut: string) {
+export function clampChroma(L: number, C: number, h: number, gamut: string) {
   if (inGamut([L, C, h], gamut)) return C;
   let lo = 0, hi = C;
   for (let i = 0; i < 24; i++) { const mid = (lo + hi) / 2; if (inGamut([L, mid, h], gamut)) lo = mid; else hi = mid; }
@@ -62,15 +62,17 @@ function clampChroma(L: number, C: number, h: number, gamut: string) {
 }
 /** Relative luminance (Y) of an OKLCH color, via sRGB (the APCA input). */
 const yOf = (lch: number[]) => { const [r, g, b] = oklchToLinear(lch, 'srgb').map((c) => Math.min(1, Math.max(0, c))); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
-const toneOfY = (Y: number) => (Y > 0.008856 ? 116 * Math.cbrt(Y) - 16 : 903.3 * Y);
+/** Relative luminance (Y) of an OKLCH color, unclamped, so a color outside sRGB keeps its true luminance. */
+export const linearY = (lch: number[]) => { const [r, g, b] = oklchToLinear(lch, 'srgb'); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+export const toneOfY = (Y: number) => (Y > 0.008856 ? 116 * Math.cbrt(Y) - 16 : 903.3 * Y);
 const okLab = ([L, C, h]: number[]) => [L, C * Math.cos((h * Math.PI) / 180), C * Math.sin((h * Math.PI) / 180)];
 const deltaE = (p: number[], q: number[]) => { const [a, b] = [okLab(p), okLab(q)]; return 100 * Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); };
 
 /** A swatch's tone: the engine's, or from its color (pure gray ramps carry no HCT). */
 const toneOf = (sw: Swatch) => sw.hct?.[2] ?? toneOfY(yOf(sw.oklch));
-const css = ([L, C, h]: number[]) => `oklch(${L} ${C} ${h})`;
+export const css = ([L, C, h]: number[]) => `oklch(${L} ${C} ${h})`;
 /** Text on a fill: white or the darkest ink, whichever has the larger APCA Lc. */
-function onFill(lch: number[]): Swatch['apca'] {
+export function onFill(lch: number[]): Swatch['apca'] {
   const t = toneOfY(yOf(lch));
   const white = apcaLc(100, t), black = apcaLc(0, t);
   return white >= black ? { name: 'white', css: '#fff', lc: -white, ok: white >= 60 } as Swatch['apca'] : { name: 'black', css: '#000', lc: black, ok: black >= 60 } as Swatch['apca'];

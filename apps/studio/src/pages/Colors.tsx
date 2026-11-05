@@ -301,12 +301,14 @@ function QuadratureChart({ d, primary }: { d: SpectrumPayload['diagnostics']; pr
 
 function ChromaChart({ d }: { d: SpectrumPayload['diagnostics'] }) {
   const H = 230, L = 34, R = W - 12, T = 14, B = H - 24;
-  const maxC = Math.ceil(Math.max(...d.accents.flatMap((a) => a.curve.map(([, c]) => c))) / 20) * 20;
+  // HCT chroma runs to about 120, OKLCH chroma to about 0.4.
+  const top = Math.max(...d.accents.flatMap((a) => a.curve.map(([, c]) => c))), tick = top > 2 ? 20 : 0.1;
+  const maxC = Math.ceil(top / tick) * tick;
   const x = (t: number) => L + ((t - d.tones[0]) / (d.tones[1] - d.tones[0])) * (R - L), y = (c: number) => B - (c / maxC) * (B - T);
   const path = (pts: [number, number][]) => pts.map(([t, c], i) => `${i ? 'L' : 'M'}${x(t).toFixed(1)},${y(c).toFixed(1)}`).join('');
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className={chartSvg} role="img" aria-label={`Max in-gamut chroma by tone; peak tone ${f2(d.peakTone)}, chroma ${f2(d.peakChroma)}`}>
-      {Array.from({ length: maxC / 20 + 1 }, (_, i) => i * 20).map((c) => (
+      {Array.from({ length: Math.round(maxC / tick) + 1 }, (_, i) => i * tick).map((c) => (
         <g key={c}><line x1={L} x2={R} y1={y(c)} y2={y(c)} className={grid} /><text x={L - 6} y={y(c) + 3} textAnchor="end" className={chartTick}>{c}</text></g>
       ))}
       {Array.from({ length: 8 }, (_, i) => 20 + i * 10).map((t) => <text key={t} x={x(t)} y={H - 8} textAnchor="middle" className={chartTick}>{t}</text>)}

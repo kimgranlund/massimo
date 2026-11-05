@@ -456,15 +456,22 @@ export function App() {
                     swatch={(v) => { const c = endpointColor(v === 'pure' ? 'pure' : Number(v), k === 'white' ? 'light' : 'dark'); return pageSwatch(c, c); }} />
                 ))}
               </Group>
+              <Group title="Generator">
+                <Segmented label="Generator" value={spectrum.generator} onValue={(v) => setSpec('generator', v)} options={[['hct', 'HCT'], ['oklch', 'OKLCH']]} />
+              </Group>
               <Group title="Hues">
-                <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['radix', 'Radix']]} />
+                {spectrum.generator === 'hct' && <Segmented label="Hue set" value={spectrum.hueSet} onValue={(v) => setSpec('hueSet', v)} options={[['quad', 'Unique'], ['radix', 'Radix']]} />}
                 <Range label="First hue" value={spectrum.hue} min={0} max={359} step={1} onValue={(v) => setSpec('hue', v)} format={(v) => `${v}°`} />
               </Group>
               <Group title="Chroma">
-                <Range label="Requested chroma" value={spectrum.chroma} min={4} max={120} step={1} onValue={(v) => setSpec('chroma', v)} />
-                <Range label="Base chroma %" value={spectrum.base} min={0} max={100} step={1} onValue={(v) => setSpec('base', v)} />
+                {spectrum.generator === 'oklch'
+                  ? <Range label="Requested chroma" value={spectrum.oklchChroma} min={0} max={0.37} step={0.005} onValue={(v) => setSpec('oklchChroma', v)} />
+                  : <>
+                    <Range label="Requested chroma" value={spectrum.chroma} min={4} max={120} step={1} onValue={(v) => setSpec('chroma', v)} />
+                    <Range label="Base chroma %" value={spectrum.base} min={0} max={100} step={1} onValue={(v) => setSpec('base', v)} />
+                  </>}
                 <Range label="Falloff" value={spectrum.falloff} min={0.2} max={5} step={0.1} onValue={(v) => setSpec('falloff', v)} />
-                <Switch label="Hue balance" checked={spectrum.hb === 1} onValue={(v) => setSpec('hb', v ? 1 : 0)} />
+                {spectrum.generator === 'hct' && <Switch label="Hue balance" checked={spectrum.hb === 1} onValue={(v) => setSpec('hb', v ? 1 : 0)} />}
               </Group>
               <Group title="Emphasis">
                 <Segmented label="Selection" value={String(params.emphasis)} onValue={(v) => setParam('emphasis', Number(v))} options={[['0', 'Quiet'], ['1', 'Balanced'], ['2', 'Loud']]} />

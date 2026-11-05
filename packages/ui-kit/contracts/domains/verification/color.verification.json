@@ -6,11 +6,11 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "15044a8ebc49cd0ca6358eea22dc7707869c853367daf481b925b7ce0a2096ad"
+      "sha256": "ac4f2d7fd360822cdbe28c94c12a7b0d92694b414f2083e336a5d85597e2594e"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
-      "sha256": "b4875d77e812ffe88931993a384a876666ef9c17232844cf494a84667cc9443b"
+      "sha256": "63a11aaf2b032484e3a649ae8a2b455e7169072f9888374c916923e36796f4e4"
     },
     {
       "path": "tokens/colors/spectrum/contrast.ts",
@@ -22,7 +22,7 @@
     },
     {
       "path": "contracts/domains/color.json",
-      "sha256": "11876be47a054169adf0f18cfd9499edc5fd5615ab0b4ddd9c311a1314f8f441"
+      "sha256": "1224ab9d31e360855365e438cefb3c32ce4548bc6b1fa614da75cddf3d97f620"
     },
     {
       "path": "tokens/themes/descriptors.ts",
@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "89be9f1de8ff1469db659fc52eda402ab7c420755dd01f895bd15704c01f8b06"
+      "sha256": "fc2dfbb67821cba67f831f86f196c776d3b16e3e30add080658584977cd66812"
     }
   ],
   "renderers": {

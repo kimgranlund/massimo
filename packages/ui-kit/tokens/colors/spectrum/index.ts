@@ -1,10 +1,12 @@
-// Spectrum: HCT-generated, Radix-style 12-step ramps (light and dark) and their mapping onto
-// the kit's semantic color variables. Generation runs the vendored engine (runtime.json, see
-// NOTICE.md) lazily; it takes ~300ms, so callers should debounce.
+// Spectrum: generated Radix-style 12-step ramps (light and dark) and their mapping onto the kit's
+// semantic color variables. The default generator runs the vendored HCT engine (runtime.json, see
+// NOTICE.md) lazily; it takes ~300ms, so callers should debounce. `generator: 'oklch'` runs oklch.ts
+// instead and never starts the engine.
 import RUNTIME from './runtime.json' with { type: 'json' };
 import { RADIX_HUES, SPECTRUM_FIXED, normalizeSpectrum, type SpectrumSettings } from './config.ts';
 import { apcaLc, stepTones, DEFAULT_TARGETS } from './contrast.ts';
 import { applyAnchors, type SolidSteps } from './anchors.ts';
+import { generateOklch, oklchBoundary, quadratureOf } from './oklch.ts';
 export { apcaLc, stepTones, toneForLc, DEFAULT_TARGETS, TARGET_MAX } from './contrast.ts';
 export { applyAnchors, isAnchorColor, type ColorAnchor, type AnchorResult, type SolidSteps } from './anchors.ts';
 
@@ -12,6 +14,7 @@ export * from './config.ts';
 import { ROLE_NAMES, type RoleName, type Roles, DEFAULT_ROLES, trimColor, SCALE_ROLES, ROLE_STEPS, rampVar, roleStep, withAlpha, selectionVars, type Endpoint, type Endpoints, DEFAULT_ENDPOINT } from './roles.ts';
 export * from './roles.ts';
 
+/** `hct` is hue, chroma and tone in the generator's own terms: HCT, or the OKLCH hue and chroma. Tone is CIE L* in both. */
 export interface Swatch { step: number; stop: number; css: string; oklch: [number, number, number]; hct: [number, number, number]; apca: { css: string; lc: number; ok: boolean } }
 export type Scheme = Record<string, Swatch[]>;
 interface Checks { peakTone: number; rows: Record<string, { roles: { r11: number; r12: number }; passes: { r11: boolean; r12: boolean } }> }
@@ -41,7 +44,7 @@ function load() {
     return f;
   } as unknown as FunctionConstructor;
   try {
-    const first = engine.generate({ ...normalizeSpectrum({}), ladder: 'even', ...SPECTRUM_FIXED });
+    const first = engine.generate({ ...engineSettings(normalizeSpectrum({})), ladder: 'even', ...SPECTRUM_FIXED });
     for (const mode of ['light', 'dark'] as const) stepStops[mode] = Object.values(first.schemes[mode])[0].map((sw) => sw.stop);
   } finally { g.Function = Orig; }
   return engine;
@@ -77,7 +80,7 @@ export function gamutBoundary(hue: number, tone: number, target: string): number
 
 /** Generate both schemes. Throws on invalid settings or a malformed ramp. */
 /** The engine's own settings: ours minus the contrast targets. */
-const engineSettings = (s: SpectrumSettings) => { const { targetsLight: _l, targetsDark: _d, ...rest } = s; return rest; };
+const engineSettings = (s: SpectrumSettings) => { const { targetsLight: _l, targetsDark: _d, generator: _g, oklchChroma: _c, ...rest } = s; return rest; };
 /** A ramp the legacy way (the engine's own tone placement), for measuring targets from old settings. */
 const generateLegacy = (s: SpectrumSettings) => engine!.generate({ ...engineSettings(s), ...SPECTRUM_FIXED, tint: s.tint }) as Spectrum;
 /** The contrast targets (steps 2–12) a ramp has against its page, per scheme, measured on the neutral family. */
@@ -92,6 +95,7 @@ export function measureTargets(data: Spectrum) {
 
 export function generateSpectrum(settings: SpectrumSettings = {}): Spectrum {
   const s = normalizeSpectrum(settings);
+  if (s.generator === 'oklch') return generateOklch(s);
   load();
   // Contrast targets (contrast.ts): a theme that sets only the legacy tone placement (peak tone,
   // scale) has its targets measured from the ramp those settings produce.
@@ -124,7 +128,10 @@ const hueOf = (data: Spectrum, name: string) => data.schemes.light[name][8].hct[
 export function closestFamily(data: Spectrum, requested: string, candidates: string[]): string {
   if (candidates.includes(requested)) return requested;
   const hue = RADIX_HUES[requested] ?? (/^h\d{3}$/.test(requested) ? Number(requested.slice(1)) : 25);
-  const distance = (n: string) => { const d = Math.abs(hueOf(data, n) - hue) % 360; return Math.min(d, 360 - d); };
+  // The Radix hues are HCT. Under OKLCH both sides compare in hue quadrature, a scale they share.
+  const oklch = data.settings.generator === 'oklch', span = oklch ? 400 : 360, want = oklch ? hueQuadrature(hue) : hue;
+  const at = (n: string) => (oklch ? quadratureOf(hueOf(data, n)) : hueOf(data, n));
+  const distance = (n: string) => { const d = Math.abs(at(n) - want) % span; return Math.min(d, span - d); };
   return candidates.reduce((best, n) => (distance(n) < distance(best) ? n : best));
 }
 
@@ -244,12 +251,14 @@ export interface SpectrumDiagnostics {
 export function spectrumDiagnostics(data: Spectrum, roles: Roles, step = 2): SpectrumDiagnostics {
   const accents = families(data).accents;
   const light = data.schemes.light, target = data.settings.target;
+  const oklch = data.settings.generator === 'oklch';
+  const boundary = oklch ? oklchBoundary : gamutBoundary, quadrature = oklch ? quadratureOf : hueQuadrature;
   const peakTone = data.checks?.light.peakTone ?? light[accents[0]][8].hct[2];
   const rows = accents.map((name) => {
     const h = light[name][8].hct[0];
     const curve: [number, number][] = [];
-    for (let T = 20; T <= 92; T += step) curve.push([T, gamutBoundary(h, T, target)]);
-    return { name, color: light[name][8].css, h, H: hueQuadrature(h), curve, atPeak: gamutBoundary(h, peakTone, target) };
+    for (let T = 20; T <= 92; T += step) curve.push([T, boundary(h, T, target)]);
+    return { name, color: light[name][8].css, h, H: quadrature(h), curve, atPeak: boundary(h, peakTone, target) };
   });
   const limiting = rows.reduce((a, b) => (b.atPeak < a.atPeak ? b : a));
   const weakest = rows[0].curve.map(([T], i) => [T, Math.min(...rows.map((r) => r.curve[i][1]))] as [number, number]);

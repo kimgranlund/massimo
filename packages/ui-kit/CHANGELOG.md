@@ -9,6 +9,7 @@
 - `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
 - `divided` on `ui-container` (React `divided`): an outlined group or collection of full-bleed rows with lines between them.
 - `ui-row` (React `Row`): a composed row of text and actions that inherits its inset from its container, with `header` for a title row.
+- `color.spectrum.generator`: `oklch` generates the ramps in OKLCH with the same families, steps, contrast targets and anchors. `hct` stays the default.
 - `reach` on a color anchor: `key` or `ramp`, how far the anchor's chroma spreads through its family.
 
 **Breaking**
