@@ -15,7 +15,7 @@
 // were removed: docs/decisions/0016-remove-container-level-tags.md.)
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CARD_PADDINGS, CONTAINER_DEPTH, CONTAINERS, NESTED_CARD_FLOOR, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
-import { CONTROL_RADIUS, mergeStyles, tagRules } from '../recipe-parts.ts';
+import { CONTROL_RADIUS, FIELD_TEXT_EDGE, mergeStyles, tagRules } from '../recipe-parts.ts';
 
 type Layout = Exclude<ContainerLevel, 'composite'>;
 
@@ -136,6 +136,11 @@ export const containerChain = Object.fromEntries([
   }),
 ]);
 
+// A card's header starts on the text edge, like the field labels and rows under it: headings, titles
+// and kickers that are the card's own children, by element, data-type or textStyle class.
+const CARD_HEADER = ':is(h1, h2, h3, h4, h5, h6, [data-type^=heading], [data-type=title], [data-type$=kicker], [class*="textStyle_heading"], [class*="textStyle_title"], [class*="-kicker"])';
+const cardHeaders = { [`:is(ui-container, [data-ui=container])[preset=card] > ${CARD_HEADER}`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
+
 /** The CSS-only tag's rules: the recipe keyed on ui-container and [data-ui=container], then the nesting chain. */
 // An area keeps its own level when it is given a padding (areas are square; padding is the card ladder).
 const areaPadding = Object.fromEntries((['panel', 'region', 'page'] as const).map((a) => [`:is(ui-container, [data-ui=container])[preset=${a}][padding]`, level(a)]));
@@ -146,4 +151,5 @@ export const containerTags = mergeStyles(
   tagRules(':is(ui-container, [data-ui=container])', uiContainer),
   areaPadding,
   containerChain,
+  cardHeaders,
 );

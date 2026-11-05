@@ -987,7 +987,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1004,6 +1004,8 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'group.radius': [rad('ui-container[preset=group]'), resolveContainer('group', g).radius],
     'collection.radius': [rad('ui-container[preset=collection]'), resolveContainer('collection', g).radius],
     'group.concentric': [rad('ui-container[preset=group]'), s === 0 ? 0 : rad('ui-container[preset=group] > ui-button') + resolveContainer('group', g).edge],
+    'card.header.edge': [px(getComputedStyle(box.querySelector('#cHk')).paddingLeft), resolveField(g).textEdge],
+    'card.body.edge': [px(getComputedStyle(box.querySelector('#cHp')).paddingLeft), 0],
     'card.radius.padding': [rad('#cC'), resolveContainer('card-md', g).edge * Math.min(1, s)],
     // The magnitude t: the radius attribute on one element, the theme's radius-<family> on a scope.
     'group.radius.attr': [rad('#gT'), resolveContainer('group', { ...g, radius: 0.5 }).radius],

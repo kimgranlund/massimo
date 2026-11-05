@@ -153,7 +153,7 @@
       },
       "constraints": [
         "CSS-only tag: no script, nothing to register. preset (group, collection, card, panel, region, page) sets the starting geometry, flow and surface; layout and surface override it.",
-        "Nesting: padding is the input and radius follows. A root keeps its preset geometry; a nested container is concentric when its parent has room, else R_parent × k (container-ratio); a nested card steps down the ladder to 3u; an unpainted group or collection has no padding and passes its parent through. Areas (panel, region, page) are square and restart the chain.",
+        "Nesting: padding is the input and radius follows. A root keeps its preset geometry; a nested container is concentric when its parent has room, else R_parent × k (container-ratio); a nested card steps down the ladder to 3u; an unpainted group or collection has no padding and passes its parent through. Areas (panel, region, page) are square and restart the chain. A card's direct headings, titles and kickers start on the text edge, like field labels.",
         "Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
       "avoidWhen": [
