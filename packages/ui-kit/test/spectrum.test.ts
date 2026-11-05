@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { generateSpectrum, resolveRoles, roleVariables, spectrumCSS, families } from '../tokens/colors/spectrum/index.ts';
+import { generateSpectrum, rampVar, resolveRoles, roleVariables, spectrumCSS, families } from '../tokens/colors/spectrum/index.ts';
 import { normalizeSpectrum, spectrumOverrides, SPECTRUM_DEFAULTS } from '../tokens/colors/spectrum/config.ts';
 
 test('settings validate field by field', () => {
@@ -19,13 +19,13 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.ok(f.accents.includes(roles.primary));
   assert.ok(f.accents.includes(roles.critical));
   const light = roleVariables(data, roles, 'light'), dark = roleVariables(data, roles, 'dark');
-  assert.equal(light['--colors-primary-solid'], `var(--colors-spectrum-${roles.primary}-9)`);
-  assert.equal(light['--colors-bg'], `var(--colors-spectrum-${roles.neutral}-1)`);
-  assert.equal(light['--colors-bg-overlay'], `var(--colors-spectrum-${roles.neutral}-1)`, 'overlay = page tone in light');
-  assert.equal(dark['--colors-bg-overlay'], `var(--colors-spectrum-${roles.neutral}-2)`, 'overlay one step up in dark');
-  assert.equal(dark['--colors-bg-inverse'], `var(--colors-spectrum-${roles.neutral}-12)`);
-  assert.equal(light['--colors-bg-backdrop'], `color-mix(in oklch, var(--colors-spectrum-${roles.neutral}-12) 40%, transparent)`);
-  assert.equal(dark['--colors-bg-backdrop'], `color-mix(in oklch, var(--colors-spectrum-${roles.neutral}-1) 70%, transparent)`);
+  assert.equal(light['--colors-primary-solid'], `var(${rampVar(roles.primary, 9)})`);
+  assert.equal(light['--colors-bg'], `var(${rampVar(roles.neutral, 1)})`);
+  assert.equal(light['--colors-bg-overlay'], `var(${rampVar(roles.neutral, 1)})`, 'overlay = page tone in light');
+  assert.equal(dark['--colors-bg-overlay'], `var(${rampVar(roles.neutral, 2)})`, 'overlay one step up in dark');
+  assert.equal(dark['--colors-bg-inverse'], `var(${rampVar(roles.neutral, 12)})`);
+  assert.equal(light['--colors-bg-backdrop'], `color-mix(in oklch, var(${rampVar(roles.neutral, 12)}) 40%, transparent)`);
+  assert.equal(dark['--colors-bg-backdrop'], `color-mix(in oklch, var(${rampVar(roles.neutral, 1)}) 70%, transparent)`);
   assert.ok(['#fff', '#000'].includes(dark['--colors-fg-on-solid']));
   const { ramps } = await import('../tokens/colors/spectrum/index.ts');
   assert.equal(data.schemes.light[roles.neutral][0].hct[2].toFixed(1), '97.5', 'light step 1 = Light endpoint tone');
@@ -35,9 +35,11 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.equal(ramps(data, 'light')[roles.neutral].length, 12, 'steps 1-12');
   const css = spectrumCSS(data, roles);
   assert.match(css, /@media \(prefers-color-scheme: dark\)/);
-  assert.match(css, /--colors-spectrum-\w+-12:/);
-  assert.doesNotMatch(css, /--colors-spectrum-\w+-0:/, 'no step 0');
-  assert.match(css, /--colors-primary-solid: var\(--colors-spectrum-/);
+  assert.match(css, /--colors-indigo-12:/);
+  assert.match(css, /--colors-gray-12:/);
+  assert.match(css, /--colors-neutral-12: var\(--colors-gray-12\)/, 'the neutral role aliases its ramp, not itself');
+  assert.doesNotMatch(css, /--colors-\w+-0:/, 'no step 0');
+  assert.match(css, /--colors-primary-solid: var\(--colors-[a-z]+-\d+\)/);
   assert.equal(resolveRoles(data, { primary: 'blue' }).primary !== undefined, true, 'unknown names resolve by hue');
   const scoped = spectrumCSS(data, roles, '[data-canvas]');
   assert.match(scoped, /^\[data-canvas\] \{/);
@@ -77,9 +79,9 @@ test('roles: brand, feedback and data 1–6 resolve to generated families and em
   assert.notEqual(roles.info, roles.primary, 'info is not the primary by default');
   assert.notEqual(roles.secondary, roles.primary);
   const v = roleVariables(data, roles, 'light');
-  assert.equal(v['--colors-data-3'], `var(--colors-spectrum-${roles.data3}-9)`);
-  assert.equal(v['--colors-secondary-solid'], `var(--colors-spectrum-${roles.secondary}-9)`);
-  assert.equal(v['--colors-warning-fg'], `var(--colors-spectrum-${roles.warning}-11)`);
+  assert.equal(v['--colors-data-3'], `var(${rampVar(roles.data3, 9)})`);
+  assert.equal(v['--colors-secondary-solid'], `var(${rampVar(roles.secondary, 9)})`);
+  assert.equal(v['--colors-warning-fg'], `var(${rampVar(roles.warning, 11)})`);
   assert.equal(resolveRoles(data, { critical: 'h140' }).critical !== roles.critical, true, 'any role can be repointed');
 });
 

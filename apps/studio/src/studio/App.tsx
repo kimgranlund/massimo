@@ -201,7 +201,7 @@ export function App() {
   const ramp = (family: string | undefined, mode: 'light' | 'dark', step: number) => generated?.families.find((f) => f.name === family)?.[mode][step - 1] ?? 'transparent';
   const neutral = generated?.roles.neutral;
   const darkNow = scheme === 'dark' || (scheme === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches);
-  // Read from the generation, never --colors-spectrum-*: the panel wears the jig's own brand, whose
+  // Read from the generation, never the ramp variables: the panel wears the jig's own brand, whose
   // anchors recolor those ramps, so a variable there shows that brand instead of the tuned theme.
   const pageSwatch = (darkFg: string, lightFg: string): SwatchSpec => ({ dark: [ramp(neutral, 'dark', 1), darkFg], light: [ramp(neutral, 'light', 1), lightFg] });
   const endpointColor = (e: Endpoint, mode: 'light' | 'dark') => e === 'pure' ? (mode === 'light' ? '#fff' : '#000') : ramp(neutral, mode, e);

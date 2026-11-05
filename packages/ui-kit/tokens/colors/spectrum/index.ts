@@ -9,7 +9,7 @@ export { apcaLc, stepTones, toneForLc, DEFAULT_TARGETS, TARGET_MAX } from './con
 export { applyAnchors, isAnchorColor, type ColorAnchor, type AnchorResult, type SolidSteps } from './anchors.ts';
 
 export * from './config.ts';
-import { ROLE_NAMES, type RoleName, type Roles, DEFAULT_ROLES, trimColor, SCALE_ROLES, ROLE_STEPS, roleStep, withAlpha, selectionVars, type Endpoint, type Endpoints, DEFAULT_ENDPOINT } from './roles.ts';
+import { ROLE_NAMES, type RoleName, type Roles, DEFAULT_ROLES, trimColor, SCALE_ROLES, ROLE_STEPS, rampVar, roleStep, withAlpha, selectionVars, type Endpoint, type Endpoints, DEFAULT_ENDPOINT } from './roles.ts';
 export * from './roles.ts';
 
 export interface Swatch { step: number; stop: number; css: string; oklch: [number, number, number]; hct: [number, number, number]; apca: { css: string; lc: number; ok: boolean } }
@@ -155,21 +155,21 @@ export function roleVariables(data: Spectrum, roles: Roles, mode: 'light' | 'dar
   const vars: Record<string, string> = {};
   for (const [role, entry] of Object.entries(ROLE_STEPS)) {
     const { family, step, alpha } = roleStep(entry, mode);
-    vars[`--colors-${role}`] = withAlpha(`var(--colors-spectrum-${roles[family]}-${step})`, alpha);
+    vars[`--colors-${role}`] = withAlpha(`var(${rampVar(roles[family], step)})`, alpha);
   }
   // An anchored role's solid follows its anchor (applyAnchors): solid at the anchored step, hover one
   // darker (one lighter at step 12, the darkest).
   for (const [role, s] of Object.entries(solidSteps) as [RoleName, number][]) {
     if (!(SCALE_ROLES as readonly string[]).includes(role)) continue;
-    vars[`--colors-${role}-solid`] = `var(--colors-spectrum-${roles[role]}-${s})`;
-    vars[`--colors-${role}-solid-hover`] = `var(--colors-spectrum-${roles[role]}-${s === 12 ? 11 : s + 1})`;
+    vars[`--colors-${role}-solid`] = `var(${rampVar(roles[role], s)})`;
+    vars[`--colors-${role}-solid-hover`] = `var(${rampVar(roles[role], s === 12 ? 11 : s + 1)})`;
   }
   // Text on a primary solid: the engine's APCA choice for the solid step (9 unless anchored).
   vars['--colors-fg-on-solid'] = data.schemes[mode][roles.primary][(solidSteps.primary ?? 9) - 1].apca.css;
   // White and black: neutral step 3 of the light and dark ramps, the same in both schemes; fg.strong
   // (headings, titles) is black in light, white in dark. endpointVars maps them to another family.
   Object.assign(vars, endpointVars(data, roles));
-  vars['--colors-fg-strong'] = data.strongInk?.[mode] ? `var(--colors-spectrum-${roles.neutral}-12)` : mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
+  vars['--colors-fg-strong'] = data.strongInk?.[mode] ? `var(${rampVar(roles.neutral, 12)})` : mode === 'dark' ? 'var(--colors-white)' : 'var(--colors-black)';
   // The selection fills follow the theme's emphasis (selectionVars).
   for (const [k, v] of Object.entries(selectionVars(mode))) vars[`--colors-${k}`] = v;
   return vars;
@@ -192,11 +192,11 @@ const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object
  * CSS that applies a spectrum over the kit's semantic colors, mirroring the kit's scheme
  * structure: light by default, dark under prefers-color-scheme, .light/.dark to force. Emit it
  * after the kit stylesheet; selectors match the kit's own so each rule wins its counterpart.
- * Variable names match the kit's tokens (--colors-spectrum-{family}-{1..12}, --colors-{role}).
+ * Variable names match the kit's tokens (--colors-{family}-{1..12}, --colors-{role}).
  */
 export function spectrumCSS(data: Spectrum, roles: Roles, scope?: string, solidSteps: SolidSteps = { light: {}, dark: {} }) {
   const light = roleVariables(data, roles, 'light', solidSteps.light), dark = roleVariables(data, roles, 'dark', solidSteps.dark);
-  const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [`--colors-spectrum-${name}-${i + 1}`, css])));
+  const rampVars = (mode: 'light' | 'dark') => Object.fromEntries(Object.entries(ramps(data, mode)).flatMap(([name, steps]) => steps.map((css, i) => [rampVar(name, i + 1), css])));
   // Scoped: everything is declared on the scope element itself, so it re-resolves there and
   // nothing outside it changes; .light/.dark on the scope element force a scheme.
   const sel = scope

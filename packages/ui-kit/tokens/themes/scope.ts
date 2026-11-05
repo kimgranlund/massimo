@@ -29,9 +29,11 @@ type Vars = Record<string, string>;
 function usedOnly(colors?: { light: Vars; dark: Vars }) {
   if (!colors) return undefined;
   const keep = (vars: Vars) => {
-    const refs = Object.entries(vars).filter(([k]) => !k.startsWith('--colors-spectrum-')).map(([, v]) => v).join(' ');
-    const used = new Set([...refs.matchAll(/--colors-spectrum-([a-z0-9-]+?)-\d+\b/g)].map((m) => m[1]));
-    return Object.fromEntries(Object.entries(vars).filter(([k]) => { const m = /^--colors-spectrum-([a-z0-9-]+?)-\d+$/.exec(k); return !m || used.has(m[1]); }));
+    // A ramp step holds its color; a role with a step in its name (primary-3, data-1) aliases one.
+    const family = (k: string, v: string) => (v.includes('var(') ? undefined : /^--colors-([a-z]+)-\d+$/.exec(k)?.[1]);
+    const refs = Object.entries(vars).filter(([k, v]) => !family(k, v)).map(([, v]) => v).join(' ');
+    const used = new Set([...refs.matchAll(/--colors-([a-z]+)-\d+\b/g)].map((m) => m[1]));
+    return Object.fromEntries(Object.entries(vars).filter(([k, v]) => { const f = family(k, v); return !f || used.has(f); }));
   };
   return { light: keep(colors.light), dark: keep(colors.dark) };
 }

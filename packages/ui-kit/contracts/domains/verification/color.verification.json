@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/colors/spectrum/index.ts",
-      "sha256": "c987e59ae90abcde2d28fefb5876064a83e65766137afc28cdd3d792587cc163"
+      "sha256": "15044a8ebc49cd0ca6358eea22dc7707869c853367daf481b925b7ce0a2096ad"
     },
     {
       "path": "tokens/colors/spectrum/config.ts",
@@ -18,7 +18,7 @@
     },
     {
       "path": "tokens/colors/index.ts",
-      "sha256": "bccc8df81a23364d58c61e18c82e84141ca1d49da6d569c7e96f412892bbbe40"
+      "sha256": "a7adcccfad82c3d9661a6dfafec73d799a0bf29e0569c01f509daf757743f7d5"
     },
     {
       "path": "contracts/domains/color.json",

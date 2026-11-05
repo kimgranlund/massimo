@@ -1,10 +1,10 @@
 // Kit colors: the default Spectrum (HCT-generated, Radix-style ramps with separate light and
 // dark values), from the generated snapshot in spectrum/defaults.json. Every family is a token
-// group colors.spectrum.{family}.{1..12} (1 = the scheme's endpoint tone); semantic roles alias ramp steps
+// group colors.{family}.{1..12} (1 = the scheme's endpoint tone); semantic roles alias ramp steps
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply
 // other settings at runtime with spectrumCSS (same variable names).
 import DEFAULTS from './spectrum/defaults.json' with { type: 'json' };
-import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, roleStep, selectionVars, withAlpha } from './spectrum/roles.ts';
+import { DEFAULT_ENDPOINT, ROLE_STEPS, SHADOW_LAYERS, rampName, roleStep, selectionVars, withAlpha } from './spectrum/roles.ts';
 import { elevationTokens } from '../elevation/index.ts';
 
 type Snapshot = { roles: Record<string, string>; onSolid: { light: string; dark: string }; light: Record<string, string[]>; dark: Record<string, string[]> };
@@ -22,14 +22,14 @@ export const colors = {
 };
 
 const spectrum = Object.fromEntries(Object.keys(D.light).map((family) => [
-  family,
+  rampName(family),
   Object.fromEntries(D.light[family].map((css, i) => [i + 1, schemed(css, D.dark[family][i])])),
 ]));
 
 // Role tokens: "primary.solid" style paths from ROLE_STEPS names, aliasing ramp steps.
 const roles: Record<string, any> = {};
 for (const [role, entry] of Object.entries(ROLE_STEPS)) {
-  const at = (mode: 'light' | 'dark') => { const r = roleStep(entry, mode); return withAlpha(`{colors.spectrum.${D.roles[r.family]}.${r.step}}`, r.alpha); };
+  const at = (mode: 'light' | 'dark') => { const r = roleStep(entry, mode); return withAlpha(`{colors.${rampName(D.roles[r.family])}.${r.step}}`, r.alpha); };
   const ref = at('light'), dref = at('dark');
   const [group, ...rest] = role.split('-');
   const key = rest.length ? rest.map((p, i) => (i ? p[0].toUpperCase() + p.slice(1) : p)).join('') : 'DEFAULT';
@@ -52,7 +52,7 @@ export const semanticShadows = Object.fromEntries(Object.entries(elevation.shado
 const elevationFills = Object.fromEntries(Object.entries(elevation.fills).map(([k, v]) => [k, schemed(v, v)]));
 
 export const semanticColors = {
-  spectrum,
+  ...spectrum,
   ...roles,
   elevation: elevationFills,
   shadowLayer,

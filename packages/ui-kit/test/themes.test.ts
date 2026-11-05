@@ -72,7 +72,7 @@ test('themeCss emits defaults on :root and one root-scoped block per theme: para
   assert.ok(root['--colors-primary-solid'], 'colors in light on the theme root');
   assert.ok(full[':root[data-ui-theme="harbor"].dark']['--colors-primary-solid'], 'a forced dark root');
   assert.ok(full['@media (prefers-color-scheme: dark)'][':root[data-ui-theme="harbor"]:not(.light)'], 'the OS dark scheme');
-  assert.notEqual(full[':root[data-ui-theme="harbor"].dark']['--colors-spectrum-neutral-1'], root['--colors-spectrum-neutral-1'], 'dark ramps differ from light');
+  assert.notEqual(full[':root[data-ui-theme="harbor"].dark']['--colors-gray-1'], root['--colors-gray-1'], 'dark ramps differ from light');
 });
 
 test('diffFromDefaults keeps only changed params', () => {

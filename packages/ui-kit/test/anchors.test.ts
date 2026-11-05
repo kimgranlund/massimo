@@ -1,7 +1,7 @@
 // Color anchors (spectrum/anchors.ts): a brand's exact colors in the generated ramps.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { generateSpectrum, resolveRoles, anchoredSpectrum } from '../tokens/colors/spectrum/index.ts';
+import { generateSpectrum, rampVar, resolveRoles, anchoredSpectrum } from '../tokens/colors/spectrum/index.ts';
 import { apcaLc } from '../tokens/colors/spectrum/contrast.ts';
 import { themeCss } from '../tokens/themes/index.ts';
 import { validateThemeObject } from '../tokens/themes/theme.ts';
@@ -41,9 +41,9 @@ test('anchors: an anchor at steps 8–12 moves its role\'s solid there, and them
   assert.equal(r.solidSteps.light.primary, step);
   const css = themeCss({ b: { schemaVersion: 2, name: 'b', color: { anchors: [{ role: 'primary', value: '#0f62fe' }] } } });
   const light = css[':root[data-ui-theme="b"]'];
-  assert.equal(light['--colors-primary-solid'], `var(--colors-spectrum-${roles.primary}-${step})`);
-  assert.equal(light['--colors-primary-solid-hover'], `var(--colors-spectrum-${roles.primary}-${Math.min(12, step + 1)})`);
-  assert.match(light[`--colors-spectrum-${roles.primary}-${step}`], /^oklch\(/);
+  assert.equal(light['--colors-primary-solid'], `var(${rampVar(roles.primary, step)})`);
+  assert.equal(light['--colors-primary-solid-hover'], `var(${rampVar(roles.primary, Math.min(12, step + 1))})`);
+  assert.match(light[rampVar(roles.primary, step)], /^oklch\(/);
   // The text on the anchored solid is recomputed for it.
   const sw = r.data.schemes.light[roles.primary][step - 1];
   assert.ok(Math.abs(sw.apca.lc) >= 60, `text on the anchored solid reads (Lc ${sw.apca.lc})`);
@@ -127,7 +127,7 @@ test('anchors: a near-black brand primary (step 12) becomes the solid, with hove
   assert.equal(r.report[0].step, 12);
   assert.equal(r.solidSteps.light.primary, 12);
   const css = themeCss({ n: { schemaVersion: 2, name: 'n', color: { anchors: [{ role: 'primary', value: '#1f3a5f' }] } } })[':root[data-ui-theme="n"]'];
-  assert.equal(css['--colors-primary-solid-hover'], `var(--colors-spectrum-${roles.primary}-11)`);
+  assert.equal(css['--colors-primary-solid-hover'], `var(${rampVar(roles.primary, 11)})`);
 });
 
 test('anchors: two anchors on one family split: the second role moves to the nearest free family', () => {
@@ -146,7 +146,7 @@ test('anchors: two anchors on one family split: the second role moves to the nea
 
 test('anchors: light solid steps stay in light; a dark anchor color sets its own dark step and solid', () => {
   const navy = themeCss({ n: { schemaVersion: 2, name: 'n', color: { anchors: [{ role: 'primary', value: '#1f3a5f' }] } } });
-  assert.equal(navy[':root[data-ui-theme="n"]']['--colors-primary-solid'], `var(--colors-spectrum-${roles.primary}-12)`, 'light: the anchored step');
+  assert.equal(navy[':root[data-ui-theme="n"]']['--colors-primary-solid'], `var(${rampVar(roles.primary, 12)})`, 'light: the anchored step');
   assert.ok(!navy[':root[data-ui-theme="n"].dark']['--colors-primary-solid']?.endsWith('-12)'), 'dark: not the lightest dark step');
   const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#1f3a5f', dark: '#7fb2f0' }]);
   const d = r.report[0].dark!;

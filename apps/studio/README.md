@@ -18,8 +18,8 @@ npm run studio:build  # production build (hashed class names)
 ## How styling flows
 
 ```
-Spectrum settings  ->  engine (HCT)  ->  ramps   --colors-spectrum-indigo-9 (light and dark values)
-                                         roles   --colors-primary-solid: var(--colors-spectrum-indigo-9)
+Spectrum settings  ->  engine (HCT)  ->  ramps   --colors-indigo-9 (light and dark values)
+                                         roles   --colors-primary-solid: var(--colors-indigo-9)
 theme parameters   ->  --ui-unit, --ui-border, --ui-radius-scale, --ui-corner-shape, --ui-type-*, --ui-motion-*, --ui-pad-*, --ui-gap-*
                        -> geometry CSS and the u-based Panda tokens (--spacing-*, --radii-*, …)
 ```

@@ -28,7 +28,7 @@ test('the schema check bites: malformed tokens are rejected', () => {
   bad.control.height.$value = { value: '32', unit: 'em' };
   assert.equal(validate(bad), false);
   const badColor = JSON.parse(files['color.light.dtcg.json']);
-  badColor.color.spectrum.indigo['9'].$value = { colorSpace: 'cmyk', components: [0, 0, 0, 0] };
+  badColor.color.indigo['9'].$value = { colorSpace: 'cmyk', components: [0, 0, 0, 0] };
   assert.equal(validate(badColor), false);
 });
 
@@ -58,6 +58,6 @@ test('types cover the system: ratios are numbers, roles are typography, ramps ar
   assert.equal(t.typography['heading-1'].$type, 'typography');
   assert.equal(t.typography['heading-1'].$value.fontFamily, '{font.voice.heading}');
   assert.equal(t.font.voice.heading.$value, '{font.face.sans}');
-  assert.equal(c.color.spectrum.indigo['9'].$value.colorSpace, 'oklch');
-  assert.equal(c.color.role['primary-solid'].$value, '{color.spectrum.indigo.9}');
+  assert.equal(c.color.indigo['9'].$value.colorSpace, 'oklch');
+  assert.equal(c.color.role['primary-solid'].$value, '{color.indigo.9}');
 });

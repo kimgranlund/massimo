@@ -35,7 +35,7 @@ test('scope: the base block redeclares the theme and every derived token; colors
 test('scope: a theme without colors still scopes its parameters and shadow colors', () => {
   const css = themeScopeCss({ schemaVersion: 2, name: 'plain', motion: { parameters: { 'motion-scale': 0.5 } } });
   assert.match(css, /--ui-motion-scale: 0\.5;/);
-  assert.ok(!css.includes('--colors-spectrum-'), 'no ramps without a color section');
+  assert.doesNotMatch(css, /--colors-[a-z]+-\d+: oklch/, 'no ramps without a color section');
   assert.match(css, /--colors-shadow-layer-umbra:/);
 });
 
@@ -50,8 +50,8 @@ test('scope: a theme with its own scheme leads with it; the scope element can st
 
 test('scope: only the ramp families its roles use are emitted', () => {
   const css = themeScopeCss(theme);
-  const fams = new Set([...css.matchAll(/--colors-spectrum-([a-z0-9-]+?)-\d+:/g)].map((m) => m[1]));
-  const refs = new Set([...css.matchAll(/var\(--colors-spectrum-([a-z0-9-]+?)-\d+\)/g)].map((m) => m[1]));
+  const fams = new Set([...css.matchAll(/--colors-([a-z]+)-\d+: oklch/g)].map((m) => m[1]));
+  const refs = new Set([...css.matchAll(/var\(--colors-(?!neutral|primary|secondary|critical|warning|success|info)([a-z]+)-\d+\)/g)].map((m) => m[1]));
   assert.deepEqual([...fams].sort(), [...refs].sort(), 'every declared family is referenced, and every referenced one declared');
   assert.ok(fams.size < 13, `${fams.size} families, not all`);
   assert.ok(css.length < 80_000, `${css.length} bytes`);

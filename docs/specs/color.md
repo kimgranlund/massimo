@@ -9,7 +9,7 @@ The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generat
 - Each family has steps 1–12 per scheme. Step semantics follow Radix: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.
 - Step 1 is the page: the **light page** tone (`toneMax`, default HCT tone 97.5) in light, the **dark page** tone (`darkTone`, default 5) in dark. 100 / 0 give pure white / black. There is no step 0.
 - **Contrast targets (the Leonardo model).** Steps 2–12 sit where their contrast against the page asks: each has an APCA Lc target per scheme (`targetsLight`, `targetsDark`; `tokens/colors/spectrum/contrast.ts`), and its tone is solved from it (`stepTones`). The engine still decides hue, chroma, gamut and neutrals; `generateSpectrum` hands it the solved tones through its internal step tone map (the vendored runtime is unchanged). The default targets are measured from the even ramp the kit used before (light 7.3, 14.3, 21.2, 27.8, 34.2, 40.4, 46.3, 52.1, 63.6, 74, 85.7; dark 3.4 … 77.1), so the default palette is the same. Moving a page tone keeps every step's contrast. The old peak tone (`ptAuto`, `pt`) and scale (`ladder`) are legacy: a theme that sets only them has its targets measured from the ramp they produce.
-- Tokens: `colors.spectrum.{family}.{1..12}`; CSS `--colors-spectrum-indigo-9`. Each token carries both scheme values.
+- Tokens: `colors.{family}.{1..12}`; CSS `--colors-indigo-9`. Each token carries both scheme values. The neutral family's tokens are `gray`, because `neutral` names the role: `--colors-neutral-12` is the role and `--colors-gray-12` the ramp step it aliases.
 - Kit defaults differ from the engine's original defaults in three settings: Dark endpoint 5 (was 2.5), neutral tint 75 (was 50), and a manual peak tone of 62 (was auto, which lands at 65.5): at 62 text on every solid (step 9) reaches APCA Lc 60 and step 11 text still passes on the page, so the defaults lint clean ([theming](theming.md#lint)).
 - Default hue set is "Unique" (12 accents + a tinted `neutral`): cyan, indigo, plum, crimson, tomato, orange, amber, yellow, lime, grass, jade, teal.
 
@@ -98,7 +98,7 @@ Light by default; dark under `prefers-color-scheme: dark`; `.light` / `.dark` on
 
 ## Design tokens
 
-`tokens/dtcg/color.light.dtcg.json` and `color.dark.dtcg.json`: every ramp step as an oklch `color` token, every role as an alias (`{color.spectrum.indigo.9}`). See [system](system.md#design-tokens-dtcg).
+`tokens/dtcg/color.light.dtcg.json` and `color.dark.dtcg.json`: every ramp step as an oklch `color` token, every role as an alias (`{color.indigo.9}`). See [system](system.md#design-tokens-dtcg).
 
 ## Defaults and overrides
 

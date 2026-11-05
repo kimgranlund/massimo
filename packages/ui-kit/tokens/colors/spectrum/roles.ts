@@ -17,6 +17,11 @@ export const DEFAULT_ROLES: Roles = {
   data1: 'indigo', data2: 'cyan', data3: 'grass', data4: 'amber', data5: 'tomato', data6: 'plum',
 };
 
+/** A ramp family's token name: its own, except the neutral family, since `neutral` names the role (--colors-neutral-12 aliases a ramp step). */
+export const rampName = (family: string) => (family === 'neutral' ? 'gray' : family);
+/** The CSS variable of a ramp step, as `var()`-less text. */
+export const rampVar = (family: string, step: number) => `--colors-${rampName(family)}-${step}`;
+
 /** Round the numbers in a color string to 4 decimals (well below a visible difference). */
 export const trimColor = (css: string) => css.replace(/-?\d*\.\d+/g, (n) => String(Number(Number(n).toFixed(4))));
 

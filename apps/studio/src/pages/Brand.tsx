@@ -8,6 +8,7 @@ import '@massimo/ui-kit/components/btg/element';
 import { css } from '../../styled-system/css/index.js';
 import { useEffect, useState } from 'react';
 import { DESCRIPTORS } from '@massimo/ui-kit/tokens/themes/descriptor-data';
+import { rampVar } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
 import { EXAMPLE_BRANDS } from '@massimo/ui-kit/tokens/brand/examples';
 import { brandCharacter, hydrate, lintBrand, primaryTerritory, type Brand } from '@massimo/ui-kit/tokens/brand/index';
 import { describeTheme } from '@massimo/ui-kit/tokens/themes/descriptors';
@@ -135,7 +136,7 @@ function ActiveBrand({ brand, params, spectrum }: { brand: Brand } & Pick<PagePr
                 return (
                   <tr key={a.role}>
                     <td className={nameCell}>{a.name}</td>
-                    <td><span className={swatchPair}><span className={swatch} style={{ '--sw': a.value } as React.CSSProperties} />{r && <span className={swatch} style={{ '--sw': `var(--colors-spectrum-${r.family}-${r.step})` } as React.CSSProperties} />}</span></td>
+                    <td><span className={swatchPair}><span className={swatch} style={{ '--sw': a.value } as React.CSSProperties} />{r && <span className={swatch} style={{ '--sw': `var(${rampVar(r.family, r.step)})` } as React.CSSProperties} />}</span></td>
                     <td>{a.role}{r ? ` (${r.family})` : ''}</td><td>{r?.step ?? '…'}</td>
                     <td>{r ? `${r.lc} · ${r.target}` : '…'}</td><td>{r?.dE ?? '…'}</td><td>{r ? (r.inOrder ? 'kept' : 'broken') : '…'}</td>
                   </tr>

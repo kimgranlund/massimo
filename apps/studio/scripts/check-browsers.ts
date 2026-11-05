@@ -56,7 +56,7 @@ async function checkStudioBrand(page: Page): Promise<string[]> {
   await page.reload();
   await page.waitForFunction(() => !!document.querySelector('aside[data-ui-scope=massimo] ui-button'), null, { timeout: 60_000 });
   // A role's panel swatch shows the theme being tuned, not the brand the panel wears: Massimo anchors the
-  // amber ramp to its signal orange, which a --colors-spectrum-* variable inside the panel would show.
+  // amber ramp to its signal orange, which a ramp variable inside the panel would show.
   const panelTab = page.locator('aside[data-ui-scope=massimo] ui-option', { hasText: 'Colors' }).first();
   await panelTab.click();
   await page.waitForFunction(() => { const c = ([...document.querySelectorAll('aside ui-field')].find((f) => f.textContent?.trim().startsWith('Secondary'))?.querySelector('ui-swatch') as (Element & { color?: string }) | null | undefined)?.color; return !!c && c !== 'transparent'; }, null, { timeout: 30_000 });
@@ -67,7 +67,7 @@ async function checkStudioBrand(page: Page): Promise<string[]> {
     const el = row?.querySelector('ui-swatch') as (Element & { color?: string }) | null | undefined;
     const probe = document.createElement('i');
     document.querySelector('[data-canvas]')!.append(probe);
-    probe.style.color = 'var(--colors-spectrum-amber-9)';
+    probe.style.color = 'var(--colors-amber-9)';
     const canvas = getComputedStyle(probe).color;
     const raw = el?.color ?? '';
     probe.style.color = raw;

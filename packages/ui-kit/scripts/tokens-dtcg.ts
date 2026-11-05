@@ -13,7 +13,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { GEOMETRY_DEFAULTS, SIZES, CONTAINERS } from '../tokens/geometry/resolve.ts';
 import { FACES, VOICES, DEFAULT_VOICES, FONT_FAMILIES, TYPE_ROLES, TYPE_DEFAULTS, resolveType, type TypeRoleName } from '../tokens/typography/resolve.ts';
-import { ROLE_STEPS, SHADOWS, roleStep } from '../tokens/colors/spectrum/roles.ts';
+import { ROLE_STEPS, SHADOWS, rampName, roleStep } from '../tokens/colors/spectrum/roles.ts';
 import DEFAULTS from '../tokens/colors/spectrum/defaults.json' with { type: 'json' };
 import { rows, type Row } from './geometry-csv.ts';
 import { RESOLVED_SPRINGS, INTENTS, fitBezier } from '../tokens/motion/index.ts';
@@ -118,18 +118,18 @@ type Snapshot = { roles: Record<string, string>; onSolid: Record<'light' | 'dark
 export function colorTokens(mode: 'light' | 'dark'): Json {
   const D = DEFAULTS as Snapshot;
   const tree = header(`ui-kit colors, ${mode} scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (${Object.entries(D.roles).map(([r, f]) => `${r} ${f}`).join(', ')}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
-  for (const [family, steps] of Object.entries(D[mode])) steps.forEach((css, i) => put(tree, ['color', 'spectrum', family, String(i + 1)], { $type: 'color', $value: oklch(css) }));
+  for (const [family, steps] of Object.entries(D[mode])) steps.forEach((css, i) => put(tree, ['color', rampName(family), String(i + 1)], { $type: 'color', $value: oklch(css) }));
   for (const [role, entry] of Object.entries(ROLE_STEPS)) {
     const { family, step, alpha } = roleStep(entry, mode);
     const name = D.roles[family];
     // DTCG aliases cannot add alpha: a translucent role carries the resolved color.
-    const $value = alpha === 1 ? `{color.spectrum.${name}.${step}}` : { ...oklch(D[mode][name][step - 1]), alpha };
+    const $value = alpha === 1 ? `{color.${rampName(name)}.${step}}` : { ...oklch(D[mode][name][step - 1]), alpha };
     put(tree, ['color', 'role', role], { $type: 'color', $value, $description: `${family} step ${step}${alpha === 1 ? '' : ` at ${alpha * 100}%`}` });
   }
   put(tree, ['color', 'role', 'fg-on-solid'], { $type: 'color', $value: hexColor(D.onSolid[mode]), $description: 'Text on a primary solid: the APCA black/white choice for primary step 9' });
   put(tree, ['color', 'role', 'fg-selected'], mode === 'dark'
     ? { $type: 'color', $value: hexColor(D.onSolid.dark), $description: 'Text on bg-selected (the primary solid in dark): the contrast color' }
-    : { $type: 'color', $value: `{color.spectrum.${D.roles.neutral}.12}`, $description: 'Text on bg-selected (neutral 1 in light): neutral 12' });
+    : { $type: 'color', $value: `{color.${rampName(D.roles.neutral)}.12}`, $description: 'Text on bg-selected (neutral 1 in light): neutral 12' });
   // Shadows: layers of the shadow role at a per-scheme alpha (DTCG aliases cannot add alpha, so the color is resolved).
   const shadow = roleStep(ROLE_STEPS.shadow, mode), shadowColor = D[mode][D.roles[shadow.family]][shadow.step - 1];
   for (const [name, layers] of Object.entries(SHADOWS)) put(tree, ['shadow', name], {
