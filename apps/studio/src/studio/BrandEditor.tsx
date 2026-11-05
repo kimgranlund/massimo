@@ -8,8 +8,8 @@ import { EXAMPLE_BRANDS } from '@massimo/ui-kit/tokens/brand/examples';
 import { REFERENCE_BRANDS } from './reference-brands.ts';
 import { FACE_CATALOGUE } from '@massimo/ui-kit/tokens/typography/faces';
 import { GROUNDINGS, TERRITORIES, RELATIONS, SUBJECT_KINDS, MUSE_KINDS, TONE_WORDS, brandCharacter, primaryTerritory, validateBrand, type Brand } from '@massimo/ui-kit/tokens/brand/index';
-import { ROLE_NAMES } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
-import { isAnchorColor } from '@massimo/ui-kit/tokens/colors/spectrum/anchors';
+import { ROLE_NAMES, SURFACE_ROLES } from '@massimo/ui-kit/tokens/colors/spectrum/roles';
+import { ANCHOR_REACHES, isAnchorColor } from '@massimo/ui-kit/tokens/colors/spectrum/anchors';
 import { Field, Group, Segmented, Select, SelectControl, useEvent } from './wc.tsx';
 
 const BLANK: Brand = { schemaVersion: 1, name: 'new-brand', subject: { name: 'New brand', audience: 'who it serves', primaryJob: 'what it helps them do', kind: 'product', sources: ['a source of visual character'] } };
@@ -106,6 +106,7 @@ function BrandForm({ brand, onBrand }: { brand: Brand; onBrand: (b: Brand) => vo
           <AnchorRow key={i} anchor={a}
             onName={(v) => edit((b) => { b.color.anchors[i].name = v; })}
             onDark={(v) => edit((b) => { if (v) b.color.anchors[i].dark = v; else delete b.color.anchors[i].dark; })}
+            onReach={(v) => edit((b) => { if (v === 'default') delete b.color.anchors[i].reach; else b.color.anchors[i].reach = v; })}
             onRole={(v) => edit((b) => { b.color.anchors[i].role = v; })}
             onValue={(v) => edit((b) => { b.color.anchors[i].value = v; })}
             onRemove={() => edit((b) => { b.color.anchors.splice(i, 1); if (!b.color.anchors.length) delete b.color.anchors; })} />
@@ -172,7 +173,7 @@ function AnchorColor({ value, onValue, label = 'Color', optional }: { value: str
 /** A '; '-separated list field: empty removes the key. */
 const setList = (o: any, k: string, v: string) => { const xs = v.split(';').map((x) => x.trim()).filter(Boolean); if (xs.length) o[k] = xs; else delete o[k]; };
 type Anchor = NonNullable<NonNullable<Brand['color']>['anchors']>[number];
-function AnchorRow({ anchor, onName, onDark, onRole, onValue, onRemove }: { anchor: Anchor; onName: (v: string) => void; onDark: (v: string) => void; onRole: (v: string) => void; onValue: (v: string) => void; onRemove: () => void }) {
+function AnchorRow({ anchor, onName, onDark, onReach, onRole, onValue, onRemove }: { anchor: Anchor; onName: (v: string) => void; onDark: (v: string) => void; onReach: (v: string) => void; onRole: (v: string) => void; onValue: (v: string) => void; onRemove: () => void }) {
   const remove = useEvent('click', () => onRemove());
   const name = useEvent('change', (_el, d) => { const v = String(d.value).trim(); if (v) onName(v); });
   return (
@@ -181,6 +182,7 @@ function AnchorRow({ anchor, onName, onDark, onRole, onValue, onRemove }: { anch
       <SelectControl label={`${anchor.name} role`} value={anchor.role} options={ROLE_NAMES.map((r) => [r, r])} onValue={onRole} />
       <AnchorColor value={anchor.value} onValue={onValue} />
       <AnchorColor label="Dark color" optional value={anchor.dark ?? ''} onValue={onDark} />
+      {!(SURFACE_ROLES as readonly string[]).includes(anchor.role) && <SelectControl label={`${anchor.name} reach`} value={anchor.reach ?? 'default'} options={[['default', 'Default reach'], ...ANCHOR_REACHES.map((r): [string, string] => [r, r])]} onValue={onReach} />}
       <ui-button ref={remove} aria-label={`Remove ${anchor.name}`}><i slot="leading" name="x" /></ui-button>
     </Field>
   );

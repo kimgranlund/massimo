@@ -1,8 +1,14 @@
 // Color anchors (docs/reports/2026-11-03-color-anchoring-spike.md): a brand's exact colors placed in
 // the generated ramps. Per anchor, on its role's family:
 //   1. pin the hue: every step of the family takes the anchor's OKLCH hue (light and dark ramps);
-//   2. re-shape the chroma: every step's chroma × (anchor chroma / the anchored step's chroma),
-//      clamped into the target gamut, so the neighbors are not washed out beside the anchor;
+//   2. re-shape the chroma, split by `reach`, so a strong key color does not tint the whole system.
+//      The ratio is anchor chroma / the anchored step's chroma. `key` (the default, except on neutral
+//      families): the solid and text steps (9–12, or from the anchored step if it is lighter) take
+//      chroma × ratio, capped at the anchor's chroma so no step outshouts the brand (a dark anchor's
+//      low chroma never pulls a step under its generated chroma); the steps below
+//      keep the generated chroma, or lose it with a ratio under 1, so a muted anchor still mutes its
+//      tints. `ramp` (the default on neutral families): every step takes chroma × ratio. Both are
+//      clamped into the target gamut;
 //   3. override the anchored step with the exact color (light ramp). The step is the one whose
 //      contrast target is nearest the anchor's Lc against the light page, unless the anchor names one;
 //   4. the role's solid follows the anchored step when the anchor lands on 8–12 (solidSteps.light): a
@@ -17,7 +23,12 @@
 import { apcaLc } from './contrast.ts';
 import type { Spectrum, Swatch } from './index.ts';
 
-export interface ColorAnchor { role: string; value: string; step?: number; name?: string; /** The anchor's own color in the dark scheme. */ dark?: string }
+/** How far an anchor's chroma reaches: the solid and text steps only (`key`), or every step (`ramp`). */
+export const ANCHOR_REACHES = ['key', 'ramp'] as const;
+export type AnchorReach = (typeof ANCHOR_REACHES)[number];
+/** The first step of the solids and text, where a `key` anchor's chroma starts. */
+const KEY_FROM = 9;
+export interface ColorAnchor { role: string; value: string; step?: number; name?: string; /** The anchor's own color in the dark scheme. */ dark?: string; /** Default: `key`, or `ramp` on a neutral family. */ reach?: AnchorReach }
 export type SolidSteps = { light: Record<string, number>; dark: Record<string, number> };
 export interface AnchorResult { role: string; family: string; value: string; step: number; lc: number; target: number; below: number; above: number; inOrder: boolean; inRange: boolean; dE: number; dark?: { value: string; step: number; lc: number; target: number; inOrder: boolean } }
 
@@ -112,20 +123,24 @@ export function applyAnchors(data: Spectrum, roles: Record<string, string>, anch
     const at = lightRamp[step - 1];
     const before = deltaE(want, at.oklch);
     const ratio = at.oklch[1] > 1e-4 ? want[1] / at.oklch[1] : 1;
-    for (const mode of ['light', 'dark'] as const) for (const sw of out.schemes[mode][family]) {
-      if (sw.step === 1) continue; // the page keeps its tone and tint
-      const [L, C] = sw.oklch;
-      setSwatch(sw, [L, clampChroma(L, C * ratio, want[2], gamut), want[2]]);
-    }
+    // The dark color's step and chroma, when given: `key` reaches from there and is capped there.
+    const darkRamp = out.schemes.dark[family];
+    const wantD = anchor.dark ? srgbToOklch(anchor.dark) : undefined;
+    const lcD = anchor.dark ? apcaLc(toneOfY(yOfHex(anchor.dark)), toneOf(darkRamp[0])) : 0;
+    const stepD = anchor.dark ? 2 + targets.dark.reduce((best, t, i) => (Math.abs(t - lcD) < Math.abs(targets.dark[best] - lcD) ? i : best), 0) : undefined;
+    const reach = anchor.reach ?? (neutralFamilies.has(family) ? 'ramp' : 'key');
+    const chroma = (C: number, n: number, anchored: number, cap: number) => {
+      if (reach === 'ramp') return C * ratio;
+      return n >= Math.min(KEY_FROM, anchored) ? Math.min(C * ratio, Math.max(cap, C)) : C * Math.min(1, ratio);
+    };
+    for (const sw of lightRamp) if (sw.step !== 1) setSwatch(sw, [sw.oklch[0], clampChroma(sw.oklch[0], chroma(sw.oklch[1], sw.step, step, want[1]), want[2], gamut), want[2]]); // the page keeps its tone and tint
+    for (const sw of darkRamp) if (sw.step !== 1) setSwatch(sw, [sw.oklch[0], clampChroma(sw.oklch[0], chroma(sw.oklch[1], sw.step, stepD ?? KEY_FROM, wantD?.[1] ?? want[1]), want[2], gamut), want[2]]);
     setSwatch(lightRamp[step - 1], want);
     const below = step > 2 ? targets.light[step - 3] : 0, above = step < 12 ? targets.light[step - 1] : Infinity;
     // The dark color, when given: exact at its own step in the dark ramp.
     let dark: AnchorResult['dark'];
-    if (anchor.dark) {
-      const darkRamp = out.schemes.dark[family];
-      const lcD = apcaLc(toneOfY(yOfHex(anchor.dark)), toneOf(darkRamp[0]));
-      const stepD = 2 + targets.dark.reduce((best, t, i) => (Math.abs(t - lcD) < Math.abs(targets.dark[best] - lcD) ? i : best), 0);
-      setSwatch(darkRamp[stepD - 1], srgbToOklch(anchor.dark));
+    if (anchor.dark && wantD && stepD) {
+      setSwatch(darkRamp[stepD - 1], wantD);
       const lo = stepD > 2 ? targets.dark[stepD - 3] : 0, hi = stepD < 12 ? targets.dark[stepD - 1] : Infinity;
       dark = { value: anchor.dark, step: stepD, lc: Math.round(lcD * 10) / 10, target: targets.dark[stepD - 2], inOrder: lcD > lo && lcD < hi };
       if (stepD >= 8) solidSteps.dark[anchor.role] = stepD;

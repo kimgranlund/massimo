@@ -18,7 +18,7 @@ import { DESCRIPTORS } from './descriptor-data.ts';
 import { ICON_SET_NAME } from '../../icons/sets.ts';
 import { SPECTRUM_FIELDS, normalizeSpectrum, type SpectrumSettings } from '../colors/spectrum/config.ts';
 import { ANCHOR_ROLES, ROLE_NAMES, SURFACE_ROLES, type AnchorRole, type RoleName } from '../colors/spectrum/roles.ts';
-import { isAnchorColor, type ColorAnchor } from '../colors/spectrum/anchors.ts';
+import { ANCHOR_REACHES, isAnchorColor, type ColorAnchor } from '../colors/spectrum/anchors.ts';
 import { FONT_SOURCE_URL } from '../typography/faces.ts';
 import { FACES, VOICES, WEIGHT_VOICES, TEXT_COLORS, TYPE_ROLES, type Face, type Voice, type WeightVoice, type TextColor, type TypeRoleName } from '../typography/resolve.ts';
 
@@ -35,7 +35,7 @@ export interface Theme {
   /** sources: stylesheets for web faces (a Google Fonts css2 URL or a self-hosted https .css); the app or the jig loads them. */
   typography?: { parameters?: Numbers; sources?: { family: string; url: string }[]; faces?: Partial<Record<Face, string>>; voices?: Partial<Record<Voice, Face>>; colors?: Partial<Record<TypeRoleName, TextColor>>; /** Weight of the display and heading voices (default 700; a serif face drops to 400). */ weights?: Partial<Record<WeightVoice, number>> };
   /** endpoints: the neutral step (1–12) white takes from the light ramp and black from the dark ramp; 3 by default, or 'pure' (#fff, #000). */
-  /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped, nearest step overridden; `ground` and `ink` pin the neutral ramp's ends. */
+  /** anchors: exact brand colors placed in a role's ramp (spectrum/anchors.ts): hue pinned, chroma re-shaped up to `reach`, nearest step overridden; `ground` and `ink` pin the neutral ramp's ends. */
   color?: { parameters?: Numbers; spectrum?: SpectrumSettings; roles?: Partial<Record<RoleName, string>>; endpoints?: { white?: number | 'pure'; black?: number | 'pure' }; anchors?: (ColorAnchor & { role: AnchorRole })[] };
   motion?: { parameters?: Numbers };
   icons?: string;
@@ -149,10 +149,12 @@ export function validateThemeObject(input: unknown): { ok: true; theme: Theme } 
           const path = `color.anchors.${i}`;
           if (!isObject(raw)) return err(path, 'must be an object');
           const a = raw as any;
-          for (const k of Object.keys(a)) if (!['role', 'value', 'step', 'name', 'dark'].includes(k)) err(`${path}.${k}`, 'unknown field');
+          for (const k of Object.keys(a)) if (!['role', 'value', 'step', 'name', 'dark', 'reach'].includes(k)) err(`${path}.${k}`, 'unknown field');
           if (a.dark !== undefined && !isAnchorColor(a.dark)) err(`${path}.dark`, 'must be a #rrggbb color');
           if (!ANCHOR_ROLES.includes(a.role)) err(`${path}.role`, 'unknown role');
           if (a.step !== undefined && SURFACE_ROLES.includes(a.role)) err(`${path}.step`, 'ground and ink have fixed steps');
+          if (a.reach !== undefined && SURFACE_ROLES.includes(a.role)) err(`${path}.reach`, 'ground and ink pin one step');
+          if (a.reach !== undefined && !ANCHOR_REACHES.includes(a.reach)) err(`${path}.reach`, `must be one of ${ANCHOR_REACHES.join(', ')}`);
           if (!isAnchorColor(a.value)) err(`${path}.value`, 'must be a #rrggbb color');
           if (a.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${path}.step`, 'must be a step 2–12');
           if (a.name !== undefined && typeof a.name !== 'string') err(`${path}.name`, 'must be a string');
@@ -264,7 +266,7 @@ export function themeJsonSchema() {
         parameters: params('color'),
         spectrum: strict(Object.fromEntries(SPECTRUM_FIELDS.map((f) => [f.key, field(f)]))),
         roles: strict(Object.fromEntries(ROLE_NAMES.map((r) => [r, { type: 'string', pattern: FAMILY_NAME.source }]))),
-        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ANCHOR_ROLES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' }, dark: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$', description: 'The anchor\'s own dark-scheme color, placed in the dark ramp.' } }, { required: ['role', 'value'] }) },
+        anchors: { type: 'array', description: 'Exact brand colors: one per role, placed at the nearest step (or the named step 2–12).', items: strict({ role: { enum: [...ANCHOR_ROLES] }, value: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$' }, step: { type: 'integer', minimum: 2, maximum: 12 }, name: { type: 'string' }, dark: { type: 'string', pattern: '^#[0-9a-fA-F]{6}$', description: 'The anchor\'s own dark-scheme color, placed in the dark ramp.' }, reach: { enum: [...ANCHOR_REACHES], description: 'How far the anchor\'s chroma reaches: the solid and text steps (key, the default) or every step (ramp, the default on neutral families).' } }, { required: ['role', 'value'] }) },
         endpoints: strict({ white: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] }, black: { oneOf: [{ type: 'integer', minimum: 1, maximum: 12 }, { const: 'pure' }] } }),
       }),
       typography: strict({

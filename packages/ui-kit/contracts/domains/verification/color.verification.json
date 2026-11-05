@@ -34,7 +34,7 @@
     },
     {
       "path": "tokens/colors/spectrum/anchors.ts",
-      "sha256": "9788126ba7c23d339a4c86ea541b2fead8a056ac32631ca1fdc40323bc8a6abf"
+      "sha256": "89be9f1de8ff1469db659fc52eda402ab7c420755dd01f895bd15704c01f8b06"
     }
   ],
   "renderers": {
@@ -58,7 +58,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-05",
         "outcome": "pass",
         "commands": [
           "node --test test/spectrum.test.ts",

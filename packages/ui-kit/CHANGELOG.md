@@ -8,6 +8,7 @@
 
 - `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
 - `divided` on `ui-container` (React `divided`): an outlined group or collection of full-bleed rows with lines between them.
+- `reach` on a color anchor: `key` or `ramp`, how far the anchor's chroma spreads through its family.
 
 **Breaking**
 
@@ -18,6 +19,7 @@
 - Heading line height is `1.3 − step/20` and tracking `−(step − 1)/100`: display 1.0 and −0.05em, heading-1 −0.03em.
 - Card padding `lg` is 6u and `xl` is 8u, so every padding comes from {½, 1, 2, 3, 4, 6, 8}. Dialogs follow `xl`.
 - A card's headings, paragraphs, `strong`, type roles and `data-row` rows start on the text edge, not the card's padding edge, except in a `padding="xs"` card.
+- A color anchor's chroma reaches only steps 9–12 by default, capped at the anchor's chroma or the step's generated chroma, whichever is larger. Tints on an anchored accent keep their generated chroma, so they get quieter. `reach: 'ramp'` restores the old spread. Neutral anchors keep it by default.
 - Field labels, descriptions and errors start where the control's text starts, not at its edge. In `ui-field` this applies to the stacked layout over a text control.
 
 ## 0.1.0 (2026-11-03)

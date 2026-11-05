@@ -65,14 +65,16 @@ The descriptor scale `emphasis` names the three values.
 
 ## Anchors
 
-A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name?, dark? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:
+A theme can place a brand's exact colors in the ramps: `color.anchors`, one per role, each `{ role, value: '#rrggbb', step?, name?, dark?, reach? }` (`tokens/colors/spectrum/anchors.ts`, applied after generation by `anchoredSpectrum`). The [anchoring spike](../reports/2026-11-03-color-anchoring-spike.md) showed generator tuning alone leaves ΔE 5–10, so per anchor, on its role's family:
 
 1. every step except the page takes the anchor's OKLCH hue, in the light and dark ramps;
-2. every step's chroma is scaled by anchor chroma / the anchored step's chroma, clamped into the target gamut (sRGB or Display P3);
+2. chroma is scaled by the ratio r = anchor chroma / the anchored step's chroma, up to the anchor's `reach`, and clamped into the target gamut (sRGB or Display P3):
+   - `key`, the default except on neutral families: steps 9–12 (or from the anchored step if it is lighter) take chroma × r, capped at the larger of the anchor's chroma and the step's generated chroma, so no step is louder than the brand color and a dark anchor does not drain the solids. The steps below keep their generated chroma, × r only when r < 1, so a strong key color leaves the tints uniform with the rest of the system and a muted anchor still mutes its own;
+   - `ramp`, the default on neutral families: every step takes chroma × r;
 3. the anchored step (the one whose contrast target is nearest the anchor's Lc against the light page, unless `step` names one) becomes the exact color, with its text color recomputed;
 4. when the anchor lands on steps 8–12, the role's light `solid` and `solid-hover` move to it (hover one darker, one lighter at 12), and `fg-on-solid` follows for primary.
 
-Light and dark are placed separately. Without a `dark` color, the dark ramp only takes the hue and chroma, and the dark solid stays at step 9: a light-scheme step 12 is ink, and in dark it would be the lightest fill. With a `dark` color, the anchor is placed exactly in the dark ramp the same way, against the dark page and the dark targets, and moves the dark solid when it lands on 8–12 (`solidSteps.dark`).
+Light and dark are placed separately. Without a `dark` color, the dark ramp only takes the hue and chroma (`key` reaches from step 9), and the dark solid stays at step 9: a light-scheme step 12 is ink, and in dark it would be the lightest fill. With a `dark` color, the anchor is placed exactly in the dark ramp the same way, against the dark page and the dark targets, with `key` capped at its chroma, and moves the dark solid when it lands on 8–12 (`solidSteps.dark`).
 
 Two surface anchors pin the neutral ramp's ends instead of a role's family, because a brand's ink and page lie beyond the ramp. `ground` takes step 1 in light (the page) and step 12 in dark (the text). `ink` takes step 12 in light and step 1 in dark. `dark` gives a different color for the dark scheme. They take no `step`, and they run after every other anchor. Headings (`fg.strong`) follow them, so `ink` replaces black in light and `ground` replaces white in dark. Use them for a brand's printed ink and paper; a neutral anchor still sets the ramp's hue and chroma.
 

@@ -57,6 +57,57 @@ test('anchors: chroma is re-shaped toward the anchor and stays in the gamut', ()
   assert.ok(r.data.schemes.light[fam].every((sw) => Number.isFinite(sw.oklch[1]) && sw.oklch[1] >= 0));
 });
 
+const chromas = (d: typeof data, fam: string, mode: 'light' | 'dark' = 'light') => d.schemes[mode][fam].map((sw) => sw.oklch[1]);
+
+test('anchors: key reach leaves the tints generated and keeps every step at or under the anchor', () => {
+  const nasa = { role: 'primary', value: '#cc243c' };
+  const r = anchoredSpectrum(data, roles, [nasa]);
+  const a = r.report[0], fam = a.family, cap = r.data.schemes.light[fam][a.step - 1].oklch[1];
+  assert.equal(a.step, 11);
+  const before = chromas(data, fam), after = chromas(r.data, fam);
+  for (let i = 1; i < 8; i++) assert.ok(after[i] <= before[i] + 1e-9, `step ${i + 1}: ${after[i].toFixed(3)} ≤ generated ${before[i].toFixed(3)}`);
+  assert.ok(before[2] - after[2] < 0.02, 'tints stay near the generated chroma');
+  for (let i = 8; i < 12; i++) assert.ok(after[i] <= cap + 1e-9, `step ${i + 1} is no louder than the anchor`);
+  assert.ok(after[8] > before[8], 'step 9 rises toward the anchor');
+  assert.equal(after[8].toFixed(3), cap.toFixed(3), 'and reaches it');
+  for (const c of chromas(r.data, fam, 'dark').slice(1)) assert.ok(c <= cap + 1e-9, 'the dark ramp is capped too');
+});
+
+test('anchors: ramp reach scales every step, and is the default on a neutral family', () => {
+  const key = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#cc243c' }]);
+  const ramp = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#cc243c', reach: 'ramp' }]);
+  const fam = key.report[0].family;
+  assert.ok(chromas(ramp.data, fam)[2] > chromas(key.data, fam)[2], 'tints carry the color');
+  assert.ok(chromas(ramp.data, fam)[8] > chromas(key.data, fam)[8], 'and step 9 passes the anchor');
+  const n = anchoredSpectrum(data, roles, [{ role: 'neutral', value: '#7c7c6c' }]);
+  const nr = anchoredSpectrum(data, roles, [{ role: 'neutral', value: '#7c7c6c', reach: 'ramp' }]);
+  assert.deepEqual(chromas(n.data, roles.neutral), chromas(nr.data, roles.neutral));
+});
+
+test('anchors: key reach on a muted anchor mutes its tints; on a light anchor it starts at that step', () => {
+  const muted = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#6f6b7a', step: 9 }]);
+  const before = chromas(data, roles.primary), after = chromas(muted.data, roles.primary);
+  for (let i = 1; i < 8; i++) assert.ok(after[i] < before[i], `step ${i + 1} is muted`);
+  const light = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#f5d90a' }]);
+  const a = light.report[0], c = chromas(light.data, a.family);
+  assert.ok(a.step < 9, `a light anchor lands below the solids (step ${a.step})`);
+  assert.ok(c[a.step] > chromas(data, a.family)[a.step], 'the step above it takes the chroma');
+});
+
+test('anchors: a dark anchor does not pull the solids under the tints', () => {
+  const r = anchoredSpectrum(data, roles, [{ role: 'primary', value: '#1f3a5f' }]);
+  const a = r.report[0], c = chromas(r.data, a.family);
+  assert.equal(a.step, 12);
+  assert.ok(c[8] >= c[7], `step 9 ${c[8].toFixed(3)} ≥ step 8 ${c[7].toFixed(3)}`);
+});
+
+test('anchors: reach is validated', () => {
+  const ok = (a: object) => validateThemeObject({ schemaVersion: 2, name: 'r', color: { anchors: [a] } }).ok;
+  assert.ok(ok({ role: 'primary', value: '#cc243c', reach: 'ramp' }));
+  assert.equal(ok({ role: 'primary', value: '#cc243c', reach: 'wide' }), false);
+  assert.equal(ok({ role: 'ground', value: '#ffffff', reach: 'ramp' }), false);
+});
+
 test('anchors: validation, one per role, and the lint rules for order and range', () => {
   const t = (anchors: unknown) => ({ schemaVersion: 2, name: 'a', color: { anchors } });
   assert.ok(validateThemeObject(t([{ role: 'primary', value: '#0f62fe', name: 'blue 60' }])).ok);

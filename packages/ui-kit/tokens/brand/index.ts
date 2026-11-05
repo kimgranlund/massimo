@@ -13,7 +13,7 @@ import { themeFromCharacter } from '../themes/descriptors.ts';
 import { THEME_SCHEMA_VERSION, FONT_STACK, type Theme } from '../themes/theme.ts';
 import { THEME_NAME } from '../themes/validate.ts';
 import { ANCHOR_ROLES, SURFACE_ROLES, type AnchorRole } from '../colors/spectrum/roles.ts';
-import { isAnchorColor } from '../colors/spectrum/anchors.ts';
+import { ANCHOR_REACHES, isAnchorColor, type AnchorReach } from '../colors/spectrum/anchors.ts';
 import { ICON_SET_NAMES } from '../../icons/sets.ts';
 import { FACE_CATALOGUE, FACE_DESCRIPTORS, catalogueFace, faceStack, googleFontsUrl, missingWeights, voiceWeights, type FaceDescriptor } from '../typography/faces.ts';
 export { FACE_DESCRIPTORS };
@@ -39,7 +39,7 @@ export interface Brand {
   grounding?: { primary: { ref?: string; name?: string; relation: (typeof RELATIONS)[number]; principles?: string[] }; secondary?: { ref?: string; name?: string; relation: (typeof RELATIONS)[number] } };
   territories?: Territory[];
   muse?: { kind: (typeof MUSE_KINDS)[number]; name: string; take: string; leave?: string };
-  color?: { anchors?: { name: string; value: string; role: AnchorRole; step?: number; dark?: string }[]; feedback?: 'independent' | 'anchored'; character?: Record<string, string> };
+  color?: { anchors?: { name: string; value: string; role: AnchorRole; step?: number; dark?: string; reach?: AnchorReach }[]; feedback?: 'independent' | 'anchored'; character?: Record<string, string> };
   type?: { faces?: { display?: BrandFace; body?: BrandFace; utility?: BrandFace }; character?: Record<string, string>; weights?: { display?: number; heading?: number } };
   form?: Record<string, string>;
   movement?: string;
@@ -141,6 +141,8 @@ export function validateBrand(raw: unknown): { ok: true; brand: Brand } | { ok: 
         if (!isAnchorColor(a?.value)) err(`${p}.value`, 'must be #rrggbb');
         if (!ANCHOR_ROLES.includes(a?.role)) err(`${p}.role`, `must be one of ${ANCHOR_ROLES.join(', ')}`);
         if (a?.step !== undefined && SURFACE_ROLES.includes(a?.role)) err(`${p}.step`, 'ground and ink have fixed steps');
+        if (a?.reach !== undefined && SURFACE_ROLES.includes(a?.role)) err(`${p}.reach`, 'ground and ink pin one step');
+        if (a?.reach !== undefined && !ANCHOR_REACHES.includes(a.reach)) err(`${p}.reach`, `must be one of ${ANCHOR_REACHES.join(', ')}`);
         if (a?.step !== undefined && !(Number.isInteger(a.step) && a.step >= 2 && a.step <= 12)) err(`${p}.step`, 'must be a step 2–12');
         if (a?.dark !== undefined && !isAnchorColor(a.dark)) err(`${p}.dark`, 'must be #rrggbb');
         roles.push(a?.role);
@@ -239,7 +241,7 @@ export function hydrate(b: Brand): { theme: Theme; unresolved: string[] } {
   const theme: Theme = { schemaVersion: THEME_SCHEMA_VERSION, name: b.name, description: `${b.subject.name}: ${b.subject.primaryJob}`, ...parts, character } as Theme;
   // Color anchors.
   if (b.color?.anchors?.length) {
-    theme.color = { ...(theme.color ?? {}), anchors: b.color.anchors.map((a) => ({ role: a.role, value: a.value.toLowerCase(), name: a.name, ...(a.step ? { step: a.step } : {}), ...(a.dark ? { dark: a.dark.toLowerCase() } : {}) })) };
+    theme.color = { ...(theme.color ?? {}), anchors: b.color.anchors.map((a) => ({ role: a.role, value: a.value.toLowerCase(), name: a.name, ...(a.step ? { step: a.step } : {}), ...(a.dark ? { dark: a.dark.toLowerCase() } : {}), ...(a.reach ? { reach: a.reach } : {}) })) };
     b.color.anchors.forEach((a, i) => { provenance[`color.anchors.${i}`] = { source: 'brand', reason: `color.anchors.${i} (${a.name})` }; });
   } else unresolved.push('color.anchors: no brand colors; the palette is generated from the character alone (name 2–6 anchors, or confirm that is intended)');
   if (b.color?.feedback === 'anchored' && !b.color.anchors?.some((a) => ['critical', 'warning', 'success', 'info'].includes(a.role))) unresolved.push('color.feedback: anchored, but no critical, warning, success or info anchor');
@@ -392,7 +394,7 @@ export function brandJsonSchema() {
       }, { required: ['name', 'description'] }) },
       muse: strict({ kind: { enum: [...MUSE_KINDS] }, name: text, take: text, leave: text }, { required: ['kind', 'name', 'take'] }),
       color: strict({
-        anchors: { type: 'array', minItems: 1, maxItems: 10, items: strict({ name: text, value: hex, role: { enum: [...ANCHOR_ROLES] }, step: { type: 'integer', minimum: 2, maximum: 12 }, dark: hex }, { required: ['name', 'value', 'role'] }) },
+        anchors: { type: 'array', minItems: 1, maxItems: 10, items: strict({ name: text, value: hex, role: { enum: [...ANCHOR_ROLES] }, step: { type: 'integer', minimum: 2, maximum: 12 }, dark: hex, reach: { enum: [...ANCHOR_REACHES] } }, { required: ['name', 'value', 'role'] }) },
         feedback: { enum: ['independent', 'anchored'] },
         character: scales(SECTION_SCALES.color),
       }),
