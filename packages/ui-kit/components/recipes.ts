@@ -12,6 +12,7 @@ import { select } from './select/select.recipe.ts';
 import { swiper } from './swiper/swiper.recipe.ts';
 import { image } from './image/image.recipe.ts';
 import { uiContainer } from './container/container.recipe.ts';
+import { row } from './row/row.recipe.ts';
 import { field, fieldGrid } from './field/field.recipe.ts';
 import { separator } from './separator/separator.recipe.ts';
 import { avatar } from './avatar/avatar.recipe.ts';
@@ -41,7 +42,7 @@ import { tooltip } from './tooltip/tooltip.recipe.ts';
 import { previewCard } from './preview-card/preview-card.recipe.ts';
 import { navigationMenu } from './navigation-menu/navigation-menu.recipe.ts';
 
-export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
+export const slotRecipes = { badge, tag, chip, button, checkbox, radio, switchRecipe, range, progress, swatch, palette, listbox, segmented, option, input, select, swiper, image, uiContainer, row, field, fieldGrid, separator, avatar, meter, toggle, radioGroup, checkboxGroup, fieldset, collapsible, accordion, tabs, toast, form, scrollArea, numberField, otpField, combobox, autocomplete, toggleGroup, dialog, alertDialog, drawer, menu, contextMenu, menubar, popover, tooltip, previewCard, navigationMenu };
 
 
 

@@ -459,6 +459,22 @@
       ],
       "behavior": "None."
     },
+    "row": {
+      "geometryFamily": "container",
+      "element": "CSS-only row tag (React Row): takes its inset from the container that holds it, by inheritance; header gives it a divided row's height.",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
     "separator": {
       "geometryFamily": "separator",
       "element": "Host is the rule (role=separator, aria-orientation); not focusable; no children.",

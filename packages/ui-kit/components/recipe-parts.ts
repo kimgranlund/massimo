@@ -210,6 +210,8 @@ export const fieldRoot: Style = {
 };
 
 /** The control's inset + its contents' 2u: the left edge of a field's text. */
+/** A row's block padding: 3u × the density factor (resolveDividedRow), from the theme. */
+export const ROW_BLOCK = 'calc(3 * (0.5 + 0.5 * var(--ui-density)) * var(--ui-unit) * 1px)';
 export const FIELD_TEXT_EDGE = `calc((${DENSITY_INSET_CSS} + 2) * var(--ui-unit) * 1px)`; // from the theme: ui-field has no --u of its own
 
 /** Field label, description and error slots. */

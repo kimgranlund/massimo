@@ -495,6 +495,20 @@
         "scrubber"
       ]
     },
+    "component:row": {
+      "kind": "component",
+      "source": "components/row/row.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-row",
+      "searchTerms": [
+        "row",
+        "list row",
+        "header row",
+        "settings row",
+        "text edge",
+        "composed"
+      ]
+    },
     "component:scroll-area": {
       "kind": "component",
       "source": "components/scroll-area/scroll-area.manifest.json#/nodes/0",
@@ -10096,6 +10110,86 @@
       "from": "component:progress",
       "relation": "allowedIn",
       "to": "context:group"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
     },
     {
       "from": "component:scroll-area",

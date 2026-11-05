@@ -988,7 +988,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><div id="cHr" data-row>r</div></ui-container></ui-container><ui-container preset="card"><p id="cHh">h</p><div data-row>r</div></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p></ui-container><ui-container preset="collection" divided id="cD"><div>a</div><div>b</div></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><ui-row id="cHr">r</ui-row></ui-container></ui-container><ui-container preset="card"><ui-row id="cHh" header>h</ui-row><div><section><ui-row id="cHw">w</ui-row></section></div></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p><ui-row id="cHy">y</ui-row></ui-container><ui-container preset="panel"><ui-row id="cHa">a</ui-row></ui-container><ui-row id="cHn">n</ui-row><ui-container preset="collection" divided><ui-row id="cHd">d</ui-row></ui-container><ui-container preset="collection" divided id="cD"><div>a</div><div>b</div></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1008,6 +1008,12 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'card.text.padding-edge': [px(getComputedStyle(box.querySelector('#cHk')).paddingLeft), 0],
     'card.body.padding-edge': [px(getComputedStyle(box.querySelector('#cHp')).paddingLeft), 0],
     'card.header.edge': [px(getComputedStyle(box.querySelector('#cHh')).paddingLeft), resolveField(g).textEdge],
+    'card.row.wrapped.edge': [px(getComputedStyle(box.querySelector('#cHw')).paddingLeft), resolveField(g).textEdge],
+    'card.xs.row.edge': [px(getComputedStyle(box.querySelector('#cHy')).paddingLeft), 0],
+    'area.row.edge': [px(getComputedStyle(box.querySelector('#cHa')).paddingLeft), 0],
+    'bare.row.edge': [px(getComputedStyle(box.querySelector('#cHn')).paddingLeft), 0],
+    'divided.row.block': [px(getComputedStyle(box.querySelector('#cHd')).paddingTop), resolveDividedRow(g).paddingBlock],
+    'card.header.block': [px(getComputedStyle(box.querySelector('#cHh')).paddingTop), resolveDividedRow(g).paddingBlock],
     'card.row.edge': [px(getComputedStyle(box.querySelector('#cHr')).paddingLeft), resolveField(g).textEdge],
     'divided.box': [px(getComputedStyle(box.querySelector('#cD')).paddingTop), 0],
     'divided.gap': [r2(box.querySelector('#cD > :nth-child(2)').getBoundingClientRect().top - box.querySelector('#cD > :first-child').getBoundingClientRect().bottom), 0],

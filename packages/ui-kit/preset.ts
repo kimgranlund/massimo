@@ -16,6 +16,7 @@ import { pending, pendingKeyframes } from './styles/pending.ts';
 import { conditions as stateConditions } from './styles/conditions.ts';
 import { slotRecipes } from './components/recipes.ts';
 import { containerTags } from './components/container/container.recipe.ts';
+import { rowTags } from './components/row/row.recipe.ts';
 
 type Css = Record<string, Record<string, unknown>>;
 
@@ -29,7 +30,7 @@ export function mergeGlobalCss(...parts: Css[]): Css {
   return out;
 }
 
-export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, containers: containerTags, pending } as Record<string, Css>;
+export const globalCssParts = { theme: themeCss(), reset, typography, scheme: { '.dark': { colorScheme: 'dark' }, '.light': { colorScheme: 'light' } }, geometry, motion, defaults, containers: containerTags, rows: rowTags, pending } as Record<string, Css>;
 
 export const uiKitPreset = definePreset({
   name: 'ui-kit',

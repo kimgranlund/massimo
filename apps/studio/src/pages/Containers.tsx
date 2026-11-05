@@ -14,16 +14,16 @@ import { DENSITIES, CONTAINERS, PAGE_MAX_WIDTH_REM, resolveComposite, resolveCon
 import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, dataTable, fmt, kicker, nameCell, noteCell, tableScroller } from './shared.tsx';
 
-const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
+const levelBox = css({ bg: 'bg.subtle', alignSelf: 'start' });
 const presetCell = css({ display: 'flex', flexDirection: 'column', gap: '2', flex: '[1 1 12rem]', minWidth: '0', alignSelf: 'start' });
 const stretched = css({ alignSelf: 'stretch' });
+const plainStack = css({ display: 'flex', flexDirection: 'column' });
 const selectedRow = css({ bg: 'bg.muted' });
-const presetBox = css({ bg: 'primary.subtle', alignSelf: 'stretch' });
+const presetBox = css({ bg: 'bg.subtle', alignSelf: 'stretch' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const cardColumns = css({ display: 'grid', width: 'full', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
 const roundDemo = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
-const tileRow = css({ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' });
 const tileGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))', flex: '1' });
 const levelChild = css({ display: 'block', bg: 'bg', minWidth: '10', minHeight: '6', borderRadius: 'sm' });
 
@@ -118,7 +118,7 @@ export function ContainersPage({ params }: PageProps) {
       <Section id="attributes" title="Attributes" note="layout and surface override the preset's flow and elevation; radius scales the concentric radius by a magnitude t (sharper than its contents); gap and data-size override one element or a subtree.">
         <Row label='layout="…"'>
           {(['stack', 'row', 'wrap'] as const).map((l) => (
-            <ui-container key={l} preset="collection" layout={l} surface="panel" className={levelBox}><span className={caption}>{l}</span><span className={levelChild} /><span className={levelChild} /></ui-container>
+            <ui-container key={l} preset="card" padding="sm" layout={l} className={levelBox}><span className={caption}>{l}</span><span className={levelChild} /><span className={levelChild} /></ui-container>
           ))}
         </Row>
         <Row label='surface="…"'>
@@ -160,13 +160,13 @@ export function ContainersPage({ params }: PageProps) {
                   <span className={kicker}>Card · Team</span>
                   {([['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]] as const).map(([team, people]) => (
                     <ui-container preset="card" key={team}>
-                      <span className={kicker}>Card · {team}</span>
+                      <ui-row><span className={kicker}>Card · {team}</span></ui-row>
                       <ui-container preset="collection">
                         {people.map((n) => (
-                          <div key={n} className={tileRow} data-row="">
+                          <ui-row key={n}>
                             <span>{n}</span>
                             <ui-container preset="group"><ui-button>Message</ui-button></ui-container>
-                          </div>
+                          </ui-row>
                         ))}
                       </ui-container>
                     </ui-container>
@@ -190,22 +190,24 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="composed" title="Composed rows" note="Text in a card stays on the padding edge, level with its buttons and media. Rows are composed, so their text starts on the text edge, and the one text block directly above them is their header and starts there too. Radius follows padding, so the same outer radius takes a different multiple at each padding: the list inside stays concentric.">
+      <Section id="composed" title="Composed rows" note="Text in a card stays on the padding edge, level with its buttons and media. A ui-row is composed, so it starts on the text edge. The container declares that inset and rows inherit it, so wrappers in between change nothing. Radius follows padding, so the same outer radius takes a different multiple at each padding: the list inside stays concentric.">
         <div className={roundDemo}>
           {([['lg', '1.65', 'padding="lg" radius="1.65"'], ['sm', '3.3', 'padding="sm" radius="3.3"']] as const).map(([padding, radius, name]) => (
             <div className={presetCell} key={name}>
               <span className={caption}>{name} · divided</span>
               <ui-container preset="card" padding={padding} radius={radius} className={stretched}>
-                <strong>Card title</strong>
-                <ui-container preset="collection" divided=""><div className={selectedRow}>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container>
+                <ui-row header=""><strong>Card title</strong><ui-button size="sm" variant="ghost">Add</ui-button></ui-row>
+                <ui-container preset="collection" divided=""><ui-row className={selectedRow}>Option 1</ui-row><ui-row>Option 2</ui-row><ui-row>Option 3</ui-row></ui-container>
               </ui-container>
             </div>
           ))}
           <div className={presetCell}>
-            <span className={caption}>data-row · rows without a box</span>
+            <span className={caption}>ui-row · through a wrapper, no box</span>
             <ui-container preset="card" className={stretched}>
-              <strong>Notifications</strong>
-              {['Comments', 'Mentions', 'Releases'].map((t) => <div className={tileRow} data-row="" key={t}><span>{t}</span><ui-button size="sm" variant="ghost">Edit</ui-button></div>)}
+              <ui-row header=""><strong>Notifications</strong></ui-row>
+              <section className={plainStack}>
+                {['Comments', 'Mentions', 'Releases'].map((t) => <ui-row key={t}><span>{t}</span><ui-button size="sm" variant="ghost">Edit</ui-button></ui-row>)}
+              </section>
             </ui-container>
           </div>
           <div className={presetCell}>

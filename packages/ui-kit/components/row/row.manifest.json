@@ -1,0 +1,191 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "row",
+  "primary": "component:row",
+  "module": null,
+  "registration": "none",
+  "documentation": "./row.md",
+  "examples": "./row.examples.json",
+  "contract": "../../contracts/components.json#/components/row",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./row.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveDividedRow",
+        "resolveField"
+      ],
+      "description": "Reference numbers for the row's inset and block padding."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:row",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-row",
+      "contract": "../../contracts/components.json#/components/row",
+      "intent": [
+        "Lay out one composed line of text and actions on its container's text edge."
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "header",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "A title row: the height of a divided row, for a title above a list.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Text and actions."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The inset comes from the container that holds it, by inheritance, through any wrappers.",
+        "Plain text in a card needs no row: it stays on the padding edge."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A single heading or paragraph with nothing composed around it.",
+          "reason": "Text on its own belongs on the padding edge, level with buttons and media.",
+          "useInstead": "component:container"
+        }
+      ],
+      "searchTerms": [
+        "row",
+        "list row",
+        "header row",
+        "settings row",
+        "text edge",
+        "composed"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:row",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:row",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "documentation": "./row.md",
+      "verification": "./verification/row.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./row.react.tsx",
+      "exports": {
+        "component:row": "Row"
+      },
+      "verification": "./verification/row.verification.json#/renderers/react",
+      "props": {
+        "component:row": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "header?: boolean // A title row: the height of a divided row, for a title above a list."
+          ]
+        }
+      }
+    }
+  }
+}

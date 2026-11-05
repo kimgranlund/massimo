@@ -15,7 +15,7 @@
 // were removed: docs/decisions/0016-remove-container-level-tags.md.)
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CARD_PADDINGS, CONTAINER_DEPTH, CONTAINERS, NESTED_CARD_FLOOR, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
-import { CONTROL_RADIUS, FIELD_TEXT_EDGE, mergeStyles, tagRules } from '../recipe-parts.ts';
+import { CONTROL_RADIUS, FIELD_TEXT_EDGE, ROW_BLOCK, mergeStyles, tagRules } from '../recipe-parts.ts';
 
 type Layout = Exclude<ContainerLevel, 'composite'>;
 
@@ -138,24 +138,23 @@ export const containerChain = Object.fromEntries([
   }),
 ]);
 
-// Rows are composed: a [data-row] in a card, direct or through an unpainted wrapper, starts on the
-// text edge with the field labels and control text around it. So does the one text block right above
-// rows, their header. Other text stays on the padding edge. Thumbnail cards (padding xs) keep everything
-// on the padding edge, under the image.
-const CARD_TEXT = ':is(h1, h2, h3, h4, h5, h6, p, strong, [data-type], [class*="textStyle_"])';
-const CARD = ':is(ui-container, [data-ui=container])[preset=card]:not([padding=xs])';
-const ROW_HOLDER = `:is(${CARD}, ${CARD} > :is(ui-container, [data-ui=container])${UNPAINTED})`;
-const cardRows = { [`${ROW_HOLDER} > :is([data-row], ${CARD_TEXT}:has(+ [data-row]))`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
+// Composed rows (ui-row, row.recipe.ts) read their inset from the container that holds them, so any
+// wrapper can sit in between. A card and a painted wrapper put rows on the text edge; areas and
+// thumbnail cards (padding xs) on the padding edge; an unpainted wrapper declares nothing, so it passes
+// its parent's edge through. Row block padding is the divided list's alone, so a container resets it.
+const CONTAINER = ':is(ui-container, [data-ui=container])';
+const rowContext = {
+  [CONTAINER]: { '--ui-row-block': '0px' },
+  [`${CONTAINER}:is([preset=panel], [preset=region], [preset=page], [preset=card][padding=xs])`]: { '--ui-row-edge': '0px' },
+  [`${CONTAINER}:is([preset=card]:not([padding=xs]), [divided], ${WRAPPER}:is([padding], [surface]:not([surface=none])))`]: { '--ui-row-edge': FIELD_TEXT_EDGE },
+};
 
-// A divided container: an outlined box of full-bleed rows with lines between them. A row's text starts
-// on the text edge, so it meets a card's text above it (resolveDividedRow).
+// A divided container: an outlined box of full-bleed rows with lines between them. Every child is a
+// row on the text edge (resolveDividedRow), a ui-row or not.
 const DIVIDED = ':is(ui-container, [data-ui=container])[divided]';
-const ROW_BLOCK = 'calc(3 * (0.5 + 0.5 * var(--ui-density)) * var(--ui-unit) * 1px)';
 const dividedRows = {
-  [DIVIDED]: { overflow: 'hidden', boxShadow: 'inset 0 0 0 1px var(--colors-border)' },
+  [DIVIDED]: { overflow: 'hidden', boxShadow: 'inset 0 0 0 1px var(--colors-border)', '--ui-row-block': ROW_BLOCK },
   [`${DIVIDED} > *`]: { paddingBlock: ROW_BLOCK, paddingInline: FIELD_TEXT_EDGE },
-  // The text right above the list reads as its header row: the same height, clear of the card's corner.
-  [`${CARD} > ${CARD_TEXT}:has(+ ${DIVIDED})`]: { paddingBlock: ROW_BLOCK, paddingInlineStart: FIELD_TEXT_EDGE },
   [`${DIVIDED} > * + *`]: { borderBlockStart: '1px solid var(--colors-border)' },
 };
 
@@ -169,6 +168,6 @@ export const containerTags = mergeStyles(
   tagRules(':is(ui-container, [data-ui=container])', uiContainer),
   areaPadding,
   containerChain,
-  cardRows,
+  rowContext,
   dividedRows,
 );

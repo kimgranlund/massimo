@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "row",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "tokens/geometry/resolve.ts",
+      "sha256": "660c65c99efc42b9415bacbf0588df02d2c0ebabf07ec1317ee1c7c1a5245d08"
+    },
+    {
+      "path": "components/row/row.manifest.json",
+      "sha256": "88fc416b73f6a43c7934697cefe158de9ec8470a688dbdbf0c2b837bfc82b7dd"
+    },
+    {
+      "path": "components/row/row.react.tsx",
+      "sha256": "7f1595aa9571bc60679fe74476807cc3cb6eb1c0a7d5e89b6fe1fe8b2d0ffb18"
+    },
+    {
+      "path": "components/row/row.recipe.ts",
+      "sha256": "5d2b460412c02aeaeef0137f2c99544e00f1a6293546f466e0e3439b7a445226"
+    },
+    {
+      "path": "components/container/container.recipe.ts",
+      "sha256": "13cd162548377dd028107d4e038c1e11a80db815f3c914dd3bfb829df980dae4"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "35721ac166ec05cff0a88ae628701899f998413c044edc1bab75127146457dcf"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "row inset and block padding numbers"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "the row's tag rules; containers declare its inset by inheritance"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-05",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/geometry.test.ts",
+          "node --test test/recipes.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-05",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": [])."
+  ]
+}

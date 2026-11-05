@@ -10,11 +10,11 @@
     },
     {
       "path": "styles/geometry.ts",
-      "sha256": "57ab85589fffc84bad7d048fe36df92ef7d49530e4c3d996684fe9b9afce3a63"
+      "sha256": "1adfe3e568a3c6d7d337645fbdd0a482793e8ce59fea44b34a98d6c9f474e2a7"
     },
     {
       "path": "components/container/container.manifest.json",
-      "sha256": "f4d614810f6b2f67c0e35c84e84eda397dac15ff9da0e90afada89103b006e66"
+      "sha256": "63bebfb24d662a87771a8b5daa98c9bad273761eb5b35981afe90ce52bc3eeb3"
     },
     {
       "path": "components/container/container.react.tsx",
@@ -22,11 +22,11 @@
     },
     {
       "path": "components/container/container.recipe.ts",
-      "sha256": "65b3a5de7239fa83444779516747819950717de4ed1152ec3f7f5e51e68ece09"
+      "sha256": "13cd162548377dd028107d4e038c1e11a80db815f3c914dd3bfb829df980dae4"
     },
     {
       "path": "components/recipe-parts.ts",
-      "sha256": "a5832b99b64d07ef7dd84658bbbf65d5ff7e45086570190c16f720e6a27d6fac"
+      "sha256": "35721ac166ec05cff0a88ae628701899f998413c044edc1bab75127146457dcf"
     }
   ],
   "renderers": {
