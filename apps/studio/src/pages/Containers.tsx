@@ -15,6 +15,8 @@ import type { PageProps } from './types.ts';
 import { Divider, IMAGES, Page, Row, Section, caption, dataTable, fmt, kicker, nameCell, noteCell, tableScroller } from './shared.tsx';
 
 const levelBox = css({ bg: 'primary.subtle', alignSelf: 'start' });
+const presetCell = css({ display: 'flex', flexDirection: 'column', gap: '2', flex: '[1 1 12rem]', minWidth: '0', alignSelf: 'start' });
+const presetBox = css({ bg: 'primary.subtle', alignSelf: 'stretch' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
 const tinted = css({ bg: 'bg' });
 const cardColumns = css({ display: 'grid', width: 'full', gridTemplateColumns: '1fr', gap: '6', alignItems: 'start', '@container canvas (min-width: 40rem)': { gridTemplateColumns: '1fr 1fr' } });
@@ -90,7 +92,15 @@ export function ContainersPage({ params }: PageProps) {
         </div>
         <Row label="live">
           {PRESET_ROWS.filter(([preset]) => preset !== 'page').map(([preset, padding]) => (
-            <ui-container key={`${preset}-${padding ?? ''}`} preset={preset} padding={padding} className={levelBox}><span className={caption}>{preset}{padding ? ` · ${padding}` : ''}</span><span className={levelChild} /></ui-container>
+            <div key={`${preset}-${padding ?? ''}`} className={presetCell}>
+              <span className={caption}>{preset}{padding ? ` · ${padding}` : ''}</span>
+              {/* A wrapper paints only with a surface; a bare one has no inset of its own (decision 0017). */}
+              <ui-container preset={preset} padding={padding} surface={preset === 'group' || preset === 'collection' ? 'panel' : undefined} className={presetBox}>
+                {preset === 'group'
+                  ? <><ui-button size="sm">One</ui-button><ui-button size="sm">Two</ui-button></>
+                  : <><ui-input label={`${preset} ${padding ?? ''} field`} hide-label="" placeholder="Field" />{preset === 'collection' && <ui-input label="collection second field" hide-label="" placeholder="Field" />}</>}
+              </ui-container>
+            </div>
           ))}
         </Row>
       </Section>
@@ -106,7 +116,7 @@ export function ContainersPage({ params }: PageProps) {
       <Section id="attributes" title="Attributes" note="layout and surface override the preset's flow and elevation; radius scales the concentric radius by a magnitude t (sharper than its contents); gap and data-size override one element or a subtree.">
         <Row label='layout="…"'>
           {(['stack', 'row', 'wrap'] as const).map((l) => (
-            <ui-container key={l} preset="collection" layout={l} className={levelBox}><span className={caption}>{l}</span><span className={levelChild} /><span className={levelChild} /></ui-container>
+            <ui-container key={l} preset="collection" layout={l} surface="panel" className={levelBox}><span className={caption}>{l}</span><span className={levelChild} /><span className={levelChild} /></ui-container>
           ))}
         </Row>
         <Row label='surface="…"'>
