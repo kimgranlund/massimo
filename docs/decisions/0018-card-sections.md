@@ -14,9 +14,12 @@ Areas and painted wrappers keep their padding: they hold cards and controls, not
 
 `divided` moves to `ui-section`, since its rows need the section's size.
 
+A card is block flow, and sections are spaced by collapsing margins. Padding equals gap, so one margin gives the inset and the space between sections. A section can use either: `ui-section header` is padded, so the next section keeps its margin, and `header="collapse"` spends its lower half as a margin, so the next section's top stays put.
+
 ## Consequences
 
 - Text alignment needs no second number: every section's text lands on the card's p.
 - Full-bleed media needs no option.
+- A card's `gap` applies inside its sections, and `layout` has no effect on a card.
 - Every card must wrap its content. A card that doesn't sits edge to edge, which is visible at once.
 - A card clips with `overflow: clip`. Floating popups are fixed, so they aren't clipped.

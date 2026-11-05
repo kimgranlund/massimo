@@ -133,8 +133,9 @@ export const containerChain = Object.fromEntries([
         padding: 0, borderWidth: 0,
       }],
       // A card keeps its inset for its sections (ui-section) and has no padding of its own: a bare child
-      // is full-bleed, clipped to the corners. The sections read the card's numbers by inheritance.
-      [`${depthSel(n)}[preset=card]`, { padding: 0, overflow: 'clip', '--ui-section-p': `max(0px, calc(${p} - var(--b)))`, '--ui-section-r': r }],
+      // is full-bleed, clipped to the corners. The sections read the card's numbers by inheritance. Block
+      // flow lets their margins collapse, and flow-root keeps the first and last margins inside the card.
+      [`${depthSel(n)}[preset=card]`, { display: 'flow-root', padding: 0, overflow: 'clip', '--ui-section-p': `max(0px, calc(${p} - var(--b)))`, '--ui-section-r': r }],
     ];
   }),
 ]);

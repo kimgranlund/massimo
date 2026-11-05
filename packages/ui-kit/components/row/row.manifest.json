@@ -13,16 +13,7 @@
     "format": "panda-slot-recipe",
     "module": "./row.recipe.ts"
   },
-  "independentLayers": [
-    {
-      "kind": "geometry",
-      "module": "../../tokens/geometry/resolve.ts",
-      "exports": [
-        "resolveSection"
-      ],
-      "description": "Reference numbers for a header row's block padding."
-    }
-  ],
+  "independentLayers": [],
   "nodes": [
     {
       "id": "component:row",
@@ -34,17 +25,7 @@
         "Lay out one line of text and actions."
       ],
       "properties": [],
-      "attributes": [
-        {
-          "name": "header",
-          "type": "boolean",
-          "readBy": "css",
-          "description": "A title row: the height of a divided row, for a title above a list.",
-          "inspector": {
-            "control": "toggle"
-          }
-        }
-      ],
+      "attributes": [],
       "events": [],
       "semantics": {
         "role": null,
@@ -178,9 +159,7 @@
           "inherits": [
             "HTMLAttributes<HTMLDivElement>"
           ],
-          "props": [
-            "header?: boolean // A title row: the height of a divided row, for a title above a list."
-          ]
+          "props": []
         }
       }
     }

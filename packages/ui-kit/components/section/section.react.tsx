@@ -7,9 +7,11 @@ export interface SectionProps extends HTMLAttributes<HTMLDivElement> {
   size?: CardPadding;
   /** Full-bleed rows with lines between them, outlined when the section has a size. */
   divided?: boolean;
+  /** A title row: a divided row's height. `collapse` makes its lower half a margin, so the next section's top stays put at every size. */
+  header?: boolean | 'collapse';
 }
 
 /** React Section (ui-section): a card's child, supplying the card's inset. */
-export function Section({ size, divided, ...rest }: SectionProps) {
-  return <div {...rest} data-ui="section" {...(size ? { size } : {})} {...(divided ? { divided: '' } : {})} />;
+export function Section({ size, divided, header, ...rest }: SectionProps) {
+  return <div {...rest} data-ui="section" {...(size ? { size } : {})} {...(divided ? { divided: '' } : {})} {...(header ? { header: header === true ? '' : header } : {})} />;
 }

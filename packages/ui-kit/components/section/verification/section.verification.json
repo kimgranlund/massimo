@@ -6,23 +6,23 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "b3dbaefaf9a1fb79b2f104ecba40edcbcc08ae29a154fdd2c71c390bd029de77"
+      "sha256": "7a8c0340a600412ba7e9c97d1653b7c190a10a4c3e3d4970199e139c6dff478a"
     },
     {
       "path": "components/section/section.manifest.json",
-      "sha256": "3f747c0f555de07c91980bc99b7977f40ffbf0d97da9bedf12bfa1add8ec522c"
+      "sha256": "0f58b874bd67b53df5db8bd2992d4b226ec2f9cdc310aa8f8b0cf2f6f28afd5e"
     },
     {
       "path": "components/section/section.react.tsx",
-      "sha256": "838a37af96b31aaa2f8efe55f32aa112c95da629d2a1a48ba19402c81c52676b"
+      "sha256": "bb8d830fa9a01998acfb1337b0a2b6270dfe2eda5743ca80588d7ed92d86407d"
     },
     {
       "path": "components/section/section.recipe.ts",
-      "sha256": "8d2fcf094fdfd80cc7575631527933e98027df1498dc5101d7596d8807d01fb6"
+      "sha256": "f97b34d2871174756e1ba21b719f997163825d0012db721eeac8d8307475270e"
     },
     {
       "path": "components/container/container.recipe.ts",
-      "sha256": "7b5e9b1f526d9ff1a2667a5c018760a6b776e4b2367a5dcb1348984ce2335995"
+      "sha256": "4f52105c065dbce3cb986f285dad328a5c054356e13e57679edf605c34e1c89c"
     },
     {
       "path": "components/recipe-parts.ts",

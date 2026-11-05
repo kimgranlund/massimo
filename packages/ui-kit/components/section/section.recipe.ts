@@ -19,21 +19,24 @@ export const section = defineSlotRecipe({
       // Read here and reset for what is inside, so a section in a section adds nothing.
       '--sp': 'var(--ui-section-p, 0px)', '--sc': 'var(--sp)',
       '& > *': { '--ui-section-p': '0px' },
-      display: 'flex', flexDirection: 'column', gap: 'inherit', minWidth: 0, alignSelf: 'stretch',
-      marginInline: INSET, paddingInline: 'var(--sc)',
-      '&:first-child': { paddingBlockStart: 'var(--sp)' },
-      '&:last-child': { paddingBlockEnd: 'var(--sp)' },
+      display: 'flex', flexDirection: 'column', gap: 'inherit', minWidth: 0,
+      // Padding equals gap, so one margin gives both: p above the first section, p below the last and,
+      // collapsed, p between two. It reaches the card through plain wrappers.
+      marginInline: INSET, marginBlock: 'var(--sp)', paddingInline: 'var(--sc)',
       // A sized section is a box: padded all round, its corners concentric with the card's.
       '&[size]': {
-        paddingBlock: 'var(--sc)',
-        // The box is inside the card's border, so its distance from the card's edge includes it.
-        borderRadius: `max(calc(var(--ui-section-r, 0px) - ${INSET} - var(--b)), calc(var(--ui-section-r, 0px) * var(--ui-container-ratio)))`,
+        marginBlock: INSET, paddingBlock: 'var(--sc)',
+        // The box is inside the card's border, so its distance from the card's edge includes it. Flush with
+        // the card (inset 0) it is square: the card's own corners clip it, and stacked boxes meet in a line.
+        borderRadius: `min(max(calc(var(--ui-section-r, 0px) - ${INSET} - var(--b)), calc(var(--ui-section-r, 0px) * var(--ui-container-ratio))), calc(${INSET} * 1000))`,
       },
-      '&[size]:first-child': { marginBlockStart: INSET, paddingBlockStart: 'var(--sc)' },
-      '&[size]:last-child': { marginBlockEnd: INSET, paddingBlockEnd: 'var(--sc)' },
+      // A header is a row: a divided row's height. Padded, it has no margin, so the next section keeps its
+      // own and moves out with its size. With `header="collapse"` the lower half is a margin, which
+      // collapses with the next section's, so that section's top stays put at every size.
+      '&[header]': { marginBlock: 0, paddingBlock: ROW_BLOCK, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+      '&[header=collapse]': { paddingBlockEnd: 0, marginBlockEnd: ROW_BLOCK },
       // Divided: every child is a full-bleed row, and the rows carry the padding.
       '&[divided]': { padding: 0, gap: 0, overflow: 'hidden', '&[size]': { boxShadow: 'inset 0 0 0 1px var(--colors-border)' } },
-      '&[divided]:first-child, &[divided]:last-child': { padding: 0 },
       '&[divided] > *': { paddingBlock: ROW_BLOCK, paddingInline: 'var(--sc)' },
       '&[divided] > * + *': { borderBlockStart: '1px solid var(--colors-border)' },
     },

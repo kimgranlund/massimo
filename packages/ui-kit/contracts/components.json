@@ -461,7 +461,7 @@
     },
     "row": {
       "geometryFamily": "container",
-      "element": "CSS-only line of text and actions (React Row); header gives it a divided row's height.",
+      "element": "CSS-only line of text and actions (React Row).",
       "parts": [],
       "allowedParents": [
         "page",
@@ -477,7 +477,7 @@
     },
     "section": {
       "geometryFamily": "container",
-      "element": "CSS-only card child (React Section): supplies the card's inset, or part of it at a smaller size; divided makes its children rows.",
+      "element": "CSS-only card child (React Section): supplies the card's inset, or part of it at a smaller size; divided makes its children rows, header makes it a row of the stack below.",
       "parts": [],
       "allowedParents": [
         "card",

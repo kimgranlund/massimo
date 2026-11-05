@@ -970,7 +970,7 @@ for (const c of cases) {
     const el = box.querySelector(`[data-level="${l}"]`), holder = el.querySelector(':scope > ui-section') ?? el, [a, b] = holder.children, h = rect(el).height;
     const want = resolveContainer(l, { ...g, height: h });
     const between = l === 'group' ? rect(b).left - rect(a).right : rect(b).top - rect(a).bottom;
-    checks[`${l}.padding`] = [px(cs(holder).paddingTop), want.padding];
+    checks[`${l}.padding`] = [px(cs(holder).paddingLeft), want.padding];
     checks[`${l}.gap`] = [r2(between), want.gap];
     // getComputedStyle reports the declared radius; paint scales it to fit half the height.
     checks[`${l}.radius`] = [r2(Math.min(px(cs(el).borderTopLeftRadius), h / 2)), r2(want.radius)];
@@ -989,7 +989,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH" padding="xl"><ui-section id="sP"><p id="sT">t</p></ui-section><ui-section size="md" id="sM"><p id="sMt">m</p></ui-section><div><ui-section id="sW"><p id="sWt">w</p></ui-section></div><ui-section size="sm" divided id="cD"><ui-row id="cHd">a</ui-row><div>b</div></ui-section></ui-container><ui-container preset="card" id="cB"><div id="cBi">i</div><ui-section id="cBs"><ui-row id="cHh" header>h</ui-row></ui-section></ui-container><ui-container preset="panel" id="pS"><ui-section id="pSs">a</ui-section></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH" padding="xl"><ui-section id="sP"><p id="sT">t</p></ui-section><ui-section size="md" id="sM"><p id="sMt">m</p></ui-section><div><ui-section id="sW"><p id="sWt">w</p></ui-section></div><ui-section size="sm" divided id="cD"><ui-row id="cHd">a</ui-row><div>b</div></ui-section></ui-container><ui-container preset="card" id="cB"><div id="cBi">i</div><ui-section id="cHh" header>h</ui-section><ui-section size="sm" id="cBl">l</ui-section><ui-section id="cHc" header="collapse">c</ui-section><ui-section size="sm" id="cBc">k</ui-section><ui-section id="cBa">a</ui-section><ui-section id="cBb">b</ui-section></ui-container><ui-container preset="panel" id="pS"><ui-section id="pSs">a</ui-section></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1007,7 +1007,8 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'collection.radius': [rad('ui-container[preset=collection]'), resolveContainer('collection', g).radius],
     'group.concentric': [rad('ui-container[preset=group]'), s === 0 ? 0 : rad('ui-container[preset=group] > ui-button') + resolveContainer('group', g).edge],
     ...(() => {
-      const cs = (q) => getComputedStyle(box.querySelector(q)), left = (q) => box.querySelector(q).getBoundingClientRect().left;
+      const cs = (q) => getComputedStyle(box.querySelector(q)), rectOf = (q) => box.querySelector(q).getBoundingClientRect();
+      const left = (q) => rectOf(q).left, top = (q) => rectOf(q).top, bottom = (q) => rectOf(q).bottom;
       const xl = resolveContainer('card-xl', g), card = { padding: xl.edge, radius: xl.radius }, b = xl.edge - xl.padding;
       const md = resolveSection(card, 'md', g), sm = resolveSection(card, 'sm', g), edge = left('#cH');
       return {
@@ -1023,6 +1024,15 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
         'section.area.adds-nothing': [px(cs('#pSs').paddingLeft), 0],
         'section.row.no-inset': [px(cs('#cHd').paddingLeft), sm.padding],
         'section.header.block': [px(cs('#cHh').paddingTop), sm.rowBlock],
+        'section.header.margin': [px(cs('#cHh').marginTop), 0],
+        // Padded, the next section keeps its margin; collapsing, the larger of the two wins.
+        ...(() => {
+          const md = resolveContainer('card-md', g), inset = resolveSection({ padding: md.edge, radius: md.radius }, 'sm', g).inset;
+          // Margins sit inside the card's border, so the border comes off them.
+          return { 'section.header.padded': [r2(top('#cBl') - bottom('#cHh')), r2(inset - (md.edge - md.padding))], 'section.header.collapsed': [r2(top('#cBc') - bottom('#cHc')), r2(Math.max(sm.rowBlock, inset))] };
+        })(),
+        'section.collapsed.gap': [r2(top('#cBb') - bottom('#cBa')), resolveContainer('card-md', g).edge - (resolveContainer('card-md', g).edge - resolveContainer('card-md', g).padding)],
+        'section.card.last': [r2(bottom('#cB') - bottom('#cBb')), resolveContainer('card-md', g).edge],
         'divided.box.padding': [px(cs('#cD').paddingTop), 0],
         'divided.box.inset': [r2(left('#cD') - edge), sm.inset],
         'divided.gap': [r2(box.querySelector('#cD > :nth-child(2)').getBoundingClientRect().top - box.querySelector('#cD > :first-child').getBoundingClientRect().bottom), 0],
@@ -1140,7 +1150,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
         const isC = (c) => c.localName === 'ui-container' || c.dataset?.ui === 'container';
         const holder = node.preset === 'card' ? el.querySelector(':scope > ui-section') : el;
         const cs = getComputedStyle(holder), kids = [...holder.children].flatMap((c) => isC(c) ? [c] : [...c.children].filter(isC));
-        const checks = { padding: [px(cs.paddingTop), r2(node.padding)] };
+        const checks = { padding: [px(cs.paddingLeft), r2(node.padding)] };
         // An unpainted wrapper (no edge) draws no corner, so its radius means nothing.
         if (node.edge > 0 || node.depth === 0) checks.radius = [px(getComputedStyle(el).borderTopLeftRadius), r2(node.radius)];
         // The gap along the flow: rows (group) measure across, stacks down.

@@ -59,6 +59,19 @@
           "inspector": {
             "control": "toggle"
           }
+        },
+        {
+          "name": "header",
+          "type": "string",
+          "readBy": "css",
+          "description": "A title row: a divided row's height. Padded by default; collapse makes its lower half a margin, so the next section's top stays put at every size.",
+          "inspector": {
+            "control": "select"
+          },
+          "enum": [
+            "",
+            "collapse"
+          ]
         }
       ],
       "events": [],
@@ -78,7 +91,8 @@
       "constraints": [
         "A card has no padding of its own: content outside a section is full-bleed.",
         "Reads the card's inset by inheritance, through plain wrappers. In an area or a painted wrapper it adds nothing.",
-        "size larger than the card's inset stops at the edge."
+        "size larger than the card's inset stops at the edge.",
+        "Sections are spaced by collapsing margins, so they stack in a card's block flow; a card's gap applies inside them."
       ],
       "avoidWhen": [
         {
@@ -196,7 +210,8 @@
           ],
           "props": [
             "size?: CardPadding // The padding this section supplies, xs 2u … xl 8u. It sits the rest of the card's inset in from the edge, so its text stays on the card's inset. Default: all of it.",
-            "divided?: boolean // Full-bleed rows with lines between them, outlined when the section has a size."
+            "divided?: boolean // Full-bleed rows with lines between them, outlined when the section has a size.",
+            "header?: boolean | 'collapse' // A title row: a divided row's height. `collapse` makes its lower half a margin, so the next section's top stays put at every size."
           ]
         }
       }

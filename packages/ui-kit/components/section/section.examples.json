@@ -16,7 +16,7 @@
       "id": "section-sized",
       "label": "A smaller child in an xl card: its box moves out, and its text stays level with the title",
       "subject": "component:section",
-      "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-section><strong>Card title</strong></ui-section><ui-section size=\"md\" divided><ui-row>Option 1</ui-row><ui-row>Option 2</ui-row></ui-section></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-section header><strong>Card title</strong></ui-section><ui-section size=\"md\" divided><ui-row>Option 1</ui-row><ui-row>Option 2</ui-row></ui-section></ui-container>"
     },
     {
       "id": "section-media",

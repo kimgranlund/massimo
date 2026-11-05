@@ -17,6 +17,7 @@ import { Divider, IMAGES, Page, Row, Section, caption, dataTable, fmt, kicker, n
 const levelBox = css({ bg: 'bg.subtle', alignSelf: 'start' });
 const presetCell = css({ display: 'flex', flexDirection: 'column', gap: '2', flex: '[1 1 12rem]', minWidth: '0', alignSelf: 'start' });
 const stretched = css({ alignSelf: 'stretch' });
+const sizeGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(13rem, 1fr))', gap: '4', alignItems: 'start' });
 const tintedBox = css({ bg: 'bg.muted' });
 const selectedRow = css({ bg: 'bg.muted' });
 const presetBox = css({ bg: 'bg.subtle', alignSelf: 'stretch' });
@@ -192,21 +193,27 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card.">
+      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A padded header keeps the list's margin, so the list moves down as its size drops; a collapsing header absorbs it, so the list stays put. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card.">
+        {([['', 'padded header'], ['collapse', 'collapsing header']] as const).map(([header, name]) => (
+          <div className={sizeGrid} key={name}>
+            {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map((size) => (
+              <div className={presetCell} key={size}>
+                <span className={caption}>{name} · section {size}</span>
+                <ui-container preset="card" padding="xl" className={stretched}>
+                  <ui-section header={header}><strong>Card title</strong></ui-section>
+                  <ui-section size={size} divided=""><ui-row className={selectedRow}>Row 1.1</ui-row><ui-row>Row 1.2</ui-row><ui-row>Row 1.3</ui-row></ui-section>
+                  <ui-section size={size} divided=""><ui-row>Row 2</ui-row></ui-section>
+                  <ui-section size={size} divided=""><ui-row>Row 3</ui-row></ui-section>
+                </ui-container>
+              </div>
+            ))}
+          </div>
+        ))}
         <div className={roundDemo}>
-          {([['lg', '1.65', 'sm', 'card lg · section sm'], ['xl', '1.25', 'md', 'card xl · section md']] as const).map(([padding, radius, size, name]) => (
-            <div className={presetCell} key={name}>
-              <span className={caption}>{name}</span>
-              <ui-container preset="card" padding={padding} radius={radius} className={stretched}>
-                <ui-section><ui-row><strong>Card title</strong><ui-button size="sm" variant="ghost">Add</ui-button></ui-row></ui-section>
-                <ui-section size={size} divided=""><ui-row className={selectedRow}>Option 1</ui-row><ui-row>Option 2</ui-row><ui-row>Option 3</ui-row></ui-section>
-              </ui-container>
-            </div>
-          ))}
           <div className={presetCell}>
             <span className={caption}>card xl · tinted section md</span>
             <ui-container preset="card" padding="xl" className={stretched}>
-              <ui-section><strong>Card title</strong></ui-section>
+              <ui-section header=""><strong>Card title</strong></ui-section>
               <ui-section size="md" className={tintedBox}><strong>Text on the same line as the title</strong><p>The box moves out and its text stays put.</p></ui-section>
             </ui-container>
           </div>

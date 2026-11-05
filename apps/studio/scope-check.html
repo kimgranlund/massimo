@@ -35,8 +35,8 @@ const inside = { unit: 3, density: 'compact', radiusScale: 0 };
 near('button height (scope)', parseFloat(cs('b1').height), resolveControl(inside).height);
 near('button height (outside)', parseFloat(cs('b0').height), resolveControl({}).height);
 near('button radius (scope)', parseFloat(cs('b1').borderTopLeftRadius), 0);
-near('card padding (scope)', parseFloat(getComputedStyle(document.querySelector('#c1 > ui-section')).paddingTop), resolveContainer('card-md', inside).padding);
-near('card padding (outside)', parseFloat(getComputedStyle(document.querySelector('#c0 > ui-section')).paddingTop), resolveContainer('card-md', {}).padding);
+near('card padding (scope)', parseFloat(getComputedStyle(document.querySelector('#c1 > ui-section')).paddingLeft), resolveContainer('card-md', inside).padding);
+near('card padding (outside)', parseFloat(getComputedStyle(document.querySelector('#c0 > ui-section')).paddingLeft), resolveContainer('card-md', {}).padding);
 // Panda tokens app CSS uses (spacing.4 = 4u) re-derive in the scope too.
 near('spacing.4 (scope)', parseFloat(cs('p1').paddingTop), 4 * 3);
 near('spacing.4 (outside)', parseFloat(cs('p0').paddingTop), 4 * 4.5);

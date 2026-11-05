@@ -287,14 +287,14 @@ export function resolveContainerTree(node: ContainerNode, input: GeometryInput &
 /**
  * A section of a card (ui-section): the card holds the inset p and its children supply it. A section of
  * size c sits p − c in from the edge and pads c, so its text lands on p, level with an unsized section
- * (c = p). Its radius is concentric with the card, R′ = max(R − (p − c), kR). A divided section's rows
+ * (c = p). Its radius is concentric with the card, R′ = max(R − (p − c), kR), and 0 when it is flush with the card, whose corners clip it. A divided section's rows
  * pad c beside them and 3u × density above and below.
  */
 export function resolveSection(card: { padding: number; radius: number }, size: CardPadding | undefined, input: GeometryInput = {}) {
   const x = inputs(input);
   const c = size ? resolveContainer(`card-${size}`, input).edge : card.padding;
   const inset = Math.max(0, card.padding - c);
-  return { inset, padding: c, radius: Math.max(card.radius - inset, card.radius * CONTAINER_RATIO), rowBlock: 3 * x.unit * x.factor, divider: 1 };
+  return { inset, padding: c, radius: inset > 0 ? Math.max(card.radius - inset, card.radius * CONTAINER_RATIO) : 0, rowBlock: 3 * x.unit * x.factor, divider: 1 };
 }
 
 /**

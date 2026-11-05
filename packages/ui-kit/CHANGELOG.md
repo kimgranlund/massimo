@@ -7,8 +7,8 @@
 **Added**
 
 - `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
-- `ui-section` (React `Section`): a card's child, supplying the card's inset, or part of it at a smaller `size`; `divided` makes its children rows.
-- `ui-row` (React `Row`): a line of text and actions, with `header` for a title row.
+- `ui-section` (React `Section`): a card's child, supplying the card's inset, or part of it at a smaller `size`; `divided` makes its children rows, and `header` makes it a title row, padded or, with `collapse`, collapsing into the next section's margin.
+- `ui-row` (React `Row`): a line of text and actions.
 - `color.spectrum.generator`: `oklch` generates the ramps in OKLCH with the same families, steps, contrast targets and anchors. `hct` stays the default.
 - `reach` on a color anchor: `key` or `ramp`, how far the anchor's chroma spreads through its family.
 
@@ -23,6 +23,7 @@
 - Card padding `lg` is 6u and `xl` is 8u, so every padding comes from {½, 1, 2, 3, 4, 6, 8}. Dialogs follow `xl`.
 - A card has no padding of its own (decision 0018): wrap its content in `ui-section`, or it sits edge to edge. A section of size c sits p − c in and pads c, so its text stays on the card's inset. This also removes `data-row` and the card text inset: use `ui-row` for a line of items.
 - `divided` moves from `ui-container` to `ui-section`: `<ui-section size="sm" divided>`.
+- A card is block flow, and its sections are spaced by collapsing margins. `gap` on a card applies inside its sections, and `layout` has no effect on it.
 - A color anchor's chroma reaches only steps 9–12 by default, capped at the anchor's chroma or the step's generated chroma, whichever is larger. Tints on an anchored accent keep their generated chroma, so they get quieter. `reach: 'ramp'` restores the old spread. Neutral anchors keep it by default.
 - Field labels, descriptions and errors start where the control's text starts, not at its edge. In `ui-field` this applies to the stacked layout over a text control.
 
