@@ -17,7 +17,7 @@ import { Divider, IMAGES, Page, Row, Section, caption, dataTable, fmt, kicker, n
 const levelBox = css({ bg: 'bg.subtle', alignSelf: 'start' });
 const presetCell = css({ display: 'flex', flexDirection: 'column', gap: '2', flex: '[1 1 12rem]', minWidth: '0', alignSelf: 'start' });
 const stretched = css({ alignSelf: 'stretch' });
-const plainStack = css({ display: 'flex', flexDirection: 'column' });
+const tintedBox = css({ bg: 'bg.muted' });
 const selectedRow = css({ bg: 'bg.muted' });
 const presetBox = css({ bg: 'bg.subtle', alignSelf: 'stretch' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
@@ -100,7 +100,9 @@ export function ContainersPage({ params }: PageProps) {
               <ui-container preset={preset} padding={padding} surface={preset === 'group' || preset === 'collection' ? 'panel' : undefined} className={presetBox}>
                 {preset === 'group'
                   ? <><ui-button size="sm">One</ui-button><ui-button size="sm">Two</ui-button></>
-                  : <><ui-input label={`${preset} ${padding ?? ''} field`} hide-label="" placeholder="Field" />{preset === 'collection' && <ui-input label="collection second field" hide-label="" placeholder="Field" />}</>}
+                  : preset === 'collection'
+                    ? <><ui-input label="collection field" hide-label="" placeholder="Field" /><ui-input label="collection second field" hide-label="" placeholder="Field" /></>
+                    : <ui-section><ui-input label={`${preset} ${padding ?? ''} field`} hide-label="" placeholder="Field" /></ui-section>}
               </ui-container>
             </div>
           ))}
@@ -118,32 +120,32 @@ export function ContainersPage({ params }: PageProps) {
       <Section id="attributes" title="Attributes" note="layout and surface override the preset's flow and elevation; radius scales the concentric radius by a magnitude t (sharper than its contents); gap and data-size override one element or a subtree.">
         <Row label='layout="…"'>
           {(['stack', 'row', 'wrap'] as const).map((l) => (
-            <ui-container key={l} preset="card" padding="sm" layout={l} className={levelBox}><span className={caption}>{l}</span><span className={levelChild} /><span className={levelChild} /></ui-container>
+            <ui-container key={l} preset="card" padding="sm"  className={levelBox}><ui-section><ui-container preset="collection" layout={l}><span className={caption}>{l}</span><span className={levelChild} /><span className={levelChild} /></ui-container></ui-section></ui-container>
           ))}
         </Row>
         <Row label='surface="…"'>
           {(['none', 'panel', 'card', 'raised'] as const).map((sf) => (
-            <ui-container key={sf} preset="card" padding="sm" surface={sf}><span className={caption}>{sf}</span></ui-container>
+            <ui-container key={sf} preset="card" padding="sm" surface={sf}><ui-section><span className={caption}>{sf}</span></ui-section></ui-container>
           ))}
         </Row>
         {['1', '0.5', '0'].map((t) => (
           <Row key={t} label={`radius="${t}"`}>
-            <ui-container preset="card" className={levelBox} radius={t}><ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container></ui-container>
+            <ui-container preset="card" className={levelBox} radius={t}><ui-section><ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container></ui-section></ui-container>
           </Row>
         ))}
         <Row label='gap="…"'>
           {['0', '1', '4'].map((g) => (
-            <ui-container preset="card" key={g} gap={g} className={levelBox}>
+            <ui-container preset="card" key={g} gap={g} className={levelBox}><ui-section>
               <span className={caption}>gap="{g}"</span><span className={levelChild} /><span className={levelChild} />
-            </ui-container>
+            </ui-section></ui-container>
           ))}
         </Row>
         <Row label="data-size">
           {(['3', '4', '5'] as const).map((z) => (
-            <ui-container preset="card" key={z} data-size={z}>
+            <ui-container preset="card" key={z} data-size={z}><ui-section>
               <span className={kicker}>data-size="{z}"</span>
               <ui-container preset="group"><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-container>
-            </ui-container>
+            </ui-section></ui-container>
           ))}
         </Row>
       </Section>
@@ -156,10 +158,10 @@ export function ContainersPage({ params }: PageProps) {
             <ui-container preset="panel" aria-label="Panel example">
               <span className={kicker}>Panel</span>
               <div className={cardColumns}>
-                <ui-container preset="card">
+                <ui-container preset="card"><ui-section>
                   <span className={kicker}>Card · Team</span>
                   {([['Design', ['Ada', 'Grace']], ['Engineering', ['Linus', 'Margaret']]] as const).map(([team, people]) => (
-                    <ui-container preset="card" key={team}>
+                    <ui-container preset="card" key={team}><ui-section>
                       <ui-row><span className={kicker}>Card · {team}</span></ui-row>
                       <ui-container preset="collection">
                         {people.map((n) => (
@@ -169,53 +171,50 @@ export function ContainersPage({ params }: PageProps) {
                           </ui-row>
                         ))}
                       </ui-container>
-                    </ui-container>
+                    </ui-section></ui-container>
                   ))}
-                </ui-container>
-                <ui-container preset="card">
+                </ui-section></ui-container>
+                <ui-container preset="card"><ui-section>
                   <span className={kicker}>Card · Details</span>
                   <ui-input label="Name" value="Spring catalog" />
                   <ui-container preset="group"><ui-button>Save</ui-button><ui-button>Cancel</ui-button></ui-container>
-                </ui-container>
+                </ui-section></ui-container>
               </div>
             </ui-container>
           </ui-container>
         </ui-container>
         <Row label="card grid">
-          <ui-container preset="card" className={tileGrid}>
+          <ui-container preset="card"><ui-section className={tileGrid}>
             {['Dawn', 'Dusk', 'Coast', 'Night'].map((t, i) => (
-              <ui-container preset="card" padding="xs" key={t}><ui-image src={IMAGES[i % IMAGES.length]} alt={t} ratio="landscape" /><span>{t}</span></ui-container>
+              <ui-container preset="card" padding="xs" key={t}><ui-image src={IMAGES[i % IMAGES.length]} alt={t} ratio="landscape" /><ui-section><span>{t}</span></ui-section></ui-container>
             ))}
-          </ui-container>
+          </ui-section></ui-container>
         </Row>
       </Section>
       <Divider />
-      <Section id="composed" title="Composed rows" note="Text in a card stays on the padding edge, level with its buttons and media. A ui-row is composed, so it starts on the text edge. The container declares that inset and rows inherit it, so wrappers in between change nothing. Radius follows padding, so the same outer radius takes a different multiple at each padding: the list inside stays concentric.">
+      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card.">
         <div className={roundDemo}>
-          {([['lg', '1.65', 'padding="lg" radius="1.65"'], ['sm', '3.3', 'padding="sm" radius="3.3"']] as const).map(([padding, radius, name]) => (
+          {([['lg', '1.65', 'sm', 'card lg · section sm'], ['xl', '1.25', 'md', 'card xl · section md']] as const).map(([padding, radius, size, name]) => (
             <div className={presetCell} key={name}>
-              <span className={caption}>{name} · divided</span>
+              <span className={caption}>{name}</span>
               <ui-container preset="card" padding={padding} radius={radius} className={stretched}>
-                <ui-row header=""><strong>Card title</strong><ui-button size="sm" variant="ghost">Add</ui-button></ui-row>
-                <ui-container preset="collection" divided=""><ui-row className={selectedRow}>Option 1</ui-row><ui-row>Option 2</ui-row><ui-row>Option 3</ui-row></ui-container>
+                <ui-section><ui-row><strong>Card title</strong><ui-button size="sm" variant="ghost">Add</ui-button></ui-row></ui-section>
+                <ui-section size={size} divided=""><ui-row className={selectedRow}>Option 1</ui-row><ui-row>Option 2</ui-row><ui-row>Option 3</ui-row></ui-section>
               </ui-container>
             </div>
           ))}
           <div className={presetCell}>
-            <span className={caption}>ui-row · through a wrapper, no box</span>
-            <ui-container preset="card" className={stretched}>
-              <ui-row header=""><strong>Notifications</strong></ui-row>
-              <section className={plainStack}>
-                {['Comments', 'Mentions', 'Releases'].map((t) => <ui-row key={t}><span>{t}</span><ui-button size="sm" variant="ghost">Edit</ui-button></ui-row>)}
-              </section>
+            <span className={caption}>card xl · tinted section md</span>
+            <ui-container preset="card" padding="xl" className={stretched}>
+              <ui-section><strong>Card title</strong></ui-section>
+              <ui-section size="md" className={tintedBox}><strong>Text on the same line as the title</strong><p>The box moves out and its text stays put.</p></ui-section>
             </ui-container>
           </div>
           <div className={presetCell}>
-            <span className={caption}>no rows · text on the padding edge</span>
+            <span className={caption}>bare child · full-bleed</span>
             <ui-container preset="card" className={stretched}>
-              <strong>Card title</strong>
-              <p>Text with no rows below it lines up with the buttons.</p>
-              <ui-container preset="group"><ui-button variant="primary">Approve</ui-button><ui-button>Reset</ui-button></ui-container>
+              <ui-image src={IMAGES[0]} alt="Landscape" ratio="landscape" />
+              <ui-section><strong>Card title</strong><p>Text lines up with the buttons.</p><ui-container preset="group"><ui-button variant="primary">Approve</ui-button><ui-button>Reset</ui-button></ui-container></ui-section>
             </ui-container>
           </div>
         </div>
@@ -245,8 +244,10 @@ function NestingTree({ params }: Pick<PageProps, 'params'>) {
   });
   const render = (n: ContainerNode, d: number): ReactNode => (
     <ui-container preset={n.preset} padding={n.padding} className={ucBox} style={{ '--stroke': `var(--colors-${DEPTH_STROKE[d % 4]})` } as CSSProperties}>
-      <span className={labTag}>{d === 0 ? `card · ${n.padding}` : 'card'}: r {fmt(flat[d].radius)} · p {fmt(flat[d].edge)}{read[d] ? ` (CSS ${read[d]})` : ''}</span>
-      {n.children?.length ? render(n.children[0], d + 1) : <ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container>}
+      <ui-section>
+        <span className={labTag}>{d === 0 ? `card · ${n.padding}` : 'card'}: r {fmt(flat[d].radius)} · p {fmt(flat[d].edge)}{read[d] ? ` (CSS ${read[d]})` : ''}</span>
+        {n.children?.length ? render(n.children[0], d + 1) : <ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container>}
+      </ui-section>
     </ui-container>
   );
   return (
@@ -278,13 +279,13 @@ function ConcentricWire({ params }: Pick<PageProps, 'params'>) {
   ];
   return (
     <div className={wire}>
-      <ui-container preset="card">
+      <ui-container preset="card"><ui-section>
         <ui-button>Button</ui-button>
         <ui-container preset="group">
           <ui-button>Button</ui-button>
           <ui-segmented label="Composite" value="a"><ui-option value="a">Option</ui-option><ui-option value="b">Option</ui-option></ui-segmented>
         </ui-container>
-      </ui-container>
+      </ui-section></ui-container>
       <div className={legend} role="list" aria-label="Stroke colors">
         {rows.map(([k, name, value]) => (
           <div key={k} role="listitem" style={{ display: 'contents' }}>

@@ -100,16 +100,16 @@ export function ElevationPage({ params }: PageProps) {
         <div className={nestWrap}>
           <ui-container preset="panel">
             <span className={kicker}>Panel</span>
-            <ui-container preset="card">
+            <ui-container preset="card"><ui-section>
               <span className={kicker}>Card</span>
-              <ui-container preset="card"><span className={kicker}>Card in a card</span><ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container></ui-container>
-            </ui-container>
-            <ui-container preset="card" surface="raised"><span className={kicker}>Card · surface="raised"</span></ui-container>
+              <ui-container preset="card"><ui-section><span className={kicker}>Card in a card</span><ui-container preset="group"><ui-button>Save</ui-button><ui-button variant="primary">Publish</ui-button></ui-container></ui-section></ui-container>
+            </ui-section></ui-container>
+            <ui-container preset="card" surface="raised"><ui-section><span className={kicker}>Card · surface="raised"</span></ui-section></ui-container>
           </ui-container>
         </div>
         <Row label='surface="…"'>
           {(['none', 'panel', 'card', 'raised'] as const).map((sf) => (
-            <ui-container key={sf} preset="card" padding="sm" surface={sf}><span className={caption}>{sf}</span></ui-container>
+            <ui-container key={sf} preset="card" padding="sm" surface={sf}><ui-section><span className={caption}>{sf}</span></ui-section></ui-container>
           ))}
         </Row>
       </Section>

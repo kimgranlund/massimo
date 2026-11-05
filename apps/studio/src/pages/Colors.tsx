@@ -189,7 +189,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
           <ui-badge className={tone.success}>Ready for review</ui-badge>
         </div>
         <div className={uiGrid}>
-          <ui-container preset="card">
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>Overview</span><h4 className={cardTitle}>A little color goes a long way.</h4>
             <p className={caption}>Review the collection, refine its details and prepare the next edition.</p>
             <div className={specimens}>
@@ -197,30 +197,30 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
               <ui-button onClick={() => setApproved(false)}>Reset approval</ui-button>
             </div>
             <p className={caption} role="status">{approved ? 'Collection approved' : 'Demo collection · awaiting approval'}</p>
-          </ui-container>
-          <ui-container preset="card">
+          </ui-section></ui-container>
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>Details</span>
             <ui-input label="Collection name" value="Spring catalog" />
             <ui-checkbox checked>Include neutral colors</ui-checkbox>
             <ui-checkbox>Include alternate editions</ui-checkbox>
-          </ui-container>
-          <ui-container preset="card">
+          </ui-section></ui-container>
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>Library</span>
             <ui-listbox label="Preview library" value="shared">
               {['Inbox', 'Drafts', 'Shared', 'Archive'].map((n) => <ui-option key={n} value={n.toLowerCase()}>{n}</ui-option>)}
             </ui-listbox>
-          </ui-container>
-          <ui-container preset="card">
+          </ui-section></ui-container>
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>This week</span><strong className={bigFigure} data-numeric>1,284</strong>
             <p className={caption}>Orders across six channels.</p>
             <ui-badge className={tone.success}>↑ 12% this week</ui-badge>
-          </ui-container>
-          <ui-container preset="card">
+          </ui-section></ui-container>
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>Collection progress</span><strong className={bigFigure} data-numeric>62<span data-numeric>%</span></strong>
             <ui-progress label="Collection progress" value={62} />
             <p className={caption}>148 of 240 items reviewed.</p>
-          </ui-container>
-          <ui-container preset="card">
+          </ui-section></ui-container>
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>Action states</span>
             <div className={stateRow}>
               <div className={stateCell}><span className={caption}>Rest</span><ui-button variant="primary">Approve</ui-button></div>
@@ -228,8 +228,8 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
               <div className={stateCell}><span className={caption}>Busy</span><ui-button variant="primary" loading>Approve</ui-button></div>
               <div className={stateCell}><span className={caption}>Disabled</span><ui-button variant="primary" disabled>Approve</ui-button></div>
             </div>
-          </ui-container>
-          <ui-container preset="card" className={chartCard}>
+          </ui-section></ui-container>
+          <ui-container preset="card" className={chartCard}><ui-section>
             <div className={contextHead}><h4 className={cardTitle}>Orders by channel</h4><span className={caption}>Illustrative week</span></div>
             <div className={chart} role="img" aria-label={`Illustrative orders by channel, Monday through Sunday. ${CHANNELS.map(([n, v]) => `${n}: ${v.join(', ')}`).join('. ')}.`}>
               {DAYS.map((d, i) => (
@@ -243,14 +243,14 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
               ))}
             </div>
             <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={cx(dot, DATA_BG[c])} />{n}</span>)}</div>
-          </ui-container>
-          <ui-container preset="card" className={feedbackCard}>
+          </ui-section></ui-container>
+          <ui-container preset="card" className={feedbackCard}><ui-section>
             <span className={kicker}>Feedback</span>
             <p className={cx(callout, tone.tint)} role="note">Changes to this palette appear across every preview.</p>
             <p className={cx(callout, tone.warning)} role="note">Check small text and neighboring hues before choosing a brand color.</p>
             <p className={cx(callout, tone.critical)} role="note">Critical: {critical} carries destructive actions.</p>
             <p className={cx(callout, tone.info)} role="note">Info: {info} marks neutral announcements.</p>
-          </ui-container>
+          </ui-section></ui-container>
         </div>
       </ui-container>
     </div>

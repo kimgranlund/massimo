@@ -1,0 +1,28 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "section",
+  "title": "Sections",
+  "summary": "A card's children supply its inset.",
+  "defaultExample": "section-card",
+  "examples": [
+    {
+      "id": "section-card",
+      "label": "ui-section: a card's content, on the card's inset",
+      "subject": "component:section",
+      "markup": "<ui-container preset=\"card\"><ui-section><strong>Card title</strong><p>Text and buttons share the inset.</p><ui-button>Open</ui-button></ui-section></ui-container>"
+    },
+    {
+      "id": "section-sized",
+      "label": "A smaller child in an xl card: its box moves out, and its text stays level with the title",
+      "subject": "component:section",
+      "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-section><strong>Card title</strong></ui-section><ui-section size=\"md\" divided><ui-row>Option 1</ui-row><ui-row>Option 2</ui-row></ui-section></ui-container>"
+    },
+    {
+      "id": "section-media",
+      "label": "A bare child is full-bleed",
+      "subject": "component:section",
+      "markup": "<ui-container preset=\"card\"><ui-image src=\"https://picsum.photos/640/360\" alt=\"Landscape\" ratio=\"landscape\"></ui-image><ui-section><strong>Card title</strong></ui-section></ui-container>"
+    }
+  ]
+}

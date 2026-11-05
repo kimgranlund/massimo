@@ -140,10 +140,10 @@ function ComponentDemos() {
     swiperRef.current?.go?.(on ? 1 : 0);
   }, [on]);
   const demo = (title: string, intent: string, body: ReactNode) => (
-    <ui-container preset="card" key={title}>
+    <ui-container preset="card" key={title}><ui-section>
       <div className={cardHead}><h3 className={cardTitle}>{title}</h3><span className={caption}>{intent}</span></div>
       <div className={demoBody}>{body}</div>
-    </ui-container>
+    </ui-section></ui-container>
   );
   return (
     <Section id="in-components" title="In components" note="Replay flips every demo at once; each transition runs on its intent. All of them are live controls too." action={<ReplayButton onReplay={flip} primary />}>
@@ -199,7 +199,7 @@ export function MotionPage({ params }: PageProps) {
               const m = liveMotion(params, name);
               const used = (Object.keys(INTENTS) as IntentName[]).filter((i) => intentSpring(params, i) === name);
               return (
-                <ui-container preset="card" key={name}>
+                <ui-container preset="card" key={name}><ui-section>
                   <div className={cardHead}><h3 className={cardTitle}>{cap(name)}</h3><span className={caption}>{ms(m.ms)}</span></div>
                   <SpringPlot name={name} points={m.points} bounce={m.spring.bounce} duration={m.spring.duration} />
                   <Thumb token={name} trackRef={(el) => { tracks.current[name] = el; }} />
@@ -210,7 +210,7 @@ export function MotionPage({ params }: PageProps) {
                     <dt>Intents</dt><dd>{used.length ? used.join(', ') : 'none'}</dd>
                   </dl>
                   <ReplayButton onReplay={() => replay(tracks.current[name] ?? null)} />
-                </ui-container>
+                </ui-section></ui-container>
               );
             })}
           </div>

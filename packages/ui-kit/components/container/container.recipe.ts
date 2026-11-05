@@ -15,7 +15,7 @@
 // were removed: docs/decisions/0016-remove-container-level-tags.md.)
 import { defineSlotRecipe } from '@pandacss/dev';
 import { CARD_PADDINGS, CONTAINER_DEPTH, CONTAINERS, NESTED_CARD_FLOOR, PAGE_MAX_WIDTH_REM, radiusFamily, type ContainerLevel } from '../../tokens/geometry/resolve.ts';
-import { CONTROL_RADIUS, FIELD_TEXT_EDGE, ROW_BLOCK, mergeStyles, tagRules } from '../recipe-parts.ts';
+import { CONTROL_RADIUS, mergeStyles, tagRules } from '../recipe-parts.ts';
 
 type Layout = Exclude<ContainerLevel, 'composite'>;
 
@@ -100,8 +100,8 @@ const chain = (n: number) => Array.from({ length: n }, () => C).join(' ');
 // Exactly depth n; the deepest rule also takes every deeper container, which then repeats its parent's radius.
 const depthSel = (n: number) => n === CHAIN_DEPTH ? chain(n) : `${chain(n)}:not(${chain(n + 1)})`;
 const WRAPPER = ':is([preset=group], [preset=collection], :not([preset]))';
-// A wrapper that paints nothing (isUnpaintedWrapper): no surface, padding or divided attribute.
-const UNPAINTED = `${WRAPPER}:not([padding], [divided]):not([surface]:not([surface=none]))`;
+// A wrapper that paints nothing (isUnpaintedWrapper): no surface or padding attribute.
+const UNPAINTED = `${WRAPPER}:not([padding]):not([surface]:not([surface=none]))`;
 const STEP = 'calc((0.5 + 0.5 * var(--ui-density)) * var(--u))';
 const steppedDown = (p: string) => `max(min(calc(${NESTED_CARD_FLOOR} * ${STEP}), ${p}), calc(${p} - ${STEP}))`;
 // An area inside the chain restarts it: the area sets --uc-a<n>: 1 for every depth, so the first chain
@@ -132,30 +132,18 @@ export const containerChain = Object.fromEntries([
         [`--uc-a${n}`]: n === 1 ? '1' : fresh(n),
         padding: 0, borderWidth: 0,
       }],
-      // Divided: full-bleed rows carry the inset, so the box has none.
-      [`${depthSel(n)}[divided]`, { [`--uc-p${n}`]: '0px', padding: 0, gap: 0, '&:not([gap])': { gap: 0 } }],
+      // A card keeps its inset for its sections (ui-section) and has no padding of its own: a bare child
+      // is full-bleed, clipped to the corners. The sections read the card's numbers by inheritance.
+      [`${depthSel(n)}[preset=card]`, { padding: 0, overflow: 'clip', '--ui-section-p': `max(0px, calc(${p} - var(--b)))`, '--ui-section-r': r }],
     ];
   }),
 ]);
 
-// Composed rows (ui-row, row.recipe.ts) read their inset from the container that holds them, so any
-// wrapper can sit in between. A card and a painted wrapper put rows on the text edge; areas and
-// thumbnail cards (padding xs) on the padding edge; an unpainted wrapper declares nothing, so it passes
-// its parent's edge through. Row block padding is the divided list's alone, so a container resets it.
+// Only a card hands its inset down. Areas and painted wrappers pad themselves, so a section in one adds
+// nothing; an unpainted wrapper declares nothing, so it passes its card through.
 const CONTAINER = ':is(ui-container, [data-ui=container])';
-const rowContext = {
-  [CONTAINER]: { '--ui-row-block': '0px' },
-  [`${CONTAINER}:is([preset=panel], [preset=region], [preset=page], [preset=card][padding=xs])`]: { '--ui-row-edge': '0px' },
-  [`${CONTAINER}:is([preset=card]:not([padding=xs]), [divided], ${WRAPPER}:is([padding], [surface]:not([surface=none])))`]: { '--ui-row-edge': FIELD_TEXT_EDGE },
-};
-
-// A divided container: an outlined box of full-bleed rows with lines between them. Every child is a
-// row on the text edge (resolveDividedRow), a ui-row or not.
-const DIVIDED = ':is(ui-container, [data-ui=container])[divided]';
-const dividedRows = {
-  [DIVIDED]: { overflow: 'hidden', boxShadow: 'inset 0 0 0 1px var(--colors-border)', '--ui-row-block': ROW_BLOCK },
-  [`${DIVIDED} > *`]: { paddingBlock: ROW_BLOCK, paddingInline: FIELD_TEXT_EDGE },
-  [`${DIVIDED} > * + *`]: { borderBlockStart: '1px solid var(--colors-border)' },
+const sectionContext = {
+  [`${CONTAINER}:is([preset=panel], [preset=region], [preset=page], ${WRAPPER}:is([padding], [surface]:not([surface=none])))`]: { '--ui-section-p': '0px' },
 };
 
 /** The CSS-only tag's rules: the recipe keyed on ui-container and [data-ui=container], then the nesting chain. */
@@ -168,6 +156,5 @@ export const containerTags = mergeStyles(
   tagRules(':is(ui-container, [data-ui=container])', uiContainer),
   areaPadding,
   containerChain,
-  rowContext,
-  dividedRows,
+  sectionContext,
 );

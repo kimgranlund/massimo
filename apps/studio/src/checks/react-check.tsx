@@ -172,10 +172,10 @@ function Pair({ u }: { u: number }) {
         <ui-palette data-k="plv" orientation="vertical"><ui-swatch color="#eef" /><ui-swatch color="#99f" /></ui-palette>
         <div style={{ width: 200 }}><ui-image data-k="im" ratio="wide" /></div>
         <div style={{ width: 200 }}><ui-image data-k="imc" ratio="3/2" /></div>
-        <ui-container data-k="cd" preset="card"><span>a</span><span>b</span></ui-container>
+        <ui-container data-k="cd" preset="card"><ui-section><span>a</span><span>b</span></ui-section></ui-container>
         <ui-container data-k="gp" preset="group" gap="2"><span>a</span><span>b</span></ui-container>
-        <ui-container data-k="uc" preset="card" padding="lg"><ui-container data-k="ucN" preset="group"><span>a</span><span>b</span></ui-container></ui-container>
-        <ui-container data-k="ucL" preset="card" padding="xl"><ui-container data-k="ucL1" preset="card"><span>b</span></ui-container></ui-container>
+        <ui-container data-k="uc" preset="card" padding="lg"><ui-section><ui-container data-k="ucN" preset="group"><span>a</span><span>b</span></ui-container></ui-section></ui-container>
+        <ui-container data-k="ucL" preset="card" padding="xl"><ui-section><ui-container data-k="ucL1" preset="card"><ui-section><span>b</span></ui-section></ui-container></ui-section></ui-container>
         <ui-container data-k="ucS" preset="collection" layout="row" surface="raised" radius="0.5" gap="1"><span>a</span><span>b</span></ui-container>
         <ui-listbox data-k="lb" label="Folder" value="inbox"><ui-option value="inbox"><i slot="leading" name="tray" />Inbox<span slot="suffix">12</span></ui-option><ui-option value="sent">Sent</ui-option><ui-option value="spam" disabled>Spam</ui-option></ui-listbox>
         <ui-segmented data-k="sg" label="View" value="grid"><ui-option value="grid">Grid</ui-option><ui-option value="list">List</ui-option></ui-segmented>
@@ -254,10 +254,10 @@ function Pair({ u }: { u: number }) {
         <Palette data-k="plv" orientation="vertical"><Swatch color="#eef" /><Swatch color="#99f" /></Palette>
         <div style={{ width: 200 }}><Image data-k="im" ratio="wide" /></div>
         <div style={{ width: 200 }}><Image data-k="imc" ratio="3/2" /></div>
-        <Container data-k="cd" preset="card"><span>a</span><span>b</span></Container>
+        <Container data-k="cd" preset="card"><ui-section><span>a</span><span>b</span></ui-section></Container>
         <Container data-k="gp" preset="group" gap={2}><span>a</span><span>b</span></Container>
-        <Container data-k="uc" preset="card" padding="lg"><Container data-k="ucN" preset="group"><span>a</span><span>b</span></Container></Container>
-        <Container data-k="ucL" preset="card" padding="xl"><Container data-k="ucL1" preset="card"><span>b</span></Container></Container>
+        <Container data-k="uc" preset="card" padding="lg"><ui-section><Container data-k="ucN" preset="group"><span>a</span><span>b</span></Container></ui-section></Container>
+        <Container data-k="ucL" preset="card" padding="xl"><ui-section><Container data-k="ucL1" preset="card"><ui-section><span>b</span></ui-section></Container></ui-section></Container>
         <Container data-k="ucS" preset="collection" layout="row" surface="raised" radius={0.5} gap={1}><span>a</span><span>b</span></Container>
         <Listbox data-k="lb" label="Folder" defaultValue="inbox"><Option value="inbox" leading={<i name="tray" />} suffix="12">Inbox</Option><Option value="sent">Sent</Option><Option value="spam" disabled>Spam</Option></Listbox>
         <Segmented data-k="sg" label="View" defaultValue="grid"><Option value="grid">Grid</Option><Option value="list">List</Option></Segmented>

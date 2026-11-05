@@ -505,8 +505,7 @@
         "list row",
         "header row",
         "settings row",
-        "text edge",
-        "composed"
+        "line"
       ]
     },
     "component:scroll-area": {
@@ -522,6 +521,22 @@
         "overflow",
         "scroll container",
         "thumb"
+      ]
+    },
+    "component:section": {
+      "kind": "component",
+      "source": "components/section/section.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-section",
+      "searchTerms": [
+        "section",
+        "card content",
+        "card padding",
+        "inset",
+        "divided",
+        "list",
+        "full-bleed",
+        "concentric"
       ]
     },
     "component:segmented": {
@@ -10320,6 +10335,81 @@
       "from": "component:scroll-area",
       "relation": "allowedIn",
       "to": "context:fieldset"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
     },
     {
       "from": "component:select",

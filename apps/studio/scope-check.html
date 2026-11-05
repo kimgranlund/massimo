@@ -15,8 +15,8 @@ const theme = { schemaVersion: 2, name: 'probe', geometry: { parameters: { unit:
 const style = document.createElement('style'); style.textContent = themeScopeCss(theme) + '\n' + themeScopeCss(loud); document.head.append(style);
 const root = document.getElementById('root');
 root.innerHTML = `
-  <div id="outside"><ui-button id="b0" variant="primary">Save</ui-button><ui-container id="c0" preset="card" surface="raised">x</ui-container><span id="t0">text</span><div id="p0" style="padding: var(--spacing-4)"></div></div>
-  <div id="scope" data-ui-scope="probe"><ui-button id="b1" variant="primary">Save</ui-button><ui-container id="c1" preset="card" surface="raised">x</ui-container><span id="t1">text</span><div id="p1" style="padding: var(--spacing-4)"></div></div>
+  <div id="outside"><ui-button id="b0" variant="primary">Save</ui-button><ui-container id="c0" preset="card" surface="raised"><ui-section>x</ui-section></ui-container><span id="t0">text</span><div id="p0" style="padding: var(--spacing-4)"></div></div>
+  <div id="scope" data-ui-scope="probe"><ui-button id="b1" variant="primary">Save</ui-button><ui-container id="c1" preset="card" surface="raised"><ui-section>x</ui-section></ui-container><span id="t1">text</span><div id="p1" style="padding: var(--spacing-4)"></div></div>
   <div id="loud" data-ui-scope="loud"><ui-segmented id="s2" label="v" value="a"><ui-option id="o2" value="a">A</ui-option><ui-option value="b">B</ui-option></ui-segmented><span id="n3" style="background: var(--colors-primary-3)">x</span></div>
   <div><ui-segmented id="s1" label="v" value="a"><ui-option id="o1" value="a">A</ui-option><ui-option value="b">B</ui-option></ui-segmented><span id="n1" style="background: var(--colors-neutral-1)">x</span></div>`;
 await customElements.whenDefined('ui-button');
@@ -35,8 +35,8 @@ const inside = { unit: 3, density: 'compact', radiusScale: 0 };
 near('button height (scope)', parseFloat(cs('b1').height), resolveControl(inside).height);
 near('button height (outside)', parseFloat(cs('b0').height), resolveControl({}).height);
 near('button radius (scope)', parseFloat(cs('b1').borderTopLeftRadius), 0);
-near('card padding (scope)', parseFloat(cs('c1').paddingTop), resolveContainer('card-md', inside).padding);
-near('card padding (outside)', parseFloat(cs('c0').paddingTop), resolveContainer('card-md', {}).padding);
+near('card padding (scope)', parseFloat(getComputedStyle(document.querySelector('#c1 > ui-section')).paddingTop), resolveContainer('card-md', inside).padding);
+near('card padding (outside)', parseFloat(getComputedStyle(document.querySelector('#c0 > ui-section')).paddingTop), resolveContainer('card-md', {}).padding);
 // Panda tokens app CSS uses (spacing.4 = 4u) re-derive in the scope too.
 near('spacing.4 (scope)', parseFloat(cs('p1').paddingTop), 4 * 3);
 near('spacing.4 (outside)', parseFloat(cs('p0').paddingTop), 4 * 4.5);

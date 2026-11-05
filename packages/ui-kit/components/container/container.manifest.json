@@ -113,15 +113,6 @@
           }
         },
         {
-          "name": "divided",
-          "type": "boolean",
-          "readBy": "css",
-          "description": "An outlined box of full-bleed rows with lines between them: no padding or gap, and each row's text starts on the text edge. For a group or collection.",
-          "inspector": {
-            "control": "toggle"
-          }
-        },
-        {
           "name": "radius",
           "type": "number",
           "readBy": "css",
@@ -162,7 +153,7 @@
       },
       "constraints": [
         "CSS-only tag: no script, nothing to register. preset (group, collection, card, panel, region, page) sets the starting geometry, flow and surface; layout and surface override it.",
-        "Nesting: padding is the input and radius follows. A root keeps its preset geometry; a nested container is concentric when its parent has room, else R_parent × k (container-ratio); a nested card steps down the ladder to 3u; an unpainted group or collection has no padding and passes its parent through. Areas (panel, region, page) are square and restart the chain. A card's content stays on the padding edge; a ui-row in it starts on the text edge, like a field label, through any wrappers. A padding=xs card and areas set that inset to 0.",
+        "Nesting: padding is the input and radius follows. A root keeps its preset geometry; a nested container is concentric when its parent has room, else R_parent × k (container-ratio); a nested card steps down the ladder to 3u; an unpainted group or collection has no padding and passes its parent through. Areas (panel, region, page) are square and restart the chain. A card has no padding of its own: its content sits in ui-section, which supplies the inset, and a bare child is full-bleed.",
         "Adds no role: add role/aria-label (e.g. role=region) when it should be a landmark or group."
       ],
       "avoidWhen": [
@@ -326,8 +317,7 @@
             "preset?: ContainerPreset = 'collection' // group, collection (default), card, panel, region, page: the starting geometry, flow and surface.",
             "padding?: CardPadding // The card ladder level: xs 2u, sm 3u, md 4u, lg 6u, xl 8u.",
             "layout?: 'stack' | 'row' | 'wrap' // stack (column), row, wrap. Default: the preset's.",
-            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's.",
-            "divided?: boolean // An outlined box of full-bleed rows with lines between them."
+            "surface?: 'none' | 'panel' | 'card' | 'raised' // none, panel, card, raised: the elevation level. Default: the preset's."
           ]
         }
       }

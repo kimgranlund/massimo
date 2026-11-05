@@ -101,7 +101,7 @@ export function Dashboard() {
 
       <div className={stats}>
         {STATS.map((st) => (
-          <ui-container preset="card" key={st.label}>
+          <ui-container preset="card" key={st.label}><ui-section>
             <span className={s.label}>{st.label}</span>
             <strong className={figure} data-numeric>
               {st.unit === '$' && <span className={unit} data-numeric>$</span>}{st.value}{st.unit === '%' && <span className={unit} data-numeric>%</span>}
@@ -110,12 +110,12 @@ export function Dashboard() {
               <ui-badge className={s.tone[st.tone]}><i slot="leading" name={st.icon} />{st.delta}</ui-badge>
               <span className={s.caption}>{st.note}</span>
             </div>
-          </ui-container>
+          </ui-section></ui-container>
         ))}
       </div>
 
       <div className={charts}>
-        <ui-container preset="card">
+        <ui-container preset="card"><ui-section>
           <div className={s.spread}>
             <div className={s.stack1}><h3 className={s.h3}>Revenue by channel</h3><span className={s.caption}>Weekly, in thousands of dollars</span></div>
             <ui-tag><i slot="leading" name="calendar-blank" />Sep 8 – Nov 2</ui-tag>
@@ -137,8 +137,8 @@ export function Dashboard() {
             </div>
           </div>
           <div className={legend}>{CHANNELS.map(([n], c) => <span key={n}><i className={cx(dot, s.DATA_BG[c])} />{n}</span>)}</div>
-        </ui-container>
-        <ui-container preset="card">
+        </ui-section></ui-container>
+        <ui-container preset="card"><ui-section>
           <div className={s.stack1}><h3 className={s.h3}>Top products</h3><span className={s.caption}>Units sold, last 30 days</span></div>
           {TOP_PRODUCTS.map((p, i) => (
             <div key={p.name} className={meter}>
@@ -147,10 +147,10 @@ export function Dashboard() {
             </div>
           ))}
           <ui-button><i slot="leading" name="list-bullets" />All products</ui-button>
-        </ui-container>
+        </ui-section></ui-container>
       </div>
 
-      <ui-container preset="card">
+      <ui-container preset="card"><ui-section>
         <div className={s.spread}>
           <div className={s.stack1}><h3 className={s.h3}>Recent orders</h3><span className={s.caption}>{rows.length} of {ORDERS.length} shown</span></div>
           <ui-container preset="group">
@@ -184,7 +184,7 @@ export function Dashboard() {
             </div>
           ))}
         </ui-container>
-      </ui-container>
+      </ui-section></ui-container>
     </>
   );
 }

@@ -10,55 +10,37 @@
       "id": "container-nested",
       "label": "ui-container: cards in a card, concentric",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-container preset=\"card\"><strong>Plan</strong><ui-container preset=\"group\"><ui-button>Choose</ui-button><ui-button variant=\"primary\">Buy</ui-button></ui-container></ui-container><ui-container preset=\"card\"><strong>Team</strong><ui-button>Choose</ui-button></ui-container></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"xl\"><ui-section><ui-container preset=\"card\"><ui-section><strong>Plan</strong><ui-container preset=\"group\"><ui-button>Choose</ui-button><ui-button variant=\"primary\">Buy</ui-button></ui-container></ui-section></ui-container><ui-container preset=\"card\"><ui-section><strong>Team</strong><ui-button>Choose</ui-button></ui-section></ui-container></ui-section></ui-container>"
     },
     {
-      "id": "container-divided",
-      "label": "ui-container divided, compact: a small padding takes a large radius multiple",
+      "id": "container-sections",
+      "label": "A card's content sits in sections; a smaller section's text stays level with the title",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><ui-row header><strong>Card title</strong></ui-row><ui-container preset=\"collection\" divided><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container></ui-container>"
-    },
-    {
-      "id": "container-divided-spacious",
-      "label": "ui-container divided, spacious: the same outer radius at a larger padding",
-      "subject": "component:container",
-      "markup": "<ui-container preset=\"card\" padding=\"lg\" radius=\"1.65\"><ui-row header><strong>Card title</strong></ui-row><ui-container preset=\"collection\" divided><div>Option 1</div><div>Option 2</div><div>Option 3</div></ui-container></ui-container>"
-    },
-    {
-      "id": "container-rows",
-      "label": "ui-row: rows and their header on the text edge, with no box",
-      "subject": "component:container",
-      "markup": "<ui-container preset=\"card\"><ui-row header><strong>Notifications</strong></ui-row><ui-row>Comments</ui-row><ui-row>Mentions</ui-row><ui-row>Releases</ui-row></ui-container>"
-    },
-    {
-      "id": "container-text-edge",
-      "label": "Text outside a ui-row stays on the padding edge, level with its buttons",
-      "subject": "component:container",
-      "markup": "<ui-container preset=\"card\"><strong>Card title</strong><p>Text lines up with the buttons.</p><ui-container preset=\"group\"><ui-button variant=\"primary\">Approve</ui-button><ui-button>Reset</ui-button></ui-container></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"lg\" radius=\"1.65\"><ui-section><strong>Card title</strong></ui-section><ui-section size=\"sm\" divided><ui-row>Option 1</ui-row><ui-row>Option 2</ui-row></ui-section></ui-container>"
     },
     {
       "id": "container-presets",
       "label": "ui-container presets",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"page\"><ui-container preset=\"panel\"><ui-container preset=\"group\"><ui-button>A</ui-button><ui-button>B</ui-button></ui-container></ui-container><ui-container preset=\"card\" surface=\"raised\"><span>Raised card</span></ui-container></ui-container>"
+      "markup": "<ui-container preset=\"page\"><ui-container preset=\"panel\"><ui-container preset=\"group\"><ui-button>A</ui-button><ui-button>B</ui-button></ui-container></ui-container><ui-container preset=\"card\" surface=\"raised\"><ui-section><span>Raised card</span></ui-section></ui-container></ui-container>"
     },
     {
       "id": "card",
       "label": "Card with a group",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"card\"><span>Title</span><ui-container preset=\"group\" gap=\"1\"><ui-button>Open</ui-button><ui-button>Share</ui-button></ui-container></ui-container>"
+      "markup": "<ui-container preset=\"card\"><ui-section><span>Title</span><ui-container preset=\"group\" gap=\"1\"><ui-button>Open</ui-button><ui-button>Share</ui-button></ui-container></ui-section></ui-container>"
     },
     {
       "id": "card-padding",
       "label": "Card padding xs…xl",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"card\" padding=\"xs\"><span>xs · 2u</span></ui-container><ui-container preset=\"card\" padding=\"sm\"><span>sm · 3u</span></ui-container><ui-container preset=\"card\"><span>md · 4u</span></ui-container><ui-container preset=\"card\" padding=\"lg\"><span>lg · 6u</span></ui-container><ui-container preset=\"card\" padding=\"xl\"><span>xl · 8u</span></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"xs\"><ui-section><span>xs · 2u</span></ui-section></ui-container><ui-container preset=\"card\" padding=\"sm\"><ui-section><span>sm · 3u</span></ui-section></ui-container><ui-container preset=\"card\"><ui-section><span>md · 4u</span></ui-section></ui-container><ui-container preset=\"card\" padding=\"lg\"><ui-section><span>lg · 6u</span></ui-section></ui-container><ui-container preset=\"card\" padding=\"xl\"><ui-section><span>xl · 8u</span></ui-section></ui-container>"
     },
     {
       "id": "nesting",
       "label": "Nesting",
       "subject": "component:container",
-      "markup": "<ui-container preset=\"page\"><ui-container preset=\"region\"><ui-container preset=\"panel\"><ui-container preset=\"card\"><ui-container preset=\"card\" padding=\"sm\"><ui-container preset=\"collection\"><ui-container preset=\"group\"><ui-badge>1</ui-badge></ui-container></ui-container></ui-container></ui-container></ui-container></ui-container></ui-container>"
+      "markup": "<ui-container preset=\"page\"><ui-container preset=\"region\"><ui-container preset=\"panel\"><ui-container preset=\"card\"><ui-section><ui-container preset=\"card\" padding=\"sm\"><ui-section><ui-container preset=\"collection\"><ui-container preset=\"group\"><ui-badge>1</ui-badge></ui-container></ui-container></ui-section></ui-container></ui-section></ui-container></ui-container></ui-container></ui-container>"
     },
     {
       "id": "radius-magnitude",

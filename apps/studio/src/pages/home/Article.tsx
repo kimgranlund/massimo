@@ -71,7 +71,7 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
         <p>We came home with a shorter list and a longer one: what to cut, and what to make next. The second list is the reason this journal exists.</p>
       </article>
       <aside className={aside}>
-        <ui-container preset="card" padding="md">
+        <ui-container preset="card" padding="md"><ui-section>
           <span className={s.groupKicker}>Read next</span>
           <div>
             {MORE.map(([t, m], i) => (
@@ -81,13 +81,13 @@ export function Article({ spectrum }: { spectrum?: SpectrumPayload }) {
               </div>
             ))}
           </div>
-          <ui-container preset="card" padding="sm" className={s.tone.primary}>
+          <ui-container preset="card" padding="sm" className={s.tone.primary}><ui-section>
             <span className={s.strong}>The Fieldnote letter</span>
             <span className={s.caption}>One trip, one lesson, every other Sunday.</span>
             <ui-input label="Email" hide-label placeholder="you@example.com"><i slot="leading" name="envelope-simple" /></ui-input>
             <ui-button variant="primary">Subscribe</ui-button>
-          </ui-container>
-        </ui-container>
+          </ui-section></ui-container>
+        </ui-section></ui-container>
       </aside>
     </div>
   );

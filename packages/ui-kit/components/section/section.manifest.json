@@ -1,0 +1,205 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "section",
+  "primary": "component:section",
+  "module": null,
+  "registration": "none",
+  "documentation": "./section.md",
+  "examples": "./section.examples.json",
+  "contract": "../../contracts/components.json#/components/section",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./section.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveSection"
+      ],
+      "description": "Reference numbers for a section's inset, padding and radius."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:section",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-section",
+      "contract": "../../contracts/components.json#/components/section",
+      "intent": [
+        "Supply a card's inset to its content, or part of it at a smaller size, so a child box can move out while its text stays level."
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "string",
+          "readBy": "css",
+          "description": "The padding this section supplies, xs 2u … xl 8u. It sits the rest of the card's inset in from the edge. Default: all of it.",
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "divided",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Full-bleed rows with lines between them, outlined when the section has a size.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Any flow content; rows when divided."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "A card has no padding of its own: content outside a section is full-bleed.",
+        "Reads the card's inset by inheritance, through plain wrappers. In an area or a painted wrapper it adds nothing.",
+        "size larger than the card's inset stops at the edge."
+      ],
+      "avoidWhen": [
+        {
+          "when": "An area or a group of controls.",
+          "reason": "They pad themselves.",
+          "useInstead": "component:container"
+        }
+      ],
+      "searchTerms": [
+        "section",
+        "card content",
+        "card padding",
+        "inset",
+        "divided",
+        "list",
+        "full-bleed",
+        "concentric"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:section",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:section",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "documentation": "./section.md",
+      "verification": "./verification/section.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./section.react.tsx",
+      "exports": {
+        "component:section": "Section"
+      },
+      "verification": "./verification/section.verification.json#/renderers/react",
+      "props": {
+        "component:section": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "size?: CardPadding // The padding this section supplies, xs 2u … xl 8u. It sits the rest of the card's inset in from the edge, so its text stays on the card's inset. Default: all of it.",
+            "divided?: boolean // Full-bleed rows with lines between them, outlined when the section has a size."
+          ]
+        }
+      }
+    }
+  }
+}

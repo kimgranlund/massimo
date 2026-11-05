@@ -272,6 +272,7 @@
       "members": [
         "component:container",
         "component:row",
+        "component:section",
         "component:group",
         "component:collection",
         "component:card",

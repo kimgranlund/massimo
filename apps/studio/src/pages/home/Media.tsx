@@ -53,7 +53,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
         </div>
         <ui-button>Browse all<i slot="trailing" name="arrow-right" /></ui-button>
       </div>
-      <ui-container preset="card" padding="sm">
+      <ui-container preset="card" padding="sm"><ui-section>
         <ui-swiper label="Featured stories" className={swiper}>
           {FEATURED.map((f) => (
             <div key={f.title} className={slide}>
@@ -66,7 +66,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
             </div>
           ))}
         </ui-swiper>
-      </ui-container>
+      </ui-section></ui-container>
       <div className={s.stack4}>
         <div className={s.spread}>
           <h3 className={s.h3}>Photo library</h3>
@@ -78,6 +78,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
           {shots.map((x) => (
             <ui-container preset="card" key={x.title} padding="xs">
               <ui-image src={art(spectrum, x.scene, x.role, x.accent)} alt={x.title} ratio="landscape" className={s.media} />
+              <ui-section>
               <div className={shotText}>
                 <div className={shotHead}>
                   <span className={cx(s.strong, ellipsis)}>{x.title}</span>
@@ -85,7 +86,7 @@ export function Media({ spectrum }: { spectrum?: SpectrumPayload }) {
                 </div>
                 <span className={cx(s.caption, ellipsis)}><i name="map-pin" /> {x.place}</span>
               </div>
-            </ui-container>
+            </ui-section></ui-container>
           ))}
         </div>
       </div>

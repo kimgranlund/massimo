@@ -51,7 +51,7 @@ export function Settings() {
       </ui-container>
 
       <form className={main} onSubmit={(e) => e.preventDefault()} aria-label="Profile settings">
-        <ui-container preset="card" padding="lg">
+        <ui-container preset="card" padding="lg"><ui-section>
           <div className={profileHead}>
             <ui-avatar avatar-size="xl" className={s.tone.primary} aria-hidden="true">KS</ui-avatar>
             <div className={cx(s.stack1, profileText)}>
@@ -74,9 +74,9 @@ export function Settings() {
               {TIMEZONES.map(([v, t]) => <ui-option key={v} value={v}>{t}</ui-option>)}
             </ui-select>
           </div>
-        </ui-container>
+        </ui-section></ui-container>
 
-        <ui-container preset="card" padding="lg">
+        <ui-container preset="card" padding="lg"><ui-section>
           <div className={cardHead}><h3 className={s.h3}>Notifications</h3><p className={s.caption}>Pick where updates reach you. Critical alerts always send.</p></div>
           <div className={choiceList}>
             <div className={toggleRow}><div className={s.stack1}><span className={s.title}>Order alerts</span><span className={s.caption}>Every new order over $500</span></div><ui-switch checked aria-label="Order alerts" /></div>
@@ -99,9 +99,9 @@ export function Settings() {
               </ui-radio-group>
             </ui-field>
           </ui-fieldset>
-        </ui-container>
+        </ui-section></ui-container>
 
-        <ui-container preset="card" padding="lg">
+        <ui-container preset="card" padding="lg"><ui-section>
           <div className={s.spread}>
             <div className={cardHead}><h3 className={s.h3}>Plan</h3><p className={s.caption}>Team plan · renews Dec 1</p></div>
             <ui-segmented label="Billing period" value={yearly ? 'yearly' : 'monthly'} onInput={(e) => setYearly((e.currentTarget as unknown as { value: string }).value === 'yearly')}>
@@ -130,7 +130,7 @@ export function Settings() {
               <ui-collapsible label="Do you offer invoices?"><p className={s.caption}>Every charge has a PDF invoice under Billing history.</p></ui-collapsible>
             </ui-accordion>
           </div>
-        </ui-container>
+        </ui-section></ui-container>
 
         <div className={footer}>
           <span className={s.caption}>Last saved 4 minutes ago</span>

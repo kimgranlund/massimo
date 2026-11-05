@@ -27,7 +27,7 @@ import '@massimo/ui-kit/components/tabs/element';
 import '@massimo/ui-kit/components/form/element';
 import '@massimo/ui-kit/components/scroll-area/element';
 import { createToastManager } from '@massimo/ui-kit/components/toast/element';
-import { resolveDividedRow, SIZES, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, resolveChoiceCard, resolveContainerTree } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveSection, SIZES, trackFill, resolveChoice, resolveTrack, resolveSwatch, resolveButtonContents, resolveTextRun, thumbOffset, resolveContainer, resolveBtg, resolveControl, resolveComposite, resolveField, resolveSelectTrigger, resolveSwiper, resolveImage, resolveFieldRow, resolveFieldGrid, resolveSeparator, resolveAvatar, resolveMeter, resolveChoiceGroup, resolveFieldset, resolveDisclosure, resolveTabs, resolveForm, resolveScrollArea, resolveToast, resolveDialog, resolveDrawer, resolveMenu, resolveMenubar, resolvePopup, resolveNavigationMenu, resolveChoiceCard, resolveContainerTree } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resolve';
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
@@ -102,7 +102,7 @@ for (const c of cases) {
     <ui-input label="X"></ui-input><ui-select label="S"><ui-option>A</ui-option></ui-select>
     <ui-listbox><ui-option>Plain</ui-option><ui-option><span slot="leading"></span>Lead</ui-option></ui-listbox>
     <ui-segmented ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
-    ${LEVELS.map((l) => `<${levelTag(l)} data-level="${l}"${levelAttr(l)}${l === 'group' || l === 'collection' ? ' surface="panel"' : ''} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}><span>a</span><span>b</span></${levelTag(l)}>`).join('')}
+    ${LEVELS.map((l) => `<${levelTag(l)} data-level="${l}"${levelAttr(l)}${l === 'group' || l === 'collection' ? ' surface="panel"' : ''} ${c.gap !== undefined ? `gap="${c.gap}"` : ''}>${l.startsWith('card-') ? '<ui-section><span>a</span><span>b</span></ui-section>' : '<span>a</span><span>b</span>'}</${levelTag(l)}>`).join('')}
     ${Object.keys(TYPE_ROLES).map((r) => `<span data-type="${r}" style="display:block">Ag</span>`).join('')}
     <ui-badge>3</ui-badge><ui-tag icon-size="${c.icon}"><span slot="leading"></span>Tag</ui-tag><ui-chip icon-size="${c.icon}"><span slot="leading"></span>Chip</ui-chip>
     <ui-button id="full" icon-size="${c.icon}"><span slot="leading"></span><span slot="prefix">$</span>Pay<span slot="suffix">⌘P</span><span slot="trailing"></span></ui-button>
@@ -966,10 +966,11 @@ for (const c of cases) {
     checks[`type.${role}.lineHeight`] = [px(cs(el).lineHeight), r2(t.lineHeightRatio ? t.lineHeightRatio * t.size : t.lineHeight)];
   }
   for (const l of LEVELS) {
-    const el = box.querySelector(`[data-level="${l}"]`), [a, b] = el.children, h = rect(el).height;
+    // A card has no padding of its own: its section supplies it.
+    const el = box.querySelector(`[data-level="${l}"]`), holder = el.querySelector(':scope > ui-section') ?? el, [a, b] = holder.children, h = rect(el).height;
     const want = resolveContainer(l, { ...g, height: h });
     const between = l === 'group' ? rect(b).left - rect(a).right : rect(b).top - rect(a).bottom;
-    checks[`${l}.padding`] = [px(cs(el).paddingTop), want.padding];
+    checks[`${l}.padding`] = [px(cs(holder).paddingTop), want.padding];
     checks[`${l}.gap`] = [r2(between), want.gap];
     // getComputedStyle reports the declared radius; paint scales it to fit half the height.
     checks[`${l}.radius`] = [r2(Math.min(px(cs(el).borderTopLeftRadius), h / 2)), r2(want.radius)];
@@ -988,7 +989,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><ui-row id="cHr">r</ui-row></ui-container></ui-container><ui-container preset="card"><ui-row id="cHh" header>h</ui-row><div><section><ui-row id="cHw">w</ui-row></section></div></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p><ui-row id="cHy">y</ui-row></ui-container><ui-container preset="panel"><ui-row id="cHa">a</ui-row></ui-container><ui-row id="cHn">n</ui-row><ui-container preset="collection" divided><ui-row id="cHd">d</ui-row></ui-container><ui-container preset="collection" divided id="cD"><div>a</div><div>b</div></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH" padding="xl"><ui-section id="sP"><p id="sT">t</p></ui-section><ui-section size="md" id="sM"><p id="sMt">m</p></ui-section><div><ui-section id="sW"><p id="sWt">w</p></ui-section></div><ui-section size="sm" divided id="cD"><ui-row id="cHd">a</ui-row><div>b</div></ui-section></ui-container><ui-container preset="card" id="cB"><div id="cBi">i</div><ui-section id="cBs"><ui-row id="cHh" header>h</ui-row></ui-section></ui-container><ui-container preset="panel" id="pS"><ui-section id="pSs">a</ui-section></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1005,23 +1006,31 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'group.radius': [rad('ui-container[preset=group]'), resolveContainer('group', g).radius],
     'collection.radius': [rad('ui-container[preset=collection]'), resolveContainer('collection', g).radius],
     'group.concentric': [rad('ui-container[preset=group]'), s === 0 ? 0 : rad('ui-container[preset=group] > ui-button') + resolveContainer('group', g).edge],
-    'card.text.padding-edge': [px(getComputedStyle(box.querySelector('#cHk')).paddingLeft), 0],
-    'card.body.padding-edge': [px(getComputedStyle(box.querySelector('#cHp')).paddingLeft), 0],
-    'card.header.edge': [px(getComputedStyle(box.querySelector('#cHh')).paddingLeft), resolveField(g).textEdge],
-    'card.row.wrapped.edge': [px(getComputedStyle(box.querySelector('#cHw')).paddingLeft), resolveField(g).textEdge],
-    'card.xs.row.edge': [px(getComputedStyle(box.querySelector('#cHy')).paddingLeft), 0],
-    'area.row.edge': [px(getComputedStyle(box.querySelector('#cHa')).paddingLeft), 0],
-    'bare.row.edge': [px(getComputedStyle(box.querySelector('#cHn')).paddingLeft), 0],
-    'divided.row.block': [px(getComputedStyle(box.querySelector('#cHd')).paddingTop), resolveDividedRow(g).paddingBlock],
-    'card.header.block': [px(getComputedStyle(box.querySelector('#cHh')).paddingTop), resolveDividedRow(g).paddingBlock],
-    'card.row.edge': [px(getComputedStyle(box.querySelector('#cHr')).paddingLeft), resolveField(g).textEdge],
-    'divided.box': [px(getComputedStyle(box.querySelector('#cD')).paddingTop), 0],
-    'divided.gap': [r2(box.querySelector('#cD > :nth-child(2)').getBoundingClientRect().top - box.querySelector('#cD > :first-child').getBoundingClientRect().bottom), 0],
-    'divided.row.block': [px(getComputedStyle(box.querySelector('#cD > :first-child')).paddingTop), resolveDividedRow(g).paddingBlock],
-    'divided.row.inline': [px(getComputedStyle(box.querySelector('#cD > :first-child')).paddingLeft), resolveDividedRow(g).paddingInline],
-    'divided.line': [px(getComputedStyle(box.querySelector('#cD > :nth-child(2)')).borderTopWidth), resolveDividedRow(g).divider],
-    'card.plain.edge': [px(getComputedStyle(box.querySelector('#cHs')).paddingLeft), 0],
-    'card.xs.edge': [px(getComputedStyle(box.querySelector('#cHx')).paddingLeft), 0],
+    ...(() => {
+      const cs = (q) => getComputedStyle(box.querySelector(q)), left = (q) => box.querySelector(q).getBoundingClientRect().left;
+      const xl = resolveContainer('card-xl', g), card = { padding: xl.edge, radius: xl.radius }, b = xl.edge - xl.padding;
+      const md = resolveSection(card, 'md', g), sm = resolveSection(card, 'sm', g), edge = left('#cH');
+      return {
+        'section.plain.padding': [px(cs('#sP').paddingLeft), xl.padding],
+        'section.plain.box': [r2(left('#sP') - edge), b],
+        'section.sized.box': [r2(left('#sM') - edge), md.inset],
+        'section.sized.padding': [px(cs('#sM').paddingLeft), md.padding],
+        'section.sized.radius': [rad('#sM'), md.radius],
+        'section.text.level': [r2(left('#sMt') - edge), r2(left('#sT') - edge)],
+        'section.wrapped.text': [r2(left('#sWt') - edge), r2(left('#sT') - edge)],
+        'section.card.padding': [px(cs('#cH').paddingLeft), 0],
+        'section.bare.full-bleed': [r2(left('#cBi') - left('#cB')), b],
+        'section.area.adds-nothing': [px(cs('#pSs').paddingLeft), 0],
+        'section.row.no-inset': [px(cs('#cHd').paddingLeft), sm.padding],
+        'section.header.block': [px(cs('#cHh').paddingTop), sm.rowBlock],
+        'divided.box.padding': [px(cs('#cD').paddingTop), 0],
+        'divided.box.inset': [r2(left('#cD') - edge), sm.inset],
+        'divided.gap': [r2(box.querySelector('#cD > :nth-child(2)').getBoundingClientRect().top - box.querySelector('#cD > :first-child').getBoundingClientRect().bottom), 0],
+        'divided.row.block': [px(cs('#cD > :first-child').paddingTop), sm.rowBlock],
+        'divided.row.inline': [px(cs('#cD > :first-child').paddingLeft), sm.padding],
+        'divided.line': [px(cs('#cD > :nth-child(2)').borderTopWidth), sm.divider],
+      };
+    })(),
     'card.radius.padding': [rad('#cC'), resolveContainer('card-md', g).edge * Math.min(1, s)],
     // The magnitude t: the radius attribute on one element, the theme's radius-<family> on a scope.
     'group.radius.attr': [rad('#gT'), resolveContainer('group', { ...g, radius: 0.5 }).radius],
@@ -1101,8 +1110,6 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
     { preset: 'card', padding: 'sm', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] }] }] },
     // Cards under an unpainted root are roots; an unpainted wrapper in a card passes the card through.
     { preset: 'collection', children: [{ preset: 'card', padding: 'lg', children: [{ preset: 'card' }] }] },
-    // Divided: no inset, and a card inside it is nested in the parent.
-    { preset: 'card', padding: 'sm', radius: 3, children: [{ preset: 'collection', divided: true, children: [{ preset: 'card' }] }] },
     { preset: 'card', padding: 'lg', children: [{ preset: 'collection', children: [{ preset: 'card', children: [{ preset: 'group' }] }] }] },
     // A padding attribute on a nested card keeps the ladder.
     { preset: 'card', padding: 'xl', children: [{ preset: 'card', padding: 'xs', children: [{ preset: 'group', surface: 'panel' }] }] },
@@ -1117,7 +1124,7 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
   ];
   const tag = (n) => n.div ? 'div data-ui="container"' : 'ui-container';
   const close = (n) => n.div ? 'div' : 'ui-container';
-  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.surface ? ` surface="${n.surface}"` : ''}${n.divided ? ' divided' : ''}${n.radius ? ` radius="${n.radius}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}</${close(n)}>`;
+  const html = (n) => `<${tag(n)} preset="${n.preset}"${n.padding ? ` padding="${n.padding}"` : ''}${n.surface ? ` surface="${n.surface}"` : ''}${n.radius ? ` radius="${n.radius}"` : ''}${n.gap !== undefined ? ` gap="${n.gap}"` : ''}>${n.preset === 'card' ? '<ui-section>' : ''}${(n.children ?? []).map((c) => c.wrap ? `<div>${html(c)}</div>` : html(c)).join('')}${n.children?.length ? '' : '<ui-button>A</ui-button><ui-button>B</ui-button>'}${n.preset === 'card' ? '</ui-section>' : ''}</${close(n)}>`;
   for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const [density, s] of [['default', 1], ['compact', 2], ['loose', 0.5]]) {
     const box = document.createElement('div');
     box.setAttribute('data-size', String(unit)); box.setAttribute('density', density);
@@ -1131,12 +1138,13 @@ for (const unit of [3, 4.5]) for (const border of [0, 1]) for (const density of 
       const want = resolveContainerTree(t, g);
       const visit = (node, el, path) => {
         const isC = (c) => c.localName === 'ui-container' || c.dataset?.ui === 'container';
-        const cs = getComputedStyle(el), kids = [...el.children].flatMap((c) => isC(c) ? [c] : [...c.children].filter(isC));
+        const holder = node.preset === 'card' ? el.querySelector(':scope > ui-section') : el;
+        const cs = getComputedStyle(holder), kids = [...holder.children].flatMap((c) => isC(c) ? [c] : [...c.children].filter(isC));
         const checks = { padding: [px(cs.paddingTop), r2(node.padding)] };
         // An unpainted wrapper (no edge) draws no corner, so its radius means nothing.
-        if (node.edge > 0 || node.depth === 0) checks.radius = [px(cs.borderTopLeftRadius), r2(node.radius)];
+        if (node.edge > 0 || node.depth === 0) checks.radius = [px(getComputedStyle(el).borderTopLeftRadius), r2(node.radius)];
         // The gap along the flow: rows (group) measure across, stacks down.
-        const row = cs.flexDirection === 'row', [c0, c1] = kids.length > 1 ? kids : [...el.children];
+        const row = cs.flexDirection === 'row', [c0, c1] = kids.length > 1 ? kids : [...holder.children];
         const gapEl = c1 ? r2(row ? c1.getBoundingClientRect().left - c0.getBoundingClientRect().right : c1.getBoundingClientRect().top - c0.getBoundingClientRect().bottom) : null;
         if (gapEl !== null) checks.gap = [gapEl, r2(node.gap)];
         for (const [k, [got, w]] of Object.entries(checks)) { const name = `container.tree${ti}${path}.${k}`; total++; if (Math.abs(got - w) > tolerance(name, w)) fails.push(`u${unit}/B${border}/${density}/s${s} ${name}: got ${got}, want ${w}`); }

@@ -461,13 +461,28 @@
     },
     "row": {
       "geometryFamily": "container",
-      "element": "CSS-only row tag (React Row): takes its inset from the container that holds it, by inheritance; header gives it a divided row's height.",
+      "element": "CSS-only line of text and actions (React Row); header gives it a divided row's height.",
       "parts": [],
       "allowedParents": [
         "page",
         "region",
         "panel",
         "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
+    "section": {
+      "geometryFamily": "container",
+      "element": "CSS-only card child (React Section): supplies the card's inset, or part of it at a smaller size; divided makes its children rows.",
+      "parts": [],
+      "allowedParents": [
+        "card",
+        "region",
+        "panel",
         "collection",
         "group",
         "form",

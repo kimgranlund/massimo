@@ -168,7 +168,7 @@ function Forms({ params }: Pick<PageProps, 'params'>) {
   return (
     <>
       <div className={columns}>
-        <ui-container preset="card" padding="lg">
+        <ui-container preset="card" padding="lg"><ui-section>
           <ui-form ref={onForm} validation-mode={mode}>
             <ui-input name="email" label="Email" type="email" required description="taken@example.com gets server errors" />
             <ui-field label="Plan">
@@ -178,7 +178,7 @@ function Forms({ params }: Pick<PageProps, 'params'>) {
             <ui-input name="code" label="Invite code" minlength={4} />
             <ui-container preset="group"><ui-button type="submit" variant="primary">Sign up</ui-button><ui-button type="reset">Reset</ui-button></ui-container>
           </ui-form>
-        </ui-container>
+        </ui-section></ui-container>
         <div className={stack}>
           <ui-field label="Validation mode">
             <ui-segmented ref={onMode} value={mode}><ui-option value="onSubmit">onSubmit</ui-option><ui-option value="onBlur">onBlur</ui-option><ui-option value="onChange">onChange</ui-option></ui-segmented>

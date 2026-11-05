@@ -7,8 +7,8 @@
 **Added**
 
 - `variant="ghost"` on `ui-button`: no resting fill, for repeated or low-priority actions.
-- `divided` on `ui-container` (React `divided`): an outlined group or collection of full-bleed rows with lines between them.
-- `ui-row` (React `Row`): a composed row of text and actions that inherits its inset from its container, with `header` for a title row.
+- `ui-section` (React `Section`): a card's child, supplying the card's inset, or part of it at a smaller `size`; `divided` makes its children rows.
+- `ui-row` (React `Row`): a line of text and actions, with `header` for a title row.
 - `color.spectrum.generator`: `oklch` generates the ramps in OKLCH with the same families, steps, contrast targets and anchors. `hct` stays the default.
 - `reach` on a color anchor: `key` or `ramp`, how far the anchor's chroma spreads through its family.
 
@@ -21,7 +21,8 @@
 - Every type role is `(10 + u) × r^step`. `body-sm`, `label`, `control-sm` and `code` are step −½, not `3u`, so small text stays smaller than body at every size. `label` was step 0.
 - Heading line height is `1.3 − step/20` and tracking `−(step − 1)/100`: display 1.0 and −0.05em, heading-1 −0.03em.
 - Card padding `lg` is 6u and `xl` is 8u, so every padding comes from {½, 1, 2, 3, 4, 6, 8}. Dialogs follow `xl`.
-- A `ui-row` in a card starts on the text edge, not the card's padding edge, through any wrappers, except in a `padding="xs"` card. Other headings and text stay on the padding edge. `data-row` is removed: use `ui-row`, and `ui-row header` for a title above a list.
+- A card has no padding of its own (decision 0018): wrap its content in `ui-section`, or it sits edge to edge. A section of size c sits p − c in and pads c, so its text stays on the card's inset. This also removes `data-row` and the card text inset: use `ui-row` for a line of items.
+- `divided` moves from `ui-container` to `ui-section`: `<ui-section size="sm" divided>`.
 - A color anchor's chroma reaches only steps 9–12 by default, capped at the anchor's chroma or the step's generated chroma, whichever is larger. Tints on an anchored accent keep their generated chroma, so they get quieter. `reach: 'ramp'` restores the old spread. Neutral anchors keep it by default.
 - Field labels, descriptions and errors start where the control's text starts, not at its edge. In `ui-field` this applies to the stacked layout over a text control.
 

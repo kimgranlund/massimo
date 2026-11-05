@@ -18,10 +18,9 @@
       "kind": "geometry",
       "module": "../../tokens/geometry/resolve.ts",
       "exports": [
-        "resolveDividedRow",
-        "resolveField"
+        "resolveSection"
       ],
-      "description": "Reference numbers for the row's inset and block padding."
+      "description": "Reference numbers for a header row's block padding."
     }
   ],
   "nodes": [
@@ -32,7 +31,7 @@
       "tag": "ui-row",
       "contract": "../../contracts/components.json#/components/row",
       "intent": [
-        "Lay out one composed line of text and actions on its container's text edge."
+        "Lay out one line of text and actions."
       ],
       "properties": [],
       "attributes": [
@@ -61,14 +60,13 @@
         "sizing": "fill"
       },
       "constraints": [
-        "The inset comes from the container that holds it, by inheritance, through any wrappers.",
-        "Plain text in a card needs no row: it stays on the padding edge."
+        "Layout only: its inset comes from the ui-section that holds it."
       ],
       "avoidWhen": [
         {
-          "when": "A single heading or paragraph with nothing composed around it.",
-          "reason": "Text on its own belongs on the padding edge, level with buttons and media.",
-          "useInstead": "component:container"
+          "when": "A single heading or paragraph.",
+          "reason": "A row lays out a line of items; text on its own needs no row.",
+          "useInstead": "component:section"
         }
       ],
       "searchTerms": [
@@ -76,8 +74,7 @@
         "list row",
         "header row",
         "settings row",
-        "text edge",
-        "composed"
+        "line"
       ]
     }
   ],

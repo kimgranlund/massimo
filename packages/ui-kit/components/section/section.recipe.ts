@@ -1,0 +1,44 @@
+// The child of a card: <ui-section> and the React Section. The card holds the inset p (--ui-section-p,
+// inherited) and has no padding of its own, so a section supplies it, as a control's slots fill its
+// inset. A section of size c sits p − c in from the card's edge and pads c, so its text lands on p
+// whatever c is, level with an unsized section and with its neighbors (resolveSection). A CSS-only tag,
+// like ui-container.
+import { defineSlotRecipe } from '@pandacss/dev';
+import { CARD_PADDINGS } from '../../tokens/geometry/resolve.ts';
+import { ROW_BLOCK, tagRules } from '../recipe-parts.ts';
+
+const size = (k: string) => `calc(var(--ui-pad-card-${k}) * (0.5 + 0.5 * var(--ui-density)) * var(--ui-unit) * 1px)`;
+const INSET = 'max(0px, calc(var(--sp) - var(--sc)))';
+
+export const section = defineSlotRecipe({
+  className: 'ui-section',
+  description: 'A card\'s child (ui-section, React Section): supplies the card\'s inset, or part of it at a smaller size.',
+  slots: ['root'],
+  base: {
+    root: {
+      // Read here and reset for what is inside, so a section in a section adds nothing.
+      '--sp': 'var(--ui-section-p, 0px)', '--sc': 'var(--sp)',
+      '& > *': { '--ui-section-p': '0px' },
+      display: 'flex', flexDirection: 'column', gap: 'inherit', minWidth: 0, alignSelf: 'stretch',
+      marginInline: INSET, paddingInline: 'var(--sc)',
+      '&:first-child': { paddingBlockStart: 'var(--sp)' },
+      '&:last-child': { paddingBlockEnd: 'var(--sp)' },
+      // A sized section is a box: padded all round, its corners concentric with the card's.
+      '&[size]': {
+        paddingBlock: 'var(--sc)',
+        // The box is inside the card's border, so its distance from the card's edge includes it.
+        borderRadius: `max(calc(var(--ui-section-r, 0px) - ${INSET} - var(--b)), calc(var(--ui-section-r, 0px) * var(--ui-container-ratio)))`,
+      },
+      '&[size]:first-child': { marginBlockStart: INSET, paddingBlockStart: 'var(--sc)' },
+      '&[size]:last-child': { marginBlockEnd: INSET, paddingBlockEnd: 'var(--sc)' },
+      // Divided: every child is a full-bleed row, and the rows carry the padding.
+      '&[divided]': { padding: 0, gap: 0, overflow: 'hidden', '&[size]': { boxShadow: 'inset 0 0 0 1px var(--colors-border)' } },
+      '&[divided]:first-child, &[divided]:last-child': { padding: 0 },
+      '&[divided] > *': { paddingBlock: ROW_BLOCK, paddingInline: 'var(--sc)' },
+      '&[divided] > * + *': { borderBlockStart: '1px solid var(--colors-border)' },
+    },
+  },
+  variants: { size: Object.fromEntries(CARD_PADDINGS.map((k) => [k, { root: { '--sc': size(k) } }])) },
+});
+
+export const sectionTags = tagRules(':is(ui-section, [data-ui=section])', section);

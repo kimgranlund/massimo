@@ -88,18 +88,17 @@ test('ui-container gets its recipe as tag rules on the tag and [data-ui=containe
   assert.throws(() => tagRules('ui-x', { slots: ['root', 'label'] }), /root-only/);
 });
 
-test('ui-row takes its inset from its container by inheritance: no sibling or child selectors', async () => {
-  const { containerTags } = await import('../components/container/container.recipe.ts');
-  const { rowTags } = await import('../components/row/row.recipe.ts');
-  const T = ':is(ui-container, [data-ui=container])';
-  const host = rowTags[':is(ui-row, [data-ui=row])'];
-  assert.equal(host.paddingInline, 'var(--ui-row-edge, 0px)');
-  assert.equal(host.paddingBlock, 'var(--ui-row-block, 0px)');
-  const declares = Object.entries(containerTags).filter(([, v]: [string, any]) => '--ui-row-edge' in v).map(([k]) => k);
-  assert.equal(declares.length, 2, 'one rule for the text edge, one for none');
-  assert.ok(declares.every((k) => !k.includes(' > ') && !k.includes(':has(')), 'keyed on the container alone');
+test('ui-section takes its inset from the card by inheritance; a card has no padding of its own', async () => {
+  const { containerTags, CHAIN_DEPTH } = await import('../components/container/container.recipe.ts');
+  const { sectionTags } = await import('../components/section/section.recipe.ts');
+  const host = sectionTags[':is(ui-section, [data-ui=section])'];
+  assert.equal(host['--sp'], 'var(--ui-section-p, 0px)');
+  assert.equal(host.paddingInline, 'var(--sc)');
+  assert.equal(host['& > *']['--ui-section-p'], '0px', 'a section in a section adds nothing');
+  const cards = Object.entries(containerTags).filter(([k, v]) => k.endsWith('[preset=card]') && '--ui-section-p' in (v as any)).map(([, v]) => v as any);
+  assert.equal(cards.length, CHAIN_DEPTH, 'a rule per depth');
+  assert.ok(cards.every((v) => v.padding === 0 && v.overflow === 'clip'));
   assert.ok(!Object.keys(containerTags).some((k) => /textStyle_|:has\(/.test(k)), 'no rule matches text by element or class');
-  assert.equal(containerTags[T]['--ui-row-block'], '0px', 'a nested container resets the list block padding');
 });
 
 test('--ui-gap does not inherit, so the gap attribute applies to its own element only', () => {

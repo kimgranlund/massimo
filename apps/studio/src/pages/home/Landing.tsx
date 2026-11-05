@@ -50,10 +50,10 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
             <span className={s.caption}>Used by 4,000 small brands · 4.8 rating</span>
           </div>
         </div>
-        <ui-container preset="card" padding="xl" className={brandCard}>
+        <ui-container preset="card" padding="xl" className={brandCard}><ui-section>
           <span className={onSolidKicker}>Autumn / Winter 26</span>
           <ui-image src={art(spectrum, 'hills', 'primary', 'secondary')} alt="Hills at first light" ratio="landscape" className={heroImage} />
-          <ui-container preset="card" padding="sm" surface="raised" className={floating}>
+          <ui-container preset="card" padding="sm" surface="raised" className={floating}><ui-section>
             <div className={s.spread}>
               <div className={s.stack1}>
                 <span className={s.strong}>Next drop · Field collection</span>
@@ -62,19 +62,19 @@ export function Landing({ spectrum }: { spectrum?: SpectrumPayload }) {
               <ui-badge className={s.tone.success}>On track</ui-badge>
             </div>
             <ui-progress label="Collection readiness" value={62} />
-          </ui-container>
+          </ui-section></ui-container>
           <span className={onSolidMuted}>Photography: Sarek, Sweden</span>
-        </ui-container>
+        </ui-section></ui-container>
       </div>
       <div className={features}>
         {FEATURES.map((f, i) => (
-          <ui-container preset="card" key={f.title} padding="lg">
+          <ui-container preset="card" key={f.title} padding="lg"><ui-section>
             <span className={cx(featureIcon, s.tone[(['primary', 'secondary', 'info'] as const)[i]])}><i name={f.icon} /></span>
             <div className={s.stack1}>
               <h2 className={s.h3}>{f.title}</h2>
               <p className={s.muted}>{f.text}</p>
             </div>
-          </ui-container>
+          </ui-section></ui-container>
         ))}
       </div>
     </>

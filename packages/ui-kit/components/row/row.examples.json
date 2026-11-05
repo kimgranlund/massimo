@@ -3,26 +3,20 @@
   "schemaVersion": 1,
   "component": "row",
   "title": "Rows",
-  "summary": "Composed rows on the text edge.",
+  "summary": "Lines of text and actions.",
   "defaultExample": "row-card",
   "examples": [
     {
       "id": "row-card",
-      "label": "ui-row in a card: rows and a header on the text edge",
+      "label": "ui-row: a line of text and actions",
       "subject": "component:row",
-      "markup": "<ui-container preset=\"card\"><ui-row header><strong>Notifications</strong></ui-row><ui-row><span>Comments</span><ui-button variant=\"ghost\" size=\"sm\">Edit</ui-button></ui-row><ui-row><span>Mentions</span><ui-button variant=\"ghost\" size=\"sm\">Edit</ui-button></ui-row></ui-container>"
+      "markup": "<ui-container preset=\"card\"><ui-section><ui-row><span>Comments</span><ui-button variant=\"ghost\" size=\"sm\">Edit</ui-button></ui-row><ui-row><span>Mentions</span><ui-button variant=\"ghost\" size=\"sm\">Edit</ui-button></ui-row></ui-section></ui-container>"
     },
     {
       "id": "row-divided",
       "label": "A header row above a divided list",
       "subject": "component:row",
-      "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><ui-row header><strong>Card title</strong><ui-button variant=\"ghost\" size=\"sm\">Add</ui-button></ui-row><ui-container preset=\"collection\" divided><ui-row><span>Option 1</span></ui-row><ui-row><span>Option 2</span></ui-row></ui-container></ui-container>"
-    },
-    {
-      "id": "row-wrapped",
-      "label": "Wrappers between the card and its rows change nothing",
-      "subject": "component:row",
-      "markup": "<ui-container preset=\"card\"><section><ui-row header><strong>Team</strong></ui-row><div><ui-row><span>Ada</span></ui-row></div></section></ui-container>"
+      "markup": "<ui-container preset=\"card\" padding=\"sm\" radius=\"3.3\"><ui-section><ui-row header><strong>Card title</strong><ui-button variant=\"ghost\" size=\"sm\">Add</ui-button></ui-row></ui-section><ui-section size=\"xs\" divided><ui-row><span>Option 1</span></ui-row><ui-row><span>Option 2</span></ui-row></ui-section></ui-container>"
     }
   ]
 }

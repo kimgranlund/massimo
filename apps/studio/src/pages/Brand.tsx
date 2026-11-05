@@ -39,7 +39,7 @@ export function BrandPage({ params, spectrum, brand }: PageProps) {
       <Section id="brands" title="Worked brands" note="Three brands from three briefs, each grounded differently. Apply hydrates one into the jig; every page then renders under it.">
         <div className={cards}>
           {EXAMPLE_BRANDS.map((b) => (
-            <ui-container key={b.name} preset="card" className={brand?.name === b.name ? chosen : undefined}>
+            <ui-container key={b.name} preset="card" className={brand?.name === b.name ? chosen : undefined}><ui-section>
               <div className={cardBody}>
                 <span className={kicker}>{b.subject.kind} · {b.grounding?.primary.ref ?? b.grounding?.primary.name ?? 'no grounding'}</span>
                 <h3 className={subTitle}>{b.subject.name}</h3>
@@ -49,7 +49,7 @@ export function BrandPage({ params, spectrum, brand }: PageProps) {
               <ui-container preset="group">
                 <ui-button variant={brand?.name === b.name ? undefined : 'primary'} onClick={() => apply(b)}>{brand?.name === b.name ? 'Re-apply' : 'Apply'}</ui-button>
               </ui-container>
-            </ui-container>
+            </ui-section></ui-container>
           ))}
         </div>
       </Section>
@@ -157,12 +157,12 @@ function ActiveBrand({ brand, params, spectrum }: { brand: Brand } & Pick<PagePr
               </div>
             ))}
           </div>
-          <ui-container preset="card">
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>Voice · {(brand.voice?.tone ?? []).join(', ')}</span>
             {brand.voice?.samples?.action && <ui-container preset="group"><ui-button variant="primary">{brand.voice.samples.action}</ui-button></ui-container>}
             {brand.voice?.samples?.confirmation && <p className={caption}>{brand.voice.samples.confirmation}</p>}
             {brand.voice?.samples?.error && <p className={caption}>{brand.voice.samples.error}</p>}
-          </ui-container>
+          </ui-section></ui-container>
         </div>
       </Section>
       <Divider />
@@ -206,7 +206,7 @@ function SideBySide() {
     <div className={scopeGrid} aria-busy={!ready}>
       {EXAMPLE_BRANDS.map((b) => (
         <div key={b.name} data-ui-scope={b.name} className={scopeFrame}>
-          <ui-container preset="card">
+          <ui-container preset="card"><ui-section>
             <span className={kicker}>{b.subject.kind}</span>
             <h3 className={previewTitle}>{b.subject.name}</h3>
             <p className={previewBody}>{b.subject.primaryJob[0].toUpperCase() + b.subject.primaryJob.slice(1)}.</p>
@@ -217,7 +217,7 @@ function SideBySide() {
               <ui-button>Later</ui-button>
             </ui-container>
             <ui-container preset="group"><ui-badge>3</ui-badge><ui-tag>new</ui-tag><ui-chip selectable selected>today</ui-chip></ui-container>
-          </ui-container>
+          </ui-section></ui-container>
         </div>
       ))}
     </div>
