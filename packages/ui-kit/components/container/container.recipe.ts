@@ -138,13 +138,14 @@ export const containerChain = Object.fromEntries([
   }),
 ]);
 
-// A card's text shares one edge with the field labels and control text in it: headings, body text,
-// any type role and [data-row] rows, by element, data-type or textStyle class. They can be the
-// card's children or sit in an unpainted wrapper, which adds no inset. Thumbnail cards (padding xs)
-// keep their text on the padding edge, under the image.
-const CARD_TEXT = ':is(h1, h2, h3, h4, h5, h6, p, strong, [data-row], [data-type], [class*="textStyle_"])';
+// Rows are composed: a [data-row] in a card, direct or through an unpainted wrapper, starts on the
+// text edge with the field labels and control text around it. So does the one text block right above
+// rows, their header. Other text stays on the padding edge. Thumbnail cards (padding xs) keep everything
+// on the padding edge, under the image.
+const CARD_TEXT = ':is(h1, h2, h3, h4, h5, h6, p, strong, [data-type], [class*="textStyle_"])';
 const CARD = ':is(ui-container, [data-ui=container])[preset=card]:not([padding=xs])';
-const cardText = { [`:is(${CARD} > ${CARD_TEXT}, ${CARD} > :is(ui-container, [data-ui=container])${UNPAINTED} > ${CARD_TEXT})`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
+const ROW_HOLDER = `:is(${CARD}, ${CARD} > :is(ui-container, [data-ui=container])${UNPAINTED})`;
+const cardRows = { [`${ROW_HOLDER} > :is([data-row], ${CARD_TEXT}:has(+ [data-row]))`]: { paddingInlineStart: FIELD_TEXT_EDGE } };
 
 // A divided container: an outlined box of full-bleed rows with lines between them. A row's text starts
 // on the text edge, so it meets a card's text above it (resolveDividedRow).
@@ -154,7 +155,7 @@ const dividedRows = {
   [DIVIDED]: { overflow: 'hidden', boxShadow: 'inset 0 0 0 1px var(--colors-border)' },
   [`${DIVIDED} > *`]: { paddingBlock: ROW_BLOCK, paddingInline: FIELD_TEXT_EDGE },
   // The text right above the list reads as its header row: the same height, clear of the card's corner.
-  [`${CARD} > ${CARD_TEXT}:has(+ ${DIVIDED})`]: { paddingBlock: ROW_BLOCK },
+  [`${CARD} > ${CARD_TEXT}:has(+ ${DIVIDED})`]: { paddingBlock: ROW_BLOCK, paddingInlineStart: FIELD_TEXT_EDGE },
   [`${DIVIDED} > * + *`]: { borderBlockStart: '1px solid var(--colors-border)' },
 };
 
@@ -168,6 +169,6 @@ export const containerTags = mergeStyles(
   tagRules(':is(ui-container, [data-ui=container])', uiContainer),
   areaPadding,
   containerChain,
-  cardText,
+  cardRows,
   dividedRows,
 );

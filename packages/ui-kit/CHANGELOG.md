@@ -19,7 +19,7 @@
 - Every type role is `(10 + u) × r^step`. `body-sm`, `label`, `control-sm` and `code` are step −½, not `3u`, so small text stays smaller than body at every size. `label` was step 0.
 - Heading line height is `1.3 − step/20` and tracking `−(step − 1)/100`: display 1.0 and −0.05em, heading-1 −0.03em.
 - Card padding `lg` is 6u and `xl` is 8u, so every padding comes from {½, 1, 2, 3, 4, 6, 8}. Dialogs follow `xl`.
-- A card's headings, paragraphs, `strong`, type roles and `data-row` rows start on the text edge, not the card's padding edge, except in a `padding="xs"` card.
+- A card's `data-row` rows, and the one text block directly above rows or a `divided` list, start on the text edge, not the card's padding edge, except in a `padding="xs"` card. Other headings and text stay on the padding edge.
 - A color anchor's chroma reaches only steps 9–12 by default, capped at the anchor's chroma or the step's generated chroma, whichever is larger. Tints on an anchored accent keep their generated chroma, so they get quieter. `reach: 'ramp'` restores the old spread. Neutral anchors keep it by default.
 - Field labels, descriptions and errors start where the control's text starts, not at its edge. In `ui-field` this applies to the stacked layout over a text control.
 

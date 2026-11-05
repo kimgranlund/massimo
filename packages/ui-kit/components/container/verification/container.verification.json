@@ -14,7 +14,7 @@
     },
     {
       "path": "components/container/container.manifest.json",
-      "sha256": "6aac68cc6e576fd9cedc88ced246d9e8e50e26a974247d001e8fb865fe83c330"
+      "sha256": "f4d614810f6b2f67c0e35c84e84eda397dac15ff9da0e90afada89103b006e66"
     },
     {
       "path": "components/container/container.react.tsx",
@@ -22,7 +22,7 @@
     },
     {
       "path": "components/container/container.recipe.ts",
-      "sha256": "b49aa55d56b770c511419c48a79b3802d3f20fec7025a30eb8c8bb477351bf0a"
+      "sha256": "65b3a5de7239fa83444779516747819950717de4ed1152ec3f7f5e51e68ece09"
     },
     {
       "path": "components/recipe-parts.ts",
@@ -49,7 +49,7 @@
           "node --test test/recipes.test.ts"
         ],
         "environment": {
-          "node": "v24.22.2"
+          "node": "v26.13.0"
         }
       }
     },
@@ -67,7 +67,7 @@
           "node --test test/react.test.ts"
         ],
         "environment": {
-          "node": "v24.22.2"
+          "node": "v26.13.0"
         }
       }
     }

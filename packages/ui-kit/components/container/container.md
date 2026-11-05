@@ -9,7 +9,7 @@ A `preset` picks where a container starts; three families, each with one radius 
 - Wrappers hug their controls; radius concentric with them: the control radius + padding, min(3u·s, 4u) + p (square at s = 0).
   - `preset="group"`: closely related controls (toolbars, button and chip sets); a wrapping row, 1u.
   - `preset="collection"` (the default): a list or set of like items (tables, data lists); a stack, 2u.
-- Cards are self-contained surfaces, never rounder than they are deep: radius = padding × min(1, corner scale). A card's text starts on the text edge, like a field label: headings, paragraphs, `strong`, anything with a type role, and `data-row` rows, as its children or inside an unpainted wrapper. Images, charts and layout divs stay on the padding edge; give a layout div `data-row` to move it. A `padding="xs"` card keeps its text on the padding edge.
+- Cards are self-contained surfaces, never rounder than they are deep: radius = padding × min(1, corner scale). A card's content stays on the padding edge. Only composed content takes the text edge, like a field label: `data-row` rows, as its children or inside an unpainted wrapper, and the one text block directly above rows or a `divided` list, as their header. Give a layout div `data-row` to move it. A `padding="xs"` card keeps everything on the padding edge.
   - `preset="card"` with `padding="xs | sm | md | lg | xl"` (2u, 3u, 4u, 6u, 8u; md default), from thumbnails (xs) and small items in a grid (sm) to hero or dialog surfaces (xl). A card may hold a smaller card; a card nested in a card takes the page fill.
 - Areas meet the viewport or other areas; square.
   - `preset="panel"`: a side or tool panel (the panel fill), 6u.

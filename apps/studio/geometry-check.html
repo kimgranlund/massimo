@@ -32,7 +32,7 @@ import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resol
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
-import { resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
@@ -295,7 +295,7 @@ for (const c of cases) {
     checks['numeric.nested.reset'] = is(cs($('numIn').lastElementChild).fontVariantNumeric, 'lining-nums tabular-nums');
     checks['numeric.position'] = is(cs($('numSup')).fontVariantPosition, 'super');
   }
-  checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(Math.min(rc.fontSize - 0.5 * c.unit, rc.slot))];
+  checks['chip.removeIcon.sm'] = [r2(rect($('chipX').querySelector('[data-remove]')).width), r2(resolveIcon(rc.fontSize, c.unit, 'sm', rc.slot))];
   checks['pattern.full.height'] = [r2(rect($('full')).height), ctl.height];
   checks['pattern.input.height'] = [r2(rect(part($('money'), 'control')).height), ctl.height];
   const choice = (sel) => box.querySelector(`${sel} [data-part=indicator]`);
@@ -988,7 +988,7 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-segmented><ui-option>One</ui-option><ui-option>Two</ui-option></ui-segmented>
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
-    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><div id="cHr" data-row>r</div></ui-container></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p></ui-container><ui-container preset="collection" divided id="cD"><div>a</div><div>b</div></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH"><span id="cHk" data-type="group-kicker">k</span><p id="cHp">p</p><span id="cHs">s</span><ui-container preset="collection"><div id="cHr" data-row>r</div></ui-container></ui-container><ui-container preset="card"><p id="cHh">h</p><div data-row>r</div></ui-container><ui-container preset="card" padding="xs"><p id="cHx">x</p></ui-container><ui-container preset="collection" divided id="cD"><div>a</div><div>b</div></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
@@ -1005,8 +1005,9 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     'group.radius': [rad('ui-container[preset=group]'), resolveContainer('group', g).radius],
     'collection.radius': [rad('ui-container[preset=collection]'), resolveContainer('collection', g).radius],
     'group.concentric': [rad('ui-container[preset=group]'), s === 0 ? 0 : rad('ui-container[preset=group] > ui-button') + resolveContainer('group', g).edge],
-    'card.header.edge': [px(getComputedStyle(box.querySelector('#cHk')).paddingLeft), resolveField(g).textEdge],
-    'card.body.edge': [px(getComputedStyle(box.querySelector('#cHp')).paddingLeft), resolveField(g).textEdge],
+    'card.text.padding-edge': [px(getComputedStyle(box.querySelector('#cHk')).paddingLeft), 0],
+    'card.body.padding-edge': [px(getComputedStyle(box.querySelector('#cHp')).paddingLeft), 0],
+    'card.header.edge': [px(getComputedStyle(box.querySelector('#cHh')).paddingLeft), resolveField(g).textEdge],
     'card.row.edge': [px(getComputedStyle(box.querySelector('#cHr')).paddingLeft), resolveField(g).textEdge],
     'divided.box': [px(getComputedStyle(box.querySelector('#cD')).paddingTop), 0],
     'divided.gap': [r2(box.querySelector('#cD > :nth-child(2)').getBoundingClientRect().top - box.querySelector('#cD > :first-child').getBoundingClientRect().bottom), 0],
