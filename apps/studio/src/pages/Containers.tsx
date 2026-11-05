@@ -19,6 +19,7 @@ const presetCell = css({ display: 'flex', flexDirection: 'column', gap: '2', fle
 const stretched = css({ alignSelf: 'stretch' });
 const sizeGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(13rem, 1fr))', gap: '4', alignItems: 'start' });
 const tintedBox = css({ bg: 'bg.muted' });
+const titleBar = css({ bg: 'bg.mutedActive' });
 const selectedRow = css({ bg: 'bg.muted' });
 const presetBox = css({ bg: 'bg.subtle', alignSelf: 'stretch' });
 const miniPage = css({ bg: 'bg.subtle', borderRadius: 'md' });
@@ -195,7 +196,7 @@ export function ContainersPage({ params }: PageProps) {
         </Row>
       </Section>
       <Divider />
-      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A padded header keeps the list's margin, so the list moves down as its size drops; a collapsing header absorbs it, so the list stays put. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card. A sized section's gap is its size, so a box tightens as it shrinks, as the grid shows: each row steps the same distance in from the card's edge, and the bottom row is flush.">
+      <Section id="composed" title="Sections" note="A card holds an inset and has no padding of its own: its content sits in ui-section, as a control's content sits in slots. A section of size c starts p − c in from the edge and pads c, so its text lands on p whatever c is. Sections are spaced by collapsing margins. A padded header keeps the list's margin, so the list moves down as its size drops; a collapsing header absorbs it, so the list stays put. A child that is not a section is full-bleed. Radius follows padding, so the same outer radius takes a different multiple at each padding, and a sized section stays concentric with its card. A sized section's gap is its size, so a box tightens as it shrinks, as the grid shows: each row steps the same distance in from the card's edge, and the bottom row is flush. A title takes either form at no extra cost: at the panel's size it is transparent and its margin collapses with the panel's; at the card's size it is painted and flush, and the panel keeps its margin. Both end the same distance from the top.">
         {([['', 'padded header'], ['collapse', 'collapsing header']] as const).map(([header, name]) => (
           <div className={sizeGrid} key={name}>
             {(['xl', 'lg', 'md', 'sm', 'xs'] as const).map((size) => (
@@ -211,23 +212,25 @@ export function ContainersPage({ params }: PageProps) {
             ))}
           </div>
         ))}
-        <div className={sizeMatrix}>
-          {[4, 3, 2, 1, 0].flatMap((steps) => LADDER.flatMap((card, i) => {
-            if (i + steps >= LADDER.length) return [<span key={`${steps}${card}`} />];
-            const size = LADDER[i + steps];
-            return [
+        {([[false, 'collapsing'], [true, 'padded']] as const).map(([padded, name]) => (
+          <div className={sizeMatrix} key={name}>
+            {[4, 3, 2, 1, 0].flatMap((steps) => LADDER.map((card, i) => i + steps >= LADDER.length ? <span key={`${steps}${card}`} /> : (
               <div className={presetCell} key={`${steps}${card}`}>
-                <span className={caption}>card {card} · section {size}</span>
+                <span className={caption}>{name} · card {card} · section {LADDER[i + steps]}</span>
                 <ui-container preset="card" padding={card} className={stretched}>
-                  <ui-section size={size}><ui-row><strong>Container title</strong><span>⌄</span></ui-row></ui-section>
-                  <ui-section size={size} className={tintedBox}>
-                    <ui-row><strong>Card title</strong></ui-row>
-                    {['Option 1', 'Option 2', 'Option 3'].map((o) => <ui-row key={o}><span>{o}</span><span>+</span></ui-row>)}
-                  </ui-section>
+                  <SizedCard card={card} size={LADDER[i + steps]} padded={padded} />
                 </ui-container>
-              </div>,
-            ];
-          }))}
+              </div>
+            )))}
+          </div>
+        ))}
+        <div className={roundDemo}>
+          {([[false, 'card xl · section md · collapsing header'], [true, 'card xl · section md · padded header']] as const).map(([padded, name]) => (
+            <div className={presetCell} key={name}>
+              <span className={caption}>{name}</span>
+              <ui-container preset="card" padding="xl" className={stretched}><SizedCard card="xl" size="md" padded={padded} panels={3} /></ui-container>
+            </div>
+          ))}
         </div>
         <div className={roundDemo}>
           <div className={presetCell}>
@@ -251,6 +254,19 @@ export function ContainersPage({ params }: PageProps) {
 }
 
 // Nesting: the real ui-container tree beside the resolver.
+/** A title and panels of one size. Collapsing, the title is a transparent section of that size, and its margin collapses with the panel's. Padded, it is a painted section of the card's own size, flush, and the panel keeps its margin. */
+function SizedCard({ card, size, padded, panels = 1 }: { card: CardPadding; size: CardPadding; padded: boolean; panels?: number }) {
+  return <>
+    <ui-section size={padded ? card : size} className={padded ? titleBar : undefined}><ui-row><strong>Container title</strong><span>⌄</span></ui-row></ui-section>
+    {Array.from({ length: panels }, (_, i) => (
+      <ui-section size={size} className={tintedBox} key={i}>
+        <ui-row><strong>Card title</strong></ui-row>
+        {['Option 1', 'Option 2', 'Option 3'].map((o) => <ui-row key={o}><span>{o}</span><span>+</span></ui-row>)}
+      </ui-section>
+    ))}
+  </>;
+}
+
 function NestingTree({ params }: Pick<PageProps, 'params'>) {
   const [outer, setOuter] = useState<CardPadding>('xl');
   const [depth, setDepth] = useState('2');

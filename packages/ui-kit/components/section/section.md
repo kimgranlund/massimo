@@ -34,6 +34,7 @@ The card's `padding` p is where text starts. A section supplies it.
 - `divided` makes every child a full-bleed row with lines between them, 3u above and below (× density). With a `size` the list is outlined; its rows pad `size`, so their text meets the card's title. At the card's own size the rows run edge to edge.
 - `header` makes the section a title row: a divided row's height, laid out in a line. Padded, it has no margin, so the next section keeps its own and moves out as its size drops. With `header="collapse"` the lower half is a margin that collapses with the next section's, so that section's top stays put at every size.
 - Sections are spaced by collapsing margins: p above the first, p below the last and p between two, or p − c for a sized one. The margins collapse through plain wrappers, so they stay right wherever a section sits. Inside, a sized section's gap is its size, and an unsized one takes the card's `gap`.
+- A title can sit above sized panels two ways, both 2p + its height tall. At the panels' `size` it is transparent and its margin collapses with theirs. At the card's own size it is flush, so it can be painted, and the panels keep their margin of p − c below it.
 - A section works through plain wrappers. In an area or a painted wrapper, which pad themselves, it adds nothing.
 
 ## Geometry and appearance
