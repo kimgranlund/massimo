@@ -42,12 +42,16 @@ const DEPTH_GAP = { base: 1, top: 6 };
 /**
  * Targets with the run of steps 9–12 moved by `depth`, in Lc at step 9: positive is a darker solid in
  * both schemes, which is where the gamut has room for more chroma. Step 12 stays and steps 10–11 follow
- * in proportion. Steps 2–8 don't move, so step 8 is the limit toward the page.
+ * in proportion, except that step 11, the text step, only ever gains contrast. Steps 2–8 don't move, so step 8 is the limit toward the page.
  */
 export function deepenKeys(targets: readonly number[], depth: number, mode: 'light' | 'dark') {
   const t8 = targets[6], t9 = targets[7], t12 = targets[10], want = t9 + (mode === 'light' ? depth : -depth);
   const moved = Math.min(Math.max(want, t8 + DEPTH_GAP.base), t12 - DEPTH_GAP.top);
-  return targets.map((t, i) => (i < 7 ? t : moved + ((t - t9) * (t12 - moved)) / (t12 - t9)));
+  return targets.map((t, i) => {
+    if (i < 7) return t;
+    const placed = moved + ((t - t9) * (t12 - moved)) / (t12 - t9);
+    return i === 9 ? Math.max(t, placed) : placed; // step 11 is body text: it never gives up contrast
+  });
 }
 
 /**

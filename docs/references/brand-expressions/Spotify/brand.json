@@ -79,7 +79,8 @@
     "feedback": "independent",
     "character": {
       "vibrancy": "vivid",
-      "harmony": "triadic"
+      "harmony": "triadic",
+      "solid-depth": "deep"
     }
   },
   "type": {
@@ -133,6 +134,7 @@
     "color.anchors.2": "Sampled from SP07.",
     "color.anchors.3": "Sampled from SP06.",
     "color.anchors.4": "Sampled from SP05.",
-    "color.anchors.5": "Sampled from SP19."
+    "color.anchors.5": "Sampled from SP19.",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

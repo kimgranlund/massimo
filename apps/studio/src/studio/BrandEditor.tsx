@@ -19,7 +19,7 @@ const NONE = '-';
 /** Where a scale lives in a brand (form, color.character, type.character, or top level). */
 const scalePath = (id: string): ['form' | 'color' | 'type' | 'top', string] =>
   ['scale', 'density', 'space', 'curvature', 'corner', 'line', 'elevation'].includes(id) ? ['form', id]
-  : ['vibrancy', 'harmony', 'neutral', 'emphasis'].includes(id) ? ['color', id]
+  : ['vibrancy', 'solid-depth', 'harmony', 'neutral', 'emphasis'].includes(id) ? ['color', id]
   : id === 'type-scale' ? ['type', id] : ['top', id];
 
 /** A brand name from its subject name, always a valid theme name (a letter first, at most 40 characters). */

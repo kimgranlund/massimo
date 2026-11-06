@@ -96,7 +96,9 @@
       }
     ],
     "feedback": "independent",
-    "character": {}
+    "character": {
+      "solid-depth": "deep"
+    }
   },
   "type": {
     "faces": {
@@ -155,6 +157,7 @@
     "color.anchors.5": "I029, printed HEX.",
     "color.anchors.6": "I029, printed HEX.",
     "color.anchors.7": "I025, printed HEX.",
-    "color.anchors.8": "Kale and Cashew are the brand's black and white (I025)."
+    "color.anchors.8": "Kale and Cashew are the brand's black and white (I025).",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

@@ -249,8 +249,10 @@ test('key depth moves the tones of steps 9–12 alone, keeps chroma, and opens r
   // The lint's contrast check follows the steps: a lighter run can fail where the default passes.
   const roleChecks = (depth: number) => at({ keyDepth: depth }).data.checks!.light.rows[family].roles;
   const step11Lc = (depth: number) => apcaLc(tone(at({ keyDepth: depth }).data, family, 'light', 10), tone(plain, family, 'light', 0));
-  assert.ok(Math.abs(roleChecks(0).r11 - roleChecks(-30).r11 - (step11Lc(0) - step11Lc(-30))) < 0.3, 'r11 moves with the step');
-  assert.ok(roleChecks(0).r11 > roleChecks(-30).r11 + 0.5, 'a lighter run reads lower');
+  assert.ok(Math.abs(roleChecks(0).r11 - roleChecks(-30).r11) < 0.3, 'moving toward the page costs step 11 nothing');
+  assert.ok(Math.abs(at({ keyDepth: 20 }).data.checks!.dark.rows[family].roles.r11 - plain.checks!.dark.rows[family].roles.r11) < 0.3, 'nor in dark');
+  assert.ok(roleChecks(20).r11 > roleChecks(0).r11 + 1, 'moving away from it gains contrast, and the check follows');
+  assert.ok(step11Lc(20) > step11Lc(0) + 1, 'the step itself moved');
   assert.ok(Math.abs(roleChecks(0).r12 - roleChecks(-30).r12) < 0.3, 'r12 stays');
   const oklch = at({ generator: 'oklch', keyDepth: 20 } as never).data;
   assert.ok(tone(oklch, family, 'light', 8) < tone(generateSpectrum({ generator: 'oklch' } as never), family, 'light', 8) - 5, 'the OKLCH generator too');

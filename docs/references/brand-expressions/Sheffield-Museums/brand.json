@@ -103,7 +103,8 @@
     "feedback": "independent",
     "character": {
       "vibrancy": "vivid",
-      "neutral": "subtle"
+      "neutral": "subtle",
+      "solid-depth": "deep"
     }
   },
   "type": {
@@ -174,6 +175,7 @@
     "adaptivity": "mostly white pages with green chapter fields (S04, S25, S26)",
     "color.anchors.8": "Mostly white pages (S04, S26).",
     "color.anchors.9": "S26 common color, printed HEX (Pantone 419).",
-    "type.weights": "Semibold is the book's heaviest weight (S30)"
+    "type.weights": "Semibold is the book's heaviest weight (S30)",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

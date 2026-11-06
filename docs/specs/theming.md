@@ -53,7 +53,7 @@ A character names a theme in closed words: one value per **descriptor scale**. T
 |---|---|
 | geometry | scale: xs, sm, **md**, lg, xl · density: compact, **default**, loose · space: tight, **balanced**, airy · curvature: square, crisp, **soft**, round, pill · corner: bevel, **round**, squircle · line: **borderless**, hairline, outlined · elevation: flat, **layered**, floating |
 | typography | type-scale: flat, gentle, **classic**, dramatic · iconography: **phosphor**, lucide, tabler |
-| color | vibrancy: muted, natural, **vivid** · harmony: **unique**, analogous, complementary, split, triadic · neutral: true, subtle, **tinted**, strong · adaptivity: **both**, light-first, dark-first · emphasis: quiet, **balanced**, loud |
+| color | vibrancy: muted, natural, **vivid** · solid-depth: **standard**, deep, deepest · harmony: **unique**, analogous, complementary, split, triadic · neutral: true, subtle, **tinted**, strong · adaptivity: **both**, light-first, dark-first · emphasis: quiet, **balanced**, loud |
 | motion | movement: still, calm, **lively**, playful |
 
 `themeFromCharacter(character, theme?)` (`tokens/themes/descriptors.ts`) sets each named value's inputs into the theme parts; values already in `theme` (hand edits) win; provenance records every input a descriptor set (`{ source: 'character', reason: 'curvature.soft' }`); an unknown scale or value comes back in `unresolved` rather than being guessed. `describeTheme(theme)` reads any theme back to the nearest value per scale with a distance in 0..1 (per input |a − b| / range, or 0/1 for a choice, averaged), so a hand-tuned theme can be summarized or compared. Tests hold the round trip: every value resolves to a valid, lint-clean theme and reads back as itself at distance 0, the scales set disjoint inputs, and the defaults read as defaults. The registry has `descriptor:<scale>` and `descriptor:<scale>.<value>` nodes.
@@ -74,7 +74,7 @@ A brand is authored first and hydrates a theme (`tokens/brand/index.ts`; JSON Sc
 | `grounding` | the heritage or movement the brand stands in: a catalogue `ref` (or a free `name`, which comes back as a question), its `relation` (inherit, reinterpret, react-against), principles; an optional secondary |
 | `territories` | 1–3 bounded visual worlds (one primary): description, materials, palette, light, textures, composition, type, motion, imagery, `outOfBounds` (`<scale>.<value>`), an optional catalogue `ref` and `character` |
 | `muse` | the person, work, object, place or archetype the brand answers to: what to `take` (a quality) and what to `leave` |
-| `color` | `anchors` (named exact colors per role, plus `ground` and `ink` for the page and text), `feedback` (independent or anchored), `character` (vibrancy, harmony, neutral) |
+| `color` | `anchors` (named exact colors per role, plus `ground` and `ink` for the page and text), `feedback` (independent or anchored), `character` (vibrancy, solid-depth, harmony, neutral) |
 | `type` | `faces` (display, body, utility: a face catalogue `ref` or a family, descriptor, source, weights), `character` (type-scale), `weights` (display and heading voice weights) |
 | `form`, `movement`, `adaptivity` | descriptor values (scale, density, space, curvature, corner, line, elevation; movement; adaptivity) |
 | `voice`, `iconography`, `signature`, `avoid`, `rationale` | tone words and microcopy samples; icon set and weight; the one scale the brand pushes and why; anti-choices (`<scale>.<value>`); one line per choice keyed by its brand path |

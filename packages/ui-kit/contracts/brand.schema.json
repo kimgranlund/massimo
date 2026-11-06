@@ -361,6 +361,14 @@
                 ],
                 "description": "Vibrancy: how saturated the palette is"
               },
+              "solid-depth": {
+                "enum": [
+                  "standard",
+                  "deep",
+                  "deepest"
+                ],
+                "description": "Solid depth: how deep the solids and text steps sit"
+              },
               "harmony": {
                 "enum": [
                   "unique",
@@ -529,6 +537,14 @@
                 "vivid"
               ],
               "description": "Vibrancy: how saturated the palette is"
+            },
+            "solid-depth": {
+              "enum": [
+                "standard",
+                "deep",
+                "deepest"
+              ],
+              "description": "Solid depth: how deep the solids and text steps sit"
             },
             "harmony": {
               "enum": [
@@ -1020,6 +1036,7 @@
             "type-scale",
             "iconography",
             "vibrancy",
+            "solid-depth",
             "harmony",
             "neutral",
             "adaptivity",

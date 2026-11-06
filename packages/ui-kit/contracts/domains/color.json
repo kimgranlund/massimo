@@ -61,6 +61,39 @@
       ]
     },
     {
+      "id": "solid-depth",
+      "concept": "vibrancy",
+      "title": "Solid depth",
+      "reads": "how deep the solids and text steps sit",
+      "default": "standard",
+      "inputs": [
+        "spectrum.keyDepth"
+      ],
+      "values": [
+        {
+          "name": "standard",
+          "set": {
+            "spectrum.keyDepth": 0
+          },
+          "means": "solids at the kit's mid tone (the default)"
+        },
+        {
+          "name": "deep",
+          "set": {
+            "spectrum.keyDepth": 4
+          },
+          "means": "slightly darker solids, for a bright color whose text sits near the contrast floor"
+        },
+        {
+          "name": "deepest",
+          "set": {
+            "spectrum.keyDepth": 12
+          },
+          "means": "dark solids, with room for more chroma"
+        }
+      ]
+    },
+    {
       "id": "harmony",
       "concept": "vibrancy",
       "title": "Harmony",

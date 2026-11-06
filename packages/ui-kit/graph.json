@@ -1197,7 +1197,7 @@
     },
     "descriptor:adaptivity": {
       "kind": "descriptor",
-      "source": "contracts/domains/color.json#/descriptors/3",
+      "source": "contracts/domains/color.json#/descriptors/4",
       "availability": "implemented",
       "title": "Adaptivity: which scheme the theme leads with",
       "searchTerms": [
@@ -1210,7 +1210,7 @@
     },
     "descriptor:adaptivity.both": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/3/values/0",
+      "source": "contracts/domains/color.json#/descriptors/4/values/0",
       "availability": "implemented",
       "title": "Adaptivity both: follows the OS (the default)",
       "searchTerms": [
@@ -1220,7 +1220,7 @@
     },
     "descriptor:adaptivity.dark-first": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/3/values/2",
+      "source": "contracts/domains/color.json#/descriptors/4/values/2",
       "availability": "implemented",
       "title": "Adaptivity dark-first: dark unless the reader switches",
       "searchTerms": [
@@ -1230,7 +1230,7 @@
     },
     "descriptor:adaptivity.light-first": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/3/values/1",
+      "source": "contracts/domains/color.json#/descriptors/4/values/1",
       "availability": "implemented",
       "title": "Adaptivity light-first: light unless the reader switches",
       "searchTerms": [
@@ -1434,7 +1434,7 @@
     },
     "descriptor:emphasis": {
       "kind": "descriptor",
-      "source": "contracts/domains/color.json#/descriptors/4",
+      "source": "contracts/domains/color.json#/descriptors/5",
       "availability": "implemented",
       "title": "Emphasis: how strongly a selection shows",
       "searchTerms": [
@@ -1447,7 +1447,7 @@
     },
     "descriptor:emphasis.balanced": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/4/values/1",
+      "source": "contracts/domains/color.json#/descriptors/5/values/1",
       "availability": "implemented",
       "title": "Emphasis balanced: the page-tone chip in light, the primary solid in dark (the default)",
       "searchTerms": [
@@ -1457,7 +1457,7 @@
     },
     "descriptor:emphasis.loud": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/4/values/2",
+      "source": "contracts/domains/color.json#/descriptors/5/values/2",
       "availability": "implemented",
       "title": "Emphasis loud: a primary tint in light: selection carries the brand",
       "searchTerms": [
@@ -1467,7 +1467,7 @@
     },
     "descriptor:emphasis.quiet": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/4/values/0",
+      "source": "contracts/domains/color.json#/descriptors/5/values/0",
       "availability": "implemented",
       "title": "Emphasis quiet: a muted neutral fill; the primary stays for actions",
       "searchTerms": [
@@ -1477,7 +1477,7 @@
     },
     "descriptor:harmony": {
       "kind": "descriptor",
-      "source": "contracts/domains/color.json#/descriptors/1",
+      "source": "contracts/domains/color.json#/descriptors/2",
       "availability": "implemented",
       "title": "Harmony: how accent hues relate",
       "searchTerms": [
@@ -1492,7 +1492,7 @@
     },
     "descriptor:harmony.analogous": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/1/values/1",
+      "source": "contracts/domains/color.json#/descriptors/2/values/1",
       "availability": "implemented",
       "title": "Harmony analogous: neighboring hues",
       "searchTerms": [
@@ -1502,7 +1502,7 @@
     },
     "descriptor:harmony.complementary": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/1/values/2",
+      "source": "contracts/domains/color.json#/descriptors/2/values/2",
       "availability": "implemented",
       "title": "Harmony complementary: opposite hues",
       "searchTerms": [
@@ -1512,7 +1512,7 @@
     },
     "descriptor:harmony.split": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/1/values/3",
+      "source": "contracts/domains/color.json#/descriptors/2/values/3",
       "availability": "implemented",
       "title": "Harmony split: split complementary",
       "searchTerms": [
@@ -1522,7 +1522,7 @@
     },
     "descriptor:harmony.triadic": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/1/values/4",
+      "source": "contracts/domains/color.json#/descriptors/2/values/4",
       "availability": "implemented",
       "title": "Harmony triadic: three evenly spaced hues",
       "searchTerms": [
@@ -1532,7 +1532,7 @@
     },
     "descriptor:harmony.unique": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/1/values/0",
+      "source": "contracts/domains/color.json#/descriptors/2/values/0",
       "availability": "implemented",
       "title": "Harmony unique: evenly spread unique hues (the default)",
       "searchTerms": [
@@ -1682,7 +1682,7 @@
     },
     "descriptor:neutral": {
       "kind": "descriptor",
-      "source": "contracts/domains/color.json#/descriptors/2",
+      "source": "contracts/domains/color.json#/descriptors/3",
       "availability": "implemented",
       "title": "Neutral: how much the neutrals carry the hue",
       "searchTerms": [
@@ -1696,7 +1696,7 @@
     },
     "descriptor:neutral.strong": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/2/values/3",
+      "source": "contracts/domains/color.json#/descriptors/3/values/3",
       "availability": "implemented",
       "title": "Neutral strong: neutrals fully tinted",
       "searchTerms": [
@@ -1706,7 +1706,7 @@
     },
     "descriptor:neutral.subtle": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/2/values/1",
+      "source": "contracts/domains/color.json#/descriptors/3/values/1",
       "availability": "implemented",
       "title": "Neutral subtle: a hint of the hue",
       "searchTerms": [
@@ -1716,7 +1716,7 @@
     },
     "descriptor:neutral.tinted": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/2/values/2",
+      "source": "contracts/domains/color.json#/descriptors/3/values/2",
       "availability": "implemented",
       "title": "Neutral tinted: neutrals lean toward the hue (the default)",
       "searchTerms": [
@@ -1726,7 +1726,7 @@
     },
     "descriptor:neutral.true": {
       "kind": "descriptor-value",
-      "source": "contracts/domains/color.json#/descriptors/2/values/0",
+      "source": "contracts/domains/color.json#/descriptors/3/values/0",
       "availability": "implemented",
       "title": "Neutral true: true grey neutrals",
       "searchTerms": [
@@ -1797,6 +1797,49 @@
       "searchTerms": [
         "xs",
         "scale xs"
+      ]
+    },
+    "descriptor:solid-depth": {
+      "kind": "descriptor",
+      "source": "contracts/domains/color.json#/descriptors/1",
+      "availability": "implemented",
+      "title": "Solid depth: how deep the solids and text steps sit",
+      "searchTerms": [
+        "solid-depth",
+        "solid depth",
+        "standard",
+        "deep",
+        "deepest"
+      ]
+    },
+    "descriptor:solid-depth.deep": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/1",
+      "availability": "implemented",
+      "title": "Solid depth deep: slightly darker solids, for a bright color whose text sits near the contrast floor",
+      "searchTerms": [
+        "deep",
+        "solid-depth deep"
+      ]
+    },
+    "descriptor:solid-depth.deepest": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/2",
+      "availability": "implemented",
+      "title": "Solid depth deepest: dark solids, with room for more chroma",
+      "searchTerms": [
+        "deepest",
+        "solid-depth deepest"
+      ]
+    },
+    "descriptor:solid-depth.standard": {
+      "kind": "descriptor-value",
+      "source": "contracts/domains/color.json#/descriptors/1/values/0",
+      "availability": "implemented",
+      "title": "Solid depth standard: solids at the kit's mid tone (the default)",
+      "searchTerms": [
+        "standard",
+        "solid-depth standard"
       ]
     },
     "descriptor:space": {
@@ -12525,6 +12568,31 @@
       "from": "descriptor:vibrancy.vivid",
       "relation": "memberOf",
       "to": "descriptor:vibrancy"
+    },
+    {
+      "from": "domain:color",
+      "relation": "owns",
+      "to": "descriptor:solid-depth"
+    },
+    {
+      "from": "descriptor:solid-depth",
+      "relation": "expresses",
+      "to": "concept:vibrancy"
+    },
+    {
+      "from": "descriptor:solid-depth.standard",
+      "relation": "memberOf",
+      "to": "descriptor:solid-depth"
+    },
+    {
+      "from": "descriptor:solid-depth.deep",
+      "relation": "memberOf",
+      "to": "descriptor:solid-depth"
+    },
+    {
+      "from": "descriptor:solid-depth.deepest",
+      "relation": "memberOf",
+      "to": "descriptor:solid-depth"
     },
     {
       "from": "domain:color",

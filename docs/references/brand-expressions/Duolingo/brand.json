@@ -78,7 +78,8 @@
     ],
     "feedback": "independent",
     "character": {
-      "vibrancy": "vivid"
+      "vibrancy": "vivid",
+      "solid-depth": "deep"
     }
   },
   "type": {
@@ -133,6 +134,7 @@
     "color.anchors.2": "Printed on DW017.",
     "color.anchors.3": "Sampled from DW138.",
     "color.anchors.4": "Printed on DW017.",
-    "color.anchors.5": "Printed on DW017."
+    "color.anchors.5": "Printed on DW017.",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

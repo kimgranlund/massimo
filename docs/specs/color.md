@@ -93,7 +93,7 @@ An exact color rarely sits where the generator put that step, so the ramp settle
 Two dials shape steps 9–12 alone, on every accent family, while `chroma`, `base` and `falloff` move the whole ramp. Neutrals keep theirs, since their 9–12 are text. Both apply in `anchoredSpectrum`, after the anchors, and a pin stays exact: each dial eases from nothing at a pinned step to its full value at the far end of the run.
 
 - `keyIntensity` (0–300%, default 100) scales their chroma. Each step's lightness is re-solved for its luminance, so contrast and `fg.onSolid` hold at any setting. The gamut caps how far a hue goes up: past step 9's ceiling the steps above it catch up to it and stop there.
-- `keyDepth` (−30 to 30 Lc, default 0) moves step 9's tone: positive is a darker solid in both schemes. Step 12 stays and steps 10–11 follow in proportion (`deepenKeys`). Darker tones have more chroma room, so raise depth to lift intensity's ceiling. Depth changes contrast, and step 8 limits it toward the page, so a dark scheme has about 8 Lc of it and a light one has about 5 the other way.
+- `keyDepth` (−30 to 30 Lc, default 0) moves step 9's tone: positive is a darker solid in both schemes. Step 12 stays and steps 10–11 follow in proportion, except that step 11, the text step, only ever gains contrast (`deepenKeys`). Darker tones have more chroma room, so raise depth to lift intensity's ceiling. Brands set it through the `solid-depth` character scale: `standard`, `deep` or `deepest`. Depth changes the contrast of steps 9–10 and text on solids, and step 8 limits it toward the page, so a dark scheme has about 8 Lc of it and a light one has about 5 the other way.
 
 ## Contrast standard
 

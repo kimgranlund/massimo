@@ -48,7 +48,8 @@
       {
         "name": "Black",
         "value": "#000000",
-        "role": "primary"
+        "role": "primary",
+        "dark": "#FFFFFF"
       },
       {
         "name": "White",

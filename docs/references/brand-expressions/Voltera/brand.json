@@ -73,7 +73,9 @@
       }
     ],
     "feedback": "independent",
-    "character": {}
+    "character": {
+      "solid-depth": "deep"
+    }
   },
   "type": {
     "faces": {
@@ -120,6 +122,7 @@
     "color.anchors.0": "V13, printed HEX; 30% of a design.",
     "color.anchors.1": "V13, printed HEX; 10% of a design.",
     "color.anchors.2": "V13, printed HEX.",
-    "color.anchors.3": "V13, printed HEX."
+    "color.anchors.3": "V13, printed HEX.",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

@@ -78,7 +78,8 @@
     ],
     "feedback": "independent",
     "character": {
-      "harmony": "split"
+      "harmony": "split",
+      "solid-depth": "deep"
     }
   },
   "type": {
@@ -128,6 +129,7 @@
     "color.anchors.2": "Sampled from SF19.",
     "color.anchors.3": "Sampled from SF19.",
     "color.anchors.4": "Sampled from SF05.",
-    "color.anchors.5": "Sampled from SF21."
+    "color.anchors.5": "Sampled from SF21.",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

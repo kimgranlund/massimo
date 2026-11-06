@@ -68,7 +68,8 @@
     ],
     "feedback": "independent",
     "character": {
-      "neutral": "tinted"
+      "neutral": "tinted",
+      "solid-depth": "deep"
     }
   },
   "type": {
@@ -123,6 +124,7 @@
     "color.anchors.0": "Sampled from WI10.",
     "color.anchors.1": "Sampled from WI06.",
     "color.anchors.2": "Sampled from WI12.",
-    "color.anchors.3": "Sampled from WI28."
+    "color.anchors.3": "Sampled from WI28.",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

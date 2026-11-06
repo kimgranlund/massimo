@@ -69,7 +69,8 @@
     ],
     "feedback": "independent",
     "character": {
-      "neutral": "strong"
+      "neutral": "strong",
+      "solid-depth": "deep"
     }
   },
   "type": {
@@ -117,6 +118,7 @@
     "color.anchors.0": "Sampled from SG28. Pinned to step 9: placed by contrast it would land in the tints, and the button would turn olive.",
     "color.anchors.1": "Sampled from SG06, so approximate.",
     "color.anchors.2": "Sampled from SG18.",
-    "color.anchors.3": "Sampled from SG20."
+    "color.anchors.3": "Sampled from SG20.",
+    "color.character.solid-depth": "One step deeper solids so text on the primary clears contrast in both schemes; the exact brand color stays pinned."
   }
 }

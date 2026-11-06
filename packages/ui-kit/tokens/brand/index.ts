@@ -61,7 +61,7 @@ const territoryOf = (ref?: string) => TERRITORIES.find((t) => t.id === ref);
 
 /** Which descriptor scales each brand section may set. */
 const SECTION_SCALES: Record<'color' | 'type' | 'form', string[]> = {
-  color: ['vibrancy', 'harmony', 'neutral', 'emphasis'],
+  color: ['vibrancy', 'solid-depth', 'harmony', 'neutral', 'emphasis'],
   type: ['type-scale'],
   form: ['scale', 'density', 'space', 'curvature', 'corner', 'line', 'elevation'],
 };
