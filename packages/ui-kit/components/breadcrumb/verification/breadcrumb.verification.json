@@ -1,0 +1,71 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "breadcrumb",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/breadcrumb/breadcrumb.element.ts",
+      "sha256": "9f9963b8396c838df42137ecba67b8e921925d515f1a03d0e43e0bce90b7108d"
+    },
+    {
+      "path": "components/breadcrumb/breadcrumb.react.tsx",
+      "sha256": "788ed293b924034200590ffeb13943db6b26dcda966da0b744b3ba124e5ab3de"
+    },
+    {
+      "path": "components/breadcrumb/breadcrumb.recipe.ts",
+      "sha256": "8edf0dc2981e32be557d37d54f98df3c4404a2ec4465d6deef99e84e4b8c0f63"
+    },
+    {
+      "path": "components/breadcrumb/breadcrumb.manifest.json",
+      "sha256": "fc27648b9349b8ed492e65aeeb9735e5681d6f042ff6ea0fdbc46c61a4a32d07"
+    },
+    {
+      "path": "dom/breadcrumb.ts",
+      "sha256": "2a3f695fc5551dce40effcb24bdaa911753892e010ab0ec81e65f9dfb9616c52"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/breadcrumb.test.ts",
+          "covers": "landmark, list, current page, folding, keyboard, resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/breadcrumb.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/breadcrumb.test.ts",
+          "covers": "SSR markup, folding, current page"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/breadcrumb.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Breadcrumb with ui-breadcrumb at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 gap, ellipsis and label limit derive from u; 3 the caret uses icon size sm; 4 text links, so no construction pattern; 5 no border; 6 the ellipsis takes u × scale; 7 the label role; 8 the 1u gap is fixed; 9 no floating layer; 10 long crumbs truncate at 40u and the trail wraps, and the caret mirrors in RTL; 11 the kit's focus ring on links and the ellipsis."
+  ]
+}

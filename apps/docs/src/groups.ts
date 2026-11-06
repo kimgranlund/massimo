@@ -10,7 +10,7 @@ export const GROUPS: [string, string[]][] = [
   ['Media', ['image', 'swiper', 'avatar', 'swatch', 'palette']],
   ['Disclosure', ['collapsible', 'accordion', 'tabs']],
   ['Overlays', ['dialog', 'alert-dialog', 'drawer', 'popover', 'tooltip', 'preview-card', 'toast']],
-  ['Menus', ['menu', 'context-menu', 'menubar', 'navigation-menu']],
+  ['Navigation', ['breadcrumb', 'menu', 'context-menu', 'menubar', 'navigation-menu']],
 ];
 
 /** Slugs with no group, or in more than one. */

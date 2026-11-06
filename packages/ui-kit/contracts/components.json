@@ -1139,6 +1139,28 @@
         "fieldset"
       ],
       "behavior": "Multiline: Enter adds a line and pastes keep theirs. Grows with its text from rows. Validates required, minlength and pattern after interaction."
+    },
+    "breadcrumb": {
+      "geometryFamily": "breadcrumb",
+      "element": "Host is a navigation landmark holding an ordered list of authored crumbs.",
+      "parts": [
+        "breadcrumb-list",
+        "breadcrumb-item",
+        "breadcrumb-link",
+        "breadcrumb-separator",
+        "breadcrumb-ellipsis"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "inline"
+      ],
+      "behavior": "The last crumb is the current page. max-items folds the middle; the ellipsis shows every crumb and moves focus to the first revealed."
     }
   }
 }

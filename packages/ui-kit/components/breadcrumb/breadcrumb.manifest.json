@@ -1,0 +1,286 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "breadcrumb",
+  "primary": "component:breadcrumb",
+  "module": "./breadcrumb.element.ts",
+  "registration": "on-import",
+  "documentation": "./breadcrumb.md",
+  "examples": "./breadcrumb.examples.json",
+  "contract": "../../contracts/components.json#/components/breadcrumb",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./breadcrumb.recipe.ts"
+  },
+  "nodes": [
+    {
+      "id": "component:breadcrumb",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-breadcrumb",
+      "class": "UIBreadcrumb",
+      "extends": "UIElement",
+      "intent": [
+        "Show where a page sits and link to its ancestors"
+      ],
+      "properties": [
+        {
+          "key": "label",
+          "type": "string",
+          "default": "Breadcrumb",
+          "attribute": "label",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "maxItems",
+          "type": "number",
+          "default": 0,
+          "attribute": "max-items",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [],
+      "events": [],
+      "semantics": {
+        "role": "navigation",
+        "formAssociated": false,
+        "keyboard": [
+          {
+            "keys": "Enter or Space on the ellipsis",
+            "action": "show every crumb and focus the first revealed"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label"
+          ],
+          "required": false
+        }
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Crumbs, root first: links, then the current page as text."
+      },
+      "layout": {
+        "display": "block",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The last crumb is the current page.",
+        "max-items keeps the root and the end, and folds the middle behind an ellipsis.",
+        "The web tag needs the kit's icons for its carets."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Moving between sections at one level.",
+          "reason": "A breadcrumb shows ancestry, not siblings.",
+          "useInstead": "component:tabs"
+        },
+        {
+          "when": "The main site navigation.",
+          "reason": "A breadcrumb only shows the path to this page.",
+          "useInstead": "component:navigation-menu"
+        }
+      ],
+      "searchTerms": [
+        "breadcrumb",
+        "breadcrumbs",
+        "trail",
+        "path",
+        "ancestors",
+        "navigation trail"
+      ]
+    },
+    {
+      "id": "part:breadcrumb-list",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=list]",
+      "summary": "The ordered list of crumbs."
+    },
+    {
+      "id": "part:breadcrumb-item",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=list] > [data-part=item]",
+      "summary": "One crumb and its caret."
+    },
+    {
+      "id": "part:breadcrumb-link",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=list] > [data-part=item] > [data-part=link]",
+      "summary": "An authored crumb."
+    },
+    {
+      "id": "part:breadcrumb-separator",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=list] > [data-part=item] > [data-part=separator]",
+      "summary": "The decorative caret."
+    },
+    {
+      "id": "part:breadcrumb-ellipsis",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "span",
+      "selector": ":scope > [data-part=list] > [data-part=item] > [data-part=ellipsis]",
+      "summary": "The button that shows folded crumbs."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:breadcrumb",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesGeometry",
+      "to": "geometry:breadcrumb"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-list"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-item"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-link"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-separator"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-ellipsis"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./breadcrumb.element.ts",
+      "exports": {
+        "component:breadcrumb": "UIBreadcrumb"
+      },
+      "verification": "./verification/breadcrumb.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./breadcrumb.react.tsx",
+      "exports": {
+        "component:breadcrumb": "Breadcrumb"
+      },
+      "verification": "./verification/breadcrumb.verification.json#/renderers/react",
+      "props": {
+        "component:breadcrumb": {
+          "inherits": [
+            "HTMLAttributes<HTMLElement>"
+          ],
+          "props": [
+            "label?: string = 'Breadcrumb' // The accessible name of the navigation. Default \"Breadcrumb\".",
+            "maxItems?: number = 0 // Show at most this many crumbs: the root, the ellipsis's folded middle and the last ones.",
+            "size?: number // Unit u in px for this element.",
+            "children?: ReactNode"
+          ]
+        }
+      }
+    }
+  }
+}

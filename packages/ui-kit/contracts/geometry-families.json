@@ -610,6 +610,24 @@
       ],
       "ladder": null,
       "ladderWaiver": "One fixed mark per unit: it has no size variants for a ladder to compare."
+    },
+    "breadcrumb": {
+      "id": "geometry:breadcrumb",
+      "resolver": [
+        "resolveBreadcrumb"
+      ],
+      "summary": "Crumbs and carets 1u apart, a 5u ellipsis, labels truncated at 40u.",
+      "members": [
+        "component:breadcrumb"
+      ],
+      "searchTerms": [
+        "breadcrumb gap"
+      ],
+      "csv": [
+        "breadcrumb"
+      ],
+      "ladder": null,
+      "ladderWaiver": "One text run per unit: it has no size variants for a ladder to compare."
     }
   }
 }

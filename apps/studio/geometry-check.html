@@ -17,6 +17,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/breadcrumb/element';
 import '@massimo/ui-kit/components/textarea/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
@@ -35,7 +36,7 @@ import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resol
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
-import { resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveBreadcrumb, resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
@@ -117,7 +118,7 @@ for (const c of cases) {
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
     <ui-toggle id="tgl" icon-size="${c.icon}" pressed><span slot="leading"></span>Bold</ui-toggle><ui-toggle id="tglO" aria-label="x"><span slot="leading"></span></ui-toggle><ui-toggle id="tglT">Text</ui-toggle>
     <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
-    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
+    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><ui-breadcrumb id="crumbs" max-items="2"><a href="#a">A</a><a href="#b">B</a><span>C</span></ui-breadcrumb><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
@@ -411,6 +412,13 @@ for (const c of cases) {
     const control = (id) => $(id).querySelector('[data-part=control]');
     checks['textarea.rows1'] = [r2(rect(control('ta1')).height), resolveTextarea({ ...g, rows: 1 }).minHeight];
     checks['textarea.rows3'] = [r2(rect(control('ta3')).height), resolveTextarea(g).minHeight];
+  }
+  // Breadcrumb: crumbs and carets 1u apart, a 5u ellipsis.
+  {
+    const rb = resolveBreadcrumb(g), trail = $('crumbs'), link = trail.querySelector('[data-part=link]'), sep = trail.querySelectorAll('[data-part=item]')[1].querySelector('[data-part=separator]'), more = trail.querySelector('[data-part=ellipsis]');
+    checks['breadcrumb.ellipsis'] = [r2(rect(more).height), rb.ellipsis];
+    checks['breadcrumb.gap'] = [r2(rect(sep.parentElement).left - rect(link).right), rb.gap];
+    checks['breadcrumb.caretGap'] = [r2(rect(more).left - rect(sep).right), rb.gap];
   }
   // Kbd: 5u caps, at least square, ½u apart, 10 + ½u text.
   {

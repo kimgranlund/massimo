@@ -38,6 +38,7 @@ declare module 'react' {
       'ui-field': El<{ label?: string; unit?: string; readout?: string; description?: string; error?: string; layout?: 'stacked' | 'inline' }>;
       'ui-field-grid': El<{}>;
       'ui-textarea': El<{ ref?: any; label?: string; name?: string; value?: string; rows?: string | number; placeholder?: string; description?: string; error?: string; required?: boolean; disabled?: boolean; readonly?: boolean }>;
+      'ui-breadcrumb': El<{ label?: string; 'max-items'?: string | number }>;
       'ui-kbd': El<{ keys?: string; platform?: 'auto' | 'mac' | 'other' }>;
       'ui-spinner': El<{ label?: string; 'hide-label'?: string | boolean }>;
       'ui-separator': El<{ orientation?: 'horizontal' | 'vertical' }>;

@@ -579,6 +579,15 @@ export function resolveKbd(input: GeometryInput = {}) {
   return { height, minWidth: height, gap: KBD.gap * u, paddingInline: KBD.inline * u, fontSize: 10 + KBD.font * u, radius: Math.min(KBD.radius * u * x.radiusScale, height / 2) };
 }
 
+// ── Display: breadcrumb ──
+/** A breadcrumb's gap, ellipsis target and longest label, in u. */
+export const BREADCRUMB = { gap: 1, ellipsis: 5, maxLabel: 40 } as const;
+/** ui-breadcrumb: crumbs and carets 1u apart, a 5u ellipsis, labels truncated at 40u. */
+export function resolveBreadcrumb(input: GeometryInput = {}) {
+  const u = inputs(input).unit;
+  return { gap: BREADCRUMB.gap * u, ellipsis: BREADCRUMB.ellipsis * u, maxLabel: BREADCRUMB.maxLabel * u };
+}
+
 // ── Display: avatar ──
 // An avatar is a square on the slot and control ladder: sm = the 6u slot (it fits a button's
 // leading slot), md = the 8u control height (default), lg = 12u, xl = 16u. It is a control scaled by

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "breadcrumb",
+  "title": "Breadcrumb",
+  "summary": "Where a page sits, as links to its ancestors.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "A trail",
+      "subject": "component:breadcrumb",
+      "markup": "<ui-breadcrumb><a href=\"#/\">Home</a><a href=\"#/components\">Projects</a><span>Mercury</span></ui-breadcrumb>"
+    },
+    {
+      "id": "folded",
+      "label": "Folded to three crumbs",
+      "subject": "component:breadcrumb",
+      "markup": "<ui-breadcrumb max-items=\"3\"><a href=\"#/\">Home</a><a href=\"#/\">Projects</a><a href=\"#/\">Mercury</a><a href=\"#/\">Settings</a><span>Members</span></ui-breadcrumb>"
+    }
+  ]
+}

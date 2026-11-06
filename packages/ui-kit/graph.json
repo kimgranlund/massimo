@@ -67,6 +67,20 @@
         "counter"
       ]
     },
+    "component:breadcrumb": {
+      "kind": "component",
+      "source": "components/breadcrumb/breadcrumb.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-breadcrumb",
+      "searchTerms": [
+        "breadcrumb",
+        "breadcrumbs",
+        "trail",
+        "path",
+        "ancestors",
+        "navigation trail"
+      ]
+    },
     "component:button": {
       "kind": "component",
       "source": "components/button/button.manifest.json#/nodes/0",
@@ -2337,6 +2351,14 @@
         "profile picture"
       ]
     },
+    "geometry:breadcrumb": {
+      "kind": "geometry",
+      "source": "contracts/geometry-families.json#/families/breadcrumb",
+      "availability": "implemented",
+      "searchTerms": [
+        "breadcrumb gap"
+      ]
+    },
     "geometry:btg": {
       "kind": "geometry",
       "source": "contracts/geometry-families.json#/families/btg",
@@ -4205,6 +4227,51 @@
         "avatar image"
       ]
     },
+    "part:breadcrumb-ellipsis": {
+      "kind": "part",
+      "source": "components/breadcrumb/breadcrumb.manifest.json#/nodes/5",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "breadcrumb ellipsis"
+      ]
+    },
+    "part:breadcrumb-item": {
+      "kind": "part",
+      "source": "components/breadcrumb/breadcrumb.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "breadcrumb item"
+      ]
+    },
+    "part:breadcrumb-link": {
+      "kind": "part",
+      "source": "components/breadcrumb/breadcrumb.manifest.json#/nodes/3",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "breadcrumb link"
+      ]
+    },
+    "part:breadcrumb-list": {
+      "kind": "part",
+      "source": "components/breadcrumb/breadcrumb.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "breadcrumb list"
+      ]
+    },
+    "part:breadcrumb-separator": {
+      "kind": "part",
+      "source": "components/breadcrumb/breadcrumb.manifest.json#/nodes/4",
+      "availability": "implemented",
+      "tag": "span",
+      "searchTerms": [
+        "breadcrumb separator"
+      ]
+    },
     "part:chip-remove": {
       "kind": "part",
       "source": "components/btg/btg.manifest.json#/nodes/3",
@@ -6033,6 +6100,116 @@
       "from": "component:avatar",
       "relation": "allowedIn",
       "to": "context:inline"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "extends",
+      "to": "foundation:element"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesGeometry",
+      "to": "geometry:breadcrumb"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "allowedIn",
+      "to": "context:inline"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-list"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-item"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-link"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-separator"
+    },
+    {
+      "from": "component:breadcrumb",
+      "relation": "ownsPart",
+      "to": "part:breadcrumb-ellipsis"
     },
     {
       "from": "component:badge",
