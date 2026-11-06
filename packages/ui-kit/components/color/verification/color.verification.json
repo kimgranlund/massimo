@@ -14,7 +14,7 @@
     },
     {
       "path": "components/color/color.manifest.json",
-      "sha256": "ddc7a470f9aaab33bc16cdfdf52749ff9966299741098e5f6cfd4e14993d8123"
+      "sha256": "86fe404789c987f90c7f57e07b8ae19ddd8949ab05a25c22b6d9ab7f46291547"
     },
     {
       "path": "components/color/color.react.tsx",
@@ -58,7 +58,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"swatch\" test/new-components.test.ts",
@@ -86,7 +86,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-04",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test test/react.test.ts",

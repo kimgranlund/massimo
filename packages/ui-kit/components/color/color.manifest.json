@@ -309,7 +309,7 @@
       },
       "constraints": [
         "Not selectable: role=group, submits nothing. With name or selectable: role=listbox, swatches become options.",
-        "Swatches join with no gaps; a subtle 1px inset edge outlines the strip.",
+        "Swatches join with no gaps and no edge: the fills are the strip.",
         "orientation=vertical stacks swatches in a column and uses Up/Down."
       ],
       "avoidWhen": [

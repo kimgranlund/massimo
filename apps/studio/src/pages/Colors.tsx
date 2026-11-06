@@ -16,6 +16,7 @@ import type { SpectrumPayload } from '../protocol.ts';
 import type { PageProps } from './types.ts';
 import { CQ_LG, CQ_MD, Divider, Page, Section, caption, dataTable, kicker, metrics, nameCell, noteCell, rowLabel, specimens, subTitle, tableScroller } from './shared.tsx';
 
+const roleTitle = css({ textStyle: 'title' });
 const rampRow = css({ display: 'grid', gridTemplateColumns: '1fr', gap: '3', alignItems: 'center', [CQ_MD]: { gridTemplateColumns: '7rem 1fr 1fr' } });
 const ramp = css({ width: 'full' });
 const summary = css({ textStyle: 'code', '& b': { color: 'primary.fg', fontWeight: 'regular' } });
@@ -126,7 +127,7 @@ function RoleCard({ role, family, className }: { role: string; family: string; c
   return (
     <figure className={roleCard}>
       <span className={cx(roleFill, className, ROLE_BG[role])} data-primary={role === 'primary' ? '' : undefined} />
-      <figcaption><span className={rowLabel}>{roleName(role)}</span><span className={caption}>{family}</span></figcaption>
+      <figcaption><span className={roleTitle}>{roleName(role)}</span><span className={caption}>{family}</span></figcaption>
     </figure>
   );
 }

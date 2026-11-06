@@ -45,8 +45,6 @@ export const palette = defineSlotRecipe({
     root: {
       display: 'inline-flex', position: 'relative', borderRadius: 'calc(2 * var(--u) * var(--ui-radius-scale))', overflow: 'hidden',
       fontFamily: UI_FONT,
-      // A subtle edge drawn over the swatches (no space, follows the strip's radius).
-      _after: { content: '""', position: 'absolute', inset: 0, borderRadius: 'inherit', boxShadow: 'inset 0 0 0 1px var(--colors-border)', pointerEvents: 'none' },
       [SWATCH]: { borderRadius: 0, flex: '1 0 var(--slot)', transition: t('feedback', ...PAINT) },
       _disabled: { opacity: 0.5, cursor: 'not-allowed', '& > *': { cursor: 'not-allowed', pointerEvents: 'none' } },
       _invalid: { outline: '2px solid {colors.critical.solid}', outlineOffset: '2px' },
