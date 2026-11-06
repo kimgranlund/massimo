@@ -1,0 +1,31 @@
+{
+  "id": "WI14",
+  "title": "Dollars to đồng / billboard",
+  "image": "wi14.png",
+  "source": "../sources/19-Wise_Out_Of_Home_SF_update.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 14,
+    "source_asset_index": 19,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Turn a transfer into a simple visual relationship because an audience should grasp the action before reading details.",
+  "strategic_value": "Two currency words joined by a colorful control can make Wise’s international transfer offer concrete.",
+  "demonstration": "A roadside billboard pairs Dollars and Đồng across a green field, with a pill-shaped colorful connector and small Wise signature.",
+  "category": "Application",
+  "practical_value": "Assess how few elements are needed to explain movement between currencies at distance.",
+  "content_islands": [
+    {
+      "name": "Currency relationship",
+      "spec": "Place the two large currency words on either side of the central connector."
+    },
+    {
+      "name": "Signature and setting",
+      "spec": "Keep the small logo above and retain supports and sky for viewing scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A roadside billboard pairs Dollars and Đồng across a green field, with a pill-shaped colorful connector and small Wise signature.",
+    "Application": "The source demonstrates a currency-transfer message on a roadside billboard."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "X07",
+  "title": "Service card system",
+  "image": "x07.png",
+  "source": "../sources/x07.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 7,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Give different service messages a shared structure so users can scan varied content without relearning the layout.",
+  "strategic_value": "Consistent cards can connect Xfinity’s support, offers, appointments and entertainment recommendations.",
+  "demonstration": "A loose grid of white cards combines colored headings and top rules with product images, an appointment, usage summaries, offers and assistance.",
+  "category": "Layout",
+  "practical_value": "Compare card density and emphasis across message types before choosing a reusable content pattern.",
+  "content_islands": [
+    {
+      "name": "Card field",
+      "spec": "Arrange varied card sizes across a pale gray canvas while preserving consistent white surfaces and modest shadows."
+    },
+    {
+      "name": "Colored headings and rules",
+      "spec": "Use colored headings or thin top rules to distinguish messages within the common card structure."
+    },
+    {
+      "name": "Content examples",
+      "spec": "Retain the mixture of products, numbers, dates, entertainment imagery and help copy to test the system’s range."
+    }
+  ],
+  "ingredient": {
+    "name": "Service cards",
+    "role": "Make varied messages scannable within one interface family.",
+    "application": "Use a shared white surface, clear heading and controlled color accents while varying card height and imagery with content.",
+    "scope": "Observed card collection; no universal grid measurements or fixed color-to-service mapping are supplied."
+  },
+  "reference_purposes": {
+    "Expression": "Thin colored rules, clear headings and white surfaces repeat across the collection.",
+    "Application": "The cards accommodate appointments, usage, offers, product instructions and help."
+  }
+}

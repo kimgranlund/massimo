@@ -1,0 +1,35 @@
+{
+  "id": "WI16",
+  "title": "Flower / Japanese billboard",
+  "image": "wi16.png",
+  "source": "../sources/21-Wise_Billboard_Flower.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 16,
+    "source_asset_index": 21,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Adapt language without losing recognizable imagery because international expression needs both continuity and local readability.",
+  "strategic_value": "The textured flower and green surfaces can connect a Japanese-language placement with Wise’s wider visual family.",
+  "demonstration": "Two sides of a tall urban billboard pair vertical Japanese lettering with a textured flower and a Wise signature.",
+  "category": "Application",
+  "practical_value": "Compare a shared illustration’s role across scripts and outdoor proportions.",
+  "content_islands": [
+    {
+      "name": "Copy face",
+      "spec": "Use the narrow face for large vertical Japanese lettering."
+    },
+    {
+      "name": "Image face",
+      "spec": "Place the flower beneath the signature on the wider face."
+    },
+    {
+      "name": "Urban scale",
+      "spec": "Retain surrounding architecture and elevated tracks."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two sides of a tall urban billboard pair vertical Japanese lettering with a textured flower and a Wise signature.",
+    "Application": "The source demonstrates localized copy and illustration on an urban billboard."
+  }
+}

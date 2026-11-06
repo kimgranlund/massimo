@@ -1,0 +1,33 @@
+{
+  "id": "WI32",
+  "title": "Flags and abbreviations",
+  "image": "wi32.png",
+  "source": "../sources/41-Flag-Abbreviation-5_srgb_web.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 32,
+    "source_asset_index": 41,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 8.98
+  },
+  "slide_intent": "Combine pictorial and textual identifiers so people have more than one cue for recognizing a place or money context.",
+  "strategic_value": "Repeated circular flags and colored labels can help Wise’s international scope feel systematic.",
+  "demonstration": "A circular flag turns beside a rounded label as the pair cycles through examples including ZMB, UGA, HRV, NPL, BRL, BWA and CYP.",
+  "category": "Motion",
+  "practical_value": "Check label semantics before reuse: this demonstration mixes country-style identifiers with BRL, a currency code.",
+  "content_islands": [
+    {
+      "name": "Flag disc",
+      "spec": "Rotate the circular flag at left."
+    },
+    {
+      "name": "Abbreviation label",
+      "spec": "Place the large code in a matching colored pill at right and update both together."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A circular flag turns beside a rounded label as the pair cycles through examples including ZMB, UGA, HRV, NPL, BRL, BWA and CYP.",
+    "Application": "The source demonstrates paired flag and text identifiers in a repeated layout."
+  },
+  "motion": "../sources/41-Flag-Abbreviation-5_srgb_web.mp4"
+}

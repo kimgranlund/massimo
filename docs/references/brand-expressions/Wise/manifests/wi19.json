@@ -1,0 +1,33 @@
+{
+  "id": "WI19",
+  "title": "From status quo to status woah",
+  "image": "wi19.png",
+  "source": "../sources/24-Wise_CS_StatusWoah.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 19,
+    "source_asset_index": 24,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 5.4
+  },
+  "slide_intent": "Turn a familiar phrase into a surprise so the promise of change is felt as well as read.",
+  "strategic_value": "A small verbal substitution paired with celebratory imagery can give Wise’s challenge to conventional finance a playful tone.",
+  "demonstration": "On pink, dark stacked wording changes from From Status Quo to To Status Woah; colorful ribbon and confetti sweep across the second phrase.",
+  "category": "Voice",
+  "practical_value": "Compare how wordplay and a timed reveal can communicate change without a long explanation.",
+  "content_islands": [
+    {
+      "name": "Initial phrase",
+      "spec": "Hold the familiar status-quo phrase in a dense centered block."
+    },
+    {
+      "name": "Reversal",
+      "spec": "Replace it with the altered wording and overlay the textured celebration."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "On pink, dark stacked wording changes from From Status Quo to To Status Woah; colorful ribbon and confetti sweep across the second phrase.",
+    "Intent": "The accompanying Verbal identity section describes direct messaging for international use."
+  },
+  "motion": "../sources/24-Wise_CS_StatusWoah.mp4"
+}

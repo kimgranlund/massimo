@@ -1,0 +1,31 @@
+{
+  "id": "WI35",
+  "title": "Contactless payment at a market",
+  "image": "wi35.png",
+  "source": "../sources/44-Wise_Photography_Apple_Pay.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 35,
+    "source_asset_index": 44,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show a recognizable action rather than an abstract promise because viewers can understand service utility through a concrete moment.",
+  "strategic_value": "The Wise payment screen amid fresh produce can connect the account with everyday spending.",
+  "demonstration": "Hands hold a phone near a payment terminal above green peppers; the screen displays a confirmation and Wise branding.",
+  "category": "Imagery",
+  "practical_value": "Compare how product interface, gesture and setting jointly explain the transaction.",
+  "content_islands": [
+    {
+      "name": "Payment gesture",
+      "spec": "Bring the phone and terminal together at the center."
+    },
+    {
+      "name": "Product and context",
+      "spec": "Retain the confirmation screen and surrounding produce to explain the use."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Hands hold a phone near a payment terminal above green peppers; the screen displays a confirmation and Wise branding.",
+    "Application": "The source demonstrates contactless payment in a produce market."
+  }
+}

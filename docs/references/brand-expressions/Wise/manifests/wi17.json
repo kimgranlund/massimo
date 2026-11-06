@@ -1,0 +1,38 @@
+{
+  "id": "WI17",
+  "title": "Multilingual welcome screens",
+  "image": "wi17.png",
+  "source": "../sources/22-Wise_Language_screens_Motion.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 17,
+    "source_asset_index": 22,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 12.0
+  },
+  "slide_intent": "Test the same hierarchy across languages because translated words change length and shape.",
+  "strategic_value": "A recurring illustration and button structure can keep Wise recognizable as the headline changes script and wording.",
+  "demonstration": "A portrait phone-shaped panel cycles English, Japanese, Portuguese and French copy beneath the same floating money illustration; the two lower buttons remain in place.",
+  "category": "Typography",
+  "practical_value": "Compare line breaks and text density across localized versions without changing the main composition.",
+  "content_islands": [
+    {
+      "name": "Illustration",
+      "spec": "Keep the banknote and coins above the copy."
+    },
+    {
+      "name": "Localized hierarchy",
+      "spec": "Change headline and explanatory text inside the same vertical region."
+    },
+    {
+      "name": "Actions",
+      "spec": "Retain two pill-shaped entry buttons at the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A portrait phone-shaped panel cycles English, Japanese, Portuguese and French copy beneath the same floating money illustration; the two lower buttons remain in place.",
+    "Intent": "The accompanying typeface section describes global script inspiration; the film demonstrates localized screens.",
+    "Application": "The source demonstrates one welcome-screen hierarchy across multiple languages."
+  },
+  "motion": "../sources/22-Wise_Language_screens_Motion.mp4"
+}

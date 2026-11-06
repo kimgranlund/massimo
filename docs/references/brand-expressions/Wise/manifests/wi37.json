@@ -1,0 +1,31 @@
+{
+  "id": "WI37",
+  "title": "Card with a restaurant bill",
+  "image": "wi37.png",
+  "source": "../sources/47-30_Wise_RaggedEdge_Card.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 37,
+    "source_asset_index": 47,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Place a branded object at the moment it serves its purpose because the setting can explain its role immediately.",
+  "strategic_value": "The green card on a bill tray can make Wise visible within a social spending occasion.",
+  "demonstration": "A green Wise card lies on a receipt and dish among cups, glasses, plates and a flower on a patterned tablecloth.",
+  "category": "Imagery",
+  "practical_value": "Compare a product’s color contrast against a rich, warm lifestyle setting.",
+  "content_islands": [
+    {
+      "name": "Payment cluster",
+      "spec": "Place the card over the receipt in the central dish."
+    },
+    {
+      "name": "Table setting",
+      "spec": "Retain drinks, dishes, flower and textile as the surrounding occasion."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A green Wise card lies on a receipt and dish among cups, glasses, plates and a flower on a patterned tablecloth.",
+    "Application": "The source demonstrates the payment card presented with a restaurant bill."
+  }
+}

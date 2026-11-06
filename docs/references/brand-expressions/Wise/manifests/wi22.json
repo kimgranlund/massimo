@@ -1,0 +1,33 @@
+{
+  "id": "WI22",
+  "title": "Illustration and copy / campaign sequence",
+  "image": "wi22.png",
+  "source": "../sources/28-Wise_CS_IllustrationsWithCopy_srgb_2Mbps_half.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 22,
+    "source_asset_index": 28,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 36.0
+  },
+  "slide_intent": "Give abstract benefits a visible metaphor so people can connect a claim with an understandable object.",
+  "strategic_value": "Textured planes, locks, flowers and jars can make Wise’s service language concrete while sharing a recognizable material treatment.",
+  "demonstration": "The film pairs short headlines with animated three-dimensional objects, including a paper plane, flower, lock, flag, calendar, globe, palm and jars.",
+  "category": "Imagery",
+  "practical_value": "Compare which metaphor best supports a particular benefit without relying on the headline alone.",
+  "content_islands": [
+    {
+      "name": "Message pairs",
+      "spec": "Give each object a short related headline on a flat color ground."
+    },
+    {
+      "name": "Object behavior",
+      "spec": "Animate the textured forms while retaining generous separation from the words."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film pairs short headlines with animated three-dimensional objects, including a paper plane, flower, lock, flag, calendar, globe, palm and jars.",
+    "Application": "The source demonstrates short benefit messages paired with specific illustrated metaphors."
+  },
+  "motion": "../sources/28-Wise_CS_IllustrationsWithCopy_srgb_2Mbps_half.mp4"
+}

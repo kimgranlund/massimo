@@ -1,0 +1,31 @@
+{
+  "id": "WI33",
+  "title": "Account on a laptop / lifestyle photograph",
+  "image": "wi33.png",
+  "source": "../sources/42-InstaPost_Photography_04.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 33,
+    "source_asset_index": 42,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show the product amid a person’s own objects because a financial service should feel embedded in life.",
+  "strategic_value": "The card, laptop and personal desk can make Wise’s account offer tangible without relying on an isolated interface.",
+  "demonstration": "An overhead view shows a person holding a green card in front of an open laptop on a desk with plants, papers and small objects.",
+  "category": "Imagery",
+  "practical_value": "Decide which recognizable product cues need to remain visible in a wide lifestyle crop.",
+  "content_islands": [
+    {
+      "name": "Person and card",
+      "spec": "Keep the hand-held green card near the laptop."
+    },
+    {
+      "name": "Screen and desk",
+      "spec": "Retain the welcome screen and surrounding work objects as a connected scene."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An overhead view shows a person holding a green card in front of an open laptop on a desk with plants, papers and small objects.",
+    "Application": "The source demonstrates an account and card in a personal working context."
+  }
+}

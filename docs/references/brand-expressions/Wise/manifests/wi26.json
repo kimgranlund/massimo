@@ -1,0 +1,38 @@
+{
+  "id": "WI26",
+  "title": "Powering the world’s money / Platform",
+  "image": "wi26.png",
+  "source": "../sources/52-WisePlatform_Hero_v2_16x9-slide-30-x-2560x1440_srgb_web-1.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 26,
+    "source_asset_index": 52,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 6.7
+  },
+  "slide_intent": "Visualize an unseen service layer because infrastructure is difficult to understand through a logo alone.",
+  "strategic_value": "Separated interface, platform and texture panels can position Wise Platform as the layer behind another financial experience.",
+  "demonstration": "A heavy headline introduces Powering the World’s Money; three offset panels move across it before the Wise Platform signature appears.",
+  "category": "Brand",
+  "practical_value": "Compare a layered spatial metaphor with a literal product screenshot when explaining an enabling service.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Introduce the enterprise promise on white."
+    },
+    {
+      "name": "Layered panels",
+      "spec": "Separate pale interface, branded middle layer and green texture in depth."
+    },
+    {
+      "name": "Signature",
+      "spec": "Resolve to the Wise Platform lockup."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A heavy headline introduces Powering the World’s Money; three offset panels move across it before the Wise Platform signature appears.",
+    "Intent": "The accompanying Platform section frames the sub-brand as an invisible payments partner for banks and large enterprises.",
+    "Application": "The source demonstrates layered panels explaining an enterprise service."
+  },
+  "motion": "../sources/52-WisePlatform_Hero_v2_16x9-slide-30-x-2560x1440_srgb_web-1.mp4"
+}

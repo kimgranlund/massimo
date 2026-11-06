@@ -1,0 +1,31 @@
+{
+  "id": "WI38",
+  "title": "Account welcome in a landscape",
+  "image": "wi38.png",
+  "source": "../sources/49-Wise_Mobile_Login_update.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 38,
+    "source_asset_index": 49,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Pair an international promise with an open setting so a digital service feels usable beyond a desk.",
+  "strategic_value": "The globe, account headline and green action on a hand-held phone can give Wise’s global premise a concrete entry point.",
+  "demonstration": "A hand holds a phone displaying a globe illustration, The World’s Money Account headline and login controls against a softly focused outdoor landscape.",
+  "category": "Application",
+  "practical_value": "Check whether the entry screen communicates its proposition at the scale of a real device.",
+  "content_islands": [
+    {
+      "name": "Phone hierarchy",
+      "spec": "Stack globe, headline, supporting copy and actions within the screen."
+    },
+    {
+      "name": "Outdoor context",
+      "spec": "Keep the hand and distant landscape visible without competing with the display."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A hand holds a phone displaying a globe illustration, The World’s Money Account headline and login controls against a softly focused outdoor landscape.",
+    "Application": "The source demonstrates the welcome screen displayed on a hand-held device."
+  }
+}

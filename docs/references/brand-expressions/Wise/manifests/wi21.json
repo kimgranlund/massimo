@@ -1,0 +1,37 @@
+{
+  "id": "WI21",
+  "title": "Fast flag on a tapestry",
+  "image": "wi21.png",
+  "source": "../sources/27-Wise_Tapestry_Crop.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 21,
+    "source_asset_index": 27,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Pair a stable mark with a variable surface so recognition and visual variety can coexist.",
+  "strategic_value": "The white fast flag over a green-blue texture can let Wise vary imagery without changing its identifier.",
+  "demonstration": "A white fast flag sits centrally on a layered green, turquoise and blue textured portrait field.",
+  "category": "Imagery",
+  "practical_value": "Evaluate contrast when placing a simple identifier on a detailed abstract background.",
+  "content_islands": [
+    {
+      "name": "Texture field",
+      "spec": "Fill the frame with the layered tapestry."
+    },
+    {
+      "name": "Identifier",
+      "spec": "Center the white fast flag and preserve a clear silhouette against the detail."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white fast flag sits centrally on a layered green, turquoise and blue textured portrait field.",
+    "Intent": "The accompanying Tapestries section identifies these textures as flexible recognizable assets inspired by the world’s money."
+  },
+  "ingredient": {
+    "name": "Tapestry behind the fast flag",
+    "role": "Add varied visual texture around a stable identifier.",
+    "application": "Use a clear contrasting mark against the detailed field, as shown by the white flag here.",
+    "scope": "Observed case-study example; no mandatory contrast ratio or palette proportions are supplied."
+  }
+}

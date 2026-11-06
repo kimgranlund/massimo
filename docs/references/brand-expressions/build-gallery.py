@@ -18,26 +18,44 @@ def render_slide(path):
         ("Practical value", "practical_value"),
     ]
     spec = "".join(f"<dt>{label}</dt><dd>{escape(slide[key])}</dd>" for label, key in fields)
+    if "reference_purposes" in slide:
+        purposes = "".join(f"<li><b>{escape(key)}</b> {escape(value)}</li>"
+                           for key, value in slide["reference_purposes"].items())
+        spec += "<dt>Reference purpose</dt><dd>" + (f"<ul>{purposes}</ul>" if purposes else "Reviewed; no purpose assigned.") + "</dd>"
+    ingredient_spec = ""
+    if ingredient := slide.get("ingredient"):
+        rules = "".join(f"<dt>{label}</dt><dd>{escape(ingredient[key])}</dd>"
+                        for label, key in [("Role", "role"), ("Application", "application"), ("Scope", "scope")])
+        ingredient_spec = f"<dt>Brand ingredient</dt><dd><strong>{escape(ingredient['name'])}</strong><dl>{rules}</dl></dd>"
     islands = "".join(f"<li><b>{escape(i['name'])}</b> {escape(i['spec'])}</li>"
                       for i in slide["content_islands"])
-    preview = f'<a href="{media}"><img src="{media}" alt="{title}"></a>'
+    preview = f'<a href="{media}"><img loading="lazy" src="{media}" alt="{title}"></a>'
     if slide.get("motion"):
         clip = escape("manifests/" + slide["motion"], quote=True)
-        preview = f'<video controls playsinline preload="metadata" poster="{media}" aria-label="{title}" src="{clip}"></video>'
+        preview = f'<video controls playsinline preload="none" poster="{media}" aria-label="{title}" src="{clip}"></video>'
     source = "manifests/" + slide["source"]
     if source.lower().endswith(".pdf") and "page" in slide["location"]:
         source += "#page=" + str(slide["location"]["page"])
-    return f"""<article data-category="{category}">
-<p class="folio">{escape(slide['id'])} &nbsp;/&nbsp; {category}</p><h2>{title}</h2>
+    folio = " / PDF page " + str(slide["location"]["page"]) if "page" in slide["location"] else ""
+    return f"""<article id="{escape(slide["id"], quote=True)}" data-category="{category}">
+<p class="folio">{escape(slide['id'])} &nbsp;/&nbsp; {category}{folio}</p><h2>{title}</h2>
 <div class="pair"><figure>{preview}
 <figcaption><a href="{media}">Full-size image</a> · <a href="manifests/{escape(path.name)}">JSON manifest</a> · <a href="{escape(source, quote=True)}">Local source</a></figcaption>
-</figure><dl>{spec}<dt>Content islands</dt><dd><ol>{islands}</ol></dd></dl></div></article>"""
+</figure><dl>{spec}<dt>Content islands</dt><dd><ol>{islands}</ol></dd>{ingredient_spec}</dl></div></article>"""
 
 
 folder = Path(sys.argv[1])
 title = escape(sys.argv[2])
 intro = f"<p>{escape(sys.argv[3])}</p>" if len(sys.argv) > 3 else ""
-paths = sorted((folder / "manifests").glob("*.json"))
+
+
+def source_order(path):
+    location = json.loads(path.read_text())["location"]
+    return location.get("order", location.get("page", 0)), path.name
+
+
+paths = sorted((folder / "manifests").glob("*.json"),
+               key=source_order)
 if not paths:
     raise SystemExit("No manifests found")
 slides = "\n".join(render_slide(path) for path in paths)
@@ -71,5 +89,14 @@ filter.addEventListener('change', () => {{
   }}
   document.getElementById('count').textContent = visible + (visible === 1 ? ' reference' : ' references');
 }});
+function revealHashSlide() {{
+  const slide = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if (!slide || !slide.matches('article[data-category]')) return;
+  filter.value = slide.dataset.category;
+  filter.dispatchEvent(new Event('change'));
+  slide.scrollIntoView();
+}}
+window.addEventListener('hashchange', revealHashSlide);
+revealHashSlide();
 </script></body></html>"""
 (folder / "index.html").write_text(page)

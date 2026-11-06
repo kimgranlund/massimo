@@ -1,0 +1,31 @@
+{
+  "id": "WI11",
+  "title": "Signature on a T-shirt",
+  "image": "wi11.png",
+  "source": "../sources/15-WIse_Photography_Tee_Front.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 11,
+    "source_asset_index": 15,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Scale a brand down to a wearable detail because recognition should not depend on filling the whole surface.",
+  "strategic_value": "A small dark signature on pale fabric can let Wise appear with restraint in a human setting.",
+  "demonstration": "A close crop of a pale T-shirt shows the Wise signature at the chest with a small paragraph beneath it.",
+  "category": "Application",
+  "practical_value": "Compare a compact signature treatment with the collection’s oversized headline applications.",
+  "content_islands": [
+    {
+      "name": "Chest print",
+      "spec": "Place the dark signature above the tiny supporting paragraph."
+    },
+    {
+      "name": "Fabric and body",
+      "spec": "Retain folds, light and torso crop to show real placement."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A close crop of a pale T-shirt shows the Wise signature at the chest with a small paragraph beneath it.",
+    "Application": "The source demonstrates a small signature printed on a shirt."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "WI02",
+  "title": "Card delivery pack",
+  "image": "wi02.png",
+  "source": "../sources/04-Wise_Photography_Card_Pack_update.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 2,
+    "source_asset_index": 4,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Carry recognition into the moment of receiving a product because packaging is part of the service experience.",
+  "strategic_value": "The green card, personal greeting and large slogan can make Wise’s arrival feel both recognizable and addressed to one person.",
+  "demonstration": "An open card pack sits on a curved teal surface; a dark flap carries stacked green copy and the pale insert holds the card beneath a personal greeting.",
+  "category": "Application",
+  "practical_value": "Compare the roles of expressive packaging copy and practical delivery information.",
+  "content_islands": [
+    {
+      "name": "Outer flap",
+      "spec": "Set stacked green copy on the dark left flap."
+    },
+    {
+      "name": "Card insert",
+      "spec": "Place the card on the pale right insert beneath the personal greeting, with small instructions below."
+    },
+    {
+      "name": "Photographic setting",
+      "spec": "Retain the curved teal support and directional shadow."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An open card pack sits on a curved teal surface; a dark flap carries stacked green copy and the pale insert holds the card beneath a personal greeting.",
+    "Application": "The source demonstrates a complete card-delivery pack."
+  }
+}

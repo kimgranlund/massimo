@@ -1,0 +1,36 @@
+{
+  "id": "WI01",
+  "title": "The world’s money / identity montage",
+  "image": "wi01.png",
+  "source": "../sources/02-Wise_CS_KeyVisual_16x9_v4.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 1,
+    "source_asset_index": 2,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 8.47
+  },
+  "slide_intent": "Connect several expressions through repeated cues so viewers can recognize one brand across different situations.",
+  "strategic_value": "Recurring green, heavy type and textured objects can connect Wise’s product and campaign worlds.",
+  "demonstration": "A short film moves from a phone in a landscape to a street billboard, a restaurant, a floating green card and textured three-dimensional objects.",
+  "category": "Motion",
+  "practical_value": "Compare how a color and product silhouette survive changes in scene and medium.",
+  "content_islands": [
+    {
+      "name": "Opening product",
+      "spec": "Begin with the login screen held against an outdoor landscape."
+    },
+    {
+      "name": "Application sequence",
+      "spec": "Cut through outdoor advertising, dining and a fixed card over changing footage."
+    },
+    {
+      "name": "Illustration ending",
+      "spec": "Close on textured objects against flat colored grounds."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A short film moves from a phone in a landscape to a street billboard, a restaurant, a floating green card and textured three-dimensional objects."
+  },
+  "motion": "../sources/02-Wise_CS_KeyVisual_16x9_v4.mp4"
+}

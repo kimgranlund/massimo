@@ -1,0 +1,33 @@
+{
+  "id": "WI30",
+  "title": "Identity and product mosaic",
+  "image": "wi30.png",
+  "source": "../sources/38-Wise_CS_UIDashboard_v3.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 30,
+    "source_asset_index": 38,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 20.97
+  },
+  "slide_intent": "Compare ingredients in one frame so consistency can be judged across different kinds of content.",
+  "strategic_value": "A modular mosaic can show how Wise’s type, green, imagery and functional symbols belong together.",
+  "demonstration": "Rounded tiles change through logos, colored type, tapestry textures, illustrations, currency symbols, flags, transaction lists and product photographs.",
+  "category": "Layout",
+  "practical_value": "Test whether a new component shares enough visual cues with the existing family.",
+  "content_islands": [
+    {
+      "name": "Tile framework",
+      "spec": "Arrange differently sized rounded tiles into a compact two-row composition."
+    },
+    {
+      "name": "Changing specimens",
+      "spec": "Cycle the contents while maintaining clear tile boundaries and contrasting color fields."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Rounded tiles change through logos, colored type, tapestry textures, illustrations, currency symbols, flags, transaction lists and product photographs.",
+    "Application": "The source demonstrates a comparative arrangement of brand and product components."
+  },
+  "motion": "../sources/38-Wise_CS_UIDashboard_v3.mp4"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "WI08",
+  "title": "Wise app tile",
+  "image": "wi08.png",
+  "source": "../sources/12-Wise_App_Tile_Large_5.png",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 8,
+    "source_asset_index": 12,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Simplify recognition for small digital spaces because a full wordmark may not fit every encounter.",
+  "strategic_value": "The fast flag in a rounded green square can connect app discovery with the wider Wise identity.",
+  "demonstration": "A green rounded-square app tile contains the dark fast flag, with Wise below on a dark-green portrait field.",
+  "category": "Application",
+  "practical_value": "Compare the standalone symbol with the full signature when identifying an app.",
+  "content_islands": [
+    {
+      "name": "App tile",
+      "spec": "Center the symbol inside its rounded square."
+    },
+    {
+      "name": "Label",
+      "spec": "Place the small name below and retain the surrounding dark field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A green rounded-square app tile contains the dark fast flag, with Wise below on a dark-green portrait field.",
+    "Application": "The source demonstrates the fast flag used as an app tile."
+  }
+}

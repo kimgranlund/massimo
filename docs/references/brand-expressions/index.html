@@ -19,6 +19,22 @@
   .collection h3 { margin: .75rem 0 0; font-size: 1.8rem; letter-spacing: -.04em; }
   .collection p { margin: .25rem 0; color: #54565f; }
   .collection:hover h3 { text-decoration: underline; }
+  nav, .category-options { display: flex; flex-wrap: wrap; gap: .5rem; }
+  nav { margin-top: 1.4rem; }
+  nav a, .category-options a { padding: .35rem .8rem; border: 1px solid #ccced3; border-radius: 2rem; color: inherit; text-decoration: none; }
+  nav a[aria-current], .category-options a[aria-current] { color: white; background: #18191d; border-color: #18191d; }
+  .slide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem 1rem; }
+  .slide-grid img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #eeeef0; }
+  .slide-grid .label { margin: .7rem 0 .25rem; color: #595a62; }
+  .slide-title { color: inherit; font-weight: 650; text-underline-offset: .2rem; }
+  .purpose-tools { margin-top: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+  select { font: inherit; max-width: 100%; padding: .35rem; }
+  .purpose-note, .purpose-status { font-size: .85rem; color: #54565f; }
+  .slide-grid dl { font-size: .9rem; margin: .6rem 0; }
+  .slide-grid dt { font-weight: 650; }
+  .slide-grid dd { margin: 0 0 .5rem; }
+  .slide-grid details { font-size: .85rem; }
+  .slide-grid summary { cursor: pointer; }
   a:focus-visible { outline: 3px solid #243aff; outline-offset: 4px; }
 </style>
 </head>
@@ -27,6 +43,10 @@
   <span class="label">Design references</span>
   <h1>Brand expressions</h1>
   <p>Explore how each brand uses color, typography, imagery and voice. Each gallery pairs examples from the source material with design specifications.</p>
+  <nav aria-label="Browse library">
+    <a href="#collections" id="by-brand" aria-current="page">By collection</a>
+    <a href="#category=Color" id="by-category">By category</a>
+  </nav>
 </header>
 <section aria-labelledby="collections">
   <h2 id="collections" class="label">Collections</h2>
@@ -38,8 +58,8 @@
     </a>
     <a class="collection" href="./NASA/index.html">
       <img src="./NASA/manifests/v03.png" alt="">
-      <h3>NASA vehicle identification</h3>
-      <p>Color, lettering and placement across a fleet</p>
+      <h3>NASA Graphics Standards Manual</h3>
+      <p>The complete January 1976 graphics standards manual · 60 pages</p>
     </a>
     <a class="collection" href="./North-Sea-Jazz/index.html">
       <img src="./North-Sea-Jazz/manifests/ns01.png" alt="">
@@ -51,7 +71,363 @@
       <h3>Mozilla Protocol</h3>
       <p>Typography and navigation across two brand themes</p>
     </a>
+    <a class="collection" href="./Bolt/index.html">
+      <img src="./Bolt/manifests/b15.png" alt="">
+      <h3>Bolt</h3>
+      <p>Color, hierarchy and emphasis in checkout communications · 21 pages</p>
+    </a>
+    <a class="collection" href="./Sheffield-Museums/index.html">
+      <img src="./Sheffield-Museums/manifests/s27.png" alt="">
+      <h3>Sheffield Museums</h3>
+      <p>Exhibition color, guest typefaces and museum signage · 70 pages</p>
+    </a>
+    <a class="collection" href="./Voltera/index.html">
+      <img src="./Voltera/manifests/v17.png" alt="">
+      <h3>Voltera</h3>
+      <p>A printed-electronics identity from symbol to product voice · 24 pages</p>
+    </a>
+    <a class="collection" href="./MIT-CSAIL/index.html">
+      <img src="./MIT-CSAIL/manifests/c25.png" alt="">
+      <h3>MIT CSAIL</h3>
+      <p>Architecture, geometric patterns and event graphics · 38 pages</p>
+    </a>
+    <a class="collection" href="./Special-Olympics/index.html">
+      <img src="./Special-Olympics/manifests/so46.png" alt="">
+      <h3>Special Olympics</h3>
+      <p>Brand platform, visual identity and program applications · 92 pages</p>
+    </a>
+    <a class="collection" href="./Frontline-AIDS/index.html">
+      <img src="./Frontline-AIDS/manifests/f57.png" alt="">
+      <h3>Frontline AIDS</h3>
+      <p>Campaign identity, illustration, photography and writing · 89 pages</p>
+    </a>
+    <a class="collection" href="./Slack/index.html">
+      <img src="./Slack/manifests/sl37.png" alt="">
+      <h3>Slack</h3>
+      <p>Voice, visual identity and video treatments · 50 pages</p>
+    </a>
+    <a class="collection" href="./Instacart/index.html">
+      <img src="./Instacart/manifests/i001.png" alt="">
+      <h3>Instacart</h3>
+      <p>Shop + Savor, brand elements and applications · 100 pages</p>
+    </a>
+    <a class="collection" href="./Spectrum/index.html">
+      <img src="./Spectrum/manifests/s11.png" alt="">
+      <h3>Spectrum</h3>
+      <p>Complete 2017 retail guide and the Life Unlimited brand evolution</p>
+    </a>
+    <a class="collection" href="./Cox/index.html">
+      <img src="./Cox/manifests/cr18.png" alt="">
+      <h3>Cox Communications</h3>
+      <p>Retail case study · 19 artworks and video posters</p>
+    </a>
+    <a class="collection" href="./T-Mobile/index.html">
+      <img src="./T-Mobile/manifests/tm18.png" alt="">
+      <h3>T-Mobile</h3>
+      <p>Complete Un-carrier brand guidelines · 45 pages</p>
+    </a>
+    <a class="collection" href="./Xfinity/index.html">
+      <img src="./Xfinity/manifests/x09.png" alt="">
+      <h3>Xfinity</h3>
+      <p>venturethree case study · Light, color and connected experiences</p>
+    </a>
+    <a class="collection" href="./O2/index.html">
+      <img src="./O2/manifests/o02.png" alt="">
+      <h3>O2</h3>
+      <p>2023 refresh · Oxygen, bubbles, typography and interaction</p>
+    </a>
+    <a class="collection" href="./Swisscom/index.html">
+      <img src="./Swisscom/manifests/sw03.png" alt="">
+      <h3>Swisscom</h3>
+      <p>Moving Brands case study · Identity across physical and digital settings</p>
+    </a>
+    <a class="collection" href="./Verizon/index.html">
+      <img src="./Verizon/manifests/vz02.png" alt="">
+      <h3>Verizon</h3>
+      <p>Master brand case study · Guidelines, icons and digital design</p>
+    </a>
+    <a class="collection" href="./Instagram/index.html">
+      <img src="./Instagram/manifests/ig15.png" alt="">
+      <h3>Instagram</h3>
+      <p>2022 identity case study · Color, type, composition and motion</p>
+    </a>
+    <a class="collection" href="./Google/index.html">
+      <img src="./Google/manifests/ge01.png" alt="">
+      <h3>Google</h3>
+      <p>2015 identity evolution and complete Product Sans specimen</p>
+    </a>
+    <a class="collection" href="./Mastercard/index.html">
+      <img src="./Mastercard/manifests/mc08.png" alt="">
+      <h3>Mastercard</h3>
+      <p>2016 identity evolution · Recognition, color and applications</p>
+    </a>
+    <a class="collection" href="./Uber/index.html">
+      <img src="./Uber/manifests/u05.png" alt="">
+      <h3>Uber</h3>
+      <p>Complete October 2018 partner and sponsor quick guide</p>
+    </a>
+    <a class="collection" href="./ITV/index.html">
+      <img src="./ITV/manifests/it19.png" alt="">
+      <h3>ITV / ITVX</h3>
+      <p>Broadcast and streaming identity · Typography, color and motion</p>
+    </a>
+    <a class="collection" href="./Spotify/index.html">
+      <img src="./Spotify/manifests/sp06.png" alt="">
+      <h3>Spotify</h3>
+      <p>COLLINS identity case study · Color, imagery and motion</p>
+    </a>
+    <a class="collection" href="./MIT-Media-Lab/index.html">
+      <img src="./MIT-Media-Lab/manifests/ml12.png" alt="">
+      <h3>MIT Media Lab</h3>
+      <p>2014 identity · Geometric glyphs, typography and wayfinding</p>
+    </a>
+    <a class="collection" href="./IBM/index.html">
+      <img src="./IBM/manifests/ib033t42.png" alt="">
+      <h3>IBM</h3>
+      <p>Design Language guidelines, alternate states and two complete logo guides</p>
+    </a>
+    <a class="collection" href="./Duolingo/index.html">
+      <img src="./Duolingo/manifests/dj05.png" alt="">
+      <h3>Duolingo</h3>
+      <p>Recovered official guidelines and Johnson Banks case study · Voice, character and illustration</p>
+    </a>
+    <a class="collection" href="./Burger-King/index.html">
+      <img src="./Burger-King/manifests/bk031.png" alt="">
+      <h3>Burger King</h3>
+      <p>Complete 129-page partner guide and JKR identity case study</p>
+    </a>
+    <a class="collection" href="./San-Francisco-Symphony/index.html">
+      <img src="./San-Francisco-Symphony/manifests/sf16.png" alt="">
+      <h3>San Francisco Symphony</h3>
+      <p>COLLINS identity case study · Expressive typography and motion</p>
+    </a>
+    <a class="collection" href="./Helsinki/index.html">
+      <img src="./Helsinki/manifests/hi01.png" alt="">
+      <h3>Helsinki</h3>
+      <p>Official visual guidelines, heraldry, font specimen and complete illustration deck</p>
+    </a>
+    <a class="collection" href="./Dropbox/index.html">
+      <img src="./Dropbox/manifests/db25.png" alt="">
+      <h3>Dropbox</h3>
+      <p>COLLINS identity case study · Color combinations, typography and collaboration</p>
+    </a>
+    <a class="collection" href="./Mailchimp/index.html">
+      <img src="./Mailchimp/manifests/ch06.png" alt="">
+      <h3>Mailchimp</h3>
+      <p>COLLINS identity and guideline excerpts · Voice, color and illustration</p>
+    </a>
+    <a class="collection" href="./Wise/index.html">
+      <img src="./Wise/manifests/wi30.png" alt="">
+      <h3>Wise</h3>
+      <p>Ragged Edge identity · Typography, global expression and motion</p>
+    </a>
+    <a class="collection" href="./Whitney/index.html">
+      <img src="./Whitney/manifests/wh12.png" alt="">
+      <h3>Whitney Museum</h3>
+      <p>Responsive W · Identity process and launch applications</p>
+    </a>
+    <a class="collection" href="./Natural-History-Museum/index.html">
+      <img src="./Natural-History-Museum/manifests/nh06.png" alt="">
+      <h3>Natural History Museum</h3>
+      <p>Pentagram and Nomad identity · Symbol, color and motion</p>
+    </a>
+    <a class="collection" href="./MoMA/index.html">
+      <img src="./MoMA/manifests/mo06.png" alt="">
+      <h3>MoMA</h3>
+      <p>2009 institutional identity · Artwork, layout and environmental applications</p>
+    </a>
+    <a class="collection" href="./Public-Theater/index.html">
+      <img src="./Public-Theater/manifests/pt13.png" alt="">
+      <h3>The Public Theater</h3>
+      <p>Historical identity and campaigns · Typography and environmental applications</p>
+    </a>
+    <a class="collection" href="./Twitch/index.html">
+      <img src="./Twitch/manifests/tw08.png" alt="">
+      <h3>Twitch</h3>
+      <p>COLLINS identity case study · Creator expression, color and motion</p>
+    </a>
+    <a class="collection" href="./Channel-4/index.html">
+      <img src="./Channel-4/manifests/c435.png" alt="">
+      <h3>Channel 4</h3>
+      <p>2023 masterbrand · Cube worlds, typography and motion</p>
+    </a>
+    <a class="collection" href="./Sweetgreen/index.html">
+      <img src="./Sweetgreen/manifests/sg08.png" alt="">
+      <h3>Sweetgreen</h3>
+      <p>COLLINS identity · Food-derived geometry and applied illustration</p>
+    </a>
+    <a class="collection" href="./Figma/index.html">
+      <img src="./Figma/manifests/fg19.png" alt="">
+      <h3>Figma</h3>
+      <p>Nothing Great Is Made Alone · Collaboration expressed through product cues</p>
+    </a>
+    <a class="collection" href="./Deutsche-Bahn/index.html">
+      <img src="./Deutsche-Bahn/manifests/db0807.png" alt="">
+      <h3>Deutsche Bahn</h3>
+      <p>Official new-design guidelines · Sections, alternate states and motion demonstrations</p>
+    </a>
+    <a class="collection" href="./Lufthansa/index.html">
+      <img src="./Lufthansa/manifests/lh01.png" alt="">
+      <h3>Lufthansa</h3>
+      <p>2018 airline identity · Crane geometry, typography and applications</p>
+    </a>
+    <a class="collection" href="./Audi/index.html">
+      <img src="./Audi/manifests/au05.png" alt="">
+      <h3>Audi</h3>
+      <p>Historical KMS TEAM identity · Flexible principles across media</p>
+    </a>
+    <a class="collection" href="./Nike-Sportswear/index.html">
+      <img src="./Nike-Sportswear/manifests/ns01.png" alt="">
+      <h3>Nike Sportswear</h3>
+      <p>Holiday 2019 Sportswear and Run · Campaign layouts and retail applications</p>
+    </a>
   </div>
 </section>
-</main></body>
+<section id="category-view" aria-labelledby="category-heading" hidden>
+  <h2 id="category-heading" class="label">Browse by category</h2>
+  <div class="category-options" aria-label="Categories"></div>
+  <div class="purpose-tools">
+    <label for="purpose">Reference purpose</label>
+    <select id="purpose">
+      <option value="">All references</option>
+      <option value="reviewed">Reviewed references</option>
+      <option>Intent</option><option>Expression</option><option>Application</option><option>Constraint</option>
+      <option value="unreviewed">Not reviewed</option>
+    </select>
+  </div>
+  <p class="purpose-note">Intent explains why. Expression demonstrates character. Application teaches use. Constraint defines limits. A slide can serve several purposes.</p>
+  <p id="purpose-coverage" class="purpose-note"></p>
+  <p id="category-count" role="status"></p>
+  <p id="empty-results" hidden>No references match this purpose in this category. Choose All references to see the full category.</p>
+  <div class="slide-grid"></div>
+</section>
+<section id="download-wishlist" aria-labelledby="wishlist-title">
+  <h2 id="wishlist-title" class="label">Download wishlist</h2>
+  <p>Brand books and guideline decks to source for future collections.</p>
+  <ul>
+    <li>Instagram — complete master brand book</li>
+    <li>Nike Sportswear — complete master brand book; seasonal campaign references collected</li>
+  </ul>
+  <p><a href="./source-leads.md">Source leads and remaining gaps</a></p>
+</section>
+</main>
+<script src="./category-index.js"></script>
+<script>
+const collectionView = document.querySelector('[aria-labelledby="collections"]');
+const categoryView = document.getElementById('category-view');
+const wishlist = document.getElementById('download-wishlist');
+const options = categoryView.querySelector('.category-options');
+const grid = categoryView.querySelector('.slide-grid');
+const purposeFilter = document.getElementById('purpose');
+const brands = Array.from(collectionView.querySelectorAll('.collection'), card => ({
+  directory: card.getAttribute('href').split('/')[1],
+  name: card.querySelector('h3').textContent,
+}));
+const categories = [...new Set(Object.values(categoryIndex).flat().map(s => s.category))].sort();
+const hashFor = (category, purpose = '') => '#category=' + encodeURIComponent(category) +
+  (purpose ? '&purpose=' + encodeURIComponent(purpose) : '');
+function browseState() {
+  const params = new URLSearchParams(location.hash.slice(1));
+  return {category: categories.find(value => value === params.get('category')),
+    purpose: [...purposeFilter.options].some(o => o.value === params.get('purpose')) ? params.get('purpose') : ''};
+}
+purposeFilter.addEventListener('change', () => {
+  const {category} = browseState();
+  if (category) location.hash = hashFor(category, purposeFilter.value);
+});
+for (const category of categories) {
+  const link = document.createElement('a');
+  link.href = hashFor(category);
+  link.textContent = category;
+  options.append(link);
+}
+function slideCard(brand, slide) {
+  const base = './' + encodeURIComponent(brand.directory) + '/';
+  const card = document.createElement('article');
+  const full = document.createElement('a');
+  full.href = base + 'manifests/' + encodeURIComponent(slide.image);
+  const image = document.createElement('img');
+  image.loading = 'lazy';
+  image.src = full.getAttribute('href');
+  image.alt = 'Full-size image: ' + brand.name + ' · ' + slide.title;
+  full.append(image);
+  const label = document.createElement('p');
+  label.className = 'label';
+  label.textContent = brand.name + ' / ' + slide.id;
+  const spec = document.createElement('a');
+  spec.className = 'slide-title';
+  spec.href = base + 'index.html#' + encodeURIComponent(slide.id);
+  spec.textContent = slide.title;
+  card.append(full, label, spec);
+  const reviewed = Object.hasOwn(slide, 'reference_purposes');
+  const status = document.createElement('p'); status.className = 'purpose-status';
+  status.textContent = reviewed ? (Object.keys(slide.reference_purposes).join(' · ') || 'Reviewed · No purpose assigned') : 'Purpose not reviewed';
+  card.append(status);
+  if (reviewed) {
+    const evidence = document.createElement('details');
+    const summary = document.createElement('summary'); summary.textContent = 'Purpose evidence and application'; evidence.append(summary);
+    const notes = document.createElement('dl');
+    const add = (target, name, text) => {
+      const dt = document.createElement('dt'), dd = document.createElement('dd');
+      dt.textContent = name; dd.textContent = text; target.append(dt, dd);
+    };
+    if (slide.ingredient) {
+      const ingredient = document.createElement('dl');
+      add(ingredient, slide.ingredient.name, slide.ingredient.role);
+      add(ingredient, 'Scope', slide.ingredient.scope);
+      card.append(ingredient);
+      add(notes, 'Application', slide.ingredient.application);
+    }
+    for (const [purpose, note] of Object.entries(slide.reference_purposes)) add(notes, purpose + ' evidence', note);
+    evidence.append(notes); card.append(evidence);
+  }
+  return card;
+}
+function renderView() {
+  const {category, purpose} = browseState();
+  categoryView.hidden = !category;
+  collectionView.hidden = wishlist.hidden = Boolean(category);
+  const activeLink = document.getElementById(category ? 'by-category' : 'by-brand');
+  document.querySelector('nav a[aria-current]')?.removeAttribute('aria-current');
+  activeLink.setAttribute('aria-current', 'page');
+  if (!category) return;
+  activeLink.href = hashFor(category, purpose);
+  purposeFilter.value = purpose || '';
+  for (const link of options.children) {
+    link.href = hashFor(link.textContent, purpose);
+    if (link.textContent === category) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  }
+  const allGroups = brands.map(brand => ({
+    brand,
+    slides: categoryIndex[brand.directory].filter(s => s.category === category),
+  }));
+  const categorySlides = allGroups.flatMap(group => group.slides);
+  const reviewedCount = categorySlides.filter(s => Object.hasOwn(s, 'reference_purposes')).length;
+  document.getElementById('purpose-coverage').textContent =
+    'Purpose reviewed for ' + reviewedCount + ' of ' + categorySlides.length + ' ' + category + ' references. New collections include purpose review; earlier references are being reviewed progressively.';
+  const groups = allGroups.map(group => ({...group, slides: group.slides.filter(slide => {
+    const reviewed = Object.hasOwn(slide, 'reference_purposes');
+    if (!purpose) return true;
+    if (purpose === 'reviewed') return reviewed;
+    if (purpose === 'unreviewed') return !reviewed;
+    return reviewed && Object.hasOwn(slide.reference_purposes, purpose);
+  })})).filter(group => group.slides.length);
+  const count = groups.reduce((sum, group) => sum + group.slides.length, 0);
+  document.getElementById('category-count').textContent =
+    category + (purpose ? ' / ' + purposeFilter.selectedOptions[0].textContent : '') + ' · ' + count + (count === 1 ? ' slide' : ' slides') + ' across ' +
+    groups.length + (groups.length === 1 ? ' collection' : ' collections');
+  const cards = document.createDocumentFragment();
+  // Interleave brands so neighboring cards offer cross-brand comparisons.
+  for (let i = 0; groups.some(group => i < group.slides.length); i++) {
+    for (const group of groups) {
+      if (i < group.slides.length) cards.append(slideCard(group.brand, group.slides[i]));
+    }
+  }
+  grid.replaceChildren(cards);
+  document.getElementById('empty-results').hidden = count !== 0;
+}
+window.addEventListener('hashchange', renderView);
+renderView();
+</script></body>
 </html>

@@ -1,0 +1,30 @@
+{
+  "id": "WI05",
+  "title": "Card in a jacket pocket",
+  "image": "wi05.png",
+  "source": "../sources/01-Wise_Card3840-2160-crops-4K.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 5,
+    "source_asset_index": 1,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make a financial product feel usable in daily life because familiarity depends on seeing it in human situations.",
+  "strategic_value": "The bright green card against a blue jacket can make Wise recognizable without a headline.",
+  "demonstration": "A hand slips a green Wise card into a blue jacket pocket; the crop concentrates attention on the card and fabric.",
+  "category": "Imagery",
+  "practical_value": "Choose a close crop when the product color and handling gesture can carry the message.",
+  "content_islands": [
+    {
+      "name": "Card and hand",
+      "spec": "Keep the tilted green card visible between fingers above the pocket."
+    },
+    {
+      "name": "Clothing context",
+      "spec": "Surround the product with blue fabric and a small strip of striped shirt."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A hand slips a green Wise card into a blue jacket pocket; the crop concentrates attention on the card and fabric."
+  }
+}

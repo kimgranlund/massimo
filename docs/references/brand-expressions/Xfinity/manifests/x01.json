@@ -1,0 +1,39 @@
+{
+  "id": "X01",
+  "title": "Chromatic X identity",
+  "image": "x01.png",
+  "source": "../sources/x01.mp4",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 1,
+    "extent": "whole source artwork",
+    "poster_seconds": 7.5,
+    "duration_seconds": 15.0
+  },
+  "slide_intent": "Use a stable symbol across changing color fields so viewers can recognize one identity while experiencing a range of moods.",
+  "strategic_value": "The luminous X can connect Xfinity’s broad emotional palette to a recurring visual signature.",
+  "demonstration": "A white X stays central while a luminous background moves through blue, green, orange and magenta over a 15-second loop.",
+  "category": "Color",
+  "practical_value": "Compare the fixed mark with the changing surroundings before deciding which part of an identity should carry variation.",
+  "content_islands": [
+    {
+      "name": "Luminous X",
+      "spec": "Center the white X and preserve a soft halo around its strokes."
+    },
+    {
+      "name": "Changing color field",
+      "spec": "Fill the landscape canvas with saturated color, retaining tonal variation around the stationary mark."
+    }
+  ],
+  "ingredient": {
+    "name": "Light and color",
+    "role": "Give the connection symbol a changing emotional atmosphere.",
+    "application": "Keep the X recognizable while changing the surrounding hue and light. The clip demonstrates several hues without assigning usage percentages.",
+    "scope": "This agency presentation of the Xfinity identity; it is an observed treatment, not a complete palette specification."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying venturethree text identifies the X with connection and light and color with the emotions and possibilities connection offers.",
+    "Expression": "The clip holds a luminous white X against a sequence of saturated, softly graded color fields."
+  },
+  "motion": "../sources/x01.mp4"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "WI10",
+  "title": "Logo / before and after",
+  "image": "wi10.png",
+  "source": "../sources/14-Wise_Logo_Before_After.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 10,
+    "source_asset_index": 14,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 15.67
+  },
+  "slide_intent": "Show what changes and what remains so an identity evolution can protect existing recognition.",
+  "strategic_value": "Retaining the fast flag while redrawing the lettering and changing the palette can make Wise feel renewed without losing its identifier.",
+  "demonstration": "The film contrasts a blue before signature with a green after signature, pans into letterforms, cycles color combinations and ends with the app symbol.",
+  "category": "Brand",
+  "practical_value": "Evaluate continuity in the symbol separately from changes in lettering and color.",
+  "content_islands": [
+    {
+      "name": "Before state",
+      "spec": "Introduce the blue signature under a small Before label."
+    },
+    {
+      "name": "After states",
+      "spec": "Move across the redrawn green lettering, then show full signatures in several color pairs."
+    },
+    {
+      "name": "App form",
+      "spec": "Finish with the isolated fast flag in a rounded tile."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film contrasts a blue before signature with a green after signature, pans into letterforms, cycles color combinations and ends with the app symbol.",
+    "Intent": "The accompanying Logo section explicitly links the redraw to existing equity and scalability."
+  },
+  "motion": "../sources/14-Wise_Logo_Before_After.mp4"
+}

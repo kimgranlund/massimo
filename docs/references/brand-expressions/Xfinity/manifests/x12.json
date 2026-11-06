@@ -1,0 +1,38 @@
+{
+  "id": "X12",
+  "title": "Entertainment browsing interface",
+  "image": "x12.png",
+  "source": "../sources/x12.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 12,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Separate featured content from browsing categories so viewers can resume a selection or explore alternatives quickly.",
+  "strategic_value": "A coherent browsing hierarchy can connect Xfinity’s service identity with access to varied entertainment brands.",
+  "demonstration": "A television interface places a large resume-watching tile above a row of colored service tiles, with navigation labels between the two levels.",
+  "category": "Layout",
+  "practical_value": "Give the primary content choice more area while keeping category labels and service alternatives easy to scan.",
+  "content_islands": [
+    {
+      "name": "Interface header",
+      "spec": "Place the Xfinity wordmark at upper left and time and weather at upper right on a dark surface."
+    },
+    {
+      "name": "Featured content row",
+      "spec": "Show the largest resume-watching image at left with smaller neighboring content tiles."
+    },
+    {
+      "name": "Service browsing row",
+      "spec": "Align colored category labels and provider tiles below, maintaining separation from the featured content."
+    },
+    {
+      "name": "Presentation field",
+      "spec": "Frame the dark television with the purple outer field and a restrained shadow."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark interface balances bright category colors and entertainment imagery.",
+    "Application": "The hierarchy is demonstrated in a television content-browsing screen."
+  }
+}

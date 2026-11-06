@@ -1,0 +1,36 @@
+{
+  "id": "WI24",
+  "title": "Animated illustration family",
+  "image": "wi24.png",
+  "source": "../sources/31-Wise_Icons.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 24,
+    "source_asset_index": 31,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 12.07
+  },
+  "slide_intent": "Keep a shared material and movement character across different symbols so each remains part of one family.",
+  "strategic_value": "Repeated textured surfaces and gentle rotations can tie Wise’s varied functional metaphors together.",
+  "demonstration": "Eight objects sit in two rows on white: megaphone, globe, bell, location pin, banknote, flag, heart and paper plane. They rotate or move while retaining their positions.",
+  "category": "Motion",
+  "practical_value": "Compare consistency of texture, lighting and motion across unrelated object silhouettes.",
+  "content_islands": [
+    {
+      "name": "Upper row",
+      "spec": "Align four objects with clear space between their forms."
+    },
+    {
+      "name": "Lower row",
+      "spec": "Repeat the spacing for four further objects."
+    },
+    {
+      "name": "Movement",
+      "spec": "Animate each form locally without dissolving the two-row comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Eight objects sit in two rows on white: megaphone, globe, bell, location pin, banknote, flag, heart and paper plane. They rotate or move while retaining their positions."
+  },
+  "motion": "../sources/31-Wise_Icons.mp4"
+}

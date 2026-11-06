@@ -1,0 +1,37 @@
+{
+  "id": "X04",
+  "title": "Screens and service activation",
+  "image": "x04.png",
+  "source": "../sources/x04.mp4",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 4,
+    "extent": "whole source artwork",
+    "poster_seconds": 7.94,
+    "duration_seconds": 15.88
+  },
+  "slide_intent": "Carry a recognizable visual language from promotion into setup so users can connect a promise with the service they activate.",
+  "strategic_value": "Related colored environments can connect Xfinity’s advertising, hardware and app onboarding.",
+  "demonstration": "The clip moves between a floating campaign screen, a remote and set-top device, and portrait setup screens that end with a gateway-connected confirmation.",
+  "category": "Application",
+  "practical_value": "Compare promotional and functional screens together to decide which brand elements remain useful during setup.",
+  "content_islands": [
+    {
+      "name": "Campaign screen",
+      "spec": "Show the orange portrait campaign on a floating landscape display with copy and the X at left of the person."
+    },
+    {
+      "name": "Hardware pair",
+      "spec": "Present the remote and device together on the saturated stage."
+    },
+    {
+      "name": "Activation screens",
+      "spec": "Present the portrait phone with a light setup interface, then the colored confirmation state."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Saturated stage colors and dimensional device presentations recur across the sequence.",
+    "Application": "The montage carries the identity from campaign imagery into a gateway activation flow."
+  },
+  "motion": "../sources/x04.mp4"
+}

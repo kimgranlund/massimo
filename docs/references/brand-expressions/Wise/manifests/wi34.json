@@ -1,0 +1,43 @@
+{
+  "id": "WI34",
+  "title": "Icons to payment confirmation",
+  "image": "wi34.png",
+  "source": "../sources/43-Wise_Animation_Icon_Transition.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 34,
+    "source_asset_index": 43,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 12.56
+  },
+  "slide_intent": "Use continuity of shape to explain a change of state because viewers need to understand what happened to an action.",
+  "strategic_value": "A circle becoming a button and then a check can connect Wise’s brand geometry to functional feedback.",
+  "demonstration": "The animation moves from arrow icons to rotating currency symbols, a pill-shaped Pay now control and a final check inside a green circle.",
+  "category": "Motion",
+  "practical_value": "Compare how one geometric container can bridge an action and its confirmation.",
+  "content_islands": [
+    {
+      "name": "Icon states",
+      "spec": "Present directional and currency symbols in circular frames."
+    },
+    {
+      "name": "Action state",
+      "spec": "Extend the frame into a wide rounded payment control."
+    },
+    {
+      "name": "Confirmation",
+      "spec": "Contract to a circle and draw the check."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation moves from arrow icons to rotating currency symbols, a pill-shaped Pay now control and a final check inside a green circle.",
+    "Application": "The source demonstrates a geometric transition from payment action to confirmation."
+  },
+  "motion": "../sources/43-Wise_Animation_Icon_Transition.mp4",
+  "ingredient": {
+    "name": "Circle-to-pill transition",
+    "role": "Connect the action state with its confirmation.",
+    "application": "Expand the circle into a rounded payment control, then return to a circle carrying a check in this sequence.",
+    "scope": "Observed animation; no easing curve, timing contract or general interaction requirement is stated."
+  }
+}

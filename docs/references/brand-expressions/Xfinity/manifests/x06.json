@@ -1,0 +1,34 @@
+{
+  "id": "X06",
+  "title": "Three app states",
+  "image": "x06.png",
+  "source": "../sources/x06.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 6,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Compare expressive and task-focused screens so brand character can coexist with clear steps and confirmation.",
+  "strategic_value": "Xfinity can retain a familiar identity while shifting from a human benefit to gateway setup.",
+  "demonstration": "Three phones on blue show a lifestyle-led WiFi Freely screen, a pale gateway-activation screen and a purple gateway-connected confirmation.",
+  "category": "Application",
+  "practical_value": "Choose how much imagery and color a screen can carry by comparing the communication job of each state.",
+  "content_islands": [
+    {
+      "name": "Lifestyle state",
+      "spec": "Place the orange photographic phone at left with the short WiFi Freely message."
+    },
+    {
+      "name": "Setup state",
+      "spec": "Center the pale screen with a gateway image and activation prompt."
+    },
+    {
+      "name": "Confirmation state",
+      "spec": "Place the purple connected state at right with the status card below the product image."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Orange photography, a restrained pale interface and a purple product field show the identity’s range.",
+    "Application": "The three screens apply the identity to attraction, activation and confirmation."
+  }
+}

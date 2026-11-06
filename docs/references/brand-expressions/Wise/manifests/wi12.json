@@ -1,0 +1,37 @@
+{
+  "id": "WI12",
+  "title": "Wise Sans / typeface film",
+  "image": "wi12.png",
+  "source": "../sources/17-InstaPost_01.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 12,
+    "source_asset_index": 17,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 17.37
+  },
+  "slide_intent": "Explain the sources of a typeface’s character because letterforms can carry a cultural point of view as well as words.",
+  "strategic_value": "Script references and distinctive heavy forms can make Wise’s global positioning visible in its typography.",
+  "demonstration": "The film introduces Wise Sans, connects it to photographed scripts, enlarges letter details, shows an uppercase alphabet and cycles short currency-related letter groups.",
+  "category": "Typography",
+  "practical_value": "Compare a typeface’s stated inspiration with observable terminals, diagonals and dense headline setting.",
+  "content_islands": [
+    {
+      "name": "Typeface introduction",
+      "spec": "Open with the face name and global promise."
+    },
+    {
+      "name": "Inspiration and details",
+      "spec": "Sequence script photographs and enlarged letter fragments."
+    },
+    {
+      "name": "Specimens",
+      "spec": "Show the heavy alphabet and short letter groups on contrasting fields."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film introduces Wise Sans, connects it to photographed scripts, enlarges letter details, shows an uppercase alphabet and cycles short currency-related letter groups.",
+    "Intent": "The film and accompanying Bespoke typeface section connect Wise Sans to scripts from around the world."
+  },
+  "motion": "../sources/17-InstaPost_01.mp4"
+}

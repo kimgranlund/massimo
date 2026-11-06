@@ -1,0 +1,38 @@
+{
+  "id": "WI27",
+  "title": "Wise Platform / graphic language",
+  "image": "wi27.png",
+  "source": "../sources/34-Wise_Platform_Graphic_Language.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 27,
+    "source_asset_index": 34,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 17.79
+  },
+  "slide_intent": "Adapt an established identity for another audience because shared ownership need not mean identical expression.",
+  "strategic_value": "Layered green panels, diagrams and restrained layouts can connect Wise Platform with the parent while addressing enterprise concerns.",
+  "demonstration": "The film sequences layered interface panels, event graphics, large typography, icons, a growth chart and a globe with a monetary figure.",
+  "category": "Brand",
+  "practical_value": "Compare which parent-brand elements remain useful when the story shifts from personal use to infrastructure.",
+  "content_islands": [
+    {
+      "name": "Layer metaphor",
+      "spec": "Separate interface, platform and textured panels in depth."
+    },
+    {
+      "name": "Enterprise applications",
+      "spec": "Sequence event compositions, icons, graph and globe."
+    },
+    {
+      "name": "Typography",
+      "spec": "Retain the heavy face and green family across the examples."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film sequences layered interface panels, event graphics, large typography, icons, a growth chart and a globe with a monetary figure.",
+    "Intent": "The accompanying Platform section explains the need for a distinct enterprise sub-brand and an invisible payments-partner role.",
+    "Application": "The source demonstrates enterprise event, data and interface applications of Wise Platform."
+  },
+  "motion": "../sources/34-Wise_Platform_Graphic_Language.mp4"
+}

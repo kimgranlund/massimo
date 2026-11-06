@@ -1,0 +1,27 @@
+{
+  "id": "WI03",
+  "title": "The world’s money",
+  "image": "wi03.png",
+  "source": "../sources/06-Wise_Brand_Idea_WM.png",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 3,
+    "source_asset_index": 6,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Reduce a brand promise to a memorable phrase so people can understand the intended reach before seeing detailed features.",
+  "strategic_value": "A short global promise in Wise’s heavy lettering can give varied services a common idea.",
+  "demonstration": "Dark green uppercase words form two centered lines on white: The World’s above Money.",
+  "category": "Brand",
+  "practical_value": "Assess whether a central positioning phrase is concise enough to lead diverse communications.",
+  "content_islands": [
+    {
+      "name": "Central statement",
+      "spec": "Center the two-line promise on a plain white field, keeping the second line shorter."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Dark green uppercase words form two centered lines on white: The World’s above Money.",
+    "Intent": "The accompanying strategy text describes the identity as a brand for money used everywhere."
+  }
+}

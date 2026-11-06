@@ -1,0 +1,38 @@
+{
+  "id": "WI36",
+  "title": "Money in everyday life / film",
+  "image": "wi36.png",
+  "source": "../sources/46-InstaPost_Photography_00.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 36,
+    "source_asset_index": 46,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 23.97
+  },
+  "slide_intent": "Connect interface information to human situations so financial actions have understandable consequences.",
+  "strategic_value": "Scenes of shopping, family transfers and dining can make Wise’s account functions feel relevant across different lives.",
+  "demonstration": "The film follows people using phones and cards, overlays enlarged interface panels and moves from individual use to a restaurant group.",
+  "category": "Motion",
+  "practical_value": "Choose which interface details clarify the action without overwhelming the photographed person.",
+  "content_islands": [
+    {
+      "name": "Lifestyle scenes",
+      "spec": "Sequence shopping, home phone use and a shared meal."
+    },
+    {
+      "name": "Interface overlays",
+      "spec": "Place transaction, amount and spending panels beside the action."
+    },
+    {
+      "name": "Product recognition",
+      "spec": "Keep the green card and recognizable screen language visible at key moments."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film follows people using phones and cards, overlays enlarged interface panels and moves from individual use to a restaurant group.",
+    "Intent": "The accompanying Film and photography section explains that the library depicts people using money in varied situations.",
+    "Application": "The source demonstrates interface overlays clarifying financial actions in filmed scenes."
+  },
+  "motion": "../sources/46-InstaPost_Photography_00.mp4"
+}

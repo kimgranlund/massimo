@@ -1,0 +1,39 @@
+{
+  "id": "WI09",
+  "title": "Card across places / landscape montage",
+  "image": "wi09.png",
+  "source": "../sources/51-Wise-Card-Footage-Graded_2.5m.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 9,
+    "source_asset_index": 51,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 23.6
+  },
+  "slide_intent": "Hold a product constant while its surroundings change so viewers can associate one object with many situations.",
+  "strategic_value": "A fixed green card over varied travel and activity footage can make Wise’s broad usability feel visually coherent.",
+  "demonstration": "The green Wise card remains centered while the background cuts between streets, markets, outdoor activities, mountain scenery and people.",
+  "category": "Motion",
+  "practical_value": "Compare fixed-product continuity with a montage that also moves the product on each cut.",
+  "content_islands": [
+    {
+      "name": "Stable product",
+      "spec": "Keep the card large and centered with its logo and chip visible."
+    },
+    {
+      "name": "Changing world",
+      "spec": "Cut the full background between contrasting places and activities."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The green Wise card remains centered while the background cuts between streets, markets, outdoor activities, mountain scenery and people.",
+    "Application": "The source demonstrates a fixed card composited over varied real-world footage."
+  },
+  "motion": "../sources/51-Wise-Card-Footage-Graded_2.5m.mp4",
+  "ingredient": {
+    "name": "Green card in a changing scene",
+    "role": "Provide a stable point of recognition.",
+    "application": "In this example, keep the card centered while changing the background footage.",
+    "scope": "Observed campaign composition, not an exclusive brand rule or prescribed duration."
+  }
+}

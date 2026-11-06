@@ -1,0 +1,40 @@
+{
+  "id": "X09",
+  "title": "Stay connected campaign",
+  "image": "x09.png",
+  "source": "../sources/x09.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 9,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Use light to connect a person with a promise so an abstract service feels visible in a familiar activity.",
+  "strategic_value": "The illuminated X and phone user can give Xfinity’s connection message a recognizable human expression.",
+  "demonstration": "A blue campaign panel places white copy at left, a glowing X near the center and a person looking at a phone at right.",
+  "category": "Imagery",
+  "practical_value": "Align the image’s lighting with the brand device so the person and symbol belong to one scene.",
+  "content_islands": [
+    {
+      "name": "Message and signature",
+      "spec": "Set the short white message at left and the small Xfinity wordmark beneath it."
+    },
+    {
+      "name": "Illuminated X",
+      "spec": "Place the large white X near the middle with a soft halo spreading into the blue field."
+    },
+    {
+      "name": "Phone user",
+      "spec": "Place the person at right, keeping the lit face and phone visible against the background."
+    }
+  ],
+  "ingredient": {
+    "name": "Luminous X with people",
+    "role": "Connect the abstract brand symbol to a recognizable moment of use.",
+    "application": "Pair the X with a person using a device and carry the surrounding light into the photograph.",
+    "scope": "Observed campaign composition; no company-wide lighting or placement rule is stated."
+  },
+  "reference_purposes": {
+    "Expression": "Blue light and a glowing white X unite the symbol, copy and phone-user image.",
+    "Application": "The treatment carries a connectivity promise in a landscape campaign panel."
+  }
+}

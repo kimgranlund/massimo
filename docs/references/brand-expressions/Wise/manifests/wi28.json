@@ -1,0 +1,45 @@
+{
+  "id": "WI28",
+  "title": "Wise design system / presentation film",
+  "image": "wi28.png",
+  "source": "../sources/35-06_Wise_Design_System_Optimised_srgb_1Mbps_half.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 28,
+    "source_asset_index": 35,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 82.67
+  },
+  "slide_intent": "Connect expressive assets to repeatable guidance because a recognizable identity must survive many authors and contexts.",
+  "strategic_value": "Showing components, guidelines and live applications together can explain how Wise’s visual freedom is supported by a system.",
+  "demonstration": "The film moves through global-use claims, interface modules, color and type examples, guideline screens, advertising and product photography. The retained poster shows the typography guidance screen.",
+  "category": "Brand",
+  "practical_value": "Distinguish a promotional system overview from complete implementation guidance; verify any shown rule in its original context before reuse.",
+  "content_islands": [
+    {
+      "name": "Purpose and components",
+      "spec": "Introduce system ambitions before assembling product modules."
+    },
+    {
+      "name": "Guideline views",
+      "spec": "Show the archived guideline navigation, specimens and line-height screen."
+    },
+    {
+      "name": "Applications",
+      "spec": "End with outdoor placements, mobile use and a mosaic of brand assets."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film moves through global-use claims, interface modules, color and type examples, guideline screens, advertising and product photography. The retained poster shows the typography guidance screen.",
+    "Intent": "The film explicitly links the design system to global usability and less frustrating design work.",
+    "Application": "The source demonstrates guideline screens and modules applied across product and campaigns.",
+    "Constraint": "The archived guideline screen within the film specifies headline line-height: 80% for larger display sizes, 90% for smaller sub-headings, and 80–90% between them. This is historical on-screen guidance, not a rule for all text."
+  },
+  "motion": "../sources/35-06_Wise_Design_System_Optimised_srgb_1Mbps_half.mp4",
+  "ingredient": {
+    "name": "Headline line-height",
+    "role": "Keep large display words visually compact.",
+    "application": "The filmed guideline specifies 80% for larger display sizes, 90% for smaller sub-headings, and values between those for intermediate sizes.",
+    "scope": "Historical guideline screen at about 51–52 seconds in this presentation. Do not apply to body text; the complete original guideline site is unavailable."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "X05",
+  "title": "Xfinity app icon on a home screen",
+  "image": "x05.png",
+  "source": "../sources/x05.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 5,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Test a symbol at a familiar app scale so viewers can distinguish it among unrelated icons.",
+  "strategic_value": "The white X on purple can give Xfinity a compact point of recognition on a crowded phone.",
+  "demonstration": "A cropped perspective phone places the Xfinity icon beside Calendar, Photos and Camera against a purple presentation field.",
+  "category": "Application",
+  "practical_value": "Judge the mark inside its icon container and beside neighboring apps rather than only as an isolated large logo.",
+  "content_islands": [
+    {
+      "name": "Phone crop",
+      "spec": "Enlarge the upper corner of the phone and angle it across the lower part of the canvas."
+    },
+    {
+      "name": "App neighborhood",
+      "spec": "Keep the Xfinity icon and its label beside familiar neighboring icons so their relative scale remains visible."
+    },
+    {
+      "name": "Purple field",
+      "spec": "Use the purple outer field to frame the device and echo the Xfinity icon."
+    }
+  ],
+  "ingredient": {
+    "name": "X app icon",
+    "role": "Identify the service in a small app container.",
+    "application": "Place the white X inside the purple rounded-square icon and retain its app label.",
+    "scope": "This displayed home-screen example; the case study does not specify clear space or minimum pixel dimensions."
+  },
+  "reference_purposes": {
+    "Expression": "A white X and purple rounded square form the compact visual signature.",
+    "Application": "The artwork tests that signature beside other apps on a phone home screen."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "WI06",
+  "title": "Wise signature",
+  "image": "wi06.png",
+  "source": "../sources/10-Wise_Logo.png",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 6,
+    "source_asset_index": 10,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Establish a clear visual anchor so later applications can be recognized without explanation.",
+  "strategic_value": "The fast-flag symbol and slanted wordmark on green can preserve continuity while changing the brand’s color presence.",
+  "demonstration": "A dark Wise signature sits alone on a bright green landscape field.",
+  "category": "Brand",
+  "practical_value": "Judge the combined symbol and wordmark without competing imagery.",
+  "content_islands": [
+    {
+      "name": "Signature",
+      "spec": "Center the dark fast flag and wordmark on the green field with open space around them."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A dark Wise signature sits alone on a bright green landscape field.",
+    "Intent": "The accompanying Logo section explains that the fast flag is redrawn to retain recognition and improve scalability."
+  }
+}

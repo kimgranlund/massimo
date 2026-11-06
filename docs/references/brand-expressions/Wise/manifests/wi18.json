@@ -1,0 +1,35 @@
+{
+  "id": "WI18",
+  "title": "Move money / station placement",
+  "image": "wi18.png",
+  "source": "../sources/23-Wise_Billboard_Move_Money_update.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 18,
+    "source_asset_index": 23,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Make an offer readable in passing because transport environments give viewers limited attention.",
+  "strategic_value": "The green card and repeated action words can make Wise visible despite movement in front of the poster.",
+  "demonstration": "A station poster places a large green card on the left and a stack of short money phrases on the right; a passing train blurs the lower foreground.",
+  "category": "Application",
+  "practical_value": "Check whether a product silhouette and short word stack survive partial obstruction.",
+  "content_islands": [
+    {
+      "name": "Product half",
+      "spec": "Use the left field for the card and textured color."
+    },
+    {
+      "name": "Copy half",
+      "spec": "Stack the action-led phrases on the right."
+    },
+    {
+      "name": "Transit context",
+      "spec": "Keep the station roundel and foreground motion blur."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A station poster places a large green card on the left and a stack of short money phrases on the right; a passing train blurs the lower foreground.",
+    "Application": "The source demonstrates a card-led campaign in a station."
+  }
+}

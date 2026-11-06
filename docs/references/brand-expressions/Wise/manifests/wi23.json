@@ -1,0 +1,31 @@
+{
+  "id": "WI23",
+  "title": "Tapestry T-shirt in a shop",
+  "image": "wi23.png",
+  "source": "../sources/29-InstaPost_Photography_02_t-shirt.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 23,
+    "source_asset_index": 29,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Show an abstract brand image on a familiar object because context makes a graphic’s scale and texture easier to judge.",
+  "strategic_value": "The large colored print on a white shirt can make Wise’s tapestry recognizable outside a screen.",
+  "demonstration": "A shopper seen from behind wears a white shirt with a rectangular multicolor tapestry, surrounded by stocked aisles and holding a green basket.",
+  "category": "Imagery",
+  "practical_value": "Compare the tapestry as a standalone print with its use behind digital symbols.",
+  "content_islands": [
+    {
+      "name": "Back print",
+      "spec": "Center the rectangular tapestry on the white shirt."
+    },
+    {
+      "name": "Everyday setting",
+      "spec": "Retain the aisle, basket and shopper to establish use and scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A shopper seen from behind wears a white shirt with a rectangular multicolor tapestry, surrounded by stocked aisles and holding a green basket.",
+    "Application": "The source demonstrates tapestry imagery printed on a worn shirt."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "WI07",
+  "title": "From here to there / tote",
+  "image": "wi07.png",
+  "source": "../sources/11-Wise_Photograpgy_Tote_update.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 7,
+    "source_asset_index": 11,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Let everyday objects carry language with personality because repeated use can turn a slogan into a familiar phrase.",
+  "strategic_value": "Large playful wording on a useful tote can extend Wise’s voice beyond transactions.",
+  "demonstration": "A person carries a dark green tote with stacked pale-green words; the photograph includes the shoulder, hand and street setting.",
+  "category": "Voice",
+  "practical_value": "Compare the readability of a long phrase broken into compact lines on fabric.",
+  "content_islands": [
+    {
+      "name": "Tote message",
+      "spec": "Place the stacked phrase prominently on the hanging bag."
+    },
+    {
+      "name": "Human context",
+      "spec": "Retain the body crop and hand to show how the message sits during use."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A person carries a dark green tote with stacked pale-green words; the photograph includes the shoulder, hand and street setting.",
+    "Application": "The source demonstrates the verbal identity printed on a carried tote."
+  }
+}

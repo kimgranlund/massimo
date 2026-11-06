@@ -1,0 +1,33 @@
+{
+  "id": "WI25",
+  "title": "Flower / Chinese-language animation",
+  "image": "wi25.png",
+  "source": "../sources/32-Wise_Animation_Flower.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 25,
+    "source_asset_index": 32,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 12.0
+  },
+  "slide_intent": "Add motion around a stable message so attention can increase without making the words hard to follow.",
+  "strategic_value": "A rotating textured flower can supply expressive movement while Wise’s headline and qualification remain readable.",
+  "demonstration": "A textured flower turns on a purple landscape field beside large vertical Chinese text; a smaller vertical qualification sits at right above the Wise signature.",
+  "category": "Motion",
+  "practical_value": "Compare moving imagery with fixed text and preserve the qualification when changing format.",
+  "content_islands": [
+    {
+      "name": "Main message and flower",
+      "spec": "Place the large vertical headline at left beside the moving flower."
+    },
+    {
+      "name": "Qualification and signature",
+      "spec": "Keep the smaller vertical text at the right and the logo below it."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A textured flower turns on a purple landscape field beside large vertical Chinese text; a smaller vertical qualification sits at right above the Wise signature.",
+    "Application": "The source demonstrates an animated campaign with fixed main text, qualification and signature."
+  },
+  "motion": "../sources/32-Wise_Animation_Flower.mp4"
+}

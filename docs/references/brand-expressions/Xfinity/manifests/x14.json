@@ -1,0 +1,44 @@
+{
+  "id": "X14",
+  "title": "Identity across physical touchpoints",
+  "image": "x14.png",
+  "source": "../sources/x14.mp4",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 14,
+    "extent": "whole source artwork",
+    "poster_seconds": 2.02,
+    "duration_seconds": 4.05
+  },
+  "slide_intent": "Compare an identity across physical scales so its recurring elements remain recognizable from a package to a vehicle or sign.",
+  "strategic_value": "The X and broad color range can connect Xfinity’s mailed, delivered and street-level encounters.",
+  "demonstration": "A short montage shows pink remote packaging, a blue mail piece, a row of differently colored vans and an orange projecting store sign.",
+  "category": "Application",
+  "practical_value": "Check which identifiers survive changes in material, viewing distance and object shape before extending the system.",
+  "content_islands": [
+    {
+      "name": "Package and mail",
+      "spec": "Show close views of the pink package sleeve and blue addressed mail piece with white brand identifiers."
+    },
+    {
+      "name": "Vehicle lineup",
+      "spec": "Present the colored vans together so the repeated large X can be compared across hues."
+    },
+    {
+      "name": "Store sign",
+      "spec": "Finish with the projecting orange sign and dimensional white X against the dark facade."
+    }
+  ],
+  "ingredient": {
+    "name": "X across physical applications",
+    "role": "Identify related encounters despite changes in color, scale and material.",
+    "application": "Retain a prominent X or wordmark while adapting the color field to the package, mail piece, vehicle or sign.",
+    "scope": "Examples in the agency montage, not manufacturing specifications or a required color assignment for each medium."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying case study describes rolling the identity across physical and digital touchpoints to connect the company’s expression.",
+    "Expression": "Bright single-color fields and white identifiers recur on packages, mail, vans and signage.",
+    "Application": "The montage demonstrates the identity on four different physical touchpoints."
+  },
+  "motion": "../sources/x14.mp4"
+}

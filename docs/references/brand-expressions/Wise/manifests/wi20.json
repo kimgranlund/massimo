@@ -1,0 +1,37 @@
+{
+  "id": "WI20",
+  "title": "Made for the world / tapestries",
+  "image": "wi20.png",
+  "source": "../sources/26-Wise_CS_MadeForTapestry_NEW.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 20,
+    "source_asset_index": 26,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 21.0
+  },
+  "slide_intent": "Show how disparate places can share a visual language because global breadth should feel connected rather than arbitrary.",
+  "strategic_value": "Collaged landscapes becoming colorful textures can give Wise’s international premise a repeatable image vocabulary.",
+  "demonstration": "The film layers landscapes beneath continent names, shifts into textured color fields with translated Made for the World lines and ends with the fast flag.",
+  "category": "Imagery",
+  "practical_value": "Compare the recognizability of concrete locations with the flexibility of abstract textured fields.",
+  "content_islands": [
+    {
+      "name": "Place sequence",
+      "spec": "Layer geographical scenes beneath successive regional headlines."
+    },
+    {
+      "name": "Tapestry sequence",
+      "spec": "Blend the scenes into colored textures behind translated messages."
+    },
+    {
+      "name": "Closing identifier",
+      "spec": "Place the white fast flag over the final texture."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film layers landscapes beneath continent names, shifts into textured color fields with translated Made for the World lines and ends with the fast flag.",
+    "Intent": "The accompanying Tapestries section explains that the assets draw on the world’s money and are intended to be recognizable and flexible."
+  },
+  "motion": "../sources/26-Wise_CS_MadeForTapestry_NEW.mp4"
+}

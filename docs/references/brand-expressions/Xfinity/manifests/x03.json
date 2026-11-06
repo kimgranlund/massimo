@@ -1,0 +1,40 @@
+{
+  "id": "X03",
+  "title": "Gateway and moving light",
+  "image": "x03.png",
+  "source": "../sources/x03.mp4",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 3,
+    "extent": "whole source artwork",
+    "poster_seconds": 8.54,
+    "duration_seconds": 17.09
+  },
+  "slide_intent": "Use movement around a physical product to suggest an invisible service while keeping the physical object easy to identify.",
+  "strategic_value": "Light spreading from the gateway can give Xfinity’s connectivity a visible, repeatable expression.",
+  "demonstration": "A pale gateway rotates on a reflective colored floor while bands and pools of colored light extend around its base.",
+  "category": "Motion",
+  "practical_value": "Keep the product silhouette steady enough to recognize while using light to carry the story of connectivity.",
+  "content_islands": [
+    {
+      "name": "Gateway specimen",
+      "spec": "Place the pale tower near the center with its top grille and side surfaces visible."
+    },
+    {
+      "name": "Light field",
+      "spec": "Move bands and pools of light across the floor and change the surrounding hue, retaining the product’s reflection."
+    }
+  ],
+  "ingredient": {
+    "name": "Projected light",
+    "role": "Make an invisible connection perceptible around the gateway.",
+    "application": "Animate light across the stage around the hardware, preserving the light product silhouette against the saturated field.",
+    "scope": "Observed motion treatment in the case study; no production timing or hardware behavior is specified."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying case-study text explains light and color as expressions of the emotions and possibilities of connectivity.",
+    "Expression": "Colored light moves outward around a gateway as the stage shifts hue.",
+    "Application": "The animation applies the light treatment to a specific physical product."
+  },
+  "motion": "../sources/x03.mp4"
+}

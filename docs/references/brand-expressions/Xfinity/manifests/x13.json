@@ -1,0 +1,38 @@
+{
+  "id": "X13",
+  "title": "Simple, personal and awesome",
+  "image": "x13.png",
+  "source": "../sources/x13.mp4",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 13,
+    "extent": "whole source artwork",
+    "poster_seconds": 4.0,
+    "duration_seconds": 8.0
+  },
+  "slide_intent": "Translate abstract brand principles into different visual situations so teams can recognize what those principles mean in practice.",
+  "strategic_value": "The three recurring principles can give Xfinity’s varied teams a shared basis for making design decisions.",
+  "demonstration": "The eight-second sequence moves from a green check and keep it simple to a gateway and phone with make it personal, then a dimensional heart with embrace the awesome.",
+  "category": "Brand",
+  "practical_value": "Pair each principle with a concrete example before using it to evaluate a design direction.",
+  "content_islands": [
+    {
+      "name": "Simple principle",
+      "spec": "Build a green circular check beside the words keep it simple on the pale field."
+    },
+    {
+      "name": "Personal principle",
+      "spec": "Overlay make it personal on a domestic gateway-and-phone scene with a ring of light."
+    },
+    {
+      "name": "Awesome principle",
+      "spec": "Set embrace the awesome across a large heart on a vivid pink field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying agency text says the principles simple, personal and awesome drive unity across internal teams and external agencies.",
+    "Expression": "Distinct check, product and heart scenes give the three principles visual character.",
+    "Application": "The sequence pairs each principle with a concrete graphic or product example."
+  },
+  "motion": "../sources/x13.mp4"
+}

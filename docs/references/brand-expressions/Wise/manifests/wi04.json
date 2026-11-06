@@ -1,0 +1,35 @@
+{
+  "id": "WI04",
+  "title": "Currency-name corner billboard",
+  "image": "wi04.png",
+  "source": "../sources/07-Wise_Billboard_Dollar_update.jpg",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 4,
+    "source_asset_index": 7,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Use repeated words at architectural scale so the breadth of an offer is legible at a glance.",
+  "strategic_value": "Lists of currencies in bright green can make Wise’s international promise visible from the street.",
+  "demonstration": "Two green billboards wrap a building corner; stacked currency names sit above card images and a small global promise.",
+  "category": "Typography",
+  "practical_value": "Compare how repeated headline lines and a recurring product image connect adjacent surfaces.",
+  "content_islands": [
+    {
+      "name": "Left billboard",
+      "spec": "Stack currency names above the card and bottom promise."
+    },
+    {
+      "name": "Right billboard",
+      "spec": "Repeat the hierarchy with different currency names on the perpendicular face."
+    },
+    {
+      "name": "Street context",
+      "spec": "Keep building details and vehicles to establish scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two green billboards wrap a building corner; stacked currency names sit above card images and a small global promise.",
+    "Application": "The source demonstrates a paired billboard installation on a building corner."
+  }
+}

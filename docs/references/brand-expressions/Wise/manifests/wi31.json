@@ -1,0 +1,35 @@
+{
+  "id": "WI31",
+  "title": "Three product screens",
+  "image": "wi31.png",
+  "source": "../sources/39-3-Product-screens_2025.png",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 31,
+    "source_asset_index": 39,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Compare key moments in one service so expressive language and functional hierarchy can be evaluated together.",
+  "strategic_value": "A shared green, heavy headlines and textured illustrations can connect Wise’s entry, card and confirmation experiences.",
+  "demonstration": "Three white phone-shaped panels show an account welcome, a card/balance view and an It All Adds Up message on a pale-gray field.",
+  "category": "Application",
+  "practical_value": "Compare where illustration leads and where financial information takes priority.",
+  "content_islands": [
+    {
+      "name": "Welcome screen",
+      "spec": "Place the globe illustration above a stacked account headline."
+    },
+    {
+      "name": "Card screen",
+      "spec": "Center the green card with balance and controls."
+    },
+    {
+      "name": "Message screen",
+      "spec": "Pair celebratory illustration with the closing phrase and action."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three white phone-shaped panels show an account welcome, a card/balance view and an It All Adds Up message on a pale-gray field.",
+    "Application": "The source demonstrates three different product moments with shared visual ingredients."
+  }
+}

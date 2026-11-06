@@ -1,0 +1,35 @@
+{
+  "id": "WI13",
+  "title": "Money names / poster in a laundrette",
+  "image": "wi13.png",
+  "source": "../sources/18-InstaPost_02.png",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 13,
+    "source_asset_index": 18,
+    "extent": "Complete published artwork"
+  },
+  "slide_intent": "Use familiar local words to make a broad financial promise feel culturally near to the viewer.",
+  "strategic_value": "A dense stack of money names can let Wise combine international ambition with informal language.",
+  "demonstration": "A person holds a bright-green poster in front of washing machines; oversized dark words include Peso, Plata, Chavos, Pasta, Dinero and Lana.",
+  "category": "Typography",
+  "practical_value": "Compare a vocabulary-led headline with a conventional product-benefit statement.",
+  "content_islands": [
+    {
+      "name": "Word stack",
+      "spec": "Fill the poster with the six large money names."
+    },
+    {
+      "name": "Supporting marks",
+      "spec": "Keep the small upper-right copy and lower-right Wise signature subordinate."
+    },
+    {
+      "name": "Setting",
+      "spec": "Retain the hand and laundrette equipment as human context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A person holds a bright-green poster in front of washing machines; oversized dark words include Peso, Plata, Chavos, Pasta, Dinero and Lana.",
+    "Application": "The source demonstrates large headline typography on a held poster."
+  }
+}

@@ -15,6 +15,48 @@ A brand expression board gathers examples of how a brand looks, speaks or behave
 
 **What makes a slide especially good?** Identify the choice that earns the slide a place in the collection. One image can do this on its own. For a slide with several islands, try mentally removing one. On D07, removing the usage strip preserves the palette but loses the guidance about proportion. That tells you precisely what the strip contributes.
 
+## Reference purpose
+
+Category identifies the ingredient or design topic. Reference purpose identifies the lesson supported by the source. Assign any of the following purposes that have distinct evidence. Do not infer a purpose solely from the category or from the presence of a field in our manifest.
+
+| Purpose | Evidence required |
+| --- | --- |
+| Intent | The source explains why an ingredient or choice matters. Our inferred `slide_intent` alone does not qualify. |
+| Expression | The source demonstrates a distinctive look, sound or behavior through specimens or examples. |
+| Application | The source teaches a repeatable action or demonstrates use in a specific context. |
+| Constraint | The source states a limit, exception, condition or prohibited use. An observed composition alone does not establish a rule. |
+
+Use `reference_purposes` as an object whose keys are the selected purpose names and whose values are short, concrete evidence statements. Multiple purposes may apply to one slide. Attribute rationale from an accompanying case study explicitly when it is not printed in the artwork. Keep the six rubric fields and ingredient record intact.
+
+An omitted `reference_purposes` means **not reviewed**. An empty object means reviewed with none of these purposes supported, such as a blank page. Never assign default purposes to unreviewed slides. The first calibration covers Color slides in Halfkey, Spectrum, T-Mobile, Sheffield Museums and NASA. New collections receive purpose review during ingestion. Entries awaiting review remain available under All references and Not reviewed.
+
+### Color comparison
+
+These references use different units of judgment. Preserve those units when comparing or reusing their lessons.
+
+| Reference | Ingredient role | Application and scope |
+| --- | --- | --- |
+| [Halfkey D07](Halfkey/manifests/d07.json) | Signal blue calls attention within a neutral system. | Blue occupies 3% across a typical set of pages. This does not prescribe 3% on every poster. Large blue fields on paper use the specified spot color, not a CMYK build. |
+| [Spectrum S11](Spectrum/manifests/s11.json) | Deep Blue provides the primary brand reference. | Deep Blue takes priority in the 2017 retail signage guide. Equal-sized swatches do not prescribe equal usage. |
+| [T-Mobile TM20](T-Mobile/manifests/tm20.json) | A magenta gradient adds depth while retaining recognition. | Magenta covers 80% in the guide’s gradient applications. Do not generalize the gradient ratio to every type of composition. |
+| [Sheffield Museums S27](Sheffield-Museums/manifests/s27.json) | An exhibition accent connects graphics to the artwork. | A custom accent is optional for one exhibition. Sample or complement its lead image, preserve legibility and avoid a hue too close to the existing palette. |
+| [NASA V01](NASA/manifests/v01.json) | Identification color keeps a vehicle marking legible. | Under the 1976 treatment, use black at 40% gray or lighter and white above 40%. Evaluate each painted vehicle; white vehicles also have the separate red-logotype option. |
+
+Halfkey D07 retains an interpreted strategic benefit in its manifest but does not receive an Intent purpose tag: the page does not explicitly explain the brand-equity rationale. This distinction keeps source teaching separate from our interpretation.
+
+## Optional ingredient record
+
+When a slide teaches how to use a specific brand element, add an `ingredient` object after the six slide fields. The slide intent explains the judgment the designer should learn. The ingredient role explains what the element does for the viewer in the composition. Strategic value explains what repeated use can contribute to this particular brand over time.
+
+| Key | What to record |
+| --- | --- |
+| `name` | Identify the element at the level where the decision is made, such as Signal blue or vehicle identification color. |
+| `role` | Name its job for the viewer, such as directing attention, connecting a poster to an artwork, or keeping lettering legible. |
+| `application` | Give the designer the action. Preserve quantities, units and boundary conditions, and distinguish an option from a requirement. |
+| `scope` | State where the action applies. Name the unit of judgment, the medium, or an exception that changes the decision. |
+
+Compare the unit in each Color reference: a typical set of pages for [Halfkey](Halfkey/manifests/d07.json), one exhibition for [Sheffield Museums](Sheffield-Museums/manifests/s27.json), and one painted vehicle for [NASA](NASA/manifests/v01.json). Use the source to establish that boundary. A slide with no reusable ingredient rule needs only the six slide fields.
+
 ## Controlled language rules
 
 1. Use the same six fields in order: Slide intent, Strategic value, Demonstration, Category, Practical value and Content islands. Preserve the printed slide title and use a stable catalog term for its category.

@@ -1,0 +1,33 @@
+{
+  "id": "WI29",
+  "title": "Account dashboard / worktable",
+  "image": "wi29.png",
+  "source": "../sources/36-Wise_App_Dashboard.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 29,
+    "source_asset_index": 36,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 17.35
+  },
+  "slide_intent": "Place interface behavior in an ordinary working setting because product relevance becomes clearer through use.",
+  "strategic_value": "Balances and a textured header on a phone among salon tools can connect Wise’s financial functions with everyday work.",
+  "demonstration": "A phone lies diagonally among nail files, polish and tools; its account dashboard cycles balances and a colorful header while the photographic scene remains fixed.",
+  "category": "Application",
+  "practical_value": "Compare how much brand expression belongs in the header while account information stays legible.",
+  "content_islands": [
+    {
+      "name": "Phone screen",
+      "spec": "Keep balance cards and navigation readable within the angled device."
+    },
+    {
+      "name": "Worktable",
+      "spec": "Surround the device with tools and bottles that establish a working context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A phone lies diagonally among nail files, polish and tools; its account dashboard cycles balances and a colorful header while the photographic scene remains fixed.",
+    "Application": "The source demonstrates account-screen behavior within a phone in a working setting."
+  },
+  "motion": "../sources/36-Wise_App_Dashboard.mp4"
+}

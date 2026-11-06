@@ -1,0 +1,33 @@
+{
+  "id": "X02",
+  "title": "Connected product family",
+  "image": "x02.png",
+  "source": "../sources/x02.mp4",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 2,
+    "extent": "whole source artwork",
+    "poster_seconds": 4.24,
+    "duration_seconds": 8.48
+  },
+  "slide_intent": "Sequence related devices into a shared scene so viewers can understand the breadth of a service without losing the family resemblance.",
+  "strategic_value": "A recurring colored stage can connect Xfinity’s communication, entertainment and home products.",
+  "demonstration": "The animation presents a video-call phone, entertainment screen and home camera, then assembles a larger group of screens and hardware on a colored stage.",
+  "category": "Motion",
+  "practical_value": "Use a change from single products to an ensemble when the audience needs to understand both individual uses and a connected offering.",
+  "content_islands": [
+    {
+      "name": "Individual device presentations",
+      "spec": "Show each device against a colored floor and background with a soft grounding shadow."
+    },
+    {
+      "name": "Product ensemble",
+      "spec": "Bring the displays and hardware into one group, with the largest screen behind the smaller devices."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The product renderings share saturated stage colors, soft shadows and shifting viewpoints.",
+    "Application": "The final ensemble applies a shared presentation language to phones, screens, a remote and home hardware."
+  },
+  "motion": "../sources/x02.mp4"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "X11",
+  "title": "X button on the voice remote",
+  "image": "x11.png",
+  "source": "../sources/x11.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 11,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Give a physical control a clear center so a user can locate the main navigation action among smaller buttons.",
+  "strategic_value": "The X placed within the directional control can connect Xfinity’s physical interface with its wider symbol.",
+  "demonstration": "A close crop of a remote shows an X in a circular center set within a rounded diamond, surrounded by smaller function buttons.",
+  "category": "Geometry",
+  "practical_value": "Compare the size and enclosure of the central control with neighboring functions when establishing a physical hierarchy.",
+  "content_islands": [
+    {
+      "name": "Central navigation control",
+      "spec": "Place the X in the circular center of the larger blue rounded-diamond pad."
+    },
+    {
+      "name": "Function buttons",
+      "spec": "Retain the smaller buttons above and below so the central control’s prominence is apparent."
+    },
+    {
+      "name": "Device lighting",
+      "spec": "Use the visible cyan and green edge lighting to separate the dark remote from the blue field."
+    }
+  ],
+  "ingredient": {
+    "name": "X-centered navigation pad",
+    "role": "Identify the central control while carrying the brand symbol into hardware.",
+    "application": "Place the X at the center of the larger navigation pad and separate surrounding controls with smaller shapes.",
+    "scope": "This remote rendering only; the source gives no dimensional or interaction specification."
+  },
+  "reference_purposes": {
+    "Expression": "The white X, blue control and colored edge light carry the identity into a close product view.",
+    "Application": "The symbol is applied to the center of a physical remote control."
+  }
+}

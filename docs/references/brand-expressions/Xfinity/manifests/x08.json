@@ -1,0 +1,34 @@
+{
+  "id": "X08",
+  "title": "Entertainment webpage",
+  "image": "x08.png",
+  "source": "../sources/x08.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 8,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Coordinate image, headline and navigation so the viewer can distinguish the page’s promise from the surrounding controls.",
+  "strategic_value": "A vivid entertainment hero can give Xfinity’s service offering an emotional entry point while the navigation stays familiar.",
+  "demonstration": "A webpage pairs black navigation with a magenta hero, white headline at left and two viewers at right, followed by a white content section.",
+  "category": "Layout",
+  "practical_value": "Use a change in background to separate a campaign promise from the information that follows it.",
+  "content_islands": [
+    {
+      "name": "Navigation strip",
+      "spec": "Span the top of the webpage with a dark bar containing the wordmark and service links."
+    },
+    {
+      "name": "Magenta hero",
+      "spec": "Place the white headline and small action at left and the people at right on a continuous pink field."
+    },
+    {
+      "name": "Next content section",
+      "spec": "Use white below the hero, with a centered headline and a pink phrase linking it back to the campaign color."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Magenta joins the outer field, hero background and emphasized words in the next section.",
+    "Application": "The composition applies the identity to a service webpage with navigation, campaign and content areas."
+  }
+}

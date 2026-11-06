@@ -1,0 +1,33 @@
+{
+  "id": "WI15",
+  "title": "Max ease / min fees / full speed",
+  "image": "wi15.png",
+  "source": "../sources/20-Wise-Animation-Max-Ease_1920x13943-V2_srgb_3.2Mbps.mp4",
+  "location": {
+    "series": "Ragged Edge / Wise case study",
+    "item": 15,
+    "source_asset_index": 20,
+    "extent": "Complete published video; PNG is one poster frame",
+    "duration_seconds": 4.5
+  },
+  "slide_intent": "Use short parallel phrases so several product benefits can be remembered as one verbal rhythm.",
+  "strategic_value": "Repeating two-word claims in heavy green type can make Wise’s proposition direct and energetic.",
+  "demonstration": "The film slides between Max Ease, Min Fees and Full Speed in oversized pale-green lettering on dark green, with a small signature anchored below.",
+  "category": "Voice",
+  "practical_value": "Compare a sequence of brief benefit statements with one long explanatory headline.",
+  "content_islands": [
+    {
+      "name": "Benefit frames",
+      "spec": "Set each phrase as a large two-line block."
+    },
+    {
+      "name": "Transitions and anchor",
+      "spec": "Slide words across the field while retaining the small Wise mark."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film slides between Max Ease, Min Fees and Full Speed in oversized pale-green lettering on dark green, with a small signature anchored below.",
+    "Intent": "The accompanying Verbal identity section explains that messaging should be direct, like the product."
+  },
+  "motion": "../sources/20-Wise-Animation-Max-Ease_1920x13943-V2_srgb_3.2Mbps.mp4"
+}

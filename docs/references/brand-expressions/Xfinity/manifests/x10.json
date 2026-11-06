@@ -1,0 +1,33 @@
+{
+  "id": "X10",
+  "title": "Voice discovery on television",
+  "image": "x10.png",
+  "source": "../sources/x10.webp",
+  "location": {
+    "series": "venturethree / Xfinity brand purpose",
+    "item": 10,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Show a conversational request in context so viewers understand what they can ask a service to do.",
+  "strategic_value": "A short entertainment request can make Xfinity’s voice interaction feel approachable and directly useful.",
+  "demonstration": "A television frame overlays a quoted request to find something new on Peacock above a film image and playback progress.",
+  "category": "Voice",
+  "practical_value": "Use a realistic request alongside the resulting content to demonstrate a voice feature without a long explanation.",
+  "content_islands": [
+    {
+      "name": "Spoken request",
+      "spec": "Place the small voice icon and quoted request along the top of the screen."
+    },
+    {
+      "name": "Entertainment result",
+      "spec": "Fill the screen with the film scene while retaining the title and playback line near the bottom."
+    },
+    {
+      "name": "Physical frame",
+      "spec": "Keep the dark screen edge and warm surrounding wall visible to establish the television setting."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A quoted discovery request is presented directly on a television playback example."
+  }
+}
