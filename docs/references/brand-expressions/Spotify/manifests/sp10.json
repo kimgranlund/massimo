@@ -1,0 +1,35 @@
+{
+  "id": "SP10",
+  "title": "台灣 — portrait poster",
+  "image": "sp10.png",
+  "source": "../sources/sp10.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 10,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/195bba5b5b1a24b845feb103dc0ddd4bdd246887-1920x2400.png"
+  },
+  "category": "Typography",
+  "slide_intent": "Give a local-language message the same prominence as the artist because recognition should not depend on an English headline.",
+  "strategic_value": "Spotify can retain a consistent poster hierarchy through the green title and signature over a treated portrait.",
+  "demonstration": "Large green 台灣 characters overlap a purple-and-green portrait on red; a green Spotify lockup sits below.",
+  "practical_value": "Evaluate character scale, face overlap and logo separation when adapting a poster across writing systems.",
+  "content_islands": [
+    {
+      "name": "Headline and portrait",
+      "spec": "Two large characters span the face while hands and the portrait fill the vertical field."
+    },
+    {
+      "name": "Signature",
+      "spec": "The smaller green lockup sits near the lower edge."
+    },
+    {
+      "name": "Presentation margin",
+      "spec": "A pale surround frames the complete poster."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large green 台灣 characters overlap a purple-and-green portrait on red; a green Spotify lockup sits below.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

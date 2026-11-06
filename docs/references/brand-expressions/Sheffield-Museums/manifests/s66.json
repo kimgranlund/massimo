@@ -1,0 +1,25 @@
+{
+  "id": "S66",
+  "title": "Exhibition advertising",
+  "image": "s66.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 66,
+    "printed_page": 65
+  },
+  "slide_intent": "Teach designers to compare title voices while keeping the exhibition, photograph and format fixed.",
+  "strategic_value": "Millennium Gallery can lend an exhibition its own period character while keeping the recognizable campaign structure.",
+  "demonstration": "Two Cecil Beaton landscape adverts repeat the pink dotted panel, black-and-white group portrait, logos and date. The lower treatment introduces a different display face for the exhibition title.",
+  "category": "Typography",
+  "practical_value": "Compare how the two title treatments sound beside the historical photograph before selecting the guest face.",
+  "content_islands": [
+    {
+      "name": "First advertisement",
+      "spec": "Split the landscape strip between a pink title field and the group photograph. Keep the venue at upper left, title and dates beneath, and small credits along the base."
+    },
+    {
+      "name": "Alternate typography",
+      "spec": "Repeat the layout and photograph below. Reset the title in the alternate face while keeping the campaign furniture in comparable positions."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "SW03",
+  "title": "Dynamic-logo crops across printed materials",
+  "image": "sw03.png",
+  "source": "../sources/sw03.webp",
+  "location": {
+    "source_order": 5,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Show how variation in crop can keep a series lively while repeated forms and colors help viewers connect its separate pieces.",
+  "strategic_value": "Swisscom can vary its printed compositions while retaining a common visual family through the red, blue and white surfaces.",
+  "demonstration": "An oblique photograph shows overlapping printed pieces with different enlargements and crops of the dimensional symbol; small white copy appears on some colored fields.",
+  "category": "Layout",
+  "practical_value": "Compare several crops together to see whether variation preserves the recognizable color and surface relationships.",
+  "content_islands": [
+    {
+      "name": "Printed comparison field",
+      "spec": "Arrange the photographed pieces across the full frame, keeping their overlapping edges and varied orientations."
+    },
+    {
+      "name": "Repeated symbol crops",
+      "spec": "Let red, blue and white curved surfaces vary in scale across the pieces so the comparison remains visible."
+    },
+    {
+      "name": "Supporting print text",
+      "spec": "Retain the small white text on the lower pieces as evidence of the graphics sharing space with information; do not invent unreadable copy."
+    }
+  ],
+  "ingredient": {
+    "name": "Symbol crop",
+    "role": "Connect differently composed printed pieces through recurring form and color.",
+    "application": "Vary the crop and scale across the printed pieces as shown, allowing some compositions to emphasize a single surface.",
+    "scope": "Observed print examples in this historical case study. No universal crop ratio or type-placement rule is supplied."
+  },
+  "reference_purposes": {
+    "Expression": "The print array demonstrates multiple red, blue and white crops from the same dimensional form.",
+    "Application": "The photographed printed pieces show the cropped symbol sharing space with small information text."
+  }
+}

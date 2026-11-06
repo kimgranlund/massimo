@@ -1,0 +1,32 @@
+{
+  "id": "V22",
+  "title": "V-One",
+  "image": "v22.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Teach writers to describe a product in the terms its audience can use to judge fit. Naming the material and intended setting helps someone decide whether the machine suits their work.",
+  "strategic_value": "Voltera can distinguish V-One through education, product development and rigid materials. Its language of ease and familiarity gives the product a voice within the larger company identity.",
+  "demonstration": "A machine close-up accompanies a short account of V-One’s users and its focus on rigid materials. A separate adjective list sets an approachable tone. The copy specifies how to write the product name.",
+  "category": "Voice",
+  "practical_value": "For an education-facing V-One brief, lead with the relevant classroom or development use and keep the material claim within the rigid-substrate scope stated by the guide.",
+  "content_islands": [
+    {
+      "name": "Contents rail",
+      "spec": "Use the dark contents column and highlight Our products. Put page 22 in the lower-right tab."
+    },
+    {
+      "name": "V-One photograph",
+      "spec": "Fill the center column with a close view of the toolhead above a green work surface. Preserve the mechanical detail and the green accent in the machine controls."
+    },
+    {
+      "name": "Positioning and naming",
+      "spec": "On the right, place the Our Products label, green accent and V-One heading. Group the intended audiences, material scope and preferred naming convention in a single paragraph."
+    },
+    {
+      "name": "Vocabulary",
+      "spec": "Place a short list of adjectives below its own heading. Include the qualities of approachability, versatility and trustworthiness to guide the tone of product copy."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "SG03",
+  "title": "Taste Cues",
+  "image": "sg03.png",
+  "source": "../sources/sg03.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 3,
+    "section": "Taste Cues",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use pictorial texture and color to suggest flavor, because food imagery helps people anticipate an experience before tasting.",
+  "strategic_value": "The bright produce and small human figure can make Sweetgreen feel abundant and carefully prepared.",
+  "demonstration": "A bowl of oversized painted vegetables surrounds a fine-line figure holding a large location pin; an orange handwritten note sits to the right.",
+  "category": "Imagery",
+  "practical_value": "Compare the visual weight of vivid food and lightly drawn people when setting the illustration hierarchy.",
+  "content_islands": [
+    {
+      "name": "Food and figure",
+      "spec": "Center the filled bowl and the pin-bearing figure on the pale field."
+    },
+    {
+      "name": "Annotation",
+      "spec": "Keep the orange note beside the illustration as process commentary, not an added brand headline."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Taste Cues caption says the identity should feel as fresh and flavorful as the food.",
+    "Expression": "Saturated produce, a thin outlined person and a pale ground create different visual weights."
+  },
+  "ingredient": {
+    "name": "Painted produce and outlined people",
+    "role": "Make ingredients prominent while showing human care.",
+    "application": "Give produce richer color and mass than the supporting line-drawn people, as this specimen does.",
+    "scope": "Observed illustration approach in this historical case study; no numerical size or color ratio is prescribed."
+  }
+}

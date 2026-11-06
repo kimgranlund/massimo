@@ -1,0 +1,31 @@
+{
+  "id": "SF09",
+  "title": "Welcome facade lettering",
+  "image": "sf09.png",
+  "source": "../sources/sf09.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 9,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Adapt expression to architecture because a visitor needs a clear arrival signal at building scale.",
+  "strategic_value": "Oversized variable Welcome lettering can turn the entrance into a distinctive Symphony encounter.",
+  "demonstration": "A close view shows large white serif letters cropped across a dark green window below the pale facade.",
+  "category": "Application",
+  "practical_value": "Assess how oversized letterforms interact with the window boundary and building lines.",
+  "content_islands": [
+    {
+      "name": "Window message",
+      "spec": "Preserve the cropped white Welcome lettering on the dark green glazing."
+    },
+    {
+      "name": "Facade frame",
+      "spec": "Keep the projecting pale architecture above the message."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A close view shows large white serif letters cropped across a dark green window below the pale facade.",
+    "Application": "The source demonstrates a close view shows large white serif letters cropped across a dark green window below the pale facade."
+  }
+}

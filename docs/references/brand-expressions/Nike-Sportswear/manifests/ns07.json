@@ -1,0 +1,33 @@
+{
+  "id": "NS07",
+  "title": "Sportswear HO19 / Zoom 2K portrait layout",
+  "image": "ns07.png",
+  "source": "../sources/ns07.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 7,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Keep a recognizable composition across format changes so viewers can connect separate campaign encounters.",
+  "strategic_value": "The same taped-frame language can link this vertical Zoom 2K artwork with the wide campaign image.",
+  "demonstration": "A central photograph shows hands adjusting a black shoe with lime laces; a taped pale frame and product name sit over urban imagery, above the lower headline.",
+  "category": "Layout",
+  "practical_value": "Compare this vertical hierarchy with NS01 to see what is retained and what is rearranged.",
+  "content_islands": [
+    {
+      "name": "Framed action",
+      "spec": "Make the hands and shoe the main view inside the taped frame, with the product name on its lower margin."
+    },
+    {
+      "name": "Urban collage",
+      "spec": "Use teal texture, architecture and smaller wearer images behind the frame."
+    },
+    {
+      "name": "Lower message",
+      "spec": "Center a white headline, smaller supporting line and Nike signature below the frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A central photograph shows hands adjusting a black shoe with lime laces; a taped pale frame and product name sit over urban imagery, above the lower headline."
+  }
+}

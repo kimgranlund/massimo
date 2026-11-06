@@ -1,0 +1,24 @@
+{
+  "id": "SO52",
+  "title": "Photography",
+  "image": "so52.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 52
+  },
+  "slide_intent": "Choose a photograph for what it lets someone understand about an athlete or event. The accompanying caption gives an individual and an occasion to an otherwise ambiguous scene.",
+  "strategic_value": "Special Olympics can show personal relationships, effort and achievement by giving different kinds of moments room in the picture selection.",
+  "demonstration": "Four photographs distinguish action, a personal close-up, context and expression. A note asks editors to name athletes and supply story context in captions.",
+  "category": "Imagery",
+  "practical_value": "Choose the type of image the story needs, then identify the people and circumstances in its caption where possible.",
+  "content_islands": [
+    {
+      "name": "Editorial guidance",
+      "spec": "Set a bold introduction at left, followed by a paragraph on headlines and captions. Separate the naming tip beneath it."
+    },
+    {
+      "name": "Four photographic roles",
+      "spec": "Create a two-by-two photo grid at right. Put a small red caption at the lower left of each image. Pair the throwing action and two-person close-up above the wider event scene and expressive portrait."
+    }
+  ]
+}

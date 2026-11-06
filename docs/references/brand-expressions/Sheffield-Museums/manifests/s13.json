@@ -1,0 +1,29 @@
+{
+  "id": "S13",
+  "title": "Placement – venue materials",
+  "image": "s13.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 13,
+    "printed_page": 12
+  },
+  "slide_intent": "Teach a two-level signature hierarchy. A visitor should be able to identify a particular venue and also recognize the institution behind it.",
+  "strategic_value": "Giving the venue priority and the trust a consistent endorsement can connect the six venues without erasing their individual names.",
+  "demonstration": "Two gray layouts hold the large Kelham Island Museum mark at the top. A much smaller trust seal moves from bottom center in the primary example to bottom right in the secondary example.",
+  "category": "Layout",
+  "practical_value": "For venue communications, lead with the venue mark and choose a smaller trust placement after checking the bottom-center option.",
+  "content_islands": [
+    {
+      "name": "Hierarchy guidance",
+      "spec": "Keep the left text focused on relative prominence and the trust’s role across the venues."
+    },
+    {
+      "name": "Primary venue layout",
+      "spec": "Set the venue mark high on a portrait field and place the trust seal at bottom center. Label the primary position."
+    },
+    {
+      "name": "Secondary venue layout",
+      "spec": "Keep the venue mark high and move the small seal to the lower right. Align its callout with the changed position."
+    }
+  ]
+}

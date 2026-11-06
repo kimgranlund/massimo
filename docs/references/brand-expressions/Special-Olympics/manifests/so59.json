@@ -1,0 +1,24 @@
+{
+  "id": "SO59",
+  "title": "Letterhead · Sub-program",
+  "image": "so59.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 59
+  },
+  "slide_intent": "Identify a local sender within the larger program. The recipient needs to distinguish the sub-program that wrote the letter from the program that authorizes it.",
+  "strategic_value": "The program mark and a separate local name can connect local activity to Special Olympics while directing replies to the correct address.",
+  "demonstration": "The example aligns Blackrock County at the upper left with the logotype baseline on the right. A magnified detail and a footer callout explain what identifies the sub-program.",
+  "category": "Application",
+  "practical_value": "Set the sub-program name in red 10.5 pt Ubuntu Regular aligned with the body margin. Give one relevant address and retain the accreditation line.",
+  "content_islands": [
+    {
+      "name": "Numbered guidance",
+      "spec": "Set the identification and address rules at left. Explain the omission of directors and the continued use of accreditation."
+    },
+    {
+      "name": "Local letter specimen",
+      "spec": "Use dotted guides between the local name and program mark. Enlarge the Blackrock County line in a circle and mark the local contact block at the foot."
+    }
+  ]
+}

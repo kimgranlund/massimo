@@ -1,0 +1,32 @@
+{
+  "id": "SL19",
+  "title": "Our logo (for small use)",
+  "image": "sl19.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Teach designers to select artwork for the size at which it will actually be seen. Details that read at a large scale can lose definition in a compact signature.",
+  "strategic_value": "Slack can retain a recognizable small signature by specifying a dedicated horizontal version and a separate symbol size range.",
+  "demonstration": "Two columns label the largest and smallest uses. The horizontal signatures range from about 90 to 50 px wide. The symbol-only examples range from about 20 to 15 px high.",
+  "category": "Brand",
+  "practical_value": "Measure the intended width of a small signature or the height of a standalone mark, then compare it with the stated range before choosing the asset.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Small-use rules",
+      "spec": "Place the allowed width and height ranges and horizontal-only guidance in the left column."
+    },
+    {
+      "name": "Size comparison",
+      "spec": "Align maximum and minimum columns on the right, divided by a fine vertical rule. Show horizontal locks above, separate marks below, with color and monochrome samples and the page’s approximate dimensions."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

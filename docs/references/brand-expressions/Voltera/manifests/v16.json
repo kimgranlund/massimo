@@ -1,0 +1,32 @@
+{
+  "id": "V16",
+  "title": "How to use icon sets",
+  "image": "v16.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Teach designers when pictorial cues can make text easier to scan and how a change of background affects the legibility of those cues.",
+  "strategic_value": "Voltera can repeat recognizable line drawings while varying the accent color and backing to suit a display context.",
+  "demonstration": "The upper grid repeats the same icon set with blue or green accents. The lower grid repeats it on colored tiles for contexts that switch between light and dark modes.",
+  "category": "Imagery",
+  "practical_value": "Select an unbacked icon when the background is controlled and a colored tile when the surface can switch modes.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 16 in a blue tab at lower right."
+    },
+    {
+      "name": "Usage and selection guidance",
+      "spec": "Stack the When to use icons and Design lists in the left text column."
+    },
+    {
+      "name": "Outline icon variants",
+      "spec": "Show a repeated grid of black-line diagrams with blue accents and again with green accents on white."
+    },
+    {
+      "name": "Backed icon variants",
+      "spec": "Below the open icons, repeat their subjects on rounded blue and green tiles so the backing remains visible."
+    }
+  ]
+}

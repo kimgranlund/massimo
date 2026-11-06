@@ -1,0 +1,25 @@
+{
+  "id": "S24",
+  "title": "Site social media icons",
+  "image": "s24.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 24,
+    "printed_page": 23
+  },
+  "slide_intent": "Show how much empty space a small icon needs around it so adjacent elements do not interrupt its silhouette.",
+  "strategic_value": "A consistent clearance rule can give each venue icon the same visual standing in shared materials.",
+  "demonstration": "Six colored icons sit in a measured grid. The clear-space note defines the minimum around each icon as half its width or height.",
+  "category": "Geometry",
+  "practical_value": "Measure half the icon diameter and reserve that amount of space around a site icon.",
+  "content_islands": [
+    {
+      "name": "Clear-space explanation",
+      "spec": "Place the scope and half-width rule under the repeated icon section title."
+    },
+    {
+      "name": "Icon clearance diagram",
+      "spec": "Arrange the six circles in two rows of three. Extend horizontal and vertical guides into the gaps, and use pale half-circle references to show the spacing unit."
+    }
+  ]
+}

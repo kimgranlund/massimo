@@ -1,0 +1,25 @@
+{
+  "id": "S57",
+  "title": "Social media",
+  "image": "s57.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 57,
+    "printed_page": 56
+  },
+  "slide_intent": "Teach designers to make a small feed tile understandable alone and recognizable among related posts.",
+  "strategic_value": "Millennium Gallery can vary image, message and color across posts while its framed venue mark recurs in the sequence.",
+  "demonstration": "A phone mockup shows an image-led museum account post. A row of square artworks extends from the phone, alternating venue lettering with exhibition promotion.",
+  "category": "Application",
+  "practical_value": "Choose which tile introduces the venue and which carries the exhibition message. Check each at feed scale.",
+  "content_islands": [
+    {
+      "name": "Phone specimen",
+      "spec": "Place the phone at left with account name, artwork, post controls and caption visible."
+    },
+    {
+      "name": "Square tile sequence",
+      "spec": "Align the pink venue tile, My Path exhibition tile and pale venue tile in one row beside the phone. Repeat the venue lettering across the two colored fields."
+    }
+  ]
+}

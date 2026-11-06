@@ -1,0 +1,33 @@
+{
+  "id": "SF14",
+  "title": "Make Some Noise interactive specimen",
+  "image": "sf14.png",
+  "source": "../sources/sf14.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 14,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Make typographic response visible in an interface because a viewer needs to understand that variation is behavior rather than a fixed drawing.",
+  "strategic_value": "A changing Make Some Noise phrase can invite participation in the Symphony’s identity.",
+  "demonstration": "A browser-framed demonstration repeatedly alters individual letter heights in Make Some Noise; small controls remain along the bottom.",
+  "category": "Motion",
+  "practical_value": "Compare multiple letter states while keeping a short phrase and interface controls stable.",
+  "content_islands": [
+    {
+      "name": "Live phrase",
+      "spec": "Center the white phrase on the black canvas and retain its repeated independent letter changes."
+    },
+    {
+      "name": "Controls",
+      "spec": "Keep the browser frame and small lower controls as evidence of the demonstrated interface."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A browser-framed demonstration repeatedly alters individual letter heights in Make Some Noise; small controls remain along the bottom.",
+    "Application": "The source demonstrates a browser-framed demonstration repeatedly alters individual letter heights in Make Some Noise; small controls remain along the bottom.",
+    "Intent": "The main case-study text explicitly describes characters changing form in response to sound and music."
+  },
+  "motion": "../sources/sf14.mp4"
+}

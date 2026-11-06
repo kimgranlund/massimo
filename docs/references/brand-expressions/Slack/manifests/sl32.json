@@ -1,0 +1,24 @@
+{
+  "id": "SL32",
+  "title": "Brand architecture",
+  "image": "sl32.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 32
+  },
+  "slide_intent": "Teach designers to identify who should recognize an affiliation before choosing a logo lockup. An employee, a customer and a partner encounter different relationships.",
+  "strategic_value": "Slack can distinguish an internal initiative from an external extension or partnership using a small vocabulary of lockups.",
+  "demonstration": "A large, lightweight statement on the left introduces lockups for entities inside and outside Slack. The right column assigns three lockup categories to different audiences.",
+  "category": "Brand",
+  "practical_value": "Classify the entity as external-facing, internal-facing or a partnership before turning to the corresponding construction page.",
+  "content_islands": [
+    {
+      "name": "Introductory statement",
+      "spec": "Place a large thin statement in a narrow left-hand measure. Let its line breaks make the inside/outside distinction prominent."
+    },
+    {
+      "name": "Category explanation",
+      "spec": "Start a smaller right column level with the statement. Bold primary, secondary and partnership in the paragraph that introduces the categories."
+    }
+  ]
+}

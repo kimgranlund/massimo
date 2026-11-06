@@ -1,0 +1,24 @@
+{
+  "id": "SO23",
+  "title": "Visual identity",
+  "image": "so23.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Introduce identity as a combination of reusable parts. A designer can preserve a family resemblance while adapting individual communications to different messages.",
+  "strategic_value": "Special Olympics can give programs a common visual vocabulary before asking them to make local design choices.",
+  "demonstration": "The second section divider repeats the large red field and pale arc. Its introduction names the mark, color and typography as elements used together.",
+  "category": "Brand",
+  "practical_value": "Turn to this section when choosing which visual elements a communication needs and how they relate.",
+  "content_islands": [
+    {
+      "name": "Section identification",
+      "spec": "Place the book name and Section 2 in the white header and the red symbol at upper right."
+    },
+    {
+      "name": "Section introduction",
+      "spec": "Use an oversized Visual identity heading across the red field. Place the preview below it toward the center-left, above the folio and footer rule."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO18",
+  "title": "Determined",
+  "image": "so18.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Teach a storyteller to show sustained effort so an audience can understand what an athlete’s achievement required.",
+  "strategic_value": "Special Olympics can give the athlete’s journey a place in a story that might otherwise focus on a medal.",
+  "demonstration": "A skier strides across snow toward the right side of the page. The two columns below the red heading pair perseverance with a direction to recognize the journey.",
+  "category": "Voice",
+  "practical_value": "Choose an image or sentence about the effort along the way when describing a sporting achievement.",
+  "content_islands": [
+    {
+      "name": "Photographic example",
+      "spec": "Preserve the skier’s stride and poles against the snow, with the mountain landscape across the upper field."
+    },
+    {
+      "name": "Trait heading",
+      "spec": "Place the red Determined bar over the open ground on the left."
+    },
+    {
+      "name": "Meaning and expression",
+      "spec": "Place two translucent columns beneath the label. Pair the principle of perseverance with the instruction about covering the athlete’s journey."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO10",
+  "title": "A shared reputation",
+  "image": "so10.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Show why a shared identifier can matter across distinct communities. People should be able to associate varied local events with a single movement.",
+  "strategic_value": "Special Olympics can give each program’s images a recognizable context without making the local stories interchangeable.",
+  "demonstration": "A grid of captioned photographs from different programs surrounds a diagram of overlapping paths. A red treatment ties much of the grid together and gives way to individual image colors.",
+  "category": "Brand",
+  "practical_value": "Choose local evidence for a program story while preserving the connection to the international identity.",
+  "content_islands": [
+    {
+      "name": "Premise and prompt",
+      "spec": "Place the statement of common reputation and the red local-story prompt in the left column."
+    },
+    {
+      "name": "Movement diagram",
+      "spec": "Place the overlapping paths and labels for diverse communities and common identity in the first tile."
+    },
+    {
+      "name": "Program mosaic",
+      "spec": "Build a close-set grid from captioned program photographs. Carry red across several tiles and leave part of the grid in full color."
+    }
+  ]
+}

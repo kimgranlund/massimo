@@ -1,0 +1,38 @@
+{
+  "id": "SP23",
+  "title": "Spotify Running — product film",
+  "image": "sp23.png",
+  "source": "../sources/sp23.mp4",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 23,
+    "extent": "Representative frame; complete local animation linked",
+    "source_url": "https://stream.mux.com/UCDy2jOgE7EgWlaHx3kxQJrwK01jVvPN026KbJ2mamyAM.m3u8",
+    "poster": "Video at 5 seconds"
+  },
+  "category": "Motion",
+  "slide_intent": "Explain personalization through a physical activity because an abstract promise becomes easier to understand when viewers see music respond to their pace.",
+  "strategic_value": "Spotify can differentiate a listening service through tempo detection and running-specific music choices shown within an everyday activity.",
+  "demonstration": "The 51-second film intercuts runners, a phone detecting tempo, short yellow-magenta title cards and messages including Music that reacts to you.",
+  "practical_value": "Study how live action, interface evidence and short benefit statements work together in a product story.",
+  "content_islands": [
+    {
+      "name": "Running footage",
+      "spec": "Outdoor runners and close views of moving feet establish the activity and pace."
+    },
+    {
+      "name": "Interface demonstration",
+      "spec": "A centered phone shows tempo detection with a prominent numeric readout."
+    },
+    {
+      "name": "Message cards",
+      "spec": "Short large statements alternate with footage and flat high-contrast color fields."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The 51-second film intercuts runners, a phone detecting tempo, short yellow-magenta title cards and messages including Music that reacts to you.",
+    "Application": "The source shows this identity in a running-product film.",
+    "Intent": "The film explicitly promises Music that reacts to you, alongside tempo detection and running footage; it supplies a reason for matching music to running pace."
+  },
+  "motion": "../sources/sp23.mp4"
+}

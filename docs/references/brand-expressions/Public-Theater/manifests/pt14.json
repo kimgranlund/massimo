@@ -1,0 +1,29 @@
+{
+  "id": "PT14",
+  "title": "Bring in ’Da Noise, Bring in ’Da Funk / Dark tap poster",
+  "image": "pt14.png",
+  "source": "../sources/pt14.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 14,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Turn a physical detail into a focal point because a small object can stand for the experience of a performance.",
+  "strategic_value": "A tap sole encircled by reviews can keep the campaign tied to dance while introducing a new visual treatment.",
+  "demonstration": "A white tap-shoe sole sits on black, surrounded by radiating hand-lettered praise and red-outlined title words.",
+  "category": "Typography",
+  "practical_value": "Compare radial lettering around a central object with the dancer-led composition in PT13.",
+  "content_islands": [
+    {
+      "name": "Central sole",
+      "spec": "Place the tall tap sole in the middle."
+    },
+    {
+      "name": "Radial reviews",
+      "spec": "Radiate praise and title fragments around it, with award and booking information at the base."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white tap-shoe sole sits on black, surrounded by radiating hand-lettered praise and red-outlined title words."
+  }
+}

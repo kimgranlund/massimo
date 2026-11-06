@@ -1,0 +1,30 @@
+{
+  "id": "PT30",
+  "title": "Open / Here Lies Love",
+  "image": "pt30.png",
+  "source": "../sources/pt30.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 30,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Join contrasting portraits deliberately because the image relationship can invite interpretation before a viewer reads the title.",
+  "strategic_value": "The split face can distinguish Here Lies Love while the red frame and Public band connect it to the season.",
+  "demonstration": "A large male face above and a cropped female face below meet across the red OPEN THE PUBLIC band.",
+  "category": "Imagery",
+  "practical_value": "Compare a split portrait as the variable content within a fixed institutional frame.",
+  "content_islands": [
+    {
+      "name": "Upper portrait and title",
+      "spec": "Place the large face opposite the compact title at upper left."
+    },
+    {
+      "name": "Lower portrait",
+      "spec": "Continue a second face below the red Public band and retain contact information along the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A large male face above and a cropped female face below meet across the red OPEN THE PUBLIC band.",
+    "Application": "Here Lies Love uses the red frame and Public band around its own split-portrait imagery."
+  }
+}

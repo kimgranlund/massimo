@@ -1,0 +1,25 @@
+{
+  "id": "S69",
+  "title": "Exhibition advertising",
+  "image": "s69.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 69,
+    "printed_page": 68
+  },
+  "slide_intent": "Teach designers how changing the division between image and title affects the character of an exhibition advert.",
+  "strategic_value": "Not Without My Ghosts can draw on the artwork as the recognizable subject while testing two voices for its title.",
+  "demonstration": "Two versions pair the same artwork with different information fields. The upper layout splits black copy space and a wide image. The lower expands the pale copy field and uses a smaller image at right.",
+  "category": "Layout",
+  "practical_value": "Compare image area, title face and contrast together when choosing which version best introduces the exhibition.",
+  "content_islands": [
+    {
+      "name": "Dark-field treatment",
+      "spec": "Use a black text panel at left and a broad artwork crop at right. Give the white title a bold lead and place dates, tour credits and marks in supporting positions."
+    },
+    {
+      "name": "Pale-field treatment",
+      "spec": "Use a wider pale text field and a narrower artwork crop. Give the dark title a contrasting type treatment while retaining the venue and supporting information."
+    }
+  ]
+}

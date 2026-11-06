@@ -1,0 +1,36 @@
+{
+  "id": "U06",
+  "title": "Color / Secondary colors and usage proportions",
+  "image": "u06.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Preserve differences between routine color and meaningful accents so viewers can recognize moments that deserve attention.",
+  "strategic_value": "A white-and-black foundation with restrained transport-derived colors can preserve consistency while allowing Uber illustrations and product to carry variety.",
+  "demonstration": "Six labeled secondary swatches sit above a diagram grouping primary colors, Safety Blue and secondary colors. Adjacent copy explains restraint and relative usage.",
+  "category": "Color",
+  "practical_value": "Keep primary colors dominant, reserve Safety Blue for care moments and check the stated context before using secondary colors.",
+  "content_islands": [
+    {
+      "name": "Secondary palette",
+      "spec": "Place the explanation at upper left beside six vertical swatches: green, yellow, red, brown, orange and purple, each with printed values."
+    },
+    {
+      "name": "Usage proportions",
+      "spec": "Place the usage text at lower left opposite the stacked color diagram: white/black above blue, then two rows of secondary colors."
+    }
+  ],
+  "ingredient": {
+    "name": "Secondary colors and color proportions",
+    "role": "Support variety while keeping the primary palette and care signal distinguishable.",
+    "application": "Use secondary colors sparingly; balance white with black; reserve Safety Blue for critical moments of care. Do not derive a percentage from this unnumbered diagram.",
+    "scope": "Historical partner guide. Secondary-color copy first mentions illustration, photography and product, then narrows use to illustrations and product; retain that ambiguity rather than expanding the permission."
+  },
+  "reference_purposes": {
+    "Intent": "The text links restraint to meaning and potency and proportions to consistency and accessibility.",
+    "Expression": "The palette and stacked diagram distinguish neutral, safety and secondary color groups.",
+    "Application": "The page supplies secondary swatches and a qualitative usage diagram without numerical percentages.",
+    "Constraint": "The page reserves Safety Blue for critical care moments and says secondary colors are only used for illustrations and within product; an earlier sentence also mentions photography."
+  }
+}

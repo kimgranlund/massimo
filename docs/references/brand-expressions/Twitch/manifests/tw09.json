@@ -1,0 +1,31 @@
+{
+  "id": "TW09",
+  "title": "Glitch / Animated symbol",
+  "image": "tw09.png",
+  "source": "../sources/tw09.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 9,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Carry a compact identifier through color and scale changes so viewers can recognize the brand without reading its name.",
+  "strategic_value": "The speech-bubble-like Glitch can provide Twitch recognition in spaces where the full wordmark is unnecessary.",
+  "demonstration": "A white-and-black Glitch symbol changes scale and briefly changes its inner marks against purple and gradient backgrounds.",
+  "category": "Motion",
+  "practical_value": "Compare how much expression a compact symbol can carry while preserving its silhouette.",
+  "content_islands": [
+    {
+      "name": "Central symbol",
+      "spec": "Keep Glitch isolated near the center with its angular outline and black depth."
+    },
+    {
+      "name": "Changing field",
+      "spec": "Alternate purple and multicolor backgrounds while the symbol scales and changes internal details."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip animates the Glitch symbol while maintaining its recognizable angular outline."
+  },
+  "motion": "../sources/tw09.mp4"
+}

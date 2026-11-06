@@ -1,0 +1,31 @@
+{
+  "id": "SG36",
+  "title": "Embossed bowl signature",
+  "image": "sg36.png",
+  "source": "../sources/sg36.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 36,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let material relief carry identification so a simple object can feel branded without added ink.",
+  "strategic_value": "A subtle raised wordmark can connect Sweetgreen’s serving vessel to the identity through touch and light.",
+  "demonstration": "The sweetgreen wordmark is embossed across the inside of a pale molded bowl, with the rim casting a broad curved shadow.",
+  "category": "Application",
+  "practical_value": "Evaluate whether relief and lighting make a low-contrast signature readable on packaging.",
+  "content_islands": [
+    {
+      "name": "Embossed wordmark",
+      "spec": "Center the raised lettering within the bowl surface."
+    },
+    {
+      "name": "Vessel relief",
+      "spec": "Retain the rim, texture and shadow that reveal the material form."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The wordmark is formed in the bowl material rather than printed as a contrasting graphic.",
+    "Expression": "Tonal relief and shadow create a restrained signature."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "NS10",
+  "title": "Run HO19 / Renew Run product landscape",
+  "image": "ns10.png",
+  "source": "../sources/ns10.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 10,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Show a whole product and selected details together so viewers can connect overall form with material and construction.",
+  "strategic_value": "The large Renew Run shoe and two detail crops can make the cushioning story easier to inspect.",
+  "demonstration": "A large shoe overlaps a pale pink-to-blue rectangular field; two smaller detail crops sit at right and an outline Swoosh spans the image.",
+  "category": "Layout",
+  "practical_value": "Decide which details deserve their own crops while leaving the main product as the focal point.",
+  "content_islands": [
+    {
+      "name": "Copy block",
+      "spec": "Place the black product name, supporting line and small Swoosh at upper left on white."
+    },
+    {
+      "name": "Main product",
+      "spec": "Let the large diagonal shoe overlap the white area and the colored rectangle."
+    },
+    {
+      "name": "Detail crops",
+      "spec": "Place two smaller product views at right over the outline Swoosh; retain the source’s black presentation surround."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A large shoe overlaps a pale pink-to-blue rectangular field; two smaller detail crops sit at right and an outline Swoosh spans the image.",
+    "Intent": "The accompanying designer account explains that the layouts reconcile existing imagery, different retail formats and digital crops into a consistent campaign."
+  }
+}

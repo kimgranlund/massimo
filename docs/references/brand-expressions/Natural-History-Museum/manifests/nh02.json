@@ -1,0 +1,35 @@
+{
+  "id": "NH02",
+  "title": "Identity presentation film",
+  "image": "nh02.png",
+  "source": "../sources/nh02.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 2,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Connect a visual system to its subject and uses, because a collection of attractive assets alone does not explain why they belong together.",
+  "strategic_value": "The progression from natural movement to circular letters and real applications can make the Museum’s catalyst ambition tangible.",
+  "demonstration": "The one-minute film moves through natural footage, concentric letter and word patterns, color groupings, signage, campaigns, website layouts and the final identity. The PNG preserves its published title poster.",
+  "category": "Brand",
+  "practical_value": "Trace how the same circular vocabulary connects nature imagery, identity and application.",
+  "content_islands": [
+    {
+      "name": "Nature and language",
+      "spec": "Begin with moving natural imagery and curved phrases."
+    },
+    {
+      "name": "System demonstration",
+      "spec": "Show expanding letter rings, colors and specimen compositions."
+    },
+    {
+      "name": "Applications",
+      "spec": "Sequence signage, printed and digital examples before returning to the symbol."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The one-minute film moves through natural footage, concentric letter and word patterns, color groupings, signage, campaigns, website layouts and the final identity. The PNG preserves its published title poster.",
+    "Intent": "Pentagram describes the identity’s strategic shift from passive catalogue to active catalyst and the aim to create advocates for the planet."
+  },
+  "motion": "../sources/nh02.mp4"
+}

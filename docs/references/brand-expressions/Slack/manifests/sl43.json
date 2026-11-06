@@ -1,0 +1,24 @@
+{
+  "id": "SL43",
+  "title": "General terms",
+  "image": "sl43.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 43
+  },
+  "slide_intent": "Introduce the scope of a brand-use policy before its detailed rules. Readers need to know which materials and names a policy covers.",
+  "strategic_value": "Slack can gather different kinds of brand features under one set of terms and name the marks treated by this edition.",
+  "demonstration": "Three lettered passages define the scope and the marks. A nested list illustrates that scope with five names, including Slackbot and Where Work Happens.",
+  "category": "Brand",
+  "practical_value": "Use this page to locate the 2020 guide’s definitions before interpreting its later examples or restrictions.",
+  "content_islands": [
+    {
+      "name": "Scope and definitions",
+      "spec": "Place the heading above a horizontal rule. Set the introductory clauses in a narrow column at upper left."
+    },
+    {
+      "name": "Named marks",
+      "spec": "Indent the five-item list under the third clause. Leave the wide right field free of other examples."
+    }
+  ]
+}

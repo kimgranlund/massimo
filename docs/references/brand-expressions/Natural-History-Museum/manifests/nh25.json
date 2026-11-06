@@ -1,0 +1,41 @@
+{
+  "id": "NH25",
+  "title": "Pattern and Word Ring generator",
+  "image": "nh25.png",
+  "source": "../sources/nh25.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 25,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Put variation inside a repeatable tool, because multiple designers need a way to create new outputs without losing the system’s structure.",
+  "strategic_value": "A shared generator can give the Museum flexible patterns while keeping the circular vocabulary consistent.",
+  "demonstration": "A tool interface pairs a left control panel and palette grid with a large canvas cycling through letter rings and contextual Word Rings at different scales, positions and colors.",
+  "category": "Geometry",
+  "practical_value": "Identify which aspects remain structurally consistent while the generator varies the output.",
+  "content_islands": [
+    {
+      "name": "Controls",
+      "spec": "Keep sliders, fields and palette choices in a narrow left sidebar."
+    },
+    {
+      "name": "Live canvas",
+      "spec": "Use the broad right area for the changing circular output."
+    },
+    {
+      "name": "Variation sequence",
+      "spec": "Show centered and cropped patterns, letter rings and word rings across different color combinations."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A tool interface pairs a left control panel and palette grid with a large canvas cycling through letter rings and contextual Word Rings at different scales, positions and colors.",
+    "Intent": "Pentagram says the generator enables static and motion outputs and helps designers maintain both consistency and flexibility."
+  },
+  "motion": "../sources/nh25.mp4",
+  "ingredient": {
+    "name": "Pattern and Word Ring generator",
+    "role": "Enable variation within a recognizable circular vocabulary.",
+    "application": "Use the generator’s controls to vary letter or word rings, scale, position and palette.",
+    "scope": "Demonstrated authoring tool; the source supplies no downloadable generator here and small interface values are not transcribed."
+  }
+}

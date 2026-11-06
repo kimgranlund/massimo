@@ -1,0 +1,26 @@
+{
+  "id": "WH08",
+  "title": "W as spatial construction",
+  "image": "wh08.png",
+  "source": "../sources/spatial.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 8,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Show how a small geometric change alters perceived space because a line can imply depth without shaded volume.",
+  "strategic_value": "A repeated unfolding W can give Whitney a spatial vocabulary related to the museum environment.",
+  "demonstration": "A stack of black lines changes from almost straight at the top to deeper angular Ws below.",
+  "category": "Geometry",
+  "practical_value": "Compare successive depths to see how the same line construction moves between flat and spatial readings.",
+  "content_islands": [
+    {
+      "name": "Line sequence",
+      "spec": "Stack the repeated four-segment forms vertically; increase their depth toward the bottom without adding fill or shading."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay explicitly describes a flat line revealing a spatial dimension through viewpoint and distance.",
+    "Expression": "The progressively deeper zigzags demonstrate a spatial interpretation of the mark."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SG17",
+  "title": "Ingredient and grower cards",
+  "image": "sg17.png",
+  "source": "../sources/sg17.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 17,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Pair appetizing product imagery with origin information so viewers can connect appearance to provenance.",
+  "strategic_value": "Named growers and places can make Sweetgreen’s sourcing story more specific.",
+  "demonstration": "A sequence of carrot, kale, strawberry and red onion cards pairs large isolated photographs with colored ingredient headings and grower/location labels.",
+  "category": "Imagery",
+  "practical_value": "Keep a repeatable hierarchy for ingredient, image, grower and location when presenting a varied supply story.",
+  "content_islands": [
+    {
+      "name": "Ingredient name and image",
+      "spec": "Use a large colored heading above the isolated ingredient photograph."
+    },
+    {
+      "name": "Origin labels",
+      "spec": "Place grower at lower left and outlined location label at lower right; update both with the subject."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The sequence applies one card structure to four ingredients and their growers.",
+    "Expression": "Heading colors respond to the ingredient photographs while the cream ground stays consistent."
+  },
+  "motion": "../sources/sg17.mp4"
+}

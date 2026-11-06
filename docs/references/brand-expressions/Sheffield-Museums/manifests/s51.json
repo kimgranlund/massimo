@@ -1,0 +1,25 @@
+{
+  "id": "S51",
+  "title": "Email newsletter",
+  "image": "s51.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 51,
+    "printed_page": 50
+  },
+  "slide_intent": "Teach designers to organize a newsletter around a lead event and smaller stories so a reader can tell where to enter and what to read next.",
+  "strategic_value": "Sheffield Museums can give an exhibition a distinctive campaign color while keeping navigation and institutional details legible throughout the mailing.",
+  "demonstration": "Two mail windows show successive portions of a newsletter. Bright margins surround the lead exhibition, then a curator story, workshop news and a dark contact footer.",
+  "category": "Layout",
+  "practical_value": "Give the lead exhibition a recognizable opening and reserve a separate module for the smaller news item.",
+  "content_islands": [
+    {
+      "name": "Opening view",
+      "spec": "Frame the first mail example with pink margins. Stack the seal, exhibition image, title, date and action above the next portrait."
+    },
+    {
+      "name": "Continuation view",
+      "spec": "Align the second window with the first and continue the portrait into its article. Follow with a white News block and a dark green footer containing contact and subscription details."
+    }
+  ]
+}

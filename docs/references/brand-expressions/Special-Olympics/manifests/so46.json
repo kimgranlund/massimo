@@ -1,0 +1,32 @@
+{
+  "id": "SO46",
+  "title": "Dynamic curve",
+  "image": "so46.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 46
+  },
+  "slide_intent": "Teach designers to reserve a predictable place for the mark. A clear boundary lets the reader distinguish the organization from the photograph or headline beside it.",
+  "strategic_value": "Special Olympics can link publications from different programs through a recurring arc that echoes the circular symbol. Its edge gives the mark a separate field even when the surrounding content varies.",
+  "demonstration": "A montage places the arc on a handbook, athletic photographs, banners and program marks. Three notes describe its circular origin, available formats and selective use on covers, posters and flyers.",
+  "category": "Brand",
+  "practical_value": "Choose a prominent surface that needs the curve to house the mark. The examples show where the device adds recognition and the notes explain why an inside brochure page can omit it.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Set Visual identity in gray at left and Dynamic curve in red at the head of the main column."
+    },
+    {
+      "name": "Usage notes",
+      "spec": "Stack three illustrated notes in the left margin. Address the circle, the prepared formats and the surfaces that warrant the curve."
+    },
+    {
+      "name": "Purpose statement",
+      "spec": "Place a bold paragraph above the examples. Explain how the curved field separates the mark from competing elements."
+    },
+    {
+      "name": "Application montage",
+      "spec": "Overlap the handbook, covers and banners in the lower main field. Keep the red-and-white curve visible at different scales and align the standing pieces to a common baseline."
+    }
+  ]
+}

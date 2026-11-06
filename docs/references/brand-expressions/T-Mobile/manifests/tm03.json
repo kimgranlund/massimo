@@ -1,0 +1,28 @@
+{
+  "id": "TM03",
+  "title": "Table of Contents",
+  "image": "tm03.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Make a long guide easy to navigate so readers can find the rule that answers their immediate question.",
+  "strategic_value": "A categorized contents page can make T-Mobile standards easier to consult during production.",
+  "demonstration": "Three columns list strategy, core elements, typography, copy, visual guidance and resources with page numbers.",
+  "category": "Layout",
+  "practical_value": "Choose the relevant section before searching through individual examples.",
+  "content_islands": [
+    {
+      "name": "Guide title",
+      "spec": "Place a compact title at the upper left of the black page."
+    },
+    {
+      "name": "Section directory",
+      "spec": "Align three columns of section headings, item labels, rules and page numbers to the right."
+    },
+    {
+      "name": "Brand frame",
+      "spec": "Keep magenta light trails low beneath the directory."
+    }
+  ]
+}

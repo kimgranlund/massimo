@@ -1,0 +1,32 @@
+{
+  "id": "SG11",
+  "title": "More gardens, less carbon",
+  "image": "sg11.png",
+  "source": "../sources/sg11.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 11,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Use a simple animated metaphor to make an abstract environmental message easier to grasp.",
+  "strategic_value": "A leaf carried by a small figure can give Sweetgreen’s environmental voice a playful connection to real ingredients.",
+  "demonstration": "A line-drawn person walks while holding a large green leaf between a farm scene and a bowl; the headline is distributed around the illustration.",
+  "category": "Motion",
+  "practical_value": "Balance legible, stationary campaign words with movement in one illustrative character.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Distribute More, gardens, and less carbon around the central illustrated strip."
+    },
+    {
+      "name": "Animated scene",
+      "spec": "Keep the farm and bowl at either end while the leaf-bearing figure moves between them."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip combines vivid produce with an animated outlined person and green typography.",
+    "Application": "The campaign applies the illustration style to an environmental message."
+  },
+  "motion": "../sources/sg11.mp4"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "PT07",
+  "title": "Blade to the Heat",
+  "image": "pt07.png",
+  "source": "../sources/pt07.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 7,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Choose image treatment that carries dramatic energy because viewers form an impression before reading details.",
+  "strategic_value": "Halftone boxing imagery and diagonal lettering can give this production an immediately forceful character.",
+  "demonstration": "A boxer fills a yellow poster with red dots; blue title lettering cuts diagonally across the upper body.",
+  "category": "Imagery",
+  "practical_value": "Compare halftone texture and diagonal type as ways to amplify a production image.",
+  "content_islands": [
+    {
+      "name": "Boxer and title",
+      "spec": "Overlay the angled title on the large cropped boxer."
+    },
+    {
+      "name": "Support labels",
+      "spec": "Place opening information above and credits and the theater signature near the lower corners."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A boxer fills a yellow poster with red dots; blue title lettering cuts diagonally across the upper body."
+  }
+}

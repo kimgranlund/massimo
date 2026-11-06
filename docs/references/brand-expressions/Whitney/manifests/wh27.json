@@ -1,0 +1,25 @@
+{
+  "id": "WH27",
+  "title": "Shopping bags",
+  "image": "wh27.png",
+  "source": "../sources/large_whitney_2013redesign_shoppingbags.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 10,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Let format influence the mark’s proportions because a brand must remain legible on objects with different carrying capacities.",
+  "strategic_value": "Tall W strokes can use the available surfaces of Whitney’s bags while the name remains prominent near the top.",
+  "demonstration": "Two white shopping bags of different sizes display large thin Ws and black handles below bold Whitney names.",
+  "category": "Application",
+  "practical_value": "Compare mark scale and word placement between the short wide bag and tall narrow bag.",
+  "content_islands": [
+    {
+      "name": "Bag pair",
+      "spec": "Place the smaller bag in front at left and the taller bag behind at right; preserve handles and visible side panels."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official launch caption identifies the shopping-bag suite for the museum’s retail store."
+  }
+}

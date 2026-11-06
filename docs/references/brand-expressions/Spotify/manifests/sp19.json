@@ -1,0 +1,35 @@
+{
+  "id": "SP19",
+  "title": "Presentation auditorium",
+  "image": "sp19.png",
+  "source": "../sources/sp19.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 19,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/6261d31466496d803ad0356ef3c2597abc275453-2400x1920.png"
+  },
+  "category": "Application",
+  "slide_intent": "Hold the room together with a few visible cues because a large audience needs to locate the stage and understand where attention belongs.",
+  "strategic_value": "Spotify can extend its blue event environment while reserving brighter graphic content for the presentation screens.",
+  "demonstration": "A wide dark auditorium has blue illuminated perimeter edges and two bright screens at its far end.",
+  "practical_value": "Compare environmental brightness with screen brightness from the rear of a venue.",
+  "content_islands": [
+    {
+      "name": "Presentation focal point",
+      "spec": "Two distant screens and the stage form the brightest informational group."
+    },
+    {
+      "name": "Room perimeter",
+      "spec": "Blue bands trace the curved enclosure and connect foreground to stage."
+    },
+    {
+      "name": "Audience",
+      "spec": "Seated silhouettes establish the scale of the room."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wide dark auditorium has blue illuminated perimeter edges and two bright screens at its far end.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

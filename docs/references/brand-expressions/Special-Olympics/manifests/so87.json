@@ -1,0 +1,24 @@
+{
+  "id": "SO87",
+  "title": "Check-list",
+  "image": "so87.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 87
+  },
+  "slide_intent": "Teach a team to review a communication at the stage where a decision can still be changed, from audience choice through final artwork.",
+  "strategic_value": "Special Olympics can connect local briefs with a recognizable identity by checking audience, original assets and production details at separate stages.",
+  "demonstration": "Three columns use empty checkboxes to group questions under Brief, Design and Production. A red introductory note names the three stages.",
+  "category": "Brand",
+  "practical_value": "Use the Brief column before writing, the Design column before composing, and the Production column to inspect details such as captions, mark visibility and type contrast.",
+  "content_islands": [
+    {
+      "name": "Process introduction",
+      "spec": "Set a short red explanation in the left rail describing the sequence from brief through production."
+    },
+    {
+      "name": "Three checklists",
+      "spec": "Align three titled columns with checkbox items. Begin with audience and objectives, move to copy and artwork needs, and end with checks on the finished composition."
+    }
+  ]
+}

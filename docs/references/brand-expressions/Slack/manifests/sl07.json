@@ -1,0 +1,20 @@
+{
+  "id": "SL07",
+  "title": "Connected city",
+  "image": "sl07.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Use a spatial metaphor to show what connects separate places. A central point and lines leading outward let the viewer follow the relationship.",
+  "strategic_value": "Slack can depict coordination among different workplaces through one recognizable connecting device.",
+  "demonstration": "An isometric city in aubergine surrounds a bright central device marked with the Slack symbol. Thin colored lines run out toward the buildings.",
+  "category": "Imagery",
+  "practical_value": "Use a restrained surrounding palette and a few colored routes when a network illustration needs a clear focal point.",
+  "content_islands": [
+    {
+      "name": "Connected cityscape",
+      "spec": "Fill the page with buildings of different heights and shapes on an isometric street grid. Place the pale Slack device near the middle and run narrow colored connections across the darker city."
+    }
+  ]
+}

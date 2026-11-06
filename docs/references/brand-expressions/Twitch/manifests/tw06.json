@@ -1,0 +1,38 @@
+{
+  "id": "TW06",
+  "title": "High Expressive Ratio / Motion study",
+  "image": "tw06.png",
+  "source": "../sources/tw06.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 6,
+    "section": "High Expressive Ratio",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Vary a small set of recognizable ingredients so movement adds range without making the identity disappear.",
+  "strategic_value": "The repeated angular wordmark and purple-linked gradients can support many Twitch expressions with a common visual origin.",
+  "demonstration": "A 65-second study scales, extrudes, moves and repeats the wordmark against changing gradients, returning to simpler white signatures.",
+  "category": "Motion",
+  "practical_value": "Compare restrained signature states with extended depth and repeated wordmarks before deciding how much motion a composition needs.",
+  "content_islands": [
+    {
+      "name": "Signature sequence",
+      "spec": "Keep the angular white wordmark as the recurring subject while its size, position and colored depth change."
+    },
+    {
+      "name": "Color field",
+      "spec": "Let full-frame gradients change behind the signature; later sequences repeat wordmarks across the field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The High Expressive Ratio caption describes achieving expressive range from few elements.",
+    "Expression": "The clip varies scale, extruded depth, color and repetition while retaining the same wordmark."
+  },
+  "ingredient": {
+    "name": "Extruded wordmark",
+    "role": "Turn a familiar signature into an expressive moving graphic.",
+    "application": "Compare flat, extended and repeated signature states shown throughout the film.",
+    "scope": "Observed in the historical COLLINS identity case study; no mandatory dimensions, color proportions or universal placement rule is supplied."
+  },
+  "motion": "../sources/tw06.mp4"
+}

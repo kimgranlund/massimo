@@ -1,0 +1,28 @@
+{
+  "id": "SO45",
+  "title": "Typography · Recommended text sizes",
+  "image": "so45.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 45
+  },
+  "slide_intent": "Show how size and leading work together with column width. Repeating the same passage lets readers judge which setting fits each reading task.",
+  "strategic_value": "A defined range of text settings can give captions, correspondence and introductory paragraphs a consistent hierarchy across publications.",
+  "demonstration": "Three settings repeat one passage: 14 pt type on 21 pt leading above, then 9 on 14 for narrow copy and 10.5 on 16 for wider body copy below.",
+  "category": "Typography",
+  "practical_value": "Choose the introductory or body setting by function and available measure. The note identifies 10.5 on 16 as the standard for correspondence.",
+  "content_islands": [
+    {
+      "name": "Format note",
+      "spec": "Use the left column to explain why document format informs size."
+    },
+    {
+      "name": "Introductory specimen",
+      "spec": "Place the largest example above the others. Attach a label giving its point size, leading and role."
+    },
+    {
+      "name": "Body specimens",
+      "spec": "Set the narrow 9 pt and wider 10.5 pt examples side by side. Add the correspondence note beneath the latter."
+    }
+  ]
+}

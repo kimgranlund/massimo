@@ -1,0 +1,35 @@
+{
+  "id": "TW05",
+  "title": "Validated Versatility",
+  "image": "tw05.png",
+  "source": "../sources/tw05.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 5,
+    "section": "Validated Versatility",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Compare physical and digital encounters because recognition must survive changes in scale and viewing context.",
+  "strategic_value": "Shared purple, creator content and Twitch identification can connect an event audience with the everyday product.",
+  "demonstration": "An annotated board pairs a TwitchCon stage photograph at upper left with a desktop interface at lower right; orange arrows and stage/screen labels connect them.",
+  "category": "Application",
+  "practical_value": "Check which identity cues remain visible between environmental graphics and a dense interface.",
+  "content_islands": [
+    {
+      "name": "Stage photograph",
+      "spec": "Place the purple-lit event and audience at upper left with the orange stage label below."
+    },
+    {
+      "name": "Product screenshot",
+      "spec": "Overlap the lower right with a desktop discovery screen on a purple field."
+    },
+    {
+      "name": "Comparison arrows",
+      "spec": "Connect the stage and screen with orange arrows, retaining the small mark annotation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying caption explains testing identity across touchpoints to retain consistency and recognition.",
+    "Application": "The board explicitly compares a physical event stage with a product screen."
+  }
+}

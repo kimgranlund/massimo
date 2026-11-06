@@ -1,0 +1,41 @@
+{
+  "id": "VZ16",
+  "title": "Grids overview",
+  "image": "vz16.png",
+  "source": "../sources/vz17.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 18,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use alignment to make information easier to find while giving collaborators a common compositional structure.",
+  "strategic_value": "A shared but flexible framework can connect Verizon layouts across projects and channels.",
+  "demonstration": "The September 17, 2019 overview places cyan grid overlays on three compositions, then separates web, email, print and online-advertising grid references.",
+  "category": "Layout",
+  "practical_value": "Start from the applicable channel’s grid rather than applying one fixed grid to every format.",
+  "content_islands": [
+    {
+      "name": "Rationale",
+      "spec": "Place the title/date banner above the paragraph explaining order, collaboration and consistency."
+    },
+    {
+      "name": "Composition examples",
+      "spec": "Pair one tall image-led layout at left with two wide type-and-product layouts at right, retaining all cyan guides."
+    },
+    {
+      "name": "Channel references",
+      "spec": "Align four smaller references for web, email, print and OLA below the channel-specific explanation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text ties grids to navigation, collaboration and consistency.",
+    "Application": "Cyan overlays show alignment across three distinct layouts.",
+    "Constraint": "The source says grids are not one-size-fits-all and directs readers to channel-specific rules."
+  },
+  "ingredient": {
+    "name": "Channel grid",
+    "role": "Organize content into a readable and repeatable structure.",
+    "application": "Use the appropriate channel grid to align text, imagery and brand signatures.",
+    "scope": "Historical overview updated September 17, 2019. The separate detailed channel specifications are not included."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PT20",
+  "title": "As You Like It / Two Gentlemen of Verona",
+  "image": "pt20.png",
+  "source": "../sources/pt20.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 20,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use a visible hierarchy for multiple productions because equal inclusion need not mean equal type size.",
+  "strategic_value": "The large LIKE can create an arresting seasonal poster while smaller blocks retain the second play and practical details.",
+  "demonstration": "A black-framed yellow, orange and white layout gives LIKE most of the field beside narrow Public and date columns.",
+  "category": "Layout",
+  "practical_value": "Compare title emphasis, time and sponsor placement inside a strongly partitioned poster.",
+  "content_islands": [
+    {
+      "name": "Title and time",
+      "spec": "Place AS YOU LIKE IT centrally with the 8 PM block below."
+    },
+    {
+      "name": "Supporting grid",
+      "spec": "Use the left strip for theater and dates, and the bottom bands for sponsors."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black-framed yellow, orange and white layout gives LIKE most of the field beside narrow Public and date columns.",
+    "Application": "The poster accommodates two productions, performance time, theater identification and sponsors in one partitioned layout."
+  }
+}

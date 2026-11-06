@@ -1,0 +1,34 @@
+{
+  "id": "S13",
+  "title": "3.03 / Typography / Gotham",
+  "image": "s13.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Choose a consistent headline voice so readers recognize emphasis before reading the details.",
+  "strategic_value": "Gotham can give Spectrum headlines a recurring modern, approachable character.",
+  "demonstration": "A large Gotham name and character specimen lead five roman/italic weight pairs, with a special restriction on Black.",
+  "category": "Typography",
+  "practical_value": "Select a headline weight and preserve the distinction between normal hierarchy and occasional accents.",
+  "content_islands": [
+    {
+      "name": "Heading and usage notes",
+      "spec": "Set title left, headline role in the middle and font access and Arial fallback notes at upper right."
+    },
+    {
+      "name": "Gotham specimen",
+      "spec": "Place a cyan family name above large uppercase, lowercase, numerals and punctuation."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Align roman and italic weights in parallel columns below, with the Black restriction beside them."
+    }
+  ],
+  "ingredient": {
+    "name": "Gotham",
+    "role": "Give primary and secondary headlines a consistent voice.",
+    "application": "Use Gotham for primary and secondary headlines. Reserve Black for sparse accents, never headlines or body text.",
+    "scope": "2017 retail guide. Arial Regular and Bold are internal-document fallbacks when Gotham and Whitney are unavailable."
+  }
+}

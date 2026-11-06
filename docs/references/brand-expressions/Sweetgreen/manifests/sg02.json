@@ -1,0 +1,31 @@
+{
+  "id": "SG02",
+  "title": "Ode to Cookbooks",
+  "image": "sg02.png",
+  "source": "../sources/sg02.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 2,
+    "section": "Ode to Cookbooks",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Identify a visual heritage that communicates care, because familiar forms of food publishing can make a new identity feel grounded.",
+  "strategic_value": "Annotated historical references can connect Sweetgreen’s contemporary offer to the craft of growing and preparing food.",
+  "demonstration": "A 1922 seed catalogue and Moosewood Cookbook cover sit side by side with orange circles, arrows and handwritten notes.",
+  "category": "Imagery",
+  "practical_value": "Trace a proposed illustration or typography direction to specific reference details rather than copying an entire period style.",
+  "content_islands": [
+    {
+      "name": "Seed catalogue",
+      "spec": "Place the seed catalogue on the left, retaining its typography, field photograph and circled word."
+    },
+    {
+      "name": "Cookbook",
+      "spec": "Place the illustrated cookbook on the right, with the produce drawing circled and handwritten annotations intact."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying Ode to Cookbooks caption links vintage food illustration to comfort, care and lasting quality.",
+    "Expression": "Orange annotations select typography and produce imagery from two historic printed references."
+  }
+}

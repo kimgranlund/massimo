@@ -1,0 +1,31 @@
+{
+  "id": "SG27",
+  "title": "Let nature lead shirt",
+  "image": "sg27.png",
+  "source": "../sources/sg27.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 27,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Choose a concise statement that can carry identity beyond a logo so clothing communicates a point of view.",
+  "strategic_value": "The nature-led phrase can extend Sweetgreen’s values into an object people wear.",
+  "demonstration": "A black shirt lies in dense green vegetation with white serif words Let Nature Lead stacked across it.",
+  "category": "Application",
+  "practical_value": "Compare a values-led garment message with a purely logo-led treatment.",
+  "content_islands": [
+    {
+      "name": "Garment message",
+      "spec": "Keep the three stacked words prominent on the dark shirt."
+    },
+    {
+      "name": "Natural setting",
+      "spec": "Surround the garment with leaves and small yellow flowers."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The brand’s nature-oriented message is applied to a shirt.",
+    "Expression": "White serif text contrasts with the black fabric and green setting."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO30",
+  "title": "Brand mark · Accredited Program mark long name version",
+  "image": "so30.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Show how a long place name can remain readable within a compact identifier. Giving it a deliberate line break preserves its relationship to the parent name.",
+  "strategic_value": "The system can accommodate geographically specific names without asking local programs to shorten their identities.",
+  "demonstration": "The St. Vincent & The Grenadines examples show stacked and single-line alternatives. A left column lists other program names exceeding 16 character spaces.",
+  "category": "Typography",
+  "practical_value": "When a program name exceeds 16 character spaces, choose the prepared long-name version and check its arrangement for the selected medium.",
+  "content_islands": [
+    {
+      "name": "Threshold and names",
+      "spec": "Place the character-count rule and a short set of qualifying names at left."
+    },
+    {
+      "name": "Print adaptations",
+      "spec": "Use one long name across two-line, single-line and centered marks so its wrapping can be compared."
+    },
+    {
+      "name": "Online adaptation",
+      "spec": "Place the symbol-first lockup below the online band. Retain the local name beneath the logotype."
+    }
+  ]
+}

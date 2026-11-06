@@ -1,0 +1,28 @@
+{
+  "id": "SO70",
+  "title": "Banner, backdrops & flags · Vertical banner artwork",
+  "image": "so70.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 70
+  },
+  "slide_intent": "Allocate a stable identifier area and an adaptable lower field on a tall sign. Viewers can recognize the program from a distance before reading details or studying a photograph.",
+  "strategic_value": "A fixed curve and program mark can give Special Olympics banners a family resemblance across venues with different proportions.",
+  "demonstration": "Two main banners reverse the red and white treatment. A third fills the lower field with an athlete photograph. Short and long blue extension diagrams isolate the variable portion.",
+  "category": "Layout",
+  "practical_value": "Choose the white- or red-ground mark, then fit a web address, partner marks or a photograph beneath the curve. Change the lower area to suit the venue.",
+  "content_islands": [
+    {
+      "name": "Adaptation instructions",
+      "spec": "At left identify the program-name substitution and the uses for the remaining banner field."
+    },
+    {
+      "name": "Two colorways and image option",
+      "spec": "Show tall red and white examples with the same mark relationship to the curve. Beside them place a photographed example whose image meets the curve."
+    },
+    {
+      "name": "Proportion diagrams",
+      "spec": "At far right show a short and a tall outline with the header held fixed. Use vertical arrows to identify the adjustable area."
+    }
+  ]
+}

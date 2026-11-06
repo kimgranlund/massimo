@@ -1,0 +1,24 @@
+{
+  "id": "S36",
+  "title": "Photography",
+  "image": "s36.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Mark the switch from written and typographic rules to image selection, giving the reader a clear chapter boundary.",
+  "strategic_value": "The repeated green divider can connect the photography chapter to the other parts of the museum identity.",
+  "demonstration": "The full page uses a dark green field, a small 6.0 section label and a white Photography heading.",
+  "category": "Imagery",
+  "practical_value": "Use the divider to locate image direction, collection reproductions and credit guidance.",
+  "content_islands": [
+    {
+      "name": "Section identifier",
+      "spec": "Place 6.0 and Photography together near the top-left margin."
+    },
+    {
+      "name": "Display heading",
+      "spec": "Repeat Photography at display scale below the identifier. Keep the green field uninterrupted."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "TW11",
+  "title": "Emotes / Eight-card vocabulary",
+  "image": "tw11.png",
+  "source": "../sources/tw11.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 11,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Treat community symbols as a visual vocabulary because familiar reactions can carry meanings that ordinary decoration cannot.",
+  "strategic_value": "Combining faces, gestures and illustrated reactions can make Twitch expression feel rooted in its community.",
+  "demonstration": "Eight labeled emote cards form two rows, alternating pale and black grounds with names such as Kappa, bleedPurple and CoolStoryBob.",
+  "category": "Imagery",
+  "practical_value": "Compare photographic cutouts and illustrated emotes within one repeated display structure.",
+  "content_islands": [
+    {
+      "name": "Top row",
+      "spec": "Pair each of four emote names with its large image on alternating pale and black cards."
+    },
+    {
+      "name": "Bottom row",
+      "spec": "Continue the card rhythm with flame, greeting, robot and pointing-face specimens."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The board mixes photographic faces and illustrated reactions in a labeled eight-card set."
+  }
+}

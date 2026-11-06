@@ -1,0 +1,41 @@
+{
+  "id": "VZ17",
+  "title": "Iconography overview",
+  "image": "vz17.png",
+  "source": "../sources/vz18.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 19,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Give familiar actions a consistent visual shorthand so users can recognize functionality at a glance.",
+  "strategic_value": "An approved icon family can support Verizon recognition while reducing competing symbol styles.",
+  "demonstration": "The February 1, 2021 overview combines a sample icon grid, an annotated Search example, library links, interface examples and presentation-template previews.",
+  "category": "Geometry",
+  "practical_value": "Use the approved library for the channel and request a missing icon instead of creating an unrelated substitute.",
+  "content_islands": [
+    {
+      "name": "Definition and sample set",
+      "spec": "Place the black title banner above the usage policy and three rows of sample outline symbols."
+    },
+    {
+      "name": "Meaning and retrieval",
+      "spec": "Pair the Search specimen with its usability explanation, followed by icon-index and usage cards."
+    },
+    {
+      "name": "Channel examples",
+      "spec": "Show digital navigation and feedback examples, then PowerPoint and Google Slides template previews at the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains that icons convey information at a glance and clarify functionality when used correctly.",
+    "Application": "The page demonstrates icon use in navigation, notifications and presentation templates.",
+    "Constraint": "It restricts use to the system’s icons, asks creators not to make their own, and directs missing-icon requests to the brand team."
+  },
+  "ingredient": {
+    "name": "Approved icon family",
+    "role": "Provide a recognizable shorthand for actions and information.",
+    "application": "Use icons from the system; request a missing symbol. Consult the web/app subset or full Brand Central library as directed.",
+    "scope": "Iconography overview updated February 1, 2021. The full downloadable libraries and templates are not included here."
+  }
+}

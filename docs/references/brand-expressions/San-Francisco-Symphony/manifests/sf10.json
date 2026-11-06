@@ -1,0 +1,31 @@
+{
+  "id": "SF10",
+  "title": "Paired facade banners",
+  "image": "sf10.png",
+  "source": "../sources/sf10.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 10,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Compare positive and reversed identities because changing backgrounds must not break recognition.",
+  "strategic_value": "Paired black and white banners can connect the Symphony name with the venue from the street.",
+  "demonstration": "Two vertical flags carry the Symphony signature in opposite black-and-white treatments against curved architecture and blue sky.",
+  "category": "Application",
+  "practical_value": "Compare contrast and reading direction on vertical exterior banners.",
+  "content_islands": [
+    {
+      "name": "Banner pair",
+      "spec": "Place the white flag beside the dark flag and preserve their vertical signatures."
+    },
+    {
+      "name": "Street context",
+      "spec": "Keep the poles, sky and curved building as scale references."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two vertical flags carry the Symphony signature in opposite black-and-white treatments against curved architecture and blue sky.",
+    "Application": "The source demonstrates two vertical flags carry the Symphony signature in opposite black-and-white treatments against curved architecture and blue sky."
+  }
+}

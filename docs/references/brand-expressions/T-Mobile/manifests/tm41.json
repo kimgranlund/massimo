@@ -1,0 +1,34 @@
+{
+  "id": "TM41",
+  "title": "Neon Don’ts",
+  "image": "tm41.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 41
+  },
+  "slide_intent": "Identify misleading or cluttered effects so a network metaphor does not imply the wrong coverage or direction.",
+  "strategic_value": "Restraint in neon application can keep T-Mobile’s network imagery plausible and readable.",
+  "demonstration": "Four crossed examples show excessive house outlining, an arc, an unnatural monochrome transition and upward-directed beams.",
+  "category": "Imagery",
+  "practical_value": "Remove excess highlights and avoid effects that look like rainbows, skyward transmission or poor coverage.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Place the neon-misuse title at left."
+    },
+    {
+      "name": "Clutter and arc failures",
+      "spec": "Pair two rejected environmental examples across the upper row."
+    },
+    {
+      "name": "Transition and direction failures",
+      "spec": "Place the unnatural wash and vertical-beam examples below with captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Neon restraint",
+    "role": "Keep the network metaphor readable and tied to the scene.",
+    "application": "Avoid outlining every house, rainbow-like arcs, vertical/skyward beams, busy horizons and excessive monochrome coverage.",
+    "scope": "Environmental network imagery; these limits complement the approved neon behaviors."
+  }
+}

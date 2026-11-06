@@ -1,0 +1,26 @@
+{
+  "id": "WH04",
+  "title": "Unfolding the line",
+  "image": "wh04.png",
+  "source": "../sources/zigzag.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 4,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Choose a form with room for multiple associations because a cultural institution needs to communicate more than one subject.",
+  "strategic_value": "The zigzag can connect Whitney’s initial with ideas of movement, urban structure and a non-linear art history.",
+  "demonstration": "Four black diagonal segments make a wide W on an otherwise blank white field.",
+  "category": "Geometry",
+  "practical_value": "Evaluate whether a simple mark can hold a relevant conceptual relationship without requiring pictorial detail.",
+  "content_islands": [
+    {
+      "name": "Zigzag",
+      "spec": "Extend the four alternating diagonal strokes across the white rectangle, keeping the line thin and the background open."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay explicitly connects the zigzag with a non-linear history of art, a pulse and the museum’s urban context.",
+    "Expression": "The isolated black W demonstrates the identity’s thin-line vocabulary."
+  }
+}

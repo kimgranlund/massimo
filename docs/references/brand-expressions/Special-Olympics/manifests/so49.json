@@ -1,0 +1,28 @@
+{
+  "id": "SO49",
+  "title": "Dynamic curve · Construction of layered curves",
+  "image": "so49.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 49
+  },
+  "slide_intent": "Teach designers how to add depth to an edge without losing the form it came from. A repeatable relationship helps the viewer read the layers as one curve.",
+  "strategic_value": "Special Olympics can reproduce a layered version of its signature arc with a consistent silhouette and separation between tonal bands.",
+  "demonstration": "A solid cyan circle and two dotted outlines cross the top and bottom frames of the construction drawing. A numbered red sample at right maps the three resulting areas to their tonal treatments.",
+  "category": "Geometry",
+  "practical_value": "Use a perfect circle for the central arc, then derive the deeper upper and shallower lower arcs by vertically scaling the curve. Use the numbered swatch to assign the light transition, solid light fill and darker gradient.",
+  "content_islands": [
+    {
+      "name": "Construction instructions",
+      "spec": "Place the title above the main diagram and put the geometry and fill instructions in the narrow left column."
+    },
+    {
+      "name": "Arc construction",
+      "spec": "Overlay two dotted outlines on the solid circular guide. Place a square frame at its top and bottom, show the center and radii, and label the lower frame’s X and 2X widths."
+    },
+    {
+      "name": "Tonal sample",
+      "spec": "At upper right, number three bands beside a finished red sample. Place the fill specifications directly beneath the sample."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO25",
+  "title": "Brand architecture",
+  "image": "so25.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Teach communicators to identify who is speaking so a reader can distinguish an organizational program, a local event and an endorsed partner.",
+  "strategic_value": "Special Olympics can allow local identities while keeping the relationship to the international movement visible.",
+  "demonstration": "The upper band pairs the international and program marks with local club examples. Three panels below contrast health and education programs, events and games, and endorsed activities.",
+  "category": "Brand",
+  "practical_value": "Choose the naming and endorsement relationship before commissioning artwork for a new activity.",
+  "content_islands": [
+    {
+      "name": "Strategy column",
+      "spec": "Place the principle and explanation at left. Identify the movement as the primary brand."
+    },
+    {
+      "name": "Organization and teams",
+      "spec": "Set the international and accredited marks together above the activity panels. Place the club and team marks beside them."
+    },
+    {
+      "name": "Relationship panels",
+      "spec": "Build three parallel cards. Pair an actual identifier with naming, identity and example guidance so readers can compare categories."
+    }
+  ]
+}

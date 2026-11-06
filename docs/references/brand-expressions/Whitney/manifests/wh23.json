@@ -1,0 +1,26 @@
+{
+  "id": "WH23",
+  "title": "Responsive W buttons",
+  "image": "wh23.png",
+  "source": "../sources/large_whitney_2013redesign_buttons.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 6,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Allow a mark to carry short messages because small wearable objects need immediate recognition and a reason to engage.",
+  "strategic_value": "Colored phrases inside the W can make Whitney’s merchandise a compact expression of the museum’s range.",
+  "demonstration": "Overlapping round white buttons pair varied W forms with multicolored uppercase phrases.",
+  "category": "Application",
+  "practical_value": "Compare how short phrases and the W share a circular format without losing the institution’s name.",
+  "content_islands": [
+    {
+      "name": "Button field",
+      "spec": "Fill the photograph with overlapping circular badges, retaining cropped badges at the edges and the differently colored text."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official launch caption identifies buttons featuring variants of the responsive W.",
+    "Expression": "The buttons combine black line geometry with bright uppercase phrases."
+  }
+}

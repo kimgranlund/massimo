@@ -1,0 +1,33 @@
+{
+  "id": "O15",
+  "title": "See what you can do — arena screen",
+  "image": "o15.png",
+  "source": "../sources/o15.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 15,
+    "extent": "whole source artwork",
+    "poster_seconds": 4.44,
+    "duration_seconds": 8.07
+  },
+  "slide_intent": "Adapt movement and typography to an architectural display so a message remains readable across a curved surface.",
+  "strategic_value": "O2’s bubble behavior can connect small-screen branding to the arena environment associated with its entertainment offer.",
+  "demonstration": "A curved external arena screen shows bubbles crossing a blue gradient, a centered See what you can do line appearing, and the bubbles continuing after the line clears.",
+  "category": "Motion",
+  "practical_value": "Give the main phrase a readable hold within a moving ambient field when composing for a large display.",
+  "content_islands": [
+    {
+      "name": "Architectural context",
+      "spec": "Retain the cylindrical structure, vertical fins and arena surroundings around the display."
+    },
+    {
+      "name": "Animated screen",
+      "spec": "Wrap the blue field around the curved screen, move bubbles through it and hold the white phrase across the middle."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip applies the soft bubble motion and blue gradient at architectural scale.",
+    "Application": "The identity is demonstrated on a curved arena screen rather than an isolated flat canvas."
+  },
+  "motion": "../sources/o15.mp4"
+}

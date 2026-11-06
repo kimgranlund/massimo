@@ -1,0 +1,30 @@
+{
+  "id": "PT32",
+  "title": "Street posters / The Illustrious Blacks",
+  "image": "pt32.png",
+  "source": "../sources/pt32.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 32,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Evaluate visual variety across neighboring posters because a venue displays several offers at once.",
+  "strategic_value": "A shared framed setting can hold different campaigns together without making their images identical.",
+  "demonstration": "Three freestanding signs recede beside the theater; The Illustrious Blacks dominates the foreground, with Astor season and Alien behind.",
+  "category": "Application",
+  "practical_value": "Compare neighboring campaigns as an environmental sequence rather than isolated designs.",
+  "content_islands": [
+    {
+      "name": "Foreground sign",
+      "spec": "Show the two cropped performer portraits and condensed title."
+    },
+    {
+      "name": "Receding signs",
+      "spec": "Retain the two other campaign panels and the architectural facade."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three freestanding signs recede beside the theater; The Illustrious Blacks dominates the foreground, with Astor season and Alien behind.",
+    "Application": "Three outdoor display frames show different campaigns side by side along the theater facade."
+  }
+}

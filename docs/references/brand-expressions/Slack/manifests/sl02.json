@@ -1,0 +1,24 @@
+{
+  "id": "SL02",
+  "title": "Hello.",
+  "image": "sl02.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Set a conversational expectation with a greeting readers might hear from a person. Its brevity leaves space for a reader to enter the book.",
+  "strategic_value": "Slack can make its friendly tone tangible before giving formal instructions. The waving hand and short welcome provide the example.",
+  "demonstration": "A waving hand sits above a large greeting and a shorter welcome on a pale field. All three align near the lower left.",
+  "category": "Voice",
+  "practical_value": "For an opening page, compare the warmth and brevity of this greeting with the information that can wait until the contents page.",
+  "content_islands": [
+    {
+      "name": "Waving hand",
+      "spec": "Place the small waving-hand emoji above the greeting and leave the upper field open."
+    },
+    {
+      "name": "Greeting and welcome",
+      "spec": "Stack the oversized greeting and smaller welcome on one left edge near the bottom of the pale page."
+    }
+  ]
+}

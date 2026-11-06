@@ -1,0 +1,32 @@
+{
+  "id": "SL25",
+  "title": "Secondary colors",
+  "image": "sl25.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Teach designers how to broaden a palette while preserving foreground legibility. Pairing each swatch with the intended text color makes an implementation choice visible.",
+  "strategic_value": "Slack can expand the range of background colors while keeping its core colors dominant and its text treatment consistent.",
+  "demonstration": "A matrix of secondary swatches shows print and screen values in black or white type. The adjacent guidance reserves these colors for limited use alongside the core palette and excludes secondary colors from text.",
+  "category": "Color",
+  "practical_value": "When selecting a secondary background, use the specimen to choose its foreground and retain the limited role assigned to secondary colors.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Secondary-use guidance",
+      "spec": "Set two short paragraphs at left covering foreground selection and limited use with core colors."
+    },
+    {
+      "name": "Secondary swatch matrix",
+      "spec": "At right, align four columns of color tiles with their PMS, CMYK, RGB and hex specifications inside. Leave the last row shorter than the preceding four and retain its neutral swatches."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SG04",
+  "title": "Signature Illustration",
+  "image": "sg04.png",
+  "source": "../sources/sg04.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 4,
+    "section": "Signature Illustration ",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Show a family of illustrations so viewers can recognize a common voice across many stories.",
+  "strategic_value": "Repeated relationships between produce and people can give Sweetgreen variety without losing familiarity.",
+  "demonstration": "A regular field of small scenes combines colorful vegetables, line-drawn people, buildings and serving vessels on a warm neutral background.",
+  "category": "Imagery",
+  "practical_value": "Check whether new subjects retain the same contrast between richly colored food and fine-line supporting elements.",
+  "content_islands": [
+    {
+      "name": "Illustration family",
+      "spec": "Arrange the small scenes in rows with enough separation to compare their shared visual language."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Signature Illustration caption describes food as hero and humans as stewards.",
+    "Expression": "The illustrated family repeats saturated produce with small outlined figures.",
+    "Application": "Multiple scenes demonstrate the same drawing vocabulary across different subjects."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "S19",
+  "title": "4.03 / Legal Language",
+  "image": "s19.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Make attribution and review responsibilities explicit so a communication can be traced to its source and offer.",
+  "strategic_value": "Consistent attribution can help Spectrum manage material produced across many retail partners.",
+  "demonstration": "Three ruled rows organize trademark attribution, copyright statements and review notes.",
+  "category": "Voice",
+  "practical_value": "Identify which supporting text and review process belong with a creative asset, while checking current requirements separately.",
+  "content_islands": [
+    {
+      "name": "Title and page-level note",
+      "spec": "Place the title upper left and the instruction about a legal attribution line above the rows."
+    },
+    {
+      "name": "Attribution and review table",
+      "spec": "Align cyan row headings at left with explanatory gray text at right; retain the sample 2017 copyright line in the middle row."
+    }
+  ]
+}

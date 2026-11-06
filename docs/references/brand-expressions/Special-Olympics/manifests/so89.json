@@ -1,0 +1,28 @@
+{
+  "id": "SO89",
+  "title": "Artwork naming protocol",
+  "image": "so89.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 89
+  },
+  "slide_intent": "Show how an asset name can help a designer identify the intended program, lockup and reproduction version before opening the file.",
+  "strategic_value": "Special Olympics can support distributed teams with predictable filenames that distinguish visually similar master artworks.",
+  "demonstration": "An example filename runs across a blue panel. Brackets connect its segments to labels and lists of available program, asset, orientation, color and format codes.",
+  "category": "Brand",
+  "practical_value": "Parse the sample name into fields and use the same order to select a program-specific artwork with the needed ink and file format.",
+  "content_islands": [
+    {
+      "name": "Naming instruction",
+      "spec": "Place the instruction for master artworks in the left rail."
+    },
+    {
+      "name": "Annotated filename",
+      "spec": "Place the full example on a white strip within the pale blue panel. Connect each segment by brackets to its meaning above or below."
+    },
+    {
+      "name": "Code examples",
+      "spec": "Stack example abbreviations under the associated labels. Keep optional descriptor examples distinct from the actual filename shown."
+    }
+  ]
+}

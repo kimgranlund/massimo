@@ -1,0 +1,36 @@
+{
+  "id": "PT19",
+  "title": "Free Love / Shakespeare in the Park",
+  "image": "pt19.png",
+  "source": "../sources/pt19.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 19,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make a phrase serve both invitation and theme because a short message can carry more than scheduling information.",
+  "strategic_value": "The pink field and rounded red FREE LOVE can frame the season as welcoming and romantic.",
+  "demonstration": "Large rotated red FREE LOVE sits on pink inside a border of play titles, sponsors and practical details.",
+  "category": "Voice",
+  "practical_value": "Compare a thematic invitation with the smaller factual information that supports it.",
+  "content_islands": [
+    {
+      "name": "Main invitation",
+      "spec": "Run FREE LOVE and IN CENTRAL PARK along the long axis."
+    },
+    {
+      "name": "Information frame",
+      "spec": "Contain the show names, Public signature and sponsor details around the edges."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large rotated red FREE LOVE sits on pink inside a border of play titles, sponsors and practical details.",
+    "Intent": "Pentagram describes the 2007 romantic-comedy season as Free Love and its type as italicized and rounded."
+  },
+  "ingredient": {
+    "name": "Free Love invitation",
+    "role": "Connect a free-performance offer with a romantic theme.",
+    "application": "Pair the thematic invitation with the specific play names and practical details, as shown here.",
+    "scope": "2007 Shakespeare in the Park campaign example; not a permanent voice rule."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SL18",
+  "title": "Our logo",
+  "image": "sl18.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Teach designers to account for the space a logo will occupy. A compact stack and a horizontal signature have different implications for legibility.",
+  "strategic_value": "Slack can preserve its symbol and wordmark as a stable pair while using a stacked lockup at larger sizes.",
+  "demonstration": "The page presents the primary horizontal signature and a stacked version. Pale symbols and shapes around the two specimens indicate the surrounding space.",
+  "category": "Brand",
+  "practical_value": "Use the horizontal lockup for most placements and consider the stacked version when the available size supports it.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Lockup guidance",
+      "spec": "Place the composition, typeface and size guidance in a narrow left column."
+    },
+    {
+      "name": "Lockup comparison",
+      "spec": "Stack the horizontal and vertical signatures on the right. Use pale reference shapes around the edges so the comparison includes the space around each arrangement."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

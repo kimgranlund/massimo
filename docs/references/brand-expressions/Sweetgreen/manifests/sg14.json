@@ -1,0 +1,32 @@
+{
+  "id": "SG14",
+  "title": "Finding a bit of each season",
+  "image": "sg14.png",
+  "source": "../sources/sg14.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 14,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Give seasonal change a consistent narrative form so new ingredients feel like chapters in the same story.",
+  "strategic_value": "Repeating the phrase and changing the produce can make Sweetgreen’s seasonal offer recognizable over time.",
+  "demonstration": "Four animated scenes pair spring peas, summer watermelon, autumn produce and winter squash with small outlined people and variations of Finding a bit of the season.",
+  "category": "Motion",
+  "practical_value": "Retain a verbal pattern while letting illustration and type placement respond to each seasonal subject.",
+  "content_islands": [
+    {
+      "name": "Seasonal words",
+      "spec": "Position the repeated phrase around each central illustration, changing the season name."
+    },
+    {
+      "name": "Illustrated action",
+      "spec": "Give the person a different physical relationship to each oversized ingredient."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The complete clip changes produce, small character actions and text arrangement across four seasons.",
+    "Application": "The same campaign phrase is applied to spring, summer, autumn and winter."
+  },
+  "motion": "../sources/sg14.mp4"
+}

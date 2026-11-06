@@ -1,0 +1,38 @@
+{
+  "id": "SF29",
+  "title": "Explore hover behavior",
+  "image": "sf29.png",
+  "source": "../sources/sf29.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 29,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Carry expression into small interactions because recognition can be reinforced at the moment someone chooses an action.",
+  "strategic_value": "Changing letter heights inside Explore can make a routine control feel related to the Symphony’s larger identity.",
+  "demonstration": "A cursor passes across an outlined Explore button; individual letters change height while the border remains stable.",
+  "category": "Motion",
+  "practical_value": "Keep the control boundary stable while testing a restrained typographic response.",
+  "content_islands": [
+    {
+      "name": "Button",
+      "spec": "Center the thin outlined rectangle and white Explore label on black."
+    },
+    {
+      "name": "Cursor response",
+      "spec": "Retain the cursor indicator and changing letter heights as it crosses and leaves the control."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A cursor passes across an outlined Explore button; individual letters change height while the border remains stable.",
+    "Application": "The source demonstrates a cursor passes across an outlined Explore button; individual letters change height while the border remains stable."
+  },
+  "motion": "../sources/sf29.mp4",
+  "ingredient": {
+    "name": "Explore letter response",
+    "role": "Carry expression into small interactions.",
+    "application": "Keep the control boundary stable while testing a restrained typographic response.",
+    "scope": "Observed case-study example; no universal numeric rule is supplied."
+  }
+}

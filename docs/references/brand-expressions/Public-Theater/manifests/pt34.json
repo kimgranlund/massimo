@@ -1,0 +1,30 @@
+{
+  "id": "PT34",
+  "title": "Street posters / Oedipus El Rey",
+  "image": "pt34.png",
+  "source": "../sources/pt34.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 34,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test dark-ground campaigns beside other treatments because contrast choices operate within a changing environment.",
+  "strategic_value": "The pale hands and gold title can distinguish this production while a consistent sign structure maintains the venue connection.",
+  "demonstration": "A black foreground poster shows two hands holding a chain above OEDIPUS EL REY; two lighter or differently imaged signs recede behind.",
+  "category": "Application",
+  "practical_value": "Compare a dark campaign panel against the same physical frames used by other productions.",
+  "content_islands": [
+    {
+      "name": "Foreground composition",
+      "spec": "Keep the pale hands and chain above the tall title on black."
+    },
+    {
+      "name": "Companion signs",
+      "spec": "Retain the Illyria and Office Hour panels in the background."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black foreground poster shows two hands holding a chain above OEDIPUS EL REY; two lighter or differently imaged signs recede behind.",
+    "Application": "The dark Oedipus El Rey campaign occupies the same outdoor sign format as neighboring lighter treatments."
+  }
+}

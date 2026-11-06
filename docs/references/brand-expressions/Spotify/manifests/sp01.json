@@ -1,0 +1,35 @@
+{
+  "id": "SP01",
+  "title": "Artist identity inside the listening interface",
+  "image": "sp01.png",
+  "source": "../sources/sp01.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 1,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/bb3d47b627b326d22d12edef00372bb3d70f1922-2880x3600.png"
+  },
+  "category": "Application",
+  "slide_intent": "Connect expressive artist imagery to a usable listening surface so discovery feels personal and the next action stays clear.",
+  "strategic_value": "Spotify can carry campaign energy into its product through the bright Bad Bunny portrait while the dark track list remains readable.",
+  "demonstration": "A hand holds a tilted phone against a blue-to-green field. A red and purple artist header sits above a dark track list and green play control.",
+  "practical_value": "Judge how much expressive color a product header can carry before it competes with navigation.",
+  "content_islands": [
+    {
+      "name": "Artist header",
+      "spec": "The upper phone screen combines a close portrait, vivid red field and green Bad Bunny title."
+    },
+    {
+      "name": "Listening controls",
+      "spec": "The lower screen uses dark rows and a green play button to turn recognition into listening."
+    },
+    {
+      "name": "Physical context",
+      "spec": "A hand and diagonal device frame show the identity at handheld scale against a color field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A hand holds a tilted phone against a blue-to-green field. A red and purple artist header sits above a dark track list and green play control.",
+    "Application": "The source shows this identity in a mobile listening interface."
+  }
+}

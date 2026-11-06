@@ -1,0 +1,31 @@
+{
+  "id": "SP17",
+  "title": "Color across architectural planes",
+  "image": "sp17.png",
+  "source": "../sources/sp17.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 17,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/9abee840fe4a9172c50d8a7d2c46fe63c97e8dc9-2400x1920.png"
+  },
+  "category": "Color",
+  "slide_intent": "Use light to distinguish adjacent surfaces because spatial color can direct attention and create atmosphere without adding text.",
+  "strategic_value": "Spotify can turn a circulation edge into part of the event identity through magenta and blue light.",
+  "demonstration": "A cropped architectural corner contrasts a magenta opening with a deep-blue plane and bright base lighting.",
+  "practical_value": "Compare color separation at an edge before applying a palette to an entire room.",
+  "content_islands": [
+    {
+      "name": "Magenta opening",
+      "spec": "The left opening provides a bright warm-color edge."
+    },
+    {
+      "name": "Blue plane",
+      "spec": "The large right surface catches a triangular light gradient above a luminous base."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A cropped architectural corner contrasts a magenta opening with a deep-blue plane and bright base lighting.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

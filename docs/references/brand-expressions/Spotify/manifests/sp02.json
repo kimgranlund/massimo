@@ -1,0 +1,39 @@
+{
+  "id": "SP02",
+  "title": "3P IP Adapter: Lens",
+  "image": "sp02.png",
+  "source": "../sources/sp02.gif",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 2,
+    "extent": "Representative frame; complete local animation linked",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/7e969f5a6a39a01a9da429c07c8b7d5df689a4b7-2000x1333.gif",
+    "poster": "GIF frame 9 at 5.4 seconds"
+  },
+  "category": "Imagery",
+  "slide_intent": "Give unrelated artist photographs a shared treatment because listeners need to recognize the platform without losing the people who make its music.",
+  "strategic_value": "Spotify can make supplied artist portraits feel like one collection through the repeated duotone treatment.",
+  "demonstration": "The 10.8-second animation layers differently proportioned artist portraits, changing crops, scale and two-color treatments.",
+  "practical_value": "Compare whether a color treatment survives changes in subject, source lighting and portrait orientation.",
+  "content_islands": [
+    {
+      "name": "Portrait stack",
+      "spec": "Rectangular artist photographs overlap at the center; changing sizes preserve traces of previous images."
+    },
+    {
+      "name": "Duotone treatment",
+      "spec": "Contrasting light and dark colors replace natural photographic color across the sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The 10.8-second animation layers differently proportioned artist portraits, changing crops, scale and two-color treatments.",
+    "Intent": "The adjacent Lens caption states that duotone treatment gives third-party artist photography a recognizable Spotify appearance and draws on music screen-printing history."
+  },
+  "motion": "../sources/sp02.mp4",
+  "ingredient": {
+    "name": "Duotone Lens",
+    "role": "Give unrelated artist photographs a shared treatment because listeners need to recognize the platform without losing the people who make its music.",
+    "application": "The 10.8-second animation layers differently proportioned artist portraits, changing crops, scale and two-color treatments.",
+    "scope": "Observed case-study example. The source does not establish a universal required construction, timing, pairing or placement rule."
+  }
+}

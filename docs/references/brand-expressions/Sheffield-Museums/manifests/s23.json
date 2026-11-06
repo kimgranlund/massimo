@@ -1,0 +1,25 @@
+{
+  "id": "S23",
+  "title": "Site social media icons",
+  "image": "s23.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 23,
+    "printed_page": 22
+  },
+  "slide_intent": "Show how a distinctive detail can stand in for a full venue name when a platform reduces a profile image to a small circle.",
+  "strategic_value": "The venues can carry their individual line devices and colors into social accounts while retaining a shared icon format.",
+  "demonstration": "Six labeled circular icons pair each venue color with a line detail from its mark. The text specifies 180 px square source files for platforms that crop profiles into circles.",
+  "category": "Application",
+  "practical_value": "Use the site-specific icon for a venue account and preserve its color and line motif through the circular crop.",
+  "content_islands": [
+    {
+      "name": "Profile guidance",
+      "spec": "Set the page heading and note about source size and cropping at left."
+    },
+    {
+      "name": "Venue icon family",
+      "spec": "Arrange the six icons in two rows of three at equal scale. Label each with its venue name so the reader can match line detail and color to the site."
+    }
+  ]
+}

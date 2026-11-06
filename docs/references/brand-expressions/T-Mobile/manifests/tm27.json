@@ -1,0 +1,30 @@
+{
+  "id": "TM27",
+  "title": "Leading & Kerning",
+  "image": "tm27.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Use a letter-based spacing unit so multiline headlines remain readable as they scale.",
+  "strategic_value": "Spacing derived from TeleNeo can give T-Mobile headlines consistent rhythm across media.",
+  "demonstration": "Two magenta headlines on black show cap lines, baselines and spacing based on the arm of E.",
+  "category": "Typography",
+  "practical_value": "Measure leading from the displayed letter anatomy and inspect for crowding instead of tightening letters until they touch.",
+  "content_islands": [
+    {
+      "name": "Spacing explanation",
+      "spec": "Place leading and kerning guidance in a white left column."
+    },
+    {
+      "name": "Measured headline examples",
+      "spec": "Stack two magenta headlines on black with baseline/cap-line guides and E-arm measurements."
+    }
+  ],
+  "ingredient": {
+    "name": "TeleNeo spacing",
+    "role": "Separate lines and letters enough for a headline to read clearly.",
+    "application": "Use the E arm as the leading unit; examples show 1.5 arm units between lines. Keep kerning generally at zero points for static headlines and prevent touching letters.",
+    "scope": "Static headline guidance; baseline and cap line define the measurement boundaries."
+  }
+}

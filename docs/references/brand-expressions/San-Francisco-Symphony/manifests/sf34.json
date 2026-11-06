@@ -1,0 +1,38 @@
+{
+  "id": "SF34",
+  "title": "Mozart typography tool",
+  "image": "sf34.png",
+  "source": "../sources/sf34.gif",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 34,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Expose reusable controls because a flexible identity needs a practical method for producing coherent variants.",
+  "strategic_value": "A visible typography tool can make the Symphony’s changing letterforms repeatable by its designers.",
+  "demonstration": "A tool demonstration cycles Mozart through ten size and slant arrangements on a black canvas beside a control panel.",
+  "category": "Application",
+  "practical_value": "Compare preset shapes and letter arrangements while keeping the same word as a test case.",
+  "content_islands": [
+    {
+      "name": "Preview canvas",
+      "spec": "Keep Mozart large on the black canvas at left through all ten states."
+    },
+    {
+      "name": "Control panel",
+      "spec": "Preserve the right-side shape presets and sliders without inventing unreadable parameter values."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A tool demonstration cycles Mozart through ten size and slant arrangements on a black canvas beside a control panel.",
+    "Application": "The source demonstrates a tool demonstration cycles Mozart through ten size and slant arrangements on a black canvas beside a control panel."
+  },
+  "motion": "../sources/sf34.mp4",
+  "ingredient": {
+    "name": "Variable typography controls",
+    "role": "Expose reusable controls.",
+    "application": "Compare preset shapes and letter arrangements while keeping the same word as a test case.",
+    "scope": "Observed case-study example; no universal numeric rule is supplied."
+  }
+}

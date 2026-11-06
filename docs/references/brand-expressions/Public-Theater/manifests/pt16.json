@@ -1,0 +1,29 @@
+{
+  "id": "PT16",
+  "title": "Henry V / Timon of Athens",
+  "image": "pt16.png",
+  "source": "../sources/pt16.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 16,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let type scale communicate hierarchy because a title and a performance time have different reading jobs.",
+  "strategic_value": "The enormous V and 8 PM can make the poster both dramatic and practical.",
+  "demonstration": "Black lettering fills an orange-to-yellow field with a dominant V above TIMON OF ATHENS and a large 8 PM at left.",
+  "category": "Typography",
+  "practical_value": "Compare expressive title letters with an unusually prominent time cue.",
+  "content_islands": [
+    {
+      "name": "Upper title and time",
+      "spec": "Make V the main mass, with HENRY above and 8 PM beside it."
+    },
+    {
+      "name": "Lower program",
+      "spec": "Stack TIMON OF ATHENS below and fit supporting information into narrow edge columns."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Black lettering fills an orange-to-yellow field with a dominant V above TIMON OF ATHENS and a large 8 PM at left."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "SF23",
+  "title": "November / December program spread",
+  "image": "sf23.png",
+  "source": "../sources/sf23.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 23,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Separate navigation, titles and descriptive copy because a dense schedule must support quick scanning and close reading.",
+  "strategic_value": "Large month numerals and compact columns can carry Symphony character without sacrificing program detail.",
+  "demonstration": "A two-page program spread uses three columns per page, oversized 11 and 12 numerals, condensed titles and smaller body copy.",
+  "category": "Layout",
+  "practical_value": "Assign distinct typographic roles to months, dates, program names and descriptions.",
+  "content_islands": [
+    {
+      "name": "Month markers",
+      "spec": "Keep the large 11 at upper left and 12 on the right page as navigation landmarks."
+    },
+    {
+      "name": "Program columns",
+      "spec": "Preserve six columns of dates, headlines, descriptions and performer details."
+    },
+    {
+      "name": "Folio",
+      "spec": "Retain the November/December labels and printed pages 28–29 at the foot."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A two-page program spread uses three columns per page, oversized 11 and 12 numerals, condensed titles and smaller body copy.",
+    "Application": "The source demonstrates a two-page program spread uses three columns per page, oversized 11 and 12 numerals, condensed titles and smaller body copy."
+  },
+  "ingredient": {
+    "name": "Program hierarchy",
+    "role": "Separate navigation, titles and descriptive copy.",
+    "application": "Assign distinct typographic roles to months, dates, program names and descriptions.",
+    "scope": "Observed case-study example; no universal numeric rule is supplied."
+  }
+}

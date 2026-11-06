@@ -1,0 +1,33 @@
+{
+  "id": "NS09",
+  "title": "Sportswear HO19 / Explore Strada portrait layout",
+  "image": "ns09.png",
+  "source": "../sources/ns09.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 9,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Tie a short promise to a visible use setting so viewers can connect a product name with an everyday activity.",
+  "strategic_value": "The exploration message and stair-side footwear can position Explore Strada as ready for movement through ordinary surroundings.",
+  "demonstration": "A taped photograph shows black-and-lime shoes on steps; the product name sits in the frame, with a short exploration headline below.",
+  "category": "Voice",
+  "practical_value": "Evaluate whether a campaign phrase has a concrete visual counterpart rather than relying on copy alone.",
+  "content_islands": [
+    {
+      "name": "Product on steps",
+      "spec": "Place the close-up of shoes and legs within the taped pale frame."
+    },
+    {
+      "name": "Supporting surroundings",
+      "spec": "Layer lime texture, teal surfaces and smaller wearer photographs behind the frame."
+    },
+    {
+      "name": "Name and promise",
+      "spec": "Keep the brush-like product name in the frame and the white headline, supporting line and signature below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A taped photograph shows black-and-lime shoes on steps; the product name sits in the frame, with a short exploration headline below."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SL26",
+  "title": "Accessible color combinations",
+  "image": "sl26.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Teach designers to judge a text color with its background and type size. A pair that reads as a headline can become difficult to distinguish at small sizes.",
+  "strategic_value": "Slack can retain aubergine and blue in its communications while reserving their combination for text with sufficient visual prominence.",
+  "demonstration": "A two-column matrix repeats foreground/background labels at two typographic emphases. The accompanying note singles out small blue text on aubergine as an exception to the guide’s contrast guidance.",
+  "category": "Color",
+  "practical_value": "When labeling an aubergine field with small type, compare the white specimen with the blue headline treatment. Use the guide’s size restriction when choosing the foreground.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Set the title at upper left above a thin horizontal rule."
+    },
+    {
+      "name": "Usage note",
+      "spec": "Set a short paragraph in the left column. State the small-type exception beside the swatches it qualifies."
+    },
+    {
+      "name": "Combination matrix",
+      "spec": "Align nine color cells in two columns on the right, with a single final cell in the left column. Start with black and aubergine grounds, follow with two light grays, then show black on blue. Repeat each cell’s label on two lines so the text itself demonstrates the pairing."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Place the folio, book title and section name beneath a fine rule at the foot of the page."
+    }
+  ]
+}

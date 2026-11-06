@@ -1,0 +1,25 @@
+{
+  "id": "S08",
+  "title": "Sheffield Museums logo",
+  "image": "s08.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 8,
+    "printed_page": 7
+  },
+  "slide_intent": "Introduce the master mark as the institution’s signature so a designer can recognize the complete artwork before applying it.",
+  "strategic_value": "The seal can connect the identity with Sheffield Museums’ history while giving the organization one recognizable mark across media.",
+  "demonstration": "An enlarged black circular seal appears at right. Copy connects it with people and place and mentions master artwork, animation and embossed or debossed print treatments.",
+  "category": "Brand",
+  "practical_value": "Use the supplied master artwork when applying the trust signature and consult the application pages for use in context.",
+  "content_islands": [
+    {
+      "name": "Heading and signature guidance",
+      "spec": "Place the title and a narrow column of explanatory copy at upper left. Keep the notes about reproduction methods beside the description of the mark."
+    },
+    {
+      "name": "Master mark specimen",
+      "spec": "Present the complete black seal on white at right, large enough to inspect the outer circle, lettering and central linework."
+    }
+  ]
+}

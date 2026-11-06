@@ -1,0 +1,25 @@
+{
+  "id": "S53",
+  "title": "What's On Guide – square images",
+  "image": "s53.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 53,
+    "printed_page": 52
+  },
+  "slide_intent": "Teach designers how to fit an alternative image proportion into a familiar publication series so its identity survives the change.",
+  "strategic_value": "Sheffield Museums can use square photographs across quarterly covers while retaining the same title and navigational cues.",
+  "demonstration": "The three quarterly covers repeat the pink, blue and green grounds. Centered square images leave visible color on either side beneath the title.",
+  "category": "Layout",
+  "practical_value": "Choose this treatment when the subject works better in a square crop and preserve enough margin around the image to make the format intentional.",
+  "content_islands": [
+    {
+      "name": "Shared masthead",
+      "spec": "Across three portrait covers, align the quarter, circular seal and large white What’s On title."
+    },
+    {
+      "name": "Square-photo treatment",
+      "spec": "Center one square photo below each title with color visible on all sides. Fit the venue list, entry information and website into the remaining area at the foot."
+    }
+  ]
+}

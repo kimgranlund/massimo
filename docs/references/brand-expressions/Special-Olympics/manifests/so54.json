@@ -1,0 +1,28 @@
+{
+  "id": "SO54",
+  "title": "Accredited Program mark application · Quick guide",
+  "image": "so54.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 54
+  },
+  "slide_intent": "Place a program identity so both its affiliation and its name remain legible. The extra line of type changes the boundary the designer must protect.",
+  "strategic_value": "Special Olympics can support local program identification while preserving the same file, placement and contrast discipline used for the international mark.",
+  "demonstration": "Four horizontal checks pair instructions with file icons, corner placements, a clearance diagram and ground examples. The lockup examples include the program name.",
+  "category": "Brand",
+  "practical_value": "Check clearance around the entire program lockup. Choose the two-color version on white or a single-color treatment with sufficient contrast.",
+  "content_islands": [
+    {
+      "name": "Production and position",
+      "spec": "Use large red numerals beside the first two rows. Align the EPS and PNG guidance, corner diagrams and measured program placement to the right."
+    },
+    {
+      "name": "Program clearance",
+      "spec": "Show the program-name line beneath the wordmark inside the enlarged clearance diagram."
+    },
+    {
+      "name": "Background tests",
+      "spec": "Group acceptable and crossed examples into two-color and single-color columns. Retain the program name in the small specimens."
+    }
+  ]
+}

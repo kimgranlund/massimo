@@ -1,0 +1,24 @@
+{
+  "id": "SL49",
+  "title": "Use requirements and terms",
+  "image": "sl49.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 49
+  },
+  "slide_intent": "Give the reader a place to find the administrative conditions that accompany the creative rules. A single ordered list makes differences in purpose easier to scan.",
+  "strategic_value": "Slack can finish its policy section with ownership, changes of terms and a contact route in one location.",
+  "demonstration": "Seven lettered clauses address conformity, modifications, discretion, termination, rights, warranties and questions. The warranty paragraph uses capital letters within the otherwise mixed-case block.",
+  "category": "Brand",
+  "practical_value": "Use the lettered structure to locate a particular condition in this edition and use the final contact item for questions about the guidelines.",
+  "content_islands": [
+    {
+      "name": "Requirements and rights",
+      "spec": "Stack clauses a through e beneath the heading in the upper-left column. Keep the labels in a narrow hanging indent."
+    },
+    {
+      "name": "Warranty and contact",
+      "spec": "Set the warranty clause in capitals and return to sentence case for the contact item below. Preserve the compact measures and open right field."
+    }
+  ]
+}

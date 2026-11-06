@@ -1,0 +1,31 @@
+{
+  "id": "TW07",
+  "title": "Wordmark / Depth and color animation",
+  "image": "tw07.png",
+  "source": "../sources/tw07.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 7,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Preserve recognizable letterforms while changing their surrounding depth so the viewer can follow identity through a transition.",
+  "strategic_value": "The short transition can connect Twitch’s simple signature with its more expressive gradient treatment.",
+  "demonstration": "The white wordmark expands into colored depth on black, then resolves as a white-and-black signature on purple.",
+  "category": "Motion",
+  "practical_value": "Distinguish the stable letterform from the changing depth and background.",
+  "content_islands": [
+    {
+      "name": "Black-ground opening",
+      "spec": "Center the white signature and briefly expand a colored extrusion beneath it."
+    },
+    {
+      "name": "Purple-ground resolution",
+      "spec": "Resolve to the smaller white signature with black depth on a solid purple field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation moves between a flat signature, gradient extrusion and a simpler purple-ground state."
+  },
+  "motion": "../sources/tw07.mp4"
+}

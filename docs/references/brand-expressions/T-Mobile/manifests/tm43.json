@@ -1,0 +1,34 @@
+{
+  "id": "TM43",
+  "title": "T-Connector Don’ts",
+  "image": "tm43.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 43
+  },
+  "slide_intent": "Show where a connecting device breaks down so readers can distinguish meaningful relationships from arbitrary juxtaposition.",
+  "strategic_value": "Consistent scale, color and content pairing can preserve the clarity of T-Mobile’s connector layout.",
+  "demonstration": "Four crossed examples reject an oversized crop, repeated T-Digits, a black T and unrelated imagery.",
+  "category": "Layout",
+  "practical_value": "Check symbol count, full-height fit, approved color and the reason the two fields belong together.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Place the connector-misuse title at left."
+    },
+    {
+      "name": "Scale and repetition failures",
+      "spec": "Pair oversized and repeated connector examples across the upper row."
+    },
+    {
+      "name": "Color and content failures",
+      "spec": "Place black-symbol and unrelated-image examples in the lower row."
+    }
+  ],
+  "ingredient": {
+    "name": "T-Connector limits",
+    "role": "Preserve a clear single connection between related fields.",
+    "application": "Do not crop the T-Digit or exceed image height; use one symbol in magenta or white and avoid unrelated image pairs.",
+    "scope": "T-Connector layouts, distinct from other approved large T-Digit applications."
+  }
+}

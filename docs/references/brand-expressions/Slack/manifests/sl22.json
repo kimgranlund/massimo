@@ -1,0 +1,32 @@
+{
+  "id": "SL22",
+  "title": "Logo misuse",
+  "image": "sl22.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Teach reviewers to identify which aspect of a signature has changed. Side-by-side mistakes make specific discrepancies easier to diagnose.",
+  "strategic_value": "Slack can keep the mark consistent by showing the effect of altering color, type, geometry and image treatment.",
+  "demonstration": "Ten rows pair a short instruction with an altered logo. Examples include cropping, transparency, palette changes, distorted proportions, shadows and a rotated component.",
+  "category": "Brand",
+  "practical_value": "Identify the change in a proposed file by matching it to the examples, then return to the supplied lockup artwork.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Changes to the signature",
+      "spec": "Place five instructions on a pale vertical strip at left and align a corresponding altered signature beside each."
+    },
+    {
+      "name": "Distortion and treatment",
+      "spec": "Repeat the five-row arrangement in the right half. Pair each instruction with its own specimen so a reviewer can isolate the change."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

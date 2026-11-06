@@ -1,0 +1,34 @@
+{
+  "id": "S22",
+  "title": "5.02 / Physical Directories",
+  "image": "s22.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Select identity contrast in context so a visitor can locate the store among competing signs.",
+  "strategic_value": "A readable mark can maintain Spectrum’s visibility on both light and dark tenant boards.",
+  "demonstration": "Two rows compare logo variants on photographed directory panels; red diagonals identify the weak-contrast choices.",
+  "category": "Application",
+  "practical_value": "Choose the variant from the physical background rather than from a preferred logo color alone.",
+  "content_islands": [
+    {
+      "name": "Heading and explanation",
+      "spec": "Place the title upper left and physical-directory guidance above the comparisons."
+    },
+    {
+      "name": "Light-surface comparison",
+      "spec": "Pair two light directory photographs across the upper row; cross out the reverse logo."
+    },
+    {
+      "name": "Dark-surface comparison",
+      "spec": "Pair two dark directory photographs below; cross out the deep-blue logo."
+    }
+  ],
+  "ingredient": {
+    "name": "Directory logo contrast",
+    "role": "Help visitors distinguish the Spectrum tenant listing.",
+    "application": "Use the Deep Blue logo on a white or light surface and the Reverse logo on a dark surface.",
+    "scope": "Physical mall directories shown in this 2017 guide."
+  }
+}

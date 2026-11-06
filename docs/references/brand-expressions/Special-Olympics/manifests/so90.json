@@ -1,0 +1,28 @@
+{
+  "id": "SO90",
+  "title": "List of standard templates & artworks (07.11)",
+  "image": "so90.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 90
+  },
+  "slide_intent": "Route people to templates that suit their tools and production task so they can modify an appropriate master.",
+  "strategic_value": "Special Olympics can support local offices and professional designers with different file types while keeping the same artwork available to both.",
+  "demonstration": "A format note explains PNG and EPS. A list of Office templates sits beside ruled professional asset lists covering marks, palette, stationery, banners and clothing.",
+  "category": "Application",
+  "practical_value": "Choose an Office template for a locally editable letter or report. For custom print, consult the professional list and its cross-references for the appropriate master.",
+  "content_islands": [
+    {
+      "name": "Format notes",
+      "spec": "Use the left column for the roles of PNG and EPS, including the scalability of EPS artwork."
+    },
+    {
+      "name": "Office templates",
+      "spec": "Group letterhead, presentation, fact sheet and report cover together. Name the file type and available page reference beside each."
+    },
+    {
+      "name": "Professional artwork index",
+      "spec": "Run the professional assets across the two right columns. Separate entries with rules and keep the application or master-file information attached to its asset."
+    }
+  ]
+}

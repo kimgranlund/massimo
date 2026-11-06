@@ -1,0 +1,34 @@
+{
+  "id": "TW19",
+  "title": "Desktop / Discover",
+  "image": "tw19.png",
+  "source": "../sources/tw19.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 19,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Separate platform navigation from varied content so viewers can find their way without losing the richness of the catalogue.",
+  "strategic_value": "Restrained purple cues can connect Twitch’s light interface to the more expressive identity surrounding it.",
+  "demonstration": "A light desktop Discover screen places navigation and followed channels around a featured game and a row of live-channel cards.",
+  "category": "Application",
+  "practical_value": "Compare where brand color supports navigation and where content imagery leads.",
+  "content_islands": [
+    {
+      "name": "Navigation frame",
+      "spec": "Keep the top controls and left channel list distinct from the main content area."
+    },
+    {
+      "name": "Discovery content",
+      "spec": "Place a featured game above recommended live-channel cards inside the light interface."
+    },
+    {
+      "name": "Presentation ground",
+      "spec": "Set the screenshot on a pale-to-purple field that remains outside the product UI."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity is shown within a light desktop discovery interface."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "WH03",
+  "title": "Bus shelter poster proposal",
+  "image": "wh03.png",
+  "source": "../sources/busshelter-poster.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 3,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Test a mark beside real artwork at street scale because recognition and exhibition content must remain legible together.",
+  "strategic_value": "A thin W above the Glenn Ligon image can identify the museum while leaving the work visually dominant.",
+  "demonstration": "A street photograph contains a bus shelter montage with Whitney, exhibition text, a W and a dark artwork reproduction.",
+  "category": "Application",
+  "practical_value": "Compare identity area and artwork area within an outdoor format; treat this as a 2012 proposal rather than an installed campaign.",
+  "content_islands": [
+    {
+      "name": "Street setting",
+      "spec": "Retain the shelter, pavement and surrounding buildings as scale context."
+    },
+    {
+      "name": "Poster",
+      "spec": "Place the white identity and title band above the dark artwork within the shelter frame."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The source caption explicitly identifies a possible bus shelter poster montage from 2012.",
+    "Intent": "The accompanying essay explains the museum’s commitment to artwork primacy and single-image exhibition promotion."
+  }
+}

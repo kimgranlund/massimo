@@ -1,0 +1,30 @@
+{
+  "id": "PT04",
+  "title": "Street flags",
+  "image": "pt04.png",
+  "source": "../sources/pt04.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 4,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test identity at a distance because a street encounter offers little reading time.",
+  "strategic_value": "Large vertical lettering and circular badges can identify the theater along a busy streetscape.",
+  "demonstration": "A diagonal street photograph shows red badge flags and a white PUBLIC banner projecting from the building.",
+  "category": "Application",
+  "practical_value": "Judge how emblem scale and banner proportions work above pedestrian level.",
+  "content_islands": [
+    {
+      "name": "Foreground flag",
+      "spec": "Place the large red flag with three badges against the blue sky."
+    },
+    {
+      "name": "Street repetition",
+      "spec": "Retain the white wordmark banner and smaller flags receding along the facade."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A diagonal street photograph shows red badge flags and a white PUBLIC banner projecting from the building.",
+    "Application": "The photograph places the wordmark and venue badges on projecting street flags."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO50",
+  "title": "Dynamic curve · Positioning the mark",
+  "image": "so50.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 50
+  },
+  "slide_intent": "Teach designers to adjust the prominence of the mark to the viewing task. A small identifier can sign a printed page, while a sign may need the name itself to lead.",
+  "strategic_value": "Special Olympics can retain the same curved division across print and signage while varying how much space belongs to the mark.",
+  "demonstration": "Five print layouts set small marks in white fields along the top, base or side of a blue field. A separate group of three signs increases the mark’s share of the available area.",
+  "category": "Layout",
+  "practical_value": "Decide how large the mark should be and which edge can house it. Check the sign examples when the identifier needs to carry the message.",
+  "content_islands": [
+    {
+      "name": "Heading and usage notes",
+      "spec": "Place the red device name above the gray positioning title. Set two small illustrated notes in the left column, one on protecting the mark and one on sign scale."
+    },
+    {
+      "name": "Print placements",
+      "spec": "Under the print label, place two upright samples above a row of three wide samples. Keep the blue field dominant and set the mark in the white area formed by the arc."
+    },
+    {
+      "name": "Sign placements",
+      "spec": "Group three sign formats inside a dotted box at upper right. Compare tall, wide and short proportions and enlarge the program mark relative to the print samples."
+    }
+  ]
+}

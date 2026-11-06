@@ -1,0 +1,24 @@
+{
+  "id": "S27",
+  "title": "6.02 / Store Locator",
+  "image": "s27.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Give contributors one place to obtain local details so customers receive consistent addresses and opening hours.",
+  "strategic_value": "A shared lookup source can reduce conflicting store information across Spectrum retail materials.",
+  "demonstration": "A short locator instruction sits over a large webpage screenshot with a location search and United States map.",
+  "category": "Application",
+  "practical_value": "Use a store locator as the source for local information rather than copying it from unrelated collateral.",
+  "content_islands": [
+    {
+      "name": "Heading and locator direction",
+      "spec": "Place the title upper left and lookup instruction to its right."
+    },
+    {
+      "name": "Locator screenshot",
+      "spec": "Place the large webpage capture in the lower middle, retaining search controls, map and site navigation."
+    }
+  ]
+}

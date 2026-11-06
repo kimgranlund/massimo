@@ -1,0 +1,34 @@
+{
+  "id": "TM17",
+  "title": "Logo Lockups Overview",
+  "image": "tm17.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Distinguish affiliation from partnership so viewers can understand how names belong together.",
+  "strategic_value": "Consistent lockups can clarify the relationship between T-Mobile and its products, programs and external partners.",
+  "demonstration": "The master wordmark sits above six labeled lockup categories, with a pipe separating an external partner.",
+  "category": "Brand",
+  "practical_value": "Determine whether the entity is a T-Mobile offering or an external partner before selecting the lockup pattern.",
+  "content_islands": [
+    {
+      "name": "Relationship guidance",
+      "spec": "Place the explanatory text and portal reference at left."
+    },
+    {
+      "name": "Master brand",
+      "spec": "Center the full wordmark above the examples."
+    },
+    {
+      "name": "Lockup categories",
+      "spec": "Arrange labeled line-of-business, product, service, program, campaign and partnership specimens below."
+    }
+  ],
+  "ingredient": {
+    "name": "Lockup separation",
+    "role": "Show whether an entity belongs to T-Mobile or collaborates with it.",
+    "application": "Use a T-Digit lockup for approved internal categories; separate an external partner with a pipe.",
+    "scope": "Only the official categories listed on this page; use approved assets."
+  }
+}

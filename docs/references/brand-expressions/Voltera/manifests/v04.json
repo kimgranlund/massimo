@@ -1,0 +1,28 @@
+{
+  "id": "V04",
+  "title": "How do we want to be described?",
+  "image": "v04.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Give designers a way to translate desired audience impressions into concrete reference images.",
+  "strategic_value": "Voltera can use four agreed impressions to evaluate design choices against its stated ambitions for the brand.",
+  "demonstration": "The text attributes the goals to 2025 interviews. Four images and captions associate quality, reliability, premium design and delight with distinct visual references.",
+  "category": "Brand",
+  "practical_value": "Select an image or message by identifying which of the four impressions it supports and how.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 4 in a blue tab at lower right."
+    },
+    {
+      "name": "Interview context",
+      "spec": "Place a short account of the interviews beneath the headline."
+    },
+    {
+      "name": "Four impressions",
+      "spec": "Align four rounded photographs and captions in one row: a machined detail, watch gears, a car and a brightly lit passage. Give each a quality name and short explanation."
+    }
+  ]
+}

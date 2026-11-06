@@ -1,0 +1,31 @@
+{
+  "id": "SP18",
+  "title": "Blue corridor",
+  "image": "sp18.png",
+  "source": "../sources/sp18.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 18,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/7406df473d127a459cfe15805a1d2b5c3ab730a5-2400x1920.png"
+  },
+  "category": "Application",
+  "slide_intent": "Carry a visual cue through the route to an event because the approach can prepare people for the experience ahead.",
+  "strategic_value": "Spotify can maintain a coherent event atmosphere between performance spaces through repeated blue edge light.",
+  "demonstration": "A narrow dark corridor recedes between blue-lit walls with cyan illumination near the floor.",
+  "practical_value": "Consider which architectural edges can establish direction and continuity.",
+  "content_islands": [
+    {
+      "name": "Receding walls",
+      "spec": "Dark wall planes create a narrow passage and a strong perspective."
+    },
+    {
+      "name": "Light path",
+      "spec": "Blue and cyan edge lighting traces the lower walls into the distance."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A narrow dark corridor recedes between blue-lit walls with cyan illumination near the floor.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

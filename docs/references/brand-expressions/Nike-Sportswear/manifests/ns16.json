@@ -1,0 +1,33 @@
+{
+  "id": "NS16",
+  "title": "Run HO19 / Winflo Shield window rendering",
+  "image": "ns16.png",
+  "source": "../sources/ns16.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 16,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Recompose a campaign for its display setting because a large window changes the relationship between text and imagery.",
+  "strategic_value": "Moving the Winflo copy onto the photograph can let the activity fill the shop window while preserving product identification.",
+  "demonstration": "The window rendering expands the runner and shoe inset across the display; white copy sits over the image rather than in the separate left column of NS12.",
+  "category": "Application",
+  "practical_value": "Compare the window execution with the flat layout to judge text contrast and retained image relationships.",
+  "content_islands": [
+    {
+      "name": "Window composition",
+      "spec": "Fill the recessed display with the running image and larger shoe inset at right."
+    },
+    {
+      "name": "Overlay information",
+      "spec": "Place white product text and a solid Swoosh at upper left; retain the large outline Swoosh across the photographs."
+    },
+    {
+      "name": "Storefront frame",
+      "spec": "Keep the surrounding dark facade, pavement and partial store entrance visible."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The window rendering expands the runner and shoe inset across the display; white copy sits over the image rather than in the separate left column of NS12."
+  }
+}

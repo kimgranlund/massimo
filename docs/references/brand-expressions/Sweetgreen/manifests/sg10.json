@@ -1,0 +1,32 @@
+{
+  "id": "SG10",
+  "title": "App signature animation",
+  "image": "sg10.png",
+  "source": "../sources/sg10.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 10,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Connect compact and full signatures through a visible transition so a small-screen abbreviation remains understandable.",
+  "strategic_value": "Animating sg into sweetgreen can connect the app’s compact identity with the full brand name.",
+  "demonstration": "A diagonal phone with a vivid yellow-green screen sits among cut produce; its lettering changes between sg and sweetgreen.",
+  "category": "Motion",
+  "practical_value": "Evaluate how the short and long names relate within a loading or introductory screen.",
+  "content_islands": [
+    {
+      "name": "Phone",
+      "spec": "Center the angled phone and strawberry on the pale ground."
+    },
+    {
+      "name": "Signature transition",
+      "spec": "Animate the small green letters on the vivid screen while the surrounding produce remains in place."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip shows the short signature expanding and contracting into the full wordmark.",
+    "Application": "The signature transition is presented on a mobile screen."
+  },
+  "motion": "../sources/sg10.mp4"
+}

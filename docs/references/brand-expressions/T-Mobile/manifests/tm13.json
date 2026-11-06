@@ -1,0 +1,38 @@
+{
+  "id": "TM13",
+  "title": "Trademark, Spacing & Sizing",
+  "image": "tm13.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Give a mark room and sufficient size so people can distinguish its parts at the intended viewing scale.",
+  "strategic_value": "Shared spacing and size limits can keep T-Mobile marks legible across production formats.",
+  "demonstration": "Three mark variants are shown with notice symbols, clear-space boxes and print/digital minimum sizes.",
+  "category": "Geometry",
+  "practical_value": "Measure logo margins with the digit unit and check the minimum for the chosen mark and medium.",
+  "content_islands": [
+    {
+      "name": "Notice and disclaimer rules",
+      "spec": "Place the media-specific explanation and disclaimer at left."
+    },
+    {
+      "name": "Notice examples",
+      "spec": "Align full logo, T-Digit and badge across the top."
+    },
+    {
+      "name": "Clear-space diagrams",
+      "spec": "Repeat the three marks in measured boxes in the middle."
+    },
+    {
+      "name": "Minimum sizes",
+      "spec": "Show small specimens and their print/digital labels along the bottom."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo clear space and minimum size",
+    "role": "Keep the brand mark distinct from surrounding content.",
+    "application": "Reserve at least two square digits around the lockup and T-Digit. Minimum full-logo width is 1 inch print or 72 px digital; T-Digit is .25 inch or 18 px; badge is .30 inch or 24 px.",
+    "scope": "The three illustrated brand marks and their stated print/digital uses."
+  }
+}

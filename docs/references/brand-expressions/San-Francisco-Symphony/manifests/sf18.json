@@ -1,0 +1,30 @@
+{
+  "id": "SF18",
+  "title": "Collaborative partner ensemble poster",
+  "image": "sf18.png",
+  "source": "../sources/sf18.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 18,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Show relationships among participants because an initiative is easier to grasp when people appear as a group.",
+  "strategic_value": "A shared portrait field can present the Symphony’s collaborators as a collective rather than unrelated acts.",
+  "demonstration": "A pale exterior poster groups cutout portraits and angled names beneath the Symphony signature.",
+  "category": "Layout",
+  "practical_value": "Compare individual portrait prominence within one collective composition.",
+  "content_islands": [
+    {
+      "name": "Portrait constellation",
+      "spec": "Arrange the cutout heads and names across the central pale field."
+    },
+    {
+      "name": "Institutional frame",
+      "spec": "Keep the signature at the top and the hall information along the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A pale exterior poster groups cutout portraits and angled names beneath the Symphony signature."
+  }
+}

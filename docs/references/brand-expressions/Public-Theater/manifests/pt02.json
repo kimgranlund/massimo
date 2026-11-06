@@ -1,0 +1,30 @@
+{
+  "id": "PT02",
+  "title": "The Public Theater / Vertical signature",
+  "image": "pt02.png",
+  "source": "../sources/pt02.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 2,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use orientation and scale to make a name occupy a narrow format because recognition must survive restricted space.",
+  "strategic_value": "A large vertical PUBLIC can claim attention while the smaller red words retain the full institutional name.",
+  "demonstration": "A vertical black PUBLIC fills a white strip with red THE above and THEATER below.",
+  "category": "Typography",
+  "practical_value": "Compare the vertical historical signature with PT01’s horizontal revision.",
+  "content_islands": [
+    {
+      "name": "Primary word",
+      "spec": "Turn PUBLIC down the long axis."
+    },
+    {
+      "name": "Supporting name",
+      "spec": "Keep the red THE and THEATER at opposing ends."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A vertical black PUBLIC fills a white strip with red THE above and THEATER below.",
+    "Intent": "Pentagram connects the original active, unconventional street typography to accessible and innovative performances."
+  }
+}

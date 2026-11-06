@@ -1,0 +1,33 @@
+{
+  "id": "U02",
+  "title": "Welcome",
+  "image": "u02.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Establish who the rules serve and who approves their use so partners know how to produce accountable communications.",
+  "strategic_value": "The partner and sponsor framing can protect Uber’s identity when another organization leads the creative work.",
+  "demonstration": "An introduction and approval requirement sit beside a four-section contents list covering logo, color, typography and assets.",
+  "category": "Brand",
+  "practical_value": "Determine whether a project falls within this partner guide and route partner-led creative for the stated approval.",
+  "content_islands": [
+    {
+      "name": "Welcome heading",
+      "spec": "Place the section heading at the upper left."
+    },
+    {
+      "name": "Audience and approval",
+      "spec": "Group the partner/sponsor audience, two assistance goals and pre-approval statement in the left column."
+    },
+    {
+      "name": "Contents",
+      "spec": "Align the numbered four-section outline in the right column; keep subtopics beneath their parent sections."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The introduction says the guide safeguards the brand and helps partners reference it correctly and access correct assets.",
+    "Application": "The page identifies partner and sponsor communications as its working context.",
+    "Constraint": "The page requires all partner-led creatives to be pre-approved by the Uber brand team."
+  }
+}

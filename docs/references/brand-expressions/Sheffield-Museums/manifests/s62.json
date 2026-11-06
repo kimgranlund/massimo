@@ -1,0 +1,25 @@
+{
+  "id": "S62",
+  "title": "Signage development examples",
+  "image": "s62.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 62,
+    "printed_page": 61
+  },
+  "slide_intent": "Teach designers to place identifying marks, arrows and service information where they can be read on signs of very different sizes.",
+  "strategic_value": "Kelham Island Museum can use the same blue field and white lettering at pedestrian and building scale while adapting the message to the location.",
+  "demonstration": "A freestanding sign pairs the venue name and arrow with amenities. A large wall panel pairs the venue name and arrow with the circular museum seal.",
+  "category": "Application",
+  "practical_value": "Put local amenities on the smaller sign where a visitor can stop and read them. Give the large identifier a shorter reading sequence.",
+  "content_islands": [
+    {
+      "name": "Pedestrian sign",
+      "spec": "Frame the blue sign within the industrial site. Stack the name above the arrow, then list the nearby amenities below."
+    },
+    {
+      "name": "Wall identification",
+      "spec": "Use a narrower photograph beside the first. Show the circular seal above the large venue mark and directional arrow on the blue wall."
+    }
+  ]
+}

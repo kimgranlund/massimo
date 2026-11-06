@@ -1,0 +1,30 @@
+{
+  "id": "TM39",
+  "title": "Neon",
+  "image": "tm39.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 39
+  },
+  "slide_intent": "Give an invisible service a visible metaphor so people can picture connection across places and devices.",
+  "strategic_value": "Magenta neon can link T-Mobile’s network message to its established color while adding spatial drama.",
+  "demonstration": "A collage combines a neon T, city and neighborhood lighting, a device interaction, beams and a glowing US outline.",
+  "category": "Imagery",
+  "practical_value": "Use neon as a supporting network cue while retaining flat magenta as the primary color treatment.",
+  "content_islands": [
+    {
+      "name": "Metaphor and scope",
+      "spec": "Explain network connection and the supplemental-treatment boundary in the left column."
+    },
+    {
+      "name": "Neon example collage",
+      "spec": "Arrange the large outlined T beside environmental and device examples, with beams and graphic outlines below."
+    }
+  ],
+  "ingredient": {
+    "name": "Magenta neon",
+    "role": "Make network connection visible through light tracing environments.",
+    "application": "Use as an accent; in motion let it follow landscape, building and road contours. Keep flat magenta primary.",
+    "scope": "Static and motion network expression; this PDF contains still examples, not playable animation."
+  }
+}

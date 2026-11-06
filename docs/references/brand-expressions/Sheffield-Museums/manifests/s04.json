@@ -1,0 +1,25 @@
+{
+  "id": "S04",
+  "title": "Introduction",
+  "image": "s04.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 4,
+    "printed_page": 3
+  },
+  "slide_intent": "Explain why the components belong together. Designers need a shared basis for making choices across six venues with different identities.",
+  "strategic_value": "The manual can connect the six venues to one institution while giving designers a reason to apply its guidance creatively.",
+  "demonstration": "Two large paragraphs beneath the title define the identity as a system and describe the role of consistency. The text occupies the left side of a mostly open white page.",
+  "category": "Brand",
+  "practical_value": "Use this page to brief a designer on the scope of the guidelines before choosing individual elements.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Set the section label above the title at left and place the folio at upper right."
+    },
+    {
+      "name": "Purpose statement",
+      "spec": "Set the two paragraphs in large type in one left column. Separate the explanation of the system from the statement of what the guidelines enable."
+    }
+  ]
+}

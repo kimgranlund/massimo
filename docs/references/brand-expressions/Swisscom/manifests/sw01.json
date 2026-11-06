@@ -1,0 +1,34 @@
+{
+  "id": "SW01",
+  "title": "Dynamic symbol — hero video poster",
+  "image": "sw01.png",
+  "source": "../sources/sw01.webp",
+  "location": {
+    "source_order": 1,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Show how an enlarged fragment can carry a recognizable identity before the viewer reads a name.",
+  "strategic_value": "The red and blue surfaces can make Swisscom’s symbol a recurring visual reference even when the complete lockup is absent.",
+  "demonstration": "The supplied static video poster crops a red-and-blue folded form against white, placing the form at the left and leaving the right half largely open. No movement is observable in the saved image.",
+  "category": "Brand",
+  "practical_value": "Compare the recognition supplied by the colored surfaces with the space available for other content; this poster does not establish animation timing.",
+  "content_islands": [
+    {
+      "name": "Cropped form",
+      "spec": "Place the enlarged red and blue surfaces against the left edge, extending beyond the top and bottom of the frame."
+    },
+    {
+      "name": "Open white field",
+      "spec": "Leave the right half white so the curved colored edges remain distinct."
+    }
+  ],
+  "ingredient": {
+    "name": "Cropped dynamic symbol",
+    "role": "Provide an expressive brand cue through the symbol’s color and curved surfaces.",
+    "application": "Use an enlarged crop as demonstrated here, retaining a clear white field beside it.",
+    "scope": "An observed hero-poster composition from the Moving Brands case study, not a prescribed crop or motion rule."
+  },
+  "reference_purposes": {
+    "Expression": "The poster presents the red and blue curved surfaces at large scale on white."
+  }
+}

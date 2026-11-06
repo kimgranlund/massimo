@@ -1,0 +1,32 @@
+{
+  "id": "S23",
+  "title": "5.03 / Sample Location / Sky View Mall",
+  "image": "s23.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Review a local journey across media so identity remains identifiable from approach to lookup.",
+  "strategic_value": "Related Spectrum placements can connect a physical mall visit with digital discovery.",
+  "demonstration": "A tall physical-directory photograph, digital-signage photograph and two online-directory captures sit in three columns.",
+  "category": "Application",
+  "practical_value": "Compare the amount of identity retained by a physical panel, a screen listing and a web directory.",
+  "content_islands": [
+    {
+      "name": "Location heading",
+      "spec": "Set the section title with the italic Sky View Mall name directly below."
+    },
+    {
+      "name": "Physical directory",
+      "spec": "Place the tall photograph in the left column with its medium label above."
+    },
+    {
+      "name": "Digital signage",
+      "spec": "Place the wide directory-screen photograph in the middle column."
+    },
+    {
+      "name": "Online directory",
+      "spec": "Stack the two website captures in the right column under one medium label."
+    }
+  ]
+}

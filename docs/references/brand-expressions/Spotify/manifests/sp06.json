@@ -1,0 +1,36 @@
+{
+  "id": "SP06",
+  "title": "Twelve color and shape combinations",
+  "image": "sp06.png",
+  "source": "../sources/sp06.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 6,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/eef98d3acb5b043ad5a7c244dc5ef930c7ad184f-2400x1920.png"
+  },
+  "category": "Color",
+  "slide_intent": "Show variation together because viewers can distinguish a coherent range from unrelated visual styles by comparison.",
+  "strategic_value": "Spotify can support many moods while retaining its centered symbol-and-wordmark anchor.",
+  "demonstration": "A three-column, four-row grid combines twelve color arrangements with circles, angular cuts and stepped shapes.",
+  "practical_value": "Compare the range of pairings while holding logo size and placement approximately constant.",
+  "content_islands": [
+    {
+      "name": "Twelve specimens",
+      "spec": "Equal rectangular cells repeat the logo while changing background geometry and color."
+    },
+    {
+      "name": "Common signature",
+      "spec": "A centered Spotify lockup establishes the constant across the grid."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A three-column, four-row grid combines twelve color arrangements with circles, angular cuts and stepped shapes."
+  },
+  "ingredient": {
+    "name": "Color and shape combinations",
+    "role": "Show variation together because viewers can distinguish a coherent range from unrelated visual styles by comparison.",
+    "application": "A three-column, four-row grid combines twelve color arrangements with circles, angular cuts and stepped shapes.",
+    "scope": "Observed case-study example. The source does not establish a universal required construction, timing, pairing or placement rule."
+  }
+}

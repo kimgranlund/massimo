@@ -1,0 +1,30 @@
+{
+  "id": "S18",
+  "title": "4.02 / Product Naming",
+  "image": "s18.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Name related services consistently so customers can distinguish them without learning a new vocabulary in each placement.",
+  "strategic_value": "The repeated Spectrum prefix can tie individual services and bundles to the parent identity.",
+  "demonstration": "Five ruled rows pair service descriptions with the names Spectrum TV, Spectrum Internet, Spectrum Voice, Spectrum Triple Play and Spectrum Double Play.",
+  "category": "Voice",
+  "practical_value": "Apply a common naming structure and distinguish single services from bundles.",
+  "content_islands": [
+    {
+      "name": "Heading and naming guidance",
+      "spec": "Place the heading left with a short consistency note above the rows."
+    },
+    {
+      "name": "Service-name mapping",
+      "spec": "Stack five rows with small service explanations at left and large quoted product names at right."
+    }
+  ],
+  "ingredient": {
+    "name": "Spectrum product names",
+    "role": "Identify the service while keeping its parent brand visible.",
+    "application": "Use the complete names shown, including the Spectrum prefix and approved bundle names.",
+    "scope": "Products and bundles documented in August 2017; this is an archival naming system."
+  }
+}

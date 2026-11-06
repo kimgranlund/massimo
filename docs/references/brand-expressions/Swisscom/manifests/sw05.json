@@ -1,0 +1,33 @@
+{
+  "id": "SW05",
+  "title": "Rooftop identification",
+  "image": "sw05.png",
+  "source": "../sources/sw05.webp",
+  "location": {
+    "source_order": 7,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Translate a screen-oriented dimensional form into physical signage so it remains identifiable in its surroundings.",
+  "strategic_value": "A consistent symbol and wordmark can connect Swisscom’s built environment with its printed and digital identity.",
+  "demonstration": "A low-angle photograph shows the red-and-blue symbol beside large dark blue Swisscom letters on a rooftop, with support posts and an overcast sky visible.",
+  "category": "Application",
+  "practical_value": "Compare symbol, lettering, support structure and sky as one sign composition rather than evaluating the logo in isolation.",
+  "content_islands": [
+    {
+      "name": "Symbol and wordmark sign",
+      "spec": "Place the dimensional symbol to the left of the large freestanding wordmark and preserve the photographed alignment."
+    },
+    {
+      "name": "Roof and supports",
+      "spec": "Retain the roof edge, support posts and small human figure beneath the lettering as physical-scale evidence."
+    },
+    {
+      "name": "Sky backdrop",
+      "spec": "Keep the pale overcast sky behind the sign so its silhouette and depth remain visible."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The colored symbol and blue wordmark become dimensional architectural objects.",
+    "Application": "The rooftop photograph demonstrates the identity mounted at building scale."
+  }
+}

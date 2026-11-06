@@ -1,0 +1,29 @@
+{
+  "id": "NS03",
+  "title": "Sportswear HO19 / Zoom 2K repeated shoe collage",
+  "image": "ns03.png",
+  "source": "../sources/ns03.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 3,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Use repetition and rotation to make a static product image feel active while keeping the shoe recognizable.",
+  "strategic_value": "The five white shoe cutouts can give Zoom 2K an energetic visual rhythm without requiring a new photographic scene.",
+  "demonstration": "Five shoe cutouts fan upward across a grainy, folded-paper background within a pale border.",
+  "category": "Imagery",
+  "practical_value": "Compare how repeated silhouettes create direction and depth in a single still image.",
+  "content_islands": [
+    {
+      "name": "Repeated footwear",
+      "spec": "Arrange five overlapping shoe views from the large lower foreground toward the upper background."
+    },
+    {
+      "name": "Textured field",
+      "spec": "Keep the distressed gray paper texture behind the cutouts and a pale border around the composition."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five shoe cutouts fan upward across a grainy, folded-paper background within a pale border."
+  }
+}

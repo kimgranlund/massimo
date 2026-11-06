@@ -1,0 +1,39 @@
+{
+  "id": "SF19",
+  "title": "IRL / Sound On / Mood stories",
+  "image": "sf19.png",
+  "source": "../sources/sf19.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 19,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Give short messages distinct color relationships because repetition can preserve recognition while allowing different moods.",
+  "strategic_value": "Three animated color pairings can broaden the Symphony’s expressive voice beyond black and white.",
+  "demonstration": "Three social frames pair IRL with olive and ochre, Sound On with pink and red, and Mood with blue and green; letter heights and slants change.",
+  "category": "Color",
+  "practical_value": "Compare color pairings alongside typographic behavior before selecting a social treatment.",
+  "content_islands": [
+    {
+      "name": "Three color fields",
+      "spec": "Keep the three adjacent social frames as one comparison."
+    },
+    {
+      "name": "Animated words",
+      "spec": "Preserve each short phrase and its separate changes in height and slant."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three social frames pair IRL with olive and ochre, Sound On with pink and red, and Mood with blue and green; letter heights and slants change.",
+    "Application": "The source demonstrates three social frames pair IRL with olive and ochre, Sound On with pink and red, and Mood with blue and green; letter heights and slants change.",
+    "Intent": "The main case-study text links an expanded palette to the Bay Area and to the emotional range of symphonic music."
+  },
+  "motion": "../sources/sf19.mp4",
+  "ingredient": {
+    "name": "Contrasting social color pairs",
+    "role": "Give short messages distinct color relationships.",
+    "application": "Compare color pairings alongside typographic behavior before selecting a social treatment.",
+    "scope": "Observed case-study example; no universal numeric rule is supplied."
+  }
+}

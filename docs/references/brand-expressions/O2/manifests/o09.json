@@ -1,0 +1,36 @@
+{
+  "id": "O09",
+  "title": "Gradient family on outdoor posters",
+  "image": "o09.png",
+  "source": "../sources/o09.jpg",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 9,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Hold composition steady while varying color so a viewer can compare a palette’s expressive range.",
+  "strategic_value": "Repeated O2 marks and layouts can keep outdoor panels connected even when their gradients differ.",
+  "demonstration": "Six adjacent outdoor panels repeat a large O2 mark and small baseline copy over gradients that vary in lightness and lower accent hue.",
+  "category": "Color",
+  "practical_value": "Compare mark/background contrast across a family of color variants before applying them to a series.",
+  "content_islands": [
+    {
+      "name": "Street context",
+      "spec": "Keep the paving, bridge structure and cast shadows around the row of panels."
+    },
+    {
+      "name": "Six-panel comparison",
+      "spec": "Align the O2 signatures and bottom copy across six equal panels, varying the gradient and switching the mark between blue and white where shown."
+    }
+  ],
+  "ingredient": {
+    "name": "Gradient poster field",
+    "role": "Give a repeated brand composition variation without changing its structure.",
+    "application": "Keep the logo and copy in repeated positions while selecting a contrasting blue or white mark for each field.",
+    "scope": "Observed six-poster mockup in the 2023 refresh; the examples do not establish numerical contrast thresholds."
+  },
+  "reference_purposes": {
+    "Expression": "Six gradients vary from pale blue to warm, green and cyan accents.",
+    "Application": "The repeated signature and baseline copy demonstrate the palette in an outdoor poster series."
+  }
+}

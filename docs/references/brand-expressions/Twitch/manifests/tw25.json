@@ -1,0 +1,35 @@
+{
+  "id": "TW25",
+  "title": "Emotes / Layered game animation",
+  "image": "tw25.png",
+  "source": "../sources/tw25.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 25,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Use familiar play conventions to organize motion so visual variety can feel like participation rather than unrelated decoration.",
+  "strategic_value": "A game-like arrangement of Glitch, emotes and score labels can connect Twitch’s graphic system with its gaming heritage.",
+  "demonstration": "An animated rectangular playfield stacks into repeated outlined layers while emote arrangements, colors and labels such as Power-up!, Yoshi and Sonic change.",
+  "category": "Motion",
+  "practical_value": "Compare the stable playfield frame with the changing emotes, labels and palette before adding further moving elements.",
+  "content_islands": [
+    {
+      "name": "Foreground playfield",
+      "spec": "Keep a thin outlined rectangle with small Twitch identification, emotes and corner labels."
+    },
+    {
+      "name": "Repeated layers",
+      "spec": "Offset copies of the playfield to create a rippling stack behind the front plane."
+    },
+    {
+      "name": "Changing states",
+      "spec": "Change background hues, emote formations and score-like labels throughout the clip."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip combines emotes, game references, changing colors and a layered playfield effect."
+  },
+  "motion": "../sources/tw25.mp4"
+}

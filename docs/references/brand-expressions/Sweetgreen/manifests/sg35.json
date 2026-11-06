@@ -1,0 +1,30 @@
+{
+  "id": "SG35",
+  "title": "Team uniform signature",
+  "image": "sg35.png",
+  "source": "../sources/sg35.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 35,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make staff identification clear at conversational distance so the person serving food visibly belongs to the brand.",
+  "strategic_value": "The small bright wordmark can make Sweetgreen’s uniform recognizable without competing with the worker.",
+  "demonstration": "A cropped staff portrait pairs a green shirt with a small yellow-green wordmark and a plain black apron.",
+  "category": "Application",
+  "practical_value": "Assess signature size and contrast relative to uniform layers.",
+  "content_islands": [
+    {
+      "name": "Shirt signature",
+      "spec": "Place the small wordmark at the center of the green chest."
+    },
+    {
+      "name": "Apron and portrait",
+      "spec": "Keep the black apron and close crop as the physical context."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The wordmark is applied to a staff shirt worn beneath an apron."
+  }
+}

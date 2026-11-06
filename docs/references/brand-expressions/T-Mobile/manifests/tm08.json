@@ -1,0 +1,28 @@
+{
+  "id": "TM08",
+  "title": "Core Brand Elements",
+  "image": "tm08.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Identify the few repeatable recognition cues so designers understand which elements carry continuity.",
+  "strategic_value": "The logo, T-Digit, magenta and mnemonic can connect T-Mobile encounters across visual and audio media.",
+  "demonstration": "A large wordmark sits above three labeled specimens: the T-Digit, a magenta swatch and a sound waveform.",
+  "category": "Brand",
+  "practical_value": "Check whether a composition uses an appropriate core cue before adding supporting treatments.",
+  "content_islands": [
+    {
+      "name": "Overview",
+      "spec": "Place the heading and short explanation in the left column."
+    },
+    {
+      "name": "Primary logo",
+      "spec": "Give the wordmark the upper-right field."
+    },
+    {
+      "name": "Recognition cues",
+      "spec": "Align the icon, color block and waveform in three lower cells separated by rules."
+    }
+  ]
+}

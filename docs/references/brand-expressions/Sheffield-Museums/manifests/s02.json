@@ -1,0 +1,29 @@
+{
+  "id": "S02",
+  "title": "Contents",
+  "image": "s02.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 2,
+    "printed_page": 1
+  },
+  "slide_intent": "Help readers find the decision they need by separating topics and giving each a numbered place in the book.",
+  "strategic_value": "A designer working for one venue can locate both its specific rules and the institution-wide foundations using the same index.",
+  "demonstration": "Three text columns group nine numbered sections, from introduction and trust identity to venue marks, design foundations, applications and contact.",
+  "category": "Layout",
+  "practical_value": "Find the section number for a particular task, such as a venue icon or an exhibition type treatment, before opening its examples.",
+  "content_islands": [
+    {
+      "name": "Title and folio",
+      "spec": "Set Design guidelines above Contents at upper left and the folio at upper right."
+    },
+    {
+      "name": "Topic index",
+      "spec": "Arrange the numbered hierarchy in three columns. Set section titles in bold and list their subsections directly below."
+    },
+    {
+      "name": "Image note",
+      "spec": "Place the small note about display use of the images at lower left."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "id": "O08",
+  "title": "Expanded gradient color range",
+  "image": "o08.png",
+  "source": "../sources/o08.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 8,
+    "extent": "whole source artwork",
+    "poster_seconds": 5.5,
+    "duration_seconds": 10.0
+  },
+  "slide_intent": "Explore variation within a recognizable color structure so a brand can change mood without losing continuity.",
+  "strategic_value": "A blue-led gradient family can give O2 more expressive range across its digital communications.",
+  "demonstration": "The full-frame gradient changes from pale blue and white to deep blue with cyan, pink and warm lower accents.",
+  "category": "Color",
+  "practical_value": "Compare light and saturated variants to choose a mood while preserving the blue connection.",
+  "content_islands": [
+    {
+      "name": "Continuous color field",
+      "spec": "Use the entire frame for a soft gradient with no type, borders or other objects."
+    },
+    {
+      "name": "Color sequence",
+      "spec": "Move through pale, deep-blue and warm-accented states without introducing hard color boundaries."
+    }
+  ],
+  "ingredient": {
+    "name": "Blue gradient family",
+    "role": "Provide atmospheric variation around a recurring blue reference.",
+    "application": "Use soft transitions between blue and the accent colors illustrated in the sequence.",
+    "scope": "A palette-expression study from the 2023 case study, not a swatch specification or quantified usage rule."
+  },
+  "reference_purposes": {
+    "Intent": "The surrounding source heading says the color work adds flexibility to the brand.",
+    "Expression": "The moving field demonstrates the range from pale blue to saturated blue with warm accents."
+  },
+  "motion": "../sources/o08.mp4"
+}

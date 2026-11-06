@@ -1,0 +1,24 @@
+{
+  "id": "V05",
+  "title": "Culture",
+  "image": "v05.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Give readers a pause before the company’s story and values. A brief visual cue helps them locate the new subject in the book.",
+  "strategic_value": "Voltera can use a recurring dark divider to make transitions recognizable while the changing icon identifies the people behind the company.",
+  "demonstration": "The page centers a small line icon above the white heading “Culture” on a charcoal field.",
+  "category": "Layout",
+  "practical_value": "Use this treatment when introducing the company’s story and values. Reserve the detailed guidance for the pages after the divider.",
+  "content_islands": [
+    {
+      "name": "Section icon",
+      "spec": "Center a hand holding a group of people beneath a cyan heart above the title. Give the outlined drawing a single colored detail."
+    },
+    {
+      "name": "Section heading",
+      "spec": "Set “Culture” in white on one line below the icon. Keep the charcoal field open around both elements."
+    }
+  ]
+}

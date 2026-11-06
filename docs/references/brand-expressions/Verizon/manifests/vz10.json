@@ -1,0 +1,33 @@
+{
+  "id": "VZ10",
+  "title": "Iconography / scale and context",
+  "image": "vz10.png",
+  "source": "../sources/vz10.jpg",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 10,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Test an icon beside real text and controls so its legibility survives changes in scale and use.",
+  "strategic_value": "Context testing can keep Verizon’s icon family usable in dense navigation and prominent feature messages.",
+  "demonstration": "An online-shopping benefit list and account navigation sit beside 2x, 3x and 4x monitor/icon pairings, followed by a phone shopping screen.",
+  "category": "Application",
+  "practical_value": "Compare the icon-to-text relationship at several scales and in both light and dark interface contexts.",
+  "content_islands": [
+    {
+      "name": "Compact uses",
+      "spec": "Stack the shopping benefits list over the dark navigation example at left."
+    },
+    {
+      "name": "Scale comparison",
+      "spec": "Arrange three monitor-and-headline pairings vertically in the middle, preserving the 2x, 3x and 4x labels and x-height guides."
+    },
+    {
+      "name": "Mobile application",
+      "spec": "Place the tall phone screen at right to show the symbols within a complete shopping interface."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The same icon language appears at several relative scales in navigation, benefits and a mobile shopping page."
+  }
+}

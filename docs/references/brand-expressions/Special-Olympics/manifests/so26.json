@@ -1,0 +1,28 @@
+{
+  "id": "SO26",
+  "title": "Brand mark · Introduction",
+  "image": "so26.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Explain how a local community can identify itself within an international movement. A reader needs to see both affiliations at first contact.",
+  "strategic_value": "A common symbol and logotype can convey continuity while the italic program name identifies the local organization.",
+  "demonstration": "Labeled drawings compare the international mark with the accredited version. A strip of figures below traces the symbol through achievement, revelation and community.",
+  "category": "Brand",
+  "practical_value": "Choose the full accredited lockup for a program’s initial communication and keep its name attached to the common mark.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Set the description at left and explain the role of the program name."
+    },
+    {
+      "name": "Annotated marks",
+      "spec": "Stack the two marks at the same scale. Use leaders to identify symbol, logotype and the extra program line."
+    },
+    {
+      "name": "Symbol sequence",
+      "spec": "Set the successive red figures in a pale strip below. Keep the accredited-use warning beside the examples."
+    }
+  ]
+}

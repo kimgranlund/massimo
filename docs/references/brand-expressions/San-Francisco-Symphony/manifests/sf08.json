@@ -1,0 +1,31 @@
+{
+  "id": "SF08",
+  "title": "Entrance wordmark",
+  "image": "sf08.png",
+  "source": "../sources/sf08.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 8,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Test the mark as a physical object because material, light and distance change how lettering is read.",
+  "strategic_value": "The dimensional black signature can make the venue recognizable before visitors enter.",
+  "demonstration": "A variable-height Symphony wordmark projects from a pale entrance wall and casts shadows.",
+  "category": "Application",
+  "practical_value": "Compare the letter silhouette and its shadow when translating the mark into dimensional signage.",
+  "content_islands": [
+    {
+      "name": "Wall signature",
+      "spec": "Position the raised dark lettering on the pale wall with its cast shadows."
+    },
+    {
+      "name": "Entrance context",
+      "spec": "Retain the narrow doorway and pavement to establish scale and location."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A variable-height Symphony wordmark projects from a pale entrance wall and casts shadows.",
+    "Application": "The source demonstrates a variable-height Symphony wordmark projects from a pale entrance wall and casts shadows."
+  }
+}

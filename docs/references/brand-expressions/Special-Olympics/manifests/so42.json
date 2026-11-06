@@ -1,0 +1,28 @@
+{
+  "id": "SO42",
+  "title": "Color references",
+  "image": "so42.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 42
+  },
+  "slide_intent": "Give producers a way to specify the same named color across media. Exact reference values make a production handoff repeatable.",
+  "strategic_value": "The movement can reproduce recognizable hues across vendors and processes by keeping print and screen references attached to one name.",
+  "demonstration": "Two ruled tables pair named color samples with Pantone, CMYK, RGB and hexadecimal values. The primary rows precede the light, mid and dark variants of the secondary families.",
+  "category": "Color",
+  "practical_value": "Find the color by role and name, then read the value in the column for the intended output. Check ambiguous entries against an approved master before production.",
+  "content_islands": [
+    {
+      "name": "Reference instruction",
+      "spec": "Place a brief direction above the tables specifying use of the supplied values."
+    },
+    {
+      "name": "Primary rows",
+      "spec": "Align the primary names and samples beneath labeled color-system columns."
+    },
+    {
+      "name": "Secondary tables",
+      "spec": "Group rows by hue and tone across the two columns. Keep each chip on the same baseline as its numeric specifications."
+    }
+  ]
+}

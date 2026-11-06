@@ -1,0 +1,34 @@
+{
+  "id": "VZ06",
+  "title": "Verizon Design System / web entry",
+  "image": "vz06.png",
+  "source": "../sources/vz06.jpg",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 6,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Bring design rules and implementation resources together so creators can find the next actionable step.",
+  "strategic_value": "A shared system entry can help Verizon teams move from principles to reusable components.",
+  "demonstration": "A laptop shows the web design-system page with a left navigation, a black title banner and two starting points for fundamentals and the core Sketch symbol library.",
+  "category": "Application",
+  "practical_value": "Place conceptual foundations and downloadable implementation resources at the same level of access.",
+  "content_islands": [
+    {
+      "name": "Device and navigation",
+      "spec": "Center the laptop on white; retain the vertical web navigation at the screen’s left edge."
+    },
+    {
+      "name": "System introduction",
+      "spec": "Use a black masthead over the Using the design system for web heading."
+    },
+    {
+      "name": "Resource choices",
+      "spec": "Pair the fundamentals card with the core Sketch library card beneath the introduction."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying case study says the design system aims to create consistent customer experiences from a single source of truth.",
+    "Application": "The screen directs creators to fundamentals and reusable library resources."
+  }
+}

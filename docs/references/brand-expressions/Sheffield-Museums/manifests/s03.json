@@ -1,0 +1,25 @@
+{
+  "id": "S03",
+  "title": "Introduction",
+  "image": "s03.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 3,
+    "printed_page": 2
+  },
+  "slide_intent": "Mark the beginning of the strategy section so a reader can distinguish a chapter boundary from a page of guidance.",
+  "strategic_value": "The green section treatment can make the sequence of chapters easy to recognize throughout the manual.",
+  "demonstration": "A single white Introduction heading sits at upper left on a dark green ground beneath the section number and opposite the folio.",
+  "category": "Layout",
+  "practical_value": "Use this divider when opening a major section of the book.",
+  "content_islands": [
+    {
+      "name": "Section identifiers",
+      "spec": "Place the small section number and label at upper left and the folio at upper right."
+    },
+    {
+      "name": "Chapter title",
+      "spec": "Set the title large in white beneath the identifiers, leaving the remainder of the dark green field clear."
+    }
+  ]
+}

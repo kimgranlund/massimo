@@ -1,0 +1,31 @@
+{
+  "id": "TW17",
+  "title": "Creator portrait / Gesture",
+  "image": "tw17.png",
+  "source": "../sources/tw17.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 17,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Preserve an individual’s distinctive gestures and appearance so a shared photography style does not flatten personality.",
+  "strategic_value": "A consistent isolated portrait treatment can accommodate visibly different Twitch creators.",
+  "demonstration": "A bearded man holds his jacket near his chest against a pale green field; tattooed hands and clothing remain visible.",
+  "category": "Imagery",
+  "practical_value": "Compare this crop with other creator portraits to judge which personal details should remain in frame.",
+  "content_islands": [
+    {
+      "name": "Figure and gesture",
+      "spec": "Keep the face, beard, jacket and both tattooed hands inside the torso-up crop."
+    },
+    {
+      "name": "Pale green ground",
+      "spec": "Separate the figure with a clean pale green field."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "COLLINS describes Twitch as supporting creators and describes the photography as a way to elevate them and invite participation.",
+    "Expression": "The photograph emphasizes individual appearance and gesture against a simple colored field."
+  }
+}

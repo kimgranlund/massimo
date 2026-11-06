@@ -1,0 +1,32 @@
+{
+  "id": "SF21",
+  "title": "2022 monthly cover sequence",
+  "image": "sf21.png",
+  "source": "../sources/sf21.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 21,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Hold one recognizable element steady while changing imagery because recurring publications need continuity and freshness.",
+  "strategic_value": "The recurring Symphony masthead can connect twelve contrasting monthly covers.",
+  "demonstration": "A sequence runs through January to December 2022 covers with a shared large masthead and changing photography, abstract imagery and solid color.",
+  "category": "Brand",
+  "practical_value": "Compare how much visual variety a stable masthead can support.",
+  "content_islands": [
+    {
+      "name": "Masthead",
+      "spec": "Keep the Symphony signature in the upper cover area through the sequence."
+    },
+    {
+      "name": "Monthly variation",
+      "spec": "Preserve each month’s distinct image or color field and small date at the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A sequence runs through January to December 2022 covers with a shared large masthead and changing photography, abstract imagery and solid color.",
+    "Application": "The source demonstrates a sequence runs through January to December 2022 covers with a shared large masthead and changing photography, abstract imagery and solid color."
+  },
+  "motion": "../sources/sf21.mp4"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "S61",
+  "title": "Signage development examples",
+  "image": "s61.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 61,
+    "printed_page": 60
+  },
+  "slide_intent": "Teach designers to compare the scale of a venue name against the available height of a narrow identification banner.",
+  "strategic_value": "Weston Park can make the venue legible from farther away or give the parent institution a separate position, depending on the sign’s job.",
+  "demonstration": "Two placements repeat the same yellow banner and façade. A large rotated venue mark fills the first. The second reduces the mark and adds a seal beneath it.",
+  "category": "Layout",
+  "practical_value": "Test the large single identifier against the two-mark arrangement at the intended viewing distance.",
+  "content_islands": [
+    {
+      "name": "Single venue mark",
+      "spec": "On the left façade view, rotate the Weston Park mark along the tall banner and give it most of the vertical space."
+    },
+    {
+      "name": "Venue and parent marks",
+      "spec": "Keep the banner in the same location in the second view. Reduce the rotated mark and use the freed space for the Sheffield Museums seal."
+    }
+  ]
+}

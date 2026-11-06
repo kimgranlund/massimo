@@ -1,0 +1,40 @@
+{
+  "id": "VZ05",
+  "title": "Digital design system / component specimens",
+  "image": "vz05.png",
+  "source": "../sources/vz05.jpg",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 5,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Compare type, controls, icons and feedback together so a digital interface can carry one visual language while keeping functions distinct.",
+  "strategic_value": "A common component vocabulary can connect Verizon’s brand expression to routine digital interactions.",
+  "demonstration": "A white board groups typography sizes, button spacing, navigation rows, scalable eye icons, a chart key and colored notification banners.",
+  "category": "Application",
+  "practical_value": "Compare component anatomy and semantic feedback colors separately from the primary brand palette.",
+  "content_islands": [
+    {
+      "name": "Interface and data examples",
+      "spec": "Place a basic page, chart legend and black navigation rows at left."
+    },
+    {
+      "name": "Type and controls",
+      "spec": "Arrange type-size specimens above paired buttons and three eye-icon scales in the middle."
+    },
+    {
+      "name": "Feedback colors",
+      "spec": "Stack blue, green, yellow and orange notification specimens at right with their stated information, confirmation, warning and error roles."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The board demonstrates typography, navigation, controls, icon scaling and notification roles in interface specimens.",
+    "Constraint": "The notification specimens explicitly assign blue to information, green to confirmation, yellow to warning and orange to error."
+  },
+  "ingredient": {
+    "name": "Notification color",
+    "role": "Help a user distinguish the kind of feedback.",
+    "application": "Use the specimen’s blue information, green confirmation, yellow warning and orange error assignments.",
+    "scope": "The historical digital component board shown here; these semantic assignments do not redefine the entire brand palette."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "S63",
+  "title": "Signage development examples",
+  "image": "s63.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 63,
+    "printed_page": 62
+  },
+  "slide_intent": "Teach designers how to establish a gallery entrance with a name readable from below while preserving a smaller institutional signature.",
+  "strategic_value": "Millennium Gallery can lead in its own color and lettering while the circular seal connects it to Sheffield Museums.",
+  "demonstration": "One suspended pink sign fills a single architectural photograph. The large white venue mark occupies the center and the smaller seal sits to the right.",
+  "category": "Application",
+  "practical_value": "Use the venue mark as the main read on an entrance sign and check that the parent seal remains distinct at the edge.",
+  "content_islands": [
+    {
+      "name": "Entrance photograph",
+      "spec": "Center a large photograph of the hanging sign beneath the heading. Leave the suspension and glass entrance visible."
+    },
+    {
+      "name": "Sign face",
+      "spec": "Place the white framed Millennium Gallery mark on pink. Separate the smaller Sheffield Museums seal toward the lower right."
+    }
+  ]
+}

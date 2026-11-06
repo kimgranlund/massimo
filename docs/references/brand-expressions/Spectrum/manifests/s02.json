@@ -1,0 +1,28 @@
+{
+  "id": "S02",
+  "title": "What This Guide Is For",
+  "image": "s02.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Connect brand standards to everyday customer encounters so contributors understand why consistent execution matters.",
+  "strategic_value": "The emphasis on daily retail contact can give Spectrum’s mall partners a shared reason to apply the system.",
+  "demonstration": "A large cyan statement about customer engagement sits above two short explanatory columns.",
+  "category": "Brand",
+  "practical_value": "Define the audience and setting of a guide before presenting detailed production rules.",
+  "content_islands": [
+    {
+      "name": "Page label",
+      "spec": "Place the small dark blue title at upper left."
+    },
+    {
+      "name": "Purpose statement",
+      "spec": "Set the customer-engagement statement in large cyan capitals across the upper middle."
+    },
+    {
+      "name": "Scope explanation",
+      "spec": "Place two short gray text columns beneath the statement, covering the connection point and guide purpose."
+    }
+  ]
+}

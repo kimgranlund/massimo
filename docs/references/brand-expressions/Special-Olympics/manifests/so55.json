@@ -1,0 +1,24 @@
+{
+  "id": "SO55",
+  "title": "Brand in action",
+  "image": "so55.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 55
+  },
+  "slide_intent": "Introduce applications as examples of decisions made in context. A letter and a banner call for different uses of the same identity because people encounter them differently.",
+  "strategic_value": "A section break can shift attention from isolated elements to finished communications and invite teams to adapt the system to a particular job.",
+  "demonstration": "A large white title and short introduction sit in a red curved field. A section number and red symbol occupy the white band above.",
+  "category": "Application",
+  "practical_value": "Use the following applications to identify which parts can change with the format and which parts carry the identity.",
+  "content_islands": [
+    {
+      "name": "Section identifier",
+      "spec": "Set the book name and Section 3 in the white header, with the red symbol at upper right."
+    },
+    {
+      "name": "Chapter field",
+      "spec": "Carry a broad red curved field across the page. Set the white title large and place the smaller introduction below it on a common inset."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "S29",
+  "title": "7.01 / File Access",
+  "image": "s29.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Use supplied artwork and specify production needs so another person can provide an appropriate asset.",
+  "strategic_value": "Controlled source files can protect Spectrum’s mark from local reconstruction and reproduction errors.",
+  "demonstration": "Two ruled rows explain logo files and asset assistance, while a top note asks for five business days for feedback.",
+  "category": "Brand",
+  "practical_value": "Prepare an asset request containing location, date, production specifications, dimensions and contact information.",
+  "content_islands": [
+    {
+      "name": "Heading and timing",
+      "spec": "Place the title upper left and the five-business-day note above the table."
+    },
+    {
+      "name": "Logo files",
+      "spec": "Set the supplied-ZIP and no-reconstruction guidance in the upper row."
+    },
+    {
+      "name": "Asset assistance",
+      "spec": "Set the contact and requested-information bullets in the lower row, aligned with its cyan label."
+    }
+  ]
+}

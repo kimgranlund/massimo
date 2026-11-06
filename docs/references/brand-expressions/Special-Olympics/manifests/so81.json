@@ -1,0 +1,24 @@
+{
+  "id": "SO81",
+  "title": "Posters — Stylistic range",
+  "image": "so81.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 81
+  },
+  "slide_intent": "Show how one poster message can take a determined, inspirational or celebratory tone without losing the organizer’s identity.",
+  "strategic_value": "The mark and curve can unify campaigns with different emotional demands, from an athlete’s declaration to an invitation to a summer event.",
+  "demonstration": "Three aligned posters compare a monochrome portrait and large red word, a forceful diagonal sports message, and a layered, multicolor Summer Games composition.",
+  "category": "Application",
+  "practical_value": "Choose the simplest headline and image treatment that carries the event’s tone. Check the mark and curve across the set for continuity.",
+  "content_islands": [
+    {
+      "name": "Tone guidance",
+      "spec": "Place the statement of purpose and three numbered readings in a narrow left column."
+    },
+    {
+      "name": "Three poster examples",
+      "spec": "Set three portrait posters at equal height across the page. Keep each headline, image treatment and identifying footer attached to its example."
+    }
+  ]
+}

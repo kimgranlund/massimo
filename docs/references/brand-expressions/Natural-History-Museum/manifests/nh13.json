@@ -1,0 +1,29 @@
+{
+  "id": "NH13",
+  "title": "Hoodie print detail",
+  "image": "nh13.png",
+  "source": "../sources/nh13.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 13,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Show how a mark changes at close range, because an emblem must also work as a printed arrangement of letters.",
+  "strategic_value": "The enlarged N, H and M rings can make the identity feel tactile and graphic on clothing.",
+  "demonstration": "A close photograph crops into a purple hoodie, showing green, pale pink and cyan letter rings beside the cord and fabric folds.",
+  "category": "Application",
+  "practical_value": "Inspect letter edges, color contrast and the relationship between print and garment details.",
+  "content_islands": [
+    {
+      "name": "Enlarged letter rings",
+      "spec": "Crop into the radial letters so their individual shapes and colors are visible."
+    },
+    {
+      "name": "Material details",
+      "spec": "Keep the drawcord, seam and folds visible across the purple fabric."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A close photograph crops into a purple hoodie, showing green, pale pink and cyan letter rings beside the cord and fabric folds."
+  }
+}

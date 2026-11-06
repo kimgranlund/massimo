@@ -1,0 +1,35 @@
+{
+  "id": "WH17",
+  "title": "Introduction of the new graphic identity",
+  "image": "wh17.png",
+  "source": "../sources/whitney-introduction.mov",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 17,
+    "extent": "Published poster for complete introduction film"
+  },
+  "slide_intent": "Explain a flexible identity through change because a static mark cannot by itself show the behavior that makes it a system.",
+  "strategic_value": "The unfolding and reforming line can make Whitney’s responsiveness to art understandable within a short introduction.",
+  "demonstration": "The film builds a W from a line, multiplies it, adapts it around artworks, and ends with the May 2013 identity announcement and credits.",
+  "category": "Motion",
+  "practical_value": "Observe how the shape responds to artwork placement; do not derive timing or easing requirements from this introductory film.",
+  "content_islands": [
+    {
+      "name": "Opening construction",
+      "spec": "Begin with a horizontal line and develop the four-segment W and Whitney word."
+    },
+    {
+      "name": "Responsive examples",
+      "spec": "Sequence artworks and changing W shapes across the white field."
+    },
+    {
+      "name": "Closing information",
+      "spec": "Finish with the introduction title, date and artwork/music credits."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The complete film shows the line unfolding, repeating and reforming around different artworks.",
+    "Intent": "The adjacent essay frames the identity as a platform for future designers’ authorship rather than an automatic template."
+  },
+  "motion": "../sources/whitney-introduction.mp4"
+}

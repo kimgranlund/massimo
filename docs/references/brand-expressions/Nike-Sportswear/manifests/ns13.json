@@ -1,0 +1,33 @@
+{
+  "id": "NS13",
+  "title": "Run HO19 / Winflo Shield man running",
+  "image": "ns13.png",
+  "source": "../sources/ns13.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 13,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Test a repeated layout with different subjects so consistency survives changes in photography.",
+  "strategic_value": "A stable text column and inset position can link the male and female Winflo executions without making their photographs identical.",
+  "demonstration": "A man in gray running clothes fills the main photograph; a stair-side shoe inset sits at upper right, crossing the same white outline Swoosh used in NS12.",
+  "category": "Layout",
+  "practical_value": "Compare subject placement and cropping against NS12 before reusing the composition.",
+  "content_islands": [
+    {
+      "name": "Text area",
+      "spec": "Keep the low-aligned product heading, supporting line and black Swoosh inside the white left column."
+    },
+    {
+      "name": "Runner",
+      "spec": "Use the full stride against the railing as the central image."
+    },
+    {
+      "name": "Inset and outline",
+      "spec": "Place the footwear close-up at upper right and span the two images with the white outline Swoosh."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A man in gray running clothes fills the main photograph; a stair-side shoe inset sits at upper right, crossing the same white outline Swoosh used in NS12."
+  }
+}

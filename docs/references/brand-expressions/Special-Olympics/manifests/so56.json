@@ -1,0 +1,24 @@
+{
+  "id": "SO56",
+  "title": "Stationery overview · Standard items & recommended print stocks",
+  "image": "so56.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 56
+  },
+  "slide_intent": "Consider stationery as a family of working formats. A reader should recognize the sender whether holding a card, opening an envelope or viewing a presentation.",
+  "strategic_value": "Repeating the same mark and curve across routine correspondence can build familiarity through frequent everyday contact.",
+  "demonstration": "A numbered inventory connects five formats to an overlapping arrangement of actual-size relationships. A separate list specifies bright white uncoated paper and card stock options.",
+  "category": "Application",
+  "practical_value": "Select the appropriate production template and paper stock for the item. Match each number in the list to its specimen.",
+  "content_islands": [
+    {
+      "name": "Inventory and stocks",
+      "spec": "List letterhead, business card, A5 note, envelope and presentation at left. Set the stock recommendations and weights below."
+    },
+    {
+      "name": "Stationery family",
+      "spec": "Overlap the five specimens in a neutral field at right. Number them to match the list, keeping both red display surfaces and white writing surfaces visible."
+    }
+  ]
+}

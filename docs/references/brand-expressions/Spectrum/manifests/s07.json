@@ -1,0 +1,30 @@
+{
+  "id": "S07",
+  "title": "2.02 / Spectrum Logo Clear Space",
+  "image": "s07.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Protect space around a mark so nearby content does not obscure its identity.",
+  "strategic_value": "A repeatable exclusion zone can keep Spectrum recognizable across crowded retail placements.",
+  "demonstration": "A boxed logo diagram derives the surrounding x unit from the counter of the letter p. A note allows reduced space in special sponsorship circumstances.",
+  "category": "Geometry",
+  "practical_value": "Measure the clear area with the logo’s own geometry and identify when a documented exception applies.",
+  "content_islands": [
+    {
+      "name": "Heading and rule",
+      "spec": "Place the title upper left, explanatory paragraph in the upper center and exception note upper right."
+    },
+    {
+      "name": "Clear-space diagram",
+      "spec": "Center the logo inside nested guide rectangles and connect the p counter to the x-unit note with a cyan leader."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo clear space",
+    "role": "Separate the mark from neighboring information.",
+    "application": "Keep at least the illustrated x space, derived from the negative space of the p, around the logo.",
+    "scope": "TV, print and online use in this guide. Sponsorship layouts can reduce spacing under special circumstances to preserve impact."
+  }
+}

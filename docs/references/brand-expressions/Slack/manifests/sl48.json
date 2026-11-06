@@ -1,0 +1,24 @@
+{
+  "id": "SL48",
+  "title": "Merchandise",
+  "image": "sl48.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 48
+  },
+  "slide_intent": "Distinguish between applying a mark to goods and directing someone to an official source. A reader needs to know which of those actions the book describes.",
+  "strategic_value": "Slack can identify its own branded products as a distinct channel in this edition’s policy.",
+  "demonstration": "Two short clauses address use of Slack assets on goods and point to the Slack Shop. No merchandise specimen appears on the page.",
+  "category": "Brand",
+  "practical_value": "Use these clauses to locate the 2020 position on merchandise, rather than treating the page as a visual specification for producing an item.",
+  "content_islands": [
+    {
+      "name": "Merchandise provisions",
+      "spec": "Place the two lettered clauses together in a narrow left column beneath the title rule. Keep the reference to the official shop with the second clause."
+    },
+    {
+      "name": "Open field and folio",
+      "spec": "Keep the remaining page free of merchandise mockups. Finish with the governance footer."
+    }
+  ]
+}

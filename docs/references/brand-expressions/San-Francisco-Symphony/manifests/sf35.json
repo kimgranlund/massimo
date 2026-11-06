@@ -1,0 +1,31 @@
+{
+  "id": "SF35",
+  "title": "Symphony tote",
+  "image": "sf35.png",
+  "source": "../sources/sf35.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 35,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Test the identity in everyday use because a portable object can extend recognition beyond the venue.",
+  "strategic_value": "A simple white signature on a dark tote can connect a casual encounter with the Symphony.",
+  "demonstration": "A walking person carries a dark tote with the white Symphony wordmark near its upper edge.",
+  "category": "Application",
+  "practical_value": "Choose how much identity is needed when the object has limited space and moves with its user.",
+  "content_islands": [
+    {
+      "name": "Tote signature",
+      "spec": "Keep the dark bag and contrasting white wordmark as the focal object."
+    },
+    {
+      "name": "Use context",
+      "spec": "Retain the person’s hand, clothing and walking pose to establish the bag’s everyday use."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A walking person carries a dark tote with the white Symphony wordmark near its upper edge.",
+    "Application": "The source demonstrates a walking person carries a dark tote with the white Symphony wordmark near its upper edge."
+  }
+}

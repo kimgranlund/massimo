@@ -1,0 +1,25 @@
+{
+  "id": "S18",
+  "title": "Clear space",
+  "image": "s18.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 18,
+    "printed_page": 17
+  },
+  "slide_intent": "Tie the exclusion zone around a venue mark to its lettering so the clearance scales with the mark.",
+  "strategic_value": "Using the same cap-height unit can keep all six venue marks distinct from neighboring graphics in either lockup.",
+  "demonstration": "Gridded diagrams show Kelham Island Museum in horizontal and stacked forms. Both use the letter cap height as the surrounding clear-space unit.",
+  "category": "Geometry",
+  "practical_value": "Measure one cap height around the selected venue master in either orientation.",
+  "content_islands": [
+    {
+      "name": "Clearance rule",
+      "spec": "Place the heading and rule in the left column and name the letter cap height as the unit."
+    },
+    {
+      "name": "Horizontal and stacked measurements",
+      "spec": "Stack two dimensioned diagrams at right using the same venue name. Extend guides on all sides and caption the unit beneath the comparison."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "PT21",
+  "title": "Free Love / Bus shelter",
+  "image": "pt21.png",
+  "source": "../sources/pt21.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 21,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Check a campaign in its actual viewing environment because a poster competes with street furniture and traffic.",
+  "strategic_value": "The luminous pink panel can make the invitation visible within an ordinary city route.",
+  "demonstration": "A photograph shows the FREE LOVE poster in an illuminated bus shelter at a street corner.",
+  "category": "Application",
+  "practical_value": "Assess the poster’s contrast and reading distance in a real outdoor placement.",
+  "content_islands": [
+    {
+      "name": "Poster panel",
+      "spec": "Keep the pink poster as the bright center of the shelter."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain roadway, bicycle rack and surrounding buildings to show the viewing conditions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A photograph shows the FREE LOVE poster in an illuminated bus shelter at a street corner.",
+    "Application": "The campaign is shown installed in an illuminated bus-shelter panel."
+  }
+}

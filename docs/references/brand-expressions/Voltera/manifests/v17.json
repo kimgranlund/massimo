@@ -1,0 +1,32 @@
+{
+  "id": "V17",
+  "title": "Photographing our brand",
+  "image": "v17.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Teach photographers to show the machine at the point where it does its work. A toolhead, substrate and trace in one frame can tell the viewer what a machine is for.",
+  "strategic_value": "Voltera can communicate its industrial purpose through the action in the photograph. Blue and green details against neutral materials can connect an operating machine to the brand palette.",
+  "demonstration": "A tall detail photograph shows an illuminated toolhead above a trace on a reflective work surface. The adjacent guidance favors machines in action, orderly settings and mostly neutral colors with blue or green accents.",
+  "category": "Imagery",
+  "practical_value": "Choose a frame that includes the working part and the material it acts on. Use the guide’s examples of a workbench mat or circuit board to source color from the working environment.",
+  "content_islands": [
+    {
+      "name": "Contents rail",
+      "spec": "Mark Photography in the dark left contents column and put page 17 in a blue tab at the lower right."
+    },
+    {
+      "name": "Machine action",
+      "spec": "Place a full-height photograph between the contents and text. Keep the tip, work surface, trace and reflection in view. Use the mix of metallic neutrals and colored light to carry the image."
+    },
+    {
+      "name": "Photo selection",
+      "spec": "In the right column place the Photography section label, green accent and page title. Follow with guidance to show machines in use when communicating capabilities."
+    },
+    {
+      "name": "Shooting guidance",
+      "spec": "Group practical instructions below the selection note. Cover background order, lighting, blue or green accents, machine details and the condition of components and substrates."
+    }
+  ]
+}

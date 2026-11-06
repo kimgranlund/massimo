@@ -1,0 +1,30 @@
+{
+  "id": "S26",
+  "title": "6.01 / Social",
+  "image": "s26.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Pair channel identity with a precise destination so readers know where a social prompt leads.",
+  "strategic_value": "Consistent handles and platform treatments can help Spectrum direct customers to the intended account.",
+  "demonstration": "Four ruled rows pair Twitter, Facebook, YouTube and LinkedIn marks with handles or addresses.",
+  "category": "Application",
+  "practical_value": "Check account naming and platform artwork together, treating the listed destinations as historical.",
+  "content_islands": [
+    {
+      "name": "Heading and usage guidance",
+      "spec": "Place the heading left, lowercase-link rule in the middle and trademark guidance upper right."
+    },
+    {
+      "name": "Channel table",
+      "spec": "Stack four rows with cyan platform names at left, platform assets in the center and account destinations at right."
+    }
+  ],
+  "ingredient": {
+    "name": "Social account references",
+    "role": "Connect a platform symbol with the intended destination.",
+    "application": "Write links and handles in lowercase and follow the platform’s trademark terms.",
+    "scope": "The 2017 list; platform names, assets and destinations may have changed."
+  }
+}

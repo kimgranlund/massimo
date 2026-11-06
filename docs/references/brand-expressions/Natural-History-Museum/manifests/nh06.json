@@ -1,0 +1,33 @@
+{
+  "id": "NH06",
+  "title": "Wonder, Inspire, Change posters",
+  "image": "nh06.png",
+  "source": "../sources/nh06.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 6,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Give a campaign a repeatable structure so different subjects remain recognizably related.",
+  "strategic_value": "A common black field and vertical action words can connect diverse natural specimens to the Museum’s active role.",
+  "demonstration": "Three framed posters pair vivid specimens with a colored symbol at upper left and large vertical words: WONDER, INSPIRE and CHANGE.",
+  "category": "Application",
+  "practical_value": "Compare the constant hierarchy with the changing specimen and accent color.",
+  "content_islands": [
+    {
+      "name": "Poster trio",
+      "spec": "Align the three framed black posters side by side in the architectural setting."
+    },
+    {
+      "name": "Recurring hierarchy",
+      "spec": "Repeat the symbol near the upper left and vertical white word along the right edge."
+    },
+    {
+      "name": "Specimen imagery",
+      "spec": "Give each poster a different brightly colored natural specimen against black."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three framed posters pair vivid specimens with a colored symbol at upper left and large vertical words: WONDER, INSPIRE and CHANGE."
+  }
+}

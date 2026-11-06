@@ -1,0 +1,31 @@
+{
+  "id": "O16",
+  "title": "From phone invitation to arena",
+  "image": "o16.png",
+  "source": "../sources/o16.jpg",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 16,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Connect a small digital invitation with its physical destination so the service promise feels concrete.",
+  "strategic_value": "O2 can associate a mobile Priority interaction with the scale and atmosphere of an arena experience.",
+  "demonstration": "A split image pairs a hand using an O2-branded artist promotion on a phone with an aerial evening view of The O2 arena and London beyond.",
+  "category": "Application",
+  "practical_value": "Use paired contexts to show how a brand experience continues from a device into a real place.",
+  "content_islands": [
+    {
+      "name": "Phone interaction",
+      "spec": "Fill the left half with a close view of the hand and phone in a dark event setting, keeping the promotion readable."
+    },
+    {
+      "name": "Arena destination",
+      "spec": "Fill the right half with the aerial arena photograph, preserving its blue and warm evening lighting."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying source section explicitly describes an identity stretching from screen to arena.",
+    "Application": "The side-by-side image connects a phone promotion with the physical event destination.",
+    "Expression": "Blue and warm light link the two photographic settings."
+  }
+}

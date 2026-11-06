@@ -1,0 +1,31 @@
+{
+  "id": "SF25",
+  "title": "Salonen conducts Mahler poster",
+  "image": "sf25.png",
+  "source": "../sources/sf25.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 25,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Combine program information with a suggestive object because a poster must identify the event and create interest at a glance.",
+  "strategic_value": "The cyan ground, large numerals and crossed mallet imagery can give this program a distinct Symphony treatment.",
+  "demonstration": "A framed street poster combines pale oversized numerals, Salonen/Mahler text and two crossed mallet-like objects on cyan.",
+  "category": "Application",
+  "practical_value": "Balance an identifying program title with a dominant image and numeral composition.",
+  "content_islands": [
+    {
+      "name": "Program composition",
+      "spec": "Keep the cyan field, crossed objects, pale numerals and dark title together."
+    },
+    {
+      "name": "Street frame",
+      "spec": "Retain the poster frame and surrounding stone facade."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A framed street poster combines pale oversized numerals, Salonen/Mahler text and two crossed mallet-like objects on cyan.",
+    "Application": "The source demonstrates a framed street poster combines pale oversized numerals, Salonen/Mahler text and two crossed mallet-like objects on cyan."
+  }
+}

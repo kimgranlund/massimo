@@ -1,0 +1,30 @@
+{
+  "id": "PT22",
+  "title": "National Theater of Scotland Festival / Folded print",
+  "image": "pt22.png",
+  "source": "../sources/pt22.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 22,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Coordinate covers and interior spreads because a publication must invite opening and remain navigable afterward.",
+  "strategic_value": "Repeated borders, strong titles and vivid accents can carry the Public identity into a multipage festival program.",
+  "demonstration": "Several standing and open printed pieces combine black rules, cropped images and bright green or pink headings.",
+  "category": "Application",
+  "practical_value": "Compare the relationship between a closed cover, open spreads and a small companion piece.",
+  "content_islands": [
+    {
+      "name": "Print family",
+      "spec": "Group the tall covers behind an opened booklet and small front card."
+    },
+    {
+      "name": "Interior structure",
+      "spec": "Keep black borders and colored title blocks visible across the exposed pages."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Several standing and open printed pieces combine black rules, cropped images and bright green or pink headings.",
+    "Application": "The identity appears on covers, open booklet spreads and a small companion card."
+  }
+}

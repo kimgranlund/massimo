@@ -1,0 +1,32 @@
+{
+  "id": "PT01",
+  "title": "The Public / Horizontal signature",
+  "image": "pt01.png",
+  "source": "../sources/pt01.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 1,
+    "extent": "Whole published artwork; hero is the published crop"
+  },
+  "slide_intent": "Make a name recognizable through varied letter widths because rhythm can distinguish familiar words without adding a symbol.",
+  "strategic_value": "The compressed final letters can give The Public a compact, architectural signature.",
+  "demonstration": "Black PUBLIC letters progress from broad to narrow on white; THE sits inside the left edge and a period closes the word.",
+  "category": "Typography",
+  "practical_value": "Compare letter width as an identity device rather than changing type size.",
+  "content_islands": [
+    {
+      "name": "Signature",
+      "spec": "Place the black name centrally on white, with small THE embedded at the left and the period at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Black PUBLIC letters progress from broad to narrow on white; THE sits inside the left edge and a period closes the word.",
+    "Intent": "Pentagram says the 2008 horizontal organization makes the revised identity more architectural while retaining its active nature."
+  },
+  "ingredient": {
+    "name": "Variable-width Public signature",
+    "role": "Identify the institution through a recognizable word rhythm.",
+    "application": "Use the demonstrated width contrast and embedded THE when studying this historical horizontal signature.",
+    "scope": "Observed historical identity specimen; no spacing, minimum-size or reproduction rule is supplied."
+  }
+}

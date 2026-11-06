@@ -1,0 +1,37 @@
+{
+  "id": "O14",
+  "title": "Website hero and product transition",
+  "image": "o14.png",
+  "source": "../sources/o14.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 14,
+    "extent": "whole source artwork",
+    "poster_seconds": 3.0,
+    "duration_seconds": 10.0
+  },
+  "slide_intent": "Connect an opening message to a product view so movement helps a viewer follow the offer.",
+  "strategic_value": "O2 can make a website feel continuous with its brand animation by carrying the bubble and gradient into the sales page.",
+  "demonstration": "A browser mockup begins with a centered headline over moving bubbles, then shifts to phones held at left and a product headline at right as the lower gradient warms.",
+  "category": "Application",
+  "practical_value": "Keep navigation stable while moving from a brand-led hero to a more specific product composition.",
+  "content_islands": [
+    {
+      "name": "Browser frame and navigation",
+      "spec": "Center the desktop browser on a dark surround and retain the small O2 mark and navigation across the top."
+    },
+    {
+      "name": "Opening hero",
+      "spec": "Center white headline and supporting copy over the blue gradient and bubbles."
+    },
+    {
+      "name": "Product reveal",
+      "spec": "Introduce the large phones at left and move the sales message to the right against a warmer lower field."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The blue gradient, soft bubbles and white rounded type carry through the sequence.",
+    "Application": "The brand ingredients appear in a desktop website hero and product transition."
+  },
+  "motion": "../sources/o14.mp4"
+}

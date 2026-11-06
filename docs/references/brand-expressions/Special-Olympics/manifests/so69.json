@@ -1,0 +1,28 @@
+{
+  "id": "SO69",
+  "title": "Banner, backdrops & flags · Overview",
+  "image": "so69.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 69
+  },
+  "slide_intent": "Match event identification to the available surface and the number of partners. A flag, a tall sign and a sponsored backdrop each give the audience a different amount of information to read.",
+  "strategic_value": "The same mark and curve can connect local event formats while preserving distinct space for athletes, sponsors or an event identity.",
+  "demonstration": "Seven numbered groups compare horizontal and vertical banners, an athlete photograph, a flag, sponsor configurations and an event banner. The flag note identifies the need to align the two faces.",
+  "category": "Application",
+  "practical_value": "Choose a format before assigning logo and sponsor space. Use the single-partner and multi-partner examples to decide how many identifiers one surface can hold.",
+  "content_islands": [
+    {
+      "name": "Format key",
+      "spec": "List the seven applications down the left side and note which mark international banners use."
+    },
+    {
+      "name": "Core identity formats",
+      "spec": "Across the upper area compare horizontal strips, a tall core-only banner, a tall image banner and a two-sided flag."
+    },
+    {
+      "name": "Partner and event formats",
+      "spec": "Compare sponsor split panels, the white partner field on a square format and the wide event-specific banner along the bottom."
+    }
+  ]
+}

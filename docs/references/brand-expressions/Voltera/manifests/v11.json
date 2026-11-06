@@ -1,0 +1,32 @@
+{
+  "id": "V11",
+  "title": "Designing with our logos",
+  "image": "v11.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Teach designers to preserve the relationship between a symbol and its source. Recognizable circuit pads can give the V in Voltera a meaning specific to printed electronics.",
+  "strategic_value": "Voltera can carry its circuit-making identity into both the company signature and its product names. Repeating the pad as a spacing unit gives designers a reference for placing the mark.",
+  "demonstration": "Three printed pads form a V with a blue pad at upper left. The space diagram sits beside four combinations of mark and ground. Two product signatures below add V-One or NOVA after the corporate name.",
+  "category": "Brand",
+  "practical_value": "When a title already names the product, use the corporate signature. Use a product signature when the surrounding composition has no other place for that name.",
+  "content_islands": [
+    {
+      "name": "Contents rail",
+      "spec": "Place a dark table of contents down the left edge and highlight Logos in blue. Set the page number in a blue tab at lower right."
+    },
+    {
+      "name": "Origin of the mark",
+      "spec": "Above the diagrams, label the section Logos, place a short green accent above the heading and explain the three circuit pads and the open A in the wordmark."
+    },
+    {
+      "name": "Clear space and color variants",
+      "spec": "Under the introduction, place the pad-based spacing drawing at left and the mark on four grounds beside it. Pair the diagrams with usage notes at right. Distinguish one pad of symbol clearance from the capital-V height around the wordmark."
+    },
+    {
+      "name": "Product signatures",
+      "spec": "Below the examples, state when the product name belongs in the signature. Align the V-One and NOVA versions side by side so the shared company mark and the changing product name can be compared."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "SG19",
+  "title": "App browsing sequence",
+  "image": "sg19.png",
+  "source": "../sources/sg19.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 19,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Let expressive welcome content lead into efficient browsing so personality supports the customer’s task.",
+  "strategic_value": "The illustrated greeting can introduce Sweetgreen’s voice before consistent cards organize food choices.",
+  "demonstration": "A phone on a kale background moves from a personalized home screen into warm bowls, salads, sides and beverages.",
+  "category": "Application",
+  "practical_value": "Compare the emphasis of a welcoming hero with the repeated structure needed for product browsing.",
+  "content_islands": [
+    {
+      "name": "Home screen",
+      "spec": "Begin with greeting, bowl illustration, featured food and ordering control."
+    },
+    {
+      "name": "Menu screens",
+      "spec": "Continue through categorized food cards with product photography, descriptions and actions."
+    },
+    {
+      "name": "Kale surround",
+      "spec": "Keep the dense kale photograph fixed around the phone."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The complete clip displays multiple stages of mobile food browsing.",
+    "Expression": "The illustrative greeting gives way to consistently styled food cards."
+  },
+  "motion": "../sources/sg19.mp4"
+}

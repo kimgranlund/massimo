@@ -1,0 +1,31 @@
+{
+  "id": "TW23",
+  "title": "Mobile / Browse in light and dark",
+  "image": "tw23.png",
+  "source": "../sources/tw23.gif",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 23,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Compare alternative interface grounds because the same content hierarchy needs to remain understandable in both.",
+  "strategic_value": "Consistent mobile structure can connect Twitch’s light and dark treatments despite different surrounding color fields.",
+  "demonstration": "A two-frame presentation alternates light and dark mobile Browse screens, each listing categories inside the same phone form.",
+  "category": "Application",
+  "practical_value": "Compare title, list and navigation contrast between the two shown appearances; the transition is a presentation swap, not evidence of an in-app animation.",
+  "content_islands": [
+    {
+      "name": "Mobile catalogue",
+      "spec": "Keep the Browse heading, category rows and bottom navigation inside the phone."
+    },
+    {
+      "name": "Appearance comparison",
+      "spec": "Alternate the light and dark screen treatments with their corresponding external presentation fields."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The GIF compares light and dark presentations of the mobile Browse interface."
+  },
+  "motion": "../sources/tw23.mp4"
+}

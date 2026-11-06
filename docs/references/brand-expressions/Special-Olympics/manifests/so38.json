@@ -1,0 +1,28 @@
+{
+  "id": "SO38",
+  "title": "Endorsement mark for third-party application",
+  "image": "so38.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Teach partners to identify the nature of a relationship clearly. A reader needs to distinguish support, sponsorship and presentation from authorship.",
+  "strategic_value": "A prepared badge can preserve the program’s identity when it appears in another organization’s design.",
+  "demonstration": "A two-by-two display compares horizontal and vertical endorsement badges in full color and one color. The relationship line sits above the local mark.",
+  "category": "Brand",
+  "practical_value": "Choose the orientation that fits the partner’s artwork and the endorsement wording that matches the actual relationship.",
+  "content_islands": [
+    {
+      "name": "Relationship wording",
+      "spec": "List possible accreditation phrases beneath the third-party guidance at left."
+    },
+    {
+      "name": "Badge alternatives",
+      "spec": "Align horizontal and vertical badges by color treatment. Label the relationship line with a leader."
+    },
+    {
+      "name": "Clearance detail",
+      "spec": "Magnify a badge edge at right to show space between the artwork and its container."
+    }
+  ]
+}

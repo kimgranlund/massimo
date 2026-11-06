@@ -1,0 +1,39 @@
+{
+  "id": "O01",
+  "title": "Oxygen and the O2 signature",
+  "image": "o01.png",
+  "source": "../sources/o01.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 1,
+    "extent": "whole source artwork",
+    "poster_seconds": 4.4,
+    "duration_seconds": 8.0
+  },
+  "slide_intent": "Use a familiar visual ingredient to introduce a name so viewers connect movement with the identity.",
+  "strategic_value": "The soft bubbles and blue mark can reconnect O2’s digital identity with its oxygen premise.",
+  "demonstration": "Translucent pale-blue bubbles cross a white field before a centered blue O2 mark appears; the bubbles then clear away.",
+  "category": "Motion",
+  "practical_value": "Give the signature a clear resting state after an atmospheric entrance.",
+  "content_islands": [
+    {
+      "name": "Bubble field",
+      "spec": "Let softly shaded bubbles enter and cross the white field, with some cropped at the edges."
+    },
+    {
+      "name": "Signature reveal",
+      "spec": "Place the blue O2 mark centrally and retain it as the surrounding bubbles leave."
+    }
+  ],
+  "ingredient": {
+    "name": "Oxygen bubbles",
+    "role": "Make the oxygen premise visible as a light, moving atmosphere.",
+    "application": "In this reveal, move bubbles across a white field and leave a clear centered mark at the end.",
+    "scope": "Observed opening animation in the 2023 refresh case study; no universal timing or easing rule is supplied."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying introduction says the refresh restores purpose to oxygen through the bubble, color and typography for a digital-first future.",
+    "Expression": "Soft translucent bubbles and the blue O2 signature form the clip’s recognizable visual language."
+  },
+  "motion": "../sources/o01.mp4"
+}

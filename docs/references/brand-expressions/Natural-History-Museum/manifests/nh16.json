@@ -1,0 +1,33 @@
+{
+  "id": "NH16",
+  "title": "Bus advertisement",
+  "image": "nh16.png",
+  "source": "../sources/nh16.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 16,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Simplify a message for a moving surface, because passing viewers have little time to read.",
+  "strategic_value": "The large beetle beside a brief invitation can make the Museum’s offer recognizable in street traffic.",
+  "demonstration": "A red double-decker bus carries a cyan strip reading Book a day out of the ordinary with a museum signature and an oversized beetle.",
+  "category": "Application",
+  "practical_value": "Compare a short horizontal message with a specimen that extends beyond the strip.",
+  "content_islands": [
+    {
+      "name": "Message strip",
+      "spec": "Run the cyan headline strip along the bus side and place the museum signature at its right end."
+    },
+    {
+      "name": "Oversized specimen",
+      "spec": "Extend the beetle vertically across the strip and red bus body."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain the bus and surrounding buildings to show viewing distance."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A red double-decker bus carries a cyan strip reading Book a day out of the ordinary with a museum signature and an oversized beetle."
+  }
+}

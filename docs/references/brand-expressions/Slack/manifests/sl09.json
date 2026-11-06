@@ -1,0 +1,20 @@
+{
+  "id": "SL09",
+  "title": "Puzzle pieces",
+  "image": "sl09.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Show interdependence through an object whose form suggests how separate parts fit together. One displaced piece makes the relationship visible.",
+  "strategic_value": "Slack can give a human idea such as working together a simple image that readers can interpret before reading the values.",
+  "demonstration": "White extruded puzzle pieces sit on a pink ground. Most form a cluster while one piece sits apart near the lower right.",
+  "category": "Imagery",
+  "practical_value": "Use the distance between the assembled and separate pieces to explain a relationship without adding a caption.",
+  "content_islands": [
+    {
+      "name": "Puzzle-piece arrangement",
+      "spec": "Group the white puzzle pieces above and to the left of center. Offset one loose piece toward the lower right. Use pale side faces and dark cast shadows to give the pieces depth against the pink field."
+    }
+  ]
+}

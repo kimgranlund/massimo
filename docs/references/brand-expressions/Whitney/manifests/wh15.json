@@ -1,0 +1,32 @@
+{
+  "id": "WH15",
+  "title": "Responsive arrow proposal",
+  "image": "wh15.png",
+  "source": "../sources/signage.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 15,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Carry the same spatial idea into wayfinding because orientation and identity can reinforce each other in a building.",
+  "strategic_value": "Arrows shaped around words can connect Whitney’s signage to its angular graphic language.",
+  "demonstration": "Four thin right-pointing arrows accommodate Whitney, Exit, Ticket Office and Stairs at different widths.",
+  "category": "Application",
+  "practical_value": "Compare arrow proportions against label length before designing environmental signs; this is a proposal rather than evidence of installed signage.",
+  "content_islands": [
+    {
+      "name": "Arrow stack",
+      "spec": "Place four open angular arrows vertically with the corresponding uppercase label within each."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay says the graphic identity and sign system should express the same values.",
+    "Application": "The proposal varies arrow dimensions around labels of different lengths."
+  },
+  "ingredient": {
+    "name": "Responsive arrow",
+    "role": "Connect directions with the identity’s angular construction.",
+    "application": "Adapt arrow width and height to the contained words and consider applying the sign directly to the wall.",
+    "scope": "Historical signage proposal in the studio essay; not evidence that these particular signs were installed."
+  }
+}

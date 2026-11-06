@@ -1,0 +1,35 @@
+{
+  "id": "SP07",
+  "title": "Out Now — artist screen",
+  "image": "sp07.png",
+  "source": "../sources/sp07.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 7,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/1cfe968eac542a96dde9def7958a45c3d26c73c2-2400x1920.png"
+  },
+  "category": "Application",
+  "slide_intent": "Make a release recognizable at a glance because environmental displays compete with surrounding light and activity.",
+  "strategic_value": "Spotify can place the artist first while a small corner logo identifies the platform.",
+  "demonstration": "A landscape screen shows a yellow-orange portrait in a cowboy hat, a purple field and large Out Now lettering inside a dark event space.",
+  "practical_value": "Assess portrait scale and message length for a display viewed at distance.",
+  "content_islands": [
+    {
+      "name": "Release artwork",
+      "spec": "A large face and hat occupy the screen; Out Now overlaps its lower portion."
+    },
+    {
+      "name": "Platform signature",
+      "spec": "A small Spotify mark occupies the upper-right corner."
+    },
+    {
+      "name": "Venue",
+      "spec": "The surrounding dark room establishes the screen as an environmental application."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A landscape screen shows a yellow-orange portrait in a cowboy hat, a purple field and large Out Now lettering inside a dark event space.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

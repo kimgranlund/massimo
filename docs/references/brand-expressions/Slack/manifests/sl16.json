@@ -1,0 +1,24 @@
+{
+  "id": "SL16",
+  "title": "Section 2: Design elements",
+  "image": "sl16.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Signal the move from brand definition to making visual materials. The familiar divider format helps a reader recognize a new working section.",
+  "strategic_value": "Slack can organize a long reference book through consistent chapter cues while giving each chapter its own scope.",
+  "demonstration": "The aubergine divider uses a white chapter heading and rule followed by a short explanation about applying Slack assets.",
+  "category": "Layout",
+  "practical_value": "Use the same chapter opener when the kind of decision changes, here from defining the brand to handling its design elements.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the numbered chapter heading at upper left and run a fine white rule below it."
+    },
+    {
+      "name": "Chapter summary",
+      "spec": "Set the short introduction in a narrow left column. Leave the remaining aubergine field open."
+    }
+  ]
+}

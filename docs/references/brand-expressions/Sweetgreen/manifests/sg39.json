@@ -1,0 +1,31 @@
+{
+  "id": "SG39",
+  "title": "Carry bag in greenery",
+  "image": "sg39.png",
+  "source": "../sources/sg39.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 39,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Connect a simple package to its product world so recognition comes from both the signature and its setting.",
+  "strategic_value": "The white wordmark on kraft can give Sweetgreen’s carry bag a clear identity while the vivid handles echo fresh produce.",
+  "demonstration": "A kraft paper bag with yellow-green handles and a white sweetgreen wordmark sits amid dense greenery, with small tomatoes nearby.",
+  "category": "Application",
+  "practical_value": "Compare signature scale, handle color and paper material on an otherwise restrained package.",
+  "content_islands": [
+    {
+      "name": "Bag",
+      "spec": "Keep the broad kraft face and white wordmark visible, with the vivid handles above."
+    },
+    {
+      "name": "Plant setting",
+      "spec": "Surround the bag with grasses, leaves and tomatoes while retaining space around its edges."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork shows the wordmark and vivid handles on a carry bag.",
+    "Expression": "Kraft paper and white lettering contrast with yellow-green handles and dense vegetation."
+  }
+}

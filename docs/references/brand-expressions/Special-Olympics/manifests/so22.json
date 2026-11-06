@@ -1,0 +1,28 @@
+{
+  "id": "SO22",
+  "title": "Effective brand communications",
+  "image": "so22.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Teach teams to establish the audience, objective and context before composing. A shared identity can give different local stories a recognizable form.",
+  "strategic_value": "Special Olympics can preserve a common presentation across programs while allowing local content to carry the story.",
+  "demonstration": "A red checklist precedes a black completion prompt. A row of similarly shaped glasses contains different colored fills, illustrating the relationship between shared form and local content.",
+  "category": "Brand",
+  "practical_value": "Before commissioning work, identify the objective, audience, context, feeling and channel, then select a local story that can fit the shared identity.",
+  "content_islands": [
+    {
+      "name": "Brief checklist",
+      "spec": "Set the heading and subtitle at top and place the red list of questions beneath them."
+    },
+    {
+      "name": "Transition prompt",
+      "spec": "Set the short completion prompt in a small black box to the right of the checklist."
+    },
+    {
+      "name": "Glass comparison",
+      "spec": "Across the lower page, show matching glasses with differently colored contents. Annotate the first glass to distinguish common form from local content and add the explanatory caption below."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "S22",
+  "title": "Placement and choice",
+  "image": "s22.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 22,
+    "printed_page": 21
+  },
+  "slide_intent": "Relate the choice of lockup to the shape of the available space so a long name can remain prominent on a narrow sign.",
+  "strategic_value": "A single venue identity can fit horizontal or vertical signage without losing the lettering and line device that identify the site.",
+  "demonstration": "Weston Park Museum appears stacked in a centered field, horizontal in a strip, rotated along a narrow vertical panel and stacked at the foot of another tall panel.",
+  "category": "Layout",
+  "practical_value": "Compare the rotated horizontal master with the bottom-centered stacked master for a narrow upright format.",
+  "content_islands": [
+    {
+      "name": "Choice guidance",
+      "spec": "Explain stacked and horizontal options in a narrow left column."
+    },
+    {
+      "name": "Broad formats",
+      "spec": "Group the centered stacked specimen and the centered long specimen. Mark their primary and secondary choices."
+    },
+    {
+      "name": "Tall formats",
+      "spec": "Set two equal vertical panels side by side. Compare the long rotated mark with the small stacked mark at the bottom and label each option."
+    }
+  ]
+}

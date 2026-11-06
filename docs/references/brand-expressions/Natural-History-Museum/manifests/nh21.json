@@ -1,0 +1,33 @@
+{
+  "id": "NH21",
+  "title": "Big Seaweed Search booklet",
+  "image": "nh21.png",
+  "source": "../sources/nh21.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 21,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let a specimen interrupt a headline deliberately, because the image should feel integral without making the subject unclear.",
+  "strategic_value": "The seaweed crossing the oversized word Big can link a strong editorial hierarchy to the Museum’s natural subject matter.",
+  "demonstration": "A blue booklet places a white signature at top, oversized turquoise Big lettering behind seaweed and Seaweed Search beneath.",
+  "category": "Layout",
+  "practical_value": "Compare image overlap with a clear smaller title and stable signature.",
+  "content_islands": [
+    {
+      "name": "Publication title",
+      "spec": "Set oversized Big above the smaller Seaweed Search title on blue."
+    },
+    {
+      "name": "Specimen overlay",
+      "spec": "Let dark seaweed stems cross the large letters and extend down the cover."
+    },
+    {
+      "name": "Signature and object",
+      "spec": "Keep the white museum signature at upper left and visible booklet edges beneath."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A blue booklet places a white signature at top, oversized turquoise Big lettering behind seaweed and Seaweed Search beneath."
+  }
+}

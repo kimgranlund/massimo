@@ -1,0 +1,38 @@
+{
+  "id": "O02",
+  "title": "Identity system in changing contexts",
+  "image": "o02.png",
+  "source": "../sources/o02.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 2,
+    "extent": "whole source artwork",
+    "poster_seconds": 5.85,
+    "duration_seconds": 10.63
+  },
+  "slide_intent": "Test an identity across different content so viewers can recognize the provider while the offer and emotional tone change.",
+  "strategic_value": "A repeated mark, blue fields and rounded typography can connect O2 products, entertainment and everyday experiences.",
+  "demonstration": "A modular collage cycles through light, blue and warmer event treatments across buttons, campaign photography, product cards, a bubble and headline specimens.",
+  "category": "Brand",
+  "practical_value": "Compare stable ingredients with variable imagery and color before extending the system to another campaign.",
+  "content_islands": [
+    {
+      "name": "Modular field",
+      "spec": "Arrange rounded panels in a compact mosaic with narrow pale gutters."
+    },
+    {
+      "name": "Applications and ingredients",
+      "spec": "Mix a horizontal campaign, portrait photography, a product offer, interactive button, logo, bubble and wide headline panel."
+    },
+    {
+      "name": "Changing treatments",
+      "spec": "Cycle the contents and color fields while retaining the panel arrangement."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The case-study introduction frames the system as a digital-first renewal of oxygen through color, bubbles and typography.",
+    "Expression": "The mosaic shows recurring O2 blue, bubble shading and rounded lettering alongside several photographic moods.",
+    "Application": "The panels place those ingredients in button, advertising and product-offer contexts."
+  },
+  "motion": "../sources/o02.mp4"
+}

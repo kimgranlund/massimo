@@ -1,0 +1,28 @@
+{
+  "id": "SO15",
+  "title": "Joyful",
+  "image": "so15.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Teach communicators to make joy visible through a specific moment so the audience can recognize the feeling for itself.",
+  "strategic_value": "Special Olympics can connect its upbeat voice to a shared sporting experience.",
+  "demonstration": "People in yellow and black jump together outdoors. The red trait heading and two copy blocks associate that moment with an uplifting tone.",
+  "category": "Voice",
+  "practical_value": "Choose a photograph with an observable expression of joy and write in a tone consistent with the action.",
+  "content_islands": [
+    {
+      "name": "Photographic example",
+      "spec": "Use the outdoor group photograph at full scale. Preserve the raised arms, airborne figures and water."
+    },
+    {
+      "name": "Trait heading",
+      "spec": "Position the Joyful bar above the lower-left copy panel."
+    },
+    {
+      "name": "Meaning and expression",
+      "spec": "In two columns, pair the value of joy with guidance on an upbeat voice. Keep enough contrast for the copy over the active image."
+    }
+  ]
+}

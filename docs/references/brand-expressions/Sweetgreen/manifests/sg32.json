@@ -1,0 +1,30 @@
+{
+  "id": "SG32",
+  "title": "Restaurant entrance wordmark",
+  "image": "sg32.png",
+  "source": "../sources/sg32.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 32,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Identify a destination at architectural scale so people can connect a place to previous brand encounters.",
+  "strategic_value": "The white wordmark above the doorway can make Sweetgreen recognizable within a material-rich storefront.",
+  "demonstration": "A white sweetgreen sign sits above a glass entrance framed by vertical timber slats, with a large palm leaf at right.",
+  "category": "Application",
+  "practical_value": "Evaluate signature placement relative to doorway, façade texture and nearby vegetation.",
+  "content_islands": [
+    {
+      "name": "Entrance and sign",
+      "spec": "Place the wordmark above the glass doors within the vertical timber façade."
+    },
+    {
+      "name": "Foreground plant",
+      "spec": "Retain the palm leaf that overlaps the right side of the scene."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The wordmark is installed above a restaurant entrance."
+  }
+}

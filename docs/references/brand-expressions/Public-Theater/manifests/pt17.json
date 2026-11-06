@@ -1,0 +1,29 @@
+{
+  "id": "PT17",
+  "title": "Dancing on Her Knees",
+  "image": "pt17.png",
+  "source": "../sources/pt17.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 17,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Choose a bodily gesture as the main sign because it can convey performance without showing a whole person.",
+  "strategic_value": "The isolated leg and tilted title can give the production a distinct movement-led image.",
+  "demonstration": "A yellow stockinged leg and black shoe cut diagonally across a red field above a black panel with magenta title lettering.",
+  "category": "Imagery",
+  "practical_value": "Compare image direction and title angle when suggesting action in a still poster.",
+  "content_islands": [
+    {
+      "name": "Leg image",
+      "spec": "Crop the leg from upper left toward the center of the red field."
+    },
+    {
+      "name": "Title panel",
+      "spec": "Set the magenta title diagonally across the lower black panel, with the signature on the right edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A yellow stockinged leg and black shoe cut diagonally across a red field above a black panel with magenta title lettering."
+  }
+}

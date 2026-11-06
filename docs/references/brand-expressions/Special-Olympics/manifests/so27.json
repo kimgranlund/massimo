@@ -1,0 +1,28 @@
+{
+  "id": "SO27",
+  "title": "Brand mark · Standard two line lock-up",
+  "image": "so27.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Teach designers to protect a mark’s legibility when placing or reducing it. Its boundary and reproduction size affect how clearly people see the components.",
+  "strategic_value": "Consistent clearance can preserve the relationship between the symbol, organization name and local name on crowded print pieces.",
+  "demonstration": "Two annotated lockups sit inside cyan clearance frames. Dimension marks record the recommended minimum print height of one-third inch or 8 mm.",
+  "category": "Geometry",
+  "practical_value": "Check the available space and intended reproduction method before choosing the size. Treat the printed minimum as a starting point for testing the substrate.",
+  "content_islands": [
+    {
+      "name": "Production notes",
+      "spec": "Set color, free-space and minimum-size notes in the left column."
+    },
+    {
+      "name": "International diagram",
+      "spec": "Place clearance guides and a height dimension around the two-line international mark."
+    },
+    {
+      "name": "Program diagram",
+      "spec": "Repeat the diagram with the program name under the logotype. Keep the use warning alongside it."
+    }
+  ]
+}

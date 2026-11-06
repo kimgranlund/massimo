@@ -1,0 +1,30 @@
+{
+  "id": "O10",
+  "title": "Bespoke letterform outlines",
+  "image": "o10.png",
+  "source": "../sources/o10.jpg",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 10,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Show letterform construction at large scale so designers can examine the details that give a voice its character.",
+  "strategic_value": "Rounded letterforms and accents can provide O2 with a consistent typographic character across messages.",
+  "demonstration": "Enlarged white vector outlines of lowercase letterforms and diacritics cross a vivid-blue field, with visible curve nodes and cropped edges.",
+  "category": "Typography",
+  "practical_value": "Inspect curves, counters and diacritics together when evaluating whether a typeface has a coherent character.",
+  "content_islands": [
+    {
+      "name": "Letterform construction",
+      "spec": "Place oversized white outlines and their curve nodes across the blue canvas, preserving the cropped outer characters."
+    },
+    {
+      "name": "Diacritic forms",
+      "spec": "Show round dots and an angled accent above the repeated lowercase forms."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The outlined glyphs demonstrate rounded bowls, terminals and accent shapes.",
+    "Application": "Visible curve nodes expose the construction of the bespoke lettering."
+  }
+}

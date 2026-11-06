@@ -1,0 +1,33 @@
+{
+  "id": "SF02",
+  "title": "Computational Design",
+  "image": "sf02.png",
+  "source": "../sources/sf02.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 2,
+    "section": "Computational Design",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Connect letter deformation to controllable variables because viewers need a coherent relationship between a changing form and its behavior.",
+  "strategic_value": "A recognizable serif A that stretches and skews can connect classical letterforms with contemporary performance.",
+  "demonstration": "A chart at left accompanies a serif A at right; the A grows vertically, skews across the field and returns.",
+  "category": "Motion",
+  "practical_value": "Compare the effects of vertical stretch and skew before combining them in a responsive wordmark.",
+  "content_islands": [
+    {
+      "name": "Parameter chart",
+      "spec": "Place the plotted controls on the left, keeping their colored axes and traces visible."
+    },
+    {
+      "name": "Letter specimen",
+      "spec": "Place the A over a construction grid at right; preserve its expansion across and return within the frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A chart at left accompanies a serif A at right; the A grows vertically, skews across the field and returns.",
+    "Application": "The source demonstrates a chart at left accompanies a serif A at right; the A grows vertically, skews across the field and returns.",
+    "Intent": "The accompanying Computational Design text says the letters balance classical tradition with motion and respond to music."
+  },
+  "motion": "../sources/sf02.mp4"
+}

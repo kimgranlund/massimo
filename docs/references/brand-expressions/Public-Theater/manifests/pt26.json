@@ -1,0 +1,30 @@
+{
+  "id": "PT26",
+  "title": "Under the Radar / Program family",
+  "image": "pt26.png",
+  "source": "../sources/pt26.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 26,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Connect a festival’s promotional and informational pieces because people move between attraction and planning.",
+  "strategic_value": "A shared heading and black frame can link the cover, map, poster and program spread.",
+  "demonstration": "Four framed pieces pair cutout performers, a map and dense pink-accented program information.",
+  "category": "Application",
+  "practical_value": "Compare expressive promotion with the more detailed information needed after interest is established.",
+  "content_islands": [
+    {
+      "name": "Upper pair",
+      "spec": "Place the main cover next to the map layout."
+    },
+    {
+      "name": "Lower pair",
+      "spec": "Place the tall performer advertisement beside the wide program spread with its large cutout figure."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Four framed pieces pair cutout performers, a map and dense pink-accented program information.",
+    "Application": "The festival identity is applied to a cover, location map, tall advertisement and program spread."
+  }
+}

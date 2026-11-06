@@ -1,0 +1,31 @@
+{
+  "id": "SF22",
+  "title": "Performance film",
+  "image": "sf22.png",
+  "source": "../sources/sf22.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 22,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Show performance through changes of viewpoint because the energy of an ensemble includes individual gestures and collective scale.",
+  "strategic_value": "Alternating conductor, player and hall views can connect the Symphony’s identity to live musical work.",
+  "demonstration": "A vertical film cuts among the conductor, close views of instruments and musicians, and wide shots of the orchestra.",
+  "category": "Imagery",
+  "practical_value": "Plan a performance-image sequence that alternates detail with the whole ensemble.",
+  "content_islands": [
+    {
+      "name": "Conductor and players",
+      "spec": "Retain the close performance views and their warm, dark lighting."
+    },
+    {
+      "name": "Ensemble views",
+      "spec": "Keep the wide hall shots that locate those gestures within the orchestra."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A vertical film cuts among the conductor, close views of instruments and musicians, and wide shots of the orchestra."
+  },
+  "motion": "../sources/sf22.mp4"
+}

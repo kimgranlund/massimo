@@ -1,0 +1,39 @@
+{
+  "id": "O03",
+  "title": "A bubble redesigned for flexibility and interaction",
+  "image": "o03.png",
+  "source": "../sources/o03.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 3,
+    "extent": "whole source artwork",
+    "poster_seconds": 2.691,
+    "duration_seconds": 8.97
+  },
+  "slide_intent": "Give a symbol a material behavior so a viewer can recognize it while its contour changes.",
+  "strategic_value": "A deforming bubble can give O2 a responsive digital ingredient that still refers to oxygen.",
+  "demonstration": "One shaded translucent bubble changes contour and highlight position against a flat vivid-blue field.",
+  "category": "Motion",
+  "practical_value": "Check whether a changing silhouette remains recognizable before using it as an interactive brand element.",
+  "content_islands": [
+    {
+      "name": "Blue field",
+      "spec": "Fill the frame with vivid blue without text or additional symbols."
+    },
+    {
+      "name": "Deforming bubble",
+      "spec": "Center one large translucent bubble with a light rim, changing its rounded contour over the loop."
+    }
+  ],
+  "ingredient": {
+    "name": "Flexible bubble",
+    "role": "Express oxygen as a shape that can respond and change.",
+    "application": "Keep the light translucent rim readable as the rounded contour deforms.",
+    "scope": "Observed standalone bubble study in the 2023 portfolio; no physical simulation parameters are specified."
+  },
+  "reference_purposes": {
+    "Intent": "The source section explicitly introduces a bubble redesigned for flexibility and interaction.",
+    "Expression": "The clip demonstrates a soft irregular contour and moving light on the bubble."
+  },
+  "motion": "../sources/o03.mp4"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "E06",
+  "title": "Large-Scale Application / Color Transitions",
+  "image": "e06.png",
+  "source": "../sources/e06.mp4",
+  "location": {
+    "source_order": 6,
+    "whole_source": true,
+    "poster_seconds": 39.42,
+    "duration_seconds": 65.7
+  },
+  "slide_intent": "Design transitions as part of the spatial experience so changes between states remain coherent at architectural scale.",
+  "strategic_value": "Related color fills and current lines can keep Spectrum present even when the lobby display changes composition.",
+  "demonstration": "A 65.70-second triptych alternates dark current fields with broad blue, green and warm color planes. Small logo signatures remain near the bottom of the screens.",
+  "category": "Motion",
+  "practical_value": "Compare how line motion and broad color wipes change the room’s visual intensity.",
+  "content_islands": [
+    {
+      "name": "Lobby setting",
+      "spec": "Keep the same three screen recesses, white room, reflected floor and human scale figure."
+    },
+    {
+      "name": "Transition sequence",
+      "spec": "Alternate dark line fields with diagonal color planes and saturated full-screen states, retaining small Spectrum signatures during branded dark states."
+    }
+  ],
+  "ingredient": {
+    "name": "Lobby transitions",
+    "role": "Connect successive screen states through color and movement.",
+    "application": "Use the case study’s expanded installation palette and transitions in relation to the hero current sequence.",
+    "scope": "Large lobby screens. The agency cites art and architectural references; no universal transition duration or easing rule is published."
+  },
+  "motion": "../sources/e06.mp4"
+}

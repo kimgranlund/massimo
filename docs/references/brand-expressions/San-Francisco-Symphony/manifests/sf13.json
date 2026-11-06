@@ -1,0 +1,31 @@
+{
+  "id": "SF13",
+  "title": "Concert tickets",
+  "image": "sf13.png",
+  "source": "../sources/sf13.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 13,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Carry identity into transactional print because recognition should continue when a person checks practical details.",
+  "strategic_value": "The signature beside ticket information can connect booking and admission to the same institution.",
+  "demonstration": "Two overlapping white tickets sit on a red upholstered seat, combining the wordmark, printed event details and barcodes.",
+  "category": "Application",
+  "practical_value": "Keep the identity distinct from the compact information needed at entry.",
+  "content_islands": [
+    {
+      "name": "Ticket pair",
+      "spec": "Preserve the overlap, black printing and barcodes on the two white tickets."
+    },
+    {
+      "name": "Seat context",
+      "spec": "Keep the red upholstery as the physical setting for the admission material."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two overlapping white tickets sit on a red upholstered seat, combining the wordmark, printed event details and barcodes.",
+    "Application": "The source demonstrates two overlapping white tickets sit on a red upholstered seat, combining the wordmark, printed event details and barcodes."
+  }
+}

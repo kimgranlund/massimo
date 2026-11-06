@@ -1,0 +1,28 @@
+{
+  "id": "SO80",
+  "title": "Informational leaflets — Suggestions for internal layout",
+  "image": "so80.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 80
+  },
+  "slide_intent": "Teach editors to let information hierarchy guide a reader through an interior spread. Images, subsections and quotations each need their own reading space.",
+  "strategic_value": "Special Olympics can sustain clarity inside a leaflet after the cover’s graphic elements have receded.",
+  "demonstration": "A large spread pairs a text page and athlete portrait with a quotation over the image. Two smaller spreads compare a colored subsection and a mostly typographic page with a pull quote.",
+  "category": "Layout",
+  "practical_value": "Choose a background change for a subsection or a pull quote for a long text passage. Test the legibility of any text placed over a photograph.",
+  "content_islands": [
+    {
+      "name": "Reading guidance",
+      "spec": "Use a numbered left column to explain levels of type, margins, image overlays, section backgrounds and pull quotes."
+    },
+    {
+      "name": "Photo-led spread",
+      "spec": "Place the larger interior spread at center. Keep the text page open and set the caption or quotation over a quieter area of the photograph."
+    },
+    {
+      "name": "Alternative interiors",
+      "spec": "Stack two smaller spreads at right, one with a saturated subsection and one that uses type to distinguish a quotation."
+    }
+  ]
+}

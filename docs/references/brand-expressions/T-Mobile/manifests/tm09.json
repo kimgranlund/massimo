@@ -1,0 +1,34 @@
+{
+  "id": "TM09",
+  "title": "Our Iconic T-Digit",
+  "image": "tm09.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Show how a familiar symbol can carry a composition so recognition is retained even when its treatment changes.",
+  "strategic_value": "Large T-Digit installations and selective adaptations can extend T-Mobile recognition into events and communities.",
+  "demonstration": "A prominent architectural T-Digit is surrounded by neon and community-specific variations.",
+  "category": "Brand",
+  "practical_value": "Choose a dominant T-Digit treatment while preserving its recognizable form and the source’s approval boundary.",
+  "content_islands": [
+    {
+      "name": "Role and limits",
+      "spec": "Set the rationale and customization note in a white left column."
+    },
+    {
+      "name": "Hero installation",
+      "spec": "Use the large environmental photograph in the upper center."
+    },
+    {
+      "name": "Adaptation gallery",
+      "spec": "Arrange smaller customized and neon T-Digits along the right and lower edges."
+    }
+  ],
+  "ingredient": {
+    "name": "T-Digit",
+    "role": "Identify T-Mobile as the central visual subject.",
+    "application": "Use the T-Digit boldly at large scale; have selective customizations managed and approved by the brand team and T Studios.",
+    "scope": "Specific moments, campaigns and audiences; customization is not a general license."
+  }
+}

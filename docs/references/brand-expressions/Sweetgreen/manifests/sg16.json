@@ -1,0 +1,32 @@
+{
+  "id": "SG16",
+  "title": "Missing-page illustration",
+  "image": "sg16.png",
+  "source": "../sources/sg16.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 16,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Keep a service interruption understandable and human so an error does not abruptly break the brand experience.",
+  "strategic_value": "The missing-ingredient illustration can make Sweetgreen’s error message feel related to its food-focused voice.",
+  "demonstration": "A tablet among produce displays Sorry, this page cannot be found beside an outlined figure and a tall plant with a dotted missing area.",
+  "category": "Application",
+  "practical_value": "Pair a plain error statement and recovery control with an illustration that acknowledges something is absent.",
+  "content_islands": [
+    {
+      "name": "Error screen",
+      "spec": "Place the illustration left of the message and highlighted recovery control on the tablet."
+    },
+    {
+      "name": "Produce setting",
+      "spec": "Retain the wooden crates and vegetables surrounding the screen."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The brand illustration appears on a missing-page interface with a recovery action.",
+    "Expression": "The small character moves beneath a plant while the error message stays visible."
+  },
+  "motion": "../sources/sg16.mp4"
+}

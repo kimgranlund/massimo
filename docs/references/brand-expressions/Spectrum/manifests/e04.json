@@ -1,0 +1,34 @@
+{
+  "id": "E04",
+  "title": "Power-Up / Power-Down / Format Family",
+  "image": "e04.png",
+  "source": "../sources/e04.mp4",
+  "location": {
+    "source_order": 4,
+    "whole_source": true,
+    "poster_seconds": 2.526,
+    "duration_seconds": 4.21
+  },
+  "slide_intent": "Adapt a recognizable animation to different screen shapes so device constraints do not fragment the identity.",
+  "strategic_value": "A shared current-to-logo sequence can make Spectrum’s mobile startup behavior recognizable across devices.",
+  "demonstration": "Six differently proportioned blue rectangles align along a baseline and run a synchronized current-to-logo animation in a 4.21-second composite.",
+  "category": "Motion",
+  "practical_value": "Compare the placement and scale of the current and logo across tall, wide and small screen formats.",
+  "content_islands": [
+    {
+      "name": "Format family",
+      "spec": "Arrange six blue screens from tall portrait at left through landscape and a small rectangle at right, aligned at their lower edges."
+    },
+    {
+      "name": "Synchronized identity",
+      "spec": "Run the flowing current, luminous reveal and white logo across all six panels so format differences remain directly comparable."
+    }
+  ],
+  "ingredient": {
+    "name": "Mobile identity sequence",
+    "role": "Identify the service during device startup or shutdown.",
+    "application": "Use the tagline-free power-up/power-down sequence adapted to device dimensions. The agency describes more than 40 delivered formats at 15 frames per second.",
+    "scope": "The six-screen composite illustrates the delivery family. Its playback file is not evidence that all 40 production formats are present."
+  },
+  "motion": "../sources/e04.mp4"
+}

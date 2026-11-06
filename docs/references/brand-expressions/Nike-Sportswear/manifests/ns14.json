@@ -1,0 +1,39 @@
+{
+  "id": "NS14",
+  "title": "Run HO19 / Renew Run man running",
+  "image": "ns14.png",
+  "source": "../sources/ns14.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 14,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Let a familiar symbol connect imagery as well as sign the message so recognition operates at more than one scale.",
+  "strategic_value": "The large outline Swoosh can connect athlete and product while a smaller solid Swoosh gives the text a clear Nike signature.",
+  "demonstration": "A male runner against a gray wall and a larger shoe inset share a white outline Swoosh; the left column contains the Renew Run name, supporting sentence and small solid mark.",
+  "category": "Brand",
+  "practical_value": "Compare the separate jobs of an oversized graphic mark and a small identifying signature.",
+  "content_islands": [
+    {
+      "name": "Product copy",
+      "spec": "Place the Renew Run name, supporting sentence and solid Swoosh low in the white left column."
+    },
+    {
+      "name": "Athlete and footwear",
+      "spec": "Overlap the runner image with a larger footwear crop at upper right."
+    },
+    {
+      "name": "Connecting mark",
+      "spec": "Span both photographs with a thin white outline Swoosh while leaving faces and footwear readable."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A male runner against a gray wall and a larger shoe inset share a white outline Swoosh; the left column contains the Renew Run name, supporting sentence and small solid mark."
+  },
+  "ingredient": {
+    "name": "Outline and solid Swoosh",
+    "role": "Connect the two photographs and separately identify the message.",
+    "application": "This example stretches a white outline Swoosh across imagery and keeps a small solid black Swoosh beside the text.",
+    "scope": "Observed Nike Run Core Holiday 2019 execution, not a master logo-usage permission or spacing rule."
+  }
+}

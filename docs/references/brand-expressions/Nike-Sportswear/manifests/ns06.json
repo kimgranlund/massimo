@@ -1,0 +1,43 @@
+{
+  "id": "NS06",
+  "title": "Sportswear HO19 / Court Vision Lo black shoe layout",
+  "image": "ns06.png",
+  "source": "../sources/ns06.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 6,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Give product naming and campaign messaging different voices so viewers can distinguish identification from persuasion.",
+  "strategic_value": "Brush-like black naming inside the photo border can make the product feel personally selected, while the broad white headline keeps the campaign assertive.",
+  "demonstration": "A taped photograph of black Court Vision Lo shoes sits above a handwritten-style product name; a wide white headline and smaller sentence sit below the frame.",
+  "category": "Typography",
+  "practical_value": "Compare informal product labeling with a bold campaign headline in one hierarchy.",
+  "content_islands": [
+    {
+      "name": "Taped product photograph",
+      "spec": "Center the black-shoe photograph inside a pale instant-photo-style frame with tape at the top."
+    },
+    {
+      "name": "Product name",
+      "spec": "Set the black brush-like name inside the lower frame margin."
+    },
+    {
+      "name": "Campaign statement",
+      "spec": "Place the white headline and smaller explanatory sentence below the frame, with the Nike signature beneath."
+    },
+    {
+      "name": "Background collage",
+      "spec": "Layer coral texture, court photography and a partial wearer image behind the frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A taped photograph of black Court Vision Lo shoes sits above a handwritten-style product name; a wide white headline and smaller sentence sit below the frame."
+  },
+  "ingredient": {
+    "name": "Taped photo frame and product label",
+    "role": "Make the shoe the focal item while separating its name from the campaign promise.",
+    "application": "In this example, place the product photograph and brush-like label inside a pale frame, with tape above and the campaign headline below.",
+    "scope": "Observed Sportswear Core Holiday 2019 composition. No universal frame size, typeface or placement rule is supplied."
+  }
+}

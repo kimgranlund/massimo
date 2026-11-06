@@ -1,0 +1,29 @@
+{
+  "id": "S21",
+  "title": "Placement",
+  "image": "s21.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 21,
+    "printed_page": 20
+  },
+  "slide_intent": "Teach designers to choose a venue mark’s position according to the communication’s focus and to repeat the decision across related formats.",
+  "strategic_value": "Stable placement can identify the venue quickly while a centered mark can lead a piece devoted to the site itself.",
+  "demonstration": "Three gray formats compare the Millennium Gallery mark fully centered, top centered and left aligned, with primary and secondary uses labeled.",
+  "category": "Layout",
+  "practical_value": "Try top center for general venue use and full center when the venue itself is the focus. Check the placement of related materials before varying it.",
+  "content_islands": [
+    {
+      "name": "Placement guidance",
+      "spec": "Set the heading and left text with the guidance about format and series consistency."
+    },
+    {
+      "name": "Centered placements",
+      "spec": "Use a small field for the fully centered specimen and a taller field for the top-centered specimen. Label both primary uses."
+    },
+    {
+      "name": "Secondary alignment",
+      "spec": "Place the left-aligned mark in a wide field beneath the smaller specimen and label the alternate position."
+    }
+  ]
+}

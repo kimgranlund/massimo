@@ -1,0 +1,30 @@
+{
+  "id": "SF07",
+  "title": "Orchestra in Davies Symphony Hall",
+  "image": "sf07.png",
+  "source": "../sources/sf07.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 7,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Show the people and space behind an identity because the audience’s expectation needs a tangible subject.",
+  "strategic_value": "A wide view of musicians and the organ can connect the graphic system to the scale of a real concert.",
+  "demonstration": "A warm interior photograph places the full orchestra below the hall’s organ and tiered architecture.",
+  "category": "Imagery",
+  "practical_value": "Choose a wide performance photograph when the ensemble and venue matter more than one performer.",
+  "content_islands": [
+    {
+      "name": "Ensemble",
+      "spec": "Keep the musicians across the lower portion of the frame."
+    },
+    {
+      "name": "Hall",
+      "spec": "Retain the organ and architectural tiers above as context for the performance."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A warm interior photograph places the full orchestra below the hall’s organ and tiered architecture."
+  }
+}

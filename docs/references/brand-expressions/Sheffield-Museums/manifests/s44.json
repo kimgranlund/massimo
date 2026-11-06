@@ -1,0 +1,25 @@
+{
+  "id": "S44",
+  "title": "Writing for different media",
+  "image": "s44.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 44,
+    "printed_page": 43
+  },
+  "slide_intent": "Teach a writer to adapt length, rhythm and emphasis to the place where a reader meets the message.",
+  "strategic_value": "Sheffield Museums can speak in a recognizable voice across a web listing, a print feature and a social post while giving each reader an appropriate route to act.",
+  "demonstration": "The page compares Website, Print and Social under numbered headings. The social guidance extends into the fourth column.",
+  "category": "Voice",
+  "practical_value": "Use scannable paragraphs and a call to action online, develop an intriguing angle in print and introduce a guest speaker clearly on social channels.",
+  "content_islands": [
+    {
+      "name": "Website and print",
+      "spec": "Set the two guidance blocks in adjacent columns. Explain scanning and links for web, and space for depth or playfulness in print."
+    },
+    {
+      "name": "Social writing",
+      "spec": "Give the longer social guidance the remaining columns. Group advice about informal address, emphasis, emoji and identifying contributors."
+    }
+  ]
+}

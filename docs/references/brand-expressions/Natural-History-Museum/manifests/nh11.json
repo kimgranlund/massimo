@@ -1,0 +1,29 @@
+{
+  "id": "NH11",
+  "title": "Shopping bag",
+  "image": "nh11.png",
+  "source": "../sources/nh11.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 11,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Carry recognition beyond the visit, because a useful object creates further encounters with the institution.",
+  "strategic_value": "A large multicolor symbol on a purple bag can turn a retail purchase into a portable reminder of the Museum.",
+  "demonstration": "A purple paper shopping bag has a large centered radial symbol and a small white museum name below.",
+  "category": "Application",
+  "practical_value": "Judge the balance between a dominant mark and a supporting name on a carry object.",
+  "content_islands": [
+    {
+      "name": "Bag face",
+      "spec": "Center the symbol on the purple face and place the name beneath it."
+    },
+    {
+      "name": "Physical form",
+      "spec": "Retain the handles, side folds and cast shadow to show the printed object."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A purple paper shopping bag has a large centered radial symbol and a small white museum name below."
+  }
+}

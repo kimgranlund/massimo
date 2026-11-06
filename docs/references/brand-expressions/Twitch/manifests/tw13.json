@@ -1,0 +1,31 @@
+{
+  "id": "TW13",
+  "title": "Not everyone’s going to get it",
+  "image": "tw13.png",
+  "source": "../sources/tw13.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 13,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Let wording and community symbols work together because shared references can signal belonging without lengthy explanation.",
+  "strategic_value": "A plainspoken line paired with changing emotes can give Twitch a knowing community voice.",
+  "demonstration": "A short white sentence assembles on a black rounded card; different emotes appear at its end before the words leave.",
+  "category": "Voice",
+  "practical_value": "Compare the same sentence with different emote endings to judge how the visual reaction changes its tone.",
+  "content_islands": [
+    {
+      "name": "Message card",
+      "spec": "Center the black card on a pale ground with a short white sentence."
+    },
+    {
+      "name": "Reaction ending",
+      "spec": "Append changing small emotes beside the final words, then animate the sentence away."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The sentence and changing emote endings demonstrate an informal, knowing tone."
+  },
+  "motion": "../sources/tw13.mp4"
+}

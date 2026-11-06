@@ -1,0 +1,28 @@
+{
+  "id": "TM04",
+  "title": "Un-carrier Manifesto",
+  "image": "tm04.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Explain the conviction behind a brand voice so bold language has a purpose a reader can understand.",
+  "strategic_value": "The emphasis on customers and challenging industry habits can give T-Mobile a consistent basis for its assertive language.",
+  "demonstration": "Two columns of manifesto copy alternate small paragraphs with emphasized statements; a cropped neon T anchors the right edge.",
+  "category": "Voice",
+  "practical_value": "Evaluate forceful copy against the stated aim of improving customers’ lives.",
+  "content_islands": [
+    {
+      "name": "Opening declaration",
+      "spec": "Place the title and magenta customer-love statement above the first text column."
+    },
+    {
+      "name": "Manifesto argument",
+      "spec": "Continue the narrative across two white-text columns with selected bold statements."
+    },
+    {
+      "name": "Closing and neon mark",
+      "spec": "Close with a larger brand declaration beside a neon T cropped at the right."
+    }
+  ]
+}

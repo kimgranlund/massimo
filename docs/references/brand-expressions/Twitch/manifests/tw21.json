@@ -1,0 +1,34 @@
+{
+  "id": "TW21",
+  "title": "Desktop / Following",
+  "image": "tw21.png",
+  "source": "../sources/tw21.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 21,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Give familiar channels a clear place in the interface so returning viewers can reconnect quickly.",
+  "strategic_value": "Grouping followed streams can let Twitch’s content relationships lead while its identity stays present in the surrounding UI.",
+  "demonstration": "A dark Following screen groups live-channel thumbnails and additional rows of content inside the desktop navigation.",
+  "category": "Application",
+  "practical_value": "Compare how channel thumbnails, metadata and grouping support return visits.",
+  "content_islands": [
+    {
+      "name": "Following hierarchy",
+      "spec": "Place the Following title and tabs above grouped channel content."
+    },
+    {
+      "name": "Channel rows",
+      "spec": "Arrange live thumbnails with names and supporting metadata beneath."
+    },
+    {
+      "name": "Presentation background",
+      "spec": "Keep the blue-to-purple ground outside the dark product screenshot."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The desktop Following example organizes channel content within a branded interface."
+  }
+}

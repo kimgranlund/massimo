@@ -1,0 +1,25 @@
+{
+  "id": "S05",
+  "title": "Our story",
+  "image": "s05.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 5,
+    "printed_page": 4
+  },
+  "slide_intent": "Ground the institution in place and community so a writer can explain what connects its venues.",
+  "strategic_value": "The story can associate Sheffield Museums with the people, landscape and history of Sheffield while giving its portfolio a common purpose.",
+  "demonstration": "Two narrow columns describe the venues’ place in Sheffield and the region, their relationships with communities and their ambition to connect the past with the future.",
+  "category": "Brand",
+  "practical_value": "Use the account of local roots and collaboration when introducing the institution to visitors or partners.",
+  "content_islands": [
+    {
+      "name": "Story heading",
+      "spec": "Place the section reference and heading above a narrow text measure at left."
+    },
+    {
+      "name": "Institutional narrative",
+      "spec": "Flow the story through two adjacent columns. Keep the closing statement about illuminating the past in the second column and leave open space to its right."
+    }
+  ]
+}

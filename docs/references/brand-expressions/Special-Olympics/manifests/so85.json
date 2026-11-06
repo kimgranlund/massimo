@@ -1,0 +1,28 @@
+{
+  "id": "SO85",
+  "title": "T-shirts — Volunteer with sponsorship branding",
+  "image": "so85.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 85
+  },
+  "slide_intent": "Show who leads a volunteer activity and who supports it by arranging the marks a person sees on each side of a shirt.",
+  "strategic_value": "Special Olympics can acknowledge sponsors while retaining visual priority for the accredited program.",
+  "demonstration": "One volunteer shirt puts program and partner marks on the front. The two-sided version places a large program mark on the front and repeats the identifier above the sponsors on the back.",
+  "category": "Application",
+  "practical_value": "Choose a one-sided layout when the marks remain distinct on the front. Use the reverse for sponsor recognition when the front needs a larger program mark.",
+  "content_islands": [
+    {
+      "name": "Hierarchy notes",
+      "spec": "Place instructions for single- and double-sided printing and contrast on colored shirts at left."
+    },
+    {
+      "name": "Front and back options",
+      "spec": "Pair the single-sided shirt with a front-and-back diagram separated by a dashed vertical rule. Keep sponsors visibly subordinate in scale or position."
+    },
+    {
+      "name": "Shirt color variants",
+      "spec": "Compare five shirt colors along the bottom and mark the light-on-dark and dark-on-light treatments."
+    }
+  ]
+}

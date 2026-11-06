@@ -1,0 +1,41 @@
+{
+  "id": "VZ18",
+  "title": "Logo overview",
+  "image": "vz18.png",
+  "source": "../sources/vz19.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 20,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Choose the appropriate signature for the surrounding context so recognition does not depend on an unexplained symbol.",
+  "strategic_value": "The complete wordmark can establish Verizon’s identity while the checkmark can serve familiar Verizon environments.",
+  "demonstration": "The July 22, 2021 overview separates the primary wordmark-and-checkmark lockup from a standalone red checkmark and links to name and logo policies.",
+  "category": "Brand",
+  "practical_value": "Prioritize the full signature and reserve the standalone checkmark for contexts already identified as Verizon.",
+  "content_islands": [
+    {
+      "name": "Brand signature rationale",
+      "spec": "Place the title/date banner above a short explanation of the logo’s intended confidence."
+    },
+    {
+      "name": "Two signature choices",
+      "spec": "Show the complete Verizon logo at left and red checkmark at right with their context labels."
+    },
+    {
+      "name": "Policy route",
+      "spec": "Place the name-and-logo-usage policy row beneath the signature comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source explains the logo as a signature intended to convey confidence without boastfulness.",
+    "Expression": "The complete wordmark and red checkmark display the two signature forms.",
+    "Application": "The captions prioritize the primary logo and place the standalone checkmark in Verizon environments."
+  },
+  "ingredient": {
+    "name": "Verizon signature",
+    "role": "Identify the sender with the amount of explicit naming the context needs.",
+    "application": "Prioritize the primary logo. Use the standalone checkmark in Verizon environments.",
+    "scope": "Logo overview updated July 22, 2021. Linked detailed name and logo policies are not included in this case study."
+  }
+}

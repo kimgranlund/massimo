@@ -1,0 +1,28 @@
+{
+  "id": "SO36",
+  "title": "Brand mark · Background color",
+  "image": "so36.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Show how the value and local texture of a background affect recognition. A busy patch of an image can obscure letters even when its average tone seems suitable.",
+  "strategic_value": "Choosing an appropriate mark version can preserve its readability across white paper, solid fields and photographic work.",
+  "demonstration": "The upper examples pair acceptable placements with crossed-out alternatives. A white-to-black scale below marks the 30% boundary and shows dark and reversed program marks.",
+  "category": "Color",
+  "practical_value": "Reserve the color mark for white. On a low-contrast image area or solid tone use a dark single-color mark through 30% black and the white version on darker tones.",
+  "content_islands": [
+    {
+      "name": "Treatment instructions",
+      "spec": "Separate the rules for color, single-color and photographic backgrounds in the left column."
+    },
+    {
+      "name": "Background comparisons",
+      "spec": "Place the approved examples above the corresponding crossed-out examples. Show white, dark, quiet and busy fields."
+    },
+    {
+      "name": "Value scale",
+      "spec": "Run the horizontal value ramp across the lower field. Label the threshold and place opposite mark treatments at the ends."
+    }
+  ]
+}

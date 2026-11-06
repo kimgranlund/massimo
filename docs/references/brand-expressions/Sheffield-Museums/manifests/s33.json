@@ -1,0 +1,25 @@
+{
+  "id": "S33",
+  "title": "Text and writing rules",
+  "image": "s33.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 33,
+    "printed_page": 32
+  },
+  "slide_intent": "Show how to set dates and times at different lengths while keeping practical information easy to scan.",
+  "strategic_value": "Consistent date expansion and contraction can make schedules readable across poster formats without changing the tone of the listing.",
+  "demonstration": "Two Graves Gallery posters retain the sculpture, green field and title. The event dates and opening days use full words on one poster and abbreviations on the other.",
+  "category": "Typography",
+  "practical_value": "When space requires shorter dates, use three-letter forms, retain the full year and use spaces around range dashes. Check the result beside the full version.",
+  "content_islands": [
+    {
+      "name": "Copy conventions",
+      "spec": "Place date, time, dash and email conventions in a narrow left column. Group examples under distinct labels."
+    },
+    {
+      "name": "Poster comparison",
+      "spec": "Align two versions of the same Mark Firth poster at equal size. Keep image and hierarchy constant so the change in schedule text is visible."
+    }
+  ]
+}

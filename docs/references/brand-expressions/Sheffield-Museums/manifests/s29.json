@@ -1,0 +1,25 @@
+{
+  "id": "S29",
+  "title": "Typography",
+  "image": "s29.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 29,
+    "printed_page": 28
+  },
+  "slide_intent": "Teach designers to establish reading order through a few deliberate differences in weight, spacing or size.",
+  "strategic_value": "Restricting the number of styles can preserve Sheffield Museums’ clear voice across many kinds of information.",
+  "demonstration": "A narrow column explains hierarchy, size limits and alignment. An oversized lowercase specimen dominates the rest of the page and extends to the edge.",
+  "category": "Typography",
+  "practical_value": "Try weight or spacing before introducing another size. Aim for no more than three point sizes per application and choose centered or left-aligned text.",
+  "content_islands": [
+    {
+      "name": "Hierarchy guidance",
+      "spec": "Place the rules in a narrow column below the page heading. End the column with the alignment and style-count guidance."
+    },
+    {
+      "name": "Oversized specimen",
+      "spec": "Place the black lowercase abcdef sequence across the broad right-hand area. Crop it against the page edge."
+    }
+  ]
+}

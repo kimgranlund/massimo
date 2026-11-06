@@ -1,0 +1,28 @@
+{
+  "id": "SO71",
+  "title": "Banner, backdrops & flags — Horizontal banner artworks",
+  "image": "so71.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 71
+  },
+  "slide_intent": "Teach designers to protect a recognizable part of a banner when its length changes. A visitor should still find the program name beside the symbol.",
+  "strategic_value": "Special Olympics can carry one program lockup across different venues while leaving each banner room for local information.",
+  "demonstration": "Two strips exchange the white and red fields around the mark. A shorter diagram adds a blue extension field and a double-headed arrow.",
+  "category": "Layout",
+  "practical_value": "Keep the program name in Ubuntu Italic and alter the portion beyond the curve to fit the venue, web address, sponsor marks or photograph.",
+  "content_islands": [
+    {
+      "name": "Adaptation notes",
+      "spec": "Set the heading above a narrow instructions column. Number the notes to match the points on the drawings."
+    },
+    {
+      "name": "Banner color pair",
+      "spec": "Stack two long strips of equal size. Place the name and symbol left of the curve and compare the mark on white with its white version on red."
+    },
+    {
+      "name": "Adjustable span",
+      "spec": "Add a smaller strip below. Tint the expandable right portion blue and mark its horizontal direction with an arrow."
+    }
+  ]
+}

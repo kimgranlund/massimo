@@ -1,0 +1,24 @@
+{
+  "id": "V08",
+  "title": "Trademark",
+  "image": "v08.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Give readers a pause before guidance on applying a protected mark. A brief visual cue helps them locate the new subject in the book.",
+  "strategic_value": "Voltera can use a recurring dark divider to make transitions recognizable while the changing icon identifies the handling of the company’s marks.",
+  "demonstration": "The page centers a small line icon above the white heading “Trademark” on a charcoal field.",
+  "category": "Layout",
+  "practical_value": "Use this treatment when introducing guidance on applying a protected mark. Reserve the detailed guidance for the pages after the divider.",
+  "content_islands": [
+    {
+      "name": "Section icon",
+      "spec": "Center a shield with a green lock above the title. Give the outlined drawing a single colored detail."
+    },
+    {
+      "name": "Section heading",
+      "spec": "Set “Trademark” in white on one line below the icon. Keep the charcoal field open around both elements."
+    }
+  ]
+}

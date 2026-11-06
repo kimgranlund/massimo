@@ -1,0 +1,20 @@
+{
+  "id": "TM44",
+  "title": "Resources",
+  "image": "tm44.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 44
+  },
+  "slide_intent": "Mark the transition to resources so a reader can locate the next kind of decision.",
+  "strategic_value": "The repeated magenta divider can make the T-Mobile guide easier to navigate while retaining a strong brand presence.",
+  "demonstration": "A large white Resources heading sits on a full magenta field.",
+  "category": "Brand",
+  "practical_value": "Use this page to identify the start of the resources section.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the large white heading left of center with ample surrounding magenta."
+    }
+  ]
+}

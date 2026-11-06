@@ -1,0 +1,28 @@
+{
+  "id": "V19",
+  "title": "Writing for Voltera",
+  "image": "v19.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Teach writers how to sound knowledgeable and approachable to an international audience. A concrete detail can carry expertise where slang or an obscure joke may distract.",
+  "strategic_value": "Voltera can express technical competence through direct examples while keeping its writing understandable across audiences.",
+  "demonstration": "Voice principles occupy one column and two paired writing examples occupy the other. The examples contrast plain descriptions and a dated product fact with casual slang.",
+  "category": "Voice",
+  "practical_value": "Test a sentence by replacing a slang phrase with a specific fact or familiar description and comparing the resulting tone.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 19 in a blue tab at lower right."
+    },
+    {
+      "name": "Voice principles",
+      "spec": "Arrange short paragraphs in the left column on balance, international readership, clarity and plain language."
+    },
+    {
+      "name": "Two copy comparisons",
+      "spec": "Stack the alternatives for the company introduction and V-One’s history in the right column. Mark each with the blue check or cross and the Do or Don’t label."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "O06",
+  "title": "Feel the energy — arena display sequence",
+  "image": "o06.png",
+  "source": "../sources/o06.jpg",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 6,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Coordinate adjacent displays so a viewer can connect a message across an architectural setting.",
+  "strategic_value": "Alternating O2 signatures with performance imagery can link the network identity to the energy of live events.",
+  "demonstration": "A row of tall illuminated arena displays alternates blue gradient O2 panels with performance photographs carrying the separate words Feel, the and energy.",
+  "category": "Application",
+  "practical_value": "Distribute a short phrase across linked screens while retaining recognizable brand panels between the images.",
+  "content_islands": [
+    {
+      "name": "Arena setting",
+      "spec": "Preserve the perspective view of the suspended display row and its structural supports."
+    },
+    {
+      "name": "Alternating panels",
+      "spec": "Alternate O2 gradient-and-bubble panels with dark performance images, placing one word of the phrase on each image panel."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Blue gradient brand panels share the scene with saturated live-performance photography.",
+    "Application": "The identity and phrase are arranged across multiple tall displays in an arena environment."
+  }
+}

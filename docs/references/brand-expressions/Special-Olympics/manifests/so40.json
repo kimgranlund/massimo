@@ -1,0 +1,28 @@
+{
+  "id": "SO40",
+  "title": "Extended color palette",
+  "image": "so40.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 40
+  },
+  "slide_intent": "Teach designers to vary the personality of a communication while maintaining enough repetition for it to belong to the same family.",
+  "strategic_value": "A controlled set of tonal families can distinguish programs and items without displacing the primary red and gray.",
+  "demonstration": "Rows of circular swatches compare light, medium and dark variants across nine color families. Callouts connect individual swatches with red and medal colors.",
+  "category": "Color",
+  "practical_value": "Choose the primary palette and a secondary family for one item. Use shades within that family for its gradients.",
+  "content_islands": [
+    {
+      "name": "Usage notes",
+      "spec": "Separate the uses for large fields and highlights from the advice to limit the number of hues."
+    },
+    {
+      "name": "Hue-family swatches",
+      "spec": "Group three tonal samples per named hue. Set complementary warm, cool and gray families in parallel columns."
+    },
+    {
+      "name": "Named correspondences",
+      "spec": "Use leaders to identify swatches associated with Special Olympics Red, gold, bronze and silver."
+    }
+  ]
+}

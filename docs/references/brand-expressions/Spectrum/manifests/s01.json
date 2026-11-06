@@ -1,0 +1,24 @@
+{
+  "id": "S01",
+  "title": "August 2017 / Spectrum Retail Mall Guide",
+  "image": "s01.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Identify the guide’s setting and edition so a reader knows which instructions apply.",
+  "strategic_value": "A restrained blue cover can establish continuity before the reader reaches retail applications.",
+  "demonstration": "White type identifies the date and guide at upper left and repeats Retail Mall at a much larger scale along the bottom of a deep blue field.",
+  "category": "Brand",
+  "practical_value": "Distinguish this historical retail guide from later Spectrum identity systems.",
+  "content_islands": [
+    {
+      "name": "Edition block",
+      "spec": "Set the month, year, Spectrum name and guide title as three short lines at upper left."
+    },
+    {
+      "name": "Retail Mall title",
+      "spec": "Anchor the large title to the lower-left edge of the deep blue field."
+    }
+  ]
+}

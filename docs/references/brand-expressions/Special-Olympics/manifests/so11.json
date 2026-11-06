@@ -1,0 +1,24 @@
+{
+  "id": "SO11",
+  "title": "Guiding idea",
+  "image": "so11.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Teach readers to find the shared idea beneath different accounts of achievement. Three simple illustrations let the relationship travel across language and context.",
+  "strategic_value": "Special Olympics can give local storytellers a common point of reference as they choose their own words.",
+  "demonstration": "Three illustrated ideas surround a red triangular field holding the white symbol. A dotted line connects that field to a smaller overlap diagram.",
+  "category": "Brand",
+  "practical_value": "Use the three ideas to test whether a local story expresses discovery, achievement and participation together.",
+  "content_islands": [
+    {
+      "name": "Explanation",
+      "spec": "Place the key idea and supporting text in a narrow column at left."
+    },
+    {
+      "name": "Relationship diagram",
+      "spec": "Connect the small overlap diagram to the enlarged red field. Put the central symbol inside and arrange the three illustrations around the vertices."
+    }
+  ]
+}

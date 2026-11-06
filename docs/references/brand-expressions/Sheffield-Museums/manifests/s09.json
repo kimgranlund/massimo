@@ -1,0 +1,29 @@
+{
+  "id": "S09",
+  "title": "Clear space / minimum size",
+  "image": "s09.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 9,
+    "printed_page": 8
+  },
+  "slide_intent": "Teach designers to measure clearance and minimum print size separately. A seal needs enough open space around it and enough scale for its lettering to read.",
+  "strategic_value": "The trust can preserve the seal’s silhouette and internal detail as its printed applications vary in size.",
+  "demonstration": "A large seal at center diagrams its clear-space unit from the letterforms to the outer circle. At right, a small specimen measures the minimum full logo height at 14 mm in print.",
+  "category": "Geometry",
+  "practical_value": "Apply the seal’s own spacing unit to its surrounding area, then check its full printed height against the 14 mm minimum.",
+  "content_islands": [
+    {
+      "name": "Measurement notes",
+      "spec": "Set separate Clear space and Minimum size notes beneath the page title in the left column."
+    },
+    {
+      "name": "Clearance diagram",
+      "spec": "Center an enlarged seal inside concentric guides. Mark the interval taken from the artwork and extend it around the seal."
+    },
+    {
+      "name": "Print-size specimen",
+      "spec": "Separate the small right-hand example with a vertical rule. Draw the height dimension beside the mark and place the print minimum below."
+    }
+  ]
+}

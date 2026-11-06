@@ -1,0 +1,39 @@
+{
+  "id": "NH23",
+  "title": "Business card color family",
+  "image": "nh23.png",
+  "source": "../sources/nh23.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 23,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Keep recognition stable while colors vary, because variation should not sever the connection between related materials.",
+  "strategic_value": "A repeated purple ground and radial mark can allow different accent combinations to feel like one Museum identity.",
+  "demonstration": "Scattered business cards pair purple symbol faces in several color combinations with a cyan contact-information face.",
+  "category": "Color",
+  "practical_value": "Compare controlled changes to mark colors against a consistent base and layout.",
+  "content_islands": [
+    {
+      "name": "Symbol faces",
+      "spec": "Repeat the circular NHM mark on purple cards using different ring-color combinations."
+    },
+    {
+      "name": "Contact face",
+      "spec": "Show one cyan reverse with name, museum name and small contact details."
+    },
+    {
+      "name": "Arrangement",
+      "spec": "Scatter the cards at consistent diagonal angles to invite color comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Scattered business cards pair purple symbol faces in several color combinations with a cyan contact-information face."
+  },
+  "ingredient": {
+    "name": "Ring-color combinations",
+    "role": "Provide variety while preserving one recognizable structure.",
+    "application": "Change ring colors against a repeated purple ground, as the business-card examples demonstrate.",
+    "scope": "Observed business-card family; these examples do not establish mandatory combinations or proportions."
+  }
+}

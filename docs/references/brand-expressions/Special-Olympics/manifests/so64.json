@@ -1,0 +1,28 @@
+{
+  "id": "SO64",
+  "title": "Accredited Program business card · Specifications for front",
+  "image": "so64.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 64
+  },
+  "slide_intent": "Fit the person, program and channels onto one small surface. A recipient should be able to identify the local program as well as the individual representing it.",
+  "strategic_value": "The same business-card structure can identify an accredited program through both the lockup and its red contact-block name.",
+  "demonstration": "A maximum-content example shows the program-name lockup and color-coded alignment guides. Two James Olsen cards compare standard and enlarged contact type.",
+  "category": "Typography",
+  "practical_value": "Fix the name and title positions, then build the program address upward from the lower margin. Use the larger-text option when the address is short enough.",
+  "content_islands": [
+    {
+      "name": "Card specification",
+      "spec": "Set dimensions, inks, stock and placement settings in the left column, including the bilingual reverse option."
+    },
+    {
+      "name": "Contact construction",
+      "spec": "Show the program identifier in the mark and in red above the address. Use separate guides for fixed title lines and the stack of contact lines."
+    },
+    {
+      "name": "Type-size alternatives",
+      "spec": "Place standard and larger contact settings side by side using the same program and cardholder."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "S46",
+  "title": "Indicative applications",
+  "image": "s46.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 46,
+    "printed_page": 45
+  },
+  "slide_intent": "Signal the move from specifications to examples so the reader can inspect how previously separate rules work together.",
+  "strategic_value": "Using the same chapter marker for applications can help designers find worked examples without losing their place in the manual.",
+  "demonstration": "The 8.0 section name and folio 45 frame the top of a dark green page. The large white heading breaks across two lines.",
+  "category": "Application",
+  "practical_value": "Turn here to compare applications such as cards, publications and signage with the preceding foundations.",
+  "content_islands": [
+    {
+      "name": "Section identifier",
+      "spec": "Place 8.0 and Indicative applications at upper left and folio 45 at upper right."
+    },
+    {
+      "name": "Two-line heading",
+      "spec": "Break the display heading between Indicative and applications on the open green field."
+    }
+  ]
+}

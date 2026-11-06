@@ -1,0 +1,34 @@
+{
+  "id": "SW06",
+  "title": "Ski sponsorship application",
+  "image": "sw06.png",
+  "source": "../sources/sw06.webp",
+  "location": {
+    "source_order": 8,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Carry a brand through an active sporting scene so its identifying colors and name remain visible amid movement and equipment.",
+  "strategic_value": "Swisscom’s presence in a Swiss sporting context can reinforce the connection to Swiss heritage described by the agency.",
+  "demonstration": "A skier turns through a slalom gate with snow spraying behind. The Swisscom name appears on the bib and sleeve, while red, blue and white graphics extend across the clothing.",
+  "category": "Application",
+  "practical_value": "Assess which brand cues remain legible when clothing bends, equipment overlaps it and the subject is photographed in action.",
+  "content_islands": [
+    {
+      "name": "Skier and branded clothing",
+      "spec": "Keep the skier dominant at left-center, retaining the Swisscom name on the chest and sleeve and the colored clothing panels."
+    },
+    {
+      "name": "Sporting context",
+      "spec": "Preserve the gate poles, skis, hand-held poles and snow spray so the identity is read within its actual use setting."
+    },
+    {
+      "name": "Open snow-spray field",
+      "spec": "Leave the wider blue field to the right of the skier, showing the direction and space of the photographed turn."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying “Emotional connection” text explicitly connects the transformation to customer engagement and pride in Swiss heritage.",
+    "Expression": "Red, blue and white graphics repeat across the skier’s clothing.",
+    "Application": "The photograph places the name and graphics on clothing and equipment during a sporting event."
+  }
+}

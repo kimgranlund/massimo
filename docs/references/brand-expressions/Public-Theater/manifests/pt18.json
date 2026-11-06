@@ -1,0 +1,29 @@
+{
+  "id": "PT18",
+  "title": "Fucking A",
+  "image": "pt18.png",
+  "source": "../sources/pt18.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 18,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use visual interference deliberately because difficult reading can carry tension when supporting identifiers remain available.",
+  "strategic_value": "Red scratched lettering can give the production an abrasive character distinct from cleaner campaigns.",
+  "demonstration": "Dense red scribbles partially obscure the large title on black; the playwright, director and small vertical signature sit at the bottom.",
+  "category": "Typography",
+  "practical_value": "Evaluate the tradeoff between expressive texture and immediate title legibility.",
+  "content_islands": [
+    {
+      "name": "Scratched title",
+      "spec": "Cover most of the black poster with red hand-drawn lines and partially legible title forms."
+    },
+    {
+      "name": "Credits",
+      "spec": "Keep the red author and director lines and the small Public signature near the base."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Dense red scribbles partially obscure the large title on black; the playwright, director and small vertical signature sit at the bottom."
+  }
+}

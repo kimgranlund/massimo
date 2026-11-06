@@ -1,0 +1,37 @@
+{
+  "id": "TW08",
+  "title": "Wordmark / Four color treatments",
+  "image": "tw08.png",
+  "source": "../sources/tw08.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 8,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Test a recognizable form across light and dark settings so variation does not erase the shared identity.",
+  "strategic_value": "A fixed white signature with changing gradient depth can expand Twitch’s palette while retaining recognition.",
+  "demonstration": "A two-by-two grid places four gradient-backed wordmarks on alternating black and pale backgrounds.",
+  "category": "Color",
+  "practical_value": "Compare how gradient hue and surrounding contrast change the same signature.",
+  "content_islands": [
+    {
+      "name": "Four-quadrant comparison",
+      "spec": "Use equal quadrants with alternating dark and pale fields, centering one wordmark in each."
+    },
+    {
+      "name": "Gradient depth",
+      "spec": "Keep the angular white letters consistent while varying the colored extrusion below."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "COLLINS states that additional vibrant hues build on recognition of Twitch purple while representing a wider range of creators and audiences.",
+    "Expression": "Four different gradient treatments share the same white wordmark."
+  },
+  "ingredient": {
+    "name": "Gradient depth behind the wordmark",
+    "role": "Add color variation beneath a stable recognizable signature.",
+    "application": "Compare warm and cool gradients on both dark and pale fields.",
+    "scope": "Observed in the historical COLLINS identity case study; no mandatory dimensions, color proportions or universal placement rule is supplied."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "V09",
+  "title": "Using our trademark",
+  "image": "v09.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Teach writers and designers to distinguish approved logo artwork from a written occurrence of a name. Each requires a different handling decision.",
+  "strategic_value": "Voltera can keep the appearance of its marks consistent across assets while documenting how the guide treats the first written use of a name.",
+  "demonstration": "The page names Voltera and Alta, lists restrictions on modifying artwork and compares the guide’s first and subsequent written forms of Alta.",
+  "category": "Brand",
+  "practical_value": "Use an approved logo asset for an identity mark and consult the separate first-use example for prose.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 9 in a blue tab at lower right."
+    },
+    {
+      "name": "Marks named",
+      "spec": "Open with short statements about Voltera and Alta as trademarks in the territories listed by the guide."
+    },
+    {
+      "name": "Artwork instructions",
+      "spec": "Group the approved-file instruction with the list about proportions, spacing, color and approved lockups."
+    },
+    {
+      "name": "Written-name example",
+      "spec": "Place the trademark-symbol guidance below the artwork rules and show the first and subsequent written forms of Alta."
+    }
+  ]
+}

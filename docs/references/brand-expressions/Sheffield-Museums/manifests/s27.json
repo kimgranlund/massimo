@@ -1,0 +1,45 @@
+{
+  "id": "S27",
+  "title": "Colour picker",
+  "image": "s27.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 27,
+    "printed_page": 26
+  },
+  "slide_intent": "Teach designers to choose an exhibition accent in relation to its lead artwork. A background can draw a connection to the subject while giving the title enough contrast to read.",
+  "strategic_value": "Sheffield Museums can give successive exhibitions distinct identities while the gallery wordmark and museum seal keep the host recognizable.",
+  "demonstration": "An artwork detail, an eyedropper and a turquoise swatch sit in sequence beneath a finished exhibition graphic. In the graphic, the turquoise field carries black type beside the lead image.",
+  "category": "Color",
+  "practical_value": "Test the proposed accent behind the exhibition title. Keep it if the title reads clearly and the composition improves on white, black or a core palette color.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Set the section number and Colour palette at upper left with the printed folio at upper right. Place the Colour picker title beneath the section label."
+    },
+    {
+      "name": "Selection instructions",
+      "spec": "Use a narrow left column. Introduce the exhibition-specific option, then number the steps for choosing the image, sampling or complementing it, adjusting readability and comparing against the core palette."
+    },
+    {
+      "name": "Exhibition graphic",
+      "spec": "Give the wider upper field to the completed Not Without My Ghosts graphic. Set the gallery mark, title and dates on turquoise, with the artwork on the right."
+    },
+    {
+      "name": "Color selection sequence",
+      "spec": "Below the graphic, align a square detail from the artwork, a small eyedropper and a large circular accent swatch. Join them with right-pointing arrows so the reader can trace the choice."
+    }
+  ],
+  "ingredient": {
+    "name": "Exhibition accent",
+    "role": "Connect the exhibition graphics to the work on show. On this poster, the turquoise field carries the title beside the painting.",
+    "application": "Choose one prominent hue from the lead artwork, or one that complements it. Avoid a color too close to the existing palette. Adjust tone or vibrancy for legibility and try it as a background or on graphic elements.",
+    "scope": "An optional choice for one exhibition. The example’s turquoise belongs to Not Without My Ghosts; another exhibition starts with its own lead image."
+  },
+  "reference_purposes": {
+    "Intent": "The text says exhibition accents provide variety and flexibility so materials suit their subject matter.",
+    "Expression": "The finished Not Without My Ghosts graphic demonstrates a turquoise title field beside its lead artwork.",
+    "Application": "The numbered sequence teaches sampling or complementing a lead image, adjusting legibility and applying the accent.",
+    "Constraint": "The custom color is optional, limited to exhibitions and must not be too close to an existing palette color."
+  }
+}

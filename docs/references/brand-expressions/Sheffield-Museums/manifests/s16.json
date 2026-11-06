@@ -1,0 +1,25 @@
+{
+  "id": "S16",
+  "title": "Venue logos – stacked",
+  "image": "s16.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 16,
+    "printed_page": 15
+  },
+  "slide_intent": "Show how a family of marks can share lettering while allowing distinguishing details to carry each venue’s identity.",
+  "strategic_value": "The six venues can read as part of Sheffield Museums while each underline gives visitors a detail particular to the site.",
+  "demonstration": "Six stacked marks share tall lettering and a line device. The underline changes from one venue to the next in a two-row comparison.",
+  "category": "Brand",
+  "practical_value": "Use the stacked master for the correct venue and retain the distinctive underline that belongs with its name.",
+  "content_islands": [
+    {
+      "name": "Family explanation",
+      "spec": "Set the page heading and narrow explanatory column at left. Describe the shared typeface and the variation in underlines."
+    },
+    {
+      "name": "Six stacked masters",
+      "spec": "Arrange all marks in two rows of three. Keep clear space between specimens so their name breaks and underline shapes can be compared."
+    }
+  ]
+}

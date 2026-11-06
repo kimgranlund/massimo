@@ -1,0 +1,30 @@
+{
+  "id": "S06",
+  "title": "2.01 / Spectrum Logo",
+  "image": "s06.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Show which parts of a mark carry the name and which suggest action, so designers preserve both recognition and meaning.",
+  "strategic_value": "The dark wordmark and bright arrow can connect a familiar name with engagement and forward movement.",
+  "demonstration": "An enlarged logo is annotated with wordmark construction, visual dominance, arrow function and two Pantone assignments.",
+  "category": "Brand",
+  "practical_value": "Preserve the relationship between the custom wordmark and terminal arrow when selecting approved artwork.",
+  "content_islands": [
+    {
+      "name": "Heading and rationale",
+      "spec": "Place the title left and the explanation of the forward icon at upper right."
+    },
+    {
+      "name": "Annotated logo",
+      "spec": "Center the large dark blue wordmark and cyan arrow, with fine cyan leaders connecting component notes and color labels."
+    }
+  ],
+  "ingredient": {
+    "name": "Spectrum wordmark and arrow",
+    "role": "Identify the brand and punctuate it with a forward cue.",
+    "application": "Use the approved custom wordmark with Pantone 540 C lettering and a Pantone 3005 C arrow.",
+    "scope": "The 2017 primary logo. This page explains the existing artwork rather than authorizing reconstruction."
+  }
+}

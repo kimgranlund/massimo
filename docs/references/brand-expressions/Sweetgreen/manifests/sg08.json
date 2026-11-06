@@ -1,0 +1,38 @@
+{
+  "id": "SG08",
+  "title": "3P IP Adapter: Frame",
+  "image": "sg08.png",
+  "source": "../sources/sg08.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 8,
+    "section": "3P IP Adapter: Frame",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Derive framing shapes from familiar objects so unrelated content can still belong to the brand.",
+  "strategic_value": "Serving-dish geometry can give Sweetgreen a recognizable way to organize varied imagery.",
+  "demonstration": "Three photographs of a square dish, round dressing cup and six-sided bowl sit above matching square, circle and hexagon shapes.",
+  "category": "Geometry",
+  "practical_value": "Relate a content frame to a physical brand object before applying it to outside imagery.",
+  "content_islands": [
+    {
+      "name": "Physical sources",
+      "spec": "Align the three food-vessel photographs across the upper row."
+    },
+    {
+      "name": "Derived frames",
+      "spec": "Place one flat colored shape below each corresponding vessel."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying caption explains that shapes extracted from serving dishes help third-party content align with the brand.",
+    "Application": "The two rows explicitly connect vessel silhouettes to reusable content frames.",
+    "Expression": "Muted pink, green and blue distinguish three simple geometric containers."
+  },
+  "ingredient": {
+    "name": "Serving-dish frames",
+    "role": "Give varied content a shared brand structure.",
+    "application": "Use the square, circular and six-sided silhouettes as content containers, following the illustrated derivation.",
+    "scope": "Source explains an adapter for third-party content; this board supplies no mandatory color values, corner radii or exclusive shape list."
+  }
+}

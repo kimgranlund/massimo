@@ -1,0 +1,30 @@
+{
+  "id": "VZ08",
+  "title": "Iconography / visual directions",
+  "image": "vz08.png",
+  "source": "../sources/vz08.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 8,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Compare several visual treatments of related symbols so the chosen style expresses a deliberate brand character.",
+  "strategic_value": "A consistent direction can help Verizon’s icon library remain recognizable as it grows.",
+  "demonstration": "Two matrices compare icon styles. The left lists Straightforward, Playful, Simple, Illustrative and Elegant; the right compares Solid, Light, Mixed, Rounded and Light simplified.",
+  "category": "Geometry",
+  "practical_value": "Evaluate a style across several meanings instead of choosing it from one successful icon.",
+  "content_islands": [
+    {
+      "name": "Character alternatives",
+      "spec": "Align five labelled rows of four icons at left, keeping each row’s character consistent."
+    },
+    {
+      "name": "Rendering alternatives",
+      "spec": "Place a second five-row matrix at right, comparing weight, fill and corner treatment across related symbols."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying case study links the exploration to radical simplicity and says the team selected and refined the straightforward direction.",
+    "Expression": "The two matrices make differences in character, fill and line treatment visible."
+  }
+}

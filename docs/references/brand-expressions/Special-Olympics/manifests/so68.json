@@ -1,0 +1,24 @@
+{
+  "id": "SO68",
+  "title": "Presentations · Powerpoint templates",
+  "image": "so68.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 68
+  },
+  "slide_intent": "Select a slide form according to the audience’s task. A photograph can carry a story, a chapter card marks a transition, and a few large words can hold attention on one idea.",
+  "strategic_value": "A common master and a small range of slide types can help program presentations remain recognizable through changes of content and pace.",
+  "demonstration": "Five examples show a title, text page, full-image page, chapter break and large-text point. The notes describe changing program identification in the master and footer.",
+  "category": "Layout",
+  "practical_value": "Localize the master once, then choose a slide type for each message. Use the pictured chapter card to separate sections and the image layout when a photograph can carry the point.",
+  "content_islands": [
+    {
+      "name": "Template instructions",
+      "spec": "List master and footer edits beside numbered rules for images, breaks and short statements. Include the PDF-sharing note beneath."
+    },
+    {
+      "name": "Slide-type comparison",
+      "spec": "Show two larger examples across the top and three smaller slides beneath. Number the cover, body, image, chapter and statement examples to match the instructions."
+    }
+  ]
+}

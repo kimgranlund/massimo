@@ -1,0 +1,28 @@
+{
+  "id": "SL36",
+  "title": "Person emerging from a workspace illustration",
+  "image": "sl36.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 36
+  },
+  "slide_intent": "Show how a recognizable interface can become the setting for a human gesture. A figure reaching across the panel edge gives a static communication tool a sense of presence.",
+  "strategic_value": "Slack can connect its product to the person behind a message using a simplified conversation and an expressive figure.",
+  "demonstration": "A maroon rail frames a waving figure. A pale conversation area holds portrait tiles and short gray shapes in place of text and attachments.",
+  "category": "Imagery",
+  "practical_value": "Borrow only the interface landmarks needed to identify the scene, then give the figure’s gesture enough room to cross the interface boundary.",
+  "content_islands": [
+    {
+      "name": "Workspace silhouette",
+      "spec": "Center a large rounded window on a pale gray page. Define a dark top bar and maroon sidebar against a light conversation area."
+    },
+    {
+      "name": "Human figure",
+      "spec": "Frame the person in a sidebar compartment and extend the waving arm beyond the window edge."
+    },
+    {
+      "name": "Conversation rows",
+      "spec": "Stack small portraits and abstract gray message shapes at right. Leave one larger pale rectangle to indicate an attachment or content block."
+    }
+  ]
+}

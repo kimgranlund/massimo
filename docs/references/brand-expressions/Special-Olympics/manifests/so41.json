@@ -1,0 +1,28 @@
+{
+  "id": "SO41",
+  "title": "Color gradients",
+  "image": "so41.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 41
+  },
+  "slide_intent": "Teach designers to vary the intensity of a transition without changing the hue’s identity. Comparing endpoints makes the difference between subtle and pronounced gradients visible.",
+  "strategic_value": "A shared gradient method can create movement within layouts while preserving recognizable palette families.",
+  "demonstration": "Each hue has two bands: light to mid-tone and light to dark. A separate near-white blend runs to biscuit.",
+  "category": "Color",
+  "practical_value": "Pick a tonal span to suit the desired emphasis and specify process-color endpoints for a standard printed gradient.",
+  "content_islands": [
+    {
+      "name": "Gradient guidance",
+      "spec": "Place a short principle above the samples and production notes at left."
+    },
+    {
+      "name": "Paired tonal ramps",
+      "spec": "Stack two labeled horizontal gradients for each hue and arrange the families in two columns. Keep the light endpoint on the same side throughout."
+    },
+    {
+      "name": "Neutral ramps",
+      "spec": "Set the near-white and gray examples alongside the hue families for comparison."
+    }
+  ]
+}

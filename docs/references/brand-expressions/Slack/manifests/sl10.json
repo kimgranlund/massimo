@@ -1,0 +1,28 @@
+{
+  "id": "SL10",
+  "title": "Brand values",
+  "image": "sl10.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Translate named values into actions people can recognize. Short behavior descriptions let a reader distinguish neighboring concepts.",
+  "strategic_value": "Slack can give teams a shared vocabulary for choices about how they work with colleagues and customers.",
+  "demonstration": "Six entries pair a bold value name and a short cluster of qualities with a paragraph describing behavior. The two columns carry three values each.",
+  "category": "Brand",
+  "practical_value": "Use the descriptions to distinguish, for example, practicing courtesy from improving craft when explaining a team decision.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Values matrix",
+      "spec": "Set Empathy, Courtesy and Craftsmanship down the left column and Playfulness, Solidarity and Thriving down the right. In each block, follow the heading with short qualities and a paragraph of actions."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}

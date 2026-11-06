@@ -1,0 +1,30 @@
+{
+  "id": "TM34",
+  "title": "Our Voice",
+  "image": "tm34.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Define both a tone and its limits so a writer can be bold without making the reader feel excluded or attacked.",
+  "strategic_value": "Five bounded voice attributes can make T-Mobile’s customer-first positioning more consistent in everyday language.",
+  "demonstration": "A four-column table maps human, optimistic, accessible, energetic and disruptive to explanations and positive/negative tone descriptors.",
+  "category": "Voice",
+  "practical_value": "Use each row to test whether copy expresses the intended quality without crossing its stated boundary.",
+  "content_islands": [
+    {
+      "name": "Voice title",
+      "spec": "Place the title in the left column."
+    },
+    {
+      "name": "Attribute matrix",
+      "spec": "Align five rows across attribute, meaning, desired sound and excluded sound columns."
+    }
+  ],
+  "ingredient": {
+    "name": "Brand voice",
+    "role": "Make communication feel human, clear and purposeful.",
+    "application": "Use human, optimistic, accessible, energetic and disruptive language within the paired boundaries; for example, assertive does not mean aggressive.",
+    "scope": "Brand copy across the five attributes; these are tone criteria rather than a mandatory word list."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SF32",
+  "title": "Film program social sequence",
+  "image": "sf32.png",
+  "source": "../sources/sf32.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 32,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Give different films distinct visual entries because a program family must accommodate contrasting stories.",
+  "strategic_value": "A common social frame and variable lettering can connect Get Out, Vertigo and Up without making their imagery identical.",
+  "demonstration": "A social sequence moves from black-and-white Get Out lettering and imagery to purple Vertigo geometry and a bright Up balloon image.",
+  "category": "Motion",
+  "practical_value": "Adapt title treatment to each film while retaining the campaign’s frame and typographic behavior.",
+  "content_islands": [
+    {
+      "name": "Film cards",
+      "spec": "Preserve the three successive title/image treatments within the social frame."
+    },
+    {
+      "name": "Transitions",
+      "spec": "Keep the sliding changes and animated lettering that connect the cards."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A social sequence moves from black-and-white Get Out lettering and imagery to purple Vertigo geometry and a bright Up balloon image.",
+    "Application": "The source demonstrates a social sequence moves from black-and-white Get Out lettering and imagery to purple Vertigo geometry and a bright Up balloon image."
+  },
+  "motion": "../sources/sf32.mp4"
+}

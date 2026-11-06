@@ -1,0 +1,34 @@
+{
+  "id": "NH17",
+  "title": "Next stop digital posters",
+  "image": "nh17.png",
+  "source": "../sources/nh17.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 17,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Animate a repeated campaign without losing its hierarchy, because viewers should recognize the offer even during movement.",
+  "strategic_value": "The repeated Next stop phrase can connect Mars, dinosaurs and a dodo to the idea of a Museum journey.",
+  "demonstration": "Three framed digital posters retain white Next stop headlines and colored Mars, Dinos and Dodo labels while symbols and specimen imagery move within them.",
+  "category": "Application",
+  "practical_value": "Compare animation inside a fixed headline-and-label structure across three subjects.",
+  "content_islands": [
+    {
+      "name": "Poster family",
+      "spec": "Align three dark portrait displays in the same wall setting."
+    },
+    {
+      "name": "Fixed messages",
+      "spec": "Keep Next stop large in white and each subject label colored beneath."
+    },
+    {
+      "name": "Moving elements",
+      "spec": "Animate the upper radial marks and specimen imagery within each display."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three framed digital posters retain white Next stop headlines and colored Mars, Dinos and Dodo labels while symbols and specimen imagery move within them."
+  },
+  "motion": "../sources/nh17.mp4"
+}

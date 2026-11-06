@@ -1,0 +1,24 @@
+{
+  "id": "SO91",
+  "title": "Glossary",
+  "image": "so91.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 91
+  },
+  "slide_intent": "Give collaborators a shared meaning for production and identity terms so a brief or proof can be interpreted consistently.",
+  "strategic_value": "Special Olympics can align a local program’s language with that of printers and designers by putting brand concepts and fabrication terms in one reference.",
+  "demonstration": "Three columns of alphabetized definitions run from Artwork through Uncoated paper. Bold terms distinguish entries within the paragraphs.",
+  "category": "Voice",
+  "practical_value": "Use the glossary to distinguish a primary from a secondary color palette or to resolve terms such as bleed, CMYK and reverse before approving a file.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the gray Management label in the left margin and the red Glossary title at the main column edge."
+    },
+    {
+      "name": "Definitions",
+      "spec": "Arrange compact definitions in three columns with bold lead terms. Preserve alphabetical order across the columns and leave a gap between entries."
+    }
+  ]
+}

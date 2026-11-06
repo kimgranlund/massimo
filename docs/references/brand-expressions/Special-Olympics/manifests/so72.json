@@ -1,0 +1,28 @@
+{
+  "id": "SO72",
+  "title": "Banner, backdrops & flags — Flag artwork",
+  "image": "so72.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 72
+  },
+  "slide_intent": "Show how to arrange a two-sided flag so the symbol occupies the same position through the fabric and the words remain readable on each side.",
+  "strategic_value": "Special Olympics can keep its mark aligned in a moving medium while identifying the local program from either direction.",
+  "demonstration": "Front and reverse flags face each other across a pole. The top pair uses a layered curve and the lower pair uses flat color.",
+  "category": "Application",
+  "practical_value": "Start with the illustrated 2:3 flag and reverse the order of symbol and words for the reverse face. Check both faces together.",
+  "content_islands": [
+    {
+      "name": "Flag artwork notes",
+      "spec": "Place instructions about lockup reversal, program naming and flag proportions in the left column."
+    },
+    {
+      "name": "Layered flag faces",
+      "spec": "Place reverse at left and front at right. Put the pole between the flags and mirror the position of the symbol while keeping the words upright."
+    },
+    {
+      "name": "Flat-color flag faces",
+      "spec": "Repeat the two-sided arrangement below the dotted divider using a single red curve. Label every face."
+    }
+  ]
+}

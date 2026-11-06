@@ -1,0 +1,33 @@
+{
+  "id": "NS02",
+  "title": "Sportswear HO19 / Zoom 2K window rendering",
+  "image": "ns02.png",
+  "source": "../sources/ns02.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 2,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Test a campaign in its physical setting because the frame, scale and surroundings change what a passerby notices.",
+  "strategic_value": "The large shoe and broad white headline can connect Nike product recognition with the shop entrance.",
+  "demonstration": "A dark storefront rendering contains a wide Zoom 2K collage; the window version uses a different portrait crop and a longer headline than NS01.",
+  "category": "Application",
+  "practical_value": "Judge which image and message remain prominent inside a storefront frame.",
+  "content_islands": [
+    {
+      "name": "Window artwork",
+      "spec": "Fit the portrait-and-shoe collage inside the large recessed window."
+    },
+    {
+      "name": "Message",
+      "spec": "Center the white headline, supporting line and signature toward the lower part of the artwork."
+    },
+    {
+      "name": "Retail context",
+      "spec": "Retain the dark facade, pavement and partial store interior to show the display scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A dark storefront rendering contains a wide Zoom 2K collage; the window version uses a different portrait crop and a longer headline than NS01."
+  }
+}

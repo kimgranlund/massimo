@@ -1,0 +1,28 @@
+{
+  "id": "SO19",
+  "title": "Courageous",
+  "image": "so19.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Teach writers to show courage through an attempt and the obstacles it involves. The act of competing can carry meaning regardless of the result.",
+  "strategic_value": "Special Olympics can tie its willingness to challenge prejudice to the courage expressed in its Athlete Oath.",
+  "demonstration": "A swimmer in a yellow cap reaches through the water. The lower-left text connects courage with speaking against prejudice, while a separate oath panel appears at upper right.",
+  "category": "Voice",
+  "practical_value": "Use the athlete’s attempt as the lead when the outcome alone would leave out what made the story courageous.",
+  "content_islands": [
+    {
+      "name": "Photographic example",
+      "spec": "Fill the page with water and place the swimmer’s stroke in the lower-right field. Retain open water around the action."
+    },
+    {
+      "name": "Trait heading",
+      "spec": "Set the red Courageous bar at lower left. Give the oath its own white panel at upper right and include its attribution."
+    },
+    {
+      "name": "Meaning and expression",
+      "spec": "Place the trait and voice guidance in two columns beneath the red heading, with enough separation from the swimmer for legibility."
+    }
+  ]
+}

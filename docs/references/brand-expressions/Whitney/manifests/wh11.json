@@ -1,0 +1,30 @@
+{
+  "id": "WH11",
+  "title": "W as frame and stage",
+  "image": "wh11.png",
+  "source": "../sources/frame.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 11,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Use an identity structure to organize content because the mark can guide reading as well as identify a sender.",
+  "strategic_value": "Artist names and images placed on the W can let Whitney’s structure participate in exhibition communication.",
+  "demonstration": "Two colored W sketches arrange Andy Warhol and Yayoi Kusama names along diagonals, with artwork reproductions within or beside the strokes.",
+  "category": "Layout",
+  "practical_value": "Explore whether the identity’s diagonals can support text and imagery without implying these preliminary arrangements are mandatory.",
+  "content_islands": [
+    {
+      "name": "Warhol sketch",
+      "spec": "Place the cyan Whitney W at left, with black names along the strokes and a small image below."
+    },
+    {
+      "name": "Kusama sketch",
+      "spec": "Place the red Whitney W at right, with black artist lettering and a small artwork near the top."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The essay explicitly explores the W as a frame, stage, border, arrow, connection and column.",
+    "Application": "The sketches place artist names and reproductions in relation to the W’s diagonals."
+  }
+}

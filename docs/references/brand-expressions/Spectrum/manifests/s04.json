@@ -1,0 +1,24 @@
+{
+  "id": "S04",
+  "title": "1.01 / Welcome to Spectrum",
+  "image": "s04.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Describe services in terms a customer can connect to everyday activities.",
+  "strategic_value": "A common icon and naming structure can make TV, Internet and Voice feel like parts of one Spectrum offer.",
+  "demonstration": "An introductory company statement sits over three equal service columns with device icons, cyan names and italic benefit statements.",
+  "category": "Brand",
+  "practical_value": "Use parallel descriptions to compare related services without giving one an unintended visual priority.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Keep the section title at upper left and the company explanation across the upper middle."
+    },
+    {
+      "name": "Service trio",
+      "spec": "Align television, laptop and telephone icons over matching service names and benefit copy in three columns, divided by thin vertical rules."
+    }
+  ]
+}

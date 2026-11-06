@@ -1,0 +1,40 @@
+{
+  "id": "SW02",
+  "title": "Logo evolution — sketch, wireframe and render",
+  "image": "sw02.png",
+  "source": "../sources/sw02.webp",
+  "location": {
+    "source_order": 4,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Connect an identity’s visual form to a construction idea so the viewer can understand how the finished symbol was developed.",
+  "strategic_value": "A recurring central axis can give Swisscom’s varied services a shared visual premise, as described in the accompanying case-study text.",
+  "demonstration": "Three stages align horizontally on white: a dark hand-drawn study, a gray wireframe and a finished red-and-blue dimensional symbol.",
+  "category": "Geometry",
+  "practical_value": "Trace the central axis and curved profiles through sketch, model and render to judge whether a finish preserves the original concept.",
+  "content_islands": [
+    {
+      "name": "Sketch",
+      "spec": "Place the rough dark drawing at left, retaining its visible central axis and layered exploratory strokes."
+    },
+    {
+      "name": "Wireframe",
+      "spec": "Center the line model at comparable height to expose the structure without color or surface shading."
+    },
+    {
+      "name": "Finished symbol",
+      "spec": "Place the colored render at right so the viewer can compare its shape with the two preceding stages."
+    }
+  ],
+  "ingredient": {
+    "name": "Central-axis symbol",
+    "role": "Give the identity a shared organizing form.",
+    "application": "Develop the visible curved surfaces around one axis and compare the form across sketch, wireframe and finished rendering.",
+    "scope": "This is a development sequence. The accompanying agency text describes life coming together around one axis; the image supplies no numerical construction dimensions."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying “Unifying a complex brand” text explains the aim of a coherent “one Swisscom” around life coming together at one axis.",
+    "Expression": "The finished red-and-blue dimensional symbol appears beside its earlier construction stages.",
+    "Application": "The three-stage sequence shows the organizing form carried from sketch through wireframe to rendering."
+  }
+}

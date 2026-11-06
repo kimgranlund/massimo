@@ -1,0 +1,35 @@
+{
+  "id": "SG37",
+  "title": "Get the app to get your greens",
+  "image": "sg37.png",
+  "source": "../sources/sg37.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 37,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Combine a direct action with a familiar benefit so a physical sign can lead people into a digital service.",
+  "strategic_value": "The greens phrase and illustrated bowl can make Sweetgreen’s app invitation feel connected to the food offer.",
+  "demonstration": "A pale sidewalk sign in a white metal frame carries a large app headline, compact numbered copy and a colorful illustrated bowl with the wordmark near the bottom.",
+  "category": "Application",
+  "practical_value": "Balance a readable action headline with supporting instructions and brand illustration on a street-facing sign.",
+  "content_islands": [
+    {
+      "name": "Action headline",
+      "spec": "Place the large green app invitation near the top of the sign."
+    },
+    {
+      "name": "Supporting content",
+      "spec": "Keep the smaller numbered copy below it and the illustrated bowl toward the lower right."
+    },
+    {
+      "name": "Physical placement",
+      "spec": "Retain the white frame, pavement and surrounding architecture."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The sign connects a physical restaurant environment to app use.",
+    "Expression": "Large green type and colorful food illustration share a pale panel."
+  }
+}

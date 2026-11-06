@@ -1,0 +1,24 @@
+{
+  "id": "SL41",
+  "title": "Section 3: Governance",
+  "image": "sl41.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 41
+  },
+  "slide_intent": "Mark the change from building an identity to understanding its conditions of use. A visible pause lets the reader recognize a new kind of material before reading it.",
+  "strategic_value": "Slack can organize a long book with its aubergine field and a single section label.",
+  "demonstration": "A small white section heading sits near the top of a full aubergine page. A thin pale rule spans the page beneath it; the remaining field is open.",
+  "category": "Layout",
+  "practical_value": "Use a section divider at a real change of purpose. Preserve the open field and the same left margin used by the instructional pages.",
+  "content_islands": [
+    {
+      "name": "Section label and rule",
+      "spec": "Place Section 3: Governance in small white type at upper left. Extend a thin rule beneath it across the inset page width."
+    },
+    {
+      "name": "Section field",
+      "spec": "Fill the remaining page with uninterrupted aubergine."
+    }
+  ]
+}

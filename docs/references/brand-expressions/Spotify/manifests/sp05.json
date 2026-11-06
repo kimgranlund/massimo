@@ -1,0 +1,32 @@
+{
+  "id": "SP05",
+  "title": "Flex Deck — annotated stage translation",
+  "image": "sp05.png",
+  "source": "../sources/sp05.jpg",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 5,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/f9853eeac9340267e772c8cea8e53d4cff720154-12500x8333.jpg"
+  },
+  "category": "Application",
+  "slide_intent": "Trace a graphic idea into a physical environment because a system becomes useful when teams can explain how its parts scale into space.",
+  "strategic_value": "Spotify can connect its abstract shape vocabulary with an immersive concert setting through visible sketch-to-stage comparison.",
+  "demonstration": "Orange hand annotations sit over and beside a magenta concert photograph on an off-white field.",
+  "practical_value": "Use annotated application studies to explain which shape relationships survive a change of medium.",
+  "content_islands": [
+    {
+      "name": "Stage photograph",
+      "spec": "A centered performance photograph shows oversized angular illuminated structures and a live audience."
+    },
+    {
+      "name": "Orange annotations",
+      "spec": "Circles, angular sketches and directional marks cross the left margin and photograph; several handwritten notes are not fully legible."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Orange hand annotations sit over and beside a magenta concert photograph on an off-white field.",
+    "Intent": "The adjacent Flex Deck caption describes coherence across diverse applications; the image pairs a stage with shape annotations.",
+    "Application": "The source shows this identity in an annotated physical stage."
+  }
+}

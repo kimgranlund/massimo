@@ -1,0 +1,42 @@
+{
+  "id": "SP22",
+  "title": "Identity system overview",
+  "image": "sp22.png",
+  "source": "../sources/sp22.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 22,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/18bb83270f51eba30d33216b03d89c188e6a9f4c-1920x2400.png"
+  },
+  "category": "Brand",
+  "slide_intent": "Show the ingredients together because designers need to understand how color, type, images and shapes belong to one system before applying them separately.",
+  "strategic_value": "Spotify can make a flexible identity easier to reproduce through a compact shared reference.",
+  "demonstration": "A black overview board combines green and multicolor circular swatches, large AaBbCc specimens, Circular Spotify labeling, a photographic treatment comparison, shape rows and small specification tables.",
+  "practical_value": "Locate the ingredient family needed for a design decision, then consult a more legible source before copying small numeric values.",
+  "content_islands": [
+    {
+      "name": "Color family",
+      "spec": "The upper band combines a dominant green circle, green variants and smaller colored circles."
+    },
+    {
+      "name": "Typography",
+      "spec": "Large white AaBbCc specimens sit above the Circular Spotify name and alphabet samples."
+    },
+    {
+      "name": "Image treatment",
+      "spec": "Two adjacent helmeted portraits compare original photography with a duotone result."
+    },
+    {
+      "name": "Shape family",
+      "spec": "Rows of small angular and circular forms sit to the right of the portraits."
+    },
+    {
+      "name": "Specification footer",
+      "spec": "Small multicolumn tables fill the lower band; exact values are too small to transcribe reliably from this source."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black overview board combines green and multicolor circular swatches, large AaBbCc specimens, Circular Spotify labeling, a photographic treatment comparison, shape rows and small specification tables."
+  }
+}

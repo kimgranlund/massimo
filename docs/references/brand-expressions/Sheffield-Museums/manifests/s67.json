@@ -1,0 +1,35 @@
+{
+  "id": "S67",
+  "title": "Exhibition advertising",
+  "image": "s67.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 67,
+    "printed_page": 66
+  },
+  "slide_intent": "Teach designers to adjust the relationship between type, tinted artwork and ground so the exhibition title remains readable across color variants.",
+  "strategic_value": "The Lines of Beauty campaign can keep its title hierarchy across both a brighter and a quieter color treatment.",
+  "demonstration": "Two wide adverts superimpose a centered title on tinted drawing details. The upper version uses black on a red field and the lower version uses white on a dark green field.",
+  "category": "Color",
+  "practical_value": "Test both text-and-image combinations with the venue, dates and credits in place before selecting the campaign color.",
+  "content_islands": [
+    {
+      "name": "Red variant",
+      "spec": "Set the dates, venue identifier and seal across the top. Center the black exhibition name over the tinted drawing and align credits along the foot."
+    },
+    {
+      "name": "Dark variant",
+      "spec": "Repeat the horizontal format in dark green with white text. Preserve both the centered title block and the peripheral identifiers."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two exhibition adverts compare warm red artwork with black type against dark green artwork with white type.",
+    "Application": "The variants carry the same campaign hierarchy, dates, venue and credits in a wide advertising format."
+  },
+  "ingredient": {
+    "name": "Exhibition image tint and type color",
+    "role": "Let a campaign change its color treatment while retaining a readable title hierarchy.",
+    "application": "The shown variants pair black type with a red-tinted drawing and white type with a dark-green drawing. Compare the whole advert with identifiers and credits in place.",
+    "scope": "Two indicative Lines of Beauty campaign variants. Their color pairings are observed examples, not a requirement for other exhibitions."
+  }
+}

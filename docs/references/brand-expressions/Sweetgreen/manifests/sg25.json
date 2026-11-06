@@ -1,0 +1,31 @@
+{
+  "id": "SG25",
+  "title": "Better when roasted",
+  "image": "sg25.png",
+  "source": "../sources/sg25.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 25,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use a familiar diagram to deliver a verbal twist so a short message rewards recognition.",
+  "strategic_value": "The shared roasted punchline can give Sweetgreen’s food communication a conversational sense of humor.",
+  "demonstration": "Two pale circles overlap on green; the top labels a friend who dislikes salad, the bottom Roma tomatoes, and the bright intersection reads Better when roasted.",
+  "category": "Voice",
+  "practical_value": "Match a short joke to a visual structure that makes the shared meaning immediately legible.",
+  "content_islands": [
+    {
+      "name": "Two subjects",
+      "spec": "Set the friend and tomato labels in separate overlapping circles."
+    },
+    {
+      "name": "Shared punchline",
+      "spec": "Place Better when roasted in the vivid central intersection."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A Venn-style composition turns roasted into a shared joke about people and tomatoes.",
+    "Application": "The artwork demonstrates a compact brand-voice composition."
+  }
+}

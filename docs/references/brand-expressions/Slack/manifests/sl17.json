@@ -1,0 +1,32 @@
+{
+  "id": "SL17",
+  "title": "The octothorpe",
+  "image": "sl17.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Make a mark’s construction visible so designers can recognize its component shapes at different sizes and in other graphics.",
+  "strategic_value": "Slack can extend two simple shapes from the symbol into a broader visual vocabulary while preserving a recognizable family resemblance.",
+  "demonstration": "The four-color symbol is shown alone and again on a 19-by-19 grid. The text identifies a speech bubble and a lozenge as its two basic shapes.",
+  "category": "Geometry",
+  "practical_value": "Compare the unobstructed symbol with the grid when identifying which shapes and proportions belong to its construction.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Construction explanation",
+      "spec": "Use a compact left column for the shape, color and small-size guidance."
+    },
+    {
+      "name": "Symbol and grid",
+      "spec": "Stack the plain colored mark above a second version aligned to the 19-by-19 grid in the right half. Give each a small identifying label at its left."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

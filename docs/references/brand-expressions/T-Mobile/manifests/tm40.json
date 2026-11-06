@@ -1,0 +1,34 @@
+{
+  "id": "TM40",
+  "title": "Neon Do’s",
+  "image": "tm40.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 40
+  },
+  "slide_intent": "Make an effect behave like part of a scene so viewers can understand it as a connection rather than decoration.",
+  "strategic_value": "Purposeful, perspective-aware neon can give T-Mobile’s network metaphor a consistent visual behavior.",
+  "demonstration": "Four still examples show neighborhood wash, a city changing from monochrome to color, device outlines and a road trace.",
+  "category": "Motion",
+  "practical_value": "Check perspective, environmental interaction and what the light is connecting before using the effect.",
+  "content_islands": [
+    {
+      "name": "Behavior rules",
+      "spec": "Place motion speed, dimensionality, perspective and selective-coverage guidance at left."
+    },
+    {
+      "name": "Environmental examples",
+      "spec": "Pair neighborhood wash and city transformation across the upper row."
+    },
+    {
+      "name": "Device and road examples",
+      "spec": "Place device outlining and a road trace in the lower row with their specific captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Network neon behavior",
+    "role": "Trace a connection through an environment in a legible way.",
+    "application": "Move swiftly with purpose; vary line thickness with depth and let glow interact with surfaces. Connect most, not all, places.",
+    "scope": "Road outlines are excluded when representing T-Mobile Home Internet. Motion is described by the source, not demonstrated by the static PNG."
+  }
+}

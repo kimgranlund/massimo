@@ -1,0 +1,28 @@
+{
+  "id": "SO83",
+  "title": "T-shirts — Lock-up for sub-programs, clubs or teams",
+  "image": "so83.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 83
+  },
+  "slide_intent": "Show how to make the team name the first read on a competition shirt while keeping its program affiliation visible.",
+  "strategic_value": "Special Olympics can give teams room for a local motif or type style while the accredited program name and symbol consistently establish affiliation.",
+  "demonstration": "An annotated lockup separates the local name and animal motif above from the program name and symbol below. Four shirt fronts vary the identity of the team.",
+  "category": "Application",
+  "practical_value": "Set the local team name prominently, place the accredited program name beneath in uppercase Ubuntu Bold and center the symbol below it.",
+  "content_islands": [
+    {
+      "name": "Team-name rules",
+      "spec": "Place four numbered notes beside the lockup and examples. Identify the local choices and the standardized affiliation."
+    },
+    {
+      "name": "Lockup anatomy",
+      "spec": "Use dashed guides and labels to separate the animal and name from the program type and symbol. Pair the drawing with a yellow shirt application."
+    },
+    {
+      "name": "Team variations",
+      "spec": "Compare shirts with a local name, area number and place names across several colors. Keep the program identifier in a consistent supporting position."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "SG09",
+  "title": "Produce in motion",
+  "image": "sg09.png",
+  "source": "../sources/sg09.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 9,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Keep identification stable while imagery moves so viewers can enjoy sensory detail without losing the source.",
+  "strategic_value": "The fixed vivid wordmark can remain recognizable amid Sweetgreen’s drifting ingredients.",
+  "demonstration": "A bright wordmark stays centered while close-up pieces of produce move through shallow focus against a warm background.",
+  "category": "Motion",
+  "practical_value": "Compare a stationary signature with moving foreground ingredients when planning a short brand loop.",
+  "content_islands": [
+    {
+      "name": "Signature",
+      "spec": "Hold the small wordmark at the center."
+    },
+    {
+      "name": "Moving produce",
+      "spec": "Let colorful ingredients pass around and across the field at different depths."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The complete clip pairs a fixed wordmark with floating, shifting-focus produce."
+  },
+  "motion": "../sources/sg09.mp4"
+}

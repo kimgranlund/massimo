@@ -1,0 +1,30 @@
+{
+  "id": "PT06",
+  "title": "Season announcement / Format family",
+  "image": "pt06.png",
+  "source": "../sources/pt06.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 6,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Adapt a hierarchy across proportions because one announcement must remain recognizable in different placements.",
+  "strategic_value": "The repeated PUBLIC column and red show names can connect the season’s print formats.",
+  "demonstration": "Four black, red and white season layouts vary in height and width while retaining dense bordered text blocks.",
+  "category": "Layout",
+  "practical_value": "Identify which hierarchy survives the shift between tall and compact advertisements.",
+  "content_islands": [
+    {
+      "name": "Format comparison",
+      "spec": "Group four finished layouts on a black background."
+    },
+    {
+      "name": "Repeated system",
+      "spec": "Keep the vertical signature, red titles and dividing rules visible within each example."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Four black, red and white season layouts vary in height and width while retaining dense bordered text blocks.",
+    "Application": "The same season information appears in four different print proportions."
+  }
+}

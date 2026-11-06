@@ -1,0 +1,24 @@
+{
+  "id": "SO03",
+  "title": "Introduction",
+  "image": "so03.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Explain why a shared identity matters to local programs. People encounter the organization through what programs do as well as through the materials they produce.",
+  "strategic_value": "Special Olympics can strengthen recognition across programs while allowing each program to address its own community.",
+  "demonstration": "A bold statement about reputation sits beside a narrower explanation of the guidelines. A lower montage places different programs’ publications, clothing and signs together.",
+  "category": "Brand",
+  "practical_value": "Use the introduction to distinguish the common reputation a communication supports from the local occasion it addresses.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the red heading above two columns. Give the definition of reputation heavier type than the scope note."
+    },
+    {
+      "name": "Program materials",
+      "spec": "Arrange printed covers, small identity items, apparel and a tall banner as one montage across the lower page. Place a faint construction drawing behind the left side."
+    }
+  ]
+}

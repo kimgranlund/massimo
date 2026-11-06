@@ -1,0 +1,30 @@
+{
+  "id": "WH06",
+  "title": "Two artwork proportions",
+  "image": "wh06.png",
+  "source": "../sources/responsive-w-2.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 6,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Compare different image proportions because a flexible system must preserve recognition when the occupied area changes.",
+  "strategic_value": "The paired compositions can show that Whitney’s mark stays recognizable around both a portrait-format image and a broad flag image.",
+  "demonstration": "Two outlined vertical layouts pair W line drawings with differently shaped artworks: figures at left and a flag at right.",
+  "category": "Layout",
+  "practical_value": "Compare how the mark bends around each image while preserving the shared four-segment construction.",
+  "content_islands": [
+    {
+      "name": "Left layout",
+      "spec": "Place the narrower figurative artwork in the lower-left region and let the W occupy the space above and beside it."
+    },
+    {
+      "name": "Right layout",
+      "spec": "Place the flag across the lower region with the compressed W above."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The essay explicitly connects the variable W to the proportions of reproduced artworks.",
+    "Application": "Two preliminary layouts demonstrate different allocations of artwork and identity space."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "TM12",
+  "title": "T-Digit Badge",
+  "image": "tm12.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Define when a contained mark is useful so a symbol can remain visible where the surrounding surface offers little brand color.",
+  "strategic_value": "A magenta badge can retain T-Mobile color presence in partnerships, merchandise and environmental applications.",
+  "demonstration": "A square badge is compared with a limited-use badge-and-name lockup across white, magenta and black backgrounds.",
+  "category": "Brand",
+  "practical_value": "Choose the badge for a need for contained magenta presence and consult the brand team before using the name lockup.",
+  "content_islands": [
+    {
+      "name": "Usage and restriction",
+      "spec": "Place the role and limited-use explanation in the left column."
+    },
+    {
+      "name": "Badge options",
+      "spec": "Show the badge and its alternative backgrounds in the middle column."
+    },
+    {
+      "name": "Name lockup options",
+      "spec": "Show the limited-use text lockup and colorways in the right column."
+    }
+  ],
+  "ingredient": {
+    "name": "T-Digit Badge",
+    "role": "Carry the symbol and a contained area of magenta together.",
+    "application": "Use as a secondary mark; consult the Brand team for the limited-use text lockup.",
+    "scope": "Partnerships, apparel, merchandise and environments; the text lockup serves special recognition needs."
+  }
+}

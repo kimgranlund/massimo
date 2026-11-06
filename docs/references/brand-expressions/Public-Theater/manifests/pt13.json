@@ -1,0 +1,30 @@
+{
+  "id": "PT13",
+  "title": "Bring in ’Da Noise, Bring in ’Da Funk / Dancer",
+  "image": "pt13.png",
+  "source": "../sources/pt13.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 13,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use type as an active part of the image because rhythm on a poster can echo the performance it announces.",
+  "strategic_value": "The dancer surrounded by varied text can connect the production’s movement with The Public’s street-based graphic voice.",
+  "demonstration": "A black-and-white dancer cuts across blue title lettering, red emphases and narrow angled review blocks on white.",
+  "category": "Typography",
+  "practical_value": "Compare changes of angle, width and scale as a typographic counterpart to a moving figure.",
+  "content_islands": [
+    {
+      "name": "Dancer and title",
+      "spec": "Place the figure across the large blue headline."
+    },
+    {
+      "name": "Surrounding voices",
+      "spec": "Fit reviews, credits and booking information around the figure at varied angles."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black-and-white dancer cuts across blue title lettering, red emphases and narrow angled review blocks on white.",
+    "Intent": "Pentagram describes the title and logos around Savion Glover as a typographic counterpart to urban noise."
+  }
+}

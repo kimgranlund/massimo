@@ -1,0 +1,32 @@
+{
+  "id": "SG23",
+  "title": "Seasonal bowl-drop social film",
+  "image": "sg23.png",
+  "source": "../sources/sg23.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 23,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Build anticipation through a timed reveal so a seasonal launch feels like an event.",
+  "strategic_value": "A shift from quiet title card to vivid tomato footage can give Sweetgreen’s launch a sensory rhythm.",
+  "demonstration": "A phone over tomatoes plays an Instagram post: a seasonal title card gives way to close-up tomato footage, brief launch copy and a closing signature.",
+  "category": "Motion",
+  "practical_value": "Compare the pacing of a restrained opening card with a moving food reveal in a social placement.",
+  "content_islands": [
+    {
+      "name": "Social frame",
+      "spec": "Keep the phone and Instagram interface visible over the tomato photograph."
+    },
+    {
+      "name": "Launch film",
+      "spec": "Sequence seasonal words, moving tomato imagery, launch information and signature inside the post."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The complete clip presents a seasonal launch film within a social feed.",
+    "Expression": "Close-up tomato motion follows a restrained typographic opening."
+  },
+  "motion": "../sources/sg23.mp4"
+}

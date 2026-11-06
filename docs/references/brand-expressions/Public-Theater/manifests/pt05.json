@@ -1,0 +1,30 @@
+{
+  "id": "PT05",
+  "title": "Season poster / Working sketch",
+  "image": "pt05.png",
+  "source": "../sources/pt05.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 5,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Establish hierarchy before polishing type because the reader must find a route through many competing titles.",
+  "strategic_value": "The sketch can coordinate a varied season beneath one dominant institutional name.",
+  "demonstration": "A rough black-and-red drawing sets a vertical PUBLIC at left and tightly packed show names at right.",
+  "category": "Layout",
+  "practical_value": "Compare a hand-drawn hierarchy proposal with the finished multi-format suite in PT06.",
+  "content_islands": [
+    {
+      "name": "Institutional column",
+      "spec": "Reserve the left strip for the oversized vertical name."
+    },
+    {
+      "name": "Program column",
+      "spec": "Pack show names into contrasting black and red blocks on the right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A rough black-and-red drawing sets a vertical PUBLIC at left and tightly packed show names at right.",
+    "Intent": "Pentagram describes the original identity as a street-based typographic language for accessible and innovative performances."
+  }
+}

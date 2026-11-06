@@ -1,0 +1,28 @@
+{
+  "id": "TM31",
+  "title": "Typography Do’s",
+  "image": "tm31.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Match type treatment to the tone and length of a message so a reader hears the intended emphasis.",
+  "strategic_value": "Flexible case and weight choices can keep T-Mobile confident in short claims and approachable in personal stories.",
+  "demonstration": "Four applications compare all-caps emphasis, heavier sentence case, lighter narrative text and contrasting text over an image.",
+  "category": "Typography",
+  "practical_value": "Choose all caps for short attention cues or sentence case for a more conversational reading rhythm.",
+  "content_islands": [
+    {
+      "name": "Decision principles",
+      "spec": "Place the title and hierarchy/consistency rules at left."
+    },
+    {
+      "name": "Short and longer headlines",
+      "spec": "Compare an all-caps city image with sentence-case web copy in the upper row."
+    },
+    {
+      "name": "Narrative and image contrast",
+      "spec": "Compare personal-story text with a product headline in the lower row."
+    }
+  ]
+}

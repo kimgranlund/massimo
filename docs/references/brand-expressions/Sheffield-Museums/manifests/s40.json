@@ -1,0 +1,29 @@
+{
+  "id": "S40",
+  "title": "Photo and image credits",
+  "image": "s40.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 40,
+    "printed_page": 39
+  },
+  "slide_intent": "Help editors distinguish a photograph’s credit from the information required to identify a work of art and its rights holder.",
+  "strategic_value": "Attributing images consistently can make the museum’s care for artists, photographers and visitors visible in its publications.",
+  "demonstration": "Two copy columns explain permissions and credit lines using named examples. A Graves Gallery publication spread pairs works with small captions.",
+  "category": "Imagery",
+  "practical_value": "Confirm permission and identify the photographer or the artist, title, date, medium and copyright information appropriate to the item.",
+  "content_islands": [
+    {
+      "name": "Permissions and photo credit",
+      "spec": "Put the permission checks and photo-credit example in the first text column."
+    },
+    {
+      "name": "Artwork credit examples",
+      "spec": "Use the adjacent column for artwork credits with dates, media and different rights holders."
+    },
+    {
+      "name": "Published spread",
+      "spec": "Show a gallery introduction and exhibition listings to the right. Retain the small image captions with their works."
+    }
+  ]
+}

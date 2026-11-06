@@ -1,0 +1,28 @@
+{
+  "id": "SO44",
+  "title": "Typography · Readability of informational text",
+  "image": "so44.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 44
+  },
+  "slide_intent": "Teach communicators to evaluate a page by how easily someone can scan and read it. Type size, line length and background compete for the reader’s attention.",
+  "strategic_value": "A common reading standard can make guides, reports and newsletters easier to navigate for more people.",
+  "demonstration": "A lead paragraph frames the reading task. Three columns organize decisions about layout, type size and face, and contrast against the background.",
+  "category": "Typography",
+  "practical_value": "Review the column width and paragraph length together with type size. Keep text left aligned and place informational copy on a quiet, high-contrast field.",
+  "content_islands": [
+    {
+      "name": "Reader reminder",
+      "spec": "Place the reader-centered note at left and a short purpose statement above the main columns."
+    },
+    {
+      "name": "Layout and size",
+      "spec": "Set compact paragraphs under separate Layout and Font Size and Type headings. Relate size choices to column width."
+    },
+    {
+      "name": "Contrast guidance",
+      "spec": "Use a third column for color and background guidance, including text over imagery."
+    }
+  ]
+}

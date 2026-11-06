@@ -1,0 +1,28 @@
+{
+  "id": "E08",
+  "title": "Digital Out of Home / Plaza Screens",
+  "image": "e08.png",
+  "source": "../sources/e08.mp4",
+  "location": {
+    "source_order": 8,
+    "whole_source": true,
+    "poster_seconds": 9.0,
+    "duration_seconds": 15.0
+  },
+  "slide_intent": "Evaluate a campaign from pedestrian distance so identity choices survive a visually busy setting.",
+  "strategic_value": "Repeated blue fields and Spectrum signatures can connect scattered plaza placements amid competing signs.",
+  "demonstration": "A 15-second wide plaza visualization places the campaign on multiple screens around L.A. Live, with people, buildings and other advertising visible.",
+  "category": "Application",
+  "practical_value": "Judge brand visibility at the scale of the whole site rather than only in an isolated artwork preview.",
+  "content_islands": [
+    {
+      "name": "Plaza context",
+      "spec": "Keep the wide daytime plaza view, architecture, pedestrians and neighboring advertisements."
+    },
+    {
+      "name": "Distributed campaign",
+      "spec": "Show the related Spectrum blue panels and photographic advertising on the dispersed vertical and horizontal screens."
+    }
+  ],
+  "motion": "../sources/e08.mp4"
+}

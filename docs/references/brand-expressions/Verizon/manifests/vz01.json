@@ -1,0 +1,30 @@
+{
+  "id": "VZ01",
+  "title": "Guidelines / Masterbrand Elements",
+  "image": "vz01.png",
+  "source": "../sources/vz12.jpg",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 12,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Give creators a clear starting point so they can find the guidance needed for a consistent execution.",
+  "strategic_value": "A shared entry to masterbrand and channel guidance can reduce conflicting interpretations of Verizon’s identity.",
+  "demonstration": "A laptop presents the Guidelines landing page, with a large Masterbrand Elements panel above cards for FAQs, 5G, apps and web.",
+  "category": "Application",
+  "practical_value": "Organize foundational guidance before channel-specific implementation resources.",
+  "content_islands": [
+    {
+      "name": "Laptop context",
+      "spec": "Center the laptop on white and retain the complete screen and device silhouette."
+    },
+    {
+      "name": "Guidance hierarchy",
+      "spec": "Place the Guidelines heading above the black Masterbrand Elements panel, then align the smaller topic cards underneath."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying case study explains that the online guidance replaces a 300+ page PDF and supports continuing updates.",
+    "Application": "The landing page separates foundational brand elements from app, web and other resource areas."
+  }
+}

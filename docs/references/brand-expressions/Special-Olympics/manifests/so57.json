@@ -1,0 +1,24 @@
+{
+  "id": "SO57",
+  "title": "Letterhead · US Letter specifications",
+  "image": "so57.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 57
+  },
+  "slide_intent": "Allocate a letter’s margins to its sender, message and institutional details. A predictable hierarchy lets the recipient find the sender without interrupting the body copy.",
+  "strategic_value": "Special Olympics can preserve its identity in formal US correspondence with a compact upper-right mark and a distinct contact footer.",
+  "demonstration": "The US Letter specimen connects five numbered notes to the mark, body, contact block and accreditation. Circular details enlarge the smallest type.",
+  "category": "Layout",
+  "practical_value": "For an 8.5 × 11 inch letter, use 22 mm side margins, a 42 mm top margin and a 28 mm body bottom margin. Position the mark 13 mm from the top and right edges.",
+  "content_islands": [
+    {
+      "name": "Format table",
+      "spec": "Place format, stocks, colors and margins in a ruled table at left. Follow it with numbered type and placement settings."
+    },
+    {
+      "name": "Annotated letter",
+      "spec": "Center the full letter on a pale field. Use guide lines and numbered dots at the mark, then magnify body text, contact details and small accreditation type in circles."
+    }
+  ]
+}

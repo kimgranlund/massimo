@@ -1,0 +1,24 @@
+{
+  "id": "S24",
+  "title": "5.04 / Sample Location / Westfield Countryside Mall",
+  "image": "s24.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Follow the transition from a compact listing to a detail page so recognition persists as information expands.",
+  "strategic_value": "A repeated Spectrum logo can connect the mall’s tenant index with the store’s dedicated page.",
+  "demonstration": "Two website screenshots show the directory listing at left and the Spectrum detail page at right.",
+  "category": "Application",
+  "practical_value": "Check whether the tenant remains identifiable at both summary and expanded levels.",
+  "content_islands": [
+    {
+      "name": "Location heading",
+      "spec": "Set the section title with the italic Westfield Countryside Mall name below."
+    },
+    {
+      "name": "Online directory pair",
+      "spec": "Align the two screenshots beneath the Online directory label, keeping listing on the left and detail on the right."
+    }
+  ]
+}

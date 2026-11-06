@@ -1,0 +1,30 @@
+{
+  "id": "VZ04",
+  "title": "Case-study growth comparison",
+  "image": "vz04.png",
+  "source": "../sources/vz04.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 4,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use size and color contrast to distinguish two quantities so a viewer can read the direction of a comparison quickly.",
+  "strategic_value": "The red endpoint can make the designer’s growth claim prominent within the Verizon project narrative.",
+  "demonstration": "A large red circle labeled 5.43M appears above year 4; a smaller gray circle labeled 2.37M appears over year 1 on black, with years 2 and 3 shown as thin vertical ticks.",
+  "category": "Application",
+  "practical_value": "Distinguish visual emphasis from quantitative proof: the unlabeled unit and sparse timeline do not establish a complete revenue dataset.",
+  "content_islands": [
+    {
+      "name": "Endpoint circles",
+      "spec": "Place the smaller gray circle at lower left and the larger red circle at upper right, with thin numerals centered inside."
+    },
+    {
+      "name": "Timeline",
+      "spec": "Connect each circle toward its year label with a thin line and place the two intervening year ticks between them."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red and gray circles on black use scale and contrast to create a pronounced endpoint emphasis.",
+    "Application": "The chart applies the identity to the portfolio’s growth narrative; the underlying financial claim is not independently verified."
+  }
+}

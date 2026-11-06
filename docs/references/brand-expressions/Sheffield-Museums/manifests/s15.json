@@ -1,0 +1,25 @@
+{
+  "id": "S15",
+  "title": "Venue logos",
+  "image": "s15.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 15,
+    "printed_page": 14
+  },
+  "slide_intent": "Signal the shift from the umbrella identity to individual venues so readers can find the rules for the mark they need.",
+  "strategic_value": "Giving venue marks their own chapter can help designers apply the identity at the level visitors encounter.",
+  "demonstration": "A large white Venue logos heading introduces chapter 3 on the same dark green divider used for earlier chapters.",
+  "category": "Layout",
+  "practical_value": "Use this divider to locate the six venue identities and their construction and placement rules.",
+  "content_islands": [
+    {
+      "name": "Section identifiers",
+      "spec": "Set the chapter number and label at upper left and the folio at upper right."
+    },
+    {
+      "name": "Chapter title",
+      "spec": "Set Venue logos large beneath the identifiers on the dark green field."
+    }
+  ]
+}

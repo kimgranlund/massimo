@@ -1,0 +1,28 @@
+{
+  "id": "SL27",
+  "title": "Typography: Larsseit",
+  "image": "sl27.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 27
+  },
+  "slide_intent": "Teach designers to give a headline a consistent speaking voice across print and screens. Spacing and case affect how quickly someone can recognize and read a short phrase.",
+  "strategic_value": "Larsseit can carry Slack’s headline voice through campaigns while its weight range gives designers several degrees of emphasis.",
+  "demonstration": "Large mixed-case letters and numerals sit above twelve labeled upright and italic specimens. The left column distinguishes print tracking from web letter spacing.",
+  "category": "Typography",
+  "practical_value": "Use the paired specimens to choose a headline weight. Apply sentence case and match spacing to the medium under this edition’s rules.",
+  "content_islands": [
+    {
+      "name": "Setting directions",
+      "spec": "Place the heading above a rule. Use a narrow left column for print and web settings and a separate note on converting slide formats."
+    },
+    {
+      "name": "Character specimen",
+      "spec": "Set the alphabet with upper- and lowercase pairs and finish with the numerals. Use the wider right-hand column so several letter shapes can be compared at display size."
+    },
+    {
+      "name": "Weight ladder",
+      "spec": "Stack thin through extrabold with their italic partners. Align each weight name to the left of a sample phrase set in that weight."
+    }
+  ]
+}

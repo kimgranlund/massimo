@@ -1,0 +1,26 @@
+{
+  "id": "SF24",
+  "title": "Stravinsky typographic field",
+  "image": "sf24.png",
+  "source": "../sources/sf24.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 24,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Let letterform scale carry atmosphere because a title can function as both language and image.",
+  "strategic_value": "Oversized slanted lettering can make a classical work feel forceful and immediate.",
+  "demonstration": "Orange serif lettering for Stravinsky and Le Sacre du Printemps fills and crops against a burgundy field.",
+  "category": "Typography",
+  "practical_value": "Compare the expressive effect of a cropped typographic field with a conventionally contained title.",
+  "content_islands": [
+    {
+      "name": "Title field",
+      "spec": "Fill the composition with large slanted orange lettering over burgundy, preserving the edge crops."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Orange serif lettering for Stravinsky and Le Sacre du Printemps fills and crops against a burgundy field."
+  }
+}

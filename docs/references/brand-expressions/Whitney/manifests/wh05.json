@@ -1,0 +1,36 @@
+{
+  "id": "WH05",
+  "title": "Artwork above, responsive W below",
+  "image": "wh05.png",
+  "source": "../sources/responsive-w-1.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 5,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Let the artwork determine the remaining identity space because a consistent brand need not force every image into one crop.",
+  "strategic_value": "The adaptable W can preserve Whitney recognition while respecting the proportions of an exhibition image.",
+  "demonstration": "A vertical preliminary layout places a widescreen 20th Century Fox image above a tall W in the remaining white area.",
+  "category": "Layout",
+  "practical_value": "Fit the mark to the space remaining around an image rather than distorting the image to fit a fixed logo panel.",
+  "content_islands": [
+    {
+      "name": "Artwork",
+      "spec": "Place the horizontal artwork reproduction across the upper portion of the portrait frame."
+    },
+    {
+      "name": "Remaining space",
+      "spec": "Extend the W through the tall white area beneath the artwork."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay says the W makes the remaining space visible and expresses the primacy of the artwork.",
+    "Application": "The preliminary sketch demonstrates fitting the identity into the space left by a horizontal artwork."
+  },
+  "ingredient": {
+    "name": "Responsive W around artwork",
+    "role": "Identify the institution in the space left by the artwork.",
+    "application": "Let the artwork retain its proportions and adapt the W to the remaining area.",
+    "scope": "2012 preliminary composition and accompanying 2013 essay; the shape shown is one example, not a fixed template."
+  }
+}

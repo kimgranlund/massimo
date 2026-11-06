@@ -1,0 +1,31 @@
+{
+  "id": "SP20",
+  "title": "Discovery message on stage",
+  "image": "sp20.png",
+  "source": "../sources/sp20.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 20,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/df76cd5468a0e0f2c26a50cc7057f395200e77c9-2400x1920.png"
+  },
+  "category": "Typography",
+  "slide_intent": "Use a few oversized words behind a speaker because a stage message must remain recognizable at a distance.",
+  "strategic_value": "Spotify can reinforce discovery as a public promise through white type on an energetic green portrait backdrop.",
+  "demonstration": "A presenter stands before cropped oversized white discovery-related text and a green photographic background.",
+  "practical_value": "Evaluate how much headline cropping a stage backdrop can tolerate beside a speaker.",
+  "content_islands": [
+    {
+      "name": "Backdrop",
+      "spec": "Large white letterforms span the green photographic wall; the crop does not expose the full message."
+    },
+    {
+      "name": "Presenter",
+      "spec": "The figure occupies the lower foreground and provides human scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A presenter stands before cropped oversized white discovery-related text and a green photographic background.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

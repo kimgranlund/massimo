@@ -1,0 +1,24 @@
+{
+  "id": "SL31",
+  "title": "Localized languages",
+  "image": "sl31.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Teach designers to preserve typographic hierarchy across scripts and translated text lengths. Equal nominal sizes can give letters different apparent sizes and lines different lengths.",
+  "strategic_value": "Slack can carry a recognizable editorial hierarchy across languages while choosing fonts suited to each script and channel.",
+  "demonstration": "Guidance for Japanese and four European languages sits beside three versions of an Intuit customer story. The English example with an image occupies the top, with Spanish and Japanese beneath.",
+  "category": "Typography",
+  "practical_value": "Compare line fit and apparent size in translation. The 2020 page specifies a 15% reduction for Japanese and 10% for Portuguese, Spanish, French and German relative to English.",
+  "content_islands": [
+    {
+      "name": "Language guidance",
+      "spec": "Separate Japanese font and size guidance from the second group of languages. Keep the language labels bold in the left column."
+    },
+    {
+      "name": "Localization examples",
+      "spec": "Place the English customer story in a wide card above the smaller Spanish and Japanese cards. Align the three cards within one pale comparison field."
+    }
+  ]
+}

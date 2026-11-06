@@ -1,0 +1,30 @@
+{
+  "id": "PT12",
+  "title": "1995–96 season / Typographic field",
+  "image": "pt12.png",
+  "source": "../sources/pt12.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 12,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Organize density around a clear anchor because an abundance of programming still needs a first point of recognition.",
+  "strategic_value": "The oversized PUBLIC and central dancer can give a busy season announcement a coherent identity.",
+  "demonstration": "Black show titles fill a yellow poster around a cutout dancer, a large vertical PUBLIC and small red accents.",
+  "category": "Layout",
+  "practical_value": "Examine how a main name and figure organize many competing show titles.",
+  "content_islands": [
+    {
+      "name": "Anchor column",
+      "spec": "Run PUBLIC down the left side."
+    },
+    {
+      "name": "Season field",
+      "spec": "Fit titles around the central dancer, then close with the membership line along the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Black show titles fill a yellow poster around a cutout dancer, a large vertical PUBLIC and small red accents.",
+    "Application": "The poster combines season programming, a membership invitation and theater contact details."
+  }
+}

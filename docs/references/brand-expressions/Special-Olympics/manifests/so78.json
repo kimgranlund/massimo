@@ -1,0 +1,24 @@
+{
+  "id": "SO78",
+  "title": "Informational leaflets — Cover design options",
+  "image": "so78.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 78
+  },
+  "slide_intent": "Teach designers to decide how strongly a photograph should carry the cover and where the title will remain easy to read.",
+  "strategic_value": "The same program can publish a simple internal guide or a more image-led introduction while retaining the curved field and program signature.",
+  "demonstration": "Three examples hold the competition guide title steady and compare a red typographic cover, a split photo-and-text cover and a full-image cover.",
+  "category": "Layout",
+  "practical_value": "Choose the split version when a separate text field will protect legibility. Choose a full photograph when its crop and tonal range can support the title.",
+  "content_islands": [
+    {
+      "name": "Selection notes",
+      "spec": "Place three numbered explanations beside the covers, connecting each treatment to its reading and production demands."
+    },
+    {
+      "name": "Cover comparison",
+      "spec": "Align three portrait covers at equal scale. Change the proportion of photo, type and plain color while retaining the title, curve and program mark."
+    }
+  ]
+}

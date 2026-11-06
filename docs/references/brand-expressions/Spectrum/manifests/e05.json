@@ -1,0 +1,34 @@
+{
+  "id": "E05",
+  "title": "Large-Scale Application / Lobby Current",
+  "image": "e05.png",
+  "source": "../sources/e05.mp4",
+  "location": {
+    "source_order": 5,
+    "whole_source": true,
+    "poster_seconds": 27.018,
+    "duration_seconds": 45.03
+  },
+  "slide_intent": "Adjust pace and scale for the viewer’s surroundings so movement can inhabit a space without overwhelming it.",
+  "strategic_value": "A slower current can carry Spectrum’s identity into an architectural encounter while retaining the blue-and-green signature.",
+  "demonstration": "A 45.03-second visualization shows three tall lobby screens with slowly changing line fields, a Spectrum Life Unlimited lockup on the middle screen and a human figure for scale.",
+  "category": "Motion",
+  "practical_value": "Judge movement against human scale and neighboring screens before translating a short logo animation into an installation.",
+  "content_islands": [
+    {
+      "name": "Architectural frame",
+      "spec": "Place three tall screen recesses in a white room, retain floor reflections and a small figure at the left screen for scale."
+    },
+    {
+      "name": "Current choreography",
+      "spec": "Let the curved line families move through and across the three screen fields while the middle screen carries the identity."
+    }
+  ],
+  "ingredient": {
+    "name": "Architectural current",
+    "role": "Animate a large environment while preserving a recognizable brand presence.",
+    "application": "Use slower, graceful movement for the large lobby installation and allow the expanded palette supplied for that setting.",
+    "scope": "The agency describes 6K lobby screens. This local video is a case-study visualization, not a 6K production asset."
+  },
+  "motion": "../sources/e05.mp4"
+}

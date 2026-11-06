@@ -1,0 +1,34 @@
+{
+  "id": "O04",
+  "title": "Bubble construction and editable form",
+  "image": "o04.png",
+  "source": "../sources/o04.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 4,
+    "extent": "whole source artwork",
+    "poster_seconds": 2.88,
+    "duration_seconds": 9.6
+  },
+  "slide_intent": "Expose how a visual effect is built so a designer can understand which parts remain adjustable.",
+  "strategic_value": "An editable bubble construction can help O2 carry a consistent ingredient into varied digital compositions.",
+  "demonstration": "A circular path with control points becomes a shaded bubble; the clip also exposes selection bounds and a cursor against a blue gradient.",
+  "category": "Geometry",
+  "practical_value": "Separate the underlying outline from its shading when adapting the bubble’s form.",
+  "content_islands": [
+    {
+      "name": "Gradient canvas",
+      "spec": "Use a dark-to-light blue field behind the construction."
+    },
+    {
+      "name": "Outline and finish",
+      "spec": "Center a circular path with nodes, then show its shaded translucent version and selection bounds."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The surrounding section identifies flexibility and interaction as the reasons for redesigning the bubble.",
+    "Application": "The construction demonstration connects a controllable path to the finished shaded bubble.",
+    "Expression": "The finished form uses translucent blue shading with a bright irregular rim."
+  },
+  "motion": "../sources/o04.mp4"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SF31",
+  "title": "Film program cover",
+  "image": "sf31.png",
+  "source": "../sources/sf31.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 31,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Use selective letter scaling because a short category word can become a memorable cover composition.",
+  "strategic_value": "The purple Film title on dark green can distinguish a program while preserving the Symphony’s serif character.",
+  "demonstration": "A booklet on pavement carries a large variable-height Film title, a small Symphony signature and fine supporting text.",
+  "category": "Typography",
+  "practical_value": "Compare the category title’s hierarchy with the institution’s smaller signature.",
+  "content_islands": [
+    {
+      "name": "Cover typography",
+      "spec": "Keep the exaggerated purple Film letters on green, with the small signature above."
+    },
+    {
+      "name": "Physical context",
+      "spec": "Retain the angled booklet and textured pavement."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A booklet on pavement carries a large variable-height Film title, a small Symphony signature and fine supporting text."
+  }
+}

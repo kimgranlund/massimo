@@ -1,0 +1,32 @@
+{
+  "id": "WH14",
+  "title": "Fixed first V, elastic second V",
+  "image": "wh14.png",
+  "source": "../sources/fixed.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 14,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Keep an anchor while allowing content to expand because viewers need a stable point from which to read change.",
+  "strategic_value": "A fixed Whitney section can preserve institutional recognition while a second section accommodates different exhibition titles.",
+  "demonstration": "Four stacked sketches keep Whitney in the first V while names and longer text occupy a changing second V.",
+  "category": "Geometry",
+  "practical_value": "Separate the institution’s anchor from the variable text area; treat this as an explored option, not the sole permitted identity construction.",
+  "content_islands": [
+    {
+      "name": "Four comparisons",
+      "spec": "Stack the Whitney-only, Yayoi Kusama, long Paul McCarthy title and Kids variants vertically; retain the changing second V."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay explicitly says movement needs a fixed element.",
+    "Application": "The sketch explores a stable first V and an elastic second V holding secondary information."
+  },
+  "ingredient": {
+    "name": "Fixed first V and elastic second V",
+    "role": "Separate institutional identification from secondary information.",
+    "application": "In this explored variant, hold the first V steady for Whitney and vary the second V around the secondary text.",
+    "scope": "Preliminary option described by the studio, not a requirement for every use of the responsive W."
+  }
+}

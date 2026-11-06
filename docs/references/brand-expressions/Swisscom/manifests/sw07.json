@@ -1,0 +1,39 @@
+{
+  "id": "SW07",
+  "title": "Retail environment",
+  "image": "sw07.png",
+  "source": "../sources/sw07.webp",
+  "location": {
+    "source_order": 10,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use shared identity elements to connect a room’s displays and surfaces so visitors recognize one coherent setting.",
+  "strategic_value": "The symbol crop and recurring colors can make Swisscom’s retail environment recognizable across walls, counters and product displays.",
+  "demonstration": "A wide store photograph shows white display fixtures, blue and red furniture accents, and a large red-and-blue symbol crop across the right wall beneath an exposed ceiling.",
+  "category": "Application",
+  "practical_value": "Compare environmental graphics with furniture and merchandise to judge how much of the space carries the identity.",
+  "content_islands": [
+    {
+      "name": "Store depth and fixtures",
+      "spec": "Retain the long perspective through the shop and the white product display surfaces."
+    },
+    {
+      "name": "Graphic wall",
+      "spec": "Place the large cropped red-and-blue symbol on the right wall, above and behind the products."
+    },
+    {
+      "name": "Color accents",
+      "spec": "Preserve the blue foreground counters and red fixtures deeper in the room as repeated color cues."
+    }
+  ],
+  "ingredient": {
+    "name": "Environmental symbol crop",
+    "role": "Connect the retail interior to the wider identity.",
+    "application": "Extend a large symbol crop across a wall and repeat related colors in fixtures, as the photographed store demonstrates.",
+    "scope": "One retail example. The source does not supply required coverage percentages, fixture dimensions or a universal store plan."
+  },
+  "reference_purposes": {
+    "Expression": "The store combines a large symbol crop with red and blue furniture accents.",
+    "Application": "The photograph shows the identity across wall graphics, product displays and fixtures in a retail interior."
+  }
+}

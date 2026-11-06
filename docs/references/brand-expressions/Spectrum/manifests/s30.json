@@ -1,0 +1,28 @@
+{
+  "id": "S30",
+  "title": "7.02 / Approval Process",
+  "image": "s30.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Supply context alongside artwork so a reviewer can judge the intended application.",
+  "strategic_value": "A shared approval route can keep Spectrum’s logo and copy consistent across mall-produced assets.",
+  "demonstration": "A cyan approval requirement sits left of a contact paragraph and submission checklist; a top note gives review timing.",
+  "category": "Brand",
+  "practical_value": "Assemble artwork, copy and placement details before requesting review, without assuming the archival contact remains current.",
+  "content_islands": [
+    {
+      "name": "Heading and timing",
+      "spec": "Place the title upper left and the five-business-day review note at upper middle."
+    },
+    {
+      "name": "Approval requirement",
+      "spec": "Set the all-uses requirement in cyan at the left of the ruled content area."
+    },
+    {
+      "name": "Submission checklist",
+      "spec": "Place contact guidance and bullets at right covering subject, asset description, placement, contact details and separate design and copy files."
+    }
+  ]
+}

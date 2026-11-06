@@ -1,0 +1,30 @@
+{
+  "id": "PT23",
+  "title": "Under the Radar / Collage layouts",
+  "image": "pt23.png",
+  "source": "../sources/pt23.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 23,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Give experimental imagery a repeatable scaffold because variation becomes easier to recognize when some structure stays fixed.",
+  "strategic_value": "The framed collage system can make an eclectic festival feel connected without making every piece identical.",
+  "demonstration": "A large and two smaller layouts combine cutout figures, rotated text blocks and orange-and-blue headings inside black frames.",
+  "category": "Layout",
+  "practical_value": "Compare how collage elements rotate within stable outer boundaries.",
+  "content_islands": [
+    {
+      "name": "Large composition",
+      "spec": "Place the largest framed layout at left."
+    },
+    {
+      "name": "Companion layouts",
+      "spec": "Stack two smaller alternatives at right, retaining the shared title and colored text accents."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A large and two smaller layouts combine cutout figures, rotated text blocks and orange-and-blue headings inside black frames.",
+    "Application": "The festival’s heading, collage imagery and information blocks appear in several framed promotional formats."
+  }
+}

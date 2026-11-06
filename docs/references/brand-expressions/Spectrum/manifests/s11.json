@@ -1,0 +1,34 @@
+{
+  "id": "S11",
+  "title": "3.01 / Colors",
+  "image": "s11.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Assign a palette hierarchy so repeated color use creates a reliable visual reference.",
+  "strategic_value": "Deep Blue as the primary color can maintain a stable Spectrum presence while Light Blue supplies contrast.",
+  "demonstration": "Two large equal-sized swatches show Deep Blue and Light Blue with Pantone, CMYK, RGB and hex values; the note assigns Deep Blue priority.",
+  "category": "Color",
+  "practical_value": "Separate swatch display size from usage guidance: equal rectangles do not prescribe equal use.",
+  "content_islands": [
+    {
+      "name": "Heading and priority rule",
+      "spec": "Place the title upper left and the signage color explanation across the upper middle."
+    },
+    {
+      "name": "Brand blue swatches",
+      "spec": "Place two large horizontal neighbors beneath the Brand Blues label, with their names and reproduction values in each upper-left corner."
+    }
+  ],
+  "ingredient": {
+    "name": "Brand blues",
+    "role": "Provide a consistent blue reference with a primary and supporting hue.",
+    "application": "Use Deep Blue as the primary color. The page specifies Deep Blue #003057 and Light Blue #0099D8 with print equivalents.",
+    "scope": "Signage designs within the August 2017 retail guide; no numerical area ratio is prescribed."
+  },
+  "reference_purposes": {
+    "Expression": "The two swatches establish Spectrum’s Deep Blue and Light Blue with their print and screen equivalents.",
+    "Application": "The signage note directs designers to make Deep Blue primary even though the two inspection swatches occupy equal areas."
+  }
+}

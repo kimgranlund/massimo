@@ -1,0 +1,34 @@
+{
+  "id": "NH18",
+  "title": "From catalogue to catalyst spread",
+  "image": "nh18.png",
+  "source": "../sources/nh18.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 18,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make a strategic change explicit, because a visual identity needs a clear account of what the organization wants to become.",
+  "strategic_value": "Pairing the Museum’s shift with expanding words can connect the circular graphic system to its advocacy ambition.",
+  "demonstration": "An open book places From catalogue to catalyst on a pale left page and concentric colored word rings around a symbol on the dark right page.",
+  "category": "Brand",
+  "practical_value": "Compare a concise strategic statement with the graphic behavior chosen to express it.",
+  "content_islands": [
+    {
+      "name": "Strategic statement",
+      "spec": "Set the large stacked phrase centrally on the pale left page beneath the museum name."
+    },
+    {
+      "name": "Word-ring field",
+      "spec": "Fill the right page with colored circular words surrounding the radial symbol."
+    },
+    {
+      "name": "Book form",
+      "spec": "Retain the gutter and page edges so the spread reads as a publication."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An open book places From catalogue to catalyst on a pale left page and concentric colored word rings around a symbol on the dark right page.",
+    "Intent": "The printed phrase From catalogue to catalyst states the shift; accompanying Pentagram prose explains the aim of turning audiences into advocates for the planet."
+  }
+}

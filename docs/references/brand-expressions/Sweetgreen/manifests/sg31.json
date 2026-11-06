@@ -1,0 +1,35 @@
+{
+  "id": "SG31",
+  "title": "Farm names on a hoodie",
+  "image": "sg31.png",
+  "source": "../sources/sg31.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 31,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make sourcing part of a wearable story so the people behind food receive visible recognition.",
+  "strategic_value": "Listing farms can give Sweetgreen’s clothing a connection to its supply community.",
+  "demonstration": "A person seen from behind wears a green hoodie with a short food-from-farms statement and a two-column list beneath it.",
+  "category": "Application",
+  "practical_value": "Compare a primary statement with a secondary credit list on a garment back.",
+  "content_islands": [
+    {
+      "name": "Statement",
+      "spec": "Place the short yellow-green sourcing message above the list."
+    },
+    {
+      "name": "Farm list",
+      "spec": "Arrange the smaller names in two columns on the hoodie back."
+    },
+    {
+      "name": "Wearer and setting",
+      "spec": "Keep the wearer among plants under a sunlit structure."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The hoodie carries a sourcing statement and farm-name list.",
+    "Expression": "Small pale lettering sits within a large green garment field."
+  }
+}

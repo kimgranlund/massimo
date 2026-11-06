@@ -1,0 +1,32 @@
+{
+  "id": "SL37",
+  "title": "Illustrations",
+  "image": "sl37.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Teach illustrators to use perspective and negative space to establish a common visual language. A reader can recognize relationships among images even when their subjects differ.",
+  "strategic_value": "Slack can carry an illustration style across brand communications and product surfaces. The depicted objects and people vary while the drawings retain flat color fields and economical silhouettes.",
+  "demonstration": "Four illustrations compare different subjects. Keys and a compass occupy the upper row. Hands frame a Slack mark in the larger lower image, beside a narrow drawing of a person appearing in a screen.",
+  "category": "Imagery",
+  "practical_value": "Compare a new illustration with the examples for depth, silhouette and open space. The hands example shows how the unfilled center can direct attention toward the mark.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the title above a full-width rule."
+    },
+    {
+      "name": "Style note",
+      "spec": "Arrange the explanation in a narrow column at left. Name perspective and negative space and direct the reader to the illustration-specific guide for detailed construction."
+    },
+    {
+      "name": "Illustration examples",
+      "spec": "Group four specimens at right. Put the keys and compass on separate upper fields. Below, give the illustration of hands the widest field and place the person in a narrow vertical panel beside it. Use small gutters to preserve each composition."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Place the folio, book title and section name at the foot beneath a rule."
+    }
+  ]
+}

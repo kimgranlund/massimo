@@ -1,0 +1,25 @@
+{
+  "id": "S14",
+  "title": "Trust social media icons",
+  "image": "s14.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 14,
+    "printed_page": 13
+  },
+  "slide_intent": "Show how the institutional identity reads in a small circular profile image. The mark and ground must remain recognizable after a platform crops the square file.",
+  "strategic_value": "Color variants of one trust seal can give Sheffield Museums a recognizable account identity across social platforms.",
+  "demonstration": "The page groups several colorways of the circular trust icon. The notes specify 180 px square artwork that is commonly displayed with a circular crop.",
+  "category": "Application",
+  "practical_value": "Use the trust profile artwork for an institutional account and check its contrast within the circular crop.",
+  "content_islands": [
+    {
+      "name": "Profile guidance",
+      "spec": "Place the title and a short note about file dimensions and platform cropping at upper left."
+    },
+    {
+      "name": "Trust icon variants",
+      "spec": "Arrange the circular specimens as a group at right with a black variant above the color rows. Keep each icon at the same scale."
+    }
+  ]
+}

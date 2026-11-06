@@ -1,0 +1,36 @@
+{
+  "id": "SL40",
+  "title": "Video",
+  "image": "sl40.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 40
+  },
+  "slide_intent": "Teach producers to separate identifying the speaker, signing the footage and closing the piece. These choices help a viewer understand who is talking and whose communication they are watching.",
+  "strategic_value": "Slack can make interview footage recognizable while giving the speaker room to lead. The lower third supplies context, and the watermark can identify the brand with a smaller visual presence.",
+  "demonstration": "The page pairs three production notes with two interview stills. The first still carries a name and role at lower left. The second places a Slack watermark at upper left. Copy also specifies a logo ending slate.",
+  "category": "Application",
+  "practical_value": "Use the speaker’s name and title for the lower third, reserve the upper-left position for a watermark, and plan a logo ending. The two frames demonstrate placement and hierarchy.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Set Video as the heading above a horizontal rule."
+    },
+    {
+      "name": "Production notes",
+      "spec": "Stack three short paragraphs at left. Use bold lead-ins for lower thirds, ending slates and watermarks. Specify Larsseit Bold for the name and Slack Circular Book for the title, an 80% opaque lower-third background, and a 50% opaque watermark."
+    },
+    {
+      "name": "Lower-third specimen",
+      "spec": "In the upper-right interview frame, place the subject to the right and a rectangular nameplate at lower left. Give the name greater typographic emphasis than the role."
+    },
+    {
+      "name": "Watermark specimen",
+      "spec": "Stack the second frame directly below the first. Center the speaker against the pink background and place a pale Slack mark near the upper-left corner."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Place the folio, book title and section name below the bottom rule."
+    }
+  ]
+}

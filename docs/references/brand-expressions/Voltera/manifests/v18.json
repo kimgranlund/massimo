@@ -1,0 +1,24 @@
+{
+  "id": "V18",
+  "title": "Voice and tone",
+  "image": "v18.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Give readers a pause before editorial choices for the brand. A brief visual cue helps them locate the new subject in the book.",
+  "strategic_value": "Voltera can use a recurring dark divider to make transitions recognizable while the changing icon identifies the written voice.",
+  "demonstration": "The page centers a small line icon above the white heading “Voice and tone” on a charcoal field.",
+  "category": "Layout",
+  "practical_value": "Use this treatment when introducing editorial choices for the brand. Reserve the detailed guidance for the pages after the divider.",
+  "content_islands": [
+    {
+      "name": "Section icon",
+      "spec": "Center an outlined page with a magnifier and cyan figure above the title. Give the outlined drawing a single colored detail."
+    },
+    {
+      "name": "Section heading",
+      "spec": "Set “Voice and tone” in white on one line below the icon. Keep the charcoal field open around both elements."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SL28",
+  "title": "Typography: Slack Circular",
+  "image": "sl28.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Teach designers to tune a text face for continuous reading. A body paragraph and a large introductory paragraph ask a reader to scan at different scales.",
+  "strategic_value": "Slack Circular can give paragraphs a steadier voice beneath the brand’s display headlines, including when a paragraph becomes the main message.",
+  "demonstration": "A mixed-case alphabet and numerals appear above eight labeled specimens, from Book through Black Italic. Text at left gives separate spacing values for normal and hero paragraphs on the web.",
+  "category": "Typography",
+  "practical_value": "Choose a weight for the job and apply the source’s print or screen spacing. The web examples specify 0 px for regular paragraphs and −0.2 px for hero paragraphs.",
+  "content_islands": [
+    {
+      "name": "Text settings",
+      "spec": "Place the print guidance above the shorter web guidance in a narrow left column. Keep the title and rule aligned with the Larsseit page."
+    },
+    {
+      "name": "Alphabet and numerals",
+      "spec": "Set the large sample in the upper right, breaking its mixed-case alphabet into lines and closing with ten numerals."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Pair Book, Medium, Bold and Black with their italics. Align the labels and example lines on a common baseline for each row."
+    }
+  ]
+}

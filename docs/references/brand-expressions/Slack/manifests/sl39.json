@@ -1,0 +1,24 @@
+{
+  "id": "SL39",
+  "title": "Photography",
+  "image": "sl39.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 39
+  },
+  "slide_intent": "Teach art directors to choose the degree of familiarity or aspiration an image needs. A profile picture, an object study and a scene of collaboration ask the viewer to relate in different ways.",
+  "strategic_value": "Slack can keep product avatars personable and workplace photography expansive while retaining a shared tone across both.",
+  "demonstration": "Three short briefs accompany a collage of portraits, people at work, objects and an interface example. Color, framing and subject matter vary with the use.",
+  "category": "Imagery",
+  "practical_value": "Decide which brief applies before choosing a shot. Use the avatar examples for close, warm portraits and the lifestyle examples for people situated in a larger working environment.",
+  "content_islands": [
+    {
+      "name": "Assignment briefs",
+      "spec": "Place the overall spectrum at left, followed by separate paragraphs for Avatars, Still life and Lifestyle. Bold the three labels."
+    },
+    {
+      "name": "Photography collage",
+      "spec": "Group the mixed-size examples on the right. Place profile portraits and an interface crop alongside working scenes and carefully arranged still lifes."
+    }
+  ]
+}

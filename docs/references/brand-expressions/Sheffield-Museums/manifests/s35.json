@@ -1,0 +1,25 @@
+{
+  "id": "S35",
+  "title": "Text and writing rules",
+  "image": "s35.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 35,
+    "printed_page": 34
+  },
+  "slide_intent": "Teach a writer to choose the name that identifies a museum site unambiguously, even when a park or neighborhood has a similar name.",
+  "strategic_value": "Consistent site names can make each destination recognizable across the Sheffield Museums family.",
+  "demonstration": "Two columns cover the six venues, with sample sentences for the Graves and Millennium galleries. A yellow Weston Park Museum spread demonstrates a complete venue name in use.",
+  "category": "Voice",
+  "practical_value": "Keep Museum in Kelham Island Museum and Weston Park Museum and retain Workshop in Shepherd Wheel Workshop. Follow the article guidance when referring to the galleries in prose.",
+  "content_islands": [
+    {
+      "name": "Site names",
+      "spec": "Divide the six sites across two columns. Set the site names as subheads and place the examples or shortening rules directly beneath them."
+    },
+    {
+      "name": "Weston Park spread",
+      "spec": "Set the open publication on the right. Pair the yellow venue introduction with an adjacent listing page showing photography and practical details."
+    }
+  ]
+}

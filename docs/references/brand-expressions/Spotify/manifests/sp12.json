@@ -1,0 +1,35 @@
+{
+  "id": "SP12",
+  "title": "发现 — portrait poster",
+  "image": "sp12.png",
+  "source": "../sources/sp12.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 12,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/a8720136c310003d2239be1269aa68458219c2a5-1920x2400.png"
+  },
+  "category": "Typography",
+  "slide_intent": "Keep a short local-language headline visually immediate because a poster must communicate before a viewer studies its detail.",
+  "strategic_value": "Spotify can use the same green headline and logo hierarchy with a different artist and duotone palette.",
+  "demonstration": "Green 发现 characters cross a blue-and-red portrait; the smaller green Spotify lockup sits near the bottom.",
+  "practical_value": "Compare face placement and headline contrast against the adjacent 台灣 example.",
+  "content_islands": [
+    {
+      "name": "Portrait headline",
+      "spec": "The oversized green characters span the center of the artist’s face and coat."
+    },
+    {
+      "name": "Signature",
+      "spec": "The green Spotify lockup is separated from the headline at the lower edge."
+    },
+    {
+      "name": "Presentation margin",
+      "spec": "A pale border preserves the poster boundary."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Green 发现 characters cross a blue-and-red portrait; the smaller green Spotify lockup sits near the bottom.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

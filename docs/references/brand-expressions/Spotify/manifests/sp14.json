@@ -1,0 +1,31 @@
+{
+  "id": "SP14",
+  "title": "Spotify concert backdrop",
+  "image": "sp14.png",
+  "source": "../sources/sp14.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 14,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/b9736022bc9efa44d51b7790ed9fb3f9cadbf8bd-2400x1920.png"
+  },
+  "category": "Application",
+  "slide_intent": "Keep the signature legible at crowd scale because live events need one clear point of attribution amid performers, lights and movement.",
+  "strategic_value": "Spotify can associate its platform name with a shared live experience through the large white backdrop.",
+  "demonstration": "A white Spotify lockup glows above a performer, red lighting and raised audience hands.",
+  "practical_value": "Judge logo size and contrast from the audience viewpoint.",
+  "content_islands": [
+    {
+      "name": "Stage signature",
+      "spec": "The white lockup dominates the back wall beneath the lighting rig."
+    },
+    {
+      "name": "Live audience",
+      "spec": "The performer and raised hands establish the viewing distance and social context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white Spotify lockup glows above a performer, red lighting and raised audience hands.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

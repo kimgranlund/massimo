@@ -1,0 +1,34 @@
+{
+  "id": "S14",
+  "title": "3.04 / Typography / Whitney",
+  "image": "s14.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Give small text its own typographic role so detailed information remains readable beside prominent headlines.",
+  "strategic_value": "Whitney can carry Spectrum’s supporting information without competing with Gotham’s headline role.",
+  "demonstration": "A Whitney character specimen sits above paired roman and italic weights from Light to Bold.",
+  "category": "Typography",
+  "practical_value": "Choose a body-copy weight while keeping the headline and supporting-text roles distinct.",
+  "content_islands": [
+    {
+      "name": "Heading and usage notes",
+      "spec": "Set the title upper left and body-copy role above the specimen, with access and fallback notes at upper right."
+    },
+    {
+      "name": "Whitney specimen",
+      "spec": "Place a cyan family name above large alphabet, numeral and punctuation lines."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Align roman and italic weight names in two lower columns."
+    }
+  ],
+  "ingredient": {
+    "name": "Whitney",
+    "role": "Carry body copy and small text.",
+    "application": "Use Whitney for body copy and small text; choose among the displayed weights for hierarchy.",
+    "scope": "2017 retail guide. Arial Regular and Bold are internal-document fallbacks if Gotham and Whitney are unavailable."
+  }
+}

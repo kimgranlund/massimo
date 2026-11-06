@@ -1,0 +1,36 @@
+{
+  "id": "TM20",
+  "title": "Gradient Backgrounds",
+  "image": "tm20.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Use tonal change to create depth while preserving a recognizable dominant hue.",
+  "strategic_value": "Controlled magenta gradients can add spatial interest without weakening T-Mobile’s color identity.",
+  "demonstration": "One large linear gradient is paired with smaller radial and freeform gradient specimens.",
+  "category": "Color",
+  "practical_value": "Choose the gradient shape for the focal point and preserve the stated color distribution.",
+  "content_islands": [
+    {
+      "name": "Depth and distribution",
+      "spec": "Place gradient purpose, light-source guidance and 80/20 rule at left."
+    },
+    {
+      "name": "Gradient comparison",
+      "spec": "Show a large linear example alongside stacked radial and freeform examples with labels."
+    }
+  ],
+  "ingredient": {
+    "name": "Magenta gradient",
+    "role": "Create depth and focus within a recognizable brand-color field.",
+    "application": "Use approved gradients with an 80/20 split so magenta covers 80%; use the lightest point to establish the light source.",
+    "scope": "Gradient applications in the February 2024 guide. The 80% instruction does not establish a ratio for every non-gradient page or for a whole campaign."
+  },
+  "reference_purposes": {
+    "Intent": "The explanatory copy connects gradients to depth, focus and the illusion of space on a flat surface.",
+    "Expression": "Linear, radial and freeform specimens demonstrate three distinct ways to distribute light within magenta.",
+    "Application": "The page uses the lightest point to locate the light source and specifies an 80/20 distribution for gradient compositions.",
+    "Constraint": "Magenta must have 80% coverage in the described gradient applications, and only approved branded gradients may be used."
+  }
+}

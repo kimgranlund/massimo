@@ -1,0 +1,30 @@
+{
+  "id": "PT35",
+  "title": "Street posters / Tiny Beautiful Things",
+  "image": "pt35.png",
+  "source": "../sources/pt35.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 35,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Pair a small action with a large title because visual tension can invite a closer look.",
+  "strategic_value": "The hand, needle and red balloon can give the production a clear visual story within the institutional poster family.",
+  "demonstration": "A white foreground poster places a hand and needle below a red balloon with tall TINY BEAUTIFUL THINGS lettering between them.",
+  "category": "Application",
+  "practical_value": "Judge how a vertically separated image action works around condensed title type.",
+  "content_islands": [
+    {
+      "name": "Action and title",
+      "spec": "Position the red balloon at top and reaching hand below, separated by the title."
+    },
+    {
+      "name": "Street sequence",
+      "spec": "Keep the Astor season and repeated production panel behind the foreground sign."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white foreground poster places a hand and needle below a red balloon with tall TINY BEAUTIFUL THINGS lettering between them.",
+    "Application": "Tiny Beautiful Things is applied to a foreground outdoor sign and repeated on a sign farther along the facade."
+  }
+}

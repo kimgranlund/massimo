@@ -1,0 +1,28 @@
+{
+  "id": "SO35",
+  "title": "Brand mark · Standard print positioning",
+  "image": "so35.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Show how equal insets and reading direction determine a dependable corner for identification. A mark near a binding can be harder to see.",
+  "strategic_value": "Special Olympics can establish a familiar page position while accommodating books that open in different directions.",
+  "demonstration": "An enlarged corner detail uses equal X dimensions. Miniature documents show top- and bottom-right placements for left-to-right scripts and a left-side placement for right-to-left scripts.",
+  "category": "Layout",
+  "practical_value": "Determine the script direction and binding edge, then inset the mark equally from the two outer edges of its corner.",
+  "content_islands": [
+    {
+      "name": "Positioning instructions",
+      "spec": "Set standard placement and the right-to-left exception in separate paragraphs at left."
+    },
+    {
+      "name": "Inset detail",
+      "spec": "Magnify one corner in a circle. Mark the horizontal and vertical offsets with the same X."
+    },
+    {
+      "name": "Document layouts",
+      "spec": "Place the two standard placements beneath the detail. Use a tinted example for the reversed reading direction and keep its note adjacent."
+    }
+  ]
+}

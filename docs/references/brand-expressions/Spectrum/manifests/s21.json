@@ -1,0 +1,34 @@
+{
+  "id": "S21",
+  "title": "5.01 / Online Directories",
+  "image": "s21.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Adapt identity to another site’s structure so customers can find the store without confusing the host and tenant brands.",
+  "strategic_value": "Correct logo files and readable descriptions can preserve Spectrum’s identity within a mall directory.",
+  "demonstration": "A directory-list screenshot is paired with a store detail page, annotated for monochrome artwork, logo selection and host typography.",
+  "category": "Application",
+  "practical_value": "Choose the logo variant for the host surface and retain the mall’s typography unless a Spectrum font is requested.",
+  "content_islands": [
+    {
+      "name": "Heading and context",
+      "spec": "Place the title left and the two-page directory explanation above the screenshots."
+    },
+    {
+      "name": "Directory listing",
+      "spec": "Place the tenant-list screenshot at left with a cyan leader to the note requiring supplied black artwork for monochrome production."
+    },
+    {
+      "name": "Store detail",
+      "spec": "Place the Spectrum detail screenshot at right with separate cyan leaders for logo and typography decisions."
+    }
+  ],
+  "ingredient": {
+    "name": "Directory identity",
+    "role": "Make the store identifiable inside a host website.",
+    "application": "Prefer the primary logos; use dark blue on light and reverse on dark. If production is monochrome use the black file. Let the mall set typography, or supply Open Sans if requested.",
+    "scope": "Online mall directories in the 2017 guide."
+  }
+}

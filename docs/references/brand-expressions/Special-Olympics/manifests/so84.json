@@ -1,0 +1,28 @@
+{
+  "id": "SO84",
+  "title": "T-shirts — Shield format for sub-programs, clubs or teams",
+  "image": "so84.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 84
+  },
+  "slide_intent": "Teach designers to fit a local club identity into a crest that a spectator can read alongside the player number.",
+  "strategic_value": "Clubs can use a locally meaningful animal, monogram or number within a bounded shape while retaining the program affiliation on team uniforms.",
+  "demonstration": "A numbered shirt shows a small shield. Larger diagrams compare two-color and single-color shields. A vertical set demonstrates an animal, a letter and an area number.",
+  "category": "Application",
+  "practical_value": "Choose a shield motif from the team name or location and test it in one color. The guide recommends about 100 mm height and limits these identities to team shirts or uniforms.",
+  "content_islands": [
+    {
+      "name": "Use conditions",
+      "spec": "Set the shirt-only scope and numbered notes in the left column."
+    },
+    {
+      "name": "Crest placement and variants",
+      "spec": "Pair the shirt with enlarged two-color and single-color versions of the same shield. Show its size relative to the number."
+    },
+    {
+      "name": "Local examples",
+      "spec": "Stack three shields on the right. Compare the pictorial, monogram and area-number approaches within the same outline."
+    }
+  ]
+}

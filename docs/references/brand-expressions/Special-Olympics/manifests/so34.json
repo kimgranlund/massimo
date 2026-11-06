@@ -1,0 +1,28 @@
+{
+  "id": "SO34",
+  "title": "Brand mark · Accredited Program mark non-roman versions",
+  "image": "so34.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Teach designers to account for script structure and reading direction when localizing an identifier. Readers need a familiar hierarchy in their own script.",
+  "strategic_value": "A stable symbol can connect the movement across languages while the script and orientation serve local readers.",
+  "demonstration": "The page compares Cyrillic, Simplified Chinese and Arabic marks. Each row pairs a horizontal form with a centered form; the Arabic horizontal arrangement puts the symbol at left.",
+  "category": "Typography",
+  "practical_value": "Select the supplied script-specific mark and check its reading direction before positioning it on a print item.",
+  "content_islands": [
+    {
+      "name": "Script guidance",
+      "spec": "Organize the left text by Cyrillic, Simplified Chinese, and Arabic and Hebrew. Separate typography choices from positioning guidance."
+    },
+    {
+      "name": "Horizontal specimens",
+      "spec": "Stack one example for each illustrated script. Keep the symbol consistent while the text and side of attachment vary."
+    },
+    {
+      "name": "Centered specimens",
+      "spec": "Align the centered versions in a second column to reveal their shared vertical structure."
+    }
+  ]
+}

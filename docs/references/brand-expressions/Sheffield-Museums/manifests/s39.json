@@ -1,0 +1,25 @@
+{
+  "id": "S39",
+  "title": "Photography dont’s",
+  "image": "s39.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 39,
+    "printed_page": 38
+  },
+  "slide_intent": "Give editors visible reasons to decline an image when its exposure, focus or composition obscures what the viewer should see.",
+  "strategic_value": "Clear rejection criteria can keep low-quality photography from weakening how the museums present their collections and visitors.",
+  "demonstration": "A checklist of faults sits beside a montage crossed through with thin red diagonals. The examples include blurred people and scenes with competing focal points.",
+  "category": "Imagery",
+  "practical_value": "Check focus, exposure, focal point, filters and signs of staging before approving a photograph for publication.",
+  "content_islands": [
+    {
+      "name": "Rejection criteria",
+      "spec": "Set the cautionary copy and short list in the left column below the heading."
+    },
+    {
+      "name": "Rejected examples",
+      "spec": "Group the photographs in a compact montage on the right and cross the entire group with two red diagonal strokes."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "WH09",
+  "title": "Ad Reinhardt / How to Look at Iconography",
+  "image": "wh09.png",
+  "source": "../sources/Reinhardt.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 9,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Connect a visual choice to its cultural references because a design rationale can draw meaning from existing artistic practices.",
+  "strategic_value": "The reproduced cartoon can situate Whitney’s line-based identity in a wider discussion of signs and modern art.",
+  "demonstration": "A historical cartoon assembles a title, symbol tables, drawn faces and a long taxonomy of named lines.",
+  "category": "Imagery",
+  "practical_value": "Distinguish an inspirational reference from Whitney’s own identity instructions.",
+  "content_islands": [
+    {
+      "name": "Heading and symbols",
+      "spec": "Retain the cartoon’s title and upper groups of pictographic signs."
+    },
+    {
+      "name": "Drawing vocabulary",
+      "spec": "Preserve the faces, figures and objects in the lower-left area."
+    },
+    {
+      "name": "Line taxonomy",
+      "spec": "Keep the long right-hand column of labelled line drawings intact."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay cites Reinhardt’s typology of lines as context for the line as a graphic and conceptual agent."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "SF30",
+  "title": "Terrace wayfinding",
+  "image": "sf30.png",
+  "source": "../sources/sf30.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 30,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Adapt a display face to a destination label because wayfinding must name a place while remaining part of the institution.",
+  "strategic_value": "Dimensional Terrace lettering can extend the Symphony’s visual character into the building.",
+  "demonstration": "Black variable-height Terrace letters cast shadows on pale wall panels above a dark opening.",
+  "category": "Application",
+  "practical_value": "Check the legibility of an actual destination word when using the expressive type in signage.",
+  "content_islands": [
+    {
+      "name": "Destination label",
+      "spec": "Place the raised Terrace lettering above the opening with its shadows intact."
+    },
+    {
+      "name": "Wall structure",
+      "spec": "Retain panel seams and the opening as context for the label."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Black variable-height Terrace letters cast shadows on pale wall panels above a dark opening.",
+    "Application": "The source demonstrates black variable-height Terrace letters cast shadows on pale wall panels above a dark opening."
+  }
+}

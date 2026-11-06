@@ -1,0 +1,28 @@
+{
+  "id": "SO53",
+  "title": "International mark application · Quick guide",
+  "image": "so53.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 53
+  },
+  "slide_intent": "Check four conditions for a recognizable international signature. Poor reproduction, crowding and a busy background each change how easily a reader can identify the sender.",
+  "strategic_value": "A compact placement guide can give Special Olympics teams a common way to check the international mark across print and office production.",
+  "demonstration": "Four numbered rows compare file formats, right-corner placements, clearance around the international lockup, and examples of one- and two-color marks on different grounds.",
+  "category": "Brand",
+  "practical_value": "Select official artwork, choose the corner with equal offsets, reserve the height of the O in Olympics as clearance and check contrast on the actual ground.",
+  "content_islands": [
+    {
+      "name": "Artwork and placement",
+      "spec": "Set the first two numbered instructions beside file icons and page diagrams. Show the EPS and PNG use cases and indicate top-right or bottom-right positions."
+    },
+    {
+      "name": "Clearance diagram",
+      "spec": "Enlarge the international lockup at right in the third row. Indicate its surrounding free space with a bounding diagram."
+    },
+    {
+      "name": "Ground comparison",
+      "spec": "Finish with two-color and single-color columns. Put accepted treatments above crossed examples so the reader can compare backgrounds directly."
+    }
+  ]
+}

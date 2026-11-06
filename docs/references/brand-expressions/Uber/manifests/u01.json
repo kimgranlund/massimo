@@ -1,0 +1,27 @@
+{
+  "id": "U01",
+  "title": "Brand system quick guide / October 2018",
+  "image": "u01.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Identify the guide and its edition so readers can place its instructions in time.",
+  "strategic_value": "The black field and white Uber wordmark can make even the introduction an encounter with the core identity.",
+  "demonstration": "A large two-line title and edition date occupy the upper left of a black panel; the Uber wordmark anchors its lower left.",
+  "category": "Brand",
+  "practical_value": "Use the cover to distinguish this October 2018 quick guide from later or more comprehensive standards.",
+  "content_islands": [
+    {
+      "name": "Title and edition",
+      "spec": "Place the white title above the lighter date at the upper left of the black panel."
+    },
+    {
+      "name": "Uber signature",
+      "spec": "Place the white wordmark near the lower left; preserve the open black space between title and signature."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The cover pairs white typography and the Uber wordmark with a large black field."
+  }
+}

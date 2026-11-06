@@ -1,0 +1,25 @@
+{
+  "id": "WH26",
+  "title": "Sliding puzzle game",
+  "image": "wh26.png",
+  "source": "../sources/large_whitney_2013redesign_puzzlegame.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 9,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Make a flexible mark physically manipulable because an identity’s defining behavior can become an experience people control.",
+  "strategic_value": "Rearrangeable W fragments can turn Whitney’s geometric language into a playful retail object.",
+  "demonstration": "Three white sliding puzzles show differently rearranged black line fragments and portions of Whitney.",
+  "category": "Application",
+  "practical_value": "Compare a recognizable structure with its fragmented states when translating identity into an interactive object.",
+  "content_islands": [
+    {
+      "name": "Puzzle trio",
+      "spec": "Align three square sliding puzzles on the gray surface, retaining their differing tile arrangements."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official launch caption identifies a puzzle game produced for the museum’s retail store."
+  }
+}

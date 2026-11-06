@@ -1,0 +1,39 @@
+{
+  "id": "TM14",
+  "title": "Contrast and Accessibility",
+  "image": "tm14.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Compare marks against their actual backgrounds so numerical contrast and visual comfort both inform the choice.",
+  "strategic_value": "Consistent background decisions can make T-Mobile marks easier to identify in partner environments.",
+  "demonstration": "Approved brand colorways sit above blue, red and gray background tests labeled with pass/fail results.",
+  "category": "Color",
+  "practical_value": "Use the examples to identify risky combinations, then check the actual artwork with a contrast tool.",
+  "content_islands": [
+    {
+      "name": "Contrast rationale",
+      "spec": "Place explanatory copy and the color-burning caution in the left column."
+    },
+    {
+      "name": "Brand combinations",
+      "spec": "Align five marked examples across the upper-right row."
+    },
+    {
+      "name": "External background tests",
+      "spec": "Group three logo colors over each of three non-brand backgrounds below."
+    }
+  ],
+  "ingredient": {
+    "name": "Mark/background contrast",
+    "role": "Keep the brand symbol easy to distinguish from its field.",
+    "application": "Choose a clear approved colorway and test actual contrast. Inspect magenta combinations for visual vibration even when a contrast test passes. Obtain Brand team approval for non-T-Mobile executions.",
+    "scope": "All brand marks covered by the February 2024 guide, in print and digital applications. The page labels its examples against WCAG 2.0 AA; these labels are source claims, not a new accessibility audit."
+  },
+  "reference_purposes": {
+    "Intent": "The text connects mark/background contrast to viewability and explains why magenta combinations also need inspection for visual vibration.",
+    "Application": "Five brand colorways and three groups of external-background tests demonstrate how to compare mark and field; the text calls for contrast-checking tools.",
+    "Constraint": "The page marks specific combinations as failing its stated criteria and requires Brand team approval for non-T-Mobile executions."
+  }
+}

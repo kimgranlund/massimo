@@ -1,0 +1,28 @@
+{
+  "id": "SO02",
+  "title": "Contents",
+  "image": "so02.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Show how the book separates brand principles, visual rules, worked applications and management so readers can find the kind of guidance their task requires.",
+  "strategic_value": "Special Olympics can direct a local communicator to the relevant section while preserving a single route through its identity.",
+  "demonstration": "A short preliminary index precedes four numbered columns. Row labels and page numbers sit at opposite ends of ruled entries.",
+  "category": "Layout",
+  "practical_value": "Locate a principle, construction rule, application or management procedure using its section and page number.",
+  "content_islands": [
+    {
+      "name": "Edition and page title",
+      "spec": "Set the version in gray and Contents in red at the top."
+    },
+    {
+      "name": "Preliminary topics",
+      "spec": "List four introductory topics in a short ruled block above the first section."
+    },
+    {
+      "name": "Section index",
+      "spec": "Align four numbered topic lists across the page. Pair each entry with a right-aligned page number."
+    }
+  ]
+}

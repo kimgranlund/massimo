@@ -1,0 +1,20 @@
+{
+  "id": "SL23",
+  "title": "Hands around the octothorpe",
+  "image": "sl23.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Use an illustration to connect the idea of working together to a recognizable sign. The clear space between figures can direct the eye as effectively as the figures themselves.",
+  "strategic_value": "Slack can make its mark the meeting point of a shared gesture, giving the collaboration theme a visual form.",
+  "demonstration": "Four differently colored hands enter from the edges of a pale field. Their gestures frame the multicolor Slack symbol in the middle.",
+  "category": "Imagery",
+  "practical_value": "Arrange surrounding gestures to lead into a clear central field when the illustrated subject and mark should be read together.",
+  "content_islands": [
+    {
+      "name": "Hands and central mark",
+      "spec": "Fill all four corners with cropped forearms and hands angled toward the center. Give each arm its own color field. Preserve a light interval around the colored symbol."
+    }
+  ]
+}

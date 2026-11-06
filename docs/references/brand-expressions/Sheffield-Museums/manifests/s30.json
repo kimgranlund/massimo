@@ -1,0 +1,25 @@
+{
+  "id": "S30",
+  "title": "Typeface – Caslon Doric",
+  "image": "s30.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 30,
+    "printed_page": 29
+  },
+  "slide_intent": "Help designers choose a weight by comparing identical characters within one family. Holding the characters constant makes changes in stroke weight visible.",
+  "strategic_value": "The page ties Caslon Doric to the history of Sheffield typefounding and gives the organization a shared voice for both text and display.",
+  "demonstration": "The explanatory column sits beside Light, Regular and Semibold specimens. Each row shows lowercase, capitals, numerals and punctuation.",
+  "category": "Typography",
+  "practical_value": "Compare the three rows before assigning a text or display weight. The copy also identifies the italic counterparts.",
+  "content_islands": [
+    {
+      "name": "Typeface history and use",
+      "spec": "Set the family history, permitted weights and source information in the narrow left column."
+    },
+    {
+      "name": "Matched weight specimens",
+      "spec": "Stack three labeled rows in the larger right column. Keep the character sequence fixed across weights and align each specimen to the same edge."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "TM15",
+  "title": "Logo Usage on Backgrounds",
+  "image": "tm15.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Choose a quiet placement area so a logo remains recognizable within richer imagery.",
+  "strategic_value": "Controlled background treatment can keep T-Mobile presence visible across photography and graphics.",
+  "demonstration": "Four examples pair the mark with light trails, a gradient, a clear photographic sky and an overlaid concert photograph.",
+  "category": "Layout",
+  "practical_value": "Find blank space first; add an appropriate overlay when the photograph offers insufficient separation.",
+  "content_islands": [
+    {
+      "name": "Placement guidance",
+      "spec": "Keep the title and positioning explanation at left."
+    },
+    {
+      "name": "Graphic backgrounds",
+      "spec": "Place trail and gradient examples in the upper row with captions."
+    },
+    {
+      "name": "Photographic backgrounds",
+      "spec": "Place clear-space and overlay examples in the lower row with captions."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo background field",
+    "role": "Separate the mark from visual activity.",
+    "application": "Use clear areas and approved colorways; add black or white overlays to busy imagery. Approved gradient backgrounds retain 80% magenta coverage.",
+    "scope": "All brand marks shown in the guide; choose the treatment for the actual composition."
+  }
+}

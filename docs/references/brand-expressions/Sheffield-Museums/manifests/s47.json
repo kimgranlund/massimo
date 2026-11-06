@@ -1,0 +1,29 @@
+{
+  "id": "S47",
+  "title": "Business cards",
+  "image": "s47.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 47,
+    "printed_page": 46
+  },
+  "slide_intent": "Show how stock color, a single ink and the allocation of information to two sides can make a small card identifiable and easy to read.",
+  "strategic_value": "The museum can vary the stock across cards while its black seal and a consistent contact hierarchy hold the set together.",
+  "demonstration": "Production notes specify 85 × 55 mm cards, 350 gsm Colorplan stock and black ink. A six-card arrangement compares seal faces and two contact-detail layouts.",
+  "category": "Application",
+  "practical_value": "Choose the stock and check that the seal and contact details reproduce clearly in one ink on both sides.",
+  "content_islands": [
+    {
+      "name": "Production specification",
+      "spec": "Place the page heading above a short list of dimensions, stock colors and print method at left."
+    },
+    {
+      "name": "Seal faces",
+      "spec": "Show the black seal centered on yellow, pale, pink and turquoise cards, aligned in two rows."
+    },
+    {
+      "name": "Contact sides",
+      "spec": "Use the rightmost column for two names and contact layouts. Keep the name apart from role and contact information."
+    }
+  ]
+}

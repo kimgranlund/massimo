@@ -1,0 +1,29 @@
+{
+  "id": "S45",
+  "title": "A few pointers",
+  "image": "s45.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 45,
+    "printed_page": 44
+  },
+  "slide_intent": "Give writers an editing sequence that brings the reader’s purpose and the essential information forward.",
+  "strategic_value": "Specific alternatives to stock phrases can help the museums sound conversational even when different people write the copy.",
+  "demonstration": "Columns progress from planning questions and paragraph advice through spoken-word substitutions to lists of discouraged words and expressions.",
+  "category": "Voice",
+  "practical_value": "Identify the audience and first fact to communicate, then simplify the opening sentence and remove vague intensifiers or familiar clichés.",
+  "content_islands": [
+    {
+      "name": "Planning and paragraph order",
+      "spec": "Group audience questions, length guidance and the importance of the first sentence in the left column."
+    },
+    {
+      "name": "Spoken alternatives",
+      "spec": "Place word substitutions and advice on adjectives and adverbs in the next column."
+    },
+    {
+      "name": "Words and expressions lists",
+      "spec": "Give the two lists their own columns so an editor can scan for a word or stock phrase while revising."
+    }
+  ]
+}

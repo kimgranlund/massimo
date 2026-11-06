@@ -1,0 +1,32 @@
+{
+  "id": "SF26",
+  "title": "On the Precipice program carousel",
+  "image": "sf26.png",
+  "source": "../sources/sf26.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 26,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Move from headline to details because a short social sequence must attract attention before asking for sustained reading.",
+  "strategic_value": "The red and burgundy palette can connect an expressive program announcement with informative follow-up cards.",
+  "demonstration": "A social carousel begins with animated On the Precipice typography and June 17–26 2021 dates, then slides to descriptive and program cards.",
+  "category": "Motion",
+  "practical_value": "Sequence expressive introduction, explanation and individual event information within one campaign.",
+  "content_islands": [
+    {
+      "name": "Opening card",
+      "spec": "Retain the changing-height headline and dates on the bright red field."
+    },
+    {
+      "name": "Information cards",
+      "spec": "Follow with burgundy and red panels containing smaller descriptive text and program headings."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A social carousel begins with animated On the Precipice typography and June 17–26 2021 dates, then slides to descriptive and program cards.",
+    "Application": "The source demonstrates a social carousel begins with animated On the Precipice typography and June 17–26 2021 dates, then slides to descriptive and program cards."
+  },
+  "motion": "../sources/sf26.mp4"
+}

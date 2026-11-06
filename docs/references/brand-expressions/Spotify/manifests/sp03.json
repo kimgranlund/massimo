@@ -1,0 +1,39 @@
+{
+  "id": "SP03",
+  "title": "Vibrating Color",
+  "image": "sp03.png",
+  "source": "../sources/sp03.gif",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 3,
+    "extent": "Representative frame; complete local animation linked",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/2e1c4ba600670de32458e80e6ad4a7d38d8e4724-2500x1667.gif",
+    "poster": "GIF frame 12 at 6 seconds"
+  },
+  "category": "Color",
+  "slide_intent": "Use color pairs with visible tension because music can feel energetic and experimental before a person reads a word.",
+  "strategic_value": "Spotify can associate its familiar lockup with varied musical moods while keeping the mark itself stable.",
+  "demonstration": "A centered Spotify lockup remains fixed while foreground and full-bleed background colors change over 12 seconds.",
+  "practical_value": "Evaluate color relationships independently of imagery and layout before applying them to campaigns.",
+  "content_islands": [
+    {
+      "name": "Fixed lockup",
+      "spec": "The symbol and wordmark remain centered at constant scale."
+    },
+    {
+      "name": "Changing color pair",
+      "spec": "Each cut replaces both the background and mark colors, exposing the relationship between them."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A centered Spotify lockup remains fixed while foreground and full-bleed background colors change over 12 seconds.",
+    "Intent": "The adjacent Vibrating Color caption connects contrasting pairs with tension, energy and artist experimentation."
+  },
+  "motion": "../sources/sp03.mp4",
+  "ingredient": {
+    "name": "Contrasting color pairs",
+    "role": "Use color pairs with visible tension because music can feel energetic and experimental before a person reads a word.",
+    "application": "A centered Spotify lockup remains fixed while foreground and full-bleed background colors change over 12 seconds.",
+    "scope": "Observed case-study example. The source does not establish a universal required construction, timing, pairing or placement rule."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "WH18",
+  "title": "Stationery suite",
+  "image": "wh18.png",
+  "source": "../sources/large_whitney_2013redesign_stationery.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 1,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Compare everyday communication formats because an identity must remain coherent across different sizes and information loads.",
+  "strategic_value": "Repeated W marks can connect Whitney’s correspondence, cards, notepad and pens without requiring identical compositions.",
+  "demonstration": "A gray flat lay groups white letterhead, cards, notepad, envelope and four pens, each using the thin W or Whitney name.",
+  "category": "Application",
+  "practical_value": "Assess how the identity changes proportions between broad stationery and small cards.",
+  "content_islands": [
+    {
+      "name": "Paper formats",
+      "spec": "Place the letterhead and notepad at left, three cards at upper right and wide envelope below."
+    },
+    {
+      "name": "Pens",
+      "spec": "Align the four white pens alongside the cards."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official launch caption identifies this photograph as the museum’s stationery suite."
+  }
+}

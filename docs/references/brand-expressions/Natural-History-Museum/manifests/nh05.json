@@ -1,0 +1,35 @@
+{
+  "id": "NH05",
+  "title": "Nature and sound-reactive animation",
+  "image": "nh05.png",
+  "source": "../sources/nh05.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 5,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Connect expressive movement to a living subject, because behavior can make an abstract emblem feel related to the institution’s purpose.",
+  "strategic_value": "Pulsing rings over creatures and nature scenes can give the Museum’s identity an animated connection to its collections.",
+  "demonstration": "The film overlays changing NHM rings on whale and other animal footage, alternates with isolated color versions, and expands rings over landscape and creature imagery. The source identifies this as sound-reactive animation; audio synchronization is not independently measured here.",
+  "category": "Motion",
+  "practical_value": "Compare emblem changes on solid backgrounds with the same changes over natural footage.",
+  "content_islands": [
+    {
+      "name": "Creature footage",
+      "spec": "Use animal scenes as full-frame backgrounds for the moving rings."
+    },
+    {
+      "name": "Isolated behavior",
+      "spec": "Interleave symbol-only passages that expose changes in ring size and spacing."
+    },
+    {
+      "name": "Expanded fields",
+      "spec": "Extend the rings beyond the frame over later natural scenes."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The film overlays changing NHM rings on whale and other animal footage, alternates with isolated color versions, and expands rings over landscape and creature imagery. The source identifies this as sound-reactive animation; audio synchronization is not independently measured here.",
+    "Intent": "Pentagram says sound-reactive animations add a joyful and expressive element celebrating creatures, and names Ripple, Grow, Pulsate and Orbit as motion routes."
+  },
+  "motion": "../sources/nh05.mp4"
+}

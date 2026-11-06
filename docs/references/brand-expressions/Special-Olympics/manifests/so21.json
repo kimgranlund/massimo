@@ -1,0 +1,28 @@
+{
+  "id": "SO21",
+  "title": "Telling our story · Communications style guide",
+  "image": "so21.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Teach writers to edit from the audience’s point of view. Specific words, structure and image choices influence what a reader can quickly understand.",
+  "strategic_value": "Special Olympics contributors can use the same editing questions while telling stories from different programs.",
+  "demonstration": "Green check marks identify guidance on choosing an entry point, writing inclusively and making information readable. Red crosses introduce pitfalls including jargon and crowded layouts.",
+  "category": "Voice",
+  "practical_value": "Review a draft for its intended audience, a specific athlete story, readable hierarchy and the language choices listed on the page.",
+  "content_islands": [
+    {
+      "name": "Purpose statement",
+      "spec": "Place the heading and its style-guide subtitle above the content, with a short bold introduction in the left rail."
+    },
+    {
+      "name": "Editing checklist",
+      "spec": "Use two narrow columns of green check-mark items. Keep each instruction close to its explanation."
+    },
+    {
+      "name": "Pitfalls",
+      "spec": "Put the red cross-mark items in a separate column at right so the reader can scan for problems during review."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "SG13",
+  "title": "Harvest carried close",
+  "image": "sg13.png",
+  "source": "../sources/sg13.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 13,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Connect ingredients with a human gesture so food sourcing feels lived rather than abstract.",
+  "strategic_value": "An ear of corn tucked into overalls can give Sweetgreen’s world a casual agricultural character.",
+  "demonstration": "A cropped person wears a yellow top and pale overalls with corn and its leaves emerging from the pocket.",
+  "category": "Imagery",
+  "practical_value": "Use clothing, crop and gesture to suggest a relationship with food without requiring a full portrait.",
+  "content_islands": [
+    {
+      "name": "Person and clothing",
+      "spec": "Crop the person closely to emphasize the yellow shirt and pale overalls."
+    },
+    {
+      "name": "Corn",
+      "spec": "Keep the ear and leaves prominent against the pale fabric."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The photograph joins workwear, warm sunlight and unprocessed corn."
+  }
+}

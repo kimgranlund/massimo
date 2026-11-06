@@ -1,0 +1,35 @@
+{
+  "id": "SP08",
+  "title": "Spotify for Artists — portrait and linework",
+  "image": "sp08.png",
+  "source": "../sources/sp08.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 8,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/82062c27c8067f5e48f13f6c473310c2353fcad1-2400x1920.png"
+  },
+  "category": "Imagery",
+  "slide_intent": "Keep artists visibly human while adding a shared graphic frame because professional audiences need both individual presence and platform recognition.",
+  "strategic_value": "Spotify for Artists can signal a related service through its extended lockup without making the portrait look like a product screenshot.",
+  "demonstration": "Two close portraits fill a yellow-to-blue gradient field crossed by thin orange diagonal linework; the service lockup sits at lower right.",
+  "practical_value": "Compare a natural-color portrait treatment with the duotone examples in this collection.",
+  "content_islands": [
+    {
+      "name": "Portrait pair",
+      "spec": "One face leans in from upper left; a second figure with reflective glasses occupies the right."
+    },
+    {
+      "name": "Line and gradient field",
+      "spec": "Orange diagonals cross the portraits and pastel background."
+    },
+    {
+      "name": "Service lockup",
+      "spec": "The orange Spotify for Artists signature anchors the lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two close portraits fill a yellow-to-blue gradient field crossed by thin orange diagonal linework; the service lockup sits at lower right.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

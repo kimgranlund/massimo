@@ -1,0 +1,32 @@
+{
+  "id": "V20",
+  "title": "Editorial guidelines",
+  "image": "v20.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Teach writers to make routine choices about voice, capitalization and tense consistently so the reader can concentrate on the subject.",
+  "strategic_value": "Voltera can keep writing recognizable across contributors by giving each editor the same small set of decisions and examples.",
+  "demonstration": "The introduction specifies Canadian Press style and American spelling. Four groups below address point of view, capitalization, case and tense.",
+  "category": "Voice",
+  "practical_value": "Choose first-person plural for company prose and use the page’s separate case guidance for a button, a subheading or body text.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 20 in a blue tab at lower right."
+    },
+    {
+      "name": "Style convention",
+      "spec": "Place the style and spelling guidance beneath the title."
+    },
+    {
+      "name": "Point of view and case",
+      "spec": "Stack first-person examples and title- versus sentence-case examples in the left column."
+    },
+    {
+      "name": "Capitalization and tense",
+      "spec": "Stack capitalization guidance above the present-tense rule, with the white-paper and dimensions exceptions, in the right column."
+    }
+  ]
+}

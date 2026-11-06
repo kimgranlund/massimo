@@ -1,0 +1,35 @@
+{
+  "id": "U03",
+  "title": "Logo / Logo and clearspace",
+  "image": "u03.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Keep the wordmark distinct from its surroundings so people can identify it quickly across light and dark settings.",
+  "strategic_value": "Consistent contrast and protected space can preserve the recognizable Uber word shape in partner communications.",
+  "demonstration": "The upper row compares white and black wordmarks on opposite backgrounds. The lower row constructs clearspace using the cap height of U.",
+  "category": "Brand",
+  "practical_value": "Choose the appropriate logo polarity and reserve its stated clearspace.",
+  "content_islands": [
+    {
+      "name": "Logo polarity",
+      "spec": "Place explanatory copy left of the paired white-on-black and black-on-white logo specimens in the upper row."
+    },
+    {
+      "name": "Clearspace construction",
+      "spec": "Place the clearspace instruction in the lower left and the central white wordmark with repeated U measurements and ghosted surrounding marks in the lower right."
+    }
+  ],
+  "ingredient": {
+    "name": "Uber wordmark",
+    "role": "Identify the brand while remaining distinguishable from neighboring content.",
+    "application": "Use white on darker backgrounds and black on lighter backgrounds; reserve clearspace equal to the cap height of U.",
+    "scope": "October 2018 partner and sponsor guide; measurements apply around the logo."
+  },
+  "reference_purposes": {
+    "Expression": "The page compares two contrast treatments of the Uber wordmark.",
+    "Application": "It demonstrates reversing the logo on dark backgrounds and constructing its surrounding space from U.",
+    "Constraint": "The text specifies white on darker backgrounds, black on lighter backgrounds, and clearspace equal to the cap height of U."
+  }
+}

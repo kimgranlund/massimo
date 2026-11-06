@@ -1,0 +1,29 @@
+{
+  "id": "S50",
+  "title": "Email signature",
+  "image": "s50.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 50,
+    "printed_page": 49
+  },
+  "slide_intent": "Teach senders to make contact information easy to scan in the limited formatting environment of an email client.",
+  "strategic_value": "A repeatable signature can identify museum staff across email clients while giving the person’s name, role and links a predictable order.",
+  "demonstration": "A numbered list pairs six settings with callouts on a mail-window specimen. The name uses Arial Bold at 12 pt, the body Arial Regular at 12 pt, and the optional black PNG logo is 47 px high.",
+  "category": "Typography",
+  "practical_value": "Set the signature from the six labels, check that website and newsletter links remain distinct, and place any exhibition promotion below the signature.",
+  "content_islands": [
+    {
+      "name": "Setup instructions",
+      "spec": "Place the numbered settings in the left column. Include the optional mark, rule of thirty en dashes, two type roles and two links."
+    },
+    {
+      "name": "Exhibition note",
+      "spec": "Below the settings, explain the optional image for promoting an exhibition."
+    },
+    {
+      "name": "Annotated mail window",
+      "spec": "Show the signature at the bottom of a mostly empty message. Align six leader lines from the numbered callouts to the corresponding parts."
+    }
+  ]
+}

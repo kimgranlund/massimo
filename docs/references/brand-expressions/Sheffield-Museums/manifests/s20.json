@@ -1,0 +1,40 @@
+{
+  "id": "S20",
+  "title": "Colour",
+  "image": "s20.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 20,
+    "printed_page": 19
+  },
+  "slide_intent": "Teach designers to link a venue’s identifying color to the correct name so a color cue can help distinguish one site from another.",
+  "strategic_value": "Sheffield Museums can give six venues individual color cues and still support a shared institutional palette.",
+  "demonstration": "Six color fields pair venue names with their hero colors. Adjacent rows list venue-specific and shared choices. The note cautions against borrowing a different venue’s hero color.",
+  "category": "Color",
+  "practical_value": "Start with white, black or the promoted venue’s hero color. Check the venue mapping before using a hero color on a communication.",
+  "content_islands": [
+    {
+      "name": "Color guidance",
+      "spec": "Place the title and hero-color guidance in a narrow column at left."
+    },
+    {
+      "name": "Venue palette key",
+      "spec": "Under the guidance, label each site and display its hero swatch alongside shared choices."
+    },
+    {
+      "name": "Hero-color specimens",
+      "spec": "Build a contiguous two-by-three grid at right. Center one venue mark in each field and switch between light and dark lettering for contrast."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Six venue marks appear on their corresponding hero-color fields.",
+    "Application": "The swatch key pairs each venue’s hero color with the shared supporting choices.",
+    "Constraint": "The text says to avoid another venue’s hero color when promoting a particular venue."
+  },
+  "ingredient": {
+    "name": "Venue hero color",
+    "role": "Associate each venue name with a recurring color cue.",
+    "application": "For venue logos, start with white, black or the venue’s own hero color. Shared palette colors may also be used when appropriate. Avoid using a different venue’s hero color for the promoted venue.",
+    "scope": "Venue logos and venue-specific communications. The palette key maps six venues; the parent museum’s access to all colors is described separately."
+  }
+}

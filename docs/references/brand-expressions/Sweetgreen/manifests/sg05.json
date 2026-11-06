@@ -1,0 +1,31 @@
+{
+  "id": "SG05",
+  "title": "Validated Versatility",
+  "image": "sg05.png",
+  "source": "../sources/sg05.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 5,
+    "section": "Validated Versatility",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test an expressive asset inside a functional screen, because recognition must survive practical interface constraints.",
+  "strategic_value": "The bowl illustration can connect Sweetgreen’s welcoming voice to the moment a customer chooses food.",
+  "demonstration": "A phone on a kale background displays the app home screen; an orange ellipse and note emphasize its central illustration.",
+  "category": "Application",
+  "practical_value": "Compare an isolated brand illustration with its prominence and surrounding content inside an app.",
+  "content_islands": [
+    {
+      "name": "Phone application",
+      "spec": "Place the phone vertically at the center of the kale photograph; retain greeting, food cards and bottom ordering control."
+    },
+    {
+      "name": "Review annotation",
+      "spec": "Keep the orange ellipse around the illustration and the accompanying handwritten note."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Validated Versatility caption explains testing across touchpoints to preserve recognition and effectiveness.",
+    "Application": "The annotated artwork shows the illustration within an app screen."
+  }
+}

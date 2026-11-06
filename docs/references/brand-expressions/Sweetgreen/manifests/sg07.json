@@ -1,0 +1,32 @@
+{
+  "id": "SG07",
+  "title": "Extensibility",
+  "image": "sg07.png",
+  "source": "../sources/sg07.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 7,
+    "section": "Extensibility",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Extend one visual language to different narrative jobs so audiences can connect new messages to a familiar source.",
+  "strategic_value": "Food-centered metaphors can let Sweetgreen discuss business and culture without abandoning its core subject.",
+  "demonstration": "Five labeled panels illustrate Food & Nature, Business, Ethos & Culture, Engagement and People through vegetables, small figures and objects.",
+  "category": "Imagery",
+  "practical_value": "Use the panel labels to compare how a visual metaphor changes when the communication purpose changes.",
+  "content_islands": [
+    {
+      "name": "Upper stories",
+      "spec": "Place Food & Nature and Business in the wide upper panels."
+    },
+    {
+      "name": "Lower stories",
+      "spec": "Place Ethos & Culture, Engagement and People in three lower panels; keep each label with its example."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Extensibility caption explains keeping diverse narratives anchored in food.",
+    "Application": "Five labeled examples apply the illustration system to distinct storytelling needs.",
+    "Expression": "Large colorful ingredients and small line figures recur across the five stories."
+  }
+}

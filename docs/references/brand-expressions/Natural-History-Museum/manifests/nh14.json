@@ -1,0 +1,33 @@
+{
+  "id": "NH14",
+  "title": "Bugkind poster sequence",
+  "image": "nh14.png",
+  "source": "../sources/nh14.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 14,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Connect an unfamiliar subject with a familiar phrase, because wordplay can give viewers a way into scientific content.",
+  "strategic_value": "The altered giant-leap phrase can make insects approachable while the repeated ring composition preserves Museum recognition.",
+  "demonstration": "Two insect posters with pink ring fields flank a dark text poster reading One small step for man / one giant leap for bugkind.",
+  "category": "Voice",
+  "practical_value": "Compare an image-led pair with a text-led center to create a campaign sequence.",
+  "content_islands": [
+    {
+      "name": "Insect pair",
+      "spec": "Place large beetle images over circular NHM letter fields on the left and right pink posters."
+    },
+    {
+      "name": "Central statement",
+      "spec": "Set the wordplay in large pale type on the dark middle poster with the museum signature below."
+    },
+    {
+      "name": "Display context",
+      "spec": "Align all three frames on one wall."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Two insect posters with pink ring fields flank a dark text poster reading One small step for man / one giant leap for bugkind."
+  }
+}

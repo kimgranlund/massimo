@@ -1,0 +1,25 @@
+{
+  "id": "S65",
+  "title": "Exhibition advertising",
+  "image": "s65.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 65,
+    "printed_page": 64
+  },
+  "slide_intent": "Teach designers how to recognize a museum campaign across displays that have different viewing conditions and different exhibition subjects.",
+  "strategic_value": "Sheffield Museums can give each exhibition a distinctive image and color while recurring venue marks and information hierarchy tie the advertising together.",
+  "demonstration": "Two site views pair a suspended pink Cecil Beaton exhibition poster with an exterior print for Precision as a State of Mind. Each identifies its host gallery.",
+  "category": "Application",
+  "practical_value": "Compare the application at its destination and decide how much of the available area belongs to the image, title and host.",
+  "content_islands": [
+    {
+      "name": "Suspended poster",
+      "spec": "Show the Millennium Gallery campaign in the overhead architectural setting. Put the photographic image beneath the title in the pink field."
+    },
+    {
+      "name": "Exterior advertisement",
+      "spec": "Show the Graves Gallery poster mounted on a wall. Place the sculpture photograph above a teal information panel and retain the surrounding architecture for scale."
+    }
+  ]
+}

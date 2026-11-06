@@ -1,0 +1,25 @@
+{
+  "id": "S17",
+  "title": "Venue logos – horizontal",
+  "image": "s17.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 17,
+    "printed_page": 16
+  },
+  "slide_intent": "Teach designers to change the lockup when a long, narrow surface would make a stacked name too small to read.",
+  "strategic_value": "The same venue names and line devices can extend into signage formats with different proportions.",
+  "demonstration": "Six single-line venue names are stacked vertically for comparison. Each retains its own underline or frame.",
+  "category": "Brand",
+  "practical_value": "Select the horizontal master when the available strip favors a single line, including long horizontal or vertical signage.",
+  "content_islands": [
+    {
+      "name": "Format guidance",
+      "spec": "Set the title and left column beside the examples. Explain the role of horizontal masters in extreme spaces."
+    },
+    {
+      "name": "Horizontal masters",
+      "spec": "Present all six names as separate lockups in one vertical column. Preserve each venue’s complete line device and leave space between examples."
+    }
+  ]
+}

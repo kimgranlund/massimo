@@ -1,0 +1,24 @@
+{
+  "id": "V10",
+  "title": "Visual identity",
+  "image": "v10.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Give readers a pause before the rules for the visible design system. A brief visual cue helps them locate the new subject in the book.",
+  "strategic_value": "Voltera can use a recurring dark divider to make transitions recognizable while the changing icon identifies the visual tools used to build the identity.",
+  "demonstration": "The page centers a small line icon above the white heading “Visual identity” on a charcoal field.",
+  "category": "Layout",
+  "practical_value": "Use this treatment when introducing the rules for the visible design system. Reserve the detailed guidance for the pages after the divider.",
+  "content_islands": [
+    {
+      "name": "Section icon",
+      "spec": "Center an outlined design book with tools and a cyan bookmark above the title. Give the outlined drawing a single colored detail."
+    },
+    {
+      "name": "Section heading",
+      "spec": "Set “Visual identity” in white on one line below the icon. Keep the charcoal field open around both elements."
+    }
+  ]
+}

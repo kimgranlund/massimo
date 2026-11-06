@@ -1,0 +1,28 @@
+{
+  "id": "SO32",
+  "title": "Brand mark · International mark artwork versions",
+  "image": "so32.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 32
+  },
+  "slide_intent": "Teach designers to choose artwork in relation to the surface and production process. Symbol and lettering both need adequate contrast.",
+  "strategic_value": "The international mark can retain recognition in full color, a single ink and reversed use.",
+  "demonstration": "Six specimens compare gray or black lettering with a red symbol, single-color marks in black, red or gray, and a white mark on red.",
+  "category": "Color",
+  "practical_value": "Choose two-color art on white, a suitable single-color master on a light field or the white version on a dark field. Use the supplied master for the publishing tool.",
+  "content_islands": [
+    {
+      "name": "Color guidance",
+      "spec": "Stack the two-color, single-color and white treatments at left."
+    },
+    {
+      "name": "Artwork matrix",
+      "spec": "Place six captioned examples in two columns. Reserve the solid red field for the white version."
+    },
+    {
+      "name": "File notes",
+      "spec": "Explain office PNG and scalable EPS uses in the small right column."
+    }
+  ]
+}

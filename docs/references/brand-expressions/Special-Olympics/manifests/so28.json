@@ -1,0 +1,28 @@
+{
+  "id": "SO28",
+  "title": "Brand mark · International mark lock-up options",
+  "image": "so28.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Teach designers to select the arrangement that fits the available reading axis. The mark should stay identifiable in a narrow column, wide strip or web header.",
+  "strategic_value": "A small set of prepared variants can accommodate different surfaces while keeping the symbol and logotype related.",
+  "demonstration": "A print grid compares two-line, single-line and centered marks. An online row places the symbol to the left of the lettering.",
+  "category": "Layout",
+  "practical_value": "Use the standard two-line version for a restricted print space, the centered one on a central axis, and the web version for top-left navigation.",
+  "content_islands": [
+    {
+      "name": "Selection notes",
+      "spec": "Group the left-hand explanations under the names of the four lockups."
+    },
+    {
+      "name": "Print comparisons",
+      "spec": "Under a cyan print label, stack the two horizontal specimens and put the centered specimen beside them."
+    },
+    {
+      "name": "Online example",
+      "spec": "Set the symbol-first specimen under a separate online heading, with the artwork availability note beside it."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TM02",
+  "title": "We Are the Un-carrier",
+  "image": "tm02.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Connect visual consistency to the customer experience so contributors understand why a brand guide matters.",
+  "strategic_value": "The customer-love statement can align T-Mobile teams around a shared reason for its identity choices.",
+  "demonstration": "A centered magenta declaration sits over white introductory copy on black, with magenta light trails along the lower edge.",
+  "category": "Brand",
+  "practical_value": "Read the guidelines as a description of a complete customer experience, including people and service.",
+  "content_islands": [
+    {
+      "name": "Positioning statement",
+      "spec": "Center the magenta heading above the short white introduction."
+    },
+    {
+      "name": "Light-trail frame",
+      "spec": "Run thin magenta trails along the bottom beneath the copy, keeping the reading area black."
+    }
+  ]
+}

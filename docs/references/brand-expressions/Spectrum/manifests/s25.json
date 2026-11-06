@@ -1,0 +1,20 @@
+{
+  "id": "S25",
+  "title": "6.0 / Resources",
+  "image": "s25.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Separate reference resources from creative rules so contributors can find supporting information quickly.",
+  "strategic_value": "A clearly marked resource section can reduce inconsistent local lookup practices for Spectrum materials.",
+  "demonstration": "A cyan 6.0 sits above the dark blue Resources heading on a pale gray gradient. The otherwise open divider marks the start of social and store-location references.",
+  "category": "Brand",
+  "practical_value": "Locate account and store-information resources when assembling customer contact details.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the cyan number above the large dark blue title at upper left, leaving the lower page open."
+    }
+  ]
+}

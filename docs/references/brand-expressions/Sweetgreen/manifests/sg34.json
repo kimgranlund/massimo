@@ -1,0 +1,30 @@
+{
+  "id": "SG34",
+  "title": "Window signature and hours",
+  "image": "sg34.png",
+  "source": "../sources/sg34.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 34,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Combine identification and practical information so a visitor can recognize the place and understand access.",
+  "strategic_value": "A clean window signature can keep Sweetgreen legible while letting the interior’s plants and materials contribute character.",
+  "demonstration": "White sweetgreen lettering and smaller hours information appear on glass over a cactus and warm interior; small line symbols sit below.",
+  "category": "Application",
+  "practical_value": "Set an information hierarchy that survives reflections and a visually active interior.",
+  "content_islands": [
+    {
+      "name": "Window lettering",
+      "spec": "Place the wordmark above smaller operational text and symbols."
+    },
+    {
+      "name": "Interior context",
+      "spec": "Retain cactus, seating and reflections behind the lettering."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity and visitor information are applied to transparent storefront glass."
+  }
+}

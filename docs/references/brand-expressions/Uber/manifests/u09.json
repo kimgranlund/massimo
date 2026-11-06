@@ -1,0 +1,27 @@
+{
+  "id": "U09",
+  "title": "Assets",
+  "image": "u09.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Connect instructions with their production resources so partners can find the intended files instead of reconstructing them from examples.",
+  "strategic_value": "A grouped asset directory can reduce divergence between Uber’s guide and the files used by partner teams.",
+  "demonstration": "Five underlined Google Drive links are grouped under Logo Assets, Logo Product Lockups, Logo Partnership Lockups, Color Assets and Typography Assets.",
+  "category": "Application",
+  "practical_value": "Identify the asset family needed for a job; treat the historical links as pointers, not as files supplied with this archive.",
+  "content_islands": [
+    {
+      "name": "Assets heading",
+      "spec": "Place the heading at the upper left."
+    },
+    {
+      "name": "Asset directory",
+      "spec": "Stack the five bold asset labels and their underlined URLs down the left side; retain the open right half."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The directory routes partners to five named production-asset categories through Google Drive links."
+  }
+}

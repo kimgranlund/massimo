@@ -1,0 +1,33 @@
+{
+  "id": "WH25",
+  "title": "Membership materials",
+  "image": "wh25.png",
+  "source": "../sources/large_whitney_2013redesign_membership.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 8,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Give related membership messages a common structure because joining, welcoming and identifying members are different communication jobs.",
+  "strategic_value": "A shared W and uppercase naming can connect Whitney’s recruitment booklet, welcome material and member cards.",
+  "demonstration": "Two tall printed pieces sit beside three Member cards; the left piece stacks membership verbs and the center includes an artwork.",
+  "category": "Application",
+  "practical_value": "Compare the prominence of action words, welcome message and membership status across the three formats.",
+  "content_islands": [
+    {
+      "name": "Recruitment",
+      "spec": "Place the tall stack of verbs and Membership label at left."
+    },
+    {
+      "name": "Welcome",
+      "spec": "Place the Welcome piece with artwork in the center."
+    },
+    {
+      "name": "Member cards",
+      "spec": "Stack the three W-and-Member cards at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The image visibly presents membership materials; its source filename says membership, but the current page’s unrelated RV caption is a metadata error and is not used as evidence."
+  }
+}

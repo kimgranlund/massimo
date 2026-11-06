@@ -1,0 +1,36 @@
+{
+  "id": "SG24",
+  "title": "Deliciousness is in the details",
+  "image": "sg24.png",
+  "source": "../sources/sg24.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 24,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Frame moving imagery within a stable composition so motion attracts attention without obscuring a message.",
+  "strategic_value": "The dish-derived hexagon can connect Sweetgreen’s environmental imagery with its food system.",
+  "demonstration": "Blueberries surround a six-sided window of moving clouds; the headline stays at top left and wordmark and Read More control remain below.",
+  "category": "Motion",
+  "practical_value": "Use a fixed content frame to contain motion while preserving a clear headline and action.",
+  "content_islands": [
+    {
+      "name": "Headline",
+      "spec": "Place the two-line statement at upper left."
+    },
+    {
+      "name": "Framed clouds",
+      "spec": "Center the hexagonal moving sky and overlap blueberries around its edges."
+    },
+    {
+      "name": "Footer",
+      "spec": "Keep wordmark at lower left and outlined Read More control at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The clip applies the hexagonal frame to moving sky content in a promotional composition.",
+    "Expression": "Moving clouds contrast with static blueberries, green type and a pale field."
+  },
+  "motion": "../sources/sg24.mp4"
+}

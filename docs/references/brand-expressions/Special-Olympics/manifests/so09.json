@@ -1,0 +1,28 @@
+{
+  "id": "SO09",
+  "title": "Our mission",
+  "image": "so09.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Break a long mission into service, audience and purpose so a reader can see which language answers each question.",
+  "strategic_value": "Special Olympics can preserve the approved mission while making its component promises easier for contributors to explain.",
+  "demonstration": "The page sets the mission in red bands against a pale historical image. Three black arrows point to the clauses about what, whom and why. A footnote adds families and the wider community as beneficiaries.",
+  "category": "Brand",
+  "practical_value": "Check whether a short description covers the activity, the people served and what participation makes possible.",
+  "content_islands": [
+    {
+      "name": "Historical background and heading",
+      "spec": "Repeat the historical image at low contrast and place the gray section label and red heading above it."
+    },
+    {
+      "name": "Mission clauses",
+      "spec": "Set three black arrow labels in the left rail and align each with its red statement band. Give the extended purpose clause the deepest band."
+    },
+    {
+      "name": "Audience footnote",
+      "spec": "Place the note about families and community in a separate white block beneath the labels."
+    }
+  ]
+}

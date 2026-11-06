@@ -1,0 +1,29 @@
+{
+  "id": "S19",
+  "title": "Minimum size",
+  "image": "s19.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 19,
+    "printed_page": 18
+  },
+  "slide_intent": "Specify a print threshold against the letterforms people must read so the rule holds across different name lengths and lockup shapes.",
+  "strategic_value": "A common cap-height limit can preserve venue names even when different lockups occupy different overall widths or heights.",
+  "demonstration": "Each of the six venue marks appears in both horizontal and stacked form. Horizontal guides mark a minimum print cap height of 4 mm.",
+  "category": "Geometry",
+  "practical_value": "Check letter cap height against 4 mm in the printed piece for either version of a venue mark.",
+  "content_islands": [
+    {
+      "name": "Print-size rule",
+      "spec": "State the minimum and its scope beneath the left title."
+    },
+    {
+      "name": "Six paired examples",
+      "spec": "Pair horizontal and stacked masters on a shared row for each venue. Extend guides through each pair and identify the 4 mm cap height."
+    },
+    {
+      "name": "Measurement caption",
+      "spec": "Repeat the cap-height definition below the last pair."
+    }
+  ]
+}

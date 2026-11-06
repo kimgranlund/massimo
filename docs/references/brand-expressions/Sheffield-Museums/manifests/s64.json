@@ -1,0 +1,35 @@
+{
+  "id": "S64",
+  "title": "Signage development examples",
+  "image": "s64.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 64,
+    "printed_page": 63
+  },
+  "slide_intent": "Teach designers to compare a saturated field with its reversed version in the actual architectural setting.",
+  "strategic_value": "Millennium Gallery can retain its pink identity while choosing how strongly a building-scale panel competes with its surroundings.",
+  "demonstration": "Matching photographs show the same façade sign with white lettering on pink and pink lettering on white. The mark, list of activities and seal keep the same order.",
+  "category": "Color",
+  "practical_value": "Evaluate both polarity options against the façade before choosing the sign ground.",
+  "content_islands": [
+    {
+      "name": "Pink-ground study",
+      "spec": "Show the venue mark above the stacked Art, Craft, Design, Shop and Cafe message. Place the small seal below, all in white."
+    },
+    {
+      "name": "White-ground study",
+      "spec": "Repeat the same site view, size and arrangement with pink type on white. Align the photographs so the change of ground is easy to compare."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The two façade studies compare a dominant pink field with pink lettering on white.",
+    "Application": "Matched building views show the color reversal at architectural scale."
+  },
+  "ingredient": {
+    "name": "Millennium Gallery signage pink",
+    "role": "Identify the gallery while changing how much of the façade carries its color.",
+    "application": "Compare white lettering on pink with pink lettering on white while holding the site, sign dimensions and hierarchy steady.",
+    "scope": "These are two indicative signage-development examples. The page does not choose a preferred option or prescribe one treatment for all gallery signs."
+  }
+}

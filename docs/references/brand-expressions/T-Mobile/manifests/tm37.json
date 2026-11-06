@@ -1,0 +1,30 @@
+{
+  "id": "TM37",
+  "title": "Photography",
+  "image": "tm37.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Choose human moments people can relate to so connectivity is understood through lived experience.",
+  "strategic_value": "A diverse collage of shared activities can make T-Mobile’s customer-centered positioning visible beyond devices.",
+  "demonstration": "A large friend-group image anchors smaller photographs of families, couples and everyday activities.",
+  "category": "Imagery",
+  "practical_value": "Select images for spontaneous human connection, with devices supporting rather than replacing the people.",
+  "content_islands": [
+    {
+      "name": "Photography direction",
+      "spec": "Place the documentary-style brief and access note in the left column."
+    },
+    {
+      "name": "Human-moment collage",
+      "spec": "Use a large outdoor group photograph above and beside smaller everyday relationship images."
+    }
+  ],
+  "ingredient": {
+    "name": "Customer photography",
+    "role": "Make connectivity tangible through people and relationships.",
+    "application": "Favor real people, lively moments, local settings and a mobile-documentary viewpoint; allow natural camera awareness.",
+    "scope": "Still and motion imagery; the page offers art direction, not proof that each photograph is unstaged."
+  }
+}

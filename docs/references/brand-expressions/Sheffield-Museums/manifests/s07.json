@@ -1,0 +1,25 @@
+{
+  "id": "S07",
+  "title": "Sheffield Museums logo",
+  "image": "s07.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 7,
+    "printed_page": 6
+  },
+  "slide_intent": "Introduce the institution’s mark as a separate topic so readers can locate its rules before choosing a venue mark.",
+  "strategic_value": "The chapter break can establish the trust mark as a distinct level of the identity.",
+  "demonstration": "The section title appears in large white type on the dark green divider with section 2.0 and folio 06.",
+  "category": "Layout",
+  "practical_value": "Use this page to locate the start of the umbrella-logo section.",
+  "content_islands": [
+    {
+      "name": "Section identifiers",
+      "spec": "Align the small chapter reference and printed folio along the top."
+    },
+    {
+      "name": "Chapter title",
+      "spec": "Place Sheffield Museums logo on one line beneath the reference. Keep the dark green ground open around it."
+    }
+  ]
+}

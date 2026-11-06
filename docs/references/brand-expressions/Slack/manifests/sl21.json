@@ -1,0 +1,32 @@
+{
+  "id": "SL21",
+  "title": "One-color use",
+  "image": "sl21.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Teach designers to choose a monochrome signature when the surrounding image or color already supplies visual complexity. Contrast must hold across the whole mark.",
+  "strategic_value": "Slack can retain the silhouette of its signature on photography and brand-colored surfaces where a multicolor treatment would be harder to apply.",
+  "demonstration": "A two-column grid places monochrome signatures on a bridge photograph and five brand-color backgrounds. The yellow field uses a dark signature, while the others shown use white.",
+  "category": "Color",
+  "practical_value": "When a production constraint calls for one-color artwork, compare the proposed surface with the six examples before choosing a black or white asset.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Monochrome guidance",
+      "spec": "Use the left column for permitted backgrounds, black and white logo versions and the special guidance for aubergine."
+    },
+    {
+      "name": "Placement examples",
+      "spec": "Arrange one photograph and five colored grounds in a two-column, three-row grid at right. Center a monochrome lockup in each cell and keep its scale consistent."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

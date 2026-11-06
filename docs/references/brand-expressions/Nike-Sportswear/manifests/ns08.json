@@ -1,0 +1,33 @@
+{
+  "id": "NS08",
+  "title": "Sportswear HO19 / Court Vision Lo white shoe layout",
+  "image": "ns08.png",
+  "source": "../sources/ns08.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 8,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Relate background accents to the product so the composition feels connected without hiding footwear detail.",
+  "strategic_value": "Pink and blue surroundings can echo the white shoe’s colored branding while keeping the pale product prominent.",
+  "demonstration": "A white Court Vision Lo shoe with blue Swoosh and pink tongue label sits in a taped frame over blue court imagery and a pink field.",
+  "category": "Color",
+  "practical_value": "Compare product-linked color accents with the black-shoe variant in NS06.",
+  "content_islands": [
+    {
+      "name": "Footwear frame",
+      "spec": "Center the white-shoe close-up in a pale taped frame with the black product name below."
+    },
+    {
+      "name": "Color collage",
+      "spec": "Layer blue court markings, a pink texture and smaller wearer photographs behind the frame."
+    },
+    {
+      "name": "Campaign copy",
+      "spec": "Set the white headline and small explanatory sentence beneath the frame, followed by the Nike signature."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A white Court Vision Lo shoe with blue Swoosh and pink tongue label sits in a taped frame over blue court imagery and a pink field."
+  }
+}

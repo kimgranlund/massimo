@@ -1,0 +1,34 @@
+{
+  "id": "TM25",
+  "title": "TeleNeo Typeface",
+  "image": "tm25.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Explain how letter construction and weight affect voice and readability so designers select the face deliberately.",
+  "strategic_value": "Brush-like details, precise terminals and clear numerals can support T-Mobile’s combination of human warmth and technical clarity.",
+  "demonstration": "Six upright weights and six italic counterparts are displayed in two specimen columns beside usage guidance.",
+  "category": "Typography",
+  "practical_value": "Select an approved upright weight; distinguish the complete family inventory from the subset permitted in creative.",
+  "content_islands": [
+    {
+      "name": "Typeface rules and anatomy",
+      "spec": "List usage limits and the three construction qualities in the left column."
+    },
+    {
+      "name": "Upright specimens",
+      "spec": "Stack thin through ultra with letters, numerals and punctuation in the middle column."
+    },
+    {
+      "name": "Italic inventory",
+      "spec": "Align the six italic specimens opposite their upright counterparts for reference."
+    }
+  ],
+  "ingredient": {
+    "name": "TeleNeo weight",
+    "role": "Set message emphasis and preserve clear letterforms.",
+    "application": "Use TeleNeo for external communications; reserve Ultra for short messages at least 14 pt. Italics are not approved for creative executions.",
+    "scope": "Web, apps and legal copy may substitute Arial or another system font."
+  }
+}

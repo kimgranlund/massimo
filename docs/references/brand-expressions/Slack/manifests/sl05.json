@@ -1,0 +1,24 @@
+{
+  "id": "SL05",
+  "title": "Section 1: Defining our brand",
+  "image": "sl05.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Prepare the reader for a change from navigation to explanation. A chapter opener can identify the questions the next pages answer.",
+  "strategic_value": "Slack can establish a recurring chapter rhythm through a solid aubergine field and a small set of consistent text positions.",
+  "demonstration": "A section label and fine white rule sit near the top of an aubergine page. A short pale paragraph below introduces the brand’s beliefs, distinctions and language.",
+  "category": "Layout",
+  "practical_value": "Use a section opener to announce the scope of a chapter while leaving detailed arguments to the pages that follow.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the bold white chapter number and title at upper left with a thin white rule below."
+    },
+    {
+      "name": "Chapter summary",
+      "spec": "Set a short light-weight paragraph in a narrow left column beneath the rule. Leave the rest of the aubergine field open."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SF17",
+  "title": "Collaborative Partners story sequence",
+  "image": "sf17.png",
+  "source": "../sources/sf17.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 17,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Introduce a group before its members because a viewer needs both the shared premise and the individual participants.",
+  "strategic_value": "A rotating typographic ring followed by portraits can give the collaboration a common opening gesture.",
+  "demonstration": "A social story animates Collaborative Partners in a circle, then transitions to framed portraits and names for Salonen, Reiley and Bullock.",
+  "category": "Motion",
+  "practical_value": "Use a shared animated introduction before individual profile cards.",
+  "content_islands": [
+    {
+      "name": "Group introduction",
+      "spec": "Place the white ring of words on the warm brown story background."
+    },
+    {
+      "name": "Member cards",
+      "spec": "Follow with portrait cards, large variable names and smaller role descriptions inside the social frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A social story animates Collaborative Partners in a circle, then transitions to framed portraits and names for Salonen, Reiley and Bullock.",
+    "Application": "The source demonstrates a social story animates Collaborative Partners in a circle, then transitions to framed portraits and names for Salonen, Reiley and Bullock."
+  },
+  "motion": "../sources/sf17.mp4"
+}

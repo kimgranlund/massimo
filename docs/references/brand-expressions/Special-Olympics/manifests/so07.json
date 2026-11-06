@@ -1,0 +1,24 @@
+{
+  "id": "SO07",
+  "title": "Our brand",
+  "image": "so07.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Introduce the ideas and personality behind the identity so the reader has a basis for judging communications made for different audiences.",
+  "strategic_value": "Special Olympics can carry a common message across local communications even when their subjects differ.",
+  "demonstration": "A section divider places a red field beneath a pale curved band. White text announces the subject and previews the role of the guiding ideas.",
+  "category": "Brand",
+  "practical_value": "Start here when a brief needs direction on what the communication should mean and how it should sound.",
+  "content_islands": [
+    {
+      "name": "Section identification",
+      "spec": "Set the book name and Section 1 in the upper white field, with the symbol at top right."
+    },
+    {
+      "name": "Section title and introduction",
+      "spec": "Place the oversized white heading high on the red field, then align a short introduction below it toward the center-left."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "PT15",
+  "title": "Bring in ’Da Noise, Bring in ’Da Funk / Light tap poster",
+  "image": "pt15.png",
+  "source": "../sources/pt15.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 15,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test contrast reversal because the same composition can change its visual weight without losing recognition.",
+  "strategic_value": "A light-ground variant can extend the tap-sole campaign while retaining its central motif and red title accents.",
+  "demonstration": "Black hand-lettered reviews radiate around a black tap sole on white; red edges accent NOISE and FUNK.",
+  "category": "Color",
+  "practical_value": "Compare positive and negative versions of the same campaign treatment with PT14.",
+  "content_islands": [
+    {
+      "name": "Central object",
+      "spec": "Center the black sole on the white field."
+    },
+    {
+      "name": "Text surround",
+      "spec": "Retain radial black reviews, red title edges and the bottom information band."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Black hand-lettered reviews radiate around a black tap sole on white; red edges accent NOISE and FUNK."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "S59",
+  "title": "Signage development examples",
+  "image": "s59.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 59,
+    "printed_page": 58
+  },
+  "slide_intent": "Teach designers to adapt information density to a sign’s shape and the visitor’s approach.",
+  "strategic_value": "Abbeydale and Weston Park can each announce their own venue using distinct colors while the shared seal identifies the museum family.",
+  "demonstration": "The upright turquoise Abbeydale sign stacks amenities and a direction. The wide yellow Weston Park sign gives the venue lettering most of its width and places supporting information beside it.",
+  "category": "Application",
+  "practical_value": "Use a tall stack for a directional stop and a wide name-led arrangement for a venue identifier.",
+  "content_islands": [
+    {
+      "name": "Abbeydale sign study",
+      "spec": "Show the upright turquoise sign in its outdoor setting. Stack venue lettering, amenities, descriptive copy, arrow and seal."
+    },
+    {
+      "name": "Weston Park sign study",
+      "spec": "Show the wide yellow panel against the landscape. Place the large venue mark at left and group visitor details and seal at right."
+    }
+  ]
+}

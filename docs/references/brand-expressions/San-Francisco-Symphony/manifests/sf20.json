@@ -1,0 +1,30 @@
+{
+  "id": "SF20",
+  "title": "Lust / Joy / Fury poster series",
+  "image": "sf20.png",
+  "source": "../sources/sf20.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 20,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Use concise emotional language because a potential audience may connect with a feeling before a program title.",
+  "strategic_value": "Lust, Joy and Fury can frame symphonic music as a range of contemporary emotions.",
+  "demonstration": "A row of illuminated posters pairs large vertical emotional words with small object images and contrasting color fields.",
+  "category": "Voice",
+  "practical_value": "Compare how a single word, object and palette establish a campaign tone.",
+  "content_islands": [
+    {
+      "name": "Poster sequence",
+      "spec": "Preserve the adjacent colored posters within the metallic corridor."
+    },
+    {
+      "name": "Word-image pairings",
+      "spec": "Keep each large emotional word and its smaller central image together."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A row of illuminated posters pairs large vertical emotional words with small object images and contrasting color fields."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "TM29",
+  "title": "Neon Text Do’s and Don’ts",
+  "image": "tm29.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Reserve a conspicuous effect for selected words so the reader knows which phrase matters most.",
+  "strategic_value": "Selective neon emphasis can connect T-Mobile messaging to its network visual language without overwhelming the words.",
+  "demonstration": "Two approved examples contrast with an excessive glow and a fully neon message.",
+  "category": "Typography",
+  "practical_value": "Apply neon to the selected phrase, then check that its glow leaves letter shapes clear.",
+  "content_islands": [
+    {
+      "name": "Treatment purpose",
+      "spec": "Place the title and short emphasis rule at left."
+    },
+    {
+      "name": "Approved treatments",
+      "spec": "Stack two green-check examples in the middle column with captions."
+    },
+    {
+      "name": "Rejected treatments",
+      "spec": "Stack excessive glow and all-neon examples in the right column."
+    }
+  ],
+  "ingredient": {
+    "name": "Neon text",
+    "role": "Direct attention to a selected phrase.",
+    "application": "Apply glow to select words, retain readable letterforms and size supporting text relative to existing lockups.",
+    "scope": "Special emphasis within messages; do not render an entire message in neon."
+  }
+}

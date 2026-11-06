@@ -1,0 +1,29 @@
+{
+  "id": "NH03",
+  "title": "Entrance totem",
+  "image": "nh03.png",
+  "source": "../sources/nh03.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 3,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make an institution identifiable before a visitor reaches its door, because arrival needs a clear visual destination.",
+  "strategic_value": "The bright circular mark against the dark totem can distinguish the Museum within its ornate architectural setting.",
+  "demonstration": "A tall dark sign places the colored symbol near its top and the stacked museum name near its base beside the building and railings.",
+  "category": "Application",
+  "practical_value": "Compare how a vertically separated symbol and name remain readable on an entrance marker.",
+  "content_islands": [
+    {
+      "name": "Identification sign",
+      "spec": "Place the circular mark high on the dark upright and the white stacked name low on the same face."
+    },
+    {
+      "name": "Arrival context",
+      "spec": "Keep the stone façade and fence visible around the sign to establish physical scale and contrast."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A tall dark sign places the colored symbol near its top and the stacked museum name near its base beside the building and railings."
+  }
+}

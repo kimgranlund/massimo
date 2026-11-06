@@ -1,0 +1,24 @@
+{
+  "id": "S10",
+  "title": "3.0 / Brand Elements",
+  "image": "s10.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Treat color and typography as recurring identity cues so recognition extends beyond the logo.",
+  "strategic_value": "Repeated type and color choices can make Spectrum’s separate messages feel related.",
+  "demonstration": "A cyan section number leads a dark blue heading over a pale gray gradient. A short introduction links typography and color to the design attributes.",
+  "category": "Brand",
+  "practical_value": "Locate color and typography rules when reviewing identity cues beyond the logo.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the cyan number above the large dark blue title at upper left."
+    },
+    {
+      "name": "Section explanation",
+      "spec": "Set the introduction below the heading, leaving the lower page open."
+    }
+  ]
+}

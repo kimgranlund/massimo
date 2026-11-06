@@ -1,0 +1,20 @@
+{
+  "id": "V24",
+  "title": "Back cover",
+  "image": "v24.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Mark the end of the guide with a single identifier so the final page leaves a clear visual reference to the publisher.",
+  "strategic_value": "Voltera can close with the same circuit-pad signature that introduced the book.",
+  "demonstration": "The white wordmark and small blue-and-white symbol sit low on a charcoal field. There is no printed heading or folio.",
+  "category": "Brand",
+  "practical_value": "Use this page as a reference for a quiet closing signature after a densely illustrated book.",
+  "content_islands": [
+    {
+      "name": "Closing signature",
+      "spec": "Center the small Voltera lockup horizontally near the bottom edge. Keep the rest of the charcoal field clear."
+    }
+  ]
+}

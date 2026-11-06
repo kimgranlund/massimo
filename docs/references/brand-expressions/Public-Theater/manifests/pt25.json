@@ -1,0 +1,30 @@
+{
+  "id": "PT25",
+  "title": "Monochrome advertising formats",
+  "image": "pt25.png",
+  "source": "../sources/pt25.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 25,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Test a system without color because structure must also function in constrained reproduction.",
+  "strategic_value": "Bold rules and condensed headings can preserve recognition in monochrome advertisements.",
+  "demonstration": "Five black-and-white layouts range from tall strips to broader posters, including Road Show, Taking Over and Hair.",
+  "category": "Layout",
+  "practical_value": "Compare the role of frames and type when color is unavailable.",
+  "content_islands": [
+    {
+      "name": "Format row",
+      "spec": "Align five differently proportioned advertisements across the image."
+    },
+    {
+      "name": "Internal hierarchy",
+      "spec": "Retain dominant show names, angled image-text units and small institutional signatures."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five black-and-white layouts range from tall strips to broader posters, including Road Show, Taking Over and Hair.",
+    "Application": "Five monochrome advertisements apply the identity to narrow strips and wider poster formats."
+  }
+}

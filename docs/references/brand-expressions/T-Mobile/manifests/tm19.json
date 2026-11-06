@@ -1,0 +1,40 @@
+{
+  "id": "TM19",
+  "title": "Color Palette",
+  "image": "tm19.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 19
+  },
+  "slide_intent": "Assign colors distinct jobs so designers preserve recognition while providing contrast and supporting detail.",
+  "strategic_value": "A dominant magenta field with subordinate neutral and berry colors can maintain T-Mobile’s visual continuity.",
+  "demonstration": "A large magenta swatch dominates the page beside black and white, with smaller berry and gray swatches below.",
+  "category": "Color",
+  "practical_value": "Select a color by its primary, secondary or tertiary role and preserve the specified color workflow.",
+  "content_islands": [
+    {
+      "name": "Role and production notes",
+      "spec": "List primary, secondary, tertiary roles and RGB/CMYK profile guidance at left."
+    },
+    {
+      "name": "Dominant magenta",
+      "spec": "Use the largest swatch for magenta with its print and screen values."
+    },
+    {
+      "name": "Supporting palette",
+      "spec": "Place black and white to the right and berry/dark gray/light gray in smaller bottom cells."
+    }
+  ],
+  "ingredient": {
+    "name": "Magenta palette hierarchy",
+    "role": "Establish brand recognition while neutrals provide balance.",
+    "application": "Use magenta #E20074 as primary; black and white support it. Restrict berry and grays to accents and shading, not large fields.",
+    "scope": "Brand communications covered by the February 2024 guide. Tertiary colors are primarily for owned environments. Swatch areas show hierarchy, not a numerical usage ratio."
+  },
+  "reference_purposes": {
+    "Intent": "The role descriptions explain magenta as a source of consistency and black and white as support that preserves its vibrancy.",
+    "Expression": "The palette presents a dominant magenta swatch with black, white, berry and gray companions.",
+    "Application": "Primary, secondary and tertiary labels assign color roles; the profile note identifies the working, saving and export color spaces.",
+    "Constraint": "Tertiary colors are restricted to accents and shading and explicitly excluded from large color fields."
+  }
+}

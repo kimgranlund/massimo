@@ -1,0 +1,36 @@
+{
+  "id": "E01",
+  "title": "Brand Evolution / Connectivity Current",
+  "image": "e01.png",
+  "source": "../sources/e01.jpg",
+  "location": {
+    "source_order": 1,
+    "whole_source": true
+  },
+  "slide_intent": "Extend an established color identity deliberately so people can recognize continuity while noticing a new expression.",
+  "strategic_value": "Retaining a deep blue field while adding green can give Spectrum a more distinctive signal without abandoning its blue heritage.",
+  "demonstration": "Blue-to-green curved lines sweep across a dark blue field and converge toward the lower right; the white logo and Life Unlimited tagline occupy the upper-right corner.",
+  "category": "Color",
+  "practical_value": "Use the familiar color as the field and assess how a new accent changes the character of the supporting graphic.",
+  "content_islands": [
+    {
+      "name": "Connectivity current",
+      "spec": "Draw the curved line family across the full width, entering from the left, converging below center-right and continuing beyond the right edge."
+    },
+    {
+      "name": "Brand signature",
+      "spec": "Place the Spectrum mark and Life Unlimited tagline on one line at upper right, separate from the current."
+    }
+  ],
+  "ingredient": {
+    "name": "Connectivity current color",
+    "role": "Make the flowing graphic conspicuous while keeping the field recognizably Spectrum.",
+    "application": "Pair the blue-forward identity with vivid green in the current, predominantly over deep blue, as described by the agency.",
+    "scope": "The Life Unlimited evolution documented in the agency’s January 2025 case study. No exact color values or mandatory proportions are supplied."
+  },
+  "reference_purposes": {
+    "Intent": "The accompanying Thornberg & Forester case study explains that green differentiates Spectrum while the retained blue connects the evolution to its existing identity.",
+    "Expression": "Blue-to-green current lines cross a deep blue field beneath the Spectrum and Life Unlimited signature.",
+    "Application": "The hero artwork demonstrates the current and signature together; the agency describes deep blue as the current’s usual backplate, not a mandatory background for every execution."
+  }
+}

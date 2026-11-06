@@ -1,0 +1,28 @@
+{
+  "id": "SO88",
+  "title": "Co-branding",
+  "image": "so88.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 88
+  },
+  "slide_intent": "Teach designers to identify who leads a partnership before deciding which identity a viewer should perceive as dominant.",
+  "strategic_value": "Special Olympics can communicate whether it runs an activity or receives support from it by linking mark prominence and attribution text to the actual relationship.",
+  "demonstration": "A decision column asks about the organizer, event title and partner roles. Two columns then distinguish Special Olympics-led work from partner- or event-led work.",
+  "category": "Brand",
+  "practical_value": "Establish who leads the activity and inspect the program title. Use those answers to choose the dominant identity and write a clear sponsor or beneficiary attribution.",
+  "content_islands": [
+    {
+      "name": "Co-brand introduction",
+      "spec": "State the importance of an appropriate hierarchy in red at left and identify the guidance as an initial assessment."
+    },
+    {
+      "name": "Decision questions",
+      "spec": "Place the questions in the next column with checkboxes. Direct each situation to its corresponding option."
+    },
+    {
+      "name": "Two hierarchy options",
+      "spec": "Align the two options at right. Describe the lead organization’s visual system and use examples of attribution copy to clarify the other party’s role."
+    }
+  ]
+}

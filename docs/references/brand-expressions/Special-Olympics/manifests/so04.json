@@ -1,0 +1,28 @@
+{
+  "id": "SO04",
+  "title": "Using these guidelines",
+  "image": "so04.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Teach readers to recognize the kind of instruction they are reading so they can distinguish a principle, a production detail and a caution at a glance.",
+  "strategic_value": "A recurring icon vocabulary can help Special Olympics contributors navigate a long manual with different levels of design experience.",
+  "demonstration": "A paragraph maps the four sections. Five labeled pictograms distinguish guidance types, and a separate red-outlined example identifies exercises.",
+  "category": "Layout",
+  "practical_value": "Use the pictogram and label to find the relevant advice before applying a rule or attempting an exercise.",
+  "content_islands": [
+    {
+      "name": "Section overview",
+      "spec": "Group the red heading and bold explanatory paragraph above the legend."
+    },
+    {
+      "name": "Guidance legend",
+      "spec": "Set five icons in a row with red labels and brief definitions beneath them. Align the introductory note to the left of the row."
+    },
+    {
+      "name": "Exercise key",
+      "spec": "Put the exercise symbol and its explanation together in a red-outlined box below the legend."
+    }
+  ]
+}

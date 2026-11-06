@@ -1,0 +1,28 @@
+{
+  "id": "SL03",
+  "title": "Table of contents",
+  "image": "sl03.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Give readers several ways into a long guide. Section groupings help a reader decide whether to look for a brand idea, a design rule or a usage condition.",
+  "strategic_value": "Slack can put its definition, design system and governance in one book while keeping their purposes distinct.",
+  "demonstration": "The contents index groups numbered topics under three section headings. The design section begins in the left column and continues at the top of the right column above governance.",
+  "category": "Layout",
+  "practical_value": "Locate a specific topic by section and page number. Keep a long group legible when it continues in a second column.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Section index",
+      "spec": "Use two columns with a narrow page-number rail in each. Bold the three section headings and list the topics beneath them in reading order."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Table of contents section label."
+    }
+  ]
+}

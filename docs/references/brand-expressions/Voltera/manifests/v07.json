@@ -1,0 +1,28 @@
+{
+  "id": "V07",
+  "title": "What we’re working towards",
+  "image": "v07.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Separate the purpose a company pursues from the behaviors people use to pursue it.",
+  "strategic_value": "Voltera can connect its focus on access and customer experience to how its team collaborates, decides and takes responsibility.",
+  "demonstration": "The Mission column links purpose and niche on a vertical line. Four Values cards pair icons, short names and behavioral descriptions.",
+  "category": "Brand",
+  "practical_value": "Use the mission column for the company’s direction and the cards when describing how a team member should act.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 7 in a blue tab at lower right."
+    },
+    {
+      "name": "Mission column",
+      "spec": "Place the two purpose and niche blocks against a vertical rule with a marker at each block. Give each an icon, title and explanation."
+    },
+    {
+      "name": "Values grid",
+      "spec": "Arrange four rounded pale cards in two rows and two columns. Pair an outlined icon and blue accent with the value and its behavioral description."
+    }
+  ]
+}

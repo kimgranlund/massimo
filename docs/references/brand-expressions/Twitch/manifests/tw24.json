@@ -1,0 +1,30 @@
+{
+  "id": "TW24",
+  "title": "Social / Three content types",
+  "image": "tw24.png",
+  "source": "../sources/tw24.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 24,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Adapt a shared visual vocabulary to different kinds of posts so recognition does not depend on repeating one template.",
+  "strategic_value": "A common handle treatment and purple-linked graphic language can connect Twitch’s food, creator and game posts.",
+  "demonstration": "Three social-post mockups pair an orange text-led post, a creator portrait under the Twitch signature, and a game-image post with purple copy.",
+  "category": "Application",
+  "practical_value": "Compare what stays consistent when text, people or game content becomes the main subject.",
+  "content_islands": [
+    {
+      "name": "Three posts",
+      "spec": "Align three white social frames, each retaining its account header and familiar footer controls."
+    },
+    {
+      "name": "Content variation",
+      "spec": "Use large copy at left, creator portrait and signature in the center, and game content with a headline at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The three mockups apply the identity to distinct social content formats."
+  }
+}

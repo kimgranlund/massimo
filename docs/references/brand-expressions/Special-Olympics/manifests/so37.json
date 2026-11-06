@@ -1,0 +1,28 @@
+{
+  "id": "SO37",
+  "title": "Brand mark · Social media avatar",
+  "image": "so37.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 37
+  },
+  "slide_intent": "Teach designers to identify a program in a small square where a complete lockup may be difficult to read.",
+  "strategic_value": "A recognizable symbol can identify the shared movement while a localized name and curve help distinguish accounts in a feed.",
+  "demonstration": "Two generic avatars reverse the red and white symbol. Four local examples place color curves and short program identifiers beneath the symbol.",
+  "category": "Application",
+  "practical_value": "Choose the generic or local avatar for the account. Keep the program’s name or abbreviation in the account name as well.",
+  "content_islands": [
+    {
+      "name": "Avatar guidance",
+      "spec": "Distinguish generic, localized and account-naming guidance at left."
+    },
+    {
+      "name": "Generic pair",
+      "spec": "Place white-on-red and red-on-white squares at the top of the main field."
+    },
+    {
+      "name": "Localized strip",
+      "spec": "Align four equally sized avatars beneath the generic pair. Preserve the symbol while varying curve colors and local labels."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "SO60",
+  "title": "Letterhead · Regions",
+  "image": "so60.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 60
+  },
+  "slide_intent": "Name the region sending a letter while allowing the organization’s mark to remain its institutional signature. The reader should know which office to contact.",
+  "strategic_value": "A consistent regional format can identify a regional office while retaining the same writing area and organization-wide letter structure.",
+  "demonstration": "The Europe example places the regional name level with the international mark at right. A dotted guide connects the name to the left margin of the message.",
+  "category": "Application",
+  "practical_value": "Use the region name in red 10.5 pt Ubuntu Regular. Set the regional address once, retain the accreditation line and omit the director list from this format.",
+  "content_islands": [
+    {
+      "name": "Regional guidance",
+      "spec": "Set two numbered notes at left about name placement and regional contact details."
+    },
+    {
+      "name": "Aligned letterhead",
+      "spec": "Show Europe in an enlarged circle beside the full letter. Run guides across the top mark baseline and down the body margin, then identify the footer with a second marker."
+    }
+  ]
+}

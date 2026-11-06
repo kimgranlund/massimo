@@ -1,0 +1,38 @@
+{
+  "id": "TW14",
+  "title": "Named color palette / Scrolling swatches",
+  "image": "tw14.png",
+  "source": "../sources/tw14.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 14,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Give a broad palette memorable names so designers can discuss variations without losing a common reference.",
+  "strategic_value": "Playful names such as Dragon and Wipe Out can connect Twitch’s color vocabulary with its wider cultural voice.",
+  "demonstration": "A vertical sequence scrolls rounded swatches labeled with names including Bandit, Cuddle, Dragon, Droid, Egg, Felicia, Ice, Jiggle, K.O., Legend, Lightning, Sniper, Sonic, Widow, Wipe Out and Zero.",
+  "category": "Color",
+  "practical_value": "Compare the range of hues and label contrast; obtain production values from an authoritative specification before reuse.",
+  "content_islands": [
+    {
+      "name": "Swatch stack",
+      "spec": "Scroll one vertical column of rounded color cards through the portrait frame."
+    },
+    {
+      "name": "Names",
+      "spec": "Keep each name near the upper-left corner, using light or dark lettering according to the shown card."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "COLLINS states that additional vibrant hues build on recognition of Twitch purple while representing a wider range of creators and audiences.",
+    "Expression": "Bright, pale and dark swatches use playful names rather than anonymous sample labels."
+  },
+  "ingredient": {
+    "name": "Expanded named palette",
+    "role": "Provide variety around an established purple identity.",
+    "application": "Compare swatches as alternatives; the film does not specify usage percentages or production color values.",
+    "scope": "Observed in the historical COLLINS identity case study; no mandatory dimensions, color proportions or universal placement rule is supplied."
+  },
+  "motion": "../sources/tw14.mp4"
+}

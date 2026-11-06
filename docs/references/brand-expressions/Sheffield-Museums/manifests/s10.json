@@ -1,0 +1,36 @@
+{
+  "id": "S10",
+  "title": "Colour",
+  "image": "s10.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 10,
+    "printed_page": 9
+  },
+  "slide_intent": "Teach designers to select the mark’s foreground in relation to its background so the seal remains visible.",
+  "strategic_value": "Sheffield Museums can use its palette across varied materials while keeping the trust mark identifiable.",
+  "demonstration": "Two equal square fields compare a white seal on dark blue with a black seal on pink, each labeled by foreground and background treatment.",
+  "category": "Color",
+  "practical_value": "Choose the light or dark mark after inspecting the value of the intended background.",
+  "content_islands": [
+    {
+      "name": "Contrast guidance",
+      "spec": "Use the left column to explain the palette and the need to preserve clarity."
+    },
+    {
+      "name": "Paired foreground examples",
+      "spec": "Align two equal fields with the same mark at the same scale. Use white on dark blue and black on pink. Caption both below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The paired specimens show a white museum seal on dark blue and a black seal on pink.",
+    "Application": "The captioned examples pair the seal foreground with light and dark backgrounds.",
+    "Constraint": "The text requires the chosen combination to keep the logo clear and accessible."
+  },
+  "ingredient": {
+    "name": "Museum seal color",
+    "role": "Keep the shared museum identifier readable across different backgrounds.",
+    "application": "The guide permits any brand-palette color for the seal and often uses black or white. Check that the chosen combination remains clear and accessible.",
+    "scope": "Sheffield Museums parent seal. The two specimens demonstrate common choices rather than restricting the logo to those two combinations."
+  }
+}

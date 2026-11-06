@@ -1,0 +1,36 @@
+{
+  "id": "SF28",
+  "title": "Website overview",
+  "image": "sf28.png",
+  "source": "../sources/sf28.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 28,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Coordinate expressive entry imagery with orderly navigation because visitors must move from interest to finding a performance.",
+  "strategic_value": "A branded hero and clear program cards can connect the Symphony’s cultural voice to practical discovery.",
+  "demonstration": "A website recording shows a Throughline video hero, upcoming-show cards, collaborative portraits and a Currents section while the page scrolls.",
+  "category": "Application",
+  "practical_value": "Compare expressive headings with the quieter grid and metadata used for browsing.",
+  "content_islands": [
+    {
+      "name": "Hero",
+      "spec": "Preserve the moving hero imagery, large Throughline title and navigation."
+    },
+    {
+      "name": "Program grid",
+      "spec": "Keep the repeated upcoming-show cards and their smaller descriptions."
+    },
+    {
+      "name": "Editorial sections",
+      "spec": "Retain the collaborator field and Currents content farther down the page."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A website recording shows a Throughline video hero, upcoming-show cards, collaborative portraits and a Currents section while the page scrolls.",
+    "Application": "The source demonstrates a website recording shows a Throughline video hero, upcoming-show cards, collaborative portraits and a Currents section while the page scrolls."
+  },
+  "motion": "../sources/sf28.mp4"
+}

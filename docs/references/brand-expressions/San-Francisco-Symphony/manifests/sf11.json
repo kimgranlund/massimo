@@ -1,0 +1,31 @@
+{
+  "id": "SF11",
+  "title": "Season poster and program listings",
+  "image": "sf11.png",
+  "source": "../sources/sf11.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 11,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Separate the season identifier from detailed listings because visitors need both orientation and specific choices.",
+  "strategic_value": "A central expressive season panel can unify many smaller program advertisements.",
+  "demonstration": "A wall-mounted triptych places a black 2021 season poster between dense groups of performer images and program information.",
+  "category": "Layout",
+  "practical_value": "Use a dominant identity panel to anchor a denser schedule display.",
+  "content_islands": [
+    {
+      "name": "Season anchor",
+      "spec": "Keep the large central black panel and its changing-height numerals."
+    },
+    {
+      "name": "Program panels",
+      "spec": "Place the image-led listings to either side within the shared exterior frame."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wall-mounted triptych places a black 2021 season poster between dense groups of performer images and program information.",
+    "Application": "The source demonstrates a wall-mounted triptych places a black 2021 season poster between dense groups of performer images and program information."
+  }
+}

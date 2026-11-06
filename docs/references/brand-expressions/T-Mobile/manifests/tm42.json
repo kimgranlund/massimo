@@ -1,0 +1,34 @@
+{
+  "id": "TM42",
+  "title": "T-Connector Do’s",
+  "image": "tm42.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 42
+  },
+  "slide_intent": "Use a recognizable shape to join related content so the composition itself communicates connection.",
+  "strategic_value": "A T-Digit bridging a claim and a relevant scene can make T-Mobile’s connection promise part of the layout.",
+  "demonstration": "Two wide examples bridge a magenta message panel and photograph with a white T-Digit, reversing sides in the second.",
+  "category": "Layout",
+  "practical_value": "Pair related content and cover the joining edge completely with the T-Digit.",
+  "content_islands": [
+    {
+      "name": "Connector rules",
+      "spec": "Place role, color and symbol guidance at left."
+    },
+    {
+      "name": "Network bridge",
+      "spec": "Show a white T joining a magenta claim to a city photograph in the upper example."
+    },
+    {
+      "name": "Community bridge",
+      "spec": "Reverse the relationship below, joining a sports crowd to a magenta message."
+    }
+  ],
+  "ingredient": {
+    "name": "T-Connector",
+    "role": "Join two related fields through the brand symbol.",
+    "application": "Use one white or magenta T-Digit without the registration symbol and cover the entire adjoining edge. Pair images that relate and add context.",
+    "scope": "Related image pairs and transitions; image-to-message/branding combinations are described for internal communications."
+  }
+}

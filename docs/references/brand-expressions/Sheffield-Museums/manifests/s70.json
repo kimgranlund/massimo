@@ -1,0 +1,28 @@
+{
+  "id": "S70",
+  "title": "Contact",
+  "image": "s70.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 70
+  },
+  "slide_intent": "Give readers a clear person to approach when applying the identity raises a question.",
+  "strategic_value": "A named museum contact can help staff resolve an unfamiliar brand use and connect that decision to the institution.",
+  "demonstration": "A dark green closing page identifies the Head of Communications, lists contact channels and credits Spy for the identity and design.",
+  "category": "Application",
+  "practical_value": "Route a question about the source guidelines to the printed museum contact and distinguish that role from the design credit.",
+  "content_islands": [
+    {
+      "name": "Section and title",
+      "spec": "Place the 9.0 Contact section marker at upper left and a large white Contact title below."
+    },
+    {
+      "name": "Museum contact",
+      "spec": "Stack the instruction, contact name, role and contact channels beneath the title. Use weight to make the name easy to find."
+    },
+    {
+      "name": "Design credit",
+      "spec": "Place the small Spy credit below the contact block. Keep the remainder of the green field open."
+    }
+  ]
+}

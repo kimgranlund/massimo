@@ -1,0 +1,36 @@
+{
+  "id": "SG20",
+  "title": "Ordering and delivery screens",
+  "image": "sg20.png",
+  "source": "../sources/sg20.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 20,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Preserve clarity through a transaction so customers can understand food choice, timing and completion.",
+  "strategic_value": "Shared typography and restrained illustration can keep Sweetgreen recognizable beyond promotional screens.",
+  "demonstration": "Three upright phones show a bowl order, delivery-time selection and a delivery confirmation with a moving illustrated ingredient, set against a landscape.",
+  "category": "Application",
+  "practical_value": "Compare which brand elements remain useful across selection, scheduling and confirmation.",
+  "content_islands": [
+    {
+      "name": "Order",
+      "spec": "Place the food and order controls in the left phone."
+    },
+    {
+      "name": "Schedule",
+      "spec": "Use the middle phone for delivery-time options."
+    },
+    {
+      "name": "Confirmation",
+      "spec": "Use the right phone for the completed-order message and animated illustration."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three screens demonstrate different stages of an ordering flow.",
+    "Expression": "The confirmation uses a moving illustrated ingredient while the practical screens remain restrained."
+  },
+  "motion": "../sources/sg20.mp4"
+}

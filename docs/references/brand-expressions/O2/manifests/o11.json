@@ -1,0 +1,30 @@
+{
+  "id": "O11",
+  "title": "Number one fans only — outdoor headline",
+  "image": "o11.png",
+  "source": "../sources/o11.jpg",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 11,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Use scale and weight to give a short message a clear leading voice at a distance.",
+  "strategic_value": "The broad rounded headline can make O2 Priority’s entertainment message feel direct while the blue imagery preserves brand continuity.",
+  "demonstration": "A wide outdoor poster places a large white Number one fans only headline over blue-tinted crowd imagery, with a small O2 mark above and supporting copy below.",
+  "category": "Typography",
+  "practical_value": "Reserve the strongest scale for the primary phrase and test whether the image supports rather than obscures it.",
+  "content_islands": [
+    {
+      "name": "Blue crowd background",
+      "spec": "Fill the wide poster with a crowd image unified by blue tones."
+    },
+    {
+      "name": "Headline hierarchy",
+      "spec": "Center the small O2 mark above the oversized white headline and place a two-line supporting message near the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The headline displays the rounded, heavy type character at large scale.",
+    "Application": "The typography is demonstrated on a wide outdoor advertisement with subordinate brand and offer copy."
+  }
+}

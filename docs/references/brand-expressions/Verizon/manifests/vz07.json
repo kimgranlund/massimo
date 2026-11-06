@@ -1,0 +1,36 @@
+{
+  "id": "VZ07",
+  "title": "Icon and type alignment study",
+  "image": "vz07.png",
+  "source": "../sources/vz07.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 7,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Compare icon geometry with adjacent lettering so symbols feel intentionally aligned rather than visually detached.",
+  "strategic_value": "A common alignment logic can make Verizon’s icons and labels read as one interface element.",
+  "demonstration": "A cropped bag icon, a circular person icon and outlined Sign lettering share black and blue construction guides.",
+  "category": "Geometry",
+  "practical_value": "Inspect center alignment and text bounds together before settling an icon’s position beside a label.",
+  "content_islands": [
+    {
+      "name": "Icon construction",
+      "spec": "Place the large circular person icon between the cropped bag at left and lettering at right, retaining its internal outlines."
+    },
+    {
+      "name": "Alignment guides",
+      "spec": "Carry a dashed blue center line from the person icon to the blue text bounding box and retain the black outer guides."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Construction lines compare icon bounds and the adjacent text box.",
+    "Expression": "Thin outlined icons and letterforms reveal the geometry underlying the interface pairing."
+  },
+  "ingredient": {
+    "name": "Icon-label alignment",
+    "role": "Make a symbol and label read as a coordinated pair.",
+    "application": "Compare the icon center and bounds with the neighboring text bounds using the displayed construction guides.",
+    "scope": "Observed alignment study; no universal pixel offset is stated."
+  }
+}

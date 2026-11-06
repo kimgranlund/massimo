@@ -1,0 +1,20 @@
+{
+  "id": "SL12",
+  "title": "Smiling speech bubble",
+  "image": "sl12.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Show how one expressive image can set the tone for a chapter about speaking to people. A facial gesture gives the message a recognizable mood.",
+  "strategic_value": "Slack can connect conversational language with a visual expression of friendliness as the book turns to voice and tone.",
+  "demonstration": "A white dimensional speech bubble with a curved smile and two eyes fills a salmon-colored page. Black edges and a shadow give it volume.",
+  "category": "Imagery",
+  "practical_value": "Use a simple communicative symbol with a facial cue when a transition needs to convey tone before introducing detailed guidance.",
+  "content_islands": [
+    {
+      "name": "Speech bubble",
+      "spec": "Enlarge the white bubble near the center of the colored field and point its tail toward the lower right. Use the ground color for its smile and eyes, with a black rim and offset shadow for depth."
+    }
+  ]
+}

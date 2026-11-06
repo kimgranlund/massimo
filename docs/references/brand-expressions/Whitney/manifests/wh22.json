@@ -1,0 +1,32 @@
+{
+  "id": "WH22",
+  "title": "Color-coded admission tickets",
+  "image": "wh22.png",
+  "source": "../sources/large_whitney_2013redesign_admissiontickets.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 5,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Assign color a practical classification role because a familiar graphic system can also help people distinguish service types.",
+  "strategic_value": "Different ticket colors can retain Whitney recognition while making admissions categories easier to separate.",
+  "demonstration": "Five narrow tickets repeat fine W lines; four stand upright in different colors and one reversed member ticket appears at right.",
+  "category": "Color",
+  "practical_value": "Use color to distinguish ticket types while preserving a common graphic structure; no numerical palette specification is supplied.",
+  "content_islands": [
+    {
+      "name": "Ticket family",
+      "spec": "Align the five tickets across a gray field, preserving their colors, repeated lines and the reversed orientation at right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official caption states that admission tickets are color-coded according to ticket type.",
+    "Expression": "Repeated fine W lines and color differences define the ticket family."
+  },
+  "ingredient": {
+    "name": "Admission ticket colors",
+    "role": "Distinguish ticket types within a recognizable family.",
+    "application": "Use different ticket colors while retaining the repeated W structure.",
+    "scope": "2013 admission-ticket examples; the caption establishes color coding but supplies no color values or general brand palette rule."
+  }
+}

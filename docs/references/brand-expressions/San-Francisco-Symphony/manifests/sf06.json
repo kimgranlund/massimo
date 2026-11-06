@@ -1,0 +1,28 @@
+{
+  "id": "SF06",
+  "title": "Responsive Symphony wordmark",
+  "image": "sf06.png",
+  "source": "../sources/sf06.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 6,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Let the identity change over time because a live performance should feel active rather than fixed.",
+  "strategic_value": "Independent letter growth can make the Symphony name an expression of musical energy.",
+  "demonstration": "White SFSYMPHONY letters on black expand at different rates, vary in height and settle into a large wordmark.",
+  "category": "Motion",
+  "practical_value": "Judge whether the name remains recognizable throughout a range of letter heights.",
+  "content_islands": [
+    {
+      "name": "Animated name",
+      "spec": "Keep the white serif name as the only focal element on the black field; preserve its progression from small to large."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "White SFSYMPHONY letters on black expand at different rates, vary in height and settle into a large wordmark.",
+    "Intent": "The main case-study text says variable typography brings the dynamic qualities of classical music into the identity."
+  },
+  "motion": "../sources/sf06.mp4"
+}

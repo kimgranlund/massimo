@@ -1,0 +1,28 @@
+{
+  "id": "SO43",
+  "title": "Typography",
+  "image": "so43.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 43
+  },
+  "slide_intent": "Teach designers to select an informational face by what people need to read, including numerals, punctuation and different scripts.",
+  "strategic_value": "Ubuntu can provide a common voice across informational documents while the file-sharing guidance helps preserve typography for recipients.",
+  "demonstration": "A Latin specimen displays letters, digits, punctuation and several weights. Greek and Cyrillic specimens occupy a neighboring panel; notes at left discuss distribution in Office documents.",
+  "category": "Typography",
+  "practical_value": "Use Ubuntu for the supported informational text. For shared Office documents the guide calls for PDF delivery or Arial when the editable document must travel.",
+  "content_islands": [
+    {
+      "name": "Typeface rationale",
+      "spec": "Place the supported scripts and intended informational use above the specimens. Keep the release-era language coverage in context."
+    },
+    {
+      "name": "Script specimens",
+      "spec": "Show the Latin weights and character set in a large pale panel. Pair the Greek and Cyrillic specimens in adjoining blocks."
+    },
+    {
+      "name": "Document notes",
+      "spec": "Set download and file-sharing guidance in a narrow left column."
+    }
+  ]
+}

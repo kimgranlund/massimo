@@ -1,0 +1,30 @@
+{
+  "id": "SF12",
+  "title": "Rebellious Beauty brochure",
+  "image": "sf12.png",
+  "source": "../sources/sf12.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 12,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Pair an unexpected phrase with a concrete image because words and imagery can change expectations of classical music.",
+  "strategic_value": "Rebellious Beauty and a dark bird can give the Symphony a more dramatic cultural voice.",
+  "demonstration": "An angled black brochure carries oversized pale serif words around a bird image, with a small signature near the bottom.",
+  "category": "Voice",
+  "practical_value": "Compare the emotional promise of the headline with the imagery used to support it.",
+  "content_islands": [
+    {
+      "name": "Headline and bird",
+      "spec": "Keep Rebellious Beauty surrounding the central bird on the black cover."
+    },
+    {
+      "name": "Signature",
+      "spec": "Retain the small Symphony signature beneath the main composition."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "An angled black brochure carries oversized pale serif words around a bird image, with a small signature near the bottom."
+  }
+}

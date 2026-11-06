@@ -1,0 +1,29 @@
+{
+  "id": "PT03",
+  "title": "Venue and program badge family",
+  "image": "pt03.png",
+  "source": "../sources/pt03.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 3,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Distinguish related destinations while retaining a shared form because people need both affiliation and a specific name.",
+  "strategic_value": "Circular badges can connect the theater’s different venues and activities without erasing their identities.",
+  "demonstration": "Nine colored circular emblems combine perimeter names with contrasting central letters or symbols.",
+  "category": "Brand",
+  "practical_value": "Use the badge family to compare what stays fixed and what varies across sub-identities.",
+  "content_islands": [
+    {
+      "name": "Badge array",
+      "spec": "Arrange nine circular marks in a staggered vertical group."
+    },
+    {
+      "name": "Internal structure",
+      "spec": "Pair each perimeter label with its central identifier and local color."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Nine colored circular emblems combine perimeter names with contrasting central letters or symbols."
+  }
+}

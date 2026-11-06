@@ -1,0 +1,25 @@
+{
+  "id": "S56",
+  "title": "Merchandise labels",
+  "image": "s56.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 56,
+    "printed_page": 55
+  },
+  "slide_intent": "Teach designers to separate venue, item and parent institution even on a small tag that someone reads in the hand.",
+  "strategic_value": "The museum can give a shop item a specific Abbeydale identity while linking it to the wider organization.",
+  "demonstration": "A brown hanging tag stacks the Abbeydale Industrial Hamlet mark, the throw’s name, material and dimensions, and a smaller Sheffield Museums seal.",
+  "category": "Application",
+  "practical_value": "Group the descriptive product details between the venue mark and the parent seal so the shopper can read all three at different scales.",
+  "content_islands": [
+    {
+      "name": "Hanging tag",
+      "spec": "Enlarge the brown tag against white space with the cord entering from the upper edge."
+    },
+    {
+      "name": "Label hierarchy",
+      "spec": "Set the venue mark in white at the top. Center the wool throw’s description below and finish with the circular museum seal at the foot."
+    }
+  ]
+}

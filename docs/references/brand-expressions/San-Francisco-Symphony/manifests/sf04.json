@@ -1,0 +1,32 @@
+{
+  "id": "SF04",
+  "title": "Sticky Dissonance",
+  "image": "sf04.png",
+  "source": "../sources/sf04.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 4,
+    "section": "Sticky Dissonance",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Introduce deliberate scale differences because a familiar word can attract renewed attention when its rhythm changes.",
+  "strategic_value": "The gala invitation can carry the Symphony’s variable-letter character into a formal occasion.",
+  "demonstration": "A black gala card rests on pale folded fabric; orange marks trace the differing heights of its serif letters.",
+  "category": "Typography",
+  "practical_value": "Compare the letter heights within a short message rather than treating the whole line as one size.",
+  "content_islands": [
+    {
+      "name": "Gala card",
+      "spec": "Center the dark angled card over the pale textile field."
+    },
+    {
+      "name": "Size annotation",
+      "spec": "Keep the orange shifting-sizes note and vertical marks aligned to the letters they identify."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A black gala card rests on pale folded fabric; orange marks trace the differing heights of its serif letters.",
+    "Application": "The source demonstrates a black gala card rests on pale folded fabric; orange marks trace the differing heights of its serif letters.",
+    "Intent": "The accompanying Sticky Dissonance text describes deliberate tension as a way to interrupt expectations and aid memory."
+  }
+}

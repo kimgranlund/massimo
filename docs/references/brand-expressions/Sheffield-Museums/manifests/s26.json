@@ -1,0 +1,41 @@
+{
+  "id": "S26",
+  "title": "Colour palette",
+  "image": "s26.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 26,
+    "printed_page": 25
+  },
+  "slide_intent": "Teach designers to distinguish venue-specific colors from shared colors so that viewers can recognize which venue a communication represents.",
+  "strategic_value": "The six venues can have their own hero colors while the parent museum retains access to the entire palette.",
+  "demonstration": "Six named venue swatches form two rows above four common swatches. Each card gives reproduction values and a bracket identifies the parent brand’s access to all ten colors.",
+  "category": "Color",
+  "practical_value": "Select a venue’s hero color or a shared supporting color. For Sheffield Museums core-brand materials, avoid combining more than two palette colors, excluding black and grey.",
+  "content_islands": [
+    {
+      "name": "Usage guidance",
+      "spec": "Under the heading, set separate instructions for the parent museum, the venue hero colors and the common supporting colors."
+    },
+    {
+      "name": "Venue swatches",
+      "spec": "Arrange six cards in three columns and two rows. Attach a venue name, ink, screen and paint references to each."
+    },
+    {
+      "name": "Common colors and bracket",
+      "spec": "Place four supporting swatches in a line below. Draw the bracket along both sets and label it for Sheffield Museums."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that common colors pair with hero colors and provide alternatives when a hero color does not suit the message.",
+    "Expression": "Six venue swatches and four common swatches establish the palette’s visible range.",
+    "Application": "The chart assigns named colors to venues and supplies ink, screen and paint references.",
+    "Constraint": "Parent-brand materials should avoid more than two palette colors, excluding black and grey; venue materials should avoid another venue’s hero hue or a very similar hue."
+  },
+  "ingredient": {
+    "name": "Venue and common palette",
+    "role": "Give venues individual color cues while providing shared alternatives for different messages.",
+    "application": "Use the promoted venue’s hero color as a background or highlight, or choose a common color when appropriate. Avoid another venue’s hero hue or a very similar hue. For parent-brand materials, avoid combining more than two palette colors, excluding black and grey.",
+    "scope": "The two-color limit appears under Sheffield Museums core-brand materials. Venue hero colors and common colors have separate guidance; the parent brand may use any of the ten colors."
+  }
+}

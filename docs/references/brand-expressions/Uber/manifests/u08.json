@@ -1,0 +1,36 @@
+{
+  "id": "U08",
+  "title": "Typography / Hierarchy example and calls to action",
+  "image": "u08.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Make importance and action visible through type relationships so readers can find the main message and recognize what to do next.",
+  "strategic_value": "An explicit hierarchy and repeatable action treatments can connect Uber’s communication voice to usable interaction cues.",
+  "demonstration": "The upper-right example relates headline, subhead and logo through measurements. The lower-right matrix compares an action link and a button in inactive and hover/active states.",
+  "category": "Typography",
+  "practical_value": "Apply the illustrated headline/subhead relationship and select the stated font for either an action link or a button.",
+  "content_islands": [
+    {
+      "name": "Hierarchy explanation and specimen",
+      "spec": "Place the hierarchy rationale at upper left; at upper right align measurement notes with the headline, subhead and Uber logo example."
+    },
+    {
+      "name": "Call-to-action comparison",
+      "spec": "Place action-type instructions at lower left; at lower right arrange Action and Button columns against Inactive and Hover/Active rows, showing blue link text and blue-to-black button states."
+    }
+  ],
+  "ingredient": {
+    "name": "Type hierarchy and calls to action",
+    "role": "Separate message priority and identify actionable text.",
+    "application": "For the illustrated hierarchy use the stated headline/subhead metrics; use Uber Move Text Bold for Action and Uber Move Display Bold for Buttons.",
+    "scope": "Partner guide hierarchy example, whose headline annotation says six words or more. The page does not explain shorter-headline treatment."
+  },
+  "reference_purposes": {
+    "Intent": "The source explains hierarchy in terms of relative importance through scale and function.",
+    "Expression": "The worked headline/subhead and action-state specimens show contrasting size, weight and color.",
+    "Application": "The page demonstrates a two-line headline, half-size subhead and two call-to-action treatments.",
+    "Constraint": "The example specifies Display Medium headline, minimum 1.5× logo point size, 1.0 leading and zero tracking; Display Light subhead at half headline size, 1.2 leading and zero tracking; logo height equals composition margin width. Actions use Text Bold and buttons use Display Bold."
+  }
+}

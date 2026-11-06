@@ -1,0 +1,29 @@
+{
+  "id": "PT09",
+  "title": "The Diva Is Dismissed",
+  "image": "pt09.png",
+  "source": "../sources/pt09.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 9,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Make lettering interact with a face because the relationship can communicate performance and attitude.",
+  "strategic_value": "Angled black text can animate the blue portrait while retaining the theater’s emphatic voice.",
+  "demonstration": "A blue portrait occupies a yellow field with title, performer and engagement strips crossing at different angles.",
+  "category": "Layout",
+  "practical_value": "Compare diagonal text strips as a structure for both promotion and practical information.",
+  "content_islands": [
+    {
+      "name": "Portrait",
+      "spec": "Let the large blue head dominate the upper and central field."
+    },
+    {
+      "name": "Text strips",
+      "spec": "Cross the lower face with title, performer and engagement lines, leaving the signature at upper right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A blue portrait occupies a yellow field with title, performer and engagement strips crossing at different angles."
+  }
+}

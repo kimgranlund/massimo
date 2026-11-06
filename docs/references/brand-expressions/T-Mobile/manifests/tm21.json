@@ -1,0 +1,30 @@
+{
+  "id": "TM21",
+  "title": "Mnemonic",
+  "image": "tm21.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 21
+  },
+  "slide_intent": "Treat sound as a repeatable identity cue so recognition can occur without a visible logo.",
+  "strategic_value": "A consistent sonic signature can connect T-Mobile audio encounters to its visual identity.",
+  "demonstration": "A magenta waveform accompanies guidance on the mnemonic’s key, duration and tempo; this PDF provides no playable sound.",
+  "category": "Brand",
+  "practical_value": "Choose the hero key for isolated use or a supplied alternate key to fit existing music.",
+  "content_islands": [
+    {
+      "name": "Audio-use instructions",
+      "spec": "Place the title and key, timing and access guidance at left."
+    },
+    {
+      "name": "Waveform specimen",
+      "spec": "Center a large magenta waveform in the right-hand white field."
+    }
+  ],
+  "ingredient": {
+    "name": "Audio mnemonic",
+    "role": "Identify T-Mobile through a short recurring sound.",
+    "application": "Use the primary C-key version without music or other tones; choose from eleven alternate keys when needed for harmony. Duration is 2.5 seconds at 108 bpm.",
+    "scope": "Audio creative; the waveform is illustrative and no audio asset is bundled in this PDF."
+  }
+}

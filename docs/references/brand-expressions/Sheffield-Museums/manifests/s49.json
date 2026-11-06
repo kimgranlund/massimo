@@ -1,0 +1,25 @@
+{
+  "id": "S49",
+  "title": "Purchase Order",
+  "image": "s49.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 49,
+    "printed_page": 48
+  },
+  "slide_intent": "Teach designers to identify which entity issues a document so staff can distinguish otherwise similar forms.",
+  "strategic_value": "The museum can keep Trust and Trading correspondence in the same family while identifying the issuer before someone reads the order.",
+  "demonstration": "Two purchase-order sheets repeat the seal and heading in a single top row. The short label beside the seal changes from Trust to Trading.",
+  "category": "Application",
+  "practical_value": "Put the entity name beside the shared seal and keep the document type in the same position on both versions.",
+  "content_islands": [
+    {
+      "name": "Trust form",
+      "spec": "Set a small monochrome seal at the upper left of a pale portrait sheet. Use a vertical divider before Trust and align Purchase Order at the opposite edge."
+    },
+    {
+      "name": "Trading form",
+      "spec": "Repeat the sheet size and header alignment at right. Substitute Trading in the issuer slot and preserve the open document body."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "VZ11",
+  "title": "Iconography / library overview",
+  "image": "vz11.png",
+  "source": "../sources/vz11.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 11,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Inspect many symbols together so inconsistencies become visible before the library is used across channels.",
+  "strategic_value": "A broad but coherent icon family can help Verizon explain many services without changing visual voice.",
+  "demonstration": "A dense grid presents black outline icons for people, navigation, devices, security, shopping and other subjects on white.",
+  "category": "Geometry",
+  "practical_value": "Scan repeated line weights, corner behavior and symbol density across the collection when reviewing additions.",
+  "content_islands": [
+    {
+      "name": "Icon matrix",
+      "spec": "Arrange equally spaced rows of small black icons across the white board, retaining the original order and generous space around each symbol."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The grid demonstrates a large range of meanings in a consistent outline style.",
+    "Intent": "The accompanying case study explains that the library was built to work across broadcast, digital and print."
+  }
+}

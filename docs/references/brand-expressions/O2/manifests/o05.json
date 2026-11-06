@@ -1,0 +1,33 @@
+{
+  "id": "O05",
+  "title": "Floating bubble in a gradient field",
+  "image": "o05.png",
+  "source": "../sources/o05.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 5,
+    "extent": "whole source artwork",
+    "poster_seconds": 1.8,
+    "duration_seconds": 6.0
+  },
+  "slide_intent": "Use travel, scale and focus to give a simple element a sense of depth.",
+  "strategic_value": "A drifting bubble can animate O2 backgrounds without requiring another brand symbol.",
+  "demonstration": "A single bubble drifts through a blue gradient, changing position, apparent size and softness as its highlights shift.",
+  "category": "Motion",
+  "practical_value": "Judge the bubble against its field throughout the movement so it stays perceptible without dominating the frame.",
+  "content_islands": [
+    {
+      "name": "Atmospheric field",
+      "spec": "Fill the frame with a dark-blue upper region that lightens toward the bottom."
+    },
+    {
+      "name": "Drifting bubble",
+      "spec": "Move one translucent bubble through the open field while varying its softness and apparent size."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip demonstrates the bubble’s floating, softly shaded behavior.",
+    "Application": "It places the bubble over a gradient background as a self-contained animated field."
+  },
+  "motion": "../sources/o05.mp4"
+}

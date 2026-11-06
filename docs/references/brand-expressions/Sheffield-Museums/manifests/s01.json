@@ -1,0 +1,24 @@
+{
+  "id": "S01",
+  "title": "Design Guidelines",
+  "image": "s01.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the institution through its signature. A reader can associate the manual with the mark before encountering any rules.",
+  "strategic_value": "The large seal on a dark green field can establish the umbrella identity that the six venue identities will sit beneath.",
+  "demonstration": "A white circular Sheffield Museums mark occupies the center of a dark green page. The book title runs vertically at the left edge.",
+  "category": "Brand",
+  "practical_value": "Use the cover as a reference for an institutional piece where the umbrella mark should have first read.",
+  "content_islands": [
+    {
+      "name": "Vertical title",
+      "spec": "Set Design Guidelines in white near the left margin, reading from bottom to top."
+    },
+    {
+      "name": "Institutional seal",
+      "spec": "Center the white circular mark at large scale. Preserve the space around its lettering and the interlocking shapes in its center."
+    }
+  ]
+}

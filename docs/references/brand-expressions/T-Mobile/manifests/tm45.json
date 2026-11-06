@@ -1,0 +1,24 @@
+{
+  "id": "TM45",
+  "title": "Resources",
+  "image": "tm45.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 45
+  },
+  "slide_intent": "Give contributors a route to authoritative assets so they can act on the guide without inventing missing material.",
+  "strategic_value": "Central asset, font and approval routes can support consistent T-Mobile execution.",
+  "demonstration": "A magenta title panel sits beside four resource groups for brand assets, TeleNeo, creative review and Workfront.",
+  "category": "Brand",
+  "practical_value": "Identify the correct resource or approval route; the external systems are not included in this offline collection.",
+  "content_islands": [
+    {
+      "name": "Resource title panel",
+      "spec": "Use the left magenta column for the white title."
+    },
+    {
+      "name": "Resource directory",
+      "spec": "Stack the four labeled resource groups in the upper-right white field, preserving their stated purposes."
+    }
+  ]
+}

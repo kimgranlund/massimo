@@ -1,0 +1,20 @@
+{
+  "id": "SL04",
+  "title": "Slack tile opens",
+  "image": "sl04.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Show how a reveal can connect a familiar surface to the parts beneath it. Separation and alignment make the layers legible in a still image.",
+  "strategic_value": "Slack can use its colorful mark as an entry point to an image of multiple tools grouped together.",
+  "demonstration": "A white lid with the Slack symbol lifts above an outlined tray of small colorful tiles on an aubergine ground. Dotted vertical guides connect the raised lid to the tray.",
+  "category": "Imagery",
+  "practical_value": "Use this image to judge how far to separate two layers while preserving their perceived relationship.",
+  "content_islands": [
+    {
+      "name": "Exploded tile illustration",
+      "spec": "Center the two aligned diamond-shaped layers in the aubergine field. Put the colored symbol on the raised white lid, cluster the small tiles in the tray below and add offset dark shadows."
+    }
+  ]
+}

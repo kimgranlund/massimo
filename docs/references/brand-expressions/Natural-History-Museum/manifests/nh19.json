@@ -1,0 +1,33 @@
+{
+  "id": "NH19",
+  "title": "Amethyst quartz packaging",
+  "image": "nh19.png",
+  "source": "../sources/nh19.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 19,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Distinguish product information from institutional identity, because a shopper needs to recognize both the object and its source.",
+  "strategic_value": "A specimen photograph paired with the Museum’s symbol can connect a retail product to its scientific setting.",
+  "demonstration": "A cube package pairs an amethyst photograph on a white front with blue naming on the side and a cyan ring pattern on top.",
+  "category": "Application",
+  "practical_value": "Distribute image, product name and expressive pattern across separate package faces.",
+  "content_islands": [
+    {
+      "name": "Product face",
+      "spec": "Place the crystal photograph and blue museum symbol on the white front."
+    },
+    {
+      "name": "Naming face",
+      "spec": "Use the blue side for the pale Amethyst quartz product name."
+    },
+    {
+      "name": "Patterned top",
+      "spec": "Cover the top face with cyan and blue circular graphics."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A cube package pairs an amethyst photograph on a white front with blue naming on the side and a cyan ring pattern on top."
+  }
+}

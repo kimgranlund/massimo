@@ -1,0 +1,41 @@
+{
+  "id": "SP21",
+  "title": "Spotify House — SXSW poster",
+  "image": "sp21.png",
+  "source": "../sources/sp21.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 21,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/a0cf93f3e2c497d2c8f676cf69b400d92b8a24bd-1920x2400.png"
+  },
+  "category": "Layout",
+  "slide_intent": "Distribute a short event identifier through the image because deliberate spatial rhythm can make familiar letters feel expressive and memorable.",
+  "strategic_value": "Spotify can tie its House event to artist culture through a duotone profile and widely separated white letter groups.",
+  "demonstration": "A green-blue portrait poster spreads S, SW and a rotated X across the field, with two short top captions and a central Spotify symbol.",
+  "practical_value": "Compare dispersed display letters with compact supporting copy when building an event poster.",
+  "content_islands": [
+    {
+      "name": "Event letterforms",
+      "spec": "S at upper left, SW across the portrait and X near the bottom create a vertical reading path."
+    },
+    {
+      "name": "Portrait and symbol",
+      "spec": "A profile portrait fills the field; a small white Spotify symbol sits near the center."
+    },
+    {
+      "name": "Supporting captions",
+      "spec": "Spotify House is Back and New Music, Epic Vibes sit in two compact groups at the upper right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A green-blue portrait poster spreads S, SW and a rotated X across the field, with two short top captions and a central Spotify symbol.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  },
+  "ingredient": {
+    "name": "Dispersed event lettering",
+    "role": "Distribute a short event identifier through the image because deliberate spatial rhythm can make familiar letters feel expressive and memorable.",
+    "application": "A green-blue portrait poster spreads S, SW and a rotated X across the field, with two short top captions and a central Spotify symbol.",
+    "scope": "Observed case-study example. The source does not establish a universal required construction, timing, pairing or placement rule."
+  }
+}

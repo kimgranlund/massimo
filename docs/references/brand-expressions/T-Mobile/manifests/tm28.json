@@ -1,0 +1,34 @@
+{
+  "id": "TM28",
+  "title": "Accessible Text Colors",
+  "image": "tm28.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Judge text color together with size and weight so visual identity does not obscure the message.",
+  "strategic_value": "A repeatable set of text/background choices can make T-Mobile digital messages more legible.",
+  "demonstration": "Six horizontal samples compare Bold and Extra Bold over magenta, black and white backgrounds with a small-text note.",
+  "category": "Typography",
+  "practical_value": "Treat the page as a source-specific reference and verify contrast for the actual size and color combination.",
+  "content_islands": [
+    {
+      "name": "Contrast conditions",
+      "spec": "Keep the stated size conditions and explanatory text at left."
+    },
+    {
+      "name": "Color/weight samples",
+      "spec": "Stack six labeled text strips, each comparing Bold and Extra Bold."
+    },
+    {
+      "name": "Small-text note",
+      "spec": "Place the black-on-white guidance directly below the strips."
+    }
+  ],
+  "ingredient": {
+    "name": "Text/background pairing",
+    "role": "Preserve readable message contrast.",
+    "application": "The guide labels shown pairs as AA at a minimum 18 pt and calls for black on white below 14 pt; test the actual execution.",
+    "scope": "Digital examples in this February 2024 guide; the source’s claims are recorded, not independently certified."
+  }
+}

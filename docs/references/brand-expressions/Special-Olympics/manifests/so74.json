@@ -1,0 +1,28 @@
+{
+  "id": "SO74",
+  "title": "Newsletters — Localising newsletters",
+  "image": "so74.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 74
+  },
+  "slide_intent": "Connect a newsletter’s length and production method to its first read. A short office publication has to start delivering the story on its cover.",
+  "strategic_value": "The program masthead can identify the publisher across a desktop-printed newsletter and a professionally printed magazine.",
+  "demonstration": "Two Connect covers share a red masthead and upper-right program mark. One opens into columns of text and a sidebar. The other gives the page to an athlete photograph, a headline and sponsor credits.",
+  "category": "Application",
+  "practical_value": "Use the text-led, nonbleed layout for a short desktop issue. For a longer professionally produced issue, test a full-bleed photograph with readable headline space.",
+  "content_islands": [
+    {
+      "name": "Production notes",
+      "spec": "Place six numbered considerations beside the covers. Connect the numbers to the masthead, highlights, image text and partner area."
+    },
+    {
+      "name": "Short newsletter",
+      "spec": "Show a compact, nonbleed cover at left with story columns and a contrasting sidebar. Caption the 1–4 page use case underneath."
+    },
+    {
+      "name": "Long newsletter",
+      "spec": "Place the magazine-style cover at right with a full-page athlete photograph. Separate the program mark at the top from partner recognition at the foot."
+    }
+  ]
+}

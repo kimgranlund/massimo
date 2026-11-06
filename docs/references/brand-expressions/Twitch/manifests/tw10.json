@@ -1,0 +1,41 @@
+{
+  "id": "TW10",
+  "title": "Twitch Roobert / Custom typeface",
+  "image": "tw10.png",
+  "source": "../sources/tw10.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 10,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Show a typeface in both a large specimen and meaningful language so its voice can be judged beyond an isolated name.",
+  "strategic_value": "Pairing Roobert with the Konami Code can connect Twitch’s custom typography to its gaming culture.",
+  "demonstration": "A purple specimen labels Twitch Roobert Semibold at 750pt and 200pt, pairs its name with the Konami Code, and lists weight and italic options.",
+  "category": "Typography",
+  "practical_value": "Compare the large letterforms with a longer phrase; treat the printed point sizes as specimen labels rather than universal text roles.",
+  "content_islands": [
+    {
+      "name": "Typeface name",
+      "spec": "Place the oversized black Roobert name under the 750pt specimen label."
+    },
+    {
+      "name": "Code specimen",
+      "spec": "Set the Konami Code across multiple lines beneath the 200pt label, using arrows between commands."
+    },
+    {
+      "name": "Weight list",
+      "spec": "List Heavy through Light with corresponding italic variants in a ruled footer."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The custom face is demonstrated through its name and gaming-language specimen.",
+    "Application": "The board labels two specimen sizes and lists the available weight/italic range."
+  },
+  "ingredient": {
+    "name": "Twitch Roobert",
+    "role": "Give brand language a consistent typographic voice.",
+    "application": "Compare Semibold in a large name and multiline command sequence; use the listed family range when evaluating hierarchy.",
+    "scope": "The 750pt and 200pt labels describe this specimen, not required sizes for every Twitch application. The footer lists family weights and italic variants; no application scale is prescribed."
+  }
+}

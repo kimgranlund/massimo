@@ -1,0 +1,40 @@
+{
+  "id": "O07",
+  "title": "Product color within the O2 gradient",
+  "image": "o07.png",
+  "source": "../sources/o07.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 7,
+    "extent": "whole source artwork",
+    "poster_seconds": 1.56,
+    "duration_seconds": 5.2
+  },
+  "slide_intent": "Relate a background accent to a product so the product feels integrated while the brand remains identifiable.",
+  "strategic_value": "A stable blue upper field can retain O2 recognition while changing lower accents support different devices.",
+  "demonstration": "A yellow phone, green-accented earbuds and watches appear in turn over blue gradients whose lower colors shift toward the products’ colors.",
+  "category": "Color",
+  "practical_value": "Compare which part of a background can vary with the product while maintaining a consistent blue reference.",
+  "content_islands": [
+    {
+      "name": "Blue anchor",
+      "spec": "Keep the upper part of the frame blue through the sequence."
+    },
+    {
+      "name": "Product and lower accent",
+      "spec": "Center each product above a lower gradient that changes toward yellow, green or pink with the device."
+    }
+  ],
+  "ingredient": {
+    "name": "Product-related gradient accent",
+    "role": "Connect the device color to its setting while retaining a blue brand reference.",
+    "application": "In the shown sequence, vary the lower gradient accent with the product and retain blue above.",
+    "scope": "Observed product presentation in the 2023 case study; no exact color values or mandatory proportions are supplied."
+  },
+  "reference_purposes": {
+    "Intent": "The source section explicitly presents color as a way to add flexibility to the brand.",
+    "Expression": "Blue gradients acquire different lower accents while remaining visually related.",
+    "Application": "The sequence pairs those color variations with individual consumer devices."
+  },
+  "motion": "../sources/o07.mp4"
+}

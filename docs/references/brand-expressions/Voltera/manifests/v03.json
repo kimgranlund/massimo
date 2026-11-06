@@ -1,0 +1,32 @@
+{
+  "id": "V03",
+  "title": "What is a brand?",
+  "image": "v03.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 3
+  },
+  "slide_intent": "Teach designers to consider what repeated encounters lead people to feel and remember about a company.",
+  "strategic_value": "Consistency across language, marks and graphic elements can help Voltera make a recognizable impression.",
+  "demonstration": "A photograph of color and design studies sits beside questions about audience impressions and a short argument for consistency.",
+  "category": "Brand",
+  "practical_value": "Use the questions about audience response to review a proposed design alongside the rest of the brand.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 3 in a blue tab at lower right."
+    },
+    {
+      "name": "Design work in progress",
+      "spec": "Place a full-height photograph of swatches, paper and a tablet between the rail and the text."
+    },
+    {
+      "name": "Audience questions",
+      "spec": "Set the heading and several short questions about how someone encounters Voltera in the right column."
+    },
+    {
+      "name": "Consistency and contact",
+      "spec": "Follow the questions with the bold gut-check line, the rationale for consistency and a contact line."
+    }
+  ]
+}

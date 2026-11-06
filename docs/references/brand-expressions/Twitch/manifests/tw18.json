@@ -1,0 +1,31 @@
+{
+  "id": "TW18",
+  "title": "Creator card family",
+  "image": "tw18.png",
+  "source": "../sources/tw18.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 18,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Use a repeatable frame to support varied individuals because people should retain their own identity within the platform.",
+  "strategic_value": "The shared signature and handle placement can connect three creators without making their clothing or expressions uniform.",
+  "demonstration": "Valkyrae, DrLupo and AnneMunition appear in three cards with Twitch signatures overhead and slash-prefixed handles below.",
+  "category": "Application",
+  "practical_value": "Compare how light and dark card backgrounds support different portraits while preserving the same reading order.",
+  "content_islands": [
+    {
+      "name": "Three-card row",
+      "spec": "Align the cards horizontally, keeping the Twitch signature above each portrait."
+    },
+    {
+      "name": "Names and contrast",
+      "spec": "Place slash-prefixed handles at the bottom; use pale cards at the sides and a black center card."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The same portrait-card arrangement is applied to three named creators.",
+    "Expression": "Different portrait expressions and gradient accents coexist within the repeated frame."
+  }
+}

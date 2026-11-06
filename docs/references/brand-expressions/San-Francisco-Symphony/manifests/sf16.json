@@ -1,0 +1,31 @@
+{
+  "id": "SF16",
+  "title": "Collaborative partner street posters",
+  "image": "sf16.png",
+  "source": "../sources/sf16.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 16,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Give each performer room within a shared layout because individual identity and institutional recognition must coexist.",
+  "strategic_value": "Consistent portrait framing can connect different collaborators with one Symphony program.",
+  "demonstration": "Three freestanding posters name Caroline Reiley, Esa-Pekka Salonen and Julia Bullock around large portraits on pale grounds.",
+  "category": "Application",
+  "practical_value": "Adapt name size and placement around each portrait while maintaining the campaign family.",
+  "content_islands": [
+    {
+      "name": "Portrait series",
+      "spec": "Retain the three posters in depth along the sidewalk."
+    },
+    {
+      "name": "Names and signatures",
+      "spec": "Keep the large names around the portraits and small Symphony marks above."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three freestanding posters name Caroline Reiley, Esa-Pekka Salonen and Julia Bullock around large portraits on pale grounds.",
+    "Application": "The source demonstrates three freestanding posters name Caroline Reiley, Esa-Pekka Salonen and Julia Bullock around large portraits on pale grounds."
+  }
+}

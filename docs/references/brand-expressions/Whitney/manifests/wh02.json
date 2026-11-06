@@ -1,0 +1,30 @@
+{
+  "id": "WH02",
+  "title": "Whitney graphic identity manual",
+  "image": "wh02.png",
+  "source": "../sources/manual2.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 2,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Expose the construction idea at the point of handoff so another designer can understand the system before using its templates.",
+  "strategic_value": "The cover’s division instruction can make Whitney’s flexible mark legible as a repeatable procedure.",
+  "demonstration": "An angled white manual pairs a large uppercase instruction with a faint four-part rectangle.",
+  "category": "Brand",
+  "practical_value": "Use a manual cover to connect an identity’s defining operation to the guidance it contains; do not mistake this cover photograph for the complete manual.",
+  "content_islands": [
+    {
+      "name": "Instruction",
+      "spec": "Set the oversized uppercase division instruction on the upper cover."
+    },
+    {
+      "name": "Construction field",
+      "spec": "Place four adjacent equal spaces beneath the words, retaining the photographed book edges."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay describes the identity as a system represented by a line drawing and introduces a five-step construction procedure.",
+    "Expression": "The photographed cover uses tightly stacked black uppercase text and a restrained line diagram."
+  }
+}

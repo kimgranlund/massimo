@@ -1,0 +1,28 @@
+{
+  "id": "SO05",
+  "title": "Communication audiences",
+  "image": "so05.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Teach writers to judge how much context a reader needs. A first encounter, a continuing relationship and a professional partnership call for different levels of detail.",
+  "strategic_value": "Special Olympics can explain itself plainly to newcomers while giving members and partners the information their roles require.",
+  "demonstration": "Three columns pair circular illustrations with audience labels and short descriptions. The left note asks the reader to consider audience familiarity when choosing detail and language.",
+  "category": "Voice",
+  "practical_value": "Choose the level of explanation for the general public, members and supporters, or sponsors and partners before drafting the message.",
+  "content_islands": [
+    {
+      "name": "Audience premise",
+      "spec": "Set the red heading and a bold explanation above the comparison."
+    },
+    {
+      "name": "Planning prompt",
+      "spec": "Use the narrow left column for the guidance icon, a bold note and the red exercise prompt."
+    },
+    {
+      "name": "Audience comparison",
+      "spec": "Use three equal text columns with circular illustrations, red group names and vertical separators."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "SF33",
+  "title": "Personalized donor stationery",
+  "image": "sf33.png",
+  "source": "../sources/sf33.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 33,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Make recognition personal because supporters should see their own contribution within the institution’s identity.",
+  "strategic_value": "Individually composed names can extend the Symphony’s variable typography into donor appreciation.",
+  "demonstration": "A pale thank-you sheet sits beside five colored name cards with differently scaled letters.",
+  "category": "Application",
+  "practical_value": "Use a shared type treatment to personalize names while retaining a consistent institutional signature.",
+  "content_islands": [
+    {
+      "name": "Thank-you sheet",
+      "spec": "Place the pale letter at left with its heading, small text and Symphony signature."
+    },
+    {
+      "name": "Name cards",
+      "spec": "Keep the surrounding colored cards and their individually composed names as a comparison."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A pale thank-you sheet sits beside five colored name cards with differently scaled letters.",
+    "Application": "The source demonstrates a pale thank-you sheet sits beside five colored name cards with differently scaled letters."
+  }
+}

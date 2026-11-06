@@ -1,0 +1,24 @@
+{
+  "id": "TM16",
+  "title": "T-Mobile Logo Don’ts",
+  "image": "tm16.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Make damaging alterations visible so contributors can recognize when a mark has lost consistency.",
+  "strategic_value": "A shared misuse checklist can protect the recognizable shape and relationships of T-Mobile marks.",
+  "demonstration": "Twelve marked failures show old artwork, color changes, altered spacing, letter substitutions, effects, distortion and busy backgrounds.",
+  "category": "Brand",
+  "practical_value": "Compare a proposed use against the specific failure examples before production.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Keep the section title in the white left column."
+    },
+    {
+      "name": "Misuse matrix",
+      "spec": "Arrange twelve crossed examples in three rows of four, keeping each short explanation with its mark."
+    }
+  ]
+}

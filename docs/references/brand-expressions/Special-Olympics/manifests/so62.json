@@ -1,0 +1,28 @@
+{
+  "id": "SO62",
+  "title": "Email signature with Graphics",
+  "image": "so62.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 62
+  },
+  "slide_intent": "Decide how a graphic should accompany an email signature. The recipient must be able to find the sender and contact details before encountering a campaign message.",
+  "strategic_value": "A common text block can connect everyday correspondence to an event or movement-wide milestone without changing the sender’s identity.",
+  "demonstration": "Two signatures repeat the same name and contacts. One ends with an anniversary strip and the other with the athlete oath. Additional event and volunteer graphics line the lower edge.",
+  "category": "Application",
+  "practical_value": "Keep the text hierarchy fixed and choose a relevant graphic to follow it. Check that its scale preserves the contact block as a readable unit.",
+  "content_islands": [
+    {
+      "name": "Signature rules",
+      "spec": "List the text settings and the purpose of the graphic at left. Number the parts so their counterparts can be found in the examples."
+    },
+    {
+      "name": "Paired signatures",
+      "spec": "Use two side-by-side signatures with matching contact lines. Change the closing graphic while preserving the common structure above it."
+    },
+    {
+      "name": "Graphic options",
+      "spec": "Run the alternative event, audience and volunteer examples along the bottom as separate assets."
+    }
+  ]
+}

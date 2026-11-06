@@ -1,0 +1,28 @@
+{
+  "id": "V14",
+  "title": "Hues and shades",
+  "image": "v14.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Give designers a way to vary a tone while keeping its relationship to the base color visible.",
+  "strategic_value": "Voltera can provide lighter accents and graduated neutrals without introducing an unrelated hue for each new need.",
+  "demonstration": "A four-by-four matrix groups dark neutrals, light neutrals, blues and greens. Each tile contains its name and reproduction values.",
+  "category": "Color",
+  "practical_value": "Choose a shade from the relevant row and read its color values directly from the selected swatch.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 14 in a blue tab at lower right."
+    },
+    {
+      "name": "Palette heading",
+      "spec": "Set Hues and shades above the matrix beneath the Colour palette label and green dash."
+    },
+    {
+      "name": "Swatch matrix",
+      "spec": "Use one row per color family. Put the base value at left and three variants to its right. Keep the name and HEX, RGB and CMYK specifications within each rounded tile and adjust type color for legibility."
+    }
+  ]
+}

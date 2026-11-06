@@ -1,0 +1,33 @@
+{
+  "id": "NH20",
+  "title": "Membership cards",
+  "image": "nh20.png",
+  "source": "../sources/nh20.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 20,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Separate practical identification from expressive graphics, because a card must be usable as well as recognizable.",
+  "strategic_value": "The contrast between acid-yellow member details and neutral letter-ring backs can make a small functional object distinctive.",
+  "demonstration": "An angled arrangement of cards alternates yellow fronts with names, barcodes and museum signatures against gray backs carrying large black radial letters.",
+  "category": "Application",
+  "practical_value": "Compare front/back roles before placing identity graphics around membership data.",
+  "content_islands": [
+    {
+      "name": "Functional fronts",
+      "spec": "Keep the museum signature, Member label, personal details and barcodes on the yellow faces."
+    },
+    {
+      "name": "Graphic backs",
+      "spec": "Use gray faces for large black concentric NHM letters."
+    },
+    {
+      "name": "Arrangement",
+      "spec": "Alternate the two sides in an angled repeating field."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "An angled arrangement of cards alternates yellow fronts with names, barcodes and museum signatures against gray backs carrying large black radial letters."
+  }
+}

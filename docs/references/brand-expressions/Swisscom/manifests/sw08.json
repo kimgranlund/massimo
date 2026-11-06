@@ -1,0 +1,33 @@
+{
+  "id": "SW08",
+  "title": "Digital-system workshop",
+  "image": "sw08.png",
+  "source": "../sources/sw08.webp",
+  "location": {
+    "source_order": 12,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Make related design decisions visible together so a team can compare whether separate digital elements form a coherent system.",
+  "strategic_value": "A shared view of interface studies can support the digital-platform consistency described in the Swisscom case study.",
+  "demonstration": "A workshop photograph shows several people facing a wall of interface printouts, color studies and diagrams. A desk and plant frame the foreground.",
+  "category": "Brand",
+  "practical_value": "Review a system as a group of related artifacts; the photograph does not expose enough detail to reproduce its individual interface rules.",
+  "content_islands": [
+    {
+      "name": "Review wall",
+      "spec": "Fill the background with the photographed interface printouts, color studies and diagrams in their original arrangement."
+    },
+    {
+      "name": "Working group",
+      "spec": "Keep the people in front of the wall to show the artifacts being discussed together."
+    },
+    {
+      "name": "Workspace foreground",
+      "spec": "Retain the desk, plant and small letter blocks as the surrounding workshop context."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying case-study text says the digital design system was developed to unify platforms and redefine the customer experience.",
+    "Application": "The photograph demonstrates a team reviewing interface and color studies together; individual detailed rules are not legible."
+  }
+}

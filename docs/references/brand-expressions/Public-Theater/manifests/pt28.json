@@ -1,0 +1,36 @@
+{
+  "id": "PT28",
+  "title": "Open / 2012–13 season",
+  "image": "pt28.png",
+  "source": "../sources/pt28.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 28,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Express the institution as a collection of activities because audiences may encounter it through more than one program.",
+  "strategic_value": "The OPEN message can connect festivals, conversations, music and theater beneath one Public identity.",
+  "demonstration": "A red-bordered poster distributes program names and figure cutouts around a wide PUBLIC OPEN band and 12/13 season numerals.",
+  "category": "Brand",
+  "practical_value": "Compare institutional positioning with the individual activities offered beneath it.",
+  "content_islands": [
+    {
+      "name": "Program field",
+      "spec": "Arrange named activities and figures across the white upper field."
+    },
+    {
+      "name": "Institutional band",
+      "spec": "Bridge the layout with the large black Public name on red, with season and supporting information below."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A red-bordered poster distributes program names and figure cutouts around a wide PUBLIC OPEN band and 12/13 season numerals.",
+    "Application": "The season poster brings multiple Public activities and the 2012–13 season beneath the OPEN message."
+  },
+  "ingredient": {
+    "name": "Public Open band",
+    "role": "Connect separate activities under one institutional invitation.",
+    "application": "Carry the red band and large Public name across differing program content, as the shown campaign does.",
+    "scope": "2012–13 campaign family in this source; no universal color ratio or minimum size is stated."
+  }
+}

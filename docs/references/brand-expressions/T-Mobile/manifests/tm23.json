@@ -1,0 +1,30 @@
+{
+  "id": "TM23",
+  "title": "TeleNeo",
+  "image": "tm23.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Show how a consistent type voice carries different kinds of messages so people recognize the speaker across contexts.",
+  "strategic_value": "TeleNeo across offers, network claims and human stories can give T-Mobile communications a shared voice.",
+  "demonstration": "A collage applies the typeface to campaign headlines, prices, product offers and customer imagery.",
+  "category": "Typography",
+  "practical_value": "Compare the face across a short claim, a price and narrative copy before choosing weight and scale.",
+  "content_islands": [
+    {
+      "name": "Typeface rationale",
+      "spec": "Place the explanation of the exclusive brand font at left."
+    },
+    {
+      "name": "Application collage",
+      "spec": "Fill the right field with differently sized campaign specimens, leading with Un-carrier Next."
+    }
+  ],
+  "ingredient": {
+    "name": "TeleNeo",
+    "role": "Give words a consistent T-Mobile voice across media.",
+    "application": "Use the brand face across products and channels, adapting hierarchy to message and format.",
+    "scope": "Typeface introduction; detailed weight and treatment limits follow on later pages."
+  }
+}

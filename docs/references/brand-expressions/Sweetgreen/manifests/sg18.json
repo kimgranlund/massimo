@@ -1,0 +1,38 @@
+{
+  "id": "SG18",
+  "title": "Ingredient selection grid",
+  "image": "sg18.png",
+  "source": "../sources/sg18.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 18,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Make state change visible without moving the item so people can understand what has been selected.",
+  "strategic_value": "A quiet green selection field can connect Sweetgreen’s ingredient chooser to its palette while preserving food visibility.",
+  "demonstration": "Twelve ingredient tiles form a three-column grid; selected tile backgrounds change from cream to muted green while photographs and names remain in place.",
+  "category": "Application",
+  "practical_value": "Compare selected and unselected states using the same ingredient tile structure.",
+  "content_islands": [
+    {
+      "name": "Tile grid",
+      "spec": "Arrange photographs above names in twelve evenly sized cells."
+    },
+    {
+      "name": "Selection sequence",
+      "spec": "Change selected cell fills while keeping positions, labels and images stable."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The animation demonstrates selection feedback within an ingredient grid.",
+    "Expression": "Muted green selected tiles complement the ingredient photography."
+  },
+  "ingredient": {
+    "name": "Ingredient tile selection fill",
+    "role": "Distinguish chosen ingredients without replacing their images.",
+    "application": "Change the tile background for selection while retaining image and label, as shown.",
+    "scope": "Observed interface example; no accessibility threshold, interaction specification or exact color value is supplied."
+  },
+  "motion": "../sources/sg18.mp4"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO17",
+  "title": "Authentic",
+  "image": "so17.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Teach communicators to recognize the value of an observed personal moment. Specific relationships give a reader something concrete to believe and remember.",
+  "strategic_value": "Special Olympics can ground its accounts of change in people and communities that participate in the movement.",
+  "demonstration": "Two people in pale blue shirts lean toward each other and smile. The copy emphasizes grassroots participation and everyday stories of achievement.",
+  "category": "Voice",
+  "practical_value": "Choose a personal moment and supply enough context to explain what it means to the people involved.",
+  "content_islands": [
+    {
+      "name": "Photographic example",
+      "spec": "Use the photograph nearly edge to edge, keeping the two faces and their close gesture clear."
+    },
+    {
+      "name": "Trait heading",
+      "spec": "Place the red Authentic heading below the faces."
+    },
+    {
+      "name": "Meaning and expression",
+      "spec": "Set the grassroots premise and the guidance on personal stories side by side on a translucent lower-left field."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "SG38",
+  "title": "Bowls and bags display",
+  "image": "sg38.png",
+  "source": "../sources/sg38.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 38,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Repeat a small set of materials and colors in a space so separate objects read as one environment.",
+  "strategic_value": "The green tiles, bags and simple vessels can give Sweetgreen’s retail space a coherent material character.",
+  "demonstration": "Wood shelves against green tiles hold pale bowls and small plants; green and kraft bags hang from hooks along the bottom.",
+  "category": "Application",
+  "practical_value": "Compare identity expressed through objects and material repetition with identity expressed through printed graphics.",
+  "content_islands": [
+    {
+      "name": "Upper shelves",
+      "spec": "Arrange pale bowls and plants along the timber shelves."
+    },
+    {
+      "name": "Hanging bags",
+      "spec": "Place green and kraft bags below the shelving against the tiled wall."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph coordinates serving vessels, bags and shelving within a retail environment.",
+    "Expression": "Green tile, timber, kraft paper and pale bowls form a repeated material palette."
+  }
+}

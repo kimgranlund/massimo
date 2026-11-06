@@ -1,0 +1,28 @@
+{
+  "id": "SO06",
+  "title": "Identity zones",
+  "image": "so06.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Teach teams to match a communication task with the design judgment it requires. A reusable identifier and an emotive campaign make different demands on the people producing them.",
+  "strategic_value": "Special Olympics can distribute routine work locally while directing more complex creative work to suitably skilled designers.",
+  "demonstration": "Three columns describe Core identity, Operational and Agency. The icons change from a filled central dot to middle and outer rings. A bottom row specifies the level of expertise for each zone.",
+  "category": "Brand",
+  "practical_value": "Decide whether an item can use a template, needs in-house design skills or warrants a professional agency brief.",
+  "content_islands": [
+    {
+      "name": "Zone introduction",
+      "spec": "Place the premise and red exercise in the narrow left column."
+    },
+    {
+      "name": "Zone comparison",
+      "spec": "Order three ruled columns from Core identity through Operational to Agency. Use a concentric target above each heading."
+    },
+    {
+      "name": "Production guidance",
+      "spec": "Align the bold expertise statements across the bottom, separated from examples by fine red rules."
+    }
+  ]
+}

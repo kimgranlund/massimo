@@ -1,0 +1,24 @@
+{
+  "id": "SL47",
+  "title": "Trade dress",
+  "image": "sl47.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 47
+  },
+  "slide_intent": "Identify the composition of an identity as a subject in its own right. Readers may recognize a service through a combination of cues even without its logo.",
+  "strategic_value": "Slack can name the broader family of visual and sensory elements it regards as distinctive.",
+  "demonstration": "One short clause lists examples including color combinations, graphics, sounds, icons and typefaces. It occupies a small area beneath the title on an otherwise open page.",
+  "category": "Brand",
+  "practical_value": "Use the page to locate this edition’s treatment of combined identity cues when reviewing a third-party design.",
+  "content_islands": [
+    {
+      "name": "Clause under the heading",
+      "spec": "Align the Trade dress heading with the book’s left margin and rule. Place the single lettered paragraph beneath it in the narrow left column."
+    },
+    {
+      "name": "Open field and folio",
+      "spec": "Leave the rest of the page open down to the ruled governance footer."
+    }
+  ]
+}

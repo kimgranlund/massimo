@@ -1,0 +1,29 @@
+{
+  "id": "PT11",
+  "title": "Some People",
+  "image": "pt11.png",
+  "source": "../sources/pt11.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 11,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Coordinate portrait variation with type because a performer’s range can be communicated within one composition.",
+  "strategic_value": "Two contrasting figures can suggest multiplicity while gold lettering holds the production information together.",
+  "demonstration": "Red and blue cutout figures stand on black beneath tall gold SOME PEOPLE typography and stacked credits.",
+  "category": "Imagery",
+  "practical_value": "Compare separate color treatments for two figures against a unified typographic palette.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Place tall gold title lettering across the top."
+    },
+    {
+      "name": "Figures and credits",
+      "spec": "Balance the red figure at left and blue figure at right around compact gold credit blocks."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Red and blue cutout figures stand on black beneath tall gold SOME PEOPLE typography and stacked credits."
+  }
+}

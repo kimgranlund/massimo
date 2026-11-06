@@ -1,0 +1,30 @@
+{
+  "id": "TW22",
+  "title": "Mobile / Launch screen",
+  "image": "tw22.png",
+  "source": "../sources/tw22.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 22,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Reduce the identity to a clear opening signal so a small screen can establish recognition immediately.",
+  "strategic_value": "A centered Twitch signature on purple can connect app entry with the wider brand vocabulary.",
+  "demonstration": "A phone mockup shows the white-and-black Twitch wordmark centered on a solid purple screen, surrounded by a bright gradient.",
+  "category": "Application",
+  "practical_value": "Compare the focused in-app launch treatment with the more varied external presentation background.",
+  "content_islands": [
+    {
+      "name": "Phone",
+      "spec": "Center the device upright and keep the wordmark isolated on its purple screen."
+    },
+    {
+      "name": "External gradient",
+      "spec": "Surround the phone with the case-study color field; do not treat it as part of the app UI."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The signature appears on a mobile launch screen."
+  }
+}

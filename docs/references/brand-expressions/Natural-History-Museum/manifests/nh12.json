@@ -1,0 +1,29 @@
+{
+  "id": "NH12",
+  "title": "T-shirt",
+  "image": "nh12.png",
+  "source": "../sources/nh12.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 12,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let a symbol carry identity without a long name, because clothing is read as both an affiliation and a graphic.",
+  "strategic_value": "The compact multicolor mark on purple can make Museum merchandise recognizable while remaining wearable.",
+  "demonstration": "A purple T-shirt hangs against blue with a small circular multicolor mark on its upper chest.",
+  "category": "Application",
+  "practical_value": "Compare the chest-scale symbol with the larger treatment on other merchandise.",
+  "content_islands": [
+    {
+      "name": "Chest emblem",
+      "spec": "Place the small circular NHM mark centrally on the upper chest."
+    },
+    {
+      "name": "Garment",
+      "spec": "Retain the full hanging shirt and blue background to show scale and material."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A purple T-shirt hangs against blue with a small circular multicolor mark on its upper chest."
+  }
+}

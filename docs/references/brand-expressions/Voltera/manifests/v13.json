@@ -1,0 +1,36 @@
+{
+  "id": "V13",
+  "title": "Designing with colour",
+  "image": "v13.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Teach designers to select accent colors for associations they can evoke and to control their relative prominence in a composition.",
+  "strategic_value": "Voltera can connect blue to the research associations reported in interviews and green to circuit boards while keeping a common palette across products.",
+  "demonstration": "The page assigns 60% of a design to monochrome, 30% to the primary accent and 10% to the secondary accent. Four equal swatches identify the available colors.",
+  "category": "Color",
+  "practical_value": "Use the percentages to plan a design and the swatches to choose the exact values. Check the guide’s dark-background guidance before setting accent-colored text.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 13 in a blue tab at lower right."
+    },
+    {
+      "name": "Interview context",
+      "spec": "Place the reported associations for blue and green below the title."
+    },
+    {
+      "name": "Usage ratios",
+      "spec": "Pair the 60/30/10 heading and explanation with a compact list of percentages and their roles."
+    },
+    {
+      "name": "Core swatches",
+      "spec": "Align Rich Black, Off White, blue Primary accent and green Secondary accent in a row with their HEX, RGB and CMYK values below."
+    },
+    {
+      "name": "Text contrast note",
+      "spec": "Place the text-contrast guidance and reference links beneath the palette."
+    }
+  ]
+}

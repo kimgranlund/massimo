@@ -1,0 +1,32 @@
+{
+  "id": "SL13",
+  "title": "Voice and tone",
+  "image": "sl13.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Address readers as people with different needs and contexts. A recognizable voice can vary its tone according to the message and audience.",
+  "strategic_value": "Slack can sound familiar in multiple situations while preserving the precision that work communication needs.",
+  "demonstration": "The left statement describes speaking directly to a user. The right column explains a more human voice and the need to vary tone by audience, context and information.",
+  "category": "Voice",
+  "practical_value": "Decide how conversational to be by identifying the audience, situation and information the reader needs.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Voice principle",
+      "spec": "Set the direct-address principle in large light-weight aubergine type at left."
+    },
+    {
+      "name": "Tone guidance",
+      "spec": "Place three compact paragraphs at right. Start with a bold lead phrase and distinguish the enduring voice from changes of tone."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}

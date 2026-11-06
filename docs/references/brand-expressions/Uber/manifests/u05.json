@@ -1,0 +1,36 @@
+{
+  "id": "U05",
+  "title": "Color / Primary brand colors and Safety Blue",
+  "image": "u05.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Distinguish the everyday palette from a meaningful accent so color can mark moments of support instead of becoming undifferentiated decoration.",
+  "strategic_value": "The source links black and white to accessibility, simplicity and consistency; reserving Safety Blue can make Uber’s care moments more recognizable.",
+  "demonstration": "Two explanatory sections sit beside tall white and black swatches and a blue strip spanning beneath them; each swatch carries production values.",
+  "category": "Color",
+  "practical_value": "Use black and white as the primary palette and decide whether a user interaction warrants the sparing blue accent.",
+  "content_islands": [
+    {
+      "name": "Primary palette rationale",
+      "spec": "Place the primary-color explanation in the upper left opposite white and black fields with their values."
+    },
+    {
+      "name": "Safety Blue role",
+      "spec": "Place the support, assurance and delight explanation in the lower left; place the labeled blue field beneath the two primary swatches."
+    }
+  ],
+  "ingredient": {
+    "name": "Primary palette and Safety Blue",
+    "role": "Provide a consistent neutral base and signal support at selected interactions.",
+    "application": "Use white and black as primary colors; use Safety Blue sparingly for support, assurance and delight.",
+    "scope": "October 2018 partner/sponsor communications; the field areas on this page do not establish numeric usage percentages."
+  },
+  "reference_purposes": {
+    "Intent": "The page explicitly connects black and white with accessibility, simplicity and consistency, and blue with support, assurance and delight.",
+    "Expression": "Large white and black fields contrast with the blue band.",
+    "Application": "The page supplies RGB, CMYK, hex and PMS specifications for the three colors.",
+    "Constraint": "Safety Blue should be used sparingly at moments of interaction between user and brand."
+  }
+}

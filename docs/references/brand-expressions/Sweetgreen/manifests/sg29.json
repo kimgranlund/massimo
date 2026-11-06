@@ -1,0 +1,31 @@
+{
+  "id": "SG29",
+  "title": "You are where you eat tote",
+  "image": "sg29.png",
+  "source": "../sources/sg29.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 29,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Let a carried object express a memorable belief so the brand travels through everyday use.",
+  "strategic_value": "The phrase on a produce-filled tote can connect Sweetgreen’s identity with the places and food people choose.",
+  "demonstration": "A hand holds a dark green tote filled with vegetables; large white serif words read You Are Where You Eat.",
+  "category": "Application",
+  "practical_value": "Judge a short message at the scale and folds of a reusable bag.",
+  "content_islands": [
+    {
+      "name": "Tote message",
+      "spec": "Stack the white words on the bag’s broad face."
+    },
+    {
+      "name": "Use context",
+      "spec": "Retain the hand, vegetables and outdoor background to show the object being carried."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The phrase is printed on a tote used to carry produce.",
+    "Expression": "Large white serif type contrasts with dark green fabric."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "VZ12",
+  "title": "Color overview",
+  "image": "vz12.png",
+  "source": "../sources/vz13.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 13,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Give secondary colors a defined share so useful variety does not displace the identity’s recognizable core.",
+  "strategic_value": "Red, black and white can remain the dominant Verizon reference while secondary colors support specific needs.",
+  "demonstration": "The July 22, 2021 screenshot pairs a primary red, black and white palette with a narrow stack of secondary colors and a stated 15% maximum.",
+  "category": "Color",
+  "practical_value": "Apply the secondary-color limit to the whole layout rather than treating the swatch display as a precise primary-color ratio.",
+  "content_islands": [
+    {
+      "name": "Title and scope",
+      "spec": "Set the white Color overview title and update date on a black banner, followed by the palette description."
+    },
+    {
+      "name": "Palette proportions",
+      "spec": "Place the tall red, black and white fields across the main width and the compact secondary-color stack at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large red, black and white fields dominate the palette display.",
+    "Application": "The text identifies the three primary colors and separates a suite of secondary colors.",
+    "Constraint": "The text says secondary colors must not occupy more than 15% of any layout."
+  },
+  "ingredient": {
+    "name": "Secondary palette",
+    "role": "Support communication while preserving the dominant red, black and white identity.",
+    "application": "Keep secondary colors to no more than 15% of a layout.",
+    "scope": "Historical Color overview updated July 22, 2021. The source does not prescribe a numerical ratio among the three primary colors."
+  }
+}

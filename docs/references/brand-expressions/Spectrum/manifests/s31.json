@@ -1,0 +1,24 @@
+{
+  "id": "S31",
+  "title": "8.0 / Who to Contact",
+  "image": "s31.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Make responsibility easy to locate so unresolved questions reach a person with the relevant role.",
+  "strategic_value": "Named retail roles can give Spectrum’s contributors a clear route for resolving execution questions.",
+  "demonstration": "A large section heading sits above a compact Retail Team list in two columns on the pale gradient field.",
+  "category": "Brand",
+  "practical_value": "Identify the kinds of roles a brand guide should name, while treating these 2017 personal contacts as archival.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Set the cyan number above the large dark blue title at upper left."
+    },
+    {
+      "name": "Retail team directory",
+      "spec": "Place the cyan team label below, followed by four name, role and email groups in two compact columns."
+    }
+  ]
+}

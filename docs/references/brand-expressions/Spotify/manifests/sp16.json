@@ -1,0 +1,31 @@
+{
+  "id": "SP16",
+  "title": "Blue-lit performance close-up",
+  "image": "sp16.png",
+  "source": "../sources/sp16.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 16,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/c6f0b9e01e7cf630fe9d96f3aca4c447978c4c2a-2400x1920.png"
+  },
+  "category": "Application",
+  "slide_intent": "Let the performer remain the subject because brand atmosphere should support the event people came to experience.",
+  "strategic_value": "Spotify can extend its event palette through lighting while leaving the artist’s pose and clothing visible.",
+  "demonstration": "A performer with raised hands fills a blue-lit stage photograph with abstract scenery behind.",
+  "practical_value": "Assess how colored lighting changes material, skin and clothing without a graphic overlay.",
+  "content_islands": [
+    {
+      "name": "Performer",
+      "spec": "The central figure and raised hands dominate the crop."
+    },
+    {
+      "name": "Blue environment",
+      "spec": "Colored light and faceted background forms connect the close view to the wider stage."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A performer with raised hands fills a blue-lit stage photograph with abstract scenery behind.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

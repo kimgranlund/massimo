@@ -1,0 +1,29 @@
+{
+  "id": "NS05",
+  "title": "Sportswear HO19 / Explore Strada repeated shoe collage",
+  "image": "ns05.png",
+  "source": "../sources/ns05.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 5,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Repeat one product at changing angles so viewers can follow its silhouette through a deliberate visual rhythm.",
+  "strategic_value": "Lime accents on the repeated dark shoes can make Explore Strada identifiable within a textured composition.",
+  "demonstration": "Five dark shoe cutouts sweep from a large foreground shoe at lower left toward the upper right over a blue-gray distressed field.",
+  "category": "Imagery",
+  "practical_value": "Choose a direction for repetition that fits a landscape format and keeps the main product large.",
+  "content_islands": [
+    {
+      "name": "Footwear fan",
+      "spec": "Overlap five cutout shoes diagonally, with the largest at lower left."
+    },
+    {
+      "name": "Texture and border",
+      "spec": "Place the shoe fan over blue-gray printed texture inside a pale outer border."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Five dark shoe cutouts sweep from a large foreground shoe at lower left toward the upper right over a blue-gray distressed field."
+  }
+}

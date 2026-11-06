@@ -1,0 +1,28 @@
+{
+  "id": "TM24",
+  "title": "TeleNeo Font Family",
+  "image": "tm24.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Separate font availability from permission to use it so teams obtain the correct tools for consistent work.",
+  "strategic_value": "A clear access route can reduce substitute fonts and inconsistent T-Mobile typography.",
+  "demonstration": "Licensing text at left and installation guidance at upper right sit above an oversized cropped TeleNeo specimen.",
+  "category": "Typography",
+  "practical_value": "Identify the correct employee or external-partner access route before installing or sharing the font.",
+  "content_islands": [
+    {
+      "name": "Licensing boundary",
+      "spec": "Place the font-family title and distribution rules at left."
+    },
+    {
+      "name": "Access instructions",
+      "spec": "List family size, Office access and partner registration in the upper-right text block."
+    },
+    {
+      "name": "Typeface signature",
+      "spec": "Crop an oversized magenta TeleNeo word along the lower edge."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "SO20",
+  "title": "Our brand model",
+  "image": "so20.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Bring the organization’s ideas into one reference so a communicator can see how a local point of entry connects to the larger promise.",
+  "strategic_value": "Special Olympics can connect sports, health, education and community activity to one model while assigning different jobs to mission, personality and action.",
+  "demonstration": "A boxed diagram relates entry points, guiding idea and personality above mission, promise, action and benefits. Short definitions below explain the labels in the diagram.",
+  "category": "Brand",
+  "practical_value": "Locate a proposed story’s entry point and trace it to the promise and action it should communicate.",
+  "content_islands": [
+    {
+      "name": "Model introduction",
+      "spec": "Set the main purpose of the model in a narrow left column beside the diagram."
+    },
+    {
+      "name": "Brand model",
+      "spec": "Box the model and label its parts in red. Place the guiding idea at top center, with the promise in red and action in black below."
+    },
+    {
+      "name": "Terms",
+      "spec": "Arrange short definitions in columns beneath the diagram. Repeat the red labels so each definition is easy to match to its place in the model."
+    }
+  ]
+}

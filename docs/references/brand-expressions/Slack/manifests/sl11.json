@@ -1,0 +1,32 @@
+{
+  "id": "SL11",
+  "title": "Persona and personality",
+  "image": "sl11.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Give a brand personality a social role writers can imagine. Describing how a colleague acts helps a reader turn abstract attributes into behavior.",
+  "strategic_value": "Slack can anchor its public manner in the ideal colleague described by the guide, giving writers a way to calibrate their voice.",
+  "demonstration": "An oversized list of qualities occupies the left column. Supporting paragraphs at right connect the company culture to communication and describe an ideal colleague.",
+  "category": "Voice",
+  "practical_value": "Compare a proposed message with the colleague described here: consider whether the speaker listens, explains and helps the reader.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Personality statement",
+      "spec": "Set the first-person statement in large light-weight aubergine type in a narrow left column."
+    },
+    {
+      "name": "Behavioral interpretation",
+      "spec": "Arrange smaller paragraphs in the right column. Move from outward expression of the culture to examples of how a colleague communicates."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}

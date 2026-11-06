@@ -1,0 +1,28 @@
+{
+  "id": "SO79",
+  "title": "Informational leaflets — Leaflet formats & cover series",
+  "image": "so79.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 79
+  },
+  "slide_intent": "Teach designers to preserve a clear subject as a cover changes proportion and to distinguish titles within a series.",
+  "strategic_value": "A program can make several guides recognizable as relatives through a shared curve while color and photography identify the subject of each issue.",
+  "demonstration": "The upper row reframes an athlete and competition title across three aspect ratios. The lower row changes subject, image and color across four portrait guides.",
+  "category": "Layout",
+  "practical_value": "Choose the photograph and crop for each format, then assign related hues to distinguish individual guides in the series.",
+  "content_islands": [
+    {
+      "name": "Format notes",
+      "spec": "Number the guidance on changing proportions, selecting photographs, using series color and reversing the mark."
+    },
+    {
+      "name": "Aspect-ratio study",
+      "spec": "Arrange narrow, wider portrait and landscape covers on a common row. Keep the picture, title field and mark visible in each proportion."
+    },
+    {
+      "name": "Publication series",
+      "spec": "Line up four covers underneath. Vary color and photography while keeping the curve and accredited mark in corresponding roles."
+    }
+  ]
+}

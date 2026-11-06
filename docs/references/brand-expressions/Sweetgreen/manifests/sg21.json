@@ -1,0 +1,31 @@
+{
+  "id": "SG21",
+  "title": "Plant Forward environmental message",
+  "image": "sg21.png",
+  "source": "../sources/sg21.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 21,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Give an ambition a clear verbal hierarchy so readers can distinguish the goal from its framing idea.",
+  "strategic_value": "A dated carbon-neutrality ambition can make Sweetgreen’s environmental positioning concrete while remaining a historical claim.",
+  "demonstration": "White text on a translucent panel over farmland reads Plant, Carbon Neutrality by 2027, and Forward.",
+  "category": "Voice",
+  "practical_value": "Separate a campaign’s stated future goal from evidence that the goal has been achieved.",
+  "content_islands": [
+    {
+      "name": "Landscape",
+      "spec": "Use the cultivated field and trees as the full photographic ground."
+    },
+    {
+      "name": "Message panel",
+      "spec": "Place the stacked environmental statement on a tall translucent central panel."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork applies the identity to an environmental campaign statement.",
+    "Expression": "Large white type and a transparent vertical field leave the agricultural setting visible."
+  }
+}

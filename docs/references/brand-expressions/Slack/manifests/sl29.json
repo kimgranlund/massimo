@@ -1,0 +1,40 @@
+{
+  "id": "SL29",
+  "title": "Type specimen: Ideal stack",
+  "image": "sl29.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Teach designers to order a full page of text by role. Readers need to find the main claim, follow the supporting argument and recognize an action without giving each line equal emphasis.",
+  "strategic_value": "Slack can carry the emphasis of its brand headlines into an editorial page while using quieter body text and a distinct action to support a longer read.",
+  "demonstration": "Four descending Larsseit Bold headings share a left edge. Below them, columns of Circular body text, a lighter pull quote and a separate call to action show the roles working together. Small annotations identify the settings.",
+  "category": "Typography",
+  "practical_value": "Use the role annotations and the composed page together to decide how a heading, paragraph, quotation or call to action should read beside its neighbors.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the specimen title above a rule spanning the page."
+    },
+    {
+      "name": "Heading stack",
+      "spec": "Stack H1 through H4 in descending size. Keep their left edges aligned and right-align the role, font and size/leading labels in a narrow gutter to their left."
+    },
+    {
+      "name": "Body columns",
+      "spec": "Start two narrow paragraphs under the headings. Place the body settings in the same left annotation gutter."
+    },
+    {
+      "name": "Pull quote and attribution",
+      "spec": "Below the body, separate the aubergine quotation mark, large thin quotation and compact attribution. Align the labels with their corresponding specimens."
+    },
+    {
+      "name": "Hero paragraph and action",
+      "spec": "Use a vertical rule to separate a right-hand column. Stack the larger body example and aubergine button there, with their specifications on the outer right."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Align the page number, book title and section label below a thin rule."
+    }
+  ]
+}

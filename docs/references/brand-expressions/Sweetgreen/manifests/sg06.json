@@ -1,0 +1,38 @@
+{
+  "id": "SG06",
+  "title": "Custom Icon System",
+  "image": "sg06.png",
+  "source": "../sources/sg06.jpg",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 6,
+    "section": "Custom Icon System",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Coordinate functional symbols so people can recognize actions without relearning a visual language.",
+  "strategic_value": "Consistent green linework can connect Sweetgreen’s ordering and location tools to its wider identity.",
+  "demonstration": "Four panels group Food, Utility, Social Media and Map symbols, each with a row of five examples.",
+  "category": "Geometry",
+  "practical_value": "Compare line weight and form across task groups while preserving recognizable third-party social symbols.",
+  "content_islands": [
+    {
+      "name": "Food and utility",
+      "spec": "Use the upper two panels for food-related symbols and general actions."
+    },
+    {
+      "name": "Social and map",
+      "spec": "Use the lower panels for platform marks and location symbols; retain group labels."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Custom Icon System caption links unified stroke weight and form to functional clarity across app and signage.",
+    "Expression": "Green linear symbols share restrained detail across the four groups.",
+    "Application": "The panel labels assign icons to food, utility, social and mapping contexts."
+  },
+  "ingredient": {
+    "name": "Functional green icons",
+    "role": "Support recognition of tasks and destinations.",
+    "application": "Coordinate stroke and form across the shown functional groups; preserve the identity of social platform marks.",
+    "scope": "Case-study specimens, not a complete production icon specification; no stroke measurement is supplied."
+  }
+}

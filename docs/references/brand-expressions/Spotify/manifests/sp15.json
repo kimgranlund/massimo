@@ -1,0 +1,31 @@
+{
+  "id": "SP15",
+  "title": "Angular concert stage",
+  "image": "sp15.png",
+  "source": "../sources/sp15.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 15,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/9a601f857d01413d1a34f15f5231d49b3f13429b-2400x1920.png"
+  },
+  "category": "Geometry",
+  "slide_intent": "Enlarge simple forms into a setting because graphic identity can become a physical experience without relying only on a logo.",
+  "strategic_value": "Spotify can carry the angular vocabulary into a memorable stage silhouette.",
+  "demonstration": "A live stage places oversized pink angular structures around a performer, with illuminated edges and audience silhouettes below.",
+  "practical_value": "Explore whether a two-dimensional shape still reads when it becomes architecture.",
+  "content_islands": [
+    {
+      "name": "Sculptural structures",
+      "spec": "Large sloping forms surround and partially frame the central performance position."
+    },
+    {
+      "name": "Lighting and people",
+      "spec": "Pink edge lights separate planes; the crowd at bottom shows the structures’ scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A live stage places oversized pink angular structures around a performer, with illuminated edges and audience silhouettes below.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

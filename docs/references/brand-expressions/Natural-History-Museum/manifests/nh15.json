@@ -1,0 +1,33 @@
+{
+  "id": "NH15",
+  "title": "Bring your crawlers",
+  "image": "nh15.png",
+  "source": "../sources/nh15.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 15,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use language that connects the audience to the subject, because a visitor should understand who an invitation is for.",
+  "strategic_value": "The double meaning of crawlers can connect family visitors with the Museum’s insect collections.",
+  "demonstration": "A transport panel pairs a beetle and circular letter pattern with the cyan headline Bring your crawlers to meet ours.",
+  "category": "Voice",
+  "practical_value": "Assess how a split headline can surround a specimen without losing its sentence.",
+  "content_islands": [
+    {
+      "name": "Invitation",
+      "spec": "Place the opening words at upper left and the closing words across the lower right."
+    },
+    {
+      "name": "Specimen and pattern",
+      "spec": "Center the beetle over the dark circular letter field."
+    },
+    {
+      "name": "Signature and details",
+      "spec": "Keep the museum name at upper right and small visit information at lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A transport panel pairs a beetle and circular letter pattern with the cyan headline Bring your crawlers to meet ours."
+  }
+}

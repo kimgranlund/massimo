@@ -1,0 +1,28 @@
+{
+  "id": "SO29",
+  "title": "Brand mark · Accredited Program mark lock-up options",
+  "image": "so29.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 29
+  },
+  "slide_intent": "Teach designers how to adapt the direction and line count of the mark while keeping the local program legible.",
+  "strategic_value": "Special Olympics can offer a consistent family of local identifiers across print and digital communications.",
+  "demonstration": "Each print and online specimen carries the same Program Name line. The options change the position of the symbol, the line breaks and the overall axis.",
+  "category": "Layout",
+  "practical_value": "Match the local identifier to the available width and placement. For a longer name, consult the adapted version on the next page.",
+  "content_islands": [
+    {
+      "name": "Lockup guidance",
+      "spec": "Set the placement rationale and four named options at left."
+    },
+    {
+      "name": "Print variants",
+      "spec": "Compare two-line, single-line and centered program marks within one ruled display. Keep the program line visible under the logotype."
+    },
+    {
+      "name": "Online variant",
+      "spec": "Separate the left-symbol mark under the online band. Place the full-lockup warning at right."
+    }
+  ]
+}

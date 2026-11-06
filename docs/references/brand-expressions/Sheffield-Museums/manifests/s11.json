@@ -1,0 +1,41 @@
+{
+  "id": "S11",
+  "title": "Colour combinations",
+  "image": "s11.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 11,
+    "printed_page": 10
+  },
+  "slide_intent": "Show how to evaluate a color pairing at the size where the seal will appear. A combination that reads at large scale may lose detail when reduced.",
+  "strategic_value": "The palette can give the institution variety while keeping the seal’s lettering legible in different settings.",
+  "demonstration": "Four labeled rows compare white, black and dark green seals on colored fields, then colored seals on white. A note calls attention to lower-contrast combinations and scale.",
+  "category": "Color",
+  "practical_value": "Look up a proposed seal and background pairing in the relevant row and consider the final scale for combinations with lower contrast.",
+  "content_islands": [
+    {
+      "name": "Palette guidance",
+      "spec": "Set the title and short notes in the narrow left column."
+    },
+    {
+      "name": "Combination matrix",
+      "spec": "Label four rows by foreground and background. Use swatches and small seal specimens at a common scale so a reader can scan across each row."
+    },
+    {
+      "name": "Scale note",
+      "spec": "Place the lower-contrast callout near the colored-on-white specimens it qualifies."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The lower-contrast callout ties larger-scale use to accessibility.",
+    "Expression": "The matrix exposes the range of seal-and-background color combinations.",
+    "Application": "Rows organize suggested combinations by white, black, dark green and colored foregrounds.",
+    "Constraint": "The callout qualifies the lower-contrast mint and pink seals on white by requiring consideration at larger scale."
+  },
+  "ingredient": {
+    "name": "Seal and background pairing",
+    "role": "Preserve the seal’s lettering and line detail as colors change.",
+    "application": "Use the suggested combination matrix to select foreground and background. Consider lower-contrast colored seals on white at a larger scale, as the callout directs.",
+    "scope": "The parent museum seal in the illustrated palette combinations. The page gives no numerical contrast ratio or minimum size for these pairings."
+  }
+}

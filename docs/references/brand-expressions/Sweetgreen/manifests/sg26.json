@@ -1,0 +1,31 @@
+{
+  "id": "SG26",
+  "title": "Carbon-footprint social diagram",
+  "image": "sg26.png",
+  "source": "../sources/sg26.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 26,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Organize a broad responsibility message into small actions so readers can see possible points of participation.",
+  "strategic_value": "The diagram can connect Sweetgreen’s environmental stance to everyday choices in a social format.",
+  "demonstration": "A phone placed over corn shows a social post with looping connections around a central Ways to lower your carbon footprint message.",
+  "category": "Application",
+  "practical_value": "Assess how a dense informational diagram reads within a social-feed frame before relying on it for detailed instruction.",
+  "content_islands": [
+    {
+      "name": "Phone and post",
+      "spec": "Center the phone, preserving the diagram and surrounding social interface."
+    },
+    {
+      "name": "Corn surround",
+      "spec": "Fill the background with close-up corn to retain the food context."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "An environmental-information diagram is shown as a social post.",
+    "Expression": "Fine looping lines and a bright central field organize the message."
+  }
+}

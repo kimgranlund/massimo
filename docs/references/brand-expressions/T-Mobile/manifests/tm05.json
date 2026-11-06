@@ -1,0 +1,24 @@
+{
+  "id": "TM05",
+  "title": "Mission + Vision",
+  "image": "tm05.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 5
+  },
+  "slide_intent": "Separate what a company aims to do from what it hopes to become so readers can distinguish direction from aspiration.",
+  "strategic_value": "Connecting customers and earning their preference can give T-Mobile teams a common basis for choices.",
+  "demonstration": "A mission statement occupies the upper center; a ruled divider separates a vision with a large magenta #1 below.",
+  "category": "Brand",
+  "practical_value": "Compare a proposed message with the distinct mission and vision statements.",
+  "content_islands": [
+    {
+      "name": "Mission",
+      "spec": "Center the mission label over a large white statement on black."
+    },
+    {
+      "name": "Vision",
+      "spec": "Place the vision below a thin rule, using magenta #1 beside two white lines."
+    }
+  ]
+}

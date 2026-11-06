@@ -1,0 +1,31 @@
+{
+  "id": "TW12",
+  "title": "Emotes and creator names / Animated grid",
+  "image": "tw12.png",
+  "source": "../sources/tw12.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 12,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Coordinate repetition and variation so a busy composition still gives viewers stable places to look.",
+  "strategic_value": "Repeated creator names and emotes can turn Twitch community material into a recognizable graphic rhythm.",
+  "demonstration": "A six-cell grid alternates repeated purple-and-white names with black cells where emotes multiply, move and change scale.",
+  "category": "Motion",
+  "practical_value": "Compare stable cell boundaries with changing content before increasing motion density.",
+  "content_islands": [
+    {
+      "name": "Name cells",
+      "spec": "Repeat AnneMunition, Kappa and Myth within alternating cells, allowing text to move and crop."
+    },
+    {
+      "name": "Emote cells",
+      "spec": "Populate the black cells with changing arrangements and scales of face and illustrated emotes."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation combines repeated creator names with multiplying emotes inside a stable grid."
+  },
+  "motion": "../sources/tw12.mp4"
+}

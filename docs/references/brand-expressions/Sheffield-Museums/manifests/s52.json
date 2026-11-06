@@ -1,0 +1,25 @@
+{
+  "id": "S52",
+  "title": "What's On Guide",
+  "image": "s52.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 52,
+    "printed_page": 51
+  },
+  "slide_intent": "Teach designers to make editions recognizable as a series while giving each quarter its own subject and color.",
+  "strategic_value": "The museum can signal continuity across changing activities by fixing the title, date and seal while varying the photography and ground.",
+  "demonstration": "Three aligned covers use pink, blue and dark green. Each runs a photograph edge to edge beneath the large What’s On title with the date and seal above and visitor information below.",
+  "category": "Layout",
+  "practical_value": "For the next issue, replace the photograph, quarter and color while retaining the common hierarchy.",
+  "content_islands": [
+    {
+      "name": "Quarterly cover comparison",
+      "spec": "Set three equal portrait covers in a row. Keep the quarter at upper left and seal at upper right on each."
+    },
+    {
+      "name": "Cover structure",
+      "spec": "Anchor the title just above a full-width landscape photo. Reserve the lower color field for venue names, entry information and the web address."
+    }
+  ]
+}

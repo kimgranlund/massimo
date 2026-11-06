@@ -1,0 +1,28 @@
+{
+  "id": "SL35",
+  "title": "Partnership lockup",
+  "image": "sl35.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Teach designers how to show two identities as peers. Optical alignment, clear space and relative scale affect which partner appears to carry more weight.",
+  "strategic_value": "Slack can identify a partnership clearly while preserving a distinct signature for each organization.",
+  "demonstration": "A horizontal example aligns Slack and a partner along their optical baselines. A stacked alternative places Slack above the partner. Pale guides explain the spacing and dividing line.",
+  "category": "Geometry",
+  "practical_value": "Choose the arrangement for the available space, give the marks comparable apparent size and use the octothorpe as the gap measure. Use the full Slack logo as shown.",
+  "content_islands": [
+    {
+      "name": "Partnership directions",
+      "spec": "Set the approved use, placement and restrictions in the left column. Keep the list beneath the construction notes."
+    },
+    {
+      "name": "Horizontal pairing",
+      "spec": "Show Slack on the left and the partner mark on the right. Bisect the clear space with a rule and annotate the baseline and gap."
+    },
+    {
+      "name": "Stacked pairing",
+      "spec": "Place the full Slack logo above a partner placeholder. Use faint octothorpe guides to show how spacing carries into the alternate arrangement."
+    }
+  ]
+}

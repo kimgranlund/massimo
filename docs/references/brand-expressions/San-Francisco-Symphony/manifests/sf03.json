@@ -1,0 +1,38 @@
+{
+  "id": "SF03",
+  "title": "3P IP Adapter: Frame",
+  "image": "sf03.png",
+  "source": "../sources/sf03.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 3,
+    "section": "3P IP Adapter: Frame",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Use typography to hold changing imagery together because audiences must recognize the institution while discovering individual performers.",
+  "strategic_value": "Names above and below the portraits can give different collaborators a shared Symphony presentation.",
+  "demonstration": "Three street posters frame performer portraits with names; orange annotations mark copy above and below content on the Julia Bullock poster.",
+  "category": "Layout",
+  "practical_value": "Separate the stable typographic frame from the variable portrait when adapting the campaign.",
+  "content_islands": [
+    {
+      "name": "Poster series",
+      "spec": "Keep the three street displays in their photographed setting."
+    },
+    {
+      "name": "Frame annotation",
+      "spec": "Retain orange copy/content labels and the outlined central image area on the rightmost display."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Three street posters frame performer portraits with names; orange annotations mark copy above and below content on the Julia Bullock poster.",
+    "Application": "The source demonstrates three street posters frame performer portraits with names; orange annotations mark copy above and below content on the Julia Bullock poster.",
+    "Intent": "The accompanying Frame text says dynamic typography holds changing programming content together while maintaining clarity."
+  },
+  "ingredient": {
+    "name": "Portrait typographic frame",
+    "role": "Use typography to hold changing imagery together.",
+    "application": "Separate the stable typographic frame from the variable portrait when adapting the campaign.",
+    "scope": "Observed case-study example; no universal numeric rule is supplied."
+  }
+}

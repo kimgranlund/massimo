@@ -1,0 +1,28 @@
+{
+  "id": "SO63",
+  "title": "International business card · Specifications for front",
+  "image": "so63.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 63
+  },
+  "slide_intent": "Adjust type size to the information load on a small card. A recipient needs to distinguish the cardholder’s name and find a contact channel quickly.",
+  "strategic_value": "Special Olympics can make the international card recognizable at standard size while improving readability when fewer details are needed.",
+  "demonstration": "An annotated 54 × 85 mm card fixes name and job title in position while contact lines build from below. Two smaller specimens compare standard and larger text.",
+  "category": "Typography",
+  "practical_value": "Use the 7 pt contact setting for the fuller card or the 8.5 pt option when space permits. Keep the 13.5 mm mark and its 3.5 mm top and right offsets consistent.",
+  "content_islands": [
+    {
+      "name": "Format and typesetting",
+      "spec": "List the format, ink, stock, margins and six numbered settings at left."
+    },
+    {
+      "name": "Maximum-content specimen",
+      "spec": "Show the front at upper right on a pale panel. Mark the fixed name lines and the lower contact rows with separate colored guides."
+    },
+    {
+      "name": "Density comparison",
+      "spec": "Pair a standard-size example with the larger-type option below. Keep the international mark visible on both."
+    }
+  ]
+}

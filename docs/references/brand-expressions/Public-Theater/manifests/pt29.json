@@ -1,0 +1,30 @@
+{
+  "id": "PT29",
+  "title": "Open / Giant",
+  "image": "pt29.png",
+  "source": "../sources/pt29.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 29,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use image scale to interpret a title because exaggeration can make a production’s premise visually immediate.",
+  "strategic_value": "The enormous figure and tiny opposing performer can make Giant memorable within the red-framed season family.",
+  "demonstration": "A large man fills most of the poster while a small figure braces against the lower-right edge of the red Public band.",
+  "category": "Imagery",
+  "practical_value": "Compare a conceptual scale contrast with the fixed campaign frame.",
+  "content_islands": [
+    {
+      "name": "Main figure",
+      "spec": "Let the oversized man extend across the picture and title areas."
+    },
+    {
+      "name": "Small counterfigure",
+      "spec": "Place the tiny figure at lower right against the Public band, keeping production details at right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A large man fills most of the poster while a small figure braces against the lower-right edge of the red Public band.",
+    "Application": "The Giant production uses the red frame and Public band shared with the season campaign."
+  }
+}

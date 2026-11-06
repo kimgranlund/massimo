@@ -1,0 +1,24 @@
+{
+  "id": "TM01",
+  "title": "Un-carrier Brand Guidelines",
+  "image": "tm01.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Establish the identity before explaining its rules so a reader recognizes the document as an expression of the brand.",
+  "strategic_value": "The dominant magenta field and oversized T-Digit can make the guide itself reinforce T-Mobile recognition.",
+  "demonstration": "A white stacked title and small wordmark occupy the left of a magenta cover; a large white T-Digit fills the right.",
+  "category": "Brand",
+  "practical_value": "Use the cover to compare the wordmark as a signature with the T-Digit as the main visual subject.",
+  "content_islands": [
+    {
+      "name": "Title and edition",
+      "spec": "Place the wordmark above the left-aligned title and the February 2024 edition below it."
+    },
+    {
+      "name": "Hero T-Digit",
+      "spec": "Fill the right half with a white T-Digit on the uninterrupted magenta field."
+    }
+  ]
+}

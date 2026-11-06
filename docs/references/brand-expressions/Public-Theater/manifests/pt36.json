@@ -1,0 +1,30 @@
+{
+  "id": "PT36",
+  "title": "Street posters / The Winter’s Tale",
+  "image": "pt36.png",
+  "source": "../sources/pt36.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 36,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use portrait relationships to communicate drama because faces can establish emotional stakes quickly.",
+  "strategic_value": "Two opposing profiles can give the Shakespeare production immediate human presence at sidewalk scale.",
+  "demonstration": "The foreground white poster places two facing profiles around THE WINTER’S TALE; Nina Hendrix and another portrait-led poster recede behind.",
+  "category": "Application",
+  "practical_value": "Compare how two faces frame a title while remaining readable from the street.",
+  "content_islands": [
+    {
+      "name": "Foreground poster",
+      "spec": "Place the profiles at opposite sides of the tall title."
+    },
+    {
+      "name": "Receding posters",
+      "spec": "Retain the neighboring campaign panels and stone facade as scale and context."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The foreground white poster places two facing profiles around THE WINTER’S TALE; Nina Hendrix and another portrait-led poster recede behind.",
+    "Application": "The Winter’s Tale appears in an outdoor display beside other portrait-based production campaigns."
+  }
+}

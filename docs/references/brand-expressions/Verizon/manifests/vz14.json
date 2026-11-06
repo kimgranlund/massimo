@@ -1,0 +1,42 @@
+{
+  "id": "VZ14",
+  "title": "Photography overview",
+  "image": "vz14.png",
+  "source": "../sources/vz15.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 16,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Choose subjects and photographic tone together so images reinforce how the brand should feel.",
+  "strategic_value": "Relatable people and warm everyday scenes can connect Verizon’s services to ordinary life.",
+  "demonstration": "The September 17, 2019 overview combines rationale, a twelve-image lifestyle mosaic and separate subject and tone lists.",
+  "category": "Imagery",
+  "practical_value": "Brief a photographer or evaluate stock imagery against both the depicted activity and the intended treatment.",
+  "content_islands": [
+    {
+      "name": "Rationale",
+      "spec": "Place the title and date on black, followed by the explanation of simple, relatable photography."
+    },
+    {
+      "name": "Lifestyle mosaic",
+      "spec": "Preserve the three rows of four photographs showing people, relationships, devices and outdoor settings."
+    },
+    {
+      "name": "Attribute lists",
+      "spec": "Use two columns below a rule, separating subject choices from tone words."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The text explains that photographic style reinforces brand tone and should reflect the brand’s core principles.",
+    "Expression": "The mosaic demonstrates candid, warm and naturally lit lifestyle scenes.",
+    "Application": "The subject and tone lists are explicitly offered for briefing photographers or selecting stock imagery.",
+    "Constraint": "The source calls for simple photography that is not busy or cluttered and shows real people in relatable scenarios."
+  },
+  "ingredient": {
+    "name": "Lifestyle photography",
+    "role": "Relate the service to recognizable people and situations.",
+    "application": "Choose simple, positive emotional images of real people in relatable scenarios; use the subject and tone lists to evaluate selections.",
+    "scope": "Photography overview updated September 17, 2019. These are the source’s art-direction criteria, not a claim that every photographed scene is documentary."
+  }
+}

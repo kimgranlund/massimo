@@ -1,0 +1,28 @@
+{
+  "id": "SO24",
+  "title": "Building blocks",
+  "image": "so24.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Teach designers to see which elements make an identity recognizable and which allow variation. A clear inventory helps them choose a combination appropriate to the message.",
+  "strategic_value": "Special Olympics can give local teams room to vary imagery and color while retaining a common mark and typographic system.",
+  "demonstration": "The page defines the mark’s elements alongside primary and secondary colors, type, curve and photography. Annotated tiles at right turn those terms into visible specimens.",
+  "category": "Brand",
+  "practical_value": "Use the inventory to identify the core mark elements, then select the supporting type, palette and photography for the communication.",
+  "content_islands": [
+    {
+      "name": "Introduction",
+      "spec": "Place the gray section label and red heading above the brief purpose statement."
+    },
+    {
+      "name": "Element definitions",
+      "spec": "Use two columns for descriptions. Group symbol, logotype and program name at left, and the palettes, type, curve and photography beside them."
+    },
+    {
+      "name": "Identity specimens",
+      "spec": "Build an annotated cluster of tiles at right. Connect cyan labels to the wordmark, symbol, program name, palette samples, typeface, curve and photographs."
+    }
+  ]
+}

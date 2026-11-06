@@ -1,0 +1,31 @@
+{
+  "id": "SG30",
+  "title": "Wordmark cap",
+  "image": "sg30.png",
+  "source": "../sources/sg30.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 30,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Reduce a signature to an appropriate scale so a small object remains recognizable without overwhelming its form.",
+  "strategic_value": "A small bright wordmark can connect Sweetgreen apparel to its vivid digital accents.",
+  "demonstration": "A dark green cap hangs on a cactus with a small yellow-green sweetgreen wordmark on its front.",
+  "category": "Application",
+  "practical_value": "Compare the visibility of a compact signature against dark fabric and a textured environment.",
+  "content_islands": [
+    {
+      "name": "Cap",
+      "spec": "Keep the small wordmark on the front panel of the dark cap."
+    },
+    {
+      "name": "Cactus setting",
+      "spec": "Retain the surrounding vertical cactus forms and sunlit background."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The wordmark is applied at small scale to a cap.",
+    "Expression": "A bright signature contrasts with the dark green fabric."
+  }
+}

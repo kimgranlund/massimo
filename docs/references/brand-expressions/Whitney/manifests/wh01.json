@@ -1,0 +1,25 @@
+{
+  "id": "WH01",
+  "title": "Selected proposal folders",
+  "image": "wh01.png",
+  "source": "../sources/stack.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 1,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Make the development process visible because an identity system depends on testing alternatives before choosing a direction.",
+  "strategic_value": "The numbered proposal folders can show how Whitney’s graphic language developed through sustained collaboration.",
+  "demonstration": "Five white proposal folders are stacked diagonally; numbered spines and differently dated covers identify a sequence of work.",
+  "category": "Brand",
+  "practical_value": "Distinguish evidence of a design process from evidence that each pictured proposal became a final rule.",
+  "content_islands": [
+    {
+      "name": "Folder stack",
+      "spec": "Place the overlapping white folders diagonally against the white field; retain numbered spines, dates and studio credits."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph shows the proposal documents used in the design process, identified by the adjacent caption as sketches and proposals from 2012."
+  }
+}

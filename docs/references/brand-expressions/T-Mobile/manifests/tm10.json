@@ -1,0 +1,28 @@
+{
+  "id": "TM10",
+  "title": "A New Look: Strengthened, Simplified, Modernized",
+  "image": "tm10.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Explain the small construction decisions that preserve clarity so a reader can see why a mark changes.",
+  "strategic_value": "Stronger stems and more open spaces can help T-Mobile retain recognizable detail at small sizes.",
+  "demonstration": "Numbered callouts on a large T-Digit and wordmark correspond to twelve geometry changes listed at right.",
+  "category": "Geometry",
+  "practical_value": "Compare the mark’s stem, spaces, curves and terminals with the stated goals before adapting related artwork.",
+  "content_islands": [
+    {
+      "name": "Change headline",
+      "spec": "Place the white title on the left of a magenta page."
+    },
+    {
+      "name": "Annotated marks",
+      "spec": "Center the T-Digit above the wordmark with numbered construction callouts."
+    },
+    {
+      "name": "Change key",
+      "spec": "Stack twelve corresponding explanations in the right column."
+    }
+  ]
+}

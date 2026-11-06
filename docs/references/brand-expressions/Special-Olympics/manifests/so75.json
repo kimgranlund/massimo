@@ -1,0 +1,24 @@
+{
+  "id": "SO75",
+  "title": "Newsletters — Sub-program newsletters",
+  "image": "so75.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 75
+  },
+  "slide_intent": "Show how a local community can name its newsletter while readers can still see which accredited program endorses it.",
+  "strategic_value": "Special Olympics can give local publications an identifiable voice while keeping the parent program’s mark consistent.",
+  "demonstration": "FanMail and News use similar nonbleed mastheads, columns and contacts. Community names appear with the titles while accredited program names remain in the marks.",
+  "category": "Application",
+  "practical_value": "Put the sub-program or community name in the newsletter masthead and its contact details in the footer. Use the accredited program lockup for endorsement.",
+  "content_islands": [
+    {
+      "name": "Local attribution guidance",
+      "spec": "Use the left column for the distinction between the local publication name and the accredited program mark."
+    },
+    {
+      "name": "Paired desktop newsletters",
+      "spec": "Place the color and grayscale examples side by side. Align mastheads and program marks at the top, then show the column structure, subheads, pull quotes and local contact footers."
+    }
+  ]
+}

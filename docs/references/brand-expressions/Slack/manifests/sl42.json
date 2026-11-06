@@ -1,0 +1,24 @@
+{
+  "id": "SL42",
+  "title": "Keys and doorways illustration",
+  "image": "sl42.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 42
+  },
+  "slide_intent": "Use a spatial metaphor to introduce rules about access. A key and several keyholes give the reader a concrete image before the governance text begins.",
+  "strategic_value": "Slack can keep a policy section within the same illustrated world as its design examples.",
+  "demonstration": "Blue planes, cream passages and sharply angled black shadows form a room-like composition. Keyholes recur in the panels, with a loose key in the foreground.",
+  "category": "Imagery",
+  "practical_value": "Choose a compact set of objects that conveys the section’s subject and can carry the entire page without a caption.",
+  "content_islands": [
+    {
+      "name": "Passages and keyholes",
+      "spec": "Fill the page with overlapping cream and blue planes. Cut keyholes into the raised panels and use angular shadows to separate planes."
+    },
+    {
+      "name": "Foreground key",
+      "spec": "Place a blue key near the bottom of the scene with its dark offset shadow. Keep open cream space around it to distinguish the object."
+    }
+  ]
+}

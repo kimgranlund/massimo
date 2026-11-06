@@ -1,0 +1,24 @@
+{
+  "id": "SO65",
+  "title": "Business card · Specifications for reverse",
+  "image": "so65.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 65
+  },
+  "slide_intent": "Choose which message belongs on the reverse of a business card. A short oath, promise, mission or tagline gives the reader a different reason to remember the organization.",
+  "strategic_value": "The reverse can give a routine exchange a more personal or explanatory voice, depending on what the recipient needs to know.",
+  "demonstration": "Four numbered red card backs compare an athlete oath, a brand promise, a longer mission and a short tagline. The text density changes with the selected message.",
+  "category": "Voice",
+  "practical_value": "Choose a message suited to the exchange or leave the reverse blank. Use local-language text when appropriate and reserve bilingual reverses for the second-language front.",
+  "content_islands": [
+    {
+      "name": "Message guidance",
+      "spec": "List the four reverse options at left and describe when a mission, local tagline or translated message is useful."
+    },
+    {
+      "name": "Four card backs",
+      "spec": "Show a two-by-two array of red cards with white type. Give the longer mission more lines and center the short tagline on its card."
+    }
+  ]
+}

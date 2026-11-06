@@ -1,0 +1,34 @@
+{
+  "id": "TM35",
+  "title": "Style and Grammar",
+  "image": "tm35.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 35
+  },
+  "slide_intent": "Translate a conversational voice into repeatable editorial decisions so writing feels coherent across contributors.",
+  "strategic_value": "Shared pronoun, casing and punctuation choices can make T-Mobile copy more consistent and inclusive.",
+  "demonstration": "Two text columns separate style choices from grammar conventions with a vertical divider.",
+  "category": "Voice",
+  "practical_value": "Edit audience address and CTAs first, then check the specific capitalization and punctuation conventions.",
+  "content_islands": [
+    {
+      "name": "Page title",
+      "spec": "Place the title at left beneath the section label."
+    },
+    {
+      "name": "Style rules",
+      "spec": "Set pronoun, abbreviation, CTA and fragment guidance in the middle column."
+    },
+    {
+      "name": "Grammar rules",
+      "spec": "Separate capitalization, em-dash, ampersand and punctuation guidance in the right column."
+    }
+  ],
+  "ingredient": {
+    "name": "Conversational copy conventions",
+    "role": "Address the reader directly and reduce unnecessary language friction.",
+    "application": "Prefer first/second person, inclusive plural pronouns and sentence-case CTAs; use exclamation points sparingly and the guide’s specified casing for Unlimited and Un-carrier.",
+    "scope": "T-Mobile copy style; exceptions include space-limited abbreviations and occasional third person."
+  }
+}

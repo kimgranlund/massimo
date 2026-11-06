@@ -1,0 +1,29 @@
+{
+  "id": "PT08",
+  "title": "Him",
+  "image": "pt08.png",
+  "source": "../sources/pt08.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 8,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Reduce a portrait to one identifying feature because absence can make an image memorable.",
+  "strategic_value": "The isolated hair silhouette can distinguish the production while the Public signature maintains affiliation.",
+  "demonstration": "Blue-and-black hair floats on a lime field above a small hot-pink HIM title.",
+  "category": "Imagery",
+  "practical_value": "Test whether a single visual fragment can carry a poster without a complete portrait.",
+  "content_islands": [
+    {
+      "name": "Hair silhouette",
+      "spec": "Center the large hairstyle in the upper field."
+    },
+    {
+      "name": "Small identifiers",
+      "spec": "Place HIM beneath it and the narrow theater signature at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Blue-and-black hair floats on a lime field above a small hot-pink HIM title."
+  }
+}

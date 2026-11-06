@@ -1,0 +1,24 @@
+{
+  "id": "TM07",
+  "title": "Core Brand Elements",
+  "image": "tm07.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Mark the transition to core brand elements so a reader can locate the next kind of decision.",
+  "strategic_value": "The repeated magenta divider can make the T-Mobile guide easier to navigate while retaining a strong brand presence.",
+  "demonstration": "A large white Core Brand Elements heading sits on a full magenta field, with a smaller list of overview, logos, color and mnemonic beneath it.",
+  "category": "Brand",
+  "practical_value": "Use this page to identify the start of the core brand elements section.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the large white heading left of center with ample surrounding magenta."
+    },
+    {
+      "name": "Section preview",
+      "spec": "Place the small section label and overview, logos, color and mnemonic list below the heading."
+    }
+  ]
+}

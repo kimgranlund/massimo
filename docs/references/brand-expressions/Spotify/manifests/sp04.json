@@ -1,0 +1,39 @@
+{
+  "id": "SP04",
+  "title": "Memory Marker",
+  "image": "sp04.png",
+  "source": "../sources/sp04.gif",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 4,
+    "extent": "Representative frame; complete local animation linked",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/bfa0f018380ef7288d84db89132327783b15c271-2000x1333.gif",
+    "poster": "GIF frame 30 at 3.8 seconds"
+  },
+  "category": "Geometry",
+  "slide_intent": "Give the identity a small family of changing shapes because repeated forms can become memorable without making every communication identical.",
+  "strategic_value": "Spotify can extend recognition beyond its logo through angular bursts, clustered circles and stepped forms.",
+  "demonstration": "The 7.2-second line animation moves from a play triangle into pointed shapes, clustered circles and stepped polygons against changing flat fields.",
+  "practical_value": "Test whether a shape family stays related as its contour, scale and orientation change.",
+  "content_islands": [
+    {
+      "name": "Central contour",
+      "spec": "A thin black outline changes through triangular, circular and stepped forms."
+    },
+    {
+      "name": "Color field",
+      "spec": "Green, red and dark blue backgrounds divide the sequence into shape families."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The 7.2-second line animation moves from a play triangle into pointed shapes, clustered circles and stepped polygons against changing flat fields.",
+    "Intent": "The adjacent Memory Marker caption explains the role of a repeatable cue in memory and distinctiveness."
+  },
+  "motion": "../sources/sp04.mp4",
+  "ingredient": {
+    "name": "Changing shape family",
+    "role": "Give the identity a small family of changing shapes because repeated forms can become memorable without making every communication identical.",
+    "application": "The 7.2-second line animation moves from a play triangle into pointed shapes, clustered circles and stepped polygons against changing flat fields.",
+    "scope": "Observed case-study example. The source does not establish a universal required construction, timing, pairing or placement rule."
+  }
+}

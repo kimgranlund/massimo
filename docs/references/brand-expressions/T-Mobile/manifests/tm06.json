@@ -1,0 +1,24 @@
+{
+  "id": "TM06",
+  "title": "Our Values",
+  "image": "tm06.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Turn a positioning idea into named behaviors so contributors know what it asks of them.",
+  "strategic_value": "Five values can connect T-Mobile’s customer-facing voice to the way its teams work.",
+  "demonstration": "A right-hand stack of five bold values and explanations sits beside an oversized cropped neon T.",
+  "category": "Brand",
+  "practical_value": "Use the values as a checklist for whether a message reflects the stated culture.",
+  "content_islands": [
+    {
+      "name": "Neon brand anchor",
+      "spec": "Crop the neon T against the left edge on black."
+    },
+    {
+      "name": "Values hierarchy",
+      "spec": "Stack the title, shared declaration and five value/explanation pairs on the right."
+    }
+  ]
+}

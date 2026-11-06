@@ -1,0 +1,25 @@
+{
+  "id": "S31",
+  "title": "Default typeface – Arial",
+  "image": "s31.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 31,
+    "printed_page": 30
+  },
+  "slide_intent": "Define a fallback that keeps routine communications readable when the brand typeface is unavailable.",
+  "strategic_value": "An explicit fallback can keep internal documents and emails consistent without diluting the face used in professionally designed work.",
+  "demonstration": "Two matched character specimens compare Arial Regular and Bold. A separate column defines when the substitution applies.",
+  "category": "Typography",
+  "practical_value": "Use Arial for email or internally produced documents when Caslon Doric is unavailable. Use Caslon Doric where the production environment supports it.",
+  "content_islands": [
+    {
+      "name": "Fallback conditions",
+      "spec": "Place the heading and a short explanation of installation and channel limits at the left."
+    },
+    {
+      "name": "Arial specimens",
+      "spec": "Stack Regular and Bold at right with corresponding labels. Repeat alphabet, numbers and punctuation in each row."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "TW04",
+  "title": "Community Canvas",
+  "image": "tw04.png",
+  "source": "../sources/tw04.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 4,
+    "section": "Community Canvas",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Give different people a shared presentation structure so audiences can see individual identity and group membership together.",
+  "strategic_value": "Consistent creator-card alignment can make Twitch’s community feel connected without giving every creator the same expression.",
+  "demonstration": "Three portrait cards pair Valkyrae, DrLupo and AnneMunition with Twitch signatures and handles; orange guides connect their portraits across the row.",
+  "category": "Layout",
+  "practical_value": "Use the guide lines to compare portrait scale and alignment while varying the person and background.",
+  "content_islands": [
+    {
+      "name": "Card row",
+      "spec": "Align three portrait cards in one row, with Twitch above and each slash-prefixed handle below."
+    },
+    {
+      "name": "Alignment annotations",
+      "spec": "Preserve the two orange horizontal strokes spanning the portraits."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The Community Canvas caption explains balancing community diversity with a unified brand presence.",
+    "Application": "Orange guide lines demonstrate consistent portrait placement across three named creator cards."
+  },
+  "ingredient": {
+    "name": "Creator card structure",
+    "role": "Connect individual creators to a common platform.",
+    "application": "Compare portrait scale and alignment within the recurring signature–portrait–handle arrangement.",
+    "scope": "Observed in the historical COLLINS identity case study; no mandatory dimensions, color proportions or universal placement rule is supplied."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "NS01",
+  "title": "Sportswear HO19 / Zoom 2K landscape collage",
+  "image": "ns01.png",
+  "source": "../sources/ns01.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 1,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Connect a product close-up with a human scene so a viewer can understand both its appearance and its place in everyday life.",
+  "strategic_value": "The taped portrait and oversized shoe can make a retro product story feel personal rather than purely technical.",
+  "demonstration": "A taped portrait at left overlaps colored textures and smaller photographs; a large shoe crop fills the right, with a white headline spanning the lower middle.",
+  "category": "Layout",
+  "practical_value": "Compare the space given to identity, wearer and shoe when adapting a campaign to a wide format.",
+  "content_islands": [
+    {
+      "name": "Portrait collage",
+      "spec": "Place the framed portrait at left over smaller photographic fragments and a coral texture."
+    },
+    {
+      "name": "Product crop",
+      "spec": "Fill the right side with the shoe and lower leg, letting the footwear dominate the foreground."
+    },
+    {
+      "name": "Copy and signature",
+      "spec": "Place the wide white headline across the lower middle, followed by smaller copy and the Nike signature."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A taped portrait at left overlaps colored textures and smaller photographs; a large shoe crop fills the right, with a white headline spanning the lower middle.",
+    "Intent": "The accompanying designer account explains that the layouts reconcile existing imagery, different retail formats and digital crops into a consistent campaign."
+  }
+}

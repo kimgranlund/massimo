@@ -1,0 +1,24 @@
+{
+  "id": "V01",
+  "title": "Brand Guidelines",
+  "image": "v01.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the book and its owner so a reader can identify the reference at a glance.",
+  "strategic_value": "The small circuit-pad signature can identify Voltera while the larger title establishes the purpose of the document.",
+  "demonstration": "A small Voltera signature and the white title share a left edge within a centered block on a dark ground.",
+  "category": "Brand",
+  "practical_value": "Use the size difference between the signature and title when introducing an official publication.",
+  "content_islands": [
+    {
+      "name": "Corporate signature",
+      "spec": "Place the blue-and-white pad mark and white wordmark above the title."
+    },
+    {
+      "name": "Book title",
+      "spec": "Set Brand Guidelines on a single line below the signature. Leave a wide dark field around the block."
+    }
+  ]
+}

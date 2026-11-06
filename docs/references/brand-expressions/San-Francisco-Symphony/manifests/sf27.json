@@ -1,0 +1,31 @@
+{
+  "id": "SF27",
+  "title": "Vertical Symphony banner",
+  "image": "sf27.png",
+  "source": "../sources/sf27.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 27,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Test extreme proportions because exterior signs must use architecture without losing recognizable letters.",
+  "strategic_value": "Tall diagonal Symphony lettering can make a narrow facade panel carry a large brand presence.",
+  "demonstration": "A yellow vertical banner with elongated black lettering hangs between building windows.",
+  "category": "Application",
+  "practical_value": "Evaluate letter distortion and reading direction in a narrow outdoor format.",
+  "content_islands": [
+    {
+      "name": "Banner",
+      "spec": "Preserve the full yellow panel and black diagonal lettering."
+    },
+    {
+      "name": "Facade",
+      "spec": "Keep the windows and pale structural frame as evidence of placement and scale."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A yellow vertical banner with elongated black lettering hangs between building windows.",
+    "Application": "The source demonstrates a yellow vertical banner with elongated black lettering hangs between building windows."
+  }
+}

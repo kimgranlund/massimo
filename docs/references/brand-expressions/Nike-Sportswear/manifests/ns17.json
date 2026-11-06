@@ -1,0 +1,33 @@
+{
+  "id": "NS17",
+  "title": "Run HO19 / Winflo Shield shoe-wall rendering",
+  "image": "ns17.png",
+  "source": "../sources/ns17.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 17,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Separate attention, identification and detail across retail surfaces so shoppers can read the display at different distances.",
+  "strategic_value": "A tall running image, small product card and repeated side messages can connect the Winflo story to actual merchandise.",
+  "demonstration": "A central running photograph stands behind a freestanding product graphic; two mannequins, shoe walls and glazed towers surround it.",
+  "category": "Application",
+  "practical_value": "Assign the hero activity image to the distant view and product details to the closer display.",
+  "content_islands": [
+    {
+      "name": "Central campaign",
+      "spec": "Place the tall runner photograph behind a smaller portrait product graphic and shoe pedestal."
+    },
+    {
+      "name": "Merchandise setting",
+      "spec": "Frame the center with two mannequins and shoe walls."
+    },
+    {
+      "name": "Side messages",
+      "spec": "Repeat white product copy and a small Swoosh on the two glazed towers."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A central running photograph stands behind a freestanding product graphic; two mannequins, shoe walls and glazed towers surround it."
+  }
+}

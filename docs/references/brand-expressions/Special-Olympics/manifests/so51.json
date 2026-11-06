@@ -1,0 +1,24 @@
+{
+  "id": "SO51",
+  "title": "Dynamic curve · Print artworks",
+  "image": "so51.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 51
+  },
+  "slide_intent": "Compare where to divide a picture with a curve. The edge and depth of the division determine whether the viewer sees an identifier, a headline or more of the athlete.",
+  "strategic_value": "Red and white masters can connect covers made by different programs while giving the photograph a shape suited to its subject.",
+  "demonstration": "Two rows compare red and white devices across top, base and half-page treatments. Each column repeats its photograph so the placement change is easy to isolate.",
+  "category": "Layout",
+  "practical_value": "Choose a master by the space needed for the mark or copy. Add the program mark separately and retain the white frame for desktop printing.",
+  "content_islands": [
+    {
+      "name": "Artwork guidance",
+      "spec": "At left explain the available masters, separate transparent marks and framed print area."
+    },
+    {
+      "name": "Treatment matrix",
+      "spec": "Arrange six portraits as a two-by-three comparison. Label columns Top, Base and Half. Label the red and white device rows vertically. Reserve the half treatment for the example with report-cover copy."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "SP11",
+  "title": "Rakim — Now streaming on Spotify",
+  "image": "sp11.png",
+  "source": "../sources/sp11.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 11,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/6993ac2119c634ad2b3647190da5e197e3d18ec8-2400x1920.png"
+  },
+  "category": "Geometry",
+  "slide_intent": "Let graphic shapes interrupt a photograph because controlled interruption can create rhythm while leaving the performer and message identifiable.",
+  "strategic_value": "Spotify can turn a conventional concert photograph into recognizable campaign material through duotone color and circular cutouts.",
+  "demonstration": "A wide red-purple Rakim photograph sits on black; black circles remove portions of the image while small copy and the logo anchor its lower edge.",
+  "practical_value": "Assess where a graphic mask can overlap an image without hiding the essential gesture.",
+  "content_islands": [
+    {
+      "name": "Performer and masks",
+      "spec": "The microphone gesture remains visible between three differently sized black circular interruptions."
+    },
+    {
+      "name": "Information row",
+      "spec": "Rakim and Now streaming on Spotify sit at lower left; the Spotify lockup sits at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A wide red-purple Rakim photograph sits on black; black circles remove portions of the image while small copy and the logo anchor its lower edge.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  },
+  "ingredient": {
+    "name": "Circular image masks",
+    "role": "Let graphic shapes interrupt a photograph because controlled interruption can create rhythm while leaving the performer and message identifiable.",
+    "application": "A wide red-purple Rakim photograph sits on black; black circles remove portions of the image while small copy and the logo anchor its lower edge.",
+    "scope": "Observed case-study example. The source does not establish a universal required construction, timing, pairing or placement rule."
+  }
+}

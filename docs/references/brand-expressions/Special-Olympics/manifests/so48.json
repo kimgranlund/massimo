@@ -1,0 +1,28 @@
+{
+  "id": "SO48",
+  "title": "Dynamic curve · Simple or layered curves",
+  "image": "so48.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 48
+  },
+  "slide_intent": "Teach designers to compare two levels of visual detail while holding the underlying shape steady. A matched pair lets a reader see exactly what the added layers contribute.",
+  "strategic_value": "Special Olympics can give flat and tonal treatments a shared profile. The same off-center placement recurs in both finished examples.",
+  "demonstration": "Two columns pair a construction diagram with a finished red sample. One uses a single arc and flat fill. The other retains the circular center arc and adds two edges with tonal differences.",
+  "category": "Geometry",
+  "practical_value": "Choose a single flat boundary or a layered treatment by comparing the two finished samples at equal size. Preserve the common circular arc when adding the extra edges.",
+  "content_islands": [
+    {
+      "name": "Variant definitions",
+      "spec": "Set the shared device name and comparison title above the page. Place one compact definition per variant in the left column."
+    },
+    {
+      "name": "Construction pair",
+      "spec": "Align two equal frames across the top. Mark the shared X and 2X divisions. Show one edge in the left frame and three numbered tonal areas with the center arc identified in the right."
+    },
+    {
+      "name": "Finished pair",
+      "spec": "Below the corresponding diagrams, place two red-and-white samples at the same size. Keep the left fill flat and show the light band and darker tonal transition in the right."
+    }
+  ]
+}

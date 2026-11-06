@@ -1,0 +1,42 @@
+{
+  "id": "SG28",
+  "title": "Sweet Sans / Dressing portion",
+  "image": "sg28.png",
+  "source": "../sources/sg28.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 28,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Make type variation legible through familiar language so viewers can feel how width and weight change a word’s voice.",
+  "strategic_value": "The dressing-portion analogy can link Sweetgreen’s type family to its food experience.",
+  "demonstration": "On a vivid yellow-green field, Light, Medium and Heavy replace one another in visibly different widths and weights; matching pill controls highlight the current option.",
+  "category": "Typography",
+  "practical_value": "Compare the family’s visual range while distinguishing this playful specimen from actual font-axis specifications.",
+  "content_islands": [
+    {
+      "name": "Portion controls",
+      "spec": "Place Dressing Portion and three option pills across the top."
+    },
+    {
+      "name": "Type specimen",
+      "spec": "Set the current word large at mid-height, changing its width and weight."
+    },
+    {
+      "name": "Family credit",
+      "spec": "Keep Sweet Sans and Type Family at opposite lower corners."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animated specimen connects light, medium and heavy lettering with dressing-portion labels.",
+    "Application": "Three successive words demonstrate contrasting appearances within the named Sweet Sans family."
+  },
+  "ingredient": {
+    "name": "Sweet Sans variation",
+    "role": "Give words different degrees of emphasis and presence.",
+    "application": "Compare the light condensed, medium and heavy broad specimens when choosing a typographic voice.",
+    "scope": "Demonstrated specimen only; the clip does not supply font-axis coordinates, a full style inventory or required pairings."
+  },
+  "motion": "../sources/sg28.mp4"
+}

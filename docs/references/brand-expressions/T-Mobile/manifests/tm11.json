@@ -1,0 +1,34 @@
+{
+  "id": "TM11",
+  "title": "T-Mobile Logo",
+  "image": "tm11.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 11
+  },
+  "slide_intent": "Distinguish a full name from a compact symbol so a viewer receives enough context to identify the sender.",
+  "strategic_value": "A clear hierarchy of full logo and T-Digit versions can keep T-Mobile recognizable across backgrounds and owned properties.",
+  "demonstration": "Preferred magenta-on-white marks appear above inverse, black-background and monochrome variants.",
+  "category": "Brand",
+  "practical_value": "Select the full logo by default and choose a colorway suited to the background and viewing size.",
+  "content_islands": [
+    {
+      "name": "Usage explanation",
+      "spec": "Keep full-logo preference and access note in the left column."
+    },
+    {
+      "name": "Primary marks",
+      "spec": "Show full logo and T-Digit side by side above their magenta and black background variants."
+    },
+    {
+      "name": "Secondary marks",
+      "spec": "Place monochrome options in a bottom row with labels."
+    }
+  ],
+  "ingredient": {
+    "name": "Full logo and T-Digit",
+    "role": "Identify the sender with either its name or a familiar compact symbol.",
+    "application": "Prefer magenta on white or white on magenta; use the full logo as primary. Check small magenta-on-black applications for vibration.",
+    "scope": "The T-Digit may replace the full logo on owned properties such as web and retail."
+  }
+}

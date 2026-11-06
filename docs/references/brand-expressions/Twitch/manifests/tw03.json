@@ -1,0 +1,37 @@
+{
+  "id": "TW03",
+  "title": "3P IP Adapter: Frame",
+  "image": "tw03.png",
+  "source": "../sources/tw03.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 3,
+    "section": "3P IP Adapter: Frame",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Separate guest content from host identification so viewers can recognize both without confusing their roles.",
+  "strategic_value": "A repeated Twitch stage beneath Pokémon characters can give third-party entertainment a coherent platform setting.",
+  "demonstration": "An annotated street-poster photograph labels the central Pokémon characters and the Twitch signature beneath them as separate parts of the composition.",
+  "category": "Layout",
+  "practical_value": "Compare the role of the host signature with the role of licensed character imagery.",
+  "content_islands": [
+    {
+      "name": "Flanking information posters",
+      "spec": "Place matching Twitch signatures above large event information on the left and right."
+    },
+    {
+      "name": "Character and stage",
+      "spec": "Center Pokémon imagery above a lower Twitch signature; preserve the orange character box, crossed diagonals and stage annotation."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The accompanying 3P IP Adapter caption explains that framing lets third-party content coexist clearly with the brand.",
+    "Application": "The annotated example distinguishes character content from the Twitch stage in a Pokémon promotion."
+  },
+  "ingredient": {
+    "name": "Twitch stage beneath guest imagery",
+    "role": "Identify the platform while allowing guest entertainment to remain the focal subject.",
+    "application": "Keep guest imagery and the host signature visually distinct, as demonstrated by the character/stage annotation.",
+    "scope": "Observed in the historical COLLINS identity case study; no mandatory dimensions, color proportions or universal placement rule is supplied."
+  }
+}

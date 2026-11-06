@@ -1,0 +1,29 @@
+{
+  "id": "S06",
+  "title": "Our brand framework",
+  "image": "s06.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 6,
+    "printed_page": 5
+  },
+  "slide_intent": "Separate the museum’s offer, approach, belief, character and values so a team can judge a design or message against a specific principle.",
+  "strategic_value": "The framework can give staff across venues a common vocabulary for discussing decisions while preserving the range of their collections.",
+  "demonstration": "Five named groups organize what the museums offer, how they work, what they believe, how they speak and what guides their actions.",
+  "category": "Brand",
+  "practical_value": "Choose the relevant group when reviewing an idea, such as using the character list for voice and the values list for an institutional commitment.",
+  "content_islands": [
+    {
+      "name": "Framework heading",
+      "spec": "Position the section reference and title at upper left."
+    },
+    {
+      "name": "Offer, approach and belief",
+      "spec": "Stack these three groups in the first column. Use bold subheads, a short offer and belief statement, and a list of approaches."
+    },
+    {
+      "name": "Character and values",
+      "spec": "Place the traits and values in a second column. Keep their descriptions with the bold group headings."
+    }
+  ]
+}

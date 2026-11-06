@@ -1,0 +1,20 @@
+{
+  "id": "S28",
+  "title": "7.0 / Requests & Approvals",
+  "image": "s28.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Make the route to authorized materials visible so execution can stay consistent when a contributor needs help.",
+  "strategic_value": "A dedicated request section can support Spectrum’s distributed retail production.",
+  "demonstration": "A cyan 7.0 leads the two-line Requests & Approvals heading on a pale gray gradient. The open divider introduces the process for obtaining files and reviewing artwork.",
+  "category": "Brand",
+  "practical_value": "Locate the request and approval route before sourcing artwork or submitting a finished placement.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the cyan number above the large dark blue title at upper left, leaving the lower page open."
+    }
+  ]
+}

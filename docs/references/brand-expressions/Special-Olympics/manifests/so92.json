@@ -1,0 +1,24 @@
+{
+  "id": "SO92",
+  "title": "Contacts & resources",
+  "image": "so92.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 92
+  },
+  "slide_intent": "Give readers a next step after studying the guidelines so they can find templates, ask a question or share a local example.",
+  "strategic_value": "Special Olympics can keep communications teams connected beyond the publication through a central resource location and a named contact channel.",
+  "demonstration": "The upper block highlights a resource address and email in bold and invites examples from programs. An acknowledgements block below names contributors to the guideline process.",
+  "category": "Brand",
+  "practical_value": "Use the resource address printed on the page to identify the intended toolkit and the email as the book’s designated point for questions.",
+  "content_islands": [
+    {
+      "name": "Resource and contact block",
+      "spec": "Place three paragraphs beneath the title. Emphasize the resource address and email within the text and close with the request for case studies."
+    },
+    {
+      "name": "Acknowledgements",
+      "spec": "Leave space below the resource block, then set a small bold heading and two columns crediting the steering committee and design contributors."
+    }
+  ]
+}

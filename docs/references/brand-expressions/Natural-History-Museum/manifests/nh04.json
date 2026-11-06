@@ -1,0 +1,33 @@
+{
+  "id": "NH04",
+  "title": "Entrance banner family",
+  "image": "nh04.png",
+  "source": "../sources/nh04.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 4,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use repetition to connect separate signs, because people approach a building from changing distances and angles.",
+  "strategic_value": "Alternating dark and acid-yellow banners can make the Museum’s identity visible while connecting its name to active language.",
+  "demonstration": "Three hanging banners pair a central dark identity panel with yellow panels carrying circular and repeated words.",
+  "category": "Application",
+  "practical_value": "Compare a name-bearing banner with adjacent expressive panels before distributing functions across a signage set.",
+  "content_islands": [
+    {
+      "name": "Central identifier",
+      "spec": "Place the museum name and circular symbol on the dark central banner."
+    },
+    {
+      "name": "Flanking word patterns",
+      "spec": "Use yellow panels with repeated words and circular arrangements on both sides."
+    },
+    {
+      "name": "Setting",
+      "spec": "Retain the building and trees behind the suspended group."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three hanging banners pair a central dark identity panel with yellow panels carrying circular and repeated words."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SL14",
+  "title": "Voice and tone",
+  "image": "sl14.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Define a tone by giving each quality a boundary. Paired descriptions help a writer recognize when confidence, humor or helpfulness becomes excessive.",
+  "strategic_value": "Slack can retain a recognizable personality while allowing the substance of a message to lead.",
+  "demonstration": "The left column lists seven traits and qualifies several with a contrasting limit. Explanatory paragraphs at right discuss clarity, word choice and how much personality a message needs.",
+  "category": "Voice",
+  "practical_value": "Use one pair of traits to edit a draft, such as keeping the confidence while removing a boast.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Trait list",
+      "spec": "Place a bold introduction over a seven-item list at left. Keep the qualifying phrases with their traits."
+    },
+    {
+      "name": "Editing principles",
+      "spec": "Use four short paragraphs at right to explain how content, clarity and consideration guide word choice."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "VZ03",
+  "title": "Identity elements / animated overview",
+  "image": "vz03.png",
+  "source": "../sources/vz03.gif",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 3,
+    "extent": "whole animation",
+    "poster_frame": 100,
+    "duration_seconds": 12.43
+  },
+  "slide_intent": "Sequence brand ingredients so viewers can follow how imagery, color, type and layout form one system.",
+  "strategic_value": "A shared presentation rhythm can make Verizon’s separate visual resources feel like parts of a coherent identity.",
+  "demonstration": "The original 12.43-second GIF moves from scattered photographs through a red, black and gray palette, bold letters, geometric forms and shifting layout blocks. A local MP4 preserves the animation.",
+  "category": "Motion",
+  "practical_value": "Use a sequential overview to introduce each ingredient without asking the viewer to inspect every element at once.",
+  "content_islands": [
+    {
+      "name": "Photographic opening",
+      "spec": "Distribute image fragments on a white field before the sequence advances to the palette."
+    },
+    {
+      "name": "Palette and typography",
+      "spec": "Move through broad color bars and oversized black letterforms."
+    },
+    {
+      "name": "Shape and layout sequence",
+      "spec": "Continue through simple geometric forms into pale blocks that assemble into several grid arrangements."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation combines the brand palette, bold typography and geometric layouts in a single timed presentation.",
+    "Application": "The changing blocks demonstrate several composition arrangements."
+  },
+  "motion": "../sources/vz03.mp4"
+}

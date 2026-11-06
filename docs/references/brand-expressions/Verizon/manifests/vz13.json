@@ -1,0 +1,37 @@
+{
+  "id": "VZ13",
+  "title": "Typography overview",
+  "image": "vz13.png",
+  "source": "../sources/vz14.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 14,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use a consistent type voice so different messages still sound like the same organization.",
+  "strategic_value": "Verizon NHG can give brand communication a recognizable, direct typographic character.",
+  "demonstration": "The September 17, 2019 screenshot introduces Verizon NHG and pairs a black-on-white type specimen with white type over a photograph.",
+  "category": "Typography",
+  "practical_value": "Compare the same typeface on a plain field and imagery before choosing the treatment for a message.",
+  "content_islands": [
+    {
+      "name": "Heading and rationale",
+      "spec": "Place the title/date in a black banner and two short explanatory paragraphs below."
+    },
+    {
+      "name": "Paired specimens",
+      "spec": "Set the white specimen with a large Aa at left and the photograph with a white headline at right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source says typography reflects the overall brand and describes the typeface as simple, clean and easy to read.",
+    "Expression": "The paired specimens demonstrate Verizon NHG in bare type and photographic contexts.",
+    "Application": "The source specifies Verizon NHG for the communications covered by this overview."
+  },
+  "ingredient": {
+    "name": "Verizon NHG",
+    "role": "Give communications a consistent typographic voice.",
+    "application": "Use the ownable Neue Haas Grotesk version named Verizon NHG in the communications covered by the guide.",
+    "scope": "Typography overview updated September 17, 2019; no font files are distributed in this collection."
+  }
+}

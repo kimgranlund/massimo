@@ -1,0 +1,24 @@
+{
+  "id": "TM33",
+  "title": "Copy Guidelines",
+  "image": "tm33.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Mark the transition to copy guidelines so a reader can locate the next kind of decision.",
+  "strategic_value": "The repeated magenta divider can make the T-Mobile guide easier to navigate while retaining a strong brand presence.",
+  "demonstration": "A large white Copy Guidelines heading sits on a full magenta field, with a smaller list of brand voice and style and grammar beneath it.",
+  "category": "Voice",
+  "practical_value": "Use this page to identify the start of the copy guidelines section.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the large white heading left of center with ample surrounding magenta."
+    },
+    {
+      "name": "Section preview",
+      "spec": "Place the small section label and brand voice and style and grammar list below the heading."
+    }
+  ]
+}

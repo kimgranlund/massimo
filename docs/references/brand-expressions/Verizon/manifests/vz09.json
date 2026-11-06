@@ -1,0 +1,36 @@
+{
+  "id": "VZ09",
+  "title": "Iconography / shared construction grid",
+  "image": "vz09.png",
+  "source": "../sources/vz09.jpg",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 9,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Use common construction references so differently shaped symbols maintain a coherent visual size.",
+  "strategic_value": "A consistent grid can help Verizon’s person, delivery and location symbols function as one family.",
+  "demonstration": "Three black icons sit on cyan guides above circular, horizontal-rectangular and vertical-rectangular construction shapes.",
+  "category": "Geometry",
+  "practical_value": "Compare optical size across circular, wide and tall icons while retaining shared guide positions.",
+  "content_islands": [
+    {
+      "name": "Finished icon row",
+      "spec": "Align the person, delivery truck and location pin across the upper row."
+    },
+    {
+      "name": "Construction row",
+      "spec": "Place the three pale cyan reference shapes directly beneath their related finished symbols and continue the cyan guides through both rows."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Finished symbols are paired with underlying reference shapes and alignment guides.",
+    "Expression": "A consistent black outline treatment connects subjects with different proportions."
+  },
+  "ingredient": {
+    "name": "Icon construction guides",
+    "role": "Keep differently proportioned symbols visually coherent.",
+    "application": "Compare circle, wide rectangle and tall rectangle guides when constructing related symbols.",
+    "scope": "The construction examples shown here; the image does not state a numerical grid unit."
+  }
+}

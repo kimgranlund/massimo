@@ -1,0 +1,24 @@
+{
+  "id": "SO77",
+  "title": "Report covers — MS Word template",
+  "image": "so77.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 77
+  },
+  "slide_intent": "Identify which parts of a report cover a local editor can change while keeping title and program credit easy to find.",
+  "strategic_value": "The shared Word template can give reports from different programs a family resemblance even when their photographs and headings differ.",
+  "demonstration": "Two covers place a photograph above a curved title field, white on one and red on the other. Both retain a web address near the top and the mark at the foot.",
+  "category": "Application",
+  "practical_value": "Replace the header image and local address, then fill the footer with the accredited program name. Use the specified 42 pt Ubuntu Light heading and 10.5 pt Ubuntu Bold subtitle.",
+  "content_islands": [
+    {
+      "name": "Template instructions",
+      "spec": "Number the notes on the left for editable items, color variants and type settings."
+    },
+    {
+      "name": "Two cover treatments",
+      "spec": "Align the two covers. Show the title block below the curved photo boundary and keep the program identifier at lower right. Key the numbered markers to the notes."
+    }
+  ]
+}

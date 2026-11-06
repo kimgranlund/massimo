@@ -1,0 +1,29 @@
+{
+  "id": "S42",
+  "title": "Tone of voice – ‘Engaging, curious, enjoyable, respectful’",
+  "image": "s42.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 42,
+    "printed_page": 41
+  },
+  "slide_intent": "Show writers how to adjust the emphasis of four voice qualities for the subject, venue and speaker while keeping a recognizable shared tone.",
+  "strategic_value": "The six museums can share a verbal identity while preserving differences between venues and clearly attributing an artist or community member’s words.",
+  "demonstration": "Four text columns move from purpose and audience to a list of characteristics and guidance on how strongly to use each one.",
+  "category": "Voice",
+  "practical_value": "Decide who is speaking and which qualities should lead for this audience. Use the four terms to review the copy after drafting.",
+  "content_islands": [
+    {
+      "name": "Purpose and audience",
+      "spec": "Place the introduction, application and intended writers in the left-hand columns. Use short colored subheads to distinguish each job."
+    },
+    {
+      "name": "Personality and four qualities",
+      "spec": "In the next column ask how the brand would speak as a person, then list the four characteristics."
+    },
+    {
+      "name": "Balancing the voice",
+      "spec": "Use the right-hand column to explain adjusting relative emphasis by medium. Close with the emphasized checklist prompt."
+    }
+  ]
+}

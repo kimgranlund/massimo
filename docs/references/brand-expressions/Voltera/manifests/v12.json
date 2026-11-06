@@ -1,0 +1,28 @@
+{
+  "id": "V12",
+  "title": "Our type faces and guidelines",
+  "image": "v12.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Teach designers how type roles make a page easy to scan, and where expressive lettering can give way to ordinary reading forms.",
+  "strategic_value": "Voltera can retain the open A in a product signature while keeping product names easy to read in running text.",
+  "demonstration": "Three specimen rows connect Lato Bold, Lato Semibold and Inter Regular to their roles. Three NOVA specimens below compare the A with and without its crossbar.",
+  "category": "Typography",
+  "practical_value": "Use Lato for titles and subheads and Inter for body text. Reserve the custom open-A treatment for designed product-name instances such as a logo or hero.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 12 in a blue tab at lower right."
+    },
+    {
+      "name": "Typeface-to-role scale",
+      "spec": "Show each typeface and its tracking and line-height guidance on the left, joining it to a specimen on the right. Use 120% line height for titles and subheads and 140–160% for body copy."
+    },
+    {
+      "name": "A-bar comparison",
+      "spec": "Place a short explanation beneath the scale. Show NOVA in the Voltera, Lato and Inter faces on one line so the letterform change is visible."
+    }
+  ]
+}

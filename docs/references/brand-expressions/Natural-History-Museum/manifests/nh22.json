@@ -1,0 +1,33 @@
+{
+  "id": "NH22",
+  "title": "Season and mini-map covers",
+  "image": "nh22.png",
+  "source": "../sources/nh22.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 22,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use repetition as an identity device, because familiar typographic rhythm can connect different publications without the same image.",
+  "strategic_value": "Alternating colored words on dark covers can carry the Museum’s energetic palette into practical visitor print.",
+  "demonstration": "Two tall covers repeat cropped AW2023 and MINIMAP text in colored horizontal lines on dark backgrounds.",
+  "category": "Typography",
+  "practical_value": "Compare repeated type as a cover image with conventional small informational typography.",
+  "content_islands": [
+    {
+      "name": "Season cover",
+      "spec": "Fill the left tall cover with large cropped AW2023 text in alternating blue, cyan and muted tones."
+    },
+    {
+      "name": "Map cover",
+      "spec": "Fill the right cover with repeated MINIMAP in pink, red and pale tones."
+    },
+    {
+      "name": "Pair",
+      "spec": "Place the two narrow publications side by side with their binding details visible."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two tall covers repeat cropped AW2023 and MINIMAP text in colored horizontal lines on dark backgrounds."
+  }
+}

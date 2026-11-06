@@ -1,0 +1,24 @@
+{
+  "id": "S20",
+  "title": "5.0 / Mall Signage & Directories",
+  "image": "s20.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Move from abstract standards to real settings so designers can judge how the identity competes with surrounding information.",
+  "strategic_value": "Consistent mall placements can help visitors find Spectrum among neighboring tenants.",
+  "demonstration": "A cyan section number leads a dark blue heading over a pale gray gradient. The short introduction announces common signage and directory examples.",
+  "category": "Application",
+  "practical_value": "Locate worked mall examples when checking how a logo behaves beside other tenants and host interfaces.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the cyan number above the large dark blue title at upper left."
+    },
+    {
+      "name": "Section explanation",
+      "spec": "Set the introduction below the heading, leaving the lower page open."
+    }
+  ]
+}

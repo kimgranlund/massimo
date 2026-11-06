@@ -1,0 +1,34 @@
+{
+  "id": "NH10",
+  "title": "Visit and conservation stories",
+  "image": "nh10.png",
+  "source": "../sources/nh10.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 10,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Connect an invitation with a wider mission, because a museum’s communications must support both attendance and understanding.",
+  "strategic_value": "The repeated three-panel format can link a playful time-travel visit message with a conservation message about ocean life.",
+  "demonstration": "The clip first pairs a reptile eye, animated word rings and Travel back in time / Cycle back home; it then pairs ocean footage and a statistic with CHANGE rings and a report invitation.",
+  "category": "Application",
+  "practical_value": "Compare image, expressive transition and explanation as three complementary jobs in a social sequence.",
+  "content_islands": [
+    {
+      "name": "Image panel",
+      "spec": "Use the left panel for a creature close-up or ocean footage with text."
+    },
+    {
+      "name": "Ring panel",
+      "spec": "Animate contextual circular words in the middle panel."
+    },
+    {
+      "name": "Message panel",
+      "spec": "Use the right panel for the visit phrase or report call to action."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The clip first pairs a reptile eye, animated word rings and Travel back in time / Cycle back home; it then pairs ocean footage and a statistic with CHANGE rings and a report invitation."
+  },
+  "motion": "../sources/nh10.mp4"
+}

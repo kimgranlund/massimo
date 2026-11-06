@@ -1,0 +1,24 @@
+{
+  "id": "SO13",
+  "title": "Personality",
+  "image": "so13.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 13
+  },
+  "slide_intent": "Introduce personality as a combination of traits so a writer can judge the overall tone of a piece without forcing every trait into each sentence.",
+  "strategic_value": "Special Olympics can establish a distinct voice across programs through a shared set of qualities.",
+  "demonstration": "Six trait names occupy an irregular stack of red bars. Notes at left explain that the qualities can be implicit and prompt the reader to assess tone.",
+  "category": "Voice",
+  "practical_value": "Review the emotional effect of a draft against the trait set, choosing the qualities most relevant to the story.",
+  "content_islands": [
+    {
+      "name": "Reader notes",
+      "spec": "Stack the explanatory, caution and exercise notes at left with their respective icons."
+    },
+    {
+      "name": "Trait assembly",
+      "spec": "Set Inclusive, Joyful, Inspirational, Authentic, Determined and Courageous in large white letters on a connected, staggered field of red bars."
+    }
+  ]
+}

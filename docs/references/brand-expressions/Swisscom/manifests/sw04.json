@@ -1,0 +1,39 @@
+{
+  "id": "SW04",
+  "title": "Hot-air balloon application",
+  "image": "sw04.png",
+  "source": "../sources/sw04.webp",
+  "location": {
+    "source_order": 6,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Adapt an identity to a curved object so its color and name remain recognizable at a large viewing distance.",
+  "strategic_value": "The oversized symbol and wordmark can connect an aerial public encounter with Swisscom’s familiar identity.",
+  "demonstration": "A white hot-air balloon fills the center against blue sky. Enlarged red and blue symbol surfaces wrap around the envelope beneath a dark Swisscom wordmark.",
+  "category": "Application",
+  "practical_value": "Judge how the symbol’s scale and the wordmark’s position survive curvature and the object’s silhouette.",
+  "content_islands": [
+    {
+      "name": "Branded balloon envelope",
+      "spec": "Center the rounded white balloon and retain the enlarged red and blue surfaces wrapping around its panels."
+    },
+    {
+      "name": "Wordmark and basket",
+      "spec": "Keep the dark Swisscom wordmark high on the envelope and the small basket below to preserve the relationship between recognition and physical scale."
+    },
+    {
+      "name": "Sky field",
+      "spec": "Use the uninterrupted blue sky surrounding the balloon to keep its full outline readable."
+    }
+  ],
+  "ingredient": {
+    "name": "Large-scale symbol wrap",
+    "role": "Make the balloon identifiable through color and form before the name is read.",
+    "application": "Apply the enlarged symbol around the white balloon envelope and place the wordmark above it as shown.",
+    "scope": "One photographed balloon application; the image does not prescribe a general environmental-signage standard."
+  },
+  "reference_purposes": {
+    "Expression": "The balloon extends the red-and-blue symbol across a large curved white surface.",
+    "Application": "The photograph shows the identity applied to a physical aerial object with a visible wordmark."
+  }
+}

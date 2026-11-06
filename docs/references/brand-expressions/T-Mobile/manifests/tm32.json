@@ -1,0 +1,28 @@
+{
+  "id": "TM32",
+  "title": "Typography Don’ts",
+  "image": "tm32.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 32
+  },
+  "slide_intent": "Make failures of hierarchy and contrast recognizable so readers can retain the intended message.",
+  "strategic_value": "Avoiding competing styles and obscured subjects can make T-Mobile communications clearer and more coherent.",
+  "demonstration": "Eight rejected specimens show misplaced emphasis, mixed styles, light weights, uneven tracking, face obstruction, low contrast, weak hierarchy and italics.",
+  "category": "Typography",
+  "practical_value": "Check the main reading order, image subject and contrast before approving a type composition.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Place the section title at left."
+    },
+    {
+      "name": "Headline failures",
+      "spec": "Align four crossed magenta panels across the upper-right row."
+    },
+    {
+      "name": "Image and hierarchy failures",
+      "spec": "Place image overlays and two text-only failures beneath with explanatory captions."
+    }
+  ]
+}

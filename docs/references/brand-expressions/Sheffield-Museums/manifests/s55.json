@@ -1,0 +1,25 @@
+{
+  "id": "S55",
+  "title": "Merchandise – pins",
+  "image": "s55.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 55,
+    "printed_page": 54
+  },
+  "slide_intent": "Teach designers how to preserve recognition on a small round object whose surface can accommodate only one device.",
+  "strategic_value": "The circular Sheffield Museums seal can take the shape of the object itself, allowing color variation across a souvenir series.",
+  "demonstration": "Overlapping pins carry the same seal. A white mark appears on black and dark marks appear on yellow, turquoise and pink.",
+  "category": "Application",
+  "practical_value": "Change the pin ground and select a contrasting mark while keeping its circular form and lettering consistent.",
+  "content_islands": [
+    {
+      "name": "Pin assortment",
+      "spec": "Cluster the round objects in an overlapping vertical group within a white field."
+    },
+    {
+      "name": "Seal impression",
+      "spec": "Fill each pin face with one seal. Preserve a clear border around the lettering and enough contrast to see the central line device."
+    }
+  ]
+}

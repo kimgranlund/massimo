@@ -1,0 +1,38 @@
+{
+  "id": "E09",
+  "title": "Mapping the DNA / Exploration Montage",
+  "image": "e09.png",
+  "source": "../sources/e09.mp4",
+  "location": {
+    "source_order": 9,
+    "whole_source": true,
+    "poster_seconds": 10.5,
+    "duration_seconds": 17.5
+  },
+  "slide_intent": "Compare alternative expressions before selecting a direction so change can be judged against recognition and ambition.",
+  "strategic_value": "Testing light, reflection, color and flowing forms can help Spectrum evolve its blue identity without losing a recognizable connection.",
+  "demonstration": "A 17.50-second montage sequences advertising concepts in outdoor and interior settings, including prism-like light, pale reflective planes, blue flowing textures and multicolor currents.",
+  "category": "Brand",
+  "practical_value": "Compare the visual territories as exploratory proposals, not as a set of approved ingredients to combine.",
+  "content_islands": [
+    {
+      "name": "Light and reflection concepts",
+      "spec": "Begin with a large street-wall composition and smaller advertising studies pairing Life Unlimited with prismatic light and lifestyle photographs."
+    },
+    {
+      "name": "Pale graphic concepts",
+      "spec": "Move through light-background layouts combining reflective shapes, devices and people."
+    },
+    {
+      "name": "Current and environmental concepts",
+      "spec": "Finish with flowing blue and multicolor proposals placed in terminal, billboard and poster settings."
+    }
+  ],
+  "ingredient": {
+    "name": "Exploratory visual territories",
+    "role": "Make alternative routes to the brand idea comparable.",
+    "application": "Compare proposals for continuity, distinction and application before selecting a direction.",
+    "scope": "Agency exploration montage. These concepts are not all approved final identity assets."
+  },
+  "motion": "../sources/e09.mp4"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "SO66",
+  "title": "Note · A5 pre-printed note",
+  "image": "so66.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 66
+  },
+  "slide_intent": "Leave a generous area for handwriting while making the sender identifiable on a small sheet. An informal note needs both open space and dependable contact information.",
+  "strategic_value": "A compact mark, faint curve and footer can identify Special Olympics while letting a personal message occupy the center of an A5 note.",
+  "demonstration": "The A5 specimen places a 16 mm program mark at the top right, a pale gray gradient curve below it and a small contact block at the bottom.",
+  "category": "Application",
+  "practical_value": "On a 148 × 210 mm note, position the mark about 8 mm from the top and right edges. Reserve the center for writing and choose the international mark for international communications.",
+  "content_islands": [
+    {
+      "name": "Production settings",
+      "spec": "At left give the A5 format and inks, followed by numbered settings for mark, contact type and gradient."
+    },
+    {
+      "name": "Blank note and footer",
+      "spec": "Show a tall blank sheet on a pale ground. Indicate the faint curve with a dotted line and enlarge the red and gray contact block in a circular callout."
+    }
+  ]
+}

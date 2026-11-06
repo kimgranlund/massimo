@@ -1,0 +1,24 @@
+{
+  "id": "SL30",
+  "title": "Connected globe illustration",
+  "image": "sl30.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Give an abstract idea a visible relationship. Portraits and connecting paths can suggest people working across distances without a written explanation.",
+  "strategic_value": "Slack can make global collaboration feel personal by giving the people on the map faces and distinct colors.",
+  "demonstration": "Seven portraits occupy positions on a pale globe with green land masses. Fine dotted paths cross the sphere, and a long black shadow extends to the right.",
+  "category": "Imagery",
+  "practical_value": "Use this as a reference for combining a global view with human-scale details. Keep the portrait shapes legible against the land and path network.",
+  "content_islands": [
+    {
+      "name": "Globe and contacts",
+      "spec": "Center the tilted globe on a white page. Position small colorful portraits at points across its surface and run dotted loops between them."
+    },
+    {
+      "name": "Cast shadow",
+      "spec": "Project a flat dark shadow from the globe’s base to the right. Leave open space above and around the illustration."
+    }
+  ]
+}

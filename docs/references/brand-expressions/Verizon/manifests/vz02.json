@@ -1,0 +1,30 @@
+{
+  "id": "VZ02",
+  "title": "Digital identity overview",
+  "image": "vz02.png",
+  "source": "../sources/vz02.jpg",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 2,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Compare the same identity across narrow interfaces so its recognizability can be assessed beyond a single logo.",
+  "strategic_value": "Consistent typography and black-and-white fields can connect Verizon’s guidance, imagery and mobile layouts.",
+  "demonstration": "A diagonal collage combines mobile guideline screens, a logo specimen, a typography specimen, photography and a voice example.",
+  "category": "Brand",
+  "practical_value": "Check whether type hierarchy and brand signatures remain coherent when content and screen proportions change.",
+  "content_islands": [
+    {
+      "name": "Tilted screen montage",
+      "spec": "Arrange the narrow screens at a shared diagonal on a dark gray field, preserving the gaps between them."
+    },
+    {
+      "name": "Identity specimens",
+      "spec": "Keep logo, typography, lifestyle imagery and guidance examples visible as different parts of the same montage."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The collage repeats bold sans-serif type, black and white fields, and small red logo accents.",
+    "Application": "The identity appears across mobile guideline navigation and content screens."
+  }
+}

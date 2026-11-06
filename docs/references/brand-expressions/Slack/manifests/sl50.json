@@ -1,0 +1,24 @@
+{
+  "id": "SL50",
+  "title": "Questions?",
+  "image": "sl50.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 50
+  },
+  "slide_intent": "Close a reference book with one clear next action. An isolated contact line keeps the reader from searching back through the policy pages.",
+  "strategic_value": "Slack can make the end of the book recognizable with the same aubergine field used for section breaks.",
+  "demonstration": "A small white question sits above a thin rule. The 2020 brand-inquiry contact appears directly beneath it on the left, with the rest of the page open.",
+  "category": "Layout",
+  "practical_value": "Use the final page as a reference for the placement and hierarchy of a contact route. Verify current contact details before reusing them.",
+  "content_islands": [
+    {
+      "name": "Closing question",
+      "spec": "Place the short heading near the top-left margin on the full aubergine field. Run a fine pale rule beneath it."
+    },
+    {
+      "name": "Inquiry contact",
+      "spec": "Stack the inquiry prompt and email address beneath the rule, aligned with the heading. Keep the remainder of the field clear."
+    }
+  ]
+}

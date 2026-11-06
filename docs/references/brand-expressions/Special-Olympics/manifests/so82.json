@@ -1,0 +1,28 @@
+{
+  "id": "SO82",
+  "title": "T-shirts — Athlete program level branding – No sponsorship",
+  "image": "so82.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 82
+  },
+  "slide_intent": "Teach a designer to reserve space on an athlete’s uniform for its competitive job, including the team number or event identification.",
+  "strategic_value": "Special Olympics can remain identifiable across team colors and uniform configurations while keeping competition clothing free of sponsor branding.",
+  "demonstration": "Three diagrams reduce the program mark from a large centered treatment to a horizontal lockup and a crest beside a number. A row of colored shirts demonstrates light and dark mark treatments.",
+  "category": "Application",
+  "practical_value": "Choose roughly 100 mm, 70 mm or 30 mm symbol height for the large, medium or crest application shown. Check the print color against the actual fabric.",
+  "content_islands": [
+    {
+      "name": "Uniform guidance",
+      "spec": "Set the no-sponsorship heading above notes on the three placements and their approximate dimensions. Keep the approved logo-color note distinct."
+    },
+    {
+      "name": "Placement diagrams",
+      "spec": "Align three white shirts at the top. Dimension the large and medium marks and show a number with the crest treatment."
+    },
+    {
+      "name": "Fabric comparison",
+      "spec": "Arrange the colored shirts underneath. Group darker and lighter bases so the change in mark contrast can be compared."
+    }
+  ]
+}

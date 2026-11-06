@@ -1,0 +1,26 @@
+{
+  "id": "WH28",
+  "title": "Tote bags",
+  "image": "wh28.png",
+  "source": "../sources/large_whitney_2013redesign_totebags.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 11,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Let repeated forms become a pattern because an identity can remain recognizable without repeating one large logo treatment.",
+  "strategic_value": "Different arrangements of the thin W can give Whitney’s totes variation within a shared visual family.",
+  "demonstration": "Three natural-fabric totes carry different distributions and proportions of fine W marks.",
+  "category": "Application",
+  "practical_value": "Compare pattern density and variation across a common product shape; these are examples, not required repeat counts.",
+  "content_islands": [
+    {
+      "name": "Tote family",
+      "spec": "Align the three bags on gray and preserve the fabric color, handles and distinct W patterns."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official caption identifies a series of tote bags for the museum’s retail store.",
+    "Expression": "Repeated W forms create three different patterns on the same natural-fabric object."
+  }
+}

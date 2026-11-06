@@ -1,0 +1,30 @@
+{
+  "id": "PT33",
+  "title": "Street posters / Measure for Measure",
+  "image": "pt33.png",
+  "source": "../sources/pt33.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 33,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use a simple object-action image to focus attention because a passerby has only a brief encounter.",
+  "strategic_value": "The large hand and pocket watch can give Measure for Measure a recognizable visual cue at street scale.",
+  "demonstration": "The foreground sign combines a hand, watch and tall black title; Office Hour and a third campaign appear behind.",
+  "category": "Application",
+  "practical_value": "Assess how a single image and condensed title hold up in a sidewalk sign.",
+  "content_islands": [
+    {
+      "name": "Primary panel",
+      "spec": "Place the hand and watch above and through the title on white."
+    },
+    {
+      "name": "Context",
+      "spec": "Show the two receding signs beside the stone facade to preserve placement evidence."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The foreground sign combines a hand, watch and tall black title; Office Hour and a third campaign appear behind.",
+    "Application": "The Measure for Measure campaign appears in a freestanding sidewalk display beside two other productions."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "SF15",
+  "title": "Variable letter and numeral families",
+  "image": "sf15.png",
+  "source": "../sources/sf15.mp4",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 15,
+    "section": "Gallery",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Test more than a single logo because a usable expressive type system must handle multiple letters and numbers.",
+  "strategic_value": "Repeated A–F and 1–3 specimens can demonstrate a common behavior across Symphony messaging.",
+  "demonstration": "A three-by-three grid of repeated characters grows, shrinks and slants in staggered sequences on white.",
+  "category": "Typography",
+  "practical_value": "Compare the same deformation across letters and numerals before composing new copy.",
+  "content_islands": [
+    {
+      "name": "Character matrix",
+      "spec": "Keep A, B and C across the first row, D, E and F across the second, and 1, 2 and 3 across the third."
+    },
+    {
+      "name": "Variation sequence",
+      "spec": "Preserve the grouped changes in size and slant within each repeated-character specimen."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A three-by-three grid of repeated characters grows, shrinks and slants in staggered sequences on white.",
+    "Application": "The source demonstrates a three-by-three grid of repeated characters grows, shrinks and slants in staggered sequences on white.",
+    "Intent": "The main case-study text explains using variable-font technology to add contemporary behavior to traditional typography."
+  },
+  "motion": "../sources/sf15.mp4"
+}

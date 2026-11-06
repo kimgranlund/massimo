@@ -1,0 +1,28 @@
+{
+  "id": "SO47",
+  "title": "Dynamic curve · Construction of simple curves",
+  "image": "so47.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 47
+  },
+  "slide_intent": "Teach designers to place an arc according to the space the mark needs. Moving the center changes where the field opens and therefore where the eye can find the identifier.",
+  "strategic_value": "Special Olympics can preserve the circular source of the curve across formats while reserving a wider area on the right for its standard mark.",
+  "demonstration": "Two upright rectangles share an off-center axis. Cyan arcs, dotted radii and an X-to-2X width division show their circular construction. Smaller diagrams extend the construction to a square detail and a horizontal format.",
+  "category": "Geometry",
+  "practical_value": "Locate the circle axis one part into a three-part width in the illustrated construction. Check the protected field at the right before placing the standard mark.",
+  "content_islands": [
+    {
+      "name": "Heading and rationale",
+      "spec": "Set the red device name above the gray construction title. Place the short explanation beside the diagrams at left."
+    },
+    {
+      "name": "Upright construction",
+      "spec": "Stack two vertical frames around a shared center point. Extend the top and bottom arcs outside the frames, shade the isolated fields and mark the off-center axis with X and 2X below."
+    },
+    {
+      "name": "Circle and format comparison",
+      "spec": "At right, pair a small complete circle around a frame with a wide rectangular frame below. Use cyan callouts to explain the source geometry and its use on different formats."
+    }
+  ]
+}

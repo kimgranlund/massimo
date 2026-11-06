@@ -1,0 +1,30 @@
+{
+  "id": "SG12",
+  "title": "Salad in the meadow",
+  "image": "sg12.png",
+  "source": "../sources/sg12.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 12,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Show food with enough ingredient detail to make freshness tangible rather than merely asserted.",
+  "strategic_value": "The colorful bowl among living plants can reinforce Sweetgreen’s relationship to growing food.",
+  "demonstration": "An abundant salad bowl rests in grass and small yellow flowers, photographed close enough to distinguish its ingredients.",
+  "category": "Imagery",
+  "practical_value": "Decide how much environmental context can surround a product without obscuring what is being offered.",
+  "content_islands": [
+    {
+      "name": "Bowl",
+      "spec": "Make the filled bowl the central, sharply described subject."
+    },
+    {
+      "name": "Growing environment",
+      "spec": "Retain the grass, stems and flowers around it as a continuous setting."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Close food detail is paired with an outdoor growing environment."
+  }
+}

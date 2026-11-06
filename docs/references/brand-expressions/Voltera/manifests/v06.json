@@ -1,0 +1,28 @@
+{
+  "id": "V06",
+  "title": "How we got here",
+  "image": "v06.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Explain what a company makes through specific products and processes so its mission is easier to understand.",
+  "strategic_value": "Voltera can connect its purpose in additive electronics to two machines and to its manufacturing base in Waterloo.",
+  "demonstration": "A narrative introduces V-One and NOVA and closes with the company’s Canadian origin. Two photographs show tools working on electronic patterns.",
+  "category": "Brand",
+  "practical_value": "Choose the relevant machine and use case when illustrating a company introduction.",
+  "content_islands": [
+    {
+      "name": "Contents rail and folio",
+      "spec": "Place the dark contents rail on the left. Highlight the current topic in blue and mark page 6 in a blue tab at lower right."
+    },
+    {
+      "name": "Product and company narrative",
+      "spec": "Arrange the mission, V-One, NOVA and Canadian origin in a left text column. Begin the product passages with the names in bold."
+    },
+    {
+      "name": "Machine photographs",
+      "spec": "Stack two rounded photographs at right, one showing traces being laid on a surface and one showing a tool above a green circuit board."
+    }
+  ]
+}

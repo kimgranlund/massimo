@@ -1,0 +1,33 @@
+{
+  "id": "NS12",
+  "title": "Run HO19 / Winflo Shield woman running",
+  "image": "ns12.png",
+  "source": "../sources/ns12.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 12,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Pair movement with a closer product view so the viewer can understand use and detail in one composition.",
+  "strategic_value": "The running photograph and stair-side shoe crop can connect Winflo Shield with activity while keeping the footwear legible.",
+  "demonstration": "A woman in a green jacket runs across the main image; a shoe close-up overlaps at upper right, an outline Swoosh crosses both, and a white text column sits at left.",
+  "category": "Layout",
+  "practical_value": "Allocate a clear text area while connecting two related image scales.",
+  "content_islands": [
+    {
+      "name": "White text column",
+      "spec": "Reserve the left column for a low-aligned product name, supporting line and black Swoosh."
+    },
+    {
+      "name": "Running scene",
+      "spec": "Fill the central field with the runner and railing."
+    },
+    {
+      "name": "Product inset",
+      "spec": "Overlap the upper-right shoe photograph and connect it to the main scene with the white outline Swoosh."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A woman in a green jacket runs across the main image; a shoe close-up overlaps at upper right, an outline Swoosh crosses both, and a white text column sits at left."
+  }
+}

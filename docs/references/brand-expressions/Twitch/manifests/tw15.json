@@ -1,0 +1,39 @@
+{
+  "id": "TW15",
+  "title": "Gradient palette / Named combinations",
+  "image": "tw15.png",
+  "source": "../sources/tw15.mp4",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 15,
+    "section": "Gallery",
+    "extent": "Representative frame; complete local motion provided"
+  },
+  "slide_intent": "Keep a recurring color within changing combinations so variety can remain connected to a familiar visual reference.",
+  "strategic_value": "Gradients ending in Twitch Purple can link the expanded palette to existing recognition.",
+  "demonstration": "A moving portrait sequence compares gradient cards labeled with combinations of Lightning, Zero, Mega, Cuddle and Twitch Purple.",
+  "category": "Color",
+  "practical_value": "Compare the named gradient combinations and their shared purple end without inventing numeric stop positions.",
+  "content_islands": [
+    {
+      "name": "Gradient card",
+      "spec": "Fill a rounded card with a vertical multicolor transition."
+    },
+    {
+      "name": "Color labels",
+      "spec": "Place the named components at different heights on the right; repeat and move cards through the frame."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "COLLINS states that additional vibrant hues build on recognition of Twitch purple while representing a wider range of creators and audiences.",
+    "Application": "The cards identify component colors within several example gradients.",
+    "Expression": "Each shown combination links brighter colors to Twitch Purple."
+  },
+  "ingredient": {
+    "name": "Purple-linked gradients",
+    "role": "Connect vivid variation to a familiar brand hue.",
+    "application": "Use the labeled combinations as examples; compare the changing middle and upper hues with the repeated purple end.",
+    "scope": "The case-study film supplies names and examples, not color codes, exact stop locations or a rule requiring these gradients everywhere."
+  },
+  "motion": "../sources/tw15.mp4"
+}

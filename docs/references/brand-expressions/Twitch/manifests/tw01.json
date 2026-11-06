@@ -1,0 +1,31 @@
+{
+  "id": "TW01",
+  "title": "You’re already one of us / Street posters",
+  "image": "tw01.png",
+  "source": "../sources/tw01.tif",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 1,
+    "section": "Cover still",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Connect a welcoming message with repeated identity cues so passersby can recognize both the host and the invitation.",
+  "strategic_value": "Alternating light and dark posters can give Twitch variety while retaining the same wordmark and inclusive message.",
+  "demonstration": "A street photograph shows a repeated two-row poster installation with large gradient-backed Twitch signatures and a short invitation between them.",
+  "category": "Application",
+  "practical_value": "Compare how an identity repeats across adjacent panels without requiring every panel to use the same background.",
+  "content_islands": [
+    {
+      "name": "Poster installation",
+      "spec": "Fill the wall with alternating pale and black panels, each using large wordmarks with colored depth."
+    },
+    {
+      "name": "Invitation and setting",
+      "spec": "Keep the short invitation between signatures and preserve the street, poles and roofline that establish scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The photograph places repeated identity posters in a street environment.",
+    "Expression": "Black and pale panels share the white angular wordmark and multicolor depth."
+  }
+}

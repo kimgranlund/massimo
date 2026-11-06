@@ -1,0 +1,31 @@
+{
+  "id": "SP13",
+  "title": "Illuminated Spotify installation",
+  "image": "sp13.png",
+  "source": "../sources/sp13.png",
+  "location": {
+    "series": "COLLINS / Spotify case study",
+    "item": 13,
+    "extent": "Whole source artwork",
+    "source_url": "https://cdn.sanity.io/images/fmzd4n68/production/a77a22f611df4813db5f9faed3e6297d8d1c705e-1920x2400.png"
+  },
+  "category": "Application",
+  "slide_intent": "Place identity where people gather because recognition can come from an encounter with a space as well as a printed mark.",
+  "strategic_value": "Spotify can connect its name to live music culture through luminous signage beside a performer.",
+  "demonstration": "A person in a cap stands beside a magenta-lit structure with a glowing Spotify lockup and cyan edges.",
+  "practical_value": "Compare the visibility of a luminous mark with the color atmosphere around it.",
+  "content_islands": [
+    {
+      "name": "Human foreground",
+      "spec": "The figure fills the lower-left area and provides scale."
+    },
+    {
+      "name": "Illuminated structure",
+      "spec": "The upper-right Spotify sign and horizontal neon edges establish the branded setting."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A person in a cap stands beside a magenta-lit structure with a glowing Spotify lockup and cyan edges.",
+    "Application": "The source shows this identity in the pictured campaign or event setting."
+  }
+}

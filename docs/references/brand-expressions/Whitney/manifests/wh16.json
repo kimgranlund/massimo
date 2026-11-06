@@ -1,0 +1,33 @@
+{
+  "id": "WH16",
+  "title": "Neue Haas Grotesk / Uppercase specimen",
+  "image": "wh16.png",
+  "source": "../sources/neuehaas.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 16,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Choose letterforms in relation to the identity’s geometry and meaning because type gives words both a visual structure and an institutional voice.",
+  "strategic_value": "Bold uppercase letters can connect Whitney’s angular W with a direct, architectural tone.",
+  "demonstration": "A compact alphabet uses heavy uppercase sans-serif letters, with selected letters shown in gray among the black forms.",
+  "category": "Typography",
+  "practical_value": "Compare the angular and curved letterforms with the W, and preserve the essay’s distinction between headline/name treatment and the type family’s wider capabilities.",
+  "content_islands": [
+    {
+      "name": "Alphabet",
+      "spec": "Pack the uppercase alphabet into stacked rows on white; retain the gray highlights and cropped final row at the image boundary."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay links uppercase geometry to the W and explains that capitals make Whitney read as an institution rather than a person’s first name.",
+    "Expression": "The specimen shows the heavy uppercase character of Neue Haas Grotesk.",
+    "Constraint": "The essay specifies Neue Haas Grotesk for Whitney and uppercase in one selected weight for the word, accompanying headings, titles and names; it does not extend that restriction to all body text."
+  },
+  "ingredient": {
+    "name": "Uppercase Neue Haas Grotesk",
+    "role": "Give the institution’s name and headings an angular, architectural voice.",
+    "application": "Set Whitney in Neue Haas Grotesk; the essay specifies uppercase in one selected weight for the name, accompanying headings, titles and names.",
+    "scope": "Historical 2013 rationale. The stated all-caps treatment does not prohibit lowercase throughout the wider type family or all body text."
+  }
+}

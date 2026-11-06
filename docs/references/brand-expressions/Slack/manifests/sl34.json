@@ -1,0 +1,28 @@
+{
+  "id": "SL34",
+  "title": "Secondary lockup",
+  "image": "sl34.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 34
+  },
+  "slide_intent": "Teach designers to identify an internal program economically. A familiar symbol and a clearly drawn name can help employees distinguish one initiative from another.",
+  "strategic_value": "Slack can give internal programs a family resemblance while letting each program name lead the reading.",
+  "demonstration": "The colored octothorpe appears directly beside the word “secondary.” A second example repeats the arrangement with guides for the spacing unit.",
+  "category": "Brand",
+  "practical_value": "For an employee-facing tool, event or group, use the symbol with the lowercase entity name and follow the diagrammed A-unit separation.",
+  "content_islands": [
+    {
+      "name": "Internal use guidance",
+      "spec": "Place the audience and typesetting notes in a narrow column beneath the title."
+    },
+    {
+      "name": "Clean internal signature",
+      "spec": "Place the octothorpe to the left of a large lightweight name in the right-hand field. Align the two elements as one lockup."
+    },
+    {
+      "name": "Spacing overlay",
+      "spec": "Repeat the same example below with pale construction shapes and the A label visible above the gap."
+    }
+  ]
+}

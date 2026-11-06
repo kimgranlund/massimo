@@ -1,0 +1,30 @@
+{
+  "id": "WH10",
+  "title": "W as a signature surface",
+  "image": "wh10.png",
+  "source": "../sources/signature.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 10,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Treat the identity as a place for participation because a museum’s voice includes artists as well as the institution.",
+  "strategic_value": "The blank and written-on W can express Whitney as a platform on which others leave a mark.",
+  "demonstration": "Two cyan Ws carry Whitney at the upper left; the right example adds black handwritten words along the diagonal strokes.",
+  "category": "Geometry",
+  "practical_value": "Compare an unoccupied structural mark with one activated by handwriting, while keeping this colored preliminary sketch separate from final color guidance.",
+  "content_islands": [
+    {
+      "name": "Empty structure",
+      "spec": "Place the cyan W and Whitney name at left."
+    },
+    {
+      "name": "Activated structure",
+      "spec": "Repeat the form at right and add black writing along its diagonals."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay describes the W as a blank canvas for an artist’s signature.",
+    "Expression": "The preliminary pair contrasts a clean line structure with handwritten marks."
+  }
+}

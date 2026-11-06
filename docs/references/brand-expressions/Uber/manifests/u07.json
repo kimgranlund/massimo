@@ -1,0 +1,36 @@
+{
+  "id": "U07",
+  "title": "Typography / Uber Move and display pairings",
+  "image": "u07.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 7
+  },
+  "slide_intent": "Give words a consistent voice and differentiate leading from supporting text so readers can hear the hierarchy.",
+  "strategic_value": "The source ties Uber Move to clarity, consistency and brand equity; its two weight pairings can maintain that voice across partner messages.",
+  "demonstration": "A black specimen panel compares Display and Text in four weights. A white panel below compares Medium/Light and Bold/Regular headline–subhead pairings.",
+  "category": "Typography",
+  "practical_value": "Choose Display for headlines and subheads, Text for body copy, and one of the stated display weight pairs.",
+  "content_islands": [
+    {
+      "name": "Typeface roles",
+      "spec": "Place the Uber Move explanation in the upper left beside Display and Text columns, each showing Light, Regular, Medium and Bold in white on black."
+    },
+    {
+      "name": "Display pairings",
+      "spec": "Place the pairing instructions in the lower left beside two options: Medium header with Light subhead, and Bold header with Regular subhead."
+    }
+  ],
+  "ingredient": {
+    "name": "Uber Move families and weights",
+    "role": "Establish a recognizable typographic voice and separate information levels.",
+    "application": "Use Display for headlines/subheads and Text for body copy; pair Medium with Light or Bold with Regular.",
+    "scope": "October 2018 partner guide; this page’s pairing rule is labeled Display."
+  },
+  "reference_purposes": {
+    "Intent": "The source says Uber Move maintains consistency, creates clarity and provides brand equity; pairings support hierarchy.",
+    "Expression": "Display and Text specimens show four weights and two contrasting pairs.",
+    "Application": "The page assigns Display to headlines/subheads and Text to body copy.",
+    "Constraint": "Medium should pair with Light; Bold should pair with Regular."
+  }
+}

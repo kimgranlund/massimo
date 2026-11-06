@@ -1,0 +1,30 @@
+{
+  "id": "TW28",
+  "title": "Exterior / Glitch cube sign",
+  "image": "tw28.png",
+  "source": "../sources/tw28.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 28,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Use a compact symbol where a full name would be awkward so identification remains clear from multiple directions.",
+  "strategic_value": "Repeating Glitch on two faces of a purple projecting sign can extend Twitch recognition into physical space.",
+  "demonstration": "A purple cube-like sign projects from a stone facade with Glitch on both visible faces beneath a colored window.",
+  "category": "Application",
+  "practical_value": "Compare symbol placement on adjacent faces and its relationship to the building.",
+  "content_islands": [
+    {
+      "name": "Projecting sign",
+      "spec": "Place the purple sign outward from the facade, repeating the white-and-black symbol on both visible faces."
+    },
+    {
+      "name": "Architectural context",
+      "spec": "Retain the stone joints and colored window above to show mounting and scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Glitch is applied to a projecting exterior sign visible from two directions."
+  }
+}

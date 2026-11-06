@@ -1,0 +1,28 @@
+{
+  "id": "SO76",
+  "title": "Newsletters — eNewsletter mastheads",
+  "image": "so76.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 76
+  },
+  "slide_intent": "Teach designers how an email header can orient a reader even when the publication name needs two lines.",
+  "strategic_value": "A common program mark and curve can connect departments’ email publications while leaving the title free to change.",
+  "demonstration": "One- and two-line red mastheads share a left program mark separated from the title. A mail-window example aligns the body to the logotype on a white reading surface.",
+  "category": "Layout",
+  "practical_value": "Choose a single- or two-line title, then align the body column with the left edge of the logotype and distinguish the white message from its biscuit-colored surround.",
+  "content_islands": [
+    {
+      "name": "Placement notes",
+      "spec": "Number the notes for the program mark, browser background, copy field and alignment."
+    },
+    {
+      "name": "Masthead specimens",
+      "spec": "Stack the one-line and two-line versions in the middle. Keep the program identifier and vertical separator in corresponding positions."
+    },
+    {
+      "name": "Email application",
+      "spec": "Place the email window at right. Mark the background, text column and its left edge with numbered callouts."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "TW16",
+  "title": "Creator portrait / Greeting",
+  "image": "tw16.png",
+  "source": "../sources/tw16.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 16,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Show personality through expression and gesture because viewers can connect with a person before reading their name.",
+  "strategic_value": "An expressive portrait against a bright color can make Twitch creators feel approachable and prominent.",
+  "demonstration": "A smiling woman in a black-and-white top raises an open hand against a pink field.",
+  "category": "Imagery",
+  "practical_value": "Compare gesture, crop and background color as tools for giving a creator portrait an inviting character.",
+  "content_islands": [
+    {
+      "name": "Portrait",
+      "spec": "Crop the figure from the torso upward, retaining her smile, gaze and raised open hand."
+    },
+    {
+      "name": "Color ground",
+      "spec": "Use the uninterrupted pink field to separate the figure from contextual distractions."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "COLLINS describes Twitch as supporting creators and describes the photography as a way to elevate them and invite participation.",
+    "Expression": "The portrait pairs an expressive greeting gesture with an isolated pink background."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "V15",
+  "title": "Designing with shapes",
+  "image": "v15.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Teach designers to choose a crop that preserves the photograph’s subject. An angled edge can frame a single person yet cut into people at the edge of a group.",
+  "strategic_value": "Voltera can repeat a family of angled and rounded shapes while leaving the people in a photograph legible. The same shape rules can govern both interface elements and large photographic fields.",
+  "demonstration": "Two crops of the same group photograph are stacked beside a single-person example. The rectangular group crop and angled portrait carry check marks. The angled group crop carries a cross.",
+  "category": "Geometry",
+  "practical_value": "Inspect the subject near each proposed edge before applying a slant. Where a slant fits, use the stated allowance of 10% of the shape width per angled side.",
+  "content_islands": [
+    {
+      "name": "Contents rail",
+      "spec": "Keep the dark table of contents at left. Highlight Shapes and place page 15 in the lower-right tab."
+    },
+    {
+      "name": "Crop and angle guidance",
+      "spec": "In the left text column, stack the page heading, advice on choosing a photo crop and the angle limit. Keep the two-sided total of 20% attached to the per-side limit."
+    },
+    {
+      "name": "Corner-radius guidance",
+      "spec": "Below the crop guidance, group the percentage values by object scale. Show 15% for small objects, 10% for medium and 5% for large, with separate treatment for corners that meet the page edge."
+    },
+    {
+      "name": "Crop comparison",
+      "spec": "Stack two versions of the group shot and one portrait on the right. Label each crop immediately below it. The repeated group shot isolates the consequence of angling the edge."
+    }
+  ]
+}

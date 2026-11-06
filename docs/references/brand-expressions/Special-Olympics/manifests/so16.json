@@ -1,0 +1,28 @@
+{
+  "id": "SO16",
+  "title": "Inspirational",
+  "image": "so16.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Show how to communicate possibility through a person doing something demanding. A reader can see the action that supports the message.",
+  "strategic_value": "Special Olympics can connect an encouraging voice to athletic skill and agency.",
+  "demonstration": "A gymnast in a bright costume extends her arms across a blurred arena background. Two text blocks connect the trait to direct communication and the motivation to try something new.",
+  "category": "Voice",
+  "practical_value": "Select an image in which the person’s action supports the message, then give the copy a clear, direct invitation.",
+  "content_islands": [
+    {
+      "name": "Photographic example",
+      "spec": "Keep the gymnast large at right and preserve the full movement across the image."
+    },
+    {
+      "name": "Trait heading",
+      "spec": "Place Inspirational on a red bar at left so the athlete’s face and pose remain visible."
+    },
+    {
+      "name": "Meaning and expression",
+      "spec": "Place two concise columns beneath the label, describing the trait and the corresponding communication style."
+    }
+  ]
+}

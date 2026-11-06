@@ -1,0 +1,24 @@
+{
+  "id": "TM22",
+  "title": "Typography",
+  "image": "tm22.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 22
+  },
+  "slide_intent": "Mark the transition to typography so a reader can locate the next kind of decision.",
+  "strategic_value": "The repeated magenta divider can make the T-Mobile guide easier to navigate while retaining a strong brand presence.",
+  "demonstration": "A large white Typography heading sits on a full magenta field, with a smaller list of font and text treatment beneath it.",
+  "category": "Typography",
+  "practical_value": "Use this page to identify the start of the typography section.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the large white heading left of center with ample surrounding magenta."
+    },
+    {
+      "name": "Section preview",
+      "spec": "Place the small section label and font and text treatment list below the heading."
+    }
+  ]
+}

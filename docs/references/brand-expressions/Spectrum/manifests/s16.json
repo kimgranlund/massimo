@@ -1,0 +1,24 @@
+{
+  "id": "S16",
+  "title": "4.0 / Approved Messaging",
+  "image": "s16.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 16
+  },
+  "slide_intent": "Keep recurring claims and wording deliberate so customers receive a coherent explanation.",
+  "strategic_value": "Short, consistent messages can connect Spectrum’s separate retail communications.",
+  "demonstration": "A cyan section number leads a dark blue heading over a pale gray gradient. The introduction asks for simple, short messaging and review of claims before release.",
+  "category": "Voice",
+  "practical_value": "Locate approved wording before adapting a service description to a retail placement.",
+  "content_islands": [
+    {
+      "name": "Section heading",
+      "spec": "Place the cyan number above the large dark blue title at upper left."
+    },
+    {
+      "name": "Section explanation",
+      "spec": "Set the introduction below the heading, leaving the lower page open."
+    }
+  ]
+}

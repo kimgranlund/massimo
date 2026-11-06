@@ -1,0 +1,25 @@
+{
+  "id": "S48",
+  "title": "Letterhead",
+  "image": "s48.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 48,
+    "printed_page": 47
+  },
+  "slide_intent": "Teach designers to distinguish the reading side of correspondence from the side that identifies the sender at a glance.",
+  "strategic_value": "Sheffield Museums can make a routine letter recognizable while preserving space for the recipient’s message.",
+  "demonstration": "Two pale portrait sheets sit side by side. A small pink seal and venue list frame the written letter on the first. A much larger pink seal occupies the reverse.",
+  "category": "Application",
+  "practical_value": "Use the smaller seal and quieter identifiers on the writing side. Use the reverse when the seal itself is the message.",
+  "content_islands": [
+    {
+      "name": "Letter face",
+      "spec": "Set the seal at upper left and the venue list opposite. Group the date, reference, salutation, paragraphs and sign-off beneath with a compact contact block at the foot."
+    },
+    {
+      "name": "Reverse",
+      "spec": "Match the size of the first sheet and leave a narrow gutter. Center the enlarged pink seal in the open field."
+    }
+  ]
+}

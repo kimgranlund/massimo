@@ -1,0 +1,25 @@
+{
+  "id": "S60",
+  "title": "Signage development examples",
+  "image": "s60.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 60,
+    "printed_page": 59
+  },
+  "slide_intent": "Teach designers to test how a long exhibition message reads on a narrow banner without losing the venue identifier.",
+  "strategic_value": "Weston Park Museum can give the Sheffield’s Story exhibition prominence while keeping its host visible on the façade.",
+  "demonstration": "Two versions occupy the same yellow banner on the same stone façade. The first places the rotated exhibition copy above the venue mark. The second puts the venue first and adds the museum seal below.",
+  "category": "Layout",
+  "practical_value": "Compare the versions in place to decide whether a passerby should encounter the exhibition title or venue mark first.",
+  "content_islands": [
+    {
+      "name": "Exhibition-led banner",
+      "spec": "Place the rotated Sheffield’s Story text toward the top of the tall yellow field and the venue mark at the bottom. Retain the building for scale."
+    },
+    {
+      "name": "Venue-led banner",
+      "spec": "Repeat the photograph and banner dimensions. Put the venue mark at the head, the exhibition copy through the middle and the seal at the foot."
+    }
+  ]
+}

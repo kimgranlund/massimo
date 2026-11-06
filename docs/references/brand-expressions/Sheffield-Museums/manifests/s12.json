@@ -1,0 +1,29 @@
+{
+  "id": "S12",
+  "title": "Placement – core brand",
+  "image": "s12.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 12,
+    "printed_page": 11
+  },
+  "slide_intent": "Make institutional marks easy to find across a series by teaching a small set of repeatable positions.",
+  "strategic_value": "Sheffield Museums can vary layouts across formats while retaining a predictable place for its signature within recurring materials.",
+  "demonstration": "Gray fields compare a centered seal with six placements at the top or bottom of left, right and center positions.",
+  "category": "Layout",
+  "practical_value": "Choose an allowed anchor and reuse its scale and position across a recurring print format.",
+  "content_islands": [
+    {
+      "name": "Placement guidance",
+      "spec": "Place the section label, title and instructions at left. Keep the note about recurring formats with the placement rule."
+    },
+    {
+      "name": "Centered specimen",
+      "spec": "Give the centered placement a separate gray field and label its centered axis."
+    },
+    {
+      "name": "Edge-position specimens",
+      "spec": "Arrange paired top and bottom examples in three columns, with labels distinguishing left, right and center alignments."
+    }
+  ]
+}

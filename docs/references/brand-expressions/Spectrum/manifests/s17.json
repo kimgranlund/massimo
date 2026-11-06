@@ -1,0 +1,30 @@
+{
+  "id": "S17",
+  "title": "4.01 / Spectrum Stores",
+  "image": "s17.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 17
+  },
+  "slide_intent": "Scale a message to available space while preserving the central offer so a reader understands the same brand at different lengths.",
+  "strategic_value": "Approved short and long descriptions can help mall partners describe Spectrum consistently.",
+  "demonstration": "Three ruled rows pair brief, medium and long descriptions with word limits of 20, 50 and 100.",
+  "category": "Voice",
+  "practical_value": "Choose a description length for the placement without treating historical service claims as current facts.",
+  "content_islands": [
+    {
+      "name": "Heading and guidance",
+      "spec": "Place the title left and the consistency explanation above the table."
+    },
+    {
+      "name": "Description ladder",
+      "spec": "Stack three description rows with cyan labels and word limits on the left, and increasingly detailed copy on the right."
+    }
+  ],
+  "ingredient": {
+    "name": "Store description",
+    "role": "Provide a consistent summary at different lengths.",
+    "application": "Select the brief, medium or long approved description with limits of 20, 50 or 100 words respectively.",
+    "scope": "Historical 2017 retail copy. Product claims and customer counts require fresh verification for present use."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "S43",
+  "title": "Our tone",
+  "image": "s43.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 43,
+    "printed_page": 42
+  },
+  "slide_intent": "Translate four abstract traits into editing actions that affect how a visitor hears a sentence.",
+  "strategic_value": "Concrete tests can help many writers produce a recognizable voice while leaving room for humor, questions and other people’s words.",
+  "demonstration": "Four parallel columns label Engaging, Curious, Enjoyable and Respectful. Each combines an explanation with green practical tips.",
+  "category": "Voice",
+  "practical_value": "Read a sentence aloud, try an active construction and check the attribution or suggested edits when quoting another speaker.",
+  "content_islands": [
+    {
+      "name": "Engaging and Curious",
+      "spec": "Place everyday-language and active-sentence guidance in the first two columns. Distinguish the tips in green."
+    },
+    {
+      "name": "Enjoyable and Respectful",
+      "spec": "Use the next columns for direct address, contemporary phrasing, respect for quoted voices and care when editing them."
+    }
+  ]
+}

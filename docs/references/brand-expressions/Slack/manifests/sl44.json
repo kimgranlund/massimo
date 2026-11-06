@@ -1,0 +1,24 @@
+{
+  "id": "SL44",
+  "title": "Trademarks",
+  "image": "sl44.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 44
+  },
+  "slide_intent": "Teach a reader where to find the edition’s naming, credit and logo-use provisions. Indentation lets a dense set of conditions be scanned at several levels.",
+  "strategic_value": "Slack can separate references to the company name from instructions about the mark’s appearance and attribution.",
+  "demonstration": "The left text column begins with permitted and discouraged uses of the word mark. Marking instructions continue across the gutter into logo sources, clear space and use provisions.",
+  "category": "Brand",
+  "practical_value": "Find the relevant subheading for wording, attribution or logo spacing. Follow its numbered items and carry the continuation onto the following page.",
+  "content_islands": [
+    {
+      "name": "Word-mark usage",
+      "spec": "Set nested do and do-not lists under the left-column heading. Indent each level consistently so each example belongs to its rule."
+    },
+    {
+      "name": "Marking and logo usage",
+      "spec": "Continue the marking text at the top of the right column. Follow with the asset references, space requirements and the first item of the next list."
+    }
+  ]
+}

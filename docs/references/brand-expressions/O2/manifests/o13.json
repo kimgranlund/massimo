@@ -1,0 +1,37 @@
+{
+  "id": "O13",
+  "title": "Portrait social sequences",
+  "image": "o13.png",
+  "source": "../sources/o13.mp4",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 13,
+    "extent": "whole source artwork",
+    "poster_seconds": 3.66,
+    "duration_seconds": 12.2
+  },
+  "slide_intent": "Adapt shared brand ingredients to a narrow screen so offers and stories remain legible in a social format.",
+  "strategic_value": "Recurring bubbles, blue gradients and typography can connect O2 hardware offers, partner content and lifestyle messages.",
+  "demonstration": "Three portrait story frames cycle through devices, partner entertainment and fitness offers, then an outdoor-life sequence; the middle frame repeatedly carries the O2 signature and bubbles.",
+  "category": "Application",
+  "practical_value": "Compare product-led and image-led story layouts while retaining a recognizable central signature.",
+  "content_islands": [
+    {
+      "name": "Three portrait frames",
+      "spec": "Align three tall rounded story frames on a pale-blue field with equal gaps."
+    },
+    {
+      "name": "Offer and lifestyle panels",
+      "spec": "Use the outer frames for devices or footage with headlines, supporting copy and small calls to action."
+    },
+    {
+      "name": "Signature panel",
+      "spec": "Use the center frame for bubbles and the O2 mark, changing its field with the surrounding sequence."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The changing panels repeat O2 blue, bubble forms and bold rounded headlines.",
+    "Application": "The clip shows the identity across portrait social-story promotions and lifestyle content."
+  },
+  "motion": "../sources/o13.mp4"
+}

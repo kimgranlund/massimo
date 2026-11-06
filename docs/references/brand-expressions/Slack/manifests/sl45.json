@@ -1,0 +1,24 @@
+{
+  "id": "SL45",
+  "title": "Trademarks",
+  "image": "sl45.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 45
+  },
+  "slide_intent": "Help a reader distinguish two kinds of reuse: modifying an identity asset and reproducing a product screen. Each has different conditions in the edition’s guidance.",
+  "strategic_value": "Slack can keep its marks recognizable and direct readers to separate constraints for screenshots.",
+  "demonstration": "The numbered logo restrictions continue at upper left. A Screenshots subsection below them lists conditions concerning alteration, third-party content and personal information.",
+  "category": "Brand",
+  "practical_value": "Use the first list for a proposed change to the logo and the second for a screenshot. Refer back to page 44 for the beginning of the logo provisions.",
+  "content_islands": [
+    {
+      "name": "Continuation of logo rules",
+      "spec": "Resume the previous page’s numbering in the narrow left column. Keep successive constraints on color, shape, effects and relationships aligned."
+    },
+    {
+      "name": "Screenshot provisions",
+      "spec": "Below the logo list, introduce a lettered Screenshots subsection and indent its five roman-numbered clauses."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "TM38",
+  "title": "Brand Photography Style",
+  "image": "tm38.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Set explicit selection boundaries so reviewers can explain why an image fits the intended feeling.",
+  "strategic_value": "A shared contrast between customer-centered documentary imagery and idealized device-centered imagery can keep T-Mobile’s picture choices coherent.",
+  "demonstration": "Two aligned text lists contrast eleven desired qualities with excluded alternatives.",
+  "category": "Imagery",
+  "practical_value": "Use the paired qualities to discuss an image’s light, energy, focus, spontaneity and subject emphasis.",
+  "content_islands": [
+    {
+      "name": "Title",
+      "spec": "Place the photography-style title at left."
+    },
+    {
+      "name": "Desired and excluded qualities",
+      "spec": "Align magenta desired qualities opposite black alternatives with a vertical dividing rule."
+    }
+  ]
+}

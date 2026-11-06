@@ -1,0 +1,32 @@
+{
+  "id": "SL38",
+  "title": "Icons",
+  "image": "sl38.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 38
+  },
+  "slide_intent": "Teach designers to reduce an idea to a few strokes that can survive a small size. Sorting related icons together makes differences in meaning easier to inspect.",
+  "strategic_value": "Slack can extend one recognizable drawing style across product, marketing and events while choosing symbols appropriate to each role.",
+  "demonstration": "Four labeled groups collect outlined icons for Slack.com, roles, events and miscellaneous uses. Each group uses small specimens with consistent visual weight and spacing.",
+  "category": "Imagery",
+  "practical_value": "Compare a proposed icon with the closest subject group to judge whether its silhouette and detail level fit the surrounding family.",
+  "content_islands": [
+    {
+      "name": "Purpose statement",
+      "spec": "Use the narrow left column to explain the settings where the icons appear and the job their simple forms perform."
+    },
+    {
+      "name": "Website icon family",
+      "spec": "Place the longest group across the top of the specimen field. Align its small outlined icons in two rows."
+    },
+    {
+      "name": "Roles and events",
+      "spec": "Place the two labeled grids side by side beneath the website group so their subject matter can be compared."
+    },
+    {
+      "name": "Miscellaneous symbols",
+      "spec": "Place the remaining small objects and interface symbols in a final labeled grid below."
+    }
+  ]
+}

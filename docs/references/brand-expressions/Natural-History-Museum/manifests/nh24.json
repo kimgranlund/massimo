@@ -1,0 +1,41 @@
+{
+  "id": "NH24",
+  "title": "Nature-derived color families",
+  "image": "nh24.png",
+  "source": "../sources/nh24.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 24,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Explain color through relationships to subject matter, because a broad palette needs a reason to feel coherent.",
+  "strategic_value": "Linking swatches with natural imagery can connect the Museum’s varied colors to the diversity it represents.",
+  "demonstration": "The animation sequences green/yellow, blue/purple and warm pink/red swatch families alongside nature details, then presents multicolor NHM symbols on dark fields. No numeric color values or usage ratios are shown.",
+  "category": "Color",
+  "practical_value": "Compare palette families with their visual references and test a ring combination against its ground.",
+  "content_islands": [
+    {
+      "name": "Swatch families",
+      "spec": "Arrange broad vertical color bands and change between warm, cool and green families."
+    },
+    {
+      "name": "Natural references",
+      "spec": "Replace sections of the bands with creatures, plants, water and other natural details."
+    },
+    {
+      "name": "Symbol examples",
+      "spec": "Show different colored ring combinations on dark central fields."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The animation sequences green/yellow, blue/purple and warm pink/red swatch families alongside nature details, then presents multicolor NHM symbols on dark fields. No numeric color values or usage ratios are shown.",
+    "Intent": "Pentagram states that the broad palette reflects diversity in nature and life and invites audiences from different backgrounds."
+  },
+  "motion": "../sources/nh24.mp4",
+  "ingredient": {
+    "name": "Nature-linked color families",
+    "role": "Connect a broad palette to the Museum’s subject matter.",
+    "application": "Compare warm, cool and green color groups with their adjacent natural references.",
+    "scope": "This film explains relationships rather than production values or numeric use ratios."
+  }
+}

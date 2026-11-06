@@ -1,0 +1,30 @@
+{
+  "id": "PT37",
+  "title": "Lobby / Poster archive collage",
+  "image": "pt37.png",
+  "source": "../sources/pt37.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 37,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Bring historical work into a service space because an archive can make institutional continuity visible during an everyday visit.",
+  "strategic_value": "The dense collage of past posters can turn the box-office counter into a record of The Public’s varied cultural output.",
+  "demonstration": "Poster fragments cover the wall behind a glazed counter and its lower front; lamps, chairs and ceiling lights establish the lobby setting.",
+  "category": "Application",
+  "practical_value": "Compare reuse of archival graphics as environmental material rather than as separate framed artifacts.",
+  "content_islands": [
+    {
+      "name": "Upper collage",
+      "spec": "Fill the wall behind the counter with cropped poster fragments."
+    },
+    {
+      "name": "Counter and lower band",
+      "spec": "Retain the glass, task lights and matching collage below the dark counter to show the installation as used."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Cropped historical posters form a dense field of contrasting type, colors and images.",
+    "Application": "Historical poster fragments are applied to the box-office wall and lower counter front."
+  }
+}

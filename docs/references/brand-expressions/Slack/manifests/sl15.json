@@ -1,0 +1,32 @@
+{
+  "id": "SL15",
+  "title": "Voice and tone",
+  "image": "sl15.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Teach writers to choose language that respects the reader. Even a playful sign-off has consequences when it labels people or relies on an exclusionary phrase.",
+  "strategic_value": "Slack can give writers an editorial boundary and a positive voice to aim for in the same spread.",
+  "demonstration": "The left column discusses invented Slack terms and exclusionary expressions. The larger right statement connects authenticity with regard for the people being addressed.",
+  "category": "Voice",
+  "practical_value": "Check a playful phrase for invented brand jargon or language that could alienate a reader, then choose a clearer expression.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Language boundaries",
+      "spec": "Place two short paragraphs in the left column with specific examples of terms to avoid and a test for uncertain wording."
+    },
+    {
+      "name": "Closing voice statement",
+      "spec": "Set the affirmative statement in large aubergine type on the right. Its larger scale reverses the emphasis of the earlier voice opener."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}

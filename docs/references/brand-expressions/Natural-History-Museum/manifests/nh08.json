@@ -1,0 +1,34 @@
+{
+  "id": "NH08",
+  "title": "Children’s story panels",
+  "image": "nh08.png",
+  "source": "../sources/nh08.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 8,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Translate an offer into audience language, because a family should be able to imagine the experience before booking.",
+  "strategic_value": "Day-specific phrases and children’s faces can make the Museum’s scientific subjects feel welcoming and playful.",
+  "demonstration": "Three vertical panels animate circular letter fields around children’s faces while white headlines appear: Monday is the day for time travel, Thursdays are for big lizards, and Space explorers come on Saturdays.",
+  "category": "Voice",
+  "practical_value": "Compare headline placement above and below circular portraits in a repeated social format.",
+  "content_islands": [
+    {
+      "name": "Three story formats",
+      "spec": "Align orange, dark and pink rounded panels side by side."
+    },
+    {
+      "name": "Portrait centers",
+      "spec": "Place each child’s face inside a small circular opening within letter rings."
+    },
+    {
+      "name": "Invitations",
+      "spec": "Reveal the white headlines in different positions around the portraits."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "Three vertical panels animate circular letter fields around children’s faces while white headlines appear: Monday is the day for time travel, Thursdays are for big lizards, and Space explorers come on Saturdays."
+  },
+  "motion": "../sources/nh08.mp4"
+}

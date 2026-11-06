@@ -1,0 +1,39 @@
+{
+  "id": "SF05",
+  "title": "High Expressive Ratio",
+  "image": "sf05.png",
+  "source": "../sources/sf05.jpg",
+  "location": {
+    "series": "COLLINS / San Francisco Symphony case study",
+    "item": 5,
+    "section": "High Expressive Ratio",
+    "extent": "Whole published artwork or representative frame of complete local clip"
+  },
+  "slide_intent": "Bound a variable type treatment because expressive range must retain enough recognizable structure to be useful.",
+  "strategic_value": "A controlled italic range can give the Symphony variety without abandoning the serif letter’s identity.",
+  "demonstration": "A row of E specimens marks 100%, 110%, 120%, 130% and 140% as variable italics inside an orange Goldilocks Zone; pale outer examples are labeled No backslant and Too slanted.",
+  "category": "Typography",
+  "practical_value": "Use the demonstrated 100–140% interval for this italic specimen without converting its percentages into angles.",
+  "content_islands": [
+    {
+      "name": "Accepted range",
+      "spec": "Place the five dark E specimens and printed percentage labels inside the orange boundary."
+    },
+    {
+      "name": "Excluded extremes",
+      "spec": "Keep the pale backslanted specimen at left and excessive slants at right with their captions."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A row of E specimens marks 100%, 110%, 120%, 130% and 140% as variable italics inside an orange Goldilocks Zone; pale outer examples are labeled No backslant and Too slanted.",
+    "Application": "Use the demonstrated 100–140% interval for this italic specimen without converting its percentages into angles.",
+    "Intent": "The accompanying High Expressive Ratio text describes generating expressive range from minimal elements.",
+    "Constraint": "The specimen brackets 100–140% as the variable-italic range and labels outer examples No backslant and Too slanted; these are the printed specimen units, not degrees."
+  },
+  "ingredient": {
+    "name": "Variable italic range",
+    "role": "Bound a variable type treatment.",
+    "application": "Use the demonstrated 100–140% interval for this italic specimen without converting its percentages into angles.",
+    "scope": "This annotated E specimen only: printed percentages 100–140%, with excluded backslant and excessive slant. No angle values or universal font-axis mapping are supplied."
+  }
+}

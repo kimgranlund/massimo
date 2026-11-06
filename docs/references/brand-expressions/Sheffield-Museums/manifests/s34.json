@@ -1,0 +1,29 @@
+{
+  "id": "S34",
+  "title": "Text and writing rules",
+  "image": "s34.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 34,
+    "printed_page": 33
+  },
+  "slide_intent": "Teach editors to distinguish a work’s title from surrounding prose and present historical dates in a consistent form.",
+  "strategic_value": "A shared editorial treatment can make information about different exhibitions feel like part of one publication.",
+  "demonstration": "Rules for centuries, decades and spacing sit beside rules for titles in prose and credits. A publication spread shows how text and artworks fit together.",
+  "category": "Typography",
+  "practical_value": "Use italics for exhibition and artwork titles in body copy, check hyphenation on adjectival centuries and omit the apostrophe from decades.",
+  "content_islands": [
+    {
+      "name": "Historical terms and spacing",
+      "spec": "Set centuries, decades and document-spacing rules in the first text column beneath the heading."
+    },
+    {
+      "name": "Titles in context",
+      "spec": "Set the title guidance and a paragraph example beside the first column. Show how a title appears inside a sentence."
+    },
+    {
+      "name": "Publication specimen",
+      "spec": "Place an open two-page layout at the right with artwork, text blocks, section labels and image captions."
+    }
+  ]
+}

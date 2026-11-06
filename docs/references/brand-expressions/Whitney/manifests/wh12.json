@@ -1,0 +1,41 @@
+{
+  "id": "WH12",
+  "title": "The Responsive W / Annotated chart",
+  "image": "wh12.png",
+  "source": "../sources/chart.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 12,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Separate fixed anchors from variable dimensions because controlled flexibility needs enough stability to remain identifiable.",
+  "strategic_value": "The chart can help multiple Whitney designers vary the mark without losing its name placement and construction logic.",
+  "demonstration": "A photographed chart combines a matrix of W variants, blue annotations and enlarged construction and word-placement examples.",
+  "category": "Geometry",
+  "practical_value": "Use the chart to distinguish shape variation from construction and placement guidance; inspect the original before relying on small printed measurements.",
+  "content_islands": [
+    {
+      "name": "Variation matrix",
+      "spec": "Arrange increasingly deep and wide W variants across the left and lower chart."
+    },
+    {
+      "name": "Construction notes",
+      "spec": "Group enlarged blue line, word and placement examples across the top and right."
+    },
+    {
+      "name": "Identification",
+      "spec": "Retain the bold chart title at lower left and studio/date credit at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The adjacent essay explains that a fixed element is needed to make the flexibility perceptible.",
+    "Application": "The chart supplies a matrix of possible forms and annotated construction examples.",
+    "Constraint": "The accompanying essay states that Whitney remains locked to the upper-left corner of the sign; it describes this as the fixed element within the flexible system."
+  },
+  "ingredient": {
+    "name": "Fixed Whitney anchor, variable W",
+    "role": "Preserve a point of recognition while shape and dimensions vary.",
+    "application": "Keep Whitney at the upper-left corner of the sign while adapting the W to its available space.",
+    "scope": "Historical chart and accompanying essay. Small printed chart measurements should be checked in the source; the matrix is not an exhaustive set."
+  }
+}

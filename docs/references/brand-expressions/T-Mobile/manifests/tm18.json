@@ -1,0 +1,36 @@
+{
+  "id": "TM18",
+  "title": "We Love Magenta",
+  "image": "tm18.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 18
+  },
+  "slide_intent": "Demonstrate how repeated, conspicuous color can become a recognition cue before a viewer reads a name.",
+  "strategic_value": "Magenta across stores, events and venues can accumulate T-Mobile recognition across different encounters.",
+  "demonstration": "A magenta text panel sits beside a collage of illuminated retail, branded activity, venue signage and crowds.",
+  "category": "Color",
+  "practical_value": "Make magenta the visual lead and use black or white to balance it rather than letting accents compete.",
+  "content_islands": [
+    {
+      "name": "Color rationale and rules",
+      "spec": "Place the white title, explanation and four rules on the magenta left panel."
+    },
+    {
+      "name": "Environmental color collage",
+      "spec": "Fill the remaining area with retail, event and venue examples separated by narrow magenta gutters."
+    }
+  ],
+  "ingredient": {
+    "name": "Magenta",
+    "role": "Signal T-Mobile through a dominant, repeatable color.",
+    "application": "Make magenta the hero; keep non-magenta elements near it, balance with black and white, and use tertiary colors sparingly.",
+    "scope": "Brand expressions covered by the February 2024 guide. Tertiary colors are primarily, rather than exclusively, for owned environments."
+  },
+  "reference_purposes": {
+    "Intent": "The opening paragraph associates magenta with energy, excitement and immediate T-Mobile recognition.",
+    "Expression": "The collage shows magenta lighting, clothing, signs and crowds carrying one color across different physical settings.",
+    "Application": "The top rules direct designers to lead with magenta, keep other elements near it and use black and white for balance.",
+    "Constraint": "Tertiary colors are limited to sparse use, primarily in owned environments."
+  }
+}

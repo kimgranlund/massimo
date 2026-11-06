@@ -1,0 +1,25 @@
+{
+  "id": "S54",
+  "title": "Merchandise – tote bags",
+  "image": "s54.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 54,
+    "printed_page": 53
+  },
+  "slide_intent": "Teach designers to choose which identity a person should carry on a piece of merchandise. A bag offers enough space for a single strong identifier.",
+  "strategic_value": "The museum family can support both a shared museum souvenir and a Weston Park Museum souvenir.",
+  "demonstration": "A dark green bag carries the white museum seal. A yellow bag with matching handles carries the dark Weston Park Museum lettering and its framing device.",
+  "category": "Application",
+  "practical_value": "Choose the seal for a museum-wide bag or the venue lettering for a venue-specific bag. Judge scale against the bag body.",
+  "content_islands": [
+    {
+      "name": "Institutional bag",
+      "spec": "Center the white circular seal on the green body, leaving open material around it. Keep the handles visible."
+    },
+    {
+      "name": "Venue bag",
+      "spec": "Match the first bag’s size. Center the framed Weston Park lettering on the yellow body and align the bag bases for comparison."
+    }
+  ]
+}

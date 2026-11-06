@@ -1,0 +1,28 @@
+{
+  "id": "SO14",
+  "title": "Inclusive",
+  "image": "so14.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 14
+  },
+  "slide_intent": "Show how collective language and images of shared participation can invite someone into a story.",
+  "strategic_value": "Special Olympics can show inclusion in the relationships visible in its imagery and in the pronouns its writers choose.",
+  "demonstration": "A group poses with arms around each other and fists raised. The copy connects a community-based movement to collective language and representative imagery.",
+  "category": "Voice",
+  "practical_value": "Choose pronouns and a photograph that place the people in the story within a shared community.",
+  "content_islands": [
+    {
+      "name": "Photographic example",
+      "spec": "Fill the page with the group portrait, keeping the faces and raised gestures prominent."
+    },
+    {
+      "name": "Trait heading",
+      "spec": "Set the trait in a red bar across the lower-left side of the group."
+    },
+    {
+      "name": "Meaning and expression",
+      "spec": "Place two icon-led columns on a translucent field below the heading. Pair the account of inclusion with its implications for words and imagery."
+    }
+  ]
+}

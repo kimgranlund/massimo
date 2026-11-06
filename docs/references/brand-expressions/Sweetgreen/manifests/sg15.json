@@ -1,0 +1,32 @@
+{
+  "id": "SG15",
+  "title": "Website across a landscape",
+  "image": "sg15.png",
+  "source": "../sources/sg15.mp4",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 15,
+    "section": "Gallery",
+    "extent": "Complete local video; PNG is first-frame poster"
+  },
+  "slide_intent": "Carry expressive identity through a longer information sequence so visitors can move from appetite to practical exploration.",
+  "strategic_value": "Consistent food imagery and type can connect Sweetgreen’s campaign entrance to menus, app promotion and brand stories.",
+  "demonstration": "A desktop monitor in a green landscape displays a scrolling website with food hero, product cards, app promotion, story blocks and footer.",
+  "category": "Application",
+  "practical_value": "Review transitions between expressive landing content and structured information across a full page.",
+  "content_islands": [
+    {
+      "name": "Monitor and setting",
+      "spec": "Center the desktop monitor on an outdoor bench with hillside and produce around it."
+    },
+    {
+      "name": "Scrolling page",
+      "spec": "Preserve the sequence from hero through content modules to footer within the screen."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The clip demonstrates the identity across successive sections of a desktop website.",
+    "Expression": "Food photographs, pale fields and contrasting type repeat through the page."
+  },
+  "motion": "../sources/sg15.mp4"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "U10",
+  "title": "Thank you.",
+  "image": "u10.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 10
+  },
+  "slide_intent": "Give the guide a clear ending while repeating the identity so the reader retains a coherent final impression.",
+  "strategic_value": "The repeated black panel and lower-left Uber signature can connect the closing page to the opening cover.",
+  "demonstration": "A large white Thank you. sits above open black space; a white Uber wordmark anchors the panel’s lower left inside white outer margins.",
+  "category": "Brand",
+  "practical_value": "Use the opening and closing pair to compare how a minimal identity frames an instructional deck.",
+  "content_islands": [
+    {
+      "name": "Closing message",
+      "spec": "Place the large white Thank you. at the upper left of the black panel."
+    },
+    {
+      "name": "Uber signature",
+      "spec": "Anchor the white Uber wordmark near the lower left, matching the cover’s placement."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The closing page repeats the cover’s black field, white type and lower-left wordmark."
+  }
+}

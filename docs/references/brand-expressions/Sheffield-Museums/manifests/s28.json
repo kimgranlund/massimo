@@ -1,0 +1,24 @@
+{
+  "id": "S28",
+  "title": "Typography",
+  "image": "s28.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 28
+  },
+  "slide_intent": "Mark the transition to the type system and let the chapter heading itself provide a large-scale sample.",
+  "strategic_value": "The repeated divider treatment can help a reader navigate between color and typography using the same visual cue.",
+  "demonstration": "A white Typography heading and small 5.0 identifier share a left edge on a full green field.",
+  "category": "Typography",
+  "practical_value": "Use the divider to locate the specimen, fallback and editorial guidance that follows.",
+  "content_islands": [
+    {
+      "name": "Chapter marker",
+      "spec": "Place the 5.0 identifier with its small Typography label near the top left."
+    },
+    {
+      "name": "Display title",
+      "spec": "Set the single word in large white type below the marker and leave most of the green field open."
+    }
+  ]
+}

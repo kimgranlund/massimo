@@ -1,0 +1,24 @@
+{
+  "id": "SO67",
+  "title": "Envelopes · Standard branding",
+  "image": "so67.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 67
+  },
+  "slide_intent": "Separate sender information from the delivery address. Consistent placement makes the envelope recognizable before the letter is opened.",
+  "strategic_value": "An upper-left signature can identify Special Olympics across envelope sizes while leaving the window area available for the recipient.",
+  "demonstration": "A window envelope is paired with enlargements of the two-line mark, vertical separator and sender address. One enlargement shows the address on multiple lines.",
+  "category": "Layout",
+  "practical_value": "Use the 13 mm mark 10 mm from the top and left. Set a 0.5 pt gray separator about 5 mm to its right, then set the address in 8 pt Ubuntu on 11 pt spacing.",
+  "content_islands": [
+    {
+      "name": "Placement notes",
+      "spec": "Number the settings for the mark, symbol inset, separator, typography and multiline option in the left column."
+    },
+    {
+      "name": "Envelope and enlarged details",
+      "spec": "Place the complete window envelope below the two circular enlargements. Use blue guides to connect sender placement on the envelope to its construction details."
+    }
+  ]
+}

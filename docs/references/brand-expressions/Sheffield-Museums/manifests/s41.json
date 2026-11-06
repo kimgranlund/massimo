@@ -1,0 +1,25 @@
+{
+  "id": "S41",
+  "title": "Tone of voice",
+  "image": "s41.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 41,
+    "printed_page": 40
+  },
+  "slide_intent": "Introduce language as a distinct part of identity so a writer can locate guidance on how the museum should sound.",
+  "strategic_value": "Using the same chapter-divider treatment as the visual disciplines can give the verbal identity equal prominence.",
+  "demonstration": "A white heading announces Tone of voice on dark green, with 7.0 at the upper left and folio 40 at the upper right.",
+  "category": "Voice",
+  "practical_value": "Use this page as the entry point for tone principles, channel choices and editing guidance.",
+  "content_islands": [
+    {
+      "name": "Locator line",
+      "spec": "Set the section number and name at the top left and the small folio at top right."
+    },
+    {
+      "name": "Chapter heading",
+      "spec": "Place Tone of voice in large white type below the locator on the otherwise open field."
+    }
+  ]
+}

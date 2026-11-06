@@ -1,0 +1,28 @@
+{
+  "id": "SL01",
+  "title": "Brand Guidelines",
+  "image": "sl01.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Give readers a recognizable entry point into the book. A cover can demonstrate the identity before the reader learns its rules.",
+  "strategic_value": "Slack can introduce its working palette and illustration language in the opening image. The colored mark recurs on both the small signature and the dimensional tile.",
+  "demonstration": "A multicolor Slack signature sits at upper left on aubergine. A white tile bearing the same mark floats above a black shadow beside the large two-line title.",
+  "category": "Brand",
+  "practical_value": "Use this composition to separate the jobs of identification, illustration and naming a publication.",
+  "content_islands": [
+    {
+      "name": "Signature",
+      "spec": "Place the horizontal Slack lockup in the upper-left corner of the full aubergine field."
+    },
+    {
+      "name": "Illustrated tile",
+      "spec": "Float a white rounded tile toward the upper right. Put the colored symbol on its face and offset a dark shadow below."
+    },
+    {
+      "name": "Title",
+      "spec": "Anchor the large white two-line title at lower left."
+    }
+  ]
+}

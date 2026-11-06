@@ -1,0 +1,38 @@
+{
+  "id": "S08",
+  "title": "2.03 / Spectrum Logo Library",
+  "image": "s08.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Choose artwork for its background and production conditions so the mark remains recognizable.",
+  "strategic_value": "A small approved set can preserve Spectrum’s blue identity while accommodating restricted reproduction.",
+  "demonstration": "A two-by-two comparison shows primary deep-blue and reverse logos above white and black limited-production versions, with file names.",
+  "category": "Color",
+  "practical_value": "Choose primary artwork when possible and use supplied monochrome variants when production is limited.",
+  "content_islands": [
+    {
+      "name": "Heading and file access",
+      "spec": "Keep the heading left and place the approved-artwork explanation above the variants, with the file access note at left."
+    },
+    {
+      "name": "Primary variants",
+      "spec": "Pair the deep-blue logo on white with the reverse logo on blue and retain the associated print and screen file names."
+    },
+    {
+      "name": "Limited-production variants",
+      "spec": "Place white-on-black and black-on-white logo specimens in the lower row under the production limitation label."
+    }
+  ],
+  "ingredient": {
+    "name": "Logo color variants",
+    "role": "Maintain identification across backgrounds and production limits.",
+    "application": "Prefer the primary deep-blue or reverse artwork; select black or white only when production is limited.",
+    "scope": "Approved 2017 logo files. Do not redraw the mark."
+  },
+  "reference_purposes": {
+    "Application": "The library pairs primary and reverse artwork with print and screen file names, then provides monochrome alternatives for restricted production.",
+    "Constraint": "The page limits black and white variants to constrained production and prohibits recreating logo artwork."
+  }
+}

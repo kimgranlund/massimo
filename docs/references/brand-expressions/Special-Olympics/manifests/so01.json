@@ -1,0 +1,28 @@
+{
+  "id": "SO01",
+  "title": "Special Olympics Brand Identity Guidelines",
+  "image": "so01.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 1
+  },
+  "slide_intent": "Introduce the organization through an athlete in action so the reader meets the subject of the identity before learning its specifications.",
+  "strategic_value": "Special Olympics can connect its name and symbol to an athletic event from the reader’s first encounter with the book.",
+  "demonstration": "A race photograph fills the cover above an arc. A runner in a red Monaco jersey leads the group pictured, with the white book title across the foreground and a separate mark in the white lower field.",
+  "category": "Brand",
+  "practical_value": "Use a photograph with a clear focal athlete and choose a region for the title where the action remains readable.",
+  "content_islands": [
+    {
+      "name": "Race photograph",
+      "spec": "Run the image across the cover, favoring the central runner, and carry a red treatment toward the edges."
+    },
+    {
+      "name": "Book title and resource",
+      "spec": "Place the resource address at upper left and the large two-line title over the lower portion of the image."
+    },
+    {
+      "name": "Identification footer",
+      "spec": "Cut a curved white field below the photograph. Place the version at left and the lockup at right."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "NS11",
+  "title": "Run HO19 / Winflo 6 Shield product portrait",
+  "image": "ns11.png",
+  "source": "../sources/ns11.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 11,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Use close detail to support a product claim so viewers can inspect what the claim refers to.",
+  "strategic_value": "Water droplets and a sole-side detail can give the Winflo Shield presentation more concrete support than its weather-oriented headline alone.",
+  "demonstration": "A diagonal dark shoe sits beneath a black title and line of copy; lower detail crops show side construction and water droplets on the toe.",
+  "category": "Imagery",
+  "practical_value": "Pair a product benefit with visible evidence while avoiding a claim that the picture proves technical performance.",
+  "content_islands": [
+    {
+      "name": "Heading",
+      "spec": "Place the product name, short statement and small Swoosh at upper left."
+    },
+    {
+      "name": "Hero shoe",
+      "spec": "Make the diagonal shoe the largest object above a pale blue-gray field and outline Swoosh."
+    },
+    {
+      "name": "Detail evidence",
+      "spec": "Step two detail crops across the lower right; preserve the white artwork and black outer presentation border."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A diagonal dark shoe sits beneath a black title and line of copy; lower detail crops show side construction and water droplets on the toe."
+  }
+}

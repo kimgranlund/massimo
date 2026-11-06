@@ -1,0 +1,32 @@
+{
+  "id": "V23",
+  "title": "NOVA",
+  "image": "v23.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 23
+  },
+  "slide_intent": "Teach writers to express a product family’s differences through audience and task. A researcher evaluating a process needs to know which materials the product can address.",
+  "strategic_value": "Voltera can give NOVA a research-oriented voice while keeping the same visual structure used for V-One. The positioning paragraph and adjectives direct attention to material range and precision.",
+  "demonstration": "The page repeats the V-One layout with a NOVA photograph, product description and adjective list. People hold up a flexible sheet behind the machine, while the text names applications with rigid and flexible materials.",
+  "category": "Voice",
+  "practical_value": "For a NOVA product description, identify the research or industrial setting and the relevant material range. Draw on the precision vocabulary without turning an adjective into a measured accuracy claim.",
+  "content_islands": [
+    {
+      "name": "Contents rail",
+      "spec": "Keep Our products highlighted in the shared contents column and identify the page as 23."
+    },
+    {
+      "name": "NOVA photograph",
+      "spec": "Place the machine in the foreground of the central photograph. Include the people and flexible sheet behind it so the reader can see the material context."
+    },
+    {
+      "name": "Positioning and naming",
+      "spec": "Keep the Our Products label, green accent and NOVA heading aligned as on page 22. Group the research audience, range of materials and capitalization of the name in the body copy."
+    },
+    {
+      "name": "Vocabulary",
+      "spec": "Use the same secondary heading and spacing as on V-One. Group the words associated with innovation, precision and accuracy beneath it."
+    }
+  ]
+}

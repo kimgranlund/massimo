@@ -1,0 +1,24 @@
+{
+  "id": "SO61",
+  "title": "Email signature",
+  "image": "so61.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 61
+  },
+  "slide_intent": "Give a plain-text-style signature a clear reading order. Weight, color and spacing let a recipient separate the person, program and contact channels at the end of a message.",
+  "strategic_value": "A compact text treatment can carry Special Olympics identity into email while keeping names and addresses easy to copy.",
+  "demonstration": "A numbered specimen uses bold periods as short rules, a black name, italic title, red program line and bold channel labels. The corresponding rules specify 9 pt Arial on 12 pt spacing.",
+  "category": "Typography",
+  "practical_value": "Use Arial for this email format. Reserve the program name for program correspondence, group contact details together and set credits or accreditation in italic.",
+  "content_islands": [
+    {
+      "name": "Typography instructions",
+      "spec": "Use a left-hand numbered list for type settings, separators, role names, contact labels and credits."
+    },
+    {
+      "name": "Signature specimen",
+      "spec": "Align the marked example at right with a common text edge. Separate the person and program blocks with short period rules and place the accreditation statement below the contact block."
+    }
+  ]
+}

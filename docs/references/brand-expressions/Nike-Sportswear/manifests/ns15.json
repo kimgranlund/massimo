@@ -1,0 +1,33 @@
+{
+  "id": "NS15",
+  "title": "Run HO19 / Renew Run woman running",
+  "image": "ns15.png",
+  "source": "../sources/ns15.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Run Core Holiday 2019",
+    "item": 15,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Show the product in both motion and a resting stance so viewers can connect activity with visible footwear detail.",
+  "strategic_value": "The running scene and pink-accented shoe close-up can make Renew Run feel usable without losing product specificity.",
+  "demonstration": "A woman in a blue top runs beside a railing; the inset shows black shoes with pink heel accents, and the outlined Swoosh joins the two photographs.",
+  "category": "Imagery",
+  "practical_value": "Choose a secondary image that reveals product details the full-body photograph makes small.",
+  "content_islands": [
+    {
+      "name": "Copy column",
+      "spec": "Position the product name, supporting line and small black Swoosh low in the white left field."
+    },
+    {
+      "name": "Running view",
+      "spec": "Use the runner, railing and city backdrop as the main photograph."
+    },
+    {
+      "name": "Detail view",
+      "spec": "Overlap a shoe-and-railing photograph at right, with a white outline Swoosh crossing the image pair."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A woman in a blue top runs beside a railing; the inset shows black shoes with pink heel accents, and the outlined Swoosh joins the two photographs."
+  }
+}

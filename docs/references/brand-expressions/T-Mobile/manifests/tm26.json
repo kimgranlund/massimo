@@ -1,0 +1,34 @@
+{
+  "id": "TM26",
+  "title": "TeleNeo Open Type Features",
+  "image": "tm26.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 26
+  },
+  "slide_intent": "Align symbols and numbers deliberately so prices and offers read as coherent units.",
+  "strategic_value": "Consistent offer typography can make T-Mobile price claims easier to scan.",
+  "demonstration": "Four specimen groups demonstrate case-sensitive punctuation, proportional numerals, a dollar amount and percentage lockup.",
+  "category": "Typography",
+  "practical_value": "Set offer lines in Bold or Extra Bold and adjust symbols using the illustrated construction rather than automatic superscript.",
+  "content_islands": [
+    {
+      "name": "Feature guidance",
+      "spec": "Place the explanatory text and offer-weight rule at left."
+    },
+    {
+      "name": "Case and numeral specimens",
+      "spec": "Compare punctuation alignment and proportional figures across the upper-right area."
+    },
+    {
+      "name": "Offer lockups",
+      "spec": "Place the $400 and 50% off specimens below with their alignment rules."
+    }
+  ],
+  "ingredient": {
+    "name": "Offer numerals and symbols",
+    "role": "Keep a price or percentage readable as one message.",
+    "application": "Use TeleNeo Bold or Extra Bold for price points and offers; do not use automatic superscript or subscript for lockup symbols.",
+    "scope": "Offer and price lockups; case-sensitive punctuation and proportional numerals are shown as OpenType features."
+  }
+}

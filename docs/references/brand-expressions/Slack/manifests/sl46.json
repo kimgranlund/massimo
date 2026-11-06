@@ -1,0 +1,24 @@
+{
+  "id": "SL46",
+  "title": "Visual design of your website or application",
+  "image": "sl46.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 46
+  },
+  "slide_intent": "Explain how visual resemblance can affect perceived authorship. An interface that looks like its platform provider can leave a visitor unsure who created it.",
+  "strategic_value": "Slack can help third-party services disclose their relationship to its platform while keeping their own visual identity distinct.",
+  "demonstration": "Four lettered paragraphs describe site appearance, use of Slack web assets, API-service attribution and the presentation of a requested notice.",
+  "category": "Brand",
+  "practical_value": "Consult this historical page when interpreting how the edition handled independent service identity and notice visibility. It specifies initial-view placement, size and opacity for a requested notice.",
+  "content_islands": [
+    {
+      "name": "Appearance provisions",
+      "spec": "Place two lettered paragraphs in the upper-left text block under the title rule. Address visual imitation and the display of Slack site elements."
+    },
+    {
+      "name": "Attribution and notice",
+      "spec": "Follow with two paragraphs covering the API relationship and visibility of a requested notice. Keep the right field open."
+    }
+  ]
+}

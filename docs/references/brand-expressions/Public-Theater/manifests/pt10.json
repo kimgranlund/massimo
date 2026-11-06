@@ -1,0 +1,29 @@
+{
+  "id": "PT10",
+  "title": "Simpatico",
+  "image": "pt10.png",
+  "source": "../sources/pt10.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 10,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use extreme scale and cropping deliberately because letter fragments can become an image as well as a word.",
+  "strategic_value": "The monumental black-and-white title can make this production conspicuous within a typographic brand.",
+  "demonstration": "Huge SIMPATICO letterforms occupy nearly the whole poster; narrow gray-and-red credit strips cut vertically through them.",
+  "category": "Typography",
+  "practical_value": "Compare oversized title texture with a separate narrow channel for supporting details.",
+  "content_islands": [
+    {
+      "name": "Title field",
+      "spec": "Fill the white poster with stacked, cropped black letterforms."
+    },
+    {
+      "name": "Credit strips",
+      "spec": "Thread narrow vertical red and gray information blocks through the center and retain the small signature at lower left."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Huge SIMPATICO letterforms occupy nearly the whole poster; narrow gray-and-red credit strips cut vertically through them."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "SG22",
+  "title": "Open-source recipe book",
+  "image": "sg22.png",
+  "source": "../sources/sg22.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 22,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use editorial space to make ingredients and methods inspectable so a food promise becomes something readers can explore.",
+  "strategic_value": "A recipe spread can extend Sweetgreen’s identity from a purchase into everyday cooking.",
+  "demonstration": "An open book on grass shows an ingredient-led spread titled Open-source recipe book, with food photographs and compact text columns.",
+  "category": "Application",
+  "practical_value": "Compare large ingredient imagery with smaller instructional text in a branded editorial format.",
+  "content_islands": [
+    {
+      "name": "Open spread",
+      "spec": "Retain both pages, including headline, ingredient photographs and text."
+    },
+    {
+      "name": "Outdoor surround",
+      "spec": "Keep grass, soil and loose vegetables around the book."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The identity is demonstrated in a recipe publication spread.",
+    "Expression": "Photographed ingredients and an open editorial layout continue the food-focused visual language."
+  }
+}

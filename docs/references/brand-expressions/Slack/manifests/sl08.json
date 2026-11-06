@@ -1,0 +1,28 @@
+{
+  "id": "SL08",
+  "title": "How we describe the need for Slack",
+  "image": "sl08.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Teach writers to explain a product from the audience’s difficulty through to the proposed outcome. The sequence makes the benefit easier to follow.",
+  "strategic_value": "Slack can give communicators a repeatable account of coordination problems and its proposed role in solving them.",
+  "demonstration": "Three stacked text blocks separate the coordination challenge, Slack’s proposed solution and the result claimed in its messaging.",
+  "category": "Voice",
+  "practical_value": "Use the three headings to check whether a product introduction gives the reader a problem, a response and a reason to care.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Three-part message",
+      "spec": "Stack Challenge, Solution and Result in a narrow left column. Make each label bold and place its short explanation immediately below. Leave open space to the right."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}

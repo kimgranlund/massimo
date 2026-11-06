@@ -1,0 +1,29 @@
+{
+  "id": "WH19",
+  "title": "Book plate",
+  "image": "wh19.png",
+  "source": "../sources/large_whitney_2013redesign_bookplate.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 2,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Leave room for personal ownership within a branded object because a useful identity can support participation rather than merely occupy space.",
+  "strategic_value": "A writable name line can turn Whitney’s graphic vocabulary into a personal connection with a purchased book.",
+  "demonstration": "A white book plate sets Whitney and colored words around a thin W and adds a Name line beneath.",
+  "category": "Application",
+  "practical_value": "Compare the fixed museum name, playful phrase and writable field when designing a small personalized item.",
+  "content_islands": [
+    {
+      "name": "Identity and phrase",
+      "spec": "Arrange Whitney and the colored library phrase along the W strokes."
+    },
+    {
+      "name": "Personalization",
+      "spec": "Keep the Name label and blank rule beneath the graphic."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official caption identifies the object as a book plate for the museum’s retail store."
+  }
+}

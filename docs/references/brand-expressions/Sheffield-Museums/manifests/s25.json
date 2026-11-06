@@ -1,0 +1,27 @@
+{
+  "id": "S25",
+  "title": "Colour palette",
+  "image": "s25.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 25
+  },
+  "slide_intent": "Introduce color as its own design decision. A solid field lets readers experience a palette color at the scale of an entire page.",
+  "strategic_value": "The deep green field can establish continuity across chapters while signaling a pause before detailed guidance.",
+  "demonstration": "A small section identifier and a large white chapter title occupy the upper left of a dark green page.",
+  "category": "Color",
+  "practical_value": "Use this divider to recognize where the palette rules begin in the book.",
+  "content_islands": [
+    {
+      "name": "Section identifier",
+      "spec": "Set the number 4.0 and the chapter name on one small line near the upper-left margin."
+    },
+    {
+      "name": "Chapter title and field",
+      "spec": "Repeat the name in large white type below the identifier. Extend the dark green ground to every edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The full dark-green field and large white heading demonstrate the chapter-divider treatment."
+  }
+}

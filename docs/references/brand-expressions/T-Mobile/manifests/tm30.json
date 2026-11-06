@@ -1,0 +1,34 @@
+{
+  "id": "TM30",
+  "title": "Gradient Text Do’s and Don’ts",
+  "image": "tm30.png",
+  "source": "../un-carrier-brand-guidelines.pdf",
+  "location": {
+    "page": 30
+  },
+  "slide_intent": "Use dimensional type selectively so a special offer gains emphasis without becoming harder to read.",
+  "strategic_value": "Controlled gradient lettering can distinguish a high-profile T-Mobile product while retaining brand color.",
+  "demonstration": "Approved magenta and white gradient text is compared with a purple treatment and a thin-weight treatment.",
+  "category": "Typography",
+  "practical_value": "Choose a substantial weight and an approved color before applying a gradient to a word or text block.",
+  "content_islands": [
+    {
+      "name": "Purpose and limits",
+      "spec": "Place the explanation of selective product emphasis at left."
+    },
+    {
+      "name": "Approved gradient type",
+      "spec": "Stack magenta product text and a white multiline headline in the middle."
+    },
+    {
+      "name": "Rejected gradient type",
+      "spec": "Place the alternate-color and thin-weight examples opposite their approved comparisons."
+    }
+  ],
+  "ingredient": {
+    "name": "Gradient lettering",
+    "role": "Add emphasis and dimensionality to a high-profile phrase.",
+    "application": "Use magenta or white gradients and avoid lighter weights; a gradient may span the full height of a multiline block.",
+    "scope": "Selective high-profile products or services, not routine treatment for every message."
+  }
+}

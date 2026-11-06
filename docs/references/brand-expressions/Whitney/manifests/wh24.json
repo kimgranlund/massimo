@@ -1,0 +1,30 @@
+{
+  "id": "WH24",
+  "title": "Kids materials suite",
+  "image": "wh24.png",
+  "source": "../sources/large_whitney_2013redesign_kidssuite.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 7,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Adapt a shared identity to a distinct audience because recognition should coexist with age-appropriate activity and invitation.",
+  "strategic_value": "The colored Kids lettering can distinguish Whitney’s education materials while preserving the W and institutional name.",
+  "demonstration": "A gray flat lay groups a Kids booklet, activity pages, membership card, calendar and activity guide using colored letters and black typography.",
+  "category": "Application",
+  "practical_value": "Compare audience-specific color and lettering with the shared structure across educational objects.",
+  "content_islands": [
+    {
+      "name": "Upper objects",
+      "spec": "Arrange the booklet, open activity pages and membership card across the top."
+    },
+    {
+      "name": "Lower objects",
+      "spec": "Place the June 2013 calendar at lower left and the tall activity guide at lower right."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official caption identifies a suite produced for the Education department.",
+    "Expression": "The Kids lettering uses separate bright colors within the shared black-line identity."
+  }
+}

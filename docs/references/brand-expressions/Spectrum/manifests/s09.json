@@ -1,0 +1,24 @@
+{
+  "id": "S09",
+  "title": "2.04 / Spectrum Logo Don’ts",
+  "image": "s09.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 9
+  },
+  "slide_intent": "Make harmful alterations visible so designers can recognize what weakens a familiar mark.",
+  "strategic_value": "Consistent shape, color and separation can protect Spectrum’s recognition across independently produced materials.",
+  "demonstration": "Ten altered or poorly placed logos are crossed by red diagonals and paired with explanations in two rows.",
+  "category": "Brand",
+  "practical_value": "Check a proposed logo placement against distortion, effects, rotation, recoloring, added text, rearrangement, clutter, intrusion, abbreviation and weak contrast.",
+  "content_islands": [
+    {
+      "name": "Heading and explanation",
+      "spec": "Place the title upper left and the reason for consistency above the examples."
+    },
+    {
+      "name": "Incorrect-use grid",
+      "spec": "Arrange ten marked examples in two rows of five, keeping each rule immediately beneath its specimen."
+    }
+  ]
+}

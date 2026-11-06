@@ -1,0 +1,30 @@
+{
+  "id": "WH07",
+  "title": "Two architectural paintings",
+  "image": "wh07.png",
+  "source": "../sources/responsive-w-4.jpg",
+  "location": {
+    "series": "Experimental Jetset / 2013 process essay",
+    "item": 7,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Allow different spatial arrangements within one visual grammar because consistency can come from relationships rather than identical placement.",
+  "strategic_value": "Whitney can accommodate paintings with different compositions while retaining a thin angular signature.",
+  "demonstration": "Two portrait layouts place architectural paintings below differently shaped W marks.",
+  "category": "Layout",
+  "practical_value": "Compare a symmetric upper W with an asymmetric version before deciding how a mark should occupy residual space.",
+  "content_islands": [
+    {
+      "name": "Left composition",
+      "spec": "Place the architectural painting under a balanced W."
+    },
+    {
+      "name": "Right composition",
+      "spec": "Place the house painting below a diagonal, uneven W whose final stroke rises toward the right edge."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The paired preliminary sketches retain the same thin-line mark while changing its shape.",
+    "Application": "Each painting is paired with an identity shape adapted to its available space."
+  }
+}

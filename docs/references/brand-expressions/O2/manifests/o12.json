@@ -1,0 +1,30 @@
+{
+  "id": "O12",
+  "title": "Priority performance poster and digital ticket",
+  "image": "o12.png",
+  "source": "../sources/o12.jpg",
+  "location": {
+    "series": "Neil Cooper / O2 brand refresh / 2023",
+    "item": 12,
+    "extent": "whole source artwork"
+  },
+  "slide_intent": "Carry a typographic voice between promotion and practical information so the experience remains connected after a person chooses an event.",
+  "strategic_value": "O2 can connect the excitement of an artist announcement with the utility of a ticket through blue fields and consistent type character.",
+  "demonstration": "A performance poster at left uses oversized white artist lettering across the photograph; a rounded digital ticket at right presents a different artist, date, seating fields and QR code on a blue-to-warm gradient.",
+  "category": "Application",
+  "practical_value": "Change information density for the task while preserving shared color and type cues.",
+  "content_islands": [
+    {
+      "name": "Artist poster",
+      "spec": "Place the performance photograph and large two-line name in the left panel with venue text below."
+    },
+    {
+      "name": "Ticket hierarchy",
+      "spec": "On the right, place the Priority label and O2 mark above the artist, event details, seat fields and centered QR code."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Large rounded artist names and blue fields connect the two different formats.",
+    "Application": "The source compares a promotional poster with a digital ticket containing operational details."
+  }
+}

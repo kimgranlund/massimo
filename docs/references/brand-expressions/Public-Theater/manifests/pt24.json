@@ -1,0 +1,37 @@
+{
+  "id": "PT24",
+  "title": "Production layout variations",
+  "image": "pt24.png",
+  "source": "../sources/pt24.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 24,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Separate fixed elements from variable placement because a flexible identity needs recognizable boundaries.",
+  "strategic_value": "A repeated black frame and Public signature can connect varied titles and image positions.",
+  "demonstration": "A three-by-three array compares framed layouts for A Play by William Shakespeare, Passing Strange and Macbeth in orange, blue and green.",
+  "category": "Layout",
+  "practical_value": "Compare nine placements to identify which elements can move while the family remains legible.",
+  "content_islands": [
+    {
+      "name": "Comparison grid",
+      "spec": "Arrange three production columns across three rows."
+    },
+    {
+      "name": "Internal variation",
+      "spec": "Vary title position, color and image blocks within the heavy rectangular frames."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "A three-by-three array compares framed layouts for A Play by William Shakespeare, Passing Strange and Macbeth in orange, blue and green.",
+    "Application": "Nine worked layouts demonstrate alternative placements for three production titles within the same framed system.",
+    "Intent": "Pentagram says the updated system retains activity while adding structure through a grid and printer-like rules."
+  },
+  "ingredient": {
+    "name": "Black frame and movable production blocks",
+    "role": "Keep varied compositions related while allowing different emphases.",
+    "application": "Compare the demonstrated placements inside the outer frame; vary title and image placement while retaining clear grouping.",
+    "scope": "Observed case-study alternatives, not an exhaustive template or mandatory placement system."
+  }
+}

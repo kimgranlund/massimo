@@ -1,0 +1,24 @@
+{
+  "id": "SO08",
+  "title": "Our history",
+  "image": "so08.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 8
+  },
+  "slide_intent": "Ground an institutional origin story in people and a specific action so readers can understand how a movement began.",
+  "strategic_value": "Special Olympics can connect the scale of its later work to Eunice Kennedy Shriver’s early response to barriers to participation.",
+  "demonstration": "A full-page black-and-white photograph shows an activity in progress. Three columns over the lower part of the image connect the early exclusion, a day camp and the movement’s later growth.",
+  "category": "Brand",
+  "practical_value": "Frame a history account by pairing a specific early scene with the decision that changed what people could do.",
+  "content_islands": [
+    {
+      "name": "Historical photograph",
+      "spec": "Use the photograph as a full-page ground and place the section and page headings in white at the top."
+    },
+    {
+      "name": "Chronological account",
+      "spec": "Lay a dark translucent band over the lower-right region. Use three short columns, emphasizing the final statement in bold."
+    }
+  ]
+}

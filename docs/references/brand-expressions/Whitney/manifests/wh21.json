@@ -1,0 +1,29 @@
+{
+  "id": "WH21",
+  "title": "Summer museum guide",
+  "image": "wh21.png",
+  "source": "../sources/large_whitney_2013redesign_museumguide.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 4,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Use hierarchy to help visitors connect floors with content because a branded guide must support orientation as well as recognition.",
+  "strategic_value": "A consistent uppercase hierarchy can carry Whitney’s voice from the cover to practical floor-by-floor information.",
+  "demonstration": "A narrow Summer Museum Guide cover sits beside an unfolded four-panel guide headed Lower Gallery, First Floor, Second Floor and Third Floor.",
+  "category": "Application",
+  "practical_value": "Compare the cover’s identity density with the open guide’s floor headings, text and artwork images.",
+  "content_islands": [
+    {
+      "name": "Cover",
+      "spec": "Place the narrow 2013 cover at left with the W, title and artwork."
+    },
+    {
+      "name": "Floor panels",
+      "spec": "Show the unfolded guide at right with large floor names above supporting text and images."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official caption identifies the object as the visitor guide available to museum visitors."
+  }
+}

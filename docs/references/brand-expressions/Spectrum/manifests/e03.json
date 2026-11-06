@@ -1,0 +1,34 @@
+{
+  "id": "E03",
+  "title": "Versatile Assets / Opens, Closes and Mobile Identity",
+  "image": "e03.png",
+  "source": "../sources/e03.mp4",
+  "location": {
+    "source_order": 3,
+    "whole_source": true,
+    "poster_seconds": 2.778,
+    "duration_seconds": 4.63
+  },
+  "slide_intent": "Give a visual ingredient several transition roles so viewers recognize the brand across changes of format and content.",
+  "strategic_value": "The same current and wordmark can connect Spectrum’s footage, end cards and phone identity.",
+  "demonstration": "A 4.63-second composite compares two landscape panels at left and a phone mockup at right. Current lines, light and the logo alternate with lifestyle footage.",
+  "category": "Motion",
+  "practical_value": "Compare how an opener, a footage overlay and a phone identity preserve the same signature while using different compositions.",
+  "content_islands": [
+    {
+      "name": "Landscape comparisons",
+      "spec": "Stack two horizontal video panels at left, alternating logo fields and lifestyle footage."
+    },
+    {
+      "name": "Phone identity",
+      "spec": "Place a tall phone at right on the white board and carry the same blue current and logo through its portrait screen."
+    }
+  ],
+  "ingredient": {
+    "name": "Connectivity current transition",
+    "role": "Connect moving imagery with the brand signature.",
+    "application": "Adapt the current into opens, closes, footage transitions and loopable versions, with or without the tagline according to the supplied asset.",
+    "scope": "This case-study composite illustrates variants; it is not the complete production delivery or a timing specification."
+  },
+  "motion": "../sources/e03.mp4"
+}

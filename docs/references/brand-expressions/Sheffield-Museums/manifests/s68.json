@@ -1,0 +1,25 @@
+{
+  "id": "S68",
+  "title": "Exhibition advertising",
+  "image": "s68.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 68,
+    "printed_page": 67
+  },
+  "slide_intent": "Teach designers to compare typographic arrangements when the same exhibition name must read both as a title and as an expressive graphic.",
+  "strategic_value": "Millennium Gallery can vary the energy of its exhibition campaign while the artwork, dates and host identify the same show.",
+  "demonstration": "The green treatment staggers the words Lines of Beauty and puts the subtitle beside them. The red treatment aligns the name in one bold row and places the subtitle directly below.",
+  "category": "Typography",
+  "practical_value": "Choose the title arrangement according to the intended reading order and compare it with the surrounding date, logo and credit lines.",
+  "content_islands": [
+    {
+      "name": "Staggered title",
+      "spec": "Use white capitals over the dark green drawing. Step Lines and Beauty diagonally, tuck Of beside the larger word, and stack the subtitle above right."
+    },
+    {
+      "name": "Single-line title",
+      "spec": "Repeat the advert in red with black lettering. Keep the title on one line and the subtitle centered beneath while retaining the edge metadata."
+    }
+  ]
+}

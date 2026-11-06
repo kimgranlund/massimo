@@ -1,0 +1,45 @@
+{
+  "id": "VZ15",
+  "title": "Data visualization overview",
+  "image": "vz15.png",
+  "source": "../sources/vz16.png",
+  "location": {
+    "series": "Jessie W. Lee / Verizon Master Brand Redesign",
+    "source_order": 17,
+    "extent": "whole source image"
+  },
+  "slide_intent": "Choose a visual form that makes a relationship understandable before adding decorative treatment.",
+  "strategic_value": "A restrained palette and clear hierarchy can make Verizon’s numerical stories easier to follow.",
+  "demonstration": "The July 22, 2021 overview moves from chart, bar and line examples to a multi-chart growth infographic and links for style and composition.",
+  "category": "Layout",
+  "practical_value": "Select a single chart for a relationship or combine several charts when a broader story needs multiple measures.",
+  "content_islands": [
+    {
+      "name": "Definition",
+      "spec": "Set the overview title in black above the introductory definition and two-column explanation."
+    },
+    {
+      "name": "Basic chart types",
+      "spec": "Align a ring, bars and lines across three equal panels."
+    },
+    {
+      "name": "Infographic example",
+      "spec": "Combine a prominent total, stepped bars, a percentage ring and line chart in one broad panel."
+    },
+    {
+      "name": "Further guidance",
+      "spec": "Pair style-and-usage and composition examples at the bottom."
+    }
+  ],
+  "reference_purposes": {
+    "Intent": "The source states that visualization should communicate information quickly, clearly and simply.",
+    "Application": "It compares individual charts with an infographic that combines multiple visual elements and key points.",
+    "Expression": "Red, black and gray connect the different chart types."
+  },
+  "ingredient": {
+    "name": "Chart emphasis color",
+    "role": "Direct attention to a selected series or value.",
+    "application": "Use the red highlight against black and gray comparison data as demonstrated in the chart specimens.",
+    "scope": "Observed July 2021 examples; chart figures are illustrative source content and are not independently verified business results."
+  }
+}

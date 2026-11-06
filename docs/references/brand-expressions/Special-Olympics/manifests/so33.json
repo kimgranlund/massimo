@@ -1,0 +1,28 @@
+{
+  "id": "SO33",
+  "title": "Brand mark · Accredited Program mark artwork versions",
+  "image": "so33.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Teach designers to check a local program name as part of every color decision. Small text can lose clarity even when the symbol remains recognizable.",
+  "strategic_value": "A coherent set of local masters can keep the program affiliation visible across one- and two-color production.",
+  "demonstration": "The six color variants each include Program Name beneath the logotype. The reversed specimen presents all three elements in white on red.",
+  "category": "Color",
+  "practical_value": "Select the prepared version for the background and check that the name, logotype and symbol reproduce together.",
+  "content_islands": [
+    {
+      "name": "Treatment notes",
+      "spec": "Set background and reproduction guidance at left."
+    },
+    {
+      "name": "Program artwork matrix",
+      "spec": "Use the same program wording for each example. Stack two-color, single-color and reversed versions in labeled cells."
+    },
+    {
+      "name": "Production and use notes",
+      "spec": "Place format guidance and the full-lockup warning to the right of the matrix."
+    }
+  ]
+}

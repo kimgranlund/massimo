@@ -1,0 +1,29 @@
+{
+  "id": "PT27",
+  "title": "Joe’s Pub / Sponsorship and genre panels",
+  "image": "pt27.png",
+  "source": "../sources/pt27.jpg",
+  "location": {
+    "series": "Pentagram / The Public Theater case study",
+    "item": 27,
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Allow a venue to express its range while naming its parent because sub-identities need both autonomy and affiliation.",
+  "strategic_value": "Lime fields, colored labels and a Public signature can connect a diverse music program to the wider theater.",
+  "demonstration": "Two tall panels pair sponsor names on lime with a white Joe’s Pub panel of genre labels, performer cutouts and arrows.",
+  "category": "Brand",
+  "practical_value": "Compare sponsor recognition and program variety within one shared color treatment.",
+  "content_islands": [
+    {
+      "name": "Sponsor panel",
+      "spec": "Place sponsor names over oversized white seasonal lettering on lime."
+    },
+    {
+      "name": "Venue panel",
+      "spec": "Run JOE’S PUB vertically beside genre labels and figures, closing with the Public mark."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "Two tall panels pair sponsor names on lime with a white Joe’s Pub panel of genre labels, performer cutouts and arrows."
+  }
+}

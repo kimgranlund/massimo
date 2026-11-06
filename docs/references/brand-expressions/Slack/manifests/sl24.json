@@ -1,0 +1,32 @@
+{
+  "id": "SL24",
+  "title": "Core colors",
+  "image": "sl24.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 24
+  },
+  "slide_intent": "Teach designers to consider the relative area and foreground treatment of a palette. A sheet of colors can guide emphasis as well as hue selection.",
+  "strategic_value": "Slack can use white, black and aubergine for larger areas while the four symbol colors supply recognizable accents.",
+  "demonstration": "Three large swatches occupy the upper row. Four smaller accent swatches form the row beneath. Each field displays its color specifications in the prescribed black or white text.",
+  "category": "Color",
+  "practical_value": "Use the areas of the specimens to compare core and accent roles, then retain the text color shown on the chosen ground.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Proportion and text guidance",
+      "spec": "Place the two usage paragraphs at left, covering relative area and the foreground specified for each swatch."
+    },
+    {
+      "name": "Core fields and accent strip",
+      "spec": "Use three tall fields for White, Black and Aubergine above a shorter row of Blue, Green, Yellow and Red. Align the rows to the same outer edges and put reproduction values inside each field."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

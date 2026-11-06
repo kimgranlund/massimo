@@ -1,0 +1,28 @@
+{
+  "id": "SO39",
+  "title": "Primary color palette",
+  "image": "so39.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 39
+  },
+  "slide_intent": "Teach designers to distinguish the colors that identify the movement from those supporting the composition. White space affects how prominently the primary colors appear.",
+  "strategic_value": "Repeated red and gray can connect core materials such as stationery and signage, with the supporting palette allowing variation.",
+  "demonstration": "Overlapping labeled circles present red, gray, biscuit and black above a white curved field. Red and gray receive the largest areas and reproduction specifications appear within the swatches.",
+  "category": "Color",
+  "practical_value": "Choose red and gray as the identifying pair for a core communication. Use the supporting colors and the white field to set emphasis.",
+  "content_islands": [
+    {
+      "name": "Palette rationale",
+      "spec": "Place a bold statement above the swatches identifying the core and supporting roles."
+    },
+    {
+      "name": "Primary and supporting swatches",
+      "spec": "Overlap different-sized circles. Keep names and print, screen or paint references with each relevant color."
+    },
+    {
+      "name": "White field",
+      "spec": "Use the white ground beneath the curve and a separate left note to make white’s compositional role explicit."
+    }
+  ]
+}

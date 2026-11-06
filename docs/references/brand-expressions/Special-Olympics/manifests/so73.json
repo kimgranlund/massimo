@@ -1,0 +1,28 @@
+{
+  "id": "SO73",
+  "title": "Press folders",
+  "image": "so73.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 73
+  },
+  "slide_intent": "Help a designer decide what a folder should communicate when someone holds it and what the recipient should discover on opening it.",
+  "strategic_value": "Special Olympics can gain visibility from a large program mark in a press photograph, or use athlete photography to introduce the program through a personal story.",
+  "demonstration": "Two rows pair a closed folder with its open interior. The first uses red graphics and a large mark. The second uses a portrait on the cover and a grid of photographs inside.",
+  "category": "Application",
+  "practical_value": "Choose the two-color graphic version for a prominent identifier, or use the photo version when suitable program images and captions are available.",
+  "content_islands": [
+    {
+      "name": "Comparison key",
+      "spec": "Explain the four numbered views in the left margin and label the two-color and full-color approaches beside their respective rows."
+    },
+    {
+      "name": "Graphic folder",
+      "spec": "Pair the red cover with an open view containing an introduction on the left and a document pocket on the right."
+    },
+    {
+      "name": "Photographic folder",
+      "spec": "Repeat the arrangement below with a single cover photograph. Place a collage on the interior panel beside the document pocket."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "SG33",
+  "title": "Projecting sg sign",
+  "image": "sg33.png",
+  "source": "../sources/sg33.png",
+  "location": {
+    "series": "COLLINS / Sweetgreen identity case study",
+    "item": 33,
+    "section": "Gallery",
+    "extent": "Whole published artwork"
+  },
+  "slide_intent": "Use a compact identifier where the viewing format is narrow or oblique so a destination can be recognized along a street.",
+  "strategic_value": "The sg monogram can give Sweetgreen a concise secondary street presence.",
+  "demonstration": "A dark green projecting sign carries a large pale sg monogram within a dark metal frame.",
+  "category": "Application",
+  "practical_value": "Compare the compact monogram with the full wordmark when a sign projects from a façade.",
+  "content_islands": [
+    {
+      "name": "Monogram panel",
+      "spec": "Center the large sg lettering on the green face."
+    },
+    {
+      "name": "Mounting",
+      "spec": "Retain the projecting dark frame and wall connection."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The compact signature is used on a projecting storefront sign.",
+    "Expression": "Large overlapping letterforms create a distinctive abbreviated identifier."
+  }
+}

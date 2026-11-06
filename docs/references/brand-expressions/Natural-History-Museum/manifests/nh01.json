@@ -1,0 +1,41 @@
+{
+  "id": "NH01",
+  "title": "Pulsating museum signature",
+  "image": "nh01.png",
+  "source": "../sources/nh01.jpg",
+  "location": {
+    "series": "Pentagram / Natural History Museum case study",
+    "item": 1,
+    "extent": "Published video poster and complete associated clip"
+  },
+  "slide_intent": "Use movement to express a recognizable idea, because a logo can communicate more than identification when its behavior has a reason.",
+  "strategic_value": "The expanding and contracting letter rings can connect the Museum’s initials to the ripple energy described in its identity story.",
+  "demonstration": "The clip builds a radial NHM symbol beside the white stacked museum name on purple; the rings repeatedly expand and contract while the name stays in place. The PNG is the published symbol-only poster.",
+  "category": "Motion",
+  "practical_value": "Compare a moving emblem with a stable name to keep identification readable.",
+  "content_islands": [
+    {
+      "name": "Radial emblem",
+      "spec": "Animate the colored letter rings on the left, varying their radii around the same center."
+    },
+    {
+      "name": "Museum name",
+      "spec": "Keep the white three-line name stationary to the right in the clip."
+    },
+    {
+      "name": "Background",
+      "spec": "Hold the dark purple field throughout."
+    }
+  ],
+  "reference_purposes": {
+    "Expression": "The clip builds a radial NHM symbol beside the white stacked museum name on purple; the rings repeatedly expand and contract while the name stays in place. The PNG is the published symbol-only poster.",
+    "Intent": "Accompanying Pentagram prose describes the circular NHM formation as a ripple effect representing connection and collective energy."
+  },
+  "motion": "../sources/nh01.mp4",
+  "ingredient": {
+    "name": "Radial NHM symbol",
+    "role": "Connect the initials to an expanding circular form.",
+    "application": "Vary the radius of the letter rings while keeping the name readable beside the emblem.",
+    "scope": "Observed behavior in this presentation; no easing values, durations or minimum sizes are prescribed."
+  }
+}

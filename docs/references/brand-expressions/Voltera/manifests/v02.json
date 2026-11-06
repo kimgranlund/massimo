@@ -1,0 +1,24 @@
+{
+  "id": "V02",
+  "title": "Philosophy",
+  "image": "v02.png",
+  "source": "../voltera-brand-guidelines.pdf",
+  "location": {
+    "page": 2
+  },
+  "slide_intent": "Give readers a pause before the reasons behind the brand choices. A brief visual cue helps them locate the new subject in the book.",
+  "strategic_value": "Voltera can use a recurring dark divider to make transitions recognizable while the changing icon identifies the ideas behind the identity.",
+  "demonstration": "The page centers a small line icon above the white heading “Philosophy” on a charcoal field.",
+  "category": "Layout",
+  "practical_value": "Use this treatment when introducing the reasons behind the brand choices. Reserve the detailed guidance for the pages after the divider.",
+  "content_islands": [
+    {
+      "name": "Section icon",
+      "spec": "Center a white head-like outline with a cyan heart above the title. Give the outlined drawing a single colored detail."
+    },
+    {
+      "name": "Section heading",
+      "spec": "Set “Philosophy” in white on one line below the icon. Keep the charcoal field open around both elements."
+    }
+  ]
+}

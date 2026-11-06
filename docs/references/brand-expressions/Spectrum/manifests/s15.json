@@ -1,0 +1,34 @@
+{
+  "id": "S15",
+  "title": "3.05 / Typography / Open Sans",
+  "image": "s15.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 15
+  },
+  "slide_intent": "Adapt a type system to its medium so reading quality and availability remain dependable.",
+  "strategic_value": "A named web substitute can keep Spectrum’s digital communications consistent when print families are replaced.",
+  "demonstration": "Open Sans characters and five roman/italic weight pairs follow a web-use explanation; Extrabold carries an accent-only note.",
+  "category": "Typography",
+  "practical_value": "Use the designated web family and avoid treating the heaviest weight as a default headline.",
+  "content_islands": [
+    {
+      "name": "Heading and web role",
+      "spec": "Place the title upper left and web substitution explanation above the specimen, with download guidance to the right."
+    },
+    {
+      "name": "Open Sans specimen",
+      "spec": "Set the cyan family name over alphabet, numeral and punctuation lines."
+    },
+    {
+      "name": "Weight comparison",
+      "spec": "Align upright and italic weights below and retain the Extrabold restriction at right."
+    }
+  ],
+  "ingredient": {
+    "name": "Open Sans",
+    "role": "Provide a consistent web and mobile reading voice.",
+    "application": "Use Open Sans on the web in place of Gotham and Whitney. Reserve Extrabold for sparse accents, never headlines or body text.",
+    "scope": "Web applications described by the 2017 guide."
+  }
+}

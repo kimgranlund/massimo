@@ -1,0 +1,33 @@
+{
+  "id": "S32",
+  "title": "Guest typefaces",
+  "image": "s32.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 32,
+    "printed_page": 31
+  },
+  "slide_intent": "Teach designers to decide when an exhibition merits its own lettering. The title can introduce a subject’s character while familiar venue marks help a visitor identify the host.",
+  "strategic_value": "Sheffield Museums can give exhibitions distinct voices within the same gallery. The two title treatments vary substantially while both posters retain the Millennium Gallery identifier and Sheffield Museums seal.",
+  "demonstration": "Two portrait posters compare expressive lettering on different images. One uses bespoke hand lettering for Cecil Beaton’s name on pink. The other sets MY PATH in condensed Druk below a marbled image.",
+  "category": "Typography",
+  "practical_value": "Use the lead image to test a guest face or a bespoke treatment for an exhibition title. Compare it with Caslon Doric and choose a treatment distinct enough to justify the exception.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Align the section number and Typography at upper left, with the folio at upper right. Place Guest typefaces below."
+    },
+    {
+      "name": "Guest type guidance",
+      "spec": "Set the guidance in a narrow left column. Explain when exhibitions can introduce a guest face and how to judge its relationship to the lead image and the brand face."
+    },
+    {
+      "name": "Hand-lettered exhibition poster",
+      "spec": "At center, show the pink Cecil Beaton poster. Place the venue identifier above the white hand-lettered name, a monochrome photograph below and the seal at lower right. Use the adjacent arrow to identify the bespoke treatment."
+    },
+    {
+      "name": "Druk exhibition poster",
+      "spec": "Align the dark MY PATH poster beside the first at the same size. Place the venue name above marbled imagery, the large condensed title beneath it and the seal at lower right. Label the guest typeface with a second arrow."
+    }
+  ]
+}

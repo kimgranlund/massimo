@@ -1,0 +1,33 @@
+{
+  "id": "WH20",
+  "title": "Member calendar",
+  "image": "wh20.png",
+  "source": "../sources/large_whitney_2013redesign_membercalendar.jpg",
+  "location": {
+    "series": "Whitney Museum / 2013 launch applications",
+    "item": 3,
+    "extent": "Complete source artwork"
+  },
+  "slide_intent": "Coordinate a cover identity with dense scheduling information because recognition must survive the transition from promotion to practical reading.",
+  "strategic_value": "The W cover and bold date structure can connect Whitney’s membership communication to a useful calendar.",
+  "demonstration": "A closed member calendar, an open editorial spread and a tall June–July 2013 calendar are arranged on gray.",
+  "category": "Application",
+  "practical_value": "Compare brand presence on the cover with the typographic hierarchy needed for dates, events and accompanying images.",
+  "content_islands": [
+    {
+      "name": "Cover",
+      "spec": "Place the narrow W-led cover at upper left."
+    },
+    {
+      "name": "Editorial spread",
+      "spec": "Show the open spread below with headings, columns and small photographs."
+    },
+    {
+      "name": "Calendar",
+      "spec": "Place the tall two-month date grid at right with event information and images beside it."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The official launch caption identifies the calendar as material for the membership program."
+  }
+}

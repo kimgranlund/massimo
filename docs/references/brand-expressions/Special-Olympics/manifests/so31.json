@@ -1,0 +1,28 @@
+{
+  "id": "SO31",
+  "title": "Brand mark · Accredited Program mark translations & bilingual versions",
+  "image": "so31.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 31
+  },
+  "slide_intent": "Teach designers to preserve recognition across translations while allowing two languages to identify a program together.",
+  "strategic_value": "Repeated typographic weight and relative position can connect localized wordmarks to the same international identity.",
+  "demonstration": "Four translated logotypes appear in the upper comparison. Two Canadian bilingual examples below compare a horizontal two-line arrangement and a centered arrangement.",
+  "category": "Typography",
+  "practical_value": "Use the approved translated artwork, preserve its scale relative to the symbol and outline the type when distributing master files.",
+  "content_islands": [
+    {
+      "name": "Translation notes",
+      "spec": "Set typeface, proportion and artwork preparation guidance at left. Keep bilingual guidance in its own paragraph."
+    },
+    {
+      "name": "Translated specimens",
+      "spec": "Arrange four marks in a two-column comparison. Preserve program names and the common symbol."
+    },
+    {
+      "name": "Bilingual specimens",
+      "spec": "Pair the horizontal and centered Canadian versions below a rule. Caption the arrangement of each."
+    }
+  ]
+}

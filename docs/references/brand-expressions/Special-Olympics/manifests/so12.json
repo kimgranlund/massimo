@@ -1,0 +1,28 @@
+{
+  "id": "SO12",
+  "title": "One guiding idea. Multiple stories.",
+  "image": "so12.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Teach writers to draw local language from a shared idea. Keeping the underlying relationship visible allows the wording to respond to a particular audience.",
+  "strategic_value": "Special Olympics can vary its expression across programs while retaining the ideas of revealing, achieving and sharing.",
+  "demonstration": "Three illustration columns sit above segments of a black phrase strip. Associated words cluster beneath each segment, ending in the three working verbs.",
+  "category": "Voice",
+  "practical_value": "Select words for a local message by working down the relevant column and checking how the other two ideas fit the story.",
+  "content_islands": [
+    {
+      "name": "Interpretive prompt",
+      "spec": "Set the explanation and red question in the left column."
+    },
+    {
+      "name": "Three-part phrase",
+      "spec": "Align an illustration above each section of the black guiding-idea strip and use rules to separate the columns."
+    },
+    {
+      "name": "Associated vocabulary",
+      "spec": "Cluster related words below the strip and give Reveal, Achieve and Share a baseline beneath their respective columns."
+    }
+  ]
+}

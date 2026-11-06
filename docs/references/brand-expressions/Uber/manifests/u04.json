@@ -1,0 +1,35 @@
+{
+  "id": "U04",
+  "title": "Logo / Product and partnership lockups",
+  "image": "u04.png",
+  "source": "../uber-brand-system-quick-guide-2018.pdf",
+  "location": {
+    "page": 4
+  },
+  "slide_intent": "Coordinate adjacent names so viewers can read product and partnership relationships without losing the Uber identifier.",
+  "strategic_value": "Shared alignment and spacing can connect Uber Air and a Spotify partnership to the same parent identity.",
+  "demonstration": "Two rows compare Uber Air vertical and horizontal product lockups with a horizontal Uber–Spotify partnership lockup; blue U forms and guide lines expose spacing.",
+  "category": "Brand",
+  "practical_value": "Choose a product or partnership construction and use its illustrated alignment and stated spacing guidance.",
+  "content_islands": [
+    {
+      "name": "Product lockups",
+      "spec": "Keep the product explanation in the upper left and the vertical and horizontal Uber Air constructions side by side in the upper right."
+    },
+    {
+      "name": "Partnership lockup",
+      "spec": "Place the partnership instructions below the product explanation and align the Uber–Spotify construction opposite them."
+    }
+  ],
+  "ingredient": {
+    "name": "Product and partnership lockups",
+    "role": "Make a relationship between identities readable.",
+    "application": "Follow clearspace rules for partnership logos; the separator can use the Uber Move Display Light vertical-line glyph at the same size as the logo.",
+    "scope": "Partner and sponsor guide; product examples use Uber Air and the partnership example uses Spotify."
+  },
+  "reference_purposes": {
+    "Expression": "Uber Air and Uber–Spotify specimens show how additional names sit beside the wordmark.",
+    "Application": "The product constructions show vertical and horizontal arrangements; the partnership specimen shows a separator between brands.",
+    "Constraint": "Partnership logos must follow clearspace rules; the separator can use the vertical-line glyph in Uber Move Display Light at the logo’s size."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "S58",
+  "title": "Signage development examples",
+  "image": "s58.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 58,
+    "printed_page": 57
+  },
+  "slide_intent": "Teach designers to choose what someone on the street should see first. A person looking for a door needs a venue name and a direction. A person discovering a show needs a title and an image.",
+  "strategic_value": "The Graves Gallery mark and Sheffield Museums seal can connect an exhibition campaign to the venue that hosts it while allowing the two signs to answer different questions.",
+  "demonstration": "Two photographs present signs on building exteriors. The green directional sign enlarges the venue name above a left arrow and facilities. The exhibition sign reduces the venue mark, gives Invisible Wounds a yellow title and devotes the right side to a woodland image.",
+  "category": "Application",
+  "practical_value": "Choose the hierarchy for a physical sign by its job. Lead with the venue and direction for wayfinding, or give the exhibition title and artwork priority for a campaign.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the section number and Indicative applications above the Signage development examples title. Keep the printed folio at upper right."
+    },
+    {
+      "name": "Directional sign photograph",
+      "spec": "Place a large photograph at left and retain the architectural frame around the green sign. Show the stacked Graves Gallery lettering, left arrow, floor and amenities text, and museum seal."
+    },
+    {
+      "name": "Exhibition sign photograph",
+      "spec": "Align a second photograph beside the first with equal height and a white gutter. Keep the street setting visible. Show the dark exhibition panel alongside the woodland image with the smaller venue identifier above the title."
+    }
+  ]
+}

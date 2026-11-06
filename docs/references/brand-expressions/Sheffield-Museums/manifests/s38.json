@@ -1,0 +1,25 @@
+{
+  "id": "S38",
+  "title": "Collections and exhibitions",
+  "image": "s38.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 38,
+    "printed_page": 37
+  },
+  "slide_intent": "Teach designers to judge a reproduction by whether viewers can inspect the original work clearly and faithfully.",
+  "strategic_value": "Faithful images can give varied works from the collection a shared standard of care without imposing a uniform look on the objects.",
+  "demonstration": "A short selection rule accompanies a mosaic of paintings, objects, a vehicle and photographic subjects. Their colors and materials remain distinct.",
+  "category": "Imagery",
+  "practical_value": "Select a high-quality scan or focused photograph that preserves the work’s character. Check quality and cropping across the complete set.",
+  "content_islands": [
+    {
+      "name": "Selection note",
+      "spec": "Set the title, short explanation and four selection keywords in the narrow column at left."
+    },
+    {
+      "name": "Collection mosaic",
+      "spec": "Place individual works in a tight grid at right. Mix portraits, objects and artworks of different proportions with consistent gutters."
+    }
+  ]
+}

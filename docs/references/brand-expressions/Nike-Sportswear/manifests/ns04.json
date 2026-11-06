@@ -1,0 +1,33 @@
+{
+  "id": "NS04",
+  "title": "Sportswear HO19 / Shoe-wall rendering",
+  "image": "ns04.png",
+  "source": "../sources/ns04.jpg",
+  "location": {
+    "series": "Annie Nguyen / Nike Sportswear Core Holiday 2019",
+    "item": 4,
+    "extent": "Whole original published artwork"
+  },
+  "slide_intent": "Distribute campaign elements through a retail space so shoppers can connect imagery with the products in front of them.",
+  "strategic_value": "A central portrait and repeated messages can hold the Nike presentation together across merchandise and display furniture.",
+  "demonstration": "A tall portrait panel stands between shoe walls and mannequins; two glazed towers carry white copy, and a central pedestal supports a shoe.",
+  "category": "Application",
+  "practical_value": "Assign different jobs to the large central image, small product pedestal and repeated peripheral messages.",
+  "content_islands": [
+    {
+      "name": "Central image and pedestal",
+      "spec": "Align the tall portrait panel behind the small central product display."
+    },
+    {
+      "name": "Merchandise",
+      "spec": "Place shoe walls and two dressed mannequins on either side of the center."
+    },
+    {
+      "name": "Peripheral displays",
+      "spec": "Flank the scene with two glazed towers bearing the campaign message."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "A tall portrait panel stands between shoe walls and mannequins; two glazed towers carry white copy, and a central pedestal supports a shoe."
+  }
+}

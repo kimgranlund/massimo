@@ -1,0 +1,32 @@
+{
+  "id": "SL20",
+  "title": "Usage on backgrounds",
+  "image": "sl20.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 20
+  },
+  "slide_intent": "Teach designers to judge how a multicolor mark reads against its ground. Holding the signature fixed makes the effect of changing the background easy to compare.",
+  "strategic_value": "Slack can present its four-color mark on a limited set of grounds while keeping the lettering distinguishable.",
+  "demonstration": "Three aligned horizontal lockups sit on white, black and aubergine. Their colored symbols stay constant while the wordmark changes between dark and light.",
+  "category": "Color",
+  "practical_value": "Choose an approved ground before placing the full-color asset. On photography, check that the area directly behind it is black or white.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Background guidance",
+      "spec": "Place the approved grounds and the photography condition in a short left-hand column."
+    },
+    {
+      "name": "Ground comparison",
+      "spec": "Stack three equally wide color fields on the right. Center the lockup at the same size in each and change the lettering for the light or dark ground."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Design elements section label."
+    }
+  ]
+}

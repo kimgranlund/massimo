@@ -1,0 +1,29 @@
+{
+  "id": "S37",
+  "title": "Photography",
+  "image": "s37.png",
+  "source": "../sheffield-museums-design-guidelines.pdf",
+  "location": {
+    "page": 37,
+    "printed_page": 36
+  },
+  "slide_intent": "Teach editors to select photographs by what a viewer can discover in them. Framing, perspective and depth can make a museum experience feel specific.",
+  "strategic_value": "Images of visitors, objects and making can convey the range of Sheffield Museums’ activities across audiences.",
+  "demonstration": "Two text columns describe image choices and contrasting qualities. The adjacent montage includes people looking, taking part and making things in varied light and scale.",
+  "category": "Imagery",
+  "practical_value": "Compare the story in the copy with the photo’s focal action. Try a tighter crop or a different point of view when the connection is weak.",
+  "content_islands": [
+    {
+      "name": "Selection guidance",
+      "spec": "Use the first narrow column for image sourcing, framing and the relationship between picture and copy."
+    },
+    {
+      "name": "Image qualities",
+      "spec": "Stack the desired and discouraged qualities in the second column. Keep their list headings distinct."
+    },
+    {
+      "name": "Photograph montage",
+      "spec": "Arrange differently sized images at right. Pair visitors seen from behind with closer action, faces and environmental details."
+    }
+  ]
+}

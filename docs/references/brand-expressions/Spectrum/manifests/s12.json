@@ -1,0 +1,39 @@
+{
+  "id": "S12",
+  "title": "3.02 / The Blues",
+  "image": "s12.png",
+  "source": "../spectrum-retail-mall-guide-2017.pdf",
+  "location": {
+    "page": 12
+  },
+  "slide_intent": "Judge color against its surrounding surface so people can read the message.",
+  "strategic_value": "A legible use of the same two blues can keep Spectrum’s identity intact across light and dark settings.",
+  "demonstration": "Approved light/dark text pairings sit beside low-contrast examples crossed out in red; small reference swatches appear at upper right.",
+  "category": "Color",
+  "practical_value": "Compare foreground and surface before choosing the blue variant. Treat these as historical examples, not measured accessibility results.",
+  "content_islands": [
+    {
+      "name": "Heading and rationale",
+      "spec": "Place the title upper left and contrast guidance above the comparison."
+    },
+    {
+      "name": "Palette key",
+      "spec": "Keep two compact blue swatches and reproduction values at upper right."
+    },
+    {
+      "name": "Contrast comparison",
+      "spec": "Stack the approved light and deep surfaces at lower left and the rejected gray surfaces at lower right beneath cyan and red labels."
+    }
+  ],
+  "ingredient": {
+    "name": "Blue foreground and background",
+    "role": "Keep branded text distinguishable from its field.",
+    "application": "Use Deep Blue text on light surfaces and Light Blue text on dark surfaces; avoid the low-contrast combinations shown.",
+    "scope": "2017 guide examples. The page gives no measured contrast ratios or text-size thresholds."
+  },
+  "reference_purposes": {
+    "Intent": "The opening note explains the use of contrasting colors in terms of maximum legibility.",
+    "Application": "The approved specimens place Deep Blue text on a light surface and Light Blue text on a dark surface.",
+    "Constraint": "A red strike rejects dark blue on a dark surface and light blue on a medium surface."
+  }
+}

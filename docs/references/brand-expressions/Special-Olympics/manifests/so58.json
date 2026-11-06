@@ -1,0 +1,24 @@
+{
+  "id": "SO58",
+  "title": "Letterhead · A4 specifications",
+  "image": "so58.png",
+  "source": "../special-olympics-brand-identity-guidelines.pdf",
+  "location": {
+    "page": 58
+  },
+  "slide_intent": "Transfer the letter hierarchy to a different sheet proportion. A recipient still needs clear separation between address, message and footer when the paper becomes taller and narrower.",
+  "strategic_value": "Special Olympics can produce A4 correspondence that feels continuous with its US Letter stationery.",
+  "demonstration": "The A4 diagram pairs a 210 × 297 mm page with dimensions, corner guides and enlargements for the body and footer. The main body uses 10.5 pt Ubuntu Light on 16 pt line spacing.",
+  "category": "Layout",
+  "practical_value": "Use the A4 template with 22 mm side margins, 42 mm above and 28 mm below the body. Check that the program contact block and mandatory accreditation fit below the message.",
+  "content_islands": [
+    {
+      "name": "Production settings",
+      "spec": "Place the A4 format, two inks, white uncoated stock and margin table to the left. Keep type sizes with their intended text roles."
+    },
+    {
+      "name": "Letter and detail callouts",
+      "spec": "Show the complete tall sheet on a neutral field, with blue guides at the upper-right mark and circular enlargements for the smaller type."
+    }
+  ]
+}

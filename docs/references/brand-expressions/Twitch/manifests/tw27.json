@@ -1,0 +1,30 @@
+{
+  "id": "TW27",
+  "title": "Street / Oversized wordmarks",
+  "image": "tw27.png",
+  "source": "../sources/tw27.jpg",
+  "location": {
+    "series": "COLLINS / Twitch identity case study",
+    "item": 27,
+    "section": "Gallery",
+    "extent": "Whole source artwork"
+  },
+  "slide_intent": "Test an identity at architectural scale because a familiar signature must still hold together when cropped by its surroundings.",
+  "strategic_value": "Large contrasting signatures can give Twitch a visible street presence with little supporting text.",
+  "demonstration": "Two oversized Twitch wordmarks occupy adjacent pale and black wall panels; colored depth extends beneath both.",
+  "category": "Application",
+  "practical_value": "Compare legibility and contrast when the signature becomes the dominant environmental element.",
+  "content_islands": [
+    {
+      "name": "Two wall panels",
+      "spec": "Place large signatures on adjacent pale and black fields with differing gradients below."
+    },
+    {
+      "name": "Street context",
+      "spec": "Retain the parked car, pavement and building edges to establish viewing scale."
+    }
+  ],
+  "reference_purposes": {
+    "Application": "The artwork presents the signature at large scale on a street-facing wall."
+  }
+}

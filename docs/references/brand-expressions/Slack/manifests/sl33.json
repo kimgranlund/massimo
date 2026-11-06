@@ -1,0 +1,28 @@
+{
+  "id": "SL33",
+  "title": "Primary lockup",
+  "image": "sl33.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 33
+  },
+  "slide_intent": "Teach designers how to signal that an externally visible program belongs to a parent brand. A full signature can establish that relationship for an unfamiliar audience.",
+  "strategic_value": "Slack can lend recognition to public programs, events and groups by carrying its full logo into their names.",
+  "demonstration": "The complete Slack logo stands beside the sample entity name “primary.” A second drawing directly beneath it overlays spacing guides on the same lockup.",
+  "category": "Brand",
+  "practical_value": "Use this construction for a high-visibility external entity. Set its name in lowercase Hellix Regular with optical kerning and −10 tracking, separated by the indicated A unit.",
+  "content_islands": [
+    {
+      "name": "Audience and construction",
+      "spec": "Put two short paragraphs at left, first explaining which entities use this form and then giving the typography and spacing."
+    },
+    {
+      "name": "Clean primary lockup",
+      "spec": "Place the colored octothorpe and black Slack wordmark beside the thinner entity name in the upper right."
+    },
+    {
+      "name": "Measured lockup",
+      "spec": "Repeat the lockup below at the same scale. Overlay pale reference shapes and guides to expose its spacing."
+    }
+  ]
+}

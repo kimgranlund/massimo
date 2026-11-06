@@ -1,0 +1,34 @@
+{
+  "id": "E07",
+  "title": "Digital Out of Home / Facade Screens",
+  "image": "e07.png",
+  "source": "../sources/e07.mp4",
+  "location": {
+    "source_order": 7,
+    "whole_source": true,
+    "poster_seconds": 9.0,
+    "duration_seconds": 15.0
+  },
+  "slide_intent": "Coordinate differently shaped outdoor placements so a passerby can connect them as one message.",
+  "strategic_value": "The current and repeated Life Unlimited signature can tie Spectrum’s lifestyle imagery to a high-rise blue identity panel.",
+  "demonstration": "A 15-second streetside visualization shows a tall blue facade screen, a broad image-led screen at right and a smaller vertical screen at left playing related brand content.",
+  "category": "Application",
+  "practical_value": "Test whether the signature remains recognizable across adjacent formats and viewing angles.",
+  "content_islands": [
+    {
+      "name": "Street context",
+      "spec": "Preserve the low-angle view of the building, surrounding facade, street and people."
+    },
+    {
+      "name": "Screen group",
+      "spec": "Coordinate the tall blue identity panel with the wide photographic panel and the smaller portrait placement, retaining the logo and tagline where shown."
+    }
+  ],
+  "ingredient": {
+    "name": "Outdoor identity system",
+    "role": "Connect separate advertising surfaces at a glance.",
+    "application": "Adapt the current, logo and lifestyle photography to each screen’s proportions while maintaining a recognizable shared signature.",
+    "scope": "This 15-second case-study placement visualization. It does not prescribe a fixed screen synchronization rule for every site."
+  },
+  "motion": "../sources/e07.mp4"
+}

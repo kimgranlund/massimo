@@ -1,0 +1,32 @@
+{
+  "id": "SL06",
+  "title": "Who we are",
+  "image": "sl06.png",
+  "source": "../slack-brand-guidelines-september-2020.pdf",
+  "location": {
+    "page": 6
+  },
+  "slide_intent": "Connect a product description to what people do together. A clear definition gives writers a common starting point before they choose more specific language.",
+  "strategic_value": "Slack can link its platform to coordination at work and reinforce a consistent way to name its service.",
+  "demonstration": "A large aubergine statement on the left describes the work platform. The right column sets out the mission, vision and grammatical use of the Slack name.",
+  "category": "Brand",
+  "practical_value": "Choose the mission, vision or product description according to what a communication needs to explain, and check how it uses the brand name.",
+  "content_islands": [
+    {
+      "name": "Page heading",
+      "spec": "Place the small bold title at upper left above a horizontal rule spanning the page."
+    },
+    {
+      "name": "Positioning statement",
+      "spec": "Set the long statement in large light-weight type in the left column, breaking the lines to follow its clauses."
+    },
+    {
+      "name": "Mission, vision and naming",
+      "spec": "Group the three smaller paragraphs at right. Emphasize the labels for mission and vision and separate the guidance about the name."
+    },
+    {
+      "name": "Running footer",
+      "spec": "Below a thin rule at the foot, align the folio, book title and Defining our brand section label."
+    }
+  ]
+}
