@@ -54,3 +54,7 @@ packages/ui-kit/   the kit: core, dom, tokens, styles, components/<name>/, icons
 apps/studio/       the jig, plus geometry-check.html and react-check.html
 docs/              specs, guides, planning, reports
 ```
+
+## License
+
+MIT. Third-party notices for the color engine are in [NOTICE.md](packages/ui-kit/tokens/colors/spectrum/NOTICE.md). Brand names in the reference brands belong to their owners.
