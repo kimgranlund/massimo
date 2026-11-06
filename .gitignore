@@ -37,3 +37,4 @@ docs/references/brand-expressions/**/*.jpeg
 docs/references/brand-expressions/**/*.pdf
 docs/references/brand-expressions/*/index.html
 docs/references/brand-expressions/*/*/*.html
+docs/references/brand-expressions/**/sources/**
