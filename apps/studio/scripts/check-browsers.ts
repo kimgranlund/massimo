@@ -41,7 +41,7 @@ const docsUrl = `http://127.0.0.1:${docsPort}/docs/`;
 for (let i = 0; i < 100; i++) { if (await fetch(docsUrl).then((r) => r.ok, () => false)) break; await new Promise((r) => setTimeout(r, 200)); }
 
 /** Tags with no script: they have no custom element to define. */
-const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row']);
+const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row', 'ui-column', 'ui-list', 'ui-grid']);
 async function checkDocs(page: Page): Promise<string[]> {
   const fails: string[] = [];
   const failed = (r: { status(): number; url(): string }) => { if (r.status() >= 400) fails.push(`docs: ${r.status()} ${r.url()}`); };

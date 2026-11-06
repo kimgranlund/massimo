@@ -1,0 +1,46 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "flow",
+  "title": "Column, list and grid",
+  "summary": "Layout primitives that arrange their children.",
+  "defaultExample": "column",
+  "examples": [
+    {
+      "id": "column",
+      "label": "A column",
+      "subject": "component:column",
+      "markup": "<ui-column gap=\"3\"><strong>Team</strong><span>Everyone on this workspace.</span><ui-button>Invite</ui-button></ui-column>"
+    },
+    {
+      "id": "column-start",
+      "label": "Aligned to the start",
+      "subject": "component:column",
+      "markup": "<ui-column gap=\"2\" align=\"start\"><ui-button>Save</ui-button><ui-button variant=\"ghost\">Cancel</ui-button></ui-column>"
+    },
+    {
+      "id": "list",
+      "label": "A list",
+      "subject": "component:list",
+      "markup": "<ui-list role=\"list\" gap=\"1\"><div role=\"listitem\">Comments</div><div role=\"listitem\">Mentions</div><div role=\"listitem\">Reviews</div></ui-list>"
+    },
+    {
+      "id": "list-rows",
+      "label": "A list of rows",
+      "subject": "component:list",
+      "markup": "<ui-list role=\"list\" gap=\"2\"><ui-row role=\"listitem\"><span>Weekly digest</span><ui-switch label=\"Weekly digest\"></ui-switch></ui-row><ui-row role=\"listitem\"><span>Product news</span><ui-switch label=\"Product news\"></ui-switch></ui-row></ui-list>"
+    },
+    {
+      "id": "grid",
+      "label": "Tiles that fill the row",
+      "subject": "component:grid",
+      "markup": "<ui-grid min=\"sm\" gap=\"3\" style=\"width: 100%\"><ui-container preset=\"card\"><ui-section>One</ui-section></ui-container><ui-container preset=\"card\"><ui-section>Two</ui-section></ui-container><ui-container preset=\"card\"><ui-section>Three</ui-section></ui-container></ui-grid>"
+    },
+    {
+      "id": "grid-columns",
+      "label": "A fixed column count",
+      "subject": "component:grid",
+      "markup": "<ui-grid columns=\"3\" gap=\"2\" style=\"width: 100%\"><ui-badge>One</ui-badge><ui-badge>Two</ui-badge><ui-badge>Three</ui-badge><ui-badge>Four</ui-badge></ui-grid>"
+    }
+  ]
+}

@@ -1026,6 +1026,54 @@
         "panel"
       ],
       "behavior": "Hover opens an item after delay (50 ms; moving between triggers while open switches at once) and closes it close-delay (50 ms) after the pointer leaves triggers and popup ('trigger-hover'); a press toggles it ('trigger-press'). Arrows along the orientation (mirrored in RTL), Home and End move focus between the list's triggers and links; ArrowDown (ArrowRight when vertical) opens an item and focuses its first link ('list-navigation'); Tab moves from an open trigger into its content and on to the next item. Escape, an outside press or focus leaving close it; a link with close-on-click closes it ('link-press'). Each change fires a cancelable change ({ value, reason, event }; value '' when closed). The popup sits 1u below the open trigger, sized to its content (--popup-width / --popup-height, reveal intent); new content slides in from the side it came from (data-activation-direction)."
+    },
+    "column": {
+      "geometryFamily": "container",
+      "element": "CSS-only stack (React Column).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
+    "list": {
+      "geometryFamily": "container",
+      "element": "CSS-only list in a stack (React List, a native ul).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
+    },
+    "grid": {
+      "geometryFamily": "container",
+      "element": "CSS-only wrapping tile grid (React Grid).",
+      "parts": [],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "dialog"
+      ],
+      "behavior": "None."
     }
   }
 }

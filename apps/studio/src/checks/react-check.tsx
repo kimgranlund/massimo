@@ -53,6 +53,7 @@ import { Badge, Tag, Chip } from '@massimo/ui-kit/components/btg/react';
 import { Swatch, Palette } from '@massimo/ui-kit/components/color/react';
 import { Image } from '@massimo/ui-kit/components/image/react';
 import { Container } from '@massimo/ui-kit/components/container/react';
+import { Column, Grid, List } from '@massimo/ui-kit/components/flow/react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
 import { useState } from 'react';
@@ -174,6 +175,10 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><ui-image data-k="imc" ratio="3/2" /></div>
         <ui-container data-k="cd" preset="card"><ui-section><span>a</span><span>b</span></ui-section></ui-container>
         <ui-container data-k="gp" preset="group" gap="2"><span>a</span><span>b</span></ui-container>
+        <ui-column data-k="flC" gap="3" align="start"><span>a</span><span>b</span></ui-column>
+        <ui-list data-k="flL" role="list" gap="1"><div role="listitem">a</div><div role="listitem">b</div></ui-list>
+        <div style={{ width: 300 }}><ui-grid data-k="flG" min="sm" gap="2"><span>a</span><span>b</span></ui-grid></div>
+        <div style={{ width: 300 }}><ui-grid data-k="flN" columns="3"><span>a</span><span>b</span></ui-grid></div>
         <ui-container data-k="uc" preset="card" padding="lg"><ui-section><ui-container data-k="ucN" preset="group"><span>a</span><span>b</span></ui-container></ui-section></ui-container>
         <ui-container data-k="ucL" preset="card" padding="xl"><ui-section><ui-container data-k="ucL1" preset="card"><ui-section><span>b</span></ui-section></ui-container></ui-section></ui-container>
         <ui-container data-k="ucS" preset="collection" layout="row" surface="raised" radius="0.5" gap="1"><span>a</span><span>b</span></ui-container>
@@ -256,6 +261,10 @@ function Pair({ u }: { u: number }) {
         <div style={{ width: 200 }}><Image data-k="imc" ratio="3/2" /></div>
         <Container data-k="cd" preset="card"><ui-section><span>a</span><span>b</span></ui-section></Container>
         <Container data-k="gp" preset="group" gap={2}><span>a</span><span>b</span></Container>
+        <Column data-k="flC" gap={3} align="start"><span>a</span><span>b</span></Column>
+        <List data-k="flL" gap={1}><li>a</li><li>b</li></List>
+        <div style={{ width: 300 }}><Grid data-k="flG" min="sm" gap={2}><span>a</span><span>b</span></Grid></div>
+        <div style={{ width: 300 }}><Grid data-k="flN" columns={3}><span>a</span><span>b</span></Grid></div>
         <Container data-k="uc" preset="card" padding="lg"><ui-section><Container data-k="ucN" preset="group"><span>a</span><span>b</span></Container></ui-section></Container>
         <Container data-k="ucL" preset="card" padding="xl"><ui-section><Container data-k="ucL1" preset="card"><ui-section><span>b</span></ui-section></Container></ui-section></Container>
         <Container data-k="ucS" preset="collection" layout="row" surface="raised" radius={0.5} gap={1}><span>a</span><span>b</span></Container>
@@ -659,7 +668,7 @@ setTimeout(() => {
   }
   for (const c of root.querySelectorAll('[data-case]')) {
     const [wc, re] = [c.querySelector('[data-side=wc]')!, c.querySelector('[data-side=react]')!];
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'tst', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;
@@ -667,7 +676,7 @@ setTimeout(() => {
       }
     }
 
-    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
+    for (const k of ['bt', 'btI', 'btO', 'btL', 'btD', 'btP', 'cb', 'cbOn', 'cbMixed', 'cbOff', 'rd', 'sw', 'rg', 'fd', 'pg', 'bd', 'tg', 'ch', 'chX', 'sws', 'swa', 'pl', 'plv', 'im', 'imc', 'cd', 'flC', 'flL', 'flG', 'flN', 'gp', 'uc', 'ucN', 'ucL', 'ucL1', 'ucS', 'lb', 'sg', 'swp', 'ims', 'sp', 'spv', 'av', 'avS', 'avX', 'mt', 'mtN', 'tg', 'tgP', 'tgD', 'col', 'colD', 'acc', 'tab', 'tabU', 'mn', 'mnD', 'cm', 'mb', 'mbV', ...GROUP_KEYS]) {
       const a = measure(host(wc, k)), b = measure(host(re, k));
       for (const key of Object.keys(a) as (keyof typeof a)[]) {
         checks++;

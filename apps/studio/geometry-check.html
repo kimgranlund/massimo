@@ -32,7 +32,7 @@ import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resol
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
-import { resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveFlow, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
@@ -990,13 +990,23 @@ for (const unit of [4, 4.5]) for (const s of [0, 0.5, 1, 2, 3]) for (const borde
     <ui-listbox><ui-option>A</ui-option><ui-option>B</ui-option></ui-listbox>
     <ui-container preset="group"><ui-button>A</ui-button></ui-container><ui-container preset="collection"><ui-button>B</ui-button></ui-container>
     <ui-container preset="group" id="gT" radius="0.5"><ui-button>A</ui-button></ui-container><ui-container preset="card" id="cT" radius="0.25">c</ui-container><ui-container preset="card" id="cH" padding="xl"><ui-section id="sP"><p id="sT">t</p></ui-section><ui-section size="md" id="sM"><p id="sMt">m</p></ui-section><div><ui-section id="sW"><p id="sWt">w</p></ui-section></div><ui-section size="sm" divided id="cD"><ui-row id="cHd">a</ui-row><div>b</div></ui-section></ui-container><ui-container preset="card" id="cB"><div id="cBi">i</div><ui-section id="cHh" size="sm">h</ui-section><ui-section size="sm" id="cBl">l</ui-section><ui-section id="cHc" size="md">c</ui-section><ui-section size="sm" id="cBc">k</ui-section><ui-section id="cBa">a</ui-section><ui-section id="cBb">b</ui-section></ui-container><ui-container preset="panel" id="pS"><ui-section id="pSs">a</ui-section></ui-container><ui-container preset="card" id="cC"><ui-button>C</ui-button></ui-container>
+    <ui-column id="flC" gap="3.5"><span>a</span><span>b</span></ui-column><ui-list id="flL" role="list"><div role="listitem">a</div><div role="listitem">b</div></ui-list>
+    <div style="width: 500px"><ui-grid id="flG" min="sm" gap="2"><span>a</span><span>b</span></ui-grid></div><div style="width: 500px"><ui-grid id="flN" columns="3"><span>a</span><span>b</span></ui-grid></div>
     <div id="themeT" style="--ui-radius-collection: 0.4; --ui-radius-card: 0"><ui-container preset="collection"><ui-button>B</ui-button></ui-container><ui-container preset="card" padding="lg">d</ui-container></div>`;
   root.append(box);
   await new Promise((r) => setTimeout(r, 0));
   const g = { unit, border, radiusScale: s };
   const rad = (sel) => px(getComputedStyle(box.querySelector(sel)).borderTopLeftRadius);
   const cmp = resolveComposite(g), lst = resolveComposite({ ...g, container: true });
+  const flowGap = (sel) => px(getComputedStyle(box.querySelector(sel)).rowGap), flowTracks = (sel) => getComputedStyle(box.querySelector(sel)).gridTemplateColumns.split(' ');
+  const flG = resolveFlow({ ...g, min: 'sm', gap: 2, width: 500 }), flN = resolveFlow({ ...g, columns: 3, width: 500 });
   const checks = {
+    'column.gap': [flowGap('#flC'), resolveFlow({ ...g, gap: 3.5 }).gap],
+    'list.gap': [flowGap('#flL'), resolveFlow(g).gap],
+    'grid.gap': [flowGap('#flG'), flG.gap],
+    'grid.count': [flowTracks('#flG').length, flG.count],
+    'grid.track': [px(flowTracks('#flG')[0]), flG.track],
+    'grid.columns.track': [px(flowTracks('#flN')[0]), flN.track],
     'button.radius': [rad('ui-button'), resolveControl(g).radius],
     'segmented.radius': [rad('ui-segmented'), cmp.radius],
     'segmented.option.radius': [rad('ui-segmented ui-option'), cmp.child.radius],

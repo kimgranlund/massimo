@@ -44,6 +44,7 @@
     "./components/image/react": "./components/image/image.react.tsx",
     "./components/container/react": "./components/container/container.react.tsx",
     "./components/row/react": "./components/row/row.react.tsx",
+    "./components/flow/react": "./components/flow/flow.react.tsx",
     "./components/section/react": "./components/section/section.react.tsx",
     "./components/listbox/react": "./components/listbox/listbox.react.tsx",
     "./components/swiper/react": "./components/swiper/swiper.react.tsx",

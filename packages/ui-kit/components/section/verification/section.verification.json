@@ -6,7 +6,7 @@
   "sources": [
     {
       "path": "tokens/geometry/resolve.ts",
-      "sha256": "22449490d00799dda4350f93f14bafd9c391211c3e6c230db5f49ca2babc012c"
+      "sha256": "83711af54bf003be78e5ee11cf5d212578abefb91e6d757fc872f4f00ed72c02"
     },
     {
       "path": "components/section/section.manifest.json",
@@ -26,7 +26,7 @@
     },
     {
       "path": "components/recipe-parts.ts",
-      "sha256": "35721ac166ec05cff0a88ae628701899f998413c044edc1bab75127146457dcf"
+      "sha256": "d06149027f8b73e091609f9089f4c7950318ec35c99b600975e4b76ae5f13d07"
     }
   ],
   "renderers": {

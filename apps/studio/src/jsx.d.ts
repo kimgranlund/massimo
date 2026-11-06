@@ -15,6 +15,9 @@ declare module 'react' {
       'ui-tag': El<{ 'icon-size'?: string }>;
       'ui-chip': El<{ selectable?: boolean; selected?: boolean; removable?: boolean; disabled?: boolean; 'icon-size'?: string }>;
       'ui-row': El<{}>;
+      'ui-column': El<{ gap?: string; align?: 'start' | 'center' | 'end' | 'stretch' }>;
+      'ui-list': El<{ gap?: string; align?: 'start' | 'center' | 'end' | 'stretch' }>;
+      'ui-grid': El<{ gap?: string; columns?: string; min?: 'sm' | 'md' | 'lg' }>;
       'ui-section': El<{ size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; divided?: string }>;
       'ui-container': El<{ preset?: 'group' | 'collection' | 'card' | 'panel' | 'region' | 'page'; padding?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'; layout?: 'stack' | 'row' | 'wrap'; surface?: 'none' | 'panel' | 'card' | 'raised' | 'solid'; divided?: boolean | string; density?: 'compact' | 'default' | 'loose'; gap?: string | number; radius?: string; size?: string; 'aria-label'?: string; role?: string }>;
       'ui-checkbox': El<{ name?: string; value?: string; checked?: boolean; indeterminate?: boolean; parent?: boolean; required?: boolean; disabled?: boolean }>;

@@ -133,6 +133,18 @@
         "details summary"
       ]
     },
+    "component:column": {
+      "kind": "component",
+      "source": "components/flow/flow.manifest.json#/nodes/0",
+      "availability": "css-only",
+      "tag": "ui-column",
+      "searchTerms": [
+        "column",
+        "stack",
+        "vertical layout",
+        "flex column"
+      ]
+    },
     "component:combobox": {
       "kind": "component",
       "source": "components/combobox/combobox.manifest.json#/nodes/0",
@@ -268,6 +280,20 @@
         "onFormSubmit"
       ]
     },
+    "component:grid": {
+      "kind": "component",
+      "source": "components/flow/flow.manifest.json#/nodes/2",
+      "availability": "css-only",
+      "tag": "ui-grid",
+      "searchTerms": [
+        "grid",
+        "tiles",
+        "card grid",
+        "responsive grid",
+        "columns",
+        "auto fill"
+      ]
+    },
     "component:image": {
       "kind": "component",
       "source": "components/image/image.manifest.json#/nodes/0",
@@ -295,6 +321,19 @@
         "email",
         "password",
         "form field"
+      ]
+    },
+    "component:list": {
+      "kind": "component",
+      "source": "components/flow/flow.manifest.json#/nodes/1",
+      "availability": "css-only",
+      "tag": "ui-list",
+      "searchTerms": [
+        "list",
+        "unordered list",
+        "ul",
+        "items",
+        "bullets"
       ]
     },
     "component:listbox": {
@@ -8223,6 +8262,246 @@
       "from": "component:fieldset",
       "relation": "acceptsChild",
       "to": "component:switch"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
     },
     {
       "from": "component:form",

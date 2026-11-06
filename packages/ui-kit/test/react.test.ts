@@ -164,3 +164,10 @@ test('Input, Select, Listbox and Option carry their slot recipe classes on host 
   assert.match(l, /class="ui-listbox__root".*class="ui-option__root" data-ui="option".*<span data-part="contents" class="ui-option__contents">A<\/span>/);
   assert.match(html(h(Segmented, { label: 'S' }, h(Option, { value: 'a' }, 'A'))), /class="ui-segmented__root"/);
 });
+
+test('flow twins: data-ui hosts with plain attributes, and List is a native ul', async () => {
+  const { Column, List, Grid } = await loadTsx(new URL('../components/flow/flow.react.tsx', import.meta.url));
+  assert.match(html(h(Column, { gap: 3, align: 'start' })), /^<div data-ui="column" gap="3" align="start"/);
+  assert.match(html(h(List, { gap: 1 })), /^<ul data-ui="list" gap="1"/);
+  assert.match(html(h(Grid, { columns: 3, min: 'sm' })), /^<div data-ui="grid" columns="3" min="sm"/);
+});

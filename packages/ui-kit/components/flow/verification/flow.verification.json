@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "flow",
+  "scope": "Behavior, ARIA and form participation of the web component in happy-dom (node:test). Rendered lengths are covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "tokens/geometry/resolve.ts",
+      "sha256": "83711af54bf003be78e5ee11cf5d212578abefb91e6d757fc872f4f00ed72c02"
+    },
+    {
+      "path": "components/flow/flow.manifest.json",
+      "sha256": "0b494809ae704e7816a230a40847405f7d7b3bc0dd2000c0cba57572a1da17f8"
+    },
+    {
+      "path": "components/flow/flow.react.tsx",
+      "sha256": "5f2c095818109ddae79242f762d487bc71e37f3bcfa0b4ff4254d058c94dd119"
+    },
+    {
+      "path": "components/flow/flow.recipe.ts",
+      "sha256": "8d9d41d9057637bec2a49fdd2d45e97d6e2f448c9693806ef8dd4f3e9b791767"
+    },
+    {
+      "path": "components/recipe-parts.ts",
+      "sha256": "d06149027f8b73e091609f9089f4c7950318ec35c99b600975e4b76ae5f13d07"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/geometry.test.ts",
+          "covers": "row inset and block padding numbers"
+        },
+        {
+          "command": "node --test test/recipes.test.ts",
+          "covers": "the row's tag rules; containers declare its inset by inheritance"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/geometry.test.ts",
+          "node --test test/recipes.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/react.test.ts",
+          "covers": "native data-ui hosts, construction-pattern parts, semantics and form values, no custom elements"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/react.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "CSS-only: lengths are verified in the browser geometry check (apps/studio/geometry-check.html), not by these unit tests.",
+    "The source list is the direct sources, not every transitive dependency.",
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares each React twin with its web component at five sizes (\"fails\": []).",
+    "Geometry review, manual items (2026-11-06): 2 unit, gap and track minimum derive from u; 3, 4, 5, 6, 7 and 9 don't apply, since the tags have no slots, labels, border, radius, type or floating layer; 8 gap attribute honoured; 10 a tile never overflows a narrower parent (min(100%, …)), and flow mirrors in RTL by construction; 11 no focus stop."
+  ]
+}

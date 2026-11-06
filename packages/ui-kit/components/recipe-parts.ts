@@ -42,7 +42,7 @@ export function tagRules(tag: string, { slots, base = {}, variants = {}, default
   const defaults = Object.entries(defaultVariants).map(([v, value]) => variants[v][String(value)].root ?? {});
   const out: Style = { [tag]: mergeStyles(base.root ?? {}, ...defaults) };
   for (const [v, values] of Object.entries(variants)) {
-    for (const [value, styles] of Object.entries(values)) if (String(defaultVariants[v]) !== value && styles.root) out[`${tag}[${v}=${value}]`] = styles.root;
+    for (const [value, styles] of Object.entries(values)) if (String(defaultVariants[v]) !== value && styles.root) out[`${tag}[${v}=${/^[a-z]/i.test(value) ? value : `"${value}"`}]`] = styles.root;
   }
   return out;
 }

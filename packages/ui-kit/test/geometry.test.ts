@@ -492,3 +492,13 @@ test('universal container: padding is the input and radius follows; unpainted wr
   assert.equal(area.radius, 0, 'areas are square');
   assert.deepEqual([area.children[0].radius, area.children[0].edge], [lone.radius, lone.edge], 'and restart the chain');
 });
+
+test('flow layouts: the gutter, and a grid fits as many tracks as min allows', async () => {
+  const { resolveFlow } = await import('../tokens/geometry/resolve.ts');
+  assert.equal(resolveFlow(U4).gap, 8, 'default 2u');
+  assert.equal(resolveFlow({ ...U4, gap: 3.5 }).gap, 14);
+  assert.deepEqual(resolveFlow({ ...U4, min: 'sm', gap: 2, width: 500 }), { gap: 8, count: 3, track: 161.33333333333334 });
+  assert.equal(resolveFlow({ ...U4, min: 'lg', width: 320 }).count, 1, 'exactly one track');
+  assert.deepEqual(resolveFlow({ ...U4, min: 'lg', width: 200 }), { gap: 8, count: 1, track: 200 });
+  assert.equal(resolveFlow({ ...U4, columns: 4, width: 400 }).count, 4, 'columns win');
+});

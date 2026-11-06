@@ -1,0 +1,556 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "flow",
+  "primary": "component:column",
+  "module": null,
+  "registration": "none",
+  "documentation": "./flow.md",
+  "examples": "./flow.examples.json",
+  "contract": "../../contracts/components.json#/components/column",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./flow.recipe.ts"
+  },
+  "independentLayers": [],
+  "nodes": [
+    {
+      "id": "component:column",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-column",
+      "contract": "../../contracts/components.json#/components/column",
+      "intent": [
+        "Stack related content in document order."
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default 2.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "align",
+          "type": "string",
+          "enum": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ],
+          "readBy": "css",
+          "description": "Cross-axis alignment. Default stretch.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Any content."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Layout only: no fill, border or padding."
+      ],
+      "avoidWhen": [
+        {
+          "when": "A painted surface with an inset.",
+          "reason": "A column only arranges its children.",
+          "useInstead": "component:container"
+        },
+        {
+          "when": "Items side by side on one line.",
+          "reason": "A column stacks.",
+          "useInstead": "component:row"
+        }
+      ],
+      "searchTerms": [
+        "column",
+        "stack",
+        "vertical layout",
+        "flex column"
+      ]
+    },
+    {
+      "id": "component:list",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-list",
+      "contract": "../../contracts/components.json#/components/list",
+      "intent": [
+        "Present a list of items in a stack, with no markers."
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default 2.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "align",
+          "type": "string",
+          "enum": [
+            "start",
+            "center",
+            "end",
+            "stretch"
+          ],
+          "readBy": "css",
+          "description": "Cross-axis alignment. Default stretch.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": "list",
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "List items: li in React; role=listitem on the web tag."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "The web tag has no script, so it needs role=list and role=listitem from the author. React renders a native ul.",
+        "Layout only: no selection, keyboard or focus. Use a listbox for a choice."
+      ],
+      "avoidWhen": [
+        {
+          "when": "The user picks an item.",
+          "reason": "A list owns no selection or keyboard.",
+          "useInstead": "component:listbox"
+        },
+        {
+          "when": "Rows inside a card, separated by lines.",
+          "reason": "A divided section already draws them.",
+          "useInstead": "component:section"
+        }
+      ],
+      "searchTerms": [
+        "list",
+        "unordered list",
+        "ul",
+        "items",
+        "bullets"
+      ]
+    },
+    {
+      "id": "component:grid",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-grid",
+      "contract": "../../contracts/components.json#/components/grid",
+      "intent": [
+        "Wrap tiles to fill the available row."
+      ],
+      "properties": [],
+      "attributes": [
+        {
+          "name": "gap",
+          "type": "number",
+          "readBy": "css",
+          "description": "Gutter between children in units of u, 0…8 in 0.5 steps. Default 2.",
+          "inspector": {
+            "control": "number",
+            "min": 0,
+            "max": 8,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "min",
+          "type": "string",
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "readBy": "css",
+          "description": "The smallest tile width: sm 40u, md 60u, lg 80u. Default md.",
+          "inspector": {
+            "control": "select"
+          }
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            12
+          ],
+          "readBy": "css",
+          "description": "A fixed column count; wins over min.",
+          "inspector": {
+            "control": "select"
+          }
+        }
+      ],
+      "events": [],
+      "semantics": {
+        "role": null,
+        "formAssociated": false
+      },
+      "content": {
+        "ownership": "consumer",
+        "acceptsChildren": true,
+        "children": "Tiles."
+      },
+      "layout": {
+        "display": "grid",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "Layout only: no fill, border or padding.",
+        "Without columns it fits as many tiles as min allows, and a tile never overflows a narrower parent.",
+        "columns doesn't respond to width."
+      ],
+      "avoidWhen": [
+        {
+          "when": "Tabular data with headers.",
+          "reason": "A grid has no row or column semantics.",
+          "useInstead": "component:section"
+        },
+        {
+          "when": "One line of mixed items.",
+          "reason": "Tiles take equal widths.",
+          "useInstead": "component:row"
+        }
+      ],
+      "searchTerms": [
+        "grid",
+        "tiles",
+        "card grid",
+        "responsive grid",
+        "columns",
+        "auto fill"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:column",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:column",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:list",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:list",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesGeometry",
+      "to": "geometry:container"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:grid",
+      "relation": "allowedIn",
+      "to": "context:dialog"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:grid",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "documentation": "./flow.md",
+      "verification": "./verification/flow.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./flow.react.tsx",
+      "exports": {
+        "component:column": "Column",
+        "component:list": "List",
+        "component:grid": "Grid"
+      },
+      "verification": "./verification/flow.verification.json#/renderers/react",
+      "props": {
+        "component:column": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number // Gutter between children in units of u, 0 … 8 in 0.5 steps. Default 2.",
+            "align?: Align // Cross-axis alignment. Default: stretch."
+          ]
+        },
+        "component:list": {
+          "inherits": [
+            "HTMLAttributes<HTMLUListElement>"
+          ],
+          "props": [
+            "gap?: number // Gutter between items in units of u, 0 … 8 in 0.5 steps. Default 2.",
+            "align?: Align // Cross-axis alignment. Default: stretch."
+          ]
+        },
+        "component:grid": {
+          "inherits": [
+            "HTMLAttributes<HTMLDivElement>"
+          ],
+          "props": [
+            "gap?: number // Gutter between tiles in units of u, 0 … 8 in 0.5 steps. Default 2.",
+            "columns?: GridColumns // A fixed column count. Default: as many tiles as fit `min`.",
+            "min?: GridMin // The smallest tile width: sm 40u, md 60u, lg 80u. Default md."
+          ]
+        }
+      }
+    }
+  }
+}

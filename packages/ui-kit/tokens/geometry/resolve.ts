@@ -239,6 +239,25 @@ export const presetLevel = (preset: ContainerPreset, padding: CardPadding = 'md'
   preset === 'card' ? `card-${padding}` : preset;
 export const isAreaPreset = (preset: ContainerPreset) => CONTAINERS[presetLevel(preset)].family === 'area';
 /** The default container ratio k (theme container-ratio): a nested radius is at least its parent's × k. */
+/** The default gutter of ui-column, ui-list and ui-grid, in u: a collection's. */
+export const FLOW_GAP = 2;
+/** The smallest ui-grid tile per `min`, in u. */
+export const GRID_MIN = { sm: 40, md: 60, lg: 80 } as const;
+export type GridMin = keyof typeof GRID_MIN;
+export const GRID_COLUMNS = [1, 2, 3, 4, 5, 6, 12] as const;
+export type GridColumns = (typeof GRID_COLUMNS)[number];
+/**
+ * Flow layouts: the gutter, and for a grid in a parent `width` px wide, its column count and track.
+ * With `columns` the count is fixed; otherwise as many tracks of at least `min` as fit, never wider than
+ * the parent. Tracks share what's left after the gutters.
+ */
+export function resolveFlow(input: GeometryInput & { gap?: number; min?: GridMin; columns?: GridColumns; width?: number }) {
+  const u = inputs(input).unit, gap = (input.gap ?? FLOW_GAP) * u, width = input.width ?? 0;
+  const least = Math.min(width, GRID_MIN[input.min ?? 'md'] * u);
+  const count = input.columns ?? (least > 0 ? Math.max(1, Math.floor((width + gap) / (least + gap))) : 1);
+  return { gap, count, track: (width - gap * (count - 1)) / count };
+}
+
 export const CONTAINER_RATIO = 0.4;
 /** A nested card's padding, in u (× density): one step below its parent, down to this. */
 export const NESTED_CARD_FLOOR = 3;
