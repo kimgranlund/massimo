@@ -33,7 +33,7 @@ npm run brand -- hydrate path/to/brand.json   # the theme and the open questions
 
 - Answer every open question (`unresolved`) in one round with the person; never fill one with a guess.
 - Treat each lint warning as a design question. A cliché, an out-of-bounds value or an idle signature means revising the choice, starting at the step where it came from. The lint never blocks.
-- In the jig (`npm run studio`), **Load** the brand JSON, Apply a worked brand on the Brand page, or pick a reference brand under Start from in the panel's Brand tab. Every page renders under it. Look at Home, Components and the Brand page in light and dark, at all three densities. The Brand page shows where each value came from, the anchors beside their steps, the faces and voice, and both lints.
+- In the jig (`npm run studio`), **Load** the brand JSON, Apply a worked brand on the Brand page, or pick a reference brand in the panel header's Theme select. Every page renders under it. Look at Home, Components and the Brand page in light and dark, at all three densities. The Brand page shows where each value came from, the anchors beside their steps, the faces and voice, and both lints.
 - Tune by hand in the panel only where the descriptors cannot reach; the Brand page's Live column shows what moved. **Copy** writes the `{ brand, theme }` bundle: the brand stays the source, and the theme carries the hand tuning.
 
 ## 4. Hand off
