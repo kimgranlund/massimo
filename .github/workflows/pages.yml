@@ -1,6 +1,6 @@
-# Builds the ui-kit and the studio and publishes the studio to GitHub Pages
-# (https://kimgranlund.github.io/massimo/, with /geometry-check.html and /react-check.html beside it).
-name: Studio on Pages
+# Builds the ui-kit, the studio and the docs site and publishes them to GitHub Pages
+# (https://kimgranlund.github.io/massimo/, with /geometry-check.html, /react-check.html and /docs/ beside it).
+name: Studio and docs on Pages
 
 on:
   push:

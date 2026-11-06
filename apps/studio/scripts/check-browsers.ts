@@ -7,26 +7,69 @@
 //   npm run check:browsers                  all three engines
 //   npm run check:browsers -- firefox webkit
 //
+// Per engine it also walks apps/docs: every component page mounts its examples with no page errors,
+// failed requests or sideways scroll, and the Theme select loads a brand.
+//
 // Needs the Playwright browsers once: npx playwright install chromium firefox webkit.
 // Starts its own Vite server for apps/studio on a free port (after Panda codegen).
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
+import { createServer as netServer, type AddressInfo } from 'node:net';
 import { fileURLToPath } from 'node:url';
 import { chromium, firefox, webkit, type BrowserType, type Page } from 'playwright';
 import { createServer } from 'vite';
 
 const studio = fileURLToPath(new URL('..', import.meta.url));
 const kit = fileURLToPath(new URL('../../../packages/ui-kit/', import.meta.url));
+const docs = fileURLToPath(new URL('../../docs/', import.meta.url));
 const ENGINES: Record<string, BrowserType> = { chromium, firefox, webkit };
 const names = process.argv.slice(2).filter((a) => !a.startsWith('-'));
 const engines = names.length ? names : Object.keys(ENGINES);
 for (const n of engines) if (!ENGINES[n]) throw new Error(`unknown engine ${n} (chromium, firefox, webkit)`);
 
-for (const dir of [kit, studio]) execFileSync('npx', ['panda', 'codegen', '--silent'], { cwd: dir, stdio: 'inherit' });
+for (const dir of [kit, studio, docs]) execFileSync('npx', ['panda', 'codegen', '--silent'], { cwd: dir, stdio: 'inherit' });
+execFileSync('node', ['scripts/brands.ts'], { cwd: docs, stdio: 'inherit' });
 process.chdir(studio); // the Panda PostCSS plugin finds panda.config.ts from the working directory
 const server = await createServer({ root: studio, configFile: `${studio}vite.config.ts`, logLevel: 'error', server: { host: '127.0.0.1', port: 0 } });
 await server.listen();
 const addr = server.httpServer!.address();
 const base = `http://127.0.0.1:${typeof addr === 'object' && addr ? addr.port : 0}`;
+
+// The docs site runs in its own process: the Panda PostCSS plugin reads the working directory.
+const docsPort = await new Promise<number>((resolve) => { const s = netServer().listen(0, () => { const { port } = s.address() as AddressInfo; s.close(() => resolve(port)); }); });
+const docsServer = spawn('npx', ['vite', '--host', '127.0.0.1', '--port', String(docsPort), '--strictPort'], { cwd: docs, stdio: 'ignore', detached: true });
+const docsUrl = `http://127.0.0.1:${docsPort}/docs/`;
+for (let i = 0; i < 100; i++) { if (await fetch(docsUrl).then((r) => r.ok, () => false)) break; await new Promise((r) => setTimeout(r, 200)); }
+
+/** Tags with no script: they have no custom element to define. */
+const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row']);
+async function checkDocs(page: Page): Promise<string[]> {
+  const fails: string[] = [];
+  const failed = (r: { status(): number; url(): string }) => { if (r.status() >= 400) fails.push(`docs: ${r.status()} ${r.url()}`); };
+  page.on('response', failed);
+  await page.goto(docsUrl);
+  await page.waitForSelector('nav a', { timeout: 120_000 });
+  const slugs = await page.$$eval('nav a', (links) => links.map((a) => a.getAttribute('href')!.slice(2)));
+  if (!slugs.length) fails.push('docs: no component pages');
+  for (const slug of slugs) {
+    await page.evaluate((s) => { location.hash = `#/${s}`; }, slug);
+    await page.waitForSelector('[data-example]', { timeout: 60_000 });
+    await page.waitForTimeout(150); // a page's elements load on first visit
+    const r = await page.evaluate((cssOnly) => {
+      const parts = [...document.querySelectorAll('[data-example]')];
+      const tags = new Set([...document.querySelectorAll('[data-example] *')].map((e) => e.localName).filter((t) => t.startsWith('ui-')));
+      return { empty: parts.filter((p) => p.getBoundingClientRect().height < 20).length, undefinedTags: [...tags].filter((t) => !cssOnly.includes(t) && !customElements.get(t)), overflow: document.documentElement.scrollWidth - innerWidth };
+    }, [...CSS_ONLY]);
+    if (r.empty) fails.push(`docs ${slug}: ${r.empty} empty examples`);
+    if (r.undefinedTags.length) fails.push(`docs ${slug}: unregistered ${r.undefinedTags.join(', ')}`);
+    if (r.overflow > 0) fails.push(`docs ${slug}: scrolls sideways by ${r.overflow}px`);
+  }
+  await page.locator('header ui-select').click();
+  await page.locator('ui-option', { hasText: 'Audi' }).first().click();
+  await page.waitForFunction(() => document.getElementById('docs-brand')?.getAttribute('href')?.endsWith('brands/Audi.css'), null, { timeout: 10_000 }).catch(() => fails.push('docs: the Theme select loaded no brand'));
+  page.off('response', failed);
+  console.log(`  docs: ${slugs.length} pages, ${fails.length} fails`);
+  return fails;
+}
 
 async function checkPage(page: Page, path: string): Promise<string[]> {
   await page.goto(`${base}/${path}`);
@@ -154,6 +197,7 @@ try {
       ...await checkPage(page, 'scope-check.html'),
       ...await checkPage(page, 'brand-demo.html'),
       ...await checkStudioBrand(page),
+      ...await checkDocs(page),
       ...errors.map((e) => `page error: ${e}`),
     ];
     for (const f of fails) console.log(`    ${f}`);
@@ -162,6 +206,7 @@ try {
   }
 } finally {
   await server.close();
+  try { process.kill(-docsServer.pid!); } catch { /* already gone */ }
 }
 console.log(failed ? `${failed} fails` : 'all engines pass');
 process.exit(failed ? 1 : 0);

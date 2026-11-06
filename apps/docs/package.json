@@ -1,0 +1,17 @@
+{
+  "name": "@massimo/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "panda codegen",
+    "brands": "node scripts/brands.ts",
+    "coverage": "node scripts/check-coverage.ts",
+    "dev": "npm run -s brands && panda codegen && vite",
+    "build": "npm run -s coverage && npm run -s brands && NODE_ENV=production panda codegen && tsc -p . && vite build && panda codegen",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@massimo/ui-kit": "*"
+  }
+}
