@@ -2,7 +2,7 @@
 id: T-0031
 title: "Parity W0 · Docs site"
 type: feature        # feature | bug | chore | spike | idea
-status: claimed     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
+status: done     # proposed | ready | claimed | paused | blocked | done | dropped (build progress lives in /board)
 size: L3             # L1 | L2 | L3 | L4 (L5 reserved)
 priority: P1         # P1 | P2 | P3
 depends: []
@@ -26,3 +26,9 @@ Maison UI parity, wave 0: Docs site is in place.
 
 ## Constraints
 Zero native form elements in web components; every length from the geometry system; colours from Spectrum roles; motion via intent tokens; icons through the pinned Phosphor runtime; no runtime stylesheets.
+
+## Outcome
+
+2026-11-06 · lane: full L3 · verdict: closed by reason (built live, gates passed in Chromium, Firefox and WebKit) · verifier: none · base: none
+- Changed: apps/docs generated from manifests and examples, 51 pages, 46 brands; React code is full on 55 of 142 blocks
+- Commits: none
