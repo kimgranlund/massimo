@@ -352,6 +352,14 @@ export function resolveField(input: GeometryInput = {}) {
   return { ...c, contentsStart: label.start, contentsEnd: label.end, paddingStart: c.padding + label.start, paddingEnd: c.padding + label.end, textEdge: c.inset + label.start };
 }
 
+/** The rows a ui-textarea shows by default. */
+export const TEXTAREA_ROWS = 3;
+/** ui-textarea: the field's control, grown by one text line per row, so one row is an input's height. */
+export function resolveTextarea(input: GeometryInput & { rows?: number } = {}) {
+  const f = resolveField(input), rows = input.rows ?? TEXTAREA_ROWS;
+  return { ...f, rows, minHeight: f.height + (rows - 1) * f.contents.lineHeight };
+}
+
 /** Select trigger: value as contents, chevron in a trailing 6u slot. */
 export function resolveSelectTrigger(input: GeometryInput = {}) {
   // Laid out as a button with a trailing slot: 1u on the trigger; contents (the value) 2u | 1u;

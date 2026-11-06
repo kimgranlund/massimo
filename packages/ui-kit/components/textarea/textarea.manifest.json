@@ -1,0 +1,572 @@
+{
+  "$schema": "../../contracts/component-manifest.schema.json",
+  "schemaVersion": 1,
+  "name": "textarea",
+  "primary": "component:textarea",
+  "module": "./textarea.element.ts",
+  "registration": "on-import",
+  "documentation": "./textarea.md",
+  "examples": "./textarea.examples.json",
+  "contract": "../../contracts/components.json#/components/textarea",
+  "stateContract": "../../contracts/states.json",
+  "styleSource": {
+    "format": "panda-slot-recipe",
+    "module": "./textarea.recipe.ts"
+  },
+  "independentLayers": [
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/state.ts",
+      "exports": [
+        "fieldDataAttrs"
+      ],
+      "description": "The data-* state contract (Base UI names): field state and per-control state maps that both renderers set (React through components/state.react.ts)."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/text-entry.ts",
+      "exports": [
+        "textEntryAttrs",
+        "toSingleLine",
+        "onTextBeforeInput"
+      ],
+      "description": "Textbox ARIA, single-line flattening and Enter-to-submit policy for a contenteditable editor."
+    },
+    {
+      "kind": "pure-behavior",
+      "module": "../../dom/field.ts",
+      "exports": [
+        "fieldIds",
+        "fieldAttrs"
+      ],
+      "description": "Label, description and error wiring (ids, aria-labelledby, aria-describedby, aria-invalid); the host's styling state (data-invalid, data-readonly, …) comes from UIFormElement (dom/state.ts)."
+    },
+    {
+      "kind": "geometry",
+      "module": "../../tokens/geometry/resolve.ts",
+      "exports": [
+        "resolveField"
+      ],
+      "description": "Reference numbers for the field family."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "component:textarea",
+      "kind": "component",
+      "status": "implemented",
+      "tag": "ui-textarea",
+      "class": "UITextarea",
+      "extends": "UIFormElement",
+      "intent": [
+        "Enter several lines of plain text"
+      ],
+      "properties": [
+        {
+          "key": "name",
+          "type": "string",
+          "default": "",
+          "attribute": "name",
+          "reflects": true,
+          "description": "Form field name; the host submits its value under this name. Reflected because the form reads the attribute.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "disabled",
+          "type": "boolean",
+          "default": false,
+          "attribute": "disabled",
+          "reflects": true,
+          "description": "Blocks interaction and submission. An ancestor <fieldset disabled> has the same effect without setting this property (isDisabled).",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "required",
+          "type": "boolean",
+          "default": false,
+          "attribute": "required",
+          "reflects": true,
+          "description": "Requires a value. The error shows only after the user leaves the field or a submit is blocked.",
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "label",
+          "type": "string",
+          "default": "",
+          "attribute": "label",
+          "reflects": false,
+          "description": "Visible label text; without it supply aria-label on the editor.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "value",
+          "type": "string",
+          "default": "",
+          "attribute": "value",
+          "reflects": false,
+          "description": "Live value. The value attribute at connect is the reset default.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "defaultValue",
+          "type": "string",
+          "default": null,
+          "attribute": "default-value",
+          "reflects": false,
+          "description": "Base UI defaultValue: the value at first render (when no value attribute or property set it) and after form reset. Without it, the value attribute is the default, like a native input's.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "type",
+          "type": "string",
+          "default": "text",
+          "attribute": "type",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "placeholder",
+          "type": "string",
+          "default": "",
+          "attribute": "placeholder",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "default": "",
+          "attribute": "description",
+          "reflects": false,
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "error",
+          "type": "string",
+          "default": "",
+          "attribute": "error",
+          "reflects": false,
+          "description": "Author error, shown immediately and marking the field invalid.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "readonly",
+          "type": "boolean",
+          "default": false,
+          "attribute": "readonly",
+          "reflects": true,
+          "inspector": {
+            "control": "toggle"
+          }
+        },
+        {
+          "key": "minlength",
+          "type": "number",
+          "default": null,
+          "attribute": "minlength",
+          "reflects": false,
+          "description": "Minimum length; null means no limit.",
+          "inspector": {
+            "control": "number",
+            "min": 0
+          }
+        },
+        {
+          "key": "pattern",
+          "type": "string",
+          "default": "",
+          "attribute": "pattern",
+          "reflects": false,
+          "description": "Regular expression the whole value must match (anchored, v flag).",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "labelledby",
+          "type": "string",
+          "default": "",
+          "attribute": "labelledby",
+          "reflects": false,
+          "description": "Ids (space-separated) that name the editor when label is empty; a wrapping ui-field sets it. Forwarded to the editor's aria-labelledby, so no aria-label on the generic host.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "describedby",
+          "type": "string",
+          "default": "",
+          "attribute": "describedby",
+          "reflects": false,
+          "description": "Ids (space-separated) that describe the editor, after its own description and error ids; a wrapping ui-field sets it.",
+          "inspector": {
+            "control": "text"
+          }
+        },
+        {
+          "key": "rows",
+          "type": "number",
+          "default": 3,
+          "attribute": "rows",
+          "reflects": false,
+          "inspector": {
+            "control": "number"
+          }
+        }
+      ],
+      "attributes": [
+        {
+          "name": "size",
+          "type": "number",
+          "readBy": "css",
+          "description": "Sets the unit u (px) for this element and its subtree: one of the SIZES steps 2…12 (data-size is the same input). Lengths scale from u; type follows 10px + u.",
+          "inspector": {
+            "control": "number",
+            "min": 2,
+            "max": 12,
+            "step": 0.5
+          }
+        },
+        {
+          "name": "hide-label",
+          "type": "boolean",
+          "readBy": "css",
+          "description": "Keeps the label as the control's accessible name but does not draw it (visually hidden, out of flow). For compact layouts that label the control elsewhere, such as an inspector row. data-hide-label is the same input; React: hideLabel.",
+          "inspector": {
+            "control": "toggle"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "textarea",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'none', event: InputEvent } (Base UI onValueChange)",
+          "trigger": "the text changes while typing (the editor's native input event stops at the editor; it is detail.event)"
+        },
+        {
+          "name": "change",
+          "type": "CustomEvent",
+          "bubbles": true,
+          "cancelable": false,
+          "detail": "{ value: string, reason: 'none', event: FocusEvent }",
+          "trigger": "focus leaves the editor with a value different from the one it had on focus, like a native input"
+        }
+      ],
+      "methods": [
+        {
+          "name": "checkValidity",
+          "signature": "() => boolean",
+          "description": "Runs validation; fires invalid when it fails."
+        },
+        {
+          "name": "reportValidity",
+          "signature": "() => boolean",
+          "description": "Marks the field touched (errors show) and reports."
+        },
+        {
+          "name": "setCustomValidity",
+          "signature": "(message: string) => void",
+          "description": "Sets an author error; an empty string clears it."
+        },
+        {
+          "name": "focus",
+          "signature": "(options?: FocusOptions) => void",
+          "description": "Focuses the editor."
+        }
+      ],
+      "semantics": {
+        "role": null,
+        "roleTarget": "[data-part=contents] (role=textbox)",
+        "formAssociated": true,
+        "formValue": "the text value",
+        "keyboard": [
+          {
+            "keys": "Enter",
+            "action": "add a line"
+          }
+        ],
+        "accessibleName": {
+          "sources": [
+            "label",
+            "aria-label on the editor",
+            "labelledby (a wrapping ui-field)"
+          ],
+          "required": true
+        }
+      },
+      "content": {
+        "ownership": "mixed",
+        "acceptsChildren": true,
+        "children": "Optional adornments with slot=\"leading\" | \"prefix\" | \"suffix\" | \"trailing\"; they move into the control. Authored [data-part] parts (label, control and its slots, description, error) are adopted (composition). Other children are discarded by the template."
+      },
+      "layout": {
+        "display": "flex",
+        "sizing": "fill"
+      },
+      "constraints": [
+        "template() owns the children, as in ui-input. Contains no native form elements; form participation goes through ElementInternals (UIFormElement).",
+        "The value attribute is the default value used on form reset; the value property is the live value.",
+        "Built-in validation (required, minlength, pattern) shows only after blur or a blocked submit; error shows at once.",
+        "Enter adds a line and pastes keep theirs, so Enter never submits the form.",
+        "The field grows with its text; rows sets the height it holds first.",
+        "focus() moves focus to the editor."
+      ],
+      "avoidWhen": [
+        {
+          "when": "One line of text.",
+          "reason": "A textarea takes more room, and Enter doesn't submit.",
+          "useInstead": "component:input"
+        }
+      ],
+      "searchTerms": [
+        "textarea",
+        "multiline",
+        "text area",
+        "notes",
+        "comment",
+        "long text",
+        "description field"
+      ]
+    },
+    {
+      "id": "part:textarea-control",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control]",
+      "summary": "The field box (pad = u − B) laid out as [leading] [prefix] [editor] [suffix] [trailing]. A press outside the editor focuses it; the focus ring paints here."
+    },
+    {
+      "id": "part:textarea-editor",
+      "kind": "part",
+      "status": "implemented",
+      "tag": "div",
+      "selector": ":scope > [data-part=control] > [data-part=contents]",
+      "summary": "The contenteditable role=textbox editor (2u text padding). The editor getter returns it for selection APIs."
+    }
+  ],
+  "edges": [
+    {
+      "from": "component:textarea",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:textarea-control"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:textarea-editor"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "uses",
+      "to": "foundation:modality"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "status": "completed",
+      "module": "./textarea.element.ts",
+      "exports": {
+        "component:textarea": "UITextarea"
+      },
+      "verification": "./verification/textarea.verification.json#/renderers/webComponent"
+    },
+    "react": {
+      "status": "completed",
+      "module": "./textarea.react.tsx",
+      "exports": {
+        "component:textarea": "Textarea"
+      },
+      "verification": "./verification/textarea.verification.json#/renderers/react",
+      "props": {
+        "component:textarea": {
+          "inherits": [
+            "Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'prefix' | 'className' | 'children'>"
+          ],
+          "props": [
+            "label?: string",
+            "hideLabel?: boolean // Keep the label as the accessible name but do not draw it.",
+            "leading?: ReactNode",
+            "trailing?: ReactNode",
+            "description?: string",
+            "error?: string",
+            "rows?: number = TEXTAREA_ROWS // The rows to hold before the text grows the field. Default 3.",
+            "onValueChange?: (value: string, details: ChangeDetails) => void // The text changed (Base UI onValueChange; reason 'none'). The native onChange still fires.",
+            "className?: string"
+          ]
+        }
+      }
+    },
+    "html": {
+      "status": "in_progress",
+      "selectors": {
+        "component:textarea": ".ui-input__root",
+        "part:textarea-control": ".ui-input__control"
+      }
+    }
+  }
+}

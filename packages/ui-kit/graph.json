@@ -707,6 +707,21 @@
         "token"
       ]
     },
+    "component:textarea": {
+      "kind": "component",
+      "source": "components/textarea/textarea.manifest.json#/nodes/0",
+      "availability": "implemented",
+      "tag": "ui-textarea",
+      "searchTerms": [
+        "textarea",
+        "multiline",
+        "text area",
+        "notes",
+        "comment",
+        "long text",
+        "description field"
+      ]
+    },
     "component:toast": {
       "kind": "component",
       "source": "components/toast/toast.manifest.json#/nodes/0",
@@ -5136,6 +5151,24 @@
       "tag": "div",
       "searchTerms": [
         "tabs tab"
+      ]
+    },
+    "part:textarea-control": {
+      "kind": "part",
+      "source": "components/textarea/textarea.manifest.json#/nodes/1",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "textarea control"
+      ]
+    },
+    "part:textarea-editor": {
+      "kind": "part",
+      "source": "components/textarea/textarea.manifest.json#/nodes/2",
+      "availability": "implemented",
+      "tag": "div",
+      "searchTerms": [
+        "textarea editor"
       ]
     },
     "part:toast-action": {
@@ -11535,6 +11568,161 @@
       "from": "component:tabs",
       "relation": "allowedIn",
       "to": "context:collection"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "extends",
+      "to": "foundation:form-element"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:colors"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:typography"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:geometry"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:motion"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesFoundation",
+      "to": "foundation:states"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesGeometry",
+      "to": "geometry:field"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:color-roles"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:type-roles"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:motion"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "usesTokens",
+      "to": "tokens:geometry"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:field-label"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:textarea-control"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-leading"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-prefix"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:textarea-editor"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-suffix"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:slot-trailing"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:field-description"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "ownsPart",
+      "to": "part:field-error"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:page"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:region"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:panel"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:card"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:collection"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:group"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:form"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "allowedIn",
+      "to": "context:fieldset"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "uses",
+      "to": "foundation:slots"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "uses",
+      "to": "foundation:icons"
+    },
+    {
+      "from": "component:textarea",
+      "relation": "uses",
+      "to": "foundation:modality"
     },
     {
       "from": "component:toast",

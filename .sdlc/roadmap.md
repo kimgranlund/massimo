@@ -5,7 +5,7 @@ New ticket: `/ticket new <feature|bug|chore|spike|idea> <slug> "title"`. Build p
 
 | ID | Ticket | Title | Type | Size | Pri | Depends on | Status |
 |---|---|---|---|---|---|---|---|
-| T-0035 | [textarea](tickets/textarea/handoff.md) | Parity W1 · Textarea | feature | L2 | P2 | T-0031 | 🔵 ready |
+| T-0035 | [textarea](tickets/textarea/handoff.md) | Parity W1 · Textarea | feature | L2 | P2 | T-0031 | 🟡 claimed |
 | T-0036 | [breadcrumb](tickets/breadcrumb/handoff.md) | Parity W1 · Breadcrumb | feature | L1 | P2 | T-0031 | 🔵 ready |
 | T-0037 | [button-link](tickets/button-link/handoff.md) | Parity W1 · Button link | feature | L1 | P2 | T-0031 | 🔵 ready |
 | T-0038 | [setting-row](tickets/setting-row/handoff.md) | Parity W1 · Setting row | feature | L1 | P2 | T-0031 | 🔵 ready |

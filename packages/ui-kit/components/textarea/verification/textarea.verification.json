@@ -1,0 +1,75 @@
+{
+  "$schema": "../../../contracts/verification.schema.json",
+  "schemaVersion": 1,
+  "component": "textarea",
+  "scope": "Role, orientation and data-* of the web component in happy-dom and of the React renderer in react-dom/server (node:test), and their state parity. Rendered thickness is covered by the browser geometry check; visual quality and screen-reader output are not certified.",
+  "sources": [
+    {
+      "path": "components/textarea/textarea.element.ts",
+      "sha256": "8b45e031defe597844e8d6872b48ef5aa40983f4bc6a3c2ee85087ed5483d8a3"
+    },
+    {
+      "path": "components/textarea/textarea.react.tsx",
+      "sha256": "04ed85636026cd263b861255c1d3405c4a7cc5b508132062b8fb7ba05b25609b"
+    },
+    {
+      "path": "components/textarea/textarea.recipe.ts",
+      "sha256": "b5a523a63f2482f5402f593f48f57c2df400ac4b5d3e3fa77385445dc006d0dc"
+    },
+    {
+      "path": "components/textarea/textarea.manifest.json",
+      "sha256": "835a896a910666d96b0eaa85b78fb3b857289fb923b70e682010ebce1571f502"
+    },
+    {
+      "path": "components/input/input.element.ts",
+      "sha256": "d98a8c6c04356cb63b69f1d410766d9ee8366c9928965aa0a6f40416c0ff1eaf"
+    },
+    {
+      "path": "dom/text-entry.ts",
+      "sha256": "597e40b17f3863cb8cf2b81d97f5fbfc4d3f56d4fdd29fdffd97747ceb03ca3a"
+    }
+  ],
+  "renderers": {
+    "webComponent": {
+      "checks": [
+        {
+          "command": "node --test test/textarea.test.ts",
+          "covers": "multiline entry, attributes, rows, no native elements, resolver"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/textarea.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    },
+    "react": {
+      "checks": [
+        {
+          "command": "node --test test/textarea.test.ts",
+          "covers": "SSR markup, native textarea, label wiring"
+        }
+      ],
+      "latestRun": {
+        "date": "2026-11-06",
+        "outcome": "pass",
+        "commands": [
+          "node --test test/textarea.test.ts"
+        ],
+        "environment": {
+          "node": "v26.13.0"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "React styling parity is checked in the browser: apps/studio/react-check.html compares the React Textarea with ui-textarea at five sizes (\"fails\": []).",
+    "The source list is the direct sources, not every transitive dependency.",
+    "Geometry review, manual items (2026-11-06): 2 height derives from u through resolveTextarea; 3 the control keeps the 6u slot rows; 4 leading and trailing use the construction pattern; 5 the border stays inside the padding, as in the input; 6 control radius, unchanged by height; 7 text uses the field's size and line; 8 no gap attribute; 9 no floating layer; 10 the field grows with its text; 11 the focus ring sits on the control. Real OS IME and autofill need manual acceptance."
+  ]
+}

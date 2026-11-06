@@ -1113,6 +1113,32 @@
         "inline"
       ],
       "behavior": "None: passive notation. keys draws one cap per key for the platform; it registers no shortcut."
+    },
+    "textarea": {
+      "geometryFamily": "field",
+      "element": "Host is form-associated; the editor is a contenteditable role=textbox inside the control part.",
+      "parts": [
+        "field-label?",
+        "textarea-control",
+        "slot-leading?",
+        "slot-prefix?",
+        "textarea-editor",
+        "slot-suffix?",
+        "slot-trailing?",
+        "field-description?",
+        "field-error?"
+      ],
+      "allowedParents": [
+        "page",
+        "region",
+        "panel",
+        "card",
+        "collection",
+        "group",
+        "form",
+        "fieldset"
+      ],
+      "behavior": "Multiline: Enter adds a line and pastes keep theirs. Grows with its text from rows. Validates required, minlength and pattern after interaction."
     }
   }
 }

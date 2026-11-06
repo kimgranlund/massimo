@@ -178,6 +178,7 @@ btg.chip.icon.md,btg,chip,icon md,"min(chip font + 0.5u, chip slot)",13,13.375,1
 btg.tag.icon.md,btg,tag,icon md,"min(tag font + 0.5u, tag slot)",12,12.25,12.5,12.75,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,implemented,
 btg.minWidth,btg,"badge, tag, chip",min width,height,12,13.5,14.5,14.75,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,22.5,23,23.5,24,implemented,value shown for badge; never narrower than tall
 btg.chip.radius,btg,chip,radius,"min((0.5u′ + slot / 3) * s, chip / 2)",5.667,6.375,6.906,7.172,7.438,7.969,8.5,9.031,9.563,10.094,10.625,11.156,11.688,12.219,12.75,13.281,13.813,14.344,14.875,15.406,15.938,16.469,17,implemented,concentric with the slot (the button: 1u + 6u / 3 = 3u); tag and badge use their own u′ and slot
+textarea.minHeight,field,textarea,height at the default rows,control height + (rows − 1) × line,40,45,50,52.6,55.2,60.4,65.6,70.8,76,81.2,86.4,91.6,96.8,102,107.2,112.4,117.6,122.8,128,133.2,138.4,143.6,148.8,implemented,one row is an input
 kbd.height,kbd,kbd,cap height,5u,10,11.25,12.5,13.75,15,17.5,20,22.5,25,27.5,30,32.5,35,37.5,40,42.5,45,47.5,50,52.5,55,57.5,60,implemented,at least square
 kbd.gap,kbd,kbd,gap between caps,u / 2,1,1.125,1.25,1.375,1.5,1.75,2,2.25,2.5,2.75,3,3.25,3.5,3.75,4,4.25,4.5,4.75,5,5.25,5.5,5.75,6,implemented,
 kbd.font,kbd,kbd,font size,10 + u / 2,11,11.125,11.25,11.375,11.5,11.75,12,12.25,12.5,12.75,13,13.25,13.5,13.75,14,14.25,14.5,14.75,15,15.25,15.5,15.75,16,implemented,

@@ -17,6 +17,7 @@ import '@massimo/ui-kit/components/field/element';
 import '@massimo/ui-kit/components/separator/element';
 import '@massimo/ui-kit/components/spinner/element';
 import '@massimo/ui-kit/components/kbd/element';
+import '@massimo/ui-kit/components/textarea/element';
 import '@massimo/ui-kit/components/avatar/element';
 import '@massimo/ui-kit/components/meter/element';
 import '@massimo/ui-kit/components/toggle/element';
@@ -34,7 +35,7 @@ import { TYPE_ROLES, resolveType } from '@massimo/ui-kit/tokens/typography/resol
 import { SHADOW_LAYERS, elevationTokenVars } from '@massimo/ui-kit/tokens/elevation/index';
 import '@massimo/ui-kit/components/number-field/element';
 import '@massimo/ui-kit/components/otp-field/element';
-import { resolveFlow, resolveKbd, resolveSpinner, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
+import { resolveFlow, resolveKbd, resolveSpinner, resolveTextarea, resolveIcon, resolveOtpField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import { resolveNumberField } from '@massimo/ui-kit/tokens/geometry/resolve';
 import '@massimo/ui-kit/components/combobox/element';
 import '@massimo/ui-kit/components/autocomplete/element';
@@ -83,7 +84,8 @@ const precision = (() => {
 // rounding step. A wrapping combobox's height sums its chip rows, gaps and edges (compact density at
 // fractional u leaves several fractional boxes). A nested container's gap is measured between two
 // containers whose fractional heights each snap (WebKit).
-const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height|combobox\.wrap\.height|container\.tree[\d.]*\.gap)$/;
+// A textarea's height sums its rows' line boxes, and a range pair spans its two thumbs' boxes (WebKit).
+const SNAPPED_PAIR = /^(meter\.(rowGap|height)|menubar\.vertical\.height|combobox\.wrap\.height|container\.tree[\d.]*\.gap|textarea\.rows\d|range\.pair\.height)$/;
 const tolerance = (k, want) => Math.max(0.02, precision.layout, SNAPPED_PAIR.test(k) ? Math.max(3 / 64, 1.5 * precision.layout) + 0.01 : 0,
   precision.font && /^type\..*\.size$|\.font$/.test(k) ? 2 ** (Math.floor(Math.log2(want)) - 10) + 0.01 : 0);
 let total = 0;
@@ -115,7 +117,7 @@ for (const c of cases) {
     <div style="width:400px"><ui-progress id="prog" value="30"></ui-progress></div>
     <ui-toggle id="tgl" icon-size="${c.icon}" pressed><span slot="leading"></span>Bold</ui-toggle><ui-toggle id="tglO" aria-label="x"><span slot="leading"></span></ui-toggle><ui-toggle id="tglT">Text</ui-toggle>
     <div style="width:400px"><ui-meter id="met" label="Storage" value="30"></ui-meter></div>
-    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
+    <ui-spinner id="spin" label="Saving"></ui-spinner><ui-kbd id="keys" keys="ctrl+i" platform="mac"></ui-kbd><ui-textarea id="ta3" label="T"></ui-textarea><ui-textarea id="ta1" label="T" rows="1"></ui-textarea><div style="width:400px"><ui-separator id="sepH"></ui-separator></div><div style="display:flex;height:40px"><ui-separator id="sepV" orientation="vertical"></ui-separator></div>
     <div style="display:flex;width:10px"><ui-avatar id="av-sm" avatar-size="sm" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-md" name="Ada Lovelace"></ui-avatar><ui-avatar id="av-lg" avatar-size="lg"></ui-avatar><ui-avatar id="av-xl" avatar-size="xl" name="Ada"></ui-avatar></div>
     <ui-swiper id="swp" label="S" style="width:${48 * c.unit}px"><div style="height:${24 * c.unit}px">1</div><div style="height:${24 * c.unit}px">2</div><div style="height:${24 * c.unit}px">3</div></ui-swiper>
     <div style="width:${48 * c.unit}px"><ui-image id="imgShow" ratio="landscape" slideshow alt="Show"><span>1</span><span>2</span></ui-image></div>
@@ -403,6 +405,12 @@ for (const c of cases) {
     checks['meter.value.end'] = [r2(rect(mt).right - rect(val).right), 0];
     checks['meter.columnGap'] = [px(cs(mt).columnGap), rm.columnGap];
     checks['meter.height'] = [r2(rect(mt).height), r2(rm.lineHeight + rm.rowGap + rm.track)];
+  }
+  // Textarea: one row is an input, each further row adds a line.
+  {
+    const control = (id) => $(id).querySelector('[data-part=control]');
+    checks['textarea.rows1'] = [r2(rect(control('ta1')).height), resolveTextarea({ ...g, rows: 1 }).minHeight];
+    checks['textarea.rows3'] = [r2(rect(control('ta3')).height), resolveTextarea(g).minHeight];
   }
   // Kbd: 5u caps, at least square, ½u apart, 10 + ½u text.
   {

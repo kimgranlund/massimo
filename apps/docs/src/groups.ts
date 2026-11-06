@@ -3,7 +3,7 @@
 export const GROUPS: [string, string[]][] = [
   ['Actions', ['button', 'toggle', 'toggle-group']],
   ['Labels', ['badge', 'tag', 'chip', 'kbd']],
-  ['Fields', ['input', 'number-field', 'otp-field', 'select', 'combobox', 'autocomplete', 'field', 'field-grid', 'fieldset', 'form']],
+  ['Fields', ['input', 'textarea', 'number-field', 'otp-field', 'select', 'combobox', 'autocomplete', 'field', 'field-grid', 'fieldset', 'form']],
   ['Selection', ['listbox', 'option', 'segmented', 'checkbox', 'checkbox-group', 'radio', 'radio-group', 'switch']],
   ['Progress', ['range', 'progress', 'meter', 'spinner']],
   ['Layout', ['container', 'section', 'row', 'column', 'list', 'grid', 'separator', 'scroll-area']],

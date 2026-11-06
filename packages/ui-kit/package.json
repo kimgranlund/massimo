@@ -54,6 +54,8 @@
     "./components/separator/element": "./components/separator/separator.element.ts",
     "./components/spinner/element": "./components/spinner/spinner.element.ts",
     "./components/kbd/element": "./components/kbd/kbd.element.ts",
+    "./components/textarea/element": "./components/textarea/textarea.element.ts",
+    "./components/textarea/react": "./components/textarea/textarea.react.tsx",
     "./components/kbd/react": "./components/kbd/kbd.react.tsx",
     "./components/spinner/react": "./components/spinner/spinner.react.tsx",
     "./components/separator/react": "./components/separator/separator.react.tsx",

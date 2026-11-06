@@ -16,7 +16,7 @@ import { input } from '../../styled-system/recipes/input.js';
 import { applyAttrs, uid } from '../../dom/attrs.ts';
 import { eventDetails } from '../../dom/events.ts';
 import { fieldAttrs, withExternalRefs } from '../../dom/field.ts';
-import { onTextBeforeInput, textEntryAttrs, toSingleLine, type TextType } from '../../dom/text-entry.ts';
+import { multilineText, onTextBeforeInput, readMultiline, textEntryAttrs, toSingleLine, type TextType } from '../../dom/text-entry.ts';
 
 /** The parts an author may write (composition), by path. */
 const AUTHORED = ['label', 'control', ...ADORNMENT_PARTS.map((p) => `control > ${p}`), 'control > contents', 'description', 'error'];
@@ -63,6 +63,10 @@ export class UIInput extends UIFormElement {
   #seeded = false;
   /** The value when the editor gained focus: change fires on blur when it differs, like a native input. */
   #focusValue = '';
+
+  /** Text entry mode: ui-textarea turns this on and supplies its own recipe. */
+  protected get multiline() { return false; }
+  protected recipe(): Record<string, string> { return input() as unknown as Record<string, string>; }
 
   connected() {
     this.#id = this.id ? `${this.id}-field` : uid('input');
@@ -117,10 +121,10 @@ export class UIInput extends UIFormElement {
     applyAttrs(label, a.label);
     applyAttrs(description, a.description);
     applyAttrs(error, a.error);
-    applyAttrs(editor, { ...withExternalRefs(a.control, this), ...textEntryAttrs({ type: this.type, placeholder: this.placeholder, editable: !this.isDisabled && !this.readonly }) });
+    applyAttrs(editor, { ...withExternalRefs(a.control, this), ...textEntryAttrs({ type: this.type, multiline: this.multiline, placeholder: this.placeholder, editable: !this.isDisabled && !this.readonly }) });
     // Only write text when it differs, so typing never moves the caret.
-    if (editor.textContent !== this.value) editor.textContent = this.value;
-    applyRecipe(this, input(), (slot) => partOf(this, slot) ?? partOf(control, slot));
+    if (this.#read(editor) !== this.value) editor.textContent = this.multiline ? multilineText(this.value) : this.value;
+    applyRecipe(this, this.recipe() as any, (slot) => partOf(this, slot) ?? partOf(control, slot));
   }
 
   // ── UIFormElement hooks ──
@@ -144,6 +148,8 @@ export class UIInput extends UIFormElement {
   get editor() { return (this.querySelector(':scope > [data-part=control] > [data-part=contents]') ?? undefined) as HTMLElement | undefined; }
   focus(options?: FocusOptions) { this.editor?.focus(options); }
 
+  #read(editor: HTMLElement) { return this.multiline ? readMultiline(editor) : editor.textContent; }
+
   #message() { return this.error || (this.userInvalid ? this.problem!.message : ''); }
 
   #focusEditor = () => { if (!this.isDisabled) this.focus(); };
@@ -151,12 +157,12 @@ export class UIInput extends UIFormElement {
   #onControlClick = (e: Event) => { if (e.target !== this.editor && !this.editor?.contains(e.target as Node)) this.#focusEditor(); };
 
   #onBeforeInput = (e: InputEvent) => {
-    if (onTextBeforeInput(e) === 'submit' && !this.isDisabled) submitOwner(this)?.requestSubmit();
+    if (onTextBeforeInput(e, this.multiline) === 'submit' && !this.isDisabled) submitOwner(this)?.requestSubmit();
   };
 
   #onInput = (e: Event) => {
     const ed = e.currentTarget as HTMLElement;
-    const text = toSingleLine(ed.textContent ?? '');
+    const text = this.multiline ? readMultiline(ed) : toSingleLine(ed.textContent ?? '');
     if (!text) ed.replaceChildren(); // keep :empty so the placeholder shows
     this.value = text;
     // The editor's native input event stops here; the host fires one with Base UI's details

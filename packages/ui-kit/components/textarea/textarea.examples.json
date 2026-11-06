@@ -1,0 +1,34 @@
+{
+  "$schema": "../../contracts/examples.schema.json",
+  "schemaVersion": 1,
+  "component": "textarea",
+  "title": "Textarea",
+  "summary": "Multiline plain text.",
+  "defaultExample": "basic",
+  "examples": [
+    {
+      "id": "basic",
+      "label": "With a label and help",
+      "subject": "component:textarea",
+      "markup": "<ui-textarea label=\"Notes\" name=\"notes\" placeholder=\"Add a note\" description=\"Only your team can see this.\" style=\"width: 100%\"></ui-textarea>"
+    },
+    {
+      "id": "rows",
+      "label": "Taller to start",
+      "subject": "component:textarea",
+      "markup": "<ui-textarea label=\"Summary\" rows=\"6\" style=\"width: 100%\"></ui-textarea>"
+    },
+    {
+      "id": "error",
+      "label": "With an error",
+      "subject": "component:textarea",
+      "markup": "<ui-textarea label=\"Reason\" error=\"Tell us a little more.\" style=\"width: 100%\"></ui-textarea>"
+    },
+    {
+      "id": "disabled",
+      "label": "Disabled",
+      "subject": "component:textarea",
+      "markup": "<ui-textarea label=\"Notes\" value=\"Locked after review.\" disabled style=\"width: 100%\"></ui-textarea>"
+    }
+  ]
+}

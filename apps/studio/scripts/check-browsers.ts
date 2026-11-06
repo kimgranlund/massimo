@@ -42,6 +42,28 @@ for (let i = 0; i < 100; i++) { if (await fetch(docsUrl).then((r) => r.ok, () =>
 
 /** Tags with no script: they have no custom element to define. */
 const CSS_ONLY = new Set(['ui-container', 'ui-section', 'ui-row', 'ui-column', 'ui-list', 'ui-grid']);
+// Multiline entry in the engine's own editor: Enter adds a line and the value has one newline for it.
+async function checkTextarea(page: Page): Promise<string[]> {
+  const fails: string[] = [];
+  await page.goto(`${docsUrl}#/textarea`);
+  const editor = page.locator('ui-textarea [data-part=contents]').first();
+  await editor.waitFor({ timeout: 60_000 });
+  await editor.click();
+  await page.keyboard.type('one');
+  await page.keyboard.press('Enter');
+  await page.keyboard.type('two');
+  const value = await page.locator('ui-textarea').first().evaluate((e) => (e as HTMLElement & { value: string }).value);
+  if (value !== 'one\ntwo') fails.push(`textarea: typed value ${JSON.stringify(value)}, want "one\\ntwo"`);
+  await page.keyboard.press('Enter');
+  const trailing = await page.locator('ui-textarea').first().evaluate((e) => (e as HTMLElement & { value: string }).value);
+  if (trailing !== 'one\ntwo\n') fails.push(`textarea: value after a trailing Enter ${JSON.stringify(trailing)}, want "one\\ntwo\\n"`);
+  await page.keyboard.type('three');
+  const after = await page.locator('ui-textarea').first().evaluate((e) => (e as HTMLElement & { value: string }).value);
+  if (after !== 'one\ntwo\nthree') fails.push(`textarea: value after typing on ${JSON.stringify(after)}, caret moved?`);
+  console.log(`  textarea: ${fails.length} fails`);
+  return fails;
+}
+
 // The shell scrolls inside its panes: the document itself never does, on any page.
 async function checkShellScroll(page: Page): Promise<string[]> {
   const fails: string[] = [];
@@ -214,6 +236,7 @@ try {
       ...await checkStudioBrand(page),
       ...await checkShellScroll(page),
       ...await checkDocs(page),
+      ...await checkTextarea(page),
       ...errors.map((e) => `page error: ${e}`),
     ];
     for (const f of fails) console.log(`    ${f}`);

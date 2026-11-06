@@ -349,8 +349,9 @@
           "useInstead": "component:range"
         },
         {
-          "when": "Entering several lines or rich text.",
-          "reason": "Input is single-line; Enter submits and pastes are flattened. The kit has no textarea yet."
+          "when": "Entering several lines.",
+          "reason": "Input is single-line; Enter submits and pastes are flattened.",
+          "useInstead": "component:textarea"
         }
       ],
       "searchTerms": [

@@ -5659,6 +5659,45 @@
       }
     }
   },
+  "textarea": {
+    "minHeight": {
+      "$type": "dimension",
+      "$value": {
+        "value": 70.8,
+        "unit": "px"
+      },
+      "$description": "textarea · height at the default rows · one row is an input",
+      "$extensions": {
+        "com.massimo.formula": "control height + (rows − 1) × line",
+        "com.massimo.status": "implemented",
+        "com.massimo.bySize": {
+          "u=2": 40,
+          "u=2.25": 45,
+          "u=2.5": 50,
+          "u=2.75": 52.6,
+          "u=3": 55.2,
+          "u=3.5": 60.4,
+          "u=4": 65.6,
+          "u=4.5": 70.8,
+          "u=5": 76,
+          "u=5.5": 81.2,
+          "u=6": 86.4,
+          "u=6.5": 91.6,
+          "u=7": 96.8,
+          "u=7.5": 102,
+          "u=8": 107.2,
+          "u=8.5": 112.4,
+          "u=9": 117.6,
+          "u=9.5": 122.8,
+          "u=10": 128,
+          "u=10.5": 133.2,
+          "u=11": 138.4,
+          "u=11.5": 143.6,
+          "u=12": 148.8
+        }
+      }
+    }
+  },
   "kbd": {
     "height": {
       "$type": "dimension",
