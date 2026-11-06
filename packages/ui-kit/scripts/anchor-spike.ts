@@ -1,4 +1,4 @@
-// Spike (docs/planning/brand-schema.md, step 3): how close can Spectrum's generated ramps get to a
+// Spike (docs/planning/brand-schema.md, step 3): how close can the generated ramps get to a
 // brand's exact colors? For each palette: the nearest generated swatch per anchor at the default
 // settings, then after a search over the generation inputs (hue set, first hue, chroma, base), with
 // the family and step each anchor lands on, ΔE (OKLab × 100) and the anchor's APCA Lc against the page

@@ -1,7 +1,7 @@
 // Home: realistic fake-content layouts built only from the kit, so tuning a token in the jig panel
 // shows its effect on believable product UI. Every section is a full-bleed region (an area) holding
 // cards (containers) that hold groups and collections (wrappers); each opens with a marker naming
-// the system ideas to watch. Content lives in ./home/data.ts; images are painted from Spectrum.
+// the system ideas to watch. Content lives in ./home/data.ts; images are painted from the color ramps.
 import '@massimo/ui-kit/components/button/element';
 import '@massimo/ui-kit/components/input/element';
 import '@massimo/ui-kit/components/listbox/element';

@@ -3867,7 +3867,7 @@
       "kind": "parameters",
       "source": "contracts/parameters.json#/groups/spectrum",
       "availability": "implemented",
-      "title": "Spectrum color settings",
+      "title": "Color settings",
       "searchTerms": [
         "color",
         "palette",

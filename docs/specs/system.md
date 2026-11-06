@@ -4,8 +4,8 @@ massimo is a design system (`packages/ui-kit`, `@massimo/ui-kit`) and its tuning
 
 ## Principles
 
-- **Generative, not enumerated.** Geometry derives from one unit `u` and a handful of coefficients; colors derive from Spectrum settings. Values are computed, never hand-tuned per component.
-- **One source, many outputs.** The geometry and type resolvers drive the CSS, `docs/geometry.csv` and the DTCG files; the Spectrum snapshot drives the color tokens and their DTCG files. Tests fail when a committed output is stale.
+- **Generative, not enumerated.** Geometry derives from one unit `u` and a handful of coefficients; colors derive from color settings. Values are computed, never hand-tuned per component.
+- **One source, many outputs.** The geometry and type resolvers drive the CSS, `docs/geometry.csv` and the DTCG files; the color snapshot drives the color tokens and their DTCG files. Tests fail when a committed output is stale.
 - **Light-DOM web components, zero native form elements.** Components are custom elements styled from the outside; form behavior comes from `UIFormElement` (ElementInternals), not from embedded `<input>`s.
 - **Headless behavior is shared.** `dom/` returns attribute maps and handles keys; web components apply them, and React counterparts (button, input) spread the same maps.
 - **One slot recipe per component.** Each component's styles are a Panda slot recipe (`components/<name>/<name>.recipe.ts`) applied as classes by the web component and the React renderer alike; states use shared conditions keyed on ARIA and native state. Every length comes from the geometry variables in `styles/geometry.ts`.
@@ -30,7 +30,7 @@ inputs ──▶ resolvers ──▶ tokens and CSS variables ──▶ slot rec
 |---|---|---|
 | unit u, border B, radius scale s, corner shape k, container pad and gap | `tokens/geometry/resolve.ts`, `styles/geometry.ts` | every length and radius ([geometry](geometry.md)) |
 | type ratio r, rhythm, faces, voices | `tokens/typography/resolve.ts` | type roles: size (10px + u) × r^step, line heights ([typography](typography.md)) |
-| Spectrum settings, role mapping | `tokens/colors/spectrum/` | 12-step ramps per scheme, role tokens ([color](color.md)) |
+| Color settings, role mapping | `tokens/colors/spectrum/` | 12-step ramps per scheme, role tokens ([color](color.md)) |
 | motion scale, motion bounce, springs, intents | `tokens/motion/` | `linear()` easings and durations ([motion](motion.md)) |
 | per subtree: `size`, `icon-size`, `gap`, `.light` / `.dark`, `data-font-<voice>`, `data-type` | the same resolvers, evaluated locally | the subtree's values ([theming](theming.md#per-element-inputs)) |
 
@@ -46,7 +46,7 @@ The inputs are organized by the peer concepts the system governs. Each parameter
 | Curvature | roundness and corner shape | radius scale s, corner shape k, the concentric rule, the container magnitude t | [geometry](geometry.md#containers) |
 | Line | edges and separators | border B inside the padding; the separator rule; fills separate surfaces | [geometry](geometry.md#inputs) |
 | Elevation | how surfaces stack | six levels (page, panel, card, raised, floating, modal), each a fill, a shadow and a layer; shadow strength, surface contrast | [elevation](elevation.md) |
-| Vibrancy | richness and diversity of color | the Spectrum settings and the role mapping | [color](color.md) |
+| Vibrancy | richness and diversity of color | the color settings and the role mapping | [color](color.md) |
 | Emphasis | how loudly something speaks | variants, role steps (subtle, solid, fg), APCA text on solids | [color](color.md#roles) |
 | Typography | hierarchy and voice of text | type ratio and rhythm, faces, voices, roles | [typography](typography.md) |
 | Movement | motion and transitions | springs, intents, motion scale and bounce | [motion](motion.md) |
@@ -87,7 +87,7 @@ Why the system is the way it is, one record each (`docs/decisions/`):
 | `contracts/` | schemas and shared contracts: components, parts, composition, geometry families, foundations, states, tokens, parameters | [registry](registry.md) |
 | `registry.json`, `system.manifest.json`, `graph.json` | registry entry, system identity and routes, the generated graph index | [registry](registry.md) |
 | `tokens/geometry/` | the geometry resolver (numerical reference) | [geometry](geometry.md) |
-| `tokens/colors/` | Spectrum engine, settings, snapshot, color tokens | [color](color.md) |
+| `tokens/colors/` | Color engine, settings, snapshot, color tokens | [color](color.md) |
 | `tokens/typography/` | type roles, ratios, font families (numerical reference) | [typography](typography.md) |
 | `tokens/motion/` | SwiftUI-style springs → CSS `linear()` easings and settle durations | [motion](motion.md) |
 | `tokens/themes/` | theme parameters and saved themes | [theming](theming.md) |
@@ -103,10 +103,10 @@ Never edit these by hand; `npm run ui-kit:test` fails when a committed one is st
 | File | Generator | Source |
 |---|---|---|
 | `packages/ui-kit/docs/geometry.csv` | `npm run geometry:csv` | resolver |
-| `packages/ui-kit/tokens/dtcg/*.dtcg.json` | `npm run tokens:dtcg` | resolvers and Spectrum snapshot (DTCG 2025.10, see below) |
-| `packages/ui-kit/tokens/colors/spectrum/defaults.json` | `npm run spectrum:defaults` | Spectrum engine at default settings |
+| `packages/ui-kit/tokens/dtcg/*.dtcg.json` | `npm run tokens:dtcg` | resolvers and color snapshot (DTCG 2025.10, see below) |
+| `packages/ui-kit/tokens/colors/spectrum/defaults.json` | `npm run spectrum:defaults` | Color engine at default settings |
 | `packages/ui-kit/graph.json` | `npm run registry:graph` | manifests and contracts ([registry](registry.md)) |
-| `packages/ui-kit/contracts/theme.schema.json` | `npm run theme:schema` | `tokens/themes/theme.ts` and the parameter, Spectrum, role, face and voice exports ([theming](theming.md#theme-object)) |
+| `packages/ui-kit/contracts/theme.schema.json` | `npm run theme:schema` | `tokens/themes/theme.ts` and the parameter, color, role, face and voice exports ([theming](theming.md#theme-object)) |
 | `packages/ui-kit/contracts/face-catalogue.json` (`measured` blocks only) | `npm run faces:measure` (root; Chromium, network for Google faces) | the curated entries in the same file ([typography](typography.md#face-catalogue)) |
 | `apps/studio/public/brand/massimo.{css,fonts.html,theme.json}` | `npm run brand:studio` | `apps/studio/brand/massimo.brand.json` through `buildBrand` ([theming](theming.md#brand)) |
 | `packages/ui-kit/contracts/brand.schema.json` | `npm run brand:schema` | `tokens/brand/index.ts`, `contracts/brand-catalogue.json` and the descriptor scales ([theming](theming.md#brand)) |
@@ -122,11 +122,11 @@ Never edit these by hand; `npm run ui-kit:test` fails when a committed one is st
 |---|---|
 | `geometry.dtcg.json` | every geometry length (`dimension`), inputs and container pad/gap multiples (`number`) |
 | `typography.dtcg.json` | faces (`fontFamily`), voices (aliases to faces), role styles (`typography`, fontFamily aliasing the voice), role sizes and line heights (`dimension`), ratio and rhythm (`number`) |
-| `color.light.dtcg.json`, `color.dark.dtcg.json` | Spectrum ramps (`color`, oklch) and roles (aliases to ramp steps; text-on-solid as srgb), scheme shadows (`shadow`) |
+| `color.light.dtcg.json`, `color.dark.dtcg.json` | Color ramps (`color`, oklch) and roles (aliases to ramp steps; text-on-solid as srgb), scheme shadows (`shadow`) |
 | `motion.dtcg.json` | springs (`duration`, a `cubicBezier` fit, `transition`) and intent aliases ([motion](motion.md#tokens)) |
 
 DTCG has no arithmetic or modes: `$value` is the default-theme value; `$extensions["com.massimo.formula"]` carries the rule and `com.massimo.bySize` the value at every size; schemes are separate files. DTCG `typography.lineHeight` is a multiplier and `letterSpacing` has no `em`, so roles store the ratio and px, with the rhythm-rounded px and the em tracking in `$extensions`. Tests validate every file against the vendored official schema (`test/fixtures/dtcg-2025.10-format.json`), check that every alias resolves, and fail when a committed file is stale.
 
 ## The jig
 
-`apps/studio` renders every component inline and tunes geometry, icons, scheme and Spectrum live, scoped to the canvas. See [studio](studio.md).
+`apps/studio` renders every component inline and tunes geometry, icons, scheme and color ramps live, scoped to the canvas. See [studio](studio.md).

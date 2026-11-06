@@ -6,7 +6,7 @@
     "colors": {
       "id": "foundation:colors",
       "title": "Colors",
-      "summary": "Spectrum (HCT) ramps, step semantics and color roles per scheme. Components paint only with roles.",
+      "summary": "HCT color ramps, step semantics and color roles per scheme. Components paint only with roles.",
       "documentation": "../../docs/specs/color.md",
       "authority": [
         {

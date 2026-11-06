@@ -4,7 +4,7 @@
 // holds overrides of the kit defaults only:
 //   geometry    parameters: unit, density, border, curvature, container radius and ladder, elevation
 //   typography  parameters (type ratio, rhythm), faces (face → font stack), voices (voice → face), colors
-//   color       Spectrum settings (SPECTRUM_FIELDS), the role mapping (role → requested family), endpoints
+//   color       color settings (SPECTRUM_FIELDS), the role mapping (role → requested family), endpoints
 //   motion      parameters: the multipliers, springs and intents
 //   icons, scheme  the icon set; the preferred scheme (auto follows the OS)
 //   character   L1: one value per descriptor scale (descriptors.ts: themeFromCharacter, describeTheme)
@@ -99,7 +99,7 @@ export const loadTheme = (input: unknown) => validateThemeObject(migrateTheme(in
 
 /** A font stack: comma-separated family names, each bare or in balanced quotes (no other CSS syntax). */
 export const FONT_STACK = /^(?=.{1,300}$)\s*("[\w\s.-]+"|'[\w\s.-]+'|[\w.-][\w\s.-]*)(\s*,\s*("[\w\s.-]+"|'[\w\s.-]+'|[\w.-][\w\s.-]*))*\s*$/;
-/** A requested Spectrum family name (resolveRoles picks the nearest generated hue). */
+/** A requested color family name (resolveRoles picks the nearest generated hue). */
 export const FAMILY_NAME = /^[a-z][a-z0-9-]{0,30}$/;
 
 const TOP = new Set(['$schema', 'schemaVersion', 'name', 'description', 'geometry', 'typography', 'color', 'motion', 'icons', 'scheme', 'intent', 'character', 'provenance']);

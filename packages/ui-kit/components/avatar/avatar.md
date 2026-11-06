@@ -21,7 +21,7 @@ import { Avatar } from '@massimo/ui-kit/components/avatar/react';
 
 - `name` names the avatar when there is no `alt`, and its initials (up to two letters) are the fallback when none is authored. Without either, the fallback is a user icon.
 - `alt` names the picture; with `alt` or `name` the host is `role=img` with that `aria-label`, and the image and fallback are hidden from the accessibility tree.
-- The fill is neutral (`bg.muted`, `fg.muted`); a tone is an author class with Spectrum roles (`bg: primary.subtle, color: primary.fg`).
+- The fill is neutral (`bg.muted`, `fg.muted`); a tone is an author class with color roles (`bg: primary.subtle, color: primary.fg`).
 
 ## Anatomy
 

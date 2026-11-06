@@ -2,7 +2,7 @@
 
 A design system and the jig that tunes it.
 
-- **[`@massimo/ui-kit`](packages/ui-kit/README.md)**: light-DOM web components and React renderers that share one anatomy, one headless behavior layer (`dom/`) and one PandaCSS preset. Geometry comes from a single unit u, colors are Spectrum roles, motion is springs, and the kit ships icons plus generated CSV and DTCG tokens. The components follow [Base UI](https://base-ui.com)'s anatomy, state attributes and event reasons.
+- **[`@massimo/ui-kit`](packages/ui-kit/README.md)**: light-DOM web components and React renderers that share one anatomy, one headless behavior layer (`dom/`) and one PandaCSS preset. Geometry comes from a single unit u, colors are color roles, motion is springs, and the kit ships icons plus generated CSV and DTCG tokens. The components follow [Base UI](https://base-ui.com)'s anatomy, state attributes and event reasons.
 - **[Studio](apps/studio/README.md)**: the jig. It tunes a theme live on pages of every component, and **Copy** hands the settings to an agent as JSON.
 
 ## Quick start

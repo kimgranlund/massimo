@@ -87,7 +87,7 @@ Base UI's props and event details ([components spec](../../../../docs/specs/comp
 
 ## Geometry and appearance
 
-Geometry families: `track` (a pair's fill: `trackPairFill`; [geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [range.recipe.ts](range.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are Spectrum roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.
+Geometry families: `track` (a pair's fill: `trackPairFill`; [geometry-families.json](../../contracts/geometry-families.json), resolver `tokens/geometry/resolve.ts`, CSS `styles/geometry.ts`). Styles: the slot recipes in [range.recipe.ts](range.recipe.ts) (Panda `theme.slotRecipes`, one class per part, variants for finite attributes), applied by the web component and the React renderer alike; lengths read the geometry variables, colors are color roles, states use the shared conditions ([states.json](../../contracts/states.json), `styles/conditions.ts`), and motion and forced colors live in the same recipe.
 
 **Attached** (`inset="none"`): the thumb fills the 4u track and takes the track's radius (it becomes the track's end cap) and travels W − track from the start edge.
 

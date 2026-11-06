@@ -32,7 +32,7 @@ Settings that are not one number (a role mapping, a font stack, a neutral step, 
 
 ## A color default
 
-Change the default Spectrum settings (`SPECTRUM_FIELDS` in `tokens/colors/spectrum/config.ts`) or roles (`DEFAULT_ROLES` in `tokens/colors/spectrum/index.ts`); never edit `defaults.json` or the vendored `runtime.json`.
+Change the default color settings (`SPECTRUM_FIELDS` in `tokens/colors/spectrum/config.ts`) or roles (`DEFAULT_ROLES` in `tokens/colors/spectrum/index.ts`); never edit `defaults.json` or the vendored `runtime.json`.
 
 ## Regenerate and check
 

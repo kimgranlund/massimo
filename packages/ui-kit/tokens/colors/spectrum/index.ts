@@ -1,4 +1,4 @@
-// Spectrum: generated Radix-style 12-step ramps (light and dark) and their mapping onto the kit's
+// Color ramps: generated Radix-style 12-step ramps (light and dark) and their mapping onto the kit's
 // semantic color variables. The default generator runs the vendored HCT engine (runtime.json, see
 // NOTICE.md) lazily; it takes ~300ms, so callers should debounce. `generator: 'oklch'` runs oklch.ts
 // instead and never starts the engine.
@@ -196,7 +196,7 @@ export function endpointVars(data: Spectrum, roles: Roles, map: Endpoints = {}) 
 const block = (sel: string, vars: Record<string, string>) => `${sel} {\n${Object.entries(vars).map(([k, v]) => `  ${k}: ${v};`).join('\n')}\n}`;
 
 /**
- * CSS that applies a spectrum over the kit's semantic colors, mirroring the kit's scheme
+ * CSS that applies the ramps over the kit's semantic colors, mirroring the kit's scheme
  * structure: light by default, dark under prefers-color-scheme, .light/.dark to force. Emit it
  * after the kit stylesheet; selectors match the kit's own so each rule wins its counterpart.
  * Variable names match the kit's tokens (--colors-{family}-{1..12}, --colors-{role}).
@@ -276,7 +276,7 @@ export function spectrumDiagnostics(data: Spectrum, roles: Roles, step = 2): Spe
 }
 
 /**
- * A spectrum with a theme's anchors applied (anchors.ts): each anchor's family re-shaped and its step
+ * Ramps with a theme's anchors applied (anchors.ts): each anchor's family re-shaped and its step
  * overridden, the roles (a role whose family another anchor claimed moves to a free family), and the
  * solid step per anchored role. The key intensity and depth apply here, around the pins, with or without
  * anchors, so read a theme's ramps from this. Use the returned roles.

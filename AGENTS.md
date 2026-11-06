@@ -1,6 +1,6 @@
 # massimo
 
-A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@massimo/ui-kit`: light-DOM web components with React renderers, a headless `dom/` layer, geometry in a unit u, Spectrum colors, springs, icons, a PandaCSS preset, generated CSV and DTCG tokens) `apps/studio` (the jig: tunes the theme live on a canvas of every component; Copy hands the settings to an agent as JSON) and `apps/docs` (the public component site, generated from the manifests and examples files: [README](apps/docs/README.md)).
+A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@massimo/ui-kit`: light-DOM web components with React renderers, a headless `dom/` layer, geometry in a unit u, color ramps, springs, icons, a PandaCSS preset, generated CSV and DTCG tokens) `apps/studio` (the jig: tunes the theme live on a canvas of every component; Copy hands the settings to an agent as JSON) and `apps/docs` (the public component site, generated from the manifests and examples files: [README](apps/docs/README.md)).
 
 ## Route
 
@@ -22,7 +22,7 @@ A design system and its tuning jig, as npm workspaces: `packages/ui-kit` (`@mass
 ## Rules that bite
 
 - Zero native form elements (`input`, `button`, `select`, `label`, …) inside web components; forms go through `UIFormElement`. Tests enforce it.
-- Every length comes from geometry (`tokens/geometry/resolve.ts` and `styles/geometry.ts` change together); every color is a Spectrum role. Panda configs are `strictTokens`; a one-off uses `[..]`.
+- Every length comes from geometry (`tokens/geometry/resolve.ts` and `styles/geometry.ts` change together); every color is a role. Panda configs are `strictTokens`; a one-off uses `[..]`.
 - Typed element properties use `declare`, never class fields; avoid built-in property names (`role`, `prefix`, `ariaChecked`).
 - Continuous values reach CSS only as custom properties set by script; finite choices are attributes and selectors. No runtime stylesheets in components.
 - Labelled components use the construction pattern `[leading] [prefix] [contents] [suffix] [trailing]` (`components/slots.ts`). The jig uses ui-kit web components only.

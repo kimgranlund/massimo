@@ -1,6 +1,6 @@
 // Shared style pieces of the anchored popups (popover, tooltip, preview card; the navigation menu's
 // popup), on the floating-layer pieces of recipe-parts.ts. Lengths are u, B and the container
-// ladder's theme parameters (resolvePopup, resolveNavigationMenu); colours are Spectrum roles.
+// ladder's theme parameters (resolvePopup, resolveNavigationMenu); colours are roles.
 //   host (display: contents)  ›  trigger  ·  positioner [popover] › popup · arrow
 // - positioner: fixed in the top layer, placed by CSS anchor positioning on the trigger (one rule
 //   per side and alignment, data-placement, the side chosen by script; the anchor name is the per-instance

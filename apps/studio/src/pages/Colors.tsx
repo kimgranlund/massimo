@@ -137,7 +137,7 @@ const stateRow = css({ display: 'flex', gap: '3', flexWrap: 'wrap' });
 const stateCell = css({ display: 'flex', flexDirection: 'column', gap: '1' });
 const callout = css({ padding: '3', borderRadius: 'lg', textStyle: 'body-md' });
 
-// Spectrum variables for a family step (follow the active scheme and the jig's roles).
+// Color variables for a family step (follow the active scheme and the jig's roles).
 // Illustrative orders per channel, Monday through Sunday; one data color per channel (data 1–6).
 const CHANNELS: [string, number[]][] = [
   ['Online', [72, 84, 68, 96, 108, 88, 80]], ['In store', [44, 49, 54, 46, 64, 82, 78]], ['Wholesale', [20, 26, 22, 30, 28, 12, 10]],
@@ -156,7 +156,7 @@ function ColorInContext({ spectrum }: { spectrum: SpectrumPayload }) {
       <div className={brandGrid}>
         <ui-container preset="panel" surface="solid" className={campaign}>
           <span className={sectionKicker}>Studio / Collection 01</span>
-          <h3 className={display}>A spectrum.<br />A shared language.</h3>
+          <h3 className={display}>One palette.<br />A shared language.</h3>
           <p className={bodyLarge}>Different hues, one system. Color carries the character; a common rhythm holds it together.</p>
           <span className={sectionKicker}>An exploration in color &amp; proportion</span>
         </ui-container>
@@ -370,7 +370,7 @@ export function ColorsPage({ spectrum }: PageProps) {
   if (!spectrum) return <Page title="Colors" lead="Generating colors…"><Divider /></Page>;
   const r = spectrum.roles;
   return (
-    <Page title="Colors" lead={`Spectrum roles, in context and at the engine. Brand: primary ${r.primary}, secondary ${r.secondary}, neutral ${r.neutral}.`}>
+    <Page title="Colors" lead={`Color roles, in context and at the engine. Brand: primary ${r.primary}, secondary ${r.secondary}, neutral ${r.neutral}.`}>
       <Divider />
       <Section id="roles" title="Roles" note="Each role is a family. Brand: primary, secondary, neutral. Feedback: critical, warning, success, info. Data 1–6: chart series and categories. Swatches show step 9 (the solid).">
         <div className={roleTiers}>

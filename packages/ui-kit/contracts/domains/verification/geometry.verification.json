@@ -22,7 +22,7 @@
     },
     {
       "path": "tokens/themes/params.ts",
-      "sha256": "33b3fa48a6e6494136d6ad44544797b3e212403dba4dfed57d0473049c3ba477"
+      "sha256": "74b9e949a986dd4ba6e9cf76bd44e0dbced591934d94c4accf5ff8a672ec17b4"
     },
     {
       "path": "contracts/domains/geometry.json",
@@ -62,7 +62,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test test/geometry.test.ts",
@@ -84,7 +84,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "npm --prefix ../.. run check:browsers"

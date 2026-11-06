@@ -22,7 +22,7 @@
     },
     {
       "path": "components/popover/popup-parts.ts",
-      "sha256": "8cc790000d1f3a718281b0e208d1e9d7ab7cfe095ffdc383d4aa5596dfd0a425"
+      "sha256": "c017c1254c65e67008eab31c577086697295aa17995fd39491c16bedf700ab0e"
     },
     {
       "path": "components/popover/popover.manifest.json",
@@ -46,7 +46,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"popover\" test/popup.test.ts",
@@ -65,7 +65,7 @@
         }
       ],
       "latestRun": {
-        "date": "2026-11-05",
+        "date": "2026-11-06",
         "outcome": "pass",
         "commands": [
           "node --test --test-name-pattern=\"Popover\" test/popup.test.ts"

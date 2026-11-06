@@ -1,4 +1,4 @@
-// The OKLCH generator (color.spectrum.generator: 'oklch'): the same Spectrum the HCT engine produces,
+// The OKLCH generator (color.spectrum.generator: 'oklch'): the same ramps the HCT engine produces,
 // with none of its runtime. Twelve hues sit every 33.3 units of hue quadrature from the first hue, each
 // at one OKLCH hue angle. Chroma follows one envelope, peaking at step 9 and shared by every hue: the
 // requested chroma, capped by what the weakest hue can reach there. Lightness keeps the kit's contrast

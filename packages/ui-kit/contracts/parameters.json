@@ -88,7 +88,7 @@
     "vibrancy": {
       "title": "Vibrancy",
       "governs": "richness and diversity of color",
-      "mechanism": "the Spectrum settings (hues, chroma, tone, neutrals, harmony, gamut) and the role mapping",
+      "mechanism": "the color settings (hues, chroma, tone, neutrals, harmony, gamut) and the role mapping",
       "documentation": "../../docs/specs/color.md",
       "searchTerms": [
         "vibrancy",
@@ -533,7 +533,7 @@
       ]
     },
     "spectrum": {
-      "title": "Spectrum color settings",
+      "title": "Color settings",
       "scope": "theme",
       "spec": {
         "module": "tokens/colors/spectrum/config.ts",

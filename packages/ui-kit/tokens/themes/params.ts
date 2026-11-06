@@ -1,4 +1,4 @@
-// Theme parameters: the few numbers the geometry derives from (colors come from Spectrum).
+// Theme parameters: the few numbers the geometry derives from (colors come from the color ramps).
 // Each becomes a CSS custom property `--ui-<name>`, so a theme is just a set of values
 // that can change at runtime without regenerating any CSS.
 import { CONTAINERS } from '../geometry/resolve.ts';

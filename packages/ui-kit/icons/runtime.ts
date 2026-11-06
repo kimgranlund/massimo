@@ -5,7 +5,7 @@
 // value of the theme named by <html data-ui-theme>, or the default (phosphor). Changing either attribute
 // re-renders affected icons. Fetched icons are cached per set and name.
 // The saved themes' JSON, not tokens/themes/index.ts: that module carries the theme engine and the
-// spectrum runtime, which no page that only draws icons should load.
+// color runtime, which no page that only draws icons should load.
 import saved from '../tokens/themes/themes.json' with { type: 'json' };
 import type { Theme } from '../tokens/themes/theme.ts';
 

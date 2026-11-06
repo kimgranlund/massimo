@@ -1,5 +1,5 @@
 // Theme lint (contracts/theme-constraints.json): one predicate per rule over a theme object, its
-// parameters merged over the defaults and, for the color rules, its generated Spectrum. A rule
+// parameters merged over the defaults and, for the color rules, its generated ramps. A rule
 // returns the problems it finds (empty when the theme passes it).
 import constraints from '../../contracts/theme-constraints.json' with { type: 'json' };
 import { defaultParams, type ParamName, type ThemeParams } from './params.ts';

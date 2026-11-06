@@ -187,7 +187,7 @@ export function shapeKeys(data: Spectrum, pins: KeyPins = { light: {}, dark: {} 
 }
 
 /**
- * Apply anchors to a generated spectrum (a copy is returned). `roles` maps each role to its family.
+ * Apply anchors to generated ramps (a copy is returned). `roles` maps each role to its family.
  * Returns the report per anchor and the solid step per anchored role.
  */
 export function applyAnchors(data: Spectrum, roles: Record<string, string>, anchors: ColorAnchor[], targets: { light: number[]; dark: number[] }) {

@@ -25,7 +25,7 @@ Every shadow is three layers, an improved form of Material's compound elevation:
 | penumbra | e | 1.6e | 0.125e | 0.1 / 0.36 |
 | ambient | 0.4e | 1.9e | 0.33e | 0.08 / 0.3 |
 
-What improves on Material: the shadow is tinted by the `shadow` role (neutral 12 in light, the darkest neutral in dark), never black, so it follows the palette and a runtime spectrum; dark mode has its own, stronger alphas; elevation is a continuous input, not a lookup; and every layer's alpha × `shadow-strength` × min(1, e), so 0dp casts nothing.
+What improves on Material: the shadow is tinted by the `shadow` role (neutral 12 in light, the darkest neutral in dark), never black, so it follows the palette and runtime color ramps; dark mode has its own, stronger alphas; elevation is a continuous input, not a lookup; and every layer's alpha × `shadow-strength` × min(1, e), so 0dp casts nothing.
 
 ## Parameters
 
@@ -45,4 +45,4 @@ What improves on Material: the shadow is tinted by the `shadow` role (neutral 12
 
 Panda declares these tokens on `:root` (and per scheme, so a `.dark` / `.light` subtree re-resolves them), where the `--ui-*` inputs resolve with the root values. A scope that sets elevation parameters for its own subtree (the jig canvas) redeclares them with `elevationTokenCss()`, as it does `unitTokenCss()` and `motionTokenCss()`.
 
-Shadows take the `shadow` role's color per scheme (neutral 12 light, neutral 1 dark) at a per-scheme alpha (`SHADOWS`), so they follow a runtime spectrum. Forced colors drop shadows and fills; surfaces keep a system edge.
+Shadows take the `shadow` role's color per scheme (neutral 12 light, neutral 1 dark) at a per-scheme alpha (`SHADOWS`), so they follow runtime color ramps. Forced colors drop shadows and fills; surfaces keep a system edge.

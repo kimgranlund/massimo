@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "ui-kit colors, dark scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (primary indigo, secondary amber, neutral neutral, critical tomato, warning orange, success grass, info cyan, data1 indigo, data2 cyan, data3 grass, data4 amber, data5 tomato, data6 plum). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.",
+  "$description": "ui-kit colors, dark scheme: the default color ramps (HCT-generated, Radix-style 12-step ramps) and roles (primary indigo, secondary amber, neutral neutral, critical tomato, warning orange, success grass, info cyan, data1 indigo, data2 cyan, data3 grass, data4 amber, data5 tomato, data6 plum). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.",
   "color": {
     "cyan": {
       "1": {

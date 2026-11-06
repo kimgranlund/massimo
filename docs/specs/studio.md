@@ -10,7 +10,7 @@
   - the icon set as `data-icons`.
 - Color applies to the whole jig (panel and canvas):
   - the scheme as a `light` / `dark` class on `<html>` (none for Auto),
-  - Spectrum as `spectrumCSS(data, roles, ':root')`.
+  - The color ramps as `spectrumCSS(data, roles, ':root')`.
 
 ## Panel
 
@@ -32,7 +32,7 @@
   - Character: every descriptor scale. An empty choice shows the frame's value and where it came from.
   - Signature and its reason, the avoid list, a rationale line per explicit choice, and the voice (tone words, action, confirmation and error samples).
 
-  Every edit is validated (`validateBrand`) and re-hydrated after a short pause. Parameters you tuned by hand since the last apply (those that differ from what that brand hydrated to) are kept on top, and the status line counts them; other hand changes (Spectrum settings, roles, faces) follow the brand. Reset and Load cancel a pending edit. The brand name follows the subject name as a valid theme name.
+  Every edit is validated (`validateBrand`) and re-hydrated after a short pause. Parameters you tuned by hand since the last apply (those that differ from what that brand hydrated to) are kept on top, and the status line counts them; other hand changes (color settings, roles, faces) follow the brand. Reset and Load cancel a pending edit. The brand name follows the subject name as a valid theme name.
 - Colors also has **Emphasis** (Selection: quiet, balanced, loud; theme `color.parameters.emphasis`). It is declared on `:root` with the colors (the selection fills are declared there), so the panel and any scoped preview without its own emphasis follow it too.
 - **Copy:** the applied settings minus defaults as one [theme object](theming.md#theme-object), schema version 2 (`geometry`, `typography`, `color` with `anchors`, `motion`, `icons`, `scheme`), with `$schema`; while a brand is active (Apply on the Brand page, or Load of a brand), the `{ brand, theme }` bundle. **Load:** reads a theme (version 1 migrates through `loadTheme`), a [brand](theming.md#brand) (validated and hydrated) or a bundle from the clipboard and applies it. Font stylesheets in `typography.sources` load only from Google Fonts; another host is named in the status line instead of fetched; sections it omits return to the defaults, and the status line lists any problems. **Checks:** the live [theme lint](theming.md#lint) findings (errors, warnings, info) for the applied settings. **Reset:** all defaults, and no brand.
 
@@ -60,7 +60,7 @@ Browser checks: `/geometry-check.html` (rendered CSS, every type role included, 
 
 ## Styling
 
- the jig sets no style attributes for theming. Live overrides (theme parameters, faces and serif weights that differ from the kit defaults, scoped to `[data-canvas]`, plus the generated Spectrum CSS on `:root`) live in one constructed stylesheet adopted by the document (`useSheet`). Canvas demos color everything through role tokens as static `css()` classes; the only inline style left is the chart's data ratio (`--v`).
+ the jig sets no style attributes for theming. Live overrides (theme parameters, faces and serif weights that differ from the kit defaults, scoped to `[data-canvas]`, plus the generated ramps CSS on `:root`) live in one constructed stylesheet adopted by the document (`useSheet`). Canvas demos color everything through role tokens as static `css()` classes; the only inline style left is the chart's data ratio (`--v`).
 
 - **Size ladders** (`SizeLadder` in `pages/shared.tsx`): every component family shows sizes the same way: sizes 3, 4 and 6 plus the theme unit (highlighted; it inherits the canvas unit), one row each, the size and the family's resolver metrics on the left (like the Typography roles), specimens on the right.
 - **Tables** (`dataTable` and helpers in `pages/shared.tsx`): every tabular view (Geometry ladders, Container tokens, Motion intents) is a real `<table>` in one style: full container width, one value per column, group headers over related columns, the live theme row highlighted, a horizontal scroller when narrow.

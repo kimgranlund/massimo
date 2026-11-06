@@ -1,6 +1,6 @@
 # Theming
 
-The inputs a theme sets (root parameters, saved themes, per-element attributes) and how the kit reaches an app: the Panda preset, its conditions and the Panda configs. What each parameter drives: [geometry](geometry.md), [typography](typography.md), [motion](motion.md); colors are Spectrum settings, not theme parameters ([color](color.md)).
+The inputs a theme sets (root parameters, saved themes, per-element attributes) and how the kit reaches an app: the Panda preset, its conditions and the Panda configs. What each parameter drives: [geometry](geometry.md), [typography](typography.md), [motion](motion.md); colors are color settings, not theme parameters ([color](color.md)).
 
 ## Theme parameters
 
@@ -33,7 +33,7 @@ A theme is one object (`Theme`, `tokens/themes/theme.ts`; JSON Schema `contracts
 |---|---|
 | `geometry` | `parameters`: unit, density, border, curvature, container radius and nesting ratio, the container ladder, elevation |
 | `typography` | `parameters` (`type-ratio`, `type-rhythm`); `sources`: web face stylesheets ([typography](typography.md#face-catalogue)); `faces`: face → font stack; `voices`: voice → face; `colors`: type role → text color; `weights`: display and heading voice weights (default 700), set as `--font-voice-<voice>-weight` |
-| `color` | `parameters` (`emphasis`); `spectrum`: Spectrum settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role, plus `ground` and `ink` ([color](color.md#anchors)) |
+| `color` | `parameters` (`emphasis`); `spectrum`: color settings; `roles`: role → requested family; `endpoints`: the neutral step white and black take, or `pure`; `anchors`: exact brand colors per role, plus `ground` and `ink` ([color](color.md#anchors)) |
 | `motion` | `parameters`: the multipliers, springs and intents |
 | `icons`, `scheme` | the icon set; the preferred scheme (auto, light, dark) |
 | `character` | one value per descriptor scale (below) |
@@ -43,7 +43,7 @@ Each parameter's part is its `domain` in `PARAMS` (`domainParams(domain)`); a pa
 
 Each part has a domain manifest (`contracts/domains/<domain>.json`, schema `contracts/domain-manifest.schema.json`): the concepts it covers, the parameter groups and constraints it owns, its specs, resolvers and checks, and a verification record (`contracts/domains/verification/<domain>.verification.json`, `npm run verification -- run domain:<domain>`). Tests keep the manifests a partition of the groups, concepts and constraints, and in step with `PARAMS` and the theme schema.
 
-Saved themes live in `tokens/themes/themes.json` as theme objects keyed by their name, emitted as `:root[data-ui-theme="name"]` (`themeCss`): the parameters as `--ui-*`, faces as `--fonts-<face>`, voices as `--font-voice-<voice>` (serif headings at 400), and, when the theme sets colors, its Spectrum ramps and roles generated at build time, light on the theme root, with `.light` / `.dark` on the root and the OS dark scheme. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does. The jig's **Copy** emits this object and **Load** applies one, version 1 included ([studio](studio.md)).
+Saved themes live in `tokens/themes/themes.json` as theme objects keyed by their name, emitted as `:root[data-ui-theme="name"]` (`themeCss`): the parameters as `--ui-*`, faces as `--fonts-<face>`, voices as `--font-voice-<voice>` (serif headings at 400), and, when the theme sets colors, its color ramps and roles generated at build time, light on the theme root, with `.light` / `.dark` on the root and the OS dark scheme. Themes apply at the document root only, because tokens resolve where they are declared; scope anything else with an explicit element, as the jig does. The jig's **Copy** emits this object and **Load** applies one, version 1 included ([studio](studio.md)).
 
 ### Character
 

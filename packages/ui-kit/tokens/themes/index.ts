@@ -39,7 +39,7 @@ export function themeVars(t: Theme): Record<string, string> {
 }
 
 /**
- * A theme's colors, when it sets any: the Spectrum ramps and roles per scheme, generated at build
+ * A theme's colors, when it sets any: the color ramps and roles per scheme, generated at build
  * time, as variables for the light and dark blocks.
  */
 export function themeColorVars(t: Theme): { light: Record<string, string>; dark: Record<string, string> } | undefined {

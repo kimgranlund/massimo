@@ -1,7 +1,7 @@
 // Generates the DTCG (2025.10) token files in tokens/dtcg/ from the kit's sources:
 //   geometry.dtcg.json      every geometry row (resolver), typed inputs
 //   typography.dtcg.json    faces (fontFamily), voices (aliases), role styles (typography), role metrics
-//   color.light.dtcg.json   Spectrum ramps (oklch color tokens) and roles (aliases) and shadows, light scheme
+//   color.light.dtcg.json   color ramps (oklch color tokens) and roles (aliases) and shadows, light scheme
 //   color.dark.dtcg.json    the same, dark scheme
 //   motion.dtcg.json        springs: span duration, cubic-bezier fit, transition; exact linear() in extensions;
 //                           intents (feedback, toggle, reveal, emphasis) as transition aliases
@@ -117,7 +117,7 @@ type Snapshot = { roles: Record<string, string>; onSolid: Record<'light' | 'dark
 
 export function colorTokens(mode: 'light' | 'dark'): Json {
   const D = DEFAULTS as Snapshot;
-  const tree = header(`ui-kit colors, ${mode} scheme: the default Spectrum (HCT-generated, Radix-style 12-step ramps) and roles (${Object.entries(D.roles).map(([r, f]) => `${r} ${f}`).join(', ')}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
+  const tree = header(`ui-kit colors, ${mode} scheme: the default color ramps (HCT-generated, Radix-style 12-step ramps) and roles (${Object.entries(D.roles).map(([r, f]) => `${r} ${f}`).join(', ')}). Step semantics: 1–2 backgrounds, 3–5 interactive, 6–8 borders, 9–10 solids, 11–12 text.`);
   for (const [family, steps] of Object.entries(D[mode])) steps.forEach((css, i) => put(tree, ['color', rampName(family), String(i + 1)], { $type: 'color', $value: oklch(css) }));
   for (const [role, entry] of Object.entries(ROLE_STEPS)) {
     const { family, step, alpha } = roleStep(entry, mode);

@@ -179,7 +179,7 @@ function ActiveBrand({ brand, params, spectrum }: { brand: Brand } & Pick<PagePr
 }
 
 
-// Three scoped previews: the CSS is generated once (Spectrum takes ~300ms per brand) and kept in one
+// Three scoped previews: the CSS is generated once (generation takes ~300ms per brand) and kept in one
 // <style> element for the page's lifetime; each brand's web faces load as links.
 const scopeGrid = css({ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(18rem, 1fr))', gap: '4' });
 const scopeFrame = css({ bg: 'bg', borderRadius: 'xl', padding: '4', boxShadow: '[inset 0 0 0 1px var(--colors-border)]' });

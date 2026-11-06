@@ -44,7 +44,7 @@ Styles are the folder's slot recipe module, named by the manifest's `styleSource
 | `geometry:` | A geometry family and its resolvers | `contracts/geometry-families.json` |
 | `context:` | A place a component may sit; containers `establish` one | `contracts/composition.json` |
 | `tokens:` | A token group: color roles, type roles, font sizes, motion, geometry parameters, spacing, the container ladder, sizes, radii, borders and shadows, conditions; each lists its Panda paths under `panda` | `contracts/tokens.json` |
-| `parameters:` | A group of inputs (unit, border, curvature, type scale, motion, springs, intents, containers, Spectrum, roles, faces, voices, subtree) and what it `drives` | `contracts/parameters.json` |
+| `parameters:` | A group of inputs (unit, border, curvature, type scale, motion, springs, intents, containers, color settings, roles, faces, voices, subtree) and what it `drives` | `contracts/parameters.json` |
 | `concept:` | One of the system's peer concepts (scale, density, space, curvature, line, elevation, vibrancy, emphasis, typography, movement, state, iconography, adaptivity); lookup lists the parameter groups and parameters that express it | `contracts/parameters.json` (`concepts`) |
 | `domain:` | A theme domain (geometry, typography, color, motion): the part of the theme a brand hydrates; lookup lists the concepts it covers and the parameter groups and constraints it owns | `contracts/domains/<domain>.json` |
 | `descriptor:` | A character scale (`descriptor:curvature`) or one of its values (`descriptor:curvature.soft`, kind `descriptor-value`): the inputs it sets; a scale expresses its concept, a value is a memberOf its scale | `contracts/domains/<domain>.json` (`descriptors`) |
@@ -89,7 +89,7 @@ Relationships:
 
 ## Parameters
 
-`contracts/parameters.json` lists every input the kit derives from: theme parameters (`tokens/themes/params.ts` `PARAMS`), Spectrum settings (`SPECTRUM_FIELDS`), color roles, font faces and voices, and per-subtree inputs (`size`, `icon-size`, `gap`, scheme, type role). Each group gives its scope (theme or subtree), formula, documentation and `drives` targets, and names the export that owns its members' ranges and defaults; a test keeps the member lists equal to those exports. `constants` lists the coefficients the formulas fix (8u controls, 6u slots, 3u curvature, …).
+`contracts/parameters.json` lists every input the kit derives from: theme parameters (`tokens/themes/params.ts` `PARAMS`), color settings (`SPECTRUM_FIELDS`), color roles, font faces and voices, and per-subtree inputs (`size`, `icon-size`, `gap`, scheme, type role). Each group gives its scope (theme or subtree), formula, documentation and `drives` targets, and names the export that owns its members' ranges and defaults; a test keeps the member lists equal to those exports. `constants` lists the coefficients the formulas fix (8u controls, 6u slots, 3u curvature, …).
 
 The graph has a `parameters:<group>` node per group and a `parameter:<id>` node per member (`parameter:radius-scale`, `parameter:spectrum-chroma`, `parameter:role-primary`). A lookup of a member returns its live `spec` (range, step, default) from the owning export; `--assembly` lists `parameters`: the groups that drive a token group or geometry family the component uses (`usesTokens`, `usesGeometry`; foundations are left out because every component follows all of them), each with the targets it reaches the component through.
 

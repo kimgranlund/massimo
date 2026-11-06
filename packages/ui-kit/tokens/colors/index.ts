@@ -1,4 +1,4 @@
-// Kit colors: the default Spectrum (HCT-generated, Radix-style ramps with separate light and
+// Kit colors: the default color ramps (HCT-generated, Radix-style ramps with separate light and
 // dark values), from the generated snapshot in spectrum/defaults.json. Every family is a token
 // group colors.{family}.{1..12} (1 = the scheme's endpoint tone); semantic roles alias ramp steps
 // with Radix step semantics. Regenerate the snapshot with `npm run spectrum:defaults`; apply

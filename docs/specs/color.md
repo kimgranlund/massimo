@@ -1,8 +1,8 @@
-# Color: Spectrum
+# Color
 
 Every color in the kit: ramps, roles, schemes, shadows, the snapshot and runtime overrides. Neighbors: [components](components.md#states) (which state uses which role), [studio](studio.md) (the Colors tab), [system](system.md#design-tokens-dtcg) (DTCG export).
 
-The kit's colors are Spectrum: HCT-generated, Radix-style 12-step ramps, generated separately for light and dark. The engine is ported unchanged from massimo-ui (`packages/ui-kit/tokens/colors/spectrum/runtime.json`; provenance and embedded licenses in its `NOTICE.md`).
+The kit's colors are HCT-generated, Radix-style 12-step ramps, generated separately for light and dark. The engine is ported unchanged from massimo-ui (`packages/ui-kit/tokens/colors/spectrum/runtime.json`; provenance and embedded licenses in its `NOTICE.md`).
 
 ## Ramps
 
@@ -45,12 +45,12 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 | `fg.subtle` (placeholders), `fg.muted`, `fg` | neutral 8, 11, 12 |
 | `fg.onSolid` | the engine's APCA black/white choice for primary 9 |
 | `fg.strong` (display, headings, titles) | `black` in light, `white` in dark |
-| `white`, `black` (`--colors-white`, `--colors-black`) | neutral step 3 of the light ramp (white) and of the dark ramp (black), the same in every scheme; a runtime spectrum emits them too. A theme maps either to another neutral step (1–12) or to pure #fff / #000 (`color.endpoints`, `endpointVars`; the jig's Colors tab, White and black) |
+| `white`, `black` (`--colors-white`, `--colors-black`) | neutral step 3 of the light ramp (white) and of the dark ramp (black), the same in every scheme; runtime color ramps emits them too. A theme maps either to another neutral step (1–12) or to pure #fff / #000 (`color.endpoints`, `endpointVars`; the jig's Colors tab, White and black) |
 | `focusRing` | primary 8 |
 | `data.1` … `data.6` | data 1–6 at 9 (chart series, categories) |
 | `shadow` | neutral 12 light, neutral 1 dark (the shadow color) |
 
-**Shadows.** Which surface casts which shadow, and the elevation tokens built on these, are in [elevation](elevation.md). `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and a runtime spectrum. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
+**Shadows.** Which surface casts which shadow, and the elevation tokens built on these, are in [elevation](elevation.md). `shadows.sm` and `shadows.md` are semantic tokens: layers of the `shadow` color at a per-scheme alpha (`SHADOWS` in `tokens/colors/spectrum/index.ts`; light 12% / 8% + 16%, dark 50% / 36% + 56%), so they follow the scheme and runtime color ramps. They live in the color DTCG files (`shadow.sm`, `shadow.md`).
 
 ## Emphasis
 
@@ -69,7 +69,7 @@ The descriptor scale `emphasis` names the three values.
 
 `oklch` (`tokens/colors/spectrum/oklch.ts`) places twelve hues every 33.3 units of hue quadrature from `hue`, each at one OKLCH hue angle. Chroma follows one envelope peaking at step 9: `oklchChroma`, capped by the weakest hue there, so every family has the same chroma, and `falloff` shapes it. Each step's L is solved per hue and chroma to land on that step's tone, so a step has the same contrast in every family. It reads `hue`, `falloff`, the contrast fields, `mat`, `tint`, `neutralFrom`, `target` and `oklchChroma`. The HCT-only settings have no effect, and neither do `harmony` and `cvd`. It runs without starting the HCT engine, but importing `spectrum/index.ts` still bundles the engine; a build that wants it out imports `oklch.ts` directly.
 
-The kit's default tokens are the HCT snapshot. An `oklch` theme replaces them through its generated CSS, as any theme with its own spectrum does.
+The kit's default tokens are the HCT snapshot. An `oklch` theme replaces them through its generated CSS, as any theme with its own ramps does.
 
 ## Anchors
 

@@ -12,16 +12,16 @@ npm run studio:build  # production build (hashed class names)
 - **Panel tabs:** Geometry, Colors, Typography, Motion; they edit tokens only and never change the page. **Copy** puts every applied setting (minus defaults) on the clipboard as JSON with `howToApply` instructions; **Reset** restores all defaults. Nothing is saved to disk.
 - **Pages:** routed by the URL hash, `#/home`, `#/components` (family filter: `#/components?family=fields`), `#/containers`, `#/geometry`, `#/typography`, `#/colors`, `#/motion` (`src/pages/`).
 - **Content header:** a page menu, page-specific menus, and one button that cycles the scheme Auto → Light → Dark.
-- **Canvas:** pages render inline; theme overrides are scoped to `[data-canvas]` so the panel and header keep the default theme. Color (scheme and Spectrum) applies to the whole jig.
+- **Canvas:** pages render inline; theme overrides are scoped to `[data-canvas]` so the panel and header keep the default theme. Color (scheme and color ramps) applies to the whole jig.
 - **Checks:** `/geometry-check.html` (CSS against the resolver) and `/react-check.html` (React renderers against the web components) print `"fails": []` when they agree.
 
 ## How styling flows
 
 ```
-Spectrum settings  ->  engine (HCT)  ->  ramps   --colors-indigo-9 (light and dark values)
+Color settings  ->  engine (HCT)  ->  ramps   --colors-indigo-9 (light and dark values)
                                          roles   --colors-primary-solid: var(--colors-indigo-9)
 theme parameters   ->  --ui-unit, --ui-border, --ui-radius-scale, --ui-corner-shape, --ui-type-*, --ui-motion-*, --ui-pad-*, --ui-gap-*
                        -> geometry CSS and the u-based Panda tokens (--spacing-*, --radii-*, …)
 ```
 
-The kit ships the default Spectrum as tokens; the Colors panel tab regenerates it live and overrides the same variables.
+The kit ships the default color ramps as tokens; the Colors panel tab regenerates them live and overrides the same variables.

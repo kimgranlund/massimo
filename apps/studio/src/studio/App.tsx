@@ -60,7 +60,7 @@ const SCHEME_LABEL: Record<Scheme, string> = { auto: 'auto', light: 'light', dar
 const SCHEME_ICON: Record<Scheme, string> = { auto: 'circle-half', light: 'sun', dark: 'moon' };
 import * as s from './styles.ts';
 
-// Geometry knobs shown in the panel (the old kit color sliders are superseded by Spectrum).
+// Geometry knobs shown in the panel (the old kit color sliders are superseded by the color settings).
 const GEOMETRY: ParamName[] = ['unit', 'border', 'radius-scale', 'corner-shape'];
 const CONTAINER_RADIUS: [ParamName, string][] = [['radius-group', 'Group'], ['radius-collection', 'Collection'], ['radius-card', 'Card']];
 // corner-shape (superellipse): Chromium draws it; where CSS.supports says no (Firefox, older WebKit) corners stay round.
@@ -165,7 +165,7 @@ export function App() {
   const [familyNames, setFamilyNames] = useState<{ accents: string[]; neutrals: string[] }>({ accents: [], neutrals: [] });
   const [status, setStatus] = useState('');
 
-  // Spectrum generation, debounced: it takes ~300ms, so it runs once input pauses.
+  // Color generation, debounced: it takes ~300ms, so it runs once input pauses.
   useEffect(() => {
     // The engine (and its 264 KB runtime) runs in a worker, so generating never blocks the panel.
     let live = true;
@@ -181,7 +181,7 @@ export function App() {
 
   // Live overrides live in one constructed stylesheet (useSheet), never in style attributes: theme
   // parameters, faces and serif weights that differ from the kit defaults, scoped to the canvas
-  // ([data-canvas]); Spectrum colors and scheme apply to the whole jig (:root, from spectrumCSS).
+  // ([data-canvas]); color ramps and scheme apply to the whole jig (:root, from spectrumCSS).
   const canvasDecls = [
     ...Object.entries(diffFromDefaults(params)).map(([k, v]) => `${paramVar(k as ParamName)}: ${v};`),
     ...Object.entries(faces).filter(([f, st]) => FONT_FAMILIES[f as keyof FaceMap] !== st).map(([f, st]) => `--fonts-${f}: ${st};`),
@@ -240,7 +240,7 @@ export function App() {
     icons: icons !== 'phosphor' ? icons : undefined,
     scheme: scheme !== 'auto' ? scheme : undefined,
   }) as unknown as Theme; };
-  // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's Spectrum.
+  // Lint (contracts/theme-constraints.json), debounced: the color rules generate the theme's color ramps.
   const [findings, setFindings] = useState<Finding[]>([]);
   useEffect(() => {
     const t = setTimeout(() => { lintThemeOff(themeObject()).then(setFindings).catch((err) => setStatus(`Lint failed: ${err}`)); }, 400);
@@ -267,7 +267,7 @@ export function App() {
     applyTheme(theme); setBrand(b); lastApplied.current = b;
     setStatus(`Applied brand ${b.name}${unresolved.length ? ` (${unresolved.length} open questions on the Brand page)` : ''}`);
   };
-  // An edit from the Brand tab: re-hydrate after typing pauses (Spectrum takes ~300ms per run). Hand-tuned
+  // An edit from the Brand tab: re-hydrate after typing pauses (generation takes ~300ms per run). Hand-tuned
   // parameters (those that differ from what the last applied brand hydrated to) are kept on top.
   const editBrand = (b: Brand) => {
     setBrand(b); clearTimeout(editTimer.current);

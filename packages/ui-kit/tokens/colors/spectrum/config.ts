@@ -1,4 +1,4 @@
-// Spectrum settings: the editable inputs of the ramp generators (ported from massimo-ui
+// Color settings: the editable inputs of the ramp generators (ported from massimo-ui
 // spectrum-config.js). HCT reads them all but oklchChroma; keyIntensity and keyDepth apply after either generator (anchors.ts); OKLCH (oklch.ts) reads hue, falloff, the
 // contrast fields, mat, tint, neutralFrom, target and oklchChroma. Generation always produces separate light and dark 12-step ramps.
 export interface Field { key: string; label: string; group: string; options?: (string | number)[]; labels?: string[]; min?: number; max?: number; step?: number; multiple?: boolean; /** A fixed-length list of numbers in min..max (the contrast targets). */ list?: number; legacy?: boolean; value: unknown }
@@ -55,7 +55,7 @@ const valid = (f: Field, v: unknown) => f.list
 
 /** Defaults + overrides, validated field by field. Unknown keys and invalid values throw. */
 export function normalizeSpectrum(raw: SpectrumSettings = {}): SpectrumSettings {
-  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Spectrum settings must be an object');
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw new Error('Color settings must be an object');
   const out = { ...structuredClone(SPECTRUM_DEFAULTS) };
   for (const [k, v] of Object.entries(raw)) {
     const f = SPECTRUM_FIELDS.find((x) => x.key === k);

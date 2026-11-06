@@ -1,4 +1,4 @@
-// Spectrum roles and the semantic steps, shadows and selection fills built on them: plain data, no
+// Color roles and the semantic steps, shadows and selection fills built on them: plain data, no
 // generation engine, so a module that only names roles never loads the engine's 264 KB runtime.
 
 export const BRAND_ROLES = ['primary', 'secondary', 'neutral'] as const;

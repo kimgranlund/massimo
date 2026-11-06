@@ -47,7 +47,7 @@ test('engine generates 12-step light and dark ramps and roles map onto kit varia
   assert.doesNotMatch(scoped, /:root/, 'scoped CSS never touches the document root');
 });
 
-test('defaults.json is the current default Spectrum (run npm run spectrum:defaults)', async () => {
+test('defaults.json is the current default ramps (run npm run spectrum:defaults)', async () => {
   const { readFileSync } = await import('node:fs');
   const { spectrumDefaultsText, DEFAULTS_PATH } = await import('../scripts/spectrum-defaults.ts');
   assert.equal(readFileSync(DEFAULTS_PATH, 'utf8'), spectrumDefaultsText());
