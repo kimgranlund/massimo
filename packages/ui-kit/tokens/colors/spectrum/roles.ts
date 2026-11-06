@@ -57,7 +57,7 @@ export const ROLE_STEPS = {
   'bg-backdrop': ['neutral', 12, { dark: 1, alpha: 0.4, darkAlpha: 0.7 }],
   'fg': ['neutral', 12], 'fg-muted': ['neutral', 11],
   // Placeholders and other hints that must read as absent content: well below muted text.
-  'fg-subtle': ['neutral', 8],
+  'fg-subtle': ['neutral', 10],
   'border': ['neutral', 6], 'border-strong': ['neutral', 7],
   ...UNIFORM_STEPS,
   // The scheme's shadow color (shadows.sm, shadows.md mix it with transparent): neutral 12 in light,

@@ -1854,8 +1854,8 @@
       },
       "fg-subtle": {
         "$type": "color",
-        "$value": "{color.gray.8}",
-        "$description": "neutral step 8"
+        "$value": "{color.gray.10}",
+        "$description": "neutral step 10"
       },
       "border": {
         "$type": "color",

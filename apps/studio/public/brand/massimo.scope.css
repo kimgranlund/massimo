@@ -326,7 +326,7 @@
   --colors-bg-backdrop: color-mix(in oklch, var(--colors-gray-12) 40%, transparent);
   --colors-fg: var(--colors-gray-12);
   --colors-fg-muted: var(--colors-gray-11);
-  --colors-fg-subtle: var(--colors-gray-8);
+  --colors-fg-subtle: var(--colors-gray-10);
   --colors-border: var(--colors-gray-6);
   --colors-border-strong: var(--colors-gray-7);
   --colors-primary-solid: var(--colors-indigo-11);
@@ -587,7 +587,7 @@
   --colors-bg-backdrop: color-mix(in oklch, var(--colors-gray-1) 70%, transparent);
   --colors-fg: var(--colors-gray-12);
   --colors-fg-muted: var(--colors-gray-11);
-  --colors-fg-subtle: var(--colors-gray-8);
+  --colors-fg-subtle: var(--colors-gray-10);
   --colors-border: var(--colors-gray-6);
   --colors-border-strong: var(--colors-gray-7);
   --colors-primary-solid: var(--colors-indigo-9);
@@ -848,7 +848,7 @@
   --colors-bg-backdrop: color-mix(in oklch, var(--colors-gray-1) 70%, transparent);
   --colors-fg: var(--colors-gray-12);
   --colors-fg-muted: var(--colors-gray-11);
-  --colors-fg-subtle: var(--colors-gray-8);
+  --colors-fg-subtle: var(--colors-gray-10);
   --colors-border: var(--colors-gray-6);
   --colors-border-strong: var(--colors-gray-7);
   --colors-primary-solid: var(--colors-indigo-9);

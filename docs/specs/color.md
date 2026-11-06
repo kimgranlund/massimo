@@ -42,7 +42,7 @@ One name per role: a role's tokens are named after the role (`primary.solid`, ne
 | `bg.inverse`, `fg.inverse` (tooltips) | neutral 12, 1 (inverts in each scheme) |
 | `bg.backdrop` (modal scrim) | neutral 12 at 40% light, neutral 1 at 70% dark |
 | `border`, `border.strong` | neutral 6, 7 |
-| `fg.subtle` (placeholders), `fg.muted`, `fg` | neutral 8, 11, 12 |
+| `fg.subtle` (placeholders), `fg.muted`, `fg` | neutral 10, 11, 12 |
 | `fg.onSolid` | the engine's APCA black/white choice for primary 9 |
 | `fg.strong` (display, headings, titles) | `black` in light, `white` in dark |
 | `white`, `black` (`--colors-white`, `--colors-black`) | neutral step 3 of the light ramp (white) and of the dark ramp (black), the same in every scheme; runtime color ramps emits them too. A theme maps either to another neutral step (1–12) or to pure #fff / #000 (`color.endpoints`, `endpointVars`; the jig's Colors tab, White and black) |
